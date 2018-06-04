@@ -18,11 +18,5 @@ Or: [Button] Fixes Inheritance for Red Basic Active State
 ### Description
 
 ### Testcase
-
-[Show before with this fiddle]
+[Fork, update, and replace to show the bug]:
 https://jsfiddle.net/ca0rovs3/
-
-[Consider showing "fixed" case with your fiddle]()
-
-You can link to your JS using https://rawgit.com/
-
