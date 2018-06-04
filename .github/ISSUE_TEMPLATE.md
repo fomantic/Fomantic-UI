@@ -1,7 +1,7 @@
 ✖ USAGE QUESTIONS → Use these dedicated resources:
-      Docs - http://www.semantic-ui.com
-      Chat - https://gitter.im/Semantic-Org/Semantic-UI
-      SO - https://stackoverflow.com/questions/tagged/semantic-ui?sort=votes
+- Docs http://fomantic-ui.com
+- Chat https://discordapp.com/invite/YChxjJ3
+- StackOverflow https://stackoverflow.com/questions/tagged/semantic-ui
 
 ✔ Enhancements → Be specific. Assume backwards compatibility is a necessity. Suggest implementation when possible.
 ✔ BUGS → ❤❤❤. Keep in mind some bugs may not be immediately fixable due to backwards compatibility or CSS limitations.
