@@ -61,4 +61,4 @@ Please only create Github issues for bug's and feature requests or any other rel
 When adding pull requests, be sure to merge into the [next](https://github.com/hammy2899/Fomantic-UI/tree/next) branch. If you need to demonstrate a fix in ``next`` release, you can use [this JSFiddle](https://jsfiddle.net/ca0rovs3/)
 
 #### Credit
-Semantic-UI was beautifully crafted by @jlukic
+Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)
