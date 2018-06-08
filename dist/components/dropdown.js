@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.3.1 - Dropdown
+ * # Semantic UI undefined - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -891,6 +891,12 @@ $.fn.dropdown = function(parameters) {
           }
         },
 
+        blurSearch: function() {
+          if( module.has.search() ) {
+            $search.blur();
+          }
+        },
+
         forceSelection: function() {
           var
             $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0),
@@ -1010,7 +1016,15 @@ $.fn.dropdown = function(parameters) {
           },
           icon: {
             click: function(event) {
-              module.toggle();
+              if(module.has.search()) {
+                if(!module.is.active()) {
+                  module.focusSearch();
+                } else {
+                  module.blurSearch();
+                }
+              } else {
+                module.toggle();
+              }
             }
           },
           text: {

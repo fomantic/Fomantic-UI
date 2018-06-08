@@ -1,5 +1,29 @@
 ## RELEASE NOTES
 
+### Upcoming updates (2.4 planned)
+
+**Major Enhancements**
+- Calendar Component
+- Range Slider Component
+
+**Enhancements**
+- **Dropdown** - Add inverted variation
+- **Button** - Add tertiary type
+- **Header** - Add primary and secondary color support
+- **Card** - Add primary and secondary color support
+- **Icons** - Add primary and secondary color support
+
+### Version 2.3.2 - Jun 8, 2018
+
+**Bugs**
+- **State** - Added state.js module back (removed in cleanup). **Thanks @prudho** [#6323](https://github.com/Semantic-Org/Semantic-UI/issues/6323)
+- **List** - Fixed icon color inside labels within lists. **Thanks @w96k** [#5991](https://github.com/Semantic-Org/Semantic-UI/issues/5991)
+- **Dimmer** - Fixed dimmer closing when `closable` is false. **Thanks @prudho** [#5786](https://github.com/Semantic-Org/Semantic-UI/issues/5786)
+- **Flags** - Fixed Mayanmar / Burma flag. **Thanks @ColinFrick** [#6400](https://github.com/Semantic-Org/Semantic-UI/issues/6400)
+- **Dropdown** - Fixed dropdown icon having different click behaviour on searchable dropdowns. **Thanks @ColinFrick** [#6404](https://github.com/Semantic-Org/Semantic-UI/issues/6404)
+- **Card** - Fixed `card` icon acting like cards. **Thanks @w96k**
+- **Button** - Fixed primary and secondary inverted buttons. **Thanks @hammy2899**
+
 ### Version 2.3.1 - Mar 19, 2018
 
 > **A Special Message about Flex Modals**
