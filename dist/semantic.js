@@ -3873,7 +3873,9 @@ $.fn.dimmer = function(parameters) {
             module.show();
           }
           else {
-            module.hide();
+            if ( module.is.closable() ) {
+              module.hide();
+            }
           }
         },
 
