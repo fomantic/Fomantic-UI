@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.3.1 - Rating
+ * # Semantic UI undefined - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *

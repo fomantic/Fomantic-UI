@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.3.1 - Button
+ * # Semantic UI undefined - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -346,12 +346,24 @@
        Inverted
 --------------------*/
 
-.ui.inverted.button {
+.ui.inverted.button:not(.primary + .secondary) {
   -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
           box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
   background: transparent none;
   color: #FFFFFF;
   text-shadow: none !important;
+}
+.ui.inverted.primary.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #2185D0 inset !important;
+          box-shadow: 0px 0px 0px 2px #2185D0 inset !important;
+  background: transparent none;
+  color: #2185D0;
+}
+.ui.inverted.secondary.button {
+  -webkit-box-shadow: 0px 0px 0px 2px #1B1C1D inset !important;
+          box-shadow: 0px 0px 0px 2px #1B1C1D inset !important;
+  background: transparent none;
+  color: #1B1C1D;
 }
 
 /* Group */
@@ -371,28 +383,66 @@
 /* States */
 
 /* Hover */
-.ui.inverted.button:hover {
+.ui.inverted.button:hover:not(.primary + .secondary) {
   background: #FFFFFF;
   -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
           box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
   color: rgba(0, 0, 0, 0.8);
+}
+.ui.inverted.primary.button:hover {
+  background: #1678c2;
+  -webkit-box-shadow: 0px 0px 0px 2px #1678c2 inset !important;
+          box-shadow: 0px 0px 0px 2px #1678c2 inset !important;
+  color: #FFFFFF;
+}
+.ui.inverted.secondary.button:hover {
+  background: #27292a;
+  -webkit-box-shadow: 0px 0px 0px 2px #27292a inset !important;
+          box-shadow: 0px 0px 0px 2px #27292a inset !important;
+  color: #FFFFFF;
 }
 
 /* Active / Focus */
-.ui.inverted.button:focus,
-.ui.inverted.button.active {
+.ui.inverted.button:focus:not(.primary + .secondary),
+.ui.inverted.button.active:not(.primary + .secondary) {
   background: #FFFFFF;
   -webkit-box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
           box-shadow: 0px 0px 0px 2px #FFFFFF inset !important;
   color: rgba(0, 0, 0, 0.8);
 }
+.ui.inverted.primary.button:focus,
+.ui.inverted.primary.button.active {
+  background: #1279c6;
+  -webkit-box-shadow: 0px 0px 0px 2px #1279c6 inset !important;
+          box-shadow: 0px 0px 0px 2px #1279c6 inset !important;
+  color: #FFFFFF;
+}
+.ui.inverted.secondary.button:focus,
+.ui.inverted.secondary.button.active {
+  background: #27292a;
+  -webkit-box-shadow: 0px 0px 0px 2px #27292a inset !important;
+          box-shadow: 0px 0px 0px 2px #27292a inset !important;
+  color: #FFFFFF;
+}
 
 /* Active Focus */
-.ui.inverted.button.active:focus {
+.ui.inverted.button.active:focus:not(.primary + .secondary) {
   background: #DCDDDE;
   -webkit-box-shadow: 0px 0px 0px 2px #DCDDDE inset !important;
           box-shadow: 0px 0px 0px 2px #DCDDDE inset !important;
-  color: rgba(0, 0, 0, 0.8);
+  color: #FFFFFF;
+}
+.ui.inverted.primary.button.active:focus {
+  background: #1279c6;
+  -webkit-box-shadow: 0px 0px 0px 2px #1279c6 inset !important;
+          box-shadow: 0px 0px 0px 2px #1279c6 inset !important;
+  color: #FFFFFF;
+}
+.ui.inverted.secondary.button.active:focus {
+  background: #27292a;
+  -webkit-box-shadow: 0px 0px 0px 2px #27292a inset !important;
+          box-shadow: 0px 0px 0px 2px #27292a inset !important;
+  color: #FFFFFF;
 }
 
 /*-------------------
