@@ -6,6 +6,7 @@
   "homepage": "http://fomantic-ui.com",
   "author": "Jack Lukic <jack@semantic-ui.com>",
   "license": "MIT",
+  "main": "dist/semantic",
   "repository": {
     "type": "git",
     "url": "git://github.com/hammy2899/Fomantic-UI.git"

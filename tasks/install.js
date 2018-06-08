@@ -401,7 +401,7 @@ gulp.task('create install files', function(callback) {
       return gulp.src(source.config)
         .pipe(plumber())
         .pipe(rename({ extname : '' })) // remove .template from ext
-        .pipe(jsonEditor(jsonConfig))
+        .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
         .pipe(gulp.dest(installPaths.configFolder))
       ;
     }
