@@ -1073,10 +1073,10 @@ $.fn.transition.settings = {
     animating  : 'animating',
     disabled   : 'disabled',
     hidden     : 'hidden',
-    inward     : 'in',
+    inward     : 'inward',
     loading    : 'loading',
     looping    : 'looping',
-    outward    : 'out',
+    outward    : 'outward',
     transition : 'transition',
     visible    : 'visible'
   },
