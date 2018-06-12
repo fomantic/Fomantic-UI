@@ -425,7 +425,7 @@ $.fn.popup = function(parameters) {
               module.set.visible();
               $popup
                 .transition({
-                  animation  : settings.transition + ' in',
+                  animation  : settings.transition + ' inward',
                   queue      : false,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
@@ -452,7 +452,7 @@ $.fn.popup = function(parameters) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $popup
                 .transition({
-                  animation  : settings.transition + ' out',
+                  animation  : settings.transition + ' outward',
                   queue      : false,
                   duration   : settings.duration,
                   debug      : settings.debug,

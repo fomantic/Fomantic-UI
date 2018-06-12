@@ -185,7 +185,7 @@ $.fn.accordion = function(parameters) {
               $activeContent
                 .children()
                   .transition({
-                    animation   : 'fade in',
+                    animation   : 'fade inward',
                     queue       : false,
                     useFailSafe : true,
                     debug       : settings.debug,
@@ -246,7 +246,7 @@ $.fn.accordion = function(parameters) {
                 $activeContent
                   .children()
                     .transition({
-                      animation   : 'fade out',
+                      animation   : 'fade outward',
                       queue       : false,
                       useFailSafe : true,
                       debug       : settings.debug,
@@ -316,7 +316,7 @@ $.fn.accordion = function(parameters) {
                 $openContents
                   .children()
                     .transition({
-                      animation   : 'fade out',
+                      animation   : 'fade outward',
                       useFailSafe : true,
                       debug       : settings.debug,
                       verbose     : settings.verbose,

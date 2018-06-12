@@ -584,7 +584,7 @@ $.fn.transition = function() {
             animation = animation || settings.animation;
             if(typeof animation === 'string') {
               animation = animation.split(' ');
-              // search animation name for out/in class
+              // search animation name for outward/inward class
               $.each(animation, function(index, word){
                 if(word === className.inward) {
                   direction = className.inward;
