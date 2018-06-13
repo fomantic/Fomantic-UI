@@ -1028,7 +1028,7 @@ $.fn.form = function(parameters) {
             // cast to string avoiding encoding special values
             value = (value === undefined || value === '' || value === null)
               ? ''
-              : $.trim(value + '')
+              : String(value + '')
             ;
             return ruleFunction.call($field, value, ancillary);
           }
