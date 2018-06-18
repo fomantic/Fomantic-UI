@@ -3765,6 +3765,10 @@ $.fn.dimmer = function(parameters) {
 
         bind: {
           events: function() {
+            if(module.is.page()) {
+              // touch events default to passive, due to changes in chrome to optimize mobile perf
+              $dimmable.get(0).addEventListener('touchmove', module.event.preventScroll, { passive: false });
+            }
             if(settings.on == 'hover') {
               $dimmable
                 .on('mouseenter' + eventNamespace, module.show)
@@ -3792,6 +3796,9 @@ $.fn.dimmer = function(parameters) {
 
         unbind: {
           events: function() {
+            if(module.is.page()) {
+              $dimmable.get(0).removeEventListener('touchmove', module.event.preventScroll, { passive: false });
+            }
             $module
               .removeData(moduleNamespace)
             ;
@@ -3808,6 +3815,9 @@ $.fn.dimmer = function(parameters) {
               module.hide();
               event.stopImmediatePropagation();
             }
+          },
+          preventScroll: function(event) {
+            event.preventDefault();
           }
         },
 
@@ -5118,10 +5128,19 @@ $.fn.dropdown = function(parameters) {
                 callback();
               },
               onSuccess : function(response) {
-                module.remove.message();
-                module.setup.menu({
-                  values: response[fields.remoteValues]
-                });
+                var
+                  values          = response[fields.remoteValues],
+                  hasRemoteValues = ($.isArray(values) && values.length > 0)
+                ;
+                if(hasRemoteValues) {
+                  module.remove.message();
+                  module.setup.menu({
+                    values: response[fields.remoteValues]
+                  });
+                }
+                else {
+                  module.add.message(message.noResults);
+                }
                 callback();
               }
             }
