@@ -1960,7 +1960,7 @@ $.fn.dropdown = function(parameters) {
                     return;
                   }
                   if(isMultiple) {
-                    if($.inArray( String(optionValue), value) !== -1 || $.inArray(optionText, value) !== -1) {
+                    if($.inArray( String(optionValue), value) !== -1) {
                       $selectedItem = ($selectedItem)
                         ? $selectedItem.add($choice)
                         : $choice
@@ -1969,13 +1969,13 @@ $.fn.dropdown = function(parameters) {
                   }
                   else if(strict) {
                     module.verbose('Ambiguous dropdown value using strict type check', $choice, value);
-                    if( optionValue === value || optionText === value) {
+                    if( optionValue === value) {
                       $selectedItem = $choice;
                       return true;
                     }
                   }
                   else {
-                    if( String(optionValue) == String(value) || optionText == value) {
+                    if( String(optionValue) == String(value)) {
                       module.verbose('Found select item by value', optionValue, value);
                       $selectedItem = $choice;
                       return true;
