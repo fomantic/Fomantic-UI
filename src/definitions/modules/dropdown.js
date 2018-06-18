@@ -1878,12 +1878,23 @@ $.fn.dropdown = function(parameters) {
               select.placeholder = settings.placeholder;
             }
             if(settings.sortSelect) {
-              select.values.sort(function(a, b) {
-                return (a.name > b.name)
-                  ? 1
-                  : -1
-                ;
-              });
+              if(settings.sortSelect === true) {
+                select.values.sort(function(a, b) {
+                  return (a.name > b.name)
+                    ? 1
+                    : -1
+                    ;
+                });
+              } else if(settings.sortSelect === 'natural') {
+                select.values.sort(function(a, b) {
+                  return (a.name.toLowerCase() > b.name.toLowerCase())
+                    ? 1
+                    : -1
+                    ;
+                });
+              } else if($.isFunction(settings.sortSelect)) {
+                select.values.sort(settings.sortSelect);
+              }
               module.debug('Retrieved and sorted values from select', select);
             }
             else {
