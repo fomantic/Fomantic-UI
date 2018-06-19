@@ -323,7 +323,7 @@
   color: @inputPlaceholderColor;
 }
 .ui.form :-ms-input-placeholder {
-  color: @inputPlaceholderColor;
+  color: @inputPlaceholderColor !important;
 }
 .ui.form ::-moz-placeholder {
   color: @inputPlaceholderColor;
@@ -333,7 +333,7 @@
   color: @inputPlaceholderFocusColor;
 }
 .ui.form :focus:-ms-input-placeholder {
-  color: @inputPlaceholderFocusColor;
+  color: @inputPlaceholderFocusColor !important;
 }
 .ui.form :focus::-moz-placeholder {
   color: @inputPlaceholderFocusColor;
@@ -670,7 +670,8 @@
 .ui.form .required.fields.grouped > label:after,
 .ui.form .required.field > label:after,
 .ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
-.ui.form .required.field > .checkbox:after {
+.ui.form .required.field > .checkbox:after,
+.ui.form label.required:after {
   margin: @requiredMargin;
   content: @requiredContent;
   color: @requiredColor;
@@ -678,7 +679,8 @@
 
 .ui.form .required.fields:not(.grouped) > .field > label:after,
 .ui.form .required.fields.grouped > label:after,
-.ui.form .required.field > label:after {
+.ui.form .required.field > label:after,
+.ui.form label.required:after {
   display: inline-block;
   vertical-align: top;
 }

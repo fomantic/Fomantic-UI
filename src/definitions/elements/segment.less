@@ -470,7 +470,9 @@
        Basic
 --------------------*/
 
-.ui.basic.segment {
+.ui.basic.segment,
+.ui.segments .ui.basic.segment,
+.ui.basic.segments {
   background: @basicBackground;
   box-shadow: @basicBoxShadow;
   border: @basicBorder;
@@ -732,7 +734,7 @@
   border-radius: 0em 0em @borderRadius @borderRadius;
 }
 .ui.segment[class*="bottom attached"]:last-child {
-  margin-bottom: 0em;
+  margin-bottom: @verticalMargin;
 }
 
 /*-------------------

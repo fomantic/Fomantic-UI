@@ -24,7 +24,7 @@ For more info take a look at our [contributing guide](https://github.com/Semanti
 ## Install
 
 ```bash
-npm install fomantic-ui
+npm install fomantic-ui --save
 ```
 
 Fomantic UI includes an interactive installer to help setup your project.
