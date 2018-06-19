@@ -1,34 +1,34 @@
 ## RELEASE NOTES
 
-### Upcoming updates (2.4 planned)
+### Upcoming updates
 
 **Major Enhancements**
 - Calendar Component
 - Range Slider Component
 
-**Enhancements**
-- **Dropdown** - Add inverted variation
-- **Button** - Add tertiary type
-- **Header** - Add primary and secondary color support
-- **Card** - Add primary and secondary color support
-- **Icons** - Add primary and secondary color support
-
-### Version 2.4.0- - June 19, 2018
+### Version 2.4.0 - June 19, 2018
 
 **Enhancements**
 - **Segment** - Added basic segments variation **Thanks shadoWalker89** [#3801](https://github.com/Semantic-Org/Semantic-UI/issues/3801)
 - **Form** - Added ability to add required marker from the label itself **Thanks shadoWalker89** [#6345](https://github.com/Semantic-Org/Semantic-UI/issues/6345) 
 - **Form Validation** - Added new option for whether to trim values before validation **Thanks @prudho** [#6237](https://github.com/Semantic-Org/Semantic-UI/issues/6237)
 - **Dropdown** - Added new `sortSelect` option to choose how to sort the dropdown items **Thanks @ColinFrick** [#4775](https://github.com/Semantic-Org/Semantic-UI/issues/4775)
+- **Dropdown** - Added `inverted` variation **Thanks @hammy2899** [#5276](https://github.com/Semantic-Org/Semantic-UI/issues/5276)
+- **Dropdown** - Added `hideDividers` option to hide dividers when search **Thanks @ColinFrick** [#6173](https://github.com/Semantic-Org/Semantic-UI/issues/6173)
+- **Button** - Added `tertiary` button **Thanks @w96k** [#6229](https://github.com/Semantic-Org/Semantic-UI/issues/6229)
+- **Icon** - Added primary and secondary colors **Thanks @sethmoore** [#6310](https://github.com/Semantic-Org/Semantic-UI/pull/6310)
+- **Card** - Added primary and secondary colors **Thanks @sethmoore** [#6310](https://github.com/Semantic-Org/Semantic-UI/pull/6310)
+- **Header** - Added primary and secondary colors **Thanks @sethmoore** [#6310](https://github.com/Semantic-Org/Semantic-UI/pull/6310)
 
 **Bugs**
 - **Label** - Fixed basic label background bug introduced with new Semantic release **Thanks @ColinFrick**
 - **Form** - Fixed incorrect CSS rule for placeholders on IE11 **Thanks @ColinFrick** [#6363](https://github.com/Semantic-Org/Semantic-UI/issues/6363)
 - **Dropdown** - Fixed update text if action is active or combo **Thanks @ColinFrick** [#6285](https://github.com/Semantic-Org/Semantic-UI/issues/6285)
 - **Dropdown** - Fixed items being selected if they have the same display name **Thanks @ColinFrick** [#5817](https://github.com/Semantic-Org/Semantic-UI/issues/5817)
-- **Dropdown** - Fluid dropdowns should now be fluid **Thanks shadoWalker89** [#6204](https://github.com/Semantic-Org/Semantic-UI/pull/6204)
+- **Dropdown** - Fluid dropdowns should now be fluid **Thanks @shadoWalker89** [#6204](https://github.com/Semantic-Org/Semantic-UI/pull/6204)
 - **Tab** - Fixed last tab in container having different margin **Thanks @prudho** [#5408](https://github.com/Semantic-Org/Semantic-UI/issues/5408)
 - **Table** - Fix priority for td .disabled class **Thanks @prudho** [#6311](https://github.com/Semantic-Org/Semantic-UI/issues/6311)
+
 
 The following changes where merged from a new Semantic-UI release
 
