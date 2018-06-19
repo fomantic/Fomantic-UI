@@ -219,6 +219,32 @@ i.inverted.icon {
 --------------------*/
 
 
+/* Primary */
+i.primary.icon {
+  color: #2185D0 !important;
+}
+i.inverted.primary.icon {
+  color: #54C8FF !important;
+}
+i.inverted.bordered.primary.icon,
+i.inverted.circular.primary.icon {
+  background-color: #2185D0 !important;
+  color: #FFFFFF !important;
+}
+
+/* Secondary */
+i.secondary.icon {
+  color: #1B1C1D !important;
+}
+i.inverted.secondary.icon {
+  color: #545454 !important;
+}
+i.inverted.bordered.secondary.icon,
+i.inverted.circular.secondary.icon {
+  background-color: #1B1C1D !important;
+  color: #FFFFFF !important;
+}
+
 /* Red */
 i.red.icon {
   color: #DB2828 !important;

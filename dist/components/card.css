@@ -504,6 +504,34 @@ a.ui.card:hover,
 --------------------*/
 
 
+/* Primary */
+.ui.primary.cards > .card,
+.ui.cards > .primary.card,
+.ui.primary.card {
+  -webkit-box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #2185D0, 0px 1px 3px 0px #D4D4D5;
+          box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #2185D0, 0px 1px 3px 0px #D4D4D5;
+}
+.ui.primary.cards > .card:hover,
+.ui.cards > .primary.card:hover,
+.ui.primary.card:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #1678c2, 0px 1px 3px 0px #BCBDBD;
+          box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #1678c2, 0px 1px 3px 0px #BCBDBD;
+}
+
+/* Secondary */
+.ui.secondary.cards > .card,
+.ui.cards > .secondary.card,
+.ui.secondary.card {
+  -webkit-box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #1B1C1D, 0px 1px 3px 0px #D4D4D5;
+          box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #1B1C1D, 0px 1px 3px 0px #D4D4D5;
+}
+.ui.secondary.cards > .card:hover,
+.ui.cards > .secondary.card:hover,
+.ui.secondary.card:hover {
+  -webkit-box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #27292a, 0px 1px 3px 0px #BCBDBD;
+          box-shadow: 0px 0px 0px 1px #D4D4D5, 0px 2px 0px 0px #27292a, 0px 1px 3px 0px #BCBDBD;
+}
+
 /* Red */
 .ui.red.cards > .card,
 .ui.cards > .red.card,

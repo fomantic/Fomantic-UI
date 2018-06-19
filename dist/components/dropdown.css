@@ -1485,6 +1485,7 @@ select.ui.dropdown {
 .ui.vertical.menu .dropdown.item > .dropdown.icon:before {
   content: "\f0da" /*rtl:"\f0d9"*/;
 }
+
 /* Icons for Reference
 .dropdown.down.icon {
   content: "\f0d7";
@@ -1499,6 +1500,152 @@ select.ui.dropdown {
   content: "\f0da";
 }
 */
+
+/*--------------
+    Inverted
+---------------*/
+
+/* General rules and basic dropdowns */
+.ui.inverted.dropdown .menu {
+  background: #1B1C1D;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.ui.inverted.dropdown .menu > .item {
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.dropdown .menu .active.item {
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.ui.inverted.dropdown .menu > .item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.dropdown.selected,
+.ui.inverted.dropdown .menu .selected.item {
+  background: rgba(255, 255, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.dropdown .menu > .header {
+  color: #FFFFFF;
+}
+.ui.inverted.dropdown > .text > .description,
+.ui.inverted.dropdown .menu > .item > .description {
+  color: rgba(255, 255, 255, 0.5);
+}
+.ui.inverted.dropdown .menu > .divider {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+.ui.inverted.dropdown .scrolling.menu {
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Selection */
+.ui.inverted.selection.dropdown {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #1B1C1D;
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.selection.dropdown:hover {
+  border-color: rgba(255, 255, 255, 0.25);
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.ui.inverted.selection.dropdown input {
+  color: #FFFFFF;
+}
+.ui.inverted.dropdown:not(.button) > .default.text,
+.ui.inverted.default.dropdown:not(.button) > .text {
+  color: rgba(255, 255, 255, 0.5);
+}
+.ui.inverted.dropdown:not(.button) > input:focus ~ .default.text,
+.ui.inverted.default.dropdown:not(.button) > input:focus ~ .text {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ui.inverted.selection.visible.dropdown > .text:not(.default) {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.active.search.dropdown input.search:focus + .text .icon,
+.ui.inverted.active.search.dropdown input.search:focus + .text .flag {
+  opacity: 0.45;
+}
+.ui.inverted.active.search.dropdown input.search:focus + .text {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.ui.inverted.selection.active.dropdown .menu,
+.ui.inverted.selection.active.dropdown:hover {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.ui.inverted.selection.dropdown .menu > .item {
+  border-top: 1px solid #242526;
+}
+.ui.dropdown .menu > .message:not(.ui) {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Fixing the border */
+.ui.inverted.dropdown .menu > .item:first-child {
+  border-top-width: 0;
+}
+
+/* Labels */
+.ui.inverted.multiple.dropdown > .label {
+  background-color: rgba(255, 255, 255, 0.7);
+  background-image: none;
+  color: #000000;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0) inset;
+          box-shadow: 0px 0px 0px 1px rgba(255, 255, 255, 0) inset;
+}
+.ui.inverted.multiple.dropdown > .label:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(255, 255, 255, 0.9);
+  background-image: none;
+  color: #000000;
+}
+.ui.inverted.multiple.dropdown > .label > .close.icon,
+.ui.inverted.multiple.dropdown > .label > .delete.icon {
+  opacity: 0.6;
+}
+.ui.inverted.multiple.dropdown > .label > .close.icon:hover,
+.ui.inverted.multiple.dropdown > .label > .delete.icon:hover {
+  opacity: 0.8;
+}
+
+/* Selection for form elements */
+.ui.inverted.dropdown textarea::-webkit-selection,
+.ui.inverted.dropdown input::-webkit-selection {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.dropdown textarea::-moz-selection,
+.ui.inverted.dropdown input::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
+.ui.inverted.dropdown textarea::selection,
+.ui.inverted.dropdown input::selection {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Scrollbars */
+.ui.inverted.dropdown .menu::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+.ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.25);
+}
+.ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(255, 255, 255, 0.15);
+}
+.ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.35);
+}
 
 
 /*******************************
