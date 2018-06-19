@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI undefined - Segment
+ * # Semantic UI 2.4.0 - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -493,7 +493,9 @@
        Basic
 --------------------*/
 
-.ui.basic.segment {
+.ui.basic.segment,
+.ui.segments .ui.basic.segment,
+.ui.basic.segments {
   background: none transparent;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -764,7 +766,7 @@
   border-radius: 0em 0em 0.28571429rem 0.28571429rem;
 }
 .ui.segment[class*="bottom attached"]:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 1rem;
 }
 
 /*-------------------

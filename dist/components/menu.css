@@ -2045,6 +2045,37 @@ Floated Menu / Item
 *******************************/
 
 
+/*-------------------
+  Inverted dropdowns
+--------------------*/
+
+.ui.menu .ui.inverted.inverted.dropdown.item .menu {
+  background: #1B1C1D;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.ui.menu .ui.inverted.dropdown .menu > .item {
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.ui.menu .ui.inverted.dropdown .menu > .active.item {
+  background: transparent !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.ui.menu .ui.inverted.dropdown .menu > .item:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+.ui.menu .ui.inverted.dropdown .menu > .selected.item {
+  background: rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Vertical */
+.ui.vertical.menu .inverted.dropdown.item .menu {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
 
 /*******************************
          Site Overrides

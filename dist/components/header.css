@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI undefined - Header
+ * # Semantic UI 2.4.0 - Header
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -323,6 +323,46 @@ h5.ui.header .sub.header {
        Colors
 --------------------*/
 
+
+/*--- Primary ---*/
+
+.ui.primary.header {
+  color: #2185D0 !important;
+}
+a.ui.primary.header:hover {
+  color: #2185D0 !important;
+}
+.ui.primary.dividing.header {
+  border-bottom: 2px solid #2185D0;
+}
+
+/* Inverted */
+.ui.inverted.primary.header {
+  color: #54C8FF !important;
+}
+a.ui.inverted.primary.header:hover {
+  color: #54C8FF !important;
+}
+
+/*--- Secondary ---*/
+
+.ui.secondary.header {
+  color: #1B1C1D !important;
+}
+a.ui.secondary.header:hover {
+  color: #1B1C1D !important;
+}
+.ui.secondary.dividing.header {
+  border-bottom: 2px solid #1B1C1D;
+}
+
+/* Inverted */
+.ui.inverted.secondary.header {
+  color: #545454 !important;
+}
+a.ui.inverted.secondary.header:hover {
+  color: #545454 !important;
+}
 
 /*--- Red ---*/
 

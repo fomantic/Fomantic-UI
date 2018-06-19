@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI undefined - Form Validation
+ * # Semantic UI 2.4.0 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1028,7 +1028,7 @@ $.fn.form = function(parameters) {
             // cast to string avoiding encoding special values
             value = (value === undefined || value === '' || value === null)
               ? ''
-              : $.trim(value + '')
+              : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
             ;
             return ruleFunction.call($field, value, ancillary);
           }
@@ -1219,6 +1219,7 @@ $.fn.form.settings = {
 
   delay             : 200,
   revalidate        : true,
+  shouldTrim        : true,
 
   transition        : 'scale',
   duration          : 200,
