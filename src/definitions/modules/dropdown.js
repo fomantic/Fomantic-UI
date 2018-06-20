@@ -71,7 +71,7 @@ $.fn.dropdown = function(parameters) {
 
         $menu           = $module.children(selector.menu),
         $item           = $menu.find(selector.item),
-        $divider        = $item.siblings(selector.divider),
+        $divider        = settings.hideDividers ? $item.siblings(selector.divider) : $(),
 
         activated       = false,
         itemActivated   = false,
@@ -386,7 +386,7 @@ $.fn.dropdown = function(parameters) {
           menu: function(values) {
             $menu.html( templates.menu(values, fields));
             $item    = $menu.find(selector.item);
-            $divider = $item.siblings(selector.divider);
+            $divider = settings.hideDividers ? $item.siblings(selector.divider) : $();
           },
           reference: function() {
             module.debug('Dropdown behavior was called on select, replacing with closest dropdown');
@@ -414,7 +414,7 @@ $.fn.dropdown = function(parameters) {
 
         refreshItems: function() {
           $item    = $menu.find(selector.item);
-          $divider = $item.siblings(selector.divider);
+          $divider = settings.hideDividers ? $item.siblings(selector.divider) : $();
         },
 
         refreshSelectors: function() {
@@ -429,7 +429,7 @@ $.fn.dropdown = function(parameters) {
           ;
           $menu    = $module.children(selector.menu);
           $item    = $menu.find(selector.item);
-          $divider = $item.siblings(selector.divider);
+          $divider = settings.hideDividers ? $item.siblings(selector.divider) : $();
         },
 
         refreshData: function() {
