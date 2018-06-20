@@ -6,6 +6,12 @@
 - Calendar Component
 - Range Slider Component
 
+### Version 2.4.1 - June 20, 2018
+
+**Bugs**
+- **List** - Fixed selector typo for item:hover **Thanks @ColinFrick** [#6436](https://github.com/Semantic-Org/Semantic-UI/issues/6436)
+- **Dropdown** - Fixed a performance issue which led to dropdowns with lots of items taking 20+ seconds to load **Thanks @ColinFrick** [#34](https://github.com/hammy2899/Fomantic-UI/pull/34)
+
 ### Version 2.4.0 - June 19, 2018
 
 **Enhancements**
