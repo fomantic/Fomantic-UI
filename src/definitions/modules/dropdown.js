@@ -485,7 +485,7 @@ $.fn.dropdown = function(parameters) {
                 if( module.can.click() ) {
                   module.bind.intent();
                 }
-                if(module.has.menuSearch()) {
+                if(module.has.search()) {
                   module.focusSearch();
                 }
                 module.set.visible();
@@ -505,6 +505,10 @@ $.fn.dropdown = function(parameters) {
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
+                // hidding search focus
+                if ( module.is.focusedOnSearch() ) {
+                  $search.blur();
+                }
                 callback.call(element);
               });
             }
