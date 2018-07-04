@@ -64,6 +64,7 @@ $.fn.dropdown = function(parameters) {
         $sizer          = $module.find(selector.sizer),
         $input          = $module.find(selector.input),
         $icon           = $module.find(selector.icon),
+        $clear          = $module.find(selector.clearIcon),
 
         $combo = ($module.prev().find(selector.text).length > 0)
           ? $module.prev().find(selector.text)
@@ -321,6 +322,13 @@ $.fn.dropdown = function(parameters) {
             }
             if( !module.has.menu() ) {
               module.create.menu();
+            }
+            if ( !module.is.multiple() && module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+              module.verbose('Adding clear icon');
+              $clear = $('<i />')
+                .addClass('remove icon')
+                .insertBefore($text)
+              ;
             }
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
@@ -599,6 +607,7 @@ $.fn.dropdown = function(parameters) {
                 .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
                 .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
                 .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                 .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('click'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
@@ -614,6 +623,7 @@ $.fn.dropdown = function(parameters) {
               if(settings.on == 'click') {
                 $module
                   .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                  .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                   .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
@@ -1053,6 +1063,16 @@ $.fn.dropdown = function(parameters) {
                 }
               }
               willRefocus = false;
+            }
+          },
+          clearIcon: {
+            click: function(event) {
+              module.clear();
+              if(module.is.searchSelection()) {
+                module.remove.searchTerm();
+              }
+              module.hide();
+              event.stopPropagation();
             }
           },
           icon: {
@@ -3055,6 +3075,9 @@ $.fn.dropdown = function(parameters) {
           menuSearch: function() {
             return (module.has.search() && $search.closest($menu).length > 0);
           },
+          clearItem: function() {
+            return ($clear.length > 0);
+          },
           search: function() {
             return ($search.length > 0);
           },
@@ -3188,6 +3211,9 @@ $.fn.dropdown = function(parameters) {
           leftward: function($subMenu) {
             var $selectedMenu = $subMenu || $menu;
             return $selectedMenu.hasClass(className.leftward);
+          },
+          clearable: function() {
+            return $module.hasClass(className.clearable);
           },
           disabled: function() {
             return $module.hasClass(className.disabled);
@@ -3883,7 +3909,8 @@ $.fn.dropdown.settings = {
     search       : 'input.search, .menu > .search > input, .menu input.search',
     sizer        : '> input.sizer',
     text         : '> .text:not(.icon)',
-    unselectable : '.disabled, .filtered'
+    unselectable : '.disabled, .filtered',
+    clearIcon    : '> .remove.icon'
   },
 
   className : {
@@ -3908,7 +3935,8 @@ $.fn.dropdown.settings = {
     selection   : 'selection',
     upward      : 'upward',
     leftward    : 'left',
-    visible     : 'visible'
+    visible     : 'visible',
+    clearable   : 'clearable'
   }
 
 };
