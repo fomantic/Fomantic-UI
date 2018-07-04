@@ -58,7 +58,7 @@ Please only create Github issues for bug's and feature requests or any other rel
 
 #### Pull Requests
 
-When adding pull requests, be sure to merge into the [next](https://github.com/hammy2899/Fomantic-UI/tree/next) branch. If you need to demonstrate a fix in ``next`` release, you can use [this JSFiddle](https://jsfiddle.net/ca0rovs3/)
+When adding pull requests, be sure to merge into the [beta](https://github.com/hammy2899/Fomantic-UI/tree/beta) branch.
 
 ### Cross-browser testing provided by
 [![BrowserStack](https://cdn.rawgit.com/hammy2899/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.1 - Search
+ * # Semantic UI 2.4.2 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1018,17 +1018,17 @@ $.fn.search = function(parameters) {
             }
           }
           else if(settings.showNoResults) {
-            html = module.displayMessage(error.noResults, 'empty');
+            html = module.displayMessage(error.noResults, 'empty', error.noResultsHeader);
           }
           settings.onResults.call(element, response);
           return html;
         },
 
-        displayMessage: function(text, type) {
+        displayMessage: function(text, type, header) {
           type = type || 'standard';
-          module.debug('Displaying message', text, type);
-          module.addResults( settings.templates.message(text, type) );
-          return settings.templates.message(text, type);
+          module.debug('Displaying message', text, type, header);
+          module.addResults( settings.templates.message(text, type, header) );
+          return settings.templates.message(text, type, header);
         },
 
         setting: function(name, value) {
@@ -1297,6 +1297,7 @@ $.fn.search.settings = {
 
   error : {
     source          : 'Cannot search. No source used, and Semantic API module was not included',
+    noResultsHeader : 'No Results',
     noResults       : 'Your search returned no results',
     logging         : 'Error in debug logging, exiting.',
     noEndpoint      : 'No search endpoint was specified',
@@ -1366,7 +1367,7 @@ $.fn.search.settings = {
       }
       return string;
     },
-    message: function(message, type) {
+    message: function(message, type, header) {
       var
         html = ''
       ;
@@ -1374,16 +1375,12 @@ $.fn.search.settings = {
         html +=  ''
           + '<div class="message ' + type + '">'
         ;
-        // message type
-        if(type == 'empty') {
+        if(header) {
           html += ''
-            + '<div class="header">No Results</div class="header">'
-            + '<div class="description">' + message + '</div class="description">'
+          + '<div class="header">' + header + '</div class="header">'
           ;
         }
-        else {
-          html += ' <div class="description">' + message + '</div>';
-        }
+        html += ' <div class="description">' + message + '</div>';
         html += '</div>';
       }
       return html;

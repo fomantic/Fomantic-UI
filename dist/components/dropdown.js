@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.1 - Dropdown
+ * # Semantic UI 2.4.2 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -64,6 +64,7 @@ $.fn.dropdown = function(parameters) {
         $sizer          = $module.find(selector.sizer),
         $input          = $module.find(selector.input),
         $icon           = $module.find(selector.icon),
+        $clear          = $module.find(selector.clearIcon),
 
         $combo = ($module.prev().find(selector.text).length > 0)
           ? $module.prev().find(selector.text)
@@ -322,6 +323,13 @@ $.fn.dropdown = function(parameters) {
             if( !module.has.menu() ) {
               module.create.menu();
             }
+            if ( !module.is.multiple() && module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+              module.verbose('Adding clear icon');
+              $clear = $('<i />')
+                .addClass('remove icon')
+                .insertBefore($text)
+              ;
+            }
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
               $search = $('<input />')
@@ -485,7 +493,7 @@ $.fn.dropdown = function(parameters) {
                 if( module.can.click() ) {
                   module.bind.intent();
                 }
-                if(module.has.menuSearch()) {
+                if(module.has.search()) {
                   module.focusSearch();
                 }
                 module.set.visible();
@@ -505,6 +513,10 @@ $.fn.dropdown = function(parameters) {
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
+                // hidding search focus
+                if ( module.is.focusedOnSearch() ) {
+                  $search.blur();
+                }
                 callback.call(element);
               });
             }
@@ -595,6 +607,7 @@ $.fn.dropdown = function(parameters) {
                 .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
                 .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
                 .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                 .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('click'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
@@ -610,6 +623,7 @@ $.fn.dropdown = function(parameters) {
               if(settings.on == 'click') {
                 $module
                   .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                  .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                   .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
@@ -1051,6 +1065,16 @@ $.fn.dropdown = function(parameters) {
               willRefocus = false;
             }
           },
+          clearIcon: {
+            click: function(event) {
+              module.clear();
+              if(module.is.searchSelection()) {
+                module.remove.searchTerm();
+              }
+              module.hide();
+              event.stopPropagation();
+            }
+          },
           icon: {
             click: function(event) {
               if(module.has.search()) {
@@ -1152,16 +1176,7 @@ $.fn.dropdown = function(parameters) {
           select: {
             mutation: function(mutations) {
               module.debug('<select> modified, recreating menu');
-              var
-                isSelectMutation = false
-              ;
-              $.each(mutations, function(index, mutation) {
-                if($(mutation.target).is('select') || $(mutation.addedNodes).is('select')) {
-                  isSelectMutation = true;
-                  return true;
-                }
-              });
-              if(isSelectMutation) {
+              if(module.is.selectMutation(mutations)) {
                 module.disconnect.selectObserver();
                 module.refresh();
                 module.setup.select();
@@ -3060,6 +3075,9 @@ $.fn.dropdown = function(parameters) {
           menuSearch: function() {
             return (module.has.search() && $search.closest($menu).length > 0);
           },
+          clearItem: function() {
+            return ($clear.length > 0);
+          },
           search: function() {
             return ($search.length > 0);
           },
@@ -3194,6 +3212,9 @@ $.fn.dropdown = function(parameters) {
             var $selectedMenu = $subMenu || $menu;
             return $selectedMenu.hasClass(className.leftward);
           },
+          clearable: function() {
+            return $module.hasClass(className.clearable);
+          },
           disabled: function() {
             return $module.hasClass(className.disabled);
           },
@@ -3238,9 +3259,9 @@ $.fn.dropdown = function(parameters) {
               selectChanged = false
             ;
             $.each(mutations, function(index, mutation) {
-              if(mutation.target && $(mutation.target).is('select')) {
+              if($(mutation.target).is('select') || $(mutation.addedNodes).is('select')) {
                 selectChanged = true;
-                return true;
+                return false;
               }
             });
             return selectChanged;
@@ -3853,7 +3874,8 @@ $.fn.dropdown.settings = {
     disabled     : 'disabled', // whether value should be disabled
     name         : 'name',     // displayed dropdown text
     value        : 'value',    // actual dropdown value
-    text         : 'text'      // displayed text when selected
+    text         : 'text',     // displayed text when selected
+    type         : 'type'      // type of dropdown element
   },
 
   keys : {
@@ -3887,7 +3909,8 @@ $.fn.dropdown.settings = {
     search       : 'input.search, .menu > .search > input, .menu input.search',
     sizer        : '> input.sizer',
     text         : '> .text:not(.icon)',
-    unselectable : '.disabled, .filtered'
+    unselectable : '.disabled, .filtered',
+    clearIcon    : '> .remove.icon'
   },
 
   className : {
@@ -3912,7 +3935,8 @@ $.fn.dropdown.settings = {
     selection   : 'selection',
     upward      : 'upward',
     leftward    : 'left',
-    visible     : 'visible'
+    visible     : 'visible',
+    clearable   : 'clearable'
   }
 
 };
@@ -3952,17 +3976,29 @@ $.fn.dropdown.settings.templates = {
       html   = ''
     ;
     $.each(values, function(index, option) {
-      var
-        maybeText = (option[fields.text])
-          ? 'data-text="' + option[fields.text] + '"'
-          : '',
-        maybeDisabled = (option[fields.disabled])
-          ? 'disabled '
-          : ''
+      var 
+        itemType = (option[fields.type])
+          ? option[fields.type]
+          : 'item'
       ;
-      html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
-      html +=   option[fields.name];
-      html += '</div>';
+
+      if( itemType === 'item' ) {
+        var
+          maybeText = (option[fields.text])
+            ? 'data-text="' + option[fields.text] + '"'
+            : '',
+          maybeDisabled = (option[fields.disabled])
+            ? 'disabled '
+            : ''
+        ;
+        html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
+        html +=   option[fields.name];
+        html += '</div>';
+      } else if (itemType === 'header') {
+        html += '<div class="header">';
+        html +=   option[fields.name];
+        html += '</div>';
+      }
     });
     return html;
   },
