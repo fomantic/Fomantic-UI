@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.1 - Label
+ * # Semantic UI 2.4.2 - Label
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -470,8 +470,8 @@ a.ui.active.label:hover {
   background-image: none;
   color: rgba(0, 0, 0, 0.95);
 }
-.ui.labels a.active.label:ActiveHover:before,
-a.ui.active.label:ActiveHover:before {
+.ui.labels a.active.label:hover:before,
+a.ui.active.label:hover:before {
   background-color: #C8C8C8;
   background-image: none;
   color: rgba(0, 0, 0, 0.95);

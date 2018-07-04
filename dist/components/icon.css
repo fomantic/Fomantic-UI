@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.1 - Icon
+ * # Semantic UI 2.4.2 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -178,6 +178,45 @@ i.left.rotated.icon,
 i.counterclockwise.rotated.icon {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+}
+i.halfway.rotated.icon {
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+}
+
+/*--------------------------
+      Flipped & Rotated
+---------------------------*/
+
+i.rotated.flipped.icon,
+i.right.rotated.flipped.icon,
+i.clockwise.rotated.flipped.icon {
+  -webkit-transform: scale(-1, 1) rotate(90deg);
+          transform: scale(-1, 1) rotate(90deg);
+}
+i.left.rotated.flipped.icon,
+i.counterclockwise.rotated.flipped.icon {
+  -webkit-transform: scale(-1, 1) rotate(-90deg);
+          transform: scale(-1, 1) rotate(-90deg);
+}
+i.halfway.rotated.flipped.icon {
+  -webkit-transform: scale(-1, 1) rotate(180deg);
+          transform: scale(-1, 1) rotate(180deg);
+}
+i.rotated.vertically.flipped.icon,
+i.right.rotated.vertically.flipped.icon,
+i.clockwise.rotated.vertically.flipped.icon {
+  -webkit-transform: scale(1, -1) rotate(90deg);
+          transform: scale(1, -1) rotate(90deg);
+}
+i.left.rotated.vertically.flipped.icon,
+i.counterclockwise.rotated.vertically.flipped.icon {
+  -webkit-transform: scale(1, -1) rotate(-90deg);
+          transform: scale(1, -1) rotate(-90deg);
+}
+i.halfway.rotated.vertically.flipped.icon {
+  -webkit-transform: scale(1, -1) rotate(180deg);
+          transform: scale(1, -1) rotate(180deg);
 }
 
 /*-------------------

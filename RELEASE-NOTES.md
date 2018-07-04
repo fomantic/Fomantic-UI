@@ -6,6 +6,23 @@
 - Calendar Component
 - Range Slider Component
 
+### Version 2.4.2 - July 4, 2018
+
+**Enhancements**
+- **Build Tools** - Add compatibility with Less 3.x **Thanks @sciyoshi** [#52](https://github.com/hammy2899/Fomantic-UI/pull/52)
+- **Icon** - Allow both rotated and flipped icons **Thanks @ColinFrick** [#6460](https://github.com/Semantic-Org/Semantic-UI/issues/6460)
+- **Search** - Added new `noResultsHeader` option to change the no results message **Thanks @ColinFrick** [#6442](https://github.com/Semantic-Org/Semantic-UI/issues/6442)
+- **Dropdown** - Added ability to add header items to dropdown menus when initializing with JavaScript **Thanks @prudho** [#6420](https://github.com/Semantic-Org/Semantic-UI/issues/6420)
+- **Dropdown** - Added `clearable` class to dropdown which adds a clear icon allowing the user to clear their selected item **Thanks @prudho** [#3635](https://github.com/Semantic-Org/Semantic-UI/issues/3635)
+
+**Bugs**
+- **Label** - Replaced :ActiveHover since it is not a valid selector **Thanks @ColinFrick** [#5908](https://github.com/Semantic-Org/Semanic-UI/issues/5908)
+- **Tab** - Fixed last tab not having bottom margin **Thanks @ColinFrick** [#6461](https://github.com/Semantic-Org/Semantic-UI/issues/6461)
+- **Modal** - Fixed modals from closing when moving unreleased mouse click outside of the modal window **Thanks @ColinFrick** [#6430](https://github.com/Semantic-Org/Semantic-UI/issues/6430)
+- **Modal** - Reverted "Add solve for dimmer to prevent modal scrolling in bg" change to fix scrolling modals on mobile devices **Thanks @ColinFrick** [#6449](https://github.com/Semantic-Org/Semantic-UI/issues/6449)
+- **Modal** - Fixed absolutely positioned close icon inside modal on Safari **Thanks @ColinFrick** [#6251](https://github.com/Semantic-Org/Semantic-UI/issues/6251)
+- **Dropdown** - Fixed searchable dropdown input that doesn't get focus on show **Thanks @prudho** [#39](https://github.com/hammy2899/Fomantic-UI/pull/39)
+
 ### Version 2.4.1 - June 20, 2018
 
 **Bugs**
