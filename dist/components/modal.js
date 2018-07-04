@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.1 - Modal
+ * # Semantic UI 2.4.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -73,6 +73,8 @@ $.fn.modal = function(parameters) {
         instance        = $module.data(moduleNamespace),
 
         ignoreRepeatedEvents = false,
+
+        initialMouseDownInModal,
 
         elementEventNamespace,
         id,
@@ -240,9 +242,22 @@ $.fn.modal = function(parameters) {
           close: function() {
             module.hide();
           },
-          click: function(event) {
+          mousedown: function(event) {
+            var
+              $target   = $(event.target)
+            ;
+            initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
+            if(initialMouseDownInModal) {
+              module.verbose('Mouse down event registered inside the modal');
+            }
+          },
+          mouseup: function(event) {
             if(!settings.closable) {
               module.verbose('Dimmer clicked but closable setting is disabled');
+              return;
+            }
+            if(initialMouseDownInModal) {
+              module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
             var
@@ -515,7 +530,10 @@ $.fn.modal = function(parameters) {
           },
           clickaway: function() {
             $dimmer
-              .off('click' + elementEventNamespace)
+              .off('mousedown' + elementEventNamespace)
+            ;
+            $dimmer
+              .off('mouseup' + elementEventNamespace)
             ;
           },
           bodyStyle: function() {
@@ -615,7 +633,10 @@ $.fn.modal = function(parameters) {
           },
           clickaway: function() {
             $dimmer
-              .on('click' + elementEventNamespace, module.event.click)
+              .on('mousedown' + elementEventNamespace, module.event.mousedown)
+            ;
+            $dimmer
+              .on('mouseup' + elementEventNamespace, module.event.mouseup)
             ;
           },
           dimmerSettings: function() {

@@ -1,5 +1,5 @@
  /*
- * # Semantic UI - 2.4.1
+ * # Semantic UI - 2.4.2
  * https://github.com/Semantic-Org/Semantic-UI
  * http://www.semantic-ui.com/
  *
@@ -9,7 +9,7 @@
  *
  */
 /*!
- * # Semantic UI 2.4.1 - Site
+ * # Semantic UI 2.4.2 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -497,7 +497,7 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Form Validation
+ * # Semantic UI 2.4.2 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2205,7 +2205,7 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Accordion
+ * # Semantic UI 2.4.2 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2819,7 +2819,7 @@ $.extend( $.easing, {
 
 
 /*!
- * # Semantic UI 2.4.1 - Checkbox
+ * # Semantic UI 2.4.2 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -3651,7 +3651,7 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Dimmer
+ * # Semantic UI 2.4.2 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -3766,10 +3766,6 @@ $.fn.dimmer = function(parameters) {
 
         bind: {
           events: function() {
-            if(module.is.page()) {
-              // touch events default to passive, due to changes in chrome to optimize mobile perf
-              $dimmable.get(0).addEventListener('touchmove', module.event.preventScroll, { passive: false });
-            }
             if(settings.on == 'hover') {
               $dimmable
                 .on('mouseenter' + eventNamespace, module.show)
@@ -3797,9 +3793,6 @@ $.fn.dimmer = function(parameters) {
 
         unbind: {
           events: function() {
-            if(module.is.page()) {
-              $dimmable.get(0).removeEventListener('touchmove', module.event.preventScroll, { passive: false });
-            }
             $module
               .removeData(moduleNamespace)
             ;
@@ -3816,9 +3809,6 @@ $.fn.dimmer = function(parameters) {
               module.hide();
               event.stopImmediatePropagation();
             }
-          },
-          preventScroll: function(event) {
-            event.preventDefault();
           }
         },
 
@@ -4374,7 +4364,7 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Dropdown
+ * # Semantic UI 2.4.2 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -4439,6 +4429,7 @@ $.fn.dropdown = function(parameters) {
         $sizer          = $module.find(selector.sizer),
         $input          = $module.find(selector.input),
         $icon           = $module.find(selector.icon),
+        $clear          = $module.find(selector.clearIcon),
 
         $combo = ($module.prev().find(selector.text).length > 0)
           ? $module.prev().find(selector.text)
@@ -4697,6 +4688,13 @@ $.fn.dropdown = function(parameters) {
             if( !module.has.menu() ) {
               module.create.menu();
             }
+            if ( !module.is.multiple() && module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+              module.verbose('Adding clear icon');
+              $clear = $('<i />')
+                .addClass('remove icon')
+                .insertBefore($text)
+              ;
+            }
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
               $search = $('<input />')
@@ -4860,7 +4858,7 @@ $.fn.dropdown = function(parameters) {
                 if( module.can.click() ) {
                   module.bind.intent();
                 }
-                if(module.has.menuSearch()) {
+                if(module.has.search()) {
                   module.focusSearch();
                 }
                 module.set.visible();
@@ -4880,6 +4878,10 @@ $.fn.dropdown = function(parameters) {
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
+                // hidding search focus
+                if ( module.is.focusedOnSearch() ) {
+                  $search.blur();
+                }
                 callback.call(element);
               });
             }
@@ -4970,6 +4972,7 @@ $.fn.dropdown = function(parameters) {
                 .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
                 .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
                 .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                 .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('click'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
@@ -4985,6 +4988,7 @@ $.fn.dropdown = function(parameters) {
               if(settings.on == 'click') {
                 $module
                   .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                  .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                   .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
@@ -5426,6 +5430,16 @@ $.fn.dropdown = function(parameters) {
               willRefocus = false;
             }
           },
+          clearIcon: {
+            click: function(event) {
+              module.clear();
+              if(module.is.searchSelection()) {
+                module.remove.searchTerm();
+              }
+              module.hide();
+              event.stopPropagation();
+            }
+          },
           icon: {
             click: function(event) {
               if(module.has.search()) {
@@ -5527,16 +5541,7 @@ $.fn.dropdown = function(parameters) {
           select: {
             mutation: function(mutations) {
               module.debug('<select> modified, recreating menu');
-              var
-                isSelectMutation = false
-              ;
-              $.each(mutations, function(index, mutation) {
-                if($(mutation.target).is('select') || $(mutation.addedNodes).is('select')) {
-                  isSelectMutation = true;
-                  return true;
-                }
-              });
-              if(isSelectMutation) {
+              if(module.is.selectMutation(mutations)) {
                 module.disconnect.selectObserver();
                 module.refresh();
                 module.setup.select();
@@ -7435,6 +7440,9 @@ $.fn.dropdown = function(parameters) {
           menuSearch: function() {
             return (module.has.search() && $search.closest($menu).length > 0);
           },
+          clearItem: function() {
+            return ($clear.length > 0);
+          },
           search: function() {
             return ($search.length > 0);
           },
@@ -7569,6 +7577,9 @@ $.fn.dropdown = function(parameters) {
             var $selectedMenu = $subMenu || $menu;
             return $selectedMenu.hasClass(className.leftward);
           },
+          clearable: function() {
+            return $module.hasClass(className.clearable);
+          },
           disabled: function() {
             return $module.hasClass(className.disabled);
           },
@@ -7613,9 +7624,9 @@ $.fn.dropdown = function(parameters) {
               selectChanged = false
             ;
             $.each(mutations, function(index, mutation) {
-              if(mutation.target && $(mutation.target).is('select')) {
+              if($(mutation.target).is('select') || $(mutation.addedNodes).is('select')) {
                 selectChanged = true;
-                return true;
+                return false;
               }
             });
             return selectChanged;
@@ -8228,7 +8239,8 @@ $.fn.dropdown.settings = {
     disabled     : 'disabled', // whether value should be disabled
     name         : 'name',     // displayed dropdown text
     value        : 'value',    // actual dropdown value
-    text         : 'text'      // displayed text when selected
+    text         : 'text',     // displayed text when selected
+    type         : 'type'      // type of dropdown element
   },
 
   keys : {
@@ -8262,7 +8274,8 @@ $.fn.dropdown.settings = {
     search       : 'input.search, .menu > .search > input, .menu input.search',
     sizer        : '> input.sizer',
     text         : '> .text:not(.icon)',
-    unselectable : '.disabled, .filtered'
+    unselectable : '.disabled, .filtered',
+    clearIcon    : '> .remove.icon'
   },
 
   className : {
@@ -8287,7 +8300,8 @@ $.fn.dropdown.settings = {
     selection   : 'selection',
     upward      : 'upward',
     leftward    : 'left',
-    visible     : 'visible'
+    visible     : 'visible',
+    clearable   : 'clearable'
   }
 
 };
@@ -8327,17 +8341,29 @@ $.fn.dropdown.settings.templates = {
       html   = ''
     ;
     $.each(values, function(index, option) {
-      var
-        maybeText = (option[fields.text])
-          ? 'data-text="' + option[fields.text] + '"'
-          : '',
-        maybeDisabled = (option[fields.disabled])
-          ? 'disabled '
-          : ''
+      var 
+        itemType = (option[fields.type])
+          ? option[fields.type]
+          : 'item'
       ;
-      html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
-      html +=   option[fields.name];
-      html += '</div>';
+
+      if( itemType === 'item' ) {
+        var
+          maybeText = (option[fields.text])
+            ? 'data-text="' + option[fields.text] + '"'
+            : '',
+          maybeDisabled = (option[fields.disabled])
+            ? 'disabled '
+            : ''
+        ;
+        html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
+        html +=   option[fields.name];
+        html += '</div>';
+      } else if (itemType === 'header') {
+        html += '<div class="header">';
+        html +=   option[fields.name];
+        html += '</div>';
+      }
     });
     return html;
   },
@@ -8363,7 +8389,7 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Embed
+ * # Semantic UI 2.4.2 - Embed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9060,7 +9086,7 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Modal
+ * # Semantic UI 2.4.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9134,6 +9160,8 @@ $.fn.modal = function(parameters) {
         instance        = $module.data(moduleNamespace),
 
         ignoreRepeatedEvents = false,
+
+        initialMouseDownInModal,
 
         elementEventNamespace,
         id,
@@ -9301,9 +9329,22 @@ $.fn.modal = function(parameters) {
           close: function() {
             module.hide();
           },
-          click: function(event) {
+          mousedown: function(event) {
+            var
+              $target   = $(event.target)
+            ;
+            initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
+            if(initialMouseDownInModal) {
+              module.verbose('Mouse down event registered inside the modal');
+            }
+          },
+          mouseup: function(event) {
             if(!settings.closable) {
               module.verbose('Dimmer clicked but closable setting is disabled');
+              return;
+            }
+            if(initialMouseDownInModal) {
+              module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
             var
@@ -9576,7 +9617,10 @@ $.fn.modal = function(parameters) {
           },
           clickaway: function() {
             $dimmer
-              .off('click' + elementEventNamespace)
+              .off('mousedown' + elementEventNamespace)
+            ;
+            $dimmer
+              .off('mouseup' + elementEventNamespace)
             ;
           },
           bodyStyle: function() {
@@ -9676,7 +9720,10 @@ $.fn.modal = function(parameters) {
           },
           clickaway: function() {
             $dimmer
-              .on('click' + elementEventNamespace, module.event.click)
+              .on('mousedown' + elementEventNamespace, module.event.mousedown)
+            ;
+            $dimmer
+              .on('mouseup' + elementEventNamespace, module.event.mouseup)
             ;
           },
           dimmerSettings: function() {
@@ -10020,7 +10067,7 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Nag
+ * # Semantic UI 2.4.2 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10528,7 +10575,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Popup
+ * # Semantic UI 2.4.2 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12052,7 +12099,7 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Progress
+ * # Semantic UI 2.4.2 - Progress
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12984,7 +13031,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Rating
+ * # Semantic UI 2.4.2 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -13493,7 +13540,7 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Search
+ * # Semantic UI 2.4.2 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14512,17 +14559,17 @@ $.fn.search = function(parameters) {
             }
           }
           else if(settings.showNoResults) {
-            html = module.displayMessage(error.noResults, 'empty');
+            html = module.displayMessage(error.noResults, 'empty', error.noResultsHeader);
           }
           settings.onResults.call(element, response);
           return html;
         },
 
-        displayMessage: function(text, type) {
+        displayMessage: function(text, type, header) {
           type = type || 'standard';
-          module.debug('Displaying message', text, type);
-          module.addResults( settings.templates.message(text, type) );
-          return settings.templates.message(text, type);
+          module.debug('Displaying message', text, type, header);
+          module.addResults( settings.templates.message(text, type, header) );
+          return settings.templates.message(text, type, header);
         },
 
         setting: function(name, value) {
@@ -14791,6 +14838,7 @@ $.fn.search.settings = {
 
   error : {
     source          : 'Cannot search. No source used, and Semantic API module was not included',
+    noResultsHeader : 'No Results',
     noResults       : 'Your search returned no results',
     logging         : 'Error in debug logging, exiting.',
     noEndpoint      : 'No search endpoint was specified',
@@ -14860,7 +14908,7 @@ $.fn.search.settings = {
       }
       return string;
     },
-    message: function(message, type) {
+    message: function(message, type, header) {
       var
         html = ''
       ;
@@ -14868,16 +14916,12 @@ $.fn.search.settings = {
         html +=  ''
           + '<div class="message ' + type + '">'
         ;
-        // message type
-        if(type == 'empty') {
+        if(header) {
           html += ''
-            + '<div class="header">No Results</div class="header">'
-            + '<div class="description">' + message + '</div class="description">'
+          + '<div class="header">' + header + '</div class="header">'
           ;
         }
-        else {
-          html += ' <div class="description">' + message + '</div>';
-        }
+        html += ' <div class="description">' + message + '</div>';
         html += '</div>';
       }
       return html;
@@ -14999,7 +15043,7 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Shape
+ * # Semantic UI 2.4.2 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15921,7 +15965,7 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Sidebar
+ * # Semantic UI 2.4.2 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16955,7 +16999,7 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Sticky
+ * # Semantic UI 2.4.2 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17915,7 +17959,7 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Tab
+ * # Semantic UI 2.4.2 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18868,7 +18912,7 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Transition
+ * # Semantic UI 2.4.2 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19964,7 +20008,7 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - API
+ * # Semantic UI 2.4.2 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21132,7 +21176,7 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - State
+ * # Semantic UI 2.4.2 - State
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21841,7 +21885,7 @@ $.fn.state.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.4.1 - Visibility
+ * # Semantic UI 2.4.2 - Visibility
  * http://github.com/semantic-org/semantic-ui/
  *
  *
