@@ -501,10 +501,6 @@ $.fn.dropdown = function(parameters) {
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
-                // hidding search focus
-                if ( module.is.focusedOnSearch() ) {
-                  $search.blur();
-                }
                 callback.call(element);
               });
             }
@@ -2999,7 +2995,7 @@ $.fn.dropdown = function(parameters) {
 
         has: {
           menuSearch: function() {
-            return (module.has.search() && module.has.menu());
+            return (module.has.search() && $search.closest($menu).length > 0);
           },
           search: function() {
             return ($search.length > 0);
