@@ -80,7 +80,6 @@
         "lines-around-comment": "off",
         "lines-around-directive": "error",
         "lines-between-class-members": "error",
-        "max-classes-per-file": "error",
         "max-depth": "off",
         "max-len": "off",
         "max-lines": "off",
@@ -107,6 +106,7 @@
         "no-catch-shadow": "error",
         "no-confusing-arrow": "error",
         "no-continue": "off",
+        "no-console": "off",
         "no-div-regex": "error",
         "no-duplicate-imports": "error",
         "no-else-return": "off",
@@ -117,6 +117,7 @@
         "no-extra-bind": "error",
         "no-extra-label": "error",
         "no-extra-parens": "off",
+        "no-extra-semi": "off",
         "no-floating-decimal": "error",
         "no-implicit-coercion": [
             "error",
@@ -210,8 +211,8 @@
         "no-whitespace-before-property": "error",
         "no-with": "error",
         "nonblock-statement-body-position": "error",
-        "object-curly-newline": "error",
-        "object-curly-spacing": "off",
+        "object-curly-newline": ["error", { "consistent": true }],
+        "object-curly-spacing": ["error", "always"],
         "object-shorthand": "off",
         "one-var": "off",
         "one-var-declaration-per-line": "error",
@@ -226,7 +227,6 @@
         "prefer-const": "error",
         "prefer-destructuring": "off",
         "prefer-numeric-literals": "error",
-        "prefer-object-spread": "error",
         "prefer-promise-reject-errors": "error",
         "prefer-reflect": "off",
         "prefer-rest-params": "off",
@@ -279,5 +279,8 @@
         "wrap-regex": "error",
         "yield-star-spacing": "error",
         "yoda": "off"
+    },
+    "globals": {
+        "jQuery": true
     }
 }
