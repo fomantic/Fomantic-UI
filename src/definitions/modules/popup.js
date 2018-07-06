@@ -514,7 +514,7 @@ $.fn.popup = function(parameters) {
               calculations   = {},
               scroll = (isWindow)
                 ? { top: $window.scrollTop(), left: $window.scrollLeft() }
-                : { top: 0, left: 0},
+                : { top: 0, left: 0 },
               screen
             ;
             calculations = {
