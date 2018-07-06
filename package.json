@@ -15,7 +15,10 @@
     "url": "https://github.com/hammy2899/Fomantic-UI/issues"
   },
   "scripts": {
-    "install": "gulp install"
+    "install": "gulp install",
+    "js-lint": "eslint src",
+    "js-test": "npm-run-all js-lint",
+    "test": "npm-run-all js-test"
   },
   "peerDependencies": {
     "better-console": "*",
