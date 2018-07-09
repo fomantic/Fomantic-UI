@@ -506,8 +506,7 @@ $.fn.visibility = function(parameters) {
 
         passed: function(amount, newCallback) {
           var
-            calculations   = module.get.elementCalculations(),
-            amountInPixels
+            calculations   = module.get.elementCalculations()
           ;
           // assign callback
           if(amount && newCallback) {

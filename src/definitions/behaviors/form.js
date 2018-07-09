@@ -287,7 +287,7 @@ $.fn.form = function(parameters) {
             }
             else {
               module.verbose('Checking if form is valid');
-              $.each(validation, function(fieldName, field) {
+              $.each(validation, function(fieldName) {
                 if( !module.is.valid(fieldName) ) {
                   allValid = false;
                 }
@@ -469,8 +469,7 @@ $.fn.form = function(parameters) {
                 keys     = Object.keys(parameters),
                 isLegacySettings = (keys.length > 0)
                   ? (parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined)
-                  : false,
-                ruleKeys
+                  : false
               ;
               if(isLegacySettings) {
                 // 1.x (ducktyped)
@@ -914,8 +913,7 @@ $.fn.form = function(parameters) {
 
           form: function(event, ignoreCallbacks) {
             var
-              values = module.get.values(),
-              apiRequest
+              values = module.get.values()
             ;
 
             // input keydown event will fire submit repeatedly by browser default
@@ -1014,9 +1012,7 @@ $.fn.form = function(parameters) {
           rule: function(field, rule) {
             var
               $field       = module.get.field(field.identifier),
-              type         = rule.type,
               value        = $field.val(),
-              isValid      = true,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
               ruleFunction = settings.rules[ruleName]

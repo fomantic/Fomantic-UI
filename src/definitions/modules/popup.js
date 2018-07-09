@@ -178,7 +178,7 @@ $.fn.popup = function(parameters) {
         },
 
         event: {
-          start:  function(event) {
+          start:  function() {
             var
               delay = ($.isPlainObject(settings.delay))
                 ? settings.delay.show
@@ -198,7 +198,7 @@ $.fn.popup = function(parameters) {
             clearTimeout(module.showTimer);
             module.hideTimer = setTimeout(module.hide, delay);
           },
-          touchstart: function(event) {
+          touchstart: function() {
             openedWithTouch = true;
             module.show();
           },

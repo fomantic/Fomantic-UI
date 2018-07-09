@@ -194,7 +194,6 @@ $.fn.dropdown = function(parameters) {
             var
               $userChoices,
               $userChoice,
-              isUserValue,
               html
             ;
             values = values || module.get.userValues();
@@ -227,7 +226,7 @@ $.fn.dropdown = function(parameters) {
             });
             return $userChoices;
           },
-          userLabels: function(value) {
+          userLabels: function() {
             var
               userValues = module.get.userValues()
             ;
@@ -1357,8 +1356,7 @@ $.fn.dropdown = function(parameters) {
                 delimiterPressed      = (pressedKey == keys.delimiter && settings.allowAdditions && module.is.multiple()),
                 isAdditionWithoutMenu = (settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed) && selectedIsSelectable),
                 $nextItem,
-                isSubMenuItem,
-                newIndex
+                isSubMenuItem
               ;
               // allow selection with menu closed
               if(isAdditionWithoutMenu) {
@@ -1636,7 +1634,7 @@ $.fn.dropdown = function(parameters) {
             module.hideAndClear();
           },
 
-          hide: function(text, value, element) {
+          hide: function(text, value) {
             module.set.value(value, text);
             module.hideAndClear();
           }
@@ -2291,7 +2289,6 @@ $.fn.dropdown = function(parameters) {
               $menu,
               hasActive,
               offset,
-              itemHeight,
               itemOffset,
               menuOffset,
               menuScroll,
@@ -2438,8 +2435,7 @@ $.fn.dropdown = function(parameters) {
               currentValue = module.get.values(),
               stringValue  = (value !== undefined)
                 ? String(value)
-                : value,
-              newValue
+                : value
             ;
             if(hasInput) {
               if(!settings.allowReselection && stringValue == currentValue) {
@@ -2705,7 +2701,6 @@ $.fn.dropdown = function(parameters) {
               hasCount    = (message.search('{count}') !== -1),
               hasMaxCount = (message.search('{maxCount}') !== -1),
               hasTerm     = (message.search('{term}') !== -1),
-              values,
               count,
               query
             ;
@@ -2929,7 +2924,7 @@ $.fn.dropdown = function(parameters) {
             module.verbose('Removed value from delimited string', removedValue, values);
             return values;
           },
-          label: function(value, shouldAnimate) {
+          label: function(value) {
             var
               $labels       = $module.find(selector.label),
               $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(value) +'"]')
@@ -3380,9 +3375,6 @@ $.fn.dropdown = function(parameters) {
           hide: function(callback, $subMenu) {
             var
               $currentMenu = $subMenu || $menu,
-              duration = ($subMenu)
-                ? (settings.duration * 0.9)
-                : settings.duration,
               start = ($subMenu)
                 ? function() {}
                 : function() {
@@ -3859,7 +3851,6 @@ $.fn.dropdown.settings.templates = {
   dropdown: function(select) {
     var
       placeholder = select.placeholder || false,
-      values      = select.values || {},
       html        = ''
     ;
     html +=  '<i class="dropdown icon"></i>';

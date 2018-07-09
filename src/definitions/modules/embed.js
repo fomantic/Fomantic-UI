@@ -220,7 +220,7 @@ $.fn.embed = function(parameters) {
                 : module.determine.icon()
             ;
           },
-          source: function(url) {
+          source: function() {
             return (settings.source)
               ? settings.source
               : ($module.data(metadata.source) !== undefined)

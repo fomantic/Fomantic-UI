@@ -372,7 +372,7 @@ $.fn.sticky = function(parameters) {
           lastScroll: function() {
             delete module.lastScroll;
           },
-          elementScroll: function(scroll) {
+          elementScroll: function() {
             delete module.elementScroll;
           },
           minimumSize: function() {
