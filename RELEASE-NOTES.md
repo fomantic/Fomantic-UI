@@ -2,9 +2,32 @@
 
 ### Upcoming updates
 
-**Major Enhancements**
+**Major Enhancements (Coming soon in 2.5)**
 - Calendar Component
 - Range Slider Component
+
+### Version 2.4.3 - July 9, 2018
+
+**Bugs**
+- **Dropdown** - Fixed inverted dropdown message color being applied to all dropdowns **Thanks @hammy2899** [#58](https://github.com/hammy2899/Fomantic-UI/pull/58)
+- **Build Tools** - Fixed docs build tools error when using latest node version **Thanks @hammy2899** [#54](https://github.com/hammy2899/Fomantic-UI/issues/54)
+- **Button** - Fixed tertiary buttons having basic background on active state **Thanks @hammy2899** [#60](https://github.com/hammy2899/Fomantic-UI/issues/60)
+
+
+The following changes where merged from a new Semantic-UI release
+
+**Bug Fixes**
+- **Search** - Passing in `cache: false` will now affect default settings for `apiSettings` when using a remote endpoint. Previously you would also have to pass in `apiSettings: { cache: false}` as well
+- **CSS** - Update LESS syntax to be compatible with LESS 3.0 **Thanks @sciyoshi** [#6447](https://github.com/Semantic-Org/Semantic-UI/pull/6447)
+- **Icon** - Several icon names have been deprecated due to incompatibility with `transition in` and `transition out` used in animations.
+
+* `linkedin in` is now `linkedin alternate`
+* `zoom in` is now `zoom-in`
+* `zoom out` is now `zoom-out`
+* `sign in` is now `sign-in`
+* `sign out` is now `sign-out`
+* `log out` is now `logout`
+* `in cart` is now `in-cart`
 
 ### Version 2.4.2 - July 4, 2018
 

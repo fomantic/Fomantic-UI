@@ -158,7 +158,7 @@
   border-top: @invertedSelectionItemDivider;
 }
 
-.ui.dropdown .menu > .message:not(.ui) {
+.ui.inverted.dropdown .menu > .message:not(.ui) {
   color: @invertedMessageColor;
 }
 
