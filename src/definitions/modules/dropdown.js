@@ -3444,7 +3444,7 @@ $.fn.dropdown = function(parameters) {
               else if($.fn.transition !== undefined && $module.transition('is supported')) {
                 $currentMenu
                   .transition({
-                    animation  : transition + ' in',
+                    animation  : transition + ' inward',
                     debug      : settings.debug,
                     verbose    : settings.verbose,
                     duration   : settings.duration,
@@ -3492,7 +3492,7 @@ $.fn.dropdown = function(parameters) {
               else if($.fn.transition !== undefined && $module.transition('is supported')) {
                 $currentMenu
                   .transition({
-                    animation  : transition + ' out',
+                    animation  : transition + ' outward',
                     duration   : settings.duration,
                     debug      : settings.debug,
                     verbose    : settings.verbose,

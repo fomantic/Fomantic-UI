@@ -724,7 +724,7 @@ $.fn.form = function(parameters) {
               if(!promptExists) {
                 if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                   module.verbose('Displaying error with css transition', settings.transition);
-                  $prompt.transition(settings.transition + ' in', settings.duration);
+                  $prompt.transition(settings.transition + ' inward', settings.duration);
                 }
                 else {
                   module.verbose('Displaying error with fallback javascript animation');
@@ -805,7 +805,7 @@ $.fn.form = function(parameters) {
             if(settings.inline && $prompt.is(':visible')) {
               module.verbose('Removing prompt for field', identifier);
               if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
-                $prompt.transition(settings.transition + ' out', settings.duration, function() {
+                $prompt.transition(settings.transition + ' outward', settings.duration, function() {
                   $prompt.remove();
                 });
               }

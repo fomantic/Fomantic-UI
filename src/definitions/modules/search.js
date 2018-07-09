@@ -938,7 +938,7 @@ $.fn.search = function(parameters) {
               module.debug('Showing results with css animations');
               $results
                 .transition({
-                  animation  : settings.transition + ' in',
+                  animation  : settings.transition + ' inward',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
                   duration   : settings.duration,
@@ -969,7 +969,7 @@ $.fn.search = function(parameters) {
               module.debug('Hiding results with css animations');
               $results
                 .transition({
-                  animation  : settings.transition + ' out',
+                  animation  : settings.transition + ' outward',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
                   duration   : settings.duration,

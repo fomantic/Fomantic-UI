@@ -357,7 +357,7 @@ $.fn.modal = function(parameters) {
                 $module
                   .transition({
                     debug       : settings.debug,
-                    animation   : settings.transition + ' in',
+                    animation   : settings.transition + ' inward',
                     queue       : settings.queue,
                     duration    : settings.duration,
                     useFailSafe : true,
@@ -403,7 +403,7 @@ $.fn.modal = function(parameters) {
               $module
                 .transition({
                   debug       : settings.debug,
-                  animation   : settings.transition + ' out',
+                  animation   : settings.transition + ' outward',
                   queue       : settings.queue,
                   duration    : settings.duration,
                   useFailSafe : true,

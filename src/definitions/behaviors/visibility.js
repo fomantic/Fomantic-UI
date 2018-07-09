@@ -1257,7 +1257,7 @@ $.fn.visibility.settings = {
   zIndex                 : '10',
 
   // image only animation settings
-  transition             : 'fade in',
+  transition             : 'fade inward',
   duration               : 1000,
 
   // array of callbacks for percentage
