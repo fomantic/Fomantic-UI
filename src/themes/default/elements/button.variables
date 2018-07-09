@@ -280,7 +280,7 @@
 @tertiaryActiveLineColor: lighten(@tertiaryActiveColor, 20%);
 @tertiaryActiveWithUnderline: true;
 @tertiaryActiveWithOverline: false;
-@tertiaryActiveBackgroundColor: @basicDownBackground;
+@tertiaryActiveBackgroundColor: none;
 
 /*-------------------
       Variations
