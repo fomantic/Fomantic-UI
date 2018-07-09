@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.2 - Dropdown
+ * # Semantic UI undefined - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1601,7 +1601,7 @@ select.ui.dropdown {
 .ui.inverted.selection.dropdown .menu > .item {
   border-top: 1px solid #242526;
 }
-.ui.dropdown .menu > .message:not(.ui) {
+.ui.inverted.dropdown .menu > .message:not(.ui) {
   color: rgba(255, 255, 255, 0.5);
 }
 
