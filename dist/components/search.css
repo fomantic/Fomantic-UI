@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI undefined - Search
+ * # Semantic UI 2.4.3 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
