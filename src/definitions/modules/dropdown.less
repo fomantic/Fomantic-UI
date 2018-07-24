@@ -1243,7 +1243,7 @@ select.ui.dropdown {
   border-radius: @pointingMenuBorderRadius;
 }
 
-.ui.pointing.dropdown > .menu:after {
+.ui.pointing.dropdown > .menu:not(.hidden):after {
   display: block;
   position: absolute;
   pointer-events: none;
@@ -1258,7 +1258,7 @@ select.ui.dropdown {
   z-index: @pointingArrowZIndex;
 }
 
-.ui.pointing.dropdown > .menu:after {
+.ui.pointing.dropdown > .menu:not(.hidden):after {
   top: @pointingArrowOffset;
   left: 50%;
   margin: 0em 0em 0em @pointingArrowOffset;
