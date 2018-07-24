@@ -66,6 +66,7 @@ module.exports = {
     'breadcrumb',
     'button',
     'card',
+    'calendar',
     'checkbox',
     'comment',
     'container',
