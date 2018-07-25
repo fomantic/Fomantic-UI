@@ -184,7 +184,9 @@
 --------------------*/
 
 @loaderSize              : @relativeBig;
+@loaderSpeedFast         : 0.3s;
 @loaderSpeed             : 0.6s;
+@loaderSpeedSlow         : 0.9s;
 @loaderLineWidth         : 0.2em;
 @loaderFillColor         : rgba(0, 0, 0, 0.1);
 @loaderLineColor         : @grey;
