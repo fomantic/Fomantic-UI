@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.3 - Loader
+ * # Semantic UI 2.4.4 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -57,6 +57,20 @@
   border-width: 0.2em;
   -webkit-box-shadow: 0px 0px 0px 1px transparent;
           box-shadow: 0px 0px 0px 1px transparent;
+}
+
+/* Speeds */
+.ui.fast.loader:after {
+  -webkit-animation: loader 0.3s linear;
+          animation: loader 0.3s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+}
+.ui.slow.loader:after {
+  -webkit-animation: loader 0.9s linear;
+          animation: loader 0.9s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
 }
 
 /* Active Animation */

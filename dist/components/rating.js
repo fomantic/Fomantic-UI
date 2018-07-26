@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.3 - Rating
+ * # Semantic UI 2.4.4 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -67,7 +67,7 @@ $.fn.rating = function(parameters) {
             module.setup.layout();
           }
 
-          if(settings.interactive) {
+          if(settings.interactive && !module.is.disabled()) {
             module.enable();
           }
           else {
@@ -204,6 +204,9 @@ $.fn.rating = function(parameters) {
         is: {
           initialLoad: function() {
             return initialLoad;
+          },
+          disabled: function() {
+            return $module.hasClass(className.disabled);
           }
         },
 
