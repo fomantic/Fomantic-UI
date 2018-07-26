@@ -692,28 +692,31 @@ a.ui.inverted.grey.header:hover {
 .ui.attached.header {
   background: @attachedBackground;
   padding: @attachedVerticalPadding @attachedHorizontalPadding;
+  margin-top: 0em;
+  margin-bottom: 0em;
   margin-left: @attachedOffset;
   margin-right: @attachedOffset;
   box-shadow: @attachedBoxShadow;
   border: @attachedBorder;
+  border-radius: 0em;
 }
 .ui.attached.block.header {
   background: @blockBackground;
 }
 
 .ui.attached:not(.top):not(.bottom).header {
-  margin-top: 0em;
-  margin-bottom: 0em;
   border-top: none;
-  border-radius: 0em;
 }
-.ui.top.attached.header {
-  margin-bottom: 0em;
+.ui.top.attached.header:not(:first-child) {
+  border-top: none;
+}
+.ui.top.attached.header:first-child {
   border-radius: @attachedBorderRadius @attachedBorderRadius 0em 0em;
 }
 .ui.bottom.attached.header {
-  margin-top: 0em;
   border-top: none;
+}
+.ui.bottom.attached.header:last-child {
   border-radius: 0em 0em @attachedBorderRadius @attachedBorderRadius;
 }
 

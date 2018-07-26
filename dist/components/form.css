@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.3 - Form
+ * # Semantic UI 2.4.4 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -133,6 +133,7 @@
   -webkit-transition: color 0.1s ease, border-color 0.1s ease;
   transition: color 0.1s ease, border-color 0.1s ease;
   font-size: 1em;
+  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   line-height: 1.2857;
   resize: vertical;
 }

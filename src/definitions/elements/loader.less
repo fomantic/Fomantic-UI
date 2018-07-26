@@ -67,6 +67,17 @@
   box-shadow: 0px 0px 0px 1px transparent;
 }
 
+/* Speeds */
+.ui.fast.loader:after {
+  animation: loader @loaderSpeedFast linear;
+  animation-iteration-count: infinite;
+}
+
+.ui.slow.loader:after {
+  animation: loader @loaderSpeedSlow linear;
+  animation-iteration-count: infinite;
+}
+
 /* Active Animation */
 @keyframes loader {
   from {

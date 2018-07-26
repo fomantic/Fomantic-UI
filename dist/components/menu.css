@@ -547,7 +547,8 @@ Floated Menu / Item
 
 /*--- Icon ---*/
 
-.ui.vertical.menu .item > i.icon {
+.ui.vertical.menu .item > i.icon,
+.ui.vertical.menu .item > i.icons {
   width: 1.18em;
   float: right;
   margin: 0em 0em 0em 0.5em;
