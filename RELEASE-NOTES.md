@@ -6,8 +6,19 @@
 - Calendar Component
 - Range Slider Component
 
+### Version 2.4.4 - July 26, 2018
+
 **Enhancements**
-- **Rating** - Add the ability to start a disabled rating trough the `disabled` class
+- **Loader** - Added speed variants slow (.9s) and fast (.3s) and default (.6s) **Thanks @LewHgh** [#6138](https://github.com/Semantic-Org/Semantic-UI/issues/6138)
+- **Rating** - Add the ability to start a disabled rating trough the `disabled` class **Thanks @prudho** [#76](https://github.com/hammy2899/Fomantic-UI/pull/76)
+
+**Bugs**
+- **Dropdown** - Fixed clearable dropdown icon margin **Thanks @prudho** [#67](https://github.com/hammy2899/Fomantic-UI/pull/67)
+- **Dropdown** - Fixed pointing menu pointer still shown after menu is collapsed **Thanks @prudho** [#70](https://github.com/hammy2899/Fomantic-UI/pull/70)
+- **Icon** - Fixed icon group margin when inside a button **Thanks @prudho** [#68](https://github.com/hammy2899/Fomantic-UI/pull/68)
+- **Icon** - Fixed icon group position when inside of menu items **Thanks @prudho** [#6491](https://github.com/Semantic-Org/Semantic-UI/issues/6491)
+- **Header** - Fixed incorrect attached header top margin **Thanks @prudho** [#5436](https://github.com/Semantic-Org/Semantic-UI/issues/5436) 
+- **Form** - Fixed textarea incorrect font-family **Thanks @hammy2899** [#5546](https://github.com/Semantic-Org/Semantic-UI/issues/5546)
 
 ### Version 2.4.3 - July 9, 2018
 
