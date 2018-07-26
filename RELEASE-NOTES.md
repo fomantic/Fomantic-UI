@@ -6,6 +6,9 @@
 - Calendar Component
 - Range Slider Component
 
+**Enhancements**
+- **Rating** - Add the ability to start a disabled rating trough the `disabled` class
+
 ### Version 2.4.3 - July 9, 2018
 
 **Bugs**
