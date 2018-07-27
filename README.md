@@ -2,6 +2,12 @@
 
 # Fomantic UI
 
+
+[![Discord](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
+[![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
+[![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
+[![last commit](https://img.shields.io/github/last-commit/hammy2899/fomantic-ui.svg)](https://github.com/hammy2899/Fomantic-UI/commits/master)
+
 [Fomantic](http://fomantic-ui.com) is a community fork of the popular Semantic-UI framework.
 
 *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
