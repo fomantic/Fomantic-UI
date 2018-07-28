@@ -447,6 +447,7 @@ $.site.settings = {
     'modal',
     'nag',
     'popup',
+    'range',
     'rating',
     'shape',
     'sidebar',
@@ -454,8 +455,8 @@ $.site.settings = {
     'sticky',
     'tab',
     'transition',
-    'visit',
-    'visibility'
+    'visibility',
+    'visit'
   ],
 
   siteNamespace   : 'site',
