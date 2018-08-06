@@ -1440,10 +1440,17 @@ $.fn.search.settings = {
           }
         });
         if(response[fields.action]) {
-          html += ''
-          + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
-          +   response[fields.action][fields.actionText]
-          + '</a>';
+          if(fields.actionURL === false) {
+            html += ''
+            + '<div class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</div>';
+          } else {
+            html += ''
+            + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</a>';
+          }
         }
         return html;
       }
@@ -1485,12 +1492,18 @@ $.fn.search.settings = {
           ;
           html += '</a>';
         });
-
         if(response[fields.action]) {
-          html += ''
-          + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
-          +   response[fields.action][fields.actionText]
-          + '</a>';
+          if(fields.actionURL === false) {
+            html += ''
+            + '<div class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</div>';
+          } else {
+            html += ''
+            + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</a>';
+          }
         }
         return html;
       }
