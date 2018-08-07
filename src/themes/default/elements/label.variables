@@ -173,6 +173,8 @@
 @greyHoverTextColor: @white;
 @blackHoverTextColor: @white;
 
+@primaryRibbonShadow: darken(@primaryColor, 10);
+@secondaryRibbonShadow: darken(@secondaryColor, 10);
 @redRibbonShadow: darken(@red, 10);
 @orangeRibbonShadow: darken(@orange, 10);
 @yellowRibbonShadow: darken(@yellow, 10);
@@ -186,6 +188,9 @@
 @brownRibbonShadow: darken(@brown, 10);
 @greyRibbonShadow: darken(@grey, 10);
 @blackRibbonShadow: darken(@black, 10);
+
+@primaryTextColor: @invertedTextColor;
+@secondaryTextColor: @invertedTextColor;
 
 /* Attached */
 @attachedSegmentPadding: 2rem;
