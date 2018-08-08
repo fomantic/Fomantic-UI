@@ -3,7 +3,7 @@
 ### Upcoming updates
 
 **Major Enhancements (Coming soon in 2.5)**
-- Calendar Component
+- **Calendar** - Thanks to **@mdehoog**'s awesome work, a complete calendar module is now included in Fomantic UI [#71](https://github.com/hammy2899/Fomantic-UI/pull/71)
 - Range Slider Component
 
 ### Version 2.4.4 - July 26, 2018
