@@ -225,6 +225,9 @@ $.fn.search = function(parameters) {
                 result  = $result.data(metadata.result) || module.get.result(value, results),
                 returnedValue
               ;
+              if(value) {
+                module.set.value(value);
+              }
               if( $.isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
                   module.debug('Custom onSelect callback cancelled default select action');
@@ -233,9 +236,6 @@ $.fn.search = function(parameters) {
                 }
               }
               module.hideResults();
-              if(value) {
-                module.set.value(value);
-              }
               if(href) {
                 module.verbose('Opening search link found in result', $link);
                 if(target == '_blank' || event.ctrlKey) {
