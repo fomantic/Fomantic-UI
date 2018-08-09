@@ -478,6 +478,13 @@ Floated Menu / Item
   display: flex;
   margin-left: auto !important;
 }
+/* Center */
+.ui.menu:not(.vertical) .center.item,
+.ui.menu:not(.vertical) .center.menu {
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 /* Swapped Borders */
 .ui.menu .right.item::before,
@@ -486,6 +493,11 @@ Floated Menu / Item
   left: 0;
 }
 
+/* Remove Outer Borders */
+.ui.menu .center.item:last-child::before,
+.ui.menu .center.menu > .item:last-child::before {
+  display: none;
+}
 
 /*--------------
     Vertical
@@ -1246,8 +1258,14 @@ Floated Menu / Item
   .ui.stackable.menu .right.item {
     margin-left: 0 !important;
   }
+  .ui.stackable.menu .center.menu,
+  .ui.stackable.menu .center.item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
   .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .center.menu,
   .ui.stackable.menu .left.menu {
     flex-direction: column;
   }
@@ -1890,10 +1908,10 @@ Floated Menu / Item
 }
 
 /* Attached Menu Item */
-.ui.top.attached.menu:not(.centered) > .item:first-child {
+.ui.top.attached.menu > .item:first-child {
   border-radius: @borderRadius 0em 0em 0em;
 }
-.ui.bottom.attached.menu:not(.centered) > .item:first-child {
+.ui.bottom.attached.menu > .item:first-child {
   border-radius: 0em 0em 0em @borderRadius;
 }
 
@@ -1908,14 +1926,6 @@ Floated Menu / Item
   margin-left: 0;
   margin-right: 0;
   width: 100%;
-}
-
-/* Centered Tabular Attached Menu Items */
-.ui.attached.centered.tabular.menu > .item:first-child {
-  margin-left: auto;
-}
-.ui.attached.centered.tabular.menu > .item:last-child {
-  margin-right: auto;
 }
 
 /*--------------
