@@ -478,6 +478,13 @@ Floated Menu / Item
   display: flex;
   margin-left: auto !important;
 }
+/* Center */
+.ui.menu:not(.vertical) .center.item,
+.ui.menu:not(.vertical) .center.menu {
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
 
 /* Swapped Borders */
 .ui.menu .right.item::before,
@@ -486,6 +493,11 @@ Floated Menu / Item
   left: 0;
 }
 
+/* Remove Outer Borders */
+.ui.menu .center.item:last-child::before,
+.ui.menu .center.menu > .item:last-child::before {
+  display: none;
+}
 
 /*--------------
     Vertical
@@ -1247,8 +1259,14 @@ Floated Menu / Item
   .ui.stackable.menu .right.item {
     margin-left: 0 !important;
   }
+  .ui.stackable.menu .center.menu,
+  .ui.stackable.menu .center.item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
 
   .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .center.menu,
   .ui.stackable.menu .left.menu {
     flex-direction: column;
   }
