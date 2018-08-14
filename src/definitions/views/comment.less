@@ -265,5 +265,32 @@
   font-size: @massive;
 }
 
+/*-------------------
+        Inverted
+--------------------*/
+.ui.inverted.comments .comment {
+  background-color: @black;
+}
+
+.ui.inverted.comments .comment .author,
+.ui.inverted.comments .comment .text {
+  color: @invertedTextColor;
+}
+
+.ui.inverted.comments .comment .metadata,
+.ui.inverted.comments .comment .actions a {
+  color: @invertedLightTextColor;
+}
+
+.ui.inverted.comments .comment a.author:hover,
+.ui.inverted.comments .comment .actions a.active,
+.ui.inverted.comments .comment .actions a:hover {
+  color: @invertedHoveredTextColor;
+}
+
+.ui.inverted.threaded.comments .comment .comments {
+  box-shadow: -1px 0px 0px @solidWhiteBorderColor;
+}
+
 
 .loadUIOverrides();
