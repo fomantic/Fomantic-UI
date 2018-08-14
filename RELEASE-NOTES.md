@@ -106,7 +106,7 @@ The following changes where merged from a new Semantic-UI release
 - **Modal** - Modal will not refocus a field if field is already focused **Thanks @nikolaybobrovskiy** [#6301](https://github.com/Semantic-Org/Semantic-UI/issues/6301)
 - **Icon** - Fix `wechat icon` not displaying due to typo **Thanks @alex-karo** [#6429](https://github.com/Semantic-Org/Semantic-UI/issues/6429)
 
-### Version 2.3.2 - Jun 8, 2018
+### Version 2.3.2 - June 8, 2018
 
 **Bugs**
 - **State** - Added state.js module back (removed in cleanup). **Thanks @prudho** [#6323](https://github.com/Semantic-Org/Semantic-UI/issues/6323)
@@ -117,7 +117,7 @@ The following changes where merged from a new Semantic-UI release
 - **Card** - Fixed `card` icon acting like cards. **Thanks @w96k**
 - **Button** - Fixed primary and secondary inverted buttons. **Thanks @hammy2899**
 
-### Version 2.3.1 - Mar 19, 2018
+### Version 2.3.1 - March 19, 2018
 
 > **A Special Message about Flex Modals**
 > There will be an update shortly to resolve issues related to flex modals when using multiple modals and `detachable: false`, in order to not hold up this release, we've decided to move forward without a fix.
@@ -150,7 +150,7 @@ The following changes where merged from a new Semantic-UI release
 - Fixes CDN links in docs **Thanks @KSH-code**
 - Fixed issue where iframes may not load correctly in `/examples/theming.html` #6269
 
-### Version 2.3.0 - Feb 20, 2018
+### Version 2.3.0 - February 20, 2018
 
 **Major Enhancements**
 - **Icons** - Font Awesome 5 is now included in Semantic UI **Thanks @hammy2899** [#6085](https://github.com/Semantic-Org/Semantic-UI/issues/6085)
@@ -223,7 +223,7 @@ To preserve functionality `movePopup` default has remained as `true` (moving the
 - **UI Examples** - Fixe some improper html in UI examples included with repo [#6127](https://github.com/Semantic-Org/Semantic-UI/issues/6127) **Thanks @perdian**
 - **Admin** - Fixes bug in admin script that caused leaked global vars **Thanks @esbena** [#6136](https://github.com/Semantic-Org/Semantic-UI/issues/6136)
 
-### Version 2.2.14 - Jan 29, 2018
+### Version 2.2.14 - January 29, 2018
 
 **Critical Bugs**
 - **Form** - Fixes issue where radio checkbox would not return correct value from `get values` **Thanks @tincdev** [#5713](https://github.com/Semantic-Org/Semantic-UI/issues/5713) [#6043](https://github.com/Semantic-Org/Semantic-UI/issues/6043)
@@ -247,13 +247,13 @@ To preserve functionality `movePopup` default has remained as `true` (moving the
 - **Menu / Popup** - Fixed issue where `inverted menu` rules would cause popup inside a menu to have incorrect link styling in `link list` **Thanks @banandrew** [#5585](https://github.com/Semantic-Org/Semantic-UI/issues/5585) [#5603](https://github.com/Semantic-Org/Semantic-UI/issues/5603)
 - **CSS Build** - Fixed issue where package `gulp-clone` was only set to use > `1.0` causing issues with gulp builds due to upstream error [#6067](https://github.com/Semantic-Org/Semantic-UI/issues/6067)
 
-### Version 2.2.13 - Aug 07, 2017
+### Version 2.2.13 - August 07, 2017
 
 **Hotfix** (2)
 - **Install** - Some interactive install script issues may be fixed. Forked `gulp-prompt` plugin to allow for updated `inquirer` version
 - **Build Tools** - Fixes typo causing fix for build tools to fail [#5391](https://github.com/Semantic-Org/Semantic-UI/issues/5391)
 
-### Version 2.2.12 - Aug 07, 2017
+### Version 2.2.12 - August 07, 2017
 
 **Major Enhancements** (1)
 - **Dropdown** - Dropdown can now have `values` specified in javascript when initializing.This should simplify cases where dropdown contents are contingent on other fields, for example listing sub categories. You can see some [examples here](https://jsfiddle.net/Lb7c5dkz/) and in the [usage section of dropdown docs](https://www.semantic-ui.com/modules/dropdown.html#initializing-with-javascript-only)
@@ -643,7 +643,7 @@ To trigger UI updates you can call `validate form`. Additional form behaviors ha
 - **Build Tools** - Added explanation of how to build RTL in "recipes" section
 - **Layouts**  - Added "attached" example showing content attached to other content
 
-### Version 2.1.8 - Jan 7, 2016
+### Version 2.1.8 - January 7, 2016
 
 **Critical Fix**
 - **Install** - This fixes a regression causing users with NPM `2` from using Semantic UI, caused by removing the deprecated `peerDependencies` which are necessary for NPM2 install to function correctly. [#3511](https://github.com/Semantic-Org/Semantic-UI/issues/3511)
@@ -652,7 +652,7 @@ To trigger UI updates you can call `validate form`. Additional form behaviors ha
 - **Flag** - Adds Scotland and Wales flag [#3494](https://github.com/Semantic-Org/Semantic-UI/issues/3494) **Thanks @edumucelli**
 - **Install** - Fixes post-install scripts not exiting with correct return values [#3515](https://github.com/Semantic-Org/Semantic-UI/issues/3515) **Thanks @Jeff-Tian**
 
-### Version 2.1.7 - Dec 19, 2015
+### Version 2.1.7 - December 19, 2015
 [Closed Issues List](https://github.com/Semantic-Org/Semantic-UI/issues?q=is%3Aissue+milestone%3A2.1.7+is%3Aclosed)
 
 **Enhancements**
@@ -674,12 +674,12 @@ To trigger UI updates you can call `validate form`. Additional form behaviors ha
 - **Sticky** - Renames variables used to account for scroll offset internally for greater code clarity
 - **Transition** - Fixes `noAnimation` error to more reasonably announce that the element is "not in the DOM" [#3040](https://github.com/Semantic-Org/Semantic-UI/issues/3040)
 
-### Version 2.1.6 - Nov 6, 2015
+### Version 2.1.6 - November 6, 2015
 
 **Bug Fixes**
 - **Checkbox/Dropdown/Search** - Fixed issue where dropdown/checkbox `change` events were not bubbling. (Dispatched events were swapped to use native `document.creatEvent` in `2.1.5` unfortunately the flag to bubble events was mistakenly off.)
 
-### Version 2.1.5 - Nov 1, 2015
+### Version 2.1.5 - November 1, 2015
 
 **Docs Enhancements**
 - **Examples** - All code examples now have a "copy to clipboard" button **Thanks @xiwc and @zenorocha for clipboard.js**
@@ -724,7 +724,7 @@ To trigger UI updates you can call `validate form`. Additional form behaviors ha
 - **Progress** - Progress example code no longer shows accidental inline css
 - **Sticky** - Fixed issue where pressing home/end button would cause sticky to break due to internal logic not allowing immediate jump from bottom attached to top attached, experienced most likely when pressing "home" or "end" key [#3011](https://github.com/Semantic-Org/Semantic-UI/issues/3011)
 
-### Version 2.1.4 - Sep 13, 2015
+### Version 2.1.4 - September 13, 2015
 
 **Critical Bugfixes**
 - **Build** - Fixed issue where using a packaged theme without a `site.variables` would cause build to fail [#3009](https://github.com/Semantic-Org/Semantic-UI/issues/3009) [#3010](https://github.com/Semantic-Org/Semantic-UI/issues/3010)
@@ -759,7 +759,7 @@ $('.ui.form')
 - **Menu** - Fixed issue where `right menu` was not floating correctly inside a `menu > container` on mobile [#2969](https://github.com/Semantic-Org/Semantic-UI/issues/2969)
 - **Button** - Fixes `right labeled icon button` with a `right` named icon (for example `right arrow`) having incorrect margin on icon. [#2973](https://github.com/Semantic-Org/Semantic-UI/issues/2973)
 
-### Version 2.1.3 - Sep 03, 2015
+### Version 2.1.3 - September 03, 2015
 
 **Bugfixes**
 - **Embed** - Fixes issue with `?=` appearing before parameters instead of `?` [#2956](https://github.com/Semantic-Org/Semantic-UI/issues/2956) **Thanks @AgentShark**
@@ -767,17 +767,17 @@ $('.ui.form')
 - **Input** - Fixes typo in focused placeholder text color preventing the value from being used [#2939](https://github.com/Semantic-Org/Semantic-UI/issues/2939)
 - **Input** - `action input` now correctly show focused border on button side, and avoids duplicating borders
 
-### Version 2.1.2 - Sep 02, 2015
+### Version 2.1.2 - September 02, 2015
 
 **Bugfix**
 - **Form Validation** - Fixes callbacks on `onSuccess` so as to not break backwards compatibility. #2945 #2944
 
-### Version 2.1.1 - Sep 02, 2015
+### Version 2.1.1 - September 02, 2015
 
 **Bugfix**
 - **Build Tools** - Fixes [issue](https://github.com/Semantic-Org/Semantic-UI/commit/3d20d5e9796e05cc100af73370173f3383cf1d81) causing comment banner to incorrectly show version `2.0.7` in `dist/`
 
-### Version 2.1.0 - Sep 02, 2015
+### Version 2.1.0 - September 02, 2015
 
 #### Features
 
@@ -2150,19 +2150,19 @@ Importing `semantic.less` still does not require any special syntax
 ** Bug Fixes **
 - See Closed GitHub Issues
 
-### Version 0.19.3 - Sep 11, 2014
+### Version 0.19.3 - September 11, 2014
 
 **Bug Fixes**
 
 - **Grid** - Fixes issue where some responsive grid stylings were being overridden by other variations (for example stackable overriding )
 
-### Version 0.19.2 - Sep 11, 2014
+### Version 0.19.2 - September 11, 2014
 
 **Bug Fixes**
 
 - **Grid** - (Backport from 1.0 branch) Fixes issue where some combinations of (tablet/mobile/computer) only does not function correctly
 
-### Version 0.19.1 - Sep 5, 2014
+### Version 0.19.1 - September 5, 2014
 
 **Bug Fixes**
 
@@ -2254,7 +2254,7 @@ Importing `semantic.less` still does not require any special syntax
 - Adds more examples for static checkbox/radio boxes with HTML only
 - Fixes a variety of issues with malformed examples (thanks community)
 
-### Version 0.15.2 - Mar 28, 2014
+### Version 0.15.2 - March 28, 2014
 
 **Changes**
 - **All Modules** - Debug is now disabled by default
@@ -2264,12 +2264,12 @@ Importing `semantic.less` still does not require any special syntax
 - **Icon** - Orange color is now available for icon
 - **Menu** - Fixes formatting of attached segments with menus
 
-### Version 0.15.1 - Mar 14, 2014
+### Version 0.15.1 - March 14, 2014
 
 **Critical Fixes**
 - **Dropdown** - Typo in dropdown css was causing selection dropdowns not to appear
 
-### Version 0.15.0 - Mar 14, 2014
+### Version 0.15.0 - March 14, 2014
 
 **Enhancements**
 - **Step** - Vertical Steps now have option to have two line items
@@ -2294,7 +2294,7 @@ Importing `semantic.less` still does not require any special syntax
 **Project**
 - **iOS** - Active styles, for example pressed in buttons, now appear in docs on touch devices
 
-### Version 0.14.0 - Mar 03, 2014
+### Version 0.14.0 - March 03, 2014
 
 **Enhancements**
 - **Modal** - Modal now uses requestAnimationFrame instead of debounced callback
@@ -2308,7 +2308,7 @@ Importing `semantic.less` still does not require any special syntax
 **Project**
 - **NPM** - Docpad is now moved to a dev dependency **Thanks kapouer**
 
-### Version 0.13.1 - Feb 28, 2014
+### Version 0.13.1 - February 28, 2014
 
 **Fixes**
 - **Modal** - Fixes modal positioning appearing slightly below center on second load
@@ -2318,7 +2318,7 @@ Importing `semantic.less` still does not require any special syntax
 - **Form Validation** -  Fixes form validation regular expression matching **Thanks icefox0801**
 
 
-### Version 0.13.0 - Feb 20, 2014
+### Version 0.13.0 - February 20, 2014
 
 **Enhancements**
 - **Label** - Corner labels now are coupled to have rounded edges with components with rounded edges like input
@@ -2336,7 +2336,7 @@ Importing `semantic.less` still does not require any special syntax
 - **Dimmer** - Dimmers are less buggy when used with ``on: 'hover``
 
 
-### Version 0.12.5 - Feb 04, 2014
+### Version 0.12.5 - February 04, 2014
 
 **Enhancement**
 - **Button** - Or buttons can now have text specified using ``<div class="or" data-text"text">`` with alternate text *Thanks MohammadYounes*
@@ -2346,7 +2346,7 @@ Importing `semantic.less` still does not require any special syntax
 - **Modal** - Fixes an issue where modal may not position correctly in some cases *Thanks GianlucaGuarini*
 - **Modal** - Fixes modal throwing an error when transition is not included *Thanks robertoles*
 
-### Version 0.12.4 - Jan 29, 2014
+### Version 0.12.4 - January 29, 2014
 
 **Fixes**
 - **Form** - Fixes issue with onSuccess not allowing cancellation of form submit in form validation
@@ -2357,13 +2357,13 @@ Importing `semantic.less` still does not require any special syntax
 - **RTL** - Adds RTL hinting for some files **Thanks MohammadYounes**
 - **Specs** - Adds additional JSON spec files for future use with generators **Thanks brigand**
 
-### Version 0.12.3 - Jan 24, 2014
+### Version 0.12.3 - January 24, 2014
 
 **Fixes**
 - **Message** - Fixes some issues with margins sometimes not appearing with ``attached message`` **thanks joltmode**
 - **Item** - Fixes color repeating to be consistent for items **thanks skysplit**
 
-### Version 0.12.2 - Jan 21, 2014
+### Version 0.12.2 - January 21, 2014
 
 **Enhancement**
 - **Form Validation** - Adding custom validation is now simpler, uses syntax ``$('.form').form('add prompt', identifier, 'Error message');``
@@ -2373,7 +2373,7 @@ Importing `semantic.less` still does not require any special syntax
 - **Grid** - Fixes grid ``only tablet/mobile/computer`` showing both devices on exact pixel of breakpoint, i.e. 768px
 - **Icon** - Fixes ascending alphabetic inheritance
 
-### Version 0.12.1 - Jan 15, 2014
+### Version 0.12.1 - January 15, 2014
 
 **Fixes**
 - **LESS** - Fixes typo breaking less parsing **thanks DVSoftware**
@@ -2386,7 +2386,7 @@ Importing `semantic.less` still does not require any special syntax
 - **Icons** - Fixes some icon code samples in docs **thanks mishak87**
 Some updates to docs formatting
 
-### Version 0.12.0 - Jan 06, 2014
+### Version 0.12.0 - January 06, 2014
 
 **Major Fixes**
 - **Dropdown** - Fixes dropdowns links not working on touch devices
@@ -2412,7 +2412,7 @@ Some updates to docs formatting
 - **Dropdown** - Fixes issue where last match was returned, not prioritizing value over text
 - **Form** - Fixes all validation input to be trimmed for whitespace
 
-### Version 0.11.0 - Dec 25, 2013
+### Version 0.11.0 - December 25, 2013
 
 ### Merry Christmas!
 
@@ -2434,7 +2434,7 @@ Some updates to docs formatting
 
 -**Modal**: Fixes issues with modal in IE, IE11 can now use CSS animations with modals
 
-### Version 0.10.3 - Dec 22, 2013
+### Version 0.10.3 - December 22, 2013
 
 **Critical Fixes**
 - **Dropdown** - Fixes issue where dropdown animation does not occur sometimes (Thanks MohammadYounes)
@@ -2445,7 +2445,7 @@ Some updates to docs formatting
 - **Modal** - Fixes element detaching sometimes in case where it is already inside a dimmer
 - **Input** - Removes duplicate sizes
 
-### Version 0.10.2 - Dec 13, 2013
+### Version 0.10.2 - December 13, 2013
 
 **New**
 - **Button** - Adds VK button
@@ -2455,12 +2455,12 @@ Some updates to docs formatting
 - **Rating** - Fixes vertical alignment with text
 - **Dropdown** - Fixes missing easing equations for dropdown javascript animations. Would cause an error when no css transitions were included and jquery easing was not available.
 
-### Version 0.10.1 - Dec 06, 2013
+### Version 0.10.1 - December 06, 2013
 
 **Fixes**
 - **Modal** - Fixes issue with modal animation regression in 0.10.0
 
-### Version 0.10.0 - Dec 05, 2013
+### Version 0.10.0 - December 05, 2013
 
 **New**
 - **Grid** - Adds ``doubling`` responsive variation which automatically formats content spacing based on device type
@@ -2474,7 +2474,7 @@ Some updates to docs formatting
 - **Grid** - Fixes margin on stackable grids
 - **Dropdown** - Value can be retrieved even in instances where forms arent used
 
-### Version 0.9.6 - Dec 04, 2013
+### Version 0.9.6 - December 04, 2013
 
 **Updates**
 - **Rating** - Ratings now receive class disabled when read only, instead of receiving ``active`` when rateable since active are much more common
@@ -2482,7 +2482,7 @@ Some updates to docs formatting
 - **Header, Grid, Segment** - Adds justified alignment
 - **Message** - Fixes issues with attached icon message (thanks overra)
 
-### Version 0.9.5 - Nov 25, 2013
+### Version 0.9.5 - November 25, 2013
 
 **New**
 - **Segment** - Segments now have a circular variation
@@ -2490,7 +2490,7 @@ Some updates to docs formatting
 **Fixes**
 - LESS files now include vendor prefixes by default instead of only including them in css releases
 
-### Version 0.9.4 - Nov 24, 2013
+### Version 0.9.4 - November 24, 2013
 
 **Fixes**
 - **Dropdown** - Fixes issue where falsy value (i.e. 0) could not be selected
@@ -2503,18 +2503,18 @@ Some updates to docs formatting
 **Docs**
 - Fixes various typos and missing closing html tags
 
-### Version 0.9.3 - Nov 17, 2013
+### Version 0.9.3 - November 17, 2013
 
 **Fixes**
 - **Dropdown** - Fixes "falsy" values (like 0) not being processed correctly
 - **Segment** - Fixes segment text color when nested inside inverted segment
 - **Button** - Fixes improper active/visible state due to :not specificity (most noticeable in mousedown on a dropdown button)
 
-### Version 0.9.2 - Nov 8, 2013
+### Version 0.9.2 - November 8, 2013
 
 **Fixes** - Fixes popup not repositioning itself when offstage.
 
-### Version 0.9.1 - Nov 7, 2013
+### Version 0.9.1 - November 7, 2013
 
 **New**
 - **Popup** - Adds context option for popup (thanks jefmathiot)
@@ -2523,7 +2523,7 @@ Some updates to docs formatting
 **Updates**
 - **Accordion** - Fixes issue with accordion events inside accordions
 
-### Version 0.9.0 - Nov 5, 2013
+### Version 0.9.0 - November 5, 2013
 
 **New**
 - **Button** - Basic icons now have inverted style
@@ -2552,7 +2552,7 @@ Some updates to docs formatting
 - **Menu** - Fixes some inverted menu stylings not applying correctly in some instances
 - **Grid** - Fixes comp/tablet/mobile only columns not working if not inside a row
 
-### Version 0.8.6 - Nov 2, 2013
+### Version 0.8.6 - November 2, 2013
 
 **Fixes**
 - **Modal** - Fixes issue with scrollable variation on mobile, updates mobile styles
@@ -2560,13 +2560,13 @@ Some updates to docs formatting
 **Docs**
 - Fixes bug in jquery waypoint 2.0.3 causing menus to be lame
 
-### Version 0.8.5 - Nov 2, 2013
+### Version 0.8.5 - November 2, 2013
 
 **Fixes**
 - **Modal** - Fixed issue with modals not working in 0.8.4 due to mistake in transition invoke
 - **Modules** - Invoke now gives user's query in error message for method not found
 
-### Version 0.8.4 - Nov 1, 2013
+### Version 0.8.4 - November 1, 2013
 
 **Fixes**
 - **Modules** - Fixes bug where invoking a sentence behavior that has a single word match would always invoke single word match. I.e. ``show modal`` would mistakenly call ``show`` if it existed.
@@ -2576,7 +2576,7 @@ Some updates to docs formatting
 - **Download** - Fixes issue where non minified source was being included with minified copy
 - **IE** - Fixed some issue with IE display in docs
 
-### Version 0.8.3 - Oct 30, 2013
+### Version 0.8.3 - October 30, 2013
 
 **Fixes**
 - **Modal** - Adds fixes for opening modals when other modals are opened, adds a few new API behaviors
@@ -2584,7 +2584,7 @@ Some updates to docs formatting
 - **Form** - Errored fields now have their icons and corner labels colored appropriately
 - **Labels** - Fixes formatting of links inside labels
 
-### Version 0.8.2 - Oct 28, 2013
+### Version 0.8.2 - October 28, 2013
 
 **Fixes**
 - **Modal** - Quick Fix for modal events in IE
@@ -2594,7 +2594,7 @@ Some updates to docs formatting
 **Docs**
 - Fixes some missing closing tags
 
-### Version 0.8.1 - Oct 26, 2013
+### Version 0.8.1 - October 26, 2013
 
 **Fixes**
 - **Button** - Fixes colored version sometime losing white text color
@@ -2604,7 +2604,7 @@ Some updates to docs formatting
 - Prefixer now used for prefixing in grunt
 - Spelling fixes
 
-### Version 0.8.0 - Oct 25, 2013
+### Version 0.8.0 - October 25, 2013
 
 **New**
 - **Button** - Default button styles have been significantly tweaked
@@ -2621,18 +2621,18 @@ Some updates to docs formatting
 - Updates info on setting up server
 - Added new examples to button and input
 
-### Version 0.7.2 - Oct 23, 2013
+### Version 0.7.2 - October 23, 2013
 
 **Fixes**
 - **Modal** - Fixes issue with modal hiding twice onApprove
 
-### Version 0.7.1 - Oct 23, 2013
+### Version 0.7.1 - October 23, 2013
 
 **Fixes**
 - **Dropdown** - Fixes issue with dropdown icon position in chrome
 - **Popup** - Fixes issue with popup's using setting inline: true
 
-### Version 0.7.0 - Oct 22, 2013
+### Version 0.7.0 - October 22, 2013
 
 **New**
 - **Table** - Added awesome new responsive style to ui tables
@@ -2691,19 +2691,19 @@ Some updates to docs formatting
 - **Sidebar** - Floating sidebar is slightly less heavily shadowed
 
 
-### Version 0.6.5 - Oct 18, 2013
+### Version 0.6.5 - October 18, 2013
 
 **Fixes**
 - Fixes issue where browser default action, like link clicking, was prevented on dropdown item click
 - Modal keyboard shortcuts now obey settings.closable (credit to luisrudge)
 
 
-### Version 0.6.4 - Oct 16, 2013
+### Version 0.6.4 - October 16, 2013
 
 **Fixes**
 - Fixes issue where browser default action, like link clicking, was prevented on dropdown item click
 
-### Version 0.6.3 - Oct 15, 2013
+### Version 0.6.3 - October 15, 2013
 
 **Deprecation**
 - Dropdown changeText and updateForm have been deprecated and will be removed in 1.0
@@ -2712,7 +2712,7 @@ Some updates to docs formatting
 - Dropdown hide no longer selects current item as active (useful for menus)
 - Simplified possible dropdown actions changeText and updateForm are now consolidated into activate which is the new default
 
-### Version 0.6.2 - Oct 15, 2013
+### Version 0.6.2 - October 15, 2013
 
 **Fixes**
 - Fixes touch+mouse like touchscreen laptops to work with dropdowns
@@ -2723,7 +2723,7 @@ Some updates to docs formatting
 - Dropdown vastly improved for touch, now can scroll with touch without closing dropdown
 - Dropdown active style now slightly more noticable
 
-### Version 0.6.1 - Oct 15, 2013
+### Version 0.6.1 - October 15, 2013
 
 **Updates**
 - Adds onApprove/onDeny callbacks to modal
@@ -2741,7 +2741,7 @@ Some updates to docs formatting
 - Fixes right menu formatting in secondary menus
 - Fixed shadow overlap on dropdown in menus
 
-### Version 0.6.0 - Oct 14, 2013
+### Version 0.6.0 - October 14, 2013
 
 **Updates**
 - Adds travis CI support with preliminary test coverage for all javascript modules
@@ -2750,7 +2750,7 @@ Some updates to docs formatting
 - Minor Fixes caught with testing suite, related to ensuring proper destroy, init,
 - Minor fixes to edge cases with setting and retrieving internals/settings as default, init, or during run-time on some modules
 
-### Version 0.5.1 - Oct 11, 2013
+### Version 0.5.1 - October 11, 2013
 
 **Fixes**
 - Fixes issue with modal sometimes closing/opening multiple times caused by changes in 0.5.0
@@ -2758,7 +2758,7 @@ Some updates to docs formatting
 **Updates**
 - Fixes vertical alignment of checkboxes
 
-### Version 0.5.0 - Oct 10, 2013
+### Version 0.5.0 - October 10, 2013
 
 **Critical Fixes**
 - Fixes in some UI modules, issue where settings being shared across elements initialized at the same time instead of each instance.
@@ -2774,33 +2774,33 @@ Some updates to docs formatting
 - Accordion now comes bundled with proper easing
 - Added onCreate to popup module
 
-### Version 0.4.3 - Oct 10, 2013
+### Version 0.4.3 - October 10, 2013
 
 **Fixes**
 - Updates dropdown to include proper invoke
 
-### Version 0.4.2 - Oct 9, 2013
+### Version 0.4.2 - October 9, 2013
 
 **Fixes**
 - Fixes issue with event bubbling being cancelled on dropdown item click
 
-### Version 0.4.1 - Oct 9, 2013
+### Version 0.4.1 - October 9, 2013
 
 **Fixes**
 - Fixes heart rating color
 
-### Version 0.4.0 - Oct 8, 2013
+### Version 0.4.0 - October 8, 2013
 
 **Updates**
 - Updated some checkbox stylings
 - Checkboxes markup now more semantic with default markup including only one label tag that can be inside ui checkbox
 
-### Version 0.3.8 - Oct 8, 2013
+### Version 0.3.8 - October 8, 2013
 
 **Fixes**
 - Display issues with accordion
 
-### Version 0.3.7 - Oct 8, 2013
+### Version 0.3.7 - October 8, 2013
 
 **Fixes**
 - Fixes modal show/hide action reversal in Webkit
@@ -2808,7 +2808,7 @@ Some updates to docs formatting
 **Updates**
 - Dimmer can now take different durations for its show and hide
 
-### Version 0.3.6 - Oct 7, 2013
+### Version 0.3.6 - October 7, 2013
 
 **Fixes**
 - Fixes popup position sometimes appearing off-stage on second appearance
@@ -2823,20 +2823,20 @@ Some updates to docs formatting
 - Adds more html5 form support for forms (deneuxa)
 - Fields can include both field and another level of fields
 
-### Version 0.3.5 - Oct 2, 2013
+### Version 0.3.5 - October 2, 2013
 
 **Fixes**
 - Fixes radio checkboxes (again)
 - Fixes header content display in icon headers
 
-### Version 0.3.4 - Oct 2, 2013
+### Version 0.3.4 - October 2, 2013
 
 **Fixes**
 - Transitions now work in Safari versions that do not support animation-direction
 - Fixes accordion in safari styles getting stuck
 - Centering of content in icon header
 
-### Version 0.3.3 - Oct 2, 2013
+### Version 0.3.3 - October 2, 2013
 
 **Fixes**
 - Fixes modal not working due to destroy teardown in dimmer Issue #153
@@ -2849,7 +2849,7 @@ Some updates to docs formatting
 - Updates ACE editor library
 - Code samples now do not change after interacting with examples
 
-### Version 0.3.2 - Oct 2, 2013
+### Version 0.3.2 - October 2, 2013
 
 **Updates**
 - Dropdown now formats top and right arrow icons automatically with icon coupling with sub menus
@@ -2870,44 +2870,44 @@ Some updates to docs formatting
 - Lists items now auto clear floats
 - Fixes icon input inside a menu placement issues
 
-### Version 0.3.1 - Sep 30, 2013
+### Version 0.3.1 - September 30, 2013
 
 **Fixes**
 - Fixes Page Grid still receiving negative margin
 
-### Version 0.3.0 - Sep 30, 2013
+### Version 0.3.0 - September 30, 2013
 
 **Fixes**
 - Responsive Grid is now called "Page Grid". Responsive grids are now deprecated. This reduces confusion.
 - Negative margins are now automatically removed from grids that are descendents of body tag.
 
-### Version 0.2.5 - Sep 28, 2013
+### Version 0.2.5 - September 28, 2013
 
 **Fixes**
 - Fixes checkbox  selector issue with multiple inputs inside a checkbox
 - Modal no longer uses inline css to center when in fixed position mode
 - Fixes dropdown to now set active item to whatever hidden input field is when using action updateForm
 
-### Version 0.2.4 - Sep 28, 2013
+### Version 0.2.4 - September 28, 2013
 
 **Updates**
 
 - Fixes issue with display on Chromebook Pixel and some devices
 - Fixes issues with concatenated version receiving conflicted icon definitions causing icons to not function
 
-### Version 0.2.3 - Sep 28, 2013
+### Version 0.2.3 - September 28, 2013
 
 **Updates**
 
 - Fixes issues with modal not swapping to absolutely positioned from fixed when content cannot fit in viewport
 
-### Version 0.2.2 - Sep 28, 2013
+### Version 0.2.2 - September 28, 2013
 
 **Updates**
 
 - Fixes invoke returning found function instead of results of found function in dropdown, modal
 
-### Version 0.2.1 - Sep 28, 2013
+### Version 0.2.1 - September 28, 2013
 
 **Updates**
 
@@ -2921,7 +2921,7 @@ Some updates to docs formatting
 - Modal will now resize when browser window resizes if vertical height changes
 - Fixes issues with dimmer settings sticking between separate modals with the same dimmer.
 
-### Version 0.2.0 - Sep 28, 2013
+### Version 0.2.0 - September 28, 2013
 
 **New**
 
@@ -2934,7 +2934,7 @@ Some updates to docs formatting
 - Swaps modal and dropdown to use same variable naming pattern as rest of modules
 - Removed selector count from performance logs
 
-### Version 0.1.0 - Sep 25, 2013
+### Version 0.1.0 - September 25, 2013
 
 **New**
 
