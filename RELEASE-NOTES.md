@@ -1,10 +1,24 @@
 ## RELEASE NOTES
 
-### Upcoming updates
+### Version 2.5.0 - September 1, 2018
 
-**Major Enhancements (Coming soon in 2.5)**
-- **Calendar** - Thanks to **@mdehoog**'s awesome work, a complete calendar module is now included in Fomantic UI [#71](https://github.com/hammy2899/Fomantic-UI/pull/71)
-- Range Slider Component
+**Major Enhancements**
+- **Calendar** - Added the calendar module :tada: **big thanks to @mdehoog** for creating the module and **thanks to @prudho** for the port [#8](https://github.com/hammy2899/Fomantic-UI/issues/8)
+- **Range** - Added the range slider module :tada: **big thanks to @tyleryasaka** for creating the module and **thanks to @hammy2899** fro the port [#78](https://github.com/hammy2899/Fomantic-UI/pull/78)
+- **Icons** - Updated icons to FontAwesome 5.2.0 **Thanks @hammy2899** [#6395](https://github.com/Semantic-Org/Semantic-UI/issues/6395) You can also generate the icons yourself including FA5 Pro using the [fomantic-ui-icon-script](https://github.com/hammy2899/fomantic-ui-icon-script)
+
+**Enhancements**
+- **Loader** - Added color variants **Thanks @hammy2899** [#73](https://github.com/hammy2899/Fomantic-UI/issues/73)
+- **Label** - Added primary and secondary colored variants **Thanks @hammy2899**
+- **Search** - Added ability to disable action link via `actionURL: false` **Thanks @hammy2899** [#6490](https://github.com/Semantic-Org/Semantic-UI/issues/6490)
+- **Menu** - Added `center` modifier allowing center aligned menus and tabs **Thanks @ColinFrick** [#5589](https://github.com/Semantic-Org/Semantic-UI/issues/5589)
+- **Flags** - Added `uk` as an alias for United Kingdom **Thanks @hammy2899**
+
+**Bugs**
+- **Label** - Fixed ribbon label background color **Thanks @hammy2899** [#6497](https://github.com/Semantic-Org/Semantic-UI/issues/6497)
+- **Search** - Fixed `set value` unable to work inside `onSelect` callback **Thanks @hammy2899** [#6454](https://github.com/Semantic-Org/Semantic-UI/issues/6454)
+- **Checkbox** - Fixed toggle not having `checked` class when initialized in a 'checked' state **Thanks @ColinFrick** [#2506](https://github.com/Semantic-Org/Semantic-UI/issues/2506)
+- **Build Tools** - Fixed update not working because of incorrect repo name **Thanks @hammy2899** [#84](https://github.com/hammy2899/Fomantic-UI/issues/84)
 
 ### Version 2.4.4 - July 26, 2018
 
