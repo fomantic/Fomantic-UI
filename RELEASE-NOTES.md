@@ -20,6 +20,7 @@
 - **Search** - Fixed `set value` unable to work inside `onSelect` callback **Thanks @hammy2899** [#6454](https://github.com/Semantic-Org/Semantic-UI/issues/6454)
 - **Checkbox** - Fixed toggle not having `checked` class when initialized in a 'checked' state **Thanks @ColinFrick** [#2506](https://github.com/Semantic-Org/Semantic-UI/issues/2506)
 - **Build Tools** - Fixed update not working because of incorrect repo name **Thanks @hammy2899** [#84](https://github.com/hammy2899/Fomantic-UI/issues/84)
+- **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks @ColinFrick** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
 
 ### Version 2.4.4 - July 26, 2018
 
