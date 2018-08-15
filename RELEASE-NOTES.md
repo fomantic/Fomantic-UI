@@ -14,6 +14,7 @@
 - **Menu** - Added `center` modifier allowing center aligned menus and tabs **Thanks @ColinFrick** [#5589](https://github.com/Semantic-Org/Semantic-UI/issues/5589)
 - **Flags** - Added `uk` as an alias for United Kingdom **Thanks @hammy2899**
 - **Comments** - Added inverted variation **Thanks @prudho** [#88](https://github.com/hammy2899/Fomantic-UI/pull/88)
+- **Form** - Added transparent variation for textareas **Thanks @LewHgh**
 
 **Bugs**
 - **Label** - Fixed ribbon label background color **Thanks @hammy2899** [#6497](https://github.com/Semantic-Org/Semantic-UI/issues/6497)
