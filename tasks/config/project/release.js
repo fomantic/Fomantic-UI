@@ -45,7 +45,7 @@ version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 
 module.exports = {
 
   title      : 'Fomantic UI',
-  repository : 'https://github.com/hammy2899/Fomantic-UI',
+  repository : 'https://github.com/fomantic/Fomantic-UI',
   url        : 'http://fomantic-ui.com/',
 
   banner: ''

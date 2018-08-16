@@ -9,10 +9,10 @@
   "main": "dist/semantic",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hammy2899/Fomantic-UI.git"
+    "url": "git://github.com/fomantic/Fomantic-UI.git"
   },
   "bugs": {
-    "url": "https://github.com/hammy2899/Fomantic-UI/issues"
+    "url": "https://github.com/fomantic/Fomantic-UI/issues"
   },
   "scripts": {
     "install": "gulp install"

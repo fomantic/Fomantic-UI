@@ -3,28 +3,28 @@
 ### Version 2.5.0 - September 1, 2018
 
 **Major Enhancements**
-- **Calendar** - Added the calendar module :tada: **big thanks to @mdehoog** for creating the module and **thanks to @prudho** for the port [#8](https://github.com/hammy2899/Fomantic-UI/issues/8)
-- **Range** - Added the range slider module :tada: **big thanks to @tyleryasaka** for creating the module and **thanks to @hammy2899** fro the port [#78](https://github.com/hammy2899/Fomantic-UI/pull/78)
+- **Calendar** - Added the calendar module :tada: **big thanks to @mdehoog** for creating the module and **thanks to @prudho** for the port [#8](https://github.com/fomantic/Fomantic-UI/issues/8)
+- **Range** - Added the range slider module :tada: **big thanks to @tyleryasaka** for creating the module and **thanks to @hammy2899** fro the port [#78](https://github.com/fomantic/Fomantic-UI/pull/78)
 - **Icons** - Updated icons to FontAwesome 5.2.0 **Thanks [@hammy2899](https://github.com/hammy2899)** [#6395](https://github.com/Semantic-Org/Semantic-UI/issues/6395) You can also generate the icons yourself including FA5 Pro using the [fomantic-ui-icon-script](https://github.com/hammy2899/fomantic-ui-icon-script)
 
 **Enhancements**
-- **Loader** - Added color variants **Thanks [@hammy2899](https://github.com/hammy2899)** [#73](https://github.com/hammy2899/Fomantic-UI/issues/73)
+- **Loader** - Added color variants **Thanks [@hammy2899](https://github.com/hammy2899)** [#73](https://github.com/fomantic/Fomantic-UI/issues/73)
 - **Label** - Added primary and secondary colored variants **Thanks [@hammy2899](https://github.com/hammy2899)**
 - **Search** - Added ability to disable action link via `actionURL: false` **Thanks [@hammy2899](https://github.com/hammy2899)** [#6490](https://github.com/Semantic-Org/Semantic-UI/issues/6490)
 - **Menu** - Added `center` modifier allowing center aligned menus and tabs **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#5589](https://github.com/Semantic-Org/Semantic-UI/issues/5589)
 - **Flags** - Added `uk` as an alias for United Kingdom **Thanks [@hammy2899](https://github.com/hammy2899)**
-- **Comments** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#88](https://github.com/hammy2899/Fomantic-UI/pull/88)
-- **Feed** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#89](https://github.com/hammy2899/Fomantic-UI/pull/89)
+- **Comments** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#88](https://github.com/fomantic/Fomantic-UI/pull/88)
+- **Feed** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#89](https://github.com/fomantic/Fomantic-UI/pull/89)
 - **Form** - Added transparent variation for textareas **Thanks [@LewHgh](https://github.com/LewHgh)**
-- **Step** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#93](https://github.com/hammy2899/Fomantic-UI/pull/93)
+- **Step** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#93](https://github.com/fomantic/Fomantic-UI/pull/93)
 
 **Bugs**
 - **Label** - Fixed ribbon label background color **Thanks [@hammy2899](https://github.com/hammy2899)** [#6497](https://github.com/Semantic-Org/Semantic-UI/issues/6497)
 - **Search** - Fixed `set value` unable to work inside `onSelect` callback **Thanks [@hammy2899](https://github.com/hammy2899)** [#6454](https://github.com/Semantic-Org/Semantic-UI/issues/6454)
 - **Checkbox** - Fixed toggle not having `checked` class when initialized in a 'checked' state **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#2506](https://github.com/Semantic-Org/Semantic-UI/issues/2506)
-- **Build Tools** - Fixed update not working because of incorrect repo name **Thanks [@hammy2899](https://github.com/hammy2899)** [#84](https://github.com/hammy2899/Fomantic-UI/issues/84)
+- **Build Tools** - Fixed update not working because of incorrect repo name **Thanks [@hammy2899](https://github.com/hammy2899)** [#84](https://github.com/fomantic/Fomantic-UI/issues/84)
 - **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
-- **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/hammy2899/Fomantic-UI/pull/92)
+- **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/fomantic/Fomantic-UI/pull/92)
 
 ### Version 2.5.0 - DATE, HERE
 
@@ -35,12 +35,12 @@
 
 **Enhancements**
 - **Loader** - Added speed variants slow (.9s) and fast (.3s) and default (.6s) **Thanks [@LewHgh](https://github.com/LewHgh)** [#6138](https://github.com/Semantic-Org/Semantic-UI/issues/6138)
-- **Rating** - Add the ability to start a disabled rating trough the `disabled` class **Thanks [@prudho](https://github.com/prudho)** [#76](https://github.com/hammy2899/Fomantic-UI/pull/76)
+- **Rating** - Add the ability to start a disabled rating trough the `disabled` class **Thanks [@prudho](https://github.com/prudho)** [#76](https://github.com/fomantic/Fomantic-UI/pull/76)
 
 **Bugs**
-- **Dropdown** - Fixed clearable dropdown icon margin **Thanks [@prudho](https://github.com/prudho)** [#67](https://github.com/hammy2899/Fomantic-UI/pull/67)
-- **Dropdown** - Fixed pointing menu pointer still shown after menu is collapsed **Thanks [@prudho](https://github.com/prudho)** [#70](https://github.com/hammy2899/Fomantic-UI/pull/70)
-- **Icon** - Fixed icon group margin when inside a button **Thanks [@prudho](https://github.com/prudho)** [#68](https://github.com/hammy2899/Fomantic-UI/pull/68)
+- **Dropdown** - Fixed clearable dropdown icon margin **Thanks [@prudho](https://github.com/prudho)** [#67](https://github.com/fomantic/Fomantic-UI/pull/67)
+- **Dropdown** - Fixed pointing menu pointer still shown after menu is collapsed **Thanks [@prudho](https://github.com/prudho)** [#70](https://github.com/fomantic/Fomantic-UI/pull/70)
+- **Icon** - Fixed icon group margin when inside a button **Thanks [@prudho](https://github.com/prudho)** [#68](https://github.com/fomantic/Fomantic-UI/pull/68)
 - **Icon** - Fixed icon group position when inside of menu items **Thanks [@prudho](https://github.com/prudho)** [#6491](https://github.com/Semantic-Org/Semantic-UI/issues/6491)
 - **Header** - Fixed incorrect attached header top margin **Thanks [@prudho](https://github.com/prudho)** [#5436](https://github.com/Semantic-Org/Semantic-UI/issues/5436) 
 - **Form** - Fixed textarea incorrect font-family **Thanks [@hammy2899](https://github.com/hammy2899)** [#5546](https://github.com/Semantic-Org/Semantic-UI/issues/5546)
@@ -48,9 +48,9 @@
 ### Version 2.4.3 - July 9, 2018
 
 **Bugs**
-- **Dropdown** - Fixed inverted dropdown message color being applied to all dropdowns **Thanks [@hammy2899](https://github.com/hammy2899)** [#58](https://github.com/hammy2899/Fomantic-UI/pull/58)
-- **Build Tools** - Fixed docs build tools error when using latest node version **Thanks [@hammy2899](https://github.com/hammy2899)** [#54](https://github.com/hammy2899/Fomantic-UI/issues/54)
-- **Button** - Fixed tertiary buttons having basic background on active state **Thanks [@hammy2899](https://github.com/hammy2899)** [#60](https://github.com/hammy2899/Fomantic-UI/issues/60)
+- **Dropdown** - Fixed inverted dropdown message color being applied to all dropdowns **Thanks [@hammy2899](https://github.com/hammy2899)** [#58](https://github.com/fomantic/Fomantic-UI/pull/58)
+- **Build Tools** - Fixed docs build tools error when using latest node version **Thanks [@hammy2899](https://github.com/hammy2899)** [#54](https://github.com/fomantic/Fomantic-UI/issues/54)
+- **Button** - Fixed tertiary buttons having basic background on active state **Thanks [@hammy2899](https://github.com/hammy2899)** [#60](https://github.com/fomantic/Fomantic-UI/issues/60)
 
 
 The following changes where merged from a new Semantic-UI release
@@ -71,7 +71,7 @@ The following changes where merged from a new Semantic-UI release
 ### Version 2.4.2 - July 4, 2018
 
 **Enhancements**
-- **Build Tools** - Add compatibility with Less 3.x **Thanks [@sciyoshi](https://github.com/sciyoshi)** [#52](https://github.com/hammy2899/Fomantic-UI/pull/52)
+- **Build Tools** - Add compatibility with Less 3.x **Thanks [@sciyoshi](https://github.com/sciyoshi)** [#52](https://github.com/fomantic/Fomantic-UI/pull/52)
 - **Icon** - Allow both rotated and flipped icons **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6460](https://github.com/Semantic-Org/Semantic-UI/issues/6460)
 - **Search** - Added new `noResultsHeader` option to change the no results message **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6442](https://github.com/Semantic-Org/Semantic-UI/issues/6442)
 - **Dropdown** - Added ability to add header items to dropdown menus when initializing with JavaScript **Thanks [@prudho](https://github.com/prudho)** [#6420](https://github.com/Semantic-Org/Semantic-UI/issues/6420)
@@ -83,13 +83,13 @@ The following changes where merged from a new Semantic-UI release
 - **Modal** - Fixed modals from closing when moving unreleased mouse click outside of the modal window **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6430](https://github.com/Semantic-Org/Semantic-UI/issues/6430)
 - **Modal** - Reverted "Add solve for dimmer to prevent modal scrolling in bg" change to fix scrolling modals on mobile devices **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6449](https://github.com/Semantic-Org/Semantic-UI/issues/6449)
 - **Modal** - Fixed absolutely positioned close icon inside modal on Safari **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6251](https://github.com/Semantic-Org/Semantic-UI/issues/6251)
-- **Dropdown** - Fixed searchable dropdown input that doesn't get focus on show **Thanks [@prudho](https://github.com/prudho)** [#39](https://github.com/hammy2899/Fomantic-UI/pull/39)
+- **Dropdown** - Fixed searchable dropdown input that doesn't get focus on show **Thanks [@prudho](https://github.com/prudho)** [#39](https://github.com/fomantic/Fomantic-UI/pull/39)
 
 ### Version 2.4.1 - June 20, 2018
 
 **Bugs**
 - **List** - Fixed selector typo for item:hover **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6436](https://github.com/Semantic-Org/Semantic-UI/issues/6436)
-- **Dropdown** - Fixed a performance issue which led to dropdowns with lots of items taking 20+ seconds to load **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#34](https://github.com/hammy2899/Fomantic-UI/pull/34)
+- **Dropdown** - Fixed a performance issue which led to dropdowns with lots of items taking 20+ seconds to load **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#34](https://github.com/fomantic/Fomantic-UI/pull/34)
 
 ### Version 2.4.0 - June 19, 2018
 
