@@ -26,6 +26,11 @@
 - **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
 - **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/hammy2899/Fomantic-UI/pull/92)
 
+### Version 2.5.0 - DATE, HERE
+
+**Major Enhancements**
+- Added range slider component created by **@tyleryasaka** :level_slider: **Thanks @hammy2899** [#1336](https://github.com/Semantic-Org/Semantic-UI/issues/1336)
+
 ### Version 2.4.4 - July 26, 2018
 
 **Enhancements**

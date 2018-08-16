@@ -91,6 +91,7 @@ module.exports = {
     'nag',
     'popup',
     'progress',
+    'range',
     'rating',
     'search',
     'shape',
