@@ -421,6 +421,40 @@
 *******************************/
 
 /*-------------------
+      Horizontal
+--------------------*/
+
+.ui.horizontal.cards > .card,
+.ui.card.horizontal {
+  flex-direction: row;
+  min-width: 400px;
+  width: 500;
+}
+
+.ui.horizontal.cards > .card > .image,
+.ui.card.horizontal > .image {
+  border-radius: 0;
+  width: 150px;
+}
+
+.ui.horizontal.cards > .card > .image > img,
+.ui.card.horizontal > .image > img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  justify-content: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+}
+
+/*-------------------
        Raised
 --------------------*/
 
@@ -439,6 +473,7 @@ a.ui.raised.card:hover,
 .ui.raised.card {
   box-shadow: @raisedShadow;
 }
+
 /*-------------------
        Centered
 --------------------*/
