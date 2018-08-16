@@ -16,6 +16,7 @@
 - **Comments** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#88](https://github.com/hammy2899/Fomantic-UI/pull/88)
 - **Feed** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#89](https://github.com/hammy2899/Fomantic-UI/pull/89)
 - **Form** - Added transparent variation for textareas **Thanks [@LewHgh](https://github.com/LewHgh)**
+- **Step** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#93](https://github.com/hammy2899/Fomantic-UI/pull/93)
 
 **Bugs**
 - **Label** - Fixed ribbon label background color **Thanks [@hammy2899](https://github.com/hammy2899)** [#6497](https://github.com/Semantic-Org/Semantic-UI/issues/6497)
@@ -23,6 +24,7 @@
 - **Checkbox** - Fixed toggle not having `checked` class when initialized in a 'checked' state **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#2506](https://github.com/Semantic-Org/Semantic-UI/issues/2506)
 - **Build Tools** - Fixed update not working because of incorrect repo name **Thanks [@hammy2899](https://github.com/hammy2899)** [#84](https://github.com/hammy2899/Fomantic-UI/issues/84)
 - **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
+- **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/hammy2899/Fomantic-UI/pull/92)
 
 ### Version 2.4.4 - July 26, 2018
 
