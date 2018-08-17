@@ -323,7 +323,7 @@ $.fn.dropdown = function(parameters) {
             if( !module.has.menu() ) {
               module.create.menu();
             }
-            if ( !module.is.multiple() && module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+            if ( module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
               module.verbose('Adding clear icon');
               $clear = $('<i />')
                 .addClass('remove icon')

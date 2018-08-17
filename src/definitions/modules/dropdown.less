@@ -634,16 +634,17 @@ select.ui.dropdown {
 /* Clearable Selection */
 .ui.dropdown .remove.icon {
   font-size: @dropdownIconSize;
-  margin: @dropdownIconMargin;
-  padding: 0;
-  right: 2.5em;
-  top: auto;
+  margin: @selectionIconMargin;
+  padding: @selectionIconPadding;
+  right: 3em;
+  top: @selectionVerticalPadding;
   position: absolute;
   opacity: 0.6;
-  z-index: 3;
+  z-index: @selectionIconZIndex;
 }
 
-.ui.clearable.dropdown .text {
+.ui.clearable.dropdown .text,
+.ui.clearable.dropdown a:last-of-type {
   margin-right: 1.5em;
 }
 
