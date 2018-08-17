@@ -595,4 +595,92 @@
   width: @sliderWidth;
 }
 
+/*--------------
+     Inverted
+---------------*/
+.ui.inverted.checkbox label,
+.ui.inverted.checkbox + label {
+  color: @invertedTextColor !important;
+}
+
+/* Hover */
+.ui.inverted.checkbox .box:hover,
+.ui.inverted.checkbox label:hover {
+  color: @invertedHoveredTextColor !important;
+}
+.ui.inverted.checkbox .box:hover::before,
+.ui.inverted.checkbox label:hover::before {
+  border-color: @strongSelectedBorderColor;
+}
+
+/*Slider Label */
+.ui.inverted.slider.checkbox .box,
+.ui.inverted.slider.checkbox label {
+  color: @invertedUnselectedTextColor;
+}
+
+/* Slider Line */
+.ui.inverted.slider.checkbox .box:before,
+.ui.inverted.slider.checkbox label:before {
+  background-color: @invertedUnselectedTextColor !important;
+}
+
+/* Slider Hover */
+.ui.inverted.slider.checkbox .box:hover::before,
+.ui.inverted.slider.checkbox label:hover::before {
+  background: @invertedLightTextColor !important;
+}
+
+/* Slider Active */
+.ui.inverted.slider.checkbox input:checked ~ .box,
+.ui.inverted.slider.checkbox input:checked ~ label {
+  color: @invertedSelectedTextColor !important;
+}
+.ui.inverted.slider.checkbox input:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:checked ~ label:before {
+  background-color: @selectedWhiteBorderColor !important;
+}
+
+/* Slider Active Focus */
+.ui.inverted.slider.checkbox input:focus:checked ~ .box,
+.ui.inverted.slider.checkbox input:focus:checked ~ label {
+  color: @invertedSelectedTextColor !important;
+}
+.ui.inverted.slider.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:focus:checked ~ label:before {
+  background-color: @selectedWhiteBorderColor !important;
+}
+
+/* Toggle Switch */
+.ui.inverted.toggle.checkbox .box:before,
+.ui.inverted.toggle.checkbox label:before {
+  background-color: @invertedTextColor !important;
+}
+
+/* Toggle Hover */
+.ui.inverted.toggle.checkbox .box:hover::before,
+.ui.inverted.toggle.checkbox label:hover::before {
+  background: @invertedHoveredTextColor !important;
+}
+
+/* Toggle Active */
+.ui.inverted.toggle.checkbox input:checked ~ .box,
+.ui.inverted.toggle.checkbox input:checked ~ label {
+  color: @invertedSelectedTextColor !important;
+}
+.ui.inverted.toggle.checkbox input:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:checked ~ label:before {
+  background-color: @toggleOnLaneColor !important;
+}
+
+/* Toggle Active Focus */
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label {
+  color: @invertedSelectedTextColor !important;
+}
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label:before {
+  background-color: @toggleOnFocusLaneColor !important;
+}
+
 .loadUIOverrides();
