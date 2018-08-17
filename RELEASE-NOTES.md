@@ -3,8 +3,8 @@
 ### Version 2.5.0 - September 1, 2018
 
 **Major Enhancements**
-- **Calendar** - Added the calendar module :tada: **big thanks to @mdehoog** for creating the module and **thanks to @prudho** for the port [#8](https://github.com/fomantic/Fomantic-UI/issues/8)
-- **Range** - Added the range slider module :tada: **big thanks to @tyleryasaka** for creating the module and **thanks to @hammy2899** fro the port [#78](https://github.com/fomantic/Fomantic-UI/pull/78)
+- **Calendar** - Added the calendar module :tada: **big thanks to [@mdehoog](https://github.com/mdehoog)** for creating the module and **thanks to [@prudho](https://github.com/prudho)** for the port [#8](https://github.com/fomantic/Fomantic-UI/issues/8)
+- **Range** - Added the range slider module :tada: **big thanks to [@tyleryasaka](https://github.com/tyleryasaka)** for creating the module and **thanks to [@hammy2899](https://github.com/hammy2899)** fro the port [#78](https://github.com/fomantic/Fomantic-UI/pull/78)
 - **Icons** - Updated icons to FontAwesome 5.2.0 **Thanks [@hammy2899](https://github.com/hammy2899)** [#6395](https://github.com/Semantic-Org/Semantic-UI/issues/6395) You can also generate the icons yourself including FA5 Pro using the [fomantic-ui-icon-script](https://github.com/hammy2899/fomantic-ui-icon-script)
 
 **Enhancements**
@@ -25,11 +25,6 @@
 - **Build Tools** - Fixed update not working because of incorrect repo name **Thanks [@hammy2899](https://github.com/hammy2899)** [#84](https://github.com/fomantic/Fomantic-UI/issues/84)
 - **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
 - **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/fomantic/Fomantic-UI/pull/92)
-
-### Version 2.5.0 - DATE, HERE
-
-**Major Enhancements**
-- Added range slider component created by **@tyleryasaka** :level_slider: **Thanks @hammy2899** [#1336](https://github.com/Semantic-Org/Semantic-UI/issues/1336)
 
 ### Version 2.4.4 - July 26, 2018
 
