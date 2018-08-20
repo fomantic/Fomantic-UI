@@ -427,14 +427,15 @@
 .ui.horizontal.cards > .card,
 .ui.card.horizontal {
   flex-direction: row;
-  min-width: 400px;
-  width: 500;
+  min-width: @horizontalMinWidth;
+  width: @horizontalWidth;
+  max-width: 100%;
 }
 
 .ui.horizontal.cards > .card > .image,
 .ui.card.horizontal > .image {
   border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
-  width: 150px;
+  width: @horizontalImageWidth;
 }
 
 .ui.horizontal.cards > .card > .image > img,
