@@ -507,7 +507,7 @@
 @headerLineHeightOffset : (@headerLineHeight - 1em) / 2;
 
 /* Header Spacing */
-@headerTopMargin    : ~"calc(2rem - "@headerLineHeightOffset~")";
+@headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));
 @headerBottomMargin : 1rem;
 @headerMargin       : @headerTopMargin 0em @headerBottomMargin;
 
