@@ -141,7 +141,7 @@
 
 /* Buttons */
 @buttonMargin: 0px -@borderWidth;
-@buttonWidth: ~"calc(100% + "(@borderWidth * 2)~")";
+@buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
 
 /*-------------------
       Variations
@@ -189,29 +189,29 @@
 
 @oneCard: @oneColumn;
 @oneCardOffset: 0em;
-@twoCard: ~"calc("@twoColumn~" - "(@twoCardSpacing * 2)~")";
+@twoCard: e(%("calc(%d - %d)", @twoColumn, @twoCardSpacing * 2));
 @twoCardOffset: -@twoCardSpacing;
-@threeCard: ~"calc("@threeColumn~" - "(@threeCardSpacing * 2)~")";
+@threeCard: e(%("calc(%d - %d)", @threeColumn, @threeCardSpacing * 2));
 @threeCardOffset: -@threeCardSpacing;
-@fourCard: ~"calc("@fourColumn~" - "(@fourCardSpacing * 2)~")";
+@fourCard: e(%("calc(%d - %d)", @fourColumn, @fourCardSpacing * 2));
 @fourCardOffset: -@fourCardSpacing;
-@fiveCard: ~"calc("@fiveColumn~" - "(@fiveCardSpacing * 2)~")";
+@fiveCard: e(%("calc(%d - %d)", @fiveColumn, @fiveCardSpacing * 2));
 @fiveCardOffset: -@fiveCardSpacing;
-@sixCard: ~"calc("@sixColumn~" - "(@sixCardSpacing * 2)~")";
+@sixCard: e(%("calc(%d - %d)", @sixColumn, @sixCardSpacing * 2));
 @sixCardOffset: -@sixCardSpacing;
-@sevenCard: ~"calc("@sevenColumn~" - "(@sevenCardSpacing * 2)~")";
+@sevenCard: e(%("calc(%d - %d)", @sevenColumn, @sevenCardSpacing * 2));
 @sevenCardOffset: -@sevenCardSpacing;
-@eightCard: ~"calc("@eightColumn~" - "(@sevenCardSpacing * 2)~")";
+@eightCard: e(%("calc(%d - %d)", @eightColumn, @sevenCardSpacing * 2));
 @eightCardOffset: -@sevenCardSpacing;
-@nineCard: ~"calc("@nineColumn~" - "(@nineCardSpacing * 2)~")";
+@nineCard: e(%("calc(%d - %d)", @nineColumn, @nineCardSpacing * 2));
 @nineCardOffset: -@nineCardSpacing;
-@tenCard: ~"calc("@tenColumn~" - "(@tenCardSpacing * 2)~")";
+@tenCard: e(%("calc(%d - %d)", @tenColumn, @tenCardSpacing * 2));
 @tenCardOffset: -@tenCardSpacing;
 
 /* Stackable */
 @stackableRowSpacing: 1em;
 @stackableCardSpacing: 1em;
-@stackableMargin: ~"calc("@oneColumn~" - "(@stackableCardSpacing * 2)~")";
+@stackableMargin: e(%("calc(%d - %d)", @oneColumn, @stackableCardSpacing * 2));
 
 /* Sizes */
 @medium: 1em;
