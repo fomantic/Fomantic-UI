@@ -25,6 +25,7 @@
 - **Build Tools** - Fixed update not working because of incorrect repo name **Thanks [@hammy2899](https://github.com/hammy2899)** [#84](https://github.com/fomantic/Fomantic-UI/issues/84)
 - **Accordion** - Fixed an issue making inactive accordions have wrong display value when using different HTML elements **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6351](https://github.com/Semantic-Org/Semantic-UI/issues/6351)
 - **Step** - Fixed weird counter behavior **Thanks [@prudho](https://github.com/prudho)** [#92](https://github.com/fomantic/Fomantic-UI/pull/92)
+- **Build Tools** - Fixed compatibility issue with less >= 3.5 due to math changes **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#6512](https://github.com/Semantic-Org/Semantic-UI/pull/6512)
 
 ### Version 2.4.4 - July 26, 2018
 
