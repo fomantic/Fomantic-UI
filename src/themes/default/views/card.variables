@@ -160,6 +160,10 @@
   @borderShadow
 ;
 
+/* Horizontal */
+@horizontalMinWidth: 400px;
+@horizontalWidth: 400px;
+@horizontalImageWidth: 150px;
 
 /* Raised */
 @raisedShadow:
