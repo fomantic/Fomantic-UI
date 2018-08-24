@@ -1897,5 +1897,79 @@
   }
 }
 
+/*-----------------
+      Compact
+-----------------*/
+
+.ui.compact.grid > .column:not(.row),
+.ui.compact.grid > .row > .column {
+  padding-left: (@compactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+.ui.compact.grid > * {
+  padding-left: (@compactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+/* Row */
+.ui.compact.grid > .row {
+  padding-top: (@compactRowSpacing / 2);
+  padding-bottom: (@compactRowSpacing / 2);
+}
+
+/* Columns */
+.ui.compact.grid > .column:not(.row) {
+  padding-top: (@compactRowSpacing / 2);
+  padding-bottom: (@compactRowSpacing / 2);
+}
+
+/* Relaxed + Celled */
+.ui.compact.relaxed.celled.grid > .column:not(.row),
+.ui.compact.relaxed.celled.grid > .row > .column {
+  padding: @compactCelledRelaxedPadding;
+}
+.ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
+.ui.compact[class*="very relaxed"].celled.grid > .row > .column {
+  padding: @compactCelledVeryRelaxedPadding;
+}
+
+/*-----------------
+    Very compact
+-----------------*/
+
+.ui[class*="very compact"].grid > .column:not(.row),
+.ui[class*="very compact"].grid > .row > .column {
+  padding-left: (@veryCompactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+.ui[class*="very compact"].grid > * {
+  padding-left: (@veryCompactGutterWidth / 2);
+  padding-right: (@veryCompactGutterWidth / 2);
+}
+
+/* Row */
+.ui[class*="very compact"].grid > .row {
+  padding-top: (@veryCompactRowSpacing / 2);
+  padding-bottom: (@veryCompactRowSpacing / 2);
+}
+
+/* Columns */
+.ui[class*="very compact"].grid > .column:not(.row) {
+  padding-top: (@veryCompactRowSpacing / 2);
+  padding-bottom: (@veryCompactRowSpacing / 2);
+}
+
+/* Relaxed + Celled */
+.ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
+.ui[class*="very compact"].relaxed.celled.grid > .row > .column {
+  padding: @veryCompactCelledRelaxedPadding;
+}
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
+  padding: @veryCompactCelledVeryRelaxedPadding;
+}
+
 
 .loadUIOverrides();
