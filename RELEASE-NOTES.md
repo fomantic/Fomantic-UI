@@ -19,6 +19,7 @@
 - **Step** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#93](https://github.com/fomantic/Fomantic-UI/pull/93)
 - **Cards** - Added horizontal variation **Thanks [@hammy2899](https://github.com/hammy2899)** [#6534](https://github.com/Semantic-Org/Semantic-UI/issues/6534)
 - **Cards** - Added inverted variation **Thanks [@prudho](https://github.com/prudho)** [#3478](https://github.com/Semantic-Org/Semantic-UI/issues/3478)
+- **Grid** - Added `compact` and `very compact` variations **Thanks [@prudho](https://github.com/prudho)** [#99](https://github.com/fomantic/Fomantic-UI/pull/99)
 
 **Bugs**
 - **Label** - Fixed ribbon label background color **Thanks [@hammy2899](https://github.com/hammy2899)** [#6497](https://github.com/Semantic-Org/Semantic-UI/issues/6497)
