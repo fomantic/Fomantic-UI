@@ -222,3 +222,20 @@
 
 /* Colored */
 @coloredShadowDistance: 2px;
+
+/* Inverted */
+@invertedBackground: @black;
+@invertedContentDivider: @borderWidth solid rgba(255, 255, 255, 0.15);
+@invertedHeaderColor: @invertedTextColor;
+@invertedDescriptionColor: @invertedMutedTextColor;
+@invertedMetaColor: @invertedLightTextColor;
+@invertedMetaLinkColor: @invertedLightTextColor;
+@invertedMetaLinkHoverColor: @invertedHoveredTextColor;
+@invertedExtraColor: @invertedLightTextColor;
+@invertedExtraLinkColor: @invertedUnselectedTextColor;
+@invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
+@invertedLinkHoverBackground: @black;
+@invertedBoxShadow:
+  0px @shadowDistance 3px 0px @solidWhiteBorderColor,
+  0px 0px 0px @borderWidth @solidWhiteBorderColor
+;
