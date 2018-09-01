@@ -1,5 +1,5 @@
 /*
-* Font Awesome 5.2.0 by @fontawesome - https://fontawesome.com - @fontawesome
+* Font Awesome 5.3.1 by @fontawesome - https://fontawesome.com - @fontawesome
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -41,6 +41,7 @@ i.icon.log.out:before { content: "\f2f5"; }
 i.icon.sign.out:before { content: "\f2f5"; }
 
 /* Icons */
+i.icon.ad:before { content: "\f641"; }
 i.icon.address.book:before { content: "\f2b9"; }
 i.icon.address.card:before { content: "\f2bb"; }
 i.icon.adjust:before { content: "\f042"; }
@@ -62,6 +63,7 @@ i.icon.angle.left:before { content: "\f104"; }
 i.icon.angle.right:before { content: "\f105"; }
 i.icon.angle.up:before { content: "\f106"; }
 i.icon.angry:before { content: "\f556"; }
+i.icon.ankh:before { content: "\f644"; }
 i.icon.archive:before { content: "\f187"; }
 i.icon.archway:before { content: "\f557"; }
 i.icon.arrow.alternate.circle.down:before { content: "\f358"; }
@@ -106,6 +108,7 @@ i.icon.beer:before { content: "\f0fc"; }
 i.icon.bell:before { content: "\f0f3"; }
 i.icon.bell.slash:before { content: "\f1f6"; }
 i.icon.bezier.curve:before { content: "\f55b"; }
+i.icon.bible:before { content: "\f647"; }
 i.icon.bicycle:before { content: "\f206"; }
 i.icon.binoculars:before { content: "\f1e5"; }
 i.icon.birthday.cake:before { content: "\f1fd"; }
@@ -138,6 +141,7 @@ i.icon.bullseye:before { content: "\f140"; }
 i.icon.burn:before { content: "\f46a"; }
 i.icon.bus:before { content: "\f207"; }
 i.icon.bus.alternate:before { content: "\f55e"; }
+i.icon.business.time:before { content: "\f64a"; }
 i.icon.calculator:before { content: "\f1ec"; }
 i.icon.calendar:before { content: "\f133"; }
 i.icon.calendar.alternate:before { content: "\f073"; }
@@ -196,6 +200,7 @@ i.icon.child:before { content: "\f1ae"; }
 i.icon.church:before { content: "\f51d"; }
 i.icon.circle:before { content: "\f111"; }
 i.icon.circle.notch:before { content: "\f1ce"; }
+i.icon.city:before { content: "\f64f"; }
 i.icon.clipboard:before { content: "\f328"; }
 i.icon.clipboard.check:before { content: "\f46c"; }
 i.icon.clipboard.list:before { content: "\f46d"; }
@@ -215,9 +220,11 @@ i.icon.coins:before { content: "\f51e"; }
 i.icon.columns:before { content: "\f0db"; }
 i.icon.comment:before { content: "\f075"; }
 i.icon.comment.alternate:before { content: "\f27a"; }
+i.icon.comment.dollar:before { content: "\f651"; }
 i.icon.comment.dots:before { content: "\f4ad"; }
 i.icon.comment.slash:before { content: "\f4b3"; }
 i.icon.comments:before { content: "\f086"; }
+i.icon.comments.dollar:before { content: "\f653"; }
 i.icon.compact.disc:before { content: "\f51f"; }
 i.icon.compass:before { content: "\f14e"; }
 i.icon.compress:before { content: "\f066"; }
@@ -230,6 +237,7 @@ i.icon.couch:before { content: "\f4b8"; }
 i.icon.credit.card:before { content: "\f09d"; }
 i.icon.crop:before { content: "\f125"; }
 i.icon.crop.alternate:before { content: "\f565"; }
+i.icon.cross:before { content: "\f654"; }
 i.icon.crosshairs:before { content: "\f05b"; }
 i.icon.crow:before { content: "\f520"; }
 i.icon.crown:before { content: "\f521"; }
@@ -239,6 +247,7 @@ i.icon.cut:before { content: "\f0c4"; }
 i.icon.database:before { content: "\f1c0"; }
 i.icon.deaf:before { content: "\f2a4"; }
 i.icon.desktop:before { content: "\f108"; }
+i.icon.dharmachakra:before { content: "\f655"; }
 i.icon.diagnoses:before { content: "\f470"; }
 i.icon.dice:before { content: "\f522"; }
 i.icon.dice.five:before { content: "\f523"; }
@@ -272,6 +281,7 @@ i.icon.ellipsis.horizontal:before { content: "\f141"; }
 i.icon.ellipsis.vertical:before { content: "\f142"; }
 i.icon.envelope:before { content: "\f0e0"; }
 i.icon.envelope.open:before { content: "\f2b6"; }
+i.icon.envelope.open.text:before { content: "\f658"; }
 i.icon.envelope.square:before { content: "\f199"; }
 i.icon.equals:before { content: "\f52c"; }
 i.icon.eraser:before { content: "\f12d"; }
@@ -330,14 +340,18 @@ i.icon.flag.checkered:before { content: "\f11e"; }
 i.icon.flask:before { content: "\f0c3"; }
 i.icon.flushed:before { content: "\f579"; }
 i.icon.folder:before { content: "\f07b"; }
+i.icon.folder.minus:before { content: "\f65d"; }
 i.icon.folder.open:before { content: "\f07c"; }
+i.icon.folder.plus:before { content: "\f65e"; }
 i.icon.font:before { content: "\f031"; }
+i.icon.font.awesome.logo.full:before { content: "\f4e6"; }
 i.icon.football.ball:before { content: "\f44e"; }
 i.icon.forward:before { content: "\f04e"; }
 i.icon.frog:before { content: "\f52e"; }
 i.icon.frown:before { content: "\f119"; }
 i.icon.frown.open:before { content: "\f57a"; }
 i.icon.fruit-apple:before { content: "\f5d1"; }
+i.icon.funnel.dollar:before { content: "\f662"; }
 i.icon.futbol:before { content: "\f1e3"; }
 i.icon.gamepad:before { content: "\f11b"; }
 i.icon.gas.pump:before { content: "\f52f"; }
@@ -353,6 +367,7 @@ i.icon.globe.africa:before { content: "\f57c"; }
 i.icon.globe.americas:before { content: "\f57d"; }
 i.icon.globe.asia:before { content: "\f57e"; }
 i.icon.golf.ball:before { content: "\f450"; }
+i.icon.gopuram:before { content: "\f664"; }
 i.icon.graduation.cap:before { content: "\f19d"; }
 i.icon.greater.than:before { content: "\f531"; }
 i.icon.greater.than.equal:before { content: "\f532"; }
@@ -373,6 +388,7 @@ i.icon.grin.wink:before { content: "\f58c"; }
 i.icon.grip.horizontal:before { content: "\f58d"; }
 i.icon.grip.vertical:before { content: "\f58e"; }
 i.icon.h.square:before { content: "\f0fd"; }
+i.icon.hamsa:before { content: "\f665"; }
 i.icon.hand.holding:before { content: "\f4bd"; }
 i.icon.hand.holding.heart:before { content: "\f4be"; }
 i.icon.hand.holding.usd:before { content: "\f4c0"; }
@@ -391,6 +407,7 @@ i.icon.hands:before { content: "\f4c2"; }
 i.icon.hands.helping:before { content: "\f4c4"; }
 i.icon.handshake:before { content: "\f2b5"; }
 i.icon.hashtag:before { content: "\f292"; }
+i.icon.haykal:before { content: "\f666"; }
 i.icon.hdd:before { content: "\f0a0"; }
 i.icon.heading:before { content: "\f1dc"; }
 i.icon.headphones:before { content: "\f025"; }
@@ -425,13 +442,18 @@ i.icon.infinity:before { content: "\f534"; }
 i.icon.info:before { content: "\f129"; }
 i.icon.info.circle:before { content: "\f05a"; }
 i.icon.italic:before { content: "\f033"; }
+i.icon.jedi:before { content: "\f669"; }
 i.icon.joint:before { content: "\f595"; }
+i.icon.journal.whills:before { content: "\f66a"; }
+i.icon.kaaba:before { content: "\f66b"; }
 i.icon.key:before { content: "\f084"; }
 i.icon.keyboard:before { content: "\f11c"; }
+i.icon.khanda:before { content: "\f66d"; }
 i.icon.kiss:before { content: "\f596"; }
 i.icon.kiss.beam:before { content: "\f597"; }
 i.icon.kiss.wink.heart:before { content: "\f598"; }
 i.icon.kiwi.bird:before { content: "\f535"; }
+i.icon.landmark:before { content: "\f66f"; }
 i.icon.language:before { content: "\f1ab"; }
 i.icon.laptop:before { content: "\f109"; }
 i.icon.laptop.code:before { content: "\f5fc"; }
@@ -465,6 +487,7 @@ i.icon.low.vision:before { content: "\f2a8"; }
 i.icon.luggage.cart:before { content: "\f59d"; }
 i.icon.magic:before { content: "\f0d0"; }
 i.icon.magnet:before { content: "\f076"; }
+i.icon.mail.bulk:before { content: "\f674"; }
 i.icon.male:before { content: "\f183"; }
 i.icon.map:before { content: "\f279"; }
 i.icon.map.marked:before { content: "\f59f"; }
@@ -485,6 +508,7 @@ i.icon.meh:before { content: "\f11a"; }
 i.icon.meh.blank:before { content: "\f5a4"; }
 i.icon.meh.rolling.eyes:before { content: "\f5a5"; }
 i.icon.memory:before { content: "\f538"; }
+i.icon.menorah:before { content: "\f676"; }
 i.icon.mercury:before { content: "\f223"; }
 i.icon.microchip:before { content: "\f2db"; }
 i.icon.microphone:before { content: "\f130"; }
@@ -506,6 +530,7 @@ i.icon.money.check.alternate:before { content: "\f53d"; }
 i.icon.monument:before { content: "\f5a6"; }
 i.icon.moon:before { content: "\f186"; }
 i.icon.mortar.pestle:before { content: "\f5a7"; }
+i.icon.mosque:before { content: "\f678"; }
 i.icon.motorcycle:before { content: "\f21c"; }
 i.icon.mouse.pointer:before { content: "\f245"; }
 i.icon.music:before { content: "\f001"; }
@@ -516,6 +541,7 @@ i.icon.notes.medical:before { content: "\f481"; }
 i.icon.object.group:before { content: "\f247"; }
 i.icon.object.ungroup:before { content: "\f248"; }
 i.icon.oil.can:before { content: "\f613"; }
+i.icon.om:before { content: "\f679"; }
 i.icon.outdent:before { content: "\f03b"; }
 i.icon.paint.brush:before { content: "\f1fc"; }
 i.icon.paint.roller:before { content: "\f5aa"; }
@@ -527,10 +553,12 @@ i.icon.parachute.box:before { content: "\f4cd"; }
 i.icon.paragraph:before { content: "\f1dd"; }
 i.icon.parking:before { content: "\f540"; }
 i.icon.passport:before { content: "\f5ab"; }
+i.icon.pastafarianism:before { content: "\f67b"; }
 i.icon.paste:before { content: "\f0ea"; }
 i.icon.pause:before { content: "\f04c"; }
 i.icon.pause.circle:before { content: "\f28b"; }
 i.icon.paw:before { content: "\f1b0"; }
+i.icon.peace:before { content: "\f67c"; }
 i.icon.pen:before { content: "\f304"; }
 i.icon.pen.alternate:before { content: "\f305"; }
 i.icon.pen.fancy:before { content: "\f5ac"; }
@@ -547,6 +575,7 @@ i.icon.phone.square:before { content: "\f098"; }
 i.icon.phone.volume:before { content: "\f2a0"; }
 i.icon.piggy.bank:before { content: "\f4d3"; }
 i.icon.pills:before { content: "\f484"; }
+i.icon.place.of.worship:before { content: "\f67f"; }
 i.icon.plane:before { content: "\f072"; }
 i.icon.plane.arrival:before { content: "\f5af"; }
 i.icon.plane.departure:before { content: "\f5b0"; }
@@ -557,11 +586,15 @@ i.icon.plus:before { content: "\f067"; }
 i.icon.plus.circle:before { content: "\f055"; }
 i.icon.plus.square:before { content: "\f0fe"; }
 i.icon.podcast:before { content: "\f2ce"; }
+i.icon.poll:before { content: "\f681"; }
+i.icon.poll.horizontal:before { content: "\f682"; }
 i.icon.poo:before { content: "\f2fe"; }
 i.icon.poop:before { content: "\f619"; }
 i.icon.portrait:before { content: "\f3e0"; }
 i.icon.pound.sign:before { content: "\f154"; }
 i.icon.power.off:before { content: "\f011"; }
+i.icon.pray:before { content: "\f683"; }
+i.icon.praying.hands:before { content: "\f684"; }
 i.icon.prescription:before { content: "\f5b1"; }
 i.icon.prescription.bottle:before { content: "\f485"; }
 i.icon.prescription.bottle.alternate:before { content: "\f486"; }
@@ -575,6 +608,7 @@ i.icon.question.circle:before { content: "\f059"; }
 i.icon.quidditch:before { content: "\f458"; }
 i.icon.quote.left:before { content: "\f10d"; }
 i.icon.quote.right:before { content: "\f10e"; }
+i.icon.quran:before { content: "\f687"; }
 i.icon.random:before { content: "\f074"; }
 i.icon.receipt:before { content: "\f543"; }
 i.icon.recycle:before { content: "\f1b8"; }
@@ -603,6 +637,8 @@ i.icon.save:before { content: "\f0c7"; }
 i.icon.school:before { content: "\f549"; }
 i.icon.screwdriver:before { content: "\f54a"; }
 i.icon.search:before { content: "\f002"; }
+i.icon.search.dollar:before { content: "\f688"; }
+i.icon.search.location:before { content: "\f689"; }
 i.icon.search.minus:before { content: "\f010"; }
 i.icon.search.plus:before { content: "\f00e"; }
 i.icon.seedling:before { content: "\f4d8"; }
@@ -637,6 +673,7 @@ i.icon.smile.wink:before { content: "\f4da"; }
 i.icon.smoking:before { content: "\f48d"; }
 i.icon.smoking.ban:before { content: "\f54d"; }
 i.icon.snowflake:before { content: "\f2dc"; }
+i.icon.socks:before { content: "\f696"; }
 i.icon.solar.panel:before { content: "\f5ba"; }
 i.icon.sort:before { content: "\f0dc"; }
 i.icon.sort.alphabet.down:before { content: "\f15d"; }
@@ -654,10 +691,13 @@ i.icon.splotch:before { content: "\f5bc"; }
 i.icon.spray.can:before { content: "\f5bd"; }
 i.icon.square:before { content: "\f0c8"; }
 i.icon.square.full:before { content: "\f45c"; }
+i.icon.square.root.alternate:before { content: "\f698"; }
 i.icon.stamp:before { content: "\f5bf"; }
 i.icon.star:before { content: "\f005"; }
+i.icon.star.and.crescent:before { content: "\f699"; }
 i.icon.star.half:before { content: "\f089"; }
 i.icon.star.half.alternate:before { content: "\f5c0"; }
+i.icon.star.of.david:before { content: "\f69a"; }
 i.icon.star.of.life:before { content: "\f621"; }
 i.icon.step.backward:before { content: "\f048"; }
 i.icon.step.forward:before { content: "\f051"; }
@@ -682,6 +722,7 @@ i.icon.surprise:before { content: "\f5c2"; }
 i.icon.swatchbook:before { content: "\f5c3"; }
 i.icon.swimmer:before { content: "\f5c4"; }
 i.icon.swimming.pool:before { content: "\f5c5"; }
+i.icon.synagogue:before { content: "\f69b"; }
 i.icon.sync:before { content: "\f021"; }
 i.icon.sync.alternate:before { content: "\f2f1"; }
 i.icon.syringe:before { content: "\f48e"; }
@@ -724,6 +765,8 @@ i.icon.toggle.off:before { content: "\f204"; }
 i.icon.toggle.on:before { content: "\f205"; }
 i.icon.toolbox:before { content: "\f552"; }
 i.icon.tooth:before { content: "\f5c9"; }
+i.icon.torah:before { content: "\f6a0"; }
+i.icon.torii.gate:before { content: "\f6a1"; }
 i.icon.trademark:before { content: "\f25c"; }
 i.icon.traffic.light:before { content: "\f637"; }
 i.icon.train:before { content: "\f238"; }
@@ -786,6 +829,7 @@ i.icon.vial:before { content: "\f492"; }
 i.icon.vials:before { content: "\f493"; }
 i.icon.video:before { content: "\f03d"; }
 i.icon.video.slash:before { content: "\f4e2"; }
+i.icon.vihara:before { content: "\f6a7"; }
 i.icon.volleyball.ball:before { content: "\f45f"; }
 i.icon.volume.down:before { content: "\f027"; }
 i.icon.volume.off:before { content: "\f026"; }
@@ -807,6 +851,7 @@ i.icon.won.sign:before { content: "\f159"; }
 i.icon.wrench:before { content: "\f0ad"; }
 i.icon.x.ray:before { content: "\f497"; }
 i.icon.yen.sign:before { content: "\f157"; }
+i.icon.yin.yang:before { content: "\f6ad"; }
 
 
 /* Aliases */
@@ -1183,6 +1228,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.flushed.outline:before { content: "\f579"; }
   i.icon.folder.open.outline:before { content: "\f07c"; }
   i.icon.folder.outline:before { content: "\f07b"; }
+  i.icon.font.awesome.logo.full.outline:before { content: "\f4e6"; }
   i.icon.frown.open.outline:before { content: "\f57a"; }
   i.icon.frown.outline:before { content: "\f119"; }
   i.icon.futbol.outline:before { content: "\f1e3"; }
@@ -1308,6 +1354,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.adversal,
   i.icon.affiliatetheme,
   i.icon.algolia,
+  i.icon.alipay,
   i.icon.amazon,
   i.icon.amazon.pay,
   i.icon.amilia,
@@ -1422,6 +1469,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.font.awesome,
   i.icon.font.awesome.alternate,
   i.icon.font.awesome.flag,
+  i.icon.font.awesome.logo.full,
   i.icon.fonticons,
   i.icon.fonticons.fi,
   i.icon.fort.awesome,
@@ -1623,6 +1671,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.telegram,
   i.icon.telegram.plane,
   i.icon.tencent.weibo,
+  i.icon.the.red.yeti,
   i.icon.themeco,
   i.icon.themeisle,
   i.icon.trade.federation,
@@ -1690,6 +1739,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.adversal:before { content: "\f36a"; }
   i.icon.affiliatetheme:before { content: "\f36b"; }
   i.icon.algolia:before { content: "\f36c"; }
+  i.icon.alipay:before { content: "\f642"; }
   i.icon.amazon:before { content: "\f270"; }
   i.icon.amazon.pay:before { content: "\f42c"; }
   i.icon.amilia:before { content: "\f36d"; }
@@ -1804,6 +1854,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.font.awesome:before { content: "\f2b4"; }
   i.icon.font.awesome.alternate:before { content: "\f35c"; }
   i.icon.font.awesome.flag:before { content: "\f425"; }
+  i.icon.font.awesome.logo.full:before { content: "\f4e6"; }
   i.icon.fonticons:before { content: "\f280"; }
   i.icon.fonticons.fi:before { content: "\f3a2"; }
   i.icon.fort.awesome:before { content: "\f286"; }
@@ -2005,6 +2056,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.telegram:before { content: "\f2c6"; }
   i.icon.telegram.plane:before { content: "\f3fe"; }
   i.icon.tencent.weibo:before { content: "\f1d5"; }
+  i.icon.the.red.yeti:before { content: "\f69d"; }
   i.icon.themeco:before { content: "\f5c6"; }
   i.icon.themeisle:before { content: "\f2b2"; }
   i.icon.trade.federation:before { content: "\f513"; }
