@@ -1,6 +1,6 @@
 ## RELEASE NOTES
 
-### Version 2.5.0 - September 1, 2018
+### Version 2.5.0 - September 3, 2018
 
 **Major Enhancements**
 - **Calendar** - Added the calendar module :tada: **big thanks to [@mdehoog](https://github.com/mdehoog)** for creating the module and **thanks to [@prudho](https://github.com/prudho)** for the port [#8](https://github.com/fomantic/Fomantic-UI/issues/8)
