@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Step
+ * # Semantic UI 2.5.0 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -205,7 +205,7 @@
   display: block;
   position: static;
   text-align: center;
-  content: counters(ordered, ".");
+  content: counter(ordered);
   -ms-flex-item-align: middle;
       align-self: middle;
   margin-right: 1rem;
@@ -491,9 +491,9 @@
 
 /* Top */
 .ui.attached.steps {
-  width: calc(100% +  2px ) !important;
+  width: calc(100% + 2px) !important;
   margin: 0em -1px 0;
-  max-width: calc(100% +  2px );
+  max-width: calc(100% + 2px);
   border-radius: 0.28571429rem 0.28571429rem 0em 0em;
 }
 .ui.attached.steps .step:first-child {
@@ -600,6 +600,65 @@
 .ui.massive.steps .step,
 .ui.massive.step {
   font-size: 1.71428571rem;
+}
+
+/*--------------
+    Inverted
+---------------*/
+
+.ui.inverted.steps {
+  border: 1px solid #555555;
+}
+.ui.inverted.steps .step {
+  color: rgba(255, 255, 255, 0.9);
+  background: #1B1C1D;
+  border-color: #555555;
+}
+.ui.inverted.steps .step:after {
+  background-color: #1B1C1D;
+  border-color: #555555;
+}
+.ui.inverted.steps .step .description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Active */
+.ui.inverted.steps .step.active,
+.ui.inverted.steps .step.active:after {
+  background: #333333;
+}
+.ui.inverted.ordered.steps .step.active:before,
+.ui.inverted.steps .active.step .icon {
+  color: #ffffff;
+}
+
+/* Disabled */
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step:after {
+  background: #222222;
+}
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step .title,
+.ui.inverted.steps .disabled.step .description {
+  color: rgba(225, 225, 225, 0.3);
+}
+
+/* Link Hover */
+.ui.inverted.steps .link.step:hover::after,
+.ui.inverted.steps .link.step:hover,
+.ui.inverted.steps a.step:hover::after,
+.ui.inverted.steps a.step:hover {
+  background: #3F3F3F;
+  color: #ffffff;
+}
+
+/* Link Down */
+.ui.inverted.steps .link.step:active::after,
+.ui.inverted.steps .link.step:active,
+.ui.inverted.steps a.step:active::after,
+.ui.inverted.steps a.step:active {
+  background: #444444;
+  color: #ffffff;
 }
 
 

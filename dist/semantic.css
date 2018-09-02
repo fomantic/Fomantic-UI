@@ -1,7 +1,7 @@
  /*
- * # Semantic UI - 2.4.4
- * https://github.com/Semantic-Org/Semantic-UI
- * http://www.semantic-ui.com/
+ * # Fomantic UI - 2.5.0
+ * https://github.com/fomantic/Fomantic-UI
+ * http://fomantic-ui.com/
  *
  * Copyright 2014 Contributors
  * Released under the MIT license
@@ -10,7 +10,7 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 /*!
- * # Semantic UI 2.4.4 - Reset
+ * # Semantic UI 2.5.0 - Reset
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -541,7 +541,7 @@ template {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Site
+ * # Semantic UI 2.5.0 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -587,7 +587,7 @@ h4,
 h5 {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   line-height: 1.28571429em;
-  margin: calc(2rem -  0.14285714em ) 0em 1rem;
+  margin: calc(2rem - 0.1428571428571429em) 0em 1rem;
   font-weight: bold;
   padding: 0em;
 }
@@ -760,7 +760,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Button
+ * # Semantic UI 2.5.0 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1552,6 +1552,64 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
 .ui.massive.button {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown coupled buttons sizes */
+
+.ui.mini.buttons .dropdown {
+  font-size: 0.78571429rem;
+}
+
+.ui.mini.buttons .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.buttons .dropdown {
+  font-size: 0.85714286rem;
+}
+
+.ui.tiny.buttons .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.buttons .dropdown {
+  font-size: 0.92857143rem;
+}
+
+.ui.small.buttons .dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+
+.ui.large.buttons .dropdown {
+  font-size: 1.14285714rem;
+}
+
+.ui.large.buttons .dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.buttons .dropdown {
+  font-size: 1.28571429rem;
+}
+
+.ui.big.buttons .dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.buttons .dropdown {
+  font-size: 1.42857143rem;
+}
+
+.ui.huge.buttons .dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+
+.ui.massive.buttons .dropdown {
+  font-size: 1.71428571rem;
+}
+
+.ui.massive.buttons .dropdown .menu > .item {
   font-size: 1.71428571rem;
 }
 
@@ -5811,7 +5869,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Container
+ * # Semantic UI 2.5.0 - Container
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5863,15 +5921,15 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   }
 
   .ui.grid.container {
-    width: calc( 723px  +  2rem ) !important;
+    width: calc(723px + 2rem) !important;
   }
 
   .ui.relaxed.grid.container {
-    width: calc( 723px  +  3rem ) !important;
+    width: calc(723px + 3rem) !important;
   }
 
   .ui.very.relaxed.grid.container {
-    width: calc( 723px  +  5rem ) !important;
+    width: calc(723px + 5rem) !important;
   }
 }
 
@@ -5885,15 +5943,15 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   }
 
   .ui.grid.container {
-    width: calc( 933px  +  2rem ) !important;
+    width: calc(933px + 2rem) !important;
   }
 
   .ui.relaxed.grid.container {
-    width: calc( 933px  +  3rem ) !important;
+    width: calc(933px + 3rem) !important;
   }
 
   .ui.very.relaxed.grid.container {
-    width: calc( 933px  +  5rem ) !important;
+    width: calc(933px + 5rem) !important;
   }
 }
 
@@ -5907,15 +5965,15 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   }
 
   .ui.grid.container {
-    width: calc( 1127px  +  2rem ) !important;
+    width: calc(1127px + 2rem) !important;
   }
 
   .ui.relaxed.grid.container {
-    width: calc( 1127px  +  3rem ) !important;
+    width: calc(1127px + 3rem) !important;
   }
 
   .ui.very.relaxed.grid.container {
-    width: calc( 1127px  +  5rem ) !important;
+    width: calc(1127px + 5rem) !important;
   }
 }
 
@@ -5972,7 +6030,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Divider
+ * # Semantic UI 2.5.0 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6079,7 +6137,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   width: 0%;
-  height: calc(100% -  1rem );
+  height: calc(100% - 1rem);
 }
 
 .ui.vertical.divider:before {
@@ -6239,7 +6297,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Flag
+ * # Semantic UI 2.5.0 - Flag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6664,6 +6722,7 @@ i.flag.gabon:before {
 }
 
 i.flag.gb:before,
+i.flag.uk:before,
 i.flag.united.kingdom:before {
   background-position: -36px -26px;
 }
@@ -7515,7 +7574,7 @@ i.flag.zimbabwe:before {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Header
+ * # Semantic UI 2.5.0 - Header
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7532,7 +7591,7 @@ i.flag.zimbabwe:before {
 
 .ui.header {
   border: none;
-  margin: calc(2rem -  0.14285714em ) 0em 1rem;
+  margin: calc(2rem - 0.1428571428571429em) 0em 1rem;
   padding: 0em 0em;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -8395,7 +8454,7 @@ a.ui.inverted.grey.header:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Icon
+ * # Semantic UI 2.5.0 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9039,9 +9098,9 @@ i.icons .inverted.corner.icon {
 }
 
 /*
- * Font Awesome 5.0.8 by @fontawesome - http://fontawesome.io - @fontawesome
- * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
- */
+* Font Awesome 5.3.1 by @fontawesome - https://fontawesome.com - @fontawesome
+* License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
+*/
 
 /*******************************
 
@@ -9067,7 +9126,7 @@ for instance `lemon icon` not `lemon outline icon` since there is only one lemon
 *******************************/
 
 /*******************************
-            Icons
+             Icons
 *******************************/
 
 /* Deprecated *In/Out Naming Conflict) */
@@ -9102,16 +9161,8 @@ i.icon.sign.out:before {
 
 /* Icons */
 
-i.icon.\35 00px:before {
-  content: "\f26e";
-}
-
-i.icon.accessible.icon:before {
-  content: "\f368";
-}
-
-i.icon.accusoft:before {
-  content: "\f369";
+i.icon.ad:before {
+  content: "\f641";
 }
 
 i.icon.address.book:before {
@@ -9126,20 +9177,8 @@ i.icon.adjust:before {
   content: "\f042";
 }
 
-i.icon.adn:before {
-  content: "\f170";
-}
-
-i.icon.adversal:before {
-  content: "\f36a";
-}
-
-i.icon.affiliatetheme:before {
-  content: "\f36b";
-}
-
-i.icon.algolia:before {
-  content: "\f36c";
+i.icon.air.freshener:before {
+  content: "\f5d0";
 }
 
 i.icon.align.center:before {
@@ -9158,12 +9197,8 @@ i.icon.align.right:before {
   content: "\f038";
 }
 
-i.icon.amazon:before {
-  content: "\f270";
-}
-
-i.icon.amazon.pay:before {
-  content: "\f42c";
+i.icon.allergies:before {
+  content: "\f461";
 }
 
 i.icon.ambulance:before {
@@ -9174,20 +9209,8 @@ i.icon.american.sign.language.interpreting:before {
   content: "\f2a3";
 }
 
-i.icon.amilia:before {
-  content: "\f36d";
-}
-
 i.icon.anchor:before {
   content: "\f13d";
-}
-
-i.icon.android:before {
-  content: "\f17b";
-}
-
-i.icon.angellist:before {
-  content: "\f209";
 }
 
 i.icon.angle.double.down:before {
@@ -9222,36 +9245,20 @@ i.icon.angle.up:before {
   content: "\f106";
 }
 
-i.icon.angrycreative:before {
-  content: "\f36e";
+i.icon.angry:before {
+  content: "\f556";
 }
 
-i.icon.angular:before {
-  content: "\f420";
-}
-
-i.icon.app.store:before {
-  content: "\f36f";
-}
-
-i.icon.app.store.ios:before {
-  content: "\f370";
-}
-
-i.icon.apper:before {
-  content: "\f371";
-}
-
-i.icon.apple:before {
-  content: "\f179";
-}
-
-i.icon.apple.pay:before {
-  content: "\f415";
+i.icon.ankh:before {
+  content: "\f644";
 }
 
 i.icon.archive:before {
   content: "\f187";
+}
+
+i.icon.archway:before {
+  content: "\f557";
 }
 
 i.icon.arrow.alternate.circle.down:before {
@@ -9322,36 +9329,28 @@ i.icon.asterisk:before {
   content: "\f069";
 }
 
-i.icon.asymmetrik:before {
-  content: "\f372";
-}
-
 i.icon.at:before {
   content: "\f1fa";
 }
 
-i.icon.audible:before {
-  content: "\f373";
+i.icon.atlas:before {
+  content: "\f558";
+}
+
+i.icon.atom:before {
+  content: "\f5d2";
 }
 
 i.icon.audio.description:before {
   content: "\f29e";
 }
 
-i.icon.autoprefixer:before {
-  content: "\f41c";
+i.icon.award:before {
+  content: "\f559";
 }
 
-i.icon.avianex:before {
-  content: "\f374";
-}
-
-i.icon.aviato:before {
-  content: "\f421";
-}
-
-i.icon.aws:before {
-  content: "\f375";
+i.icon.backspace:before {
+  content: "\f55a";
 }
 
 i.icon.backward:before {
@@ -9368,10 +9367,6 @@ i.icon.ban:before {
 
 i.icon.band.aid:before {
   content: "\f462";
-}
-
-i.icon.bandcamp:before {
-  content: "\f2d5";
 }
 
 i.icon.barcode:before {
@@ -9422,14 +9417,6 @@ i.icon.beer:before {
   content: "\f0fc";
 }
 
-i.icon.behance:before {
-  content: "\f1b4";
-}
-
-i.icon.behance.square:before {
-  content: "\f1b5";
-}
-
 i.icon.bell:before {
   content: "\f0f3";
 }
@@ -9438,12 +9425,16 @@ i.icon.bell.slash:before {
   content: "\f1f6";
 }
 
-i.icon.bicycle:before {
-  content: "\f206";
+i.icon.bezier.curve:before {
+  content: "\f55b";
 }
 
-i.icon.bimobject:before {
-  content: "\f378";
+i.icon.bible:before {
+  content: "\f647";
+}
+
+i.icon.bicycle:before {
+  content: "\f206";
 }
 
 i.icon.binoculars:before {
@@ -9454,44 +9445,12 @@ i.icon.birthday.cake:before {
   content: "\f1fd";
 }
 
-i.icon.bitbucket:before {
-  content: "\f171";
-}
-
-i.icon.bitcoin:before {
-  content: "\f379";
-}
-
-i.icon.bity:before {
-  content: "\f37a";
-}
-
-i.icon.black.tie:before {
-  content: "\f27e";
-}
-
-i.icon.blackberry:before {
-  content: "\f37b";
+i.icon.blender:before {
+  content: "\f517";
 }
 
 i.icon.blind:before {
   content: "\f29d";
-}
-
-i.icon.blogger:before {
-  content: "\f37c";
-}
-
-i.icon.blogger.b:before {
-  content: "\f37d";
-}
-
-i.icon.bluetooth:before {
-  content: "\f293";
-}
-
-i.icon.bluetooth.b:before {
-  content: "\f294";
 }
 
 i.icon.bold:before {
@@ -9506,8 +9465,24 @@ i.icon.bomb:before {
   content: "\f1e2";
 }
 
+i.icon.bone:before {
+  content: "\f5d7";
+}
+
+i.icon.bong:before {
+  content: "\f55c";
+}
+
 i.icon.book:before {
   content: "\f02d";
+}
+
+i.icon.book.open:before {
+  content: "\f518";
+}
+
+i.icon.book.reader:before {
+  content: "\f5da";
 }
 
 i.icon.bookmark:before {
@@ -9522,6 +9497,10 @@ i.icon.box:before {
   content: "\f466";
 }
 
+i.icon.box.open:before {
+  content: "\f49e";
+}
+
 i.icon.boxes:before {
   content: "\f468";
 }
@@ -9530,12 +9509,28 @@ i.icon.braille:before {
   content: "\f2a1";
 }
 
+i.icon.brain:before {
+  content: "\f5dc";
+}
+
 i.icon.briefcase:before {
   content: "\f0b1";
 }
 
-i.icon.btc:before {
-  content: "\f15a";
+i.icon.briefcase.medical:before {
+  content: "\f469";
+}
+
+i.icon.broadcast.tower:before {
+  content: "\f519";
+}
+
+i.icon.broom:before {
+  content: "\f51a";
+}
+
+i.icon.brush:before {
+  content: "\f55d";
 }
 
 i.icon.bug:before {
@@ -9554,16 +9549,20 @@ i.icon.bullseye:before {
   content: "\f140";
 }
 
-i.icon.buromobelexperte:before {
-  content: "\f37f";
+i.icon.burn:before {
+  content: "\f46a";
 }
 
 i.icon.bus:before {
   content: "\f207";
 }
 
-i.icon.buysellads:before {
-  content: "\f20d";
+i.icon.bus.alternate:before {
+  content: "\f55e";
+}
+
+i.icon.business.time:before {
+  content: "\f64a";
 }
 
 i.icon.calculator:before {
@@ -9602,8 +9601,32 @@ i.icon.camera.retro:before {
   content: "\f083";
 }
 
+i.icon.cannabis:before {
+  content: "\f55f";
+}
+
+i.icon.capsules:before {
+  content: "\f46b";
+}
+
 i.icon.car:before {
   content: "\f1b9";
+}
+
+i.icon.car.alternate:before {
+  content: "\f5de";
+}
+
+i.icon.car.battery:before {
+  content: "\f5df";
+}
+
+i.icon.car.crash:before {
+  content: "\f5e1";
+}
+
+i.icon.car.side:before {
+  content: "\f5e4";
 }
 
 i.icon.caret.down:before {
@@ -9646,52 +9669,20 @@ i.icon.cart.plus:before {
   content: "\f217";
 }
 
-i.icon.cc.amazon.pay:before {
-  content: "\f42d";
-}
-
-i.icon.cc.amex:before {
-  content: "\f1f3";
-}
-
-i.icon.cc.apple.pay:before {
-  content: "\f416";
-}
-
-i.icon.cc.diners.club:before {
-  content: "\f24c";
-}
-
-i.icon.cc.discover:before {
-  content: "\f1f2";
-}
-
-i.icon.cc.jcb:before {
-  content: "\f24b";
-}
-
-i.icon.cc.mastercard:before {
-  content: "\f1f1";
-}
-
-i.icon.cc.paypal:before {
-  content: "\f1f4";
-}
-
-i.icon.cc.stripe:before {
-  content: "\f1f5";
-}
-
-i.icon.cc.visa:before {
-  content: "\f1f0";
-}
-
-i.icon.centercode:before {
-  content: "\f380";
-}
-
 i.icon.certificate:before {
   content: "\f0a3";
+}
+
+i.icon.chalkboard:before {
+  content: "\f51b";
+}
+
+i.icon.chalkboard.teacher:before {
+  content: "\f51c";
+}
+
+i.icon.charging.station:before {
+  content: "\f5e7";
 }
 
 i.icon.chart.area:before {
@@ -9716,6 +9707,10 @@ i.icon.check:before {
 
 i.icon.check.circle:before {
   content: "\f058";
+}
+
+i.icon.check.double:before {
+  content: "\f560";
 }
 
 i.icon.check.square:before {
@@ -9790,8 +9785,8 @@ i.icon.child:before {
   content: "\f1ae";
 }
 
-i.icon.chrome:before {
-  content: "\f268";
+i.icon.church:before {
+  content: "\f51d";
 }
 
 i.icon.circle:before {
@@ -9800,6 +9795,10 @@ i.icon.circle:before {
 
 i.icon.circle.notch:before {
   content: "\f1ce";
+}
+
+i.icon.city:before {
+  content: "\f64f";
 }
 
 i.icon.clipboard:before {
@@ -9830,16 +9829,16 @@ i.icon.cloud:before {
   content: "\f0c2";
 }
 
-i.icon.cloudscale:before {
-  content: "\f383";
+i.icon.cloud.download.alternate:before {
+  content: "\f381";
 }
 
-i.icon.cloudsmith:before {
-  content: "\f384";
+i.icon.cloud.upload.alternate:before {
+  content: "\f382";
 }
 
-i.icon.cloudversify:before {
-  content: "\f385";
+i.icon.cocktail:before {
+  content: "\f561";
 }
 
 i.icon.code:before {
@@ -9848,14 +9847,6 @@ i.icon.code:before {
 
 i.icon.code.branch:before {
   content: "\f126";
-}
-
-i.icon.codepen:before {
-  content: "\f1cb";
-}
-
-i.icon.codiepie:before {
-  content: "\f284";
 }
 
 i.icon.coffee:before {
@@ -9870,6 +9861,10 @@ i.icon.cogs:before {
   content: "\f085";
 }
 
+i.icon.coins:before {
+  content: "\f51e";
+}
+
 i.icon.columns:before {
   content: "\f0db";
 }
@@ -9882,8 +9877,28 @@ i.icon.comment.alternate:before {
   content: "\f27a";
 }
 
+i.icon.comment.dollar:before {
+  content: "\f651";
+}
+
+i.icon.comment.dots:before {
+  content: "\f4ad";
+}
+
+i.icon.comment.slash:before {
+  content: "\f4b3";
+}
+
 i.icon.comments:before {
   content: "\f086";
+}
+
+i.icon.comments.dollar:before {
+  content: "\f653";
+}
+
+i.icon.compact.disc:before {
+  content: "\f51f";
 }
 
 i.icon.compass:before {
@@ -9894,12 +9909,16 @@ i.icon.compress:before {
   content: "\f066";
 }
 
-i.icon.connectdevelop:before {
-  content: "\f20e";
+i.icon.concierge.bell:before {
+  content: "\f562";
 }
 
-i.icon.contao:before {
-  content: "\f26d";
+i.icon.cookie:before {
+  content: "\f563";
+}
+
+i.icon.cookie.bite:before {
+  content: "\f564";
 }
 
 i.icon.copy:before {
@@ -9910,12 +9929,8 @@ i.icon.copyright:before {
   content: "\f1f9";
 }
 
-i.icon.cpanel:before {
-  content: "\f388";
-}
-
-i.icon.creative.commons:before {
-  content: "\f25e";
+i.icon.couch:before {
+  content: "\f4b8";
 }
 
 i.icon.credit.card:before {
@@ -9926,16 +9941,24 @@ i.icon.crop:before {
   content: "\f125";
 }
 
+i.icon.crop.alternate:before {
+  content: "\f565";
+}
+
+i.icon.cross:before {
+  content: "\f654";
+}
+
 i.icon.crosshairs:before {
   content: "\f05b";
 }
 
-i.icon.css3:before {
-  content: "\f13c";
+i.icon.crow:before {
+  content: "\f520";
 }
 
-i.icon.css3.alternate:before {
-  content: "\f38b";
+i.icon.crown:before {
+  content: "\f521";
 }
 
 i.icon.cube:before {
@@ -9950,18 +9973,6 @@ i.icon.cut:before {
   content: "\f0c4";
 }
 
-i.icon.cuttlefish:before {
-  content: "\f38c";
-}
-
-i.icon.d.and.d:before {
-  content: "\f38d";
-}
-
-i.icon.dashcube:before {
-  content: "\f210";
-}
-
 i.icon.database:before {
   content: "\f1c0";
 }
@@ -9970,52 +9981,64 @@ i.icon.deaf:before {
   content: "\f2a4";
 }
 
-i.icon.delicious:before {
-  content: "\f1a5";
-}
-
-i.icon.deploydog:before {
-  content: "\f38e";
-}
-
-i.icon.deskpro:before {
-  content: "\f38f";
-}
-
 i.icon.desktop:before {
   content: "\f108";
 }
 
-i.icon.deviantart:before {
-  content: "\f1bd";
+i.icon.dharmachakra:before {
+  content: "\f655";
 }
 
-i.icon.digg:before {
-  content: "\f1a6";
+i.icon.diagnoses:before {
+  content: "\f470";
 }
 
-i.icon.digital.ocean:before {
-  content: "\f391";
+i.icon.dice:before {
+  content: "\f522";
 }
 
-i.icon.discord:before {
-  content: "\f392";
+i.icon.dice.five:before {
+  content: "\f523";
 }
 
-i.icon.discourse:before {
-  content: "\f393";
+i.icon.dice.four:before {
+  content: "\f524";
+}
+
+i.icon.dice.one:before {
+  content: "\f525";
+}
+
+i.icon.dice.six:before {
+  content: "\f526";
+}
+
+i.icon.dice.three:before {
+  content: "\f527";
+}
+
+i.icon.dice.two:before {
+  content: "\f528";
+}
+
+i.icon.digital.tachograph:before {
+  content: "\f566";
+}
+
+i.icon.directions:before {
+  content: "\f5eb";
+}
+
+i.icon.divide:before {
+  content: "\f529";
+}
+
+i.icon.dizzy:before {
+  content: "\f567";
 }
 
 i.icon.dna:before {
   content: "\f471";
-}
-
-i.icon.dochub:before {
-  content: "\f394";
-}
-
-i.icon.docker:before {
-  content: "\f395";
 }
 
 i.icon.dollar.sign:before {
@@ -10030,44 +10053,48 @@ i.icon.dolly.flatbed:before {
   content: "\f474";
 }
 
+i.icon.donate:before {
+  content: "\f4b9";
+}
+
+i.icon.door.closed:before {
+  content: "\f52a";
+}
+
+i.icon.door.open:before {
+  content: "\f52b";
+}
+
 i.icon.dot.circle:before {
   content: "\f192";
+}
+
+i.icon.dove:before {
+  content: "\f4ba";
 }
 
 i.icon.download:before {
   content: "\f019";
 }
 
-i.icon.draft2digital:before {
-  content: "\f396";
+i.icon.drafting.compass:before {
+  content: "\f568";
 }
 
-i.icon.dribbble:before {
-  content: "\f17d";
+i.icon.draw.polygon:before {
+  content: "\f5ee";
 }
 
-i.icon.dribbble.square:before {
-  content: "\f397";
+i.icon.drum:before {
+  content: "\f569";
 }
 
-i.icon.dropbox:before {
-  content: "\f16b";
+i.icon.drum.steelpan:before {
+  content: "\f56a";
 }
 
-i.icon.drupal:before {
-  content: "\f1a9";
-}
-
-i.icon.dyalog:before {
-  content: "\f399";
-}
-
-i.icon.earlybirds:before {
-  content: "\f39a";
-}
-
-i.icon.edge:before {
-  content: "\f282";
+i.icon.dumbbell:before {
+  content: "\f44b";
 }
 
 i.icon.edit:before {
@@ -10078,24 +10105,12 @@ i.icon.eject:before {
   content: "\f052";
 }
 
-i.icon.elementor:before {
-  content: "\f430";
-}
-
 i.icon.ellipsis.horizontal:before {
   content: "\f141";
 }
 
 i.icon.ellipsis.vertical:before {
   content: "\f142";
-}
-
-i.icon.ember:before {
-  content: "\f423";
-}
-
-i.icon.empire:before {
-  content: "\f1d1";
 }
 
 i.icon.envelope:before {
@@ -10106,28 +10121,20 @@ i.icon.envelope.open:before {
   content: "\f2b6";
 }
 
+i.icon.envelope.open.text:before {
+  content: "\f658";
+}
+
 i.icon.envelope.square:before {
   content: "\f199";
 }
 
-i.icon.envira:before {
-  content: "\f299";
+i.icon.equals:before {
+  content: "\f52c";
 }
 
 i.icon.eraser:before {
   content: "\f12d";
-}
-
-i.icon.erlang:before {
-  content: "\f39d";
-}
-
-i.icon.ethereum:before {
-  content: "\f42e";
-}
-
-i.icon.etsy:before {
-  content: "\f2d7";
 }
 
 i.icon.euro.sign:before {
@@ -10158,15 +10165,11 @@ i.icon.expand.arrows.alternate:before {
   content: "\f31e";
 }
 
-i.icon.expeditedssl:before {
-  content: "\f23e";
-}
-
 i.icon.external.alternate:before {
   content: "\f35d";
 }
 
-i.icon.external.square.alternate:before {
+i.icon.external.link.square.alternate:before {
   content: "\f360";
 }
 
@@ -10182,22 +10185,6 @@ i.icon.eye.slash:before {
   content: "\f070";
 }
 
-i.icon.facebook:before {
-  content: "\f09a";
-}
-
-i.icon.facebook.f:before {
-  content: "\f39e";
-}
-
-i.icon.facebook.messenger:before {
-  content: "\f39f";
-}
-
-i.icon.facebook.square:before {
-  content: "\f082";
-}
-
 i.icon.fast.backward:before {
   content: "\f049";
 }
@@ -10208,6 +10195,14 @@ i.icon.fast.forward:before {
 
 i.icon.fax:before {
   content: "\f1ac";
+}
+
+i.icon.feather:before {
+  content: "\f52d";
+}
+
+i.icon.feather.alternate:before {
+  content: "\f56b";
 }
 
 i.icon.female:before {
@@ -10238,12 +10233,44 @@ i.icon.file.code:before {
   content: "\f1c9";
 }
 
+i.icon.file.contract:before {
+  content: "\f56c";
+}
+
+i.icon.file.download:before {
+  content: "\f56d";
+}
+
 i.icon.file.excel:before {
   content: "\f1c3";
 }
 
+i.icon.file.export:before {
+  content: "\f56e";
+}
+
 i.icon.file.image:before {
   content: "\f1c5";
+}
+
+i.icon.file.import:before {
+  content: "\f56f";
+}
+
+i.icon.file.invoice:before {
+  content: "\f570";
+}
+
+i.icon.file.invoice.dollar:before {
+  content: "\f571";
+}
+
+i.icon.file.medical:before {
+  content: "\f477";
+}
+
+i.icon.file.medical.alternate:before {
+  content: "\f478";
 }
 
 i.icon.file.pdf:before {
@@ -10254,12 +10281,32 @@ i.icon.file.powerpoint:before {
   content: "\f1c4";
 }
 
+i.icon.file.prescription:before {
+  content: "\f572";
+}
+
+i.icon.file.signature:before {
+  content: "\f573";
+}
+
+i.icon.file.upload:before {
+  content: "\f574";
+}
+
 i.icon.file.video:before {
   content: "\f1c8";
 }
 
 i.icon.file.word:before {
   content: "\f1c2";
+}
+
+i.icon.fill:before {
+  content: "\f575";
+}
+
+i.icon.fill.drip:before {
+  content: "\f576";
 }
 
 i.icon.film:before {
@@ -10270,6 +10317,10 @@ i.icon.filter:before {
   content: "\f0b0";
 }
 
+i.icon.fingerprint:before {
+  content: "\f577";
+}
+
 i.icon.fire:before {
   content: "\f06d";
 }
@@ -10278,20 +10329,12 @@ i.icon.fire.extinguisher:before {
   content: "\f134";
 }
 
-i.icon.firefox:before {
-  content: "\f269";
-}
-
 i.icon.first.aid:before {
   content: "\f479";
 }
 
-i.icon.first.order:before {
-  content: "\f2b0";
-}
-
-i.icon.firstdraft:before {
-  content: "\f3a1";
+i.icon.fish:before {
+  content: "\f578";
 }
 
 i.icon.flag:before {
@@ -10306,84 +10349,60 @@ i.icon.flask:before {
   content: "\f0c3";
 }
 
-i.icon.flickr:before {
-  content: "\f16e";
-}
-
-i.icon.flipboard:before {
-  content: "\f44d";
-}
-
-i.icon.fly:before {
-  content: "\f417";
+i.icon.flushed:before {
+  content: "\f579";
 }
 
 i.icon.folder:before {
   content: "\f07b";
 }
 
+i.icon.folder.minus:before {
+  content: "\f65d";
+}
+
 i.icon.folder.open:before {
   content: "\f07c";
+}
+
+i.icon.folder.plus:before {
+  content: "\f65e";
 }
 
 i.icon.font:before {
   content: "\f031";
 }
 
-i.icon.font.awesome:before {
-  content: "\f2b4";
-}
-
-i.icon.font.awesome.alternate:before {
-  content: "\f35c";
-}
-
-i.icon.font.awesome.flag:before {
-  content: "\f425";
-}
-
-i.icon.fonticons:before {
-  content: "\f280";
-}
-
-i.icon.fonticons.fi:before {
-  content: "\f3a2";
+i.icon.font.awesome.logo.full:before {
+  content: "\f4e6";
 }
 
 i.icon.football.ball:before {
   content: "\f44e";
 }
 
-i.icon.fort.awesome:before {
-  content: "\f286";
-}
-
-i.icon.fort.awesome.alternate:before {
-  content: "\f3a3";
-}
-
-i.icon.forumbee:before {
-  content: "\f211";
-}
-
 i.icon.forward:before {
   content: "\f04e";
 }
 
-i.icon.foursquare:before {
-  content: "\f180";
-}
-
-i.icon.free.code.camp:before {
-  content: "\f2c5";
-}
-
-i.icon.freebsd:before {
-  content: "\f3a4";
+i.icon.frog:before {
+  content: "\f52e";
 }
 
 i.icon.frown:before {
   content: "\f119";
+}
+
+i.icon.frown.open:before {
+  content: "\f57a";
+}
+
+i.icon.fruit-apple:before {
+  content: "\f5d1";
+}
+
+i.icon.funnel.dollar:before {
+  content: "\f662";
 }
 
 i.icon.futbol:before {
@@ -10392,6 +10411,10 @@ i.icon.futbol:before {
 
 i.icon.gamepad:before {
   content: "\f11b";
+}
+
+i.icon.gas.pump:before {
+  content: "\f52f";
 }
 
 i.icon.gavel:before {
@@ -10406,148 +10429,140 @@ i.icon.genderless:before {
   content: "\f22d";
 }
 
-i.icon.get.pocket:before {
-  content: "\f265";
-}
-
-i.icon.gg:before {
-  content: "\f260";
-}
-
-i.icon.gg.circle:before {
-  content: "\f261";
-}
-
 i.icon.gift:before {
   content: "\f06b";
-}
-
-i.icon.git:before {
-  content: "\f1d3";
-}
-
-i.icon.git.square:before {
-  content: "\f1d2";
-}
-
-i.icon.github:before {
-  content: "\f09b";
-}
-
-i.icon.github.alternate:before {
-  content: "\f113";
-}
-
-i.icon.github.square:before {
-  content: "\f092";
-}
-
-i.icon.gitkraken:before {
-  content: "\f3a6";
-}
-
-i.icon.gitlab:before {
-  content: "\f296";
-}
-
-i.icon.gitter:before {
-  content: "\f426";
 }
 
 i.icon.glass.martini:before {
   content: "\f000";
 }
 
-i.icon.glide:before {
-  content: "\f2a5";
+i.icon.glass.martini.alternate:before {
+  content: "\f57b";
 }
 
-i.icon.glide.g:before {
-  content: "\f2a6";
+i.icon.glasses:before {
+  content: "\f530";
 }
 
 i.icon.globe:before {
   content: "\f0ac";
 }
 
-i.icon.gofore:before {
-  content: "\f3a7";
+i.icon.globe.africa:before {
+  content: "\f57c";
+}
+
+i.icon.globe.americas:before {
+  content: "\f57d";
+}
+
+i.icon.globe.asia:before {
+  content: "\f57e";
 }
 
 i.icon.golf.ball:before {
   content: "\f450";
 }
 
-i.icon.goodreads:before {
-  content: "\f3a8";
-}
-
-i.icon.goodreads.g:before {
-  content: "\f3a9";
-}
-
-i.icon.google:before {
-  content: "\f1a0";
-}
-
-i.icon.google.drive:before {
-  content: "\f3aa";
-}
-
-i.icon.google.play:before {
-  content: "\f3ab";
-}
-
-i.icon.google.plus:before {
-  content: "\f2b3";
-}
-
-i.icon.google.plus.g:before {
-  content: "\f0d5";
-}
-
-i.icon.google.plus.square:before {
-  content: "\f0d4";
-}
-
-i.icon.google.wallet:before {
-  content: "\f1ee";
+i.icon.gopuram:before {
+  content: "\f664";
 }
 
 i.icon.graduation.cap:before {
   content: "\f19d";
 }
 
-i.icon.gratipay:before {
-  content: "\f184";
+i.icon.greater.than:before {
+  content: "\f531";
 }
 
-i.icon.grav:before {
-  content: "\f2d6";
+i.icon.greater.than.equal:before {
+  content: "\f532";
 }
 
-i.icon.gripfire:before {
-  content: "\f3ac";
+i.icon.grimace:before {
+  content: "\f57f";
 }
 
-i.icon.grunt:before {
-  content: "\f3ad";
+i.icon.grin:before {
+  content: "\f580";
 }
 
-i.icon.gulp:before {
-  content: "\f3ae";
+i.icon.grin.alternate:before {
+  content: "\f581";
+}
+
+i.icon.grin.beam:before {
+  content: "\f582";
+}
+
+i.icon.grin.beam.sweat:before {
+  content: "\f583";
+}
+
+i.icon.grin.hearts:before {
+  content: "\f584";
+}
+
+i.icon.grin.squint:before {
+  content: "\f585";
+}
+
+i.icon.grin.squint.tears:before {
+  content: "\f586";
+}
+
+i.icon.grin.stars:before {
+  content: "\f587";
+}
+
+i.icon.grin.tears:before {
+  content: "\f588";
+}
+
+i.icon.grin.tongue:before {
+  content: "\f589";
+}
+
+i.icon.grin.tongue.squint:before {
+  content: "\f58a";
+}
+
+i.icon.grin.tongue.wink:before {
+  content: "\f58b";
+}
+
+i.icon.grin.wink:before {
+  content: "\f58c";
+}
+
+i.icon.grip.horizontal:before {
+  content: "\f58d";
+}
+
+i.icon.grip.vertical:before {
+  content: "\f58e";
 }
 
 i.icon.h.square:before {
   content: "\f0fd";
 }
 
-i.icon.hacker.news:before {
-  content: "\f1d4";
+i.icon.hamsa:before {
+  content: "\f665";
 }
 
-i.icon.hacker.news.square:before {
-  content: "\f3af";
+i.icon.hand.holding:before {
+  content: "\f4bd";
+}
+
+i.icon.hand.holding.heart:before {
+  content: "\f4be";
+}
+
+i.icon.hand.holding.usd:before {
+  content: "\f4c0";
 }
 
 i.icon.hand.lizard:before {
@@ -10594,12 +10609,24 @@ i.icon.hand.spock:before {
   content: "\f259";
 }
 
+i.icon.hands:before {
+  content: "\f4c2";
+}
+
+i.icon.hands.helping:before {
+  content: "\f4c4";
+}
+
 i.icon.handshake:before {
   content: "\f2b5";
 }
 
 i.icon.hashtag:before {
   content: "\f292";
+}
+
+i.icon.haykal:before {
+  content: "\f666";
 }
 
 i.icon.hdd:before {
@@ -10614,6 +10641,14 @@ i.icon.headphones:before {
   content: "\f025";
 }
 
+i.icon.headphones.alternate:before {
+  content: "\f58f";
+}
+
+i.icon.headset:before {
+  content: "\f590";
+}
+
 i.icon.heart:before {
   content: "\f004";
 }
@@ -10622,12 +10657,12 @@ i.icon.heartbeat:before {
   content: "\f21e";
 }
 
-i.icon.hips:before {
-  content: "\f452";
+i.icon.helicopter:before {
+  content: "\f533";
 }
 
-i.icon.hire.a.helper:before {
-  content: "\f3b0";
+i.icon.highlighter:before {
+  content: "\f591";
 }
 
 i.icon.history:before {
@@ -10642,20 +10677,24 @@ i.icon.home:before {
   content: "\f015";
 }
 
-i.icon.hooli:before {
-  content: "\f427";
-}
-
 i.icon.hospital:before {
   content: "\f0f8";
+}
+
+i.icon.hospital.alternate:before {
+  content: "\f47d";
 }
 
 i.icon.hospital.symbol:before {
   content: "\f47e";
 }
 
-i.icon.hotjar:before {
-  content: "\f3b1";
+i.icon.hot.tub:before {
+  content: "\f593";
+}
+
+i.icon.hotel:before {
+  content: "\f594";
 }
 
 i.icon.hourglass:before {
@@ -10674,18 +10713,6 @@ i.icon.hourglass.start:before {
   content: "\f251";
 }
 
-i.icon.houzz:before {
-  content: "\f27c";
-}
-
-i.icon.html5:before {
-  content: "\f13b";
-}
-
-i.icon.hubspot:before {
-  content: "\f3b2";
-}
-
 i.icon.i.cursor:before {
   content: "\f246";
 }
@@ -10698,16 +10725,16 @@ i.icon.id.card:before {
   content: "\f2c2";
 }
 
+i.icon.id.card.alternate:before {
+  content: "\f47f";
+}
+
 i.icon.image:before {
   content: "\f03e";
 }
 
 i.icon.images:before {
   content: "\f302";
-}
-
-i.icon.imdb:before {
-  content: "\f2d8";
 }
 
 i.icon.inbox:before {
@@ -10722,6 +10749,10 @@ i.icon.industry:before {
   content: "\f275";
 }
 
+i.icon.infinity:before {
+  content: "\f534";
+}
+
 i.icon.info:before {
   content: "\f129";
 }
@@ -10730,52 +10761,24 @@ i.icon.info.circle:before {
   content: "\f05a";
 }
 
-i.icon.instagram:before {
-  content: "\f16d";
-}
-
-i.icon.internet.explorer:before {
-  content: "\f26b";
-}
-
-i.icon.ioxhost:before {
-  content: "\f208";
-}
-
 i.icon.italic:before {
   content: "\f033";
 }
 
-i.icon.itunes:before {
-  content: "\f3b4";
+i.icon.jedi:before {
+  content: "\f669";
 }
 
-i.icon.itunes.note:before {
-  content: "\f3b5";
+i.icon.joint:before {
+  content: "\f595";
 }
 
-i.icon.jenkins:before {
-  content: "\f3b6";
+i.icon.journal.whills:before {
+  content: "\f66a";
 }
 
-i.icon.joget:before {
-  content: "\f3b7";
-}
-
-i.icon.joomla:before {
-  content: "\f1aa";
-}
-
-i.icon.js:before {
-  content: "\f3b8";
-}
-
-i.icon.js.square:before {
-  content: "\f3b9";
-}
-
-i.icon.jsfiddle:before {
-  content: "\f1cc";
+i.icon.kaaba:before {
+  content: "\f66b";
 }
 
 i.icon.key:before {
@@ -10786,20 +10789,28 @@ i.icon.keyboard:before {
   content: "\f11c";
 }
 
-i.icon.keycdn:before {
-  content: "\f3ba";
+i.icon.khanda:before {
+  content: "\f66d";
 }
 
-i.icon.kickstarter:before {
-  content: "\f3bb";
+i.icon.kiss:before {
+  content: "\f596";
 }
 
-i.icon.kickstarter.k:before {
-  content: "\f3bc";
+i.icon.kiss.beam:before {
+  content: "\f597";
 }
 
-i.icon.korvue:before {
-  content: "\f42f";
+i.icon.kiss.wink.heart:before {
+  content: "\f598";
+}
+
+i.icon.kiwi.bird:before {
+  content: "\f535";
+}
+
+i.icon.landmark:before {
+  content: "\f66f";
 }
 
 i.icon.language:before {
@@ -10810,32 +10821,44 @@ i.icon.laptop:before {
   content: "\f109";
 }
 
-i.icon.laravel:before {
-  content: "\f3bd";
+i.icon.laptop.code:before {
+  content: "\f5fc";
 }
 
-i.icon.lastfm:before {
-  content: "\f202";
+i.icon.laugh:before {
+  content: "\f599";
 }
 
-i.icon.lastfm.square:before {
-  content: "\f203";
+i.icon.laugh.beam:before {
+  content: "\f59a";
+}
+
+i.icon.laugh.squint:before {
+  content: "\f59b";
+}
+
+i.icon.laugh.wink:before {
+  content: "\f59c";
+}
+
+i.icon.layer.group:before {
+  content: "\f5fd";
 }
 
 i.icon.leaf:before {
   content: "\f06c";
 }
 
-i.icon.leanpub:before {
-  content: "\f212";
-}
-
 i.icon.lemon:before {
   content: "\f094";
 }
 
-i.icon.less:before {
-  content: "\f41d";
+i.icon.less.than:before {
+  content: "\f536";
+}
+
+i.icon.less.than.equal:before {
+  content: "\f537";
 }
 
 i.icon.level.down.alternate:before {
@@ -10854,28 +10877,8 @@ i.icon.lightbulb:before {
   content: "\f0eb";
 }
 
-i.icon.linechat:before {
-  content: "\f3c0";
-}
-
 i.icon.linkify:before {
   content: "\f0c1";
-}
-
-i.icon.linkedin:before {
-  content: "\f08c";
-}
-
-i.icon.linkedin.alt:before {
-  content: "\f0e1";
-}
-
-i.icon.linode:before {
-  content: "\f2b8";
-}
-
-i.icon.linux:before {
-  content: "\f17c";
 }
 
 i.icon.lira.sign:before {
@@ -10930,12 +10933,8 @@ i.icon.low.vision:before {
   content: "\f2a8";
 }
 
-i.icon.lyft:before {
-  content: "\f3c3";
-}
-
-i.icon.magento:before {
-  content: "\f3c4";
+i.icon.luggage.cart:before {
+  content: "\f59d";
 }
 
 i.icon.magic:before {
@@ -10946,12 +10945,24 @@ i.icon.magnet:before {
   content: "\f076";
 }
 
+i.icon.mail.bulk:before {
+  content: "\f674";
+}
+
 i.icon.male:before {
   content: "\f183";
 }
 
 i.icon.map:before {
   content: "\f279";
+}
+
+i.icon.map.marked:before {
+  content: "\f59f";
+}
+
+i.icon.map.marked.alternate:before {
+  content: "\f5a0";
 }
 
 i.icon.map.marker:before {
@@ -10968,6 +10979,10 @@ i.icon.map.pin:before {
 
 i.icon.map.signs:before {
   content: "\f277";
+}
+
+i.icon.marker:before {
+  content: "\f5a1";
 }
 
 i.icon.mars:before {
@@ -10990,36 +11005,32 @@ i.icon.mars.stroke.vertical:before {
   content: "\f22a";
 }
 
-i.icon.maxcdn:before {
-  content: "\f136";
-}
-
-i.icon.medapps:before {
-  content: "\f3c6";
-}
-
-i.icon.medium:before {
-  content: "\f23a";
-}
-
-i.icon.medium.m:before {
-  content: "\f3c7";
+i.icon.medal:before {
+  content: "\f5a2";
 }
 
 i.icon.medkit:before {
   content: "\f0fa";
 }
 
-i.icon.medrt:before {
-  content: "\f3c8";
-}
-
-i.icon.meetup:before {
-  content: "\f2e0";
-}
-
 i.icon.meh:before {
   content: "\f11a";
+}
+
+i.icon.meh.blank:before {
+  content: "\f5a4";
+}
+
+i.icon.meh.rolling.eyes:before {
+  content: "\f5a5";
+}
+
+i.icon.memory:before {
+  content: "\f538";
+}
+
+i.icon.menorah:before {
+  content: "\f676";
 }
 
 i.icon.mercury:before {
@@ -11034,12 +11045,20 @@ i.icon.microphone:before {
   content: "\f130";
 }
 
+i.icon.microphone.alternate:before {
+  content: "\f3c9";
+}
+
+i.icon.microphone.alternate.slash:before {
+  content: "\f539";
+}
+
 i.icon.microphone.slash:before {
   content: "\f131";
 }
 
-i.icon.microsoft:before {
-  content: "\f3ca";
+i.icon.microscope:before {
+  content: "\f610";
 }
 
 i.icon.minus:before {
@@ -11054,18 +11073,6 @@ i.icon.minus.square:before {
   content: "\f146";
 }
 
-i.icon.mix:before {
-  content: "\f3cb";
-}
-
-i.icon.mixcloud:before {
-  content: "\f289";
-}
-
-i.icon.mizuni:before {
-  content: "\f3cc";
-}
-
 i.icon.mobile:before {
   content: "\f10b";
 }
@@ -11074,20 +11081,44 @@ i.icon.mobile.alternate:before {
   content: "\f3cd";
 }
 
-i.icon.modx:before {
-  content: "\f285";
-}
-
-i.icon.monero:before {
-  content: "\f3d0";
+i.icon.money.bill:before {
+  content: "\f0d6";
 }
 
 i.icon.money.bill.alternate:before {
   content: "\f3d1";
 }
 
+i.icon.money.bill.wave:before {
+  content: "\f53a";
+}
+
+i.icon.money.bill.wave.alternate:before {
+  content: "\f53b";
+}
+
+i.icon.money.check:before {
+  content: "\f53c";
+}
+
+i.icon.money.check.alternate:before {
+  content: "\f53d";
+}
+
+i.icon.monument:before {
+  content: "\f5a6";
+}
+
 i.icon.moon:before {
   content: "\f186";
+}
+
+i.icon.mortar.pestle:before {
+  content: "\f5a7";
+}
+
+i.icon.mosque:before {
+  content: "\f678";
 }
 
 i.icon.motorcycle:before {
@@ -11102,10 +11133,6 @@ i.icon.music:before {
   content: "\f001";
 }
 
-i.icon.napster:before {
-  content: "\f3d2";
-}
-
 i.icon.neuter:before {
   content: "\f22c";
 }
@@ -11114,28 +11141,12 @@ i.icon.newspaper:before {
   content: "\f1ea";
 }
 
-i.icon.nintendo.switch:before {
-  content: "\f418";
+i.icon.not.equal:before {
+  content: "\f53e";
 }
 
-i.icon.node:before {
-  content: "\f419";
-}
-
-i.icon.node.js:before {
-  content: "\f3d3";
-}
-
-i.icon.npm:before {
-  content: "\f3d4";
-}
-
-i.icon.ns8:before {
-  content: "\f3d5";
-}
-
-i.icon.nutritionix:before {
-  content: "\f3d6";
+i.icon.notes.medical:before {
+  content: "\f481";
 }
 
 i.icon.object.group:before {
@@ -11146,52 +11157,28 @@ i.icon.object.ungroup:before {
   content: "\f248";
 }
 
-i.icon.odnoklassniki:before {
-  content: "\f263";
+i.icon.oil.can:before {
+  content: "\f613";
 }
 
-i.icon.odnoklassniki.square:before {
-  content: "\f264";
-}
-
-i.icon.opencart:before {
-  content: "\f23d";
-}
-
-i.icon.openid:before {
-  content: "\f19b";
-}
-
-i.icon.opera:before {
-  content: "\f26a";
-}
-
-i.icon.optin.monster:before {
-  content: "\f23c";
-}
-
-i.icon.osi:before {
-  content: "\f41a";
+i.icon.om:before {
+  content: "\f679";
 }
 
 i.icon.outdent:before {
   content: "\f03b";
 }
 
-i.icon.page4:before {
-  content: "\f3d7";
-}
-
-i.icon.pagelines:before {
-  content: "\f18c";
-}
-
 i.icon.paint.brush:before {
   content: "\f1fc";
 }
 
-i.icon.palfed:before {
-  content: "\f3d8";
+i.icon.paint.roller:before {
+  content: "\f5aa";
+}
+
+i.icon.palette:before {
+  content: "\f53f";
 }
 
 i.icon.pallet:before {
@@ -11206,16 +11193,28 @@ i.icon.paperclip:before {
   content: "\f0c6";
 }
 
+i.icon.parachute.box:before {
+  content: "\f4cd";
+}
+
 i.icon.paragraph:before {
   content: "\f1dd";
 }
 
-i.icon.paste:before {
-  content: "\f0ea";
+i.icon.parking:before {
+  content: "\f540";
 }
 
-i.icon.patreon:before {
-  content: "\f3d9";
+i.icon.passport:before {
+  content: "\f5ab";
+}
+
+i.icon.pastafarianism:before {
+  content: "\f67b";
+}
+
+i.icon.paste:before {
+  content: "\f0ea";
 }
 
 i.icon.pause:before {
@@ -11230,8 +11229,24 @@ i.icon.paw:before {
   content: "\f1b0";
 }
 
-i.icon.paypal:before {
-  content: "\f1ed";
+i.icon.peace:before {
+  content: "\f67c";
+}
+
+i.icon.pen:before {
+  content: "\f304";
+}
+
+i.icon.pen.alternate:before {
+  content: "\f305";
+}
+
+i.icon.pen.fancy:before {
+  content: "\f5ac";
+}
+
+i.icon.pen.nib:before {
+  content: "\f5ad";
 }
 
 i.icon.pen.square:before {
@@ -11242,24 +11257,28 @@ i.icon.pencil.alternate:before {
   content: "\f303";
 }
 
+i.icon.pencil.ruler:before {
+  content: "\f5ae";
+}
+
+i.icon.people.carry:before {
+  content: "\f4ce";
+}
+
 i.icon.percent:before {
   content: "\f295";
 }
 
-i.icon.periscope:before {
-  content: "\f3da";
-}
-
-i.icon.phabricator:before {
-  content: "\f3db";
-}
-
-i.icon.phoenix.framework:before {
-  content: "\f3dc";
+i.icon.percentage:before {
+  content: "\f541";
 }
 
 i.icon.phone:before {
   content: "\f095";
+}
+
+i.icon.phone.slash:before {
+  content: "\f3dd";
 }
 
 i.icon.phone.square:before {
@@ -11270,40 +11289,28 @@ i.icon.phone.volume:before {
   content: "\f2a0";
 }
 
-i.icon.php:before {
-  content: "\f457";
-}
-
-i.icon.pied.piper:before {
-  content: "\f2ae";
-}
-
-i.icon.pied.piper.alternate:before {
-  content: "\f1a8";
-}
-
-i.icon.pied.piper.pp:before {
-  content: "\f1a7";
+i.icon.piggy.bank:before {
+  content: "\f4d3";
 }
 
 i.icon.pills:before {
   content: "\f484";
 }
 
-i.icon.pinterest:before {
-  content: "\f0d2";
-}
-
-i.icon.pinterest.p:before {
-  content: "\f231";
-}
-
-i.icon.pinterest.square:before {
-  content: "\f0d3";
+i.icon.place.of.worship:before {
+  content: "\f67f";
 }
 
 i.icon.plane:before {
   content: "\f072";
+}
+
+i.icon.plane.arrival:before {
+  content: "\f5af";
+}
+
+i.icon.plane.departure:before {
+  content: "\f5b0";
 }
 
 i.icon.play:before {
@@ -11312,10 +11319,6 @@ i.icon.play:before {
 
 i.icon.play.circle:before {
   content: "\f144";
-}
-
-i.icon.playstation:before {
-  content: "\f3df";
 }
 
 i.icon.plug:before {
@@ -11338,6 +11341,26 @@ i.icon.podcast:before {
   content: "\f2ce";
 }
 
+i.icon.poll:before {
+  content: "\f681";
+}
+
+i.icon.poll.horizontal:before {
+  content: "\f682";
+}
+
+i.icon.poo:before {
+  content: "\f2fe";
+}
+
+i.icon.poop:before {
+  content: "\f619";
+}
+
+i.icon.portrait:before {
+  content: "\f3e0";
+}
+
 i.icon.pound.sign:before {
   content: "\f154";
 }
@@ -11346,28 +11369,40 @@ i.icon.power.off:before {
   content: "\f011";
 }
 
+i.icon.pray:before {
+  content: "\f683";
+}
+
+i.icon.praying.hands:before {
+  content: "\f684";
+}
+
+i.icon.prescription:before {
+  content: "\f5b1";
+}
+
+i.icon.prescription.bottle:before {
+  content: "\f485";
+}
+
+i.icon.prescription.bottle.alternate:before {
+  content: "\f486";
+}
+
 i.icon.print:before {
   content: "\f02f";
 }
 
-i.icon.product.hunt:before {
-  content: "\f288";
+i.icon.procedures:before {
+  content: "\f487";
 }
 
-i.icon.pushed:before {
-  content: "\f3e1";
+i.icon.project.diagram:before {
+  content: "\f542";
 }
 
 i.icon.puzzle.piece:before {
   content: "\f12e";
-}
-
-i.icon.python:before {
-  content: "\f3e2";
-}
-
-i.icon.qq:before {
-  content: "\f1d6";
 }
 
 i.icon.qrcode:before {
@@ -11386,14 +11421,6 @@ i.icon.quidditch:before {
   content: "\f458";
 }
 
-i.icon.quinscape:before {
-  content: "\f459";
-}
-
-i.icon.quora:before {
-  content: "\f2c4";
-}
-
 i.icon.quote.left:before {
   content: "\f10d";
 }
@@ -11402,40 +11429,20 @@ i.icon.quote.right:before {
   content: "\f10e";
 }
 
+i.icon.quran:before {
+  content: "\f687";
+}
+
 i.icon.random:before {
   content: "\f074";
 }
 
-i.icon.ravelry:before {
-  content: "\f2d9";
-}
-
-i.icon.react:before {
-  content: "\f41b";
-}
-
-i.icon.rebel:before {
-  content: "\f1d0";
+i.icon.receipt:before {
+  content: "\f543";
 }
 
 i.icon.recycle:before {
   content: "\f1b8";
-}
-
-i.icon.redriver:before {
-  content: "\f3e3";
-}
-
-i.icon.reddit:before {
-  content: "\f1a1";
-}
-
-i.icon.reddit.alien:before {
-  content: "\f281";
-}
-
-i.icon.reddit.square:before {
-  content: "\f1a2";
 }
 
 i.icon.redo:before {
@@ -11450,14 +11457,6 @@ i.icon.registered:before {
   content: "\f25d";
 }
 
-i.icon.rendact:before {
-  content: "\f3e4";
-}
-
-i.icon.renren:before {
-  content: "\f18b";
-}
-
 i.icon.reply:before {
   content: "\f3e5";
 }
@@ -11466,32 +11465,28 @@ i.icon.reply.all:before {
   content: "\f122";
 }
 
-i.icon.replyd:before {
-  content: "\f3e6";
-}
-
-i.icon.resolving:before {
-  content: "\f3e7";
-}
-
 i.icon.retweet:before {
   content: "\f079";
+}
+
+i.icon.ribbon:before {
+  content: "\f4d6";
 }
 
 i.icon.road:before {
   content: "\f018";
 }
 
+i.icon.robot:before {
+  content: "\f544";
+}
+
 i.icon.rocket:before {
   content: "\f135";
 }
 
-i.icon.rocketchat:before {
-  content: "\f3e8";
-}
-
-i.icon.rockrms:before {
-  content: "\f3e9";
+i.icon.route:before {
+  content: "\f4d7";
 }
 
 i.icon.rss:before {
@@ -11506,32 +11501,56 @@ i.icon.ruble.sign:before {
   content: "\f158";
 }
 
+i.icon.ruler:before {
+  content: "\f545";
+}
+
+i.icon.ruler.combined:before {
+  content: "\f546";
+}
+
+i.icon.ruler.horizontal:before {
+  content: "\f547";
+}
+
+i.icon.ruler.vertical:before {
+  content: "\f548";
+}
+
 i.icon.rupee.sign:before {
   content: "\f156";
 }
 
-i.icon.safari:before {
-  content: "\f267";
+i.icon.sad.cry:before {
+  content: "\f5b3";
 }
 
-i.icon.sass:before {
-  content: "\f41e";
+i.icon.sad.tear:before {
+  content: "\f5b4";
 }
 
 i.icon.save:before {
   content: "\f0c7";
 }
 
-i.icon.schlix:before {
-  content: "\f3ea";
+i.icon.school:before {
+  content: "\f549";
 }
 
-i.icon.scribd:before {
-  content: "\f28a";
+i.icon.screwdriver:before {
+  content: "\f54a";
 }
 
 i.icon.search:before {
   content: "\f002";
+}
+
+i.icon.search.dollar:before {
+  content: "\f688";
+}
+
+i.icon.search.location:before {
+  content: "\f689";
 }
 
 i.icon.search.minus:before {
@@ -11542,24 +11561,16 @@ i.icon.search.plus:before {
   content: "\f00e";
 }
 
-i.icon.searchengin:before {
-  content: "\f3eb";
-}
-
-i.icon.sellcast:before {
-  content: "\f2da";
-}
-
-i.icon.sellsy:before {
-  content: "\f213";
+i.icon.seedling:before {
+  content: "\f4d8";
 }
 
 i.icon.server:before {
   content: "\f233";
 }
 
-i.icon.servicestack:before {
-  content: "\f3ec";
+i.icon.shapes:before {
+  content: "\f61f";
 }
 
 i.icon.share:before {
@@ -11594,8 +11605,8 @@ i.icon.shipping.fast:before {
   content: "\f48b";
 }
 
-i.icon.shirtsinbulk:before {
-  content: "\f214";
+i.icon.shoe.prints:before {
+  content: "\f54b";
 }
 
 i.icon.shopping.bag:before {
@@ -11614,68 +11625,76 @@ i.icon.shower:before {
   content: "\f2cc";
 }
 
+i.icon.shuttle.van:before {
+  content: "\f5b6";
+}
+
+i.icon.sign:before {
+  content: "\f4d9";
+}
+
+i.icon.sign.in.alternate:before {
+  content: "\f2f6";
+}
+
 i.icon.sign.language:before {
   content: "\f2a7";
+}
+
+i.icon.sign.out.alternate:before {
+  content: "\f2f5";
 }
 
 i.icon.signal:before {
   content: "\f012";
 }
 
-i.icon.simplybuilt:before {
-  content: "\f215";
-}
-
-i.icon.sistrix:before {
-  content: "\f3ee";
+i.icon.signature:before {
+  content: "\f5b7";
 }
 
 i.icon.sitemap:before {
   content: "\f0e8";
 }
 
-i.icon.skyatlas:before {
-  content: "\f216";
-}
-
-i.icon.skype:before {
-  content: "\f17e";
-}
-
-i.icon.slack:before {
-  content: "\f198";
-}
-
-i.icon.slack.hash:before {
-  content: "\f3ef";
+i.icon.skull:before {
+  content: "\f54c";
 }
 
 i.icon.sliders.horizontal:before {
   content: "\f1de";
 }
 
-i.icon.slideshare:before {
-  content: "\f1e7";
-}
-
 i.icon.smile:before {
   content: "\f118";
 }
 
-i.icon.snapchat:before {
-  content: "\f2ab";
+i.icon.smile.beam:before {
+  content: "\f5b8";
 }
 
-i.icon.snapchat.ghost:before {
-  content: "\f2ac";
+i.icon.smile.wink:before {
+  content: "\f4da";
 }
 
-i.icon.snapchat.square:before {
-  content: "\f2ad";
+i.icon.smoking:before {
+  content: "\f48d";
+}
+
+i.icon.smoking.ban:before {
+  content: "\f54d";
 }
 
 i.icon.snowflake:before {
   content: "\f2dc";
+}
+
+i.icon.socks:before {
+  content: "\f696";
+}
+
+i.icon.solar.panel:before {
+  content: "\f5ba";
 }
 
 i.icon.sort:before {
@@ -11714,24 +11733,24 @@ i.icon.sort.up:before {
   content: "\f0de";
 }
 
-i.icon.soundcloud:before {
-  content: "\f1be";
+i.icon.spa:before {
+  content: "\f5bb";
 }
 
 i.icon.space.shuttle:before {
   content: "\f197";
 }
 
-i.icon.speakap:before {
-  content: "\f3f3";
-}
-
 i.icon.spinner:before {
   content: "\f110";
 }
 
-i.icon.spotify:before {
-  content: "\f1bc";
+i.icon.splotch:before {
+  content: "\f5bc";
+}
+
+i.icon.spray.can:before {
+  content: "\f5bd";
 }
 
 i.icon.square:before {
@@ -11742,36 +11761,36 @@ i.icon.square.full:before {
   content: "\f45c";
 }
 
-i.icon.stack.exchange:before {
-  content: "\f18d";
+i.icon.square.root.alternate:before {
+  content: "\f698";
 }
 
-i.icon.stack.overflow:before {
-  content: "\f16c";
+i.icon.stamp:before {
+  content: "\f5bf";
 }
 
 i.icon.star:before {
   content: "\f005";
 }
 
+i.icon.star.and.crescent:before {
+  content: "\f699";
+}
+
 i.icon.star.half:before {
   content: "\f089";
 }
 
-i.icon.staylinked:before {
-  content: "\f3f5";
+i.icon.star.half.alternate:before {
+  content: "\f5c0";
 }
 
-i.icon.steam:before {
-  content: "\f1b6";
+i.icon.star.of.david:before {
+  content: "\f69a";
 }
 
-i.icon.steam.square:before {
-  content: "\f1b7";
-}
-
-i.icon.steam.symbol:before {
-  content: "\f3f6";
+i.icon.star.of.life:before {
+  content: "\f621";
 }
 
 i.icon.step.backward:before {
@@ -11784,10 +11803,6 @@ i.icon.step.forward:before {
 
 i.icon.stethoscope:before {
   content: "\f0f1";
-}
-
-i.icon.sticker.mule:before {
-  content: "\f3f7";
 }
 
 i.icon.sticky.note:before {
@@ -11806,8 +11821,16 @@ i.icon.stopwatch:before {
   content: "\f2f2";
 }
 
-i.icon.strava:before {
-  content: "\f428";
+i.icon.store:before {
+  content: "\f54e";
+}
+
+i.icon.store.alternate:before {
+  content: "\f54f";
+}
+
+i.icon.stream:before {
+  content: "\f550";
 }
 
 i.icon.street.view:before {
@@ -11818,24 +11841,8 @@ i.icon.strikethrough:before {
   content: "\f0cc";
 }
 
-i.icon.stripe:before {
-  content: "\f429";
-}
-
-i.icon.stripe.s:before {
-  content: "\f42a";
-}
-
-i.icon.studiovinari:before {
-  content: "\f3f8";
-}
-
-i.icon.stumbleupon:before {
-  content: "\f1a4";
-}
-
-i.icon.stumbleupon.circle:before {
-  content: "\f1a3";
+i.icon.stroopwafel:before {
+  content: "\f551";
 }
 
 i.icon.subscript:before {
@@ -11850,20 +11857,36 @@ i.icon.suitcase:before {
   content: "\f0f2";
 }
 
-i.icon.sun:before {
-  content: "\f185";
+i.icon.suitcase.rolling:before {
+  content: "\f5c1";
 }
 
-i.icon.superpowers:before {
-  content: "\f2dd";
+i.icon.sun:before {
+  content: "\f185";
 }
 
 i.icon.superscript:before {
   content: "\f12b";
 }
 
-i.icon.supple:before {
-  content: "\f3f9";
+i.icon.surprise:before {
+  content: "\f5c2";
+}
+
+i.icon.swatchbook:before {
+  content: "\f5c3";
+}
+
+i.icon.swimmer:before {
+  content: "\f5c4";
+}
+
+i.icon.swimming.pool:before {
+  content: "\f5c5";
+}
+
+i.icon.synagogue:before {
+  content: "\f69b";
 }
 
 i.icon.sync:before {
@@ -11894,6 +11917,10 @@ i.icon.tablet.alternate:before {
   content: "\f3fa";
 }
 
+i.icon.tablets:before {
+  content: "\f490";
+}
+
 i.icon.tachometer.alternate:before {
   content: "\f3fd";
 }
@@ -11906,6 +11933,10 @@ i.icon.tags:before {
   content: "\f02c";
 }
 
+i.icon.tape:before {
+  content: "\f4db";
+}
+
 i.icon.tasks:before {
   content: "\f0ae";
 }
@@ -11914,16 +11945,12 @@ i.icon.taxi:before {
   content: "\f1ba";
 }
 
-i.icon.telegram:before {
-  content: "\f2c6";
+i.icon.teeth:before {
+  content: "\f62e";
 }
 
-i.icon.telegram.plane:before {
-  content: "\f3fe";
-}
-
-i.icon.tencent.weibo:before {
-  content: "\f1d5";
+i.icon.teeth.open:before {
+  content: "\f62f";
 }
 
 i.icon.terminal:before {
@@ -11950,8 +11977,8 @@ i.icon.th.list:before {
   content: "\f00b";
 }
 
-i.icon.themeisle:before {
-  content: "\f2b2";
+i.icon.theater.masks:before {
+  content: "\f630";
 }
 
 i.icon.thermometer:before {
@@ -12006,6 +12033,14 @@ i.icon.tint:before {
   content: "\f043";
 }
 
+i.icon.tint.slash:before {
+  content: "\f5c7";
+}
+
+i.icon.tired:before {
+  content: "\f5c8";
+}
+
 i.icon.toggle.off:before {
   content: "\f204";
 }
@@ -12014,8 +12049,28 @@ i.icon.toggle.on:before {
   content: "\f205";
 }
 
+i.icon.toolbox:before {
+  content: "\f552";
+}
+
+i.icon.tooth:before {
+  content: "\f5c9";
+}
+
+i.icon.torah:before {
+  content: "\f6a0";
+}
+
+i.icon.torii.gate:before {
+  content: "\f6a1";
+}
+
 i.icon.trademark:before {
   content: "\f25c";
+}
+
+i.icon.traffic.light:before {
+  content: "\f637";
 }
 
 i.icon.train:before {
@@ -12042,14 +12097,6 @@ i.icon.tree:before {
   content: "\f1bb";
 }
 
-i.icon.trello:before {
-  content: "\f181";
-}
-
-i.icon.tripadvisor:before {
-  content: "\f262";
-}
-
 i.icon.trophy:before {
   content: "\f091";
 }
@@ -12058,48 +12105,40 @@ i.icon.truck:before {
   content: "\f0d1";
 }
 
+i.icon.truck.monster:before {
+  content: "\f63b";
+}
+
+i.icon.truck.moving:before {
+  content: "\f4df";
+}
+
+i.icon.truck.packing:before {
+  content: "\f4de";
+}
+
+i.icon.truck.pickup:before {
+  content: "\f63c";
+}
+
+i.icon.tshirt:before {
+  content: "\f553";
+}
+
 i.icon.tty:before {
   content: "\f1e4";
-}
-
-i.icon.tumblr:before {
-  content: "\f173";
-}
-
-i.icon.tumblr.square:before {
-  content: "\f174";
 }
 
 i.icon.tv:before {
   content: "\f26c";
 }
 
-i.icon.twitch:before {
-  content: "\f1e8";
-}
-
-i.icon.twitter:before {
-  content: "\f099";
-}
-
-i.icon.twitter.square:before {
-  content: "\f081";
-}
-
-i.icon.typo3:before {
-  content: "\f42b";
-}
-
-i.icon.uber:before {
-  content: "\f402";
-}
-
-i.icon.uikit:before {
-  content: "\f403";
-}
-
 i.icon.umbrella:before {
   content: "\f0e9";
+}
+
+i.icon.umbrella.beach:before {
+  content: "\f5ca";
 }
 
 i.icon.underline:before {
@@ -12112,10 +12151,6 @@ i.icon.undo:before {
 
 i.icon.undo.alternate:before {
   content: "\f2ea";
-}
-
-i.icon.uniregistry:before {
-  content: "\f404";
 }
 
 i.icon.universal.access:before {
@@ -12138,28 +12173,68 @@ i.icon.unlock.alternate:before {
   content: "\f13e";
 }
 
-i.icon.untappd:before {
-  content: "\f405";
-}
-
 i.icon.upload:before {
   content: "\f093";
-}
-
-i.icon.usb:before {
-  content: "\f287";
 }
 
 i.icon.user:before {
   content: "\f007";
 }
 
+i.icon.user.alternate:before {
+  content: "\f406";
+}
+
+i.icon.user.alternate.slash:before {
+  content: "\f4fa";
+}
+
+i.icon.user.astronaut:before {
+  content: "\f4fb";
+}
+
+i.icon.user.check:before {
+  content: "\f4fc";
+}
+
 i.icon.user.circle:before {
   content: "\f2bd";
 }
 
+i.icon.user.clock:before {
+  content: "\f4fd";
+}
+
+i.icon.user.cog:before {
+  content: "\f4fe";
+}
+
+i.icon.user.edit:before {
+  content: "\f4ff";
+}
+
+i.icon.user.friends:before {
+  content: "\f500";
+}
+
+i.icon.user.graduate:before {
+  content: "\f501";
+}
+
+i.icon.user.lock:before {
+  content: "\f502";
+}
+
 i.icon.user.md:before {
   content: "\f0f0";
+}
+
+i.icon.user.minus:before {
+  content: "\f503";
+}
+
+i.icon.user.ninja:before {
+  content: "\f504";
 }
 
 i.icon.user.plus:before {
@@ -12170,6 +12245,22 @@ i.icon.user.secret:before {
   content: "\f21b";
 }
 
+i.icon.user.shield:before {
+  content: "\f505";
+}
+
+i.icon.user.slash:before {
+  content: "\f506";
+}
+
+i.icon.user.tag:before {
+  content: "\f507";
+}
+
+i.icon.user.tie:before {
+  content: "\f508";
+}
+
 i.icon.user.times:before {
   content: "\f235";
 }
@@ -12178,8 +12269,8 @@ i.icon.users:before {
   content: "\f0c0";
 }
 
-i.icon.ussunnah:before {
-  content: "\f407";
+i.icon.users.cog:before {
+  content: "\f509";
 }
 
 i.icon.utensil.spoon:before {
@@ -12190,8 +12281,8 @@ i.icon.utensils:before {
   content: "\f2e7";
 }
 
-i.icon.vaadin:before {
-  content: "\f408";
+i.icon.vector.square:before {
+  content: "\f5cb";
 }
 
 i.icon.venus:before {
@@ -12206,48 +12297,24 @@ i.icon.venus.mars:before {
   content: "\f228";
 }
 
-i.icon.viacoin:before {
-  content: "\f237";
+i.icon.vial:before {
+  content: "\f492";
 }
 
-i.icon.viadeo:before {
-  content: "\f2a9";
-}
-
-i.icon.viadeo.square:before {
-  content: "\f2aa";
-}
-
-i.icon.viber:before {
-  content: "\f409";
+i.icon.vials:before {
+  content: "\f493";
 }
 
 i.icon.video:before {
   content: "\f03d";
 }
 
-i.icon.vimeo:before {
-  content: "\f40a";
+i.icon.video.slash:before {
+  content: "\f4e2";
 }
 
-i.icon.vimeo.square:before {
-  content: "\f194";
-}
-
-i.icon.vimeo.v:before {
-  content: "\f27d";
-}
-
-i.icon.vine:before {
-  content: "\f1ca";
-}
-
-i.icon.vk:before {
-  content: "\f189";
-}
-
-i.icon.vnv:before {
-  content: "\f40b";
+i.icon.vihara:before {
+  content: "\f6a7";
 }
 
 i.icon.volleyball.ball:before {
@@ -12266,48 +12333,32 @@ i.icon.volume.up:before {
   content: "\f028";
 }
 
-i.icon.vuejs:before {
-  content: "\f41f";
+i.icon.walking:before {
+  content: "\f554";
+}
+
+i.icon.wallet:before {
+  content: "\f555";
 }
 
 i.icon.warehouse:before {
   content: "\f494";
 }
 
-i.icon.weibo:before {
-  content: "\f18a";
-}
-
 i.icon.weight:before {
   content: "\f496";
 }
 
-i.icon.weixin:before {
-  content: "\f1d7";
-}
-
-i.icon.whatsapp:before {
-  content: "\f232";
-}
-
-i.icon.whatsapp.square:before {
-  content: "\f40c";
+i.icon.weight.hanging:before {
+  content: "\f5cd";
 }
 
 i.icon.wheelchair:before {
   content: "\f193";
 }
 
-i.icon.whmcs:before {
-  content: "\f40d";
-}
-
 i.icon.wifi:before {
   content: "\f1eb";
-}
-
-i.icon.wikipedia.w:before {
-  content: "\f266";
 }
 
 i.icon.window.close:before {
@@ -12326,84 +12377,32 @@ i.icon.window.restore:before {
   content: "\f2d2";
 }
 
-i.icon.windows:before {
-  content: "\f17a";
+i.icon.wine.glass:before {
+  content: "\f4e3";
+}
+
+i.icon.wine.glass.alternate:before {
+  content: "\f5ce";
 }
 
 i.icon.won.sign:before {
   content: "\f159";
 }
 
-i.icon.wordpress:before {
-  content: "\f19a";
-}
-
-i.icon.wordpress.simple:before {
-  content: "\f411";
-}
-
-i.icon.wpbeginner:before {
-  content: "\f297";
-}
-
-i.icon.wpexplorer:before {
-  content: "\f2de";
-}
-
-i.icon.wpforms:before {
-  content: "\f298";
-}
-
 i.icon.wrench:before {
   content: "\f0ad";
 }
 
-i.icon.xbox:before {
-  content: "\f412";
-}
-
-i.icon.xing:before {
-  content: "\f168";
-}
-
-i.icon.xing.square:before {
-  content: "\f169";
-}
-
-i.icon.y.combinator:before {
-  content: "\f23b";
-}
-
-i.icon.yahoo:before {
-  content: "\f19e";
-}
-
-i.icon.yandex:before {
-  content: "\f413";
-}
-
-i.icon.yandex.international:before {
-  content: "\f414";
-}
-
-i.icon.yelp:before {
-  content: "\f1e9";
+i.icon.x.ray:before {
+  content: "\f497";
 }
 
 i.icon.yen.sign:before {
   content: "\f157";
 }
 
-i.icon.yoast:before {
-  content: "\f2b1";
-}
-
-i.icon.youtube:before {
-  content: "\f167";
-}
-
-i.icon.youtube.square:before {
-  content: "\f431";
+i.icon.yin.yang:before {
+  content: "\f6ad";
 }
 
 /* Aliases */
@@ -12430,42 +12429,6 @@ i.icon.shield:before {
 
 i.icon.puzzle:before {
   content: "\f12e";
-}
-
-i.icon.credit.card.amazon.pay:before {
-  content: "\f42d";
-}
-
-i.icon.credit.card.american.express:before {
-  content: "\f1f3";
-}
-
-i.icon.credit.card.diners.club:before {
-  content: "\f24c";
-}
-
-i.icon.credit.card.discover:before {
-  content: "\f1f2";
-}
-
-i.icon.credit.card.jcb:before {
-  content: "\f24b";
-}
-
-i.icon.credit.card.mastercard:before {
-  content: "\f1f1";
-}
-
-i.icon.credit.card.paypal:before {
-  content: "\f1f4";
-}
-
-i.icon.credit.card.stripe:before {
-  content: "\f1f5";
-}
-
-i.icon.credit.card.visa:before {
-  content: "\f1f0";
 }
 
 i.icon.add.circle:before {
@@ -12506,18 +12469,6 @@ i.icon.ald:before {
 
 i.icon.als:before {
   content: "\f2a2";
-}
-
-i.icon.american.express.card:before {
-  content: "\f1f3";
-}
-
-i.icon.american.express:before {
-  content: "\f1f3";
-}
-
-i.icon.amex:before {
-  content: "\f1f3";
 }
 
 i.icon.announcement:before {
@@ -12612,10 +12563,6 @@ i.icon.block.layout:before {
   content: "\f009";
 }
 
-i.icon.bluetooth.alternative:before {
-  content: "\f294";
-}
-
 i.icon.broken.chain:before {
   content: "\f127";
 }
@@ -12708,22 +12655,6 @@ i.icon.detective:before {
   content: "\f21b";
 }
 
-i.icon.diners.club.card:before {
-  content: "\f24c";
-}
-
-i.icon.diners.club:before {
-  content: "\f24c";
-}
-
-i.icon.discover.card:before {
-  content: "\f1f2";
-}
-
-i.icon.discover:before {
-  content: "\f1f2";
-}
-
 i.icon.discussions:before {
   content: "\f086";
 }
@@ -12740,10 +12671,6 @@ i.icon.dont:before {
   content: "\f05e";
 }
 
-i.icon.dribble:before {
-  content: "\f17d";
-}
-
 i.icon.drivers.license:before {
   content: "\f2c2";
 }
@@ -12752,16 +12679,8 @@ i.icon.dropdown:before {
   content: "\f0d7";
 }
 
-i.icon.eercast:before {
-  content: "\f2da";
-}
-
 i.icon.emergency:before {
   content: "\f0f9";
-}
-
-i.icon.envira.gallery:before {
-  content: "\f299";
 }
 
 i.icon.erase:before {
@@ -12778,10 +12697,6 @@ i.icon.euro:before {
 
 i.icon.eyedropper:before {
   content: "\f1fb";
-}
-
-i.icon.fa:before {
-  content: "\f2b4";
 }
 
 i.icon.factory:before {
@@ -12812,10 +12727,6 @@ i.icon.first.aid:before {
   content: "\f0fa";
 }
 
-i.icon.five.hundred.pixels:before {
-  content: "\f26e";
-}
-
 i.icon.fork:before {
   content: "\f126";
 }
@@ -12830,18 +12741,6 @@ i.icon.gay:before {
 
 i.icon.gbp:before {
   content: "\f154";
-}
-
-i.icon.gittip:before {
-  content: "\f184";
-}
-
-i.icon.google.plus.circle:before {
-  content: "\f2b3";
-}
-
-i.icon.google.plus.official:before {
-  content: "\f2b3";
 }
 
 i.icon.grab:before {
@@ -12928,7 +12827,7 @@ i.icon.ils:before {
   content: "\f20b";
 }
 
-i.icon.in-cart:before {
+i.icon.in.cart:before {
   content: "\f218";
 }
 
@@ -12942,18 +12841,6 @@ i.icon.intergender:before {
 
 i.icon.intersex:before {
   content: "\f224";
-}
-
-i.icon.japan.credit.bureau.card:before {
-  content: "\f24b";
-}
-
-i.icon.japan.credit.bureau:before {
-  content: "\f24b";
-}
-
-i.icon.jcb:before {
-  content: "\f24b";
 }
 
 i.icon.jpy:before {
@@ -12990,10 +12877,6 @@ i.icon.like:before {
 
 i.icon.line.graph:before {
   content: "\f201";
-}
-
-i.icon.linkedin.square:before {
-  content: "\f08c";
 }
 
 i.icon.linkify:before {
@@ -13048,32 +12931,12 @@ i.icon.mars.vertical:before {
   content: "\f22a";
 }
 
-i.icon.mastercard.card:before {
-  content: "\f1f1";
-}
-
-i.icon.mastercard:before {
-  content: "\f1f1";
-}
-
-i.icon.microsoft.edge:before {
-  content: "\f282";
-}
-
 i.icon.military:before {
   content: "\f0fb";
 }
 
-i.icon.ms.edge:before {
-  content: "\f282";
-}
-
 i.icon.mute:before {
   content: "\f131";
-}
-
-i.icon.new.pied.piper:before {
-  content: "\f2ae";
 }
 
 i.icon.non.binary.transgender:before {
@@ -13082,10 +12945,6 @@ i.icon.non.binary.transgender:before {
 
 i.icon.numbered.list:before {
   content: "\f0cb";
-}
-
-i.icon.optinmonster:before {
-  content: "\f23c";
 }
 
 i.icon.options:before {
@@ -13108,10 +12967,6 @@ i.icon.payment:before {
   content: "\f09d";
 }
 
-i.icon.paypal.card:before {
-  content: "\f1f4";
-}
-
 i.icon.pencil.square:before {
   content: "\f14b";
 }
@@ -13132,20 +12987,12 @@ i.icon.pie.graph:before {
   content: "\f200";
 }
 
-i.icon.pied.piper.hat:before {
-  content: "\f2ae";
-}
-
 i.icon.pin:before {
   content: "\f08d";
 }
 
 i.icon.plus.cart:before {
   content: "\f217";
-}
-
-i.icon.pocket:before {
-  content: "\f265";
 }
 
 i.icon.point:before {
@@ -13344,10 +13191,6 @@ i.icon.spy:before {
   content: "\f21b";
 }
 
-i.icon.stripe.card:before {
-  content: "\f1f5";
-}
-
 i.icon.student:before {
   content: "\f19d";
 }
@@ -13374,10 +13217,6 @@ i.icon.text.cursor:before {
 
 i.icon.text.telephone:before {
   content: "\f1e4";
-}
-
-i.icon.theme.isle:before {
-  content: "\f2b2";
 }
 
 i.icon.theme:before {
@@ -13492,14 +13331,6 @@ i.icon.video.play:before {
   content: "\f144";
 }
 
-i.icon.visa.card:before {
-  content: "\f1f0";
-}
-
-i.icon.visa:before {
-  content: "\f1f0";
-}
-
 i.icon.volume.control.phone:before {
   content: "\f2a0";
 }
@@ -13520,16 +13351,8 @@ i.icon.warning:before {
   content: "\f12a";
 }
 
-i.icon.wechat:before {
-  content: "\f1d7";
-}
-
-i.icon.wi-fi:before {
+i.icon.wi.fi:before {
   content: "\f1eb";
-}
-
-i.icon.wikipedia:before {
-  content: "\f266";
 }
 
 i.icon.winner:before {
@@ -13548,14 +13371,6 @@ i.icon.won:before {
   content: "\f159";
 }
 
-i.icon.wordpress.beginner:before {
-  content: "\f297";
-}
-
-i.icon.wordpress.forms:before {
-  content: "\f298";
-}
-
 i.icon.world:before {
   content: "\f0ac";
 }
@@ -13568,14 +13383,6 @@ i.icon.x:before {
   content: "\f00d";
 }
 
-i.icon.yc:before {
-  content: "\f23b";
-}
-
-i.icon.ycombinator:before {
-  content: "\f23b";
-}
-
 i.icon.yen:before {
   content: "\f157";
 }
@@ -13584,20 +13391,16 @@ i.icon.zip:before {
   content: "\f187";
 }
 
-i.icon.zoom-in:before {
+i.icon.zoom.in:before {
   content: "\f00e";
 }
 
-i.icon.zoom-out:before {
+i.icon.zoom.out:before {
   content: "\f010";
 }
 
 i.icon.zoom:before {
   content: "\f00e";
-}
-
-i.icon.bitbucket.square:before {
-  content: "\f171";
 }
 
 i.icon.checkmark.box:before {
@@ -13660,12 +13463,12 @@ i.icon.external:before {
   content: "\f35d";
 }
 
-i.icon.facebook.official:before {
-  content: "\f082";
-}
-
 i.icon.food:before {
   content: "\f2e7";
+}
+
+i.icon.heart.empty:before {
+  content: "\f004";
 }
 
 i.icon.hourglass.zero:before {
@@ -13680,7 +13483,7 @@ i.icon.level.up:before {
   content: "\f3bf";
 }
 
-i.icon.logout:before {
+i.icon.log.out:before {
   content: "\f2f5";
 }
 
@@ -13720,16 +13523,20 @@ i.icon.resize.vertical:before {
   content: "\f338";
 }
 
-i.icon.sign-in:before {
+i.icon.sign.in:before {
   content: "\f2f6";
 }
 
-i.icon.sign-out:before {
+i.icon.sign.out:before {
   content: "\f2f5";
 }
 
 i.icon.spoon:before {
   content: "\f2e5";
+}
+
+i.icon.star.empty:before {
+  content: "\f089";
 }
 
 i.icon.star.half.empty:before {
@@ -13752,12 +13559,8 @@ i.icon.write:before {
   content: "\f303";
 }
 
-i.icon.youtube.play:before {
-  content: "\f167";
-}
-
 /*******************************
-        Outline Icons
+         Outline Icons
 *******************************/
 
 /* Outline Icon */
@@ -13787,6 +13590,10 @@ i.icon.address.book.outline:before {
 
 i.icon.address.card.outline:before {
   content: "\f2bb";
+}
+
+i.icon.angry.outline:before {
+  content: "\f556";
 }
 
 i.icon.arrow.alternate.circle.down.outline:before {
@@ -13821,10 +13628,6 @@ i.icon.building.outline:before {
   content: "\f1ad";
 }
 
-i.icon.calendar.outline:before {
-  content: "\f133";
-}
-
 i.icon.calendar.alternate.outline:before {
   content: "\f073";
 }
@@ -13835,6 +13638,10 @@ i.icon.calendar.check.outline:before {
 
 i.icon.calendar.minus.outline:before {
   content: "\f272";
+}
+
+i.icon.calendar.outline:before {
+  content: "\f133";
 }
 
 i.icon.calendar.plus.outline:before {
@@ -13893,12 +13700,16 @@ i.icon.closed.captioning.outline:before {
   content: "\f20a";
 }
 
-i.icon.comment.outline:before {
-  content: "\f075";
-}
-
 i.icon.comment.alternate.outline:before {
   content: "\f27a";
+}
+
+i.icon.comment.dots.outline:before {
+  content: "\f4ad";
+}
+
+i.icon.comment.outline:before {
+  content: "\f075";
 }
 
 i.icon.comments.outline:before {
@@ -13921,6 +13732,10 @@ i.icon.credit.card.outline:before {
   content: "\f09d";
 }
 
+i.icon.dizzy.outline:before {
+  content: "\f567";
+}
+
 i.icon.dot.circle.outline:before {
   content: "\f192";
 }
@@ -13929,20 +13744,20 @@ i.icon.edit.outline:before {
   content: "\f044";
 }
 
-i.icon.envelope.outline:before {
-  content: "\f0e0";
-}
-
 i.icon.envelope.open.outline:before {
   content: "\f2b6";
 }
 
-i.icon.eye.slash.outline:before {
-  content: "\f070";
+i.icon.envelope.outline:before {
+  content: "\f0e0";
 }
 
-i.icon.file.outline:before {
-  content: "\f15b";
+i.icon.eye.outline:before {
+  content: "\f06e";
+}
+
+i.icon.eye.slash.outline:before {
+  content: "\f070";
 }
 
 i.icon.file.alternate.outline:before {
@@ -13969,6 +13784,10 @@ i.icon.file.image.outline:before {
   content: "\f1c5";
 }
 
+i.icon.file.outline:before {
+  content: "\f15b";
+}
+
 i.icon.file.pdf.outline:before {
   content: "\f1c1";
 }
@@ -13989,12 +13808,24 @@ i.icon.flag.outline:before {
   content: "\f024";
 }
 
-i.icon.folder.outline:before {
-  content: "\f07b";
+i.icon.flushed.outline:before {
+  content: "\f579";
 }
 
 i.icon.folder.open.outline:before {
   content: "\f07c";
+}
+
+i.icon.folder.outline:before {
+  content: "\f07b";
+}
+
+i.icon.font.awesome.logo.full.outline:before {
+  content: "\f4e6";
+}
+
+i.icon.frown.open.outline:before {
+  content: "\f57a";
 }
 
 i.icon.frown.outline:before {
@@ -14007,6 +13838,62 @@ i.icon.futbol.outline:before {
 
 i.icon.gem.outline:before {
   content: "\f3a5";
+}
+
+i.icon.grimace.outline:before {
+  content: "\f57f";
+}
+
+i.icon.grin.alternate.outline:before {
+  content: "\f581";
+}
+
+i.icon.grin.beam.outline:before {
+  content: "\f582";
+}
+
+i.icon.grin.beam.sweat.outline:before {
+  content: "\f583";
+}
+
+i.icon.grin.hearts.outline:before {
+  content: "\f584";
+}
+
+i.icon.grin.outline:before {
+  content: "\f580";
+}
+
+i.icon.grin.squint.outline:before {
+  content: "\f585";
+}
+
+i.icon.grin.squint.tears.outline:before {
+  content: "\f586";
+}
+
+i.icon.grin.stars.outline:before {
+  content: "\f587";
+}
+
+i.icon.grin.tears.outline:before {
+  content: "\f588";
+}
+
+i.icon.grin.tongue.outline:before {
+  content: "\f589";
+}
+
+i.icon.grin.tongue.squint.outline:before {
+  content: "\f58a";
+}
+
+i.icon.grin.tongue.wink.outline:before {
+  content: "\f58b";
+}
+
+i.icon.grin.wink.outline:before {
+  content: "\f58c";
 }
 
 i.icon.hand.lizard.outline:before {
@@ -14093,6 +13980,34 @@ i.icon.keyboard.outline:before {
   content: "\f11c";
 }
 
+i.icon.kiss.beam.outline:before {
+  content: "\f597";
+}
+
+i.icon.kiss.outline:before {
+  content: "\f596";
+}
+
+i.icon.kiss.wink.heart.outline:before {
+  content: "\f598";
+}
+
+i.icon.laugh.beam.outline:before {
+  content: "\f59a";
+}
+
+i.icon.laugh.outline:before {
+  content: "\f599";
+}
+
+i.icon.laugh.squint.outline:before {
+  content: "\f59b";
+}
+
+i.icon.laugh.wink.outline:before {
+  content: "\f59c";
+}
+
 i.icon.lemon.outline:before {
   content: "\f094";
 }
@@ -14113,8 +14028,16 @@ i.icon.map.outline:before {
   content: "\f279";
 }
 
+i.icon.meh.blank.outline:before {
+  content: "\f5a4";
+}
+
 i.icon.meh.outline:before {
   content: "\f11a";
+}
+
+i.icon.meh.rolling.eyes.outline:before {
+  content: "\f5a5";
 }
 
 i.icon.minus.square.outline:before {
@@ -14165,6 +14088,14 @@ i.icon.registered.outline:before {
   content: "\f25d";
 }
 
+i.icon.sad.cry.outline:before {
+  content: "\f5b3";
+}
+
+i.icon.sad.tear.outline:before {
+  content: "\f5b4";
+}
+
 i.icon.save.outline:before {
   content: "\f0c7";
 }
@@ -14173,8 +14104,16 @@ i.icon.share.square.outline:before {
   content: "\f14d";
 }
 
+i.icon.smile.beam.outline:before {
+  content: "\f5b8";
+}
+
 i.icon.smile.outline:before {
   content: "\f118";
+}
+
+i.icon.smile.wink.outline:before {
+  content: "\f4da";
 }
 
 i.icon.snowflake.outline:before {
@@ -14185,12 +14124,12 @@ i.icon.square.outline:before {
   content: "\f0c8";
 }
 
-i.icon.star.outline:before {
-  content: "\f005";
-}
-
 i.icon.star.half.outline:before {
   content: "\f089";
+}
+
+i.icon.star.outline:before {
+  content: "\f005";
 }
 
 i.icon.sticky.note.outline:before {
@@ -14205,6 +14144,10 @@ i.icon.sun.outline:before {
   content: "\f185";
 }
 
+i.icon.surprise.outline:before {
+  content: "\f5c2";
+}
+
 i.icon.thumbs.down.outline:before {
   content: "\f165";
 }
@@ -14217,16 +14160,20 @@ i.icon.times.circle.outline:before {
   content: "\f057";
 }
 
+i.icon.tired.outline:before {
+  content: "\f5c8";
+}
+
 i.icon.trash.alternate.outline:before {
   content: "\f2ed";
 }
 
-i.icon.user.outline:before {
-  content: "\f007";
-}
-
 i.icon.user.circle.outline:before {
   content: "\f2bd";
+}
+
+i.icon.user.outline:before {
+  content: "\f007";
 }
 
 i.icon.window.close.outline:before {
@@ -14245,27 +14192,8 @@ i.icon.window.restore.outline:before {
   content: "\f2d2";
 }
 
-i.icon.disk.outline:before {
-  content: "\f369";
-}
-
-/* Outline Aliases */
-
-i.icon.heart.empty,
-i.icon.star.empty {
-  font-family: 'outline-icons';
-}
-
-i.icon.heart.empty:before {
-  content: "\f004";
-}
-
-i.icon.star.empty:before {
-  content: "\f089";
-}
-
 /*******************************
-           Brand Icons
+          Brand Icons
 *******************************/
 
 /* Load & Define Brand Font */
@@ -14284,12 +14212,13 @@ i.icon.star.empty:before {
 /* Brand Icon Font Family */
 
 i.icon.\35 00px,
-i.icon.accessible.icon,
+i.icon.accessible,
 i.icon.accusoft,
 i.icon.adn,
 i.icon.adversal,
 i.icon.affiliatetheme,
 i.icon.algolia,
+i.icon.alipay,
 i.icon.amazon,
 i.icon.amazon.pay,
 i.icon.amilia,
@@ -14345,6 +14274,18 @@ i.icon.connectdevelop,
 i.icon.contao,
 i.icon.cpanel,
 i.icon.creative.commons,
+i.icon.creative.commons.by,
+i.icon.creative.commons.nc,
+i.icon.creative.commons.nc.eu,
+i.icon.creative.commons.nc.jp,
+i.icon.creative.commons.nd,
+i.icon.creative.commons.pd,
+i.icon.creative.commons.pd.alternate,
+i.icon.creative.commons.remix,
+i.icon.creative.commons.sa,
+i.icon.creative.commons.sampling,
+i.icon.creative.commons.sampling.plus,
+i.icon.creative.commons.share,
 i.icon.css3,
 i.icon.css3.alternate,
 i.icon.cuttlefish,
@@ -14367,8 +14308,10 @@ i.icon.dropbox,
 i.icon.drupal,
 i.icon.dyalog,
 i.icon.earlybirds,
+i.icon.ebay,
 i.icon.edge,
 i.icon.elementor,
+i.icon.ello,
 i.icon.ember,
 i.icon.empire,
 i.icon.envira,
@@ -14382,6 +14325,7 @@ i.icon.facebook.messenger,
 i.icon.facebook.square,
 i.icon.firefox,
 i.icon.first.order,
+i.icon.first.order.alternate,
 i.icon.firstdraft,
 i.icon.flickr,
 i.icon.flipboard,
@@ -14389,6 +14333,7 @@ i.icon.fly,
 i.icon.font.awesome,
 i.icon.font.awesome.alternate,
 i.icon.font.awesome.flag,
+i.icon.font.awesome.logo.full,
 i.icon.fonticons,
 i.icon.fonticons.fi,
 i.icon.fort.awesome,
@@ -14397,6 +14342,9 @@ i.icon.forumbee,
 i.icon.foursquare,
 i.icon.free.code.camp,
 i.icon.freebsd,
+i.icon.fulcrum,
+i.icon.galactic.republic,
+i.icon.galactic.senate,
 i.icon.get.pocket,
 i.icon.gg,
 i.icon.gg.circle,
@@ -14427,9 +14375,11 @@ i.icon.grunt,
 i.icon.gulp,
 i.icon.hacker.news,
 i.icon.hacker.news.square,
+i.icon.hackerrank,
 i.icon.hips,
 i.icon.hire.a.helper,
 i.icon.hooli,
+i.icon.hornbill,
 i.icon.hotjar,
 i.icon.houzz,
 i.icon.html5,
@@ -14440,12 +14390,16 @@ i.icon.internet.explorer,
 i.icon.ioxhost,
 i.icon.itunes,
 i.icon.itunes.note,
+i.icon.java,
+i.icon.jedi.order,
 i.icon.jenkins,
 i.icon.joget,
 i.icon.joomla,
 i.icon.js,
 i.icon.js.square,
 i.icon.jsfiddle,
+i.icon.kaggle,
+i.icon.keybase,
 i.icon.keycdn,
 i.icon.kickstarter,
 i.icon.kickstarter.k,
@@ -14454,21 +14408,25 @@ i.icon.laravel,
 i.icon.lastfm,
 i.icon.lastfm.square,
 i.icon.leanpub,
-i.icon.less,
+i.icon.lesscss,
 i.icon.linechat,
 i.icon.linkedin,
-i.icon.linkedin.alternate,
 i.icon.linkedin.in,
 i.icon.linode,
 i.icon.linux,
 i.icon.lyft,
 i.icon.magento,
+i.icon.mailchimp,
+i.icon.mandalorian,
+i.icon.markdown,
+i.icon.mastodon,
 i.icon.maxcdn,
 i.icon.medapps,
 i.icon.medium,
 i.icon.medium.m,
 i.icon.medrt,
 i.icon.meetup,
+i.icon.megaport,
 i.icon.microsoft,
 i.icon.mix,
 i.icon.mixcloud,
@@ -14476,6 +14434,8 @@ i.icon.mizuni,
 i.icon.modx,
 i.icon.monero,
 i.icon.napster,
+i.icon.neos,
+i.icon.nimblr,
 i.icon.nintendo.switch,
 i.icon.node,
 i.icon.node.js,
@@ -14484,6 +14444,7 @@ i.icon.ns8,
 i.icon.nutritionix,
 i.icon.odnoklassniki,
 i.icon.odnoklassniki.square,
+i.icon.old.republic,
 i.icon.opencart,
 i.icon.openid,
 i.icon.opera,
@@ -14497,9 +14458,11 @@ i.icon.paypal,
 i.icon.periscope,
 i.icon.phabricator,
 i.icon.phoenix.framework,
+i.icon.phoenix.squadron,
 i.icon.php,
 i.icon.pied.piper,
 i.icon.pied.piper.alternate,
+i.icon.pied.piper.hat,
 i.icon.pied.piper.pp,
 i.icon.pinterest,
 i.icon.pinterest.p,
@@ -14511,17 +14474,21 @@ i.icon.python,
 i.icon.qq,
 i.icon.quinscape,
 i.icon.quora,
+i.icon.r.project,
 i.icon.ravelry,
 i.icon.react,
+i.icon.readme,
 i.icon.rebel,
-i.icon.redriver,
 i.icon.reddit,
 i.icon.reddit.alien,
 i.icon.reddit.square,
+i.icon.redriver,
 i.icon.rendact,
 i.icon.renren,
 i.icon.replyd,
+i.icon.researchgate,
 i.icon.resolving,
+i.icon.rev,
 i.icon.rocketchat,
 i.icon.rockrms,
 i.icon.safari,
@@ -14533,8 +14500,10 @@ i.icon.sellcast,
 i.icon.sellsy,
 i.icon.servicestack,
 i.icon.shirtsinbulk,
+i.icon.shopware,
 i.icon.simplybuilt,
 i.icon.sistrix,
+i.icon.sith,
 i.icon.skyatlas,
 i.icon.skype,
 i.icon.slack,
@@ -14546,6 +14515,7 @@ i.icon.snapchat.square,
 i.icon.soundcloud,
 i.icon.speakap,
 i.icon.spotify,
+i.icon.squarespace,
 i.icon.stack.exchange,
 i.icon.stack.overflow,
 i.icon.staylinked,
@@ -14561,10 +14531,14 @@ i.icon.stumbleupon,
 i.icon.stumbleupon.circle,
 i.icon.superpowers,
 i.icon.supple,
+i.icon.teamspeak,
 i.icon.telegram,
 i.icon.telegram.plane,
 i.icon.tencent.weibo,
+i.icon.the.red.yeti,
+i.icon.themeco,
 i.icon.themeisle,
+i.icon.trade.federation,
 i.icon.trello,
 i.icon.tripadvisor,
 i.icon.tumblr,
@@ -14591,7 +14565,7 @@ i.icon.vine,
 i.icon.vk,
 i.icon.vnv,
 i.icon.vuejs,
-i.icon.wechat,
+i.icon.weebly,
 i.icon.weibo,
 i.icon.weixin,
 i.icon.whatsapp,
@@ -14599,6 +14573,8 @@ i.icon.whatsapp.square,
 i.icon.whmcs,
 i.icon.wikipedia.w,
 i.icon.windows,
+i.icon.wix,
+i.icon.wolf.pack.battalion,
 i.icon.wordpress,
 i.icon.wordpress.simple,
 i.icon.wpbeginner,
@@ -14614,17 +14590,1809 @@ i.icon.yandex.international,
 i.icon.yelp,
 i.icon.yoast,
 i.icon.youtube,
-i.icon.youtube.square {
+i.icon.youtube.square,
+i.icon.zhihu {
   font-family: 'brand-icons';
 }
 
-/* Brand Icons Ideally Would Be Defined Here */
+/* Icon Definitions */
+
+i.icon.\35 00px:before {
+  content: "\f26e";
+}
+
+i.icon.accessible:before {
+  content: "\f368";
+}
+
+i.icon.accusoft:before {
+  content: "\f369";
+}
+
+i.icon.adn:before {
+  content: "\f170";
+}
+
+i.icon.adversal:before {
+  content: "\f36a";
+}
+
+i.icon.affiliatetheme:before {
+  content: "\f36b";
+}
+
+i.icon.algolia:before {
+  content: "\f36c";
+}
+
+i.icon.alipay:before {
+  content: "\f642";
+}
+
+i.icon.amazon:before {
+  content: "\f270";
+}
+
+i.icon.amazon.pay:before {
+  content: "\f42c";
+}
+
+i.icon.amilia:before {
+  content: "\f36d";
+}
+
+i.icon.android:before {
+  content: "\f17b";
+}
+
+i.icon.angellist:before {
+  content: "\f209";
+}
+
+i.icon.angrycreative:before {
+  content: "\f36e";
+}
+
+i.icon.angular:before {
+  content: "\f420";
+}
+
+i.icon.app.store:before {
+  content: "\f36f";
+}
+
+i.icon.app.store.ios:before {
+  content: "\f370";
+}
+
+i.icon.apper:before {
+  content: "\f371";
+}
+
+i.icon.apple:before {
+  content: "\f179";
+}
+
+i.icon.apple.pay:before {
+  content: "\f415";
+}
+
+i.icon.asymmetrik:before {
+  content: "\f372";
+}
+
+i.icon.audible:before {
+  content: "\f373";
+}
+
+i.icon.autoprefixer:before {
+  content: "\f41c";
+}
+
+i.icon.avianex:before {
+  content: "\f374";
+}
+
+i.icon.aviato:before {
+  content: "\f421";
+}
+
+i.icon.aws:before {
+  content: "\f375";
+}
+
+i.icon.bandcamp:before {
+  content: "\f2d5";
+}
+
+i.icon.behance:before {
+  content: "\f1b4";
+}
+
+i.icon.behance.square:before {
+  content: "\f1b5";
+}
+
+i.icon.bimobject:before {
+  content: "\f378";
+}
+
+i.icon.bitbucket:before {
+  content: "\f171";
+}
+
+i.icon.bitcoin:before {
+  content: "\f379";
+}
+
+i.icon.bity:before {
+  content: "\f37a";
+}
+
+i.icon.black.tie:before {
+  content: "\f27e";
+}
+
+i.icon.blackberry:before {
+  content: "\f37b";
+}
+
+i.icon.blogger:before {
+  content: "\f37c";
+}
+
+i.icon.blogger.b:before {
+  content: "\f37d";
+}
+
+i.icon.bluetooth:before {
+  content: "\f293";
+}
+
+i.icon.bluetooth.b:before {
+  content: "\f294";
+}
+
+i.icon.btc:before {
+  content: "\f15a";
+}
+
+i.icon.buromobelexperte:before {
+  content: "\f37f";
+}
+
+i.icon.buysellads:before {
+  content: "\f20d";
+}
+
+i.icon.cc.amazon.pay:before {
+  content: "\f42d";
+}
+
+i.icon.cc.amex:before {
+  content: "\f1f3";
+}
+
+i.icon.cc.apple.pay:before {
+  content: "\f416";
+}
+
+i.icon.cc.diners.club:before {
+  content: "\f24c";
+}
+
+i.icon.cc.discover:before {
+  content: "\f1f2";
+}
+
+i.icon.cc.jcb:before {
+  content: "\f24b";
+}
+
+i.icon.cc.mastercard:before {
+  content: "\f1f1";
+}
+
+i.icon.cc.paypal:before {
+  content: "\f1f4";
+}
+
+i.icon.cc.stripe:before {
+  content: "\f1f5";
+}
+
+i.icon.cc.visa:before {
+  content: "\f1f0";
+}
+
+i.icon.centercode:before {
+  content: "\f380";
+}
+
+i.icon.chrome:before {
+  content: "\f268";
+}
+
+i.icon.cloudscale:before {
+  content: "\f383";
+}
+
+i.icon.cloudsmith:before {
+  content: "\f384";
+}
+
+i.icon.cloudversify:before {
+  content: "\f385";
+}
+
+i.icon.codepen:before {
+  content: "\f1cb";
+}
+
+i.icon.codiepie:before {
+  content: "\f284";
+}
+
+i.icon.connectdevelop:before {
+  content: "\f20e";
+}
+
+i.icon.contao:before {
+  content: "\f26d";
+}
+
+i.icon.cpanel:before {
+  content: "\f388";
+}
+
+i.icon.creative.commons:before {
+  content: "\f25e";
+}
+
+i.icon.creative.commons.by:before {
+  content: "\f4e7";
+}
+
+i.icon.creative.commons.nc:before {
+  content: "\f4e8";
+}
+
+i.icon.creative.commons.nc.eu:before {
+  content: "\f4e9";
+}
+
+i.icon.creative.commons.nc.jp:before {
+  content: "\f4ea";
+}
+
+i.icon.creative.commons.nd:before {
+  content: "\f4eb";
+}
+
+i.icon.creative.commons.pd:before {
+  content: "\f4ec";
+}
+
+i.icon.creative.commons.pd.alternate:before {
+  content: "\f4ed";
+}
+
+i.icon.creative.commons.remix:before {
+  content: "\f4ee";
+}
+
+i.icon.creative.commons.sa:before {
+  content: "\f4ef";
+}
+
+i.icon.creative.commons.sampling:before {
+  content: "\f4f0";
+}
+
+i.icon.creative.commons.sampling.plus:before {
+  content: "\f4f1";
+}
+
+i.icon.creative.commons.share:before {
+  content: "\f4f2";
+}
+
+i.icon.css3:before {
+  content: "\f13c";
+}
+
+i.icon.css3.alternate:before {
+  content: "\f38b";
+}
+
+i.icon.cuttlefish:before {
+  content: "\f38c";
+}
+
+i.icon.d.and.d:before {
+  content: "\f38d";
+}
+
+i.icon.dashcube:before {
+  content: "\f210";
+}
+
+i.icon.delicious:before {
+  content: "\f1a5";
+}
+
+i.icon.deploydog:before {
+  content: "\f38e";
+}
+
+i.icon.deskpro:before {
+  content: "\f38f";
+}
+
+i.icon.deviantart:before {
+  content: "\f1bd";
+}
+
+i.icon.digg:before {
+  content: "\f1a6";
+}
+
+i.icon.digital.ocean:before {
+  content: "\f391";
+}
+
+i.icon.discord:before {
+  content: "\f392";
+}
+
+i.icon.discourse:before {
+  content: "\f393";
+}
+
+i.icon.dochub:before {
+  content: "\f394";
+}
+
+i.icon.docker:before {
+  content: "\f395";
+}
+
+i.icon.draft2digital:before {
+  content: "\f396";
+}
+
+i.icon.dribbble:before {
+  content: "\f17d";
+}
+
+i.icon.dribbble.square:before {
+  content: "\f397";
+}
+
+i.icon.dropbox:before {
+  content: "\f16b";
+}
+
+i.icon.drupal:before {
+  content: "\f1a9";
+}
+
+i.icon.dyalog:before {
+  content: "\f399";
+}
+
+i.icon.earlybirds:before {
+  content: "\f39a";
+}
+
+i.icon.ebay:before {
+  content: "\f4f4";
+}
+
+i.icon.edge:before {
+  content: "\f282";
+}
+
+i.icon.elementor:before {
+  content: "\f430";
+}
+
+i.icon.ello:before {
+  content: "\f5f1";
+}
+
+i.icon.ember:before {
+  content: "\f423";
+}
+
+i.icon.empire:before {
+  content: "\f1d1";
+}
+
+i.icon.envira:before {
+  content: "\f299";
+}
+
+i.icon.erlang:before {
+  content: "\f39d";
+}
+
+i.icon.ethereum:before {
+  content: "\f42e";
+}
+
+i.icon.etsy:before {
+  content: "\f2d7";
+}
+
+i.icon.expeditedssl:before {
+  content: "\f23e";
+}
+
+i.icon.facebook:before {
+  content: "\f09a";
+}
+
+i.icon.facebook.f:before {
+  content: "\f39e";
+}
+
+i.icon.facebook.messenger:before {
+  content: "\f39f";
+}
+
+i.icon.facebook.square:before {
+  content: "\f082";
+}
+
+i.icon.firefox:before {
+  content: "\f269";
+}
+
+i.icon.first.order:before {
+  content: "\f2b0";
+}
+
+i.icon.first.order.alternate:before {
+  content: "\f50a";
+}
+
+i.icon.firstdraft:before {
+  content: "\f3a1";
+}
+
+i.icon.flickr:before {
+  content: "\f16e";
+}
+
+i.icon.flipboard:before {
+  content: "\f44d";
+}
+
+i.icon.fly:before {
+  content: "\f417";
+}
+
+i.icon.font.awesome:before {
+  content: "\f2b4";
+}
+
+i.icon.font.awesome.alternate:before {
+  content: "\f35c";
+}
+
+i.icon.font.awesome.flag:before {
+  content: "\f425";
+}
+
+i.icon.font.awesome.logo.full:before {
+  content: "\f4e6";
+}
+
+i.icon.fonticons:before {
+  content: "\f280";
+}
+
+i.icon.fonticons.fi:before {
+  content: "\f3a2";
+}
+
+i.icon.fort.awesome:before {
+  content: "\f286";
+}
+
+i.icon.fort.awesome.alternate:before {
+  content: "\f3a3";
+}
+
+i.icon.forumbee:before {
+  content: "\f211";
+}
+
+i.icon.foursquare:before {
+  content: "\f180";
+}
+
+i.icon.free.code.camp:before {
+  content: "\f2c5";
+}
+
+i.icon.freebsd:before {
+  content: "\f3a4";
+}
+
+i.icon.fulcrum:before {
+  content: "\f50b";
+}
+
+i.icon.galactic.republic:before {
+  content: "\f50c";
+}
+
+i.icon.galactic.senate:before {
+  content: "\f50d";
+}
+
+i.icon.get.pocket:before {
+  content: "\f265";
+}
+
+i.icon.gg:before {
+  content: "\f260";
+}
+
+i.icon.gg.circle:before {
+  content: "\f261";
+}
+
+i.icon.git:before {
+  content: "\f1d3";
+}
+
+i.icon.git.square:before {
+  content: "\f1d2";
+}
+
+i.icon.github:before {
+  content: "\f09b";
+}
+
+i.icon.github.alternate:before {
+  content: "\f113";
+}
+
+i.icon.github.square:before {
+  content: "\f092";
+}
+
+i.icon.gitkraken:before {
+  content: "\f3a6";
+}
+
+i.icon.gitlab:before {
+  content: "\f296";
+}
+
+i.icon.gitter:before {
+  content: "\f426";
+}
+
+i.icon.glide:before {
+  content: "\f2a5";
+}
+
+i.icon.glide.g:before {
+  content: "\f2a6";
+}
+
+i.icon.gofore:before {
+  content: "\f3a7";
+}
+
+i.icon.goodreads:before {
+  content: "\f3a8";
+}
+
+i.icon.goodreads.g:before {
+  content: "\f3a9";
+}
+
+i.icon.google:before {
+  content: "\f1a0";
+}
+
+i.icon.google.drive:before {
+  content: "\f3aa";
+}
+
+i.icon.google.play:before {
+  content: "\f3ab";
+}
+
+i.icon.google.plus:before {
+  content: "\f2b3";
+}
+
+i.icon.google.plus.g:before {
+  content: "\f0d5";
+}
+
+i.icon.google.plus.square:before {
+  content: "\f0d4";
+}
+
+i.icon.google.wallet:before {
+  content: "\f1ee";
+}
+
+i.icon.gratipay:before {
+  content: "\f184";
+}
+
+i.icon.grav:before {
+  content: "\f2d6";
+}
+
+i.icon.gripfire:before {
+  content: "\f3ac";
+}
+
+i.icon.grunt:before {
+  content: "\f3ad";
+}
+
+i.icon.gulp:before {
+  content: "\f3ae";
+}
+
+i.icon.hacker.news:before {
+  content: "\f1d4";
+}
+
+i.icon.hacker.news.square:before {
+  content: "\f3af";
+}
+
+i.icon.hackerrank:before {
+  content: "\f5f7";
+}
+
+i.icon.hips:before {
+  content: "\f452";
+}
+
+i.icon.hire.a.helper:before {
+  content: "\f3b0";
+}
+
+i.icon.hooli:before {
+  content: "\f427";
+}
+
+i.icon.hornbill:before {
+  content: "\f592";
+}
+
+i.icon.hotjar:before {
+  content: "\f3b1";
+}
+
+i.icon.houzz:before {
+  content: "\f27c";
+}
+
+i.icon.html5:before {
+  content: "\f13b";
+}
+
+i.icon.hubspot:before {
+  content: "\f3b2";
+}
+
+i.icon.imdb:before {
+  content: "\f2d8";
+}
+
+i.icon.instagram:before {
+  content: "\f16d";
+}
+
+i.icon.internet.explorer:before {
+  content: "\f26b";
+}
+
+i.icon.ioxhost:before {
+  content: "\f208";
+}
+
+i.icon.itunes:before {
+  content: "\f3b4";
+}
+
+i.icon.itunes.note:before {
+  content: "\f3b5";
+}
+
+i.icon.java:before {
+  content: "\f4e4";
+}
+
+i.icon.jedi.order:before {
+  content: "\f50e";
+}
+
+i.icon.jenkins:before {
+  content: "\f3b6";
+}
+
+i.icon.joget:before {
+  content: "\f3b7";
+}
+
+i.icon.joomla:before {
+  content: "\f1aa";
+}
+
+i.icon.js:before {
+  content: "\f3b8";
+}
+
+i.icon.js.square:before {
+  content: "\f3b9";
+}
+
+i.icon.jsfiddle:before {
+  content: "\f1cc";
+}
+
+i.icon.kaggle:before {
+  content: "\f5fa";
+}
+
+i.icon.keybase:before {
+  content: "\f4f5";
+}
+
+i.icon.keycdn:before {
+  content: "\f3ba";
+}
+
+i.icon.kickstarter:before {
+  content: "\f3bb";
+}
+
+i.icon.kickstarter.k:before {
+  content: "\f3bc";
+}
+
+i.icon.korvue:before {
+  content: "\f42f";
+}
+
+i.icon.laravel:before {
+  content: "\f3bd";
+}
+
+i.icon.lastfm:before {
+  content: "\f202";
+}
+
+i.icon.lastfm.square:before {
+  content: "\f203";
+}
+
+i.icon.leanpub:before {
+  content: "\f212";
+}
+
+i.icon.lesscss:before {
+  content: "\f41d";
+}
+
+i.icon.linechat:before {
+  content: "\f3c0";
+}
+
+i.icon.linkedin:before {
+  content: "\f08c";
+}
+
+i.icon.linkedin.in:before {
+  content: "\f0e1";
+}
+
+i.icon.linode:before {
+  content: "\f2b8";
+}
+
+i.icon.linux:before {
+  content: "\f17c";
+}
+
+i.icon.lyft:before {
+  content: "\f3c3";
+}
+
+i.icon.magento:before {
+  content: "\f3c4";
+}
+
+i.icon.mailchimp:before {
+  content: "\f59e";
+}
+
+i.icon.mandalorian:before {
+  content: "\f50f";
+}
+
+i.icon.markdown:before {
+  content: "\f60f";
+}
+
+i.icon.mastodon:before {
+  content: "\f4f6";
+}
+
+i.icon.maxcdn:before {
+  content: "\f136";
+}
+
+i.icon.medapps:before {
+  content: "\f3c6";
+}
+
+i.icon.medium:before {
+  content: "\f23a";
+}
+
+i.icon.medium.m:before {
+  content: "\f3c7";
+}
+
+i.icon.medrt:before {
+  content: "\f3c8";
+}
+
+i.icon.meetup:before {
+  content: "\f2e0";
+}
+
+i.icon.megaport:before {
+  content: "\f5a3";
+}
+
+i.icon.microsoft:before {
+  content: "\f3ca";
+}
+
+i.icon.mix:before {
+  content: "\f3cb";
+}
+
+i.icon.mixcloud:before {
+  content: "\f289";
+}
+
+i.icon.mizuni:before {
+  content: "\f3cc";
+}
+
+i.icon.modx:before {
+  content: "\f285";
+}
+
+i.icon.monero:before {
+  content: "\f3d0";
+}
+
+i.icon.napster:before {
+  content: "\f3d2";
+}
+
+i.icon.neos:before {
+  content: "\f612";
+}
+
+i.icon.nimblr:before {
+  content: "\f5a8";
+}
+
+i.icon.nintendo.switch:before {
+  content: "\f418";
+}
+
+i.icon.node:before {
+  content: "\f419";
+}
+
+i.icon.node.js:before {
+  content: "\f3d3";
+}
+
+i.icon.npm:before {
+  content: "\f3d4";
+}
+
+i.icon.ns8:before {
+  content: "\f3d5";
+}
+
+i.icon.nutritionix:before {
+  content: "\f3d6";
+}
+
+i.icon.odnoklassniki:before {
+  content: "\f263";
+}
+
+i.icon.odnoklassniki.square:before {
+  content: "\f264";
+}
+
+i.icon.old.republic:before {
+  content: "\f510";
+}
+
+i.icon.opencart:before {
+  content: "\f23d";
+}
+
+i.icon.openid:before {
+  content: "\f19b";
+}
+
+i.icon.opera:before {
+  content: "\f26a";
+}
+
+i.icon.optin.monster:before {
+  content: "\f23c";
+}
+
+i.icon.osi:before {
+  content: "\f41a";
+}
+
+i.icon.page4:before {
+  content: "\f3d7";
+}
+
+i.icon.pagelines:before {
+  content: "\f18c";
+}
+
+i.icon.palfed:before {
+  content: "\f3d8";
+}
+
+i.icon.patreon:before {
+  content: "\f3d9";
+}
+
+i.icon.paypal:before {
+  content: "\f1ed";
+}
+
+i.icon.periscope:before {
+  content: "\f3da";
+}
+
+i.icon.phabricator:before {
+  content: "\f3db";
+}
+
+i.icon.phoenix.framework:before {
+  content: "\f3dc";
+}
+
+i.icon.phoenix.squadron:before {
+  content: "\f511";
+}
+
+i.icon.php:before {
+  content: "\f457";
+}
+
+i.icon.pied.piper:before {
+  content: "\f2ae";
+}
+
+i.icon.pied.piper.alternate:before {
+  content: "\f1a8";
+}
+
+i.icon.pied.piper.hat:before {
+  content: "\f4e5";
+}
+
+i.icon.pied.piper.pp:before {
+  content: "\f1a7";
+}
+
+i.icon.pinterest:before {
+  content: "\f0d2";
+}
+
+i.icon.pinterest.p:before {
+  content: "\f231";
+}
+
+i.icon.pinterest.square:before {
+  content: "\f0d3";
+}
+
+i.icon.playstation:before {
+  content: "\f3df";
+}
+
+i.icon.product.hunt:before {
+  content: "\f288";
+}
+
+i.icon.pushed:before {
+  content: "\f3e1";
+}
+
+i.icon.python:before {
+  content: "\f3e2";
+}
+
+i.icon.qq:before {
+  content: "\f1d6";
+}
+
+i.icon.quinscape:before {
+  content: "\f459";
+}
+
+i.icon.quora:before {
+  content: "\f2c4";
+}
+
+i.icon.r.project:before {
+  content: "\f4f7";
+}
+
+i.icon.ravelry:before {
+  content: "\f2d9";
+}
+
+i.icon.react:before {
+  content: "\f41b";
+}
+
+i.icon.readme:before {
+  content: "\f4d5";
+}
+
+i.icon.rebel:before {
+  content: "\f1d0";
+}
+
+i.icon.reddit:before {
+  content: "\f1a1";
+}
+
+i.icon.reddit.alien:before {
+  content: "\f281";
+}
+
+i.icon.reddit.square:before {
+  content: "\f1a2";
+}
+
+i.icon.redriver:before {
+  content: "\f3e3";
+}
+
+i.icon.rendact:before {
+  content: "\f3e4";
+}
+
+i.icon.renren:before {
+  content: "\f18b";
+}
+
+i.icon.replyd:before {
+  content: "\f3e6";
+}
+
+i.icon.researchgate:before {
+  content: "\f4f8";
+}
+
+i.icon.resolving:before {
+  content: "\f3e7";
+}
+
+i.icon.rev:before {
+  content: "\f5b2";
+}
+
+i.icon.rocketchat:before {
+  content: "\f3e8";
+}
+
+i.icon.rockrms:before {
+  content: "\f3e9";
+}
+
+i.icon.safari:before {
+  content: "\f267";
+}
+
+i.icon.sass:before {
+  content: "\f41e";
+}
+
+i.icon.schlix:before {
+  content: "\f3ea";
+}
+
+i.icon.scribd:before {
+  content: "\f28a";
+}
+
+i.icon.searchengin:before {
+  content: "\f3eb";
+}
+
+i.icon.sellcast:before {
+  content: "\f2da";
+}
+
+i.icon.sellsy:before {
+  content: "\f213";
+}
+
+i.icon.servicestack:before {
+  content: "\f3ec";
+}
+
+i.icon.shirtsinbulk:before {
+  content: "\f214";
+}
+
+i.icon.shopware:before {
+  content: "\f5b5";
+}
+
+i.icon.simplybuilt:before {
+  content: "\f215";
+}
+
+i.icon.sistrix:before {
+  content: "\f3ee";
+}
+
+i.icon.sith:before {
+  content: "\f512";
+}
+
+i.icon.skyatlas:before {
+  content: "\f216";
+}
+
+i.icon.skype:before {
+  content: "\f17e";
+}
+
+i.icon.slack:before {
+  content: "\f198";
+}
+
+i.icon.slack.hash:before {
+  content: "\f3ef";
+}
+
+i.icon.slideshare:before {
+  content: "\f1e7";
+}
+
+i.icon.snapchat:before {
+  content: "\f2ab";
+}
+
+i.icon.snapchat.ghost:before {
+  content: "\f2ac";
+}
+
+i.icon.snapchat.square:before {
+  content: "\f2ad";
+}
+
+i.icon.soundcloud:before {
+  content: "\f1be";
+}
+
+i.icon.speakap:before {
+  content: "\f3f3";
+}
+
+i.icon.spotify:before {
+  content: "\f1bc";
+}
+
+i.icon.squarespace:before {
+  content: "\f5be";
+}
+
+i.icon.stack.exchange:before {
+  content: "\f18d";
+}
+
+i.icon.stack.overflow:before {
+  content: "\f16c";
+}
+
+i.icon.staylinked:before {
+  content: "\f3f5";
+}
+
+i.icon.steam:before {
+  content: "\f1b6";
+}
+
+i.icon.steam.square:before {
+  content: "\f1b7";
+}
+
+i.icon.steam.symbol:before {
+  content: "\f3f6";
+}
+
+i.icon.sticker.mule:before {
+  content: "\f3f7";
+}
+
+i.icon.strava:before {
+  content: "\f428";
+}
+
+i.icon.stripe:before {
+  content: "\f429";
+}
+
+i.icon.stripe.s:before {
+  content: "\f42a";
+}
+
+i.icon.studiovinari:before {
+  content: "\f3f8";
+}
+
+i.icon.stumbleupon:before {
+  content: "\f1a4";
+}
+
+i.icon.stumbleupon.circle:before {
+  content: "\f1a3";
+}
+
+i.icon.superpowers:before {
+  content: "\f2dd";
+}
+
+i.icon.supple:before {
+  content: "\f3f9";
+}
+
+i.icon.teamspeak:before {
+  content: "\f4f9";
+}
+
+i.icon.telegram:before {
+  content: "\f2c6";
+}
+
+i.icon.telegram.plane:before {
+  content: "\f3fe";
+}
+
+i.icon.tencent.weibo:before {
+  content: "\f1d5";
+}
+
+i.icon.the.red.yeti:before {
+  content: "\f69d";
+}
+
+i.icon.themeco:before {
+  content: "\f5c6";
+}
+
+i.icon.themeisle:before {
+  content: "\f2b2";
+}
+
+i.icon.trade.federation:before {
+  content: "\f513";
+}
+
+i.icon.trello:before {
+  content: "\f181";
+}
+
+i.icon.tripadvisor:before {
+  content: "\f262";
+}
+
+i.icon.tumblr:before {
+  content: "\f173";
+}
+
+i.icon.tumblr.square:before {
+  content: "\f174";
+}
+
+i.icon.twitch:before {
+  content: "\f1e8";
+}
+
+i.icon.twitter:before {
+  content: "\f099";
+}
+
+i.icon.twitter.square:before {
+  content: "\f081";
+}
+
+i.icon.typo3:before {
+  content: "\f42b";
+}
+
+i.icon.uber:before {
+  content: "\f402";
+}
+
+i.icon.uikit:before {
+  content: "\f403";
+}
+
+i.icon.uniregistry:before {
+  content: "\f404";
+}
+
+i.icon.untappd:before {
+  content: "\f405";
+}
+
+i.icon.usb:before {
+  content: "\f287";
+}
+
+i.icon.ussunnah:before {
+  content: "\f407";
+}
+
+i.icon.vaadin:before {
+  content: "\f408";
+}
+
+i.icon.viacoin:before {
+  content: "\f237";
+}
+
+i.icon.viadeo:before {
+  content: "\f2a9";
+}
+
+i.icon.viadeo.square:before {
+  content: "\f2aa";
+}
+
+i.icon.viber:before {
+  content: "\f409";
+}
+
+i.icon.vimeo:before {
+  content: "\f40a";
+}
+
+i.icon.vimeo.square:before {
+  content: "\f194";
+}
+
+i.icon.vimeo.v:before {
+  content: "\f27d";
+}
+
+i.icon.vine:before {
+  content: "\f1ca";
+}
+
+i.icon.vk:before {
+  content: "\f189";
+}
+
+i.icon.vnv:before {
+  content: "\f40b";
+}
+
+i.icon.vuejs:before {
+  content: "\f41f";
+}
+
+i.icon.weebly:before {
+  content: "\f5cc";
+}
+
+i.icon.weibo:before {
+  content: "\f18a";
+}
+
+i.icon.weixin:before {
+  content: "\f1d7";
+}
+
+i.icon.whatsapp:before {
+  content: "\f232";
+}
+
+i.icon.whatsapp.square:before {
+  content: "\f40c";
+}
+
+i.icon.whmcs:before {
+  content: "\f40d";
+}
+
+i.icon.wikipedia.w:before {
+  content: "\f266";
+}
+
+i.icon.windows:before {
+  content: "\f17a";
+}
+
+i.icon.wix:before {
+  content: "\f5cf";
+}
+
+i.icon.wolf.pack.battalion:before {
+  content: "\f514";
+}
+
+i.icon.wordpress:before {
+  content: "\f19a";
+}
+
+i.icon.wordpress.simple:before {
+  content: "\f411";
+}
+
+i.icon.wpbeginner:before {
+  content: "\f297";
+}
+
+i.icon.wpexplorer:before {
+  content: "\f2de";
+}
+
+i.icon.wpforms:before {
+  content: "\f298";
+}
+
+i.icon.xbox:before {
+  content: "\f412";
+}
+
+i.icon.xing:before {
+  content: "\f168";
+}
+
+i.icon.xing.square:before {
+  content: "\f169";
+}
+
+i.icon.y.combinator:before {
+  content: "\f23b";
+}
+
+i.icon.yahoo:before {
+  content: "\f19e";
+}
+
+i.icon.yandex:before {
+  content: "\f413";
+}
+
+i.icon.yandex.international:before {
+  content: "\f414";
+}
+
+i.icon.yelp:before {
+  content: "\f1e9";
+}
+
+i.icon.yoast:before {
+  content: "\f2b1";
+}
+
+i.icon.youtube:before {
+  content: "\f167";
+}
+
+i.icon.youtube.square:before {
+  content: "\f431";
+}
+
+i.icon.zhihu:before {
+  content: "\f63f";
+}
+
+/* Brands Aliases */
+
+i.icon.credit.card.amazon.pay,
+i.icon.credit.card.american.express,
+i.icon.credit.card.diners.club,
+i.icon.credit.card.discover,
+i.icon.credit.card.jcb,
+i.icon.credit.card.mastercard,
+i.icon.credit.card.paypal,
+i.icon.credit.card.stripe,
+i.icon.credit.card.visa,
+i.icon.american.express.card,
+i.icon.american.express,
+i.icon.amex,
+i.icon.bluetooth.alternative,
+i.icon.diners.club.card,
+i.icon.diners.club,
+i.icon.discover.card,
+i.icon.discover,
+i.icon.dribble,
+i.icon.eercast,
+i.icon.envira.gallery,
+i.icon.fa,
+i.icon.five.hundred.pixels,
+i.icon.gittip,
+i.icon.google.plus.circle,
+i.icon.google.plus.official,
+i.icon.japan.credit.bureau.card,
+i.icon.japan.credit.bureau,
+i.icon.jcb,
+i.icon.linkedin.square,
+i.icon.mastercard.card,
+i.icon.mastercard,
+i.icon.microsoft.edge,
+i.icon.ms.edge,
+i.icon.new.pied.piper,
+i.icon.optinmonster,
+i.icon.paypal.card,
+i.icon.pied.piper.hat,
+i.icon.pocket,
+i.icon.stripe.card,
+i.icon.theme.isle,
+i.icon.visa.card,
+i.icon.visa,
+i.icon.wechat,
+i.icon.wikipedia,
+i.icon.wordpress.beginner,
+i.icon.wordpress.forms,
+i.icon.yc,
+i.icon.ycombinator,
+i.icon.bitbucket.square,
+i.icon.disk.outline,
+i.icon.facebook.official,
+i.icon.youtube.play {
+  font-family: 'brand-icons';
+}
+
+/* Brands Alias Definitions */
+
+i.icon.credit.card.amazon.pay:before {
+  content: "\f42d";
+}
+
+i.icon.credit.card.american.express:before {
+  content: "\f1f3";
+}
+
+i.icon.credit.card.diners.club:before {
+  content: "\f24c";
+}
+
+i.icon.credit.card.discover:before {
+  content: "\f1f2";
+}
+
+i.icon.credit.card.jcb:before {
+  content: "\f24b";
+}
+
+i.icon.credit.card.mastercard:before {
+  content: "\f1f1";
+}
+
+i.icon.credit.card.paypal:before {
+  content: "\f1f4";
+}
+
+i.icon.credit.card.stripe:before {
+  content: "\f1f5";
+}
+
+i.icon.credit.card.visa:before {
+  content: "\f1f0";
+}
+
+i.icon.american.express.card:before {
+  content: "\f1f3";
+}
+
+i.icon.american.express:before {
+  content: "\f1f3";
+}
+
+i.icon.amex:before {
+  content: "\f1f3";
+}
+
+i.icon.bluetooth.alternative:before {
+  content: "\f294";
+}
+
+i.icon.diners.club.card:before {
+  content: "\f24c";
+}
+
+i.icon.diners.club:before {
+  content: "\f24c";
+}
+
+i.icon.discover.card:before {
+  content: "\f1f2";
+}
+
+i.icon.discover:before {
+  content: "\f1f2";
+}
+
+i.icon.dribble:before {
+  content: "\f17d";
+}
+
+i.icon.eercast:before {
+  content: "\f2da";
+}
+
+i.icon.envira.gallery:before {
+  content: "\f299";
+}
+
+i.icon.fa:before {
+  content: "\f2b4";
+}
+
+i.icon.five.hundred.pixels:before {
+  content: "\f26e";
+}
+
+i.icon.gittip:before {
+  content: "\f184";
+}
+
+i.icon.google.plus.circle:before {
+  content: "\f2b3";
+}
+
+i.icon.google.plus.official:before {
+  content: "\f2b3";
+}
+
+i.icon.japan.credit.bureau.card:before {
+  content: "\f24b";
+}
+
+i.icon.japan.credit.bureau:before {
+  content: "\f24b";
+}
+
+i.icon.jcb:before {
+  content: "\f24b";
+}
+
+i.icon.linkedin.square:before {
+  content: "\f08c";
+}
+
+i.icon.mastercard.card:before {
+  content: "\f1f1";
+}
+
+i.icon.mastercard:before {
+  content: "\f1f1";
+}
+
+i.icon.microsoft.edge:before {
+  content: "\f282";
+}
+
+i.icon.ms.edge:before {
+  content: "\f282";
+}
+
+i.icon.new.pied.piper:before {
+  content: "\f2ae";
+}
+
+i.icon.optinmonster:before {
+  content: "\f23c";
+}
+
+i.icon.paypal.card:before {
+  content: "\f1f4";
+}
+
+i.icon.pied.piper.hat:before {
+  content: "\f2ae";
+}
+
+i.icon.pocket:before {
+  content: "\f265";
+}
+
+i.icon.stripe.card:before {
+  content: "\f1f5";
+}
+
+i.icon.theme.isle:before {
+  content: "\f2b2";
+}
+
+i.icon.visa.card:before {
+  content: "\f1f0";
+}
+
+i.icon.visa:before {
+  content: "\f1f0";
+}
+
+i.icon.wechat:before {
+  content: "\f1d7";
+}
+
+i.icon.wikipedia:before {
+  content: "\f266";
+}
+
+i.icon.wordpress.beginner:before {
+  content: "\f297";
+}
+
+i.icon.wordpress.forms:before {
+  content: "\f298";
+}
+
+i.icon.yc:before {
+  content: "\f23b";
+}
+
+i.icon.ycombinator:before {
+  content: "\f23b";
+}
+
+i.icon.bitbucket.square:before {
+  content: "\f171";
+}
+
+i.icon.disk.outline:before {
+  content: "\f369";
+}
+
+i.icon.facebook.official:before {
+  content: "\f082";
+}
+
+i.icon.youtube.play:before {
+  content: "\f167";
+}
 
 /*******************************
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Image
+ * # Semantic UI 2.5.0 - Image
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14946,7 +16714,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Input
+ * # Semantic UI 2.5.0 - Input
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15518,7 +17286,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Label
+ * # Semantic UI 2.5.0 - Label
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15864,16 +17632,16 @@ a.ui.label {
 /* Positioning */
 
 .ui.ribbon.label {
-  left: calc( -1rem  -  1.2em );
+  left: calc(-1rem - 1.2em);
   margin-right: -1.2em;
-  padding-left: calc( 1rem  +  1.2em );
+  padding-left: calc(1rem + 1.2em);
   padding-right: 1.2em;
 }
 
 .ui[class*="right ribbon"].label {
-  left: calc(100% +  1rem  +  1.2em );
+  left: calc(100% + 1rem + 1.2em);
   padding-left: 1.2em;
-  padding-right: calc( 1rem  +  1.2em );
+  padding-right: calc(1rem + 1.2em);
 }
 
 /* Right Ribbon */
@@ -15904,23 +17672,23 @@ a.ui.label {
 
 .ui.card .image > .ui.ribbon.label,
 .ui.image > .ui.ribbon.label {
-  left: calc( 0.05rem  -  1.2em );
+  left: calc(0.05rem - 1.2em);
 }
 
 .ui.card .image > .ui[class*="right ribbon"].label,
 .ui.image > .ui[class*="right ribbon"].label {
-  left: calc(100% +  -0.05rem  +  1.2em );
+  left: calc(100% + -0.05rem + 1.2em);
   padding-left: 0.833em;
 }
 
 /* Inside Table */
 
 .ui.table td > .ui.ribbon.label {
-  left: calc( -0.78571429em  -  1.2em );
+  left: calc(-0.7857142857142857em - 1.2em);
 }
 
 .ui.table td > .ui[class*="right ribbon"].label {
-  left: calc(100% +  0.78571429em  +  1.2em );
+  left: calc(100% + 0.7857142857142857em + 1.2em);
   padding-left: 0.833em;
 }
 
@@ -16064,6 +17832,98 @@ a.ui.active.label:hover:before {
 /*-------------------
        Colors
 --------------------*/
+
+/*--- Primary ---*/
+
+.ui.primary.labels .label,
+.ui.primary.label {
+  background-color: #2185D0 !important;
+  border-color: #2185D0 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Link */
+
+.ui.primary.labels .label:hover,
+a.ui.primary.label:hover {
+  background-color: #1678c2 !important;
+  border-color: #1678c2 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Corner */
+
+.ui.primary.corner.label,
+.ui.primary.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+
+.ui.primary.ribbon.label {
+  border-color: #1a69a4 !important;
+}
+
+/* Basic */
+
+.ui.basic.primary.label {
+  background: none #FFFFFF !important;
+  color: #2185D0 !important;
+  border-color: #2185D0 !important;
+}
+
+.ui.basic.primary.labels a.label:hover,
+a.ui.basic.primary.label:hover {
+  background-color: #FFFFFF !important;
+  color: #1678c2 !important;
+  border-color: #1678c2 !important;
+}
+
+/*--- Secondary ---*/
+
+.ui.secondary.labels .label,
+.ui.secondary.label {
+  background-color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Link */
+
+.ui.secondary.labels .label:hover,
+a.ui.secondary.label:hover {
+  background-color: #27292a !important;
+  border-color: #27292a !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Corner */
+
+.ui.secondary.corner.label,
+.ui.secondary.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+
+.ui.secondary.ribbon.label {
+  border-color: #020203 !important;
+}
+
+/* Basic */
+
+.ui.basic.secondary.label {
+  background: none #FFFFFF !important;
+  color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+}
+
+.ui.basic.secondary.labels a.label:hover,
+a.ui.basic.secondary.label:hover {
+  background-color: #FFFFFF !important;
+  color: #27292a !important;
+  border-color: #27292a !important;
+}
 
 /*--- Red ---*/
 
@@ -16231,7 +18091,7 @@ a.ui.olive.label:hover {
 /* Ribbon */
 
 .ui.olive.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #8d9e13 !important;
 }
 
 /* Basic */
@@ -16599,7 +18459,7 @@ a.ui.grey.label:hover {
 /* Ribbon */
 
 .ui.grey.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #5d5d5d !important;
 }
 
 /* Basic */
@@ -16645,7 +18505,7 @@ a.ui.black.label:hover {
 /* Ribbon */
 
 .ui.black.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #020203 !important;
 }
 
 /* Basic */
@@ -16949,7 +18809,7 @@ a.ui.basic.label:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - List
+ * # Semantic UI 2.5.0 - List
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18026,7 +19886,7 @@ ol.ui.horizontal.list li:before,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Loader
+ * # Semantic UI 2.5.0 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18369,6 +20229,70 @@ ol.ui.horizontal.list li:before,
 }
 
 /*-------------------
+       Colors
+--------------------*/
+
+.ui.primary.loader:after {
+  border-color: #2185D0 transparent transparent;
+}
+
+.ui.secondary.loader:after {
+  border-color: #1B1C1D transparent transparent;
+}
+
+.ui.red.loader:after {
+  border-color: #DB2828 transparent transparent;
+}
+
+.ui.orange.loader:after {
+  border-color: #F2711C transparent transparent;
+}
+
+.ui.yellow.loader:after {
+  border-color: #FBBD08 transparent transparent;
+}
+
+.ui.olive.loader:after {
+  border-color: #B5CC18 transparent transparent;
+}
+
+.ui.green.loader:after {
+  border-color: #21BA45 transparent transparent;
+}
+
+.ui.teal.loader:after {
+  border-color: #00B5AD transparent transparent;
+}
+
+.ui.blue.loader:after {
+  border-color: #2185D0 transparent transparent;
+}
+
+.ui.violet.loader:after {
+  border-color: #6435C9 transparent transparent;
+}
+
+.ui.purple.loader:after {
+  border-color: #A333C8 transparent transparent;
+}
+
+.ui.pink.loader:after {
+  border-color: #E03997 transparent transparent;
+}
+
+.ui.brown.loader:after {
+  border-color: #A5673F transparent transparent;
+}
+
+.ui.grey.loader:after {
+  border-color: #767676 transparent transparent;
+}
+
+.ui.black.loader:after {
+  border-color: #1B1C1D transparent transparent;
+}
+
+/*-------------------
        Inverted
 --------------------*/
 
@@ -18382,6 +20306,68 @@ ol.ui.horizontal.list li:before,
 
 .ui.inverted.loader:after {
   border-top-color: #FFFFFF;
+}
+
+/* Colors */
+
+.ui.inverted.primary.loader:after {
+  border-color: #54C8FF transparent transparent;
+}
+
+.ui.inverted.secondary.loader:after {
+  border-color: #545454 transparent transparent;
+}
+
+.ui.inverted.red.loader:after {
+  border-color: #FF695E transparent transparent;
+}
+
+.ui.inverted.orange.loader:after {
+  border-color: #FF851B transparent transparent;
+}
+
+.ui.inverted.yellow.loader:after {
+  border-color: #FFE21F transparent transparent;
+}
+
+.ui.inverted.olive.loader:after {
+  border-color: #D9E778 transparent transparent;
+}
+
+.ui.inverted.green.loader:after {
+  border-color: #2ECC40 transparent transparent;
+}
+
+.ui.inverted.teal.loader:after {
+  border-color: #6DFFFF transparent transparent;
+}
+
+.ui.inverted.blue.loader:after {
+  border-color: #54C8FF transparent transparent;
+}
+
+.ui.inverted.violet.loader:after {
+  border-color: #A291FB transparent transparent;
+}
+
+.ui.inverted.purple.loader:after {
+  border-color: #DC73FF transparent transparent;
+}
+
+.ui.inverted.pink.loader:after {
+  border-color: #FF8EDF transparent transparent;
+}
+
+.ui.inverted.brown.loader:after {
+  border-color: #D67C1C transparent transparent;
+}
+
+.ui.inverted.grey.loader:after {
+  border-color: #DCDDDE transparent transparent;
+}
+
+.ui.inverted.black.loader:after {
+  border-color: #545454 transparent transparent;
 }
 
 /*-------------------
@@ -18420,7 +20406,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Rail
+ * # Semantic UI 2.5.0 - Rail
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18501,7 +20487,7 @@ ol.ui.horizontal.list li:before,
 ---------------*/
 
 .ui.close.rail {
-  width: calc( 300px  +  1em );
+  width: calc(300px + 1em);
 }
 
 .ui.close.left.rail {
@@ -18515,7 +20501,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.very.close.rail {
-  width: calc( 300px  +  0.5em );
+  width: calc(300px + 0.5em);
 }
 
 .ui.very.close.left.rail {
@@ -18582,7 +20568,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Reveal
+ * # Semantic UI 2.5.0 - Reveal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18897,7 +20883,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Segment
+ * # Semantic UI 2.5.0 - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19712,8 +21698,8 @@ ol.ui.horizontal.list li:before,
   bottom: 0px;
   border-radius: 0px;
   margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
+  width: calc(100% + 2px);
+  max-width: calc(100% + 2px);
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid #D4D4D5;
@@ -19805,7 +21791,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Step
+ * # Semantic UI 2.5.0 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20023,7 +22009,7 @@ ol.ui.horizontal.list li:before,
   display: block;
   position: static;
   text-align: center;
-  content: counters(ordered, ".");
+  content: counter(ordered);
   -ms-flex-item-align: middle;
   align-self: middle;
   margin-right: 1rem;
@@ -20343,9 +22329,9 @@ ol.ui.horizontal.list li:before,
 /* Top */
 
 .ui.attached.steps {
-  width: calc(100% +  2px ) !important;
+  width: calc(100% + 2px) !important;
   margin: 0em -1px 0;
-  max-width: calc(100% +  2px );
+  max-width: calc(100% + 2px);
   border-radius: 0.28571429rem 0.28571429rem 0em 0em;
 }
 
@@ -20475,6 +22461,74 @@ ol.ui.horizontal.list li:before,
   font-size: 1.71428571rem;
 }
 
+/*--------------
+    Inverted
+---------------*/
+
+.ui.inverted.steps {
+  border: 1px solid #555555;
+}
+
+.ui.inverted.steps .step {
+  color: rgba(255, 255, 255, 0.9);
+  background: #1B1C1D;
+  border-color: #555555;
+}
+
+.ui.inverted.steps .step:after {
+  background-color: #1B1C1D;
+  border-color: #555555;
+}
+
+.ui.inverted.steps .step .description {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Active */
+
+.ui.inverted.steps .step.active,
+.ui.inverted.steps .step.active:after {
+  background: #333333;
+}
+
+.ui.inverted.ordered.steps .step.active:before,
+.ui.inverted.steps .active.step .icon {
+  color: #ffffff;
+}
+
+/* Disabled */
+
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step:after {
+  background: #222222;
+}
+
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step .title,
+.ui.inverted.steps .disabled.step .description {
+  color: rgba(225, 225, 225, 0.3);
+}
+
+/* Link Hover */
+
+.ui.inverted.steps .link.step:hover::after,
+.ui.inverted.steps .link.step:hover,
+.ui.inverted.steps a.step:hover::after,
+.ui.inverted.steps a.step:hover {
+  background: #3F3F3F;
+  color: #ffffff;
+}
+
+/* Link Down */
+
+.ui.inverted.steps .link.step:active::after,
+.ui.inverted.steps .link.step:active,
+.ui.inverted.steps a.step:active::after,
+.ui.inverted.steps a.step:active {
+  background: #444444;
+  color: #ffffff;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -20495,7 +22549,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Breadcrumb
+ * # Semantic UI 2.5.0 - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20626,7 +22680,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Form
+ * # Semantic UI 2.5.0 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20777,6 +22831,19 @@ ol.ui.horizontal.list li:before,
 .ui.form textarea,
 .ui.form input[type="checkbox"] {
   vertical-align: top;
+}
+
+/*--------------------
+      Transparent
+---------------------*/
+
+.ui.form .field textarea.transparent {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  padding: 0em !important;
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  border-radius: 0px !important;
 }
 
 /*--------------------------
@@ -21800,6 +23867,74 @@ ol.ui.horizontal.list li:before,
   font-size: 1.71428571rem;
 }
 
+/* Dropdown */
+
+.ui.mini.form .field .dropdown {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.form .field .dropdown {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.form .field .dropdown {
+  font-size: 0.92857143rem;
+}
+
+.ui.form .field .dropdown {
+  font-size: 1rem;
+}
+
+.ui.large.form .field .dropdown {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.form .field .dropdown {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.form .field .dropdown {
+  font-size: 1.42857143rem;
+}
+
+.ui.massive.form .field .dropdown {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown Items */
+
+.ui.mini.form .field .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.form .field .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.form .field .dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+
+.ui.form .field .dropdown .menu > .item {
+  font-size: 1rem;
+}
+
+.ui.large.form .field .dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.form .field .dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.form .field .dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+
+.ui.massive.form .field .dropdown .menu > .item {
+  font-size: 1.71428571rem;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -21808,7 +23943,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Grid
+ * # Semantic UI 2.5.0 - Grid
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21968,7 +24103,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.grid .column + .ui.vertical.divider {
-  height: calc(50% -  1rem );
+  height: calc(50% - 1rem);
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -23055,7 +25190,7 @@ ol.ui.horizontal.list li:before,
   content: "";
   top: 0em;
   left: 0px;
-  width: calc(100% -  2rem );
+  width: calc(100% - 2rem);
   height: 1px;
   margin: 0% 1rem;
   -webkit-box-shadow: 0px -1px 0px 0px rgba(34, 36, 38, 0.15);
@@ -23100,13 +25235,13 @@ ol.ui.horizontal.list li:before,
 .ui.relaxed[class*="vertically divided"].grid > .row:before {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  width: calc(100% -  3rem );
+  width: calc(100% - 3rem);
 }
 
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
   margin-left: 5rem;
   margin-right: 5rem;
-  width: calc(100% -  5rem );
+  width: calc(100% - 5rem);
 }
 
 /*----------------------
@@ -23315,25 +25450,6 @@ ol.ui.horizontal.list li:before,
 /*----------------------
          Colored
 -----------------------*/
-
-.ui.grid > .row > .red.column,
-.ui.grid > .row > .orange.column,
-.ui.grid > .row > .yellow.column,
-.ui.grid > .row > .olive.column,
-.ui.grid > .row > .green.column,
-.ui.grid > .row > .teal.column,
-.ui.grid > .row > .blue.column,
-.ui.grid > .row > .violet.column,
-.ui.grid > .row > .purple.column,
-.ui.grid > .row > .pink.column,
-.ui.grid > .row > .brown.column,
-.ui.grid > .row > .grey.column,
-.ui.grid > .row > .black.column {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
 
 /* Red */
 
@@ -24109,6 +26225,88 @@ ol.ui.horizontal.list li:before,
   }
 }
 
+/*-----------------
+      Compact
+-----------------*/
+
+.ui.compact.grid > .column:not(.row),
+.ui.compact.grid > .row > .column {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.ui.compact.grid > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Row */
+
+.ui.compact.grid > .row {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Columns */
+
+.ui.compact.grid > .column:not(.row) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Relaxed + Celled */
+
+.ui.compact.relaxed.celled.grid > .column:not(.row),
+.ui.compact.relaxed.celled.grid > .row > .column {
+  padding: 0.75em;
+}
+
+.ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
+.ui.compact[class*="very relaxed"].celled.grid > .row > .column {
+  padding: 1em;
+}
+
+/*-----------------
+    Very compact
+-----------------*/
+
+.ui[class*="very compact"].grid > .column:not(.row),
+.ui[class*="very compact"].grid > .row > .column {
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+
+.ui[class*="very compact"].grid > * {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+/* Row */
+
+.ui[class*="very compact"].grid > .row {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Columns */
+
+.ui[class*="very compact"].grid > .column:not(.row) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Relaxed + Celled */
+
+.ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
+.ui[class*="very compact"].relaxed.celled.grid > .row > .column {
+  padding: 0.375em;
+}
+
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
+  padding: 0.5em;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -24647,12 +26845,30 @@ Floated Menu / Item
   margin-left: auto !important;
 }
 
+/* Center */
+
+.ui.menu:not(.vertical) .center.item,
+.ui.menu:not(.vertical) .center.menu {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 /* Swapped Borders */
 
 .ui.menu .right.item::before,
 .ui.menu .right.menu > .item::before {
   right: auto;
   left: 0;
+}
+
+/* Remove Outer Borders */
+
+.ui.menu .center.item:last-child::before,
+.ui.menu .center.menu > .item:last-child::before {
+  display: none;
 }
 
 /*--------------
@@ -24791,7 +27007,7 @@ Floated Menu / Item
 }
 
 .ui.tabular.fluid.menu {
-  width: calc(100% +  2px ) !important;
+  width: calc(100% + 2px) !important;
 }
 
 .ui.tabular.menu .item {
@@ -24842,7 +27058,7 @@ Floated Menu / Item
 
 .top.attached.segment + .ui.bottom.tabular.menu {
   position: relative;
-  width: calc(100% +  2px );
+  width: calc(100% + 2px);
   left: -1px;
 }
 
@@ -25548,7 +27764,14 @@ Floated Menu / Item
     margin-left: 0 !important;
   }
 
+  .ui.stackable.menu .center.menu,
+  .ui.stackable.menu .center.item {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
   .ui.stackable.menu .right.menu,
+  .ui.stackable.menu .center.menu,
   .ui.stackable.menu .left.menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -26255,8 +28478,8 @@ Floated Menu / Item
   bottom: 0px;
   border-radius: 0px;
   margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
+  width: calc(100% + 2px);
+  max-width: calc(100% + 2px);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -26335,6 +28558,14 @@ Floated Menu / Item
   width: 9rem;
 }
 
+.ui.mini.menu .dropdown {
+  font-size: 0.78571429rem;
+}
+
+.ui.mini.menu .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+
 /* Tiny */
 
 .ui.tiny.menu {
@@ -26345,6 +28576,14 @@ Floated Menu / Item
   width: 11rem;
 }
 
+.ui.tiny.menu .dropdown {
+  font-size: 0.85714286rem;
+}
+
+.ui.tiny.menu .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+
 /* Small */
 
 .ui.small.menu {
@@ -26353,6 +28592,14 @@ Floated Menu / Item
 
 .ui.small.vertical.menu {
   width: 13rem;
+}
+
+.ui.small.menu .dropdown {
+  font-size: 0.92857143rem;
+}
+
+.ui.small.menu .dropdown .menu > .item {
+  font-size: 0.92857143rem;
 }
 
 /* Medium */
@@ -26375,6 +28622,14 @@ Floated Menu / Item
   width: 18rem;
 }
 
+.ui.large.menu .dropdown {
+  font-size: 1.07142857rem;
+}
+
+.ui.large.menu .dropdown .menu > .item {
+  font-size: 1.07142857rem;
+}
+
 /* Huge */
 
 .ui.huge.menu {
@@ -26383,6 +28638,14 @@ Floated Menu / Item
 
 .ui.huge.vertical.menu {
   width: 22rem;
+}
+
+.ui.huge.menu .dropdown {
+  font-size: 1.21428571rem;
+}
+
+.ui.huge.menu .dropdown .menu > .item {
+  font-size: 1.21428571rem;
 }
 
 /* Big */
@@ -26395,6 +28658,14 @@ Floated Menu / Item
   width: 20rem;
 }
 
+.ui.big.menu .dropdown {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.menu .dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+
 /* Massive */
 
 .ui.massive.menu {
@@ -26403,6 +28674,14 @@ Floated Menu / Item
 
 .ui.massive.vertical.menu {
   width: 25rem;
+}
+
+.ui.massive.menu .dropdown {
+  font-size: 1.28571429rem;
+}
+
+.ui.massive.menu .dropdown .menu > .item {
+  font-size: 1.28571429rem;
 }
 
 /*******************************
@@ -26449,7 +28728,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Message
+ * # Semantic UI 2.5.0 - Message
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -27019,7 +29298,7 @@ Floated Menu / Item
         Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Table
+ * # Semantic UI 2.5.0 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -27642,8 +29921,8 @@ Floated Menu / Item
   bottom: 0px;
   border-radius: 0px;
   margin: 0em -1px;
-  width: calc(100% +  2px );
-  max-width: calc(100% +  2px );
+  width: calc(100% + 2px);
+  max-width: calc(100% + 2px);
   -webkit-box-shadow: none;
   box-shadow: none;
   border: 1px solid #D4D4D5;
@@ -28314,7 +30593,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Ad
+ * # Semantic UI 2.5.0 - Ad
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -28603,7 +30882,7 @@ Floated Menu / Item
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Card
+ * # Semantic UI 2.5.0 - Card
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -28959,7 +31238,7 @@ Floated Menu / Item
 .ui.cards > .card > .button,
 .ui.card > .button {
   margin: 0px -1px;
-  width: calc(100% +  2px );
+  width: calc(100% + 2px);
 }
 
 /*--------------
@@ -29061,6 +31340,46 @@ Floated Menu / Item
 /*******************************
            Variations
 *******************************/
+
+/*-------------------
+      Horizontal
+--------------------*/
+
+.ui.horizontal.cards > .card,
+.ui.card.horizontal {
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  min-width: 400px;
+  width: 400px;
+  max-width: 100%;
+}
+
+.ui.horizontal.cards > .card > .image,
+.ui.card.horizontal > .image {
+  border-radius: 0.28571429rem 0 0 0.28571429rem;
+  width: 150px;
+}
+
+.ui.horizontal.cards > .card > .image > img,
+.ui.card.horizontal > .image > img {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.28571429rem 0 0 0.28571429rem;
+}
 
 /*-------------------
        Raised
@@ -29399,7 +31718,7 @@ a.ui.card:hover,
 }
 
 .ui.two.cards > .card {
-  width: calc( 50%  -  2em );
+  width: calc(50% - 2em);
   margin-left: 1em;
   margin-right: 1em;
 }
@@ -29410,7 +31729,7 @@ a.ui.card:hover,
 }
 
 .ui.three.cards > .card {
-  width: calc( 33.33333333%  -  2em );
+  width: calc(33.33333333333333% - 2em);
   margin-left: 1em;
   margin-right: 1em;
 }
@@ -29421,7 +31740,7 @@ a.ui.card:hover,
 }
 
 .ui.four.cards > .card {
-  width: calc( 25%  -  1.5em );
+  width: calc(25% - 1.5em);
   margin-left: 0.75em;
   margin-right: 0.75em;
 }
@@ -29432,7 +31751,7 @@ a.ui.card:hover,
 }
 
 .ui.five.cards > .card {
-  width: calc( 20%  -  1.5em );
+  width: calc(20% - 1.5em);
   margin-left: 0.75em;
   margin-right: 0.75em;
 }
@@ -29443,7 +31762,7 @@ a.ui.card:hover,
 }
 
 .ui.six.cards > .card {
-  width: calc( 16.66666667%  -  1.5em );
+  width: calc(16.666666666666664% - 1.5em);
   margin-left: 0.75em;
   margin-right: 0.75em;
 }
@@ -29454,7 +31773,7 @@ a.ui.card:hover,
 }
 
 .ui.seven.cards > .card {
-  width: calc( 14.28571429%  -  1em );
+  width: calc(14.285714285714285% - 1em);
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
@@ -29465,7 +31784,7 @@ a.ui.card:hover,
 }
 
 .ui.eight.cards > .card {
-  width: calc( 12.5%  -  1em );
+  width: calc(12.5% - 1em);
   margin-left: 0.5em;
   margin-right: 0.5em;
   font-size: 11px;
@@ -29477,7 +31796,7 @@ a.ui.card:hover,
 }
 
 .ui.nine.cards > .card {
-  width: calc( 11.11111111%  -  1em );
+  width: calc(11.11111111111111% - 1em);
   margin-left: 0.5em;
   margin-right: 0.5em;
   font-size: 10px;
@@ -29489,7 +31808,7 @@ a.ui.card:hover,
 }
 
 .ui.ten.cards > .card {
-  width: calc( 10%  -  1em );
+  width: calc(10% - 1em);
   margin-left: 0.5em;
   margin-right: 0.5em;
 }
@@ -29518,7 +31837,7 @@ a.ui.card:hover,
   }
 
   .ui.three.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29529,7 +31848,7 @@ a.ui.card:hover,
   }
 
   .ui.four.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29540,7 +31859,7 @@ a.ui.card:hover,
   }
 
   .ui.five.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29551,7 +31870,7 @@ a.ui.card:hover,
   }
 
   .ui.six.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29562,7 +31881,7 @@ a.ui.card:hover,
   }
 
   .ui.seven.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29573,7 +31892,7 @@ a.ui.card:hover,
   }
 
   .ui.eight.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29584,7 +31903,7 @@ a.ui.card:hover,
   }
 
   .ui.nine.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29595,7 +31914,7 @@ a.ui.card:hover,
   }
 
   .ui.ten.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29621,7 +31940,7 @@ a.ui.card:hover,
   }
 
   .ui.three.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29632,7 +31951,7 @@ a.ui.card:hover,
   }
 
   .ui.four.doubling.cards > .card {
-    width: calc( 50%  -  2em );
+    width: calc(50% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29643,7 +31962,7 @@ a.ui.card:hover,
   }
 
   .ui.five.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29654,7 +31973,7 @@ a.ui.card:hover,
   }
 
   .ui.six.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29665,7 +31984,7 @@ a.ui.card:hover,
   }
 
   .ui.eight.doubling.cards > .card {
-    width: calc( 33.33333333%  -  2em );
+    width: calc(33.33333333333333% - 2em);
     margin-left: 1em;
     margin-right: 1em;
   }
@@ -29676,7 +31995,7 @@ a.ui.card:hover,
   }
 
   .ui.eight.doubling.cards > .card {
-    width: calc( 25%  -  1.5em );
+    width: calc(25% - 1.5em);
     margin-left: 0.75em;
     margin-right: 0.75em;
   }
@@ -29687,7 +32006,7 @@ a.ui.card:hover,
   }
 
   .ui.nine.doubling.cards > .card {
-    width: calc( 25%  -  1.5em );
+    width: calc(25% - 1.5em);
     margin-left: 0.75em;
     margin-right: 0.75em;
   }
@@ -29698,7 +32017,7 @@ a.ui.card:hover,
   }
 
   .ui.ten.doubling.cards > .card {
-    width: calc( 20%  -  1.5em );
+    width: calc(20% - 1.5em);
     margin-left: 0.75em;
     margin-right: 0.75em;
   }
@@ -29722,7 +32041,7 @@ a.ui.card:hover,
     height: auto !important;
     margin: 1em 1em;
     padding: 0 !important;
-    width: calc( 100%  -  2em ) !important;
+    width: calc(100% - 2em) !important;
   }
 }
 
@@ -29734,6 +32053,82 @@ a.ui.card:hover,
   font-size: 1em;
 }
 
+/*-----------------
+      Inverted
+------------------*/
+
+.ui.inverted.cards > .card,
+.ui.inverted.card {
+  background: #1B1C1D;
+  -webkit-box-shadow: 0px 1px 3px 0px #555555, 0px 0px 0px 1px #555555;
+  box-shadow: 0px 1px 3px 0px #555555, 0px 0px 0px 1px #555555;
+}
+
+/* Content */
+
+.ui.inverted.cards > .card > .content,
+.ui.inverted.card > .content {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Header */
+
+.ui.inverted.cards > .card > .content > .header,
+.ui.inverted.card > .content > .header {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Description */
+
+.ui.inverted.cards > .card > .content > .description,
+.ui.inverted.card > .content > .description {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* Meta */
+
+.ui.inverted.cards > .card .meta,
+.ui.inverted.card .meta {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ui.inverted.cards > .card .meta > a:not(.ui),
+.ui.inverted.card .meta > a:not(.ui) {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ui.inverted.cards > .card .meta > a:not(.ui):hover,
+.ui.inverted.card .meta > a:not(.ui):hover {
+  color: #ffffff;
+}
+
+/* Extra */
+
+.ui.inverted.cards > .card > .extra,
+.ui.inverted.card > .extra {
+  border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ui.inverted.cards > .card > .extra a:not(.ui),
+.ui.inverted.card > .extra a:not(.ui) {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.ui.inverted.cards > .card > .extra a:not(.ui):hover,
+.ui.inverted.card > .extra a:not(.ui):hover {
+  color: #1e70bf;
+}
+
+/* Link card(s) */
+
+.ui.inverted.cards a.card:hover,
+.ui.inverted.link.cards .card:not(.icon):hover,
+a.inverted.ui.card:hover,
+.ui.inverted.link.card:hover {
+  background: #1B1C1D;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -29742,7 +32137,7 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Comment
+ * # Semantic UI 2.5.0 - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -30020,6 +32415,35 @@ a.ui.card:hover,
   font-size: 1.71428571rem;
 }
 
+/*-------------------
+        Inverted
+--------------------*/
+
+.ui.inverted.comments .comment {
+  background-color: #1B1C1D;
+}
+
+.ui.inverted.comments .comment .author,
+.ui.inverted.comments .comment .text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.comments .comment .metadata,
+.ui.inverted.comments .comment .actions a {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ui.inverted.comments .comment a.author:hover,
+.ui.inverted.comments .comment .actions a.active,
+.ui.inverted.comments .comment .actions a:hover {
+  color: #ffffff;
+}
+
+.ui.inverted.threaded.comments .comment .comments {
+  -webkit-box-shadow: -1px 0px 0px #555555;
+  box-shadow: -1px 0px 0px #555555;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -30028,7 +32452,7 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Feed
+ * # Semantic UI 2.5.0 - Feed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -30333,6 +32757,28 @@ a.ui.card:hover,
   font-size: 1.14285714rem;
 }
 
+/*------------------
+      Inverted
+-------------------*/
+
+.ui.inverted.feed > .event {
+  background: #1B1C1D;
+}
+
+.ui.inverted.feed > .event > .content .date,
+.ui.inverted.feed > .event > .content .meta .like {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.ui.inverted.feed > .event > .content .summary,
+.ui.inverted.feed > .event > .content .extra.text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.feed > .event > .content .meta .like:hover {
+  color: #ffffff;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -30341,7 +32787,7 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Item
+ * # Semantic UI 2.5.0 - Item
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -30862,7 +33308,7 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Statistic
+ * # Semantic UI 2.5.0 - Statistic
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31494,7 +33940,7 @@ a.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Accordion
+ * # Semantic UI 2.5.0 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31531,13 +33977,6 @@ a.ui.card:hover,
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1em;
   color: rgba(0, 0, 0, 0.87);
-}
-
-/* Content */
-
-.ui.accordion .title ~ .content,
-.ui.accordion .accordion .title ~ .content {
-  display: none;
 }
 
 /* Default Styling */
@@ -31695,12 +34134,12 @@ a.ui.card:hover,
 *******************************/
 
 /*--------------
-     Active
+   Not Active
 ---------------*/
 
-.ui.accordion .active.content,
-.ui.accordion .accordion .active.content {
-  display: block;
+.ui.accordion .content:not(.active),
+.ui.accordion .accordion .content:not(.active) {
+  display: none;
 }
 
 /*******************************
@@ -31757,7 +34196,166 @@ a.ui.card:hover,
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Checkbox
+ * # Semantic UI 2.5.0 - Calendar
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+/*******************************
+            Popup
+*******************************/
+
+.ui.calendar .ui.popup {
+  max-width: none;
+  padding: 0;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*******************************
+            Calendar
+*******************************/
+
+.ui.calendar .calendar:focus {
+  outline: 0;
+}
+
+/*******************************
+            Grid
+*******************************/
+
+.ui.calendar .ui.popup .ui.grid {
+  display: block;
+  white-space: nowrap;
+}
+
+.ui.calendar .ui.popup .ui.grid > .column {
+  width: auto;
+}
+
+/*******************************
+            Table
+*******************************/
+
+.ui.calendar .ui.table.year,
+.ui.calendar .ui.table.month,
+.ui.calendar .ui.table.minute {
+  min-width: 15em;
+}
+
+.ui.calendar .ui.table.day {
+  min-width: 18em;
+}
+
+.ui.calendar .ui.table.hour {
+  min-width: 20em;
+}
+
+.ui.calendar .ui.table tr th,
+.ui.calendar .ui.table tr td {
+  padding: 0.5em;
+  white-space: nowrap;
+}
+
+.ui.calendar .ui.table tr th {
+  border-left: none;
+}
+
+.ui.calendar .ui.table tr th .icon {
+  margin: 0;
+}
+
+.ui.calendar .ui.table tr th .icon {
+  margin: 0;
+}
+
+.ui.calendar .ui.table tr:first-child th {
+  position: relative;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.ui.calendar .ui.table.day tr:first-child th {
+  border: none;
+}
+
+.ui.calendar .ui.table.day tr:nth-child(2) th {
+  padding-top: 0.2em;
+  padding-bottom: 0.3em;
+}
+
+.ui.calendar .ui.table tr td {
+  padding-left: 0.1em;
+  padding-right: 0.1em;
+}
+
+.ui.calendar .ui.table tr .link {
+  cursor: pointer;
+}
+
+.ui.calendar .ui.table tr .prev.link {
+  width: 14.28571429%;
+  position: absolute;
+  left: 0;
+}
+
+.ui.calendar .ui.table tr .next.link {
+  width: 14.28571429%;
+  position: absolute;
+  right: 0;
+}
+
+.ui.calendar .ui.table tr .disabled {
+  pointer-events: none;
+  color: rgba(40, 40, 40, 0.3);
+}
+
+/*--------------
+     States
+---------------*/
+
+.ui.calendar .ui.table tr td.today {
+  font-weight: bold;
+}
+
+.ui.calendar .ui.table tr td.range {
+  background: rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.95);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ui.calendar .ui.table.inverted tr td.range {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.ui.calendar .calendar:focus .ui.table tbody tr td.focus,
+.ui.calendar .calendar.active .ui.table tbody tr td.focus {
+  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
+  box-shadow: inset 0 0 0 1px #85B7D9;
+}
+
+.ui.calendar .calendar:focus .ui.table.inverted tbody tr td.focus,
+.ui.calendar .calendar.active .ui.table.inverted tbody tr td.focus {
+  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
+  box-shadow: inset 0 0 0 1px #85B7D9;
+}
+
+/*******************************
+         Theme Overrides
+*******************************/
+/*!
+ * # Semantic UI 2.5.0 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -32391,6 +34989,110 @@ a.ui.card:hover,
   width: 3.5rem;
 }
 
+/*--------------
+     Inverted
+---------------*/
+
+.ui.inverted.checkbox label,
+.ui.inverted.checkbox + label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Hover */
+
+.ui.inverted.checkbox .box:hover,
+.ui.inverted.checkbox label:hover {
+  color: #ffffff !important;
+}
+
+.ui.inverted.checkbox .box:hover::before,
+.ui.inverted.checkbox label:hover::before {
+  border-color: rgba(34, 36, 38, 0.5);
+}
+
+/*Slider Label */
+
+.ui.inverted.slider.checkbox .box,
+.ui.inverted.slider.checkbox label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slider Line */
+
+.ui.inverted.slider.checkbox .box:before,
+.ui.inverted.slider.checkbox label:before {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Slider Hover */
+
+.ui.inverted.slider.checkbox .box:hover::before,
+.ui.inverted.slider.checkbox label:hover::before {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Slider Active */
+
+.ui.inverted.slider.checkbox input:checked ~ .box,
+.ui.inverted.slider.checkbox input:checked ~ label {
+  color: #ffffff !important;
+}
+
+.ui.inverted.slider.checkbox input:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:checked ~ label:before {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Slider Active Focus */
+
+.ui.inverted.slider.checkbox input:focus:checked ~ .box,
+.ui.inverted.slider.checkbox input:focus:checked ~ label {
+  color: #ffffff !important;
+}
+
+.ui.inverted.slider.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:focus:checked ~ label:before {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Toggle Switch */
+
+.ui.inverted.toggle.checkbox .box:before,
+.ui.inverted.toggle.checkbox label:before {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Toggle Hover */
+
+.ui.inverted.toggle.checkbox .box:hover::before,
+.ui.inverted.toggle.checkbox label:hover::before {
+  background: #ffffff !important;
+}
+
+/* Toggle Active */
+
+.ui.inverted.toggle.checkbox input:checked ~ .box,
+.ui.inverted.toggle.checkbox input:checked ~ label {
+  color: #ffffff !important;
+}
+
+.ui.inverted.toggle.checkbox input:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:checked ~ label:before {
+  background-color: #2185D0 !important;
+}
+
+/* Toggle Active Focus */
+
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label {
+  color: #ffffff !important;
+}
+
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label:before {
+  background-color: #0d71bb !important;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -32432,7 +35134,7 @@ a.ui.card:hover,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Dimmer
+ * # Semantic UI 2.5.0 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -32685,7 +35387,7 @@ body.dimmable > .dimmer {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Dropdown
+ * # Semantic UI 2.5.0 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -33115,8 +35817,8 @@ select.ui.dropdown {
   width: auto;
   outline: none;
   margin: 0px -1px;
-  min-width: calc(100% +  2px );
-  width: calc(100% +  2px );
+  min-width: calc(100% + 2px);
+  width: calc(100% + 2px);
   border-radius: 0em 0em 0.28571429rem 0.28571429rem;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(34, 36, 38, 0.15);
   box-shadow: 0px 2px 3px 0px rgba(34, 36, 38, 0.15);
@@ -33379,16 +36081,17 @@ select.ui.dropdown {
 
 .ui.dropdown .remove.icon {
   font-size: 0.85714286em;
-  margin: 0em 0em 0em 1em;
-  padding: 0;
-  right: 2.5em;
-  top: auto;
+  margin: -0.78571429em;
+  padding: 0.91666667em;
+  right: 3em;
+  top: 0.78571429em;
   position: absolute;
   opacity: 0.6;
   z-index: 3;
 }
 
-.ui.clearable.dropdown .text {
+.ui.clearable.dropdown .text,
+.ui.clearable.dropdown a:last-of-type {
   margin-right: 1.5em;
 }
 
@@ -33932,7 +36635,7 @@ select.ui.dropdown {
 @media all and (-ms-high-contrast: none) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
-    min-width: calc(100% -  17px );
+    min-width: calc(100% - 17px);
   }
 }
 
@@ -34286,6 +36989,78 @@ select.ui.dropdown {
   box-shadow: -1px -1px 0px 0px rgba(34, 36, 38, 0.15);
 }
 
+/*--------------------
+        Sizes
+---------------------*/
+
+/* Dropdown Size */
+
+.ui.mini.dropdown {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.dropdown {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.dropdown {
+  font-size: 0.92857143rem;
+}
+
+.ui.dropdown {
+  font-size: 1rem;
+}
+
+.ui.large.dropdown {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.dropdown {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.dropdown {
+  font-size: 1.42857143rem;
+}
+
+.ui.massive.dropdown {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown Item Size */
+
+.ui.mini.dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+
+.ui.dropdown .menu > .item {
+  font-size: 1rem;
+}
+
+.ui.large.dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+
+.ui.massive.dropdown .menu > .item {
+  font-size: 1.71428571rem;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -34533,7 +37308,7 @@ select.ui.dropdown {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Video
+ * # Semantic UI 2.5.0 - Video
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34698,7 +37473,7 @@ select.ui.dropdown {
   padding-bottom: 42.85714286%;
 }
 /*!
- * # Semantic UI 2.4.4 - Modal
+ * # Semantic UI 2.5.0 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -35351,7 +38126,7 @@ select.ui.dropdown {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Nag
+ * # Semantic UI 2.5.0 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -35497,7 +38272,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Popup
+ * # Semantic UI 2.5.0 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36327,7 +39102,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Progress Bar
+ * # Semantic UI 2.5.0 - Progress Bar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36909,7 +39684,231 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Rating
+ * # Semantic UI 2.5.0 - Range
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+/*******************************
+            Range
+*******************************/
+
+.ui.range {
+  height: 20px;
+  width: 100%;
+}
+
+.ui.range .inner {
+  margin: 0 10px 0 10px;
+  height: 20px;
+  position: relative;
+}
+
+.ui.range .inner:hover {
+  cursor: pointer;
+}
+
+.ui.range .inner .track {
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  border-radius: 0.28571429rem;
+  top: 9px;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.ui.range .inner .track-fill {
+  position: absolute;
+  height: 4px;
+  width: 0;
+  border-radius: 0.28571429rem;
+  top: 9px;
+  left: 0;
+  background-color: #1B1C1D;
+}
+
+.ui.range .inner .thumb {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background: #fff -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
+  background: #fff -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  background: #fff linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  border-radius: 100%;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+}
+
+/*--------------
+    Inverted
+---------------*/
+
+.ui.inverted.range .inner .track {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.ui.inverted.range .inner .track-fill {
+  background-color: #545454;
+}
+
+/*--------------
+     Colors
+---------------*/
+
+/* Red */
+
+.ui.red.range .inner .track-fill {
+  background-color: #DB2828;
+}
+
+.ui.red.inverted.range .inner .track-fill {
+  background-color: #FF695E;
+}
+
+/* Orange */
+
+.ui.orange.range .inner .track-fill {
+  background-color: #F2711C;
+}
+
+.ui.orange.inverted.range .inner .track-fill {
+  background-color: #FF851B;
+}
+
+/* Yellow */
+
+.ui.yellow.range .inner .track-fill {
+  background-color: #FBBD08;
+}
+
+.ui.yellow.inverted.range .inner .track-fill {
+  background-color: #FFE21F;
+}
+
+/* Olive */
+
+.ui.olive.range .inner .track-fill {
+  background-color: #B5CC18;
+}
+
+.ui.olive.inverted.range .inner .track-fill {
+  background-color: #D9E778;
+}
+
+/* Green */
+
+.ui.green.range .inner .track-fill {
+  background-color: #21BA45;
+}
+
+.ui.green.inverted.range .inner .track-fill {
+  background-color: #2ECC40;
+}
+
+/* Teal */
+
+.ui.teal.range .inner .track-fill {
+  background-color: #00B5AD;
+}
+
+.ui.teal.inverted.range .inner .track-fill {
+  background-color: #6DFFFF;
+}
+
+/* Blue */
+
+.ui.blue.range .inner .track-fill {
+  background-color: #2185D0;
+}
+
+.ui.blue.inverted.range .inner .track-fill {
+  background-color: #54C8FF;
+}
+
+/* Violet */
+
+.ui.violet.range .inner .track-fill {
+  background-color: #6435C9;
+}
+
+.ui.violet.inverted.range .inner .track-fill {
+  background-color: #A291FB;
+}
+
+/* Purple */
+
+.ui.purple.range .inner .track-fill {
+  background-color: #A333C8;
+}
+
+.ui.purple.inverted.range .inner .track-fill {
+  background-color: #DC73FF;
+}
+
+/* Pink */
+
+.ui.pink.range .inner .track-fill {
+  background-color: #E03997;
+}
+
+.ui.pink.inverted.range .inner .track-fill {
+  background-color: #FF8EDF;
+}
+
+/* Brown */
+
+.ui.brown.range .inner .track-fill {
+  background-color: #A5673F;
+}
+
+.ui.brown.inverted.range .inner .track-fill {
+  background-color: #D67C1C;
+}
+
+/* Grey */
+
+.ui.grey.range .inner .track-fill {
+  background-color: #767676;
+}
+
+.ui.grey.inverted.range .inner .track-fill {
+  background-color: #DCDDDE;
+}
+
+/* Black */
+
+.ui.black.range .inner .track-fill {
+  background-color: #1B1C1D;
+}
+
+.ui.black.inverted.range .inner .track-fill {
+  background-color: #545454;
+}
+
+/*--------------
+    Disabled
+---------------*/
+
+.ui.range.disabled {
+  opacity: 0.5;
+}
+
+.ui.range.disabled .inner:hover {
+  cursor: auto;
+}
+
+.ui.range.disabled .inner .track-fill {
+  background: #767676;
+}
+/*!
+ * # Semantic UI 2.5.0 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37186,7 +40185,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Search
+ * # Semantic UI 2.5.0 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37422,7 +40421,7 @@ a.ui.nag {
   background: #F9FAFB;
 }
 
-.ui.search .action:hover {
+.ui.search .action:hover:not(div) {
   background: #E0E0E0;
 }
 
@@ -37656,7 +40655,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Shape
+ * # Semantic UI 2.5.0 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37816,7 +40815,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Sidebar
+ * # Semantic UI 2.5.0 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -38501,7 +41500,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Sticky
+ * # Semantic UI 2.5.0 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -38575,7 +41574,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Tab
+ * # Semantic UI 2.5.0 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -38663,7 +41662,7 @@ body.pushable > .pusher {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.4.4 - Transition
+ * # Semantic UI 2.5.0 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *

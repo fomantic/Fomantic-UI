@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Button
+ * # Semantic UI 2.5.0 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -717,6 +717,50 @@
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
 .ui.massive.button {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown coupled buttons sizes */
+.ui.mini.buttons .dropdown {
+  font-size: 0.78571429rem;
+}
+.ui.mini.buttons .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.buttons .dropdown {
+  font-size: 0.85714286rem;
+}
+.ui.tiny.buttons .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+.ui.small.buttons .dropdown {
+  font-size: 0.92857143rem;
+}
+.ui.small.buttons .dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+.ui.large.buttons .dropdown {
+  font-size: 1.14285714rem;
+}
+.ui.large.buttons .dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+.ui.big.buttons .dropdown {
+  font-size: 1.28571429rem;
+}
+.ui.big.buttons .dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+.ui.huge.buttons .dropdown {
+  font-size: 1.42857143rem;
+}
+.ui.huge.buttons .dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+.ui.massive.buttons .dropdown {
+  font-size: 1.71428571rem;
+}
+.ui.massive.buttons .dropdown .menu > .item {
   font-size: 1.71428571rem;
 }
 

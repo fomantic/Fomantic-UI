@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Form
+ * # Semantic UI 2.5.0 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -145,6 +145,19 @@
 .ui.form textarea,
 .ui.form input[type="checkbox"] {
   vertical-align: top;
+}
+
+/*--------------------
+      Transparent
+---------------------*/
+
+.ui.form .field textarea.transparent {
+  border-color: transparent !important;
+  background-color: transparent !important;
+  padding: 0em !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+  border-radius: 0px !important;
 }
 
 /*--------------------------
@@ -1067,6 +1080,58 @@
   font-size: 1.42857143rem;
 }
 .ui.massive.form {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown */
+.ui.mini.form .field .dropdown {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.form .field .dropdown {
+  font-size: 0.85714286rem;
+}
+.ui.small.form .field .dropdown {
+  font-size: 0.92857143rem;
+}
+.ui.form .field .dropdown {
+  font-size: 1rem;
+}
+.ui.large.form .field .dropdown {
+  font-size: 1.14285714rem;
+}
+.ui.big.form .field .dropdown {
+  font-size: 1.28571429rem;
+}
+.ui.huge.form .field .dropdown {
+  font-size: 1.42857143rem;
+}
+.ui.massive.form .field .dropdown {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown Items */
+.ui.mini.form .field .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.form .field .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+.ui.small.form .field .dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+.ui.form .field .dropdown .menu > .item {
+  font-size: 1rem;
+}
+.ui.large.form .field .dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+.ui.big.form .field .dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+.ui.huge.form .field .dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+.ui.massive.form .field .dropdown .menu > .item {
   font-size: 1.71428571rem;
 }
 

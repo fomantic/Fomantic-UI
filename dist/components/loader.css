@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Loader
+ * # Semantic UI 2.5.0 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -309,6 +309,56 @@
 }
 
 /*-------------------
+       Colors
+--------------------*/
+
+.ui.primary.loader:after {
+  border-color: #2185D0 transparent transparent;
+}
+.ui.secondary.loader:after {
+  border-color: #1B1C1D transparent transparent;
+}
+.ui.red.loader:after {
+  border-color: #DB2828 transparent transparent;
+}
+.ui.orange.loader:after {
+  border-color: #F2711C transparent transparent;
+}
+.ui.yellow.loader:after {
+  border-color: #FBBD08 transparent transparent;
+}
+.ui.olive.loader:after {
+  border-color: #B5CC18 transparent transparent;
+}
+.ui.green.loader:after {
+  border-color: #21BA45 transparent transparent;
+}
+.ui.teal.loader:after {
+  border-color: #00B5AD transparent transparent;
+}
+.ui.blue.loader:after {
+  border-color: #2185D0 transparent transparent;
+}
+.ui.violet.loader:after {
+  border-color: #6435C9 transparent transparent;
+}
+.ui.purple.loader:after {
+  border-color: #A333C8 transparent transparent;
+}
+.ui.pink.loader:after {
+  border-color: #E03997 transparent transparent;
+}
+.ui.brown.loader:after {
+  border-color: #A5673F transparent transparent;
+}
+.ui.grey.loader:after {
+  border-color: #767676 transparent transparent;
+}
+.ui.black.loader:after {
+  border-color: #1B1C1D transparent transparent;
+}
+
+/*-------------------
        Inverted
 --------------------*/
 
@@ -320,6 +370,53 @@
 }
 .ui.inverted.loader:after {
   border-top-color: #FFFFFF;
+}
+
+/* Colors */
+.ui.inverted.primary.loader:after {
+  border-color: #54C8FF transparent transparent;
+}
+.ui.inverted.secondary.loader:after {
+  border-color: #545454 transparent transparent;
+}
+.ui.inverted.red.loader:after {
+  border-color: #FF695E transparent transparent;
+}
+.ui.inverted.orange.loader:after {
+  border-color: #FF851B transparent transparent;
+}
+.ui.inverted.yellow.loader:after {
+  border-color: #FFE21F transparent transparent;
+}
+.ui.inverted.olive.loader:after {
+  border-color: #D9E778 transparent transparent;
+}
+.ui.inverted.green.loader:after {
+  border-color: #2ECC40 transparent transparent;
+}
+.ui.inverted.teal.loader:after {
+  border-color: #6DFFFF transparent transparent;
+}
+.ui.inverted.blue.loader:after {
+  border-color: #54C8FF transparent transparent;
+}
+.ui.inverted.violet.loader:after {
+  border-color: #A291FB transparent transparent;
+}
+.ui.inverted.purple.loader:after {
+  border-color: #DC73FF transparent transparent;
+}
+.ui.inverted.pink.loader:after {
+  border-color: #FF8EDF transparent transparent;
+}
+.ui.inverted.brown.loader:after {
+  border-color: #D67C1C transparent transparent;
+}
+.ui.inverted.grey.loader:after {
+  border-color: #DCDDDE transparent transparent;
+}
+.ui.inverted.black.loader:after {
+  border-color: #545454 transparent transparent;
 }
 
 /*-------------------

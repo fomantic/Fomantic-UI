@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Divider
+ * # Semantic UI 2.5.0 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -103,7 +103,7 @@
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   width: 0%;
-  height: calc(100% -  1rem );
+  height: calc(100% - 1rem);
 }
 .ui.vertical.divider:before {
   top: -100%;

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Checkbox
+ * # Semantic UI 2.5.0 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -589,6 +589,94 @@
 .ui.fitted.slider.checkbox,
 .ui.fitted.slider.checkbox {
   width: 3.5rem;
+}
+
+/*--------------
+     Inverted
+---------------*/
+
+.ui.inverted.checkbox label,
+.ui.inverted.checkbox + label {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Hover */
+.ui.inverted.checkbox .box:hover,
+.ui.inverted.checkbox label:hover {
+  color: #ffffff !important;
+}
+.ui.inverted.checkbox .box:hover::before,
+.ui.inverted.checkbox label:hover::before {
+  border-color: rgba(34, 36, 38, 0.5);
+}
+/*Slider Label */
+.ui.inverted.slider.checkbox .box,
+.ui.inverted.slider.checkbox label {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Slider Line */
+.ui.inverted.slider.checkbox .box:before,
+.ui.inverted.slider.checkbox label:before {
+  background-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* Slider Hover */
+.ui.inverted.slider.checkbox .box:hover::before,
+.ui.inverted.slider.checkbox label:hover::before {
+  background: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* Slider Active */
+.ui.inverted.slider.checkbox input:checked ~ .box,
+.ui.inverted.slider.checkbox input:checked ~ label {
+  color: #ffffff !important;
+}
+.ui.inverted.slider.checkbox input:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:checked ~ label:before {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Slider Active Focus */
+.ui.inverted.slider.checkbox input:focus:checked ~ .box,
+.ui.inverted.slider.checkbox input:focus:checked ~ label {
+  color: #ffffff !important;
+}
+.ui.inverted.slider.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.slider.checkbox input:focus:checked ~ label:before {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Toggle Switch */
+.ui.inverted.toggle.checkbox .box:before,
+.ui.inverted.toggle.checkbox label:before {
+  background-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Toggle Hover */
+.ui.inverted.toggle.checkbox .box:hover::before,
+.ui.inverted.toggle.checkbox label:hover::before {
+  background: #ffffff !important;
+}
+
+/* Toggle Active */
+.ui.inverted.toggle.checkbox input:checked ~ .box,
+.ui.inverted.toggle.checkbox input:checked ~ label {
+  color: #ffffff !important;
+}
+.ui.inverted.toggle.checkbox input:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:checked ~ label:before {
+  background-color: #2185D0 !important;
+}
+
+/* Toggle Active Focus */
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label {
+  color: #ffffff !important;
+}
+.ui.inverted.toggle.checkbox input:focus:checked ~ .box:before,
+.ui.inverted.toggle.checkbox input:focus:checked ~ label:before {
+  background-color: #0d71bb !important;
 }
 
 

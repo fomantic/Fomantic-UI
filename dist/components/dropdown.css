@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Dropdown
+ * # Semantic UI 2.5.0 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -413,8 +413,8 @@ select.ui.dropdown {
   width: auto;
   outline: none;
   margin: 0px -1px;
-  min-width: calc(100% +  2px );
-  width: calc(100% +  2px );
+  min-width: calc(100% + 2px);
+  width: calc(100% + 2px);
   border-radius: 0em 0em 0.28571429rem 0.28571429rem;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(34, 36, 38, 0.15);
           box-shadow: 0px 2px 3px 0px rgba(34, 36, 38, 0.15);
@@ -643,15 +643,16 @@ select.ui.dropdown {
 /* Clearable Selection */
 .ui.dropdown .remove.icon {
   font-size: 0.85714286em;
-  margin: 0em 0em 0em 1em;
-  padding: 0;
-  right: 2.5em;
-  top: auto;
+  margin: -0.78571429em;
+  padding: 0.91666667em;
+  right: 3em;
+  top: 0.78571429em;
   position: absolute;
   opacity: 0.6;
   z-index: 3;
 }
-.ui.clearable.dropdown .text {
+.ui.clearable.dropdown .text,
+.ui.clearable.dropdown a:last-of-type {
   margin-right: 1.5em;
 }
 .ui.dropdown input[value=''] ~ .remove.icon,
@@ -1145,7 +1146,7 @@ select.ui.dropdown {
 @media all and (-ms-high-contrast: none) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
-    min-width: calc(100% -  17px );
+    min-width: calc(100% - 17px);
   }
 }
 @media only screen and (max-width: 767px) {
@@ -1459,6 +1460,63 @@ select.ui.dropdown {
   margin: 0em 0em 1em 0em;
   -webkit-box-shadow: -1px -1px 0px 0px rgba(34, 36, 38, 0.15);
           box-shadow: -1px -1px 0px 0px rgba(34, 36, 38, 0.15);
+}
+
+/*--------------------
+        Sizes
+---------------------*/
+
+
+/* Dropdown Size */
+.ui.mini.dropdown {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.dropdown {
+  font-size: 0.85714286rem;
+}
+.ui.small.dropdown {
+  font-size: 0.92857143rem;
+}
+.ui.dropdown {
+  font-size: 1rem;
+}
+.ui.large.dropdown {
+  font-size: 1.14285714rem;
+}
+.ui.big.dropdown {
+  font-size: 1.28571429rem;
+}
+.ui.huge.dropdown {
+  font-size: 1.42857143rem;
+}
+.ui.massive.dropdown {
+  font-size: 1.71428571rem;
+}
+
+/* Dropdown Item Size */
+.ui.mini.dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+.ui.small.dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+.ui.dropdown .menu > .item {
+  font-size: 1rem;
+}
+.ui.large.dropdown .menu > .item {
+  font-size: 1.14285714rem;
+}
+.ui.big.dropdown .menu > .item {
+  font-size: 1.28571429rem;
+}
+.ui.huge.dropdown .menu > .item {
+  font-size: 1.42857143rem;
+}
+.ui.massive.dropdown .menu > .item {
+  font-size: 1.71428571rem;
 }
 
 

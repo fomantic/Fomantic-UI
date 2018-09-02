@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Checkbox
+ * # Semantic UI 2.5.0 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -335,7 +335,7 @@ $.fn.checkbox = function(parameters) {
 
         should: {
           allowCheck: function() {
-            if(module.is.determinate() && module.is.checked() && !module.should.forceCallbacks() ) {
+            if(module.is.determinate() && module.is.checked() && !module.is.initialLoad() ) {
               module.debug('Should not allow check, checkbox is already checked');
               return false;
             }
@@ -346,7 +346,7 @@ $.fn.checkbox = function(parameters) {
             return true;
           },
           allowUncheck: function() {
-            if(module.is.determinate() && module.is.unchecked() && !module.should.forceCallbacks() ) {
+            if(module.is.determinate() && module.is.unchecked() && !module.is.initialLoad() ) {
               module.debug('Should not allow uncheck, checkbox is already unchecked');
               return false;
             }
@@ -357,7 +357,7 @@ $.fn.checkbox = function(parameters) {
             return true;
           },
           allowIndeterminate: function() {
-            if(module.is.indeterminate() && !module.should.forceCallbacks() ) {
+            if(module.is.indeterminate() && !module.is.initialLoad() ) {
               module.debug('Should not allow indeterminate, checkbox is already indeterminate');
               return false;
             }
@@ -368,7 +368,7 @@ $.fn.checkbox = function(parameters) {
             return true;
           },
           allowDeterminate: function() {
-            if(module.is.determinate() && !module.should.forceCallbacks() ) {
+            if(module.is.determinate() && !module.is.initialLoad() ) {
               module.debug('Should not allow determinate, checkbox is already determinate');
               return false;
             }
@@ -377,9 +377,6 @@ $.fn.checkbox = function(parameters) {
               return false;
             }
             return true;
-          },
-          forceCallbacks: function() {
-            return (module.is.initialLoad() && settings.fireOnInit);
           },
           ignoreCallbacks: function() {
             return (initialLoad && !settings.fireOnInit);
