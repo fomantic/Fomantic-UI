@@ -5,7 +5,7 @@
 **Major Enhancements**
 - **Calendar** - Added the calendar module :tada: **big thanks to [@mdehoog](https://github.com/mdehoog)** for creating the module and **thanks to [@prudho](https://github.com/prudho)** for the port [#8](https://github.com/fomantic/Fomantic-UI/issues/8)
 - **Range** - Added the range slider module :tada: **big thanks to [@tyleryasaka](https://github.com/tyleryasaka)** for creating the module and **thanks to [@hammy2899](https://github.com/hammy2899)** fro the port [#78](https://github.com/fomantic/Fomantic-UI/pull/78)
-- **Icons** - Updated icons to FontAwesome 5.2.0 **Thanks [@hammy2899](https://github.com/hammy2899)** [#6395](https://github.com/Semantic-Org/Semantic-UI/issues/6395) You can also generate the icons yourself including FA5 Pro using the [fomantic-ui-icon-script](https://github.com/hammy2899/fomantic-ui-icon-script)
+- **Icons** - Updated icons to FontAwesome 5.3.1 **Thanks [@hammy2899](https://github.com/hammy2899)** [#6395](https://github.com/Semantic-Org/Semantic-UI/issues/6395) You can also generate the icons yourself including FA5 Pro using the [fomantic-ui-icon-script](https://github.com/hammy2899/fomantic-ui-icon-script)
 
 **Enhancements**
 - **Loader** - Added color variants **Thanks [@hammy2899](https://github.com/hammy2899)** [#73](https://github.com/fomantic/Fomantic-UI/issues/73)
