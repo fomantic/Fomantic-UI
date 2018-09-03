@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Grid
+ * # Semantic UI 2.5.0 - Grid
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -151,7 +151,7 @@
   margin: 1rem 1rem;
 }
 .ui.grid .column + .ui.vertical.divider {
-  height: calc(50% -  1rem );
+  height: calc(50% - 1rem);
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -1092,7 +1092,7 @@
   content: "";
   top: 0em;
   left: 0px;
-  width: calc(100% -  2rem );
+  width: calc(100% - 2rem);
   height: 1px;
   margin: 0% 1rem;
   -webkit-box-shadow: 0px -1px 0px 0px rgba(34, 36, 38, 0.15);
@@ -1131,12 +1131,12 @@
 .ui.relaxed[class*="vertically divided"].grid > .row:before {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
-  width: calc(100% -  3rem );
+  width: calc(100% - 3rem);
 }
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
   margin-left: 5rem;
   margin-right: 5rem;
-  width: calc(100% -  5rem );
+  width: calc(100% - 5rem);
 }
 
 /*----------------------
@@ -1329,24 +1329,6 @@
          Colored
 -----------------------*/
 
-.ui.grid > .row > .red.column,
-.ui.grid > .row > .orange.column,
-.ui.grid > .row > .yellow.column,
-.ui.grid > .row > .olive.column,
-.ui.grid > .row > .green.column,
-.ui.grid > .row > .teal.column,
-.ui.grid > .row > .blue.column,
-.ui.grid > .row > .violet.column,
-.ui.grid > .row > .purple.column,
-.ui.grid > .row > .pink.column,
-.ui.grid > .row > .brown.column,
-.ui.grid > .row > .grey.column,
-.ui.grid > .row > .black.column {
-  margin-top: -1rem;
-  margin-bottom: -1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
 
 /* Red */
 .ui.grid > .red.row,
@@ -2024,6 +2006,78 @@
   .ui.grid.grid.grid > .row > [class*="tablet only"].column:not(.computer) {
     display: none !important;
   }
+}
+
+/*-----------------
+      Compact
+-----------------*/
+
+.ui.compact.grid > .column:not(.row),
+.ui.compact.grid > .row > .column {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.ui.compact.grid > * {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+/* Row */
+.ui.compact.grid > .row {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Columns */
+.ui.compact.grid > .column:not(.row) {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* Relaxed + Celled */
+.ui.compact.relaxed.celled.grid > .column:not(.row),
+.ui.compact.relaxed.celled.grid > .row > .column {
+  padding: 0.75em;
+}
+.ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
+.ui.compact[class*="very relaxed"].celled.grid > .row > .column {
+  padding: 1em;
+}
+
+/*-----------------
+    Very compact
+-----------------*/
+
+.ui[class*="very compact"].grid > .column:not(.row),
+.ui[class*="very compact"].grid > .row > .column {
+  padding-left: 0.25rem;
+  padding-right: 0.5rem;
+}
+.ui[class*="very compact"].grid > * {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+/* Row */
+.ui[class*="very compact"].grid > .row {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Columns */
+.ui[class*="very compact"].grid > .column:not(.row) {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+
+/* Relaxed + Celled */
+.ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
+.ui[class*="very compact"].relaxed.celled.grid > .row > .column {
+  padding: 0.375em;
+}
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
+  padding: 0.5em;
 }
 
 

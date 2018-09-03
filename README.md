@@ -6,7 +6,7 @@
 [![Discord](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
 [![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
 [![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
-[![last commit](https://img.shields.io/github/last-commit/hammy2899/fomantic-ui.svg)](https://github.com/hammy2899/Fomantic-UI/commits/master)
+[![last commit](https://img.shields.io/github/last-commit/hammy2899/fomantic-ui.svg)](https://github.com/fomantic/Fomantic-UI/commits/master)
 
 [Fomantic](http://fomantic-ui.com) is a community fork of the popular Semantic-UI framework.
 
@@ -64,10 +64,10 @@ Please only create Github issues for bug's and feature requests or any other rel
 
 #### Pull Requests
 
-When adding pull requests, be sure to merge into the [beta](https://github.com/hammy2899/Fomantic-UI/tree/beta) branch.
+When adding pull requests, be sure to merge into the [beta](https://github.com/fomantic/Fomantic-UI/tree/beta) branch.
 
 ### Cross-browser testing provided by
-[![BrowserStack](https://cdn.rawgit.com/hammy2899/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
+[![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
 #### Credit
 Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)

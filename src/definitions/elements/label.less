@@ -541,6 +541,78 @@ a.ui.active.label:hover:before {
        Colors
 --------------------*/
 
+/*--- Primary ---*/
+.ui.primary.labels .label,
+.ui.primary.label {
+  background-color: @primaryColor !important;
+  border-color: @primaryColor !important;
+  color: @primaryTextColor !important;
+}
+/* Link */
+.ui.primary.labels .label:hover,
+a.ui.primary.label:hover{
+  background-color: @primaryColorHover !important;
+  border-color: @primaryColorHover !important;
+  color: @primaryTextColor !important;
+}
+/* Corner */
+.ui.primary.corner.label,
+.ui.primary.corner.label:hover {
+  background-color: transparent !important;
+}
+/* Ribbon */
+.ui.primary.ribbon.label {
+  border-color: @primaryRibbonShadow !important;
+}
+/* Basic */
+.ui.basic.primary.label {
+  background: @basicBackground !important;
+  color: @primaryColor !important;
+  border-color: @primaryColor !important;
+}
+.ui.basic.primary.labels a.label:hover,
+a.ui.basic.primary.label:hover {
+  background-color: @white !important;
+  color: @primaryColorHover !important;
+  border-color: @primaryColorHover !important;
+}
+
+/*--- Secondary ---*/
+.ui.secondary.labels .label,
+.ui.secondary.label {
+  background-color: @secondaryColor !important;
+  border-color: @secondaryColor !important;
+  color: @secondaryTextColor !important;
+}
+/* Link */
+.ui.secondary.labels .label:hover,
+a.ui.secondary.label:hover{
+  background-color: @secondaryColorHover !important;
+  border-color: @secondaryColorHover !important;
+  color: @secondaryTextColor !important;
+}
+/* Corner */
+.ui.secondary.corner.label,
+.ui.secondary.corner.label:hover {
+  background-color: transparent !important;
+}
+/* Ribbon */
+.ui.secondary.ribbon.label {
+  border-color: @secondaryRibbonShadow !important;
+}
+/* Basic */
+.ui.basic.secondary.label {
+  background: @basicBackground !important;
+  color: @secondaryColor !important;
+  border-color: @secondaryColor !important;
+}
+.ui.basic.secondary.labels a.label:hover,
+a.ui.basic.secondary.label:hover {
+  background-color: @white !important;
+  color: @secondaryColorHover !important;
+  border-color: @secondaryColorHover !important;
+}
+
 /*--- Red ---*/
 .ui.red.labels .label,
 .ui.red.label {
@@ -670,7 +742,7 @@ a.ui.olive.label:hover{
 }
 /* Ribbon */
 .ui.olive.ribbon.label {
-  border-color: @greenRibbonShadow !important;
+  border-color: @oliveRibbonShadow !important;
 }
 /* Basic */
 .ui.basic.olive.label {
@@ -958,7 +1030,7 @@ a.ui.grey.label:hover{
 }
 /* Ribbon */
 .ui.grey.ribbon.label {
-  border-color: @brownRibbonShadow !important;
+  border-color: @greyRibbonShadow !important;
 }
 /* Basic */
 .ui.basic.grey.label {
@@ -994,7 +1066,7 @@ a.ui.black.label:hover{
 }
 /* Ribbon */
 .ui.black.ribbon.label {
-  border-color: @brownRibbonShadow !important;
+  border-color: @blackRibbonShadow !important;
 }
 /* Basic */
 .ui.basic.black.label {

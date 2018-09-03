@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Label
+ * # Semantic UI 2.5.0 - Label
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -316,15 +316,15 @@ a.ui.label {
 
 /* Positioning */
 .ui.ribbon.label {
-  left: calc( -1rem  -  1.2em );
+  left: calc(-1rem - 1.2em);
   margin-right: -1.2em;
-  padding-left: calc( 1rem  +  1.2em );
+  padding-left: calc(1rem + 1.2em);
   padding-right: 1.2em;
 }
 .ui[class*="right ribbon"].label {
-  left: calc(100% +  1rem  +  1.2em );
+  left: calc(100% + 1rem + 1.2em);
   padding-left: 1.2em;
-  padding-right: calc( 1rem  +  1.2em );
+  padding-right: calc(1rem + 1.2em);
 }
 
 /* Right Ribbon */
@@ -351,20 +351,20 @@ a.ui.label {
 }
 .ui.card .image > .ui.ribbon.label,
 .ui.image > .ui.ribbon.label {
-  left: calc( 0.05rem  -  1.2em );
+  left: calc(0.05rem - 1.2em);
 }
 .ui.card .image > .ui[class*="right ribbon"].label,
 .ui.image > .ui[class*="right ribbon"].label {
-  left: calc(100% +  -0.05rem  +  1.2em );
+  left: calc(100% + -0.05rem + 1.2em);
   padding-left: 0.833em;
 }
 
 /* Inside Table */
 .ui.table td > .ui.ribbon.label {
-  left: calc( -0.78571429em  -  1.2em );
+  left: calc(-0.7857142857142857em - 1.2em);
 }
 .ui.table td > .ui[class*="right ribbon"].label {
-  left: calc(100% +  0.78571429em  +  1.2em );
+  left: calc(100% + 0.7857142857142857em + 1.2em);
   padding-left: 0.833em;
 }
 
@@ -505,6 +505,88 @@ a.ui.active.label:hover:before {
        Colors
 --------------------*/
 
+
+/*--- Primary ---*/
+
+.ui.primary.labels .label,
+.ui.primary.label {
+  background-color: #2185D0 !important;
+  border-color: #2185D0 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Link */
+.ui.primary.labels .label:hover,
+a.ui.primary.label:hover {
+  background-color: #1678c2 !important;
+  border-color: #1678c2 !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Corner */
+.ui.primary.corner.label,
+.ui.primary.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.ui.primary.ribbon.label {
+  border-color: #1a69a4 !important;
+}
+
+/* Basic */
+.ui.basic.primary.label {
+  background: none #FFFFFF !important;
+  color: #2185D0 !important;
+  border-color: #2185D0 !important;
+}
+.ui.basic.primary.labels a.label:hover,
+a.ui.basic.primary.label:hover {
+  background-color: #FFFFFF !important;
+  color: #1678c2 !important;
+  border-color: #1678c2 !important;
+}
+
+/*--- Secondary ---*/
+
+.ui.secondary.labels .label,
+.ui.secondary.label {
+  background-color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Link */
+.ui.secondary.labels .label:hover,
+a.ui.secondary.label:hover {
+  background-color: #27292a !important;
+  border-color: #27292a !important;
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Corner */
+.ui.secondary.corner.label,
+.ui.secondary.corner.label:hover {
+  background-color: transparent !important;
+}
+
+/* Ribbon */
+.ui.secondary.ribbon.label {
+  border-color: #020203 !important;
+}
+
+/* Basic */
+.ui.basic.secondary.label {
+  background: none #FFFFFF !important;
+  color: #1B1C1D !important;
+  border-color: #1B1C1D !important;
+}
+.ui.basic.secondary.labels a.label:hover,
+a.ui.basic.secondary.label:hover {
+  background-color: #FFFFFF !important;
+  color: #27292a !important;
+  border-color: #27292a !important;
+}
 
 /*--- Red ---*/
 
@@ -654,7 +736,7 @@ a.ui.olive.label:hover {
 
 /* Ribbon */
 .ui.olive.ribbon.label {
-  border-color: #198f35 !important;
+  border-color: #8d9e13 !important;
 }
 
 /* Basic */
@@ -982,7 +1064,7 @@ a.ui.grey.label:hover {
 
 /* Ribbon */
 .ui.grey.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #5d5d5d !important;
 }
 
 /* Basic */
@@ -1023,7 +1105,7 @@ a.ui.black.label:hover {
 
 /* Ribbon */
 .ui.black.ribbon.label {
-  border-color: #805031 !important;
+  border-color: #020203 !important;
 }
 
 /* Basic */

@@ -139,7 +139,7 @@
   margin: (@rowSpacing / 2) (@gutterWidth / 2);
 }
 .ui.grid .column + .ui.vertical.divider {
-  height: ~"calc(50% - "(@rowSpacing/2)~")";
+  height: e(%("calc(50%% - %d)", @rowSpacing / 2));
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -1077,7 +1077,7 @@
   top: 0em;
   left: 0px;
 
-  width: ~"calc(100% - "@gutterWidth~")";
+  width: e(%("calc(100%% - %d)", @gutterWidth));
   height: 1px;
 
   margin: 0% (@gutterWidth / 2);
@@ -1112,12 +1112,12 @@
 .ui.relaxed[class*="vertically divided"].grid > .row:before {
   margin-left: (@relaxedGutterWidth / 2);
   margin-right: (@relaxedGutterWidth / 2);
-  width: ~"calc(100% - "@relaxedGutterWidth~")";
+  width: e(%("calc(100%% - %d)", @relaxedGutterWidth));
 }
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
   margin-left: @veryRelaxedGutterWidth;
   margin-right: @veryRelaxedGutterWidth;
-  width: ~"calc(100% - "@veryRelaxedGutterWidth~")";
+  width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
 }
 
 /*----------------------
@@ -1277,25 +1277,6 @@
 /*----------------------
          Colored
 -----------------------*/
-
-.ui.grid > .row > .red.column,
-.ui.grid > .row > .orange.column,
-.ui.grid > .row > .yellow.column,
-.ui.grid > .row > .olive.column,
-.ui.grid > .row > .green.column,
-.ui.grid > .row > .teal.column,
-.ui.grid > .row > .blue.column,
-.ui.grid > .row > .violet.column,
-.ui.grid > .row > .purple.column,
-.ui.grid > .row > .pink.column,
-.ui.grid > .row > .brown.column,
-.ui.grid > .row > .grey.column,
-.ui.grid > .row > .black.column {
-  margin-top: -(@rowSpacing / 2);
-  margin-bottom: -(@rowSpacing / 2);
-  padding-top: (@rowSpacing / 2);
-  padding-bottom: (@rowSpacing / 2);
-}
 
 /* Red */
 .ui.grid > .red.row,
@@ -1914,6 +1895,80 @@
   .ui.grid.grid.grid > .row > [class*="tablet only"].column:not(.computer) {
     display: none !important;
   }
+}
+
+/*-----------------
+      Compact
+-----------------*/
+
+.ui.compact.grid > .column:not(.row),
+.ui.compact.grid > .row > .column {
+  padding-left: (@compactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+.ui.compact.grid > * {
+  padding-left: (@compactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+/* Row */
+.ui.compact.grid > .row {
+  padding-top: (@compactRowSpacing / 2);
+  padding-bottom: (@compactRowSpacing / 2);
+}
+
+/* Columns */
+.ui.compact.grid > .column:not(.row) {
+  padding-top: (@compactRowSpacing / 2);
+  padding-bottom: (@compactRowSpacing / 2);
+}
+
+/* Relaxed + Celled */
+.ui.compact.relaxed.celled.grid > .column:not(.row),
+.ui.compact.relaxed.celled.grid > .row > .column {
+  padding: @compactCelledRelaxedPadding;
+}
+.ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
+.ui.compact[class*="very relaxed"].celled.grid > .row > .column {
+  padding: @compactCelledVeryRelaxedPadding;
+}
+
+/*-----------------
+    Very compact
+-----------------*/
+
+.ui[class*="very compact"].grid > .column:not(.row),
+.ui[class*="very compact"].grid > .row > .column {
+  padding-left: (@veryCompactGutterWidth / 2);
+  padding-right: (@compactGutterWidth / 2);
+}
+
+.ui[class*="very compact"].grid > * {
+  padding-left: (@veryCompactGutterWidth / 2);
+  padding-right: (@veryCompactGutterWidth / 2);
+}
+
+/* Row */
+.ui[class*="very compact"].grid > .row {
+  padding-top: (@veryCompactRowSpacing / 2);
+  padding-bottom: (@veryCompactRowSpacing / 2);
+}
+
+/* Columns */
+.ui[class*="very compact"].grid > .column:not(.row) {
+  padding-top: (@veryCompactRowSpacing / 2);
+  padding-bottom: (@veryCompactRowSpacing / 2);
+}
+
+/* Relaxed + Celled */
+.ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
+.ui[class*="very compact"].relaxed.celled.grid > .row > .column {
+  padding: @veryCompactCelledRelaxedPadding;
+}
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
+.ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
+  padding: @veryCompactCelledVeryRelaxedPadding;
 }
 
 

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Comment
+ * # Semantic UI 2.5.0 - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -256,6 +256,31 @@
 }
 .ui.massive.comments {
   font-size: 1.71428571rem;
+}
+
+/*-------------------
+        Inverted
+--------------------*/
+
+.ui.inverted.comments .comment {
+  background-color: #1B1C1D;
+}
+.ui.inverted.comments .comment .author,
+.ui.inverted.comments .comment .text {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.comments .comment .metadata,
+.ui.inverted.comments .comment .actions a {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ui.inverted.comments .comment a.author:hover,
+.ui.inverted.comments .comment .actions a.active,
+.ui.inverted.comments .comment .actions a:hover {
+  color: #ffffff;
+}
+.ui.inverted.threaded.comments .comment .comments {
+  -webkit-box-shadow: -1px 0px 0px #555555;
+          box-shadow: -1px 0px 0px #555555;
 }
 
 

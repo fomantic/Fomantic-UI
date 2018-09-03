@@ -130,18 +130,18 @@
 @ribbonShadowColor: rgba(0, 0, 0, 0.15);
 
 @ribbonMargin: 1rem;
-@ribbonOffset: ~"calc("-@ribbonMargin~" - "@ribbonTriangleSize~")";
-@ribbonDistance: ~"calc("@ribbonMargin~" + "@ribbonTriangleSize~")";
-@rightRibbonOffset:  ~"calc(100% + "@ribbonMargin~" + "@ribbonTriangleSize~")";
+@ribbonOffset: e(%("calc(%d - %d)", -@ribbonMargin, @ribbonTriangleSize));
+@ribbonDistance: e(%("calc(%d + %d)", @ribbonMargin, @ribbonTriangleSize));
+@rightRibbonOffset: e(%("calc(100%% + %d + %d)", @ribbonMargin, @ribbonTriangleSize));
 
 @ribbonImageTopDistance: 1rem;
 @ribbonImageMargin: -0.05rem; /* Rounding Offset on Triangle */
-@ribbonImageOffset: ~"calc("-@ribbonImageMargin~" - "@ribbonTriangleSize~")";
-@rightRibbonImageOffset:  ~"calc(100% + "@ribbonImageMargin~" + "@ribbonTriangleSize~")";
+@ribbonImageOffset: e(%("calc(%d - %d)", -@ribbonImageMargin, @ribbonTriangleSize));
+@rightRibbonImageOffset: e(%("calc(100%% + %d + %d)", @ribbonImageMargin, @ribbonTriangleSize));
 
 @ribbonTableMargin: @relativeMini; /* Rounding Offset on Triangle */
-@ribbonTableOffset: ~"calc("-@ribbonTableMargin~" - "@ribbonTriangleSize~")";
-@rightRibbonTableOffset:  ~"calc(100% + "@ribbonTableMargin~" + "@ribbonTriangleSize~")";
+@ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
+@rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
 
 /* Colors */
@@ -173,6 +173,8 @@
 @greyHoverTextColor: @white;
 @blackHoverTextColor: @white;
 
+@primaryRibbonShadow: darken(@primaryColor, 10);
+@secondaryRibbonShadow: darken(@secondaryColor, 10);
 @redRibbonShadow: darken(@red, 10);
 @orangeRibbonShadow: darken(@orange, 10);
 @yellowRibbonShadow: darken(@yellow, 10);
@@ -186,6 +188,9 @@
 @brownRibbonShadow: darken(@brown, 10);
 @greyRibbonShadow: darken(@grey, 10);
 @blackRibbonShadow: darken(@black, 10);
+
+@primaryTextColor: @invertedTextColor;
+@secondaryTextColor: @invertedTextColor;
 
 /* Attached */
 @attachedSegmentPadding: 2rem;

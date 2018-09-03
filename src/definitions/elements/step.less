@@ -185,7 +185,7 @@
   display: block;
   position: static;
   text-align: center;
-  content: counters(ordered, ".");
+  content: counter(ordered);
   align-self: @iconAlign;
   margin-right: @iconDistance;
   font-size: @iconSize;
@@ -556,6 +556,68 @@
 .ui.massive.steps .step,
 .ui.massive.step {
   font-size: @massive;
+}
+
+/*--------------
+    Inverted
+---------------*/
+
+.ui.inverted.steps {
+  border: 1px solid @solidWhiteBorderColor;
+}
+
+.ui.inverted.steps .step {
+  color: @invertedTextColor;
+  background: @black;
+  border-color: @solidWhiteBorderColor;
+}
+
+.ui.inverted.steps .step:after {
+  background-color: @black;
+  border-color: @solidWhiteBorderColor;
+}
+
+.ui.inverted.steps .step .description {
+  color: @invertedTextColor;
+}
+
+/* Active */
+.ui.inverted.steps .step.active,
+.ui.inverted.steps .step.active:after {
+  background: @invertedActiveBackground;
+}
+.ui.inverted.ordered.steps .step.active:before,
+.ui.inverted.steps .active.step .icon {
+  color: @invertedSelectedTextColor;
+}
+
+/* Disabled */
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step:after {
+  background: @invertedDisabledBackground;
+}
+.ui.inverted.steps .disabled.step,
+.ui.inverted.steps .disabled.step .title,
+.ui.inverted.steps .disabled.step .description {
+  color: @invertedDisabledTextColor;
+}
+
+/* Link Hover */
+.ui.inverted.steps .link.step:hover::after,
+.ui.inverted.steps .link.step:hover,
+.ui.inverted.steps a.step:hover::after,
+.ui.inverted.steps a.step:hover {
+  background: @invertedHoverBackground;
+  color: @invertedHoveredTextColor;
+}
+
+/* Link Down */
+.ui.inverted.steps .link.step:active::after,
+.ui.inverted.steps .link.step:active,
+.ui.inverted.steps a.step:active::after,
+.ui.inverted.steps a.step:active {
+  background: @invertedActiveHoverBackground;
+  color: @invertedPressedTextColor;
 }
 
 

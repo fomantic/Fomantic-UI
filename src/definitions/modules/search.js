@@ -225,6 +225,9 @@ $.fn.search = function(parameters) {
                 result  = $result.data(metadata.result) || module.get.result(value, results),
                 returnedValue
               ;
+              if(value) {
+                module.set.value(value);
+              }
               if( $.isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
                   module.debug('Custom onSelect callback cancelled default select action');
@@ -233,9 +236,6 @@ $.fn.search = function(parameters) {
                 }
               }
               module.hideResults();
-              if(value) {
-                module.set.value(value);
-              }
               if(href) {
                 module.verbose('Opening search link found in result', $link);
                 if(target == '_blank' || event.ctrlKey) {
@@ -1440,10 +1440,17 @@ $.fn.search.settings = {
           }
         });
         if(response[fields.action]) {
-          html += ''
-          + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
-          +   response[fields.action][fields.actionText]
-          + '</a>';
+          if(fields.actionURL === false) {
+            html += ''
+            + '<div class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</div>';
+          } else {
+            html += ''
+            + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</a>';
+          }
         }
         return html;
       }
@@ -1485,12 +1492,18 @@ $.fn.search.settings = {
           ;
           html += '</a>';
         });
-
         if(response[fields.action]) {
-          html += ''
-          + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
-          +   response[fields.action][fields.actionText]
-          + '</a>';
+          if(fields.actionURL === false) {
+            html += ''
+            + '<div class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</div>';
+          } else {
+            html += ''
+            + '<a href="' + response[fields.action][fields.actionURL] + '" class="action">'
+            +   response[fields.action][fields.actionText]
+            + '</a>';
+          }
         }
         return html;
       }

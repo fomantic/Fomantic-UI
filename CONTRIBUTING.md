@@ -12,7 +12,7 @@ Once you receive feedback through community channels you may find your question 
 
 ### Creating Bug Reports
 
-[Github Issues Tracker](https://github.com/hammy2899/Fomantic-UI/issues) is used to track all upcoming milestones and changes to the project.
+[Github Issues Tracker](https://github.com/fomantic/Fomantic-UI/issues) is used to track all upcoming milestones and changes to the project.
 
 **Please create a fork of this [JSFiddle](https://jsfiddle.net/31d6y7mn) to demonstrate bugs.**
 
@@ -20,7 +20,7 @@ When submiting a bug report, include a set of steps to reproduce the issue and a
 
 If your bug uses a third party framework like Ember, Meteor, or Angular. Be sure to submit the issue to their respective issues boards. If you are confident the bug is part of the 'vanilla' SUI release, keep in mind not all maintainers are familiar with all framework and a simple test case is greatly appreciated.
 
-If your bug is reproduced by a maintainer it will be assigned the [`confirmed bug`](https://github.com/hammy2899/Fomantic-UI/issues?q=is%3Aopen+is%3Aissue+label%3A%22Confirmed+Bug%22) tag. Browsing this tag is a good way to keep track of known issues with SUI.
+If your bug is reproduced by a maintainer it will be assigned the [`confirmed bug`](https://github.com/fomantic/Fomantic-UI/issues?q=is%3Aopen+is%3Aissue+label%3A%22Confirmed+Bug%22) tag. Browsing this tag is a good way to keep track of known issues with SUI.
 
 #### Naming Issues
 
@@ -46,7 +46,7 @@ For example
 
 ### Tracking Issue Progress
 
-As bugs and features are triaged they will be assigned to milestones. The best indication of when a change will land is to check the date on the  [upcoming milestones](https://github.com/hammy2899/Fomantic-UI/milestones) page.
+As bugs and features are triaged they will be assigned to milestones. The best indication of when a change will land is to check the date on the  [upcoming milestones](https://github.com/fomantic/Fomantic-UI/milestones) page.
 
 ### Creating Pull Requests
 
@@ -54,5 +54,5 @@ As bugs and features are triaged they will be assigned to milestones. The best i
 
 Anyone can jump on the issues board and grab off bugs to fix. This is probably the best way to become a contributor to Semantic. Be sure to adhere to the style guides when submitting code.
 
-* [Create a Pull Request](https://github.com/hammy2899/Fomantic-UI/compare)
-* [View Open Issues](https://github.com/hammy2899/Fomantic-UI/issues)
+* [Create a Pull Request](https://github.com/fomantic/Fomantic-UI/compare)
+* [View Open Issues](https://github.com/fomantic/Fomantic-UI/issues)

@@ -1,0 +1,30 @@
+/*******************************
+             Range
+*******************************/
+
+@barHeight: 20px;
+@barWidth: 100%;
+
+@innerMargin: 0 10px 0 10px;
+
+@hoverCursor: pointer;
+
+@trackHeight: 4px;
+@trackWidth: 100%;
+@trackBorderRadius: @absoluteBorderRadius;
+@trackColor: rgba(0, 0, 0, .05);
+@trackFillColor: @black;
+
+@thumbHeight: 20px;
+@thumbWidth: 20px;
+@thumbBackground: #fff linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+@thumbBorderRadius: 100%;
+@thumbBoxShadow: 0 1px 2px 0 rgba(34,36,38,.15),0 0 0 1px rgba(34,36,38,.15) inset;
+
+/* Inverted */
+@invertedTrackColor: rgba(255,255,255,.08);
+@invertedTrackFillColor: @lightBlack;
+
+/* Disabled */
+@disabledOpacity: .5;
+@disabledTrackFillColor: @grey;

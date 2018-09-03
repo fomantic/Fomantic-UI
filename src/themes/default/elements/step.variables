@@ -95,7 +95,7 @@
 
 @attachedHorizontalOffset: -@borderWidth;
 @attachedVerticalOffset: 0;
-@attachedWidth: ~"calc(100% + "-@attachedHorizontalOffset * 2~")";
+@attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
@@ -128,3 +128,9 @@
 /* Disabled */
 @disabledBackground: @background;
 @disabledColor: @disabledTextColor;
+
+/* Inverted */
+@invertedActiveBackground: #333333;
+@invertedActiveHoverBackground: #444444;
+@invertedHoverBackground: #3F3F3F;
+@invertedDisabledBackground: #222222;

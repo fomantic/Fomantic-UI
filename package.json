@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.4.4",
+  "version": "2.5.0",
   "title": "Fomantic UI",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage": "http://fomantic-ui.com",
@@ -9,10 +9,10 @@
   "main": "dist/semantic",
   "repository": {
     "type": "git",
-    "url": "git://github.com/hammy2899/Fomantic-UI.git"
+    "url": "git://github.com/fomantic/Fomantic-UI.git"
   },
   "bugs": {
-    "url": "https://github.com/hammy2899/Fomantic-UI/issues"
+    "url": "https://github.com/fomantic/Fomantic-UI/issues"
   },
   "scripts": {
     "install": "gulp install"

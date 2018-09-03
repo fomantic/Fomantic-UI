@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Dropdown
+ * # Semantic UI 2.5.0 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -323,7 +323,7 @@ $.fn.dropdown = function(parameters) {
             if( !module.has.menu() ) {
               module.create.menu();
             }
-            if ( !module.is.multiple() && module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+            if ( module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
               module.verbose('Adding clear icon');
               $clear = $('<i />')
                 .addClass('remove icon')

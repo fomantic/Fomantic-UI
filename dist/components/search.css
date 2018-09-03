@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.4.4 - Search
+ * # Semantic UI 2.5.0 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -223,7 +223,7 @@
 .ui.category.search > .results .category .result:hover {
   background: #F9FAFB;
 }
-.ui.search .action:hover {
+.ui.search .action:hover:not(div) {
   background: #E0E0E0;
 }
 

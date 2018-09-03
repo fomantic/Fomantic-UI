@@ -634,16 +634,17 @@ select.ui.dropdown {
 /* Clearable Selection */
 .ui.dropdown .remove.icon {
   font-size: @dropdownIconSize;
-  margin: @dropdownIconMargin;
-  padding: 0;
-  right: 2.5em;
-  top: auto;
+  margin: @selectionIconMargin;
+  padding: @selectionIconPadding;
+  right: 3em;
+  top: @selectionVerticalPadding;
   position: absolute;
   opacity: 0.6;
-  z-index: 3;
+  z-index: @selectionIconZIndex;
 }
 
-.ui.clearable.dropdown .text {
+.ui.clearable.dropdown .text,
+.ui.clearable.dropdown a:last-of-type {
   margin-right: 1.5em;
 }
 
@@ -1120,7 +1121,7 @@ select.ui.dropdown {
 @media all and (-ms-high-contrast:none) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
-    min-width: ~"calc(100% - "@scrollbarWidth~")";
+    min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
   }
 }
 @media only screen and (max-width : @largestMobileScreen) {
@@ -1427,6 +1428,62 @@ select.ui.dropdown {
   bottom: 0 !important;
   margin: 0em 0em @pointingArrowDistanceFromEdge 0em;
   box-shadow: @pointingArrowBoxShadow;
+}
+
+/*--------------------
+        Sizes
+---------------------*/
+
+/* Dropdown Size */
+.ui.mini.dropdown {
+  font-size: @mini;
+}
+.ui.tiny.dropdown {
+  font-size: @tiny;
+}
+.ui.small.dropdown {
+  font-size: @small;
+}
+.ui.dropdown {
+  font-size: @medium;
+}
+.ui.large.dropdown {
+  font-size: @large;
+}
+.ui.big.dropdown {
+  font-size: @big;
+}
+.ui.huge.dropdown {
+  font-size: @huge;
+}
+.ui.massive.dropdown {
+  font-size: @massive;
+}
+
+/* Dropdown Item Size */
+.ui.mini.dropdown .menu > .item {
+  font-size: @mini;
+}
+.ui.tiny.dropdown .menu > .item {
+  font-size: @tiny;
+}
+.ui.small.dropdown .menu > .item {
+  font-size: @small;
+}
+.ui.dropdown .menu > .item {
+  font-size: @medium;
+}
+.ui.large.dropdown .menu > .item {
+  font-size: @large;
+}
+.ui.big.dropdown .menu > .item {
+  font-size: @big;
+}
+.ui.huge.dropdown .menu > .item {
+  font-size: @huge;
+}
+.ui.massive.dropdown .menu > .item {
+  font-size: @massive;
 }
 
 .loadUIOverrides();
