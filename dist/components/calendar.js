@@ -217,7 +217,6 @@ $.fn.calendar = function(parameters) {
             var year = display.getFullYear();
 
             var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : 3;
-            var columnsString = columns === 8 ? 'eight' : columns === 7 ? 'seven' : columns === 4 ? 'four' : 'three';
             var rows = isDay || isHour ? 6 : 4;
             var pages = isDay ? multiMonth : 1;
 
@@ -256,7 +255,7 @@ $.fn.calendar = function(parameters) {
               if (isDay && settings.showWeekNumbers){
                 tempMode += ' andweek';
               }
-              var table = $('<table/>').addClass(className.table).addClass(columnsString + ' column').addClass(tempMode).appendTo(container);
+              var table = $('<table/>').addClass(className.table).addClass(tempMode).appendTo(container);
               var textColumns = columns;
               //no header for time-only mode
               if (!isTimeOnly) {
