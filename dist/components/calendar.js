@@ -19,20 +19,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-//support existing momentjs or date-fns library
-Date.prototype.getWeekOfYear = Date.prototype.week || Date.prototype.getWeek || function() {
-    // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
-    var ms1d = 864e5, // milliseconds in a day
-        ms7d = 7 * ms1d; // milliseconds in a week
-
-    return function() { // return a closure so constants get calculated only once
-        var DC3 = Date.UTC(this.getFullYear(), this.getMonth(), this.getDate() + 3) / ms1d, // an Absolute Day Number
-            AWN = Math.floor(DC3 / 7), // an Absolute Week Number
-            Wyr = new Date(AWN * ms7d).getUTCFullYear();
-
-        return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
-    };
-}();
 $.fn.calendar = function(parameters) {
   var
     $allModules = $(this),
@@ -306,7 +292,7 @@ $.fn.calendar = function(parameters) {
                 row = $('<tr/>').appendTo(tbody);
                 if(isDay && settings.showWeekNumbers){
                     cell = $('<th/>').appendTo(row);
-                    cell.text(new Date(year,month,i,hour,minute).getWeekOfYear());
+                    cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
                     cell.addClass(className.disabledCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
@@ -535,6 +521,19 @@ $.fn.calendar = function(parameters) {
         },
 
         get: {
+          weekOfYear: function(weekYear,weekMonth,weekDay) {
+              // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
+              var ms1d = 864e5, // milliseconds in a day
+                  ms7d = 7 * ms1d; // milliseconds in a week
+
+              return function() { // return a closure so constants get calculated only once
+                  var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
+                      AWN = Math.floor(DC3 / 7), // an Absolute Week Number
+                      Wyr = new Date(AWN * ms7d).getUTCFullYear();
+
+                  return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
+              }();
+          },
           date: function () {
             return $module.data(metadata.date) || null;
           },
