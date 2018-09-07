@@ -58,6 +58,9 @@
 .ui.calendar .ui.table.day {
   min-width: 18em;
 }
+.ui.calendar .ui.table.day.andweek {
+  min-width: 22em;
+}
 .ui.calendar .ui.table.hour {
   min-width: 20em;
 }
