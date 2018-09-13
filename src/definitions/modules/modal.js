@@ -288,7 +288,9 @@ $.fn.modal = function(parameters) {
             if(keyCode == escapeKey) {
               if(settings.closable) {
                 module.debug('Escape key pressed hiding modal');
-                module.hide();
+                if ( $module.hasClass(className.top) ) {
+                  module.hide();
+                }
               }
               else {
                 module.debug('Escape key pressed, but closable is set to false');
@@ -400,6 +402,8 @@ $.fn.modal = function(parameters) {
           if( module.is.animating() || module.is.active() ) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
+              $otherModals.filter('.' + className.active).last().addClass(className.top)
+              $module.removeClass(className.top);
               $module
                 .transition({
                   debug       : settings.debug,
@@ -411,7 +415,7 @@ $.fn.modal = function(parameters) {
                     if(!module.others.active() && !keepDimmed) {
                       module.hideDimmer();
                     }
-                    if(settings.keyboardShortcuts) {
+                    if( settings.keyboardShortcuts && !module.others.active() ) {
                       module.remove.keyboardShortcuts();
                     }
                   },
@@ -690,7 +694,8 @@ $.fn.modal = function(parameters) {
             }
           },
           active: function() {
-            $module.addClass(className.active);
+            $module.addClass(className.active + ' ' + className.top);
+            $otherModals.filter('.' + className.active).removeClass(className.top)
           },
           scrolling: function() {
             $dimmable.addClass(className.scrolling);
@@ -972,7 +977,8 @@ $.fn.modal.settings = {
     inverted   : 'inverted',
     loading    : 'loading',
     scrolling  : 'scrolling',
-    undetached : 'undetached'
+    undetached : 'undetached',
+    top        : 'top'
   }
 };
 
