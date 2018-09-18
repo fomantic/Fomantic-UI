@@ -88,6 +88,11 @@ $.fn.modal = function(parameters) {
 
           module.create.id();
           module.create.dimmer();
+
+          if ( settings.allowMultiple ) {
+            module.create.innerDimmer();
+          }
+
           module.refreshModals();
 
           module.bind.events();
@@ -136,6 +141,11 @@ $.fn.modal = function(parameters) {
             id = (Math.random().toString(16) + '000000000').substr(2, 8);
             elementEventNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
+          },
+          innerDimmer: function() {
+            if ( $module.find(selector.dimmer).length == 0 ) {
+              $module.prepend('<div class="ui inverted dimmer"></div>');
+            }
           }
         },
 
@@ -284,10 +294,10 @@ $.fn.modal = function(parameters) {
               module.debug('Dimmer clicked, hiding all modals');
               module.remove.clickaway();
               if(settings.allowMultiple) {
-                module.hide();
+                module.hideAll();
               }
               else {
-                module.hideAll();
+                module.hide();
               }
             }
           },
@@ -374,8 +384,14 @@ $.fn.modal = function(parameters) {
               module.hideOthers(module.showModal);
             }
             else {
-              if(settings.allowMultiple && settings.detachable) {
-                $module.detach().appendTo($dimmer);
+              if( settings.allowMultiple ) {
+                if ( module.others.active() ) {
+                  $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active')
+                }
+
+                if ( settings.detachable ) {
+                  $module.detach().appendTo($dimmer);
+                }
               }
               settings.onShow.call(element);
               if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
@@ -412,7 +428,10 @@ $.fn.modal = function(parameters) {
           }
         },
 
-        hideModal: function(callback, keepDimmed) {
+        hideModal: function(callback, keepDimmed, hideOthersToo) {
+          var
+            $previousModal = $otherModals.filter('.' + className.active).last()
+          ;
           callback = $.isFunction(callback)
             ? callback
             : function(){}
@@ -426,8 +445,6 @@ $.fn.modal = function(parameters) {
           if( module.is.animating() || module.is.active() ) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
-              $otherModals.filter('.' + className.active).last().addClass(className.top)
-              $module.removeClass(className.top);
               $module
                 .transition({
                   debug       : settings.debug,
@@ -444,6 +461,17 @@ $.fn.modal = function(parameters) {
                     }
                   },
                   onComplete : function() {
+                    if ( settings.allowMultiple ) {
+                      $previousModal.addClass(className.top);
+                      $module.removeClass(className.top);
+      
+                      if ( hideOthersToo ) {
+                        $allModals.find(selector.dimmer).removeClass('active')
+                      }
+                      else {
+                        $previousModal.find(selector.dimmer).removeClass('active')
+                      }
+                    }
                     settings.onHidden.call(element);
                     module.remove.dimmerStyles();
                     module.restore.focus();
@@ -494,7 +522,7 @@ $.fn.modal = function(parameters) {
             module.debug('Hiding all visible modals');
             module.hideDimmer();
             $visibleModals
-              .modal('hide modal', callback)
+              .modal('hide modal', callback, false, true)
             ;
           }
         },
@@ -1037,7 +1065,8 @@ $.fn.modal.settings = {
     close    : '> .close',
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
-    modal    : '.ui.modal'
+    modal    : '.ui.modal',
+    dimmer   : '> .ui.dimmer'
   },
   error : {
     dimmer    : 'UI Dimmer, a required component is not included in this page',
