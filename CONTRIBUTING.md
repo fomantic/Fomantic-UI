@@ -1,58 +1,47 @@
-# Contributing to Semantic UI
+# Contributing to Fomantic-UI
 
-### Usage Questions
+### :notebook: Support Questions
 
-Questions about usage should be asked in our [Discord](https://discordapp.com/invite/YChxjJ3) or [StackOverflow](http://stackoverflow.com/questions/tagged/semantic-ui).
+Questions regarding usage and support can be asked in [Github Issues](https://github.com/fomantic/Fomantic-UI/issues) but if your question starts to become a conversation we will ask you to move it into our [Discord](https://discordapp.com/invite/YChxjJ3). If you are looking for quick support [Discord](https://discordapp.com/invite/YChxjJ3) is the best place to ask.
 
-Examples of usage questions
-* *Why isnt my code working?*
-* *Can Semantic UI do this?*
+After asking your question you may find that it is actually a bug or the feature you wanting doesn't exist. At this point it's a good idea to submit a GitHub issue (if you haven't already) to request/report your issue.
 
-Once you receive feedback through community channels you may find your question is actually a bug. At this point it's a good idea to submit it as a bug report. Just keep in mind the following suggestions.
+### Bugs & Enhancements
 
-### Creating Bug Reports
+#### :bug: Reporting Bugs
 
-[Github Issues Tracker](https://github.com/fomantic/Fomantic-UI/issues) is used to track all upcoming milestones and changes to the project.
+We use [Github Issues](https://github.com/fomantic/Fomantic-UI/issues) to track all bugs and enhancements for FUI, before rasing a bug please check to see if it has already been raised. If you find it has already been raised add a :thumbsup: to the issue reactions to show you are also having the same issue. Please do not spam "+1", "bump" etc.
 
-**Please create a fork of this [JSFiddle](https://jsfiddle.net/31d6y7mn) to demonstrate bugs.**
+If you find that your issue has not already been raised please create a [new issue](https://github.com/fomantic/Fomantic-UI/issues/new?template=Bug_report.md) please follow and fill in the template provided this helps us gather the correct infomation we need to triage issues.
 
-When submiting a bug report, include a set of steps to reproduce the issue and any related information, browser, OS etc. If we can't reproduce the issue then it will make solving things much more difficult.
+When creating an issue you will be asked to create a [JSFiddle](https://jsfiddle.net/31d6y7mn) to replicate your issue. You can fork [this template](https://jsfiddle.net/31d6y7mn) which has the latest version of Fomantic ready to use.
 
-If your bug uses a third party framework like Ember, Meteor, or Angular. Be sure to submit the issue to their respective issues boards. If you are confident the bug is part of the 'vanilla' SUI release, keep in mind not all maintainers are familiar with all framework and a simple test case is greatly appreciated.
+#### :crystal_ball: Requsting Features
 
-If your bug is reproduced by a maintainer it will be assigned the [`confirmed bug`](https://github.com/fomantic/Fomantic-UI/issues?q=is%3Aopen+is%3Aissue+label%3A%22Confirmed+Bug%22) tag. Browsing this tag is a good way to keep track of known issues with SUI.
+We also use [Github Issues](https://github.com/fomantic/Fomantic-UI/issues) for new feature requests. Before submitting a new issue please check to see if it has already been requested. If you find that your issue has not already been requested feel free create a [new issue](https://github.com/fomantic/Fomantic-UI/issues/new?template=Feature_request.md) please follow and fill in the template provided this helps us gather the correct infomation we need to triage issues.
 
-#### Naming Issues
+When you create the issue please when possible include pictures or a [JSFiddle](https://jsfiddle.net/31d6y7mn), this can help contributors understand what your asking.
 
-Semantic UI boards use a special naming convention to help tag issue titles by the component the issue is related to.
+##### Naming Issues
 
-##### Bugs
-Please tag titles in the format "[Component] *Sub-type* should do *correct behavior*". Please use standard [title case](http://www.titlecase.com) for titles, including the bracketed tag.
+When you create an issue please follow our naming convention this makes it easy to scan over issues.
 
-For example
-* [Dropdown] Multiple Selection Should Preserve "Set Selected" Order
-* [Validation] - E-mail Validation Should Handle Cyrillic
-* [Button] - Grouped Buttons Should Display Correctly on Mobile
+**Bugs:** [Scope] x does not do y
+**Enhancements:** [Scope] x should do y
 
-##### Enhancements
+The scope is the component which has the issue or enhancement e.g. Segment, Grid, Dropdown etc. when you desribe the issue in the summary keep it brief 60 characters max.
 
-For new feature requests, you can use the format "[Component] Add *new feature*"
-
-For example
-* [Dropdown] Add "Clearable" Setting
-* [Validation] Add Rules for Zipcode Validation
-* [API] Add "onProgress" callback setting
-
-
-### Tracking Issue Progress
+##### Tracking Issue Progress
 
 As bugs and features are triaged they will be assigned to milestones. The best indication of when a change will land is to check the date on the  [upcoming milestones](https://github.com/fomantic/Fomantic-UI/milestones) page.
 
-### Creating Pull Requests
+### :pencil: Pull Requests Guide
 
 **All pull requests should be merged into the `beta` branch.**
 
-Anyone can jump on the issues board and grab off bugs to fix. This is probably the best way to become a contributor to Semantic. Be sure to adhere to the style guides when submitting code.
+Anyone can jump on the issues board and grab off bugs to fix. This is probably the best way to become a contributor to Fomantic. We only ask you to stick to these few rules to make it easier to merge/process your pull requests.
 
-* [Create a Pull Request](https://github.com/fomantic/Fomantic-UI/compare)
-* [View Open Issues](https://github.com/fomantic/Fomantic-UI/issues)
+- When you implement a new feature or fix a bug think about backwards compatibility. If your change is backwards compatible it is most likely to be merged sooner since you won't need to wait for a breaking change update.
+- Please commit using the [AngularJS Git Commit Message Convention](https://gist.github.com/stephenparish/9941e89d80e2bc58a153) this is more of a nice to have and isn't required.
+- Please try and stick to a similar code style so everyone can read your code.
+- When you commit don't include your dist files, this add changes when your create your PR which aren't needed.
