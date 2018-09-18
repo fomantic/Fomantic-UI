@@ -124,12 +124,12 @@ $.fn.toast = function(parameters) {
 
             if (settings.title !== '') {
               var 
-                $titre = $('<div/>')
+                $title = $('<div/>')
                   .addClass(className.title)
                   .text(settings.title)
                 ;
 
-              $content.append($titre);
+              $content.append($title);
             }
 
             $content.append($('<div/>').html(settings.message));
