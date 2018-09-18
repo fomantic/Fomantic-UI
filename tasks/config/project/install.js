@@ -390,6 +390,7 @@ module.exports = {
           { name: "embed", checked: true },
           { name: "modal", checked: true },
           { name: "nag", checked: true },
+          { name: "placeholder", checked: true },
           { name: "popup", checked: true },
           { name: "progress", checked: true },
           { name: "range", checked: true },
