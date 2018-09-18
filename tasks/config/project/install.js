@@ -399,6 +399,7 @@ module.exports = {
           { name: "sidebar", checked: true },
           { name: "sticky", checked: true },
           { name: "tab", checked: true },
+          { name: "toast", checked: true },
           { name: "transition", checked: true },
           { name: "api", checked: true },
           { name: "form", checked: true },

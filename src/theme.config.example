@@ -65,6 +65,7 @@
 @sidebar    : 'default';
 @sticky     : 'default';
 @tab        : 'default';
+@toast      : 'default';
 @transition : 'default';
 
 /* Views */

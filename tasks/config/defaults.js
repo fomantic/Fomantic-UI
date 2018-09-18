@@ -98,6 +98,7 @@ module.exports = {
     'sidebar',
     'sticky',
     'tab',
+    'toast',
     'transition',
 
     // behaviors
