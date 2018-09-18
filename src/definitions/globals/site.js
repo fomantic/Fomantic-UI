@@ -455,6 +455,7 @@ $.site.settings = {
     'state',
     'sticky',
     'tab',
+    'toast',
     'transition',
     'visibility',
     'visit'
