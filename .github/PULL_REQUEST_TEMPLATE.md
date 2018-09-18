@@ -1,22 +1,15 @@
-✖ Multiple features in one PR
-✖ New Components Unless Previously Discussed with Maintainers (Consider creating separate repo, I'll link out to you)
+<!--
+  Please read the contibuting guide before you submit a pull request
+  https://github.com/fomantic/Fomantic-UI/blob/master/CONTRIBUTING.md
+-->
 
-✔ Add comments to complex/confusing code in "code" view of PR
-✔ BUGS → This form is required:
-✔ Enhancements → Only specific enhancements with detailed descriptions.
+## Description
 
-### Issue Titles
+## Testcase
+<!-- Fork https://jsfiddle.net/31d6y7mn -->
 
-Use the format: [Component] Adds Support for Thing
+## Screenshot (when possible)
+![]()
 
-For example: [Build Tools] Adds Source Map Support
-Or: [Button] Fixes Inheritance for Red Basic Active State
-
-### Closed Issues
+## Closes
 #222 #333 #444
-
-### Description
-
-### Testcase
-[Fork, update, and replace to show the bug]:
-https://jsfiddle.net/ca0rovs3/
