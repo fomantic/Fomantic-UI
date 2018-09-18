@@ -2,7 +2,10 @@
 
 ### Version 2.6.0 - September 18, 2018
 
-> Reason behind version jump: The new 2.6 release might look a little funny since we just released 2.5 but we thought it was necessary to bump a minor patch since the new SUI release introducing a new component and we want to stick to the SUI versioning scheme.
+> Reason behind version jump: The new 2.6 release might look a little funny since we just released 2.5 but we thought it was necessary to bump a minor patch since the new SUI release introducing a new component and we want to stick to the SUI versioning scheme. We also added the new toast component so we didn't have to wait until the next feature release.
+
+**New Components**
+- **Toast** - Added a new toast component **Thanks [@prudho](https://github.com/prudho)** [#122](https://github.com/fomantic/Fomantic-UI/pull/122)
 
 **Bugs**
 - **Header** - Fixed header content not being displayed when in an accordion element **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#103](https://github.com/fomantic/Fomantic-UI/pull/103)
