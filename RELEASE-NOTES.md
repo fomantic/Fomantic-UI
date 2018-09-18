@@ -1,6 +1,8 @@
 ## RELEASE NOTES
 
-### Version 2.6.1 - September 18, 2018
+### Version 2.6.0 - September 18, 2018
+
+> Reason behind version jump: The new 2.6 release might look a little funny since we just released 2.5 but we thought it was necessary to bump a minor patch since the new SUI release introducing a new component and we want to stick to the SUI versioning scheme.
 
 **Bugs**
 - **Header** - Fixed header content not being displayed when in an accordion element **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#103](https://github.com/fomantic/Fomantic-UI/pull/103)
