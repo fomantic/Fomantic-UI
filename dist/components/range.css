@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.5.0 - Range
+ * # Semantic UI 2.6.0 - Range
  * http://github.com/semantic-org/semantic-ui/
  *
  *

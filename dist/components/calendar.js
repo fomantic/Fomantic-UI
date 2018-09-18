@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.5.0 - Calendar
+ * # Semantic UI 2.6.0 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *

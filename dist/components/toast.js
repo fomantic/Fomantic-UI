@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.0 - Nag
+ * # Semantic UI 2.6.0 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19,7 +19,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.nag = function(parameters) {
+$.fn.toast = function(parameters) {
   var
     $allModules    = $(this),
     moduleSelector = $allModules.selector || '',
@@ -36,8 +36,8 @@ $.fn.nag = function(parameters) {
     .each(function() {
       var
         settings          = ( $.isPlainObject(parameters) )
-          ? $.extend(true, {}, $.fn.nag.settings, parameters)
-          : $.extend({}, $.fn.nag.settings),
+          ? $.extend(true, {}, $.fn.toast.settings, parameters)
+          : $.extend({}, $.fn.toast.settings),
 
         className       = settings.className,
         selector        = settings.selector,
@@ -48,6 +48,7 @@ $.fn.nag = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
+        $toast          = $('<div/>'),
 
         $close          = $module.find(selector.close),
         $context        = (settings.context)
@@ -57,201 +58,210 @@ $.fn.nag = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
-        moduleOffset,
-        moduleHeight,
-
-        contextWidth,
-        contextHeight,
-        contextOffset,
-
-        yOffset,
-        yPosition,
-
-        timer,
-        module,
-
-        requestAnimationFrame = window.requestAnimationFrame
-          || window.mozRequestAnimationFrame
-          || window.webkitRequestAnimationFrame
-          || window.msRequestAnimationFrame
-          || function(callback) { setTimeout(callback, 0); }
+        module
       ;
       module = {
 
         initialize: function() {
           module.verbose('Initializing element');
 
-          $module
-            .on('click' + eventNamespace, selector.close, module.dismiss)
-            .data(moduleNamespace, module)
-          ;
-
-          if(settings.detachable && $module.parent()[0] !== $context[0]) {
-            $module
-              .detach()
-              .prependTo($context)
-            ;
+          if (!module.has.container()) {
+            module.create.container();
           }
 
+          module.create.toast();
+
+          module.bind.events();
+          
           if(settings.displayTime > 0) {
-            setTimeout(module.hide, settings.displayTime);
+            setTimeout(module.close, settings.displayTime);
           }
           module.show();
         },
 
         destroy: function() {
-          module.verbose('Destroying instance');
-          $module
-            .removeData(moduleNamespace)
-            .off(eventNamespace)
-          ;
+          module.debug('Removing toast', $toast);
+          $toast.remove();
+          $toast = undefined;
+          settings.onRemove.call($toast, element);
         },
 
-        show: function() {
-          if( module.should.show() && !$module.is(':visible') ) {
-            module.debug('Showing nag', settings.animation.show);
-            if(settings.animation.show == 'fade') {
-              $module
-                .fadeIn(settings.duration, settings.easing)
+        show: function(callback) {
+          callback = callback || function(){};
+          module.debug('Showing toast');
+          if(settings.onShow.call($toast, element) === false) {
+            module.debug('onShow callback returned false, cancelling toast animation');
+            return;
+          }
+          module.animate.show(callback);
+        },
+
+        close: function(callback) {
+          callback = callback || function(){};
+          module.remove.visible();
+          module.unbind.events();
+          module.animate.close(callback);
+
+        },
+
+        create: {
+          container: function() {
+            module.verbose('Creating container')
+            $context.append('<div class="ui ' + settings.position + ' ' + className.container + '"></div>');
+          },
+          toast: function() {
+            var $content = $('<div/>').addClass(className.content);
+            module.verbose('Creating toast')
+
+            if (settings.showIcon) {
+              var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
+
+              $toast
+                .addClass(className.icon)
+                .append($icon)
+              ;
+            }
+
+            if (settings.title !== '') {
+              var 
+                $titre = $('<div/>')
+                  .addClass(className.title)
+                  .text(settings.title)
+                ;
+
+              $content.append($titre);
+            }
+
+            $content.append($('<div/>').html(settings.message));
+
+            $toast
+              .addClass(settings.class + ' ' + className.toast)
+              .append($content)
+            ;
+
+            if (settings.newestOnTop) {
+              $toast.prependTo(module.get.container());
+            }
+            else {
+              $toast.appendTo(module.get.container())
+            }
+          }
+        },
+
+        bind: {
+          events: function() {
+            module.debug('Binding events to toast');
+            $toast
+              .on('click' + eventNamespace, module.event.click)
+            ;
+          }
+        },
+
+        unbind: {
+          events: function() {
+            module.debug('Unbinding events to toast');
+            $toast
+              .off('click' + eventNamespace)
+            ;
+          }
+        },
+
+        animate: {
+          show: function(callback) {
+            callback = $.isFunction(callback) ? callback : function(){};
+            if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+              module.set.visible();
+              $toast
+                .transition({
+                  animation  : settings.transition.showMethod + ' in',
+                  queue      : false,
+                  debug      : settings.debug,
+                  verbose    : settings.verbose,
+                  duration   : settings.transition.showDuration,
+                  onComplete : function() {
+                    callback.call($toast, element);
+                    settings.onVisible.call($toast, element);
+                  }
+                })
               ;
             }
             else {
-              $module
-                .slideDown(settings.duration, settings.easing)
+              module.error(error.noTransition);
+            }
+          },
+          close: function(callback) {
+            callback = $.isFunction(callback) ? callback : function(){};
+            module.debug('Closing toast');
+            if(settings.onHide.call($toast, element) === false) {
+              module.debug('onHide callback returned false, cancelling toast animation');
+              return;
+            }
+            if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+              $toast
+                .transition({
+                  animation  : settings.transition.hideMethod + ' out',
+                  queue      : false,
+                  duration   : settings.transition.hideDuration,
+                  debug      : settings.debug,
+                  verbose    : settings.verbose,
+                  onComplete : function() {
+                    module.destroy();
+                    callback.call($toast, element);
+                    settings.onHidden.call($toast, element);
+                  }
+                })
               ;
             }
-          }
-        },
-
-        hide: function() {
-          module.debug('Showing nag', settings.animation.hide);
-          if(settings.animation.show == 'fade') {
-            $module
-              .fadeIn(settings.duration, settings.easing)
-            ;
-          }
-          else {
-            $module
-              .slideUp(settings.duration, settings.easing)
-            ;
-          }
-        },
-
-        onHide: function() {
-          module.debug('Removing nag', settings.animation.hide);
-          $module.remove();
-          if (settings.onHide) {
-            settings.onHide();
-          }
-        },
-
-        dismiss: function(event) {
-          if(settings.storageMethod) {
-            module.storage.set(settings.key, settings.value);
-          }
-          module.hide();
-          event.stopImmediatePropagation();
-          event.preventDefault();
-        },
-
-        should: {
-          show: function() {
-            if(settings.persist) {
-              module.debug('Persistent nag is set, can show nag');
-              return true;
+            else {
+              module.error(error.noTransition);
             }
-            if( module.storage.get(settings.key) != settings.value.toString() ) {
-              module.debug('Stored value is not set, can show nag', module.storage.get(settings.key));
-              return true;
-            }
-            module.debug('Stored value is set, cannot show nag', module.storage.get(settings.key));
-            return false;
+          }
+        },
+
+        has: {
+          container: function() {
+            module.verbose('Determining if there is already a container')
+            return ($context.find(module.helpers.toClass(settings.position) + selector.container).length > 0);
           }
         },
 
         get: {
-          storageOptions: function() {
-            var
-              options = {}
-            ;
-            if(settings.expires) {
-              options.expires = settings.expires;
-            }
-            if(settings.domain) {
-              options.domain = settings.domain;
-            }
-            if(settings.path) {
-              options.path = settings.path;
-            }
-            return options;
+          container: function() {
+            return ($context.find(module.helpers.toClass(settings.position) + selector.container)[0]);
           }
         },
 
-        clear: function() {
-          module.storage.remove(settings.key);
+        set: {
+          visible: function() {
+            $toast.addClass(className.visible);
+          }
         },
 
-        storage: {
-          set: function(key, value) {
+        remove: {
+          visible: function() {
+            $toast.removeClass(className.visible);
+          }
+        },
+
+        event: {
+          click: function() {
+            settings.onClick.call($toast, element);
+            module.close()
+          }
+        },
+
+        helpers: {
+          toClass: function(selector) {
             var
-              options = module.get.storageOptions()
+              classes = selector.split(' '),
+              result = ''
             ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              window.localStorage.setItem(key, value);
-              module.debug('Value stored using local storage', key, value);
-            }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              window.sessionStorage.setItem(key, value);
-              module.debug('Value stored using session storage', key, value);
-            }
-            else if($.cookie !== undefined) {
-              $.cookie(key, value, options);
-              module.debug('Value stored using cookie', key, value, options);
-            }
-            else {
-              module.error(error.noCookieStorage);
-              return;
-            }
-          },
-          get: function(key, value) {
-            var
-              storedValue
-            ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              storedValue = window.localStorage.getItem(key);
-            }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              storedValue = window.sessionStorage.getItem(key);
-            }
-            // get by cookie
-            else if($.cookie !== undefined) {
-              storedValue = $.cookie(key);
-            }
-            else {
-              module.error(error.noCookieStorage);
-            }
-            if(storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
-              storedValue = undefined;
-            }
-            return storedValue;
-          },
-          remove: function(key) {
-            var
-              options = module.get.storageOptions()
-            ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              window.localStorage.removeItem(key);
-            }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              window.sessionStorage.removeItem(key);
-            }
-            // store by cookie
-            else if($.cookie !== undefined) {
-              $.removeCookie(key, options);
-            }
-            else {
-              module.error(error.noStorage);
-            }
+
+            classes.forEach(function (element) {
+              result += '.' + element;
+            });
+
+            return result;
           }
         },
 
@@ -439,69 +449,67 @@ $.fn.nag = function(parameters) {
   ;
 };
 
-$.fn.nag.settings = {
+$.fn.toast.settings = {
 
-  name        : 'Nag',
+  name           : 'Toast',
+  namespace      : 'toast',
 
-  silent      : false,
-  debug       : false,
-  verbose     : false,
-  performance : true,
+  silent         : false,
+  debug          : false,
+  verbose        : false,
+  performance    : true,
 
-  namespace   : 'Nag',
+  context        : 'body',
 
-  // allows cookie to be overridden
-  persist     : false,
+  position       : 'top right',
+  class          : 'info',
 
-  // set to zero to require manually dismissal, otherwise hides on its own
-  displayTime : 0,
+  title          : '',
+  message        : '',
+  displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
+  showIcon       : true,
+  newestOnTop    : false,
 
-  animation   : {
-    show : 'slide',
-    hide : 'slide'
+  // transition settings
+  transition     : {
+    showMethod   : 'scale',
+    showDuration : 500,
+    hideMethod   : 'scale',
+    hideDuration : 500
   },
-
-  context       : false,
-  detachable    : false,
-
-  expires       : 30,
-  domain        : false,
-  path          : '/',
-
-  // type of storage to use
-  storageMethod : 'cookie',
-
-  // value to store in dismissed localstorage/cookie
-  key           : 'nag',
-  value         : 'dismiss',
 
   error: {
-    noCookieStorage : '$.cookie is not included. A storage solution is required.',
-    noStorage       : 'Neither $.cookie or store is defined. A storage solution is required for storing state',
-    method          : 'The method you called is not defined.'
+    method       : 'The method you called is not defined.'
   },
 
-  className     : {
-    bottom : 'bottom',
-    fixed  : 'fixed'
+  className      : {
+    container    : 'toast-container',
+    toast        : 'toast',
+    icon         : 'icon',
+    visible      : 'visible',
+    content      : 'content',
+    title        : 'title'
   },
 
-  selector      : {
-    close : '.close.icon'
+  icons          : {
+    info         : 'info',
+    success      : 'checkmark',
+    warning      : 'warning',
+    error        : 'times'
   },
 
-  speed         : 500,
-  easing        : 'easeOutQuad',
+  selector       : {
+    container    : '.toast-container'
+  },
 
-  onHide: function() {}
-
+  // callbacks
+  onShow         : function(){},
+  onVisible      : function(){},
+  onClick        : function(){},
+  onHide         : function(){},
+  onHidden       : function(){},
+  onRemove       : function(){},
 };
 
-// Adds easing
-$.extend( $.easing, {
-  easeOutQuad: function (x, t, b, c, d) {
-    return -c *(t/=d)*(t-2) + b;
-  }
-});
 
 })( jQuery, window, document );
