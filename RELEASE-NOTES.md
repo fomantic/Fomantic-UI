@@ -11,6 +11,7 @@
 - **Header** - Fixed header content not being displayed when in an accordion element **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#103](https://github.com/fomantic/Fomantic-UI/pull/103)
 - **Menu** - Fixed inconsistent icon spacing in dropdown menus **Thanks [@prudho](https://github.com/prudho)** [#111](https://github.com/fomantic/Fomantic-UI/pull/111)
 - **Checkbox** - Fixed `before(Un)Checked` firing on init **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#115](https://github.com/fomantic/Fomantic-UI/pull/115)
+- **Message** - Fixed colored floating messages not having box shadow **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#124](https://github.com/fomantic/Fomantic-UI/pull/124)
 
 **Enhancements**
 - **Calendar** - Added support for `showWeekNumbers` to show the week number on the left of the calendar **Thanks [@lubber-de](https://github.com/lubber-de)** [#113](https://github.com/fomantic/Fomantic-UI/pull/113)
