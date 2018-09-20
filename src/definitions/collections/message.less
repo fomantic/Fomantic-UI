@@ -264,189 +264,67 @@
      Types
 ---------------*/
 
+.addMessageType(@color; @backgroundSuffix: "") {
+  @_messageBackground: "@{color}Background@{backgroundSuffix}";
+  @_messageTextColor: "@{color}TextColor";
+  @_messageHeaderColor: "@{color}HeaderColor";
+  @_messageShadow: "@{color}BoxShadow";
+  @_messageFloatingShadow: "@{color}BoxFloatingShadow";
+
+  .ui.@{color}.message {
+    background-color: @@_messageBackground;
+    color: @@_messageTextColor;
+  }
+
+  .ui.@{color}.message,
+  .ui.attached.@{color}.message {
+    box-shadow: @@_messageShadow;
+  }
+
+  .ui.floating.@{color}.message {
+    box-shadow: @@_messageFloatingShadow;
+  }
+
+  .ui.@{color}.message .header {
+    color: @@_messageHeaderColor;
+  }
+}
+
 /* Positive */
-.ui.positive.message {
-  background-color: @positiveBackgroundColor;
-  color: @positiveTextColor;
-}
-.ui.positive.message,
-.ui.attached.positive.message {
-  box-shadow: @positiveBoxShadow;
-}
-.ui.positive.message .header {
-  color: @positiveHeaderColor;
-}
+.addMessageType(positive, ~"Color");
 
 /* Negative */
-.ui.negative.message {
-  background-color: @negativeBackgroundColor;
-  color: @negativeTextColor;
-}
-.ui.negative.message,
-.ui.attached.negative.message {
-  box-shadow: @negativeBoxShadow;
-}
-.ui.negative.message .header {
-  color: @negativeHeaderColor;
-}
+.addMessageType(negative, ~"Color");
 
 /* Info */
-.ui.info.message {
-  background-color: @infoBackgroundColor;
-  color: @infoTextColor;
-}
-.ui.info.message,
-.ui.attached.info.message {
-  box-shadow: @infoBoxShadow;
-}
-.ui.info.message .header {
-  color: @infoHeaderColor;
-}
+.addMessageType(info, ~"Color");
 
 /* Warning */
-.ui.warning.message {
-  background-color: @warningBackgroundColor;
-  color: @warningTextColor;
-}
-.ui.warning.message,
-.ui.attached.warning.message {
-  box-shadow: @warningBoxShadow;
-}
-.ui.warning.message .header {
-  color: @warningHeaderColor;
-}
+.addMessageType(warning, ~"Color");
 
 /* Error */
-.ui.error.message {
-  background-color: @errorBackgroundColor;
-  color: @errorTextColor;
-}
-.ui.error.message,
-.ui.attached.error.message {
-  box-shadow: @errorBoxShadow;
-}
-.ui.error.message .header {
-  color: @errorHeaderColor;
-}
+.addMessageType(error, ~"Color");
 
 /* Success */
-.ui.success.message {
-  background-color: @successBackgroundColor;
-  color: @successTextColor;
-}
-.ui.success.message,
-.ui.attached.success.message {
-  box-shadow: @successBoxShadow;
-}
-.ui.success.message .header {
-  color: @successHeaderColor;
-}
-
+.addMessageType(success, ~"Color");
 
 /* Colors */
+.addMessageType(red);
+.addMessageType(orange);
+.addMessageType(yellow);
+.addMessageType(olive);
+.addMessageType(green);
+.addMessageType(teal);
+.addMessageType(blue);
+.addMessageType(violet);
+.addMessageType(purple);
+.addMessageType(pink);
+.addMessageType(brown);
+
 .ui.inverted.message,
 .ui.black.message {
   background-color: @black;
   color: @invertedTextColor;
-}
-
-.ui.red.message {
-  background-color: @redBackground;
-  color: @redTextColor;
-  box-shadow: @redBoxShadow;
-}
-.ui.red.message .header {
-  color: @redHeaderColor;
-}
-
-.ui.orange.message {
-  background-color: @orangeBackground;
-  color: @orangeTextColor;
-  box-shadow: @orangeBoxShadow;
-}
-.ui.orange.message .header {
-  color: @orangeHeaderColor;
-}
-
-.ui.yellow.message {
-  background-color: @yellowBackground;
-  color: @yellowTextColor;
-  box-shadow: @yellowBoxShadow;
-}
-.ui.yellow.message .header {
-  color: @yellowHeaderColor;
-}
-
-.ui.olive.message {
-  background-color: @oliveBackground;
-  color: @oliveTextColor;
-  box-shadow: @oliveBoxShadow;
-}
-.ui.olive.message .header {
-  color: @oliveHeaderColor;
-}
-
-.ui.green.message {
-  background-color: @greenBackground;
-  color: @greenTextColor;
-  box-shadow: @greenBoxShadow;
-}
-.ui.green.message .header {
-  color: @greenHeaderColor;
-}
-
-.ui.teal.message {
-  background-color: @tealBackground;
-  color: @tealTextColor;
-  box-shadow: @tealBoxShadow;
-}
-.ui.teal.message .header {
-  color: @tealHeaderColor;
-}
-
-.ui.blue.message {
-  background-color: @blueBackground;
-  color: @blueTextColor;
-  box-shadow: @blueBoxShadow;
-}
-.ui.blue.message .header {
-  color: @blueHeaderColor;
-}
-
-.ui.violet.message {
-  background-color: @violetBackground;
-  color: @violetTextColor;
-  box-shadow: @violetBoxShadow;
-}
-.ui.violet.message .header {
-  color: @violetHeaderColor;
-}
-
-.ui.purple.message {
-  background-color: @purpleBackground;
-  color: @purpleTextColor;
-  box-shadow: @purpleBoxShadow;
-}
-.ui.purple.message .header {
-  color: @purpleHeaderColor;
-}
-
-.ui.pink.message {
-  background-color: @pinkBackground;
-  color: @pinkTextColor;
-  box-shadow: @pinkBoxShadow;
-}
-.ui.pink.message .header {
-  color: @pinkHeaderColor;
-}
-
-.ui.brown.message {
-  background-color: @brownBackground;
-  color: @brownTextColor;
-  box-shadow: @brownBoxShadow;
-}
-.ui.brown.message .header {
-  color: @brownHeaderColor;
 }
 
 /*--------------
