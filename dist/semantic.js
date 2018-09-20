@@ -21248,12 +21248,13 @@ $.fn.toast.settings = {
   },
 
   error: {
-    method       : 'The method you called is not defined.'
+    method       : 'The method you called is not defined.',
+    noTransition : 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>'
   },
 
   className      : {
     container    : 'toast-container',
-    toast        : 'toast',
+    toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',
     content      : 'content',
@@ -21268,7 +21269,8 @@ $.fn.toast.settings = {
   },
 
   selector       : {
-    container    : '.toast-container'
+    container    : '.toast-container',
+    toast        : '.ui.toast'
   },
 
   // callbacks

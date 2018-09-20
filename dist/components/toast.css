@@ -15,6 +15,7 @@
 
 .ui.toast-container {
   position: fixed;
+  z-index: 9999;
 }
 .ui.top.right.toast-container {
   top: 0.85714286em;
