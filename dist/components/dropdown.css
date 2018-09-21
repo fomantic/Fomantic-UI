@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.5.0 - Dropdown
+ * # Semantic UI 2.6.0 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -519,7 +519,7 @@ select.ui.dropdown {
 /* Dropdown Icon */
 .ui.active.selection.dropdown > .dropdown.icon,
 .ui.visible.selection.dropdown > .dropdown.icon {
-  opacity: 1;
+  opacity: '';
   z-index: 3;
 }
 
@@ -756,7 +756,7 @@ select.ui.dropdown {
   color: inherit;
 }
 .ui.inline.dropdown .dropdown.icon {
-  margin: 0em 0.5em 0em 0.21428571em;
+  margin: 0em 0.21428571em 0em 0.21428571em;
   vertical-align: baseline;
 }
 .ui.inline.dropdown > .text {
@@ -965,6 +965,19 @@ select.ui.dropdown {
 /* Item Active */
 .ui.dropdown.error > .menu .active.item {
   background-color: #FDCFCF;
+}
+
+/*--------------------
+        Clear
+----------------------*/
+
+.ui.dropdown > .clear.dropdown.icon {
+  opacity: 0.8;
+  -webkit-transition: opacity 0.1s ease;
+  transition: opacity 0.1s ease;
+}
+.ui.dropdown > .clear.dropdown.icon:hover {
+  opacity: 1;
 }
 
 /*--------------------

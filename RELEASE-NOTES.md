@@ -1,5 +1,54 @@
 ## RELEASE NOTES
 
+### Version 2.6.0 - September 18, 2018
+
+> Reason behind version jump: The new 2.6 release might look a little funny since we just released 2.5 but we thought it was necessary to bump a minor patch since the new SUI release introducing a new component and we want to stick to the SUI versioning scheme. We also added the new toast component so we didn't have to wait until the next feature release.
+
+**New Components**
+- **Toast** - Added a new toast component **Thanks [@prudho](https://github.com/prudho)** [#122](https://github.com/fomantic/Fomantic-UI/pull/122)
+
+**Bugs**
+- **Header** - Fixed header content not being displayed when in an accordion element **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#103](https://github.com/fomantic/Fomantic-UI/pull/103)
+- **Menu** - Fixed inconsistent icon spacing in dropdown menus **Thanks [@prudho](https://github.com/prudho)** [#111](https://github.com/fomantic/Fomantic-UI/pull/111)
+- **Checkbox** - Fixed `before(Un)Checked` firing on init **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#115](https://github.com/fomantic/Fomantic-UI/pull/115)
+- **Message** - Fixed colored floating messages not having box shadow **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#124](https://github.com/fomantic/Fomantic-UI/pull/124)
+
+**Enhancements**
+- **Calendar** - Added support for `showWeekNumbers` to show the week number on the left of the calendar **Thanks [@lubber-de](https://github.com/lubber-de)** [#113](https://github.com/fomantic/Fomantic-UI/pull/113)
+- **Modal** - Pressing ESC now only closes the currently active modal when multiple are present **Thanks [@prudho](https://github.com/prudho)** [#118](https://github.com/fomantic/Fomantic-UI/pull/118)
+
+The following changes where merged from a new Semantic-UI release
+
+> `2.4.0` includes a new component `placeholder`. To use this component in your existing SUI site, be sure to add `@placeholder: 'default';` to your `theme.config`. You can see an example in `theme.config.example`
+
+**New Components**
+- **Placeholder** - Added `ui placeholder` that can be used to show where content will soon appear.
+
+**New UI Type**
+- **Segment** - Added new `ui placeholder segment` used to reserve space for UI when content is missing or empty.
+
+**Major Enhancements**
+- **Dropdown** - Added `clearable` dropdowns. When `clearable: true` is specified an (X) will appear to clear dropdown selection [#2072](https://github.com/Semantic-Org/Semantic-UI/issues/2072)
+- **Modal/Dimmer** - Modals and dimmers now include a new setting `useFlex` which defaults to `auto`. Modals and dimmers will automatically revert to using non-flex layouts when there may be layout issues with using flexbox. Modals will fall back to JS position when `detachable: false` is used or with IE11/Edge (Absolutely positioned elements inside flex containers in IE behave differently).
+
+**Critical Bugs**
+- **Modal** - Fixed issue where `scrolling modal` would not allow for scrolling with touch devices. [#6449](https://github.com/Semantic-Org/Semantic-UI/issues/6449)
+- **Label** - Fixed issue where `basic label` were appearing incorrectly **Thanks [@lasley](https://github.com/lasley) and [@ColinFrick](https://github.com/ColinFrick)** [#6582](https://github.com/Semantic-Org/Semantic-UI/issues/6582) [#6440](https://github.com/Semantic-Org/Semantic-UI/issues/6440)
+- **Menu/Dropdown** - Fixed `left menu` inside `ui menu` would display horizontally as `flex` [#6359](https://github.com/Semantic-Org/Semantic-UI/issues/6359)
+
+**Bugs**
+- **Dimmer** - Dimmer now sets `variation` at runtime, to support run-time swapping between `top aligned` and `middle aligned` using `.dimmer('setting', 'variation', 'top aligned')`
+- **Dropdown** - Fixed issue where `onChange` when used with `action: hide` would be missing the third param `$item` [#6555](https://github.com/Semantic-Org/Semantic-UI/issues/6555)
+- **Flag** - Add `uk` alias for `united kingdom` **Thanks [@PhilipGarnero](https://github.com/PhilipGarnero)** [#6531](https://github.com/Semantic-Org/Semantic-UI/issues/6531)
+- **Icon** - Fixes missing `disk outline icon` alias [#6556](https://github.com/Semantic-Org/Semantic-UI/issues/6556)
+- **List** - Fixed issue where list `content` would not take up 100% width when used alongside `img` or `icon`
+- **Menu/Dropdown** - Fixes dropdown item margin not obeyed inside `labeled icon menu` [#6557](https://github.com/Semantic-Org/Semantic-UI/issues/6557)
+- **Modal** - Fixes `@mobileTopAlignedMargin` theming variable was not implemented
+- **Modal** - Modal now will remove `blurring` after undimming, to prevent issues with `position: fixed` [#6520](https://github.com/Semantic-Org/Semantic-UI/issues/6520)
+
+**Minor Changes**
+- **Dropdown** - `inline dropdown` `close icon` default right margin default spacing slightly modified.
+
 ### Version 2.5.0 - September 3, 2018
 
 **Major Enhancements**

@@ -1,0 +1,33 @@
+/*******************************
+            Toast
+*******************************/
+
+/* Container */
+@toastContainerDistance: @relative12px;
+
+/* Toast */
+@toastWidth: 300px;
+@toastBorderRadius: @defaultBorderRadius;
+@toastPadding: @inputPadding;
+@toastMargin: 0 0 6px;
+@toastTextColor: @invertedTextColor;
+@toastOpacity: 0.8;
+
+/* on Hover */
+@toastOpacityOnHover: 1;
+@toastCursorOnHover: pointer;
+
+/* Color variations */
+@toastInfoColor: @infoColor;
+@toastWarningColor: @warningColor;
+@toastErrorColor: @errorColor;
+@toastSuccessColor: @successColor;
+
+/* Icon */
+@toastIconRightMargin: 0.6em;
+@toastIconVerticalAlign: middle;
+@toastIconFontSize: 1.5em;
+@toastIconOpacity: 0.8;
+
+/* Content */
+@toastContentVerticalAlign: middle;

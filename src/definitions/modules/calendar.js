@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI - Dropdown
+ * # Semantic UI - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -202,8 +202,7 @@ $.fn.calendar = function(parameters) {
             var startMonth = display.getMonth() + monthOffset;
             var year = display.getFullYear();
 
-            var columns = isDay ? 7 : isHour ? 4 : 3;
-            var columnsString = columns === 7 ? 'seven' : columns === 4 ? 'four' : 'three';
+            var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : 3;
             var rows = isDay || isHour ? 6 : 4;
             var pages = isDay ? multiMonth : 1;
 
@@ -238,8 +237,12 @@ $.fn.calendar = function(parameters) {
               var nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
                 isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
 
-              var table = $('<table/>').addClass(className.table).addClass(columnsString + ' column').addClass(mode).appendTo(container);
-
+              var tempMode = mode;
+              if (isDay && settings.showWeekNumbers){
+                tempMode += ' andweek';
+              }
+              var table = $('<table/>').addClass(className.table).addClass(tempMode).appendTo(container);
+              var textColumns = columns;
               //no header for time-only mode
               if (!isTimeOnly) {
                 var thead = $('<thead/>').appendTo(table);
@@ -268,10 +271,15 @@ $.fn.calendar = function(parameters) {
                   next.toggleClass(className.disabledCell, !module.helper.isDateInRange(nextFirst, mode));
                   $('<i/>').addClass(className.nextIcon).appendTo(next);
                 }
-
                 if (isDay) {
                   row = $('<tr/>').appendTo(thead);
-                  for (i = 0; i < columns; i++) {
+                  if(settings.showWeekNumbers) {
+                      cell = $('<th/>').appendTo(row);
+                      cell.text(settings.text.weekNo);
+                      cell.addClass(className.disabledCell);
+                      textColumns--;
+                  }
+                  for (i = 0; i < textColumns; i++) {
                     cell = $('<th/>').appendTo(row);
                     cell.text(formatter.dayColumnHeader((i + settings.firstDayOfWeek) % 7, settings));
                   }
@@ -282,7 +290,12 @@ $.fn.calendar = function(parameters) {
               i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
               for (r = 0; r < rows; r++) {
                 row = $('<tr/>').appendTo(tbody);
-                for (c = 0; c < columns; c++, i++) {
+                if(isDay && settings.showWeekNumbers){
+                    cell = $('<th/>').appendTo(row);
+                    cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
+                    cell.addClass(className.disabledCell);
+                }
+                for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
                     isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute) :
                       isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * 5);
@@ -508,6 +521,19 @@ $.fn.calendar = function(parameters) {
         },
 
         get: {
+          weekOfYear: function(weekYear,weekMonth,weekDay) {
+              // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
+              var ms1d = 864e5, // milliseconds in a day
+                  ms7d = 7 * ms1d; // milliseconds in a week
+
+              return function() { // return a closure so constants get calculated only once
+                  var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
+                      AWN = Math.floor(DC3 / 7), // an Absolute Week Number
+                      Wyr = new Date(AWN * ms7d).getUTCFullYear();
+
+                  return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
+              }();
+          },
           date: function () {
             return $module.data(metadata.date) || null;
           },
@@ -1007,7 +1033,7 @@ $.fn.calendar.settings = {
   startCalendar: null,  // jquery object or selector for another calendar that represents the start date of a date range
   endCalendar: null,    // jquery object or selector for another calendar that represents the end date of a date range
   multiMonth: 1,        // show multiple months when in 'day' mode
-
+  showWeekNumbers: null,// show Number of Week at the very first column of a dayView
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -1023,7 +1049,8 @@ $.fn.calendar.settings = {
     today: 'Today',
     now: 'Now',
     am: 'AM',
-    pm: 'PM'
+    pm: 'PM',
+    weekNo: 'Week'
   },
 
   formatter: {

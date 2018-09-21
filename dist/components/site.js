@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.5.0 - Site
+ * # Semantic UI 2.6.0 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -455,6 +455,7 @@ $.site.settings = {
     'state',
     'sticky',
     'tab',
+    'toast',
     'transition',
     'visibility',
     'visit'

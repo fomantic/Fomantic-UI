@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.5.0 - Calendar
+ * # Semantic UI 2.6.0 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -57,6 +57,9 @@
 }
 .ui.calendar .ui.table.day {
   min-width: 18em;
+}
+.ui.calendar .ui.table.day.andweek {
+  min-width: 22em;
 }
 .ui.calendar .ui.table.hour {
   min-width: 20em;

@@ -59,6 +59,7 @@ module.exports = {
     'label',
     'list',
     'loader',
+    'placeholder',
     'rail',
     'reveal',
     'segment',
@@ -98,6 +99,7 @@ module.exports = {
     'sidebar',
     'sticky',
     'tab',
+    'toast',
     'transition',
 
     // behaviors
