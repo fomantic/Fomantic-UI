@@ -75,18 +75,40 @@
     opacity: @toastOpacity;
 }
 
+.floating.toast {
+  box-shadow: @floatingBoxShadow;
+}
+
+.toast-container .message {
+    display: flex !important;
+}
+
+.toast-container .compact.message {
+  width: @toastWidth;
+}
+
+.toast-box .toast {
+    display: block;
+}
+
+.flat.toast {
+    opacity: 1;
+}
+
+.toast-container .message,
 .toast:hover {
     opacity: @toastOpacityOnHover;
     cursor: @toastCursorOnHover;
 }
 
+.visible.toast-box,
 .animating.toast,
 .visible.toast {
   display: block;
 }
 
-.toast > .icon {
-    margin-right: @toastIconRightMargin;
+.icon.toast .content {
+  padding-left: @toastIconContentPadding;
 }
 
 .toast > .content > .title {
@@ -109,6 +131,23 @@
     background-color: @toastErrorColor;
 }
 
+.info.toast-box .attached.progress .bar {
+    background: @toastInfoProgressColor !important;
+}
+
+.warning.toast-box .attached.progress .bar {
+    background: @toastWarningProgressColor !important;
+}
+
+.success.toast-box .attached.progress .bar {
+    background: @toastSuccessProgressColor !important;
+}
+
+.error.toast-box .attached.progress .bar {
+    background: @toastErrorProgressColor !important;
+}
+
+
 /*--------------
       Icon
 ---------------*/
@@ -119,7 +158,34 @@
     font-size: @toastIconFontSize;
     opacity: @toastIconOpacity;
 }
+
+.icon.flat.toast > .icon:not(.close) {
+  opacity:1;
+}
+
 .icon.toast > .content {
     display: inline-block;
     vertical-align: @toastContentVerticalAlign;
+}
+
+/*---------------
+   Progress Bar
+ ----------------*/
+
+.toast-box .attached.progress .bar {
+    min-width: 0%;
+}
+
+.toast-box .active.progress .bar::after {
+  -webkit-animation: progress-active @activePulseDuration @defaultEasing infinite !important;
+  animation: progress-active @activePulseDuration @defaultEasing infinite !important;
+}
+
+.toast-box .toast,
+.toast-box .message {
+  margin-bottom: 0;
+}
+
+.toast-box .attached.progress {
+  margin: -3px 0 @toastMarginBottom;
 }

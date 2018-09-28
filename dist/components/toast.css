@@ -32,6 +32,7 @@
           transform: translate(-50%, 0%);
   top: 0.85714286em;
 }
+
 .ui.bottom.right.toast-container {
   bottom: 0.85714286em;
   right: 0.85714286em;
@@ -60,19 +61,45 @@
   padding: 0.78571429em 1em;
   margin: 0 0 6px;
   color: rgba(255, 255, 255, 0.9);
-  opacity: 0.8;
+  opacity: 0.9;
 }
+
+.floating.toast {
+  box-shadow: 0 0 0 1px #a3c293 inset, 0 2px 4px 0 rgba(34,36,38,.12), 0 2px 10px 0 rgba(34,36,38,.15);
+}
+
+.toast-container .message {
+  display: flex !important;
+}
+
+.toast-container .compact.message {
+  width: 300px;
+}
+
+.toast-box .toast {
+  display: block;
+}
+
+.flat.toast {
+  opacity: 1;
+}
+
+.toast-container .message,
 .toast:hover {
   opacity: 1;
   cursor: pointer;
 }
+
+.visible.toast-box,
 .animating.toast,
 .visible.toast {
   display: block;
 }
-.toast > .icon {
-  margin-right: 0.6em;
+
+.icon.toast .content {
+  padding-left: 3em;
 }
+
 .toast > .content > .title {
   font-weight: bold;
 }
@@ -89,6 +116,18 @@
   background-color: #DB2828;
 }
 
+.info.toast-box .attached.progress .bar {
+  background: #12a1bf !important;
+}
+.warning.toast-box .attached.progress .bar {
+  background: #cf9b0d !important;
+}
+.success.toast-box .attached.progress .bar {
+   background: #15792d !important;
+}
+.error.toast-box .attached.progress .bar {
+   background: #9c1a1a !important;
+}
 /*--------------
       Icon
 ---------------*/
@@ -97,9 +136,39 @@
   display: inline-block;
   vertical-align: middle;
   font-size: 1.5em;
-  opacity: 0.8;
+  opacity: 0.9;
+  position: absolute;
 }
+
+.icon.flat.toast > .icon:not(.close) {
+  opacity:1;
+}
+
 .icon.toast > .content {
   display: inline-block;
   vertical-align: middle;
 }
+
+/*---------------
+   Progress Bar
+ ----------------*/
+
+.toast-box .attached.progress .bar {
+  min-width: 0%;
+}
+
+.toast-box .active.progress .bar::after {
+  -webkit-animation: progress-active 2s ease infinite !important;
+  animation: progress-active 2s ease infinite !important;
+}
+
+.toast-box .toast,
+.toast-box .message {
+  margin-bottom: 0;
+}
+
+.toast-box .attached.progress {
+  margin: -3px 0 6px;
+}
+
+
