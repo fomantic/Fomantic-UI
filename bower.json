@@ -1,6 +1,6 @@
 {
-  "name"        : "semantic",
-  "description" : "Semantic empowers designers and developers by creating a shared vocabulary for UI.",
+  "name"        : "fomantic-ui",
+  "description" : "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage"    : "http://www.semantic-ui.com",
   "author": {
     "name" : "Jack Lukic",
