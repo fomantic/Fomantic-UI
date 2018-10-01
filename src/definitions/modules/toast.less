@@ -181,6 +181,10 @@
   animation: progress-active @activePulseDuration @defaultEasing infinite !important;
 }
 
+.toast-box {
+    margin-bottom: @toastMarginBottom;
+}
+
 .toast-box .toast,
 .toast-box .message {
   margin-bottom: 0;
@@ -189,3 +193,8 @@
 .toast-box .attached.progress {
   margin: -3px 0 @toastMarginBottom;
 }
+
+.toast-box .top.attached.progress {
+  margin: @toastMarginBottom 0 -3px;
+}
+

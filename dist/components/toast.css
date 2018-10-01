@@ -157,13 +157,20 @@
   animation: progress-active 2s ease infinite !important;
 }
 
+.toast-box {
+    margin-bottom: 6px;
+}
+
 .toast-box .toast,
 .toast-box .message {
   margin-bottom: 0;
 }
 
-.toast-box .attached.progress {
+.toast-box .bottom.attached.progress {
   margin: -3px 0 6px;
 }
 
+.toast-box .top.attached.progress {
+  margin: 6px 0 -3px;
+}
 

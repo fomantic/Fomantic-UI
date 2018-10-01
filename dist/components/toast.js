@@ -48,8 +48,9 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
+        $toastBox       = $('<div/>',{'class':settings.className.box+' '+settings.class}),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class':'ui bottom attached active progress'}),
+        $progress       = $('<div/>',{'class':settings.className.progress}),
         $progressBar    = $('<div/>',{'class':'bar'}),
 
         $close          = $module.find(selector.close),
@@ -118,7 +119,7 @@ $.fn.toast = function(parameters) {
             var $content = $('<div/>').addClass(className.content);
             module.verbose('Creating toast');
 
-            if (settings.showIcon) {
+            if (settings.showIcon && settings.icons[settings.class]) {
               var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
 
               $toast
@@ -144,13 +145,16 @@ $.fn.toast = function(parameters) {
               .append($content)
             ;
             $toast.css('opacity', settings.opacity);
+            $toast = $toastBox.append($toast);
             if(settings.showProgress && settings.displayTime > 0){
-              $toast = $('<div/>',{'class':'toast-box '+settings.class})
-                .append($toast);
               $progress
                 .addClass(settings.class)
                 .append($progressBar);
-              $toast.append($progress);
+              if ($progress.hasClass('top')) {
+                  $toast.prepend($progress);
+              } else {
+                  $toast.append($progress);
+              }
               $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
               $progressBar.width(settings.progressUp?'0%':'100%');
               setTimeout(function() {
@@ -519,6 +523,8 @@ $.fn.toast.settings = {
 
   className      : {
     container    : 'toast-container',
+    box          : 'toast-box',
+    progress     : 'ui bottom attached active progress',
     toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',
@@ -535,6 +541,7 @@ $.fn.toast.settings = {
 
   selector       : {
     container    : '.toast-container',
+    box          : '.toast-box',
     toast        : '.ui.toast'
   },
 
