@@ -2206,7 +2206,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.eight.buttons > .button {
-  width: 12.500%;
+  width: 12.5%;
 }
 
 .ui.nine.buttons {
@@ -2276,7 +2276,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 }
 
 .ui.eight.vertical.buttons > .button {
-  height: 12.500%;
+  height: 12.5%;
 }
 
 .ui.nine.vertical.buttons > .button {
@@ -4657,7 +4657,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 /* Tertiary */
 
 .ui.tertiary.teal.buttons .button,
-.ui.tertiarteal.buttons .tertiary.button,
+.ui.tertiary.teal.buttons .tertiary.button,
 .ui.tertiary.teal.button {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
@@ -5137,8 +5137,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
        Primary
 --------------------*/
 
-/*--- Standard ---*/
-
 .ui.primary.buttons .button,
 .ui.primary.button {
   background-color: #2185D0;
@@ -5359,8 +5357,6 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
       Secondary
 --------------------*/
 
-/* Standard */
-
 .ui.secondary.buttons .button,
 .ui.secondary.button {
   background-color: #1B1C1D;
@@ -5444,7 +5440,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   color: #343637 !important;
 }
 
-.ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+.ui.buttons:not(.vertical) > .basic.secondary.button:not(:first-child) {
   margin-left: -1px;
 }
 
@@ -22782,7 +22778,7 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.eight.steps > .step {
-  width: 12.500%;
+  width: 12.5%;
 }
 
 /*-------------------
@@ -28664,7 +28660,7 @@ Floated Menu / Item
 }
 
 .ui.menu.eight.item .item {
-  width: 12.500%;
+  width: 12.5%;
 }
 
 .ui.menu.nine.item .item {
@@ -28672,7 +28668,7 @@ Floated Menu / Item
 }
 
 .ui.menu.ten.item .item {
-  width: 10.0%;
+  width: 10%;
 }
 
 .ui.menu.eleven.item .item {
@@ -32687,18 +32683,18 @@ a.inverted.ui.card:hover,
     Nested Comments
 ---------------------*/
 
-.ui.comments .comment .comments {
+.ui.comments .comment > .comments {
   margin: 0em 0em 0.5em 0.5em;
   padding: 1em 0em 1em 1em;
 }
 
-.ui.comments .comment .comments:before {
+.ui.comments .comment > .comments:before {
   position: absolute;
   top: 0px;
   left: 0px;
 }
 
-.ui.comments .comment .comments .comment {
+.ui.comments .comment > .comments .comment {
   border: none;
   border-top: none;
   background: none;
@@ -32849,7 +32845,7 @@ a.inverted.ui.card:hover,
         Threaded
 ---------------------*/
 
-.ui.threaded.comments .comment .comments {
+.ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
   padding: 3em 0em 2em 2.25em;
   -webkit-box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
@@ -32936,7 +32932,7 @@ a.inverted.ui.card:hover,
   color: #ffffff;
 }
 
-.ui.inverted.threaded.comments .comment .comments {
+.ui.inverted.threaded.comments .comment > .comments {
   -webkit-box-shadow: -1px 0px 0px #555555;
   box-shadow: -1px 0px 0px #555555;
 }
@@ -36270,7 +36266,7 @@ body.dimmable > .dimmer {
   min-height: 2.71428571em;
   background: #FFFFFF;
   display: inline-block;
-  padding: 0.78571429em 2.1em 0.78571429em 1em;
+  padding: 0.78571429em 3.2em 0.78571429em 1em;
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -36521,14 +36517,14 @@ select.ui.dropdown {
 
 .ui.search.selection.dropdown > input.search {
   line-height: 1.21428571em;
-  padding: 0.67857143em 2.1em 0.67857143em 1em;
+  padding: 0.67857143em 3.2em 0.67857143em 1em;
 }
 
 /* Used to size multi select input to character width */
 
 .ui.search.selection.dropdown > span.sizer {
   line-height: 1.21428571em;
-  padding: 0.67857143em 2.1em 0.67857143em 1em;
+  padding: 0.67857143em 3.2em 0.67857143em 1em;
   display: none;
   white-space: pre;
 }
@@ -36621,7 +36617,7 @@ select.ui.dropdown {
 /* Multiple Selection */
 
 .ui.multiple.dropdown {
-  padding: 0.22619048em 2.1em 0.22619048em 0.35714286em;
+  padding: 0.22619048em 3.2em 0.22619048em 0.35714286em;
 }
 
 .ui.multiple.dropdown .menu {
@@ -38356,17 +38352,17 @@ select.ui.dropdown {
 
 /* Resort to margin positioning if legacy */
 
-.ui.legacy.modal,
-.ui.legacy.page.dimmer > .ui.modal {
-  top: 50%;
-  left: 50%;
+.ui.legacy.legacy.modal,
+.ui.legacy.legacy.page.dimmer > .ui.modal {
+  top: 50% !important;
+  left: 50% !important;
 }
 
-.ui.legacy.page.dimmer > .ui.scrolling.modal,
-.ui.page.dimmer > .ui.scrolling.legacy.modal,
-.ui.top.aligned.legacy.page.dimmer > .ui.modal,
-.ui.top.aligned.dimmer > .ui.legacy.modal {
-  top: auto;
+.ui.legacy.legacy.page.dimmer > .ui.scrolling.modal,
+.ui.page.dimmer > .ui.scrolling.legacy.legacy.modal,
+.ui.top.aligned.legacy.legacy.page.dimmer > .ui.modal,
+.ui.top.aligned.dimmer > .ui.legacy.legacy.modal {
+  top: auto !important;
 }
 
 /* Tablet and Mobile */
@@ -38472,7 +38468,7 @@ select.ui.dropdown {
 /* Scrolling Content */
 
 .ui.modal .scrolling.content {
-  max-height: calc(70vh);
+  max-height: calc(80vh - 10em);
   overflow: auto;
 }
 
@@ -38482,12 +38478,8 @@ select.ui.dropdown {
 
 .ui.fullscreen.modal {
   width: 95% !important;
-  left: 0em !important;
+  left: 2.5% !important;
   margin: 1em auto;
-}
-
-.ui.fullscreen.scrolling.modal {
-  left: 0em !important;
 }
 
 .ui.fullscreen.modal > .header {

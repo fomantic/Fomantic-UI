@@ -1281,7 +1281,7 @@
   width: 100%;
 }
 .ui.eight.buttons > .button {
-  width: 12.500%;
+  width: 12.5%;
 }
 .ui.nine.buttons {
   width: 100%;
@@ -1335,7 +1335,7 @@
   height: 14.285%;
 }
 .ui.eight.vertical.buttons > .button {
-  height: 12.500%;
+  height: 12.5%;
 }
 .ui.nine.vertical.buttons > .button {
   height: 11.11%;
@@ -3430,7 +3430,7 @@
 
 /* Tertiary */
 .ui.tertiary.teal.buttons .button,
-.ui.tertiarteal.buttons .tertiary.button,
+.ui.tertiary.teal.buttons .tertiary.button,
 .ui.tertiary.teal.button {
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
@@ -3855,9 +3855,6 @@
        Primary
 --------------------*/
 
-
-/*--- Standard ---*/
-
 .ui.primary.buttons .button,
 .ui.primary.button {
   background-color: #2185D0;
@@ -4052,8 +4049,6 @@
       Secondary
 --------------------*/
 
-
-/* Standard */
 .ui.secondary.buttons .button,
 .ui.secondary.button {
   background-color: #1B1C1D;
@@ -4126,7 +4121,7 @@
           box-shadow: 0px 0px 0px 1px #343637 inset !important;
   color: #343637 !important;
 }
-.ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+.ui.buttons:not(.vertical) > .basic.secondary.button:not(:first-child) {
   margin-left: -1px;
 }
 
