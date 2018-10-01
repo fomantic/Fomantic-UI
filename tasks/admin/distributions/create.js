@@ -17,7 +17,6 @@ var
   del             = require('del'),
   fs              = require('fs'),
   path            = require('path'),
-  runSequence     = require('run-sequence'),
   mergeStream     = require('merge-stream'),
 
   // admin dependencies
@@ -209,11 +208,12 @@ module.exports = function(callback) {
         ;
       });
 
-      tasks.push(task.meteor);
-      tasks.push(task.repo);
-      tasks.push(task.package);
+      (gulp.task('create', gulp.series(task.meteor, task.repo, task.package, function(done){
+        callback();
+        done();
+      })))();
 
     })(distribution);
+
   }
-  runSequence(tasks, callback);
 };

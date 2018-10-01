@@ -23,7 +23,6 @@ var
   fs             = require('fs'),
   mkdirp         = require('mkdirp'),
   path           = require('path'),
-  runSequence    = require('run-sequence'),
 
   // gulp dependencies
   chmod          = require('gulp-chmod'),
@@ -35,6 +34,9 @@ var
   replace        = require('gulp-replace'),
   requireDotFile = require('require-dot-file'),
   wrench         = require('wrench-sui'),
+
+  // build dependencies
+  build        = require('./build'),
 
   // install config
   install        = require('./config/project/install'),
@@ -190,7 +192,6 @@ if(manager.name == 'NPM') {
 ---------------*/
 
 gulp.task('run setup', function() {
-
   // If auto-install is switched on, we skip the configuration section and simply reuse the configuration from semantic.json
   if(install.shouldAutoInstall()) {
     answers = {
@@ -212,7 +213,6 @@ gulp.task('run setup', function() {
 });
 
 gulp.task('create install files', function(callback) {
-
   /*--------------
    Exit Conditions
   ---------------*/
@@ -408,29 +408,22 @@ gulp.task('create install files', function(callback) {
 
   });
 
-  runSequence(
-    'create theme.config',
-    'create semantic.json',
-    callback
-  );
-
+  (gulp.series('create theme.config', 'create semantic.json', function(done) {
+    callback();
+    done();
+  }))();
 });
 
 gulp.task('clean up install', function() {
-
   // Completion Message
   if(installFolder && !install.shouldAutoInstall()) {
     console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
     process.exit(0);
   }
-  else {
-    console.log('');
-    console.log('');
-  }
 
   // If auto-install is switched on, we skip the configuration section and simply build the dependencies
   if(install.shouldAutoInstall()) {
-    return gulp.start('build');
+    return build();
   }
   else {
     return gulp
@@ -440,20 +433,14 @@ gulp.task('clean up install', function() {
           del(install.setupFiles);
         }
         if(answers.build == 'yes') {
-          gulp.start('build');
+          build();
         }
       }))
     ;
   }
 
-
 });
 
-runSequence(
-  'run setup',
-  'create install files',
-  'clean up install',
-  callback
-);
-
+(gulp.series('run setup', 'create install files', 'clean up install'))();
 };
+
