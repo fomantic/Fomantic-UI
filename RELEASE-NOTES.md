@@ -1,5 +1,15 @@
 ## RELEASE NOTES
 
+### Version 2.6.1 - October 1, 2018
+
+**Bugs**
+- **Icon** - Fixed comments icon from conflicting while inside comments component **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#133](https://github.com/fomantic/Fomantic-UI/pull/133)
+- **Modal** - Fixed fullscreen modal from being stuck to the left of the screen **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#135](https://github.com/fomantic/Fomantic-UI/pull/135)
+- **Modal** - Fixed fullscreen modals not working in IE11 **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#136](https://github.com/fomantic/Fomantic-UI/pull/136)
+
+**Build Tools**
+- Changed bower and composer package names from Semantic to Fomantic **Thanks [@salaros](https://github.com/salaros)** [#140](https://github.com/fomantic/Fomantic-UI/pull/140)
+
 ### Version 2.6.0 - September 18, 2018
 
 > Reason behind version jump: The new 2.6 release might look a little funny since we just released 2.5 but we thought it was necessary to bump a minor patch since the new SUI release introducing a new component and we want to stick to the SUI versioning scheme. We also added the new toast component so we didn't have to wait until the next feature release.
