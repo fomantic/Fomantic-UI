@@ -75,8 +75,9 @@
     opacity: @toastOpacity;
 }
 
-.floating.toast {
-  box-shadow: @floatingBoxShadow;
+.floating.toast,
+.hoverfloating.toast:hover {
+  box-shadow: @floatingShadow;
 }
 
 .toast-container .message {
