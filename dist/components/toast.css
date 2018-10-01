@@ -61,7 +61,6 @@
   padding: 0.78571429em 1em;
   margin: 0 0 6px;
   color: rgba(255, 255, 255, 0.9);
-  opacity: 0.9;
 }
 
 .floating.toast {
@@ -78,10 +77,6 @@
 
 .toast-box .toast {
   display: block;
-}
-
-.flat.toast {
-  opacity: 1;
 }
 
 .toast-container .message,
@@ -136,12 +131,7 @@
   display: inline-block;
   vertical-align: middle;
   font-size: 1.5em;
-  opacity: 0.9;
   position: absolute;
-}
-
-.icon.flat.toast > .icon:not(.close) {
-  opacity:1;
 }
 
 .icon.toast > .content {

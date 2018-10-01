@@ -143,6 +143,7 @@ $.fn.toast = function(parameters) {
               .addClass(settings.class + ' ' + className.toast)
               .append($content)
             ;
+            $toast.css('opacity', settings.opacity);
             if(settings.showProgress && settings.displayTime > 0){
               $toast = $('<div/>',{'class':'toast-box '+settings.class})
                 .append($toast);
@@ -500,6 +501,7 @@ $.fn.toast.settings = {
   newestOnTop    : false,
   showProgress   : false,
   progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
+  opacity        : 1,
 
   // transition settings
   transition     : {
