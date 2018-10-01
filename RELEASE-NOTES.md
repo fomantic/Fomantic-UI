@@ -9,6 +9,7 @@
 
 **Build Tools**
 - Changed bower and composer package names from Semantic to Fomantic **Thanks [@salaros](https://github.com/salaros)** [#140](https://github.com/fomantic/Fomantic-UI/pull/140)
+- Updated build process to use gulp 4 which removes dependency vulnerabilities **Thanks [@acconrad](https://github.com/acconrad) [#6566](https://github.com/Semantic-Org/Semantic-UI/pull/6566)
 
 **Misc**
 - Refactored buttons file to reducing the amount of code **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#142](https://github.com/fomantic/Fomantic-UI/pull/142)
