@@ -62,16 +62,16 @@
     Nested Comments
 ---------------------*/
 
-.ui.comments .comment .comments {
+.ui.comments .comment > .comments {
   margin: @nestedCommentsMargin;
   padding: @nestedCommentsPadding;
 }
-.ui.comments .comment .comments:before{
+.ui.comments .comment > .comments:before{
   position: absolute;
   top: 0px;
   left: 0px;
 }
-.ui.comments .comment .comments .comment {
+.ui.comments .comment > .comments .comment {
   border: @nestedCommentBorder;
   border-top: @nestedCommentDivider;
   background: @nestedCommentBackground;
@@ -212,7 +212,7 @@
         Threaded
 ---------------------*/
 
-.ui.threaded.comments .comment .comments {
+.ui.threaded.comments .comment > .comments {
   margin: @threadedCommentMargin;
   padding: @threadedCommentPadding;
   box-shadow: @threadedCommentBoxShadow;
@@ -288,7 +288,7 @@
   color: @invertedHoveredTextColor;
 }
 
-.ui.inverted.threaded.comments .comment .comments {
+.ui.inverted.threaded.comments .comment > .comments {
   box-shadow: -1px 0px 0px @solidWhiteBorderColor;
 }
 
