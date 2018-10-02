@@ -21,7 +21,6 @@ var
   print        = require('gulp-print'),
   rename       = require('gulp-rename'),
   replace      = require('gulp-replace'),
-  runSequence  = require('run-sequence'),
 
   // config
   config       = require('../config/user'),
@@ -46,14 +45,6 @@ require('../collections/internal')(gulp);
 module.exports = function(callback) {
 
   var
-    tasksCompleted = 0,
-    maybeCallback  = function() {
-      tasksCompleted++;
-      if(tasksCompleted === 2) {
-        callback();
-      }
-    },
-
     stream,
     compressedStream,
     uncompressedStream
@@ -84,30 +75,34 @@ module.exports = function(callback) {
   compressedStream   = stream.pipe(clone());
 
   // uncompressed component css
-  uncompressedStream
-    .pipe(plumber())
-    .pipe(replace(assets.source, assets.uncompressed))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-    .pipe(gulp.dest(output.uncompressed))
-    .pipe(print(log.created))
-    .on('end', function() {
-      runSequence('package uncompressed css', maybeCallback);
-    })
-  ;
+  function buildUncompressed() {
+    return uncompressedStream
+      .pipe(plumber())
+      .pipe(replace(assets.source, assets.uncompressed))
+      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+      .pipe(gulp.dest(output.uncompressed))
+      .pipe(print(log.created))
+    ;
+  }
+  buildUncompressed.name = 'build uncompressed css';
 
-  // compressed component css
-  compressedStream = stream
-    .pipe(plumber())
-    .pipe(clone())
-    .pipe(replace(assets.source, assets.compressed))
-    .pipe(minifyCSS(settings.minify))
-    .pipe(rename(settings.rename.minCSS))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-    .pipe(gulp.dest(output.compressed))
-    .pipe(print(log.created))
-    .on('end', function() {
-      runSequence('package compressed css', maybeCallback);
-    })
-  ;
+  function buildCompressed() {
+    // compressed component css
+    return compressedStream
+      .pipe(plumber())
+      .pipe(clone())
+      .pipe(replace(assets.source, assets.compressed))
+      .pipe(minifyCSS(settings.minify))
+      .pipe(rename(settings.rename.minCSS))
+      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+      .pipe(gulp.dest(output.compressed))
+      .pipe(print(log.created))
+    ;
+  }
+  buildCompressed.name = 'build compressed css';
 
+  gulp.parallel(
+    gulp.series(buildUncompressed, 'package uncompressed css'),
+    gulp.series(buildCompressed, 'package compressed css'),
+  )(callback);
 };

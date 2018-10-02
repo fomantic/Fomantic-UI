@@ -22,7 +22,7 @@ var
   log          = tasks.log
 ;
 
-module.exports = function(callback) {
+module.exports = function() {
 
   console.info('Building assets');
 

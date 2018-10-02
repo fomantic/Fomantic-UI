@@ -40,13 +40,6 @@ var
 require('../collections/internal')(gulp);
 
 module.exports = function(callback) {
-
-  var
-    stream,
-    compressedStream,
-    uncompressedStream
-  ;
-
   console.info('Building Javascript');
 
   if( !install.isSetup() ) {
@@ -55,23 +48,21 @@ module.exports = function(callback) {
   }
 
   // copy source javascript
-  gulp.src(source.definitions + '/**/' + globs.components + '.js')
-    .pipe(plumber())
-    .pipe(flatten())
-    .pipe(replace(comments.license.in, comments.license.out))
-    .pipe(gulp.dest(output.uncompressed))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-    .pipe(print(log.created))
-    .pipe(uglify(settings.uglify))
-    .pipe(rename(settings.rename.minJS))
-    .pipe(gulp.dest(output.compressed))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-    .pipe(print(log.created))
-    .on('end', function() {
-      gulp.start('package compressed js');
-      gulp.start('package uncompressed js');
-      callback();
-    })
-  ;
+  function js() {
+    return gulp.src(source.definitions + '/**/' + globs.components + '.js')
+      .pipe(plumber())
+      .pipe(flatten())
+      .pipe(replace(comments.license.in, comments.license.out))
+      .pipe(gulp.dest(output.uncompressed))
+      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+      .pipe(print(log.created))
+      .pipe(uglify(settings.uglify))
+      .pipe(rename(settings.rename.minJS))
+      .pipe(gulp.dest(output.compressed))
+      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+      .pipe(print(log.created))
+    ;
+  }
 
+  gulp.series(js, gulp.parallel('package compressed js', 'package uncompressed js'))(callback);
 };
