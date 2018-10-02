@@ -1,5 +1,10 @@
 ## RELEASE NOTES
 
+### Version 2.6.2 - October 2, 2018
+
+**Critical Bugs**
+- **Build Tools** - Reverted the gulp 4 update since it broke the npm install **Thanks [@hammy2899](https://github.com/hammy2899)** [#145](https://github.com/fomantic/Fomantic-UI/issues/145)
+
 ### Version 2.6.1 - October 2, 2018
 
 **Bugs**
