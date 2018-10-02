@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.0 - Modal
+ * # Semantic UI 2.6.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -427,7 +427,7 @@
 
 /* Scrolling Content */
 .ui.modal .scrolling.content {
-  max-height: calc(80vh - 10em);
+  max-height: calc(70vh);
   overflow: auto;
 }
 
