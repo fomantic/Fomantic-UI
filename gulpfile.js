@@ -67,9 +67,9 @@ gulp.task('build-assets', function(done) {
 });
 
 gulp.task('clean', function(done) {
-  clean();
-  done();
+  gulp.series(clean, gulp.parallel(clean))(done);
 });
+
 gulp.task('version', function(done) {
   version();
   done();
