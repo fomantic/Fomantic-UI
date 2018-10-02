@@ -1,6 +1,6 @@
 ## RELEASE NOTES
 
-### Version 2.6.1 - October 1, 2018
+### Version 2.6.1 - October 2, 2018
 
 **Bugs**
 - **Icon** - Fixed comments icon from conflicting while inside comments component **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#133](https://github.com/fomantic/Fomantic-UI/pull/133)
