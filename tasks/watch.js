@@ -24,11 +24,6 @@ var
   util         = require('gulp-util'),
   watch        = require('gulp-watch'),
 
-  // task depedencies
-
-  buildCSS     = require('./build/css'),
-  watchRTL     = require('./rtl/watch'),
-
   // user config
   config       = require('./config/user'),
 
@@ -66,10 +61,10 @@ module.exports = function(callback) {
 
   // check for right-to-left (RTL) language
   if(config.rtl == 'both') {
-    watchRTL();
+    gulp.start('watch-rtl');
   }
   if(config.rtl === true || config.rtl === 'Yes') {
-    watchRTL();
+    gulp.start('watch-rtl');
     return;
   }
 
@@ -119,7 +114,7 @@ module.exports = function(callback) {
       if(isConfig) {
         console.info('Rebuilding all UI');
         // impossible to tell which file was updated in theme.config, rebuild all
-        buildCSS();
+        gulp.start('build-css');
         return;
       }
       else if(isPackagedTheme) {
@@ -167,7 +162,7 @@ module.exports = function(callback) {
           .pipe(gulp.dest(output.uncompressed))
           .pipe(print(log.created))
           .on('end', function() {
-            (gulp.task(gulp.series('package uncompressed css')))();
+            gulp.start('package uncompressed css');
           })
         ;
 
@@ -179,7 +174,7 @@ module.exports = function(callback) {
           .pipe(gulp.dest(output.compressed))
           .pipe(print(log.created))
           .on('end', function() {
-            (gulp.task(gulp.series('package compressed css')))();
+            gulp.start('package compressed css');
           })
         ;
       }
@@ -208,7 +203,8 @@ module.exports = function(callback) {
         .pipe(gulp.dest(output.compressed))
         .pipe(print(log.created))
         .on('end', function() {
-          (gulp.task(gulp.series('package compressed js', 'package uncompressed js')))();
+          gulp.start('package compressed js');
+          gulp.start('package uncompressed js');
         })
       ;
     })
