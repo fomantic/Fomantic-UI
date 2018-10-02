@@ -80,7 +80,11 @@ module.exports = function(callback) {
   gulp.src(config.paths.template.eco + globs.eco)
     .pipe(map(metadata.parser))
     .on('end', function() {
-      fs.writeFile(output.metadata + '/metadata.json', JSON.stringify(metadata.result, null, 2), new Function());
+      fs.writeFile(
+        output.metadata + '/metadata.json',
+        JSON.stringify(metadata.result, null, 2),
+        function (err) { err && console.error(err) }
+      );
     })
   ;
 
@@ -141,7 +145,7 @@ module.exports = function(callback) {
     .pipe(gulp.dest(output.uncompressed))
     .pipe(print(log.created))
     .on('end', function() {
-      gulp.start('package uncompressed docs css');
+      (gulp.series('package uncompressed docs css'))();
     })
   ;
 
@@ -156,8 +160,7 @@ module.exports = function(callback) {
     .pipe(gulp.dest(output.compressed))
     .pipe(print(log.created))
     .on('end', function() {
-      callback();
-      gulp.start('package compressed docs css');
+      (gulp.series('package compressed docs css'))();
     })
   ;
 
@@ -181,8 +184,7 @@ module.exports = function(callback) {
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(print(log.created))
     .on('end', function() {
-      gulp.start('package compressed docs js');
-      gulp.start('package uncompressed docs js');
+      (gulp.series('package compressed docs js', 'package uncompressed docs js'))();
     })
   ;
 
