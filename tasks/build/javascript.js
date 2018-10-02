@@ -49,7 +49,7 @@ module.exports = function(callback) {
 
   // copy source javascript
   function js() {
-    return gulp.src(source.definitions + '/**/' + globs.components + '.js')
+    return gulp.src(source.definitions + '/**/' + globs.components + '.js', {since: gulp.lastRun('build-javascript')})
       .pipe(plumber())
       .pipe(flatten())
       .pipe(replace(comments.license.in, comments.license.out))

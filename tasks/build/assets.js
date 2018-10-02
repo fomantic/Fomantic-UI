@@ -27,7 +27,7 @@ module.exports = function() {
   console.info('Building assets');
 
   // copy assets
-  return gulp.src(source.themes + '/**/assets/**/*.*')
+  return gulp.src(source.themes + '/**/assets/**/*.*', {since: gulp.lastRun('build-assets')})
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(output.themes))
   ;

@@ -57,8 +57,9 @@ module.exports = function(callback) {
     return;
   }
 
+  // TODO changes in theme.config should force a rebuilt of everything
   // unified css stream
-  stream = gulp.src(source.definitions + '/**/' + globs.components + '.less')
+  stream = gulp.src(source.definitions + '/**/' + globs.components + '.less', {since: gulp.lastRun('build-css')})
     .pipe(plumber(settings.plumber.less))
     .pipe(less(settings.less))
     .pipe(autoprefixer(settings.prefix))
