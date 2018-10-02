@@ -145,6 +145,9 @@ $.fn.toast = function(parameters) {
               .append($content)
             ;
             $toast.css('opacity', settings.opacity);
+            if(settings.compact || $toast.hasClass('compact')) {
+                $toastBox.addClass('compact');
+            }
             $toast = $toastBox.append($toast);
             if(settings.showProgress && settings.displayTime > 0){
               $progress
@@ -233,7 +236,10 @@ $.fn.toast = function(parameters) {
                       callback = $.isFunction(callback)?callback : function(){};
                       if(settings.transition.closeEasing !== ''){
                           $toast.css('opacity',0);
-                          $toast.slideUp(500,settings.transition.closeEasing,callback);
+                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                              $toast.parent().remove();
+                              callback.call($toast);
+                          });
                       } else {
                         callback.call($toast);
                       }
@@ -506,6 +512,7 @@ $.fn.toast.settings = {
   showProgress   : false,
   progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
   opacity        : 1,
+  compact        : true,
 
   // transition settings
   transition     : {

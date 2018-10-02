@@ -12,7 +12,6 @@
 @toastMarginBottom: 6px;
 @toastMargin: 0 0 @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
-@toastOpacity: 0.9;
 
 /* on Hover */
 @toastOpacityOnHover: 1;
@@ -28,7 +27,6 @@
 @toastIconContentPadding: 3em;
 @toastIconVerticalAlign: middle;
 @toastIconFontSize: 1.5em;
-@toastIconOpacity: 0.8;
 
 /* Content */
 @toastContentVerticalAlign: middle;
