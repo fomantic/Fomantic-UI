@@ -143,6 +143,7 @@
 @ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
 @rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
+
 /* Colors */
 @redTextColor: @white;
 @orangeTextColor: @white;
