@@ -39,22 +39,30 @@ var
              Tasks
 *******************************/
 
-gulp.task('default', false, [
-  'check-install'
-]);
 
-gulp.task('watch', 'Watch for site/theme changes', watch);
+gulp.task('watch', watch);
+gulp.task('watch').description = 'Watch for site/theme changes';
 
-gulp.task('build', 'Builds all files from source', build);
-gulp.task('build-javascript', 'Builds all javascript from source', buildJS);
-gulp.task('build-css', 'Builds all css from source', buildCSS);
-gulp.task('build-assets', 'Copies all assets from source', buildAssets);
+gulp.task('build', build);
+gulp.task('build').description = 'Builds all files from source';
+gulp.task('build-javascript', buildJS);
+gulp.task('build-javascript').description = 'Builds all javascript from source';
+gulp.task('build-css', buildCSS);
+gulp.task('build-css').description = 'Builds all css from source';
+gulp.task('build-assets', buildAssets);
+gulp.task('build-assets').description = 'Copies all assets from source';
 
-gulp.task('clean', 'Clean dist folder', clean);
-gulp.task('version', 'Displays current version of Semantic', version);
+gulp.task('clean', clean);
+gulp.task('clean').description = 'Clean dist folder';
+gulp.task('version', version);
+gulp.task('version').description = 'Clean dist folder';
 
-gulp.task('install', 'Runs set-up', install);
-gulp.task('check-install', 'Displays current version of Semantic', checkInstall);
+gulp.task('install', install);
+gulp.task('install').description = 'Runs set-up';
+gulp.task('check-install', checkInstall);
+gulp.task('check-install').description = 'Displays current version of Semantic';
+
+gulp.task('default', gulp.series('check-install'));
 
 /*--------------
       Docs
@@ -65,17 +73,20 @@ gulp.task('check-install', 'Displays current version of Semantic', checkInstall)
   https://github.com/Semantic-Org/Semantic-UI-Docs/
 */
 
-gulp.task('serve-docs', 'Serve file changes to SUI Docs', serveDocs);
-gulp.task('build-docs', 'Build all files and add to SUI Docs', buildDocs);
-
+gulp.task('serve-docs', serveDocs);
+gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';
+gulp.task('build-docs', buildDocs);
+gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
 
 /*--------------
       RTL
 ---------------*/
 
 if(config.rtl) {
-  gulp.task('watch-rtl', 'Watch files as RTL', watchRTL);
-  gulp.task('build-rtl', 'Build all files as RTL', buildRTL);
+  gulp.task('watch-rtl', watchRTL);
+  gulp.task('watch-rtl').description = 'Watch files as RTL';
+  gulp.task('build-rtl', buildRTL);
+  gulp.task('build-rtl').description = 'Build all files as RTL';
 }
 
 /* Admin Tasks */
