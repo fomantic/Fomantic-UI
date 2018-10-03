@@ -1,49 +1,24 @@
 /*******************************
- Watch Task
+ *          Watch Task
  *******************************/
 
 var
-  gulp         = require('gulp'),
+  gulp      = require('gulp'),
 
   // node dependencies
-  console      = require('better-console'),
-  fs           = require('fs'),
-  normalize    = require('normalize-path'),
-
-  // gulp dependencies
-  autoprefixer = require('gulp-autoprefixer'),
-  chmod        = require('gulp-chmod'),
-  clone        = require('gulp-clone'),
-  gulpif       = require('gulp-if'),
-  less         = require('gulp-less'),
-  minifyCSS    = require('gulp-clean-css'),
-  plumber      = require('gulp-plumber'),
-  print        = require('gulp-print'),
-  rename       = require('gulp-rename'),
-  replace      = require('gulp-replace'),
-  uglify       = require('gulp-uglify'),
-  util         = require('gulp-util'),
-  watch        = require('gulp-watch'),
+  console   = require('better-console'),
+  normalize = require('normalize-path'),
 
   // user config
-  config       = require('./config/user'),
+  config    = require('./config/user'),
 
   // task config
-  tasks        = require('./config/tasks'),
-  install      = require('./config/project/install'),
+  install   = require('./config/project/install'),
 
   // shorthand
-  globs        = config.globs,
-  assets       = config.paths.assets,
-  output       = config.paths.output,
-  source       = config.paths.source,
+  source    = config.paths.source,
 
-  banner       = tasks.banner,
-  comments     = tasks.regExp.comments,
-  log          = tasks.log,
-  settings     = tasks.settings,
-
-  buildCSS     = require('./build/css')
+  buildCSS  = require('./build/css')
 
 ;
 
@@ -53,37 +28,13 @@ if (config.rtl) {
 }
 require('./collections/internal')(gulp);
 
-
-// export task
-module.exports = function (callback) {
-
-  if (!install.isSetup()) {
-    console.error('Cannot watch files. Run "gulp install" to set-up Semantic');
-    return;
-  }
-
-  // check for right-to-left (RTL) language
-  if (config.rtl == 'both') {
-    gulp.start('watch-rtl');
-  }
-  if (config.rtl === true || config.rtl === 'Yes') {
-    gulp.series('watch-rtl')(callback);
-    return;
-  }
-
-  //console.clear();
-  console.log('Watching source files for changes');
-
-  /*--------------
-      Watch CSS
-  ---------------*/
-
+function watchCSS(full, incremental) {
   // Always execute a full build if config files are changed
   gulp.watch(
     [
       normalize(source.config)
     ],
-    gulp.series(buildCSS)
+    gulp.series(full)
   );
 
   gulp.watch(
@@ -93,8 +44,33 @@ module.exports = function (callback) {
       normalize(source.themes + '/**/*.{overrides,variables}')
     ],
     {ignoreInitial: false},
-    gulp.series(buildCSS.incremental)
+    gulp.series(incremental)
   );
+}
+
+// export task
+module.exports = function (callback) {
+
+  if (!install.isSetup()) {
+    console.error('Cannot watch files. Run "gulp install" to set-up Semantic');
+    return;
+  }
+
+  //console.clear();
+  console.log('Watching source files for changes');
+  /*--------------
+      Watch CSS
+  ---------------*/
+
+  // check for right-to-left (RTL) language
+  if (config.rtl === true || config.rtl === 'Yes') {
+    watchCSS(buildCSS.rtl, buildCSS.incrementalRTL);
+  } else if (config.rtl === 'both') {
+    watchCSS(buildCSS.rtl, buildCSS.incrementalRTL);
+    watchCSS(buildCSS, buildCSS.incremental);
+  } else {
+    watchCSS(buildCSS, buildCSS.incremental);
+  }
 
   /*--------------
       Watch JS
