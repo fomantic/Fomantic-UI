@@ -147,9 +147,11 @@ module.exports = function (callback) {
 
         console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
 
+        callback();
         return;
       } else {
         console.log('Current version of Semantic UI already installed');
+        callback();
         return;
       }
 
@@ -165,7 +167,7 @@ module.exports = function (callback) {
   ---------------*/
 
 // PM that supports Build Tools (NPM Only Now)
-  if (manager.name == 'NPM') {
+  if (manager.name === 'NPM') {
     rootQuestions[0].message = rootQuestions[0].message
       .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
       .replace('{root}', manager.root)
@@ -186,7 +188,7 @@ module.exports = function (callback) {
      Create SUI
   ---------------*/
 
-  gulp.task('run setup', function () {
+  gulp.task('run setup', function (callback) {
 
     // If auto-install is switched on, we skip the configuration section and simply reuse the configuration from semantic.json
     if (install.shouldAutoInstall()) {
@@ -196,6 +198,7 @@ module.exports = function (callback) {
         useRoot     : true,
         semanticRoot: currentConfig.base
       };
+      callback();
     } else {
       return gulp
         .src('gulpfile.js')
@@ -215,6 +218,7 @@ module.exports = function (callback) {
 
     // if config exists and user specifies not to proceed
     if (answers.overwrite !== undefined && answers.overwrite == 'no') {
+      callback();
       return;
     }
     console.clear();
@@ -251,6 +255,7 @@ module.exports = function (callback) {
       if (answers.customRoot) {
         if (answers.customRoot === '') {
           console.log('Unable to proceed, invalid project root');
+          callback();
           return;
         }
         manager.root = answers.customRoot;
@@ -402,37 +407,35 @@ module.exports = function (callback) {
     gulp.series('create theme.config', 'create semantic.json')(callback);
   });
 
-  gulp.task('clean up install', function () {
+  gulp.task('clean up install', function (callback) {
 
     // Completion Message
     if (installFolder && !install.shouldAutoInstall()) {
       console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
-      process.exit(0);
+      callback();
     } else {
       console.log('');
       console.log('');
-    }
 
-    // If auto-install is switched on, we skip the configuration section and simply build the dependencies
-    if (install.shouldAutoInstall()) {
-      return gulp.start('build');
-    } else {
-      return gulp
-        .src('gulpfile.js')
-        .pipe(prompt.prompt(questions.cleanup, function (answers) {
-          if (answers.cleanup == 'yes') {
-            del(install.setupFiles);
-          }
-          if (answers.build == 'yes') {
-            gulp.start('build');
-          }
-        }))
+      // If auto-install is switched on, we skip the configuration section and simply build the dependencies
+      if (install.shouldAutoInstall()) {
+        gulp.series('build', callback);
+      } else {
+        gulp
+          .src('gulpfile.js')
+          .pipe(prompt.prompt(questions.cleanup, function (answers) {
+            if (answers.cleanup === 'yes') {
+              del(install.setupFiles);
+            }
+            if (answers.build === 'yes') {
+              gulp.series('build')(callback);
+            }
+            callback();
+          }))
         ;
+      }
     }
-
-
   });
 
   gulp.series('run setup', 'create install files', 'clean up install')(callback);
-
 };
