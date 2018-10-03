@@ -41,7 +41,9 @@ var
   banner       = tasks.banner,
   comments     = tasks.regExp.comments,
   log          = tasks.log,
-  settings     = tasks.settings
+  settings     = tasks.settings,
+
+  buildCSS     = require('./build/css')
 
 ;
 
@@ -76,15 +78,22 @@ module.exports = function (callback) {
       Watch CSS
   ---------------*/
 
+  // Always execute a full build if config files are changed
   gulp.watch(
     [
-      normalize(source.config),
+      normalize(source.config)
+    ],
+    gulp.series(buildCSS)
+  );
+
+  gulp.watch(
+    [
       normalize(source.definitions + '/**/*.less'),
       normalize(source.site + '/**/*.{overrides,variables}'),
       normalize(source.themes + '/**/*.{overrides,variables}')
     ],
     {ignoreInitial: false},
-    gulp.series('build-css')
+    gulp.series(buildCSS.incremental)
   );
 
   /*--------------

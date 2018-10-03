@@ -42,8 +42,7 @@ var
 // add internal tasks (concat release)
 require('../collections/internal')(gulp);
 
-module.exports = function(callback) {
-
+function buildCSS(opts, callback) {
   var
     stream,
     compressedStream,
@@ -57,9 +56,8 @@ module.exports = function(callback) {
     return;
   }
 
-  // TODO changes in theme.config should force a rebuilt of everything
   // unified css stream
-  stream = gulp.src(source.definitions + '/**/' + globs.components + '.less', {since: gulp.lastRun('build-css')})
+  stream = gulp.src(source.definitions + '/**/' + globs.components + '.less', opts)
     .pipe(plumber(settings.plumber.less))
     .pipe(less(settings.less))
     .pipe(autoprefixer(settings.prefix))
@@ -83,7 +81,7 @@ module.exports = function(callback) {
       .pipe(gulpif(config.hasPermission, chmod(config.permission)))
       .pipe(gulp.dest(output.uncompressed))
       .pipe(print(log.created))
-    ;
+      ;
   }
   buildUncompressed.name = 'build uncompressed css';
 
@@ -98,7 +96,7 @@ module.exports = function(callback) {
       .pipe(gulpif(config.hasPermission, chmod(config.permission)))
       .pipe(gulp.dest(output.compressed))
       .pipe(print(log.created))
-    ;
+      ;
   }
   buildCompressed.name = 'build compressed css';
 
@@ -106,4 +104,15 @@ module.exports = function(callback) {
     gulp.series(buildUncompressed, 'package uncompressed css'),
     gulp.series(buildCompressed, 'package compressed css'),
   )(callback);
-};
+}
+
+function full(callback) {
+  buildCSS({}, callback);
+}
+
+function incremental(callback) {
+  buildCSS({since: gulp.lastRun(incremental)}, callback);
+}
+
+module.exports = full;
+module.exports.incremental = incremental;
