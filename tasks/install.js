@@ -429,8 +429,9 @@ module.exports = function (callback) {
             }
             if (answers.build === 'yes') {
               gulp.series('build')(callback);
+            } else {
+              callback();
             }
-            callback();
           }))
         ;
       }
