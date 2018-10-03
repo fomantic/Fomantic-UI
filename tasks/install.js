@@ -419,7 +419,7 @@ module.exports = function (callback) {
 
       // If auto-install is switched on, we skip the configuration section and simply build the dependencies
       if (install.shouldAutoInstall()) {
-        gulp.series('build', callback);
+        gulp.series('build')(callback);
       } else {
         gulp
           .src('gulpfile.js')
