@@ -11,6 +11,8 @@
 - **Icon** - Fixed comments icon from conflicting while inside comments component **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#133](https://github.com/fomantic/Fomantic-UI/pull/133)
 - **Modal** - Fixed fullscreen modal from being stuck to the left of the screen **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#135](https://github.com/fomantic/Fomantic-UI/pull/135)
 - **Modal** - Fixed fullscreen modals not working in IE11 **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#136](https://github.com/fomantic/Fomantic-UI/pull/136)
+- **Dropdown** - Fixed clearable icon from appearing on top of text in searchable dropdowns **Thanks [@lubber-de](https://github.com/lubber-de)** [#143](https://github.com/fomantic/Fomantic-UI/pull/143)
+- **Dropdown** - Fixed searchable dropdowns from losing focus after an option is selected **Thanks [@lubber-de](https://github.com/lubber-de)** [#143](https://github.com/fomantic/Fomantic-UI/pull/143)
 
 **Build Tools**
 - Changed bower and composer package names from Semantic to Fomantic **Thanks [@salaros](https://github.com/salaros)** [#140](https://github.com/fomantic/Fomantic-UI/pull/140)
