@@ -52,7 +52,7 @@ gulp.task('clean').description = 'Clean dist folder';
 gulp.task('version', version);
 gulp.task('version').description = 'Clean dist folder';
 
-gulp.task('default', gulp.series('check-install'));
+gulp.task('default', gulp.series('watch'));
 
 /*--------------
       Docs
