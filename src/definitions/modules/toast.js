@@ -77,7 +77,7 @@ $.fn.toast = function(parameters) {
           module.bind.events();
           
           if(settings.displayTime > 0) {
-            module.closeTimer = setTimeout(module.close, settings.displayTime+(settings.showProgress ? 300 : 0));
+            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
           }
           module.show();
         },
@@ -149,10 +149,13 @@ $.fn.toast = function(parameters) {
                 $toastBox.addClass('compact');
             }
             $toast = $toastBox.append($toast);
-            if(settings.showProgress && settings.displayTime > 0){
+            if(!!settings.showProgress && settings.displayTime > 0){
               $progress
                 .addClass(settings.class)
                 .append($progressBar);
+              if(settings.showProgress === 'top' ){
+                  $progress.removeClass('bottom').addClass('top');
+              }
               if ($progress.hasClass('top')) {
                   $toast.prepend($progress);
               } else {
