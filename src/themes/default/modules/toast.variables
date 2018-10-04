@@ -36,3 +36,9 @@
 @toastWarningProgressColor: darken(@toastWarningColor,15);
 @toastErrorProgressColor: darken(@toastErrorColor,15);
 @toastSuccessProgressColor: darken(@toastSuccessColor,15);
+
+/* Close Icon */
+@toastCloseTopDistance = 0.3em;
+@toastCloseRightDistance = 0.3em;
+@toastCloseOpacity = 0.7;
+@toastCloseTransition = opacity @defaultDuration @defaultEasing;

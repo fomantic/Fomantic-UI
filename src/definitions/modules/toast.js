@@ -53,7 +53,7 @@ $.fn.toast = function(parameters) {
         $progress       = $('<div/>',{'class':settings.className.progress}),
         $progressBar    = $('<div/>',{'class':'bar'}),
 
-        $close          = $module.find(selector.close),
+        $close          = $('<i/>',{'class':'close icon'}),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -67,7 +67,9 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-
+          if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+            settings.showProgress = false;
+          }
           if (!module.has.container()) {
             module.create.container();
           }
@@ -118,7 +120,10 @@ $.fn.toast = function(parameters) {
           toast: function() {
             var $content = $('<div/>').addClass(className.content);
             module.verbose('Creating toast');
-
+            if(settings.closeIcon) {
+                $toast.append($close);
+                $toast.css('cursor','default');
+            }
             if (settings.showIcon && settings.icons[settings.class]) {
               var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
 
@@ -151,11 +156,9 @@ $.fn.toast = function(parameters) {
             $toast = $toastBox.append($toast);
             if(!!settings.showProgress && settings.displayTime > 0){
               $progress
+                .addClass(settings.showProgress)
                 .addClass(settings.class)
                 .append($progressBar);
-              if(settings.showProgress === 'top' ){
-                  $progress.removeClass('bottom').addClass('top');
-              }
               if ($progress.hasClass('top')) {
                   $toast.prepend($progress);
               } else {
@@ -181,7 +184,7 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .on('click' + eventNamespace, module.event.click)
             ;
           }
@@ -190,7 +193,7 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .off('click' + eventNamespace)
             ;
           }
@@ -516,6 +519,7 @@ $.fn.toast.settings = {
   progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
   opacity        : 1,
   compact        : true,
+  closeIcon      : false,
 
   // transition settings
   transition     : {
@@ -534,7 +538,7 @@ $.fn.toast.settings = {
   className      : {
     container    : 'toast-container',
     box          : 'toast-box',
-    progress     : 'ui bottom attached active progress',
+    progress     : 'ui attached active progress',
     toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',

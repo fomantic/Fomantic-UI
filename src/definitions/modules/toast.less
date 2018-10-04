@@ -186,7 +186,6 @@
 }
 
 .toast-box .active.progress .bar:after {
-  -webkit-animation: progress-active 2s @defaultEasing infinite !important;
   animation: progress-active 2s @defaultEasing infinite !important;
 }
 
@@ -198,6 +197,7 @@
 .toast-box .message {
     margin-top: 0;
     margin-bottom: 0;
+    position: relative;
 }
 .toast-box .attached.progress{
     z-index:1;
@@ -211,3 +211,26 @@
   margin: @toastMarginBottom 0 -3px;
 }
 
+/* --------
+ Close Icon
+ -----------*/
+
+.toast-box .message > .close.icon {
+  top: .3em;
+  right: .3em;
+}
+
+
+.toast-box .toast>.close.icon {
+  cursor: pointer;
+  position: absolute;
+  margin: 0;
+  top: @toastCloseTopDistance;
+  right: @toastCloseRightDistance;
+  opacity: @toastCloseOpacity;
+  transition: @toastCloseTransition;
+}
+
+.toast-box .toast > .close.icon:hover {
+  opacity: 1;
+}
