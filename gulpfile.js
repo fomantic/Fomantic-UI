@@ -1,66 +1,22 @@
 /*******************************
-            Set-up
-*******************************/
+ *           Set-up
+ *******************************/
 
 var
-  gulp         = require('gulp-help')(require('gulp')),
+  gulp   = require('gulp-help')(require('gulp')),
 
   // read user config to know what task to load
-  config       = require('./tasks/config/user'),
-
-  // watch for file changes and build
-  watch        = require('./tasks/watch'),
-
-  // build all files
-  build        = require('./tasks/build'),
-  buildJS      = require('./tasks/build/javascript'),
-  buildCSS     = require('./tasks/build/css'),
-  buildAssets  = require('./tasks/build/assets'),
-
-  // utility tasks
-  clean        = require('./tasks/clean'),
-  version      = require('./tasks/version'),
-
-  // install tasks
-  install      = require('./tasks/install'),
-  checkInstall = require('./tasks/check-install'),
-
-  // docs tasks
-  serveDocs    = require('./tasks/docs/serve'),
-  buildDocs    = require('./tasks/docs/build'),
-
-  // rtl
-  buildRTL     = require('./tasks/rtl/build'),
-  watchRTL     = require('./tasks/rtl/watch')
+  config = require('./tasks/config/user')
 ;
 
 
 /*******************************
-             Tasks
-*******************************/
+ *            Tasks
+ *******************************/
 
-
-gulp.task('watch', watch);
-gulp.task('watch').description = 'Watch for site/theme changes';
-
-gulp.task('build', build);
-gulp.task('build').description = 'Builds all files from source';
-gulp.task('build-javascript', buildJS);
-gulp.task('build-javascript').description = 'Builds all javascript from source';
-gulp.task('build-css', buildCSS);
-gulp.task('build-css').description = 'Builds all css from source';
-gulp.task('build-assets', buildAssets);
-gulp.task('build-assets').description = 'Copies all assets from source';
-
-gulp.task('clean', clean);
-gulp.task('clean').description = 'Clean dist folder';
-gulp.task('version', version);
-gulp.task('version').description = 'Clean dist folder';
-
-gulp.task('install', install);
-gulp.task('install').description = 'Runs set-up';
-gulp.task('check-install', checkInstall);
-gulp.task('check-install').description = 'Displays current version of Semantic';
+require('./tasks/collections/build')(gulp);
+require('./tasks/collections/various')(gulp);
+require('./tasks/collections/install')(gulp);
 
 gulp.task('default', gulp.series('check-install'));
 
@@ -68,28 +24,17 @@ gulp.task('default', gulp.series('check-install'));
       Docs
 ---------------*/
 
-/*
-  Lets you serve files to a local documentation instance
-  https://github.com/Semantic-Org/Semantic-UI-Docs/
-*/
-
-gulp.task('serve-docs', serveDocs);
-gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';
-gulp.task('build-docs', buildDocs);
-gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
+require('./tasks/collections/docs')(gulp);
 
 /*--------------
       RTL
 ---------------*/
 
-if(config.rtl) {
-  gulp.task('watch-rtl', watchRTL);
-  gulp.task('watch-rtl').description = 'Watch files as RTL';
-  gulp.task('build-rtl', buildRTL);
-  gulp.task('build-rtl').description = 'Build all files as RTL';
+if (config.rtl) {
+  require('./tasks/collections/rtl')(gulp);
 }
 
 /* Admin Tasks */
-if(config.admin) {
+if (config.admin) {
   require('./tasks/collections/admin')(gulp);
 }
