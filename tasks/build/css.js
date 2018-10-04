@@ -2,7 +2,7 @@
  *          Build Task
  *******************************/
 
-var
+const
   gulp         = require('gulp'),
 
   // node dependencies
@@ -12,8 +12,11 @@ var
   autoprefixer = require('gulp-autoprefixer'),
   chmod        = require('gulp-chmod'),
   clone        = require('gulp-clone'),
+  concatCSS    = require('gulp-concat-css'),
+  dedupe       = require('gulp-dedupe'),
   flatten      = require('gulp-flatten'),
   gulpif       = require('gulp-if'),
+  header       = require('gulp-header'),
   less         = require('gulp-less'),
   minifyCSS    = require('gulp-clean-css'),
   plumber      = require('gulp-plumber'),
@@ -23,64 +26,85 @@ var
   rtlcss       = require('gulp-rtlcss'),
 
   // config
-  config       = require('../config/user'),
+  config       = require('./../config/user'),
+  docsConfig   = require('./../config/docs'),
   tasks        = require('../config/tasks'),
   install      = require('../config/project/install'),
 
   // shorthand
   globs        = config.globs,
   assets       = config.paths.assets,
-  output       = config.paths.output,
-  source       = config.paths.source,
 
+  banner       = tasks.banner,
+  filenames    = tasks.filenames,
   comments     = tasks.regExp.comments,
   log          = tasks.log,
   settings     = tasks.settings
 ;
 
-// add internal tasks (concat release)
-require('../collections/internal')(gulp);
+/**
+ * Packages the css files in dist
+ * @param {string} type - type of the css processing (none, rtl, docs)
+ * @param {boolean} compress - should the output be compressed
+ */
+function pack(type, compress) {
+  const output       = type === 'docs' ? docsConfig.paths.output : config.paths.output;
+  const ignoredGlobs = type === 'rtl' ? globs.ignoredRTL + '.rtl.css' : globs.ignored + '.css';
 
-function buildCSS(rtl, opts, callback) {
-  var
-    stream,
-    compressedStream,
-    uncompressedStream
-  ;
-
-  console.info('Building CSS');
-
-  if (!install.isSetup()) {
-    console.error('Cannot build files. Run "gulp install" to set-up Semantic');
-    return;
+  let concatenatedCSS;
+  if (type === 'rtl') {
+    concatenatedCSS = compress ? filenames.concatenatedMinifiedRTLCSS : filenames.concatenatedRTLCSS;
+  } else {
+    concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
   }
 
-  // unified css stream
-  stream = gulp.src(source.definitions + '/**/' + globs.components + '.less', opts)
+  return gulp.src(output.uncompressed + '/**/' + globs.components + ignoredGlobs)
+    .pipe(plumber())
+    .pipe(dedupe())
+    .pipe(replace(assets.uncompressed, assets.packaged))
+    .pipe(concatCSS(concatenatedCSS, settings.concatCSS))
+    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulpif(compress, minifyCSS(settings.concatMinify)))
+    .pipe(header(banner, settings.header))
+    .pipe(gulp.dest(output.packaged))
+    .pipe(print(log.created))
+    ;
+}
+pack.displayName = 'Package CSS';
+
+function defaultStream(type, config, opts) {
+  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.less', opts)
     .pipe(plumber(settings.plumber.less))
     .pipe(less(settings.less))
     .pipe(autoprefixer(settings.prefix))
-    .pipe(gulpif(rtl, rtlcss()))
+    .pipe(gulpif(type === 'rtl', rtlcss()))
     .pipe(replace(comments.variables.in, comments.variables.out))
     .pipe(replace(comments.license.in, comments.license.out))
     .pipe(replace(comments.large.in, comments.large.out))
     .pipe(replace(comments.small.in, comments.small.out))
     .pipe(replace(comments.tiny.in, comments.tiny.out))
     .pipe(flatten())
-  ;
+    ;
+}
 
-  // two concurrent streams from same source to concat release
-  uncompressedStream = stream.pipe(clone());
-  compressedStream   = stream.pipe(clone());
+function buildCSS(type, config, opts, callback) {
+  console.info('Building CSS');
+
+  if (!install.isSetup()) {
+    console.error('Cannot build files. Run "gulp install" to set-up Semantic');
+    callback();
+    return;
+  }
 
   // uncompressed component css
   function buildUncompressed() {
-    return uncompressedStream
+    return defaultStream(type, config, opts)
       .pipe(plumber())
-      .pipe(replace(assets.source, assets.uncompressed))
-      .pipe(gulpif(rtl, rename(settings.rename.rtlCSS)))
+      .pipe(replace(config.paths.assets.source, config.paths.assets.uncompressed))
+      .pipe(gulpif(type === 'rtl', rename(settings.rename.rtlCSS)))
+      .pipe(header(banner, settings.header))
       .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(gulp.dest(output.uncompressed))
+      .pipe(gulp.dest(config.paths.output.uncompressed))
       .pipe(print(log.created));
   }
 
@@ -89,14 +113,15 @@ function buildCSS(rtl, opts, callback) {
 
   function buildCompressed() {
     // compressed component css
-    return compressedStream
+    return defaultStream(type, config, opts)
       .pipe(plumber())
       .pipe(clone())
-      .pipe(replace(assets.source, assets.compressed))
+      .pipe(replace(config.paths.assets.source, config.paths.assets.compressed))
       .pipe(minifyCSS(settings.minify))
-      .pipe(rename(rtl ? settings.rename.rtlMinCSS : settings.rename.minCSS))
+      .pipe(rename(type === 'rtl' ? settings.rename.rtlMinCSS : settings.rename.minCSS))
+      .pipe(header(banner, settings.header))
       .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(gulp.dest(output.compressed))
+      .pipe(gulp.dest(config.paths.output.compressed))
       .pipe(print(log.created))
       ;
   }
@@ -105,28 +130,32 @@ function buildCSS(rtl, opts, callback) {
   buildCompressed.displayName = 'build compressed css';
 
   gulp.parallel(
-    gulp.series(buildUncompressed, 'package uncompressed' + (rtl ? ' rtl ' : ' ') + 'css'),
-    gulp.series(buildCompressed, 'package compressed' + (rtl ? ' rtl ' : ' ') + 'css'),
+    gulp.series(buildUncompressed, () => pack(type, false)),
+    gulp.series(buildCompressed, () => pack(type, true)),
   )(callback);
 }
 
 function full(callback) {
-  buildCSS(false, {}, callback);
+  buildCSS(false, config, {}, callback);
 }
 
 function incremental(callback) {
-  buildCSS(false, {since: gulp.lastRun(incremental)}, callback);
+  buildCSS(false, config, {since: gulp.lastRun(incremental)}, callback);
 }
 
 function fullRTL(callback) {
-  buildCSS(true, {}, callback);
+  buildCSS('rtl', config, {}, callback);
 }
 
 function incrementalRTL(callback) {
-  buildCSS(true, {since: gulp.lastRun(incrementalRTL)}, callback);
+  buildCSS('rtl', config, {since: gulp.lastRun(incrementalRTL)}, callback);
 }
 
+// Default tasks
 module.exports                = full;
 module.exports.incremental    = incremental;
+// RTL tasks
 module.exports.rtl            = fullRTL;
 module.exports.incrementalRTL = incrementalRTL;
+// Expose build css method
+module.exports.buildCSS       = buildCSS;

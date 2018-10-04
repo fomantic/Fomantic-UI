@@ -13,14 +13,6 @@ var
   buildCSS = require('./build/css')
 ;
 
-
-// sub-tasks
-if (config.rtl) {
-  require('./collections/rtl')(gulp);
-}
-require('./collections/build')(gulp);
-
-
 module.exports = function (callback) {
 
   console.info('Building Semantic');

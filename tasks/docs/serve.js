@@ -43,7 +43,6 @@ var
   source
 ;
 
-require('../collections/internal')(gulp);
 
 module.exports = function () {
 

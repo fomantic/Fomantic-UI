@@ -3,30 +3,26 @@
  *******************************/
 
 var
-  gulp      = require('gulp'),
+  gulp        = require('gulp'),
 
   // node dependencies
-  console   = require('better-console'),
-  normalize = require('normalize-path'),
+  console     = require('better-console'),
+  normalize   = require('normalize-path'),
 
   // user config
-  config    = require('./config/user'),
+  config      = require('./config/user'),
 
   // task config
-  install   = require('./config/project/install'),
+  install     = require('./config/project/install'),
 
   // shorthand
-  source    = config.paths.source,
+  source      = config.paths.source,
 
-  buildCSS  = require('./build/css')
+  buildCSS    = require('./build/css'),
+  buildJS     = require('./build/javascript'),
+  buildAssets = require('./build/assets')
 
 ;
-
-// add tasks referenced using gulp.run (sub-tasks)
-if (config.rtl) {
-  require('./collections/rtl')(gulp);
-}
-require('./collections/internal')(gulp);
 
 function watchCSS(full, incremental) {
   // Always execute a full build if config files are changed
@@ -79,7 +75,7 @@ module.exports = function (callback) {
   gulp.watch(
     normalize(source.definitions + '/**/*.js'),
     {ignoreInitial: false},
-    gulp.series('build-javascript')
+    gulp.series(buildJS)
   );
 
   /*--------------
@@ -90,7 +86,7 @@ module.exports = function (callback) {
   gulp.watch(
     normalize(source.themes + '/**/assets/**/*.*'),
     {ignoreInitial: false},
-    gulp.series('build-assets')
+    gulp.series(buildAssets)
   );
 
 };
