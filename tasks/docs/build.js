@@ -47,13 +47,12 @@ module.exports = function (callback) {
    Parse metadata
    ---------------*/
 
-  // parse all *.html.eco in docs repo, data will end up in
-  // metadata.result object.  Note this assumes that the docs
-  // repository is present and in proper directory location as
-  // specified by docs.json.
-  console.info('Building Metadata');
-
   function buildMetaData() {
+    // parse all *.html.eco in docs repo, data will end up in
+    // metadata.result object.  Note this assumes that the docs
+    // repository is present and in proper directory location as
+    // specified by docs.json.
+    console.info('Building Metadata');
     return gulp.src(config.paths.template.eco + globs.eco)
       .pipe(map(metadata.parser))
       .on('end', function () {
@@ -64,10 +63,10 @@ module.exports = function (callback) {
   /*--------------
     Copy Examples
   ---------------*/
-  console.info('Copying examples');
 
   function copyExample() {
     // copy src/ to server
+    console.info('Copying examples');
     return gulp.src('examples/**/*.*')
       .pipe(gulp.dest(output.examples))
       .pipe(print(log.created));
@@ -77,11 +76,10 @@ module.exports = function (callback) {
   /*--------------
      Copy Source
   ---------------*/
-  console.info('Copying LESS source');
 
   function copyLess() {
     // copy src/ to server
-
+    console.info('Copying LESS source');
     return gulp.src('src/**/*.*')
       .pipe(gulp.dest(output.less))
       .pipe(print(log.created));
@@ -104,11 +102,9 @@ module.exports = function (callback) {
     buildMetaData,
     copyExample,
     copyLess,
-    gulp.parallel(
-      (callback) => buildJS('docs', config, callback),
-      (callback) => buildCSS('docs', false, config, {}, callback),
-      (callback) => buildAssets(config, callback)
-    )
+    (callback) => buildJS('docs', config, callback),
+    (callback) => buildCSS('docs', config, {}, callback),
+    (callback) => buildAssets(config, callback)
   )(callback);
 
 };
