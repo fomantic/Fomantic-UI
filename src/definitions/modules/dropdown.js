@@ -1083,8 +1083,6 @@ $.fn.dropdown = function(parameters) {
                 } else {
                   module.blurSearch();
                 }
-              } else if($icon.hasClass(className.clear)) {
-                module.clear();
               } else {
                 module.toggle();
               }
@@ -3230,7 +3228,7 @@ $.fn.dropdown = function(parameters) {
             return $selectedMenu.hasClass(className.leftward);
           },
           clearable: function() {
-            return $module.hasClass(className.clearable);
+            return ($module.hasClass(className.clearable) || settings.clearable);
           },
           disabled: function() {
             return $module.hasClass(className.disabled);
