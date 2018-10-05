@@ -124,8 +124,10 @@ $.fn.toast = function(parameters) {
                 $toast.append($close);
                 $toast.css('cursor','default');
             }
-            if (settings.showIcon && settings.icons[settings.class]) {
-              var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
+
+            var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+            if (iconClass != '') {
+               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
               $toast
                 .addClass(className.icon)
