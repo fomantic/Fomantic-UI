@@ -1451,6 +1451,9 @@ $.fn.dropdown = function(parameters) {
                     module.event.item.click.call($selectedItem, event);
                     if(module.is.searchSelection()) {
                       module.remove.searchTerm();
+                      if(module.is.multiple()) {
+                          $search.focus();
+                      }
                     }
                   }
                   event.preventDefault();

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.0 - Dropdown
+ * # Semantic UI 2.6.2 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -358,7 +358,7 @@
   min-height: 2.71428571em;
   background: #FFFFFF;
   display: inline-block;
-  padding: 0.78571429em 2.1em 0.78571429em 1em;
+  padding: 0.78571429em 3.2em 0.78571429em 1em;
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -581,13 +581,13 @@ select.ui.dropdown {
 /* Search Selection */
 .ui.search.selection.dropdown > input.search {
   line-height: 1.21428571em;
-  padding: 0.67857143em 2.1em 0.67857143em 1em;
+  padding: 0.67857143em 3.2em 0.67857143em 1em;
 }
 
 /* Used to size multi select input to character width */
 .ui.search.selection.dropdown > span.sizer {
   line-height: 1.21428571em;
-  padding: 0.67857143em 2.1em 0.67857143em 1em;
+  padding: 0.67857143em 3.2em 0.67857143em 1em;
   display: none;
   white-space: pre;
 }
@@ -668,7 +668,7 @@ select.ui.dropdown {
 
 /* Multiple Selection */
 .ui.multiple.dropdown {
-  padding: 0.22619048em 2.1em 0.22619048em 0.35714286em;
+  padding: 0.22619048em 3.2em 0.22619048em 0.35714286em;
 }
 .ui.multiple.dropdown .menu {
   cursor: auto;

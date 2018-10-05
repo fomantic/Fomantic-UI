@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.0 - Modal
+ * # Semantic UI 2.6.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -322,16 +322,16 @@
 }
 
 /* Resort to margin positioning if legacy */
-.ui.legacy.modal,
-.ui.legacy.page.dimmer > .ui.modal {
-  top: 50%;
-  left: 50%;
+.ui.legacy.legacy.modal,
+.ui.legacy.legacy.page.dimmer > .ui.modal {
+  top: 50% !important;
+  left: 50% !important;
 }
-.ui.legacy.page.dimmer > .ui.scrolling.modal,
-.ui.page.dimmer > .ui.scrolling.legacy.modal,
-.ui.top.aligned.legacy.page.dimmer > .ui.modal,
-.ui.top.aligned.dimmer > .ui.legacy.modal {
-  top: auto;
+.ui.legacy.legacy.page.dimmer > .ui.scrolling.modal,
+.ui.page.dimmer > .ui.scrolling.legacy.legacy.modal,
+.ui.top.aligned.legacy.legacy.page.dimmer > .ui.modal,
+.ui.top.aligned.dimmer > .ui.legacy.legacy.modal {
+  top: auto !important;
 }
 
 /* Tablet and Mobile */
@@ -437,11 +437,8 @@
 
 .ui.fullscreen.modal {
   width: 95% !important;
-  left: 0em !important;
+  left: 2.5% !important;
   margin: 1em auto;
-}
-.ui.fullscreen.scrolling.modal {
-  left: 0em !important;
 }
 .ui.fullscreen.modal > .header {
   padding-right: 2.25rem;
