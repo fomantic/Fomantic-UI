@@ -203,13 +203,10 @@ $.fn.slider = function(parameters) {
               else {
                 $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
               }
-              for(var i = 0, len = module.get.numLabels(); i < len; i++) {
+              for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
                 var
-                labelText = module.get.label(i),
-                $label =
-                  labelText
-                  ? $('<li class="label">' + labelText + '</li>')
-                  : null,
+                  labelText = module.get.label(i),
+                  $label = (labelText !== "") ? $('<li class="label">' + labelText + '</li>') : null,
                   ratio  = i / len
                 ;
                 if($label) {
@@ -540,9 +537,7 @@ $.fn.slider = function(parameters) {
               case settings.labelTypes.number:
                 return (value * module.get.step()) + module.get.min();
               case settings.labelTypes.letter:
-                return alphabet[(value - 1) % 26];
-              case settings.labelTypes.none:
-                return '';
+                return alphabet[(value) % 26];
               default:
                 return value;
             }
@@ -1190,7 +1185,6 @@ $.fn.slider.settings = {
 
   labelTypes    : {
     number  : 'number',
-    none    : 'none',
     letter  : 'letter'
   },
 
