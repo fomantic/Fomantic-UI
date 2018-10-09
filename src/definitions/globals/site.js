@@ -448,7 +448,7 @@ $.site.settings = {
     'modal',
     'nag',
     'popup',
-    'range',
+    'slider',
     'rating',
     'shape',
     'sidebar',
