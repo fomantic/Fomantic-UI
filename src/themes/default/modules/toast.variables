@@ -9,9 +9,9 @@
 @toastWidth: 300px;
 @toastBorderRadius: @defaultBorderRadius;
 @toastPadding: @inputPadding;
-@toastMargin: 0 0 6px;
+@toastMarginBottom: 6px;
+@toastMargin: 0 0 @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
-@toastOpacity: 0.8;
 
 /* on Hover */
 @toastOpacityOnHover: 1;
@@ -24,10 +24,21 @@
 @toastSuccessColor: @successColor;
 
 /* Icon */
-@toastIconRightMargin: 0.6em;
+@toastIconContentPadding: 3em;
 @toastIconVerticalAlign: middle;
 @toastIconFontSize: 1.5em;
-@toastIconOpacity: 0.8;
 
 /* Content */
 @toastContentVerticalAlign: middle;
+
+/* Progressbar Colors */
+@toastInfoProgressColor: darken(@toastInfoColor,15);
+@toastWarningProgressColor: darken(@toastWarningColor,15);
+@toastErrorProgressColor: darken(@toastErrorColor,15);
+@toastSuccessProgressColor: darken(@toastSuccessColor,15);
+
+/* Close Icon */
+@toastCloseTopDistance: 0.3em;
+@toastCloseRightDistance: 0.3em;
+@toastCloseOpacity: 0.7;
+@toastCloseTransition: opacity @defaultDuration @defaultEasing;
