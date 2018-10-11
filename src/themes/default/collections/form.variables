@@ -103,6 +103,9 @@
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
+@transparentFormErrorColor: @formErrorColor;
+@transparentFormErrorBackground: @formErrorBackground;
+@transparentPadding: @inputPadding;
 
 /* AutoFill */
 @inputAutoFillBackground: #FFFFF0;
