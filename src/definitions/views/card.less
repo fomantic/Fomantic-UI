@@ -427,6 +427,7 @@
 .ui.horizontal.cards > .card,
 .ui.card.horizontal {
   flex-direction: row;
+  flex-wrap: wrap;
   min-width: @horizontalMinWidth;
   width: @horizontalWidth;
   max-width: 100%;
@@ -453,6 +454,12 @@
   width: 100%;
   height: 100%;
   border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
+}
+
+.ui.horizontal.cards > .card > .bottom.attached,
+.ui.card.horizontal > .bottom.attached,
+.ui.card.horizontal > .top.attached {
+  flex-basis: 100%;
 }
 
 /*-------------------
