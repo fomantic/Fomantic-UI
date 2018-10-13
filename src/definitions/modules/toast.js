@@ -48,9 +48,9 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{'class':settings.className.box+' '+settings.class}),
+        $toastBox       = $('<div/>',{'class':settings.className.box}),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class':settings.className.progress}),
+        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
         $progressBar    = $('<div/>',{'class':'bar'}),
 
         $close          = $('<i/>',{'class':'close icon'}),
@@ -155,11 +155,15 @@ $.fn.toast = function(parameters) {
             if(settings.compact || $toast.hasClass('compact')) {
                 $toastBox.addClass('compact');
             }
+            if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
+              $progress.addClass('inverted');
+            } else {
+              $progress.removeClass('inverted');
+            }
             $toast = $toastBox.append($toast);
             if(!!settings.showProgress && settings.displayTime > 0){
               $progress
                 .addClass(settings.showProgress)
-                .addClass(settings.class)
                 .append($progressBar);
               if ($progress.hasClass('top')) {
                   $toast.prepend($progress);

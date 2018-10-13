@@ -142,22 +142,58 @@
     background-color: @toastErrorColor;
 }
 
-.info.toast-box .attached.progress .bar {
+.toast-box .info.attached.progress .bar {
     background: @toastInfoProgressColor !important;
 }
 
-.warning.toast-box .attached.progress .bar {
+.toast-box .warning.attached.progress .bar {
     background: @toastWarningProgressColor !important;
 }
 
-.success.toast-box .attached.progress .bar {
+.toast-box .success.attached.progress .bar {
     background: @toastSuccessProgressColor !important;
 }
 
-.error.toast-box .attached.progress .bar {
+.toast-box .error.attached.progress .bar {
     background: @toastErrorProgressColor !important;
 }
 
+/*--------------
+     Colors
+-------------- */
+
+.toastColor(@color; @lightColor;) {
+  @_toastColor: "@{color}";
+  @_toastInvertedColor: "@{lightColor}";
+  .@{color}.toast {
+    background-color: @@_toastColor;
+  }
+  .inverted.@{color}.toast,
+  .toast-box .inverted.@{color}.attached.progress .bar {
+    background-color: @@_toastInvertedColor;
+  }
+}
+
+.toastColor(~'red',~'lightRed');
+.toastColor(~'orange',~'lightOrange');
+.toastColor(~'yellow',~'lightYellow');
+.toastColor(~'olive',~'lightOlive');
+.toastColor(~'green',~'lightGreen');
+.toastColor(~'teal',~'lightTeal');
+.toastColor(~'blue',~'lightBlue');
+.toastColor(~'violet',~'lightViolet');
+.toastColor(~'purple',~'lightPurple');
+.toastColor(~'pink',~'lightPink');
+.toastColor(~'brown',~'lightBrown');
+.toastColor(~'grey',~'lightGrey');
+.toastColor(~'black',~'lightBlack');
+
+.inverted.yellow.toast,
+.inverted.olive.toast,
+.inverted.teal.toast,
+.inverted.grey.toast {
+  color: @fullBlack;
+}
 
 /*--------------
       Icon
