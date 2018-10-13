@@ -1360,7 +1360,14 @@ i.icon.write:before { content: "\f303"; }
   i.icon.window.minimize.outline:before { content: "\f2d1"; }
   i.icon.window.restore.outline:before { content: "\f2d2"; }
 
-  
+  /* Outline Aliases */
+  i.icon.disk.outline:before { content: "\f0a0"; }
+  i.icon.heart.empty,
+  i.icon.star.empty {
+    font-family: @outlineFontName;
+  }
+  i.icon.heart.empty:before { content: "\f004"; }
+  i.icon.star.empty:before { content: "\f089"; }
 
 }
 .loadOutlineIcons();
