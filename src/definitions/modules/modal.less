@@ -588,5 +588,43 @@
   }
 }
 
+/*****************************
+          Inverted
+*******************************/
+
+.ui.inverted.modal {
+  background: @invertedBackground;
+}
+
+.ui.inverted.modal > .header,
+.ui.inverted.modal > .content {
+  background: @invertedBackground;
+  color: @invertedHeaderColor;
+}
+
+.ui.inverted.modal > .actions {
+  background: @invertedActionBackground;
+  border-top: @invertedActionBorder;
+}
+
+.ui.fullscreen.inverted.modal > .close {
+  color: @invertedInnerCloseColor;
+}
+
+
+@media only screen and (max-width: @largestTabletScreen) {
+  .ui.inverted.modal > .close {
+    color: @invertedCloseColor;
+  }
+}
+
+.ui.inverted.fullscreen.modal > .close {
+  color: @invertedCloseColor;
+}
+
+.ui.inverted.dimmer > .modal > .close {
+  color: @invertedDimmerCloseColor;
+}
+
 
 .loadUIOverrides();
