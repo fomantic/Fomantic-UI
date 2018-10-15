@@ -1441,8 +1441,16 @@
   .ui.inverted.@{color}.buttons .button,
   .ui.inverted.@{color}.button {
     background-color: transparent;
-    box-shadow: 0px 0px 0px @invertedBorderSize if(@blackOrGrey, @solidBorderColor, @@_buttonLightBackground) inset !important;
-    color: if(@blackOrGrey, @invertedTextColor, @@_buttonLightBackground);
+
+    & when (@blackOrGrey) {
+      box-shadow: 0px 0px 0px @invertedBorderSize @solidBorderColor inset !important;
+      color: @invertedTextColor;
+    }
+
+    & when not (@blackOrGrey) {
+      box-shadow: 0px 0px 0px @invertedBorderSize @@_buttonLightBackground inset !important;
+      color: @@_buttonLightBackground;
+    }
   }
   .ui.inverted.@{color}.buttons .button:hover,
   .ui.inverted.@{color}.button:hover,
@@ -1484,7 +1492,14 @@
   .ui.inverted.@{color}.buttons .basic.button:hover,
   .ui.inverted.@{color}.basic.button:hover {
     box-shadow: 0px 0px 0px @invertedBorderSize @@_buttonLightBackgroundHover inset !important;
-    color: if(@blackOrGrey, @white, @@_buttonLightBackground) !important;
+
+    & when (@blackOrGrey) {
+      color: @white !important;
+    }
+
+    & when not (@blackOrGrey) {
+      color: @@_buttonLightBackground !important;
+    }
   }
   .ui.inverted.@{color}.basic.buttons .button:focus,
   .ui.inverted.@{color}.basic.buttons .button:focus,
@@ -1496,25 +1511,43 @@
   .ui.inverted.@{color}.buttons .basic.active.button,
   .ui.inverted.@{color}.basic.active.button {
     box-shadow: 0px 0px 0px @invertedBorderSize @@_buttonLightBackgroundActive inset !important;
-    color: if(@blackOrGrey, @white, @@_buttonLightBackground) !important;
+
+    & when (@blackOrGrey) {
+      color: @white !important;
+    }
+
+    & when not (@blackOrGrey) {
+      color: @@_buttonLightBackground !important;
+    }
   }
   .ui.inverted.@{color}.basic.buttons .button:active,
   .ui.inverted.@{color}.buttons .basic.button:active,
   .ui.inverted.@{color}.basic.button:active {
     box-shadow: 0px 0px 0px @invertedBorderSize @@_buttonLightBackgroundDown inset !important;
-    color: if(@blackOrGrey, @white, @@_buttonLightBackground) !important;
+
+    & when (@blackOrGrey) {
+      color: @white !important;
+    }
+
+    & when not (@blackOrGrey) {
+      color: @@_buttonLightBackground !important;
+    }
   }
 
   /* Tertiary */
-  @_buttonBoxShadowColorDefaultActive: if(@lighten, lighten(@@_buttonBackground, 20%), saturate(@@_buttonBackground, 20%));
-  @_buttonBoxShadowColorHoverFocus: if(@lighten, lighten(@@_buttonBackground, 40%), desaturate(@@_buttonBackground, 20%));
 
   .ui.tertiary.@{color}.buttons .button,
   .ui.tertiary.@{color}.buttons .tertiary.button,
   .ui.tertiary.@{color}.button {
     box-shadow: none !important;
 
-    @_tertiaryButtonColor: if(@lighten, lighten(@@_buttonBackground, 20%), saturate(@@_buttonBackground, 20%));
+    .tertiaryButtonColor() when (@lighten) {
+      @_tertiaryButtonColor: lighten(@@_buttonBackground, 20%);
+    }
+    .tertiaryButtonColor() when not (@lighten) {
+      @_tertiaryButtonColor: saturate(@@_buttonBackground, 20%);
+    }
+    .tertiaryButtonColor();
 
     & when (@tertiaryWithUnderline = true) {
       box-shadow+: inset 0 -@tertiaryLineHeight 0 @_tertiaryButtonColor !important;
@@ -1531,7 +1564,13 @@
   .ui.tertiary.@{color}.button:hover {
     box-shadow: none !important;
 
-    @_tertiaryButtonColorHover: if(@lighten, lighten(@@_buttonBackgroundHover, 40%), desaturate(@@_buttonBackgroundHover, 20%));
+    .tertiaryButtonColorHover() when (@lighten) {
+      @_tertiaryButtonColorHover: lighten(@@_buttonBackgroundHover, 40%);
+    }
+    .tertiaryButtonColorHover() when not (@lighten) {
+      @_tertiaryButtonColorHover: desaturate(@@_buttonBackgroundHover, 20%);
+    }
+    .tertiaryButtonColorHover();
 
     & when (@tertiaryHoverWithUnderline = true) {
       box-shadow+: inset 0 -@tertiaryLineHeight 0 @_tertiaryButtonColorHover !important;
@@ -1541,7 +1580,13 @@
       box-shadow+: inset 0 @tertiaryLineHeight 0 @_tertiaryButtonColorHover !important;
     }
 
-    color: if(@lighten, lighten(@@_buttonBackgroundHover, 20%), @_tertiaryButtonColorHover) !important;
+    & when (@lighten) {
+      color: lighten(@@_buttonBackgroundHover, 20%) !important;
+    }
+
+    & when not (@lighten) {
+      color: @_tertiaryButtonColorHover !important;
+    }
   }
 
   .ui.tertiary.@{color}.buttons .button:focus,
@@ -1549,7 +1594,13 @@
   .ui.tertiary.@{color}.button:focus {
     box-shadow: none !important;
 
-    @_tertiaryButtonColorFocus: if(@lighten, lighten(@@_buttonBackgroundFocus, 40%), desaturate(@@_buttonBackgroundFocus, 20%));
+    .tertiaryButtonColorFocus() when (@lighten) {
+      @_tertiaryButtonColorFocus: lighten(@@_buttonBackgroundFocus, 40%);
+    }
+    .tertiaryButtonColorFocus() when not (@lighten) {
+      @_tertiaryButtonColorFocus: desaturate(@@_buttonBackgroundFocus, 20%);
+    }
+    .tertiaryButtonColorFocus();
 
     & when (@tertiaryFocusWithUnderline = true) {
       box-shadow+: inset 0 -@tertiaryLineHeight 0 @_tertiaryButtonColorFocus !important;
@@ -1559,7 +1610,13 @@
       box-shadow+: inset 0 @tertiaryLineHeight 0 @_tertiaryButtonColorFocus !important;
     }
 
-    color: if(@lighten, lighten(@@_buttonBackgroundFocus, 20%), @_tertiaryButtonColorFocus) !important;
+    & when (@lighten) {
+      color: lighten(@@_buttonBackgroundFocus, 20%) !important;
+    }
+
+    & when not (@lighten) {
+      color: @_tertiaryButtonColorFocus !important;
+    }
   }
 
   .ui.tertiary.@{color}.buttons .active.button,
@@ -1570,7 +1627,13 @@
   .ui.tertiary.@{color}.button:active {
     box-shadow: none !important;
 
-    @_tertiaryButtonColorActive: if(@lighten, lighten(@@_buttonBackgroundActive, 20%), saturate(@@_buttonBackgroundActive, 20%));
+    .tertiaryButtonColorActive() when (@lighten) {
+      @_tertiaryButtonColorActive: lighten(@@_buttonBackgroundActive, 20%);
+    }
+    .tertiaryButtonColorActive() when not (@lighten) {
+      @_tertiaryButtonColorActive: saturate(@@_buttonBackgroundActive, 20%);
+    }
+    .tertiaryButtonColorActive();
 
     & when (@tertiaryActiveWithUnderline = true) {
       box-shadow+: inset 0 -@tertiaryLineHeight 0 @_tertiaryButtonColorActive !important;
