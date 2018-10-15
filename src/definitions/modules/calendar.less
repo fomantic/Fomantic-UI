@@ -150,14 +150,33 @@
   box-shadow: @rangeInvertedBoxShadow;
 }
 
-.ui.calendar .calendar:focus .ui.table tbody tr td.focus,
-.ui.calendar .calendar.active .ui.table tbody tr td.focus {
+.ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
+.ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
   box-shadow: @focusBoxShadow;
 }
 
-.ui.calendar .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.calendar .calendar.active .ui.table.inverted tbody tr td.focus {
+.ui.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
+.ui.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
   box-shadow: @focusInvertedBoxShadow;
 }
+
+
+/*******************************
+            States
+*******************************/
+
+/*--------------------
+        Disabled
+---------------------*/
+
+.ui.disabled.calendar {
+  opacity: @disabledOpacity;
+}
+
+.ui.disabled.calendar > .input,
+.ui.disabled.calendar .ui.table tr .link {
+  pointer-events: none;
+}
+
 
 .loadUIOverrides();
