@@ -11,7 +11,7 @@ var
   map         = require('map-stream'),
 
   // gulp dependencies
-  print       = require('gulp-print'),
+  print       = require('gulp-print').default,
 
   // user config
   config      = require('../config/docs'),

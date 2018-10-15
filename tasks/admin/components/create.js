@@ -18,23 +18,18 @@ var
   gulp            = require('gulp'),
 
   // node dependencies
-  console         = require('better-console'),
-  del             = require('del'),
   fs              = require('fs'),
   path            = require('path'),
   runSequence     = require('run-sequence'),
 
   // admin dependencies
   concatFileNames = require('gulp-concat-filenames'),
-  debug           = require('gulp-debug'),
   flatten         = require('gulp-flatten'),
-  git             = require('gulp-git'),
   jsonEditor      = require('gulp-json-editor'),
   plumber         = require('gulp-plumber'),
   rename          = require('gulp-rename'),
   replace         = require('gulp-replace'),
   tap             = require('gulp-tap'),
-  util            = require('gulp-util'),
 
   // config
   config          = require('../../config/user'),
