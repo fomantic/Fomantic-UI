@@ -72,6 +72,7 @@ $.fn.calendar = function(parameters) {
           module.debug('Initializing calendar for', element);
 
           isTouch = module.get.isTouch();
+          module.setup.config();
           module.setup.popup();
           module.setup.inline();
           module.setup.input();
@@ -95,6 +96,14 @@ $.fn.calendar = function(parameters) {
         },
 
         setup: {
+          config: function () {
+            if (module.get.minDate() !== null) {
+              module.set.minDate($module.data(metadata.minDate));
+            }
+            if (module.get.maxDate() !== null) {
+              module.set.maxDate($module.data(metadata.maxDate));
+            }
+          },
           popup: function () {
             if (settings.inline) {
               return;
@@ -548,6 +557,12 @@ $.fn.calendar = function(parameters) {
             var endModule = module.get.calendarModule(settings.endCalendar);
             return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
           },
+          minDate: function() {
+            return $module.data(metadata.minDate) || null;
+          },
+          maxDate: function() {
+            return $module.data(metadata.maxDate) || null;
+          },
           monthOffset: function () {
             return $module.data(metadata.monthOffset) || 0;
           },
@@ -670,6 +685,24 @@ $.fn.calendar = function(parameters) {
               module.update.focus(updateRange);
             }
           },
+          minDate: function (date) {
+            date = module.helper.sanitiseDate(date);
+            if (settings.maxDate !== null && settings.maxDate <= date) {
+              module.verbose('Unable to set minDate variable bigger that maxDate variable', date, settings.maxDate);
+            } else {
+              module.setting('minDate', date);
+              module.set.dataKeyValue(metadata.minDate, date);
+            }
+          },
+          maxDate: function (date) {
+            date = module.helper.sanitiseDate(date);
+            if (settings.minDate !== null && settings.minDate >= date) {
+              module.verbose('Unable to set maxDate variable lower that minDate variable', date, settings.minDate);
+            } else {
+              module.setting('maxDate', date);
+              module.set.dataKeyValue(metadata.maxDate, date);
+            }
+          },
           monthOffset: function (monthOffset, refreshCalendar) {
             var multiMonth = Math.max(settings.multiMonth, 1);
             monthOffset = Math.max(1 - multiMonth, Math.min(0, monthOffset));
@@ -688,7 +721,7 @@ $.fn.calendar = function(parameters) {
             }
             refreshCalendar = refreshCalendar !== false && !equal;
             if (refreshCalendar) {
-              module.create.calendar();
+              module.refresh();
             }
             return !equal;
           }
@@ -1390,6 +1423,8 @@ $.fn.calendar.settings = {
     focusDate: 'focusDate',
     startDate: 'startDate',
     endDate: 'endDate',
+    minDate: 'minDate',
+    maxDate: 'maxDate',
     mode: 'mode',
     monthOffset: 'monthOffset'
   }
