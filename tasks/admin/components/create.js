@@ -20,7 +20,6 @@ var
   // node dependencies
   fs              = require('fs'),
   path            = require('path'),
-  runSequence     = require('run-sequence'),
 
   // admin dependencies
   concatFileNames = require('gulp-concat-filenames'),
@@ -132,17 +131,17 @@ module.exports = function(callback) {
       ;
 
       // copy dist files into output folder adjusting asset paths
-      gulp.task(task.repo, false, function() {
+      function copyDist() {
         return gulp.src(release.source + component + '.*')
           .pipe(plumber())
           .pipe(flatten())
           .pipe(replace(release.paths.source, release.paths.output))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // create npm module
-      gulp.task(task.npm, false, function() {
+      function createNpmModule() {
         return gulp.src(release.source + component + '!(*.min|*.map).js')
           .pipe(plumber())
           .pipe(flatten())
@@ -154,10 +153,10 @@ module.exports = function(callback) {
           .pipe(rename('index.js'))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // create readme
-      gulp.task(task.readme, false, function() {
+      function createReadme() {
         return gulp.src(release.templates.readme)
           .pipe(plumber())
           .pipe(flatten())
@@ -165,10 +164,10 @@ module.exports = function(callback) {
           .pipe(replace(regExp.match.titleName, regExp.replace.titleName))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // extend bower.json
-      gulp.task(task.bower, false, function() {
+      function extendBower() {
         return gulp.src(release.templates.bower)
           .pipe(plumber())
           .pipe(flatten())
@@ -200,10 +199,10 @@ module.exports = function(callback) {
           }))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // extend package.json
-      gulp.task(task.package, false, function() {
+      function extendPackage() {
         return gulp.src(release.templates.package)
           .pipe(plumber())
           .pipe(flatten())
@@ -228,10 +227,10 @@ module.exports = function(callback) {
           }))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // extend composer.json
-      gulp.task(task.composer, false, function() {
+      function extendComposer(){
         return gulp.src(release.templates.composer)
           .pipe(plumber())
           .pipe(flatten())
@@ -251,10 +250,10 @@ module.exports = function(callback) {
           }))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // create release notes
-      gulp.task(task.notes, false, function() {
+      function createReleaseNotes() {
         return gulp.src(release.templates.notes)
           .pipe(plumber())
           .pipe(flatten())
@@ -266,10 +265,10 @@ module.exports = function(callback) {
           .pipe(replace(regExp.match.trim, regExp.replace.trim))
           .pipe(gulp.dest(outputDirectory))
         ;
-      });
+      }
 
       // Creates meteor package.js
-      gulp.task(task.meteor, function() {
+      function createMeteorPackage() {
         var
           filenames = ''
         ;
@@ -301,27 +300,20 @@ module.exports = function(callback) {
             ;
           })
         ;
-      });
+      }
 
-
-      // synchronous tasks in orchestrator? I think not
-      gulp.task(task.all, false, function(callback) {
-        runSequence([
-          task.repo,
-          task.npm,
-          task.bower,
-          task.readme,
-          task.package,
-          task.composer,
-          task.notes,
-          task.meteor
-        ], callback);
-      });
-
-      tasks.push(task.all);
-
+      tasks.push(gulp.series(
+          copyDist,
+          createNpmModule,
+          extendBower,
+          createReadme,
+          extendPackage,
+          extendComposer,
+          createReleaseNotes,
+          createMeteorPackage
+      ));
     })(component);
   }
 
-  runSequence(tasks, callback);
+  gulp.series(...tasks)(callback);
 };
