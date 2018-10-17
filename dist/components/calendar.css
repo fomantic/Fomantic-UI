@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Calendar
+ * # Semantic UI 2.6.3 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -131,15 +131,33 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.ui.calendar .calendar:focus .ui.table tbody tr td.focus,
-.ui.calendar .calendar.active .ui.table tbody tr td.focus {
+.ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
+.ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
   -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
           box-shadow: inset 0 0 0 1px #85B7D9;
 }
-.ui.calendar .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.calendar .calendar.active .ui.table.inverted tbody tr td.focus {
+.ui.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
+.ui.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
   -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
           box-shadow: inset 0 0 0 1px #85B7D9;
+}
+
+
+/*******************************
+            States
+*******************************/
+
+
+/*--------------------
+        Disabled
+---------------------*/
+
+.ui.disabled.calendar {
+  opacity: 0.45;
+}
+.ui.disabled.calendar > .input,
+.ui.disabled.calendar .ui.table tr .link {
+  pointer-events: none;
 }
 
 

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Toast
+ * # Semantic UI 2.6.3 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -48,12 +48,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{'class':settings.className.box+' '+settings.class}),
+        $toastBox       = $('<div/>',{'class':settings.className.box}),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class':settings.className.progress}),
+        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
         $progressBar    = $('<div/>',{'class':'bar'}),
 
-        $close          = $module.find(selector.close),
+        $close          = $('<i/>',{'class':'close icon'}),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -67,7 +67,9 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-
+          if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+            settings.showProgress = false;
+          }
           if (!module.has.container()) {
             module.create.container();
           }
@@ -77,7 +79,7 @@ $.fn.toast = function(parameters) {
           module.bind.events();
           
           if(settings.displayTime > 0) {
-            module.closeTimer = setTimeout(module.close, settings.displayTime+(settings.showProgress ? 300 : 0));
+            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
           }
           module.show();
         },
@@ -118,9 +120,14 @@ $.fn.toast = function(parameters) {
           toast: function() {
             var $content = $('<div/>').addClass(className.content);
             module.verbose('Creating toast');
+            if(settings.closeIcon) {
+                $toast.append($close);
+                $toast.css('cursor','default');
+            }
 
-            if (settings.showIcon && settings.icons[settings.class]) {
-              var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
+            var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+            if (iconClass != '') {
+               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
               $toast
                 .addClass(className.icon)
@@ -145,10 +152,18 @@ $.fn.toast = function(parameters) {
               .append($content)
             ;
             $toast.css('opacity', settings.opacity);
+            if(settings.compact || $toast.hasClass('compact')) {
+                $toastBox.addClass('compact');
+            }
+            if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
+              $progress.addClass('inverted');
+            } else {
+              $progress.removeClass('inverted');
+            }
             $toast = $toastBox.append($toast);
-            if(settings.showProgress && settings.displayTime > 0){
+            if(!!settings.showProgress && settings.displayTime > 0){
               $progress
-                .addClass(settings.class)
+                .addClass(settings.showProgress)
                 .append($progressBar);
               if ($progress.hasClass('top')) {
                   $toast.prepend($progress);
@@ -175,7 +190,7 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .on('click' + eventNamespace, module.event.click)
             ;
           }
@@ -184,7 +199,7 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .off('click' + eventNamespace)
             ;
           }
@@ -233,7 +248,10 @@ $.fn.toast = function(parameters) {
                       callback = $.isFunction(callback)?callback : function(){};
                       if(settings.transition.closeEasing !== ''){
                           $toast.css('opacity',0);
-                          $toast.slideUp(500,settings.transition.closeEasing,callback);
+                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                              $toast.parent().remove();
+                              callback.call($toast);
+                          });
                       } else {
                         callback.call($toast);
                       }
@@ -506,6 +524,8 @@ $.fn.toast.settings = {
   showProgress   : false,
   progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
   opacity        : 1,
+  compact        : true,
+  closeIcon      : false,
 
   // transition settings
   transition     : {
@@ -524,7 +544,7 @@ $.fn.toast.settings = {
   className      : {
     container    : 'toast-container',
     box          : 'toast-box',
-    progress     : 'ui bottom attached active progress',
+    progress     : 'ui attached active progress',
     toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',

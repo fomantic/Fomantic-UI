@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Progress Bar
+ * # Semantic UI 2.6.3 - Progress Bar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -243,25 +243,31 @@
   border-radius: 0.28571429rem;
   -webkit-animation: progress-active 2s ease infinite;
           animation: progress-active 2s ease infinite;
+  -webkit-transform-origin: left;
+          transform-origin: left;
 }
 @-webkit-keyframes progress-active {
   0% {
     opacity: 0.3;
-    width: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
   }
   100% {
     opacity: 0;
-    width: 100%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 @keyframes progress-active {
   0% {
     opacity: 0.3;
-    width: 0;
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
   }
   100% {
     opacity: 0;
-    width: 100%;
+    -webkit-transform: scale(1);
+            transform: scale(1);
   }
 }
 
