@@ -27,6 +27,11 @@
 - **Progress** - Fixed a performance issue with the animation **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#2316](https://github.com/Semantic-Org/Semantic-UI/issues/2316)
 - **Placeholder** - Fixed an issue with transition hide not working **Thanks [@lubber-de](https://github.com/lubber-de)** [#6608](https://github.com/Semantic-Org/Semantic-UI/issues/6608)
 
+The following changes where merged from a new Semantic-UI release
+
+- **Embed** - Embed will now correctly remove DOM metadata on `destroy`
+- **Grid** - Fix issue with `very relaxed vertically divided grid` having wrong margins on dividers
+
 ### Version 2.6.2 - October 2, 2018
 
 **Critical Bugs**
