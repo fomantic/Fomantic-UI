@@ -703,20 +703,13 @@ a.ui.inverted.grey.header:hover {
 .ui.attached.block.header {
   background: @blockBackground;
 }
-
-.ui.attached:not(.top):not(.bottom).header {
+.ui.attached:not(.top).header {
   border-top: none;
 }
-.ui.top.attached.header:not(:first-child) {
-  border-top: none;
-}
-.ui.top.attached.header:first-child {
+.ui.top.attached.header {
   border-radius: @attachedBorderRadius @attachedBorderRadius 0em 0em;
 }
 .ui.bottom.attached.header {
-  border-top: none;
-}
-.ui.bottom.attached.header:last-child {
   border-radius: 0em 0em @attachedBorderRadius @attachedBorderRadius;
 }
 
