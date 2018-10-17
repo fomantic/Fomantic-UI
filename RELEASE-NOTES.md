@@ -12,7 +12,7 @@
 - **Toast** - Added close icon support **Thanks [@lubber-de](https://github.com/lubber-de)** [#139](https://github.com/fomantic/Fomantic-UI/pull/139)
 - **Toast** - Added stacking animation support **Thanks [@lubber-de](https://github.com/lubber-de)** [#139](https://github.com/fomantic/Fomantic-UI/pull/139)
 - **Modal** - Added inverted variant **Thanks [@lubber-de](https://github.com/lubber-de)** [#108](https://github.com/fomantic/Fomantic-UI/issues/108)
-- **From** - Added better transparent input and textarea errors **Thanks [@lubber-de](https://github.com/lubber-de)** [#107](https://github.com/fomantic/Fomantic-UI/issues/107)
+- **Form** - Added better transparent input and textarea errors **Thanks [@lubber-de](https://github.com/lubber-de)** [#107](https://github.com/fomantic/Fomantic-UI/issues/107)
 - **Form** - Added inverted textarea variation **Thanks [@lubber-de](https://github.com/lubber-de)** [#161](https://github.com/fomantic/Fomantic-UI/pull/161)
 - **Dimmer** - Added intensity variations `very light`, `light` and `medium` **Thanks [@lubber-de](https://github.com/lubber-de)** [#162](https://github.com/fomantic/Fomantic-UI/pull/162)
 
