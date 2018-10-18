@@ -163,13 +163,23 @@
       Transparent
 ---------------------*/
 
+.ui.form .field .transparent.input input,
+.ui.form .field input.transparent,
+.ui.form .field textarea.transparent {
+  padding: @transparentPadding !important;
+}
 
 .ui.form .field textarea.transparent {
   border-color: transparent !important;
   background-color: transparent !important;
-  padding: 0em !important;
   box-shadow: none !important;
-  border-radius: 0px !important;
+}
+
+.ui.form .field.error .transparent.input input,
+.ui.form .field.error input.transparent,
+.ui.form .field.error textarea.transparent {
+  background-color: @transparentFormErrorBackground !important;
+  color: @transparentFormErrorColor !important;
 }
 
 /*--------------------------
@@ -747,7 +757,6 @@
   color: @invertedInputColor;
   box-shadow: @invertedInputBoxShadow;
 }
-
 
 /*--------------------
      Field Groups

@@ -48,9 +48,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
+        $toastBox       = $('<div/>',{'class':settings.className.box}),
         $toast          = $('<div/>'),
+        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
+        $progressBar    = $('<div/>',{'class':'bar'}),
 
-        $close          = $module.find(selector.close),
+        $close          = $('<i/>',{'class':'close icon'}),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -64,7 +67,9 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-
+          if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+            settings.showProgress = false;
+          }
           if (!module.has.container()) {
             module.create.container();
           }
@@ -74,7 +79,7 @@ $.fn.toast = function(parameters) {
           module.bind.events();
           
           if(settings.displayTime > 0) {
-            setTimeout(module.close, settings.displayTime);
+            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
           }
           module.show();
         },
@@ -97,6 +102,9 @@ $.fn.toast = function(parameters) {
         },
 
         close: function(callback) {
+          if(module.closeTimer) {
+              clearTimeout(module.closeTimer);
+          }
           callback = callback || function(){};
           module.remove.visible();
           module.unbind.events();
@@ -106,15 +114,20 @@ $.fn.toast = function(parameters) {
 
         create: {
           container: function() {
-            module.verbose('Creating container')
+            module.verbose('Creating container');
             $context.append('<div class="ui ' + settings.position + ' ' + className.container + '"></div>');
           },
           toast: function() {
             var $content = $('<div/>').addClass(className.content);
-            module.verbose('Creating toast')
+            module.verbose('Creating toast');
+            if(settings.closeIcon) {
+                $toast.append($close);
+                $toast.css('cursor','default');
+            }
 
-            if (settings.showIcon) {
-              var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
+            var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+            if (iconClass != '') {
+               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
               $toast
                 .addClass(className.icon)
@@ -138,12 +151,38 @@ $.fn.toast = function(parameters) {
               .addClass(settings.class + ' ' + className.toast)
               .append($content)
             ;
-
+            $toast.css('opacity', settings.opacity);
+            if(settings.compact || $toast.hasClass('compact')) {
+                $toastBox.addClass('compact');
+            }
+            if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
+              $progress.addClass('inverted');
+            } else {
+              $progress.removeClass('inverted');
+            }
+            $toast = $toastBox.append($toast);
+            if(!!settings.showProgress && settings.displayTime > 0){
+              $progress
+                .addClass(settings.showProgress)
+                .append($progressBar);
+              if ($progress.hasClass('top')) {
+                  $toast.prepend($progress);
+              } else {
+                  $toast.append($progress);
+              }
+              $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
+              $progressBar.width(settings.progressUp?'0%':'100%');
+              setTimeout(function() {
+                  if(typeof $progress !== 'undefined'){
+                    $progressBar.width(settings.progressUp?'100%':'0%');
+                }
+              },300);
+            }
             if (settings.newestOnTop) {
               $toast.prependTo(module.get.container());
             }
             else {
-              $toast.appendTo(module.get.container())
+              $toast.appendTo(module.get.container());
             }
           }
         },
@@ -151,7 +190,7 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .on('click' + eventNamespace, module.event.click)
             ;
           }
@@ -160,7 +199,7 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .off('click' + eventNamespace)
             ;
           }
@@ -204,6 +243,19 @@ $.fn.toast = function(parameters) {
                   duration   : settings.transition.hideDuration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+
+                  onBeforeHide: function(callback){
+                      callback = $.isFunction(callback)?callback : function(){};
+                      if(settings.transition.closeEasing !== ''){
+                          $toast.css('opacity',0);
+                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                              $toast.parent().remove();
+                              callback.call($toast);
+                          });
+                      } else {
+                        callback.call($toast);
+                      }
+                  },
                   onComplete : function() {
                     module.destroy();
                     callback.call($toast, element);
@@ -220,7 +272,7 @@ $.fn.toast = function(parameters) {
 
         has: {
           container: function() {
-            module.verbose('Determining if there is already a container')
+            module.verbose('Determining if there is already a container');
             return ($context.find(module.helpers.toClass(settings.position) + selector.container).length > 0);
           }
         },
@@ -246,7 +298,7 @@ $.fn.toast = function(parameters) {
         event: {
           click: function() {
             settings.onClick.call($toast, element);
-            module.close()
+            module.close();
           }
         },
 
@@ -469,13 +521,19 @@ $.fn.toast.settings = {
   displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
   showIcon       : true,
   newestOnTop    : false,
+  showProgress   : false,
+  progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
+  opacity        : 1,
+  compact        : true,
+  closeIcon      : false,
 
   // transition settings
   transition     : {
     showMethod   : 'scale',
     showDuration : 500,
     hideMethod   : 'scale',
-    hideDuration : 500
+    hideDuration : 500,
+    closeEasing  : 'easeOutBounce'  //Set to empty string to stack the closed toast area immediately (old behaviour)
   },
 
   error: {
@@ -485,6 +543,8 @@ $.fn.toast.settings = {
 
   className      : {
     container    : 'toast-container',
+    box          : 'toast-box',
+    progress     : 'ui attached active progress',
     toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',
@@ -501,6 +561,7 @@ $.fn.toast.settings = {
 
   selector       : {
     container    : '.toast-container',
+    box          : '.toast-box',
     toast        : '.ui.toast'
   },
 
@@ -512,6 +573,20 @@ $.fn.toast.settings = {
   onHidden       : function(){},
   onRemove       : function(){},
 };
+
+$.extend( $.easing, {
+    easeOutBounce: function (x, t, b, c, d) {
+        if ((t/=d) < (1/2.75)) {
+            return c*(7.5625*t*t) + b;
+        } else if (t < (2/2.75)) {
+            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+        } else if (t < (2.5/2.75)) {
+            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+        } else {
+            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+        }
+    }
+});
 
 
 })( jQuery, window, document );

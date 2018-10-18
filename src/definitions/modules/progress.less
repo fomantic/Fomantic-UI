@@ -246,17 +246,18 @@
   border-radius: @barBorderRadius;
 
   animation: progress-active @activePulseDuration @defaultEasing infinite;
+  transform-origin: left;
 }
 @keyframes progress-active {
   0% {
     opacity: @activePulseMaxOpacity;
-    width: 0;
+    transform: scale(0, 1);
   }
   90% {
   }
   100% {
     opacity: 0;
-    width: 100%;
+    transform: scale(1);
   }
 }
 

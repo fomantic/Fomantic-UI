@@ -30,15 +30,16 @@
 .ui.top.right.toast-container {
     top: @toastContainerDistance;
     right: @toastContainerDistance;
+    margin-left: @toastContainerDistance;
 }
 
 .ui.top.left.toast-container {
     top: @toastContainerDistance;
     left: @toastContainerDistance;
+    margin-right: @toastContainerDistance;
 }
 
 .ui.top.center.toast-container {
-    position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
     top: @toastContainerDistance;
@@ -47,15 +48,16 @@
 .ui.bottom.right.toast-container {
     bottom: @toastContainerDistance;
     right: @toastContainerDistance;
+    margin-left: @toastContainerDistance;
 }
 
 .ui.bottom.left.toast-container {
     bottom: @toastContainerDistance;
     left: @toastContainerDistance;
+    margin-right: @toastContainerDistance;
 }
 
 .ui.bottom.center.toast-container {
-    position: absolute;
     left: 50%;
     transform: translate(-50%, 0%);
     bottom: @toastContainerDistance;
@@ -67,26 +69,55 @@
 
 .toast {
     display: none;
-    width: @toastWidth;
     border-radius: @defaultBorderRadius;
     padding: @toastPadding;
     margin: @toastMargin;
     color: @toastTextColor;
-    opacity: @toastOpacity;
 }
 
+.floating.toast,
+.hoverfloating.toast:hover {
+  box-shadow: @floatingShadow;
+}
+
+.hoverfloating.message:hover {
+  box-shadow: 0 0 0 1px inset, @floatingShadow;
+}
+
+.center.toast-container .toast-box,
+.right.toast-container .toast-box {
+    margin-left: auto;
+}
+
+.center.toast-container .toast-box {
+    margin-right: auto;
+}
+
+.visible.toast-box,
+.animating.toast-box,
+.toast-box {
+    display: table !important;
+}
+
+
+.toast-container .compact {
+  display: block;
+  width: @toastWidth;
+}
+
+.toast {
+  display: block;
+}
+
+.toast-container .message,
 .toast:hover {
     opacity: @toastOpacityOnHover;
     cursor: @toastCursorOnHover;
 }
 
-.animating.toast,
-.visible.toast {
-  display: block;
-}
 
-.toast > .icon {
-    margin-right: @toastIconRightMargin;
+.icon.toast .content {
+  padding-left: @toastIconContentPadding;
 }
 
 .toast > .content > .title {
@@ -109,6 +140,59 @@
     background-color: @toastErrorColor;
 }
 
+.toast-box .info.attached.progress .bar {
+    background: @toastInfoProgressColor !important;
+}
+
+.toast-box .warning.attached.progress .bar {
+    background: @toastWarningProgressColor !important;
+}
+
+.toast-box .success.attached.progress .bar {
+    background: @toastSuccessProgressColor !important;
+}
+
+.toast-box .error.attached.progress .bar {
+    background: @toastErrorProgressColor !important;
+}
+
+/*--------------
+     Colors
+-------------- */
+
+.toastColor(@color; @lightColor;) {
+  @_toastColor: "@{color}";
+  @_toastInvertedColor: "@{lightColor}";
+  .@{color}.toast {
+    background-color: @@_toastColor;
+  }
+  .inverted.@{color}.toast,
+  .toast-box .inverted.@{color}.attached.progress .bar {
+    background-color: @@_toastInvertedColor;
+  }
+}
+
+.toastColor(~'red',~'lightRed');
+.toastColor(~'orange',~'lightOrange');
+.toastColor(~'yellow',~'lightYellow');
+.toastColor(~'olive',~'lightOlive');
+.toastColor(~'green',~'lightGreen');
+.toastColor(~'teal',~'lightTeal');
+.toastColor(~'blue',~'lightBlue');
+.toastColor(~'violet',~'lightViolet');
+.toastColor(~'purple',~'lightPurple');
+.toastColor(~'pink',~'lightPink');
+.toastColor(~'brown',~'lightBrown');
+.toastColor(~'grey',~'lightGrey');
+.toastColor(~'black',~'lightBlack');
+
+.inverted.yellow.toast,
+.inverted.olive.toast,
+.inverted.teal.toast,
+.inverted.grey.toast {
+  color: @fullBlack;
+}
+
 /*--------------
       Icon
 ---------------*/
@@ -117,9 +201,70 @@
     display: inline-block;
     vertical-align: @toastIconVerticalAlign;
     font-size: @toastIconFontSize;
-    opacity: @toastIconOpacity;
+    position: absolute;
 }
+
+
+
 .icon.toast > .content {
     display: inline-block;
     vertical-align: @toastContentVerticalAlign;
+}
+
+/*---------------
+   Progress Bar
+ ----------------*/
+
+.toast-box .attached.progress .bar {
+    min-width: 0%;
+}
+
+.toast-box .active.progress .bar:after {
+  animation: progress-active 2s @defaultEasing infinite !important;
+}
+
+.toast-box {
+    margin-bottom: @toastMarginBottom;
+}
+
+.toast-box .toast,
+.toast-box .message {
+    margin-top: 0;
+    margin-bottom: 0;
+    position: relative;
+}
+.toast-box .attached.progress{
+    z-index:1;
+}
+
+.toast-box .bottom.attached.progress {
+  margin: -3px 0 @toastMarginBottom;
+}
+
+.toast-box .top.attached.progress {
+  margin: @toastMarginBottom 0 -3px;
+}
+
+/* --------
+ Close Icon
+ -----------*/
+
+.toast-box .message > .close.icon {
+  top: @toastCloseTopDistance;
+  right: @toastCloseRightDistance;
+}
+
+
+.toast-box .toast>.close.icon {
+  cursor: pointer;
+  position: absolute;
+  margin: 0;
+  top: @toastCloseTopDistance;
+  right: @toastCloseRightDistance;
+  opacity: @toastCloseOpacity;
+  transition: @toastCloseTransition;
+}
+
+.toast-box .toast > .close.icon:hover {
+  opacity: 1;
 }

@@ -1115,8 +1115,8 @@
   width: e(%("calc(100%% - %d)", @relaxedGutterWidth));
 }
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
-  margin-left: @veryRelaxedGutterWidth;
-  margin-right: @veryRelaxedGutterWidth;
+  margin-left: (@veryRelaxedGutterWidth / 2);
+  margin-right: (@veryRelaxedGutterWidth / 2);
   width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
 }
 

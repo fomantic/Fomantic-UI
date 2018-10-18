@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Form
+ * # Semantic UI 2.6.3 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -151,13 +151,22 @@
       Transparent
 ---------------------*/
 
+.ui.form .field .transparent.input input,
+.ui.form .field input.transparent,
+.ui.form .field textarea.transparent {
+  padding: 0.67857143em 1em !important;
+}
 .ui.form .field textarea.transparent {
   border-color: transparent !important;
   background-color: transparent !important;
-  padding: 0em !important;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
-  border-radius: 0px !important;
+}
+.ui.form .field.error .transparent.input input,
+.ui.form .field.error input.transparent,
+.ui.form .field.error textarea.transparent {
+  background-color: #FFF6F6 !important;
+  color: #9F3A38 !important;
 }
 
 /*--------------------------

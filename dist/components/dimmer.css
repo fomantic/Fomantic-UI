@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Dimmer
+ * # Semantic UI 2.6.3 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -200,6 +200,20 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
+    Shades
+---------------*/
+
+.medium.medium.medium.medium.medium.dimmer {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.light.light.light.light.light.dimmer {
+  background-color: rgba(0, 0, 0, 0.45);
+}
+.very.light.light.light.light.dimmer {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/*--------------
     Inverted
 ---------------*/
 
@@ -208,6 +222,20 @@ body.dimmable > .dimmer {
 }
 .ui.inverted.dimmer > .content > * {
   color: #FFFFFF;
+}
+
+/*--------------
+ Inverted Shades
+---------------*/
+
+.medium.medium.medium.medium.medium.inverted.dimmer {
+  background-color: rgba(255, 255, 255, 0.65);
+}
+.light.light.light.light.light.inverted.dimmer {
+  background-color: rgba(255, 255, 255, 0.45);
+}
+.very.light.light.light.light.inverted.dimmer {
+  background-color: rgba(255, 255, 255, 0.25);
 }
 
 /*--------------
