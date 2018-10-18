@@ -35,3 +35,4 @@ nbproject
 *.sublime-workspace
 .build*
 .idea
+.vscode
