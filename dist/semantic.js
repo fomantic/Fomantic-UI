@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.6.2
+ * # Fomantic UI - 2.6.3
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -9,7 +9,7 @@
  *
  */
 /*!
- * # Semantic UI 2.6.2 - Site
+ * # Semantic UI 2.6.3 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -500,7 +500,7 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Form Validation
+ * # Semantic UI 2.6.3 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2208,7 +2208,7 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Accordion
+ * # Semantic UI 2.6.3 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2822,7 +2822,7 @@ $.extend( $.easing, {
 
 
 /*!
- * # Semantic UI 2.6.2 - Calendar
+ * # Semantic UI 2.6.3 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2844,18 +2844,18 @@ window = (typeof window != 'undefined' && window.Math == Math)
 
 $.fn.calendar = function(parameters) {
   var
-    $allModules = $(this),
+    $allModules    = $(this),
 
     moduleSelector = $allModules.selector || '',
 
-    time = new Date().getTime(),
-    performance = [],
+    time           = new Date().getTime(),
+    performance    = [],
 
-    query = arguments[0],
-    methodInvoked = (typeof query == 'string'),
+    query          = arguments[0],
+    methodInvoked  = (typeof query == 'string'),
     queryArguments = [].slice.call(arguments, 1),
     returnedValue
-    ;
+  ;
 
   $allModules
     .each(function () {
@@ -2887,14 +2887,15 @@ $.fn.calendar = function(parameters) {
         isTouchDown = false,
         focusDateUsedForRange = false,
         module
-        ;
+      ;
 
       module = {
 
         initialize: function () {
-          module.debug('Initializing calendar for', element);
+          module.debug('Initializing calendar for', element, $module);
 
           isTouch = module.get.isTouch();
+          module.setup.config();
           module.setup.popup();
           module.setup.inline();
           module.setup.input();
@@ -2918,6 +2919,14 @@ $.fn.calendar = function(parameters) {
         },
 
         setup: {
+          config: function () {
+            if (module.get.minDate() !== null) {
+              module.set.minDate($module.data(metadata.minDate));
+            }
+            if (module.get.maxDate() !== null) {
+              module.set.maxDate($module.data(metadata.maxDate));
+            }
+          },
           popup: function () {
             if (settings.inline) {
               return;
@@ -3204,6 +3213,7 @@ $.fn.calendar = function(parameters) {
 
         bind: {
           events: function () {
+            module.debug('Binding events');
             $container.on('mousedown' + eventNamespace, module.event.mousedown);
             $container.on('touchstart' + eventNamespace, module.event.mousedown);
             $container.on('mouseup' + eventNamespace, module.event.mouseup);
@@ -3223,6 +3233,7 @@ $.fn.calendar = function(parameters) {
 
         unbind: {
           events: function () {
+            module.debug('Unbinding events');
             $container.off(eventNamespace);
             if ($input.length) {
               $input.off(eventNamespace);
@@ -3371,6 +3382,12 @@ $.fn.calendar = function(parameters) {
             var endModule = module.get.calendarModule(settings.endCalendar);
             return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
           },
+          minDate: function() {
+            return $module.data(metadata.minDate) || null;
+          },
+          maxDate: function() {
+            return $module.data(metadata.maxDate) || null;
+          },
           monthOffset: function () {
             return $module.data(metadata.monthOffset) || 0;
           },
@@ -3493,6 +3510,24 @@ $.fn.calendar = function(parameters) {
               module.update.focus(updateRange);
             }
           },
+          minDate: function (date) {
+            date = module.helper.sanitiseDate(date);
+            if (settings.maxDate !== null && settings.maxDate <= date) {
+              module.verbose('Unable to set minDate variable bigger that maxDate variable', date, settings.maxDate);
+            } else {
+              module.setting('minDate', date);
+              module.set.dataKeyValue(metadata.minDate, date);
+            }
+          },
+          maxDate: function (date) {
+            date = module.helper.sanitiseDate(date);
+            if (settings.minDate !== null && settings.minDate >= date) {
+              module.verbose('Unable to set maxDate variable lower that minDate variable', date, settings.minDate);
+            } else {
+              module.setting('maxDate', date);
+              module.set.dataKeyValue(metadata.maxDate, date);
+            }
+          },
           monthOffset: function (monthOffset, refreshCalendar) {
             var multiMonth = Math.max(settings.multiMonth, 1);
             monthOffset = Math.max(1 - multiMonth, Math.min(0, monthOffset));
@@ -3511,13 +3546,14 @@ $.fn.calendar = function(parameters) {
             }
             refreshCalendar = refreshCalendar !== false && !equal;
             if (refreshCalendar) {
-              module.create.calendar();
+              module.refresh();
             }
             return !equal;
           }
         },
 
         selectDate: function (date, forceSet) {
+          module.verbose('New date selection', date)
           var mode = module.get.mode();
           var complete = forceSet || mode === 'minute' ||
             (settings.disableMinute && mode === 'hour') ||
@@ -3830,33 +3866,36 @@ $.fn.calendar = function(parameters) {
 
 $.fn.calendar.settings = {
 
+  name            : 'Calendar',
+  namespace       : 'calendar',
+
   silent: false,
   debug: false,
   verbose: false,
   performance: false,
 
-  type: 'datetime',     // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
-  firstDayOfWeek: 0,    // day for first day column (0 = Sunday)
-  constantHeight: true, // add rows to shorter months to keep day calendar height consistent (6 rows)
-  today: false,         // show a 'today/now' button at the bottom of the calendar
-  closable: true,       // close the popup after selecting a date/time
-  monthFirst: true,     // month before day when parsing/converting date from/to text
-  touchReadonly: true,  // set input to readonly on touch devices
-  inline: false,        // create the calendar inline instead of inside a popup
-  on: null,             // when to show the popup (defaults to 'focus' for input, 'click' for others)
-  initialDate: null,    // date to display initially when no date is selected (null = now)
-  startMode: false,     // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
-  minDate: null,        // minimum date/time that can be selected, dates/times before are disabled
-  maxDate: null,        // maximum date/time that can be selected, dates/times after are disabled
-  ampm: true,           // show am/pm in time mode
-  disableYear: false,   // disable year selection mode
-  disableMonth: false,  // disable month selection mode
-  disableMinute: false, // disable minute selection mode
-  formatInput: true,    // format the input text upon input blur and module creation
-  startCalendar: null,  // jquery object or selector for another calendar that represents the start date of a date range
-  endCalendar: null,    // jquery object or selector for another calendar that represents the end date of a date range
-  multiMonth: 1,        // show multiple months when in 'day' mode
-  showWeekNumbers: null,// show Number of Week at the very first column of a dayView
+  type           : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
+  firstDayOfWeek : 0,          // day for first day column (0 = Sunday)
+  constantHeight : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
+  today          : false,      // show a 'today/now' button at the bottom of the calendar
+  closable       : true,       // close the popup after selecting a date/time
+  monthFirst     : true,       // month before day when parsing/converting date from/to text
+  touchReadonly  : true,       // set input to readonly on touch devices
+  inline         : false,      // create the calendar inline instead of inside a popup
+  on             : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
+  initialDate    : null,       // date to display initially when no date is selected (null = now)
+  startMode      : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
+  minDate        : null,       // minimum date/time that can be selected, dates/times before are disabled
+  maxDate        : null,       // maximum date/time that can be selected, dates/times after are disabled
+  ampm           : true,       // show am/pm in time mode
+  disableYear    : false,      // disable year selection mode
+  disableMonth   : false,      // disable month selection mode
+  disableMinute  : false,      // disable minute selection mode
+  formatInput    : true,       // format the input text upon input blur and module creation
+  startCalendar  : null,       // jquery object or selector for another calendar that represents the start date of a date range
+  endCalendar    : null,       // jquery object or selector for another calendar that represents the end date of a date range
+  multiMonth     : 1,          // show multiple months when in 'day' mode
+  showWeekNumbers: null,       // show Number of Week at the very first column of a dayView
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -4213,6 +4252,8 @@ $.fn.calendar.settings = {
     focusDate: 'focusDate',
     startDate: 'startDate',
     endDate: 'endDate',
+    minDate: 'minDate',
+    maxDate: 'maxDate',
     mode: 'mode',
     monthOffset: 'monthOffset'
   }
@@ -4221,7 +4262,7 @@ $.fn.calendar.settings = {
 })(jQuery, window, document);
 
 /*!
- * # Semantic UI 2.6.2 - Checkbox
+ * # Semantic UI 2.6.3 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5050,7 +5091,7 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Dimmer
+ * # Semantic UI 2.6.3 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5786,7 +5827,7 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Dropdown
+ * # Semantic UI 2.6.3 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6410,7 +6451,6 @@ $.fn.dropdown = function(parameters) {
               if(settings.on == 'click') {
                 $module
                   .on('click' + eventNamespace, selector.icon, module.event.icon.click)
-                  .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                   .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
@@ -6429,6 +6469,7 @@ $.fn.dropdown = function(parameters) {
                 .on('mousedown' + eventNamespace, module.event.mousedown)
                 .on('mouseup'   + eventNamespace, module.event.mouseup)
                 .on('focus'     + eventNamespace, module.event.focus)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
               ;
               if(module.has.menuSearch() ) {
                 $module
@@ -6870,8 +6911,6 @@ $.fn.dropdown = function(parameters) {
                 } else {
                   module.blurSearch();
                 }
-              } else if($icon.hasClass(className.clear)) {
-                module.clear();
               } else {
                 module.toggle();
               }
@@ -7238,7 +7277,9 @@ $.fn.dropdown = function(parameters) {
                     module.event.item.click.call($selectedItem, event);
                     if(module.is.searchSelection()) {
                       module.remove.searchTerm();
-                      $search.focus();
+                      if(module.is.multiple()) {
+                          $search.focus();
+                      }
                     }
                   }
                   event.preventDefault();
@@ -8337,15 +8378,6 @@ $.fn.dropdown = function(parameters) {
                 $module.data(metadata.value, stringValue);
               }
             }
-            if(module.is.single() && settings.clearable) {
-              // treat undefined or '' as empty
-              if(!escapedValue) {
-                module.remove.clearable();
-              }
-              else {
-                module.set.clearable();
-              }
-            }
             if(settings.fireOnInit === false && module.is.initialLoad()) {
               module.verbose('No callback on initial load', settings.onChange);
             }
@@ -8441,9 +8473,6 @@ $.fn.dropdown = function(parameters) {
                 }
               })
             ;
-          },
-          clearable: function() {
-            $icon.addClass(className.clear);
           },
         },
 
@@ -8871,9 +8900,6 @@ $.fn.dropdown = function(parameters) {
               ;
             }
           },
-          clearable: function() {
-            $icon.removeClass(className.clear);
-          }
         },
 
         has: {
@@ -9018,7 +9044,7 @@ $.fn.dropdown = function(parameters) {
             return $selectedMenu.hasClass(className.leftward);
           },
           clearable: function() {
-            return $module.hasClass(className.clearable);
+            return ($module.hasClass(className.clearable) || settings.clearable);
           },
           disabled: function() {
             return $module.hasClass(className.disabled);
@@ -9724,7 +9750,6 @@ $.fn.dropdown.settings = {
     active      : 'active',
     addition    : 'addition',
     animating   : 'animating',
-    clear       : 'clear',
     disabled    : 'disabled',
     empty       : 'empty',
     dropdown    : 'ui dropdown',
@@ -9784,7 +9809,7 @@ $.fn.dropdown.settings.templates = {
       html   = ''
     ;
     $.each(values, function(index, option) {
-      var 
+      var
         itemType = (option[fields.type])
           ? option[fields.type]
           : 'item'
@@ -9832,7 +9857,7 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Embed
+ * # Semantic UI 2.6.3 - Embed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9843,7 +9868,7 @@ $.fn.dropdown.settings.templates = {
 
 ;(function ($, window, document, undefined) {
 
-'use strict';
+"use strict";
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -10014,6 +10039,7 @@ $.fn.embed = function(parameters) {
         // clears embed
         reset: function() {
           module.debug('Clearing embed and showing placeholder');
+          module.remove.data();
           module.remove.active();
           module.remove.embed();
           module.showPlaceholder();
@@ -10133,6 +10159,15 @@ $.fn.embed = function(parameters) {
         },
 
         remove: {
+          data: function() {
+            $module
+              .removeData(metadata.id)
+              .removeData(metadata.icon)
+              .removeData(metadata.placeholder)
+              .removeData(metadata.source)
+              .removeData(metadata.url)
+            ;
+          },
           active: function() {
             $module.removeClass(className.active);
           },
@@ -10529,7 +10564,7 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Modal
+ * # Semantic UI 2.6.3 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11620,7 +11655,7 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Nag
+ * # Semantic UI 2.6.3 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12128,7 +12163,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Popup
+ * # Semantic UI 2.6.3 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -13661,7 +13696,7 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Progress
+ * # Semantic UI 2.6.3 - Progress
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -13679,14 +13714,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
   : (typeof self != 'undefined' && self.Math == Math)
     ? self
     : Function('return this')()
-;
-
-var
-  global = (typeof window != 'undefined' && window.Math == Math)
-    ? window
-    : (typeof self != 'undefined' && self.Math == Math)
-      ? self
-      : Function('return this')()
 ;
 
 $.fn.progress = function(parameters) {
@@ -14593,7 +14620,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Range
+ * # Semantic UI 2.6.3 - Range
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14872,7 +14899,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Rating
+ * # Semantic UI 2.6.3 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15384,7 +15411,7 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Search
+ * # Semantic UI 2.6.3 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16900,7 +16927,7 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Shape
+ * # Semantic UI 2.6.3 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17822,7 +17849,7 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Sidebar
+ * # Semantic UI 2.6.3 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18856,7 +18883,7 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Sticky
+ * # Semantic UI 2.6.3 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19816,7 +19843,7 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Tab
+ * # Semantic UI 2.6.3 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20769,7 +20796,7 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Toast
+ * # Semantic UI 2.6.3 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20818,9 +20845,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
+        $toastBox       = $('<div/>',{'class':settings.className.box}),
         $toast          = $('<div/>'),
+        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
+        $progressBar    = $('<div/>',{'class':'bar'}),
 
-        $close          = $module.find(selector.close),
+        $close          = $('<i/>',{'class':'close icon'}),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -20834,7 +20864,9 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-
+          if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+            settings.showProgress = false;
+          }
           if (!module.has.container()) {
             module.create.container();
           }
@@ -20844,7 +20876,7 @@ $.fn.toast = function(parameters) {
           module.bind.events();
           
           if(settings.displayTime > 0) {
-            setTimeout(module.close, settings.displayTime);
+            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
           }
           module.show();
         },
@@ -20867,6 +20899,9 @@ $.fn.toast = function(parameters) {
         },
 
         close: function(callback) {
+          if(module.closeTimer) {
+              clearTimeout(module.closeTimer);
+          }
           callback = callback || function(){};
           module.remove.visible();
           module.unbind.events();
@@ -20876,15 +20911,20 @@ $.fn.toast = function(parameters) {
 
         create: {
           container: function() {
-            module.verbose('Creating container')
+            module.verbose('Creating container');
             $context.append('<div class="ui ' + settings.position + ' ' + className.container + '"></div>');
           },
           toast: function() {
             var $content = $('<div/>').addClass(className.content);
-            module.verbose('Creating toast')
+            module.verbose('Creating toast');
+            if(settings.closeIcon) {
+                $toast.append($close);
+                $toast.css('cursor','default');
+            }
 
-            if (settings.showIcon) {
-              var $icon = $('<i/>').addClass(settings.icons[settings.class] + ' ' + className.icon);
+            var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+            if (iconClass != '') {
+               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
               $toast
                 .addClass(className.icon)
@@ -20908,12 +20948,38 @@ $.fn.toast = function(parameters) {
               .addClass(settings.class + ' ' + className.toast)
               .append($content)
             ;
-
+            $toast.css('opacity', settings.opacity);
+            if(settings.compact || $toast.hasClass('compact')) {
+                $toastBox.addClass('compact');
+            }
+            if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
+              $progress.addClass('inverted');
+            } else {
+              $progress.removeClass('inverted');
+            }
+            $toast = $toastBox.append($toast);
+            if(!!settings.showProgress && settings.displayTime > 0){
+              $progress
+                .addClass(settings.showProgress)
+                .append($progressBar);
+              if ($progress.hasClass('top')) {
+                  $toast.prepend($progress);
+              } else {
+                  $toast.append($progress);
+              }
+              $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
+              $progressBar.width(settings.progressUp?'0%':'100%');
+              setTimeout(function() {
+                  if(typeof $progress !== 'undefined'){
+                    $progressBar.width(settings.progressUp?'100%':'0%');
+                }
+              },300);
+            }
             if (settings.newestOnTop) {
               $toast.prependTo(module.get.container());
             }
             else {
-              $toast.appendTo(module.get.container())
+              $toast.appendTo(module.get.container());
             }
           }
         },
@@ -20921,7 +20987,7 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .on('click' + eventNamespace, module.event.click)
             ;
           }
@@ -20930,7 +20996,7 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            $toast
+            (settings.closeIcon ? $close : $toast)
               .off('click' + eventNamespace)
             ;
           }
@@ -20974,6 +21040,19 @@ $.fn.toast = function(parameters) {
                   duration   : settings.transition.hideDuration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+
+                  onBeforeHide: function(callback){
+                      callback = $.isFunction(callback)?callback : function(){};
+                      if(settings.transition.closeEasing !== ''){
+                          $toast.css('opacity',0);
+                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                              $toast.parent().remove();
+                              callback.call($toast);
+                          });
+                      } else {
+                        callback.call($toast);
+                      }
+                  },
                   onComplete : function() {
                     module.destroy();
                     callback.call($toast, element);
@@ -20990,7 +21069,7 @@ $.fn.toast = function(parameters) {
 
         has: {
           container: function() {
-            module.verbose('Determining if there is already a container')
+            module.verbose('Determining if there is already a container');
             return ($context.find(module.helpers.toClass(settings.position) + selector.container).length > 0);
           }
         },
@@ -21016,7 +21095,7 @@ $.fn.toast = function(parameters) {
         event: {
           click: function() {
             settings.onClick.call($toast, element);
-            module.close()
+            module.close();
           }
         },
 
@@ -21239,13 +21318,19 @@ $.fn.toast.settings = {
   displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
   showIcon       : true,
   newestOnTop    : false,
+  showProgress   : false,
+  progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
+  opacity        : 1,
+  compact        : true,
+  closeIcon      : false,
 
   // transition settings
   transition     : {
     showMethod   : 'scale',
     showDuration : 500,
     hideMethod   : 'scale',
-    hideDuration : 500
+    hideDuration : 500,
+    closeEasing  : 'easeOutBounce'  //Set to empty string to stack the closed toast area immediately (old behaviour)
   },
 
   error: {
@@ -21255,6 +21340,8 @@ $.fn.toast.settings = {
 
   className      : {
     container    : 'toast-container',
+    box          : 'toast-box',
+    progress     : 'ui attached active progress',
     toast        : 'ui toast',
     icon         : 'icon',
     visible      : 'visible',
@@ -21271,6 +21358,7 @@ $.fn.toast.settings = {
 
   selector       : {
     container    : '.toast-container',
+    box          : '.toast-box',
     toast        : '.ui.toast'
   },
 
@@ -21283,11 +21371,25 @@ $.fn.toast.settings = {
   onRemove       : function(){},
 };
 
+$.extend( $.easing, {
+    easeOutBounce: function (x, t, b, c, d) {
+        if ((t/=d) < (1/2.75)) {
+            return c*(7.5625*t*t) + b;
+        } else if (t < (2/2.75)) {
+            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+        } else if (t < (2.5/2.75)) {
+            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+        } else {
+            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+        }
+    }
+});
+
 
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Transition
+ * # Semantic UI 2.6.3 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22067,11 +22169,22 @@ $.fn.transition = function() {
           element.blur(); // IE will trigger focus change if element is not blurred before hiding
           module.remove.display();
           module.remove.visible();
-          module.set.hidden();
-          module.force.hidden();
-          settings.onHide.call(element);
-          settings.onComplete.call(element);
-          // module.repaint();
+          if($.isFunction(settings.onBeforeHide)){
+            settings.onBeforeHide.call(element,function(){
+                module.hideNow();
+            });
+          } else {
+              module.hideNow();
+          }
+
+        },
+
+        hideNow: function() {
+            module.set.hidden();
+            module.force.hidden();
+            settings.onHide.call(element);
+            settings.onComplete.call(element);
+            // module.repaint();
         },
 
         show: function(display) {
@@ -22383,7 +22496,7 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - API
+ * # Semantic UI 2.6.3 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23551,7 +23664,7 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - State
+ * # Semantic UI 2.6.3 - State
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24260,7 +24373,7 @@ $.fn.state.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.2 - Visibility
+ * # Semantic UI 2.6.3 - Visibility
  * http://github.com/semantic-org/semantic-ui/
  *
  *

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Modal
+ * # Semantic UI 2.6.3 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -601,6 +601,38 @@
     width: 1140px;
     margin: 0em 0em 0em 0em;
   }
+}
+
+
+/*****************************
+          Inverted
+*******************************/
+
+.ui.inverted.modal {
+  background: rgba(0, 0, 0, 0.9);
+}
+.ui.inverted.modal > .header,
+.ui.inverted.modal > .content {
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFFFFF;
+}
+.ui.inverted.modal > .actions {
+  background: #191A1B;
+  border-top: 1px solid rgba(34, 36, 38, 0.85);
+}
+.ui.fullscreen.inverted.modal > .close {
+  color: rgba(255, 255, 255, 0.13);
+}
+@media only screen and (max-width: 991px) {
+  .ui.inverted.modal > .close {
+    color: #FFFFFF;
+  }
+}
+.ui.inverted.fullscreen.modal > .close {
+  color: #FFFFFF;
+}
+.ui.inverted.dimmer > .modal > .close {
+  color: rgba(0, 0, 0, 0.85);
 }
 
 

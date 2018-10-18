@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.2 - Grid
+ * # Semantic UI 2.6.3 - Grid
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1134,8 +1134,8 @@
   width: calc(100% - 3rem);
 }
 .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
-  margin-left: 5rem;
-  margin-right: 5rem;
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
   width: calc(100% - 5rem);
 }
 
