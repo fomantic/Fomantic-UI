@@ -257,35 +257,49 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-     Captions
----------------*/
+     Partially
+----------------*/
 
-.caption.dimmer {
+.ui[class*="top dimmer"],
+.ui[class*="center dimmer"],
+.ui[class*="bottom dimmer"] {
   height: auto;
 }
-.ui[class*="bottom caption"].dimmer{
+.ui[class*="bottom dimmer"] {
   top: auto !important;
   bottom: 0;
 }
-.ui[class*="center caption"].dimmer{
+.ui[class*="center dimmer"] {
   top:50% !important;
   transform: translateY(-50%);
   -webkit-transform: translateY(calc(-50% - .5px));
 }
 
-.ui[class*="center caption"].dimmer.transition[class*="fade up"].in {
+.ui.segment > .ui[class*="top dimmer"] {
+    border-bottom-left-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+.ui.segment > .ui[class*="center dimmer"] {
+    border-radius: 0 !important;
+}
+.ui.segment > .ui[class*="bottom dimmer"] {
+    border-top-left-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+}
+
+.ui[class*="center dimmer"].transition[class*="fade up"].in {
   animation-name: fadeInUpCenter;
 }
-.ui[class*="center caption"].dimmer.transition[class*="fade down"].in {
+.ui[class*="center dimmer"].transition[class*="fade down"].in {
   animation-name: fadeInDownCenter;
 }
-.ui[class*="center caption"].dimmer.transition[class*="fade up"].out {
+.ui[class*="center dimmer"].transition[class*="fade up"].out {
   animation-name: fadeOutUpCenter;
 }
-.ui[class*="center caption"].dimmer.transition[class*="fade down"].out {
+.ui[class*="center dimmer"].transition[class*="fade down"].out {
   animation-name: fadeOutDownCenter;
 }
-.ui[class*="center caption"].dimmer.bounce.transition {
+.ui[class*="center dimmer"].bounce.transition {
   animation-name: bounceCenter;
 }
 @keyframes fadeInUpCenter {
