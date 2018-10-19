@@ -1629,6 +1629,7 @@ $.fn.dropdown = function(parameters) {
             if(inDocument && !inModule) {
               module.verbose('Triggering event', callback);
               callback();
+              event.preventDefault();
               return true;
             }
             else {
