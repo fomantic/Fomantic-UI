@@ -1048,7 +1048,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(settings.showOnFocus) {
+              if(settings.showOnFocus || event.type !== 'focus') {
                 module.search();
               }
             },
@@ -1079,7 +1079,11 @@ $.fn.dropdown = function(parameters) {
             click: function(event) {
               if(module.has.search()) {
                 if(!module.is.active()) {
-                  module.focusSearch();
+                    if(settings.showOnFocus){
+                      module.focusSearch();
+                    } else {
+                      module.toggle();
+                    }
                 } else {
                   module.blurSearch();
                 }
