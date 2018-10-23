@@ -8,28 +8,34 @@ var
   // gulp dependencies
   chmod   = require('gulp-chmod'),
   gulpif  = require('gulp-if'),
+  print   = require('gulp-print').default,
 
   // config
   config  = require('../config/user'),
-  install = require('../config/project/install')
+  tasks   = require('../config/tasks'),
+  install = require('../config/project/install'),
+
+  log     = tasks.log
 ;
 
-function buildAssets(config, callback) {
-  console.info('Building assets');
+function build(config) {
+  return gulp.src(config.paths.source.themes + '/**/assets/**/*.*', {since: gulp.lastRun('build-assets')})
+    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulp.dest(config.paths.output.themes))
+    .pipe(print(log.created))
+    ;
+}
 
+function buildAssets(config, callback) {
   if (!install.isSetup()) {
-    console.error('Cannot build files. Run "gulp install" to set-up Semantic');
+    console.error('Cannot build assets. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
   // copy assets
-  function assets() {
-    return gulp.src(config.paths.source.themes + '/**/assets/**/*.*', {since: gulp.lastRun('build-assets')})
-      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(gulp.dest(config.paths.output.themes))
-      ;
-  }
+  var assets         = () => build(config);
+  assets.displayName = "Building Assets";
 
   gulp.series(assets)(callback);
 }

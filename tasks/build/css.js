@@ -43,6 +43,46 @@ const
 ;
 
 /**
+ * Builds the css
+ * @param type
+ * @param compress
+ * @param config
+ * @param opts
+ * @return {*}
+ */
+function build(type, compress, config, opts) {
+  var fileExtension;
+  if (type === 'rtl' && compress) {
+    fileExtension = settings.rename.rtlMinCSS;
+  } else if (type === 'rtl') {
+    fileExtension = settings.rename.rtlCSS;
+  } else if (compress) {
+    fileExtension = settings.rename.minCSS;
+  }
+
+  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.less', opts)
+    .pipe(plumber(settings.plumber.less))
+    .pipe(less(settings.less))
+    .pipe(autoprefixer(settings.prefix))
+    .pipe(gulpif(type === 'rtl', rtlcss()))
+    .pipe(replace(comments.variables.in, comments.variables.out))
+    .pipe(replace(comments.license.in, comments.license.out))
+    .pipe(replace(comments.large.in, comments.large.out))
+    .pipe(replace(comments.small.in, comments.small.out))
+    .pipe(replace(comments.tiny.in, comments.tiny.out))
+    .pipe(flatten())
+    .pipe(replace(config.paths.assets.source,
+      compress ? config.paths.assets.compressed : config.paths.assets.uncompressed))
+    .pipe(gulpif(compress, minifyCSS(settings.minify)))
+    .pipe(gulpif(fileExtension, rename(fileExtension)))
+    .pipe(header(banner, settings.header))
+    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
+    .pipe(print(log.created))
+    ;
+}
+
+/**
  * Packages the css files in dist
  * @param {string} type - type of the css processing (none, rtl, docs)
  * @param {boolean} compress - should the output be compressed
@@ -70,68 +110,30 @@ function pack(type, compress) {
     .pipe(print(log.created))
     ;
 }
-pack.displayName = 'Package CSS';
-
-function defaultStream(type, config, opts) {
-  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.less', opts)
-    .pipe(plumber(settings.plumber.less))
-    .pipe(less(settings.less))
-    .pipe(autoprefixer(settings.prefix))
-    .pipe(gulpif(type === 'rtl', rtlcss()))
-    .pipe(replace(comments.variables.in, comments.variables.out))
-    .pipe(replace(comments.license.in, comments.license.out))
-    .pipe(replace(comments.large.in, comments.large.out))
-    .pipe(replace(comments.small.in, comments.small.out))
-    .pipe(replace(comments.tiny.in, comments.tiny.out))
-    .pipe(flatten())
-    ;
-}
 
 function buildCSS(type, config, opts, callback) {
-  console.info('Building CSS');
-
   if (!install.isSetup()) {
-    console.error('Cannot build files. Run "gulp install" to set-up Semantic');
+    console.error('Cannot build CSS files. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
-  // uncompressed component css
-  function buildUncompressed() {
-    return defaultStream(type, config, opts)
-      .pipe(plumber())
-      .pipe(replace(config.paths.assets.source, config.paths.assets.uncompressed))
-      .pipe(gulpif(type === 'rtl', rename(settings.rename.rtlCSS)))
-      .pipe(header(banner, settings.header))
-      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(gulp.dest(config.paths.output.uncompressed))
-      .pipe(print(log.created));
-  }
+  var buildUncompressed         = () => build(type, false, config, opts);
+  buildUncompressed.displayName = 'Building uncompressed CSS';
 
-  buildUncompressed.name        = 'build uncompressed css';
-  buildUncompressed.displayName = 'build uncompressed css';
+  var buildCompressed         = () => build(type, true, config, opts);
+  buildCompressed.displayName = 'Building compressed CSS';
 
-  function buildCompressed() {
-    // compressed component css
-    return defaultStream(type, config, opts)
-      .pipe(plumber())
-      .pipe(clone())
-      .pipe(replace(config.paths.assets.source, config.paths.assets.compressed))
-      .pipe(minifyCSS(settings.minify))
-      .pipe(rename(type === 'rtl' ? settings.rename.rtlMinCSS : settings.rename.minCSS))
-      .pipe(header(banner, settings.header))
-      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(gulp.dest(config.paths.output.compressed))
-      .pipe(print(log.created))
-      ;
-  }
+  var packUncompressed         = () => pack(type, false);
+  packUncompressed.displayName = 'Packing uncompressed CSS';
 
-  buildCompressed.name        = 'build compressed css';
-  buildCompressed.displayName = 'build compressed css';
+  var packCompressed         = () => pack(type, true);
+  packCompressed.displayName = 'Packing compressed CSS';
+
 
   gulp.parallel(
-    gulp.series(buildUncompressed, () => pack(type, false)),
-    gulp.series(buildCompressed, () => pack(type, true)),
+    gulp.series(buildUncompressed, packUncompressed),
+    gulp.series(buildCompressed, packCompressed)
   )(callback);
 }
 

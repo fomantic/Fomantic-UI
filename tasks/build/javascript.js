@@ -38,7 +38,34 @@ const
   settings   = tasks.settings
 ;
 
+/**
+ * Concat and uglify the Javascript files
+ * @param type
+ * @param config
+ * @return {*}
+ */
+function build(type, config) {
+  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.js', {since: gulp.lastRun('build-javascript')})
+    .pipe(plumber())
+    .pipe(flatten())
+    .pipe(replace(comments.license.in, comments.license.out))
+    .pipe(gulp.dest(config.paths.output.uncompressed))
+    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(print(log.created))
+    .pipe(uglify(settings.uglify))
+    .pipe(rename(settings.rename.minJS))
+    .pipe(header(banner, settings.header))
+    .pipe(gulp.dest(config.paths.output.compressed))
+    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(print(log.created))
+    ;
+}
 
+/**
+ * Packages the Javascript files in dist
+ * @param {string} type - type of the js processing (none, rtl, docs)
+ * @param {boolean} compress - should the output be compressed
+ */
 function pack(type, compress) {
   const output         = type === 'docs' ? docsConfig.paths.output : config.paths.output;
   const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
@@ -57,36 +84,23 @@ function pack(type, compress) {
 }
 
 function buildJS(type, config, callback) {
-  console.info('Building Javascript');
-
   if (!install.isSetup()) {
-    console.error('Cannot build files. Run "gulp install" to set-up Semantic');
+    console.error('Cannot build Javascript. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
   // copy source javascript
-  function js() {
-    return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.js', {since: gulp.lastRun('build-javascript')})
-      .pipe(plumber())
-      .pipe(flatten())
-      .pipe(replace(comments.license.in, comments.license.out))
-      .pipe(gulp.dest(config.paths.output.uncompressed))
-      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(print(log.created))
-      .pipe(uglify(settings.uglify))
-      .pipe(rename(settings.rename.minJS))
-      .pipe(header(banner, settings.header))
-      .pipe(gulp.dest(config.paths.output.compressed))
-      .pipe(gulpif(config.hasPermission, chmod(config.permission)))
-      .pipe(print(log.created))
-      ;
-  }
+  var js         = () => build(type, config);
+  js.displayName = "Building un/compressed Javascript";
 
-  gulp.series(js,
-    gulp.parallel(() => pack(type, false), () => pack(type, true))
-  )
-  (callback);
+  var packUncompressed         = () => pack(type, false);
+  packUncompressed.displayName = 'Packing uncompressed Javascript';
+
+  var packCompressed         = () => pack(type, true);
+  packCompressed.displayName = 'Packing compressed Javascript';
+
+  gulp.series(js, gulp.parallel(packUncompressed, packCompressed))(callback);
 }
 
 module.exports         = function (callback) {
