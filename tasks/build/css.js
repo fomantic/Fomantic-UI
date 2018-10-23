@@ -75,7 +75,6 @@ function build(type, compress, config, opts) {
       compress ? config.paths.assets.compressed : config.paths.assets.uncompressed))
     .pipe(gulpif(compress, minifyCSS(settings.minify)))
     .pipe(gulpif(fileExtension, rename(fileExtension)))
-    .pipe(header(banner, settings.header))
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
     .pipe(print(log.created))
