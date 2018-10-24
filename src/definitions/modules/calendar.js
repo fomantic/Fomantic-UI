@@ -31,7 +31,14 @@ $.fn.calendar = function(parameters) {
     query          = arguments[0],
     methodInvoked  = (typeof query == 'string'),
     queryArguments = [].slice.call(arguments, 1),
-    returnedValue
+    returnedValue,
+    timeGapTable = {
+      '5': {'row': 4, 'column': 3 },
+      '10': {'row': 3, 'column': 2 },
+      '15': {'row': 2, 'column': 2 },
+      '20': {'row': 3, 'column': 1 },
+      '30': {'row': 2, 'column': 1 }
+    }
   ;
 
   $allModules
@@ -47,6 +54,7 @@ $.fn.calendar = function(parameters) {
         formatter = settings.formatter,
         parser = settings.parser,
         metadata = settings.metadata,
+        timeGap = timeGapTable[settings.minTimeGap],
         error = settings.error,
 
         eventNamespace = '.' + namespace,
@@ -211,8 +219,8 @@ $.fn.calendar = function(parameters) {
             var startMonth = display.getMonth() + monthOffset;
             var year = display.getFullYear();
 
-            var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : 3;
-            var rows = isDay || isHour ? 6 : 4;
+            var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
+            var rows = isDay || isHour ? 6 : timeGap['row'];
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
@@ -307,7 +315,7 @@ $.fn.calendar = function(parameters) {
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
                     isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute) :
-                      isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * 5);
+                      isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
                   var cellText = isYear ? i :
                     isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
                       formatter.time(cellDate, settings, true);
@@ -475,9 +483,9 @@ $.fn.calendar = function(parameters) {
               if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
                 //arrow keys
                 var mode = module.get.mode();
-                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : 3;
+                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
                 var increment = event.keyCode === 37 ? -1 : event.keyCode === 38 ? -bigIncrement : event.keyCode == 39 ? 1 : bigIncrement;
-                increment *= mode === 'minute' ? 5 : 1;
+                increment *= mode === 'minute' ? settings.minTimeGap : 1;
                 var focusDate = module.get.focusDate() || module.get.date() || new Date();
                 var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
                 var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
@@ -808,19 +816,19 @@ $.fn.calendar = function(parameters) {
             var isYearOrMonth = isYear || mode === 'month';
             var isMinute = mode === 'minute';
             var isHourOrMinute = isMinute || mode === 'hour';
-            //only care about a minute accuracy of 5
+            //only care about a minute accuracy of settings.minTimeGap
             date1 = new Date(
               isTimeOnly ? 2000 : date1.getFullYear(),
               isTimeOnly ? 0 : isYear ? 0 : date1.getMonth(),
               isTimeOnly ? 1 : isYearOrMonth ? 1 : date1.getDate(),
               !isHourOrMinute ? 0 : date1.getHours(),
-              !isMinute ? 0 : 5 * Math.floor(date1.getMinutes() / 5));
+              !isMinute ? 0 : settings.minTimeGap * Math.floor(date1.getMinutes() / settings.minTimeGap));
             date2 = new Date(
               isTimeOnly ? 2000 : date2.getFullYear(),
               isTimeOnly ? 0 : isYear ? 0 : date2.getMonth(),
               isTimeOnly ? 1 : isYearOrMonth ? 1 : date2.getDate(),
               !isHourOrMinute ? 0 : date2.getHours(),
-              !isMinute ? 0 : 5 * Math.floor(date2.getMinutes() / 5));
+              !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap));
             return date2.getTime() - date1.getTime();
           },
           dateEqual: function (date1, date2, mode) {
@@ -832,7 +840,7 @@ $.fn.calendar = function(parameters) {
               minDate = startDate && settings.minDate ? new Date(Math.max(startDate, settings.minDate)) : startDate || settings.minDate;
               maxDate = settings.maxDate;
             }
-            minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), 5 * Math.ceil(minDate.getMinutes() / 5));
+            minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
             return !(!date ||
             (minDate && module.helper.dateDiff(date, minDate, mode) > 0) ||
             (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
@@ -843,7 +851,7 @@ $.fn.calendar = function(parameters) {
               minDate = startDate && settings.minDate ? new Date(Math.max(startDate, settings.minDate)) : startDate || settings.minDate;
               maxDate = settings.maxDate;
             }
-            minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), 5 * Math.ceil(minDate.getMinutes() / 5));
+            minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
             var isTimeOnly = settings.type === 'time';
             return !date ? date :
               (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0) ?
@@ -1072,6 +1080,7 @@ $.fn.calendar.settings = {
   startCalendar  : null,       // jquery object or selector for another calendar that represents the start date of a date range
   endCalendar    : null,       // jquery object or selector for another calendar that represents the end date of a date range
   multiMonth     : 1,          // show multiple months when in 'day' mode
+  minTimeGap     : 5,          // minimum time gap, it only can be 5, 10, 15, 20, 30
   showWeekNumbers: null,       // show Number of Week at the very first column of a dayView
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
