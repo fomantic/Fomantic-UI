@@ -1170,7 +1170,9 @@ $.fn.dropdown = function(parameters) {
               event.stopPropagation();
             },
             hide: function(event) {
-              module.determine.eventInModule(event, module.hide);
+              if(module.determine.eventInModule(event, module.hide)){
+                  event.preventDefault();
+              }
             }
           },
           select: {
