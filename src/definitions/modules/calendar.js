@@ -31,7 +31,14 @@ $.fn.calendar = function(parameters) {
     query          = arguments[0],
     methodInvoked  = (typeof query == 'string'),
     queryArguments = [].slice.call(arguments, 1),
-    returnedValue
+    returnedValue,
+    timeGapTable = {
+      '5': {'row': 4, 'column': 3 },
+      '10': {'row': 3, 'column': 2 },
+      '15': {'row': 2, 'column': 2 },
+      '20': {'row': 3, 'column': 1 },
+      '30': {'row': 2, 'column': 1 }
+    }
   ;
 
   $allModules
@@ -47,6 +54,7 @@ $.fn.calendar = function(parameters) {
         formatter = settings.formatter,
         parser = settings.parser,
         metadata = settings.metadata,
+        timeGap = timeGapTable[settings.minTimeGap],
         error = settings.error,
 
         eventNamespace = '.' + namespace,
@@ -211,8 +219,8 @@ $.fn.calendar = function(parameters) {
             var startMonth = display.getMonth() + monthOffset;
             var year = display.getFullYear();
 
-            var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : 3;
-            var rows = isDay || isHour ? 6 : 4;
+            var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
+            var rows = isDay || isHour ? 6 : timeGap['row'];
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
@@ -307,7 +315,7 @@ $.fn.calendar = function(parameters) {
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
                     isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute) :
-                      isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * 5);
+                      isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
                   var cellText = isYear ? i :
                     isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
                       formatter.time(cellDate, settings, true);
@@ -1072,6 +1080,7 @@ $.fn.calendar.settings = {
   startCalendar  : null,       // jquery object or selector for another calendar that represents the start date of a date range
   endCalendar    : null,       // jquery object or selector for another calendar that represents the end date of a date range
   multiMonth     : 1,          // show multiple months when in 'day' mode
+  minTimeGap     : 5,          // minimum time gap, it only can be 5, 10, 15, 20, 30
   showWeekNumbers: null,       // show Number of Week at the very first column of a dayView
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
