@@ -1671,10 +1671,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.selected(value, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
@@ -1687,10 +1684,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.value(value, text, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
