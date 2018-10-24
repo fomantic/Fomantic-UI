@@ -483,9 +483,9 @@ $.fn.calendar = function(parameters) {
               if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
                 //arrow keys
                 var mode = module.get.mode();
-                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : 3;
+                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
                 var increment = event.keyCode === 37 ? -1 : event.keyCode === 38 ? -bigIncrement : event.keyCode == 39 ? 1 : bigIncrement;
-                increment *= mode === 'minute' ? 5 : 1;
+                increment *= mode === 'minute' ? settings.minTimeGap : 1;
                 var focusDate = module.get.focusDate() || module.get.date() || new Date();
                 var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
                 var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
