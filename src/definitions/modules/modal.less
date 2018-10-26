@@ -114,6 +114,7 @@
 .ui.modal > .image.content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Image */
@@ -122,6 +123,7 @@
   flex: 0 1 auto;
   width: @imageWidth;
   align-self: @imageVerticalAlign;
+  max-width: 100%;
 }
 .ui.modal > [class*="top aligned"] {
   align-self: top;
