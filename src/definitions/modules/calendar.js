@@ -316,6 +316,13 @@ $.fn.calendar = function(parameters) {
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
                   var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode);
+                  if (disabled) {
+                    var disabledReason = module.helper.disabledReason(cellDate, mode);
+                    if (disabledReason !== null) {
+                      cell.data(metadata.title, disabledReason.title);
+                      cell.data(metadata.message, disabledReason.message);
+                    }
+                  }
                   var active = module.helper.dateEqual(cellDate, date, mode);
                   var isToday = module.helper.dateEqual(cellDate, today, mode);
                   cell.toggleClass(className.adjacentCell, adjacent);
@@ -790,7 +797,28 @@ $.fn.calendar = function(parameters) {
 
         helper: {
           isDisabled: function(date, mode) {
-            return (mode === 'day' && settings.disabledDaysOfWeek.includes(date.getDay()))
+            return mode === 'day' && (settings.disabledDaysOfWeek.includes(date.getDay()) || settings.disabledDates.some(function(d){
+              if (d instanceof Date) {
+                return module.helper.dateEqual(date, d, mode);
+              }
+              if (d !== null && typeof d === 'object') {
+                return module.helper.dateEqual(date, d[metadata.date], mode)
+              }
+            }));
+          },
+          disabledReason: function(date, mode) {
+            if (mode === 'day') {
+              for (var i = 0; i < settings.disabledDates.length; i++) {
+                var d = settings.disabledDates[i];
+                if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
+                  var reason = {};
+                  reason[metadata.title] = d[metadata.title];
+                  reason[metadata.message] = d[metadata.message];
+                  return reason;
+                }
+              }
+            }
+            return null;
           },
           sanitiseDate: function (date) {
             if (!date) {
@@ -1076,6 +1104,7 @@ $.fn.calendar.settings = {
   endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
   multiMonth         : 1,          // show multiple months when in 'day' mode
   showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
+  disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
@@ -1436,7 +1465,9 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
-    monthOffset: 'monthOffset'
+    monthOffset: 'monthOffset',
+    title: 'title',
+    message: 'message'
   }
 };
 
