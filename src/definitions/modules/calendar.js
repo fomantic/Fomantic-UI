@@ -315,7 +315,7 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
-                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || (mode === 'day' && settings.disabledDaysOfWeek.includes(cellDate.getDay()));
+                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode);
                   var active = module.helper.dateEqual(cellDate, date, mode);
                   var isToday = module.helper.dateEqual(cellDate, today, mode);
                   cell.toggleClass(className.adjacentCell, adjacent);
@@ -495,7 +495,7 @@ $.fn.calendar = function(parameters) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
-                if (date && !settings.isDisabled(date, mode) && !(mode === 'day' && settings.disabledDaysOfWeek.includes(date.getDay())) ) {
+                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode)) {
                   module.selectDate(date);
                 }
                 //disable form submission:
@@ -789,6 +789,9 @@ $.fn.calendar = function(parameters) {
         },
 
         helper: {
+          isDisabled: function(date, mode) {
+            return (mode === 'day' && settings.disabledDaysOfWeek.includes(date.getDay()))
+          },
           sanitiseDate: function (date) {
             if (!date) {
               return undefined;
