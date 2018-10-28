@@ -801,7 +801,7 @@ $.fn.calendar = function(parameters) {
 
         helper: {
           isDisabled: function(date, mode) {
-            return mode === 'day' && (settings.disabledDaysOfWeek.includes(date.getDay()) || settings.disabledDates.some(function(d){
+            return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
