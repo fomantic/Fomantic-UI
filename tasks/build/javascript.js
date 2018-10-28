@@ -15,6 +15,7 @@ const
   flatten    = require('gulp-flatten'),
   gulpif     = require('gulp-if'),
   header     = require('gulp-header'),
+  normalize  = require('normalize-path'),
   plumber    = require('gulp-plumber'),
   print      = require('gulp-print').default,
   rename     = require('gulp-rename'),
@@ -117,7 +118,7 @@ module.exports = function (callback) {
 
 module.exports.watch = function (type, config) {
   gulp
-    .watch([config.paths.source.definitions + '/**/*.js'])
+    .watch([normalize(config.paths.source.definitions + '/**/*.js')])
     .on('all', function (event, path) {
       console.log('Change in javascript detected');
       return gulp.series((callback) => buildJS(path, type, config, callback))();

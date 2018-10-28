@@ -3,19 +3,20 @@
  *******************************/
 
 var
-  gulp    = require('gulp'),
+  gulp      = require('gulp'),
 
   // gulp dependencies
-  chmod   = require('gulp-chmod'),
-  gulpif  = require('gulp-if'),
-  print   = require('gulp-print').default,
+  chmod     = require('gulp-chmod'),
+  gulpif    = require('gulp-if'),
+  normalize = require('normalize-path'),
+  print     = require('gulp-print').default,
 
   // config
-  config  = require('../config/user'),
-  tasks   = require('../config/tasks'),
-  install = require('../config/project/install'),
+  config    = require('../config/user'),
+  tasks     = require('../config/tasks'),
+  install   = require('../config/project/install'),
 
-  log     = tasks.log
+  log       = tasks.log
 ;
 
 function build(src, config) {
@@ -52,7 +53,7 @@ module.exports = function (callback) {
 
 module.exports.watch = function (type, config) {
   gulp
-    .watch([config.paths.source.themes + '/**/assets/**/*.*'])
+    .watch([normalize(config.paths.source.themes + '/**/assets/**/*.*')])
     .on('all', function (event, path) {
       console.log('Change in assets detected');
       return gulp.series((callback) => buildAssets(path, config, callback))();
