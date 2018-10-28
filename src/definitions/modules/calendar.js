@@ -216,6 +216,7 @@ $.fn.calendar = function(parameters) {
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
+            var tooltipPosition = container.hasClass("left") ? "right center" : "left center";
             container.empty();
             if (pages > 1) {
               pageGrid = $('<div/>').addClass(className.grid).appendTo(container);
@@ -320,6 +321,7 @@ $.fn.calendar = function(parameters) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
                       cell.attr("data-tooltip", disabledReason[metadata.message]);
+                      cell.attr("data-position", tooltipPosition);
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
