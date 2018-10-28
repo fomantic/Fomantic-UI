@@ -319,8 +319,7 @@ $.fn.calendar = function(parameters) {
                   if (disabled) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
-                      cell.data(metadata.title, disabledReason.title);
-                      cell.data(metadata.message, disabledReason.message);
+                      cell.attr("data-tooltip", disabledReason[metadata.title]);
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
@@ -385,7 +384,7 @@ $.fn.calendar = function(parameters) {
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent);
+              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -453,6 +452,9 @@ $.fn.calendar = function(parameters) {
             event.stopPropagation();
             isTouchDown = false;
             var target = $(event.target);
+            if (target.hasClass("disabled")) {
+              return;
+            }
             var parent = target.parent();
             if (parent.data(metadata.date) || parent.data(metadata.focusDate) || parent.data(metadata.mode)) {
               //clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
@@ -813,7 +815,6 @@ $.fn.calendar = function(parameters) {
                 if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
                   var reason = {};
                   reason[metadata.title] = d[metadata.title];
-                  reason[metadata.message] = d[metadata.message];
                   return reason;
                 }
               }
