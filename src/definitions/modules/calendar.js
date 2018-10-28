@@ -319,7 +319,7 @@ $.fn.calendar = function(parameters) {
                   if (disabled) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
-                      cell.attr("data-tooltip", disabledReason[metadata.title]);
+                      cell.attr("data-tooltip", disabledReason[metadata.message]);
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
@@ -814,7 +814,7 @@ $.fn.calendar = function(parameters) {
                 var d = settings.disabledDates[i];
                 if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
                   var reason = {};
-                  reason[metadata.title] = d[metadata.title];
+                  reason[metadata.message] = d[metadata.message];
                   return reason;
                 }
               }
@@ -1467,7 +1467,6 @@ $.fn.calendar.settings = {
     maxDate: 'maxDate',
     mode: 'mode',
     monthOffset: 'monthOffset',
-    title: 'title',
     message: 'message'
   }
 };
