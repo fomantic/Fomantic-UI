@@ -806,7 +806,7 @@ $.fn.calendar = function(parameters) {
                 return module.helper.dateEqual(date, d, mode);
               }
               if (d !== null && typeof d === 'object') {
-                return module.helper.dateEqual(date, d[metadata.date], mode)
+                return module.helper.dateEqual(date, d[metadata.date], mode);
               }
             }));
           },
