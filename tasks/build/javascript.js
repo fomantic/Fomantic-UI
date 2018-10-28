@@ -40,12 +40,13 @@ const
 
 /**
  * Concat and uglify the Javascript files
+ * @param {string|array} src - source files
  * @param type
  * @param config
  * @return {*}
  */
-function build(type, config) {
-  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.js', {since: gulp.lastRun('build-javascript')})
+function build(src, type, config) {
+  return gulp.src(src)
     .pipe(plumber())
     .pipe(flatten())
     .pipe(replace(comments.license.in, comments.license.out))
@@ -83,15 +84,20 @@ function pack(type, compress) {
     ;
 }
 
-function buildJS(type, config, callback) {
+function buildJS(src, type, config, callback) {
   if (!install.isSetup()) {
     console.error('Cannot build Javascript. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
+  if (callback === undefined) {
+    callback = src;
+    src      = output.uncompressed + '/**/' + globs.components + globs.ignored + '.js';
+  }
+
   // copy source javascript
-  var js         = () => build(type, config);
+  var js         = () => build(src, type, config);
   js.displayName = "Building un/compressed Javascript";
 
   var packUncompressed         = () => pack(type, false);
@@ -103,7 +109,17 @@ function buildJS(type, config, callback) {
   gulp.series(js, gulp.parallel(packUncompressed, packCompressed))(callback);
 }
 
-module.exports         = function (callback) {
+module.exports = function (callback) {
   buildJS(false, config, callback);
 };
+
+module.exports.watch = function (type, config) {
+  gulp
+    .watch([config.paths.source.themes + '/**/assets/**/*.*'])
+    .on('all', function (event, path) {
+      console.log('Change in javascript detected');
+      return gulp.series((callback) => buildJS(path, type, config, callback))();
+    });
+};
+
 module.exports.buildJS = buildJS;

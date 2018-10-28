@@ -18,23 +18,28 @@ var
   log     = tasks.log
 ;
 
-function build(config) {
-  return gulp.src(config.paths.source.themes + '/**/assets/**/*.*', {since: gulp.lastRun('build-assets')})
+function build(src, config) {
+  return gulp.src(src)
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(config.paths.output.themes))
     .pipe(print(log.created))
     ;
 }
 
-function buildAssets(config, callback) {
+function buildAssets(src, config, callback) {
   if (!install.isSetup()) {
     console.error('Cannot build assets. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
+  if (callback === undefined) {
+    callback = src;
+    src      = config.paths.source.themes + '/**/assets/**/*.*';
+  }
+
   // copy assets
-  var assets         = () => build(config);
+  var assets         = () => build(src, config);
   assets.displayName = "Building Assets";
 
   gulp.series(assets)(callback);
@@ -42,6 +47,15 @@ function buildAssets(config, callback) {
 
 module.exports = function (callback) {
   buildAssets(config, callback);
+};
+
+module.exports.watch = function (type, config) {
+  gulp
+    .watch([config.paths.source.definitions + '/**/*.js'])
+    .on('all', function (event, path) {
+      console.log('Change in assets detected');
+      return gulp.series((callback) => buildAssets(path, config, callback))();
+    });
 };
 
 module.exports.buildAssets = buildAssets;

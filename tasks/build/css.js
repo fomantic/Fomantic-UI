@@ -11,7 +11,6 @@ const
   // gulp dependencies
   autoprefixer = require('gulp-autoprefixer'),
   chmod        = require('gulp-chmod'),
-  clone        = require('gulp-clone'),
   concatCSS    = require('gulp-concat-css'),
   dedupe       = require('gulp-dedupe'),
   flatten      = require('gulp-flatten'),
@@ -19,10 +18,12 @@ const
   header       = require('gulp-header'),
   less         = require('gulp-less'),
   minifyCSS    = require('gulp-clean-css'),
+  normalize    = require('normalize-path'),
   plumber      = require('gulp-plumber'),
   print        = require('gulp-print').default,
   rename       = require('gulp-rename'),
   replace      = require('gulp-replace'),
+  replaceExt   = require('replace-ext'),
   rtlcss       = require('gulp-rtlcss'),
 
   // config
@@ -44,13 +45,14 @@ const
 
 /**
  * Builds the css
+ * @param src
  * @param type
  * @param compress
  * @param config
  * @param opts
  * @return {*}
  */
-function build(type, compress, config, opts) {
+function build(src, type, compress, config, opts) {
   var fileExtension;
   if (type === 'rtl' && compress) {
     fileExtension = settings.rename.rtlMinCSS;
@@ -60,7 +62,7 @@ function build(type, compress, config, opts) {
     fileExtension = settings.rename.minCSS;
   }
 
-  return gulp.src(config.paths.source.definitions + '/**/' + config.globs.components + '.less', opts)
+  return gulp.src(src, opts)
     .pipe(plumber(settings.plumber.less))
     .pipe(less(settings.less))
     .pipe(autoprefixer(settings.prefix))
@@ -110,17 +112,17 @@ function pack(type, compress) {
     ;
 }
 
-function buildCSS(type, config, opts, callback) {
+function buildCSS(src, type, config, opts, callback) {
   if (!install.isSetup()) {
     console.error('Cannot build CSS files. Run "gulp install" to set-up Semantic');
     callback();
     return;
   }
 
-  var buildUncompressed         = () => build(type, false, config, opts);
+  var buildUncompressed         = () => build(src, type, false, config, opts);
   buildUncompressed.displayName = 'Building uncompressed CSS';
 
-  var buildCompressed         = () => build(type, true, config, opts);
+  var buildCompressed         = () => build(src, type, true, config, opts);
   buildCompressed.displayName = 'Building compressed CSS';
 
   var packUncompressed         = () => pack(type, false);
@@ -129,34 +131,82 @@ function buildCSS(type, config, opts, callback) {
   var packCompressed         = () => pack(type, true);
   packCompressed.displayName = 'Packing compressed CSS';
 
-
   gulp.parallel(
     gulp.series(buildUncompressed, packUncompressed),
     gulp.series(buildCompressed, packCompressed)
   )(callback);
 }
 
-function full(callback) {
-  buildCSS(false, config, {}, callback);
+function rtlAndNormal(src, callback) {
+  if (callback === undefined) {
+    callback = src;
+    src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
+  }
+
+  var rtl         = (callback) => buildCSS(src, 'rtl', config, {}, callback);
+  rtl.displayName = "CSS Right-To-Left";
+  var css         = (callback) => buildCSS(src, 'default', config, {}, callback);
+  css.displayName = "CSS";
+
+  if (config.rtl === true || config.rtl === 'Yes') {
+    rtl(callback);
+  } else if (config.rtl === 'both') {
+    gulp.series(rtl, css)(callback);
+  } else {
+    css(callback);
+  }
 }
 
-function incremental(callback) {
-  buildCSS(false, config, {since: gulp.lastRun(incremental)}, callback);
-}
+function docs(src, callback) {
+  if (callback === undefined) {
+    callback = src;
+    src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
+  }
 
-function fullRTL(callback) {
-  buildCSS('rtl', config, {}, callback);
-}
+  var func         = (callback) => buildCSS(src, 'docs', config, {}, callback);
+  func.displayName = "CSS Docs";
 
-function incrementalRTL(callback) {
-  buildCSS('rtl', config, {since: gulp.lastRun(incrementalRTL)}, callback);
+  func(callback);
 }
 
 // Default tasks
-module.exports                = full;
-module.exports.incremental    = incremental;
-// RTL tasks
-module.exports.rtl            = fullRTL;
-module.exports.incrementalRTL = incrementalRTL;
+module.exports = rtlAndNormal;
+
+/**
+ * Watch changes in CSS files and call the correct build pipe
+ * @param type
+ * @param config
+ */
+module.exports.watch = function (type, config) {
+  var method = type === 'docs' ? docs : rtlAndNormal;
+
+  gulp.watch([normalize(config.paths.source.config)])
+    .on('all', function () {
+      return gulp.series(method)();
+    });
+
+  gulp.watch([
+    normalize(config.paths.source.definitions + '/**/*.less'),
+    normalize(config.paths.source.site + '/**/*.{overrides,variables}'),
+    normalize(config.paths.source.themes + '/**/*.{overrides,variables}')
+  ])
+    .on('all', function (event, path) {
+      var lessPath;
+      if (path.indexOf(config.paths.source.themes) !== -1) {
+        console.log('Change detected in packaged theme');
+        lessPath = replaceExt(path, '.less');
+        lessPath = lessPath.replace(tasks.regExp.theme, config.paths.source.definitions);
+      } else if (path.indexOf(config.paths.source.site) !== -1) {
+        console.log('Change detected in site theme');
+        lessPath = replaceExt(path, '.less');
+        lessPath = lessPath.replace(config.paths.source.site, config.paths.source.definitions);
+      } else {
+        console.log('Change detected in definition');
+        lessPath = path;
+      }
+      return gulp.series((callback) => method(lessPath, callback))();
+    });
+};
+
 // Expose build css method
-module.exports.buildCSS       = buildCSS;
+module.exports.buildCSS = buildCSS;
