@@ -19,7 +19,7 @@ var
 ;
 
 function build(src, config) {
-  return gulp.src(src)
+  return gulp.src(src, {base: config.paths.source.themes})
     .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(gulp.dest(config.paths.output.themes))
     .pipe(print(log.created))
@@ -34,7 +34,8 @@ function buildAssets(src, config, callback) {
   }
 
   if (callback === undefined) {
-    callback = src;
+    callback = config;
+    config   = src;
     src      = config.paths.source.themes + '/**/assets/**/*.*';
   }
 
@@ -51,7 +52,7 @@ module.exports = function (callback) {
 
 module.exports.watch = function (type, config) {
   gulp
-    .watch([config.paths.source.definitions + '/**/*.js'])
+    .watch([config.paths.source.themes + '/**/assets/**/*.*'])
     .on('all', function (event, path) {
       console.log('Change in assets detected');
       return gulp.series((callback) => buildAssets(path, config, callback))();

@@ -92,8 +92,10 @@ function buildJS(src, type, config, callback) {
   }
 
   if (callback === undefined) {
-    callback = src;
-    src      = output.uncompressed + '/**/' + globs.components + globs.ignored + '.js';
+    callback = config;
+    config   = type;
+    type     = src;
+    src      = config.paths.output.uncompressed + '/**/' + config.globs.components + config.globs.ignored + '.js';
   }
 
   // copy source javascript
@@ -115,7 +117,7 @@ module.exports = function (callback) {
 
 module.exports.watch = function (type, config) {
   gulp
-    .watch([config.paths.source.themes + '/**/assets/**/*.*'])
+    .watch([config.paths.source.definitions + '/**/*.js'])
     .on('all', function (event, path) {
       console.log('Change in javascript detected');
       return gulp.series((callback) => buildJS(path, type, config, callback))();
