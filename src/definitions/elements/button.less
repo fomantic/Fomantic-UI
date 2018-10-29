@@ -849,8 +849,6 @@
 }
 .ui.basic.vertical.buttons .button {
   border-left: none;
-}
-.ui.basic.vertical.buttons .button {
   border-left-width: 0px;
   border-top: @basicGroupBorder;
 }
@@ -943,6 +941,8 @@
 .ui.labeled.icon.buttons > .button > .icon,
 .ui.labeled.icon.button > .icon {
   position: absolute;
+  top: 0em;
+  left: 0em;
   height: 100%;
   line-height: 1;
   border-radius: 0px;
@@ -955,13 +955,6 @@
   background-color: @labeledIconBackgroundColor;
   color: @labeledIconColor;
   box-shadow: @labeledIconLeftShadow;
-}
-
-/* Left Labeled */
-.ui.labeled.icon.buttons > .button > .icon,
-.ui.labeled.icon.button > .icon {
-  top: 0em;
-  left: 0em;
 }
 
 /* Right Labeled */
