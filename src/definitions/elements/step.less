@@ -104,8 +104,6 @@
 /* Last Step */
 .ui.steps .step:last-child {
   border-radius: 0em @stepsBorderRadius @stepsBorderRadius 0em;
-}
-.ui.steps .step:last-child {
   border-right: none;
   margin-right: 0em;
 }
@@ -231,17 +229,12 @@
 
 /* Arrow */
 .ui.vertical.steps .step:after {
-  display: none;
-}
-.ui.vertical.steps .step:after {
   top: @verticalArrowTopOffset;
   right: @verticalArrowRightOffset;
   border-width: @verticalArrowBorderWidth;
-}
-
-.ui.vertical.steps .step:after {
   display: @verticalArrowDisplay;
 }
+
 .ui.vertical.steps .active.step:after {
   display: @verticalActiveArrowDisplay;
 }
@@ -336,9 +329,6 @@
 }
 
 /* Active Arrow */
-.ui.steps .step:after {
-  display: @arrowDisplay;
-}
 .ui.steps .active.step:after {
   display: @activeArrowDisplay;
 }
