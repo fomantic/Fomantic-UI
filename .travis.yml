@@ -1,7 +1,7 @@
 language: node_js
 
 node_js:
-  - "lts/*"
+  - 10
 
 # Stop as soon as an error is trigerred
 matrix:
