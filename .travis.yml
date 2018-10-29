@@ -7,5 +7,11 @@ node_js:
 matrix:
   fast_finish: true
 
+# Caching node_modules folder for speed up build
+cache:
+  directories:
+    - node_modules
+
 before_install:
+  - npm prune
   - sh preinstall.sh
