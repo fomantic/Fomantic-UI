@@ -777,6 +777,15 @@ i.icon.text.height:before { content: "\f034"; }
 i.icon.text.width:before { content: "\f035"; }
 i.icon.th:before { content: "\f00a"; }
 i.icon.th.large:before { content: "\f009"; }
+i.icon.th.large:not(.list) { font-size: @medium; vertical-align: baseline; }
+i.icon.th.large.mini { font-size: @mini; vertical-align: baseline; }
+i.icon.th.large.tiny { font-size: @tiny; vertical-align: baseline; }
+i.icon.th.large.small { font-size: @small; vertical-align: baseline; }
+i.icon.th.large[class*="th large large"],
+i.icon.th.large[class*="large th large"] { font-size: @large; vertical-align: middle;}
+i.icon.th.large.big { font-size: @big; vertical-align: middle; }
+i.icon.th.large.huge { font-size: @huge; vertical-align: middle; }
+i.icon.th.large.massive { font-size: @massive; vertical-align: middle; }
 i.icon.th.list:before { content: "\f00b"; }
 i.icon.theater.masks:before { content: "\f630"; }
 i.icon.thermometer:before { content: "\f491"; }
