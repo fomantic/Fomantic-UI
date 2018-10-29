@@ -928,6 +928,9 @@ Floated Menu / Item
   border-bottom-width: @secondaryPointingBorderWidth;
   transition: @secondaryItemTransition;
 }
+.ui.secondary.pointing.menu .ui.dropdown .menu .item {
+  border-bottom-width: 0;
+}
 
 /* Item Types */
 .ui.secondary.pointing.menu .header.item {
@@ -1826,6 +1829,10 @@ Floated Menu / Item
   border: none;
   border-top: @arrowBorder;
   border-right: @arrowBorder;
+}
+.ui.pointing.menu .ui.dropdown .menu .item:after,
+.ui.vertical.pointing.menu .ui.dropdown .menu .item:after {
+  border: 0;
 }
 
 /* Active */
