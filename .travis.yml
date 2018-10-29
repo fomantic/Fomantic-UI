@@ -15,4 +15,5 @@ cache:
 before_install:
   - npm prune
   - mv semantic.json.example semantic.json
-  - sed -i -- 's/"autoInstall": false/"autoInstall": true/g' semantic.json
+  - sed -i '/"autoInstall": false/s/false/true/' semantic.json.example
+  
