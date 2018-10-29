@@ -383,13 +383,11 @@
 }
 .scrolling.dimmable > .dimmer {
   justify-content: flex-start;
+  position: fixed;
 }
 .scrolling.dimmable.dimmed > .dimmer {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-}
-.scrolling.dimmable > .dimmer {
-  position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
   margin: @scrollingMargin auto;
