@@ -16,3 +16,4 @@ before_install:
 env:
   global:
     - NODE_ENV=production
+    
