@@ -173,6 +173,9 @@
 .ui.modal .actions > .button {
   margin-left: @buttonDistance;
 }
+.ui.basic.modal > .actions {
+  border-top:none;
+}
 
 /*-------------------
        Responsive
@@ -303,6 +306,7 @@
 .ui.basic.modal > .close {
   top: @basicModalCloseTop;
   right: @basicModalCloseRight;
+  color: @basicInnerCloseColor;
 }
 
 .ui.inverted.dimmer > .basic.modal {
@@ -326,12 +330,6 @@
   top: auto !important;
 }
 
-/* Tablet and Mobile */
-@media only screen and (max-width : @largestTabletScreen) {
-  .ui.basic.modal > .close {
-    color: @basicInnerCloseColor;
-  }
-}
 
 
 /*******************************
@@ -434,8 +432,9 @@
   right: @innerCloseRight;
   color: @innerCloseColor;
 }
-
-
+.ui.basic.fullscreen.modal > .close {
+  color: @basicInnerCloseColor;
+}
 /*--------------
       Size
 ---------------*/
@@ -609,13 +608,13 @@
   border-top: @invertedActionBorder;
 }
 
-.ui.fullscreen.inverted.modal > .close {
-  color: @invertedInnerCloseColor;
+.ui.inverted.dimmer > .modal > .close {
+  color: @invertedDimmerCloseColor;
 }
 
 
 @media only screen and (max-width: @largestTabletScreen) {
-  .ui.inverted.modal > .close {
+  .ui.dimmer .inverted.modal > .close {
     color: @invertedCloseColor;
   }
 }
@@ -624,9 +623,7 @@
   color: @invertedCloseColor;
 }
 
-.ui.inverted.dimmer > .modal > .close {
-  color: @invertedDimmerCloseColor;
-}
+
 
 
 .loadUIOverrides();
