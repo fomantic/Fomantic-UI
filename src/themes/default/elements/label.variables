@@ -143,6 +143,13 @@
 @ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
 @rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
+/* Inverted */
+@invertedBackgroundColor: darken(@backgroundColor,20);
+@invertedBackground: @black;
+@invertedBoxShadowSize: 2px;
+@invertedBorderSize: 1px;
+
+@basicInvertedBorderColor: rgba(255, 255, 255, 0.5);
 
 /* Colors */
 @redTextColor: @white;
@@ -173,6 +180,9 @@
 @greyHoverTextColor: @white;
 @blackHoverTextColor: @white;
 
+@primaryHoverTextColor: @white;
+@secondaryHoverTextColor: @white;
+
 @primaryRibbonShadow: darken(@primaryColor, 10);
 @secondaryRibbonShadow: darken(@secondaryColor, 10);
 @redRibbonShadow: darken(@red, 10);
@@ -188,6 +198,22 @@
 @brownRibbonShadow: darken(@brown, 10);
 @greyRibbonShadow: darken(@grey, 10);
 @blackRibbonShadow: darken(@black, 10);
+
+@primaryInvertedRibbonShadow: darken(@lightPrimaryColor, 10);
+@secondaryInvertedRibbonShadow: darken(@lightSecondaryColor, 10);
+@redInvertedRibbonShadow: darken(@lightRed, 10);
+@orangeInvertedRibbonShadow: darken(@lightOrange, 10);
+@yellowInvertedRibbonShadow: darken(@lightYellow, 10);
+@oliveInvertedRibbonShadow: darken(@lightOlive, 10);
+@greenInvertedRibbonShadow: darken(@lightGreen, 10);
+@tealInvertedRibbonShadow: darken(@lightTeal, 10);
+@blueInvertedRibbonShadow: darken(@lightBlue, 10);
+@violetInvertedRibbonShadow: darken(@lightViolet, 10);
+@purpleInvertedRibbonShadow: darken(@lightPurple, 10);
+@pinkInvertedRibbonShadow: darken(@lightPink, 10);
+@brownInvertedRibbonShadow: darken(@lightBrown, 10);
+@greyInvertedRibbonShadow: lighten(@lightGrey, 5);
+@blackInvertedRibbonShadow: lighten(@lightBlack, 5);
 
 @primaryTextColor: @invertedTextColor;
 @secondaryTextColor: @invertedTextColor;
