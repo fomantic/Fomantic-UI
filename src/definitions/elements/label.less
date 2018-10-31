@@ -231,7 +231,17 @@ a.ui.label {
   box-shadow: @tagCircleBoxShadow;
   border-radius: @circularRadius;
 }
-
+.ui.basic.tag.labels .label:before,
+.ui.basic.tag.label:before {
+  border-color: inherit;
+  border-width: @basicBorderWidth 0 0 @basicBorderWidth;
+  border-style: inherit;
+  right: calc(100% + @basicBorderWidth);
+}
+.ui.basic.tag.labels .label:after,
+.ui.basic.tag.label:after {
+  box-shadow: @basicTagCircleBoxShadow;
+}
 
 /*-------------------
     Corner Label

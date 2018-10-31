@@ -119,6 +119,7 @@
 @tagCircleSize: 0.5em;
 @tagHorizontalPadding: 1.5em;
 @tagCircleBoxShadow: 0 -1px 1px 0 rgba(0, 0, 0, 0.3);
+@basicTagCircleBoxShadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.8);
 @tagTriangleRightOffset: 100%;
 @tagTriangleTopOffset: 50%;
 @tagTriangleSize: 1.56em;
