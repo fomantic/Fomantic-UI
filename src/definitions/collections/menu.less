@@ -313,14 +313,10 @@
 ---------------*/
 
 .ui.menu .item > .label {
-  background: @labelBackground;
-  color: @labelTextColor;
   margin-left: @labelTextMargin;
   padding: @labelVerticalPadding @labelHorizontalPadding;
 }
 .ui.vertical.menu .item > .label {
-  background: @labelBackground;
-  color: @labelTextColor;
   margin-top: @labelOffset;
   margin-bottom: @labelOffset;
   padding: @labelVerticalPadding @labelHorizontalPadding;
@@ -328,7 +324,10 @@
 .ui.menu .item > .floating.label {
   padding: @labelVerticalPadding @labelHorizontalPadding;
 }
-
+.ui.menu .item > .label:not(.primary):not(.secondary):not(.red):not(.orange):not(.yellow):not(.olive):not(.green):not(.teal):not(.blue):not(.violet):not(.purple):not(.pink):not(.brown):not(.grey):not(.black) {
+  background: @labelBackground;
+  color: @labelTextColor;
+}
 /*--------------
      Images
 ---------------*/
