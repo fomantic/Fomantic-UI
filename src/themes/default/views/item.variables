@@ -156,7 +156,6 @@
 @unstackableMobileImageWidth: 125px;
 
 /* Inverted */
-@invertedItemsBackground: @black;
 @invertedBackground: @background;
 @invertedContentBackground: @contentBackground;
 @invertedExtraBackground: @extraBackground;
