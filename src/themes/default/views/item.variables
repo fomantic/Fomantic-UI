@@ -65,6 +65,7 @@
 @contentBorder: none;
 @contentBorderRadius: 0em;
 @contentBoxShadow: none;
+@contentColor: @textColor;
 
 /* Header */
 @headerMargin: -@lineHeightOffset 0em 0em;
@@ -164,6 +165,7 @@
 @invertedHeaderLinkHoverColor: @invertedHoveredTextColor;
 @invertedMetaLinkColor: @invertedLightTextColor;
 @invertedMetaLinkHoverColor: @invertedTextColor;
+@invertedContentColor: @invertedTextColor;
 @invertedContentLinkColor: lighten(saturate(@linkColor, 30), 25, relative);
 @invertedContentLinkHoverColor: @linkColor;
 @invertedExtraColor: @invertedLightTextColor;
