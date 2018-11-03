@@ -236,7 +236,7 @@ a.ui.label {
   border-color: inherit;
   border-width: @basicBorderWidth 0 0 @basicBorderWidth;
   border-style: inherit;
-  right: calc(100% + @basicBorderWidth);
+  right: e(%("calc(100%% + %d)", @basicBorderWidth));
 }
 .ui.basic.tag.labels .label:after,
 .ui.basic.tag.label:after {
@@ -728,7 +728,7 @@ a.ui.basic.label:hover {
     border-width: @invertedBorderSize 0 0 @invertedBorderSize;
     border-style: inherit;
     background-color: @invertedBackground;
-    right: calc(100% + @invertedBorderSize);
+    right: e(%("calc(100%% + %d)", @invertedBorderSize));
   }
   .ui.inverted.tag.labels .@{color}.label:hover:before,
   .ui.inverted.@{color}.tag.label:hover:before {
