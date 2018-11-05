@@ -148,6 +148,7 @@ ol.ui.list ol li,
 .ui.list .list > .item > .content,
 .ui.list > .item > .content {
   line-height: @contentLineHeight;
+  color: @contentColor;
 }
 .ui.list .list > .item > .image + .content,
 .ui.list .list > .item > .icon + .content,
@@ -372,7 +373,10 @@ ol.ui.list ol li,
 .ui.inverted.list > .item .description {
   color: @invertedDescriptionColor;
 }
-
+.ui.inverted.list .list > .item > .content,
+.ui.inverted.list > .item > .content {
+  color: @invertedContentColor;
+}
 /* Item Link */
 .ui.inverted.list .list > a.item,
 .ui.inverted.list > a.item {
@@ -490,22 +494,18 @@ ol.ui.list ol li,
 }
 
 /* Inverted */
-.ui.inverted.selection.list > .item,
 .ui.inverted.selection.list > .item {
   background: @invertedSelectionListBackground;
   color: @invertedSelectionListColor;
 }
-.ui.inverted.selection.list > .item:hover,
 .ui.inverted.selection.list > .item:hover {
   background: @invertedSelectionListHoverBackground;
   color: @invertedSelectionListHoverColor;
 }
-.ui.inverted.selection.list > .item:active,
 .ui.inverted.selection.list > .item:active {
   background: @invertedSelectionListDownBackground;
   color: @invertedSelectionListDownColor;
 }
-.ui.inverted.selection.list > .item.active,
 .ui.inverted.selection.list > .item.active {
   background: @invertedSelectionListActiveBackground;
   color: @invertedSelectionListActiveColor;
