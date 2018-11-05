@@ -73,6 +73,10 @@
 @itemGroupMargin: 0em 0em -@rowSpacing;
 @itemMargin: 0em 0em @rowSpacing;
 
+/* Stackable */
+@stackableRowSpacing: 2rem;
+@stackableGutter: 2rem;
+
 /* Size */
 @miniTextValueSize: 1rem;
 @miniValueSize: 1.5rem;
