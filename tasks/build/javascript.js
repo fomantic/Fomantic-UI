@@ -100,13 +100,13 @@ function buildJS(src, type, config, callback) {
   }
 
   // copy source javascript
-  var js         = () => build(src, type, config);
+  const js       = () => build(src, type, config);
   js.displayName = "Building un/compressed Javascript";
 
-  var packUncompressed         = () => pack(type, false);
+  const packUncompressed       = () => pack(type, false);
   packUncompressed.displayName = 'Packing uncompressed Javascript';
 
-  var packCompressed         = () => pack(type, true);
+  const packCompressed       = () => pack(type, true);
   packCompressed.displayName = 'Packing compressed Javascript';
 
   gulp.series(js, gulp.parallel(packUncompressed, packCompressed))(callback);
@@ -116,12 +116,36 @@ module.exports = function (callback) {
   buildJS(false, config, callback);
 };
 
+// We keep the changed files in an array to call build with all of them at the same time
+let timeout, files = [];
+
 module.exports.watch = function (type, config) {
   gulp
     .watch([normalize(config.paths.source.definitions + '/**/*.js')])
     .on('all', function (event, path) {
-      console.log('Change in javascript detected');
-      return gulp.series((callback) => buildJS(path, type, config, callback))();
+      // We don't handle deleted files yet
+      if (event === 'unlink' || event === 'unlinkDir') {
+        return;
+      }
+
+      // Clear timeout
+      timeout && clearTimeout(timeout);
+
+      // Add file to internal changed files array
+      if (!files.includes(path)) {
+        files.push(path);
+      }
+
+      // Update timeout
+      timeout = setTimeout(() => {
+        console.log('Change in javascript detected');
+        // Copy files to build in another array
+        const buildFiles = [...files];
+        // Call method
+        gulp.series((callback) => buildJS(buildFiles, type, config, callback))();
+        // Reset internal changed files array
+        files = [];
+      }, 1000);
     });
 };
 
