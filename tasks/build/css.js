@@ -172,6 +172,9 @@ function docs(src, callback) {
 // Default tasks
 module.exports = rtlAndNormal;
 
+// We keep the changed files in an array to call build with all of them at the same time
+var timeout, files = [];
+
 /**
  * Watch changes in CSS files and call the correct build pipe
  * @param type
@@ -180,18 +183,32 @@ module.exports = rtlAndNormal;
 module.exports.watch = function (type, config) {
   var method = type === 'docs' ? docs : rtlAndNormal;
 
+  // Watch theme.config file
   gulp.watch([normalize(config.paths.source.config)])
     .on('all', function () {
+      // Clear timeout and reset files
+      timeout && clearTimeout(timeout);
+      files = [];
       return gulp.series(method)();
     });
 
+  // Watch any less / overrides / variables files
   gulp.watch([
     normalize(config.paths.source.definitions + '/**/*.less'),
     normalize(config.paths.source.site + '/**/*.{overrides,variables}'),
     normalize(config.paths.source.themes + '/**/*.{overrides,variables}')
   ])
     .on('all', function (event, path) {
-      var lessPath;
+      // We don't handle deleted files yet
+      if (event === 'unlink' || event === 'unlinkDir') {
+        return;
+      }
+
+      // Clear timeout
+      timeout && clearTimeout(timeout);
+
+      // Determine which LESS file has to be recompiled
+      let lessPath;
       if (path.indexOf(config.paths.source.themes) !== -1) {
         console.log('Change detected in packaged theme');
         lessPath = replaceExt(path, '.less');
@@ -204,7 +221,21 @@ module.exports.watch = function (type, config) {
         console.log('Change detected in definition');
         lessPath = path;
       }
-      return gulp.series((callback) => method(lessPath, callback))();
+
+      // Add file to internal changed files array
+      if (!files.includes(lessPath)) {
+        files.push(lessPath);
+      }
+
+      // Update timeout
+      timeout = setTimeout(() => {
+        // Copy files to build in another array
+        const buildFiles = [...files];
+        // Call method
+        gulp.series((callback) => method(buildFiles, callback))();
+        // Reset internal changed files array
+        files = [];
+      }, 1000);
     });
 };
 
