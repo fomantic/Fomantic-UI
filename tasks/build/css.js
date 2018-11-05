@@ -53,7 +53,7 @@ const
  * @return {*}
  */
 function build(src, type, compress, config, opts) {
-  var fileExtension;
+  let fileExtension;
   if (type === 'rtl' && compress) {
     fileExtension = settings.rename.rtlMinCSS;
   } else if (type === 'rtl') {
@@ -119,16 +119,16 @@ function buildCSS(src, type, config, opts, callback) {
     return;
   }
 
-  var buildUncompressed         = () => build(src, type, false, config, opts);
+  const buildUncompressed       = () => build(src, type, false, config, opts);
   buildUncompressed.displayName = 'Building uncompressed CSS';
 
-  var buildCompressed         = () => build(src, type, true, config, opts);
+  const buildCompressed       = () => build(src, type, true, config, opts);
   buildCompressed.displayName = 'Building compressed CSS';
 
-  var packUncompressed         = () => pack(type, false);
+  const packUncompressed       = () => pack(type, false);
   packUncompressed.displayName = 'Packing uncompressed CSS';
 
-  var packCompressed         = () => pack(type, true);
+  const packCompressed       = () => pack(type, true);
   packCompressed.displayName = 'Packing compressed CSS';
 
   gulp.parallel(
@@ -143,9 +143,9 @@ function rtlAndNormal(src, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
   }
 
-  var rtl         = (callback) => buildCSS(src, 'rtl', config, {}, callback);
+  const rtl       = (callback) => buildCSS(src, 'rtl', config, {}, callback);
   rtl.displayName = "CSS Right-To-Left";
-  var css         = (callback) => buildCSS(src, 'default', config, {}, callback);
+  const css       = (callback) => buildCSS(src, 'default', config, {}, callback);
   css.displayName = "CSS";
 
   if (config.rtl === true || config.rtl === 'Yes') {
@@ -163,7 +163,7 @@ function docs(src, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
   }
 
-  var func         = (callback) => buildCSS(src, 'docs', config, {}, callback);
+  const func       = (callback) => buildCSS(src, 'docs', config, {}, callback);
   func.displayName = "CSS Docs";
 
   func(callback);
@@ -173,7 +173,7 @@ function docs(src, callback) {
 module.exports = rtlAndNormal;
 
 // We keep the changed files in an array to call build with all of them at the same time
-var timeout, files = [];
+let timeout, files = [];
 
 /**
  * Watch changes in CSS files and call the correct build pipe
@@ -181,7 +181,7 @@ var timeout, files = [];
  * @param config
  */
 module.exports.watch = function (type, config) {
-  var method = type === 'docs' ? docs : rtlAndNormal;
+  const method = type === 'docs' ? docs : rtlAndNormal;
 
   // Watch theme.config file
   gulp.watch([normalize(config.paths.source.config)])
