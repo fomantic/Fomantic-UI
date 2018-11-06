@@ -28,7 +28,7 @@ module.exports = function () {
     return;
   }
 
-  //console.clear();
+  console.clear();
   console.log('Watching source files for changes');
 
   /*--------------

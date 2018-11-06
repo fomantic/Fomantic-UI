@@ -31,14 +31,20 @@ module.exports = function () {
   // use a different config
   config = configSetup.addDerivedValues(config);
 
+  console.clear();
+  console.log('Watching source files for changes');
+
   /*--------------
      Copy Source
   ---------------*/
 
   gulp
     .watch(['src/**/*.*'])
-    .on('all', function (path) {
-      console.clear();
+    .on('all', function (event, path) {
+      // We don't handle deleted files yet
+      if (event === 'unlink' || event === 'unlinkDir') {
+        return;
+      }
       return gulp.src(path, {
         base: 'src/'
       })
@@ -54,8 +60,11 @@ module.exports = function () {
 
   gulp
     .watch(['examples/**/*.*'])
-    .on('all', function (path) {
-      console.clear();
+    .on('all', function (event, path) {
+      // We don't handle deleted files yet
+      if (event === 'unlink' || event === 'unlinkDir') {
+        return;
+      }
       return gulp.src(path, {
         base: 'examples/'
       })
