@@ -119,6 +119,14 @@ function buildCSS(src, type, config, opts, callback) {
     return;
   }
 
+  if (callback === undefined) {
+    callback = opts;
+    opts     = config;
+    config   = type;
+    type     = src;
+    src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
+  }
+
   const buildUncompressed       = () => build(src, type, false, config, opts);
   buildUncompressed.displayName = 'Building uncompressed CSS';
 

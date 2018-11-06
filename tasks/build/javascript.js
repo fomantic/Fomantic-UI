@@ -96,7 +96,7 @@ function buildJS(src, type, config, callback) {
     callback = config;
     config   = type;
     type     = src;
-    src      = config.paths.output.uncompressed + '/**/' + config.globs.components + config.globs.ignored + '.js';
+    src      = config.paths.source.definitions + '/**/' + config.globs.components + (config.globs.ignored || '') + '.js';
   }
 
   // copy source javascript
