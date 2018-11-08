@@ -100,6 +100,7 @@ $.fn.slider = function(parameters) {
 
           isTouch = module.setup.testOutTouch();
           module.setup.layout();
+          module.setup.labels();
 
           if(!module.is.disabled()) {
             module.bind.events();
@@ -152,7 +153,6 @@ $.fn.slider = function(parameters) {
             $track = $module.find('.track');
             $trackFill = $module.find('.track-fill');
             offset = $thumb.width() / 2;
-            module.setup.labels();
           },
           labels: function() {
             if(module.is.labeled()) {
