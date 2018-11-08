@@ -777,6 +777,20 @@ $.fn.slider = function(parameters) {
           },
           rangeValue: function(first, second) {
             if(module.is.range()) {
+              var
+                min = module.get.min(),
+                max = module.get.max()
+              ;
+              if (first <= min) {
+                first = min;
+              } else if(first >= max){
+                first = max;
+              }
+              if (second <= min) {
+                second = min;
+              } else if(second >= max){
+                second = max;
+              }
               module.thumbVal = first;
               module.secondThumbVal = second;
               value = Math.abs(module.thumbVal - module.secondThumbVal);
