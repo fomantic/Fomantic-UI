@@ -93,7 +93,7 @@ $.fn.slider = function(parameters) {
       module = {
 
         initialize: function() {
-          module.debug('Initializing range slider', settings);
+          module.debug('Initializing slider', settings);
 
           currentRange += 1;
           documentEventID = currentRange;
@@ -112,7 +112,7 @@ $.fn.slider = function(parameters) {
         },
 
         instantiate: function() {
-          module.verbose('Storing instance of range', module);
+          module.verbose('Storing instance of slider', module);
           instance = module;
           $module
             .data(moduleNamespace, module)
@@ -120,7 +120,7 @@ $.fn.slider = function(parameters) {
         },
 
         destroy: function() {
-          module.verbose('Destroying previous range for', $module);
+          module.verbose('Destroying previous slider for', $module);
           clearInterval(instance.interval);
           module.unbind.events();
           module.unbind.slidingEvents();
@@ -143,7 +143,7 @@ $.fn.slider = function(parameters) {
             precision = module.get.precision();
             $thumb = $module.find('.thumb:not(.second)');
             $currThumb = $thumb;
-            if(module.is.doubled()) {
+            if(module.is.range()) {
               if($module.find('.thumb.second').length == 0) {
                 $module.find('.inner').append("<div class='thumb second'></div>");
               }
@@ -298,7 +298,7 @@ $.fn.slider = function(parameters) {
         event: {
           down: function(event, originalEvent) {
             event.preventDefault();
-            if(module.is.doubled()) {
+            if(module.is.range()) {
               var
                 eventPos = module.determine.eventPos(event, originalEvent),
                 newPos = module.determine.pos(eventPos)
@@ -374,7 +374,7 @@ $.fn.slider = function(parameters) {
 
         resync: function() {
           module.verbose('Resyncing thumb position based on value');
-          if(module.is.doubled()) {
+          if(module.is.range()) {
             module.update.position(module.secondThumbVal, $secondThumb);
           }
           module.update.position(module.thumbVal, $thumb);
@@ -417,8 +417,8 @@ $.fn.slider = function(parameters) {
         },
 
         is: {
-          doubled: function() {
-            return $module.hasClass(settings.className.doubled);
+          range: function() {
+            return $module.hasClass(settings.className.range);
           },
           hover: function() {
             return isHover;
@@ -551,11 +551,11 @@ $.fn.slider = function(parameters) {
           thumbValue: function(which) {
             switch(which) {
               case 'second':
-                if(module.is.doubled()) {
+                if(module.is.range()) {
                   return module.secondThumbVal;
                 }
                 else {
-                  module.error(error.notdouble);
+                  module.error(error.notrange);
                   break;
                 }
               case 'first':
@@ -569,11 +569,11 @@ $.fn.slider = function(parameters) {
           thumbPosition: function(which) {
             switch(which) {
               case 'second':
-                if(module.is.doubled()) {
+                if(module.is.range()) {
                   return secondPos;
                 }
                 else {
-                  module.error(error.notdouble);
+                  module.error(error.notrange);
                   break;
                 }
               case 'first':
@@ -775,8 +775,8 @@ $.fn.slider = function(parameters) {
               settings.onMove.call(element, value, thumbVal, secondThumbVal);
             });
           },
-          valueDouble: function(first, second) {
-            if(module.is.doubled()) {
+          rangeValue: function(first, second) {
+            if(module.is.range()) {
               module.thumbVal = first;
               module.secondThumbVal = second;
               value = Math.abs(module.thumbVal - module.secondThumbVal);
@@ -785,7 +785,7 @@ $.fn.slider = function(parameters) {
               settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
               settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
             } else {
-              module.error(error.notdouble);
+              module.error(error.notrange);
             }
           },
           position: function(position, which) {
@@ -815,7 +815,7 @@ $.fn.slider = function(parameters) {
             } else if(newValue >= max){
               newValue = max;
             }
-            if(!module.is.doubled()) {
+            if(!module.is.range()) {
               value = newValue;
               module.thumbVal = value;
             } else {
@@ -827,7 +827,7 @@ $.fn.slider = function(parameters) {
               value = Math.abs(module.thumbVal - module.secondThumbVal);
             }
             module.update.position(newValue);
-            module.debug('Setting range value to ' + value);
+            module.debug('Setting slider value to ' + value);
             if(typeof callback === 'function') {
               callback(value, module.thumbVal, module.secondThumbVal);
             }
@@ -839,7 +839,7 @@ $.fn.slider = function(parameters) {
               thumbVal = module.thumbVal || module.get.min(),
               secondThumbVal = module.secondThumbVal || module.get.min()
             ;
-            if(module.is.doubled()) {
+            if(module.is.range()) {
               if(!$targetThumb.hasClass('second')) {
                 position = newPos;
                 thumbVal = newValue;
@@ -881,7 +881,7 @@ $.fn.slider = function(parameters) {
             }
             $targetThumb.css(thumbPosValue);
             $trackFill.css(trackPosValue);
-            module.debug('Setting range position to ' + newPos);
+            module.debug('Setting slider position to ' + newPos);
           },
           labelPosition: function (ratio, $label) {
             var
@@ -918,9 +918,9 @@ $.fn.slider = function(parameters) {
               }
             ;
             if(data.thumbVal) {
-              if(module.is.doubled() && data.secondThumbVal) {
+              if(module.is.range() && data.secondThumbVal) {
                 module.debug('Current value set from metadata', data.thumbVal, data.secondThumbVal);
-                module.set.valueDouble(data.thumbVal, data.secondThumbVal);
+                module.set.rangeValue(data.thumbVal, data.secondThumbVal);
               } else {
                 module.debug('Current value set from metadata', data.thumbVal);
                 module.set.value(data.thumbVal);
@@ -929,9 +929,9 @@ $.fn.slider = function(parameters) {
           },
           settings: function() {
             if(settings.start !== false) {
-              if(module.is.doubled()) {
-                module.debug('Start position set from settings', settings.start, settings.doubleStart);
-                module.set.valueDouble(settings.start, settings.doubleStart);
+              if(module.is.range()) {
+                module.debug('Start position set from settings', settings.start, settings.end);
+                module.set.rangeValue(settings.start, settings.end);
               } else {
                 module.debug('Start position set from settings', settings.start);
                 module.set.value(settings.start);
@@ -1139,7 +1139,7 @@ $.fn.slider.settings = {
 
   error    : {
     method    : 'The method you called is not defined.',
-    notdouble : 'This slider is not a double slider'
+    notrange : 'This slider is not a range slider'
   },
 
   metadata: {
@@ -1151,7 +1151,7 @@ $.fn.slider.settings = {
   max            : 20,
   step           : 1,
   start          : 0,
-  doubleStart    : 1,
+  end            : 20,
   labelType      : 'number',
   smooth         : false,
 
@@ -1170,7 +1170,7 @@ $.fn.slider.settings = {
     disabled : 'disabled',
     labeled  : 'labeled',
     vertical : 'vertical',
-    doubled  : 'double',
+    range    : 'range',
     smooth   : 'smooth'
   },
 
