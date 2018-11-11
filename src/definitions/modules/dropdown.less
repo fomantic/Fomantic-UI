@@ -29,6 +29,7 @@
   outline: none;
   text-align: left;
   transition: @transition;
+  user-select: none;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -672,7 +673,6 @@ select.ui.dropdown {
 
 /* Selection Label */
 .ui.multiple.dropdown > .label {
-  user-select: none;
   display: inline-block;
   white-space: normal;
   font-size: @labelSize;
