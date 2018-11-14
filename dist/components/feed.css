@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Feed
+ * # Semantic UI 2.6.4 - Feed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -115,10 +115,10 @@
 .ui.feed > .event > .content .date {
   margin: -0.5rem 0em 0em;
   padding: 0em;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: normal;
   font-size: 1em;
   font-style: normal;
-  color: rgba(0, 0, 0, 0.4);
 }
 
 /*--------------

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Calendar
+ * # Semantic UI 2.6.4 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -216,6 +216,7 @@ $.fn.calendar = function(parameters) {
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
+            var tooltipPosition = container.hasClass("left") ? "right center" : "left center";
             container.empty();
             if (pages > 1) {
               pageGrid = $('<div/>').addClass(className.grid).appendTo(container);
@@ -315,7 +316,14 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
-                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode);
+                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode);
+                  if (disabled) {
+                    var disabledReason = module.helper.disabledReason(cellDate, mode);
+                    if (disabledReason !== null) {
+                      cell.attr("data-tooltip", disabledReason[metadata.message]);
+                      cell.attr("data-position", tooltipPosition);
+                    }
+                  }
                   var active = module.helper.dateEqual(cellDate, date, mode);
                   var isToday = module.helper.dateEqual(cellDate, today, mode);
                   cell.toggleClass(className.adjacentCell, adjacent);
@@ -378,7 +386,7 @@ $.fn.calendar = function(parameters) {
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent);
+              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -446,6 +454,9 @@ $.fn.calendar = function(parameters) {
             event.stopPropagation();
             isTouchDown = false;
             var target = $(event.target);
+            if (target.hasClass("disabled")) {
+              return;
+            }
             var parent = target.parent();
             if (parent.data(metadata.date) || parent.data(metadata.focusDate) || parent.data(metadata.mode)) {
               //clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
@@ -495,7 +506,7 @@ $.fn.calendar = function(parameters) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
-                if (date && !settings.isDisabled(date, mode)) {
+                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode)) {
                   module.selectDate(date);
                 }
                 //disable form submission:
@@ -789,6 +800,29 @@ $.fn.calendar = function(parameters) {
         },
 
         helper: {
+          isDisabled: function(date, mode) {
+            return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if (d instanceof Date) {
+                return module.helper.dateEqual(date, d, mode);
+              }
+              if (d !== null && typeof d === 'object') {
+                return module.helper.dateEqual(date, d[metadata.date], mode);
+              }
+            }));
+          },
+          disabledReason: function(date, mode) {
+            if (mode === 'day') {
+              for (var i = 0; i < settings.disabledDates.length; i++) {
+                var d = settings.disabledDates[i];
+                if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
+                  var reason = {};
+                  reason[metadata.message] = d[metadata.message];
+                  return reason;
+                }
+              }
+            }
+            return null;
+          },
           sanitiseDate: function (date) {
             if (!date) {
               return undefined;
@@ -1051,28 +1085,30 @@ $.fn.calendar.settings = {
   verbose: false,
   performance: false,
 
-  type           : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
-  firstDayOfWeek : 0,          // day for first day column (0 = Sunday)
-  constantHeight : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
-  today          : false,      // show a 'today/now' button at the bottom of the calendar
-  closable       : true,       // close the popup after selecting a date/time
-  monthFirst     : true,       // month before day when parsing/converting date from/to text
-  touchReadonly  : true,       // set input to readonly on touch devices
-  inline         : false,      // create the calendar inline instead of inside a popup
-  on             : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
-  initialDate    : null,       // date to display initially when no date is selected (null = now)
-  startMode      : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
-  minDate        : null,       // minimum date/time that can be selected, dates/times before are disabled
-  maxDate        : null,       // maximum date/time that can be selected, dates/times after are disabled
-  ampm           : true,       // show am/pm in time mode
-  disableYear    : false,      // disable year selection mode
-  disableMonth   : false,      // disable month selection mode
-  disableMinute  : false,      // disable minute selection mode
-  formatInput    : true,       // format the input text upon input blur and module creation
-  startCalendar  : null,       // jquery object or selector for another calendar that represents the start date of a date range
-  endCalendar    : null,       // jquery object or selector for another calendar that represents the end date of a date range
-  multiMonth     : 1,          // show multiple months when in 'day' mode
-  showWeekNumbers: null,       // show Number of Week at the very first column of a dayView
+  type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
+  firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
+  constantHeight     : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
+  today              : false,      // show a 'today/now' button at the bottom of the calendar
+  closable           : true,       // close the popup after selecting a date/time
+  monthFirst         : true,       // month before day when parsing/converting date from/to text
+  touchReadonly      : true,       // set input to readonly on touch devices
+  inline             : false,      // create the calendar inline instead of inside a popup
+  on                 : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
+  initialDate        : null,       // date to display initially when no date is selected (null = now)
+  startMode          : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
+  minDate            : null,       // minimum date/time that can be selected, dates/times before are disabled
+  maxDate            : null,       // maximum date/time that can be selected, dates/times after are disabled
+  ampm               : true,       // show am/pm in time mode
+  disableYear        : false,      // disable year selection mode
+  disableMonth       : false,      // disable month selection mode
+  disableMinute      : false,      // disable minute selection mode
+  formatInput        : true,       // format the input text upon input blur and module creation
+  startCalendar      : null,       // jquery object or selector for another calendar that represents the start date of a date range
+  endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
+  multiMonth         : 1,          // show multiple months when in 'day' mode
+  showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
+  disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
+  disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -1432,7 +1468,8 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
-    monthOffset: 'monthOffset'
+    monthOffset: 'monthOffset',
+    message: 'message'
   }
 };
 

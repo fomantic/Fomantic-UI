@@ -968,6 +968,9 @@ Floated Menu / Item
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
+.ui.secondary.pointing.menu .ui.dropdown .menu .item {
+  border-bottom-width: 0;
+}
 
 /* Item Types */
 .ui.secondary.pointing.menu .header.item {
@@ -1891,6 +1894,10 @@ Floated Menu / Item
   border-top: 1px solid #D4D4D5;
   border-right: 1px solid #D4D4D5;
 }
+.ui.pointing.menu .ui.dropdown .menu .item:after,
+.ui.vertical.pointing.menu .ui.dropdown .menu .item:after {
+  display: none;
+}
 
 /* Active */
 .ui.pointing.menu .active.item:after {
@@ -1924,6 +1931,44 @@ Floated Menu / Item
 }
 .ui.vertical.pointing.menu .menu .active.item:after {
   background-color: #FFFFFF;
+}
+
+/* Inverted Colors */
+.ui.inverted.pointing.menu .red.active.item:after {
+  background-color: #DB2828 !important;
+}
+.ui.inverted.pointing.menu .orange.active.item:after {
+  background-color: #F2711C !important;
+}
+.ui.inverted.pointing.menu .yellow.active.item:after {
+  background-color: #FBBD08 !important;
+}
+.ui.inverted.pointing.menu .olive.active.item:after {
+  background-color: #B5CC18 !important;
+}
+.ui.inverted.pointing.menu .green.active.item:after {
+  background-color: #21BA45 !important;
+}
+.ui.inverted.pointing.menu .teal.active.item:after {
+  background-color: #00B5AD !important;
+}
+.ui.inverted.pointing.menu .blue.active.item:after {
+  background-color: #2185D0 !important;
+}
+.ui.inverted.pointing.menu .violet.active.item:after {
+  background-color: #6435C9 !important;
+}
+.ui.inverted.pointing.menu .purple.active.item:after {
+  background-color: #A333C8 !important;
+}
+.ui.inverted.pointing.menu .pink.active.item:after {
+  background-color: #E03997 !important;
+}
+.ui.inverted.pointing.menu .brown.active.item:after {
+  background-color: #A5673F !important;
+}
+.ui.inverted.pointing.menu .grey.active.item:after {
+  background-color: #767676 !important;
 }
 
 /*--------------

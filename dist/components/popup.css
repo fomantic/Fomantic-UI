@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Popup
+ * # Semantic UI 2.6.4 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -431,6 +431,43 @@
 [data-position="right center"][data-tooltip]:after {
   -webkit-transform-origin: left center;
           transform-origin: left center;
+}
+
+/*--------------
+    Size
+---------------*/
+
+[data-tooltip][data-variation~="mini"]:before,
+[data-tooltip][data-variation~="mini"]:after {
+  font-size: 0.78571429rem;
+}
+[data-tooltip][data-variation~="tiny"]:before,
+[data-tooltip][data-variation~="tiny"]:after {
+  font-size: 0.85714286rem;
+}
+[data-tooltip][data-variation~="small"]:before,
+[data-tooltip][data-variation~="small"]:after {
+  font-size: 0.92857143rem;
+}
+[data-tooltip][data-variation~="medium"]:before,
+[data-tooltip][data-variation~="medium"]:after {
+  font-size: 1rem;
+}
+[data-tooltip][data-variation~="large"]:before,
+[data-tooltip][data-variation~="large"]:after {
+  font-size: 1.14285714rem;
+}
+[data-tooltip][data-variation~="huge"]:before,
+[data-tooltip][data-variation~="huge"]:after {
+  font-size: 1.42857143rem;
+}
+
+/*--------------
+    Basic
+---------------*/
+
+[data-tooltip][data-variation~="basic"]:before {
+  display: none;
 }
 
 /*--------------
