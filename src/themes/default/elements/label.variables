@@ -260,7 +260,7 @@
 @pointingTriangleSize: 0.6666em;
 @pointingHorizontalDistance: @pointingTriangleSize;
 
-@pointingTriangleTransition: background @labelTransitionDuration @labelTransitionEasing;
+@pointingTriangleTransition: none; /* Avoids error with background: inherit; on animation */
 @pointingTriangleZIndex: 2;
 
 /* Basic Pointing */
