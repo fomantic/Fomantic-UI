@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Modal
+ * # Semantic UI 2.6.4 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -112,6 +112,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 /* Image */
@@ -123,6 +125,7 @@
   width: '';
   -ms-flex-item-align: top;
       align-self: top;
+  max-width: 100%;
 }
 .ui.modal > [class*="top aligned"] {
   -ms-flex-item-align: top;
@@ -177,6 +180,9 @@
 }
 .ui.modal .actions > .button {
   margin-left: 0.75em;
+}
+.ui.basic.modal > .actions {
+  border-top: none;
 }
 
 /*-------------------
@@ -313,6 +319,7 @@
 .ui.basic.modal > .close {
   top: 1rem;
   right: 1.5rem;
+  color: #FFFFFF;
 }
 .ui.inverted.dimmer > .basic.modal {
   color: rgba(0, 0, 0, 0.87);
@@ -332,13 +339,6 @@
 .ui.top.aligned.legacy.legacy.page.dimmer > .ui.modal,
 .ui.top.aligned.dimmer > .ui.legacy.legacy.modal {
   top: auto !important;
-}
-
-/* Tablet and Mobile */
-@media only screen and (max-width: 991px) {
-  .ui.basic.modal > .close {
-    color: #FFFFFF;
-  }
 }
 
 
@@ -399,13 +399,11 @@
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+  position: fixed;
 }
 .scrolling.dimmable.dimmed > .dimmer {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-}
-.scrolling.dimmable > .dimmer {
-  position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
   margin: 1rem auto;
@@ -447,6 +445,9 @@
   top: 1.0535rem;
   right: 1rem;
   color: rgba(0, 0, 0, 0.87);
+}
+.ui.basic.fullscreen.modal > .close {
+  color: #FFFFFF;
 }
 
 /*--------------
@@ -494,8 +495,8 @@
   }
 }
 
-/* mini */
-.ui.small.modal > .header:not(.ui) {
+/* Tiny */
+.ui.tiny.modal > .header:not(.ui) {
   font-size: 1.3em;
 }
 
@@ -620,19 +621,16 @@
   background: #191A1B;
   border-top: 1px solid rgba(34, 36, 38, 0.85);
 }
-.ui.fullscreen.inverted.modal > .close {
-  color: rgba(255, 255, 255, 0.13);
+.ui.inverted.dimmer > .modal > .close {
+  color: rgba(0, 0, 0, 0.85);
 }
 @media only screen and (max-width: 991px) {
-  .ui.inverted.modal > .close {
+  .ui.dimmer .inverted.modal > .close {
     color: #FFFFFF;
   }
 }
 .ui.inverted.fullscreen.modal > .close {
   color: #FFFFFF;
-}
-.ui.inverted.dimmer > .modal > .close {
-  color: rgba(0, 0, 0, 0.85);
 }
 
 

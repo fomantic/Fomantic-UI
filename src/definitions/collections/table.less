@@ -157,6 +157,7 @@
 @media only screen and (max-width : @largestMobileScreen) {
   .ui.table:not(.unstackable) {
     width: 100%;
+    padding: 0em;
   }
   .ui.table:not(.unstackable) tbody,
   .ui.table:not(.unstackable) tr,
@@ -164,12 +165,8 @@
   .ui.table:not(.unstackable) tr > td  {
     display: block !important;
     width: auto !important;
-    display: block !important;
   }
 
-  .ui.table:not(.unstackable) {
-    padding: 0em;
-  }
   .ui.table:not(.unstackable) thead {
     display: @responsiveHeaderDisplay;
   }
@@ -309,9 +306,6 @@
 .ui.table tr.positive,
 .ui.table td.positive {
   box-shadow: @positiveBoxShadow;
-}
-.ui.table tr.positive,
-.ui.table td.positive {
   background: @positiveBackgroundColor !important;
   color: @positiveColor !important;
 }
@@ -323,9 +317,6 @@
 .ui.table tr.negative,
 .ui.table td.negative {
   box-shadow: @negativeBoxShadow;
-}
-.ui.table tr.negative,
-.ui.table td.negative {
   background: @negativeBackgroundColor !important;
   color: @negativeColor !important;
 }
@@ -337,12 +328,10 @@
 .ui.table tr.error,
 .ui.table td.error {
   box-shadow: @errorBoxShadow;
-}
-.ui.table tr.error,
-.ui.table td.error {
   background: @errorBackgroundColor !important;
   color: @errorColor !important;
 }
+
 /*--------------
      Warning
 ---------------*/
@@ -350,9 +339,6 @@
 .ui.table tr.warning,
 .ui.table td.warning {
   box-shadow: @warningBoxShadow;
-}
-.ui.table tr.warning,
-.ui.table td.warning {
   background: @warningBackgroundColor !important;
   color: @warningColor !important;
 }
@@ -364,9 +350,6 @@
 .ui.table tr.active,
 .ui.table td.active {
   box-shadow: @activeBoxShadow;
-}
-.ui.table tr.active,
-.ui.table td.active {
   background: @activeBackgroundColor !important;
   color: @activeColor !important;
 }
@@ -402,7 +385,6 @@
   .ui[class*="tablet stackable"].table tr > td  {
     display: block !important;
     width: 100% !important;
-    display: block !important;
   }
 
   .ui[class*="tablet stackable"].table {
@@ -621,10 +603,6 @@
    Single Line
 ---------------*/
 
-.ui.table[class*="single line"],
-.ui.table [class*="single line"] {
-  white-space: nowrap;
-}
 .ui.table[class*="single line"],
 .ui.table [class*="single line"] {
   white-space: nowrap;

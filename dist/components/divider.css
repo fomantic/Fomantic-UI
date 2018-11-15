@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Divider
+ * # Semantic UI 2.6.4 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -134,7 +134,6 @@
   .ui.grid .stackable.row .ui.vertical.divider:before,
   .ui.stackable.grid .ui.vertical.divider:after,
   .ui.grid .stackable.row .ui.vertical.divider:after {
-    position: static;
     left: 0;
     border-left: none;
     border-right: none;

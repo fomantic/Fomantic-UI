@@ -48,7 +48,7 @@
 
 /* Inverted */
 @invertedBackgroundColor: rgba(255, 255, 255, 0.85);
-@invertedTextColor: @textColor;
+@invertedTextColor: @fullBlack;
 
 /* Simple */
 @simpleZIndex: 1;

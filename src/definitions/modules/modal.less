@@ -114,6 +114,7 @@
 .ui.modal > .image.content {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Image */
@@ -122,6 +123,7 @@
   flex: 0 1 auto;
   width: @imageWidth;
   align-self: @imageVerticalAlign;
+  max-width: 100%;
 }
 .ui.modal > [class*="top aligned"] {
   align-self: top;
@@ -170,6 +172,9 @@
 }
 .ui.modal .actions > .button {
   margin-left: @buttonDistance;
+}
+.ui.basic.modal > .actions {
+  border-top:none;
 }
 
 /*-------------------
@@ -301,6 +306,7 @@
 .ui.basic.modal > .close {
   top: @basicModalCloseTop;
   right: @basicModalCloseRight;
+  color: @basicInnerCloseColor;
 }
 
 .ui.inverted.dimmer > .basic.modal {
@@ -324,12 +330,6 @@
   top: auto !important;
 }
 
-/* Tablet and Mobile */
-@media only screen and (max-width : @largestTabletScreen) {
-  .ui.basic.modal > .close {
-    color: @basicInnerCloseColor;
-  }
-}
 
 
 /*******************************
@@ -383,13 +383,11 @@
 }
 .scrolling.dimmable > .dimmer {
   justify-content: flex-start;
+  position: fixed;
 }
 .scrolling.dimmable.dimmed > .dimmer {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-}
-.scrolling.dimmable > .dimmer {
-  position: fixed;
 }
 .modals.dimmer .ui.scrolling.modal {
   margin: @scrollingMargin auto;
@@ -432,8 +430,9 @@
   right: @innerCloseRight;
   color: @innerCloseColor;
 }
-
-
+.ui.basic.fullscreen.modal > .close {
+  color: @basicInnerCloseColor;
+}
 /*--------------
       Size
 ---------------*/
@@ -479,9 +478,9 @@
   }
 }
 
-/* mini */
-.ui.small.modal > .header:not(.ui) {
-  font-size: @miniHeaderSize;
+/* Tiny */
+.ui.tiny.modal > .header:not(.ui) {
+  font-size: @tinyHeaderSize;
 }
 
 /* Tiny Modal Width */
@@ -607,13 +606,13 @@
   border-top: @invertedActionBorder;
 }
 
-.ui.fullscreen.inverted.modal > .close {
-  color: @invertedInnerCloseColor;
+.ui.inverted.dimmer > .modal > .close {
+  color: @invertedDimmerCloseColor;
 }
 
 
 @media only screen and (max-width: @largestTabletScreen) {
-  .ui.inverted.modal > .close {
+  .ui.dimmer .inverted.modal > .close {
     color: @invertedCloseColor;
   }
 }
@@ -622,9 +621,7 @@
   color: @invertedCloseColor;
 }
 
-.ui.inverted.dimmer > .modal > .close {
-  color: @invertedDimmerCloseColor;
-}
+
 
 
 .loadUIOverrides();

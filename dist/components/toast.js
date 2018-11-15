@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Toast
+ * # Semantic UI 2.6.4 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *

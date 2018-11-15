@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Calendar
+ * # Semantic UI 2.6.4 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -75,9 +75,6 @@
 .ui.calendar .ui.table tr th .icon {
   margin: 0;
 }
-.ui.calendar .ui.table tr th .icon {
-  margin: 0;
-}
 .ui.calendar .ui.table tr:first-child th {
   position: relative;
   padding-left: 0;
@@ -108,7 +105,8 @@
   right: 0;
 }
 .ui.calendar .ui.table tr .disabled {
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: default;
   color: rgba(40, 40, 40, 0.3);
 }
 

@@ -103,7 +103,7 @@
 @invertedBackground: @transparentWhite;
 @invertedBorder: none;
 @invertedBarBackground: @barBackground;
-@invertedProgressColor: @offWhite;
+@invertedProgressColor: @black;
 @invertedLabelColor: @white;
 
 /* Sizing */

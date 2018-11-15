@@ -114,6 +114,7 @@
   display: block;
   flex: 1 1 auto;
   background: @contentBackground;
+  color: @contentColor;
   margin: @contentMargin;
   padding: @contentPadding;
   box-shadow: @contentBoxShadow;
@@ -469,6 +470,73 @@
   .ui.unstackable.items > .item > .image > img {
     width: @unstackableMobileImageWidth !important;
   }
+}
+
+/*--------------
+     Inverted
+---------------*/
+
+.ui.inverted.items > .item {
+  background: @invertedBackground;
+}
+.ui.inverted.items > .item > .content {
+  background: @invertedContentBackground;
+  color: @invertedContentColor;
+}
+.ui.inverted.items > .item .extra {
+  background: @invertedExtraBackground;
+}
+.ui.inverted.items > .item > .content > .header {
+  color: @invertedHeaderColor;
+}
+.ui.inverted.items > .item > .content > .description {
+  color: @invertedDescriptionColor;
+}
+.ui.inverted.items > .item .meta {
+  color: @invertedMetaColor;
+}
+.ui.inverted.items > .item > .content a:not(.ui) {
+  color: @invertedContentLinkColor;
+}
+.ui.inverted.items > .item > .content a:not(.ui):hover {
+  color: @invertedContentLinkHoverColor;
+}
+.ui.inverted.items > .item > .content > a.header {
+  color: @invertedHeaderLinkColor;
+}
+.ui.inverted.items > .item > .content > a.header:hover {
+  color: @invertedHeaderLinkHoverColor;
+}
+.ui.inverted.items > .item .meta > a:not(.ui) {
+  color: @invertedMetaLinkColor;
+}
+.ui.inverted.items > .item .meta > a:not(.ui):hover {
+  color: @invertedMetaLinkHoverColor;
+}
+.ui.inverted.items > .item > .content .favorite.icon:hover {
+  color: @invertedFavoriteColor;
+}
+.ui.inverted.items > .item > .content .active.favorite.icon {
+  color: @invertedFavoriteActiveColor;
+}
+.ui.inverted.items > .item > .content .like.icon:hover {
+  color: @invertedLikeColor;
+}
+.ui.inverted.items > .item > .content .active.like.icon {
+  color: @invertedLikeActiveColor;
+}
+.ui.inverted.items > .item .extra {
+  color: @invertedExtraColor;
+}
+.ui.inverted.items a.item:hover .content .header,
+.ui.inverted.link.items > .item:hover .content .header {
+  color: @invertedHeaderLinkHoverColor;
+}
+.ui.inverted.divided.items > .item {
+  border-top: @invertedDividedBorder;
+}
+.ui.inverted.divided.items > .item:first-child {
+  border-top: none;
 }
 
 .loadUIOverrides();

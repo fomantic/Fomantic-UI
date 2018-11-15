@@ -200,5 +200,4 @@
 @invertedHeaderBackgroundColor: @darkTextColor;
 @invertedActionBackground: #191A1B;
 @invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
-@invertedInnerCloseColor: rgba(255, 255, 255, 0.13);
 @invertedDimmerCloseColor: rgba(0,0,0,.85);
