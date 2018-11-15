@@ -617,7 +617,7 @@ a.ui.basic.label:hover {
 --------------------*/
 
 
-.labelColor(@colorRaw; @lightColor; @darkInvertedHoverTextColor:false; @blackOrGrey:false;) {
+.labelColor(@colorRaw; @lightColor; @blackOrGrey:false;) {
   @color: replace(@colorRaw,'Color','');
   @_labelColor: "@{colorRaw}";
   @_labelInvertedColor: "@{lightColor}";
@@ -673,7 +673,7 @@ a.ui.basic.label:hover {
     & when not (@blackOrGrey) {
       color: @black;
     }
-    & when(@blackOrGrey) {
+    & when (@blackOrGrey) {
       color: @@_labelTextColor;
     }
   }
@@ -720,17 +720,17 @@ a.ui.basic.label:hover {
 .labelColor(~'secondaryColor',~'lightSecondaryColor');
 .labelColor(~'red',~'lightRed');
 .labelColor(~'orange',~'lightOrange');
-.labelColor(~'yellow',~'lightYellow',true);
-.labelColor(~'olive',~'lightOlive',true);
+.labelColor(~'yellow',~'lightYellow');
+.labelColor(~'olive',~'lightOlive');
 .labelColor(~'green',~'lightGreen');
-.labelColor(~'teal',~'lightTeal',true);
+.labelColor(~'teal',~'lightTeal');
 .labelColor(~'blue',~'lightBlue');
 .labelColor(~'violet',~'lightViolet');
 .labelColor(~'purple',~'lightPurple');
 .labelColor(~'pink',~'lightPink');
 .labelColor(~'brown',~'lightBrown');
-.labelColor(~'grey',~'lightGrey',true);
-.labelColor(~'black',~'lightBlack',false,true);
+.labelColor(~'grey',~'lightGrey');
+.labelColor(~'black',~'lightBlack',true);
 
 /*-------------------
      Horizontal
