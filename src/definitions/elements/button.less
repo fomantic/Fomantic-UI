@@ -563,7 +563,7 @@
 
 /* VK */
 .ui.vk.button {
-  background-color: #4D7198;
+  background-color: @vkColor;
   color: @white;
   background-image: @coloredBackgroundImage;
   box-shadow: @coloredBoxShadow;
@@ -574,6 +574,38 @@
 }
 .ui.vk.button:active {
   background-color: @vkDownColor;
+  color: @white;
+}
+
+/* WhatsApp */
+.ui.whatsapp.button {
+  background-color: @whatsAppColor;
+  color: @white;
+  background-image: @coloredBackgroundImage;
+  box-shadow: @coloredBoxShadow;
+}
+.ui.whatsapp.button:hover {
+  background-color: @whatsAppHoverColor;
+  color: @white;
+}
+.ui.whatsapp.button:active {
+  background-color: @whatsAppDownColor;
+  color: @white;
+}
+
+/* Telegram */
+.ui.telegram.button {
+  background-color: @telegramColor;
+  color: @white;
+  background-image: @coloredBackgroundImage;
+  box-shadow: @coloredBoxShadow;
+}
+.ui.telegram.button:hover {
+  background-color: @telegramHoverColor;
+  color: @white;
+}
+.ui.telegram.button:active {
+  background-color: @telegramDownColor;
   color: @white;
 }
 

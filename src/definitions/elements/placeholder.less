@@ -64,8 +64,12 @@
   background-color: @white;
 }
 
+.ui.placeholder.hidden {
+  display:none;
+}
+
 /* Image */
-.ui.placeholder .image:not(.header):not(.ui) {
+.ui.placeholder .image:not(.header):not(.ui):not(.icon) {
   height: @placeholderImageHeight;
 }
 .ui.placeholder .square.image:not(.header) {

@@ -1268,7 +1268,9 @@ $.fn.dropdown = function(parameters) {
                 isBubbledEvent = ($subMenu.find($target).length > 0)
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
-              $(document.activeElement).blur();
+              if (!module.has.search() || !document.activeElement.isEqualNode($search[0])) {
+                $(document.activeElement).blur();
+              }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
                 if(module.is.searchSelection()) {
                   if(settings.allowAdditions) {
@@ -1436,6 +1438,9 @@ $.fn.dropdown = function(parameters) {
                 module.event.item.click.call($selectedItem, event);
                 if(module.is.searchSelection()) {
                   module.remove.searchTerm();
+                }
+                if(module.is.multiple()){
+                    event.preventDefault();
                 }
               }
 
@@ -2227,6 +2232,7 @@ $.fn.dropdown = function(parameters) {
           else {
             module.remove.activeItem();
             module.remove.selectedItem();
+            module.remove.filteredItem();
           }
           module.set.placeholderText();
           module.clearValue();

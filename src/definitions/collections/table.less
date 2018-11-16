@@ -31,6 +31,7 @@
   box-shadow: @boxShadow;
   border-radius: @borderRadius;
   text-align: @textAlign;
+  vertical-align: @verticalAlign;
   color: @color;
   border-collapse: @borderCollapse;
   border-spacing: @borderSpacing;
@@ -41,6 +42,11 @@
 }
 .ui.table:last-child {
   margin-bottom: 0em;
+}
+.ui.table thead,
+.ui.table tbody {
+  text-align: inherit;
+  vertical-align: inherit;
 }
 
 /*******************************

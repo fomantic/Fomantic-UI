@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Popup
+ * # Semantic UI 2.6.4 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -415,7 +415,7 @@ $.fn.popup = function(parameters) {
         },
         supports: {
           svg: function() {
-            return (typeof SVGGraphicsElement === 'undefined');
+            return (typeof SVGGraphicsElement !== 'undefined');
           }
         },
         animate: {

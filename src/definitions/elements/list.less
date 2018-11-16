@@ -318,12 +318,16 @@ ol.ui.list ol li,
   margin: 0em;
   padding: 0em @horizontalIconDistance 0em 0em;
 }
+.ui.horizontal.list > .item > .image + .content,
 .ui.horizontal.list > .item > .icon,
 .ui.horizontal.list > .item > .icon + .content {
   float: none;
   display: inline-block;
+  width: auto;
 }
-
+.ui.horizontal.list > .item > .image {
+  display:inline-block;
+}
 
 /*******************************
              States

@@ -420,6 +420,42 @@
 }
 
 /*--------------
+    Size
+---------------*/
+
+[data-tooltip][data-variation~="mini"]:before,
+[data-tooltip][data-variation~="mini"]:after {
+  font-size: @mini;
+}
+[data-tooltip][data-variation~="tiny"]:before,
+[data-tooltip][data-variation~="tiny"]:after {
+  font-size: @tiny;
+}
+[data-tooltip][data-variation~="small"]:before,
+[data-tooltip][data-variation~="small"]:after {
+  font-size: @small;
+}
+[data-tooltip][data-variation~="medium"]:before,
+[data-tooltip][data-variation~="medium"]:after {
+  font-size: @medium;
+}
+[data-tooltip][data-variation~="large"]:before,
+[data-tooltip][data-variation~="large"]:after {
+  font-size: @large;
+}
+[data-tooltip][data-variation~="huge"]:before,
+[data-tooltip][data-variation~="huge"]:after {
+  font-size: @huge;
+}
+
+/*--------------
+    Basic
+---------------*/
+[data-tooltip][data-variation~="basic"]:before {
+  display: none;
+}
+
+/*--------------
      Spacing
 ---------------*/
 

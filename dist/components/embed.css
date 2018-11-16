@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Video
+ * # Semantic UI 2.6.4 - Video
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -93,7 +93,6 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  z-index: 4;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
   color: #FFFFFF;

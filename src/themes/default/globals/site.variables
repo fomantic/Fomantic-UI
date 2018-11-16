@@ -456,13 +456,15 @@
 --------------------*/
 
 @facebookColor   : #3B5998;
-@twitterColor    : #55ACEE;
+@twitterColor    : #1DA1F2;
 @googlePlusColor : #DD4B39;
-@linkedInColor   : #1F88BE;
+@linkedInColor   : #0077B5;
 @youtubeColor    : #FF0000;
 @pinterestColor  : #BD081C;
-@vkColor         : #4D7198;
+@vkColor         : #45668E;
 @instagramColor  : #49769C;
+@telegramColor   : #0088CC;
+@whatsAppColor   : #25D366;
 
 /*-------------------
       Borders
@@ -781,6 +783,8 @@
 @instagramHoverColor      : saturate(darken(@instagramColor, 5), 10, relative);
 @pinterestHoverColor      : saturate(darken(@pinterestColor, 5), 10, relative);
 @vkHoverColor             : saturate(darken(@vkColor, 5), 10, relative);
+@telegramHoverColor       : saturate(darken(@telegramColor, 5), 10, relative);
+@whatsAppHoverColor       : saturate(darken(@whatsAppColor, 5), 10, relative);
 
 /*---  Dark Tones  ---*/
 @fullBlackHover           : lighten(@fullBlack, 5);
@@ -841,6 +845,8 @@
 @instagramFocusColor      : saturate(darken(@instagramColor, 8), 20, relative);
 @pinterestFocusColor      : saturate(darken(@pinterestColor, 8), 20, relative);
 @vkFocusColor             : saturate(darken(@vkColor, 8), 20, relative);
+@telegramFocusColor       : saturate(darken(@telegramColor, 8), 20, relative);
+@whatsAppFocusColor       : saturate(darken(@whatsAppColor, 8), 20, relative);
 
 /*---  Dark Tones  ---*/
 @fullBlackFocus           : lighten(@fullBlack, 8);
@@ -902,6 +908,8 @@
 @instagramDownColor      : darken(@instagramColor, 10);
 @pinterestDownColor      : darken(@pinterestColor, 10);
 @vkDownColor             : darken(@vkColor, 10);
+@telegramDownColor       : darken(@telegramColor, 10);
+@whatsAppDownColor       : darken(@whatsAppColor, 10);
 
 /*---  Dark Tones  ---*/
 @fullBlackDown           : lighten(@fullBlack, 10);
@@ -963,6 +971,8 @@
 @instagramActiveColor      : saturate(darken(@instagramColor, 5), 15, relative);
 @pinterestActiveColor      : saturate(darken(@pinterestColor, 5), 15, relative);
 @vkActiveColor             : saturate(darken(@vkColor, 5), 15, relative);
+@telegramActiveColor       : saturate(darken(@telegramColor, 5), 15, relative);
+@whatsAppActiveColor       : saturate(darken(@whatsAppColor, 5), 15, relative);
 
 /*---  Dark Tones  ---*/
 @fullBlackActive           : darken(@fullBlack, 5);

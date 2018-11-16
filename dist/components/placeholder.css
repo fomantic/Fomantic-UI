@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Loader
+ * # Semantic UI 2.6.4 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -67,6 +67,9 @@
 .ui.placeholder .line,
 .ui.placeholder .line:after {
   background-color: #FFFFFF;
+}
+.ui.placeholder.hidden {
+  display: none;
 }
 
 /* Image */
