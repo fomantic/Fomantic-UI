@@ -94,6 +94,7 @@
 @iconHeaderMargin: 0.5rem;
 @circularHeaderIconSize: 2em;
 @squareHeaderIconSize: 2em;
+@cornerIconHeaderSize: calc(@iconHeaderSize * 0.45);
 
 /* No Line Height Offset */
 @iconHeaderTopMargin: 2rem;

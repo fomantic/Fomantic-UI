@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Container
+ * # Semantic UI 2.6.4 - Container
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -103,8 +103,6 @@
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   max-width: 700px !important;
   line-height: 1.5;
-}
-.ui.text.container {
   font-size: 1.14285714rem;
 }
 

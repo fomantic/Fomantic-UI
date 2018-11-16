@@ -397,7 +397,6 @@
   margin: 0px 0px 0px @labeledLabelBorderOffset !important;
   font-size: @labeledLabelFontSize;
   padding: @labeledLabelPadding;
-  font-size: @labeledLabelFontSize;
   border-color: @labeledLabelBorderColor;
 }
 
@@ -564,7 +563,7 @@
 
 /* VK */
 .ui.vk.button {
-  background-color: #4D7198;
+  background-color: @vkColor;
   color: @white;
   background-image: @coloredBackgroundImage;
   box-shadow: @coloredBoxShadow;
@@ -575,6 +574,38 @@
 }
 .ui.vk.button:active {
   background-color: @vkDownColor;
+  color: @white;
+}
+
+/* WhatsApp */
+.ui.whatsapp.button {
+  background-color: @whatsAppColor;
+  color: @white;
+  background-image: @coloredBackgroundImage;
+  box-shadow: @coloredBoxShadow;
+}
+.ui.whatsapp.button:hover {
+  background-color: @whatsAppHoverColor;
+  color: @white;
+}
+.ui.whatsapp.button:active {
+  background-color: @whatsAppDownColor;
+  color: @white;
+}
+
+/* Telegram */
+.ui.telegram.button {
+  background-color: @telegramColor;
+  color: @white;
+  background-image: @coloredBackgroundImage;
+  box-shadow: @coloredBoxShadow;
+}
+.ui.telegram.button:hover {
+  background-color: @telegramHoverColor;
+  color: @white;
+}
+.ui.telegram.button:active {
+  background-color: @telegramDownColor;
   color: @white;
 }
 
@@ -850,8 +881,6 @@
 }
 .ui.basic.vertical.buttons .button {
   border-left: none;
-}
-.ui.basic.vertical.buttons .button {
   border-left-width: 0px;
   border-top: @basicGroupBorder;
 }
@@ -867,7 +896,6 @@
 
 .ui.tertiary.button {
   box-shadow: none !important;
-  background: none !important;
   transition: color @defaultDuration @defaultEasing !important;
   border-radius: 0;
   margin:
@@ -945,6 +973,8 @@
 .ui.labeled.icon.buttons > .button > .icon,
 .ui.labeled.icon.button > .icon {
   position: absolute;
+  top: 0em;
+  left: 0em;
   height: 100%;
   line-height: 1;
   border-radius: 0px;
@@ -957,13 +987,6 @@
   background-color: @labeledIconBackgroundColor;
   color: @labeledIconColor;
   box-shadow: @labeledIconLeftShadow;
-}
-
-/* Left Labeled */
-.ui.labeled.icon.buttons > .button > .icon,
-.ui.labeled.icon.button > .icon {
-  top: 0em;
-  left: 0em;
 }
 
 /* Right Labeled */
@@ -1819,7 +1842,6 @@
 /* Standard Group */
 .ui.buttons .button {
   flex: 1 0 auto;
-  margin: 0em;
   border-radius: 0em;
   margin: @groupButtonOffset;
 }

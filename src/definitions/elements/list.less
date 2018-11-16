@@ -148,6 +148,7 @@ ol.ui.list ol li,
 .ui.list .list > .item > .content,
 .ui.list > .item > .content {
   line-height: @contentLineHeight;
+  color: @contentColor;
 }
 .ui.list .list > .item > .image + .content,
 .ui.list .list > .item > .icon + .content,
@@ -317,12 +318,16 @@ ol.ui.list ol li,
   margin: 0em;
   padding: 0em @horizontalIconDistance 0em 0em;
 }
+.ui.horizontal.list > .item > .image + .content,
 .ui.horizontal.list > .item > .icon,
 .ui.horizontal.list > .item > .icon + .content {
   float: none;
   display: inline-block;
+  width: auto;
 }
-
+.ui.horizontal.list > .item > .image {
+  display:inline-block;
+}
 
 /*******************************
              States
@@ -372,7 +377,10 @@ ol.ui.list ol li,
 .ui.inverted.list > .item .description {
   color: @invertedDescriptionColor;
 }
-
+.ui.inverted.list .list > .item > .content,
+.ui.inverted.list > .item > .content {
+  color: @invertedContentColor;
+}
 /* Item Link */
 .ui.inverted.list .list > a.item,
 .ui.inverted.list > a.item {
@@ -490,22 +498,18 @@ ol.ui.list ol li,
 }
 
 /* Inverted */
-.ui.inverted.selection.list > .item,
 .ui.inverted.selection.list > .item {
   background: @invertedSelectionListBackground;
   color: @invertedSelectionListColor;
 }
-.ui.inverted.selection.list > .item:hover,
 .ui.inverted.selection.list > .item:hover {
   background: @invertedSelectionListHoverBackground;
   color: @invertedSelectionListHoverColor;
 }
-.ui.inverted.selection.list > .item:active,
 .ui.inverted.selection.list > .item:active {
   background: @invertedSelectionListDownBackground;
   color: @invertedSelectionListDownColor;
 }
-.ui.inverted.selection.list > .item.active,
 .ui.inverted.selection.list > .item.active {
   background: @invertedSelectionListActiveBackground;
   color: @invertedSelectionListActiveColor;
@@ -648,8 +652,8 @@ ol.ui.inverted.list li:before,
 }
 
 /* Value */
-.ui.ordered.list > .list > .item[data-value],
-.ui.ordered.list > .item[data-value] {
+.ui.ordered.list .list > .item[data-value]:before,
+.ui.ordered.list > .item[data-value]:before {
   content: attr(data-value);
 }
 ol.ui.list li[value]:before {

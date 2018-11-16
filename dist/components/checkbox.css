@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Checkbox
+ * # Semantic UI 2.6.4 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -377,6 +377,8 @@
   display: block;
   position: absolute;
   content: '';
+  -webkit-transform: none;
+          transform: none;
   border: none !important;
   left: 0em;
   z-index: 1;
@@ -384,8 +386,6 @@
   background-color: rgba(0, 0, 0, 0.05);
   width: 3.5rem;
   height: 0.21428571rem;
-  -webkit-transform: none;
-          transform: none;
   border-radius: 500rem;
   -webkit-transition: background 0.3s ease;
   transition: background 0.3s ease;
@@ -582,11 +582,9 @@
 .ui.fitted.checkbox label {
   padding-left: 0em !important;
 }
-.ui.fitted.toggle.checkbox,
 .ui.fitted.toggle.checkbox {
   width: 3.5rem;
 }
-.ui.fitted.slider.checkbox,
 .ui.fitted.slider.checkbox {
   width: 3.5rem;
 }

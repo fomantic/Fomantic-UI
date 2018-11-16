@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Dropdown
+ * # Semantic UI 2.6.4 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1048,7 +1048,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(settings.showOnFocus) {
+              if(settings.showOnFocus || event.type !== 'focus') {
                 module.search();
               }
             },
@@ -1079,7 +1079,11 @@ $.fn.dropdown = function(parameters) {
             click: function(event) {
               if(module.has.search()) {
                 if(!module.is.active()) {
-                  module.focusSearch();
+                    if(settings.showOnFocus){
+                      module.focusSearch();
+                    } else {
+                      module.toggle();
+                    }
                 } else {
                   module.blurSearch();
                 }
@@ -1170,7 +1174,9 @@ $.fn.dropdown = function(parameters) {
               event.stopPropagation();
             },
             hide: function(event) {
-              module.determine.eventInModule(event, module.hide);
+              if(module.determine.eventInModule(event, module.hide)){
+                  event.preventDefault();
+              }
             }
           },
           select: {
@@ -1262,7 +1268,7 @@ $.fn.dropdown = function(parameters) {
                 isBubbledEvent = ($subMenu.find($target).length > 0)
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
-              if(module.has.menuSearch()) {
+              if (!module.has.search() || !document.activeElement.isEqualNode($search[0])) {
                 $(document.activeElement).blur();
               }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
@@ -1671,10 +1677,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.selected(value, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
@@ -1687,10 +1690,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.value(value, text, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
@@ -2229,6 +2229,7 @@ $.fn.dropdown = function(parameters) {
           else {
             module.remove.activeItem();
             module.remove.selectedItem();
+            module.remove.filteredItem();
           }
           module.set.placeholderText();
           module.clearValue();

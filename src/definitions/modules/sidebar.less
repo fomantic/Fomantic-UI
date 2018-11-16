@@ -132,15 +132,13 @@ body.pushable {
   min-height: 100%;
   transition: transform @duration @easing;
   z-index: @middleLayer;
+
+  /* Pusher should inherit background from context */
+  background: inherit;
 }
 
 body.pushable > .pusher {
   background: @pageBackground;
-}
-
-/* Pusher should inherit background from context */
-.pushable > .pusher {
-  background: inherit;
 }
 
 /*--------------

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - List
+ * # Semantic UI 2.6.4 - List
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -135,6 +135,7 @@ ol.ui.list ol li,
 .ui.list .list > .item > .content,
 .ui.list > .item > .content {
   line-height: 1.14285714em;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.list .list > .item > .image + .content,
 .ui.list .list > .item > .icon + .content,
@@ -302,9 +303,14 @@ ol.ui.list ol li,
   margin: 0em;
   padding: 0em 0.25em 0em 0em;
 }
+.ui.horizontal.list > .item > .image + .content,
 .ui.horizontal.list > .item > .icon,
 .ui.horizontal.list > .item > .icon + .content {
   float: none;
+  display: inline-block;
+  width: auto;
+}
+.ui.horizontal.list > .item > .image {
   display: inline-block;
 }
 
@@ -357,6 +363,10 @@ ol.ui.list ol li,
 }
 .ui.inverted.list .list > .item .description,
 .ui.inverted.list > .item .description {
+  color: rgba(255, 255, 255, 0.7);
+}
+.ui.inverted.list .list > .item > .content,
+.ui.inverted.list > .item > .content {
   color: rgba(255, 255, 255, 0.7);
 }
 
@@ -478,22 +488,18 @@ ol.ui.list ol li,
 }
 
 /* Inverted */
-.ui.inverted.selection.list > .item,
 .ui.inverted.selection.list > .item {
   background: transparent;
   color: rgba(255, 255, 255, 0.5);
 }
-.ui.inverted.selection.list > .item:hover,
 .ui.inverted.selection.list > .item:hover {
   background: rgba(255, 255, 255, 0.02);
   color: #ffffff;
 }
-.ui.inverted.selection.list > .item:active,
 .ui.inverted.selection.list > .item:active {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
 }
-.ui.inverted.selection.list > .item.active,
 .ui.inverted.selection.list > .item.active {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
@@ -641,8 +647,8 @@ ol.ui.inverted.list li:before,
 }
 
 /* Value */
-.ui.ordered.list > .list > .item[data-value],
-.ui.ordered.list > .item[data-value] {
+.ui.ordered.list .list > .item[data-value]:before,
+.ui.ordered.list > .item[data-value]:before {
   content: attr(data-value);
 }
 ol.ui.list li[value]:before {

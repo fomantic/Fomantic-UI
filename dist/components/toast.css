@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Toast
+ * # Semantic UI 2.6.4 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -56,7 +56,7 @@
 *******************************/
 
 .toast {
-  display: none;
+  display: block;
   border-radius: 0.28571429rem;
   padding: 0.78571429em 1em;
   margin: 0 0 6px;
@@ -86,9 +86,6 @@
 .toast-container .compact {
   display: block;
   width: 300px;
-}
-.toast {
-  display: block;
 }
 .toast-container .message,
 .toast:hover {
