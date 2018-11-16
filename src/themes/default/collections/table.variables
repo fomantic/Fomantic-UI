@@ -22,6 +22,7 @@
 @border: @borderWidth solid @borderColor;
 @boxShadow: none;
 @textAlign: left;
+@verticalAlign: middle;
 
 /*--------------
      Parts
