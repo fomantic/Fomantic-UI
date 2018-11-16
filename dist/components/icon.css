@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Icon
+ * # Semantic UI 2.6.4 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -527,7 +527,6 @@ i.icons .icon:first-child {
   vertical-align: top;
   -webkit-transform: none;
           transform: none;
-  margin-right: 0.25rem;
 }
 
 /* Corner Icon */

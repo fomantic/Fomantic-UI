@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Dropdown
+ * # Semantic UI 2.6.4 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23,6 +23,10 @@
   transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, width 0.1s ease;
   transition: box-shadow 0.1s ease, width 0.1s ease, -webkit-box-shadow 0.1s ease;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
@@ -115,9 +119,9 @@
   text-align: left;
   border-top: none;
   line-height: 1em;
+  font-size: 1rem;
   color: rgba(0, 0, 0, 0.87);
   padding: 0.78571429rem 1.14285714rem !important;
-  font-size: 1rem;
   text-transform: none;
   font-weight: normal;
   -webkit-box-shadow: none;
@@ -682,12 +686,7 @@ select.ui.dropdown {
 
 /* Selection Label */
 .ui.multiple.dropdown > .label {
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
   display: inline-block;
-  vertical-align: top;
   white-space: normal;
   font-size: 1em;
   padding: 0.35714286em 0.78571429em;
@@ -1111,7 +1110,7 @@ select.ui.dropdown {
 }
 
 /*--------------
-     Simple
+     Scrolling
 ---------------*/
 
 
@@ -1207,6 +1206,7 @@ select.ui.dropdown {
   height: 0;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
+  margin-top: 0 !important;
 }
 .ui.simple.active.dropdown,
 .ui.simple.dropdown:hover {

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.3 - Transition
+ * # Semantic UI 2.6.4 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -45,7 +45,6 @@
 }
 
 /* Hidden */
-.hidden.hidden.transition,
 .hidden.transition {
   display: none;
   visibility: hidden;

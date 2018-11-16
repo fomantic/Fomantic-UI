@@ -29,6 +29,7 @@
   outline: none;
   text-align: left;
   transition: @transition;
+  user-select: none;
 
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
@@ -48,7 +49,6 @@
   outline: none;
   top: 100%;
   min-width: max-content;
-  transition: @menuTransition;
 
   margin: @menuMargin;
   padding: @menuPadding;
@@ -127,7 +127,6 @@
   color: @itemColor;
 
   padding: @itemPadding !important;
-  font-size: @itemFontSize;
   text-transform: @itemTextTransform;
   font-weight: @itemFontWeight;
   box-shadow: @itemBoxShadow;
@@ -674,9 +673,7 @@ select.ui.dropdown {
 
 /* Selection Label */
 .ui.multiple.dropdown > .label {
-  user-select: none;
   display: inline-block;
-  vertical-align: top;
   white-space: normal;
   font-size: @labelSize;
   padding: @labelPadding;
@@ -1086,7 +1083,7 @@ select.ui.dropdown {
 }
 
 /*--------------
-     Simple
+     Scrolling
 ---------------*/
 
 /*  Selection Menu */
@@ -1180,6 +1177,7 @@ select.ui.dropdown {
   width: 0;
   height: 0;
   transition: @simpleTransition;
+  margin-top: 0 !important;
 }
 
 .ui.simple.active.dropdown,

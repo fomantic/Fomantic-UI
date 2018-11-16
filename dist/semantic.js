@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.6.3
+ * # Fomantic UI - 2.6.4
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -9,7 +9,7 @@
  *
  */
 /*!
- * # Semantic UI 2.6.3 - Site
+ * # Semantic UI 2.6.4 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -500,7 +500,7 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Form Validation
+ * # Semantic UI 2.6.4 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2208,7 +2208,7 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Accordion
+ * # Semantic UI 2.6.4 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2822,7 +2822,7 @@ $.extend( $.easing, {
 
 
 /*!
- * # Semantic UI 2.6.3 - Calendar
+ * # Semantic UI 2.6.4 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -3039,6 +3039,7 @@ $.fn.calendar = function(parameters) {
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
+            var tooltipPosition = container.hasClass("left") ? "right center" : "left center";
             container.empty();
             if (pages > 1) {
               pageGrid = $('<div/>').addClass(className.grid).appendTo(container);
@@ -3138,7 +3139,14 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
-                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode);
+                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode);
+                  if (disabled) {
+                    var disabledReason = module.helper.disabledReason(cellDate, mode);
+                    if (disabledReason !== null) {
+                      cell.attr("data-tooltip", disabledReason[metadata.message]);
+                      cell.attr("data-position", tooltipPosition);
+                    }
+                  }
                   var active = module.helper.dateEqual(cellDate, date, mode);
                   var isToday = module.helper.dateEqual(cellDate, today, mode);
                   cell.toggleClass(className.adjacentCell, adjacent);
@@ -3201,7 +3209,7 @@ $.fn.calendar = function(parameters) {
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent);
+              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -3269,6 +3277,9 @@ $.fn.calendar = function(parameters) {
             event.stopPropagation();
             isTouchDown = false;
             var target = $(event.target);
+            if (target.hasClass("disabled")) {
+              return;
+            }
             var parent = target.parent();
             if (parent.data(metadata.date) || parent.data(metadata.focusDate) || parent.data(metadata.mode)) {
               //clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
@@ -3318,7 +3329,7 @@ $.fn.calendar = function(parameters) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
-                if (date && !settings.isDisabled(date, mode)) {
+                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode)) {
                   module.selectDate(date);
                 }
                 //disable form submission:
@@ -3612,6 +3623,29 @@ $.fn.calendar = function(parameters) {
         },
 
         helper: {
+          isDisabled: function(date, mode) {
+            return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if (d instanceof Date) {
+                return module.helper.dateEqual(date, d, mode);
+              }
+              if (d !== null && typeof d === 'object') {
+                return module.helper.dateEqual(date, d[metadata.date], mode);
+              }
+            }));
+          },
+          disabledReason: function(date, mode) {
+            if (mode === 'day') {
+              for (var i = 0; i < settings.disabledDates.length; i++) {
+                var d = settings.disabledDates[i];
+                if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
+                  var reason = {};
+                  reason[metadata.message] = d[metadata.message];
+                  return reason;
+                }
+              }
+            }
+            return null;
+          },
           sanitiseDate: function (date) {
             if (!date) {
               return undefined;
@@ -3874,28 +3908,30 @@ $.fn.calendar.settings = {
   verbose: false,
   performance: false,
 
-  type           : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
-  firstDayOfWeek : 0,          // day for first day column (0 = Sunday)
-  constantHeight : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
-  today          : false,      // show a 'today/now' button at the bottom of the calendar
-  closable       : true,       // close the popup after selecting a date/time
-  monthFirst     : true,       // month before day when parsing/converting date from/to text
-  touchReadonly  : true,       // set input to readonly on touch devices
-  inline         : false,      // create the calendar inline instead of inside a popup
-  on             : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
-  initialDate    : null,       // date to display initially when no date is selected (null = now)
-  startMode      : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
-  minDate        : null,       // minimum date/time that can be selected, dates/times before are disabled
-  maxDate        : null,       // maximum date/time that can be selected, dates/times after are disabled
-  ampm           : true,       // show am/pm in time mode
-  disableYear    : false,      // disable year selection mode
-  disableMonth   : false,      // disable month selection mode
-  disableMinute  : false,      // disable minute selection mode
-  formatInput    : true,       // format the input text upon input blur and module creation
-  startCalendar  : null,       // jquery object or selector for another calendar that represents the start date of a date range
-  endCalendar    : null,       // jquery object or selector for another calendar that represents the end date of a date range
-  multiMonth     : 1,          // show multiple months when in 'day' mode
-  showWeekNumbers: null,       // show Number of Week at the very first column of a dayView
+  type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
+  firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
+  constantHeight     : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
+  today              : false,      // show a 'today/now' button at the bottom of the calendar
+  closable           : true,       // close the popup after selecting a date/time
+  monthFirst         : true,       // month before day when parsing/converting date from/to text
+  touchReadonly      : true,       // set input to readonly on touch devices
+  inline             : false,      // create the calendar inline instead of inside a popup
+  on                 : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
+  initialDate        : null,       // date to display initially when no date is selected (null = now)
+  startMode          : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
+  minDate            : null,       // minimum date/time that can be selected, dates/times before are disabled
+  maxDate            : null,       // maximum date/time that can be selected, dates/times after are disabled
+  ampm               : true,       // show am/pm in time mode
+  disableYear        : false,      // disable year selection mode
+  disableMonth       : false,      // disable month selection mode
+  disableMinute      : false,      // disable minute selection mode
+  formatInput        : true,       // format the input text upon input blur and module creation
+  startCalendar      : null,       // jquery object or selector for another calendar that represents the start date of a date range
+  endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
+  multiMonth         : 1,          // show multiple months when in 'day' mode
+  showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
+  disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
+  disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -4255,14 +4291,15 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
-    monthOffset: 'monthOffset'
+    monthOffset: 'monthOffset',
+    message: 'message'
   }
 };
 
 })(jQuery, window, document);
 
 /*!
- * # Semantic UI 2.6.3 - Checkbox
+ * # Semantic UI 2.6.4 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5091,7 +5128,7 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Dimmer
+ * # Semantic UI 2.6.4 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5827,7 +5864,7 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Dropdown
+ * # Semantic UI 2.6.4 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6876,7 +6913,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(settings.showOnFocus) {
+              if(settings.showOnFocus || event.type !== 'focus') {
                 module.search();
               }
             },
@@ -6907,7 +6944,11 @@ $.fn.dropdown = function(parameters) {
             click: function(event) {
               if(module.has.search()) {
                 if(!module.is.active()) {
-                  module.focusSearch();
+                    if(settings.showOnFocus){
+                      module.focusSearch();
+                    } else {
+                      module.toggle();
+                    }
                 } else {
                   module.blurSearch();
                 }
@@ -6998,7 +7039,9 @@ $.fn.dropdown = function(parameters) {
               event.stopPropagation();
             },
             hide: function(event) {
-              module.determine.eventInModule(event, module.hide);
+              if(module.determine.eventInModule(event, module.hide)){
+                  event.preventDefault();
+              }
             }
           },
           select: {
@@ -7090,7 +7133,7 @@ $.fn.dropdown = function(parameters) {
                 isBubbledEvent = ($subMenu.find($target).length > 0)
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
-              if(module.has.menuSearch()) {
+              if (!module.has.search() || !document.activeElement.isEqualNode($search[0])) {
                 $(document.activeElement).blur();
               }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
@@ -7499,10 +7542,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.selected(value, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
@@ -7515,10 +7555,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.value(value, text, $(element));
-              if(module.is.multiple() && !module.is.allFiltered()) {
-                return;
-              }
-              else {
+              if(!module.is.multiple()) {
                 module.hideAndClear();
               }
             }
@@ -8057,6 +8094,7 @@ $.fn.dropdown = function(parameters) {
           else {
             module.remove.activeItem();
             module.remove.selectedItem();
+            module.remove.filteredItem();
           }
           module.set.placeholderText();
           module.clearValue();
@@ -9857,7 +9895,7 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Embed
+ * # Semantic UI 2.6.4 - Embed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10564,7 +10602,7 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Modal
+ * # Semantic UI 2.6.4 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11655,7 +11693,7 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Nag
+ * # Semantic UI 2.6.4 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12163,7 +12201,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Popup
+ * # Semantic UI 2.6.4 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12579,7 +12617,7 @@ $.fn.popup = function(parameters) {
         },
         supports: {
           svg: function() {
-            return (typeof SVGGraphicsElement === 'undefined');
+            return (typeof SVGGraphicsElement !== 'undefined');
           }
         },
         animate: {
@@ -13696,7 +13734,7 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Progress
+ * # Semantic UI 2.6.4 - Progress
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14620,7 +14658,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Range
+ * # Semantic UI 2.6.4 - Range
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14899,7 +14937,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Rating
+ * # Semantic UI 2.6.4 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -15411,7 +15449,7 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Search
+ * # Semantic UI 2.6.4 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16927,7 +16965,7 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Shape
+ * # Semantic UI 2.6.4 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17849,7 +17887,7 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Sidebar
+ * # Semantic UI 2.6.4 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18883,7 +18921,7 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Sticky
+ * # Semantic UI 2.6.4 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19843,7 +19881,7 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Tab
+ * # Semantic UI 2.6.4 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20796,7 +20834,7 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Toast
+ * # Semantic UI 2.6.4 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21389,7 +21427,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Transition
+ * # Semantic UI 2.6.4 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22496,7 +22534,7 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - API
+ * # Semantic UI 2.6.4 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23664,7 +23702,7 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - State
+ * # Semantic UI 2.6.4 - State
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24373,7 +24411,7 @@ $.fn.state.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.6.3 - Visibility
+ * # Semantic UI 2.6.4 - Visibility
  * http://github.com/semantic-org/semantic-ui/
  *
  *
