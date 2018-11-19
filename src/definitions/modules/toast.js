@@ -549,7 +549,7 @@ $.fn.toast.settings = {
     icon         : 'icon',
     visible      : 'visible',
     content      : 'content',
-    title        : 'title'
+    title        : 'header'
   },
 
   icons          : {
