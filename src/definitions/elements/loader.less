@@ -27,7 +27,7 @@
   position: absolute;
   top: @loaderTopOffset;
   left: @loaderLeftOffset;
-  margin: 0px;
+  margin: 0;
   text-align: center;
   z-index: 1000;
   transform: translateX(-50%) translateY(-50%);
@@ -37,7 +37,7 @@
 .ui.loader:before {
   position: absolute;
   content: '';
-  top: 0%;
+  top: 0;
   left: 50%;
   width: 100%;
   height: 100%;
@@ -50,13 +50,12 @@
 .ui.loader:after {
   position: absolute;
   content: '';
-  top: 0%;
+  top: 0;
   left: 50%;
   width: 100%;
   height: 100%;
 
-  animation: loader @loaderSpeed linear;
-  animation-iteration-count: infinite;
+  animation: loader @loaderSpeed infinite linear;
 
   border-radius: @circularRadius;
 
@@ -64,18 +63,16 @@
   border-style: solid;
   border-width: @loaderLineWidth;
 
-  box-shadow: 0px 0px 0px 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 /* Speeds */
 .ui.fast.loader:after {
-  animation: loader @loaderSpeedFast linear;
-  animation-iteration-count: infinite;
+  animation-duration: @loaderSpeedFast;
 }
 
 .ui.slow.loader:after {
-  animation: loader @loaderSpeedSlow linear;
-  animation-iteration-count: infinite;
+  animation-duration: @loaderSpeedSlow;
 }
 
 /* Active Animation */
@@ -303,63 +300,63 @@
 --------------------*/
 
 .ui.primary.loader:after {
-  border-color: @primaryColor transparent transparent;
+  border-color: @primaryColor;
 }
 
 .ui.secondary.loader:after {
-  border-color: @secondaryColor transparent transparent;
+  border-color: @secondaryColor;
 }
 
 .ui.red.loader:after {
-  border-color: @red transparent transparent;
+  border-color: @red;
 }
 
 .ui.orange.loader:after {
-  border-color: @orange transparent transparent;
+  border-color: @orange;
 }
 
 .ui.yellow.loader:after {
-  border-color: @yellow transparent transparent;
+  border-color: @yellow;
 }
 
 .ui.olive.loader:after {
-  border-color: @olive transparent transparent;
+  border-color: @olive;
 }
 
 .ui.green.loader:after {
-  border-color: @green transparent transparent;
+  border-color: @green;
 }
 
 .ui.teal.loader:after {
-  border-color: @teal transparent transparent;
+  border-color: @teal;
 }
 
 .ui.blue.loader:after {
-  border-color: @blue transparent transparent;
+  border-color: @blue;
 }
 
 .ui.violet.loader:after {
-  border-color: @violet transparent transparent;
+  border-color: @violet;
 }
 
 .ui.purple.loader:after {
-  border-color: @purple transparent transparent;
+  border-color: @purple;
 }
 
 .ui.pink.loader:after {
-  border-color: @pink transparent transparent;
+  border-color: @pink;
 }
 
 .ui.brown.loader:after {
-  border-color: @brown transparent transparent;
+  border-color: @brown;
 }
 
 .ui.grey.loader:after {
-  border-color: @grey transparent transparent;
+  border-color: @grey;
 }
 
 .ui.black.loader:after {
-  border-color: @black transparent transparent;
+  border-color: @black;
 }
 
 
@@ -374,68 +371,68 @@
   border-color: @invertedLoaderFillColor;
 }
 .ui.inverted.loader:after {
-  border-top-color: @invertedLoaderLineColor;
+  border-color: @invertedLoaderLineColor;
 }
 
 /* Colors */
 .ui.inverted.primary.loader:after {
-  border-color: @lightPrimaryColor transparent transparent;
+  border-color: @lightPrimaryColor;
 }
 
 .ui.inverted.secondary.loader:after {
-  border-color: @lightSecondaryColor transparent transparent;
+  border-color: @lightSecondaryColor;
 }
 
 .ui.inverted.red.loader:after {
-  border-color: @lightRed transparent transparent;
+  border-color: @lightRed;
 }
 
 .ui.inverted.orange.loader:after {
-  border-color: @lightOrange transparent transparent;
+  border-color: @lightOrange;
 }
 
 .ui.inverted.yellow.loader:after {
-  border-color: @lightYellow transparent transparent;
+  border-color: @lightYellow;
 }
 
 .ui.inverted.olive.loader:after {
-  border-color: @lightOlive transparent transparent;
+  border-color: @lightOlive;
 }
 
 .ui.inverted.green.loader:after {
-  border-color: @lightGreen transparent transparent;
+  border-color: @lightGreen;
 }
 
 .ui.inverted.teal.loader:after {
-  border-color: @lightTeal transparent transparent;
+  border-color: @lightTeal;
 }
 
 .ui.inverted.blue.loader:after {
-  border-color: @lightBlue transparent transparent;
+  border-color: @lightBlue;
 }
 
 .ui.inverted.violet.loader:after {
-  border-color: @lightViolet transparent transparent;
+  border-color: @lightViolet;
 }
 
 .ui.inverted.purple.loader:after {
-  border-color: @lightPurple transparent transparent;
+  border-color: @lightPurple;
 }
 
 .ui.inverted.pink.loader:after {
-  border-color: @lightPink transparent transparent;
+  border-color: @lightPink;
 }
 
 .ui.inverted.brown.loader:after {
-  border-color: @lightBrown transparent transparent;
+  border-color: @lightBrown;
 }
 
 .ui.inverted.grey.loader:after {
-  border-color: @lightGrey transparent transparent;
+  border-color: @lightGrey;
 }
 
 .ui.inverted.black.loader:after {
-  border-color: @lightBlack transparent transparent;
+  border-color: @lightBlack;
 }
 
 /*-------------------
@@ -446,8 +443,8 @@
   position: relative;
   vertical-align: @inlineVerticalAlign;
   margin: @inlineMargin;
-  left: 0em;
-  top: 0em;
+  left: 0;
+  top: 0;
   transform: none;
 }
 
@@ -464,5 +461,12 @@
   margin-right: auto;
 }
 
+.ui.loader.loader.loader.loader.loader:after {
+  border-left-color:transparent;
+  border-right-color:transparent;
+}
+.ui.loader.loader.loader.loader.loader:not(.double):after {
+  border-bottom-color: transparent;
+}
 
 .loadUIOverrides();
