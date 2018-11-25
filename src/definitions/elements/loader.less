@@ -307,13 +307,13 @@
   @_loaderColor: "@{colorRaw}";
   @_loaderInvertedColor: "@{lightColor}";
 
-  .ui.@{color}.loading.loading.loading.loading:not(.button):after,
+  .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
   .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
   .ui.@{color}.loading.loading.loading.loading > i.icon:after,
   .ui.@{color}.loader.loader.loader:after {
     border-color: @@_loaderColor;
   }
-  .ui.inverted.@{color}.loading.loading.loading.loading:after,
+  .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
   .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
   .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
   .ui.inverted.@{color}.loader.loader.loader:after {
