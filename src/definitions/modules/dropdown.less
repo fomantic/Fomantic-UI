@@ -813,20 +813,16 @@ select.ui.dropdown {
   content: '';
   top: 50%;
   left: 50%;
-  box-shadow: 0px 0px 0px 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 
   margin: @loaderMargin;
   width: @loaderSize;
   height: @loaderSize;
 
-  animation: dropdown-spin @loaderSpeed linear;
-  animation-iteration-count: infinite;
-
+  animation: loader @loaderSpeed infinite linear;
+  border: @loaderLineWidth solid @loaderLineColor;
   border-radius: @circularRadius;
 
-  border-color: @loaderLineColor transparent transparent;
-  border-style: solid;
-  border-width: @loaderLineWidth;
 }
 
 /* Coupling */
@@ -834,16 +830,6 @@ select.ui.dropdown {
 .ui.loading.dropdown.button > i.icon:after {
   display: none;
 }
-
-@keyframes dropdown-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 /*--------------------
      Default Text

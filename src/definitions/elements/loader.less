@@ -56,21 +56,24 @@
   height: 100%;
 
   animation: loader @loaderSpeed infinite linear;
-
+  border: @loaderLineWidth solid @shapeBorderColor;
   border-radius: @circularRadius;
-
-  border-color: @shapeBorderColor;
-  border-style: solid;
-  border-width: @loaderLineWidth;
 
   box-shadow: 0 0 0 1px transparent;
 }
 
 /* Speeds */
+
+.ui.fast.loading.loading:after,
+.ui.fast.loading.loading .input > i.icon:after,
+.ui.fast.loading.loading > i.icon:after,
 .ui.fast.loader:after {
   animation-duration: @loaderSpeedFast;
 }
 
+.ui.slow.loading.loading:after,
+.ui.slow.loading.loading .input > i.icon:after,
+.ui.slow.loading.loading > i.icon:after,
 .ui.slow.loader:after {
   animation-duration: @loaderSpeedSlow;
 }
@@ -299,141 +302,39 @@
        Colors
 --------------------*/
 
-.ui.primary.loader:after {
-  border-color: @primaryColor;
-}
+.loaderColor(@colorRaw; @lightColor;) {
+  @color: replace(@colorRaw,'Color','');
+  @_loaderColor: "@{colorRaw}";
+  @_loaderInvertedColor: "@{lightColor}";
 
-.ui.secondary.loader:after {
-  border-color: @secondaryColor;
+  .ui.@{color}.loading.loading.loading.loading:not(.button):after,
+  .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
+  .ui.@{color}.loading.loading.loading.loading > i.icon:after,
+  .ui.@{color}.loader.loader.loader:after {
+    border-color: @@_loaderColor;
+  }
+  .ui.inverted.@{color}.loading.loading.loading.loading:after,
+  .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
+  .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
+  .ui.inverted.@{color}.loader.loader.loader:after {
+    border-color: @@_loaderInvertedColor;
+  }
 }
-
-.ui.red.loader:after {
-  border-color: @red;
-}
-
-.ui.orange.loader:after {
-  border-color: @orange;
-}
-
-.ui.yellow.loader:after {
-  border-color: @yellow;
-}
-
-.ui.olive.loader:after {
-  border-color: @olive;
-}
-
-.ui.green.loader:after {
-  border-color: @green;
-}
-
-.ui.teal.loader:after {
-  border-color: @teal;
-}
-
-.ui.blue.loader:after {
-  border-color: @blue;
-}
-
-.ui.violet.loader:after {
-  border-color: @violet;
-}
-
-.ui.purple.loader:after {
-  border-color: @purple;
-}
-
-.ui.pink.loader:after {
-  border-color: @pink;
-}
-
-.ui.brown.loader:after {
-  border-color: @brown;
-}
-
-.ui.grey.loader:after {
-  border-color: @grey;
-}
-
-.ui.black.loader:after {
-  border-color: @black;
-}
-
-
-/*-------------------
-       Inverted
---------------------*/
-
-.ui.inverted.loader {
-  color: @invertedLoaderTextColor
-}
-.ui.inverted.loader:before {
-  border-color: @invertedLoaderFillColor;
-}
-.ui.inverted.loader:after {
-  border-color: @invertedLoaderLineColor;
-}
-
-/* Colors */
-.ui.inverted.primary.loader:after {
-  border-color: @lightPrimaryColor;
-}
-
-.ui.inverted.secondary.loader:after {
-  border-color: @lightSecondaryColor;
-}
-
-.ui.inverted.red.loader:after {
-  border-color: @lightRed;
-}
-
-.ui.inverted.orange.loader:after {
-  border-color: @lightOrange;
-}
-
-.ui.inverted.yellow.loader:after {
-  border-color: @lightYellow;
-}
-
-.ui.inverted.olive.loader:after {
-  border-color: @lightOlive;
-}
-
-.ui.inverted.green.loader:after {
-  border-color: @lightGreen;
-}
-
-.ui.inverted.teal.loader:after {
-  border-color: @lightTeal;
-}
-
-.ui.inverted.blue.loader:after {
-  border-color: @lightBlue;
-}
-
-.ui.inverted.violet.loader:after {
-  border-color: @lightViolet;
-}
-
-.ui.inverted.purple.loader:after {
-  border-color: @lightPurple;
-}
-
-.ui.inverted.pink.loader:after {
-  border-color: @lightPink;
-}
-
-.ui.inverted.brown.loader:after {
-  border-color: @lightBrown;
-}
-
-.ui.inverted.grey.loader:after {
-  border-color: @lightGrey;
-}
-
-.ui.inverted.black.loader:after {
-  border-color: @lightBlack;
-}
+.loaderColor(~'primaryColor',~'lightPrimaryColor');
+.loaderColor(~'secondaryColor',~'lightSecondaryColor');
+.loaderColor(~'red',~'lightRed');
+.loaderColor(~'orange',~'lightOrange');
+.loaderColor(~'yellow',~'lightYellow');
+.loaderColor(~'olive',~'lightOlive');
+.loaderColor(~'green',~'lightGreen');
+.loaderColor(~'teal',~'lightTeal');
+.loaderColor(~'blue',~'lightBlue');
+.loaderColor(~'violet',~'lightViolet');
+.loaderColor(~'purple',~'lightPurple');
+.loaderColor(~'pink',~'lightPink');
+.loaderColor(~'brown',~'lightBrown');
+.loaderColor(~'grey',~'lightGrey');
+.loaderColor(~'black',~'lightBlack');
 
 /*-------------------
        Inline
@@ -461,12 +362,25 @@
   margin-right: auto;
 }
 
+.ui.loading.loading.loading.loading.loading.loading:after,
+.ui.loading.loading.loading.loading.loading.loading > i.icon:after,
 .ui.loader.loader.loader.loader.loader:after {
   border-left-color:transparent;
   border-right-color:transparent;
 }
+.ui.loading.loading.loading.loading.loading.loading:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading:not(.double) > i.icon:after,
 .ui.loader.loader.loader.loader.loader:not(.double):after {
   border-bottom-color: transparent;
+}
+.ui.loading.loading.loading.loading.loading.loading.segment:after,
+.ui.loading.loading.loading.loading.loading.loading.form:after {
+  border-left-color:@loaderFillColor;
+  border-right-color:@loaderFillColor;
+}
+.ui.loading.loading.loading.loading.loading.loading.segment:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading.form:not(.double):after {
+  border-bottom-color: @loaderFillColor;
 }
 
 .loadUIOverrides();

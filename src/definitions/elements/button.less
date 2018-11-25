@@ -161,36 +161,22 @@
   width: @loaderSize;
   height: @loaderSize;
 
-  animation: button-spin @loaderSpeed linear;
-  animation-iteration-count: infinite;
-
+  animation: loader @loaderSpeed infinite linear;
+  border: @loaderLineWidth solid @invertedLoaderLineColor;
   border-radius: @circularRadius;
 
-  border-color: @invertedLoaderLineColor transparent transparent;
-  border-style: solid;
-  border-width: @loaderLineWidth;
-
-  box-shadow: 0px 0px 0px 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 .ui.labeled.icon.loading.button .icon {
   background-color: transparent;
   box-shadow: none;
 }
 
-@keyframes button-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .ui.basic.loading.button:not(.inverted):before {
   border-color: @loaderFillColor;
 }
 .ui.basic.loading.button:not(.inverted):after {
-  border-top-color: @loaderLineColor;
+  border-color: @loaderLineColor;
 }
 
 /*-------------------
