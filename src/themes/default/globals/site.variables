@@ -296,6 +296,8 @@
 @purpleTextColor : @purple;
 @pinkTextColor   : @pink;
 @brownTextColor  : @brown;
+@greyTextColor   : @grey;
+@blackTextColor  : @black;
 
 /*--- Colored Border ---*/
 @redBorderColor    : @redTextColor;
@@ -309,7 +311,8 @@
 @purpleBorderColor : @purpleTextColor;
 @pinkBorderColor   : @pinkTextColor;
 @brownBorderColor  : @brownTextColor;
-
+@greyBorderColor   : @greyTextColor;
+@blackBorderColor  : @blackTextColor;
 /*-------------------
      Alpha Colors
 --------------------*/
@@ -755,6 +758,8 @@
 @purpleHover              : saturate(darken(@purple, 5), 10, relative);
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
+@greyHover                : saturate(darken(@grey, 5), 10, relative);
+@blackHover               : saturate(darken(@black, 5), 10, relative);
 
 @lightRedHover            : saturate(darken(@lightRed, 5), 10, relative);
 @lightOrangeHover         : saturate(darken(@lightOrange, 5), 10, relative);
