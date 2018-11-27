@@ -86,110 +86,18 @@
      Colors
 ---------------*/
 
-/* Red */
-.ui.red.range .inner .track-fill {
-  background-color: @red;
-}
-.ui.red.inverted.range .inner .track-fill {
-  background-color: @lightRed;
-}
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
 
-/* Orange */
-.ui.orange.range .inner .track-fill {
-  background-color: @orange;
-}
-.ui.orange.inverted.range .inner .track-fill {
-  background-color: @lightOrange;
-}
-
-/* Yellow */
-.ui.yellow.range .inner .track-fill {
-  background-color: @yellow;
-}
-.ui.yellow.inverted.range .inner .track-fill {
-  background-color: @lightYellow;
-}
-
-/* Olive */
-.ui.olive.range .inner .track-fill {
-  background-color: @olive;
-}
-.ui.olive.inverted.range .inner .track-fill {
-  background-color: @lightOlive;
-}
-
-/* Green */
-.ui.green.range .inner .track-fill {
-  background-color: @green;
-}
-.ui.green.inverted.range .inner .track-fill {
-  background-color: @lightGreen;
-}
-
-/* Teal */
-.ui.teal.range .inner .track-fill {
-  background-color: @teal;
-}
-.ui.teal.inverted.range .inner .track-fill {
-  background-color: @lightTeal;
-}
-
-/* Blue */
-.ui.blue.range .inner .track-fill {
-  background-color: @blue;
-}
-.ui.blue.inverted.range .inner .track-fill {
-  background-color: @lightBlue;
-}
-
-/* Violet */
-.ui.violet.range .inner .track-fill {
-  background-color: @violet;
-}
-.ui.violet.inverted.range .inner .track-fill {
-  background-color: @lightViolet;
-}
-
-/* Purple */
-.ui.purple.range .inner .track-fill {
-  background-color: @purple;
-}
-.ui.purple.inverted.range .inner .track-fill {
-  background-color: @lightPurple;
-}
-
-/* Pink */
-.ui.pink.range .inner .track-fill {
-  background-color: @pink;
-}
-.ui.pink.inverted.range .inner .track-fill {
-  background-color: @lightPink;
-}
-
-/* Brown */
-.ui.brown.range .inner .track-fill {
-  background-color: @brown;
-}
-.ui.brown.inverted.range .inner .track-fill {
-  background-color: @lightBrown;
-}
-
-/* Grey */
-.ui.grey.range .inner .track-fill {
-  background-color: @grey;
-}
-.ui.grey.inverted.range .inner .track-fill {
-  background-color: @lightGrey;
-}
-
-/* Black */
-.ui.black.range .inner .track-fill {
-  background-color: @black;
-}
-.ui.black.inverted.range .inner .track-fill {
-  background-color: @lightBlack;
-}
-
+  .ui.@{color}.range .inner .track-fill {
+    background-color: @c;
+  }
+  .ui.@{color}.inverted.range .inner .track-fill {
+    background-color: @l;
+  }
+})
 
 /*--------------
     Disabled
