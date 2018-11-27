@@ -285,34 +285,90 @@
 @brownHeaderColor  : darken(@brownTextColor, 5);
 
 /*--- Colored Text ---*/
-@redTextColor    : @red;
-@orangeTextColor : @orange;
-@yellowTextColor : #B58105; // Yellow text is difficult to read
-@oliveTextColor  : #8ABC1E; // Olive is difficult to read
-@greenTextColor  : #1EBC30; // Green is difficult to read
-@tealTextColor   : #10A3A3; // Teal text is difficult to read
-@blueTextColor   : @blue;
-@violetTextColor : @violet;
-@purpleTextColor : @purple;
-@pinkTextColor   : @pink;
-@brownTextColor  : @brown;
-@greyTextColor   : @grey;
-@blackTextColor  : @black;
+@primaryTextColor   : @invertedTextColor;
+@secondaryTextColor : @invertedTextColor;
+@redTextColor       : @red;
+@orangeTextColor    : @orange;
+@yellowTextColor    : #B58105; // Yellow text is difficult to read
+@oliveTextColor     : #8ABC1E; // Olive is difficult to read
+@greenTextColor     : #1EBC30; // Green is difficult to read
+@tealTextColor      : #10A3A3; // Teal text is difficult to read
+@blueTextColor      : @blue;
+@violetTextColor    : @violet;
+@purpleTextColor    : @purple;
+@pinkTextColor      : @pink;
+@brownTextColor     : @brown;
+@greyTextColor      : @grey;
+@blackTextColor     : @black;
+
+/*--- Hovered Colored Text ---*/
+@primaryHoverTextColor   : @primaryTextColor;
+@secondaryHoverTextColor : @secondaryTextColor;
+@redHoverTextColor       : @redTextColor;
+@orangeHoverTextColor    : @orangeTextColor;
+@yellowHoverTextColor    : @yellowTextColor;
+@oliveHoverTextColor     : @oliveTextColor;
+@greenHoverTextColor     : @greenTextColor;
+@tealHoverTextColor      : @tealTextColor;
+@blueHoverTextColor      : @blueTextColor;
+@violetHoverTextColor    : @violetTextColor;
+@purpleHoverTextColor    : @purpleTextColor;
+@pinkHoverTextColor      : @pinkTextColor;
+@brownHoverTextColor     : @brownTextColor;
+@greyHoverTextColor      : @greyTextColor;
+@blackHoverTextColor     : @blackTextColor;
+
 
 /*--- Colored Border ---*/
-@redBorderColor    : @redTextColor;
-@orangeBorderColor : @orangeTextColor;
-@yellowBorderColor : @yellowTextColor;
-@oliveBorderColor  : @oliveTextColor;
-@greenBorderColor  : @greenTextColor;
-@tealBorderColor   : @tealTextColor;
-@blueBorderColor   : @blueTextColor;
-@violetBorderColor : @violetTextColor;
-@purpleBorderColor : @purpleTextColor;
-@pinkBorderColor   : @pinkTextColor;
-@brownBorderColor  : @brownTextColor;
-@greyBorderColor   : @greyTextColor;
-@blackBorderColor  : @blackTextColor;
+@primaryBorderColor   : @primaryColor;
+@secondaryBorderColor : @secondaryColor;
+@redBorderColor       : @redTextColor;
+@orangeBorderColor    : @orangeTextColor;
+@yellowBorderColor    : @yellowTextColor;
+@oliveBorderColor     : @oliveTextColor;
+@greenBorderColor     : @greenTextColor;
+@tealBorderColor      : @tealTextColor;
+@blueBorderColor      : @blueTextColor;
+@violetBorderColor    : @violetTextColor;
+@purpleBorderColor    : @purpleTextColor;
+@pinkBorderColor      : @pinkTextColor;
+@brownBorderColor     : @brownTextColor;
+@greyBorderColor      : @greyTextColor;
+@blackBorderColor     : @blackTextColor;
+
+/*--- Shadows ---*/
+@primaryRibbonShadow: darken(@primaryColor, 10);
+@secondaryRibbonShadow: darken(@secondaryColor, 10);
+@redRibbonShadow: darken(@red, 10);
+@orangeRibbonShadow: darken(@orange, 10);
+@yellowRibbonShadow: darken(@yellow, 10);
+@oliveRibbonShadow: darken(@olive, 10);
+@greenRibbonShadow: darken(@green, 10);
+@tealRibbonShadow: darken(@teal, 10);
+@blueRibbonShadow: darken(@blue, 10);
+@violetRibbonShadow: darken(@violet, 10);
+@purpleRibbonShadow: darken(@purple, 10);
+@pinkRibbonShadow: darken(@pink, 10);
+@brownRibbonShadow: darken(@brown, 10);
+@greyRibbonShadow: darken(@grey, 10);
+@blackRibbonShadow: darken(@black, 10);
+
+@primaryInvertedRibbonShadow: darken(@lightPrimaryColor, 10);
+@secondaryInvertedRibbonShadow: darken(@lightSecondaryColor, 10);
+@redInvertedRibbonShadow: darken(@lightRed, 10);
+@orangeInvertedRibbonShadow: darken(@lightOrange, 10);
+@yellowInvertedRibbonShadow: darken(@lightYellow, 10);
+@oliveInvertedRibbonShadow: darken(@lightOlive, 10);
+@greenInvertedRibbonShadow: darken(@lightGreen, 10);
+@tealInvertedRibbonShadow: darken(@lightTeal, 10);
+@blueInvertedRibbonShadow: darken(@lightBlue, 10);
+@violetInvertedRibbonShadow: darken(@lightViolet, 10);
+@purpleInvertedRibbonShadow: darken(@lightPurple, 10);
+@pinkInvertedRibbonShadow: darken(@lightPink, 10);
+@brownInvertedRibbonShadow: darken(@lightBrown, 10);
+@greyInvertedRibbonShadow: lighten(@lightGrey, 5);
+@blackInvertedRibbonShadow: lighten(@lightBlack, 5);
+
 /*-------------------
      Alpha Colors
 --------------------*/

@@ -550,12 +550,12 @@
 --------------------*/
 
 each(@colors,{
-  @cn: replace(@key,'@','');
-  @c: @colors[@@cn][color];
-  .ui.@{cn}.segment.segment.segment.segment.segment:not(.inverted) {
+  @color: replace(@key,'@','');
+  @c: @colors[@@color][color];
+  .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
     border-top: @coloredBorderSize solid @c;
   }
-  .ui.inverted.@{cn}.segment.segment.segment.segment.segment {
+  .ui.inverted.@{color}.segment.segment.segment.segment.segment {
     background-color: @c;
     color: @white;
   }

@@ -616,95 +616,95 @@ a.ui.basic.label:hover {
        Colors
 --------------------*/
 
-
-.labelColor(@colorRaw; @lightColor; @blackOrGrey:false;) {
-  @color: replace(@colorRaw,'Color','');
-  @_labelColor: "@{colorRaw}";
-  @_labelInvertedColor: "@{lightColor}";
-  @_labelTextColor : "@{color}TextColor";
-  @_labelHover : "@{colorRaw}Hover";
-  @_labelInvertedHover: "@{lightColor}Hover";
-  @_labelHoverTextColor : "@{color}HoverTextColor";
-  @_labelRibbonShadow : "@{color}RibbonShadow";
-  @_labelInvertedRibbonShadow : "@{color}InvertedRibbonShadow";
+each(@colors,{
+  @color                      : replace(@key,'@','');
+  @isDark                     : @colors[@@color][isDark];
+  @_labelColor                : @colors[@@color][color];
+  @_labelInvertedColor        : @colors[@@color][light];
+  @_labelTextColor            : @colors[@@color][text];
+  @_labelHover                : @colors[@@color][hover];
+  @_labelInvertedHover        : @colors[@@color][lightHover];
+  @_labelHoverTextColor       : @colors[@@color][hoverText];
+  @_labelRibbonShadow         : @colors[@@color][ribbon];
+  @_labelInvertedRibbonShadow : @colors[@@color][invertedRibbon];
 
   .ui.@{color}.labels .label,
   .ui.@{color}.label {
-    background-color: @@_labelColor;
-    border-color: @@_labelColor;
-    color: @@_labelTextColor;
+    background-color: @_labelColor;
+    border-color: @_labelColor;
+    color: @_labelTextColor;
   }
   /* Link */
   .ui.@{color}.labels a.label:hover,
   a.ui.@{color}.label:hover{
-    background-color: @@_labelHover;
-    border-color: @@_labelHover;
-    color: @@_labelHoverTextColor;
+    background-color: @_labelHover;
+    border-color: @_labelHover;
+    color: @_labelHoverTextColor;
   }
   /* Ribbon */
   .ui.@{color}.ribbon.label {
-    border-color: @@_labelRibbonShadow;
+    border-color: @_labelRibbonShadow;
   }
   /* Basic */
   .ui.basic.labels .@{color}.label,
   .ui.basic.@{color}.label {
     background: @basicBackground;
-    border-color: @@_labelColor;
-    color: @@_labelColor;
+    border-color: @_labelColor;
+    color: @_labelColor;
   }
   .ui.basic.labels a.@{color}.label:hover,
   a.ui.basic.@{color}.label:hover {
     background: @basicBackground;
-    border-color: @@_labelHover;
-    color: @@_labelHover;
+    border-color: @_labelHover;
+    color: @_labelHover;
   }
   /* Inverted */
   .ui.inverted.labels .@{color}.label,
   .ui.inverted.@{color}.label {
-    background-color: @@_labelInvertedColor;
-    border-color: @@_labelInvertedColor;
+    background-color: @_labelInvertedColor;
+    border-color: @_labelInvertedColor;
     color: @black;
   }
   /* Inverted Link */
   .ui.inverted.labels a.@{color}.label:hover,
   a.ui.inverted.@{color}.label:hover{
-    background-color: @@_labelInvertedHover;
-    border-color: @@_labelInvertedHover;
-    & when not (@blackOrGrey) {
+    background-color: @_labelInvertedHover;
+    border-color: @_labelInvertedHover;
+    & when not (@isDark) {
       color: @black;
     }
-    & when (@blackOrGrey) {
-      color: @@_labelTextColor;
+    & when (@isDark) {
+      color: @_labelTextColor;
     }
   }
   /* Inverted Ribbon */
   .ui.inverted.@{color}.ribbon.label {
-    border-color: @@_labelInvertedRibbonShadow;
+    border-color: @_labelInvertedRibbonShadow;
   }
   /* Inverted Basic */
   .ui.inverted.basic.labels .@{color}.label,
   .ui.inverted.basic.@{color}.label {
     background-color: @invertedBackground;
-    border-color: @@_labelInvertedColor;
-    & when not (@blackOrGrey) {
-      color: @@_labelInvertedColor;
+    border-color: @_labelInvertedColor;
+    & when not (@isDark) {
+      color: @_labelInvertedColor;
     }
-    & when (@blackOrGrey) {
+    & when (@isDark) {
       color: @invertedTextColor;
     }
   }
   .ui.inverted.basic.labels a.@{color}.label:hover,
   a.ui.inverted.basic.@{color}.label:hover {
-    border-color: @@_labelInvertedHover;
+    border-color: @_labelInvertedHover;
     background-color: @invertedBackground;
-    & when not (@blackOrGrey) {
-      color: @@_labelInvertedHover;
+    & when not (@isDark) {
+      color: @_labelInvertedHover;
     }
   }
   /* Inverted Basic Tags */
   .ui.inverted.basic.tag.labels .@{color}.label,
   .ui.inverted.@{color}.basic.tag.label {
-    border: @invertedBorderSize solid @@_labelInvertedColor;
+    border: @invertedBorderSize solid @_labelInvertedColor;
   }
   .ui.inverted.basic.tag.labels .@{color}.label:before,
   .ui.inverted.@{color}.basic.tag.label:before {
@@ -714,23 +714,7 @@ a.ui.basic.label:hover {
     background-color: @invertedBackground;
     right: e(%("calc(100%% + %d)", @invertedBorderSize));
   }
-
-}
-.labelColor(~'primaryColor',~'lightPrimaryColor');
-.labelColor(~'secondaryColor',~'lightSecondaryColor');
-.labelColor(~'red',~'lightRed');
-.labelColor(~'orange',~'lightOrange');
-.labelColor(~'yellow',~'lightYellow');
-.labelColor(~'olive',~'lightOlive');
-.labelColor(~'green',~'lightGreen');
-.labelColor(~'teal',~'lightTeal');
-.labelColor(~'blue',~'lightBlue');
-.labelColor(~'violet',~'lightViolet');
-.labelColor(~'purple',~'lightPurple');
-.labelColor(~'pink',~'lightPink');
-.labelColor(~'brown',~'lightBrown');
-.labelColor(~'grey',~'lightGrey');
-.labelColor(~'black',~'lightBlack',true);
+})
 
 /*-------------------
      Horizontal
