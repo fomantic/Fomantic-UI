@@ -741,8 +741,8 @@
 /*---  Colors  ---*/
 @primaryColorHover        : saturate(darken(@primaryColor, 5), 10, relative);
 @secondaryColorHover      : saturate(lighten(@secondaryColor, 5), 10, relative);
-@lightPrimaryColorHover   : saturate(darken(@lightPrimaryColor, 5), 10, relative);
-@lightSecondaryColorHover : saturate(lighten(@lightSecondaryColor, 5), 10, relative);
+@lightPrimaryColorHover   : saturate(darken(@lightPrimaryColor, 10), 10, relative);
+@lightSecondaryColorHover : saturate(lighten(@lightSecondaryColor, 10), 10, relative);
 
 @redHover                 : saturate(darken(@red, 5), 10, relative);
 @orangeHover              : saturate(darken(@orange, 5), 10, relative);
@@ -756,19 +756,19 @@
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
 
-@lightRedHover            : saturate(darken(@lightRed, 5), 10, relative);
-@lightOrangeHover         : saturate(darken(@lightOrange, 5), 10, relative);
-@lightYellowHover         : saturate(darken(@lightYellow, 5), 10, relative);
-@lightOliveHover          : saturate(darken(@lightOlive, 5), 10, relative);
-@lightGreenHover          : saturate(darken(@lightGreen, 5), 10, relative);
-@lightTealHover           : saturate(darken(@lightTeal, 5), 10, relative);
-@lightBlueHover           : saturate(darken(@lightBlue, 5), 10, relative);
-@lightVioletHover         : saturate(darken(@lightViolet, 5), 10, relative);
-@lightPurpleHover         : saturate(darken(@lightPurple, 5), 10, relative);
-@lightPinkHover           : saturate(darken(@lightPink, 5), 10, relative);
-@lightBrownHover          : saturate(darken(@lightBrown, 5), 10, relative);
-@lightGreyHover           : saturate(darken(@lightGrey, 5), 10, relative);
-@lightBlackHover          : saturate(darken(@fullBlack, 5), 10, relative);
+@lightRedHover            : saturate(darken(@lightRed, 10), 10, relative);
+@lightOrangeHover         : saturate(darken(@lightOrange, 10), 10, relative);
+@lightYellowHover         : saturate(darken(@lightYellow, 10), 10, relative);
+@lightOliveHover          : saturate(darken(@lightOlive, 10), 10, relative);
+@lightGreenHover          : saturate(darken(@lightGreen, 10), 10, relative);
+@lightTealHover           : saturate(darken(@lightTeal, 10), 10, relative);
+@lightBlueHover           : saturate(darken(@lightBlue, 10), 10, relative);
+@lightVioletHover         : saturate(darken(@lightViolet, 10), 10, relative);
+@lightPurpleHover         : saturate(darken(@lightPurple, 10), 10, relative);
+@lightPinkHover           : saturate(darken(@lightPink, 10), 10, relative);
+@lightBrownHover          : saturate(darken(@lightBrown, 10), 10, relative);
+@lightGreyHover           : saturate(darken(@lightGrey, 10), 10, relative);
+@lightBlackHover          : saturate(darken(@fullBlack, 10), 10, relative);
 
 /*---  Emotive  ---*/
 @positiveColorHover       : saturate(darken(@positiveColor, 5), 10, relative);
