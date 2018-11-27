@@ -12,6 +12,7 @@
 @toastMarginBottom: 6px;
 @toastMargin: 0 0 @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
+@toastInvertedTextColor: @textColor;
 
 /* on Hover */
 @toastOpacityOnHover: 1;
