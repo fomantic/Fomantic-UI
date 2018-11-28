@@ -171,7 +171,7 @@ $.fn.dimmer = function(parameters) {
 
         create: function() {
           var
-            $element = $( settings.template.dimmer() )
+            $element = $( settings.template.dimmer(settings) )
           ;
           if(settings.dimmerName) {
             module.debug('Creating named dimmer', settings.dimmerName);
@@ -697,6 +697,10 @@ $.fn.dimmer.settings = {
     show : 500,
     hide : 500
   },
+// whether the dynamically created dimmer should have a loader
+  displayLoader: false,
+  loaderText  : false,
+  loaderStyle : '',
 
   onChange    : function(){},
   onShow      : function(){},
@@ -716,7 +720,8 @@ $.fn.dimmer.settings = {
     hide       : 'hide',
     legacy     : 'legacy',
     pageDimmer : 'page',
-    show       : 'show'
+    show       : 'show',
+    loader     : 'ui loader'
   },
 
   selector: {
@@ -725,8 +730,19 @@ $.fn.dimmer.settings = {
   },
 
   template: {
-    dimmer: function() {
-     return $('<div />').attr('class', 'ui dimmer');
+    dimmer: function(settings) {
+        var d = $('<div/>').addClass('ui dimmer'),l;
+        if(settings.displayLoader) {
+          l = $('<div/>')
+              .addClass(settings.className.loader)
+              .addClass(settings.loaderStyle);
+          if(!!settings.loaderText){
+            l.text(settings.loaderText);
+            l.addClass('text');
+          }
+          d.append(l);
+        }
+        return d;
     }
   }
 
