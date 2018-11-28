@@ -2146,6 +2146,11 @@ $.fn.dropdown = function(parameters) {
             else {
               module.set.selected();
             }
+            if(module.get.item()) {
+              $input.removeClass('noselection');
+            } else {
+              $input.addClass('noselection');
+            }
             module.remove.initialLoad();
           },
           remoteValues: function() {
@@ -2514,6 +2519,11 @@ $.fn.dropdown = function(parameters) {
             $element.addClass(className.leftward);
           },
           value: function(value, text, $selected) {
+            if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+              $input.removeClass('noselection');
+            } else {
+              $input.addClass('noselection');
+            }
             var
               escapedValue = module.escape.value(value),
               hasInput     = ($input.length > 0),
