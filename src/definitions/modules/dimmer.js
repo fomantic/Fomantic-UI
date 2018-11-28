@@ -700,7 +700,7 @@ $.fn.dimmer.settings = {
 // whether the dynamically created dimmer should have a loader
   displayLoader: false,
   loaderText  : false,
-  loaderStyle : '',
+  loaderVariation : '',
 
   onChange    : function(){},
   onShow      : function(){},
@@ -735,7 +735,7 @@ $.fn.dimmer.settings = {
         if(settings.displayLoader) {
           l = $('<div/>')
               .addClass(settings.className.loader)
-              .addClass(settings.loaderStyle);
+              .addClass(settings.loaderVariation);
           if(!!settings.loaderText){
             l.text(settings.loaderText);
             l.addClass('text');
