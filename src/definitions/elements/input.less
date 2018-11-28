@@ -398,6 +398,21 @@
   left: @borderWidth;
 }
 
+/* Labeled input error */
+.ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
+  border-top: @borderWidth solid @errorBorder;
+  border-bottom: @borderWidth solid @errorBorder;
+}
+.ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
+  border-left: @borderWidth solid @errorBorder;
+}
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
+  border-right: @borderWidth solid @errorBorder;
+}
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
+  border-left: @borderWidth solid @errorBorder;
+}
+
 
 /*--------------------
         Action
