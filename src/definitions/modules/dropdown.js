@@ -2147,9 +2147,9 @@ $.fn.dropdown = function(parameters) {
               module.set.selected();
             }
             if(module.get.item()) {
-              $input.removeClass('noselection');
+              $input.removeClass(className.noselection);
             } else {
-              $input.addClass('noselection');
+              $input.addClass(className.noselection);
             }
             module.remove.initialLoad();
           },
@@ -2520,9 +2520,9 @@ $.fn.dropdown = function(parameters) {
           },
           value: function(value, text, $selected) {
             if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
-              $input.removeClass('noselection');
+              $input.removeClass(className.noselection);
             } else {
-              $input.addClass('noselection');
+              $input.addClass(className.noselection);
             }
             var
               escapedValue = module.escape.value(value),
@@ -3955,7 +3955,8 @@ $.fn.dropdown.settings = {
     upward      : 'upward',
     leftward    : 'left',
     visible     : 'visible',
-    clearable   : 'clearable'
+    clearable   : 'clearable',
+    noselection : 'noselection'
   }
 
 };
