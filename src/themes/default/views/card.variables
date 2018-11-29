@@ -8,19 +8,19 @@
 
 /* Shadow */
 @shadowDistance: 1px;
-@shadowBoxShadow: 0px @shadowDistance 3px 0px @solidBorderColor;
+@shadowBoxShadow: 0 @shadowDistance 3px 0 @solidBorderColor;
 
 /* Card */
 @fontFamily: @pageFont;
 @display: flex;
 @background: @white;
 @borderRadius: @defaultBorderRadius;
-@margin: 1em 0em;
-@minHeight: 0px;
-@padding: 0em;
+@margin: 1em 0;
+@minHeight: 0;
+@padding: 0;
 @width: 290px;
 @borderWidth: 1px;
-@borderShadow: 0px 0px 0px @borderWidth @solidBorderColor;
+@borderShadow: 0 0 0 @borderWidth @solidBorderColor;
 @boxShadow:
   @shadowBoxShadow,
   @borderShadow
@@ -53,18 +53,18 @@
 
 /* Image */
 @imageBackground: @transparentBlack;
-@imagePadding: 0em;
+@imagePadding: 0;
 @imageBorder: none;
 @imageBoxShadow: none;
 @imageBorder: none;
 
 /* Content */
 @contentDivider: @borderWidth solid @internalBorderColor;
-@contentMargin: 0em;
+@contentMargin: 0;
 @contentBackground: none;
 @contentPadding: 1em 1em;
 @contentFontSize: 1em;
-@contentBorderRadius: 0em;
+@contentBorderRadius: 0;
 @contentBoxShadow: none;
 @contentBorder: none;
 
@@ -127,9 +127,9 @@
 @extraBackground: none;
 @extraPosition: static;
 @extraWidth: auto;
-@extraTop: 0em;
-@extraLeft: 0em;
-@extraMargin: 0em 0em;
+@extraTop: 0;
+@extraLeft: 0;
+@extraMargin: 0 0;
 @extraPadding: 0.75em 1em;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
@@ -140,7 +140,7 @@
 @extraLinkHoverColor: @linkHoverColor;
 
 /* Buttons */
-@buttonMargin: 0px -@borderWidth;
+@buttonMargin: 0 -@borderWidth;
 @buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
 
 /*-------------------
@@ -154,7 +154,7 @@
 @linkHoverRaiseDistance: 3px;
 @linkHoverTransform: translateY(-@linkHoverRaiseDistance);
 
-@shadowHoverBoxShadow: 0px @shadowDistance @linkHoverRaiseDistance 0px @solidSelectedBorderColor;
+@shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
 @linkHoverBoxShadow:
   @shadowHoverBoxShadow,
   @borderShadow
@@ -180,7 +180,7 @@
 @cardSpacing: 0.75em;
 @smallCardSpacing: 0.5em;
 
-@oneCardSpacing: 0em;
+@oneCardSpacing: 0;
 @twoCardSpacing: @wideCardSpacing;
 @threeCardSpacing: @wideCardSpacing;
 @fourCardSpacing: @cardSpacing;
@@ -192,7 +192,7 @@
 @tenCardSpacing: @smallCardSpacing;
 
 @oneCard: @oneColumn;
-@oneCardOffset: 0em;
+@oneCardOffset: 0;
 @twoCard: e(%("calc(%d - %d)", @twoColumn, @twoCardSpacing * 2));
 @twoCardOffset: -@twoCardSpacing;
 @threeCard: e(%("calc(%d - %d)", @threeColumn, @threeCardSpacing * 2));
@@ -236,6 +236,6 @@
 @invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
-  0px @shadowDistance 3px 0px @solidWhiteBorderColor,
-  0px 0px 0px @borderWidth @solidWhiteBorderColor
+  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+  0 0 0 @borderWidth @solidWhiteBorderColor
 ;
