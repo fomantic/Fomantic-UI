@@ -7,14 +7,14 @@
 --------------------*/
 
 @verticalSpacing: 1em;
-@margin: @verticalSpacing 0em (@labelHeight + @verticalSpacing);
-@firstMargin: 0em 0em (@labelHeight + @verticalSpacing);
-@lastMargin: 0em 0em (@labelHeight);
+@margin: @verticalSpacing 0 (@labelHeight + @verticalSpacing);
+@firstMargin: 0 0 (@labelHeight + @verticalSpacing);
+@lastMargin: 0 0 (@labelHeight);
 
 @background: @strongTransparentBlack;
 @border: none;
 @boxShadow: none;
-@padding: 0em;
+@padding: 0;
 @borderRadius: @defaultBorderRadius;
 
 /* Bar */
