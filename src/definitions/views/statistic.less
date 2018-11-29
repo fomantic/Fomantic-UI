@@ -30,14 +30,14 @@
 }
 
 .ui.statistic + .ui.statistic {
-  margin: 0em 0em 0em @horizontalSpacing;
+  margin: 0 0 0 @horizontalSpacing;
 }
 
 .ui.statistic:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 .ui.statistic:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 
@@ -68,14 +68,14 @@
 .ui.statistics:after {
   display: block;
   content: ' ';
-  height: 0px;
+  height: 0;
   clear: both;
   overflow: hidden;
   visibility: hidden;
 }
 
 .ui.statistics:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 
@@ -139,7 +139,7 @@
 .ui.statistic > .value .icon {
   opacity: 1;
   width: auto;
-  margin: 0em;
+  margin: 0;
 }
 
 /*--------------
@@ -273,7 +273,7 @@
 }
 .ui.horizontal.statistics {
   flex-direction: column;
-  margin: 0em;
+  margin: 0;
   max-width: none;
 }
 .ui.horizontal.statistics .statistic {
@@ -285,7 +285,7 @@
 
 .ui.horizontal.statistic > .text.value,
 .ui.horizontal.statistics > .statistic > .text.value {
-  min-height: 0em !important;
+  min-height: 0 !important;
 }
 .ui.horizontal.statistics .statistic > .value .icon,
 .ui.horizontal.statistic > .value .icon {
@@ -301,72 +301,7 @@
 .ui.horizontal.statistic > .label {
   display: inline-block;
   vertical-align: middle;
-  margin: 0em 0em 0em @horizontalLabelDistance;
-}
-
-/*--------------
-     Colors
----------------*/
-
-.ui.red.statistics .statistic > .value,
-.ui.statistics .red.statistic > .value,
-.ui.red.statistic > .value {
-  color: @red;
-}
-.ui.orange.statistics .statistic > .value,
-.ui.statistics .orange.statistic > .value,
-.ui.orange.statistic > .value {
-  color: @orange;
-}
-.ui.yellow.statistics .statistic > .value,
-.ui.statistics .yellow.statistic > .value,
-.ui.yellow.statistic > .value {
-  color: @yellow;
-}
-.ui.olive.statistics .statistic > .value,
-.ui.statistics .olive.statistic > .value,
-.ui.olive.statistic > .value {
-  color: @olive;
-}
-.ui.green.statistics .statistic > .value,
-.ui.statistics .green.statistic > .value,
-.ui.green.statistic > .value {
-  color: @green;
-}
-.ui.teal.statistics .statistic > .value,
-.ui.statistics .teal.statistic > .value,
-.ui.teal.statistic > .value {
-  color: @teal;
-}
-.ui.blue.statistics .statistic > .value,
-.ui.statistics .blue.statistic > .value,
-.ui.blue.statistic > .value {
-  color: @blue;
-}
-.ui.violet.statistics .statistic > .value,
-.ui.statistics .violet.statistic > .value,
-.ui.violet.statistic > .value {
-  color: @violet;
-}
-.ui.purple.statistics .statistic > .value,
-.ui.statistics .purple.statistic > .value,
-.ui.purple.statistic > .value {
-  color: @purple;
-}
-.ui.pink.statistics .statistic > .value,
-.ui.statistics .pink.statistic > .value,
-.ui.pink.statistic > .value {
-  color: @pink;
-}
-.ui.brown.statistics .statistic > .value,
-.ui.statistics .brown.statistic > .value,
-.ui.brown.statistic > .value {
-  color: @brown;
-}
-.ui.grey.statistics .statistic > .value,
-.ui.statistics .grey.statistic > .value,
-.ui.grey.statistic > .value {
-  color: @grey;
+  margin: 0 0 0 @horizontalLabelDistance;
 }
 
 /*--------------
@@ -382,66 +317,27 @@
   color: @invertedLabelColor;
 }
 
-.ui.inverted.red.statistics .statistic > .value,
-.ui.statistics .inverted.red.statistic > .value,
-.ui.inverted.red.statistic > .value {
-  color: @lightRed;
-}
-.ui.inverted.orange.statistics .statistic > .value,
-.ui.statistics .inverted.orange.statistic > .value,
-.ui.inverted.orange.statistic > .value {
-  color: @lightOrange;
-}
-.ui.inverted.yellow.statistics .statistic > .value,
-.ui.statistics .inverted.yellow.statistic > .value,
-.ui.inverted.yellow.statistic > .value {
-  color: @lightYellow;
-}
-.ui.inverted.olive.statistics .statistic > .value,
-.ui.statistics .inverted.olive.statistic > .value,
-.ui.inverted.olive.statistic > .value {
-  color: @lightOlive;
-}
-.ui.inverted.green.statistics .statistic > .value,
-.ui.statistics .inverted.green.statistic > .value,
-.ui.inverted.green.statistic > .value {
-  color: @lightGreen;
-}
-.ui.inverted.teal.statistics .statistic > .value,
-.ui.statistics .inverted.teal.statistic > .value,
-.ui.inverted.teal.statistic > .value {
-  color: @lightTeal;
-}
-.ui.inverted.blue.statistics .statistic > .value,
-.ui.statistics .inverted.blue.statistic > .value,
-.ui.inverted.blue.statistic > .value {
-  color: @lightBlue;
-}
-.ui.inverted.violet.statistics .statistic > .value,
-.ui.statistics .inverted.violet.statistic > .value,
-.ui.inverted.violet.statistic > .value {
-  color: @lightViolet;
-}
-.ui.inverted.purple.statistics .statistic > .value,
-.ui.statistics .inverted.purple.statistic > .value,
-.ui.inverted.purple.statistic > .value {
-  color: @lightPurple;
-}
-.ui.inverted.pink.statistics .statistic > .value,
-.ui.statistics .inverted.pink.statistic > .value,
-.ui.inverted.pink.statistic > .value {
-  color: @lightPink;
-}
-.ui.inverted.brown.statistics .statistic > .value,
-.ui.statistics .inverted.brown.statistic > .value,
-.ui.inverted.brown.statistic > .value {
-  color: @lightBrown;
-}
-.ui.inverted.grey.statistics .statistic > .value,
-.ui.statistics .inverted.grey.statistic > .value,
-.ui.inverted.grey.statistic > .value {
-  color: @lightGrey;
-}
+/*--------------
+     Colors
+---------------*/
+---------------*/
+
+each(@colors,{
+  @color: replace(@key,'@','');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
+
+  .ui.@{color}.statistics .statistic > .value,
+  .ui.statistics .@{color}.statistic > .value,
+  .ui.@{color}.statistic > .value {
+    color: @c;
+  }
+  .ui.inverted.@{color}.statistics .statistic > .value,
+  .ui.statistics .inverted.@{color}.statistic > .value,
+  .ui.inverted.@{color}.statistic > .value {
+    color: @l;
+  }
+})
 
 /*--------------
     Floated
@@ -456,7 +352,7 @@
   margin: @rightFloatedMargin;
 }
 .ui.floated.statistic:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -466,12 +362,12 @@
 @media only screen and (max-width: @largestMobileScreen) {
   .ui.stackable.statistics {
     width: auto;
-    margin-left: 0em !important;
-    margin-right: 0em !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
   .ui.stackable.statistics > .statistic {
     width: 100% !important;
-    margin: 0em 0em !important;
+    margin: 0 0 !important;
     padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
   }
 }
