@@ -7,7 +7,7 @@
 --------------------*/
 
 @verticalAlign: baseline;
-@verticalMargin: 0em;
+@verticalMargin: 0;
 @horizontalMargin: @relative2px;
 @backgroundColor: #E8E8E8;
 @color: @mutedTextColor;
@@ -18,7 +18,7 @@
 @textTransform: none;
 @fontWeight: @bold;
 @borderWidth: 1px;
-@border: 0px solid transparent;
+@border: 0 solid transparent;
 
 @lineHeightOffset: -(@verticalPadding / 2);
 
@@ -71,7 +71,7 @@
 @imageLabelPadding: @imageLabelVerticalPadding @imageLabelHorizontalPadding @imageLabelVerticalPadding @imageLabelTextDistance;
 
 @imageLabelImageMargin: -@verticalPadding @imageLabelTextDistance -@verticalPadding -@imageLabelTextDistance;
-@imageLabelImageBorderRadius: @imageLabelBorderRadius 0em 0em @imageLabelBorderRadius;
+@imageLabelImageBorderRadius: @imageLabelBorderRadius 0 0 @imageLabelBorderRadius;
 @imageLabelImageHeight: @imageHeight;
 
 @imageLabelDetailBackground: @strongTransparentBlack;
