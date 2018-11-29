@@ -16,7 +16,7 @@
 @padding: @verticalPadding @horizontalPadding;
 
 @verticalMargin: 1rem;
-@horizontalMargin: 0em;
+@horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
 @borderRadius: @defaultBorderRadius;
 
@@ -33,7 +33,7 @@
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
-@groupedSegmentMargin: 0em;
+@groupedSegmentMargin: 0;
 @groupedSegmentWidth: auto;
 @groupedSegmentBoxShadow: none;
 
@@ -52,10 +52,10 @@
 @placeholderBackground: @offWhite;
 @placeholderPadding: @padding;
 @placeholderBorderColor: @borderColor;
-@placeholderBoxShadow: 0px 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+@placeholderBoxShadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
 @placeholderMinHeight: 18rem;
 @placeholderContentMaxWidth: 15rem;
-@placeholderContentInlineButtonMargin: 0px @5px 0px 0px;
+@placeholderContentInlineButtonMargin: 0 @5px 0 0;
 
 
 /* Piled */
@@ -100,8 +100,8 @@
 @veryPaddedSegmentPadding: 3em;
 
 /* Attached */
-@attachedTopOffset: 0px;
-@attachedBottomOffset: 0px;
+@attachedTopOffset: 0;
+@attachedBottomOffset: 0;
 @attachedHorizontalOffset: -@borderWidth;
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
@@ -121,7 +121,7 @@
 @basicBackground: none transparent;
 @basicBorder: none;
 @basicBoxShadow: none;
-@basicBorderRadius: 0px;
+@basicBorderRadius: 0;
 
 /* Colors */
 @coloredBorderSize: 2px;
