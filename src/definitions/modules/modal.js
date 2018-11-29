@@ -252,7 +252,9 @@ $.fn.modal = function(parameters) {
             });
           },
           preventScroll: function(event) {
-            event.preventDefault();
+            if(event.target.className.indexOf('dimmer') !== -1) {
+              event.preventDefault();
+            }
           },
           deny: function() {
             if(ignoreRepeatedEvents || settings.onDeny.call(element, $(this)) === false) {
@@ -386,7 +388,7 @@ $.fn.modal = function(parameters) {
             else {
               if( settings.allowMultiple ) {
                 if ( module.others.active() ) {
-                  $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active')
+                  $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
                 }
 
                 if ( settings.detachable ) {
@@ -461,15 +463,16 @@ $.fn.modal = function(parameters) {
                     }
                   },
                   onComplete : function() {
+                    module.unbind.scrollLock();
                     if ( settings.allowMultiple ) {
                       $previousModal.addClass(className.top);
                       $module.removeClass(className.top);
       
                       if ( hideOthersToo ) {
-                        $allModals.find(selector.dimmer).removeClass('active')
+                        $allModals.find(selector.dimmer).removeClass('active');
                       }
                       else {
-                        $previousModal.find(selector.dimmer).removeClass('active')
+                        $previousModal.find(selector.dimmer).removeClass('active');
                       }
                     }
                     settings.onHidden.call(element);
@@ -498,7 +501,7 @@ $.fn.modal = function(parameters) {
 
         hideDimmer: function() {
           if( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
-            module.unbind.scrollLock();
+           module.unbind.scrollLock();
             $dimmable.dimmer('hide', function() {
               module.remove.clickaway();
               module.remove.screenHeight();
@@ -790,7 +793,7 @@ $.fn.modal = function(parameters) {
           },
           active: function() {
             $module.addClass(className.active + ' ' + className.top);
-            $otherModals.filter('.' + className.active).removeClass(className.top)
+            $otherModals.filter('.' + className.active).removeClass(className.top);
           },
           scrolling: function() {
             $dimmable.addClass(className.scrolling);
