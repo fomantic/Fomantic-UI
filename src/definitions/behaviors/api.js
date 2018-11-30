@@ -766,9 +766,6 @@ $.api = $.fn.api = function(parameters) {
               if( module.is.input() ) {
                 data.value = $module.val();
               }
-              else if( module.is.form() ) {
-
-              }
               else {
                 data.text = $module.text();
               }
