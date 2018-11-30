@@ -184,7 +184,7 @@ $.fn.popup = function(parameters) {
                 : settings.delay
             ;
             clearTimeout(module.hideTimer);
-            if(!openedWithTouch) {
+            if(!openedWithTouch || (openedWithTouch && settings.addTouchEvents) ) {
               module.showTimer = setTimeout(module.show, delay);
             }
           },
@@ -199,7 +199,9 @@ $.fn.popup = function(parameters) {
           },
           touchstart: function(event) {
             openedWithTouch = true;
-            module.show();
+            if(settings.addTouchEvents) {
+              module.show();
+            }
           },
           resize: function() {
             if( module.is.visible() ) {
@@ -982,7 +984,7 @@ $.fn.popup = function(parameters) {
                 .on('click' + eventNamespace, module.toggle)
               ;
             }
-            if(settings.on == 'hover' && settings.addTouchEvents) {
+            if(settings.on == 'hover') {
               $module
                 .on('touchstart' + eventNamespace, module.event.touchstart)
               ;
