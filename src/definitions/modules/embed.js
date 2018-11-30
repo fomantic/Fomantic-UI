@@ -54,7 +54,6 @@ $.fn.embed = function(parameters) {
         eventNamespace  = '.' + namespace,
         moduleNamespace = 'module-' + namespace,
 
-        $window         = $(window),
         $module         = $(this),
         $placeholder    = $module.find(selector.placeholder),
         $icon           = $module.find(selector.icon),
@@ -126,8 +125,7 @@ $.fn.embed = function(parameters) {
         createPlaceholder: function(placeholder) {
           var
             icon  = module.get.icon(),
-            url   = module.get.url(),
-            embed = module.generate.embed(url)
+            url   = module.get.url()
           ;
           placeholder = placeholder || module.get.placeholder();
           $module.html( templates.placeholder(placeholder, icon) );
