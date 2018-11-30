@@ -944,7 +944,7 @@ $.fn.dropdown = function(parameters) {
               module.show();
             }
           },
-          blur: function(event) {
+          blur: function() {
             pageLostFocus = (document.activeElement === this);
             if(!activated && !pageLostFocus) {
               module.remove.activeLabel();
@@ -994,7 +994,7 @@ $.fn.dropdown = function(parameters) {
                 module.search();
               }
             },
-            blur: function(event) {
+            blur: function() {
               pageLostFocus = (document.activeElement === this);
               if(module.is.searchSelection() && !willRefocus) {
                 if(!itemActivated && !pageLostFocus) {
@@ -1008,17 +1008,17 @@ $.fn.dropdown = function(parameters) {
             }
           },
           icon: {
-            click: function(event) {
+            click: function() {
               module.toggle();
             }
           },
           text: {
-            focus: function(event) {
+            focus: function() {
               activated = true;
               module.focusSearch();
             }
           },
-          input: function(event) {
+          input: function() {
             if(module.is.multiple() || module.is.searchSelection()) {
               module.set.filtered();
             }
@@ -1170,7 +1170,7 @@ $.fn.dropdown = function(parameters) {
                 event.preventDefault();
               }
             },
-            mouseleave: function(event) {
+            mouseleave: function() {
               var
                 $subMenu = $(this).children(selector.menu)
               ;
@@ -1228,7 +1228,6 @@ $.fn.dropdown = function(parameters) {
                 var
                   $label            = $module.find(selector.label),
                   $activeLabel      = $label.filter('.' + className.active),
-                  activeValue       = $activeLabel.data(metadata.value),
                   labelIndex        = $label.index($activeLabel),
                   labelCount        = $label.length,
                   hasActiveLabel    = ($activeLabel.length > 0),
@@ -1238,8 +1237,7 @@ $.fn.dropdown = function(parameters) {
                   isSearch          = module.is.searchSelection(),
                   isFocusedOnSearch = module.is.focusedOnSearch(),
                   isFocused         = module.is.focused(),
-                  caretAtStart      = (isFocusedOnSearch && module.get.caretPosition() === 0),
-                  $nextLabel
+                  caretAtStart      = (isFocusedOnSearch && module.get.caretPosition() === 0)
                 ;
                 if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                   return;
@@ -2164,7 +2162,6 @@ $.fn.dropdown = function(parameters) {
             currentScroll = $menu.scrollTop(),
             itemHeight    = $item.eq(0).outerHeight(),
             itemsPerPage  = Math.floor(menuHeight / itemHeight),
-            maxScroll     = $menu.prop('scrollHeight'),
             newScroll     = (direction == 'up')
               ? currentScroll - (itemHeight * itemsPerPage)
               : currentScroll + (itemHeight * itemsPerPage),
@@ -2493,8 +2490,7 @@ $.fn.dropdown = function(parameters) {
           },
           selected: function(value, $selectedItem) {
             var
-              isMultiple = module.is.multiple(),
-              $userSelectedItem
+              isMultiple = module.is.multiple()
             ;
             $selectedItem = (settings.allowAdditions)
               ? $selectedItem || module.get.itemWithAdditions(value)
