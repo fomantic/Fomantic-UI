@@ -49,7 +49,6 @@ $.fn.nag = function(parameters) {
 
         $module         = $(this),
 
-        $close          = $module.find(selector.close),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -57,17 +56,6 @@ $.fn.nag = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
-        moduleOffset,
-        moduleHeight,
-
-        contextWidth,
-        contextHeight,
-        contextOffset,
-
-        yOffset,
-        yPosition,
-
-        timer,
         module,
 
         requestAnimationFrame = window.requestAnimationFrame
@@ -213,7 +201,7 @@ $.fn.nag = function(parameters) {
               return;
             }
           },
-          get: function(key, value) {
+          get: function(key) {
             var
               storedValue
             ;
