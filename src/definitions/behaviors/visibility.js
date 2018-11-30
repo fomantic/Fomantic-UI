@@ -58,7 +58,6 @@ $.fn.visibility = function(parameters) {
 
         $placeholder,
 
-        selector        = $module.selector || '',
         instance        = $module.data(moduleNamespace),
 
         requestAnimationFrame = window.requestAnimationFrame
@@ -179,7 +178,7 @@ $.fn.visibility = function(parameters) {
         },
 
         event: {
-          changed: function(mutations) {
+          changed: function() {
             module.verbose('DOM tree modified, updating visibility calculations');
             module.timer = setTimeout(function() {
               module.verbose('DOM tree modified, updating sticky menu');
