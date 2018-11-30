@@ -110,7 +110,7 @@
 
 /* Content Image */
 @contentImageWidth: '';
-@contentImageVerticalAlign: middle;
+@contentImageVerticalAlign: center;
 
 /* Avatar Image */
 @avatarSize: @contentImageWidth;
