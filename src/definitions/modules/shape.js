@@ -22,7 +22,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
 $.fn.shape = function(parameters) {
   var
     $allModules     = $(this),
-    $body           = $('body'),
 
     time            = new Date().getTime(),
     performance     = [],
@@ -108,8 +107,7 @@ $.fn.shape = function(parameters) {
         repaint: function() {
           module.verbose('Forcing repaint event');
           var
-            shape          = $sides[0] || document.createElement('div'),
-            fakeAssignment = shape.offsetWidth
+            shape          = $sides[0] || document.createElement('div')
           ;
         },
 
