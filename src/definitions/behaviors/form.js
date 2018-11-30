@@ -346,7 +346,7 @@ $.fn.form = function(parameters) {
             keyup: function() {
               keyHeldDown = false;
             },
-            blur: function(event) {
+            blur: function() {
               var
                 $field          = $(this),
                 $fieldGroup     = $field.closest($group),
@@ -364,7 +364,7 @@ $.fn.form = function(parameters) {
                 }
               }
             },
-            change: function(event) {
+            change: function() {
               var
                 $field      = $(this),
                 $fieldGroup = $field.closest($group),
@@ -572,7 +572,6 @@ $.fn.form = function(parameters) {
             $fields.each(function(index, field) {
               var
                 $field     = $(field),
-                type       = $field.prop('type'),
                 name       = $field.prop('name'),
                 value      = $field.val(),
                 isCheckbox = $field.is(selector.checkbox),
@@ -1513,7 +1512,6 @@ $.fn.form.settings = {
     // matches another field
     match: function(value, identifier) {
       var
-        $form = $(this),
         matchingValue
       ;
       if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
@@ -1538,7 +1536,6 @@ $.fn.form.settings = {
     different: function(value, identifier) {
       // use either id or name of field
       var
-        $form = $(this),
         matchingValue
       ;
       if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
