@@ -54,9 +54,7 @@ $.fn.transition = function() {
         className,
         metadata,
         animationEnd,
-        animationName,
 
-        namespace,
         moduleNamespace,
         eventNamespace,
         module
@@ -218,7 +216,7 @@ $.fn.transition = function() {
           ;
         },
 
-        complete: function (event) {
+        complete: function () {
           module.debug('Animation complete', settings.animation);
           module.remove.completeCallback();
           module.remove.failSafe();
@@ -308,8 +306,7 @@ $.fn.transition = function() {
         set: {
           animating: function(animation) {
             var
-              animationClass,
-              direction
+              animationClass
             ;
             // remove previous callbacks
             module.remove.completeCallback();
