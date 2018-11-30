@@ -46,10 +46,7 @@ $.fn.form = function(parameters) {
         $field,
         $group,
         $message,
-        $prompt,
         $submit,
-        $clear,
-        $reset,
 
         settings,
         validation,
@@ -112,11 +109,8 @@ $.fn.form = function(parameters) {
           $field      = $module.find(selector.field);
           $group      = $module.find(selector.group);
           $message    = $module.find(selector.message);
-          $prompt     = $module.find(selector.prompt);
 
           $submit     = $module.find(selector.submit);
-          $clear      = $module.find(selector.clear);
-          $reset      = $module.find(selector.reset);
         },
 
         submit: function() {
