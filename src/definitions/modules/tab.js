@@ -910,6 +910,7 @@ $.fn.tab.settings = {
   apiSettings     : false,      // settings for api call
   evaluateScripts : 'once',     // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
 
+  /* eslint-disable no-unused-vars */
   onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
   onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
   onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
@@ -918,6 +919,7 @@ $.fn.tab.settings = {
   templates : {
     determineTitle: function(tabArray) {} // returns page title for path
   },
+  /* eslint-enable no-unused-vars */
 
   error: {
     api        : 'You attempted to load content without API module',

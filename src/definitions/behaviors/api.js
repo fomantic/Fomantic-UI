@@ -1096,6 +1096,7 @@ $.api.settings = {
   response          : false,
   responseAsync     : false,
 
+  /* eslint-disable no-unused-vars */
   // callbacks before request
   beforeSend  : function(settings) { return settings; },
   beforeXHR   : function(xhr) {},
@@ -1118,6 +1119,7 @@ $.api.settings = {
 
   // request aborted
   onAbort     : function(errorMessage, $module) {},
+  /* eslint-enable no-unused-vars */
 
   successTest : false,
 

@@ -867,6 +867,7 @@ $.fn.progress.settings = {
   // delay in ms for fail safe animation callback
   failSafeDelay : 100,
 
+  /* eslint-disable no-unused-vars */
   onLabelUpdate : function(state, text, value, total){
     return text;
   },
@@ -875,6 +876,7 @@ $.fn.progress.settings = {
   onActive      : function(value, total){},
   onError       : function(value, total){},
   onWarning     : function(value, total){},
+  /* eslint-enable no-unused-vars */
 
   error    : {
     method     : 'The method you called is not defined.',

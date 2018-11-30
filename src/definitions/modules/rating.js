@@ -465,7 +465,9 @@ $.fn.rating.settings = {
 
   fireOnInit    : false,
 
+  /* eslint-disable no-unused-vars */
   onRate        : function(rating){},
+  /* eslint-enable no-unused-vars */
 
   error         : {
     method    : 'The method you called is not defined',

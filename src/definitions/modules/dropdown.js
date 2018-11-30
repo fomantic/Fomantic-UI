@@ -3723,6 +3723,7 @@ $.fn.dropdown.settings = {
   },
 
   /* Callbacks */
+  /* eslint-disable no-unused-vars */
   onChange      : function(value, text, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
@@ -3733,6 +3734,7 @@ $.fn.dropdown.settings = {
   onNoResults   : function(searchTerm) { return true; },
   onShow        : function(){},
   onHide        : function(){},
+  /* eslint-enable no-unused-vars */
 
   /* Component */
   name           : 'Dropdown',

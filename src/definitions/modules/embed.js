@@ -586,6 +586,7 @@ $.fn.embed.settings = {
   // additional parameters to include with the embed
   parameters: false,
 
+  /* eslint-disable no-unused-vars */
   onDisplay            : function() {},
   onPlaceholderDisplay : function() {},
   onReset              : function() {},
@@ -593,6 +594,7 @@ $.fn.embed.settings = {
   onEmbed              : function(parameters) {
     return parameters;
   },
+  /* eslint-enable no-unused-vars */
 
   metadata    : {
     id          : 'id',
