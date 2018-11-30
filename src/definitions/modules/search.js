@@ -55,7 +55,6 @@ $.fn.search = function(parameters) {
         $searchButton    = $module.find(selector.searchButton),
         $results         = $module.find(selector.results),
         $result          = $module.find(selector.result),
-        $category        = $module.find(selector.category),
 
         element          = this,
         instance         = $module.data(moduleNamespace),
@@ -96,7 +95,6 @@ $.fn.search = function(parameters) {
           module.debug('Refreshing selector cache');
           $prompt         = $module.find(selector.prompt);
           $searchButton   = $module.find(selector.searchButton);
-          $category       = $module.find(selector.category);
           $results        = $module.find(selector.results);
           $result         = $module.find(selector.result);
         },
@@ -479,8 +477,7 @@ $.fn.search = function(parameters) {
               .val(value)
             ;
           },
-          type: function(type) {
-            type = type || settings.type;
+          type: function() {
             if(settings.type == 'category') {
               $module.addClass(settings.type);
             }
@@ -842,7 +839,7 @@ $.fn.search = function(parameters) {
               // iterate through each category result
               $.each(results, function(index, category) {
                 resultIndex = 0;
-                $.each(category.results, function(index, value) {
+                $.each(category.results, function(index) {
                   var
                     result = category.results[index]
                   ;
@@ -857,7 +854,7 @@ $.fn.search = function(parameters) {
             }
             else {
               // top level
-              $.each(results, function(index, value) {
+              $.each(results, function(index) {
                 var
                   result = results[index]
                 ;
