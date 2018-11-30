@@ -1270,6 +1270,7 @@ $.fn.search.settings = {
   easing         : 'easeOutExpo',
 
   // callbacks
+  /* eslint-disable no-unused-vars */
   onSelect       : false,
   onResultsAdd   : false,
 
@@ -1278,6 +1279,7 @@ $.fn.search.settings = {
 
   onResultsOpen  : function(){},
   onResultsClose : function(){},
+  /* eslint-enable no-unused-vars */
 
   className: {
     animating : 'animating',
