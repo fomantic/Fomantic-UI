@@ -88,7 +88,7 @@ $.fn.transition = function() {
           if(methodInvoked === false) {
             module.verbose('Converted arguments into settings object', settings);
             if(settings.interval) {
-              module.delay(settings.animate);
+              module.delay(settings.interval);
             }
             else  {
               module.animate();
@@ -150,13 +150,9 @@ $.fn.transition = function() {
               : 'static'
             ;
           }
-          interval = (interval !== undefined)
-            ? interval
-            : settings.interval
-          ;
           shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
           delay = (shouldReverse || settings.reverse == true)
-            ? ($allModules.length - index) * settings.interval
+            ? ($allModules.length - index) * interval
             : index * settings.interval
           ;
           module.debug('Delaying animation by', delay);
