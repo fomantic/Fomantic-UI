@@ -55,8 +55,6 @@ $.fn.embed = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $placeholder    = $module.find(selector.placeholder),
-        $icon           = $module.find(selector.icon),
         $embed          = $module.find(selector.embed),
 
         element         = this,
@@ -93,9 +91,7 @@ $.fn.embed = function(parameters) {
 
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $placeholder = $module.find(selector.placeholder);
-          $icon        = $module.find(selector.icon);
-          $embed       = $module.find(selector.embed);
+          $embed = $module.find(selector.embed);
         },
 
         bind: {
