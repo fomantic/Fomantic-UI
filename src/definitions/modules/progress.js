@@ -165,7 +165,6 @@ $.fn.progress = function(parameters) {
 
         increment: function(incrementValue) {
           var
-            maxValue,
             startValue,
             newValue
           ;
@@ -179,7 +178,6 @@ $.fn.progress = function(parameters) {
             incrementValue = incrementValue || module.get.randomValue();
 
             newValue       = startValue + incrementValue;
-            maxValue       = 100;
             module.debug('Incrementing percentage by', startValue, newValue);
           }
           newValue = module.get.normalizedValue(newValue);
