@@ -97,7 +97,7 @@ $.fn.accordion = function(parameters) {
 
         observeChanges: function() {
           if('MutationObserver' in window) {
-            observer = new MutationObserver(function(mutations) {
+            observer = new MutationObserver(function() {
               module.debug('DOM tree modified, updating selector cache');
               module.refresh();
             });
