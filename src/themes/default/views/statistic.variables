@@ -9,7 +9,7 @@
 @verticalMargin: 1em;
 @margin: @verticalMargin 0em;
 @textAlign: center;
-@maxWidth: auto;
+@maxWidth: none;
 
 /* Group */
 @horizontalSpacing: 1.5em;
