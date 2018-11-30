@@ -153,7 +153,7 @@ $.fn.sidebar = function(parameters) {
           touch: function(event) {
             //event.stopPropagation();
           },
-          containScroll: function(event) {
+          containScroll: function() {
             if(element.scrollTop <= 0)  {
               element.scrollTop = 1;
             }
