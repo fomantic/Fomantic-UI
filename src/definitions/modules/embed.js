@@ -120,8 +120,7 @@ $.fn.embed = function(parameters) {
 
         createPlaceholder: function(placeholder) {
           var
-            icon  = module.get.icon(),
-            url   = module.get.url()
+            icon  = module.get.icon()
           ;
           placeholder = placeholder || module.get.placeholder();
           $module.html( templates.placeholder(placeholder, icon) );
