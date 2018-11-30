@@ -67,7 +67,7 @@
 /*
 @willChange: box-shadow, transform, opacity, color, background;
 */
-@willChange: '';
+@willChange: auto;
 
 /*-------------------
         Group
