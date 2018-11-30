@@ -28,7 +28,6 @@ $.fn.popup = function(parameters) {
 
     moduleSelector = $allModules.selector || '',
 
-    hasTouch       = (true),
     time           = new Date().getTime(),
     performance    = [],
 
@@ -983,7 +982,7 @@ $.fn.popup = function(parameters) {
                 .on('click' + eventNamespace, module.toggle)
               ;
             }
-            if(settings.on == 'hover' && hasTouch) {
+            if(settings.on == 'hover' && settings.addTouchEvents) {
               $module
                 .on('touchstart' + eventNamespace, module.event.touchstart)
               ;
