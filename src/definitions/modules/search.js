@@ -166,7 +166,7 @@ $.fn.search = function(parameters) {
               });
             }
           },
-          blur: function(event) {
+          blur: function() {
             var
               pageLostFocus = (document.activeElement === this),
               callback      = function() {
@@ -216,14 +216,12 @@ $.fn.search = function(parameters) {
                   : $result.find('a[href]').eq(0),
                 href    = $link.attr('href')   || false,
                 target  = $link.attr('target') || false,
-                title   = $title.html(),
                 // title is used for result lookup
                 value   = ($title.length > 0)
                   ? $title.text()
                   : false,
                 results = module.get.results(),
-                result  = $result.data(metadata.result) || module.get.result(value, results),
-                returnedValue
+                result  = $result.data(metadata.result) || module.get.result(value, results)
               ;
               if( $.isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
@@ -353,8 +351,7 @@ $.fn.search = function(parameters) {
                 onAbort : function(response) {
                 },
                 onError           : module.error
-              },
-              searchHTML
+              }
             ;
             $.extend(true, apiSettings, settings.apiSettings);
             module.verbose('Setting up API request', apiSettings);
@@ -790,8 +787,6 @@ $.fn.search = function(parameters) {
           id: function(resultIndex, categoryIndex) {
             var
               resultID      = (resultIndex + 1), // not zero indexed
-              categoryID    = (categoryIndex + 1),
-              firstCharCode,
               letterID,
               id
             ;
@@ -1390,8 +1385,7 @@ $.fn.search.settings = {
     },
     category: function(response, fields) {
       var
-        html = '',
-        escape = $.fn.search.settings.templates.escape
+        html = ''
       ;
       if(response[fields.categoryResults] !== undefined) {
 
