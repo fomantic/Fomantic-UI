@@ -60,7 +60,6 @@ $.fn.progress = function(parameters) {
         instance        = $module.data(moduleNamespace),
 
         animating = false,
-        transitionEnd,
         module
       ;
 
@@ -70,7 +69,6 @@ $.fn.progress = function(parameters) {
           module.debug('Initializing progress bar', settings);
 
           module.set.duration();
-          module.set.transitionEvent();
 
           module.read.metadata();
           module.read.settings();
@@ -589,9 +587,6 @@ $.fn.progress = function(parameters) {
             module.bind.transitionEnd(function() {
               settings.onError.call(element, module.value, module.total);
             });
-          },
-          transitionEvent: function() {
-            transitionEnd = module.get.transitionEnd();
           },
           total: function(totalValue) {
             module.total = totalValue;
