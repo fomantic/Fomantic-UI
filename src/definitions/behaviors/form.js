@@ -261,7 +261,7 @@ $.fn.form = function(parameters) {
           },
           // duck type rule test
           shorthandRules: function(rules) {
-            return (typeof rules == 'string' || $.isArray(rules));
+            return (typeof rules == 'string' || Array.isArray(rules));
           },
           empty: function($field) {
             if(!$field || $field.length === 0) {
@@ -565,7 +565,7 @@ $.fn.form = function(parameters) {
           },
           values: function (fields) {
             var
-              $fields = $.isArray(fields)
+              $fields = Array.isArray(fields)
                 ? module.get.fields(fields)
                 : $field,
               values = {}
@@ -667,7 +667,7 @@ $.fn.form = function(parameters) {
               newValidation = {}
             ;
             if(module.is.shorthandRules(rules)) {
-              rules = $.isArray(rules)
+              rules = Array.isArray(rules)
                 ? rules
                 : [rules]
               ;
@@ -750,7 +750,7 @@ $.fn.form = function(parameters) {
         remove: {
           rule: function(field, rule) {
             var
-              rules = $.isArray(rule)
+              rules = Array.isArray(rule)
                 ? rule
                 : [rule]
             ;
@@ -759,7 +759,7 @@ $.fn.form = function(parameters) {
               validation[field].rules = [];
               return;
             }
-            if(validation[field] == undefined || !$.isArray(validation[field].rules)) {
+            if(validation[field] == undefined || !Array.isArray(validation[field].rules)) {
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
@@ -771,7 +771,7 @@ $.fn.form = function(parameters) {
           },
           field: function(field) {
             var
-              fields = $.isArray(field)
+              fields = Array.isArray(field)
                 ? field
                 : [field]
             ;
@@ -781,7 +781,7 @@ $.fn.form = function(parameters) {
           },
           // alias
           rules: function(field, rules) {
-            if($.isArray(field)) {
+            if(Array.isArray(field)) {
               $.each(fields, function(index, field) {
                 module.remove.rule(field, rules);
               });
@@ -862,7 +862,7 @@ $.fn.form = function(parameters) {
               var
                 $field      = module.get.field(key),
                 $element    = $field.parent(),
-                isMultiple  = $.isArray(value),
+                isMultiple  = Array.isArray(value),
                 isCheckbox  = $element.is(selector.uiCheckbox),
                 isDropdown  = $element.is(selector.uiDropdown),
                 isRadio     = ($field.is(selector.radio) && isCheckbox),
@@ -1180,7 +1180,7 @@ $.fn.form = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
@@ -1336,7 +1336,7 @@ $.fn.form.settings = {
 
     // is not empty or blank string
     empty: function(value) {
-      return !(value === undefined || '' === value || $.isArray(value) && value.length === 0);
+      return !(value === undefined || '' === value || Array.isArray(value) && value.length === 0);
     },
 
     // checkbox checked

@@ -670,7 +670,7 @@ $.fn.tab = function(parameters) {
             });
           },
           last: function(array) {
-            return $.isArray(array)
+            return Array.isArray(array)
               ? array[ array.length - 1]
               : false
             ;
@@ -685,7 +685,7 @@ $.fn.tab = function(parameters) {
             ;
           },
           arrayToPath: function(pathArray) {
-            return $.isArray(pathArray)
+            return Array.isArray(pathArray)
               ? pathArray.join('/')
               : false
             ;
@@ -842,7 +842,7 @@ $.fn.tab = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
