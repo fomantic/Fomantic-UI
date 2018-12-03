@@ -88,7 +88,7 @@ ol.ui.list li:last-child,
 /* Child List */
 ul.ui.list ul,
 ol.ui.list ol,
-.ui.list .list {
+.ui.list .list:not(.icon) {
   clear: both;
   margin: 0em;
   padding: @childListPadding;
@@ -292,7 +292,7 @@ ol.ui.list ol li,
   margin-left: 0em !important;
   padding-left: 0em !important;
 }
-.ui.horizontal.list .list {
+.ui.horizontal.list .list:not(.icon) {
   padding-left: 0em;
   padding-bottom: 0em;
 }
@@ -584,7 +584,7 @@ ul.ui.list li:before,
 }
 
 ul.ui.list ul,
-.ui.bulleted.list .list {
+.ui.bulleted.list .list:not(.icon) {
   padding-left: @bulletChildDistance;
 }
 
@@ -616,7 +616,7 @@ ul.ui.horizontal.bulleted.list li:first-child::before,
 
 ol.ui.list,
 .ui.ordered.list,
-.ui.ordered.list .list,
+.ui.ordered.list .list:not(.icon),
 ol.ui.list ol {
   counter-reset: ordered;
   margin-left: @orderedCountDistance;
@@ -662,7 +662,7 @@ ol.ui.list li[value]:before {
 
 /* Child Lists */
 ol.ui.list ol,
-.ui.ordered.list .list {
+.ui.ordered.list .list:not(.icon) {
   margin-left: @orderedChildCountDistance;
 }
 ol.ui.list ol li:before,
@@ -707,7 +707,7 @@ ol.ui.horizontal.list li:before,
 
 /* Divided bulleted */
 .ui.divided.bulleted.list:not(.horizontal),
-.ui.divided.bulleted.list .list {
+.ui.divided.bulleted.list .list:not(.icon) {
   margin-left: 0em;
   padding-left: 0em;
 }
@@ -723,7 +723,7 @@ ol.ui.horizontal.list li:before,
 .ui.divided.ordered.list > .item {
   padding-left: @orderedCountDistance;
 }
-.ui.divided.ordered.list .item .list {
+.ui.divided.ordered.list .item .list:not(.icon) {
   margin-left: 0em;
   margin-right: 0em;
   padding-bottom: @itemVerticalPadding;
@@ -803,7 +803,7 @@ ol.ui.horizontal.list li:before,
 .ui.celled.bulleted.list > .item {
   padding-left: (@bulletDistance);
 }
-.ui.celled.bulleted.list .item .list {
+.ui.celled.bulleted.list .item .list:not(.icon) {
   margin-left: -(@bulletDistance);
   margin-right: -(@bulletDistance);
   padding-bottom: @itemVerticalPadding;
@@ -817,7 +817,7 @@ ol.ui.horizontal.list li:before,
 .ui.celled.ordered.list > .item {
   padding-left: @orderedCountDistance;
 }
-.ui.celled.ordered.list .item .list {
+.ui.celled.ordered.list .item .list:not(.icon) {
   margin-left: 0em;
   margin-right: 0em;
   padding-bottom: @itemVerticalPadding;
