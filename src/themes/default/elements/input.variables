@@ -44,6 +44,8 @@
 @transparentIconWidth: @glyphWidth;
 @transparentIconMargin: 2em;
 
+@textareaIconHeight: 3em;
+
 /* Circular Icon Input */
 @circularIconVerticalOffset: 0.35em;
 @circularIconHorizontalOffset: 0.5em;
