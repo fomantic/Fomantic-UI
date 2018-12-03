@@ -2496,9 +2496,9 @@ $.fn.dropdown = function(parameters) {
               // reset position, remove upward if it's base menu
               if (!$menu) {
                 module.remove.upward();
-              } else if ($menu.hasClass('upward')) {
+              } else if (module.is.upward($menu)) {
                 //we need make sure when make assertion openDownward for $menu, $menu does not have upward class
-                $menu.removeClass('upward');
+                module.remove.upward($menu);
               }
 
               if(module.can.openDownward($menu)) {
