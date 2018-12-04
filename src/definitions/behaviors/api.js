@@ -12,6 +12,10 @@
 
 'use strict';
 
+$.isWindow = $.isWindow || function(obj) {
+  return obj != null && obj === obj.window;
+};
+
 var
   window = (typeof window != 'undefined' && window.Math == Math)
     ? window

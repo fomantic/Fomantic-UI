@@ -13,9 +13,6 @@
 $.isFunction = $.isFunction || function(obj) {
     return typeof obj === "function" && typeof obj.nodeType !== "number";
 };
-$.isWindow = $.isWindow || function(obj) {
-    return obj != null && obj === obj.window;
-};
 
 $.site = $.fn.site = function(parameters) {
   var
