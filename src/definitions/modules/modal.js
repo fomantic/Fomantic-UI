@@ -287,6 +287,10 @@ $.fn.modal = function(parameters) {
               module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
+            if(settings.onHide.call(element, $(this)) === false) {
+              module.verbose('Hide callback returned false cancelling hide');
+              return false;
+            }
             var
               $target   = $(event.target),
               isInModal = ($target.closest(selector.modal).length > 0),
