@@ -289,7 +289,7 @@ $.fn.modal = function(parameters) {
             }
             if(settings.onHide.call(element, $(this)) === false) {
               module.verbose('Hide callback returned false cancelling hide');
-              return false;
+              return;
             }
             var
               $target   = $(event.target),
