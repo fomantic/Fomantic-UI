@@ -299,8 +299,8 @@ $.fn.modal = function(parameters) {
                   return;
                 }
               }
-              else {
-                module.hide();
+              else if(!module.hide()){
+                  return;
               }
               module.remove.clickaway();
             }
