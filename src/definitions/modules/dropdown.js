@@ -741,6 +741,11 @@ $.fn.dropdown = function(parameters) {
                 if(settings.filterRemoteData) {
                   module.filterItems(searchTerm);
                 }
+                $.each($input.val(),function(index,value){
+                  $item.filter('[data-value="'+value+'"]')
+                      .addClass(className.filtered)
+                  ;
+                });
                 afterFiltered();
               });
             }
@@ -982,9 +987,11 @@ $.fn.dropdown = function(parameters) {
             module.setup.menu({values: values});
             $.each(values, function(index, item) {
               if(item.selected == true) {
-                module.debug('Setting initial selection to', item.value);
-                module.set.selected(item.value);
-                return true;
+                module.debug('Setting initial selection to', item[fields.value]);
+                module.set.selected(item[fields.value]);
+                if(!module.is.multiple()) {
+                  return false;
+                }
               }
             });
           }
@@ -2493,8 +2500,13 @@ $.fn.dropdown = function(parameters) {
           },
           direction: function($menu) {
             if(settings.direction == 'auto') {
-              // reset position
-              module.remove.upward();
+              // reset position, remove upward if it's base menu
+              if (!$menu) {
+                module.remove.upward();
+              } else if (module.is.upward($menu)) {
+                //we need make sure when make assertion openDownward for $menu, $menu does not have upward class
+                module.remove.upward($menu);
+              }
 
               if(module.can.openDownward($menu)) {
                 module.remove.upward($menu);
@@ -3874,7 +3886,7 @@ $.fn.dropdown.settings = {
   },
 
   regExp : {
-    escape   : /[-[\]{}()*+?.,\\^$|#\s]/g,
+    escape   : /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
     quote    : /"/g
   },
 
