@@ -514,17 +514,18 @@ $.fn.form = function(parameters) {
           field: function(identifier) {
             module.verbose('Finding field with identifier', identifier);
             identifier = module.escape.string(identifier);
-            if($field.filter('#' + identifier).length > 0 ) {
-              return $field.filter('#' + identifier);
+            var t;
+            if((t=$field.filter('#' + identifier)).length > 0 ) {
+              return t;
             }
-            else if( $field.filter('[name="' + identifier +'"]').length > 0 ) {
-              return $field.filter('[name="' + identifier +'"]');
+            if((t=$field.filter('[name="' + identifier +'"]')).length > 0 ) {
+              return t;
             }
-            else if( $field.filter('[name="' + identifier +'[]"]').length > 0 ) {
-              return $field.filter('[name="' + identifier +'[]"]');
+            if((t=$field.filter('[name="' + identifier +'[]"]')).length > 0 ) {
+              return t;
             }
-            else if( $field.filter('[data-' + metadata.validate + '="'+ identifier +'"]').length > 0 ) {
-              return $field.filter('[data-' + metadata.validate + '="'+ identifier +'"]');
+            if((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0 ) {
+              return t;
             }
             return $('<input/>');
           },
@@ -1239,7 +1240,7 @@ $.fn.form.settings = {
     bracket : /\[(.*)\]/i,
     decimal : /^\d+\.?\d*$/,
     email   : /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i,
-    escape  : /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
+    escape  : /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|:,=@]/g,
     flags   : /^\/(.*)\/(.*)?/,
     integer : /^\-?\d+$/,
     number  : /^\-?\d*(\.\d+)?$/,

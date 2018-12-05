@@ -3879,7 +3879,7 @@ $.fn.dropdown.settings = {
   },
 
   regExp : {
-    escape   : /[-[\]{}()*+?.,\\^$|#\s]/g,
+    escape   : /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
     quote    : /"/g
   },
 
