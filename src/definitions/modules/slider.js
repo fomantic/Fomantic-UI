@@ -41,7 +41,7 @@ $.fn.slider = function(parameters) {
     SINGLE_BACKSTEP = -1,
     BIG_BACKSTEP    = -2,
 
-    // used to manage docuemnt bound events.
+    // Used to manage document bound events.
     // Use this so that we can distinguish between which document events are bound to which range.
     currentRange    = 0,
 
