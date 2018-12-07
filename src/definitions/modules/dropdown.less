@@ -133,7 +133,7 @@
   -webkit-touch-callout: none;
 }
 .ui.dropdown .menu > .item:first-child {
-  border-top-width: 0px;
+  border-top-width: 0;
 }
 
 /*--------------
@@ -402,7 +402,7 @@ select.ui.dropdown {
 
 /* Compact */
 .ui.compact.selection.dropdown {
-  min-width:  0px;
+  min-width:  0;
 }
 
 /*  Selection Menu */
@@ -411,10 +411,10 @@ select.ui.dropdown {
   overflow-y: auto;
   backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
-  border-top-width: 0px !important;
+  border-top-width: 0 !important;
   width: auto;
   outline: none;
-  margin: 0px -@menuBorderWidth;
+  margin: 0 -@menuBorderWidth;
   min-width: @menuMinWidth;
   width: @menuMinWidth;
 
@@ -815,7 +815,7 @@ select.ui.dropdown {
   content: '';
   top: 50%;
   left: 50%;
-  box-shadow: 0px 0px 0px 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 
   margin: @loaderMargin;
   width: @loaderSize;
@@ -874,7 +874,7 @@ select.ui.dropdown {
   z-index: @loadingZIndex;
 }
 .ui.dropdown > .loading.menu {
-  left: 0px !important;
+  left: 0 !important;
   right: auto !important;
 }
 .ui.dropdown > .menu .loading.menu {
@@ -983,7 +983,7 @@ select.ui.dropdown {
 
 /* Flyout Direction */
 .ui.dropdown .menu {
-  left: 0px;
+  left: 0;
 }
 
 
@@ -998,7 +998,7 @@ select.ui.dropdown {
 /* Leftward Opening Menu */
 .ui.dropdown > .left.menu {
   left: auto !important;
-  right: 0px !important;
+  right: 0 !important;
 }
 
 .ui.dropdown > .left.menu .menu,
@@ -1058,7 +1058,7 @@ select.ui.dropdown {
 /* Selection */
 .ui.upward.selection.dropdown .menu {
   border-top-width: @menuBorderWidth !important;
-  border-bottom-width: 0px !important;
+  border-bottom-width: 0 !important;
   box-shadow: @upwardSelectionMenuBoxShadow;
 }
 .ui.upward.selection.dropdown:hover {
@@ -1207,8 +1207,8 @@ select.ui.dropdown {
 }
 .ui.simple.disabled.dropdown:hover .menu {
   display: none;
-  height: 0px;
-  width: 0px;
+  height: 0;
+  width: 0;
   overflow: hidden;
 }
 
@@ -1376,7 +1376,7 @@ select.ui.dropdown {
 /* Reverse Sub-Menu Direction */
 .ui.bottom.pointing.dropdown > .menu .menu {
   top: auto !important;
-  bottom: 0px !important;
+  bottom: 0 !important;
 }
 
 /* Bottom Left */

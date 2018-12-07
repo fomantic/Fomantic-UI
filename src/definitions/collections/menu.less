@@ -42,7 +42,7 @@
 .ui.menu:after {
   content: '';
   display: block;
-  height: 0px;
+  height: 0;
   clear: both;
   visibility: hidden;
 }
@@ -94,7 +94,7 @@
 }
 
 .ui.menu > .item:first-child {
-  border-radius: @borderRadius 0px 0px @borderRadius;
+  border-radius: @borderRadius 0 0 @borderRadius;
 }
 
 /* Border */
@@ -102,7 +102,7 @@
   position: absolute;
   content: '';
   top: 0%;
-  right: 0px;
+  right: 0;
   height: 100%;
 
   width: @dividerSize;
@@ -214,7 +214,7 @@
   min-width: e("calc(100% - 1px)");
   border-radius: 0em 0em @dropdownMenuBorderRadius @dropdownMenuBorderRadius;
   background: @dropdownBackground;
-  margin: @dropdownMenuDistance 0px 0px;
+  margin: @dropdownMenuDistance 0 0;
   box-shadow: @dropdownMenuBoxShadow;
   flex-direction: column !important;
 }
@@ -368,7 +368,7 @@
 }
 .ui.vertical.sidebar.menu > .item::before {
   top: auto;
-  bottom: 0px;
+  bottom: 0;
 }
 
 /*--------------
@@ -517,10 +517,10 @@ Floated Menu / Item
   border-right: none;
 }
 .ui.vertical.menu > .item:first-child {
-  border-radius: @borderRadius @borderRadius 0px 0px;
+  border-radius: @borderRadius @borderRadius 0 0;
 }
 .ui.vertical.menu > .item:last-child {
-  border-radius: 0px 0px @borderRadius @borderRadius;
+  border-radius: 0 0 @borderRadius @borderRadius;
 }
 
 /*--- Label ---*/
@@ -547,7 +547,7 @@ Floated Menu / Item
   position: absolute;
   content: '';
   top: 0%;
-  left: 0px;
+  left: 0;
   width: 100%;
   height: @dividerSize;
   background: @verticalDividerBackground;
@@ -644,16 +644,16 @@ Floated Menu / Item
   font-weight: @tabularActiveWeight;
   margin-bottom: -@tabularBorderWidth;
   box-shadow: @tabularActiveBoxShadow;
-  border-radius: @tabularBorderRadius @tabularBorderRadius 0px 0px !important;
+  border-radius: @tabularBorderRadius @tabularBorderRadius 0 0 !important;
 }
 
 /* Coupling with segment for attachment */
 .ui.tabular.menu + .attached:not(.top).segment,
 .ui.tabular.menu + .attached:not(.top).segment + .attached:not(.top).segment {
   border-top: none;
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-right: 0px;
+  margin-left: 0;
+  margin-top: 0;
+  margin-right: 0;
   width: 100%;
 }
 .top.attached.segment + .ui.bottom.tabular.menu {
@@ -681,8 +681,8 @@ Floated Menu / Item
   background: @tabularActiveBackground;
   color: @tabularActiveColor;
   border-color: @tabularBorderColor;
-  margin: -@tabularBorderWidth 0px 0px 0px;
-  border-radius: 0px 0px @tabularBorderRadius @tabularBorderRadius !important;
+  margin: -@tabularBorderWidth 0 0 0;
+  border-radius: 0 0 @tabularBorderRadius @tabularBorderRadius !important;
 }
 
 /* Vertical Tabular (Left) */
@@ -704,8 +704,8 @@ Floated Menu / Item
   background: @tabularActiveBackground;
   color: @tabularActiveColor;
   border-color: @tabularBorderColor;
-  margin: 0px -@tabularBorderWidth 0px 0px;
-  border-radius: @tabularBorderRadius 0px 0px @tabularBorderRadius !important;
+  margin: 0 -@tabularBorderWidth 0 0;
+  border-radius: @tabularBorderRadius 0 0 @tabularBorderRadius !important;
 }
 
 /* Vertical Right Tabular */
@@ -728,13 +728,13 @@ Floated Menu / Item
   background: @tabularActiveBackground;
   color: @tabularActiveColor;
   border-color: @tabularBorderColor;
-  margin: 0px 0px 0px -@tabularBorderWidth;
-  border-radius: 0px @tabularBorderRadius @tabularBorderRadius 0px !important;
+  margin: 0 0 0 -@tabularBorderWidth;
+  border-radius: 0 @tabularBorderRadius @tabularBorderRadius 0 !important;
 }
 
 /* Dropdown */
 .ui.tabular.menu .active.dropdown.item {
-  margin-bottom: 0px;
+  margin-bottom: 0;
   border-left: @tabularBorderWidth solid transparent;
   border-right: @tabularBorderWidth solid transparent;
   border-top: @tabularOppositeBorderWidth solid transparent;
@@ -980,7 +980,7 @@ Floated Menu / Item
 
 /* Vertical Pointing */
 .ui.secondary.vertical.pointing.menu {
-  border-bottom-width: 0px;
+  border-bottom-width: 0;
   border-right-width: @secondaryPointingBorderWidth;
   border-right-style: solid;
   border-right-color: @secondaryPointingBorderColor;
@@ -1034,14 +1034,14 @@ Floated Menu / Item
 
 .ui.text.menu {
   background: none transparent;
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   border: none;
 
   margin: @textMenuMargin;
 }
 .ui.text.menu .item {
-  border-radius: 0px;
+  border-radius: 0;
   box-shadow: none;
   align-self: center;
   margin: @textMenuItemMargin;
@@ -1246,8 +1246,8 @@ Floated Menu / Item
     position: absolute;
     content: '';
     top: auto;
-    bottom: 0px;
-    left: 0px;
+    bottom: 0;
+    left: 0;
     width: 100%;
     height: @dividerSize;
     background: @verticalDividerBackground;
@@ -1738,13 +1738,13 @@ Floated Menu / Item
 .ui.menu.fixed,
 .ui.menu.fixed .item:first-child,
 .ui.menu.fixed .item:last-child {
-  border-radius: 0px !important;
+  border-radius: 0 !important;
 }
 
 .ui.fixed.menu,
 .ui[class*="top fixed"].menu {
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   right: auto;
   bottom: auto;
 }
@@ -1757,8 +1757,8 @@ Floated Menu / Item
   border-top: none;
   border-bottom: none;
   border-right: none;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   left: auto;
   bottom: auto;
   width: auto;
@@ -1768,8 +1768,8 @@ Floated Menu / Item
   border-bottom: none;
   border-left: none;
   border-right: none;
-  bottom: 0px;
-  left: 0px;
+  bottom: 0;
+  left: 0;
   top: auto;
   right: auto;
 }
@@ -1777,8 +1777,8 @@ Floated Menu / Item
   border-top: none;
   border-bottom: none;
   border-left: none;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   right: auto;
   bottom: auto;
   width: auto;
@@ -1913,9 +1913,9 @@ Floated Menu / Item
 
 /* Middle */
 .ui.attached.menu {
-  top: 0px;
-  bottom: 0px;
-  border-radius: 0px;
+  top: 0;
+  bottom: 0;
+  border-radius: 0;
   margin: 0em @attachedHorizontalOffset;
   width: @attachedWidth;
   max-width: @attachedWidth;
@@ -1927,7 +1927,7 @@ Floated Menu / Item
 
 /* Top */
 .ui[class*="top attached"].menu {
-  bottom: 0px;
+  bottom: 0;
   margin-bottom: 0em;
   top: @attachedTopOffset;
   margin-top: @verticalMargin;
@@ -1939,7 +1939,7 @@ Floated Menu / Item
 
 /* Bottom */
 .ui[class*="bottom attached"].menu {
-  bottom: 0px;
+  bottom: 0;
   margin-top: 0em;
   top: @attachedBottomOffset;
   margin-bottom: @verticalMargin;

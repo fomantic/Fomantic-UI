@@ -810,7 +810,7 @@ a.ui.basic.label:hover {
 }
 .ui.pointing.label:before,
 .ui[class*="pointing above"].label:before {
-  border-width: @borderWidth 0px 0px @borderWidth;
+  border-width: @borderWidth 0 0 @borderWidth;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
   top: 0%;
   left: 50%;
@@ -823,7 +823,7 @@ a.ui.basic.label:hover {
 }
 .ui[class*="bottom pointing"].label:before,
 .ui[class*="pointing below"].label:before {
-  border-width: 0px @borderWidth @borderWidth 0px;
+  border-width: 0 @borderWidth @borderWidth 0;
   top: auto;
   right: auto;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -836,7 +836,7 @@ a.ui.basic.label:hover {
   margin-left: @pointingHorizontalDistance;
 }
 .ui[class*="left pointing"].label:before {
-  border-width: 0px 0px @borderWidth @borderWidth;
+  border-width: 0 0 @borderWidth @borderWidth;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
   bottom: auto;
   right: auto;
@@ -849,7 +849,7 @@ a.ui.basic.label:hover {
   margin-right: @pointingHorizontalDistance;
 }
 .ui[class*="right pointing"].label:before {
-  border-width: @borderWidth @borderWidth 0px 0px;
+  border-width: @borderWidth @borderWidth 0 0;
   transform: translateX(50%) translateY(-50%) rotate(45deg);
   top: 50%;
   right: 0%;

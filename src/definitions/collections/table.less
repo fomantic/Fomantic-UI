@@ -253,7 +253,7 @@
   background: @definitionHeaderBackground;
   font-weight: @definitionHeaderFontWeight;
   color: @definitionHeaderColor;
-  box-shadow: -@borderWidth -@borderWidth 0px @borderWidth @definitionPageBackground;
+  box-shadow: -@borderWidth -@borderWidth 0 @borderWidth @definitionPageBackground;
 }
 
 .ui.definition.table tfoot:not(.full-width) th:first-child {
@@ -261,15 +261,15 @@
   background: @definitionFooterBackground;
   font-weight: @definitionFooterColor;
   color: @definitionFooterFontWeight;
-  box-shadow: @borderWidth @borderWidth 0px @borderWidth @definitionPageBackground;
+  box-shadow: @borderWidth @borderWidth 0 @borderWidth @definitionPageBackground;
 }
 
 /* Remove Border */
 .ui.celled.definition.table thead:not(.full-width) th:first-child {
-  box-shadow: 0px -@borderWidth 0px @borderWidth @definitionPageBackground;
+  box-shadow: 0 -@borderWidth 0 @borderWidth @definitionPageBackground;
 }
 .ui.celled.definition.table tfoot:not(.full-width) th:first-child {
-  box-shadow: 0px @borderWidth 0px @borderWidth @definitionPageBackground;
+  box-shadow: 0 @borderWidth 0 @borderWidth @definitionPageBackground;
 }
 
 /* Highlight Defining Column */
@@ -543,9 +543,9 @@
 
 /* Middle */
 .ui.attached.table {
-  top: 0px;
-  bottom: 0px;
-  border-radius: 0px;
+  top: 0;
+  bottom: 0;
+  border-radius: 0;
   margin: 0em @attachedHorizontalOffset;
   width: @attachedWidth;
   max-width: @attachedWidth;
@@ -558,7 +558,7 @@
 
 /* Top */
 .ui[class*="top attached"].table {
-  bottom: 0px;
+  bottom: 0;
   margin-bottom: 0em;
   top: @attachedTopOffset;
   margin-top: @verticalMargin;
@@ -570,7 +570,7 @@
 
 /* Bottom */
 .ui[class*="bottom attached"].table {
-  bottom: 0px;
+  bottom: 0;
   margin-top: 0em;
   top: @attachedBottomOffset;
   margin-bottom: @verticalMargin;
