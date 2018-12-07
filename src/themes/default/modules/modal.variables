@@ -46,12 +46,12 @@
 /* Image / Description */
 @imageWidth: '';
 @imageIconSize: 8rem;
-@imageVerticalAlign: top;
+@imageVerticalAlign: start;
 
 @descriptionDistance: 2em;
 @descriptionMinWidth: '';
 @descriptionWidth: auto;
-@descriptionVerticalAlign: top;
+@descriptionVerticalAlign: start;
 
 /* Modal Actions */
 @actionBorder: 1px solid @borderColor;

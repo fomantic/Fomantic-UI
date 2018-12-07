@@ -44,7 +44,7 @@
 @imageDisplay: block;
 @imageFloat: none;
 @imageMaxHeight: '';
-@imageVerticalAlign: top;
+@imageVerticalAlign: start;
 @imageMargin: 0em;
 @imagePadding: 0em;
 @imageBorder: none;
@@ -54,7 +54,7 @@
 
 /* Content */
 @contentDisplay: block;
-@contentVerticalAlign: top;
+@contentVerticalAlign: start;
 
 @contentWidth: auto;
 @contentOffset: 0em;
@@ -110,7 +110,7 @@
 
 /* Content Image */
 @contentImageWidth: '';
-@contentImageVerticalAlign: middle;
+@contentImageVerticalAlign: center;
 
 /* Avatar Image */
 @avatarSize: @contentImageWidth;
