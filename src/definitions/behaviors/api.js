@@ -12,6 +12,10 @@
 
 'use strict';
 
+$.isWindow = $.isWindow || function(obj) {
+  return obj != null && obj === obj.window;
+};
+
 var
   window = (typeof window != 'undefined' && window.Math == Math)
     ? window
@@ -990,7 +994,7 @@ $.api = $.fn.api = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

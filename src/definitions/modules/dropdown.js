@@ -12,6 +12,10 @@
 
 'use strict';
 
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
+
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
   : (typeof self != 'undefined' && self.Math == Math)
@@ -203,7 +207,7 @@ $.fn.dropdown = function(parameters) {
             if(!values) {
               return false;
             }
-            values = $.isArray(values)
+            values = Array.isArray(values)
               ? values
               : [values]
             ;
@@ -741,6 +745,11 @@ $.fn.dropdown = function(parameters) {
                 if(settings.filterRemoteData) {
                   module.filterItems(searchTerm);
                 }
+                $.each($input.val(),function(index,value){
+                  $item.filter('[data-value="'+value+'"]')
+                      .addClass(className.filtered)
+                  ;
+                });
                 afterFiltered();
               });
             }
@@ -774,7 +783,7 @@ $.fn.dropdown = function(parameters) {
               onSuccess : function(response) {
                 var
                   values          = response[fields.remoteValues],
-                  hasRemoteValues = ($.isArray(values) && values.length > 0)
+                  hasRemoteValues = (Array.isArray(values) && values.length > 0)
                 ;
                 if(hasRemoteValues) {
                   module.remove.message();
@@ -982,9 +991,11 @@ $.fn.dropdown = function(parameters) {
             module.setup.menu({values: values});
             $.each(values, function(index, item) {
               if(item.selected == true) {
-                module.debug('Setting initial selection to', item.value);
-                module.set.selected(item.value);
-                return true;
+                module.debug('Setting initial selection to', item[fields.value]);
+                module.set.selected(item[fields.value]);
+                if(!module.is.multiple()) {
+                  return false;
+                }
               }
             });
           }
@@ -1439,6 +1450,9 @@ $.fn.dropdown = function(parameters) {
                 if(module.is.searchSelection()) {
                   module.remove.searchTerm();
                 }
+                if(module.is.multiple()){
+                    event.preventDefault();
+                }
               }
 
               // visible menu keyboard shortcuts
@@ -1749,7 +1763,7 @@ $.fn.dropdown = function(parameters) {
               count
             ;
             count = ( module.is.multiple() )
-              ? $.isArray(values)
+              ? Array.isArray(values)
                 ? values.length
                 : 0
               : (module.get.value() !== '')
@@ -1773,7 +1787,7 @@ $.fn.dropdown = function(parameters) {
             if(!values) {
               return false;
             }
-            values = $.isArray(values)
+            values = Array.isArray(values)
               ? values
               : [values]
             ;
@@ -1808,7 +1822,7 @@ $.fn.dropdown = function(parameters) {
               value = ($input.length > 0)
                 ? $input.val()
                 : $module.data(metadata.value),
-              isEmptyMultiselect = ($.isArray(value) && value.length === 1 && value[0] === '')
+              isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '')
             ;
             // prevents placeholder element from being selected when multiple
             return (value === undefined || isEmptyMultiselect)
@@ -1999,7 +2013,7 @@ $.fn.dropdown = function(parameters) {
               ? (value.length > 0)
               : (value !== undefined && value !== null)
             ;
-            isMultiple = (module.is.multiple() && $.isArray(value));
+            isMultiple = (module.is.multiple() && Array.isArray(value));
             strict     = (value === '' || value === 0)
               ? true
               : strict || false
@@ -2142,6 +2156,11 @@ $.fn.dropdown = function(parameters) {
             }
             else {
               module.set.selected();
+            }
+            if(module.get.item()) {
+              $input.removeClass(className.noselection);
+            } else {
+              $input.addClass(className.noselection);
             }
             module.remove.initialLoad();
           },
@@ -2485,8 +2504,13 @@ $.fn.dropdown = function(parameters) {
           },
           direction: function($menu) {
             if(settings.direction == 'auto') {
-              // reset position
-              module.remove.upward();
+              // reset position, remove upward if it's base menu
+              if (!$menu) {
+                module.remove.upward();
+              } else if (module.is.upward($menu)) {
+                //we need make sure when make assertion openDownward for $menu, $menu does not have upward class
+                module.remove.upward($menu);
+              }
 
               if(module.can.openDownward($menu)) {
                 module.remove.upward($menu);
@@ -2511,6 +2535,11 @@ $.fn.dropdown = function(parameters) {
             $element.addClass(className.leftward);
           },
           value: function(value, text, $selected) {
+            if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+              $input.removeClass(className.noselection);
+            } else {
+              $input.addClass(className.noselection);
+            }
             var
               escapedValue = module.escape.value(value),
               hasInput     = ($input.length > 0),
@@ -2817,7 +2846,7 @@ $.fn.dropdown = function(parameters) {
               return;
             }
             // extend current array
-            if($.isArray(currentValue)) {
+            if(Array.isArray(currentValue)) {
               newValue = currentValue.concat([addedValue]);
               newValue = module.get.uniqueArray(newValue);
             }
@@ -3002,7 +3031,7 @@ $.fn.dropdown = function(parameters) {
             module.check.maxSelections();
           },
           arrayValue: function(removedValue, values) {
-            if( !$.isArray(values) ) {
+            if( !Array.isArray(values) ) {
               values = [values];
             }
             values = $.grep(values, function(value){
@@ -3160,7 +3189,7 @@ $.fn.dropdown = function(parameters) {
           valueMatchingCase: function(value) {
             var
               values   = module.get.values(),
-              hasValue = $.isArray(values)
+              hasValue = Array.isArray(values)
                ? values && ($.inArray(value, values) !== -1)
                : (values == value)
             ;
@@ -3174,7 +3203,7 @@ $.fn.dropdown = function(parameters) {
               values   = module.get.values(),
               hasValue = false
             ;
-            if(!$.isArray(values)) {
+            if(!Array.isArray(values)) {
               values = [values];
             }
             $.each(values, function(index, existingValue) {
@@ -3546,7 +3575,7 @@ $.fn.dropdown = function(parameters) {
         escape: {
           value: function(value) {
             var
-              multipleValues = $.isArray(value),
+              multipleValues = Array.isArray(value),
               stringValue    = (typeof value === 'string'),
               isUnparsable   = (!stringValue && !multipleValues),
               hasQuotes      = (stringValue && value.search(regExp.quote) !== -1),
@@ -3720,7 +3749,7 @@ $.fn.dropdown = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
@@ -3861,7 +3890,7 @@ $.fn.dropdown.settings = {
   },
 
   regExp : {
-    escape   : /[-[\]{}()*+?.,\\^$|#\s]/g,
+    escape   : /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
     quote    : /"/g
   },
 
@@ -3942,7 +3971,8 @@ $.fn.dropdown.settings = {
     upward      : 'upward',
     leftward    : 'left',
     visible     : 'visible',
-    clearable   : 'clearable'
+    clearable   : 'clearable',
+    noselection : 'noselection'
   }
 
 };

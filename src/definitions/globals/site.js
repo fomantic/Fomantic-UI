@@ -10,6 +10,10 @@
 
 ;(function ($, window, document, undefined) {
 
+$.isFunction = $.isFunction || function(obj) {
+    return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
+
 $.site = $.fn.site = function(parameters) {
   var
     time           = new Date().getTime(),
@@ -391,7 +395,7 @@ $.site = $.fn.site = function(parameters) {
       else if(found !== undefined) {
         response = found;
       }
-      if($.isArray(returnedValue)) {
+      if(Array.isArray(returnedValue)) {
         returnedValue.push(response);
       }
       else if(returnedValue !== undefined) {

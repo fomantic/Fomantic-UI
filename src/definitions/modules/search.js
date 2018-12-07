@@ -12,6 +12,10 @@
 
 'use strict';
 
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
+
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
   : (typeof self != 'undefined' && self.Math == Math)
@@ -445,7 +449,7 @@ $.fn.search = function(parameters) {
             if(settings.type === 'category') {
               module.debug('Finding result that matches', value);
               $.each(results, function(index, category) {
-                if($.isArray(category.results)) {
+                if(Array.isArray(category.results)) {
                   result = module.search.object(value, category.results, lookupFields)[0];
                   // don't continue searching if a result is found
                   if(result) {
@@ -525,7 +529,7 @@ $.fn.search = function(parameters) {
             }
             else {
               module.debug('Querying for', searchTerm);
-              if($.isPlainObject(settings.source) || $.isArray(settings.source)) {
+              if($.isPlainObject(settings.source) || Array.isArray(settings.source)) {
                 module.search.local(searchTerm);
                 callback();
               }
@@ -611,7 +615,7 @@ $.fn.search = function(parameters) {
             ;
 
             // search fields should be array to loop correctly
-            if(!$.isArray(searchFields)) {
+            if(!Array.isArray(searchFields)) {
               searchFields = [searchFields];
             }
 
@@ -687,6 +691,11 @@ $.fn.search = function(parameters) {
 
         parse: {
           response: function(response, searchTerm) {
+            if(Array.isArray(response)){
+                var o={};
+                o[fields.results]=response;
+                response = o;
+            }
             var
               searchHTML = module.generateResults(response)
             ;
@@ -996,7 +1005,7 @@ $.fn.search = function(parameters) {
           var
             template       = settings.templates[settings.type],
             isProperObject = ($.isPlainObject(response[fields.results]) && !$.isEmptyObject(response[fields.results])),
-            isProperArray  = ($.isArray(response[fields.results]) && response[fields.results].length > 0),
+            isProperArray  = (Array.isArray(response[fields.results]) && response[fields.results].length > 0),
             html           = ''
           ;
           if(isProperObject || isProperArray ) {
@@ -1177,7 +1186,7 @@ $.fn.search = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

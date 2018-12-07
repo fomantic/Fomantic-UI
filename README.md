@@ -1,22 +1,21 @@
+![Fomantic Logo](http://fomantic-ui.com/images/logo.png#128)
 
-<p align="center">
-  <img src="http://fomantic-ui.com/images/logo.png#128">
-</p>
-<h1 align="center">Fomantic UI</h1>
-<h4 align="center">A community fork of the popular Semantic-UI framework</h4>
+# Fomantic UI
+A community fork of the popular Semantic-UI framework
 
-<p align="center">
-  <a href="https://discord.gg/YChxjJ3"><img src="https://img.shields.io/discord/453127116427493376.svg?label=Discord"></a>
-  <a href="https://www.npmjs.com/package/fomantic-ui"><img src="https://img.shields.io/npm/dw/fomantic-ui.svg"></a>
-  <a href="https://www.npmjs.com/package/fomantic-ui"><img src="https://img.shields.io/npm/v/fomantic-ui.svg"></a>
-  <a href="https://github.com/fomantic/Fomantic-UI/commits/master"><img src="https://img.shields.io/github/last-commit/hammy2899/fomantic-ui.svg"></a>
-</p>
+[![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
+[![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
+[![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
+[![last commit](https://img.shields.io/github/last-commit/hammy2899/fomantic-ui.svg)](https://github.com/fomantic/Fomantic-UI/commits/master)
+[![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge)](https://www.jsdelivr.com/package/npm/fomantic-ui)
+
+---
 
 *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
 
 Fomantic allows developers to build beautiful websites fast, with **concise HTML**, **intuitive javascript**, and **simplified debugging**, helping make front-end development a delightful experience. Fomantic is responsively designed allowing your website to scale on multiple devices.
 
-## :satellite: Installation
+## 📡 Installation
 
 ```bash
 $ npm install fomantic-ui --save
@@ -27,7 +26,7 @@ Fomantic UI includes an interactive installer to help setup your project.
 * For more details on setup visit our [getting started guide](http://fomantic-ui.com/introduction/getting-started.html).
 * To learn more about theming please read our [theming guide](http://fomantic-ui.com/usage/theming.html)
 
-### :computer: Browser Support
+### 💻 Browser Support
 
 * Last 2 Versions FF, Chrome, Safari Mac
 * IE 11+
@@ -37,20 +36,20 @@ Fomantic UI includes an interactive installer to help setup your project.
 
 Although some components will work in IE9, [grids](http://semantic-ui.com/collections/grid.html) and other [flexbox](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes) components are not supported by IE9 and may not appear correctly.
 
-## :speech_balloon: Community
+## 💬 Community
 
-### :bulb: Getting Help
+### 💡 Getting Help
 
 If you have a usage question please **do not post** post it to GitHub Issues. You can ask for usage help via our [Discord](https://discord.gg/YChxjJ3) server.
 Please only create Github issues for bug's and feature requests or any other related issue.
 
-### :bug: Submitting Bugs and Enhancements
+### 🐛 Submitting Bugs and Enhancements
 [GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submiting a bug make sure you do the following:
 * Check to see if the issue has already been raised.
 * [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a test case for your bug. If a bug is apparent in the docs, that's ok as a test case, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
 * If submitting an enhancement try and create it in the [JSFiddle](https://jsfiddle.net/31d6y7mn) if not it's fine but explain clearly what you want.
 
-### :memo: Pull Requests
+### 📝 Pull Requests
 
 Before creating a pull request be sure to read the [contributing](CONTRIBUTING.md) guide, this is where we explain everything you need to know about contributing to Fomantic-UI.
 
