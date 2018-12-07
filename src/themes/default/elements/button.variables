@@ -67,7 +67,7 @@
 /*
 @willChange: box-shadow, transform, opacity, color, background;
 */
-@willChange: '';
+@willChange: auto;
 
 /*-------------------
         Group
@@ -92,7 +92,7 @@
 
 /* Focused */
 @focusBackgroundColor: @hoverBackgroundColor;
-@focusBackgroundImage: '';
+@focusBackgroundImage: none;
 @focusBoxShadow: '';
 @focusColor: @hoveredTextColor;
 @iconFocusOpacity: 0.85;
