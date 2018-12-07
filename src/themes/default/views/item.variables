@@ -13,7 +13,7 @@
 @display: flex;
 @background: transparent;
 @borderRadius: 0rem;
-@minHeight: 0px;
+@minHeight: 0;
 @padding: 0em;
 @width: 100%;
 @boxShadow: none;

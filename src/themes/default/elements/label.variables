@@ -18,7 +18,7 @@
 @textTransform: none;
 @fontWeight: @bold;
 @borderWidth: 1px;
-@border: 0px solid transparent;
+@border: 0 solid transparent;
 
 @lineHeightOffset: -(@verticalPadding / 2);
 

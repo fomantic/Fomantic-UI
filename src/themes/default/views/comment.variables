@@ -83,13 +83,13 @@
 /* Threaded */
 @threadedCommentMargin: -1.5em 0 -1em  (@avatarWidth / 2);
 @threadedCommentPadding: 3em 0em 2em 2.25em;
-@threadedCommentBoxShadow: -1px 0px 0px @borderColor;
+@threadedCommentBoxShadow: -1px 0 0 @borderColor;
 
 
 /* Minimal */
 @minimalActionPosition: absolute;
-@minimalActionTop: 0px;
-@minimalActionRight: 0px;
+@minimalActionTop: 0;
+@minimalActionRight: 0;
 @minimalActionLeft: auto;
 
 @minimalTransitionDelay: 0.1s;

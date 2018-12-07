@@ -80,7 +80,7 @@
 --------------------*/
 
 /* Focus */
-@inputFocusPointerSize: 0px;
+@inputFocusPointerSize: 0;
 
 /* Input Focus */
 @inputFocusBackground: @inputBackground;

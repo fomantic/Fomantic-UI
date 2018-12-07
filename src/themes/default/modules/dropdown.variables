@@ -12,7 +12,7 @@
 ;
 @borderRadius: @defaultBorderRadius;
 
-@raisedShadow: 0px 2px 3px 0px @borderColor;
+@raisedShadow: 0 2px 3px 0 @borderColor;
 
 /*-------------------
        Content
@@ -268,7 +268,7 @@
 @labelVerticalMargin: @2px;
 @labelMargin: @labelVerticalMargin @labelHorizontalMargin @labelVerticalMargin 0em;
 @labelBorderWidth: 1px;
-@labelBoxShadow: 0px 0px 0px @labelBorderWidth @borderColor inset;
+@labelBoxShadow: 0 0 0 @labelBorderWidth @borderColor inset;
 
 @labelVerticalPadding: @relative5px;
 @labelHorizontalPadding: @relativeMini;
@@ -327,7 +327,7 @@
 @scrollingComputerMaxItems: 8;
 @scrollingWidescreenMaxItems: 12;
 
-@scrollingBorderEMWidth: 0em; /* 0px / em size */
+@scrollingBorderEMWidth: 0em; /* 0 / em size */
 @scrollingItemHeight: (@itemVerticalPadding * 2) + @itemLineHeight + @scrollingBorderEMWidth;
 @scrollingMobileMaxMenuHeight: (@scrollingItemHeight * @scrollingMobileMaxItems);
 @scrollingTabletMaxMenuHeight: (@scrollingItemHeight * @scrollingTabletMaxItems);
@@ -336,13 +336,13 @@
 
 /* Upward */
 @upwardSelectionVisibleBorderRadius: @selectionVisibleConnectingBorder @selectionVisibleConnectingBorder @borderRadius @borderRadius;
-@upwardMenuBoxShadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
-@upwardSelectionMenuBoxShadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.08);
+@upwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
+@upwardSelectionMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
 @upwardMenuBorderRadius: @borderRadius @borderRadius 0em 0em;
-@upwardSelectionHoverBoxShadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
-@upwardSelectionVisibleBoxShadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.08);
-@upwardSelectionActiveHoverBoxShadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.05);
-@upwardSelectionActiveHoverMenuBoxShadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.08);
+@upwardSelectionHoverBoxShadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
+@upwardSelectionVisibleBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
+@upwardSelectionActiveHoverBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
+@upwardSelectionActiveHoverMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
 
 /* Flyout Direction */
 @leftMenuDropdownIconFloat: left;
@@ -367,16 +367,16 @@
 
 @pointingArrowBackground: @white;
 @pointingArrowZIndex: 2;
-@pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0px 0px @menuBorderColor;
+@pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @menuBorderColor;
 @pointingArrowSize: @relative7px;
 
 @pointingMenuDistance: @mini;
 @pointingMenuBorderRadius: @borderRadius;
-@pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0px 0px @menuBorderColor;
+@pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @menuBorderColor;
 
 /* Pointing Upward */
 @pointingUpwardMenuBorderRadius: @borderRadius;
-@pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0px 0px @menuBorderColor;
+@pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @menuBorderColor;
 
 
 /*--------------
@@ -434,7 +434,7 @@
 /*@invertedLabelBackgroundColor: rgba(255, 255, 255, 0.06);
 @invertedLabelBackgroundImage: none;
 @invertedLabelColor: rgba(255, 255, 255, 0.6);
-@invertedLabelBoxShadow: 0px 0px 0px @labelBorderWidth rgba(255, 255, 255, 0.16) inset;
+@invertedLabelBoxShadow: 0 0 0 @labelBorderWidth rgba(255, 255, 255, 0.16) inset;
 
 @invertedLabelHoverBackgroundColor: rgba(255, 255, 255, 0.12);
 @invertedLabelHoverBackgroundImage: none;
@@ -443,7 +443,7 @@
 @invertedLabelBackgroundColor: rgba(255, 255, 255, 0.7);
 @invertedLabelBackgroundImage: none;
 @invertedLabelColor: rgba(0, 0, 0, 1);
-@invertedLabelBoxShadow: 0px 0px 0px @labelBorderWidth rgba(255, 255, 255, 0) inset;
+@invertedLabelBoxShadow: 0 0 0 @labelBorderWidth rgba(255, 255, 255, 0) inset;
 
 @invertedLabelHoverBackgroundColor: rgba(255, 255, 255, 0.9);
 @invertedLabelHoverBackgroundImage: none;

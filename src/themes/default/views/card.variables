@@ -8,7 +8,7 @@
 
 /* Shadow */
 @shadowDistance: 1px;
-@shadowBoxShadow: 0px @shadowDistance 3px 0px @solidBorderColor;
+@shadowBoxShadow: 0 @shadowDistance 3px 0 @solidBorderColor;
 
 /* Card */
 @fontFamily: @pageFont;
@@ -16,11 +16,11 @@
 @background: @white;
 @borderRadius: @defaultBorderRadius;
 @margin: 1em 0em;
-@minHeight: 0px;
+@minHeight: 0;
 @padding: 0em;
 @width: 290px;
 @borderWidth: 1px;
-@borderShadow: 0px 0px 0px @borderWidth @solidBorderColor;
+@borderShadow: 0 0 0 @borderWidth @solidBorderColor;
 @boxShadow:
   @shadowBoxShadow,
   @borderShadow
@@ -140,7 +140,7 @@
 @extraLinkHoverColor: @linkHoverColor;
 
 /* Buttons */
-@buttonMargin: 0px -@borderWidth;
+@buttonMargin: 0 -@borderWidth;
 @buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
 
 /*-------------------
@@ -154,7 +154,7 @@
 @linkHoverRaiseDistance: 3px;
 @linkHoverTransform: translateY(-@linkHoverRaiseDistance);
 
-@shadowHoverBoxShadow: 0px @shadowDistance @linkHoverRaiseDistance 0px @solidSelectedBorderColor;
+@shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
 @linkHoverBoxShadow:
   @shadowHoverBoxShadow,
   @borderShadow
@@ -236,6 +236,6 @@
 @invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
-  0px @shadowDistance 3px 0px @solidWhiteBorderColor,
-  0px 0px 0px @borderWidth @solidWhiteBorderColor
+  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+  0 0 0 @borderWidth @solidWhiteBorderColor
 ;

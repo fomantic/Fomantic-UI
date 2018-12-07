@@ -60,7 +60,7 @@
 @styledBorderRadius: @defaultBorderRadius;
 @styledBoxShadow:
   @subtleShadow,
-  0px 0px 0px 1px @borderColor
+  0 0 0 1px @borderColor
 ;
 
 /* Content */

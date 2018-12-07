@@ -125,7 +125,7 @@
 @labelAndIconMargin: 0em 0.5em 0em 0em;
 
 /* Dropdown in Menu */
-@dropdownMenuBoxShadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08);
+@dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 
 @dropdownBackground: #FFFFFF;
 @dropdownMenuDistance: 0em;
@@ -148,7 +148,7 @@
 @dropdownHoveredItemColor: @selectedTextColor;
 
 /* Dropdown Variations */
-@dropdownVerticalMenuBoxShadow: 0 1px 3px 0px rgba(0, 0, 0, 0.08);
+@dropdownVerticalMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
 @secondaryDropdownMenuDistance: @relative5px;
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
@@ -378,7 +378,7 @@
 /* Inverted */
 @invertedBackground: @black;
 @invertedBoxShadow: none;
-@invertedBorder: 0px solid transparent;
+@invertedBorder: 0 solid transparent;
 @invertedHeaderBackground: transparent;
 
 @invertedItemBackground: transparent;
@@ -427,8 +427,8 @@
 @floatedDistance: 0.5rem;
 
 /* Attached */
-@attachedTopOffset: 0px;
-@attachedBottomOffset: 0px;
+@attachedTopOffset: 0;
+@attachedBottomOffset: 0;
 @attachedHorizontalOffset: -@borderWidth;
 @attachedWidth: e(%("calc(100%% + %d)", -@attachedHorizontalOffset * 2));
 @attachedBoxShadow: none;
