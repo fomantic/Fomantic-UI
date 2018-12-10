@@ -12,7 +12,7 @@
 /* Item */
 @display: flex;
 @background: transparent;
-@borderRadius: 0rem;
+@borderRadius: 0;
 @minHeight: 0;
 @padding: 0;
 @width: 100%;

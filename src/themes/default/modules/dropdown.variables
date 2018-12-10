@@ -76,7 +76,7 @@
 @menuHeaderFontSize: @relative11px;
 @menuHeaderFontWeight: @bold;
 @menuHeaderTextTransform: uppercase;
-@menuHeaderMargin: 1rem 0rem 0.75rem;
+@menuHeaderMargin: 1rem 0 0.75rem;
 @menuHeaderPadding: 0 @itemHorizontalPadding;
 
 /* Menu Divider */

@@ -35,7 +35,7 @@
 @headerFontSize: @relativeLarge;
 @headerFontWeight: @bold;
 @headerDisplay: block;
-@headerDistance: 0rem;
+@headerDistance: 0;
 @headerMargin: -@headerLineHeightOffset 0 @headerDistance 0;
 @headerParagraphDistance: 0.25em;
 
@@ -67,7 +67,7 @@
 /* Icon Message */
 @iconSize: 3em;
 @iconOpacity: 0.8;
-@iconContentDistance: 0rem;
+@iconContentDistance: 0;
 @iconVerticalAlign: middle;
 
 /* Attached */

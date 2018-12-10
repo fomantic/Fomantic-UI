@@ -154,7 +154,7 @@
 @toggleHeight: @toggleHandleSize;
 
 @toggleHandleRadius: @circularRadius;
-@toggleHandleOffset: 0rem;
+@toggleHandleOffset: 0;
 @toggleHandleTransition:
   background @sliderTransitionDuration @defaultEasing,
   left @sliderTransitionDuration @defaultEasing
@@ -163,7 +163,7 @@
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;
 @toggleLaneBoxShadow: none;
-@toggleLaneVerticalOffset: 0rem;
+@toggleLaneVerticalOffset: 0;
 @toggleOffOffset: -0.05rem;
 @toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
 
