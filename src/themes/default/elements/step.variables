@@ -61,7 +61,7 @@
 /* Arrow */
 @arrowBackgroundColor: @backgroundColor;
 @arrowTopOffset: 50%;
-@arrowRightOffset: 0%;
+@arrowRightOffset: 0;
 @arrowBorderWidth: 0 @borderWidth @borderWidth 0;
 
 @arrowDisplay: block;
@@ -80,7 +80,7 @@
 /* Vertical */
 @verticalDivider: @divider;
 @verticalArrowTopOffset: 50%;
-@verticalArrowRightOffset: 0%;
+@verticalArrowRightOffset: 0;
 @verticalArrowBorderWidth: 0 @borderWidth @borderWidth 0;
 
 @verticalArrowDisplay: none;
