@@ -7,7 +7,7 @@
 --------------------*/
 
 /* Button */
-@verticalMargin: 0em;
+@verticalMargin: 0;
 @horizontalMargin: 0.25em;
 @backgroundColor: #E0E1E2;
 @backgroundImage: none;
@@ -30,7 +30,7 @@
 @verticalAlign: baseline;
 
 /* Internal Shadow */
-@shadowDistance: 0em;
+@shadowDistance: 0;
 @shadowOffset: (@shadowDistance / 2);
 @shadowBoxShadow: 0 -@shadowDistance 0 0 @borderColor inset;
 
@@ -51,8 +51,8 @@
 @iconTransition: opacity @defaultDuration @defaultEasing;
 @iconVerticalAlign: '';
 
-@iconMargin: 0em @iconDistance 0em -(@iconDistance / 2);
-@rightIconMargin: 0em -(@iconDistance / 2) 0em @iconDistance;
+@iconMargin: 0 @iconDistance 0 -(@iconDistance / 2);
+@rightIconMargin: 0 -(@iconDistance / 2) 0 @iconDistance;
 
 /* Loader */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
@@ -171,7 +171,7 @@
 @labeledLabelBorderColor: @borderColor;
 @labeledLabelBorderOffset: -@borderBoxShadowWidth;
 @labeledTagLabelSize: 1.85em; /* hypotenuse of triangle */
-@labeledIconMargin: 0em;
+@labeledIconMargin: 0;
 
 /* Labeled Icon */
 @labeledIconWidth: 1em + (@verticalPadding * 2);

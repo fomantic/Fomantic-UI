@@ -131,7 +131,7 @@
       Paragraph
 --------------------*/
 
-@paragraphMargin     : 0em 0em 1em;
+@paragraphMargin     : 0 0 1em;
 @paragraphLineHeight : @lineHeight;
 
 /*-------------------
@@ -496,7 +496,7 @@
 
 /* Loaders Position Offset */
 @loaderOffset : -(@loaderSize / 2);
-@loaderMargin : @loaderOffset 0em 0em @loaderOffset;
+@loaderMargin : @loaderOffset 0 0 @loaderOffset;
 
 /* Rendered Scrollbar Width */
 @scrollbarWidth: 17px;
@@ -511,7 +511,7 @@
 /* Header Spacing */
 @headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));
 @headerBottomMargin : 1rem;
-@headerMargin       : @headerTopMargin 0em @headerBottomMargin;
+@headerMargin       : @headerTopMargin 0 @headerBottomMargin;
 
 /* Minimum Mobile Width */
 @pageMinWidth       : 320px;

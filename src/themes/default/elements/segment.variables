@@ -16,7 +16,7 @@
 @padding: @verticalPadding @horizontalPadding;
 
 @verticalMargin: 1rem;
-@horizontalMargin: 0em;
+@horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
 @borderRadius: @defaultBorderRadius;
 
@@ -33,7 +33,7 @@
 
 @groupedSegmentBorder: none;
 @groupedSegmentDivider: @border;
-@groupedSegmentMargin: 0em;
+@groupedSegmentMargin: 0;
 @groupedSegmentWidth: auto;
 @groupedSegmentBoxShadow: none;
 

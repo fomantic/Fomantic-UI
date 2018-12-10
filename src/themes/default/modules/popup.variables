@@ -29,7 +29,7 @@
 @arrowSize: @relative10px;
 @arrowWidth: 1em;
 @arrowDistanceFromEdge: 1em;
-@boxArrowOffset: 0em;
+@boxArrowOffset: 0;
 @popupDistanceAway: @arrowSize;
 
 

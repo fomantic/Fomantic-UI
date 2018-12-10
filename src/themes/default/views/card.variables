@@ -15,9 +15,9 @@
 @display: flex;
 @background: @white;
 @borderRadius: @defaultBorderRadius;
-@margin: 1em 0em;
+@margin: 1em 0;
 @minHeight: 0;
-@padding: 0em;
+@padding: 0;
 @width: 290px;
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
@@ -53,18 +53,18 @@
 
 /* Image */
 @imageBackground: @transparentBlack;
-@imagePadding: 0em;
+@imagePadding: 0;
 @imageBorder: none;
 @imageBoxShadow: none;
 @imageBorder: none;
 
 /* Content */
 @contentDivider: @borderWidth solid @internalBorderColor;
-@contentMargin: 0em;
+@contentMargin: 0;
 @contentBackground: none;
 @contentPadding: 1em 1em;
 @contentFontSize: 1em;
-@contentBorderRadius: 0em;
+@contentBorderRadius: 0;
 @contentBoxShadow: none;
 @contentBorder: none;
 
@@ -127,9 +127,9 @@
 @extraBackground: none;
 @extraPosition: static;
 @extraWidth: auto;
-@extraTop: 0em;
-@extraLeft: 0em;
-@extraMargin: 0em 0em;
+@extraTop: 0;
+@extraLeft: 0;
+@extraMargin: 0 0;
 @extraPadding: 0.75em 1em;
 @extraBoxShadow: none;
 @extraColor: @lightTextColor;
@@ -180,7 +180,7 @@
 @cardSpacing: 0.75em;
 @smallCardSpacing: 0.5em;
 
-@oneCardSpacing: 0em;
+@oneCardSpacing: 0;
 @twoCardSpacing: @wideCardSpacing;
 @threeCardSpacing: @wideCardSpacing;
 @fourCardSpacing: @cardSpacing;
@@ -192,7 +192,7 @@
 @tenCardSpacing: @smallCardSpacing;
 
 @oneCard: @oneColumn;
-@oneCardOffset: 0em;
+@oneCardOffset: 0;
 @twoCard: e(%("calc(%d - %d)", @twoColumn, @twoCardSpacing * 2));
 @twoCardOffset: -@twoCardSpacing;
 @threeCard: e(%("calc(%d - %d)", @threeColumn, @threeCardSpacing * 2));

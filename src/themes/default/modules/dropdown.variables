@@ -20,15 +20,15 @@
 
 /* Icon */
 @dropdownIconSize: @relative12px;
-@dropdownIconMargin: 0em 0em 0em 1em;
+@dropdownIconMargin: 0 0 0 1em;
 
 /* Current Text */
 @textTransition: none;
 
 /* Menu */
 @menuBackground: #FFFFFF;
-@menuMargin: 0em;
-@menuPadding: 0em 0em;
+@menuMargin: 0;
+@menuPadding: 0 0;
 @menuTop: 100%;
 @menuTextAlign: left;
 
@@ -67,7 +67,7 @@
 @subMenuLeft: 100%;
 @subMenuRight: auto;
 @subMenuDistanceAway: -0.5em;
-@subMenuMargin: 0em 0em 0em @subMenuDistanceAway;
+@subMenuMargin: 0 0 0 @subMenuDistanceAway;
 @subMenuBorderRadius: @borderRadius;
 @subMenuZIndex: 21;
 
@@ -77,10 +77,10 @@
 @menuHeaderFontWeight: @bold;
 @menuHeaderTextTransform: uppercase;
 @menuHeaderMargin: 1rem 0rem 0.75rem;
-@menuHeaderPadding: 0em @itemHorizontalPadding;
+@menuHeaderPadding: 0 @itemHorizontalPadding;
 
 /* Menu Divider */
-@menuDividerMargin: 0.5em 0em;
+@menuDividerMargin: 0.5em 0;
 @menuDividerColor: @internalBorderColor;
 @menuDividerSize: 1px;
 @menuDividerBorder: @menuDividerSize solid @menuDividerColor;
@@ -103,11 +103,11 @@
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
 @itemDropdownIconFloat: right;
-@itemDropdownIconMargin: @itemLineHeightOffset 0em 0em @itemDropdownIconDistance;
+@itemDropdownIconMargin: @itemLineHeightOffset 0 0 @itemDropdownIconDistance;
 
 /* Description */
 @itemDescriptionFloat: right;
-@itemDescriptionMargin: 0em 0em 0em 1em;
+@itemDescriptionMargin: 0 0 0 1em;
 @itemDescriptionColor: @lightTextColor;
 
 /* Message */
@@ -163,7 +163,7 @@
 @selectionIconPadding: @selectionIconHitbox / @dropdownIconSize;
 @selectionIconTransition: opacity @defaultDuration @defaultEasing;
 
-@selectionMenuBorderRadius: 0em 0em @borderRadius @borderRadius;
+@selectionMenuBorderRadius: 0 0 @borderRadius @borderRadius;
 @selectionMenuBoxShadow: @raisedShadow;
 @selectionMenuItemBoxShadow: none;
 
@@ -210,7 +210,7 @@
 @selectionActiveHoverBoxShadow: @selectionVisibleBoxShadow;
 @selectionActiveHoverMenuBoxShadow: @selectionVisibleMenuBoxShadow;
 
-@selectionVisibleConnectingBorder: 0em;
+@selectionVisibleConnectingBorder: 0;
 @selectionVisibleIconOpacity: '';
 
 /*--------------
@@ -232,7 +232,7 @@
 @searchWidescreenMaxMenuHeight: @selectionWidescreenMaxMenuHeight;
 
 /* Inline */
-@inlineIconMargin: 0em @relative3px 0em @relative3px;
+@inlineIconMargin: 0 @relative3px 0 @relative3px;
 @inlineTextColor: inherit;
 @inlineTextFontWeight: @bold;
 @inlineMenuDistance: @relative3px;
@@ -252,7 +252,7 @@
 /* Child Elements */
 @multipleSelectionChildVerticalMargin: (@searchSelectionVerticalPadding * (2/3));
 @multipleSelectionChildLeftMargin: (@inputHorizontalPadding - @multipleSelectionLeftPadding);
-@multipleSelectionChildMargin: @multipleSelectionChildVerticalMargin 0em @multipleSelectionChildVerticalMargin @multipleSelectionChildLeftMargin;
+@multipleSelectionChildMargin: @multipleSelectionChildVerticalMargin 0 @multipleSelectionChildVerticalMargin @multipleSelectionChildLeftMargin;
 @multipleSelectionChildLineHeight: @relative17px;
 @multipleSelectionSearchStartWidth: (@glyphWidth * 2);
 
@@ -266,7 +266,7 @@
 @labelSize: @relativeMedium;
 @labelHorizontalMargin: @4px;
 @labelVerticalMargin: @2px;
-@labelMargin: @labelVerticalMargin @labelHorizontalMargin @labelVerticalMargin 0em;
+@labelMargin: @labelVerticalMargin @labelHorizontalMargin @labelVerticalMargin 0;
 @labelBorderWidth: 1px;
 @labelBoxShadow: 0 0 0 @labelBorderWidth @borderColor inset;
 
@@ -327,7 +327,7 @@
 @scrollingComputerMaxItems: 8;
 @scrollingWidescreenMaxItems: 12;
 
-@scrollingBorderEMWidth: 0em; /* 0 / em size */
+@scrollingBorderEMWidth: 0; /* 0 / em size */
 @scrollingItemHeight: (@itemVerticalPadding * 2) + @itemLineHeight + @scrollingBorderEMWidth;
 @scrollingMobileMaxMenuHeight: (@scrollingItemHeight * @scrollingMobileMaxItems);
 @scrollingTabletMaxMenuHeight: (@scrollingItemHeight * @scrollingTabletMaxItems);
@@ -338,7 +338,7 @@
 @upwardSelectionVisibleBorderRadius: @selectionVisibleConnectingBorder @selectionVisibleConnectingBorder @borderRadius @borderRadius;
 @upwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 @upwardSelectionMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
-@upwardMenuBorderRadius: @borderRadius @borderRadius 0em 0em;
+@upwardMenuBorderRadius: @borderRadius @borderRadius 0 0;
 @upwardSelectionHoverBoxShadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
 @upwardSelectionVisibleBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 @upwardSelectionActiveHoverBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
@@ -346,11 +346,11 @@
 
 /* Flyout Direction */
 @leftMenuDropdownIconFloat: left;
-@leftMenuDropdownIconMargin: @itemLineHeightOffset 0em 0em 0em;
+@leftMenuDropdownIconMargin: @itemLineHeightOffset 0 0 0;
 
 /* Left */
 @leftSubMenuBorderRadius: @borderRadius;
-@leftSubMenuMargin: 0em @subMenuDistanceAway 0em 0em;
+@leftSubMenuMargin: 0 @subMenuDistanceAway 0 0;
 
 /* Simple */
 @simpleTransitionDuration: @defaultDuration;

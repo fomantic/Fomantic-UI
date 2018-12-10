@@ -2,7 +2,7 @@
              Rating
 *******************************/
 
-@margin: 0em @relativeMini;
+@margin: 0 @relativeMini;
 @whiteSpace: nowrap;
 @verticalAlign: baseline;
 

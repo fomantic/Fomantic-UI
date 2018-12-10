@@ -36,7 +36,7 @@
 @headerFontWeight: @bold;
 @headerDisplay: block;
 @headerDistance: 0rem;
-@headerMargin: -@headerLineHeightOffset 0em @headerDistance 0em;
+@headerMargin: -@headerLineHeightOffset 0 @headerDistance 0;
 @headerParagraphDistance: 0.25em;
 
 /* Paragraph */
@@ -73,7 +73,7 @@
 /* Attached */
 @attachedXOffset: -1px;
 @attachedYOffset: -1px;
-@attachedBoxShadow: 0em 0em 0em @borderWidth @borderColor inset;
+@attachedBoxShadow: 0 0 0 @borderWidth @borderColor inset;
 @attachedBottomBoxShadow:
   @attachedBoxShadow,
   @subtleShadow

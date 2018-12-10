@@ -23,7 +23,7 @@
 @backfaceVisibility: hidden;
 
 /* Side */
-@sideMargin: 0em;
+@sideMargin: 0;
 
 /*--------------
       Types

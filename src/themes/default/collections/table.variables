@@ -7,7 +7,7 @@
 --------------------*/
 
 @verticalMargin: 1em;
-@horizontalMargin: 0em;
+@horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
 @borderCollapse: separate;
 @borderSpacing: 0;
@@ -201,7 +201,7 @@
 
 /* Colors */
 @coloredBorderSize: 0.2em;
-@coloredBorderRadius: 0em 0em @borderRadius @borderRadius;
+@coloredBorderRadius: 0 0 @borderRadius @borderRadius;
 
 /* Inverted */
 @invertedBackground: #333333;
