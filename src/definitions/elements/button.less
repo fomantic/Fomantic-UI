@@ -35,7 +35,7 @@
 
   font-family: @fontFamily;
 
-  margin: 0em @horizontalMargin @verticalMargin 0em;
+  margin: 0 @horizontalMargin @verticalMargin 0;
   padding: @verticalPadding @horizontalPadding (@verticalPadding + @shadowOffset);
 
   text-transform: @textTransform;
@@ -225,7 +225,7 @@
 .ui.animated.button {
   position: relative;
   overflow: hidden;
-  padding-right: 0em !important;
+  padding-right: 0 !important;
   vertical-align: @animatedVerticalAlign;
   z-index: @animatedZIndex;
 }
@@ -341,13 +341,13 @@
   margin: @invertedGroupButtonOffset;
 }
 .ui.inverted.buttons .button:first-child {
-  margin-left: 0em;
+  margin-left: 0;
 }
 .ui.inverted.vertical.buttons .button {
   margin: @invertedVerticalGroupButtonOffset;
 }
 .ui.inverted.vertical.buttons .button:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 
 /* States */
@@ -642,13 +642,13 @@
 .ui[class*="left floated"].buttons,
 .ui[class*="left floated"].button {
   float: left;
-  margin-left: 0em;
+  margin-left: 0;
   margin-right: @floatedMargin;
 }
 .ui[class*="right floated"].buttons,
 .ui[class*="right floated"].button {
   float: right;
-  margin-right: 0em;
+  margin-right: 0;
   margin-left: @floatedMargin;
 }
 
@@ -769,7 +769,7 @@
 .ui.icon.buttons .button > .icon,
 .ui.icon.button > .icon {
   opacity: @iconButtonOpacity;
-  margin: 0em !important;
+  margin: 0 !important;
   vertical-align: top;
 }
 
@@ -794,7 +794,7 @@
   border-radius: @borderRadius;
 }
 .ui.basic.buttons .button {
-  border-radius: 0em;
+  border-radius: 0;
 }
 
 .ui.basic.buttons .button:hover,
@@ -973,8 +973,8 @@
 .ui.labeled.icon.buttons > .button > .icon,
 .ui.labeled.icon.button > .icon {
   position: absolute;
-  top: 0em;
-  left: 0em;
+  top: 0;
+  left: 0;
   height: 100%;
   line-height: 1;
   border-radius: 0;
@@ -996,7 +996,7 @@
 }
 .ui[class*="right labeled"].icon.button > .icon {
   left: auto;
-  right: 0em;
+  right: 0;
   border-radius: 0;
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
@@ -1017,7 +1017,7 @@
 }
 
 .ui.labeled.icon.buttons .button > .icon {
-  border-radius: 0em;
+  border-radius: 0;
 }
 .ui.labeled.icon.buttons .button:first-child > .icon {
   border-top-left-radius: @borderRadius;
@@ -1028,11 +1028,11 @@
   border-bottom-right-radius: @borderRadius;
 }
 .ui.vertical.labeled.icon.buttons .button:first-child > .icon {
-  border-radius: 0em;
+  border-radius: 0;
   border-top-left-radius: @borderRadius;
 }
 .ui.vertical.labeled.icon.buttons .button:last-child > .icon {
-  border-radius: 0em;
+  border-radius: 0;
   border-bottom-left-radius: @borderRadius;
 }
 
@@ -1119,7 +1119,7 @@
 
 /* Fluid Or */
 .ui.fluid.buttons .or {
-  width: 0em !important;
+  width: 0 !important;
 }
 .ui.fluid.buttons .or:after {
   display: none;
@@ -1135,17 +1135,17 @@
 .ui.attached.button {
   position: relative;
   display: block;
-  margin: 0em;
-  border-radius: 0em;
+  margin: 0;
+  border-radius: 0;
   box-shadow: @attachedBoxShadow !important;
 }
 
 /* Top / Bottom */
 .ui.attached.top.button {
-  border-radius: @borderRadius @borderRadius 0em 0em;
+  border-radius: @borderRadius @borderRadius 0 0;
 }
 .ui.attached.bottom.button {
-  border-radius: 0em 0em @borderRadius @borderRadius;
+  border-radius: 0 0 @borderRadius @borderRadius;
 }
 
 /* Left / Right */
@@ -1155,87 +1155,87 @@
   text-align: right;
 
   padding-right: @attachedHorizontalPadding;
-  border-radius: @borderRadius 0em 0em @borderRadius;
+  border-radius: @borderRadius 0 0 @borderRadius;
 }
 .ui.right.attached.button {
   display: inline-block;
   text-align: left;
   padding-left: @attachedHorizontalPadding;
-  border-radius: 0em @borderRadius @borderRadius 0em;
+  border-radius: 0 @borderRadius @borderRadius 0;
 }
 
 /* Plural */
 .ui.attached.buttons {
   position: relative;
   display: flex;
-  border-radius: 0em;
+  border-radius: 0;
   width: auto !important;
   z-index: @attachedZIndex;
   margin-left: @attachedOffset;
   margin-right: @attachedOffset;
 }
 .ui.attached.buttons .button {
-  margin: 0em;
+  margin: 0;
 }
 .ui.attached.buttons .button:first-child {
-  border-radius: 0em;
+  border-radius: 0;
 }
 .ui.attached.buttons .button:last-child {
-  border-radius: 0em;
+  border-radius: 0;
 }
 
 /* Top / Bottom */
 .ui[class*="top attached"].buttons {
   margin-bottom: @attachedOffset;
-  border-radius: @borderRadius @borderRadius 0em 0em;
+  border-radius: @borderRadius @borderRadius 0 0;
 }
 .ui[class*="top attached"].buttons .button:first-child {
-  border-radius: @borderRadius 0em 0em 0em;
+  border-radius: @borderRadius 0 0 0;
 }
 .ui[class*="top attached"].buttons .button:last-child {
-  border-radius: 0em @borderRadius 0em 0em;
+  border-radius: 0 @borderRadius 0 0;
 }
 
 .ui[class*="bottom attached"].buttons {
   margin-top: @attachedOffset;
-  border-radius: 0em 0em @borderRadius @borderRadius;
+  border-radius: 0 0 @borderRadius @borderRadius;
 }
 .ui[class*="bottom attached"].buttons .button:first-child {
-  border-radius: 0em 0em 0em @borderRadius;
+  border-radius: 0 0 0 @borderRadius;
 }
 .ui[class*="bottom attached"].buttons .button:last-child {
-  border-radius: 0em 0em @borderRadius 0em;
+  border-radius: 0 0 @borderRadius 0;
 }
 
 /* Left / Right */
 .ui[class*="left attached"].buttons {
   display: inline-flex;
-  margin-right: 0em;
+  margin-right: 0;
   margin-left: @attachedOffset;
-  border-radius: 0em @borderRadius @borderRadius 0em;
+  border-radius: 0 @borderRadius @borderRadius 0;
 }
 .ui[class*="left attached"].buttons .button:first-child {
   margin-left: @attachedOffset;
-  border-radius: 0em @borderRadius 0em 0em;
+  border-radius: 0 @borderRadius 0 0;
 }
 .ui[class*="left attached"].buttons .button:last-child {
   margin-left: @attachedOffset;
-  border-radius: 0em 0em @borderRadius 0em;
+  border-radius: 0 0 @borderRadius 0;
 }
 
 .ui[class*="right attached"].buttons {
   display: inline-flex;
-  margin-left: 0em;
+  margin-left: 0;
   margin-right: @attachedOffset;
-  border-radius: @borderRadius 0em 0em @borderRadius;
+  border-radius: @borderRadius 0 0 @borderRadius;
 }
 .ui[class*="right attached"].buttons .button:first-child {
   margin-left: @attachedOffset;
-  border-radius: @borderRadius 0em 0em 0em;
+  border-radius: @borderRadius 0 0 0;
 }
 .ui[class*="right attached"].buttons .button:last-child {
   margin-left: @attachedOffset;
-  border-radius: 0em 0em 0em @borderRadius;
+  border-radius: 0 0 0 @borderRadius;
 }
 
 /*-------------------
@@ -1822,9 +1822,9 @@
 .ui.buttons {
   display: inline-flex;
   flex-direction: row;
-  font-size: 0em;
+  font-size: 0;
   vertical-align: baseline;
-  margin: @verticalMargin @horizontalMargin 0em 0em;
+  margin: @verticalMargin @horizontalMargin 0 0;
 }
 .ui.buttons:not(.basic):not(.inverted) {
   box-shadow: @groupBoxShadow;
@@ -1842,7 +1842,7 @@
 /* Standard Group */
 .ui.buttons .button {
   flex: 1 0 auto;
-  border-radius: 0em;
+  border-radius: 0;
   margin: @groupButtonOffset;
 }
 .ui.buttons > .ui.button:not(.basic):not(.inverted),
@@ -1852,7 +1852,7 @@
 
 .ui.buttons .button:first-child {
   border-left: none;
-  margin-left: 0em;
+  margin-left: 0;
   border-top-left-radius: @borderRadius;
   border-bottom-left-radius: @borderRadius;
 }
@@ -1872,7 +1872,7 @@
   width: 100%;
   margin: @verticalGroupOffset;
   box-shadow: @verticalBoxShadow;
-  border-radius: 0em;
+  border-radius: 0;
 }
 .ui.vertical.buttons .button:first-child {
   border-top-left-radius: @borderRadius;

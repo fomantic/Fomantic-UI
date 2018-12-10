@@ -313,7 +313,7 @@
   background: @attachedBackground;
   position: relative;
   border: none;
-  margin: 0em;
+  margin: 0;
 }
 .ui.progress.attached,
 .ui.progress.attached .bar {
@@ -321,20 +321,20 @@
   height: @attachedHeight;
   padding: 0;
   overflow: hidden;
-  border-radius: 0em 0em @attachedBorderRadius @attachedBorderRadius;
+  border-radius: 0 0 @attachedBorderRadius @attachedBorderRadius;
 }
 .ui.progress.attached .bar {
-  border-radius: 0em;
+  border-radius: 0;
 }
 
 /* top attached */
 .ui.progress.top.attached,
 .ui.progress.top.attached .bar {
   top: 0;
-  border-radius: @attachedBorderRadius @attachedBorderRadius 0em 0em;
+  border-radius: @attachedBorderRadius @attachedBorderRadius 0 0;
 }
 .ui.progress.top.attached .bar {
-  border-radius: 0em;
+  border-radius: 0;
 }
 
 /* Coupling */

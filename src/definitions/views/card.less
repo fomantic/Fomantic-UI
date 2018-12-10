@@ -53,10 +53,10 @@
 }
 
 .ui.card:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 .ui.card:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -99,13 +99,13 @@
 
 .ui.cards > .card > :first-child,
 .ui.card > :first-child {
-  border-radius: @borderRadius @borderRadius 0em 0em !important;
+  border-radius: @borderRadius @borderRadius 0 0 !important;
   border-top: none !important;
 }
 
 .ui.cards > .card > :last-child,
 .ui.card > :last-child {
-  border-radius: 0em 0em @borderRadius @borderRadius !important;
+  border-radius: 0 0 @borderRadius @borderRadius !important;
 }
 
 .ui.cards > .card > :only-child,
@@ -255,11 +255,11 @@
 
 .ui.cards > .card > .content p,
 .ui.card > .content p {
-  margin: 0em 0em @paragraphDistance;
+  margin: 0 0 @paragraphDistance;
 }
 .ui.cards > .card > .content p:last-child,
 .ui.card > .content p:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -277,12 +277,12 @@
 }
 .ui.cards > .card .meta :last-child,
 .ui.card .meta :last-child {
-  margin-right: 0em;
+  margin-right: 0;
 }
 
 .ui.cards > .card .meta [class*="right floated"],
 .ui.card .meta [class*="right floated"] {
-  margin-right: 0em;
+  margin-right: 0;
   margin-left: @metaSpacing;
 }
 
@@ -392,7 +392,7 @@
 .ui.cards > .card > .extra,
 .ui.card > .extra {
   max-width: 100%;
-  min-height: 0em !important;
+  min-height: 0 !important;
   flex-grow: 0;
   border-top: @extraDivider !important;
   position: @extraPosition;
@@ -1107,7 +1107,7 @@ a.ui.card:hover,
     display: block !important;
   }
   .ui.stackable.cards .card:first-child {
-    margin-top: 0em !important;
+    margin-top: 0 !important;
   }
   .ui.stackable.cards > .card {
     display: block !important;

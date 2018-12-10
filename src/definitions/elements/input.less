@@ -35,7 +35,7 @@
   color: @inputColor;
 }
 .ui.input > input {
-  margin: 0em;
+  margin: 0;
   max-width: 100%;
   flex: 1 0 auto;
   outline: none;
@@ -214,7 +214,7 @@
 .ui.transparent.input > input {
   border-color: transparent !important;
   background-color: transparent !important;
-  padding: 0em !important;
+  padding: 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
 }
@@ -224,12 +224,12 @@
   width: @transparentIconWidth;
 }
 .ui.transparent.icon.input > input {
-  padding-left: 0em !important;
+  padding-left: 0 !important;
   padding-right: @transparentIconMargin !important;
 }
 .ui.transparent[class*="left icon"].input > input {
   padding-left: @transparentIconMargin !important;
-  padding-right: 0em !important;
+  padding-right: 0 !important;
 }
 
 /* Transparent Inverted */
@@ -262,12 +262,12 @@
   text-align: center;
   top: 0;
   right: 0;
-  margin: 0em;
+  margin: 0;
   height: 100%;
 
   width: @iconWidth;
   opacity: @iconOpacity;
-  border-radius: 0em @borderRadius @borderRadius 0em;
+  border-radius: 0 @borderRadius @borderRadius 0;
   transition: @iconTransition;
 }
 .ui.icon.input > i.icon:not(.link) {
@@ -299,7 +299,7 @@
 .ui[class*="left icon"].input > i.icon {
   right: auto;
   left: @borderWidth;
-  border-radius: @borderRadius 0em 0em @borderRadius;
+  border-radius: @borderRadius 0 0 @borderRadius;
 }
 .ui[class*="left icon"].input > i.circular.icon {
   right: auto;
@@ -366,7 +366,7 @@
   top: @labelCornerTop;
   right: @labelCornerRight;
   font-size: @labelCornerSize;
-  border-radius: 0em @borderRadius 0em 0em;
+  border-radius: 0 @borderRadius 0 0;
 }
 
 /* Spacing with corner label */
