@@ -162,6 +162,10 @@ $.fn.slider = function(parameters) {
               } else {
                 module.setup.autoLabel();
               }
+
+              if (!settings.showLabelTicks) {
+                $module.find('.labels').addClass(settings.className.noticks)
+              }
             }
           },
           testOutTouch: function() {
@@ -1167,6 +1171,7 @@ $.fn.slider.settings = {
   start          : 0,
   end            : 20,
   labelType      : 'number',
+  showLabelTicks : false,
   smooth         : false,
 
   //the decimal place to round to if step is undefined
@@ -1183,6 +1188,7 @@ $.fn.slider.settings = {
     reversed : 'reversed',
     disabled : 'disabled',
     labeled  : 'labeled',
+    noticks  : 'noticks',
     vertical : 'vertical',
     range    : 'range',
     smooth   : 'smooth'
