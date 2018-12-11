@@ -221,7 +221,11 @@ $.fn.checkbox = function(parameters) {
               checkIndex = rIndex === rLen-1 ? 0 : rIndex+1;
             }
 
-            if (checkIndex !== false) {
+            if (!module.should.ignoreCallbacks() && checkIndex !== false) {
+              if(!settings.beforeUnchecked.apply(input)) {
+                module.verbose('Option not allowed to be unchecked, cancelling key navigation');
+                return false;
+              }
               if (!settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0])) {
                 module.verbose('Next option should not allow check, cancelling key navigation');
                 return false;
