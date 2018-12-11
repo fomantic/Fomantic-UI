@@ -3597,11 +3597,27 @@ $.fn.dropdown = function(parameters) {
             text =  String(text);
             return text.replace(regExp.escape, '\\$&');
           },
-          htmlEntities: function(text){
-             return text.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
-               return '&#'+i.charCodeAt(0)+';';
-             });
-           }
+          htmlEntities: function(string) {
+              var
+                  badChars     = /[&<>"'`]/g,
+                  shouldEscape = /[&<>"'`]/,
+                  escape       = {
+                      "&": "&amp;",
+                      "<": "&lt;",
+                      ">": "&gt;",
+                      '"': "&quot;",
+                      "'": "&#x27;",
+                      "`": "&#x60;"
+                  },
+                  escapedChar  = function(chr) {
+                      return escape[chr];
+                  }
+              ;
+              if(shouldEscape.test(string)) {
+                  return string.replace(badChars, escapedChar);
+              }
+              return string;
+          }
         },
 
         setting: function(name, value) {
