@@ -745,7 +745,11 @@ $.fn.dropdown = function(parameters) {
                 if(settings.filterRemoteData) {
                   module.filterItems(searchTerm);
                 }
-                $.each($input.val(),function(index,value){
+                var preSelected = $input.val();
+                if(!Array.isArray(preSelected)) {
+                    preSelected = preSelected!=="" ? preSelected.split(",") : [];
+                }
+                $.each(preSelected,function(index,value){
                   $item.filter('[data-value="'+value+'"]')
                       .addClass(className.filtered)
                   ;
