@@ -852,7 +852,7 @@
 
 /* Flash */
 @keyframes flash {
-  0, 50%, 100% {
+  0%, 50%, 100% {
     opacity: 1;
   }
   25%, 75% {
@@ -862,7 +862,7 @@
 
 /* Shake */
 @keyframes shake {
-  0, 100% {
+  0%, 100% {
     transform: translateX(0);
   }
   10%, 30%, 50%, 70%, 90% {
@@ -875,7 +875,7 @@
 
 /* Bounce */
 @keyframes bounce {
-  0, 20%, 50%, 80%, 100% {
+  0%, 20%, 50%, 80%, 100% {
     transform: translateY(0);
   }
   40% {
