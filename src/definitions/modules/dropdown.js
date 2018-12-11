@@ -747,7 +747,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 var preSelected = $input.val();
                 if(!Array.isArray(preSelected)) {
-                    preSelected = preSelected!=="" ? preSelected.split(",") : [];
+                    preSelected = preSelected!=="" ? preSelected.split(settings.delimiter) : [];
                 }
                 $.each(preSelected,function(index,value){
                   $item.filter('[data-value="'+value+'"]')
