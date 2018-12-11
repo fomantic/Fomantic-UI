@@ -729,7 +729,7 @@ $.fn.dropdown = function(parameters) {
                 module.remove.message();
               }
               if(settings.allowAdditions) {
-                module.add.userSuggestion(query);
+                module.add.userSuggestion(module.escape.htmlEntities(query));
               }
               if(module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() ) {
                 module.show();
@@ -3596,7 +3596,12 @@ $.fn.dropdown = function(parameters) {
           string: function(text) {
             text =  String(text);
             return text.replace(regExp.escape, '\\$&');
-          }
+          },
+          htmlEntities: function(text){
+             return text.replace(/[\u00A0-\u9999<>\&]/g, function(i) {
+               return '&#'+i.charCodeAt(0)+';';
+             });
+           }
         },
 
         setting: function(name, value) {
