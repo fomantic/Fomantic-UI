@@ -30,7 +30,7 @@
 
 /* In */
 @keyframes browseIn {
-  0 {
+  0% {
     transform: scale(0.8) translateZ(0px);
     z-index: -1;
   }
@@ -52,7 +52,7 @@
 
 /* Out */
 @keyframes browseOutLeft {
-  0 {
+  0% {
     z-index: 999;
     transform: translateX(0%) rotateY(0deg) rotateX(0deg);
   }
@@ -70,7 +70,7 @@
   }
 }
 @keyframes browseOutRight {
-  0 {
+  0% {
     z-index: 999;
     transform: translateX(0%) rotateY(0deg) rotateX(0deg);
   }
@@ -107,7 +107,7 @@
 
 /* Drop */
 @keyframes dropIn {
-  0 {
+  0% {
     opacity: 0;
     transform: scale(0);
   }
@@ -117,7 +117,7 @@
   }
 }
 @keyframes dropOut {
-  0 {
+  0% {
     opacity: 1;
     transform: scale(1);
   }
@@ -165,7 +165,7 @@
 
 /* In */
 @keyframes fadeIn {
-  0 {
+  0% {
     opacity: 0;
   }
   100% {
@@ -173,7 +173,7 @@
   }
 }
 @keyframes fadeInUp {
-  0 {
+  0% {
     opacity: 0;
     transform: translateY(10%);
   }
@@ -183,7 +183,7 @@
   }
 }
 @keyframes fadeInDown {
-  0 {
+  0% {
     opacity: 0;
     transform: translateY(-10%);
   }
@@ -193,7 +193,7 @@
   }
 }
 @keyframes fadeInLeft {
-  0 {
+  0% {
     opacity: 0;
     transform: translateX(10%);
   }
@@ -203,7 +203,7 @@
   }
 }
 @keyframes fadeInRight {
-  0 {
+  0% {
     opacity: 0;
     transform: translateX(-10%);
   }
@@ -215,7 +215,7 @@
 
 /* Out */
 @keyframes fadeOut {
-  0 {
+  0% {
     opacity: 1;
   }
   100% {
@@ -223,7 +223,7 @@
   }
 }
 @keyframes fadeOutUp {
-  0 {
+  0% {
     opacity: 1;
     transform: translateY(0%);
   }
@@ -233,7 +233,7 @@
   }
 }
 @keyframes fadeOutDown {
-  0 {
+  0% {
     opacity: 1;
     transform: translateY(0%);
   }
@@ -243,7 +243,7 @@
   }
 }
 @keyframes fadeOutLeft {
-  0 {
+  0% {
     opacity: 1;
     transform: translateX(0%);
   }
@@ -253,7 +253,7 @@
   }
 }
 @keyframes fadeOutRight {
-  0 {
+  0% {
     opacity: 1;
     transform: translateX(0%);
   }
@@ -286,7 +286,7 @@
 
 /* In */
 @keyframes horizontalFlipIn {
-  0 {
+  0% {
     transform: perspective(2000px) rotateY(-90deg);
     opacity: 0;
   }
@@ -296,7 +296,7 @@
   }
 }
 @keyframes verticalFlipIn {
-  0 {
+  0% {
     transform: perspective(2000px) rotateX(-90deg);
     opacity: 0;
   }
@@ -308,7 +308,7 @@
 
 /* Out */
 @keyframes horizontalFlipOut {
-  0 {
+  0% {
     transform: perspective(2000px) rotateY(0deg);
     opacity: 1;
   }
@@ -318,7 +318,7 @@
   }
 }
 @keyframes verticalFlipOut {
-  0 {
+  0% {
     transform: perspective(2000px) rotateX(0deg);
     opacity: 1;
   }
@@ -340,7 +340,7 @@
 }
 
 @keyframes scaleIn {
-  0 {
+  0% {
     opacity: 0;
     transform: scale(0.8);
   }
@@ -352,7 +352,7 @@
 
 /* Out */
 @keyframes scaleOut {
-  0 {
+  0% {
     opacity: 1;
     transform: scale(1);
   }
@@ -407,7 +407,7 @@
 
 /* In */
 @keyframes flyIn {
-  0 {
+  0% {
     opacity: 0;
     transform: scale3d(.3, .3, .3);
   }
@@ -430,7 +430,7 @@
   }
 }
 @keyframes flyInUp {
-  0 {
+  0% {
     opacity: 0;
     transform: translate3d(0, 1500px, 0);
   }
@@ -449,7 +449,7 @@
   }
 }
 @keyframes flyInDown {
-  0 {
+  0% {
     opacity: 0;
     transform: translate3d(0, -1500px, 0);
   }
@@ -468,7 +468,7 @@
   }
 }
 @keyframes flyInLeft {
-  0 {
+  0% {
     opacity: 0;
     transform: translate3d(1500px, 0, 0);
   }
@@ -487,7 +487,7 @@
   }
 }
 @keyframes flyInRight {
-  0 {
+  0% {
     opacity: 0;
     transform: translate3d(-1500px, 0, 0);
   }
@@ -609,7 +609,7 @@
 
 /* In */
 @keyframes slideInY {
-  0 {
+  0% {
     opacity: 0;
     transform: scaleY(0);
   }
@@ -619,7 +619,7 @@
   }
 }
 @keyframes slideInX {
-  0 {
+  0% {
     opacity: 0;
     transform: scaleX(0);
   }
@@ -631,7 +631,7 @@
 
 /* Out */
 @keyframes slideOutY {
-  0 {
+  0% {
     opacity: 1;
     transform: scaleY(1);
   }
@@ -641,7 +641,7 @@
   }
 }
 @keyframes slideOutX {
-  0 {
+  0% {
     opacity: 1;
     transform: scaleX(1);
   }
@@ -697,7 +697,7 @@
 
 /* In */
 @keyframes swingInX {
-  0 {
+  0% {
     transform: perspective(1000px) rotateX(90deg);
     opacity: 0;
   }
@@ -716,7 +716,7 @@
   }
 }
 @keyframes swingInY {
-  0 {
+  0% {
     transform: perspective(1000px) rotateY(-90deg);
     opacity: 0;
   }
@@ -737,7 +737,7 @@
 
 /* Out */
 @keyframes swingOutX {
-  0 {
+  0% {
     transform: perspective(1000px) rotateX(0deg);
   }
   40% {
@@ -756,7 +756,7 @@
   }
 }
 @keyframes swingOutY {
-  0 {
+  0% {
     transform: perspective(1000px) rotateY(0deg);
   }
   40% {
@@ -787,7 +787,7 @@
   animation-name: zoomOut;
 }
 @keyframes zoomIn {
-  0 {
+  0% {
     opacity: 1;
     transform: scale(0);
   }
@@ -797,7 +797,7 @@
   }
 }
 @keyframes zoomOut {
-  0 {
+  0% {
     opacity: 1;
     transform: scale(1);
   }
@@ -888,7 +888,7 @@
 
 /* Tada */
 @keyframes tada {
-  0 {
+  0% {
     transform: scale(1);
   }
   10%, 20% {
@@ -907,7 +907,7 @@
 
 /* Pulse */
 @keyframes pulse {
-  0 {
+  0% {
     transform: scale(1);
     opacity: 1;
   }
@@ -924,7 +924,7 @@
 
 /* Jiggle */
 @keyframes jiggle {
-  0 {
+  0% {
     transform: scale3d(1, 1, 1);
   }
   30% {
@@ -949,7 +949,7 @@
 
 /* Glow */
 @keyframes glow {
-  0 {
+  0% {
     background-color: #FCFCFD;
   }
   30% {
