@@ -792,7 +792,7 @@ $.fn.dropdown = function(parameters) {
                   values: values
                 });
 
-                if(values.length===0) {
+                if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
                 }
                 callback();
@@ -4009,7 +4009,7 @@ $.fn.dropdown.settings.templates = {
   // generates just menu from select
   menu: function(response, fields) {
     var
-      values = response[fields.values] || {},
+      values = response[fields.values] || [],
       html   = ''
     ;
     $.each(values, function(index, option) {
