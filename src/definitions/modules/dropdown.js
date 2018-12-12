@@ -373,7 +373,7 @@ $.fn.dropdown = function(parameters) {
                 .attr('class', $input.attr('class') )
                 .addClass(className.selection)
                 .addClass(className.dropdown)
-                .html( templates.dropdown(selectValues) )
+                .html( templates.dropdown(selectValues,settings.preserveHTML) )
                 .insertBefore($input)
               ;
               if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -396,7 +396,7 @@ $.fn.dropdown = function(parameters) {
             module.refresh();
           },
           menu: function(values) {
-            $menu.html( templates.menu(values, fields));
+            $menu.html( templates.menu(values, fields,settings.preserveHTML));
             $item    = $menu.find(selector.item);
             $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
           },
@@ -2693,7 +2693,7 @@ $.fn.dropdown = function(parameters) {
             $label =  $('<a />')
               .addClass(className.label)
               .attr('data-' + metadata.value, escapedValue)
-              .html(templates.label(escapedValue, text))
+              .html(templates.label(escapedValue, text, settings.preserveHTML))
             ;
             $label = settings.onLabelCreate.call($label, escapedValue, text);
 
@@ -4000,26 +4000,50 @@ $.fn.dropdown.settings = {
 
 /* Templates */
 $.fn.dropdown.settings.templates = {
-
+  escape: function(string, preserveHTML) {
+    if (preserveHTML){
+      return string;
+    }
+    var
+        badChars     = /[&<>"'`]/g,
+        shouldEscape = /[&<>"'`]/,
+        escape       = {
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          '"': "&quot;",
+          "'": "&#x27;",
+          "`": "&#x60;"
+        },
+        escapedChar  = function(chr) {
+          return escape[chr];
+        }
+    ;
+    if(shouldEscape.test(string)) {
+      return string.replace(badChars, escapedChar);
+    }
+    return string;
+  },
   // generates dropdown from select values
-  dropdown: function(select) {
+  dropdown: function(select, preserveHTML) {
     var
       placeholder = select.placeholder || false,
-      values      = select.values || {},
-      html        = ''
+      values      = select.values || [],
+      html        = '',
+      escape = $.fn.dropdown.settings.templates.escape
     ;
     html +=  '<i class="dropdown icon"></i>';
-    if(select.placeholder) {
-      html += '<div class="default text">' + placeholder + '</div>';
+    if(placeholder) {
+      html += '<div class="default text">' + escape(placeholder,preserveHTML) + '</div>';
     }
     else {
       html += '<div class="text"></div>';
     }
     html += '<div class="menu">';
-    $.each(select.values, function(index, option) {
+    $.each(values, function(index, option) {
       html += (option.disabled)
-        ? '<div class="disabled item" data-value="' + option.value + '">' + option.name + '</div>'
-        : '<div class="item" data-value="' + option.value + '">' + option.name + '</div>'
+        ? '<div class="disabled item" data-value="' + option.value.replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>'
+        : '<div class="item" data-value="' + option.value.replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>'
       ;
     });
     html += '</div>';
@@ -4027,10 +4051,11 @@ $.fn.dropdown.settings.templates = {
   },
 
   // generates just menu from select
-  menu: function(response, fields) {
+  menu: function(response, fields, preserveHTML) {
     var
       values = response[fields.values] || {},
-      html   = ''
+      html   = '',
+      escape = $.fn.dropdown.settings.templates.escape
     ;
     $.each(values, function(index, option) {
       var
@@ -4048,12 +4073,12 @@ $.fn.dropdown.settings.templates = {
             ? 'disabled '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value] + '"' + maybeText + '>';
-        html +=   option[fields.name];
+        html += '<div class="'+ maybeDisabled +'item" data-value="' + option[fields.value].replace(/"/g,"") + '"' + maybeText + '>';
+        html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
         html += '<div class="header">';
-        html +=   option[fields.name];
+        html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       }
     });
@@ -4061,8 +4086,10 @@ $.fn.dropdown.settings.templates = {
   },
 
   // generates label for multiselect
-  label: function(value, text) {
-    return text + '<i class="delete icon"></i>';
+  label: function(value, text, preserveHTML) {
+    var
+        escape = $.fn.dropdown.settings.templates.escape;
+    return escape(text,preserveHTML) + '<i class="delete icon"></i>';
   },
 
 
