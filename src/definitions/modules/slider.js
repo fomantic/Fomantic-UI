@@ -163,8 +163,8 @@ $.fn.slider = function(parameters) {
                 module.setup.autoLabel();
               }
 
-              if (!settings.showLabelTicks) {
-                $module.find('.labels').addClass(settings.className.noticks)
+              if (settings.showLabelTicks) {
+                $module.addClass(className.ticked)
               }
             }
           },
@@ -1188,7 +1188,7 @@ $.fn.slider.settings = {
     reversed : 'reversed',
     disabled : 'disabled',
     labeled  : 'labeled',
-    noticks  : 'noticks',
+    ticked   : 'ticked',
     vertical : 'vertical',
     range    : 'range',
     smooth   : 'smooth'
