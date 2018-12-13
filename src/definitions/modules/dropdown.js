@@ -4055,7 +4055,7 @@ $.fn.dropdown.settings.templates = {
   menu: function(response, fields, preserveHTML) {
     var
       values = response[fields.values] || [],
-      html   = ''
+      html   = '',
       escape = $.fn.dropdown.settings.templates.escape
     ;
     $.each(values, function(index, option) {
