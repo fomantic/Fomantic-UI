@@ -344,13 +344,18 @@
 .ui.elastic.loading.loading.loading:before,
 .ui.elastic.loading.loading.loading .input > i.icon:before,
 .ui.elastic.loading.loading.loading > i.icon:before,
-.ui.loading.loading.loading.loading:not(.usual):not(.button):after,
+.ui.loading.loading.loading.loading:not(.usual):after,
 .ui.loading.loading.loading.loading .input > i.icon:after,
 .ui.loading.loading.loading.loading > i.icon:after,
 .ui.loader.loader.loader:after {
   border-color: currentColor;
 }
-
+.ui.elastic.loading.loading.loading.loading.button:not(.inverted):before {
+  color: @white;
+}
+.ui.double.loading.loading.loading.loading.button:after {
+  border-bottom-color: currentColor;
+}
 /*-------------------
        Inline
 --------------------*/
