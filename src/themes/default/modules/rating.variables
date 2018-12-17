@@ -33,8 +33,6 @@
 
 @shadowWidth: 1px;
 
-@inactiveTextShadow: none;
-
 
 /*-------------------
         States
