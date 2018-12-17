@@ -786,16 +786,17 @@ $.fn.dropdown = function(parameters) {
               },
               onSuccess : function(response) {
                 var
-                  values          = response[fields.remoteValues],
-                  hasRemoteValues = (Array.isArray(values) && values.length > 0)
+                  values          = response[fields.remoteValues]
                 ;
-                if(hasRemoteValues) {
-                  module.remove.message();
-                  module.setup.menu({
-                    values: response[fields.remoteValues]
-                  });
+                if (!Array.isArray(values)){
+                    values = [];
                 }
-                else {
+                module.remove.message();
+                module.setup.menu({
+                  values: values
+                });
+
+                if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
                 }
                 callback();
@@ -4057,7 +4058,7 @@ $.fn.dropdown.settings.templates = {
   // generates just menu from select
   menu: function(response, fields, preserveHTML) {
     var
-      values = response[fields.values] || {},
+      values = response[fields.values] || [],
       html   = '',
       escape = $.fn.dropdown.settings.templates.escape
     ;
