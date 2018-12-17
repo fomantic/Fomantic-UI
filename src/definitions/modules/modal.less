@@ -40,8 +40,10 @@
   will-change: top, left, margin, transform, opacity;
 }
 
-.ui.modal > :first-child:not(.icon),
-.ui.modal > .icon:first-child + * {
+.ui.modal > :first-child:not(.icon):not(.dimmer),
+.ui.modal > .icon:first-child + *,
+.ui.modal > .dimmer:first-child + *:not(.icon),
+.ui.modal > .dimmer:first-child + .icon + * {
   border-top-left-radius: @borderRadius;
   border-top-right-radius: @borderRadius;
 }
