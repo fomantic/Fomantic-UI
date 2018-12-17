@@ -203,7 +203,7 @@
 /* Divided */
 @celledBorderWidth: 1px;
 @celledBorder: @celledBorderWidth solid @borderColor;
-@celledInvertedBorder: @dividedBorderWidth solid @whiteBorderColor;
+@celledInvertedBorder: @whiteBorderColor;
 @celledHorizontalPadding: 0.5em;
 @celledChildListBorder: none;
 @celledChildItemBorder: none;

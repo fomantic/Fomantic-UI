@@ -12,6 +12,10 @@
 
 'use strict';
 
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
+
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
   : (typeof self != 'undefined' && self.Math == Math)
@@ -252,7 +256,9 @@ $.fn.modal = function(parameters) {
             });
           },
           preventScroll: function(event) {
-            event.preventDefault();
+            if(event.target.className.indexOf('dimmer') !== -1) {
+              event.preventDefault();
+            }
           },
           deny: function() {
             if(ignoreRepeatedEvents || settings.onDeny.call(element, $(this)) === false) {
@@ -290,15 +296,17 @@ $.fn.modal = function(parameters) {
               isInModal = ($target.closest(selector.modal).length > 0),
               isInDOM   = $.contains(document.documentElement, event.target)
             ;
-            if(!isInModal && isInDOM && module.is.active()) {
+            if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.top) ) {
               module.debug('Dimmer clicked, hiding all modals');
-              module.remove.clickaway();
               if(settings.allowMultiple) {
-                module.hideAll();
+                if(!module.hideAll()) {
+                  return;
+                }
               }
-              else {
-                module.hide();
+              else if(!module.hide()){
+                  return;
               }
+              module.remove.clickaway();
             }
           },
           debounce: function(method, delay) {
@@ -357,7 +365,7 @@ $.fn.modal = function(parameters) {
             : function(){}
           ;
           module.refreshModals();
-          module.hideModal(callback);
+          return module.hideModal(callback);
         },
 
         showModal: function(callback) {
@@ -386,7 +394,7 @@ $.fn.modal = function(parameters) {
             else {
               if( settings.allowMultiple ) {
                 if ( module.others.active() ) {
-                  $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active')
+                  $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
                 }
 
                 if ( settings.detachable ) {
@@ -439,7 +447,7 @@ $.fn.modal = function(parameters) {
           module.debug('Hiding modal');
           if(settings.onHide.call(element, $(this)) === false) {
             module.verbose('Hide callback returned false cancelling hide');
-            return;
+            return false;
           }
 
           if( module.is.animating() || module.is.active() ) {
@@ -461,15 +469,16 @@ $.fn.modal = function(parameters) {
                     }
                   },
                   onComplete : function() {
+                    module.unbind.scrollLock();
                     if ( settings.allowMultiple ) {
                       $previousModal.addClass(className.top);
                       $module.removeClass(className.top);
       
                       if ( hideOthersToo ) {
-                        $allModals.find(selector.dimmer).removeClass('active')
+                        $allModals.find(selector.dimmer).removeClass('active');
                       }
                       else {
-                        $previousModal.find(selector.dimmer).removeClass('active')
+                        $previousModal.find(selector.dimmer).removeClass('active');
                       }
                     }
                     settings.onHidden.call(element);
@@ -520,10 +529,17 @@ $.fn.modal = function(parameters) {
           ;
           if( $visibleModals.length > 0 ) {
             module.debug('Hiding all visible modals');
-            module.hideDimmer();
-            $visibleModals
-              .modal('hide modal', callback, false, true)
-            ;
+            var hideOk = true;
+//check in reverse order trying to hide most top displayed modal first
+            $($visibleModals.get().reverse()).each(function(index,element){
+                if(hideOk){
+                    hideOk = $(element).modal('hide modal', callback, false, true);
+                }
+            });
+            if(hideOk) {
+              module.hideDimmer();
+            }
+            return hideOk;
           }
         },
 
@@ -790,7 +806,7 @@ $.fn.modal = function(parameters) {
           },
           active: function() {
             $module.addClass(className.active + ' ' + className.top);
-            $otherModals.filter('.' + className.active).removeClass(className.top)
+            $otherModals.filter('.' + className.active).removeClass(className.top);
           },
           scrolling: function() {
             $dimmable.addClass(className.scrolling);
@@ -967,7 +983,7 @@ $.fn.modal = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

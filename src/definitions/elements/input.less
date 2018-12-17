@@ -273,6 +273,7 @@
 .ui.icon.input > i.icon:not(.link) {
   pointer-events: none;
 }
+.ui.icon.input > textarea,
 .ui.icon.input > input {
   padding-right: @iconMargin !important;
 }
@@ -304,12 +305,14 @@
   right: auto;
   left: @circularIconHorizontalOffset;
 }
+.ui[class*="left icon"].input > textarea,
 .ui[class*="left icon"].input > input {
   padding-left: @iconMargin !important;
   padding-right: @horizontalPadding !important;
 }
 
 /* Focus */
+.ui.icon.input > textarea:focus ~ i.icon,
 .ui.icon.input > input:focus ~ i.icon {
   opacity: 1;
 }
@@ -367,9 +370,11 @@
 }
 
 /* Spacing with corner label */
+.ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > textarea,
 .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > input {
   padding-right: @labeledMargin !important;
 }
+.ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > textarea,
 .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
   padding-right: @labeledIconInputMargin !important;
 }
@@ -378,14 +383,19 @@
 }
 
 /* Left Labeled */
+.ui[class*="left corner labeled"].labeled.input > textarea,
 .ui[class*="left corner labeled"].labeled.input > input {
   padding-left: @labeledMargin !important;
 }
+.ui[class*="left corner labeled"].icon.input > textarea,
 .ui[class*="left corner labeled"].icon.input > input {
   padding-left: @labeledIconInputMargin !important;
 }
 .ui[class*="left corner labeled"].icon.input > .icon {
   margin-left: @labeledIconMargin;
+}
+.ui.icon.input > textarea ~ .icon {
+  height: @textareaIconHeight;
 }
 
 /* Corner Label Position  */
@@ -396,6 +406,21 @@
 .ui.input > .ui.left.corner.label {
   right: auto;
   left: @borderWidth;
+}
+
+/* Labeled input error */
+.ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
+  border-top: @borderWidth solid @errorBorder;
+  border-bottom: @borderWidth solid @errorBorder;
+}
+.ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
+  border-left: @borderWidth solid @errorBorder;
+}
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
+  border-right: @borderWidth solid @errorBorder;
+}
+.ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
+  border-left: @borderWidth solid @errorBorder;
 }
 
 
