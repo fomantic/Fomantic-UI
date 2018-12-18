@@ -2,7 +2,6 @@ workflow "build test" {
   on = "push"
   resolves = [
     "ls dist",
-    "cat semantic.json",
   ]
 }
 
@@ -13,7 +12,7 @@ action "preinstall" {
 }
 
 action "install dependencies" {
-  uses = "actions/npm@6309cd9"
+  uses = "docker://node:8"
   needs = ["preinstall"]
   runs = "npm"
   args = "install"
@@ -31,18 +30,4 @@ action "ls dist" {
   needs = ["gulp build"]
   runs = "ls"
   args = "-la dist/"
-}
-
-action "ls project directory" {
-  uses = "docker://node:8"
-  needs = ["preinstall"]
-  runs = "ls"
-  args = "-la"
-}
-
-action "cat semantic.json" {
-  uses = "docker://node:8"
-  needs = ["ls project directory"]
-  runs = "cat"
-  args = "semantic.json"
 }
