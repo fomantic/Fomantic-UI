@@ -29,7 +29,7 @@ var
   del            = require('del'),
   jsonEditor     = require('gulp-json-editor'),
   plumber        = require('gulp-plumber'),
-  prompt         = require('prompt-sui'),
+  inquirer       = require('inquirer'),
   rename         = require('gulp-rename'),
   replace        = require('gulp-replace'),
   requireDotFile = require('require-dot-file'),
@@ -200,13 +200,11 @@ module.exports = function (callback) {
       };
       callback();
     } else {
-      return gulp
-        .src('gulpfile.js')
-        .pipe(prompt.prompt(questions.setup, function (setupAnswers) {
+      return inquirer.prompt(questions.setup)
+        .then((setupAnswers) => {
           // hoist
           answers = setupAnswers;
-        }))
-        ;
+        });
     }
   });
 
@@ -421,9 +419,9 @@ module.exports = function (callback) {
       if (install.shouldAutoInstall()) {
         gulp.series('build')(callback);
       } else {
-        gulp
-          .src('gulpfile.js')
-          .pipe(prompt.prompt(questions.cleanup, function (answers) {
+        // We don't return the inquirer promise on purpose because we handle the callback ourselves
+        inquirer.prompt(questions.cleanup)
+          .then((answers) => {
             if (answers.cleanup === 'yes') {
               del(install.setupFiles);
             }
@@ -432,8 +430,7 @@ module.exports = function (callback) {
             } else {
               callback();
             }
-          }))
-        ;
+          });
       }
     }
   });
