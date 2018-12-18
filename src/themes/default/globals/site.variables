@@ -131,7 +131,7 @@
       Paragraph
 --------------------*/
 
-@paragraphMargin     : 0em 0em 1em;
+@paragraphMargin     : 0 0 1em;
 @paragraphLineHeight : @lineHeight;
 
 /*-------------------
@@ -153,7 +153,7 @@
 @customScrollbarHeight: 10px;
 
 @trackBackground: rgba(0, 0, 0, 0.1);
-@trackBorderRadius: 0px;
+@trackBorderRadius: 0;
 
 @thumbBorderRadius: 5px;
 @thumbBackground: rgba(0, 0, 0, 0.25);
@@ -332,11 +332,11 @@
 
 /* Differentiating Layers */
 @subtleShadow:
-  0px 1px 2px 0 @borderColor
+  0 1px 2px 0 @borderColor
 ;
 @floatingShadow:
-  0px 2px 4px 0px rgba(34, 36, 38, 0.12),
-  0px 2px 10px 0px rgba(34, 36, 38, 0.15)
+  0 2px 4px 0 rgba(34, 36, 38, 0.12),
+  0 2px 10px 0 rgba(34, 36, 38, 0.15)
 ;
 
 /*******************************
@@ -496,7 +496,7 @@
 
 /* Loaders Position Offset */
 @loaderOffset : -(@loaderSize / 2);
-@loaderMargin : @loaderOffset 0em 0em @loaderOffset;
+@loaderMargin : @loaderOffset 0 0 @loaderOffset;
 
 /* Rendered Scrollbar Width */
 @scrollbarWidth: 17px;
@@ -511,7 +511,7 @@
 /* Header Spacing */
 @headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));
 @headerBottomMargin : 1rem;
-@headerMargin       : @headerTopMargin 0em @headerBottomMargin;
+@headerMargin       : @headerTopMargin 0 @headerBottomMargin;
 
 /* Minimum Mobile Width */
 @pageMinWidth       : 320px;
@@ -734,8 +734,8 @@
 
 /*---  Shadows  ---*/
 @floatingShadowHover:
-  0px 2px 4px 0px rgba(34, 36, 38, 0.15),
-  0px 2px 10px 0px rgba(34, 36, 38, 0.25)
+  0 2px 4px 0 rgba(34, 36, 38, 0.15),
+  0 2px 10px 0 rgba(34, 36, 38, 0.25)
 ;
 
 /*---  Colors  ---*/

@@ -11,17 +11,17 @@
 @rowDistance: 1em;
 
 /* Text */
-@paragraphMargin: @rowDistance 0em;
+@paragraphMargin: @rowDistance 0;
 
 /* Field */
-@fieldMargin: 0em 0em @rowDistance;
+@fieldMargin: 0 0 @rowDistance;
 
 /* Fields */
-@fieldsMargin: 0em -(@gutterWidth / 2) @rowDistance;
+@fieldsMargin: 0 -(@gutterWidth / 2) @rowDistance;
 
 /* Form Label */
 @labelDistance: @4px;
-@labelMargin: 0em 0em @labelDistance 0em;
+@labelMargin: 0 0 @labelDistance 0;
 @labelFontSize: @relativeSmall;
 @labelFontWeight: @bold;
 @labelTextTransform: none;
@@ -39,7 +39,7 @@
   color @defaultDuration @defaultEasing,
   border-color @defaultDuration @defaultEasing
 ;
-@inputBoxShadow: 0em 0em 0em 0em transparent inset;
+@inputBoxShadow: 0 0 0 0 transparent inset;
 
 /* Select */
 @selectBackground: @white;
@@ -72,7 +72,7 @@
 @promptBorderColor: @formErrorBorder;
 @promptBorder: 1px solid @promptBorderColor;
 @promptTextColor: @formErrorColor;
-@inlinePromptMargin: -0.25em 0em -0.5em 0.5em;
+@inlinePromptMargin: -0.25em 0 -0.5em 0.5em;
 @inlinePromptBorderWidth: 1px;
 
 /*-------------------
@@ -80,13 +80,13 @@
 --------------------*/
 
 /* Focus */
-@inputFocusPointerSize: 0px;
+@inputFocusPointerSize: 0;
 
 /* Input Focus */
 @inputFocusBackground: @inputBackground;
 @inputFocusBorderColor: @focusedFormBorderColor;
 @inputFocusColor: @selectedTextColor;
-@inputFocusBoxShadow: @inputFocusPointerSize 0em 0em 0em @selectedBorderColor inset;
+@inputFocusBoxShadow: @inputFocusPointerSize 0 0 0 @selectedBorderColor inset;
 @inputFocusBorderRadius: @inputBorderRadius;
 
 /* Text Area Focus */
@@ -154,7 +154,7 @@
 @requiredColor: @negativeColor;
 @requiredVerticalOffset: -0.2em;
 @requiredDistance: 0.2em;
-@requiredMargin: @requiredVerticalOffset 0em 0em @requiredDistance;
+@requiredMargin: @requiredVerticalOffset 0 0 @requiredDistance;
 
 /* Inverted */
 @invertedInputBackground: @inputBackground;
@@ -170,7 +170,7 @@
 
 /* Grouped Fields */
 @groupedMargin: @fieldMargin;
-@groupedFieldMargin: 0.5em 0em;
+@groupedFieldMargin: 0.5em 0;
 
 @groupedLabelDistance: @labelDistance;
 @groupedLabelColor: @labelColor;
@@ -189,10 +189,10 @@
 @inlineLabelFontWeight: @labelFontWeight;
 @inlineLabelTextTransform: @labelTextTransform;
 
-@groupedInlineLabelMargin: 0.035714em 1em 0em 0em;
+@groupedInlineLabelMargin: 0.035714em 1em 0 0;
 
 /*-------------------
        Groups
 --------------------*/
 
-@inlineFieldsMargin: 0em 1em 0em 0em;
+@inlineFieldsMargin: 0 1em 0 0;
