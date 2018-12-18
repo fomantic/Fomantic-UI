@@ -1,7 +1,6 @@
 workflow "build test" {
   on = "push"
   resolves = [
-    "ls dist",
     "gulp install",
     "install dependencies",
   ]
@@ -25,18 +24,4 @@ action "gulp install" {
   needs = ["install dependencies"]
   runs = "npx"
   args = "gulp install"
-}
-
-action "gulp build" {
-  uses = "docker://node:8"
-  needs = ["gulp install"]
-  runs = "npx"
-  args = "gulp build"
-}
-
-action "ls dist" {
-  uses = "docker://node:8"
-  needs = ["gulp build"]
-  runs = "ls"
-  args = "-la dist/"
 }
