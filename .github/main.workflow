@@ -16,13 +16,16 @@ action "install dependencies" {
   args = "install"
 }
 
-workflow "New workflow" {
-  on = "push"
+action "gulp build" {
+  uses = "docker://node"
+  needs = ["install dependencies"]
+  runs = "npx"
+  args = "gulp build"
 }
 
 action "ls dist" {
   uses = "docker://node"
-  needs = ["install dependencies"]
+  needs = ["gulp build"]
   runs = "ls"
   args = "-la dist/"
 }
