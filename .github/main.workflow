@@ -1,6 +1,6 @@
 workflow "build test" {
   on = "push"
-  resolves = ["install dependencies"]
+  resolves = ["ls dist"]
 }
 
 action "preinstall" {
@@ -14,4 +14,15 @@ action "install dependencies" {
   needs = ["preinstall"]
   runs = "npm"
   args = "install"
+}
+
+workflow "New workflow" {
+  on = "push"
+}
+
+action "ls dist" {
+  uses = "docker://node"
+  needs = ["install dependencies"]
+  runs = "ls"
+  args = "-la dist/"
 }
