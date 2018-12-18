@@ -14,12 +14,12 @@
 
 @topMargin: @headerTopMargin;
 @bottomMargin: @headerBottomMargin;
-@margin: @topMargin 0em @bottomMargin;
+@margin: @topMargin 0 @bottomMargin;
 
 @firstMargin: -@lineHeightOffset;
-@lastMargin: 0em;
-@horizontalPadding: 0em;
-@verticalPadding: 0em;
+@lastMargin: 0;
+@horizontalPadding: 0;
+@verticalPadding: 0;
 
 /* Sub Heading */
 @subHeadingDistance: @2px;
@@ -33,14 +33,14 @@
 @hugeSubHeadingSize: @relativeMedium;
 
 /* Sub Header */
-@subHeaderMargin: 0em;
+@subHeaderMargin: 0;
 @subHeaderLineHeight: 1.2em;
 @subHeaderColor: @mutedTextColor;
 
 /* Icon */
 @iconOpacity: 1;
 @iconSize: 1.5em;
-@iconOffset: 0em;
+@iconOffset: 0;
 @iconMargin: 0.75rem;
 @iconAlignment: middle;
 
@@ -62,7 +62,7 @@
 @contentImageAlignment: middle;
 
 /* Paragraph after Header */
-@nextParagraphDistance: 0em;
+@nextParagraphDistance: 0;
 
 /*-------------------
       Variations
@@ -99,7 +99,7 @@
 /* No Line Height Offset */
 @iconHeaderTopMargin: 2rem;
 @iconHeaderBottomMargin: @bottomMargin;
-@iconHeaderFirstMargin: 0em;
+@iconHeaderFirstMargin: 0;
 
 /* Divided */
 @dividedBorderWidth: 1px;
@@ -108,7 +108,7 @@
 
 @dividedBorderPadding: @3px;
 @dividedSubHeaderPadding: @3px;
-@dividedIconPadding: 0em;
+@dividedIconPadding: 0;
 
 /* Block */
 @blockBackground: @darkWhite;

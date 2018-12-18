@@ -37,7 +37,7 @@
 @iconFocusOpacity: 1;
 @iconOffset: -0.5em;
 
-@iconDistance: 0em;
+@iconDistance: 0;
 @iconMargin: @iconWidth + @iconDistance;
 @iconTransition: opacity 0.3s @defaultEasing;
 

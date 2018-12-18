@@ -18,7 +18,7 @@
   box-shadow @defaultDuration @defaultEasing,
   border-color @defaultDuration @defaultEasing
 ;
-@promptBoxShadow: 0em 0em 0em 0em transparent inset;
+@promptBoxShadow: 0 0 0 0 transparent inset;
 
 /* Mobile */
 @mobileMaxWidth: e("calc(100vw - 2rem)");
@@ -47,11 +47,11 @@
 @resultImageWidth: 5em;
 @resultImageHeight: 3em;
 @resultImageBorderRadius: 0.25em;
-@resultImageMargin: 0em 6em 0em 0em;
+@resultImageMargin: 0 6em 0 0;
 
 /* Result Content */
 @resultTitleFont: @headerFont;
-@resultTitleMargin: -@headerLineHeightOffset 0em 0em;
+@resultTitleMargin: -@headerLineHeightOffset 0 0;
 @resultTitleFontWeight: @bold;
 @resultTitleFontSize: @relativeMedium;
 @resultTitleColor: @darkTextColor;
@@ -120,12 +120,12 @@
 /* Selection */
 @selectionPromptBorderRadius: @defaultBorderRadius;
 
-@selectionCloseTop: 0em;
+@selectionCloseTop: 0;
 @selectionCloseTransition:
   color @defaultDuration @defaultEasing,
   opacity @defaultDuration @defaultEasing
 ;
-@selectionCloseRight: 0em;
+@selectionCloseRight: 0;
 @selectionCloseIconOpacity: 0.8;
 @selectionCloseIconColor: '';
 @selectionCloseIconHoverOpacity: 1;
