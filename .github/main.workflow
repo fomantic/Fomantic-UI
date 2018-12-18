@@ -2,9 +2,8 @@ workflow "build test" {
   on = "push"
   resolves = [
     "ls dist",
-    "after ls src",
-    "before ls src",
     "gulp install",
+    "install dependencies",
   ]
 }
 
@@ -40,17 +39,4 @@ action "ls dist" {
   needs = ["gulp build"]
   runs = "ls"
   args = "-la dist/"
-}
-
-action "before ls src" {
-  uses = "docker://node:8"
-  runs = "ls"
-  args = "-la src/"
-}
-
-action "after ls src" {
-  uses = "docker://node:8"
-  needs = ["install dependencies"]
-  runs = "ls"
-  args = "-la src/"
 }
