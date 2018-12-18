@@ -23,8 +23,8 @@
 
 /* Checkmark */
 @checkboxCheckFontSize: 14px;
-@checkboxCheckTop: 0px;
-@checkboxCheckLeft: 0px;
+@checkboxCheckTop: 0;
+@checkboxCheckLeft: 0;
 @checkboxCheckSize: @checkboxSize;
 
 /* Label */
@@ -84,11 +84,11 @@
 
 @radioSize: 15px;
 @radioTop: 1px;
-@radioLeft: 0px;
+@radioLeft: 0;
 @radioLabelDistance: @labelDistance;
 
 @bulletTop: 1px;
-@bulletLeft: 0px;
+@bulletLeft: 0;
 @bulletScale: (7 / 15); /* 7px as unitless value from radio size */
 @bulletColor: @textColor;
 @bulletRadius: @circularRadius;
@@ -106,7 +106,7 @@
 @handleBackground: @white @subtleGradient;
 @handleBoxShadow:
   @subtleShadow,
-  0px 0px 0px 1px @borderColor inset
+  0 0 0 1px @borderColor inset
 ;
 
 /* Slider */
@@ -154,7 +154,7 @@
 @toggleHeight: @toggleHandleSize;
 
 @toggleHandleRadius: @circularRadius;
-@toggleHandleOffset: 0rem;
+@toggleHandleOffset: 0;
 @toggleHandleTransition:
   background @sliderTransitionDuration @defaultEasing,
   left @sliderTransitionDuration @defaultEasing
@@ -163,7 +163,7 @@
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;
 @toggleLaneBoxShadow: none;
-@toggleLaneVerticalOffset: 0rem;
+@toggleLaneVerticalOffset: 0;
 @toggleOffOffset: -0.05rem;
 @toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
 

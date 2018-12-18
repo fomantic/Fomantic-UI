@@ -137,7 +137,7 @@
 @secondaryInvertedBackground:
   lighten(@black, (@secondaryInvertedLightness * 100))
   linear-gradient(
-    rgba(255, 255, 255, @secondaryInvertedLightness) 0%,
+    rgba(255, 255, 255, @secondaryInvertedLightness) 0,
     rgba(255, 255, 255, @secondaryInvertedLightness) 100%
   )
 ;
@@ -147,7 +147,7 @@
 @tertiaryInvertedBackground:
   lighten(@black, (@tertiaryInvertedLightness * 100))
   linear-gradient(
-    rgba(255, 255, 255, @tertiaryInvertedLightness) 0%,
+    rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
     rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
   )
 ;

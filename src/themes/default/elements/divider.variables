@@ -6,7 +6,7 @@
        Element
 --------------------*/
 
-@margin: 1rem 0rem;
+@margin: 1rem 0;
 
 @highlightWidth: 1px;
 @highlightColor: @whiteBorderColor;
@@ -26,7 +26,7 @@
 
 /* Icon */
 @dividerIconSize: 1rem;
-@dividerIconMargin: 0rem;
+@dividerIconMargin: 0;
 
 
 /*******************************
