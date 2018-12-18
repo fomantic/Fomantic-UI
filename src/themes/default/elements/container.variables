@@ -11,7 +11,7 @@
 @maxWidth: 100%;
 
 /* Devices */
-@mobileMinimumGutter: 0em;
+@mobileMinimumGutter: 0;
 @mobileWidth: auto;
 @mobileGutter: 1em;
 

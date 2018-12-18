@@ -6,7 +6,7 @@
        Group
 --------------------*/
 
-@stepMargin: 1em 0em;
+@stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
 @stepsBackground: '';
 @stepsBoxShadow: none;
@@ -16,8 +16,8 @@
       Element
 --------------------*/
 
-@verticalMargin: 0em;
-@horizontalMargin: 0em;
+@verticalMargin: 0;
+@horizontalMargin: 0;
 
 @arrowSize: @relativeLarge;
 @verticalPadding: @relativeLarge;
@@ -34,7 +34,7 @@
 @justifyContent: center;
 @backgroundColor: @white;
 @background: @backgroundColor;
-@borderRadius: 0em;
+@borderRadius: 0;
 @borderWidth: 1px;
 @boxShadow: none;
 @border: none;
@@ -61,8 +61,8 @@
 /* Arrow */
 @arrowBackgroundColor: @backgroundColor;
 @arrowTopOffset: 50%;
-@arrowRightOffset: 0%;
-@arrowBorderWidth: 0px @borderWidth @borderWidth 0px;
+@arrowRightOffset: 0;
+@arrowBorderWidth: 0 @borderWidth @borderWidth 0;
 
 @arrowDisplay: block;
 @lastArrowDisplay: none;
@@ -80,8 +80,8 @@
 /* Vertical */
 @verticalDivider: @divider;
 @verticalArrowTopOffset: 50%;
-@verticalArrowRightOffset: 0%;
-@verticalArrowBorderWidth: 0px @borderWidth @borderWidth 0px;
+@verticalArrowRightOffset: 0;
+@verticalArrowBorderWidth: 0 @borderWidth @borderWidth 0;
 
 @verticalArrowDisplay: none;
 @verticalLastArrowDisplay: @verticalArrowDisplay;
