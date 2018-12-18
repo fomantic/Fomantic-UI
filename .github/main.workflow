@@ -4,6 +4,7 @@ workflow "build test" {
     "ls dist",
     "after ls src",
     "before ls src",
+    "gulp install",
   ]
 }
 
@@ -20,9 +21,16 @@ action "install dependencies" {
   args = "install"
 }
 
-action "gulp build" {
+action "gulp install" {
   uses = "docker://node:8"
   needs = ["install dependencies"]
+  runs = "npx"
+  args = "gulp install"
+}
+
+action "gulp build" {
+  uses = "docker://node:8"
+  needs = ["gulp install"]
   runs = "npx"
   args = "gulp build"
 }
