@@ -16,5 +16,5 @@
 @loadingDuration: 2s;
 
 /* Size */
-@baseSize: 32px;
+@baseSize: 24px;
 
