@@ -1,0 +1,20 @@
+/*******************************
+             Emoji
+*******************************/
+
+/*--------------
+    Path
+---------------*/
+@emojiPath: "https://cdn.jsdelivr.net/emojione/assets/4.0/png/128/";
+
+/*--------------
+   Definition
+---------------*/
+
+/* Emoji Variables */
+@opacity: 1;
+@loadingDuration: 2s;
+
+/* Size */
+@baseSize: 32px;
+

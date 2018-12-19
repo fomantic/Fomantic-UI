@@ -25,6 +25,7 @@
 @button     : 'default';
 @container  : 'default';
 @divider    : 'default';
+@emoji      : 'default';
 @flag       : 'default';
 @header     : 'default';
 @icon       : 'default';
