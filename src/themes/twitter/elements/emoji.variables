@@ -1,0 +1,20 @@
+/*******************************
+             Emoji
+*******************************/
+
+/*--------------
+    Path
+---------------*/
+@emojiPath: "https://twemoji.maxcdn.com/2/72x72/";
+
+/*--------------
+   Definition
+---------------*/
+
+/* Emoji Variables */
+@opacity: 1;
+@loadingDuration: 2s;
+
+/* Size */
+@baseSize: 24px;
+
