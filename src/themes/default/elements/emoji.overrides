@@ -2844,6 +2844,7 @@
 	small: 1;
 	medium: 2;
 	large: 4;
+    big: 5;
 };
 
 
@@ -2851,7 +2852,7 @@ each(@size-map, {
   em[data-emoji].@{key} {
     width: @baseSize * @value;
     height: @baseSize * @value;
-    background-size: 2em * @value 2em * @value;
+    background-size: 1.5em * @value 1.5em * @value;
   }
 });
 
