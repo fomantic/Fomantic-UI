@@ -2859,7 +2859,7 @@ em[data-emoji]:extend(em[data-emoji].small) {}
 
 
 each(@emoji-map,{
-    em[data-emoji="@{value}"]  {
+    em[data-emoji="@{value}"],em[data-emoji=":@{value}:"]  {
         background-image: url("@{emojiPath}@{key}.png");
     }
 });
