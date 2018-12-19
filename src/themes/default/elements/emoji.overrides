@@ -3,7 +3,6 @@
 * License - https://www.emojione.com/licenses/free
 */
 
-
 /*******************************
              Emojis
 *******************************/
@@ -2838,15 +2837,12 @@
   1f3ff: tone5;
 };
 
-
-
 @size-map: {
 	small: 1;
 	medium: 2;
 	large: 4;
     big: 5;
 };
-
 
 each(@size-map, {
   em[data-emoji].@{key} {
@@ -2858,10 +2854,8 @@ each(@size-map, {
 
 em[data-emoji]:extend(em[data-emoji].small) {}
 
-
 each(@emoji-map,{
     em[data-emoji="@{value}"],em[data-emoji=":@{value}:"]  {
         background-image: url("@{emojiPath}@{key}.png");
     }
 });
-
