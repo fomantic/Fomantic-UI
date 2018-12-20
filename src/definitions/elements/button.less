@@ -161,14 +161,11 @@
   width: @loaderSize;
   height: @loaderSize;
 
-  animation: button-spin @loaderSpeed linear;
-  animation-iteration-count: infinite;
-
   border-radius: @circularRadius;
 
-  border-color: @invertedLoaderLineColor transparent transparent;
-  border-style: solid;
-  border-width: @loaderLineWidth;
+  animation: loader @loaderSpeed infinite linear;
+  border: @loaderLineWidth solid currentColor;
+  color: @invertedLoaderLineColor;
 
   box-shadow: 0 0 0 1px transparent;
 }
@@ -177,20 +174,11 @@
   box-shadow: none;
 }
 
-@keyframes button-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .ui.basic.loading.button:not(.inverted):before {
   border-color: @loaderFillColor;
 }
 .ui.basic.loading.button:not(.inverted):after {
-  border-top-color: @loaderLineColor;
+  border-color: @loaderLineColor;
 }
 
 /*-------------------
