@@ -254,78 +254,40 @@
      Colors
 ---------------*/
 
-.addColor(@color, @lightColor, @hoverColor, @lightHoverColor) {
-  @_color: "@{color}";
-  @_lightColor: "@{lightColor}";
-  @_hoverColor: "@{hoverColor}";
-  @_lightHoverColor: "@{lightHoverColor}";
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
+  @h: @colors[@@color][hover];
+  @lh: @colors[@@color][lightHover];
 
   /* Standard */
   .ui.@{color}.slider .inner .track-fill {
-    background-color: @@_color;
+    background-color: @c;
   }
   .ui.@{color}.inverted.slider .inner .track-fill {
-    background-color: @@_lightColor;
+    background-color: @l;
   }
 
   /* Basic */
   .ui.@{color}.slider.basic .inner .thumb {
-    background-color: @@_color;
+    background-color: @c;
   }
   .ui.@{color}.slider.basic .inner .thumb:hover,
   .ui.@{color}.slider.basic:focus .inner .thumb {
-    background-color: @@_hoverColor;
+    background-color: @h;
   }
 
   /* Basic Inverted */
   .ui.@{color}.inverted.slider.basic .inner .thumb {
-    background-color: @@_lightColor;
+    background-color: @l;
   }
   .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
   .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
-    background-color: @@_lightHoverColor;
+    background-color: @lh;
   }
 
-}
-
-/*--- Red ---*/
-.addColor(~"red", ~"lightRed", ~"redHover", ~"lightRedHover");
-
-/*--- Orange ---*/
-.addColor(~"orange", ~"lightOrange", ~"orangeHover", ~"lightOrangeHover");
-
-/*--- Yellow ---*/
-.addColor(~"yellow", ~"lightYellow", ~"yellowHover", ~"lightYellowHover");
-
-/*--- Olive ---*/
-.addColor(~"olive", ~"lightOlive", ~"oliveHover", ~"lightOliveHover");
-
-/*--- Green ---*/
-.addColor(~"green", ~"lightGreen", ~"greenHover", ~"lightGreenHover");
-
-/*--- Teal ---*/
-.addColor(~"teal", ~"lightTeal", ~"tealHover", ~"lightTealHover");
-
-/*--- Blue ---*/
-.addColor(~"blue", ~"lightBlue", ~"blueHover", ~"lightBlueHover");
-
-/*--- Violet ---*/
-.addColor(~"violet", ~"lightViolet", ~"violetHover", ~"lightVioletHover");
-
-/*--- Purple ---*/
-.addColor(~"purple", ~"lightPurple", ~"purpleHover", ~"lightPurpleHover");
-
-/*--- Pink ---*/
-.addColor(~"pink", ~"lightPink", ~"pinkHover", ~"lightPinkHover");
-
-/*--- Brown ---*/
-.addColor(~"brown", ~"lightBrown", ~"brownHover", ~"lightBrownHover");
-
-/*--- Grey ---*/
-.addColor(~"grey", ~"lightGrey", ~"greyHover", ~"lightGreyHover");
-
-/*--- Black ---*/
-.addColor(~"black", ~"lightBlack", ~"blackHover", ~"lightBlackHover");
+})
 
 /*--------------
      Basic
