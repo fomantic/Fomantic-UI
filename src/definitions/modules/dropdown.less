@@ -821,14 +821,10 @@ select.ui.dropdown {
   width: @loaderSize;
   height: @loaderSize;
 
-  animation: dropdown-spin @loaderSpeed linear;
-  animation-iteration-count: infinite;
-
+  animation: loader @loaderSpeed infinite linear;
+  border: @loaderLineWidth solid @loaderLineColor;
   border-radius: @circularRadius;
 
-  border-color: @loaderLineColor transparent transparent;
-  border-style: solid;
-  border-width: @loaderLineWidth;
 }
 
 /* Coupling */
@@ -836,16 +832,6 @@ select.ui.dropdown {
 .ui.loading.dropdown.button > i.icon:after {
   display: none;
 }
-
-@keyframes dropdown-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 
 /*--------------------
      Default Text
