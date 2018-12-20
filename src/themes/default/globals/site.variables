@@ -57,6 +57,9 @@
 @lightPrimaryColor   : @lightBlue;
 @lightSecondaryColor : @lightBlack;
 
+/* Whenever a color needs to get calculated (screen()/multiply()) out of a base color */
+@blendingBaseColor: #cccccc;
+
 /*--------------
   Page Heading
 ---------------*/
