@@ -57,6 +57,9 @@
 @lightPrimaryColor   : @lightBlue;
 @lightSecondaryColor : @lightBlack;
 
+/* Whenever a color needs to get calculated (screen()/multiply()) out of a base color */
+@blendingBaseColor: #cccccc;
+
 /*--------------
   Page Heading
 ---------------*/
@@ -259,6 +262,8 @@
 @white            : #FFFFFF;
 
 /*--- Colored Backgrounds ---*/
+@primaryBackground   : #DFF0FF;
+@secondaryBackground : #F4F4F4;
 @redBackground    : #FFE8E6;
 @orangeBackground : #FFEDDE;
 @yellowBackground : #FFF8DB;
@@ -270,8 +275,12 @@
 @purpleBackground : #F6E7FF;
 @pinkBackground   : #FFE3FB;
 @brownBackground  : #F1E2D3;
+@greyBackground   : #F4F4F4;
+@blackBackground  : #F4F4F4;
 
 /*--- Colored Headers ---*/
+@primaryHeaderColor   : darken(@primaryTextColor, 5);
+@secondaryHeaderColor : darken(@secondaryTextColor, 5);
 @redHeaderColor    : darken(@redTextColor, 5);
 @oliveHeaderColor  : darken(@oliveTextColor, 5);
 @greenHeaderColor  : darken(@greenTextColor, 5);
@@ -283,32 +292,273 @@
 @purpleHeaderColor : darken(@purpleTextColor, 5);
 @orangeHeaderColor : darken(@orangeTextColor, 5);
 @brownHeaderColor  : darken(@brownTextColor, 5);
+@greyHeaderColor  : darken(@greyTextColor, 5);
+@blackHeaderColor  : darken(@blackTextColor, 5);
 
 /*--- Colored Text ---*/
-@redTextColor    : @red;
-@orangeTextColor : @orange;
-@yellowTextColor : #B58105; // Yellow text is difficult to read
-@oliveTextColor  : #8ABC1E; // Olive is difficult to read
-@greenTextColor  : #1EBC30; // Green is difficult to read
-@tealTextColor   : #10A3A3; // Teal text is difficult to read
-@blueTextColor   : @blue;
-@violetTextColor : @violet;
-@purpleTextColor : @purple;
-@pinkTextColor   : @pink;
-@brownTextColor  : @brown;
+@primaryTextColor   : @invertedTextColor;
+@secondaryTextColor : @invertedTextColor;
+@redTextColor       : @red;
+@orangeTextColor    : @orange;
+@yellowTextColor    : #B58105; // Yellow text is difficult to read
+@oliveTextColor     : #8ABC1E; // Olive is difficult to read
+@greenTextColor     : #1EBC30; // Green is difficult to read
+@tealTextColor      : #10A3A3; // Teal text is difficult to read
+@blueTextColor      : @blue;
+@violetTextColor    : @violet;
+@purpleTextColor    : @purple;
+@pinkTextColor      : @pink;
+@brownTextColor     : @brown;
+@greyTextColor      : @grey;
+@blackTextColor     : @black;
+
+/*--- Light Colored Text ---*/
+@lightPrimaryTextColor   : @invertedTextColor;
+@lightSecondaryTextColor : @invertedTextColor;
+@lightRedTextColor       : @lightRed;
+@lightOrangeTextColor    : @lightOrange;
+@lightYellowTextColor    : #B58105; // Yellow text is difficult to read
+@lightOliveTextColor     : #8ABC1E; // Olive is difficult to read
+@lightGreenTextColor     : #1EBC30; // Green is difficult to read
+@lightTealTextColor      : #10A3A3; // Teal text is difficult to read
+@lightBlueTextColor      : @lightBlue;
+@lightVioletTextColor    : @lightViolet;
+@lightPurpleTextColor    : @lightPurple;
+@lightPinkTextColor      : @lightPink;
+@lightBrownTextColor     : @lightBrown;
+@lightGreyTextColor      : @lightGrey;
+@lightBlackTextColor     : @lightBlack;
+
+
+/*--- Hovered Colored Text ---*/
+@primaryHoverTextColor   : @primaryTextColor;
+@secondaryHoverTextColor : @secondaryTextColor;
+@redHoverTextColor       : @redTextColor;
+@orangeHoverTextColor    : @orangeTextColor;
+@yellowHoverTextColor    : @yellowTextColor;
+@oliveHoverTextColor     : @oliveTextColor;
+@greenHoverTextColor     : @greenTextColor;
+@tealHoverTextColor      : @tealTextColor;
+@blueHoverTextColor      : @blueTextColor;
+@violetHoverTextColor    : @violetTextColor;
+@purpleHoverTextColor    : @purpleTextColor;
+@pinkHoverTextColor      : @pinkTextColor;
+@brownHoverTextColor     : @brownTextColor;
+@greyHoverTextColor      : @greyTextColor;
+@blackHoverTextColor     : @blackTextColor;
+
 
 /*--- Colored Border ---*/
-@redBorderColor    : @redTextColor;
-@orangeBorderColor : @orangeTextColor;
-@yellowBorderColor : @yellowTextColor;
-@oliveBorderColor  : @oliveTextColor;
-@greenBorderColor  : @greenTextColor;
-@tealBorderColor   : @tealTextColor;
-@blueBorderColor   : @blueTextColor;
-@violetBorderColor : @violetTextColor;
-@purpleBorderColor : @purpleTextColor;
-@pinkBorderColor   : @pinkTextColor;
-@brownBorderColor  : @brownTextColor;
+@primaryBorderColor   : @primaryColor;
+@secondaryBorderColor : @secondaryColor;
+@redBorderColor       : @redTextColor;
+@orangeBorderColor    : @orangeTextColor;
+@yellowBorderColor    : @yellowTextColor;
+@oliveBorderColor     : @oliveTextColor;
+@greenBorderColor     : @greenTextColor;
+@tealBorderColor      : @tealTextColor;
+@blueBorderColor      : @blueTextColor;
+@violetBorderColor    : @violetTextColor;
+@purpleBorderColor    : @purpleTextColor;
+@pinkBorderColor      : @pinkTextColor;
+@brownBorderColor     : @brownTextColor;
+@greyBorderColor      : @greyTextColor;
+@blackBorderColor     : @blackTextColor;
+
+/*--- Shadows ---*/
+@primaryRibbonShadow: darken(@primaryColor, 10);
+@secondaryRibbonShadow: darken(@secondaryColor, 10);
+@redRibbonShadow: darken(@red, 10);
+@orangeRibbonShadow: darken(@orange, 10);
+@yellowRibbonShadow: darken(@yellow, 10);
+@oliveRibbonShadow: darken(@olive, 10);
+@greenRibbonShadow: darken(@green, 10);
+@tealRibbonShadow: darken(@teal, 10);
+@blueRibbonShadow: darken(@blue, 10);
+@violetRibbonShadow: darken(@violet, 10);
+@purpleRibbonShadow: darken(@purple, 10);
+@pinkRibbonShadow: darken(@pink, 10);
+@brownRibbonShadow: darken(@brown, 10);
+@greyRibbonShadow: darken(@grey, 10);
+@blackRibbonShadow: darken(@black, 10);
+
+@primaryInvertedRibbonShadow: darken(@lightPrimaryColor, 10);
+@secondaryInvertedRibbonShadow: darken(@lightSecondaryColor, 10);
+@redInvertedRibbonShadow: darken(@lightRed, 10);
+@orangeInvertedRibbonShadow: darken(@lightOrange, 10);
+@yellowInvertedRibbonShadow: darken(@lightYellow, 10);
+@oliveInvertedRibbonShadow: darken(@lightOlive, 10);
+@greenInvertedRibbonShadow: darken(@lightGreen, 10);
+@tealInvertedRibbonShadow: darken(@lightTeal, 10);
+@blueInvertedRibbonShadow: darken(@lightBlue, 10);
+@violetInvertedRibbonShadow: darken(@lightViolet, 10);
+@purpleInvertedRibbonShadow: darken(@lightPurple, 10);
+@pinkInvertedRibbonShadow: darken(@lightPink, 10);
+@brownInvertedRibbonShadow: darken(@lightBrown, 10);
+@greyInvertedRibbonShadow: lighten(@lightGrey, 5);
+@blackInvertedRibbonShadow: lighten(@lightBlack, 5);
+
+@textShadow: none;
+@invertedTextShadow: @textShadow;
+
+@primaryTextShadow: @invertedTextShadow;
+@secondaryTextShadow: @invertedTextShadow;
+@redTextShadow: @invertedTextShadow;
+@orangeTextShadow: @invertedTextShadow;
+@yellowTextShadow: @invertedTextShadow;
+@oliveTextShadow: @invertedTextShadow;
+@greenTextShadow: @invertedTextShadow;
+@tealTextShadow: @invertedTextShadow;
+@blueTextShadow: @invertedTextShadow;
+@violetTextShadow: @invertedTextShadow;
+@purpleTextShadow: @invertedTextShadow;
+@pinkTextShadow: @invertedTextShadow;
+@brownTextShadow: @invertedTextShadow;
+@greyTextShadow: @invertedTextShadow;
+@blackTextShadow: @invertedTextShadow;
+
+/* Inverted */
+@lightPrimaryTextShadow: @invertedTextShadow;
+@lightSecondaryTextShadow: @invertedTextShadow;
+@lightRedTextShadow: @invertedTextShadow;
+@lightOrangeTextShadow: @invertedTextShadow;
+@lightYellowTextShadow: @textShadow;
+@lightOliveTextShadow: @textShadow;
+@lightGreenTextShadow: @invertedTextShadow;
+@lightTealTextShadow: @textShadow;
+@lightBlueTextShadow: @invertedTextShadow;
+@lightVioletTextShadow: @invertedTextShadow;
+@lightPurpleTextShadow: @invertedTextShadow;
+@lightPinkTextShadow: @invertedTextShadow;
+@lightBrownTextShadow: @invertedTextShadow;
+@lightGreyTextShadow: @textShadow;
+@lightBlackTextShadow: @invertedTextShadow;
+
+/* Box Shadows */
+
+@shadowShadow: 0 0 0 0 rgba(0, 0, 0, 0);
+@borderWidth: 1px;
+
+@primaryBoxShadow:
+        0 0 0 @borderWidth @primaryBorderColor inset,
+        @shadowShadow
+;
+@primaryBoxFloatingShadow:
+        0 0 0 @borderWidth @primaryBorderColor inset,
+        @floatingShadow
+;
+@secondaryBoxShadow:
+        0 0 0 @borderWidth @secondaryBorderColor inset,
+        @shadowShadow
+;
+@secondaryBoxFloatingShadow:
+        0 0 0 @borderWidth @secondaryBorderColor inset,
+        @floatingShadow
+;
+@redBoxShadow:
+        0 0 0 @borderWidth @redBorderColor inset,
+        @shadowShadow
+;
+@redBoxFloatingShadow:
+        0 0 0 @borderWidth @redBorderColor inset,
+        @floatingShadow
+;
+@orangeBoxShadow:
+        0 0 0 @borderWidth @orangeBorderColor inset,
+        @shadowShadow
+;
+@orangeBoxFloatingShadow:
+        0 0 0 @borderWidth @orangeBorderColor inset,
+        @floatingShadow
+;
+@yellowBoxShadow:
+        0 0 0 @borderWidth @yellowBorderColor inset,
+        @shadowShadow
+;
+@yellowBoxFloatingShadow:
+        0 0 0 @borderWidth @yellowBorderColor inset,
+        @floatingShadow
+;
+@oliveBoxShadow:
+        0 0 0 @borderWidth @oliveBorderColor inset,
+        @shadowShadow
+;
+@oliveBoxFloatingShadow:
+        0 0 0 @borderWidth @oliveBorderColor inset,
+        @floatingShadow
+;
+@greenBoxShadow:
+        0 0 0 @borderWidth @greenBorderColor inset,
+        @shadowShadow
+;
+@greenBoxFloatingShadow:
+        0 0 0 @borderWidth @greenBorderColor inset,
+        @floatingShadow
+;
+@tealBoxShadow:
+        0 0 0 @borderWidth @tealBorderColor inset,
+        @shadowShadow
+;
+@tealBoxFloatingShadow:
+        0 0 0 @borderWidth @tealBorderColor inset,
+        @floatingShadow
+;
+@blueBoxShadow:
+        0 0 0 @borderWidth @blueBorderColor inset,
+        @shadowShadow
+;
+@blueBoxFloatingShadow:
+        0 0 0 @borderWidth @blueBorderColor inset,
+        @floatingShadow
+;
+@violetBoxShadow:
+        0 0 0 @borderWidth @violetBorderColor inset,
+        @shadowShadow
+;
+@violetBoxFloatingShadow:
+        0 0 0 @borderWidth @violetBorderColor inset,
+        @floatingShadow
+;
+@purpleBoxShadow:
+        0 0 0 @borderWidth @purpleBorderColor inset,
+        @shadowShadow
+;
+@purpleBoxFloatingShadow:
+        0 0 0 @borderWidth @purpleBorderColor inset,
+        @floatingShadow
+;
+@pinkBoxShadow:
+        0 0 0 @borderWidth @pinkBorderColor inset,
+        @shadowShadow
+;
+@pinkBoxFloatingShadow:
+        0 0 0 @borderWidth @pinkBorderColor inset,
+        @floatingShadow
+;
+@brownBoxShadow:
+        0 0 0 @borderWidth @brownBorderColor inset,
+        @shadowShadow
+;
+@brownBoxFloatingShadow:
+        0 0 0 @borderWidth @brownBorderColor inset,
+        @floatingShadow
+;
+@greyBoxShadow:
+        0 0 0 @borderWidth @greyBorderColor inset,
+        @shadowShadow
+;
+@greyBoxFloatingShadow:
+        0 0 0 @borderWidth @greyBorderColor inset,
+        @floatingShadow
+;
+@blackBoxShadow:
+        0 0 0 @borderWidth @blackBorderColor inset,
+        @shadowShadow
+;
+@blackBoxFloatingShadow:
+        0 0 0 @borderWidth @blackBorderColor inset,
+        @floatingShadow
+;
 
 /*-------------------
      Alpha Colors
@@ -755,6 +1005,8 @@
 @purpleHover              : saturate(darken(@purple, 5), 10, relative);
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
+@greyHover                : saturate(darken(@grey, 5), 10, relative);
+@blackHover               : saturate(darken(@black, 5), 10, relative);
 
 @lightRedHover            : saturate(darken(@lightRed, 10), 10, relative);
 @lightOrangeHover         : saturate(darken(@lightOrange, 10), 10, relative);

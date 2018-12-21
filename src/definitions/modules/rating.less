@@ -79,41 +79,29 @@
      Colors
 -------------- */
 
-.ratingColor(@color; @lightColor;) {
-  @_ratingActiveShadow: "@{color}";
-  @_ratingActive: "@{lightColor}";
-  @_ratingSelectedShadow: "@{color}Hover";
-  @_ratingSelected: "@{lightColor}Hover";
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
+  @h: @colors[@@color][hover];
+  @lh: @colors[@@color][lightHover];
+
   .ui.@{color}.rating .active.icon {
-    color: @@_ratingActive;
-    text-shadow: 0px -@shadowWidth 0px @@_ratingActiveShadow,
-                 -@shadowWidth 0px 0px @@_ratingActiveShadow,
-                 0px @shadowWidth 0px @@_ratingActiveShadow,
-                 @shadowWidth 0px 0px @@_ratingActiveShadow;
+    color: @l;
+    text-shadow: 0px -@shadowWidth 0px @c,
+                 -@shadowWidth 0px 0px @c,
+                 0px @shadowWidth 0px @c,
+                 @shadowWidth 0px 0px @c;
   }
   .ui.@{color}.rating .icon.selected,
   .ui.@{color}.rating .icon.selected.active {
-    color: @@_ratingSelected;
-    text-shadow: 0px -@shadowWidth 0px @@_ratingSelectedShadow,
-                 -@shadowWidth 0px 0px @@_ratingSelectedShadow,
-                 0px @shadowWidth 0px @@_ratingSelectedShadow,
-                 @shadowWidth 0px 0px @@_ratingSelectedShadow;
+    color: @lh;
+    text-shadow: 0px -@shadowWidth 0px @h,
+                 -@shadowWidth 0px 0px @h,
+                 0px @shadowWidth 0px @h,
+                 @shadowWidth 0px 0px @h;
   }
-}
-
-.ratingColor(~'red',~'lightRed');
-.ratingColor(~'orange',~'lightOrange');
-.ratingColor(~'yellow',~'lightYellow');
-.ratingColor(~'olive',~'lightOlive');
-.ratingColor(~'green',~'lightGreen');
-.ratingColor(~'teal',~'lightTeal');
-.ratingColor(~'blue',~'lightBlue');
-.ratingColor(~'violet',~'lightViolet');
-.ratingColor(~'purple',~'lightPurple');
-.ratingColor(~'pink',~'lightPink');
-.ratingColor(~'brown',~'lightBrown');
-.ratingColor(~'grey',~'lightGrey');
-.ratingColor(~'black',~'lightBlack');
+})
 
 
 /*******************************
