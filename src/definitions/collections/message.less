@@ -256,74 +256,130 @@
      Colors
 ---------------*/
 
-.ui.black.message {
-  background-color: @black;
-  color: @invertedTextColor;
-}
-
 /*--------------
      Types
 ---------------*/
 
-.addMessageType(@color; @backgroundSuffix: "") {
-  @_messageBackground: "@{color}Background@{backgroundSuffix}";
-  @_messageTextColor: "@{color}TextColor";
-  @_messageHeaderColor: "@{color}HeaderColor";
-  @_messageShadow: "@{color}BoxShadow";
-  @_messageFloatingShadow: "@{color}BoxFloatingShadow";
+
+@consequences: {
+  @positive: {
+    background     : @positiveBackgroundColor;
+    header         : @positiveHeaderColor;
+    boxShadow      : @positiveBoxShadow;
+    boxFloatShadow : @positiveBoxFloatingShadow;
+    text           : @positiveTextColor;
+  };
+  @negative: {
+    background     : @negativeBackgroundColor;
+    header         : @negativeHeaderColor;
+    boxShadow      : @negativeBoxShadow;
+    boxFloatShadow : @negativeBoxFloatingShadow;
+    text           : @negativeTextColor;
+  };
+  @info: {
+    background     : @infoBackgroundColor;
+    header         : @infoHeaderColor;
+    boxShadow      : @infoBoxShadow;
+    boxFloatShadow : @infoBoxFloatingShadow;
+    text           : @infoTextColor;
+  };
+  @warning: {
+    background     : @warningBackgroundColor;
+    header         : @warningHeaderColor;
+    boxShadow      : @warningBoxShadow;
+    boxFloatShadow : @warningBoxFloatingShadow;
+    text           : @warningTextColor;
+  };
+  @error: {
+    background     : @errorBackgroundColor;
+    header         : @errorHeaderColor;
+    boxShadow      : @errorBoxShadow;
+    boxFloatShadow : @errorBoxFloatingShadow;
+    text           : @errorTextColor;
+  };
+  @success: {
+    background     : @successBackgroundColor;
+    header         : @successHeaderColor;
+    boxShadow      : @successBoxShadow;
+    boxFloatShadow : @successBoxFloatingShadow;
+    text           : @successTextColor;
+  };
+}
+
+/* Colors */
+
+each(@consequences, {
+  @color: replace(@key, '@', '');
+  @bg: @consequences[@@color][background];
+  @hd: @consequences[@@color][header];
+  @bs: @consequences[@@color][boxShadow];
+  @bfs: @consequences[@@color][boxFloatShadow];
+  @t: @consequences[@@color][text];
 
   .ui.@{color}.message {
-    background-color: @@_messageBackground;
-    color: @@_messageTextColor;
+    background-color: @bg;
+    color: @t;
   }
 
   .ui.@{color}.message,
   .ui.attached.@{color}.message {
-    box-shadow: @@_messageShadow;
+    box-shadow: @bs;
   }
 
   .ui.floating.@{color}.message {
-    box-shadow: @@_messageFloatingShadow;
+      box-shadow: @bfs;
   }
 
   .ui.@{color}.message .header {
-    color: @@_messageHeaderColor;
+    color: @hd;
   }
-}
+})
 
-/* Positive */
-.addMessageType(positive, ~"Color");
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @bg: @colors[@@color][background];
+  @hd: @colors[@@color][header];
+  @bs: @colors[@@color][boxShadow];
+  @bfs: @colors[@@color][boxFloatShadow];
+  @t: @colors[@@color][text];
+  @isVeryDark: @colors[@@color][isVeryDark];
 
-/* Negative */
-.addMessageType(negative, ~"Color");
+  .ui.@{color}.message {
+    & when not (@isVeryDark) {
+      background-color: @bg;
+      color: @t;
+    }
+    & when (@isVeryDark) {
+      background-color: @black;
+      color: @invertedTextColor;
+    }
+  }
 
-/* Info */
-.addMessageType(info, ~"Color");
+  .ui.@{color}.message,
+  .ui.attached.@{color}.message {
+    & when not (@isVeryDark) {
+      box-shadow: @bs;
+    }
+  }
 
-/* Warning */
-.addMessageType(warning, ~"Color");
+  .ui.floating.@{color}.message {
+    & when not (@isVeryDark) {
+      box-shadow: @bfs;
+    }
+  }
 
-/* Error */
-.addMessageType(error, ~"Color");
+  .ui.@{color}.message .header {
+    & when not (@isVeryDark) {
+      color: @hd;
+    }
+    & when (@isVeryDark) {
+      color: @invertedTextColor;
+    }
+  }
+})
 
-/* Success */
-.addMessageType(success, ~"Color");
 
-/* Colors */
-.addMessageType(red);
-.addMessageType(orange);
-.addMessageType(yellow);
-.addMessageType(olive);
-.addMessageType(green);
-.addMessageType(teal);
-.addMessageType(blue);
-.addMessageType(violet);
-.addMessageType(purple);
-.addMessageType(pink);
-.addMessageType(brown);
-
-.ui.inverted.message,
-.ui.black.message {
+.ui.inverted.message {
   background-color: @black;
   color: @invertedTextColor;
 }

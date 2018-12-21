@@ -310,8 +310,8 @@
 .ui.table tr.positive,
 .ui.table td.positive {
   box-shadow: @positiveBoxShadow;
-  background: @positiveBackgroundColor !important;
-  color: @positiveColor !important;
+  background: @positiveBackgroundColor;
+  color: @positiveColor;
 }
 
 /*--------------
@@ -321,8 +321,8 @@
 .ui.table tr.negative,
 .ui.table td.negative {
   box-shadow: @negativeBoxShadow;
-  background: @negativeBackgroundColor !important;
-  color: @negativeColor !important;
+  background: @negativeBackgroundColor;
+  color: @negativeColor;
 }
 
 /*--------------
@@ -332,8 +332,8 @@
 .ui.table tr.error,
 .ui.table td.error {
   box-shadow: @errorBoxShadow;
-  background: @errorBackgroundColor !important;
-  color: @errorColor !important;
+  background: @errorBackgroundColor;
+  color: @errorColor;
 }
 
 /*--------------
@@ -343,8 +343,8 @@
 .ui.table tr.warning,
 .ui.table td.warning {
   box-shadow: @warningBoxShadow;
-  background: @warningBackgroundColor !important;
-  color: @warningColor !important;
+  background: @warningBackgroundColor;
+  color: @warningColor;
 }
 
 /*--------------
@@ -354,8 +354,8 @@
 .ui.table tr.active,
 .ui.table td.active {
   box-shadow: @activeBoxShadow;
-  background: @activeBackgroundColor !important;
-  color: @activeColor !important;
+  background: @activeBackgroundColor;
+  color: @activeColor;
 }
 
 
@@ -369,7 +369,7 @@
 .ui.table tr.disabled:hover,
 .ui.table tr:hover td.disabled {
   pointer-events: none;
-  color: @disabledTextColor !important;
+  color: @disabledTextColor;
 }
 
 /*******************************
@@ -484,13 +484,13 @@
 
 .ui.selectable.table tbody tr:hover,
 .ui.table tbody tr td.selectable:hover {
-  background: @selectableBackground !important;
-  color: @selectableTextColor !important;
+  background: @selectableBackground;
+  color: @selectableTextColor;
 }
 .ui.selectable.inverted.table tbody tr:hover,
 .ui.inverted.table tbody tr td.selectable:hover {
-  background: @selectableInvertedBackground !important;
-  color: @selectableInvertedTextColor !important;
+  background: @selectableInvertedBackground;
+  color: @selectableInvertedTextColor;
 }
 
 /* Selectable Cell Link */
@@ -507,32 +507,32 @@
 .ui.selectable.table tr.error:hover,
 .ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
-  background: @errorBackgroundHover !important;
-  color: @errorColorHover !important;
+  background: @errorBackgroundHover;
+  color: @errorColorHover;
 }
 .ui.selectable.table tr.warning:hover,
 .ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
-  background: @warningBackgroundHover !important;
-  color: @warningColorHover !important;
+  background: @warningBackgroundHover;
+  color: @warningColorHover;
 }
 .ui.selectable.table tr.active:hover,
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
-  background: @activeBackgroundColor !important;
-  color: @activeColor !important;
+  background: @activeBackgroundColor;
+  color: @activeColor;
 }
 .ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
-  background: @positiveBackgroundHover !important;
-  color: @positiveColorHover !important;
+  background: @positiveBackgroundHover;
+  color: @positiveColorHover;
 }
 .ui.selectable.table tr.negative:hover,
 .ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
-  background: @negativeBackgroundHover !important;
-  color: @negativeColorHover !important;
+  background: @negativeBackgroundHover;
+  color: @negativeColorHover;
 }
 
 
@@ -599,8 +599,8 @@
 
 /* Allow striped active hover */
 .ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
-  background: @activeBackgroundHover !important;
-  color: @activeColorHover !important;
+  background: @activeBackgroundHover;
+  color: @activeColorHover;
 }
 
 /*--------------
@@ -616,123 +616,57 @@
        Colors
 --------------------*/
 
-/* Red */
-.ui.red.table {
-  border-top: @coloredBorderSize solid @red;
-}
-.ui.inverted.red.table {
-  background-color: @red !important;
-  color: @white !important;
-}
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @t: @colors[@@color][text];
+  @ht: @colors[@@color][hoverText];
+  @l: @colors[@@color][light];
+  @lh: @colors[@@color][lightHover];
+  @r: @colors[@@color][ribbon];
+  @isDark: @colors[@@color][isDark];
+  @isVeryDark: @colors[@@color][isVeryDark];
 
-/* Orange */
-.ui.orange.table {
-  border-top: @coloredBorderSize solid @orange;
-}
-.ui.inverted.orange.table {
-  background-color: @orange !important;
-  color: @white !important;
-}
-
-/* Yellow */
-.ui.yellow.table {
-  border-top: @coloredBorderSize solid @yellow;
-}
-.ui.inverted.yellow.table {
-  background-color: @yellow !important;
-  color: @white !important;
-}
-
-/* Olive */
-.ui.olive.table {
-  border-top: @coloredBorderSize solid @olive;
-}
-.ui.inverted.olive.table {
-  background-color: @olive !important;
-  color: @white !important;
-}
-
-/* Green */
-.ui.green.table {
-  border-top: @coloredBorderSize solid @green;
-}
-.ui.inverted.green.table {
-  background-color: @green !important;
-  color: @white !important;
-}
-
-/* Teal */
-.ui.teal.table {
-  border-top: @coloredBorderSize solid @teal;
-}
-.ui.inverted.teal.table {
-  background-color: @teal !important;
-  color: @white !important;
-}
-
-/* Blue */
-.ui.blue.table {
-  border-top: @coloredBorderSize solid @blue;
-}
-.ui.inverted.blue.table {
-  background-color: @blue !important;
-  color: @white !important;
-}
-
-/* Violet */
-.ui.violet.table {
-  border-top: @coloredBorderSize solid @violet;
-}
-.ui.inverted.violet.table {
-  background-color: @violet !important;
-  color: @white !important;
-}
-
-/* Purple */
-.ui.purple.table {
-  border-top: @coloredBorderSize solid @purple;
-}
-.ui.inverted.purple.table {
-  background-color: @purple !important;
-  color: @white !important;
-}
-
-/* Pink */
-.ui.pink.table {
-  border-top: @coloredBorderSize solid @pink;
-}
-.ui.inverted.pink.table {
-  background-color: @pink !important;
-  color: @white !important;
-}
-
-/* Brown */
-.ui.brown.table {
-  border-top: @coloredBorderSize solid @brown;
-}
-.ui.inverted.brown.table {
-  background-color: @brown !important;
-  color: @white !important;
-}
-
-/* Grey */
-.ui.grey.table {
-  border-top: @coloredBorderSize solid @grey;
-}
-.ui.inverted.grey.table {
-  background-color: @grey !important;
-  color: @white !important;
-}
-
-/* Black */
-.ui.black.table {
-  border-top: @coloredBorderSize solid @black;
-}
-.ui.inverted.black.table {
-  background-color: @black !important;
-  color: @white !important;
-}
-
+  .ui.@{color}.table {
+    border-top: @coloredBorderSize solid @c;
+  }
+  .ui.inverted.@{color}.table {
+    background-color: @c;
+    color: @white;
+  }
+  .ui.table tr.@{color},
+  .ui.table td.@{color} {
+    box-shadow: @stateMarkerWidth 0 0 @r inset;
+    & when (@isDark) {
+      background: @l;
+    }
+    & when not (@isDark) {
+      background: screen(@l,@blendingBaseColor);
+    }
+    & when (@isVeryDark) {
+      color: @white;
+    }
+    & when not (@isVeryDark) {
+      color: @t;
+    }
+  }
+  .ui.selectable.table tr.@{color}:hover,
+  .ui.table tr td.selectable.@{color}:hover,
+  .ui.selectable.table tr:hover td.@{color} {
+    & when (@isDark) {
+      background: @lh;
+    }
+    & when not (@isDark) {
+      background: screen(@lh,@blendingBaseColor);
+    }
+    & when (@isVeryDark) {
+      color: @white;
+    }
+    & when not (@isVeryDark) {
+      color: @ht;
+    }
+  }
+})
 
 /*--------------
   Column Count
@@ -943,11 +877,11 @@
 }
 .ui.inverted.table th {
   background-color: @invertedHeaderBackground;
-  border-color: @invertedHeaderBorderColor !important;
-  color: @invertedHeaderColor !important;
+  border-color: @invertedHeaderBorderColor;
+  color: @invertedHeaderColor;
 }
 .ui.inverted.table tr td {
-  border-color: @invertedCellBorderColor !important;
+  border-color: @invertedCellBorderColor;
 }
 
 .ui.inverted.table tr.disabled td,
@@ -1000,7 +934,7 @@
   background: @basicTableCellBackground;
 }
 .ui.basic.striped.table tbody tr:nth-child(2n) {
-  background-color: @basicTableStripedBackground !important;
+  background-color: @basicTableStripedBackground;
 }
 
 /* Very Basic */

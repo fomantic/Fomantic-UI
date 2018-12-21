@@ -293,10 +293,10 @@
        Colors
 --------------------*/
 
-.loaderColor(@colorRaw; @lightColor;) {
-  @color: replace(@colorRaw,'Color','');
-  @_loaderColor: "@{colorRaw}";
-  @_loaderInvertedColor: "@{lightColor}";
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
 
   .ui.@{color}.elastic.loader.loader:before,
   .ui.@{color}.elastic.loading.loading.loading:not(.segment):before,
@@ -305,7 +305,7 @@
   .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
   .ui.@{color}.loading.loading.loading.loading > i.icon:after,
   .ui.@{color}.loader.loader.loader:after {
-    color: @@_loaderColor;
+    color: @c;
   }
   .ui.inverted.@{color}.elastic.loader:before,
   .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):before,
@@ -315,24 +315,9 @@
   .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
   .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
   .ui.inverted.@{color}.loader.loader.loader:after {
-    color: @@_loaderInvertedColor;
+    color: @l;
   }
-}
-.loaderColor(~'primaryColor',~'lightPrimaryColor');
-.loaderColor(~'secondaryColor',~'lightSecondaryColor');
-.loaderColor(~'red',~'lightRed');
-.loaderColor(~'orange',~'lightOrange');
-.loaderColor(~'yellow',~'lightYellow');
-.loaderColor(~'olive',~'lightOlive');
-.loaderColor(~'green',~'lightGreen');
-.loaderColor(~'teal',~'lightTeal');
-.loaderColor(~'blue',~'lightBlue');
-.loaderColor(~'violet',~'lightViolet');
-.loaderColor(~'purple',~'lightPurple');
-.loaderColor(~'pink',~'lightPink');
-.loaderColor(~'brown',~'lightBrown');
-.loaderColor(~'grey',~'lightGrey');
-.loaderColor(~'black',~'lightBlack');
+})
 
 .ui.elastic.loader.loader:before,
 .ui.elastic.loading.loading.loading:before,

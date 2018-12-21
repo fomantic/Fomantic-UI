@@ -38,6 +38,7 @@
 @reveal     : 'default';
 @segment    : 'default';
 @step       : 'default';
+@text       : 'default';
 
 /* Collections */
 @breadcrumb : 'default';
