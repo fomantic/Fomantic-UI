@@ -21069,6 +21069,8 @@ ol.ui.horizontal.list li:before,
 --------------------*/
 
 .ui.primary.elastic.loader.loader:before,
+.ui.primary.basic.elastic.loading.button:before,
+.ui.primary.basic.elastic.loading.button:after,
 .ui.primary.elastic.loading.loading.loading:not(.segment):before,
 .ui.primary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.primary.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21090,6 +21092,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.secondary.elastic.loader.loader:before,
+.ui.secondary.basic.elastic.loading.button:before,
+.ui.secondary.basic.elastic.loading.button:after,
 .ui.secondary.elastic.loading.loading.loading:not(.segment):before,
 .ui.secondary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.secondary.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21111,6 +21115,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.red.elastic.loader.loader:before,
+.ui.red.basic.elastic.loading.button:before,
+.ui.red.basic.elastic.loading.button:after,
 .ui.red.elastic.loading.loading.loading:not(.segment):before,
 .ui.red.elastic.loading.loading.loading .input > i.icon:before,
 .ui.red.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21132,6 +21138,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.orange.elastic.loader.loader:before,
+.ui.orange.basic.elastic.loading.button:before,
+.ui.orange.basic.elastic.loading.button:after,
 .ui.orange.elastic.loading.loading.loading:not(.segment):before,
 .ui.orange.elastic.loading.loading.loading .input > i.icon:before,
 .ui.orange.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21153,6 +21161,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.yellow.elastic.loader.loader:before,
+.ui.yellow.basic.elastic.loading.button:before,
+.ui.yellow.basic.elastic.loading.button:after,
 .ui.yellow.elastic.loading.loading.loading:not(.segment):before,
 .ui.yellow.elastic.loading.loading.loading .input > i.icon:before,
 .ui.yellow.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21174,6 +21184,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.olive.elastic.loader.loader:before,
+.ui.olive.basic.elastic.loading.button:before,
+.ui.olive.basic.elastic.loading.button:after,
 .ui.olive.elastic.loading.loading.loading:not(.segment):before,
 .ui.olive.elastic.loading.loading.loading .input > i.icon:before,
 .ui.olive.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21195,6 +21207,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.green.elastic.loader.loader:before,
+.ui.green.basic.elastic.loading.button:before,
+.ui.green.basic.elastic.loading.button:after,
 .ui.green.elastic.loading.loading.loading:not(.segment):before,
 .ui.green.elastic.loading.loading.loading .input > i.icon:before,
 .ui.green.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21216,6 +21230,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.teal.elastic.loader.loader:before,
+.ui.teal.basic.elastic.loading.button:before,
+.ui.teal.basic.elastic.loading.button:after,
 .ui.teal.elastic.loading.loading.loading:not(.segment):before,
 .ui.teal.elastic.loading.loading.loading .input > i.icon:before,
 .ui.teal.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21237,6 +21253,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.blue.elastic.loader.loader:before,
+.ui.blue.basic.elastic.loading.button:before,
+.ui.blue.basic.elastic.loading.button:after,
 .ui.blue.elastic.loading.loading.loading:not(.segment):before,
 .ui.blue.elastic.loading.loading.loading .input > i.icon:before,
 .ui.blue.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21258,6 +21276,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.violet.elastic.loader.loader:before,
+.ui.violet.basic.elastic.loading.button:before,
+.ui.violet.basic.elastic.loading.button:after,
 .ui.violet.elastic.loading.loading.loading:not(.segment):before,
 .ui.violet.elastic.loading.loading.loading .input > i.icon:before,
 .ui.violet.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21279,6 +21299,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.purple.elastic.loader.loader:before,
+.ui.purple.basic.elastic.loading.button:before,
+.ui.purple.basic.elastic.loading.button:after,
 .ui.purple.elastic.loading.loading.loading:not(.segment):before,
 .ui.purple.elastic.loading.loading.loading .input > i.icon:before,
 .ui.purple.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21300,6 +21322,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.pink.elastic.loader.loader:before,
+.ui.pink.basic.elastic.loading.button:before,
+.ui.pink.basic.elastic.loading.button:after,
 .ui.pink.elastic.loading.loading.loading:not(.segment):before,
 .ui.pink.elastic.loading.loading.loading .input > i.icon:before,
 .ui.pink.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21321,6 +21345,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.brown.elastic.loader.loader:before,
+.ui.brown.basic.elastic.loading.button:before,
+.ui.brown.basic.elastic.loading.button:after,
 .ui.brown.elastic.loading.loading.loading:not(.segment):before,
 .ui.brown.elastic.loading.loading.loading .input > i.icon:before,
 .ui.brown.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21342,6 +21368,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.grey.elastic.loader.loader:before,
+.ui.grey.basic.elastic.loading.button:before,
+.ui.grey.basic.elastic.loading.button:after,
 .ui.grey.elastic.loading.loading.loading:not(.segment):before,
 .ui.grey.elastic.loading.loading.loading .input > i.icon:before,
 .ui.grey.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21363,6 +21391,8 @@ ol.ui.horizontal.list li:before,
 }
 
 .ui.black.elastic.loader.loader:before,
+.ui.black.basic.elastic.loading.button:before,
+.ui.black.basic.elastic.loading.button:after,
 .ui.black.elastic.loading.loading.loading:not(.segment):before,
 .ui.black.elastic.loading.loading.loading .input > i.icon:before,
 .ui.black.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -21394,8 +21424,13 @@ ol.ui.horizontal.list li:before,
   border-color: currentColor;
 }
 
-.ui.elastic.loading.loading.loading.loading.button:not(.inverted):before {
+.ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic):before {
   color: #FFFFFF;
+}
+
+.ui.elastic.basic.loading.button:before,
+.ui.elastic.basic.loading.button:after {
+  color: #767676;
 }
 
 .ui.double.loading.loading.loading.loading.button:after {
@@ -28945,7 +28980,7 @@ Floated Menu / Item
 
 /* Inverted */
 
-.ui.secondary.inverted.menu {
+.ui.secondary.inverted.menu.menu {
   background-color: transparent;
 }
 
