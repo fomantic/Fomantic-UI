@@ -9,6 +9,14 @@ With 2019 around the corner and a lot of discussion we (core contributors) have 
 - With this release we removed the dependency of `prompt-sui` which removes the child dependency of `event-stream` this ensures that the library won't be downloading any (now deprecated) malicious code. If you want to learn more about the recent security issues with `event-stream` please read [this issue](https://github.com/fomantic/Fomantic-UI/issues/268).
 - In this release we had a big focus on removing a lot of the `!important` usage which inturn produced lots of issues. Now with a big help from our core contributors we have removed ~85% of the usage and reduced the complexity of a lot of the color code base which makes it easier to make changes and helps reduce the size of the general code base aswell as removing duplicate code.
 
+**UPGRADE NOTES:**
+Gulp 4.0 introduced a new syntax to define tasks, that's why we had to introduce some changes to our gulpfile.js.
+
+The new gulpfile.js can be found under `tasks\config\npm\gulpfile.js`. If you haven't changed the generated gulpfile.js in your fomantic destination folder you can just replace it with the new one. Otherwise you have to adopt the changes introduced in the file yourself.
+
+For example if your fomantic destination directory is `semantic`:
+- semantic\tasks\config\npm\gulpfile.js => semantic\gulpfile.js
+
 **Major Enhancements**
 - **Build** - Added support for gulp4 **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#179](https://github.com/fomantic/Fomantic-UI/pull/179)
 - **Slider** - Previously known as range the slider component has been renamed **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
