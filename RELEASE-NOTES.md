@@ -1,5 +1,71 @@
 ## RELEASE NOTES
 
+### Version 2.7.0 - December 21, 2018
+
+### Announcement
+With 2019 around the corner and a lot of discussion we (core contributors) have agreed to move our core focus to FUI v3.0. This doesn't mean we won't be working on 2.x but means releases may be slowed down a little due to more work being put into v3.0. You can read more about the future of FUI and v3.0 [here](https://github.com/fomantic/Fomantic-UI/issues/319)
+
+**NOTES:**
+- With this release we removed the dependency of `prompt-sui` which removes the child dependency of `event-stream` this ensures that the library won't be downloading any (now deprecated) malicious code. If you want to learn more about the recent security issues with `event-stream` please read [this issue](https://github.com/fomantic/Fomantic-UI/issues/268).
+- In this release we had a big focus on removing a lot of the `!important` usage which inturn produced lots of issues. Now with a big help from our core contributors we have removed ~85% of the usage and reduced the complexity of a lot of the color code base which makes it easier to make changes and helps reduce the size of the general code base aswell as removing duplicate code.
+
+**Major Enhancements**
+- **Build** - Added support for gulp4 **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#179](https://github.com/fomantic/Fomantic-UI/pull/179)
+- **Slider** - Previously known as range the slider component has been renamed **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Global** - Removed deprecated jQuery functions and replaced them with custom ones **Thanks [@lubber-de](https://github.com/lubber-de)** [#282](https://github.com/fomantic/Fomantic-UI/pull/282)
+
+**Enhancements**
+- **Slider** - Added ability to have smooth or stepped sliders **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added ability to label sliders which can be smooth or stepped at the label **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added ability to have nonrestrictive steps **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added ability to reverse sliders **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added new size variations **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added keyboard support **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added basic and basic inverted variations **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added vertical slider with all features **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Slider** - Added a range slider variation (yes an actual range slider) **Thanks [@prudho](https://github.com/prudho)** [#290](https://github.com/fomantic/Fomantic-UI/pull/290)
+- **Loader** - Added double variation **Thanks [@lubber-de](https://github.com/lubber-de)** [#301](https://github.com/fomantic/Fomantic-UI/pull/301)
+- **Loader** - Added elastic variation **Thanks [@lubber-de](https://github.com/lubber-de)** [#301](https://github.com/fomantic/Fomantic-UI/pull/301)
+- **Loader** - Added dimmer support **Thanks [@lubber-de](https://github.com/lubber-de)** [#301](https://github.com/fomantic/Fomantic-UI/pull/301)
+- **Loader** - Loader will show same color as colored segments when inside loading segments **Thanks [@lubber-de](https://github.com/lubber-de)** [#301](https://github.com/fomantic/Fomantic-UI/pull/301)
+- **Rating** - Added ability to change the icon to any supported icon and change to any supported color **Thanks [@lubber-de](https://github.com/lubber-de)** [#303](https://github.com/fomantic/Fomantic-UI/pull/303)
+- **Input** - Add support for error label state with labeled inputs **Thanks [@prudho](https://github.com/prudho)** [#257](https://github.com/fomantic/Fomantic-UI/issues/257)
+- **TextArea** - Added support for corner labels and icons **Thanks [@lubber-de](https://github.com/lubber-de)** [#276](https://github.com/fomantic/Fomantic-UI/pull/276)
+- **Search** - Added support for API results to be an array instead of needing be wrapped **Thanks [@lubber-de](https://github.com/lubber-de)** [#263](https://github.com/fomantic/Fomantic-UI/issues/263)
+- **Label** - Added support for inverted, basic grouping and basic tag labels **Thanks [@lubber-de](https://github.com/lubber-de)** [#116](https://github.com/fomantic/Fomantic-UI/issues/116)
+- **Toast** - Correct the colors and make them more consistant with other components **Thanks [@lubber-de](https://github.com/lubber-de)** [#197](https://github.com/fomantic/Fomantic-UI/pull/197)
+- **Table** - Added ability to use all global colors in table cells **Thanks [@lubber-de](https://github.com/lubber-de)** [#261](https://github.com/fomantic/Fomantic-UI/pull/261)
+- **Text** - Added ability to add color to specific text **Thanks [@lubber-de](https://github.com/lubber-de)** [#261](https://github.com/fomantic/Fomantic-UI/pull/261)
+- **Calendar** - Added ability to add time gaps on time selector **Thanks [@prudho](https://github.com/prudho)** [#198](https://github.com/fomantic/Fomantic-UI/pull/198)
+
+**Bugs**
+- **Build** - Fixed bug which made gulp hang on `gulp build` when using newer versions of node **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#307](https://github.com/fomantic/Fomantic-UI/issues/307)
+- **Global** - Improved LESS and CSS for linters **Thanks [@hammy2899](https://github.com/hammy2899)** [#292](https://github.com/fomantic/Fomantic-UI/pull/292)
+- **Global** - Fixed some compiled CSS errors **Thanks [@prudho](https://github.com/prudho)** [#275](https://github.com/fomantic/Fomantic-UI/pull/275)
+- **Dropdown** - Fixed issue with not showing "no results" when filterRemoteData was false or response was empty **Thanks [@lubber-de](https://github.com/lubber-de)** [#300](https://github.com/fomantic/Fomantic-UI/pull/300)
+- **Dropdown** - Fixed issue with preselected values being ignored when data value fields had different names **Thanks [@lubber-de](https://github.com/lubber-de)** [#285](https://github.com/fomantic/Fomantic-UI/pull/285)
+- **Dropdown** - Fixed issue with submenu positions **Thanks [@lubber-de](https://github.com/lubber-de)** [#194](https://github.com/fomantic/Fomantic-UI/issues/194)
+- **Dropdown** - Fixed issue which stopped already selected items from filtering from a remote API **Thanks [@lubber-de](https://github.com/lubber-de)** [#287](https://github.com/fomantic/Fomantic-UI/pull/287)
+- **Dropdown** - Fixed clearable dropdown initialized with HTML select always showing the clear icon **Thanks [@lubber-de](https://github.com/lubber-de)** [#271](https://github.com/fomantic/Fomantic-UI/issues/271)
+- **Dropdown** - Fixed issue with enter key and multiple variation dropdowns with `allowAdditions` **Thanks [@lubber-de](https://github.com/lubber-de)** [#250](https://github.com/fomantic/Fomantic-UI/pull/250)
+- **Modal** - Fixed top header border radius **Thanks [@lubber-de](https://github.com/lubber-de)** [#308](https://github.com/fomantic/Fomantic-UI/issues/308)
+- **Modal** - Fixed issue with modal dimnmers closing when clicked even when `onHide` returned `false` when `allowMultiple` was `true` **Thanks [@lubber-de](https://github.com/lubber-de)** [#284](https://github.com/fomantic/Fomantic-UI/issues/284)
+- **Modal** - Fixed touch scrolling issue for dropdown, focused input and  content scrolling **Thanks [@lubber-de](https://github.com/lubber-de)** [#273](https://github.com/fomantic/Fomantic-UI/pull/273)
+- **Checkbox** - Support onChange for cursor key navigation **Thanks [@lubber-de](https://github.com/lubber-de)** [#295](https://github.com/fomantic/Fomantic-UI/pull/295)
+- **Visibility** - Fixed issue with sticky content having large placeholders **Thanks [@hammy2899](https://github.com/hammy2899)** [#296](https://github.com/fomantic/Fomantic-UI/issues/296)
+- **Form** - Fixed issue causing validation to break when id's had colon's in them **Thanks [@lubber-de](https://github.com/lubber-de)** [#286](https://github.com/fomantic/Fomantic-UI/pull/286)
+- **Message** - Fixed issue causing compact icon variation from having a 100% width **Thanks [@lubber-de](https://github.com/lubber-de)** [#279](https://github.com/fomantic/Fomantic-UI/pull/279)
+- **List** - Fixed issue with list conflicting with list icons **Thanks [@lubber-de](https://github.com/lubber-de)** [#281](https://github.com/fomantic/Fomantic-UI/pull/281)
+- **Popup** - Fixed correct usage for `addTouchEvents` **Thanks [@lubber-de](https://github.com/lubber-de)** [#278](https://github.com/fomantic/Fomantic-UI/pull/278)
+- **Table** - Fixed issue with images in table cells not working **Thanks [@lubber-de](https://github.com/lubber-de)** [#227](https://github.com/fomantic/Fomantic-UI/issues/227)
+- **Table** - Fixed table wide vertical text alignment **Thanks [@lubber-de](https://github.com/lubber-de)** [#251](https://github.com/fomantic/Fomantic-UI/pull/251)
+- **Placeholder** - Fixed issue with `image icon` getting wrong height applied **Thanks [@lubber-de](https://github.com/lubber-de)** [#248](https://github.com/fomantic/Fomantic-UI/pull/248)
+
+**Security**
+- **Search** - Added more support for escaping insecure characters, handling untrusted data and preventing JS execution  **Thanks [@lubber-de](https://github.com/lubber-de)** [#298](https://github.com/fomantic/Fomantic-UI/pull/298)
+- **Dropdown** - Added more support for escaping insecure characters, handling untrusted data and preventing JS execution **Thanks [@lubber-de](https://github.com/lubber-de)** [#298](https://github.com/fomantic/Fomantic-UI/pull/298)
+- **Build** - Removed `prompt-sui` which inturn removes `event-stream` **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#309](https://github.com/fomantic/Fomantic-UI/pull/309)
+
 ### Version 2.6.4 - November 15, 2018
 
 **Enhancements**

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Item
+ * # Semantic UI 2.7.0 - Item
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22,13 +22,13 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: 1em 0em;
+  margin: 1em 0;
   width: 100%;
-  min-height: 0px;
+  min-height: 0;
   background: transparent;
-  padding: 0em;
+  padding: 0;
   border: none;
-  border-radius: 0rem;
+  border-radius: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-transition: -webkit-box-shadow 0.1s ease;
@@ -46,13 +46,13 @@
 ---------------*/
 
 .ui.items {
-  margin: 1.5em 0em;
+  margin: 1.5em 0;
 }
 .ui.items:first-child {
-  margin-top: 0em !important;
+  margin-top: 0 !important;
 }
 .ui.items:last-child {
-  margin-bottom: 0em !important;
+  margin-bottom: 0 !important;
 }
 
 /*--------------
@@ -62,16 +62,16 @@
 .ui.items > .item:after {
   display: block;
   content: ' ';
-  height: 0px;
+  height: 0;
   clear: both;
   overflow: hidden;
   visibility: hidden;
 }
 .ui.items > .item:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 .ui.items > .item:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -85,11 +85,11 @@
           flex: 0 0 auto;
   display: block;
   float: none;
-  margin: 0em;
-  padding: 0em;
+  margin: 0;
+  padding: 0;
   max-height: '';
-  -ms-flex-item-align: top;
-      align-self: top;
+  -ms-flex-item-align: start;
+      align-self: start;
 }
 .ui.items > .item > .image > img {
   display: block;
@@ -99,7 +99,7 @@
   border: none;
 }
 .ui.items > .item > .image:only-child > img {
-  border-radius: 0rem;
+  border-radius: 0;
 }
 
 /*--------------
@@ -113,18 +113,18 @@
           flex: 1 1 auto;
   background: none;
   color: rgba(0, 0, 0, 0.87);
-  margin: 0em;
-  padding: 0em;
+  margin: 0;
+  padding: 0;
   -webkit-box-shadow: none;
           box-shadow: none;
   font-size: 1em;
   border: none;
-  border-radius: 0em;
+  border-radius: 0;
 }
 .ui.items > .item > .content:after {
   display: block;
   content: ' ';
-  height: 0px;
+  height: 0;
   clear: both;
   overflow: hidden;
   visibility: hidden;
@@ -133,14 +133,14 @@
   min-width: 0;
   width: auto;
   display: block;
-  margin-left: 0em;
-  -ms-flex-item-align: top;
-      align-self: top;
+  margin-left: 0;
+  -ms-flex-item-align: start;
+      align-self: start;
   padding-left: 1.5em;
 }
 .ui.items > .item > .content > .header {
   display: inline-block;
-  margin: -0.21425em 0em 0em;
+  margin: -0.21425em 0 0;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
@@ -167,8 +167,8 @@
 ---------------*/
 
 .ui.items > .item .content img {
-  -ms-flex-item-align: middle;
-      align-self: middle;
+  -ms-flex-item-align: center;
+      align-self: center;
   width: '';
 }
 .ui.items > .item img.avatar,
@@ -195,10 +195,10 @@
 ---------------*/
 
 .ui.items > .item > .content p {
-  margin: 0em 0em 0.5em;
+  margin: 0 0 0.5em;
 }
 .ui.items > .item > .content p:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -206,7 +206,7 @@
 ---------------*/
 
 .ui.items > .item .meta {
-  margin: 0.5em 0em 0.5em;
+  margin: 0.5em 0 0.5em;
   font-size: 1em;
   line-height: 1em;
   color: rgba(0, 0, 0, 0.6);
@@ -215,10 +215,10 @@
   margin-right: 0.3em;
 }
 .ui.items > .item .meta :last-child {
-  margin-right: 0em;
+  margin-right: 0;
 }
 .ui.items > .item .meta [class*="right floated"] {
-  margin-right: 0em;
+  margin-right: 0;
   margin-left: 0.3em;
 }
 
@@ -302,11 +302,11 @@
   display: block;
   position: relative;
   background: none;
-  margin: 0.5rem 0em 0em;
+  margin: 0.5rem 0 0;
   width: 100%;
-  padding: 0em 0em 0em;
-  top: 0em;
-  left: 0em;
+  padding: 0 0 0;
+  top: 0;
+  left: 0;
   color: rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -315,15 +315,15 @@
   border-top: none;
 }
 .ui.items > .item .extra > * {
-  margin: 0.25rem 0.5rem 0.25rem 0em;
+  margin: 0.25rem 0.5rem 0.25rem 0;
 }
 .ui.items > .item .extra > [class*="right floated"] {
-  margin: 0.25rem 0em 0.25rem 0.5rem;
+  margin: 0.25rem 0 0.25rem 0.5rem;
 }
 .ui.items > .item .extra:after {
   display: block;
   content: ' ';
-  height: 0px;
+  height: 0;
   clear: both;
   overflow: hidden;
   visibility: hidden;
@@ -343,14 +343,14 @@
 /* Tablet Only */
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .ui.items > .item {
-    margin: 1em 0em;
+    margin: 1em 0;
   }
   .ui.items > .item > .image:not(.ui) {
     width: 150px;
   }
   .ui.items > .item > .image + .content {
     display: block;
-    padding: 0em 0em 0em 1em;
+    padding: 0 0 0 1em;
   }
 }
 
@@ -361,7 +361,7 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
-    margin: 2em 0em;
+    margin: 2em 0;
   }
   .ui.items:not(.unstackable) > .item > .image {
     display: block;
@@ -376,7 +376,7 @@
   }
   .ui.items:not(.unstackable) > .item > .image + .content {
     display: block;
-    padding: 1.5em 0em 0em;
+    padding: 1.5em 0 0;
   }
 }
 
@@ -408,10 +408,10 @@
 ---------------*/
 
 .ui.relaxed.items > .item {
-  margin: 1.5em 0em;
+  margin: 1.5em 0;
 }
 .ui[class*="very relaxed"].items > .item {
-  margin: 2em 0em;
+  margin: 2em 0;
 }
 
 /*-------------------
@@ -420,27 +420,27 @@
 
 .ui.divided.items > .item {
   border-top: 1px solid rgba(34, 36, 38, 0.15);
-  margin: 0em;
-  padding: 1em 0em;
+  margin: 0;
+  padding: 1em 0;
 }
 .ui.divided.items > .item:first-child {
   border-top: none;
-  margin-top: 0em !important;
-  padding-top: 0em !important;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 .ui.divided.items > .item:last-child {
-  margin-bottom: 0em !important;
-  padding-bottom: 0em !important;
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
 }
 
 /* Relaxed Divided */
 .ui.relaxed.divided.items > .item {
-  margin: 0em;
-  padding: 1.5em 0em;
+  margin: 0;
+  padding: 1.5em 0;
 }
 .ui[class*="very relaxed"].divided.items > .item {
-  margin: 0em;
-  padding: 2em 0em;
+  margin: 0;
+  padding: 2em 0;
 }
 
 /*-------------------

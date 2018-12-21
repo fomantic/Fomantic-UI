@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Site
+ * # Semantic UI 2.7.0 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22,8 +22,8 @@ html {
   font-size: 14px;
 }
 body {
-  margin: 0px;
-  padding: 0px;
+  margin: 0;
+  padding: 0;
   overflow-x: hidden;
   min-width: 320px;
   background: #FFFFFF;
@@ -46,9 +46,9 @@ h4,
 h5 {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   line-height: 1.28571429em;
-  margin: calc(2rem - 0.1428571428571429em) 0em 1rem;
+  margin: calc(2rem - 0.1428571428571429em) 0 1rem;
   font-weight: bold;
-  padding: 0em;
+  padding: 0;
 }
 h1 {
   min-height: 1rem;
@@ -71,14 +71,14 @@ h2:first-child,
 h3:first-child,
 h4:first-child,
 h5:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 h1:last-child,
 h2:last-child,
 h3:last-child,
 h4:last-child,
 h5:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 
@@ -87,14 +87,14 @@ h5:last-child {
 *******************************/
 
 p {
-  margin: 0em 0em 1em;
+  margin: 0 0 1em;
   line-height: 1.4285em;
 }
 p:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 p:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*-------------------
@@ -127,10 +127,6 @@ a:hover {
   background-color: #CCE2FF;
   color: rgba(0, 0, 0, 0.87);
 }
-::-moz-selection {
-  background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
-}
 ::selection {
   background-color: #CCE2FF;
   color: rgba(0, 0, 0, 0.87);
@@ -139,11 +135,6 @@ a:hover {
 /* Form */
 textarea::-webkit-selection,
 input::-webkit-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
-}
-textarea::-moz-selection,
-input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.87);
 }
@@ -161,7 +152,7 @@ body ::-webkit-scrollbar {
 }
 body ::-webkit-scrollbar-track {
   background: rgba(0, 0, 0, 0.1);
-  border-radius: 0px;
+  border-radius: 0;
 }
 body ::-webkit-scrollbar-thumb {
   cursor: pointer;

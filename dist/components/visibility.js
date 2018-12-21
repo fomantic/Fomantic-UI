@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Visibility
+ * # Semantic UI 2.7.0 - Visibility
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11,6 +11,10 @@
 ;(function ($, window, document, undefined) {
 
 'use strict';
+
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -1172,7 +1176,7 @@ $.fn.visibility = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
@@ -1297,7 +1301,7 @@ $.fn.visibility.settings = {
 
   className: {
     fixed       : 'fixed',
-    placeholder : 'placeholder',
+    placeholder : 'constraint',
     visible     : 'visible'
   },
 

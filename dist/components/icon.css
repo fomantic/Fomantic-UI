@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Icon
+ * # Semantic UI 2.7.0 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -26,7 +26,7 @@
 i.icon {
   display: inline-block;
   opacity: 1;
-  margin: 0em 0.25rem 0em 0em;
+  margin: 0 0.25rem 0 0;
   width: 1.18em;
   height: 1em;
   font-family: 'Icons';
@@ -35,7 +35,6 @@ i.icon {
   text-decoration: inherit;
   text-align: center;
   speak: none;
-  font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-backface-visibility: hidden;
@@ -112,7 +111,7 @@ i.disabled.icon {
 
 i.fitted.icon {
   width: auto;
-  margin: 0em !important;
+  margin: 0 !important;
 }
 
 /*-------------------
@@ -138,9 +137,9 @@ i.link.icons:hover {
 i.circular.icon {
   border-radius: 500em !important;
   line-height: 1 !important;
-  padding: 0.5em 0em !important;
-  -webkit-box-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+  padding: 0.5em 0 !important;
+  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
   width: 2em !important;
   height: 2em !important;
 }
@@ -228,9 +227,9 @@ i.bordered.icon {
   vertical-align: baseline;
   width: 2em;
   height: 2em;
-  padding: 0.5em 0em !important;
-  -webkit-box-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
-          box-shadow: 0em 0em 0em 0.1em rgba(0, 0, 0, 0.1) inset;
+  padding: 0.5em 0 !important;
+  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 }
 i.bordered.inverted.icon {
   border: none;
@@ -246,8 +245,8 @@ i.bordered.inverted.icon {
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: #1B1C1D !important;
-  color: #FFFFFF !important;
+  background-color: #1B1C1D;
+  color: #FFFFFF;
 }
 i.inverted.icon {
   color: #FFFFFF;
@@ -257,200 +256,170 @@ i.inverted.icon {
        Colors
 --------------------*/
 
-
-/* Primary */
 i.primary.icon {
-  color: #2185D0 !important;
+  color: #2185D0;
 }
 i.inverted.primary.icon {
-  color: #54C8FF !important;
+  color: #54C8FF;
 }
 i.inverted.bordered.primary.icon,
 i.inverted.circular.primary.icon {
-  background-color: #2185D0 !important;
-  color: #FFFFFF !important;
+  background-color: #2185D0;
+  color: #FFFFFF;
 }
-
-/* Secondary */
 i.secondary.icon {
-  color: #1B1C1D !important;
+  color: #1B1C1D;
 }
 i.inverted.secondary.icon {
-  color: #545454 !important;
+  color: #545454;
 }
 i.inverted.bordered.secondary.icon,
 i.inverted.circular.secondary.icon {
-  background-color: #1B1C1D !important;
-  color: #FFFFFF !important;
+  background-color: #1B1C1D;
+  color: #FFFFFF;
 }
-
-/* Red */
 i.red.icon {
-  color: #DB2828 !important;
+  color: #DB2828;
 }
 i.inverted.red.icon {
-  color: #FF695E !important;
+  color: #FF695E;
 }
 i.inverted.bordered.red.icon,
 i.inverted.circular.red.icon {
-  background-color: #DB2828 !important;
-  color: #FFFFFF !important;
+  background-color: #DB2828;
+  color: #FFFFFF;
 }
-
-/* Orange */
 i.orange.icon {
-  color: #F2711C !important;
+  color: #F2711C;
 }
 i.inverted.orange.icon {
-  color: #FF851B !important;
+  color: #FF851B;
 }
 i.inverted.bordered.orange.icon,
 i.inverted.circular.orange.icon {
-  background-color: #F2711C !important;
-  color: #FFFFFF !important;
+  background-color: #F2711C;
+  color: #FFFFFF;
 }
-
-/* Yellow */
 i.yellow.icon {
-  color: #FBBD08 !important;
+  color: #FBBD08;
 }
 i.inverted.yellow.icon {
-  color: #FFE21F !important;
+  color: #FFE21F;
 }
 i.inverted.bordered.yellow.icon,
 i.inverted.circular.yellow.icon {
-  background-color: #FBBD08 !important;
-  color: #FFFFFF !important;
+  background-color: #FBBD08;
+  color: #FFFFFF;
 }
-
-/* Olive */
 i.olive.icon {
-  color: #B5CC18 !important;
+  color: #B5CC18;
 }
 i.inverted.olive.icon {
-  color: #D9E778 !important;
+  color: #D9E778;
 }
 i.inverted.bordered.olive.icon,
 i.inverted.circular.olive.icon {
-  background-color: #B5CC18 !important;
-  color: #FFFFFF !important;
+  background-color: #B5CC18;
+  color: #FFFFFF;
 }
-
-/* Green */
 i.green.icon {
-  color: #21BA45 !important;
+  color: #21BA45;
 }
 i.inverted.green.icon {
-  color: #2ECC40 !important;
+  color: #2ECC40;
 }
 i.inverted.bordered.green.icon,
 i.inverted.circular.green.icon {
-  background-color: #21BA45 !important;
-  color: #FFFFFF !important;
+  background-color: #21BA45;
+  color: #FFFFFF;
 }
-
-/* Teal */
 i.teal.icon {
-  color: #00B5AD !important;
+  color: #00B5AD;
 }
 i.inverted.teal.icon {
-  color: #6DFFFF !important;
+  color: #6DFFFF;
 }
 i.inverted.bordered.teal.icon,
 i.inverted.circular.teal.icon {
-  background-color: #00B5AD !important;
-  color: #FFFFFF !important;
+  background-color: #00B5AD;
+  color: #FFFFFF;
 }
-
-/* Blue */
 i.blue.icon {
-  color: #2185D0 !important;
+  color: #2185D0;
 }
 i.inverted.blue.icon {
-  color: #54C8FF !important;
+  color: #54C8FF;
 }
 i.inverted.bordered.blue.icon,
 i.inverted.circular.blue.icon {
-  background-color: #2185D0 !important;
-  color: #FFFFFF !important;
+  background-color: #2185D0;
+  color: #FFFFFF;
 }
-
-/* Violet */
 i.violet.icon {
-  color: #6435C9 !important;
+  color: #6435C9;
 }
 i.inverted.violet.icon {
-  color: #A291FB !important;
+  color: #A291FB;
 }
 i.inverted.bordered.violet.icon,
 i.inverted.circular.violet.icon {
-  background-color: #6435C9 !important;
-  color: #FFFFFF !important;
+  background-color: #6435C9;
+  color: #FFFFFF;
 }
-
-/* Purple */
 i.purple.icon {
-  color: #A333C8 !important;
+  color: #A333C8;
 }
 i.inverted.purple.icon {
-  color: #DC73FF !important;
+  color: #DC73FF;
 }
 i.inverted.bordered.purple.icon,
 i.inverted.circular.purple.icon {
-  background-color: #A333C8 !important;
-  color: #FFFFFF !important;
+  background-color: #A333C8;
+  color: #FFFFFF;
 }
-
-/* Pink */
 i.pink.icon {
-  color: #E03997 !important;
+  color: #E03997;
 }
 i.inverted.pink.icon {
-  color: #FF8EDF !important;
+  color: #FF8EDF;
 }
 i.inverted.bordered.pink.icon,
 i.inverted.circular.pink.icon {
-  background-color: #E03997 !important;
-  color: #FFFFFF !important;
+  background-color: #E03997;
+  color: #FFFFFF;
 }
-
-/* Brown */
 i.brown.icon {
-  color: #A5673F !important;
+  color: #A5673F;
 }
 i.inverted.brown.icon {
-  color: #D67C1C !important;
+  color: #D67C1C;
 }
 i.inverted.bordered.brown.icon,
 i.inverted.circular.brown.icon {
-  background-color: #A5673F !important;
-  color: #FFFFFF !important;
+  background-color: #A5673F;
+  color: #FFFFFF;
 }
-
-/* Grey */
 i.grey.icon {
-  color: #767676 !important;
+  color: #767676;
 }
 i.inverted.grey.icon {
-  color: #DCDDDE !important;
+  color: #DCDDDE;
 }
 i.inverted.bordered.grey.icon,
 i.inverted.circular.grey.icon {
-  background-color: #767676 !important;
-  color: #FFFFFF !important;
+  background-color: #767676;
+  color: #FFFFFF;
 }
-
-/* Black */
 i.black.icon {
-  color: #1B1C1D !important;
+  color: #1B1C1D;
 }
 i.inverted.black.icon {
-  color: #545454 !important;
+  color: #545454;
 }
 i.inverted.bordered.black.icon,
 i.inverted.circular.black.icon {
-  background-color: #1B1C1D !important;
-  color: #FFFFFF !important;
+  background-color: #1B1C1D;
+  color: #FFFFFF;
 }
 
 /*-------------------
@@ -517,7 +486,6 @@ i.icons .icon {
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
-  margin: 0em;
   margin: 0;
 }
 i.icons .icon:first-child {

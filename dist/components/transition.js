@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Transition
+ * # Semantic UI 2.7.0 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11,6 +11,10 @@
 ;(function ($, window, document, undefined) {
 
 'use strict';
+
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -301,7 +305,7 @@ $.fn.transition = function() {
             var
               style = $module.attr('style') || ''
             ;
-            return $.isArray(style.match(/display.*?;/, ''));
+            return Array.isArray(style.match(/display.*?;/, ''));
           }
         },
 
@@ -998,7 +1002,7 @@ $.fn.transition = function() {
             response = found;
           }
 
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Accordion
+ * # Semantic UI 2.7.0 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18,8 +18,8 @@
   max-width: 100%;
 }
 .ui.accordion .accordion {
-  margin: 1em 0em 0em;
-  padding: 0em;
+  margin: 1em 0 0;
+  padding: 0;
 }
 
 /* Title */
@@ -30,7 +30,7 @@
 
 /* Default Styling */
 .ui.accordion .title:not(.ui) {
-  padding: 0.5em 0em;
+  padding: 0.5em 0;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1em;
   color: rgba(0, 0, 0, 0.87);
@@ -40,10 +40,10 @@
 .ui.accordion:not(.styled) .title ~ .content:not(.ui),
 .ui.accordion:not(.styled) .accordion .title ~ .content:not(.ui) {
   margin: '';
-  padding: 0.5em 0em 1em;
+  padding: 0.5em 0 1em;
 }
 .ui.accordion:not(.styled) .title ~ .content:not(.ui):last-child {
-  padding-bottom: 0em;
+  padding-bottom: 0;
 }
 
 /* Arrow */
@@ -54,8 +54,8 @@
   opacity: 1;
   width: 1.25em;
   height: 1em;
-  margin: 0em 0.25rem 0em 0rem;
-  padding: 0em;
+  margin: 0 0.25rem 0 0;
+  padding: 0;
   font-size: 1em;
   -webkit-transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
   transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
@@ -74,11 +74,11 @@
 /* Menu */
 .ui.accordion.menu .item .title {
   display: block;
-  padding: 0em;
+  padding: 0;
 }
 .ui.accordion.menu .item .title > .dropdown.icon {
   float: right;
-  margin: 0.21425em 0em 0em 1em;
+  margin: 0.21425em 0 0 1em;
   -webkit-transform: rotate(180deg);
           transform: rotate(180deg);
 }
@@ -86,7 +86,7 @@
 /* Header */
 .ui.accordion .ui.header .dropdown.icon {
   font-size: 1em;
-  margin: 0em 0.25rem 0em 0rem;
+  margin: 0 0.25rem 0 0;
 }
 
 
@@ -121,12 +121,12 @@
 .ui.styled.accordion .accordion {
   border-radius: 0.28571429rem;
   background: #FFFFFF;
-  -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15);
-          box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15);
 }
 .ui.styled.accordion .title,
 .ui.styled.accordion .accordion .title {
-  margin: 0em;
+  margin: 0;
   padding: 0.75em 1em;
   color: rgba(0, 0, 0, 0.4);
   font-weight: bold;
@@ -142,11 +142,11 @@
 /* Content */
 .ui.styled.accordion .content,
 .ui.styled.accordion .accordion .content {
-  margin: 0em;
+  margin: 0;
   padding: 0.5em 1em 1.5em;
 }
 .ui.styled.accordion .accordion .content {
-  padding: 0em;
+  margin: 0;
   padding: 0.5em 1em 1.5em;
 }
 
