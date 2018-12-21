@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Modal
+ * # Semantic UI 2.7.0 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20,8 +20,8 @@
   text-align: left;
   background: #FFFFFF;
   border: none;
-  -webkit-box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
-          box-shadow: 1px 3px 3px 0px rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 1px 3px 3px 0 rgba(0, 0, 0, 0.2), 1px 3px 15px 2px rgba(0, 0, 0, 0.2);
   -webkit-transform-origin: 50% 25%;
           transform-origin: 50% 25%;
   -webkit-box-flex: 0;
@@ -34,8 +34,10 @@
           user-select: text;
   will-change: top, left, margin, transform, opacity;
 }
-.ui.modal > :first-child:not(.icon),
-.ui.modal > .icon:first-child + * {
+.ui.modal > :first-child:not(.icon):not(.dimmer),
+.ui.modal > .icon:first-child + *,
+.ui.modal > .dimmer:first-child + *:not(.icon),
+.ui.modal > .dimmer:first-child + .icon + * {
   border-top-left-radius: 0.28571429rem;
   border-top-right-radius: 0.28571429rem;
 }
@@ -65,7 +67,7 @@
   color: #FFFFFF;
   width: 2.25rem;
   height: 2.25rem;
-  padding: 0.625rem 0rem 0rem 0rem;
+  padding: 0.625rem 0 0 0;
 }
 .ui.modal > .close:hover {
   opacity: 1;
@@ -79,7 +81,7 @@
   display: block;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   background: #FFFFFF;
-  margin: 0em;
+  margin: 0;
   padding: 1.25rem 1.5rem;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -123,17 +125,17 @@
       -ms-flex: 0 1 auto;
           flex: 0 1 auto;
   width: '';
-  -ms-flex-item-align: top;
-      align-self: top;
+  -ms-flex-item-align: start;
+      align-self: start;
   max-width: 100%;
 }
 .ui.modal > [class*="top aligned"] {
-  -ms-flex-item-align: top;
-      align-self: top;
+  -ms-flex-item-align: start;
+      align-self: start;
 }
 .ui.modal > [class*="middle aligned"] {
-  -ms-flex-item-align: middle;
-      align-self: middle;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 .ui.modal > [class*="stretched"] {
   -ms-flex-item-align: stretch;
@@ -146,9 +148,9 @@
   -webkit-box-flex: 1;
       -ms-flex: 1 0 auto;
           flex: 1 0 auto;
-  min-width: 0px;
-  -ms-flex-item-align: top;
-      align-self: top;
+  min-width: 0;
+  -ms-flex-item-align: start;
+      align-self: start;
 }
 .ui.modal > .content > .icon + .description,
 .ui.modal > .content > .image + .description {
@@ -161,7 +163,7 @@
 }
 /*rtl:ignore*/
 .ui.modal > .content > .image > i.icon {
-  margin: 0em;
+  margin: 0;
   opacity: 1;
   width: auto;
   line-height: 1;
@@ -194,31 +196,31 @@
 @media only screen and (max-width: 767px) {
   .ui.modal {
     width: 95%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.modal {
     width: 88%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.modal {
     width: 850px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1200px) {
   .ui.modal {
     width: 900px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.modal {
     width: 950px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 
@@ -258,9 +260,9 @@
   .ui.modal .content > .image {
     display: block;
     max-width: 100%;
-    margin: 0em auto !important;
+    margin: 0 auto !important;
     text-align: center;
-    padding: 0rem 0rem 1rem !important;
+    padding: 0 0 1rem !important;
   }
   .ui.modal > .content > .image > i.icon {
     font-size: 5rem;
@@ -270,8 +272,8 @@
   .ui.modal .content > .description {
     display: block;
     width: 100% !important;
-    margin: 0em !important;
-    padding: 1rem 0rem !important;
+    margin: 0 !important;
+    padding: 1rem 0 !important;
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -303,7 +305,7 @@
 .ui.basic.modal {
   background-color: transparent;
   border: none;
-  border-radius: 0em;
+  border-radius: 0;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   color: #FFFFFF;
@@ -425,7 +427,7 @@
 
 /* Scrolling Content */
 .ui.modal .scrolling.content {
-  max-height: calc(70vh);
+  max-height: calc(80vh - 10em);
   overflow: auto;
 }
 
@@ -467,31 +469,31 @@
 @media only screen and (max-width: 767px) {
   .ui.mini.modal {
     width: 95%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.mini.modal {
     width: 35.2%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.mini.modal {
     width: 340px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1200px) {
   .ui.mini.modal {
     width: 360px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.mini.modal {
     width: 380px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 
@@ -504,31 +506,31 @@
 @media only screen and (max-width: 767px) {
   .ui.tiny.modal {
     width: 95%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.tiny.modal {
     width: 52.8%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.tiny.modal {
     width: 510px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1200px) {
   .ui.tiny.modal {
     width: 540px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.tiny.modal {
     width: 570px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 
@@ -541,31 +543,31 @@
 @media only screen and (max-width: 767px) {
   .ui.small.modal {
     width: 95%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.small.modal {
     width: 70.4%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.small.modal {
     width: 680px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1200px) {
   .ui.small.modal {
     width: 720px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.small.modal {
     width: 760px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 
@@ -576,31 +578,31 @@
 @media only screen and (max-width: 767px) {
   .ui.large.modal {
     width: 95%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 768px) {
   .ui.large.modal {
     width: 88%;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 992px) {
   .ui.large.modal {
     width: 1020px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1200px) {
   .ui.large.modal {
     width: 1080px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 @media only screen and (min-width: 1920px) {
   .ui.large.modal {
     width: 1140px;
-    margin: 0em 0em 0em 0em;
+    margin: 0 0 0 0;
   }
 }
 

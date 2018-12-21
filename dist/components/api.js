@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - API
+ * # Semantic UI 2.7.0 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11,6 +11,10 @@
 ;(function ($, window, document, undefined) {
 
 'use strict';
+
+$.isWindow = $.isWindow || function(obj) {
+  return obj != null && obj === obj.window;
+};
 
 var
   window = (typeof window != 'undefined' && window.Math == Math)
@@ -481,7 +485,7 @@ $.api = $.fn.api = function(parameters) {
                 elapsedTime        = (new Date().getTime() - requestStartTime),
                 timeLeft           = (settings.loadingDuration - elapsedTime),
                 translatedResponse = ( $.isFunction(settings.onResponse) )
-                  ? module.is.expectingJSON()
+                  ? module.is.expectingJSON() && !settings.rawResponse
                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                     : settings.onResponse.call(context, response)
                   : false
@@ -990,7 +994,7 @@ $.api = $.fn.api = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
@@ -1096,6 +1100,9 @@ $.api.settings = {
   // aliases for mock
   response          : false,
   responseAsync     : false,
+
+// whether onResponse should work with response value without force converting into an object
+  rawResponse       : false,
 
   // callbacks before request
   beforeSend  : function(settings) { return settings; },

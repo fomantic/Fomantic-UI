@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Image
+ * # Semantic UI 2.7.0 - Image
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -178,10 +178,10 @@ img.ui.bordered.image {
 }
 .ui[class*="left spaced"].image {
   margin-left: 0.5em;
-  margin-right: 0em;
+  margin-right: 0;
 }
 .ui[class*="right spaced"].image {
-  margin-left: 0em;
+  margin-left: 0;
   margin-right: 0.5em;
 }
 
@@ -198,13 +198,13 @@ img.ui.bordered.image {
 .ui.right.floated.images,
 .ui.right.floated.image {
   float: right;
-  margin-right: 0em;
+  margin-right: 0;
   margin-bottom: 1em;
   margin-left: 1em;
 }
 .ui.floated.images:last-child,
 .ui.floated.image:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 .ui.centered.images,
 .ui.centered.image {
@@ -287,14 +287,14 @@ img.ui.bordered.image {
 *******************************/
 
 .ui.images {
-  font-size: 0em;
-  margin: 0em -0.25rem 0rem;
+  font-size: 0;
+  margin: 0 -0.25rem 0;
 }
 .ui.images .image,
 .ui.images > img,
 .ui.images > svg {
   display: inline-block;
-  margin: 0em 0.25rem 0.5rem;
+  margin: 0 0.25rem 0.5rem;
 }
 
 

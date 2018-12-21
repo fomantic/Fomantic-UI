@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Divider
+ * # Semantic UI 2.7.0 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14,9 +14,9 @@
 *******************************/
 
 .ui.divider {
-  margin: 1rem 0rem;
+  margin: 1rem 0;
   line-height: 1;
-  height: 0em;
+  height: 0;
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -85,11 +85,11 @@
   z-index: 2;
   top: 50%;
   left: 50%;
-  margin: 0rem;
-  padding: 0em;
+  margin: 0;
+  padding: 0;
   width: auto;
   height: 50%;
-  line-height: 0em;
+  line-height: 0;
   text-align: center;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -102,7 +102,7 @@
   z-index: 3;
   border-left: 1px solid rgba(34, 36, 38, 0.15);
   border-right: 1px solid rgba(255, 255, 255, 0.1);
-  width: 0%;
+  width: 0;
   height: calc(100% - 1rem);
 }
 .ui.vertical.divider:before {
@@ -110,7 +110,7 @@
 }
 .ui.vertical.divider:after {
   top: auto;
-  bottom: 0px;
+  bottom: 0;
 }
 
 /* Inside grid */
@@ -159,7 +159,7 @@
 ---------------*/
 
 .ui.divider > .icon {
-  margin: 0rem;
+  margin: 0;
   font-size: 1rem;
   height: 1em;
   vertical-align: middle;
@@ -206,7 +206,7 @@
 ---------------*/
 
 .ui.fitted.divider {
-  margin: 0em;
+  margin: 0;
 }
 
 /*--------------

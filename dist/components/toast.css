@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Toast
+ * # Semantic UI 2.7.0 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -29,8 +29,8 @@
 }
 .ui.top.center.toast-container {
   left: 50%;
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   top: 0.85714286em;
 }
 .ui.bottom.right.toast-container {
@@ -45,8 +45,8 @@
 }
 .ui.bottom.center.toast-container {
   left: 50%;
-  -webkit-transform: translate(-50%, 0%);
-          transform: translate(-50%, 0%);
+  -webkit-transform: translate(-50%, 0);
+          transform: translate(-50%, 0);
   bottom: 0.85714286em;
 }
 
@@ -64,12 +64,12 @@
 }
 .floating.toast,
 .hoverfloating.toast:hover {
-  -webkit-box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
-          box-shadow: 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .hoverfloating.message:hover {
-  -webkit-box-shadow: 0 0 0 1px inset, 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
-          box-shadow: 0 0 0 1px inset, 0px 2px 4px 0px rgba(34, 36, 38, 0.12), 0px 2px 10px 0px rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 0 0 1px inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 0 0 1px inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .center.toast-container .toast-box,
 .right.toast-container .toast-box {
@@ -95,7 +95,7 @@
 .icon.toast .content {
   padding-left: 3em;
 }
-.toast > .content > .title {
+.toast > .content > .header {
   font-weight: bold;
 }
 .info.toast {
@@ -127,6 +127,20 @@
      Colors
 -------------- */
 
+.primary.toast {
+  background-color: #2185D0;
+}
+.inverted.primary.toast,
+.toast-box .inverted.primary.attached.progress .bar {
+  background-color: #54C8FF;
+}
+.secondary.toast {
+  background-color: #1B1C1D;
+}
+.inverted.secondary.toast,
+.toast-box .inverted.secondary.attached.progress .bar {
+  background-color: #545454;
+}
 .red.toast {
   background-color: #DB2828;
 }
@@ -218,11 +232,8 @@
 .toast-box .inverted.black.attached.progress .bar {
   background-color: #545454;
 }
-.inverted.yellow.toast,
-.inverted.olive.toast,
-.inverted.teal.toast,
-.inverted.grey.toast {
-  color: #000000;
+.inverted.toast {
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /*--------------
@@ -245,7 +256,7 @@
  ----------------*/
 
 .toast-box .attached.progress .bar {
-  min-width: 0%;
+  min-width: 0;
 }
 .toast-box .active.progress .bar:after {
   -webkit-animation: progress-active 2s ease infinite !important;
