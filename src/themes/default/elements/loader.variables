@@ -17,8 +17,8 @@
 @loaderTopOffset: 50%;
 @loaderLeftOffset: 50%;
 
-@shapeBorderColor: @loaderLineColor transparent transparent;
-@invertedShapeBorderColor: @invertedLoaderLineColor transparent transparent;
+@shapeBorderColor: @loaderLineColor;
+@invertedShapeBorderColor: @invertedLoaderLineColor;
 
 /*-------------------
         Types

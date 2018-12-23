@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Loader
+ * # Semantic UI 2.7.0 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20,9 +20,9 @@
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
   background-color: #FFFFFF;
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.08)), color-stop(15%, rgba(0, 0, 0, 0.15)), color-stop(30%, rgba(0, 0, 0, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0.08)), color-stop(15%, rgba(0, 0, 0, 0.15)), color-stop(30%, rgba(0, 0, 0, 0.08)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
   background-size: 1200px 100%;
   max-width: 30rem;
 }
@@ -73,18 +73,18 @@
 }
 
 /* Image */
-.ui.placeholder .image:not(.header):not(.ui) {
+.ui.placeholder .image:not(.header):not(.ui):not(.icon) {
   height: 100px;
 }
 .ui.placeholder .square.image:not(.header) {
-  height: 0px;
+  height: 0;
   overflow: hidden;
   
 /* 1/1 aspect ratio */
   padding-top: 100%;
 }
 .ui.placeholder .rectangular.image:not(.header) {
-  height: 0px;
+  height: 0;
   overflow: hidden;
   
 /* 4/3 aspect ratio */
@@ -104,10 +104,10 @@
   background-color: inherit;
 }
 .ui.placeholder .line:before {
-  left: 0px;
+  left: 0;
 }
 .ui.placeholder .line:after {
-  right: 0px;
+  right: 0;
 }
 
 /* Any Lines */
@@ -130,7 +130,7 @@
 
 /* Line Outdent */
 .ui.placeholder .line:nth-child(1):after {
-  width: 0%;
+  width: 0;
 }
 .ui.placeholder .line:nth-child(2):after {
   width: 50%;
@@ -192,9 +192,9 @@
 
 /* Inverted Content Loader */
 .ui.inverted.placeholder {
-  background-image: -webkit-gradient(linear, left top, right top, from(rgba(255, 255, 255, 0.08)), color-stop(15%, rgba(255, 255, 255, 0.14)), color-stop(30%, rgba(255, 255, 255, 0.08)));
-  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(255, 255, 255, 0.08)), color-stop(15%, rgba(255, 255, 255, 0.14)), color-stop(30%, rgba(255, 255, 255, 0.08)));
+  background-image: -webkit-linear-gradient(left, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.08) 0, rgba(255, 255, 255, 0.14) 15%, rgba(255, 255, 255, 0.08) 30%);
 }
 .ui.inverted.placeholder,
 .ui.inverted.placeholder > :before,
@@ -215,7 +215,7 @@
 --------------------*/
 
 .ui.placeholder .full.line.line.line:after {
-  width: 0%;
+  width: 0;
 }
 .ui.placeholder .very.long.line.line.line:after {
   width: 10%;
@@ -240,3 +240,9 @@
 .ui.fluid.placeholder {
   max-width: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+

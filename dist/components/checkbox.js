@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Checkbox
+ * # Semantic UI 2.7.0 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11,6 +11,10 @@
 ;(function ($, window, document, undefined) {
 
 'use strict';
+
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -171,6 +175,11 @@ $.fn.checkbox = function(parameters) {
         },
 
         event: {
+          change: function(event) {
+            if( !module.should.ignoreCallbacks() ) {
+              settings.onChange.call(input);
+            }
+          },
           click: function(event) {
             var
               $target = $(event.target)
@@ -193,9 +202,36 @@ $.fn.checkbox = function(parameters) {
               keyCode = {
                 enter  : 13,
                 space  : 32,
-                escape : 27
+                escape : 27,
+                left   : 37,
+                up     : 38,
+                right  : 39,
+                down   : 40
               }
             ;
+
+            var r = module.get.radios(),
+                rIndex = r.index($module),
+                rLen = r.length,
+                checkIndex = false;
+
+            if(key == keyCode.left || key == keyCode.up) {
+              checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
+            } else if(key == keyCode.right || key == keyCode.down) {
+              checkIndex = rIndex === rLen-1 ? 0 : rIndex+1;
+            }
+
+            if (!module.should.ignoreCallbacks() && checkIndex !== false) {
+              if(!settings.beforeUnchecked.apply(input)) {
+                module.verbose('Option not allowed to be unchecked, cancelling key navigation');
+                return false;
+              }
+              if (!settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0])) {
+                module.verbose('Next option should not allow check, cancelling key navigation');
+                return false;
+              }
+            }
+
             if(key == keyCode.escape) {
               module.verbose('Escape key pressed blurring field');
               $input.blur();
@@ -546,6 +582,7 @@ $.fn.checkbox = function(parameters) {
             module.verbose('Attaching checkbox events');
             $module
               .on('click'   + eventNamespace, module.event.click)
+              .on('change'  + eventNamespace, module.event.change)
               .on('keydown' + eventNamespace, selector.input, module.event.keydown)
               .on('keyup'   + eventNamespace, selector.input, module.event.keyup)
             ;
@@ -735,7 +772,7 @@ $.fn.checkbox = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

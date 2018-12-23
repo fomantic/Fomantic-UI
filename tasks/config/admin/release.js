@@ -94,7 +94,7 @@ module.exports = {
     'popup',
     'progress',
     'rail',
-    'range',
+    'slider',
     'rating',
     'reset',
     'reveal',
@@ -108,6 +108,7 @@ module.exports = {
     'sticky',
     'tab',
     'table',
+    'text',
     'toast',
     'transition',
     'visibility'

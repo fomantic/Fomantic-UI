@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Toast
+ * # Semantic UI 2.7.0 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11,6 +11,10 @@
 ;(function ($, window, document, undefined) {
 
 'use strict';
+
+$.isFunction = $.isFunction || function(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -467,7 +471,7 @@ $.fn.toast = function(parameters) {
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {
@@ -549,7 +553,7 @@ $.fn.toast.settings = {
     icon         : 'icon',
     visible      : 'visible',
     content      : 'content',
-    title        : 'title'
+    title        : 'header'
   },
 
   icons          : {

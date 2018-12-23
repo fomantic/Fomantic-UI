@@ -237,8 +237,8 @@ i.bordered.inverted.icon {
 /* Inverted Shapes */
 i.inverted.bordered.icon,
 i.inverted.circular.icon {
-  background-color: @black !important;
-  color: @white !important;
+  background-color: @black;
+  color: @white;
 }
 
 i.inverted.icon {
@@ -250,200 +250,24 @@ i.inverted.icon {
        Colors
 --------------------*/
 
-/* Primary */
-i.primary.icon {
-  color: @primaryColor !important;
-}
-i.inverted.primary.icon {
-  color: @lightPrimaryColor !important;
-}
-i.inverted.bordered.primary.icon,
-i.inverted.circular.primary.icon {
-  background-color: @primaryColor !important;
-  color: @white !important;
-}
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
 
-/* Secondary */
-i.secondary.icon {
-  color: @secondaryColor !important;
-}
-i.inverted.secondary.icon {
-  color: @lightSecondaryColor !important;
-}
-i.inverted.bordered.secondary.icon,
-i.inverted.circular.secondary.icon {
-  background-color: @secondaryColor !important;
-  color: @white !important;
-}
+  i.@{color}.icon {
+    color: @c;
+  }
+  i.inverted.@{color}.icon {
+    color: @l;
+  }
+  i.inverted.bordered.@{color}.icon,
+  i.inverted.circular.@{color}.icon {
+    background-color: @c;
+    color: @white;
+  }
+})
 
-/* Red */
-i.red.icon {
-  color: @red !important;
-}
-i.inverted.red.icon {
-  color: @lightRed !important;
-}
-i.inverted.bordered.red.icon,
-i.inverted.circular.red.icon {
-  background-color: @red !important;
-  color: @white !important;
-}
-
-/* Orange */
-i.orange.icon {
-  color: @orange !important;
-}
-i.inverted.orange.icon {
-  color: @lightOrange !important;
-}
-i.inverted.bordered.orange.icon,
-i.inverted.circular.orange.icon {
-  background-color: @orange !important;
-  color: @white !important;
-}
-
-/* Yellow */
-i.yellow.icon {
-  color: @yellow !important;
-}
-i.inverted.yellow.icon {
-  color: @lightYellow !important;
-}
-i.inverted.bordered.yellow.icon,
-i.inverted.circular.yellow.icon {
-  background-color: @yellow !important;
-  color: @white !important;
-}
-
-/* Olive */
-i.olive.icon {
-  color: @olive !important;
-}
-i.inverted.olive.icon {
-  color: @lightOlive !important;
-}
-i.inverted.bordered.olive.icon,
-i.inverted.circular.olive.icon {
-  background-color: @olive !important;
-  color: @white !important;
-}
-
-/* Green */
-i.green.icon {
-  color: @green !important;
-}
-i.inverted.green.icon {
-  color: @lightGreen !important;
-}
-i.inverted.bordered.green.icon,
-i.inverted.circular.green.icon {
-  background-color: @green !important;
-  color: @white !important;
-}
-
-/* Teal */
-i.teal.icon {
-  color: @teal !important;
-}
-i.inverted.teal.icon {
-  color: @lightTeal !important;
-}
-i.inverted.bordered.teal.icon,
-i.inverted.circular.teal.icon {
-  background-color: @teal !important;
-  color: @white !important;
-}
-
-/* Blue */
-i.blue.icon {
-  color: @blue !important;
-}
-i.inverted.blue.icon {
-  color: @lightBlue !important;
-}
-i.inverted.bordered.blue.icon,
-i.inverted.circular.blue.icon {
-  background-color: @blue !important;
-  color: @white !important;
-}
-
-/* Violet */
-i.violet.icon {
-  color: @violet !important;
-}
-i.inverted.violet.icon {
-  color: @lightViolet !important;
-}
-i.inverted.bordered.violet.icon,
-i.inverted.circular.violet.icon {
-  background-color: @violet !important;
-  color: @white !important;
-}
-
-/* Purple */
-i.purple.icon {
-  color: @purple !important;
-}
-i.inverted.purple.icon {
-  color: @lightPurple !important;
-}
-i.inverted.bordered.purple.icon,
-i.inverted.circular.purple.icon {
-  background-color: @purple !important;
-  color: @white !important;
-}
-
-/* Pink */
-i.pink.icon {
-  color: @pink !important;
-}
-i.inverted.pink.icon {
-  color: @lightPink !important;
-}
-i.inverted.bordered.pink.icon,
-i.inverted.circular.pink.icon {
-  background-color: @pink !important;
-  color: @white !important;
-}
-
-/* Brown */
-i.brown.icon {
-  color: @brown !important;
-}
-i.inverted.brown.icon {
-  color: @lightBrown !important;
-}
-i.inverted.bordered.brown.icon,
-i.inverted.circular.brown.icon {
-  background-color: @brown !important;
-  color: @white !important;
-}
-
-/* Grey */
-i.grey.icon {
-  color: @grey !important;
-}
-i.inverted.grey.icon {
-  color: @lightGrey !important;
-}
-i.inverted.bordered.grey.icon,
-i.inverted.circular.grey.icon {
-  background-color: @grey !important;
-  color: @white !important;
-}
-
-/* Black */
-i.black.icon {
-  color: @black !important;
-}
-i.inverted.black.icon {
-  color: @lightBlack !important;
-}
-i.inverted.bordered.black.icon,
-i.inverted.circular.black.icon {
-  background-color: @black !important;
-  color: @white !important;
-}
 
 /*-------------------
         Sizes

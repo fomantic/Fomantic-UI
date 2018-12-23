@@ -65,6 +65,7 @@ module.exports = {
     'reveal',
     'segment',
     'step',
+    'text',
 
     // collections
     'breadcrumb',
@@ -93,7 +94,7 @@ module.exports = {
     'nag',
     'popup',
     'progress',
-    'range',
+    'slider',
     'rating',
     'search',
     'shape',

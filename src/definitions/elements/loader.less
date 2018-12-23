@@ -55,35 +55,32 @@
   width: 100%;
   height: 100%;
 
-  animation: loader @loaderSpeed linear;
-  animation-iteration-count: infinite;
-
+  animation: loader @loaderSpeed infinite linear;
+  border: @loaderLineWidth solid @shapeBorderColor;
   border-radius: @circularRadius;
-
-  border-color: @shapeBorderColor;
-  border-style: solid;
-  border-width: @loaderLineWidth;
 
   box-shadow: 0 0 0 1px transparent;
 }
 
 /* Speeds */
+
+.ui.fast.loading.loading:after,
+.ui.fast.loading.loading .input > i.icon:after,
+.ui.fast.loading.loading > i.icon:after,
 .ui.fast.loader:after {
-  animation: loader @loaderSpeedFast linear;
-  animation-iteration-count: infinite;
+  animation-duration: @loaderSpeedFast;
 }
 
+.ui.slow.loading.loading:after,
+.ui.slow.loading.loading .input > i.icon:after,
+.ui.slow.loading.loading > i.icon:after,
 .ui.slow.loader:after {
-  animation: loader @loaderSpeedSlow linear;
-  animation-iteration-count: infinite;
+  animation-duration: @loaderSpeedSlow;
 }
 
 /* Active Animation */
 @keyframes loader {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
+  100% {
     transform: rotate(360deg);
   }
 }
@@ -151,22 +148,16 @@
 .ui.dimmer .ui.loader {
   color: @invertedLoaderTextColor;
 }
-.ui.dimmer .ui.loader:before {
+.ui.dimmer .ui.loader:not(.elastic):before {
   border-color: @invertedLoaderFillColor;
-}
-.ui.dimmer .ui.loader:after {
-  border-color: @invertedShapeBorderColor;
 }
 
 /* White Dimmer (Inverted) */
 .ui.inverted.dimmer .ui.loader {
   color: @loaderTextColor;
 }
-.ui.inverted.dimmer .ui.loader:before {
+.ui.inverted.dimmer .ui.loader:not(.elastic):before {
   border-color: @loaderFillColor;
-}
-.ui.inverted.dimmer .ui.loader:after {
-  border-color: @shapeBorderColor;
 }
 
 /*******************************
@@ -302,142 +293,54 @@
        Colors
 --------------------*/
 
-.ui.primary.loader:after {
-  border-color: @primaryColor transparent transparent;
-}
+each(@colors, {
+  @color: replace(@key, '@', '');
+  @c: @colors[@@color][color];
+  @l: @colors[@@color][light];
 
-.ui.secondary.loader:after {
-  border-color: @secondaryColor transparent transparent;
-}
+  .ui.@{color}.elastic.loader.loader:before,
+  .ui.@{color}.basic.elastic.loading.button:before,
+  .ui.@{color}.basic.elastic.loading.button:after,
+  .ui.@{color}.elastic.loading.loading.loading:not(.segment):before,
+  .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
+  .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
+  .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
+  .ui.@{color}.loading.loading.loading.loading > i.icon:after,
+  .ui.@{color}.loader.loader.loader:after {
+    color: @c;
+  }
+  .ui.inverted.@{color}.elastic.loader:before,
+  .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):before,
+  .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon:before,
+  .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon:before,
+  .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
+  .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
+  .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
+  .ui.inverted.@{color}.loader.loader.loader:after {
+    color: @l;
+  }
+})
 
-.ui.red.loader:after {
-  border-color: @red transparent transparent;
+.ui.elastic.loader.loader:before,
+.ui.elastic.loading.loading.loading:before,
+.ui.elastic.loading.loading.loading .input > i.icon:before,
+.ui.elastic.loading.loading.loading > i.icon:before,
+.ui.loading.loading.loading.loading:not(.usual):after,
+.ui.loading.loading.loading.loading .input > i.icon:after,
+.ui.loading.loading.loading.loading > i.icon:after,
+.ui.loader.loader.loader:after {
+  border-color: currentColor;
 }
-
-.ui.orange.loader:after {
-  border-color: @orange transparent transparent;
+.ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic):before {
+  color: @white;
 }
-
-.ui.yellow.loader:after {
-  border-color: @yellow transparent transparent;
+.ui.elastic.basic.loading.button:before,
+.ui.elastic.basic.loading.button:after {
+  color: @grey;
 }
-
-.ui.olive.loader:after {
-  border-color: @olive transparent transparent;
+.ui.double.loading.loading.loading.loading.button:after {
+  border-bottom-color: currentColor;
 }
-
-.ui.green.loader:after {
-  border-color: @green transparent transparent;
-}
-
-.ui.teal.loader:after {
-  border-color: @teal transparent transparent;
-}
-
-.ui.blue.loader:after {
-  border-color: @blue transparent transparent;
-}
-
-.ui.violet.loader:after {
-  border-color: @violet transparent transparent;
-}
-
-.ui.purple.loader:after {
-  border-color: @purple transparent transparent;
-}
-
-.ui.pink.loader:after {
-  border-color: @pink transparent transparent;
-}
-
-.ui.brown.loader:after {
-  border-color: @brown transparent transparent;
-}
-
-.ui.grey.loader:after {
-  border-color: @grey transparent transparent;
-}
-
-.ui.black.loader:after {
-  border-color: @black transparent transparent;
-}
-
-
-/*-------------------
-       Inverted
---------------------*/
-
-.ui.inverted.loader {
-  color: @invertedLoaderTextColor
-}
-.ui.inverted.loader:before {
-  border-color: @invertedLoaderFillColor;
-}
-.ui.inverted.loader:after {
-  border-top-color: @invertedLoaderLineColor;
-}
-
-/* Colors */
-.ui.inverted.primary.loader:after {
-  border-color: @lightPrimaryColor transparent transparent;
-}
-
-.ui.inverted.secondary.loader:after {
-  border-color: @lightSecondaryColor transparent transparent;
-}
-
-.ui.inverted.red.loader:after {
-  border-color: @lightRed transparent transparent;
-}
-
-.ui.inverted.orange.loader:after {
-  border-color: @lightOrange transparent transparent;
-}
-
-.ui.inverted.yellow.loader:after {
-  border-color: @lightYellow transparent transparent;
-}
-
-.ui.inverted.olive.loader:after {
-  border-color: @lightOlive transparent transparent;
-}
-
-.ui.inverted.green.loader:after {
-  border-color: @lightGreen transparent transparent;
-}
-
-.ui.inverted.teal.loader:after {
-  border-color: @lightTeal transparent transparent;
-}
-
-.ui.inverted.blue.loader:after {
-  border-color: @lightBlue transparent transparent;
-}
-
-.ui.inverted.violet.loader:after {
-  border-color: @lightViolet transparent transparent;
-}
-
-.ui.inverted.purple.loader:after {
-  border-color: @lightPurple transparent transparent;
-}
-
-.ui.inverted.pink.loader:after {
-  border-color: @lightPink transparent transparent;
-}
-
-.ui.inverted.brown.loader:after {
-  border-color: @lightBrown transparent transparent;
-}
-
-.ui.inverted.grey.loader:after {
-  border-color: @lightGrey transparent transparent;
-}
-
-.ui.inverted.black.loader:after {
-  border-color: @lightBlack transparent transparent;
-}
-
 /*-------------------
        Inline
 --------------------*/
@@ -464,5 +367,104 @@
   margin-right: auto;
 }
 
+.ui.loading.loading.loading.loading.loading.loading:after,
+.ui.loading.loading.loading.loading.loading.loading .input > i.icon:after,
+.ui.loading.loading.loading.loading.loading.loading > i.icon:after,
+.ui.loader.loader.loader.loader.loader:after {
+  border-left-color:transparent;
+  border-right-color:transparent;
+}
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) .input > i.icon:after,
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) > i.icon:after,
+.ui.loader.loader.loader.loader.loader.loader:not(.double):after {
+  border-bottom-color: transparent;
+}
+.ui.loading.loading.loading.loading.loading.loading.segment:after,
+.ui.loading.loading.loading.loading.loading.loading.form:after {
+  border-left-color:@loaderFillColor;
+  border-right-color:@loaderFillColor;
+}
+.ui.loading.loading.loading.loading.loading.loading.segment:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading.form:not(.double):after {
+  border-bottom-color: @loaderFillColor;
+}
+
+/*-------------------
+       Elastic
+--------------------*/
+
+.ui.dimmer .ui.elastic.loader {
+  color: @white;
+}
+.ui.inverted.dimmer .ui.elastic.loader {
+  color: @grey;
+}
+.ui.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.elastic.loading.loading .input > i.icon:after,
+.ui.elastic.loading.loading > i.icon:after,
+.ui.elastic.loader.loader:after {
+  animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+  animation-delay: 0.3s;
+}
+.ui.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.elastic.loading.loading.loading .input > i.icon:before,
+.ui.elastic.loading.loading.loading > i.icon:before,
+.ui.elastic.loader.loader:before {
+  animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+  border-right-color: transparent;
+}
+.ui.elastic.inline.loader:empty {
+  animation: loader 8s infinite linear;
+}
+.ui.slow.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.slow.elastic.loading.loading .input > i.icon:after,
+.ui.slow.elastic.loading.loading > i.icon:after,
+.ui.slow.elastic.loader.loader:after {
+  animation-duration: 1.5s;
+  animation-delay: 0.45s;
+}
+.ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.slow.elastic.loading.loading.loading .input > i.icon:before,
+.ui.slow.elastic.loading.loading.loading > i.icon:before,
+.ui.slow.elastic.loader.loader:before {
+  animation-duration: 1.5s;
+}
+.ui.fast.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.fast.elastic.loading.loading .input > i.icon:after,
+.ui.fast.elastic.loading.loading > i.icon:after,
+.ui.fast.elastic.loader.loader:after {
+  animation-duration: 0.66s;
+  animation-delay: 0.20s;
+}
+.ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.fast.elastic.loading.loading.loading .input > i.icon:before,
+.ui.fast.elastic.loading.loading.loading > i.icon:before,
+.ui.fast.elastic.loader.loader:before {
+  animation-duration: 0.66s;
+}
+@keyframes elastic-loader {
+  0%, 1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent
+  }
+  1.1%, 50% {
+    border-left-color: inherit;
+  }
+  10%, 35.1%{
+    border-bottom-color: transparent;
+  }
+  10.1%, 35%{
+    border-bottom-color: inherit;
+  }
+  50.1%{
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(360deg);
+  }
+}
 
 .loadUIOverrides();
