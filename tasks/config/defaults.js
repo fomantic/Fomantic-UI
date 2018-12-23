@@ -64,6 +64,7 @@ module.exports = {
     'reveal',
     'segment',
     'step',
+    'text',
 
     // collections
     'breadcrumb',

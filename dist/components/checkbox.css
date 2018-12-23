@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Checkbox
+ * # Semantic UI 2.7.0 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37,8 +37,8 @@
 .ui.checkbox input[type="radio"] {
   cursor: pointer;
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   opacity: 0 !important;
   outline: none;
   z-index: 3;
@@ -62,8 +62,8 @@
 .ui.checkbox .box:before,
 .ui.checkbox label:before {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 17px;
   height: 17px;
   content: '';
@@ -84,8 +84,8 @@
 .ui.checkbox label:after {
   position: absolute;
   font-size: 14px;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 17px;
   height: 17px;
   text-align: center;
@@ -287,7 +287,7 @@
   height: 15px;
   border-radius: 500rem;
   top: 1px;
-  left: 0px;
+  left: 0;
 }
 
 /* Bullet */
@@ -304,7 +304,7 @@
 .ui.radio.checkbox .box:after,
 .ui.radio.checkbox label:after {
   top: 1px;
-  left: 0px;
+  left: 0;
   width: 15px;
   height: 15px;
   border-radius: 500rem;
@@ -380,7 +380,7 @@
   -webkit-transform: none;
           transform: none;
   border: none !important;
-  left: 0em;
+  left: 0;
   z-index: 1;
   top: 0.4rem;
   background-color: rgba(0, 0, 0, 0.05);
@@ -402,12 +402,12 @@
   opacity: 1;
   z-index: 2;
   border: none;
-  -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
-          box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
   width: 1.5rem;
   height: 1.5rem;
   top: -0.25rem;
-  left: 0em;
+  left: 0;
   -webkit-transform: none;
           transform: none;
   border-radius: 500rem;
@@ -491,7 +491,7 @@
   -webkit-transform: none;
           transform: none;
   border: none;
-  top: 0rem;
+  top: 0;
   background: rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -511,12 +511,12 @@
   opacity: 1;
   z-index: 2;
   border: none;
-  -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
-          box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
   width: 1.5rem;
   height: 1.5rem;
-  top: 0rem;
-  left: 0em;
+  top: 0;
+  left: 0;
   border-radius: 500rem;
   -webkit-transition: background 0.3s ease, left 0.3s ease;
   transition: background 0.3s ease, left 0.3s ease;
@@ -524,8 +524,8 @@
 .ui.toggle.checkbox input ~ .box:after,
 .ui.toggle.checkbox input ~ label:after {
   left: -0.05rem;
-  -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
-          box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
 }
 
 /* Focus */
@@ -554,8 +554,8 @@
 .ui.toggle.checkbox input:checked ~ .box:after,
 .ui.toggle.checkbox input:checked ~ label:after {
   left: 2.15rem;
-  -webkit-box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
-          box-shadow: 0px 1px 2px 0 rgba(34, 36, 38, 0.15), 0px 0px 0px 1px rgba(34, 36, 38, 0.15) inset;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
 }
 
 /* Active Focus */
@@ -580,7 +580,7 @@
 
 .ui.fitted.checkbox .box,
 .ui.fitted.checkbox label {
-  padding-left: 0em !important;
+  padding-left: 0 !important;
 }
 .ui.fitted.toggle.checkbox {
   width: 3.5rem;

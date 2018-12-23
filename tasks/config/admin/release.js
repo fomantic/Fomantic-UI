@@ -108,6 +108,7 @@ module.exports = {
     'sticky',
     'tab',
     'table',
+    'text',
     'toast',
     'transition',
     'visibility'

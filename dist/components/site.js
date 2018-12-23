@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Site
+ * # Semantic UI 2.7.0 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -9,6 +9,10 @@
  */
 
 ;(function ($, window, document, undefined) {
+
+$.isFunction = $.isFunction || function(obj) {
+    return typeof obj === "function" && typeof obj.nodeType !== "number";
+};
 
 $.site = $.fn.site = function(parameters) {
   var
@@ -391,7 +395,7 @@ $.site = $.fn.site = function(parameters) {
       else if(found !== undefined) {
         response = found;
       }
-      if($.isArray(returnedValue)) {
+      if(Array.isArray(returnedValue)) {
         returnedValue.push(response);
       }
       else if(returnedValue !== undefined) {
@@ -448,7 +452,7 @@ $.site.settings = {
     'modal',
     'nag',
     'popup',
-    'range',
+    'slider',
     'rating',
     'shape',
     'sidebar',

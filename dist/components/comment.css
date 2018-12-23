@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.6.4 - Comment
+ * # Semantic UI 2.7.0 - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19,14 +19,14 @@
 ---------------*/
 
 .ui.comments {
-  margin: 1.5em 0em;
+  margin: 1.5em 0;
   max-width: 650px;
 }
 .ui.comments:first-child {
-  margin-top: 0em;
+  margin-top: 0;
 }
 .ui.comments:last-child {
-  margin-bottom: 0em;
+  margin-bottom: 0;
 }
 
 /*--------------
@@ -36,15 +36,15 @@
 .ui.comments .comment {
   position: relative;
   background: none;
-  margin: 0.5em 0em 0em;
-  padding: 0.5em 0em 0em;
+  margin: 0.5em 0 0;
+  padding: 0.5em 0 0;
   border: none;
   border-top: none;
   line-height: 1.2;
 }
 .ui.comments .comment:first-child {
-  margin-top: 0em;
-  padding-top: 0em;
+  margin-top: 0;
+  padding-top: 0;
 }
 
 /*--------------------
@@ -52,13 +52,13 @@
 ---------------------*/
 
 .ui.comments .comment > .comments {
-  margin: 0em 0em 0.5em 0.5em;
-  padding: 1em 0em 1em 1em;
+  margin: 0 0 0.5em 0.5em;
+  padding: 1em 0 1em 1em;
 }
 .ui.comments .comment > .comments:before {
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
 }
 .ui.comments .comment > .comments .comment {
   border: none;
@@ -75,12 +75,12 @@
   width: 2.5em;
   height: auto;
   float: left;
-  margin: 0.2em 0em 0em;
+  margin: 0.2em 0 0;
 }
 .ui.comments .comment img.avatar,
 .ui.comments .comment .avatar img {
   display: block;
-  margin: 0em auto;
+  margin: 0 auto;
   width: 100%;
   height: 100%;
   border-radius: 0.25rem;
@@ -127,10 +127,10 @@
 }
 .ui.comments .comment .metadata > * {
   display: inline-block;
-  margin: 0em 0.5em 0em 0em;
+  margin: 0 0.5em 0 0;
 }
 .ui.comments .comment .metadata > :last-child {
-  margin-right: 0em;
+  margin-right: 0;
 }
 
 /*--------------------
@@ -138,7 +138,7 @@
 ---------------------*/
 
 .ui.comments .comment .text {
-  margin: 0.25em 0em 0.5em;
+  margin: 0.25em 0 0.5em;
   font-size: 1em;
   word-wrap: break-word;
   color: rgba(0, 0, 0, 0.87);
@@ -155,11 +155,11 @@
 .ui.comments .comment .actions a {
   cursor: pointer;
   display: inline-block;
-  margin: 0em 0.75em 0em 0em;
+  margin: 0 0.75em 0 0;
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.comments .comment .actions a:last-child {
-  margin-right: 0em;
+  margin-right: 0;
 }
 .ui.comments .comment .actions a.active,
 .ui.comments .comment .actions a:hover {
@@ -205,9 +205,9 @@
 
 .ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
-  padding: 3em 0em 2em 2.25em;
-  -webkit-box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
-          box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
+  padding: 3em 0 2em 2.25em;
+  -webkit-box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
+          box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
 }
 
 /*--------------------
@@ -217,8 +217,8 @@
 .ui.minimal.comments .comment .actions {
   opacity: 0;
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 0;
+  right: 0;
   left: auto;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
@@ -279,8 +279,8 @@
   color: #ffffff;
 }
 .ui.inverted.threaded.comments .comment > .comments {
-  -webkit-box-shadow: -1px 0px 0px #555555;
-          box-shadow: -1px 0px 0px #555555;
+  -webkit-box-shadow: -1px 0 0 #555555;
+          box-shadow: -1px 0 0 #555555;
 }
 
 
