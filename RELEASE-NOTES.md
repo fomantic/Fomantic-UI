@@ -3,7 +3,7 @@
 ### Version 2.7.1 - December 24, 2018
 
 **Bugs**
-- **Loader** - Fixed a bug with the elastic loader applying the wrong color **Thanks [@prudho](https://github.com/prudho)** [#325](https://github.com/fomantic/Fomantic-UI/pull/325)
+- **Loader** - Fixed a bug with the elastic loader applying the wrong color **Thanks [@lubber-de](https://github.com/lubber-de)** [#325](https://github.com/fomantic/Fomantic-UI/pull/325)
 
 ### Version 2.7.0 - December 21, 2018
 
