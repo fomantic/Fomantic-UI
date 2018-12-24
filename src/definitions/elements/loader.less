@@ -303,6 +303,7 @@ each(@colors, {
   .ui.@{color}.basic.elastic.loading.button:after,
   .ui.@{color}.elastic.loading.loading.loading:not(.segment):before,
   .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
+  .ui.@{color}.elastic.loading.loading.loading.loading > i.icon:before,
   .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
   .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
   .ui.@{color}.loading.loading.loading.loading > i.icon:after,
@@ -332,11 +333,11 @@ each(@colors, {
   border-color: currentColor;
 }
 .ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic):before {
-  color: @white;
+  color: @invertedLoaderLineColor;
 }
 .ui.elastic.basic.loading.button:before,
 .ui.elastic.basic.loading.button:after {
-  color: @grey;
+  color: @loaderLineColor;
 }
 .ui.double.loading.loading.loading.loading.button:after {
   border-bottom-color: currentColor;
@@ -395,10 +396,10 @@ each(@colors, {
 --------------------*/
 
 .ui.dimmer .ui.elastic.loader {
-  color: @white;
+  color: @invertedLoaderLineColor;
 }
 .ui.inverted.dimmer .ui.elastic.loader {
-  color: @grey;
+  color: @loaderLineColor;
 }
 .ui.elastic.loading.loading:not(.form):not(.segment):after,
 .ui.elastic.loading.loading .input > i.icon:after,
