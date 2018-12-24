@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.0
+ * # Fomantic UI - 2.7.1
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -9,7 +9,7 @@
  *
  */
 /*!
- * # Semantic UI 2.7.0 - Site
+ * # Semantic UI 2.7.1 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -504,7 +504,7 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Form Validation
+ * # Semantic UI 2.7.1 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2217,7 +2217,7 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Accordion
+ * # Semantic UI 2.7.1 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -2835,7 +2835,7 @@ $.extend( $.easing, {
 
 
 /*!
- * # Semantic UI 2.7.0 - Calendar
+ * # Semantic UI 2.7.1 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -4325,7 +4325,7 @@ $.fn.calendar.settings = {
 })(jQuery, window, document);
 
 /*!
- * # Semantic UI 2.7.0 - Checkbox
+ * # Semantic UI 2.7.1 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5191,7 +5191,7 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Dimmer
+ * # Semantic UI 2.7.1 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5947,7 +5947,7 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Dropdown
+ * # Semantic UI 2.7.1 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10061,7 +10061,7 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Embed
+ * # Semantic UI 2.7.1 - Embed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -10772,7 +10772,7 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Modal
+ * # Semantic UI 2.7.1 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -11879,7 +11879,7 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Nag
+ * # Semantic UI 2.7.1 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -12391,7 +12391,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Popup
+ * # Semantic UI 2.7.1 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -13929,7 +13929,7 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Progress
+ * # Semantic UI 2.7.1 - Progress
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -14857,7 +14857,7 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Slider
+ * # Semantic UI 2.7.1 - Slider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16074,7 +16074,7 @@ $.fn.slider.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Rating
+ * # Semantic UI 2.7.1 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16601,7 +16601,7 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Search
+ * # Semantic UI 2.7.1 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -18133,7 +18133,7 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Shape
+ * # Semantic UI 2.7.1 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19059,7 +19059,7 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Sidebar
+ * # Semantic UI 2.7.1 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20097,7 +20097,7 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Sticky
+ * # Semantic UI 2.7.1 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21061,7 +21061,7 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Tab
+ * # Semantic UI 2.7.1 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22021,7 +22021,7 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Toast
+ * # Semantic UI 2.7.1 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22618,7 +22618,7 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Transition
+ * # Semantic UI 2.7.1 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23729,7 +23729,7 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - API
+ * # Semantic UI 2.7.1 - API
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24904,7 +24904,7 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - State
+ * # Semantic UI 2.7.1 - State
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -25617,7 +25617,7 @@ $.fn.state.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.0 - Visibility
+ * # Semantic UI 2.7.1 - Visibility
  * http://github.com/semantic-org/semantic-ui/
  *
  *
