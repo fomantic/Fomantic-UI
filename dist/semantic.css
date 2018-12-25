@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.0
+ * # Fomantic UI - 2.7.1
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -10,7 +10,7 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 /*!
- * # Semantic UI 2.7.0 - Reset
+ * # Semantic UI 2.7.1 - Reset
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -541,7 +541,7 @@ template {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Site
+ * # Semantic UI 2.7.1 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -749,7 +749,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Button
+ * # Semantic UI 2.7.1 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5761,7 +5761,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Container
+ * # Semantic UI 2.7.1 - Container
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5919,7 +5919,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Divider
+ * # Semantic UI 2.7.1 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6185,7 +6185,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Flag
+ * # Semantic UI 2.7.1 - Flag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7462,7 +7462,7 @@ i.flag.zimbabwe:before {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Header
+ * # Semantic UI 2.7.1 - Header
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8352,7 +8352,7 @@ a.ui.inverted.black.header.header.header:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Icon
+ * # Semantic UI 2.7.1 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16458,7 +16458,7 @@ i.icon.youtube.play:before {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Image
+ * # Semantic UI 2.7.1 - Image
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16780,7 +16780,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Input
+ * # Semantic UI 2.7.1 - Input
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17378,7 +17378,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Label
+ * # Semantic UI 2.7.1 - Label
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19655,7 +19655,7 @@ a.ui.inverted.basic.black.label:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - List
+ * # Semantic UI 2.7.1 - List
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20742,7 +20742,7 @@ ol.ui.horizontal.list li:before,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Loader
+ * # Semantic UI 2.7.1 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21073,6 +21073,7 @@ ol.ui.horizontal.list li:before,
 .ui.primary.basic.elastic.loading.button:after,
 .ui.primary.elastic.loading.loading.loading:not(.segment):before,
 .ui.primary.elastic.loading.loading.loading .input > i.icon:before,
+.ui.primary.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.primary.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.primary.loading.loading.loading.loading .input > i.icon:after,
 .ui.primary.loading.loading.loading.loading > i.icon:after,
@@ -21096,6 +21097,7 @@ ol.ui.horizontal.list li:before,
 .ui.secondary.basic.elastic.loading.button:after,
 .ui.secondary.elastic.loading.loading.loading:not(.segment):before,
 .ui.secondary.elastic.loading.loading.loading .input > i.icon:before,
+.ui.secondary.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.secondary.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.secondary.loading.loading.loading.loading .input > i.icon:after,
 .ui.secondary.loading.loading.loading.loading > i.icon:after,
@@ -21119,6 +21121,7 @@ ol.ui.horizontal.list li:before,
 .ui.red.basic.elastic.loading.button:after,
 .ui.red.elastic.loading.loading.loading:not(.segment):before,
 .ui.red.elastic.loading.loading.loading .input > i.icon:before,
+.ui.red.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.red.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.red.loading.loading.loading.loading .input > i.icon:after,
 .ui.red.loading.loading.loading.loading > i.icon:after,
@@ -21142,6 +21145,7 @@ ol.ui.horizontal.list li:before,
 .ui.orange.basic.elastic.loading.button:after,
 .ui.orange.elastic.loading.loading.loading:not(.segment):before,
 .ui.orange.elastic.loading.loading.loading .input > i.icon:before,
+.ui.orange.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.orange.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.orange.loading.loading.loading.loading .input > i.icon:after,
 .ui.orange.loading.loading.loading.loading > i.icon:after,
@@ -21165,6 +21169,7 @@ ol.ui.horizontal.list li:before,
 .ui.yellow.basic.elastic.loading.button:after,
 .ui.yellow.elastic.loading.loading.loading:not(.segment):before,
 .ui.yellow.elastic.loading.loading.loading .input > i.icon:before,
+.ui.yellow.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.yellow.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.yellow.loading.loading.loading.loading .input > i.icon:after,
 .ui.yellow.loading.loading.loading.loading > i.icon:after,
@@ -21188,6 +21193,7 @@ ol.ui.horizontal.list li:before,
 .ui.olive.basic.elastic.loading.button:after,
 .ui.olive.elastic.loading.loading.loading:not(.segment):before,
 .ui.olive.elastic.loading.loading.loading .input > i.icon:before,
+.ui.olive.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.olive.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.olive.loading.loading.loading.loading .input > i.icon:after,
 .ui.olive.loading.loading.loading.loading > i.icon:after,
@@ -21211,6 +21217,7 @@ ol.ui.horizontal.list li:before,
 .ui.green.basic.elastic.loading.button:after,
 .ui.green.elastic.loading.loading.loading:not(.segment):before,
 .ui.green.elastic.loading.loading.loading .input > i.icon:before,
+.ui.green.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.green.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.green.loading.loading.loading.loading .input > i.icon:after,
 .ui.green.loading.loading.loading.loading > i.icon:after,
@@ -21234,6 +21241,7 @@ ol.ui.horizontal.list li:before,
 .ui.teal.basic.elastic.loading.button:after,
 .ui.teal.elastic.loading.loading.loading:not(.segment):before,
 .ui.teal.elastic.loading.loading.loading .input > i.icon:before,
+.ui.teal.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.teal.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.teal.loading.loading.loading.loading .input > i.icon:after,
 .ui.teal.loading.loading.loading.loading > i.icon:after,
@@ -21257,6 +21265,7 @@ ol.ui.horizontal.list li:before,
 .ui.blue.basic.elastic.loading.button:after,
 .ui.blue.elastic.loading.loading.loading:not(.segment):before,
 .ui.blue.elastic.loading.loading.loading .input > i.icon:before,
+.ui.blue.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.blue.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.blue.loading.loading.loading.loading .input > i.icon:after,
 .ui.blue.loading.loading.loading.loading > i.icon:after,
@@ -21280,6 +21289,7 @@ ol.ui.horizontal.list li:before,
 .ui.violet.basic.elastic.loading.button:after,
 .ui.violet.elastic.loading.loading.loading:not(.segment):before,
 .ui.violet.elastic.loading.loading.loading .input > i.icon:before,
+.ui.violet.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.violet.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.violet.loading.loading.loading.loading .input > i.icon:after,
 .ui.violet.loading.loading.loading.loading > i.icon:after,
@@ -21303,6 +21313,7 @@ ol.ui.horizontal.list li:before,
 .ui.purple.basic.elastic.loading.button:after,
 .ui.purple.elastic.loading.loading.loading:not(.segment):before,
 .ui.purple.elastic.loading.loading.loading .input > i.icon:before,
+.ui.purple.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.purple.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.purple.loading.loading.loading.loading .input > i.icon:after,
 .ui.purple.loading.loading.loading.loading > i.icon:after,
@@ -21326,6 +21337,7 @@ ol.ui.horizontal.list li:before,
 .ui.pink.basic.elastic.loading.button:after,
 .ui.pink.elastic.loading.loading.loading:not(.segment):before,
 .ui.pink.elastic.loading.loading.loading .input > i.icon:before,
+.ui.pink.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.pink.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.pink.loading.loading.loading.loading .input > i.icon:after,
 .ui.pink.loading.loading.loading.loading > i.icon:after,
@@ -21349,6 +21361,7 @@ ol.ui.horizontal.list li:before,
 .ui.brown.basic.elastic.loading.button:after,
 .ui.brown.elastic.loading.loading.loading:not(.segment):before,
 .ui.brown.elastic.loading.loading.loading .input > i.icon:before,
+.ui.brown.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.brown.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.brown.loading.loading.loading.loading .input > i.icon:after,
 .ui.brown.loading.loading.loading.loading > i.icon:after,
@@ -21372,6 +21385,7 @@ ol.ui.horizontal.list li:before,
 .ui.grey.basic.elastic.loading.button:after,
 .ui.grey.elastic.loading.loading.loading:not(.segment):before,
 .ui.grey.elastic.loading.loading.loading .input > i.icon:before,
+.ui.grey.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.grey.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.grey.loading.loading.loading.loading .input > i.icon:after,
 .ui.grey.loading.loading.loading.loading > i.icon:after,
@@ -21395,6 +21409,7 @@ ol.ui.horizontal.list li:before,
 .ui.black.basic.elastic.loading.button:after,
 .ui.black.elastic.loading.loading.loading:not(.segment):before,
 .ui.black.elastic.loading.loading.loading .input > i.icon:before,
+.ui.black.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.black.loading.loading.loading.loading:not(.usual):not(.button):after,
 .ui.black.loading.loading.loading.loading .input > i.icon:after,
 .ui.black.loading.loading.loading.loading > i.icon:after,
@@ -21631,7 +21646,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Loader
+ * # Semantic UI 2.7.1 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21918,7 +21933,7 @@ ol.ui.horizontal.list li:before,
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Rail
+ * # Semantic UI 2.7.1 - Rail
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22080,7 +22095,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Reveal
+ * # Semantic UI 2.7.1 - Reveal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22395,7 +22410,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Segment
+ * # Semantic UI 2.7.1 - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23333,7 +23348,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Step
+ * # Semantic UI 2.7.1 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24212,7 +24227,7 @@ span.ui.disabled.text {
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Breadcrumb
+ * # Semantic UI 2.7.1 - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24343,7 +24358,7 @@ span.ui.disabled.text {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Form
+ * # Semantic UI 2.7.1 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -25590,7 +25605,7 @@ span.ui.disabled.text {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Grid
+ * # Semantic UI 2.7.1 - Grid
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -30464,7 +30479,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Message
+ * # Semantic UI 2.7.1 - Message
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31213,7 +31228,7 @@ Floated Menu / Item
         Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Table
+ * # Semantic UI 2.7.1 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -32702,7 +32717,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Ad
+ * # Semantic UI 2.7.1 - Ad
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -32991,7 +33006,7 @@ Floated Menu / Item
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Card
+ * # Semantic UI 2.7.1 - Card
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34210,7 +34225,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Comment
+ * # Semantic UI 2.7.1 - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34525,7 +34540,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Feed
+ * # Semantic UI 2.7.1 - Feed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34860,7 +34875,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Item
+ * # Semantic UI 2.7.1 - Item
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -35468,7 +35483,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Statistic
+ * # Semantic UI 2.7.1 - Statistic
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36154,7 +36169,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Accordion
+ * # Semantic UI 2.7.1 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36410,7 +36425,7 @@ a.inverted.ui.card:hover,
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Calendar
+ * # Semantic UI 2.7.1 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36587,7 +36602,7 @@ a.inverted.ui.card:hover,
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Checkbox
+ * # Semantic UI 2.7.1 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37364,7 +37379,7 @@ a.inverted.ui.card:hover,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Dimmer
+ * # Semantic UI 2.7.1 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37868,7 +37883,7 @@ body.dimmable > .dimmer {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Dropdown
+ * # Semantic UI 2.7.1 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -39771,7 +39786,7 @@ select.ui.dropdown {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Video
+ * # Semantic UI 2.7.1 - Video
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -39935,7 +39950,7 @@ select.ui.dropdown {
   padding-bottom: 42.85714286%;
 }
 /*!
- * # Semantic UI 2.7.0 - Modal
+ * # Semantic UI 2.7.1 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -40653,7 +40668,7 @@ select.ui.dropdown {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Nag
+ * # Semantic UI 2.7.1 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -40799,7 +40814,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Popup
+ * # Semantic UI 2.7.1 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -41671,7 +41686,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Progress Bar
+ * # Semantic UI 2.7.1 - Progress Bar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -43150,7 +43165,7 @@ a.ui.nag {
         Slider Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Rating
+ * # Semantic UI 2.7.1 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -43470,7 +43485,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Search
+ * # Semantic UI 2.7.1 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -43938,7 +43953,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Shape
+ * # Semantic UI 2.7.1 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44092,7 +44107,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Sidebar
+ * # Semantic UI 2.7.1 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44773,7 +44788,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Sticky
+ * # Semantic UI 2.7.1 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44847,7 +44862,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Tab
+ * # Semantic UI 2.7.1 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44931,7 +44946,7 @@ body.pushable > .pusher {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.0 - Toast
+ * # Semantic UI 2.7.1 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -45295,7 +45310,7 @@ body.pushable > .pusher {
   opacity: 1;
 }
 /*!
- * # Semantic UI 2.7.0 - Transition
+ * # Semantic UI 2.7.1 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *
