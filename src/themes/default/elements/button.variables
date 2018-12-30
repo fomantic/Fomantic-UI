@@ -378,7 +378,7 @@
 @attachedOffset: -1px;
 @attachedBoxShadow: 0 0 0 1px @borderColor;
 @attachedHorizontalPadding: 0.75em;
-@attachedZIndex: 2;
+@attachedZIndex: auto;
 
 /* Floated */
 @floatedMargin: 0.25em;
