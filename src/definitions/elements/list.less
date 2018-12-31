@@ -109,9 +109,11 @@ ol.ui.list ol li,
   display: table-cell;
   margin: 0;
   padding-top: @iconOffset;
-  padding-right: @iconDistance;
-  vertical-align: @iconContentVerticalAlign;
   transition: @iconTransition;
+  &:not(.loading) {
+    padding-right: @iconDistance;
+    vertical-align: @iconContentVerticalAlign;
+  }
 }
 .ui.list .list > .item > i.icon:only-child,
 .ui.list > .item > i.icon:only-child {
@@ -158,6 +160,10 @@ ol.ui.list ol li,
   width: 100%;
   padding: 0 0 0 @contentDistance;
   vertical-align: @contentVerticalAlign;
+}
+.ui.list .list > .item > .loading.icon + .content,
+.ui.list > .item > .loading.icon + .content {
+  padding-left: e(%("calc(%d + %d)", @iconDistance, @contentDistance));
 }
 .ui.list .list > .item > img.image + .content,
 .ui.list > .item > img.image + .content {
