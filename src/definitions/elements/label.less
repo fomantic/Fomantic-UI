@@ -629,45 +629,45 @@ each(@colors,{
   @_labelInvertedRibbonShadow : @colors[@@color][invertedRibbon];
 
   .ui.@{color}.labels .label,
-  .ui.@{color}.label {
+  .ui.ui.ui.@{color}.label {
     background-color: @_labelColor;
     border-color: @_labelColor;
     color: @_labelTextColor;
   }
   /* Link */
   .ui.@{color}.labels a.label:hover,
-  a.ui.@{color}.label:hover{
+  a.ui.ui.ui.@{color}.label:hover{
     background-color: @_labelHover;
     border-color: @_labelHover;
     color: @_labelHoverTextColor;
   }
   /* Ribbon */
-  .ui.@{color}.ribbon.label {
+  .ui.ui.ui.@{color}.ribbon.label {
     border-color: @_labelRibbonShadow;
   }
   /* Basic */
   .ui.basic.labels .@{color}.label,
-  .ui.basic.@{color}.label {
+  .ui.ui.ui.basic.@{color}.label {
     background: @basicBackground;
     border-color: @_labelColor;
     color: @_labelColor;
   }
   .ui.basic.labels a.@{color}.label:hover,
-  a.ui.basic.@{color}.label:hover {
+  a.ui.ui.ui.basic.@{color}.label:hover {
     background: @basicBackground;
     border-color: @_labelHover;
     color: @_labelHover;
   }
   /* Inverted */
   .ui.inverted.labels .@{color}.label,
-  .ui.inverted.@{color}.label {
+  .ui.ui.ui.inverted.@{color}.label {
     background-color: @_labelInvertedColor;
     border-color: @_labelInvertedColor;
     color: @black;
   }
   /* Inverted Link */
   .ui.inverted.labels a.@{color}.label:hover,
-  a.ui.inverted.@{color}.label:hover{
+  a.ui.ui.ui.inverted.@{color}.label:hover{
     background-color: @_labelInvertedHover;
     border-color: @_labelInvertedHover;
     & when not (@isDark) {
@@ -678,12 +678,12 @@ each(@colors,{
     }
   }
   /* Inverted Ribbon */
-  .ui.inverted.@{color}.ribbon.label {
+  .ui.ui.ui.inverted.@{color}.ribbon.label {
     border-color: @_labelInvertedRibbonShadow;
   }
   /* Inverted Basic */
   .ui.inverted.basic.labels .@{color}.label,
-  .ui.inverted.basic.@{color}.label {
+  .ui.ui.ui.inverted.basic.@{color}.label {
     background-color: @invertedBackground;
     border-color: @_labelInvertedColor;
     & when not (@isDark) {
@@ -694,7 +694,7 @@ each(@colors,{
     }
   }
   .ui.inverted.basic.labels a.@{color}.label:hover,
-  a.ui.inverted.basic.@{color}.label:hover {
+  a.ui.ui.ui.inverted.basic.@{color}.label:hover {
     border-color: @_labelInvertedHover;
     background-color: @invertedBackground;
     & when not (@isDark) {
@@ -703,11 +703,11 @@ each(@colors,{
   }
   /* Inverted Basic Tags */
   .ui.inverted.basic.tag.labels .@{color}.label,
-  .ui.inverted.@{color}.basic.tag.label {
+  .ui.ui.ui.inverted.@{color}.basic.tag.label {
     border: @invertedBorderSize solid @_labelInvertedColor;
   }
   .ui.inverted.basic.tag.labels .@{color}.label:before,
-  .ui.inverted.@{color}.basic.tag.label:before {
+  .ui.ui.ui.inverted.@{color}.basic.tag.label:before {
     border-color: inherit;
     border-width: @invertedBorderSize 0 0 @invertedBorderSize;
     border-style: inherit;
