@@ -411,7 +411,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(module.is.visible() || module.is.animating()) {
+          if(settings.closable && (module.is.visible() || module.is.animating())) {
             module.debug('Hiding sidebar', callback);
             module.refreshSidebars();
             module.pullPage(function() {
