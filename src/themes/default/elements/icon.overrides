@@ -1182,6 +1182,7 @@ i.icon.star.half.full:before { content: "\f089"; }
 i.icon.ticket:before { content: "\f3ff"; }
 i.icon.times.rectangle:before { content: "\f410"; }
 i.icon.write:before { content: "\f303"; }
+i.icon.hamburger:before { content: "\f0c9"; }
 
 
 /*******************************
@@ -2171,7 +2172,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.youtube.square:before { content: "\f431"; }
   i.icon.zhihu:before { content: "\f63f"; }
 
-  
+
   /* Brands Aliases */
   i.icon.credit.card.amazon.pay,
   i.icon.credit.card.american.express,
@@ -2227,7 +2228,7 @@ i.icon.write:before { content: "\f303"; }
   i.icon.youtube.play {
     font-family: @brandFontName;
   }
-  
+
   /* Brands Alias Definitions */
   i.icon.credit.card.amazon.pay:before { content: "\f42d"; }
   i.icon.credit.card.american.express:before { content: "\f1f3"; }
