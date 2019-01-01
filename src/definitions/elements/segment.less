@@ -467,7 +467,6 @@
   cursor: default;
   pointer-events: none;
   text-shadow: none !important;
-  color: transparent !important;
   transition: all 0s linear;
 }
 .ui.loading.segment:before {
@@ -602,6 +601,14 @@ each(@colors,{
 /* Attached */
 .ui.inverted.attached.segment {
   border-color: @solidWhiteBorderColor;
+}
+
+/* Loading */
+.ui.inverted.loading.segment {
+  color: @invertedLoaderLineColor;
+}
+.ui.inverted.loading.segment:before {
+  background: @loaderInvertedDimmerColor;
 }
 
 /*-------------------
