@@ -85,20 +85,16 @@ i.icon.loading {
              States
 *******************************/
 
-i.icon.hover {
-  opacity: 1 !important;
+i.icon:hover, i.icons:hover,
+i.icon:active, i.icons:active,
+i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
+  opacity: 1;
 }
 
-i.icon.active {
-  opacity: 1 !important;
-}
-
-i.emphasized.icon {
-  opacity: 1 !important;
-}
-
-i.disabled.icon {
-  opacity: @disabledOpacity !important;
+i.disabled.icon, i.disabled.icons {
+  opacity: @disabledOpacity;
+  cursor: default;
+  pointer-events: none;
 }
 
 
@@ -120,13 +116,13 @@ i.fitted.icon {
          Link
 --------------------*/
 
-i.link.icon, i.link.icons {
+i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: @linkOpacity;
   transition: opacity @defaultDuration @defaultEasing;
 }
 i.link.icon:hover, i.link.icons:hover {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /*-------------------
