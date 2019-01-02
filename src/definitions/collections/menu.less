@@ -451,11 +451,11 @@
      Disabled
 ---------------*/
 
-.ui.menu .item.disabled,
-.ui.menu .item.disabled:hover {
-  cursor: default !important;
-  background-color: transparent !important;
-  color: @disabledTextColor !important;
+.ui.menu .item.disabled {
+  cursor: default;
+  background-color: transparent;
+  color: @disabledTextColor;
+  pointer-events: none;
 }
 
 
@@ -848,19 +848,19 @@ Floated Menu / Item
 
 
 /* Inverted */
-.ui.secondary.inverted.menu .link.item,
-.ui.secondary.inverted.menu a.item {
-  color: @secondaryInvertedColor !important;
+.ui.secondary.inverted.menu .link.item:not(.disabled),
+.ui.secondary.inverted.menu a.item:not(.disabled) {
+  color: @secondaryInvertedColor;
 }
 .ui.secondary.inverted.menu .dropdown.item:hover,
 .ui.secondary.inverted.menu .link.item:hover,
 .ui.secondary.inverted.menu a.item:hover {
   background: @secondaryInvertedHoverBackground;
-  color: @secondaryInvertedHoverColor !important;
+  color: @secondaryInvertedHoverColor;
 }
 .ui.secondary.inverted.menu .active.item {
   background: @secondaryInvertedActiveBackground;
-  color: @secondaryInvertedActiveColor !important;
+  color: @secondaryInvertedActiveColor;
 }
 
 /* Fix item margins */
@@ -1010,7 +1010,7 @@ Floated Menu / Item
   border-width: @secondaryPointingBorderWidth;
   border-color: @secondaryPointingBorderColor;
 }
-.ui.secondary.inverted.pointing.menu .item {
+.ui.secondary.inverted.pointing.menu .item:not(.disabled) {
   color: @secondaryPointingInvertedItemTextColor;
 }
 .ui.secondary.inverted.pointing.menu .header.item {
@@ -1333,8 +1333,7 @@ each(@colors, {
 }
 
 /* Disabled */
-.ui.inverted.menu .item.disabled,
-.ui.inverted.menu .item.disabled:hover {
+.ui.inverted.menu .item.disabled {
   color: @invertedDisabledTextColor;
 }
 
