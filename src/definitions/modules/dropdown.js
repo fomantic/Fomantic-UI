@@ -1327,7 +1327,8 @@ $.fn.dropdown = function(parameters) {
                   isSearch          = module.is.searchSelection(),
                   isFocusedOnSearch = module.is.focusedOnSearch(),
                   isFocused         = module.is.focused(),
-                  caretAtStart      = (isFocusedOnSearch && module.get.caretPosition() === 0),
+                  caretAtStart      = (isFocusedOnSearch && module.get.caretPosition(false) === 0),
+                  isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0),
                   $nextLabel
                 ;
                 if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
@@ -1408,7 +1409,7 @@ $.fn.dropdown = function(parameters) {
                     module.remove.activeLabels($activeLabel);
                     event.preventDefault();
                   }
-                  else if(caretAtStart && !hasActiveLabel && pressedKey == keys.backspace) {
+                  else if(caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
                     module.verbose('Removing last label on input backspace');
                     $activeLabel = $label.last().addClass(className.active);
                     module.remove.activeLabels($activeLabel);
@@ -1805,19 +1806,25 @@ $.fn.dropdown = function(parameters) {
                 return $.inArray(value, array) === index;
             });
           },
-          caretPosition: function() {
+          caretPosition: function(returnEndPos) {
             var
               input = $search.get(0),
               range,
               rangeLength
             ;
-            if('selectionStart' in input) {
+            if(returnEndPos && 'selectionEnd' in input){
+              return input.selectionEnd;
+            }
+            else if(!returnEndPos && 'selectionStart' in input) {
               return input.selectionStart;
             }
-            else if (document.selection) {
+            if (document.selection) {
               input.focus();
               range       = document.selection.createRange();
               rangeLength = range.text.length;
+              if(returnEndPos) {
+                return rangeLength;
+              }
               range.moveStart('character', -input.value.length);
               return range.text.length - rangeLength;
             }
