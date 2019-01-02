@@ -146,7 +146,7 @@
 @invertedSubHeaderColor: @invertedMutedTextColor;
 @invertedDividedBorderColor: @whiteBorderColor;
 @invertedBlockBackground: @lightBlack @subtleGradient;
-@invertedAttachedBackground: @invertedBlockBackground;
+@invertedAttachedBackground: @black;
 
 /* Floated */
 @floatedMargin: 0.5em;
