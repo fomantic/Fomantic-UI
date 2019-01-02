@@ -1469,7 +1469,7 @@ each(@colors, {
   display: -ms-inline-flexbox !important;
   display: inline-block;
 }
-.ui.compact.menu .item:last-child {
+.ui.compact.menu:not(.secondary) .item:last-child {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
 .ui.compact.menu .item:last-child:before {
