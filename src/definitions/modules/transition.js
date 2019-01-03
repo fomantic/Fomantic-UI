@@ -253,7 +253,7 @@ $.fn.transition = function() {
               displayType    = module.get.displayType(),
               overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
               inlineDisplay  = $module[0].style.display,
-              mustStayHidden = !displayType || inlineDisplay === 'none' || $module[0].tagName.match(/(script|link|style)/i)
+              mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
             ;
             if (mustStayHidden){
               module.remove.transition();
@@ -1088,6 +1088,9 @@ $.fn.transition.settings = {
 
   // new animations will occur after previous ones
   queue         : true,
+
+// whether initially inline hidden objects should be skipped for transition
+  skipInlineHidden: false,
 
   metadata : {
     displayType: 'display'
