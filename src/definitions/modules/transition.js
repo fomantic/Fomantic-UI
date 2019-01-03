@@ -252,7 +252,6 @@ $.fn.transition = function() {
               userStyle      = module.get.userStyle(style),
               displayType    = module.get.displayType(),
               overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
-              currentDisplay = $module.css('display'),
               inlineDisplay  = $module[0].style.display,
               mustStayHidden = !displayType || inlineDisplay === 'none'
             ;
