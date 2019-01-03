@@ -253,7 +253,7 @@ $.fn.transition = function() {
               displayType    = module.get.displayType(),
               overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
               inlineDisplay  = $module[0].style.display,
-              mustStayHidden = !displayType || inlineDisplay === 'none'
+              mustStayHidden = !displayType || inlineDisplay === 'none' || $module[0].tagName.match(/(script|link|style)/i)
             ;
             if (mustStayHidden){
               module.remove.transition();
