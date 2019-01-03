@@ -552,10 +552,13 @@ $.fn.form = function(parameters) {
             }
             $.each(validation, function(fieldName, field) {
               identifier = field.identifier || fieldName;
-              if( module.get.field(identifier)[0] == $field[0] ) {
-                field.identifier = identifier;
-                fieldValidation = field;
-              }
+              $.each(module.get.field(identifier), function(index, groupField) {
+                if(groupField == $field[0]) {
+                  field.identifier = identifier;
+                  fieldValidation = field;
+                  return false;
+                }
+              });
             });
             return fieldValidation || false;
           },
