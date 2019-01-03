@@ -688,6 +688,14 @@ ol.ui.horizontal.list li:before,
   margin: 0 @horizontalOrderedCountDistance 0 0;
 }
 
+/* Suffixed Ordered */
+ol.ui.suffixed.list li:before,
+.ui.suffixed.ordered.list .list > .item:before,
+.ui.suffixed.ordered.list > .item:before {
+  content: @orderedCountContentSuffixed;
+}
+
+
 /*-------------------
        Divided
 --------------------*/
