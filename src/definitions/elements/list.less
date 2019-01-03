@@ -651,6 +651,12 @@ ol.ui.list li:before,
   opacity: @orderedCountOpacity;
 }
 
+ol.ui.basic.list li:before,
+.ui.basic.ordered.list .list > .item:before,
+.ui.basic.ordered.list > .item:before {
+  content: @orderedCountContentBasic;
+}
+
 ol.ui.inverted.list li:before,
 .ui.ordered.inverted.list .list > .item:before,
 .ui.ordered.inverted.list > .item:before {
