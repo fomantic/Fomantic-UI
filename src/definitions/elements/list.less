@@ -651,12 +651,6 @@ ol.ui.list li:before,
   opacity: @orderedCountOpacity;
 }
 
-ol.ui.basic.list li:before,
-.ui.basic.ordered.list .list > .item:before,
-.ui.basic.ordered.list > .item:before {
-  content: @orderedCountContentBasic;
-}
-
 ol.ui.inverted.list li:before,
 .ui.ordered.inverted.list .list > .item:before,
 .ui.ordered.inverted.list > .item:before {
@@ -693,6 +687,14 @@ ol.ui.horizontal.list li:before,
   position: static;
   margin: 0 @horizontalOrderedCountDistance 0 0;
 }
+
+/* Suffixed Ordered */
+ol.ui.suffixed.list li:before,
+.ui.suffixed.ordered.list .list > .item:before,
+.ui.suffixed.ordered.list > .item:before {
+  content: @orderedCountContentSuffixed;
+}
+
 
 /*-------------------
        Divided

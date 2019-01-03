@@ -176,8 +176,8 @@
 @orderedCountName: ordered;
 @orderedCountSeparator: ".";
 @orderedCountSuffix: ".";
-@orderedCountContent: counters(@orderedCountName, @orderedCountSeparator) @orderedCountSuffix;
-@orderedCountContentBasic: counters(@orderedCountName, @orderedCountSeparator) " ";
+@orderedCountContent: counters(@orderedCountName, @orderedCountSeparator) " ";
+@orderedCountContentSuffixed: counters(@orderedCountName, @orderedCountSeparator) @orderedCountSuffix;
 @orderedCountColor: @textColor;
 @orderedCountDistance: 1.25rem;
 @orderedCountOpacity: 0.8;
