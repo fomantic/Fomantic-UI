@@ -3,10 +3,11 @@
 # Fomantic UI
 A community fork of the popular Semantic-UI framework
 
+[![Build Status](https://travis-ci.org/fomantic/Fomantic-UI.svg?branch=master)](https://travis-ci.org/fomantic/Fomantic-UI)
 [![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
 [![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
 [![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
-[![last commit](https://img.shields.io/github/last-commit/fomantic/fomantic-ui.svg)](https://github.com/fomantic/Fomantic-UI/commits/master)
+[![last commit](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg)](https://packagequality.com/#?package=fomantic-ui)
 ---
