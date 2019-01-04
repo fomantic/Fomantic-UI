@@ -140,23 +140,23 @@
 --------------------*/
 
 /* Show inside active dimmer */
-.ui.dimmer .loader {
+.ui.dimmer > .loader {
   display: block;
 }
 
 /* Black Dimmer */
-.ui.dimmer .ui.loader {
+.ui.dimmer > .ui.loader {
   color: @invertedLoaderTextColor;
 }
-.ui.dimmer .ui.loader:not(.elastic):before {
+.ui.dimmer > .ui.loader:not(.elastic):before {
   border-color: @invertedLoaderFillColor;
 }
 
 /* White Dimmer (Inverted) */
-.ui.inverted.dimmer .ui.loader {
+.ui.inverted.dimmer > .ui.loader {
   color: @loaderTextColor;
 }
-.ui.inverted.dimmer .ui.loader:not(.elastic):before {
+.ui.inverted.dimmer > .ui.loader:not(.elastic):before {
   border-color: @loaderFillColor;
 }
 
@@ -168,9 +168,9 @@
         Text
 --------------------*/
 
-.ui.text.loader {
-  width: auto !important;
-  height: auto !important;
+.ui.ui.ui.ui.text.loader {
+  width: auto;
+  height: auto;
   text-align: center;
   font-style: normal;
 }
@@ -205,49 +205,41 @@
 
 
 /* Loader */
-.ui.inverted.dimmer .ui.mini.loader,
 .ui.mini.loader {
   width: @mini;
   height: @mini;
   font-size: @miniFontSize;
 }
-.ui.inverted.dimmer .ui.tiny.loader,
 .ui.tiny.loader {
   width: @tiny;
   height: @tiny;
   font-size: @tinyFontSize;
 }
-.ui.inverted.dimmer .ui.small.loader,
 .ui.small.loader {
   width: @small;
   height: @small;
   font-size: @smallFontSize;
 }
-.ui.inverted.dimmer .ui.loader,
 .ui.loader {
   width: @medium;
   height: @medium;
   font-size: @mediumFontSize;
 }
-.ui.inverted.dimmer .ui.large.loader,
 .ui.large.loader {
   width: @large;
   height: @large;
   font-size: @largeFontSize;
 }
-.ui.inverted.dimmer .ui.big.loader,
 .ui.big.loader {
   width: @big;
   height: @big;
   font-size: @bigFontSize;
 }
-.ui.inverted.dimmer .ui.huge.loader,
 .ui.huge.loader {
   width: @huge;
   height: @huge;
   font-size: @hugeFontSize;
 }
-.ui.inverted.dimmer .ui.massive.loader,
 .ui.massive.loader {
   width: @massive;
   height: @massive;
@@ -395,10 +387,10 @@ each(@colors, {
        Elastic
 --------------------*/
 
-.ui.dimmer .ui.elastic.loader {
+.ui.dimmer > .ui.elastic.loader {
   color: @invertedLoaderLineColor;
 }
-.ui.inverted.dimmer .ui.elastic.loader {
+.ui.inverted.dimmer > .ui.elastic.loader {
   color: @loaderLineColor;
 }
 .ui.elastic.loading.loading:not(.form):not(.segment):after,
