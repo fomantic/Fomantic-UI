@@ -983,6 +983,8 @@
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
   text-align: center;
+  animation:none;
+  padding: @verticalPadding 0 @verticalPadding 0;
 
   margin: @labeledIconMargin;
   width: @labeledIconWidth;
@@ -1011,11 +1013,10 @@
 .ui.labeled.icon.buttons > .button > .icon:after,
 .ui.labeled.icon.button > .icon:after {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 50%;
+  top: 0;
   text-align: center;
-  transform: translateY(-50%);
 }
 
 .ui.labeled.icon.buttons .button > .icon {
@@ -1045,7 +1046,10 @@
   padding-right: @horizontalPadding !important;
 }
 
-
+/* Loading Icon in Labeled Button */
+.ui.labeled.icon.button > .loading.icon:before {
+  animation: loader 2s linear infinite;
+}
 
 
 /*--------------
