@@ -405,6 +405,7 @@ each(@colors, {
 .ui.elastic.loading.loading.loading > i.icon:before,
 .ui.elastic.loader.loader:before {
   animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+  -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
   border-right-color: transparent;
 }
 .ui.elastic.inline.loader:empty {
@@ -449,6 +450,30 @@ each(@colors, {
   }
   10.1%, 35%{
     border-bottom-color: inherit;
+  }
+  50.1%{
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes currentcolor-elastic-loader {
+  0%, 1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent
+  }
+  1.1%, 50% {
+    border-left-color: currentColor;
+  }
+  10%, 35.1%{
+    border-bottom-color: transparent;
+  }
+  10.1%, 35%{
+    border-bottom-color: currentColor;
   }
   50.1%{
     border-left-color: transparent;
