@@ -1288,10 +1288,12 @@ each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
 
-  .ui.menu .@{color}.active.item,
-  .ui.@{color}.menu .active.item {
-    border-color: @c;
-    color: @c;
+  & when not (@color=secondary) {
+    .ui.menu .@{color}.active.item,
+    .ui.@{color}.menu .active.item {
+      border-color: @c;
+      color: @c;
+    }
   }
 })
 
