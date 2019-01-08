@@ -2026,7 +2026,7 @@ $.fn.dropdown = function(parameters) {
               : (value !== undefined && value !== null)
             ;
             isMultiple = (module.is.multiple() && Array.isArray(value));
-            strict     = (value === '' || value === 0)
+            strict     = (value === '' || value === false  || value === true)
               ? true
               : strict || false
             ;
