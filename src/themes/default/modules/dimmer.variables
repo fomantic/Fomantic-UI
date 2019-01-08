@@ -20,7 +20,7 @@
 @textColor: @white;
 @overflow: hidden;
 
-@blurredStartFilter: e("blur(0px) grayscale(0)");
+@blurredStartFilter: initial;
 @blurredEndFilter: e("blur(5px) grayscale(0.7)");
 @blurredTransition: 800ms filter @defaultEasing;
 
