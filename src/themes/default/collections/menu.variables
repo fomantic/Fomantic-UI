@@ -119,6 +119,7 @@
 
 @labelTextMargin: 1em;
 @labelVerticalPadding: 0.3em;
+@circularLabelVerticalPadding: 0.5em; /* has to be equal to @circularPadding from label.less */
 @labelHorizontalPadding: @relativeMini;
 
 @labelAndIconFloat: none;
