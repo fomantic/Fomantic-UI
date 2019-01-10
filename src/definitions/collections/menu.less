@@ -1010,10 +1010,6 @@ Floated Menu / Item
   border-color: @secondaryPointingInvertedBorderColor;
 }
 
-.ui.secondary.inverted.pointing.menu {
-  border-width: @secondaryPointingBorderWidth;
-  border-color: @secondaryPointingBorderColor;
-}
 .ui.secondary.inverted.pointing.menu .item:not(.disabled) {
   color: @secondaryPointingInvertedItemTextColor;
 }
@@ -1416,15 +1412,17 @@ each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
 
-  .ui.inverted.menu .@{color}.active.item,
-  .ui.inverted.@{color}.menu {
-    background-color: @c;
-  }
-  .ui.inverted.@{color}.menu .item:before {
-    background-color: @invertedColoredDividerBackground;
-  }
-  .ui.inverted.@{color}.menu .active.item {
-    background-color: @invertedColoredActiveBackground;
+  & when not (@color=secondary) {
+    .ui.inverted.menu .@{color}.active.item,
+    .ui.inverted.@{color}.menu {
+      background-color: @c;
+    }
+    .ui.inverted.@{color}.menu .item:before {
+      background-color: @invertedColoredDividerBackground;
+    }
+    .ui.inverted.@{color}.menu .active.item {
+      background-color: @invertedColoredActiveBackground;
+    }
   }
 })
 
