@@ -4053,7 +4053,7 @@ $.fn.dropdown.settings.templates = {
     }
     html += '<div class="'+className.menu+'">';
     $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + option.value.replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -4082,7 +4082,7 @@ $.fn.dropdown.settings.templates = {
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + option[fields.value].replace(/"/g,"") + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
