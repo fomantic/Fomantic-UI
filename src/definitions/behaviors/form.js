@@ -1027,7 +1027,6 @@ $.fn.form = function(parameters) {
             var
               $field       = module.get.field(field.identifier),
               type         = rule.type,
-              value        = $field.val(),
               isValid      = true,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
@@ -1037,12 +1036,17 @@ $.fn.form = function(parameters) {
               module.error(error.noRule, ruleName);
               return;
             }
-            // cast to string avoiding encoding special values
-            value = (value === undefined || value === '' || value === null)
-              ? ''
-              : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
-            ;
-            return ruleFunction.call($field, value, ancillary);
+            $.each($field, function(index,field){
+              var  value  = $(field).val();
+              // cast to string avoiding encoding special values
+              value = (value === undefined || value === '' || value === null)
+                  ? ''
+                  : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+              ;
+              isValid = ruleFunction.call(field, value, ancillary);
+              return isValid;
+            });
+            return isValid;
           }
         },
 
