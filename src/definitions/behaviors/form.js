@@ -1036,28 +1036,35 @@ $.fn.form = function(parameters) {
             var
               $field       = module.get.field(field.identifier),
               type         = rule.type,
-              isValid      = true,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
               ruleFunction = settings.rules[ruleName],
-              invalidFields = []
+              invalidFields = [],
+              isValid = function(field){
+                var value = $(field).val();
+                // cast to string avoiding encoding special values
+                value = (value === undefined || value === '' || value === null)
+                    ? ''
+                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                ;
+                return ruleFunction.call(field, value, ancillary);
+              }
             ;
             if( !$.isFunction(ruleFunction) ) {
               module.error(error.noRule, ruleName);
               return;
             }
-            $.each($field, function(index,field){
-              var  value  = $(field).val();
-              // cast to string avoiding encoding special values
-              value = (value === undefined || value === '' || value === null)
-                  ? ''
-                  : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
-              ;
-              isValid = ruleFunction.call(field, value, ancillary);
-              if (!isValid) {
-                invalidFields.push(field);
+            if($field.is(selector.radio)) {
+              if (!isValid($field)) {
+                invalidFields = $field;
               }
-            });
+            } else {
+              $.each($field, function (index, field) {
+                if (!isValid(field)) {
+                  invalidFields.push(field);
+                }
+              });
+            }
             return internal ? invalidFields : !(invalidFields.length>0);
           }
         },
