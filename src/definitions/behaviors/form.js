@@ -704,7 +704,7 @@ $.fn.form = function(parameters) {
             }
             validation = $.extend({}, validation, newValidation);
           },
-          prompt: function(identifier, errors) {
+          prompt: function(identifier, errors, internal) {
             var
               $field       = module.get.field(identifier),
               $fieldGroup  = $field.closest($group),
@@ -716,9 +716,11 @@ $.fn.form = function(parameters) {
               : errors
             ;
             module.verbose('Adding field error state', identifier);
-            $fieldGroup
-              .addClass(className.error)
-            ;
+            if(!internal) {
+              $fieldGroup
+                  .addClass(className.error)
+              ;
+            }
             if(settings.inline) {
               if(!promptExists) {
                 $prompt = settings.templates.prompt(errors);
@@ -997,11 +999,18 @@ $.fn.form = function(parameters) {
               module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
             }
             else if(field.rules !== undefined) {
+              $field.closest($group).removeClass(className.error);
               $.each(field.rules, function(index, rule) {
-                if( module.has.field(identifier) && !( module.validate.rule(field, rule) ) ) {
-                  module.debug('Field is invalid', identifier, rule.type);
-                  fieldErrors.push(module.get.prompt(rule, field));
-                  fieldValid = false;
+                if( module.has.field(identifier)) {
+                  var invalidFields = module.validate.rule(field, rule,true) || [];
+                  if (invalidFields.length>0){
+                    module.debug('Field is invalid', identifier, rule.type);
+                    fieldErrors.push(module.get.prompt(rule, field));
+                    fieldValid = false;
+                    if(showErrors){
+                      $(invalidFields).closest($group).addClass(className.error);
+                    }
+                  }
                 }
               });
             }
@@ -1014,7 +1023,7 @@ $.fn.form = function(parameters) {
             else {
               if(showErrors) {
                 formErrors = formErrors.concat(fieldErrors);
-                module.add.prompt(identifier, fieldErrors);
+                module.add.prompt(identifier, fieldErrors, true);
                 settings.onInvalid.call($field, fieldErrors);
               }
               return false;
@@ -1023,14 +1032,15 @@ $.fn.form = function(parameters) {
           },
 
           // takes validation rule and returns whether field passes rule
-          rule: function(field, rule) {
+          rule: function(field, rule, internal) {
             var
               $field       = module.get.field(field.identifier),
               type         = rule.type,
               isValid      = true,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
-              ruleFunction = settings.rules[ruleName]
+              ruleFunction = settings.rules[ruleName],
+              invalidFields = []
             ;
             if( !$.isFunction(ruleFunction) ) {
               module.error(error.noRule, ruleName);
@@ -1044,9 +1054,11 @@ $.fn.form = function(parameters) {
                   : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
               ;
               isValid = ruleFunction.call(field, value, ancillary);
-              return isValid;
+              if (!isValid) {
+                invalidFields.push(field);
+              }
             });
-            return isValid;
+            return internal ? invalidFields : !(invalidFields.length>0);
           }
         },
 
