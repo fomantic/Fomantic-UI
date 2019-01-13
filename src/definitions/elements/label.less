@@ -73,6 +73,7 @@ a.ui.label {
 }
 
 /* Icon */
+.ui.left.icon.label > .icon,
 .ui.label > .icon {
   width: auto;
   margin: 0 @iconDistance 0 0;
@@ -101,6 +102,10 @@ a.ui.label {
 }
 
 /* Backward compatible positioning */
+.ui.label.left.icon > .close.icon,
+.ui.label.left.icon > .delete.icon {
+  margin: 0 @deleteMargin 0 0;
+}
 .ui.label:not(.icon) > .close.icon,
 .ui.label:not(.icon) > .delete.icon {
   margin: 0 0 0 @deleteMargin;
