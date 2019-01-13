@@ -100,6 +100,11 @@ a.ui.label {
   opacity: @deleteOpacity;
   transition: @deleteTransition;
 }
+.ui.label > .close.icon:hover,
+.ui.label > .delete.icon:hover,
+.ui.label > .hoverable.icon:hover {
+  opacity: 1;
+}
 
 /* Backward compatible positioning */
 .ui.label.left.icon > .close.icon,
@@ -109,12 +114,6 @@ a.ui.label {
 .ui.label:not(.icon) > .close.icon,
 .ui.label:not(.icon) > .delete.icon {
   margin: 0 0 0 @deleteMargin;
-}
-
-.ui.label > .close.icon:hover,
-.ui.label > .delete.icon:hover,
-.ui.label > .hoverable.icon:hover {
-  opacity: 1;
 }
 
 /* Label for only an icon */
