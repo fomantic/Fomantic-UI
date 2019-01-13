@@ -105,6 +105,20 @@ a.ui.label {
   opacity: 1;
 }
 
+/* Label for only an icon */
+.ui.icon.label > .icon {
+  margin: 0 auto;
+}
+
+/* Right Side Icon */
+.ui.right.icon.label > .icon {
+  margin: 0 0 0 @iconDistance;
+}
+.ui.right.icon.label > .close.icon,
+.ui.right.icon.label > .delete.icon {
+  margin: 0 0 0 @deleteMargin;
+}
+
 /*-------------------
        Group
 --------------------*/
