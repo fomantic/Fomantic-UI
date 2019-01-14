@@ -91,18 +91,16 @@ a.ui.label {
   margin: 0 @detailIconDistance 0 0;
 }
 
-/* Removable and Hoverable label */
+/* Removable label */
 .ui.label > .close.icon,
-.ui.label > .delete.icon,
-.ui.label > .hoverable.icon {
+.ui.label > .delete.icon {
   cursor: pointer;
   font-size: @deleteSize;
   opacity: @deleteOpacity;
   transition: @deleteTransition;
 }
 .ui.label > .close.icon:hover,
-.ui.label > .delete.icon:hover,
-.ui.label > .hoverable.icon:hover {
+.ui.label > .delete.icon:hover {
   opacity: 1;
 }
 
