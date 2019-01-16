@@ -222,11 +222,11 @@ $.fn.checkbox = function(parameters) {
             }
 
             if (!module.should.ignoreCallbacks() && checkIndex !== false) {
-              if(!settings.beforeUnchecked.apply(input)) {
+              if(settings.beforeUnchecked.apply(input)===false) {
                 module.verbose('Option not allowed to be unchecked, cancelling key navigation');
                 return false;
               }
-              if (!settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0])) {
+              if (settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0])===false) {
                 module.verbose('Next option should not allow check, cancelling key navigation');
                 return false;
               }
