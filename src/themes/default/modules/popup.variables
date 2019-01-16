@@ -45,7 +45,7 @@
 
 /* Arrow */
 @arrowBackground: @background;
-@arrowZIndex: 3;
+@arrowZIndex: 1901;
 @arrowJitter: 0.05em;
 @arrowOffset: -(@arrowSize / 2) + @arrowJitter;
 
@@ -79,7 +79,7 @@
 @tooltipFontSize: @medium;
 @tooltipLineHeight: @lineHeight;
 @tooltipDistanceAway: @relative7px;
-@tooltipZIndex: 2;
+@tooltipZIndex: 1900;
 @tooltipDuration: @defaultDuration;
 @tooltipEasing: @defaultEasing;
 
