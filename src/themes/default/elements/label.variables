@@ -236,7 +236,7 @@
 
 /* Floating */
 @floatingTopOffset: -1em;
-@floatingLeftOffset: -1.5em;
+@floatingAlignOffset: 1.2em;
 @floatingZIndex: 100;
 
 /*-------------------
