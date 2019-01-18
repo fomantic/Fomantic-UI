@@ -118,13 +118,13 @@ $.fn.progress = function(parameters) {
                 value   : $module.data(metadata.value)
               }
             ;
-            if(data.percent) {
-              module.debug('Current percent value set from metadata', data.percent);
-              module.set.percent(data.percent);
-            }
             if(data.total) {
               module.debug('Total value set from metadata', data.total);
               module.set.total(data.total);
+            }
+            if(data.percent) {
+              module.debug('Current percent value set from metadata', data.percent);
+              module.set.percent(data.percent);
             }
             if(data.value) {
               module.debug('Current value set from metadata', data.value);
