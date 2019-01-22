@@ -249,21 +249,24 @@ $.fn.transition = function() {
           visible: function() {
             var
               style          = $module.attr('style'),
-              userStyle      = module.get.userStyle(),
+              userStyle      = module.get.userStyle(style),
               displayType    = module.get.displayType(),
               overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
-              currentDisplay = $module.css('display'),
-              emptyStyle     = (style === undefined || style === '')
+              inlineDisplay  = $module[0].style.display,
+              mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
             ;
-            if(currentDisplay !== displayType) {
-              module.verbose('Overriding default display to show element', displayType);
-              $module
-                .attr('style', overrideStyle)
-              ;
+            if (mustStayHidden){
+              module.remove.transition();
+              return false;
             }
-            else if(emptyStyle) {
+            module.verbose('Overriding default display to show element', displayType);
+            $module
+              .attr('style', overrideStyle)
+            ;
+            if(style === '') {
               $module.removeAttr('style');
             }
+            return true;
           },
           hidden: function() {
             var
@@ -311,28 +314,27 @@ $.fn.transition = function() {
 
         set: {
           animating: function(animation) {
-            var
-              animationClass,
-              direction
-            ;
-            // remove previous callbacks
-            module.remove.completeCallback();
-
-            // determine exact animation
-            animation      = animation || settings.animation;
-            animationClass = module.get.animationClass(animation);
-
-            // save animation class in cache to restore class names
-            module.save.animation(animationClass);
-
             // override display if necessary so animation appears visibly
-            module.force.visible();
+            if(module.force.visible()) {
+              var
+                  animationClass,
+                  direction
+              ;
+              // remove previous callbacks
+              module.remove.completeCallback();
 
-            module.remove.hidden();
-            module.remove.direction();
+              // determine exact animation
+              animation = animation || settings.animation;
+              animationClass = module.get.animationClass(animation);
 
-            module.start.animation(animationClass);
+              // save animation class in cache to restore class names
+              module.save.animation(animationClass);
 
+              module.remove.hidden();
+              module.remove.direction();
+
+              module.start.animation(animationClass);
+            }
           },
           duration: function(animationName, duration) {
             duration = duration || settings.duration;
@@ -504,6 +506,7 @@ $.fn.transition = function() {
           },
           transition: function() {
             $module
+              .removeClass(className.transition)
               .removeClass(className.visible)
               .removeClass(className.hidden)
             ;
@@ -625,8 +628,13 @@ $.fn.transition = function() {
               return settings.displayType;
             }
             if(shouldDetermine && $module.data(metadata.displayType) === undefined) {
+              var currentDisplay = $module.css('display');
+              if(currentDisplay === '' || currentDisplay === 'none'){
               // create fake element to determine display state
-              module.can.transition(true);
+                module.can.transition(true);
+              } else {
+                module.save.displayType(currentDisplay);
+              }
             }
             return $module.data(metadata.displayType);
           },
@@ -803,12 +811,13 @@ $.fn.transition = function() {
 
         show: function(display) {
           module.verbose('Showing element', display);
-          module.remove.hidden();
-          module.set.visible();
-          module.force.visible();
-          settings.onShow.call(element);
-          settings.onComplete.call(element);
-          // module.repaint();
+          if(module.force.visible()) {
+            module.remove.hidden();
+            module.set.visible();
+            settings.onShow.call(element);
+            settings.onComplete.call(element);
+            // module.repaint();
+          }
         },
 
         toggle: function() {
@@ -1079,6 +1088,9 @@ $.fn.transition.settings = {
 
   // new animations will occur after previous ones
   queue         : true,
+
+// whether initially inline hidden objects should be skipped for transition
+  skipInlineHidden: false,
 
   metadata : {
     displayType: 'display'

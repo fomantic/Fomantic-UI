@@ -2705,7 +2705,7 @@ $.fn.dropdown = function(parameters) {
             $label =  $('<a />')
               .addClass(className.label)
               .attr('data-' + metadata.value, escapedValue)
-              .html(templates.label(escapedValue, text, settings.preserveHTML))
+              .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className))
             ;
             $label = settings.onLabelCreate.call($label, escapedValue, text);
 
@@ -4005,7 +4005,8 @@ $.fn.dropdown.settings = {
     leftward    : 'left',
     visible     : 'visible',
     clearable   : 'clearable',
-    noselection : 'noselection'
+    noselection : 'noselection',
+    delete      : 'delete'
   }
 
 };
@@ -4095,10 +4096,10 @@ $.fn.dropdown.settings.templates = {
   },
 
   // generates label for multiselect
-  label: function(value, text, preserveHTML) {
+  label: function(value, text, preserveHTML, className) {
     var
         escape = $.fn.dropdown.settings.templates.escape;
-    return escape(text,preserveHTML) + '<i class="delete icon"></i>';
+    return escape(text,preserveHTML) + '<i class="'+className.delete+' icon"></i>';
   },
 
 
