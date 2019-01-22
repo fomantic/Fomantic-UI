@@ -895,9 +895,19 @@ each(@colors,{
   z-index: @floatingZIndex;
   top: @floatingTopOffset;
   right: 0;
-  margin: 0 0 0 @floatingLeftOffset !important;
   white-space: nowrap;
   transform: translateX(50%);
+}
+.ui.right.aligned.floating.label {
+  transform: translateX(@floatingAlignOffset);
+}
+.ui.left.floating.label {
+  left:0;
+  right:auto;
+  transform: translateX(-50%);
+}
+.ui.left.aligned.floating.label {
+  transform: translateX(-@floatingAlignOffset);
 }
 
 /*-------------------
