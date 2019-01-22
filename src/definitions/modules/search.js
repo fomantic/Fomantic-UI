@@ -646,7 +646,7 @@ $.fn.search = function(parameters) {
                 }
               });
             });
-            $.merge(exactResults, fuzzyResults)
+            $.merge(exactResults, fuzzyResults);
             $.merge(results, exactResults);
             return results;
           }
@@ -788,7 +788,7 @@ $.fn.search = function(parameters) {
                 categoryResults[result.category] = {
                   name    : result.category,
                   results : [result]
-                }
+                };
               }
               else {
                 categoryResults[result.category].results.push(result);
@@ -1388,7 +1388,7 @@ $.fn.search.settings = {
         ;
         if(header) {
           html += ''
-          + '<div class="header">' + header + '</div class="header">'
+          + '<div class="header">' + header + '</div>'
           ;
         }
         html += ' <div class="description">' + message + '</div>';

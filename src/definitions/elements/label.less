@@ -73,6 +73,7 @@ a.ui.label {
 }
 
 /* Icon */
+.ui.left.icon.label > .icon,
 .ui.label > .icon {
   width: auto;
   margin: 0 @iconDistance 0 0;
@@ -90,19 +91,37 @@ a.ui.label {
   margin: 0 @detailIconDistance 0 0;
 }
 
-
 /* Removable label */
 .ui.label > .close.icon,
 .ui.label > .delete.icon {
   cursor: pointer;
-  margin-right: 0;
-  margin-left: @deleteMargin;
   font-size: @deleteSize;
   opacity: @deleteOpacity;
   transition: @deleteTransition;
 }
+.ui.label > .close.icon:hover,
 .ui.label > .delete.icon:hover {
   opacity: 1;
+}
+
+/* Backward compatible positioning */
+.ui.label.left.icon > .close.icon,
+.ui.label.left.icon > .delete.icon {
+  margin: 0 @deleteMargin 0 0;
+}
+.ui.label:not(.icon) > .close.icon,
+.ui.label:not(.icon) > .delete.icon {
+  margin: 0 0 0 @deleteMargin;
+}
+
+/* Label for only an icon */
+.ui.icon.label > .icon {
+  margin: 0 auto;
+}
+
+/* Right Side Icon */
+.ui.right.icon.label > .icon {
+  margin: 0 0 0 @iconDistance;
 }
 
 /*-------------------
@@ -875,8 +894,10 @@ each(@colors,{
   position: absolute;
   z-index: @floatingZIndex;
   top: @floatingTopOffset;
-  left: 100%;
+  right: 0;
   margin: 0 0 0 @floatingLeftOffset !important;
+  white-space: nowrap;
+  transform: translateX(50%);
 }
 
 /*-------------------

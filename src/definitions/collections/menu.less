@@ -1294,8 +1294,8 @@ each(@colors, {
   @c: @colors[@@color][color];
 
   & when not (@color=secondary) {
-    .ui.menu .@{color}.active.item,
-    .ui.@{color}.menu .active.item {
+    .ui.ui.menu .@{color}.active.item,
+    .ui.ui.@{color}.menu .active.item {
       border-color: @c;
       color: @c;
     }
@@ -1422,14 +1422,14 @@ each(@colors, {
   @c: @colors[@@color][color];
 
   & when not (@color=secondary) {
-    .ui.inverted.menu .@{color}.active.item,
-    .ui.inverted.@{color}.menu {
+    .ui.ui.inverted.menu .@{color}.active.item,
+    .ui.ui.inverted.@{color}.menu {
       background-color: @c;
     }
     .ui.inverted.@{color}.menu .item:before {
       background-color: @invertedColoredDividerBackground;
     }
-    .ui.inverted.@{color}.menu .active.item {
+    .ui.ui.inverted.@{color}.menu .active.item {
       background-color: @invertedColoredActiveBackground;
     }
   }
