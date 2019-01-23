@@ -16,3 +16,12 @@ newPRWelcomeComment:
   - 
   - NOTE: If the `commitlint` bot fails it does not mean your PR won't be merged!
 
+
+# Configuration for welcome - https://github.com/kentaro-m/auto-assign
+
+addReviewers: true
+reviewers:
+  - hammy2899
+  - ColinFrick
+  - prudho
+  - lubber-de
