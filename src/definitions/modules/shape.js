@@ -200,7 +200,7 @@ $.fn.shape = function(parameters) {
         set: {
 
           defaultSide: function() {
-            $activeSide = $module.find('.' + settings.className.active);
+            $activeSide = $side.filter('.' + settings.className.active);
             $nextSide   = ( $activeSide.next(selector.side).length > 0 )
               ? $activeSide.next(selector.side)
               : $module.find(selector.side).first()
@@ -232,7 +232,7 @@ $.fn.shape = function(parameters) {
 
           currentStageSize: function() {
             var
-              $activeSide = $module.find('.' + settings.className.active),
+              $activeSide = $side.filter('.' + settings.className.active),
               width       = $activeSide.outerWidth(true),
               height      = $activeSide.outerHeight(true)
             ;
@@ -247,12 +247,13 @@ $.fn.shape = function(parameters) {
           stageSize: function() {
             var
               $clone      = $module.clone().addClass(className.loading),
-              $activeSide = $clone.find('.' + settings.className.active),
+              $side       = $clone.find(selector.side),
+              $activeSide = $side.filter('.' + settings.className.active),
               $nextSide   = (nextIndex)
-                ? $clone.find(selector.side).eq(nextIndex)
+                ? $side.eq(nextIndex)
                 : ( $activeSide.next(selector.side).length > 0 )
                   ? $activeSide.next(selector.side)
-                  : $clone.find(selector.side).first(),
+                  : $side.first(),
               newWidth    = (settings.width == 'next')
                 ? $nextSide.outerWidth(true)
                 : (settings.width == 'initial')
