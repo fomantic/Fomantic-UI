@@ -447,6 +447,7 @@ $.fn.modal = function(parameters) {
           module.debug('Hiding modal');
           if(settings.onHide.call(element, $(this)) === false) {
             module.verbose('Hide callback returned false cancelling hide');
+            ignoreRepeatedEvents = false;
             return false;
           }
 
