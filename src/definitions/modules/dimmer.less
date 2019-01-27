@@ -81,6 +81,18 @@
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
+  .ui.inverted.dimmer::-webkit-scrollbar-track {
+    background: @trackBackground;
+  }
+  .ui.inverted.dimmer::-webkit-scrollbar-thumb {
+    background: @thumbBackground;
+  }
+  .ui.inverted.dimmer::-webkit-scrollbar-thumb:window-inactive {
+    background: @thumbInactiveBackground;
+  }
+  .ui.inverted.dimmer::-webkit-scrollbar-thumb:hover {
+    background: @thumbHoverBackground;
+  }
 }
 .addScrollbars();
 
