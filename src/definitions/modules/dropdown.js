@@ -4077,7 +4077,7 @@ $.fn.dropdown.settings.templates = {
       if( itemType === 'item' ) {
         var
           maybeText = (option[fields.text])
-            ? 'data-text="' + option[fields.text] + '"'
+            ? ' data-text="' + String(option[fields.text]).replace(/"/g,"") + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
