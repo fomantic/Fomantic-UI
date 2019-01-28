@@ -291,6 +291,10 @@ $.fn.modal = function(parameters) {
               module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
+            if(module.is.scrolling() && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX ){
+              module.debug('Dimmer clicked but within scrollbar');
+              return;
+            }
             var
               $target   = $(event.target),
               isInModal = ($target.closest(selector.modal).length > 0),
@@ -1060,6 +1064,7 @@ $.fn.modal.settings = {
 
   // padding with edge of page
   padding    : 50,
+  scrollbarWidth: 10,
 
   // called before show animation
   onShow     : function(){},
