@@ -64,8 +64,8 @@ $.fn.shape = function(parameters) {
 
         // selector cache
         $module       = $(this),
-        $sides        = $module.find(selector.sides),
-        $side         = $module.find(selector.side),
+        $sides        = $module.find('>' + selector.sides),
+        $side         = $sides.find('>' + selector.side),
 
         // private variables
         nextIndex = false,
@@ -247,7 +247,7 @@ $.fn.shape = function(parameters) {
           stageSize: function() {
             var
               $clone      = $module.clone().addClass(className.loading),
-              $side       = $clone.find(selector.side),
+              $side       = $clone.find('>' + selector.sides + '>' + selector.side),
               $activeSide = $side.filter('.' + settings.className.active),
               $nextSide   = (nextIndex)
                 ? $side.eq(nextIndex)
