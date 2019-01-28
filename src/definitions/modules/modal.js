@@ -593,7 +593,7 @@ $.fn.modal = function(parameters) {
 
         restore: {
           focus: function() {
-            if($focusedElement && $focusedElement.length > 0) {
+            if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
               $focusedElement.focus();
             }
           }
@@ -1037,6 +1037,7 @@ $.fn.modal.settings = {
   detachable     : true,
   closable       : true,
   autofocus      : true,
+  restoreFocus   : true,
 
   inverted       : false,
   blurring       : false,
