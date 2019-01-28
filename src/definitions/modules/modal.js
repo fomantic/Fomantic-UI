@@ -79,6 +79,7 @@ $.fn.modal = function(parameters) {
         ignoreRepeatedEvents = false,
 
         initialMouseDownInModal,
+        initialMouseDownInScrollbar,
 
         elementEventNamespace,
         id,
@@ -281,6 +282,10 @@ $.fn.modal = function(parameters) {
             if(initialMouseDownInModal) {
               module.verbose('Mouse down event registered inside the modal');
             }
+            initialMouseDownInScrollbar = module.is.scrolling() && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX;
+            if(initialMouseDownInScrollbar) {
+              module.verbose('Mouse down event registered inside the scrollbar');
+            }
           },
           mouseup: function(event) {
             if(!settings.closable) {
@@ -291,8 +296,8 @@ $.fn.modal = function(parameters) {
               module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
-            if(module.is.scrolling() && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX ){
-              module.debug('Dimmer clicked but within scrollbar');
+            if(initialMouseDownInScrollbar){
+              module.debug('Dimmer clicked but mouse down was initially registered inside the scrollbar');
               return;
             }
             var
