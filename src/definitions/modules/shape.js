@@ -105,7 +105,7 @@ $.fn.shape = function(parameters) {
         refresh: function() {
           module.verbose('Refreshing selector cache for', element);
           $module = $(element);
-          $sides  = $(this).find(selector.shape);
+          $sides  = $(this).find(selector.sides);
           $side   = $(this).find(selector.side);
         },
 
@@ -203,7 +203,7 @@ $.fn.shape = function(parameters) {
             $activeSide = $side.filter('.' + settings.className.active);
             $nextSide   = ( $activeSide.next(selector.side).length > 0 )
               ? $activeSide.next(selector.side)
-              : $module.find(selector.side).first()
+              : $side.first()
             ;
             nextIndex = false;
             module.verbose('Active side set to', $activeSide);
@@ -510,7 +510,7 @@ $.fn.shape = function(parameters) {
           nextSide: function() {
             return ( $activeSide.next(selector.side).length > 0 )
               ? $activeSide.next(selector.side)
-              : $module.find(selector.side).first()
+              : $side.first()
             ;
           }
 
