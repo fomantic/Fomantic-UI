@@ -4,7 +4,7 @@
 
 var
   // dependencies
-  gulp     = require('gulp-help')(require('gulp')),
+  gulp     = require('gulp'),
 
   // config
   install  = require('./config/project/install')

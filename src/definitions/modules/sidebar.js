@@ -175,12 +175,10 @@ $.fn.sidebar = function(parameters) {
         bind: {
           clickaway: function() {
             module.verbose('Adding clickaway events to context', $context);
-            if(settings.closable) {
-              $context
-                .on('click'    + elementNamespace, module.event.clickaway)
-                .on('touchend' + elementNamespace, module.event.clickaway)
-              ;
-            }
+            $context
+              .on('click'    + elementNamespace, module.event.clickaway)
+              .on('touchend' + elementNamespace, module.event.clickaway)
+            ;
           },
           scrollLock: function() {
             if(settings.scrollLock) {
@@ -411,7 +409,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(module.is.visible() || module.is.animating()) {
+          if(settings.closable && (module.is.visible() || module.is.animating())) {
             module.debug('Hiding sidebar', callback);
             module.refreshSidebars();
             module.pullPage(function() {

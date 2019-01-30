@@ -412,6 +412,9 @@
   border-radius: @borderRadius;
   border: @border;
 }
+.ui.stackable.horizontal.segments {
+  flex-wrap: wrap;
+}
 
 /* Nested Horizontal Group */
 .ui.segments > .horizontal.segments {
@@ -440,7 +443,7 @@
 .ui.segments > .horizontal.segments:first-child {
   border-top: none;
 }
-.ui.horizontal.segments > .segment:first-child {
+.ui.horizontal.segments:not(.stackable) > .segment:first-child {
   border-left: none;
 }
 
@@ -467,7 +470,6 @@
   cursor: default;
   pointer-events: none;
   text-shadow: none !important;
-  color: transparent !important;
   transition: all 0s linear;
 }
 .ui.loading.segment:before {
@@ -539,12 +541,14 @@
 each(@colors,{
   @color: replace(@key,'@','');
   @c: @colors[@@color][color];
-  .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-    border-top: @coloredBorderSize solid @c;
-  }
-  .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-    background-color: @c;
-    color: @white;
+  & when not (@color=primary) and not (@color=secondary) {
+    .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+      border-top: @coloredBorderSize solid @c;
+    }
+    .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+      background-color: @c;
+      color: @white;
+    }
   }
 })
 
@@ -602,6 +606,14 @@ each(@colors,{
 /* Attached */
 .ui.inverted.attached.segment {
   border-color: @solidWhiteBorderColor;
+}
+
+/* Loading */
+.ui.inverted.loading.segment {
+  color: @invertedLoaderLineColor;
+}
+.ui.inverted.loading.segment:before {
+  background: @loaderInvertedDimmerColor;
 }
 
 /*-------------------
