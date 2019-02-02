@@ -546,15 +546,15 @@ each(@colors,{
   .ui.inverted.cards > .@{color}.card,
   .ui.inverted.@{color}.card {
     box-shadow:
-            @borderShadow,
+            0 @shadowDistance 3px 0 @solidWhiteBorderColor,
             0 @coloredShadowDistance 0 0 @l,
-            @shadowBoxShadow
+            0 0 0 @borderWidth @solidWhiteBorderColor
   ;
     &:hover {
     box-shadow:
-            @borderShadow,
+            0 @shadowDistance 3px 0 @solidWhiteBorderColor,
             0 @coloredShadowDistance 0 0 @lh,
-            @shadowHoverBoxShadow
+            0 0 0 @borderWidth @solidWhiteBorderColor
     ;
     }
   }
