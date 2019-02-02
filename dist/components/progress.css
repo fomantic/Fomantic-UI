@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Progress Bar
+ * # Semantic UI 2.7.2 - Progress Bar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -49,6 +49,16 @@
   border-radius: 0.28571429rem;
   -webkit-transition: width 0.1s ease, background-color 0.1s ease;
   transition: width 0.1s ease, background-color 0.1s ease;
+}
+.ui.progress:not([data-percent]) .bar,
+.ui.progress[data-percent="0"] .bar {
+  background: transparent;
+}
+.ui.progress[data-percent="0"] .bar .progress {
+  color: rgba(0, 0, 0, 0.87);
+}
+.ui.inverted.progress[data-percent="0"] .bar .progress {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Percent Complete */
@@ -140,6 +150,30 @@
   color: rgba(0, 0, 0, 0.87);
 }
 
+/* Inverted Indicating Label */
+.ui.inverted.indicating.progress[data-percent^="1"] .label,
+.ui.inverted.indicating.progress[data-percent^="2"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.indicating.progress[data-percent^="3"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.indicating.progress[data-percent^="4"] .label,
+.ui.inverted.indicating.progress[data-percent^="5"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.indicating.progress[data-percent^="6"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.indicating.progress[data-percent^="7"] .label,
+.ui.inverted.indicating.progress[data-percent^="8"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.indicating.progress[data-percent^="9"] .label,
+.ui.inverted.indicating.progress[data-percent^="100"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Single Digits */
 .ui.indicating.progress[data-percent="1"] .bar,
 .ui.indicating.progress[data-percent="2"] .bar,
@@ -152,6 +186,7 @@
 .ui.indicating.progress[data-percent="9"] .bar {
   background-color: #D95C5C;
 }
+.ui.indicating.progress[data-percent="0"] .label,
 .ui.indicating.progress[data-percent="1"] .label,
 .ui.indicating.progress[data-percent="2"] .label,
 .ui.indicating.progress[data-percent="3"] .label,
@@ -163,9 +198,21 @@
 .ui.indicating.progress[data-percent="9"] .label {
   color: rgba(0, 0, 0, 0.87);
 }
+.ui.inverted.indicating.progress[data-percent="0"] .label,
+.ui.inverted.indicating.progress[data-percent="1"] .label,
+.ui.inverted.indicating.progress[data-percent="2"] .label,
+.ui.inverted.indicating.progress[data-percent="3"] .label,
+.ui.inverted.indicating.progress[data-percent="4"] .label,
+.ui.inverted.indicating.progress[data-percent="5"] .label,
+.ui.inverted.indicating.progress[data-percent="6"] .label,
+.ui.inverted.indicating.progress[data-percent="7"] .label,
+.ui.inverted.indicating.progress[data-percent="8"] .label,
+.ui.inverted.indicating.progress[data-percent="9"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
 
 /* Indicating Success */
-.ui.indicating.progress.success .label {
+.ui.ui.indicating.progress.success .label {
   color: #1A531B;
 }
 
@@ -180,12 +227,12 @@
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: #21BA45 !important;
+  background-color: #21BA45;
 }
-.ui.progress.success .bar,
-.ui.progress.success .bar::after {
-  -webkit-animation: none !important;
-          animation: none !important;
+.ui.ui.progress.success .bar,
+.ui.ui.progress.success .bar::after {
+  -webkit-animation: none;
+          animation: none;
 }
 .ui.progress.success > .label {
   color: #1A531B;
@@ -196,12 +243,12 @@
 ---------------*/
 
 .ui.progress.warning .bar {
-  background-color: #F2C037 !important;
+  background-color: #F2C037;
 }
-.ui.progress.warning .bar,
-.ui.progress.warning .bar::after {
-  -webkit-animation: none !important;
-          animation: none !important;
+.ui.ui.progress.warning .bar,
+.ui.ui.progress.warning .bar::after {
+  -webkit-animation: none;
+          animation: none;
 }
 .ui.progress.warning > .label {
   color: #794B02;
@@ -212,12 +259,12 @@
 ---------------*/
 
 .ui.progress.error .bar {
-  background-color: #DB2828 !important;
+  background-color: #DB2828;
 }
-.ui.progress.error .bar,
-.ui.progress.error .bar::after {
-  -webkit-animation: none !important;
-          animation: none !important;
+.ui.ui.progress.error .bar,
+.ui.ui.progress.error .bar::after {
+  -webkit-animation: none;
+          animation: none;
 }
 .ui.progress.error > .label {
   color: #912D2B;
@@ -278,10 +325,10 @@
 .ui.disabled.progress {
   opacity: 0.35;
 }
-.ui.disabled.progress .bar,
-.ui.disabled.progress .bar::after {
-  -webkit-animation: none !important;
-          animation: none !important;
+.ui.ui.disabled.progress .bar,
+.ui.ui.disabled.progress .bar::after {
+  -webkit-animation: none;
+          animation: none;
 }
 
 

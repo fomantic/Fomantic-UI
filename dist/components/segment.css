@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Segment
+ * # Semantic UI 2.7.2 - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -430,6 +430,10 @@
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
+.ui.stackable.horizontal.segments {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
 
 /* Nested Horizontal Group */
 .ui.segments > .horizontal.segments {
@@ -463,7 +467,7 @@
 .ui.segments > .horizontal.segments:first-child {
   border-top: none;
 }
-.ui.horizontal.segments > .segment:first-child {
+.ui.horizontal.segments:not(.stackable) > .segment:first-child {
   border-left: none;
 }
 
@@ -491,7 +495,6 @@
   cursor: default;
   pointer-events: none;
   text-shadow: none !important;
-  color: transparent !important;
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
@@ -560,20 +563,6 @@
        Colors
 --------------------*/
 
-.ui.primary.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #2185D0;
-}
-.ui.inverted.primary.segment.segment.segment.segment.segment {
-  background-color: #2185D0;
-  color: #FFFFFF;
-}
-.ui.secondary.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid rgba(0, 0, 0, 0.6);
-}
-.ui.inverted.secondary.segment.segment.segment.segment.segment {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #FFFFFF;
-}
 .ui.red.segment.segment.segment.segment.segment:not(.inverted) {
   border-top: 2px solid #DB2828;
 }
@@ -720,6 +709,14 @@
 /* Attached */
 .ui.inverted.attached.segment {
   border-color: #555555;
+}
+
+/* Loading */
+.ui.inverted.loading.segment {
+  color: #FFFFFF;
+}
+.ui.inverted.loading.segment:before {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 /*-------------------

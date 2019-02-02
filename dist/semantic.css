@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.1
+ * # Fomantic UI - 2.7.2
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -10,7 +10,7 @@
  */
 @import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
 /*!
- * # Semantic UI 2.7.1 - Reset
+ * # Semantic UI 2.7.2 - Reset
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -48,22 +48,19 @@ input[type="password"] {
   /* mobile firefox too! */
 }
 
-/*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
    ========================================================================== */
 
 /**
  * 1. Correct the line height in all browsers.
- * 2. Prevent adjustments of font size after orientation changes in
- *    IE on Windows Phone and in iOS.
+ * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
 
 html {
   line-height: 1.15;
   /* 1 */
-  -ms-text-size-adjust: 100%;
-  /* 2 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
 }
@@ -72,7 +69,7 @@ html {
    ========================================================================== */
 
 /**
- * Remove the margin in all browsers (opinionated).
+ * Remove the margin in all browsers.
  */
 
 body {
@@ -80,15 +77,10 @@ body {
 }
 
 /**
- * Add the correct display in IE 9-.
+ * Render the `main` element consistently in IE.
  */
 
-article,
-aside,
-footer,
-header,
-nav,
-section {
+main {
   display: block;
 }
 
@@ -104,26 +96,6 @@ h1 {
 
 /* Grouping content
    ========================================================================== */
-
-/**
- * Add the correct display in IE 9-.
- * 1. Add the correct display in IE.
- */
-
-figcaption,
-figure,
-main {
-  /* 1 */
-  display: block;
-}
-
-/**
- * Add the correct margin in IE 8.
- */
-
-figure {
-  margin: 1em 40px;
-}
 
 /**
  * 1. Add the correct box sizing in Firefox.
@@ -156,19 +128,15 @@ pre {
    ========================================================================== */
 
 /**
- * 1. Remove the gray background on active links in IE 10.
- * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ * Remove the gray background on active links in IE 10.
  */
 
 a {
   background-color: transparent;
-  /* 1 */
-  -webkit-text-decoration-skip: objects;
-  /* 2 */
 }
 
 /**
- * 1. Remove the bottom border in Chrome 57- and Firefox 39-.
+ * 1. Remove the bottom border in Chrome 57-
  * 2. Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari.
  */
 
@@ -180,15 +148,6 @@ abbr[title] {
   -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   /* 2 */
-}
-
-/**
- * Prevent the duplicate application of `bolder` by the next rule in Safari 6.
- */
-
-b,
-strong {
-  font-weight: inherit;
 }
 
 /**
@@ -212,23 +171,6 @@ samp {
   /* 1 */
   font-size: 1em;
   /* 2 */
-}
-
-/**
- * Add the correct font style in Android 4.3-.
- */
-
-dfn {
-  font-style: italic;
-}
-
-/**
- * Add the correct background and color in IE 9-.
- */
-
-mark {
-  background-color: #ff0;
-  color: #000;
 }
 
 /**
@@ -264,44 +206,18 @@ sup {
    ========================================================================== */
 
 /**
- * Add the correct display in IE 9-.
- */
-
-audio,
-video {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in iOS 4-7.
- */
-
-audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-/**
- * Remove the border on images inside links in IE 10-.
+ * Remove the border on images inside links in IE 10.
  */
 
 img {
   border-style: none;
 }
 
-/**
- * Hide the overflow in IE.
- */
-
-svg:not(:root) {
-  overflow: hidden;
-}
-
 /* Forms
    ========================================================================== */
 
 /**
- * 1. Change the font styles in all browsers (opinionated).
+ * 1. Change the font styles in all browsers.
  * 2. Remove the margin in Firefox and Safari.
  */
 
@@ -310,7 +226,7 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: sans-serif;
+  font-family: inherit;
   /* 1 */
   font-size: 100%;
   /* 1 */
@@ -343,17 +259,14 @@ select {
 }
 
 /**
- * 1. Prevent a WebKit bug where (2) destroys native `audio` and `video`
- *    controls in Android 4.
- * 2. Correct the inability to style clickable types in iOS and Safari.
+ * Correct the inability to style clickable types in iOS and Safari.
  */
 
 button,
-html [type="button"],
+[type="button"],
 [type="reset"],
 [type="submit"] {
   -webkit-appearance: button;
-  /* 2 */
 }
 
 /**
@@ -411,19 +324,15 @@ legend {
 }
 
 /**
- * 1. Add the correct display in IE 9-.
- * 2. Add the correct vertical alignment in Chrome, Firefox, and Opera.
+ * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
 
 progress {
-  display: inline-block;
-  /* 1 */
   vertical-align: baseline;
-  /* 2 */
 }
 
 /**
- * Remove the default vertical scrollbar in IE.
+ * Remove the default vertical scrollbar in IE 10+.
  */
 
 textarea {
@@ -431,8 +340,8 @@ textarea {
 }
 
 /**
- * 1. Add the correct box sizing in IE 10-.
- * 2. Remove the padding in IE 10-.
+ * 1. Add the correct box sizing in IE 10.
+ * 2. Remove the padding in IE 10.
  */
 
 [type="checkbox"],
@@ -466,10 +375,9 @@ textarea {
 }
 
 /**
- * Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ * Remove the inner padding in Chrome and Safari on macOS.
  */
 
-[type="search"]::-webkit-search-cancel-button,
 [type="search"]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
@@ -490,12 +398,10 @@ textarea {
    ========================================================================== */
 
 /*
- * Add the correct display in IE 9-.
- * 1. Add the correct display in Edge, IE, and Firefox.
+ * Add the correct display in Edge, IE 10+, and Firefox.
  */
 
-details,
-menu {
+details {
   display: block;
 }
 
@@ -507,30 +413,19 @@ summary {
   display: list-item;
 }
 
-/* Scripting
+/* Misc
    ========================================================================== */
 
 /**
- * Add the correct display in IE 9-.
- */
-
-canvas {
-  display: inline-block;
-}
-
-/**
- * Add the correct display in IE.
+ * Add the correct display in IE 10+.
  */
 
 template {
   display: none;
 }
 
-/* Hidden
-   ========================================================================== */
-
 /**
- * Add the correct display in IE 10-.
+ * Add the correct display in IE 10.
  */
 
 [hidden] {
@@ -541,7 +436,7 @@ template {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Site
+ * # Semantic UI 2.7.2 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -725,19 +620,19 @@ body ::-webkit-scrollbar-thumb:hover {
 
 /* Inverted UI */
 
-body .ui.inverted::-webkit-scrollbar-track {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
 
-body .ui.inverted::-webkit-scrollbar-thumb {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.25);
 }
 
-body .ui.inverted::-webkit-scrollbar-thumb:window-inactive {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255, 255, 255, 0.15);
 }
 
-body .ui.inverted::-webkit-scrollbar-thumb:hover {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
 
@@ -749,7 +644,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Button
+ * # Semantic UI 2.7.2 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1446,7 +1341,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.button > .icon:not(.button) {
-  height: 0.85714286em;
+  height: auto;
   opacity: 0.8;
   margin: 0 0.42857143em 0 -0.21428571em;
   -webkit-transition: opacity 0.1s ease;
@@ -1511,19 +1406,19 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.mini.buttons .button,
 .ui.mini.buttons .or,
-.ui.mini.button {
+.ui.ui.ui.ui.mini.button {
   font-size: 0.78571429rem;
 }
 
 .ui.tiny.buttons .button,
 .ui.tiny.buttons .or,
-.ui.tiny.button {
+.ui.ui.ui.ui.tiny.button {
   font-size: 0.85714286rem;
 }
 
 .ui.small.buttons .button,
 .ui.small.buttons .or,
-.ui.small.button {
+.ui.ui.ui.ui.small.button {
   font-size: 0.92857143rem;
 }
 
@@ -1535,25 +1430,25 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 
 .ui.large.buttons .button,
 .ui.large.buttons .or,
-.ui.large.button {
+.ui.ui.ui.ui.large.button {
   font-size: 1.14285714rem;
 }
 
 .ui.big.buttons .button,
 .ui.big.buttons .or,
-.ui.big.button {
+.ui.ui.ui.ui.big.button {
   font-size: 1.28571429rem;
 }
 
 .ui.huge.buttons .button,
 .ui.huge.buttons .or,
-.ui.huge.button {
+.ui.ui.ui.ui.huge.button {
   font-size: 1.42857143rem;
 }
 
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
-.ui.massive.button {
+.ui.ui.ui.ui.massive.button {
   font-size: 1.71428571rem;
 }
 
@@ -1842,6 +1737,9 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
   text-align: center;
+  -webkit-animation: none;
+  animation: none;
+  padding: 0.78571429em 0 0.78571429em 0;
   margin: 0;
   width: 2.57142857em;
   background-color: rgba(0, 0, 0, 0.05);
@@ -1872,12 +1770,10 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.labeled.icon.buttons > .button > .icon:after,
 .ui.labeled.icon.button > .icon:after {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 50%;
+  top: 0;
   text-align: center;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
 }
 
 .ui.labeled.icon.buttons .button > .icon {
@@ -1910,6 +1806,13 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
 .ui.fluid[class*="right labeled"].icon.button {
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
+}
+
+/* Loading Icon in Labeled Button */
+
+.ui.labeled.icon.button > .loading.icon:before {
+  -webkit-animation: loader 2s linear infinite;
+  animation: loader 2s linear infinite;
 }
 
 /*--------------
@@ -2044,7 +1947,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
   display: flex;
   border-radius: 0;
   width: auto !important;
-  z-index: 2;
+  z-index: auto;
   margin-left: -1px;
   margin-right: -1px;
 }
@@ -5761,7 +5664,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Container
+ * # Semantic UI 2.7.2 - Container
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -5919,7 +5822,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Divider
+ * # Semantic UI 2.7.2 - Divider
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -6185,7 +6088,7 @@ body .ui.inverted::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Flag
+ * # Semantic UI 2.7.2 - Flag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7462,7 +7365,7 @@ i.flag.zimbabwe:before {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Header
+ * # Semantic UI 2.7.2 - Header
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -7797,9 +7700,7 @@ h5.ui.header .sub.header {
 }
 
 .ui.inverted.attached.header {
-  background: #545454 -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: #545454 -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  background: #545454 linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  background: #1B1C1D;
   -webkit-box-shadow: none;
   box-shadow: none;
   border-color: transparent;
@@ -8352,7 +8253,7 @@ a.ui.inverted.black.header.header.header:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Icon
+ * # Semantic UI 2.7.2 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -8409,52 +8310,28 @@ i.icon:before {
 i.icon.loading {
   height: 1em;
   line-height: 1;
-  -webkit-animation: icon-loading 2s linear infinite;
-  animation: icon-loading 2s linear infinite;
-}
-
-@-webkit-keyframes icon-loading {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes icon-loading {
-  from {
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  to {
-    -webkit-transform: rotate(360deg);
-    transform: rotate(360deg);
-  }
+  -webkit-animation: loader 2s linear infinite;
+  animation: loader 2s linear infinite;
 }
 
 /*******************************
              States
 *******************************/
 
-i.icon.hover {
-  opacity: 1 !important;
+i.icon:hover,
+i.icons:hover,
+i.icon:active,
+i.icons:active,
+i.emphasized.icon:not(.disabled),
+i.emphasized.icons:not(.disabled) {
+  opacity: 1;
 }
 
-i.icon.active {
-  opacity: 1 !important;
-}
-
-i.emphasized.icon {
-  opacity: 1 !important;
-}
-
-i.disabled.icon {
-  opacity: 0.45 !important;
+i.disabled.icon,
+i.disabled.icons {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
 
 /*******************************
@@ -8474,8 +8351,8 @@ i.fitted.icon {
          Link
 --------------------*/
 
-i.link.icon,
-i.link.icons {
+i.link.icon:not(.disabled),
+i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: 0.8;
   -webkit-transition: opacity 0.1s ease;
@@ -8484,7 +8361,7 @@ i.link.icons {
 
 i.link.icon:hover,
 i.link.icons:hover {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /*-------------------
@@ -8624,212 +8501,212 @@ i.inverted.icon {
        Colors
 --------------------*/
 
-i.primary.icon {
+i.primary.icon.icon.icon.icon {
   color: #2185D0;
 }
 
-i.inverted.primary.icon {
+i.inverted.primary.icon.icon.icon.icon {
   color: #54C8FF;
 }
 
-i.inverted.bordered.primary.icon,
-i.inverted.circular.primary.icon {
+i.inverted.bordered.primary.icon.icon.icon.icon,
+i.inverted.circular.primary.icon.icon.icon.icon {
   background-color: #2185D0;
   color: #FFFFFF;
 }
 
-i.secondary.icon {
+i.secondary.icon.icon.icon.icon {
   color: #1B1C1D;
 }
 
-i.inverted.secondary.icon {
+i.inverted.secondary.icon.icon.icon.icon {
   color: #545454;
 }
 
-i.inverted.bordered.secondary.icon,
-i.inverted.circular.secondary.icon {
+i.inverted.bordered.secondary.icon.icon.icon.icon,
+i.inverted.circular.secondary.icon.icon.icon.icon {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
 
-i.red.icon {
+i.red.icon.icon.icon.icon {
   color: #DB2828;
 }
 
-i.inverted.red.icon {
+i.inverted.red.icon.icon.icon.icon {
   color: #FF695E;
 }
 
-i.inverted.bordered.red.icon,
-i.inverted.circular.red.icon {
+i.inverted.bordered.red.icon.icon.icon.icon,
+i.inverted.circular.red.icon.icon.icon.icon {
   background-color: #DB2828;
   color: #FFFFFF;
 }
 
-i.orange.icon {
+i.orange.icon.icon.icon.icon {
   color: #F2711C;
 }
 
-i.inverted.orange.icon {
+i.inverted.orange.icon.icon.icon.icon {
   color: #FF851B;
 }
 
-i.inverted.bordered.orange.icon,
-i.inverted.circular.orange.icon {
+i.inverted.bordered.orange.icon.icon.icon.icon,
+i.inverted.circular.orange.icon.icon.icon.icon {
   background-color: #F2711C;
   color: #FFFFFF;
 }
 
-i.yellow.icon {
+i.yellow.icon.icon.icon.icon {
   color: #FBBD08;
 }
 
-i.inverted.yellow.icon {
+i.inverted.yellow.icon.icon.icon.icon {
   color: #FFE21F;
 }
 
-i.inverted.bordered.yellow.icon,
-i.inverted.circular.yellow.icon {
+i.inverted.bordered.yellow.icon.icon.icon.icon,
+i.inverted.circular.yellow.icon.icon.icon.icon {
   background-color: #FBBD08;
   color: #FFFFFF;
 }
 
-i.olive.icon {
+i.olive.icon.icon.icon.icon {
   color: #B5CC18;
 }
 
-i.inverted.olive.icon {
+i.inverted.olive.icon.icon.icon.icon {
   color: #D9E778;
 }
 
-i.inverted.bordered.olive.icon,
-i.inverted.circular.olive.icon {
+i.inverted.bordered.olive.icon.icon.icon.icon,
+i.inverted.circular.olive.icon.icon.icon.icon {
   background-color: #B5CC18;
   color: #FFFFFF;
 }
 
-i.green.icon {
+i.green.icon.icon.icon.icon {
   color: #21BA45;
 }
 
-i.inverted.green.icon {
+i.inverted.green.icon.icon.icon.icon {
   color: #2ECC40;
 }
 
-i.inverted.bordered.green.icon,
-i.inverted.circular.green.icon {
+i.inverted.bordered.green.icon.icon.icon.icon,
+i.inverted.circular.green.icon.icon.icon.icon {
   background-color: #21BA45;
   color: #FFFFFF;
 }
 
-i.teal.icon {
+i.teal.icon.icon.icon.icon {
   color: #00B5AD;
 }
 
-i.inverted.teal.icon {
+i.inverted.teal.icon.icon.icon.icon {
   color: #6DFFFF;
 }
 
-i.inverted.bordered.teal.icon,
-i.inverted.circular.teal.icon {
+i.inverted.bordered.teal.icon.icon.icon.icon,
+i.inverted.circular.teal.icon.icon.icon.icon {
   background-color: #00B5AD;
   color: #FFFFFF;
 }
 
-i.blue.icon {
+i.blue.icon.icon.icon.icon {
   color: #2185D0;
 }
 
-i.inverted.blue.icon {
+i.inverted.blue.icon.icon.icon.icon {
   color: #54C8FF;
 }
 
-i.inverted.bordered.blue.icon,
-i.inverted.circular.blue.icon {
+i.inverted.bordered.blue.icon.icon.icon.icon,
+i.inverted.circular.blue.icon.icon.icon.icon {
   background-color: #2185D0;
   color: #FFFFFF;
 }
 
-i.violet.icon {
+i.violet.icon.icon.icon.icon {
   color: #6435C9;
 }
 
-i.inverted.violet.icon {
+i.inverted.violet.icon.icon.icon.icon {
   color: #A291FB;
 }
 
-i.inverted.bordered.violet.icon,
-i.inverted.circular.violet.icon {
+i.inverted.bordered.violet.icon.icon.icon.icon,
+i.inverted.circular.violet.icon.icon.icon.icon {
   background-color: #6435C9;
   color: #FFFFFF;
 }
 
-i.purple.icon {
+i.purple.icon.icon.icon.icon {
   color: #A333C8;
 }
 
-i.inverted.purple.icon {
+i.inverted.purple.icon.icon.icon.icon {
   color: #DC73FF;
 }
 
-i.inverted.bordered.purple.icon,
-i.inverted.circular.purple.icon {
+i.inverted.bordered.purple.icon.icon.icon.icon,
+i.inverted.circular.purple.icon.icon.icon.icon {
   background-color: #A333C8;
   color: #FFFFFF;
 }
 
-i.pink.icon {
+i.pink.icon.icon.icon.icon {
   color: #E03997;
 }
 
-i.inverted.pink.icon {
+i.inverted.pink.icon.icon.icon.icon {
   color: #FF8EDF;
 }
 
-i.inverted.bordered.pink.icon,
-i.inverted.circular.pink.icon {
+i.inverted.bordered.pink.icon.icon.icon.icon,
+i.inverted.circular.pink.icon.icon.icon.icon {
   background-color: #E03997;
   color: #FFFFFF;
 }
 
-i.brown.icon {
+i.brown.icon.icon.icon.icon {
   color: #A5673F;
 }
 
-i.inverted.brown.icon {
+i.inverted.brown.icon.icon.icon.icon {
   color: #D67C1C;
 }
 
-i.inverted.bordered.brown.icon,
-i.inverted.circular.brown.icon {
+i.inverted.bordered.brown.icon.icon.icon.icon,
+i.inverted.circular.brown.icon.icon.icon.icon {
   background-color: #A5673F;
   color: #FFFFFF;
 }
 
-i.grey.icon {
+i.grey.icon.icon.icon.icon {
   color: #767676;
 }
 
-i.inverted.grey.icon {
+i.inverted.grey.icon.icon.icon.icon {
   color: #DCDDDE;
 }
 
-i.inverted.bordered.grey.icon,
-i.inverted.circular.grey.icon {
+i.inverted.bordered.grey.icon.icon.icon.icon,
+i.inverted.circular.grey.icon.icon.icon.icon {
   background-color: #767676;
   color: #FFFFFF;
 }
 
-i.black.icon {
+i.black.icon.icon.icon.icon {
   color: #1B1C1D;
 }
 
-i.inverted.black.icon {
+i.inverted.black.icon.icon.icon.icon {
   color: #545454;
 }
 
-i.inverted.bordered.black.icon,
-i.inverted.circular.black.icon {
+i.inverted.bordered.black.icon.icon.icon.icon,
+i.inverted.circular.black.icon.icon.icon.icon {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
@@ -8838,20 +8715,20 @@ i.inverted.circular.black.icon {
         Sizes
 --------------------*/
 
-i.mini.icon,
-i.mini.icons {
+i.mini.mini.mini.icon,
+i.mini.mini.mini.icons {
   line-height: 1;
   font-size: 0.4em;
 }
 
-i.tiny.icon,
-i.tiny.icons {
+i.tiny.tiny.tiny.icon,
+i.tiny.tiny.tiny.icons {
   line-height: 1;
   font-size: 0.5em;
 }
 
-i.small.icon,
-i.small.icons {
+i.small.small.small.icon,
+i.small.small.small.icons {
   line-height: 1;
   font-size: 0.75em;
 }
@@ -8861,29 +8738,29 @@ i.icons {
   font-size: 1em;
 }
 
-i.large.icon,
-i.large.icons {
+i.large.large.large.icon,
+i.large.large.large.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 1.5em;
 }
 
-i.big.icon,
-i.big.icons {
+i.big.big.big.icon,
+i.big.big.big.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 2em;
 }
 
-i.huge.icon,
-i.huge.icons {
+i.huge.huge.huge.icon,
+i.huge.huge.huge.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 4em;
 }
 
-i.massive.icon,
-i.massive.icons {
+i.massive.massive.massive.icon,
+i.massive.massive.massive.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 8em;
@@ -8963,7 +8840,7 @@ i.icons .inverted.corner.icon {
 }
 
 /*
-* Font Awesome 5.4.1 by @fontawesome - https://fontawesome.com - @fontawesome
+* Font Awesome 5.7.0 by @fontawesome - https://fontawesome.com - @fontawesome
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -9214,12 +9091,24 @@ i.icon.award:before {
   content: "\f559";
 }
 
+i.icon.baby:before {
+  content: "\f77c";
+}
+
+i.icon.baby.carriage:before {
+  content: "\f77d";
+}
+
 i.icon.backspace:before {
   content: "\f55a";
 }
 
 i.icon.backward:before {
   content: "\f04a";
+}
+
+i.icon.bacon:before {
+  content: "\f7e5";
 }
 
 i.icon.balance.scale:before {
@@ -9306,6 +9195,10 @@ i.icon.binoculars:before {
   content: "\f1e5";
 }
 
+i.icon.biohazard:before {
+  content: "\f780";
+}
+
 i.icon.birthday.cake:before {
   content: "\f1fd";
 }
@@ -9320,6 +9213,10 @@ i.icon.blender.phone:before {
 
 i.icon.blind:before {
   content: "\f29d";
+}
+
+i.icon.blog:before {
+  content: "\f781";
 }
 
 i.icon.bold:before {
@@ -9348,6 +9245,10 @@ i.icon.book:before {
 
 i.icon.book.dead:before {
   content: "\f6b7";
+}
+
+i.icon.book.medical:before {
+  content: "\f7e6";
 }
 
 i.icon.book.open:before {
@@ -9384,6 +9285,10 @@ i.icon.braille:before {
 
 i.icon.brain:before {
   content: "\f5dc";
+}
+
+i.icon.bread.slice:before {
+  content: "\f7ec";
 }
 
 i.icon.briefcase:before {
@@ -9454,6 +9359,10 @@ i.icon.calendar.check:before {
   content: "\f274";
 }
 
+i.icon.calendar.day:before {
+  content: "\f783";
+}
+
 i.icon.calendar.minus:before {
   content: "\f272";
 }
@@ -9466,6 +9375,10 @@ i.icon.calendar.times:before {
   content: "\f273";
 }
 
+i.icon.calendar.week:before {
+  content: "\f784";
+}
+
 i.icon.camera:before {
   content: "\f030";
 }
@@ -9476,6 +9389,10 @@ i.icon.camera.retro:before {
 
 i.icon.campground:before {
   content: "\f6bb";
+}
+
+i.icon.candy.cane:before {
+  content: "\f786";
 }
 
 i.icon.cannabis:before {
@@ -9538,12 +9455,20 @@ i.icon.caret.up:before {
   content: "\f0d8";
 }
 
+i.icon.carrot:before {
+  content: "\f787";
+}
+
 i.icon.cart.arrow.down:before {
   content: "\f218";
 }
 
 i.icon.cart.plus:before {
   content: "\f217";
+}
+
+i.icon.cash.register:before {
+  content: "\f788";
 }
 
 i.icon.cat:before {
@@ -9600,6 +9525,10 @@ i.icon.check.double:before {
 
 i.icon.check.square:before {
   content: "\f14a";
+}
+
+i.icon.cheese:before {
+  content: "\f7ef";
 }
 
 i.icon.chess:before {
@@ -9686,6 +9615,10 @@ i.icon.city:before {
   content: "\f64f";
 }
 
+i.icon.clinic.medical:before {
+  content: "\f7f2";
+}
+
 i.icon.clipboard:before {
   content: "\f328";
 }
@@ -9718,12 +9651,32 @@ i.icon.cloud.download.alternate:before {
   content: "\f381";
 }
 
+i.icon.cloud.meatball:before {
+  content: "\f73b";
+}
+
 i.icon.cloud.moon:before {
   content: "\f6c3";
 }
 
+i.icon.cloud.moon.rain:before {
+  content: "\f73c";
+}
+
+i.icon.cloud.rain:before {
+  content: "\f73d";
+}
+
+i.icon.cloud.showers.heavy:before {
+  content: "\f740";
+}
+
 i.icon.cloud.sun:before {
   content: "\f6c4";
+}
+
+i.icon.cloud.sun.rain:before {
+  content: "\f743";
 }
 
 i.icon.cloud.upload.alternate:before {
@@ -9778,6 +9731,10 @@ i.icon.comment.dots:before {
   content: "\f4ad";
 }
 
+i.icon.comment.medical:before {
+  content: "\f7f5";
+}
+
 i.icon.comment.slash:before {
   content: "\f4b3";
 }
@@ -9800,6 +9757,10 @@ i.icon.compass:before {
 
 i.icon.compress:before {
   content: "\f066";
+}
+
+i.icon.compress.arrows.alternate:before {
+  content: "\f78c";
 }
 
 i.icon.concierge.bell:before {
@@ -9854,6 +9815,10 @@ i.icon.crown:before {
   content: "\f521";
 }
 
+i.icon.crutch:before {
+  content: "\f7f7";
+}
+
 i.icon.cube:before {
   content: "\f1b2";
 }
@@ -9872,6 +9837,10 @@ i.icon.database:before {
 
 i.icon.deaf:before {
   content: "\f2a4";
+}
+
+i.icon.democrat:before {
+  content: "\f747";
 }
 
 i.icon.desktop:before {
@@ -10010,12 +9979,24 @@ i.icon.dumbbell:before {
   content: "\f44b";
 }
 
+i.icon.dumpster:before {
+  content: "\f793";
+}
+
+i.icon.dumpster.fire:before {
+  content: "\f794";
+}
+
 i.icon.dungeon:before {
   content: "\f6d9";
 }
 
 i.icon.edit:before {
   content: "\f044";
+}
+
+i.icon.egg:before {
+  content: "\f7fb";
 }
 
 i.icon.eject:before {
@@ -10052,6 +10033,10 @@ i.icon.equals:before {
 
 i.icon.eraser:before {
   content: "\f12d";
+}
+
+i.icon.ethernet:before {
+  content: "\f796";
 }
 
 i.icon.euro.sign:before {
@@ -10246,6 +10231,10 @@ i.icon.fire:before {
   content: "\f06d";
 }
 
+i.icon.fire.alternate:before {
+  content: "\f7e4";
+}
+
 i.icon.fire.extinguisher:before {
   content: "\f134";
 }
@@ -10268,6 +10257,10 @@ i.icon.flag:before {
 
 i.icon.flag.checkered:before {
   content: "\f11e";
+}
+
+i.icon.flag.usa:before {
+  content: "\f74d";
 }
 
 i.icon.flask:before {
@@ -10358,12 +10351,24 @@ i.icon.gift:before {
   content: "\f06b";
 }
 
+i.icon.gifts:before {
+  content: "\f79c";
+}
+
+i.icon.glass.cheers:before {
+  content: "\f79f";
+}
+
 i.icon.glass.martini:before {
   content: "\f000";
 }
 
 i.icon.glass.martini.alternate:before {
   content: "\f57b";
+}
+
+i.icon.glass.whiskey:before {
+  content: "\f7a0";
 }
 
 i.icon.glasses:before {
@@ -10384,6 +10389,10 @@ i.icon.globe.americas:before {
 
 i.icon.globe.asia:before {
   content: "\f57e";
+}
+
+i.icon.globe.europe:before {
+  content: "\f7a2";
 }
 
 i.icon.golf.ball:before {
@@ -10466,12 +10475,28 @@ i.icon.grip.horizontal:before {
   content: "\f58d";
 }
 
+i.icon.grip.lines:before {
+  content: "\f7a4";
+}
+
+i.icon.grip.lines.vertical:before {
+  content: "\f7a5";
+}
+
 i.icon.grip.vertical:before {
   content: "\f58e";
 }
 
+i.icon.guitar:before {
+  content: "\f7a6";
+}
+
 i.icon.h.square:before {
   content: "\f0fd";
+}
+
+i.icon.hamburger:before {
+  content: "\f805";
 }
 
 i.icon.hammer:before {
@@ -10496,6 +10521,10 @@ i.icon.hand.holding.usd:before {
 
 i.icon.hand.lizard:before {
   content: "\f258";
+}
+
+i.icon.hand.middle.finger:before {
+  content: "\f806";
 }
 
 i.icon.hand.paper:before {
@@ -10554,6 +10583,10 @@ i.icon.hanukiah:before {
   content: "\f6e6";
 }
 
+i.icon.hard.hat:before {
+  content: "\f807";
+}
+
 i.icon.hashtag:before {
   content: "\f292";
 }
@@ -10590,6 +10623,10 @@ i.icon.heart:before {
   content: "\f004";
 }
 
+i.icon.heart.broken:before {
+  content: "\f7a9";
+}
+
 i.icon.heartbeat:before {
   content: "\f21e";
 }
@@ -10618,12 +10655,20 @@ i.icon.hockey.puck:before {
   content: "\f453";
 }
 
+i.icon.holly.berry:before {
+  content: "\f7aa";
+}
+
 i.icon.home:before {
   content: "\f015";
 }
 
 i.icon.horse:before {
   content: "\f6f0";
+}
+
+i.icon.horse.head:before {
+  content: "\f7ab";
 }
 
 i.icon.hospital:before {
@@ -10640,6 +10685,10 @@ i.icon.hospital.symbol:before {
 
 i.icon.hot.tub:before {
   content: "\f593";
+}
+
+i.icon.hotdog:before {
+  content: "\f80f";
 }
 
 i.icon.hotel:before {
@@ -10674,6 +10723,14 @@ i.icon.i.cursor:before {
   content: "\f246";
 }
 
+i.icon.ice.cream:before {
+  content: "\f810";
+}
+
+i.icon.icicles:before {
+  content: "\f7ad";
+}
+
 i.icon.id.badge:before {
   content: "\f2c1";
 }
@@ -10684,6 +10741,10 @@ i.icon.id.card:before {
 
 i.icon.id.card.alternate:before {
   content: "\f47f";
+}
+
+i.icon.igloo:before {
+  content: "\f7ae";
 }
 
 i.icon.image:before {
@@ -10780,6 +10841,10 @@ i.icon.laptop:before {
 
 i.icon.laptop.code:before {
   content: "\f5fc";
+}
+
+i.icon.laptop.medical:before {
+  content: "\f812";
 }
 
 i.icon.laugh:before {
@@ -10998,6 +11063,10 @@ i.icon.mercury:before {
   content: "\f223";
 }
 
+i.icon.meteor:before {
+  content: "\f753";
+}
+
 i.icon.microchip:before {
   content: "\f2db";
 }
@@ -11032,6 +11101,10 @@ i.icon.minus.circle:before {
 
 i.icon.minus.square:before {
   content: "\f146";
+}
+
+i.icon.mitten:before {
+  content: "\f7b5";
 }
 
 i.icon.mobile:before {
@@ -11094,6 +11167,10 @@ i.icon.mouse.pointer:before {
   content: "\f245";
 }
 
+i.icon.mug.hot:before {
+  content: "\f7b6";
+}
+
 i.icon.music:before {
   content: "\f001";
 }
@@ -11140,6 +11217,10 @@ i.icon.otter:before {
 
 i.icon.outdent:before {
   content: "\f03b";
+}
+
+i.icon.pager:before {
+  content: "\f815";
 }
 
 i.icon.paint.brush:before {
@@ -11238,12 +11319,20 @@ i.icon.people.carry:before {
   content: "\f4ce";
 }
 
+i.icon.pepper.hot:before {
+  content: "\f816";
+}
+
 i.icon.percent:before {
   content: "\f295";
 }
 
 i.icon.percentage:before {
   content: "\f541";
+}
+
+i.icon.person.booth:before {
+  content: "\f756";
 }
 
 i.icon.phone:before {
@@ -11268,6 +11357,10 @@ i.icon.piggy.bank:before {
 
 i.icon.pills:before {
   content: "\f484";
+}
+
+i.icon.pizza.slice:before {
+  content: "\f818";
 }
 
 i.icon.place.of.worship:before {
@@ -11324,6 +11417,10 @@ i.icon.poll.horizontal:before {
 
 i.icon.poo:before {
   content: "\f2fe";
+}
+
+i.icon.poo.storm:before {
+  content: "\f75a";
 }
 
 i.icon.poop:before {
@@ -11406,6 +11503,18 @@ i.icon.quran:before {
   content: "\f687";
 }
 
+i.icon.radiation:before {
+  content: "\f7b9";
+}
+
+i.icon.radiation.alternate:before {
+  content: "\f7ba";
+}
+
+i.icon.rainbow:before {
+  content: "\f75b";
+}
+
 i.icon.random:before {
   content: "\f074";
 }
@@ -11436,6 +11545,14 @@ i.icon.reply:before {
 
 i.icon.reply.all:before {
   content: "\f122";
+}
+
+i.icon.republican:before {
+  content: "\f75e";
+}
+
+i.icon.restroom:before {
+  content: "\f7bd";
 }
 
 i.icon.retweet:before {
@@ -11510,6 +11627,14 @@ i.icon.sad.tear:before {
   content: "\f5b4";
 }
 
+i.icon.satellite:before {
+  content: "\f7bf";
+}
+
+i.icon.satellite.dish:before {
+  content: "\f7c0";
+}
+
 i.icon.save:before {
   content: "\f0c7";
 }
@@ -11524,6 +11649,10 @@ i.icon.screwdriver:before {
 
 i.icon.scroll:before {
   content: "\f70e";
+}
+
+i.icon.sd.card:before {
+  content: "\f7c2";
 }
 
 i.icon.search:before {
@@ -11638,8 +11767,24 @@ i.icon.signature:before {
   content: "\f5b7";
 }
 
+i.icon.sim.card:before {
+  content: "\f7c4";
+}
+
 i.icon.sitemap:before {
   content: "\f0e8";
+}
+
+i.icon.skating:before {
+  content: "\f7c5";
+}
+
+i.icon.skiing:before {
+  content: "\f7c9";
+}
+
+i.icon.skiing.nordic:before {
+  content: "\f7ca";
 }
 
 i.icon.skull:before {
@@ -11652,6 +11797,10 @@ i.icon.skull.crossbones:before {
 
 i.icon.slash:before {
   content: "\f715";
+}
+
+i.icon.sleigh:before {
+  content: "\f7cc";
 }
 
 i.icon.sliders.horizontal:before {
@@ -11670,6 +11819,10 @@ i.icon.smile.wink:before {
   content: "\f4da";
 }
 
+i.icon.smog:before {
+  content: "\f75f";
+}
+
 i.icon.smoking:before {
   content: "\f48d";
 }
@@ -11678,8 +11831,24 @@ i.icon.smoking.ban:before {
   content: "\f54d";
 }
 
+i.icon.sms:before {
+  content: "\f7cd";
+}
+
+i.icon.snowboarding:before {
+  content: "\f7ce";
+}
+
 i.icon.snowflake:before {
   content: "\f2dc";
+}
+
+i.icon.snowman:before {
+  content: "\f7d0";
+}
+
+i.icon.snowplow:before {
+  content: "\f7d2";
 }
 
 i.icon.socks:before {
@@ -11950,6 +12119,18 @@ i.icon.teeth.open:before {
   content: "\f62f";
 }
 
+i.icon.temperature.high:before {
+  content: "\f769";
+}
+
+i.icon.temperature.low:before {
+  content: "\f76b";
+}
+
+i.icon.tenge:before {
+  content: "\f7d7";
+}
+
 i.icon.terminal:before {
   content: "\f120";
 }
@@ -12046,12 +12227,20 @@ i.icon.toggle.on:before {
   content: "\f205";
 }
 
+i.icon.toilet:before {
+  content: "\f7d8";
+}
+
 i.icon.toilet.paper:before {
   content: "\f71e";
 }
 
 i.icon.toolbox:before {
   content: "\f552";
+}
+
+i.icon.tools:before {
+  content: "\f7d9";
 }
 
 i.icon.tooth:before {
@@ -12082,6 +12271,10 @@ i.icon.train:before {
   content: "\f238";
 }
 
+i.icon.tram:before {
+  content: "\f7da";
+}
+
 i.icon.transgender:before {
   content: "\f224";
 }
@@ -12096,6 +12289,14 @@ i.icon.trash:before {
 
 i.icon.trash.alternate:before {
   content: "\f2ed";
+}
+
+i.icon.trash.restore:before {
+  content: "\f829";
+}
+
+i.icon.trash.restore.alternate:before {
+  content: "\f82a";
 }
 
 i.icon.tree:before {
@@ -12246,6 +12447,10 @@ i.icon.user.ninja:before {
   content: "\f504";
 }
 
+i.icon.user.nurse:before {
+  content: "\f82f";
+}
+
 i.icon.user.plus:before {
   content: "\f234";
 }
@@ -12346,6 +12551,14 @@ i.icon.volume.up:before {
   content: "\f028";
 }
 
+i.icon.vote.yea:before {
+  content: "\f772";
+}
+
+i.icon.vr.cardboard:before {
+  content: "\f729";
+}
+
 i.icon.walking:before {
   content: "\f554";
 }
@@ -12356,6 +12569,10 @@ i.icon.wallet:before {
 
 i.icon.warehouse:before {
   content: "\f494";
+}
+
+i.icon.water:before {
+  content: "\f773";
 }
 
 i.icon.weight:before {
@@ -13557,7 +13774,7 @@ i.icon.spoon:before {
 }
 
 i.icon.star.empty:before {
-  content: "\f089";
+  content: "\f005";
 }
 
 i.icon.star.half.empty:before {
@@ -13578,6 +13795,10 @@ i.icon.times.rectangle:before {
 
 i.icon.write:before {
   content: "\f303";
+}
+
+i.icon.hamburger:before {
+  content: "\f0c9";
 }
 
 /*******************************
@@ -14209,25 +14430,6 @@ i.icon.window.restore.outline:before {
   content: "\f2d2";
 }
 
-/* Outline Aliases */
-
-i.icon.disk.outline:before {
-  content: "\f0a0";
-}
-
-i.icon.heart.empty,
-i.icon.star.empty {
-  font-family: 'outline-icons';
-}
-
-i.icon.heart.empty:before {
-  content: "\f004";
-}
-
-i.icon.star.empty:before {
-  content: "\f089";
-}
-
 /*******************************
           Brand Icons
 *******************************/
@@ -14252,6 +14454,7 @@ i.icon.accessible,
 i.icon.accusoft,
 i.icon.acquisitions.incorporated,
 i.icon.adn,
+i.icon.adobe,
 i.icon.adversal,
 i.icon.affiliatetheme,
 i.icon.algolia,
@@ -14268,7 +14471,9 @@ i.icon.app.store.ios,
 i.icon.apper,
 i.icon.apple,
 i.icon.apple.pay,
+i.icon.artstation,
 i.icon.asymmetrik,
+i.icon.atlassian,
 i.icon.audible,
 i.icon.autoprefixer,
 i.icon.avianex,
@@ -14290,6 +14495,7 @@ i.icon.bluetooth.b,
 i.icon.btc,
 i.icon.buromobelexperte,
 i.icon.buysellads,
+i.icon.canadian.maple.leaf,
 i.icon.cc.amazon.pay,
 i.icon.cc.amex,
 i.icon.cc.apple.pay,
@@ -14301,12 +14507,14 @@ i.icon.cc.paypal,
 i.icon.cc.stripe,
 i.icon.cc.visa,
 i.icon.centercode,
+i.icon.centos,
 i.icon.chrome,
 i.icon.cloudscale,
 i.icon.cloudsmith,
 i.icon.cloudversify,
 i.icon.codepen,
 i.icon.codiepie,
+i.icon.confluence,
 i.icon.connectdevelop,
 i.icon.contao,
 i.icon.cpanel,
@@ -14329,12 +14537,15 @@ i.icon.css3,
 i.icon.css3.alternate,
 i.icon.cuttlefish,
 i.icon.d.and.d,
+i.icon.d.and.d.beyond,
 i.icon.dashcube,
 i.icon.delicious,
 i.icon.deploydog,
 i.icon.deskpro,
 i.icon.dev,
 i.icon.deviantart,
+i.icon.dhl,
+i.icon.diaspora,
 i.icon.digg,
 i.icon.digital.ocean,
 i.icon.discord,
@@ -14364,6 +14575,9 @@ i.icon.facebook.f,
 i.icon.facebook.messenger,
 i.icon.facebook.square,
 i.icon.fantasy.flight.games,
+i.icon.fedex,
+i.icon.fedora,
+i.icon.figma,
 i.icon.firefox,
 i.icon.first.order,
 i.icon.first.order.alternate,
@@ -14426,13 +14640,16 @@ i.icon.html5,
 i.icon.hubspot,
 i.icon.imdb,
 i.icon.instagram,
+i.icon.intercom,
 i.icon.internet.explorer,
+i.icon.invision,
 i.icon.ioxhost,
 i.icon.itunes,
 i.icon.itunes.note,
 i.icon.java,
 i.icon.jedi.order,
 i.icon.jenkins,
+i.icon.jira,
 i.icon.joget,
 i.icon.joomla,
 i.icon.js,
@@ -14467,6 +14684,7 @@ i.icon.medium.m,
 i.icon.medrt,
 i.icon.meetup,
 i.icon.megaport,
+i.icon.mendeley,
 i.icon.microsoft,
 i.icon.mix,
 i.icon.mixcloud,
@@ -14516,16 +14734,18 @@ i.icon.qq,
 i.icon.quinscape,
 i.icon.quora,
 i.icon.r.project,
+i.icon.raspberry.pi,
 i.icon.ravelry,
 i.icon.react,
+i.icon.reacteurope,
 i.icon.readme,
 i.icon.rebel,
 i.icon.reddit,
 i.icon.reddit.alien,
 i.icon.reddit.square,
+i.icon.redhat,
 i.icon.redriver,
 i.icon.redyeti,
-i.icon.rendact,
 i.icon.renren,
 i.icon.replyd,
 i.icon.researchgate,
@@ -14546,6 +14766,7 @@ i.icon.shopware,
 i.icon.simplybuilt,
 i.icon.sistrix,
 i.icon.sith,
+i.icon.sketch,
 i.icon.skyatlas,
 i.icon.skype,
 i.icon.slack,
@@ -14555,6 +14776,7 @@ i.icon.snapchat,
 i.icon.snapchat.ghost,
 i.icon.snapchat.square,
 i.icon.soundcloud,
+i.icon.sourcetree,
 i.icon.speakap,
 i.icon.spotify,
 i.icon.squarespace,
@@ -14573,12 +14795,14 @@ i.icon.stumbleupon,
 i.icon.stumbleupon.circle,
 i.icon.superpowers,
 i.icon.supple,
+i.icon.suse,
 i.icon.teamspeak,
 i.icon.telegram,
 i.icon.telegram.plane,
 i.icon.tencent.weibo,
 i.icon.themeco,
 i.icon.themeisle,
+i.icon.think.peaks,
 i.icon.trade.federation,
 i.icon.trello,
 i.icon.tripadvisor,
@@ -14589,10 +14813,13 @@ i.icon.twitter,
 i.icon.twitter.square,
 i.icon.typo3,
 i.icon.uber,
+i.icon.ubuntu,
 i.icon.uikit,
 i.icon.uniregistry,
 i.icon.untappd,
+i.icon.ups,
 i.icon.usb,
+i.icon.usps,
 i.icon.ussunnah,
 i.icon.vaadin,
 i.icon.viacoin,
@@ -14622,6 +14849,7 @@ i.icon.wordpress.simple,
 i.icon.wpbeginner,
 i.icon.wpexplorer,
 i.icon.wpforms,
+i.icon.wpressr,
 i.icon.xbox,
 i.icon.xing,
 i.icon.xing.square,
@@ -14629,6 +14857,7 @@ i.icon.y.combinator,
 i.icon.yahoo,
 i.icon.yandex,
 i.icon.yandex.international,
+i.icon.yarn,
 i.icon.yelp,
 i.icon.yoast,
 i.icon.youtube,
@@ -14657,6 +14886,10 @@ i.icon.acquisitions.incorporated:before {
 
 i.icon.adn:before {
   content: "\f170";
+}
+
+i.icon.adobe:before {
+  content: "\f778";
 }
 
 i.icon.adversal:before {
@@ -14723,8 +14956,16 @@ i.icon.apple.pay:before {
   content: "\f415";
 }
 
+i.icon.artstation:before {
+  content: "\f77a";
+}
+
 i.icon.asymmetrik:before {
   content: "\f372";
+}
+
+i.icon.atlassian:before {
+  content: "\f77b";
 }
 
 i.icon.audible:before {
@@ -14811,6 +15052,10 @@ i.icon.buysellads:before {
   content: "\f20d";
 }
 
+i.icon.canadian.maple.leaf:before {
+  content: "\f785";
+}
+
 i.icon.cc.amazon.pay:before {
   content: "\f42d";
 }
@@ -14855,6 +15100,10 @@ i.icon.centercode:before {
   content: "\f380";
 }
 
+i.icon.centos:before {
+  content: "\f789";
+}
+
 i.icon.chrome:before {
   content: "\f268";
 }
@@ -14877,6 +15126,10 @@ i.icon.codepen:before {
 
 i.icon.codiepie:before {
   content: "\f284";
+}
+
+i.icon.confluence:before {
+  content: "\f78d";
 }
 
 i.icon.connectdevelop:before {
@@ -14967,6 +15220,10 @@ i.icon.d.and.d:before {
   content: "\f38d";
 }
 
+i.icon.d.and.d.beyond:before {
+  content: "\f6ca";
+}
+
 i.icon.dashcube:before {
   content: "\f210";
 }
@@ -14989,6 +15246,14 @@ i.icon.dev:before {
 
 i.icon.deviantart:before {
   content: "\f1bd";
+}
+
+i.icon.dhl:before {
+  content: "\f790";
+}
+
+i.icon.diaspora:before {
+  content: "\f791";
 }
 
 i.icon.digg:before {
@@ -15105,6 +15370,18 @@ i.icon.facebook.square:before {
 
 i.icon.fantasy.flight.games:before {
   content: "\f6dc";
+}
+
+i.icon.fedex:before {
+  content: "\f797";
+}
+
+i.icon.fedora:before {
+  content: "\f798";
+}
+
+i.icon.figma:before {
+  content: "\f799";
 }
 
 i.icon.firefox:before {
@@ -15355,8 +15632,16 @@ i.icon.instagram:before {
   content: "\f16d";
 }
 
+i.icon.intercom:before {
+  content: "\f7af";
+}
+
 i.icon.internet.explorer:before {
   content: "\f26b";
+}
+
+i.icon.invision:before {
+  content: "\f7b0";
 }
 
 i.icon.ioxhost:before {
@@ -15381,6 +15666,10 @@ i.icon.jedi.order:before {
 
 i.icon.jenkins:before {
   content: "\f3b6";
+}
+
+i.icon.jira:before {
+  content: "\f7b1";
 }
 
 i.icon.joget:before {
@@ -15517,6 +15806,10 @@ i.icon.meetup:before {
 
 i.icon.megaport:before {
   content: "\f5a3";
+}
+
+i.icon.mendeley:before {
+  content: "\f7b3";
 }
 
 i.icon.microsoft:before {
@@ -15715,12 +16008,20 @@ i.icon.r.project:before {
   content: "\f4f7";
 }
 
+i.icon.raspberry.pi:before {
+  content: "\f7bb";
+}
+
 i.icon.ravelry:before {
   content: "\f2d9";
 }
 
 i.icon.react:before {
   content: "\f41b";
+}
+
+i.icon.reacteurope:before {
+  content: "\f75d";
 }
 
 i.icon.readme:before {
@@ -15743,16 +16044,16 @@ i.icon.reddit.square:before {
   content: "\f1a2";
 }
 
+i.icon.redhat:before {
+  content: "\f7bc";
+}
+
 i.icon.redriver:before {
   content: "\f3e3";
 }
 
 i.icon.redyeti:before {
   content: "\f69d";
-}
-
-i.icon.rendact:before {
-  content: "\f3e4";
 }
 
 i.icon.renren:before {
@@ -15835,6 +16136,10 @@ i.icon.sith:before {
   content: "\f512";
 }
 
+i.icon.sketch:before {
+  content: "\f7c6";
+}
+
 i.icon.skyatlas:before {
   content: "\f216";
 }
@@ -15869,6 +16174,10 @@ i.icon.snapchat.square:before {
 
 i.icon.soundcloud:before {
   content: "\f1be";
+}
+
+i.icon.sourcetree:before {
+  content: "\f7d3";
 }
 
 i.icon.speakap:before {
@@ -15943,6 +16252,10 @@ i.icon.supple:before {
   content: "\f3f9";
 }
 
+i.icon.suse:before {
+  content: "\f7d6";
+}
+
 i.icon.teamspeak:before {
   content: "\f4f9";
 }
@@ -15965,6 +16278,10 @@ i.icon.themeco:before {
 
 i.icon.themeisle:before {
   content: "\f2b2";
+}
+
+i.icon.think.peaks:before {
+  content: "\f731";
 }
 
 i.icon.trade.federation:before {
@@ -16007,6 +16324,10 @@ i.icon.uber:before {
   content: "\f402";
 }
 
+i.icon.ubuntu:before {
+  content: "\f7df";
+}
+
 i.icon.uikit:before {
   content: "\f403";
 }
@@ -16019,8 +16340,16 @@ i.icon.untappd:before {
   content: "\f405";
 }
 
+i.icon.ups:before {
+  content: "\f7e0";
+}
+
 i.icon.usb:before {
   content: "\f287";
+}
+
+i.icon.usps:before {
+  content: "\f7e1";
 }
 
 i.icon.ussunnah:before {
@@ -16139,6 +16468,10 @@ i.icon.wpforms:before {
   content: "\f298";
 }
 
+i.icon.wpressr:before {
+  content: "\f3e4";
+}
+
 i.icon.xbox:before {
   content: "\f412";
 }
@@ -16165,6 +16498,10 @@ i.icon.yandex:before {
 
 i.icon.yandex.international:before {
   content: "\f414";
+}
+
+i.icon.yarn:before {
+  content: "\f7e3";
 }
 
 i.icon.yelp:before {
@@ -16458,7 +16795,7 @@ i.icon.youtube.play:before {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Image
+ * # Semantic UI 2.7.2 - Image
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16780,7 +17117,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Input
+ * # Semantic UI 2.7.2 - Input
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -16988,6 +17325,7 @@ img.ui.bordered.image {
       Transparent
 ---------------------*/
 
+.ui.transparent.input > textarea,
 .ui.transparent.input > input {
   border-color: transparent !important;
   background-color: transparent !important;
@@ -17019,7 +17357,8 @@ img.ui.bordered.image {
   color: #FFFFFF;
 }
 
-.ui.transparent.inverted.input > input {
+.ui.ui.transparent.inverted.input > textarea,
+.ui.ui.transparent.inverted.input > input {
   color: inherit;
 }
 
@@ -17219,17 +17558,20 @@ img.ui.bordered.image {
   left: 1px;
 }
 
-/* Labeled input error */
+/* Labeled and action input error */
 
+.ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
   border-top: 1px solid #E0B4B4;
   border-bottom: 1px solid #E0B4B4;
 }
 
+.ui.left.action.input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
   border-left: 1px solid #E0B4B4;
 }
 
+.ui.action.input.error:not(.left) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
   border-right: 1px solid #E0B4B4;
 }
@@ -17378,7 +17720,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Label
+ * # Semantic UI 2.7.2 - Label
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -17441,11 +17783,12 @@ a.ui.label {
 .ui.label > img {
   width: auto !important;
   vertical-align: middle;
-  height: 2.1666em !important;
+  height: 2.1666em;
 }
 
 /* Icon */
 
+.ui.left.icon.label > .icon,
 .ui.label > .icon {
   width: auto;
   margin: 0 0.75em 0 0;
@@ -17470,16 +17813,39 @@ a.ui.label {
 .ui.label > .close.icon,
 .ui.label > .delete.icon {
   cursor: pointer;
-  margin-right: 0;
-  margin-left: 0.5em;
   font-size: 0.92857143em;
   opacity: 0.5;
   -webkit-transition: background 0.1s ease;
   transition: background 0.1s ease;
 }
 
+.ui.label > .close.icon:hover,
 .ui.label > .delete.icon:hover {
   opacity: 1;
+}
+
+/* Backward compatible positioning */
+
+.ui.label.left.icon > .close.icon,
+.ui.label.left.icon > .delete.icon {
+  margin: 0 0.5em 0 0;
+}
+
+.ui.label:not(.icon) > .close.icon,
+.ui.label:not(.icon) > .delete.icon {
+  margin: 0 0 0 0.5em;
+}
+
+/* Label for only an icon */
+
+.ui.icon.label > .icon {
+  margin: 0 auto;
+}
+
+/* Right Side Icon */
+
+.ui.right.icon.label > .icon {
+  margin: 0 0 0 0.75em;
 }
 
 /*-------------------
@@ -17667,7 +18033,7 @@ a.ui.label {
 }
 
 .ui.corner.label .icon {
-  cursor: default;
+  cursor: inherit;
   position: relative;
   top: 0.64285714em;
   left: 0.78571429em;
@@ -18012,7 +18378,7 @@ a.ui.basic.label:hover {
 --------------------*/
 
 .ui.primary.labels .label,
-.ui.primary.label {
+.ui.ui.ui.primary.label {
   background-color: #2185D0;
   border-color: #2185D0;
   color: rgba(255, 255, 255, 0.9);
@@ -18021,7 +18387,7 @@ a.ui.basic.label:hover {
 /* Link */
 
 .ui.primary.labels a.label:hover,
-a.ui.primary.label:hover {
+a.ui.ui.ui.primary.label:hover {
   background-color: #1678c2;
   border-color: #1678c2;
   color: #FFFFFF;
@@ -18029,21 +18395,21 @@ a.ui.primary.label:hover {
 
 /* Ribbon */
 
-.ui.primary.ribbon.label {
+.ui.ui.ui.primary.ribbon.label {
   border-color: #1a69a4;
 }
 
 /* Basic */
 
 .ui.basic.labels .primary.label,
-.ui.basic.primary.label {
+.ui.ui.ui.basic.primary.label {
   background: none #FFFFFF;
   border-color: #2185D0;
   color: #2185D0;
 }
 
 .ui.basic.labels a.primary.label:hover,
-a.ui.basic.primary.label:hover {
+a.ui.ui.ui.basic.primary.label:hover {
   background: none #FFFFFF;
   border-color: #1678c2;
   color: #1678c2;
@@ -18052,7 +18418,7 @@ a.ui.basic.primary.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .primary.label,
-.ui.inverted.primary.label {
+.ui.ui.ui.inverted.primary.label {
   background-color: #54C8FF;
   border-color: #54C8FF;
   color: #1B1C1D;
@@ -18061,7 +18427,7 @@ a.ui.basic.primary.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.primary.label:hover,
-a.ui.inverted.primary.label:hover {
+a.ui.ui.ui.inverted.primary.label:hover {
   background-color: #21b8ff;
   border-color: #21b8ff;
   color: #1B1C1D;
@@ -18069,21 +18435,21 @@ a.ui.inverted.primary.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.primary.ribbon.label {
+.ui.ui.ui.inverted.primary.ribbon.label {
   border-color: #21b8ff;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .primary.label,
-.ui.inverted.basic.primary.label {
+.ui.ui.ui.inverted.basic.primary.label {
   background-color: #1B1C1D;
   border-color: #54C8FF;
   color: #54C8FF;
 }
 
 .ui.inverted.basic.labels a.primary.label:hover,
-a.ui.inverted.basic.primary.label:hover {
+a.ui.ui.ui.inverted.basic.primary.label:hover {
   border-color: #21b8ff;
   background-color: #1B1C1D;
   color: #21b8ff;
@@ -18092,12 +18458,12 @@ a.ui.inverted.basic.primary.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .primary.label,
-.ui.inverted.primary.basic.tag.label {
+.ui.ui.ui.inverted.primary.basic.tag.label {
   border: 1px solid #54C8FF;
 }
 
 .ui.inverted.basic.tag.labels .primary.label:before,
-.ui.inverted.primary.basic.tag.label:before {
+.ui.ui.ui.inverted.primary.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18106,7 +18472,7 @@ a.ui.inverted.basic.primary.label:hover {
 }
 
 .ui.secondary.labels .label,
-.ui.secondary.label {
+.ui.ui.ui.secondary.label {
   background-color: #1B1C1D;
   border-color: #1B1C1D;
   color: rgba(255, 255, 255, 0.9);
@@ -18115,7 +18481,7 @@ a.ui.inverted.basic.primary.label:hover {
 /* Link */
 
 .ui.secondary.labels a.label:hover,
-a.ui.secondary.label:hover {
+a.ui.ui.ui.secondary.label:hover {
   background-color: #27292a;
   border-color: #27292a;
   color: #FFFFFF;
@@ -18123,21 +18489,21 @@ a.ui.secondary.label:hover {
 
 /* Ribbon */
 
-.ui.secondary.ribbon.label {
+.ui.ui.ui.secondary.ribbon.label {
   border-color: #020203;
 }
 
 /* Basic */
 
 .ui.basic.labels .secondary.label,
-.ui.basic.secondary.label {
+.ui.ui.ui.basic.secondary.label {
   background: none #FFFFFF;
   border-color: #1B1C1D;
   color: #1B1C1D;
 }
 
 .ui.basic.labels a.secondary.label:hover,
-a.ui.basic.secondary.label:hover {
+a.ui.ui.ui.basic.secondary.label:hover {
   background: none #FFFFFF;
   border-color: #27292a;
   color: #27292a;
@@ -18146,7 +18512,7 @@ a.ui.basic.secondary.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .secondary.label,
-.ui.inverted.secondary.label {
+.ui.ui.ui.inverted.secondary.label {
   background-color: #545454;
   border-color: #545454;
   color: #1B1C1D;
@@ -18155,7 +18521,7 @@ a.ui.basic.secondary.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.secondary.label:hover,
-a.ui.inverted.secondary.label:hover {
+a.ui.ui.ui.inverted.secondary.label:hover {
   background-color: #6e6e6e;
   border-color: #6e6e6e;
   color: #1B1C1D;
@@ -18163,21 +18529,21 @@ a.ui.inverted.secondary.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.secondary.ribbon.label {
+.ui.ui.ui.inverted.secondary.ribbon.label {
   border-color: #3b3b3b;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .secondary.label,
-.ui.inverted.basic.secondary.label {
+.ui.ui.ui.inverted.basic.secondary.label {
   background-color: #1B1C1D;
   border-color: #545454;
   color: #545454;
 }
 
 .ui.inverted.basic.labels a.secondary.label:hover,
-a.ui.inverted.basic.secondary.label:hover {
+a.ui.ui.ui.inverted.basic.secondary.label:hover {
   border-color: #6e6e6e;
   background-color: #1B1C1D;
   color: #6e6e6e;
@@ -18186,12 +18552,12 @@ a.ui.inverted.basic.secondary.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .secondary.label,
-.ui.inverted.secondary.basic.tag.label {
+.ui.ui.ui.inverted.secondary.basic.tag.label {
   border: 1px solid #545454;
 }
 
 .ui.inverted.basic.tag.labels .secondary.label:before,
-.ui.inverted.secondary.basic.tag.label:before {
+.ui.ui.ui.inverted.secondary.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18200,7 +18566,7 @@ a.ui.inverted.basic.secondary.label:hover {
 }
 
 .ui.red.labels .label,
-.ui.red.label {
+.ui.ui.ui.red.label {
   background-color: #DB2828;
   border-color: #DB2828;
   color: #FFFFFF;
@@ -18209,7 +18575,7 @@ a.ui.inverted.basic.secondary.label:hover {
 /* Link */
 
 .ui.red.labels a.label:hover,
-a.ui.red.label:hover {
+a.ui.ui.ui.red.label:hover {
   background-color: #d01919;
   border-color: #d01919;
   color: #FFFFFF;
@@ -18217,21 +18583,21 @@ a.ui.red.label:hover {
 
 /* Ribbon */
 
-.ui.red.ribbon.label {
+.ui.ui.ui.red.ribbon.label {
   border-color: #b21e1e;
 }
 
 /* Basic */
 
 .ui.basic.labels .red.label,
-.ui.basic.red.label {
+.ui.ui.ui.basic.red.label {
   background: none #FFFFFF;
   border-color: #DB2828;
   color: #DB2828;
 }
 
 .ui.basic.labels a.red.label:hover,
-a.ui.basic.red.label:hover {
+a.ui.ui.ui.basic.red.label:hover {
   background: none #FFFFFF;
   border-color: #d01919;
   color: #d01919;
@@ -18240,7 +18606,7 @@ a.ui.basic.red.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .red.label,
-.ui.inverted.red.label {
+.ui.ui.ui.inverted.red.label {
   background-color: #FF695E;
   border-color: #FF695E;
   color: #1B1C1D;
@@ -18249,7 +18615,7 @@ a.ui.basic.red.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.red.label:hover,
-a.ui.inverted.red.label:hover {
+a.ui.ui.ui.inverted.red.label:hover {
   background-color: #ff392b;
   border-color: #ff392b;
   color: #1B1C1D;
@@ -18257,21 +18623,21 @@ a.ui.inverted.red.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.red.ribbon.label {
+.ui.ui.ui.inverted.red.ribbon.label {
   border-color: #ff392b;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .red.label,
-.ui.inverted.basic.red.label {
+.ui.ui.ui.inverted.basic.red.label {
   background-color: #1B1C1D;
   border-color: #FF695E;
   color: #FF695E;
 }
 
 .ui.inverted.basic.labels a.red.label:hover,
-a.ui.inverted.basic.red.label:hover {
+a.ui.ui.ui.inverted.basic.red.label:hover {
   border-color: #ff392b;
   background-color: #1B1C1D;
   color: #ff392b;
@@ -18280,12 +18646,12 @@ a.ui.inverted.basic.red.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .red.label,
-.ui.inverted.red.basic.tag.label {
+.ui.ui.ui.inverted.red.basic.tag.label {
   border: 1px solid #FF695E;
 }
 
 .ui.inverted.basic.tag.labels .red.label:before,
-.ui.inverted.red.basic.tag.label:before {
+.ui.ui.ui.inverted.red.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18294,7 +18660,7 @@ a.ui.inverted.basic.red.label:hover {
 }
 
 .ui.orange.labels .label,
-.ui.orange.label {
+.ui.ui.ui.orange.label {
   background-color: #F2711C;
   border-color: #F2711C;
   color: #FFFFFF;
@@ -18303,7 +18669,7 @@ a.ui.inverted.basic.red.label:hover {
 /* Link */
 
 .ui.orange.labels a.label:hover,
-a.ui.orange.label:hover {
+a.ui.ui.ui.orange.label:hover {
   background-color: #f26202;
   border-color: #f26202;
   color: #FFFFFF;
@@ -18311,21 +18677,21 @@ a.ui.orange.label:hover {
 
 /* Ribbon */
 
-.ui.orange.ribbon.label {
+.ui.ui.ui.orange.ribbon.label {
   border-color: #cf590c;
 }
 
 /* Basic */
 
 .ui.basic.labels .orange.label,
-.ui.basic.orange.label {
+.ui.ui.ui.basic.orange.label {
   background: none #FFFFFF;
   border-color: #F2711C;
   color: #F2711C;
 }
 
 .ui.basic.labels a.orange.label:hover,
-a.ui.basic.orange.label:hover {
+a.ui.ui.ui.basic.orange.label:hover {
   background: none #FFFFFF;
   border-color: #f26202;
   color: #f26202;
@@ -18334,7 +18700,7 @@ a.ui.basic.orange.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .orange.label,
-.ui.inverted.orange.label {
+.ui.ui.ui.inverted.orange.label {
   background-color: #FF851B;
   border-color: #FF851B;
   color: #1B1C1D;
@@ -18343,7 +18709,7 @@ a.ui.basic.orange.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.orange.label:hover,
-a.ui.inverted.orange.label:hover {
+a.ui.ui.ui.inverted.orange.label:hover {
   background-color: #e76b00;
   border-color: #e76b00;
   color: #1B1C1D;
@@ -18351,21 +18717,21 @@ a.ui.inverted.orange.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.orange.ribbon.label {
+.ui.ui.ui.inverted.orange.ribbon.label {
   border-color: #e76b00;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .orange.label,
-.ui.inverted.basic.orange.label {
+.ui.ui.ui.inverted.basic.orange.label {
   background-color: #1B1C1D;
   border-color: #FF851B;
   color: #FF851B;
 }
 
 .ui.inverted.basic.labels a.orange.label:hover,
-a.ui.inverted.basic.orange.label:hover {
+a.ui.ui.ui.inverted.basic.orange.label:hover {
   border-color: #e76b00;
   background-color: #1B1C1D;
   color: #e76b00;
@@ -18374,12 +18740,12 @@ a.ui.inverted.basic.orange.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .orange.label,
-.ui.inverted.orange.basic.tag.label {
+.ui.ui.ui.inverted.orange.basic.tag.label {
   border: 1px solid #FF851B;
 }
 
 .ui.inverted.basic.tag.labels .orange.label:before,
-.ui.inverted.orange.basic.tag.label:before {
+.ui.ui.ui.inverted.orange.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18388,7 +18754,7 @@ a.ui.inverted.basic.orange.label:hover {
 }
 
 .ui.yellow.labels .label,
-.ui.yellow.label {
+.ui.ui.ui.yellow.label {
   background-color: #FBBD08;
   border-color: #FBBD08;
   color: #FFFFFF;
@@ -18397,7 +18763,7 @@ a.ui.inverted.basic.orange.label:hover {
 /* Link */
 
 .ui.yellow.labels a.label:hover,
-a.ui.yellow.label:hover {
+a.ui.ui.ui.yellow.label:hover {
   background-color: #eaae00;
   border-color: #eaae00;
   color: #FFFFFF;
@@ -18405,21 +18771,21 @@ a.ui.yellow.label:hover {
 
 /* Ribbon */
 
-.ui.yellow.ribbon.label {
+.ui.ui.ui.yellow.ribbon.label {
   border-color: #cd9903;
 }
 
 /* Basic */
 
 .ui.basic.labels .yellow.label,
-.ui.basic.yellow.label {
+.ui.ui.ui.basic.yellow.label {
   background: none #FFFFFF;
   border-color: #FBBD08;
   color: #FBBD08;
 }
 
 .ui.basic.labels a.yellow.label:hover,
-a.ui.basic.yellow.label:hover {
+a.ui.ui.ui.basic.yellow.label:hover {
   background: none #FFFFFF;
   border-color: #eaae00;
   color: #eaae00;
@@ -18428,7 +18794,7 @@ a.ui.basic.yellow.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .yellow.label,
-.ui.inverted.yellow.label {
+.ui.ui.ui.inverted.yellow.label {
   background-color: #FFE21F;
   border-color: #FFE21F;
   color: #1B1C1D;
@@ -18437,7 +18803,7 @@ a.ui.basic.yellow.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.yellow.label:hover,
-a.ui.inverted.yellow.label:hover {
+a.ui.ui.ui.inverted.yellow.label:hover {
   background-color: #ebcd00;
   border-color: #ebcd00;
   color: #1B1C1D;
@@ -18445,21 +18811,21 @@ a.ui.inverted.yellow.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.yellow.ribbon.label {
+.ui.ui.ui.inverted.yellow.ribbon.label {
   border-color: #ebcd00;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .yellow.label,
-.ui.inverted.basic.yellow.label {
+.ui.ui.ui.inverted.basic.yellow.label {
   background-color: #1B1C1D;
   border-color: #FFE21F;
   color: #FFE21F;
 }
 
 .ui.inverted.basic.labels a.yellow.label:hover,
-a.ui.inverted.basic.yellow.label:hover {
+a.ui.ui.ui.inverted.basic.yellow.label:hover {
   border-color: #ebcd00;
   background-color: #1B1C1D;
   color: #ebcd00;
@@ -18468,12 +18834,12 @@ a.ui.inverted.basic.yellow.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .yellow.label,
-.ui.inverted.yellow.basic.tag.label {
+.ui.ui.ui.inverted.yellow.basic.tag.label {
   border: 1px solid #FFE21F;
 }
 
 .ui.inverted.basic.tag.labels .yellow.label:before,
-.ui.inverted.yellow.basic.tag.label:before {
+.ui.ui.ui.inverted.yellow.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18482,7 +18848,7 @@ a.ui.inverted.basic.yellow.label:hover {
 }
 
 .ui.olive.labels .label,
-.ui.olive.label {
+.ui.ui.ui.olive.label {
   background-color: #B5CC18;
   border-color: #B5CC18;
   color: #FFFFFF;
@@ -18491,7 +18857,7 @@ a.ui.inverted.basic.yellow.label:hover {
 /* Link */
 
 .ui.olive.labels a.label:hover,
-a.ui.olive.label:hover {
+a.ui.ui.ui.olive.label:hover {
   background-color: #a7bd0d;
   border-color: #a7bd0d;
   color: #FFFFFF;
@@ -18499,21 +18865,21 @@ a.ui.olive.label:hover {
 
 /* Ribbon */
 
-.ui.olive.ribbon.label {
+.ui.ui.ui.olive.ribbon.label {
   border-color: #8d9e13;
 }
 
 /* Basic */
 
 .ui.basic.labels .olive.label,
-.ui.basic.olive.label {
+.ui.ui.ui.basic.olive.label {
   background: none #FFFFFF;
   border-color: #B5CC18;
   color: #B5CC18;
 }
 
 .ui.basic.labels a.olive.label:hover,
-a.ui.basic.olive.label:hover {
+a.ui.ui.ui.basic.olive.label:hover {
   background: none #FFFFFF;
   border-color: #a7bd0d;
   color: #a7bd0d;
@@ -18522,7 +18888,7 @@ a.ui.basic.olive.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .olive.label,
-.ui.inverted.olive.label {
+.ui.ui.ui.inverted.olive.label {
   background-color: #D9E778;
   border-color: #D9E778;
   color: #1B1C1D;
@@ -18531,7 +18897,7 @@ a.ui.basic.olive.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.olive.label:hover,
-a.ui.inverted.olive.label:hover {
+a.ui.ui.ui.inverted.olive.label:hover {
   background-color: #d2e745;
   border-color: #d2e745;
   color: #1B1C1D;
@@ -18539,21 +18905,21 @@ a.ui.inverted.olive.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.olive.ribbon.label {
+.ui.ui.ui.inverted.olive.ribbon.label {
   border-color: #cddf4d;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .olive.label,
-.ui.inverted.basic.olive.label {
+.ui.ui.ui.inverted.basic.olive.label {
   background-color: #1B1C1D;
   border-color: #D9E778;
   color: #D9E778;
 }
 
 .ui.inverted.basic.labels a.olive.label:hover,
-a.ui.inverted.basic.olive.label:hover {
+a.ui.ui.ui.inverted.basic.olive.label:hover {
   border-color: #d2e745;
   background-color: #1B1C1D;
   color: #d2e745;
@@ -18562,12 +18928,12 @@ a.ui.inverted.basic.olive.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .olive.label,
-.ui.inverted.olive.basic.tag.label {
+.ui.ui.ui.inverted.olive.basic.tag.label {
   border: 1px solid #D9E778;
 }
 
 .ui.inverted.basic.tag.labels .olive.label:before,
-.ui.inverted.olive.basic.tag.label:before {
+.ui.ui.ui.inverted.olive.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18576,7 +18942,7 @@ a.ui.inverted.basic.olive.label:hover {
 }
 
 .ui.green.labels .label,
-.ui.green.label {
+.ui.ui.ui.green.label {
   background-color: #21BA45;
   border-color: #21BA45;
   color: #FFFFFF;
@@ -18585,7 +18951,7 @@ a.ui.inverted.basic.olive.label:hover {
 /* Link */
 
 .ui.green.labels a.label:hover,
-a.ui.green.label:hover {
+a.ui.ui.ui.green.label:hover {
   background-color: #16ab39;
   border-color: #16ab39;
   color: #FFFFFF;
@@ -18593,21 +18959,21 @@ a.ui.green.label:hover {
 
 /* Ribbon */
 
-.ui.green.ribbon.label {
+.ui.ui.ui.green.ribbon.label {
   border-color: #198f35;
 }
 
 /* Basic */
 
 .ui.basic.labels .green.label,
-.ui.basic.green.label {
+.ui.ui.ui.basic.green.label {
   background: none #FFFFFF;
   border-color: #21BA45;
   color: #21BA45;
 }
 
 .ui.basic.labels a.green.label:hover,
-a.ui.basic.green.label:hover {
+a.ui.ui.ui.basic.green.label:hover {
   background: none #FFFFFF;
   border-color: #16ab39;
   color: #16ab39;
@@ -18616,7 +18982,7 @@ a.ui.basic.green.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .green.label,
-.ui.inverted.green.label {
+.ui.ui.ui.inverted.green.label {
   background-color: #2ECC40;
   border-color: #2ECC40;
   color: #1B1C1D;
@@ -18625,7 +18991,7 @@ a.ui.basic.green.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.green.label:hover,
-a.ui.inverted.green.label:hover {
+a.ui.ui.ui.inverted.green.label:hover {
   background-color: #1ea92e;
   border-color: #1ea92e;
   color: #1B1C1D;
@@ -18633,21 +18999,21 @@ a.ui.inverted.green.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.green.ribbon.label {
+.ui.ui.ui.inverted.green.ribbon.label {
   border-color: #25a233;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .green.label,
-.ui.inverted.basic.green.label {
+.ui.ui.ui.inverted.basic.green.label {
   background-color: #1B1C1D;
   border-color: #2ECC40;
   color: #2ECC40;
 }
 
 .ui.inverted.basic.labels a.green.label:hover,
-a.ui.inverted.basic.green.label:hover {
+a.ui.ui.ui.inverted.basic.green.label:hover {
   border-color: #1ea92e;
   background-color: #1B1C1D;
   color: #1ea92e;
@@ -18656,12 +19022,12 @@ a.ui.inverted.basic.green.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .green.label,
-.ui.inverted.green.basic.tag.label {
+.ui.ui.ui.inverted.green.basic.tag.label {
   border: 1px solid #2ECC40;
 }
 
 .ui.inverted.basic.tag.labels .green.label:before,
-.ui.inverted.green.basic.tag.label:before {
+.ui.ui.ui.inverted.green.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18670,7 +19036,7 @@ a.ui.inverted.basic.green.label:hover {
 }
 
 .ui.teal.labels .label,
-.ui.teal.label {
+.ui.ui.ui.teal.label {
   background-color: #00B5AD;
   border-color: #00B5AD;
   color: #FFFFFF;
@@ -18679,7 +19045,7 @@ a.ui.inverted.basic.green.label:hover {
 /* Link */
 
 .ui.teal.labels a.label:hover,
-a.ui.teal.label:hover {
+a.ui.ui.ui.teal.label:hover {
   background-color: #009c95;
   border-color: #009c95;
   color: #FFFFFF;
@@ -18687,21 +19053,21 @@ a.ui.teal.label:hover {
 
 /* Ribbon */
 
-.ui.teal.ribbon.label {
+.ui.ui.ui.teal.ribbon.label {
   border-color: #00827c;
 }
 
 /* Basic */
 
 .ui.basic.labels .teal.label,
-.ui.basic.teal.label {
+.ui.ui.ui.basic.teal.label {
   background: none #FFFFFF;
   border-color: #00B5AD;
   color: #00B5AD;
 }
 
 .ui.basic.labels a.teal.label:hover,
-a.ui.basic.teal.label:hover {
+a.ui.ui.ui.basic.teal.label:hover {
   background: none #FFFFFF;
   border-color: #009c95;
   color: #009c95;
@@ -18710,7 +19076,7 @@ a.ui.basic.teal.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .teal.label,
-.ui.inverted.teal.label {
+.ui.ui.ui.inverted.teal.label {
   background-color: #6DFFFF;
   border-color: #6DFFFF;
   color: #1B1C1D;
@@ -18719,7 +19085,7 @@ a.ui.basic.teal.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.teal.label:hover,
-a.ui.inverted.teal.label:hover {
+a.ui.ui.ui.inverted.teal.label:hover {
   background-color: #3affff;
   border-color: #3affff;
   color: #1B1C1D;
@@ -18727,21 +19093,21 @@ a.ui.inverted.teal.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.teal.ribbon.label {
+.ui.ui.ui.inverted.teal.ribbon.label {
   border-color: #3affff;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .teal.label,
-.ui.inverted.basic.teal.label {
+.ui.ui.ui.inverted.basic.teal.label {
   background-color: #1B1C1D;
   border-color: #6DFFFF;
   color: #6DFFFF;
 }
 
 .ui.inverted.basic.labels a.teal.label:hover,
-a.ui.inverted.basic.teal.label:hover {
+a.ui.ui.ui.inverted.basic.teal.label:hover {
   border-color: #3affff;
   background-color: #1B1C1D;
   color: #3affff;
@@ -18750,12 +19116,12 @@ a.ui.inverted.basic.teal.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .teal.label,
-.ui.inverted.teal.basic.tag.label {
+.ui.ui.ui.inverted.teal.basic.tag.label {
   border: 1px solid #6DFFFF;
 }
 
 .ui.inverted.basic.tag.labels .teal.label:before,
-.ui.inverted.teal.basic.tag.label:before {
+.ui.ui.ui.inverted.teal.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18764,7 +19130,7 @@ a.ui.inverted.basic.teal.label:hover {
 }
 
 .ui.blue.labels .label,
-.ui.blue.label {
+.ui.ui.ui.blue.label {
   background-color: #2185D0;
   border-color: #2185D0;
   color: #FFFFFF;
@@ -18773,7 +19139,7 @@ a.ui.inverted.basic.teal.label:hover {
 /* Link */
 
 .ui.blue.labels a.label:hover,
-a.ui.blue.label:hover {
+a.ui.ui.ui.blue.label:hover {
   background-color: #1678c2;
   border-color: #1678c2;
   color: #FFFFFF;
@@ -18781,21 +19147,21 @@ a.ui.blue.label:hover {
 
 /* Ribbon */
 
-.ui.blue.ribbon.label {
+.ui.ui.ui.blue.ribbon.label {
   border-color: #1a69a4;
 }
 
 /* Basic */
 
 .ui.basic.labels .blue.label,
-.ui.basic.blue.label {
+.ui.ui.ui.basic.blue.label {
   background: none #FFFFFF;
   border-color: #2185D0;
   color: #2185D0;
 }
 
 .ui.basic.labels a.blue.label:hover,
-a.ui.basic.blue.label:hover {
+a.ui.ui.ui.basic.blue.label:hover {
   background: none #FFFFFF;
   border-color: #1678c2;
   color: #1678c2;
@@ -18804,7 +19170,7 @@ a.ui.basic.blue.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .blue.label,
-.ui.inverted.blue.label {
+.ui.ui.ui.inverted.blue.label {
   background-color: #54C8FF;
   border-color: #54C8FF;
   color: #1B1C1D;
@@ -18813,7 +19179,7 @@ a.ui.basic.blue.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.blue.label:hover,
-a.ui.inverted.blue.label:hover {
+a.ui.ui.ui.inverted.blue.label:hover {
   background-color: #21b8ff;
   border-color: #21b8ff;
   color: #1B1C1D;
@@ -18821,21 +19187,21 @@ a.ui.inverted.blue.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.blue.ribbon.label {
+.ui.ui.ui.inverted.blue.ribbon.label {
   border-color: #21b8ff;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .blue.label,
-.ui.inverted.basic.blue.label {
+.ui.ui.ui.inverted.basic.blue.label {
   background-color: #1B1C1D;
   border-color: #54C8FF;
   color: #54C8FF;
 }
 
 .ui.inverted.basic.labels a.blue.label:hover,
-a.ui.inverted.basic.blue.label:hover {
+a.ui.ui.ui.inverted.basic.blue.label:hover {
   border-color: #21b8ff;
   background-color: #1B1C1D;
   color: #21b8ff;
@@ -18844,12 +19210,12 @@ a.ui.inverted.basic.blue.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .blue.label,
-.ui.inverted.blue.basic.tag.label {
+.ui.ui.ui.inverted.blue.basic.tag.label {
   border: 1px solid #54C8FF;
 }
 
 .ui.inverted.basic.tag.labels .blue.label:before,
-.ui.inverted.blue.basic.tag.label:before {
+.ui.ui.ui.inverted.blue.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18858,7 +19224,7 @@ a.ui.inverted.basic.blue.label:hover {
 }
 
 .ui.violet.labels .label,
-.ui.violet.label {
+.ui.ui.ui.violet.label {
   background-color: #6435C9;
   border-color: #6435C9;
   color: #FFFFFF;
@@ -18867,7 +19233,7 @@ a.ui.inverted.basic.blue.label:hover {
 /* Link */
 
 .ui.violet.labels a.label:hover,
-a.ui.violet.label:hover {
+a.ui.ui.ui.violet.label:hover {
   background-color: #5829bb;
   border-color: #5829bb;
   color: #FFFFFF;
@@ -18875,21 +19241,21 @@ a.ui.violet.label:hover {
 
 /* Ribbon */
 
-.ui.violet.ribbon.label {
+.ui.ui.ui.violet.ribbon.label {
   border-color: #502aa1;
 }
 
 /* Basic */
 
 .ui.basic.labels .violet.label,
-.ui.basic.violet.label {
+.ui.ui.ui.basic.violet.label {
   background: none #FFFFFF;
   border-color: #6435C9;
   color: #6435C9;
 }
 
 .ui.basic.labels a.violet.label:hover,
-a.ui.basic.violet.label:hover {
+a.ui.ui.ui.basic.violet.label:hover {
   background: none #FFFFFF;
   border-color: #5829bb;
   color: #5829bb;
@@ -18898,7 +19264,7 @@ a.ui.basic.violet.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .violet.label,
-.ui.inverted.violet.label {
+.ui.ui.ui.inverted.violet.label {
   background-color: #A291FB;
   border-color: #A291FB;
   color: #1B1C1D;
@@ -18907,7 +19273,7 @@ a.ui.basic.violet.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.violet.label:hover,
-a.ui.inverted.violet.label:hover {
+a.ui.ui.ui.inverted.violet.label:hover {
   background-color: #745aff;
   border-color: #745aff;
   color: #1B1C1D;
@@ -18915,21 +19281,21 @@ a.ui.inverted.violet.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.violet.ribbon.label {
+.ui.ui.ui.inverted.violet.ribbon.label {
   border-color: #7860f9;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .violet.label,
-.ui.inverted.basic.violet.label {
+.ui.ui.ui.inverted.basic.violet.label {
   background-color: #1B1C1D;
   border-color: #A291FB;
   color: #A291FB;
 }
 
 .ui.inverted.basic.labels a.violet.label:hover,
-a.ui.inverted.basic.violet.label:hover {
+a.ui.ui.ui.inverted.basic.violet.label:hover {
   border-color: #745aff;
   background-color: #1B1C1D;
   color: #745aff;
@@ -18938,12 +19304,12 @@ a.ui.inverted.basic.violet.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .violet.label,
-.ui.inverted.violet.basic.tag.label {
+.ui.ui.ui.inverted.violet.basic.tag.label {
   border: 1px solid #A291FB;
 }
 
 .ui.inverted.basic.tag.labels .violet.label:before,
-.ui.inverted.violet.basic.tag.label:before {
+.ui.ui.ui.inverted.violet.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -18952,7 +19318,7 @@ a.ui.inverted.basic.violet.label:hover {
 }
 
 .ui.purple.labels .label,
-.ui.purple.label {
+.ui.ui.ui.purple.label {
   background-color: #A333C8;
   border-color: #A333C8;
   color: #FFFFFF;
@@ -18961,7 +19327,7 @@ a.ui.inverted.basic.violet.label:hover {
 /* Link */
 
 .ui.purple.labels a.label:hover,
-a.ui.purple.label:hover {
+a.ui.ui.ui.purple.label:hover {
   background-color: #9627ba;
   border-color: #9627ba;
   color: #FFFFFF;
@@ -18969,21 +19335,21 @@ a.ui.purple.label:hover {
 
 /* Ribbon */
 
-.ui.purple.ribbon.label {
+.ui.ui.ui.purple.ribbon.label {
   border-color: #82299f;
 }
 
 /* Basic */
 
 .ui.basic.labels .purple.label,
-.ui.basic.purple.label {
+.ui.ui.ui.basic.purple.label {
   background: none #FFFFFF;
   border-color: #A333C8;
   color: #A333C8;
 }
 
 .ui.basic.labels a.purple.label:hover,
-a.ui.basic.purple.label:hover {
+a.ui.ui.ui.basic.purple.label:hover {
   background: none #FFFFFF;
   border-color: #9627ba;
   color: #9627ba;
@@ -18992,7 +19358,7 @@ a.ui.basic.purple.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .purple.label,
-.ui.inverted.purple.label {
+.ui.ui.ui.inverted.purple.label {
   background-color: #DC73FF;
   border-color: #DC73FF;
   color: #1B1C1D;
@@ -19001,7 +19367,7 @@ a.ui.basic.purple.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.purple.label:hover,
-a.ui.inverted.purple.label:hover {
+a.ui.ui.ui.inverted.purple.label:hover {
   background-color: #cf40ff;
   border-color: #cf40ff;
   color: #1B1C1D;
@@ -19009,21 +19375,21 @@ a.ui.inverted.purple.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.purple.ribbon.label {
+.ui.ui.ui.inverted.purple.ribbon.label {
   border-color: #cf40ff;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .purple.label,
-.ui.inverted.basic.purple.label {
+.ui.ui.ui.inverted.basic.purple.label {
   background-color: #1B1C1D;
   border-color: #DC73FF;
   color: #DC73FF;
 }
 
 .ui.inverted.basic.labels a.purple.label:hover,
-a.ui.inverted.basic.purple.label:hover {
+a.ui.ui.ui.inverted.basic.purple.label:hover {
   border-color: #cf40ff;
   background-color: #1B1C1D;
   color: #cf40ff;
@@ -19032,12 +19398,12 @@ a.ui.inverted.basic.purple.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .purple.label,
-.ui.inverted.purple.basic.tag.label {
+.ui.ui.ui.inverted.purple.basic.tag.label {
   border: 1px solid #DC73FF;
 }
 
 .ui.inverted.basic.tag.labels .purple.label:before,
-.ui.inverted.purple.basic.tag.label:before {
+.ui.ui.ui.inverted.purple.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -19046,7 +19412,7 @@ a.ui.inverted.basic.purple.label:hover {
 }
 
 .ui.pink.labels .label,
-.ui.pink.label {
+.ui.ui.ui.pink.label {
   background-color: #E03997;
   border-color: #E03997;
   color: #FFFFFF;
@@ -19055,7 +19421,7 @@ a.ui.inverted.basic.purple.label:hover {
 /* Link */
 
 .ui.pink.labels a.label:hover,
-a.ui.pink.label:hover {
+a.ui.ui.ui.pink.label:hover {
   background-color: #e61a8d;
   border-color: #e61a8d;
   color: #FFFFFF;
@@ -19063,21 +19429,21 @@ a.ui.pink.label:hover {
 
 /* Ribbon */
 
-.ui.pink.ribbon.label {
+.ui.ui.ui.pink.ribbon.label {
   border-color: #c71f7e;
 }
 
 /* Basic */
 
 .ui.basic.labels .pink.label,
-.ui.basic.pink.label {
+.ui.ui.ui.basic.pink.label {
   background: none #FFFFFF;
   border-color: #E03997;
   color: #E03997;
 }
 
 .ui.basic.labels a.pink.label:hover,
-a.ui.basic.pink.label:hover {
+a.ui.ui.ui.basic.pink.label:hover {
   background: none #FFFFFF;
   border-color: #e61a8d;
   color: #e61a8d;
@@ -19086,7 +19452,7 @@ a.ui.basic.pink.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .pink.label,
-.ui.inverted.pink.label {
+.ui.ui.ui.inverted.pink.label {
   background-color: #FF8EDF;
   border-color: #FF8EDF;
   color: #1B1C1D;
@@ -19095,7 +19461,7 @@ a.ui.basic.pink.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.pink.label:hover,
-a.ui.inverted.pink.label:hover {
+a.ui.ui.ui.inverted.pink.label:hover {
   background-color: #ff5bd1;
   border-color: #ff5bd1;
   color: #1B1C1D;
@@ -19103,21 +19469,21 @@ a.ui.inverted.pink.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.pink.ribbon.label {
+.ui.ui.ui.inverted.pink.ribbon.label {
   border-color: #ff5bd1;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .pink.label,
-.ui.inverted.basic.pink.label {
+.ui.ui.ui.inverted.basic.pink.label {
   background-color: #1B1C1D;
   border-color: #FF8EDF;
   color: #FF8EDF;
 }
 
 .ui.inverted.basic.labels a.pink.label:hover,
-a.ui.inverted.basic.pink.label:hover {
+a.ui.ui.ui.inverted.basic.pink.label:hover {
   border-color: #ff5bd1;
   background-color: #1B1C1D;
   color: #ff5bd1;
@@ -19126,12 +19492,12 @@ a.ui.inverted.basic.pink.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .pink.label,
-.ui.inverted.pink.basic.tag.label {
+.ui.ui.ui.inverted.pink.basic.tag.label {
   border: 1px solid #FF8EDF;
 }
 
 .ui.inverted.basic.tag.labels .pink.label:before,
-.ui.inverted.pink.basic.tag.label:before {
+.ui.ui.ui.inverted.pink.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -19140,7 +19506,7 @@ a.ui.inverted.basic.pink.label:hover {
 }
 
 .ui.brown.labels .label,
-.ui.brown.label {
+.ui.ui.ui.brown.label {
   background-color: #A5673F;
   border-color: #A5673F;
   color: #FFFFFF;
@@ -19149,7 +19515,7 @@ a.ui.inverted.basic.pink.label:hover {
 /* Link */
 
 .ui.brown.labels a.label:hover,
-a.ui.brown.label:hover {
+a.ui.ui.ui.brown.label:hover {
   background-color: #975b33;
   border-color: #975b33;
   color: #FFFFFF;
@@ -19157,21 +19523,21 @@ a.ui.brown.label:hover {
 
 /* Ribbon */
 
-.ui.brown.ribbon.label {
+.ui.ui.ui.brown.ribbon.label {
   border-color: #805031;
 }
 
 /* Basic */
 
 .ui.basic.labels .brown.label,
-.ui.basic.brown.label {
+.ui.ui.ui.basic.brown.label {
   background: none #FFFFFF;
   border-color: #A5673F;
   color: #A5673F;
 }
 
 .ui.basic.labels a.brown.label:hover,
-a.ui.basic.brown.label:hover {
+a.ui.ui.ui.basic.brown.label:hover {
   background: none #FFFFFF;
   border-color: #975b33;
   color: #975b33;
@@ -19180,7 +19546,7 @@ a.ui.basic.brown.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .brown.label,
-.ui.inverted.brown.label {
+.ui.ui.ui.inverted.brown.label {
   background-color: #D67C1C;
   border-color: #D67C1C;
   color: #1B1C1D;
@@ -19189,7 +19555,7 @@ a.ui.basic.brown.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.brown.label:hover,
-a.ui.inverted.brown.label:hover {
+a.ui.ui.ui.inverted.brown.label:hover {
   background-color: #b0620f;
   border-color: #b0620f;
   color: #1B1C1D;
@@ -19197,21 +19563,21 @@ a.ui.inverted.brown.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.brown.ribbon.label {
+.ui.ui.ui.inverted.brown.ribbon.label {
   border-color: #a96216;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .brown.label,
-.ui.inverted.basic.brown.label {
+.ui.ui.ui.inverted.basic.brown.label {
   background-color: #1B1C1D;
   border-color: #D67C1C;
   color: #D67C1C;
 }
 
 .ui.inverted.basic.labels a.brown.label:hover,
-a.ui.inverted.basic.brown.label:hover {
+a.ui.ui.ui.inverted.basic.brown.label:hover {
   border-color: #b0620f;
   background-color: #1B1C1D;
   color: #b0620f;
@@ -19220,12 +19586,12 @@ a.ui.inverted.basic.brown.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .brown.label,
-.ui.inverted.brown.basic.tag.label {
+.ui.ui.ui.inverted.brown.basic.tag.label {
   border: 1px solid #D67C1C;
 }
 
 .ui.inverted.basic.tag.labels .brown.label:before,
-.ui.inverted.brown.basic.tag.label:before {
+.ui.ui.ui.inverted.brown.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -19234,7 +19600,7 @@ a.ui.inverted.basic.brown.label:hover {
 }
 
 .ui.grey.labels .label,
-.ui.grey.label {
+.ui.ui.ui.grey.label {
   background-color: #767676;
   border-color: #767676;
   color: #FFFFFF;
@@ -19243,7 +19609,7 @@ a.ui.inverted.basic.brown.label:hover {
 /* Link */
 
 .ui.grey.labels a.label:hover,
-a.ui.grey.label:hover {
+a.ui.ui.ui.grey.label:hover {
   background-color: #838383;
   border-color: #838383;
   color: #FFFFFF;
@@ -19251,21 +19617,21 @@ a.ui.grey.label:hover {
 
 /* Ribbon */
 
-.ui.grey.ribbon.label {
+.ui.ui.ui.grey.ribbon.label {
   border-color: #5d5d5d;
 }
 
 /* Basic */
 
 .ui.basic.labels .grey.label,
-.ui.basic.grey.label {
+.ui.ui.ui.basic.grey.label {
   background: none #FFFFFF;
   border-color: #767676;
   color: #767676;
 }
 
 .ui.basic.labels a.grey.label:hover,
-a.ui.basic.grey.label:hover {
+a.ui.ui.ui.basic.grey.label:hover {
   background: none #FFFFFF;
   border-color: #838383;
   color: #838383;
@@ -19274,7 +19640,7 @@ a.ui.basic.grey.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .grey.label,
-.ui.inverted.grey.label {
+.ui.ui.ui.inverted.grey.label {
   background-color: #DCDDDE;
   border-color: #DCDDDE;
   color: #1B1C1D;
@@ -19283,7 +19649,7 @@ a.ui.basic.grey.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.grey.label:hover,
-a.ui.inverted.grey.label:hover {
+a.ui.ui.ui.inverted.grey.label:hover {
   background-color: #c2c4c5;
   border-color: #c2c4c5;
   color: #FFFFFF;
@@ -19291,21 +19657,21 @@ a.ui.inverted.grey.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.grey.ribbon.label {
+.ui.ui.ui.inverted.grey.ribbon.label {
   border-color: #e9eaea;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .grey.label,
-.ui.inverted.basic.grey.label {
+.ui.ui.ui.inverted.basic.grey.label {
   background-color: #1B1C1D;
   border-color: #DCDDDE;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .ui.inverted.basic.labels a.grey.label:hover,
-a.ui.inverted.basic.grey.label:hover {
+a.ui.ui.ui.inverted.basic.grey.label:hover {
   border-color: #c2c4c5;
   background-color: #1B1C1D;
 }
@@ -19313,12 +19679,12 @@ a.ui.inverted.basic.grey.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .grey.label,
-.ui.inverted.grey.basic.tag.label {
+.ui.ui.ui.inverted.grey.basic.tag.label {
   border: 1px solid #DCDDDE;
 }
 
 .ui.inverted.basic.tag.labels .grey.label:before,
-.ui.inverted.grey.basic.tag.label:before {
+.ui.ui.ui.inverted.grey.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -19327,7 +19693,7 @@ a.ui.inverted.basic.grey.label:hover {
 }
 
 .ui.black.labels .label,
-.ui.black.label {
+.ui.ui.ui.black.label {
   background-color: #1B1C1D;
   border-color: #1B1C1D;
   color: #FFFFFF;
@@ -19336,7 +19702,7 @@ a.ui.inverted.basic.grey.label:hover {
 /* Link */
 
 .ui.black.labels a.label:hover,
-a.ui.black.label:hover {
+a.ui.ui.ui.black.label:hover {
   background-color: #27292a;
   border-color: #27292a;
   color: #FFFFFF;
@@ -19344,21 +19710,21 @@ a.ui.black.label:hover {
 
 /* Ribbon */
 
-.ui.black.ribbon.label {
+.ui.ui.ui.black.ribbon.label {
   border-color: #020203;
 }
 
 /* Basic */
 
 .ui.basic.labels .black.label,
-.ui.basic.black.label {
+.ui.ui.ui.basic.black.label {
   background: none #FFFFFF;
   border-color: #1B1C1D;
   color: #1B1C1D;
 }
 
 .ui.basic.labels a.black.label:hover,
-a.ui.basic.black.label:hover {
+a.ui.ui.ui.basic.black.label:hover {
   background: none #FFFFFF;
   border-color: #27292a;
   color: #27292a;
@@ -19367,7 +19733,7 @@ a.ui.basic.black.label:hover {
 /* Inverted */
 
 .ui.inverted.labels .black.label,
-.ui.inverted.black.label {
+.ui.ui.ui.inverted.black.label {
   background-color: #545454;
   border-color: #545454;
   color: #1B1C1D;
@@ -19376,7 +19742,7 @@ a.ui.basic.black.label:hover {
 /* Inverted Link */
 
 .ui.inverted.labels a.black.label:hover,
-a.ui.inverted.black.label:hover {
+a.ui.ui.ui.inverted.black.label:hover {
   background-color: #000000;
   border-color: #000000;
   color: #FFFFFF;
@@ -19384,21 +19750,21 @@ a.ui.inverted.black.label:hover {
 
 /* Inverted Ribbon */
 
-.ui.inverted.black.ribbon.label {
+.ui.ui.ui.inverted.black.ribbon.label {
   border-color: #616161;
 }
 
 /* Inverted Basic */
 
 .ui.inverted.basic.labels .black.label,
-.ui.inverted.basic.black.label {
+.ui.ui.ui.inverted.basic.black.label {
   background-color: #1B1C1D;
   border-color: #545454;
   color: rgba(255, 255, 255, 0.9);
 }
 
 .ui.inverted.basic.labels a.black.label:hover,
-a.ui.inverted.basic.black.label:hover {
+a.ui.ui.ui.inverted.basic.black.label:hover {
   border-color: #000000;
   background-color: #1B1C1D;
 }
@@ -19406,12 +19772,12 @@ a.ui.inverted.basic.black.label:hover {
 /* Inverted Basic Tags */
 
 .ui.inverted.basic.tag.labels .black.label,
-.ui.inverted.black.basic.tag.label {
+.ui.ui.ui.inverted.black.basic.tag.label {
   border: 1px solid #545454;
 }
 
 .ui.inverted.basic.tag.labels .black.label:before,
-.ui.inverted.black.basic.tag.label:before {
+.ui.ui.ui.inverted.black.basic.tag.label:before {
   border-color: inherit;
   border-width: 1px 0 0 1px;
   border-style: inherit;
@@ -19599,8 +19965,32 @@ a.ui.inverted.basic.black.label:hover {
   position: absolute;
   z-index: 100;
   top: -1em;
-  left: 100%;
-  margin: 0 0 0 -1.5em !important;
+  right: 0;
+  white-space: nowrap;
+  -webkit-transform: translateX(50%);
+  transform: translateX(50%);
+}
+
+.ui.right.aligned.floating.label {
+  -webkit-transform: translateX(1.2em);
+  transform: translateX(1.2em);
+}
+
+.ui.left.floating.label {
+  left: 0;
+  right: auto;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.ui.left.aligned.floating.label {
+  -webkit-transform: translateX(-1.2em);
+  transform: translateX(-1.2em);
+}
+
+.ui.bottom.floating.label {
+  top: auto;
+  bottom: -1em;
 }
 
 /*-------------------
@@ -19655,7 +20045,7 @@ a.ui.inverted.basic.black.label:hover {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - List
+ * # Semantic UI 2.7.2 - List
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -19710,7 +20100,7 @@ ol.ui.list li,
 
 ul.ui.list > li:first-child:after,
 ol.ui.list > li:first-child:after,
-.ui.list > .list > .item,
+.ui.list > .list > .item:after,
 .ui.list > .item:after {
   content: '';
   display: block;
@@ -19759,10 +20149,14 @@ ol.ui.list ol li,
   display: table-cell;
   margin: 0;
   padding-top: 0;
-  padding-right: 0.28571429em;
-  vertical-align: top;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
+}
+
+.ui.list .list > .item > i.icon:not(.loading),
+.ui.list > .item > i.icon:not(.loading) {
+  padding-right: 0.28571429em;
+  vertical-align: top;
 }
 
 .ui.list .list > .item > i.icon:only-child,
@@ -19814,6 +20208,11 @@ ol.ui.list ol li,
   width: 100%;
   padding: 0 0 0 0.5em;
   vertical-align: top;
+}
+
+.ui.list .list > .item > .loading.icon + .content,
+.ui.list > .item > .loading.icon + .content {
+  padding-left: calc(0.2857142857142857em + 0.5em);
 }
 
 .ui.list .list > .item > img.image + .content,
@@ -19955,13 +20354,13 @@ ol.ui.list ol li,
 
 .ui.horizontal.list > .item {
   display: inline-block;
-  margin-left: 1em;
+  margin-right: 1em;
   font-size: 1rem;
 }
 
-.ui.horizontal.list:not(.celled) > .item:first-child {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+.ui.horizontal.list:not(.celled) > .item:last-child {
+  margin-right: 0;
+  padding-right: 0;
 }
 
 .ui.horizontal.list .list:not(.icon) {
@@ -20410,6 +20809,14 @@ ol.ui.horizontal.list li:before,
   margin: 0 0.5em 0 0;
 }
 
+/* Suffixed Ordered */
+
+ol.ui.suffixed.list li:before,
+.ui.suffixed.ordered.list .list > .item:before,
+.ui.suffixed.ordered.list > .item:before {
+  content: counters(ordered, ".") ".";
+}
+
 /*-------------------
        Divided
 --------------------*/
@@ -20484,7 +20891,7 @@ ol.ui.horizontal.list li:before,
   margin-left: 0;
 }
 
-.ui.divided.horizontal.list > .item:not(:first-child) {
+.ui.divided.horizontal.list > .item {
   padding-left: 0.5em;
 }
 
@@ -20494,13 +20901,13 @@ ol.ui.horizontal.list li:before,
 
 .ui.divided.horizontal.list > .item {
   border-top: none;
-  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
   margin: 0;
   line-height: 0.6;
 }
 
-.ui.horizontal.divided.list > .item:first-child {
-  border-left: none;
+.ui.horizontal.divided.list > .item:last-child {
+  border-right: none;
 }
 
 /* Inverted */
@@ -20742,7 +21149,7 @@ ol.ui.horizontal.list li:before,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Loader
+ * # Semantic UI 2.7.2 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -20897,27 +21304,27 @@ ol.ui.horizontal.list li:before,
 
 /* Show inside active dimmer */
 
-.ui.dimmer .loader {
+.ui.dimmer > .loader {
   display: block;
 }
 
 /* Black Dimmer */
 
-.ui.dimmer .ui.loader {
+.ui.dimmer > .ui.loader {
   color: rgba(255, 255, 255, 0.9);
 }
 
-.ui.dimmer .ui.loader:not(.elastic):before {
+.ui.dimmer > .ui.loader:not(.elastic):before {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* White Dimmer (Inverted) */
 
-.ui.inverted.dimmer .ui.loader {
+.ui.inverted.dimmer > .ui.loader {
   color: rgba(0, 0, 0, 0.87);
 }
 
-.ui.inverted.dimmer .ui.loader:not(.elastic):before {
+.ui.inverted.dimmer > .ui.loader:not(.elastic):before {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -20929,9 +21336,9 @@ ol.ui.horizontal.list li:before,
         Text
 --------------------*/
 
-.ui.text.loader {
-  width: auto !important;
-  height: auto !important;
+.ui.ui.ui.ui.text.loader {
+  width: auto;
+  height: auto;
   text-align: center;
   font-style: normal;
 }
@@ -20966,56 +21373,48 @@ ol.ui.horizontal.list li:before,
 
 /* Loader */
 
-.ui.inverted.dimmer .ui.mini.loader,
 .ui.mini.loader {
   width: 1rem;
   height: 1rem;
   font-size: 0.78571429em;
 }
 
-.ui.inverted.dimmer .ui.tiny.loader,
 .ui.tiny.loader {
   width: 1.14285714rem;
   height: 1.14285714rem;
   font-size: 0.85714286em;
 }
 
-.ui.inverted.dimmer .ui.small.loader,
 .ui.small.loader {
   width: 1.71428571rem;
   height: 1.71428571rem;
   font-size: 0.92857143em;
 }
 
-.ui.inverted.dimmer .ui.loader,
 .ui.loader {
   width: 2.28571429rem;
   height: 2.28571429rem;
   font-size: 1em;
 }
 
-.ui.inverted.dimmer .ui.large.loader,
 .ui.large.loader {
   width: 3.42857143rem;
   height: 3.42857143rem;
   font-size: 1.14285714em;
 }
 
-.ui.inverted.dimmer .ui.big.loader,
 .ui.big.loader {
   width: 3.71428571rem;
   height: 3.71428571rem;
   font-size: 1.28571429em;
 }
 
-.ui.inverted.dimmer .ui.huge.loader,
 .ui.huge.loader {
   width: 4.14285714rem;
   height: 4.14285714rem;
   font-size: 1.42857143em;
 }
 
-.ui.inverted.dimmer .ui.massive.loader,
 .ui.massive.loader {
   width: 4.57142857rem;
   height: 4.57142857rem;
@@ -21510,11 +21909,11 @@ ol.ui.horizontal.list li:before,
        Elastic
 --------------------*/
 
-.ui.dimmer .ui.elastic.loader {
+.ui.dimmer > .ui.elastic.loader {
   color: #FFFFFF;
 }
 
-.ui.inverted.dimmer .ui.elastic.loader {
+.ui.inverted.dimmer > .ui.elastic.loader {
   color: #767676;
 }
 
@@ -21534,6 +21933,7 @@ ol.ui.horizontal.list li:before,
 .ui.elastic.loader.loader:before {
   -webkit-animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
   animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+  -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
   border-right-color: transparent;
 }
 
@@ -21638,6 +22038,66 @@ ol.ui.horizontal.list li:before,
   }
 }
 
+@-webkit-keyframes currentcolor-elastic-loader {
+  0%, 1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  1.1%, 50% {
+    border-left-color: currentColor;
+  }
+
+  10%, 35.1% {
+    border-bottom-color: transparent;
+  }
+
+  10.1%, 35% {
+    border-bottom-color: currentColor;
+  }
+
+  50.1% {
+    border-left-color: transparent;
+  }
+
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes currentcolor-elastic-loader {
+  0%, 1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+
+  1.1%, 50% {
+    border-left-color: currentColor;
+  }
+
+  10%, 35.1% {
+    border-bottom-color: transparent;
+  }
+
+  10.1%, 35% {
+    border-bottom-color: currentColor;
+  }
+
+  50.1% {
+    border-left-color: transparent;
+  }
+
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -21646,7 +22106,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Loader
+ * # Semantic UI 2.7.2 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -21933,7 +22393,7 @@ ol.ui.horizontal.list li:before,
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Rail
+ * # Semantic UI 2.7.2 - Rail
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22095,7 +22555,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Reveal
+ * # Semantic UI 2.7.2 - Reveal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22410,7 +22870,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Segment
+ * # Semantic UI 2.7.2 - Segment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -22884,6 +23344,11 @@ ol.ui.horizontal.list li:before,
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 
+.ui.stackable.horizontal.segments {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
 /* Nested Horizontal Group */
 
 .ui.segments > .horizontal.segments {
@@ -22919,7 +23384,7 @@ ol.ui.horizontal.list li:before,
   border-top: none;
 }
 
-.ui.horizontal.segments > .segment:first-child {
+.ui.horizontal.segments:not(.stackable) > .segment:first-child {
   border-left: none;
 }
 
@@ -22945,7 +23410,6 @@ ol.ui.horizontal.list li:before,
   cursor: default;
   pointer-events: none;
   text-shadow: none !important;
-  color: transparent !important;
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
@@ -23013,24 +23477,6 @@ ol.ui.horizontal.list li:before,
 /*-------------------
        Colors
 --------------------*/
-
-.ui.primary.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #2185D0;
-}
-
-.ui.inverted.primary.segment.segment.segment.segment.segment {
-  background-color: #2185D0;
-  color: #FFFFFF;
-}
-
-.ui.secondary.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid rgba(0, 0, 0, 0.6);
-}
-
-.ui.inverted.secondary.segment.segment.segment.segment.segment {
-  background-color: rgba(0, 0, 0, 0.6);
-  color: #FFFFFF;
-}
 
 .ui.red.segment.segment.segment.segment.segment:not(.inverted) {
   border-top: 2px solid #DB2828;
@@ -23212,6 +23658,16 @@ ol.ui.horizontal.list li:before,
   border-color: #555555;
 }
 
+/* Loading */
+
+.ui.inverted.loading.segment {
+  color: #FFFFFF;
+}
+
+.ui.inverted.loading.segment:before {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 /*-------------------
      Emphasis
 --------------------*/
@@ -23348,7 +23804,7 @@ ol.ui.horizontal.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Step
+ * # Semantic UI 2.7.2 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -23379,6 +23835,11 @@ ol.ui.horizontal.list li:before,
   line-height: 1.14285714em;
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.ui.steps:not(.unstackable) {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 /* First Steps */
@@ -24223,11 +24684,45 @@ span.ui.disabled.text {
   opacity: 0.45;
 }
 
+/* Sizes */
+
+span.ui.mini.text {
+  font-size: 0.4em;
+}
+
+span.ui.tiny.text {
+  font-size: 0.5em;
+}
+
+span.ui.small.text {
+  font-size: 0.75em;
+}
+
+span.ui.medium.text {
+  font-size: 1em;
+}
+
+span.ui.large.text {
+  font-size: 1.5em;
+}
+
+span.ui.big.text {
+  font-size: 2em;
+}
+
+span.ui.huge.text {
+  font-size: 4em;
+}
+
+span.ui.massive.text {
+  font-size: 8em;
+}
+
 /*******************************
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Breadcrumb
+ * # Semantic UI 2.7.2 - Breadcrumb
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -24358,7 +24853,7 @@ span.ui.disabled.text {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Form
+ * # Semantic UI 2.7.2 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -25131,6 +25626,14 @@ span.ui.disabled.text {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.ui.inverted.loading.form {
+  color: #FFFFFF;
+}
+
+.ui.inverted.loading.form:before {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 /* Inverted Field */
 
 .ui.inverted.form input:not([type]),
@@ -25605,7 +26108,7 @@ span.ui.disabled.text {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Grid
+ * # Semantic UI 2.7.2 - Grid
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -28284,7 +28787,11 @@ span.ui.disabled.text {
 
 .ui.vertical.menu .dropdown.item .menu {
   left: 100%;
+  /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
   min-width: 0;
+  min-width: -webkit-max-content;
+  min-width: -moz-max-content;
+  min-width: max-content;
   margin: 0 0 0 0;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
@@ -28319,7 +28826,7 @@ span.ui.disabled.text {
      Labels
 ---------------*/
 
-.ui.menu .item > .label {
+.ui.menu .item > .label:not(.floating) {
   margin-left: 1em;
   padding: 0.3em 0.78571429em;
 }
@@ -28334,9 +28841,14 @@ span.ui.disabled.text {
   padding: 0.3em 0.78571429em;
 }
 
-.ui.menu .item > .label:not(.primary):not(.secondary):not(.red):not(.orange):not(.yellow):not(.olive):not(.green):not(.teal):not(.blue):not(.violet):not(.purple):not(.pink):not(.brown):not(.grey):not(.black) {
+.ui.menu .item > .label {
   background: #999999;
   color: #FFFFFF;
+}
+
+.ui.menu .item > .image.label img {
+  margin: -0.2833em 0.8em -0.2833em -0.8em;
+  height: 1.5666em;
 }
 
 /*--------------
@@ -28461,11 +28973,11 @@ span.ui.disabled.text {
      Disabled
 ---------------*/
 
-.ui.menu .item.disabled,
-.ui.menu .item.disabled:hover {
-  cursor: default !important;
-  background-color: transparent !important;
-  color: rgba(40, 40, 40, 0.3) !important;
+.ui.menu .item.disabled {
+  cursor: default;
+  background-color: transparent;
+  color: rgba(40, 40, 40, 0.3);
+  pointer-events: none;
 }
 
 /*******************************
@@ -28929,21 +29441,21 @@ Floated Menu / Item
 
 /* Inverted */
 
-.ui.secondary.inverted.menu .link.item,
-.ui.secondary.inverted.menu a.item {
-  color: rgba(255, 255, 255, 0.7) !important;
+.ui.secondary.inverted.menu .link.item:not(.disabled),
+.ui.secondary.inverted.menu a.item:not(.disabled) {
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .ui.secondary.inverted.menu .dropdown.item:hover,
 .ui.secondary.inverted.menu .link.item:hover,
 .ui.secondary.inverted.menu a.item:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 .ui.secondary.inverted.menu .active.item {
   background: rgba(255, 255, 255, 0.15);
-  color: #ffffff !important;
+  color: #ffffff;
 }
 
 /* Fix item margins */
@@ -29024,6 +29536,16 @@ Floated Menu / Item
 
 .ui.secondary.pointing.menu .ui.dropdown .menu .item {
   border-bottom-width: 0;
+}
+
+.ui.secondary.pointing.menu .item > .label {
+  margin-top: -0.3em;
+  margin-bottom: -0.3em;
+}
+
+.ui.secondary.pointing.menu .item > .circular.label {
+  margin-top: -0.5em;
+  margin-bottom: -0.5em;
 }
 
 /* Item Types */
@@ -29113,12 +29635,7 @@ Floated Menu / Item
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.ui.secondary.inverted.pointing.menu {
-  border-width: 2px;
-  border-color: rgba(34, 36, 38, 0.15);
-}
-
-.ui.secondary.inverted.pointing.menu .item {
+.ui.secondary.inverted.pointing.menu .item:not(.disabled) {
   color: rgba(255, 255, 255, 0.9);
 }
 
@@ -29439,92 +29956,86 @@ Floated Menu / Item
      Colors
 ---------------*/
 
-.ui.menu .primary.active.item,
-.ui.primary.menu .active.item {
+.ui.ui.menu .primary.active.item,
+.ui.ui.primary.menu .active.item {
   border-color: #2185D0;
   color: #2185D0;
 }
 
-.ui.menu .secondary.active.item,
-.ui.secondary.menu .active.item {
-  border-color: #1B1C1D;
-  color: #1B1C1D;
-}
-
-.ui.menu .red.active.item,
-.ui.red.menu .active.item {
+.ui.ui.menu .red.active.item,
+.ui.ui.red.menu .active.item {
   border-color: #DB2828;
   color: #DB2828;
 }
 
-.ui.menu .orange.active.item,
-.ui.orange.menu .active.item {
+.ui.ui.menu .orange.active.item,
+.ui.ui.orange.menu .active.item {
   border-color: #F2711C;
   color: #F2711C;
 }
 
-.ui.menu .yellow.active.item,
-.ui.yellow.menu .active.item {
+.ui.ui.menu .yellow.active.item,
+.ui.ui.yellow.menu .active.item {
   border-color: #FBBD08;
   color: #FBBD08;
 }
 
-.ui.menu .olive.active.item,
-.ui.olive.menu .active.item {
+.ui.ui.menu .olive.active.item,
+.ui.ui.olive.menu .active.item {
   border-color: #B5CC18;
   color: #B5CC18;
 }
 
-.ui.menu .green.active.item,
-.ui.green.menu .active.item {
+.ui.ui.menu .green.active.item,
+.ui.ui.green.menu .active.item {
   border-color: #21BA45;
   color: #21BA45;
 }
 
-.ui.menu .teal.active.item,
-.ui.teal.menu .active.item {
+.ui.ui.menu .teal.active.item,
+.ui.ui.teal.menu .active.item {
   border-color: #00B5AD;
   color: #00B5AD;
 }
 
-.ui.menu .blue.active.item,
-.ui.blue.menu .active.item {
+.ui.ui.menu .blue.active.item,
+.ui.ui.blue.menu .active.item {
   border-color: #2185D0;
   color: #2185D0;
 }
 
-.ui.menu .violet.active.item,
-.ui.violet.menu .active.item {
+.ui.ui.menu .violet.active.item,
+.ui.ui.violet.menu .active.item {
   border-color: #6435C9;
   color: #6435C9;
 }
 
-.ui.menu .purple.active.item,
-.ui.purple.menu .active.item {
+.ui.ui.menu .purple.active.item,
+.ui.ui.purple.menu .active.item {
   border-color: #A333C8;
   color: #A333C8;
 }
 
-.ui.menu .pink.active.item,
-.ui.pink.menu .active.item {
+.ui.ui.menu .pink.active.item,
+.ui.ui.pink.menu .active.item {
   border-color: #E03997;
   color: #E03997;
 }
 
-.ui.menu .brown.active.item,
-.ui.brown.menu .active.item {
+.ui.ui.menu .brown.active.item,
+.ui.ui.brown.menu .active.item {
   border-color: #A5673F;
   color: #A5673F;
 }
 
-.ui.menu .grey.active.item,
-.ui.grey.menu .active.item {
+.ui.ui.menu .grey.active.item,
+.ui.ui.grey.menu .active.item {
   border-color: #767676;
   color: #767676;
 }
 
-.ui.menu .black.active.item,
-.ui.black.menu .active.item {
+.ui.ui.menu .black.active.item,
+.ui.ui.black.menu .active.item {
   border-color: #1B1C1D;
   color: #1B1C1D;
 }
@@ -29580,8 +30091,7 @@ Floated Menu / Item
 
 /* Disabled */
 
-.ui.inverted.menu .item.disabled,
-.ui.inverted.menu .item.disabled:hover {
+.ui.inverted.menu .item.disabled {
   color: rgba(225, 225, 225, 0.3);
 }
 
@@ -29662,8 +30172,8 @@ Floated Menu / Item
     Inverted
 ---------------*/
 
-.ui.inverted.menu .primary.active.item,
-.ui.inverted.primary.menu {
+.ui.ui.inverted.menu .primary.active.item,
+.ui.ui.inverted.primary.menu {
   background-color: #2185D0;
 }
 
@@ -29671,25 +30181,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.primary.menu .active.item {
+.ui.ui.inverted.primary.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .secondary.active.item,
-.ui.inverted.secondary.menu {
-  background-color: #1B1C1D;
-}
-
-.ui.inverted.secondary.menu .item:before {
-  background-color: rgba(34, 36, 38, 0.1);
-}
-
-.ui.inverted.secondary.menu .active.item {
-  background-color: rgba(0, 0, 0, 0.1);
-}
-
-.ui.inverted.menu .red.active.item,
-.ui.inverted.red.menu {
+.ui.ui.inverted.menu .red.active.item,
+.ui.ui.inverted.red.menu {
   background-color: #DB2828;
 }
 
@@ -29697,12 +30194,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.red.menu .active.item {
+.ui.ui.inverted.red.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .orange.active.item,
-.ui.inverted.orange.menu {
+.ui.ui.inverted.menu .orange.active.item,
+.ui.ui.inverted.orange.menu {
   background-color: #F2711C;
 }
 
@@ -29710,12 +30207,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.orange.menu .active.item {
+.ui.ui.inverted.orange.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .yellow.active.item,
-.ui.inverted.yellow.menu {
+.ui.ui.inverted.menu .yellow.active.item,
+.ui.ui.inverted.yellow.menu {
   background-color: #FBBD08;
 }
 
@@ -29723,12 +30220,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.yellow.menu .active.item {
+.ui.ui.inverted.yellow.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .olive.active.item,
-.ui.inverted.olive.menu {
+.ui.ui.inverted.menu .olive.active.item,
+.ui.ui.inverted.olive.menu {
   background-color: #B5CC18;
 }
 
@@ -29736,12 +30233,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.olive.menu .active.item {
+.ui.ui.inverted.olive.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .green.active.item,
-.ui.inverted.green.menu {
+.ui.ui.inverted.menu .green.active.item,
+.ui.ui.inverted.green.menu {
   background-color: #21BA45;
 }
 
@@ -29749,12 +30246,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.green.menu .active.item {
+.ui.ui.inverted.green.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .teal.active.item,
-.ui.inverted.teal.menu {
+.ui.ui.inverted.menu .teal.active.item,
+.ui.ui.inverted.teal.menu {
   background-color: #00B5AD;
 }
 
@@ -29762,12 +30259,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.teal.menu .active.item {
+.ui.ui.inverted.teal.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .blue.active.item,
-.ui.inverted.blue.menu {
+.ui.ui.inverted.menu .blue.active.item,
+.ui.ui.inverted.blue.menu {
   background-color: #2185D0;
 }
 
@@ -29775,12 +30272,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.blue.menu .active.item {
+.ui.ui.inverted.blue.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .violet.active.item,
-.ui.inverted.violet.menu {
+.ui.ui.inverted.menu .violet.active.item,
+.ui.ui.inverted.violet.menu {
   background-color: #6435C9;
 }
 
@@ -29788,12 +30285,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.violet.menu .active.item {
+.ui.ui.inverted.violet.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .purple.active.item,
-.ui.inverted.purple.menu {
+.ui.ui.inverted.menu .purple.active.item,
+.ui.ui.inverted.purple.menu {
   background-color: #A333C8;
 }
 
@@ -29801,12 +30298,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.purple.menu .active.item {
+.ui.ui.inverted.purple.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .pink.active.item,
-.ui.inverted.pink.menu {
+.ui.ui.inverted.menu .pink.active.item,
+.ui.ui.inverted.pink.menu {
   background-color: #E03997;
 }
 
@@ -29814,12 +30311,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.pink.menu .active.item {
+.ui.ui.inverted.pink.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .brown.active.item,
-.ui.inverted.brown.menu {
+.ui.ui.inverted.menu .brown.active.item,
+.ui.ui.inverted.brown.menu {
   background-color: #A5673F;
 }
 
@@ -29827,12 +30324,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.brown.menu .active.item {
+.ui.ui.inverted.brown.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .grey.active.item,
-.ui.inverted.grey.menu {
+.ui.ui.inverted.menu .grey.active.item,
+.ui.ui.inverted.grey.menu {
   background-color: #767676;
 }
 
@@ -29840,12 +30337,12 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.grey.menu .active.item {
+.ui.ui.inverted.grey.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-.ui.inverted.menu .black.active.item,
-.ui.inverted.black.menu {
+.ui.ui.inverted.menu .black.active.item,
+.ui.ui.inverted.black.menu {
   background-color: #1B1C1D;
 }
 
@@ -29853,7 +30350,7 @@ Floated Menu / Item
   background-color: rgba(34, 36, 38, 0.1);
 }
 
-.ui.inverted.black.menu .active.item {
+.ui.ui.inverted.black.menu .active.item {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -29904,10 +30401,12 @@ Floated Menu / Item
 }
 
 .ui.compact.vertical.menu {
+  /* IE hack to make dropdown icons appear inline */
+  display: -ms-inline-flexbox !important;
   display: inline-block;
 }
 
-.ui.compact.menu .item:last-child {
+.ui.compact.menu:not(.secondary) .item:last-child {
   border-radius: 0 0.28571429rem 0.28571429rem 0;
 }
 
@@ -30305,7 +30804,7 @@ Floated Menu / Item
   font-size: 0.78571429rem;
 }
 
-.ui.mini.vertical.menu {
+.ui.mini.vertical.menu:not(.icon) {
   width: 9rem;
 }
 
@@ -30323,7 +30822,7 @@ Floated Menu / Item
   font-size: 0.85714286rem;
 }
 
-.ui.tiny.vertical.menu {
+.ui.tiny.vertical.menu:not(.icon) {
   width: 11rem;
 }
 
@@ -30341,7 +30840,7 @@ Floated Menu / Item
   font-size: 0.92857143rem;
 }
 
-.ui.small.vertical.menu {
+.ui.small.vertical.menu:not(.icon) {
   width: 13rem;
 }
 
@@ -30369,7 +30868,7 @@ Floated Menu / Item
   font-size: 1.07142857rem;
 }
 
-.ui.large.vertical.menu {
+.ui.large.vertical.menu:not(.icon) {
   width: 18rem;
 }
 
@@ -30387,7 +30886,7 @@ Floated Menu / Item
   font-size: 1.21428571rem;
 }
 
-.ui.huge.vertical.menu {
+.ui.huge.vertical.menu:not(.icon) {
   width: 22rem;
 }
 
@@ -30405,7 +30904,7 @@ Floated Menu / Item
   font-size: 1.14285714rem;
 }
 
-.ui.big.vertical.menu {
+.ui.big.vertical.menu:not(.icon) {
   width: 20rem;
 }
 
@@ -30423,7 +30922,7 @@ Floated Menu / Item
   font-size: 1.28571429rem;
 }
 
-.ui.massive.vertical.menu {
+.ui.massive.vertical.menu:not(.icon) {
   width: 25rem;
 }
 
@@ -30479,7 +30978,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Message
+ * # Semantic UI 2.7.2 - Message
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31228,7 +31727,7 @@ Floated Menu / Item
         Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Table
+ * # Semantic UI 2.7.2 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31436,10 +31935,10 @@ Floated Menu / Item
   }
 
   .ui.table:not(.unstackable) tr > th,
-  .ui.table:not(.unstackable) tr > td {
+  .ui.ui.ui.ui.table:not(.unstackable) tr > td {
     background: none;
-    border: none !important;
-    padding: 0.25em 0.75em !important;
+    border: none;
+    padding: 0.25em 0.75em;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
   }
@@ -31573,8 +32072,8 @@ Floated Menu / Item
     Positive
 ---------------*/
 
-.ui.table tr.positive,
-.ui.table td.positive {
+.ui.ui.ui.ui.table tr.positive,
+.ui.ui.table td.positive {
   -webkit-box-shadow: 0 0 0 #A3C293 inset;
   box-shadow: 0 0 0 #A3C293 inset;
   background: #FCFFF5;
@@ -31585,8 +32084,8 @@ Floated Menu / Item
      Negative
 ---------------*/
 
-.ui.table tr.negative,
-.ui.table td.negative {
+.ui.ui.ui.ui.table tr.negative,
+.ui.ui.table td.negative {
   -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
   box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
@@ -31597,8 +32096,8 @@ Floated Menu / Item
       Error
 ---------------*/
 
-.ui.table tr.error,
-.ui.table td.error {
+.ui.ui.ui.ui.table tr.error,
+.ui.ui.table td.error {
   -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
   box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
@@ -31609,8 +32108,8 @@ Floated Menu / Item
      Warning
 ---------------*/
 
-.ui.table tr.warning,
-.ui.table td.warning {
+.ui.ui.ui.ui.table tr.warning,
+.ui.ui.table td.warning {
   -webkit-box-shadow: 0 0 0 #C9BA9B inset;
   box-shadow: 0 0 0 #C9BA9B inset;
   background: #FFFAF3;
@@ -31621,8 +32120,8 @@ Floated Menu / Item
      Active
 ---------------*/
 
-.ui.table tr.active,
-.ui.table td.active {
+.ui.ui.ui.ui.table tr.active,
+.ui.ui.table td.active {
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
   background: #E0E0E0;
@@ -31761,13 +32260,13 @@ Floated Menu / Item
    Selectable
 ---------------*/
 
-.ui.selectable.table tbody tr:hover,
+.ui.ui.selectable.table tbody tr:hover,
 .ui.table tbody tr td.selectable:hover {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
 }
 
-.ui.selectable.inverted.table tbody tr:hover,
+.ui.ui.selectable.inverted.table tbody tr:hover,
 .ui.inverted.table tbody tr td.selectable:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
@@ -31787,35 +32286,35 @@ Floated Menu / Item
 
 /* Other States */
 
-.ui.selectable.table tr.error:hover,
+.ui.ui.selectable.table tr.error:hover,
 .ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: #ffe7e7;
   color: #943634;
 }
 
-.ui.selectable.table tr.warning:hover,
+.ui.ui.selectable.table tr.warning:hover,
 .ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: #fff4e4;
   color: #493107;
 }
 
-.ui.selectable.table tr.active:hover,
+.ui.ui.selectable.table tr.active:hover,
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: #E0E0E0;
   color: rgba(0, 0, 0, 0.87);
 }
 
-.ui.selectable.table tr.positive:hover,
+.ui.ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: #f7ffe6;
   color: #275b28;
 }
 
-.ui.selectable.table tr.negative:hover,
+.ui.ui.selectable.table tr.negative:hover,
 .ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: #ffe7e7;
@@ -31921,15 +32420,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.primary,
-.ui.table td.primary {
+.ui.ui.ui.ui.table tr.primary,
+.ui.ui.table td.primary {
   -webkit-box-shadow: 0 0 0 #1a69a4 inset;
   box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.ui.selectable.table tr.primary:hover,
+.ui.ui.selectable.table tr.primary:hover,
 .ui.table tr td.selectable.primary:hover,
 .ui.selectable.table tr:hover td.primary {
   background: #d3f1ff;
@@ -31945,15 +32444,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.secondary,
-.ui.table td.secondary {
+.ui.ui.ui.ui.table tr.secondary,
+.ui.ui.table td.secondary {
   -webkit-box-shadow: 0 0 0 #020203 inset;
   box-shadow: 0 0 0 #020203 inset;
   background: #dddddd;
   color: rgba(255, 255, 255, 0.9);
 }
 
-.ui.selectable.table tr.secondary:hover,
+.ui.ui.selectable.table tr.secondary:hover,
 .ui.table tr td.selectable.secondary:hover,
 .ui.selectable.table tr:hover td.secondary {
   background: #e2e2e2;
@@ -31969,15 +32468,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.red,
-.ui.table td.red {
+.ui.ui.ui.ui.table tr.red,
+.ui.ui.table td.red {
   -webkit-box-shadow: 0 0 0 #b21e1e inset;
   box-shadow: 0 0 0 #b21e1e inset;
   background: #ffe1df;
   color: #DB2828;
 }
 
-.ui.selectable.table tr.red:hover,
+.ui.ui.selectable.table tr.red:hover,
 .ui.table tr td.selectable.red:hover,
 .ui.selectable.table tr:hover td.red {
   background: #ffd7d5;
@@ -31993,15 +32492,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.orange,
-.ui.table td.orange {
+.ui.ui.ui.ui.table tr.orange,
+.ui.ui.table td.orange {
   -webkit-box-shadow: 0 0 0 #cf590c inset;
   box-shadow: 0 0 0 #cf590c inset;
   background: #ffe7d1;
   color: #F2711C;
 }
 
-.ui.selectable.table tr.orange:hover,
+.ui.ui.selectable.table tr.orange:hover,
 .ui.table tr td.selectable.orange:hover,
 .ui.selectable.table tr:hover td.orange {
   background: #fae1cc;
@@ -32017,15 +32516,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.yellow,
-.ui.table td.yellow {
+.ui.ui.ui.ui.table tr.yellow,
+.ui.ui.table td.yellow {
   -webkit-box-shadow: 0 0 0 #cd9903 inset;
   box-shadow: 0 0 0 #cd9903 inset;
   background: #fff9d2;
   color: #B58105;
 }
 
-.ui.selectable.table tr.yellow:hover,
+.ui.ui.selectable.table tr.yellow:hover,
 .ui.table tr td.selectable.yellow:hover,
 .ui.selectable.table tr:hover td.yellow {
   background: #fbf5cc;
@@ -32041,15 +32540,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.olive,
-.ui.table td.olive {
+.ui.ui.ui.ui.table tr.olive,
+.ui.ui.table td.olive {
   -webkit-box-shadow: 0 0 0 #8d9e13 inset;
   box-shadow: 0 0 0 #8d9e13 inset;
   background: #f7fae4;
   color: #8ABC1E;
 }
 
-.ui.selectable.table tr.olive:hover,
+.ui.ui.selectable.table tr.olive:hover,
 .ui.table tr td.selectable.olive:hover,
 .ui.selectable.table tr:hover td.olive {
   background: #f6fada;
@@ -32065,15 +32564,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.green,
-.ui.table td.green {
+.ui.ui.ui.ui.table tr.green,
+.ui.ui.table td.green {
   -webkit-box-shadow: 0 0 0 #198f35 inset;
   box-shadow: 0 0 0 #198f35 inset;
   background: #d5f5d9;
   color: #1EBC30;
 }
 
-.ui.selectable.table tr.green:hover,
+.ui.ui.selectable.table tr.green:hover,
 .ui.table tr td.selectable.green:hover,
 .ui.selectable.table tr:hover td.green {
   background: #d2eed5;
@@ -32089,15 +32588,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.teal,
-.ui.table td.teal {
+.ui.ui.ui.ui.table tr.teal,
+.ui.ui.table td.teal {
   -webkit-box-shadow: 0 0 0 #00827c inset;
   box-shadow: 0 0 0 #00827c inset;
   background: #e2ffff;
   color: #10A3A3;
 }
 
-.ui.selectable.table tr.teal:hover,
+.ui.ui.selectable.table tr.teal:hover,
 .ui.table tr td.selectable.teal:hover,
 .ui.selectable.table tr:hover td.teal {
   background: #d8ffff;
@@ -32113,15 +32612,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.blue,
-.ui.table td.blue {
+.ui.ui.ui.ui.table tr.blue,
+.ui.ui.table td.blue {
   -webkit-box-shadow: 0 0 0 #1a69a4 inset;
   box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: #2185D0;
 }
 
-.ui.selectable.table tr.blue:hover,
+.ui.ui.selectable.table tr.blue:hover,
 .ui.table tr td.selectable.blue:hover,
 .ui.selectable.table tr:hover td.blue {
   background: #d3f1ff;
@@ -32137,15 +32636,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.violet,
-.ui.table td.violet {
+.ui.ui.ui.ui.table tr.violet,
+.ui.ui.table td.violet {
   -webkit-box-shadow: 0 0 0 #502aa1 inset;
   box-shadow: 0 0 0 #502aa1 inset;
   background: #ece9fe;
   color: #6435C9;
 }
 
-.ui.selectable.table tr.violet:hover,
+.ui.ui.selectable.table tr.violet:hover,
 .ui.table tr td.selectable.violet:hover,
 .ui.selectable.table tr:hover td.violet {
   background: #e3deff;
@@ -32161,15 +32660,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.purple,
-.ui.table td.purple {
+.ui.ui.ui.ui.table tr.purple,
+.ui.ui.table td.purple {
   -webkit-box-shadow: 0 0 0 #82299f inset;
   box-shadow: 0 0 0 #82299f inset;
   background: #f8e3ff;
   color: #A333C8;
 }
 
-.ui.selectable.table tr.purple:hover,
+.ui.ui.selectable.table tr.purple:hover,
 .ui.table tr td.selectable.purple:hover,
 .ui.selectable.table tr:hover td.purple {
   background: #f5d9ff;
@@ -32185,15 +32684,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.pink,
-.ui.table td.pink {
+.ui.ui.ui.ui.table tr.pink,
+.ui.ui.table td.pink {
   -webkit-box-shadow: 0 0 0 #c71f7e inset;
   box-shadow: 0 0 0 #c71f7e inset;
   background: #ffe8f9;
   color: #E03997;
 }
 
-.ui.selectable.table tr.pink:hover,
+.ui.ui.selectable.table tr.pink:hover,
 .ui.table tr td.selectable.pink:hover,
 .ui.selectable.table tr:hover td.pink {
   background: #ffdef6;
@@ -32209,15 +32708,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.brown,
-.ui.table td.brown {
+.ui.ui.ui.ui.table tr.brown,
+.ui.ui.table td.brown {
   -webkit-box-shadow: 0 0 0 #805031 inset;
   box-shadow: 0 0 0 #805031 inset;
   background: #f7e5d2;
   color: #A5673F;
 }
 
-.ui.selectable.table tr.brown:hover,
+.ui.ui.selectable.table tr.brown:hover,
 .ui.table tr td.selectable.brown:hover,
 .ui.selectable.table tr:hover td.brown {
   background: #efe0cf;
@@ -32233,15 +32732,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.grey,
-.ui.table td.grey {
+.ui.ui.ui.ui.table tr.grey,
+.ui.ui.table td.grey {
   -webkit-box-shadow: 0 0 0 #5d5d5d inset;
   box-shadow: 0 0 0 #5d5d5d inset;
   background: #DCDDDE;
   color: #767676;
 }
 
-.ui.selectable.table tr.grey:hover,
+.ui.ui.selectable.table tr.grey:hover,
 .ui.table tr td.selectable.grey:hover,
 .ui.selectable.table tr:hover td.grey {
   background: #c2c4c5;
@@ -32257,15 +32756,15 @@ Floated Menu / Item
   color: #FFFFFF;
 }
 
-.ui.table tr.black,
-.ui.table td.black {
+.ui.ui.ui.ui.table tr.black,
+.ui.ui.table td.black {
   -webkit-box-shadow: 0 0 0 #020203 inset;
   box-shadow: 0 0 0 #020203 inset;
   background: #545454;
   color: #FFFFFF;
 }
 
-.ui.selectable.table tr.black:hover,
+.ui.ui.selectable.table tr.black:hover,
 .ui.table tr td.selectable.black:hover,
 .ui.selectable.table tr:hover td.black {
   background: #000000;
@@ -32717,7 +33216,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Ad
+ * # Semantic UI 2.7.2 - Ad
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -33006,7 +33505,7 @@ Floated Menu / Item
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Card
+ * # Semantic UI 2.7.2 - Card
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34225,7 +34724,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Comment
+ * # Semantic UI 2.7.2 - Comment
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34540,7 +35039,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Feed
+ * # Semantic UI 2.7.2 - Feed
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -34875,7 +35374,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Item
+ * # Semantic UI 2.7.2 - Item
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -35483,7 +35982,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Statistic
+ * # Semantic UI 2.7.2 - Statistic
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36169,7 +36668,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Accordion
+ * # Semantic UI 2.7.2 - Accordion
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36425,7 +36924,7 @@ a.inverted.ui.card:hover,
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Calendar
+ * # Semantic UI 2.7.2 - Calendar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -36602,7 +37101,7 @@ a.inverted.ui.card:hover,
          Theme Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Checkbox
+ * # Semantic UI 2.7.2 - Checkbox
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37379,7 +37878,7 @@ a.inverted.ui.card:hover,
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Dimmer
+ * # Semantic UI 2.7.2 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -37556,8 +38055,8 @@ body.dimmable > .dimmer {
 ---------------*/
 
 .blurring.dimmable > :not(.dimmer) {
-  -webkit-filter: blur(0px) grayscale(0);
-  filter: blur(0px) grayscale(0);
+  -webkit-filter: initial;
+  filter: initial;
   -webkit-transition: 800ms -webkit-filter ease;
   transition: 800ms -webkit-filter ease;
   transition: 800ms filter ease;
@@ -37883,7 +38382,7 @@ body.dimmable > .dimmer {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Dropdown
+ * # Semantic UI 2.7.2 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -39163,9 +39662,11 @@ select.ui.dropdown {
 
 .ui.simple.dropdown .menu {
   position: absolute;
+  /* IE hack to make dropdown icons appear inline */
+  display: -ms-inline-flexbox !important;
   display: block;
   overflow: hidden;
-  top: -9999px !important;
+  top: -9999px;
   opacity: 0;
   width: 0;
   height: 0;
@@ -39185,7 +39686,7 @@ select.ui.dropdown {
   overflow: visible;
   width: auto;
   height: auto;
-  top: 100% !important;
+  top: 100%;
   opacity: 1;
 }
 
@@ -39786,7 +40287,7 @@ select.ui.dropdown {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Video
+ * # Semantic UI 2.7.2 - Video
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -39950,7 +40451,7 @@ select.ui.dropdown {
   padding-bottom: 42.85714286%;
 }
 /*!
- * # Semantic UI 2.7.1 - Modal
+ * # Semantic UI 2.7.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -40644,6 +41145,7 @@ select.ui.dropdown {
 .ui.inverted.modal > .actions {
   background: #191A1B;
   border-top: 1px solid rgba(34, 36, 38, 0.85);
+  color: #FFFFFF;
 }
 
 .ui.inverted.dimmer > .modal > .close {
@@ -40668,7 +41170,7 @@ select.ui.dropdown {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Nag
+ * # Semantic UI 2.7.2 - Nag
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -40814,7 +41316,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Popup
+ * # Semantic UI 2.7.2 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -40870,7 +41372,7 @@ a.ui.nag {
   background: #FFFFFF;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  z-index: 2;
+  z-index: 1901;
   -webkit-box-shadow: 1px 1px 0 0 #bababc;
   box-shadow: 1px 1px 0 0 #bababc;
 }
@@ -40901,7 +41403,7 @@ a.ui.nag {
   background: #FFFFFF;
   -webkit-transform: rotate(45deg);
   transform: rotate(45deg);
-  z-index: 2;
+  z-index: 1901;
   -webkit-box-shadow: 1px 1px 0 0 #bababc;
   box-shadow: 1px 1px 0 0 #bababc;
 }
@@ -40927,7 +41429,7 @@ a.ui.nag {
   border-radius: 0.28571429rem;
   -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-  z-index: 1;
+  z-index: 1900;
 }
 
 /* Default Position (Top Center) */
@@ -41686,7 +42188,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Progress Bar
+ * # Semantic UI 2.7.2 - Progress Bar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -41736,6 +42238,19 @@ a.ui.nag {
   border-radius: 0.28571429rem;
   -webkit-transition: width 0.1s ease, background-color 0.1s ease;
   transition: width 0.1s ease, background-color 0.1s ease;
+}
+
+.ui.progress:not([data-percent]) .bar,
+.ui.progress[data-percent="0"] .bar {
+  background: transparent;
+}
+
+.ui.progress[data-percent="0"] .bar .progress {
+  color: rgba(0, 0, 0, 0.87);
+}
+
+.ui.inverted.progress[data-percent="0"] .bar .progress {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Percent Complete */
@@ -41839,6 +42354,36 @@ a.ui.nag {
   color: rgba(0, 0, 0, 0.87);
 }
 
+/* Inverted Indicating Label */
+
+.ui.inverted.indicating.progress[data-percent^="1"] .label,
+.ui.inverted.indicating.progress[data-percent^="2"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.indicating.progress[data-percent^="3"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.indicating.progress[data-percent^="4"] .label,
+.ui.inverted.indicating.progress[data-percent^="5"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.indicating.progress[data-percent^="6"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.indicating.progress[data-percent^="7"] .label,
+.ui.inverted.indicating.progress[data-percent^="8"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.indicating.progress[data-percent^="9"] .label,
+.ui.inverted.indicating.progress[data-percent^="100"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Single Digits */
 
 .ui.indicating.progress[data-percent="1"] .bar,
@@ -41853,6 +42398,7 @@ a.ui.nag {
   background-color: #D95C5C;
 }
 
+.ui.indicating.progress[data-percent="0"] .label,
 .ui.indicating.progress[data-percent="1"] .label,
 .ui.indicating.progress[data-percent="2"] .label,
 .ui.indicating.progress[data-percent="3"] .label,
@@ -41865,9 +42411,22 @@ a.ui.nag {
   color: rgba(0, 0, 0, 0.87);
 }
 
+.ui.inverted.indicating.progress[data-percent="0"] .label,
+.ui.inverted.indicating.progress[data-percent="1"] .label,
+.ui.inverted.indicating.progress[data-percent="2"] .label,
+.ui.inverted.indicating.progress[data-percent="3"] .label,
+.ui.inverted.indicating.progress[data-percent="4"] .label,
+.ui.inverted.indicating.progress[data-percent="5"] .label,
+.ui.inverted.indicating.progress[data-percent="6"] .label,
+.ui.inverted.indicating.progress[data-percent="7"] .label,
+.ui.inverted.indicating.progress[data-percent="8"] .label,
+.ui.inverted.indicating.progress[data-percent="9"] .label {
+  color: rgba(255, 255, 255, 0.9);
+}
+
 /* Indicating Success */
 
-.ui.indicating.progress.success .label {
+.ui.ui.indicating.progress.success .label {
   color: #1A531B;
 }
 
@@ -41880,13 +42439,13 @@ a.ui.nag {
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: #21BA45 !important;
+  background-color: #21BA45;
 }
 
-.ui.progress.success .bar,
-.ui.progress.success .bar::after {
-  -webkit-animation: none !important;
-  animation: none !important;
+.ui.ui.progress.success .bar,
+.ui.ui.progress.success .bar::after {
+  -webkit-animation: none;
+  animation: none;
 }
 
 .ui.progress.success > .label {
@@ -41898,13 +42457,13 @@ a.ui.nag {
 ---------------*/
 
 .ui.progress.warning .bar {
-  background-color: #F2C037 !important;
+  background-color: #F2C037;
 }
 
-.ui.progress.warning .bar,
-.ui.progress.warning .bar::after {
-  -webkit-animation: none !important;
-  animation: none !important;
+.ui.ui.progress.warning .bar,
+.ui.ui.progress.warning .bar::after {
+  -webkit-animation: none;
+  animation: none;
 }
 
 .ui.progress.warning > .label {
@@ -41916,13 +42475,13 @@ a.ui.nag {
 ---------------*/
 
 .ui.progress.error .bar {
-  background-color: #DB2828 !important;
+  background-color: #DB2828;
 }
 
-.ui.progress.error .bar,
-.ui.progress.error .bar::after {
-  -webkit-animation: none !important;
-  animation: none !important;
+.ui.ui.progress.error .bar,
+.ui.ui.progress.error .bar::after {
+  -webkit-animation: none;
+  animation: none;
 }
 
 .ui.progress.error > .label {
@@ -41990,10 +42549,10 @@ a.ui.nag {
   opacity: 0.35;
 }
 
-.ui.disabled.progress .bar,
-.ui.disabled.progress .bar::after {
-  -webkit-animation: none !important;
-  animation: none !important;
+.ui.ui.disabled.progress .bar,
+.ui.ui.disabled.progress .bar::after {
+  -webkit-animation: none;
+  animation: none;
 }
 
 /*******************************
@@ -43165,7 +43724,7 @@ a.ui.nag {
         Slider Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Rating
+ * # Semantic UI 2.7.2 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -43485,7 +44044,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Search
+ * # Semantic UI 2.7.2 - Search
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -43953,7 +44512,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Shape
+ * # Semantic UI 2.7.2 - Shape
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44107,7 +44666,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Sidebar
+ * # Semantic UI 2.7.2 - Sidebar
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44788,7 +45347,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Sticky
+ * # Semantic UI 2.7.2 - Sticky
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44862,7 +45421,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Tab
+ * # Semantic UI 2.7.2 - Tab
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -44946,7 +45505,7 @@ body.pushable > .pusher {
         User Overrides
 *******************************/
 /*!
- * # Semantic UI 2.7.1 - Toast
+ * # Semantic UI 2.7.2 - Toast
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -45310,7 +45869,7 @@ body.pushable > .pusher {
   opacity: 1;
 }
 /*!
- * # Semantic UI 2.7.1 - Transition
+ * # Semantic UI 2.7.2 - Transition
  * http://github.com/semantic-org/semantic-ui/
  *
  *

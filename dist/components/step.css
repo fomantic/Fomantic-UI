@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Step
+ * # Semantic UI 2.7.2 - Step
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -31,6 +31,10 @@
   line-height: 1.14285714em;
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
+}
+.ui.steps:not(.unstackable) {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 /* First Steps */
