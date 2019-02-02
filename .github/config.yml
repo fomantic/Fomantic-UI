@@ -1,0 +1,27 @@
+# Configuration for request-info - https://github.com/behaviorbot/request-info
+
+requestInfoReplyComment: >
+  Hey, it looks like you didn't provide much info about your issue/pr. We would appreciate it if you could provide us with more information so we can better understand your issue or pull request.
+requestInfoLabelToAdd: needs-more-info
+checkIssueTemplate: true
+checkPullRequestTemplate: true
+
+
+# Configuration for welcome - https://github.com/behaviorbot/welcome
+
+newPRWelcomeComment:
+  - Hey, thanks for opening a pull request!
+  - 
+  - Please make sure you have read our [CONTRIBUTING](https://github.com/fomantic/Fomantic-UI/blob/master/CONTRIBUTING.md) guide and our [CODE OF CONDUCT](https://github.com/fomantic/Fomantic-UI/blob/develop/CODE_OF_CONDUCT.md).
+  - 
+  - NOTE: If the `commitlint` bot fails it does not mean your PR won't be merged!
+
+
+# Configuration for welcome - https://github.com/kentaro-m/auto-assign
+
+addReviewers: true
+reviewers:
+  - hammy2899
+  - ColinFrick
+  - prudho
+  - lubber-de
