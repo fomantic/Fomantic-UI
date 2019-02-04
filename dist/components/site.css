@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Site
+ * # Semantic UI 2.7.2 - Site
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -169,16 +169,16 @@ body ::-webkit-scrollbar-thumb:hover {
 }
 
 /* Inverted UI */
-body .ui.inverted::-webkit-scrollbar-track {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
-body .ui.inverted::-webkit-scrollbar-thumb {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.25);
 }
-body .ui.inverted::-webkit-scrollbar-thumb:window-inactive {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255, 255, 255, 0.15);
 }
-body .ui.inverted::-webkit-scrollbar-thumb:hover {
+body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
 

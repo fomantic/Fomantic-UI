@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - List
+ * # Semantic UI 2.7.2 - List
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -53,7 +53,7 @@ ol.ui.list li,
 }
 ul.ui.list > li:first-child:after,
 ol.ui.list > li:first-child:after,
-.ui.list > .list > .item,
+.ui.list > .list > .item:after,
 .ui.list > .item:after {
   content: '';
   display: block;
@@ -97,10 +97,13 @@ ol.ui.list ol li,
   display: table-cell;
   margin: 0;
   padding-top: 0;
-  padding-right: 0.28571429em;
-  vertical-align: top;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
+}
+.ui.list .list > .item > i.icon:not(.loading),
+.ui.list > .item > i.icon:not(.loading) {
+  padding-right: 0.28571429em;
+  vertical-align: top;
 }
 .ui.list .list > .item > i.icon:only-child,
 .ui.list > .item > i.icon:only-child {
@@ -145,6 +148,10 @@ ol.ui.list ol li,
   width: 100%;
   padding: 0 0 0 0.5em;
   vertical-align: top;
+}
+.ui.list .list > .item > .loading.icon + .content,
+.ui.list > .item > .loading.icon + .content {
+  padding-left: calc(0.2857142857142857em + 0.5em);
 }
 .ui.list .list > .item > img.image + .content,
 .ui.list > .item > img.image + .content {
@@ -271,12 +278,12 @@ ol.ui.list ol li,
 }
 .ui.horizontal.list > .item {
   display: inline-block;
-  margin-left: 1em;
+  margin-right: 1em;
   font-size: 1rem;
 }
-.ui.horizontal.list:not(.celled) > .item:first-child {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+.ui.horizontal.list:not(.celled) > .item:last-child {
+  margin-right: 0;
+  padding-right: 0;
 }
 .ui.horizontal.list .list:not(.icon) {
   padding-left: 0;
@@ -677,6 +684,13 @@ ol.ui.horizontal.list li:before,
   margin: 0 0.5em 0 0;
 }
 
+/* Suffixed Ordered */
+ol.ui.suffixed.list li:before,
+.ui.suffixed.ordered.list .list > .item:before,
+.ui.suffixed.ordered.list > .item:before {
+  content: counters(ordered, ".") ".";
+}
+
 /*-------------------
        Divided
 --------------------*/
@@ -738,7 +752,7 @@ ol.ui.horizontal.list li:before,
 .ui.divided.horizontal.list {
   margin-left: 0;
 }
-.ui.divided.horizontal.list > .item:not(:first-child) {
+.ui.divided.horizontal.list > .item {
   padding-left: 0.5em;
 }
 .ui.divided.horizontal.list > .item:not(:last-child) {
@@ -746,12 +760,12 @@ ol.ui.horizontal.list li:before,
 }
 .ui.divided.horizontal.list > .item {
   border-top: none;
-  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
   margin: 0;
   line-height: 0.6;
 }
-.ui.horizontal.divided.list > .item:first-child {
-  border-left: none;
+.ui.horizontal.divided.list > .item:last-child {
+  border-right: none;
 }
 
 /* Inverted */

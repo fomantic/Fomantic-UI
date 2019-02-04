@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Table
+ * # Semantic UI 2.7.2 - Table
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -179,10 +179,10 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
   }
   .ui.table:not(.unstackable) tr > th,
-  .ui.table:not(.unstackable) tr > td {
+  .ui.ui.ui.ui.table:not(.unstackable) tr > td {
     background: none;
-    border: none !important;
-    padding: 0.25em 0.75em !important;
+    border: none;
+    padding: 0.25em 0.75em;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
   }
@@ -308,8 +308,8 @@
     Positive
 ---------------*/
 
-.ui.table tr.positive,
-.ui.table td.positive {
+.ui.ui.ui.ui.table tr.positive,
+.ui.ui.table td.positive {
   -webkit-box-shadow: 0 0 0 #A3C293 inset;
           box-shadow: 0 0 0 #A3C293 inset;
   background: #FCFFF5;
@@ -320,8 +320,8 @@
      Negative
 ---------------*/
 
-.ui.table tr.negative,
-.ui.table td.negative {
+.ui.ui.ui.ui.table tr.negative,
+.ui.ui.table td.negative {
   -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
           box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
@@ -332,8 +332,8 @@
       Error
 ---------------*/
 
-.ui.table tr.error,
-.ui.table td.error {
+.ui.ui.ui.ui.table tr.error,
+.ui.ui.table td.error {
   -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
           box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
@@ -344,8 +344,8 @@
      Warning
 ---------------*/
 
-.ui.table tr.warning,
-.ui.table td.warning {
+.ui.ui.ui.ui.table tr.warning,
+.ui.ui.table td.warning {
   -webkit-box-shadow: 0 0 0 #C9BA9B inset;
           box-shadow: 0 0 0 #C9BA9B inset;
   background: #FFFAF3;
@@ -356,8 +356,8 @@
      Active
 ---------------*/
 
-.ui.table tr.active,
-.ui.table td.active {
+.ui.ui.ui.ui.table tr.active,
+.ui.ui.table td.active {
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
           box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
   background: #E0E0E0;
@@ -487,12 +487,12 @@
    Selectable
 ---------------*/
 
-.ui.selectable.table tbody tr:hover,
+.ui.ui.selectable.table tbody tr:hover,
 .ui.table tbody tr td.selectable:hover {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
 }
-.ui.selectable.inverted.table tbody tr:hover,
+.ui.ui.selectable.inverted.table tbody tr:hover,
 .ui.inverted.table tbody tr td.selectable:hover {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
@@ -509,31 +509,31 @@
 }
 
 /* Other States */
-.ui.selectable.table tr.error:hover,
+.ui.ui.selectable.table tr.error:hover,
 .ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: #ffe7e7;
   color: #943634;
 }
-.ui.selectable.table tr.warning:hover,
+.ui.ui.selectable.table tr.warning:hover,
 .ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: #fff4e4;
   color: #493107;
 }
-.ui.selectable.table tr.active:hover,
+.ui.ui.selectable.table tr.active:hover,
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: #E0E0E0;
   color: rgba(0, 0, 0, 0.87);
 }
-.ui.selectable.table tr.positive:hover,
+.ui.ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: #f7ffe6;
   color: #275b28;
 }
-.ui.selectable.table tr.negative:hover,
+.ui.ui.selectable.table tr.negative:hover,
 .ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: #ffe7e7;
@@ -630,14 +630,14 @@
   background-color: #2185D0;
   color: #FFFFFF;
 }
-.ui.table tr.primary,
-.ui.table td.primary {
+.ui.ui.ui.ui.table tr.primary,
+.ui.ui.table td.primary {
   -webkit-box-shadow: 0 0 0 #1a69a4 inset;
           box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: rgba(255, 255, 255, 0.9);
 }
-.ui.selectable.table tr.primary:hover,
+.ui.ui.selectable.table tr.primary:hover,
 .ui.table tr td.selectable.primary:hover,
 .ui.selectable.table tr:hover td.primary {
   background: #d3f1ff;
@@ -650,14 +650,14 @@
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
-.ui.table tr.secondary,
-.ui.table td.secondary {
+.ui.ui.ui.ui.table tr.secondary,
+.ui.ui.table td.secondary {
   -webkit-box-shadow: 0 0 0 #020203 inset;
           box-shadow: 0 0 0 #020203 inset;
   background: #dddddd;
   color: rgba(255, 255, 255, 0.9);
 }
-.ui.selectable.table tr.secondary:hover,
+.ui.ui.selectable.table tr.secondary:hover,
 .ui.table tr td.selectable.secondary:hover,
 .ui.selectable.table tr:hover td.secondary {
   background: #e2e2e2;
@@ -670,14 +670,14 @@
   background-color: #DB2828;
   color: #FFFFFF;
 }
-.ui.table tr.red,
-.ui.table td.red {
+.ui.ui.ui.ui.table tr.red,
+.ui.ui.table td.red {
   -webkit-box-shadow: 0 0 0 #b21e1e inset;
           box-shadow: 0 0 0 #b21e1e inset;
   background: #ffe1df;
   color: #DB2828;
 }
-.ui.selectable.table tr.red:hover,
+.ui.ui.selectable.table tr.red:hover,
 .ui.table tr td.selectable.red:hover,
 .ui.selectable.table tr:hover td.red {
   background: #ffd7d5;
@@ -690,14 +690,14 @@
   background-color: #F2711C;
   color: #FFFFFF;
 }
-.ui.table tr.orange,
-.ui.table td.orange {
+.ui.ui.ui.ui.table tr.orange,
+.ui.ui.table td.orange {
   -webkit-box-shadow: 0 0 0 #cf590c inset;
           box-shadow: 0 0 0 #cf590c inset;
   background: #ffe7d1;
   color: #F2711C;
 }
-.ui.selectable.table tr.orange:hover,
+.ui.ui.selectable.table tr.orange:hover,
 .ui.table tr td.selectable.orange:hover,
 .ui.selectable.table tr:hover td.orange {
   background: #fae1cc;
@@ -710,14 +710,14 @@
   background-color: #FBBD08;
   color: #FFFFFF;
 }
-.ui.table tr.yellow,
-.ui.table td.yellow {
+.ui.ui.ui.ui.table tr.yellow,
+.ui.ui.table td.yellow {
   -webkit-box-shadow: 0 0 0 #cd9903 inset;
           box-shadow: 0 0 0 #cd9903 inset;
   background: #fff9d2;
   color: #B58105;
 }
-.ui.selectable.table tr.yellow:hover,
+.ui.ui.selectable.table tr.yellow:hover,
 .ui.table tr td.selectable.yellow:hover,
 .ui.selectable.table tr:hover td.yellow {
   background: #fbf5cc;
@@ -730,14 +730,14 @@
   background-color: #B5CC18;
   color: #FFFFFF;
 }
-.ui.table tr.olive,
-.ui.table td.olive {
+.ui.ui.ui.ui.table tr.olive,
+.ui.ui.table td.olive {
   -webkit-box-shadow: 0 0 0 #8d9e13 inset;
           box-shadow: 0 0 0 #8d9e13 inset;
   background: #f7fae4;
   color: #8ABC1E;
 }
-.ui.selectable.table tr.olive:hover,
+.ui.ui.selectable.table tr.olive:hover,
 .ui.table tr td.selectable.olive:hover,
 .ui.selectable.table tr:hover td.olive {
   background: #f6fada;
@@ -750,14 +750,14 @@
   background-color: #21BA45;
   color: #FFFFFF;
 }
-.ui.table tr.green,
-.ui.table td.green {
+.ui.ui.ui.ui.table tr.green,
+.ui.ui.table td.green {
   -webkit-box-shadow: 0 0 0 #198f35 inset;
           box-shadow: 0 0 0 #198f35 inset;
   background: #d5f5d9;
   color: #1EBC30;
 }
-.ui.selectable.table tr.green:hover,
+.ui.ui.selectable.table tr.green:hover,
 .ui.table tr td.selectable.green:hover,
 .ui.selectable.table tr:hover td.green {
   background: #d2eed5;
@@ -770,14 +770,14 @@
   background-color: #00B5AD;
   color: #FFFFFF;
 }
-.ui.table tr.teal,
-.ui.table td.teal {
+.ui.ui.ui.ui.table tr.teal,
+.ui.ui.table td.teal {
   -webkit-box-shadow: 0 0 0 #00827c inset;
           box-shadow: 0 0 0 #00827c inset;
   background: #e2ffff;
   color: #10A3A3;
 }
-.ui.selectable.table tr.teal:hover,
+.ui.ui.selectable.table tr.teal:hover,
 .ui.table tr td.selectable.teal:hover,
 .ui.selectable.table tr:hover td.teal {
   background: #d8ffff;
@@ -790,14 +790,14 @@
   background-color: #2185D0;
   color: #FFFFFF;
 }
-.ui.table tr.blue,
-.ui.table td.blue {
+.ui.ui.ui.ui.table tr.blue,
+.ui.ui.table td.blue {
   -webkit-box-shadow: 0 0 0 #1a69a4 inset;
           box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: #2185D0;
 }
-.ui.selectable.table tr.blue:hover,
+.ui.ui.selectable.table tr.blue:hover,
 .ui.table tr td.selectable.blue:hover,
 .ui.selectable.table tr:hover td.blue {
   background: #d3f1ff;
@@ -810,14 +810,14 @@
   background-color: #6435C9;
   color: #FFFFFF;
 }
-.ui.table tr.violet,
-.ui.table td.violet {
+.ui.ui.ui.ui.table tr.violet,
+.ui.ui.table td.violet {
   -webkit-box-shadow: 0 0 0 #502aa1 inset;
           box-shadow: 0 0 0 #502aa1 inset;
   background: #ece9fe;
   color: #6435C9;
 }
-.ui.selectable.table tr.violet:hover,
+.ui.ui.selectable.table tr.violet:hover,
 .ui.table tr td.selectable.violet:hover,
 .ui.selectable.table tr:hover td.violet {
   background: #e3deff;
@@ -830,14 +830,14 @@
   background-color: #A333C8;
   color: #FFFFFF;
 }
-.ui.table tr.purple,
-.ui.table td.purple {
+.ui.ui.ui.ui.table tr.purple,
+.ui.ui.table td.purple {
   -webkit-box-shadow: 0 0 0 #82299f inset;
           box-shadow: 0 0 0 #82299f inset;
   background: #f8e3ff;
   color: #A333C8;
 }
-.ui.selectable.table tr.purple:hover,
+.ui.ui.selectable.table tr.purple:hover,
 .ui.table tr td.selectable.purple:hover,
 .ui.selectable.table tr:hover td.purple {
   background: #f5d9ff;
@@ -850,14 +850,14 @@
   background-color: #E03997;
   color: #FFFFFF;
 }
-.ui.table tr.pink,
-.ui.table td.pink {
+.ui.ui.ui.ui.table tr.pink,
+.ui.ui.table td.pink {
   -webkit-box-shadow: 0 0 0 #c71f7e inset;
           box-shadow: 0 0 0 #c71f7e inset;
   background: #ffe8f9;
   color: #E03997;
 }
-.ui.selectable.table tr.pink:hover,
+.ui.ui.selectable.table tr.pink:hover,
 .ui.table tr td.selectable.pink:hover,
 .ui.selectable.table tr:hover td.pink {
   background: #ffdef6;
@@ -870,14 +870,14 @@
   background-color: #A5673F;
   color: #FFFFFF;
 }
-.ui.table tr.brown,
-.ui.table td.brown {
+.ui.ui.ui.ui.table tr.brown,
+.ui.ui.table td.brown {
   -webkit-box-shadow: 0 0 0 #805031 inset;
           box-shadow: 0 0 0 #805031 inset;
   background: #f7e5d2;
   color: #A5673F;
 }
-.ui.selectable.table tr.brown:hover,
+.ui.ui.selectable.table tr.brown:hover,
 .ui.table tr td.selectable.brown:hover,
 .ui.selectable.table tr:hover td.brown {
   background: #efe0cf;
@@ -890,14 +890,14 @@
   background-color: #767676;
   color: #FFFFFF;
 }
-.ui.table tr.grey,
-.ui.table td.grey {
+.ui.ui.ui.ui.table tr.grey,
+.ui.ui.table td.grey {
   -webkit-box-shadow: 0 0 0 #5d5d5d inset;
           box-shadow: 0 0 0 #5d5d5d inset;
   background: #DCDDDE;
   color: #767676;
 }
-.ui.selectable.table tr.grey:hover,
+.ui.ui.selectable.table tr.grey:hover,
 .ui.table tr td.selectable.grey:hover,
 .ui.selectable.table tr:hover td.grey {
   background: #c2c4c5;
@@ -910,14 +910,14 @@
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
-.ui.table tr.black,
-.ui.table td.black {
+.ui.ui.ui.ui.table tr.black,
+.ui.ui.table td.black {
   -webkit-box-shadow: 0 0 0 #020203 inset;
           box-shadow: 0 0 0 #020203 inset;
   background: #545454;
   color: #FFFFFF;
 }
-.ui.selectable.table tr.black:hover,
+.ui.ui.selectable.table tr.black:hover,
 .ui.table tr td.selectable.black:hover,
 .ui.selectable.table tr:hover td.black {
   background: #000000;
