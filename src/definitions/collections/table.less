@@ -186,10 +186,10 @@
   }
 
   .ui.table:not(.unstackable) tr > th,
-  .ui.table:not(.unstackable) tr > td {
+  .ui.ui.ui.ui.table:not(.unstackable) tr > td {
     background: none;
-    border: none !important;
-    padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding !important;
+    border: none;
+    padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding;
     box-shadow: @responsiveCellBoxShadow;
   }
   .ui.table:not(.unstackable) th:first-child,
@@ -307,8 +307,8 @@
     Positive
 ---------------*/
 
-.ui.table tr.positive,
-.ui.table td.positive {
+.ui.ui.ui.ui.table tr.positive,
+.ui.ui.table td.positive {
   box-shadow: @positiveBoxShadow;
   background: @positiveBackgroundColor;
   color: @positiveColor;
@@ -318,8 +318,8 @@
      Negative
 ---------------*/
 
-.ui.table tr.negative,
-.ui.table td.negative {
+.ui.ui.ui.ui.table tr.negative,
+.ui.ui.table td.negative {
   box-shadow: @negativeBoxShadow;
   background: @negativeBackgroundColor;
   color: @negativeColor;
@@ -329,8 +329,8 @@
       Error
 ---------------*/
 
-.ui.table tr.error,
-.ui.table td.error {
+.ui.ui.ui.ui.table tr.error,
+.ui.ui.table td.error {
   box-shadow: @errorBoxShadow;
   background: @errorBackgroundColor;
   color: @errorColor;
@@ -340,8 +340,8 @@
      Warning
 ---------------*/
 
-.ui.table tr.warning,
-.ui.table td.warning {
+.ui.ui.ui.ui.table tr.warning,
+.ui.ui.table td.warning {
   box-shadow: @warningBoxShadow;
   background: @warningBackgroundColor;
   color: @warningColor;
@@ -351,8 +351,8 @@
      Active
 ---------------*/
 
-.ui.table tr.active,
-.ui.table td.active {
+.ui.ui.ui.ui.table tr.active,
+.ui.ui.table td.active {
   box-shadow: @activeBoxShadow;
   background: @activeBackgroundColor;
   color: @activeColor;
@@ -482,12 +482,12 @@
    Selectable
 ---------------*/
 
-.ui.selectable.table tbody tr:hover,
+.ui.ui.selectable.table tbody tr:hover,
 .ui.table tbody tr td.selectable:hover {
   background: @selectableBackground;
   color: @selectableTextColor;
 }
-.ui.selectable.inverted.table tbody tr:hover,
+.ui.ui.selectable.inverted.table tbody tr:hover,
 .ui.inverted.table tbody tr td.selectable:hover {
   background: @selectableInvertedBackground;
   color: @selectableInvertedTextColor;
@@ -504,31 +504,31 @@
 }
 
 /* Other States */
-.ui.selectable.table tr.error:hover,
+.ui.ui.selectable.table tr.error:hover,
 .ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
   background: @errorBackgroundHover;
   color: @errorColorHover;
 }
-.ui.selectable.table tr.warning:hover,
+.ui.ui.selectable.table tr.warning:hover,
 .ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
   background: @warningBackgroundHover;
   color: @warningColorHover;
 }
-.ui.selectable.table tr.active:hover,
+.ui.ui.selectable.table tr.active:hover,
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: @activeBackgroundColor;
   color: @activeColor;
 }
-.ui.selectable.table tr.positive:hover,
+.ui.ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
   background: @positiveBackgroundHover;
   color: @positiveColorHover;
 }
-.ui.selectable.table tr.negative:hover,
+.ui.ui.selectable.table tr.negative:hover,
 .ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
   background: @negativeBackgroundHover;
@@ -634,8 +634,8 @@ each(@colors, {
     background-color: @c;
     color: @white;
   }
-  .ui.table tr.@{color},
-  .ui.table td.@{color} {
+  .ui.ui.ui.ui.table tr.@{color},
+  .ui.ui.table td.@{color} {
     box-shadow: @stateMarkerWidth 0 0 @r inset;
     & when (@isDark) {
       background: @l;
@@ -650,7 +650,7 @@ each(@colors, {
       color: @t;
     }
   }
-  .ui.selectable.table tr.@{color}:hover,
+  .ui.ui.selectable.table tr.@{color}:hover,
   .ui.table tr td.selectable.@{color}:hover,
   .ui.selectable.table tr:hover td.@{color} {
     & when (@isDark) {

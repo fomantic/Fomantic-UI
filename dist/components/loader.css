@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Loader
+ * # Semantic UI 2.7.2 - Loader
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -141,23 +141,23 @@
 
 
 /* Show inside active dimmer */
-.ui.dimmer .loader {
+.ui.dimmer > .loader {
   display: block;
 }
 
 /* Black Dimmer */
-.ui.dimmer .ui.loader {
+.ui.dimmer > .ui.loader {
   color: rgba(255, 255, 255, 0.9);
 }
-.ui.dimmer .ui.loader:not(.elastic):before {
+.ui.dimmer > .ui.loader:not(.elastic):before {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
 /* White Dimmer (Inverted) */
-.ui.inverted.dimmer .ui.loader {
+.ui.inverted.dimmer > .ui.loader {
   color: rgba(0, 0, 0, 0.87);
 }
-.ui.inverted.dimmer .ui.loader:not(.elastic):before {
+.ui.inverted.dimmer > .ui.loader:not(.elastic):before {
   border-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -171,9 +171,9 @@
         Text
 --------------------*/
 
-.ui.text.loader {
-  width: auto !important;
-  height: auto !important;
+.ui.ui.ui.ui.text.loader {
+  width: auto;
+  height: auto;
   text-align: center;
   font-style: normal;
 }
@@ -209,49 +209,41 @@
 
 
 /* Loader */
-.ui.inverted.dimmer .ui.mini.loader,
 .ui.mini.loader {
   width: 1rem;
   height: 1rem;
   font-size: 0.78571429em;
 }
-.ui.inverted.dimmer .ui.tiny.loader,
 .ui.tiny.loader {
   width: 1.14285714rem;
   height: 1.14285714rem;
   font-size: 0.85714286em;
 }
-.ui.inverted.dimmer .ui.small.loader,
 .ui.small.loader {
   width: 1.71428571rem;
   height: 1.71428571rem;
   font-size: 0.92857143em;
 }
-.ui.inverted.dimmer .ui.loader,
 .ui.loader {
   width: 2.28571429rem;
   height: 2.28571429rem;
   font-size: 1em;
 }
-.ui.inverted.dimmer .ui.large.loader,
 .ui.large.loader {
   width: 3.42857143rem;
   height: 3.42857143rem;
   font-size: 1.14285714em;
 }
-.ui.inverted.dimmer .ui.big.loader,
 .ui.big.loader {
   width: 3.71428571rem;
   height: 3.71428571rem;
   font-size: 1.28571429em;
 }
-.ui.inverted.dimmer .ui.huge.loader,
 .ui.huge.loader {
   width: 4.14285714rem;
   height: 4.14285714rem;
   font-size: 1.42857143em;
 }
-.ui.inverted.dimmer .ui.massive.loader,
 .ui.massive.loader {
   width: 4.57142857rem;
   height: 4.57142857rem;
@@ -699,10 +691,10 @@
        Elastic
 --------------------*/
 
-.ui.dimmer .ui.elastic.loader {
+.ui.dimmer > .ui.elastic.loader {
   color: #FFFFFF;
 }
-.ui.inverted.dimmer .ui.elastic.loader {
+.ui.inverted.dimmer > .ui.elastic.loader {
   color: #767676;
 }
 .ui.elastic.loading.loading:not(.form):not(.segment):after,
@@ -720,6 +712,7 @@
 .ui.elastic.loader.loader:before {
   -webkit-animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
           animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+  -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
   border-right-color: transparent;
 }
 .ui.elastic.inline.loader:empty {
@@ -803,6 +796,62 @@
   10.1%,
   35% {
     border-bottom-color: inherit;
+  }
+  50.1% {
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes currentcolor-elastic-loader {
+  0%,
+  1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  1.1%,
+  50% {
+    border-left-color: currentColor;
+  }
+  10%,
+  35.1% {
+    border-bottom-color: transparent;
+  }
+  10.1%,
+  35% {
+    border-bottom-color: currentColor;
+  }
+  50.1% {
+    border-left-color: transparent;
+  }
+  100% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes currentcolor-elastic-loader {
+  0%,
+  1% {
+    border-left-color: transparent;
+    border-bottom-color: transparent;
+  }
+  1.1%,
+  50% {
+    border-left-color: currentColor;
+  }
+  10%,
+  35.1% {
+    border-bottom-color: transparent;
+  }
+  10.1%,
+  35% {
+    border-bottom-color: currentColor;
   }
   50.1% {
     border-left-color: transparent;

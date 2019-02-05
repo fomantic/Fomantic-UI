@@ -56,6 +56,16 @@
   border-radius: @barBorderRadius;
   transition: @barTransition;
 }
+.ui.progress:not([data-percent]) .bar,
+.ui.progress[data-percent="0"] .bar {
+  background:transparent;
+}
+.ui.progress[data-percent="0"] .bar .progress {
+  color: @textColor;
+}
+.ui.inverted.progress[data-percent="0"] .bar .progress {
+  color: @invertedTextColor;
+}
 
 /* Percent Complete */
 .ui.progress .bar > .progress {
@@ -145,6 +155,30 @@
   color: @indicatingSixthLabelColor;
 }
 
+/* Inverted Indicating Label */
+.ui.inverted.indicating.progress[data-percent^="1"] .label,
+.ui.inverted.indicating.progress[data-percent^="2"] .label {
+  color: @invertedIndicatingFirstLabelColor;
+}
+.ui.inverted.indicating.progress[data-percent^="3"] .label {
+  color: @invertedIndicatingSecondLabelColor;
+}
+.ui.inverted.indicating.progress[data-percent^="4"] .label,
+.ui.inverted.indicating.progress[data-percent^="5"] .label {
+  color: @invertedIndicatingThirdLabelColor;
+}
+.ui.inverted.indicating.progress[data-percent^="6"] .label {
+  color: @invertedIndicatingFourthLabelColor;
+}
+.ui.inverted.indicating.progress[data-percent^="7"] .label,
+.ui.inverted.indicating.progress[data-percent^="8"] .label {
+  color: @invertedIndicatingFifthLabelColor;
+}
+.ui.inverted.indicating.progress[data-percent^="9"] .label,
+.ui.inverted.indicating.progress[data-percent^="100"] .label {
+  color: @invertedIndicatingSixthLabelColor;
+}
+
 /* Single Digits */
 .ui.indicating.progress[data-percent="1"] .bar,
 .ui.indicating.progress[data-percent="2"] .bar,
@@ -157,6 +191,7 @@
 .ui.indicating.progress[data-percent="9"] .bar {
   background-color: @indicatingFirstColor;
 }
+.ui.indicating.progress[data-percent="0"] .label,
 .ui.indicating.progress[data-percent="1"] .label,
 .ui.indicating.progress[data-percent="2"] .label,
 .ui.indicating.progress[data-percent="3"] .label,
@@ -168,9 +203,21 @@
 .ui.indicating.progress[data-percent="9"] .label {
   color: @indicatingFirstLabelColor;
 }
+.ui.inverted.indicating.progress[data-percent="0"] .label,
+.ui.inverted.indicating.progress[data-percent="1"] .label,
+.ui.inverted.indicating.progress[data-percent="2"] .label,
+.ui.inverted.indicating.progress[data-percent="3"] .label,
+.ui.inverted.indicating.progress[data-percent="4"] .label,
+.ui.inverted.indicating.progress[data-percent="5"] .label,
+.ui.inverted.indicating.progress[data-percent="6"] .label,
+.ui.inverted.indicating.progress[data-percent="7"] .label,
+.ui.inverted.indicating.progress[data-percent="8"] .label,
+.ui.inverted.indicating.progress[data-percent="9"] .label {
+  color: @invertedIndicatingFirstLabelColor;
+}
 
 /* Indicating Success */
-.ui.indicating.progress.success .label {
+.ui.ui.indicating.progress.success .label {
   color: @successHeaderColor;
 }
 
@@ -184,11 +231,11 @@
 ---------------*/
 
 .ui.progress.success .bar {
-  background-color: @successColor !important;
+  background-color: @successColor;
 }
-.ui.progress.success .bar,
-.ui.progress.success .bar::after {
-  animation: none !important;
+.ui.ui.progress.success .bar,
+.ui.ui.progress.success .bar::after {
+  animation: none;
 }
 .ui.progress.success > .label {
   color: @successHeaderColor;
@@ -199,11 +246,11 @@
 ---------------*/
 
 .ui.progress.warning .bar {
-  background-color: @warningColor !important;
+  background-color: @warningColor;
 }
-.ui.progress.warning .bar,
-.ui.progress.warning .bar::after {
-  animation: none !important;
+.ui.ui.progress.warning .bar,
+.ui.ui.progress.warning .bar::after {
+  animation: none;
 }
 .ui.progress.warning > .label {
   color: @warningHeaderColor;
@@ -214,11 +261,11 @@
 ---------------*/
 
 .ui.progress.error .bar {
-  background-color: @errorColor !important;
+  background-color: @errorColor;
 }
-.ui.progress.error .bar,
-.ui.progress.error .bar::after {
-  animation: none !important;
+.ui.ui.progress.error .bar,
+.ui.ui.progress.error .bar::after {
+  animation: none;
 }
 .ui.progress.error > .label {
   color: @errorHeaderColor;
@@ -266,9 +313,9 @@
 .ui.disabled.progress {
   opacity: 0.35;
 }
-.ui.disabled.progress .bar,
-.ui.disabled.progress .bar::after {
-  animation: none !important;
+.ui.ui.disabled.progress .bar,
+.ui.ui.disabled.progress .bar::after {
+  animation: none;
 }
 
 

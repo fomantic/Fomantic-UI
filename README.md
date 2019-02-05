@@ -3,15 +3,21 @@
 # Fomantic UI
 A community fork of the popular Semantic-UI framework
 
+[![Build Status](https://travis-ci.org/fomantic/Fomantic-UI.svg?branch=master)](https://travis-ci.org/fomantic/Fomantic-UI)
 [![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
 [![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
 [![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
-[![last commit](https://img.shields.io/github/last-commit/fomantic/fomantic-ui.svg)](https://github.com/fomantic/Fomantic-UI/commits/master)
+[![last commit](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg)](https://packagequality.com/#?package=fomantic-ui)
+
 ---
 
-*NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
+> *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
+>
+> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
+
+---
 
 Fomantic allows developers to build beautiful websites fast, with **concise HTML**, **intuitive javascript**, and **simplified debugging**, helping make front-end development a delightful experience. Fomantic is responsively designed allowing your website to scale on multiple devices.
 

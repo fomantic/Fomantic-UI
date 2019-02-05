@@ -107,6 +107,32 @@ span.ui.disabled.text {
   opacity: 0.45;
 }
 
+/* Sizes */
+span.ui.mini.text {
+  font-size: 0.4em;
+}
+span.ui.tiny.text {
+  font-size: 0.5em;
+}
+span.ui.small.text {
+  font-size: 0.75em;
+}
+span.ui.medium.text {
+  font-size: 1em;
+}
+span.ui.large.text {
+  font-size: 1.5em;
+}
+span.ui.big.text {
+  font-size: 2em;
+}
+span.ui.huge.text {
+  font-size: 4em;
+}
+span.ui.massive.text {
+  font-size: 8em;
+}
+
 
 /*******************************
          Theme Overrides

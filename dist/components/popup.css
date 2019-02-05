@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Popup
+ * # Semantic UI 2.7.2 - Popup
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -54,7 +54,7 @@
   background: #FFFFFF;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
-  z-index: 2;
+  z-index: 1901;
   -webkit-box-shadow: 1px 1px 0 0 #bababc;
           box-shadow: 1px 1px 0 0 #bababc;
 }
@@ -86,7 +86,7 @@
   background: #FFFFFF;
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
-  z-index: 2;
+  z-index: 1901;
   -webkit-box-shadow: 1px 1px 0 0 #bababc;
           box-shadow: 1px 1px 0 0 #bababc;
 }
@@ -111,7 +111,7 @@
   border-radius: 0.28571429rem;
   -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
           box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-  z-index: 1;
+  z-index: 1900;
 }
 
 /* Default Position (Top Center) */

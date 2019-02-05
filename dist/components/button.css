@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Button
+ * # Semantic UI 2.7.2 - Button
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -630,7 +630,7 @@
 ---------------*/
 
 .ui.button > .icon:not(.button) {
-  height: 0.85714286em;
+  height: auto;
   opacity: 0.8;
   margin: 0 0.42857143em 0 -0.21428571em;
   -webkit-transition: opacity 0.1s ease;
@@ -692,17 +692,17 @@
 
 .ui.mini.buttons .button,
 .ui.mini.buttons .or,
-.ui.mini.button {
+.ui.ui.ui.ui.mini.button {
   font-size: 0.78571429rem;
 }
 .ui.tiny.buttons .button,
 .ui.tiny.buttons .or,
-.ui.tiny.button {
+.ui.ui.ui.ui.tiny.button {
   font-size: 0.85714286rem;
 }
 .ui.small.buttons .button,
 .ui.small.buttons .or,
-.ui.small.button {
+.ui.ui.ui.ui.small.button {
   font-size: 0.92857143rem;
 }
 .ui.buttons .button,
@@ -712,22 +712,22 @@
 }
 .ui.large.buttons .button,
 .ui.large.buttons .or,
-.ui.large.button {
+.ui.ui.ui.ui.large.button {
   font-size: 1.14285714rem;
 }
 .ui.big.buttons .button,
 .ui.big.buttons .or,
-.ui.big.button {
+.ui.ui.ui.ui.big.button {
   font-size: 1.28571429rem;
 }
 .ui.huge.buttons .button,
 .ui.huge.buttons .or,
-.ui.huge.button {
+.ui.ui.ui.ui.huge.button {
   font-size: 1.42857143rem;
 }
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
-.ui.massive.button {
+.ui.ui.ui.ui.massive.button {
   font-size: 1.71428571rem;
 }
 
@@ -978,6 +978,9 @@
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
   text-align: center;
+  -webkit-animation: none;
+          animation: none;
+  padding: 0.78571429em 0 0.78571429em 0;
   margin: 0;
   width: 2.57142857em;
   background-color: rgba(0, 0, 0, 0.05);
@@ -1005,12 +1008,10 @@
 .ui.labeled.icon.buttons > .button > .icon:after,
 .ui.labeled.icon.button > .icon:after {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 50%;
+  top: 0;
   text-align: center;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
 }
 .ui.labeled.icon.buttons .button > .icon {
   border-radius: 0;
@@ -1037,6 +1038,12 @@
 .ui.fluid[class*="right labeled"].icon.button {
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
+}
+
+/* Loading Icon in Labeled Button */
+.ui.labeled.icon.button > .loading.icon:before {
+  -webkit-animation: loader 2s linear infinite;
+          animation: loader 2s linear infinite;
 }
 
 /*--------------
@@ -1160,7 +1167,7 @@
   display: flex;
   border-radius: 0;
   width: auto !important;
-  z-index: 2;
+  z-index: auto;
   margin-left: -1px;
   margin-right: -1px;
 }

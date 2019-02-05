@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Modal
+ * # Semantic UI 2.7.2 - Modal
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -622,6 +622,7 @@
 .ui.inverted.modal > .actions {
   background: #191A1B;
   border-top: 1px solid rgba(34, 36, 38, 0.85);
+  color: #FFFFFF;
 }
 .ui.inverted.dimmer > .modal > .close {
   color: rgba(0, 0, 0, 0.85);

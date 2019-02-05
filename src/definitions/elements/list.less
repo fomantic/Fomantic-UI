@@ -63,7 +63,7 @@ ol.ui.list li,
 
 ul.ui.list > li:first-child:after,
 ol.ui.list > li:first-child:after,
-.ui.list > .list > .item,
+.ui.list > .list > .item:after,
 .ui.list > .item:after {
   content: '';
   display: block;
@@ -109,9 +109,11 @@ ol.ui.list ol li,
   display: table-cell;
   margin: 0;
   padding-top: @iconOffset;
-  padding-right: @iconDistance;
-  vertical-align: @iconContentVerticalAlign;
   transition: @iconTransition;
+  &:not(.loading) {
+    padding-right: @iconDistance;
+    vertical-align: @iconContentVerticalAlign;
+  }
 }
 .ui.list .list > .item > i.icon:only-child,
 .ui.list > .item > i.icon:only-child {
@@ -158,6 +160,10 @@ ol.ui.list ol li,
   width: 100%;
   padding: 0 0 0 @contentDistance;
   vertical-align: @contentVerticalAlign;
+}
+.ui.list .list > .item > .loading.icon + .content,
+.ui.list > .item > .loading.icon + .content {
+  padding-left: e(%("calc(%d + %d)", @iconDistance, @contentDistance));
 }
 .ui.list .list > .item > img.image + .content,
 .ui.list > .item > img.image + .content {
@@ -285,12 +291,12 @@ ol.ui.list ol li,
 }
 .ui.horizontal.list > .item {
   display: inline-block;
-  margin-left: @horizontalSpacing;
+  margin-right: @horizontalSpacing;
   font-size: 1rem;
 }
-.ui.horizontal.list:not(.celled) > .item:first-child {
-  margin-left: 0 !important;
-  padding-left: 0 !important;
+.ui.horizontal.list:not(.celled) > .item:last-child {
+  margin-right: 0;
+  padding-right: 0;
 }
 .ui.horizontal.list .list:not(.icon) {
   padding-left: 0;
@@ -682,6 +688,14 @@ ol.ui.horizontal.list li:before,
   margin: 0 @horizontalOrderedCountDistance 0 0;
 }
 
+/* Suffixed Ordered */
+ol.ui.suffixed.list li:before,
+.ui.suffixed.ordered.list .list > .item:before,
+.ui.suffixed.ordered.list > .item:before {
+  content: @orderedCountContentSuffixed;
+}
+
+
 /*-------------------
        Divided
 --------------------*/
@@ -743,7 +757,7 @@ ol.ui.horizontal.list li:before,
 .ui.divided.horizontal.list {
   margin-left: 0;
 }
-.ui.divided.horizontal.list > .item:not(:first-child) {
+.ui.divided.horizontal.list > .item {
   padding-left: @horizontalDividedSpacing;
 }
 .ui.divided.horizontal.list > .item:not(:last-child) {
@@ -751,12 +765,12 @@ ol.ui.horizontal.list li:before,
 }
 .ui.divided.horizontal.list > .item {
   border-top: none;
-  border-left: @dividedBorder;
+  border-right: @dividedBorder;
   margin: 0;
   line-height: @horizontalDividedLineHeight;
 }
-.ui.horizontal.divided.list > .item:first-child {
-  border-left: none;
+.ui.horizontal.divided.list > .item:last-child {
+  border-right: none;
 }
 /* Inverted */
 .ui.divided.inverted.list > .item,

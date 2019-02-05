@@ -119,10 +119,17 @@
 
 @labelTextMargin: 1em;
 @labelVerticalPadding: 0.3em;
+@circularLabelVerticalPadding: 0.5em; /* has to be equal to @circularPadding from label.less */
 @labelHorizontalPadding: @relativeMini;
 
 @labelAndIconFloat: none;
 @labelAndIconMargin: 0 0.5em 0 0;
+
+/* Image Label */
+@imageLabelTextDistance: 0.8em;
+@imageLabelVerticalPadding: 0.2833em; /* Calculates as: @verticalLabel (from label.less) - @labelVerticalPadding (from here) */
+@imageLabelHeight: (1em + @imageLabelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelImageMargin: -@imageLabelVerticalPadding @imageLabelTextDistance -@imageLabelVerticalPadding -@imageLabelTextDistance;
 
 /* Dropdown in Menu */
 @dropdownMenuBoxShadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);

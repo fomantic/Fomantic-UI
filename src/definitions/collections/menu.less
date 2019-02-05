@@ -284,7 +284,9 @@
 }
 .ui.vertical.menu .dropdown.item .menu {
   left: 100%;
+  /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
   min-width: 0;
+  min-width: max-content;
   margin: 0 0 0 @dropdownMenuDistance;
   box-shadow: @dropdownVerticalMenuBoxShadow;
   border-radius: 0 @dropdownMenuBorderRadius @dropdownMenuBorderRadius @dropdownMenuBorderRadius;
@@ -312,7 +314,7 @@
      Labels
 ---------------*/
 
-.ui.menu .item > .label {
+.ui.menu .item > .label:not(.floating) {
   margin-left: @labelTextMargin;
   padding: @labelVerticalPadding @labelHorizontalPadding;
 }
@@ -324,9 +326,13 @@
 .ui.menu .item > .floating.label {
   padding: @labelVerticalPadding @labelHorizontalPadding;
 }
-.ui.menu .item > .label:not(.primary):not(.secondary):not(.red):not(.orange):not(.yellow):not(.olive):not(.green):not(.teal):not(.blue):not(.violet):not(.purple):not(.pink):not(.brown):not(.grey):not(.black) {
+.ui.menu .item > .label {
   background: @labelBackground;
   color: @labelTextColor;
+}
+.ui.menu .item > .image.label img {
+  margin: @imageLabelImageMargin;
+  height: @imageLabelHeight;
 }
 /*--------------
      Images
@@ -449,11 +455,11 @@
      Disabled
 ---------------*/
 
-.ui.menu .item.disabled,
-.ui.menu .item.disabled:hover {
-  cursor: default !important;
-  background-color: transparent !important;
-  color: @disabledTextColor !important;
+.ui.menu .item.disabled {
+  cursor: default;
+  background-color: transparent;
+  color: @disabledTextColor;
+  pointer-events: none;
 }
 
 
@@ -846,19 +852,19 @@ Floated Menu / Item
 
 
 /* Inverted */
-.ui.secondary.inverted.menu .link.item,
-.ui.secondary.inverted.menu a.item {
-  color: @secondaryInvertedColor !important;
+.ui.secondary.inverted.menu .link.item:not(.disabled),
+.ui.secondary.inverted.menu a.item:not(.disabled) {
+  color: @secondaryInvertedColor;
 }
 .ui.secondary.inverted.menu .dropdown.item:hover,
 .ui.secondary.inverted.menu .link.item:hover,
 .ui.secondary.inverted.menu a.item:hover {
   background: @secondaryInvertedHoverBackground;
-  color: @secondaryInvertedHoverColor !important;
+  color: @secondaryInvertedHoverColor;
 }
 .ui.secondary.inverted.menu .active.item {
   background: @secondaryInvertedActiveBackground;
-  color: @secondaryInvertedActiveColor !important;
+  color: @secondaryInvertedActiveColor;
 }
 
 /* Fix item margins */
@@ -929,6 +935,15 @@ Floated Menu / Item
 }
 .ui.secondary.pointing.menu .ui.dropdown .menu .item {
   border-bottom-width: 0;
+}
+
+.ui.secondary.pointing.menu .item > .label {
+  margin-top: -@labelVerticalPadding;
+  margin-bottom: -@labelVerticalPadding;
+}
+.ui.secondary.pointing.menu .item > .circular.label {
+  margin-top: -@circularLabelVerticalPadding;
+  margin-bottom: -@circularLabelVerticalPadding;
 }
 
 /* Item Types */
@@ -1004,11 +1019,7 @@ Floated Menu / Item
   border-color: @secondaryPointingInvertedBorderColor;
 }
 
-.ui.secondary.inverted.pointing.menu {
-  border-width: @secondaryPointingBorderWidth;
-  border-color: @secondaryPointingBorderColor;
-}
-.ui.secondary.inverted.pointing.menu .item {
+.ui.secondary.inverted.pointing.menu .item:not(.disabled) {
   color: @secondaryPointingInvertedItemTextColor;
 }
 .ui.secondary.inverted.pointing.menu .header.item {
@@ -1282,10 +1293,12 @@ each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
 
-  .ui.menu .@{color}.active.item,
-  .ui.@{color}.menu .active.item {
-    border-color: @c;
-    color: @c;
+  & when not (@color=secondary) {
+    .ui.ui.menu .@{color}.active.item,
+    .ui.ui.@{color}.menu .active.item {
+      border-color: @c;
+      color: @c;
+    }
   }
 })
 
@@ -1331,8 +1344,7 @@ each(@colors, {
 }
 
 /* Disabled */
-.ui.inverted.menu .item.disabled,
-.ui.inverted.menu .item.disabled:hover {
+.ui.inverted.menu .item.disabled {
   color: @invertedDisabledTextColor;
 }
 
@@ -1409,15 +1421,17 @@ each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
 
-  .ui.inverted.menu .@{color}.active.item,
-  .ui.inverted.@{color}.menu {
-    background-color: @c;
-  }
-  .ui.inverted.@{color}.menu .item:before {
-    background-color: @invertedColoredDividerBackground;
-  }
-  .ui.inverted.@{color}.menu .active.item {
-    background-color: @invertedColoredActiveBackground;
+  & when not (@color=secondary) {
+    .ui.ui.inverted.menu .@{color}.active.item,
+    .ui.ui.inverted.@{color}.menu {
+      background-color: @c;
+    }
+    .ui.inverted.@{color}.menu .item:before {
+      background-color: @invertedColoredDividerBackground;
+    }
+    .ui.ui.inverted.@{color}.menu .active.item {
+      background-color: @invertedColoredActiveBackground;
+    }
   }
 })
 
@@ -1464,9 +1478,11 @@ each(@colors, {
   vertical-align: middle;
 }
 .ui.compact.vertical.menu {
+/* IE hack to make dropdown icons appear inline */
+  display: -ms-inline-flexbox !important;
   display: inline-block;
 }
-.ui.compact.menu .item:last-child {
+.ui.compact.menu:not(.secondary) .item:last-child {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
 .ui.compact.menu .item:last-child:before {
@@ -1770,7 +1786,7 @@ each(@colors, {
 .ui.mini.menu {
   font-size: @mini;
 }
-.ui.mini.vertical.menu {
+.ui.mini.vertical.menu:not(.icon) {
   width: @miniWidth;
 }
 .ui.mini.menu .dropdown {
@@ -1784,7 +1800,7 @@ each(@colors, {
 .ui.tiny.menu {
   font-size: @tiny;
 }
-.ui.tiny.vertical.menu {
+.ui.tiny.vertical.menu:not(.icon) {
   width: @tinyWidth;
 }
 .ui.tiny.menu .dropdown {
@@ -1798,7 +1814,7 @@ each(@colors, {
 .ui.small.menu {
   font-size: @small;
 }
-.ui.small.vertical.menu {
+.ui.small.vertical.menu:not(.icon) {
   width: @smallWidth;
 }
 .ui.small.menu .dropdown {
@@ -1820,7 +1836,7 @@ each(@colors, {
 .ui.large.menu {
   font-size: @large;
 }
-.ui.large.vertical.menu {
+.ui.large.vertical.menu:not(.icon) {
   width: @largeWidth;
 }
 .ui.large.menu .dropdown {
@@ -1834,7 +1850,7 @@ each(@colors, {
 .ui.huge.menu {
   font-size: @huge;
 }
-.ui.huge.vertical.menu {
+.ui.huge.vertical.menu:not(.icon) {
   width: @hugeWidth;
 }
 .ui.huge.menu .dropdown {
@@ -1848,7 +1864,7 @@ each(@colors, {
 .ui.big.menu {
   font-size: @big;
 }
-.ui.big.vertical.menu {
+.ui.big.vertical.menu:not(.icon) {
   width: @bigWidth;
 }
 .ui.big.menu .dropdown {
@@ -1862,7 +1878,7 @@ each(@colors, {
 .ui.massive.menu {
   font-size: @massive;
 }
-.ui.massive.vertical.menu {
+.ui.massive.vertical.menu:not(.icon) {
   width: @massiveWidth;
 }
 .ui.massive.menu .dropdown {

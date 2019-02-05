@@ -724,7 +724,12 @@
 .ui.inverted.form .inline.field > p {
   color: @invertedLabelColor;
 }
-
+.ui.inverted.loading.form {
+  color: @invertedLoaderLineColor;
+}
+.ui.inverted.loading.form:before {
+  background: @loaderInvertedDimmerColor;
+}
 /* Inverted Field */
 .ui.inverted.form input:not([type]),
 .ui.inverted.form input[type="date"],

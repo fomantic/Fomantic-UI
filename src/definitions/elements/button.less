@@ -663,17 +663,17 @@
 
 .ui.mini.buttons .button,
 .ui.mini.buttons .or,
-.ui.mini.button {
+.ui.ui.ui.ui.mini.button {
   font-size: @mini;
 }
 .ui.tiny.buttons .button,
 .ui.tiny.buttons .or,
-.ui.tiny.button {
+.ui.ui.ui.ui.tiny.button {
   font-size: @tiny;
 }
 .ui.small.buttons .button,
 .ui.small.buttons .or,
-.ui.small.button {
+.ui.ui.ui.ui.small.button {
   font-size: @small;
 }
 .ui.buttons .button,
@@ -683,22 +683,22 @@
 }
 .ui.large.buttons .button,
 .ui.large.buttons .or,
-.ui.large.button {
+.ui.ui.ui.ui.large.button {
   font-size: @large;
 }
 .ui.big.buttons .button,
 .ui.big.buttons .or,
-.ui.big.button {
+.ui.ui.ui.ui.big.button {
   font-size: @big;
 }
 .ui.huge.buttons .button,
 .ui.huge.buttons .or,
-.ui.huge.button {
+.ui.ui.ui.ui.huge.button {
   font-size: @huge;
 }
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
-.ui.massive.button {
+.ui.ui.ui.ui.massive.button {
   font-size: @massive;
 }
 
@@ -983,6 +983,8 @@
   border-top-left-radius: inherit;
   border-bottom-left-radius: inherit;
   text-align: center;
+  animation:none;
+  padding: @verticalPadding 0 @verticalPadding 0;
 
   margin: @labeledIconMargin;
   width: @labeledIconWidth;
@@ -1011,11 +1013,10 @@
 .ui.labeled.icon.buttons > .button > .icon:after,
 .ui.labeled.icon.button > .icon:after {
   display: block;
-  position: absolute;
+  position: relative;
   width: 100%;
-  top: 50%;
+  top: 0;
   text-align: center;
-  transform: translateY(-50%);
 }
 
 .ui.labeled.icon.buttons .button > .icon {
@@ -1045,7 +1046,10 @@
   padding-right: @horizontalPadding !important;
 }
 
-
+/* Loading Icon in Labeled Button */
+.ui.labeled.icon.button > .loading.icon:before {
+  animation: loader 2s linear infinite;
+}
 
 
 /*--------------

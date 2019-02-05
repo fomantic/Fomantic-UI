@@ -70,35 +70,23 @@ i.icon:before {
 i.icon.loading {
   height: 1em;
   line-height: 1;
-  animation: icon-loading @loadingDuration linear infinite;
-}
-@keyframes icon-loading {
- from {
-    transform: rotate(0deg);
- }
- to {
-    transform: rotate(360deg);
- }
+  animation: loader @loadingDuration linear infinite;
 }
 
 /*******************************
              States
 *******************************/
 
-i.icon.hover {
-  opacity: 1 !important;
+i.icon:hover, i.icons:hover,
+i.icon:active, i.icons:active,
+i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
+  opacity: 1;
 }
 
-i.icon.active {
-  opacity: 1 !important;
-}
-
-i.emphasized.icon {
-  opacity: 1 !important;
-}
-
-i.disabled.icon {
-  opacity: @disabledOpacity !important;
+i.disabled.icon, i.disabled.icons {
+  opacity: @disabledOpacity;
+  cursor: default;
+  pointer-events: none;
 }
 
 
@@ -120,13 +108,13 @@ i.fitted.icon {
          Link
 --------------------*/
 
-i.link.icon, i.link.icons {
+i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: @linkOpacity;
   transition: opacity @defaultDuration @defaultEasing;
 }
 i.link.icon:hover, i.link.icons:hover {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /*-------------------
@@ -255,14 +243,14 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  i.@{color}.icon {
+  i.@{color}.icon.icon.icon.icon {
     color: @c;
   }
-  i.inverted.@{color}.icon {
+  i.inverted.@{color}.icon.icon.icon.icon {
     color: @l;
   }
-  i.inverted.bordered.@{color}.icon,
-  i.inverted.circular.@{color}.icon {
+  i.inverted.bordered.@{color}.icon.icon.icon.icon,
+  i.inverted.circular.@{color}.icon.icon.icon.icon {
     background-color: @c;
     color: @white;
   }
@@ -273,18 +261,18 @@ each(@colors, {
         Sizes
 --------------------*/
 
-i.mini.icon,
-i.mini.icons {
+i.mini.mini.mini.icon,
+i.mini.mini.mini.icons {
   line-height: 1;
   font-size: @mini;
 }
-i.tiny.icon,
-i.tiny.icons {
+i.tiny.tiny.tiny.icon,
+i.tiny.tiny.tiny.icons {
   line-height: 1;
   font-size: @tiny;
 }
-i.small.icon,
-i.small.icons {
+i.small.small.small.icon,
+i.small.small.small.icons {
   line-height: 1;
   font-size: @small;
 }
@@ -292,26 +280,26 @@ i.icon,
 i.icons {
   font-size: @medium;
 }
-i.large.icon,
-i.large.icons {
+i.large.large.large.icon,
+i.large.large.large.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: @large;
 }
-i.big.icon,
-i.big.icons {
+i.big.big.big.icon,
+i.big.big.big.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: @big;
 }
-i.huge.icon,
-i.huge.icons {
+i.huge.huge.huge.icon,
+i.huge.huge.huge.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: @huge;
 }
-i.massive.icon,
-i.massive.icons {
+i.massive.massive.massive.icon,
+i.massive.massive.massive.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: @massive;

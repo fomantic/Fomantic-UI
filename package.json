@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.1",
+  "version": "2.7.2",
   "title": "Fomantic UI",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage": "http://fomantic-ui.com",
@@ -32,7 +32,6 @@
     "gulp-dedupe": "*",
     "gulp-flatten": "*",
     "gulp-header": "*",
-    "gulp-help": "*",
     "gulp-if": "*",
     "gulp-less": "*",
     "gulp-notify": "*",
@@ -62,7 +61,6 @@
     "gulp-dedupe": "0.0.2",
     "gulp-flatten": "^0.4.0",
     "gulp-header": "^2.0.5",
-    "gulp-help": "github:chmontgomery/gulp-help#gulp4",
     "gulp-if": "^2.0.2",
     "gulp-json-editor": "^2.4.3",
     "gulp-less": "^4.0.1",

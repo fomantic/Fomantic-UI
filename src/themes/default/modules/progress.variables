@@ -79,6 +79,13 @@
 @indicatingFifthLabelColor: @textColor;
 @indicatingSixthLabelColor: @textColor;
 
+@invertedIndicatingFirstLabelColor: @invertedTextColor;
+@invertedIndicatingSecondLabelColor: @invertedTextColor;
+@invertedIndicatingThirdLabelColor: @invertedTextColor;
+@invertedIndicatingFourthLabelColor: @invertedTextColor;
+@invertedIndicatingFifthLabelColor: @invertedTextColor;
+@invertedIndicatingSixthLabelColor: @invertedTextColor;
+
 /*-------------------
         States
 --------------------*/
