@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Dimmer
+ * # Semantic UI 2.7.2 - Dimmer
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -168,8 +168,8 @@ body.dimmable > .dimmer {
 ---------------*/
 
 .blurring.dimmable > :not(.dimmer) {
-  -webkit-filter: blur(0px) grayscale(0);
-          filter: blur(0px) grayscale(0);
+  -webkit-filter: initial;
+          filter: initial;
   -webkit-transition: 800ms -webkit-filter ease;
   transition: 800ms -webkit-filter ease;
   transition: 800ms filter ease;

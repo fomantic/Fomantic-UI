@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Rating
+ * # Semantic UI 2.7.2 - Rating
  * http://github.com/semantic-org/semantic-ui/
  *
  *

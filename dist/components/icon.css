@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Icon
+ * # Semantic UI 2.7.2 - Icon
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -57,28 +57,8 @@ i.icon:before {
 i.icon.loading {
   height: 1em;
   line-height: 1;
-  -webkit-animation: icon-loading 2s linear infinite;
-          animation: icon-loading 2s linear infinite;
-}
-@-webkit-keyframes icon-loading {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
-}
-@keyframes icon-loading {
-  from {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  to {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+  -webkit-animation: loader 2s linear infinite;
+          animation: loader 2s linear infinite;
 }
 
 
@@ -86,17 +66,19 @@ i.icon.loading {
              States
 *******************************/
 
-i.icon.hover {
-  opacity: 1 !important;
+i.icon:hover,
+i.icons:hover,
+i.icon:active,
+i.icons:active,
+i.emphasized.icon:not(.disabled),
+i.emphasized.icons:not(.disabled) {
+  opacity: 1;
 }
-i.icon.active {
-  opacity: 1 !important;
-}
-i.emphasized.icon {
-  opacity: 1 !important;
-}
-i.disabled.icon {
-  opacity: 0.45 !important;
+i.disabled.icon,
+i.disabled.icons {
+  opacity: 0.45;
+  cursor: default;
+  pointer-events: none;
 }
 
 
@@ -118,8 +100,8 @@ i.fitted.icon {
          Link
 --------------------*/
 
-i.link.icon,
-i.link.icons {
+i.link.icon:not(.disabled),
+i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: 0.8;
   -webkit-transition: opacity 0.1s ease;
@@ -127,7 +109,7 @@ i.link.icons {
 }
 i.link.icon:hover,
 i.link.icons:hover {
-  opacity: 1 !important;
+  opacity: 1;
 }
 
 /*-------------------
@@ -256,168 +238,168 @@ i.inverted.icon {
        Colors
 --------------------*/
 
-i.primary.icon {
+i.primary.icon.icon.icon.icon {
   color: #2185D0;
 }
-i.inverted.primary.icon {
+i.inverted.primary.icon.icon.icon.icon {
   color: #54C8FF;
 }
-i.inverted.bordered.primary.icon,
-i.inverted.circular.primary.icon {
+i.inverted.bordered.primary.icon.icon.icon.icon,
+i.inverted.circular.primary.icon.icon.icon.icon {
   background-color: #2185D0;
   color: #FFFFFF;
 }
-i.secondary.icon {
+i.secondary.icon.icon.icon.icon {
   color: #1B1C1D;
 }
-i.inverted.secondary.icon {
+i.inverted.secondary.icon.icon.icon.icon {
   color: #545454;
 }
-i.inverted.bordered.secondary.icon,
-i.inverted.circular.secondary.icon {
+i.inverted.bordered.secondary.icon.icon.icon.icon,
+i.inverted.circular.secondary.icon.icon.icon.icon {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
-i.red.icon {
+i.red.icon.icon.icon.icon {
   color: #DB2828;
 }
-i.inverted.red.icon {
+i.inverted.red.icon.icon.icon.icon {
   color: #FF695E;
 }
-i.inverted.bordered.red.icon,
-i.inverted.circular.red.icon {
+i.inverted.bordered.red.icon.icon.icon.icon,
+i.inverted.circular.red.icon.icon.icon.icon {
   background-color: #DB2828;
   color: #FFFFFF;
 }
-i.orange.icon {
+i.orange.icon.icon.icon.icon {
   color: #F2711C;
 }
-i.inverted.orange.icon {
+i.inverted.orange.icon.icon.icon.icon {
   color: #FF851B;
 }
-i.inverted.bordered.orange.icon,
-i.inverted.circular.orange.icon {
+i.inverted.bordered.orange.icon.icon.icon.icon,
+i.inverted.circular.orange.icon.icon.icon.icon {
   background-color: #F2711C;
   color: #FFFFFF;
 }
-i.yellow.icon {
+i.yellow.icon.icon.icon.icon {
   color: #FBBD08;
 }
-i.inverted.yellow.icon {
+i.inverted.yellow.icon.icon.icon.icon {
   color: #FFE21F;
 }
-i.inverted.bordered.yellow.icon,
-i.inverted.circular.yellow.icon {
+i.inverted.bordered.yellow.icon.icon.icon.icon,
+i.inverted.circular.yellow.icon.icon.icon.icon {
   background-color: #FBBD08;
   color: #FFFFFF;
 }
-i.olive.icon {
+i.olive.icon.icon.icon.icon {
   color: #B5CC18;
 }
-i.inverted.olive.icon {
+i.inverted.olive.icon.icon.icon.icon {
   color: #D9E778;
 }
-i.inverted.bordered.olive.icon,
-i.inverted.circular.olive.icon {
+i.inverted.bordered.olive.icon.icon.icon.icon,
+i.inverted.circular.olive.icon.icon.icon.icon {
   background-color: #B5CC18;
   color: #FFFFFF;
 }
-i.green.icon {
+i.green.icon.icon.icon.icon {
   color: #21BA45;
 }
-i.inverted.green.icon {
+i.inverted.green.icon.icon.icon.icon {
   color: #2ECC40;
 }
-i.inverted.bordered.green.icon,
-i.inverted.circular.green.icon {
+i.inverted.bordered.green.icon.icon.icon.icon,
+i.inverted.circular.green.icon.icon.icon.icon {
   background-color: #21BA45;
   color: #FFFFFF;
 }
-i.teal.icon {
+i.teal.icon.icon.icon.icon {
   color: #00B5AD;
 }
-i.inverted.teal.icon {
+i.inverted.teal.icon.icon.icon.icon {
   color: #6DFFFF;
 }
-i.inverted.bordered.teal.icon,
-i.inverted.circular.teal.icon {
+i.inverted.bordered.teal.icon.icon.icon.icon,
+i.inverted.circular.teal.icon.icon.icon.icon {
   background-color: #00B5AD;
   color: #FFFFFF;
 }
-i.blue.icon {
+i.blue.icon.icon.icon.icon {
   color: #2185D0;
 }
-i.inverted.blue.icon {
+i.inverted.blue.icon.icon.icon.icon {
   color: #54C8FF;
 }
-i.inverted.bordered.blue.icon,
-i.inverted.circular.blue.icon {
+i.inverted.bordered.blue.icon.icon.icon.icon,
+i.inverted.circular.blue.icon.icon.icon.icon {
   background-color: #2185D0;
   color: #FFFFFF;
 }
-i.violet.icon {
+i.violet.icon.icon.icon.icon {
   color: #6435C9;
 }
-i.inverted.violet.icon {
+i.inverted.violet.icon.icon.icon.icon {
   color: #A291FB;
 }
-i.inverted.bordered.violet.icon,
-i.inverted.circular.violet.icon {
+i.inverted.bordered.violet.icon.icon.icon.icon,
+i.inverted.circular.violet.icon.icon.icon.icon {
   background-color: #6435C9;
   color: #FFFFFF;
 }
-i.purple.icon {
+i.purple.icon.icon.icon.icon {
   color: #A333C8;
 }
-i.inverted.purple.icon {
+i.inverted.purple.icon.icon.icon.icon {
   color: #DC73FF;
 }
-i.inverted.bordered.purple.icon,
-i.inverted.circular.purple.icon {
+i.inverted.bordered.purple.icon.icon.icon.icon,
+i.inverted.circular.purple.icon.icon.icon.icon {
   background-color: #A333C8;
   color: #FFFFFF;
 }
-i.pink.icon {
+i.pink.icon.icon.icon.icon {
   color: #E03997;
 }
-i.inverted.pink.icon {
+i.inverted.pink.icon.icon.icon.icon {
   color: #FF8EDF;
 }
-i.inverted.bordered.pink.icon,
-i.inverted.circular.pink.icon {
+i.inverted.bordered.pink.icon.icon.icon.icon,
+i.inverted.circular.pink.icon.icon.icon.icon {
   background-color: #E03997;
   color: #FFFFFF;
 }
-i.brown.icon {
+i.brown.icon.icon.icon.icon {
   color: #A5673F;
 }
-i.inverted.brown.icon {
+i.inverted.brown.icon.icon.icon.icon {
   color: #D67C1C;
 }
-i.inverted.bordered.brown.icon,
-i.inverted.circular.brown.icon {
+i.inverted.bordered.brown.icon.icon.icon.icon,
+i.inverted.circular.brown.icon.icon.icon.icon {
   background-color: #A5673F;
   color: #FFFFFF;
 }
-i.grey.icon {
+i.grey.icon.icon.icon.icon {
   color: #767676;
 }
-i.inverted.grey.icon {
+i.inverted.grey.icon.icon.icon.icon {
   color: #DCDDDE;
 }
-i.inverted.bordered.grey.icon,
-i.inverted.circular.grey.icon {
+i.inverted.bordered.grey.icon.icon.icon.icon,
+i.inverted.circular.grey.icon.icon.icon.icon {
   background-color: #767676;
   color: #FFFFFF;
 }
-i.black.icon {
+i.black.icon.icon.icon.icon {
   color: #1B1C1D;
 }
-i.inverted.black.icon {
+i.inverted.black.icon.icon.icon.icon {
   color: #545454;
 }
-i.inverted.bordered.black.icon,
-i.inverted.circular.black.icon {
+i.inverted.bordered.black.icon.icon.icon.icon,
+i.inverted.circular.black.icon.icon.icon.icon {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
@@ -426,18 +408,18 @@ i.inverted.circular.black.icon {
         Sizes
 --------------------*/
 
-i.mini.icon,
-i.mini.icons {
+i.mini.mini.mini.icon,
+i.mini.mini.mini.icons {
   line-height: 1;
   font-size: 0.4em;
 }
-i.tiny.icon,
-i.tiny.icons {
+i.tiny.tiny.tiny.icon,
+i.tiny.tiny.tiny.icons {
   line-height: 1;
   font-size: 0.5em;
 }
-i.small.icon,
-i.small.icons {
+i.small.small.small.icon,
+i.small.small.small.icons {
   line-height: 1;
   font-size: 0.75em;
 }
@@ -445,26 +427,26 @@ i.icon,
 i.icons {
   font-size: 1em;
 }
-i.large.icon,
-i.large.icons {
+i.large.large.large.icon,
+i.large.large.large.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 1.5em;
 }
-i.big.icon,
-i.big.icons {
+i.big.big.big.icon,
+i.big.big.big.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 2em;
 }
-i.huge.icon,
-i.huge.icons {
+i.huge.huge.huge.icon,
+i.huge.huge.huge.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 4em;
 }
-i.massive.icon,
-i.massive.icons {
+i.massive.massive.massive.icon,
+i.massive.massive.massive.icons {
   line-height: 1;
   vertical-align: middle;
   font-size: 8em;
@@ -536,7 +518,7 @@ i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
 }
 /*
-* Font Awesome 5.4.1 by @fontawesome - https://fontawesome.com - @fontawesome
+* Font Awesome 5.7.0 by @fontawesome - https://fontawesome.com - @fontawesome
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -736,11 +718,20 @@ i.icon.audio.description:before {
 i.icon.award:before {
   content: "\f559";
 }
+i.icon.baby:before {
+  content: "\f77c";
+}
+i.icon.baby.carriage:before {
+  content: "\f77d";
+}
 i.icon.backspace:before {
   content: "\f55a";
 }
 i.icon.backward:before {
   content: "\f04a";
+}
+i.icon.bacon:before {
+  content: "\f7e5";
 }
 i.icon.balance.scale:before {
   content: "\f24e";
@@ -805,6 +796,9 @@ i.icon.bicycle:before {
 i.icon.binoculars:before {
   content: "\f1e5";
 }
+i.icon.biohazard:before {
+  content: "\f780";
+}
 i.icon.birthday.cake:before {
   content: "\f1fd";
 }
@@ -816,6 +810,9 @@ i.icon.blender.phone:before {
 }
 i.icon.blind:before {
   content: "\f29d";
+}
+i.icon.blog:before {
+  content: "\f781";
 }
 i.icon.bold:before {
   content: "\f032";
@@ -837,6 +834,9 @@ i.icon.book:before {
 }
 i.icon.book.dead:before {
   content: "\f6b7";
+}
+i.icon.book.medical:before {
+  content: "\f7e6";
 }
 i.icon.book.open:before {
   content: "\f518";
@@ -864,6 +864,9 @@ i.icon.braille:before {
 }
 i.icon.brain:before {
   content: "\f5dc";
+}
+i.icon.bread.slice:before {
+  content: "\f7ec";
 }
 i.icon.briefcase:before {
   content: "\f0b1";
@@ -916,6 +919,9 @@ i.icon.calendar.alternate:before {
 i.icon.calendar.check:before {
   content: "\f274";
 }
+i.icon.calendar.day:before {
+  content: "\f783";
+}
 i.icon.calendar.minus:before {
   content: "\f272";
 }
@@ -925,6 +931,9 @@ i.icon.calendar.plus:before {
 i.icon.calendar.times:before {
   content: "\f273";
 }
+i.icon.calendar.week:before {
+  content: "\f784";
+}
 i.icon.camera:before {
   content: "\f030";
 }
@@ -933,6 +942,9 @@ i.icon.camera.retro:before {
 }
 i.icon.campground:before {
   content: "\f6bb";
+}
+i.icon.candy.cane:before {
+  content: "\f786";
 }
 i.icon.cannabis:before {
   content: "\f55f";
@@ -979,11 +991,17 @@ i.icon.caret.square.up:before {
 i.icon.caret.up:before {
   content: "\f0d8";
 }
+i.icon.carrot:before {
+  content: "\f787";
+}
 i.icon.cart.arrow.down:before {
   content: "\f218";
 }
 i.icon.cart.plus:before {
   content: "\f217";
+}
+i.icon.cash.register:before {
+  content: "\f788";
 }
 i.icon.cat:before {
   content: "\f6be";
@@ -1026,6 +1044,9 @@ i.icon.check.double:before {
 }
 i.icon.check.square:before {
   content: "\f14a";
+}
+i.icon.cheese:before {
+  content: "\f7ef";
 }
 i.icon.chess:before {
   content: "\f439";
@@ -1090,6 +1111,9 @@ i.icon.circle.notch:before {
 i.icon.city:before {
   content: "\f64f";
 }
+i.icon.clinic.medical:before {
+  content: "\f7f2";
+}
 i.icon.clipboard:before {
   content: "\f328";
 }
@@ -1114,11 +1138,26 @@ i.icon.cloud:before {
 i.icon.cloud.download.alternate:before {
   content: "\f381";
 }
+i.icon.cloud.meatball:before {
+  content: "\f73b";
+}
 i.icon.cloud.moon:before {
   content: "\f6c3";
 }
+i.icon.cloud.moon.rain:before {
+  content: "\f73c";
+}
+i.icon.cloud.rain:before {
+  content: "\f73d";
+}
+i.icon.cloud.showers.heavy:before {
+  content: "\f740";
+}
 i.icon.cloud.sun:before {
   content: "\f6c4";
+}
+i.icon.cloud.sun.rain:before {
+  content: "\f743";
 }
 i.icon.cloud.upload.alternate:before {
   content: "\f382";
@@ -1159,6 +1198,9 @@ i.icon.comment.dollar:before {
 i.icon.comment.dots:before {
   content: "\f4ad";
 }
+i.icon.comment.medical:before {
+  content: "\f7f5";
+}
 i.icon.comment.slash:before {
   content: "\f4b3";
 }
@@ -1176,6 +1218,9 @@ i.icon.compass:before {
 }
 i.icon.compress:before {
   content: "\f066";
+}
+i.icon.compress.arrows.alternate:before {
+  content: "\f78c";
 }
 i.icon.concierge.bell:before {
   content: "\f562";
@@ -1216,6 +1261,9 @@ i.icon.crow:before {
 i.icon.crown:before {
   content: "\f521";
 }
+i.icon.crutch:before {
+  content: "\f7f7";
+}
 i.icon.cube:before {
   content: "\f1b2";
 }
@@ -1230,6 +1278,9 @@ i.icon.database:before {
 }
 i.icon.deaf:before {
   content: "\f2a4";
+}
+i.icon.democrat:before {
+  content: "\f747";
 }
 i.icon.desktop:before {
   content: "\f108";
@@ -1333,11 +1384,20 @@ i.icon.drumstick.bite:before {
 i.icon.dumbbell:before {
   content: "\f44b";
 }
+i.icon.dumpster:before {
+  content: "\f793";
+}
+i.icon.dumpster.fire:before {
+  content: "\f794";
+}
 i.icon.dungeon:before {
   content: "\f6d9";
 }
 i.icon.edit:before {
   content: "\f044";
+}
+i.icon.egg:before {
+  content: "\f7fb";
 }
 i.icon.eject:before {
   content: "\f052";
@@ -1365,6 +1425,9 @@ i.icon.equals:before {
 }
 i.icon.eraser:before {
   content: "\f12d";
+}
+i.icon.ethernet:before {
+  content: "\f796";
 }
 i.icon.euro.sign:before {
   content: "\f153";
@@ -1510,6 +1573,9 @@ i.icon.fingerprint:before {
 i.icon.fire:before {
   content: "\f06d";
 }
+i.icon.fire.alternate:before {
+  content: "\f7e4";
+}
 i.icon.fire.extinguisher:before {
   content: "\f134";
 }
@@ -1527,6 +1593,9 @@ i.icon.flag:before {
 }
 i.icon.flag.checkered:before {
   content: "\f11e";
+}
+i.icon.flag.usa:before {
+  content: "\f74d";
 }
 i.icon.flask:before {
   content: "\f0c3";
@@ -1594,11 +1663,20 @@ i.icon.ghost:before {
 i.icon.gift:before {
   content: "\f06b";
 }
+i.icon.gifts:before {
+  content: "\f79c";
+}
+i.icon.glass.cheers:before {
+  content: "\f79f";
+}
 i.icon.glass.martini:before {
   content: "\f000";
 }
 i.icon.glass.martini.alternate:before {
   content: "\f57b";
+}
+i.icon.glass.whiskey:before {
+  content: "\f7a0";
 }
 i.icon.glasses:before {
   content: "\f530";
@@ -1614,6 +1692,9 @@ i.icon.globe.americas:before {
 }
 i.icon.globe.asia:before {
   content: "\f57e";
+}
+i.icon.globe.europe:before {
+  content: "\f7a2";
 }
 i.icon.golf.ball:before {
   content: "\f450";
@@ -1675,11 +1756,23 @@ i.icon.grin.wink:before {
 i.icon.grip.horizontal:before {
   content: "\f58d";
 }
+i.icon.grip.lines:before {
+  content: "\f7a4";
+}
+i.icon.grip.lines.vertical:before {
+  content: "\f7a5";
+}
 i.icon.grip.vertical:before {
   content: "\f58e";
 }
+i.icon.guitar:before {
+  content: "\f7a6";
+}
 i.icon.h.square:before {
   content: "\f0fd";
+}
+i.icon.hamburger:before {
+  content: "\f805";
 }
 i.icon.hammer:before {
   content: "\f6e3";
@@ -1698,6 +1791,9 @@ i.icon.hand.holding.usd:before {
 }
 i.icon.hand.lizard:before {
   content: "\f258";
+}
+i.icon.hand.middle.finger:before {
+  content: "\f806";
 }
 i.icon.hand.paper:before {
   content: "\f256";
@@ -1741,6 +1837,9 @@ i.icon.handshake:before {
 i.icon.hanukiah:before {
   content: "\f6e6";
 }
+i.icon.hard.hat:before {
+  content: "\f807";
+}
 i.icon.hashtag:before {
   content: "\f292";
 }
@@ -1768,6 +1867,9 @@ i.icon.headset:before {
 i.icon.heart:before {
   content: "\f004";
 }
+i.icon.heart.broken:before {
+  content: "\f7a9";
+}
 i.icon.heartbeat:before {
   content: "\f21e";
 }
@@ -1789,11 +1891,17 @@ i.icon.history:before {
 i.icon.hockey.puck:before {
   content: "\f453";
 }
+i.icon.holly.berry:before {
+  content: "\f7aa";
+}
 i.icon.home:before {
   content: "\f015";
 }
 i.icon.horse:before {
   content: "\f6f0";
+}
+i.icon.horse.head:before {
+  content: "\f7ab";
 }
 i.icon.hospital:before {
   content: "\f0f8";
@@ -1806,6 +1914,9 @@ i.icon.hospital.symbol:before {
 }
 i.icon.hot.tub:before {
   content: "\f593";
+}
+i.icon.hotdog:before {
+  content: "\f80f";
 }
 i.icon.hotel:before {
   content: "\f594";
@@ -1831,6 +1942,12 @@ i.icon.hryvnia:before {
 i.icon.i.cursor:before {
   content: "\f246";
 }
+i.icon.ice.cream:before {
+  content: "\f810";
+}
+i.icon.icicles:before {
+  content: "\f7ad";
+}
 i.icon.id.badge:before {
   content: "\f2c1";
 }
@@ -1839,6 +1956,9 @@ i.icon.id.card:before {
 }
 i.icon.id.card.alternate:before {
   content: "\f47f";
+}
+i.icon.igloo:before {
+  content: "\f7ae";
 }
 i.icon.image:before {
   content: "\f03e";
@@ -1911,6 +2031,9 @@ i.icon.laptop:before {
 }
 i.icon.laptop.code:before {
   content: "\f5fc";
+}
+i.icon.laptop.medical:before {
+  content: "\f812";
 }
 i.icon.laugh:before {
   content: "\f599";
@@ -2074,6 +2197,9 @@ i.icon.menorah:before {
 i.icon.mercury:before {
   content: "\f223";
 }
+i.icon.meteor:before {
+  content: "\f753";
+}
 i.icon.microchip:before {
   content: "\f2db";
 }
@@ -2100,6 +2226,9 @@ i.icon.minus.circle:before {
 }
 i.icon.minus.square:before {
   content: "\f146";
+}
+i.icon.mitten:before {
+  content: "\f7b5";
 }
 i.icon.mobile:before {
   content: "\f10b";
@@ -2146,6 +2275,9 @@ i.icon.mountain:before {
 i.icon.mouse.pointer:before {
   content: "\f245";
 }
+i.icon.mug.hot:before {
+  content: "\f7b6";
+}
 i.icon.music:before {
   content: "\f001";
 }
@@ -2181,6 +2313,9 @@ i.icon.otter:before {
 }
 i.icon.outdent:before {
   content: "\f03b";
+}
+i.icon.pager:before {
+  content: "\f815";
 }
 i.icon.paint.brush:before {
   content: "\f1fc";
@@ -2254,11 +2389,17 @@ i.icon.pencil.ruler:before {
 i.icon.people.carry:before {
   content: "\f4ce";
 }
+i.icon.pepper.hot:before {
+  content: "\f816";
+}
 i.icon.percent:before {
   content: "\f295";
 }
 i.icon.percentage:before {
   content: "\f541";
+}
+i.icon.person.booth:before {
+  content: "\f756";
 }
 i.icon.phone:before {
   content: "\f095";
@@ -2277,6 +2418,9 @@ i.icon.piggy.bank:before {
 }
 i.icon.pills:before {
   content: "\f484";
+}
+i.icon.pizza.slice:before {
+  content: "\f818";
 }
 i.icon.place.of.worship:before {
   content: "\f67f";
@@ -2319,6 +2463,9 @@ i.icon.poll.horizontal:before {
 }
 i.icon.poo:before {
   content: "\f2fe";
+}
+i.icon.poo.storm:before {
+  content: "\f75a";
 }
 i.icon.poop:before {
   content: "\f619";
@@ -2380,6 +2527,15 @@ i.icon.quote.right:before {
 i.icon.quran:before {
   content: "\f687";
 }
+i.icon.radiation:before {
+  content: "\f7b9";
+}
+i.icon.radiation.alternate:before {
+  content: "\f7ba";
+}
+i.icon.rainbow:before {
+  content: "\f75b";
+}
 i.icon.random:before {
   content: "\f074";
 }
@@ -2403,6 +2559,12 @@ i.icon.reply:before {
 }
 i.icon.reply.all:before {
   content: "\f122";
+}
+i.icon.republican:before {
+  content: "\f75e";
+}
+i.icon.restroom:before {
+  content: "\f7bd";
 }
 i.icon.retweet:before {
   content: "\f079";
@@ -2458,6 +2620,12 @@ i.icon.sad.cry:before {
 i.icon.sad.tear:before {
   content: "\f5b4";
 }
+i.icon.satellite:before {
+  content: "\f7bf";
+}
+i.icon.satellite.dish:before {
+  content: "\f7c0";
+}
 i.icon.save:before {
   content: "\f0c7";
 }
@@ -2469,6 +2637,9 @@ i.icon.screwdriver:before {
 }
 i.icon.scroll:before {
   content: "\f70e";
+}
+i.icon.sd.card:before {
+  content: "\f7c2";
 }
 i.icon.search:before {
   content: "\f002";
@@ -2554,8 +2725,20 @@ i.icon.signal:before {
 i.icon.signature:before {
   content: "\f5b7";
 }
+i.icon.sim.card:before {
+  content: "\f7c4";
+}
 i.icon.sitemap:before {
   content: "\f0e8";
+}
+i.icon.skating:before {
+  content: "\f7c5";
+}
+i.icon.skiing:before {
+  content: "\f7c9";
+}
+i.icon.skiing.nordic:before {
+  content: "\f7ca";
 }
 i.icon.skull:before {
   content: "\f54c";
@@ -2565,6 +2748,9 @@ i.icon.skull.crossbones:before {
 }
 i.icon.slash:before {
   content: "\f715";
+}
+i.icon.sleigh:before {
+  content: "\f7cc";
 }
 i.icon.sliders.horizontal:before {
   content: "\f1de";
@@ -2578,14 +2764,29 @@ i.icon.smile.beam:before {
 i.icon.smile.wink:before {
   content: "\f4da";
 }
+i.icon.smog:before {
+  content: "\f75f";
+}
 i.icon.smoking:before {
   content: "\f48d";
 }
 i.icon.smoking.ban:before {
   content: "\f54d";
 }
+i.icon.sms:before {
+  content: "\f7cd";
+}
+i.icon.snowboarding:before {
+  content: "\f7ce";
+}
 i.icon.snowflake:before {
   content: "\f2dc";
+}
+i.icon.snowman:before {
+  content: "\f7d0";
+}
+i.icon.snowplow:before {
+  content: "\f7d2";
 }
 i.icon.socks:before {
   content: "\f696";
@@ -2788,6 +2989,15 @@ i.icon.teeth:before {
 i.icon.teeth.open:before {
   content: "\f62f";
 }
+i.icon.temperature.high:before {
+  content: "\f769";
+}
+i.icon.temperature.low:before {
+  content: "\f76b";
+}
+i.icon.tenge:before {
+  content: "\f7d7";
+}
 i.icon.terminal:before {
   content: "\f120";
 }
@@ -2860,11 +3070,17 @@ i.icon.toggle.off:before {
 i.icon.toggle.on:before {
   content: "\f205";
 }
+i.icon.toilet:before {
+  content: "\f7d8";
+}
 i.icon.toilet.paper:before {
   content: "\f71e";
 }
 i.icon.toolbox:before {
   content: "\f552";
+}
+i.icon.tools:before {
+  content: "\f7d9";
 }
 i.icon.tooth:before {
   content: "\f5c9";
@@ -2887,6 +3103,9 @@ i.icon.traffic.light:before {
 i.icon.train:before {
   content: "\f238";
 }
+i.icon.tram:before {
+  content: "\f7da";
+}
 i.icon.transgender:before {
   content: "\f224";
 }
@@ -2898,6 +3117,12 @@ i.icon.trash:before {
 }
 i.icon.trash.alternate:before {
   content: "\f2ed";
+}
+i.icon.trash.restore:before {
+  content: "\f829";
+}
+i.icon.trash.restore.alternate:before {
+  content: "\f82a";
 }
 i.icon.tree:before {
   content: "\f1bb";
@@ -3010,6 +3235,9 @@ i.icon.user.minus:before {
 i.icon.user.ninja:before {
   content: "\f504";
 }
+i.icon.user.nurse:before {
+  content: "\f82f";
+}
 i.icon.user.plus:before {
   content: "\f234";
 }
@@ -3085,6 +3313,12 @@ i.icon.volume.off:before {
 i.icon.volume.up:before {
   content: "\f028";
 }
+i.icon.vote.yea:before {
+  content: "\f772";
+}
+i.icon.vr.cardboard:before {
+  content: "\f729";
+}
 i.icon.walking:before {
   content: "\f554";
 }
@@ -3093,6 +3327,9 @@ i.icon.wallet:before {
 }
 i.icon.warehouse:before {
   content: "\f494";
+}
+i.icon.water:before {
+  content: "\f773";
 }
 i.icon.weight:before {
   content: "\f496";
@@ -3994,7 +4231,7 @@ i.icon.spoon:before {
   content: "\f2e5";
 }
 i.icon.star.empty:before {
-  content: "\f089";
+  content: "\f005";
 }
 i.icon.star.half.empty:before {
   content: "\f089";
@@ -4010,6 +4247,9 @@ i.icon.times.rectangle:before {
 }
 i.icon.write:before {
   content: "\f303";
+}
+i.icon.hamburger:before {
+  content: "\f0c9";
 }
 
 
@@ -4490,21 +4730,6 @@ i.icon.window.restore.outline:before {
   content: "\f2d2";
 }
 
-/* Outline Aliases */
-i.icon.disk.outline:before {
-  content: "\f0a0";
-}
-i.icon.heart.empty,
-i.icon.star.empty {
-  font-family: 'outline-icons';
-}
-i.icon.heart.empty:before {
-  content: "\f004";
-}
-i.icon.star.empty:before {
-  content: "\f089";
-}
-
 
 /*******************************
           Brand Icons
@@ -4529,6 +4754,7 @@ i.icon.accessible,
 i.icon.accusoft,
 i.icon.acquisitions.incorporated,
 i.icon.adn,
+i.icon.adobe,
 i.icon.adversal,
 i.icon.affiliatetheme,
 i.icon.algolia,
@@ -4545,7 +4771,9 @@ i.icon.app.store.ios,
 i.icon.apper,
 i.icon.apple,
 i.icon.apple.pay,
+i.icon.artstation,
 i.icon.asymmetrik,
+i.icon.atlassian,
 i.icon.audible,
 i.icon.autoprefixer,
 i.icon.avianex,
@@ -4567,6 +4795,7 @@ i.icon.bluetooth.b,
 i.icon.btc,
 i.icon.buromobelexperte,
 i.icon.buysellads,
+i.icon.canadian.maple.leaf,
 i.icon.cc.amazon.pay,
 i.icon.cc.amex,
 i.icon.cc.apple.pay,
@@ -4578,12 +4807,14 @@ i.icon.cc.paypal,
 i.icon.cc.stripe,
 i.icon.cc.visa,
 i.icon.centercode,
+i.icon.centos,
 i.icon.chrome,
 i.icon.cloudscale,
 i.icon.cloudsmith,
 i.icon.cloudversify,
 i.icon.codepen,
 i.icon.codiepie,
+i.icon.confluence,
 i.icon.connectdevelop,
 i.icon.contao,
 i.icon.cpanel,
@@ -4606,12 +4837,15 @@ i.icon.css3,
 i.icon.css3.alternate,
 i.icon.cuttlefish,
 i.icon.d.and.d,
+i.icon.d.and.d.beyond,
 i.icon.dashcube,
 i.icon.delicious,
 i.icon.deploydog,
 i.icon.deskpro,
 i.icon.dev,
 i.icon.deviantart,
+i.icon.dhl,
+i.icon.diaspora,
 i.icon.digg,
 i.icon.digital.ocean,
 i.icon.discord,
@@ -4641,6 +4875,9 @@ i.icon.facebook.f,
 i.icon.facebook.messenger,
 i.icon.facebook.square,
 i.icon.fantasy.flight.games,
+i.icon.fedex,
+i.icon.fedora,
+i.icon.figma,
 i.icon.firefox,
 i.icon.first.order,
 i.icon.first.order.alternate,
@@ -4703,13 +4940,16 @@ i.icon.html5,
 i.icon.hubspot,
 i.icon.imdb,
 i.icon.instagram,
+i.icon.intercom,
 i.icon.internet.explorer,
+i.icon.invision,
 i.icon.ioxhost,
 i.icon.itunes,
 i.icon.itunes.note,
 i.icon.java,
 i.icon.jedi.order,
 i.icon.jenkins,
+i.icon.jira,
 i.icon.joget,
 i.icon.joomla,
 i.icon.js,
@@ -4744,6 +4984,7 @@ i.icon.medium.m,
 i.icon.medrt,
 i.icon.meetup,
 i.icon.megaport,
+i.icon.mendeley,
 i.icon.microsoft,
 i.icon.mix,
 i.icon.mixcloud,
@@ -4793,16 +5034,18 @@ i.icon.qq,
 i.icon.quinscape,
 i.icon.quora,
 i.icon.r.project,
+i.icon.raspberry.pi,
 i.icon.ravelry,
 i.icon.react,
+i.icon.reacteurope,
 i.icon.readme,
 i.icon.rebel,
 i.icon.reddit,
 i.icon.reddit.alien,
 i.icon.reddit.square,
+i.icon.redhat,
 i.icon.redriver,
 i.icon.redyeti,
-i.icon.rendact,
 i.icon.renren,
 i.icon.replyd,
 i.icon.researchgate,
@@ -4823,6 +5066,7 @@ i.icon.shopware,
 i.icon.simplybuilt,
 i.icon.sistrix,
 i.icon.sith,
+i.icon.sketch,
 i.icon.skyatlas,
 i.icon.skype,
 i.icon.slack,
@@ -4832,6 +5076,7 @@ i.icon.snapchat,
 i.icon.snapchat.ghost,
 i.icon.snapchat.square,
 i.icon.soundcloud,
+i.icon.sourcetree,
 i.icon.speakap,
 i.icon.spotify,
 i.icon.squarespace,
@@ -4850,12 +5095,14 @@ i.icon.stumbleupon,
 i.icon.stumbleupon.circle,
 i.icon.superpowers,
 i.icon.supple,
+i.icon.suse,
 i.icon.teamspeak,
 i.icon.telegram,
 i.icon.telegram.plane,
 i.icon.tencent.weibo,
 i.icon.themeco,
 i.icon.themeisle,
+i.icon.think.peaks,
 i.icon.trade.federation,
 i.icon.trello,
 i.icon.tripadvisor,
@@ -4866,10 +5113,13 @@ i.icon.twitter,
 i.icon.twitter.square,
 i.icon.typo3,
 i.icon.uber,
+i.icon.ubuntu,
 i.icon.uikit,
 i.icon.uniregistry,
 i.icon.untappd,
+i.icon.ups,
 i.icon.usb,
+i.icon.usps,
 i.icon.ussunnah,
 i.icon.vaadin,
 i.icon.viacoin,
@@ -4899,6 +5149,7 @@ i.icon.wordpress.simple,
 i.icon.wpbeginner,
 i.icon.wpexplorer,
 i.icon.wpforms,
+i.icon.wpressr,
 i.icon.xbox,
 i.icon.xing,
 i.icon.xing.square,
@@ -4906,6 +5157,7 @@ i.icon.y.combinator,
 i.icon.yahoo,
 i.icon.yandex,
 i.icon.yandex.international,
+i.icon.yarn,
 i.icon.yelp,
 i.icon.yoast,
 i.icon.youtube,
@@ -4929,6 +5181,9 @@ i.icon.acquisitions.incorporated:before {
 }
 i.icon.adn:before {
   content: "\f170";
+}
+i.icon.adobe:before {
+  content: "\f778";
 }
 i.icon.adversal:before {
   content: "\f36a";
@@ -4978,8 +5233,14 @@ i.icon.apple:before {
 i.icon.apple.pay:before {
   content: "\f415";
 }
+i.icon.artstation:before {
+  content: "\f77a";
+}
 i.icon.asymmetrik:before {
   content: "\f372";
+}
+i.icon.atlassian:before {
+  content: "\f77b";
 }
 i.icon.audible:before {
   content: "\f373";
@@ -5044,6 +5305,9 @@ i.icon.buromobelexperte:before {
 i.icon.buysellads:before {
   content: "\f20d";
 }
+i.icon.canadian.maple.leaf:before {
+  content: "\f785";
+}
 i.icon.cc.amazon.pay:before {
   content: "\f42d";
 }
@@ -5077,6 +5341,9 @@ i.icon.cc.visa:before {
 i.icon.centercode:before {
   content: "\f380";
 }
+i.icon.centos:before {
+  content: "\f789";
+}
 i.icon.chrome:before {
   content: "\f268";
 }
@@ -5094,6 +5361,9 @@ i.icon.codepen:before {
 }
 i.icon.codiepie:before {
   content: "\f284";
+}
+i.icon.confluence:before {
+  content: "\f78d";
 }
 i.icon.connectdevelop:before {
   content: "\f20e";
@@ -5161,6 +5431,9 @@ i.icon.cuttlefish:before {
 i.icon.d.and.d:before {
   content: "\f38d";
 }
+i.icon.d.and.d.beyond:before {
+  content: "\f6ca";
+}
 i.icon.dashcube:before {
   content: "\f210";
 }
@@ -5178,6 +5451,12 @@ i.icon.dev:before {
 }
 i.icon.deviantart:before {
   content: "\f1bd";
+}
+i.icon.dhl:before {
+  content: "\f790";
+}
+i.icon.diaspora:before {
+  content: "\f791";
 }
 i.icon.digg:before {
   content: "\f1a6";
@@ -5265,6 +5544,15 @@ i.icon.facebook.square:before {
 }
 i.icon.fantasy.flight.games:before {
   content: "\f6dc";
+}
+i.icon.fedex:before {
+  content: "\f797";
+}
+i.icon.fedora:before {
+  content: "\f798";
+}
+i.icon.figma:before {
+  content: "\f799";
 }
 i.icon.firefox:before {
   content: "\f269";
@@ -5452,8 +5740,14 @@ i.icon.imdb:before {
 i.icon.instagram:before {
   content: "\f16d";
 }
+i.icon.intercom:before {
+  content: "\f7af";
+}
 i.icon.internet.explorer:before {
   content: "\f26b";
+}
+i.icon.invision:before {
+  content: "\f7b0";
 }
 i.icon.ioxhost:before {
   content: "\f208";
@@ -5472,6 +5766,9 @@ i.icon.jedi.order:before {
 }
 i.icon.jenkins:before {
   content: "\f3b6";
+}
+i.icon.jira:before {
+  content: "\f7b1";
 }
 i.icon.joget:before {
   content: "\f3b7";
@@ -5574,6 +5871,9 @@ i.icon.meetup:before {
 }
 i.icon.megaport:before {
   content: "\f5a3";
+}
+i.icon.mendeley:before {
+  content: "\f7b3";
 }
 i.icon.microsoft:before {
   content: "\f3ca";
@@ -5722,11 +6022,17 @@ i.icon.quora:before {
 i.icon.r.project:before {
   content: "\f4f7";
 }
+i.icon.raspberry.pi:before {
+  content: "\f7bb";
+}
 i.icon.ravelry:before {
   content: "\f2d9";
 }
 i.icon.react:before {
   content: "\f41b";
+}
+i.icon.reacteurope:before {
+  content: "\f75d";
 }
 i.icon.readme:before {
   content: "\f4d5";
@@ -5743,14 +6049,14 @@ i.icon.reddit.alien:before {
 i.icon.reddit.square:before {
   content: "\f1a2";
 }
+i.icon.redhat:before {
+  content: "\f7bc";
+}
 i.icon.redriver:before {
   content: "\f3e3";
 }
 i.icon.redyeti:before {
   content: "\f69d";
-}
-i.icon.rendact:before {
-  content: "\f3e4";
 }
 i.icon.renren:before {
   content: "\f18b";
@@ -5812,6 +6118,9 @@ i.icon.sistrix:before {
 i.icon.sith:before {
   content: "\f512";
 }
+i.icon.sketch:before {
+  content: "\f7c6";
+}
 i.icon.skyatlas:before {
   content: "\f216";
 }
@@ -5838,6 +6147,9 @@ i.icon.snapchat.square:before {
 }
 i.icon.soundcloud:before {
   content: "\f1be";
+}
+i.icon.sourcetree:before {
+  content: "\f7d3";
 }
 i.icon.speakap:before {
   content: "\f3f3";
@@ -5893,6 +6205,9 @@ i.icon.superpowers:before {
 i.icon.supple:before {
   content: "\f3f9";
 }
+i.icon.suse:before {
+  content: "\f7d6";
+}
 i.icon.teamspeak:before {
   content: "\f4f9";
 }
@@ -5910,6 +6225,9 @@ i.icon.themeco:before {
 }
 i.icon.themeisle:before {
   content: "\f2b2";
+}
+i.icon.think.peaks:before {
+  content: "\f731";
 }
 i.icon.trade.federation:before {
   content: "\f513";
@@ -5941,6 +6259,9 @@ i.icon.typo3:before {
 i.icon.uber:before {
   content: "\f402";
 }
+i.icon.ubuntu:before {
+  content: "\f7df";
+}
 i.icon.uikit:before {
   content: "\f403";
 }
@@ -5950,8 +6271,14 @@ i.icon.uniregistry:before {
 i.icon.untappd:before {
   content: "\f405";
 }
+i.icon.ups:before {
+  content: "\f7e0";
+}
 i.icon.usb:before {
   content: "\f287";
+}
+i.icon.usps:before {
+  content: "\f7e1";
 }
 i.icon.ussunnah:before {
   content: "\f407";
@@ -6040,6 +6367,9 @@ i.icon.wpexplorer:before {
 i.icon.wpforms:before {
   content: "\f298";
 }
+i.icon.wpressr:before {
+  content: "\f3e4";
+}
 i.icon.xbox:before {
   content: "\f412";
 }
@@ -6060,6 +6390,9 @@ i.icon.yandex:before {
 }
 i.icon.yandex.international:before {
   content: "\f414";
+}
+i.icon.yarn:before {
+  content: "\f7e3";
 }
 i.icon.yelp:before {
   content: "\f1e9";

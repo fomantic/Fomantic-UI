@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Form Validation
+ * # Semantic UI 2.7.2 - Form Validation
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -271,7 +271,7 @@ $.fn.form = function(parameters) {
             if(!$field || $field.length === 0) {
               return true;
             }
-            else if($field.is('input[type="checkbox"]')) {
+            else if($field.is(selector.checkbox)) {
               return !$field.is(':checked');
             }
             else {
@@ -552,10 +552,13 @@ $.fn.form = function(parameters) {
             }
             $.each(validation, function(fieldName, field) {
               identifier = field.identifier || fieldName;
-              if( module.get.field(identifier)[0] == $field[0] ) {
-                field.identifier = identifier;
-                fieldValidation = field;
-              }
+              $.each(module.get.field(identifier), function(index, groupField) {
+                if(groupField == $field[0]) {
+                  field.identifier = identifier;
+                  fieldValidation = field;
+                  return false;
+                }
+              });
             });
             return fieldValidation || false;
           },
@@ -701,7 +704,7 @@ $.fn.form = function(parameters) {
             }
             validation = $.extend({}, validation, newValidation);
           },
-          prompt: function(identifier, errors) {
+          prompt: function(identifier, errors, internal) {
             var
               $field       = module.get.field(identifier),
               $fieldGroup  = $field.closest($group),
@@ -713,9 +716,11 @@ $.fn.form = function(parameters) {
               : errors
             ;
             module.verbose('Adding field error state', identifier);
-            $fieldGroup
-              .addClass(className.error)
-            ;
+            if(!internal) {
+              $fieldGroup
+                  .addClass(className.error)
+              ;
+            }
             if(settings.inline) {
               if(!promptExists) {
                 $prompt = settings.templates.prompt(errors);
@@ -977,24 +982,35 @@ $.fn.form = function(parameters) {
               module.debug('Using field name as identifier', identifier);
               field.identifier = identifier;
             }
-            if($field.prop('disabled')) {
+            var isDisabled = true;
+            $.each($field, function(){
+                if(!$(this).prop('disabled')) {
+                  isDisabled = false;
+                  return false;
+                }
+            });
+            if(isDisabled) {
               module.debug('Field is disabled. Skipping', identifier);
-              fieldValid = true;
             }
             else if(field.optional && module.is.blank($field)){
               module.debug('Field is optional and blank. Skipping', identifier);
-              fieldValid = true;
             }
             else if(field.depends && module.is.empty($dependsField)) {
               module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
-              fieldValid = true;
             }
             else if(field.rules !== undefined) {
+              $field.closest($group).removeClass(className.error);
               $.each(field.rules, function(index, rule) {
-                if( module.has.field(identifier) && !( module.validate.rule(field, rule) ) ) {
-                  module.debug('Field is invalid', identifier, rule.type);
-                  fieldErrors.push(module.get.prompt(rule, field));
-                  fieldValid = false;
+                if( module.has.field(identifier)) {
+                  var invalidFields = module.validate.rule(field, rule,true) || [];
+                  if (invalidFields.length>0){
+                    module.debug('Field is invalid', identifier, rule.type);
+                    fieldErrors.push(module.get.prompt(rule, field));
+                    fieldValid = false;
+                    if(showErrors){
+                      $(invalidFields).closest($group).addClass(className.error);
+                    }
+                  }
                 }
               });
             }
@@ -1007,7 +1023,7 @@ $.fn.form = function(parameters) {
             else {
               if(showErrors) {
                 formErrors = formErrors.concat(fieldErrors);
-                module.add.prompt(identifier, fieldErrors);
+                module.add.prompt(identifier, fieldErrors, true);
                 settings.onInvalid.call($field, fieldErrors);
               }
               return false;
@@ -1016,26 +1032,41 @@ $.fn.form = function(parameters) {
           },
 
           // takes validation rule and returns whether field passes rule
-          rule: function(field, rule) {
+          rule: function(field, rule, internal) {
             var
               $field       = module.get.field(field.identifier),
               type         = rule.type,
-              value        = $field.val(),
-              isValid      = true,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
-              ruleFunction = settings.rules[ruleName]
+              ruleFunction = settings.rules[ruleName],
+              invalidFields = [],
+              isRadio = $field.is(selector.radio),
+              isValid = function(field){
+                var value = (isRadio ? $(field).filter(':checked').val() : $(field).val());
+                // cast to string avoiding encoding special values
+                value = (value === undefined || value === '' || value === null)
+                    ? ''
+                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                ;
+                return ruleFunction.call(field, value, ancillary);
+              }
             ;
             if( !$.isFunction(ruleFunction) ) {
               module.error(error.noRule, ruleName);
               return;
             }
-            // cast to string avoiding encoding special values
-            value = (value === undefined || value === '' || value === null)
-              ? ''
-              : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
-            ;
-            return ruleFunction.call($field, value, ancillary);
+            if(isRadio) {
+              if (!isValid($field)) {
+                invalidFields = $field;
+              }
+            } else {
+              $.each($field, function (index, field) {
+                if (!isValid(field)) {
+                  invalidFields.push(field);
+                }
+              });
+            }
+            return internal ? invalidFields : !(invalidFields.length>0);
           }
         },
 

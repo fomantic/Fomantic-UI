@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Form
+ * # Semantic UI 2.7.2 - Form
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -720,6 +720,12 @@
 .ui.inverted.form .inline.field > label,
 .ui.inverted.form .inline.field > p {
   color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.loading.form {
+  color: #FFFFFF;
+}
+.ui.inverted.loading.form:before {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 /* Inverted Field */
