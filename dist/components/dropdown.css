@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Dropdown
+ * # Semantic UI 2.7.2 - Dropdown
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -1176,9 +1176,12 @@ select.ui.dropdown {
 }
 .ui.simple.dropdown .menu {
   position: absolute;
+  
+/* IE hack to make dropdown icons appear inline */
+  display: -ms-inline-flexbox !important;
   display: block;
   overflow: hidden;
-  top: -9999px !important;
+  top: -9999px;
   opacity: 0;
   width: 0;
   height: 0;
@@ -1196,7 +1199,7 @@ select.ui.dropdown {
   overflow: visible;
   width: auto;
   height: auto;
-  top: 100% !important;
+  top: 100%;
   opacity: 1;
 }
 .ui.simple.dropdown > .menu > .item:active > .menu,

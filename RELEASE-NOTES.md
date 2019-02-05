@@ -1,5 +1,74 @@
 ## RELEASE NOTES
 
+### Version 2.7.2 - February 5, 2019
+
+**Bugs**
+- **Modal** - Fixed issue which made modals close when dragging the scrollbar **Thanks [@lubber-de](https://github.com/lubber-de)** [437](https://github.com/fomantic/Fomantic-UI/pull/437)
+- **Modal** - Fixed issue that didn't reactivate the approve and deny event handlers if `onHide` returned false **Thanks [@lubber-de](https://github.com/lubber-de)** [434](https://github.com/fomantic/Fomantic-UI/pull/434)
+- **Icons** - Fixed issue causing icon colors to be overwritten by other components text color **Thanks [@lubber-de](https://github.com/lubber-de)** [438](https://github.com/fomantic/Fomantic-UI/pull/438)
+- **Icons** - Made `link` and `disabled` work together correctly **Thanks [@lubber-de](https://github.com/lubber-de)** [344](https://github.com/fomantic/Fomantic-UI/pull/344)
+- **Checkbox** - Made `onChange` only call once and not call when `set checked` is used **Thanks [@lubber-de](https://github.com/lubber-de)** [403](https://github.com/fomantic/Fomantic-UI/pull/403)
+- **Dimmer** - Show correct scrollbar on inverted dimmers **Thanks [@lubber-de](https://github.com/lubber-de)** [431](https://github.com/fomantic/Fomantic-UI/pull/431)
+- **Progress** - Fixed bug which showed a slight progress when the progress bar wasn't initialized **Thanks [@lubber-de](https://github.com/lubber-de)** [425](https://github.com/fomantic/Fomantic-UI/pull/425)
+- **Progress** - Fixed 0% display and "inverted indicating" label color **Thanks [@lubber-de](https://github.com/lubber-de)** [412](https://github.com/fomantic/Fomantic-UI/pull/412)
+- **Form Validation** - Fixed custom rule not getting checked radio value **Thanks [@lubber-de](https://github.com/lubber-de)** [419](https://github.com/fomantic/Fomantic-UI/pull/419)
+- **From Validation** - Fixed issue which lead to validation not respecting each field in array inputs **Thanks [@lubber-de](https://github.com/lubber-de)** [387](https://github.com/fomantic/Fomantic-UI/pull/387)
+- **Form Validation** - Fixed radio buttons not getting validated if first one is disabled **Thanks [@lubber-de](https://github.com/lubber-de)** [372](https://github.com/fomantic/Fomantic-UI/pull/372)
+- **Transition** - Fixed issues which where caused because the transition module wasn't aware of inline styles and stopped it showing hidden tags like `<script>` **Thanks [@lubber-de](https://github.com/lubber-de)** [357](https://github.com/fomantic/Fomantic-UI/pull/357)
+- **Menu** - Fixed bug which made colors not be applied to secondary menus **Thanks [@lubber-de](https://github.com/lubber-de)** [409](https://github.com/fomantic/Fomantic-UI/pull/409)
+- **Menu** - Fixed labels in secondary pointing menu items being misaligned **Thanks [@lubber-de](https://github.com/lubber-de)** [378](https://github.com/fomantic/Fomantic-UI/pull/378)
+- **Menu** - Corrected wrong border being applied for inverted pointing menus **Thanks [@lubber-de](https://github.com/lubber-de)** [380](https://github.com/fomantic/Fomantic-UI/pull/380)
+- **Menu** - Fixed naming conflict with secondary color name **Thanks [@lubber-de](https://github.com/lubber-de)** [366](https://github.com/fomantic/Fomantic-UI/pull/366)
+- **Menu** - Fixed last item in secondary compact menus not having bottom and top left border radius **Thanks [@lubber-de](https://github.com/lubber-de)** [351](https://github.com/fomantic/Fomantic-UI/pull/351)
+- **Menu** - Icons in menus with different sizes will keep their auto width **Thanks [@lubber-de](https://github.com/lubber-de)** [345](https://github.com/fomantic/Fomantic-UI/pull/345)
+- **Menu** - Corrected inverted disabled items in menus **Thanks [@lubber-de](https://github.com/lubber-de)** [347](https://github.com/fomantic/Fomantic-UI/pull/347)
+- **Popup** - Fixed `z-index` of popup so it appears above other components **Thanks [@lubber-de](https://github.com/lubber-de)** [395](https://github.com/fomantic/Fomantic-UI/pull/395) & [350](https://github.com/fomantic/Fomantic-UI/pull/350)
+- **Input** - Made inverted transparent input in forms appear white **Thanks [@lubber-de](https://github.com/lubber-de)** [392](https://github.com/fomantic/Fomantic-UI/pull/392)
+- **Label** - Fixed cursor for link corner label icons **Thanks [@lubber-de](https://github.com/lubber-de)** [369](https://github.com/fomantic/Fomantic-UI/pull/369)
+- **Label** - Fixed image position/size in labels within menu items **Thanks [@lubber-de](https://github.com/lubber-de)** [337](https://github.com/fomantic/Fomantic-UI/pull/337)
+- **Dropdown** - Allow a real zero to be a selectable value in 'set selected' **Thanks [@lubber-de](https://github.com/lubber-de)** [370](https://github.com/fomantic/Fomantic-UI/pull/370)
+- **Dropdown** - Fixed issue which made dropdowns not use the class names from the settings for templates **Thanks [@lubber-de](https://github.com/lubber-de)** [358](https://github.com/fomantic/Fomantic-UI/pull/358)
+- **Dropdown** - Fixed multi select dropdowns deleting last selected item when deleting text from search input **Thanks [@lubber-de](https://github.com/lubber-de)** [352](https://github.com/fomantic/Fomantic-UI/pull/352)
+- **Dropdown** - Fixed simple dropdown positioning in vertical menus **Thanks [@lubber-de](https://github.com/lubber-de)** [339](https://github.com/fomantic/Fomantic-UI/pull/339)
+- **Dropdown** - Fixed bug which would prevent dropdown items from rendering if the value was an integer **Thanks [@lubber-de](https://github.com/lubber-de)** [381](https://github.com/fomantic/Fomantic-UI/pull/381)
+- **Dimmer** - Fixed issue with blurred dimmer which left `z-index` stacking side effects **Thanks [@lubber-de](https://github.com/lubber-de)** [371](https://github.com/fomantic/Fomantic-UI/pull/371)
+- **Segment** - Fixed naming conflict with secondary color name **Thanks [@lubber-de](https://github.com/lubber-de)** [366](https://github.com/fomantic/Fomantic-UI/pull/366)
+- **Loader** - Fixed elastic loader in Firefox **Thanks [@lubber-de](https://github.com/lubber-de)** [363](https://github.com/fomantic/Fomantic-UI/pull/363)
+- **Loader** - Fixed default loader color settings for dimmers used with modals **Thanks [@lubber-de](https://github.com/lubber-de)** [359](https://github.com/fomantic/Fomantic-UI/pull/359)
+- **Button** - Fixed loading icon position while rotating **Thanks [@lubber-de](https://github.com/lubber-de)** [361](https://github.com/fomantic/Fomantic-UI/pull/361)
+- **Button** - Fixed attached buttons `z-index` when used under dropdowns in menus **Thanks [@lubber-de](https://github.com/lubber-de)** [333](https://github.com/fomantic/Fomantic-UI/pull/333)
+- **Button** - Fixed button font size when within menu items **Thanks [@lubber-de](https://github.com/lubber-de)** [334](https://github.com/fomantic/Fomantic-UI/pull/334)
+- **Sidebar** - Sidebar will now respect a change of the closable setting **Thanks [@lubber-de](https://github.com/lubber-de)** [335](https://github.com/fomantic/Fomantic-UI/pull/335)
+- **Table** - Fixed colors not being applied to striped, basic, selectable, stacked and definition tables **Thanks [@lubber-de](https://github.com/lubber-de)** [332](https://github.com/fomantic/Fomantic-UI/pull/332)
+- **Form** - Fixed issue which caused checkboxes and radios with errors to only reset if the first option was selected **Thanks [@lubber-de](https://github.com/lubber-de)** [349](https://github.com/fomantic/Fomantic-UI/pull/349)
+- **Form** - Fixed issue with inverted loader not being applied to inverted forms (normal loader was applied instead) **Thanks [@lubber-de](https://github.com/lubber-de)** [346](https://github.com/fomantic/Fomantic-UI/pull/346)
+- **List** - Fixed issue which made some lists turn invisible **Thanks [@lubber-de](https://github.com/lubber-de)** [354](https://github.com/fomantic/Fomantic-UI/pull/354)
+- **List** - Fixed loading icon position when used as the item point **Thanks [@lubber-de](https://github.com/lubber-de)** [336](https://github.com/fomantic/Fomantic-UI/pull/336)
+- **Header** - Fixed attached inverted variation not having the same background color as other inverted components **Thanks [@lubber-de](https://github.com/lubber-de)** [338](https://github.com/fomantic/Fomantic-UI/pull/338)
+- **Search** - Fixed `onSelect` not returning the correct item when categories was empty **Thanks [@lubber-de](https://github.com/lubber-de)** [343](https://github.com/fomantic/Fomantic-UI/pull/343)
+- **Card** - Fixed button attached colored buttons showing a grey line **Thanks [@lubber-de](https://github.com/lubber-de)** [457](https://github.com/fomantic/Fomantic-UI/pull/457)
+
+**Enhancements**
+- **Icons** - Update icons to FontAwesome 5.7 **Thanks [@hammy2899](https://github.com/hammy2899)** [446](https://github.com/fomantic/Fomantic-UI/pull/446)
+- **Reset** - Update reset to normalize 8.0.1 **Thanks [@lubber-de](https://github.com/lubber-de)** [443](https://github.com/fomantic/Fomantic-UI/pull/443)
+- **Dropdown** - Added support for ignoring diacritics while searching **Thanks [@lubber-de](https://github.com/lubber-de)** [422](https://github.com/fomantic/Fomantic-UI/pull/422)
+- **Dropdown** - Sanitize possible given text values **Thanks [@lubber-de](https://github.com/lubber-de)** [420](https://github.com/fomantic/Fomantic-UI/pull/420)
+- **Dropdown** - Dropdown will now use the class name from settings for the delete icon instead of being hardcoded **Thanks [@lubber-de](https://github.com/lubber-de)** [389](https://github.com/fomantic/Fomantic-UI/pull/389)
+- **Search** - Added support for ignoring diacritics while searching **Thanks [@lubber-de](https://github.com/lubber-de)** [422](https://github.com/fomantic/Fomantic-UI/pull/422)
+- **Build** - Removed `gulp-help` dependency (We recommend you use `gulp --tasks` to list tasks) **Thanks [@ColinFrick](https://github.com/ColinFrick)** [440](https://github.com/fomantic/Fomantic-UI/pull/440)
+- **Segment** - Added stackable horizontal segments **Thanks [@lubber-de](https://github.com/lubber-de)** [398](https://github.com/fomantic/Fomantic-UI/pull/398)
+- **Label** - Added bottom floated labels **Thanks [@lubber-de](https://github.com/lubber-de)** [430](https://github.com/fomantic/Fomantic-UI/pull/430)
+- **Label** - Added left and right aligned floated labels **Thanks [@lubber-de](https://github.com/lubber-de)** [418](https://github.com/fomantic/Fomantic-UI/pull/418)
+- **Label** - Floating labels don't wrap when they have whitespace (especially while including icons) **Thanks [@lubber-de](https://github.com/lubber-de)** [404](https://github.com/fomantic/Fomantic-UI/pull/404)
+- **Label** - Improved margin placement for icons when placed after text **Thanks [@exoego](https://github.com/exoego)** [388](https://github.com/fomantic/Fomantic-UI/pull/388)
+- **Modal** - Added new `restoreFocus` option to restore focus when a modal closes **Thanks [@lubber-de](https://github.com/lubber-de)** [433](https://github.com/fomantic/Fomantic-UI/pull/433)
+- **Text** - Added size variants **Thanks [@lubber-de](https://github.com/lubber-de)** [414](https://github.com/fomantic/Fomantic-UI/pull/414)
+- **Step** - Made grouped steps wrap by default **Thanks [@lubber-de](https://github.com/lubber-de)** [397](https://github.com/fomantic/Fomantic-UI/pull/397)
+- **Step** - Added icon size variation **Thanks [@exoego](https://github.com/exoego)** [348](https://github.com/fomantic/Fomantic-UI/pull/348)
+- **List** - Added suffixed ordered list variation **Thanks [@exoego](https://github.com/exoego)** [355](https://github.com/fomantic/Fomantic-UI/pull/355)
+- **List** - Made horizontal divided lists wrap by default **Thanks [@lubber-de](https://github.com/lubber-de)** [353](https://github.com/fomantic/Fomantic-UI/pull/353)
+- **Input** - Added support for error classes on input action buttons (shows red border around button) **Thanks [@lubber-de](https://github.com/lubber-de)** [329](https://github.com/fomantic/Fomantic-UI/pull/329)
+
 ### Version 2.7.1 - December 24, 2018
 
 **Bugs**
@@ -12,7 +81,7 @@ With 2019 around the corner and a lot of discussion we (core contributors) have 
 
 **NOTES:**
 - With this release we removed the dependency of `prompt-sui` which removes the child dependency of `event-stream` this ensures that the library won't be downloading any (now deprecated) malicious code. If you want to learn more about the recent security issues with `event-stream` please read [this issue](https://github.com/fomantic/Fomantic-UI/issues/268).
-- In this release we had a big focus on removing a lot of the `!important` usage which inturn produced lots of issues. Now with a big help from our core contributors we have removed ~85% of the usage and reduced the complexity of a lot of the color code base which makes it easier to make changes and helps reduce the size of the general code base aswell as removing duplicate code.
+- In this release we had a big focus on removing a lot of the `!important` usage which in turn produced lots of issues. Now with a big help from our core contributors we have removed ~85% of the usage and reduced the complexity of a lot of the color code base which makes it easier to make changes and helps reduce the size of the general code base as well as removing duplicate code.
 
 **UPGRADE NOTES:**
 Gulp 4.0 introduced a new syntax to define tasks, that's why we had to introduce some changes to our gulpfile.js.
@@ -46,7 +115,7 @@ For example if your fomantic destination directory is `semantic`:
 - **TextArea** - Added support for corner labels and icons **Thanks [@lubber-de](https://github.com/lubber-de)** [#276](https://github.com/fomantic/Fomantic-UI/pull/276)
 - **Search** - Added support for API results to be an array instead of needing be wrapped **Thanks [@lubber-de](https://github.com/lubber-de)** [#263](https://github.com/fomantic/Fomantic-UI/issues/263)
 - **Label** - Added support for inverted, basic grouping and basic tag labels **Thanks [@lubber-de](https://github.com/lubber-de)** [#116](https://github.com/fomantic/Fomantic-UI/issues/116)
-- **Toast** - Correct the colors and make them more consistant with other components **Thanks [@lubber-de](https://github.com/lubber-de)** [#197](https://github.com/fomantic/Fomantic-UI/pull/197)
+- **Toast** - Correct the colors and make them more consistent with other components **Thanks [@lubber-de](https://github.com/lubber-de)** [#197](https://github.com/fomantic/Fomantic-UI/pull/197)
 - **Table** - Added ability to use all global colors in table cells **Thanks [@lubber-de](https://github.com/lubber-de)** [#261](https://github.com/fomantic/Fomantic-UI/pull/261)
 - **Text** - Added ability to add color to specific text **Thanks [@lubber-de](https://github.com/lubber-de)** [#261](https://github.com/fomantic/Fomantic-UI/pull/261)
 - **Calendar** - Added ability to add time gaps on time selector **Thanks [@prudho](https://github.com/prudho)** [#198](https://github.com/fomantic/Fomantic-UI/pull/198)
@@ -62,7 +131,7 @@ For example if your fomantic destination directory is `semantic`:
 - **Dropdown** - Fixed clearable dropdown initialized with HTML select always showing the clear icon **Thanks [@lubber-de](https://github.com/lubber-de)** [#271](https://github.com/fomantic/Fomantic-UI/issues/271)
 - **Dropdown** - Fixed issue with enter key and multiple variation dropdowns with `allowAdditions` **Thanks [@lubber-de](https://github.com/lubber-de)** [#250](https://github.com/fomantic/Fomantic-UI/pull/250)
 - **Modal** - Fixed top header border radius **Thanks [@lubber-de](https://github.com/lubber-de)** [#308](https://github.com/fomantic/Fomantic-UI/issues/308)
-- **Modal** - Fixed issue with modal dimnmers closing when clicked even when `onHide` returned `false` when `allowMultiple` was `true` **Thanks [@lubber-de](https://github.com/lubber-de)** [#284](https://github.com/fomantic/Fomantic-UI/issues/284)
+- **Modal** - Fixed issue with modal dimmers closing when clicked even when `onHide` returned `false` when `allowMultiple` was `true` **Thanks [@lubber-de](https://github.com/lubber-de)** [#284](https://github.com/fomantic/Fomantic-UI/issues/284)
 - **Modal** - Fixed touch scrolling issue for dropdown, focused input and  content scrolling **Thanks [@lubber-de](https://github.com/lubber-de)** [#273](https://github.com/fomantic/Fomantic-UI/pull/273)
 - **Checkbox** - Support onChange for cursor key navigation **Thanks [@lubber-de](https://github.com/lubber-de)** [#295](https://github.com/fomantic/Fomantic-UI/pull/295)
 - **Visibility** - Fixed issue with sticky content having large placeholders **Thanks [@hammy2899](https://github.com/hammy2899)** [#296](https://github.com/fomantic/Fomantic-UI/issues/296)
@@ -77,7 +146,7 @@ For example if your fomantic destination directory is `semantic`:
 **Security**
 - **Search** - Added more support for escaping insecure characters, handling untrusted data and preventing JS execution  **Thanks [@lubber-de](https://github.com/lubber-de)** [#298](https://github.com/fomantic/Fomantic-UI/pull/298)
 - **Dropdown** - Added more support for escaping insecure characters, handling untrusted data and preventing JS execution **Thanks [@lubber-de](https://github.com/lubber-de)** [#298](https://github.com/fomantic/Fomantic-UI/pull/298)
-- **Build** - Removed `prompt-sui` which inturn removes `event-stream` **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#309](https://github.com/fomantic/Fomantic-UI/pull/309)
+- **Build** - Removed `prompt-sui` which in turn removes `event-stream` **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#309](https://github.com/fomantic/Fomantic-UI/pull/309)
 
 ### Version 2.6.4 - November 15, 2018
 

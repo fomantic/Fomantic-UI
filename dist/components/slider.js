@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Slider
+ * # Semantic UI 2.7.2 - Slider
  * http://github.com/semantic-org/semantic-ui/
  *
  *

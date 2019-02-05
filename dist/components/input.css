@@ -1,5 +1,5 @@
 /*!
- * # Semantic UI 2.7.1 - Input
+ * # Semantic UI 2.7.2 - Input
  * http://github.com/semantic-org/semantic-ui/
  *
  *
@@ -199,6 +199,7 @@
       Transparent
 ---------------------*/
 
+.ui.transparent.input > textarea,
 .ui.transparent.input > input {
   border-color: transparent !important;
   background-color: transparent !important;
@@ -225,7 +226,8 @@
 .ui.transparent.inverted.input {
   color: #FFFFFF;
 }
-.ui.transparent.inverted.input > input {
+.ui.ui.transparent.inverted.input > textarea,
+.ui.ui.transparent.inverted.input > input {
   color: inherit;
 }
 .ui.transparent.inverted.input > input::-webkit-input-placeholder {
@@ -396,14 +398,17 @@
   left: 1px;
 }
 
-/* Labeled input error */
+/* Labeled and action input error */
+.ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
   border-top: 1px solid #E0B4B4;
   border-bottom: 1px solid #E0B4B4;
 }
+.ui.left.action.input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
   border-left: 1px solid #E0B4B4;
 }
+.ui.action.input.error:not(.left) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
   border-right: 1px solid #E0B4B4;
 }
