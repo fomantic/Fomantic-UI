@@ -276,7 +276,7 @@ $.fn.shape = function(parameters) {
               $module.css('width', newWidth + settings.jitter);
               module.verbose('Specifying width during animation', newWidth);
             }
-            if(settings.height != 'auto') {
+            if(settings.height !== 'auto') {
               $module.css('height', newHeight + settings.jitter);
               module.verbose('Specifying height during animation', newHeight);
             }
