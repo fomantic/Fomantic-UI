@@ -194,6 +194,9 @@ $.fn.shape = function(parameters) {
           },
           animating: function() {
             return $module.hasClass(className.animating);
+          },
+          hidden: function() {
+            return $module.closest(':hidden').length > 0;
           }
         },
 
@@ -304,113 +307,51 @@ $.fn.shape = function(parameters) {
         },
 
         flip: {
-
-          up: function() {
+          to: function(type,stage){
+            if(module.is.hidden()) {
+              module.debug('Module not visible', $nextSide);
+              return;
+            }
             if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
               module.debug('Side already visible', $nextSide);
               return;
             }
+            var
+              transform = module.get.transform[type]()
+            ;
             if( !module.is.animating()) {
-              module.debug('Flipping up', $nextSide);
-              var
-                transform = module.get.transform.up()
-              ;
+              module.debug('Flipping '+type, $nextSide);
               module.set.stageSize();
-              module.stage.above();
+              module.stage[stage]();
               module.animate(transform);
             }
             else {
-              module.queue('flip up');
+              module.queue('flip '+type);
             }
+          },
+
+          up: function() {
+            module.flip.to('up','above');
           },
 
           down: function() {
-            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
-              module.debug('Side already visible', $nextSide);
-              return;
-            }
-            if( !module.is.animating()) {
-              module.debug('Flipping down', $nextSide);
-              var
-                transform = module.get.transform.down()
-              ;
-              module.set.stageSize();
-              module.stage.below();
-              module.animate(transform);
-            }
-            else {
-              module.queue('flip down');
-            }
+            module.flip.to('down','below');
           },
 
           left: function() {
-            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
-              module.debug('Side already visible', $nextSide);
-              return;
-            }
-            if( !module.is.animating()) {
-              module.debug('Flipping left', $nextSide);
-              var
-                transform = module.get.transform.left()
-              ;
-              module.set.stageSize();
-              module.stage.left();
-              module.animate(transform);
-            }
-            else {
-              module.queue('flip left');
-            }
+            module.flip.to('left','left');
           },
 
           right: function() {
-            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
-              module.debug('Side already visible', $nextSide);
-              return;
-            }
-            if( !module.is.animating()) {
-              module.debug('Flipping right', $nextSide);
-              var
-                transform = module.get.transform.right()
-              ;
-              module.set.stageSize();
-              module.stage.right();
-              module.animate(transform);
-            }
-            else {
-              module.queue('flip right');
-            }
+            module.flip.to('right','right');
           },
 
           over: function() {
-            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
-              module.debug('Side already visible', $nextSide);
-              return;
-            }
-            if( !module.is.animating()) {
-              module.debug('Flipping over', $nextSide);
-              module.set.stageSize();
-              module.stage.behind();
-              module.animate(module.get.transform.over() );
-            }
-            else {
-              module.queue('flip over');
-            }
+            module.flip.to('over','behind');
           },
 
           back: function() {
-            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
-              module.debug('Side already visible', $nextSide);
-              return;
-            }
-            if( !module.is.animating()) {
-              module.debug('Flipping back', $nextSide);
-              module.set.stageSize();
-              module.stage.behind();
-              module.animate(module.get.transform.back() );
-            }
-            else {
-              module.queue('flip back');
-            }
+            module.flip.to('back','behind');
           }
 
         },
