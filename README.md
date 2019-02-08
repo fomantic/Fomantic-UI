@@ -15,7 +15,9 @@ A community fork of the popular Semantic-UI framework
 
 > *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
 >
-> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
+> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the > v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
+>
+> To be clear merging back into SUI is still our intention, read [this comment](https://github.com/fomantic/Fomantic-UI/issues/319#issuecomment-461736399) for more info
 
 ---
 
