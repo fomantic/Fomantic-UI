@@ -140,7 +140,7 @@
 @ribbonImageOffset: e(%("calc(%d - %d)", -@ribbonImageMargin, @ribbonTriangleSize));
 @rightRibbonImageOffset: e(%("calc(100%% + %d + %d)", @ribbonImageMargin, @ribbonTriangleSize));
 
-@ribbonTableMargin: @relativeMini; /* Rounding Offset on Triangle */
+@ribbonTableMargin: @relativeMedium; /* Rounding Offset on Triangle */
 @ribbonTableOffset: e(%("calc(%d - %d)", -@ribbonTableMargin, @ribbonTriangleSize));
 @rightRibbonTableOffset: e(%("calc(100%% + %d + %d)", @ribbonTableMargin, @ribbonTriangleSize));
 
