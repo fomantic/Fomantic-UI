@@ -361,12 +361,11 @@ $.fn.shape = function(parameters) {
           transform: {
             up: function() {
               var
-                translate = {
-                  z: $activeSide.outerHeight(true) / 2
-                }
+                    translateZ = $activeSide.outerHeight(true) / 2,
+                translateY = $nextSide.outerHeight(true) - translateZ
               ;
               return {
-                transform: 'translateY(' + translate.z + 'px) translateZ(-'+ translate.z + 'px) rotateX(-90deg)'
+                transform: 'translateY(' + translateY + 'px) translateZ(-'+ translateZ + 'px) rotateX(-90deg)'
               };
             },
 
@@ -383,12 +382,11 @@ $.fn.shape = function(parameters) {
 
             left: function() {
               var
-                translate = {
-                  z : $activeSide.outerWidth(true) / 2
-                }
+                  translateZ = $activeSide.outerWidth(true) / 2,
+                  translateX = $nextSide.outerWidth(true) - translateZ
               ;
               return {
-                transform: 'translateX(' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateY(90deg)'
+                transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)'
               };
             },
 
