@@ -636,7 +636,7 @@ $.fn.tab = function(parameters) {
           },
           defaultPath: function(tabPath) {
             var
-              $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + tabPath + '/"]').eq(0),
+              $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0),
               defaultTab  = $defaultNav.data(metadata.tab) || false
             ;
             if( defaultTab ) {
@@ -655,7 +655,7 @@ $.fn.tab = function(parameters) {
           },
           navElement: function(tabPath) {
             tabPath = tabPath || activeTabPath;
-            return $allModules.filter('[data-' + metadata.tab + '="' + tabPath + '"]');
+            return $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
           },
           tabElement: function(tabPath) {
             var
@@ -667,8 +667,8 @@ $.fn.tab = function(parameters) {
             tabPath        = tabPath || activeTabPath;
             tabPathArray   = module.utilities.pathToArray(tabPath);
             lastTab        = module.utilities.last(tabPathArray);
-            $fullPathTab   = $tabs.filter('[data-' + metadata.tab + '="' + tabPath + '"]');
-            $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + lastTab + '"]');
+            $fullPathTab   = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
+            $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(lastTab) + '"]');
             return ($fullPathTab.length > 0)
               ? $fullPathTab
               : $simplePathTab
