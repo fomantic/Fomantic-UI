@@ -577,7 +577,7 @@ $.api = $.fn.api = function(parameters) {
                 if(xhr !== undefined) {
                   module.debug('XHR produced a server error', status, httpMessage);
                   // make sure we have an error to display to console
-                  if( xhr.status != 200 && httpMessage !== undefined && httpMessage !== '') {
+                  if( (xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
                     module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                   }
                   settings.onError.call(context, errorMessage, $module, xhr);
