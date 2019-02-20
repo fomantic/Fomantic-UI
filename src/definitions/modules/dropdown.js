@@ -1669,7 +1669,7 @@ $.fn.dropdown = function(parameters) {
               $target      = $(event.target),
               $label       = $target.closest(selector.siblingLabel),
               inVisibleDOM = document.body.contains(event.target),
-              notOnLabel   = ($module.find($label).length === 0),
+              notOnLabel   = ($module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels)),
               notInMenu    = ($target.closest($menu).length === 0)
             ;
             callback = $.isFunction(callback)
