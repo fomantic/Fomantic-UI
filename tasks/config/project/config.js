@@ -109,7 +109,7 @@ module.exports = {
       // pass blank object to avoid causing errors
       config.permission     = {};
       config.hasPermissions = false;
-      config.parsedPermissions = false;
+      config.parsedPermissions = {};
     }
 
     /*--------------
