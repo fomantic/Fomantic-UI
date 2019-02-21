@@ -81,6 +81,7 @@ $.fn.dropdown = function(parameters) {
         activated       = false,
         itemActivated   = false,
         internalChange  = false,
+        iconClicked     = false,
         element         = this,
         instance        = $module.data(moduleNamespace),
 
@@ -1095,6 +1096,7 @@ $.fn.dropdown = function(parameters) {
           },
           icon: {
             click: function(event) {
+              iconClicked=true;
               if(module.has.search()) {
                 if(!module.is.active()) {
                     if(settings.showOnFocus){
@@ -3132,13 +3134,14 @@ $.fn.dropdown = function(parameters) {
             return ( $input.is('select') );
           },
           minCharacters: function(searchTerm) {
-            if(settings.minCharacters) {
+            if(settings.minCharacters && !iconClicked) {
               searchTerm = (searchTerm !== undefined)
                 ? String(searchTerm)
                 : String(module.get.query())
               ;
               return (searchTerm.length >= settings.minCharacters);
             }
+            iconClicked=false;
             return true;
           },
           firstLetter: function($item, letter) {
