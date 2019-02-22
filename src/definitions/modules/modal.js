@@ -401,6 +401,7 @@ $.fn.modal = function(parameters) {
               module.hideOthers(module.showModal);
             }
             else {
+              ignoreRepeatedEvents = false;
               if( settings.allowMultiple ) {
                 if ( module.others.active() ) {
                   $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
