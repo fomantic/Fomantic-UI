@@ -1286,6 +1286,9 @@ $.fn.calendar.settings = {
             continue;
           }
           if (j > 59) {
+            if (j < 99) {
+              j += 1900;
+            }
             year = j;
             numbers.splice(i, 1);
             break;
