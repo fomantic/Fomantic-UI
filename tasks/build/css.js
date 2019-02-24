@@ -77,7 +77,7 @@ function build(src, type, compress, config, opts) {
       compress ? config.paths.assets.compressed : config.paths.assets.uncompressed))
     .pipe(gulpif(compress, minifyCSS(settings.minify)))
     .pipe(gulpif(fileExtension, rename(fileExtension)))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
     .pipe(print(log.created))
     ;
@@ -104,7 +104,7 @@ function pack(type, compress) {
     .pipe(dedupe())
     .pipe(replace(assets.uncompressed, assets.packaged))
     .pipe(concatCSS(concatenatedCSS, settings.concatCSS))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulpif(compress, minifyCSS(settings.concatMinify)))
     .pipe(header(banner, settings.header))
     .pipe(gulp.dest(output.packaged))
