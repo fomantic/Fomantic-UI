@@ -205,6 +205,14 @@
   opacity: @checkboxIndeterminateCheckOpacity;
   color: @checkboxIndeterminateCheckColor;
 }
+.ui.indeterminate.toggle.checkbox {
+  & input:not([type=radio]):indeterminate ~ label:before {
+    background: @toggleCenterLaneBackground;
+  }
+  & input:not([type=radio]) ~ label:after {
+    left: @toggleCenterOffset;
+  }
+}
 
 /*--------------
   Active Focus

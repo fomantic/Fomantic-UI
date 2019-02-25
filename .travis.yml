@@ -12,7 +12,3 @@ cache: npm
 
 before_install:
   - sh preinstall.sh
-
-env:
-  global:
-    - NODE_ENV=production
