@@ -185,31 +185,31 @@
 
 /* Modal Width */
 @media only screen and (max-width : @largestMobileScreen) {
-  .ui.modal {
+  .ui.modal:not(.fullscreen) {
     width: @mobileWidth;
     margin: @mobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
-  .ui.modal {
+  .ui.modal:not(.fullscreen) {
     width: @tabletWidth;
     margin: @tabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
-  .ui.modal {
+  .ui.modal:not(.fullscreen) {
     width: @computerWidth;
     margin: @computerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
-  .ui.modal {
+  .ui.modal:not(.fullscreen) {
     width: @largeMonitorWidth;
     margin: @largeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
-  .ui.modal {
+  .ui.modal:not(.fullscreen) {
     width: @widescreenMonitorWidth;
     margin: @widescreenMonitorMargin;
   }
@@ -233,6 +233,18 @@
   .ui.modal > .header {
     padding: @mobileHeaderPadding !important;
     padding-right: @closeHitbox !important;
+  }
+  .ui.entire.fullscreen.modal .content.content.content {
+    min-height: @entireFullscreenScrollingContentMaxHeightMobile;
+  }
+  .ui.legacy.entire.fullscreen.modal .content.content.content {
+    min-height: @legacyEntireFullscreenScrollingContentMaxHeightMobile;
+  }
+  .ui.entire.fullscreen.modal .scrolling.content.content.content {
+    max-height: @entireFullscreenScrollingContentMaxHeightMobile;
+  }
+  .ui.legacy.entire.fullscreen.modal .scrolling.content.content.content {
+    max-height: @legacyEntireFullscreenScrollingContentMaxHeightMobile;
   }
   .ui.modal > .content {
     display: block;
@@ -332,7 +344,15 @@
   top: auto !important;
 }
 
-
+.ui.legacy.entire.fullscreen.modal {
+  margin-top: -@scrollingMargin !important;
+}
+.ui.legacy.entire.fullscreen.modal .content {
+  min-height: @legacyEntireFullscreenScrollingContentMaxHeight;
+}
+.ui.legacy.entire.fullscreen.modal .scrolling.content {
+  max-height: @legacyEntireFullscreenScrollingContentMaxHeight;
+}
 
 /*******************************
              States
@@ -391,7 +411,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
 }
-.modals.dimmer .ui.scrolling.modal {
+.modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
   margin: @scrollingMargin auto;
 }
 
@@ -403,7 +423,7 @@
 .scrolling.undetached.dimmable.dimmed > .dimmer {
   overflow: hidden;
 }
-.scrolling.undetached.dimmable .ui.scrolling.modal {
+.scrolling.undetached.dimmable .ui.scrolling.modal:not(.fullscreen) {
   position: absolute;
   left: 50%;
   margin-top: @scrollingMargin !important;
@@ -414,15 +434,28 @@
   max-height: @scrollingContentMaxHeight;
   overflow: auto;
 }
+.ui.entire.fullscreen.modal .content {
+  min-height: @entireFullscreenScrollingContentMaxHeight;
+}
+.ui.entire.fullscreen.modal .scrolling.content {
+  max-height: @entireFullscreenScrollingContentMaxHeight;
+}
 
 /*--------------
    Full Screen
 ---------------*/
 
 .ui.fullscreen.modal {
-  width: @fullScreenWidth !important;
-  left: @fullScreenOffset !important;
+  width: @fullScreenWidth;
+  left: @fullScreenOffset;
   margin: @fullScreenMargin;
+}
+.ui.entire.fullscreen.modal {
+  width: 100%;
+  left: 0;
+  margin: 0 auto;
+  top: 0;
+  border-radius:0;
 }
 .ui.fullscreen.modal > .header {
   padding-right: @closeHitbox;
