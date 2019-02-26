@@ -127,10 +127,8 @@
 
 /* Scrolling Content */
 @scrollingContentMaxHeight: calc(80vh - 10rem);
-@entireFullscreenScrollingContentMaxHeight: calc(80vh - 9rem);
-@entireFullscreenScrollingContentMaxHeightMobile: calc(80vh - 8rem);
-@legacyEntireFullscreenScrollingContentMaxHeight: calc(80vh - 9.1rem);
-@legacyEntireFullscreenScrollingContentMaxHeightMobile: calc(80vh - 8.1rem);
+@entireFullscreenScrollingContentMaxHeight: calc(100vh - 9.1rem);
+@entireFullscreenScrollingContentMaxHeightMobile: calc(100vh - 8.1rem);
 
 /*-------------------
       Variations
