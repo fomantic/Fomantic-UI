@@ -234,11 +234,11 @@
     padding: @mobileHeaderPadding !important;
     padding-right: @closeHitbox !important;
   }
-  .ui.entire.fullscreen.modal .content.content.content {
-    min-height: @entireFullscreenScrollingContentMaxHeightMobile;
+  .ui.overlay.fullscreen.modal .content.content.content {
+    min-height: @overlayFullscreenScrollingContentMaxHeightMobile;
   }
-  .ui.entire.fullscreen.modal .scrolling.content.content.content {
-    max-height: @entireFullscreenScrollingContentMaxHeightMobile;
+  .ui.overlay.fullscreen.modal .scrolling.content.content.content {
+    max-height: @overlayFullscreenScrollingContentMaxHeightMobile;
   }
   .ui.modal > .content {
     display: block;
@@ -338,7 +338,7 @@
   top: auto !important;
 }
 
-.ui.legacy.entire.fullscreen.modal {
+.ui.legacy.overlay.fullscreen.modal {
   margin-top: -@scrollingMargin !important;
 }
 
@@ -422,11 +422,11 @@
   max-height: @scrollingContentMaxHeight;
   overflow: auto;
 }
-.ui.entire.fullscreen.modal .content {
-  min-height: @entireFullscreenScrollingContentMaxHeight;
+.ui.overlay.fullscreen.modal .content {
+  min-height: @overlayFullscreenScrollingContentMaxHeight;
 }
-.ui.entire.fullscreen.modal .scrolling.content {
-  max-height: @entireFullscreenScrollingContentMaxHeight;
+.ui.overlay.fullscreen.modal .scrolling.content {
+  max-height: @overlayFullscreenScrollingContentMaxHeight;
 }
 
 /*--------------
@@ -438,7 +438,7 @@
   left: @fullScreenOffset;
   margin: @fullScreenMargin;
 }
-.ui.entire.fullscreen.modal {
+.ui.overlay.fullscreen.modal {
   width: 100%;
   left: 0;
   margin: 0 auto;
