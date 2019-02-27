@@ -126,7 +126,9 @@
 @mobileScrollingMargin: @mobileTopAlignedMargin;
 
 /* Scrolling Content */
-@scrollingContentMaxHeight: calc(80vh - 10em);
+@scrollingContentMaxHeight: calc(80vh - 10rem);
+@overlayFullscreenScrollingContentMaxHeight: calc(100vh - 9.1rem);
+@overlayFullscreenScrollingContentMaxHeightMobile: calc(100vh - 8.1rem);
 
 /*-------------------
       Variations
