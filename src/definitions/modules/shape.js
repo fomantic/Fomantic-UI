@@ -57,6 +57,7 @@ $.fn.shape = function(parameters) {
         selector      = settings.selector,
         error         = settings.error,
         className     = settings.className,
+        regExp        = settings.regExp,
 
         // define namespaces for modules
         eventNamespace  = '.' + namespace,
@@ -197,6 +198,20 @@ $.fn.shape = function(parameters) {
           },
           hidden: function() {
             return $module.closest(':hidden').length > 0;
+          },
+          mobile: function() {
+            var
+                userAgent    = navigator.userAgent,
+                isMobile     = userAgent.match(regExp.mobile)
+            ;
+            if(isMobile) {
+              module.verbose('Browser was found to be mobile', userAgent);
+              return true;
+            }
+            else {
+              module.verbose('Browser is not mobile, using regular transition', userAgent);
+              return false;
+            }
           }
         },
 
@@ -764,7 +779,7 @@ $.fn.shape = function(parameters) {
           $inputs.blur();
           setTimeout(function(){
             module.invoke(query);
-          }, 100);
+          }, module.is.mobile() ? 150:100);
         } else {
           module.invoke(query);
         }
@@ -835,6 +850,10 @@ $.fn.shape.settings = {
     hidden    : 'hidden',
     loading   : 'loading',
     active    : 'active'
+  },
+
+  regExp: {
+    mobile       : /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
   },
 
   // selectors used
