@@ -323,7 +323,10 @@
 .ui.inverted.dimmer > .ui.basic.modal > .header {
   color: @basicInvertedModalHeaderColor;
 }
-
+.ui.modal:not(.aligned):not(.legacy):not(.animating){
+  top: 50%;
+  transform: translateY(-50%);
+}
 /* Resort to margin positioning if legacy */
 .ui.legacy.legacy.modal,
 .ui.legacy.legacy.page.dimmer > .ui.modal {
