@@ -204,7 +204,8 @@
 
 @cornerIconSize: @relativeLarge;
 @cornerIconTopOffset: @relative9px;
-@cornerIconLeftOffset: @relative11px;
+@cornerIconLeftOffset: @relative8px;
+@cornerIconRightOffset: @relative8px;
 
 /* Corner Text */
 @cornerTextWidth: 3em;

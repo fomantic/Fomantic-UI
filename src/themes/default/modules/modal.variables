@@ -117,16 +117,20 @@
 @basicInvertedModalColor: @textColor;
 @basicInvertedModalHeaderColor: @darkTextColor;
 
-/* Top Aligned */
+/* Aligned */
 @topAlignedMargin: 5vh;
 @mobileTopAlignedMargin: 1rem;
+@bottomAlignedMargin: @topAlignedMargin;
+@mobileBottomAlignedMargin: @mobileTopAlignedMargin;
 
 /* Scrolling Margin */
 @scrollingMargin: 1rem;
 @mobileScrollingMargin: @mobileTopAlignedMargin;
 
 /* Scrolling Content */
-@scrollingContentMaxHeight: calc(80vh - 10em);
+@scrollingContentMaxHeight: calc(80vh - 10rem);
+@overlayFullscreenScrollingContentMaxHeight: calc(100vh - 9.1rem);
+@overlayFullscreenScrollingContentMaxHeightMobile: calc(100vh - 8.1rem);
 
 /*-------------------
       Variations
