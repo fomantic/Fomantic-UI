@@ -26,7 +26,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
 $.fn.shape = function(parameters) {
   var
     $allModules     = $(this),
-    $body           = $('body'),
 
     time            = new Date().getTime(),
     performance     = [],
