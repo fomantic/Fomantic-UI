@@ -2615,8 +2615,7 @@ $.fn.dropdown = function(parameters) {
           },
           selected: function(value, $selectedItem) {
             var
-              isMultiple = module.is.multiple(),
-              $userSelectedItem
+              isMultiple = module.is.multiple()
             ;
             $selectedItem = (settings.allowAdditions)
               ? $selectedItem || module.get.itemWithAdditions(value)
@@ -2823,7 +2822,6 @@ $.fn.dropdown = function(parameters) {
               hasCount    = (message.search('{count}') !== -1),
               hasMaxCount = (message.search('{maxCount}') !== -1),
               hasTerm     = (message.search('{term}') !== -1),
-              values,
               count,
               query
             ;
@@ -3511,9 +3509,6 @@ $.fn.dropdown = function(parameters) {
           hide: function(callback, $subMenu) {
             var
               $currentMenu = $subMenu || $menu,
-              duration = ($subMenu)
-                ? (settings.duration * 0.9)
-                : settings.duration,
               start = ($subMenu)
                 ? function() {}
                 : function() {
