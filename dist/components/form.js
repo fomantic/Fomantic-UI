@@ -764,12 +764,12 @@ $.fn.form = function(parameters) {
                 ? rule
                 : [rule]
             ;
-            if(rule == undefined) {
-              module.debug('Removed all rules');
-              validation[field].rules = [];
+            if(validation[field] === undefined || !Array.isArray(validation[field].rules)) {
               return;
             }
-            if(validation[field] == undefined || !Array.isArray(validation[field].rules)) {
+            if(rule === undefined) {
+              module.debug('Removed all rules');
+              validation[field].rules = [];
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
