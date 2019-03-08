@@ -1036,9 +1036,9 @@ $.fn.form = function(parameters) {
               ruleName     = module.get.ruleName(rule),
               ruleFunction = settings.rules[ruleName],
               invalidFields = [],
-              isRadio = $field.is(selector.radio),
+              isCheckbox = $field.is(selector.checkbox),
               isValid = function(field){
-                var value = (isRadio ? $(field).filter(':checked').val() : $(field).val());
+                var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
                     ? ''
@@ -1051,7 +1051,7 @@ $.fn.form = function(parameters) {
               module.error(error.noRule, ruleName);
               return;
             }
-            if(isRadio) {
+            if(isCheckbox) {
               if (!isValid($field)) {
                 invalidFields = $field;
               }
