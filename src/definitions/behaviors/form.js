@@ -716,7 +716,7 @@ $.fn.form = function(parameters) {
             module.verbose('Adding field error state', identifier);
             if(!internal) {
               $fieldGroup
-                  .addClass(className.error)
+                .addClass(className.error)
               ;
             }
             if(settings.inline) {
@@ -893,7 +893,7 @@ $.fn.form = function(parameters) {
                   module.verbose('Selecting radio value', value, $field);
                   $field.filter('[value="' + value + '"]')
                     .parent(selector.uiCheckbox)
-                      .checkbox('check')
+                    .checkbox('check')
                   ;
                 }
                 else if(isCheckbox) {
@@ -981,10 +981,10 @@ $.fn.form = function(parameters) {
             }
             var isDisabled = true;
             $.each($field, function(){
-                if(!$(this).prop('disabled')) {
-                  isDisabled = false;
-                  return false;
-                }
+              if(!$(this).prop('disabled')) {
+                isDisabled = false;
+                return false;
+              }
             });
             if(isDisabled) {
               module.debug('Field is disabled. Skipping', identifier);
@@ -1041,8 +1041,8 @@ $.fn.form = function(parameters) {
                 var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
-                    ? ''
-                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                  ? ''
+                  : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
                 ;
                 return ruleFunction.call(field, value, ancillary);
               }

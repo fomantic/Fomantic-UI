@@ -107,7 +107,7 @@ $.fn.toast = function(parameters) {
 
         close: function(callback) {
           if(module.closeTimer) {
-              clearTimeout(module.closeTimer);
+            clearTimeout(module.closeTimer);
           }
           callback = callback || function(){};
           module.remove.visible();
@@ -125,13 +125,13 @@ $.fn.toast = function(parameters) {
             var $content = $('<div/>').addClass(className.content);
             module.verbose('Creating toast');
             if(settings.closeIcon) {
-                $toast.append($close);
-                $toast.css('cursor','default');
+              $toast.append($close);
+              $toast.css('cursor','default');
             }
 
             var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
             if (iconClass != '') {
-               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
+              var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
               $toast
                 .addClass(className.icon)
@@ -157,7 +157,7 @@ $.fn.toast = function(parameters) {
             ;
             $toast.css('opacity', settings.opacity);
             if(settings.compact || $toast.hasClass('compact')) {
-                $toastBox.addClass('compact');
+              $toastBox.addClass('compact');
             }
             if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
               $progress.addClass('inverted');
@@ -170,15 +170,15 @@ $.fn.toast = function(parameters) {
                 .addClass(settings.showProgress)
                 .append($progressBar);
               if ($progress.hasClass('top')) {
-                  $toast.prepend($progress);
+                $toast.prepend($progress);
               } else {
-                  $toast.append($progress);
+                $toast.append($progress);
               }
               $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
               $progressBar.width(settings.progressUp?'0%':'100%');
               setTimeout(function() {
-                  if(typeof $progress !== 'undefined'){
-                    $progressBar.width(settings.progressUp?'100%':'0%');
+                if(typeof $progress !== 'undefined'){
+                  $progressBar.width(settings.progressUp?'100%':'0%');
                 }
               },300);
             }
@@ -249,16 +249,16 @@ $.fn.toast = function(parameters) {
                   verbose    : settings.verbose,
 
                   onBeforeHide: function(callback){
-                      callback = $.isFunction(callback)?callback : function(){};
-                      if(settings.transition.closeEasing !== ''){
-                          $toast.css('opacity',0);
-                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
-                              $toast.parent().remove();
-                              callback.call($toast);
-                          });
-                      } else {
+                    callback = $.isFunction(callback)?callback : function(){};
+                    if(settings.transition.closeEasing !== ''){
+                      $toast.css('opacity',0);
+                      $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                        $toast.parent().remove();
                         callback.call($toast);
-                      }
+                      });
+                    } else {
+                      callback.call($toast);
+                    }
                   },
                   onComplete : function() {
                     module.destroy();
@@ -579,17 +579,17 @@ $.fn.toast.settings = {
 };
 
 $.extend( $.easing, {
-    easeOutBounce: function (x, t, b, c, d) {
-        if ((t/=d) < (1/2.75)) {
-            return c*(7.5625*t*t) + b;
-        } else if (t < (2/2.75)) {
-            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-        } else if (t < (2.5/2.75)) {
-            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-        } else {
-            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-        }
+  easeOutBounce: function (x, t, b, c, d) {
+    if ((t/=d) < (1/2.75)) {
+      return c*(7.5625*t*t) + b;
+    } else if (t < (2/2.75)) {
+      return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+    } else if (t < (2.5/2.75)) {
+      return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+    } else {
+      return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
     }
+  }
 });
 
 

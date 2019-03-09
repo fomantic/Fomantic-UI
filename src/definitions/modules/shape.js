@@ -360,7 +360,7 @@ $.fn.shape = function(parameters) {
           transform: {
             up: function() {
               var
-                    translateZ = $activeSide.outerHeight(true) / 2,
+                translateZ = $activeSide.outerHeight(true) / 2,
                 translateY = $nextSide.outerHeight(true) - translateZ
               ;
               return {
@@ -381,8 +381,8 @@ $.fn.shape = function(parameters) {
 
             left: function() {
               var
-                  translateZ = $activeSide.outerWidth(true) / 2,
-                  translateX = $nextSide.outerWidth(true) - translateZ
+                translateZ = $activeSide.outerWidth(true) / 2,
+                translateX = $nextSide.outerWidth(true) - translateZ
               ;
               return {
                 transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)'

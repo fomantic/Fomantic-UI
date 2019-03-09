@@ -296,10 +296,10 @@ $.fn.calendar = function(parameters) {
                 if (isDay) {
                   row = $('<tr/>').appendTo(thead);
                   if(settings.showWeekNumbers) {
-                      cell = $('<th/>').appendTo(row);
-                      cell.text(settings.text.weekNo);
-                      cell.addClass(className.disabledCell);
-                      textColumns--;
+                    cell = $('<th/>').appendTo(row);
+                    cell.text(settings.text.weekNo);
+                    cell.addClass(className.disabledCell);
+                    textColumns--;
                   }
                   for (i = 0; i < textColumns; i++) {
                     cell = $('<th/>').appendTo(row);
@@ -313,9 +313,9 @@ $.fn.calendar = function(parameters) {
               for (r = 0; r < rows; r++) {
                 row = $('<tr/>').appendTo(tbody);
                 if(isDay && settings.showWeekNumbers){
-                    cell = $('<th/>').appendTo(row);
-                    cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
-                    cell.addClass(className.disabledCell);
+                  cell = $('<th/>').appendTo(row);
+                  cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
+                  cell.addClass(className.disabledCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
@@ -556,17 +556,17 @@ $.fn.calendar = function(parameters) {
 
         get: {
           weekOfYear: function(weekYear,weekMonth,weekDay) {
-              // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
-              var ms1d = 864e5, // milliseconds in a day
-                  ms7d = 7 * ms1d; // milliseconds in a week
+            // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
+            var ms1d = 864e5, // milliseconds in a day
+              ms7d = 7 * ms1d; // milliseconds in a week
 
-              return function() { // return a closure so constants get calculated only once
-                  var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
-                      AWN = Math.floor(DC3 / 7), // an Absolute Week Number
-                      Wyr = new Date(AWN * ms7d).getUTCFullYear();
+            return function() { // return a closure so constants get calculated only once
+              var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
+                AWN = Math.floor(DC3 / 7), // an Absolute Week Number
+                Wyr = new Date(AWN * ms7d).getUTCFullYear();
 
-                  return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
-              }();
+              return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
+            }();
           },
           date: function () {
             return $module.data(metadata.date) || null;
@@ -1039,8 +1039,8 @@ $.fn.calendar = function(parameters) {
             maxDepth = query.length - 1;
             $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
-                  ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                  : query
+                ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
+                : query
                 ;
               if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
@@ -1098,7 +1098,7 @@ $.fn.calendar = function(parameters) {
   return (returnedValue !== undefined)
     ? returnedValue
     : this
-    ;
+  ;
 };
 
 $.fn.calendar.settings = {
@@ -1205,7 +1205,7 @@ $.fn.calendar.settings = {
       var year = date.getFullYear();
       return settings.type === 'year' ? year :
         settings.type === 'month' ? month + ' ' + year :
-        (settings.monthFirst ? month + ' ' + day : day + ' ' + month) + ', ' + year;
+          (settings.monthFirst ? month + ' ' + day : day + ' ' + month) + ', ' + year;
     },
     time: function (date, settings, forCalendar) {
       if (!date) {

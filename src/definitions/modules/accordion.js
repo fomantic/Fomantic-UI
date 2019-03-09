@@ -182,24 +182,24 @@ $.fn.accordion = function(parameters) {
             if($.fn.transition !== undefined && $module.transition('is supported')) {
               $activeContent
                 .children()
-                  .transition({
-                    animation        : 'fade in',
-                    queue            : false,
-                    useFailSafe      : true,
-                    debug            : settings.debug,
-                    verbose          : settings.verbose,
-                    duration         : settings.duration,
-                    skipInlineHidden : true
-                  })
+                .transition({
+                  animation        : 'fade in',
+                  queue            : false,
+                  useFailSafe      : true,
+                  debug            : settings.debug,
+                  verbose          : settings.verbose,
+                  duration         : settings.duration,
+                  skipInlineHidden : true
+                })
               ;
             }
             else {
               $activeContent
                 .children()
-                  .stop(true, true)
-                  .animate({
-                    opacity: 1
-                  }, settings.duration, module.resetOpacity)
+                .stop(true, true)
+                .animate({
+                  opacity: 1
+                }, settings.duration, module.resetOpacity)
               ;
             }
           }
@@ -244,24 +244,24 @@ $.fn.accordion = function(parameters) {
               if($.fn.transition !== undefined && $module.transition('is supported')) {
                 $activeContent
                   .children()
-                    .transition({
-                      animation        : 'fade out',
-                      queue            : false,
-                      useFailSafe      : true,
-                      debug            : settings.debug,
-                      verbose          : settings.verbose,
-                      duration         : settings.duration,
-                      skipInlineHidden : true
-                    })
+                  .transition({
+                    animation        : 'fade out',
+                    queue            : false,
+                    useFailSafe      : true,
+                    debug            : settings.debug,
+                    verbose          : settings.verbose,
+                    duration         : settings.duration,
+                    skipInlineHidden : true
+                  })
                 ;
               }
               else {
                 $activeContent
                   .children()
-                    .stop(true, true)
-                    .animate({
-                      opacity: 0
-                    }, settings.duration, module.resetOpacity)
+                  .stop(true, true)
+                  .animate({
+                    opacity: 0
+                  }, settings.duration, module.resetOpacity)
                 ;
               }
             }
@@ -315,23 +315,23 @@ $.fn.accordion = function(parameters) {
               if($.fn.transition !== undefined && $module.transition('is supported')) {
                 $openContents
                   .children()
-                    .transition({
-                      animation        : 'fade out',
-                      useFailSafe      : true,
-                      debug            : settings.debug,
-                      verbose          : settings.verbose,
-                      duration         : settings.duration,
-                      skipInlineHidden : true
-                    })
+                  .transition({
+                    animation        : 'fade out',
+                    useFailSafe      : true,
+                    debug            : settings.debug,
+                    verbose          : settings.verbose,
+                    duration         : settings.duration,
+                    skipInlineHidden : true
+                  })
                 ;
               }
               else {
                 $openContents
                   .children()
-                    .stop(true, true)
-                    .animate({
-                      opacity: 0
-                    }, settings.duration, module.resetOpacity)
+                  .stop(true, true)
+                  .animate({
+                    opacity: 0
+                  }, settings.duration, module.resetOpacity)
                 ;
               }
             }

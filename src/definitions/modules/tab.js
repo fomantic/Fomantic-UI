@@ -31,8 +31,8 @@ $.fn.tab = function(parameters) {
   var
     // use window context if none specified
     $allModules     = $.isFunction(this)
-        ? $(window)
-        : $(this),
+      ? $(window)
+      : $(this),
 
     moduleSelector  = $allModules.selector || '',
     time            = new Date().getTime(),
@@ -310,7 +310,7 @@ $.fn.tab = function(parameters) {
               $tab
                 .addClass(className.loading)
                 .siblings($tabs)
-                  .removeClass(className.active + ' ' + className.loading)
+                .removeClass(className.active + ' ' + className.loading)
               ;
               if($tab.length > 0) {
                 settings.onRequest.call($tab[0], tabPath);

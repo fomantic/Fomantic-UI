@@ -674,7 +674,7 @@ $.fn.embed.settings = {
     iframe : function(url, parameters) {
       var src = url;
       if (parameters) {
-          src += '?' + parameters;
+        src += '?' + parameters;
       }
       return ''
         + '<iframe src="' + src + '"'

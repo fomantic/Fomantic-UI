@@ -124,15 +124,15 @@ $.fn.rating = function(parameters) {
             ;
             $activeIcon
               .nextAll()
-                .removeClass(className.selected)
+              .removeClass(className.selected)
             ;
             $module
               .addClass(className.selected)
             ;
             $activeIcon
               .addClass(className.selected)
-                .prevAll()
-                .addClass(className.selected)
+              .prevAll()
+              .addClass(className.selected)
             ;
           },
           mouseleave: function() {
@@ -149,8 +149,8 @@ $.fn.rating = function(parameters) {
               currentRating = module.get.rating(),
               rating        = $icon.index($activeIcon) + 1,
               canClear      = (settings.clearable == 'auto')
-               ? ($icon.length === 1)
-               : settings.clearable
+                ? ($icon.length === 1)
+                : settings.clearable
             ;
             if(canClear && currentRating == rating) {
               module.clearRating();
@@ -265,7 +265,7 @@ $.fn.rating = function(parameters) {
               $activeIcon
                 .prevAll()
                 .addBack()
-                  .addClass(className.active)
+                .addClass(className.active)
               ;
             }
             if(!module.is.initialLoad()) {

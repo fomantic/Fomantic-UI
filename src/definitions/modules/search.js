@@ -297,9 +297,9 @@ $.fn.search = function(parameters) {
               $result
                 .removeClass(className.active)
                 .eq(newIndex)
-                  .addClass(className.active)
-                  .closest($category)
-                    .addClass(className.active)
+                .addClass(className.active)
+                .closest($category)
+                .addClass(className.active)
               ;
               event.preventDefault();
             }
@@ -315,9 +315,9 @@ $.fn.search = function(parameters) {
               $result
                 .removeClass(className.active)
                 .eq(newIndex)
-                  .addClass(className.active)
-                  .closest($category)
-                    .addClass(className.active)
+                .addClass(className.active)
+                .closest($category)
+                .addClass(className.active)
               ;
               event.preventDefault();
             }
@@ -695,9 +695,9 @@ $.fn.search = function(parameters) {
         parse: {
           response: function(response, searchTerm) {
             if(Array.isArray(response)){
-                var o={};
-                o[fields.results]=response;
-                response = o;
+              var o={};
+              o[fields.results]=response;
+              response = o;
             }
             var
               searchHTML = module.generateResults(response)
@@ -833,13 +833,13 @@ $.fn.search = function(parameters) {
             var
               $selectedResult = (categoryIndex !== undefined)
                 ? $results
-                    .children().eq(categoryIndex)
-                      .children(selector.results)
-                        .first()
-                        .children(selector.result)
-                          .eq(resultIndex)
+                  .children().eq(categoryIndex)
+                  .children(selector.results)
+                  .first()
+                  .children(selector.result)
+                  .eq(resultIndex)
                 : $results
-                    .children(selector.result).eq(resultIndex)
+                  .children(selector.result).eq(resultIndex)
             ;
             module.verbose('Injecting results metadata', $selectedResult);
             $selectedResult

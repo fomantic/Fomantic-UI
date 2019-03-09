@@ -285,8 +285,8 @@ $.fn.dropdown = function(parameters) {
             $item
               .not(selector.unselectable)
               .not(selector.addition + selector.hidden)
-                .eq(0)
-                .addClass(className.selected)
+              .eq(0)
+              .addClass(className.selected)
             ;
           },
           nextAvailable: function($selected) {
@@ -536,8 +536,8 @@ $.fn.dropdown = function(parameters) {
           module.verbose('Finding other dropdowns to hide');
           $allModules
             .not($module)
-              .has(selector.menu + '.' + className.visible)
-                .dropdown('hide')
+            .has(selector.menu + '.' + className.visible)
+            .dropdown('hide')
           ;
         },
 
@@ -752,11 +752,11 @@ $.fn.dropdown = function(parameters) {
                 }
                 var preSelected = $input.val();
                 if(!Array.isArray(preSelected)) {
-                    preSelected = preSelected && preSelected!=="" ? preSelected.split(settings.delimiter) : [];
+                  preSelected = preSelected && preSelected!=="" ? preSelected.split(settings.delimiter) : [];
                 }
                 $.each(preSelected,function(index,value){
                   $item.filter('[data-value="'+value+'"]')
-                      .addClass(className.filtered)
+                    .addClass(className.filtered)
                   ;
                 });
                 afterFiltered();
@@ -794,7 +794,7 @@ $.fn.dropdown = function(parameters) {
                   values          = response[fields.remoteValues]
                 ;
                 if (!Array.isArray(values)){
-                    values = [];
+                  values = [];
                 }
                 module.remove.message();
                 module.setup.menu({
@@ -1099,11 +1099,11 @@ $.fn.dropdown = function(parameters) {
               iconClicked=true;
               if(module.has.search()) {
                 if(!module.is.active()) {
-                    if(settings.showOnFocus){
-                      module.focusSearch();
-                    } else {
-                      module.toggle();
-                    }
+                  if(settings.showOnFocus){
+                    module.focusSearch();
+                  } else {
+                    module.toggle();
+                  }
                 } else {
                   module.blurSearch();
                 }
@@ -1195,7 +1195,7 @@ $.fn.dropdown = function(parameters) {
             },
             hide: function(event) {
               if(module.determine.eventInModule(event, module.hide)){
-                  event.preventDefault();
+                event.preventDefault();
               }
             }
           },
@@ -1461,7 +1461,7 @@ $.fn.dropdown = function(parameters) {
                   module.remove.searchTerm();
                 }
                 if(module.is.multiple()){
-                    event.preventDefault();
+                  event.preventDefault();
                 }
               }
 
@@ -1480,7 +1480,7 @@ $.fn.dropdown = function(parameters) {
                     if(module.is.searchSelection()) {
                       module.remove.searchTerm();
                       if(module.is.multiple()) {
-                          $search.focus();
+                        $search.focus();
                       }
                     }
                   }
@@ -1502,7 +1502,7 @@ $.fn.dropdown = function(parameters) {
                       ;
                       $parentMenu
                         .closest(selector.item)
-                          .addClass(className.selected)
+                        .addClass(className.selected)
                       ;
                       event.preventDefault();
                     }
@@ -1518,7 +1518,7 @@ $.fn.dropdown = function(parameters) {
                       ;
                       $subMenu
                         .find(selector.item).eq(0)
-                          .addClass(className.selected)
+                        .addClass(className.selected)
                       ;
                       event.preventDefault();
                     }
@@ -1807,7 +1807,7 @@ $.fn.dropdown = function(parameters) {
           },
           uniqueArray: function(array) {
             return $.grep(array, function (value, index) {
-                return $.inArray(value, array) === index;
+              return $.inArray(value, array) === index;
             });
           },
           caretPosition: function(returnEndPos) {
@@ -1937,26 +1937,26 @@ $.fn.dropdown = function(parameters) {
             select.values = [];
             $module
               .find('option')
-                .each(function() {
-                  var
-                    $option  = $(this),
-                    name     = $option.html(),
-                    disabled = $option.attr('disabled'),
-                    value    = ( $option.attr('value') !== undefined )
-                      ? $option.attr('value')
-                      : name
+              .each(function() {
+                var
+                  $option  = $(this),
+                  name     = $option.html(),
+                  disabled = $option.attr('disabled'),
+                  value    = ( $option.attr('value') !== undefined )
+                    ? $option.attr('value')
+                    : name
                   ;
-                  if(settings.placeholder === 'auto' && value === '') {
-                    select.placeholder = name;
-                  }
-                  else {
-                    select.values.push({
-                      name     : name,
-                      value    : value,
-                      disabled : disabled
-                    });
-                  }
-                })
+                if(settings.placeholder === 'auto' && value === '') {
+                  select.placeholder = name;
+                }
+                else {
+                  select.values.push({
+                    name     : name,
+                    value    : value,
+                    disabled : disabled
+                  });
+                }
+              })
             ;
             if(settings.placeholder && settings.placeholder !== 'auto') {
               module.debug('Setting placeholder value to', settings.placeholder);
@@ -3202,8 +3202,8 @@ $.fn.dropdown = function(parameters) {
             var
               values   = module.get.values(),
               hasValue = Array.isArray(values)
-               ? values && ($.inArray(value, values) !== -1)
-               : (values == value)
+                ? values && ($.inArray(value, values) !== -1)
+                : (values == value)
             ;
             return (hasValue)
               ? true
@@ -3607,25 +3607,25 @@ $.fn.dropdown = function(parameters) {
             return text.replace(regExp.escape, '\\$&');
           },
           htmlEntities: function(string) {
-              var
-                  badChars     = /[&<>"'`]/g,
-                  shouldEscape = /[&<>"'`]/,
-                  escape       = {
-                      "&": "&amp;",
-                      "<": "&lt;",
-                      ">": "&gt;",
-                      '"': "&quot;",
-                      "'": "&#x27;",
-                      "`": "&#x60;"
-                  },
-                  escapedChar  = function(chr) {
-                      return escape[chr];
-                  }
-              ;
-              if(shouldEscape.test(string)) {
-                  return string.replace(badChars, escapedChar);
+            var
+              badChars     = /[&<>"'`]/g,
+              shouldEscape = /[&<>"'`]/,
+              escape       = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#x27;",
+                "`": "&#x60;"
+              },
+              escapedChar  = function(chr) {
+                return escape[chr];
               }
-              return string;
+              ;
+            if(shouldEscape.test(string)) {
+              return string.replace(badChars, escapedChar);
+            }
+            return string;
           }
         },
 
@@ -4017,19 +4017,19 @@ $.fn.dropdown.settings.templates = {
       return string;
     }
     var
-        badChars     = /[&<>"'`]/g,
-        shouldEscape = /[&<>"'`]/,
-        escape       = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#x27;",
-          "`": "&#x60;"
-        },
-        escapedChar  = function(chr) {
-          return escape[chr];
-        }
+      badChars     = /[&<>"'`]/g,
+      shouldEscape = /[&<>"'`]/,
+      escape       = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#x27;",
+        "`": "&#x60;"
+      },
+      escapedChar  = function(chr) {
+        return escape[chr];
+      }
     ;
     if(shouldEscape.test(string)) {
       return string.replace(badChars, escapedChar);
@@ -4097,7 +4097,7 @@ $.fn.dropdown.settings.templates = {
   // generates label for multiselect
   label: function(value, text, preserveHTML, className) {
     var
-        escape = $.fn.dropdown.settings.templates.escape;
+      escape = $.fn.dropdown.settings.templates.escape;
     return escape(text,preserveHTML) + '<i class="'+className.delete+' icon"></i>';
   },
 

@@ -29,8 +29,8 @@ $.api = $.fn.api = function(parameters) {
   var
     // use window context if none specified
     $allModules     = $.isFunction(this)
-        ? $(window)
-        : $(this),
+      ? $(window)
+      : $(this),
     moduleSelector = $allModules.selector || '',
     time           = new Date().getTime(),
     performance    = [],
@@ -130,7 +130,7 @@ $.api = $.fn.api = function(parameters) {
           json: function(response) {
             if(response !== undefined && typeof response == 'string') {
               try {
-               response = JSON.parse(response);
+                response = JSON.parse(response);
               }
               catch(e) {
                 // isnt json string
@@ -1101,7 +1101,7 @@ $.api.settings = {
   response          : false,
   responseAsync     : false,
 
-// whether onResponse should work with response value without force converting into an object
+  // whether onResponse should work with response value without force converting into an object
   rawResponse       : false,
 
   // callbacks before request

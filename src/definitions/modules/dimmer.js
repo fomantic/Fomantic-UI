@@ -699,7 +699,7 @@ $.fn.dimmer.settings = {
     show : 500,
     hide : 500
   },
-// whether the dynamically created dimmer should have a loader
+  // whether the dynamically created dimmer should have a loader
   displayLoader: false,
   loaderText  : false,
   loaderVariation : '',
@@ -733,18 +733,18 @@ $.fn.dimmer.settings = {
 
   template: {
     dimmer: function(settings) {
-        var d = $('<div/>').addClass('ui dimmer'),l;
-        if(settings.displayLoader) {
-          l = $('<div/>')
-              .addClass(settings.className.loader)
-              .addClass(settings.loaderVariation);
-          if(!!settings.loaderText){
-            l.text(settings.loaderText);
-            l.addClass('text');
-          }
-          d.append(l);
+      var d = $('<div/>').addClass('ui dimmer'),l;
+      if(settings.displayLoader) {
+        l = $('<div/>')
+          .addClass(settings.className.loader)
+          .addClass(settings.loaderVariation);
+        if(!!settings.loaderText){
+          l.text(settings.loaderText);
+          l.addClass('text');
         }
-        return d;
+        d.append(l);
+      }
+      return d;
     }
   }
 

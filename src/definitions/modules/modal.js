@@ -313,7 +313,7 @@ $.fn.modal = function(parameters) {
                 }
               }
               else if(!module.hide()){
-                  return;
+                return;
               }
               module.remove.clickaway();
             }
@@ -543,11 +543,11 @@ $.fn.modal = function(parameters) {
           if( $visibleModals.length > 0 ) {
             module.debug('Hiding all visible modals');
             var hideOk = true;
-//check in reverse order trying to hide most top displayed modal first
+            //check in reverse order trying to hide most top displayed modal first
             $($visibleModals.get().reverse()).each(function(index,element){
-                if(hideOk){
-                    hideOk = $(element).modal('hide modal', callback, false, true);
-                }
+              if(hideOk){
+                hideOk = $(element).modal('hide modal', callback, false, true);
+              }
             });
             if(hideOk) {
               module.hideDimmer();
@@ -604,7 +604,7 @@ $.fn.modal = function(parameters) {
           bodyMargin: function() {
             initialBodyMargin = $body.css('margin-right');
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+              bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             $body.css('margin-right', (bodyMarginRightPixel + bodyScrollbarWidth) + 'px');
           }
         },
@@ -847,7 +847,7 @@ $.fn.modal = function(parameters) {
               module.verbose('Modal cannot fit on screen setting to scrolling');
               module.set.scrolling();
             } else {
-                module.verbose('Bottom aligned modal not fitting on screen is unsupported for scrolling');
+              module.verbose('Bottom aligned modal not fitting on screen is unsupported for scrolling');
             }
           },
           undetached: function() {

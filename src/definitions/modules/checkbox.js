@@ -218,9 +218,9 @@ $.fn.checkbox = function(parameters) {
             ;
 
             var r = module.get.radios(),
-                rIndex = r.index($module),
-                rLen = r.length,
-                checkIndex = false;
+              rIndex = r.index($module),
+              rLen = r.length,
+              checkIndex = false;
 
             if(key == keyCode.left || key == keyCode.up) {
               checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;

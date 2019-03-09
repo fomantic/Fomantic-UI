@@ -329,9 +329,9 @@ $.fn.sidebar = function(parameters) {
               $pusher = $('<div class="pusher" />');
               $context
                 .children()
-                  .not(selector.omitted)
-                  .not($sidebars)
-                  .wrapAll($pusher)
+                .not(selector.omitted)
+                .not($sidebars)
+                .wrapAll($pusher)
               ;
               module.refresh();
             }
@@ -929,21 +929,21 @@ $.fn.sidebar = function(parameters) {
           return found;
         }
       }
-    ;
+      ;
 
-    if(methodInvoked) {
-      if(instance === undefined) {
+      if(methodInvoked) {
+        if(instance === undefined) {
+          module.initialize();
+        }
+        module.invoke(query);
+      }
+      else {
+        if(instance !== undefined) {
+          module.invoke('destroy');
+        }
         module.initialize();
       }
-      module.invoke(query);
-    }
-    else {
-      if(instance !== undefined) {
-        module.invoke('destroy');
-      }
-      module.initialize();
-    }
-  });
+    });
 
   return (returnedValue !== undefined)
     ? returnedValue

@@ -170,10 +170,10 @@ $.fn.slider = function(parameters) {
           },
           testOutTouch: function() {
             try {
-             document.createEvent('TouchEvent');
-             return true;
+              document.createEvent('TouchEvent');
+              return true;
             } catch (e) {
-             return false;
+              return false;
             }
           },
           customLabel: function() {
@@ -351,18 +351,18 @@ $.fn.slider = function(parameters) {
               if(step != NO_STEP) {
                 event.preventDefault();
                 switch(step) {
-                  case SINGLE_STEP:
-                    module.takeStep();
-                    break;
-                  case BIG_STEP:
-                    module.takeStep(module.get.multiplier());
-                    break;
-                  case SINGLE_BACKSTEP:
-                    module.backStep();
-                    break;
-                  case BIG_BACKSTEP:
-                    module.backStep(module.get.multiplier());
-                    break;
+                case SINGLE_STEP:
+                  module.takeStep();
+                  break;
+                case BIG_STEP:
+                  module.takeStep(module.get.multiplier());
+                  break;
+                case SINGLE_BACKSTEP:
+                  module.backStep();
+                  break;
+                case BIG_BACKSTEP:
+                  module.backStep(module.get.multiplier());
+                  break;
                 }
               }
             }
@@ -538,12 +538,12 @@ $.fn.slider = function(parameters) {
             }
 
             switch (settings.labelType) {
-              case settings.labelTypes.number:
-                return (value * module.get.step()) + module.get.min();
-              case settings.labelTypes.letter:
-                return alphabet[(value) % 26];
-              default:
-                return value;
+            case settings.labelTypes.number:
+              return (value * module.get.step()) + module.get.min();
+            case settings.labelTypes.letter:
+              return alphabet[(value) % 26];
+            default:
+              return value;
             }
           },
           value: function() {
@@ -554,17 +554,17 @@ $.fn.slider = function(parameters) {
           },
           thumbValue: function(which) {
             switch(which) {
-              case 'second':
-                if(module.is.range()) {
-                  return module.secondThumbVal;
-                }
-                else {
-                  module.error(error.notrange);
-                  break;
-                }
-              case 'first':
-              default:
-                return module.thumbVal;
+            case 'second':
+              if(module.is.range()) {
+                return module.secondThumbVal;
+              }
+              else {
+                module.error(error.notrange);
+                break;
+              }
+            case 'first':
+            default:
+              return module.thumbVal;
             }
           },
           multiplier: function() {
@@ -572,17 +572,17 @@ $.fn.slider = function(parameters) {
           },
           thumbPosition: function(which) {
             switch(which) {
-              case 'second':
-                if(module.is.range()) {
-                  return secondPos;
-                }
-                else {
-                  module.error(error.notrange);
-                  break;
-                }
-              case 'first':
-              default:
-                return position;
+            case 'second':
+              if(module.is.range()) {
+                return secondPos;
+              }
+              else {
+                module.error(error.notrange);
+                break;
+              }
+            case 'first':
+            default:
+              return position;
             }
           }
         },
@@ -617,10 +617,10 @@ $.fn.slider = function(parameters) {
           thumbPos: function($element) {
             var pos =
               module.is.vertical()
-              ?
-              module.is.reversed() ? $element.css('bottom') : $element.css('top')
-              :
-              module.is.reversed() ? $element.css('right') : $element.css('left')
+                ?
+                module.is.reversed() ? $element.css('bottom') : $element.css('top')
+                :
+                module.is.reversed() ? $element.css('right') : $element.css('left')
             ;
             return pos;
           },
@@ -717,31 +717,31 @@ $.fn.slider = function(parameters) {
               key = event.which,
               downArrow =
                 module.is.vertical()
-                ?
-                module.is.reversed() ? keys.downArrow : keys.upArrow
-                :
-                keys.downArrow
+                  ?
+                  module.is.reversed() ? keys.downArrow : keys.upArrow
+                  :
+                  keys.downArrow
               ,
               upArrow =
                 module.is.vertical()
-                ?
-                module.is.reversed() ? keys.upArrow : keys.downArrow
-                :
-                keys.upArrow
+                  ?
+                  module.is.reversed() ? keys.upArrow : keys.downArrow
+                  :
+                  keys.upArrow
               ,
               leftArrow =
                 !module.is.vertical()
-                ?
-                module.is.reversed() ? keys.rightArrow : keys.leftArrow
-                :
-                keys.leftArrow
+                  ?
+                  module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                  :
+                  keys.leftArrow
               ,
               rightArrow =
                 !module.is.vertical()
-                ?
-                module.is.reversed() ? keys.leftArrow : keys.rightArrow
-                :
-                keys.rightArrow
+                  ?
+                  module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                  :
+                  keys.rightArrow
             ;
             if(key == downArrow || key == leftArrow) {
               return SINGLE_BACKSTEP;
@@ -809,13 +809,13 @@ $.fn.slider = function(parameters) {
           position: function(position, which) {
             var thumbVal = module.determine.value(position);
             switch (which) {
-              case 'second':
-                module.secondThumbVal = thumbVal;
-                module.update.position(thumbVal, $secondThumb);
-                break;
-              default:
-                module.thumbVal = thumbVal;
-                module.update.position(thumbVal, $thumb);
+            case 'second':
+              module.secondThumbVal = thumbVal;
+              module.update.position(thumbVal, $secondThumb);
+              break;
+            default:
+              module.thumbVal = thumbVal;
+              module.update.position(thumbVal, $thumb);
             }
             value = Math.abs(module.thumbVal - (module.secondThumbVal || 0));
             module.set.value(value);
@@ -907,9 +907,9 @@ $.fn.slider = function(parameters) {
               endMargin   = module.get.trackEndMargin(),
               posDir =
                 module.is.vertical()
-                ?
-                module.is.reversed() ? 'bottom' : 'top'
-                :
+                  ?
+                  module.is.reversed() ? 'bottom' : 'top'
+                  :
                   module.is.reversed() ? 'right' : 'left',
               startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
             ;

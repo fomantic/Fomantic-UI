@@ -310,7 +310,7 @@ $.fn.transition = function() {
             animation = animation || settings.animation;
             var animationClass = module.get.animationClass(animation);
 
-              // save animation class in cache to restore class names
+            // save animation class in cache to restore class names
             module.save.animation(animationClass);
 
             if(module.force.visible()) {
@@ -777,20 +777,20 @@ $.fn.transition = function() {
           module.remove.visible();
           if($.isFunction(settings.onBeforeHide)){
             settings.onBeforeHide.call(element,function(){
-                module.hideNow();
+              module.hideNow();
             });
           } else {
-              module.hideNow();
+            module.hideNow();
           }
 
         },
 
         hideNow: function() {
-            module.set.hidden();
-            module.force.hidden();
-            settings.onHide.call(element);
-            settings.onComplete.call(element);
-            // module.repaint();
+          module.set.hidden();
+          module.force.hidden();
+          settings.onHide.call(element);
+          settings.onComplete.call(element);
+          // module.repaint();
         },
 
         show: function(display) {
@@ -1073,7 +1073,7 @@ $.fn.transition.settings = {
   // new animations will occur after previous ones
   queue         : true,
 
-// whether initially inline hidden objects should be skipped for transition
+  // whether initially inline hidden objects should be skipped for transition
   skipInlineHidden: false,
 
   metadata : {

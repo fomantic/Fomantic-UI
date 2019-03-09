@@ -326,12 +326,12 @@ $.fn.state = function(parameters) {
           if( module.is.active() ) {
             $allModules
               .not($module)
-                .state('activate');
+              .state('activate');
           }
           else {
             $allModules
               .not($module)
-                .state('deactivate')
+              .state('deactivate')
             ;
           }
         },
@@ -396,7 +396,7 @@ $.fn.state = function(parameters) {
                 $module
                   .data(metadata.storedText, text)
                   .find(settings.selector.text)
-                    .text(text)
+                  .text(text)
                 ;
               }
               else {
