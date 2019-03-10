@@ -1461,7 +1461,8 @@ $.fn.search.settings = {
             + '<div class="action">'
             +   escape(response[fields.action][fields.actionText], preserveHTML)
             + '</div>';
-          } else {
+          }
+          else {
             html += ''
             + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,"") + '" class="action">'
             +   escape(response[fields.action][fields.actionText], preserveHTML)
@@ -1515,7 +1516,8 @@ $.fn.search.settings = {
             + '<div class="action">'
             +   escape(response[fields.action][fields.actionText], preserveHTML)
             + '</div>';
-          } else {
+          }
+          else {
             html += ''
             + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,"") + '" class="action">'
             +   escape(response[fields.action][fields.actionText], preserveHTML)

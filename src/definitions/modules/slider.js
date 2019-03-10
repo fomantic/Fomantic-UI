@@ -159,7 +159,8 @@ $.fn.slider = function(parameters) {
               $labels = $module.find('.labels:not(.auto)');
               if ($labels.length != 0) {
                 module.setup.customLabel();
-              } else {
+              }
+              else {
                 module.setup.autoLabel();
               }
 
@@ -172,7 +173,8 @@ $.fn.slider = function(parameters) {
             try {
               document.createEvent('TouchEvent');
               return true;
-            } catch (e) {
+            }
+            catch (e) {
               return false;
             }
           },
@@ -192,7 +194,8 @@ $.fn.slider = function(parameters) {
               if (attrValue) {
                 attrValue = attrValue > max ? max : attrValue < min ? min : attrValue;
                 ratio = (attrValue - min) / (max - min);
-              } else {
+              }
+              else {
                 ratio = (index + 1) / (numChildren + 1);
               }
               module.update.labelPosition(ratio, $(this));
@@ -292,7 +295,8 @@ $.fn.slider = function(parameters) {
             if (module.is.touch()) {
               $(document).off('touchmove' + eventNamespace);
               $(document).off('touchend' + eventNamespace);
-            } else {
+            }
+            else {
               $(document).off('mousemove' + eventNamespace);
               $(document).off('mouseup' + eventNamespace);
             }
@@ -324,13 +328,15 @@ $.fn.slider = function(parameters) {
               ;
               if (!$currThumb.hasClass('second')) {
                 thumbVal = value;
-              } else {
+              }
+              else {
                 secondThumbVal = value;
               }
               value = Math.abs(thumbVal - (secondThumbVal || 0));
               module.update.position(thumbSmoothVal);
               settings.onMove.call(element, value, thumbVal, secondThumbVal);
-            } else {
+            }
+            else {
               module.update.value(value, function(value, thumbVal, secondThumbVal) {
                 settings.onMove.call(element, value, thumbVal, secondThumbVal);
               });
@@ -393,7 +399,8 @@ $.fn.slider = function(parameters) {
           module.verbose('Taking a step');
           if (step > 0) {
             module.set.value(currValue + step * multiplier);
-          } else if (step == 0){
+          }
+          else if (step == 0){
             var
               precision = module.get.precision(),
               newValue = currValue + (multiplier/precision)
@@ -411,7 +418,8 @@ $.fn.slider = function(parameters) {
           module.verbose('Going back a step');
           if (step > 0) {
             module.set.value(currValue - step * multiplier);
-          } else if (step == 0) {
+          }
+          else if (step == 0) {
             var
               precision = module.get.precision(),
               newValue = currValue - (multiplier/precision)
@@ -454,21 +462,24 @@ $.fn.slider = function(parameters) {
           trackOffset: function() {
             if (module.is.vertical()) {
               return $track.offset().top;
-            } else {
+            }
+            else {
               return $track.offset().left;
             }
           },
           trackLength: function() {
             if (module.is.vertical()) {
               return $track.height();
-            } else {
+            }
+            else {
               return $track.width();
             }
           },
           trackLeft: function() {
             if (module.is.vertical()) {
               return $track.position().top;
-            } else {
+            }
+            else {
               return $track.position().left;
             }
           },
@@ -482,7 +493,8 @@ $.fn.slider = function(parameters) {
             var margin;
             if (module.is.vertical()) {
               margin = module.is.reversed() ? $module.css('padding-bottom') : $module.css('padding-top');
-            } else {
+            }
+            else {
               margin = module.is.reversed() ? $module.css('padding-right') : $module.css('padding-left');
             }
             return margin || '0px';
@@ -491,7 +503,8 @@ $.fn.slider = function(parameters) {
             var margin;
             if (module.is.vertical()) {
               margin = module.is.reversed() ? $module.css('padding-top') : $module.css('padding-bottom');
-            } else {
+            }
+            else {
               margin = module.is.reversed() ? $module.css('padding-left') : $module.css('padding-right');
             }
             return margin || '0px';
@@ -505,10 +518,12 @@ $.fn.slider = function(parameters) {
               var split = String(step).split('.');
               if (split.length == 2) {
                 decimalPlaces = split[1].length;
-              } else {
+              }
+              else {
                 decimalPlaces = 0;
               }
-            } else {
+            }
+            else {
               decimalPlaces = settings.decimalPlaces;
             }
             var precision = Math.pow(10, decimalPlaces);
@@ -653,9 +668,11 @@ $.fn.slider = function(parameters) {
             ;
             if (eventPos < module.get.trackOffset()) {
               value = module.is.reversed() ? module.get.max() : module.get.min();
-            } else if (eventPos > module.get.trackOffset() + module.get.trackLength()) {
+            }
+            else if (eventPos > module.get.trackOffset() + module.get.trackLength()) {
               value = module.is.reversed() ? module.get.min() : module.get.max();
-            } else {
+            }
+            else {
               value = module.determine.value(newPos);
             }
             return value;
@@ -745,13 +762,17 @@ $.fn.slider = function(parameters) {
             ;
             if (key == downArrow || key == leftArrow) {
               return SINGLE_BACKSTEP;
-            } else if (key == upArrow || key == rightArrow) {
+            }
+            else if (key == upArrow || key == rightArrow) {
               return SINGLE_STEP;
-            } else if (key == keys.pageDown) {
+            }
+            else if (key == keys.pageDown) {
               return BIG_BACKSTEP;
-            } else if (key == keys.pageUp) {
+            }
+            else if (key == keys.pageUp) {
               return BIG_STEP;
-            } else {
+            }
+            else {
               return NO_STEP;
             }
           }
@@ -765,7 +786,8 @@ $.fn.slider = function(parameters) {
           ;
           if (val <= min) {
             val = min;
-          } else if (val >= max) {
+          }
+          else if (val >= max) {
             val = max;
           }
           newPos = module.determine.positionFromValue(val);
@@ -787,12 +809,14 @@ $.fn.slider = function(parameters) {
               ;
               if (first <= min) {
                 first = min;
-              } else if (first >= max){
+              }
+              else if (first >= max){
                 first = max;
               }
               if (second <= min) {
                 second = min;
-              } else if (second >= max){
+              }
+              else if (second >= max){
                 second = max;
               }
               module.thumbVal = first;
@@ -802,7 +826,8 @@ $.fn.slider = function(parameters) {
               module.update.position(module.secondThumbVal, $secondThumb);
               settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
               settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
-            } else {
+            }
+            else {
               module.error(error.notrange);
             }
           },
@@ -830,16 +855,19 @@ $.fn.slider = function(parameters) {
             ;
             if (newValue <= min) {
               newValue = min;
-            } else if (newValue >= max){
+            }
+            else if (newValue >= max){
               newValue = max;
             }
             if (!module.is.range()) {
               value = newValue;
               module.thumbVal = value;
-            } else {
+            }
+            else {
               if (!$currThumb.hasClass('second')) {
                 module.thumbVal = newValue;
-              } else {
+              }
+              else {
                 module.secondThumbVal = newValue;
               }
               value = Math.abs(module.thumbVal - module.secondThumbVal);
@@ -861,11 +889,13 @@ $.fn.slider = function(parameters) {
               if (!$targetThumb.hasClass('second')) {
                 position = newPos;
                 thumbVal = newValue;
-              } else {
+              }
+              else {
                 secondPos = newPos;
                 secondThumbVal = newValue;
               }
-            } else {
+            }
+            else {
               position = newPos;
               thumbVal = newValue;
             }
@@ -887,7 +917,8 @@ $.fn.slider = function(parameters) {
                 thumbPosValue = {top: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', bottom: 'auto'};
                 trackPosValue = {top: trackStartPosPercent + '%', bottom: trackEndPosPercent + '%'};
               }
-            } else {
+            }
+            else {
               if (module.is.reversed()) {
                 thumbPosValue = {right: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', left: 'auto'};
                 trackPosValue = {right: trackStartPosPercent + '%', left: trackEndPosPercent + '%'};
@@ -939,7 +970,8 @@ $.fn.slider = function(parameters) {
               if (module.is.range() && data.secondThumbVal) {
                 module.debug('Current value set from metadata', data.thumbVal, data.secondThumbVal);
                 module.set.rangeValue(data.thumbVal, data.secondThumbVal);
-              } else {
+              }
+              else {
                 module.debug('Current value set from metadata', data.thumbVal);
                 module.set.value(data.thumbVal);
               }
@@ -950,7 +982,8 @@ $.fn.slider = function(parameters) {
               if (module.is.range()) {
                 module.debug('Start position set from settings', settings.start, settings.end);
                 module.set.rangeValue(settings.start, settings.end);
-              } else {
+              }
+              else {
                 module.debug('Start position set from settings', settings.start);
                 module.set.value(settings.start);
               }

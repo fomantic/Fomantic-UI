@@ -616,7 +616,8 @@ $.fn.transition = function() {
               if (currentDisplay === '' || currentDisplay === 'none'){
               // create fake element to determine display state
                 module.can.transition(true);
-              } else {
+              }
+              else {
                 module.save.displayType(currentDisplay);
               }
             }
@@ -779,7 +780,8 @@ $.fn.transition = function() {
             settings.onBeforeHide.call(element,function(){
               module.hideNow();
             });
-          } else {
+          }
+          else {
             module.hideNow();
           }
 

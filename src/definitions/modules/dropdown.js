@@ -885,10 +885,12 @@ $.fn.dropdown = function(parameters) {
           if (!module.has.query()) {
             $divider
               .removeClass(className.hidden);
-          } else if (settings.hideDividers === true) {
+          }
+          else if (settings.hideDividers === true) {
             $divider
               .addClass(className.hidden);
-          } else if (settings.hideDividers === 'empty') {
+          }
+          else if (settings.hideDividers === 'empty') {
             $divider
               .removeClass(className.hidden)
               .filter(function() {
@@ -1101,13 +1103,16 @@ $.fn.dropdown = function(parameters) {
                 if (!module.is.active()) {
                   if (settings.showOnFocus){
                     module.focusSearch();
-                  } else {
+                  }
+                  else {
                     module.toggle();
                   }
-                } else {
+                }
+                else {
                   module.blurSearch();
                 }
-              } else {
+              }
+              else {
                 module.toggle();
               }
             }
@@ -1967,11 +1972,13 @@ $.fn.dropdown = function(parameters) {
                 select.values.sort(function(a, b) {
                   return a.name.localeCompare(b.name);
                 });
-              } else if (settings.sortSelect === 'natural') {
+              }
+              else if (settings.sortSelect === 'natural') {
                 select.values.sort(function(a, b) {
                   return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
                 });
-              } else if ($.isFunction(settings.sortSelect)) {
+              }
+              else if ($.isFunction(settings.sortSelect)) {
                 select.values.sort(settings.sortSelect);
               }
               module.debug('Retrieved and sorted values from select', select);
@@ -2169,7 +2176,8 @@ $.fn.dropdown = function(parameters) {
             }
             if (module.get.item()) {
               $input.removeClass(className.noselection);
-            } else {
+            }
+            else {
               $input.addClass(className.noselection);
             }
             module.remove.initialLoad();
@@ -2517,7 +2525,8 @@ $.fn.dropdown = function(parameters) {
               // reset position, remove upward if it's base menu
               if (!$menu) {
                 module.remove.upward();
-              } else if (module.is.upward($menu)) {
+              }
+              else if (module.is.upward($menu)) {
                 //we need make sure when make assertion openDownward for $menu, $menu does not have upward class
                 module.remove.upward($menu);
               }
@@ -2547,7 +2556,8 @@ $.fn.dropdown = function(parameters) {
           value: function(value, text, $selected) {
             if (value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
-            } else {
+            }
+            else {
               $input.addClass(className.noselection);
             }
             var
@@ -4085,7 +4095,8 @@ $.fn.dropdown.settings.templates = {
         html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
-      } else if (itemType === 'header') {
+      }
+      else if (itemType === 'header') {
         html += '<div class="header">';
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';

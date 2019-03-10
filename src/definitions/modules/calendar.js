@@ -422,7 +422,8 @@ $.fn.calendar = function(parameters) {
               $input.on('blur' + eventNamespace, module.event.inputBlur);
               $input.on('click' + eventNamespace, module.event.inputClick);
               $input.on('keydown' + eventNamespace, module.event.keydown);
-            } else {
+            }
+            else {
               $container.on('keydown' + eventNamespace, module.event.keydown);
             }
           }
@@ -514,7 +515,8 @@ $.fn.calendar = function(parameters) {
                 if (module.helper.isDateInRange(newFocusDate, mode)) {
                   module.set.focusDate(newFocusDate);
                 }
-              } else if (event.keyCode === 13) {
+              }
+              else if (event.keyCode === 13) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
@@ -714,7 +716,8 @@ $.fn.calendar = function(parameters) {
             date = module.helper.sanitiseDate(date);
             if (settings.maxDate !== null && settings.maxDate <= date) {
               module.verbose('Unable to set minDate variable bigger that maxDate variable', date, settings.maxDate);
-            } else {
+            }
+            else {
               module.setting('minDate', date);
               module.set.dataKeyValue(metadata.minDate, date);
             }
@@ -723,7 +726,8 @@ $.fn.calendar = function(parameters) {
             date = module.helper.sanitiseDate(date);
             if (settings.minDate !== null && settings.minDate >= date) {
               module.verbose('Unable to set maxDate variable lower that minDate variable', date, settings.minDate);
-            } else {
+            }
+            else {
               module.setting('maxDate', date);
               module.set.dataKeyValue(metadata.maxDate, date);
             }
@@ -741,7 +745,8 @@ $.fn.calendar = function(parameters) {
             var equal = oldValue === value || (oldValue <= value && oldValue >= value); //equality test for dates and string objects
             if (value) {
               $module.data(key, value);
-            } else {
+            }
+            else {
               $module.removeData(key);
             }
             refreshCalendar = refreshCalendar !== false && !equal;
@@ -771,14 +776,16 @@ $.fn.calendar = function(parameters) {
                 endModule.focus();
               }
             }
-          } else {
+          }
+          else {
             var newMode = mode === 'year' ? (!settings.disableMonth ? 'month' : 'day') :
               mode === 'month' ? 'day' : mode === 'day' ? 'hour' : 'minute';
             module.set.mode(newMode);
             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
               //the user has chosen enough to consider a valid date/time has been chosen
               module.set.date(date);
-            } else {
+            }
+            else {
               module.set.focusDate(date);
             }
           }
@@ -799,14 +806,16 @@ $.fn.calendar = function(parameters) {
         focus: function () {
           if ($input.length) {
             $input.focus();
-          } else {
+          }
+          else {
             $container.focus();
           }
         },
         blur: function () {
           if ($input.length) {
             $input.blur();
-          } else {
+          }
+          else {
             $container.blur();
           }
         },
@@ -832,7 +841,8 @@ $.fn.calendar = function(parameters) {
                   return module.helper.dateEqual(date, d[metadata.date], mode);
                 }
               });
-            } else {
+            }
+            else {
               return true;
             }
           },
@@ -1265,7 +1275,8 @@ $.fn.calendar.settings = {
                 }
                 if (k === 0) {
                   hour = j % 24;
-                } else {
+                }
+                else {
                   minute = j % 60;
                 }
               }
@@ -1415,7 +1426,8 @@ $.fn.calendar.settings = {
           if (hour === 12) {
             hour = 0;
           }
-        } else if (hour < 12) {
+        }
+        else if (hour < 12) {
           hour += 12;
         }
       }

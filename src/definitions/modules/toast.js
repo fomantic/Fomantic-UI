@@ -161,7 +161,8 @@ $.fn.toast = function(parameters) {
             }
             if ($toast.hasClass('toast') && !$toast.hasClass('inverted')){
               $progress.addClass('inverted');
-            } else {
+            }
+            else {
               $progress.removeClass('inverted');
             }
             $toast = $toastBox.append($toast);
@@ -171,7 +172,8 @@ $.fn.toast = function(parameters) {
                 .append($progressBar);
               if ($progress.hasClass('top')) {
                 $toast.prepend($progress);
-              } else {
+              }
+              else {
                 $toast.append($progress);
               }
               $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
@@ -256,7 +258,8 @@ $.fn.toast = function(parameters) {
                         $toast.parent().remove();
                         callback.call($toast);
                       });
-                    } else {
+                    }
+                    else {
                       callback.call($toast);
                     }
                   },
@@ -582,11 +585,14 @@ $.extend($.easing, {
   easeOutBounce: function (x, t, b, c, d) {
     if ((t/=d) < (1/2.75)) {
       return c*(7.5625*t*t) + b;
-    } else if (t < (2/2.75)) {
+    }
+    else if (t < (2/2.75)) {
       return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-    } else if (t < (2.5/2.75)) {
+    }
+    else if (t < (2.5/2.75)) {
       return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-    } else {
+    }
+    else {
       return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
     }
   }

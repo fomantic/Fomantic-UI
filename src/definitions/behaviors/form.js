@@ -1055,7 +1055,8 @@ $.fn.form = function(parameters) {
               if (!isValid($field)) {
                 invalidFields = $field;
               }
-            } else {
+            }
+            else {
               $.each($field, function (index, field) {
                 if (!isValid(field)) {
                   invalidFields.push(field);

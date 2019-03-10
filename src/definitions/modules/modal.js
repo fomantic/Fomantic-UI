@@ -846,7 +846,8 @@ $.fn.modal = function(parameters) {
             else if (!$module.hasClass('bottom')){
               module.verbose('Modal cannot fit on screen setting to scrolling');
               module.set.scrolling();
-            } else {
+            }
+            else {
               module.verbose('Bottom aligned modal not fitting on screen is unsupported for scrolling');
             }
           },

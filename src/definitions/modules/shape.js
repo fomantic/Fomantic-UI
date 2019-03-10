@@ -764,7 +764,8 @@ $.fn.shape = function(parameters) {
           setTimeout(function(){
             module.invoke(query);
           }, 150);
-        } else {
+        }
+        else {
           module.invoke(query);
         }
       }

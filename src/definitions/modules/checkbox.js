@@ -224,7 +224,8 @@ $.fn.checkbox = function(parameters) {
 
             if (key == keyCode.left || key == keyCode.up) {
               checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
-            } else if (key == keyCode.right || key == keyCode.down) {
+            }
+            else if (key == keyCode.right || key == keyCode.down) {
               checkIndex = rIndex === rLen-1 ? 0 : rIndex+1;
             }
 
