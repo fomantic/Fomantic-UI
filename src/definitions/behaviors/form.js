@@ -788,7 +788,7 @@ $.fn.form = function(parameters) {
           // alias
           rules: function(field, rules) {
             if (Array.isArray(field)) {
-              $.each(fields, function(index, field) {
+              $.each(field, function(index, field) {
                 module.remove.rule(field, rules);
               });
             }
