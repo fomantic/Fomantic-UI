@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -103,7 +103,7 @@ $.fn.tab = function(parameters) {
           module.instantiate();
         },
 
-        instantiate: function () {
+        instantiate: function() {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module

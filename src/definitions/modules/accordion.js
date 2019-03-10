@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -605,7 +605,7 @@ $.fn.accordion.settings = {
 
 // Adds easing
 $.extend($.easing, {
-  easeOutQuad: function (x, t, b, c, d) {
+  easeOutQuad: function(x, t, b, c, d) {
     return -c *(t/=d)*(t-2) + b;
   }
 });

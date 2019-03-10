@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -802,7 +802,7 @@ $.fn.popup = function(parameters) {
             module.debug('Determining popup position from calculations', position, calculations);
 
             if (module.is.rtl()) {
-              position = position.replace(/left|right/g, function (match) {
+              position = position.replace(/left|right/g, function(match) {
                 return (match == 'left')
                   ? 'right'
                   : 'left'
@@ -1129,7 +1129,7 @@ $.fn.popup = function(parameters) {
           hidden: function() {
             return !module.is.visible();
           },
-          rtl: function () {
+          rtl: function() {
             return $module.css('direction') == 'rtl';
           }
         },

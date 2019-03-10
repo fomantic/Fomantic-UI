@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -316,7 +316,7 @@ $.fn.toast = function(parameters) {
               result = ''
             ;
 
-            classes.forEach(function (element) {
+            classes.forEach(function(element) {
               result += '.' + element;
             });
 
@@ -582,7 +582,7 @@ $.fn.toast.settings = {
 };
 
 $.extend($.easing, {
-  easeOutBounce: function (x, t, b, c, d) {
+  easeOutBounce: function(x, t, b, c, d) {
     if ((t/=d) < (1/2.75)) {
       return c*(7.5625*t*t) + b;
     }

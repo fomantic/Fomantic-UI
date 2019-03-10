@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -457,7 +457,7 @@ $.fn.visibility = function(parameters) {
           settings.onRefresh.call(element);
         },
 
-        resetFixed: function () {
+        resetFixed: function() {
           module.remove.fixed();
           module.remove.occurred();
         },

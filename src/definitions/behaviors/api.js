@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -608,7 +608,7 @@ $.api = $.fn.api = function(parameters) {
             ;
           },
 
-          mockedXHR: function () {
+          mockedXHR: function() {
             var
               // xhr does not simulate these properties of xhr but must return them
               textStatus     = false,

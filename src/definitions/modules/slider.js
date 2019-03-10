@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 "use strict";
 
@@ -489,7 +489,7 @@ $.fn.slider = function(parameters) {
           trackEndPos: function() {
             return module.is.reversed() ? module.get.trackLeft() : module.get.trackLeft() + module.get.trackLength();
           },
-          trackStartMargin: function () {
+          trackStartMargin: function() {
             var margin;
             if (module.is.vertical()) {
               margin = module.is.reversed() ? $module.css('padding-bottom') : $module.css('padding-top');
@@ -499,7 +499,7 @@ $.fn.slider = function(parameters) {
             }
             return margin || '0px';
           },
-          trackEndMargin: function () {
+          trackEndMargin: function() {
             var margin;
             if (module.is.vertical()) {
               margin = module.is.reversed() ? $module.css('padding-top') : $module.css('padding-bottom');
@@ -932,7 +932,7 @@ $.fn.slider = function(parameters) {
             $trackFill.css(trackPosValue);
             module.debug('Setting slider position to ' + newPos);
           },
-          labelPosition: function (ratio, $label) {
+          labelPosition: function(ratio, $label) {
             var
               startMargin = module.get.trackStartMargin(),
               endMargin   = module.get.trackEndMargin(),

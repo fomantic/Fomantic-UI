@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -214,7 +214,7 @@ $.fn.transition = function() {
           ;
         },
 
-        complete: function (event) {
+        complete: function(event) {
           module.debug('Animation complete', settings.animation);
           module.remove.completeCallback();
           module.remove.failSafe();

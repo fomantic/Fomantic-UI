@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -170,7 +170,7 @@ $.fn.form = function(parameters) {
 
         clear: function() {
           $field
-            .each(function () {
+            .each(function() {
               var
                 $field       = $(this),
                 $element     = $field.parent(),
@@ -203,7 +203,7 @@ $.fn.form = function(parameters) {
 
         reset: function() {
           $field
-            .each(function () {
+            .each(function() {
               var
                 $field       = $(this),
                 $element     = $field.parent(),
@@ -561,7 +561,7 @@ $.fn.form = function(parameters) {
             });
             return fieldValidation || false;
           },
-          value: function (field) {
+          value: function(field) {
             var
               fields = [],
               results
@@ -570,7 +570,7 @@ $.fn.form = function(parameters) {
             results = module.get.values.call(element, fields);
             return results[field];
           },
-          values: function (fields) {
+          values: function(fields) {
             var
               $fields = Array.isArray(fields)
                 ? module.get.fields(fields)
@@ -835,9 +835,9 @@ $.fn.form = function(parameters) {
               .addClass(className.success)
             ;
           },
-          defaults: function () {
+          defaults: function() {
             $field
-              .each(function () {
+              .each(function() {
                 var
                   $field     = $(this),
                   isCheckbox = ($field.filter(selector.checkbox).length > 0),
@@ -855,14 +855,14 @@ $.fn.form = function(parameters) {
               .addClass(className.error)
             ;
           },
-          value: function (field, value) {
+          value: function(field, value) {
             var
               fields = {}
             ;
             fields[field] = value;
             return module.set.values.call(element, fields);
           },
-          values: function (fields) {
+          values: function(fields) {
             if ($.isEmptyObject(fields)) {
               return;
             }
@@ -1057,7 +1057,7 @@ $.fn.form = function(parameters) {
               }
             }
             else {
-              $.each($field, function (index, field) {
+              $.each($field, function(index, field) {
                 if (!isValid(field)) {
                   invalidFields.push(field);
                 }

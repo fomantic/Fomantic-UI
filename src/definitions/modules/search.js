@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -657,7 +657,7 @@ $.fn.search = function(parameters) {
             return results;
           }
         },
-        exactSearch: function (query, term) {
+        exactSearch: function(query, term) {
           query = query.toLowerCase();
           term  = term.toLowerCase();
           return term.indexOf(query) > -1;

@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -759,7 +759,7 @@ $.fn.sidebar = function(parameters) {
           animating: function() {
             return $context.hasClass(className.animating);
           },
-          rtl: function () {
+          rtl: function() {
             if (module.cache.rtl === undefined) {
               module.cache.rtl = ($module.css('direction') == 'rtl');
             }

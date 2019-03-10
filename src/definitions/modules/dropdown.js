@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -935,7 +935,7 @@ $.fn.dropdown = function(parameters) {
           }
           return true;
         },
-        exactSearch: function (query, term) {
+        exactSearch: function(query, term) {
           query = query.toLowerCase();
           term  = term.toLowerCase();
           return term.indexOf(query) > -1;
@@ -1280,7 +1280,7 @@ $.fn.dropdown = function(parameters) {
                 }, settings.delay.hide);
               }
             },
-            click: function (event, skipRefocus) {
+            click: function(event, skipRefocus) {
               var
                 $choice        = $(this),
                 $target        = (event)
@@ -1811,7 +1811,7 @@ $.fn.dropdown = function(parameters) {
             });
           },
           uniqueArray: function(array) {
-            return $.grep(array, function (value, index) {
+            return $.grep(array, function(value, index) {
               return $.inArray(value, array) === index;
             });
           },

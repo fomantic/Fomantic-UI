@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+;(function($, window, document, undefined) {
 
 'use strict';
 
@@ -389,7 +389,7 @@ $.fn.dimmer = function(parameters) {
           enabled: function() {
             return !module.is.disabled();
           },
-          page: function () {
+          page: function() {
             return $dimmable.is('body');
           },
           pageDimmer: function() {
