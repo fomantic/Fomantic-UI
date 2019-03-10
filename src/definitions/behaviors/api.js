@@ -633,14 +633,14 @@ $.api = $.fn.api = function(parameters) {
                 response = responder;
               }
               // simulating response
-              mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
+              mockedXHR.resolveWith(context, [response, textStatus, { responseText: response }]);
             }
             else if ($.isFunction(asyncResponder)) {
               asyncCallback = function(response) {
                 module.debug('Async callback returned response', response);
 
                 if (response) {
-                  mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
+                  mockedXHR.resolveWith(context, [response, textStatus, { responseText: response }]);
                 }
                 else {
                   mockedXHR.rejectWith(context, [{ responseText: response }, status, httpMessage]);
