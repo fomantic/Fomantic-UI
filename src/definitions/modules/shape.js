@@ -318,13 +318,13 @@ $.fn.shape = function(parameters) {
               transform = module.get.transform[type]()
             ;
             if (!module.is.animating()) {
-              module.debug('Flipping '+type, $nextSide);
+              module.debug('Flipping ' + type, $nextSide);
               module.set.stageSize();
               module.stage[stage]();
               module.animate(transform);
             }
             else {
-              module.queue('flip '+type);
+              module.queue('flip ' + type);
             }
           },
 
@@ -363,7 +363,7 @@ $.fn.shape = function(parameters) {
                 translateY = $nextSide.outerHeight(true) - translateZ
               ;
               return {
-                transform: 'translateY(' + translateY + 'px) translateZ(-'+ translateZ + 'px) rotateX(-90deg)'
+                transform: 'translateY(' + translateY + 'px) translateZ(-' + translateZ + 'px) rotateX(-90deg)'
               };
             },
 
@@ -374,7 +374,7 @@ $.fn.shape = function(parameters) {
                 }
               ;
               return {
-                transform: 'translateY(-' + translate.z + 'px) translateZ(-'+ translate.z + 'px) rotateX(90deg)'
+                transform: 'translateY(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateX(90deg)'
               };
             },
 
@@ -690,7 +690,7 @@ $.fn.shape = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();

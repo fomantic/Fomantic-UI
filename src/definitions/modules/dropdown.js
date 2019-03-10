@@ -750,10 +750,10 @@ $.fn.dropdown = function(parameters) {
                 }
                 var preSelected = $input.val();
                 if (!Array.isArray(preSelected)) {
-                  preSelected = preSelected && preSelected!=="" ? preSelected.split(settings.delimiter) : [];
+                  preSelected = preSelected && preSelected !== "" ? preSelected.split(settings.delimiter) : [];
                 }
                 $.each(preSelected,function(index,value) {
-                  $item.filter('[data-value="'+value+'"]')
+                  $item.filter('[data-value="' + value + '"]')
                     .addClass(className.filtered)
                   ;
                 });
@@ -799,7 +799,7 @@ $.fn.dropdown = function(parameters) {
                   values: values
                 });
 
-                if (values.length===0 && !settings.allowAdditions) {
+                if (values.length === 0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
                 }
                 callback();
@@ -1095,7 +1095,7 @@ $.fn.dropdown = function(parameters) {
           },
           icon: {
             click: function(event) {
-              iconClicked=true;
+              iconClicked = true;
               if (module.has.search()) {
                 if (!module.is.active()) {
                   if (settings.showOnFocus) {
@@ -1441,12 +1441,12 @@ $.fn.dropdown = function(parameters) {
                   ? $currentlySelected
                   : $activeItem,
                 $visibleItems = ($selectedItem.length > 0)
-                  ? $selectedItem.siblings(':not(.' + className.filtered +')').addBack()
-                  : $menu.children(':not(.' + className.filtered +')'),
+                  ? $selectedItem.siblings(':not(.' + className.filtered + ')').addBack()
+                  : $menu.children(':not(.' + className.filtered + ')'),
                 $subMenu              = $selectedItem.children(selector.menu),
                 $parentMenu           = $selectedItem.closest(selector.menu),
                 inVisibleMenu         = ($parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0),
-                hasSubMenu            = ($subMenu.length> 0),
+                hasSubMenu            = ($subMenu.length > 0),
                 hasSelectedItem       = ($selectedItem.length > 0),
                 selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
                 delimiterPressed      = (pressedKey == keys.delimiter && settings.allowAdditions && module.is.multiple()),
@@ -3054,7 +3054,7 @@ $.fn.dropdown = function(parameters) {
           label: function(value, shouldAnimate) {
             var
               $labels       = $module.find(selector.label),
-              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(value) +'"]')
+              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(value) + '"]')
             ;
             module.verbose('Removing label', $removedLabel);
             $removedLabel.remove();
@@ -3142,7 +3142,7 @@ $.fn.dropdown = function(parameters) {
               ;
               return (searchTerm.length >= settings.minCharacters);
             }
-            iconClicked=false;
+            iconClicked = false;
             return true;
           },
           firstLetter: function($item, letter) {
@@ -3178,7 +3178,7 @@ $.fn.dropdown = function(parameters) {
             if (settings.ignoreCase) {
               escapedValue = escapedValue.toLowerCase();
             }
-            return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) +'"]').length > 0);
+            return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0);
           },
           maxSelections: function() {
             return (settings.maxSelections && module.get.selectionCount() >= settings.maxSelections);
@@ -3731,7 +3731,7 @@ $.fn.dropdown = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();
@@ -4054,9 +4054,9 @@ $.fn.dropdown.settings.templates = {
     else {
       html += '<div class="text"></div>';
     }
-    html += '<div class="'+className.menu+'">';
+    html += '<div class="' + className.menu + '">';
     $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="' + (option.disabled ? className.disabled + ' ' : '') + className.item + '" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -4082,10 +4082,10 @@ $.fn.dropdown.settings.templates = {
             ? ' data-text="' + String(option[fields.text]).replace(/"/g,"") + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
-            ? className.disabled+' '
+            ? className.disabled + ' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
+        html += '<div class="' + maybeDisabled + className.item + '" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       }
@@ -4102,7 +4102,7 @@ $.fn.dropdown.settings.templates = {
   label: function(value, text, preserveHTML, className) {
     var
       escape = $.fn.dropdown.settings.templates.escape;
-    return escape(text,preserveHTML) + '<i class="'+className.delete+' icon"></i>';
+    return escape(text,preserveHTML) + '<i class="' + className.delete + ' icon"></i>';
   },
 
 

@@ -53,7 +53,7 @@ $.fn.toast = function(parameters) {
         $module         = $(this),
         $toastBox       = $('<div/>',{ 'class': settings.className.box }),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{ 'class': settings.className.progress+' '+settings.class }),
+        $progress       = $('<div/>',{ 'class': settings.className.progress + ' ' + settings.class }),
         $progressBar    = $('<div/>',{ 'class': 'bar' }),
 
         $close          = $('<i/>',{ 'class': 'close icon' }),
@@ -82,7 +82,7 @@ $.fn.toast = function(parameters) {
           module.bind.events();
           
           if (settings.displayTime > 0) {
-            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
+            module.closeTimer = setTimeout(module.close, settings.displayTime + (!!settings.showProgress ? 300 : 0));
           }
           module.show();
         },
@@ -174,11 +174,11 @@ $.fn.toast = function(parameters) {
               else {
                 $toast.append($progress);
               }
-              $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
-              $progressBar.width(settings.progressUp?'0%':'100%');
+              $progressBar.css('transition','width ' + (settings.displayTime / 1000) + 's linear');
+              $progressBar.width(settings.progressUp ? '0%' : '100%');
               setTimeout(function() {
                 if (typeof $progress !== 'undefined') {
-                  $progressBar.width(settings.progressUp?'100%':'0%');
+                  $progressBar.width(settings.progressUp ? '100%' : '0%');
                 }
               },300);
             }
@@ -249,7 +249,7 @@ $.fn.toast = function(parameters) {
                   verbose   : settings.verbose,
 
                   onBeforeHide: function(callback) {
-                    callback = $.isFunction(callback)?callback : function() {};
+                    callback = $.isFunction(callback) ? callback : function() {};
                     if (settings.transition.closeEasing !== '') {
                       $toast.css('opacity',0);
                       $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function() {
@@ -421,7 +421,7 @@ $.fn.toast = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();
@@ -581,17 +581,17 @@ $.fn.toast.settings = {
 
 $.extend($.easing, {
   easeOutBounce: function(x, t, b, c, d) {
-    if ((t/=d) < (1/2.75)) {
-      return c*(7.5625*t*t) + b;
+    if ((t /= d) < (1 / 2.75)) {
+      return c * (7.5625 * t * t) + b;
     }
-    else if (t < (2/2.75)) {
-      return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
+    else if (t < (2 / 2.75)) {
+      return c * (7.5625 * (t -= (1.5 / 2.75)) * t + .75) + b;
     }
-    else if (t < (2.5/2.75)) {
-      return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
+    else if (t < (2.5 / 2.75)) {
+      return c * (7.5625 * (t -= (2.25 / 2.75)) * t + .9375) + b;
     }
     else {
-      return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
+      return c * (7.5625 * (t -= (2.625 / 2.75)) * t + .984375) + b;
     }
   }
 });

@@ -694,8 +694,8 @@ $.fn.search = function(parameters) {
         parse: {
           response: function(response, searchTerm) {
             if (Array.isArray(response)) {
-              var o={};
-              o[fields.results]=response;
+              var o = {};
+              o[fields.results] = response;
               response = o;
             }
             var
@@ -1132,7 +1132,7 @@ $.fn.search = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();

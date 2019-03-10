@@ -239,8 +239,8 @@ $.fn.sidebar = function(parameters) {
               style  += ''
                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
+                + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                 + ' }'
               ;
             }
@@ -261,8 +261,8 @@ $.fn.sidebar = function(parameters) {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
-                  + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                  + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                  + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
+                  + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                   + ' }'
                 ;
               }
@@ -865,7 +865,7 @@ $.fn.sidebar = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();

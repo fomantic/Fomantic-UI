@@ -313,7 +313,7 @@ $.fn.calendar = function(parameters) {
                 row = $('<tr/>').appendTo(tbody);
                 if (isDay && settings.showWeekNumbers) {
                   cell = $('<th/>').appendTo(row);
-                  cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
+                  cell.text(module.get.weekOfYear(year,month,i + 1 - settings.firstDayOfWeek));
                   cell.addClass(className.disabledCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
@@ -1312,7 +1312,7 @@ $.fn.calendar.settings = {
           if (isNaN(j)) {
             continue;
           }
-          if (j >= settings.centuryBreak && i === numbers.length-1) {
+          if (j >= settings.centuryBreak && i === numbers.length - 1) {
             if (j <= 99) {
               j += settings.currentCentury - 100;
             }

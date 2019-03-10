@@ -516,16 +516,16 @@ $.fn.form = function(parameters) {
             module.verbose('Finding field with identifier', identifier);
             identifier = module.escape.string(identifier);
             var t;
-            if ((t=$field.filter('#' + identifier)).length > 0) {
+            if ((t = $field.filter('#' + identifier)).length > 0) {
               return t;
             }
-            if ((t=$field.filter('[name="' + identifier +'"]')).length > 0) {
+            if ((t = $field.filter('[name="' + identifier + '"]')).length > 0) {
               return t;
             }
-            if ((t=$field.filter('[name="' + identifier +'[]"]')).length > 0) {
+            if ((t = $field.filter('[name="' + identifier + '[]"]')).length > 0) {
               return t;
             }
-            if ((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0) {
+            if ((t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]')).length > 0) {
               return t;
             }
             return $('<input/>');
@@ -643,10 +643,10 @@ $.fn.form = function(parameters) {
             if ($field.filter('#' + identifier).length > 0) {
               return true;
             }
-            else if ($field.filter('[name="' + identifier +'"]').length > 0) {
+            else if ($field.filter('[name="' + identifier + '"]').length > 0) {
               return true;
             }
-            else if ($field.filter('[data-' + metadata.validate + '="'+ identifier +'"]').length > 0) {
+            else if ($field.filter('[data-' + metadata.validate + '="' + identifier + '"]').length > 0) {
               return true;
             }
             return false;
@@ -998,7 +998,7 @@ $.fn.form = function(parameters) {
               $.each(field.rules, function(index, rule) {
                 if (module.has.field(identifier)) {
                   var invalidFields = module.validate.rule(field, rule,true) || [];
-                  if (invalidFields.length>0) {
+                  if (invalidFields.length > 0) {
                     module.debug('Field is invalid', identifier, rule.type);
                     fieldErrors.push(module.get.prompt(rule, field));
                     fieldValid = false;
@@ -1061,7 +1061,7 @@ $.fn.form = function(parameters) {
                 }
               });
             }
-            return internal ? invalidFields : !(invalidFields.length>0);
+            return internal ? invalidFields : !(invalidFields.length > 0);
           }
         },
 
@@ -1161,7 +1161,7 @@ $.fn.form = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();
@@ -1551,17 +1551,17 @@ $.fn.form.settings = {
       var
         matchingValue
       ;
-      if ($('[data-validate="'+ identifier +'"]').length > 0) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if ($('[data-validate="' + identifier + '"]').length > 0) {
+        matchingValue = $('[data-validate="' + identifier + '"]').val();
       }
       else if ($('#' + identifier).length > 0) {
         matchingValue = $('#' + identifier).val();
       }
-      else if ($('[name="' + identifier +'"]').length > 0) {
+      else if ($('[name="' + identifier + '"]').length > 0) {
         matchingValue = $('[name="' + identifier + '"]').val();
       }
-      else if ($('[name="' + identifier +'[]"]').length > 0) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if ($('[name="' + identifier + '[]"]').length > 0) {
+        matchingValue = $('[name="' + identifier + '[]"]');
       }
       return (matchingValue !== undefined)
         ? (value.toString() == matchingValue.toString())
@@ -1575,17 +1575,17 @@ $.fn.form.settings = {
       var
         matchingValue
       ;
-      if ($('[data-validate="'+ identifier +'"]').length > 0) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if ($('[data-validate="' + identifier + '"]').length > 0) {
+        matchingValue = $('[data-validate="' + identifier + '"]').val();
       }
       else if ($('#' + identifier).length > 0) {
         matchingValue = $('#' + identifier).val();
       }
-      else if ($('[name="' + identifier +'"]').length > 0) {
+      else if ($('[name="' + identifier + '"]').length > 0) {
         matchingValue = $('[name="' + identifier + '"]').val();
       }
-      else if ($('[name="' + identifier +'[]"]').length > 0) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if ($('[name="' + identifier + '[]"]').length > 0) {
+        matchingValue = $('[name="' + identifier + '[]"]');
       }
       return (matchingValue !== undefined)
         ? (value.toString() !== matchingValue.toString())

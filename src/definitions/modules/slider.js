@@ -400,7 +400,7 @@ $.fn.slider = function(parameters) {
           else if (step == 0) {
             var
               precision = module.get.precision(),
-              newValue = currValue + (multiplier/precision)
+              newValue = currValue + (multiplier / precision)
             ;
             module.set.value(Math.round(newValue * precision) / precision);
           }
@@ -419,7 +419,7 @@ $.fn.slider = function(parameters) {
           else if (step == 0) {
             var
               precision = module.get.precision(),
-              newValue = currValue - (multiplier/precision)
+              newValue = currValue - (multiplier / precision)
             ;
             module.set.value(Math.round(newValue * precision) / precision);
           }
@@ -1074,7 +1074,7 @@ $.fn.slider = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();

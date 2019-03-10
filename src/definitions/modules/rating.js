@@ -378,7 +378,7 @@ $.fn.rating = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();
@@ -512,7 +512,7 @@ $.fn.rating.settings = {
         html = ''
       ;
       while (icon <= maxRating) {
-        html += '<i class="'+iconClass+' icon"></i>';
+        html += '<i class="' + iconClass + ' icon"></i>';
         icon++;
       }
       return html;

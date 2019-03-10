@@ -471,7 +471,7 @@ $.fn.accordion = function(parameters) {
               }
               else {
                 $.each(performance, function(index, data) {
-                  console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                  console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
               console.groupEnd();
@@ -605,7 +605,7 @@ $.fn.accordion.settings = {
 // Adds easing
 $.extend($.easing, {
   easeOutQuad: function(x, t, b, c, d) {
-    return -c *(t/=d)*(t-2) + b;
+    return -c * (t /= d) * (t - 2) + b;
   }
 });
 })(jQuery, window, document);
