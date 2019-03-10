@@ -295,7 +295,7 @@ $.fn.calendar = function(parameters) {
                 }
                 if (isDay) {
                   row = $('<tr/>').appendTo(thead);
-                  if(settings.showWeekNumbers) {
+                  if (settings.showWeekNumbers) {
                     cell = $('<th/>').appendTo(row);
                     cell.text(settings.text.weekNo);
                     cell.addClass(className.disabledCell);
@@ -312,7 +312,7 @@ $.fn.calendar = function(parameters) {
               i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
               for (r = 0; r < rows; r++) {
                 row = $('<tr/>').appendTo(tbody);
-                if(isDay && settings.showWeekNumbers){
+                if (isDay && settings.showWeekNumbers){
                   cell = $('<th/>').appendTo(row);
                   cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
                   cell.addClass(className.disabledCell);
@@ -936,10 +936,10 @@ $.fn.calendar = function(parameters) {
           }
         },
         internal: function (name, value) {
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, module, name);
           }
-          else if(value !== undefined) {
+          else if (value !== undefined) {
             module[name] = value;
           }
           else {

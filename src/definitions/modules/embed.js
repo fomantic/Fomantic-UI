@@ -104,7 +104,7 @@ $.fn.embed = function(parameters) {
 
         bind: {
           events: function() {
-            if( module.has.placeholder() ) {
+            if ( module.has.placeholder() ) {
               module.debug('Adding placeholder events');
               $module
                 .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
@@ -118,7 +118,7 @@ $.fn.embed = function(parameters) {
           var
             placeholder = module.get.placeholder()
           ;
-          if(placeholder) {
+          if (placeholder) {
             module.createPlaceholder();
           }
           else {
@@ -167,13 +167,13 @@ $.fn.embed = function(parameters) {
             .data(metadata.source, source)
             .data(metadata.id, id)
           ;
-          if(url) {
+          if (url) {
             $module.data(metadata.url, url);
           }
           else {
             $module.removeData(metadata.url);
           }
-          if(module.has.embed()) {
+          if (module.has.embed()) {
             module.changeEmbed();
           }
           else {
@@ -251,7 +251,7 @@ $.fn.embed = function(parameters) {
 
         determine: {
           autoplay: function() {
-            if(module.should.autoplay()) {
+            if (module.should.autoplay()) {
               settings.autoplay = true;
             }
           },
@@ -260,9 +260,9 @@ $.fn.embed = function(parameters) {
               matchedSource = false
             ;
             url = url || module.get.url();
-            if(url) {
+            if (url) {
               $.each(sources, function(name, source) {
-                if(url.search(source.domain) !== -1) {
+                if (url.search(source.domain) !== -1) {
                   matchedSource = name;
                   return false;
                 }
@@ -289,7 +289,7 @@ $.fn.embed = function(parameters) {
               ? sources[source].url.replace('{id}', id)
               : false
             ;
-            if(url) {
+            if (url) {
               $module.data(metadata.url, url);
             }
             return url;
@@ -343,7 +343,7 @@ $.fn.embed = function(parameters) {
               parameters
             ;
             url = module.get.url(url);
-            if(url) {
+            if (url) {
               parameters = module.generate.parameters(source);
               html       = templates.iframe(url, parameters);
             }
@@ -359,7 +359,7 @@ $.fn.embed = function(parameters) {
                 : {}
             ;
             extraParameters = extraParameters || settings.parameters;
-            if(extraParameters) {
+            if (extraParameters) {
               parameters = $.extend({}, parameters, extraParameters);
             }
             parameters = settings.onEmbed(parameters);
@@ -393,11 +393,11 @@ $.fn.embed = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, settings, name);
           }
-          else if(value !== undefined) {
-            if($.isPlainObject(settings[name])) {
+          else if (value !== undefined) {
+            if ($.isPlainObject(settings[name])) {
               $.extend(true, settings[name], value);
             }
             else {
@@ -409,10 +409,10 @@ $.fn.embed = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, module, name);
           }
-          else if(value !== undefined) {
+          else if (value !== undefined) {
             module[name] = value;
           }
           else {
@@ -420,8 +420,8 @@ $.fn.embed = function(parameters) {
           }
         },
         debug: function() {
-          if(!settings.silent && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -431,8 +431,8 @@ $.fn.embed = function(parameters) {
           }
         },
         verbose: function() {
-          if(!settings.silent && settings.verbose && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.verbose && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -442,7 +442,7 @@ $.fn.embed = function(parameters) {
           }
         },
         error: function() {
-          if(!settings.silent) {
+          if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
@@ -454,7 +454,7 @@ $.fn.embed = function(parameters) {
               executionTime,
               previousTime
             ;
-            if(settings.performance) {
+            if (settings.performance) {
               currentTime   = new Date().getTime();
               previousTime  = time || currentTime;
               executionTime = currentTime - previousTime;
@@ -480,15 +480,15 @@ $.fn.embed = function(parameters) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
-            if(moduleSelector) {
+            if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if($allModules.length > 1) {
+            if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
-              if(console.table) {
+              if (console.table) {
                 console.table(performance);
               }
               else {
@@ -510,7 +510,7 @@ $.fn.embed = function(parameters) {
           ;
           passedArguments = passedArguments || queryArguments;
           context         = element         || context;
-          if(typeof query == 'string' && object !== undefined) {
+          if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
             $.each(query, function(depth, value) {
@@ -518,17 +518,17 @@ $.fn.embed = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                 object = object[camelCaseValue];
               }
-              else if( object[camelCaseValue] !== undefined ) {
+              else if ( object[camelCaseValue] !== undefined ) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                 object = object[value];
               }
-              else if( object[value] !== undefined ) {
+              else if ( object[value] !== undefined ) {
                 found = object[value];
                 return false;
               }
@@ -541,30 +541,30 @@ $.fn.embed = function(parameters) {
           if ( $.isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
-          else if(found !== undefined) {
+          else if (found !== undefined) {
             response = found;
           }
-          if(Array.isArray(returnedValue)) {
+          if (Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
-          else if(returnedValue !== undefined) {
+          else if (returnedValue !== undefined) {
             returnedValue = [returnedValue, response];
           }
-          else if(response !== undefined) {
+          else if (response !== undefined) {
             returnedValue = response;
           }
           return found;
         }
       };
 
-      if(methodInvoked) {
-        if(instance === undefined) {
+      if (methodInvoked) {
+        if (instance === undefined) {
           module.initialize();
         }
         module.invoke(query);
       }
       else {
-        if(instance !== undefined) {
+        if (instance !== undefined) {
           instance.invoke('destroy');
         }
         module.initialize();
@@ -686,10 +686,10 @@ $.fn.embed.settings = {
       var
         html = ''
       ;
-      if(icon) {
+      if (icon) {
         html += '<i class="' + icon + ' icon"></i>';
       }
-      if(image) {
+      if (image) {
         html += '<img class="placeholder" src="' + image + '">';
       }
       return html;

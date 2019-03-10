@@ -66,11 +66,11 @@ $.fn.rating = function(parameters) {
         initialize: function() {
           module.verbose('Initializing rating module', settings);
 
-          if($icon.length === 0) {
+          if ($icon.length === 0) {
             module.setup.layout();
           }
 
-          if(settings.interactive && !module.is.disabled()) {
+          if (settings.interactive && !module.is.disabled()) {
             module.enable();
           }
           else {
@@ -152,7 +152,7 @@ $.fn.rating = function(parameters) {
                 ? ($icon.length === 1)
                 : settings.clearable
             ;
-            if(canClear && currentRating == rating) {
+            if (canClear && currentRating == rating) {
               module.clearRating();
             }
             else {
@@ -223,14 +223,14 @@ $.fn.rating = function(parameters) {
             return icon || settings.icon;
           },
           initialRating: function() {
-            if($module.data(metadata.rating) !== undefined) {
+            if ($module.data(metadata.rating) !== undefined) {
               $module.removeData(metadata.rating);
               return $module.data(metadata.rating);
             }
             return settings.initialRating;
           },
           maxRating: function() {
-            if($module.data(metadata.maxRating) !== undefined) {
+            if ($module.data(metadata.maxRating) !== undefined) {
               $module.removeData(metadata.maxRating);
               return $module.data(metadata.maxRating);
             }
@@ -260,7 +260,7 @@ $.fn.rating = function(parameters) {
               .removeClass(className.selected)
               .removeClass(className.active)
             ;
-            if(rating > 0) {
+            if (rating > 0) {
               module.verbose('Setting current rating to', rating);
               $activeIcon
                 .prevAll()
@@ -268,7 +268,7 @@ $.fn.rating = function(parameters) {
                 .addClass(className.active)
               ;
             }
-            if(!module.is.initialLoad()) {
+            if (!module.is.initialLoad()) {
               settings.onRate.call(element, rating);
             }
           },
@@ -279,11 +279,11 @@ $.fn.rating = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, settings, name);
           }
-          else if(value !== undefined) {
-            if($.isPlainObject(settings[name])) {
+          else if (value !== undefined) {
+            if ($.isPlainObject(settings[name])) {
               $.extend(true, settings[name], value);
             }
             else {
@@ -295,10 +295,10 @@ $.fn.rating = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, module, name);
           }
-          else if(value !== undefined) {
+          else if (value !== undefined) {
             module[name] = value;
           }
           else {
@@ -306,8 +306,8 @@ $.fn.rating = function(parameters) {
           }
         },
         debug: function() {
-          if(!settings.silent && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -317,8 +317,8 @@ $.fn.rating = function(parameters) {
           }
         },
         verbose: function() {
-          if(!settings.silent && settings.verbose && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.verbose && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -328,7 +328,7 @@ $.fn.rating = function(parameters) {
           }
         },
         error: function() {
-          if(!settings.silent) {
+          if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
@@ -340,7 +340,7 @@ $.fn.rating = function(parameters) {
               executionTime,
               previousTime
             ;
-            if(settings.performance) {
+            if (settings.performance) {
               currentTime   = new Date().getTime();
               previousTime  = time || currentTime;
               executionTime = currentTime - previousTime;
@@ -366,15 +366,15 @@ $.fn.rating = function(parameters) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
-            if(moduleSelector) {
+            if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if($allModules.length > 1) {
+            if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
-              if(console.table) {
+              if (console.table) {
                 console.table(performance);
               }
               else {
@@ -396,7 +396,7 @@ $.fn.rating = function(parameters) {
           ;
           passedArguments = passedArguments || queryArguments;
           context         = element         || context;
-          if(typeof query == 'string' && object !== undefined) {
+          if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
             $.each(query, function(depth, value) {
@@ -404,17 +404,17 @@ $.fn.rating = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                 object = object[camelCaseValue];
               }
-              else if( object[camelCaseValue] !== undefined ) {
+              else if ( object[camelCaseValue] !== undefined ) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                 object = object[value];
               }
-              else if( object[value] !== undefined ) {
+              else if ( object[value] !== undefined ) {
                 found = object[value];
                 return false;
               }
@@ -426,29 +426,29 @@ $.fn.rating = function(parameters) {
           if ( $.isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
-          else if(found !== undefined) {
+          else if (found !== undefined) {
             response = found;
           }
-          if(Array.isArray(returnedValue)) {
+          if (Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
-          else if(returnedValue !== undefined) {
+          else if (returnedValue !== undefined) {
             returnedValue = [returnedValue, response];
           }
-          else if(response !== undefined) {
+          else if (response !== undefined) {
             returnedValue = response;
           }
           return found;
         }
       };
-      if(methodInvoked) {
-        if(instance === undefined) {
+      if (methodInvoked) {
+        if (instance === undefined) {
           module.initialize();
         }
         module.invoke(query);
       }
       else {
-        if(instance !== undefined) {
+        if (instance !== undefined) {
           instance.invoke('destroy');
         }
         module.initialize();
@@ -512,7 +512,7 @@ $.fn.rating.settings = {
         icon = 1,
         html = ''
       ;
-      while(icon <= maxRating) {
+      while (icon <= maxRating) {
         html += '<i class="'+iconClass+' icon"></i>';
         icon++;
       }

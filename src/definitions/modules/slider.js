@@ -102,7 +102,7 @@ $.fn.slider = function(parameters) {
           module.setup.layout();
           module.setup.labels();
 
-          if(!module.is.disabled()) {
+          if (!module.is.disabled()) {
             module.bind.events();
           }
 
@@ -131,10 +131,10 @@ $.fn.slider = function(parameters) {
 
         setup: {
           layout: function() {
-            if( $module.attr('tabindex') === undefined) {
+            if ( $module.attr('tabindex') === undefined) {
               $module.attr('tabindex', 0);
             }
-            if($module.find('.inner').length == 0) {
+            if ($module.find('.inner').length == 0) {
               $module.append("<div class='inner'>"
                              + "<div class='track'></div>"
                              + "<div class='track-fill'></div>"
@@ -144,8 +144,8 @@ $.fn.slider = function(parameters) {
             precision = module.get.precision();
             $thumb = $module.find('.thumb:not(.second)');
             $currThumb = $thumb;
-            if(module.is.range()) {
-              if($module.find('.thumb.second').length == 0) {
+            if (module.is.range()) {
+              if ($module.find('.thumb.second').length == 0) {
                 $module.find('.inner').append("<div class='thumb second'></div>");
               }
               $secondThumb = $module.find('.thumb.second');
@@ -155,9 +155,9 @@ $.fn.slider = function(parameters) {
             offset = $thumb.width() / 2;
           },
           labels: function() {
-            if(module.is.labeled()) {
+            if (module.is.labeled()) {
               $labels = $module.find('.labels:not(.auto)');
-              if($labels.length != 0) {
+              if ($labels.length != 0) {
                 module.setup.customLabel();
               } else {
                 module.setup.autoLabel();
@@ -189,7 +189,7 @@ $.fn.slider = function(parameters) {
                 $child = $(this),
                 attrValue = $child.attr('data-value')
               ;
-              if(attrValue) {
+              if (attrValue) {
                 attrValue = attrValue > max ? max : attrValue < min ? min : attrValue;
                 ratio = (attrValue - min) / (max - min);
               } else {
@@ -199,21 +199,21 @@ $.fn.slider = function(parameters) {
             });
           },
           autoLabel: function() {
-            if(module.get.step() != 0) {
+            if (module.get.step() != 0) {
               $labels = $module.find('.labels');
-              if($labels.length != 0) {
+              if ($labels.length != 0) {
                 $labels.empty();
               }
               else {
                 $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
               }
-              for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
+              for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                 var
                   labelText = module.get.label(i),
                   $label = (labelText !== "") ? $('<li class="label">' + labelText + '</li>') : null,
                   ratio  = i / len
                 ;
-                if($label) {
+                if ($label) {
                   module.update.labelPosition(ratio, $label);
                   $labels.append($label);
                 }
@@ -227,7 +227,7 @@ $.fn.slider = function(parameters) {
             module.bind.globalKeyboardEvents();
             module.bind.keyboardEvents();
             module.bind.mouseEvents();
-            if(module.is.touch()) {
+            if (module.is.touch()) {
               module.bind.touchEvents();
             }
           },
@@ -265,7 +265,7 @@ $.fn.slider = function(parameters) {
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
             module.verbose('Binding page wide events while handle is being draged');
-            if(module.is.touch()) {
+            if (module.is.touch()) {
               $(document).on('touchmove' + eventNamespace, module.event.move);
               $(document).on('touchend' + eventNamespace, module.event.up);
             }
@@ -289,7 +289,7 @@ $.fn.slider = function(parameters) {
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
           },
           slidingEvents: function() {
-            if(module.is.touch()) {
+            if (module.is.touch()) {
               $(document).off('touchmove' + eventNamespace);
               $(document).off('touchend' + eventNamespace);
             } else {
@@ -302,27 +302,27 @@ $.fn.slider = function(parameters) {
         event: {
           down: function(event, originalEvent) {
             event.preventDefault();
-            if(module.is.range()) {
+            if (module.is.range()) {
               var
                 eventPos = module.determine.eventPos(event, originalEvent),
                 newPos = module.determine.pos(eventPos)
               ;
               $currThumb = module.determine.closestThumb(newPos);
             }
-            if(!module.is.disabled()) {
+            if (!module.is.disabled()) {
               module.bind.slidingEvents();
             }
           },
           move: function(event, originalEvent) {
             event.preventDefault();
             var value = module.determine.valueFromEvent(event, originalEvent);
-            if(module.get.step() == 0 || module.is.smooth()) {
+            if (module.get.step() == 0 || module.is.smooth()) {
               var
                 thumbVal = module.thumbVal,
                 secondThumbVal = module.secondThumbVal,
                 thumbSmoothVal = module.determine.smoothValueFromEvent(event, originalEvent)
               ;
-              if(!$currThumb.hasClass('second')) {
+              if (!$currThumb.hasClass('second')) {
                 thumbVal = value;
               } else {
                 secondThumbVal = value;
@@ -343,14 +343,14 @@ $.fn.slider = function(parameters) {
             module.unbind.slidingEvents();
           },
           keydown: function(event, first) {
-            if(module.is.focused()) {
+            if (module.is.focused()) {
               $(document).trigger(event);
             }
-            if(first || module.is.focused()) {
+            if (first || module.is.focused()) {
               var step = module.determine.keyMovement(event);
-              if(step != NO_STEP) {
+              if (step != NO_STEP) {
                 event.preventDefault();
-                switch(step) {
+                switch (step) {
                 case SINGLE_STEP:
                   module.takeStep();
                   break;
@@ -368,7 +368,7 @@ $.fn.slider = function(parameters) {
             }
           },
           activateFocus: function(event) {
-            if(!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
+            if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
               event.preventDefault();
               module.event.keydown(event, true);
               $module.focus();
@@ -378,7 +378,7 @@ $.fn.slider = function(parameters) {
 
         resync: function() {
           module.verbose('Resyncing thumb position based on value');
-          if(module.is.range()) {
+          if (module.is.range()) {
             module.update.position(module.secondThumbVal, $secondThumb);
           }
           module.update.position(module.thumbVal, $thumb);
@@ -391,7 +391,7 @@ $.fn.slider = function(parameters) {
             currValue = module.get.currentThumbValue()
           ;
           module.verbose('Taking a step');
-          if(step > 0) {
+          if (step > 0) {
             module.set.value(currValue + step * multiplier);
           } else if (step == 0){
             var
@@ -409,7 +409,7 @@ $.fn.slider = function(parameters) {
             currValue = module.get.currentThumbValue()
           ;
           module.verbose('Going back a step');
-          if(step > 0) {
+          if (step > 0) {
             module.set.value(currValue - step * multiplier);
           } else if (step == 0) {
             var
@@ -501,9 +501,9 @@ $.fn.slider = function(parameters) {
               decimalPlaces,
               step = module.get.step()
             ;
-            if(step != 0) {
+            if (step != 0) {
               var split = String(step).split('.');
-              if(split.length == 2) {
+              if (split.length == 2) {
                 decimalPlaces = split[1].length;
               } else {
                 decimalPlaces = 0;
@@ -533,7 +533,7 @@ $.fn.slider = function(parameters) {
             return settings.labelType;
           },
           label: function(value) {
-            if(interpretLabel) {
+            if (interpretLabel) {
               return interpretLabel(value);
             }
 
@@ -553,9 +553,9 @@ $.fn.slider = function(parameters) {
             return $currThumb.hasClass('second') ? module.secondThumbVal : module.thumbVal;
           },
           thumbValue: function(which) {
-            switch(which) {
+            switch (which) {
             case 'second':
-              if(module.is.range()) {
+              if (module.is.range()) {
                 return module.secondThumbVal;
               }
               else {
@@ -571,9 +571,9 @@ $.fn.slider = function(parameters) {
             return settings.pageMultiplier;
           },
           thumbPosition: function(which) {
-            switch(which) {
+            switch (which) {
             case 'second':
-              if(module.is.range()) {
+              if (module.is.range()) {
                 return secondPos;
               }
               else {
@@ -651,9 +651,9 @@ $.fn.slider = function(parameters) {
               newPos = module.determine.pos(eventPos),
               value
             ;
-            if(eventPos < module.get.trackOffset()) {
+            if (eventPos < module.get.trackOffset()) {
               value = module.is.reversed() ? module.get.max() : module.get.min();
-            } else if(eventPos > module.get.trackOffset() + module.get.trackLength()) {
+            } else if (eventPos > module.get.trackOffset() + module.get.trackLength()) {
               value = module.is.reversed() ? module.get.min() : module.get.max();
             } else {
               value = module.determine.value(newPos);
@@ -679,7 +679,7 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event, originalEvent) {
-            if(module.is.touch()) {
+            if (module.is.touch()) {
               var
                 touchY = event.changedTouches[0].pageY || event.touches[0].pageY,
                 touchX = event.changedTouches[0].pageX || event.touches[0].pageX
@@ -703,7 +703,7 @@ $.fn.slider = function(parameters) {
               difference = (step == 0) ? value : Math.round(value / step) * step
             ;
             module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
-            if(value != difference) {
+            if (value != difference) {
               module.verbose('Rounding value to closest step: ' + difference);
             }
             // Use precision to avoid ugly Javascript floating point rounding issues
@@ -743,9 +743,9 @@ $.fn.slider = function(parameters) {
                   :
                   keys.rightArrow
             ;
-            if(key == downArrow || key == leftArrow) {
+            if (key == downArrow || key == leftArrow) {
               return SINGLE_BACKSTEP;
-            } else if(key == upArrow || key == rightArrow) {
+            } else if (key == upArrow || key == rightArrow) {
               return SINGLE_STEP;
             } else if (key == keys.pageDown) {
               return BIG_BACKSTEP;
@@ -780,19 +780,19 @@ $.fn.slider = function(parameters) {
             });
           },
           rangeValue: function(first, second) {
-            if(module.is.range()) {
+            if (module.is.range()) {
               var
                 min = module.get.min(),
                 max = module.get.max()
               ;
               if (first <= min) {
                 first = min;
-              } else if(first >= max){
+              } else if (first >= max){
                 first = max;
               }
               if (second <= min) {
                 second = min;
-              } else if(second >= max){
+              } else if (second >= max){
                 second = max;
               }
               module.thumbVal = first;
@@ -830,14 +830,14 @@ $.fn.slider = function(parameters) {
             ;
             if (newValue <= min) {
               newValue = min;
-            } else if(newValue >= max){
+            } else if (newValue >= max){
               newValue = max;
             }
-            if(!module.is.range()) {
+            if (!module.is.range()) {
               value = newValue;
               module.thumbVal = value;
             } else {
-              if(!$currThumb.hasClass('second')) {
+              if (!$currThumb.hasClass('second')) {
                 module.thumbVal = newValue;
               } else {
                 module.secondThumbVal = newValue;
@@ -846,7 +846,7 @@ $.fn.slider = function(parameters) {
             }
             module.update.position(newValue);
             module.debug('Setting slider value to ' + value);
-            if(typeof callback === 'function') {
+            if (typeof callback === 'function') {
               callback(value, module.thumbVal, module.secondThumbVal);
             }
           },
@@ -857,8 +857,8 @@ $.fn.slider = function(parameters) {
               thumbVal = module.thumbVal || module.get.min(),
               secondThumbVal = module.secondThumbVal || module.get.min()
             ;
-            if(module.is.range()) {
-              if(!$targetThumb.hasClass('second')) {
+            if (module.is.range()) {
+              if (!$targetThumb.hasClass('second')) {
                 position = newPos;
                 thumbVal = newValue;
               } else {
@@ -935,8 +935,8 @@ $.fn.slider = function(parameters) {
                 secondThumbVal : $module.data(metadata.secondThumbVal)
               }
             ;
-            if(data.thumbVal) {
-              if(module.is.range() && data.secondThumbVal) {
+            if (data.thumbVal) {
+              if (module.is.range() && data.secondThumbVal) {
                 module.debug('Current value set from metadata', data.thumbVal, data.secondThumbVal);
                 module.set.rangeValue(data.thumbVal, data.secondThumbVal);
               } else {
@@ -946,8 +946,8 @@ $.fn.slider = function(parameters) {
             }
           },
           settings: function() {
-            if(settings.start !== false) {
-              if(module.is.range()) {
+            if (settings.start !== false) {
+              if (module.is.range()) {
                 module.debug('Start position set from settings', settings.start, settings.end);
                 module.set.rangeValue(settings.start, settings.end);
               } else {
@@ -960,11 +960,11 @@ $.fn.slider = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, settings, name);
           }
-          else if(value !== undefined) {
-            if($.isPlainObject(settings[name])) {
+          else if (value !== undefined) {
+            if ($.isPlainObject(settings[name])) {
               $.extend(true, settings[name], value);
             }
             else {
@@ -976,10 +976,10 @@ $.fn.slider = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, module, name);
           }
-          else if(value !== undefined) {
+          else if (value !== undefined) {
             module[name] = value;
           }
           else {
@@ -987,8 +987,8 @@ $.fn.slider = function(parameters) {
           }
         },
         debug: function() {
-          if(!settings.silent && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -998,8 +998,8 @@ $.fn.slider = function(parameters) {
           }
         },
         verbose: function() {
-          if(!settings.silent && settings.verbose && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.verbose && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -1009,7 +1009,7 @@ $.fn.slider = function(parameters) {
           }
         },
         error: function() {
-          if(!settings.silent) {
+          if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
@@ -1022,7 +1022,7 @@ $.fn.slider = function(parameters) {
               executionTime,
               previousTime
             ;
-            if(settings.performance) {
+            if (settings.performance) {
               currentTime   = new Date().getTime();
               previousTime  = time || currentTime;
               executionTime = currentTime - previousTime;
@@ -1048,12 +1048,12 @@ $.fn.slider = function(parameters) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
-            if(moduleSelector) {
+            if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
-              if(console.table) {
+              if (console.table) {
                 console.table(performance);
               }
               else {
@@ -1076,7 +1076,7 @@ $.fn.slider = function(parameters) {
           ;
           passedArguments = passedArguments || queryArguments;
           context         = element         || context;
-          if(typeof query == 'string' && object !== undefined) {
+          if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
             $.each(query, function(depth, value) {
@@ -1084,17 +1084,17 @@ $.fn.slider = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                 object = object[camelCaseValue];
               }
-              else if( object[camelCaseValue] !== undefined ) {
+              else if ( object[camelCaseValue] !== undefined ) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                 object = object[value];
               }
-              else if( object[value] !== undefined ) {
+              else if ( object[value] !== undefined ) {
                 found = object[value];
                 return false;
               }
@@ -1107,30 +1107,30 @@ $.fn.slider = function(parameters) {
           if ( $.isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
-          else if(found !== undefined) {
+          else if (found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if ($.isArray(returnedValue)) {
             returnedValue.push(response);
           }
-          else if(returnedValue !== undefined) {
+          else if (returnedValue !== undefined) {
             returnedValue = [returnedValue, response];
           }
-          else if(response !== undefined) {
+          else if (response !== undefined) {
             returnedValue = response;
           }
           return found;
         }
       };
 
-      if(methodInvoked) {
-        if(instance === undefined) {
+      if (methodInvoked) {
+        if (instance === undefined) {
           module.initialize();
         }
         module.invoke(query);
       }
       else {
-        if(instance !== undefined) {
+        if (instance !== undefined) {
           instance.invoke('destroy');
         }
         module.initialize();

@@ -94,7 +94,7 @@ $.fn.sidebar = function(parameters) {
           transitionEvent = module.get.transitionEvent();
 
           // avoids locking rendering if initialized in onReady
-          if(settings.delaySetup) {
+          if (settings.delaySetup) {
             requestAnimationFrame(module.setup.layout);
           }
           else {
@@ -130,7 +130,7 @@ $.fn.sidebar = function(parameters) {
             .off(eventNamespace)
             .removeData(moduleNamespace)
           ;
-          if(module.is.ios()) {
+          if (module.is.ios()) {
             module.remove.ios();
           }
           // bound by uuid
@@ -141,16 +141,16 @@ $.fn.sidebar = function(parameters) {
 
         event: {
           clickaway: function(event) {
-            if(settings.closable){
+            if (settings.closable){
               var
                 clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                 clickedContext  = ($context.is(event.target))
               ;
-              if(clickedInPusher) {
+              if (clickedInPusher) {
                 module.verbose('User clicked on dimmed page');
                 module.hide();
               }
-              if(clickedContext) {
+              if (clickedContext) {
                 module.verbose('User clicked on dimmable context (scaled out page)');
                 module.hide();
               }
@@ -160,15 +160,15 @@ $.fn.sidebar = function(parameters) {
             //event.stopPropagation();
           },
           containScroll: function(event) {
-            if(element.scrollTop <= 0)  {
+            if (element.scrollTop <= 0)  {
               element.scrollTop = 1;
             }
-            if((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
+            if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
               element.scrollTop = element.scrollHeight - element.offsetHeight - 1;
             }
           },
           scroll: function(event) {
-            if( $(event.target).closest(selector.sidebar).length === 0 ) {
+            if ( $(event.target).closest(selector.sidebar).length === 0 ) {
               event.preventDefault();
             }
           }
@@ -183,7 +183,7 @@ $.fn.sidebar = function(parameters) {
             ;
           },
           scrollLock: function() {
-            if(settings.scrollLock) {
+            if (settings.scrollLock) {
               module.debug('Disabling page scroll');
               $window
                 .on('DOMMouseScroll' + elementNamespace, module.event.scroll)
@@ -227,7 +227,7 @@ $.fn.sidebar = function(parameters) {
               style
             ;
 
-            if(isRTL){
+            if (isRTL){
               module.verbose('RTL detected, flipping widths');
               distance.left = -width;
               distance.right = width;
@@ -235,7 +235,7 @@ $.fn.sidebar = function(parameters) {
 
             style  = '<style>';
 
-            if(direction === 'left' || direction === 'right') {
+            if (direction === 'left' || direction === 'right') {
               module.debug('Adding CSS rules for animation distance', width);
               style  += ''
                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
@@ -245,7 +245,7 @@ $.fn.sidebar = function(parameters) {
                 + ' }'
               ;
             }
-            else if(direction === 'top' || direction == 'bottom') {
+            else if (direction === 'top' || direction == 'bottom') {
               style  += ''
                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
@@ -257,8 +257,8 @@ $.fn.sidebar = function(parameters) {
 
             /* IE is only browser not to create context with transforms */
             /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
-            if( module.is.ie() ) {
-              if(direction === 'left' || direction === 'right') {
+            if ( module.is.ie() ) {
+              if (direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
@@ -267,7 +267,7 @@ $.fn.sidebar = function(parameters) {
                   + ' }'
                 ;
               }
-              else if(direction === 'top' || direction == 'bottom') {
+              else if (direction === 'top' || direction == 'bottom') {
                 style  += ''
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -323,7 +323,7 @@ $.fn.sidebar = function(parameters) {
             };
           },
           layout: function() {
-            if( $context.children(selector.pusher).length === 0 ) {
+            if ( $context.children(selector.pusher).length === 0 ) {
               module.debug('Adding wrapper element for sidebar');
               module.error(error.pusher);
               $pusher = $('<div class="pusher" />');
@@ -335,7 +335,7 @@ $.fn.sidebar = function(parameters) {
               ;
               module.refresh();
             }
-            if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
+            if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
               module.debug('Moved sidebar to correct parent element');
               module.error(error.movedSidebar, element);
               $module.detach().prependTo($context);
@@ -355,7 +355,7 @@ $.fn.sidebar = function(parameters) {
             ? module[event]
             : module.toggle
           ;
-          if($toggle.length > 0) {
+          if ($toggle.length > 0) {
             module.debug('Attaching sidebar events to element', selector, event);
             $toggle
               .on('click' + eventNamespace, event)
@@ -371,18 +371,18 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(module.is.hidden()) {
+          if (module.is.hidden()) {
             module.refreshSidebars();
-            if(settings.overlay)  {
+            if (settings.overlay)  {
               module.error(error.overlay);
               settings.transition = 'overlay';
             }
             module.refresh();
-            if(module.othersActive()) {
+            if (module.othersActive()) {
               module.debug('Other sidebars currently visible');
-              if(settings.exclusive) {
+              if (settings.exclusive) {
                 // if not overlay queue animation after hide
-                if(settings.transition != 'overlay') {
+                if (settings.transition != 'overlay') {
                   module.hideOthers(module.show);
                   return;
                 }
@@ -411,7 +411,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(module.is.visible() || module.is.animating()) {
+          if (module.is.visible() || module.is.animating()) {
             module.debug('Hiding sidebar', callback);
             module.refreshSidebars();
             module.pullPage(function() {
@@ -430,7 +430,7 @@ $.fn.sidebar = function(parameters) {
           return ($sidebars.not($module).filter('.' + className.visible).length > 0);
         },
         othersActive: function() {
-          return(module.othersVisible() || module.othersAnimating());
+          return (module.othersVisible() || module.othersAnimating());
         },
 
         hideOthers: function(callback) {
@@ -443,7 +443,7 @@ $.fn.sidebar = function(parameters) {
           $otherSidebars
             .sidebar('hide', function() {
               callbackCount++;
-              if(callbackCount == sidebarCount) {
+              if (callbackCount == sidebarCount) {
                 callback();
               }
             })
@@ -452,7 +452,7 @@ $.fn.sidebar = function(parameters) {
 
         toggle: function() {
           module.verbose('Determining toggled direction');
-          if(module.is.hidden()) {
+          if (module.is.hidden()) {
             module.show();
           }
           else {
@@ -474,7 +474,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(settings.transition == 'scale down') {
+          if (settings.transition == 'scale down') {
             module.scrollToTop();
           }
           module.set.transition(transition);
@@ -489,7 +489,7 @@ $.fn.sidebar = function(parameters) {
             module.set.dimmed();
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
+            if ( event.target == $transition[0] ) {
               $transition.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
               module.bind.scrollLock();
@@ -499,7 +499,7 @@ $.fn.sidebar = function(parameters) {
           $transition.off(transitionEvent + elementNamespace);
           $transition.on(transitionEvent + elementNamespace, transitionEnd);
           requestAnimationFrame(animate);
-          if(settings.dimPage && !module.othersVisible()) {
+          if (settings.dimPage && !module.othersVisible()) {
             requestAnimationFrame(dim);
           }
         },
@@ -526,17 +526,17 @@ $.fn.sidebar = function(parameters) {
             module.set.transition(transition);
             module.set.animating();
             module.remove.visible();
-            if(settings.dimPage && !module.othersVisible()) {
+            if (settings.dimPage && !module.othersVisible()) {
               $pusher.removeClass(className.dimmed);
             }
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
+            if ( event.target == $transition[0] ) {
               $transition.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
               module.remove.transition();
               module.remove.inlineCSS();
-              if(transition == 'scale down' || (settings.returnScroll && module.is.mobile()) ) {
+              if (transition == 'scale down' || (settings.returnScroll && module.is.mobile()) ) {
                 module.scrollBack();
               }
               callback.call(element);
@@ -613,7 +613,7 @@ $.fn.sidebar = function(parameters) {
 
           inlineCSS: function() {
             module.debug('Removing inline css styles', $style);
-            if($style && $style.length > 0) {
+            if ($style && $style.length > 0) {
               $style.remove();
             }
           },
@@ -656,13 +656,13 @@ $.fn.sidebar = function(parameters) {
 
         get: {
           direction: function() {
-            if($module.hasClass(className.top)) {
+            if ($module.hasClass(className.top)) {
               return className.top;
             }
-            else if($module.hasClass(className.right)) {
+            else if ($module.hasClass(className.right)) {
               return className.right;
             }
-            else if($module.hasClass(className.bottom)) {
+            else if ($module.hasClass(className.bottom)) {
               return className.bottom;
             }
             return className.left;
@@ -694,8 +694,8 @@ $.fn.sidebar = function(parameters) {
               },
               transition
             ;
-            for(transition in transitions){
-              if( element.style[transition] !== undefined ){
+            for (transition in transitions){
+              if ( element.style[transition] !== undefined ){
                 return transitions[transition];
               }
             }
@@ -718,7 +718,7 @@ $.fn.sidebar = function(parameters) {
               isIOS          = userAgent.match(regExp.ios),
               isMobileChrome = userAgent.match(regExp.mobileChrome)
             ;
-            if(isIOS && !isMobileChrome) {
+            if (isIOS && !isMobileChrome) {
               module.verbose('Browser was found to be iOS', userAgent);
               return true;
             }
@@ -731,7 +731,7 @@ $.fn.sidebar = function(parameters) {
               userAgent    = navigator.userAgent,
               isMobile     = userAgent.match(regExp.mobile)
             ;
-            if(isMobile) {
+            if (isMobile) {
               module.verbose('Browser was found to be mobile', userAgent);
               return true;
             }
@@ -760,7 +760,7 @@ $.fn.sidebar = function(parameters) {
             return $context.hasClass(className.animating);
           },
           rtl: function () {
-            if(module.cache.rtl === undefined) {
+            if (module.cache.rtl === undefined) {
               module.cache.rtl = ($module.css('direction') == 'rtl');
             }
             return module.cache.rtl;
@@ -769,11 +769,11 @@ $.fn.sidebar = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, settings, name);
           }
-          else if(value !== undefined) {
-            if($.isPlainObject(settings[name])) {
+          else if (value !== undefined) {
+            if ($.isPlainObject(settings[name])) {
               $.extend(true, settings[name], value);
             }
             else {
@@ -785,10 +785,10 @@ $.fn.sidebar = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if( $.isPlainObject(name) ) {
+          if ( $.isPlainObject(name) ) {
             $.extend(true, module, name);
           }
-          else if(value !== undefined) {
+          else if (value !== undefined) {
             module[name] = value;
           }
           else {
@@ -796,8 +796,8 @@ $.fn.sidebar = function(parameters) {
           }
         },
         debug: function() {
-          if(!settings.silent && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -807,8 +807,8 @@ $.fn.sidebar = function(parameters) {
           }
         },
         verbose: function() {
-          if(!settings.silent && settings.verbose && settings.debug) {
-            if(settings.performance) {
+          if (!settings.silent && settings.verbose && settings.debug) {
+            if (settings.performance) {
               module.performance.log(arguments);
             }
             else {
@@ -818,7 +818,7 @@ $.fn.sidebar = function(parameters) {
           }
         },
         error: function() {
-          if(!settings.silent) {
+          if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
@@ -830,7 +830,7 @@ $.fn.sidebar = function(parameters) {
               executionTime,
               previousTime
             ;
-            if(settings.performance) {
+            if (settings.performance) {
               currentTime   = new Date().getTime();
               previousTime  = time || currentTime;
               executionTime = currentTime - previousTime;
@@ -856,12 +856,12 @@ $.fn.sidebar = function(parameters) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
-            if(moduleSelector) {
+            if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
-              if(console.table) {
+              if (console.table) {
                 console.table(performance);
               }
               else {
@@ -883,7 +883,7 @@ $.fn.sidebar = function(parameters) {
           ;
           passedArguments = passedArguments || queryArguments;
           context         = element         || context;
-          if(typeof query == 'string' && object !== undefined) {
+          if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
             $.each(query, function(depth, value) {
@@ -891,17 +891,17 @@ $.fn.sidebar = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                 object = object[camelCaseValue];
               }
-              else if( object[camelCaseValue] !== undefined ) {
+              else if ( object[camelCaseValue] !== undefined ) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                 object = object[value];
               }
-              else if( object[value] !== undefined ) {
+              else if ( object[value] !== undefined ) {
                 found = object[value];
                 return false;
               }
@@ -914,16 +914,16 @@ $.fn.sidebar = function(parameters) {
           if ( $.isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
-          else if(found !== undefined) {
+          else if (found !== undefined) {
             response = found;
           }
-          if(Array.isArray(returnedValue)) {
+          if (Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
-          else if(returnedValue !== undefined) {
+          else if (returnedValue !== undefined) {
             returnedValue = [returnedValue, response];
           }
-          else if(response !== undefined) {
+          else if (response !== undefined) {
             returnedValue = response;
           }
           return found;
@@ -931,14 +931,14 @@ $.fn.sidebar = function(parameters) {
       }
       ;
 
-      if(methodInvoked) {
-        if(instance === undefined) {
+      if (methodInvoked) {
+        if (instance === undefined) {
           module.initialize();
         }
         module.invoke(query);
       }
       else {
-        if(instance !== undefined) {
+        if (instance !== undefined) {
           module.invoke('destroy');
         }
         module.initialize();
