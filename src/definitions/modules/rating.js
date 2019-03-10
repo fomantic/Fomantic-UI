@@ -39,7 +39,7 @@ $.fn.rating = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.rating.settings, parameters)
           : $.extend({}, $.fn.rating.settings),
 
@@ -77,7 +77,7 @@ $.fn.rating = function(parameters) {
             module.disable();
           }
           module.set.initialLoad();
-          module.set.rating( module.get.initialRating() );
+          module.set.rating(module.get.initialRating());
           module.remove.initialLoad();
           module.instantiate();
         },
@@ -156,7 +156,7 @@ $.fn.rating = function(parameters) {
               module.clearRating();
             }
             else {
-              module.set.rating( rating );
+              module.set.rating(rating);
             }
           }
         },
@@ -279,7 +279,7 @@ $.fn.rating = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -295,7 +295,7 @@ $.fn.rating = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -372,7 +372,7 @@ $.fn.rating = function(parameters) {
             if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -404,17 +404,17 @@ $.fn.rating = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -423,7 +423,7 @@ $.fn.rating = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -522,4 +522,4 @@ $.fn.rating.settings = {
 
 };
 
-})( jQuery, window, document );
+})(jQuery, window, document);

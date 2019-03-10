@@ -51,7 +51,7 @@ $.fn.modal = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings    = ( $.isPlainObject(parameters) )
+        settings    = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.modal.settings, parameters)
           : $.extend({}, $.fn.modal.settings),
 
@@ -95,7 +95,7 @@ $.fn.modal = function(parameters) {
           module.create.id();
           module.create.dimmer();
 
-          if ( settings.allowMultiple ) {
+          if (settings.allowMultiple) {
             module.create.innerDimmer();
           }
           if (!settings.centered){
@@ -148,7 +148,7 @@ $.fn.modal = function(parameters) {
             module.verbose('Creating unique id for element', id);
           },
           innerDimmer: function() {
-            if ( $module.find(selector.dimmer).length == 0 ) {
+            if ($module.find(selector.dimmer).length == 0) {
               $module.prepend('<div class="ui inverted dimmer"></div>');
             }
           }
@@ -305,7 +305,7 @@ $.fn.modal = function(parameters) {
               isInModal = ($target.closest(selector.modal).length > 0),
               isInDOM   = $.contains(document.documentElement, event.target)
             ;
-            if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front) ) {
+            if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
               module.debug('Dimmer clicked, hiding all modals');
               if (settings.allowMultiple) {
                 if (!module.hideAll()) {
@@ -330,7 +330,7 @@ $.fn.modal = function(parameters) {
             if (keyCode == escapeKey) {
               if (settings.closable) {
                 module.debug('Escape key pressed hiding modal');
-                if ( $module.hasClass(className.front) ) {
+                if ($module.hasClass(className.front)) {
                   module.hide();
                 }
               }
@@ -341,14 +341,14 @@ $.fn.modal = function(parameters) {
             }
           },
           resize: function() {
-            if ( $dimmable.dimmer('is active') && ( module.is.animating() || module.is.active() ) ) {
+            if ($dimmable.dimmer('is active') && (module.is.animating() || module.is.active())) {
               requestAnimationFrame(module.refresh);
             }
           }
         },
 
         toggle: function() {
-          if ( module.is.active() || module.is.animating() ) {
+          if (module.is.active() || module.is.animating()) {
             module.hide();
           }
           else {
@@ -382,7 +382,7 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          if ( module.is.animating() || !module.is.active() ) {
+          if (module.is.animating() || !module.is.active()) {
             module.showDimmer();
             module.cacheSizes();
             if (module.can.useFlex()) {
@@ -397,17 +397,17 @@ $.fn.modal = function(parameters) {
             module.set.type();
             module.set.clickaway();
 
-            if ( !settings.allowMultiple && module.others.active() ) {
+            if (!settings.allowMultiple && module.others.active()) {
               module.hideOthers(module.showModal);
             }
             else {
               ignoreRepeatedEvents = false;
-              if ( settings.allowMultiple ) {
-                if ( module.others.active() ) {
+              if (settings.allowMultiple) {
+                if (module.others.active()) {
                   $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
                 }
 
-                if ( settings.detachable ) {
+                if (settings.detachable) {
                   $module.detach().appendTo($dimmer);
                 }
               }
@@ -461,7 +461,7 @@ $.fn.modal = function(parameters) {
             return false;
           }
 
-          if ( module.is.animating() || module.is.active() ) {
+          if (module.is.animating() || module.is.active()) {
             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
               $module
@@ -475,17 +475,17 @@ $.fn.modal = function(parameters) {
                     if (!module.others.active() && !keepDimmed) {
                       module.hideDimmer();
                     }
-                    if ( settings.keyboardShortcuts && !module.others.active() ) {
+                    if (settings.keyboardShortcuts && !module.others.active()) {
                       module.remove.keyboardShortcuts();
                     }
                   },
                   onComplete: function() {
                     module.unbind.scrollLock();
-                    if ( settings.allowMultiple ) {
+                    if (settings.allowMultiple) {
                       $previousModal.addClass(className.front);
                       $module.removeClass(className.front);
       
-                      if ( hideOthersToo ) {
+                      if (hideOthersToo) {
                         $allModals.find(selector.dimmer).removeClass('active');
                       }
                       else {
@@ -507,7 +507,7 @@ $.fn.modal = function(parameters) {
         },
 
         showDimmer: function() {
-          if ($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active') ) {
+          if ($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active')) {
             module.save.bodyMargin();
             module.debug('Showing dimmer');
             $dimmable.dimmer('show');
@@ -518,7 +518,7 @@ $.fn.modal = function(parameters) {
         },
 
         hideDimmer: function() {
-          if ( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
+          if ($dimmable.dimmer('is animating') || ($dimmable.dimmer('is active'))) {
             module.unbind.scrollLock();
             $dimmable.dimmer('hide', function() {
               module.restore.bodyMargin();
@@ -540,7 +540,7 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          if ( $visibleModals.length > 0 ) {
+          if ($visibleModals.length > 0) {
             module.debug('Hiding all visible modals');
             var hideOk = true;
             //check in reverse order trying to hide most top displayed modal first
@@ -564,7 +564,7 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          if ( $visibleModals.length > 0 ) {
+          if ($visibleModals.length > 0) {
             module.debug('Hiding other modals', $otherModals);
             $visibleModals
               .modal('hide modal', callback, true)
@@ -813,13 +813,13 @@ $.fn.modal = function(parameters) {
             module.verbose('Setting modal offset for legacy mode');
           },
           screenHeight: function() {
-            if ( module.can.fit() ) {
+            if (module.can.fit()) {
               $body.css('height', '');
             }
             else if (!$module.hasClass('bottom')) {
               module.debug('Modal is taller than page content, resizing page height');
               $body
-                .css('height', module.cache.height + (settings.padding * 2) )
+                .css('height', module.cache.height + (settings.padding * 2))
               ;
             }
           },
@@ -857,7 +857,7 @@ $.fn.modal = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -873,7 +873,7 @@ $.fn.modal = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -947,7 +947,7 @@ $.fn.modal = function(parameters) {
             if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -979,17 +979,17 @@ $.fn.modal = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -998,7 +998,7 @@ $.fn.modal = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -1126,4 +1126,4 @@ $.fn.modal.settings = {
 };
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

@@ -47,7 +47,7 @@ $.fn.shape = function(parameters) {
     .each(function() {
       var
         moduleSelector = $allModules.selector || '',
-        settings       = ( $.isPlainObject(parameters) )
+        settings       = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.shape.settings, parameters)
           : $.extend({}, $.fn.shape.settings),
 
@@ -203,7 +203,7 @@ $.fn.shape = function(parameters) {
 
           defaultSide: function() {
             $activeSide = $side.filter('.' + settings.className.active);
-            $nextSide   = ( $activeSide.next(selector.side).length > 0 )
+            $nextSide   = ($activeSide.next(selector.side).length > 0)
               ? $activeSide.next(selector.side)
               : $side.first()
             ;
@@ -253,7 +253,7 @@ $.fn.shape = function(parameters) {
               $activeSide = $side.filter('.' + settings.className.active),
               $nextSide   = (nextIndex)
                 ? $side.eq(nextIndex)
-                : ( $activeSide.next(selector.side).length > 0 )
+                : ($activeSide.next(selector.side).length > 0)
                   ? $activeSide.next(selector.side)
                   : $side.first(),
               newWidth    = (settings.width === 'next')
@@ -318,7 +318,7 @@ $.fn.shape = function(parameters) {
             var
               transform = module.get.transform[type]()
             ;
-            if ( !module.is.animating()) {
+            if (!module.is.animating()) {
               module.debug('Flipping '+type, $nextSide);
               module.set.stageSize();
               module.stage[stage]();
@@ -435,14 +435,14 @@ $.fn.shape = function(parameters) {
               transition
             ;
             for (transition in transitions){
-              if ( element.style[transition] !== undefined ){
+              if (element.style[transition] !== undefined){
                 return transitions[transition];
               }
             }
           },
 
           nextSide: function() {
-            return ( $activeSide.next(selector.side).length > 0 )
+            return ($activeSide.next(selector.side).length > 0)
               ? $activeSide.next(selector.side)
               : $side.first()
             ;
@@ -509,7 +509,7 @@ $.fn.shape = function(parameters) {
                 next   : $nextSide.outerWidth(true)
               },
               box = {
-                origin : ( ( height.active - height.next ) / 2),
+                origin : ((height.active - height.next) / 2),
                 depth  : {
                   active : (height.next / 2),
                   next   : (height.active / 2)
@@ -538,7 +538,7 @@ $.fn.shape = function(parameters) {
                 next   : $nextSide.outerWidth(true)
               },
               box = {
-                origin : ( ( height.active - height.next ) / 2),
+                origin : ((height.active - height.next) / 2),
                 depth  : {
                   active : (height.next / 2),
                   next   : (height.active / 2)
@@ -567,7 +567,7 @@ $.fn.shape = function(parameters) {
                 next   : $nextSide.outerWidth(true)
               },
               box = {
-                origin : ( ( height.active - height.next ) / 2),
+                origin : ((height.active - height.next) / 2),
                 depth  : {
                   active : (height.next / 2),
                   next   : (height.active / 2)
@@ -591,7 +591,7 @@ $.fn.shape = function(parameters) {
         },
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -607,7 +607,7 @@ $.fn.shape = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -684,7 +684,7 @@ $.fn.shape = function(parameters) {
             if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -716,17 +716,17 @@ $.fn.shape = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -735,7 +735,7 @@ $.fn.shape = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -759,7 +759,7 @@ $.fn.shape = function(parameters) {
           module.initialize();
         }
         var $inputs = $module.find('input');
-        if ( $inputs.length > 0) {
+        if ($inputs.length > 0) {
           $inputs.blur();
           setTimeout(function(){
             module.invoke(query);
@@ -845,4 +845,4 @@ $.fn.shape.settings = {
 };
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

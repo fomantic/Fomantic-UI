@@ -39,7 +39,7 @@ $.fn.accordion = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.accordion.settings, parameters)
           : $.extend({}, $.fn.accordion.settings),
 
@@ -302,7 +302,7 @@ $.fn.accordion = function(parameters) {
             $openTitles   = $openTitles.not($nestedTitles);
             $openContents = $openTitles.next($content);
           }
-          if ( ($openTitles.length > 0) ) {
+          if (($openTitles.length > 0)) {
             module.debug('Exclusive enabled, closing other content', $openTitles);
             $openTitles
               .removeClass(className.active)
@@ -349,7 +349,7 @@ $.fn.accordion = function(parameters) {
           display: function() {
             module.verbose('Removing inline display from element', this);
             $(this).css('display', '');
-            if ( $(this).attr('style') === '') {
+            if ($(this).attr('style') === '') {
               $(this)
                 .attr('style', '')
                 .removeAttr('style')
@@ -360,7 +360,7 @@ $.fn.accordion = function(parameters) {
           opacity: function() {
             module.verbose('Removing inline opacity from element', this);
             $(this).css('opacity', '');
-            if ( $(this).attr('style') === '') {
+            if ($(this).attr('style') === '') {
               $(this)
                 .attr('style', '')
                 .removeAttr('style')
@@ -372,7 +372,7 @@ $.fn.accordion = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -390,7 +390,7 @@ $.fn.accordion = function(parameters) {
         internal: function(name, value) {
           module.debug('Changing internal', name, value);
           if (value !== undefined) {
-            if ( $.isPlainObject(name) ) {
+            if ($.isPlainObject(name)) {
               $.extend(true, module, name);
             }
             else {
@@ -465,7 +465,7 @@ $.fn.accordion = function(parameters) {
             if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -497,17 +497,17 @@ $.fn.accordion = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -517,7 +517,7 @@ $.fn.accordion = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -604,11 +604,11 @@ $.fn.accordion.settings = {
 };
 
 // Adds easing
-$.extend( $.easing, {
+$.extend($.easing, {
   easeOutQuad: function (x, t, b, c, d) {
     return -c *(t/=d)*(t-2) + b;
   }
 });
 
-})( jQuery, window, document );
+})(jQuery, window, document);
 

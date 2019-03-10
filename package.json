@@ -16,6 +16,7 @@
   },
   "scripts": {
     "lint": "eslint src/definitions/**/*.js --cache",
+    "lint-fix": "eslint src/definitions/**/*.js --fix",
     "install": "gulp install"
   },
   "dependencies": {

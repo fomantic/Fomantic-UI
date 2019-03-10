@@ -43,7 +43,7 @@ $.fn.embed = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.embed.settings, parameters)
           : $.extend({}, $.fn.embed.settings),
 
@@ -104,7 +104,7 @@ $.fn.embed = function(parameters) {
 
         bind: {
           events: function() {
-            if ( module.has.placeholder() ) {
+            if (module.has.placeholder()) {
               module.debug('Adding placeholder events');
               $module
                 .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
@@ -133,7 +133,7 @@ $.fn.embed = function(parameters) {
             embed = module.generate.embed(url)
           ;
           placeholder = placeholder || module.get.placeholder();
-          $module.html( templates.placeholder(placeholder, icon) );
+          $module.html(templates.placeholder(placeholder, icon));
           module.debug('Creating placeholder for embed', placeholder, icon);
         },
 
@@ -142,7 +142,7 @@ $.fn.embed = function(parameters) {
           url = url || module.get.url();
           $embed = $('<div/>')
             .addClass(className.embed)
-            .html( module.generate.embed(url) )
+            .html(module.generate.embed(url))
             .appendTo($module)
           ;
           settings.onCreate.call(element, url);
@@ -151,7 +151,7 @@ $.fn.embed = function(parameters) {
 
         changeEmbed: function(url) {
           $embed
-            .html( module.generate.embed(url) )
+            .html(module.generate.embed(url))
           ;
         },
 
@@ -328,7 +328,7 @@ $.fn.embed = function(parameters) {
               index
             ;
             for (index in parameters) {
-              urlString.push( encodeURIComponent(index) + '=' + encodeURIComponent( parameters[index] ) );
+              urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
             }
             return urlString.join('&amp;');
           }
@@ -393,7 +393,7 @@ $.fn.embed = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -409,7 +409,7 @@ $.fn.embed = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -486,7 +486,7 @@ $.fn.embed = function(parameters) {
             if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -518,17 +518,17 @@ $.fn.embed = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -538,7 +538,7 @@ $.fn.embed = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -706,4 +706,4 @@ $.fn.embed.settings = {
 
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

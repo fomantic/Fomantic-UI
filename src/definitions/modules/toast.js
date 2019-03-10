@@ -39,7 +39,7 @@ $.fn.toast = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings          = ( $.isPlainObject(parameters) )
+        settings          = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.toast.settings, parameters)
           : $.extend({}, $.fn.toast.settings),
 
@@ -71,7 +71,7 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-          if (typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+          if (typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1) {
             settings.showProgress = false;
           }
           if (!module.has.container()) {
@@ -323,7 +323,7 @@ $.fn.toast = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -339,7 +339,7 @@ $.fn.toast = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -413,7 +413,7 @@ $.fn.toast = function(parameters) {
             if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -445,17 +445,17 @@ $.fn.toast = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -465,7 +465,7 @@ $.fn.toast = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -578,7 +578,7 @@ $.fn.toast.settings = {
   onRemove  : function(){},
 };
 
-$.extend( $.easing, {
+$.extend($.easing, {
   easeOutBounce: function (x, t, b, c, d) {
     if ((t/=d) < (1/2.75)) {
       return c*(7.5625*t*t) + b;
@@ -593,4 +593,4 @@ $.extend( $.easing, {
 });
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

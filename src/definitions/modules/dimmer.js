@@ -40,7 +40,7 @@ $.fn.dimmer = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
           : $.extend({}, $.fn.dimmer.settings),
 
@@ -69,14 +69,14 @@ $.fn.dimmer = function(parameters) {
       module = {
 
         preinitialize: function() {
-          if ( module.is.dimmer() ) {
+          if (module.is.dimmer()) {
 
             $dimmable = $module.parent();
             $dimmer   = $module;
           }
           else {
             $dimmable = $module;
-            if ( module.has.dimmer() ) {
+            if (module.has.dimmer()) {
               if (settings.dimmerName) {
                 $dimmer = $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName);
               }
@@ -128,12 +128,12 @@ $.fn.dimmer = function(parameters) {
                 .on(clickEvent + eventNamespace, module.toggle)
               ;
             }
-            if ( module.is.page() ) {
+            if (module.is.page()) {
               module.debug('Setting as a page dimmer', $dimmable);
               module.set.pageDimmer();
             }
 
-            if ( module.is.closable() ) {
+            if (module.is.closable()) {
               module.verbose('Adding dimmer close event', $dimmer);
               $dimmable
                 .on(clickEvent + eventNamespace, selector.dimmer, module.event.click)
@@ -156,7 +156,7 @@ $.fn.dimmer = function(parameters) {
         event: {
           click: function(event) {
             module.verbose('Determining if event occured on dimmer', event);
-            if ( $dimmer.find(event.target).length === 0 || $(event.target).is(selector.content) ) {
+            if ($dimmer.find(event.target).length === 0 || $(event.target).is(selector.content)) {
               module.hide();
               event.stopImmediatePropagation();
             }
@@ -175,7 +175,7 @@ $.fn.dimmer = function(parameters) {
 
         create: function() {
           var
-            $element = $( settings.template.dimmer(settings) )
+            $element = $(settings.template.dimmer(settings))
           ;
           if (settings.dimmerName) {
             module.debug('Creating named dimmer', settings.dimmerName);
@@ -194,7 +194,7 @@ $.fn.dimmer = function(parameters) {
           ;
           module.debug('Showing dimmer', $dimmer, settings);
           module.set.variation();
-          if ( (!module.is.dimmed() || module.is.animating()) && module.is.enabled() ) {
+          if ((!module.is.dimmed() || module.is.animating()) && module.is.enabled()) {
             module.animate.show(callback);
             settings.onShow.call(element);
             settings.onChange.call(element);
@@ -209,7 +209,7 @@ $.fn.dimmer = function(parameters) {
             ? callback
             : function(){}
           ;
-          if ( module.is.dimmed() || module.is.animating() ) {
+          if (module.is.dimmed() || module.is.animating()) {
             module.debug('Hiding dimmer', $dimmer);
             module.animate.hide(callback);
             settings.onHide.call(element);
@@ -222,11 +222,11 @@ $.fn.dimmer = function(parameters) {
 
         toggle: function() {
           module.verbose('Toggling dimmer visibility', $dimmer);
-          if ( !module.is.dimmed() ) {
+          if (!module.is.dimmed()) {
             module.show();
           }
           else {
-            if ( module.is.closable() ) {
+            if (module.is.closable()) {
               module.hide();
             }
           }
@@ -336,7 +336,7 @@ $.fn.dimmer = function(parameters) {
           },
           duration: function() {
             if (typeof settings.duration == 'object') {
-              if ( module.is.active() ) {
+              if (module.is.active()) {
                 return settings.duration.hide;
               }
               else {
@@ -353,7 +353,7 @@ $.fn.dimmer = function(parameters) {
               return ($module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0);
             }
             else {
-              return ( $module.find(selector.dimmer).length > 0 );
+              return ($module.find(selector.dimmer).length > 0);
             }
           }
         },
@@ -363,7 +363,7 @@ $.fn.dimmer = function(parameters) {
             return $dimmer.hasClass(className.active);
           },
           animating: function() {
-            return ( $dimmer.is(':animated') || $dimmer.hasClass(className.animating) );
+            return ($dimmer.is(':animated') || $dimmer.hasClass(className.animating));
           },
           closable: function() {
             if (settings.closable == 'auto') {
@@ -473,7 +473,7 @@ $.fn.dimmer = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -489,7 +489,7 @@ $.fn.dimmer = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -566,7 +566,7 @@ $.fn.dimmer = function(parameters) {
             if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -598,17 +598,17 @@ $.fn.dimmer = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -618,7 +618,7 @@ $.fn.dimmer = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -750,4 +750,4 @@ $.fn.dimmer.settings = {
 
 };
 
-})( jQuery, window, document );
+})(jQuery, window, document);

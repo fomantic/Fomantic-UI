@@ -8,7 +8,7 @@
  *
  */
 
-;(function ( $, window, document, undefined ) {
+;(function ($, window, document, undefined) {
 
 "use strict";
 
@@ -52,7 +52,7 @@ $.fn.slider = function(parameters) {
     .each(function() {
 
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.slider.settings, parameters)
           : $.extend({}, $.fn.slider.settings),
 
@@ -131,7 +131,7 @@ $.fn.slider = function(parameters) {
 
         setup: {
           layout: function() {
-            if ( $module.attr('tabindex') === undefined) {
+            if ($module.attr('tabindex') === undefined) {
               $module.attr('tabindex', 0);
             }
             if ($module.find('.inner').length == 0) {
@@ -960,7 +960,7 @@ $.fn.slider = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -976,7 +976,7 @@ $.fn.slider = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -1051,7 +1051,7 @@ $.fn.slider = function(parameters) {
             if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -1084,17 +1084,17 @@ $.fn.slider = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -1104,7 +1104,7 @@ $.fn.slider = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -1213,4 +1213,4 @@ $.fn.slider.settings = {
 };
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

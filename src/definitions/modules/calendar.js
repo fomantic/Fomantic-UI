@@ -48,7 +48,7 @@ $.fn.calendar = function(parameters) {
   $allModules
     .each(function () {
       var
-        settings = ( $.isPlainObject(parameters) )
+        settings = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.calendar.settings, parameters)
           : $.extend({}, $.fn.calendar.settings),
 
@@ -936,7 +936,7 @@ $.fn.calendar = function(parameters) {
           }
         },
         internal: function (name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {

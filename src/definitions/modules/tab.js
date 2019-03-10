@@ -50,7 +50,7 @@ $.fn.tab = function(parameters) {
     .each(function() {
       var
 
-        settings        = ( $.isPlainObject(parameters) )
+        settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.tab.settings, parameters)
           : $.extend({}, $.fn.tab.settings),
 
@@ -122,7 +122,7 @@ $.fn.tab = function(parameters) {
         bind: {
           events: function() {
             // if using $.tab don't add events
-            if ( !$.isWindow( element ) ) {
+            if (!$.isWindow(element)) {
               module.debug('Attaching tab activation events to element', $module);
               $module
                 .on('click' + eventNamespace, module.event.click)
@@ -168,7 +168,7 @@ $.fn.tab = function(parameters) {
 
         fix: {
           callbacks: function() {
-            if ( $.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit) ) {
+            if ($.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit)) {
               if (parameters.onTabLoad) {
                 parameters.onLoad = parameters.onTabLoad;
                 delete parameters.onTabLoad;
@@ -186,7 +186,7 @@ $.fn.tab = function(parameters) {
 
         initializeHistory: function() {
           module.debug('Initializing page state');
-          if ( $.address === undefined ) {
+          if ($.address === undefined) {
             module.error(error.state);
             return false;
           }
@@ -326,7 +326,7 @@ $.fn.tab = function(parameters) {
           var
             pushStateAvailable = (window.history && window.history.pushState),
             shouldIgnoreLoad   = (pushStateAvailable && settings.ignoreFirstLoad && firstLoad),
-            remoteContent      = (settings.auto || $.isPlainObject(settings.apiSettings) ),
+            remoteContent      = (settings.auto || $.isPlainObject(settings.apiSettings)),
             // only add default path if not remote content
             pathArray = (remoteContent && !shouldIgnoreLoad)
               ? module.utilities.pathToArray(tabPath)
@@ -360,7 +360,7 @@ $.fn.tab = function(parameters) {
               else {
                 nextPathArray = pathArray.slice(0, index + 2);
                 nextPath      = module.utilities.arrayToPath(nextPathArray);
-                isLastTab     = ( !module.is.tab(nextPath) );
+                isLastTab     = (!module.is.tab(nextPath));
                 if (isLastTab) {
                   module.verbose('Tab parameters found', nextPathArray);
                 }
@@ -383,7 +383,7 @@ $.fn.tab = function(parameters) {
               else {
                 module.debug('Opened local tab', currentPath);
                 module.activate.all(currentPath);
-                if ( !module.cache.read(currentPath) ) {
+                if (!module.cache.read(currentPath)) {
                   module.cache.add(currentPath, true);
                   module.debug('First time tab loaded calling tab init');
                   settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
@@ -401,13 +401,13 @@ $.fn.tab = function(parameters) {
               // if anchor exists use parent tab
               if ($anchor && $anchor.length > 0 && currentPath) {
                 module.debug('Anchor link used, opening parent tab', $tab, $anchor);
-                if ( !$tab.hasClass(className.active) ) {
+                if (!$tab.hasClass(className.active)) {
                   setTimeout(function() {
                     module.scrollTo($anchor);
                   }, 0);
                 }
                 module.activate.all(currentPath);
-                if ( !module.cache.read(currentPath) ) {
+                if (!module.cache.read(currentPath)) {
                   module.cache.add(currentPath, true);
                   module.debug('First time tab loaded calling tab init');
                   settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
@@ -513,7 +513,7 @@ $.fn.tab = function(parameters) {
                 }
               },
               request         = $tab.api('get request') || false,
-              existingRequest = ( request && request.state() === 'pending' ),
+              existingRequest = (request && request.state() === 'pending'),
               requestSettings,
               cachedContent
             ;
@@ -617,7 +617,7 @@ $.fn.tab = function(parameters) {
         is: {
           tab: function(tabName) {
             return (tabName !== undefined)
-              ? ( module.get.tabElement(tabName).length > 0 )
+              ? (module.get.tabElement(tabName).length > 0)
               : false
             ;
           }
@@ -632,14 +632,14 @@ $.fn.tab = function(parameters) {
           },
           // adds default tabs to tab path
           defaultPathArray: function(tabPath) {
-            return module.utilities.pathToArray( module.get.defaultPath(tabPath) );
+            return module.utilities.pathToArray(module.get.defaultPath(tabPath));
           },
           defaultPath: function(tabPath) {
             var
               $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0),
               defaultTab  = $defaultNav.data(metadata.tab) || false
             ;
-            if ( defaultTab ) {
+            if (defaultTab) {
               module.debug('Found default tab', defaultTab);
               if (recursionDepth < settings.maxDepth) {
                 recursionDepth++;
@@ -682,7 +682,7 @@ $.fn.tab = function(parameters) {
         utilities: {
           filterArray: function(keepArray, removeArray) {
             return $.grep(keepArray, function(keepValue) {
-              return ( $.inArray(keepValue, removeArray) == -1);
+              return ($.inArray(keepValue, removeArray) == -1);
             });
           },
           last: function(array) {
@@ -710,7 +710,7 @@ $.fn.tab = function(parameters) {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -726,7 +726,7 @@ $.fn.tab = function(parameters) {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -800,7 +800,7 @@ $.fn.tab = function(parameters) {
             if (moduleSelector) {
               title += ' \'' + moduleSelector + '\'';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -832,17 +832,17 @@ $.fn.tab = function(parameters) {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -852,7 +852,7 @@ $.fn.tab = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -969,4 +969,4 @@ $.fn.tab.settings = {
 
 };
 
-})( jQuery, window, document );
+})(jQuery, window, document);

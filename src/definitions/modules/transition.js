@@ -187,7 +187,7 @@ $.fn.transition = function() {
               instance.complete();
             }
           }
-          if ( module.can.animate() ) {
+          if (module.can.animate()) {
             module.set.animating(settings.animation);
           }
           else {
@@ -219,12 +219,12 @@ $.fn.transition = function() {
           module.remove.completeCallback();
           module.remove.failSafe();
           if (!module.is.looping()) {
-            if ( module.is.outward() ) {
+            if (module.is.outward()) {
               module.verbose('Animation is outward, hiding element');
               module.restore.conditions();
               module.hide();
             }
-            else if ( module.is.inward() ) {
+            else if (module.is.inward()) {
               module.verbose('Animation is outward, showing element');
               module.restore.conditions();
               module.show();
@@ -481,7 +481,7 @@ $.fn.transition = function() {
           },
           looping: function() {
             module.debug('Transitions are no longer looping');
-            if ( module.is.looping() ) {
+            if (module.is.looping()) {
               module.reset();
               $module
                 .removeClass(className.looping)
@@ -641,7 +641,7 @@ $.fn.transition = function() {
               animation
             ;
             for (animation in animations){
-              if ( element.style[animation] !== undefined ){
+              if (element.style[animation] !== undefined){
                 return animations[animation];
               }
             }
@@ -659,7 +659,7 @@ $.fn.transition = function() {
               animation
             ;
             for (animation in animations){
-              if ( element.style[animation] !== undefined ){
+              if (element.style[animation] !== undefined){
                 return animations[animation];
               }
             }
@@ -681,12 +681,12 @@ $.fn.transition = function() {
               inAnimation,
               directionExists
             ;
-            if ( transitionExists === undefined || forced) {
+            if (transitionExists === undefined || forced) {
               module.verbose('Determining whether animation exists');
               elementClass = $module.attr('class');
               tagName      = $module.prop('tagName');
 
-              $clone = $('<' + tagName + ' />').addClass( elementClass ).insertAfter($module);
+              $clone = $('<' + tagName + ' />').addClass(elementClass).insertAfter($module);
               currentAnimation = $clone
                 .addClass(animation)
                 .removeClass(className.inward)
@@ -754,7 +754,7 @@ $.fn.transition = function() {
           occurring: function(animation) {
             animation = animation || settings.animation;
             animation = '.' + animation.replace(' ', '.');
-            return ( $module.filter(animation).length > 0 );
+            return ($module.filter(animation).length > 0);
           },
           visible: function() {
             return $module.is(':visible');
@@ -769,7 +769,7 @@ $.fn.transition = function() {
 
         hide: function() {
           module.verbose('Hiding element');
-          if ( module.is.animating() ) {
+          if (module.is.animating()) {
             module.reset();
           }
           element.blur(); // IE will trigger focus change if element is not blurred before hiding
@@ -805,7 +805,7 @@ $.fn.transition = function() {
         },
 
         toggle: function() {
-          if ( module.is.visible() ) {
+          if (module.is.visible()) {
             module.hide();
           }
           else {
@@ -843,7 +843,7 @@ $.fn.transition = function() {
 
         setting: function(name, value) {
           module.debug('Changing setting', name, value);
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
           }
           else if (value !== undefined) {
@@ -859,7 +859,7 @@ $.fn.transition = function() {
           }
         },
         internal: function(name, value) {
-          if ( $.isPlainObject(name) ) {
+          if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
           else if (value !== undefined) {
@@ -936,7 +936,7 @@ $.fn.transition = function() {
             if ($allModules.length > 1) {
               title += ' ' + '(' + $allModules.length + ')';
             }
-            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
               console.groupCollapsed(title);
               if (console.table) {
                 console.table(performance);
@@ -969,17 +969,17 @@ $.fn.transition = function() {
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
               ;
-              if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+              if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                 object = object[camelCaseValue];
               }
-              else if ( object[camelCaseValue] !== undefined ) {
+              else if (object[camelCaseValue] !== undefined) {
                 found = object[camelCaseValue];
                 return false;
               }
-              else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+              else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                 object = object[value];
               }
-              else if ( object[value] !== undefined ) {
+              else if (object[value] !== undefined) {
                 found = object[value];
                 return false;
               }
@@ -988,7 +988,7 @@ $.fn.transition = function() {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ($.isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
@@ -1103,4 +1103,4 @@ $.fn.transition.settings = {
 };
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);
