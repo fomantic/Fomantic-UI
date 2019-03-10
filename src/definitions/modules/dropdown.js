@@ -4105,7 +4105,6 @@ $.fn.dropdown.settings.templates = {
     return escape(text, preserveHTML) + '<i class="' + className.delete + ' icon"></i>';
   },
 
-
   // generates messages like "No results"
   message: function(message) {
     return message;

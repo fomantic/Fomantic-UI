@@ -590,7 +590,6 @@ $.fn.visibility = function(parameters) {
           }
         },
 
-
         topVisible: function(newCallback) {
           var
             calculations = module.get.elementCalculations(),
@@ -697,7 +696,6 @@ $.fn.visibility = function(parameters) {
             return !calculations.passing;
           }
         },
-
 
         topVisibleReverse: function(newCallback) {
           var

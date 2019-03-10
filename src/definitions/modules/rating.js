@@ -487,7 +487,6 @@ $.fn.rating.settings = {
     noMaximum : 'No maximum rating specified. Cannot generate HTML automatically'
   },
 
-
   metadata: {
     rating    : 'rating',
     maxRating : 'maxRating',

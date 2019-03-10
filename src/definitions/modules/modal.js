@@ -580,7 +580,6 @@ $.fn.modal = function(parameters) {
           }
         },
 
-
         add: {
           keyboardShortcuts: function() {
             module.verbose('Adding keyboard shortcuts');

@@ -294,7 +294,6 @@ $.fn.embed = function(parameters) {
           }
         },
 
-
         set: {
           active: function() {
             $module.addClass(className.active);

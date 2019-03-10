@@ -608,7 +608,6 @@ $.fn.sticky = function(parameters) {
           module.unbind();
         },
 
-
         fixTop: function() {
           module.debug('Fixing element to top of page');
           if (settings.setSize) {
