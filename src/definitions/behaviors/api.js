@@ -911,7 +911,7 @@ $.api = $.fn.api = function(parameters) {
               performance.push({
                 'Name'           : message[0],
                 'Arguments'      : [].slice.call(message, 1) || '',
-                //'Element'        : element,
+                // 'Element'        : element,
                 'Execution Time' : executionTime
               });
             }

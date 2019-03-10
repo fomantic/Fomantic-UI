@@ -527,7 +527,7 @@ $.fn.toast.settings = {
   showIcon     : true,
   newestOnTop  : false,
   showProgress : false,
-  progressUp   : true, //if false, the bar will start at 100% and decrease to 0%
+  progressUp   : true, // if false, the bar will start at 100% and decrease to 0%
   opacity      : 1,
   compact      : true,
   closeIcon    : false,
@@ -538,7 +538,7 @@ $.fn.toast.settings = {
     showDuration : 500,
     hideMethod   : 'scale',
     hideDuration : 500,
-    closeEasing  : 'easeOutBounce' //Set to empty string to stack the closed toast area immediately (old behaviour)
+    closeEasing  : 'easeOutBounce' // Set to empty string to stack the closed toast area immediately (old behaviour)
   },
 
   error: {

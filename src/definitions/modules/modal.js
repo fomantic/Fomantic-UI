@@ -542,7 +542,7 @@ $.fn.modal = function(parameters) {
           if ($visibleModals.length > 0) {
             module.debug('Hiding all visible modals');
             var hideOk = true;
-            //check in reverse order trying to hide most top displayed modal first
+            // check in reverse order trying to hide most top displayed modal first
             $($visibleModals.get().reverse()).each(function(index, element) {
               if (hideOk) {
                 hideOk = $(element).modal('hide modal', callback, false, true);
