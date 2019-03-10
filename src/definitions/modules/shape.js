@@ -222,11 +222,11 @@ $.fn.shape = function(parameters) {
             if(settings.duration || settings.duration === 0) {
               $sides.add($side)
                 .css({
-                  '-webkit-transition-duration': duration,
-                  '-moz-transition-duration': duration,
-                  '-ms-transition-duration': duration,
-                  '-o-transition-duration': duration,
-                  'transition-duration': duration
+                  '-webkit-transition-duration' : duration,
+                  '-moz-transition-duration'    : duration,
+                  '-ms-transition-duration'     : duration,
+                  '-o-transition-duration'      : duration,
+                  'transition-duration'         : duration
                 })
               ;
             }
@@ -240,8 +240,8 @@ $.fn.shape = function(parameters) {
             ;
             $module
               .css({
-                width: width,
-                height: height
+                width  : width,
+                height : height
               })
             ;
           },
@@ -392,7 +392,7 @@ $.fn.shape = function(parameters) {
             right: function() {
               var
                 translate = {
-                  z : $activeSide.outerWidth(true) / 2
+                  z: $activeSide.outerWidth(true) / 2
                 }
               ;
               return {
@@ -403,7 +403,7 @@ $.fn.shape = function(parameters) {
             over: function() {
               var
                 translate = {
-                  x : -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
+                  x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
                 }
               ;
               return {
@@ -414,7 +414,7 @@ $.fn.shape = function(parameters) {
             back: function() {
               var
                 translate = {
-                  x : -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
+                  x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
                 }
               ;
               return {
@@ -427,10 +427,10 @@ $.fn.shape = function(parameters) {
             var
               element     = document.createElement('element'),
               transitions = {
-                'transition'       :'transitionend',
-                'OTransition'      :'oTransitionEnd',
-                'MozTransition'    :'transitionend',
-                'WebkitTransition' :'webkitTransitionEnd'
+                'transition'       : 'transitionend',
+                'OTransition'      : 'oTransitionEnd',
+                'MozTransition'    : 'transitionend',
+                'WebkitTransition' : 'webkitTransitionEnd'
               },
               transition
             ;
@@ -465,7 +465,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Setting the initial animation position as above', $nextSide, box);
             $activeSide
               .css({
-                'transform' : 'rotateX(0deg)'
+                'transform': 'rotateX(0deg)'
               })
             ;
             $nextSide
@@ -490,7 +490,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Setting the initial animation position as below', $nextSide, box);
             $activeSide
               .css({
-                'transform' : 'rotateX(0deg)'
+                'transform': 'rotateX(0deg)'
               })
             ;
             $nextSide
@@ -519,7 +519,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Setting the initial animation position as left', $nextSide, box);
             $activeSide
               .css({
-                'transform' : 'rotateY(0deg)'
+                'transform': 'rotateY(0deg)'
               })
             ;
             $nextSide
@@ -548,7 +548,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Setting the initial animation position as right', $nextSide, box);
             $activeSide
               .css({
-                'transform' : 'rotateY(0deg)'
+                'transform': 'rotateY(0deg)'
               })
             ;
             $nextSide
@@ -577,7 +577,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Setting the initial animation position as behind', $nextSide, box);
             $activeSide
               .css({
-                'transform' : 'rotateY(0deg)'
+                'transform': 'rotateY(0deg)'
               })
             ;
             $nextSide
@@ -786,25 +786,25 @@ $.fn.shape = function(parameters) {
 $.fn.shape.settings = {
 
   // module info
-  name : 'Shape',
+  name: 'Shape',
 
   // hide all debug content
-  silent     : false,
+  silent: false,
 
   // debug content outputted to console
-  debug      : false,
+  debug: false,
 
   // verbose debug output
-  verbose    : false,
+  verbose: false,
 
   // fudge factor in pixels when swapping from 2d to 3d (can be useful to correct rounding errors)
-  jitter     : 0,
+  jitter: 0,
 
   // performance data output
   performance: true,
 
   // event namespace
-  namespace  : 'shape',
+  namespace: 'shape',
 
   // width during animation, can be set to 'auto', initial', 'next' or pixel amount
   width: 'initial',
@@ -820,7 +820,7 @@ $.fn.shape.settings = {
   allowRepeats: false,
 
   // animation duration
-  duration   : false,
+  duration: false,
 
   // possible errors
   error: {
@@ -829,7 +829,7 @@ $.fn.shape.settings = {
   },
 
   // classnames used
-  className   : {
+  className: {
     animating : 'animating',
     hidden    : 'hidden',
     loading   : 'loading',
@@ -837,7 +837,7 @@ $.fn.shape.settings = {
   },
 
   // selectors used
-  selector    : {
+  selector: {
     sides : '.sides',
     side  : '.side'
   }

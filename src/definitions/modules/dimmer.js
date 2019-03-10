@@ -252,7 +252,7 @@ $.fn.dimmer = function(parameters) {
               }
               $dimmer
                 .transition({
-                  displayType : settings.useFlex
+                  displayType: settings.useFlex
                     ? 'flex'
                     : 'block',
                   animation   : settings.transition + ' in',
@@ -262,7 +262,7 @@ $.fn.dimmer = function(parameters) {
                   onStart     : function() {
                     module.set.dimmed();
                   },
-                  onComplete  : function() {
+                  onComplete: function() {
                     module.set.active();
                     callback();
                   }
@@ -299,7 +299,7 @@ $.fn.dimmer = function(parameters) {
               module.verbose('Hiding dimmer with css');
               $dimmer
                 .transition({
-                  displayType : settings.useFlex
+                  displayType: settings.useFlex
                     ? 'flex'
                     : 'block',
                   animation   : settings.transition + ' out',
@@ -662,8 +662,8 @@ $.fn.dimmer = function(parameters) {
 
 $.fn.dimmer.settings = {
 
-  name        : 'Dimmer',
-  namespace   : 'dimmer',
+  name      : 'Dimmer',
+  namespace : 'dimmer',
 
   silent      : false,
   debug       : false,
@@ -671,48 +671,48 @@ $.fn.dimmer.settings = {
   performance : true,
 
   // whether should use flex layout
-  useFlex     : true,
+  useFlex: true,
 
   // name to distinguish between multiple dimmers in context
-  dimmerName  : false,
+  dimmerName: false,
 
   // whether to add a variation type
-  variation   : false,
+  variation: false,
 
   // whether to bind close events
-  closable    : 'auto',
+  closable: 'auto',
 
   // whether to use css animations
-  useCSS      : true,
+  useCSS: true,
 
   // css animation to use
-  transition  : 'fade',
+  transition: 'fade',
 
   // event to bind to
-  on          : false,
+  on: false,
 
   // overriding opacity value
-  opacity     : 'auto',
+  opacity: 'auto',
 
   // transition durations
-  duration    : {
+  duration: {
     show : 500,
     hide : 500
   },
   // whether the dynamically created dimmer should have a loader
-  displayLoader: false,
-  loaderText  : false,
+  displayLoader   : false,
+  loaderText      : false,
   loaderVariation : '',
 
-  onChange    : function(){},
-  onShow      : function(){},
-  onHide      : function(){},
+  onChange : function(){},
+  onShow   : function(){},
+  onHide   : function(){},
 
-  error   : {
-    method   : 'The method you called is not defined.'
+  error: {
+    method: 'The method you called is not defined.'
   },
 
-  className : {
+  className: {
     active     : 'active',
     animating  : 'animating',
     dimmable   : 'dimmable',
@@ -727,8 +727,8 @@ $.fn.dimmer.settings = {
   },
 
   selector: {
-    dimmer   : '> .ui.dimmer',
-    content  : '.ui.dimmer > .content, .ui.dimmer > .content > .center'
+    dimmer  : '> .ui.dimmer',
+    content : '.ui.dimmer > .content, .ui.dimmer > .content > .center'
   },
 
   template: {

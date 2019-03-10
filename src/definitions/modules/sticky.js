@@ -257,7 +257,7 @@ $.fn.sticky = function(parameters) {
           positions: function() {
             var
               scrollContext = {
-                height : $scroll.height()
+                height: $scroll.height()
               },
               element = {
                 margin: {
@@ -288,7 +288,7 @@ $.fn.sticky = function(parameters) {
               fits          : ( (element.height + settings.offset) <= scrollContext.height),
               sameHeight    : (element.height == context.height),
               scrollContext : {
-                height : scrollContext.height
+                height: scrollContext.height
               },
               element: {
                 margin : element.margin,
@@ -299,9 +299,9 @@ $.fn.sticky = function(parameters) {
                 bottom : element.offset.top + element.height
               },
               context: {
-                top           : context.offset.top,
-                height        : context.height,
-                bottom        : context.offset.top + context.height
+                top    : context.offset.top,
+                height : context.height,
+                bottom : context.offset.top + context.height
               }
             };
             module.set.containerSize();
@@ -597,8 +597,8 @@ $.fn.sticky = function(parameters) {
           module.remove.offset();
           $module
             .css({
-              left         : '',
-              top          : ''
+              left : '',
+              top  : ''
             })
             .removeClass(className.fixed)
             .removeClass(className.top)
@@ -886,57 +886,57 @@ $.fn.sticky = function(parameters) {
 
 $.fn.sticky.settings = {
 
-  name           : 'Sticky',
-  namespace      : 'sticky',
+  name      : 'Sticky',
+  namespace : 'sticky',
 
-  silent         : false,
-  debug          : false,
-  verbose        : true,
-  performance    : true,
+  silent      : false,
+  debug       : false,
+  verbose     : true,
+  performance : true,
 
   // whether to stick in the opposite direction on scroll up
-  pushing        : false,
+  pushing: false,
 
-  context        : false,
-  container      : false,
+  context   : false,
+  container : false,
 
   // Context to watch scroll events
-  scrollContext  : window,
+  scrollContext: window,
 
   // Offset to adjust scroll
-  offset         : 0,
+  offset: 0,
 
   // Offset to adjust scroll when attached to bottom of screen
-  bottomOffset   : 0,
+  bottomOffset: 0,
 
   // will only set container height if difference between context and container is larger than this number
-  jitter         : 5,
+  jitter: 5,
 
   // set width of sticky element when it is fixed to page (used to make sure 100% width is maintained if no fixed size set)
-  setSize        : true,
+  setSize: true,
 
   // Whether to automatically observe changes with Mutation Observers
-  observeChanges : false,
+  observeChanges: false,
 
   // Called when position is recalculated
-  onReposition   : function(){},
+  onReposition: function(){},
 
   // Called on each scroll
-  onScroll       : function(){},
+  onScroll: function(){},
 
   // Called when element is stuck to viewport
-  onStick        : function(){},
+  onStick: function(){},
 
   // Called when element is unstuck from viewport
-  onUnstick      : function(){},
+  onUnstick: function(){},
 
   // Called when element reaches top of context
-  onTop          : function(){},
+  onTop: function(){},
 
   // Called when element reaches bottom of context
-  onBottom       : function(){},
+  onBottom: function(){},
 
-  error         : {
+  error: {
     container      : 'Sticky element must be inside a relative container',
     visible        : 'Element is hidden, you must call refresh after element becomes visible. Use silent setting to surpress this warning in production.',
     method         : 'The method you called is not defined.',
@@ -944,7 +944,7 @@ $.fn.sticky.settings = {
     elementSize    : 'Sticky element is larger than its container, cannot create sticky.'
   },
 
-  className : {
+  className: {
     bound     : 'bound',
     fixed     : 'fixed',
     supported : 'native',

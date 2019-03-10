@@ -286,10 +286,10 @@ $.fn.progress = function(parameters) {
             var
               element     = document.createElement('element'),
               transitions = {
-                'transition'       :'transitionend',
-                'OTransition'      :'oTransitionEnd',
-                'MozTransition'    :'transitionend',
-                'WebkitTransition' :'webkitTransitionEnd'
+                'transition'       : 'transitionend',
+                'OTransition'      : 'oTransitionEnd',
+                'MozTransition'    : 'transitionend',
+                'WebkitTransition' : 'webkitTransitionEnd'
               },
               transition
             ;
@@ -419,7 +419,7 @@ $.fn.progress = function(parameters) {
             module.verbose('Setting progress bar transition duration', duration);
             $bar
               .css({
-                'transition-duration':  duration
+                'transition-duration': duration
               })
             ;
           },
@@ -544,7 +544,7 @@ $.fn.progress = function(parameters) {
               settings.onActive.call(element, module.value, module.total);
             });
           },
-          success : function(text) {
+          success: function(text) {
             text = text || settings.text.success || settings.text.active;
             module.debug('Setting success state');
             $module.addClass(className.success);
@@ -564,7 +564,7 @@ $.fn.progress = function(parameters) {
               settings.onSuccess.call(element, module.total);
             });
           },
-          warning : function(text) {
+          warning: function(text) {
             text = text || settings.text.warning;
             module.debug('Setting warning state');
             $module.addClass(className.warning);
@@ -580,7 +580,7 @@ $.fn.progress = function(parameters) {
               settings.onWarning.call(element, module.value, module.total);
             });
           },
-          error : function(text) {
+          error: function(text) {
             text = text || settings.text.error;
             module.debug('Setting error state');
             $module.addClass(className.error);
@@ -841,48 +841,48 @@ $.fn.progress = function(parameters) {
 
 $.fn.progress.settings = {
 
-  name         : 'Progress',
-  namespace    : 'progress',
+  name      : 'Progress',
+  namespace : 'progress',
 
-  silent       : false,
-  debug        : false,
-  verbose      : false,
-  performance  : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  random       : {
+  random: {
     min : 2,
     max : 5
   },
 
-  duration       : 300,
+  duration: 300,
 
-  updateInterval : 'auto',
+  updateInterval: 'auto',
 
-  autoSuccess    : true,
-  showActivity   : true,
-  limitValues    : true,
+  autoSuccess  : true,
+  showActivity : true,
+  limitValues  : true,
 
-  label          : 'percent',
-  precision      : 0,
-  framerate      : (1000 / 30), /// 30 fps
+  label     : 'percent',
+  precision : 0,
+  framerate : (1000 / 30), /// 30 fps
 
-  percent        : false,
-  total          : false,
-  value          : false,
+  percent : false,
+  total   : false,
+  value   : false,
 
   // delay in ms for fail safe animation callback
-  failSafeDelay : 100,
+  failSafeDelay: 100,
 
-  onLabelUpdate : function(state, text, value, total){
+  onLabelUpdate: function(state, text, value, total){
     return text;
   },
-  onChange      : function(percent, value, total){},
-  onSuccess     : function(total){},
-  onActive      : function(value, total){},
-  onError       : function(value, total){},
-  onWarning     : function(value, total){},
+  onChange  : function(percent, value, total){},
+  onSuccess : function(total){},
+  onActive  : function(value, total){},
+  onError   : function(value, total){},
+  onWarning : function(value, total){},
 
-  error    : {
+  error: {
     method     : 'The method you called is not defined.',
     nonNumeric : 'Progress value is non numeric',
     tooHigh    : 'Value specified is above 100%',
@@ -899,13 +899,13 @@ $.fn.progress.settings = {
     value   : 'value'
   },
 
-  selector : {
+  selector: {
     bar      : '> .bar',
     label    : '> .label',
     progress : '.bar > .progress'
   },
 
-  text : {
+  text: {
     active  : false,
     error   : false,
     success : false,
@@ -914,7 +914,7 @@ $.fn.progress.settings = {
     ratio   : '{value} of {total}'
   },
 
-  className : {
+  className: {
     active  : 'active',
     error   : 'error',
     success : 'success',

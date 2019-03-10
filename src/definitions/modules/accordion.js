@@ -557,44 +557,44 @@ $.fn.accordion = function(parameters) {
 
 $.fn.accordion.settings = {
 
-  name            : 'Accordion',
-  namespace       : 'accordion',
+  name      : 'Accordion',
+  namespace : 'accordion',
 
-  silent          : false,
-  debug           : false,
-  verbose         : false,
-  performance     : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  on              : 'click', // event on title that opens accordion
+  on: 'click', // event on title that opens accordion
 
-  observeChanges  : true,  // whether accordion should automatically refresh on DOM insertion
+  observeChanges: true,  // whether accordion should automatically refresh on DOM insertion
 
   exclusive       : true,  // whether a single accordion content panel should be open at once
   collapsible     : true,  // whether accordion content can be closed
   closeNested     : false, // whether nested content should be closed when a panel is closed
   animateChildren : true,  // whether children opacity should be animated
 
-  duration        : 350, // duration of animation
-  easing          : 'easeOutQuad', // easing equation for animation
+  duration : 350, // duration of animation
+  easing   : 'easeOutQuad', // easing equation for animation
 
-  onOpening       : function(){}, // callback before open animation
-  onClosing       : function(){}, // callback before closing animation
-  onChanging      : function(){}, // callback before closing or opening animation
+  onOpening  : function(){}, // callback before open animation
+  onClosing  : function(){}, // callback before closing animation
+  onChanging : function(){}, // callback before closing or opening animation
 
-  onOpen          : function(){}, // callback after open animation
-  onClose         : function(){}, // callback after closing animation
-  onChange        : function(){}, // callback after closing or opening animation
+  onOpen   : function(){}, // callback after open animation
+  onClose  : function(){}, // callback after closing animation
+  onChange : function(){}, // callback after closing or opening animation
 
   error: {
-    method : 'The method you called is not defined'
+    method: 'The method you called is not defined'
   },
 
-  className   : {
+  className: {
     active    : 'active',
     animating : 'animating'
   },
 
-  selector    : {
+  selector: {
     accordion : '.accordion',
     title     : '.title',
     trigger   : '.title',

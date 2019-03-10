@@ -330,7 +330,7 @@ $.fn.transition = function() {
               module.verbose('Setting animation duration', duration);
               $module
                 .css({
-                  'animation-duration':  duration
+                  'animation-duration': duration
                 })
               ;
             }
@@ -520,7 +520,7 @@ $.fn.transition = function() {
             // duration is actually settings object
             else if(typeof duration == 'object') {
               return $.extend({}, $.fn.transition.settings, duration, {
-                animation : animation
+                animation: animation
               });
             }
             // duration is actually callback
@@ -533,7 +533,7 @@ $.fn.transition = function() {
             // only animation provided
             else {
               return $.extend({}, $.fn.transition.settings, {
-                animation : animation
+                animation: animation
               });
             }
           },
@@ -633,10 +633,10 @@ $.fn.transition = function() {
             var
               element     = document.createElement('div'),
               animations  = {
-                'animation'       :'animationstart',
-                'OAnimation'      :'oAnimationStart',
-                'MozAnimation'    :'mozAnimationStart',
-                'WebkitAnimation' :'webkitAnimationStart'
+                'animation'       : 'animationstart',
+                'OAnimation'      : 'oAnimationStart',
+                'MozAnimation'    : 'mozAnimationStart',
+                'WebkitAnimation' : 'webkitAnimationStart'
               },
               animation
             ;
@@ -651,10 +651,10 @@ $.fn.transition = function() {
             var
               element     = document.createElement('div'),
               animations  = {
-                'animation'       :'animationend',
-                'OAnimation'      :'oAnimationEnd',
-                'MozAnimation'    :'mozAnimationEnd',
-                'WebkitAnimation' :'webkitAnimationEnd'
+                'animation'       : 'animationend',
+                'OAnimation'      : 'oAnimationEnd',
+                'MozAnimation'    : 'mozAnimationEnd',
+                'WebkitAnimation' : 'webkitAnimationEnd'
               },
               animation
             ;
@@ -1025,62 +1025,62 @@ $.fn.transition.exists = {};
 $.fn.transition.settings = {
 
   // module info
-  name          : 'Transition',
+  name: 'Transition',
 
   // hide all output from this component regardless of other settings
-  silent        : false,
+  silent: false,
 
   // debug content outputted to console
-  debug         : false,
+  debug: false,
 
   // verbose debug output
-  verbose       : false,
+  verbose: false,
 
   // performance data output
-  performance   : true,
+  performance: true,
 
   // event namespace
-  namespace     : 'transition',
+  namespace: 'transition',
 
   // delay between animations in group
-  interval      : 0,
+  interval: 0,
 
   // whether group animations should be reversed
-  reverse       : 'auto',
+  reverse: 'auto',
 
   // animation callback event
-  onStart       : function() {},
-  onComplete    : function() {},
-  onShow        : function() {},
-  onHide        : function() {},
+  onStart    : function() {},
+  onComplete : function() {},
+  onShow     : function() {},
+  onHide     : function() {},
 
   // whether timeout should be used to ensure callback fires in cases animationend does not
-  useFailSafe   : true,
+  useFailSafe: true,
 
   // delay in ms for fail safe
-  failSafeDelay : 100,
+  failSafeDelay: 100,
 
   // whether EXACT animation can occur twice in a row
-  allowRepeats  : false,
+  allowRepeats: false,
 
   // Override final display type on visible
-  displayType   : false,
+  displayType: false,
 
   // animation duration
-  animation     : 'fade',
-  duration      : false,
+  animation : 'fade',
+  duration  : false,
 
   // new animations will occur after previous ones
-  queue         : true,
+  queue: true,
 
   // whether initially inline hidden objects should be skipped for transition
   skipInlineHidden: false,
 
-  metadata : {
+  metadata: {
     displayType: 'display'
   },
 
-  className   : {
+  className: {
     animating  : 'animating',
     disabled   : 'disabled',
     hidden     : 'hidden',

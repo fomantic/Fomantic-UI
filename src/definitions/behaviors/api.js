@@ -1030,107 +1030,107 @@ $.api = $.fn.api = function(parameters) {
 
 $.api.settings = {
 
-  name              : 'API',
-  namespace         : 'api',
+  name      : 'API',
+  namespace : 'api',
 
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
   // object containing all templates endpoints
-  api               : {},
+  api: {},
 
   // whether to cache responses
-  cache             : true,
+  cache: true,
 
   // whether new requests should abort previous requests
-  interruptRequests : true,
+  interruptRequests: true,
 
   // event binding
-  on                : 'auto',
+  on: 'auto',
 
   // context for applying state classes
-  stateContext      : false,
+  stateContext: false,
 
   // duration for loading state
-  loadingDuration   : 0,
+  loadingDuration: 0,
 
   // whether to hide errors after a period of time
-  hideError         : 'auto',
+  hideError: 'auto',
 
   // duration for error state
-  errorDuration     : 2000,
+  errorDuration: 2000,
 
   // whether parameters should be encoded with encodeURIComponent
-  encodeParameters  : true,
+  encodeParameters: true,
 
   // API action to use
-  action            : false,
+  action: false,
 
   // templated URL to use
-  url               : false,
+  url: false,
 
   // base URL to apply to all endpoints
-  base              : '',
+  base: '',
 
   // data that will
-  urlData           : {},
+  urlData: {},
 
   // whether to add default data to url data
-  defaultData          : true,
+  defaultData: true,
 
   // whether to serialize closest form
-  serializeForm        : false,
+  serializeForm: false,
 
   // how long to wait before request should occur
-  throttle             : 0,
+  throttle: 0,
 
   // whether to throttle first request or only repeated
-  throttleFirstRequest : true,
+  throttleFirstRequest: true,
 
   // standard ajax settings
-  method            : 'get',
-  data              : {},
-  dataType          : 'json',
+  method   : 'get',
+  data     : {},
+  dataType : 'json',
 
   // mock response
   mockResponse      : false,
   mockResponseAsync : false,
 
   // aliases for mock
-  response          : false,
-  responseAsync     : false,
+  response      : false,
+  responseAsync : false,
 
   // whether onResponse should work with response value without force converting into an object
-  rawResponse       : false,
+  rawResponse: false,
 
   // callbacks before request
-  beforeSend  : function(settings) { return settings; },
-  beforeXHR   : function(xhr) {},
-  onRequest   : function(promise, xhr) {},
+  beforeSend : function(settings) { return settings; },
+  beforeXHR  : function(xhr) {},
+  onRequest  : function(promise, xhr) {},
 
   // after request
-  onResponse  : false, // function(response) { },
+  onResponse: false, // function(response) { },
 
   // response was successful, if JSON passed validation
-  onSuccess   : function(response, $module) {},
+  onSuccess: function(response, $module) {},
 
   // request finished without aborting
-  onComplete  : function(response, $module) {},
+  onComplete: function(response, $module) {},
 
   // failed JSON success test
-  onFailure   : function(response, $module) {},
+  onFailure: function(response, $module) {},
 
   // server error
-  onError     : function(errorMessage, $module) {},
+  onError: function(errorMessage, $module) {},
 
   // request aborted
-  onAbort     : function(errorMessage, $module) {},
+  onAbort: function(errorMessage, $module) {},
 
-  successTest : false,
+  successTest: false,
 
   // errors
-  error : {
+  error: {
     beforeSend        : 'The before send function has aborted the request',
     error             : 'There was an error with your request',
     exitConditions    : 'API Request Aborted. Exit conditions met',
@@ -1148,7 +1148,7 @@ $.api.settings = {
     timeout           : 'Your request timed out'
   },
 
-  regExp  : {
+  regExp: {
     required : /\{\$*[A-z0-9]+\}/g,
     optional : /\{\/\$*[A-z0-9]+\}/g,
   },
@@ -1160,12 +1160,12 @@ $.api.settings = {
 
   selector: {
     disabled : '.disabled',
-    form      : 'form'
+    form     : 'form'
   },
 
   metadata: {
-    action  : 'action',
-    url     : 'url'
+    action : 'action',
+    url    : 'url'
   }
 };
 

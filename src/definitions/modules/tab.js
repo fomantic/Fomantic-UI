@@ -477,7 +477,7 @@ $.fn.tab = function(parameters) {
                 headers          : {
                   'X-Remote': true
                 },
-                onSuccess : function(response) {
+                onSuccess: function(response) {
                   if(settings.cacheType == 'response') {
                     module.cache.add(fullTabPath, response);
                   }
@@ -898,24 +898,24 @@ $.tab = function() {
 
 $.fn.tab.settings = {
 
-  name            : 'Tab',
-  namespace       : 'tab',
+  name      : 'Tab',
+  namespace : 'tab',
 
-  silent          : false,
-  debug           : false,
-  verbose         : false,
-  performance     : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  auto            : false,      // uses pjax style endpoints fetching content from same url with remote-content headers
-  history         : false,      // use browser history
-  historyType     : 'hash',     // #/ or html5 state
-  path            : false,      // base path of url
+  auto        : false,      // uses pjax style endpoints fetching content from same url with remote-content headers
+  history     : false,      // use browser history
+  historyType : 'hash',     // #/ or html5 state
+  path        : false,      // base path of url
 
-  context         : false,      // specify a context that tabs must appear inside
-  childrenOnly    : false,      // use only tabs that are children of context
-  maxDepth        : 25,         // max depth a tab can be nested
+  context      : false,      // specify a context that tabs must appear inside
+  childrenOnly : false,      // use only tabs that are children of context
+  maxDepth     : 25,         // max depth a tab can be nested
 
-  deactivate      : 'siblings', // whether tabs should deactivate sibling menu elements or all elements initialized together
+  deactivate: 'siblings', // whether tabs should deactivate sibling menu elements or all elements initialized together
 
   alwaysRefresh   : false,      // load tab content new every tab click
   cache           : true,       // cache the content requests to pull locally
@@ -931,7 +931,7 @@ $.fn.tab.settings = {
   onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
   onRequest   : function(tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
 
-  templates : {
+  templates: {
     determineTitle: function(tabArray) {} // returns page title for path
   },
 
@@ -947,22 +947,22 @@ $.fn.tab.settings = {
     state      : 'History requires Asual\'s Address library <https://github.com/asual/jquery-address>'
   },
 
-  regExp : {
-    escape   : /[-[\]{}()*+?.,\\^$|#\s:=@]/g
+  regExp: {
+    escape: /[-[\]{}()*+?.,\\^$|#\s:=@]/g
   },
 
-  metadata : {
-    tab    : 'tab',
-    loaded : 'loaded',
-    promise: 'promise'
+  metadata: {
+    tab     : 'tab',
+    loaded  : 'loaded',
+    promise : 'promise'
   },
 
-  className   : {
+  className: {
     loading : 'loading',
     active  : 'active'
   },
 
-  selector    : {
+  selector: {
     tabs : '.ui.tab',
     ui   : '.ui'
   }

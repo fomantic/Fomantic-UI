@@ -818,39 +818,39 @@ $.fn.checkbox = function(parameters) {
 
 $.fn.checkbox.settings = {
 
-  name                : 'Checkbox',
-  namespace           : 'checkbox',
+  name      : 'Checkbox',
+  namespace : 'checkbox',
 
-  silent              : false,
-  debug               : false,
-  verbose             : true,
-  performance         : true,
+  silent      : false,
+  debug       : false,
+  verbose     : true,
+  performance : true,
 
   // delegated event context
-  uncheckable         : 'auto',
-  fireOnInit          : false,
+  uncheckable : 'auto',
+  fireOnInit  : false,
 
-  onChange            : function(){},
+  onChange: function(){},
 
   beforeChecked       : function(){},
   beforeUnchecked     : function(){},
   beforeDeterminate   : function(){},
   beforeIndeterminate : function(){},
 
-  onChecked           : function(){},
-  onUnchecked         : function(){},
+  onChecked   : function(){},
+  onUnchecked : function(){},
 
-  onDeterminate       : function() {},
-  onIndeterminate     : function() {},
+  onDeterminate   : function() {},
+  onIndeterminate : function() {},
 
-  onEnable            : function(){},
-  onDisable           : function(){},
+  onEnable  : function(){},
+  onDisable : function(){},
 
   // preserve misspelled callbacks (will be removed in 3.0)
-  onEnabled           : function(){},
-  onDisabled          : function(){},
+  onEnabled  : function(){},
+  onDisabled : function(){},
 
-  className       : {
+  className: {
     checked       : 'checked',
     indeterminate : 'indeterminate',
     disabled      : 'disabled',
@@ -859,11 +859,11 @@ $.fn.checkbox.settings = {
     readOnly      : 'read-only'
   },
 
-  error     : {
-    method       : 'The method you called is not defined'
+  error: {
+    method: 'The method you called is not defined'
   },
 
-  selector : {
+  selector: {
     checkbox : '.ui.checkbox',
     label    : 'label, .box',
     input    : 'input[type="checkbox"], input[type="radio"]',

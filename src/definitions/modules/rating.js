@@ -464,26 +464,26 @@ $.fn.rating = function(parameters) {
 
 $.fn.rating.settings = {
 
-  name          : 'Rating',
-  namespace     : 'rating',
+  name      : 'Rating',
+  namespace : 'rating',
 
-  icon          : 'star',
+  icon: 'star',
 
-  silent        : false,
-  debug         : false,
-  verbose       : false,
-  performance   : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
   initialRating : 0,
   interactive   : true,
   maxRating     : 4,
   clearable     : 'auto',
 
-  fireOnInit    : false,
+  fireOnInit: false,
 
-  onRate        : function(rating){},
+  onRate: function(rating){},
 
-  error         : {
+  error: {
     method    : 'The method you called is not defined',
     noMaximum : 'No maximum rating specified. Cannot generate HTML automatically'
   },
@@ -495,15 +495,15 @@ $.fn.rating.settings = {
     icon      : 'icon'
   },
 
-  className : {
+  className: {
     active   : 'active',
     disabled : 'disabled',
     selected : 'selected',
     loading  : 'loading'
   },
 
-  selector  : {
-    icon : '.icon'
+  selector: {
+    icon: '.icon'
   },
 
   templates: {

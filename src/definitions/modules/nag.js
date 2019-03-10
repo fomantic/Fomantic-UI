@@ -426,39 +426,39 @@ $.fn.nag = function(parameters) {
 
 $.fn.nag.settings = {
 
-  name        : 'Nag',
+  name: 'Nag',
 
   silent      : false,
   debug       : false,
   verbose     : false,
   performance : true,
 
-  namespace   : 'Nag',
+  namespace: 'Nag',
 
   // allows cookie to be overridden
-  persist     : false,
+  persist: false,
 
   // set to zero to require manually dismissal, otherwise hides on its own
-  displayTime : 0,
+  displayTime: 0,
 
-  animation   : {
+  animation: {
     show : 'slide',
     hide : 'slide'
   },
 
-  context       : false,
-  detachable    : false,
+  context    : false,
+  detachable : false,
 
-  expires       : 30,
-  domain        : false,
-  path          : '/',
+  expires : 30,
+  domain  : false,
+  path    : '/',
 
   // type of storage to use
-  storageMethod : 'cookie',
+  storageMethod: 'cookie',
 
   // value to store in dismissed localstorage/cookie
-  key           : 'nag',
-  value         : 'dismiss',
+  key   : 'nag',
+  value : 'dismiss',
 
   error: {
     noCookieStorage : '$.cookie is not included. A storage solution is required.',
@@ -466,17 +466,17 @@ $.fn.nag.settings = {
     method          : 'The method you called is not defined.'
   },
 
-  className     : {
+  className: {
     bottom : 'bottom',
     fixed  : 'fixed'
   },
 
-  selector      : {
-    close : '.close.icon'
+  selector: {
+    close: '.close.icon'
   },
 
-  speed         : 500,
-  easing        : 'easeOutQuad',
+  speed  : 500,
+  easing : 'easeOutQuad',
 
   onHide: function() {}
 

@@ -579,18 +579,18 @@ $.fn.embed = function(parameters) {
 
 $.fn.embed.settings = {
 
-  name        : 'Embed',
-  namespace   : 'embed',
+  name      : 'Embed',
+  namespace : 'embed',
 
   silent      : false,
   debug       : false,
   verbose     : false,
   performance : true,
 
-  icon     : false,
-  source   : false,
-  url      : false,
-  id       : false,
+  icon   : false,
+  source : false,
+  url    : false,
+  id     : false,
 
   // standard video settings
   autoplay  : 'auto',
@@ -609,7 +609,7 @@ $.fn.embed.settings = {
     return parameters;
   },
 
-  metadata    : {
+  metadata: {
     id          : 'id',
     icon        : 'icon',
     placeholder : 'placeholder',
@@ -617,17 +617,17 @@ $.fn.embed.settings = {
     url         : 'url'
   },
 
-  error : {
+  error: {
     noURL  : 'No URL specified',
     method : 'The method you called is not defined'
   },
 
-  className : {
+  className: {
     active : 'active',
     embed  : 'embed'
   },
 
-  selector : {
+  selector: {
     embed       : '.embed',
     placeholder : '.placeholder',
     icon        : '.icon'
@@ -635,12 +635,12 @@ $.fn.embed.settings = {
 
   sources: {
     youtube: {
-      name   : 'youtube',
-      type   : 'video',
-      icon   : 'video play',
-      domain : 'youtube.com',
-      url    : '//www.youtube.com/embed/{id}',
-      parameters: function(settings) {
+      name       : 'youtube',
+      type       : 'video',
+      icon       : 'video play',
+      domain     : 'youtube.com',
+      url        : '//www.youtube.com/embed/{id}',
+      parameters : function(settings) {
         return {
           autohide       : !settings.brandedUI,
           autoplay       : settings.autoplay,
@@ -652,12 +652,12 @@ $.fn.embed.settings = {
       }
     },
     vimeo: {
-      name   : 'vimeo',
-      type   : 'video',
-      icon   : 'video play',
-      domain : 'vimeo.com',
-      url    : '//player.vimeo.com/video/{id}',
-      parameters: function(settings) {
+      name       : 'vimeo',
+      type       : 'video',
+      icon       : 'video play',
+      domain     : 'vimeo.com',
+      url        : '//player.vimeo.com/video/{id}',
+      parameters : function(settings) {
         return {
           api      : settings.api,
           autoplay : settings.autoplay,
@@ -671,7 +671,7 @@ $.fn.embed.settings = {
   },
 
   templates: {
-    iframe : function(url, parameters) {
+    iframe: function(url, parameters) {
       var src = url;
       if (parameters) {
         src += '?' + parameters;
@@ -682,7 +682,7 @@ $.fn.embed.settings = {
         + ' frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       ;
     },
-    placeholder : function(image, icon) {
+    placeholder: function(image, icon) {
       var
         html = ''
       ;

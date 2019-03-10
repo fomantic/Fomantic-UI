@@ -37,11 +37,11 @@ $.fn.calendar = function(parameters) {
     queryArguments = [].slice.call(arguments, 1),
     returnedValue,
     timeGapTable = {
-      '5': {'row': 4, 'column': 3 },
-      '10': {'row': 3, 'column': 2 },
-      '15': {'row': 2, 'column': 2 },
-      '20': {'row': 3, 'column': 1 },
-      '30': {'row': 2, 'column': 1 }
+      '5'  : {'row': 4, 'column': 3 },
+      '10' : {'row': 3, 'column': 2 },
+      '15' : {'row': 2, 'column': 2 },
+      '20' : {'row': 3, 'column': 1 },
+      '30' : {'row': 2, 'column': 1 }
     }
   ;
 
@@ -158,13 +158,13 @@ $.fn.calendar = function(parameters) {
             };
             var on = settings.on || ($input.length ? 'focus' : 'click');
             var options = $.extend({}, settings.popupOptions, {
-              popup: $container,
-              on: on,
-              hoverable: on === 'hover',
-              onShow: onShow,
-              onVisible: onVisible,
-              onHide: settings.onHide,
-              onHidden: onHidden
+              popup     : $container,
+              on        : on,
+              hoverable : on === 'hover',
+              onShow    : onShow,
+              onVisible : onVisible,
+              onHide    : settings.onHide,
+              onHidden  : onHidden
             });
             module.popup(options);
           },
@@ -347,11 +347,11 @@ $.fn.calendar = function(parameters) {
 
                   // Allow for external modifications of each cell
                   var cellOptions = {
-                    mode: mode,
-                    adjacent: adjacent,
-                    disabled: disabled,
-                    active: active,
-                    today: isToday
+                    mode     : mode,
+                    adjacent : adjacent,
+                    disabled : disabled,
+                    active   : active,
+                    today    : isToday
                   };
                   formatter.cell(cell, cellDate, cellOptions);
 
@@ -987,10 +987,10 @@ $.fn.calendar = function(parameters) {
               executionTime = currentTime - previousTime;
               time = currentTime;
               performance.push({
-                'Name': message[0],
-                'Arguments': [].slice.call(message, 1) || '',
-                'Element': element,
-                'Execution Time': executionTime
+                'Name'           : message[0],
+                'Arguments'      : [].slice.call(message, 1) || '',
+                'Element'        : element,
+                'Execution Time' : executionTime
               });
             }
             clearTimeout(module.performance.timer);
@@ -1103,13 +1103,13 @@ $.fn.calendar = function(parameters) {
 
 $.fn.calendar.settings = {
 
-  name            : 'Calendar',
-  namespace       : 'calendar',
+  name      : 'Calendar',
+  namespace : 'calendar',
 
-  silent: false,
-  debug: false,
-  verbose: false,
-  performance: false,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : false,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
@@ -1140,22 +1140,22 @@ $.fn.calendar.settings = {
   centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
   currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
-  popupOptions: {
-    position: 'bottom left',
-    lastResort: 'bottom left',
-    prefer: 'opposite',
-    hideOnScroll: false
+  popupOptions       : {
+    position     : 'bottom left',
+    lastResort   : 'bottom left',
+    prefer       : 'opposite',
+    hideOnScroll : false
   },
 
   text: {
-    days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-    today: 'Today',
-    now: 'Now',
-    am: 'AM',
-    pm: 'PM',
-    weekNo: 'Week'
+    days        : ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    months      : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    monthsShort : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+    today       : 'Today',
+    now         : 'Now',
+    am          : 'AM',
+    pm          : 'PM',
+    weekNo      : 'Week'
   },
 
   formatter: {
@@ -1456,53 +1456,53 @@ $.fn.calendar.settings = {
   },
 
   selector: {
-    popup: '.ui.popup',
-    input: 'input',
-    activator: 'input'
+    popup     : '.ui.popup',
+    input     : 'input',
+    activator : 'input'
   },
 
   regExp: {
-    dateWords: /[^A-Za-z\u00C0-\u024F]+/g,
-    dateNumbers: /[^\d:]+/g
+    dateWords   : /[^A-Za-z\u00C0-\u024F]+/g,
+    dateNumbers : /[^\d:]+/g
   },
 
   error: {
-    popup: 'UI Popup, a required component is not included in this page',
-    method: 'The method you called is not defined.'
+    popup  : 'UI Popup, a required component is not included in this page',
+    method : 'The method you called is not defined.'
   },
 
   className: {
-    calendar: 'calendar',
-    active: 'active',
-    popup: 'ui popup',
-    grid: 'ui equal width grid',
-    column: 'column',
-    table: 'ui celled center aligned unstackable table',
-    prev: 'prev link',
-    next: 'next link',
-    prevIcon: 'chevron left icon',
-    nextIcon: 'chevron right icon',
-    link: 'link',
-    cell: 'link',
-    disabledCell: 'disabled',
-    adjacentCell: 'adjacent',
-    activeCell: 'active',
-    rangeCell: 'range',
-    focusCell: 'focus',
-    todayCell: 'today',
-    today: 'today link'
+    calendar     : 'calendar',
+    active       : 'active',
+    popup        : 'ui popup',
+    grid         : 'ui equal width grid',
+    column       : 'column',
+    table        : 'ui celled center aligned unstackable table',
+    prev         : 'prev link',
+    next         : 'next link',
+    prevIcon     : 'chevron left icon',
+    nextIcon     : 'chevron right icon',
+    link         : 'link',
+    cell         : 'link',
+    disabledCell : 'disabled',
+    adjacentCell : 'adjacent',
+    activeCell   : 'active',
+    rangeCell    : 'range',
+    focusCell    : 'focus',
+    todayCell    : 'today',
+    today        : 'today link'
   },
 
   metadata: {
-    date: 'date',
-    focusDate: 'focusDate',
-    startDate: 'startDate',
-    endDate: 'endDate',
-    minDate: 'minDate',
-    maxDate: 'maxDate',
-    mode: 'mode',
-    monthOffset: 'monthOffset',
-    message: 'message'
+    date        : 'date',
+    focusDate   : 'focusDate',
+    startDate   : 'startDate',
+    endDate     : 'endDate',
+    minDate     : 'minDate',
+    maxDate     : 'maxDate',
+    mode        : 'mode',
+    monthOffset : 'monthOffset',
+    message     : 'message'
   }
 };
 

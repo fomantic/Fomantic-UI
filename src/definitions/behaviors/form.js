@@ -1236,32 +1236,32 @@ $.fn.form = function(parameters) {
 
 $.fn.form.settings = {
 
-  name              : 'Form',
-  namespace         : 'form',
+  name      : 'Form',
+  namespace : 'form',
 
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  fields            : false,
+  fields: false,
 
   keyboardShortcuts : true,
   on                : 'submit',
   inline            : false,
 
-  delay             : 200,
-  revalidate        : true,
-  shouldTrim        : true,
+  delay      : 200,
+  revalidate : true,
+  shouldTrim : true,
 
-  transition        : 'scale',
-  duration          : 200,
+  transition : 'scale',
+  duration   : 200,
 
-  onValid           : function() {},
-  onInvalid         : function() {},
-  onSuccess         : function() { return true; },
-  onFailure         : function() { return false; },
+  onValid   : function() {},
+  onInvalid : function() {},
+  onSuccess : function() { return true; },
+  onFailure : function() { return false; },
 
-  metadata : {
+  metadata: {
     defaultValue : 'default',
     validate     : 'validate'
   },
@@ -1312,7 +1312,7 @@ $.fn.form.settings = {
     maxCount             : '{name} must have {ruleValue} or less choices'
   },
 
-  selector : {
+  selector: {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
     field      : 'input, textarea, select',
@@ -1327,7 +1327,7 @@ $.fn.form.settings = {
     uiDropdown : '.ui.dropdown'
   },
 
-  className : {
+  className: {
     error   : 'error',
     label   : 'ui prompt label',
     pressed : 'down',

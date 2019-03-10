@@ -337,24 +337,24 @@ $.fn.search = function(parameters) {
           api: function(searchTerm, callback) {
             var
               apiSettings = {
-                debug             : settings.debug,
-                on                : false,
-                cache             : settings.cache,
-                action            : 'search',
-                urlData           : {
-                  query : searchTerm
+                debug   : settings.debug,
+                on      : false,
+                cache   : settings.cache,
+                action  : 'search',
+                urlData : {
+                  query: searchTerm
                 },
-                onSuccess         : function(response) {
+                onSuccess: function(response) {
                   module.parse.response.call(element, response, searchTerm);
                   callback();
                 },
-                onFailure         : function() {
+                onFailure: function() {
                   module.displayMessage(error.serverError);
                   callback();
                 },
-                onAbort : function(response) {
+                onAbort: function(response) {
                 },
-                onError           : module.error
+                onError: module.error
               }
             ;
             $.extend(true, apiSettings, settings.apiSettings);
@@ -951,7 +951,7 @@ $.fn.search = function(parameters) {
                   onComplete : function() {
                     callback();
                   },
-                  queue      : true
+                  queue: true
                 })
               ;
             }
@@ -982,7 +982,7 @@ $.fn.search = function(parameters) {
                   onComplete : function() {
                     callback();
                   },
-                  queue      : true
+                  queue: true
                 })
               ;
             }
@@ -1219,79 +1219,79 @@ $.fn.search = function(parameters) {
 
 $.fn.search.settings = {
 
-  name              : 'Search',
-  namespace         : 'search',
+  name      : 'Search',
+  namespace : 'search',
 
-  silent            : false,
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
   // template to use (specified in settings.templates)
-  type              : 'standard',
+  type: 'standard',
 
   // minimum characters required to search
-  minCharacters     : 1,
+  minCharacters: 1,
 
   // whether to select first result after searching automatically
-  selectFirstResult : false,
+  selectFirstResult: false,
 
   // API config
-  apiSettings       : false,
+  apiSettings: false,
 
   // object to search
-  source            : false,
+  source: false,
 
   // Whether search should query current term on focus
-  searchOnFocus     : true,
+  searchOnFocus: true,
 
   // fields to search
-  searchFields   : [
+  searchFields: [
     'title',
     'description'
   ],
 
   // field to display in standard results template
-  displayField   : '',
+  displayField: '',
 
   // search anywhere in value (set to 'exact' to require exact matches
-  fullTextSearch : 'exact',
+  fullTextSearch: 'exact',
 
   // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
-  ignoreDiacritics : false,
+  ignoreDiacritics: false,
 
   // whether to add events to prompt automatically
-  automatic      : true,
+  automatic: true,
 
   // delay before hiding menu after blur
-  hideDelay      : 0,
+  hideDelay: 0,
 
   // delay before searching
-  searchDelay    : 200,
+  searchDelay: 200,
 
   // maximum results returned from search
-  maxResults     : 7,
+  maxResults: 7,
 
   // whether to store lookups in local cache
-  cache          : true,
+  cache: true,
 
   // whether no results errors should be shown
-  showNoResults  : true,
+  showNoResults: true,
 
   // preserve possible html of resultset values
-  preserveHTML   : true,
+  preserveHTML: true,
 
   // transition settings
-  transition     : 'scale',
-  duration       : 200,
-  easing         : 'easeOutExpo',
+  transition : 'scale',
+  duration   : 200,
+  easing     : 'easeOutExpo',
 
   // callbacks
-  onSelect       : false,
-  onResultsAdd   : false,
+  onSelect     : false,
+  onResultsAdd : false,
 
-  onSearchQuery  : function(query){},
-  onResults      : function(response){},
+  onSearchQuery : function(query){},
+  onResults     : function(response){},
 
   onResultsOpen  : function(){},
   onResultsClose : function(){},
@@ -1307,7 +1307,7 @@ $.fn.search.settings = {
     pressed   : 'down'
   },
 
-  error : {
+  error: {
     source          : 'Cannot search. No source used, and Semantic API module was not included',
     noResultsHeader : 'No Results',
     noResults       : 'Your search returned no results',
@@ -1348,7 +1348,7 @@ $.fn.search.settings = {
     actionURL       : 'url'          // "view more" url
   },
 
-  selector : {
+  selector: {
     prompt       : '.prompt',
     searchButton : '.search.button',
     results      : '.results',
@@ -1367,12 +1367,12 @@ $.fn.search.settings = {
         badChars     = /[&<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#x27;",
-          "`": "&#x60;"
+          "&" : "&amp;",
+          "<" : "&lt;",
+          ">" : "&gt;",
+          '"' : "&quot;",
+          "'" : "&#x27;",
+          "`" : "&#x60;"
         },
         escapedChar  = function(chr) {
           return escape[chr];

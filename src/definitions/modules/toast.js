@@ -52,12 +52,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{'class':settings.className.box}),
+        $toastBox       = $('<div/>',{'class': settings.className.box}),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
-        $progressBar    = $('<div/>',{'class':'bar'}),
+        $progress       = $('<div/>',{'class': settings.className.progress+' '+settings.class}),
+        $progressBar    = $('<div/>',{'class': 'bar'}),
 
-        $close          = $('<i/>',{'class':'close icon'}),
+        $close          = $('<i/>',{'class': 'close icon'}),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -242,11 +242,11 @@ $.fn.toast = function(parameters) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $toast
                 .transition({
-                  animation  : settings.transition.hideMethod + ' out',
-                  queue      : false,
-                  duration   : settings.transition.hideDuration,
-                  debug      : settings.debug,
-                  verbose    : settings.verbose,
+                  animation : settings.transition.hideMethod + ' out',
+                  queue     : false,
+                  duration  : settings.transition.hideDuration,
+                  debug     : settings.debug,
+                  verbose   : settings.verbose,
 
                   onBeforeHide: function(callback){
                     callback = $.isFunction(callback)?callback : function(){};
@@ -260,7 +260,7 @@ $.fn.toast = function(parameters) {
                       callback.call($toast);
                     }
                   },
-                  onComplete : function() {
+                  onComplete: function() {
                     module.destroy();
                     callback.call($toast, element);
                     settings.onHidden.call($toast, element);
@@ -507,32 +507,32 @@ $.fn.toast = function(parameters) {
 
 $.fn.toast.settings = {
 
-  name           : 'Toast',
-  namespace      : 'toast',
+  name      : 'Toast',
+  namespace : 'toast',
 
-  silent         : false,
-  debug          : false,
-  verbose        : false,
-  performance    : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  context        : 'body',
+  context: 'body',
 
-  position       : 'top right',
-  class          : 'info',
+  position : 'top right',
+  class    : 'info',
 
-  title          : '',
-  message        : '',
-  displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
-  showIcon       : true,
-  newestOnTop    : false,
-  showProgress   : false,
-  progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
-  opacity        : 1,
-  compact        : true,
-  closeIcon      : false,
+  title        : '',
+  message      : '',
+  displayTime  : 3000, // set to zero to require manually dismissal, otherwise hides on its own
+  showIcon     : true,
+  newestOnTop  : false,
+  showProgress : false,
+  progressUp   : true, //if false, the bar will start at 100% and decrease to 0%
+  opacity      : 1,
+  compact      : true,
+  closeIcon    : false,
 
   // transition settings
-  transition     : {
+  transition: {
     showMethod   : 'scale',
     showDuration : 500,
     hideMethod   : 'scale',
@@ -545,37 +545,37 @@ $.fn.toast.settings = {
     noTransition : 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>'
   },
 
-  className      : {
-    container    : 'toast-container',
-    box          : 'toast-box',
-    progress     : 'ui attached active progress',
-    toast        : 'ui toast',
-    icon         : 'icon',
-    visible      : 'visible',
-    content      : 'content',
-    title        : 'header'
+  className: {
+    container : 'toast-container',
+    box       : 'toast-box',
+    progress  : 'ui attached active progress',
+    toast     : 'ui toast',
+    icon      : 'icon',
+    visible   : 'visible',
+    content   : 'content',
+    title     : 'header'
   },
 
-  icons          : {
-    info         : 'info',
-    success      : 'checkmark',
-    warning      : 'warning',
-    error        : 'times'
+  icons: {
+    info    : 'info',
+    success : 'checkmark',
+    warning : 'warning',
+    error   : 'times'
   },
 
-  selector       : {
-    container    : '.toast-container',
-    box          : '.toast-box',
-    toast        : '.ui.toast'
+  selector: {
+    container : '.toast-container',
+    box       : '.toast-box',
+    toast     : '.ui.toast'
   },
 
   // callbacks
-  onShow         : function(){},
-  onVisible      : function(){},
-  onClick        : function(){},
-  onHide         : function(){},
-  onHidden       : function(){},
-  onRemove       : function(){},
+  onShow    : function(){},
+  onVisible : function(){},
+  onClick   : function(){},
+  onHide    : function(){},
+  onHidden  : function(){},
+  onRemove  : function(){},
 };
 
 $.extend( $.easing, {

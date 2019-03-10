@@ -427,12 +427,12 @@ $.site = $.fn.site = function(parameters) {
 
 $.site.settings = {
 
-  name        : 'Site',
-  namespace   : 'site',
+  name      : 'Site',
+  namespace : 'site',
 
-  error : {
+  error: {
     console : 'Console cannot be restored, most likely it was overwritten outside of module',
-    method : 'The method you called is not defined.'
+    method  : 'The method you called is not defined.'
   },
 
   debug       : false,
@@ -464,8 +464,8 @@ $.site.settings = {
     'visit'
   ],
 
-  siteNamespace   : 'site',
-  namespaceStub   : {
+  siteNamespace : 'site',
+  namespaceStub : {
     cache     : {},
     config    : {},
     sections  : {},

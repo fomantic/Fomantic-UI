@@ -316,7 +316,7 @@ $.fn.dropdown = function(parameters) {
                   value : module.get.value(),
                   query : module.get.query()
                 },
-                on    : false
+                on: false
               }
             ;
             module.verbose('First request, initializing API');
@@ -789,7 +789,7 @@ $.fn.dropdown = function(parameters) {
                 module.add.message(message.serverError);
                 callback();
               },
-              onSuccess : function(response) {
+              onSuccess: function(response) {
                 var
                   values          = response[fields.remoteValues]
                 ;
@@ -3376,15 +3376,15 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset    : ($context.get(0) === window)
+                offset: ($context.get(0) === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollTop : $context.scrollTop(),
                 height    : $context.outerHeight()
               },
-              menu : {
-                offset: $currentMenu.offset(),
-                height: $currentMenu.outerHeight()
+              menu: {
+                offset : $currentMenu.offset(),
+                height : $currentMenu.outerHeight()
               }
             };
             if(module.is.verticallyScrollableContext()) {
@@ -3421,7 +3421,7 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset     : ($context.get(0) === window)
+                offset: ($context.get(0) === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollLeft : $context.scrollLeft(),
@@ -3611,12 +3611,12 @@ $.fn.dropdown = function(parameters) {
               badChars     = /[&<>"'`]/g,
               shouldEscape = /[&<>"'`]/,
               escape       = {
-                "&": "&amp;",
-                "<": "&lt;",
-                ">": "&gt;",
-                '"': "&quot;",
-                "'": "&#x27;",
-                "`": "&#x60;"
+                "&" : "&amp;",
+                "<" : "&lt;",
+                ">" : "&gt;",
+                '"' : "&quot;",
+                "'" : "&#x27;",
+                "`" : "&#x60;"
               },
               escapedChar  = function(chr) {
                 return escape[chr];
@@ -3814,61 +3814,61 @@ $.fn.dropdown = function(parameters) {
 
 $.fn.dropdown.settings = {
 
-  silent                 : false,
-  debug                  : false,
-  verbose                : false,
-  performance            : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  on                     : 'click',    // what event should show menu action on item selection
-  action                 : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
+  on     : 'click',    // what event should show menu action on item selection
+  action : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
-  values                 : false,      // specify values to use for dropdown
+  values: false,      // specify values to use for dropdown
 
-  clearable              : false,      // whether the value of the dropdown can be cleared
+  clearable: false,      // whether the value of the dropdown can be cleared
 
-  apiSettings            : false,
-  selectOnKeydown        : true,       // Whether selection should occur automatically when keyboard shortcuts used
-  minCharacters          : 0,          // Minimum characters required to trigger API call
+  apiSettings     : false,
+  selectOnKeydown : true,       // Whether selection should occur automatically when keyboard shortcuts used
+  minCharacters   : 0,          // Minimum characters required to trigger API call
 
-  filterRemoteData       : false,      // Whether API results should be filtered after being returned for query term
-  saveRemoteData         : true,       // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
+  filterRemoteData : false,      // Whether API results should be filtered after being returned for query term
+  saveRemoteData   : true,       // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
 
-  throttle               : 200,        // How long to wait after last user input to search remotely
+  throttle: 200,        // How long to wait after last user input to search remotely
 
-  context                : window,     // Context to use when determining if on screen
-  direction              : 'auto',     // Whether dropdown should always open in one direction
-  keepOnScreen           : true,       // Whether dropdown should check whether it is on screen before showing
+  context      : window,     // Context to use when determining if on screen
+  direction    : 'auto',     // Whether dropdown should always open in one direction
+  keepOnScreen : true,       // Whether dropdown should check whether it is on screen before showing
 
-  match                  : 'both',     // what to match against with search selection (both, text, or label)
-  fullTextSearch         : false,      // search anywhere in value (set to 'exact' to require exact matches)
-  ignoreDiacritics       : false,      // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
-  hideDividers           : false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
+  match            : 'both',     // what to match against with search selection (both, text, or label)
+  fullTextSearch   : false,      // search anywhere in value (set to 'exact' to require exact matches)
+  ignoreDiacritics : false,      // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
+  hideDividers     : false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
-  placeholder            : 'auto',     // whether to convert blank <select> values to placeholder text
-  preserveHTML           : true,       // preserve html when selecting value
-  sortSelect             : false,      // sort selection on init
+  placeholder  : 'auto',     // whether to convert blank <select> values to placeholder text
+  preserveHTML : true,       // preserve html when selecting value
+  sortSelect   : false,      // sort selection on init
 
-  forceSelection         : true,       // force a choice on blur with search selection
+  forceSelection: true,       // force a choice on blur with search selection
 
-  allowAdditions         : false,      // whether multiple select should allow user added values
-  ignoreCase             : false,       // whether to consider values not matching in case to be the same
-  hideAdditions          : true,       // whether or not to hide special message prompting a user they can enter a value
+  allowAdditions : false,      // whether multiple select should allow user added values
+  ignoreCase     : false,       // whether to consider values not matching in case to be the same
+  hideAdditions  : true,       // whether or not to hide special message prompting a user they can enter a value
 
-  maxSelections          : false,      // When set to a number limits the number of selections to this count
-  useLabels              : true,       // whether multiple select should filter currently active selections from choices
-  delimiter              : ',',        // when multiselect uses normal <input> the values will be delimited with this character
+  maxSelections : false,      // When set to a number limits the number of selections to this count
+  useLabels     : true,       // whether multiple select should filter currently active selections from choices
+  delimiter     : ',',        // when multiselect uses normal <input> the values will be delimited with this character
 
   showOnFocus            : true,       // show menu on focus
   allowReselection       : false,      // whether current value should trigger callbacks when reselected
   allowTab               : true,       // add tabindex to element
   allowCategorySelection : false,      // allow elements with sub-menus to be selected
 
-  fireOnInit             : false,      // Whether callbacks should fire when initializing dropdown values
+  fireOnInit: false,      // Whether callbacks should fire when initializing dropdown values
 
-  transition             : 'auto',     // auto transition will slide down or up based on direction
-  duration               : 200,        // duration of transition
+  transition : 'auto',     // auto transition will slide down or up based on direction
+  duration   : 200,        // duration of transition
 
-  glyphWidth             : 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
+  glyphWidth: 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
   // label settings on multi-select
   label: {
@@ -3878,7 +3878,7 @@ $.fn.dropdown.settings = {
   },
 
   // delay before event
-  delay : {
+  delay: {
     hide   : 300,
     show   : 200,
     search : 20,
@@ -3886,9 +3886,9 @@ $.fn.dropdown.settings = {
   },
 
   /* Callbacks */
-  onChange      : function(value, text, $selected){},
-  onAdd         : function(value, text, $selected){},
-  onRemove      : function(value, text, $selected){},
+  onChange : function(value, text, $selected){},
+  onAdd    : function(value, text, $selected){},
+  onRemove : function(value, text, $selected){},
 
   onLabelSelect : function($selectedLabels){},
   onLabelCreate : function(value, text) { return $(this); },
@@ -3898,8 +3898,8 @@ $.fn.dropdown.settings = {
   onHide        : function(){},
 
   /* Component */
-  name           : 'Dropdown',
-  namespace      : 'dropdown',
+  name      : 'Dropdown',
+  namespace : 'dropdown',
 
   message: {
     addResult     : 'Add <b>{term}</b>',
@@ -3909,7 +3909,7 @@ $.fn.dropdown.settings = {
     serverError   : 'There was an error contacting the server'
   },
 
-  error : {
+  error: {
     action          : 'You called a dropdown action that was not defined',
     alreadySetup    : 'Once a select has been initialized behaviors must be called on the created ui dropdown',
     labels          : 'Allowing user additions currently requires the use of labels.',
@@ -3921,12 +3921,12 @@ $.fn.dropdown.settings = {
     noNormalize     : '"ignoreDiacritics" setting will be ignored. Browser does not support String().normalize(). You may consider including <https://cdn.jsdelivr.net/npm/unorm@1.4.1/lib/unorm.min.js> as a polyfill.'
   },
 
-  regExp : {
-    escape   : /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
-    quote    : /"/g
+  regExp: {
+    escape : /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
+    quote  : /"/g
   },
 
-  metadata : {
+  metadata: {
     defaultText     : 'defaultText',
     defaultValue    : 'defaultValue',
     placeholderText : 'placeholder',
@@ -3945,7 +3945,7 @@ $.fn.dropdown.settings = {
     type         : 'type'      // type of dropdown element
   },
 
-  keys : {
+  keys: {
     backspace  : 8,
     delimiter  : 188, // comma
     deleteKey  : 46,
@@ -3959,7 +3959,7 @@ $.fn.dropdown.settings = {
     downArrow  : 40
   },
 
-  selector : {
+  selector: {
     addition     : '.addition',
     divider      : '.divider, .header',
     dropdown     : '.ui.dropdown',
@@ -3980,7 +3980,7 @@ $.fn.dropdown.settings = {
     clearIcon    : '> .remove.icon'
   },
 
-  className : {
+  className: {
     active      : 'active',
     addition    : 'addition',
     animating   : 'animating',
@@ -4020,12 +4020,12 @@ $.fn.dropdown.settings.templates = {
       badChars     = /[&<>"'`]/g,
       shouldEscape = /[&<>"'`]/,
       escape       = {
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        '"': "&quot;",
-        "'": "&#x27;",
-        "`": "&#x60;"
+        "&" : "&amp;",
+        "<" : "&lt;",
+        ">" : "&gt;",
+        '"' : "&quot;",
+        "'" : "&#x27;",
+        "`" : "&#x60;"
       },
       escapedChar  = function(chr) {
         return escape[chr];

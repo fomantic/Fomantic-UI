@@ -421,7 +421,7 @@ $.fn.modal = function(parameters) {
                     queue       : settings.queue,
                     duration    : settings.duration,
                     useFailSafe : true,
-                    onComplete : function() {
+                    onComplete  : function() {
                       settings.onVisible.apply(element);
                       if(settings.keyboardShortcuts) {
                         module.add.keyboardShortcuts();
@@ -479,7 +479,7 @@ $.fn.modal = function(parameters) {
                       module.remove.keyboardShortcuts();
                     }
                   },
-                  onComplete : function() {
+                  onComplete: function() {
                     module.unbind.scrollLock();
                     if ( settings.allowMultiple ) {
                       $previousModal.addClass(className.front);
@@ -769,8 +769,8 @@ $.fn.modal = function(parameters) {
                 closable   : 'auto',
                 useFlex    : module.can.useFlex(),
                 duration   : {
-                  show     : settings.duration,
-                  hide     : settings.duration
+                  show : settings.duration,
+                  hide : settings.duration
                 }
               },
               dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
@@ -1040,31 +1040,31 @@ $.fn.modal = function(parameters) {
 
 $.fn.modal.settings = {
 
-  name           : 'Modal',
-  namespace      : 'modal',
+  name      : 'Modal',
+  namespace : 'modal',
 
-  useFlex        : 'auto',
-  offset         : 0,
+  useFlex : 'auto',
+  offset  : 0,
 
-  silent         : false,
-  debug          : false,
-  verbose        : false,
-  performance    : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  observeChanges : false,
+  observeChanges: false,
 
-  allowMultiple  : false,
-  detachable     : true,
-  closable       : true,
-  autofocus      : true,
-  restoreFocus   : true,
+  allowMultiple : false,
+  detachable    : true,
+  closable      : true,
+  autofocus     : true,
+  restoreFocus  : true,
 
-  inverted       : false,
-  blurring       : false,
+  inverted : false,
+  blurring : false,
 
-  centered       : true,
+  centered: true,
 
-  dimmerSettings : {
+  dimmerSettings: {
     closable : false,
     useCSS   : true
   },
@@ -1072,47 +1072,47 @@ $.fn.modal.settings = {
   // whether to use keyboard shortcuts
   keyboardShortcuts: true,
 
-  context    : 'body',
+  context: 'body',
 
   queue      : false,
   duration   : 500,
   transition : 'scale',
 
   // padding with edge of page
-  padding    : 50,
-  scrollbarWidth: 10,
+  padding        : 50,
+  scrollbarWidth : 10,
 
   // called before show animation
-  onShow     : function(){},
+  onShow: function(){},
 
   // called after show animation
-  onVisible  : function(){},
+  onVisible: function(){},
 
   // called before hide animation
-  onHide     : function(){ return true; },
+  onHide: function(){ return true; },
 
   // called after hide animation
-  onHidden   : function(){},
+  onHidden: function(){},
 
   // called after approve selector match
-  onApprove  : function(){ return true; },
+  onApprove: function(){ return true; },
 
   // called after deny selector match
-  onDeny     : function(){ return true; },
+  onDeny: function(){ return true; },
 
-  selector    : {
-    close    : '> .close',
-    approve  : '.actions .positive, .actions .approve, .actions .ok',
-    deny     : '.actions .negative, .actions .deny, .actions .cancel',
-    modal    : '.ui.modal',
-    dimmer   : '> .ui.dimmer'
+  selector: {
+    close   : '> .close',
+    approve : '.actions .positive, .actions .approve, .actions .ok',
+    deny    : '.actions .negative, .actions .deny, .actions .cancel',
+    modal   : '.ui.modal',
+    dimmer  : '> .ui.dimmer'
   },
-  error : {
-    dimmer    : 'UI Dimmer, a required component is not included in this page',
-    method    : 'The method you called is not defined.',
-    notFound  : 'The element you specified could not be found'
+  error: {
+    dimmer   : 'UI Dimmer, a required component is not included in this page',
+    method   : 'The method you called is not defined.',
+    notFound : 'The element you specified could not be found'
   },
-  className : {
+  className: {
     active     : 'active',
     animating  : 'animating',
     blurring   : 'blurring',

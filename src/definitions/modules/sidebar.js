@@ -687,10 +687,10 @@ $.fn.sidebar = function(parameters) {
             var
               element     = document.createElement('element'),
               transitions = {
-                'transition'       :'transitionend',
-                'OTransition'      :'oTransitionEnd',
-                'MozTransition'    :'transitionend',
-                'WebkitTransition' :'webkitTransitionEnd'
+                'transition'       : 'transitionend',
+                'OTransition'      : 'oTransitionEnd',
+                'MozTransition'    : 'transitionend',
+                'WebkitTransition' : 'webkitTransitionEnd'
               },
               transition
             ;
@@ -953,18 +953,18 @@ $.fn.sidebar = function(parameters) {
 
 $.fn.sidebar.settings = {
 
-  name              : 'Sidebar',
-  namespace         : 'sidebar',
+  name      : 'Sidebar',
+  namespace : 'sidebar',
 
-  silent            : false,
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  transition        : 'auto',
-  mobileTransition  : 'auto',
+  transition       : 'auto',
+  mobileTransition : 'auto',
 
-  defaultTransition : {
+  defaultTransition: {
     computer: {
       left   : 'uncover',
       right  : 'uncover',
@@ -979,24 +979,24 @@ $.fn.sidebar.settings = {
     }
   },
 
-  context           : 'body',
-  exclusive         : false,
-  closable          : true,
-  dimPage           : true,
-  scrollLock        : false,
-  returnScroll      : false,
-  delaySetup        : false,
+  context      : 'body',
+  exclusive    : false,
+  closable     : true,
+  dimPage      : true,
+  scrollLock   : false,
+  returnScroll : false,
+  delaySetup   : false,
 
-  duration          : 500,
+  duration: 500,
 
-  onChange          : function(){},
-  onShow            : function(){},
-  onHide            : function(){},
+  onChange : function(){},
+  onShow   : function(){},
+  onHide   : function(){},
 
-  onHidden          : function(){},
-  onVisible         : function(){},
+  onHidden  : function(){},
+  onVisible : function(){},
 
-  className         : {
+  className: {
     active    : 'active',
     animating : 'animating',
     dimmed    : 'dimmed',
@@ -1023,7 +1023,7 @@ $.fn.sidebar.settings = {
     mobile       : /Mobile|iP(hone|od|ad)|Android|BlackBerry|IEMobile|Kindle|NetFront|Silk-Accelerated|(hpw|web)OS|Fennec|Minimo|Opera M(obi|ini)|Blazer|Dolfin|Dolphin|Skyfire|Zune/g
   },
 
-  error   : {
+  error: {
     method       : 'The method you called is not defined.',
     pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
     movedSidebar : 'Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag',

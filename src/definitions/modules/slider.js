@@ -931,8 +931,8 @@ $.fn.slider = function(parameters) {
           metadata: function() {
             var
               data = {
-                thumbVal        : $module.data(metadata.thumbVal),
-                secondThumbVal  : $module.data(metadata.secondThumbVal)
+                thumbVal       : $module.data(metadata.thumbVal),
+                secondThumbVal : $module.data(metadata.secondThumbVal)
               }
             ;
             if(data.thumbVal) {
@@ -1147,22 +1147,22 @@ $.fn.slider = function(parameters) {
 
 $.fn.slider.settings = {
 
-  silent       : false,
-  debug        : false,
-  verbose      : false,
-  performance  : true,
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
-  name         : 'Slider',
-  namespace    : 'slider',
+  name      : 'Slider',
+  namespace : 'slider',
 
-  error    : {
-    method    : 'The method you called is not defined.',
+  error: {
+    method   : 'The method you called is not defined.',
     notrange : 'This slider is not a range slider'
   },
 
   metadata: {
-    thumbVal        : 'thumbVal',
-    secondThumbVal  : 'secondThumbVal'
+    thumbVal       : 'thumbVal',
+    secondThumbVal : 'secondThumbVal'
   },
 
   min            : 0,
@@ -1175,16 +1175,16 @@ $.fn.slider.settings = {
   smooth         : false,
 
   //the decimal place to round to if step is undefined
-  decimalPlaces  : 2,
+  decimalPlaces: 2,
 
   // page up/down multiplier. How many more times the steps to take on page up/down press
-  pageMultiplier : 2,
+  pageMultiplier: 2,
 
   selector: {
 
   },
 
-  className     : {
+  className: {
     reversed : 'reversed',
     disabled : 'disabled',
     labeled  : 'labeled',
@@ -1194,7 +1194,7 @@ $.fn.slider.settings = {
     smooth   : 'smooth'
   },
 
-  keys : {
+  keys: {
     pageUp     : 33,
     pageDown   : 34,
     leftArrow  : 37,
@@ -1203,9 +1203,9 @@ $.fn.slider.settings = {
     downArrow  : 40
   },
 
-  labelTypes    : {
-    number  : 'number',
-    letter  : 'letter'
+  labelTypes: {
+    number : 'number',
+    letter : 'letter'
   },
 
   onChange : function(value, thumbVal, secondThumbVal){},

@@ -1212,67 +1212,67 @@ $.fn.visibility = function(parameters) {
 
 $.fn.visibility.settings = {
 
-  name                   : 'Visibility',
-  namespace              : 'visibility',
+  name      : 'Visibility',
+  namespace : 'visibility',
 
-  debug                  : false,
-  verbose                : false,
-  performance            : true,
+  debug       : false,
+  verbose     : false,
+  performance : true,
 
   // whether to use mutation observers to follow changes
-  observeChanges         : true,
+  observeChanges: true,
 
   // check position immediately on init
-  initialCheck           : true,
+  initialCheck: true,
 
   // whether to refresh calculations after all page images load
-  refreshOnLoad          : true,
+  refreshOnLoad: true,
 
   // whether to refresh calculations after page resize event
-  refreshOnResize        : true,
+  refreshOnResize: true,
 
   // should call callbacks on refresh event (resize, etc)
-  checkOnRefresh         : true,
+  checkOnRefresh: true,
 
   // callback should only occur one time
-  once                   : true,
+  once: true,
 
   // callback should fire continuously whe evaluates to true
-  continuous             : false,
+  continuous: false,
 
   // offset to use with scroll top
-  offset                 : 0,
+  offset: 0,
 
   // whether to include margin in elements position
-  includeMargin          : false,
+  includeMargin: false,
 
   // scroll context for visibility checks
-  context                : window,
+  context: window,
 
   // visibility check delay in ms (defaults to animationFrame)
-  throttle               : false,
+  throttle: false,
 
   // special visibility type (image, fixed)
-  type                   : false,
+  type: false,
 
   // z-index to use with visibility 'fixed'
-  zIndex                 : '10',
+  zIndex: '10',
 
   // image only animation settings
-  transition             : 'fade in',
-  duration               : 1000,
+  transition : 'fade in',
+  duration   : 1000,
 
   // array of callbacks for percentage
-  onPassed               : {},
+  onPassed: {},
 
   // standard callbacks
-  onOnScreen             : false,
-  onOffScreen            : false,
-  onPassing              : false,
-  onTopVisible           : false,
-  onBottomVisible        : false,
-  onTopPassed            : false,
-  onBottomPassed         : false,
+  onOnScreen      : false,
+  onOffScreen     : false,
+  onPassing       : false,
+  onTopVisible    : false,
+  onBottomVisible : false,
+  onTopPassed     : false,
+  onBottomPassed  : false,
 
   // reverse callbacks
   onPassingReverse       : false,
@@ -1282,18 +1282,18 @@ $.fn.visibility.settings = {
   onBottomPassedReverse  : false,
 
   // special callbacks for image
-  onLoad                 : function() {},
-  onAllLoaded            : function() {},
+  onLoad      : function() {},
+  onAllLoaded : function() {},
 
   // special callbacks for fixed position
-  onFixed                : function() {},
-  onUnfixed              : function() {},
+  onFixed   : function() {},
+  onUnfixed : function() {},
 
   // utility callbacks
-  onUpdate               : false, // disabled by default for performance
-  onRefresh              : function(){},
+  onUpdate  : false, // disabled by default for performance
+  onRefresh : function(){},
 
-  metadata : {
+  metadata: {
     src: 'src'
   },
 
@@ -1303,7 +1303,7 @@ $.fn.visibility.settings = {
     visible     : 'visible'
   },
 
-  error : {
+  error: {
     method  : 'The method you called is not defined.',
     visible : 'Element is hidden, you must call refresh after element becomes visible'
   }

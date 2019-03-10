@@ -181,7 +181,7 @@ $.fn.popup = function(parameters) {
         },
 
         event: {
-          start:  function(event) {
+          start: function(event) {
             var
               delay = ($.isPlainObject(settings.delay))
                 ? settings.delay.show
@@ -192,7 +192,7 @@ $.fn.popup = function(parameters) {
               module.showTimer = setTimeout(module.show, delay);
             }
           },
-          end:  function() {
+          end: function() {
             var
               delay = ($.isPlainObject(settings.delay))
                 ? settings.delay.hide
@@ -520,7 +520,7 @@ $.fn.popup = function(parameters) {
             ;
             calculations = {
               // element which is launching popup
-              target : {
+              target: {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
@@ -529,20 +529,20 @@ $.fn.popup = function(parameters) {
                 margin  : {}
               },
               // popup itself
-              popup : {
+              popup: {
                 width  : $popup.outerWidth(),
                 height : $popup.outerHeight()
               },
               // offset container (or 3d context)
-              parent : {
+              parent: {
                 width  : $offsetParent.outerWidth(),
                 height : $offsetParent.outerHeight()
               },
               // screen boundaries
-              screen : {
-                top  : screenPosition.top,
-                left : screenPosition.left,
-                scroll: {
+              screen: {
+                top    : screenPosition.top,
+                left   : screenPosition.left,
+                scroll : {
                   top  : scroll.top,
                   left : scroll.left
                 },
@@ -835,8 +835,8 @@ $.fn.popup = function(parameters) {
               break;
             case 'top right':
               positioning = {
-                bottom :  parent.height - target.top + distanceAway,
-                right  :  parent.width - target.left - target.width - offset,
+                bottom : parent.height - target.top + distanceAway,
+                right  : parent.width - target.left - target.width - offset,
                 top    : 'auto',
                 left   : 'auto'
               };
@@ -1327,129 +1327,129 @@ $.fn.popup = function(parameters) {
 
 $.fn.popup.settings = {
 
-  name           : 'Popup',
+  name: 'Popup',
 
   // module settings
-  silent         : false,
-  debug          : false,
-  verbose        : false,
-  performance    : true,
-  namespace      : 'popup',
+  silent      : false,
+  debug       : false,
+  verbose     : false,
+  performance : true,
+  namespace   : 'popup',
 
   // whether it should use dom mutation observers
-  observeChanges : true,
+  observeChanges: true,
 
   // callback only when element added to dom
-  onCreate       : function(){},
+  onCreate: function(){},
 
   // callback before element removed from dom
-  onRemove       : function(){},
+  onRemove: function(){},
 
   // callback before show animation
-  onShow         : function(){},
+  onShow: function(){},
 
   // callback after show animation
-  onVisible      : function(){},
+  onVisible: function(){},
 
   // callback before hide animation
-  onHide         : function(){},
+  onHide: function(){},
 
   // callback when popup cannot be positioned in visible screen
-  onUnplaceable  : function(){},
+  onUnplaceable: function(){},
 
   // callback after hide animation
-  onHidden       : function(){},
+  onHidden: function(){},
 
   // when to show popup
-  on             : 'hover',
+  on: 'hover',
 
   // element to use to determine if popup is out of boundary
-  boundary       : window,
+  boundary: window,
 
   // whether to add touchstart events when using hover
-  addTouchEvents : true,
+  addTouchEvents: true,
 
   // default position relative to element
-  position       : 'top left',
+  position: 'top left',
 
   // name of variation to use
-  variation      : '',
+  variation: '',
 
   // whether popup should be moved to context
-  movePopup      : true,
+  movePopup: true,
 
   // element which popup should be relative to
-  target         : false,
+  target: false,
 
   // jq selector or element that should be used as popup
-  popup          : false,
+  popup: false,
 
   // popup should remain inline next to activator
-  inline         : false,
+  inline: false,
 
   // popup should be removed from page on hide
-  preserve       : false,
+  preserve: false,
 
   // popup should not close when being hovered on
-  hoverable      : false,
+  hoverable: false,
 
   // explicitly set content
-  content        : false,
+  content: false,
 
   // explicitly set html
-  html           : false,
+  html: false,
 
   // explicitly set title
-  title          : false,
+  title: false,
 
   // whether automatically close on clickaway when on click
-  closable       : true,
+  closable: true,
 
   // automatically hide on scroll
-  hideOnScroll   : 'auto',
+  hideOnScroll: 'auto',
 
   // hide other popups on show
-  exclusive      : false,
+  exclusive: false,
 
   // context to attach popups
-  context        : 'body',
+  context: 'body',
 
   // context for binding scroll events
-  scrollContext  : window,
+  scrollContext: window,
 
   // position to prefer when calculating new position
-  prefer         : 'opposite',
+  prefer: 'opposite',
 
   // specify position to appear even if it doesn't fit
-  lastResort     : false,
+  lastResort: false,
 
   // number of pixels from edge of popup to pointing arrow center (used from centering)
   arrowPixelsFromEdge: 20,
 
   // delay used to prevent accidental refiring of animations due to user error
-  delay : {
+  delay: {
     show : 50,
     hide : 70
   },
 
   // whether fluid variation should assign width explicitly
-  setFluidWidth  : true,
+  setFluidWidth: true,
 
   // transition settings
-  duration       : 200,
-  transition     : 'scale',
+  duration   : 200,
+  transition : 'scale',
 
   // distance away from activating element in px
-  distanceAway   : 0,
+  distanceAway: 0,
 
   // number of pixels an element is allowed to be "offstage" for a position to be chosen (allows for rounding)
-  jitter         : 2,
+  jitter: 2,
 
   // offset on aligning axis from calculated position
-  offset         : 0,
+  offset: 0,
 
   // maximum times to look for a position before failing (9 positions total)
-  maxSearchDepth : 15,
+  maxSearchDepth: 15,
 
   error: {
     invalidPosition : 'The position you specified is not a valid position',
@@ -1469,7 +1469,7 @@ $.fn.popup.settings = {
     variation : 'variation'
   },
 
-  className   : {
+  className: {
     active       : 'active',
     basic        : 'basic',
     animating    : 'animating',
@@ -1482,8 +1482,8 @@ $.fn.popup.settings = {
     popupVisible : 'visible'
   },
 
-  selector    : {
-    popup    : '.ui.popup'
+  selector: {
+    popup: '.ui.popup'
   },
 
   templates: {
@@ -1492,12 +1492,12 @@ $.fn.popup.settings = {
         badChars     = /[&<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
-          "<": "&lt;",
-          ">": "&gt;",
-          '"': "&quot;",
-          "'": "&#x27;",
-          "`": "&#x60;"
+          "&" : "&amp;",
+          "<" : "&lt;",
+          ">" : "&gt;",
+          '"' : "&quot;",
+          "'" : "&#x27;",
+          "`" : "&#x60;"
         },
         escapedChar  = function(chr) {
           return escape[chr];
