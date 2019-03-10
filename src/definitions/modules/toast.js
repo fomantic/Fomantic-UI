@@ -51,12 +51,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{ 'class': settings.className.box }),
+        $toastBox       = $('<div/>', { 'class': settings.className.box }),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{ 'class': settings.className.progress + ' ' + settings.class }),
-        $progressBar    = $('<div/>',{ 'class': 'bar' }),
+        $progress       = $('<div/>', { 'class': settings.className.progress + ' ' + settings.class }),
+        $progressBar    = $('<div/>', { 'class': 'bar' }),
 
-        $close          = $('<i/>',{ 'class': 'close icon' }),
+        $close          = $('<i/>', { 'class': 'close icon' }),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
@@ -70,7 +70,7 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-          if (typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1) {
+          if (typeof settings.showProgress !== 'string' || ['top', 'bottom'].indexOf(settings.showProgress) === -1) {
             settings.showProgress = false;
           }
           if (!module.has.container()) {
@@ -124,7 +124,7 @@ $.fn.toast = function(parameters) {
             module.verbose('Creating toast');
             if (settings.closeIcon) {
               $toast.append($close);
-              $toast.css('cursor','default');
+              $toast.css('cursor', 'default');
             }
 
             var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
@@ -174,13 +174,13 @@ $.fn.toast = function(parameters) {
               else {
                 $toast.append($progress);
               }
-              $progressBar.css('transition','width ' + (settings.displayTime / 1000) + 's linear');
+              $progressBar.css('transition', 'width ' + (settings.displayTime / 1000) + 's linear');
               $progressBar.width(settings.progressUp ? '0%' : '100%');
               setTimeout(function() {
                 if (typeof $progress !== 'undefined') {
                   $progressBar.width(settings.progressUp ? '100%' : '0%');
                 }
-              },300);
+              }, 300);
             }
             if (settings.newestOnTop) {
               $toast.prependTo(module.get.container());
@@ -251,8 +251,8 @@ $.fn.toast = function(parameters) {
                   onBeforeHide: function(callback) {
                     callback = $.isFunction(callback) ? callback : function() {};
                     if (settings.transition.closeEasing !== '') {
-                      $toast.css('opacity',0);
-                      $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function() {
+                      $toast.css('opacity', 0);
+                      $toast.wrap('<div/>').parent().slideUp(500, settings.transition.closeEasing, function() {
                         $toast.parent().remove();
                         callback.call($toast);
                       });

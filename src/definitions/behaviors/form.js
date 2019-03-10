@@ -997,7 +997,7 @@ $.fn.form = function(parameters) {
               $field.closest($group).removeClass(className.error);
               $.each(field.rules, function(index, rule) {
                 if (module.has.field(identifier)) {
-                  var invalidFields = module.validate.rule(field, rule,true) || [];
+                  var invalidFields = module.validate.rule(field, rule, true) || [];
                   if (invalidFields.length > 0) {
                     module.debug('Field is invalid', identifier, rule.type);
                     fieldErrors.push(module.get.prompt(rule, field));

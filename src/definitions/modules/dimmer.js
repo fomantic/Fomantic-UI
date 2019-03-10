@@ -731,7 +731,7 @@ $.fn.dimmer.settings = {
 
   template: {
     dimmer: function(settings) {
-      var d = $('<div/>').addClass('ui dimmer'),l;
+      var d = $('<div/>').addClass('ui dimmer'), l;
       if (settings.displayLoader) {
         l = $('<div/>')
           .addClass(settings.className.loader)

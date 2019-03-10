@@ -775,7 +775,7 @@ $.fn.transition = function() {
           module.remove.display();
           module.remove.visible();
           if ($.isFunction(settings.onBeforeHide)) {
-            settings.onBeforeHide.call(element,function() {
+            settings.onBeforeHide.call(element, function() {
               module.hideNow();
             });
           }

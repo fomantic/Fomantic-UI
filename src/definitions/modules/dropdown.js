@@ -376,7 +376,7 @@ $.fn.dropdown = function(parameters) {
                 .attr('class', $input.attr('class'))
                 .addClass(className.selection)
                 .addClass(className.dropdown)
-                .html(templates.dropdown(selectValues,settings.preserveHTML, settings.className))
+                .html(templates.dropdown(selectValues, settings.preserveHTML, settings.className))
                 .insertBefore($input)
               ;
               if ($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -399,7 +399,7 @@ $.fn.dropdown = function(parameters) {
             module.refresh();
           },
           menu: function(values) {
-            $menu.html(templates.menu(values, fields,settings.preserveHTML,settings.className));
+            $menu.html(templates.menu(values, fields, settings.preserveHTML, settings.className));
             $item    = $menu.find(selector.item);
             $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
           },
@@ -752,7 +752,7 @@ $.fn.dropdown = function(parameters) {
                 if (!Array.isArray(preSelected)) {
                   preSelected = preSelected && preSelected !== '' ? preSelected.split(settings.delimiter) : [];
                 }
-                $.each(preSelected,function(index,value) {
+                $.each(preSelected, function(index, value) {
                   $item.filter('[data-value="' + value + '"]')
                     .addClass(className.filtered)
                   ;
@@ -4049,14 +4049,14 @@ $.fn.dropdown.settings.templates = {
     ;
     html +=  '<i class="dropdown icon"></i>';
     if (placeholder) {
-      html += '<div class="default text">' + escape(placeholder,preserveHTML) + '</div>';
+      html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
     }
     else {
       html += '<div class="text"></div>';
     }
     html += '<div class="' + className.menu + '">';
     $.each(values, function(index, option) {
-      html += '<div class="' + (option.disabled ? className.disabled + ' ' : '') + className.item + '" data-value="' + String(option.value).replace(/"/g,'') + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="' + (option.disabled ? className.disabled + ' ' : '') + className.item + '" data-value="' + String(option.value).replace(/"/g, '') + '">' + escape(option.name, preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -4079,19 +4079,19 @@ $.fn.dropdown.settings.templates = {
       if (itemType === 'item') {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + String(option[fields.text]).replace(/"/g,'') + '"'
+            ? ' data-text="' + String(option[fields.text]).replace(/"/g, '') + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled + ' '
             : ''
         ;
-        html += '<div class="' + maybeDisabled + className.item + '" data-value="' + String(option[fields.value]).replace(/"/g,'') + '"' + maybeText + '>';
-        html +=   escape(option[fields.name],preserveHTML);
+        html += '<div class="' + maybeDisabled + className.item + '" data-value="' + String(option[fields.value]).replace(/"/g, '') + '"' + maybeText + '>';
+        html +=   escape(option[fields.name], preserveHTML);
         html += '</div>';
       }
       else if (itemType === 'header') {
         html += '<div class="header">';
-        html +=   escape(option[fields.name],preserveHTML);
+        html +=   escape(option[fields.name], preserveHTML);
         html += '</div>';
       }
     });
@@ -4102,7 +4102,7 @@ $.fn.dropdown.settings.templates = {
   label: function(value, text, preserveHTML, className) {
     var
       escape = $.fn.dropdown.settings.templates.escape;
-    return escape(text,preserveHTML) + '<i class="' + className.delete + ' icon"></i>';
+    return escape(text, preserveHTML) + '<i class="' + className.delete + ' icon"></i>';
   },
 
 

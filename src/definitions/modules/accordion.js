@@ -335,7 +335,7 @@ $.fn.accordion = function(parameters) {
               }
             }
             $openContents
-              .slideUp(settings.duration , settings.easing, function() {
+              .slideUp(settings.duration, settings.easing, function() {
                 $(this).removeClass(className.active);
                 module.reset.display.call(this);
               })

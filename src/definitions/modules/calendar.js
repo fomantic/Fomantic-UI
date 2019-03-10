@@ -313,7 +313,7 @@ $.fn.calendar = function(parameters) {
                 row = $('<tr/>').appendTo(tbody);
                 if (isDay && settings.showWeekNumbers) {
                   cell = $('<th/>').appendTo(row);
-                  cell.text(module.get.weekOfYear(year,month,i + 1 - settings.firstDayOfWeek));
+                  cell.text(module.get.weekOfYear(year, month, i + 1 - settings.firstDayOfWeek));
                   cell.addClass(className.disabledCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
@@ -556,7 +556,7 @@ $.fn.calendar = function(parameters) {
         },
 
         get: {
-          weekOfYear: function(weekYear,weekMonth,weekDay) {
+          weekOfYear: function(weekYear, weekMonth, weekDay) {
             // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
             var ms1d = 864e5, // milliseconds in a day
               ms7d = 7 * ms1d; // milliseconds in a week
