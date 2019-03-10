@@ -757,7 +757,7 @@ $.fn.calendar = function(parameters) {
         },
 
         selectDate: function(date, forceSet) {
-          module.verbose('New date selection', date)
+          module.verbose('New date selection', date);
           var mode = module.get.mode();
           var complete = forceSet || mode === 'minute'
             || (settings.disableMinute && mode === 'hour')

@@ -162,7 +162,7 @@ $.fn.slider = function(parameters) {
               }
 
               if (settings.showLabelTicks) {
-                $module.addClass(className.ticked)
+                $module.addClass(className.ticked);
               }
             }
           },
