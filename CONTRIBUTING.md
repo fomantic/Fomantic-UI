@@ -61,6 +61,10 @@ $ git fetch fui
 ```bash
 $ git checkout -b <BRANCH_NAME> fui/develop
 ```
+4. Start installing dependencies and follow the Fomantic-UI interactive installation prompt.
+```bash
+$ npm install
+```
 
 Now you can start working on your change. Once you submit your PR remember to merge into the `develop` branch NOT `master`.
 
