@@ -910,22 +910,22 @@ $.fn.slider = function(parameters) {
             ;
             if (module.is.vertical()) {
               if (module.is.reversed()) {
-                thumbPosValue = {bottom: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', top: 'auto'};
-                trackPosValue = {bottom: trackStartPosPercent + '%', top: trackEndPosPercent + '%'};
+                thumbPosValue = { bottom: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', top: 'auto' };
+                trackPosValue = { bottom: trackStartPosPercent + '%', top: trackEndPosPercent + '%' };
               }
               else {
-                thumbPosValue = {top: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', bottom: 'auto'};
-                trackPosValue = {top: trackStartPosPercent + '%', bottom: trackEndPosPercent + '%'};
+                thumbPosValue = { top: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', bottom: 'auto' };
+                trackPosValue = { top: trackStartPosPercent + '%', bottom: trackEndPosPercent + '%' };
               }
             }
             else {
               if (module.is.reversed()) {
-                thumbPosValue = {right: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', left: 'auto'};
-                trackPosValue = {right: trackStartPosPercent + '%', left: trackEndPosPercent + '%'};
+                thumbPosValue = { right: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', left: 'auto' };
+                trackPosValue = { right: trackStartPosPercent + '%', left: trackEndPosPercent + '%' };
               }
               else {
-                thumbPosValue = {left: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', right: 'auto'};
-                trackPosValue = {left: trackStartPosPercent + '%', right: trackEndPosPercent + '%'};
+                thumbPosValue = { left: 'calc(' + thumbPosPercent + '% - ' + offset + 'px)', right: 'auto' };
+                trackPosValue = { left: trackStartPosPercent + '%', right: trackEndPosPercent + '%' };
               }
             }
             $targetThumb.css(thumbPosValue);

@@ -37,11 +37,11 @@ $.fn.calendar = function(parameters) {
     queryArguments = [].slice.call(arguments, 1),
     returnedValue,
     timeGapTable = {
-      '5'  : {'row': 4, 'column': 3 },
-      '10' : {'row': 3, 'column': 2 },
-      '15' : {'row': 2, 'column': 2 },
-      '20' : {'row': 3, 'column': 1 },
-      '30' : {'row': 2, 'column': 1 }
+      '5'  : { 'row': 4, 'column': 3 },
+      '10' : { 'row': 3, 'column': 2 },
+      '15' : { 'row': 2, 'column': 2 },
+      '20' : { 'row': 3, 'column': 1 },
+      '30' : { 'row': 2, 'column': 1 }
     }
   ;
 

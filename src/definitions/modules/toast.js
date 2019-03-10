@@ -52,12 +52,12 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{'class': settings.className.box}),
+        $toastBox       = $('<div/>',{ 'class': settings.className.box }),
         $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class': settings.className.progress+' '+settings.class}),
-        $progressBar    = $('<div/>',{'class': 'bar'}),
+        $progress       = $('<div/>',{ 'class': settings.className.progress+' '+settings.class }),
+        $progressBar    = $('<div/>',{ 'class': 'bar' }),
 
-        $close          = $('<i/>',{'class': 'close icon'}),
+        $close          = $('<i/>',{ 'class': 'close icon' }),
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
