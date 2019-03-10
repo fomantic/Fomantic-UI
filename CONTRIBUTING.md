@@ -63,3 +63,14 @@ $ git checkout -b <BRANCH_NAME> fui/develop
 ```
 
 Now you can start working on your change. Once you submit your PR remember to merge into the `develop` branch NOT `master`.
+
+#### Follow the code style
+
+We aim for clean and consistent code style.
+
+We are using [ESLint](https://eslint.org/) to check code style issues using [the JavaScript Standard Style](https://standardjs.com/) with some overrides.
+
+You can run:
+
+* `npm run lint` to lint your code
+* `npm run lint-fix` to fix where the issues can be fixed automatically.
