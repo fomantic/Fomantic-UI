@@ -259,7 +259,7 @@ $.api = $.fn.api = function(parameters) {
             if (!settings.throttleFirstRequest && !module.timer) {
               module.debug('Sending request', data, ajaxSettings.method);
               module.send.request();
-              module.timer = setTimeout(function(){}, settings.throttle);
+              module.timer = setTimeout(function() {}, settings.throttle);
             }
             else {
               module.debug('Throttling request', settings.throttle);

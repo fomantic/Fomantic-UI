@@ -190,7 +190,7 @@ $.fn.dimmer = function(parameters) {
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           module.debug('Showing dimmer', $dimmer, settings);
           module.set.variation();
@@ -207,7 +207,7 @@ $.fn.dimmer = function(parameters) {
         hide: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.dimmed() || module.is.animating()) {
             module.debug('Hiding dimmer', $dimmer);
@@ -236,7 +236,7 @@ $.fn.dimmer = function(parameters) {
           show: function(callback) {
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
               if (settings.useFlex) {
@@ -293,7 +293,7 @@ $.fn.dimmer = function(parameters) {
           hide: function(callback) {
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
               module.verbose('Hiding dimmer with css');
@@ -704,9 +704,9 @@ $.fn.dimmer.settings = {
   loaderText      : false,
   loaderVariation : '',
 
-  onChange : function(){},
-  onShow   : function(){},
-  onHide   : function(){},
+  onChange : function() {},
+  onShow   : function() {},
+  onHide   : function() {},
 
   error: {
     method: 'The method you called is not defined.'
@@ -738,7 +738,7 @@ $.fn.dimmer.settings = {
         l = $('<div/>')
           .addClass(settings.className.loader)
           .addClass(settings.loaderVariation);
-        if (!!settings.loaderText){
+        if (!!settings.loaderText) {
           l.text(settings.loaderText);
           l.addClass('text');
         }

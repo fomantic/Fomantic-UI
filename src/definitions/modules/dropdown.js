@@ -483,7 +483,7 @@ $.fn.dropdown = function(parameters) {
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (!module.can.show() && module.is.remote()) {
             module.debug('No API results retrieved, searching before show');
@@ -515,7 +515,7 @@ $.fn.dropdown = function(parameters) {
         hide: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.active() && !module.is.animatingOutward()) {
             module.debug('Hiding dropdown');
@@ -754,7 +754,7 @@ $.fn.dropdown = function(parameters) {
                 if (!Array.isArray(preSelected)) {
                   preSelected = preSelected && preSelected!=="" ? preSelected.split(settings.delimiter) : [];
                 }
-                $.each(preSelected,function(index,value){
+                $.each(preSelected,function(index,value) {
                   $item.filter('[data-value="'+value+'"]')
                     .addClass(className.filtered)
                   ;
@@ -793,7 +793,7 @@ $.fn.dropdown = function(parameters) {
                 var
                   values          = response[fields.remoteValues]
                 ;
-                if (!Array.isArray(values)){
+                if (!Array.isArray(values)) {
                   values = [];
                 }
                 module.remove.message();
@@ -834,7 +834,7 @@ $.fn.dropdown = function(parameters) {
 
             module.verbose('Searching for matching values', searchTerm);
             $item
-              .each(function(){
+              .each(function() {
                 var
                   $choice = $(this),
                   text,
@@ -1101,7 +1101,7 @@ $.fn.dropdown = function(parameters) {
               iconClicked=true;
               if (module.has.search()) {
                 if (!module.is.active()) {
-                  if (settings.showOnFocus){
+                  if (settings.showOnFocus) {
                     module.focusSearch();
                   }
                   else {
@@ -1199,7 +1199,7 @@ $.fn.dropdown = function(parameters) {
               event.stopPropagation();
             },
             hide: function(event) {
-              if (module.determine.eventInModule(event, module.hide)){
+              if (module.determine.eventInModule(event, module.hide)) {
                 event.preventDefault();
               }
             }
@@ -1465,7 +1465,7 @@ $.fn.dropdown = function(parameters) {
                 if (module.is.searchSelection()) {
                   module.remove.searchTerm();
                 }
-                if (module.is.multiple()){
+                if (module.is.multiple()) {
                   event.preventDefault();
                 }
               }
@@ -1659,7 +1659,7 @@ $.fn.dropdown = function(parameters) {
             ;
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if (inDocument && !inModule) {
               module.verbose('Triggering event', callback);
@@ -1681,7 +1681,7 @@ $.fn.dropdown = function(parameters) {
             ;
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if (inVisibleDOM && notOnLabel && notInMenu) {
               module.verbose('Triggering event', callback);
@@ -1821,7 +1821,7 @@ $.fn.dropdown = function(parameters) {
               range,
               rangeLength
             ;
-            if (returnEndPos && 'selectionEnd' in input){
+            if (returnEndPos && 'selectionEnd' in input) {
               return input.selectionEnd;
             }
             else if (!returnEndPos && 'selectionStart' in input) {
@@ -2501,7 +2501,7 @@ $.fn.dropdown = function(parameters) {
             // check all values
             if (!$nextValue) {
               $item
-                .each(function(){
+                .each(function() {
                   if (module.has.firstLetter($(this), letter)) {
                     $nextValue = $(this);
                     return false;
@@ -3052,7 +3052,7 @@ $.fn.dropdown = function(parameters) {
             if (!Array.isArray(values)) {
               values = [values];
             }
-            values = $.grep(values, function(value){
+            values = $.grep(values, function(value) {
               return (removedValue != value);
             });
             module.verbose('Removed value from delimited string', removedValue, values);
@@ -3075,7 +3075,7 @@ $.fn.dropdown = function(parameters) {
             $labels = $labels || $module.find(selector.label);
             module.verbose('Removing labels', $labels);
             $labels
-              .each(function(){
+              .each(function() {
                 var
                   $label      = $(this),
                   value       = $label.data(metadata.value),
@@ -3482,7 +3482,7 @@ $.fn.dropdown = function(parameters) {
             ;
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             module.verbose('Doing menu show animation', $currentMenu);
             module.set.direction($subMenu);
@@ -3531,7 +3531,7 @@ $.fn.dropdown = function(parameters) {
             ;
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if (module.is.visible($currentMenu) || module.is.animating($currentMenu)) {
               module.verbose('Doing menu hide animation', $currentMenu);
@@ -3605,7 +3605,7 @@ $.fn.dropdown = function(parameters) {
             }
             module.debug('Encoding quote values for use in select', value);
             if (multipleValues) {
-              $.each(value, function(index, value){
+              $.each(value, function(index, value) {
                 values.push(value.replace(regExp.quote, '&quot;'));
               });
               return values;
@@ -3896,16 +3896,16 @@ $.fn.dropdown.settings = {
   },
 
   /* Callbacks */
-  onChange : function(value, text, $selected){},
-  onAdd    : function(value, text, $selected){},
-  onRemove : function(value, text, $selected){},
+  onChange : function(value, text, $selected) {},
+  onAdd    : function(value, text, $selected) {},
+  onRemove : function(value, text, $selected) {},
 
-  onLabelSelect : function($selectedLabels){},
+  onLabelSelect : function($selectedLabels) {},
   onLabelCreate : function(value, text) { return $(this); },
   onLabelRemove : function(value) { return true; },
   onNoResults   : function(searchTerm) { return true; },
-  onShow        : function(){},
-  onHide        : function(){},
+  onShow        : function() {},
+  onHide        : function() {},
 
   /* Component */
   name      : 'Dropdown',
@@ -4023,7 +4023,7 @@ $.fn.dropdown.settings = {
 /* Templates */
 $.fn.dropdown.settings.templates = {
   escape: function(string, preserveHTML) {
-    if (preserveHTML){
+    if (preserveHTML) {
       return string;
     }
     var

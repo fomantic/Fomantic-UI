@@ -96,7 +96,7 @@ $.fn.toast = function(parameters) {
         },
 
         show: function(callback) {
-          callback = callback || function(){};
+          callback = callback || function() {};
           module.debug('Showing toast');
           if (settings.onShow.call($toast, element) === false) {
             module.debug('onShow callback returned false, cancelling toast animation');
@@ -109,7 +109,7 @@ $.fn.toast = function(parameters) {
           if (module.closeTimer) {
             clearTimeout(module.closeTimer);
           }
-          callback = callback || function(){};
+          callback = callback || function() {};
           module.remove.visible();
           module.unbind.events();
           module.animate.close(callback);
@@ -159,14 +159,14 @@ $.fn.toast = function(parameters) {
             if (settings.compact || $toast.hasClass('compact')) {
               $toastBox.addClass('compact');
             }
-            if ($toast.hasClass('toast') && !$toast.hasClass('inverted')){
+            if ($toast.hasClass('toast') && !$toast.hasClass('inverted')) {
               $progress.addClass('inverted');
             }
             else {
               $progress.removeClass('inverted');
             }
             $toast = $toastBox.append($toast);
-            if (!!settings.showProgress && settings.displayTime > 0){
+            if (!!settings.showProgress && settings.displayTime > 0) {
               $progress
                 .addClass(settings.showProgress)
                 .append($progressBar);
@@ -179,7 +179,7 @@ $.fn.toast = function(parameters) {
               $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
               $progressBar.width(settings.progressUp?'0%':'100%');
               setTimeout(function() {
-                if (typeof $progress !== 'undefined'){
+                if (typeof $progress !== 'undefined') {
                   $progressBar.width(settings.progressUp?'100%':'0%');
                 }
               },300);
@@ -213,7 +213,7 @@ $.fn.toast = function(parameters) {
 
         animate: {
           show: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = $.isFunction(callback) ? callback : function() {};
             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.set.visible();
               $toast
@@ -235,7 +235,7 @@ $.fn.toast = function(parameters) {
             }
           },
           close: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = $.isFunction(callback) ? callback : function() {};
             module.debug('Closing toast');
             if (settings.onHide.call($toast, element) === false) {
               module.debug('onHide callback returned false, cancelling toast animation');
@@ -250,11 +250,11 @@ $.fn.toast = function(parameters) {
                   debug     : settings.debug,
                   verbose   : settings.verbose,
 
-                  onBeforeHide: function(callback){
-                    callback = $.isFunction(callback)?callback : function(){};
-                    if (settings.transition.closeEasing !== ''){
+                  onBeforeHide: function(callback) {
+                    callback = $.isFunction(callback)?callback : function() {};
+                    if (settings.transition.closeEasing !== '') {
                       $toast.css('opacity',0);
-                      $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                      $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function() {
                         $toast.parent().remove();
                         callback.call($toast);
                       });
@@ -573,12 +573,12 @@ $.fn.toast.settings = {
   },
 
   // callbacks
-  onShow    : function(){},
-  onVisible : function(){},
-  onClick   : function(){},
-  onHide    : function(){},
-  onHidden  : function(){},
-  onRemove  : function(){},
+  onShow    : function() {},
+  onVisible : function() {},
+  onClick   : function() {},
+  onHide    : function() {},
+  onHidden  : function() {},
+  onRemove  : function() {},
 };
 
 $.extend($.easing, {

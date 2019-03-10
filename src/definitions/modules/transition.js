@@ -247,7 +247,7 @@ $.fn.transition = function() {
               inlineDisplay  = $module[0].style.display,
               mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
             ;
-            if (mustStayHidden){
+            if (mustStayHidden) {
               module.remove.transition();
               return false;
             }
@@ -285,7 +285,7 @@ $.fn.transition = function() {
             animation = animation || settings.animation;
             if (typeof animation === 'string') {
               animation = animation.split(' ');
-              $.each(animation, function(index, word){
+              $.each(animation, function(index, word) {
                 if (word === className.inward || word === className.outward) {
                   hasDirection = true;
                 }
@@ -576,7 +576,7 @@ $.fn.transition = function() {
             if (typeof animation === 'string') {
               animation = animation.split(' ');
               // search animation name for out/in class
-              $.each(animation, function(index, word){
+              $.each(animation, function(index, word) {
                 if (word === className.inward) {
                   direction = className.inward;
                 }
@@ -613,7 +613,7 @@ $.fn.transition = function() {
             }
             if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
               var currentDisplay = $module.css('display');
-              if (currentDisplay === '' || currentDisplay === 'none'){
+              if (currentDisplay === '' || currentDisplay === 'none') {
               // create fake element to determine display state
                 module.can.transition(true);
               }
@@ -641,8 +641,8 @@ $.fn.transition = function() {
               },
               animation
             ;
-            for (animation in animations){
-              if (element.style[animation] !== undefined){
+            for (animation in animations) {
+              if (element.style[animation] !== undefined) {
                 return animations[animation];
               }
             }
@@ -659,8 +659,8 @@ $.fn.transition = function() {
               },
               animation
             ;
-            for (animation in animations){
-              if (element.style[animation] !== undefined){
+            for (animation in animations) {
+              if (element.style[animation] !== undefined) {
                 return animations[animation];
               }
             }
@@ -776,8 +776,8 @@ $.fn.transition = function() {
           element.blur(); // IE will trigger focus change if element is not blurred before hiding
           module.remove.display();
           module.remove.visible();
-          if ($.isFunction(settings.onBeforeHide)){
-            settings.onBeforeHide.call(element,function(){
+          if ($.isFunction(settings.onBeforeHide)) {
+            settings.onBeforeHide.call(element,function() {
               module.hideNow();
             });
           }

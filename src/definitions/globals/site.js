@@ -233,15 +233,15 @@ $.site = $.fn.site = function(parameters) {
         module.debug('Disabling console function');
         instance.cache.console = window.console;
         window.console = {
-          clear          : function(){},
-          error          : function(){},
-          group          : function(){},
-          groupCollapsed : function(){},
-          groupEnd       : function(){},
-          info           : function(){},
-          log            : function(){},
-          markTimeline   : function(){},
-          warn           : function(){}
+          clear          : function() {},
+          error          : function() {},
+          group          : function() {},
+          groupCollapsed : function() {},
+          groupEnd       : function() {},
+          info           : function() {},
+          log            : function() {},
+          markTimeline   : function() {},
+          warn           : function() {}
         };
       }
     },

@@ -516,7 +516,7 @@ $.fn.search = function(parameters) {
         query: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           var
             searchTerm = module.get.value(),
@@ -582,7 +582,7 @@ $.fn.search = function(parameters) {
           remote: function(searchTerm, callback) {
             callback = $.isFunction(callback)
               ? callback
-              : function(){}
+              : function() {}
             ;
             if ($module.api('is loading')) {
               $module.api('abort');
@@ -694,7 +694,7 @@ $.fn.search = function(parameters) {
 
         parse: {
           response: function(response, searchTerm) {
-            if (Array.isArray(response)){
+            if (Array.isArray(response)) {
               var o={};
               o[fields.results]=response;
               response = o;
@@ -856,7 +856,7 @@ $.fn.search = function(parameters) {
             if (settings.type === 'category') {
               // iterate through each category result
               $.each(results, function(index, category) {
-                if (category.results.length > 0){
+                if (category.results.length > 0) {
                   resultIndex = 0;
                   $.each(category.results, function(index, result) {
                     if (result.id === undefined) {
@@ -934,7 +934,7 @@ $.fn.search = function(parameters) {
         showResults: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (resultsDismissed) {
             return;
@@ -968,7 +968,7 @@ $.fn.search = function(parameters) {
         hideResults: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.visible()) {
             if (module.can.transition()) {
@@ -1290,11 +1290,11 @@ $.fn.search.settings = {
   onSelect     : false,
   onResultsAdd : false,
 
-  onSearchQuery : function(query){},
-  onResults     : function(response){},
+  onSearchQuery : function(query) {},
+  onResults     : function(response) {},
 
-  onResultsOpen  : function(){},
-  onResultsClose : function(){},
+  onResultsOpen  : function() {},
+  onResultsClose : function() {},
 
   className: {
     animating : 'animating',
@@ -1360,7 +1360,7 @@ $.fn.search.settings = {
 
   templates: {
     escape: function(string, preserveHTML) {
-      if (preserveHTML){
+      if (preserveHTML) {
         return string;
       }
       var

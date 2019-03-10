@@ -215,7 +215,7 @@ $.fn.rating = function(parameters) {
         },
 
         get: {
-          icon: function(){
+          icon: function() {
             var icon = $module.data(metadata.icon);
             if (icon) {
               $module.removeData(metadata.icon);
@@ -481,7 +481,7 @@ $.fn.rating.settings = {
 
   fireOnInit: false,
 
-  onRate: function(rating){},
+  onRate: function(rating) {},
 
   error: {
     method    : 'The method you called is not defined',

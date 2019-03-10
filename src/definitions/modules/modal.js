@@ -98,7 +98,7 @@ $.fn.modal = function(parameters) {
           if (settings.allowMultiple) {
             module.create.innerDimmer();
           }
-          if (!settings.centered){
+          if (!settings.centered) {
             $module.addClass('top aligned');
           }
           module.refreshModals();
@@ -296,7 +296,7 @@ $.fn.modal = function(parameters) {
               module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
               return;
             }
-            if (initialMouseDownInScrollbar){
+            if (initialMouseDownInScrollbar) {
               module.debug('Dimmer clicked but mouse down was initially registered inside the scrollbar');
               return;
             }
@@ -312,7 +312,7 @@ $.fn.modal = function(parameters) {
                   return;
                 }
               }
-              else if (!module.hide()){
+              else if (!module.hide()) {
                 return;
               }
               module.remove.clickaway();
@@ -359,7 +359,7 @@ $.fn.modal = function(parameters) {
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           module.refreshModals();
           module.set.dimmerSettings();
@@ -371,7 +371,7 @@ $.fn.modal = function(parameters) {
         hide: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           module.refreshModals();
           return module.hideModal(callback);
@@ -380,7 +380,7 @@ $.fn.modal = function(parameters) {
         showModal: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.animating() || !module.is.active()) {
             module.showDimmer();
@@ -452,7 +452,7 @@ $.fn.modal = function(parameters) {
           ;
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           module.debug('Hiding modal');
           if (settings.onHide.call(element, $(this)) === false) {
@@ -538,14 +538,14 @@ $.fn.modal = function(parameters) {
           ;
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if ($visibleModals.length > 0) {
             module.debug('Hiding all visible modals');
             var hideOk = true;
             //check in reverse order trying to hide most top displayed modal first
-            $($visibleModals.get().reverse()).each(function(index,element){
-              if (hideOk){
+            $($visibleModals.get().reverse()).each(function(index,element) {
+              if (hideOk) {
                 hideOk = $(element).modal('hide modal', callback, false, true);
               }
             });
@@ -562,7 +562,7 @@ $.fn.modal = function(parameters) {
           ;
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if ($visibleModals.length > 0) {
             module.debug('Hiding other modals', $otherModals);
@@ -843,7 +843,7 @@ $.fn.modal = function(parameters) {
                 module.bind.scrollLock();
               }
             }
-            else if (!$module.hasClass('bottom')){
+            else if (!$module.hasClass('bottom')) {
               module.verbose('Modal cannot fit on screen setting to scrolling');
               module.set.scrolling();
             }
@@ -1084,22 +1084,22 @@ $.fn.modal.settings = {
   scrollbarWidth : 10,
 
   // called before show animation
-  onShow: function(){},
+  onShow: function() {},
 
   // called after show animation
-  onVisible: function(){},
+  onVisible: function() {},
 
   // called before hide animation
-  onHide: function(){ return true; },
+  onHide: function() { return true; },
 
   // called after hide animation
-  onHidden: function(){},
+  onHidden: function() {},
 
   // called after approve selector match
-  onApprove: function(){ return true; },
+  onApprove: function() { return true; },
 
   // called after deny selector match
-  onDeny: function(){ return true; },
+  onDeny: function() { return true; },
 
   selector: {
     close   : '> .close',

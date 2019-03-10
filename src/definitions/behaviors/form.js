@@ -819,7 +819,7 @@ $.fn.form = function(parameters) {
               }
               else {
                 $prompt
-                  .fadeOut(settings.duration, function(){
+                  .fadeOut(settings.duration, function() {
                     $prompt.remove();
                   })
                 ;
@@ -980,7 +980,7 @@ $.fn.form = function(parameters) {
               field.identifier = identifier;
             }
             var isDisabled = true;
-            $.each($field, function(){
+            $.each($field, function() {
               if (!$(this).prop('disabled')) {
                 isDisabled = false;
                 return false;
@@ -989,7 +989,7 @@ $.fn.form = function(parameters) {
             if (isDisabled) {
               module.debug('Field is disabled. Skipping', identifier);
             }
-            else if (field.optional && module.is.blank($field)){
+            else if (field.optional && module.is.blank($field)) {
               module.debug('Field is optional and blank. Skipping', identifier);
             }
             else if (field.depends && module.is.empty($dependsField)) {
@@ -1000,11 +1000,11 @@ $.fn.form = function(parameters) {
               $.each(field.rules, function(index, rule) {
                 if (module.has.field(identifier)) {
                   var invalidFields = module.validate.rule(field, rule,true) || [];
-                  if (invalidFields.length>0){
+                  if (invalidFields.length>0) {
                     module.debug('Field is invalid', identifier, rule.type);
                     fieldErrors.push(module.get.prompt(rule, field));
                     fieldValid = false;
-                    if (showErrors){
+                    if (showErrors) {
                       $(invalidFields).closest($group).addClass(className.error);
                     }
                   }
@@ -1037,7 +1037,7 @@ $.fn.form = function(parameters) {
               ruleFunction = settings.rules[ruleName],
               invalidFields = [],
               isCheckbox = $field.is(selector.checkbox),
-              isValid = function(field){
+              isValid = function(field) {
                 var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
@@ -1378,7 +1378,7 @@ $.fn.form.settings = {
     },
 
     // is most likely an email
-    email: function(value){
+    email: function(value) {
       return $.fn.form.settings.regExp.email.test(value);
     },
 
@@ -1657,7 +1657,7 @@ $.fn.form.settings = {
 
       // verify card types
       if (requiredTypes) {
-        $.each(requiredTypes, function(index, type){
+        $.each(requiredTypes, function(index, type) {
           // verify each card type
           validation = cards[type];
           if (validation) {

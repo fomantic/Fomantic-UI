@@ -400,7 +400,7 @@ $.fn.slider = function(parameters) {
           if (step > 0) {
             module.set.value(currValue + step * multiplier);
           }
-          else if (step == 0){
+          else if (step == 0) {
             var
               precision = module.get.precision(),
               newValue = currValue + (multiplier/precision)
@@ -810,13 +810,13 @@ $.fn.slider = function(parameters) {
               if (first <= min) {
                 first = min;
               }
-              else if (first >= max){
+              else if (first >= max) {
                 first = max;
               }
               if (second <= min) {
                 second = min;
               }
-              else if (second >= max){
+              else if (second >= max) {
                 second = max;
               }
               module.thumbVal = first;
@@ -856,7 +856,7 @@ $.fn.slider = function(parameters) {
             if (newValue <= min) {
               newValue = min;
             }
-            else if (newValue >= max){
+            else if (newValue >= max) {
               newValue = max;
             }
             if (!module.is.range()) {
@@ -1241,8 +1241,8 @@ $.fn.slider.settings = {
     letter : 'letter'
   },
 
-  onChange : function(value, thumbVal, secondThumbVal){},
-  onMove   : function(value, thumbVal, secondThumbVal){},
+  onChange : function(value, thumbVal, secondThumbVal) {},
+  onMove   : function(value, thumbVal, secondThumbVal) {},
 };
 
 

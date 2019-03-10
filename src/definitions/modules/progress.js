@@ -293,8 +293,8 @@ $.fn.progress = function(parameters) {
               },
               transition
             ;
-            for (transition in transitions){
-              if (element.style[transition] !== undefined){
+            for (transition in transitions) {
+              if (element.style[transition] !== undefined) {
                 return transitions[transition];
               }
             }
@@ -873,14 +873,14 @@ $.fn.progress.settings = {
   // delay in ms for fail safe animation callback
   failSafeDelay: 100,
 
-  onLabelUpdate: function(state, text, value, total){
+  onLabelUpdate: function(state, text, value, total) {
     return text;
   },
-  onChange  : function(percent, value, total){},
-  onSuccess : function(total){},
-  onActive  : function(value, total){},
-  onError   : function(value, total){},
-  onWarning : function(value, total){},
+  onChange  : function(percent, value, total) {},
+  onSuccess : function(total) {},
+  onActive  : function(value, total) {},
+  onError   : function(value, total) {},
+  onWarning : function(value, total) {},
 
   error: {
     method     : 'The method you called is not defined.',

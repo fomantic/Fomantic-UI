@@ -141,7 +141,7 @@ $.fn.sidebar = function(parameters) {
 
         event: {
           clickaway: function(event) {
-            if (settings.closable){
+            if (settings.closable) {
               var
                 clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                 clickedContext  = ($context.is(event.target))
@@ -227,7 +227,7 @@ $.fn.sidebar = function(parameters) {
               style
             ;
 
-            if (isRTL){
+            if (isRTL) {
               module.verbose('RTL detected, flipping widths');
               distance.left = -width;
               distance.right = width;
@@ -369,7 +369,7 @@ $.fn.sidebar = function(parameters) {
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.hidden()) {
             module.refreshSidebars();
@@ -409,7 +409,7 @@ $.fn.sidebar = function(parameters) {
         hide: function(callback) {
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (module.is.visible() || module.is.animating()) {
             module.debug('Hiding sidebar', callback);
@@ -439,7 +439,7 @@ $.fn.sidebar = function(parameters) {
             sidebarCount   = $otherSidebars.length,
             callbackCount  = 0
           ;
-          callback = callback || function(){};
+          callback = callback || function() {};
           $otherSidebars
             .sidebar('hide', function() {
               callbackCount++;
@@ -472,7 +472,7 @@ $.fn.sidebar = function(parameters) {
           ;
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           if (settings.transition == 'scale down') {
             module.scrollToTop();
@@ -515,7 +515,7 @@ $.fn.sidebar = function(parameters) {
           ;
           callback = $.isFunction(callback)
             ? callback
-            : function(){}
+            : function() {}
           ;
           module.verbose('Removing context push state', module.get.direction());
 
@@ -694,8 +694,8 @@ $.fn.sidebar = function(parameters) {
               },
               transition
             ;
-            for (transition in transitions){
-              if (element.style[transition] !== undefined){
+            for (transition in transitions) {
+              if (element.style[transition] !== undefined) {
                 return transitions[transition];
               }
             }
@@ -989,12 +989,12 @@ $.fn.sidebar.settings = {
 
   duration: 500,
 
-  onChange : function(){},
-  onShow   : function(){},
-  onHide   : function(){},
+  onChange : function() {},
+  onShow   : function() {},
+  onHide   : function() {},
 
-  onHidden  : function(){},
-  onVisible : function(){},
+  onHidden  : function() {},
+  onVisible : function() {},
 
   className: {
     active    : 'active',
