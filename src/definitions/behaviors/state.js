@@ -9,10 +9,10 @@
  */
 
 ;(function($, window, document, undefined) {
-"use strict";
+'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)

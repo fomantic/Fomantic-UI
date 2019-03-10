@@ -12,7 +12,7 @@
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -1489,28 +1489,28 @@ $.fn.form.settings = {
     // value contains text (insensitive)
     contains: function(value, text) {
       // escape regex characters
-      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
+      text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
       return (value.search(new RegExp(text, 'i')) !== -1);
     },
 
     // value contains text (case sensitive)
     containsExactly: function(value, text) {
       // escape regex characters
-      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
+      text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
       return (value.search(new RegExp(text)) !== -1);
     },
 
     // value contains text (insensitive)
     doesntContain: function(value, text) {
       // escape regex characters
-      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
+      text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
       return (value.search(new RegExp(text, 'i')) === -1);
     },
 
     // value contains text (case sensitive)
     doesntContainExactly: function(value, text) {
       // escape regex characters
-      text = text.replace($.fn.form.settings.regExp.escape, "\\$&");
+      text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
       return (value.search(new RegExp(text)) === -1);
     },
 

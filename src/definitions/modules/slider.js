@@ -9,7 +9,7 @@
  */
 
 ;(function($, window, document, undefined) {
-"use strict";
+'use strict';
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -136,7 +136,7 @@ $.fn.slider = function(parameters) {
                              + "<div class='track'></div>"
                              + "<div class='track-fill'></div>"
                              + "<div class='thumb'></div>"
-                             + "</div>");
+                             + '</div>');
             }
             precision = module.get.precision();
             $thumb = $module.find('.thumb:not(.second)');
@@ -210,7 +210,7 @@ $.fn.slider = function(parameters) {
               for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                 var
                   labelText = module.get.label(i),
-                  $label = (labelText !== "") ? $('<li class="label">' + labelText + '</li>') : null,
+                  $label = (labelText !== '') ? $('<li class="label">' + labelText + '</li>') : null,
                   ratio  = i / len
                 ;
                 if ($label) {

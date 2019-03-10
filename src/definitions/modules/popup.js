@@ -12,7 +12,7 @@
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -1490,12 +1490,12 @@ $.fn.popup.settings = {
         badChars     = /[&<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&" : "&amp;",
-          "<" : "&lt;",
-          ">" : "&gt;",
-          '"' : "&quot;",
-          "'" : "&#x27;",
-          "`" : "&#x60;"
+          '&' : '&amp;',
+          '<' : '&lt;',
+          '>' : '&gt;',
+          '"' : '&quot;',
+          "'" : '&#x27;',
+          '`' : '&#x60;'
         },
         escapedChar  = function(chr) {
           return escape[chr];

@@ -12,7 +12,7 @@
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -227,7 +227,7 @@ $.fn.calendar = function(parameters) {
             var pages = isDay ? multiMonth : 1;
 
             var container = $container;
-            var tooltipPosition = container.hasClass("left") ? "right center" : "left center";
+            var tooltipPosition = container.hasClass('left') ? 'right center' : 'left center';
             container.empty();
             if (pages > 1) {
               pageGrid = $('<div/>').addClass(className.grid).appendTo(container);
@@ -331,8 +331,8 @@ $.fn.calendar = function(parameters) {
                   if (disabled) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
-                      cell.attr("data-tooltip", disabledReason[metadata.message]);
-                      cell.attr("data-position", tooltipPosition);
+                      cell.attr('data-tooltip', disabledReason[metadata.message]);
+                      cell.attr('data-position', tooltipPosition);
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
@@ -466,7 +466,7 @@ $.fn.calendar = function(parameters) {
             event.stopPropagation();
             isTouchDown = false;
             var target = $(event.target);
-            if (target.hasClass("disabled")) {
+            if (target.hasClass('disabled')) {
               return;
             }
             var parent = target.parent();

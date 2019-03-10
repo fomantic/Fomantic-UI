@@ -15,7 +15,7 @@ $.isWindow = $.isWindow || function(obj) {
   return obj != null && obj === obj.window;
 };
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)

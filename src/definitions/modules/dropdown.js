@@ -12,7 +12,7 @@
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -750,7 +750,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 var preSelected = $input.val();
                 if (!Array.isArray(preSelected)) {
-                  preSelected = preSelected && preSelected !== "" ? preSelected.split(settings.delimiter) : [];
+                  preSelected = preSelected && preSelected !== '' ? preSelected.split(settings.delimiter) : [];
                 }
                 $.each(preSelected,function(index,value) {
                   $item.filter('[data-value="' + value + '"]')
@@ -899,7 +899,7 @@ $.fn.dropdown = function(parameters) {
                 return (lastDivider.length ? lastDivider : $(this))
                 // Count all non-filtered items until the next divider (or end of the dropdown)
                   .nextUntil(selector.divider)
-                  .filter(selector.item + ":not(." + className.filtered + ")")
+                  .filter(selector.item + ':not(.' + className.filtered + ')')
                   // Hide divider if no items are found
                   .length === 0;
               })
@@ -3614,12 +3614,12 @@ $.fn.dropdown = function(parameters) {
               badChars     = /[&<>"'`]/g,
               shouldEscape = /[&<>"'`]/,
               escape       = {
-                "&" : "&amp;",
-                "<" : "&lt;",
-                ">" : "&gt;",
-                '"' : "&quot;",
-                "'" : "&#x27;",
-                "`" : "&#x60;"
+                '&' : '&amp;',
+                '<' : '&lt;',
+                '>' : '&gt;',
+                '"' : '&quot;',
+                "'" : '&#x27;',
+                '`' : '&#x60;'
               },
               escapedChar  = function(chr) {
                 return escape[chr];
@@ -4023,12 +4023,12 @@ $.fn.dropdown.settings.templates = {
       badChars     = /[&<>"'`]/g,
       shouldEscape = /[&<>"'`]/,
       escape       = {
-        "&" : "&amp;",
-        "<" : "&lt;",
-        ">" : "&gt;",
-        '"' : "&quot;",
-        "'" : "&#x27;",
-        "`" : "&#x60;"
+        '&' : '&amp;',
+        '<' : '&lt;',
+        '>' : '&gt;',
+        '"' : '&quot;',
+        "'" : '&#x27;',
+        '`' : '&#x60;'
       },
       escapedChar  = function(chr) {
         return escape[chr];
@@ -4056,7 +4056,7 @@ $.fn.dropdown.settings.templates = {
     }
     html += '<div class="' + className.menu + '">';
     $.each(values, function(index, option) {
-      html += '<div class="' + (option.disabled ? className.disabled + ' ' : '') + className.item + '" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="' + (option.disabled ? className.disabled + ' ' : '') + className.item + '" data-value="' + String(option.value).replace(/"/g,'') + '">' + escape(option.name,preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -4079,13 +4079,13 @@ $.fn.dropdown.settings.templates = {
       if (itemType === 'item') {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + String(option[fields.text]).replace(/"/g,"") + '"'
+            ? ' data-text="' + String(option[fields.text]).replace(/"/g,'') + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled + ' '
             : ''
         ;
-        html += '<div class="' + maybeDisabled + className.item + '" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
+        html += '<div class="' + maybeDisabled + className.item + '" data-value="' + String(option[fields.value]).replace(/"/g,'') + '"' + maybeText + '>';
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       }

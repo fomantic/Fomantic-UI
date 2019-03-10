@@ -10,7 +10,7 @@
 
 ;(function($, window, document, undefined) {
 $.isFunction = $.isFunction || function(obj) {
-  return typeof obj === "function" && typeof obj.nodeType !== "number";
+  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
 $.site = $.fn.site = function(parameters) {
@@ -475,7 +475,7 @@ $.site.settings = {
 };
 
 // allows for selection of elements with data attributes
-$.extend($.expr[ ":" ], {
+$.extend($.expr[ ':' ], {
   data: ($.expr.createPseudo)
     ? $.expr.createPseudo(function(dataName) {
       return function(elem) {
