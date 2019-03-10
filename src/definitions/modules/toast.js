@@ -80,7 +80,7 @@ $.fn.toast = function(parameters) {
           module.create.toast();
 
           module.bind.events();
-          
+
           if (settings.displayTime > 0) {
             module.closeTimer = setTimeout(module.close, settings.displayTime + (!!settings.showProgress ? 300 : 0));
           }
@@ -138,7 +138,7 @@ $.fn.toast = function(parameters) {
             }
 
             if (settings.title !== '') {
-              var 
+              var
                 $title = $('<div/>')
                   .addClass(className.title)
                   .text(settings.title)

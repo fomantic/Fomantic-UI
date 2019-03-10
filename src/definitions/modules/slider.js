@@ -728,15 +728,15 @@ $.fn.slider = function(parameters) {
               downArrow =
                 module.is.vertical()
                   ? module.is.reversed() ? keys.downArrow : keys.upArrow
-                  : keys.downArrow,              
+                  : keys.downArrow,
               upArrow =
                 module.is.vertical()
                   ? module.is.reversed() ? keys.upArrow : keys.downArrow
-                  : keys.upArrow,              
+                  : keys.upArrow,
               leftArrow =
                 !module.is.vertical()
                   ? module.is.reversed() ? keys.rightArrow : keys.leftArrow
-                  : keys.leftArrow,              
+                  : keys.leftArrow,
               rightArrow =
                 !module.is.vertical()
                   ? module.is.reversed() ? keys.leftArrow : keys.rightArrow
