@@ -86,7 +86,7 @@ $.fn.transition = function() {
             if (settings.interval) {
               module.delay(settings.animate);
             }
-            else  {
+            else {
               module.animate();
             }
             module.instantiate();
@@ -959,7 +959,7 @@ $.fn.transition = function() {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

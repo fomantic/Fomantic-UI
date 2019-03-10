@@ -475,7 +475,7 @@ $.fn.checkbox = function(parameters) {
               .removeClass(className.indeterminate)
               .removeClass(className.checked)
             ;
-            if (!module.is.indeterminate() &&  module.is.unchecked()) {
+            if (!module.is.indeterminate() && module.is.unchecked()) {
               module.debug('Input is already unchecked');
               return;
             }
@@ -591,10 +591,10 @@ $.fn.checkbox = function(parameters) {
           events: function() {
             module.verbose('Attaching checkbox events');
             $module
-              .on('click'   + eventNamespace, module.event.click)
-              .on('change'  + eventNamespace, module.event.change)
+              .on('click' + eventNamespace, module.event.click)
+              .on('change' + eventNamespace, module.event.change)
               .on('keydown' + eventNamespace, selector.input, module.event.keydown)
-              .on('keyup'   + eventNamespace, selector.input, module.event.keyup)
+              .on('keyup' + eventNamespace, selector.input, module.event.keyup)
             ;
           }
         },
@@ -747,7 +747,7 @@ $.fn.checkbox = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

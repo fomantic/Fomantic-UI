@@ -437,7 +437,7 @@ $.fn.toast = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -538,7 +538,7 @@ $.fn.toast.settings = {
     showDuration : 500,
     hideMethod   : 'scale',
     hideDuration : 500,
-    closeEasing  : 'easeOutBounce'  //Set to empty string to stack the closed toast area immediately (old behaviour)
+    closeEasing  : 'easeOutBounce' //Set to empty string to stack the closed toast area immediately (old behaviour)
   },
 
   error: {

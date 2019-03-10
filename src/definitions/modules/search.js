@@ -122,15 +122,15 @@ $.fn.search = function(parameters) {
             }
             $module
               // prompt
-              .on('focus'     + eventNamespace, selector.prompt, module.event.focus)
-              .on('blur'      + eventNamespace, selector.prompt, module.event.blur)
-              .on('keydown'   + eventNamespace, selector.prompt, module.handleKeyboard)
+              .on('focus' + eventNamespace, selector.prompt, module.event.focus)
+              .on('blur' + eventNamespace, selector.prompt, module.event.blur)
+              .on('keydown' + eventNamespace, selector.prompt, module.handleKeyboard)
               // search button
-              .on('click'     + eventNamespace, selector.searchButton, module.query)
+              .on('click' + eventNamespace, selector.searchButton, module.query)
               // results
               .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
-              .on('mouseup'   + eventNamespace, selector.results, module.event.result.mouseup)
-              .on('click'     + eventNamespace, selector.result,  module.event.result.click)
+              .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
+              .on('click' + eventNamespace, selector.result, module.event.result.click)
             ;
           }
         },
@@ -217,7 +217,7 @@ $.fn.search = function(parameters) {
                 $link   = $result.is('a[href]')
                   ? $result
                   : $result.find('a[href]').eq(0),
-                href    = $link.attr('href')   || false,
+                href    = $link.attr('href') || false,
                 target  = $link.attr('target') || false,
                 // title is used for result lookup
                 value   = ($title.length > 0)
@@ -508,7 +508,7 @@ $.fn.search = function(parameters) {
             $searchButton.removeClass(className.pressed);
           },
           diacritics: function(text) {
-            return settings.ignoreDiacritics ?  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+            return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
           }
         },
 
@@ -522,7 +522,7 @@ $.fn.search = function(parameters) {
             cache = module.read.cache(searchTerm)
           ;
           callback = callback || function() {};
-          if (module.has.minimumCharacters())  {
+          if (module.has.minimumCharacters()) {
             if (cache) {
               module.debug('Reading result from cache', searchTerm);
               module.save.results(cache.results);
@@ -1148,7 +1148,7 @@ $.fn.search = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1332,18 +1332,18 @@ $.fn.search.settings = {
 
   // maps api response attributes to internal representation
   fields: {
-    categories      : 'results',     // array of categories (category view)
-    categoryName    : 'name',        // name of category (category view)
-    categoryResults : 'results',     // array of results (category view)
+    categories      : 'results', // array of categories (category view)
+    categoryName    : 'name', // name of category (category view)
+    categoryResults : 'results', // array of results (category view)
     description     : 'description', // result description
-    image           : 'image',       // result image
-    price           : 'price',       // result price
-    results         : 'results',     // array of results (standard)
-    title           : 'title',       // result title
-    url             : 'url',         // result url
-    action          : 'action',      // "view more" object name
-    actionText      : 'text',        // "view more" text
-    actionURL       : 'url'          // "view more" url
+    image           : 'image', // result image
+    price           : 'price', // result price
+    results         : 'results', // array of results (standard)
+    title           : 'title', // result title
+    url             : 'url', // result url
+    action          : 'action', // "view more" object name
+    actionText      : 'text', // "view more" text
+    actionURL       : 'url' // "view more" url
   },
 
   selector: {
@@ -1455,13 +1455,13 @@ $.fn.search.settings = {
           if (fields.actionURL === false) {
             html += ''
             + '<div class="action">'
-            +   escape(response[fields.action][fields.actionText], preserveHTML)
+            + escape(response[fields.action][fields.actionText], preserveHTML)
             + '</div>';
           }
           else {
             html += ''
             + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,"") + '" class="action">'
-            +   escape(response[fields.action][fields.actionText], preserveHTML)
+            + escape(response[fields.action][fields.actionText], preserveHTML)
             + '</a>';
           }
         }
@@ -1509,13 +1509,13 @@ $.fn.search.settings = {
           if (fields.actionURL === false) {
             html += ''
             + '<div class="action">'
-            +   escape(response[fields.action][fields.actionText], preserveHTML)
+            + escape(response[fields.action][fields.actionText], preserveHTML)
             + '</div>';
           }
           else {
             html += ''
             + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,"") + '" class="action">'
-            +   escape(response[fields.action][fields.actionText], preserveHTML)
+            + escape(response[fields.action][fields.actionText], preserveHTML)
             + '</a>';
           }
         }

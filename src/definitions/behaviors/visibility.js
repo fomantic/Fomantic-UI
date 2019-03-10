@@ -126,11 +126,11 @@ $.fn.visibility = function(parameters) {
             contextObserver.disconnect();
           }
           $window
-            .off('load'   + eventNamespace, module.event.load)
+            .off('load' + eventNamespace, module.event.load)
             .off('resize' + eventNamespace, module.event.resize)
           ;
           $context
-            .off('scroll'       + eventNamespace, module.event.scroll)
+            .off('scroll' + eventNamespace, module.event.scroll)
             .off('scrollchange' + eventNamespace, module.event.scrollchange)
           ;
           if (settings.type == 'fixed') {
@@ -164,7 +164,7 @@ $.fn.visibility = function(parameters) {
             module.verbose('Binding visibility events to scroll and resize');
             if (settings.refreshOnLoad) {
               $window
-                .on('load'   + eventNamespace, module.event.load)
+                .on('load' + eventNamespace, module.event.load)
               ;
             }
             $window
@@ -172,8 +172,8 @@ $.fn.visibility = function(parameters) {
             ;
             // pub/sub pattern
             $context
-              .off('scroll'      + eventNamespace)
-              .on('scroll'       + eventNamespace, module.event.scroll)
+              .off('scroll' + eventNamespace)
+              .on('scroll' + eventNamespace, module.event.scroll)
               .on('scrollchange' + eventNamespace, module.event.scrollchange)
             ;
           }
@@ -1136,7 +1136,7 @@ $.fn.visibility = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

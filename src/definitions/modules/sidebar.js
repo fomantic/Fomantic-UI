@@ -159,7 +159,7 @@ $.fn.sidebar = function(parameters) {
             //event.stopPropagation();
           },
           containScroll: function(event) {
-            if (element.scrollTop <= 0)  {
+            if (element.scrollTop <= 0) {
               element.scrollTop = 1;
             }
             if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
@@ -177,7 +177,7 @@ $.fn.sidebar = function(parameters) {
           clickaway: function() {
             module.verbose('Adding clickaway events to context', $context);
             $context
-              .on('click'    + elementNamespace, module.event.clickaway)
+              .on('click' + elementNamespace, module.event.clickaway)
               .on('touchend' + elementNamespace, module.event.clickaway)
             ;
           },
@@ -213,7 +213,7 @@ $.fn.sidebar = function(parameters) {
         add: {
           inlineCSS: function() {
             var
-              width     = module.cache.width  || $module.outerWidth(),
+              width     = module.cache.width || $module.outerWidth(),
               height    = module.cache.height || $module.outerHeight(),
               isRTL     = module.is.rtl(),
               direction = module.get.direction(),
@@ -372,7 +372,7 @@ $.fn.sidebar = function(parameters) {
           ;
           if (module.is.hidden()) {
             module.refreshSidebars();
-            if (settings.overlay)  {
+            if (settings.overlay) {
               module.error(error.overlay);
               settings.transition = 'overlay';
             }
@@ -881,7 +881,7 @@ $.fn.sidebar = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

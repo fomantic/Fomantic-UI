@@ -754,7 +754,7 @@ $.fn.popup = function(parameters) {
             ;
 
             calculations = calculations || module.get.calculations();
-            position     = position     || $module.data(metadata.position) || settings.position;
+            position     = position || $module.data(metadata.position) || settings.position;
 
             offset       = $module.data(metadata.offset) || settings.offset;
             distanceAway = settings.distanceAway;
@@ -874,7 +874,7 @@ $.fn.popup = function(parameters) {
             case 'bottom right':
               positioning = {
                 top    : target.top + target.height + distanceAway,
-                right  : parent.width - target.left  - target.width - offset,
+                right  : parent.width - target.left - target.width - offset,
                 left   : 'auto',
                 bottom : 'auto'
               };
@@ -1255,7 +1255,7 @@ $.fn.popup = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

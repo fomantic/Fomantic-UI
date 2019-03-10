@@ -727,23 +727,23 @@ $.fn.slider = function(parameters) {
               key = event.which,
               downArrow =
                 module.is.vertical()
-                  ?                  module.is.reversed() ? keys.downArrow : keys.upArrow
-                  :                  keys.downArrow
+                  ? module.is.reversed() ? keys.downArrow : keys.upArrow
+                  : keys.downArrow
               ,
               upArrow =
                 module.is.vertical()
-                  ?                  module.is.reversed() ? keys.upArrow : keys.downArrow
-                  :                  keys.upArrow
+                  ? module.is.reversed() ? keys.upArrow : keys.downArrow
+                  : keys.upArrow
               ,
               leftArrow =
                 !module.is.vertical()
-                  ?                  module.is.reversed() ? keys.rightArrow : keys.leftArrow
-                  :                  keys.leftArrow
+                  ? module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                  : keys.leftArrow
               ,
               rightArrow =
                 !module.is.vertical()
-                  ?                  module.is.reversed() ? keys.leftArrow : keys.rightArrow
-                  :                  keys.rightArrow
+                  ? module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                  : keys.rightArrow
             ;
             if (key == downArrow || key == leftArrow) {
               return SINGLE_BACKSTEP;
@@ -923,8 +923,8 @@ $.fn.slider = function(parameters) {
               endMargin   = module.get.trackEndMargin(),
               posDir =
                 module.is.vertical()
-                  ?                  module.is.reversed() ? 'bottom' : 'top'
-                  :                  module.is.reversed() ? 'right' : 'left',
+                  ? module.is.reversed() ? 'bottom' : 'top'
+                  : module.is.reversed() ? 'right' : 'left',
               startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
             ;
             var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
@@ -1091,7 +1091,7 @@ $.fn.slider = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

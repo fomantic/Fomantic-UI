@@ -76,14 +76,14 @@ $.fn.state = function(parameters) {
             $(settings.context)
               .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
               .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
-              .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state)
+              .on(moduleSelector, 'click' + eventNamespace, module.toggle.state)
             ;
           }
           else {
             $module
               .on('mouseenter' + eventNamespace, module.change.text)
               .on('mouseleave' + eventNamespace, module.reset.text)
-              .on('click'      + eventNamespace, module.toggle.state)
+              .on('click' + eventNamespace, module.toggle.state)
             ;
           }
           module.instantiate();
@@ -353,7 +353,7 @@ $.fn.state = function(parameters) {
               previousText = module.get.text()
             ;
             module.debug('Flashing text message', text, duration);
-            text     = text     || settings.text.flash;
+            text     = text || settings.text.flash;
             duration = duration || settings.flashDuration;
             callback = callback || function() {};
             module.update.text(text);
@@ -368,7 +368,7 @@ $.fn.state = function(parameters) {
           // on mouseout sets text to previous value
           text: function() {
             var
-              activeText   = text.active   || $module.data(metadata.storedText),
+              activeText   = text.active || $module.data(metadata.storedText),
               inactiveText = text.inactive || $module.data(metadata.storedText)
             ;
             if (module.is.textEnabled()) {
@@ -526,7 +526,7 @@ $.fn.state = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

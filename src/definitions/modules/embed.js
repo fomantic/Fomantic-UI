@@ -279,7 +279,7 @@ $.fn.embed = function(parameters) {
           },
           url: function() {
             var
-              id     = settings.id     || $module.data(metadata.id),
+              id     = settings.id || $module.data(metadata.id),
               source = settings.source || $module.data(metadata.source),
               url
             ;
@@ -507,7 +507,7 @@ $.fn.embed = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

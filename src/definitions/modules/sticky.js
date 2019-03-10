@@ -337,7 +337,7 @@ $.fn.sticky = function(parameters) {
               return module.elementScroll;
             }
             return (module.is.top())
-              ? Math.abs(parseInt($module.css('top'), 10))    || 0
+              ? Math.abs(parseInt($module.css('top'), 10)) || 0
               : Math.abs(parseInt($module.css('bottom'), 10)) || 0
             ;
           },
@@ -435,7 +435,7 @@ $.fn.sticky = function(parameters) {
           },
           size: function() {
             if (module.cache.element.height !== 0 && module.cache.element.width !== 0) {
-              element.style.setProperty('width',  module.cache.element.width  + 'px', 'important');
+              element.style.setProperty('width', module.cache.element.width + 'px', 'important');
               element.style.setProperty('height', module.cache.element.height + 'px', 'important');
             }
           }
@@ -809,7 +809,7 @@ $.fn.sticky = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

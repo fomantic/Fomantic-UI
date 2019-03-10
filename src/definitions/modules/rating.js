@@ -171,7 +171,7 @@ $.fn.rating = function(parameters) {
             $module
               .on('mouseenter' + eventNamespace, selector.icon, module.event.mouseenter)
               .on('mouseleave' + eventNamespace, selector.icon, module.event.mouseleave)
-              .on('click'      + eventNamespace, selector.icon, module.event.click)
+              .on('click' + eventNamespace, selector.icon, module.event.click)
             ;
           }
         },
@@ -394,7 +394,7 @@ $.fn.rating = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

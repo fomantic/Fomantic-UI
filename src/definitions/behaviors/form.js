@@ -142,10 +142,10 @@ $.fn.form = function(parameters) {
           module.verbose('Attaching form events');
           $module
             .on('submit' + eventNamespace, module.validate.form)
-            .on('blur'   + eventNamespace, selector.field, module.event.field.blur)
-            .on('click'  + eventNamespace, selector.submit, module.submit)
-            .on('click'  + eventNamespace, selector.reset, module.reset)
-            .on('click'  + eventNamespace, selector.clear, module.clear)
+            .on('blur' + eventNamespace, selector.field, module.event.field.blur)
+            .on('click' + eventNamespace, selector.submit, module.submit)
+            .on('click' + eventNamespace, selector.reset, module.reset)
+            .on('click' + eventNamespace, selector.clear, module.clear)
           ;
           if (settings.keyboardShortcuts) {
             $module
@@ -375,7 +375,7 @@ $.fn.form = function(parameters) {
               if (validationRules && (settings.on == 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                 clearTimeout(module.timer);
                 module.timer = setTimeout(function() {
-                  module.debug('Revalidating field', $field,  module.get.validation($field));
+                  module.debug('Revalidating field', $field, module.get.validation($field));
                   module.validate.field(validationRules);
                 }, settings.delay);
               }
@@ -1177,7 +1177,7 @@ $.fn.form = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

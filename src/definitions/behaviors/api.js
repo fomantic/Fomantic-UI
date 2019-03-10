@@ -610,7 +610,7 @@ $.api = $.fn.api = function(parameters) {
               textStatus     = false,
               status         = false,
               httpMessage    = false,
-              responder      = settings.mockResponse      || settings.response,
+              responder      = settings.mockResponse || settings.response,
               asyncResponder = settings.mockResponseAsync || settings.responseAsync,
               asyncCallback,
               response,
@@ -955,7 +955,7 @@ $.api = $.fn.api = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

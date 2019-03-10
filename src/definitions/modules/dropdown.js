@@ -603,22 +603,22 @@ $.fn.dropdown = function(parameters) {
             module.verbose('Binding mouse events');
             if (module.is.multiple()) {
               $module
-                .on('click'   + eventNamespace, selector.label,  module.event.label.click)
-                .on('click'   + eventNamespace, selector.remove, module.event.remove.click)
+                .on('click' + eventNamespace, selector.label, module.event.label.click)
+                .on('click' + eventNamespace, selector.remove, module.event.remove.click)
               ;
             }
             if (module.is.searchSelection()) {
               $module
                 .on('mousedown' + eventNamespace, module.event.mousedown)
-                .on('mouseup'   + eventNamespace, module.event.mouseup)
-                .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
-                .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
-                .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
-                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
-                .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
-                .on('click'     + eventNamespace, selector.search, module.event.search.focus)
-                .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
-                .on('click'     + eventNamespace, selector.text,   module.event.text.focus)
+                .on('mouseup' + eventNamespace, module.event.mouseup)
+                .on('mousedown' + eventNamespace, selector.menu, module.event.menu.mousedown)
+                .on('mouseup' + eventNamespace, selector.menu, module.event.menu.mouseup)
+                .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
+                .on('focus' + eventNamespace, selector.search, module.event.search.focus)
+                .on('click' + eventNamespace, selector.search, module.event.search.focus)
+                .on('blur' + eventNamespace, selector.search, module.event.search.blur)
+                .on('click' + eventNamespace, selector.text, module.event.text.focus)
               ;
               if (module.is.multiple()) {
                 $module
@@ -646,9 +646,9 @@ $.fn.dropdown = function(parameters) {
               }
               $module
                 .on('mousedown' + eventNamespace, module.event.mousedown)
-                .on('mouseup'   + eventNamespace, module.event.mouseup)
-                .on('focus'     + eventNamespace, module.event.focus)
-                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
+                .on('mouseup' + eventNamespace, module.event.mouseup)
+                .on('focus' + eventNamespace, module.event.focus)
+                .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
               ;
               if (module.has.menuSearch()) {
                 $module
@@ -664,7 +664,7 @@ $.fn.dropdown = function(parameters) {
             $menu
               .on('mouseenter' + eventNamespace, selector.item, module.event.item.mouseenter)
               .on('mouseleave' + eventNamespace, selector.item, module.event.item.mouseleave)
-              .on('click'      + eventNamespace, selector.item, module.event.item.click)
+              .on('click' + eventNamespace, selector.item, module.event.item.click)
             ;
           },
           intent: function() {
@@ -672,7 +672,7 @@ $.fn.dropdown = function(parameters) {
             if (hasTouch) {
               $document
                 .on('touchstart' + elementNamespace, module.event.test.touch)
-                .on('touchmove'  + elementNamespace, module.event.test.touch)
+                .on('touchmove' + elementNamespace, module.event.test.touch)
               ;
             }
             $document
@@ -951,7 +951,7 @@ $.fn.dropdown = function(parameters) {
             if (skipHandler) {
               $module.off('focus' + eventNamespace, selector.search);
               $search.focus();
-              $module.on('focus'  + eventNamespace, selector.search, module.event.search.focus);
+              $module.on('focus' + eventNamespace, selector.search, module.event.search.focus);
             }
             else {
               $search.focus();
@@ -1225,7 +1225,7 @@ $.fn.dropdown = function(parameters) {
                   : $(false),
                 $changedNodes  = $addedNode.add($removedNode),
                 isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0,
-                isMessage      = $changedNodes.is(selector.message)  || $changedNodes.closest(selector.message).length > 0
+                isMessage      = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0
               ;
               if (isUserAddition || isMessage) {
                 module.debug('Updating item selector cache');
@@ -1982,11 +1982,11 @@ $.fn.dropdown = function(parameters) {
             return select;
           },
           activeItem: function() {
-            return $item.filter('.'  + className.active);
+            return $item.filter('.' + className.active);
           },
           selectedItem: function() {
             var
-              $selectedItem = $item.not(selector.unselectable).filter('.'  + className.selected)
+              $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
             ;
             return ($selectedItem.length > 0)
               ? $selectedItem
@@ -2024,7 +2024,7 @@ $.fn.dropdown = function(parameters) {
               : (value !== undefined && value !== null)
             ;
             isMultiple = (module.is.multiple() && Array.isArray(value));
-            strict     = (value === '' || value === false  || value === true)
+            strict     = (value === '' || value === false || value === true)
               ? true
               : strict || false
             ;
@@ -3114,7 +3114,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           diacritics: function(text) {
-            return settings.ignoreDiacritics ?  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+            return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
           }
         },
 
@@ -3253,7 +3253,7 @@ $.fn.dropdown = function(parameters) {
           animating: function($subMenu) {
             return ($subMenu)
               ? $subMenu.transition && $subMenu.transition('is animating')
-              : $menu.transition    && $menu.transition('is animating')
+              : $menu.transition && $menu.transition('is animating')
             ;
           },
           leftward: function($subMenu) {
@@ -3747,7 +3747,7 @@ $.fn.dropdown = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -3822,56 +3822,56 @@ $.fn.dropdown.settings = {
   verbose     : false,
   performance : true,
 
-  on     : 'click',    // what event should show menu action on item selection
+  on     : 'click', // what event should show menu action on item selection
   action : 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
-  values: false,      // specify values to use for dropdown
+  values: false, // specify values to use for dropdown
 
-  clearable: false,      // whether the value of the dropdown can be cleared
+  clearable: false, // whether the value of the dropdown can be cleared
 
   apiSettings     : false,
-  selectOnKeydown : true,       // Whether selection should occur automatically when keyboard shortcuts used
-  minCharacters   : 0,          // Minimum characters required to trigger API call
+  selectOnKeydown : true, // Whether selection should occur automatically when keyboard shortcuts used
+  minCharacters   : 0, // Minimum characters required to trigger API call
 
-  filterRemoteData : false,      // Whether API results should be filtered after being returned for query term
-  saveRemoteData   : true,       // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
+  filterRemoteData : false, // Whether API results should be filtered after being returned for query term
+  saveRemoteData   : true, // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
 
-  throttle: 200,        // How long to wait after last user input to search remotely
+  throttle: 200, // How long to wait after last user input to search remotely
 
-  context      : window,     // Context to use when determining if on screen
-  direction    : 'auto',     // Whether dropdown should always open in one direction
-  keepOnScreen : true,       // Whether dropdown should check whether it is on screen before showing
+  context      : window, // Context to use when determining if on screen
+  direction    : 'auto', // Whether dropdown should always open in one direction
+  keepOnScreen : true, // Whether dropdown should check whether it is on screen before showing
 
-  match            : 'both',     // what to match against with search selection (both, text, or label)
-  fullTextSearch   : false,      // search anywhere in value (set to 'exact' to require exact matches)
-  ignoreDiacritics : false,      // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
-  hideDividers     : false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
+  match            : 'both', // what to match against with search selection (both, text, or label)
+  fullTextSearch   : false, // search anywhere in value (set to 'exact' to require exact matches)
+  ignoreDiacritics : false, // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
+  hideDividers     : false, // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
-  placeholder  : 'auto',     // whether to convert blank <select> values to placeholder text
-  preserveHTML : true,       // preserve html when selecting value
-  sortSelect   : false,      // sort selection on init
+  placeholder  : 'auto', // whether to convert blank <select> values to placeholder text
+  preserveHTML : true, // preserve html when selecting value
+  sortSelect   : false, // sort selection on init
 
-  forceSelection: true,       // force a choice on blur with search selection
+  forceSelection: true, // force a choice on blur with search selection
 
-  allowAdditions : false,      // whether multiple select should allow user added values
-  ignoreCase     : false,       // whether to consider values not matching in case to be the same
-  hideAdditions  : true,       // whether or not to hide special message prompting a user they can enter a value
+  allowAdditions : false, // whether multiple select should allow user added values
+  ignoreCase     : false, // whether to consider values not matching in case to be the same
+  hideAdditions  : true, // whether or not to hide special message prompting a user they can enter a value
 
-  maxSelections : false,      // When set to a number limits the number of selections to this count
-  useLabels     : true,       // whether multiple select should filter currently active selections from choices
-  delimiter     : ',',        // when multiselect uses normal <input> the values will be delimited with this character
+  maxSelections : false, // When set to a number limits the number of selections to this count
+  useLabels     : true, // whether multiple select should filter currently active selections from choices
+  delimiter     : ',', // when multiselect uses normal <input> the values will be delimited with this character
 
-  showOnFocus            : true,       // show menu on focus
-  allowReselection       : false,      // whether current value should trigger callbacks when reselected
-  allowTab               : true,       // add tabindex to element
-  allowCategorySelection : false,      // allow elements with sub-menus to be selected
+  showOnFocus            : true, // show menu on focus
+  allowReselection       : false, // whether current value should trigger callbacks when reselected
+  allowTab               : true, // add tabindex to element
+  allowCategorySelection : false, // allow elements with sub-menus to be selected
 
-  fireOnInit: false,      // Whether callbacks should fire when initializing dropdown values
+  fireOnInit: false, // Whether callbacks should fire when initializing dropdown values
 
-  transition : 'auto',     // auto transition will slide down or up based on direction
-  duration   : 200,        // duration of transition
+  transition : 'auto', // auto transition will slide down or up based on direction
+  duration   : 200, // duration of transition
 
-  glyphWidth: 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
+  glyphWidth: 1.037, // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
   // label settings on multi-select
   label: {
@@ -3939,13 +3939,13 @@ $.fn.dropdown.settings = {
 
   // property names for remote query
   fields: {
-    remoteValues : 'results',  // grouping for api results
-    values       : 'values',   // grouping for all dropdown values
+    remoteValues : 'results', // grouping for api results
+    values       : 'values', // grouping for all dropdown values
     disabled     : 'disabled', // whether value should be disabled
-    name         : 'name',     // displayed dropdown text
-    value        : 'value',    // actual dropdown value
-    text         : 'text',     // displayed text when selected
-    type         : 'type'      // type of dropdown element
+    name         : 'name', // displayed dropdown text
+    value        : 'value', // actual dropdown value
+    text         : 'text', // displayed text when selected
+    type         : 'type' // type of dropdown element
   },
 
   keys: {

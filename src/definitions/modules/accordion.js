@@ -487,7 +487,7 @@ $.fn.accordion = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -566,12 +566,12 @@ $.fn.accordion.settings = {
 
   on: 'click', // event on title that opens accordion
 
-  observeChanges: true,  // whether accordion should automatically refresh on DOM insertion
+  observeChanges: true, // whether accordion should automatically refresh on DOM insertion
 
-  exclusive       : true,  // whether a single accordion content panel should be open at once
-  collapsible     : true,  // whether accordion content can be closed
+  exclusive       : true, // whether a single accordion content panel should be open at once
+  collapsible     : true, // whether accordion content can be closed
   closeNested     : false, // whether nested content should be closed when a panel is closed
-  animateChildren : true,  // whether children opacity should be animated
+  animateChildren : true, // whether children opacity should be animated
 
   duration : 350, // duration of animation
   easing   : 'easeOutQuad', // easing equation for animation

@@ -222,8 +222,8 @@ $.fn.progress = function(parameters) {
         get: {
           text: function(templateText) {
             var
-              value   = module.value                || 0,
-              total   = module.total                || 0,
+              value   = module.value || 0,
+              total   = module.total || 0,
               percent = (animating)
                 ? module.get.displayPercent()
                 : module.percent || 0,
@@ -769,7 +769,7 @@ $.fn.progress = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

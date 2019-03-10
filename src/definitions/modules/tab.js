@@ -820,7 +820,7 @@ $.fn.tab = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = element || context;
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -902,25 +902,25 @@ $.fn.tab.settings = {
   verbose     : false,
   performance : true,
 
-  auto        : false,      // uses pjax style endpoints fetching content from same url with remote-content headers
-  history     : false,      // use browser history
-  historyType : 'hash',     // #/ or html5 state
-  path        : false,      // base path of url
+  auto        : false, // uses pjax style endpoints fetching content from same url with remote-content headers
+  history     : false, // use browser history
+  historyType : 'hash', // #/ or html5 state
+  path        : false, // base path of url
 
-  context      : false,      // specify a context that tabs must appear inside
-  childrenOnly : false,      // use only tabs that are children of context
-  maxDepth     : 25,         // max depth a tab can be nested
+  context      : false, // specify a context that tabs must appear inside
+  childrenOnly : false, // use only tabs that are children of context
+  maxDepth     : 25, // max depth a tab can be nested
 
   deactivate: 'siblings', // whether tabs should deactivate sibling menu elements or all elements initialized together
 
-  alwaysRefresh   : false,      // load tab content new every tab click
-  cache           : true,       // cache the content requests to pull locally
-  loadOnce        : false,      // Whether tab data should only be loaded once when using remote content
+  alwaysRefresh   : false, // load tab content new every tab click
+  cache           : true, // cache the content requests to pull locally
+  loadOnce        : false, // Whether tab data should only be loaded once when using remote content
   cacheType       : 'response', // Whether to cache exact response, or to html cache contents after scripts execute
-  ignoreFirstLoad : false,      // don't load remote content on first load
+  ignoreFirstLoad : false, // don't load remote content on first load
 
-  apiSettings     : false,      // settings for api call
-  evaluateScripts : 'once',     // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
+  apiSettings     : false, // settings for api call
+  evaluateScripts : 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
 
   onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
   onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load

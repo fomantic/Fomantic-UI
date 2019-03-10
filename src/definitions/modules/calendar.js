@@ -1121,33 +1121,33 @@ $.fn.calendar.settings = {
   performance : false,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
-  firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
-  constantHeight     : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
-  today              : false,      // show a 'today/now' button at the bottom of the calendar
-  closable           : true,       // close the popup after selecting a date/time
-  monthFirst         : true,       // month before day when parsing/converting date from/to text
-  touchReadonly      : true,       // set input to readonly on touch devices
-  inline             : false,      // create the calendar inline instead of inside a popup
-  on                 : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
-  initialDate        : null,       // date to display initially when no date is selected (null = now)
-  startMode          : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
-  minDate            : null,       // minimum date/time that can be selected, dates/times before are disabled
-  maxDate            : null,       // maximum date/time that can be selected, dates/times after are disabled
-  ampm               : true,       // show am/pm in time mode
-  disableYear        : false,      // disable year selection mode
-  disableMonth       : false,      // disable month selection mode
-  disableMinute      : false,      // disable minute selection mode
-  formatInput        : true,       // format the input text upon input blur and module creation
-  startCalendar      : null,       // jquery object or selector for another calendar that represents the start date of a date range
-  endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
-  multiMonth         : 1,          // show multiple months when in 'day' mode
+  firstDayOfWeek     : 0, // day for first day column (0 = Sunday)
+  constantHeight     : true, // add rows to shorter months to keep day calendar height consistent (6 rows)
+  today              : false, // show a 'today/now' button at the bottom of the calendar
+  closable           : true, // close the popup after selecting a date/time
+  monthFirst         : true, // month before day when parsing/converting date from/to text
+  touchReadonly      : true, // set input to readonly on touch devices
+  inline             : false, // create the calendar inline instead of inside a popup
+  on                 : null, // when to show the popup (defaults to 'focus' for input, 'click' for others)
+  initialDate        : null, // date to display initially when no date is selected (null = now)
+  startMode          : false, // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
+  minDate            : null, // minimum date/time that can be selected, dates/times before are disabled
+  maxDate            : null, // maximum date/time that can be selected, dates/times after are disabled
+  ampm               : true, // show am/pm in time mode
+  disableYear        : false, // disable year selection mode
+  disableMonth       : false, // disable month selection mode
+  disableMinute      : false, // disable minute selection mode
+  formatInput        : true, // format the input text upon input blur and module creation
+  startCalendar      : null, // jquery object or selector for another calendar that represents the start date of a date range
+  endCalendar        : null, // jquery object or selector for another calendar that represents the end date of a date range
+  multiMonth         : 1, // show multiple months when in 'day' mode
   minTimeGap         : 5,
-  showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
-  disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
-  disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
-  enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
-  centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
-  currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
+  showWeekNumbers    : null, // show Number of Week at the very first column of a dayView
+  disabledDates      : [], // specific day(s) which won't be selectable and contain additional information.
+  disabledDaysOfWeek : [], // day(s) which won't be selectable(s) (0 = Sunday)
+  enabledDates       : [], // specific day(s) which will be selectable, all other days will be disabled
+  centuryBreak       : 60, // starting short year until 99 where it will be assumed to belong to the last century
+  currentCentury     : 2000, // century to be added to 2-digit years (00 to {centuryBreak}-1)
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions       : {
     position     : 'bottom left',
