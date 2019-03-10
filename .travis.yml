@@ -3,12 +3,19 @@ language: node_js
 node_js:
   - 10
 
-# Stop as soon as an error is trigerred
 matrix:
-  fast_finish: true
+  include:
+    - env:
+      - JOBTYPE="test"
+    - env:
+      - JOBTYPE="lint"
 
 # Caching node_modules folder for speed up build
 cache: npm
 
 before_install:
   - sh preinstall.sh
+
+script:
+  - if [[ "${JOBTYPE}" == "test" ]]; then npm test ; fi
+  - if [[ "${JOBTYPE}" == "lint" ]]; then npm run lint ; fi
