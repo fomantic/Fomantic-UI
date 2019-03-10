@@ -254,10 +254,10 @@ $.fn.calendar = function(parameters) {
               var prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour);
               var nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour);
 
-              var prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
-                isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1);
-              var nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
-                isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
+              var prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
+                : isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1);
+              var nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
+                : isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
 
               var tempMode = mode;
               if (isDay && settings.showWeekNumbers) {
@@ -272,12 +272,12 @@ $.fn.calendar = function(parameters) {
                 row = $('<tr/>').appendTo(thead);
                 cell = $('<th/>').attr('colspan', '' + columns).appendTo(row);
 
-                var headerDate = isYear || isMonth ? new Date(year, 0, 1) :
-                  isDay ? new Date(year, month, 1) : new Date(year, month, day, hour, minute);
+                var headerDate = isYear || isMonth ? new Date(year, 0, 1)
+                  : isDay ? new Date(year, month, 1) : new Date(year, month, day, hour, minute);
                 var headerText = $('<span/>').addClass(className.link).appendTo(cell);
                 headerText.text(formatter.header(headerDate, mode, settings));
-                var newMode = isMonth ? (settings.disableYear ? 'day' : 'year') :
-                  isDay ? (settings.disableMonth ? 'year' : 'month') : 'day';
+                var newMode = isMonth ? (settings.disableYear ? 'day' : 'year')
+                  : isDay ? (settings.disableMonth ? 'year' : 'month') : 'day';
                 headerText.data(metadata.mode, newMode);
 
                 if (p === 0) {
@@ -318,12 +318,12 @@ $.fn.calendar = function(parameters) {
                   cell.addClass(className.disabledCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
-                  var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
-                    isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute) :
-                      isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
-                  var cellText = isYear ? i :
-                    isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
-                      formatter.time(cellDate, settings, true);
+                  var cellDate = isYear ? new Date(i, month, 1, hour, minute)
+                    : isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute)
+                      : isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
+                  var cellText = isYear ? i
+                    : isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate()
+                      : formatter.time(cellDate, settings, true);
                   cell = $('<td/>').addClass(className.cell).appendTo(row);
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
@@ -395,9 +395,9 @@ $.fn.calendar = function(parameters) {
               var active = cell.hasClass(className.activeCell);
               var adjacent = cell.hasClass(className.adjacentCell);
               var focused = module.helper.dateEqual(cellDate, focusDate, mode);
-              var inRange = !rangeDate ? false :
-                ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
-                (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
+              var inRange = !rangeDate ? false
+                : ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
+                || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
               cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
@@ -600,9 +600,9 @@ $.fn.calendar = function(parameters) {
             if ($.inArray(mode, validModes) >= 0) {
               return mode;
             }
-            return settings.type === 'time' ? 'hour' :
-              settings.type === 'month' ? 'month' :
-                settings.type === 'year' ? 'year' : 'day';
+            return settings.type === 'time' ? 'hour'
+              : settings.type === 'month' ? 'month'
+                : settings.type === 'year' ? 'year' : 'day';
           },
           validModes: function() {
             var validModes = [];
@@ -760,11 +760,11 @@ $.fn.calendar = function(parameters) {
         selectDate: function(date, forceSet) {
           module.verbose('New date selection', date)
           var mode = module.get.mode();
-          var complete = forceSet || mode === 'minute' ||
-            (settings.disableMinute && mode === 'hour') ||
-            (settings.type === 'date' && mode === 'day') ||
-            (settings.type === 'month' && mode === 'month') ||
-            (settings.type === 'year' && mode === 'year');
+          var complete = forceSet || mode === 'minute'
+            || (settings.disableMinute && mode === 'hour')
+            || (settings.type === 'date' && mode === 'day')
+            || (settings.type === 'month' && mode === 'month')
+            || (settings.type === 'year' && mode === 'year');
           if (complete) {
             var canceled = module.set.date(date) === false;
             if (!canceled && settings.closable) {
@@ -778,8 +778,8 @@ $.fn.calendar = function(parameters) {
             }
           }
           else {
-            var newMode = mode === 'year' ? (!settings.disableMonth ? 'month' : 'day') :
-              mode === 'month' ? 'day' : mode === 'day' ? 'hour' : 'minute';
+            var newMode = mode === 'year' ? (!settings.disableMonth ? 'month' : 'day')
+              : mode === 'month' ? 'day' : mode === 'day' ? 'hour' : 'minute';
             module.set.mode(newMode);
             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
               //the user has chosen enough to consider a valid date/time has been chosen
@@ -903,9 +903,9 @@ $.fn.calendar = function(parameters) {
               maxDate = settings.maxDate;
             }
             minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
-            return !(!date ||
-            (minDate && module.helper.dateDiff(date, minDate, mode) > 0) ||
-            (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
+            return !(!date
+            || (minDate && module.helper.dateDiff(date, minDate, mode) > 0)
+            || (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
           },
           dateInRange: function(date, minDate, maxDate) {
             if (!minDate && !maxDate) {
@@ -915,16 +915,16 @@ $.fn.calendar = function(parameters) {
             }
             minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
             var isTimeOnly = settings.type === 'time';
-            return !date ? date :
-              (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0) ?
-                (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) :
-                (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0) ?
-                  (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate) :
-                  date;
+            return !date ? date
+              : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
+                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate)
+                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0)
+                  ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
+                  : date;
           },
           mergeDateTime: function(date, time) {
-            return (!date || !time) ? time :
-              new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
+            return (!date || !time) ? time
+              : new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
           }
         },
 
@@ -1170,11 +1170,11 @@ $.fn.calendar.settings = {
 
   formatter: {
     header: function(date, mode, settings) {
-      return mode === 'year' ? settings.formatter.yearHeader(date, settings) :
-        mode === 'month' ? settings.formatter.monthHeader(date, settings) :
-          mode === 'day' ? settings.formatter.dayHeader(date, settings) :
-            mode === 'hour' ? settings.formatter.hourHeader(date, settings) :
-              settings.formatter.minuteHeader(date, settings);
+      return mode === 'year' ? settings.formatter.yearHeader(date, settings)
+        : mode === 'month' ? settings.formatter.monthHeader(date, settings)
+          : mode === 'day' ? settings.formatter.dayHeader(date, settings)
+            : mode === 'hour' ? settings.formatter.hourHeader(date, settings)
+              : settings.formatter.minuteHeader(date, settings);
     },
     yearHeader: function(date, settings) {
       var decadeYear = Math.ceil(date.getFullYear() / 10) * 10;
@@ -1213,9 +1213,9 @@ $.fn.calendar.settings = {
       var day = date.getDate();
       var month = settings.text.months[date.getMonth()];
       var year = date.getFullYear();
-      return settings.type === 'year' ? year :
-        settings.type === 'month' ? month + ' ' + year :
-          (settings.monthFirst ? month + ' ' + day : day + ' ' + month) + ', ' + year;
+      return settings.type === 'year' ? year
+        : settings.type === 'month' ? month + ' ' + year
+          : (settings.monthFirst ? month + ' ' + day : day + ' ' + month) + ', ' + year;
     },
     time: function(date, settings, forCalendar) {
       if (!date) {
@@ -1259,8 +1259,8 @@ $.fn.calendar.settings = {
 
       if (!isDateOnly) {
         //am/pm
-        isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0 ? true :
-          $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
+        isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0 ? true
+          : $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
 
         //time with ':'
         for (i = 0; i < numbers.length; i++) {

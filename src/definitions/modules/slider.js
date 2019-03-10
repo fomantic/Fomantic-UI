@@ -605,10 +605,8 @@ $.fn.slider = function(parameters) {
         determine: {
           pos: function(pagePos) {
             return module.is.reversed()
-              ?
-              module.get.trackStartPos() - pagePos + module.get.trackOffset()
-              :
-              pagePos - module.get.trackOffset() - module.get.trackStartPos()
+              ? module.get.trackStartPos() - pagePos + module.get.trackOffset()
+              : pagePos - module.get.trackOffset() - module.get.trackStartPos()
             ;
           },
           closestThumb: function(eventPos) {
@@ -632,10 +630,8 @@ $.fn.slider = function(parameters) {
           thumbPos: function($element) {
             var pos =
               module.is.vertical()
-                ?
-                module.is.reversed() ? $element.css('bottom') : $element.css('top')
-                :
-                module.is.reversed() ? $element.css('right') : $element.css('left')
+                ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
+                : module.is.reversed() ? $element.css('right') : $element.css('left')
             ;
             return pos;
           },
@@ -734,31 +730,23 @@ $.fn.slider = function(parameters) {
               key = event.which,
               downArrow =
                 module.is.vertical()
-                  ?
-                  module.is.reversed() ? keys.downArrow : keys.upArrow
-                  :
-                  keys.downArrow
+                  ?                  module.is.reversed() ? keys.downArrow : keys.upArrow
+                  :                  keys.downArrow
               ,
               upArrow =
                 module.is.vertical()
-                  ?
-                  module.is.reversed() ? keys.upArrow : keys.downArrow
-                  :
-                  keys.upArrow
+                  ?                  module.is.reversed() ? keys.upArrow : keys.downArrow
+                  :                  keys.upArrow
               ,
               leftArrow =
                 !module.is.vertical()
-                  ?
-                  module.is.reversed() ? keys.rightArrow : keys.leftArrow
-                  :
-                  keys.leftArrow
+                  ?                  module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                  :                  keys.leftArrow
               ,
               rightArrow =
                 !module.is.vertical()
-                  ?
-                  module.is.reversed() ? keys.leftArrow : keys.rightArrow
-                  :
-                  keys.rightArrow
+                  ?                  module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                  :                  keys.rightArrow
             ;
             if (key == downArrow || key == leftArrow) {
               return SINGLE_BACKSTEP;
@@ -938,10 +926,8 @@ $.fn.slider = function(parameters) {
               endMargin   = module.get.trackEndMargin(),
               posDir =
                 module.is.vertical()
-                  ?
-                  module.is.reversed() ? 'bottom' : 'top'
-                  :
-                  module.is.reversed() ? 'right' : 'left',
+                  ?                  module.is.reversed() ? 'bottom' : 'top'
+                  :                  module.is.reversed() ? 'right' : 'left',
               startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
             ;
             var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
