@@ -2687,7 +2687,7 @@ $.fn.dropdown = function(parameters) {
                 }
               })
             ;
-          },
+          }
         },
 
         add: {
@@ -2884,7 +2884,7 @@ $.fn.dropdown = function(parameters) {
             }
             module.set.value(newValue, addedValue, addedText, $selectedItem);
             module.check.maxSelections();
-          },
+          }
         },
 
         remove: {

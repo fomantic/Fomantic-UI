@@ -1060,7 +1060,7 @@ $.fn.popup = function(parameters) {
             $scrollContext
               .off(elementNamespace)
             ;
-          },
+          }
         },
 
         has: {
@@ -1072,7 +1072,7 @@ $.fn.popup = function(parameters) {
         should: {
           centerArrow: function(calculations) {
             return !module.is.basic() && calculations.target.width <= (settings.arrowPixelsFromEdge * 2);
-          },
+          }
         },
 
         is: {

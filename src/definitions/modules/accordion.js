@@ -365,7 +365,7 @@ $.fn.accordion = function(parameters) {
                 .removeAttr('style')
               ;
             }
-          },
+          }
 
         },
 

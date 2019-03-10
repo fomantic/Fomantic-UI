@@ -297,7 +297,7 @@ $.fn.slider = function(parameters) {
               $(document).off('mousemove' + eventNamespace);
               $(document).off('mouseup' + eventNamespace);
             }
-          },
+          }
         },
 
         event: {
@@ -376,7 +376,7 @@ $.fn.slider = function(parameters) {
               module.event.keydown(event, true);
               $module.focus();
             }
-          },
+          }
         },
 
         resync: function() {
@@ -938,7 +938,7 @@ $.fn.slider = function(parameters) {
           },
           min: function() {
             module.set.value(module.get.min());
-          },
+          }
         },
 
         read: {
@@ -1224,6 +1224,6 @@ $.fn.slider.settings = {
   },
 
   onChange : function(value, thumbVal, secondThumbVal) {},
-  onMove   : function(value, thumbVal, secondThumbVal) {},
+  onMove   : function(value, thumbVal, secondThumbVal) {}
 };
 })(jQuery, window, document);

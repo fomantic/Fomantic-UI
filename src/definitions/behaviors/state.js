@@ -674,7 +674,7 @@ $.fn.state.settings = {
     button: {
       disabled : true,
       loading  : true,
-      active   : true,
+      active   : true
     },
     progress: {
       active  : true,

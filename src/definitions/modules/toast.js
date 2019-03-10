@@ -576,7 +576,7 @@ $.fn.toast.settings = {
   onClick   : function() {},
   onHide    : function() {},
   onHidden  : function() {},
-  onRemove  : function() {},
+  onRemove  : function() {}
 };
 
 $.extend($.easing, {

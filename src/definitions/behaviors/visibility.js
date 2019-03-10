@@ -226,7 +226,7 @@ $.fn.visibility = function(parameters) {
           // subscribes to scrollchange
           scrollchange: function(event, scrollPosition) {
             module.checkVisibility(scrollPosition);
-          },
+          }
         },
 
         precache: function(images, callback) {
@@ -282,7 +282,7 @@ $.fn.visibility = function(parameters) {
             module.cache = {
               occurred : {},
               screen   : {},
-              element  : {},
+              element  : {}
             };
           },
           image: function() {

@@ -260,7 +260,7 @@ $.fn.sticky = function(parameters) {
               element = {
                 margin: {
                   top    : parseInt($module.css('margin-top'), 10),
-                  bottom : parseInt($module.css('margin-bottom'), 10),
+                  bottom : parseInt($module.css('margin-bottom'), 10)
                 },
                 offset : $module.offset(),
                 width  : $module.outerWidth(),

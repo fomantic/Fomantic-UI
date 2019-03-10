@@ -463,7 +463,7 @@ $.fn.search = function(parameters) {
               result = module.search.object(value, results, lookupFields)[0];
             }
             return result || false;
-          },
+          }
         },
 
         select: {

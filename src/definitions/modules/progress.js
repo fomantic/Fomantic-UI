@@ -332,7 +332,7 @@ $.fn.progress = function(parameters) {
               module.update.toNextValue();
               module.remove.progressPoll();
             }, module.get.updateInterval());
-          },
+          }
         },
 
         is: {

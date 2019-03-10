@@ -677,7 +677,7 @@ $.fn.modal = function(parameters) {
               scrollHeight  : scrollHeight + settings.offset,
               contextHeight : (settings.context == 'body')
                 ? $(window).height()
-                : $dimmable.height(),
+                : $dimmable.height()
             };
             module.cache.topOffset = -(module.cache.height / 2);
           }

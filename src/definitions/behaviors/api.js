@@ -1146,7 +1146,7 @@ $.api.settings = {
 
   regExp: {
     required : /\{\$*[A-z0-9]+\}/g,
-    optional : /\{\/\$*[A-z0-9]+\}/g,
+    optional : /\{\/\$*[A-z0-9]+\}/g
   },
 
   className: {
