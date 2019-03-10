@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 "use strict";
 
 $.isFunction = $.isFunction || function(obj) {
@@ -24,7 +23,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
 ;
 
 $.fn.embed = function(parameters) {
-
   var
     $allModules     = $(this),
 
@@ -703,7 +701,4 @@ $.fn.embed.settings = {
   onStop  : function() {}
 
 };
-
-
-
 })(jQuery, window, document);

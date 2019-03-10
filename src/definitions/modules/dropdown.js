@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -126,7 +125,6 @@ $.fn.dropdown = function(parameters) {
             module.observeChanges();
             module.instantiate();
           }
-
         },
 
         instantiate: function() {
@@ -939,7 +937,6 @@ $.fn.dropdown = function(parameters) {
           query = query.toLowerCase();
           term  = term.toLowerCase();
           return term.indexOf(query) > -1;
-
         },
         filterActive: function() {
           if (settings.useLabels) {
@@ -1472,7 +1469,6 @@ $.fn.dropdown = function(parameters) {
 
               // visible menu keyboard shortcuts
               if (module.is.visible()) {
-
                 // enter (select or open sub-menu)
                 if (pressedKey == keys.enter || delimiterPressed) {
                   if (pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
@@ -1494,9 +1490,7 @@ $.fn.dropdown = function(parameters) {
 
                 // sub-menu actions
                 if (hasSelectedItem) {
-
                   if (pressedKey == keys.leftArrow) {
-
                     isSubMenuItem = ($parentMenu[0] !== $menu[0]);
 
                     if (isSubMenuItem) {
@@ -1599,7 +1593,6 @@ $.fn.dropdown = function(parameters) {
                   module.verbose('Escape key pressed, closing dropdown');
                   module.hide();
                 }
-
               }
               else {
                 // delimiter key
@@ -4124,5 +4117,4 @@ $.fn.dropdown.settings.templates = {
   }
 
 };
-
 })(jQuery, window, document);

@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -113,7 +112,6 @@ $.fn.toast = function(parameters) {
           module.remove.visible();
           module.unbind.events();
           module.animate.close(callback);
-
         },
 
         create: {
@@ -597,6 +595,4 @@ $.extend($.easing, {
     }
   }
 });
-
-
 })(jQuery, window, document);

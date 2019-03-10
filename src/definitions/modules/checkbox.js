@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -872,5 +871,4 @@ $.fn.checkbox.settings = {
   }
 
 };
-
 })(jQuery, window, document);

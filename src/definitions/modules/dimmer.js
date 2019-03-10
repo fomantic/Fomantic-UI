@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -70,7 +69,6 @@ $.fn.dimmer = function(parameters) {
 
         preinitialize: function() {
           if (module.is.dimmer()) {
-
             $dimmable = $module.parent();
             $dimmer   = $module;
           }
@@ -749,5 +747,4 @@ $.fn.dimmer.settings = {
   }
 
 };
-
 })(jQuery, window, document);

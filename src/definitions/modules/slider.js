@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 "use strict";
 
 window = (typeof window != 'undefined' && window.Math == Math)
@@ -20,7 +19,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
 ;
 
 $.fn.slider = function(parameters) {
-
   var
     $allModules    = $(this),
 
@@ -50,7 +48,6 @@ $.fn.slider = function(parameters) {
 
   $allModules
     .each(function() {
-
       var
         settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.slider.settings, parameters)
@@ -1161,7 +1158,6 @@ $.fn.slider = function(parameters) {
     ? returnedValue
     : this
   ;
-
 };
 
 $.fn.slider.settings = {
@@ -1230,6 +1226,4 @@ $.fn.slider.settings = {
   onChange : function(value, thumbVal, secondThumbVal) {},
   onMove   : function(value, thumbVal, secondThumbVal) {},
 };
-
-
 })(jQuery, window, document);

@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -75,7 +74,6 @@ $.fn.form = function(parameters) {
       module      = {
 
         initialize: function() {
-
           // settings grabbed at run time
           module.get.settings();
           if (methodInvoked) {
@@ -1734,5 +1732,4 @@ $.fn.form.settings = {
   }
 
 };
-
 })(jQuery, window, document);

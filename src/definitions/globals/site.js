@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 $.isFunction = $.isFunction || function(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
 };
@@ -488,6 +487,4 @@ $.extend($.expr[ ":" ], {
       return !!$.data(elem, match[ 3 ]);
     }
 });
-
-
 })(jQuery, window, document);

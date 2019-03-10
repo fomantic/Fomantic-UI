@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -1207,7 +1206,6 @@ $.fn.search = function(parameters) {
         }
         module.initialize();
       }
-
     })
   ;
 
@@ -1407,11 +1405,9 @@ $.fn.search.settings = {
         escape = $.fn.search.settings.templates.escape
       ;
       if (response[fields.categoryResults] !== undefined) {
-
         // each category
         $.each(response[fields.categoryResults], function(index, category) {
           if (category[fields.results] !== undefined && category.results.length > 0) {
-
             html  += '<div class="category">';
 
             if (category[fields.categoryName] !== undefined) {
@@ -1479,7 +1475,6 @@ $.fn.search.settings = {
         escape = $.fn.search.settings.templates.escape
       ;
       if (response[fields.results] !== undefined) {
-
         // each result
         $.each(response[fields.results], function(index, result) {
           if (result[fields.url]) {
@@ -1530,5 +1525,4 @@ $.fn.search.settings = {
     }
   }
 };
-
 })(jQuery, window, document);

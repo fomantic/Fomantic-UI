@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -86,7 +85,6 @@ $.fn.visibility = function(parameters) {
           module.setup.cache();
 
           if (module.should.trackChanges()) {
-
             if (settings.type == 'image') {
               module.setup.image();
             }
@@ -474,7 +472,6 @@ $.fn.visibility = function(parameters) {
           module.verbose('Checking visibility of element', module.cache.element);
 
           if (!disabled && module.is.visible()) {
-
             // save scroll position
             module.save.scroll(scroll);
 
@@ -1309,5 +1306,4 @@ $.fn.visibility.settings = {
   }
 
 };
-
 })(jQuery, window, document);

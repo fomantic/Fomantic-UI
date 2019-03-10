@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -844,6 +843,4 @@ $.fn.shape.settings = {
   }
 
 };
-
-
 })(jQuery, window, document);

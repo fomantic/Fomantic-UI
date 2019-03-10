@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -75,7 +74,6 @@ $.fn.sticky = function(parameters) {
       module      = {
 
         initialize: function() {
-
           module.determineContainer();
           module.determineContext();
           module.verbose('Initializing sticky', settings, $container);
@@ -492,7 +490,6 @@ $.fn.sticky = function(parameters) {
             elementVisible = (element.height !== 0)
           ;
           if (elementVisible && !sameHeight) {
-
             if (module.is.initialPosition()) {
               if (scroll.top >= context.bottom) {
                 module.debug('Initial element position is bottom of container');
@@ -508,10 +505,8 @@ $.fn.sticky = function(parameters) {
                   module.fixTop();
                 }
               }
-
             }
             else if (module.is.fixed()) {
-
               // currently fixed top
               if (module.is.top()) {
                 if (scroll.top <= element.top) {
@@ -532,7 +527,6 @@ $.fn.sticky = function(parameters) {
 
               // currently fixed bottom
               else if (module.is.bottom()) {
-
                 // top edge
                 if ((scroll.bottom - element.height) <= element.top) {
                   module.debug('Bottom fixed rail has reached top of container');
@@ -549,7 +543,6 @@ $.fn.sticky = function(parameters) {
                   module.save.lastScroll(scroll.top);
                   module.save.elementScroll(elementScroll);
                 }
-
               }
             }
             else if (module.is.bottom()) {
@@ -953,5 +946,4 @@ $.fn.sticky.settings = {
   }
 
 };
-
 })(jQuery, window, document);

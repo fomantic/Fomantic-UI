@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -61,7 +60,6 @@ $.fn.transition = function() {
       module = {
 
         initialize: function() {
-
           // get full settings
           settings        = module.get.settings.apply(element, moduleArguments);
 
@@ -784,7 +782,6 @@ $.fn.transition = function() {
           else {
             module.hideNow();
           }
-
         },
 
         hideNow: function() {
@@ -1103,6 +1100,4 @@ $.fn.transition.settings = {
   }
 
 };
-
-
 })(jQuery, window, document);

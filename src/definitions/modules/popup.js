@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -738,7 +737,6 @@ $.fn.popup = function(parameters) {
 
         set: {
           position: function(position, calculations) {
-
             // exit conditions
             if ($target.length === 0 || $popup.length === 0) {
               module.error(error.notFound);
@@ -1528,6 +1526,4 @@ $.fn.popup.settings = {
   }
 
 };
-
-
 })(jQuery, window, document);

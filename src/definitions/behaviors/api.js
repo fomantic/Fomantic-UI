@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isWindow = $.isWindow || function(obj) {
@@ -25,7 +24,6 @@ var
 ;
 
 $.api = $.fn.api = function(parameters) {
-
   var
     // use window context if none specified
     $allModules     = $.isFunction(this)
@@ -174,7 +172,6 @@ $.api = $.fn.api = function(parameters) {
         },
 
         query: function() {
-
           if (module.is.disabled()) {
             module.debug('Element is disabled API request aborted');
             return;
@@ -273,7 +270,6 @@ $.api = $.fn.api = function(parameters) {
               }, settings.throttle);
             }
           }
-
         },
 
         should: {
@@ -1168,7 +1164,4 @@ $.api.settings = {
     url    : 'url'
   }
 };
-
-
-
 })(jQuery, window, document);

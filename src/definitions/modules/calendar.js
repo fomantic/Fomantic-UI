@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -1517,5 +1516,4 @@ $.fn.calendar.settings = {
     message     : 'message'
   }
 };
-
 })(jQuery, window, document);

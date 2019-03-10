@@ -9,7 +9,6 @@
  */
 
 ;(function($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function(obj) {
@@ -488,5 +487,4 @@ $.extend($.easing, {
     return -c *(t/=d)*(t-2) + b;
   }
 });
-
 })(jQuery, window, document);
