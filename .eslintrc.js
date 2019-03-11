@@ -27,6 +27,7 @@ module.exports = {
         '?': 'before',
         ':': 'before',
         '+': 'before',
+        '&&': 'before',
         '||': 'before'
       }
     }],

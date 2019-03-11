@@ -1434,9 +1434,9 @@ $.fn.form.settings = {
         }
       }
       return (
-        intRegExp.test(value) &&
-        (min === undefined || value >= min) &&
-        (max === undefined || value <= max)
+        intRegExp.test(value)
+        && (min === undefined || value >= min)
+        && (max === undefined || value <= max)
       );
     },
 
