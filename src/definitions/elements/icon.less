@@ -33,7 +33,6 @@
   text-decoration: inherit;
   text-transform: none;
 }
-
 i.icon {
   display: inline-block;
   opacity: @opacity;
@@ -54,7 +53,6 @@ i.icon {
   -webkit-font-smoothing: antialiased;
   backface-visibility: hidden;
 }
-
 i.icon:before {
   background: none !important;
 }
@@ -82,7 +80,6 @@ i.icon:active, i.icons:active,
 i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
   opacity: 1;
 }
-
 i.disabled.icon, i.disabled.icons {
   opacity: @disabledOpacity;
   cursor: default;
@@ -157,12 +154,10 @@ i.right.rotated.icon,
 i.clockwise.rotated.icon {
   transform: rotate(90deg);
 }
-
 i.left.rotated.icon,
 i.counterclockwise.rotated.icon {
   transform: rotate(-90deg);
 }
-
 i.halfway.rotated.icon {
   transform: rotate(180deg);
 }
@@ -175,27 +170,22 @@ i.right.rotated.flipped.icon,
 i.clockwise.rotated.flipped.icon {
   transform: scale(-1, 1) rotate(90deg);
 }
-
 i.left.rotated.flipped.icon,
 i.counterclockwise.rotated.flipped.icon {
   transform: scale(-1, 1) rotate(-90deg);
 }
-
 i.halfway.rotated.flipped.icon {
   transform: scale(-1, 1) rotate(180deg);
 }
-
 i.rotated.vertically.flipped.icon,
 i.right.rotated.vertically.flipped.icon,
 i.clockwise.rotated.vertically.flipped.icon {
   transform: scale(1, -1) rotate(90deg);
 }
-
 i.left.rotated.vertically.flipped.icon,
 i.counterclockwise.rotated.vertically.flipped.icon {
   transform: scale(1, -1) rotate(-90deg);
 }
-
 i.halfway.rotated.vertically.flipped.icon {
   transform: scale(1, -1) rotate(180deg);
 }
@@ -228,7 +218,6 @@ i.inverted.circular.icon {
   background-color: @black;
   color: @white;
 }
-
 i.inverted.icon {
   color: @white;
 }
@@ -314,7 +303,6 @@ i.icons {
   position: relative;
   line-height: 1;
 }
-
 i.icons .icon {
   position: absolute;
   top: 50%;
@@ -322,7 +310,6 @@ i.icons .icon {
   transform: translateX(-50%) translateY(-50%);
   margin: 0;
 }
-
 i.icons .icon:first-child {
   position: static;
   width: auto;
@@ -365,7 +352,6 @@ i.icons .icon.corner[class*="bottom right"] {
   right: 0;
   bottom: 0;
 }
-
 i.icons .inverted.corner.icon {
   text-shadow: @cornerIconInvertedShadow;
 }

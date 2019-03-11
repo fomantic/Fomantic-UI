@@ -6,58 +6,47 @@
  @element : 'slider';
 
  @import (multiple) '../../theme.config';
-
 .ui.slider:not(.vertical):not(.checkbox) {
   width: 100%;
   padding: @padding;
 }
-
 .ui.slider:not(.checkbox) {
   position: relative;
 }
-
 .ui.slider:not(.checkbox):focus {
   outline: 0;
 }
-
 .ui.slider .inner {
   position: relative;
   z-index: 2;
 }
-
 .ui.slider:not(.vertical) .inner {
   height: @height;
 }
-
 .ui.slider .inner:hover {
   cursor: @hoverPointer;
 }
-
 .ui.slider .inner .track {
   position: absolute;
   border-radius: @trackBorderRadius;
   background-color: @trackColor;
 }
-
 .ui.slider:not(.vertical) .inner .track {
   width: 100%;
   height: @trackHeight;
   top: @trackPositionTop;
   left: 0;
 }
-
 .ui.slider .inner .track-fill {
   position: absolute;
   border-radius: @trackFillBorderRadius;
   background-color: @trackFillColor;
 }
-
 .ui.slider:not(.vertical) .inner .track-fill {
   height: @trackFillHeight;
   top: @trackPositionTop;
   left: 0;
 }
-
 .ui.slider .inner .thumb {
   position: absolute;
   left: 0;
@@ -69,12 +58,10 @@
   box-shadow: @thumbShadow;
   transition: @thumbTransition;
 }
-
 .ui.slider:not(.disabled) .inner .thumb:hover {
   cursor: @thumbHoverPointer;
   background: @thumbHoverBackground;
 }
-
 .ui.slider:not(.disabled):focus .inner .thumb {
   background: @thumbHoverBackground;
 }
@@ -89,14 +76,12 @@
      Disabled
 ---------------*/
 
-.ui.disabled.slider:not(.checkbox) {
+.ui.disabled.slider {
   opacity: @disabledOpactiy;
 }
-
 .ui.disabled.slider .inner:hover {
   cursor: auto;
 }
-
 .ui.disabled.slider .inner .track-fill {
   background: @disabledTrackFillColor;
 }
@@ -109,12 +94,10 @@
   left: auto;
   right: 0;
 }
-
 .ui.reversed.slider .inner .thumb {
   left: auto;
   right: 0;
 }
-
 .ui.labeled.reversed.slider > .labels .label {
   transform: translate(-100%, -100%);
 }
@@ -132,18 +115,15 @@
   width: @height;
   padding: @verticalPadding;
 }
-
 .ui.vertical.slider .inner {
   height: 100%;
 }
-
 .ui.vertical.slider .inner .track {
   height: 100%;
   width: @trackHeight;
   left: @trackPositionTop;
   top: 0;
 }
-
 .ui.vertical.slider .inner .track-fill {
   width: @trackFillHeight;
   left: @trackPositionTop;
@@ -155,7 +135,6 @@
   top: auto;
   bottom: 0;
 }
-
 .ui.vertical.reversed.slider .inner .track-fill {
   top: auto;
   bottom: 0;
@@ -175,17 +154,14 @@
   left: 0;
   right: 0;
 }
-
 .ui.labeled.slider:not(.vertical) > .labels {
   transform: translateY(-50%);
 }
-
 .ui.labeled.slider > .labels .label {
   display: inline-flex;
   position: absolute;
   transform: translate(-50%, -100%);
 }
-
 .ui.labeled.ticked.slider > .labels .label:after {
   content: ' ';
   height: @labelHeight;
@@ -206,11 +182,9 @@
   bottom: 0;
   transform: translateX(-50%);
 }
-
 .ui.labeled.vertical.slider > .labels .label {
   transform: translate(-100%, -50%);
 }
-
 .ui.labeled.vertical.slider > .labels .label:after {
   width: @labelHeight;
   height: @labelWidth;
@@ -231,7 +205,6 @@
   opacity: @hoverVarOpacity;
   transition: @hoverOpacityTransition;
 }
-
 .ui.hover.slider:not(.disabled):hover .inner .thumb, .ui.hover.slider:not(.disabled):focus .inner .thumb {
   opacity: @hoverVarHoverOpacity;
 }
@@ -245,7 +218,6 @@
 .ui.inverted.slider .inner .track-fill {
   background-color: @invertedTrackFillColor;
 }
-
 .ui.inverted.slider .inner .track {
   background-color: @transparentWhite;
 }

@@ -33,7 +33,6 @@
   padding: @padding;
   border-radius: @borderRadius;
 }
-
 .ui.progress:first-child {
   margin: @firstMargin;
 }
@@ -296,6 +295,7 @@
   transform-origin: left;
 }
 @keyframes progress-active {
+
   0% {
     opacity: @activePulseMaxOpacity;
     transform: scale(0, 1);
@@ -426,28 +426,24 @@ each(@colors, {
 .ui.tiny.progress .bar {
   height: @tinyBarHeight;
 }
-
 .ui.small.progress {
   font-size: @small;
 }
 .ui.small.progress .bar {
   height: @smallBarHeight;
 }
-
 .ui.progress {
   font-size: @medium;
 }
 .ui.progress .bar {
   height: @barHeight;
 }
-
 .ui.large.progress {
   font-size: @large;
 }
 .ui.large.progress .bar {
   height: @largeBarHeight;
 }
-
 .ui.big.progress {
   font-size: @big;
 }

@@ -50,7 +50,6 @@
 .ui.items {
   margin: @groupMargin;
 }
-
 .ui.items:first-child {
   margin-top: 0 !important;
 }
@@ -100,7 +99,6 @@
   border-radius: @imageBorderRadius;
   border: @imageBorder;
 }
-
 .ui.items > .item > .image:only-child > img {
   border-radius: @borderRadius;
 }
@@ -130,7 +128,6 @@
   overflow: hidden;
   visibility: hidden;
 }
-
 .ui.items > .item > .image + .content {
   min-width: 0;
   width: @contentWidth;
@@ -139,7 +136,6 @@
   align-self: @contentVerticalAlign;
   padding-left: @contentImageDistance;
 }
-
 .ui.items > .item > .content > .header {
   display: inline-block;
   margin: @headerMargin;
@@ -219,7 +215,6 @@
 .ui.items > .item .meta :last-child {
   margin-right: 0;
 }
-
 .ui.items > .item .meta [class*="right floated"] {
   margin-right: 0;
   margin-left: @metaSpacing;
@@ -316,7 +311,6 @@
 .ui.items > .item .extra > [class*="right floated"] {
   margin: (@extraRowSpacing / 2) 0 (@extraRowSpacing / 2) @extraHorizontalSpacing;
 }
-
 .ui.items > .item .extra:after {
   display: block;
   content: ' ';
@@ -339,6 +333,7 @@
 
 /* Tablet Only */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui.items > .item {
     margin: @tabletItemSpacing 0;
   }
@@ -354,6 +349,7 @@
 
 /* Mobile Only */
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.items:not(.unstackable) > .item {
     flex-direction: column;
     margin: @mobileItemSpacing 0;
@@ -446,7 +442,6 @@
 .ui.link.items > .item:hover {
   cursor: pointer;
 }
-
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
   color: @headerLinkHoverColor;
@@ -466,6 +461,7 @@
 ----------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.unstackable.items > .item > .image,
   .ui.unstackable.items > .item > .image > img {
     width: @unstackableMobileImageWidth !important;

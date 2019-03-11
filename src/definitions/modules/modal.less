@@ -39,7 +39,6 @@
   user-select: text;
   will-change: top, left, margin, transform, opacity;
 }
-
 .ui.modal > :first-child:not(.icon):not(.dimmer),
 .ui.modal > .icon:first-child + *,
 .ui.modal > .dimmer:first-child + *:not(.icon),
@@ -47,7 +46,6 @@
   border-top-left-radius: @borderRadius;
   border-top-right-radius: @borderRadius;
 }
-
 .ui.modal > :last-child {
   border-bottom-left-radius: @borderRadius;
   border-bottom-right-radius: @borderRadius;
@@ -144,7 +142,6 @@
   min-width: 0;
   align-self: @descriptionVerticalAlign;
 }
-
 .ui.modal > .content > .icon + .description,
 .ui.modal > .content > .image + .description {
   flex: 0 1 auto;
@@ -185,30 +182,35 @@
 
 /* Modal Width */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.modal:not(.fullscreen) {
     width: @mobileWidth;
     margin: @mobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
+
   .ui.modal:not(.fullscreen) {
     width: @tabletWidth;
     margin: @tabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
+
   .ui.modal:not(.fullscreen) {
     width: @computerWidth;
     margin: @computerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
+
   .ui.modal:not(.fullscreen) {
     width: @largeMonitorWidth;
     margin: @largeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+
   .ui.modal:not(.fullscreen) {
     width: @widescreenMonitorWidth;
     margin: @widescreenMonitorMargin;
@@ -217,6 +219,7 @@
 
 /* Tablet and Mobile */
 @media only screen and (max-width : @largestTabletScreen) {
+
   .ui.modal > .header {
     padding-right: @closeHitbox;
   }
@@ -316,7 +319,6 @@
   right: @basicModalCloseRight;
   color: @basicInnerCloseColor;
 }
-
 .ui.inverted.dimmer > .basic.modal {
   color: @basicInvertedModalColor;
 }
@@ -338,7 +340,6 @@
 .ui.top.aligned.dimmer > .ui.legacy.legacy.modal:not(.aligned) {
   top: auto;
 }
-
 .ui.legacy.overlay.fullscreen.modal {
   margin-top: -@scrollingMargin !important;
 }
@@ -352,7 +353,6 @@
   visibility: hidden;
   z-index: @loadingZIndex;
 }
-
 .ui.active.modal {
   display: block;
 }
@@ -373,6 +373,7 @@
 }
 
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.top.aligned.modal {
     top: @mobileTopAlignedMargin;
   }
@@ -470,30 +471,35 @@
 
 /* Mini Modal Width */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.mini.modal {
     width: @miniMobileWidth;
     margin: @miniMobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
+
   .ui.mini.modal {
     width: @miniTabletWidth;
     margin: @miniTabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
+
   .ui.mini.modal {
     width: @miniComputerWidth;
     margin: @miniComputerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
+
   .ui.mini.modal {
     width: @miniLargeMonitorWidth;
     margin: @miniLargeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+
   .ui.mini.modal {
     width: @miniWidescreenMonitorWidth;
     margin: @miniWidescreenMonitorMargin;
@@ -507,30 +513,35 @@
 
 /* Tiny Modal Width */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.tiny.modal {
     width: @tinyMobileWidth;
     margin: @tinyMobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
+
   .ui.tiny.modal {
     width: @tinyTabletWidth;
     margin: @tinyTabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
+
   .ui.tiny.modal {
     width: @tinyComputerWidth;
     margin: @tinyComputerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
+
   .ui.tiny.modal {
     width: @tinyLargeMonitorWidth;
     margin: @tinyLargeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+
   .ui.tiny.modal {
     width: @tinyWidescreenMonitorWidth;
     margin: @tinyWidescreenMonitorMargin;
@@ -544,30 +555,35 @@
 
 /* Small Modal Width */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.small.modal {
     width: @smallMobileWidth;
     margin: @smallMobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
+
   .ui.small.modal {
     width: @smallTabletWidth;
     margin: @smallTabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
+
   .ui.small.modal {
     width: @smallComputerWidth;
     margin: @smallComputerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
+
   .ui.small.modal {
     width: @smallLargeMonitorWidth;
     margin: @smallLargeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+
   .ui.small.modal {
     width: @smallWidescreenMonitorWidth;
     margin: @smallWidescreenMonitorMargin;
@@ -579,30 +595,35 @@
   font-size: @largeHeaderSize;
 }
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.large.modal {
     width: @largeMobileWidth;
     margin: @largeMobileMargin;
   }
 }
 @media only screen and (min-width : @tabletBreakpoint) {
+
   .ui.large.modal {
     width: @largeTabletWidth;
     margin: @largeTabletMargin;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
+
   .ui.large.modal {
     width: @largeComputerWidth;
     margin: @largeComputerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {
+
   .ui.large.modal {
     width: @largeLargeMonitorWidth;
     margin: @largeLargeMonitorMargin;
   }
 }
 @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+
   .ui.large.modal {
     width: @largeWidescreenMonitorWidth;
     margin: @largeWidescreenMonitorMargin;
@@ -616,30 +637,27 @@
 .ui.inverted.modal {
   background: @invertedBackground;
 }
-
 .ui.inverted.modal > .header,
 .ui.inverted.modal > .content {
   background: @invertedBackground;
   color: @invertedHeaderColor;
 }
-
 .ui.inverted.modal > .actions {
   background: @invertedActionBackground;
   border-top: @invertedActionBorder;
   color: @invertedActionColor;
 }
-
 .ui.inverted.dimmer > .modal > .close {
   color: @invertedDimmerCloseColor;
 }
 
 
 @media only screen and (max-width: @largestTabletScreen) {
+
   .ui.dimmer .inverted.modal > .close {
     color: @invertedCloseColor;
   }
 }
-
 .ui.inverted.fullscreen.modal > .close {
   color: @invertedCloseColor;
 }

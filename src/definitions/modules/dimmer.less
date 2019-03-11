@@ -24,7 +24,6 @@
 .dimmable:not(body) {
   position: @dimmablePosition;
 }
-
 .ui.dimmer {
   display: none;
   position: @dimmerPosition;
@@ -69,6 +68,7 @@
 
 /* Scrollbars */
 .addScrollbars() when (@useCustomScrollbars) {
+
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
@@ -146,12 +146,10 @@
   perspective: @perspective;
   transform-origin: center center;
 }
-
 body.animating.in.dimmable,
 body.dimmed.dimmable {
   overflow: hidden;
 }
-
 body.dimmable > .dimmer {
   position: fixed;
 }
@@ -249,7 +247,6 @@ body.dimmable > .dimmer {
   background-color: @simpleEndBackgroundColor;
   z-index: @simpleZIndex;
 }
-
 .ui.simple.inverted.dimmer {
   background-color: @simpleInvertedStartBackgroundColor;
 }
@@ -275,7 +272,6 @@ body.dimmable > .dimmer {
   transform: translateY(-50%);
   -webkit-transform: translateY(calc(-50% - .5px));
 }
-
 .ui.segment > .ui[class*="top dimmer"] {
     border-bottom-left-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
@@ -287,7 +283,6 @@ body.dimmable > .dimmer {
     border-top-left-radius: 0 !important;
     border-top-right-radius: 0 !important;
 }
-
 .ui[class*="center dimmer"].transition[class*="fade up"].in {
   animation-name: fadeInUpCenter;
 }
@@ -304,6 +299,7 @@ body.dimmable > .dimmer {
   animation-name: bounceCenter;
 }
 @keyframes fadeInUpCenter {
+
   0% {
     opacity: 0;
     transform: translateY(-40%);
@@ -316,6 +312,7 @@ body.dimmable > .dimmer {
   }
 }
 @keyframes fadeInDownCenter {
+
   0% {
     opacity: 0;
     transform: translateY(-60%);
@@ -328,6 +325,7 @@ body.dimmable > .dimmer {
   }
 }
 @keyframes fadeOutUpCenter {
+
   0% {
     opacity: 1;
     transform: translateY(-50%);
@@ -340,6 +338,7 @@ body.dimmable > .dimmer {
   }
 }
 @keyframes fadeOutDownCenter {
+
   0% {
     opacity: 1;
     transform: translateY(-50%);
@@ -352,6 +351,7 @@ body.dimmable > .dimmer {
   }
 }
 @keyframes bounceCenter {
+
   0%, 20%, 50%, 80%, 100% {
     transform: translateY(-50%);
     -webkit-transform: translateY(calc(-50% - .5px));

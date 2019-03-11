@@ -71,7 +71,6 @@
   box-shadow: @hoverBoxShadow;
   color: @hoverColor;
 }
-
 .ui.button:hover .icon {
   opacity: @iconHoverOpacity;
 }
@@ -86,7 +85,6 @@
   background-image: @focusBackgroundImage;
   box-shadow: @focusBoxShadow;
 }
-
 .ui.button:focus .icon {
   opacity: @iconFocusOpacity;
 }
@@ -173,7 +171,6 @@
   background-color: transparent;
   box-shadow: none;
 }
-
 .ui.basic.loading.button:not(.inverted):before {
   border-color: @loaderFillColor;
 }
@@ -217,7 +214,6 @@
   vertical-align: @animatedVerticalAlign;
   z-index: @animatedZIndex;
 }
-
 .ui.animated.button .content {
   will-change: transform, opacity;
 }
@@ -375,7 +371,6 @@
   border: none;
   box-shadow: none;
 }
-
 .ui.labeled.button > .button {
   margin: 0;
 }
@@ -609,7 +604,6 @@
   vertical-align: @iconVerticalAlign;
   color: @iconColor;
 }
-
 .ui.button:not(.icon) > .icon:not(.button):not(.dropdown),
 .ui.button:not(.icon) > .icons:not(.button):not(.dropdown) {
   margin: @iconMargin;
@@ -784,7 +778,6 @@
 .ui.basic.buttons .button {
   border-radius: 0;
 }
-
 .ui.basic.buttons .button:hover,
 .ui.basic.button:hover {
   background: @basicHoverBackground;
@@ -907,7 +900,6 @@
   color: @tertiaryTextColor;
   background: @tertiaryBackgroundColor;
 }
-
 .ui.tertiary.button:hover {
 
   & when (@tertiaryHoverWithUnderline = true) {
@@ -924,7 +916,6 @@
   color: @tertiaryHoverColor;
   background: @tertiaryHoverBackgroundColor;
 }
-
 .ui.tertiary.button:focus {
   & when (@tertiaryFocusWithUnderline = true) {
     box-shadow: inset 0 -@tertiaryLineHeight 0 @tertiaryFocusLineColor;
@@ -940,7 +931,6 @@
   color: @tertiaryFocusColor;
   background: @tertiaryFocusBackgroundColor;
 }
-
 .ui.tertiary.button:active {
   & when (@tertiaryActiveWithUnderline = true) {
     box-shadow: inset 0 -@tertiaryLineHeight 0 @tertiaryActiveLineColor;
@@ -1006,8 +996,6 @@
   border-bottom-right-radius: inherit;
   box-shadow: @labeledIconRightShadow;
 }
-
-
 .ui.labeled.icon.buttons > .button > .icon:before,
 .ui.labeled.icon.button > .icon:before,
 .ui.labeled.icon.buttons > .button > .icon:after,
@@ -1018,7 +1006,6 @@
   top: 0;
   text-align: center;
 }
-
 .ui.labeled.icon.buttons .button > .icon {
   border-radius: 0;
 }
@@ -1201,7 +1188,6 @@
 .ui[class*="top attached"].buttons .button:last-child {
   border-radius: 0 @borderRadius 0 0;
 }
-
 .ui[class*="bottom attached"].buttons {
   margin-top: @attachedOffset;
   border-radius: 0 0 @borderRadius @borderRadius;
@@ -1228,7 +1214,6 @@
   margin-left: @attachedOffset;
   border-radius: 0 0 @borderRadius 0;
 }
-
 .ui[class*="right attached"].buttons {
   display: inline-flex;
   margin-left: 0;
@@ -1255,77 +1240,66 @@
 .ui.fluid.button {
   display: block;
 }
-
 .ui.two.buttons {
   width: 100%;
 }
 .ui.two.buttons > .button {
   width: 50%;
 }
-
 .ui.three.buttons {
   width: 100%;
 }
 .ui.three.buttons > .button {
   width: 33.333%;
 }
-
 .ui.four.buttons {
   width: 100%;
 }
 .ui.four.buttons > .button {
   width: 25%;
 }
-
 .ui.five.buttons {
   width: 100%;
 }
 .ui.five.buttons > .button {
   width: 20%;
 }
-
 .ui.six.buttons {
   width: 100%;
 }
 .ui.six.buttons > .button {
   width: 16.666%;
 }
-
 .ui.seven.buttons {
   width: 100%;
 }
 .ui.seven.buttons > .button {
   width: 14.285%;
 }
-
 .ui.eight.buttons {
   width: 100%;
 }
 .ui.eight.buttons > .button {
   width: 12.500%;
 }
-
 .ui.nine.buttons {
   width: 100%;
 }
 .ui.nine.buttons > .button {
   width: 11.11%;
 }
-
 .ui.ten.buttons {
   width: 100%;
 }
 .ui.ten.buttons > .button {
   width: 10%;
 }
-
 .ui.eleven.buttons {
   width: 100%;
 }
 .ui.eleven.buttons > .button {
   width: 9.09%;
 }
-
 .ui.twelve.buttons {
   width: 100%;
 }
@@ -1339,7 +1313,6 @@
   display: flex;
   width: auto;
 }
-
 .ui.two.vertical.buttons > .button {
   height: 50%;
 }
@@ -1821,7 +1794,6 @@ each(@colors, {
 .ui.buttons:not(.basic):not(.inverted) > .button:not(.basic):not(.inverted) {
   box-shadow: @groupButtonBoxShadow;
 }
-
 .ui.buttons .button:first-child {
   border-left: none;
   margin-left: 0;

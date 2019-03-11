@@ -69,7 +69,6 @@
   outline: none;
   font-size: @labelFontSize;
 }
-
 .ui.checkbox .box:before,
 .ui.checkbox label:before {
   position: absolute;
@@ -206,6 +205,7 @@
   color: @checkboxIndeterminateCheckColor;
 }
 .ui.indeterminate.toggle.checkbox {
+
   & input:not([type=radio]):indeterminate ~ label:before {
     background: @toggleCenterLaneBackground;
   }
@@ -285,7 +285,6 @@
 .ui.radio.checkbox {
   min-height: @radioSize;
 }
-
 .ui.radio.checkbox .box,
 .ui.radio.checkbox label {
   padding-left: @radioLabelDistance;
@@ -532,7 +531,6 @@
   border-radius: @circularRadius;
   transition: @toggleHandleTransition;
 }
-
 .ui.toggle.checkbox input ~ .box:after,
 .ui.toggle.checkbox input ~ label:after {
   left: @toggleOffOffset;
@@ -591,11 +589,9 @@
 .ui.fitted.checkbox label {
   padding-left: 0 !important;
 }
-
 .ui.fitted.toggle.checkbox {
   width: @toggleWidth;
 }
-
 .ui.fitted.slider.checkbox {
   width: @sliderWidth;
 }

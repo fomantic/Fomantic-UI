@@ -25,7 +25,6 @@
 .ui.search {
   position: relative;
 }
-
 .ui.search > .prompt {
   margin: 0;
   outline: none;
@@ -46,7 +45,6 @@
   box-shadow: @promptBoxShadow;
   transition: @promptTransition;
 }
-
 .ui.search .prompt {
   border-radius: @promptBorderRadius;
 }
@@ -132,7 +130,6 @@
 .ui.search > .results .result .image + .content {
   margin: @resultImageMargin;
 }
-
 .ui.search > .results .result .title {
   margin: @resultTitleMargin;
   font-family: @resultTitleFont;
@@ -252,7 +249,6 @@
 .ui.category.search > .results .category.active > .name {
   color: @categoryNameActiveColor;
 }
-
 .ui.search > .results .result.active,
 .ui.category.search > .results .category .result.active {
   position: relative;
@@ -323,7 +319,6 @@
 .ui.category.search .results {
   width: @categoryResultsWidth;
 }
-
 .ui.category.search .results.animating,
 .ui.category.search .results.visible {
   display: table;
@@ -435,6 +430,7 @@
 ---------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.search .results {
     max-width: @mobileMaxWidth;
   }

@@ -70,7 +70,6 @@
 .ui.fast.loader:after {
   animation-duration: @loaderSpeedFast;
 }
-
 .ui.slow.loading.loading:after,
 .ui.slow.loading.loading .input > i.icon:after,
 .ui.slow.loading.loading > i.icon:after,
@@ -80,6 +79,7 @@
 
 /* Active Animation */
 @keyframes loader {
+
   100% {
     transform: rotate(360deg);
   }
@@ -184,7 +184,6 @@
   animation-direction: @indeterminateDirection;
   animation-duration: @indeterminateSpeed;
 }
-
 .ui.loader.active,
 .ui.loader.visible {
   display: block;
@@ -346,7 +345,6 @@ each(@colors, {
   top: 0;
   transform: none;
 }
-
 .ui.inline.loader.active,
 .ui.inline.loader.visible {
   display: inline-block;
@@ -359,7 +357,6 @@ each(@colors, {
   margin-left: auto;
   margin-right: auto;
 }
-
 .ui.loading.loading.loading.loading.loading.loading:after,
 .ui.loading.loading.loading.loading.loading.loading .input > i.icon:after,
 .ui.loading.loading.loading.loading.loading.loading > i.icon:after,
@@ -438,6 +435,7 @@ each(@colors, {
   animation-duration: 0.66s;
 }
 @keyframes elastic-loader {
+
   0%, 1% {
     border-left-color: transparent;
     border-bottom-color: transparent
@@ -462,6 +460,7 @@ each(@colors, {
 }
 
 @keyframes currentcolor-elastic-loader {
+
   0%, 1% {
     border-left-color: transparent;
     border-bottom-color: transparent

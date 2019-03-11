@@ -38,7 +38,6 @@
   border-radius: @borderRadius;
   min-height: @minHeight;
 }
-
 .ui.menu:after {
   content: '';
   display: block;
@@ -46,7 +45,6 @@
   clear: both;
   visibility: hidden;
 }
-
 .ui.menu:first-child {
   margin-top: 0;
 }
@@ -62,7 +60,6 @@
 .ui.menu .menu {
   margin: 0;
 }
-
 .ui.menu:not(.vertical) > .menu {
   display: flex;
 }
@@ -75,7 +72,6 @@
   display: flex;
   align-items: center;
 }
-
 .ui.menu .item {
   position: relative;
   vertical-align: middle;
@@ -92,7 +88,6 @@
   font-weight: @itemFontWeight;
   transition: @itemTransition;
 }
-
 .ui.menu > .item:first-child {
   border-radius: @borderRadius 0 0 @borderRadius;
 }
@@ -190,7 +185,6 @@
   text-transform: @headerTextTransform;
   font-weight: @headerWeight;
 }
-
 .ui.vertical.menu .item > .header:not(.ui) {
   margin: @verticalHeaderMargin;
   font-size: @verticalHeaderFontSize;
@@ -246,7 +240,6 @@
   font-weight: @dropdownActiveItemFontWeight !important;
   color: @dropdownActiveItemColor !important;
 }
-
 .ui.menu .ui.dropdown.item .menu .item:not(.filtered) {
   display: block;
 }
@@ -382,6 +375,7 @@
 ---------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.menu > .ui.container {
     width: 100% !important;
     margin-left: 0 !important;
@@ -389,6 +383,7 @@
   }
 }
 @media only screen and (min-width: @tabletBreakpoint) {
+
   .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
     border-left: @dividerSize solid @dividerBackground;
   }
@@ -562,7 +557,6 @@ Floated Menu / Item
   height: @dividerSize;
   background: @verticalDividerBackground;
 }
-
 .ui.vertical.menu .item:first-child:before {
   display: none !important;
 }
@@ -771,7 +765,6 @@ Floated Menu / Item
 .ui.pagination.menu .item:last-child:before {
   display: none;
 }
-
 .ui.pagination.menu .item {
   min-width: @paginationMinWidth;
   text-align: center;
@@ -925,7 +918,6 @@ Floated Menu / Item
   margin-right: 0;
   border-bottom: @secondaryPointingBorderWidth solid @secondaryPointingBorderColor;
 }
-
 .ui.secondary.pointing.menu .item {
   border-bottom-color: transparent;
   border-bottom-style: solid;
@@ -940,7 +932,6 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .ui.dropdown .menu .item {
   border-bottom-width: 0;
 }
-
 .ui.secondary.pointing.menu .item > .label {
   margin-top: -@labelVerticalPadding;
   margin-bottom: -@labelVerticalPadding;
@@ -1022,7 +1013,6 @@ Floated Menu / Item
 .ui.secondary.inverted.pointing.menu {
   border-color: @secondaryPointingInvertedBorderColor;
 }
-
 .ui.secondary.inverted.pointing.menu .item:not(.disabled) {
   color: @secondaryPointingInvertedItemTextColor;
 }
@@ -1251,6 +1241,7 @@ Floated Menu / Item
 ---------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.stackable.menu {
     flex-direction: column;
   }
@@ -1267,7 +1258,6 @@ Floated Menu / Item
     height: @dividerSize;
     background: @verticalDividerBackground;
   }
-
   .ui.stackable.menu .left.menu,
   .ui.stackable.menu .left.item {
     margin-right: 0 !important;
@@ -1281,7 +1271,6 @@ Floated Menu / Item
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-
   .ui.stackable.menu .right.menu,
   .ui.stackable.menu .center.menu,
   .ui.stackable.menu .left.menu {
@@ -1410,7 +1399,6 @@ each(@colors, {
 .ui.floated.menu .item:last-child:before {
   display: none;
 }
-
 .ui.right.floated.menu {
   float: right;
   margin: 0 0 0 @floatedDistance;
@@ -1526,11 +1514,9 @@ each(@colors, {
 .ui.attached.item.menu {
   margin: 0 @attachedHorizontalOffset !important;
 }
-
 .ui.item.menu .item:last-child:before {
   display: none;
 }
-
 .ui.menu.two.item .item {
   width: 50%;
 }
@@ -1580,7 +1566,6 @@ each(@colors, {
 .ui.menu.fixed .item:last-child {
   border-radius: 0 !important;
 }
-
 .ui.fixed.menu,
 .ui[class*="top fixed"].menu {
   top: 0;
@@ -1698,7 +1683,6 @@ each(@colors, {
 .ui.pointing.menu .active.item:hover:after {
   background-color: @arrowActiveHoverColor;
 }
-
 .ui.vertical.pointing.menu .active.item:hover:after {
   background-color: @arrowVerticalHoverColor;
 }
@@ -1708,7 +1692,6 @@ each(@colors, {
 .ui.vertical.pointing.menu .menu .active.item:after {
   background-color: @arrowVerticalSubMenuColor;
 }
-
 each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];

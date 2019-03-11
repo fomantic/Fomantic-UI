@@ -36,7 +36,6 @@
   border-collapse: @borderCollapse;
   border-spacing: @borderSpacing;
 }
-
 .ui.table:first-child {
   margin-top: 0;
 }
@@ -76,11 +75,9 @@
   border-bottom: @headerBorder;
   border-left: @headerDivider;
 }
-
 .ui.table thead tr > th:first-child {
   border-left: none;
 }
-
 .ui.table thead tr:first-child > th:first-child {
   border-radius: @borderRadius 0 0 0;
 }
@@ -161,6 +158,7 @@
 
 /* Responsive */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.table:not(.unstackable) {
     width: 100%;
     padding: 0;
@@ -172,7 +170,6 @@
     display: block !important;
     width: auto !important;
   }
-
   .ui.table:not(.unstackable) thead {
     display: @responsiveHeaderDisplay;
   }
@@ -184,7 +181,6 @@
     padding-bottom: @responsiveRowVerticalPadding;
     box-shadow: @responsiveRowBoxShadow;
   }
-
   .ui.table:not(.unstackable) tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) tr > td {
     background: none;
@@ -255,7 +251,6 @@
   color: @definitionHeaderColor;
   box-shadow: -@borderWidth -@borderWidth 0 @borderWidth @definitionPageBackground;
 }
-
 .ui.definition.table tfoot:not(.full-width) th:first-child {
   pointer-events: none;
   background: @definitionFooterBackground;
@@ -390,7 +385,6 @@
     display: block !important;
     width: 100% !important;
   }
-
   .ui[class*="tablet stackable"].table {
     padding: 0;
   }
@@ -470,7 +464,6 @@
 .ui.fixed.table {
   table-layout: fixed;
 }
-
 .ui.fixed.table th,
 .ui.fixed.table td {
   overflow: hidden;
@@ -805,7 +798,6 @@ each(@colors, {
 .ui.sortable.table thead th.sorted:hover {
   user-select: none;
 }
-
 .ui.sortable.table thead th:after {
   display: none;
   font-style: normal;
@@ -883,7 +875,6 @@ each(@colors, {
 .ui.inverted.table tr td {
   border-color: @invertedCellBorderColor;
 }
-
 .ui.inverted.table tr.disabled td,
 .ui.inverted.table tr td.disabled,
 .ui.inverted.table tr.disabled:hover td,

@@ -46,12 +46,10 @@
   clear: both;
   margin: @fieldMargin;
 }
-
 .ui.form .field:last-child,
 .ui.form .fields:last-child .field {
   margin-bottom: 0;
 }
-
 .ui.form .fields .field {
   clear: both;
   margin: 0;
@@ -98,7 +96,6 @@
 .ui.form ::-webkit-inner-spin-button {
   height: @inputLineHeight;
 }
-
 .ui.form input:not([type]),
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
@@ -153,7 +150,6 @@
   min-height: @textAreaMinHeight;
   max-height: @textAreaMaxHeight;
 }
-
 .ui.form textarea,
 .ui.form input[type="checkbox"] {
   vertical-align: @checkboxVerticalAlign;
@@ -168,13 +164,11 @@
 .ui.form .field textarea.transparent {
   padding: @transparentPadding !important;
 }
-
 .ui.form .field textarea.transparent {
   border-color: transparent !important;
   background-color: transparent !important;
   box-shadow: none !important;
 }
-
 .ui.form .field.error .transparent.input input,
 .ui.form .field.error input.transparent,
 .ui.form .field.error textarea.transparent {
@@ -353,7 +347,6 @@
 .ui.form ::-moz-placeholder {
   color: @inputPlaceholderColor;
 }
-
 .ui.form :focus::-webkit-input-placeholder {
   color: @inputPlaceholderFocusColor;
 }
@@ -374,7 +367,6 @@
 .ui.form .error ::-moz-placeholder {
   color: @inputErrorPlaceholderColor;
 }
-
 .ui.form .error :focus::-webkit-input-placeholder {
   color: @inputErrorPlaceholderFocusColor;
 }
@@ -470,13 +462,11 @@
 .ui.form .field.error .input {
   color: @formErrorColor;
 }
-
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
   border-color: @formErrorColor;
   color: @white;
 }
-
 .ui.form .fields.error .field textarea,
 .ui.form .fields.error .field select,
 .ui.form .fields.error .field input:not([type]),
@@ -686,7 +676,6 @@
   content: @requiredContent;
   color: @requiredColor;
 }
-
 .ui.form .required.fields:not(.grouped) > .field > label:after,
 .ui.form .required.fields.grouped > label:after,
 .ui.form .required.field > label:after,
@@ -694,7 +683,6 @@
   display: inline-block;
   vertical-align: top;
 }
-
 .ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
 .ui.form .required.field > .checkbox:after {
   position: absolute;
@@ -762,7 +750,6 @@
 .ui.form .grouped.fields:last-child {
   margin-bottom: 0;
 }
-
 .ui.form .grouped.fields > label {
   margin: @groupedLabelMargin;
   color: @groupedLabelColor;
@@ -770,7 +757,6 @@
   font-weight: @groupedLabelFontWeight;
   text-transform: @groupedLabelTextTransform;
 }
-
 .ui.form .grouped.fields .field,
 .ui.form .grouped.inline.fields .field {
   display: block;
@@ -838,10 +824,10 @@
 
 /* Swap to full width on mobile */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.form .fields {
     flex-wrap: wrap;
   }
-
   .ui[class*="equal width"].form:not(.unstackable) .fields > .field,
   .ui.form:not(.unstackable) [class*="equal width"].fields:not(.unstackable) > .field,
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields,
@@ -874,7 +860,6 @@
   padding-left: (@gutterWidth / 2);
   padding-right: (@gutterWidth / 2);
 }
-
 .ui.form .one.wide.field {
   width: @oneWide !important;
 }
@@ -926,6 +911,7 @@
 
 /* Swap to full width on mobile */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields,
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field,
   .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .fields,

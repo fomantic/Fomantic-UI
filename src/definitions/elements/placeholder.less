@@ -32,6 +32,7 @@
 }
 
 @keyframes placeholderShimmer{
+
   0% {
     background-position: -@placeholderLoadingGradientWidth 0
   }
@@ -39,7 +40,6 @@
     background-position: @placeholderLoadingGradientWidth 0
   }
 }
-
 .ui.placeholder + .ui.placeholder {
   margin-top: @consecutivePlaceholderSpacing;
 }
@@ -55,7 +55,6 @@
 .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder + .ui.placeholder {
   animation-delay: (@placeholderAnimationInterval * 4);
 }
-
 .ui.placeholder,
 .ui.placeholder > :before,
 .ui.placeholder .image.header:after,
@@ -63,7 +62,6 @@
 .ui.placeholder .line:after {
   background-color: @white;
 }
-
 .ui.placeholder.hidden {
   display:none;
 }

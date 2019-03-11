@@ -69,7 +69,6 @@
   padding-right: (@gutterWidth / 2);
   vertical-align: top;
 }
-
 .ui.grid > * {
   padding-left: (@gutterWidth / 2);
   padding-right: (@gutterWidth / 2);
@@ -158,6 +157,7 @@
 -------------------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.page.grid {
     width: @mobileWidth;
     padding-left: @mobileGutter;
@@ -167,6 +167,7 @@
   }
 }
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui.page.grid {
     width: @tabletWidth;
     margin-left: @tabletMargin;
@@ -176,6 +177,7 @@
   }
 }
 @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+
   .ui.page.grid {
     width: @computerWidth;
     margin-left: @computerMargin;
@@ -185,6 +187,7 @@
   }
 }
 @media only screen and (min-width: @largeMonitorBreakpoint) and (max-width: @largestLargeMonitor) {
+
   .ui.page.grid {
     width: @largeMonitorWidth;
     margin-left: @largeMonitorMargin;
@@ -194,6 +197,7 @@
   }
 }
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+
   .ui.page.grid {
     width: @widescreenMonitorWidth;
     margin-left: @widescreenMargin;
@@ -443,6 +447,7 @@
 
 /* Mobile Sizing Combinations */
 @media only screen and (min-width: @mobileBreakpoint) and (max-width: @largestMobileScreen) {
+
   .ui.grid > .row > [class*="one wide mobile"].column,
   .ui.grid > .column.row > [class*="one wide mobile"].column,
   .ui.grid > [class*="one wide mobile"].column,
@@ -543,6 +548,7 @@
 
 /* Tablet Sizing Combinations */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui.grid > .row > [class*="one wide tablet"].column,
   .ui.grid > .column.row > [class*="one wide tablet"].column,
   .ui.grid > [class*="one wide tablet"].column,
@@ -643,6 +649,7 @@
 
 /* Computer/Desktop Sizing Combinations */
 @media only screen and (min-width: @computerBreakpoint) {
+
     .ui.grid > .row > [class*="one wide computer"].column,
   .ui.grid > .column.row > [class*="one wide computer"].column,
   .ui.grid > [class*="one wide computer"].column,
@@ -743,6 +750,7 @@
 
 /* Large Monitor Sizing Combinations */
 @media only screen and (min-width: @largeMonitorBreakpoint) and (max-width: @largestLargeMonitor){
+
   .ui.grid > .row > [class*="one wide large screen"].column,
   .ui.grid > .column.row > [class*="one wide large screen"].column,
   .ui.grid > [class*="one wide large screen"].column,
@@ -843,6 +851,7 @@
 
 /* Widescreen Sizing Combinations */
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+
   .ui.grid > .row > [class*="one wide widescreen"].column,
   .ui.grid > .column.row > [class*="one wide widescreen"].column,
   .ui.grid > [class*="one wide widescreen"].column,
@@ -956,7 +965,6 @@
 .ui.grid .centered.row > .column:not(.aligned):not(.justified) {
   text-align: left;
 }
-
 .ui.grid > .centered.column,
 .ui.grid > .row > .centered.column {
   display: block;
@@ -974,7 +982,6 @@
   padding-left: (@relaxedGutterWidth / 2);
   padding-right: (@relaxedGutterWidth / 2);
 }
-
 .ui[class*="very relaxed"].grid > .column:not(.row),
 .ui[class*="very relaxed"].grid > .row > .column,
 .ui.grid > [class*="very relaxed"].row > .column {
@@ -1129,7 +1136,6 @@
   margin: @celledMargin;
   box-shadow: @celledGridDivider;
 }
-
 .ui.celled.grid > .row {
   width: 100% !important;
   margin: 0;
@@ -1140,12 +1146,10 @@
 .ui.celled.grid > .row > .column {
   box-shadow: @celledColumnDivider;
 }
-
 .ui.celled.grid > .column:first-child,
 .ui.celled.grid > .row > .column:first-child {
   box-shadow: none;
 }
-
 .ui.celled.grid > .column:not(.row),
 .ui.celled.grid > .row > .column {
   padding: @celledPadding;
@@ -1218,7 +1222,6 @@
   align-self: stretch;
   flex-direction: column;
 }
-
 .ui.stretched.grid > .row > .column > *,
 .ui.stretched.grid > .column > *,
 .ui.grid > .stretched.row > .column > *,
@@ -1315,6 +1318,7 @@ each(@colors, {
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui[class*="mobile reversed"].grid,
   .ui[class*="mobile reversed"].grid > .row,
   .ui.grid > [class*="mobile reversed"].row {
@@ -1352,6 +1356,7 @@ each(@colors, {
 
 /* Tablet */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui[class*="tablet reversed"].grid,
   .ui[class*="tablet reversed"].grid > .row,
   .ui.grid > [class*="tablet reversed"].row {
@@ -1388,6 +1393,7 @@ each(@colors, {
 
 /* Computer */
 @media only screen and (min-width: @computerBreakpoint) {
+
   .ui[class*="computer reversed"].grid,
   .ui[class*="computer reversed"].grid > .row,
   .ui.grid > [class*="computer reversed"].row {
@@ -1429,6 +1435,7 @@ each(@colors, {
 
 /* Tablet Only */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui.doubling.grid {
     width: auto;
   }
@@ -1524,6 +1531,7 @@ each(@colors, {
 
 /* Mobile Only */
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.grid > .doubling.row,
   .ui.doubling.grid > .row {
     margin: 0 !important;
@@ -1618,6 +1626,7 @@ each(@colors, {
 --------------------*/
 
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui.stackable.grid {
     width: auto;
     margin-left: 0 !important;
@@ -1667,7 +1676,6 @@ each(@colors, {
   .ui.inverted.stackable.divided.grid > .row > .column {
     border-top: @stackableInvertedMobileBorder;
   }
-
   .ui.stackable.celled.grid > .column:not(.row),
   .ui.stackable.divided:not(.vertically).grid > .column:not(.row),
   .ui.stackable.celled.grid > .row > .column,
@@ -1677,7 +1685,6 @@ each(@colors, {
     padding-top: @stackableRowSpacing !important;
     padding-bottom: @stackableRowSpacing !important;
   }
-
   .ui.stackable.celled.grid > .row {
     box-shadow: none !important;
   }
@@ -1698,6 +1705,7 @@ each(@colors, {
 
 /* Mobile Only Hide */
 @media only screen and (max-width: @largestMobileScreen) {
+
   .ui[class*="tablet only"].grid.grid.grid:not(.mobile),
   .ui.grid.grid.grid > [class*="tablet only"].row:not(.mobile),
   .ui.grid.grid.grid > [class*="tablet only"].column:not(.mobile),
@@ -1725,6 +1733,7 @@ each(@colors, {
 }
 /* Tablet Only Hide */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+
   .ui[class*="mobile only"].grid.grid.grid:not(.tablet),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.tablet),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.tablet),
@@ -1753,6 +1762,7 @@ each(@colors, {
 
 /* Computer Only Hide */
 @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -1781,6 +1791,7 @@ each(@colors, {
 
 /* Large Screen Only Hide */
 @media only screen and (min-width: @largeMonitorBreakpoint) and (max-width: @largestLargeMonitor) {
+
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -1803,6 +1814,7 @@ each(@colors, {
 
 /* Widescreen Only Hide */
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+
   .ui[class*="mobile only"].grid.grid.grid:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].row:not(.computer),
   .ui.grid.grid.grid > [class*="mobile only"].column:not(.computer),
@@ -1826,7 +1838,6 @@ each(@colors, {
   padding-left: (@compactGutterWidth / 2);
   padding-right: (@compactGutterWidth / 2);
 }
-
 .ui.compact.grid > * {
   padding-left: (@compactGutterWidth / 2);
   padding-right: (@compactGutterWidth / 2);
@@ -1863,7 +1874,6 @@ each(@colors, {
   padding-left: (@veryCompactGutterWidth / 2);
   padding-right: (@compactGutterWidth / 2);
 }
-
 .ui[class*="very compact"].grid > * {
   padding-left: (@veryCompactGutterWidth / 2);
   padding-right: (@veryCompactGutterWidth / 2);

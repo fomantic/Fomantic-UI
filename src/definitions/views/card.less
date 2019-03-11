@@ -46,12 +46,10 @@
 .ui.card {
   margin: @margin;
 }
-
 .ui.cards > .card a,
 .ui.card a {
   cursor: pointer;
 }
-
 .ui.card:first-child {
   margin-top: 0;
 }
@@ -68,7 +66,6 @@
   margin: @groupMargin;
   flex-wrap: wrap;
 }
-
 .ui.cards > .card {
   display: @groupCardDisplay;
   margin: @groupCardMargin;
@@ -102,12 +99,10 @@
   border-radius: @borderRadius @borderRadius 0 0 !important;
   border-top: none !important;
 }
-
 .ui.cards > .card > :last-child,
 .ui.card > :last-child {
   border-radius: 0 0 @borderRadius @borderRadius !important;
 }
-
 .ui.cards > .card > :only-child,
 .ui.card > :only-child {
   border-radius: @borderRadius !important;
@@ -153,7 +148,6 @@
   font-size: @contentFontSize;
   border-radius: @contentBorderRadius;
 }
-
 .ui.cards > .card > .content:after,
 .ui.card > .content:after {
   display: block;
@@ -163,7 +157,6 @@
   overflow: hidden;
   visibility: hidden;
 }
-
 .ui.cards > .card > .content > .header,
 .ui.card > .content > .header {
   display: block;
@@ -180,7 +173,6 @@
   margin-top: @headerLineHeightOffset;
   line-height: @headerLineHeight;
 }
-
 .ui.cards > .card > .content > .meta + .description,
 .ui.cards > .card > .content > .header + .description,
 .ui.card > .content > .meta + .description,
@@ -279,7 +271,6 @@
 .ui.card .meta :last-child {
   margin-right: 0;
 }
-
 .ui.cards > .card .meta [class*="right floated"],
 .ui.card .meta [class*="right floated"] {
   margin-right: 0;
@@ -434,13 +425,11 @@
   width: @horizontalWidth;
   max-width: 100%;
 }
-
 .ui.horizontal.cards > .card > .image,
 .ui.card.horizontal > .image {
   border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
   width: @horizontalImageWidth;
 }
-
 .ui.horizontal.cards > .card > .image > img,
 .ui.card.horizontal > .image > img {
   background-size: cover;
@@ -504,8 +493,6 @@ a.ui.card,
 .ui.link.card {
   transform: none;
 }
-
-
 .ui.cards a.card:hover,
 .ui.link.cards .card:not(.icon):hover,
 a.ui.card:hover,
@@ -574,7 +561,6 @@ each(@colors,{
 .ui.one.cards > .card {
   width: @oneCard;
 }
-
 .ui.two.cards {
   margin-left: @twoCardOffset;
   margin-right: @twoCardOffset;
@@ -584,7 +570,6 @@ each(@colors,{
   margin-left: @twoCardSpacing;
   margin-right: @twoCardSpacing;
 }
-
 .ui.three.cards {
   margin-left: @threeCardOffset;
   margin-right: @threeCardOffset;
@@ -594,7 +579,6 @@ each(@colors,{
   margin-left: @threeCardSpacing;
   margin-right: @threeCardSpacing;
 }
-
 .ui.four.cards {
   margin-left: @fourCardOffset;
   margin-right: @fourCardOffset;
@@ -604,7 +588,6 @@ each(@colors,{
   margin-left: @fourCardSpacing;
   margin-right: @fourCardSpacing;
 }
-
 .ui.five.cards {
   margin-left: @fiveCardOffset;
   margin-right: @fiveCardOffset;
@@ -614,7 +597,6 @@ each(@colors,{
   margin-left: @fiveCardSpacing;
   margin-right: @fiveCardSpacing;
 }
-
 .ui.six.cards {
   margin-left: @sixCardOffset;
   margin-right: @sixCardOffset;
@@ -624,7 +606,6 @@ each(@colors,{
   margin-left: @sixCardSpacing;
   margin-right: @sixCardSpacing;
 }
-
 .ui.seven.cards {
   margin-left: @sevenCardOffset;
   margin-right: @sevenCardOffset;
@@ -634,7 +615,6 @@ each(@colors,{
   margin-left: @sevenCardSpacing;
   margin-right: @sevenCardSpacing;
 }
-
 .ui.eight.cards {
   margin-left: @eightCardOffset;
   margin-right: @eightCardOffset;
@@ -645,7 +625,6 @@ each(@colors,{
   margin-right: @eightCardSpacing;
   font-size: 11px;
 }
-
 .ui.nine.cards {
   margin-left: @nineCardOffset;
   margin-right: @nineCardOffset;
@@ -656,7 +635,6 @@ each(@colors,{
   margin-right: @nineCardSpacing;
   font-size: 10px;
 }
-
 .ui.ten.cards {
   margin-left: @tenCardOffset;
   margin-right: @tenCardOffset;
@@ -674,6 +652,7 @@ each(@colors,{
 
 /* Mobile Only */
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.two.doubling.cards {
     margin-left: @oneCardOffset;
     margin-right: @oneCardOffset;
@@ -759,6 +738,7 @@ each(@colors,{
 
 /* Tablet Only */
 @media only screen and (min-width : @tabletBreakpoint) and (max-width : @largestTabletScreen) {
+
   .ui.two.doubling.cards {
     margin-left: @oneCardOffset;
     margin-right: @oneCardOffset;
@@ -847,6 +827,7 @@ each(@colors,{
 --------------------*/
 
 @media only screen and (max-width : @largestMobileScreen) {
+
   .ui.stackable.cards {
     display: block !important;
   }
