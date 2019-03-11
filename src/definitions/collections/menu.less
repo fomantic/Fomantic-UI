@@ -277,6 +277,7 @@
 }
 .ui.vertical.menu .dropdown.item .menu {
   left: 100%;
+
   /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
   min-width: 0;
   min-width: max-content;
@@ -327,6 +328,7 @@
   margin: @imageLabelImageMargin;
   height: @imageLabelHeight;
 }
+
 /* --------------
      Images
 --------------- */
@@ -477,12 +479,14 @@ Floated Menu / Item
   display: flex;
   margin-right: auto !important;
 }
+
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
 .ui.menu:not(.vertical) .right.menu {
   display: flex;
   margin-left: auto !important;
 }
+
 /* Center */
 .ui.menu:not(.vertical) .center.item,
 .ui.menu:not(.vertical) .center.menu {

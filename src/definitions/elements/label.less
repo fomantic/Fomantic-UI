@@ -366,6 +366,7 @@ a.ui.label {
   width: 0;
   height: 0;
 }
+
 /* Positioning */
 .ui.ribbon.label {
   left: @ribbonOffset;
@@ -784,6 +785,7 @@ each(@colors,{
   border-style: solid;
   border-color: @pointingBorderColor;
 }
+
 /* Arrow */
 .ui.pointing.label:before {
   position: absolute;
@@ -809,6 +811,7 @@ each(@colors,{
   top: 0;
   left: 50%;
 }
+
 /* --- Below --- */
 .ui[class*="bottom pointing"].label,
 .ui[class*="pointing below"].label {
@@ -824,6 +827,7 @@ each(@colors,{
   top: 100%;
   left: 50%;
 }
+
 /* --- Left --- */
 .ui[class*="left pointing"].label {
   margin-top: 0;
@@ -837,6 +841,7 @@ each(@colors,{
   top: 50%;
   left: 0;
 }
+
 /* --- Right --- */
 .ui[class*="right pointing"].label {
   margin-top: 0;
@@ -858,6 +863,7 @@ each(@colors,{
 .ui.basic[class*="pointing above"].label:before {
   margin-top: @basicPointingTriangleOffset;
 }
+
 /* --- Below --- */
 .ui.basic[class*="bottom pointing"].label:before,
 .ui.basic[class*="pointing below"].label:before {
@@ -865,11 +871,13 @@ each(@colors,{
   top: 100%;
   margin-top: -@basicPointingTriangleOffset;
 }
+
 /* --- Left --- */
 .ui.basic[class*="left pointing"].label:before {
   top: 50%;
   left: @basicPointingTriangleOffset;
 }
+
 /* --- Right --- */
 .ui.basic[class*="right pointing"].label:before {
   top: 50%;
