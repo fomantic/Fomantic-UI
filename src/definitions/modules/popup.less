@@ -152,15 +152,13 @@
   opacity: 0;
   transform: rotate(45deg) scale(0) !important;
   transform-origin: center top;
-  transition:
-    all @tooltipDuration @tooltipEasing
+  transition: all @tooltipDuration @tooltipEasing
   ;
 }
 [data-tooltip]:after {
   opacity: 1;
   transform-origin: center bottom;
-  transition:
-    all @tooltipDuration @tooltipEasing
+  transition: all @tooltipDuration @tooltipEasing
   ;
 }
 [data-tooltip]:hover:before,
