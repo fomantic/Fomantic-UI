@@ -4,6 +4,8 @@ module.exports = {
     'rule-empty-line-before': ['never', {
       except: ['first-nested'],
       ignore: ['after-comment'],
-    }]
+    }],
+    // disable
+    'no-descending-specificity': null
   }
 };
