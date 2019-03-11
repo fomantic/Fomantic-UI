@@ -38,9 +38,9 @@
             Content
 *******************************/
 
-/*--------------
+/* --------------
       Menu
----------------*/
+--------------- */
 
 .ui.dropdown .menu {
   cursor: auto;
@@ -70,18 +70,18 @@
 }
 
 
-/*--------------
+/* --------------
   Hidden Input
----------------*/
+--------------- */
 
 .ui.dropdown > input:not(.search):first-child,
 .ui.dropdown > select {
   display: none !important;
 }
 
-/*--------------
+/* --------------
  Dropdown Icon
----------------*/
+--------------- */
 
 .ui.dropdown > .dropdown.icon {
   position: relative;
@@ -99,18 +99,18 @@
 }
 
 
-/*--------------
+/* --------------
       Text
----------------*/
+--------------- */
 
 .ui.dropdown > .text {
   display: inline-block;
   transition: @textTransition;
 }
 
-/*--------------
+/* --------------
     Menu Item
----------------*/
+--------------- */
 
 .ui.dropdown .menu > .item {
   position: relative;
@@ -135,9 +135,9 @@
   border-top-width: 0;
 }
 
-/*--------------
+/* --------------
   Floated Content
----------------*/
+--------------- */
 
 .ui.dropdown > .text > [class*="right floated"],
 .ui.dropdown .menu .item > [class*="right floated"] {
@@ -159,9 +159,9 @@
 }
 
 
-/*--------------
+/* --------------
   Menu Divider
----------------*/
+--------------- */
 
 .ui.dropdown .menu > .header {
   margin: @menuHeaderMargin;
@@ -195,9 +195,9 @@
   padding-bottom: @menuInputVerticalPadding;
 }
 
-/*-----------------
+/* -----------------
   Item Description
--------------------*/
+------------------- */
 
 .ui.dropdown > .text > .description,
 .ui.dropdown .menu > .item > .description {
@@ -206,9 +206,9 @@
   color: @itemDescriptionColor;
 }
 
-/*-----------------
+/* -----------------
        Message
--------------------*/
+------------------- */
 
 .ui.dropdown .menu > .message {
   padding: @messagePadding;
@@ -218,9 +218,9 @@
   color: @messageColor;
 }
 
-/*--------------
+/* --------------
     Sub Menu
----------------*/
+--------------- */
 
 .ui.dropdown .menu .menu {
   top: @subMenuTop !important;
@@ -236,9 +236,9 @@
   display: none;
 }
 
-/*--------------
+/* --------------
    Sub Elements
----------------*/
+--------------- */
 
 /* Icons / Flags / Labels / Image */
 .ui.dropdown > .text > .icon,
@@ -270,9 +270,9 @@
   margin-right: @itemElementDistance;
 }
 
-/*--------------
+/* --------------
      Image
----------------*/
+--------------- */
 
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
@@ -292,9 +292,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Menu
----------------*/
+--------------- */
 
 /* Remove Menu Item Divider */
 .ui.dropdown .ui.menu > .item:before,
@@ -315,18 +315,18 @@
   right: 0;
 }
 
-/*--------------
+/* --------------
       Label
----------------*/
+--------------- */
 
 /* Dropdown Menu */
 .ui.label.dropdown .menu {
   min-width: 100%;
 }
 
-/*--------------
+/* --------------
      Button
----------------*/
+--------------- */
 
 /* No Margin On Icon Button */
 .ui.dropdown.icon.button > .dropdown.icon {
@@ -342,9 +342,9 @@
               Types
 *******************************/
 
-/*--------------
+/* --------------
     Selection
----------------*/
+--------------- */
 
 /* Displays like a select box */
 .ui.selection.dropdown {
@@ -421,9 +421,9 @@ select.ui.dropdown {
   display: none;
 }
 
-/*--------------
+/* --------------
     Message
----------------*/
+--------------- */
 
 .ui.selection.dropdown .menu > .message {
   padding: @selectionMessagePadding;
@@ -532,9 +532,9 @@ select.ui.dropdown {
   box-shadow: none !important;
 }
 
-/*--------------
+/* --------------
    Searchable
----------------*/
+--------------- */
 
 /* Search Selection */
 .ui.search.dropdown {
@@ -655,9 +655,9 @@ select.ui.dropdown {
   display: none;
 }
 
-/*--------------
+/* --------------
     Multiple
----------------*/
+--------------- */
 
 /* Multiple Selection */
 .ui.multiple.dropdown {
@@ -704,9 +704,9 @@ select.ui.dropdown {
   display: none;
 }
 
-/*-----------------
+/* -----------------
   Multiple Search
------------------*/
+----------------- */
 
 /* Prompt Text */
 .ui.multiple.search.dropdown > .text {
@@ -733,9 +733,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------
+/* --------------
      Inline
----------------*/
+--------------- */
 
 .ui.inline.dropdown {
   cursor: pointer;
@@ -761,9 +761,9 @@ select.ui.dropdown {
 *******************************/
 
 
-/*--------------------
+/* --------------------
         Active
-----------------------*/
+---------------------- */
 
 /* Menu Item Active */
 .ui.dropdown .menu .active.item {
@@ -775,9 +775,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------------
+/* --------------------
         Hover
-----------------------*/
+---------------------- */
 
 /* Menu Item Hover */
 .ui.dropdown .menu > .item:hover {
@@ -786,9 +786,9 @@ select.ui.dropdown {
   z-index: @hoveredZIndex;
 }
 
-/*--------------------
+/* --------------------
        Loading
----------------------*/
+--------------------- */
 
 .ui.loading.dropdown > i.icon {
   height: @relative14px !important;
@@ -832,9 +832,9 @@ select.ui.dropdown {
   display: none;
 }
 
-/*--------------------
+/* --------------------
      Default Text
-----------------------*/
+---------------------- */
 
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
@@ -844,9 +844,9 @@ select.ui.dropdown {
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
   color: @defaultTextFocusColor;
 }
-/*--------------------
+/* --------------------
         Loading
-----------------------*/
+---------------------- */
 
 .ui.loading.dropdown > .text {
   transition: none;
@@ -867,9 +867,9 @@ select.ui.dropdown {
   right: auto !important;
 }
 
-/*--------------------
+/* --------------------
     Keyboard Select
-----------------------*/
+---------------------- */
 
 /* Selected Item */
 .ui.dropdown.selected,
@@ -879,9 +879,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------------
+/* --------------------
     Search Filtered
-----------------------*/
+---------------------- */
 
 /* Filtered Item */
 .ui.dropdown > .filtered.text {
@@ -892,9 +892,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------------
+/* --------------------
         Error
-----------------------*/
+---------------------- */
 
 .ui.dropdown.error,
 .ui.dropdown.error > .text,
@@ -930,9 +930,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------------
+/* --------------------
         Clear
-----------------------*/
+---------------------- */
 
 .ui.dropdown > .clear.dropdown.icon {
   opacity: @clearableIconOpacity;
@@ -943,9 +943,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------------
+/* --------------------
         Disabled
-----------------------*/
+---------------------- */
 
 /* Disabled */
 .ui.disabled.dropdown,
@@ -960,9 +960,9 @@ select.ui.dropdown {
            Variations
 *******************************/
 
-/*--------------
+/* --------------
     Direction
----------------*/
+--------------- */
 
 /* Flyout Direction */
 .ui.dropdown .menu {
@@ -1009,9 +1009,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------
+/* --------------
      Upward
----------------*/
+--------------- */
 
 /* Upward Main Menu */
 .ui.upward.dropdown > .menu {
@@ -1065,9 +1065,9 @@ select.ui.dropdown {
   box-shadow: @upwardSelectionActiveHoverMenuBoxShadow;
 }
 
-/*--------------
+/* --------------
      Scrolling
----------------*/
+--------------- */
 
 /*  Selection Menu */
 .ui.scrolling.dropdown .menu,
@@ -1144,9 +1144,9 @@ select.ui.dropdown {
   }
 }
 
-/*--------------
+/* --------------
      Simple
----------------*/
+--------------- */
 
 /* Displays without javascript */
 
@@ -1201,9 +1201,9 @@ select.ui.dropdown {
   display: block;
 }
 
-/*--------------
+/* --------------
       Fluid
----------------*/
+--------------- */
 
 .ui.fluid.dropdown {
   display: block;
@@ -1215,9 +1215,9 @@ select.ui.dropdown {
 }
 
 
-/*--------------
+/* --------------
     Floating
----------------*/
+--------------- */
 
 .ui.floating.dropdown .menu {
   left: 0;
@@ -1230,9 +1230,9 @@ select.ui.dropdown {
   border-radius: @floatingMenuBorderRadius !important;
 }
 
-/*--------------
+/* --------------
      Pointing
----------------*/
+--------------- */
 
 .ui.pointing.dropdown > .menu {
   top: 100%;
@@ -1424,9 +1424,9 @@ select.ui.dropdown {
   box-shadow: @pointingArrowBoxShadow;
 }
 
-/*--------------------
+/* --------------------
         Sizes
----------------------*/
+--------------------- */
 
 /* Dropdown Size */
 .ui.mini.dropdown {

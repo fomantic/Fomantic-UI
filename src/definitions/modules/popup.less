@@ -74,9 +74,9 @@
             Types
 *******************************/
 
-/*--------------
+/* --------------
     Tooltip
----------------*/
+--------------- */
 
 /* Content */
 [data-tooltip] {
@@ -205,9 +205,9 @@
 }
 
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 /* Arrow */
 [data-tooltip][data-inverted]:before {
@@ -231,9 +231,9 @@
   color: @tooltipInvertedHeaderColor;
 }
 
-/*--------------
+/* --------------
     Position
----------------*/
+--------------- */
 
 /* Top Center */
 [data-position="top center"][data-tooltip]:after {
@@ -417,9 +417,9 @@
   transform-origin: left center;
 }
 
-/*--------------
+/* --------------
     Size
----------------*/
+--------------- */
 
 [data-tooltip][data-variation~="mini"]:before,
 [data-tooltip][data-variation~="mini"]:after {
@@ -446,16 +446,16 @@
   font-size: @huge;
 }
 
-/*--------------
+/* --------------
     Basic
----------------*/
+--------------- */
 [data-tooltip][data-variation~="basic"]:before {
   display: none;
 }
 
-/*--------------
+/* --------------
      Spacing
----------------*/
+--------------- */
 
 .ui.popup {
   margin: 0;
@@ -499,11 +499,11 @@
   transform-origin: right top;
 }
 
-/*--------------
+/* --------------
      Pointer
----------------*/
+--------------- */
 
-/*--- Below ---*/
+/* --- Below --- */
 .ui.bottom.center.popup:before {
   margin-left: @arrowOffset;
   top: @arrowOffset;
@@ -515,7 +515,7 @@
 .ui.bottom.left.popup {
   margin-left: @boxArrowOffset;
 }
-/*rtl:rename*/
+/* rtl:rename */
 .ui.bottom.left.popup:before {
   top: @arrowOffset;
   left: @arrowDistanceFromEdge;
@@ -527,7 +527,7 @@
 .ui.bottom.right.popup {
   margin-right: @boxArrowOffset;
 }
-/*rtl:rename*/
+/* rtl:rename */
 .ui.bottom.right.popup:before {
   top: @arrowOffset;
   right: @arrowDistanceFromEdge;
@@ -537,7 +537,7 @@
   box-shadow: @bottomArrowBoxShadow;
 }
 
-/*--- Above ---*/
+/* --- Above --- */
 .ui.top.center.popup:before {
   top: auto;
   right: auto;
@@ -548,7 +548,7 @@
 .ui.top.left.popup {
   margin-left: @boxArrowOffset;
 }
-/*rtl:rename*/
+/* rtl:rename */
 .ui.top.left.popup:before {
   bottom: @arrowOffset;
   left: @arrowDistanceFromEdge;
@@ -559,7 +559,7 @@
 .ui.top.right.popup {
   margin-right: @boxArrowOffset;
 }
-/*rtl:rename*/
+/* rtl:rename */
 .ui.top.right.popup:before {
   bottom: @arrowOffset;
   right: @arrowDistanceFromEdge;
@@ -568,8 +568,8 @@
   margin-left: 0;
 }
 
-/*--- Left Center ---*/
-/*rtl:rename*/
+/* --- Left Center --- */
+/* rtl:rename */
 .ui.left.center.popup:before {
   top: 50%;
   right: @arrowOffset;
@@ -579,8 +579,8 @@
   box-shadow: @leftArrowBoxShadow;
 }
 
-/*--- Right Center  ---*/
-/*rtl:rename*/
+/* --- Right Center  --- */
+/* rtl:rename */
 .ui.right.center.popup:before {
   top: 50%;
   left: @arrowOffset;
@@ -648,18 +648,18 @@
             Variations
 *******************************/
 
-/*--------------
+/* --------------
      Basic
----------------*/
+--------------- */
 
 .ui.basic.popup:before {
   display: none;
 }
 
 
-/*--------------
+/* --------------
      Wide
----------------*/
+--------------- */
 
 .ui.wide.popup {
   max-width: @wideWidth;
@@ -677,9 +677,9 @@
 }
 
 
-/*--------------
+/* --------------
      Fluid
----------------*/
+--------------- */
 
 .ui.fluid.popup {
   width: 100%;
@@ -687,9 +687,9 @@
 }
 
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 
 /* Inverted colors  */
 .ui.inverted.popup {
@@ -707,18 +707,18 @@
   box-shadow: none !important;
 }
 
-/*--------------
+/* --------------
      Flowing
----------------*/
+--------------- */
 
 .ui.flowing.popup {
   max-width: none;
 }
 
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.mini.popup {
   font-size: @mini;

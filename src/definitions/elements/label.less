@@ -123,18 +123,18 @@ a.ui.label {
   margin: 0 0 0 @iconDistance;
 }
 
-/*-------------------
+/* -------------------
        Group
---------------------*/
+-------------------- */
 
 .ui.labels > .label {
   margin: 0 @groupHorizontalMargin @groupVerticalMargin 0;
 }
 
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 .ui.header > .ui.label {
   margin-top: @lineHeightOffset;
@@ -200,9 +200,9 @@ a.ui.label {
   border-radius: 0 @imageLabelBorderRadius @imageLabelBorderRadius 0;
 }
 
-/*-------------------
+/* -------------------
          Tag
---------------------*/
+-------------------- */
 
 .ui.tag.labels .label,
 .ui.tag.label {
@@ -257,9 +257,9 @@ a.ui.label {
   box-shadow: @basicTagCircleBoxShadow;
 }
 
-/*-------------------
+/* -------------------
     Corner Label
---------------------*/
+-------------------- */
 
 .ui.corner.label {
   position: absolute;
@@ -339,9 +339,9 @@ a.ui.label {
   left: -1px;
 }
 
-/*-------------------
+/* -------------------
        Ribbon
---------------------*/
+-------------------- */
 
 .ui.ribbon.label {
   position: relative;
@@ -421,9 +421,9 @@ a.ui.label {
 }
 
 
-/*-------------------
+/* -------------------
       Attached
---------------------*/
+-------------------- */
 
 .ui[class*="top attached"].label,
 .ui.attached.label {
@@ -473,17 +473,17 @@ a.ui.label {
              States
 *******************************/
 
-/*-------------------
+/* -------------------
       Disabled
---------------------*/
+-------------------- */
 
 .ui.label.disabled {
   opacity: 0.5;
 }
 
-/*-------------------
+/* -------------------
         Hover
---------------------*/
+-------------------- */
 
 .ui.labels a.label:hover,
 a.ui.label:hover {
@@ -498,9 +498,9 @@ a.ui.label:hover:before {
   color: @labelHoverTextColor;
 }
 
-/*-------------------
+/* -------------------
         Active
---------------------*/
+-------------------- */
 
 .ui.active.label {
   background-color: @labelActiveBackgroundColor;
@@ -515,9 +515,9 @@ a.ui.label:hover:before {
   color: @labelActiveTextColor;
 }
 
-/*-------------------
+/* -------------------
      Active Hover
---------------------*/
+-------------------- */
 
 .ui.labels a.active.label:hover,
 a.ui.active.label:hover {
@@ -535,18 +535,18 @@ a.ui.active.label:hover:before {
 }
 
 
-/*-------------------
+/* -------------------
       Visible
---------------------*/
+-------------------- */
 
 .ui.labels.visible .label,
 .ui.label.visible:not(.dropdown) {
   display: inline-block !important;
 }
 
-/*-------------------
+/* -------------------
       Hidden
---------------------*/
+-------------------- */
 
 .ui.labels.hidden .label,
 .ui.label.hidden {
@@ -560,9 +560,9 @@ a.ui.active.label:hover:before {
 
 
 
-/*-------------------
+/* -------------------
         Basic
---------------------*/
+-------------------- */
 
 .ui.basic.labels .label,
 .ui.basic.label {
@@ -587,9 +587,9 @@ a.ui.basic.label:hover {
 }
 
 
-/*-------------------
+/* -------------------
        Fluid
---------------------*/
+-------------------- */
 
 .ui.label.fluid,
 .ui.fluid.labels > .label {
@@ -597,9 +597,9 @@ a.ui.basic.label:hover {
   box-sizing: border-box;
 }
 
-/*-------------------
+/* -------------------
        Inverted
---------------------*/
+-------------------- */
 
 .ui.inverted.labels .label,
 .ui.inverted.label {
@@ -624,9 +624,9 @@ a.ui.basic.label:hover {
 }
 
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors,{
   @color                      : replace(@key,'@','');
@@ -742,9 +742,9 @@ each(@colors,{
 }
 
 
-/*-------------------
+/* -------------------
        Circular
---------------------*/
+-------------------- */
 
 .ui.circular.labels .label,
 .ui.circular.label {
@@ -767,9 +767,9 @@ each(@colors,{
   vertical-align: baseline;
 }
 
-/*-------------------
+/* -------------------
        Pointing
---------------------*/
+-------------------- */
 
 .ui.pointing.label {
   position: relative;
@@ -797,7 +797,7 @@ each(@colors,{
   transition: @pointingTriangleTransition;
 }
 
-/*--- Above ---*/
+/* --- Above --- */
 .ui.pointing.label,
 .ui[class*="pointing above"].label {
   margin-top: @pointingVerticalDistance;
@@ -809,7 +809,7 @@ each(@colors,{
   top: 0;
   left: 50%;
 }
-/*--- Below ---*/
+/* --- Below --- */
 .ui[class*="bottom pointing"].label,
 .ui[class*="pointing below"].label {
   margin-top: 0;
@@ -824,7 +824,7 @@ each(@colors,{
   top: 100%;
   left: 50%;
 }
-/*--- Left ---*/
+/* --- Left --- */
 .ui[class*="left pointing"].label {
   margin-top: 0;
   margin-left: @pointingHorizontalDistance;
@@ -837,7 +837,7 @@ each(@colors,{
   top: 50%;
   left: 0;
 }
-/*--- Right ---*/
+/* --- Right --- */
 .ui[class*="right pointing"].label {
   margin-top: 0;
   margin-right: @pointingHorizontalDistance;
@@ -853,33 +853,33 @@ each(@colors,{
 
 /* Basic Pointing */
 
-/*--- Above ---*/
+/* --- Above --- */
 .ui.basic.pointing.label:before,
 .ui.basic[class*="pointing above"].label:before {
   margin-top: @basicPointingTriangleOffset;
 }
-/*--- Below ---*/
+/* --- Below --- */
 .ui.basic[class*="bottom pointing"].label:before,
 .ui.basic[class*="pointing below"].label:before {
   bottom: auto;
   top: 100%;
   margin-top: -@basicPointingTriangleOffset;
 }
-/*--- Left ---*/
+/* --- Left --- */
 .ui.basic[class*="left pointing"].label:before {
   top: 50%;
   left: @basicPointingTriangleOffset;
 }
-/*--- Right ---*/
+/* --- Right --- */
 .ui.basic[class*="right pointing"].label:before {
   top: 50%;
   right: @basicPointingTriangleOffset;
 }
 
 
-/*------------------
+/* ------------------
    Floating Label
--------------------*/
+------------------- */
 
 .ui.floating.label {
   position: absolute;
@@ -905,9 +905,9 @@ each(@colors,{
   bottom: @floatingBottomOffset;
 }
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 .ui.mini.labels .label,
 .ui.mini.label {

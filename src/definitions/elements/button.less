@@ -61,9 +61,9 @@
             States
 *******************************/
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 .ui.button:hover {
   background-color: @hoverBackgroundColor;
@@ -75,9 +75,9 @@
   opacity: @iconHoverOpacity;
 }
 
-/*--------------
+/* --------------
       Focus
----------------*/
+--------------- */
 
 .ui.button:focus {
   background-color: @focusBackgroundColor;
@@ -89,9 +89,9 @@
   opacity: @iconFocusOpacity;
 }
 
-/*--------------
+/* --------------
       Down
----------------*/
+--------------- */
 
 .ui.button:active,
 .ui.active.button:active {
@@ -101,9 +101,9 @@
   box-shadow: @downBoxShadow;
 }
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.active.button {
   background-color: @activeBackgroundColor;
@@ -122,9 +122,9 @@
 }
 
 
-/*--------------
+/* --------------
     Loading
----------------*/
+--------------- */
 
 /* Specificity hack */
 .ui.loading.loading.loading.loading.loading.loading.button {
@@ -178,9 +178,9 @@
   border-color: @loaderLineColor;
 }
 
-/*-------------------
+/* -------------------
       Disabled
---------------------*/
+-------------------- */
 
 .ui.buttons .disabled.button,
 .ui.disabled.button,
@@ -203,9 +203,9 @@
              Types
 *******************************/
 
-/*-------------------
+/* -------------------
        Animated
---------------------*/
+-------------------- */
 
 .ui.animated.button {
   position: relative;
@@ -309,9 +309,9 @@
   transform: scale(1);
 }
 
-/*-------------------
+/* -------------------
        Inverted
---------------------*/
+-------------------- */
 
 .ui.inverted.button {
   box-shadow: 0 0 0 @invertedBorderSize @white inset;
@@ -359,9 +359,9 @@
 }
 
 
-/*-------------------
+/* -------------------
     Labeled Button
---------------------*/
+-------------------- */
 
 .ui.labeled.button:not(.icon) {
   display: inline-flex;
@@ -409,9 +409,9 @@
   border-bottom-right-radius: 0;
 }
 
-/*-------------------
+/* -------------------
        Social
---------------------*/
+-------------------- */
 
 /* Facebook */
 .ui.facebook.button {
@@ -592,9 +592,9 @@
   color: @white;
 }
 
-/*--------------
+/* --------------
      Icon
----------------*/
+--------------- */
 
 .ui.button > .icon:not(.button) {
   height: @iconHeight;
@@ -617,9 +617,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
        Floated
---------------------*/
+-------------------- */
 
 .ui[class*="left floated"].buttons,
 .ui[class*="left floated"].button {
@@ -634,9 +634,9 @@
   margin-left: @floatedMargin;
 }
 
-/*-------------------
+/* -------------------
        Compact
---------------------*/
+-------------------- */
 
 .ui.compact.buttons .button,
 .ui.compact.button {
@@ -651,9 +651,9 @@
   padding: @compactVerticalPadding (@compactHorizontalPadding + @labeledIconWidth) ( @compactVerticalPadding + @shadowOffset );
 }
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 .ui.mini.buttons .button,
 .ui.mini.buttons .or,
@@ -740,9 +740,9 @@
   font-size: @massive;
 }
 
-/*--------------
+/* --------------
     Icon Only
----------------*/
+--------------- */
 
 .ui.icon.buttons .button,
 .ui.icon.button {
@@ -756,9 +756,9 @@
 }
 
 
-/*-------------------
+/* -------------------
         Basic
---------------------*/
+-------------------- */
 
 .ui.basic.buttons .button,
 .ui.basic.button {
@@ -869,9 +869,9 @@
   border-top-width: 0;
 }
 
-/*-------------------
+/* -------------------
        Tertiary
---------------------*/
+-------------------- */
 
 /* Overline Mixin */
 
@@ -950,9 +950,9 @@
   background: @tertiaryActiveBackgroundColor;
 }
 
-/*--------------
+/* --------------
   Labeled Icon
----------------*/
+--------------- */
 
 .ui.labeled.icon.buttons .button,
 .ui.labeled.icon.button {
@@ -1039,9 +1039,9 @@
 }
 
 
-/*--------------
+/* --------------
      Toggle
----------------*/
+--------------- */
 
 /* Toggle (Modifies active state to give affordances) */
 .ui.toggle.buttons .active.button,
@@ -1058,9 +1058,9 @@
   color: @invertedTextColor;
 }
 
-/*--------------
+/* --------------
     Circular
----------------*/
+--------------- */
 
 .ui.circular.button {
   border-radius: 10em;
@@ -1071,9 +1071,9 @@
 }
 
 
-/*-------------------
+/* -------------------
       Or Buttons
---------------------*/
+-------------------- */
 
 .ui.buttons .or {
   position: relative;
@@ -1119,9 +1119,9 @@
 }
 
 
-/*-------------------
+/* -------------------
        Attached
---------------------*/
+-------------------- */
 
 
 /* Singular */
@@ -1229,9 +1229,9 @@
   border-radius: 0 0 0 @borderRadius;
 }
 
-/*-------------------
+/* -------------------
         Fluid
---------------------*/
+-------------------- */
 
 .ui.fluid.buttons,
 .ui.fluid.button {
@@ -1348,9 +1348,9 @@
 }
 
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -1749,15 +1749,15 @@ each(@colors, {
   }
 }
 
-/*---------------
+/* ---------------
     Positive
-----------------*/
+---------------- */
 
 .addConsequence(positive);
 
-/*---------------
+/* ---------------
      Negative
-----------------*/
+---------------- */
 
 .addConsequence(negative);
 

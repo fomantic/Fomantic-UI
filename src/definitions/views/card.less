@@ -21,9 +21,9 @@
             Standard
 *******************************/
 
-/*--------------
+/* --------------
       Card
----------------*/
+--------------- */
 
 .ui.cards > .card,
 .ui.card {
@@ -57,9 +57,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
       Cards
----------------*/
+--------------- */
 
 .ui.cards {
   display: @groupDisplay;
@@ -90,9 +90,9 @@
 }
 
 
-/*--------------
+/* --------------
   Rounded Edges
----------------*/
+--------------- */
 
 .ui.cards > .card > :first-child,
 .ui.card > :first-child {
@@ -108,9 +108,9 @@
   border-radius: @borderRadius !important;
 }
 
-/*--------------
+/* --------------
      Images
----------------*/
+--------------- */
 
 .ui.cards > .card > .image,
 .ui.card > .image {
@@ -132,9 +132,9 @@
   border: @imageBorder;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.cards > .card > .content,
 .ui.card > .content {
@@ -180,9 +180,9 @@
   margin-top: @descriptionDistance;
 }
 
-/*----------------
+/* ----------------
  Floated Content
------------------*/
+----------------- */
 
 .ui.cards > .card  [class*="left floated"],
 .ui.card [class*="left floated"] {
@@ -193,9 +193,9 @@
   float: right;
 }
 
-/*--------------
+/* --------------
      Aligned
----------------*/
+--------------- */
 
 .ui.cards > .card  [class*="left aligned"],
 .ui.card [class*="left aligned"] {
@@ -211,9 +211,9 @@
 }
 
 
-/*--------------
+/* --------------
   Content Image
----------------*/
+--------------- */
 
 .ui.cards > .card .content img,
 .ui.card .content img {
@@ -231,9 +231,9 @@
 }
 
 
-/*--------------
+/* --------------
    Description
----------------*/
+--------------- */
 
 .ui.cards > .card > .content > .description,
 .ui.card > .content > .description {
@@ -241,9 +241,9 @@
   color: @descriptionColor;
 }
 
-/*--------------
+/* --------------
     Paragraph
----------------*/
+--------------- */
 
 .ui.cards > .card > .content p,
 .ui.card > .content p {
@@ -254,9 +254,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
       Meta
----------------*/
+--------------- */
 
 .ui.cards > .card .meta,
 .ui.card .meta {
@@ -277,9 +277,9 @@
   margin-left: @metaSpacing;
 }
 
-/*--------------
+/* --------------
       Links
----------------*/
+--------------- */
 
 /* Generic */
 .ui.cards > .card > .content a:not(.ui),
@@ -312,9 +312,9 @@
   color: @metaLinkHoverColor;
 }
 
-/*--------------
+/* --------------
      Buttons
----------------*/
+--------------- */
 
 .ui.cards > .card > .buttons,
 .ui.card > .buttons,
@@ -327,9 +327,9 @@
   }
 }
 
-/*--------------
+/* --------------
       Dimmer
----------------*/
+--------------- */
 
 .ui.cards > .card .dimmer,
 .ui.card .dimmer {
@@ -337,11 +337,11 @@
   z-index: @dimmerZIndex;
 }
 
-/*--------------
+/* --------------
      Labels
----------------*/
+--------------- */
 
-/*-----Star----- */
+/* -----Star----- */
 
 /* Icon */
 .ui.cards > .card > .content .star.icon,
@@ -360,7 +360,7 @@
   color: @starActiveColor;
 }
 
-/*-----Like----- */
+/* -----Like----- */
 
 /* Icon */
 .ui.cards > .card > .content .like.icon,
@@ -379,9 +379,9 @@
   color: @likeActiveColor;
 }
 
-/*----------------
+/* ----------------
   Extra Content
------------------*/
+----------------- */
 
 .ui.cards > .card > .extra,
 .ui.card > .extra {
@@ -414,9 +414,9 @@
            Variations
 *******************************/
 
-/*-------------------
+/* -------------------
       Horizontal
---------------------*/
+-------------------- */
 
 .ui.horizontal.cards > .card,
 .ui.card.horizontal {
@@ -447,9 +447,9 @@
   border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
 }
 
-/*-------------------
+/* -------------------
        Raised
---------------------*/
+-------------------- */
 
 .ui.raised.cards > .card,
 .ui.raised.card {
@@ -462,9 +462,9 @@ a.ui.raised.card:hover,
   box-shadow: @raisedShadowHover;
 }
 
-/*-------------------
+/* -------------------
        Centered
---------------------*/
+-------------------- */
 
 .ui.centered.cards {
   justify-content: center;
@@ -474,18 +474,18 @@ a.ui.raised.card:hover,
   margin-right: auto;
 }
 
-/*-------------------
+/* -------------------
         Fluid
---------------------*/
+-------------------- */
 
 .ui.fluid.card {
   width: 100%;
   max-width: 9999px;
 }
 
-/*-------------------
+/* -------------------
         Link
---------------------*/
+-------------------- */
 
 .ui.cards a.card,
 .ui.link.cards .card,
@@ -505,9 +505,9 @@ a.ui.card:hover,
   transform: @linkHoverTransform;
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors,{
   @color: replace(@key,'@','');
@@ -646,9 +646,9 @@ each(@colors,{
 }
 
 
-/*-------------------
+/* -------------------
       Doubling
---------------------*/
+-------------------- */
 
 /* Mobile Only */
 @media only screen and (max-width : @largestMobileScreen) {
@@ -822,9 +822,9 @@ each(@colors,{
   }
 }
 
-/*-------------------
+/* -------------------
       Stackable
---------------------*/
+-------------------- */
 
 @media only screen and (max-width : @largestMobileScreen) {
 
@@ -843,17 +843,17 @@ each(@colors,{
   }
 }
 
-/*--------------
+/* --------------
       Size
----------------*/
+--------------- */
 
 .ui.cards > .card {
   font-size: @medium;
 }
 
-/*-----------------
+/* -----------------
       Inverted
-------------------*/
+------------------ */
 
 .ui.inverted.cards > .card,
 .ui.inverted.card {

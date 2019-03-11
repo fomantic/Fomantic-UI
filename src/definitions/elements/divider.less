@@ -37,18 +37,18 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/*--------------
+/* --------------
       Basic
----------------*/
+--------------- */
 
 .ui.divider:not(.vertical):not(.horizontal) {
   border-top: @shadowWidth solid @shadowColor;
   border-bottom: @highlightWidth solid @highlightColor;
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 /* Allow divider between each column row */
 .ui.grid > .column + .divider,
@@ -56,9 +56,9 @@
   left: auto;
 }
 
-/*--------------
+/* --------------
    Horizontal
----------------*/
+--------------- */
 
 .ui.horizontal.divider {
   display: table;
@@ -85,9 +85,9 @@
   background-position: left @horizontalDividerMargin top 50%;
 }
 
-/*--------------
+/* --------------
     Vertical
----------------*/
+--------------- */
 
 .ui.vertical.divider {
   position: absolute;
@@ -166,9 +166,9 @@
   }
 }
 
-/*--------------
+/* --------------
       Icon
----------------*/
+--------------- */
 
 .ui.divider > .icon {
   margin: @dividerIconMargin;
@@ -181,9 +181,9 @@
           Variations
 *******************************/
 
-/*--------------
+/* --------------
     Hidden
----------------*/
+--------------- */
 
 .ui.hidden.divider {
   border-color: transparent !important;
@@ -193,9 +193,9 @@
   display: none;
 }
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 .ui.divider.inverted,
 .ui.vertical.inverted.divider,
@@ -211,34 +211,34 @@
   border-right-color: @invertedHighlightColor !important;
 }
 
-/*--------------
+/* --------------
     Fitted
----------------*/
+--------------- */
 
 .ui.fitted.divider {
   margin: 0;
 }
 
-/*--------------
+/* --------------
     Clearing
----------------*/
+--------------- */
 
 .ui.clearing.divider {
   clear: both;
 }
 
-/*--------------
+/* --------------
     Section
----------------*/
+--------------- */
 
 .ui.section.divider {
   margin-top: @sectionMargin;
   margin-bottom: @sectionMargin;
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.divider {
   font-size: @medium;

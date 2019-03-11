@@ -22,9 +22,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
     Content
----------------*/
+--------------- */
 
 .ui.checkbox {
   position: relative;
@@ -55,9 +55,9 @@
 }
 
 
-/*--------------
+/* --------------
       Box
----------------*/
+--------------- */
 
 
 .ui.checkbox .box,
@@ -86,9 +86,9 @@
   border: @checkboxBorder;
 }
 
-/*--------------
+/* --------------
     Checkmark
----------------*/
+--------------- */
 
 .ui.checkbox .box:after,
 .ui.checkbox label:after {
@@ -105,9 +105,9 @@
   transition: @checkboxTransition;
 }
 
-/*--------------
+/* --------------
       Label
----------------*/
+--------------- */
 
 /* Inside */
 .ui.checkbox label,
@@ -127,9 +127,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 .ui.checkbox .box:hover::before,
 .ui.checkbox label:hover::before {
@@ -141,9 +141,9 @@
   color: @labelHoverColor;
 }
 
-/*--------------
+/* --------------
       Down
----------------*/
+--------------- */
 
 .ui.checkbox .box:active::before,
 .ui.checkbox label:active::before {
@@ -158,9 +158,9 @@
   color: @labelPressedColor;
 }
 
-/*--------------
+/* --------------
      Focus
----------------*/
+--------------- */
 
 .ui.checkbox input:focus ~ .box:before,
 .ui.checkbox input:focus ~ label:before {
@@ -175,9 +175,9 @@
   color: @labelFocusColor;
 }
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.checkbox input:checked ~ .box:before,
 .ui.checkbox input:checked ~ label:before {
@@ -190,9 +190,9 @@
   color: @checkboxActiveCheckColor;
 }
 
-/*--------------
+/* --------------
   Indeterminate
----------------*/
+--------------- */
 
 .ui.checkbox input:not([type=radio]):indeterminate ~ .box:before,
 .ui.checkbox input:not([type=radio]):indeterminate ~ label:before {
@@ -214,9 +214,9 @@
   }
 }
 
-/*--------------
+/* --------------
   Active Focus
----------------*/
+--------------- */
 
 .ui.checkbox input:not([type=radio]):indeterminate:focus ~ .box:before,
 .ui.checkbox input:not([type=radio]):indeterminate:focus ~ label:before,
@@ -233,9 +233,9 @@
 }
 
 
-/*--------------
+/* --------------
     Read-Only
----------------*/
+--------------- */
 
 .ui.read-only.checkbox,
 .ui.read-only.checkbox label {
@@ -243,9 +243,9 @@
 }
 
 
-/*--------------
+/* --------------
      Disabled
----------------*/
+--------------- */
 
 .ui.disabled.checkbox .box:after,
 .ui.disabled.checkbox label,
@@ -256,9 +256,9 @@
   color: @disabledCheckboxLabelColor;
 }
 
-/*--------------
+/* --------------
      Hidden
----------------*/
+--------------- */
 
 /* Initialized checkbox moves input below element
  to prevent manually triggering */
@@ -278,9 +278,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
      Radio
----------------*/
+--------------- */
 
 .ui.radio.checkbox {
   min-height: @radioSize;
@@ -361,9 +361,9 @@
   background-color: @radioActiveFocusBulletColor;
 }
 
-/*--------------
+/* --------------
      Slider
----------------*/
+--------------- */
 
 .ui.slider.checkbox {
   min-height: @sliderHeight;
@@ -468,9 +468,9 @@
 }
 
 
-/*--------------
+/* --------------
      Toggle
----------------*/
+--------------- */
 
 .ui.toggle.checkbox {
   min-height: @toggleHeight;
@@ -581,9 +581,9 @@
             Variations
 *******************************/
 
-/*--------------
+/* --------------
      Fitted
----------------*/
+--------------- */
 
 .ui.fitted.checkbox .box,
 .ui.fitted.checkbox label {
@@ -596,9 +596,9 @@
   width: @sliderWidth;
 }
 
-/*--------------
+/* --------------
      Inverted
----------------*/
+--------------- */
 .ui.inverted.checkbox label,
 .ui.inverted.checkbox + label {
   color: @invertedTextColor !important;
@@ -614,7 +614,7 @@
   border-color: @strongSelectedBorderColor;
 }
 
-/*Slider Label */
+/* Slider Label */
 .ui.inverted.slider.checkbox .box,
 .ui.inverted.slider.checkbox label {
   color: @invertedUnselectedTextColor;

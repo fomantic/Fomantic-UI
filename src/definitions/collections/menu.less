@@ -23,9 +23,9 @@
             Standard
 *******************************/
 
-/*--------------
+/* --------------
       Menu
----------------*/
+--------------- */
 
 .ui.menu {
   display: flex;
@@ -53,9 +53,9 @@
 }
 
 
-/*--------------
+/* --------------
     Sub-Menu
----------------*/
+--------------- */
 
 .ui.menu .menu {
   margin: 0;
@@ -64,9 +64,9 @@
   display: flex;
 }
 
-/*--------------
+/* --------------
       Item
----------------*/
+--------------- */
 
 .ui.menu:not(.vertical) .item {
   display: flex;
@@ -104,9 +104,9 @@
   background: @dividerBackground;
 }
 
-/*--------------
+/* --------------
   Text Content
----------------*/
+--------------- */
 
 .ui.menu .text.item > *,
 .ui.menu .item > a:not(.ui),
@@ -121,9 +121,9 @@
   margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
       Icons
----------------*/
+--------------- */
 
 .ui.menu .item > i.icon {
   opacity: @iconOpacity;
@@ -131,9 +131,9 @@
   margin: @iconMargin;
 }
 
-/*--------------
+/* --------------
      Button
----------------*/
+--------------- */
 
 .ui.menu:not(.vertical) .item > .button {
   position: relative;
@@ -144,9 +144,9 @@
   font-size: @buttonSize;
 }
 
-/*----------------
+/* ----------------
  Grid / Container
------------------*/
+----------------- */
 
 .ui.menu >  .grid,
 .ui.menu > .container {
@@ -155,9 +155,9 @@
   flex-direction: inherit;
 }
 
-/*--------------
+/* --------------
      Inputs
----------------*/
+--------------- */
 
 .ui.menu .item > .input {
   width: 100%;
@@ -174,9 +174,9 @@
 }
 
 
-/*--------------
+/* --------------
      Header
----------------*/
+--------------- */
 
 .ui.menu .header.item,
 .ui.vertical.menu .header.item {
@@ -191,9 +191,9 @@
   font-weight: @verticalHeaderFontWeight;
 }
 
-/*--------------
+/* --------------
     Dropdowns
----------------*/
+--------------- */
 
 
 /* Dropdown Icon */
@@ -303,9 +303,9 @@
   width: 100%;
 }
 
-/*--------------
+/* --------------
      Labels
----------------*/
+--------------- */
 
 .ui.menu .item > .label:not(.floating) {
   margin-left: @labelTextMargin;
@@ -327,9 +327,9 @@
   margin: @imageLabelImageMargin;
   height: @imageLabelHeight;
 }
-/*--------------
+/* --------------
      Images
----------------*/
+--------------- */
 
 .ui.menu .item > img:not(.ui) {
   display: inline-block;
@@ -347,18 +347,18 @@
           Coupling
 *******************************/
 
-/*--------------
+/* --------------
      List
----------------*/
+--------------- */
 
 /* Menu divider shouldnt apply */
 .ui.menu .list .item:before {
   background: none !important;
 }
 
-/*--------------
+/* --------------
      Sidebar
----------------*/
+--------------- */
 
 /* Show vertical dividers below last */
 
@@ -370,9 +370,9 @@
   bottom: 0;
 }
 
-/*--------------
+/* --------------
     Container
----------------*/
+--------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
 
@@ -398,9 +398,9 @@
              States
 *******************************/
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 
 .ui.link.menu .item:hover,
@@ -413,9 +413,9 @@
 }
 
 
-/*--------------
+/* --------------
      Pressed
----------------*/
+--------------- */
 
 .ui.link.menu .item:active,
 .ui.menu .link.item:active,
@@ -425,9 +425,9 @@
 }
 
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.menu .active.item  {
   background: @activeItemBackground;
@@ -439,9 +439,9 @@
   opacity: @activeIconOpacity;
 }
 
-/*--------------
+/* --------------
   Active Hover
----------------*/
+--------------- */
 
 .ui.menu .active.item:hover,
 .ui.vertical.menu .active.item:hover {
@@ -450,9 +450,9 @@
 }
 
 
-/*--------------
+/* --------------
      Disabled
----------------*/
+--------------- */
 
 .ui.ui.menu .item.disabled {
   cursor: default;
@@ -466,9 +466,9 @@
              Types
 *******************************/
 
-/*------------------
+/* ------------------
 Floated Menu / Item
--------------------*/
+------------------- */
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
@@ -503,9 +503,9 @@ Floated Menu / Item
   display: none;
 }
 
-/*--------------
+/* --------------
     Vertical
----------------*/
+--------------- */
 
 .ui.vertical.menu {
   display: block;
@@ -514,7 +514,7 @@ Floated Menu / Item
   box-shadow: @verticalBoxShadow;
 }
 
-/*--- Item ---*/
+/* --- Item --- */
 .ui.vertical.menu .item {
   display: block;
   background: @verticalItemBackground;
@@ -528,13 +528,13 @@ Floated Menu / Item
   border-radius: 0 0 @borderRadius @borderRadius;
 }
 
-/*--- Label ---*/
+/* --- Label --- */
 .ui.vertical.menu .item > .label {
   float: right;
   text-align: center;
 }
 
-/*--- Icon ---*/
+/* --- Icon --- */
 .ui.vertical.menu .item > i.icon,
 .ui.vertical.menu .item > i.icons {
   width: @iconWidth;
@@ -547,7 +547,7 @@ Floated Menu / Item
 }
 
 
-/*--- Border ---*/
+/* --- Border --- */
 .ui.vertical.menu .item:before {
   position: absolute;
   content: '';
@@ -562,7 +562,7 @@ Floated Menu / Item
 }
 
 
-/*--- Sub Menu ---*/
+/* --- Sub Menu --- */
 .ui.vertical.menu .item > .menu {
   margin: @subMenuMargin;
 }
@@ -605,9 +605,9 @@ Floated Menu / Item
 }
 
 
-/*--------------
+/* --------------
      Tabular
----------------*/
+--------------- */
 
 .ui.tabular.menu {
   border-radius: 0;
@@ -747,9 +747,9 @@ Floated Menu / Item
 
 
 
-/*--------------
+/* --------------
    Pagination
----------------*/
+--------------- */
 
 .ui.pagination.menu {
   margin: 0;
@@ -782,9 +782,9 @@ Floated Menu / Item
   box-shadow: none;
 }
 
-/*--------------
+/* --------------
    Secondary
----------------*/
+--------------- */
 
 .ui.secondary.menu {
   background: @secondaryBackground;
@@ -886,9 +886,9 @@ Floated Menu / Item
 }
 
 
-/*---------------------
+/* ---------------------
    Secondary Vertical
------------------------*/
+----------------------- */
 
 .ui.secondary.vertical.menu > .item {
   border: none;
@@ -909,9 +909,9 @@ Floated Menu / Item
   background-color: transparent;
 }
 
-/*---------------------
+/* ---------------------
    Secondary Pointing
------------------------*/
+----------------------- */
 
 .ui.secondary.pointing.menu {
   margin-left: 0;
@@ -1033,9 +1033,9 @@ Floated Menu / Item
   color: @secondaryPointingInvertedActiveColor;
 }
 
-/*--------------
+/* --------------
     Text Menu
----------------*/
+--------------- */
 
 .ui.text.menu {
   background: none transparent;
@@ -1077,12 +1077,12 @@ Floated Menu / Item
   margin: 0;
 }
 
-/*--- fluid text ---*/
+/* --- fluid text --- */
 .ui.text.item.menu .item {
   margin: 0;
 }
 
-/*--- vertical text ---*/
+/* --- vertical text --- */
 .ui.vertical.text.menu {
   margin: @textVerticalMenuMargin;
 }
@@ -1114,13 +1114,13 @@ Floated Menu / Item
   padding: @textMenuSubMenuItemPadding;
 }
 
-/*--- hover ---*/
+/* --- hover --- */
 .ui.text.menu .item:hover {
   opacity: 1;
   background-color: transparent;
 }
 
-/*--- active ---*/
+/* --- active --- */
 .ui.text.menu .active.item {
   background-color: transparent;
   border: none;
@@ -1129,7 +1129,7 @@ Floated Menu / Item
   color: @textMenuActiveItemColor;
 }
 
-/*--- active hover ---*/
+/* --- active hover --- */
 .ui.text.menu .active.item:hover {
   background-color: transparent;
 }
@@ -1156,9 +1156,9 @@ Floated Menu / Item
   margin-right: 0;
 }
 
-/*--------------
+/* --------------
     Icon Only
----------------*/
+--------------- */
 
 /* Vertical Menu */
 .ui.vertical.icon.menu {
@@ -1203,9 +1203,9 @@ Floated Menu / Item
   color: @iconMenuInvertedItemColor;
 }
 
-/*--------------
+/* --------------
    Labeled Icon
----------------*/
+--------------- */
 
 /* Menu */
 .ui.labeled.icon.menu {
@@ -1236,9 +1236,9 @@ Floated Menu / Item
            Variations
 *******************************/
 
-/*--------------
+/* --------------
     Stackable
----------------*/
+--------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
 
@@ -1278,9 +1278,9 @@ Floated Menu / Item
   }
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -1315,7 +1315,7 @@ each(@colors, {
   background: @invertedSubMenuBackground;
 }
 
-/*--- Border ---*/
+/* --- Border --- */
 .ui.inverted.menu .item:before {
   background: @invertedDividerBackground;
 }
@@ -1341,7 +1341,7 @@ each(@colors, {
   color: @invertedDisabledTextColor;
 }
 
-/*--- Hover ---*/
+/* --- Hover --- */
 .ui.link.inverted.menu .item:hover,
 .ui.inverted.menu .dropdown.item:hover,
 .ui.inverted.menu .link.item:hover,
@@ -1355,14 +1355,14 @@ each(@colors, {
   color: @invertedSubMenuHoverColor;
 }
 
-/*--- Pressed ---*/
+/* --- Pressed --- */
 .ui.inverted.menu a.item:active,
 .ui.inverted.menu .link.item:active{
   background: @invertedMenuPressedBackground;
   color: @invertedMenuPressedColor;
 }
 
-/*--- Active ---*/
+/* --- Active --- */
 .ui.inverted.menu .active.item {
   background: @invertedActiveBackground;
   color: @invertedActiveColor !important;
@@ -1378,7 +1378,7 @@ each(@colors, {
   border: none !important;
 }
 
-/*--- Active Hover ---*/
+/* --- Active Hover --- */
 .ui.inverted.menu .active.item:hover {
   background: @invertedActiveHoverBackground;
   color: @invertedActiveHoverColor !important;
@@ -1388,9 +1388,9 @@ each(@colors, {
 }
 
 
-/*--------------
+/* --------------
      Floated
----------------*/
+--------------- */
 
 .ui.floated.menu {
   float: left;
@@ -1405,9 +1405,9 @@ each(@colors, {
 }
 
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -1450,9 +1450,9 @@ each(@colors, {
   padding-right: @itemHorizontalPadding;
 }
 
-/*--------------
+/* --------------
    Borderless
----------------*/
+--------------- */
 
 .ui.borderless.menu .item:before,
 .ui.borderless.menu .item .menu .item:before,
@@ -1460,9 +1460,9 @@ each(@colors, {
   background: none !important;
 }
 
-/*-------------------
+/* -------------------
        Compact
---------------------*/
+-------------------- */
 
 .ui.compact.menu {
   display: inline-flex;
@@ -1487,9 +1487,9 @@ each(@colors, {
   display: block;
 }
 
-/*-------------------
+/* -------------------
         Fluid
---------------------*/
+-------------------- */
 
 .ui.menu.fluid,
 .ui.vertical.menu.fluid {
@@ -1497,9 +1497,9 @@ each(@colors, {
 }
 
 
-/*-------------------
+/* -------------------
       Evenly Sized
---------------------*/
+-------------------- */
 
 .ui.item.menu,
 .ui.item.menu .item {
@@ -1551,9 +1551,9 @@ each(@colors, {
   width: 8.333%;
 }
 
-/*--------------
+/* --------------
      Fixed
----------------*/
+--------------- */
 
 .ui.menu.fixed {
   position: fixed;
@@ -1616,9 +1616,9 @@ each(@colors, {
 }
 
 
-/*-------------------
+/* -------------------
        Pointing
---------------------*/
+-------------------- */
 
 .ui.pointing.menu .item:after {
   visibility: hidden;
@@ -1765,9 +1765,9 @@ each(@colors, {
   width: 100%;
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 /* Mini */
 .ui.mini.menu {

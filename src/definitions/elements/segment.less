@@ -55,9 +55,9 @@
 }
 
 
-/*-------------------
+/* -------------------
     Loose Coupling
---------------------*/
+-------------------- */
 
 /* Header */
 .ui.inverted.segment > .ui.header > .sub.header,
@@ -115,9 +115,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
      Placeholder
---------------------*/
+-------------------- */
 
 .ui.placeholder.segment {
   display: flex;
@@ -166,9 +166,9 @@
 }
 
 
-/*-------------------
+/* -------------------
         Piled
---------------------*/
+-------------------- */
 
 .ui.piled.segments,
 .ui.piled.segment {
@@ -226,9 +226,9 @@
   margin-bottom: 0;
 }
 
-/*-------------------
+/* -------------------
        Stacked
---------------------*/
+-------------------- */
 
 .ui.stacked.segment {
   padding-bottom: @stackedPadding;
@@ -270,9 +270,9 @@
   border-top: 1px solid @selectedBorderColor;
 }
 
-/*-------------------
+/* -------------------
        Padded
---------------------*/
+-------------------- */
 
 .ui.padded.segment {
   padding: @paddedSegmentPadding;
@@ -288,9 +288,9 @@
   padding-right: 0;
 }
 
-/*-------------------
+/* -------------------
        Compact
---------------------*/
+-------------------- */
 
 .ui.compact.segment {
   display: table;
@@ -306,9 +306,9 @@
   flex: 0 1 auto;
 }
 
-/*-------------------
+/* -------------------
        Circular
---------------------*/
+-------------------- */
 
 .ui.circular.segment {
   display: table-cell;
@@ -318,9 +318,9 @@
   border-radius: 500em;
 }
 
-/*-------------------
+/* -------------------
        Raised
---------------------*/
+-------------------- */
 
 .ui.raised.raised.segments,
 .ui.raised.raised.segment {
@@ -449,18 +449,18 @@
             States
 *******************************/
 
-/*--------------
+/* --------------
     Disabled
----------------*/
+--------------- */
 
 .ui.disabled.segment {
   opacity: @disabledOpacity;
   color: @disabledTextColor;
 }
 
-/*--------------
+/* --------------
     Loading
----------------*/
+--------------- */
 
 .ui.loading.segment {
   position: relative;
@@ -506,9 +506,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
        Basic
---------------------*/
+-------------------- */
 
 .ui.basic.segment,
 .ui.segments .ui.basic.segment,
@@ -519,9 +519,9 @@
   border-radius: @basicBorderRadius;
 }
 
-/*-------------------
+/* -------------------
        Clearing
---------------------*/
+-------------------- */
 
 .ui.clearing.segment:after {
   content: "";
@@ -529,9 +529,9 @@
   clear: both;
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors,{
   @color: replace(@key,'@','');
@@ -561,9 +561,9 @@ each(@colors,{
   text-align: center;
 }
 
-/*-------------------
+/* -------------------
        Floated
---------------------*/
+-------------------- */
 
 .ui.floated.segment,
 .ui[class*="left floated"].segment {
@@ -576,9 +576,9 @@ each(@colors,{
 }
 
 
-/*-------------------
+/* -------------------
       Inverted
---------------------*/
+-------------------- */
 
 .ui.inverted.segment {
   border: none;
@@ -611,9 +611,9 @@ each(@colors,{
   background: @loaderInvertedDimmerColor;
 }
 
-/*-------------------
+/* -------------------
      Emphasis
---------------------*/
+-------------------- */
 
 /* Secondary */
 .ui.secondary.segment {
@@ -636,9 +636,9 @@ each(@colors,{
 }
 
 
-/*-------------------
+/* -------------------
       Attached
---------------------*/
+-------------------- */
 
 /* Middle */
 .ui.attached.segment {
@@ -680,9 +680,9 @@ each(@colors,{
   margin-bottom: @verticalMargin;
 }
 
-/*-------------------
+/* -------------------
         Size
---------------------*/
+-------------------- */
 
 .ui.mini.segments .segment,
 .ui.mini.segment {

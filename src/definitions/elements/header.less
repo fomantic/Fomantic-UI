@@ -41,9 +41,9 @@
   margin-bottom: @lastMargin;
 }
 
-/*--------------
+/* --------------
    Sub Header
----------------*/
+--------------- */
 
 .ui.header .sub.header {
   display: block;
@@ -55,9 +55,9 @@
   color: @subHeaderColor;
 }
 
-/*--------------
+/* --------------
       Icon
----------------*/
+--------------- */
 
 .ui.header > .icon {
   display: table-cell;
@@ -74,9 +74,9 @@
   margin-right: @iconMargin;
 }
 
-/*-------------------
+/* -------------------
         Image
---------------------*/
+-------------------- */
 
 .ui.header > .image:not(.icon),
 .ui.header > img {
@@ -91,9 +91,9 @@
   margin-right: @imageMargin;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.header .content {
   display: inline-block;
@@ -115,9 +115,9 @@
 }
 
 
-/*--------------
+/* --------------
  Loose Coupling
----------------*/
+--------------- */
 
 .ui.header .ui.label {
   font-size: @labelSize;
@@ -137,9 +137,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
      Page
----------------*/
+--------------- */
 
 h1.ui.header {
   font-size: @h1;
@@ -176,9 +176,9 @@ h5.ui.header .sub.header {
 }
 
 
-/*--------------
+/* --------------
  Content Heading
----------------*/
+--------------- */
 
 .ui.huge.header {
   min-height: 1em;
@@ -214,9 +214,9 @@ h5.ui.header .sub.header {
   font-size: @tinySubHeaderFontSize;
 }
 
-/*--------------
+/* --------------
    Sub Heading
----------------*/
+--------------- */
 
 .ui.sub.header {
   padding: 0;
@@ -238,9 +238,9 @@ h5.ui.header .sub.header {
 
 
 
-/*-------------------
+/* -------------------
         Icon
---------------------*/
+-------------------- */
 
 .ui.icon.header {
   display: inline-block;
@@ -303,9 +303,9 @@ h5.ui.header .sub.header {
            Variations
 *******************************/
 
-/*-------------------
+/* -------------------
       Inverted
---------------------*/
+-------------------- */
 
 .ui.inverted.header {
   color: @invertedColor;
@@ -325,9 +325,9 @@ h5.ui.header .sub.header {
 }
 
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -380,9 +380,9 @@ each(@colors, {
   width: 100%;
 }
 
-/*-------------------
+/* -------------------
        Floated
---------------------*/
+-------------------- */
 
 .ui.floated.header,
 .ui[class*="left floated"].header {
@@ -396,18 +396,18 @@ each(@colors, {
   margin-left: @floatedMargin;
 }
 
-/*-------------------
+/* -------------------
        Fitted
---------------------*/
+-------------------- */
 
 .ui.fitted.header {
   padding: 0;
 }
 
 
-/*-------------------
+/* -------------------
       Dividing
---------------------*/
+-------------------- */
 
 .ui.dividing.header {
   padding-bottom: @dividedBorderPadding;
@@ -424,9 +424,9 @@ each(@colors, {
 }
 
 
-/*-------------------
+/* -------------------
         Block
---------------------*/
+-------------------- */
 
 .ui.block.header {
   background: @blockBackground;
@@ -451,9 +451,9 @@ each(@colors, {
   font-size: @hugeBlock;
 }
 
-/*-------------------
+/* -------------------
        Attached
---------------------*/
+-------------------- */
 
 .ui.attached.header {
   background: @attachedBackground;
@@ -493,9 +493,9 @@ each(@colors, {
   font-size: @hugeAttachedSize;
 }
 
-/*-------------------
+/* -------------------
         Sizing
---------------------*/
+-------------------- */
 
 .ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: @mediumFontSize;

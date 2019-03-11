@@ -61,9 +61,9 @@ i.icon:before {
              Types
 *******************************/
 
-/*--------------
+/* --------------
     Loading
----------------*/
+--------------- */
 
 i.icon.loading {
   height: 1em;
@@ -92,18 +92,18 @@ i.disabled.icon, i.disabled.icons {
 *******************************/
 
 
-/*-------------------
+/* -------------------
         Fitted
---------------------*/
+-------------------- */
 
 i.fitted.icon {
   width: auto;
   margin: 0 !important;
 }
 
-/*-------------------
+/* -------------------
          Link
---------------------*/
+-------------------- */
 
 i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
   cursor: pointer;
@@ -114,9 +114,9 @@ i.link.icon:hover, i.link.icons:hover {
   opacity: 1;
 }
 
-/*-------------------
+/* -------------------
       Circular
---------------------*/
+-------------------- */
 
 i.circular.icon {
   border-radius: 500em !important;
@@ -133,9 +133,9 @@ i.circular.inverted.icon {
   box-shadow: none;
 }
 
-/*-------------------
+/* -------------------
       Flipped
---------------------*/
+-------------------- */
 
 i.flipped.icon,
 i.horizontally.flipped.icon {
@@ -145,9 +145,9 @@ i.vertically.flipped.icon {
   transform: scale(1, -1);
 }
 
-/*-------------------
+/* -------------------
       Rotated
---------------------*/
+-------------------- */
 
 i.rotated.icon,
 i.right.rotated.icon,
@@ -162,9 +162,9 @@ i.halfway.rotated.icon {
   transform: rotate(180deg);
 }
 
-/*--------------------------
+/* --------------------------
       Flipped & Rotated
----------------------------*/
+--------------------------- */
 i.rotated.flipped.icon,
 i.right.rotated.flipped.icon,
 i.clockwise.rotated.flipped.icon {
@@ -190,9 +190,9 @@ i.halfway.rotated.vertically.flipped.icon {
   transform: scale(1, -1) rotate(180deg);
 }
 
-/*-------------------
+/* -------------------
       Bordered
---------------------*/
+-------------------- */
 
 i.bordered.icon {
   line-height: 1;
@@ -208,9 +208,9 @@ i.bordered.inverted.icon {
   box-shadow: none;
 }
 
-/*-------------------
+/* -------------------
       Inverted
---------------------*/
+-------------------- */
 
 /* Inverted Shapes */
 i.inverted.bordered.icon,
@@ -223,9 +223,9 @@ i.inverted.icon {
 }
 
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');

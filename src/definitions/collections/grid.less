@@ -29,9 +29,9 @@
   padding: 0;
 }
 
-/*----------------------
+/* ----------------------
       Remove Gutters
------------------------*/
+----------------------- */
 
 .ui.grid {
   margin-top: -(@rowSpacing / 2);
@@ -54,9 +54,9 @@
   margin-top: @consecutiveGridDistance;
 }
 
-/*-------------------
+/* -------------------
        Columns
---------------------*/
+-------------------- */
 
 /* Standard 16 column */
 .ui.grid > .column:not(.row),
@@ -74,9 +74,9 @@
   padding-right: (@gutterWidth / 2);
 }
 
-/*-------------------
+/* -------------------
         Rows
---------------------*/
+-------------------- */
 
 .ui.grid > .row {
   position: relative;
@@ -91,9 +91,9 @@
   padding-bottom: (@rowSpacing / 2);
 }
 
-/*-------------------
+/* -------------------
        Columns
---------------------*/
+-------------------- */
 
 /* Vertical padding when no rows */
 .ui.grid > .column:not(.row) {
@@ -105,18 +105,18 @@
   margin-bottom: 0;
 }
 
-/*-------------------
+/* -------------------
       Content
---------------------*/
+-------------------- */
 
 .ui.grid > .row > img,
 .ui.grid > .row > .column > img {
   max-width: @columnMaxImageWidth;
 }
 
-/*-------------------
+/* -------------------
     Loose Coupling
---------------------*/
+-------------------- */
 
 /* Collapse Margin on Consecutive Grid */
 .ui.grid > .ui.grid:first-child {
@@ -152,9 +152,9 @@
 *******************************/
 
 
-/*-----------------------
+/* -----------------------
        Page Grid
--------------------------*/
+------------------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
 
@@ -208,9 +208,9 @@
 }
 
 
-/*-------------------
+/* -------------------
      Column Count
---------------------*/
+-------------------- */
 
 /* Assume full width with one column */
 .ui.grid > .column:only-child,
@@ -339,9 +339,9 @@
   box-shadow: none;
 }
 
-/*-------------------
+/* -------------------
     Column Width
---------------------*/
+-------------------- */
 
 /* Sizing Combinations */
 .ui.grid > .row > [class*="one wide"].column,
@@ -441,9 +441,9 @@
   width: @sixteenWide !important;
 }
 
-/*----------------------
+/* ----------------------
     Width per Device
------------------------*/
+----------------------- */
 
 /* Mobile Sizing Combinations */
 @media only screen and (min-width: @mobileBreakpoint) and (max-width: @largestMobileScreen) {
@@ -950,9 +950,9 @@
   }
 }
 
-/*----------------------
+/* ----------------------
         Centered
------------------------*/
+----------------------- */
 
 .ui.centered.grid,
 .ui.centered.grid > .row,
@@ -972,9 +972,9 @@
   margin-right: auto;
 }
 
-/*----------------------
+/* ----------------------
         Relaxed
------------------------*/
+----------------------- */
 
 .ui.relaxed.grid > .column:not(.row),
 .ui.relaxed.grid > .row > .column,
@@ -1002,9 +1002,9 @@
 }
 
 
-/*----------------------
+/* ----------------------
         Padded
------------------------*/
+----------------------- */
 
 .ui.padded.grid:not(.vertically):not(.horizontally) {
   margin: 0 !important;
@@ -1018,9 +1018,9 @@
   margin-bottom: 0 !important;
 }
 
-/*----------------------
+/* ----------------------
        "Floated"
------------------------*/
+----------------------- */
 
 .ui.grid [class*="left floated"].column {
   margin-right: auto;
@@ -1030,9 +1030,9 @@
 }
 
 
-/*----------------------
+/* ----------------------
         Divided
------------------------*/
+----------------------- */
 
 .ui.divided.grid:not([class*="vertically divided"]) > .column:not(.row),
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
@@ -1127,9 +1127,9 @@
   width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
 }
 
-/*----------------------
+/* ----------------------
          Celled
------------------------*/
+----------------------- */
 
 .ui.celled.grid {
   width: 100%;
@@ -1175,9 +1175,9 @@
   box-shadow: none;
 }
 
-/*----------------------
+/* ----------------------
    Vertically Aligned
------------------------*/
+----------------------- */
 
 /* Top Aligned */
 .ui[class*="top aligned"].grid > .column:not(.row),
@@ -1230,9 +1230,9 @@
   flex-grow: 1;
 }
 
-/*----------------------
+/* ----------------------
   Horizontally Centered
------------------------*/
+----------------------- */
 
 /* Left Aligned */
 .ui[class*="left aligned"].grid > .column,
@@ -1277,9 +1277,9 @@
   hyphens: auto;
 }
 
-/*----------------------
+/* ----------------------
          Colored
------------------------*/
+----------------------- */
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -1311,9 +1311,9 @@ each(@colors, {
 }
 
 
-/*----------------------
+/* ----------------------
         Reverse
------------------------*/
+----------------------- */
 
 
 /* Mobile */
@@ -1429,9 +1429,9 @@ each(@colors, {
 }
 
 
-/*-------------------
+/* -------------------
       Doubling
---------------------*/
+-------------------- */
 
 /* Tablet Only */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
@@ -1621,9 +1621,9 @@ each(@colors, {
   }
 }
 
-/*-------------------
+/* -------------------
       Stackable
---------------------*/
+-------------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
 
@@ -1696,9 +1696,9 @@ each(@colors, {
 
 }
 
-/*----------------------
+/* ----------------------
      Only (Device)
------------------------*/
+----------------------- */
 
 
 /* These include arbitrary class repetitions for forced specificity */
@@ -1829,9 +1829,9 @@ each(@colors, {
   }
 }
 
-/*-----------------
+/* -----------------
       Compact
------------------*/
+----------------- */
 
 .ui.compact.grid > .column:not(.row),
 .ui.compact.grid > .row > .column {
@@ -1865,9 +1865,9 @@ each(@colors, {
   padding: @compactCelledVeryRelaxedPadding;
 }
 
-/*-----------------
+/* -----------------
     Very compact
------------------*/
+----------------- */
 
 .ui[class*="very compact"].grid > .column:not(.row),
 .ui[class*="very compact"].grid > .row > .column {
