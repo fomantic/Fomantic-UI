@@ -7,7 +7,6 @@
 --------------------*/
 
 @fontName          : 'Lato';
-@fontSmoothing     : antialiased;
 
 @headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
