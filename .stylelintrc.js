@@ -1,6 +1,15 @@
 module.exports = {
   // 'extends': 'stylelint-config-standard',
   'rules': {
+    'at-rule-empty-line-before': ['always', {
+      except: [
+        'blockless-after-same-name-blockless',
+        'first-nested',
+      ],
+      ignore: ['after-comment'],
+      // FUI/SUI specific LESS variable
+      ignoreAtRules: ['type', 'element']
+    }],
     'rule-empty-line-before': ['never', {
       except: ['first-nested'],
       ignore: ['after-comment'],
