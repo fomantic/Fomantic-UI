@@ -21,6 +21,7 @@ module.exports = {
     }],
     'selector-pseudo-element-colon-notation': 'single',
     // disable
+    'declaration-colon-space-before': null,
     'declaration-block-no-duplicate-properties': null,
     'declaration-empty-line-before': null,
     'max-empty-lines': null,
