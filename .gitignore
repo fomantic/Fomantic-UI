@@ -5,6 +5,7 @@ src/**/site/
 theme.config
 semantic.json
 tasks/**/oauth.js
+.eslintcache
 
 # Numerous always-ignore extensions
 *.diff
