@@ -8,10 +8,10 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
@@ -22,7 +22,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.shape = function(parameters) {
+$.fn.shape = function (parameters) {
   var
     $allModules     = $(this),
 
@@ -37,13 +37,13 @@ $.fn.shape = function(parameters) {
       || window.mozRequestAnimationFrame
       || window.webkitRequestAnimationFrame
       || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
+      || function (callback) { setTimeout(callback, 0); },
 
     returnedValue
   ;
 
   $allModules
-    .each(function() {
+    .each(function () {
       var
         moduleSelector = $allModules.selector || '',
         settings       = ($.isPlainObject(parameters))
@@ -78,13 +78,13 @@ $.fn.shape = function(parameters) {
 
       module = {
 
-        initialize: function() {
+        initialize: function () {
           module.verbose('Initializing module for', element);
           module.set.defaultSide();
           module.instantiate();
         },
 
-        instantiate: function() {
+        instantiate: function () {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module
@@ -92,7 +92,7 @@ $.fn.shape = function(parameters) {
           ;
         },
 
-        destroy: function() {
+        destroy: function () {
           module.verbose('Destroying previous module for', element);
           $module
             .removeData(moduleNamespace)
@@ -100,14 +100,14 @@ $.fn.shape = function(parameters) {
           ;
         },
 
-        refresh: function() {
+        refresh: function () {
           module.verbose('Refreshing selector cache for', element);
           $module = $(element);
           $sides  = $(this).find(selector.sides);
           $side   = $(this).find(selector.side);
         },
 
-        repaint: function() {
+        repaint: function () {
           module.verbose('Forcing repaint event');
           var
             shape          = $sides[0] || document.createElement('div'),
@@ -115,9 +115,9 @@ $.fn.shape = function(parameters) {
           ;
         },
 
-        animate: function(propertyObject, callback) {
+        animate: function (propertyObject, callback) {
           module.verbose('Animating box with properties', propertyObject);
-          callback = callback || function(event) {
+          callback = callback || function (event) {
             module.verbose('Executing animation callback');
             if (event !== undefined) {
               event.stopPropagation();
@@ -136,7 +136,7 @@ $.fn.shape = function(parameters) {
               .one(module.get.transitionEvent(), callback)
             ;
             module.set.duration(settings.duration);
-            requestAnimationFrame(function() {
+            requestAnimationFrame(function () {
               $module
                 .addClass(className.animating)
               ;
@@ -150,19 +150,19 @@ $.fn.shape = function(parameters) {
           }
         },
 
-        queue: function(method) {
+        queue: function (method) {
           module.debug('Queueing animation of', method);
           $sides
-            .one(module.get.transitionEvent(), function() {
+            .one(module.get.transitionEvent(), function () {
               module.debug('Executing queued animation');
-              setTimeout(function() {
+              setTimeout(function () {
                 $module.shape(method);
               }, 0);
             })
           ;
         },
 
-        reset: function() {
+        reset: function () {
           module.verbose('Animating states reset');
           $module
             .removeClass(className.animating)
@@ -187,20 +187,20 @@ $.fn.shape = function(parameters) {
         },
 
         is: {
-          complete: function() {
+          complete: function () {
             return ($side.filter('.' + className.active)[0] == $nextSide[0]);
           },
-          animating: function() {
+          animating: function () {
             return $module.hasClass(className.animating);
           },
-          hidden: function() {
+          hidden: function () {
             return $module.closest(':hidden').length > 0;
           }
         },
 
         set: {
 
-          defaultSide: function() {
+          defaultSide: function () {
             $activeSide = $side.filter('.' + settings.className.active);
             $nextSide   = ($activeSide.next(selector.side).length > 0)
               ? $activeSide.next(selector.side)
@@ -211,7 +211,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Next side set to', $nextSide);
           },
 
-          duration: function(duration) {
+          duration: function (duration) {
             duration = duration || settings.duration;
             duration = (typeof duration == 'number')
               ? duration + 'ms'
@@ -231,7 +231,7 @@ $.fn.shape = function(parameters) {
             }
           },
 
-          currentStageSize: function() {
+          currentStageSize: function () {
             var
               $activeSide = $side.filter('.' + settings.className.active),
               width       = $activeSide.outerWidth(true),
@@ -245,7 +245,7 @@ $.fn.shape = function(parameters) {
             ;
           },
 
-          stageSize: function() {
+          stageSize: function () {
             var
               $clone      = $module.clone().addClass(className.loading),
               $side       = $clone.find('>' + selector.sides + '>' + selector.side),
@@ -280,7 +280,7 @@ $.fn.shape = function(parameters) {
             }
           },
 
-          nextSide: function(selector) {
+          nextSide: function (selector) {
             nextIndex = selector;
             $nextSide = $side.filter(selector);
             nextIndex = $side.index($nextSide);
@@ -291,7 +291,7 @@ $.fn.shape = function(parameters) {
             module.verbose('Next side manually set to', $nextSide);
           },
 
-          active: function() {
+          active: function () {
             module.verbose('Setting new side to active', $nextSide);
             $side
               .removeClass(className.active)
@@ -305,7 +305,7 @@ $.fn.shape = function(parameters) {
         },
 
         flip: {
-          to: function(type, stage) {
+          to: function (type, stage) {
             if (module.is.hidden()) {
               module.debug('Module not visible', $nextSide);
               return;
@@ -328,27 +328,27 @@ $.fn.shape = function(parameters) {
             }
           },
 
-          up: function() {
+          up: function () {
             module.flip.to('up', 'above');
           },
 
-          down: function() {
+          down: function () {
             module.flip.to('down', 'below');
           },
 
-          left: function() {
+          left: function () {
             module.flip.to('left', 'left');
           },
 
-          right: function() {
+          right: function () {
             module.flip.to('right', 'right');
           },
 
-          over: function() {
+          over: function () {
             module.flip.to('over', 'behind');
           },
 
-          back: function() {
+          back: function () {
             module.flip.to('back', 'behind');
           }
 
@@ -357,7 +357,7 @@ $.fn.shape = function(parameters) {
         get: {
 
           transform: {
-            up: function() {
+            up: function () {
               var
                 translateZ = $activeSide.outerHeight(true) / 2,
                 translateY = $nextSide.outerHeight(true) - translateZ
@@ -367,7 +367,7 @@ $.fn.shape = function(parameters) {
               };
             },
 
-            down: function() {
+            down: function () {
               var
                 translate = {
                   z: $activeSide.outerHeight(true) / 2
@@ -378,7 +378,7 @@ $.fn.shape = function(parameters) {
               };
             },
 
-            left: function() {
+            left: function () {
               var
                 translateZ = $activeSide.outerWidth(true) / 2,
                 translateX = $nextSide.outerWidth(true) - translateZ
@@ -388,7 +388,7 @@ $.fn.shape = function(parameters) {
               };
             },
 
-            right: function() {
+            right: function () {
               var
                 translate = {
                   z: $activeSide.outerWidth(true) / 2
@@ -399,7 +399,7 @@ $.fn.shape = function(parameters) {
               };
             },
 
-            over: function() {
+            over: function () {
               var
                 translate = {
                   x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
@@ -410,7 +410,7 @@ $.fn.shape = function(parameters) {
               };
             },
 
-            back: function() {
+            back: function () {
               var
                 translate = {
                   x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2)
@@ -422,7 +422,7 @@ $.fn.shape = function(parameters) {
             }
           },
 
-          transitionEvent: function() {
+          transitionEvent: function () {
             var
               element     = document.createElement('element'),
               transitions = {
@@ -440,7 +440,7 @@ $.fn.shape = function(parameters) {
             }
           },
 
-          nextSide: function() {
+          nextSide: function () {
             return ($activeSide.next(selector.side).length > 0)
               ? $activeSide.next(selector.side)
               : $side.first()
@@ -451,7 +451,7 @@ $.fn.shape = function(parameters) {
 
         stage: {
 
-          above: function() {
+          above: function () {
             var
               box = {
                 origin : (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
@@ -476,7 +476,7 @@ $.fn.shape = function(parameters) {
             ;
           },
 
-          below: function() {
+          below: function () {
             var
               box = {
                 origin : (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
@@ -501,7 +501,7 @@ $.fn.shape = function(parameters) {
             ;
           },
 
-          left: function() {
+          left: function () {
             var
               height = {
                 active : $activeSide.outerWidth(true),
@@ -530,7 +530,7 @@ $.fn.shape = function(parameters) {
             ;
           },
 
-          right: function() {
+          right: function () {
             var
               height = {
                 active : $activeSide.outerWidth(true),
@@ -559,7 +559,7 @@ $.fn.shape = function(parameters) {
             ;
           },
 
-          behind: function() {
+          behind: function () {
             var
               height = {
                 active : $activeSide.outerWidth(true),
@@ -588,7 +588,7 @@ $.fn.shape = function(parameters) {
             ;
           }
         },
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -605,7 +605,7 @@ $.fn.shape = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
@@ -616,7 +616,7 @@ $.fn.shape = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -627,7 +627,7 @@ $.fn.shape = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -638,14 +638,14 @@ $.fn.shape = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -666,14 +666,14 @@ $.fn.shape = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -689,7 +689,7 @@ $.fn.shape = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -698,7 +698,7 @@ $.fn.shape = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -710,7 +710,7 @@ $.fn.shape = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -760,7 +760,7 @@ $.fn.shape = function(parameters) {
         var $inputs = $module.find('input');
         if ($inputs.length > 0) {
           $inputs.blur();
-          setTimeout(function() {
+          setTimeout(function () {
             module.invoke(query);
           }, 150);
         }
@@ -813,8 +813,8 @@ $.fn.shape.settings = {
   height: 'initial',
 
   // callback occurs on side change
-  beforeChange : function() {},
-  onChange     : function() {},
+  beforeChange : function () {},
+  onChange     : function () {},
 
   // allow animation to same side
   allowRepeats: false,

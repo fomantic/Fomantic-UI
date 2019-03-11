@@ -8,10 +8,10 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isWindow = $.isWindow || function(obj) {
+$.isWindow = $.isWindow || function (obj) {
   return obj != null && obj === obj.window;
 };
 
@@ -23,7 +23,7 @@ var
       : Function('return this')()
 ;
 
-$.api = $.fn.api = function(parameters) {
+$.api = $.fn.api = function (parameters) {
   var
     // use window context if none specified
     $allModules     = $.isFunction(this)
@@ -41,7 +41,7 @@ $.api = $.fn.api = function(parameters) {
   ;
 
   $allModules
-    .each(function() {
+    .each(function () {
       var
         settings          = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.api.settings, parameters)
@@ -83,14 +83,14 @@ $.api = $.fn.api = function(parameters) {
 
       module = {
 
-        initialize: function() {
+        initialize: function () {
           if (!methodInvoked) {
             module.bind.events();
           }
           module.instantiate();
         },
 
-        instantiate: function() {
+        instantiate: function () {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module
@@ -98,7 +98,7 @@ $.api = $.fn.api = function(parameters) {
           ;
         },
 
-        destroy: function() {
+        destroy: function () {
           module.verbose('Destroying previous module for', element);
           $module
             .removeData(moduleNamespace)
@@ -107,7 +107,7 @@ $.api = $.fn.api = function(parameters) {
         },
 
         bind: {
-          events: function() {
+          events: function () {
             var
               triggerEvent = module.get.event()
             ;
@@ -125,7 +125,7 @@ $.api = $.fn.api = function(parameters) {
         },
 
         decode: {
-          json: function(response) {
+          json: function (response) {
             if (response !== undefined && typeof response == 'string') {
               try {
                 response = JSON.parse(response);
@@ -139,7 +139,7 @@ $.api = $.fn.api = function(parameters) {
         },
 
         read: {
-          cachedResponse: function(url) {
+          cachedResponse: function (url) {
             var
               response
             ;
@@ -154,7 +154,7 @@ $.api = $.fn.api = function(parameters) {
           }
         },
         write: {
-          cachedResponse: function(url, response) {
+          cachedResponse: function (url, response) {
             if (response && response === '') {
               module.debug('Response empty, not caching', response);
               return;
@@ -171,7 +171,7 @@ $.api = $.fn.api = function(parameters) {
           }
         },
 
-        query: function() {
+        query: function () {
           if (module.is.disabled()) {
             module.debug('Element is disabled API request aborted');
             return;
@@ -234,9 +234,9 @@ $.api = $.fn.api = function(parameters) {
             data       : data,
             url        : settings.base + url,
             beforeSend : settings.beforeXHR,
-            success    : function() {},
-            failure    : function() {},
-            complete   : function() {}
+            success    : function () {},
+            failure    : function () {},
+            complete   : function () {}
           });
 
           module.debug('Querying URL', ajaxSettings.url);
@@ -256,12 +256,12 @@ $.api = $.fn.api = function(parameters) {
             if (!settings.throttleFirstRequest && !module.timer) {
               module.debug('Sending request', data, ajaxSettings.method);
               module.send.request();
-              module.timer = setTimeout(function() {}, settings.throttle);
+              module.timer = setTimeout(function () {}, settings.throttle);
             }
             else {
               module.debug('Throttling request', settings.throttle);
               clearTimeout(module.timer);
-              module.timer = setTimeout(function() {
+              module.timer = setTimeout(function () {
                 if (module.timer) {
                   delete module.timer;
                 }
@@ -273,34 +273,34 @@ $.api = $.fn.api = function(parameters) {
         },
 
         should: {
-          removeError: function() {
+          removeError: function () {
             return (settings.hideError === true || (settings.hideError === 'auto' && !module.is.form()));
           }
         },
 
         is: {
-          disabled: function() {
+          disabled: function () {
             return ($module.filter(selector.disabled).length > 0);
           },
-          expectingJSON: function() {
+          expectingJSON: function () {
             return settings.dataType === 'json' || settings.dataType === 'jsonp';
           },
-          form: function() {
+          form: function () {
             return $module.is('form') || $context.is('form');
           },
-          mocked: function() {
+          mocked: function () {
             return (settings.mockResponse || settings.mockResponseAsync || settings.response || settings.responseAsync);
           },
-          input: function() {
+          input: function () {
             return $module.is('input');
           },
-          loading: function() {
+          loading: function () {
             return (module.request)
               ? (module.request.state() == 'pending')
               : false
             ;
           },
-          abortedRequest: function(xhr) {
+          abortedRequest: function (xhr) {
             if (xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
               module.verbose('XHR request determined to be aborted');
               return true;
@@ -310,7 +310,7 @@ $.api = $.fn.api = function(parameters) {
               return false;
             }
           },
-          validResponse: function(response) {
+          validResponse: function (response) {
             if ((!module.is.expectingJSON()) || !$.isFunction(settings.successTest)) {
               module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
               return true;
@@ -328,22 +328,22 @@ $.api = $.fn.api = function(parameters) {
         },
 
         was: {
-          cancelled: function() {
+          cancelled: function () {
             return (module.cancelled || false);
           },
-          succesful: function() {
+          succesful: function () {
             return (module.request && module.request.state() == 'resolved');
           },
-          failure: function() {
+          failure: function () {
             return (module.request && module.request.state() == 'rejected');
           },
-          complete: function() {
+          complete: function () {
             return (module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected'));
           }
         },
 
         add: {
-          urlData: function(url, urlData) {
+          urlData: function (url, urlData) {
             var
               requiredVariables,
               optionalVariables
@@ -354,7 +354,7 @@ $.api = $.fn.api = function(parameters) {
               urlData           = urlData || settings.urlData;
               if (requiredVariables) {
                 module.debug('Looking for required URL variables', requiredVariables);
-                $.each(requiredVariables, function(index, templatedString) {
+                $.each(requiredVariables, function (index, templatedString) {
                   var
                     // allow legacy {$var} style
                     variable = (templatedString.indexOf('$') !== -1)
@@ -386,7 +386,7 @@ $.api = $.fn.api = function(parameters) {
               }
               if (optionalVariables) {
                 module.debug('Looking for optional URL variables', requiredVariables);
-                $.each(optionalVariables, function(index, templatedString) {
+                $.each(optionalVariables, function (index, templatedString) {
                   var
                     // allow legacy {/$var} style
                     variable = (templatedString.indexOf('$') !== -1)
@@ -420,7 +420,7 @@ $.api = $.fn.api = function(parameters) {
             }
             return url;
           },
-          formData: function(data) {
+          formData: function (data) {
             var
               canSerialize = ($.fn.serializeObject !== undefined),
               formData     = (canSerialize)
@@ -451,7 +451,7 @@ $.api = $.fn.api = function(parameters) {
         },
 
         send: {
-          request: function() {
+          request: function () {
             module.set.loading();
             module.request = module.create.request();
             if (module.is.mocked()) {
@@ -465,17 +465,17 @@ $.api = $.fn.api = function(parameters) {
         },
 
         event: {
-          trigger: function(event) {
+          trigger: function (event) {
             module.query();
             if (event.type == 'submit' || event.type == 'click') {
               event.preventDefault();
             }
           },
           xhr: {
-            always: function() {
+            always: function () {
               // nothing special
             },
-            done: function(response, textStatus, xhr) {
+            done: function (response, textStatus, xhr) {
               var
                 context            = this,
                 elapsedTime        = (new Date().getTime() - requestStartTime),
@@ -497,7 +497,7 @@ $.api = $.fn.api = function(parameters) {
               if (timeLeft > 0) {
                 module.debug('Response completed early delaying state change by', timeLeft);
               }
-              setTimeout(function() {
+              setTimeout(function () {
                 if (module.is.validResponse(response)) {
                   module.request.resolveWith(context, [response, xhr]);
                 }
@@ -506,7 +506,7 @@ $.api = $.fn.api = function(parameters) {
                 }
               }, timeLeft);
             },
-            fail: function(xhr, status, httpMessage) {
+            fail: function (xhr, status, httpMessage) {
               var
                 context     = this,
                 elapsedTime = (new Date().getTime() - requestStartTime),
@@ -519,7 +519,7 @@ $.api = $.fn.api = function(parameters) {
               if (timeLeft > 0) {
                 module.debug('Response completed early delaying state change by', timeLeft);
               }
-              setTimeout(function() {
+              setTimeout(function () {
                 if (module.is.abortedRequest(xhr)) {
                   module.request.rejectWith(context, [xhr, 'aborted', httpMessage]);
                 }
@@ -530,7 +530,7 @@ $.api = $.fn.api = function(parameters) {
             }
           },
           request: {
-            done: function(response, xhr) {
+            done: function (response, xhr) {
               module.debug('Successful API Response', response);
               if (settings.cache === 'local' && url) {
                 module.write.cachedResponse(url, response);
@@ -538,7 +538,7 @@ $.api = $.fn.api = function(parameters) {
               }
               settings.onSuccess.call(context, response, $module, xhr);
             },
-            complete: function(firstParameter, secondParameter) {
+            complete: function (firstParameter, secondParameter) {
               var
                 xhr,
                 response
@@ -555,7 +555,7 @@ $.api = $.fn.api = function(parameters) {
               module.remove.loading();
               settings.onComplete.call(context, response, $module, xhr);
             },
-            fail: function(xhr, status, httpMessage) {
+            fail: function (xhr, status, httpMessage) {
               var
                 // pull response from xhr if available
                 response     = module.get.responseFromXHR(xhr),
@@ -595,7 +595,7 @@ $.api = $.fn.api = function(parameters) {
 
         create: {
 
-          request: function() {
+          request: function () {
             // api request promise
             return $.Deferred()
               .always(module.event.request.complete)
@@ -604,7 +604,7 @@ $.api = $.fn.api = function(parameters) {
             ;
           },
 
-          mockedXHR: function() {
+          mockedXHR: function () {
             var
               // xhr does not simulate these properties of xhr but must return them
               textStatus     = false,
@@ -633,10 +633,10 @@ $.api = $.fn.api = function(parameters) {
                 response = responder;
               }
               // simulating response
-              mockedXHR.resolveWith(context, [response, textStatus, { responseText: response }]);
+              mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response } ]);
             }
             else if ($.isFunction(asyncResponder)) {
-              asyncCallback = function(response) {
+              asyncCallback = function (response) {
                 module.debug('Async callback returned response', response);
 
                 if (response) {
@@ -652,7 +652,7 @@ $.api = $.fn.api = function(parameters) {
             return mockedXHR;
           },
 
-          xhr: function() {
+          xhr: function () {
             var
               xhr
             ;
@@ -668,11 +668,11 @@ $.api = $.fn.api = function(parameters) {
         },
 
         set: {
-          error: function() {
+          error: function () {
             module.verbose('Adding error state to element', $context);
             $context.addClass(className.error);
           },
-          loading: function() {
+          loading: function () {
             module.verbose('Adding loading state to element', $context);
             $context.addClass(className.loading);
             requestStartTime = new Date().getTime();
@@ -680,18 +680,18 @@ $.api = $.fn.api = function(parameters) {
         },
 
         remove: {
-          error: function() {
+          error: function () {
             module.verbose('Removing error state from element', $context);
             $context.removeClass(className.error);
           },
-          loading: function() {
+          loading: function () {
             module.verbose('Removing loading state from element', $context);
             $context.removeClass(className.loading);
           }
         },
 
         get: {
-          responseFromXHR: function(xhr) {
+          responseFromXHR: function (xhr) {
             return $.isPlainObject(xhr)
               ? (module.is.expectingJSON())
                 ? module.decode.json(xhr.responseText)
@@ -699,7 +699,7 @@ $.api = $.fn.api = function(parameters) {
               : false
             ;
           },
-          errorFromRequest: function(response, status, httpMessage) {
+          errorFromRequest: function (response, status, httpMessage) {
             return ($.isPlainObject(response) && response.error !== undefined)
               ? response.error // use json error message
               : (settings.error[status] !== undefined) // use server error message
@@ -707,13 +707,13 @@ $.api = $.fn.api = function(parameters) {
                 : httpMessage
             ;
           },
-          request: function() {
+          request: function () {
             return module.request || false;
           },
-          xhr: function() {
+          xhr: function () {
             return module.xhr || false;
           },
-          settings: function() {
+          settings: function () {
             var
               runSettings
             ;
@@ -746,7 +746,7 @@ $.api = $.fn.api = function(parameters) {
               : $.extend(true, {}, settings)
             ;
           },
-          urlEncodedValue: function(value) {
+          urlEncodedValue: function (value) {
             var
               decodedValue   = window.decodeURIComponent(value),
               encodedValue   = window.encodeURIComponent(value),
@@ -759,7 +759,7 @@ $.api = $.fn.api = function(parameters) {
             module.verbose('Encoding value using encodeURIComponent', value, encodedValue);
             return encodedValue;
           },
-          defaultData: function() {
+          defaultData: function () {
             var
               data = {}
             ;
@@ -776,7 +776,7 @@ $.api = $.fn.api = function(parameters) {
             }
             return data;
           },
-          event: function() {
+          event: function () {
             if ($.isWindow(element) || settings.on == 'now') {
               module.debug('API called without element, no events attached');
               return false;
@@ -801,7 +801,7 @@ $.api = $.fn.api = function(parameters) {
               return settings.on;
             }
           },
-          templatedURL: function(action) {
+          templatedURL: function (action) {
             action = action || $module.data(metadata.action) || settings.action || false;
             url    = $module.data(metadata.url) || settings.url || false;
             if (url) {
@@ -824,7 +824,7 @@ $.api = $.fn.api = function(parameters) {
           }
         },
 
-        abort: function() {
+        abort: function () {
           var
             xhr = module.get.xhr()
           ;
@@ -835,12 +835,12 @@ $.api = $.fn.api = function(parameters) {
         },
 
         // reset state
-        reset: function() {
+        reset: function () {
           module.remove.error();
           module.remove.loading();
         },
 
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -857,7 +857,7 @@ $.api = $.fn.api = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
@@ -868,7 +868,7 @@ $.api = $.fn.api = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -879,7 +879,7 @@ $.api = $.fn.api = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -890,14 +890,14 @@ $.api = $.fn.api = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -918,14 +918,14 @@ $.api = $.fn.api = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -938,7 +938,7 @@ $.api = $.fn.api = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -947,7 +947,7 @@ $.api = $.fn.api = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -959,7 +959,7 @@ $.api = $.fn.api = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -1101,27 +1101,27 @@ $.api.settings = {
   rawResponse: false,
 
   // callbacks before request
-  beforeSend : function(settings) { return settings; },
-  beforeXHR  : function(xhr) {},
-  onRequest  : function(promise, xhr) {},
+  beforeSend : function (settings) { return settings; },
+  beforeXHR  : function (xhr) {},
+  onRequest  : function (promise, xhr) {},
 
   // after request
   onResponse: false, // function(response) { },
 
   // response was successful, if JSON passed validation
-  onSuccess: function(response, $module) {},
+  onSuccess: function (response, $module) {},
 
   // request finished without aborting
-  onComplete: function(response, $module) {},
+  onComplete: function (response, $module) {},
 
   // failed JSON success test
-  onFailure: function(response, $module) {},
+  onFailure: function (response, $module) {},
 
   // server error
-  onError: function(errorMessage, $module) {},
+  onError: function (errorMessage, $module) {},
 
   // request aborted
-  onAbort: function(errorMessage, $module) {},
+  onAbort: function (errorMessage, $module) {},
 
   successTest: false,
 

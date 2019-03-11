@@ -8,10 +8,10 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
@@ -22,7 +22,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.rating = function(parameters) {
+$.fn.rating = function (parameters) {
   var
     $allModules     = $(this),
     moduleSelector  = $allModules.selector || '',
@@ -36,7 +36,7 @@ $.fn.rating = function(parameters) {
     returnedValue
   ;
   $allModules
-    .each(function() {
+    .each(function () {
       var
         settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.rating.settings, parameters)
@@ -62,7 +62,7 @@ $.fn.rating = function(parameters) {
 
       module = {
 
-        initialize: function() {
+        initialize: function () {
           module.verbose('Initializing rating module', settings);
 
           if ($icon.length === 0) {
@@ -81,7 +81,7 @@ $.fn.rating = function(parameters) {
           module.instantiate();
         },
 
-        instantiate: function() {
+        instantiate: function () {
           module.verbose('Instantiating module', settings);
           instance = module;
           $module
@@ -89,7 +89,7 @@ $.fn.rating = function(parameters) {
           ;
         },
 
-        destroy: function() {
+        destroy: function () {
           module.verbose('Destroying previous instance', instance);
           module.remove.events();
           $module
@@ -97,12 +97,12 @@ $.fn.rating = function(parameters) {
           ;
         },
 
-        refresh: function() {
+        refresh: function () {
           $icon   = $module.find(selector.icon);
         },
 
         setup: {
-          layout: function() {
+          layout: function () {
             var
               maxRating = module.get.maxRating(),
               icon      = module.get.icon(),
@@ -117,7 +117,7 @@ $.fn.rating = function(parameters) {
         },
 
         event: {
-          mouseenter: function() {
+          mouseenter: function () {
             var
               $activeIcon = $(this)
             ;
@@ -134,7 +134,7 @@ $.fn.rating = function(parameters) {
               .addClass(className.selected)
             ;
           },
-          mouseleave: function() {
+          mouseleave: function () {
             $module
               .removeClass(className.selected)
             ;
@@ -142,7 +142,7 @@ $.fn.rating = function(parameters) {
               .removeClass(className.selected)
             ;
           },
-          click: function() {
+          click: function () {
             var
               $activeIcon   = $(this),
               currentRating = module.get.rating(),
@@ -160,13 +160,13 @@ $.fn.rating = function(parameters) {
           }
         },
 
-        clearRating: function() {
+        clearRating: function () {
           module.debug('Clearing current rating');
           module.set.rating(0);
         },
 
         bind: {
-          events: function() {
+          events: function () {
             module.verbose('Binding events');
             $module
               .on('mouseenter' + eventNamespace, selector.icon, module.event.mouseenter)
@@ -177,18 +177,18 @@ $.fn.rating = function(parameters) {
         },
 
         remove: {
-          events: function() {
+          events: function () {
             module.verbose('Removing events');
             $module
               .off(eventNamespace)
             ;
           },
-          initialLoad: function() {
+          initialLoad: function () {
             initialLoad = false;
           }
         },
 
-        enable: function() {
+        enable: function () {
           module.debug('Setting rating to interactive mode');
           module.bind.events();
           $module
@@ -196,7 +196,7 @@ $.fn.rating = function(parameters) {
           ;
         },
 
-        disable: function() {
+        disable: function () {
           module.debug('Setting rating to read-only mode');
           module.remove.events();
           $module
@@ -205,37 +205,37 @@ $.fn.rating = function(parameters) {
         },
 
         is: {
-          initialLoad: function() {
+          initialLoad: function () {
             return initialLoad;
           },
-          disabled: function() {
+          disabled: function () {
             return $module.hasClass(className.disabled);
           }
         },
 
         get: {
-          icon: function() {
+          icon: function () {
             var icon = $module.data(metadata.icon);
             if (icon) {
               $module.removeData(metadata.icon);
             }
             return icon || settings.icon;
           },
-          initialRating: function() {
+          initialRating: function () {
             if ($module.data(metadata.rating) !== undefined) {
               $module.removeData(metadata.rating);
               return $module.data(metadata.rating);
             }
             return settings.initialRating;
           },
-          maxRating: function() {
+          maxRating: function () {
             if ($module.data(metadata.maxRating) !== undefined) {
               $module.removeData(metadata.maxRating);
               return $module.data(metadata.maxRating);
             }
             return settings.maxRating;
           },
-          rating: function() {
+          rating: function () {
             var
               currentRating = $icon.filter('.' + className.active).length
             ;
@@ -245,7 +245,7 @@ $.fn.rating = function(parameters) {
         },
 
         set: {
-          rating: function(rating) {
+          rating: function (rating) {
             var
               ratingIndex = (rating - 1 >= 0)
                 ? (rating - 1)
@@ -271,12 +271,12 @@ $.fn.rating = function(parameters) {
               settings.onRate.call(element, rating);
             }
           },
-          initialLoad: function() {
+          initialLoad: function () {
             initialLoad = true;
           }
         },
 
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -293,7 +293,7 @@ $.fn.rating = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
@@ -304,7 +304,7 @@ $.fn.rating = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -315,7 +315,7 @@ $.fn.rating = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -326,14 +326,14 @@ $.fn.rating = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -354,14 +354,14 @@ $.fn.rating = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -377,7 +377,7 @@ $.fn.rating = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -386,7 +386,7 @@ $.fn.rating = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -398,7 +398,7 @@ $.fn.rating = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -480,7 +480,7 @@ $.fn.rating.settings = {
 
   fireOnInit: false,
 
-  onRate: function(rating) {},
+  onRate: function (rating) {},
 
   error: {
     method    : 'The method you called is not defined',
@@ -505,7 +505,7 @@ $.fn.rating.settings = {
   },
 
   templates: {
-    icon: function(maxRating, iconClass) {
+    icon: function (maxRating, iconClass) {
       var
         icon = 1,
         html = ''

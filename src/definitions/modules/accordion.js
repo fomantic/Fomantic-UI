@@ -8,10 +8,10 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
@@ -22,7 +22,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.accordion = function(parameters) {
+$.fn.accordion = function (parameters) {
   var
     $allModules     = $(this),
 
@@ -36,7 +36,7 @@ $.fn.accordion = function(parameters) {
     returnedValue
   ;
   $allModules
-    .each(function() {
+    .each(function () {
       var
         settings        = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.accordion.settings, parameters)
@@ -63,7 +63,7 @@ $.fn.accordion = function(parameters) {
 
       module = {
 
-        initialize: function() {
+        initialize: function () {
           module.debug('Initializing', $module);
           module.bind.events();
           if (settings.observeChanges) {
@@ -72,14 +72,14 @@ $.fn.accordion = function(parameters) {
           module.instantiate();
         },
 
-        instantiate: function() {
+        instantiate: function () {
           instance = module;
           $module
             .data(moduleNamespace, module)
           ;
         },
 
-        destroy: function() {
+        destroy: function () {
           module.debug('Destroying previous instance', $module);
           $module
             .off(eventNamespace)
@@ -87,14 +87,14 @@ $.fn.accordion = function(parameters) {
           ;
         },
 
-        refresh: function() {
+        refresh: function () {
           $title   = $module.find(selector.title);
           $content = $module.find(selector.content);
         },
 
-        observeChanges: function() {
+        observeChanges: function () {
           if ('MutationObserver' in window) {
-            observer = new MutationObserver(function(mutations) {
+            observer = new MutationObserver(function (mutations) {
               module.debug('DOM tree modified, updating selector cache');
               module.refresh();
             });
@@ -107,7 +107,7 @@ $.fn.accordion = function(parameters) {
         },
 
         bind: {
-          events: function() {
+          events: function () {
             module.debug('Binding delegated events');
             $module
               .on(settings.on + eventNamespace, selector.trigger, module.event.click)
@@ -116,12 +116,12 @@ $.fn.accordion = function(parameters) {
         },
 
         event: {
-          click: function() {
+          click: function () {
             module.toggle.call(this);
           }
         },
 
-        toggle: function(query) {
+        toggle: function (query) {
           var
             $activeTitle = (query !== undefined)
               ? (typeof query === 'number')
@@ -148,7 +148,7 @@ $.fn.accordion = function(parameters) {
           }
         },
 
-        open: function(query) {
+        open: function (query) {
           var
             $activeTitle = (query !== undefined)
               ? (typeof query === 'number')
@@ -203,7 +203,7 @@ $.fn.accordion = function(parameters) {
             }
           }
           $activeContent
-            .slideDown(settings.duration, settings.easing, function() {
+            .slideDown(settings.duration, settings.easing, function () {
               $activeContent
                 .removeClass(className.animating)
                 .addClass(className.active)
@@ -215,7 +215,7 @@ $.fn.accordion = function(parameters) {
           ;
         },
 
-        close: function(query) {
+        close: function (query) {
           var
             $activeTitle = (query !== undefined)
               ? (typeof query === 'number')
@@ -265,7 +265,7 @@ $.fn.accordion = function(parameters) {
               }
             }
             $activeContent
-              .slideUp(settings.duration, settings.easing, function() {
+              .slideUp(settings.duration, settings.easing, function () {
                 $activeContent
                   .removeClass(className.animating)
                   .removeClass(className.active)
@@ -278,7 +278,7 @@ $.fn.accordion = function(parameters) {
           }
         },
 
-        closeOthers: function(index) {
+        closeOthers: function (index) {
           var
             $activeTitle = (index !== undefined)
               ? $title.eq(index)
@@ -335,7 +335,7 @@ $.fn.accordion = function(parameters) {
               }
             }
             $openContents
-              .slideUp(settings.duration, settings.easing, function() {
+              .slideUp(settings.duration, settings.easing, function () {
                 $(this).removeClass(className.active);
                 module.reset.display.call(this);
               })
@@ -345,7 +345,7 @@ $.fn.accordion = function(parameters) {
 
         reset: {
 
-          display: function() {
+          display: function () {
             module.verbose('Removing inline display from element', this);
             $(this).css('display', '');
             if ($(this).attr('style') === '') {
@@ -356,7 +356,7 @@ $.fn.accordion = function(parameters) {
             }
           },
 
-          opacity: function() {
+          opacity: function () {
             module.verbose('Removing inline opacity from element', this);
             $(this).css('opacity', '');
             if ($(this).attr('style') === '') {
@@ -369,7 +369,7 @@ $.fn.accordion = function(parameters) {
 
         },
 
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -386,7 +386,7 @@ $.fn.accordion = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           module.debug('Changing internal', name, value);
           if (value !== undefined) {
             if ($.isPlainObject(name)) {
@@ -400,7 +400,7 @@ $.fn.accordion = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -411,7 +411,7 @@ $.fn.accordion = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -422,14 +422,14 @@ $.fn.accordion = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -450,14 +450,14 @@ $.fn.accordion = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -470,7 +470,7 @@ $.fn.accordion = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -479,7 +479,7 @@ $.fn.accordion = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -491,7 +491,7 @@ $.fn.accordion = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -576,13 +576,13 @@ $.fn.accordion.settings = {
   duration : 350, // duration of animation
   easing   : 'easeOutQuad', // easing equation for animation
 
-  onOpening  : function() {}, // callback before open animation
-  onClosing  : function() {}, // callback before closing animation
-  onChanging : function() {}, // callback before closing or opening animation
+  onOpening  : function () {}, // callback before open animation
+  onClosing  : function () {}, // callback before closing animation
+  onChanging : function () {}, // callback before closing or opening animation
 
-  onOpen   : function() {}, // callback after open animation
-  onClose  : function() {}, // callback after closing animation
-  onChange : function() {}, // callback after closing or opening animation
+  onOpen   : function () {}, // callback after open animation
+  onClose  : function () {}, // callback after closing animation
+  onChange : function () {}, // callback after closing or opening animation
 
   error: {
     method: 'The method you called is not defined'
@@ -604,7 +604,7 @@ $.fn.accordion.settings = {
 
 // Adds easing
 $.extend($.easing, {
-  easeOutQuad: function(x, t, b, c, d) {
+  easeOutQuad: function (x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
   }
 });

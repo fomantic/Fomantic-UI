@@ -8,10 +8,10 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
@@ -22,7 +22,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.nag = function(parameters) {
+$.fn.nag = function (parameters) {
   var
     $allModules    = $(this),
     moduleSelector = $allModules.selector || '',
@@ -36,7 +36,7 @@ $.fn.nag = function(parameters) {
     returnedValue
   ;
   $allModules
-    .each(function() {
+    .each(function () {
       var
         settings          = ($.isPlainObject(parameters))
           ? $.extend(true, {}, $.fn.nag.settings, parameters)
@@ -62,7 +62,7 @@ $.fn.nag = function(parameters) {
       ;
       module = {
 
-        initialize: function() {
+        initialize: function () {
           module.verbose('Initializing element');
 
           $module
@@ -83,7 +83,7 @@ $.fn.nag = function(parameters) {
           module.show();
         },
 
-        destroy: function() {
+        destroy: function () {
           module.verbose('Destroying instance');
           $module
             .removeData(moduleNamespace)
@@ -91,7 +91,7 @@ $.fn.nag = function(parameters) {
           ;
         },
 
-        show: function() {
+        show: function () {
           if (module.should.show() && !$module.is(':visible')) {
             module.debug('Showing nag', settings.animation.show);
             if (settings.animation.show == 'fade') {
@@ -107,7 +107,7 @@ $.fn.nag = function(parameters) {
           }
         },
 
-        hide: function() {
+        hide: function () {
           module.debug('Showing nag', settings.animation.hide);
           if (settings.animation.show == 'fade') {
             $module
@@ -121,7 +121,7 @@ $.fn.nag = function(parameters) {
           }
         },
 
-        onHide: function() {
+        onHide: function () {
           module.debug('Removing nag', settings.animation.hide);
           $module.remove();
           if (settings.onHide) {
@@ -129,7 +129,7 @@ $.fn.nag = function(parameters) {
           }
         },
 
-        dismiss: function(event) {
+        dismiss: function (event) {
           if (settings.storageMethod) {
             module.storage.set(settings.key, settings.value);
           }
@@ -139,7 +139,7 @@ $.fn.nag = function(parameters) {
         },
 
         should: {
-          show: function() {
+          show: function () {
             if (settings.persist) {
               module.debug('Persistent nag is set, can show nag');
               return true;
@@ -154,7 +154,7 @@ $.fn.nag = function(parameters) {
         },
 
         get: {
-          storageOptions: function() {
+          storageOptions: function () {
             var
               options = {}
             ;
@@ -171,12 +171,12 @@ $.fn.nag = function(parameters) {
           }
         },
 
-        clear: function() {
+        clear: function () {
           module.storage.remove(settings.key);
         },
 
         storage: {
-          set: function(key, value) {
+          set: function (key, value) {
             var
               options = module.get.storageOptions()
             ;
@@ -197,7 +197,7 @@ $.fn.nag = function(parameters) {
               return;
             }
           },
-          get: function(key, value) {
+          get: function (key, value) {
             var
               storedValue
             ;
@@ -219,7 +219,7 @@ $.fn.nag = function(parameters) {
             }
             return storedValue;
           },
-          remove: function(key) {
+          remove: function (key) {
             var
               options = module.get.storageOptions()
             ;
@@ -239,7 +239,7 @@ $.fn.nag = function(parameters) {
           }
         },
 
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -256,7 +256,7 @@ $.fn.nag = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
@@ -267,7 +267,7 @@ $.fn.nag = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -278,7 +278,7 @@ $.fn.nag = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -289,14 +289,14 @@ $.fn.nag = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -317,14 +317,14 @@ $.fn.nag = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -337,7 +337,7 @@ $.fn.nag = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -346,7 +346,7 @@ $.fn.nag = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -358,7 +358,7 @@ $.fn.nag = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -477,13 +477,13 @@ $.fn.nag.settings = {
   speed  : 500,
   easing : 'easeOutQuad',
 
-  onHide: function() {}
+  onHide: function () {}
 
 };
 
 // Adds easing
 $.extend($.easing, {
-  easeOutQuad: function(x, t, b, c, d) {
+  easeOutQuad: function (x, t, b, c, d) {
     return -c * (t /= d) * (t - 2) + b;
   }
 });

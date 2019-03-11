@@ -8,12 +8,12 @@
  *
  */
 
-;(function($, window, document, undefined) {
-$.isFunction = $.isFunction || function(obj) {
+;(function ($, window, document, undefined) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
-$.site = $.fn.site = function(parameters) {
+$.site = $.fn.site = function (parameters) {
   var
     time           = new Date().getTime(),
     performance    = [],
@@ -41,11 +41,11 @@ $.site = $.fn.site = function(parameters) {
   ;
   module = {
 
-    initialize: function() {
+    initialize: function () {
       module.instantiate();
     },
 
-    instantiate: function() {
+    instantiate: function () {
       module.verbose('Storing instance of site', module);
       instance = module;
       $module
@@ -53,13 +53,13 @@ $.site = $.fn.site = function(parameters) {
       ;
     },
 
-    normalize: function() {
+    normalize: function () {
       module.fix.console();
       module.fix.requestAnimationFrame();
     },
 
     fix: {
-      console: function() {
+      console: function () {
         module.debug('Normalizing window.console');
         if (console === undefined || console.log === undefined) {
           module.verbose('Console not available, normalizing events');
@@ -67,20 +67,20 @@ $.site = $.fn.site = function(parameters) {
         }
         if (typeof console.group == 'undefined' || typeof console.groupEnd == 'undefined' || typeof console.groupCollapsed == 'undefined') {
           module.verbose('Console group not available, normalizing events');
-          window.console.group = function() {};
-          window.console.groupEnd = function() {};
-          window.console.groupCollapsed = function() {};
+          window.console.group = function () {};
+          window.console.groupEnd = function () {};
+          window.console.groupCollapsed = function () {};
         }
         if (typeof console.markTimeline == 'undefined') {
           module.verbose('Mark timeline not available, normalizing events');
-          window.console.markTimeline = function() {};
+          window.console.markTimeline = function () {};
         }
       },
-      consoleClear: function() {
+      consoleClear: function () {
         module.debug('Disabling programmatic console clearing');
-        window.console.clear = function() {};
+        window.console.clear = function () {};
       },
-      requestAnimationFrame: function() {
+      requestAnimationFrame: function () {
         module.debug('Normalizing requestAnimationFrame');
         if (window.requestAnimationFrame === undefined) {
           module.debug('RequestAnimationFrame not available, normalizing event');
@@ -88,23 +88,23 @@ $.site = $.fn.site = function(parameters) {
             || window.mozRequestAnimationFrame
             || window.webkitRequestAnimationFrame
             || window.msRequestAnimationFrame
-            || function(callback) { setTimeout(callback, 0); }
+            || function (callback) { setTimeout(callback, 0); }
           ;
         }
       }
     },
 
-    moduleExists: function(name) {
+    moduleExists: function (name) {
       return ($.fn[name] !== undefined && $.fn[name].settings !== undefined);
     },
 
     enabled: {
-      modules: function(modules) {
+      modules: function (modules) {
         var
           enabledModules = []
         ;
         modules = modules || settings.modules;
-        $.each(modules, function(index, name) {
+        $.each(modules, function (index, name) {
           if (module.moduleExists(name)) {
             enabledModules.push(name);
           }
@@ -114,12 +114,12 @@ $.site = $.fn.site = function(parameters) {
     },
 
     disabled: {
-      modules: function(modules) {
+      modules: function (modules) {
         var
           disabledModules = []
         ;
         modules = modules || settings.modules;
-        $.each(modules, function(index, name) {
+        $.each(modules, function (index, name) {
           if (!module.moduleExists(name)) {
             disabledModules.push(name);
           }
@@ -129,7 +129,7 @@ $.site = $.fn.site = function(parameters) {
     },
 
     change: {
-      setting: function(setting, value, modules, modifyExisting) {
+      setting: function (setting, value, modules, modifyExisting) {
         modules = (typeof modules === 'string')
           ? (modules === 'all')
             ? settings.modules
@@ -140,7 +140,7 @@ $.site = $.fn.site = function(parameters) {
           ? modifyExisting
           : true
         ;
-        $.each(modules, function(index, name) {
+        $.each(modules, function (index, name) {
           var
             namespace = (module.moduleExists(name))
               ? $.fn[name].settings.namespace || false
@@ -160,7 +160,7 @@ $.site = $.fn.site = function(parameters) {
           }
         });
       },
-      settings: function(newSettings, modules, modifyExisting) {
+      settings: function (newSettings, modules, modifyExisting) {
         modules = (typeof modules === 'string')
           ? [modules]
           : modules || settings.modules
@@ -169,7 +169,7 @@ $.site = $.fn.site = function(parameters) {
           ? modifyExisting
           : true
         ;
-        $.each(modules, function(index, name) {
+        $.each(modules, function (index, name) {
           var
             $existingModules
           ;
@@ -189,37 +189,37 @@ $.site = $.fn.site = function(parameters) {
     },
 
     enable: {
-      console: function() {
+      console: function () {
         module.console(true);
       },
-      debug: function(modules, modifyExisting) {
+      debug: function (modules, modifyExisting) {
         modules = modules || settings.modules;
         module.debug('Enabling debug for modules', modules);
         module.change.setting('debug', true, modules, modifyExisting);
       },
-      verbose: function(modules, modifyExisting) {
+      verbose: function (modules, modifyExisting) {
         modules = modules || settings.modules;
         module.debug('Enabling verbose debug for modules', modules);
         module.change.setting('verbose', true, modules, modifyExisting);
       }
     },
     disable: {
-      console: function() {
+      console: function () {
         module.console(false);
       },
-      debug: function(modules, modifyExisting) {
+      debug: function (modules, modifyExisting) {
         modules = modules || settings.modules;
         module.debug('Disabling debug for modules', modules);
         module.change.setting('debug', false, modules, modifyExisting);
       },
-      verbose: function(modules, modifyExisting) {
+      verbose: function (modules, modifyExisting) {
         modules = modules || settings.modules;
         module.debug('Disabling verbose debug for modules', modules);
         module.change.setting('verbose', false, modules, modifyExisting);
       }
     },
 
-    console: function(enable) {
+    console: function (enable) {
       if (enable) {
         if (instance.cache.console === undefined) {
           module.error(error.console);
@@ -232,20 +232,20 @@ $.site = $.fn.site = function(parameters) {
         module.debug('Disabling console function');
         instance.cache.console = window.console;
         window.console = {
-          clear          : function() {},
-          error          : function() {},
-          group          : function() {},
-          groupCollapsed : function() {},
-          groupEnd       : function() {},
-          info           : function() {},
-          log            : function() {},
-          markTimeline   : function() {},
-          warn           : function() {}
+          clear          : function () {},
+          error          : function () {},
+          group          : function () {},
+          groupCollapsed : function () {},
+          groupEnd       : function () {},
+          info           : function () {},
+          log            : function () {},
+          markTimeline   : function () {},
+          warn           : function () {}
         };
       }
     },
 
-    destroy: function() {
+    destroy: function () {
       module.verbose('Destroying previous site for', $module);
       $module
         .removeData(moduleNamespace)
@@ -254,7 +254,7 @@ $.site = $.fn.site = function(parameters) {
 
     cache: {},
 
-    setting: function(name, value) {
+    setting: function (name, value) {
       if ($.isPlainObject(name)) {
         $.extend(true, settings, name);
       }
@@ -265,7 +265,7 @@ $.site = $.fn.site = function(parameters) {
         return settings[name];
       }
     },
-    internal: function(name, value) {
+    internal: function (name, value) {
       if ($.isPlainObject(name)) {
         $.extend(true, module, name);
       }
@@ -276,7 +276,7 @@ $.site = $.fn.site = function(parameters) {
         return module[name];
       }
     },
-    debug: function() {
+    debug: function () {
       if (settings.debug) {
         if (settings.performance) {
           module.performance.log(arguments);
@@ -287,7 +287,7 @@ $.site = $.fn.site = function(parameters) {
         }
       }
     },
-    verbose: function() {
+    verbose: function () {
       if (settings.verbose && settings.debug) {
         if (settings.performance) {
           module.performance.log(arguments);
@@ -298,12 +298,12 @@ $.site = $.fn.site = function(parameters) {
         }
       }
     },
-    error: function() {
+    error: function () {
       module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
       module.error.apply(console, arguments);
     },
     performance: {
-      log: function(message) {
+      log: function (message) {
         var
           currentTime,
           executionTime,
@@ -324,14 +324,14 @@ $.site = $.fn.site = function(parameters) {
         clearTimeout(module.performance.timer);
         module.performance.timer = setTimeout(module.performance.display, 500);
       },
-      display: function() {
+      display: function () {
         var
           title = settings.name + ':',
           totalTime = 0
         ;
         time = false;
         clearTimeout(module.performance.timer);
-        $.each(performance, function(index, data) {
+        $.each(performance, function (index, data) {
           totalTime += data['Execution Time'];
         });
         title += ' ' + totalTime + 'ms';
@@ -341,7 +341,7 @@ $.site = $.fn.site = function(parameters) {
             console.table(performance);
           }
           else {
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
             });
           }
@@ -350,7 +350,7 @@ $.site = $.fn.site = function(parameters) {
         performance = [];
       }
     },
-    invoke: function(query, passedArguments, context) {
+    invoke: function (query, passedArguments, context) {
       var
         object = instance,
         maxDepth,
@@ -362,7 +362,7 @@ $.site = $.fn.site = function(parameters) {
       if (typeof query == 'string' && object !== undefined) {
         query    = query.split(/[\. ]/);
         maxDepth = query.length - 1;
-        $.each(query, function(depth, value) {
+        $.each(query, function (depth, value) {
           var camelCaseValue = (depth != maxDepth)
             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
             : query
@@ -477,12 +477,12 @@ $.site.settings = {
 // allows for selection of elements with data attributes
 $.extend($.expr[ ':' ], {
   data: ($.expr.createPseudo)
-    ? $.expr.createPseudo(function(dataName) {
-      return function(elem) {
+    ? $.expr.createPseudo(function (dataName) {
+      return function (elem) {
         return !!$.data(elem, dataName);
       };
     })
-    : function(elem, i, match) {
+    : function (elem, i, match) {
       // support: jQuery < 1.8
       return !!$.data(elem, match[ 3 ]);
     }

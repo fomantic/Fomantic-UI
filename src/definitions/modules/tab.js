@@ -8,13 +8,13 @@
  *
  */
 
-;(function($, window, document, undefined) {
+;(function ($, window, document, undefined) {
 'use strict';
 
-$.isWindow = $.isWindow || function(obj) {
+$.isWindow = $.isWindow || function (obj) {
   return obj != null && obj === obj.window;
 };
-$.isFunction = $.isFunction || function(obj) {
+$.isFunction = $.isFunction || function (obj) {
   return typeof obj === 'function' && typeof obj.nodeType !== 'number';
 };
 
@@ -25,7 +25,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.tab = function(parameters) {
+$.fn.tab = function (parameters) {
   var
     // use window context if none specified
     $allModules     = $.isFunction(this)
@@ -45,7 +45,7 @@ $.fn.tab = function(parameters) {
   ;
 
   $allModules
-    .each(function() {
+    .each(function () {
       var
 
         settings        = ($.isPlainObject(parameters))
@@ -81,7 +81,7 @@ $.fn.tab = function(parameters) {
 
       module = {
 
-        initialize: function() {
+        initialize: function () {
           module.debug('Initializing tab menu item', $module);
           module.fix.callbacks();
           module.determineTabs();
@@ -101,7 +101,7 @@ $.fn.tab = function(parameters) {
           module.instantiate();
         },
 
-        instantiate: function() {
+        instantiate: function () {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module
@@ -109,7 +109,7 @@ $.fn.tab = function(parameters) {
           ;
         },
 
-        destroy: function() {
+        destroy: function () {
           module.debug('Destroying tabs', $module);
           $module
             .removeData(moduleNamespace)
@@ -118,7 +118,7 @@ $.fn.tab = function(parameters) {
         },
 
         bind: {
-          events: function() {
+          events: function () {
             // if using $.tab don't add events
             if (!$.isWindow(element)) {
               module.debug('Attaching tab activation events to element', $module);
@@ -129,7 +129,7 @@ $.fn.tab = function(parameters) {
           }
         },
 
-        determineTabs: function() {
+        determineTabs: function () {
           var
             $reference
           ;
@@ -165,7 +165,7 @@ $.fn.tab = function(parameters) {
         },
 
         fix: {
-          callbacks: function() {
+          callbacks: function () {
             if ($.isPlainObject(parameters) && (parameters.onTabLoad || parameters.onTabInit)) {
               if (parameters.onTabLoad) {
                 parameters.onLoad = parameters.onTabLoad;
@@ -182,7 +182,7 @@ $.fn.tab = function(parameters) {
           }
         },
 
-        initializeHistory: function() {
+        initializeHistory: function () {
           module.debug('Initializing page state');
           if ($.address === undefined) {
             module.error(error.state);
@@ -209,7 +209,7 @@ $.fn.tab = function(parameters) {
         },
 
         event: {
-          click: function(event) {
+          click: function (event) {
             var
               tabPath = $(this).data(metadata.tab)
             ;
@@ -229,7 +229,7 @@ $.fn.tab = function(parameters) {
             }
           },
           history: {
-            change: function(event) {
+            change: function (event) {
               var
                 tabPath   = event.pathNames.join('/') || module.get.initialPath(),
                 pageTitle = settings.templates.determineTitle(tabPath) || false
@@ -247,7 +247,7 @@ $.fn.tab = function(parameters) {
           }
         },
 
-        refresh: function() {
+        refresh: function () {
           if (activeTabPath) {
             module.debug('Refreshing tab', activeTabPath);
             module.changeTab(activeTabPath);
@@ -256,18 +256,18 @@ $.fn.tab = function(parameters) {
 
         cache: {
 
-          read: function(cacheKey) {
+          read: function (cacheKey) {
             return (cacheKey !== undefined)
               ? cache[cacheKey]
               : false
             ;
           },
-          add: function(cacheKey, content) {
+          add: function (cacheKey, content) {
             cacheKey = cacheKey || activeTabPath;
             module.debug('Adding cached content for', cacheKey);
             cache[cacheKey] = content;
           },
-          remove: function(cacheKey) {
+          remove: function (cacheKey) {
             cacheKey = cacheKey || activeTabPath;
             module.debug('Removing cached content for', cacheKey);
             delete cache[cacheKey];
@@ -275,14 +275,14 @@ $.fn.tab = function(parameters) {
         },
 
         escape: {
-          string: function(text) {
+          string: function (text) {
             text =  String(text);
             return text.replace(regExp.escape, '\\$&');
           }
         },
 
         set: {
-          auto: function() {
+          auto: function () {
             var
               url = (typeof settings.path == 'string')
                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
@@ -298,7 +298,7 @@ $.fn.tab = function(parameters) {
               };
             }
           },
-          loading: function(tabPath) {
+          loading: function (tabPath) {
             var
               $tab      = module.get.tabElement(tabPath),
               isLoading = $tab.hasClass(className.loading)
@@ -315,12 +315,12 @@ $.fn.tab = function(parameters) {
               }
             }
           },
-          state: function(state) {
+          state: function (state) {
             $.address.value(state);
           }
         },
 
-        changeTab: function(tabPath) {
+        changeTab: function (tabPath) {
           var
             pushStateAvailable = (window.history && window.history.pushState),
             shouldIgnoreLoad   = (pushStateAvailable && settings.ignoreFirstLoad && firstLoad),
@@ -331,7 +331,7 @@ $.fn.tab = function(parameters) {
               : module.get.defaultPathArray(tabPath)
           ;
           tabPath = module.utilities.arrayToPath(pathArray);
-          $.each(pathArray, function(index, tab) {
+          $.each(pathArray, function (index, tab) {
             var
               currentPathArray   = pathArray.slice(0, index + 1),
               currentPath        = module.utilities.arrayToPath(currentPathArray),
@@ -399,7 +399,7 @@ $.fn.tab = function(parameters) {
               if ($anchor && $anchor.length > 0 && currentPath) {
                 module.debug('Anchor link used, opening parent tab', $tab, $anchor);
                 if (!$tab.hasClass(className.active)) {
-                  setTimeout(function() {
+                  setTimeout(function () {
                     module.scrollTo($anchor);
                   }, 0);
                 }
@@ -420,7 +420,7 @@ $.fn.tab = function(parameters) {
           });
         },
 
-        scrollTo: function($element) {
+        scrollTo: function ($element) {
           var
             scrollOffset = ($element && $element.length > 0)
               ? $element.offset().top
@@ -433,7 +433,7 @@ $.fn.tab = function(parameters) {
         },
 
         update: {
-          content: function(tabPath, html, evaluateScripts) {
+          content: function (tabPath, html, evaluateScripts) {
             var
               $tab = module.get.tabElement(tabPath),
               tab  = $tab[0]
@@ -463,7 +463,7 @@ $.fn.tab = function(parameters) {
 
         fetch: {
 
-          content: function(tabPath, fullTabPath) {
+          content: function (tabPath, fullTabPath) {
             var
               $tab        = module.get.tabElement(tabPath),
               apiSettings = {
@@ -474,7 +474,7 @@ $.fn.tab = function(parameters) {
                 headers          : {
                   'X-Remote': true
                 },
-                onSuccess: function(response) {
+                onSuccess: function (response) {
                   if (settings.cacheType == 'response') {
                     module.cache.add(fullTabPath, response);
                   }
@@ -493,7 +493,7 @@ $.fn.tab = function(parameters) {
                     module.cache.add(fullTabPath, true);
                   }
                   else if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
-                    setTimeout(function() {
+                    setTimeout(function () {
                       var
                         $clone = $tab.children().clone(true)
                       ;
@@ -548,11 +548,11 @@ $.fn.tab = function(parameters) {
         },
 
         activate: {
-          all: function(tabPath) {
+          all: function (tabPath) {
             module.activate.tab(tabPath);
             module.activate.navigation(tabPath);
           },
-          tab: function(tabPath) {
+          tab: function (tabPath) {
             var
               $tab          = module.get.tabElement(tabPath),
               $deactiveTabs = (settings.deactivate == 'siblings')
@@ -573,7 +573,7 @@ $.fn.tab = function(parameters) {
               }
             }
           },
-          navigation: function(tabPath) {
+          navigation: function (tabPath) {
             var
               $navigation         = module.get.navElement(tabPath),
               $deactiveNavigation = (settings.deactivate == 'siblings')
@@ -594,16 +594,16 @@ $.fn.tab = function(parameters) {
         },
 
         deactivate: {
-          all: function() {
+          all: function () {
             module.deactivate.navigation();
             module.deactivate.tabs();
           },
-          navigation: function() {
+          navigation: function () {
             $allModules
               .removeClass(className.active)
             ;
           },
-          tabs: function() {
+          tabs: function () {
             $tabs
               .removeClass(className.active + ' ' + className.loading)
             ;
@@ -611,7 +611,7 @@ $.fn.tab = function(parameters) {
         },
 
         is: {
-          tab: function(tabName) {
+          tab: function (tabName) {
             return (tabName !== undefined)
               ? (module.get.tabElement(tabName).length > 0)
               : false
@@ -620,17 +620,17 @@ $.fn.tab = function(parameters) {
         },
 
         get: {
-          initialPath: function() {
+          initialPath: function () {
             return $allModules.eq(0).data(metadata.tab) || $tabs.eq(0).data(metadata.tab);
           },
-          path: function() {
+          path: function () {
             return $.address.value();
           },
           // adds default tabs to tab path
-          defaultPathArray: function(tabPath) {
+          defaultPathArray: function (tabPath) {
             return module.utilities.pathToArray(module.get.defaultPath(tabPath));
           },
-          defaultPath: function(tabPath) {
+          defaultPath: function (tabPath) {
             var
               $defaultNav = $allModules.filter('[data-' + metadata.tab + '^="' + module.escape.string(tabPath) + '/"]').eq(0),
               defaultTab  = $defaultNav.data(metadata.tab) || false
@@ -649,11 +649,11 @@ $.fn.tab = function(parameters) {
             recursionDepth = 0;
             return tabPath;
           },
-          navElement: function(tabPath) {
+          navElement: function (tabPath) {
             tabPath = tabPath || activeTabPath;
             return $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
           },
-          tabElement: function(tabPath) {
+          tabElement: function (tabPath) {
             var
               $fullPathTab,
               $simplePathTab,
@@ -670,24 +670,24 @@ $.fn.tab = function(parameters) {
               : $simplePathTab
             ;
           },
-          tab: function() {
+          tab: function () {
             return activeTabPath;
           }
         },
 
         utilities: {
-          filterArray: function(keepArray, removeArray) {
-            return $.grep(keepArray, function(keepValue) {
+          filterArray: function (keepArray, removeArray) {
+            return $.grep(keepArray, function (keepValue) {
               return ($.inArray(keepValue, removeArray) == -1);
             });
           },
-          last: function(array) {
+          last: function (array) {
             return Array.isArray(array)
               ? array[array.length - 1]
               : false
             ;
           },
-          pathToArray: function(pathName) {
+          pathToArray: function (pathName) {
             if (pathName === undefined) {
               pathName = activeTabPath;
             }
@@ -696,7 +696,7 @@ $.fn.tab = function(parameters) {
               : [pathName]
             ;
           },
-          arrayToPath: function(pathArray) {
+          arrayToPath: function (pathArray) {
             return Array.isArray(pathArray)
               ? pathArray.join('/')
               : false
@@ -704,7 +704,7 @@ $.fn.tab = function(parameters) {
           }
         },
 
-        setting: function(name, value) {
+        setting: function (name, value) {
           module.debug('Changing setting', name, value);
           if ($.isPlainObject(name)) {
             $.extend(true, settings, name);
@@ -721,7 +721,7 @@ $.fn.tab = function(parameters) {
             return settings[name];
           }
         },
-        internal: function(name, value) {
+        internal: function (name, value) {
           if ($.isPlainObject(name)) {
             $.extend(true, module, name);
           }
@@ -732,7 +732,7 @@ $.fn.tab = function(parameters) {
             return module[name];
           }
         },
-        debug: function() {
+        debug: function () {
           if (!settings.silent && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -743,7 +743,7 @@ $.fn.tab = function(parameters) {
             }
           }
         },
-        verbose: function() {
+        verbose: function () {
           if (!settings.silent && settings.verbose && settings.debug) {
             if (settings.performance) {
               module.performance.log(arguments);
@@ -754,14 +754,14 @@ $.fn.tab = function(parameters) {
             }
           }
         },
-        error: function() {
+        error: function () {
           if (!settings.silent) {
             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
             module.error.apply(console, arguments);
           }
         },
         performance: {
-          log: function(message) {
+          log: function (message) {
             var
               currentTime,
               executionTime,
@@ -782,14 +782,14 @@ $.fn.tab = function(parameters) {
             clearTimeout(module.performance.timer);
             module.performance.timer = setTimeout(module.performance.display, 500);
           },
-          display: function() {
+          display: function () {
             var
               title = settings.name + ':',
               totalTime = 0
             ;
             time = false;
             clearTimeout(module.performance.timer);
-            $.each(performance, function(index, data) {
+            $.each(performance, function (index, data) {
               totalTime += data['Execution Time'];
             });
             title += ' ' + totalTime + 'ms';
@@ -802,7 +802,7 @@ $.fn.tab = function(parameters) {
                 console.table(performance);
               }
               else {
-                $.each(performance, function(index, data) {
+                $.each(performance, function (index, data) {
                   console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                 });
               }
@@ -811,7 +811,7 @@ $.fn.tab = function(parameters) {
             performance = [];
           }
         },
-        invoke: function(query, passedArguments, context) {
+        invoke: function (query, passedArguments, context) {
           var
             object = instance,
             maxDepth,
@@ -823,7 +823,7 @@ $.fn.tab = function(parameters) {
           if (typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
-            $.each(query, function(depth, value) {
+            $.each(query, function (depth, value) {
               var camelCaseValue = (depth != maxDepth)
                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                 : query
@@ -887,7 +887,7 @@ $.fn.tab = function(parameters) {
 };
 
 // shortcut for tabbed content with no defined navigation
-$.tab = function() {
+$.tab = function () {
   $(window).tab.apply(this, arguments);
 };
 
@@ -921,13 +921,13 @@ $.fn.tab.settings = {
   apiSettings     : false, // settings for api call
   evaluateScripts : 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
 
-  onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
-  onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
-  onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
-  onRequest   : function(tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
+  onFirstLoad : function (tabPath, parameterArray, historyEvent) {}, // called first time loaded
+  onLoad      : function (tabPath, parameterArray, historyEvent) {}, // called on every load
+  onVisible   : function (tabPath, parameterArray, historyEvent) {}, // called every time tab visible
+  onRequest   : function (tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
 
   templates: {
-    determineTitle: function(tabArray) {} // returns page title for path
+    determineTitle: function (tabArray) {} // returns page title for path
   },
 
   error: {

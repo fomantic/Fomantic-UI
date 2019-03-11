@@ -31,7 +31,6 @@ module.exports = {
       }
     }],
     'semi': ['error', 'always'],
-    'space-before-function-paren': ['error', { 'anonymous': 'never', 'named': 'always', 'asyncArrow': 'always' }],
     'yoda': ['error', 'never', { 'exceptRange': true }],
 
     // -----------------------------------------------------------------------------------------------------------------
