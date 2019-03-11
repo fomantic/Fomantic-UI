@@ -16,6 +16,7 @@ module.exports = {
     }],
     'selector-pseudo-element-colon-notation': 'single',
     // disable
+    'declaration-empty-line-before': null,
     'max-empty-lines': null,
     'no-descending-specificity': null
   }
