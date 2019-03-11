@@ -5,6 +5,7 @@ module.exports = {
       except: ['first-nested'],
       ignore: ['after-comment'],
     }],
+    'selector-pseudo-element-colon-notation': 'single',
     // disable
     'no-descending-specificity': null
   }

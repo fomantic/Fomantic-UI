@@ -233,7 +233,7 @@
   background-color: @successColor;
 }
 .ui.ui.progress.success .bar,
-.ui.ui.progress.success .bar::after {
+.ui.ui.progress.success .bar:after {
   animation: none;
 }
 .ui.progress.success > .label {
@@ -248,7 +248,7 @@
   background-color: @warningColor;
 }
 .ui.ui.progress.warning .bar,
-.ui.ui.progress.warning .bar::after {
+.ui.ui.progress.warning .bar:after {
   animation: none;
 }
 .ui.progress.warning > .label {
@@ -263,7 +263,7 @@
   background-color: @errorColor;
 }
 .ui.ui.progress.error .bar,
-.ui.ui.progress.error .bar::after {
+.ui.ui.progress.error .bar:after {
   animation: none;
 }
 .ui.progress.error > .label {
@@ -278,7 +278,7 @@
   position: relative;
   min-width: @activeMinWidth;
 }
-.ui.active.progress .bar::after {
+.ui.active.progress .bar:after {
   content: '';
   opacity: 0;
 
@@ -314,7 +314,7 @@
   opacity: 0.35;
 }
 .ui.ui.disabled.progress .bar,
-.ui.ui.disabled.progress .bar::after {
+.ui.ui.disabled.progress .bar:after {
   animation: none;
 }
 
