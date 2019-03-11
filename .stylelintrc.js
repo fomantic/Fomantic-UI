@@ -18,6 +18,7 @@ module.exports = {
     // disable
     'declaration-empty-line-before': null,
     'max-empty-lines': null,
-    'no-descending-specificity': null
+    'no-descending-specificity': null,
+    'no-duplicate-selectors': null,
   }
 };
