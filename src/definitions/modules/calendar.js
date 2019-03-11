@@ -183,7 +183,13 @@ $.fn.calendar = function(parameters) {
             }
           },
           date: function () {
-            if ($input.length) {
+            if (settings.initialDate) {
+              var date = parser.date(settings.initialDate, settings);
+              module.set.date(date, settings.formatInput, false);
+            } else if ($module.data(metadata.date) !== undefined) {
+              var date = parser.date($module.data(metadata.date), settings);
+              module.set.date(date, settings.formatInput, false);
+            } else if ($input.length) {
               var val = $input.val();
               var date = parser.date(val, settings);
               module.set.date(date, settings.formatInput, false);
@@ -569,7 +575,7 @@ $.fn.calendar = function(parameters) {
               }();
           },
           date: function () {
-            return $module.data(metadata.date) || null;
+            return module.helper.sanitiseDate($module.data(metadata.date)) || null;
           },
           focusDate: function () {
             return $module.data(metadata.focusDate) || null;
