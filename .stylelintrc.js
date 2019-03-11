@@ -1,3 +1,6 @@
+// FUI/SUI specific LESS variable
+const SUI_SPECIFIC_AT_MARK_VARS = ['type', 'element'];
+
 module.exports = {
   // 'extends': 'stylelint-config-standard',
   'rules': {
@@ -7,8 +10,10 @@ module.exports = {
         'first-nested',
       ],
       ignore: ['after-comment'],
-      // FUI/SUI specific LESS variable
-      ignoreAtRules: ['type', 'element']
+      ignoreAtRules: SUI_SPECIFIC_AT_MARK_VARS
+    }],
+    'at-rule-no-unknown': [true, {
+      ignoreAtRules: SUI_SPECIFIC_AT_MARK_VARS
     }],
     'rule-empty-line-before': ['never', {
       except: ['first-nested'],
