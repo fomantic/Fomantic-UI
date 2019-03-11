@@ -7,6 +7,7 @@ module.exports = {
     }],
     'selector-pseudo-element-colon-notation': 'single',
     // disable
+    'max-empty-lines': null,
     'no-descending-specificity': null
   }
 };
