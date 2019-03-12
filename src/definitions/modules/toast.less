@@ -23,38 +23,38 @@
 *******************************/
 
 .ui.toast-container {
-    position: fixed;
-    z-index: 9999;
+  position: fixed;
+  z-index: 9999;
 }
 .ui.top.right.toast-container {
-    top: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
+  top: @toastContainerDistance;
+  right: @toastContainerDistance;
+  margin-left: @toastContainerDistance;
 }
 .ui.top.left.toast-container {
-    top: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
+  top: @toastContainerDistance;
+  left: @toastContainerDistance;
+  margin-right: @toastContainerDistance;
 }
 .ui.top.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: @toastContainerDistance;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: @toastContainerDistance;
 }
 .ui.bottom.right.toast-container {
-    bottom: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
+  bottom: @toastContainerDistance;
+  right: @toastContainerDistance;
+  margin-left: @toastContainerDistance;
 }
 .ui.bottom.left.toast-container {
-    bottom: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
+  bottom: @toastContainerDistance;
+  left: @toastContainerDistance;
+  margin-right: @toastContainerDistance;
 }
 .ui.bottom.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: @toastContainerDistance;
+  left: 50%;
+  transform: translate(-50%, 0);
+  bottom: @toastContainerDistance;
 }
 
 /*******************************
@@ -62,11 +62,11 @@
 *******************************/
 
 .toast {
-    display: block;
-    border-radius: @defaultBorderRadius;
-    padding: @toastPadding;
-    margin: @toastMargin;
-    color: @toastTextColor;
+  display: block;
+  border-radius: @defaultBorderRadius;
+  padding: @toastPadding;
+  margin: @toastMargin;
+  color: @toastTextColor;
 }
 .floating.toast,
 .hoverfloating.toast:hover {
@@ -77,15 +77,15 @@
 }
 .center.toast-container .toast-box,
 .right.toast-container .toast-box {
-    margin-left: auto;
+  margin-left: auto;
 }
 .center.toast-container .toast-box {
-    margin-right: auto;
+  margin-right: auto;
 }
 .visible.toast-box,
 .animating.toast-box,
 .toast-box {
-    display: table !important;
+  display: table !important;
 }
 .toast-container .compact {
   display: block;
@@ -93,38 +93,38 @@
 }
 .toast-container .message,
 .toast:hover {
-    opacity: @toastOpacityOnHover;
-    cursor: @toastCursorOnHover;
+  opacity: @toastOpacityOnHover;
+  cursor: @toastCursorOnHover;
 }
 .icon.toast .content {
   padding-left: @toastIconContentPadding;
 }
 .toast > .content > .header {
-    font-weight: bold;
+  font-weight: bold;
 }
 .info.toast {
-    background-color: @toastInfoColor;
+  background-color: @toastInfoColor;
 }
 .warning.toast {
-    background-color: @toastWarningColor;
+  background-color: @toastWarningColor;
 }
 .success.toast {
-    background-color: @toastSuccessColor;
+  background-color: @toastSuccessColor;
 }
 .error.toast {
-    background-color: @toastErrorColor;
+  background-color: @toastErrorColor;
 }
 .toast-box .info.attached.progress .bar {
-    background: @toastInfoProgressColor !important;
+  background: @toastInfoProgressColor !important;
 }
 .toast-box .warning.attached.progress .bar {
-    background: @toastWarningProgressColor !important;
+  background: @toastWarningProgressColor !important;
 }
 .toast-box .success.attached.progress .bar {
-    background: @toastSuccessProgressColor !important;
+  background: @toastSuccessProgressColor !important;
 }
 .toast-box .error.attached.progress .bar {
-    background: @toastErrorProgressColor !important;
+  background: @toastErrorProgressColor !important;
 }
 
 /* --------------
@@ -154,14 +154,14 @@ each(@colors, {
 --------------- */
 
 .icon.toast > .icon:not(.close) {
-    display: inline-block;
-    vertical-align: @toastIconVerticalAlign;
-    font-size: @toastIconFontSize;
-    position: absolute;
+  display: inline-block;
+  vertical-align: @toastIconVerticalAlign;
+  font-size: @toastIconFontSize;
+  position: absolute;
 }
 .icon.toast > .content {
-    display: inline-block;
-    vertical-align: @toastContentVerticalAlign;
+  display: inline-block;
+  vertical-align: @toastContentVerticalAlign;
 }
 
 /* ---------------
@@ -169,22 +169,22 @@ each(@colors, {
  ---------------- */
 
 .toast-box .attached.progress .bar {
-    min-width: 0;
+  min-width: 0;
 }
 .toast-box .active.progress .bar:after {
   animation: progress-active 2s @defaultEasing infinite !important;
 }
 .toast-box {
-    margin-bottom: @toastMarginBottom;
+  margin-bottom: @toastMarginBottom;
 }
 .toast-box .toast,
 .toast-box .message {
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
 }
 .toast-box .attached.progress {
-    z-index: 1;
+  z-index: 1;
 }
 .toast-box .bottom.attached.progress {
   margin: -3px 0 @toastMarginBottom;

@@ -15,6 +15,10 @@ module.exports = {
     'at-rule-no-unknown': [true, {
       ignoreAtRules: SUI_SPECIFIC_AT_MARK_VARS
     }],
+    'indentation': [2, {
+      'indentInsideParens': 'twice',
+      'except': ['param']
+    }],
     'rule-empty-line-before': ['never', {
       except: ['first-nested'],
       ignore: ['after-comment'],
