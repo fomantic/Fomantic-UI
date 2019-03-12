@@ -298,7 +298,7 @@ $.fn.calendar = function(parameters) {
                   if(settings.showWeekNumbers) {
                       cell = $('<th/>').appendTo(row);
                       cell.text(settings.text.weekNo);
-                      cell.addClass(className.disabledCell);
+                      cell.addClass(className.weekCell);
                       textColumns--;
                   }
                   for (i = 0; i < textColumns; i++) {
@@ -315,7 +315,7 @@ $.fn.calendar = function(parameters) {
                 if(isDay && settings.showWeekNumbers){
                     cell = $('<th/>').appendTo(row);
                     cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
-                    cell.addClass(className.disabledCell);
+                    cell.addClass(className.weekCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
@@ -1485,6 +1485,7 @@ $.fn.calendar.settings = {
     link: 'link',
     cell: 'link',
     disabledCell: 'disabled',
+    weekCell: 'disabled',
     adjacentCell: 'adjacent',
     activeCell: 'active',
     rangeCell: 'range',
