@@ -24,9 +24,10 @@ module.exports = {
       ignore: ['after-comment'],
     }],
     'selector-pseudo-element-colon-notation': 'single',
-    // disable
     // TODO: Enable with postcss-less https://github.com/stylelint/stylelint/issues/2748
     'selector-max-empty-lines': null,
+    'selector-descendant-combinator-no-non-space': null,
+    // disable
     'declaration-colon-space-before': null,
     'declaration-block-no-duplicate-properties': null,
     'declaration-empty-line-before': null,
