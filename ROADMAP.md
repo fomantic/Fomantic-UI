@@ -20,7 +20,7 @@ If you want to find out more about v3 we recommend you read the following issues
 - ✏ New documentation website 🛳
 - ✏ New build system 🛳
 - ✏ Visual component tests
-- 💡 CI/CD process
+- 🛠 CI/CD process
 - ✏ Rewrite modules into ES6 with classes 🛳
 - ✏ Move to a [monorepo](https://en.wikipedia.org/wiki/Monorepo) with separate packages 🛳
 - 💡 CLI tool
