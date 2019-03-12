@@ -328,7 +328,7 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
-                  var disabled = (!settings.selectOtherMonths && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
+                  var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
                   if (disabled) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
@@ -398,7 +398,7 @@ $.fn.calendar = function(parameters) {
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectOtherMonths && adjacent)) && !disabled);
+              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -1139,7 +1139,7 @@ $.fn.calendar.settings = {
   enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
   centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
   currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
-  selectOtherMonths  : false,      // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
+  selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
