@@ -7,16 +7,16 @@
 
  @import (multiple) '../../theme.config';
 
-.ui.slider:not(.vertical) {
+.ui.slider:not(.vertical):not(.checkbox) {
   width: 100%;
   padding: @padding;
 }
 
-.ui.slider {
+.ui.slider:not(.checkbox) {
   position: relative;
 }
 
-.ui.slider:focus {
+.ui.slider:not(.checkbox):focus {
   outline: 0;
 }
 
@@ -89,7 +89,7 @@
      Disabled
 ---------------*/
 
-.ui.disabled.slider {
+.ui.disabled.slider:not(.checkbox) {
   opacity: @disabledOpactiy;
 }
 
