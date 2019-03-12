@@ -56,7 +56,6 @@
   -webkit-tap-highlight-color: @tapColor;
 }
 
-
 /*******************************
             States
 *******************************/
@@ -120,7 +119,6 @@
   background-color: @activeBackgroundColor;
   background-image: @activeBackgroundImage;
 }
-
 
 /* --------------
     Loading
@@ -357,7 +355,6 @@
   box-shadow: 0 0 0 @invertedBorderSize @midWhite inset;
   color: @focusColor;
 }
-
 
 /* -------------------
     Labeled Button
@@ -616,7 +613,6 @@
            Variations
 *******************************/
 
-
 /* -------------------
        Floated
 -------------------- */
@@ -755,7 +751,6 @@
   vertical-align: top;
 }
 
-
 /* -------------------
         Basic
 -------------------- */
@@ -853,7 +848,6 @@
   background-color: @strongTransparentWhite;
   box-shadow: @basicInvertedHoverBoxShadow;
 }
-
 
 /* Basic Group */
 .ui.basic.buttons .button {
@@ -1037,7 +1031,6 @@
   animation: loader 2s linear infinite;
 }
 
-
 /* --------------
      Toggle
 --------------- */
@@ -1068,7 +1061,6 @@
   width: 1em;
   vertical-align: baseline;
 }
-
 
 /* -------------------
       Or Buttons
@@ -1117,11 +1109,9 @@
   display: none;
 }
 
-
 /* -------------------
        Attached
 -------------------- */
-
 
 /* Singular */
 .ui.attached.button {
@@ -1345,7 +1335,6 @@
 .ui.twelve.vertical.buttons > .button {
   height: 8.3333%;
 }
-
 
 /* -------------------
        Colors
@@ -1603,7 +1592,6 @@ each(@colors, {
   .ui.tertiary.@{color}.buttons .button:focus,
   .ui.tertiary.@{color}.buttons .tertiary.button:focus,
   .ui.tertiary.@{color}.button:focus {
-
 
     .tertiaryButtonColorFocus() when (@isVeryDark) {
       @_tertiaryButtonColorFocus: lighten(@f, 40%);

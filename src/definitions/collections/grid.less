@@ -48,7 +48,6 @@
   margin-right: -(@veryRelaxedGutterWidth / 2);
 }
 
-
 /* Preserve Rows Spacing on Consecutive Grids */
 .ui.grid + .grid {
   margin-top: @consecutiveGridDistance;
@@ -151,7 +150,6 @@
            Variations
 *******************************/
 
-
 /* -----------------------
        Page Grid
 ------------------------- */
@@ -210,7 +208,6 @@
     padding-right: @widescreenMonitorGutter;
   }
 }
-
 
 /* -------------------
      Column Count
@@ -1005,7 +1002,6 @@
   margin-right: (@veryRelaxedGutterWidth / 2);
 }
 
-
 /* ----------------------
         Padded
 ----------------------- */
@@ -1033,7 +1029,6 @@
   margin-left: auto;
 }
 
-
 /* ----------------------
         Divided
 ----------------------- */
@@ -1056,8 +1051,6 @@
   margin-bottom: 0;
 }
 
-
-
 /* No divider on first column on row */
 .ui.divided.grid:not([class*="vertically divided"]) > .column:first-child,
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column:first-child {
@@ -1068,7 +1061,6 @@
 .ui[class*="vertically divided"].grid > .row:first-child > .column {
   margin-top: 0;
 }
-
 
 /* Divided Row */
 .ui.grid > .divided.row > .column {
@@ -1297,7 +1289,6 @@ each(@colors, {
   }
 })
 
-
 /*----------------------
       Equal Width
 -----------------------*/
@@ -1314,11 +1305,9 @@ each(@colors, {
   flex-grow: 0;
 }
 
-
 /* ----------------------
         Reverse
 ----------------------- */
-
 
 /* Mobile */
 @media only screen and (max-width: @largestMobileScreen) {
@@ -1437,7 +1426,6 @@ each(@colors, {
     box-shadow: none;
   }
 }
-
 
 /* -------------------
       Doubling
@@ -1709,7 +1697,6 @@ each(@colors, {
      Only (Device)
 ----------------------- */
 
-
 /* These include arbitrary class repetitions for forced specificity */
 
 /* Mobile Only Hide */
@@ -1910,6 +1897,5 @@ each(@colors, {
 .ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
   padding: @veryCompactCelledVeryRelaxedPadding;
 }
-
 
 .loadUIOverrides();

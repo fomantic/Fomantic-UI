@@ -34,7 +34,6 @@ module.exports = {
     'declaration-colon-space-before': null,
     'declaration-block-no-duplicate-properties': null,
     'declaration-empty-line-before': null,
-    'max-empty-lines': null,
     'no-descending-specificity': null,
     'no-duplicate-selectors': null,
     // TODO: Enable with postcss-less https://github.com/stylelint/stylelint/issues/2748
