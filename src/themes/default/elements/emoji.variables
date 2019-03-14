@@ -5,7 +5,7 @@
 /*--------------
     Path
 ---------------*/
-@emojiPath: "https://cdn.jsdelivr.net/emojione/assets/4.0/png/128/";
+@emojiPath: "https://cdn.jsdelivr.net/emojione/assets/4.5/png/128/";
 
 /*--------------
    Definition
