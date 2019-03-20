@@ -655,6 +655,11 @@ $.fn.calendar = function(parameters) {
             updateInput = updateInput !== false;
             fireChange = fireChange !== false;
             date = module.helper.sanitiseDate(date);
+            
+            if (!date) {
+                console.error('Invalid date value for calendar')
+            }
+            
             date = module.helper.dateInRange(date);
 
             var mode = module.get.mode();
@@ -861,6 +866,9 @@ $.fn.calendar = function(parameters) {
             }
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
+              if (!date || date === null) {
+                  return undefined;
+              }
             }
             if (isNaN(date.getTime())) {
               return undefined;
