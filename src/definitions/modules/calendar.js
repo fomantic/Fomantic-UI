@@ -657,7 +657,7 @@ $.fn.calendar = function(parameters) {
             date = module.helper.sanitiseDate(date);
             
             if (!date) {
-                console.error('Invalid date value for calendar')
+                module.error(error.dateValue);
             }
             
             date = module.helper.dateInRange(date);
@@ -1483,7 +1483,8 @@ $.fn.calendar.settings = {
 
   error: {
     popup: 'UI Popup, a required component is not included in this page',
-    method: 'The method you called is not defined.'
+    method: 'The method you called is not defined.',
+    dateValue: 'Invalid date value for calendar'
   },
 
   className: {
