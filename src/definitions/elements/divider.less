@@ -68,8 +68,8 @@
   line-height: 1;
   text-align: center;
 }
-.ui.horizontal.divider:before,
-.ui.horizontal.divider:after {
+.ui.horizontal.divider::before,
+.ui.horizontal.divider::after {
   content: '';
   display: table-cell;
   position: relative;
@@ -77,10 +77,10 @@
   width: 50%;
   background-repeat: no-repeat;
 }
-.ui.horizontal.divider:before {
+.ui.horizontal.divider::before {
   background-position: right @horizontalDividerMargin top 50%;
 }
-.ui.horizontal.divider:after {
+.ui.horizontal.divider::after {
   background-position: left @horizontalDividerMargin top 50%;
 }
 
@@ -103,8 +103,8 @@
   text-align: center;
   transform: translateX(-50%);
 }
-.ui.vertical.divider:before,
-.ui.vertical.divider:after {
+.ui.vertical.divider::before,
+.ui.vertical.divider::after {
   position: absolute;
   left: 50%;
   content: '';
@@ -116,10 +116,10 @@
   width: 0;
   height: @verticalDividerHeight;
 }
-.ui.vertical.divider:before {
+.ui.vertical.divider::before {
   top: -100%;
 }
-.ui.vertical.divider:after {
+.ui.vertical.divider::after {
   top: auto;
   bottom: 0;
 }
@@ -141,10 +141,10 @@
     left: 0;
     transform: none;
   }
-  .ui.stackable.grid .ui.vertical.divider:before,
-  .ui.grid .stackable.row .ui.vertical.divider:before,
-  .ui.stackable.grid .ui.vertical.divider:after,
-  .ui.grid .stackable.row .ui.vertical.divider:after {
+  .ui.stackable.grid .ui.vertical.divider::before,
+  .ui.grid .stackable.row .ui.vertical.divider::before,
+  .ui.stackable.grid .ui.vertical.divider::after,
+  .ui.grid .stackable.row .ui.vertical.divider::after {
     left: 0;
     border-left: none;
     border-right: none;
@@ -155,12 +155,12 @@
     width: 50%;
     background-repeat: no-repeat;
   }
-  .ui.stackable.grid .ui.vertical.divider:before,
-  .ui.grid .stackable.row .ui.vertical.divider:before {
+  .ui.stackable.grid .ui.vertical.divider::before,
+  .ui.grid .stackable.row .ui.vertical.divider::before {
     background-position: right @horizontalDividerMargin top 50%;
   }
-  .ui.stackable.grid .ui.vertical.divider:after,
-  .ui.grid .stackable.row .ui.vertical.divider:after {
+  .ui.stackable.grid .ui.vertical.divider::after,
+  .ui.grid .stackable.row .ui.vertical.divider::after {
     background-position: left @horizontalDividerMargin top 50%;
   }
 }
@@ -187,8 +187,8 @@
 .ui.hidden.divider {
   border-color: transparent !important;
 }
-.ui.hidden.divider:before,
-.ui.hidden.divider:after {
+.ui.hidden.divider::before,
+.ui.hidden.divider::after {
   display: none;
 }
 
@@ -202,8 +202,8 @@
   color: @invertedTextColor;
 }
 .ui.divider.inverted,
-.ui.divider.inverted:after,
-.ui.divider.inverted:before {
+.ui.divider.inverted::after,
+.ui.divider.inverted::before {
   border-top-color: @invertedShadowColor !important;
   border-left-color: @invertedShadowColor !important;
   border-bottom-color: @invertedHighlightColor !important;

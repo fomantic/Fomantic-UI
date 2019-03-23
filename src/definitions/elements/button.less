@@ -134,7 +134,7 @@
   pointer-events: @loadingPointerEvents;
   transition: @loadingTransition;
 }
-.ui.loading.button:before {
+.ui.loading.button::before {
   position: absolute;
   content: '';
   top: 50%;
@@ -147,7 +147,7 @@
   border-radius: @circularRadius;
   border: @loaderLineWidth solid @invertedLoaderFillColor;
 }
-.ui.loading.button:after {
+.ui.loading.button::after {
   position: absolute;
   content: '';
   top: 50%;
@@ -169,10 +169,10 @@
   background-color: transparent;
   box-shadow: none;
 }
-.ui.basic.loading.button:not(.inverted):before {
+.ui.basic.loading.button:not(.inverted)::before {
   border-color: @loaderFillColor;
 }
-.ui.basic.loading.button:not(.inverted):after {
+.ui.basic.loading.button:not(.inverted)::after {
   border-color: @loaderLineColor;
 }
 
@@ -381,7 +381,7 @@
 }
 
 /* Tag */
-.ui.labeled.button > .tag.label:before {
+.ui.labeled.button > .tag.label::before {
   width: @labeledTagLabelSize;
   height: @labeledTagLabelSize;
 }
@@ -989,10 +989,10 @@
   border-bottom-right-radius: inherit;
   box-shadow: @labeledIconRightShadow;
 }
-.ui.labeled.icon.buttons > .button > .icon:before,
-.ui.labeled.icon.button > .icon:before,
-.ui.labeled.icon.buttons > .button > .icon:after,
-.ui.labeled.icon.button > .icon:after {
+.ui.labeled.icon.buttons > .button > .icon::before,
+.ui.labeled.icon.button > .icon::before,
+.ui.labeled.icon.buttons > .button > .icon::after,
+.ui.labeled.icon.button > .icon::after {
   display: block;
   position: relative;
   width: 100%;
@@ -1027,7 +1027,7 @@
 }
 
 /* Loading Icon in Labeled Button */
-.ui.labeled.icon.button > .loading.icon:before {
+.ui.labeled.icon.button > .loading.icon::before {
   animation: loader 2s linear infinite;
 }
 
@@ -1072,7 +1072,7 @@
   height: @orHeight;
   z-index: @orZIndex;
 }
-.ui.buttons .or:before {
+.ui.buttons .or::before {
   position: absolute;
   text-align: center;
   border-radius: @circularRadius;
@@ -1097,7 +1097,7 @@
 
   box-shadow: @orBoxShadow;
 }
-.ui.buttons .or[data-text]:before {
+.ui.buttons .or[data-text]::before {
   content: attr(data-text);
 }
 
@@ -1105,7 +1105,7 @@
 .ui.fluid.buttons .or {
   width: 0 !important;
 }
-.ui.fluid.buttons .or:after {
+.ui.fluid.buttons .or::after {
   display: none;
 }
 
@@ -1764,7 +1764,7 @@ each(@colors, {
 }
 
 /* Clearfix */
-.ui.buttons:after {
+.ui.buttons::after {
   content: ".";
   display: block;
   height: 0;

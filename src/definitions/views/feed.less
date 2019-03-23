@@ -215,7 +215,7 @@
   position: relative;
   margin-left: @metadataElementSpacing;
 }
-.ui.feed > .event > .content .meta > *:after {
+.ui.feed > .event > .content .meta > *::after {
   content: @metadataDivider;
   color: @metadataDividerColor;
   top: 0;
@@ -239,7 +239,7 @@
 .ui.feed > .event > .content .meta > :first-child {
   margin-left: 0;
 }
-.ui.feed > .event > .content .meta > :first-child:after {
+.ui.feed > .event > .content .meta > :first-child::after {
   display: none;
 }
 

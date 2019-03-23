@@ -92,7 +92,7 @@
   margin: 0 0 @listItemMargin @listItemIndent;
   padding: 0;
 }
-.ui.message .list:not(.ui) li:before {
+.ui.message .list:not(.ui) li::before {
   position: absolute;
   content: '•';
   left: -1em;
@@ -255,43 +255,43 @@
   @positive: {
     background     : @positiveBackgroundColor;
     header         : @positiveHeaderColor;
-    boxShadow      : @positiveBoxShadow;
-    boxFloatShadow : @positiveBoxFloatingShadow;
+    boxshadow      : @positiveBoxShadow;
+    boxfloatshadow : @positiveBoxFloatingShadow;
     text           : @positiveTextColor;
   };
   @negative: {
     background     : @negativeBackgroundColor;
     header         : @negativeHeaderColor;
-    boxShadow      : @negativeBoxShadow;
-    boxFloatShadow : @negativeBoxFloatingShadow;
+    boxshadow      : @negativeBoxShadow;
+    boxfloatshadow : @negativeBoxFloatingShadow;
     text           : @negativeTextColor;
   };
   @info: {
     background     : @infoBackgroundColor;
     header         : @infoHeaderColor;
-    boxShadow      : @infoBoxShadow;
-    boxFloatShadow : @infoBoxFloatingShadow;
+    boxshadow      : @infoBoxShadow;
+    boxfloatshadow : @infoBoxFloatingShadow;
     text           : @infoTextColor;
   };
   @warning: {
     background     : @warningBackgroundColor;
     header         : @warningHeaderColor;
-    boxShadow      : @warningBoxShadow;
-    boxFloatShadow : @warningBoxFloatingShadow;
+    boxshadow      : @warningBoxShadow;
+    boxfloatshadow : @warningBoxFloatingShadow;
     text           : @warningTextColor;
   };
   @error: {
     background     : @errorBackgroundColor;
     header         : @errorHeaderColor;
-    boxShadow      : @errorBoxShadow;
-    boxFloatShadow : @errorBoxFloatingShadow;
+    boxshadow      : @errorBoxShadow;
+    boxfloatshadow : @errorBoxFloatingShadow;
     text           : @errorTextColor;
   };
   @success: {
     background     : @successBackgroundColor;
     header         : @successHeaderColor;
-    boxShadow      : @successBoxShadow;
-    boxFloatShadow : @successBoxFloatingShadow;
+    boxshadow      : @successBoxShadow;
+    boxfloatshadow : @successBoxFloatingShadow;
     text           : @successTextColor;
   };
 }

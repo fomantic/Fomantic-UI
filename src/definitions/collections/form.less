@@ -292,8 +292,8 @@
   vertical-align: top;
   margin: @inlinePromptMargin;
 }
-.ui.form .inline.fields .field .prompt:before,
-.ui.form .inline.field .prompt:before {
+.ui.form .inline.fields .field .prompt::before,
+.ui.form .inline.field .prompt::before {
   border-width: 0 0 @inlinePromptBorderWidth @inlinePromptBorderWidth;
   bottom: auto;
   right: auto;
@@ -577,17 +577,17 @@
 .ui.form .field.error .checkbox:not(.toggle):not(.slider) .box {
   color: @formErrorColor;
 }
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box:before {
+.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .field.error .checkbox:not(.toggle):not(.slider) label::before,
+.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box::before,
+.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box::before {
   background: @formErrorBackground;
   border-color: @formErrorBorder;
 }
-.ui.form .fields.error .field .checkbox label:after,
-.ui.form .field.error .checkbox label:after,
-.ui.form .fields.error .field .checkbox .box:after,
-.ui.form .field.error .checkbox .box:after {
+.ui.form .fields.error .field .checkbox label::after,
+.ui.form .field.error .checkbox label::after,
+.ui.form .fields.error .field .checkbox .box::after,
+.ui.form .field.error .checkbox .box::after {
   color: @formErrorColor;
 }
 
@@ -618,7 +618,7 @@
   cursor: default;
   pointer-events: none;
 }
-.ui.loading.form:before {
+.ui.loading.form::before {
   position: absolute;
   content: '';
   top: 0;
@@ -628,7 +628,7 @@
   height: 100%;
   z-index: @loaderDimmerZIndex;
 }
-.ui.loading.form:after {
+.ui.loading.form::after {
   position: absolute;
   content: '';
   top: 50%;
@@ -655,25 +655,25 @@
      Required Field
 --------------------- */
 
-.ui.form .required.fields:not(.grouped) > .field > label:after,
-.ui.form .required.fields.grouped > label:after,
-.ui.form .required.field > label:after,
-.ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
-.ui.form .required.field > .checkbox:after,
-.ui.form label.required:after {
+.ui.form .required.fields:not(.grouped) > .field > label::after,
+.ui.form .required.fields.grouped > label::after,
+.ui.form .required.field > label::after,
+.ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+.ui.form .required.field > .checkbox::after,
+.ui.form label.required::after {
   margin: @requiredMargin;
   content: @requiredContent;
   color: @requiredColor;
 }
-.ui.form .required.fields:not(.grouped) > .field > label:after,
-.ui.form .required.fields.grouped > label:after,
-.ui.form .required.field > label:after,
-.ui.form label.required:after {
+.ui.form .required.fields:not(.grouped) > .field > label::after,
+.ui.form .required.fields.grouped > label::after,
+.ui.form .required.field > label::after,
+.ui.form label.required::after {
   display: inline-block;
   vertical-align: top;
 }
-.ui.form .required.fields:not(.grouped) > .field > .checkbox:after,
-.ui.form .required.field > .checkbox:after {
+.ui.form .required.fields:not(.grouped) > .field > .checkbox::after,
+.ui.form .required.field > .checkbox::after {
   position: absolute;
   top: 0;
   left: 100%;
@@ -703,7 +703,7 @@
 .ui.inverted.loading.form {
   color: @invertedLoaderLineColor;
 }
-.ui.inverted.loading.form:before {
+.ui.inverted.loading.form::before {
   background: @loaderInvertedDimmerColor;
 }
 

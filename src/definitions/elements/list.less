@@ -58,10 +58,10 @@ ol.ui.list li,
   padding: @itemPadding;
   line-height: @itemLineHeight;
 }
-ul.ui.list > li:first-child:after,
-ol.ui.list > li:first-child:after,
-.ui.list > .list > .item:after,
-.ui.list > .item:after {
+ul.ui.list > li:first-child::after,
+ol.ui.list > li:first-child::after,
+.ui.list > .list > .item::after,
+.ui.list > .item::after {
   content: '';
   display: block;
   height: 0;
@@ -254,8 +254,8 @@ ol.ui.list ol li,
   padding: @itemVerticalPadding @itemHorizontalPadding;
   line-height: @itemLineHeight;
 }
-.ui.menu .ui.list .list > .item:before,
-.ui.menu .ui.list > .item:before {
+.ui.menu .ui.list .list > .item::before,
+.ui.menu .ui.list > .item::before {
   border: none;
   background: none;
 }
@@ -556,9 +556,9 @@ ul.ui.list li,
 .ui.bulleted.list > .item {
   position: relative;
 }
-ul.ui.list li:before,
-.ui.bulleted.list .list > .item:before,
-.ui.bulleted.list > .item:before {
+ul.ui.list li::before,
+.ui.bulleted.list .list > .item::before,
+.ui.bulleted.list > .item::before {
   user-select: none;
   pointer-events: none;
   position: absolute;
@@ -571,9 +571,9 @@ ul.ui.list li:before,
   color: @bulletColor;
   vertical-align: @bulletVerticalAlign;
 }
-ul.ui.list li:before,
-.ui.bulleted.list .list > a.item:before,
-.ui.bulleted.list > a.item:before {
+ul.ui.list li::before,
+.ui.bulleted.list .list > a.item::before,
+.ui.bulleted.list > a.item::before {
   color: @bulletLinkColor;
 }
 ul.ui.list ul,
@@ -594,12 +594,12 @@ ul.ui.horizontal.bulleted.list li:first-child,
 .ui.horizontal.bulleted.list > .item:first-child {
   margin-left: 0;
 }
-ul.ui.horizontal.bulleted.list li:before,
-.ui.horizontal.bulleted.list > .item:before {
+ul.ui.horizontal.bulleted.list li::before,
+.ui.horizontal.bulleted.list > .item::before {
   color: @horizontalBulletColor;
 }
-ul.ui.horizontal.bulleted.list li:first-child:before,
-.ui.horizontal.bulleted.list > .item:first-child:before {
+ul.ui.horizontal.bulleted.list li:first-child::before,
+.ui.horizontal.bulleted.list > .item:first-child::before {
   display: none;
 }
 
@@ -621,9 +621,9 @@ ol.ui.list li,
   list-style-type: none;
   position: relative;
 }
-ol.ui.list li:before,
-.ui.ordered.list .list > .item:before,
-.ui.ordered.list > .item:before {
+ol.ui.list li::before,
+.ui.ordered.list .list > .item::before,
+.ui.ordered.list > .item::before {
   position: absolute;
   top: auto;
   left: auto;
@@ -637,18 +637,18 @@ ol.ui.list li:before,
   vertical-align: @orderedCountVerticalAlign;
   opacity: @orderedCountOpacity;
 }
-ol.ui.inverted.list li:before,
-.ui.ordered.inverted.list .list > .item:before,
-.ui.ordered.inverted.list > .item:before {
+ol.ui.inverted.list li::before,
+.ui.ordered.inverted.list .list > .item::before,
+.ui.ordered.inverted.list > .item::before {
   color: @orderedInvertedCountColor;
 }
 
 /* Value */
-.ui.ordered.list .list > .item[data-value]:before,
-.ui.ordered.list > .item[data-value]:before {
+.ui.ordered.list .list > .item[data-value]::before,
+.ui.ordered.list > .item[data-value]::before {
   content: attr(data-value);
 }
-ol.ui.list li[value]:before {
+ol.ui.list li[value]::before {
   content: attr(value);
 }
 
@@ -657,8 +657,8 @@ ol.ui.list ol,
 .ui.ordered.list .list:not(.icon) {
   margin-left: @orderedChildCountDistance;
 }
-ol.ui.list ol li:before,
-.ui.ordered.list .list > .item:before {
+ol.ui.list ol li::before,
+.ui.ordered.list .list > .item::before {
   margin-left: @orderedChildCountOffset;
 }
 
@@ -667,17 +667,17 @@ ol.ui.horizontal.list,
 .ui.ordered.horizontal.list {
   margin-left: 0;
 }
-ol.ui.horizontal.list li:before,
-.ui.ordered.horizontal.list .list > .item:before,
-.ui.ordered.horizontal.list > .item:before {
+ol.ui.horizontal.list li::before,
+.ui.ordered.horizontal.list .list > .item::before,
+.ui.ordered.horizontal.list > .item::before {
   position: static;
   margin: 0 @horizontalOrderedCountDistance 0 0;
 }
 
 /* Suffixed Ordered */
-ol.ui.suffixed.list li:before,
-.ui.suffixed.ordered.list .list > .item:before,
-.ui.suffixed.ordered.list > .item:before {
+ol.ui.suffixed.list li::before,
+.ui.suffixed.ordered.list .list > .item::before,
+.ui.suffixed.ordered.list > .item::before {
   content: @orderedCountContentSuffixed;
 }
 

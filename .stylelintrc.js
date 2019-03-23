@@ -26,7 +26,6 @@ module.exports = {
       except: ['first-nested'],
       ignore: ['after-comment'],
     }],
-    'selector-pseudo-element-colon-notation': 'single',
 
     // -----------------------------------------------------------------------------------------------------------------
     // Consider enabling (remove each line and follow `standard` rule)

@@ -210,8 +210,8 @@ a.ui.label {
   border-radius: 0 @borderRadius @borderRadius 0;
   transition: @tagTransition;
 }
-.ui.tag.labels .label:before,
-.ui.tag.label:before {
+.ui.tag.labels .label::before,
+.ui.tag.label::before {
   position: absolute;
   transform: translateY(-50%) translateX(50%) rotate(-45deg);
 
@@ -226,8 +226,8 @@ a.ui.label {
   height: @tagTriangleSize;
   transition: @tagTransition;
 }
-.ui.tag.labels .label:after,
-.ui.tag.label:after {
+.ui.tag.labels .label::after,
+.ui.tag.label::after {
   position: absolute;
   content: '';
   top: 50%;
@@ -241,15 +241,15 @@ a.ui.label {
   box-shadow: @tagCircleBoxShadow;
   border-radius: @circularRadius;
 }
-.ui.basic.tag.labels .label:before,
-.ui.basic.tag.label:before {
+.ui.basic.tag.labels .label::before,
+.ui.basic.tag.label::before {
   border-color: inherit;
   border-width: @basicBorderWidth 0 0 @basicBorderWidth;
   border-style: inherit;
   right: e(%("calc(100%% + %d)", @basicBorderWidth));
 }
-.ui.basic.tag.labels .label:after,
-.ui.basic.tag.label:after {
+.ui.basic.tag.labels .label::after,
+.ui.basic.tag.label::after {
   box-shadow: @basicTagCircleBoxShadow;
 }
 
@@ -277,7 +277,7 @@ a.ui.label {
 .ui.corner.label {
   background-color: transparent !important;
 }
-.ui.corner.label:after {
+.ui.corner.label::after {
   position: absolute;
   content: "";
   right: 0;
@@ -308,11 +308,11 @@ a.ui.label {
 
 /* Left Corner */
 .ui.left.corner.label,
-.ui.left.corner.label:after {
+.ui.left.corner.label::after {
   right: auto;
   left: 0;
 }
-.ui.left.corner.label:after {
+.ui.left.corner.label::after {
   border-top: @cornerTriangleSize solid transparent;
   border-right: @cornerTriangleSize solid transparent;
   border-bottom: 0 solid transparent;
@@ -346,7 +346,7 @@ a.ui.label {
   border-radius: 0 @borderRadius @borderRadius 0;
   border-color: @ribbonShadowColor;
 }
-.ui.ribbon.label:after {
+.ui.ribbon.label::after {
   position: absolute;
   content: '';
 
@@ -382,7 +382,7 @@ a.ui.label {
   transform: translateX(-100%);
   border-radius: @borderRadius 0 0 @borderRadius;
 }
-.ui[class*="right ribbon"].label:after {
+.ui[class*="right ribbon"].label::after {
   left: auto;
   right: 0;
 
@@ -488,8 +488,8 @@ a.ui.label:hover {
   background-image: @labelHoverBackgroundImage;
   color: @labelHoverTextColor;
 }
-.ui.labels a.label:hover:before,
-a.ui.label:hover:before {
+.ui.labels a.label:hover::before,
+a.ui.label:hover::before {
   color: @labelHoverTextColor;
 }
 
@@ -504,7 +504,7 @@ a.ui.label:hover:before {
   background-image: @labelActiveBackgroundImage;
   color: @labelActiveTextColor;
 }
-.ui.active.label:before {
+.ui.active.label::before {
   background-color: @labelActiveBackgroundColor;
   background-image: @labelActiveBackgroundImage;
   color: @labelActiveTextColor;
@@ -522,8 +522,8 @@ a.ui.active.label:hover {
   background-image: @labelActiveHoverBackgroundImage;
   color: @labelActiveHoverTextColor;
 }
-.ui.labels a.active.label:hover:before,
-a.ui.active.label:hover:before {
+.ui.labels a.active.label:hover::before,
+a.ui.active.label:hover::before {
   background-color: @labelActiveHoverBackgroundColor;
   background-image: @labelActiveHoverBackgroundImage;
   color: @labelActiveHoverTextColor;
@@ -573,7 +573,7 @@ a.ui.basic.label:hover {
 }
 
 /* Pointing */
-.ui.basic.pointing.label:before {
+.ui.basic.pointing.label::before {
   border-color: inherit;
 }
 
@@ -765,7 +765,7 @@ each(@colors,{
 .ui.attached.pointing.label {
   position: absolute;
 }
-.ui.pointing.label:before {
+.ui.pointing.label::before {
   background-color: inherit;
   background-image: inherit;
   border-width: 0;
@@ -774,7 +774,7 @@ each(@colors,{
 }
 
 /* Arrow */
-.ui.pointing.label:before {
+.ui.pointing.label::before {
   position: absolute;
   content: '';
   transform: rotate(45deg);
@@ -791,8 +791,8 @@ each(@colors,{
 .ui[class*="pointing above"].label {
   margin-top: @pointingVerticalDistance;
 }
-.ui.pointing.label:before,
-.ui[class*="pointing above"].label:before {
+.ui.pointing.label::before,
+.ui[class*="pointing above"].label::before {
   border-width: @borderWidth 0 0 @borderWidth;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
   top: 0;
@@ -805,8 +805,8 @@ each(@colors,{
   margin-top: 0;
   margin-bottom: @pointingVerticalDistance;
 }
-.ui[class*="bottom pointing"].label:before,
-.ui[class*="pointing below"].label:before {
+.ui[class*="bottom pointing"].label::before,
+.ui[class*="pointing below"].label::before {
   border-width: 0 @borderWidth @borderWidth 0;
   top: auto;
   right: auto;
@@ -820,7 +820,7 @@ each(@colors,{
   margin-top: 0;
   margin-left: @pointingHorizontalDistance;
 }
-.ui[class*="left pointing"].label:before {
+.ui[class*="left pointing"].label::before {
   border-width: 0 0 @borderWidth @borderWidth;
   transform: translateX(-50%) translateY(-50%) rotate(45deg);
   bottom: auto;
@@ -834,7 +834,7 @@ each(@colors,{
   margin-top: 0;
   margin-right: @pointingHorizontalDistance;
 }
-.ui[class*="right pointing"].label:before {
+.ui[class*="right pointing"].label::before {
   border-width: @borderWidth @borderWidth 0 0;
   transform: translateX(50%) translateY(-50%) rotate(45deg);
   top: 50%;
@@ -846,27 +846,27 @@ each(@colors,{
 /* Basic Pointing */
 
 /* --- Above --- */
-.ui.basic.pointing.label:before,
-.ui.basic[class*="pointing above"].label:before {
+.ui.basic.pointing.label::before,
+.ui.basic[class*="pointing above"].label::before {
   margin-top: @basicPointingTriangleOffset;
 }
 
 /* --- Below --- */
-.ui.basic[class*="bottom pointing"].label:before,
-.ui.basic[class*="pointing below"].label:before {
+.ui.basic[class*="bottom pointing"].label::before,
+.ui.basic[class*="pointing below"].label::before {
   bottom: auto;
   top: 100%;
   margin-top: -@basicPointingTriangleOffset;
 }
 
 /* --- Left --- */
-.ui.basic[class*="left pointing"].label:before {
+.ui.basic[class*="left pointing"].label::before {
   top: 50%;
   left: @basicPointingTriangleOffset;
 }
 
 /* --- Right --- */
-.ui.basic[class*="right pointing"].label:before {
+.ui.basic[class*="right pointing"].label::before {
   top: 50%;
   right: @basicPointingTriangleOffset;
 }

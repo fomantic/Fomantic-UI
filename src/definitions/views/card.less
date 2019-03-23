@@ -73,8 +73,8 @@
 }
 
 /* Clearing */
-.ui.cards:after,
-.ui.card:after {
+.ui.cards::after,
+.ui.card::after {
   display: block;
   content: ' ';
   height: 0;
@@ -146,8 +146,8 @@
   font-size: @contentFontSize;
   border-radius: @contentBorderRadius;
 }
-.ui.cards > .card > .content:after,
-.ui.card > .content:after {
+.ui.cards > .card > .content::after,
+.ui.card > .content::after {
   display: block;
   content: ' ';
   height: 0;

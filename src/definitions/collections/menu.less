@@ -37,7 +37,7 @@
   border-radius: @borderRadius;
   min-height: @minHeight;
 }
-.ui.menu:after {
+.ui.menu::after {
   content: '';
   display: block;
   height: 0;
@@ -91,7 +91,7 @@
 }
 
 /* Border */
-.ui.menu .item:before {
+.ui.menu .item::before {
   position: absolute;
   content: '';
   top: 0;
@@ -348,7 +348,7 @@
 --------------- */
 
 /* Menu divider shouldnt apply */
-.ui.menu .list .item:before {
+.ui.menu .list .item::before {
   background: none !important;
 }
 
@@ -358,10 +358,10 @@
 
 /* Show vertical dividers below last */
 
-.ui.vertical.sidebar.menu > .item:first-child:before {
+.ui.vertical.sidebar.menu > .item:first-child::before {
   display: block !important;
 }
-.ui.vertical.sidebar.menu > .item:before {
+.ui.vertical.sidebar.menu > .item::before {
   top: auto;
   bottom: 0;
 }
@@ -484,15 +484,15 @@ Floated Menu / Item
 }
 
 /* Swapped Borders */
-.ui.menu .right.item:before,
-.ui.menu .right.menu > .item:before {
+.ui.menu .right.item::before,
+.ui.menu .right.menu > .item::before {
   right: auto;
   left: 0;
 }
 
 /* Remove Outer Borders */
-.ui.menu .center.item:last-child:before,
-.ui.menu .center.menu > .item:last-child:before {
+.ui.menu .center.item:last-child::before,
+.ui.menu .center.menu > .item:last-child::before {
   display: none;
 }
 
@@ -540,7 +540,7 @@ Floated Menu / Item
 }
 
 /* --- Border --- */
-.ui.vertical.menu .item:before {
+.ui.vertical.menu .item::before {
   position: absolute;
   content: '';
   top: 0;
@@ -549,7 +549,7 @@ Floated Menu / Item
   height: @dividerSize;
   background: @verticalDividerBackground;
 }
-.ui.vertical.menu .item:first-child:before {
+.ui.vertical.menu .item:first-child::before {
   display: none !important;
 }
 
@@ -567,7 +567,7 @@ Floated Menu / Item
 .ui.vertical.menu .item .menu .link.item:hover {
   color: @darkTextColor;
 }
-.ui.vertical.menu .menu .item:before {
+.ui.vertical.menu .menu .item::before {
   display: none;
 }
 
@@ -619,7 +619,7 @@ Floated Menu / Item
   padding: @tabularVerticalPadding @tabularHorizontalPadding;
   color: @tabularTextColor;
 }
-.ui.tabular.menu .item:before {
+.ui.tabular.menu .item::before {
   display: none;
 }
 
@@ -750,7 +750,7 @@ Floated Menu / Item
 .ui.compact.menu .item:last-child {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
-.ui.pagination.menu .item:last-child:before {
+.ui.pagination.menu .item:last-child::before {
   display: none;
 }
 .ui.pagination.menu .item {
@@ -796,7 +796,7 @@ Floated Menu / Item
 }
 
 /* No Divider */
-.ui.secondary.menu .item:before {
+.ui.secondary.menu .item::before {
   display: none !important;
 }
 
@@ -934,7 +934,7 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .text.item {
   box-shadow: none !important;
 }
-.ui.secondary.pointing.menu .item:after {
+.ui.secondary.pointing.menu .item::after {
   display: none;
 }
 
@@ -1042,8 +1042,8 @@ Floated Menu / Item
 }
 
 /* Border */
-.ui.text.menu .item:before,
-.ui.text.menu .menu .item:before {
+.ui.text.menu .item::before,
+.ui.text.menu .menu .item::before {
   display: none !important;
 }
 
@@ -1120,7 +1120,7 @@ Floated Menu / Item
 }
 
 /* Disable Bariations */
-.ui.text.pointing.menu .active.item:after {
+.ui.text.pointing.menu .active.item::after {
   box-shadow: none;
 }
 .ui.text.attached.menu {
@@ -1165,7 +1165,7 @@ Floated Menu / Item
 }
 
 /* Icon Gylph */
-.ui.icon.menu .icon:before {
+.ui.icon.menu .icon::before {
   opacity: 1;
 }
 
@@ -1232,7 +1232,7 @@ Floated Menu / Item
   .ui.stackable.menu .item {
     width: 100% !important;
   }
-  .ui.stackable.menu .item:before {
+  .ui.stackable.menu .item::before {
     position: absolute;
     content: '';
     top: auto;
@@ -1300,10 +1300,10 @@ each(@colors, {
 }
 
 /* --- Border --- */
-.ui.inverted.menu .item:before {
+.ui.inverted.menu .item::before {
   background: @invertedDividerBackground;
 }
-.ui.vertical.inverted.menu .item:before {
+.ui.vertical.inverted.menu .item::before {
   background: @invertedVerticalDividerBackground;
 }
 
@@ -1355,7 +1355,7 @@ each(@colors, {
   background: @invertedSubMenuActiveBackground;
   color: @invertedSubMenuActiveColor;
 }
-.ui.inverted.pointing.menu .active.item:after {
+.ui.inverted.pointing.menu .active.item::after {
   background: @invertedArrowActiveColor;
   margin: 0 !important;
   box-shadow: none !important;
@@ -1367,7 +1367,7 @@ each(@colors, {
   background: @invertedActiveHoverBackground;
   color: @invertedActiveHoverColor !important;
 }
-.ui.inverted.pointing.menu .active.item:hover:after {
+.ui.inverted.pointing.menu .active.item:hover::after {
   background: @invertedArrowActiveHoverColor;
 }
 
@@ -1379,7 +1379,7 @@ each(@colors, {
   float: left;
   margin: 0 @floatedDistance 0 0;
 }
-.ui.floated.menu .item:last-child:before {
+.ui.floated.menu .item:last-child::before {
   display: none;
 }
 .ui.right.floated.menu {
@@ -1435,9 +1435,9 @@ each(@colors, {
    Borderless
 --------------- */
 
-.ui.borderless.menu .item:before,
-.ui.borderless.menu .item .menu .item:before,
-.ui.menu .borderless.item:before {
+.ui.borderless.menu .item::before,
+.ui.borderless.menu .item .menu .item::before,
+.ui.menu .borderless.item::before {
   background: none !important;
 }
 
@@ -1458,13 +1458,13 @@ each(@colors, {
 .ui.compact.menu:not(.secondary) .item:last-child {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
-.ui.compact.menu .item:last-child:before {
+.ui.compact.menu .item:last-child::before {
   display: none;
 }
 .ui.compact.vertical.menu {
   width: auto !important;
 }
-.ui.compact.vertical.menu .item:last-child:before {
+.ui.compact.vertical.menu .item:last-child::before {
   display: block;
 }
 
@@ -1494,7 +1494,7 @@ each(@colors, {
 .ui.attached.item.menu {
   margin: 0 @attachedHorizontalOffset !important;
 }
-.ui.item.menu .item:last-child:before {
+.ui.item.menu .item:last-child::before {
   display: none;
 }
 .ui.menu.two.item .item {
@@ -1599,7 +1599,7 @@ each(@colors, {
        Pointing
 -------------------- */
 
-.ui.pointing.menu .item:after {
+.ui.pointing.menu .item::after {
   visibility: hidden;
   position: absolute;
   content: '';
@@ -1619,7 +1619,7 @@ each(@colors, {
   z-index: @arrowZIndex;
   transition: @arrowTransition;
 }
-.ui.vertical.pointing.menu .item:after {
+.ui.vertical.pointing.menu .item::after {
   position: absolute;
   top: 50%;
   right: 0;
@@ -1633,56 +1633,56 @@ each(@colors, {
   border-top: @arrowBorder;
   border-right: @arrowBorder;
 }
-.ui.pointing.menu .ui.dropdown .menu .item:after,
-.ui.vertical.pointing.menu .ui.dropdown .menu .item:after {
+.ui.pointing.menu .ui.dropdown .menu .item::after,
+.ui.vertical.pointing.menu .ui.dropdown .menu .item::after {
   display: none;
 }
 
 /* Active */
-.ui.pointing.menu .active.item:after {
+.ui.pointing.menu .active.item::after {
   visibility: visible;
 }
-.ui.pointing.menu .active.dropdown.item:after {
+.ui.pointing.menu .active.dropdown.item::after {
   visibility: hidden;
 }
 
 /* Don't double up pointers */
-.ui.pointing.menu .dropdown.active.item:after,
-.ui.pointing.menu .active.item .menu .active.item:after {
+.ui.pointing.menu .dropdown.active.item::after,
+.ui.pointing.menu .active.item .menu .active.item::after {
   display: none;
 }
 
 /* Colors */
-.ui.pointing.menu .active.item:hover:after {
+.ui.pointing.menu .active.item:hover::after {
   background-color: @arrowHoverColor;
 }
-.ui.pointing.menu .active.item:after {
+.ui.pointing.menu .active.item::after {
   background-color: @arrowActiveColor;
 }
-.ui.pointing.menu .active.item:hover:after {
+.ui.pointing.menu .active.item:hover::after {
   background-color: @arrowActiveHoverColor;
 }
-.ui.vertical.pointing.menu .active.item:hover:after {
+.ui.vertical.pointing.menu .active.item:hover::after {
   background-color: @arrowVerticalHoverColor;
 }
-.ui.vertical.pointing.menu .active.item:after {
+.ui.vertical.pointing.menu .active.item::after {
   background-color: @arrowVerticalActiveColor;
 }
-.ui.vertical.pointing.menu .menu .active.item:after {
+.ui.vertical.pointing.menu .menu .active.item::after {
   background-color: @arrowVerticalSubMenuColor;
 }
 each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
 
-  .ui.inverted.pointing.menu .@{color}.active.item:after {
+  .ui.inverted.pointing.menu .@{color}.active.item::after {
     background-color: @c;
   }
 })
 
-/*--------------
+/* --------------
     Attached
----------------*/
+--------------- */
 
 /* Middle */
 .ui.attached.menu {

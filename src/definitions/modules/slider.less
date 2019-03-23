@@ -160,7 +160,7 @@
   position: absolute;
   transform: translate(-50%, -100%);
 }
-.ui.labeled.ticked.slider > .labels .label:after {
+.ui.labeled.ticked.slider > .labels .label::after {
   content: ' ';
   height: @labelHeight;
   width: @labelWidth;
@@ -183,7 +183,7 @@
 .ui.labeled.vertical.slider > .labels .label {
   transform: translate(-100%, -50%);
 }
-.ui.labeled.vertical.slider > .labels .label:after {
+.ui.labeled.vertical.slider > .labels .label::after {
   width: @labelHeight;
   height: @labelWidth;
   left: 100%;
@@ -302,7 +302,7 @@ each(@colors, {
   top: @trackPositionTopSmall;
 }
 .ui.small.labeled.slider:not(.vertical) > .labels,
-.ui.small.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.small.labeled.slider:not(.vertical) > .labels .label::after {
   height: @smallLabelHeight;
 }
 
@@ -316,7 +316,7 @@ each(@colors, {
   left: @trackPositionTopSmall;
 }
 .ui.small.labeled.vertical.slider > .labels,
-.ui.small.labeled.vertical.slider > .labels .label:after {
+.ui.small.labeled.vertical.slider > .labels .label::after {
   width: @smallLabelHeight;
 }
 
@@ -334,7 +334,7 @@ each(@colors, {
   top: @trackPositionTopLarge;
 }
 .ui.large.labeled.slider:not(.vertical) > .labels,
-.ui.large.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.large.labeled.slider:not(.vertical) > .labels .label::after {
   height: @largeLabelHeight;
 }
 
@@ -348,7 +348,7 @@ each(@colors, {
   left: @trackPositionTopLarge;
 }
 .ui.large.labeled.vertical.slider > .labels,
-.ui.large.labeled.vertical.slider > .labels .label:after {
+.ui.large.labeled.vertical.slider > .labels .label::after {
   width: @largeLabelHeight;
 }
 
@@ -366,7 +366,7 @@ each(@colors, {
   top: @trackPositionTopBig;
 }
 .ui.big.labeled.slider:not(.vertical) > .labels,
-.ui.big.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.big.labeled.slider:not(.vertical) > .labels .label::after {
   height: @bigLabelHeight;
 }
 
@@ -380,7 +380,7 @@ each(@colors, {
   left: @trackPositionTopBig;
 }
 .ui.big.labeled.vertical.slider > .labels,
-.ui.big.labeled.vertical.slider > .labels .label:after {
+.ui.big.labeled.vertical.slider > .labels .label::after {
   width: @bigLabelHeight;
 }
 
