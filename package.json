@@ -16,8 +16,8 @@
   },
   "scripts": {
     "install": "gulp install",
-    "stylelint": "stylelint src/definitions/**/*.less --cache",
-    "stylelint-fix": "stylelint src/definitions/**/*.less --cache --fix"
+    "stylelint": "stylelint src/definitions/**/*.less",
+    "stylelint-fix": "stylelint src/definitions/**/*.less --fix"
   },
   "dependencies": {
     "jquery": "^3.2.1"
