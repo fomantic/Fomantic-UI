@@ -24,7 +24,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
 ;
 
 function toArray(element) {
-  return $.isArray(element)
+  return Array.isArray(element)
     ? element
     : typeof element == 'string'
       ? element.split(',')
