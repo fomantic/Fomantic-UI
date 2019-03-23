@@ -221,6 +221,11 @@
   color: @successHeaderColor;
 }
 
+/* Multiple */
+.ui.multiple.progress {
+  display: flex;
+}
+
 /*******************************
              States
 *******************************/
@@ -412,6 +417,12 @@ each(@colors, {
     background-color: @c;
   }
   .ui.@{color}.inverted.progress .bar {
+    background-color: @l;
+  }
+  .ui.progress .@{color}.bar {
+    background-color: @c;
+  }
+  .ui.inverted.progress .@{color}.bar {
     background-color: @l;
   }
 })
