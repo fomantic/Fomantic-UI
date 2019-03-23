@@ -71,7 +71,7 @@ $.fn.progress = function(parameters) {
 
         $module         = $(this),
         $bars           = $(this).find(selector.bar),
-        $progresss      = $(this).find(selector.progress),
+        $progresses     = $(this).find(selector.progress),
         $label          = $(this).find(selector.label),
 
         element         = this,
@@ -582,7 +582,7 @@ $.fn.progress = function(parameters) {
             }
           },
           barLabel: function(text) {
-            $progresss.map(function(index, element){
+            $progresses.map(function(index, element){
               var $progress = $(element);
               if (text !== undefined) {
                 $progress.text( module.get.text(text, index) );
