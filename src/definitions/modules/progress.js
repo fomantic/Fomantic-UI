@@ -443,27 +443,21 @@ $.fn.progress = function(parameters) {
                     firstNonZeroIndex = index;
                   }
                   lastNonZeroIndex = index;
-                  $bar.css('display', 'block');
-                  $bar.css('width', value + '%');
+                  $bar.css({
+                    display: 'block',
+                    width: value + '%'
+                  });
                 }
                 return parseInt(value, 10);
               });
               values.forEach(function(_, index) {
                 var $bar = $($bars[index]);
-                if (index == firstNonZeroIndex) {
-                  $bar.css('border-top-left-radius', '');
-                  $bar.css('border-bottom-left-radius', '');
-                } else {
-                  $bar.css('border-top-left-radius', 0);
-                  $bar.css('border-bottom-left-radius', 0);
-                }
-                if (index == lastNonZeroIndex) {
-                  $bar.css('border-top-right-radius', '');
-                  $bar.css('border-bottom-right-radius', '');
-                } else {
-                  $bar.css('border-top-right-radius', 0);
-                  $bar.css('border-bottom-right-radius', 0);
-                }
+                $bar.css({
+                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
+                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                });
               });
               $module
                 .attr('data-percent', percents)
