@@ -250,7 +250,7 @@ $.fn.progress = function(parameters) {
               .replace('{total}', total)
               .replace('{left}', left)
               .replace('{percent}', percent)
-              .replace('{bar}', settings.text.bars[index] || '')
+              .replace('{bar}', settings.text.bars[index_] || '')
             ;
             module.verbose('Adding variables to progress bar text', templateText);
             return templateText;
