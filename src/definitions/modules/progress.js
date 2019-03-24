@@ -23,20 +23,6 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-function toArray(element) {
-  return Array.isArray(element)
-    ? element
-    : typeof element == 'string'
-      ? element.split(',')
-      : [element]
-  ;
-}
-function sum(nums) {
-  return nums.reduce(function(left,right){
-    return left + right;
-  }, 0);
-}
-
 $.fn.progress = function(parameters) {
   var
     $allModules    = $(this),
@@ -82,6 +68,23 @@ $.fn.progress = function(parameters) {
         module
       ;
       module = {
+        helper: {
+          sum: function (nums) {
+            return nums.reduce(function (left, right) {
+              return left + right;
+            }, 0);
+          },
+          forceArray: function (element) {
+            return Array.isArray(element)
+              ? element
+              : !isNaN(element)
+                ? [element]
+                : typeof element == 'string'
+                  ? element.split(',')
+                  : []
+              ;
+          }
+        },
 
         initialize: function() {
           module.set.duration();
@@ -123,31 +126,23 @@ $.fn.progress = function(parameters) {
 
         read: {
           metadata: function() {
-            function parse(value) {
-              return !isNaN(value)
-                ? [value]
-                : typeof value == 'string'
-                  ? value.split(',')
-                  : null
-              ;
-            }
             var
               data = {
-                percent : parse($module.data(metadata.percent)),
+                percent : module.helper.forceArray($module.data(metadata.percent)),
                 total   : $module.data(metadata.total),
-                value   : parse($module.data(metadata.value))
+                value   : module.helper.forceArray($module.data(metadata.value))
               }
             ;
             if(data.total) {
               module.debug('Total value set from metadata', data.total);
               module.set.total(data.total);
             }
-            if(data.value != null) {
+            if(data.value.length > 0) {
               module.debug('Current value set from metadata', data.value);
               module.set.value(data.value);
               module.set.progress(data.value);
             }
-            if(data.percent != null) {
+            if(data.percent.length > 0) {
               module.debug('Current percent value set from metadata', data.percent);
               module.set.percent(data.percent);
             }
@@ -421,10 +416,8 @@ $.fn.progress = function(parameters) {
         set: {
           barWidth: function(values) {
             module.debug("set bar width with ", values);
-            values = toArray(values);
-            var total = values.reduce(function(a,b) {
-              return a + b;
-            }, 0);
+            values = module.helper.forceArray(values);
+            var total = module.helper.sum(values);
             if(total > 100) {
               module.error(error.tooHigh, total);
             }
@@ -478,7 +471,7 @@ $.fn.progress = function(parameters) {
             ;
           },
           percent: function(percents) {
-            percents = toArray(percents).map(function(percent) {
+            percents = module.helper.forceArray(percents).map(function(percent) {
               return (typeof percent == 'string')
                 ? +(percent.replace('%', ''))
                 : percent
@@ -553,7 +546,7 @@ $.fn.progress = function(parameters) {
           state: function(percent) {
             percent = (percent !== undefined)
               ? percent
-              : sum(module.percent)
+              : module.helper.sum(module.percent)
             ;
             if(percent === 100) {
               if(settings.autoSuccess && !(module.is.warning() || module.is.error() || module.is.success())) {
@@ -667,7 +660,7 @@ $.fn.progress = function(parameters) {
             module.total = totalValue;
           },
           value: function(value) {
-            module.value = toArray(value);
+            module.value = module.helper.forceArray(value);
           },
           progress: function(value) {
             if(!module.has.progressPoll()) {
@@ -701,7 +694,7 @@ $.fn.progress = function(parameters) {
             if (hasTotal) {
               module.set.value(values);
             }
-            var percentCompletes = toArray(values).map(function(value) {
+            var percentCompletes = module.helper.forceArray(values).map(function(value) {
               var
                 percentComplete
               ;
