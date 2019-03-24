@@ -188,20 +188,16 @@ $.fn.progress = function(parameters) {
             newValue
           ;
           if( module.has.total() ) {
-            module.debug("has total");
             startValue     = module.get.value();
             incrementValue = incrementValue || 1;
-            newValue       = startValue + incrementValue;
           }
           else {
-            module.debug("do not have total");
             startValue     = module.get.percent();
             incrementValue = incrementValue || module.get.randomValue();
-            newValue       = startValue + incrementValue;
           }
-          module.debug('Incrementing percentage by start:', startValue, 'new:',newValue, 'step:', incrementValue);
+          newValue = startValue + incrementValue;
+          module.debug('Incrementing percentage by', startValue, newValue, incrementValue);
           newValue = module.get.normalizedValue(newValue);
-          module.debug('normalized:', newValue);
           module.set.progress(newValue);
         },
         decrement: function(decrementValue) {
