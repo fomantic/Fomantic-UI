@@ -414,15 +414,11 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  .ui.@{color}.progress .bar {
-    background-color: @c;
-  }
-  .ui.@{color}.inverted.progress .bar {
-    background-color: @l;
-  }
+  .ui.@{color}.progress .bar,
   .ui.progress .@{color}.bar {
     background-color: @c;
   }
+  .ui.@{color}.inverted.progress .bar,
   .ui.inverted.progress .@{color}.bar {
     background-color: @l;
   }
