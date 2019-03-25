@@ -439,20 +439,44 @@ select.ui.dropdown {
   .ui.selection.dropdown .menu {
     max-height: @selectionMobileMaxMenuHeight;
   }
+  .ui.selection.dropdown.higher .menu {
+    max-height: @selectionMobileMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown.highest .menu {
+    max-height: @selectionMobileMaxMenuHeight * 3;
+  }
 }
 @media only screen and (min-width: @tabletBreakpoint) {
   .ui.selection.dropdown .menu {
     max-height: @selectionTabletMaxMenuHeight;
+  }
+  .ui.selection.dropdown.higher .menu {
+    max-height: @selectionTabletMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown.highest .menu {
+    max-height: @selectionTabletMaxMenuHeight * 3;
   }
 }
 @media only screen and (min-width: @computerBreakpoint) {
   .ui.selection.dropdown .menu {
     max-height: @selectionComputerMaxMenuHeight;
   }
+  .ui.selection.dropdown.higher .menu {
+    max-height: @selectionComputerMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown.highest .menu {
+    max-height: @selectionComputerMaxMenuHeight * 3;
+  }
 }
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
   .ui.selection.dropdown .menu {
     max-height: @selectionWidescreenMaxMenuHeight;
+  }
+  .ui.selection.dropdown.higher .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown.highest .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 3;
   }
 }
 
