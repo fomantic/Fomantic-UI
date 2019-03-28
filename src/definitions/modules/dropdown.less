@@ -422,30 +422,74 @@ select.ui.dropdown {
 }
 
 @media only screen and (max-width: @largestMobileScreen) {
-
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: @selectionMobileMaxMenuHeight * 0.5;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: @selectionMobileMaxMenuHeight * 0.75;
+  }
   .ui.selection.dropdown .menu {
     max-height: @selectionMobileMaxMenuHeight;
+  }
+  .ui.selection.dropdown.long .menu {
+    max-height: @selectionMobileMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: @selectionMobileMaxMenuHeight * 3;
   }
 }
 
 @media only screen and (min-width: @tabletBreakpoint) {
-
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: @selectionTabletMaxMenuHeight * 0.5;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: @selectionTabletMaxMenuHeight * 0.75;
+  }
   .ui.selection.dropdown .menu {
     max-height: @selectionTabletMaxMenuHeight;
+  }
+  .ui.selection.dropdown.long .menu {
+    max-height: @selectionTabletMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: @selectionTabletMaxMenuHeight * 3;
   }
 }
 
 @media only screen and (min-width: @computerBreakpoint) {
-
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: @selectionComputerMaxMenuHeight * 0.5;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: @selectionComputerMaxMenuHeight * 0.75;
+  }
   .ui.selection.dropdown .menu {
     max-height: @selectionComputerMaxMenuHeight;
+  }
+  .ui.selection.dropdown.long .menu {
+    max-height: @selectionComputerMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: @selectionComputerMaxMenuHeight * 3;
   }
 }
 
 @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 0.5;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 0.75;
+  }
   .ui.selection.dropdown .menu {
     max-height: @selectionWidescreenMaxMenuHeight;
+  }
+  .ui.selection.dropdown.long .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 2;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: @selectionWidescreenMaxMenuHeight * 3;
   }
 }
 
@@ -1135,6 +1179,27 @@ select.ui.dropdown {
     max-height: @scrollingWidescreenMaxMenuHeight;
   }
 }
+
+/* --------------
+     Columnar
+--------------- */
+.ui.dropdown[class*="two column"] > .menu > .item {
+  display: inline-block;
+  width: 50%;
+}
+.ui.dropdown[class*="three column"] > .menu > .item {
+  display: inline-block;
+  width: 33%;
+}
+.ui.dropdown[class*="four column"] > .menu > .item {
+  display: inline-block;
+  width: 25%;
+}
+.ui.dropdown[class*="five column"] > .menu > .item {
+  display: inline-block;
+  width: 20%;
+}
+
 
 /* --------------
      Simple

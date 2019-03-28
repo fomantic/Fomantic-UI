@@ -855,7 +855,7 @@ each(@colors, {
   color: @invertedCellColor;
   border: @invertedBorder;
 }
-.ui.inverted.table th {
+.ui.ui.inverted.table th {
   background-color: @invertedHeaderBackground;
   border-color: @invertedHeaderBorderColor;
   color: @invertedHeaderColor;
@@ -870,7 +870,12 @@ each(@colors, {
   pointer-events: none;
   color: @invertedDisabledTextColor;
 }
-
+.ui.inverted.table tr td.disabled:not([class="disabled"]),
+.ui.inverted.table tr.disabled:not([class="disabled"]) td,
+.ui.inverted.table tr.disabled td[class]:not(.disabled),
+.ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
+  color: @disabledTextColor;
+}
 /* Definition */
 .ui.inverted.definition.table tfoot:not(.full-width) th:first-child,
 .ui.inverted.definition.table thead:not(.full-width) th:first-child {
@@ -943,6 +948,9 @@ each(@colors, {
 .ui.celled.table tr th,
 .ui.celled.table tr td {
   border-left: @cellBorder;
+}
+.ui.inverted.celled.table tr td {
+  border-left: @invertedCellBorder;
 }
 .ui.celled.table tr th:first-child,
 .ui.celled.table tr td:first-child {

@@ -266,7 +266,10 @@
 
   /* Arrow */
   .ui.steps:not(.unstackable) .step::after {
-    display: none !important;
+    top: unset;
+    bottom: -@arrowSize;
+    right: 50%;
+    transform: translateY(-50%) translateX(50%) rotate(45deg);
   }
 
   /* Content */
@@ -378,24 +381,30 @@
     flex-direction: column;
   }
 
-  /* Steps */
-  .ui[class*="tablet stackable"].steps .step {
-    flex-direction: column;
-    border-radius: @borderRadius;
-    padding: @verticalPadding @horizontalPadding;
-  }
-  .ui[class*="tablet stackable"].steps .step:first-child {
-    padding: @verticalPadding @horizontalPadding;
-    border-radius: @stepsBorderRadius @stepsBorderRadius 0 0;
-  }
-  .ui[class*="tablet stackable"].steps .step:last-child {
-    border-radius: 0 0 @stepsBorderRadius @stepsBorderRadius;
-  }
+/* Steps */
+.ui[class*="tablet stackable"].steps .step {
+  flex-direction: column;
+  border-radius: @borderRadius;
+  padding: @verticalPadding @horizontalPadding;
+  border-right: none;
+  border-bottom: @stepsBorder;
+}
+.ui[class*="tablet stackable"].steps .step:first-child {
+  padding: @verticalPadding @horizontalPadding;
+  border-radius: @stepsBorderRadius @stepsBorderRadius 0 0;
+}
+.ui[class*="tablet stackable"].steps .step:last-child {
+  border-radius: 0 0 @stepsBorderRadius @stepsBorderRadius;
+  border-bottom: none;
+}
 
-  /* Arrow */
-  .ui[class*="tablet stackable"].steps .step::after {
-    display: none !important;
-  }
+/* Arrow */
+.ui[class*="tablet stackable"].steps .step::after {
+  top: unset;
+  bottom: -@arrowSize;
+  right: 50%;
+  transform: translateY(-50%) translateX(50%) rotate(45deg);
+}
 
   /* Content */
   .ui[class*="tablet stackable"].steps .step .content {
