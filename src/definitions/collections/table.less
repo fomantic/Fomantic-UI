@@ -847,7 +847,7 @@ each(@colors, {
   user-select: none;
 }
 
-.ui.sortable.table > thead > th:after {
+.ui.sortable.table > thead > tr > th:after {
   display: none;
   font-style: normal;
   font-weight: @normal;
@@ -871,7 +871,7 @@ each(@colors, {
   cursor: auto;
   color: @sortableDisabledColor;
 }
-.ui.sortable.table > thead >tr > th:hover {
+.ui.sortable.table > thead > tr > th:hover {
   background: @sortableHoverBackground;
   color: @sortableHoverColor;
 }
@@ -943,11 +943,12 @@ each(@colors, {
   color: @disabledTextColor;
 }
 /* Definition */
-.ui.inverted.definition.table tfoot:not(.full-width) th:first-child,
-.ui.inverted.definition.table thead:not(.full-width) th:first-child {
+.ui.inverted.definition.table > tfoot:not(.full-width) > tr > th:first-child,
+.ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
   background: @definitionPageBackground;
 }
-.ui.inverted.definition.table tr td:first-child {
+.ui.inverted.definition.table > tbody > tr > td:first-child,
+.ui.inverted.definition.table > tr > td:first-child {
   background: @invertedDefinitionColumnBackground;
   color: @invertedDefinitionColumnColor;
 }
