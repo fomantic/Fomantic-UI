@@ -63,7 +63,7 @@
 .ui.table > thead {
   box-shadow: @headerBoxShadow;
 }
-.ui.table > thead > th {
+.ui.table > thead > tr > th {
   cursor: auto;
   background: @headerBackground;
   text-align: @headerAlign;
@@ -95,7 +95,7 @@
 .ui.table > tfoot {
   box-shadow: @footerBoxShadow;
 }
-.ui.table > tfoot > th {
+.ui.table > tfoot > tr > th {
   cursor: auto;
   border-top: @footerBorder;
   background: @footerBackground;
@@ -208,17 +208,16 @@
     box-shadow: @responsiveCellBoxShadow;
   }
   .ui.table:not(.unstackable) > tr > th:first-child,
-  .ui.table:not(.unstackable) > thead > th:first-child,
-  .ui.table:not(.unstackable) > tbody > th:first-child,
-  .ui.table:not(.unstackable) > tfoot > th:first-child,
-  .ui.table:not(.unstackable) > td:first-child,
+  .ui.table:not(.unstackable) > thead > tr > th:first-child,
+  .ui.table:not(.unstackable) > tbody > tr > th:first-child,
+  .ui.table:not(.unstackable) > tfoot > tr > th:first-child,
   .ui.table:not(.unstackable) > tr > td:first-child,
   .ui.table:not(.unstackable) > tbody > tr > td:first-child {
     font-weight: @responsiveCellHeaderFontWeight;
   }
 
   /* Definition Table */
-  .ui.definition.table:not(.unstackable) > thead > th:first-child {
+  .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
     box-shadow: none !important;
   }
 }
