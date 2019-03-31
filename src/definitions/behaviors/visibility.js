@@ -1,6 +1,6 @@
 /*!
- * # Fomantic UI - Visibility
- * http://github.com/fomantic/fomantic-ui/
+ * # Fomantic-UI - Visibility
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

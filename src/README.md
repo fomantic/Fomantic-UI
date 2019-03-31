@@ -31,7 +31,7 @@ Each gulp task can be imported into your own Gulpfile using `require`
 ```javascript
 const watch = require('path/to/semantic/tasks/watch');
 
-gulp.task('watch ui', 'Watch Fomantic UI', watch));
+gulp.task('watch ui', 'Watch Fomantic-UI', watch));
 ```
 
 #### Importing LESS
@@ -79,7 +79,7 @@ Files in the  `examples/` folder of your project can be useful for testing out c
 #### Inheritance
 
 There are three levels of inheritance in Fomantic
-* Default theme - Fomantic UI's neutral default theme
+* Default theme - Fomantic-UI's neutral default theme
 * Packaged theme - A specified packaged theme, like "amazon", or "material"
 * Site theme - A theme specific to your site
 

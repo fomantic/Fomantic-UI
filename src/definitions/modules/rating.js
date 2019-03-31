@@ -1,6 +1,6 @@
 /*!
- * # Fomantic UI - Rating
- * http://github.com/fomantic/fomantic-ui/
+ * # Fomantic-UI - Rating
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

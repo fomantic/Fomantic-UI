@@ -1,6 +1,6 @@
 /*!
- * # Fomantic UI - State
- * http://github.com/fomantic/fomantic-ui/
+ * # Fomantic-UI - State
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

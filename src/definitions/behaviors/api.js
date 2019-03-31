@@ -1,6 +1,6 @@
 /*!
- * # Fomantic UI - API
- * http://github.com/fomantic/fomantic-ui/
+ * # Fomantic-UI - API
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

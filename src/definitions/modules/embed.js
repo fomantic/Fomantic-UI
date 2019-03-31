@@ -1,6 +1,6 @@
 /*!
- * # Fomantic UI - Embed
- * http://github.com/fomantic/fomantic-ui/
+ * # Fomantic-UI - Embed
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
