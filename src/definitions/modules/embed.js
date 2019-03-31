@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Embed
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Embed
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

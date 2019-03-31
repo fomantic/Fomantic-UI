@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Sticky
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Sticky
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

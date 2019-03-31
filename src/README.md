@@ -2,13 +2,13 @@
 
 ### Built-In Tools
 
-From the Semantic directory you can setup gulp to build Semantic by running.
+From the Fomantic directory you can setup gulp to build Fomantic by running.
 
 ```bash
 npm install
 ```
 
-Semantic will automatically configure itself using a `post-install` script built into the package.
+Fomantic will automatically configure itself using a `post-install` script built into the package.
 
 After set-up can use gulp to build your project's css:
 
@@ -31,7 +31,7 @@ Each gulp task can be imported into your own Gulpfile using `require`
 ```javascript
 const watch = require('path/to/semantic/tasks/watch');
 
-gulp.task('watch ui', 'Watch Semantic UI', watch));
+gulp.task('watch ui', 'Watch Fomantic UI', watch));
 ```
 
 #### Importing LESS
@@ -40,7 +40,7 @@ gulp.task('watch ui', 'Watch Semantic UI', watch));
 
 Before using source files you will need to create a `theme.config` by renaming `theme.config.example`, and a site folder by renaming `_site/` to `site/`
 
-You can then import Semantic from your own LESS files:
+You can then import Fomantic from your own LESS files:
 
 ```less
 /* Import all components */
@@ -66,7 +66,7 @@ filename | usage | Initial Name
 
 ### Workflow
 
-You will only need to use Semantic's build tools while refining your UI. When designing pages, you can rely on the compiled css packages in  `dist/`.
+You will only need to use Fomantic's build tools while refining your UI. When designing pages, you can rely on the compiled css packages in  `dist/`.
 
 When creating your UI you can try <a href="http://www.learnsemantic.com/themes/creating.html">downloading different themes</a>, adjusting your <a href="http://www.learnsemantic.com/developing/customizing.html#setting-global-variables">site-wide settings</a> (font-family, colors, etc) and tweaking components in your site's <a href="http://www.learnsemantic.com/developing/customizing.html#designing-for-the-long-now">component overrides</a>.
 
@@ -78,15 +78,15 @@ Files in the  `examples/` folder of your project can be useful for testing out c
 
 #### Inheritance
 
-There are three levels of inheritance in Semantic
-* Default theme - Semantic UI's neutral default theme
+There are three levels of inheritance in Fomantic
+* Default theme - Fomantic UI's neutral default theme
 * Packaged theme - A specified packaged theme, like "amazon", or "material"
 * Site theme - A theme specific to your site
 
 #### Folder Structure
 
 * `definitions/` contains the `css` and `javascript` definitions for each component
-* `themes/` contains *pre-packaged themes* including Semantic's default theme
+* `themes/` contains *pre-packaged themes* including Fomantic's default theme
 * `site/` contains your current site's theme
 
 View the [Theming Guide](http://learnsemantic.com/themes/overview.html) for a more in-depth look

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - API
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - API
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

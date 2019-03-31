@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Dropdown
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Dropdown
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

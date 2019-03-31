@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Form Validation
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Form Validation
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

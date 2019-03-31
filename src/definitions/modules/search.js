@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Search
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Search
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

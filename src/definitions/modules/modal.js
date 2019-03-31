@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Modal
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Modal
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license

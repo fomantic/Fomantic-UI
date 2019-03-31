@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Tab
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic UI - Tab
+ * http://github.com/fomantic/fomantic-ui/
  *
  *
  * Released under the MIT license
