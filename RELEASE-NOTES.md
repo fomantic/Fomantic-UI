@@ -1,12 +1,65 @@
 ## RELEASE NOTES
 
-### Version 2.7.3 - March 28, 2019
+### Version 2.7.3 - April 2, 2019
 
 **Bugs**
-- **scope** - description **Thanks [@pr-author](https://github.com/pr-author)** [#0](https://github.com/fomantic/Fomantic-UI/pull/0)
+- **Progress** - Fixed the 0 percent bars on colored progress **Thanks [@lubber-de](https://github.com/lubber-de)** [#463](https://github.com/fomantic/Fomantic-UI/pull/463)
+- **Progress** - Fixed inverted success/warning/error progress bars not having a color **Thanks [@lubber-de](https://github.com/lubber-de)** [#483](https://github.com/fomantic/Fomantic-UI/pull/483)
+- **Transiton** - Fixed transitions conflicting with non visable elements e.g. <script> **Thanks [@lubber-de](https://github.com/lubber-de)** [#474](https://github.com/fomantic/Fomantic-UI/pull/474)
+- **Shape** - Fixed shape transitons conflicting with child element transitions **Thanks [@lubber-de](https://github.com/lubber-de)** [#465](https://github.com/fomantic/Fomantic-UI/pull/465)
+- **Shape** - Fixed shape animation inconsistency when child elements had class `active` **Thanks [@lubber-de](https://github.com/lubber-de)** [#464](https://github.com/fomantic/Fomantic-UI/pull/464)
+- **Shape** - Fixed focused checkbox inside shape breaking animation **Thanks [@lubber-de](https://github.com/lubber-de)** [#529](https://github.com/fomantic/Fomantic-UI/pull/529)
+- **Sidebar** - Fixed closable behaviour inconsistency with docs **Thanks [@lubber-de](https://github.com/lubber-de)** [#469](https://github.com/fomantic/Fomantic-UI/pull/469)
+- **Segment** - Fixed support for inverted, secondary or tertiary for horizontal segments **Thanks [@lubber-de](https://github.com/lubber-de)** [#470](https://github.com/fomantic/Fomantic-UI/pull/470)
+- **Segment** - Fixed clearing segments consistency with stacked and piled segments **Thanks [@lubber-de](https://github.com/lubber-de)** [#485](https://github.com/fomantic/Fomantic-UI/pull/485)
+- **Segment** - Fixed a compact segment ina horizontal segment group not staying compact **Thanks [@lubber-de](https://github.com/lubber-de)** [#479](https://github.com/fomantic/Fomantic-UI/pull/479)
+- **Menu** - Fixed items in tabular menu having incorrect color **Thanks [@lubber-de](https://github.com/lubber-de)** [#490](https://github.com/fomantic/Fomantic-UI/pull/490)
+- **Menu** - Fixed last item in a menu in a container not having a right border **Thanks [@lubber-de](https://github.com/lubber-de)** [#480](https://github.com/fomantic/Fomantic-UI/pull/480)
+- **Button** - Fixed basic colored buttons overridden by basic button group box shadow **Thanks [@lubber-de](https://github.com/lubber-de)** [#487](https://github.com/fomantic/Fomantic-UI/pull/487)
+- **Button** - Fixed basic button margin **Thanks [@lubber-de](https://github.com/lubber-de)** [#537](https://github.com/fomantic/Fomantic-UI/pull/537)
+- **Button** - Fixed padding for fluid right and left labeled icon buttons **Thanks [@lubber-de](https://github.com/lubber-de)** [#584](https://github.com/fomantic/Fomantic-UI/pull/584)
+- **Header** - Fixed sub header color in inverted segments **Thanks [@lubber-de](https://github.com/lubber-de)** [#488](https://github.com/fomantic/Fomantic-UI/pull/488)
+- **Checkbox** - Added visual support for indeterminate toggle **Thanks [@lubber-de](https://github.com/lubber-de)** [#491](https://github.com/fomantic/Fomantic-UI/pull/491)
+- **Input** - Added tinny size variants which were missing **Thanks [@lubber-de](https://github.com/lubber-de)** [#492](https://github.com/fomantic/Fomantic-UI/pull/492)
+- **Popup** - Fixed an issue were onHide would be called twice **Thanks [@lubber-de](https://github.com/lubber-de)** [#481](https://github.com/fomantic/Fomantic-UI/pull/481)
+- **Label** - Fixed table ribbon labels having the wrong calculated position  **Thanks [@lubber-de](https://github.com/lubber-de)** [#482](https://github.com/fomantic/Fomantic-UI/pull/482)
+- **Dropdown** - Fixed dropdown button not working when as a label **Thanks [@lubber-de](https://github.com/lubber-de)** [#478](https://github.com/fomantic/Fomantic-UI/pull/478)
+- **Dropdown** - Always show items when clicked on icon regardless of minCharacter setting **Thanks [@lubber-de](https://github.com/lubber-de)** [#510](https://github.com/fomantic/Fomantic-UI/pull/510)
+- **Dropdown** - Fixed missing event property causing FireFox to error **Thanks [@lubber-de](https://github.com/lubber-de)** [#534](https://github.com/fomantic/Fomantic-UI/pull/534)
+- **Modal** - Fixed when a modal couldn't be closed a second time it was opended by another modal  **Thanks [@lubber-de](https://github.com/lubber-de)** [#512](https://github.com/fomantic/Fomantic-UI/pull/512)
+- **Modal** - Don't move modal content when scrollbars are hidden **Thanks [@lubber-de](https://github.com/lubber-de)** [#468](https://github.com/fomantic/Fomantic-UI/pull/468)
+- **Modal** - Allow different modal positions when multiple modals are active **Thanks [@lubber-de](https://github.com/lubber-de)** [#532](https://github.com/fomantic/Fomantic-UI/pull/532)
+- **Form Validation** - Validation will now work with grouped checkboxes correctly **Thanks [@lubber-de](https://github.com/lubber-de)** [#540](https://github.com/fomantic/Fomantic-UI/pull/540)
+- **Form Validation** - Fixed issue causing Safari not to show error message **Thanks [@lubber-de](https://github.com/lubber-de)** [#558](https://github.com/fomantic/Fomantic-UI/pull/558)
+- **Form Validation** - Fixed error caused when no field rules existed **Thanks [@iarspider](https://github.com/iarspider)** [#546](https://github.com/fomantic/Fomantic-UI/pull/546)
+- **Calendar** - `initialDate` will now update the input **Thanks [@prudho](https://github.com/prudho)** [#559](https://github.com/fomantic/Fomantic-UI/pull/559)
+- **Form** - Fixed `remove rules` behavior if field was an array **Thanks [@exoego](https://github.com/exoego)** [#556](https://github.com/fomantic/Fomantic-UI/pull/556)
+- **Slider** - Fixed conflicting issues with checkbox **Thanks [@lubber-de](https://github.com/lubber-de)** [#553](https://github.com/fomantic/Fomantic-UI/pull/553)
+- **Dimmer** - Fixed loader still being visible inside simple inverted dimmers even when parent was not dimmed **Thanks [@lubber-de](https://github.com/lubber-de)** [#571](https://github.com/fomantic/Fomantic-UI/pull/571)
+- **Table** - Fixed issues with inverted sortable and disabled colored rows/cells **Thanks [@lubber-de](https://github.com/lubber-de)** [#579](https://github.com/fomantic/Fomantic-UI/pull/579)
 
 **Enhancements**
-- **scope** - description **Thanks [@pr-author](https://github.com/pr-author)** [#0](https://github.com/fomantic/Fomantic-UI/pull/0)
+- **Card** - Added inverted colors support **Thanks [@lubber-de](https://github.com/lubber-de)** [#455](https://github.com/fomantic/Fomantic-UI/pull/455)
+- **API** - Added better checking for API status code errors **Thanks [@lubber-de](https://github.com/lubber-de)** [#497](https://github.com/fomantic/Fomantic-UI/pull/497)
+- **Tab** - Added function to escape characters before sending to jQuery **Thanks [@lubber-de](https://github.com/lubber-de)** [#499](https://github.com/fomantic/Fomantic-UI/pull/499)
+- **Label** - Made corner icon positioned labels absolute to support of tags like <button> **Thanks [@lubber-de](https://github.com/lubber-de)** [#520](https://github.com/fomantic/Fomantic-UI/pull/520)
+- **Calendar** - Added new `enabledDates` setting to only enable specified dates **Thanks [@prudho](https://github.com/prudho)** [#525](https://github.com/fomantic/Fomantic-UI/pull/525)
+- **Calendar** - Added the ability to adjust the calculation of entered shortyears to the belonging century **Thanks [@prudho](https://github.com/prudho)** [#527](https://github.com/fomantic/Fomantic-UI/pull/527)
+- **Calendar** - Added ability to select adjacent month dates with `selectAdjacentDays: true` **Thanks [@patilkiranm](https://github.com/patilkiranm)** [#562](https://github.com/fomantic/Fomantic-UI/pull/562)
+- **Modal** - Added support for `overlay fullscreen` variation **Thanks [@lubber-de](https://github.com/lubber-de)** [#526](https://github.com/fomantic/Fomantic-UI/pull/526)
+- **Modal** - Added support for `top aligned` and `bottom aligned` modals **Thanks [@lubber-de](https://github.com/lubber-de)** [#532](https://github.com/fomantic/Fomantic-UI/pull/532)
+- **Dropdown** - Exposed the `weekCell` class setting **Thanks [@patilkiranm](https://github.com/patilkiranm)** [#559](https://github.com/fomantic/Fomantic-UI/pull/559)
+- **Dropdown** - Added column variation support **Thanks [@exoego](https://github.com/exoego)** [#586](https://github.com/fomantic/Fomantic-UI/pull/586)
+- **Dropdown** - Added new height variation **Thanks [@exoego](https://github.com/exoego)** [#587](https://github.com/fomantic/Fomantic-UI/pull/587)
+- **Site** - Responsive breakpoints now support larger DPI than 100% **Thanks [@lubber-de](https://github.com/lubber-de)** [#567](https://github.com/fomantic/Fomantic-UI/pull/567)
+- **Step** - Steps now show their pointers when stacked in responsive mode **Thanks [@lubber-de](https://github.com/lubber-de)** [#583](https://github.com/fomantic/Fomantic-UI/pull/583)
+- **Progress** - Added ability to show multiple progress bars in one bar **Thanks [@exoego](https://github.com/exoego)** [#582](https://github.com/fomantic/Fomantic-UI/pull/582)
+
+**Build**
+- **Meta Data** - Fixed build to write metadata for docs **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#472](https://github.com/fomantic/Fomantic-UI/pull/472)
+- **Dependencies** - Changed dependencies to correct positions **Thanks [@hammy2899](https://github.com/hammy2899)** [#501](https://github.com/fomantic/Fomantic-UI/pull/501)
+- **Dist** - Fixed incorrect file permissions for dist files **Thanks [@ColinFrick](https://github.com/ColinFrick)** [#504](https://github.com/fomantic/Fomantic-UI/pull/504)
+- **Bower** - Updated jQuery dependency version in bower **Thanks [@lubber-de](https://github.com/lubber-de)** [#585](https://github.com/fomantic/Fomantic-UI/pull/585)
 
 ### Version 2.7.2 - February 5, 2019
 
