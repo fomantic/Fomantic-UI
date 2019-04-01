@@ -513,6 +513,9 @@
 .ui.mini.input {
   font-size: 0.78571429em;
 }
+.ui.tiny.input {
+  font-size: 0.85714286em;
+}
 .ui.small.input {
   font-size: 0.92857143em;
 }

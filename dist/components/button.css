@@ -1033,13 +1033,6 @@
   border-bottom-left-radius: 0.28571429rem;
 }
 
-/* Fluid Labeled */
-.ui.fluid[class*="left labeled"].icon.button,
-.ui.fluid[class*="right labeled"].icon.button {
-  padding-left: 1.5em !important;
-  padding-right: 1.5em !important;
-}
-
 /* Loading Icon in Labeled Button */
 .ui.labeled.icon.button > .loading.icon:before {
   -webkit-animation: loader 2s linear infinite;
@@ -4216,7 +4209,7 @@
           box-shadow: 0 0 0 1px #198f35 inset;
   color: #198f35;
 }
-.ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+.ui.buttons:not(.vertical) > .basic.positive.button:not(:first-child) {
   margin-left: -1px;
 }
 
@@ -4299,7 +4292,7 @@
           box-shadow: 0 0 0 1px #b21e1e inset;
   color: #b21e1e;
 }
-.ui.buttons:not(.vertical) > .basic.primary.button:not(:first-child) {
+.ui.buttons:not(.vertical) > .basic.negative.button:not(:first-child) {
   margin-left: -1px;
 }
 
@@ -4342,8 +4335,7 @@
   border-radius: 0;
   margin: 0 0 0 0;
 }
-.ui.buttons > .ui.button:not(.basic):not(.inverted),
-.ui.buttons:not(.basic):not(.inverted) > .button {
+.ui.buttons:not(.basic):not(.inverted) > .button:not(.basic):not(.inverted) {
   -webkit-box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
 }

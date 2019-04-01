@@ -498,7 +498,7 @@
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.stackable.statistics {
     width: auto;
     margin-left: 0 !important;
