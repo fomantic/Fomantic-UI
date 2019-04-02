@@ -166,6 +166,8 @@
 @toggleLaneVerticalOffset: 0;
 @toggleOffOffset: -0.05rem;
 @toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
+@toggleCenterOffset: @toggleOnOffset / 2;
+@toggleCenterLaneBackground: @veryStrongTransparentBlack;
 
 @toggleLabelDistance: @toggleLaneWidth + 1rem;
 @toggleLabelLineHeight: 1.5rem;

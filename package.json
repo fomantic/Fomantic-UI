@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.2",
+  "version": "2.7.3",
   "title": "Fomantic UI",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage": "http://fomantic-ui.com",
@@ -17,37 +17,18 @@
   "scripts": {
     "install": "gulp install"
   },
-  "peerDependencies": {
-    "better-console": "*",
-    "del": "*",
-    "extend": "*",
-    "gulp": "*",
-    "gulp-autoprefixer": "*",
-    "gulp-chmod": "*",
-    "gulp-clean-css": "*",
-    "gulp-clone": "*",
-    "gulp-concat": "*",
-    "gulp-concat-css": "*",
-    "gulp-copy": "*",
-    "gulp-dedupe": "*",
-    "gulp-flatten": "*",
-    "gulp-header": "*",
-    "gulp-if": "*",
-    "gulp-less": "*",
-    "gulp-notify": "*",
-    "gulp-plumber": "*",
-    "gulp-print": "*",
-    "gulp-rename": "*",
-    "gulp-replace": "*",
-    "gulp-rtlcss": "*",
-    "gulp-uglify": "*",
-    "map-stream": "*",
-    "replace-ext": "*",
-    "require-dot-file": "*",
-    "yamljs": "*"
-  },
   "dependencies": {
-    "better-console": "*",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "@octokit/rest": "^16.16.0",
+    "gulp-concat-filenames": "^1.2.0",
+    "gulp-debug": "^4.0.0",
+    "gulp-git": "^2.9.0",
+    "gulp-tap": "^1.0.1",
+    "less": "^3.7.0",
+    "merge-stream": "^1.0.0",
+    "better-console": "1.0.1",
     "del": "^3.0.0",
     "extend": "^3.0.2",
     "gulp": "^4.0.0",
@@ -72,24 +53,13 @@
     "gulp-rtlcss": "^1.3.0",
     "gulp-uglify": "^3.0.1",
     "inquirer": "^6.2.1",
-    "jquery": "^3.2.1",
     "map-stream": "^0.1.0",
-    "merge-stream": "^1.0.0",
     "mkdirp": "^0.5.1",
     "normalize-path": "^3.0.0",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
     "wrench-sui": "^0.0.3",
     "yamljs": "^0.3.0"
-  },
-  "devDependencies": {
-    "@octokit/rest": "*",
-    "gulp-concat-filenames": "*",
-    "gulp-debug": "*",
-    "gulp-git": "*",
-    "gulp-tap": "*",
-    "less": "^3.7.0",
-    "merge-stream": "*"
   },
   "style": "dist/semantic.css"
 }

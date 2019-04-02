@@ -36,12 +36,6 @@ $.fn.transition = function() {
     queryArguments  = [].slice.call(arguments, 1),
     methodInvoked   = (typeof query === 'string'),
 
-    requestAnimationFrame = window.requestAnimationFrame
-      || window.mozRequestAnimationFrame
-      || window.webkitRequestAnimationFrame
-      || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
-
     returnedValue
   ;
   $allModules
@@ -58,9 +52,7 @@ $.fn.transition = function() {
         className,
         metadata,
         animationEnd,
-        animationName,
 
-        namespace,
         moduleNamespace,
         eventNamespace,
         module
@@ -263,9 +255,6 @@ $.fn.transition = function() {
             $module
               .attr('style', overrideStyle)
             ;
-            if(style === '') {
-              $module.removeAttr('style');
-            }
             return true;
           },
           hidden: function() {
@@ -314,22 +303,17 @@ $.fn.transition = function() {
 
         set: {
           animating: function(animation) {
-            // override display if necessary so animation appears visibly
-            if(module.force.visible()) {
-              var
-                  animationClass,
-                  direction
-              ;
-              // remove previous callbacks
-              module.remove.completeCallback();
+            // remove previous callbacks
+            module.remove.completeCallback();
 
-              // determine exact animation
-              animation = animation || settings.animation;
-              animationClass = module.get.animationClass(animation);
+            // determine exact animation
+            animation = animation || settings.animation;
+            var animationClass = module.get.animationClass(animation);
 
               // save animation class in cache to restore class names
-              module.save.animation(animationClass);
+            module.save.animation(animationClass);
 
+            if(module.force.visible()) {
               module.remove.hidden();
               module.remove.direction();
 

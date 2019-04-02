@@ -94,7 +94,10 @@
 
 /* Whole Page */
 body.pushable {
-  background: @canvasBackground !important;
+  background: @canvasBackground;
+  &.dimmed {
+    background: inherit;
+  }
 }
 
 /* Page Context */

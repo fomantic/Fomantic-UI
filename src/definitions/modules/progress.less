@@ -55,9 +55,10 @@
   background: @barBackground;
   border-radius: @barBorderRadius;
   transition: @barTransition;
+  overflow: hidden;
 }
-.ui.progress:not([data-percent]) .bar,
-.ui.progress[data-percent="0"] .bar {
+.ui.ui.ui.progress:not([data-percent]) .bar,
+.ui.ui.ui.progress[data-percent="0"] .bar {
   background:transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -221,6 +222,11 @@
   color: @successHeaderColor;
 }
 
+/* Multiple */
+.ui.multiple.progress {
+  display: flex;
+}
+
 /*******************************
              States
 *******************************/
@@ -230,7 +236,7 @@
      Success
 ---------------*/
 
-.ui.progress.success .bar {
+.ui.ui.progress.success .bar {
   background-color: @successColor;
 }
 .ui.ui.progress.success .bar,
@@ -245,7 +251,7 @@
      Warning
 ---------------*/
 
-.ui.progress.warning .bar {
+.ui.ui.progress.warning .bar {
   background-color: @warningColor;
 }
 .ui.ui.progress.warning .bar,
@@ -260,7 +266,7 @@
      Error
 ---------------*/
 
-.ui.progress.error .bar {
+.ui.ui.progress.error .bar {
   background-color: @errorColor;
 }
 .ui.ui.progress.error .bar,
@@ -408,10 +414,12 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  .ui.@{color}.progress .bar {
+  .ui.@{color}.progress .bar,
+  .ui.progress .@{color}.bar {
     background-color: @c;
   }
-  .ui.@{color}.inverted.progress .bar {
+  .ui.@{color}.inverted.progress .bar,
+  .ui.inverted.progress .@{color}.bar {
     background-color: @l;
   }
 })
