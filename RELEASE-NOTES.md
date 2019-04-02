@@ -1,5 +1,10 @@
 ## RELEASE NOTES
 
+### Version 2.7.4 - April 2, 2019
+
+**Build**
+- **Dependencies** - Fixed an issue causing the npm install to fail **Thanks [@hammy2899](https://github.com/hammy2899)** [#608](https://github.com/fomantic/Fomantic-UI/pull/608)
+
 ### Version 2.7.3 - April 2, 2019
 
 **Bugs**

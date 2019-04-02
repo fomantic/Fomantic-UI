@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.3",
+  "version": "2.7.4",
   "title": "Fomantic UI",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage": "http://fomantic-ui.com",
@@ -18,9 +18,7 @@
     "install": "gulp install"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
-  },
-  "devDependencies": {
+    "jquery": "^3.2.1",
     "@octokit/rest": "^16.16.0",
     "gulp-concat-filenames": "^1.2.0",
     "gulp-debug": "^4.0.0",
