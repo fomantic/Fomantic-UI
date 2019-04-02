@@ -18,9 +18,7 @@
     "install": "gulp install"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
-  },
-  "devDependencies": {
+    "jquery": "^3.2.1",
     "@octokit/rest": "^16.16.0",
     "gulp-concat-filenames": "^1.2.0",
     "gulp-debug": "^4.0.0",
