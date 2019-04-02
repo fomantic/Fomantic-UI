@@ -1236,6 +1236,9 @@ $.fn.calendar.settings = {
 
   parser: {
     date: function (text, settings) {
+      if (text instanceof Date) {
+        return text;
+      }
       if (!text) {
         return null;
       }
