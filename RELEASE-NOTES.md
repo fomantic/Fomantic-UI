@@ -44,7 +44,7 @@
 - **Tab** - Added function to escape characters before sending to jQuery **Thanks [@lubber-de](https://github.com/lubber-de)** [#499](https://github.com/fomantic/Fomantic-UI/pull/499)
 - **Label** - Made corner icon positioned labels absolute to support of tags like <button> **Thanks [@lubber-de](https://github.com/lubber-de)** [#520](https://github.com/fomantic/Fomantic-UI/pull/520)
 - **Calendar** - Added new `enabledDates` setting to only enable specified dates **Thanks [@prudho](https://github.com/prudho)** [#525](https://github.com/fomantic/Fomantic-UI/pull/525)
-- **Calendar** - Added the ability to adjust the calculation of entered shortyears to the belonging century **Thanks [@prudho](https://github.com/prudho)** [#527](https://github.com/fomantic/Fomantic-UI/pull/527)
+- **Calendar** - Added the ability to adjust the calculation of entered shortyears to the belonging century **Thanks [@lubber-de](https://github.com/lubber-de)** [#527](https://github.com/fomantic/Fomantic-UI/pull/527)
 - **Calendar** - Added ability to select adjacent month dates with `selectAdjacentDays: true` **Thanks [@patilkiranm](https://github.com/patilkiranm)** [#562](https://github.com/fomantic/Fomantic-UI/pull/562)
 - **Modal** - Added support for `overlay fullscreen` variation **Thanks [@lubber-de](https://github.com/lubber-de)** [#526](https://github.com/fomantic/Fomantic-UI/pull/526)
 - **Modal** - Added support for `top aligned` and `bottom aligned` modals **Thanks [@lubber-de](https://github.com/lubber-de)** [#532](https://github.com/fomantic/Fomantic-UI/pull/532)
