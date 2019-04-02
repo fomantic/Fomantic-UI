@@ -141,17 +141,19 @@ $.fn.sidebar = function(parameters) {
 
         event: {
           clickaway: function(event) {
-            var
-              clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-              clickedContext  = ($context.is(event.target))
-            ;
-            if(clickedInPusher) {
-              module.verbose('User clicked on dimmed page');
-              module.hide();
-            }
-            if(clickedContext) {
-              module.verbose('User clicked on dimmable context (scaled out page)');
-              module.hide();
+            if(settings.closable){
+              var
+                clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
+                clickedContext  = ($context.is(event.target))
+              ;
+              if(clickedInPusher) {
+                module.verbose('User clicked on dimmed page');
+                module.hide();
+              }
+              if(clickedContext) {
+                module.verbose('User clicked on dimmable context (scaled out page)');
+                module.hide();
+              }
             }
           },
           touch: function(event) {
@@ -409,7 +411,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(settings.closable && (module.is.visible() || module.is.animating())) {
+          if(module.is.visible() || module.is.animating()) {
             module.debug('Hiding sidebar', callback);
             module.refreshSidebars();
             module.pullPage(function() {

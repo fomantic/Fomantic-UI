@@ -402,7 +402,7 @@
     Container
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.menu > .ui.container {
     width: 100% !important;
     margin-left: 0 !important;
@@ -412,6 +412,10 @@
 @media only screen and (min-width: 768px) {
   .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
     border-left: 1px solid rgba(34, 36, 38, 0.1);
+  }
+  .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.item:not(.borderless):last-child,
+  .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.menu > .item:not(.borderless):last-child {
+    border-right: 1px solid rgba(34, 36, 38, 0.1);
   }
 }
 
@@ -474,7 +478,7 @@
      Disabled
 ---------------*/
 
-.ui.menu .item.disabled {
+.ui.ui.menu .item.disabled {
   cursor: default;
   background-color: transparent;
   color: rgba(40, 40, 40, 0.3);
@@ -1306,7 +1310,7 @@ Floated Menu / Item
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.stackable.menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1469,7 +1473,7 @@ Floated Menu / Item
 }
 
 /* Disabled */
-.ui.inverted.menu .item.disabled {
+.ui.ui.inverted.menu .item.disabled {
   color: rgba(225, 225, 225, 0.3);
 }
 

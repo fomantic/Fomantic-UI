@@ -29,7 +29,6 @@ $.fn.state = function(parameters) {
 
     moduleSelector  = $allModules.selector || '',
 
-    hasTouch        = ('ontouchstart' in document.documentElement),
     time            = new Date().getTime(),
     performance     = [],
 

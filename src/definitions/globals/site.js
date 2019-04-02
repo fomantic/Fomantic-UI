@@ -30,7 +30,6 @@ $.site = $.fn.site = function(parameters) {
     namespace       = settings.namespace,
     error           = settings.error,
 
-    eventNamespace  = '.' + namespace,
     moduleNamespace = 'module-' + namespace,
 
     $document       = $(document),

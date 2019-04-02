@@ -268,7 +268,8 @@
 
 .ui.form .success.message,
 .ui.form .warning.message,
-.ui.form .error.message {
+.ui.form .error.message,
+.ui.form .error.message:empty {
   display: none;
 }
 
@@ -843,7 +844,7 @@
 }
 
 /* Swap to full width on mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.form .fields {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
@@ -929,7 +930,7 @@
 }
 
 /* Swap to full width on mobile */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields,
   .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field,
   .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .fields,

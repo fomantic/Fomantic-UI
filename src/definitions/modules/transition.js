@@ -36,12 +36,6 @@ $.fn.transition = function() {
     queryArguments  = [].slice.call(arguments, 1),
     methodInvoked   = (typeof query === 'string'),
 
-    requestAnimationFrame = window.requestAnimationFrame
-      || window.mozRequestAnimationFrame
-      || window.webkitRequestAnimationFrame
-      || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
-
     returnedValue
   ;
   $allModules
@@ -58,9 +52,7 @@ $.fn.transition = function() {
         className,
         metadata,
         animationEnd,
-        animationName,
 
-        namespace,
         moduleNamespace,
         eventNamespace,
         module
