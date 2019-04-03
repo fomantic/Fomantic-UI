@@ -80,6 +80,7 @@ $.fn.modal = function(parameters) {
 
         initialMouseDownInModal,
         initialMouseDownInScrollbar,
+        initialBodyMargin = '',
 
         elementEventNamespace,
         id,
@@ -97,7 +98,9 @@ $.fn.modal = function(parameters) {
           if ( settings.allowMultiple ) {
             module.create.innerDimmer();
           }
-
+          if (!settings.centered){
+            $module.addClass('top aligned');
+          }
           module.refreshModals();
 
           module.bind.events();
@@ -120,9 +123,6 @@ $.fn.modal = function(parameters) {
             var
               defaultSettings = {
                 debug      : settings.debug,
-                variation  : settings.centered
-                  ? false
-                  : 'top aligned',
                 dimmerName : 'modals'
               },
               dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
@@ -305,7 +305,7 @@ $.fn.modal = function(parameters) {
               isInModal = ($target.closest(selector.modal).length > 0),
               isInDOM   = $.contains(document.documentElement, event.target)
             ;
-            if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.top) ) {
+            if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front) ) {
               module.debug('Dimmer clicked, hiding all modals');
               if(settings.allowMultiple) {
                 if(!module.hideAll()) {
@@ -330,7 +330,7 @@ $.fn.modal = function(parameters) {
             if(keyCode == escapeKey) {
               if(settings.closable) {
                 module.debug('Escape key pressed hiding modal');
-                if ( $module.hasClass(className.top) ) {
+                if ( $module.hasClass(className.front) ) {
                   module.hide();
                 }
               }
@@ -401,6 +401,7 @@ $.fn.modal = function(parameters) {
               module.hideOthers(module.showModal);
             }
             else {
+              ignoreRepeatedEvents = false;
               if( settings.allowMultiple ) {
                 if ( module.others.active() ) {
                   $otherModals.filter('.' + className.active).find(selector.dimmer).addClass('active');
@@ -481,8 +482,8 @@ $.fn.modal = function(parameters) {
                   onComplete : function() {
                     module.unbind.scrollLock();
                     if ( settings.allowMultiple ) {
-                      $previousModal.addClass(className.top);
-                      $module.removeClass(className.top);
+                      $previousModal.addClass(className.front);
+                      $module.removeClass(className.front);
       
                       if ( hideOthersToo ) {
                         $allModals.find(selector.dimmer).removeClass('active');
@@ -507,6 +508,7 @@ $.fn.modal = function(parameters) {
 
         showDimmer: function() {
           if($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active') ) {
+            module.save.bodyMargin();
             module.debug('Showing dimmer');
             $dimmable.dimmer('show');
           }
@@ -519,6 +521,7 @@ $.fn.modal = function(parameters) {
           if( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
             module.unbind.scrollLock();
             $dimmable.dimmer('hide', function() {
+              module.restore.bodyMargin();
               module.remove.clickaway();
               module.remove.screenHeight();
             });
@@ -597,6 +600,12 @@ $.fn.modal = function(parameters) {
             if(!inCurrentModal) {
               $focusedElement = $(document.activeElement).blur();
             }
+          },
+          bodyMargin: function() {
+            initialBodyMargin = $body.css('margin-right');
+            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            $body.css('margin-right', (bodyMarginRightPixel + bodyScrollbarWidth) + 'px');
           }
         },
 
@@ -605,6 +614,9 @@ $.fn.modal = function(parameters) {
             if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
               $focusedElement.focus();
             }
+          },
+          bodyMargin: function() {
+            $body.css('margin-right', initialBodyMargin);
           }
         },
 
@@ -756,9 +768,6 @@ $.fn.modal = function(parameters) {
                 dimmerName : 'modals',
                 closable   : 'auto',
                 useFlex    : module.can.useFlex(),
-                variation  : settings.centered
-                  ? false
-                  : 'top aligned',
                 duration   : {
                   show     : settings.duration,
                   hide     : settings.duration
@@ -795,7 +804,7 @@ $.fn.modal = function(parameters) {
             ;
             $module
               .css({
-                marginTop: (settings.centered && module.can.fit())
+                marginTop: (!$module.hasClass('aligned') && module.can.fit())
                   ? -(height / 2)
                   : 0,
                 marginLeft: -(width / 2)
@@ -807,7 +816,7 @@ $.fn.modal = function(parameters) {
             if( module.can.fit() ) {
               $body.css('height', '');
             }
-            else {
+            else if(!$module.hasClass('bottom')) {
               module.debug('Modal is taller than page content, resizing page height');
               $body
                 .css('height', module.cache.height + (settings.padding * 2) )
@@ -815,8 +824,8 @@ $.fn.modal = function(parameters) {
             }
           },
           active: function() {
-            $module.addClass(className.active + ' ' + className.top);
-            $otherModals.filter('.' + className.active).removeClass(className.top);
+            $module.addClass(className.active + ' ' + className.front);
+            $otherModals.filter('.' + className.active).removeClass(className.front);
           },
           scrolling: function() {
             $dimmable.addClass(className.scrolling);
@@ -834,9 +843,11 @@ $.fn.modal = function(parameters) {
                 module.bind.scrollLock();
               }
             }
-            else {
+            else if (!$module.hasClass('bottom')){
               module.verbose('Modal cannot fit on screen setting to scrolling');
               module.set.scrolling();
+            } else {
+                module.verbose('Bottom aligned modal not fitting on screen is unsupported for scrolling');
             }
           },
           undetached: function() {
@@ -1110,7 +1121,7 @@ $.fn.modal.settings = {
     loading    : 'loading',
     scrolling  : 'scrolling',
     undetached : 'undetached',
-    top        : 'top'
+    front      : 'front'
   }
 };
 

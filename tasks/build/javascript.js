@@ -51,14 +51,14 @@ function build(src, type, config) {
     .pipe(plumber())
     .pipe(flatten())
     .pipe(replace(comments.license.in, comments.license.out))
+    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulp.dest(config.paths.output.uncompressed))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(print(log.created))
     .pipe(uglify(settings.uglify))
     .pipe(rename(settings.rename.minJS))
     .pipe(header(banner, settings.header))
+    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulp.dest(config.paths.output.compressed))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
     .pipe(print(log.created))
     ;
 }
@@ -79,7 +79,7 @@ function pack(type, compress) {
     .pipe(concat(concatenatedJS))
     .pipe(gulpif(compress, uglify(settings.concatUglify)))
     .pipe(header(banner, settings.header))
-    .pipe(gulpif(config.hasPermission, chmod(config.permission)))
+    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulp.dest(output.packaged))
     .pipe(print(log.created))
     ;
