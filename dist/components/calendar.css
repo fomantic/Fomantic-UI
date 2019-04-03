@@ -109,6 +109,10 @@
   cursor: default;
   color: rgba(40, 40, 40, 0.3);
 }
+.ui.calendar .ui.table tr .adjacent:not(.disabled) {
+  color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.03);
+}
 
 /*--------------
      States

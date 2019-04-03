@@ -114,7 +114,7 @@
 }
 
 /* Inside grid */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.stackable.grid .ui.vertical.divider,
   .ui.grid .stackable.row .ui.vertical.divider {
     display: table;

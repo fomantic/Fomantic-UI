@@ -198,6 +198,12 @@
   opacity: 1;
   color: rgba(0, 0, 0, 0.95);
 }
+.ui.indeterminate.toggle.checkbox input:not([type=radio]):indeterminate ~ label:before {
+  background: rgba(0, 0, 0, 0.15);
+}
+.ui.indeterminate.toggle.checkbox input:not([type=radio]) ~ label:after {
+  left: 1.075rem;
+}
 
 /*--------------
   Active Focus

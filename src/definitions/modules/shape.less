@@ -133,6 +133,10 @@
 .ui.shape.animating .side {
   transition: @sideTransition;
 }
+.ui.shape .animating.side *,
+.ui.shape.animating .side * {
+  transition: none;
+}
 
 /*--------------
      Active

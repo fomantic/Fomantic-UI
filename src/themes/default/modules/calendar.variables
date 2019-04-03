@@ -13,3 +13,6 @@
 @rangeInvertedBackground: @transparentWhite;
 @rangeInvertedTextColor: @invertedSelectedTextColor;
 @rangeInvertedBoxShadow: none;
+
+@adjacentTextColor: @mutedTextColor;
+@adjacentBackground: @subtleTransparentBlack;
