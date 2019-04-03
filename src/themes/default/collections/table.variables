@@ -206,6 +206,7 @@
 /* Inverted */
 @invertedBackground: #333333;
 @invertedBorder: none;
+@invertedCellBorder: 1px solid @whiteBorderColor;
 @invertedCellBorderColor: @whiteBorderColor;
 @invertedCellColor: @invertedTextColor;
 

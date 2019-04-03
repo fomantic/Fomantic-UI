@@ -437,24 +437,72 @@ select.ui.dropdown {
 .ui.selection.dropdown .menu > .message {
   padding: 0.78571429rem 1.14285714rem;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 4.00714286rem;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: 6.01071429rem;
+  }
   .ui.selection.dropdown .menu {
     max-height: 8.01428571rem;
   }
+  .ui.selection.dropdown.long .menu {
+    max-height: 16.02857143rem;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: 24.04285714rem;
+  }
 }
 @media only screen and (min-width: 768px) {
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 5.34285714rem;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: 8.01428571rem;
+  }
   .ui.selection.dropdown .menu {
     max-height: 10.68571429rem;
   }
+  .ui.selection.dropdown.long .menu {
+    max-height: 21.37142857rem;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: 32.05714286rem;
+  }
 }
 @media only screen and (min-width: 992px) {
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 8.01428571rem;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: 12.02142857rem;
+  }
   .ui.selection.dropdown .menu {
     max-height: 16.02857143rem;
   }
+  .ui.selection.dropdown.long .menu {
+    max-height: 32.05714286rem;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: 48.08571429rem;
+  }
 }
 @media only screen and (min-width: 1920px) {
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 10.68571429rem;
+  }
+  .ui.selection.dropdown.short .menu {
+    max-height: 16.02857143rem;
+  }
   .ui.selection.dropdown .menu {
     max-height: 21.37142857rem;
+  }
+  .ui.selection.dropdown.long .menu {
+    max-height: 42.74285714rem;
+  }
+  .ui.selection.dropdown[class*="very long"] .menu {
+    max-height: 64.11428571rem;
   }
 }
 
@@ -623,7 +671,7 @@ select.ui.dropdown {
           backface-visibility: hidden;
   -webkit-overflow-scrolling: touch;
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.search.dropdown .menu {
     max-height: 8.01428571rem;
   }
@@ -1139,7 +1187,7 @@ select.ui.dropdown {
     min-width: calc(100% - 17px);
   }
 }
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.scrolling.dropdown .menu,
   .ui.dropdown .scrolling.menu {
     max-height: 10.28571429rem;
@@ -1162,6 +1210,27 @@ select.ui.dropdown {
   .ui.dropdown .scrolling.menu {
     max-height: 20.57142857rem;
   }
+}
+
+/*--------------
+     Columnar
+---------------*/
+
+.ui.dropdown[class*="two column"] > .menu > .item {
+  display: inline-block;
+  width: 50%;
+}
+.ui.dropdown[class*="three column"] > .menu > .item {
+  display: inline-block;
+  width: 33%;
+}
+.ui.dropdown[class*="four column"] > .menu > .item {
+  display: inline-block;
+  width: 25%;
+}
+.ui.dropdown[class*="five column"] > .menu > .item {
+  display: inline-block;
+  width: 20%;
 }
 
 /*--------------

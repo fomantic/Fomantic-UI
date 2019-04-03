@@ -49,9 +49,10 @@
   border-radius: 0.28571429rem;
   -webkit-transition: width 0.1s ease, background-color 0.1s ease;
   transition: width 0.1s ease, background-color 0.1s ease;
+  overflow: hidden;
 }
-.ui.progress:not([data-percent]) .bar,
-.ui.progress[data-percent="0"] .bar {
+.ui.ui.ui.progress:not([data-percent]) .bar,
+.ui.ui.ui.progress[data-percent="0"] .bar {
   background: transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -216,6 +217,13 @@
   color: #1A531B;
 }
 
+/* Multiple */
+.ui.multiple.progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 
 /*******************************
              States
@@ -226,7 +234,7 @@
      Success
 ---------------*/
 
-.ui.progress.success .bar {
+.ui.ui.progress.success .bar {
   background-color: #21BA45;
 }
 .ui.ui.progress.success .bar,
@@ -242,7 +250,7 @@
      Warning
 ---------------*/
 
-.ui.progress.warning .bar {
+.ui.ui.progress.warning .bar {
   background-color: #F2C037;
 }
 .ui.ui.progress.warning .bar,
@@ -258,7 +266,7 @@
      Error
 ---------------*/
 
-.ui.progress.error .bar {
+.ui.ui.progress.error .bar {
   background-color: #DB2828;
 }
 .ui.ui.progress.error .bar,
@@ -417,94 +425,124 @@
      Colors
 ---------------*/
 
-.ui.primary.progress .bar {
+.ui.primary.progress .bar,
+.ui.progress .primary.bar {
   background-color: #2185D0;
 }
-.ui.primary.inverted.progress .bar {
+.ui.primary.inverted.progress .bar,
+.ui.inverted.progress .primary.bar {
   background-color: #54C8FF;
 }
-.ui.secondary.progress .bar {
+.ui.secondary.progress .bar,
+.ui.progress .secondary.bar {
   background-color: #1B1C1D;
 }
-.ui.secondary.inverted.progress .bar {
+.ui.secondary.inverted.progress .bar,
+.ui.inverted.progress .secondary.bar {
   background-color: #545454;
 }
-.ui.red.progress .bar {
+.ui.red.progress .bar,
+.ui.progress .red.bar {
   background-color: #DB2828;
 }
-.ui.red.inverted.progress .bar {
+.ui.red.inverted.progress .bar,
+.ui.inverted.progress .red.bar {
   background-color: #FF695E;
 }
-.ui.orange.progress .bar {
+.ui.orange.progress .bar,
+.ui.progress .orange.bar {
   background-color: #F2711C;
 }
-.ui.orange.inverted.progress .bar {
+.ui.orange.inverted.progress .bar,
+.ui.inverted.progress .orange.bar {
   background-color: #FF851B;
 }
-.ui.yellow.progress .bar {
+.ui.yellow.progress .bar,
+.ui.progress .yellow.bar {
   background-color: #FBBD08;
 }
-.ui.yellow.inverted.progress .bar {
+.ui.yellow.inverted.progress .bar,
+.ui.inverted.progress .yellow.bar {
   background-color: #FFE21F;
 }
-.ui.olive.progress .bar {
+.ui.olive.progress .bar,
+.ui.progress .olive.bar {
   background-color: #B5CC18;
 }
-.ui.olive.inverted.progress .bar {
+.ui.olive.inverted.progress .bar,
+.ui.inverted.progress .olive.bar {
   background-color: #D9E778;
 }
-.ui.green.progress .bar {
+.ui.green.progress .bar,
+.ui.progress .green.bar {
   background-color: #21BA45;
 }
-.ui.green.inverted.progress .bar {
+.ui.green.inverted.progress .bar,
+.ui.inverted.progress .green.bar {
   background-color: #2ECC40;
 }
-.ui.teal.progress .bar {
+.ui.teal.progress .bar,
+.ui.progress .teal.bar {
   background-color: #00B5AD;
 }
-.ui.teal.inverted.progress .bar {
+.ui.teal.inverted.progress .bar,
+.ui.inverted.progress .teal.bar {
   background-color: #6DFFFF;
 }
-.ui.blue.progress .bar {
+.ui.blue.progress .bar,
+.ui.progress .blue.bar {
   background-color: #2185D0;
 }
-.ui.blue.inverted.progress .bar {
+.ui.blue.inverted.progress .bar,
+.ui.inverted.progress .blue.bar {
   background-color: #54C8FF;
 }
-.ui.violet.progress .bar {
+.ui.violet.progress .bar,
+.ui.progress .violet.bar {
   background-color: #6435C9;
 }
-.ui.violet.inverted.progress .bar {
+.ui.violet.inverted.progress .bar,
+.ui.inverted.progress .violet.bar {
   background-color: #A291FB;
 }
-.ui.purple.progress .bar {
+.ui.purple.progress .bar,
+.ui.progress .purple.bar {
   background-color: #A333C8;
 }
-.ui.purple.inverted.progress .bar {
+.ui.purple.inverted.progress .bar,
+.ui.inverted.progress .purple.bar {
   background-color: #DC73FF;
 }
-.ui.pink.progress .bar {
+.ui.pink.progress .bar,
+.ui.progress .pink.bar {
   background-color: #E03997;
 }
-.ui.pink.inverted.progress .bar {
+.ui.pink.inverted.progress .bar,
+.ui.inverted.progress .pink.bar {
   background-color: #FF8EDF;
 }
-.ui.brown.progress .bar {
+.ui.brown.progress .bar,
+.ui.progress .brown.bar {
   background-color: #A5673F;
 }
-.ui.brown.inverted.progress .bar {
+.ui.brown.inverted.progress .bar,
+.ui.inverted.progress .brown.bar {
   background-color: #D67C1C;
 }
-.ui.grey.progress .bar {
+.ui.grey.progress .bar,
+.ui.progress .grey.bar {
   background-color: #767676;
 }
-.ui.grey.inverted.progress .bar {
+.ui.grey.inverted.progress .bar,
+.ui.inverted.progress .grey.bar {
   background-color: #DCDDDE;
 }
-.ui.black.progress .bar {
+.ui.black.progress .bar,
+.ui.progress .black.bar {
   background-color: #1B1C1D;
 }
-.ui.black.inverted.progress .bar {
+.ui.black.inverted.progress .bar,
+.ui.inverted.progress .black.bar {
   background-color: #545454;
 }
 

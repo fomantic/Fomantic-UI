@@ -55,6 +55,7 @@
   background: @barBackground;
   border-radius: @barBorderRadius;
   transition: @barTransition;
+  overflow: hidden;
 }
 .ui.ui.ui.progress:not([data-percent]) .bar,
 .ui.ui.ui.progress[data-percent="0"] .bar {
@@ -219,6 +220,11 @@
 /* Indicating Success */
 .ui.ui.indicating.progress.success .label {
   color: @successHeaderColor;
+}
+
+/* Multiple */
+.ui.multiple.progress {
+  display: flex;
 }
 
 /*******************************
@@ -408,10 +414,12 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  .ui.@{color}.progress .bar {
+  .ui.@{color}.progress .bar,
+  .ui.progress .@{color}.bar {
     background-color: @c;
   }
-  .ui.@{color}.inverted.progress .bar {
+  .ui.@{color}.inverted.progress .bar,
+  .ui.inverted.progress .@{color}.bar {
     background-color: @l;
   }
 })
