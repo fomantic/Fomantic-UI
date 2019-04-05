@@ -372,7 +372,6 @@
 
 @pointingMenuDistance: @mini;
 @pointingMenuBorderRadius: @borderRadius;
-@pointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @menuBorderColor;
 
 /* Pointing Upward */
 @pointingUpwardMenuBorderRadius: @borderRadius;
@@ -386,8 +385,12 @@
 /* General rules and basic dropdowns */
 @invertedMenuBackground: @black;
 @invertedMenuColor: @invertedMutedTextColor;
-@invertedMenuBorder: 1px solid @strongTransparentWhite;
+@invertedMenuBorderColor: @strongTransparentWhite;
+@invertedMenuBorder: 1px solid @invertedMenuBorderColor;
 @invertedMenuBoxShadow: none;
+
+@invertedPointingArrowBackground: @black;
+@invertedPointingArrowBoxShadow: -@menuBorderWidth -@menuBorderWidth 0 0 @invertedMenuBorderColor;
 
 @invertedHoveredItemBackground: @transparentWhite;
 @invertedHoveredItemColor: @invertedMenuColor;
