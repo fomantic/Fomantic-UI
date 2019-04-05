@@ -542,6 +542,12 @@
   color: inherit;
   padding: @cellVerticalPadding @cellHorizontalPadding;
 }
+.ui.table > tr > td.selectable,
+.ui.table > tbody > tr > td.selectable,
+.ui.selectable.table > tbody > tr,
+.ui.selectable.table > tr {
+  cursor:pointer;
+}
 
 /* Other States */
 .ui.ui.selectable.table tr.error:hover,
