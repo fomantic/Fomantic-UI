@@ -423,11 +423,19 @@ $.fn.progress = function(parameters) {
             else {
               var firstNonZeroIndex = -1;
               var lastNonZeroIndex = -1;
+              var percentSum = 0;
+              var barCounts = $bars.length;
+              var isMultiple = barCounts > 1;
               var percents = values.map(function(value, index) {
+                percentSum += value;
+                var allZero = (index === barCounts - 1 && percentSum === 0);
                 var $bar = $($bars[index]);
-                if (value === 0) {
+                if (value === 0 && isMultiple && !allZero) {
                   $bar.css('display', 'none');
                 } else {
+                  if (isMultiple && allZero) {
+                    $bar.css('background', 'transparent');
+                  }
                   if (firstNonZeroIndex == -1) {
                     firstNonZeroIndex = index;
                   }
