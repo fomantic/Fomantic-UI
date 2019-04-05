@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Progress
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Progress
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Visibility
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Visibility
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
