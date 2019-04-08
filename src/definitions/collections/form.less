@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Form
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Form
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -157,6 +157,29 @@
 .ui.form textarea,
 .ui.form input[type="checkbox"] {
   vertical-align: @checkboxVerticalAlign;
+}
+
+/*--------------------
+    Checkbox margin
+---------------------*/
+
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
+  margin-top: @inputLineHeight + @checkboxFieldTopMargin;
+}
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.toggle.checkbox {
+  margin-top: @inputLineHeight + @checkboxToggleFieldTopMargin;
+}
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.slider.checkbox {
+  margin-top: @inputLineHeight + @checkboxSliderFieldTopMargin;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.checkbox {
+  margin-top: @checkboxFieldTopMargin / 2;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.toggle.checkbox {
+  margin-top: @checkboxToggleFieldTopMargin / 2;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.slider.checkbox {
+  margin-top: @checkboxSliderFieldTopMargin / 2;
 }
 
 /*--------------------
@@ -649,6 +672,11 @@
   height: 100%;
   z-index: @loaderDimmerZIndex;
 }
+
+.ui.loading.form.segments:before {
+  border-radius: @defaultBorderRadius;
+}
+
 .ui.loading.form:after {
   position: absolute;
   content: '';
