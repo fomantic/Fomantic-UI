@@ -1,13 +1,3 @@
 /*******************************
          Theme Overrides
 *******************************/
-
-.ui.rating .icon {
-  line-height: 1;
-  backface-visibility: hidden;
-  font-weight: normal;
-  font-style: normal;
-  text-align: center;
-}
-
-
