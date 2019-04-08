@@ -175,7 +175,7 @@ $.fn.progress = function (parameters) {
               })
             ;
             module.failSafeTimer = setTimeout(function () {
-              $bar.triggerHandler(transitionEnd);
+              $bars.triggerHandler(transitionEnd);
             }, settings.duration + settings.failSafeDelay);
             module.verbose('Adding fail safe timer', module.timer);
           }
