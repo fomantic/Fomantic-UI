@@ -160,6 +160,29 @@
 }
 
 /*--------------------
+    Checkbox margin
+---------------------*/
+
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
+  margin-top: @inputLineHeight + @checkboxFieldTopMargin;
+}
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.toggle.checkbox {
+  margin-top: @inputLineHeight + @checkboxToggleFieldTopMargin;
+}
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.slider.checkbox {
+  margin-top: @inputLineHeight + @checkboxSliderFieldTopMargin;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.checkbox {
+  margin-top: @checkboxFieldTopMargin / 2;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.toggle.checkbox {
+  margin-top: @checkboxToggleFieldTopMargin / 2;
+}
+.ui.ui.form .field .fields .field:not(:only-child) .ui.slider.checkbox {
+  margin-top: @checkboxSliderFieldTopMargin / 2;
+}
+
+/*--------------------
       Transparent
 ---------------------*/
 
