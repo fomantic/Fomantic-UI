@@ -1540,9 +1540,9 @@ select.ui.dropdown {
   font-size: @massive;
 }
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 
 /* General rules and basic dropdowns */
 .ui.inverted.dropdown .menu {
@@ -1550,41 +1550,33 @@ select.ui.dropdown {
   box-shadow: @invertedMenuBoxShadow;
   border: @invertedMenuBorder;
 }
-
 .ui.inverted.dropdown .menu > .item {
   color: @invertedMenuColor;
 }
-
 .ui.inverted.dropdown .menu .active.item {
   background: @invertedActiveItemBackground;
   color: @invertedActiveItemColor;
   box-shadow: @invertedActiveItemBoxShadow;
 }
-
 .ui.inverted.dropdown .menu > .item:hover {
   background: @invertedHoveredItemBackground;
   color: @invertedHoveredItemColor;
 }
-
 .ui.inverted.dropdown.selected,
 .ui.inverted.dropdown .menu .selected.item {
   background: @invertedSelectedBackground;
   color: @invertedSelectedColor;
 }
-
 .ui.inverted.dropdown .menu > .header {
   color: @invertedMenuHeaderColor;
 }
-
 .ui.inverted.dropdown > .text > .description,
 .ui.inverted.dropdown .menu > .item > .description {
   color: @invertedItemDescriptionColor;
 }
-
 .ui.inverted.dropdown .menu > .divider {
   border-top: @invertedMenuDividerBorder;
 }
-
 .ui.inverted.dropdown .scrolling.menu {
   border: none;
   border-top: @invertedMenuBorder;
@@ -1596,16 +1588,13 @@ select.ui.dropdown {
   background: @invertedSelectionBackground;
   color: @invertedSelectionTextColor;
 }
-
 .ui.inverted.selection.dropdown:hover {
   border-color: @invertedSelectionHoverBorderColor;
   box-shadow: @invertedSelectionHoverBoxShadow;
 }
-
 .ui.inverted.selection.dropdown input {
   color: @invertedSelectionInputTextColor;
 }
-
 .ui.inverted.dropdown:not(.button) > .default.text,
 .ui.inverted.default.dropdown:not(.button) > .text {
   color: @invertedDefaultTextColor;
@@ -1614,11 +1603,9 @@ select.ui.dropdown {
 .ui.inverted.default.dropdown:not(.button) > input:focus ~ .text {
   color: @invertedDefaultTextFocusColor;
 }
-
 .ui.inverted.selection.visible.dropdown > .text:not(.default) {
   color: @invertedSelectionVisibleTextColor;
 }
-
 .ui.inverted.active.search.dropdown input.search:focus + .text .icon,
 .ui.inverted.active.search.dropdown input.search:focus + .text .flag {
   opacity: @invertedSelectionTextUnderlayIconOpacity;
@@ -1626,16 +1613,13 @@ select.ui.dropdown {
 .ui.inverted.active.search.dropdown input.search:focus + .text {
   color: @invertedSelectionTextUnderlayColor !important;
 }
-
 .ui.inverted.selection.active.dropdown .menu,
 .ui.inverted.selection.active.dropdown:hover {
   border-color: @invertedSelectionVisibleBorderColor;
 }
-
 .ui.inverted.selection.dropdown .menu > .item {
   border-top: @invertedSelectionItemDivider;
 }
-
 .ui.inverted.dropdown .menu > .message:not(.ui) {
   color: @invertedMessageColor;
 }
@@ -1652,7 +1636,6 @@ select.ui.dropdown {
   color: @invertedLabelColor;
   box-shadow: @invertedLabelBoxShadow;
 }
-
 .ui.inverted.multiple.dropdown > .label:hover {
   background-color: @invertedLabelHoverBackgroundColor;
   border-color: @invertedLabelHoverBackgroundColor;
@@ -1660,12 +1643,10 @@ select.ui.dropdown {
   background-image: @invertedLabelHoverBackgroundImage;
   color: @invertedLabelHoverTextColor;
 }
-
 .ui.inverted.multiple.dropdown > .label > .close.icon,
 .ui.inverted.multiple.dropdown > .label > .delete.icon {
   opacity: @invertedLabelIconOpacity;
 }
-
 .ui.inverted.multiple.dropdown > .label > .close.icon:hover,
 .ui.inverted.multiple.dropdown > .label > .delete.icon:hover {
   opacity: @invertedLabelIconHoverOpacity;
@@ -1701,8 +1682,7 @@ select.ui.dropdown {
 .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
   background: @thumbInvertedHoverBackground;
 }
-
-.ui.inverted.pointing.dropdown > .menu:after {
+.ui.inverted.pointing.dropdown > .menu::after {
   background: @invertedPointingArrowBackground;
   box-shadow: @invertedPointingArrowBoxShadow;
 }

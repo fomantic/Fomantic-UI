@@ -406,7 +406,7 @@
   .ui[class*="tablet stackable"].table > tfoot > tr > th,
   .ui[class*="tablet stackable"].table > tr > th,
   .ui[class*="tablet stackable"].table > tbody > tr > td,
-  .ui[class*="tablet stackable"].table > tr > td  {
+  .ui[class*="tablet stackable"].table > tr > td {
     display: block !important;
     width: 100% !important;
   }
@@ -530,7 +530,7 @@
 .ui.table > tbody > tr > td.selectable,
 .ui.selectable.table > tbody > tr,
 .ui.selectable.table > tr {
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* Other States */
@@ -833,7 +833,7 @@ each(@colors, {
 .ui.sortable.table thead th.sorted:hover {
   user-select: none;
 }
-.ui.sortable.table > thead > tr > th:after {
+.ui.sortable.table > thead > tr > th::after {
   display: none;
   font-style: normal;
   font-weight: @normal;
