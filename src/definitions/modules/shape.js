@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Shape
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Shape
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

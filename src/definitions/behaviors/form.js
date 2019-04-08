@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Form Validation
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Form Validation
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -760,15 +760,15 @@ $.fn.form = function (parameters) {
                 ? rule
                 : [rule]
             ;
-            if (rule == undefined) {
+            if (validation[field] === undefined || !Array.isArray(validation[field].rules)) {
+              return;
+            }
+            if(rule === undefined) {
               module.debug('Removed all rules');
               validation[field].rules = [];
               return;
             }
-            if (validation[field] == undefined || !Array.isArray(validation[field].rules)) {
-              return;
-            }
-            $.each(validation[field].rules, function (index, rule) {
+            $.each(validation[field].rules, function(index, rule) {
               if (rules.indexOf(rule.type) !== -1) {
                 module.debug('Removed rule', rule.type);
                 validation[field].rules.splice(index, 1);
@@ -786,7 +786,7 @@ $.fn.form = function (parameters) {
             });
           },
           // alias
-          rules: function (field, rules) {
+          rules: function(field, rules) {
             if (Array.isArray(field)) {
               $.each(field, function (index, field) {
                 module.remove.rule(field, rules);

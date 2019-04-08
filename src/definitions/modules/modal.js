@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Modal
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Modal
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -471,7 +471,7 @@ $.fn.modal = function (parameters) {
                   duration    : settings.duration,
                   useFailSafe : true,
                   onStart     : function () {
-                    if (!module.others.active() && !keepDimmed) {
+                    if (!module.others.active() && !module.others.animating() && !keepDimmed) {
                       module.hideDimmer();
                     }
                     if (settings.keyboardShortcuts && !module.others.active()) {

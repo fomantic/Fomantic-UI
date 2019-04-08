@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Accordion
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Accordion
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
