@@ -66,6 +66,9 @@
 @checkboxVerticalAlign: top;
 @checkboxLabelFontSize: 1em;
 @checkboxLabelTextTransform: @labelTextTransform;
+@checkboxFieldTopMargin: 1.2em;
+@checkboxToggleFieldTopMargin: 1em;
+@checkboxSliderFieldTopMargin: 1.4em;
 
 /* Inline Validation Prompt */
 @promptBackground: @white;
