@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.2",
+  "version": "2.7.4",
   "title": "Fomantic UI",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "homepage": "http://fomantic-ui.com",
@@ -20,9 +20,7 @@
     "stylelint-fix": "stylelint src/definitions/**/*.less --fix"
   },
   "dependencies": {
-    "jquery": "^3.2.1"
-  },
-  "devDependencies": {
+    "jquery": "^3.2.1",
     "@octokit/rest": "^16.16.0",
     "better-console": "1.0.1",
     "del": "^3.0.0",
