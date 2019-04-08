@@ -192,7 +192,10 @@ module.exports.watch = function (type, config) {
   const method = type === 'docs' ? docs : rtlAndNormal;
 
   // Watch theme.config file
-  gulp.watch([normalize(config.paths.source.config)])
+  gulp.watch([
+    normalize(config.paths.source.config),
+    normalize(config.paths.source.site + '/**/site.variables')
+  ])
     .on('all', function () {
       // Clear timeout and reset files
       timeout && clearTimeout(timeout);
@@ -217,7 +220,9 @@ module.exports.watch = function (type, config) {
 
       // Determine which LESS file has to be recompiled
       let lessPath;
-      if (path.indexOf(config.paths.source.themes) !== -1) {
+      if(path.indexOf('site.variables') !== -1)  {
+        return;
+      } else if (path.indexOf(config.paths.source.themes) !== -1) {
         console.log('Change detected in packaged theme');
         lessPath = replaceExt(path, '.less');
         lessPath = lessPath.replace(tasks.regExp.theme, config.paths.source.definitions);
