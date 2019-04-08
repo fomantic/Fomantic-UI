@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Checkbox
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Checkbox
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -204,6 +204,14 @@
 .ui.checkbox input:not([type=radio]):indeterminate ~ label:after {
   opacity: @checkboxIndeterminateCheckOpacity;
   color: @checkboxIndeterminateCheckColor;
+}
+.ui.indeterminate.toggle.checkbox {
+  & input:not([type=radio]):indeterminate ~ label:before {
+    background: @toggleCenterLaneBackground;
+  }
+  & input:not([type=radio]) ~ label:after {
+    left: @toggleCenterOffset;
+  }
 }
 
 /*--------------

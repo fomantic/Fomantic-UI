@@ -4,14 +4,14 @@
              Theme
  *******************************/
 
-.ui.slider:not(.vertical) {
+.ui.slider:not(.vertical):not(.checkbox) {
   width: 100%;
   padding: 1em 0.5em;
 }
-.ui.slider {
+.ui.slider:not(.checkbox) {
   position: relative;
 }
-.ui.slider:focus {
+.ui.slider:not(.checkbox):focus {
   outline: 0;
 }
 .ui.slider .inner {
@@ -82,7 +82,7 @@
      Disabled
 ---------------*/
 
-.ui.disabled.slider {
+.ui.disabled.slider:not(.checkbox) {
   opacity: 0.5;
 }
 .ui.disabled.slider .inner:hover {

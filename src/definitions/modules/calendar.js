@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI - Calendar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Calendar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -183,7 +183,13 @@ $.fn.calendar = function(parameters) {
             }
           },
           date: function () {
-            if ($input.length) {
+            if (settings.initialDate) {
+              var date = parser.date(settings.initialDate, settings);
+              module.set.date(date, settings.formatInput, false);
+            } else if ($module.data(metadata.date) !== undefined) {
+              var date = parser.date($module.data(metadata.date), settings);
+              module.set.date(date, settings.formatInput, false);
+            } else if ($input.length) {
               var val = $input.val();
               var date = parser.date(val, settings);
               module.set.date(date, settings.formatInput, false);
@@ -298,7 +304,7 @@ $.fn.calendar = function(parameters) {
                   if(settings.showWeekNumbers) {
                       cell = $('<th/>').appendTo(row);
                       cell.text(settings.text.weekNo);
-                      cell.addClass(className.disabledCell);
+                      cell.addClass(className.weekCell);
                       textColumns--;
                   }
                   for (i = 0; i < textColumns; i++) {
@@ -315,7 +321,7 @@ $.fn.calendar = function(parameters) {
                 if(isDay && settings.showWeekNumbers){
                     cell = $('<th/>').appendTo(row);
                     cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
-                    cell.addClass(className.disabledCell);
+                    cell.addClass(className.weekCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
@@ -328,7 +334,7 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
-                  var disabled = adjacent || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode);
+                  var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
                   if (disabled) {
                     var disabledReason = module.helper.disabledReason(cellDate, mode);
                     if (disabledReason !== null) {
@@ -398,7 +404,7 @@ $.fn.calendar = function(parameters) {
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && !adjacent && !disabled);
+              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -518,7 +524,7 @@ $.fn.calendar = function(parameters) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
-                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode)) {
+                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
                   module.selectDate(date);
                 }
                 //disable form submission:
@@ -569,7 +575,7 @@ $.fn.calendar = function(parameters) {
               }();
           },
           date: function () {
-            return $module.data(metadata.date) || null;
+            return module.helper.sanitiseDate($module.data(metadata.date)) || null;
           },
           focusDate: function () {
             return $module.data(metadata.focusDate) || null;
@@ -821,6 +827,20 @@ $.fn.calendar = function(parameters) {
                 return module.helper.dateEqual(date, d[metadata.date], mode);
               }
             }));
+          },
+          isEnabled: function(date, mode) {
+            if (mode === 'day') {
+              return settings.enabledDates.length == 0 || settings.enabledDates.some(function(d){
+                if (d instanceof Date) {
+                  return module.helper.dateEqual(date, d, mode);
+                }
+                if (d !== null && typeof d === 'object') {
+                  return module.helper.dateEqual(date, d[metadata.date], mode);
+                }
+              });
+            } else {
+              return true;
+            }
           },
           disabledReason: function(date, mode) {
             if (mode === 'day') {
@@ -1122,6 +1142,10 @@ $.fn.calendar.settings = {
   showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
   disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
+  enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
+  centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
+  currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
+  selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -1212,6 +1236,9 @@ $.fn.calendar.settings = {
 
   parser: {
     date: function (text, settings) {
+      if (text instanceof Date) {
+        return text;
+      }
       if (!text) {
         return null;
       }
@@ -1279,13 +1306,16 @@ $.fn.calendar.settings = {
           }
         }
 
-        //year > 59
+        //year > settings.centuryBreak
         for (i = 0; i < numbers.length; i++) {
           j = parseInt(numbers[i]);
           if (isNaN(j)) {
             continue;
           }
-          if (j > 59) {
+          if (j >= settings.centuryBreak && i === numbers.length-1) {
+            if (j <= 99) {
+              j += settings.currentCentury - 100;
+            }
             year = j;
             numbers.splice(i, 1);
             break;
@@ -1321,15 +1351,15 @@ $.fn.calendar.settings = {
           }
         }
 
-        //year <= 59
+        //year <= settings.centuryBreak
         if (year < 0) {
           for (i = numbers.length - 1; i >= 0; i--) {
             j = parseInt(numbers[i]);
             if (isNaN(j)) {
               continue;
             }
-            if (j < 99) {
-              j += 2000;
+            if (j <= 99) {
+              j += settings.currentCentury;
             }
             year = j;
             numbers.splice(i, 1);
@@ -1465,6 +1495,7 @@ $.fn.calendar.settings = {
     link: 'link',
     cell: 'link',
     disabledCell: 'disabled',
+    weekCell: 'disabled',
     adjacentCell: 'adjacent',
     activeCell: 'active',
     rangeCell: 'range',

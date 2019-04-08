@@ -1,6 +1,6 @@
 /*
- * # Semantic - Menu
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic - Menu
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Copyright 2015 Contributor
@@ -392,6 +392,10 @@
   .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .item:not(.right):not(.borderless):first-child {
     border-left: @dividerSize solid @dividerBackground;
   }
+  .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.item:not(.borderless):last-child,
+  .ui.menu:not(.secondary):not(.text):not(.tabular):not(.borderless) > .container > .right.menu > .item:not(.borderless):last-child {
+    border-right: @dividerSize solid @dividerBackground;
+  }
 }
 
 
@@ -455,7 +459,7 @@
      Disabled
 ---------------*/
 
-.ui.menu .item.disabled {
+.ui.ui.menu .item.disabled {
   cursor: default;
   background-color: transparent;
   color: @disabledTextColor;
@@ -479,7 +483,7 @@ Floated Menu / Item
 }
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
-.ui.menu:not(.vertical) .right.menu {
+.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
   display: flex;
   margin-left: auto !important;
 }
@@ -1344,7 +1348,7 @@ each(@colors, {
 }
 
 /* Disabled */
-.ui.inverted.menu .item.disabled {
+.ui.ui.inverted.menu .item.disabled {
   color: @invertedDisabledTextColor;
 }
 
@@ -1886,6 +1890,38 @@ each(@colors, {
 }
 .ui.massive.menu .dropdown .menu > .item{
   font-size: @massive;
+}
+
+/*-------------------
+  Inverted dropdowns
+--------------------*/
+.ui.menu .ui.inverted.inverted.dropdown.item .menu {
+  background: @invertedDropdownBackground;
+  box-shadow: @invertedDropdownMenuBoxShadow;
+}
+
+.ui.menu .ui.inverted.dropdown .menu > .item {
+  color: @invertedDropdownItemColor !important;
+}
+
+.ui.menu .ui.inverted.dropdown .menu > .active.item {
+  background: @invertedDropdownActiveItemBackground !important;
+  color: @invertedDropdownActiveItemColor !important;
+}
+
+.ui.menu .ui.inverted.dropdown .menu > .item:hover {
+  background: @invertedDropdownHoveredItemBackground !important;
+  color: @invertedDropdownHoveredItemColor !important;
+}
+
+.ui.menu .ui.inverted.dropdown .menu > .selected.item {
+  background: @invertedDropdownSelectedItemBackground !important;
+  color: @invertedDropdownSelectedItemColor !important;
+}
+
+/* Vertical */
+.ui.vertical.menu .inverted.dropdown.item .menu {
+  box-shadow: @invertedDropdownMenuBoxShadow;
 }
 
 .loadUIOverrides();

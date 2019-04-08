@@ -154,7 +154,7 @@
 }
 
 /* Responsive */
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.table:not(.unstackable) {
     width: 100%;
     padding: 0;
@@ -386,7 +386,7 @@
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 991px) {
+@media only screen and (max-width: 991.99px) {
   .ui[class*="tablet stackable"].table,
   .ui[class*="tablet stackable"].table tbody,
   .ui[class*="tablet stackable"].table tr,
@@ -1138,7 +1138,7 @@
   color: rgba(255, 255, 255, 0.9);
   border: none;
 }
-.ui.inverted.table th {
+.ui.ui.inverted.table th {
   background-color: rgba(0, 0, 0, 0.15);
   border-color: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.9);
@@ -1152,6 +1152,12 @@
 .ui.inverted.table tr:hover td.disabled {
   pointer-events: none;
   color: rgba(225, 225, 225, 0.3);
+}
+.ui.inverted.table tr td.disabled:not([class="disabled"]),
+.ui.inverted.table tr.disabled:not([class="disabled"]) td,
+.ui.inverted.table tr.disabled td[class]:not(.disabled),
+.ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
+  color: rgba(40, 40, 40, 0.3);
 }
 
 /* Definition */
@@ -1228,6 +1234,9 @@
 .ui.celled.table tr th,
 .ui.celled.table tr td {
   border-left: 1px solid rgba(34, 36, 38, 0.1);
+}
+.ui.inverted.celled.table tr td {
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
 }
 .ui.celled.table tr th:first-child,
 .ui.celled.table tr td:first-child {

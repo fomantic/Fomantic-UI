@@ -422,7 +422,7 @@
       Mobile
 ---------------*/
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 767.99px) {
   .ui.search .results {
     max-width: calc(100vw - 2rem);
   }

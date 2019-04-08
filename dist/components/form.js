@@ -473,8 +473,7 @@ $.fn.form = function(parameters) {
                 keys     = Object.keys(parameters),
                 isLegacySettings = (keys.length > 0)
                   ? (parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined)
-                  : false,
-                ruleKeys
+                  : false
               ;
               if(isLegacySettings) {
                 // 1.x (ducktyped)
@@ -581,7 +580,6 @@ $.fn.form = function(parameters) {
             $fields.each(function(index, field) {
               var
                 $field     = $(field),
-                type       = $field.prop('type'),
                 name       = $field.prop('name'),
                 value      = $field.val(),
                 isCheckbox = $field.is(selector.checkbox),
@@ -764,12 +762,12 @@ $.fn.form = function(parameters) {
                 ? rule
                 : [rule]
             ;
-            if(rule == undefined) {
-              module.debug('Removed all rules');
-              validation[field].rules = [];
+            if(validation[field] === undefined || !Array.isArray(validation[field].rules)) {
               return;
             }
-            if(validation[field] == undefined || !Array.isArray(validation[field].rules)) {
+            if(rule === undefined) {
+              module.debug('Removed all rules');
+              validation[field].rules = [];
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
@@ -792,7 +790,7 @@ $.fn.form = function(parameters) {
           // alias
           rules: function(field, rules) {
             if(Array.isArray(field)) {
-              $.each(fields, function(index, field) {
+              $.each(field, function(index, field) {
                 module.remove.rule(field, rules);
               });
             }
@@ -924,8 +922,7 @@ $.fn.form = function(parameters) {
 
           form: function(event, ignoreCallbacks) {
             var
-              values = module.get.values(),
-              apiRequest
+              values = module.get.values()
             ;
 
             // input keydown event will fire submit repeatedly by browser default
@@ -1035,14 +1032,13 @@ $.fn.form = function(parameters) {
           rule: function(field, rule, internal) {
             var
               $field       = module.get.field(field.identifier),
-              type         = rule.type,
               ancillary    = module.get.ancillaryValue(rule),
               ruleName     = module.get.ruleName(rule),
               ruleFunction = settings.rules[ruleName],
               invalidFields = [],
-              isRadio = $field.is(selector.radio),
+              isCheckbox = $field.is(selector.checkbox),
               isValid = function(field){
-                var value = (isRadio ? $(field).filter(':checked').val() : $(field).val());
+                var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
                     ? ''
@@ -1055,7 +1051,7 @@ $.fn.form = function(parameters) {
               module.error(error.noRule, ruleName);
               return;
             }
-            if(isRadio) {
+            if(isCheckbox) {
               if (!isValid($field)) {
                 invalidFields = $field;
               }
@@ -1554,7 +1550,6 @@ $.fn.form.settings = {
     // matches another field
     match: function(value, identifier) {
       var
-        $form = $(this),
         matchingValue
       ;
       if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
@@ -1579,7 +1574,6 @@ $.fn.form.settings = {
     different: function(value, identifier) {
       // use either id or name of field
       var
-        $form = $(this),
         matchingValue
       ;
       if( $('[data-validate="'+ identifier +'"]').length > 0 ) {

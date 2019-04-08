@@ -132,6 +132,11 @@
   -webkit-transition: opacity 0.6s ease-in-out;
   transition: opacity 0.6s ease-in-out;
 }
+.ui.shape .animating.side *,
+.ui.shape.animating .side * {
+  -webkit-transition: none;
+  transition: none;
+}
 
 /*--------------
      Active
