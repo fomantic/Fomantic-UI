@@ -81,11 +81,11 @@ $.fn.progress = function (parameters) {
                 : typeof element == 'string'
                   ? element.split(',')
                   : []
-              ;
+            ;
           }
         },
 
-        initialize: function() {
+        initialize: function () {
           module.set.duration();
           module.set.transitionEvent();
           module.debug(element);
@@ -233,9 +233,9 @@ $.fn.progress = function (parameters) {
         get: {
           text: function (templateText, index) {
             var
-              index_  = index                || 0,
+              index_  = index || 0,
               value   = module.value[index_] || 0,
-              total   = module.total         || 0,
+              total   = module.total || 0,
               percent = (animating)
                 ? module.get.displayPercent(index_)
                 : module.percent[index_] || 0,
@@ -409,8 +409,8 @@ $.fn.progress = function (parameters) {
         },
 
         set: {
-          barWidth: function(values) {
-            module.debug("set bar width with ", values);
+          barWidth: function (values) {
+            module.debug('set bar width with ', values);
             values = module.helper.forceArray(values);
             var total = module.helper.sum(values);
             if (total > 100) {
@@ -422,29 +422,30 @@ $.fn.progress = function (parameters) {
             else {
               var firstNonZeroIndex = -1;
               var lastNonZeroIndex = -1;
-              var percents = values.map(function(value, index) {
+              var percents = values.map(function (value, index) {
                 var $bar = $($bars[index]);
                 if (value === 0) {
                   $bar.css('display', 'none');
-                } else {
+                }
+                else {
                   if (firstNonZeroIndex == -1) {
                     firstNonZeroIndex = index;
                   }
                   lastNonZeroIndex = index;
                   $bar.css({
-                    display: 'block',
-                    width: value + '%'
+                    display : 'block',
+                    width   : value + '%'
                   });
                 }
                 return parseInt(value, 10);
               });
-              values.forEach(function(_, index) {
+              values.forEach(function (_, index) {
                 var $bar = $($bars[index]);
                 $bar.css({
-                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                  borderTopLeftRadius     : index == firstNonZeroIndex ? '' : 0,
+                  borderBottomLeftRadius  : index == firstNonZeroIndex ? '' : 0,
+                  borderTopRightRadius    : index == lastNonZeroIndex ? '' : 0,
+                  borderBottomRightRadius : index == lastNonZeroIndex ? '' : 0
                 });
               });
               $module
@@ -470,21 +471,21 @@ $.fn.progress = function (parameters) {
               return (typeof percent == 'string')
                 ? +(percent.replace('%', ''))
                 : percent
-                ;
+              ;
             });
             // round display percentage
-            percents = percents.map(function (percent){
+            percents = percents.map(function (percent) {
               return (settings.precision > 0)
                 ? Math.round(percent * (10 * settings.precision)) / (10 * settings.precision)
                 : Math.round(percent)
               ;
             });
             module.percent = percents;
-            if (!module.has.total() ) {
-              module.value = percents.map(function (percent){
+            if (!module.has.total()) {
+              module.value = percents.map(function (percent) {
                 return (settings.precision > 0)
-                  ? Math.round( (percent / 100) * module.total * (10 * settings.precision)) / (10 * settings.precision)
-                  : Math.round( (percent / 100) * module.total * 10) / 10
+                  ? Math.round((percent / 100) * module.total * (10 * settings.precision)) / (10 * settings.precision)
+                  : Math.round((percent / 100) * module.total * 10) / 10
                 ;
               });
               if (settings.limitValues) {
@@ -563,19 +564,19 @@ $.fn.progress = function (parameters) {
               module.set.label(settings.text.active);
             }
           },
-          barLabel: function(text) {
-            $progresses.map(function (index, element){
+          barLabel: function (text) {
+            $progresses.map(function (index, element) {
               var $progress = $(element);
               if (text !== undefined) {
-                $progress.text( module.get.text(text, index) );
+                $progress.text(module.get.text(text, index));
               }
               else if (settings.label == 'ratio' && module.total) {
                 module.verbose('Adding ratio to bar label');
-                $progress.text( module.get.text(settings.text.ratio, index) );
+                $progress.text(module.get.text(settings.text.ratio, index));
               }
               else if (settings.label == 'percent') {
                 module.verbose('Adding percentage to bar label');
-                $progress.text( module.get.text(settings.text.percent, index) );
+                $progress.text(module.get.text(settings.text.percent, index));
               }
             });
           },
@@ -708,7 +709,7 @@ $.fn.progress = function (parameters) {
               }
               return percentComplete;
             });
-            module.set.percent( percentCompletes );
+            module.set.percent(percentCompletes);
           }
         },
 

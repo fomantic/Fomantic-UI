@@ -9,7 +9,6 @@
  */
 
 ;(function ($, window, document, undefined) {
-
 'use strict';
 
 $.isFunction = $.isFunction || function (obj) {
@@ -186,10 +185,12 @@ $.fn.calendar = function (parameters) {
             if (settings.initialDate) {
               var date = parser.date(settings.initialDate, settings);
               module.set.date(date, settings.formatInput, false);
-            } else if ($module.data(metadata.date) !== undefined) {
+            }
+            else if ($module.data(metadata.date) !== undefined) {
               var date = parser.date($module.data(metadata.date), settings);
               module.set.date(date, settings.formatInput, false);
-            } else if ($input.length) {
+            }
+            else if ($input.length) {
               var val = $input.val();
               var date = parser.date(val, settings);
               module.set.date(date, settings.formatInput, false);
@@ -302,10 +303,10 @@ $.fn.calendar = function (parameters) {
                 if (isDay) {
                   row = $('<tr/>').appendTo(thead);
                   if (settings.showWeekNumbers) {
-                      cell = $('<th/>').appendTo(row);
-                      cell.text(settings.text.weekNo);
-                      cell.addClass(className.weekCell);
-                      textColumns--;
+                    cell = $('<th/>').appendTo(row);
+                    cell.text(settings.text.weekNo);
+                    cell.addClass(className.weekCell);
+                    textColumns--;
                   }
                   for (i = 0; i < textColumns; i++) {
                     cell = $('<th/>').appendTo(row);
@@ -318,10 +319,10 @@ $.fn.calendar = function (parameters) {
               i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
               for (r = 0; r < rows; r++) {
                 row = $('<tr/>').appendTo(tbody);
-                if (isDay && settings.showWeekNumbers){
-                    cell = $('<th/>').appendTo(row);
-                    cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
-                    cell.addClass(className.weekCell);
+                if (isDay && settings.showWeekNumbers) {
+                  cell = $('<th/>').appendTo(row);
+                  cell.text(module.get.weekOfYear(year, month, i + 1 - settings.firstDayOfWeek));
+                  cell.addClass(className.weekCell);
                 }
                 for (c = 0; c < textColumns; c++, i++) {
                   var cellDate = isYear ? new Date(i, month, 1, hour, minute)
@@ -1150,11 +1151,11 @@ $.fn.calendar.settings = {
   multiMonth         : 1, // show multiple months when in 'day' mode
   minTimeGap         : 5,
   showWeekNumbers    : null, // show Number of Week at the very first column of a dayView
-  disabledDates      : [],  // specific day(s) which won't be selectable and contain additional information.
-  disabledDaysOfWeek : [],  // day(s) which won't be selectable(s) (0 = Sunday)
-  enabledDates       : [],  // specific day(s) which will be selectable, all other days will be disabled
-  centuryBreak       : 60,  // starting short year until 99 where it will be assumed to belong to the last century
-  currentCentury     : 2000,  // century to be added to 2-digit years (00 to {centuryBreak}-1)
+  disabledDates      : [], // specific day(s) which won't be selectable and contain additional information.
+  disabledDaysOfWeek : [], // day(s) which won't be selectable(s) (0 = Sunday)
+  enabledDates       : [], // specific day(s) which will be selectable, all other days will be disabled
+  centuryBreak       : 60, // starting short year until 99 where it will be assumed to belong to the last century
+  currentCentury     : 2000, // century to be added to 2-digit years (00 to {centuryBreak}-1)
   selectAdjacentDays : false, // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions       : {

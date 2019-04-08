@@ -527,8 +527,9 @@ $.fn.dropdown = function (parameters) {
                 callback.call(element);
               });
             }
-          } else if( module.can.click() ) {
-              module.unbind.intent();
+          }
+          else if (module.can.click()) {
+            module.unbind.intent();
           }
         },
 
