@@ -1,0 +1,8 @@
+# Configuration for auto-assign - https://github.com/kentaro-m/auto-assign
+
+addReviewers: true
+reviewers:
+  - hammy2899
+  - ColinFrick
+  - prudho
+  - lubber-de
