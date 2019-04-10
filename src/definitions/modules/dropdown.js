@@ -141,6 +141,7 @@ $.fn.dropdown = function(parameters) {
           module.verbose('Destroying previous dropdown', $module);
           module.remove.tabbable();
           module.remove.active();
+          $menu.transition('stop all');
           $menu.removeClass(className.visible).addClass(className.hidden);
           $module
             .off(eventNamespace)
