@@ -1160,7 +1160,7 @@ $.fn.form = function(parameters) {
                     ? ''
                     : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
                 ;
-                return ruleFunction.call(field, value, ancillary);
+                return ruleFunction.call(field, value, ancillary, $module);
               }
             ;
             if( !$.isFunction(ruleFunction) ) {
@@ -1670,21 +1670,22 @@ $.fn.form.settings = {
     },
 
     // matches another field
-    match: function(value, identifier) {
+    match: function(value, identifier, $module) {
       var
-        matchingValue
+        matchingValue,
+        matchingElement
       ;
-      if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+        matchingValue = matchingElement.val();
       }
-      else if($('#' + identifier).length > 0) {
-        matchingValue = $('#' + identifier).val();
+      else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if($('[name="' + identifier +'"]').length > 0) {
-        matchingValue = $('[name="' + identifier + '"]').val();
+      else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if( $('[name="' + identifier +'[]"]').length > 0 ) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+        matchingValue = matchingElement;
       }
       return (matchingValue !== undefined)
         ? ( value.toString() == matchingValue.toString() )
@@ -1693,22 +1694,23 @@ $.fn.form.settings = {
     },
 
     // different than another field
-    different: function(value, identifier) {
+    different: function(value, identifier, $module) {
       // use either id or name of field
       var
-        matchingValue
+        matchingValue,
+        matchingElement
       ;
-      if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+        matchingValue = matchingElement.val();
       }
-      else if($('#' + identifier).length > 0) {
-        matchingValue = $('#' + identifier).val();
+      else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if($('[name="' + identifier +'"]').length > 0) {
-        matchingValue = $('[name="' + identifier + '"]').val();
+      else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if( $('[name="' + identifier +'[]"]').length > 0 ) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+        matchingValue = matchingElement;
       }
       return (matchingValue !== undefined)
         ? ( value.toString() !== matchingValue.toString() )
