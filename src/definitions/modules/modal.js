@@ -604,8 +604,10 @@ $.fn.modal = function(parameters) {
           bodyMargin: function() {
             initialBodyMargin = $body.css('margin-right');
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-            $body.css('margin-right', (bodyMarginRightPixel + bodyScrollbarWidth) + 'px');
+                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth,
+                diffPos = bodyMarginRightPixel + bodyScrollbarWidth;
+            $body.css('margin-right', diffPos + 'px');
+            $body.find(selector.bodyFixed).css('padding-right', diffPos + 'px');
           }
         },
 
@@ -617,6 +619,7 @@ $.fn.modal = function(parameters) {
           },
           bodyMargin: function() {
             $body.css('margin-right', initialBodyMargin);
+            $body.find(selector.bodyFixed).css('padding-right', initialBodyMargin);
           }
         },
 
@@ -1105,7 +1108,8 @@ $.fn.modal.settings = {
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
     modal    : '.ui.modal',
-    dimmer   : '> .ui.dimmer'
+    dimmer   : '> .ui.dimmer',
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar'
   },
   error : {
     dimmer    : 'UI Dimmer, a required component is not included in this page',
