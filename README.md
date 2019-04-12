@@ -66,5 +66,10 @@ Before creating a pull request be sure to read the [contributing](CONTRIBUTING.m
 #### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
+#### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
+[![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
+
+---
+
 #### Credit
 Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)
