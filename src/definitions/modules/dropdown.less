@@ -1299,8 +1299,13 @@ select.ui.dropdown {
   border-radius: @floatingMenuBorderRadius !important;
 }
 .ui.floating.dropdown > .menu {
-  margin-top: @floatingMenuDistance !important;
   border-radius: @floatingMenuBorderRadius !important;
+}
+.ui:not(.upward).floating.dropdown > .menu {
+  margin-top: @floatingMenuDistance;
+}
+.ui.upward.floating.dropdown > .menu {
+  margin-bottom: @floatingMenuDistance;
 }
 
 /*--------------
