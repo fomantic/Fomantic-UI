@@ -858,9 +858,9 @@ $.fn.calendar = function(parameters) {
               for (; i < il; i++) {
                 d = dates[i];
                 if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
-                  return {
-                    date: d
-                  };
+                  var dateObject = {};
+                  dateObject[metadata.date] = d;
+                  return dateObject;
                 }
                 else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
                   return d;
