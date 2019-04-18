@@ -492,15 +492,17 @@ $.fn.calendar = function(parameters) {
             var date = target.data(metadata.date);
             var focusDate = target.data(metadata.focusDate);
             var mode = target.data(metadata.mode);
-            if (date) {
-              var forceSet = target.hasClass(className.today);
-              module.selectDate(date, forceSet);
-            }
-            else if (focusDate) {
-              module.set.focusDate(focusDate);
-            }
-            else if (mode) {
-              module.set.mode(mode);
+            if(settings.onSelect.call(element, date, mode) !== false) {
+              if (date) {
+                var forceSet = target.hasClass(className.today);
+                module.selectDate(date, forceSet);
+              }
+              else if (focusDate) {
+                module.set.focusDate(focusDate);
+              }
+              else if (mode) {
+                module.set.mode(mode);
+              }
             }
           },
           keydown: function (event) {
@@ -1473,6 +1475,10 @@ $.fn.calendar.settings = {
 
   // callback after hide animation
   onHidden: function () {
+  },
+
+  // callback before item is selected, return false to prevent selection
+  onSelect: function (date, mode) {
   },
 
   // is the given date disabled?
