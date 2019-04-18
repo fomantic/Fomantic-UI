@@ -492,17 +492,15 @@ $.fn.calendar = function(parameters) {
             var date = target.data(metadata.date);
             var focusDate = target.data(metadata.focusDate);
             var mode = target.data(metadata.mode);
-            if(settings.onSelect.call(element, date, mode) !== false) {
-              if (date) {
-                var forceSet = target.hasClass(className.today);
-                module.selectDate(date, forceSet);
-              }
-              else if (focusDate) {
-                module.set.focusDate(focusDate);
-              }
-              else if (mode) {
-                module.set.mode(mode);
-              }
+            if (date && settings.onSelect.call(element, date, module.get.mode()) !== false) {
+              var forceSet = target.hasClass(className.today);
+              module.selectDate(date, forceSet);
+            }
+            else if (focusDate) {
+              module.set.focusDate(focusDate);
+            }
+            else if (mode) {
+              module.set.mode(mode);
             }
           },
           keydown: function (event) {
