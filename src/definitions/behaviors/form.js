@@ -189,9 +189,11 @@ $.fn.form = function(parameters) {
               $element     = $field.parent(),
               $fieldGroup  = $field.closest($group),
               $prompt      = $fieldGroup.find(selector.prompt),
+              $calendar    = $field.closest(selector.uiCalendar),
               defaultValue = $field.data(metadata.defaultValue) || '',
               isCheckbox   = $element.is(selector.uiCheckbox),
               isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(isErrored) {
@@ -206,6 +208,9 @@ $.fn.form = function(parameters) {
             else if(isCheckbox) {
               $field.prop('checked', false);
             }
+            else if (isCalendar) {
+              $calendar.calendar('clear');
+            }
             else {
               module.verbose('Resetting field value', $field, defaultValue);
               $field.val('');
@@ -219,10 +224,12 @@ $.fn.form = function(parameters) {
               $field       = $(el),
               $element     = $field.parent(),
               $fieldGroup  = $field.closest($group),
+              $calendar    = $field.closest(selector.uiCalendar),
               $prompt      = $fieldGroup.find(selector.prompt),
               defaultValue = $field.data(metadata.defaultValue),
               isCheckbox   = $element.is(selector.uiCheckbox),
               isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(defaultValue === undefined) {
@@ -240,6 +247,9 @@ $.fn.form = function(parameters) {
             else if(isCheckbox) {
               module.verbose('Resetting checkbox value', $element, defaultValue);
               $field.prop('checked', defaultValue);
+            }
+            else if (isCalendar) {
+              $calendar.calendar('set date', defaultValue);
             }
             else {
               module.verbose('Resetting field value', $field, defaultValue);
