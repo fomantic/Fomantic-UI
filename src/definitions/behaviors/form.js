@@ -1544,11 +1544,7 @@ $.fn.form.settings = {
     date: function(date) {
       var date = new Date(date);
 
-      return Intl.DateTimeFormat('en-GB', {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-      }).format(date);
+      return Intl.DateTimeFormat('en-GB').format(date);
     },
     datetime: function(date) {
       return Intl.DateTimeFormat('en-GB', {
