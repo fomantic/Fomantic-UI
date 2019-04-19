@@ -661,13 +661,13 @@ $.fn.form = function(parameters) {
             $fields.each(function(index, field) {
               var
                 $field       = $(field),
+                $calendar    = $field.closest(selector.uiCalendar),
                 name         = $field.prop('name'),
                 value        = $field.val(),
                 isCheckbox   = $field.is(selector.checkbox),
                 isRadio      = $field.is(selector.radio),
                 isMultiple   = (name.indexOf('[]') !== -1),
-                $calendar    = $field.closest(selector.uiCalendar),
-                isCalendar   = ($calendar.length>0),
+                isCalendar   = ($calendar.length > 0),
                 isChecked    = (isCheckbox)
                   ? $field.is(':checked')
                   : false
@@ -716,7 +716,7 @@ $.fn.form = function(parameters) {
                       } else if(settings.dateHandling == 'input') {
                         values[name] = $calendar.calendar('get input date')
                       } else if (settings.dateHandling == 'formatter') {
-                        var type = $calendar.calendar('get mode');
+                        var type = $calendar.calendar('setting', 'type');
 
                         switch(type) {
                           case 'date':
