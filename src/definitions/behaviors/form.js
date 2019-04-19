@@ -660,13 +660,16 @@ $.fn.form = function(parameters) {
             ;
             $fields.each(function(index, field) {
               var
-                $field     = $(field),
-                name       = $field.prop('name'),
-                value      = $field.val(),
-                isCheckbox = $field.is(selector.checkbox),
-                isRadio    = $field.is(selector.radio),
-                isMultiple = (name.indexOf('[]') !== -1),
-                isChecked  = (isCheckbox)
+                $field       = $(field),
+                $parent      = $field.parent(),
+                $grandParent = $parent.parent(),
+                name         = $field.prop('name'),
+                value        = $field.val(),
+                isCheckbox   = $field.is(selector.checkbox),
+                isRadio      = $field.is(selector.radio),
+                isMultiple   = (name.indexOf('[]') !== -1),
+                isCalendar   = ($parent.is(selector.uiCalendar) || $grandParent.is(selector.uiCalendar)),
+                isChecked    = (isCheckbox)
                   ? $field.is(':checked')
                   : false
               ;
@@ -705,7 +708,60 @@ $.fn.form = function(parameters) {
                       values[name] = false;
                     }
                   }
-                  else {
+                  else if(isCalendar) {
+                    // We must determine which item is the calendar module
+                    var $calendar = $parent.is(selector.uiCalendar)
+                      ? $parent
+                      : $grandParent.is(selector.uiCalendar)
+                        ? $grandParent
+                        : false
+                    ;
+
+                    if ($calendar) {
+                      var date = $calendar.calendar('get date');
+
+                      if (date !== null) {
+                        if (settings.dateHandling == 'date') {
+                          values[name] = date;
+                        } else if(settings.dateHandling == 'input') {
+                          values[name] = $calendar.calendar('get input date')
+                        } else if (settings.dateHandling == 'formatter') {
+                          var type = $calendar.calendar('get mode');
+
+                          switch(type) {
+                            case 'date':
+                            values[name] = settings.formatter.date(date);
+                            break;
+                            
+                            case 'datetime':
+                            values[name] = settings.formatter.datetime(date);
+                            break;
+                            
+                            case 'time':
+                            values[name] = settings.formatter.time(date);
+                            break;
+                            
+                            case 'month':
+                            values[name] = settings.formatter.month(date);
+                            break;
+                            
+                            case 'year':
+                            values[name] = settings.formatter.year(date);
+                            break;
+    
+                            default:
+                            module.debug('Wrong calendar mode', $calendar, type);
+                            values[name] = '';
+                          }
+                        }
+                      } else {
+                        values[name] = '';
+                      }
+                    } else {
+                      module.debug('Unable to find calendar module', $field);
+                      values[name] = '';
+                    }
+                  } else {
                     values[name] = value;
                   }
                 }
@@ -1373,6 +1429,7 @@ $.fn.form.settings = {
   duration          : 200,
 
   preventLeaving    : false,
+  dateHandling      : 'date', // 'date', 'input', 'formatter'
 
   onValid           : function() {},
   onInvalid         : function() {},
@@ -1446,7 +1503,8 @@ $.fn.form.settings = {
     reset      : '.reset:not([type="reset"])',
     submit     : '.submit:not([type="submit"])',
     uiCheckbox : '.ui.checkbox',
-    uiDropdown : '.ui.dropdown'
+    uiDropdown : '.ui.dropdown',
+    uiCalendar : '.ui.calendar'
   },
 
   className : {
@@ -1483,6 +1541,46 @@ $.fn.form.settings = {
         .addClass('ui basic red pointing prompt label')
         .html(errors[0])
       ;
+    }
+  },
+
+  formatter: {
+    date: function(date) {
+      var date = new Date(date);
+
+      return Intl.DateTimeFormat('en-GB', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+      }).format(date);
+    },
+    datetime: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    time: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    month: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    },
+    year: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: 'numeric'
+      }).format(date);
     }
   },
 
