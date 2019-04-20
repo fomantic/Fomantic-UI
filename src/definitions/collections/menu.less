@@ -942,12 +942,17 @@ Floated Menu / Item
 }
 
 .ui.secondary.pointing.menu .item > .label {
-  margin-top: -@labelVerticalPadding;
-  margin-bottom: -@labelVerticalPadding;
+  margin-top: @labelVerticalPaddingSecondaryMenu;
+  margin-bottom: unset;
 }
 .ui.secondary.pointing.menu .item > .circular.label {
   margin-top: -@circularLabelVerticalPadding;
   margin-bottom: -@circularLabelVerticalPadding;
+}
+
+.ui.secondary.pointing.menu .item > .label:not(.floating) {
+  margin-top: -@labelVerticalPadding;
+  margin-bottom: -@labelVerticalPadding;
 }
 
 /* Item Types */
