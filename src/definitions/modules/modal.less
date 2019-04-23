@@ -233,10 +233,10 @@
     padding: @mobileHeaderPadding !important;
     padding-right: @closeHitbox !important;
   }
-  .ui.overlay.fullscreen.modal .content.content.content {
+  .ui.overlay.fullscreen.modal > .content.content.content {
     min-height: @overlayFullscreenScrollingContentMaxHeightMobile;
   }
-  .ui.overlay.fullscreen.modal .scrolling.content.content.content {
+  .ui.overlay.fullscreen.modal > .scrolling.content.content.content {
     max-height: @overlayFullscreenScrollingContentMaxHeightMobile;
   }
   .ui.modal > .content {
@@ -416,14 +416,14 @@
 }
 
 /* Scrolling Content */
-.ui.modal .scrolling.content {
+.ui.modal > .scrolling.content {
   max-height: @scrollingContentMaxHeight;
   overflow: auto;
 }
-.ui.overlay.fullscreen.modal .content {
+.ui.overlay.fullscreen.modal > .content {
   min-height: @overlayFullscreenScrollingContentMaxHeight;
 }
-.ui.overlay.fullscreen.modal .scrolling.content {
+.ui.overlay.fullscreen.modal > .scrolling.content {
   max-height: @overlayFullscreenScrollingContentMaxHeight;
 }
 
