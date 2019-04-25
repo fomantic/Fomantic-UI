@@ -1542,8 +1542,6 @@ $.fn.form.settings = {
 
   formatter: {
     date: function(date) {
-      var date = new Date(date);
-
       return Intl.DateTimeFormat('en-GB').format(date);
     },
     datetime: function(date) {
