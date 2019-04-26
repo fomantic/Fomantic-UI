@@ -189,9 +189,11 @@ $.fn.form = function(parameters) {
               $element     = $field.parent(),
               $fieldGroup  = $field.closest($group),
               $prompt      = $fieldGroup.find(selector.prompt),
+              $calendar    = $field.closest(selector.uiCalendar),
               defaultValue = $field.data(metadata.defaultValue) || '',
               isCheckbox   = $element.is(selector.uiCheckbox),
               isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(isErrored) {
@@ -206,6 +208,9 @@ $.fn.form = function(parameters) {
             else if(isCheckbox) {
               $field.prop('checked', false);
             }
+            else if (isCalendar) {
+              $calendar.calendar('clear');
+            }
             else {
               module.verbose('Resetting field value', $field, defaultValue);
               $field.val('');
@@ -219,10 +224,12 @@ $.fn.form = function(parameters) {
               $field       = $(el),
               $element     = $field.parent(),
               $fieldGroup  = $field.closest($group),
+              $calendar    = $field.closest(selector.uiCalendar),
               $prompt      = $fieldGroup.find(selector.prompt),
               defaultValue = $field.data(metadata.defaultValue),
               isCheckbox   = $element.is(selector.uiCheckbox),
               isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(defaultValue === undefined) {
@@ -240,6 +247,9 @@ $.fn.form = function(parameters) {
             else if(isCheckbox) {
               module.verbose('Resetting checkbox value', $element, defaultValue);
               $field.prop('checked', defaultValue);
+            }
+            else if (isCalendar) {
+              $calendar.calendar('set date', defaultValue);
             }
             else {
               module.verbose('Resetting field value', $field, defaultValue);
@@ -660,13 +670,15 @@ $.fn.form = function(parameters) {
             ;
             $fields.each(function(index, field) {
               var
-                $field     = $(field),
-                name       = $field.prop('name'),
-                value      = $field.val(),
-                isCheckbox = $field.is(selector.checkbox),
-                isRadio    = $field.is(selector.radio),
-                isMultiple = (name.indexOf('[]') !== -1),
-                isChecked  = (isCheckbox)
+                $field       = $(field),
+                $calendar    = $field.closest(selector.uiCalendar),
+                name         = $field.prop('name'),
+                value        = $field.val(),
+                isCheckbox   = $field.is(selector.checkbox),
+                isRadio      = $field.is(selector.radio),
+                isMultiple   = (name.indexOf('[]') !== -1),
+                isCalendar   = ($calendar.length > 0),
+                isChecked    = (isCheckbox)
                   ? $field.is(':checked')
                   : false
               ;
@@ -705,7 +717,47 @@ $.fn.form = function(parameters) {
                       values[name] = false;
                     }
                   }
-                  else {
+                  else if(isCalendar) {
+                    var date = $calendar.calendar('get date');
+
+                    if (date !== null) {
+                      if (settings.dateHandling == 'date') {
+                        values[name] = date;
+                      } else if(settings.dateHandling == 'input') {
+                        values[name] = $calendar.calendar('get input date')
+                      } else if (settings.dateHandling == 'formatter') {
+                        var type = $calendar.calendar('setting', 'type');
+
+                        switch(type) {
+                          case 'date':
+                          values[name] = settings.formatter.date(date);
+                          break;
+                          
+                          case 'datetime':
+                          values[name] = settings.formatter.datetime(date);
+                          break;
+                          
+                          case 'time':
+                          values[name] = settings.formatter.time(date);
+                          break;
+                          
+                          case 'month':
+                          values[name] = settings.formatter.month(date);
+                          break;
+                          
+                          case 'year':
+                          values[name] = settings.formatter.year(date);
+                          break;
+  
+                          default:
+                          module.debug('Wrong calendar mode', $calendar, type);
+                          values[name] = '';
+                        }
+                      }
+                    } else {
+                      values[name] = '';
+                    }
+                  } else {
                     values[name] = value;
                   }
                 }
@@ -1373,6 +1425,7 @@ $.fn.form.settings = {
   duration          : 200,
 
   preventLeaving    : false,
+  dateHandling      : 'date', // 'date', 'input', 'formatter'
 
   onValid           : function() {},
   onInvalid         : function() {},
@@ -1446,7 +1499,8 @@ $.fn.form.settings = {
     reset      : '.reset:not([type="reset"])',
     submit     : '.submit:not([type="submit"])',
     uiCheckbox : '.ui.checkbox',
-    uiDropdown : '.ui.dropdown'
+    uiDropdown : '.ui.dropdown',
+    uiCalendar : '.ui.calendar'
   },
 
   className : {
@@ -1483,6 +1537,40 @@ $.fn.form.settings = {
         .addClass('ui basic red pointing prompt label')
         .html(errors[0])
       ;
+    }
+  },
+
+  formatter: {
+    date: function(date) {
+      return Intl.DateTimeFormat('en-GB').format(date);
+    },
+    datetime: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    time: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    month: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    },
+    year: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: 'numeric'
+      }).format(date);
     }
   },
 
