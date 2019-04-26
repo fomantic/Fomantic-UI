@@ -780,10 +780,10 @@
 
 
 /* Responsive */
-@largestMobileScreen : (@tabletBreakpoint - 0.01px);
-@largestTabletScreen : (@computerBreakpoint - 0.01px);
-@largestSmallMonitor : (@largeMonitorBreakpoint - 0.01px);
-@largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.01px);
+@largestMobileScreen : (@tabletBreakpoint - 0.02px);
+@largestTabletScreen : (@computerBreakpoint - 0.02px);
+@largestSmallMonitor : (@largeMonitorBreakpoint - 0.02px);
+@largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.02px);
 
 
 /*-------------------
