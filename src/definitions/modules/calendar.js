@@ -646,7 +646,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $module.parent().children(selector).first();
+              selector = $(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);
