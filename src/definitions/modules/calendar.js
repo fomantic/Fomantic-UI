@@ -577,6 +577,9 @@ $.fn.calendar = function(parameters) {
           date: function () {
             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
           },
+          inputDate: function() {
+            return $input.val();
+          },
           focusDate: function () {
             return $module.data(metadata.focusDate) || null;
           },
