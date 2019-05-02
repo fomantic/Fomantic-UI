@@ -255,7 +255,7 @@ a.ui.label {
   border-color: inherit;
   border-width: @basicBorderWidth 0 0 @basicBorderWidth;
   border-style: inherit;
-  right: e(%("calc(100%% + %d)", @basicBorderWidth));
+  right: @basicBorderFullWidthOffset;
 }
 .ui.basic.tag.labels .label:after,
 .ui.basic.tag.label:after {
@@ -384,6 +384,27 @@ a.ui.label {
   left: @rightRibbonOffset;
   padding-left: @ribbonTriangleSize;
   padding-right: @ribbonDistance;
+}
+.ui.basic.ribbon.label {
+  padding-top: @basicRibbonOffset;
+  padding-bottom: @basicRibbonOffset;
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"]) {
+  padding-left: @basicRibbonTriangleSizeOffset;
+  padding-right: @basicRibbonTriangleSize;
+}
+.ui.basic[class*="right ribbon"].label {
+  padding-left: @basicRibbonTriangleSize;
+  padding-right: @basicRibbonTriangleSizeOffset;
+}
+.ui.basic.ribbon.label::after {
+  top: @basicBorderFullWidthOffset;
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"])::after {
+  left: @basicBorderWidthOffset;
+}
+.ui.basic[class*="right ribbon"].label::after {
+  right: @basicBorderWidthOffset;
 }
 
 /* Right Ribbon */
