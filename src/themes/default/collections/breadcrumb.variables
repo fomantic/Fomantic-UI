@@ -9,6 +9,7 @@
 @verticalMargin: 0;
 @display: inline-block;
 @verticalAlign: middle;
+@lineHeight: 1.5;
 
 @dividerSpacing: @3px;
 @dividerOpacity: 0.7;
