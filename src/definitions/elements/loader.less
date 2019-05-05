@@ -175,6 +175,68 @@
   font-style: normal;
 }
 
+/*-------------------
+        Dots
+--------------------*/
+.ui.dots.dots.dots.loader,
+.ui.dots.dots.dots.loader::after,
+.ui.dots.dots.dots.loader::before {
+  border-width: 0;
+  width: @dotsDiameter;
+  height: @dotsDiameter;
+  border-radius: @dotsRadius;
+  animation-name: defaulDotsLoader;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@keyframes defaulDotsLoader {
+  0%   { background-color: @textColor; }
+  100% { background-color: transparent; }
+}
+.ui.dots.inline.loader {
+  margin-left: @dotsDiameter * 1.5;
+}
+.ui.dots.loader::after,
+.ui.dots.loader::before {
+  margin: 0;
+  content: "";
+  position: absolute;
+}
+.ui.dots.loader::before {
+  animation-delay: @loaderSpeed * @dotsDelayRatio;
+  left: @dotsDiameter * 1.25;
+}
+.ui.dots.loader::after {
+  animation-delay: @loaderSpeed * -@dotsDelayRatio;
+  left: @dotsDiameter * -1.25;
+}
+.ui.slow.dots.loader::before {
+  animation-delay: @loaderSpeedSlow * @dotsDelayRatio;
+}
+.ui.fast.dots.loader::before {
+  animation-delay: @loaderSpeedFast * @dotsDelayRatio;
+}
+.ui.slow.dots.loader::after {
+  animation-delay: @loaderSpeedSlow * -@dotsDelayRatio;
+}
+.ui..fast.dots.loader::after {
+  animation-delay: @loaderSpeedFast * -@dotsDelayRatio;
+}
+.ui.dots.loader,
+.ui.dots.loader::after,
+.ui.dots.loader::before {
+  animation-duration: @loaderSpeed * @dotsDelayRatio * 3;
+}
+.ui.slow.dots.loader,
+.ui.slow.dots.loader::after,
+.ui.slow.dots.loader::before {
+  animation-duration: @loaderSpeedSlow * @dotsDelayRatio * 3;
+}
+.ui.fast.dots.loader,
+.ui.fast.dots.loader::after,
+.ui.fast.dots.loader::before {
+  animation-duration: @loaderSpeedFast * @dotsDelayRatio * 3;
+}
 
 /*******************************
             States
@@ -280,6 +342,47 @@
   padding-top: (@massive + @textDistance);
 }
 
+/* Dots */
+.ui.mini.dots.loader {
+  width: @mini;
+  height: @mini;
+  font-size: @miniFontSize;
+}
+.ui.tiny.loader {
+  width: @tiny;
+  height: @tiny;
+  font-size: @tinyFontSize;
+}
+.ui.small.loader {
+  width: @small;
+  height: @small;
+  font-size: @smallFontSize;
+}
+.ui.loader {
+  width: @medium;
+  height: @medium;
+  font-size: @mediumFontSize;
+}
+.ui.large.loader {
+  width: @large;
+  height: @large;
+  font-size: @largeFontSize;
+}
+.ui.big.loader {
+  width: @big;
+  height: @big;
+  font-size: @bigFontSize;
+}
+.ui.huge.loader {
+  width: @huge;
+  height: @huge;
+  font-size: @hugeFontSize;
+}
+.ui.massive.loader {
+  width: @massive;
+  height: @massive;
+  font-size: @massiveFontSize;
+}
 
 /*-------------------
        Colors
@@ -289,6 +392,7 @@ each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
+  @dotsLoader: '@{color}DotsLoader';
 
   .ui.@{color}.elastic.loader.loader:before,
   .ui.@{color}.basic.elastic.loading.button:before,
@@ -311,6 +415,16 @@ each(@colors, {
   .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
   .ui.inverted.@{color}.loader.loader.loader:after {
     color: @l;
+  }
+
+  .ui.@{color}.dots.dots.dots.loader,
+  .ui.@{color}.dots.dots.dots.loader::before,
+  .ui.@{color}.dots.dots.dots.loader::after {
+    animation-name: @dotsLoader;
+  }
+  @keyframes @dotsLoader {
+    0%   { background-color: @c; }
+    100% { background-color: transparent; }
   }
 })
 

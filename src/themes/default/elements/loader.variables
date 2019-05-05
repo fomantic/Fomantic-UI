@@ -30,6 +30,11 @@
 @invertedLoaderTextColor: @invertedTextColor;
 
 
+/* Dots */
+@dotsRadius: 0.2em;
+@dotsDiameter: @dotsRadius * 2;
+@dotsDelayRatio: 0.5;
+
 /*-------------------
         States
 --------------------*/
