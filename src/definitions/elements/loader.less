@@ -186,11 +186,11 @@
   border-radius: @dotsRadius;
   border-color: currentColor;
   border-width: 0;
-  animation-name: defaulDotsLoader;
+  animation-name: defaultDotsLoader;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
 }
-@keyframes defaulDotsLoader {
+@keyframes defaultDotsLoader {
   0%   { background-color: currentColor; }
   100% { background-color: transparent; }
 }
@@ -220,7 +220,7 @@
 .ui.slow.dots.loader::after {
   animation-delay: @loaderSpeedSlow * -@dotsDelayRatio;
 }
-.ui..fast.dots.loader::after {
+.ui.fast.dots.loader::after {
   animation-delay: @loaderSpeedFast * -@dotsDelayRatio;
 }
 .ui.dots.loader,
