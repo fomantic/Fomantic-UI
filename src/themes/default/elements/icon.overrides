@@ -14,9 +14,9 @@ i.icon.circle-o => i.icon.circle.outline
 //abbreviation are replaced by full letters:
 i.icon.ellipsis-h => i.icon.ellipsis.horizontal
 i.icon.ellipsis-v => i.icon.ellipsis.vertical
-.alpha => .i.icon.alphabet
-.asc => .i.icon.ascending
-.desc => .i.icon.descending
+.alpha => i.icon.alphabet
+.asc => i.icon.ascending
+.desc => i.icon.descending
 .alt =>.alternate
 
 ASCII order is conserved for easier maintenance.
