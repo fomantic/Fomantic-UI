@@ -52,7 +52,7 @@ If you have a usage question please **do not post** post it to GitHub Issues. Yo
 Please only create Github issues for bug's and feature requests or any other related issue.
 
 ### 🐛 Submitting Bugs and Enhancements
-[GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submiting a bug make sure you do the following:
+[GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submitting a bug make sure you do the following:
 * Check to see if the issue has already been raised.
 * [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a test case for your bug. If a bug is apparent in the docs, that's ok as a test case, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
 * If submitting an enhancement try and create it in the [JSFiddle](https://jsfiddle.net/31d6y7mn) if not it's fine but explain clearly what you want.
