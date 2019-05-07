@@ -70,9 +70,9 @@ $.fn.progress = function(parameters) {
       module = {
         helper: {
           sum: function (nums) {
-            return nums.reduce(function (left, right) {
+            return Array.isArray(nums) ? nums.reduce(function (left, right) {
               return left + right;
-            }, 0);
+            }, 0) : 0;
           },
           forceArray: function (element) {
             return Array.isArray(element)
@@ -234,12 +234,12 @@ $.fn.progress = function(parameters) {
         get: {
           text: function(templateText, index) {
             var
-              index_  = index                       || 0,
-              value   = module.value[index_]        || 0,
-              total   = module.total                || 0,
+              index_  = index || 0,
+              value   = module.get.value(index_),
+              total   = module.total || 0,
               percent = (animating)
                 ? module.get.displayPercent(index_)
-                : module.percent[index_] || 0,
+                : module.get.percent(index_),
               left = (module.total > 0)
                 ? (total - value)
                 : (100 - percent)
@@ -333,10 +333,10 @@ $.fn.progress = function(parameters) {
           },
 
           percent: function(index) {
-            return module.percent[index || 0] || 0;
+            return module.percent && module.percent[index || 0] || 0;
           },
           value: function(index) {
-            return module.nextValue || module.value[index || 0] || 0;
+            return module.nextValue || module.value && module.value[index || 0] || 0;
           },
           total: function() {
             return module.total || false;
