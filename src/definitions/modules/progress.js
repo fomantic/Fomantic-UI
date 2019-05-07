@@ -314,22 +314,20 @@ $.fn.progress = function(parameters) {
           },
 
           // gets current displayed percentage (if animating values this is the intermediary value)
-          displayPercent: function() {
-            return $bars.map(function(index, element) {
-              var
-                $bar           = $(element),
-                barWidth       = $bar.width(),
-                totalWidth     = $module.width(),
-                minDisplay     = parseInt($bar.css('min-width'), 10),
-                displayPercent = (barWidth > minDisplay)
-                  ? (barWidth / totalWidth * 100)
-                  : module.percent
+          displayPercent: function(index) {
+            var
+              $bar           = $($bars[index]),
+              barWidth       = $bar.width(),
+              totalWidth     = $module.width(),
+              minDisplay     = parseInt($bar.css('min-width'), 10),
+              displayPercent = (barWidth > minDisplay)
+                ? (barWidth / totalWidth * 100)
+                : module.percent
+            ;
+            return (settings.precision > 0)
+              ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
+              : Math.round(displayPercent)
               ;
-              return (settings.precision > 0)
-                ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
-                : Math.round(displayPercent)
-                ;
-            }).toArray();
           },
 
           percent: function(index) {
