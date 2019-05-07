@@ -407,19 +407,26 @@
 }
 
 /* Labeled and action input error */
+.ui.form > .field.error > .ui.action.input > .ui.button,
+.ui.form > .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
   border-top: @borderWidth solid @errorBorder;
   border-bottom: @borderWidth solid @errorBorder;
 }
+.ui.form > .field.error > .ui.left.action.input > .ui.button,
+.ui.form > .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
   border-left: @borderWidth solid @errorBorder;
 }
+.ui.form > .field.error > .ui.action.input:not(.left) > input + .ui.button,
+.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.error:not(.left) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
   border-right: @borderWidth solid @errorBorder;
 }
+.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
   border-left: @borderWidth solid @errorBorder;
 }
