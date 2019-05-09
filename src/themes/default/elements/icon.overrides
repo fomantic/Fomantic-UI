@@ -86,7 +86,7 @@ i.icon.arrow.right:before { content: "\f061"; }
 i.icon.arrow.up:before { content: "\f062"; }
 i.icon.arrows.alternate:before { content: "\f0b2"; }
 i.icon.arrows.alternate.horizontal:before { content: "\f337"; }
-i.icon.arrows.alternate.v:before { content: "\f338"; }
+i.icon.arrows.alternate.vertical:before { content: "\f338"; }
 i.icon.assistive.listening.systems:before { content: "\f2a2"; }
 i.icon.asterisk:before { content: "\f069"; }
 i.icon.at:before { content: "\f1fa"; }
@@ -323,7 +323,7 @@ i.icon.edit:before { content: "\f044"; }
 i.icon.egg:before { content: "\f7fb"; }
 i.icon.eject:before { content: "\f052"; }
 i.icon.ellipsis.horizontal:before { content: "\f141"; }
-i.icon.ellipsis.v:before { content: "\f142"; }
+i.icon.ellipsis.vertical:before { content: "\f142"; }
 i.icon.envelope:before { content: "\f0e0"; }
 i.icon.envelope.open:before { content: "\f2b6"; }
 i.icon.envelope.open.text:before { content: "\f658"; }
@@ -577,7 +577,7 @@ i.icon.mars:before { content: "\f222"; }
 i.icon.mars.double:before { content: "\f227"; }
 i.icon.mars.stroke:before { content: "\f229"; }
 i.icon.mars.stroke.horizontal:before { content: "\f22b"; }
-i.icon.mars.stroke.v:before { content: "\f22a"; }
+i.icon.mars.stroke.vertical:before { content: "\f22a"; }
 i.icon.mask:before { content: "\f6fa"; }
 i.icon.medal:before { content: "\f5a2"; }
 i.icon.medkit:before { content: "\f0fa"; }
