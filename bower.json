@@ -1,7 +1,7 @@
 {
   "name"        : "fomantic-ui",
   "description" : "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
-  "homepage"    : "http://www.semantic-ui.com",
+  "homepage"    : "https://fomantic-ui.com",
   "author": {
     "name" : "Jack Lukic",
     "web"  : "http://www.jacklukic.com"
@@ -14,6 +14,8 @@
     "dist/semantic.js"
   ],
   "keywords": [
+    "fomantic",
+    "fomantic-ui",
     "semantic",
     "ui",
     "css3",
