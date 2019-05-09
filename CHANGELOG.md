@@ -5,7 +5,6 @@
 
 * breakpoints ignoring next breakpoint in some cases ([7ff01e3](https://github.com/fomantic/Fomantic-UI/commit/7ff01e3)), closes [#567](https://github.com/fomantic/Fomantic-UI/issues/567) [#567](https://github.com/fomantic/Fomantic-UI/issues/567) [#681](https://github.com/fomantic/Fomantic-UI/issues/681) [#681](https://github.com/fomantic/Fomantic-UI/issues/681)
 * **api:** module callback function typo ([43c2c8b](https://github.com/fomantic/Fomantic-UI/commit/43c2c8b))
-* **api:** set context in beforesend to $module instead of possible stateContext to match docs ([004616f](https://github.com/fomantic/Fomantic-UI/commit/004616f))
 * **breadcrumb:** increase line height for readability on wrapped content ([c7ca707](https://github.com/fomantic/Fomantic-UI/commit/c7ca707))
 * **button:** fix padding for compact labeled icon button ([488a4dc](https://github.com/fomantic/Fomantic-UI/commit/488a4dc)), closes [#361](https://github.com/fomantic/Fomantic-UI/issues/361) [#598](https://github.com/fomantic/Fomantic-UI/issues/598)
 * **button:** group of basic disabled buttons had incorrect styles ([7f63e50](https://github.com/fomantic/Fomantic-UI/commit/7f63e50)), closes [#643](https://github.com/fomantic/Fomantic-UI/issues/643)
