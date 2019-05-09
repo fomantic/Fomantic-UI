@@ -7,7 +7,7 @@
     "web"  : "http://www.jacklukic.com"
   },
   "dependencies": {
-    "jquery"      : "^3.2.1"
+    "jquery"      : "^3.4.0"
   },
   "main": [
     "src/semantic.less",
