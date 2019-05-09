@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Button
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Button
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -176,7 +176,7 @@
       Disabled
 --------------------*/
 
-.ui.buttons .disabled.button,
+.ui.buttons .disabled.button:not(.basic),
 .ui.disabled.button,
 .ui.button:disabled,
 .ui.disabled.button:hover,
@@ -684,6 +684,10 @@
 .ui.compact.labeled.icon.buttons .button,
 .ui.compact.labeled.icon.button {
   padding: 0.58928571em 3.69642857em 0.58928571em;
+}
+.ui.compact.labeled.icon.buttons .button > .icon,
+.ui.compact.labeled.icon.button > .icon {
+  padding: 0.58928571em 0 0.58928571em 0;
 }
 
 /*-------------------
@@ -4381,6 +4385,12 @@
 .ui.vertical.buttons .button:only-child {
   border-radius: 0.28571429rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

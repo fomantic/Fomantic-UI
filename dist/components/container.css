@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Container
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Container
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -21,7 +21,7 @@
 }
 
 /* Mobile */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.container {
     width: auto !important;
     margin-left: 1em !important;
@@ -39,7 +39,7 @@
 }
 
 /* Tablet */
-@media only screen and (min-width: 768px) and (max-width: 991.99px) {
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
   .ui.container {
     width: 723px;
     margin-left: auto !important;
@@ -57,7 +57,7 @@
 }
 
 /* Small Monitor */
-@media only screen and (min-width: 992px) and (max-width: 1199.99px) {
+@media only screen and (min-width: 992px) and (max-width: 1199.98px) {
   .ui.container {
     width: 933px;
     margin-left: auto !important;
@@ -131,6 +131,12 @@
       -ms-hyphens: auto;
           hyphens: auto;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

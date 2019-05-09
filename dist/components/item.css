@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Item
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Item
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -341,7 +341,7 @@
 }
 
 /* Tablet Only */
-@media only screen and (min-width: 768px) and (max-width: 991.99px) {
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
   .ui.items > .item {
     margin: 1em 0;
   }
@@ -355,7 +355,7 @@
 }
 
 /* Mobile Only */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.items:not(.unstackable) > .item {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -468,7 +468,7 @@
    Unstackable
 ----------------*/
 
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.unstackable.items > .item > .image,
   .ui.unstackable.items > .item > .image > img {
     width: 125px !important;
@@ -541,6 +541,12 @@
 .ui.inverted.divided.items > .item:first-child {
   border-top: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

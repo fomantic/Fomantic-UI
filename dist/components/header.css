@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Header
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Header
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -733,6 +733,12 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: 1.28571429em;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

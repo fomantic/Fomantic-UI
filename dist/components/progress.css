@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Progress Bar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Progress Bar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -580,6 +580,12 @@
 .ui.big.progress .bar {
   height: 3.5em;
 }
+
+
+/*******************************
+            Progress
+*******************************/
+
 
 
 /*******************************

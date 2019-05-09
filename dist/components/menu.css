@@ -1,6 +1,6 @@
 /*
- * # Semantic - Menu
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic - Menu
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Copyright 2015 Contributor
@@ -402,7 +402,7 @@
     Container
 ---------------*/
 
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.menu > .ui.container {
     width: 100% !important;
     margin-left: 0 !important;
@@ -498,7 +498,7 @@ Floated Menu / Item
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
-.ui.menu:not(.vertical) :not(.dropdown) > .left.menu {
+.ui.menu:not(.vertical) .left.menu {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -512,6 +512,10 @@ Floated Menu / Item
   display: -ms-flexbox;
   display: flex;
   margin-left: auto !important;
+}
+.ui.menu:not(.vertical) :not(.dropdown) > .left.menu,
+.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+  display: inherit;
 }
 
 /* Center */
@@ -956,7 +960,7 @@ Floated Menu / Item
 }
 
 /* Inverted */
-.ui.secondary.inverted.menu.menu {
+.ui.secondary.inverted.menu {
   background-color: transparent;
 }
 
@@ -984,7 +988,7 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .ui.dropdown .menu .item {
   border-bottom-width: 0;
 }
-.ui.secondary.pointing.menu .item > .label {
+.ui.secondary.pointing.menu .item > .label:not(.floating) {
   margin-top: -0.3em;
   margin-bottom: -0.3em;
 }
@@ -1310,7 +1314,7 @@ Floated Menu / Item
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.stackable.menu {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1776,7 +1780,7 @@ Floated Menu / Item
       -ms-flex-pack: center;
           justify-content: center;
 }
-.ui.attached.item.menu {
+.ui.attached.item.menu:not(.tabular) {
   margin: 0 -1px !important;
 }
 .ui.item.menu .item:last-child:before {
@@ -2178,12 +2182,6 @@ Floated Menu / Item
   font-size: 1.28571429rem;
 }
 
-
-/*******************************
-         Theme Overrides
-*******************************/
-
-
 /*-------------------
   Inverted dropdowns
 --------------------*/
@@ -2214,6 +2212,18 @@ Floated Menu / Item
   -webkit-box-shadow: none;
           box-shadow: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

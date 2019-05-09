@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Label
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Label
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -359,6 +359,27 @@ a.ui.label {
   left: calc(100% + 1rem + 1.2em);
   padding-left: 1.2em;
   padding-right: calc(1rem + 1.2em);
+}
+.ui.basic.ribbon.label {
+  padding-top: calc(0.5833em - 1px);
+  padding-bottom: calc(0.5833em - 1px);
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"]) {
+  padding-left: calc(1rem + 1.2em - 1px);
+  padding-right: calc(1.2em - 1px);
+}
+.ui.basic[class*="right ribbon"].label {
+  padding-left: calc(1.2em - 1px);
+  padding-right: calc(1rem + 1.2em - 1px);
+}
+.ui.basic.ribbon.label::after {
+  top: calc(100% + 1px);
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"])::after {
+  left: -1px;
+}
+.ui.basic[class*="right ribbon"].label::after {
+  right: -1px;
 }
 
 /* Right Ribbon */
@@ -2066,6 +2087,12 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 .ui.massive.label {
   font-size: 1.71428571rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Input
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Input
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -399,19 +399,26 @@
 }
 
 /* Labeled and action input error */
+.ui.form > .field.error > .ui.action.input > .ui.button,
+.ui.form > .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
   border-top: 1px solid #E0B4B4;
   border-bottom: 1px solid #E0B4B4;
 }
+.ui.form > .field.error > .ui.left.action.input > .ui.button,
+.ui.form > .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
   border-left: 1px solid #E0B4B4;
 }
+.ui.form > .field.error > .ui.action.input:not(.left) > input + .ui.button,
+.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.error:not(.left) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
   border-right: 1px solid #E0B4B4;
 }
+.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
   border-left: 1px solid #E0B4B4;
 }
@@ -534,6 +541,12 @@
 .ui.massive.input {
   font-size: 1.71428571em;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************
