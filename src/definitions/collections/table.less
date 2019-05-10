@@ -670,6 +670,8 @@ each(@colors, {
   @l: @colors[@@color][light];
   @lh: @colors[@@color][lightHover];
   @r: @colors[@@color][ribbon];
+  @b: @colors[@@color][bright];
+  @bh: @colors[@@color][brightHover];
   @isDark: @colors[@@color][isDark];
   @isVeryDark: @colors[@@color][isVeryDark];
 
@@ -687,7 +689,7 @@ each(@colors, {
       background: @l;
     }
     & when not (@isDark) {
-      background: screen(@l,@blendingBaseColor);
+      background: @b;
     }
     & when (@isVeryDark) {
       color: @white;
@@ -703,7 +705,7 @@ each(@colors, {
       background: @lh;
     }
     & when not (@isDark) {
-      background: screen(@lh,@blendingBaseColor);
+      background: @bh;
     }
     & when (@isVeryDark) {
       color: @white;
