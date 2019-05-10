@@ -1238,45 +1238,31 @@
 /*--- Screen With blendingBaseColor ---*/
 @lightPrimaryScreen        : screen(@lightPrimaryColor,@blendingBaseColor);
 @lightPrimaryHoverScreen   : screen(@lightPrimaryColorHover,@blendingBaseColor);
-
 @lightSecondaryScreen        : screen(@lightSecondaryColor,@blendingBaseColor);
 @lightSecondaryHoverScreen   : screen(@lightSecondaryColorHover,@blendingBaseColor);
-
 @lightRedScreen              : screen(@lightRedColor,@blendingBaseColor);
 @lightRedHoverScreen         : screen(@lightRedColorHover,@blendingBaseColor);
-
 @lightOrangeScreen           : screen(@lightOrangeColor,@blendingBaseColor);
 @lightOrangeHoverScreen      : screen(@lightOrangeColorHover,@blendingBaseColor);
-
 @lightYellowScreen           : screen(@lightYellowColor,@blendingBaseColor);
 @lightYellowHoverScreen      : screen(@lightYellowColorHover,@blendingBaseColor);
-
 @lightOliveScreen            : screen(@lightOliveColor,@blendingBaseColor);
 @lightOliveHoverScreen       : screen(@lightOliveColorHover,@blendingBaseColor);
-
 @lightGreenScreen            : screen(@lightGreenColor,@blendingBaseColor);
 @lightGreenHoverScreen       : screen(@lightPrimaryGreenColorHover,@blendingBaseColor);
-
 @lightTealScreen             : screen(@lightTealColor,@blendingBaseColor);
 @lightTealHoverScreen        : screen(@lightTealColorHover,@blendingBaseColor);
-
 @lightBlueScreen             : screen(@lightBlueColor,@blendingBaseColor);
 @lightBlueHoverScreen        : screen(@lightBlueColorHover,@blendingBaseColor);
-
 @lightVioletScreen           : screen(@lightVioletColor,@blendingBaseColor);
 @lightVioletHoverScreen      : screen(@lightVioletColorHover,@blendingBaseColor);
-
 @lightPurpleScreen           : screen(@lightPurpleColor,@blendingBaseColor);
 @lightPurpleHoverScreen      : screen(@lightPurpleColorHover,@blendingBaseColor);
-
 @lightPinkScreen             : screen(@lightPinkColor,@blendingBaseColor);
 @lightPinkHoverScreen        : screen(@lightPinkColorHover,@blendingBaseColor);
-
 @lightBrownScreen            : screen(@lightBrownColor,@blendingBaseColor);
 @lightBrownHoverScreen       : screen(@lightBrownColorHover,@blendingBaseColor);
-
 @lightGreyScreen             : screen(@lightGreyColor,@blendingBaseColor);
 @lightGreyHoverScreen        : screen(@lightGreyColorHover,@blendingBaseColor);
-
 @lightBlackScreen            : screen(@lightBlackColor,@blendingBaseColor);
 @lightBlackHoverScreen       : screen(@lightBlackColorHover,@blendingBaseColor);
