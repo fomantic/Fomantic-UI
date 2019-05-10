@@ -622,6 +622,8 @@ each(@colors, {
   @t: @colors[@@color][text];
   @ht: @colors[@@color][hoverText];
   @l: @colors[@@color][light];
+  @lScreen: @colors[@@color][lightScreen];
+  @lhScreen: @colors[@@color][lightHoverScreen];
   @lh: @colors[@@color][lightHover];
   @r: @colors[@@color][ribbon];
   @isDark: @colors[@@color][isDark];
@@ -641,7 +643,7 @@ each(@colors, {
       background: @l;
     }
     & when not (@isDark) {
-      background: screen(@l,@blendingBaseColor);
+      background: @lScreen;
     }
     & when (@isVeryDark) {
       color: @white;
@@ -657,7 +659,7 @@ each(@colors, {
       background: @lh;
     }
     & when not (@isDark) {
-      background: screen(@lh,@blendingBaseColor);
+      background: @lhScreen;
     }
     & when (@isVeryDark) {
       color: @white;
