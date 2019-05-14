@@ -832,6 +832,9 @@ $.fn.calendar = function(parameters) {
         helper: {
           isDisabled: function(date, mode) {
             return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if(typeof d === 'string') {
+                d = module.helper.sanitiseDate(d);
+              }
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
@@ -842,7 +845,10 @@ $.fn.calendar = function(parameters) {
           },
           isEnabled: function(date, mode) {
             if (mode === 'day') {
-              return settings.enabledDates.length == 0 || settings.enabledDates.some(function(d){
+              return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date) {
                   return module.helper.dateEqual(date, d, mode);
                 }
