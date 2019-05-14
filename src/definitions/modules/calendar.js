@@ -839,7 +839,7 @@ $.fn.calendar = function(parameters) {
                 return module.helper.dateEqual(date, d, mode);
               }
               if (d !== null && typeof d === 'object') {
-                return module.helper.dateEqual(date, d[metadata.date], mode);
+                return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
               }
             }));
           },
@@ -853,7 +853,7 @@ $.fn.calendar = function(parameters) {
                   return module.helper.dateEqual(date, d, mode);
                 }
                 if (d !== null && typeof d === 'object') {
-                  return module.helper.dateEqual(date, d[metadata.date], mode);
+                  return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                 }
               });
             } else {
@@ -874,7 +874,7 @@ $.fn.calendar = function(parameters) {
                   dateObject[metadata.date] = d;
                   return dateObject;
                 }
-                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date,module.helper.sanitiseDate(d[metadata.date]), mode)  ) {
                   return d;
                 }
               }
