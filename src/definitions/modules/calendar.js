@@ -860,6 +860,9 @@ $.fn.calendar = function(parameters) {
               var d;
               for (; i < il; i++) {
                 d = dates[i];
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
                   var dateObject = {};
                   dateObject[metadata.date] = d;
@@ -1263,6 +1266,10 @@ $.fn.calendar.settings = {
       text = ('' + text).trim().toLowerCase();
       if (text.length === 0) {
         return null;
+      }
+      var textDate = new Date(text);
+      if(!isNaN(textDate.getDate())) {
+        return textDate;
       }
 
       var i, j, k;
