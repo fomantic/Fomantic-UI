@@ -838,7 +838,7 @@ $.fn.calendar = function(parameters) {
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
-              if (d !== null && typeof d === 'object') {
+              if (d !== null && typeof d === 'object' && d[metadata.date]) {
                 return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
               }
             }));
@@ -852,7 +852,7 @@ $.fn.calendar = function(parameters) {
                 if (d instanceof Date) {
                   return module.helper.dateEqual(date, d, mode);
                 }
-                if (d !== null && typeof d === 'object') {
+                if (d !== null && typeof d === 'object' && d[metadata.date]) {
                   return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                 }
               });
