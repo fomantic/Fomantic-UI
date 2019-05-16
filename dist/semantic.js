@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.2
+ * # Fomantic UI - 2.7.5
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -9,8 +9,8 @@
  *
  */
 /*!
- * # Semantic UI 2.7.2 - Site
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Site
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -503,8 +503,8 @@ $.extend($.expr[ ":" ], {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Form Validation
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Form Validation
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -572,6 +572,10 @@ $.fn.form = function(parameters) {
         moduleNamespace,
         eventNamespace,
 
+        submitting = false,
+        dirty = false,
+        history = ['clean', 'clean'],
+
         instance,
         module
       ;
@@ -629,19 +633,16 @@ $.fn.form = function(parameters) {
 
         submit: function() {
           module.verbose('Submitting form', $module);
-          $module
-            .submit()
-          ;
+          submitting = true;
+          $module.submit();
         },
 
         attachEvents: function(selector, action) {
           action = action || 'submit';
-          $(selector)
-            .on('click' + eventNamespace, function(event) {
-              module[action]();
-              event.preventDefault();
-            })
-          ;
+          $(selector).on('click' + eventNamespace, function(event) {
+            module[action]();
+            event.preventDefault();
+          });
         },
 
         bindEvents: function() {
@@ -654,92 +655,113 @@ $.fn.form = function(parameters) {
             .on('click'  + eventNamespace, selector.clear, module.clear)
           ;
           if(settings.keyboardShortcuts) {
-            $module
-              .on('keydown' + eventNamespace, selector.field, module.event.field.keydown)
-            ;
+            $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
           }
-          $field
-            .each(function() {
-              var
-                $input     = $(this),
-                type       = $input.prop('type'),
-                inputEvent = module.get.changeEvent(type, $input)
-              ;
-              $(this)
-                .on(inputEvent + eventNamespace, module.event.field.change)
-              ;
-            })
-          ;
+          $field.each(function(index, el) {
+            var
+              $input     = $(el),
+              type       = $input.prop('type'),
+              inputEvent = module.get.changeEvent(type, $input)
+            ;
+            $input.on(inputEvent + eventNamespace, module.event.field.change);
+          });
+
+          // Dirty events
+          if (settings.preventLeaving) {
+            $(window).on('beforeunload' + eventNamespace, module.event.beforeUnload);
+          }
+
+          $field.on('change click keyup keydown blur', function(e) {
+            $(this).trigger(e.type + ".dirty");
+          });
+
+          $field.on('change.dirty click.dirty keyup.dirty keydown.dirty blur.dirty', module.determine.isDirty);
+
+          $module.on('dirty' + eventNamespace, function(e) {
+            settings.onDirty.call();
+          });
+
+          $module.on('clean' + eventNamespace, function(e) {
+            settings.onClean.call();
+          })
         },
 
         clear: function() {
-          $field
-            .each(function () {
-              var
-                $field       = $(this),
-                $element     = $field.parent(),
-                $fieldGroup  = $field.closest($group),
-                $prompt      = $fieldGroup.find(selector.prompt),
-                defaultValue = $field.data(metadata.defaultValue) || '',
-                isCheckbox   = $element.is(selector.uiCheckbox),
-                isDropdown   = $element.is(selector.uiDropdown),
-                isErrored    = $fieldGroup.hasClass(className.error)
-              ;
-              if(isErrored) {
-                module.verbose('Resetting error on field', $fieldGroup);
-                $fieldGroup.removeClass(className.error);
-                $prompt.remove();
-              }
-              if(isDropdown) {
-                module.verbose('Resetting dropdown value', $element, defaultValue);
-                $element.dropdown('clear');
-              }
-              else if(isCheckbox) {
-                $field.prop('checked', false);
-              }
-              else {
-                module.verbose('Resetting field value', $field, defaultValue);
-                $field.val('');
-              }
-            })
-          ;
+          $field.each(function (index, el) {
+            var
+              $field       = $(el),
+              $element     = $field.parent(),
+              $fieldGroup  = $field.closest($group),
+              $prompt      = $fieldGroup.find(selector.prompt),
+              $calendar    = $field.closest(selector.uiCalendar),
+              defaultValue = $field.data(metadata.defaultValue) || '',
+              isCheckbox   = $element.is(selector.uiCheckbox),
+              isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
+              isErrored    = $fieldGroup.hasClass(className.error)
+            ;
+            if(isErrored) {
+              module.verbose('Resetting error on field', $fieldGroup);
+              $fieldGroup.removeClass(className.error);
+              $prompt.remove();
+            }
+            if(isDropdown) {
+              module.verbose('Resetting dropdown value', $element, defaultValue);
+              $element.dropdown('clear');
+            }
+            else if(isCheckbox) {
+              $field.prop('checked', false);
+            }
+            else if (isCalendar) {
+              $calendar.calendar('clear');
+            }
+            else {
+              module.verbose('Resetting field value', $field, defaultValue);
+              $field.val('');
+            }
+          });
         },
 
         reset: function() {
-          $field
-            .each(function () {
-              var
-                $field       = $(this),
-                $element     = $field.parent(),
-                $fieldGroup  = $field.closest($group),
-                $prompt      = $fieldGroup.find(selector.prompt),
-                defaultValue = $field.data(metadata.defaultValue),
-                isCheckbox   = $element.is(selector.uiCheckbox),
-                isDropdown   = $element.is(selector.uiDropdown),
-                isErrored    = $fieldGroup.hasClass(className.error)
-              ;
-              if(defaultValue === undefined) {
-                return;
-              }
-              if(isErrored) {
-                module.verbose('Resetting error on field', $fieldGroup);
-                $fieldGroup.removeClass(className.error);
-                $prompt.remove();
-              }
-              if(isDropdown) {
-                module.verbose('Resetting dropdown value', $element, defaultValue);
-                $element.dropdown('restore defaults');
-              }
-              else if(isCheckbox) {
-                module.verbose('Resetting checkbox value', $element, defaultValue);
-                $field.prop('checked', defaultValue);
-              }
-              else {
-                module.verbose('Resetting field value', $field, defaultValue);
-                $field.val(defaultValue);
-              }
-            })
-          ;
+          $field.each(function (index, el) {
+            var
+              $field       = $(el),
+              $element     = $field.parent(),
+              $fieldGroup  = $field.closest($group),
+              $calendar    = $field.closest(selector.uiCalendar),
+              $prompt      = $fieldGroup.find(selector.prompt),
+              defaultValue = $field.data(metadata.defaultValue),
+              isCheckbox   = $element.is(selector.uiCheckbox),
+              isDropdown   = $element.is(selector.uiDropdown),
+              isCalendar   = ($calendar.length > 0),
+              isErrored    = $fieldGroup.hasClass(className.error)
+            ;
+            if(defaultValue === undefined) {
+              return;
+            }
+            if(isErrored) {
+              module.verbose('Resetting error on field', $fieldGroup);
+              $fieldGroup.removeClass(className.error);
+              $prompt.remove();
+            }
+            if(isDropdown) {
+              module.verbose('Resetting dropdown value', $element, defaultValue);
+              $element.dropdown('restore defaults');
+            }
+            else if(isCheckbox) {
+              module.verbose('Resetting checkbox value', $element, defaultValue);
+              $field.prop('checked', defaultValue);
+            }
+            else if (isCalendar) {
+              $calendar.calendar('set date', defaultValue);
+            }
+            else {
+              module.verbose('Resetting field value', $field, defaultValue);
+              $field.val(defaultValue);
+            }
+          });
+
+          module.determine.isDirty();
         },
 
         determine: {
@@ -753,6 +775,37 @@ $.fn.form = function(parameters) {
               }
             });
             return allValid;
+          },
+          isDirty: function(e) {
+            var formIsDirty = false;
+
+            $field.each(function(index, el) {
+              var
+                $el = $(el),
+                isCheckbox = ($el.filter(selector.checkbox).length > 0),
+                isDirty
+              ;
+
+              if (isCheckbox) {
+                isDirty = module.is.checkboxDirty($el);
+              } else {
+                isDirty = module.is.fieldDirty($el);
+              }
+
+              $el.data(settings.metadata.isDirty, isDirty);
+
+              formIsDirty |= isDirty;
+            });
+
+            if (formIsDirty) {
+              module.set.dirty();
+            } else {
+              module.set.clean();
+            }
+                  
+            if (e) {
+              e.stopImmediatePropagation();
+            }
           }
         },
 
@@ -802,22 +855,49 @@ $.fn.form = function(parameters) {
               });
               return allValid;
             }
+          },
+          dirty: function() {
+            return dirty;
+          },
+          clean: function() {
+            return !dirty;
+          },
+          fieldDirty: function($el) {
+            var initialValue = $el.data(metadata.defaultValue);
+            // Explicitly check for null/undefined here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
+            if (initialValue == null) { initialValue = ''; }
+            var currentValue = $el.val();
+            if (currentValue == null) { currentValue = ''; }
+
+            // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison
+            var boolRegex = /^(true|false)$/i;
+            var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
+            if (isBoolValue) {
+              var regex = new RegExp("^" + initialValue + "$", "i");
+              return !regex.test(currentValue);
+            }
+
+            return currentValue !== initialValue;
+          },
+          checkboxDirty: function($el) {
+            var initialValue = $el.data(metadata.defaultValue);
+            var currentValue = $el.is(":checked");
+
+            return initialValue !== currentValue;
+          },
+          justDirty: function() {
+            return (history[0] === 'dirty');
+          },
+          justClean: function() {
+            return (history[0] === 'clean');
           }
         },
 
         removeEvents: function() {
-          $module
-            .off(eventNamespace)
-          ;
-          $field
-            .off(eventNamespace)
-          ;
-          $submit
-            .off(eventNamespace)
-          ;
-          $field
-            .off(eventNamespace)
-          ;
+          $module.off(eventNamespace);
+          $field.off(eventNamespace);
+          $submit.off(eventNamespace);
+          $field.off(eventNamespace);
         },
 
         event: {
@@ -842,9 +922,7 @@ $.fn.form = function(parameters) {
               }
               if(!event.ctrlKey && key == keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                 if(!keyHeldDown) {
-                  $field
-                    .one('keyup' + eventNamespace, module.event.field.keyup)
-                  ;
+                  $field.one('keyup' + eventNamespace, module.event.field.keyup);
                   module.submit();
                   module.debug('Enter pressed on input submitting form');
                 }
@@ -885,6 +963,19 @@ $.fn.form = function(parameters) {
                   module.validate.field( validationRules );
                 }, settings.delay);
               }
+            }
+          },
+          beforeUnload: function(event) {
+            if (module.is.dirty() && !submitting) {
+              var event = event || window.event;
+
+              // For modern browsers
+              if (event) {
+                event.returnValue = settings.text.leavingMessage;
+              }
+
+              // For olders...
+              return settings.text.leavingMessage;
             }
           }
 
@@ -1083,13 +1174,15 @@ $.fn.form = function(parameters) {
             ;
             $fields.each(function(index, field) {
               var
-                $field     = $(field),
-                name       = $field.prop('name'),
-                value      = $field.val(),
-                isCheckbox = $field.is(selector.checkbox),
-                isRadio    = $field.is(selector.radio),
-                isMultiple = (name.indexOf('[]') !== -1),
-                isChecked  = (isCheckbox)
+                $field       = $(field),
+                $calendar    = $field.closest(selector.uiCalendar),
+                name         = $field.prop('name'),
+                value        = $field.val(),
+                isCheckbox   = $field.is(selector.checkbox),
+                isRadio      = $field.is(selector.radio),
+                isMultiple   = (name.indexOf('[]') !== -1),
+                isCalendar   = ($calendar.length > 0),
+                isChecked    = (isCheckbox)
                   ? $field.is(':checked')
                   : false
               ;
@@ -1128,13 +1221,58 @@ $.fn.form = function(parameters) {
                       values[name] = false;
                     }
                   }
-                  else {
+                  else if(isCalendar) {
+                    var date = $calendar.calendar('get date');
+
+                    if (date !== null) {
+                      if (settings.dateHandling == 'date') {
+                        values[name] = date;
+                      } else if(settings.dateHandling == 'input') {
+                        values[name] = $calendar.calendar('get input date')
+                      } else if (settings.dateHandling == 'formatter') {
+                        var type = $calendar.calendar('setting', 'type');
+
+                        switch(type) {
+                          case 'date':
+                          values[name] = settings.formatter.date(date);
+                          break;
+                          
+                          case 'datetime':
+                          values[name] = settings.formatter.datetime(date);
+                          break;
+                          
+                          case 'time':
+                          values[name] = settings.formatter.time(date);
+                          break;
+                          
+                          case 'month':
+                          values[name] = settings.formatter.month(date);
+                          break;
+                          
+                          case 'year':
+                          values[name] = settings.formatter.year(date);
+                          break;
+  
+                          default:
+                          module.debug('Wrong calendar mode', $calendar, type);
+                          values[name] = '';
+                        }
+                      }
+                    } else {
+                      values[name] = '';
+                    }
+                  } else {
                     values[name] = value;
                   }
                 }
               }
             });
             return values;
+          },
+          dirtyFields: function() {
+            return $field.filter(function(index, e) {
+              return $(e).data(metadata.isDirty);
+            });
           }
         },
 
@@ -1340,18 +1478,22 @@ $.fn.form = function(parameters) {
             ;
           },
           defaults: function () {
-            $field
-              .each(function () {
-                var
-                  $field     = $(this),
-                  isCheckbox = ($field.filter(selector.checkbox).length > 0),
-                  value      = (isCheckbox)
-                    ? $field.is(':checked')
-                    : $field.val()
-                ;
-                $field.data(metadata.defaultValue, value);
-              })
-            ;
+            $field.each(function (index, el) {
+              var
+                $el        = $(el),
+                $parent    = $el.parent(),
+                isCheckbox = ($el.filter(selector.checkbox).length > 0),
+                isDropdown = $parent.is(selector.uiDropdown),
+                value      = (isCheckbox)
+                  ? $el.is(':checked')
+                  : $el.val()
+              ;
+              if (isDropdown) {
+                $parent.dropdown('save defaults');
+              }
+              $el.data(metadata.defaultValue, value);
+              $el.data(metadata.isDirty, false);
+            });
           },
           error: function() {
             $module
@@ -1419,15 +1561,41 @@ $.fn.form = function(parameters) {
                 }
               }
             });
+          },
+          dirty: function() {
+            module.verbose('Setting state dirty');
+            dirty = true;
+            history[0] = history[1];
+            history[1] = 'dirty';
+
+            if (module.is.justClean()) {
+              $module.trigger('dirty');
+            }
+          },
+          clean: function() {
+            module.verbose('Setting state clean');
+            dirty = false;
+            history[0] = history[1];
+            history[1] = 'clean';
+
+            if (module.is.justDirty()) {
+              $module.trigger('clean');
+            }
+          },
+          asClean: function() {
+            module.set.defaults();
+            module.set.clean();
+          },
+          asDirty: function() {
+            module.set.defaults();
+            module.set.dirty();
           }
         },
 
         validate: {
 
           form: function(event, ignoreCallbacks) {
-            var
-              values = module.get.values()
-            ;
+            var values = module.get.values();
 
             // input keydown event will fire submit repeatedly by browser default
             if(keyHeldDown) {
@@ -1450,7 +1618,7 @@ $.fn.form = function(parameters) {
                 module.add.errors(formErrors);
               }
               // prevent ajax submit
-              if($module.data('moduleApi') !== undefined) {
+              if(event && $module.data('moduleApi') !== undefined) {
                 event.stopImmediatePropagation();
               }
               if(ignoreCallbacks !== true) {
@@ -1548,7 +1716,7 @@ $.fn.form = function(parameters) {
                     ? ''
                     : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
                 ;
-                return ruleFunction.call(field, value, ancillary);
+                return ruleFunction.call(field, value, ancillary, $module);
               }
             ;
             if( !$.isFunction(ruleFunction) ) {
@@ -1760,14 +1928,20 @@ $.fn.form.settings = {
   transition        : 'scale',
   duration          : 200,
 
+  preventLeaving    : false,
+  dateHandling      : 'date', // 'date', 'input', 'formatter'
+
   onValid           : function() {},
   onInvalid         : function() {},
   onSuccess         : function() { return true; },
   onFailure         : function() { return false; },
+  onDirty           : function() {},
+  onClean           : function() {},
 
   metadata : {
     defaultValue : 'default',
-    validate     : 'validate'
+    validate     : 'validate',
+    isDirty      : 'isDirty'
   },
 
   regExp: {
@@ -1784,7 +1958,8 @@ $.fn.form.settings = {
 
   text: {
     unspecifiedRule  : 'Please enter a valid value',
-    unspecifiedField : 'This field'
+    unspecifiedField : 'This field',
+    leavingMessage   : 'There are unsaved changes on this page which will be discarded if you continue.'
   },
 
   prompt: {
@@ -1828,7 +2003,8 @@ $.fn.form.settings = {
     reset      : '.reset:not([type="reset"])',
     submit     : '.submit:not([type="submit"])',
     uiCheckbox : '.ui.checkbox',
-    uiDropdown : '.ui.dropdown'
+    uiDropdown : '.ui.dropdown',
+    uiCalendar : '.ui.calendar'
   },
 
   className : {
@@ -1865,6 +2041,40 @@ $.fn.form.settings = {
         .addClass('ui basic red pointing prompt label')
         .html(errors[0])
       ;
+    }
+  },
+
+  formatter: {
+    date: function(date) {
+      return Intl.DateTimeFormat('en-GB').format(date);
+    },
+    datetime: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    time: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+      }).format(date);
+    },
+    month: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        month: '2-digit',
+        year: 'numeric'
+      }).format(date);
+    },
+    year: function(date) {
+      return Intl.DateTimeFormat('en-GB', {
+        year: 'numeric'
+      }).format(date);
     }
   },
 
@@ -2052,21 +2262,22 @@ $.fn.form.settings = {
     },
 
     // matches another field
-    match: function(value, identifier) {
+    match: function(value, identifier, $module) {
       var
-        matchingValue
+        matchingValue,
+        matchingElement
       ;
-      if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+        matchingValue = matchingElement.val();
       }
-      else if($('#' + identifier).length > 0) {
-        matchingValue = $('#' + identifier).val();
+      else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if($('[name="' + identifier +'"]').length > 0) {
-        matchingValue = $('[name="' + identifier + '"]').val();
+      else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if( $('[name="' + identifier +'[]"]').length > 0 ) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+        matchingValue = matchingElement;
       }
       return (matchingValue !== undefined)
         ? ( value.toString() == matchingValue.toString() )
@@ -2075,22 +2286,23 @@ $.fn.form.settings = {
     },
 
     // different than another field
-    different: function(value, identifier) {
+    different: function(value, identifier, $module) {
       // use either id or name of field
       var
-        matchingValue
+        matchingValue,
+        matchingElement
       ;
-      if( $('[data-validate="'+ identifier +'"]').length > 0 ) {
-        matchingValue = $('[data-validate="'+ identifier +'"]').val();
+      if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+        matchingValue = matchingElement.val();
       }
-      else if($('#' + identifier).length > 0) {
-        matchingValue = $('#' + identifier).val();
+      else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if($('[name="' + identifier +'"]').length > 0) {
-        matchingValue = $('[name="' + identifier + '"]').val();
+      else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+        matchingValue = matchingElement.val();
       }
-      else if( $('[name="' + identifier +'[]"]').length > 0 ) {
-        matchingValue = $('[name="' + identifier +'[]"]');
+      else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+        matchingValue = matchingElement;
       }
       return (matchingValue !== undefined)
         ? ( value.toString() !== matchingValue.toString() )
@@ -2241,8 +2453,8 @@ $.fn.form.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Accordion
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Accordion
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -2856,8 +3068,8 @@ $.extend( $.easing, {
 
 
 /*!
- * # Semantic UI 2.7.2 - Calendar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Calendar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -3193,10 +3405,19 @@ $.fn.calendar = function(parameters) {
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
                   var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
                   if (disabled) {
-                    var disabledReason = module.helper.disabledReason(cellDate, mode);
-                    if (disabledReason !== null) {
-                      cell.attr("data-tooltip", disabledReason[metadata.message]);
+                    var disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
+                    if (disabledDate !== null && disabledDate[metadata.message]) {
+                      cell.attr("data-tooltip", disabledDate[metadata.message]);
                       cell.attr("data-position", tooltipPosition);
+                    }
+                  } else {
+                    var eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
+                    if (eventDate !== null) {
+                      cell.addClass(eventDate[metadata.class] || settings.eventClass);
+                      if (eventDate[metadata.message]) {
+                        cell.attr("data-tooltip", eventDate[metadata.message]);
+                        cell.attr("data-position", tooltipPosition);
+                      }
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
@@ -3340,7 +3561,7 @@ $.fn.calendar = function(parameters) {
             var date = target.data(metadata.date);
             var focusDate = target.data(metadata.focusDate);
             var mode = target.data(metadata.mode);
-            if (date) {
+            if (date && settings.onSelect.call(element, date, module.get.mode()) !== false) {
               var forceSet = target.hasClass(className.today);
               module.selectDate(date, forceSet);
             }
@@ -3434,6 +3655,9 @@ $.fn.calendar = function(parameters) {
           date: function () {
             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
           },
+          inputDate: function() {
+            return $input.val();
+          },
           focusDate: function () {
             return $module.data(metadata.focusDate) || null;
           },
@@ -3500,7 +3724,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $module.parent().children(selector).first();
+              selector = $(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);
@@ -3699,14 +3923,19 @@ $.fn.calendar = function(parameters) {
               return true;
             }
           },
-          disabledReason: function(date, mode) {
+          findDayAsObject: function(date, mode, dates) {
             if (mode === 'day') {
-              for (var i = 0; i < settings.disabledDates.length; i++) {
-                var d = settings.disabledDates[i];
-                if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
-                  var reason = {};
-                  reason[metadata.message] = d[metadata.message];
-                  return reason;
+              var i = 0, il = dates.length;
+              var d;
+              for (; i < il; i++) {
+                d = dates[i];
+                if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
+                  var dateObject = {};
+                  dateObject[metadata.date] = d;
+                  return dateObject;
+                }
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                  return d;
                 }
               }
             }
@@ -3719,7 +3948,7 @@ $.fn.calendar = function(parameters) {
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
             }
-            if (isNaN(date.getTime())) {
+            if (!date || date === null || isNaN(date.getTime())) {
               return undefined;
             }
             return date;
@@ -4000,6 +4229,7 @@ $.fn.calendar.settings = {
   disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
+  eventDates         : [],         // specific day(s) which will be shown in a different color and using tooltips
   centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
   currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
   selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
@@ -4093,6 +4323,9 @@ $.fn.calendar.settings = {
 
   parser: {
     date: function (text, settings) {
+      if (text instanceof Date) {
+        return text;
+      }
       if (!text) {
         return null;
       }
@@ -4314,6 +4547,10 @@ $.fn.calendar.settings = {
   onHidden: function () {
   },
 
+  // callback before item is selected, return false to prevent selection
+  onSelect: function (date, mode) {
+  },
+
   // is the given date disabled?
   isDisabled: function (date, mode) {
     return false;
@@ -4367,15 +4604,18 @@ $.fn.calendar.settings = {
     maxDate: 'maxDate',
     mode: 'mode',
     monthOffset: 'monthOffset',
-    message: 'message'
-  }
+    message: 'message',
+    class: 'class'
+  },
+
+  eventClass: 'blue'
 };
 
 })(jQuery, window, document);
 
 /*!
- * # Semantic UI 2.7.2 - Checkbox
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Checkbox
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -5250,8 +5490,8 @@ $.fn.checkbox.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Dimmer
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Dimmer
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -6004,8 +6244,8 @@ $.fn.dimmer.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Dropdown
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Dropdown
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -6145,6 +6385,9 @@ $.fn.dropdown = function(parameters) {
         destroy: function() {
           module.verbose('Destroying previous dropdown', $module);
           module.remove.tabbable();
+          module.remove.active();
+          $menu.transition('stop all');
+          $menu.removeClass(className.visible).addClass(className.hidden);
           $module
             .off(eventNamespace)
             .removeData(moduleNamespace)
@@ -6534,6 +6777,8 @@ $.fn.dropdown = function(parameters) {
                 callback.call(element);
               });
             }
+          } else if( module.can.click() ) {
+              module.unbind.intent();
           }
         },
 
@@ -8723,7 +8968,12 @@ $.fn.dropdown = function(parameters) {
               $label
                 .addClass(className.hidden)
                 .insertBefore($next)
-                .transition(settings.label.transition, settings.label.duration)
+                .transition({
+                    animation  : settings.label.transition,
+                    debug      : settings.debug,
+                    verbose    : settings.verbose,
+                    duration   : settings.label.duration
+                })
               ;
             }
             else {
@@ -10122,8 +10372,8 @@ $.fn.dropdown.settings.templates = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Embed
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Embed
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -10832,8 +11082,8 @@ $.fn.embed.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Modal
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Modal
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -11305,7 +11555,7 @@ $.fn.modal = function(parameters) {
                   duration    : settings.duration,
                   useFailSafe : true,
                   onStart     : function() {
-                    if(!module.others.active() && !keepDimmed) {
+                    if(!module.others.active() && !module.others.animating() && !keepDimmed) {
                       module.hideDimmer();
                     }
                     if( settings.keyboardShortcuts && !module.others.active() ) {
@@ -11437,8 +11687,10 @@ $.fn.modal = function(parameters) {
           bodyMargin: function() {
             initialBodyMargin = $body.css('margin-right');
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-            $body.css('margin-right', (bodyMarginRightPixel + bodyScrollbarWidth) + 'px');
+                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth,
+                diffPos = bodyMarginRightPixel + bodyScrollbarWidth;
+            $body.css('margin-right', diffPos + 'px');
+            $body.find(selector.bodyFixed).css('padding-right', diffPos + 'px');
           }
         },
 
@@ -11450,6 +11702,7 @@ $.fn.modal = function(parameters) {
           },
           bodyMargin: function() {
             $body.css('margin-right', initialBodyMargin);
+            $body.find(selector.bodyFixed).css('padding-right', initialBodyMargin);
           }
         },
 
@@ -11572,7 +11825,9 @@ $.fn.modal = function(parameters) {
         set: {
           autofocus: function() {
             var
-              $inputs    = $module.find('[tabindex], :input').filter(':visible'),
+              $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+                return $(this).closest('.disabled').length === 0;
+              }),
               $autofocus = $inputs.filter('[autofocus]'),
               $input     = ($autofocus.length > 0)
                 ? $autofocus.first()
@@ -11938,7 +12193,8 @@ $.fn.modal.settings = {
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
     modal    : '.ui.modal',
-    dimmer   : '> .ui.dimmer'
+    dimmer   : '> .ui.dimmer',
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar'
   },
   error : {
     dimmer    : 'UI Dimmer, a required component is not included in this page',
@@ -11962,8 +12218,8 @@ $.fn.modal.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Nag
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Nag
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -12455,8 +12711,8 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Popup
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Popup
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -12487,6 +12743,10 @@ $.fn.popup = function(parameters) {
     $body          = $('body'),
 
     moduleSelector = $allModules.selector || '',
+
+    clickEvent      = ('ontouchstart' in document.documentElement)
+        ? 'touchstart'
+        : 'click',
 
     time           = new Date().getTime(),
     performance    = [],
@@ -13437,7 +13697,7 @@ $.fn.popup = function(parameters) {
             module.debug('Binding popup events to module');
             if(settings.on == 'click') {
               $module
-                .on('click' + eventNamespace, module.toggle)
+                .on(clickEvent + eventNamespace, module.toggle)
               ;
             }
             if(settings.on == 'hover') {
@@ -13494,7 +13754,7 @@ $.fn.popup = function(parameters) {
           clickaway: function() {
             module.verbose('Binding popup close event to document');
             $document
-              .on('click' + elementNamespace, function(event) {
+              .on(clickEvent + elementNamespace, function(event) {
                 module.verbose('Clicked away from popup');
                 module.event.hideGracefully.call(element, event);
               })
@@ -13989,8 +14249,8 @@ $.fn.popup.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Progress
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Progress
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -14060,9 +14320,9 @@ $.fn.progress = function(parameters) {
       module = {
         helper: {
           sum: function (nums) {
-            return nums.reduce(function (left, right) {
+            return Array.isArray(nums) ? nums.reduce(function (left, right) {
               return left + right;
-            }, 0);
+            }, 0) : 0;
           },
           forceArray: function (element) {
             return Array.isArray(element)
@@ -14224,12 +14484,12 @@ $.fn.progress = function(parameters) {
         get: {
           text: function(templateText, index) {
             var
-              index_  = index                       || 0,
-              value   = module.value[index_]        || 0,
-              total   = module.total                || 0,
+              index_  = index || 0,
+              value   = module.get.value(index_),
+              total   = module.total || 0,
               percent = (animating)
                 ? module.get.displayPercent(index_)
-                : module.percent[index_] || 0,
+                : module.get.percent(index_),
               left = (module.total > 0)
                 ? (total - value)
                 : (100 - percent)
@@ -14304,29 +14564,27 @@ $.fn.progress = function(parameters) {
           },
 
           // gets current displayed percentage (if animating values this is the intermediary value)
-          displayPercent: function() {
-            return $bars.map(function(index, element) {
-              var
-                $bar           = $(element),
-                barWidth       = $bar.width(),
-                totalWidth     = $module.width(),
-                minDisplay     = parseInt($bar.css('min-width'), 10),
-                displayPercent = (barWidth > minDisplay)
-                  ? (barWidth / totalWidth * 100)
-                  : module.percent
+          displayPercent: function(index) {
+            var
+              $bar           = $($bars[index]),
+              barWidth       = $bar.width(),
+              totalWidth     = $module.width(),
+              minDisplay     = parseInt($bar.css('min-width'), 10),
+              displayPercent = (barWidth > minDisplay)
+                ? (barWidth / totalWidth * 100)
+                : module.percent
+            ;
+            return (settings.precision > 0)
+              ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
+              : Math.round(displayPercent)
               ;
-              return (settings.precision > 0)
-                ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
-                : Math.round(displayPercent)
-                ;
-            }).toArray();
           },
 
           percent: function(index) {
-            return module.percent[index || 0] || 0;
+            return module.percent && module.percent[index || 0] || 0;
           },
           value: function(index) {
-            return module.nextValue || module.value[index || 0] || 0;
+            return module.nextValue || module.value && module.value[index || 0] || 0;
           },
           total: function() {
             return module.total || false;
@@ -14413,11 +14671,18 @@ $.fn.progress = function(parameters) {
             else {
               var firstNonZeroIndex = -1;
               var lastNonZeroIndex = -1;
+              var valuesSum = module.helper.sum(values);
+              var barCounts = $bars.length;
+              var isMultiple = barCounts > 1;
               var percents = values.map(function(value, index) {
+                var allZero = (index === barCounts - 1 && valuesSum === 0);
                 var $bar = $($bars[index]);
-                if (value === 0) {
+                if (value === 0 && isMultiple && !allZero) {
                   $bar.css('display', 'none');
                 } else {
+                  if (isMultiple && allZero) {
+                    $bar.css('background', 'transparent');
+                  }
                   if (firstNonZeroIndex == -1) {
                     firstNonZeroIndex = index;
                   }
@@ -14976,8 +15241,8 @@ $.fn.progress.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Slider
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Slider
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -16193,8 +16458,8 @@ $.fn.slider.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Rating
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Rating
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -16719,8 +16984,8 @@ $.fn.rating.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Search
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Search
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -17275,7 +17540,7 @@ $.fn.search = function(parameters) {
         search: {
           local: function(searchTerm) {
             var
-              results = module.search.object(searchTerm, settings.content),
+              results = module.search.object(searchTerm, settings.source),
               searchHTML
             ;
             module.set.loading();
@@ -18252,8 +18517,8 @@ $.fn.search.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Shape
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Shape
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -19101,8 +19366,8 @@ $.fn.shape.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Sidebar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Sidebar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -20139,8 +20404,8 @@ $.fn.sidebar.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Sticky
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Sticky
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -21097,8 +21362,8 @@ $.fn.sticky.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Tab
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Tab
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -22070,8 +22335,8 @@ $.fn.tab.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Toast
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Toast
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -22667,8 +22932,8 @@ $.extend( $.easing, {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Transition
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Transition
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -22883,6 +23148,9 @@ $.fn.transition = function() {
         },
 
         complete: function (event) {
+          if(event.target === element) {
+              event.stopPropagation();
+          }
           module.debug('Animation complete', settings.animation);
           module.remove.completeCallback();
           module.remove.failSafe();
@@ -23774,8 +24042,8 @@ $.fn.transition.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - API
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - API
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -24111,6 +24379,10 @@ $.api = $.fn.api = function(parameters) {
             return (module.cancelled || false);
           },
           succesful: function() {
+            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
+            return module.was.successful();
+          },
+          successful: function() {
             return (module.request && module.request.state() == 'resolved');
           },
           failure: function() {
@@ -24323,7 +24595,7 @@ $.api = $.fn.api = function(parameters) {
                 response
               ;
               // have to guess callback parameters based on request success
-              if( module.was.succesful() ) {
+              if( module.was.successful() ) {
                 response = firstParameter;
                 xhr      = secondParameter;
               }
@@ -24949,8 +25221,8 @@ $.api.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - State
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - State
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -25661,8 +25933,8 @@ $.fn.state.settings = {
 })( jQuery, window, document );
 
 /*!
- * # Semantic UI 2.7.2 - Visibility
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Visibility
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

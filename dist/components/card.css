@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Card
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Card
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -42,6 +42,7 @@
   transition: box-shadow 0.1s ease, transform 0.1s ease;
   transition: box-shadow 0.1s ease, transform 0.1s ease, -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   z-index: '';
+  word-wrap: break-word;
 }
 .ui.card {
   margin: 1em 0;
@@ -445,6 +446,8 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   min-width: 400px;
   width: 400px;
   max-width: 100%;
@@ -471,6 +474,16 @@
   width: 100%;
   height: 100%;
   border-radius: 0.28571429rem 0 0 0.28571429rem;
+}
+.ui.horizontal.cards > .card > .content,
+.ui.horizontal.card > .content {
+  -ms-flex-preferred-size: 1px;
+      flex-basis: 1px;
+}
+.ui.horizontal.cards > .card > .extra,
+.ui.horizontal.card > .extra {
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
 }
 
 /*-------------------
@@ -1004,7 +1017,7 @@ a.ui.card:hover,
 
 
 /* Mobile Only */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.two.doubling.cards {
     margin-left: 0;
     margin-right: 0;
@@ -1089,7 +1102,7 @@ a.ui.card:hover,
 }
 
 /* Tablet Only */
-@media only screen and (min-width: 768px) and (max-width: 991.99px) {
+@media only screen and (min-width: 768px) and (max-width: 991.98px) {
   .ui.two.doubling.cards {
     margin-left: 0;
     margin-right: 0;
@@ -1177,7 +1190,7 @@ a.ui.card:hover,
       Stackable
 --------------------*/
 
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.stackable.cards {
     display: block !important;
   }
@@ -1266,6 +1279,12 @@ a.inverted.ui.card:hover,
 .ui.inverted.link.card:hover {
   background: #1B1C1D;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

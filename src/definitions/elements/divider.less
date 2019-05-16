@@ -183,6 +183,26 @@
   vertical-align: middle;
 }
 
+/*--------------
+     Header
+---------------*/
+.ui.horizontal.divider[class*="left aligned"] {
+  &:before {
+    display: none;
+  }
+  &:after {
+    width: 100%;
+  }
+}
+.ui.horizontal.divider[class*="right aligned"] {
+  &:before {
+    width: 100%;
+  }
+  &:after {
+    display: none;
+  }
+}
+
 /*******************************
           Variations
 *******************************/

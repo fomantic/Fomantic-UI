@@ -1,28 +1,29 @@
 /*
-* Font Awesome 5.7.0 by @fontawesome - https://fontawesome.com - @fontawesome
+* Font Awesome 5.8.2 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
 /*******************************
 
-Fomantic-UI integration of font-awesome :
+Fomantic-UI integration of FontAwesome :
 
-///class names are separated
-i.icon.circle => i.icon.circle
-i.icon.circle-o => i.icon.circle.outline
+// class names are separated
+i.icon.angle-left  =>  i.icon.angle.left
 
-//abbreviation are replaced by full letters:
-i.icon.ellipsis-h => i.icon.ellipsis.horizontal
-i.icon.ellipsis-v => i.icon.ellipsis.vertical
-.alpha => .i.icon.alphabet
-.asc => .i.icon.ascending
-.desc => .i.icon.descending
-.alt =>.alternate
+// variations are extracted
+i.icon.circle      =>  i.icon.circle
+i.icon.circle-o    =>  i.icon.circle.outline
 
-ASCII order is conserved for easier maintenance.
+// abbreviation are replaced by full words
+i.icon.*-h         =>  i.icon.*.horizontal
+i.icon.*-v         =>  i.icon.*.vertical
+i.icon.alpha       =>  i.icon.alphabet
+i.icon.asc         =>  i.icon.ascending
+i.icon.desc        =>  i.icon.descending
+i.icon.alt         =>  i.icon.alternate
 
-Icons that only have one style 'outline', 'square' etc do not require this class
-for instance `lemon icon` not `lemon outline icon` since there is only one lemon
+
+Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 *******************************/
 
@@ -39,6 +40,11 @@ i.icon.sign.in:before { content: "\f2f6"; }
 i.icon.in.cart:before { content: "\f218"; }
 i.icon.log.out:before { content: "\f2f5"; }
 i.icon.sign.out:before { content: "\f2f5"; }
+
+
+/*******************************
+          Solid Icons
+*******************************/
 
 /* Icons */
 i.icon.ad:before { content: "\f641"; }
@@ -959,6 +965,7 @@ i.icon.walking:before { content: "\f554"; }
 i.icon.wallet:before { content: "\f555"; }
 i.icon.warehouse:before { content: "\f494"; }
 i.icon.water:before { content: "\f773"; }
+i.icon.wave.square:before { content: "\f83e"; }
 i.icon.weight:before { content: "\f496"; }
 i.icon.weight.hanging:before { content: "\f5cd"; }
 i.icon.wheelchair:before { content: "\f193"; }
@@ -977,22 +984,15 @@ i.icon.x.ray:before { content: "\f497"; }
 i.icon.yen.sign:before { content: "\f157"; }
 i.icon.yin.yang:before { content: "\f6ad"; }
 
-
 /* Aliases */
-i.icon.chess.rock:before { content: "\f447"; }
-i.icon.ordered.list:before { content: "\f0cb"; }
-i.icon.unordered.list:before { content: "\f0ca"; }
-i.icon.user.doctor:before { content: "\f0f0"; }
-i.icon.shield:before { content: "\f3ed"; }
-i.icon.puzzle:before { content: "\f12e"; }
+i.icon.add:before { content: "\f067"; }
 i.icon.add.circle:before { content: "\f055"; }
 i.icon.add.square:before { content: "\f0fe"; }
 i.icon.add.to.calendar:before { content: "\f271"; }
 i.icon.add.to.cart:before { content: "\f217"; }
 i.icon.add.user:before { content: "\f234"; }
-i.icon.add:before { content: "\f067"; }
-i.icon.alarm.mute:before { content: "\f1f6"; }
 i.icon.alarm:before { content: "\f0f3"; }
+i.icon.alarm.mute:before { content: "\f1f6"; }
 i.icon.ald:before { content: "\f2a2"; }
 i.icon.als:before { content: "\f2a2"; }
 i.icon.announcement:before { content: "\f0a1"; }
@@ -1000,8 +1000,8 @@ i.icon.area.chart:before { content: "\f1fe"; }
 i.icon.area.graph:before { content: "\f1fe"; }
 i.icon.arrow.down.cart:before { content: "\f218"; }
 i.icon.asexual:before { content: "\f22d"; }
-i.icon.asl.interpreting:before { content: "\f2a3"; }
 i.icon.asl:before { content: "\f2a3"; }
+i.icon.asl.interpreting:before { content: "\f2a3"; }
 i.icon.assistive.listening.devices:before { content: "\f2a2"; }
 i.icon.attach:before { content: "\f0c6"; }
 i.icon.attention:before { content: "\f06a"; }
@@ -1020,8 +1020,8 @@ i.icon.birthday:before { content: "\f1fd"; }
 i.icon.block.layout:before { content: "\f009"; }
 i.icon.broken.chain:before { content: "\f127"; }
 i.icon.browser:before { content: "\f022"; }
-i.icon.call.square:before { content: "\f098"; }
 i.icon.call:before { content: "\f095"; }
+i.icon.call.square:before { content: "\f098"; }
 i.icon.cancel:before { content: "\f00d"; }
 i.icon.cart:before { content: "\f07a"; }
 i.icon.cc:before { content: "\f20a"; }
@@ -1029,19 +1029,31 @@ i.icon.chain:before { content: "\f0c1"; }
 i.icon.chat:before { content: "\f075"; }
 i.icon.checked.calendar:before { content: "\f274"; }
 i.icon.checkmark:before { content: "\f00c"; }
+i.icon.checkmark.box:before { content: "\f14a"; }
+i.icon.chess.rock:before { content: "\f447"; }
 i.icon.circle.notched:before { content: "\f1ce"; }
+i.icon.circle.thin:before { content: "\f111"; }
 i.icon.close:before { content: "\f00d"; }
+i.icon.cloud.download:before { content: "\f381"; }
+i.icon.cloud.upload:before { content: "\f382"; }
 i.icon.cny:before { content: "\f157"; }
 i.icon.cocktail:before { content: "\f000"; }
 i.icon.commenting:before { content: "\f27a"; }
+i.icon.compose:before { content: "\f303"; }
 i.icon.computer:before { content: "\f108"; }
 i.icon.configure:before { content: "\f0ad"; }
 i.icon.content:before { content: "\f0c9"; }
+i.icon.conversation:before { content: "\f086"; }
+i.icon.credit.card.alternative:before { content: "\f09d"; }
+i.icon.currency:before { content: "\f3d1"; }
+i.icon.dashboard:before { content: "\f3fd"; }
 i.icon.deafness:before { content: "\f2a4"; }
-i.icon.delete.calendar:before { content: "\f273"; }
 i.icon.delete:before { content: "\f00d"; }
+i.icon.delete.calendar:before { content: "\f273"; }
 i.icon.detective:before { content: "\f21b"; }
+i.icon.diamond:before { content: "\f3a5"; }
 i.icon.discussions:before { content: "\f086"; }
+i.icon.disk:before { content: "\f0a0"; }
 i.icon.doctor:before { content: "\f0f0"; }
 i.icon.dollar:before { content: "\f155"; }
 i.icon.dont:before { content: "\f05e"; }
@@ -1051,6 +1063,10 @@ i.icon.emergency:before { content: "\f0f9"; }
 i.icon.erase:before { content: "\f12d"; }
 i.icon.eur:before { content: "\f153"; }
 i.icon.euro:before { content: "\f153"; }
+i.icon.exchange:before { content: "\f362"; }
+i.icon.external:before { content: "\f35d"; }
+i.icon.external.share:before { content: "\f14d"; }
+i.icon.external.square:before { content: "\f360"; }
 i.icon.eyedropper:before { content: "\f1fb"; }
 i.icon.factory:before { content: "\f275"; }
 i.icon.favorite:before { content: "\f005"; }
@@ -1059,6 +1075,7 @@ i.icon.female.homosexual:before { content: "\f226"; }
 i.icon.file.text:before { content: "\f15c"; }
 i.icon.find:before { content: "\f1e5"; }
 i.icon.first.aid:before { content: "\f0fa"; }
+i.icon.food:before { content: "\f2e7"; }
 i.icon.fork:before { content: "\f126"; }
 i.icon.game:before { content: "\f11b"; }
 i.icon.gay:before { content: "\f227"; }
@@ -1068,12 +1085,14 @@ i.icon.graduation:before { content: "\f19d"; }
 i.icon.grid.layout:before { content: "\f00a"; }
 i.icon.group:before { content: "\f0c0"; }
 i.icon.h:before { content: "\f0fd"; }
+i.icon.hamburger:before { content: "\f0c9"; }
 i.icon.hand.victory:before { content: "\f25b"; }
 i.icon.handicap:before { content: "\f193"; }
 i.icon.hard.of.hearing:before { content: "\f2a4"; }
 i.icon.header:before { content: "\f1dc"; }
-i.icon.help.circle:before { content: "\f059"; }
+i.icon.heart.empty:before { content: "\f004"; }
 i.icon.help:before { content: "\f128"; }
+i.icon.help.circle:before { content: "\f059"; }
 i.icon.heterosexual:before { content: "\f228"; }
 i.icon.hide:before { content: "\f070"; }
 i.icon.hotel:before { content: "\f236"; }
@@ -1082,6 +1101,7 @@ i.icon.hourglass.full:before { content: "\f254"; }
 i.icon.hourglass.one:before { content: "\f251"; }
 i.icon.hourglass.three:before { content: "\f253"; }
 i.icon.hourglass.two:before { content: "\f252"; }
+i.icon.hourglass.zero:before { content: "\f253"; }
 i.icon.idea:before { content: "\f0eb"; }
 i.icon.ils:before { content: "\f20b"; }
 i.icon.in.cart:before { content: "\f218"; }
@@ -1094,31 +1114,39 @@ i.icon.lab:before { content: "\f0c3"; }
 i.icon.law:before { content: "\f24e"; }
 i.icon.legal:before { content: "\f0e3"; }
 i.icon.lesbian:before { content: "\f226"; }
+i.icon.level.down:before { content: "\f3be"; }
+i.icon.level.up:before { content: "\f3bf"; }
 i.icon.lightning:before { content: "\f0e7"; }
 i.icon.like:before { content: "\f004"; }
 i.icon.line.graph:before { content: "\f201"; }
 i.icon.linkify:before { content: "\f0c1"; }
 i.icon.lira:before { content: "\f195"; }
 i.icon.list.layout:before { content: "\f00b"; }
+i.icon.log.out:before { content: "\f2f5"; }
 i.icon.magnify:before { content: "\f00e"; }
+i.icon.mail:before { content: "\f0e0"; }
 i.icon.mail.forward:before { content: "\f064"; }
 i.icon.mail.square:before { content: "\f199"; }
-i.icon.mail:before { content: "\f0e0"; }
 i.icon.male.homosexual:before { content: "\f227"; }
 i.icon.man:before { content: "\f222"; }
 i.icon.marker:before { content: "\f041"; }
 i.icon.mars.alternate:before { content: "\f229"; }
 i.icon.mars.horizontal:before { content: "\f22b"; }
 i.icon.mars.vertical:before { content: "\f22a"; }
+i.icon.meanpath:before { content: "\f0c8"; }
 i.icon.military:before { content: "\f0fb"; }
+i.icon.money:before { content: "\f3d1"; }
+i.icon.move:before { content: "\f0b2"; }
 i.icon.mute:before { content: "\f131"; }
 i.icon.non.binary.transgender:before { content: "\f223"; }
 i.icon.numbered.list:before { content: "\f0cb"; }
 i.icon.options:before { content: "\f1de"; }
+i.icon.ordered.list:before { content: "\f0cb"; }
+i.icon.other.gender:before { content: "\f229"; }
 i.icon.other.gender.horizontal:before { content: "\f22b"; }
 i.icon.other.gender.vertical:before { content: "\f22a"; }
-i.icon.other.gender:before { content: "\f229"; }
 i.icon.payment:before { content: "\f09d"; }
+i.icon.pencil:before { content: "\f303"; }
 i.icon.pencil.square:before { content: "\f14b"; }
 i.icon.photo:before { content: "\f030"; }
 i.icon.picture:before { content: "\f03e"; }
@@ -1132,18 +1160,24 @@ i.icon.pointing.left:before { content: "\f0a5"; }
 i.icon.pointing.right:before { content: "\f0a4"; }
 i.icon.pointing.up:before { content: "\f0a6"; }
 i.icon.pound:before { content: "\f154"; }
-i.icon.power.cord:before { content: "\f1e6"; }
 i.icon.power:before { content: "\f011"; }
+i.icon.power.cord:before { content: "\f1e6"; }
 i.icon.privacy:before { content: "\f084"; }
+i.icon.protect:before { content: "\f023"; }
+i.icon.puzzle:before { content: "\f12e"; }
 i.icon.r.circle:before { content: "\f25d"; }
+i.icon.radio:before { content: "\f192"; }
 i.icon.rain:before { content: "\f0e9"; }
 i.icon.record:before { content: "\f03d"; }
 i.icon.refresh:before { content: "\f021"; }
+i.icon.remove:before { content: "\f00d"; }
+i.icon.remove.bookmark:before { content: "\f02e"; }
 i.icon.remove.circle:before { content: "\f057"; }
 i.icon.remove.from.calendar:before { content: "\f272"; }
 i.icon.remove.user:before { content: "\f235"; }
-i.icon.remove:before { content: "\f00d"; }
 i.icon.repeat:before { content: "\f01e"; }
+i.icon.resize.horizontal:before { content: "\f337"; }
+i.icon.resize.vertical:before { content: "\f338"; }
 i.icon.rmb:before { content: "\f157"; }
 i.icon.rouble:before { content: "\f158"; }
 i.icon.rub:before { content: "\f158"; }
@@ -1156,11 +1190,14 @@ i.icon.setting:before { content: "\f013"; }
 i.icon.settings:before { content: "\f085"; }
 i.icon.shekel:before { content: "\f20b"; }
 i.icon.sheqel:before { content: "\f20b"; }
+i.icon.shield:before { content: "\f3ed"; }
 i.icon.shipping:before { content: "\f0d1"; }
 i.icon.shop:before { content: "\f07a"; }
 i.icon.shuffle:before { content: "\f074"; }
 i.icon.shutdown:before { content: "\f011"; }
 i.icon.sidebar:before { content: "\f0c9"; }
+i.icon.sign.in:before { content: "\f2f6"; }
+i.icon.sign.out:before { content: "\f2f5"; }
 i.icon.signing:before { content: "\f2a7"; }
 i.icon.signup:before { content: "\f044"; }
 i.icon.sliders:before { content: "\f1de"; }
@@ -1174,7 +1211,11 @@ i.icon.sort.descending:before { content: "\f0dd"; }
 i.icon.sort.numeric.ascending:before { content: "\f162"; }
 i.icon.sort.numeric.descending:before { content: "\f163"; }
 i.icon.sound:before { content: "\f025"; }
+i.icon.spoon:before { content: "\f2e5"; }
 i.icon.spy:before { content: "\f21b"; }
+i.icon.star.empty:before { content: "\f005"; }
+i.icon.star.half.empty:before { content: "\f089"; }
+i.icon.star.half.full:before { content: "\f089"; }
 i.icon.student:before { content: "\f19d"; }
 i.icon.talk:before { content: "\f27a"; }
 i.icon.target:before { content: "\f140"; }
@@ -1185,7 +1226,9 @@ i.icon.text.telephone:before { content: "\f1e4"; }
 i.icon.theme:before { content: "\f043"; }
 i.icon.thermometer:before { content: "\f2c7"; }
 i.icon.thumb.tack:before { content: "\f08d"; }
+i.icon.ticket:before { content: "\f3ff"; }
 i.icon.time:before { content: "\f017"; }
+i.icon.times.rectangle:before { content: "\f410"; }
 i.icon.tm:before { content: "\f25c"; }
 i.icon.toggle.down:before { content: "\f150"; }
 i.icon.toggle.left:before { content: "\f191"; }
@@ -1202,73 +1245,35 @@ i.icon.try:before { content: "\f195"; }
 i.icon.unhide:before { content: "\f06e"; }
 i.icon.unlinkify:before { content: "\f127"; }
 i.icon.unmute:before { content: "\f130"; }
+i.icon.unordered.list:before { content: "\f0ca"; }
 i.icon.usd:before { content: "\f155"; }
 i.icon.user.cancel:before { content: "\f235"; }
 i.icon.user.close:before { content: "\f235"; }
 i.icon.user.delete:before { content: "\f235"; }
+i.icon.user.doctor:before { content: "\f0f0"; }
 i.icon.user.x:before { content: "\f235"; }
 i.icon.vcard:before { content: "\f2bb"; }
 i.icon.video.camera:before { content: "\f03d"; }
 i.icon.video.play:before { content: "\f144"; }
 i.icon.volume.control.phone:before { content: "\f2a0"; }
 i.icon.wait:before { content: "\f017"; }
+i.icon.warning:before { content: "\f12a"; }
 i.icon.warning.circle:before { content: "\f06a"; }
 i.icon.warning.sign:before { content: "\f071"; }
-i.icon.warning:before { content: "\f12a"; }
 i.icon.wi.fi:before { content: "\f1eb"; }
 i.icon.winner:before { content: "\f091"; }
 i.icon.wizard:before { content: "\f0d0"; }
 i.icon.woman:before { content: "\f221"; }
 i.icon.won:before { content: "\f159"; }
 i.icon.world:before { content: "\f0ac"; }
+i.icon.write:before { content: "\f303"; }
 i.icon.write.square:before { content: "\f14b"; }
 i.icon.x:before { content: "\f00d"; }
 i.icon.yen:before { content: "\f157"; }
 i.icon.zip:before { content: "\f187"; }
+i.icon.zoom:before { content: "\f00e"; }
 i.icon.zoom.in:before { content: "\f00e"; }
 i.icon.zoom.out:before { content: "\f010"; }
-i.icon.zoom:before { content: "\f00e"; }
-i.icon.checkmark.box:before { content: "\f14a"; }
-i.icon.circle.thin:before { content: "\f111"; }
-i.icon.cloud.download:before { content: "\f381"; }
-i.icon.cloud.upload:before { content: "\f382"; }
-i.icon.compose:before { content: "\f303"; }
-i.icon.conversation:before { content: "\f086"; }
-i.icon.credit.card.alternative:before { content: "\f09d"; }
-i.icon.currency:before { content: "\f3d1"; }
-i.icon.dashboard:before { content: "\f3fd"; }
-i.icon.diamond:before { content: "\f3a5"; }
-i.icon.disk:before { content: "\f0a0"; }
-i.icon.exchange:before { content: "\f362"; }
-i.icon.external.share:before { content: "\f14d"; }
-i.icon.external.square:before { content: "\f360"; }
-i.icon.external:before { content: "\f35d"; }
-i.icon.food:before { content: "\f2e7"; }
-i.icon.heart.empty:before { content: "\f004"; }
-i.icon.hourglass.zero:before { content: "\f253"; }
-i.icon.level.down:before { content: "\f3be"; }
-i.icon.level.up:before { content: "\f3bf"; }
-i.icon.log.out:before { content: "\f2f5"; }
-i.icon.meanpath:before { content: "\f0c8"; }
-i.icon.money:before { content: "\f3d1"; }
-i.icon.move:before { content: "\f0b2"; }
-i.icon.pencil:before { content: "\f303"; }
-i.icon.protect:before { content: "\f023"; }
-i.icon.radio:before { content: "\f192"; }
-i.icon.remove.bookmark:before { content: "\f02e"; }
-i.icon.resize.horizontal:before { content: "\f337"; }
-i.icon.resize.vertical:before { content: "\f338"; }
-i.icon.sign.in:before { content: "\f2f6"; }
-i.icon.sign.out:before { content: "\f2f5"; }
-i.icon.spoon:before { content: "\f2e5"; }
-i.icon.star.empty:before { content: "\f005"; }
-i.icon.star.half.empty:before { content: "\f089"; }
-i.icon.star.half.full:before { content: "\f089"; }
-i.icon.ticket:before { content: "\f3ff"; }
-i.icon.times.rectangle:before { content: "\f410"; }
-i.icon.write:before { content: "\f303"; }
-i.icon.hamburger:before { content: "\f0c9"; }
-
 
 /*******************************
          Outline Icons
@@ -1276,7 +1281,6 @@ i.icon.hamburger:before { content: "\f0c9"; }
 
 /* Outline Icon */
 .loadOutlineIcons() when (@importOutlineIcons) {
-
   /* Load & Define Icon Font */
   @font-face {
     font-family: @outlineFontName;
@@ -1293,7 +1297,7 @@ i.icon.hamburger:before { content: "\f0c9"; }
     font-family: @outlineFontName;
   }
 
-  /* Icon Definitions */
+  /* Icons */
   i.icon.address.book.outline:before { content: "\f2b9"; }
   i.icon.address.card.outline:before { content: "\f2bb"; }
   i.icon.angry.outline:before { content: "\f556"; }
@@ -1445,11 +1449,12 @@ i.icon.hamburger:before { content: "\f0c9"; }
   i.icon.window.maximize.outline:before { content: "\f2d0"; }
   i.icon.window.minimize.outline:before { content: "\f2d1"; }
   i.icon.window.restore.outline:before { content: "\f2d2"; }
-
   
 
+  
 }
 .loadOutlineIcons();
+
 
 
 /*******************************
@@ -1457,7 +1462,6 @@ i.icon.hamburger:before { content: "\f0c9"; }
 *******************************/
 
 .loadBrandIcons() when (@importBrandIcons) {
-
   /* Load & Define Brand Font */
   @font-face {
     font-family: @brandFontName;
@@ -1470,950 +1474,490 @@ i.icon.hamburger:before { content: "\f0c9"; }
     text-transform: none;
   }
 
-  /* Brand Icon Font Family */
-  i.icon.\35 00px,
-  i.icon.accessible,
-  i.icon.accusoft,
-  i.icon.acquisitions.incorporated,
-  i.icon.adn,
-  i.icon.adobe,
-  i.icon.adversal,
-  i.icon.affiliatetheme,
-  i.icon.algolia,
-  i.icon.alipay,
-  i.icon.amazon,
-  i.icon.amazon.pay,
-  i.icon.amilia,
-  i.icon.android,
-  i.icon.angellist,
-  i.icon.angrycreative,
-  i.icon.angular,
-  i.icon.app.store,
-  i.icon.app.store.ios,
-  i.icon.apper,
-  i.icon.apple,
-  i.icon.apple.pay,
-  i.icon.artstation,
-  i.icon.asymmetrik,
-  i.icon.atlassian,
-  i.icon.audible,
-  i.icon.autoprefixer,
-  i.icon.avianex,
-  i.icon.aviato,
-  i.icon.aws,
-  i.icon.bandcamp,
-  i.icon.behance,
-  i.icon.behance.square,
-  i.icon.bimobject,
-  i.icon.bitbucket,
-  i.icon.bitcoin,
-  i.icon.bity,
-  i.icon.black.tie,
-  i.icon.blackberry,
-  i.icon.blogger,
-  i.icon.blogger.b,
-  i.icon.bluetooth,
-  i.icon.bluetooth.b,
-  i.icon.btc,
-  i.icon.buromobelexperte,
-  i.icon.buysellads,
-  i.icon.canadian.maple.leaf,
-  i.icon.cc.amazon.pay,
-  i.icon.cc.amex,
-  i.icon.cc.apple.pay,
-  i.icon.cc.diners.club,
-  i.icon.cc.discover,
-  i.icon.cc.jcb,
-  i.icon.cc.mastercard,
-  i.icon.cc.paypal,
-  i.icon.cc.stripe,
-  i.icon.cc.visa,
-  i.icon.centercode,
-  i.icon.centos,
-  i.icon.chrome,
-  i.icon.cloudscale,
-  i.icon.cloudsmith,
-  i.icon.cloudversify,
-  i.icon.codepen,
-  i.icon.codiepie,
-  i.icon.confluence,
-  i.icon.connectdevelop,
-  i.icon.contao,
-  i.icon.cpanel,
-  i.icon.creative.commons,
-  i.icon.creative.commons.by,
-  i.icon.creative.commons.nc,
-  i.icon.creative.commons.nc.eu,
-  i.icon.creative.commons.nc.jp,
-  i.icon.creative.commons.nd,
-  i.icon.creative.commons.pd,
-  i.icon.creative.commons.pd.alternate,
-  i.icon.creative.commons.remix,
-  i.icon.creative.commons.sa,
-  i.icon.creative.commons.sampling,
-  i.icon.creative.commons.sampling.plus,
-  i.icon.creative.commons.share,
-  i.icon.creative.commons.zero,
-  i.icon.critical.role,
-  i.icon.css3,
-  i.icon.css3.alternate,
-  i.icon.cuttlefish,
-  i.icon.d.and.d,
-  i.icon.d.and.d.beyond,
-  i.icon.dashcube,
-  i.icon.delicious,
-  i.icon.deploydog,
-  i.icon.deskpro,
-  i.icon.dev,
-  i.icon.deviantart,
-  i.icon.dhl,
-  i.icon.diaspora,
-  i.icon.digg,
-  i.icon.digital.ocean,
-  i.icon.discord,
-  i.icon.discourse,
-  i.icon.dochub,
-  i.icon.docker,
-  i.icon.draft2digital,
-  i.icon.dribbble,
-  i.icon.dribbble.square,
-  i.icon.dropbox,
-  i.icon.drupal,
-  i.icon.dyalog,
-  i.icon.earlybirds,
-  i.icon.ebay,
-  i.icon.edge,
-  i.icon.elementor,
-  i.icon.ello,
-  i.icon.ember,
-  i.icon.empire,
-  i.icon.envira,
-  i.icon.erlang,
-  i.icon.ethereum,
-  i.icon.etsy,
-  i.icon.expeditedssl,
-  i.icon.facebook,
-  i.icon.facebook.f,
-  i.icon.facebook.messenger,
-  i.icon.facebook.square,
-  i.icon.fantasy.flight.games,
-  i.icon.fedex,
-  i.icon.fedora,
-  i.icon.figma,
-  i.icon.firefox,
-  i.icon.first.order,
-  i.icon.first.order.alternate,
-  i.icon.firstdraft,
-  i.icon.flickr,
-  i.icon.flipboard,
-  i.icon.fly,
-  i.icon.font.awesome,
-  i.icon.font.awesome.alternate,
-  i.icon.font.awesome.flag,
-  i.icon.fonticons,
-  i.icon.fonticons.fi,
-  i.icon.fort.awesome,
-  i.icon.fort.awesome.alternate,
-  i.icon.forumbee,
-  i.icon.foursquare,
-  i.icon.free.code.camp,
-  i.icon.freebsd,
-  i.icon.fulcrum,
-  i.icon.galactic.republic,
-  i.icon.galactic.senate,
-  i.icon.get.pocket,
-  i.icon.gg,
-  i.icon.gg.circle,
-  i.icon.git,
-  i.icon.git.square,
-  i.icon.github,
-  i.icon.github.alternate,
-  i.icon.github.square,
-  i.icon.gitkraken,
-  i.icon.gitlab,
-  i.icon.gitter,
-  i.icon.glide,
-  i.icon.glide.g,
-  i.icon.gofore,
-  i.icon.goodreads,
-  i.icon.goodreads.g,
-  i.icon.google,
-  i.icon.google.drive,
-  i.icon.google.play,
-  i.icon.google.plus,
-  i.icon.google.plus.g,
-  i.icon.google.plus.square,
-  i.icon.google.wallet,
-  i.icon.gratipay,
-  i.icon.grav,
-  i.icon.gripfire,
-  i.icon.grunt,
-  i.icon.gulp,
-  i.icon.hacker.news,
-  i.icon.hacker.news.square,
-  i.icon.hackerrank,
-  i.icon.hips,
-  i.icon.hire.a.helper,
-  i.icon.hooli,
-  i.icon.hornbill,
-  i.icon.hotjar,
-  i.icon.houzz,
-  i.icon.html5,
-  i.icon.hubspot,
-  i.icon.imdb,
-  i.icon.instagram,
-  i.icon.intercom,
-  i.icon.internet.explorer,
-  i.icon.invision,
-  i.icon.ioxhost,
-  i.icon.itunes,
-  i.icon.itunes.note,
-  i.icon.java,
-  i.icon.jedi.order,
-  i.icon.jenkins,
-  i.icon.jira,
-  i.icon.joget,
-  i.icon.joomla,
-  i.icon.js,
-  i.icon.js.square,
-  i.icon.jsfiddle,
-  i.icon.kaggle,
-  i.icon.keybase,
-  i.icon.keycdn,
-  i.icon.kickstarter,
-  i.icon.kickstarter.k,
-  i.icon.korvue,
-  i.icon.laravel,
-  i.icon.lastfm,
-  i.icon.lastfm.square,
-  i.icon.leanpub,
-  i.icon.lesscss,
-  i.icon.linechat,
-  i.icon.linkedin,
-  i.icon.linkedin.in,
-  i.icon.linode,
-  i.icon.linux,
-  i.icon.lyft,
-  i.icon.magento,
-  i.icon.mailchimp,
-  i.icon.mandalorian,
-  i.icon.markdown,
-  i.icon.mastodon,
-  i.icon.maxcdn,
-  i.icon.medapps,
-  i.icon.medium,
-  i.icon.medium.m,
-  i.icon.medrt,
-  i.icon.meetup,
-  i.icon.megaport,
-  i.icon.mendeley,
-  i.icon.microsoft,
-  i.icon.mix,
-  i.icon.mixcloud,
-  i.icon.mizuni,
-  i.icon.modx,
-  i.icon.monero,
-  i.icon.napster,
-  i.icon.neos,
-  i.icon.nimblr,
-  i.icon.nintendo.switch,
-  i.icon.node,
-  i.icon.node.js,
-  i.icon.npm,
-  i.icon.ns8,
-  i.icon.nutritionix,
-  i.icon.odnoklassniki,
-  i.icon.odnoklassniki.square,
-  i.icon.old.republic,
-  i.icon.opencart,
-  i.icon.openid,
-  i.icon.opera,
-  i.icon.optin.monster,
-  i.icon.osi,
-  i.icon.page4,
-  i.icon.pagelines,
-  i.icon.palfed,
-  i.icon.patreon,
-  i.icon.paypal,
-  i.icon.penny.arcade,
-  i.icon.periscope,
-  i.icon.phabricator,
-  i.icon.phoenix.framework,
-  i.icon.phoenix.squadron,
-  i.icon.php,
-  i.icon.pied.piper,
-  i.icon.pied.piper.alternate,
-  i.icon.pied.piper.hat,
-  i.icon.pied.piper.pp,
-  i.icon.pinterest,
-  i.icon.pinterest.p,
-  i.icon.pinterest.square,
-  i.icon.playstation,
-  i.icon.product.hunt,
-  i.icon.pushed,
-  i.icon.python,
-  i.icon.qq,
-  i.icon.quinscape,
-  i.icon.quora,
-  i.icon.r.project,
-  i.icon.raspberry.pi,
-  i.icon.ravelry,
-  i.icon.react,
-  i.icon.reacteurope,
-  i.icon.readme,
-  i.icon.rebel,
-  i.icon.reddit,
-  i.icon.reddit.alien,
-  i.icon.reddit.square,
-  i.icon.redhat,
-  i.icon.redriver,
-  i.icon.redyeti,
-  i.icon.renren,
-  i.icon.replyd,
-  i.icon.researchgate,
-  i.icon.resolving,
-  i.icon.rev,
-  i.icon.rocketchat,
-  i.icon.rockrms,
-  i.icon.safari,
-  i.icon.sass,
-  i.icon.schlix,
-  i.icon.scribd,
-  i.icon.searchengin,
-  i.icon.sellcast,
-  i.icon.sellsy,
-  i.icon.servicestack,
-  i.icon.shirtsinbulk,
-  i.icon.shopware,
-  i.icon.simplybuilt,
-  i.icon.sistrix,
-  i.icon.sith,
-  i.icon.sketch,
-  i.icon.skyatlas,
-  i.icon.skype,
-  i.icon.slack,
-  i.icon.slack.hash,
-  i.icon.slideshare,
-  i.icon.snapchat,
-  i.icon.snapchat.ghost,
-  i.icon.snapchat.square,
-  i.icon.soundcloud,
-  i.icon.sourcetree,
-  i.icon.speakap,
-  i.icon.spotify,
-  i.icon.squarespace,
-  i.icon.stack.exchange,
-  i.icon.stack.overflow,
-  i.icon.staylinked,
-  i.icon.steam,
-  i.icon.steam.square,
-  i.icon.steam.symbol,
-  i.icon.sticker.mule,
-  i.icon.strava,
-  i.icon.stripe,
-  i.icon.stripe.s,
-  i.icon.studiovinari,
-  i.icon.stumbleupon,
-  i.icon.stumbleupon.circle,
-  i.icon.superpowers,
-  i.icon.supple,
-  i.icon.suse,
-  i.icon.teamspeak,
-  i.icon.telegram,
-  i.icon.telegram.plane,
-  i.icon.tencent.weibo,
-  i.icon.themeco,
-  i.icon.themeisle,
-  i.icon.think.peaks,
-  i.icon.trade.federation,
-  i.icon.trello,
-  i.icon.tripadvisor,
-  i.icon.tumblr,
-  i.icon.tumblr.square,
-  i.icon.twitch,
-  i.icon.twitter,
-  i.icon.twitter.square,
-  i.icon.typo3,
-  i.icon.uber,
-  i.icon.ubuntu,
-  i.icon.uikit,
-  i.icon.uniregistry,
-  i.icon.untappd,
-  i.icon.ups,
-  i.icon.usb,
-  i.icon.usps,
-  i.icon.ussunnah,
-  i.icon.vaadin,
-  i.icon.viacoin,
-  i.icon.viadeo,
-  i.icon.viadeo.square,
-  i.icon.viber,
-  i.icon.vimeo,
-  i.icon.vimeo.square,
-  i.icon.vimeo.v,
-  i.icon.vine,
-  i.icon.vk,
-  i.icon.vnv,
-  i.icon.vuejs,
-  i.icon.weebly,
-  i.icon.weibo,
-  i.icon.weixin,
-  i.icon.whatsapp,
-  i.icon.whatsapp.square,
-  i.icon.whmcs,
-  i.icon.wikipedia.w,
-  i.icon.windows,
-  i.icon.wix,
-  i.icon.wizards.of.the.coast,
-  i.icon.wolf.pack.battalion,
-  i.icon.wordpress,
-  i.icon.wordpress.simple,
-  i.icon.wpbeginner,
-  i.icon.wpexplorer,
-  i.icon.wpforms,
-  i.icon.wpressr,
-  i.icon.xbox,
-  i.icon.xing,
-  i.icon.xing.square,
-  i.icon.y.combinator,
-  i.icon.yahoo,
-  i.icon.yandex,
-  i.icon.yandex.international,
-  i.icon.yarn,
-  i.icon.yelp,
-  i.icon.yoast,
-  i.icon.youtube,
-  i.icon.youtube.square,
-  i.icon.zhihu {
-    font-family: @brandFontName;
-  }
-
-  /* Icon Definitions */
-  i.icon.\35 00px:before { content: "\f26e"; }
-  i.icon.accessible:before { content: "\f368"; }
-  i.icon.accusoft:before { content: "\f369"; }
-  i.icon.acquisitions.incorporated:before { content: "\f6af"; }
-  i.icon.adn:before { content: "\f170"; }
-  i.icon.adobe:before { content: "\f778"; }
-  i.icon.adversal:before { content: "\f36a"; }
-  i.icon.affiliatetheme:before { content: "\f36b"; }
-  i.icon.algolia:before { content: "\f36c"; }
-  i.icon.alipay:before { content: "\f642"; }
-  i.icon.amazon:before { content: "\f270"; }
-  i.icon.amazon.pay:before { content: "\f42c"; }
-  i.icon.amilia:before { content: "\f36d"; }
-  i.icon.android:before { content: "\f17b"; }
-  i.icon.angellist:before { content: "\f209"; }
-  i.icon.angrycreative:before { content: "\f36e"; }
-  i.icon.angular:before { content: "\f420"; }
-  i.icon.app.store:before { content: "\f36f"; }
-  i.icon.app.store.ios:before { content: "\f370"; }
-  i.icon.apper:before { content: "\f371"; }
-  i.icon.apple:before { content: "\f179"; }
-  i.icon.apple.pay:before { content: "\f415"; }
-  i.icon.artstation:before { content: "\f77a"; }
-  i.icon.asymmetrik:before { content: "\f372"; }
-  i.icon.atlassian:before { content: "\f77b"; }
-  i.icon.audible:before { content: "\f373"; }
-  i.icon.autoprefixer:before { content: "\f41c"; }
-  i.icon.avianex:before { content: "\f374"; }
-  i.icon.aviato:before { content: "\f421"; }
-  i.icon.aws:before { content: "\f375"; }
-  i.icon.bandcamp:before { content: "\f2d5"; }
-  i.icon.behance:before { content: "\f1b4"; }
-  i.icon.behance.square:before { content: "\f1b5"; }
-  i.icon.bimobject:before { content: "\f378"; }
-  i.icon.bitbucket:before { content: "\f171"; }
-  i.icon.bitcoin:before { content: "\f379"; }
-  i.icon.bity:before { content: "\f37a"; }
-  i.icon.black.tie:before { content: "\f27e"; }
-  i.icon.blackberry:before { content: "\f37b"; }
-  i.icon.blogger:before { content: "\f37c"; }
-  i.icon.blogger.b:before { content: "\f37d"; }
-  i.icon.bluetooth:before { content: "\f293"; }
-  i.icon.bluetooth.b:before { content: "\f294"; }
-  i.icon.btc:before { content: "\f15a"; }
-  i.icon.buromobelexperte:before { content: "\f37f"; }
-  i.icon.buysellads:before { content: "\f20d"; }
-  i.icon.canadian.maple.leaf:before { content: "\f785"; }
-  i.icon.cc.amazon.pay:before { content: "\f42d"; }
-  i.icon.cc.amex:before { content: "\f1f3"; }
-  i.icon.cc.apple.pay:before { content: "\f416"; }
-  i.icon.cc.diners.club:before { content: "\f24c"; }
-  i.icon.cc.discover:before { content: "\f1f2"; }
-  i.icon.cc.jcb:before { content: "\f24b"; }
-  i.icon.cc.mastercard:before { content: "\f1f1"; }
-  i.icon.cc.paypal:before { content: "\f1f4"; }
-  i.icon.cc.stripe:before { content: "\f1f5"; }
-  i.icon.cc.visa:before { content: "\f1f0"; }
-  i.icon.centercode:before { content: "\f380"; }
-  i.icon.centos:before { content: "\f789"; }
-  i.icon.chrome:before { content: "\f268"; }
-  i.icon.cloudscale:before { content: "\f383"; }
-  i.icon.cloudsmith:before { content: "\f384"; }
-  i.icon.cloudversify:before { content: "\f385"; }
-  i.icon.codepen:before { content: "\f1cb"; }
-  i.icon.codiepie:before { content: "\f284"; }
-  i.icon.confluence:before { content: "\f78d"; }
-  i.icon.connectdevelop:before { content: "\f20e"; }
-  i.icon.contao:before { content: "\f26d"; }
-  i.icon.cpanel:before { content: "\f388"; }
-  i.icon.creative.commons:before { content: "\f25e"; }
-  i.icon.creative.commons.by:before { content: "\f4e7"; }
-  i.icon.creative.commons.nc:before { content: "\f4e8"; }
-  i.icon.creative.commons.nc.eu:before { content: "\f4e9"; }
-  i.icon.creative.commons.nc.jp:before { content: "\f4ea"; }
-  i.icon.creative.commons.nd:before { content: "\f4eb"; }
-  i.icon.creative.commons.pd:before { content: "\f4ec"; }
-  i.icon.creative.commons.pd.alternate:before { content: "\f4ed"; }
-  i.icon.creative.commons.remix:before { content: "\f4ee"; }
-  i.icon.creative.commons.sa:before { content: "\f4ef"; }
-  i.icon.creative.commons.sampling:before { content: "\f4f0"; }
-  i.icon.creative.commons.sampling.plus:before { content: "\f4f1"; }
-  i.icon.creative.commons.share:before { content: "\f4f2"; }
-  i.icon.creative.commons.zero:before { content: "\f4f3"; }
-  i.icon.critical.role:before { content: "\f6c9"; }
-  i.icon.css3:before { content: "\f13c"; }
-  i.icon.css3.alternate:before { content: "\f38b"; }
-  i.icon.cuttlefish:before { content: "\f38c"; }
-  i.icon.d.and.d:before { content: "\f38d"; }
-  i.icon.d.and.d.beyond:before { content: "\f6ca"; }
-  i.icon.dashcube:before { content: "\f210"; }
-  i.icon.delicious:before { content: "\f1a5"; }
-  i.icon.deploydog:before { content: "\f38e"; }
-  i.icon.deskpro:before { content: "\f38f"; }
-  i.icon.dev:before { content: "\f6cc"; }
-  i.icon.deviantart:before { content: "\f1bd"; }
-  i.icon.dhl:before { content: "\f790"; }
-  i.icon.diaspora:before { content: "\f791"; }
-  i.icon.digg:before { content: "\f1a6"; }
-  i.icon.digital.ocean:before { content: "\f391"; }
-  i.icon.discord:before { content: "\f392"; }
-  i.icon.discourse:before { content: "\f393"; }
-  i.icon.dochub:before { content: "\f394"; }
-  i.icon.docker:before { content: "\f395"; }
-  i.icon.draft2digital:before { content: "\f396"; }
-  i.icon.dribbble:before { content: "\f17d"; }
-  i.icon.dribbble.square:before { content: "\f397"; }
-  i.icon.dropbox:before { content: "\f16b"; }
-  i.icon.drupal:before { content: "\f1a9"; }
-  i.icon.dyalog:before { content: "\f399"; }
-  i.icon.earlybirds:before { content: "\f39a"; }
-  i.icon.ebay:before { content: "\f4f4"; }
-  i.icon.edge:before { content: "\f282"; }
-  i.icon.elementor:before { content: "\f430"; }
-  i.icon.ello:before { content: "\f5f1"; }
-  i.icon.ember:before { content: "\f423"; }
-  i.icon.empire:before { content: "\f1d1"; }
-  i.icon.envira:before { content: "\f299"; }
-  i.icon.erlang:before { content: "\f39d"; }
-  i.icon.ethereum:before { content: "\f42e"; }
-  i.icon.etsy:before { content: "\f2d7"; }
-  i.icon.expeditedssl:before { content: "\f23e"; }
-  i.icon.facebook:before { content: "\f09a"; }
-  i.icon.facebook.f:before { content: "\f39e"; }
-  i.icon.facebook.messenger:before { content: "\f39f"; }
-  i.icon.facebook.square:before { content: "\f082"; }
-  i.icon.fantasy.flight.games:before { content: "\f6dc"; }
-  i.icon.fedex:before { content: "\f797"; }
-  i.icon.fedora:before { content: "\f798"; }
-  i.icon.figma:before { content: "\f799"; }
-  i.icon.firefox:before { content: "\f269"; }
-  i.icon.first.order:before { content: "\f2b0"; }
-  i.icon.first.order.alternate:before { content: "\f50a"; }
-  i.icon.firstdraft:before { content: "\f3a1"; }
-  i.icon.flickr:before { content: "\f16e"; }
-  i.icon.flipboard:before { content: "\f44d"; }
-  i.icon.fly:before { content: "\f417"; }
-  i.icon.font.awesome:before { content: "\f2b4"; }
-  i.icon.font.awesome.alternate:before { content: "\f35c"; }
-  i.icon.font.awesome.flag:before { content: "\f425"; }
-  i.icon.fonticons:before { content: "\f280"; }
-  i.icon.fonticons.fi:before { content: "\f3a2"; }
-  i.icon.fort.awesome:before { content: "\f286"; }
-  i.icon.fort.awesome.alternate:before { content: "\f3a3"; }
-  i.icon.forumbee:before { content: "\f211"; }
-  i.icon.foursquare:before { content: "\f180"; }
-  i.icon.free.code.camp:before { content: "\f2c5"; }
-  i.icon.freebsd:before { content: "\f3a4"; }
-  i.icon.fulcrum:before { content: "\f50b"; }
-  i.icon.galactic.republic:before { content: "\f50c"; }
-  i.icon.galactic.senate:before { content: "\f50d"; }
-  i.icon.get.pocket:before { content: "\f265"; }
-  i.icon.gg:before { content: "\f260"; }
-  i.icon.gg.circle:before { content: "\f261"; }
-  i.icon.git:before { content: "\f1d3"; }
-  i.icon.git.square:before { content: "\f1d2"; }
-  i.icon.github:before { content: "\f09b"; }
-  i.icon.github.alternate:before { content: "\f113"; }
-  i.icon.github.square:before { content: "\f092"; }
-  i.icon.gitkraken:before { content: "\f3a6"; }
-  i.icon.gitlab:before { content: "\f296"; }
-  i.icon.gitter:before { content: "\f426"; }
-  i.icon.glide:before { content: "\f2a5"; }
-  i.icon.glide.g:before { content: "\f2a6"; }
-  i.icon.gofore:before { content: "\f3a7"; }
-  i.icon.goodreads:before { content: "\f3a8"; }
-  i.icon.goodreads.g:before { content: "\f3a9"; }
-  i.icon.google:before { content: "\f1a0"; }
-  i.icon.google.drive:before { content: "\f3aa"; }
-  i.icon.google.play:before { content: "\f3ab"; }
-  i.icon.google.plus:before { content: "\f2b3"; }
-  i.icon.google.plus.g:before { content: "\f0d5"; }
-  i.icon.google.plus.square:before { content: "\f0d4"; }
-  i.icon.google.wallet:before { content: "\f1ee"; }
-  i.icon.gratipay:before { content: "\f184"; }
-  i.icon.grav:before { content: "\f2d6"; }
-  i.icon.gripfire:before { content: "\f3ac"; }
-  i.icon.grunt:before { content: "\f3ad"; }
-  i.icon.gulp:before { content: "\f3ae"; }
-  i.icon.hacker.news:before { content: "\f1d4"; }
-  i.icon.hacker.news.square:before { content: "\f3af"; }
-  i.icon.hackerrank:before { content: "\f5f7"; }
-  i.icon.hips:before { content: "\f452"; }
-  i.icon.hire.a.helper:before { content: "\f3b0"; }
-  i.icon.hooli:before { content: "\f427"; }
-  i.icon.hornbill:before { content: "\f592"; }
-  i.icon.hotjar:before { content: "\f3b1"; }
-  i.icon.houzz:before { content: "\f27c"; }
-  i.icon.html5:before { content: "\f13b"; }
-  i.icon.hubspot:before { content: "\f3b2"; }
-  i.icon.imdb:before { content: "\f2d8"; }
-  i.icon.instagram:before { content: "\f16d"; }
-  i.icon.intercom:before { content: "\f7af"; }
-  i.icon.internet.explorer:before { content: "\f26b"; }
-  i.icon.invision:before { content: "\f7b0"; }
-  i.icon.ioxhost:before { content: "\f208"; }
-  i.icon.itunes:before { content: "\f3b4"; }
-  i.icon.itunes.note:before { content: "\f3b5"; }
-  i.icon.java:before { content: "\f4e4"; }
-  i.icon.jedi.order:before { content: "\f50e"; }
-  i.icon.jenkins:before { content: "\f3b6"; }
-  i.icon.jira:before { content: "\f7b1"; }
-  i.icon.joget:before { content: "\f3b7"; }
-  i.icon.joomla:before { content: "\f1aa"; }
-  i.icon.js:before { content: "\f3b8"; }
-  i.icon.js.square:before { content: "\f3b9"; }
-  i.icon.jsfiddle:before { content: "\f1cc"; }
-  i.icon.kaggle:before { content: "\f5fa"; }
-  i.icon.keybase:before { content: "\f4f5"; }
-  i.icon.keycdn:before { content: "\f3ba"; }
-  i.icon.kickstarter:before { content: "\f3bb"; }
-  i.icon.kickstarter.k:before { content: "\f3bc"; }
-  i.icon.korvue:before { content: "\f42f"; }
-  i.icon.laravel:before { content: "\f3bd"; }
-  i.icon.lastfm:before { content: "\f202"; }
-  i.icon.lastfm.square:before { content: "\f203"; }
-  i.icon.leanpub:before { content: "\f212"; }
-  i.icon.lesscss:before { content: "\f41d"; }
-  i.icon.linechat:before { content: "\f3c0"; }
-  i.icon.linkedin:before { content: "\f08c"; }
-  i.icon.linkedin.in:before { content: "\f0e1"; }
-  i.icon.linode:before { content: "\f2b8"; }
-  i.icon.linux:before { content: "\f17c"; }
-  i.icon.lyft:before { content: "\f3c3"; }
-  i.icon.magento:before { content: "\f3c4"; }
-  i.icon.mailchimp:before { content: "\f59e"; }
-  i.icon.mandalorian:before { content: "\f50f"; }
-  i.icon.markdown:before { content: "\f60f"; }
-  i.icon.mastodon:before { content: "\f4f6"; }
-  i.icon.maxcdn:before { content: "\f136"; }
-  i.icon.medapps:before { content: "\f3c6"; }
-  i.icon.medium:before { content: "\f23a"; }
-  i.icon.medium.m:before { content: "\f3c7"; }
-  i.icon.medrt:before { content: "\f3c8"; }
-  i.icon.meetup:before { content: "\f2e0"; }
-  i.icon.megaport:before { content: "\f5a3"; }
-  i.icon.mendeley:before { content: "\f7b3"; }
-  i.icon.microsoft:before { content: "\f3ca"; }
-  i.icon.mix:before { content: "\f3cb"; }
-  i.icon.mixcloud:before { content: "\f289"; }
-  i.icon.mizuni:before { content: "\f3cc"; }
-  i.icon.modx:before { content: "\f285"; }
-  i.icon.monero:before { content: "\f3d0"; }
-  i.icon.napster:before { content: "\f3d2"; }
-  i.icon.neos:before { content: "\f612"; }
-  i.icon.nimblr:before { content: "\f5a8"; }
-  i.icon.nintendo.switch:before { content: "\f418"; }
-  i.icon.node:before { content: "\f419"; }
-  i.icon.node.js:before { content: "\f3d3"; }
-  i.icon.npm:before { content: "\f3d4"; }
-  i.icon.ns8:before { content: "\f3d5"; }
-  i.icon.nutritionix:before { content: "\f3d6"; }
-  i.icon.odnoklassniki:before { content: "\f263"; }
-  i.icon.odnoklassniki.square:before { content: "\f264"; }
-  i.icon.old.republic:before { content: "\f510"; }
-  i.icon.opencart:before { content: "\f23d"; }
-  i.icon.openid:before { content: "\f19b"; }
-  i.icon.opera:before { content: "\f26a"; }
-  i.icon.optin.monster:before { content: "\f23c"; }
-  i.icon.osi:before { content: "\f41a"; }
-  i.icon.page4:before { content: "\f3d7"; }
-  i.icon.pagelines:before { content: "\f18c"; }
-  i.icon.palfed:before { content: "\f3d8"; }
-  i.icon.patreon:before { content: "\f3d9"; }
-  i.icon.paypal:before { content: "\f1ed"; }
-  i.icon.penny.arcade:before { content: "\f704"; }
-  i.icon.periscope:before { content: "\f3da"; }
-  i.icon.phabricator:before { content: "\f3db"; }
-  i.icon.phoenix.framework:before { content: "\f3dc"; }
-  i.icon.phoenix.squadron:before { content: "\f511"; }
-  i.icon.php:before { content: "\f457"; }
-  i.icon.pied.piper:before { content: "\f2ae"; }
-  i.icon.pied.piper.alternate:before { content: "\f1a8"; }
-  i.icon.pied.piper.hat:before { content: "\f4e5"; }
-  i.icon.pied.piper.pp:before { content: "\f1a7"; }
-  i.icon.pinterest:before { content: "\f0d2"; }
-  i.icon.pinterest.p:before { content: "\f231"; }
-  i.icon.pinterest.square:before { content: "\f0d3"; }
-  i.icon.playstation:before { content: "\f3df"; }
-  i.icon.product.hunt:before { content: "\f288"; }
-  i.icon.pushed:before { content: "\f3e1"; }
-  i.icon.python:before { content: "\f3e2"; }
-  i.icon.qq:before { content: "\f1d6"; }
-  i.icon.quinscape:before { content: "\f459"; }
-  i.icon.quora:before { content: "\f2c4"; }
-  i.icon.r.project:before { content: "\f4f7"; }
-  i.icon.raspberry.pi:before { content: "\f7bb"; }
-  i.icon.ravelry:before { content: "\f2d9"; }
-  i.icon.react:before { content: "\f41b"; }
-  i.icon.reacteurope:before { content: "\f75d"; }
-  i.icon.readme:before { content: "\f4d5"; }
-  i.icon.rebel:before { content: "\f1d0"; }
-  i.icon.reddit:before { content: "\f1a1"; }
-  i.icon.reddit.alien:before { content: "\f281"; }
-  i.icon.reddit.square:before { content: "\f1a2"; }
-  i.icon.redhat:before { content: "\f7bc"; }
-  i.icon.redriver:before { content: "\f3e3"; }
-  i.icon.redyeti:before { content: "\f69d"; }
-  i.icon.renren:before { content: "\f18b"; }
-  i.icon.replyd:before { content: "\f3e6"; }
-  i.icon.researchgate:before { content: "\f4f8"; }
-  i.icon.resolving:before { content: "\f3e7"; }
-  i.icon.rev:before { content: "\f5b2"; }
-  i.icon.rocketchat:before { content: "\f3e8"; }
-  i.icon.rockrms:before { content: "\f3e9"; }
-  i.icon.safari:before { content: "\f267"; }
-  i.icon.sass:before { content: "\f41e"; }
-  i.icon.schlix:before { content: "\f3ea"; }
-  i.icon.scribd:before { content: "\f28a"; }
-  i.icon.searchengin:before { content: "\f3eb"; }
-  i.icon.sellcast:before { content: "\f2da"; }
-  i.icon.sellsy:before { content: "\f213"; }
-  i.icon.servicestack:before { content: "\f3ec"; }
-  i.icon.shirtsinbulk:before { content: "\f214"; }
-  i.icon.shopware:before { content: "\f5b5"; }
-  i.icon.simplybuilt:before { content: "\f215"; }
-  i.icon.sistrix:before { content: "\f3ee"; }
-  i.icon.sith:before { content: "\f512"; }
-  i.icon.sketch:before { content: "\f7c6"; }
-  i.icon.skyatlas:before { content: "\f216"; }
-  i.icon.skype:before { content: "\f17e"; }
-  i.icon.slack:before { content: "\f198"; }
-  i.icon.slack.hash:before { content: "\f3ef"; }
-  i.icon.slideshare:before { content: "\f1e7"; }
-  i.icon.snapchat:before { content: "\f2ab"; }
-  i.icon.snapchat.ghost:before { content: "\f2ac"; }
-  i.icon.snapchat.square:before { content: "\f2ad"; }
-  i.icon.soundcloud:before { content: "\f1be"; }
-  i.icon.sourcetree:before { content: "\f7d3"; }
-  i.icon.speakap:before { content: "\f3f3"; }
-  i.icon.spotify:before { content: "\f1bc"; }
-  i.icon.squarespace:before { content: "\f5be"; }
-  i.icon.stack.exchange:before { content: "\f18d"; }
-  i.icon.stack.overflow:before { content: "\f16c"; }
-  i.icon.staylinked:before { content: "\f3f5"; }
-  i.icon.steam:before { content: "\f1b6"; }
-  i.icon.steam.square:before { content: "\f1b7"; }
-  i.icon.steam.symbol:before { content: "\f3f6"; }
-  i.icon.sticker.mule:before { content: "\f3f7"; }
-  i.icon.strava:before { content: "\f428"; }
-  i.icon.stripe:before { content: "\f429"; }
-  i.icon.stripe.s:before { content: "\f42a"; }
-  i.icon.studiovinari:before { content: "\f3f8"; }
-  i.icon.stumbleupon:before { content: "\f1a4"; }
-  i.icon.stumbleupon.circle:before { content: "\f1a3"; }
-  i.icon.superpowers:before { content: "\f2dd"; }
-  i.icon.supple:before { content: "\f3f9"; }
-  i.icon.suse:before { content: "\f7d6"; }
-  i.icon.teamspeak:before { content: "\f4f9"; }
-  i.icon.telegram:before { content: "\f2c6"; }
-  i.icon.telegram.plane:before { content: "\f3fe"; }
-  i.icon.tencent.weibo:before { content: "\f1d5"; }
-  i.icon.themeco:before { content: "\f5c6"; }
-  i.icon.themeisle:before { content: "\f2b2"; }
-  i.icon.think.peaks:before { content: "\f731"; }
-  i.icon.trade.federation:before { content: "\f513"; }
-  i.icon.trello:before { content: "\f181"; }
-  i.icon.tripadvisor:before { content: "\f262"; }
-  i.icon.tumblr:before { content: "\f173"; }
-  i.icon.tumblr.square:before { content: "\f174"; }
-  i.icon.twitch:before { content: "\f1e8"; }
-  i.icon.twitter:before { content: "\f099"; }
-  i.icon.twitter.square:before { content: "\f081"; }
-  i.icon.typo3:before { content: "\f42b"; }
-  i.icon.uber:before { content: "\f402"; }
-  i.icon.ubuntu:before { content: "\f7df"; }
-  i.icon.uikit:before { content: "\f403"; }
-  i.icon.uniregistry:before { content: "\f404"; }
-  i.icon.untappd:before { content: "\f405"; }
-  i.icon.ups:before { content: "\f7e0"; }
-  i.icon.usb:before { content: "\f287"; }
-  i.icon.usps:before { content: "\f7e1"; }
-  i.icon.ussunnah:before { content: "\f407"; }
-  i.icon.vaadin:before { content: "\f408"; }
-  i.icon.viacoin:before { content: "\f237"; }
-  i.icon.viadeo:before { content: "\f2a9"; }
-  i.icon.viadeo.square:before { content: "\f2aa"; }
-  i.icon.viber:before { content: "\f409"; }
-  i.icon.vimeo:before { content: "\f40a"; }
-  i.icon.vimeo.square:before { content: "\f194"; }
-  i.icon.vimeo.v:before { content: "\f27d"; }
-  i.icon.vine:before { content: "\f1ca"; }
-  i.icon.vk:before { content: "\f189"; }
-  i.icon.vnv:before { content: "\f40b"; }
-  i.icon.vuejs:before { content: "\f41f"; }
-  i.icon.weebly:before { content: "\f5cc"; }
-  i.icon.weibo:before { content: "\f18a"; }
-  i.icon.weixin:before { content: "\f1d7"; }
-  i.icon.whatsapp:before { content: "\f232"; }
-  i.icon.whatsapp.square:before { content: "\f40c"; }
-  i.icon.whmcs:before { content: "\f40d"; }
-  i.icon.wikipedia.w:before { content: "\f266"; }
-  i.icon.windows:before { content: "\f17a"; }
-  i.icon.wix:before { content: "\f5cf"; }
-  i.icon.wizards.of.the.coast:before { content: "\f730"; }
-  i.icon.wolf.pack.battalion:before { content: "\f514"; }
-  i.icon.wordpress:before { content: "\f19a"; }
-  i.icon.wordpress.simple:before { content: "\f411"; }
-  i.icon.wpbeginner:before { content: "\f297"; }
-  i.icon.wpexplorer:before { content: "\f2de"; }
-  i.icon.wpforms:before { content: "\f298"; }
-  i.icon.wpressr:before { content: "\f3e4"; }
-  i.icon.xbox:before { content: "\f412"; }
-  i.icon.xing:before { content: "\f168"; }
-  i.icon.xing.square:before { content: "\f169"; }
-  i.icon.y.combinator:before { content: "\f23b"; }
-  i.icon.yahoo:before { content: "\f19e"; }
-  i.icon.yandex:before { content: "\f413"; }
-  i.icon.yandex.international:before { content: "\f414"; }
-  i.icon.yarn:before { content: "\f7e3"; }
-  i.icon.yelp:before { content: "\f1e9"; }
-  i.icon.yoast:before { content: "\f2b1"; }
-  i.icon.youtube:before { content: "\f167"; }
-  i.icon.youtube.square:before { content: "\f431"; }
-  i.icon.zhihu:before { content: "\f63f"; }
-
+  /* Icons */
+  i.icon.\35 00px:before { content: "\f26e"; font-family: @brandFontName; }
+  i.icon.accessible:before { content: "\f368"; font-family: @brandFontName; }
+  i.icon.accusoft:before { content: "\f369"; font-family: @brandFontName; }
+  i.icon.acquisitions.incorporated:before { content: "\f6af"; font-family: @brandFontName; }
+  i.icon.adn:before { content: "\f170"; font-family: @brandFontName; }
+  i.icon.adobe:before { content: "\f778"; font-family: @brandFontName; }
+  i.icon.adversal:before { content: "\f36a"; font-family: @brandFontName; }
+  i.icon.affiliatetheme:before { content: "\f36b"; font-family: @brandFontName; }
+  i.icon.airbnb:before { content: "\f834"; font-family: @brandFontName; }
+  i.icon.algolia:before { content: "\f36c"; font-family: @brandFontName; }
+  i.icon.alipay:before { content: "\f642"; font-family: @brandFontName; }
+  i.icon.amazon:before { content: "\f270"; font-family: @brandFontName; }
+  i.icon.amazon.pay:before { content: "\f42c"; font-family: @brandFontName; }
+  i.icon.amilia:before { content: "\f36d"; font-family: @brandFontName; }
+  i.icon.android:before { content: "\f17b"; font-family: @brandFontName; }
+  i.icon.angellist:before { content: "\f209"; font-family: @brandFontName; }
+  i.icon.angrycreative:before { content: "\f36e"; font-family: @brandFontName; }
+  i.icon.angular:before { content: "\f420"; font-family: @brandFontName; }
+  i.icon.app.store:before { content: "\f36f"; font-family: @brandFontName; }
+  i.icon.app.store.ios:before { content: "\f370"; font-family: @brandFontName; }
+  i.icon.apper:before { content: "\f371"; font-family: @brandFontName; }
+  i.icon.apple:before { content: "\f179"; font-family: @brandFontName; }
+  i.icon.apple.pay:before { content: "\f415"; font-family: @brandFontName; }
+  i.icon.artstation:before { content: "\f77a"; font-family: @brandFontName; }
+  i.icon.asymmetrik:before { content: "\f372"; font-family: @brandFontName; }
+  i.icon.atlassian:before { content: "\f77b"; font-family: @brandFontName; }
+  i.icon.audible:before { content: "\f373"; font-family: @brandFontName; }
+  i.icon.autoprefixer:before { content: "\f41c"; font-family: @brandFontName; }
+  i.icon.avianex:before { content: "\f374"; font-family: @brandFontName; }
+  i.icon.aviato:before { content: "\f421"; font-family: @brandFontName; }
+  i.icon.aws:before { content: "\f375"; font-family: @brandFontName; }
+  i.icon.bandcamp:before { content: "\f2d5"; font-family: @brandFontName; }
+  i.icon.battle.net:before { content: "\f835"; font-family: @brandFontName; }
+  i.icon.behance:before { content: "\f1b4"; font-family: @brandFontName; }
+  i.icon.behance.square:before { content: "\f1b5"; font-family: @brandFontName; }
+  i.icon.bimobject:before { content: "\f378"; font-family: @brandFontName; }
+  i.icon.bitbucket:before { content: "\f171"; font-family: @brandFontName; }
+  i.icon.bitcoin:before { content: "\f379"; font-family: @brandFontName; }
+  i.icon.bity:before { content: "\f37a"; font-family: @brandFontName; }
+  i.icon.black.tie:before { content: "\f27e"; font-family: @brandFontName; }
+  i.icon.blackberry:before { content: "\f37b"; font-family: @brandFontName; }
+  i.icon.blogger:before { content: "\f37c"; font-family: @brandFontName; }
+  i.icon.blogger.b:before { content: "\f37d"; font-family: @brandFontName; }
+  i.icon.bluetooth:before { content: "\f293"; font-family: @brandFontName; }
+  i.icon.bluetooth.b:before { content: "\f294"; font-family: @brandFontName; }
+  i.icon.bootstrap:before { content: "\f836"; font-family: @brandFontName; }
+  i.icon.btc:before { content: "\f15a"; font-family: @brandFontName; }
+  i.icon.buffer:before { content: "\f837"; font-family: @brandFontName; }
+  i.icon.buromobelexperte:before { content: "\f37f"; font-family: @brandFontName; }
+  i.icon.buysellads:before { content: "\f20d"; font-family: @brandFontName; }
+  i.icon.canadian.maple.leaf:before { content: "\f785"; font-family: @brandFontName; }
+  i.icon.cc.amazon.pay:before { content: "\f42d"; font-family: @brandFontName; }
+  i.icon.cc.amex:before { content: "\f1f3"; font-family: @brandFontName; }
+  i.icon.cc.apple.pay:before { content: "\f416"; font-family: @brandFontName; }
+  i.icon.cc.diners.club:before { content: "\f24c"; font-family: @brandFontName; }
+  i.icon.cc.discover:before { content: "\f1f2"; font-family: @brandFontName; }
+  i.icon.cc.jcb:before { content: "\f24b"; font-family: @brandFontName; }
+  i.icon.cc.mastercard:before { content: "\f1f1"; font-family: @brandFontName; }
+  i.icon.cc.paypal:before { content: "\f1f4"; font-family: @brandFontName; }
+  i.icon.cc.stripe:before { content: "\f1f5"; font-family: @brandFontName; }
+  i.icon.cc.visa:before { content: "\f1f0"; font-family: @brandFontName; }
+  i.icon.centercode:before { content: "\f380"; font-family: @brandFontName; }
+  i.icon.centos:before { content: "\f789"; font-family: @brandFontName; }
+  i.icon.chrome:before { content: "\f268"; font-family: @brandFontName; }
+  i.icon.chromecast:before { content: "\f838"; font-family: @brandFontName; }
+  i.icon.cloudscale:before { content: "\f383"; font-family: @brandFontName; }
+  i.icon.cloudsmith:before { content: "\f384"; font-family: @brandFontName; }
+  i.icon.cloudversify:before { content: "\f385"; font-family: @brandFontName; }
+  i.icon.codepen:before { content: "\f1cb"; font-family: @brandFontName; }
+  i.icon.codiepie:before { content: "\f284"; font-family: @brandFontName; }
+  i.icon.confluence:before { content: "\f78d"; font-family: @brandFontName; }
+  i.icon.connectdevelop:before { content: "\f20e"; font-family: @brandFontName; }
+  i.icon.contao:before { content: "\f26d"; font-family: @brandFontName; }
+  i.icon.cpanel:before { content: "\f388"; font-family: @brandFontName; }
+  i.icon.creative.commons:before { content: "\f25e"; font-family: @brandFontName; }
+  i.icon.creative.commons.by:before { content: "\f4e7"; font-family: @brandFontName; }
+  i.icon.creative.commons.nc:before { content: "\f4e8"; font-family: @brandFontName; }
+  i.icon.creative.commons.nc.eu:before { content: "\f4e9"; font-family: @brandFontName; }
+  i.icon.creative.commons.nc.jp:before { content: "\f4ea"; font-family: @brandFontName; }
+  i.icon.creative.commons.nd:before { content: "\f4eb"; font-family: @brandFontName; }
+  i.icon.creative.commons.pd:before { content: "\f4ec"; font-family: @brandFontName; }
+  i.icon.creative.commons.pd.alternate:before { content: "\f4ed"; font-family: @brandFontName; }
+  i.icon.creative.commons.remix:before { content: "\f4ee"; font-family: @brandFontName; }
+  i.icon.creative.commons.sa:before { content: "\f4ef"; font-family: @brandFontName; }
+  i.icon.creative.commons.sampling:before { content: "\f4f0"; font-family: @brandFontName; }
+  i.icon.creative.commons.sampling.plus:before { content: "\f4f1"; font-family: @brandFontName; }
+  i.icon.creative.commons.share:before { content: "\f4f2"; font-family: @brandFontName; }
+  i.icon.creative.commons.zero:before { content: "\f4f3"; font-family: @brandFontName; }
+  i.icon.critical.role:before { content: "\f6c9"; font-family: @brandFontName; }
+  i.icon.css3:before { content: "\f13c"; font-family: @brandFontName; }
+  i.icon.css3.alternate:before { content: "\f38b"; font-family: @brandFontName; }
+  i.icon.cuttlefish:before { content: "\f38c"; font-family: @brandFontName; }
+  i.icon.d.and.d:before { content: "\f38d"; font-family: @brandFontName; }
+  i.icon.d.and.d.beyond:before { content: "\f6ca"; font-family: @brandFontName; }
+  i.icon.dashcube:before { content: "\f210"; font-family: @brandFontName; }
+  i.icon.delicious:before { content: "\f1a5"; font-family: @brandFontName; }
+  i.icon.deploydog:before { content: "\f38e"; font-family: @brandFontName; }
+  i.icon.deskpro:before { content: "\f38f"; font-family: @brandFontName; }
+  i.icon.dev:before { content: "\f6cc"; font-family: @brandFontName; }
+  i.icon.deviantart:before { content: "\f1bd"; font-family: @brandFontName; }
+  i.icon.dhl:before { content: "\f790"; font-family: @brandFontName; }
+  i.icon.diaspora:before { content: "\f791"; font-family: @brandFontName; }
+  i.icon.digg:before { content: "\f1a6"; font-family: @brandFontName; }
+  i.icon.digital.ocean:before { content: "\f391"; font-family: @brandFontName; }
+  i.icon.discord:before { content: "\f392"; font-family: @brandFontName; }
+  i.icon.discourse:before { content: "\f393"; font-family: @brandFontName; }
+  i.icon.dochub:before { content: "\f394"; font-family: @brandFontName; }
+  i.icon.docker:before { content: "\f395"; font-family: @brandFontName; }
+  i.icon.draft2digital:before { content: "\f396"; font-family: @brandFontName; }
+  i.icon.dribbble:before { content: "\f17d"; font-family: @brandFontName; }
+  i.icon.dribbble.square:before { content: "\f397"; font-family: @brandFontName; }
+  i.icon.dropbox:before { content: "\f16b"; font-family: @brandFontName; }
+  i.icon.drupal:before { content: "\f1a9"; font-family: @brandFontName; }
+  i.icon.dyalog:before { content: "\f399"; font-family: @brandFontName; }
+  i.icon.earlybirds:before { content: "\f39a"; font-family: @brandFontName; }
+  i.icon.ebay:before { content: "\f4f4"; font-family: @brandFontName; }
+  i.icon.edge:before { content: "\f282"; font-family: @brandFontName; }
+  i.icon.elementor:before { content: "\f430"; font-family: @brandFontName; }
+  i.icon.ello:before { content: "\f5f1"; font-family: @brandFontName; }
+  i.icon.ember:before { content: "\f423"; font-family: @brandFontName; }
+  i.icon.empire:before { content: "\f1d1"; font-family: @brandFontName; }
+  i.icon.envira:before { content: "\f299"; font-family: @brandFontName; }
+  i.icon.erlang:before { content: "\f39d"; font-family: @brandFontName; }
+  i.icon.ethereum:before { content: "\f42e"; font-family: @brandFontName; }
+  i.icon.etsy:before { content: "\f2d7"; font-family: @brandFontName; }
+  i.icon.evernote:before { content: "\f839"; font-family: @brandFontName; }
+  i.icon.expeditedssl:before { content: "\f23e"; font-family: @brandFontName; }
+  i.icon.facebook:before { content: "\f09a"; font-family: @brandFontName; }
+  i.icon.facebook.f:before { content: "\f39e"; font-family: @brandFontName; }
+  i.icon.facebook.messenger:before { content: "\f39f"; font-family: @brandFontName; }
+  i.icon.facebook.square:before { content: "\f082"; font-family: @brandFontName; }
+  i.icon.fantasy.flight.games:before { content: "\f6dc"; font-family: @brandFontName; }
+  i.icon.fedex:before { content: "\f797"; font-family: @brandFontName; }
+  i.icon.fedora:before { content: "\f798"; font-family: @brandFontName; }
+  i.icon.figma:before { content: "\f799"; font-family: @brandFontName; }
+  i.icon.firefox:before { content: "\f269"; font-family: @brandFontName; }
+  i.icon.first.order:before { content: "\f2b0"; font-family: @brandFontName; }
+  i.icon.first.order.alternate:before { content: "\f50a"; font-family: @brandFontName; }
+  i.icon.firstdraft:before { content: "\f3a1"; font-family: @brandFontName; }
+  i.icon.flickr:before { content: "\f16e"; font-family: @brandFontName; }
+  i.icon.flipboard:before { content: "\f44d"; font-family: @brandFontName; }
+  i.icon.fly:before { content: "\f417"; font-family: @brandFontName; }
+  i.icon.font.awesome:before { content: "\f2b4"; font-family: @brandFontName; }
+  i.icon.font.awesome.alternate:before { content: "\f35c"; font-family: @brandFontName; }
+  i.icon.font.awesome.flag:before { content: "\f425"; font-family: @brandFontName; }
+  i.icon.fonticons:before { content: "\f280"; font-family: @brandFontName; }
+  i.icon.fonticons.fi:before { content: "\f3a2"; font-family: @brandFontName; }
+  i.icon.fort.awesome:before { content: "\f286"; font-family: @brandFontName; }
+  i.icon.fort.awesome.alternate:before { content: "\f3a3"; font-family: @brandFontName; }
+  i.icon.forumbee:before { content: "\f211"; font-family: @brandFontName; }
+  i.icon.foursquare:before { content: "\f180"; font-family: @brandFontName; }
+  i.icon.free.code.camp:before { content: "\f2c5"; font-family: @brandFontName; }
+  i.icon.freebsd:before { content: "\f3a4"; font-family: @brandFontName; }
+  i.icon.fulcrum:before { content: "\f50b"; font-family: @brandFontName; }
+  i.icon.galactic.republic:before { content: "\f50c"; font-family: @brandFontName; }
+  i.icon.galactic.senate:before { content: "\f50d"; font-family: @brandFontName; }
+  i.icon.get.pocket:before { content: "\f265"; font-family: @brandFontName; }
+  i.icon.gg:before { content: "\f260"; font-family: @brandFontName; }
+  i.icon.gg.circle:before { content: "\f261"; font-family: @brandFontName; }
+  i.icon.git:before { content: "\f1d3"; font-family: @brandFontName; }
+  i.icon.git.alternate:before { content: "\f841"; font-family: @brandFontName; }
+  i.icon.git.square:before { content: "\f1d2"; font-family: @brandFontName; }
+  i.icon.github:before { content: "\f09b"; font-family: @brandFontName; }
+  i.icon.github.alternate:before { content: "\f113"; font-family: @brandFontName; }
+  i.icon.github.square:before { content: "\f092"; font-family: @brandFontName; }
+  i.icon.gitkraken:before { content: "\f3a6"; font-family: @brandFontName; }
+  i.icon.gitlab:before { content: "\f296"; font-family: @brandFontName; }
+  i.icon.gitter:before { content: "\f426"; font-family: @brandFontName; }
+  i.icon.glide:before { content: "\f2a5"; font-family: @brandFontName; }
+  i.icon.glide.g:before { content: "\f2a6"; font-family: @brandFontName; }
+  i.icon.gofore:before { content: "\f3a7"; font-family: @brandFontName; }
+  i.icon.goodreads:before { content: "\f3a8"; font-family: @brandFontName; }
+  i.icon.goodreads.g:before { content: "\f3a9"; font-family: @brandFontName; }
+  i.icon.google:before { content: "\f1a0"; font-family: @brandFontName; }
+  i.icon.google.drive:before { content: "\f3aa"; font-family: @brandFontName; }
+  i.icon.google.play:before { content: "\f3ab"; font-family: @brandFontName; }
+  i.icon.google.plus:before { content: "\f2b3"; font-family: @brandFontName; }
+  i.icon.google.plus.g:before { content: "\f0d5"; font-family: @brandFontName; }
+  i.icon.google.plus.square:before { content: "\f0d4"; font-family: @brandFontName; }
+  i.icon.google.wallet:before { content: "\f1ee"; font-family: @brandFontName; }
+  i.icon.gratipay:before { content: "\f184"; font-family: @brandFontName; }
+  i.icon.grav:before { content: "\f2d6"; font-family: @brandFontName; }
+  i.icon.gripfire:before { content: "\f3ac"; font-family: @brandFontName; }
+  i.icon.grunt:before { content: "\f3ad"; font-family: @brandFontName; }
+  i.icon.gulp:before { content: "\f3ae"; font-family: @brandFontName; }
+  i.icon.hacker.news:before { content: "\f1d4"; font-family: @brandFontName; }
+  i.icon.hacker.news.square:before { content: "\f3af"; font-family: @brandFontName; }
+  i.icon.hackerrank:before { content: "\f5f7"; font-family: @brandFontName; }
+  i.icon.hips:before { content: "\f452"; font-family: @brandFontName; }
+  i.icon.hire.a.helper:before { content: "\f3b0"; font-family: @brandFontName; }
+  i.icon.hooli:before { content: "\f427"; font-family: @brandFontName; }
+  i.icon.hornbill:before { content: "\f592"; font-family: @brandFontName; }
+  i.icon.hotjar:before { content: "\f3b1"; font-family: @brandFontName; }
+  i.icon.houzz:before { content: "\f27c"; font-family: @brandFontName; }
+  i.icon.html5:before { content: "\f13b"; font-family: @brandFontName; }
+  i.icon.hubspot:before { content: "\f3b2"; font-family: @brandFontName; }
+  i.icon.imdb:before { content: "\f2d8"; font-family: @brandFontName; }
+  i.icon.instagram:before { content: "\f16d"; font-family: @brandFontName; }
+  i.icon.intercom:before { content: "\f7af"; font-family: @brandFontName; }
+  i.icon.internet.explorer:before { content: "\f26b"; font-family: @brandFontName; }
+  i.icon.invision:before { content: "\f7b0"; font-family: @brandFontName; }
+  i.icon.ioxhost:before { content: "\f208"; font-family: @brandFontName; }
+  i.icon.itch.io:before { content: "\f83a"; font-family: @brandFontName; }
+  i.icon.itunes:before { content: "\f3b4"; font-family: @brandFontName; }
+  i.icon.itunes.note:before { content: "\f3b5"; font-family: @brandFontName; }
+  i.icon.java:before { content: "\f4e4"; font-family: @brandFontName; }
+  i.icon.jedi.order:before { content: "\f50e"; font-family: @brandFontName; }
+  i.icon.jenkins:before { content: "\f3b6"; font-family: @brandFontName; }
+  i.icon.jira:before { content: "\f7b1"; font-family: @brandFontName; }
+  i.icon.joget:before { content: "\f3b7"; font-family: @brandFontName; }
+  i.icon.joomla:before { content: "\f1aa"; font-family: @brandFontName; }
+  i.icon.js:before { content: "\f3b8"; font-family: @brandFontName; }
+  i.icon.js.square:before { content: "\f3b9"; font-family: @brandFontName; }
+  i.icon.jsfiddle:before { content: "\f1cc"; font-family: @brandFontName; }
+  i.icon.kaggle:before { content: "\f5fa"; font-family: @brandFontName; }
+  i.icon.keybase:before { content: "\f4f5"; font-family: @brandFontName; }
+  i.icon.keycdn:before { content: "\f3ba"; font-family: @brandFontName; }
+  i.icon.kickstarter:before { content: "\f3bb"; font-family: @brandFontName; }
+  i.icon.kickstarter.k:before { content: "\f3bc"; font-family: @brandFontName; }
+  i.icon.korvue:before { content: "\f42f"; font-family: @brandFontName; }
+  i.icon.laravel:before { content: "\f3bd"; font-family: @brandFontName; }
+  i.icon.lastfm:before { content: "\f202"; font-family: @brandFontName; }
+  i.icon.lastfm.square:before { content: "\f203"; font-family: @brandFontName; }
+  i.icon.leanpub:before { content: "\f212"; font-family: @brandFontName; }
+  i.icon.lesscss:before { content: "\f41d"; font-family: @brandFontName; }
+  i.icon.linechat:before { content: "\f3c0"; font-family: @brandFontName; }
+  i.icon.linkedin:before { content: "\f08c"; font-family: @brandFontName; }
+  i.icon.linkedin.in:before { content: "\f0e1"; font-family: @brandFontName; }
+  i.icon.linode:before { content: "\f2b8"; font-family: @brandFontName; }
+  i.icon.linux:before { content: "\f17c"; font-family: @brandFontName; }
+  i.icon.lyft:before { content: "\f3c3"; font-family: @brandFontName; }
+  i.icon.magento:before { content: "\f3c4"; font-family: @brandFontName; }
+  i.icon.mailchimp:before { content: "\f59e"; font-family: @brandFontName; }
+  i.icon.mandalorian:before { content: "\f50f"; font-family: @brandFontName; }
+  i.icon.markdown:before { content: "\f60f"; font-family: @brandFontName; }
+  i.icon.mastodon:before { content: "\f4f6"; font-family: @brandFontName; }
+  i.icon.maxcdn:before { content: "\f136"; font-family: @brandFontName; }
+  i.icon.medapps:before { content: "\f3c6"; font-family: @brandFontName; }
+  i.icon.medium:before { content: "\f23a"; font-family: @brandFontName; }
+  i.icon.medium.m:before { content: "\f3c7"; font-family: @brandFontName; }
+  i.icon.medrt:before { content: "\f3c8"; font-family: @brandFontName; }
+  i.icon.meetup:before { content: "\f2e0"; font-family: @brandFontName; }
+  i.icon.megaport:before { content: "\f5a3"; font-family: @brandFontName; }
+  i.icon.mendeley:before { content: "\f7b3"; font-family: @brandFontName; }
+  i.icon.microsoft:before { content: "\f3ca"; font-family: @brandFontName; }
+  i.icon.mix:before { content: "\f3cb"; font-family: @brandFontName; }
+  i.icon.mixcloud:before { content: "\f289"; font-family: @brandFontName; }
+  i.icon.mizuni:before { content: "\f3cc"; font-family: @brandFontName; }
+  i.icon.modx:before { content: "\f285"; font-family: @brandFontName; }
+  i.icon.monero:before { content: "\f3d0"; font-family: @brandFontName; }
+  i.icon.napster:before { content: "\f3d2"; font-family: @brandFontName; }
+  i.icon.neos:before { content: "\f612"; font-family: @brandFontName; }
+  i.icon.nimblr:before { content: "\f5a8"; font-family: @brandFontName; }
+  i.icon.nintendo.switch:before { content: "\f418"; font-family: @brandFontName; }
+  i.icon.node:before { content: "\f419"; font-family: @brandFontName; }
+  i.icon.node.js:before { content: "\f3d3"; font-family: @brandFontName; }
+  i.icon.npm:before { content: "\f3d4"; font-family: @brandFontName; }
+  i.icon.ns8:before { content: "\f3d5"; font-family: @brandFontName; }
+  i.icon.nutritionix:before { content: "\f3d6"; font-family: @brandFontName; }
+  i.icon.odnoklassniki:before { content: "\f263"; font-family: @brandFontName; }
+  i.icon.odnoklassniki.square:before { content: "\f264"; font-family: @brandFontName; }
+  i.icon.old.republic:before { content: "\f510"; font-family: @brandFontName; }
+  i.icon.opencart:before { content: "\f23d"; font-family: @brandFontName; }
+  i.icon.openid:before { content: "\f19b"; font-family: @brandFontName; }
+  i.icon.opera:before { content: "\f26a"; font-family: @brandFontName; }
+  i.icon.optin.monster:before { content: "\f23c"; font-family: @brandFontName; }
+  i.icon.osi:before { content: "\f41a"; font-family: @brandFontName; }
+  i.icon.page4:before { content: "\f3d7"; font-family: @brandFontName; }
+  i.icon.pagelines:before { content: "\f18c"; font-family: @brandFontName; }
+  i.icon.palfed:before { content: "\f3d8"; font-family: @brandFontName; }
+  i.icon.patreon:before { content: "\f3d9"; font-family: @brandFontName; }
+  i.icon.paypal:before { content: "\f1ed"; font-family: @brandFontName; }
+  i.icon.penny.arcade:before { content: "\f704"; font-family: @brandFontName; }
+  i.icon.periscope:before { content: "\f3da"; font-family: @brandFontName; }
+  i.icon.phabricator:before { content: "\f3db"; font-family: @brandFontName; }
+  i.icon.phoenix.framework:before { content: "\f3dc"; font-family: @brandFontName; }
+  i.icon.phoenix.squadron:before { content: "\f511"; font-family: @brandFontName; }
+  i.icon.php:before { content: "\f457"; font-family: @brandFontName; }
+  i.icon.pied.piper:before { content: "\f2ae"; font-family: @brandFontName; }
+  i.icon.pied.piper.alternate:before { content: "\f1a8"; font-family: @brandFontName; }
+  i.icon.pied.piper.hat:before { content: "\f4e5"; font-family: @brandFontName; }
+  i.icon.pied.piper.pp:before { content: "\f1a7"; font-family: @brandFontName; }
+  i.icon.pinterest:before { content: "\f0d2"; font-family: @brandFontName; }
+  i.icon.pinterest.p:before { content: "\f231"; font-family: @brandFontName; }
+  i.icon.pinterest.square:before { content: "\f0d3"; font-family: @brandFontName; }
+  i.icon.playstation:before { content: "\f3df"; font-family: @brandFontName; }
+  i.icon.product.hunt:before { content: "\f288"; font-family: @brandFontName; }
+  i.icon.pushed:before { content: "\f3e1"; font-family: @brandFontName; }
+  i.icon.python:before { content: "\f3e2"; font-family: @brandFontName; }
+  i.icon.qq:before { content: "\f1d6"; font-family: @brandFontName; }
+  i.icon.quinscape:before { content: "\f459"; font-family: @brandFontName; }
+  i.icon.quora:before { content: "\f2c4"; font-family: @brandFontName; }
+  i.icon.r.project:before { content: "\f4f7"; font-family: @brandFontName; }
+  i.icon.raspberry.pi:before { content: "\f7bb"; font-family: @brandFontName; }
+  i.icon.ravelry:before { content: "\f2d9"; font-family: @brandFontName; }
+  i.icon.react:before { content: "\f41b"; font-family: @brandFontName; }
+  i.icon.reacteurope:before { content: "\f75d"; font-family: @brandFontName; }
+  i.icon.readme:before { content: "\f4d5"; font-family: @brandFontName; }
+  i.icon.rebel:before { content: "\f1d0"; font-family: @brandFontName; }
+  i.icon.reddit:before { content: "\f1a1"; font-family: @brandFontName; }
+  i.icon.reddit.alien:before { content: "\f281"; font-family: @brandFontName; }
+  i.icon.reddit.square:before { content: "\f1a2"; font-family: @brandFontName; }
+  i.icon.redhat:before { content: "\f7bc"; font-family: @brandFontName; }
+  i.icon.redriver:before { content: "\f3e3"; font-family: @brandFontName; }
+  i.icon.redyeti:before { content: "\f69d"; font-family: @brandFontName; }
+  i.icon.renren:before { content: "\f18b"; font-family: @brandFontName; }
+  i.icon.replyd:before { content: "\f3e6"; font-family: @brandFontName; }
+  i.icon.researchgate:before { content: "\f4f8"; font-family: @brandFontName; }
+  i.icon.resolving:before { content: "\f3e7"; font-family: @brandFontName; }
+  i.icon.rev:before { content: "\f5b2"; font-family: @brandFontName; }
+  i.icon.rocketchat:before { content: "\f3e8"; font-family: @brandFontName; }
+  i.icon.rockrms:before { content: "\f3e9"; font-family: @brandFontName; }
+  i.icon.safari:before { content: "\f267"; font-family: @brandFontName; }
+  i.icon.salesforce:before { content: "\f83b"; font-family: @brandFontName; }
+  i.icon.sass:before { content: "\f41e"; font-family: @brandFontName; }
+  i.icon.schlix:before { content: "\f3ea"; font-family: @brandFontName; }
+  i.icon.scribd:before { content: "\f28a"; font-family: @brandFontName; }
+  i.icon.searchengin:before { content: "\f3eb"; font-family: @brandFontName; }
+  i.icon.sellcast:before { content: "\f2da"; font-family: @brandFontName; }
+  i.icon.sellsy:before { content: "\f213"; font-family: @brandFontName; }
+  i.icon.servicestack:before { content: "\f3ec"; font-family: @brandFontName; }
+  i.icon.shirtsinbulk:before { content: "\f214"; font-family: @brandFontName; }
+  i.icon.shopware:before { content: "\f5b5"; font-family: @brandFontName; }
+  i.icon.simplybuilt:before { content: "\f215"; font-family: @brandFontName; }
+  i.icon.sistrix:before { content: "\f3ee"; font-family: @brandFontName; }
+  i.icon.sith:before { content: "\f512"; font-family: @brandFontName; }
+  i.icon.sketch:before { content: "\f7c6"; font-family: @brandFontName; }
+  i.icon.skyatlas:before { content: "\f216"; font-family: @brandFontName; }
+  i.icon.skype:before { content: "\f17e"; font-family: @brandFontName; }
+  i.icon.slack:before { content: "\f198"; font-family: @brandFontName; }
+  i.icon.slack.hash:before { content: "\f3ef"; font-family: @brandFontName; }
+  i.icon.slideshare:before { content: "\f1e7"; font-family: @brandFontName; }
+  i.icon.snapchat:before { content: "\f2ab"; font-family: @brandFontName; }
+  i.icon.snapchat.ghost:before { content: "\f2ac"; font-family: @brandFontName; }
+  i.icon.snapchat.square:before { content: "\f2ad"; font-family: @brandFontName; }
+  i.icon.soundcloud:before { content: "\f1be"; font-family: @brandFontName; }
+  i.icon.sourcetree:before { content: "\f7d3"; font-family: @brandFontName; }
+  i.icon.speakap:before { content: "\f3f3"; font-family: @brandFontName; }
+  i.icon.speaker.deck:before { content: "\f83c"; font-family: @brandFontName; }
+  i.icon.spotify:before { content: "\f1bc"; font-family: @brandFontName; }
+  i.icon.squarespace:before { content: "\f5be"; font-family: @brandFontName; }
+  i.icon.stack.exchange:before { content: "\f18d"; font-family: @brandFontName; }
+  i.icon.stack.overflow:before { content: "\f16c"; font-family: @brandFontName; }
+  i.icon.stackpath:before { content: "\f842"; font-family: @brandFontName; }
+  i.icon.staylinked:before { content: "\f3f5"; font-family: @brandFontName; }
+  i.icon.steam:before { content: "\f1b6"; font-family: @brandFontName; }
+  i.icon.steam.square:before { content: "\f1b7"; font-family: @brandFontName; }
+  i.icon.steam.symbol:before { content: "\f3f6"; font-family: @brandFontName; }
+  i.icon.sticker.mule:before { content: "\f3f7"; font-family: @brandFontName; }
+  i.icon.strava:before { content: "\f428"; font-family: @brandFontName; }
+  i.icon.stripe:before { content: "\f429"; font-family: @brandFontName; }
+  i.icon.stripe.s:before { content: "\f42a"; font-family: @brandFontName; }
+  i.icon.studiovinari:before { content: "\f3f8"; font-family: @brandFontName; }
+  i.icon.stumbleupon:before { content: "\f1a4"; font-family: @brandFontName; }
+  i.icon.stumbleupon.circle:before { content: "\f1a3"; font-family: @brandFontName; }
+  i.icon.superpowers:before { content: "\f2dd"; font-family: @brandFontName; }
+  i.icon.supple:before { content: "\f3f9"; font-family: @brandFontName; }
+  i.icon.suse:before { content: "\f7d6"; font-family: @brandFontName; }
+  i.icon.symfony:before { content: "\f83d"; font-family: @brandFontName; }
+  i.icon.teamspeak:before { content: "\f4f9"; font-family: @brandFontName; }
+  i.icon.telegram:before { content: "\f2c6"; font-family: @brandFontName; }
+  i.icon.telegram.plane:before { content: "\f3fe"; font-family: @brandFontName; }
+  i.icon.tencent.weibo:before { content: "\f1d5"; font-family: @brandFontName; }
+  i.icon.themeco:before { content: "\f5c6"; font-family: @brandFontName; }
+  i.icon.themeisle:before { content: "\f2b2"; font-family: @brandFontName; }
+  i.icon.think.peaks:before { content: "\f731"; font-family: @brandFontName; }
+  i.icon.trade.federation:before { content: "\f513"; font-family: @brandFontName; }
+  i.icon.trello:before { content: "\f181"; font-family: @brandFontName; }
+  i.icon.tripadvisor:before { content: "\f262"; font-family: @brandFontName; }
+  i.icon.tumblr:before { content: "\f173"; font-family: @brandFontName; }
+  i.icon.tumblr.square:before { content: "\f174"; font-family: @brandFontName; }
+  i.icon.twitch:before { content: "\f1e8"; font-family: @brandFontName; }
+  i.icon.twitter:before { content: "\f099"; font-family: @brandFontName; }
+  i.icon.twitter.square:before { content: "\f081"; font-family: @brandFontName; }
+  i.icon.typo3:before { content: "\f42b"; font-family: @brandFontName; }
+  i.icon.uber:before { content: "\f402"; font-family: @brandFontName; }
+  i.icon.ubuntu:before { content: "\f7df"; font-family: @brandFontName; }
+  i.icon.uikit:before { content: "\f403"; font-family: @brandFontName; }
+  i.icon.uniregistry:before { content: "\f404"; font-family: @brandFontName; }
+  i.icon.untappd:before { content: "\f405"; font-family: @brandFontName; }
+  i.icon.ups:before { content: "\f7e0"; font-family: @brandFontName; }
+  i.icon.usb:before { content: "\f287"; font-family: @brandFontName; }
+  i.icon.usps:before { content: "\f7e1"; font-family: @brandFontName; }
+  i.icon.ussunnah:before { content: "\f407"; font-family: @brandFontName; }
+  i.icon.vaadin:before { content: "\f408"; font-family: @brandFontName; }
+  i.icon.viacoin:before { content: "\f237"; font-family: @brandFontName; }
+  i.icon.viadeo:before { content: "\f2a9"; font-family: @brandFontName; }
+  i.icon.viadeo.square:before { content: "\f2aa"; font-family: @brandFontName; }
+  i.icon.viber:before { content: "\f409"; font-family: @brandFontName; }
+  i.icon.vimeo:before { content: "\f40a"; font-family: @brandFontName; }
+  i.icon.vimeo.square:before { content: "\f194"; font-family: @brandFontName; }
+  i.icon.vimeo.v:before { content: "\f27d"; font-family: @brandFontName; }
+  i.icon.vine:before { content: "\f1ca"; font-family: @brandFontName; }
+  i.icon.vk:before { content: "\f189"; font-family: @brandFontName; }
+  i.icon.vnv:before { content: "\f40b"; font-family: @brandFontName; }
+  i.icon.vuejs:before { content: "\f41f"; font-family: @brandFontName; }
+  i.icon.waze:before { content: "\f83f"; font-family: @brandFontName; }
+  i.icon.weebly:before { content: "\f5cc"; font-family: @brandFontName; }
+  i.icon.weibo:before { content: "\f18a"; font-family: @brandFontName; }
+  i.icon.weixin:before { content: "\f1d7"; font-family: @brandFontName; }
+  i.icon.whatsapp:before { content: "\f232"; font-family: @brandFontName; }
+  i.icon.whatsapp.square:before { content: "\f40c"; font-family: @brandFontName; }
+  i.icon.whmcs:before { content: "\f40d"; font-family: @brandFontName; }
+  i.icon.wikipedia.w:before { content: "\f266"; font-family: @brandFontName; }
+  i.icon.windows:before { content: "\f17a"; font-family: @brandFontName; }
+  i.icon.wix:before { content: "\f5cf"; font-family: @brandFontName; }
+  i.icon.wizards.of.the.coast:before { content: "\f730"; font-family: @brandFontName; }
+  i.icon.wolf.pack.battalion:before { content: "\f514"; font-family: @brandFontName; }
+  i.icon.wordpress:before { content: "\f19a"; font-family: @brandFontName; }
+  i.icon.wordpress.simple:before { content: "\f411"; font-family: @brandFontName; }
+  i.icon.wpbeginner:before { content: "\f297"; font-family: @brandFontName; }
+  i.icon.wpexplorer:before { content: "\f2de"; font-family: @brandFontName; }
+  i.icon.wpforms:before { content: "\f298"; font-family: @brandFontName; }
+  i.icon.wpressr:before { content: "\f3e4"; font-family: @brandFontName; }
+  i.icon.xbox:before { content: "\f412"; font-family: @brandFontName; }
+  i.icon.xing:before { content: "\f168"; font-family: @brandFontName; }
+  i.icon.xing.square:before { content: "\f169"; font-family: @brandFontName; }
+  i.icon.y.combinator:before { content: "\f23b"; font-family: @brandFontName; }
+  i.icon.yahoo:before { content: "\f19e"; font-family: @brandFontName; }
+  i.icon.yammer:before { content: "\f840"; font-family: @brandFontName; }
+  i.icon.yandex:before { content: "\f413"; font-family: @brandFontName; }
+  i.icon.yandex.international:before { content: "\f414"; font-family: @brandFontName; }
+  i.icon.yarn:before { content: "\f7e3"; font-family: @brandFontName; }
+  i.icon.yelp:before { content: "\f1e9"; font-family: @brandFontName; }
+  i.icon.yoast:before { content: "\f2b1"; font-family: @brandFontName; }
+  i.icon.youtube:before { content: "\f167"; font-family: @brandFontName; }
+  i.icon.youtube.square:before { content: "\f431"; font-family: @brandFontName; }
+  i.icon.zhihu:before { content: "\f63f"; font-family: @brandFontName; }
   
-  /* Brands Aliases */
-  i.icon.credit.card.amazon.pay,
-  i.icon.credit.card.american.express,
-  i.icon.credit.card.diners.club,
-  i.icon.credit.card.discover,
-  i.icon.credit.card.jcb,
-  i.icon.credit.card.mastercard,
-  i.icon.credit.card.paypal,
-  i.icon.credit.card.stripe,
-  i.icon.credit.card.visa,
-  i.icon.american.express.card,
-  i.icon.american.express,
-  i.icon.amex,
-  i.icon.bluetooth.alternative,
-  i.icon.diners.club.card,
-  i.icon.diners.club,
-  i.icon.discover.card,
-  i.icon.discover,
-  i.icon.dribble,
-  i.icon.eercast,
-  i.icon.envira.gallery,
-  i.icon.fa,
-  i.icon.five.hundred.pixels,
-  i.icon.gittip,
-  i.icon.google.plus.circle,
-  i.icon.google.plus.official,
-  i.icon.japan.credit.bureau.card,
-  i.icon.japan.credit.bureau,
-  i.icon.jcb,
-  i.icon.linkedin.square,
-  i.icon.mastercard.card,
-  i.icon.mastercard,
-  i.icon.microsoft.edge,
-  i.icon.ms.edge,
-  i.icon.new.pied.piper,
-  i.icon.optinmonster,
-  i.icon.paypal.card,
-  i.icon.pied.piper.hat,
-  i.icon.pocket,
-  i.icon.stripe.card,
-  i.icon.theme.isle,
-  i.icon.visa.card,
-  i.icon.visa,
-  i.icon.wechat,
-  i.icon.wikipedia,
-  i.icon.wordpress.beginner,
-  i.icon.wordpress.forms,
-  i.icon.yc,
-  i.icon.ycombinator,
-  i.icon.bitbucket.square,
-  i.icon.disk.outline,
-  i.icon.facebook.official,
-  i.icon.youtube.play {
-    font-family: @brandFontName;
-  }
-  
-  /* Brands Alias Definitions */
-  i.icon.credit.card.amazon.pay:before { content: "\f42d"; }
-  i.icon.credit.card.american.express:before { content: "\f1f3"; }
-  i.icon.credit.card.diners.club:before { content: "\f24c"; }
-  i.icon.credit.card.discover:before { content: "\f1f2"; }
-  i.icon.credit.card.jcb:before { content: "\f24b"; }
-  i.icon.credit.card.mastercard:before { content: "\f1f1"; }
-  i.icon.credit.card.paypal:before { content: "\f1f4"; }
-  i.icon.credit.card.stripe:before { content: "\f1f5"; }
-  i.icon.credit.card.visa:before { content: "\f1f0"; }
-  i.icon.american.express.card:before { content: "\f1f3"; }
-  i.icon.american.express:before { content: "\f1f3"; }
-  i.icon.amex:before { content: "\f1f3"; }
-  i.icon.bluetooth.alternative:before { content: "\f294"; }
-  i.icon.diners.club.card:before { content: "\f24c"; }
-  i.icon.diners.club:before { content: "\f24c"; }
-  i.icon.discover.card:before { content: "\f1f2"; }
-  i.icon.discover:before { content: "\f1f2"; }
-  i.icon.dribble:before { content: "\f17d"; }
-  i.icon.eercast:before { content: "\f2da"; }
-  i.icon.envira.gallery:before { content: "\f299"; }
-  i.icon.fa:before { content: "\f2b4"; }
-  i.icon.five.hundred.pixels:before { content: "\f26e"; }
-  i.icon.gittip:before { content: "\f184"; }
-  i.icon.google.plus.circle:before { content: "\f2b3"; }
-  i.icon.google.plus.official:before { content: "\f2b3"; }
-  i.icon.japan.credit.bureau.card:before { content: "\f24b"; }
-  i.icon.japan.credit.bureau:before { content: "\f24b"; }
-  i.icon.jcb:before { content: "\f24b"; }
-  i.icon.linkedin.square:before { content: "\f08c"; }
-  i.icon.mastercard.card:before { content: "\f1f1"; }
-  i.icon.mastercard:before { content: "\f1f1"; }
-  i.icon.microsoft.edge:before { content: "\f282"; }
-  i.icon.ms.edge:before { content: "\f282"; }
-  i.icon.new.pied.piper:before { content: "\f2ae"; }
-  i.icon.optinmonster:before { content: "\f23c"; }
-  i.icon.paypal.card:before { content: "\f1f4"; }
-  i.icon.pied.piper.hat:before { content: "\f2ae"; }
-  i.icon.pocket:before { content: "\f265"; }
-  i.icon.stripe.card:before { content: "\f1f5"; }
-  i.icon.theme.isle:before { content: "\f2b2"; }
-  i.icon.visa.card:before { content: "\f1f0"; }
-  i.icon.visa:before { content: "\f1f0"; }
-  i.icon.wechat:before { content: "\f1d7"; }
-  i.icon.wikipedia:before { content: "\f266"; }
-  i.icon.wordpress.beginner:before { content: "\f297"; }
-  i.icon.wordpress.forms:before { content: "\f298"; }
-  i.icon.yc:before { content: "\f23b"; }
-  i.icon.ycombinator:before { content: "\f23b"; }
-  i.icon.bitbucket.square:before { content: "\f171"; }
-  i.icon.disk.outline:before { content: "\f369"; }
-  i.icon.facebook.official:before { content: "\f082"; }
-  i.icon.youtube.play:before { content: "\f167"; }
 
+  /* Aliases */
+  i.icon.american.express:before { content: "\f1f3"; font-family: @brandFontName; }
+  i.icon.american.express.card:before { content: "\f1f3"; font-family: @brandFontName; }
+  i.icon.amex:before { content: "\f1f3"; font-family: @brandFontName; }
+  i.icon.bitbucket.square:before { content: "\f171"; font-family: @brandFontName; }
+  i.icon.bluetooth.alternative:before { content: "\f294"; font-family: @brandFontName; }
+  i.icon.credit.card.amazon.pay:before { content: "\f42d"; font-family: @brandFontName; }
+  i.icon.credit.card.american.express:before { content: "\f1f3"; font-family: @brandFontName; }
+  i.icon.credit.card.diners.club:before { content: "\f24c"; font-family: @brandFontName; }
+  i.icon.credit.card.discover:before { content: "\f1f2"; font-family: @brandFontName; }
+  i.icon.credit.card.jcb:before { content: "\f24b"; font-family: @brandFontName; }
+  i.icon.credit.card.mastercard:before { content: "\f1f1"; font-family: @brandFontName; }
+  i.icon.credit.card.paypal:before { content: "\f1f4"; font-family: @brandFontName; }
+  i.icon.credit.card.stripe:before { content: "\f1f5"; font-family: @brandFontName; }
+  i.icon.credit.card.visa:before { content: "\f1f0"; font-family: @brandFontName; }
+  i.icon.diners.club:before { content: "\f24c"; font-family: @brandFontName; }
+  i.icon.diners.club.card:before { content: "\f24c"; font-family: @brandFontName; }
+  i.icon.discover:before { content: "\f1f2"; font-family: @brandFontName; }
+  i.icon.discover.card:before { content: "\f1f2"; font-family: @brandFontName; }
+  i.icon.disk.outline:before { content: "\f369"; font-family: @brandFontName; }
+  i.icon.dribble:before { content: "\f17d"; font-family: @brandFontName; }
+  i.icon.eercast:before { content: "\f2da"; font-family: @brandFontName; }
+  i.icon.envira.gallery:before { content: "\f299"; font-family: @brandFontName; }
+  i.icon.fa:before { content: "\f2b4"; font-family: @brandFontName; }
+  i.icon.facebook.official:before { content: "\f082"; font-family: @brandFontName; }
+  i.icon.five.hundred.pixels:before { content: "\f26e"; font-family: @brandFontName; }
+  i.icon.gittip:before { content: "\f184"; font-family: @brandFontName; }
+  i.icon.google.plus.circle:before { content: "\f2b3"; font-family: @brandFontName; }
+  i.icon.google.plus.official:before { content: "\f2b3"; font-family: @brandFontName; }
+  i.icon.japan.credit.bureau:before { content: "\f24b"; font-family: @brandFontName; }
+  i.icon.japan.credit.bureau.card:before { content: "\f24b"; font-family: @brandFontName; }
+  i.icon.jcb:before { content: "\f24b"; font-family: @brandFontName; }
+  i.icon.linkedin.square:before { content: "\f08c"; font-family: @brandFontName; }
+  i.icon.mastercard:before { content: "\f1f1"; font-family: @brandFontName; }
+  i.icon.mastercard.card:before { content: "\f1f1"; font-family: @brandFontName; }
+  i.icon.microsoft.edge:before { content: "\f282"; font-family: @brandFontName; }
+  i.icon.ms.edge:before { content: "\f282"; font-family: @brandFontName; }
+  i.icon.new.pied.piper:before { content: "\f2ae"; font-family: @brandFontName; }
+  i.icon.optinmonster:before { content: "\f23c"; font-family: @brandFontName; }
+  i.icon.paypal.card:before { content: "\f1f4"; font-family: @brandFontName; }
+  i.icon.pied.piper.hat:before { content: "\f2ae"; font-family: @brandFontName; }
+  i.icon.pocket:before { content: "\f265"; font-family: @brandFontName; }
+  i.icon.stripe.card:before { content: "\f1f5"; font-family: @brandFontName; }
+  i.icon.theme.isle:before { content: "\f2b2"; font-family: @brandFontName; }
+  i.icon.visa:before { content: "\f1f0"; font-family: @brandFontName; }
+  i.icon.visa.card:before { content: "\f1f0"; font-family: @brandFontName; }
+  i.icon.wechat:before { content: "\f1d7"; font-family: @brandFontName; }
+  i.icon.wikipedia:before { content: "\f266"; font-family: @brandFontName; }
+  i.icon.wordpress.beginner:before { content: "\f297"; font-family: @brandFontName; }
+  i.icon.wordpress.forms:before { content: "\f298"; font-family: @brandFontName; }
+  i.icon.yc:before { content: "\f23b"; font-family: @brandFontName; }
+  i.icon.ycombinator:before { content: "\f23b"; font-family: @brandFontName; }
+  i.icon.youtube.play:before { content: "\f167"; font-family: @brandFontName; }
+  
 }
 .loadBrandIcons();

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Dropdown
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Dropdown
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -140,6 +140,9 @@ $.fn.dropdown = function(parameters) {
         destroy: function() {
           module.verbose('Destroying previous dropdown', $module);
           module.remove.tabbable();
+          module.remove.active();
+          $menu.transition('stop all');
+          $menu.removeClass(className.visible).addClass(className.hidden);
           $module
             .off(eventNamespace)
             .removeData(moduleNamespace)
@@ -529,6 +532,8 @@ $.fn.dropdown = function(parameters) {
                 callback.call(element);
               });
             }
+          } else if( module.can.click() ) {
+              module.unbind.intent();
           }
         },
 
@@ -2718,7 +2723,12 @@ $.fn.dropdown = function(parameters) {
               $label
                 .addClass(className.hidden)
                 .insertBefore($next)
-                .transition(settings.label.transition, settings.label.duration)
+                .transition({
+                    animation  : settings.label.transition,
+                    debug      : settings.debug,
+                    verbose    : settings.verbose,
+                    duration   : settings.label.duration
+                })
               ;
             }
             else {

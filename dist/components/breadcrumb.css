@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Breadcrumb
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Breadcrumb
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -14,7 +14,7 @@
 *******************************/
 
 .ui.breadcrumb {
-  line-height: 1;
+  line-height: 1.4285em;
   display: inline-block;
   margin: 0 0;
   vertical-align: middle;
@@ -72,6 +72,17 @@
   padding: 0.78571429em 1em;
 }
 
+/* Inverted */
+.ui.inverted.breadcrumb {
+  color: #DCDDDE;
+}
+.ui.inverted.breadcrumb > .active.section {
+  color: #FFFFFF;
+}
+.ui.inverted.breadcrumb > .divider {
+  color: rgba(255, 255, 255, 0.7);
+}
+
 
 /*******************************
             States
@@ -110,6 +121,12 @@
 .ui.massive.breadcrumb {
   font-size: 1.71428571rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

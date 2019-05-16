@@ -12,7 +12,7 @@ After asking your question you may find that it is actually a bug or a feature w
 
 We use [GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) to track all bugs and enhancements for FUI, before raising a bug please check to see if it has already been raised. If you find it has already been raised add a :thumbsup: to the issue reactions to show you are also having the same issue. Please do not spam "+1", "bump" etc.
 
-If you find that your issue has not already been raised please create a [new issue](https://github.com/fomantic/Fomantic-UI/issues/new?template=Bug_report.md) and please follow the template provided. This helps us triage issues without needing to ask lots of questions.
+If you find that your issue has not already been raised please create a [new issue](https://github.com/fomantic/Fomantic-UI/issues/new?template=Bug_report.md) and please follow the template provided.
 
 When creating an issue you will be asked to create a [JSFiddle](https://jsfiddle.net/31d6y7mn) to replicate your issue. You can fork [this template](https://jsfiddle.net/31d6y7mn) which has the latest version of Fomantic ready to use.
 
@@ -37,7 +37,7 @@ As bugs and features are triaged they will be assigned to milestones. The best i
 
 ### :pencil: Pull Requests Guide
 
-**All pull requests should be merged into the `develop` branch. Make sure when your branch is based from our develop branch and not the master.**
+**All pull requests should be merged into the `develop` branch. Make sure your branch is based from our develop branch and not the master.**
 
 Anyone can jump on the issues board and grab off bugs to fix. This is probably the best way to become a contributor to Fomantic. We only ask you to stick to these few rules to make it easier to merge/process your pull requests.
 
@@ -57,7 +57,7 @@ $ cd Fomantic-UI
 $ git remote add fui https://github.com/fomantic/Fomantic-UI.git
 $ git fetch fui
 ```
-3. Checkout a new branch with the FUI `deveop` branch as the base
+3. Checkout a new branch with the FUI `develop` branch as the base
 ```bash
 $ git checkout -b <BRANCH_NAME> fui/develop
 ```

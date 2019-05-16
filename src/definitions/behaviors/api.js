@@ -336,6 +336,10 @@ $.api = $.fn.api = function(parameters) {
             return (module.cancelled || false);
           },
           succesful: function() {
+            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
+            return module.was.successful();
+          },
+          successful: function() {
             return (module.request && module.request.state() == 'resolved');
           },
           failure: function() {
@@ -548,7 +552,7 @@ $.api = $.fn.api = function(parameters) {
                 response
               ;
               // have to guess callback parameters based on request success
-              if( module.was.succesful() ) {
+              if( module.was.successful() ) {
                 response = firstParameter;
                 xhr      = secondParameter;
               }

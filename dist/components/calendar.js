@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Calendar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Calendar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -336,10 +336,19 @@ $.fn.calendar = function(parameters) {
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
                   var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
                   if (disabled) {
-                    var disabledReason = module.helper.disabledReason(cellDate, mode);
-                    if (disabledReason !== null) {
-                      cell.attr("data-tooltip", disabledReason[metadata.message]);
+                    var disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
+                    if (disabledDate !== null && disabledDate[metadata.message]) {
+                      cell.attr("data-tooltip", disabledDate[metadata.message]);
                       cell.attr("data-position", tooltipPosition);
+                    }
+                  } else {
+                    var eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
+                    if (eventDate !== null) {
+                      cell.addClass(eventDate[metadata.class] || settings.eventClass);
+                      if (eventDate[metadata.message]) {
+                        cell.attr("data-tooltip", eventDate[metadata.message]);
+                        cell.attr("data-position", tooltipPosition);
+                      }
                     }
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
@@ -483,7 +492,7 @@ $.fn.calendar = function(parameters) {
             var date = target.data(metadata.date);
             var focusDate = target.data(metadata.focusDate);
             var mode = target.data(metadata.mode);
-            if (date) {
+            if (date && settings.onSelect.call(element, date, module.get.mode()) !== false) {
               var forceSet = target.hasClass(className.today);
               module.selectDate(date, forceSet);
             }
@@ -577,6 +586,9 @@ $.fn.calendar = function(parameters) {
           date: function () {
             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
           },
+          inputDate: function() {
+            return $input.val();
+          },
           focusDate: function () {
             return $module.data(metadata.focusDate) || null;
           },
@@ -643,7 +655,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $module.parent().children(selector).first();
+              selector = $(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);
@@ -842,14 +854,19 @@ $.fn.calendar = function(parameters) {
               return true;
             }
           },
-          disabledReason: function(date, mode) {
+          findDayAsObject: function(date, mode, dates) {
             if (mode === 'day') {
-              for (var i = 0; i < settings.disabledDates.length; i++) {
-                var d = settings.disabledDates[i];
-                if (d !== null && typeof d === 'object' && module.helper.dateEqual(date, d[metadata.date], mode)) {
-                  var reason = {};
-                  reason[metadata.message] = d[metadata.message];
-                  return reason;
+              var i = 0, il = dates.length;
+              var d;
+              for (; i < il; i++) {
+                d = dates[i];
+                if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
+                  var dateObject = {};
+                  dateObject[metadata.date] = d;
+                  return dateObject;
+                }
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                  return d;
                 }
               }
             }
@@ -862,7 +879,7 @@ $.fn.calendar = function(parameters) {
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
             }
-            if (isNaN(date.getTime())) {
+            if (!date || date === null || isNaN(date.getTime())) {
               return undefined;
             }
             return date;
@@ -1143,6 +1160,7 @@ $.fn.calendar.settings = {
   disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
+  eventDates         : [],         // specific day(s) which will be shown in a different color and using tooltips
   centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
   currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
   selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
@@ -1236,6 +1254,9 @@ $.fn.calendar.settings = {
 
   parser: {
     date: function (text, settings) {
+      if (text instanceof Date) {
+        return text;
+      }
       if (!text) {
         return null;
       }
@@ -1457,6 +1478,10 @@ $.fn.calendar.settings = {
   onHidden: function () {
   },
 
+  // callback before item is selected, return false to prevent selection
+  onSelect: function (date, mode) {
+  },
+
   // is the given date disabled?
   isDisabled: function (date, mode) {
     return false;
@@ -1510,8 +1535,11 @@ $.fn.calendar.settings = {
     maxDate: 'maxDate',
     mode: 'mode',
     monthOffset: 'monthOffset',
-    message: 'message'
-  }
+    message: 'message',
+    class: 'class'
+  },
+
+  eventClass: 'blue'
 };
 
 })(jQuery, window, document);

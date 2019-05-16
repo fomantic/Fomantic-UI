@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Segment
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Segment
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -795,6 +795,19 @@
   margin-bottom: 1rem;
 }
 
+/*--------------
+     Fitted
+---------------*/
+
+.ui.fitted.segment:not(.horizontally) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.ui.fitted.segment:not(.vertically) {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 /*-------------------
         Size
 --------------------*/
@@ -831,6 +844,12 @@
 .ui.massive.segment {
   font-size: 1.71428571rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************
