@@ -2723,7 +2723,12 @@ $.fn.dropdown = function(parameters) {
               $label
                 .addClass(className.hidden)
                 .insertBefore($next)
-                .transition(settings.label.transition, settings.label.duration)
+                .transition({
+                    animation  : settings.label.transition,
+                    debug      : settings.debug,
+                    verbose    : settings.verbose,
+                    duration   : settings.label.duration
+                })
               ;
             }
             else {

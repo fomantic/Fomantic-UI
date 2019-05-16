@@ -477,16 +477,22 @@ Floated Menu / Item
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
-.ui.menu:not(.vertical) :not(.dropdown) > .left.menu {
+.ui.menu:not(.vertical) .left.menu {
   display: flex;
   margin-right: auto !important;
 }
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
-.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+.ui.menu:not(.vertical) .right.menu {
   display: flex;
   margin-left: auto !important;
 }
+
+.ui.menu:not(.vertical) :not(.dropdown) > .left.menu,
+.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+  display: inherit;
+}
+
 /* Center */
 .ui.menu:not(.vertical) .center.item,
 .ui.menu:not(.vertical) .center.menu {
@@ -912,7 +918,7 @@ Floated Menu / Item
 }
 
 /* Inverted */
-.ui.secondary.inverted.menu.menu {
+.ui.secondary.inverted.menu {
   background-color: transparent;
 }
 
@@ -941,7 +947,7 @@ Floated Menu / Item
   border-bottom-width: 0;
 }
 
-.ui.secondary.pointing.menu .item > .label {
+.ui.secondary.pointing.menu .item > .label:not(.floating) {
   margin-top: -@labelVerticalPadding;
   margin-bottom: -@labelVerticalPadding;
 }
@@ -1523,7 +1529,7 @@ each(@colors, {
   text-align: center;
   justify-content: center;
 }
-.ui.attached.item.menu {
+.ui.attached.item.menu:not(.tabular) {
   margin: 0 @attachedHorizontalOffset !important;
 }
 

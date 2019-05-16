@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Slider
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Slider
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license

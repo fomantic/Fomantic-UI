@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Calendar
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Calendar
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -161,6 +161,12 @@
 .ui.disabled.calendar .ui.table tr .link {
   pointer-events: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

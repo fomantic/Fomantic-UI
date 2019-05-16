@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Search
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Search
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -555,7 +555,7 @@ $.fn.search = function(parameters) {
         search: {
           local: function(searchTerm) {
             var
-              results = module.search.object(searchTerm, settings.content),
+              results = module.search.object(searchTerm, settings.source),
               searchHTML
             ;
             module.set.loading();

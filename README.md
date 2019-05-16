@@ -52,7 +52,7 @@ If you have a usage question please **do not post** post it to GitHub Issues. Yo
 Please only create Github issues for bug's and feature requests or any other related issue.
 
 ### 🐛 Submitting Bugs and Enhancements
-[GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submiting a bug make sure you do the following:
+[GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submitting a bug make sure you do the following:
 * Check to see if the issue has already been raised.
 * [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a test case for your bug. If a bug is apparent in the docs, that's ok as a test case, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
 * If submitting an enhancement try and create it in the [JSFiddle](https://jsfiddle.net/31d6y7mn) if not it's fine but explain clearly what you want.
@@ -65,6 +65,11 @@ Before creating a pull request be sure to read the [contributing](CONTRIBUTING.m
 
 #### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
+
+#### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
+[![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
+
+---
 
 #### Credit
 Semantic-UI was beautifully crafted by [@jlukic](https://github.com/jlukic)

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Tab
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Tab
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -74,6 +74,12 @@
   -webkit-box-shadow: 0 0 0 1px transparent;
           box-shadow: 0 0 0 1px transparent;
 }
+
+
+/*******************************
+         Tab Overrides
+*******************************/
+
 
 
 /*******************************

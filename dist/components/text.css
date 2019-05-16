@@ -1,5 +1,5 @@
 /*!
- * # Fomantic UI - Text
+ * # Fomantic-UI - Text
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -132,6 +132,12 @@ span.ui.huge.text {
 span.ui.massive.text {
   font-size: 8em;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

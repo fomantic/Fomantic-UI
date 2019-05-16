@@ -6,6 +6,7 @@
    Font Files
 ---------------*/
 
+/* Solid Icons */
 @fontName: 'icons';
 @src:
   url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
@@ -15,10 +16,6 @@
   url("@{fontPath}/@{fontName}.svg#icons") format('svg')
 ;
 @fallbackSRC: url("@{fontPath}/@{fontName}.eot");
-
-/*--------------
- Optional Files
----------------*/
 
 /* Outline Icons */
 @importOutlineIcons: true;
@@ -32,6 +29,8 @@
 ;
 @outlineFallbackSRC: url("@{fontPath}/@{outlineFontName}.eot");
 
+
+
 /* Brand Icons */
 @importBrandIcons: true;
 @brandFontName: 'brand-icons';
@@ -43,6 +42,7 @@
   url("@{fontPath}/@{brandFontName}.svg#icons") format('svg')
 ;
 @brandFallbackSRC: url("@{fontPath}/@{brandFontName}.eot");
+
 
 /*--------------
    Definition

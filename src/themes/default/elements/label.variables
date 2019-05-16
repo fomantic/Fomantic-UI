@@ -105,6 +105,8 @@
 /* Basic */
 @basicBackground: none @white;
 @basicBorderWidth: 1px;
+@basicBorderWidthOffset: -@basicBorderWidth;
+@basicBorderFullWidthOffset: e(%("calc(100%% + %d)", @basicBorderWidth));
 @basicBorder: @basicBorderWidth solid @borderColor;
 @basicColor: @textColor;
 @basicBoxShadow: none;
@@ -128,10 +130,13 @@
 
 /* Ribbon */
 @ribbonTriangleSize: 1.2em;
+@basicRibbonTriangleSize: e(%("calc(%d - %d)", @ribbonTriangleSize, @basicBorderWidth));
+@basicRibbonTriangleSizeOffset: e(%("calc(1rem + %d - %d)", @ribbonTriangleSize, @basicBorderWidth));
 @ribbonShadowColor: rgba(0, 0, 0, 0.15);
 
 @ribbonMargin: 1rem;
 @ribbonOffset: e(%("calc(%d - %d)", -@ribbonMargin, @ribbonTriangleSize));
+@basicRibbonOffset: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
 @ribbonDistance: e(%("calc(%d + %d)", @ribbonMargin, @ribbonTriangleSize));
 @rightRibbonOffset: e(%("calc(100%% + %d + %d)", @ribbonMargin, @ribbonTriangleSize));
 

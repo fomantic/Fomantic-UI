@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Popup
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Popup
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -706,7 +706,7 @@
 .ui[class*="very wide"].popup {
   max-width: 550px;
 }
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.wide.popup,
   .ui[class*="very wide"].popup {
     max-width: 250px;
@@ -775,6 +775,12 @@
 .ui.huge.popup {
   font-size: 1.42857143rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

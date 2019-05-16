@@ -1,0 +1,10 @@
+# Configuration for auto-assign - https://github.com/kentaro-m/auto-assign
+
+addReviewers: true
+numberOfReviewers: 0 # will add all reviewers
+reviewers:
+  - hammy2899
+  - ColinFrick
+  - prudho
+  - lubber-de
+  - exoego
