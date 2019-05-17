@@ -832,22 +832,28 @@ $.fn.calendar = function(parameters) {
         helper: {
           isDisabled: function(date, mode) {
             return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if(typeof d === 'string') {
+                d = module.helper.sanitiseDate(d);
+              }
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
-              if (d !== null && typeof d === 'object') {
-                return module.helper.dateEqual(date, d[metadata.date], mode);
+              if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
               }
             }));
           },
           isEnabled: function(date, mode) {
             if (mode === 'day') {
-              return settings.enabledDates.length == 0 || settings.enabledDates.some(function(d){
+              return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date) {
                   return module.helper.dateEqual(date, d, mode);
                 }
-                if (d !== null && typeof d === 'object') {
-                  return module.helper.dateEqual(date, d[metadata.date], mode);
+                if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                  return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                 }
               });
             } else {
@@ -860,12 +866,15 @@ $.fn.calendar = function(parameters) {
               var d;
               for (; i < il; i++) {
                 d = dates[i];
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
                   var dateObject = {};
                   dateObject[metadata.date] = d;
                   return dateObject;
                 }
-                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date,module.helper.sanitiseDate(d[metadata.date]), mode)  ) {
                   return d;
                 }
               }
@@ -1263,6 +1272,10 @@ $.fn.calendar.settings = {
       text = ('' + text).trim().toLowerCase();
       if (text.length === 0) {
         return null;
+      }
+      var textDate = new Date(text);
+      if(!isNaN(textDate.getDate())) {
+        return textDate;
       }
 
       var i, j, k;
