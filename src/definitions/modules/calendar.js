@@ -133,7 +133,9 @@ $.fn.calendar = function(parameters) {
             if (!$container.length) {
               //prepend the popup element to the activator's parent so that it has less chance of messing with
               //the styling (eg input action button needs to be the last child to have correct border radius)
-              $container = $('<div/>').addClass(className.popup).prependTo($activator.parent());
+              var $activatorParent = $activator.parent(),
+                  domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
+              $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
             var onVisible = settings.onVisible;
@@ -1503,7 +1505,8 @@ $.fn.calendar.settings = {
   selector: {
     popup: '.ui.popup',
     input: 'input',
-    activator: 'input'
+    activator: 'input',
+    append: '.inline.field,.inline.fields'
   },
 
   regExp: {
