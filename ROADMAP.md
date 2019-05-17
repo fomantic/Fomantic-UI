@@ -47,7 +47,7 @@ This is a list of libraries we are wanting and proposing to create implementatio
 - React 🛳
 - Vue 🛳
 - Angular 💡
-- Meteror 💡
+- Meteor 💡
 - Stencil 💡
 - Mithril 💡
 
