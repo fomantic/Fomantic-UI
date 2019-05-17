@@ -38,6 +38,8 @@ If you want to find out more about v3 we recommend you read the following issues
 - Theming implementation rewrite (behaviour will stay the same) ✏🛳
 - Move from LESS to SASS ✏🛳
 - v3 to v2 JavaScript pollyfill package 💡
+- Browser support for all major browsers and IE11 ✏
+- Move SASS variables to CSS variables so they can be easily changed without compiling.
 
 ### Library Implementations:
 
