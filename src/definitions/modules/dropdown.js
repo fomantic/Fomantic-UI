@@ -356,7 +356,7 @@ $.fn.dropdown = function(parameters) {
             }
             if(module.is.search() && module.has.search() && title) {
               module.verbose('Adding title attr to search input');
-              $search.prop("title", title);
+              $search.prop("aria-label", title);
             }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
