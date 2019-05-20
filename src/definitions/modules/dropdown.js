@@ -349,8 +349,7 @@ $.fn.dropdown = function(parameters) {
                   .addClass(className.search)
                   .prop({
                       'autocomplete': 'off',
-                      'title': title,
-                      'disabled': module.is.disabled()
+                      'title': title
                   })
                 .insertBefore($text)
               ;
