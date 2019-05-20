@@ -487,6 +487,12 @@ each(@colors, {
   transform-origin: center;
   width: 100%;
 }
+.ui.slow.indeterminate.progress .bar::before {
+  animation-duration: @indeterminatePulseDurationSlow;
+}
+.ui.fast.indeterminate.progress .bar::before {
+  animation-duration: @indeterminatePulseDurationFast;
+}
 .ui.swinging.indeterminate.progress .bar::before {
   transform-origin: left;
   animation-name: progress-swinging;

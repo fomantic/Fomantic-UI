@@ -122,3 +122,5 @@
 /* Indeterminate */
 @indeterminatePulseColor: @white;
 @indeterminatePulseDuration: @activePulseDuration;
+@indeterminatePulseDurationSlow: 4s;
+@indeterminatePulseDurationFast: 2s;
