@@ -358,7 +358,7 @@ $.fn.dropdown = function(parameters) {
             if(module.is.search() && module.has.search() && title) {
               module.verbose('Adding title attr to search input');
               $search.prop("title", title);
-            }            
+            }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
             }
@@ -3864,7 +3864,7 @@ $.fn.dropdown.settings = {
   hideDividers           : false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
   title                  : 'search',       // input title attribute
-  
+
   placeholder            : 'auto',     // whether to convert blank <select> values to placeholder text
   preserveHTML           : true,       // preserve html when selecting value
   sortSelect             : false,      // sort selection on init
