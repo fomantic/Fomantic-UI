@@ -48,6 +48,7 @@ $.fn.dropdown = function(parameters) {
           : $.extend({}, $.fn.dropdown.settings),
 
         className       = settings.className,
+        title           = settings.title,
         message         = settings.message,
         fields          = settings.fields,
         keys            = settings.keys,
@@ -345,11 +346,19 @@ $.fn.dropdown = function(parameters) {
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
               $search = $('<input />')
-                .addClass(className.search)
-                .prop('autocomplete', 'off')
+                  .addClass(className.search)
+                  .prop({
+                      'autocomplete': 'off',
+                      'title': title ? title : 'search',
+                      'disabled': module.is.disabled()
+                  })
                 .insertBefore($text)
               ;
             }
+            if(module.is.search() && module.has.search() && title) {
+              module.verbose('Adding title attr to search input');
+              $search.prop("title", title);
+            }            
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
             }
@@ -2891,7 +2900,7 @@ $.fn.dropdown = function(parameters) {
             }
             module.set.value(newValue, addedValue, addedText, $selectedItem);
             module.check.maxSelections();
-          },
+          }
         },
 
         remove: {
@@ -3854,6 +3863,8 @@ $.fn.dropdown.settings = {
   ignoreDiacritics       : false,      // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
   hideDividers           : false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
+  title                  : null,       // input title attribute
+  
   placeholder            : 'auto',     // whether to convert blank <select> values to placeholder text
   preserveHTML           : true,       // preserve html when selecting value
   sortSelect             : false,      // sort selection on init
