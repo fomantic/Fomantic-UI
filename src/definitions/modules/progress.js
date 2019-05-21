@@ -83,29 +83,28 @@ $.fn.progress = function(parameters) {
            * - total: 1122
            * - values: [325, 111, 74, 612]
            * - min ratio: 74/1122 = 0.0659...
-           * - required precision:  0.01
+           * - required precision:  100
            *
            * Example2
            * - total: 10541
            * - values: [3235, 1111, 74, 6121]
            * - min ratio: 74/10541 = 0.0070...
-           * - required precision:   0.001
+           * - required precision:   1000
            *
            * @param min A minimum value within multiple values
            * @param total A total amount of multiple values
-           * @returns {number} A precison. Could be 1, 0.1, 0.1, ... 1e-10.
+           * @returns {number} A precison. Could be 1, 10, 100, ... 1e+10.
            */
           derivePrecision: function(min, total) {
             var precisionPower = 0
             var precision = 1;
             var ratio = min / total;
-            while (precisionPower > -10) {
-              ratio = ratio / precision;
+            while (precisionPower < 10) {
+              ratio = ratio * precision;
               if (ratio > 1) {
                 break;
               }
-              precisionPower -= 1;
-              precision = Math.pow(10, precisionPower);
+              precision = Math.pow(10, precisionPower++);
             }
             return precision;
           },
