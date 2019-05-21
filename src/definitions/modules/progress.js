@@ -74,6 +74,41 @@ $.fn.progress = function(parameters) {
               return left + right;
             }, 0) : 0;
           },
+          /**
+           * Derive precision for multiple progress with total and values.
+           *
+           * This helper dervices a precision that is sufficiently small to show minimum value of multiple progress.
+           *
+           * Example1
+           * - total: 1122
+           * - values: [325, 111, 74, 612]
+           * - min ratio: 74/1122 = 0.0659...
+           * - required precision:  0.01
+           *
+           * Example2
+           * - total: 10541
+           * - values: [3235, 1111, 74, 6121]
+           * - min ratio: 74/10541 = 0.0070...
+           * - required precision:   0.001
+           *
+           * @param min A minimum value within multiple values
+           * @param total A total amount of multiple values
+           * @returns {number} A precison. Could be 1, 0.1, 0.1, ... 1e-10.
+           */
+          derivePrecision: function(min, total) {
+            var precisionPower = 0
+            var precision = 1;
+            var ratio = min / total;
+            while (precisionPower > -10) {
+              ratio = ratio / precision;
+              if (ratio > 1) {
+                break;
+              }
+              precisionPower -= 1;
+              precision = Math.pow(10, precisionPower);
+            }
+            return precision;
+          },
           forceArray: function (element) {
             return Array.isArray(element)
               ? element
@@ -478,18 +513,24 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
+            var autoPrecision = settings.precision > 0
+              ? settings.precision
+              : percents.length > 1 && module.has.total()
+                ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
+                : undefined;
+
             // round display percentage
             percents = percents.map(function(percent){
-              return (settings.precision > 0)
-                ? Math.round(percent * (10 * settings.precision)) / (10 * settings.precision)
+              return (autoPrecision > 0)
+                ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                 : Math.round(percent)
               ;
             });
             module.percent = percents;
             if( !module.has.total() ) {
               module.value = percents.map(function(percent){
-                return (settings.precision > 0)
-                  ? Math.round( (percent / 100) * module.total * (10 * settings.precision)) / (10 * settings.precision)
+                return (autoPrecision > 0)
+                  ? Math.round( (percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                   : Math.round( (percent / 100) * module.total * 10) / 10
                 ;
               });
