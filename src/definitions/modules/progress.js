@@ -445,52 +445,43 @@ $.fn.progress = function(parameters) {
           barWidth: function(values) {
             module.debug("set bar width with ", values);
             values = module.helper.forceArray(values);
-            var total = module.helper.sum(values);
-            if(total > 100) {
-              module.error(error.tooHigh, total);
-            }
-            else if (total < 0) {
-              module.error(error.tooLow, total);
-            }
-            else {
-              var firstNonZeroIndex = -1;
-              var lastNonZeroIndex = -1;
-              var valuesSum = module.helper.sum(values);
-              var barCounts = $bars.length;
-              var isMultiple = barCounts > 1;
-              var percents = values.map(function(value, index) {
-                var allZero = (index === barCounts - 1 && valuesSum === 0);
-                var $bar = $($bars[index]);
-                if (value === 0 && isMultiple && !allZero) {
-                  $bar.css('display', 'none');
-                } else {
-                  if (isMultiple && allZero) {
-                    $bar.css('background', 'transparent');
-                  }
-                  if (firstNonZeroIndex == -1) {
-                    firstNonZeroIndex = index;
-                  }
-                  lastNonZeroIndex = index;
-                  $bar.css({
-                    display: 'block',
-                    width: value + '%'
-                  });
+            var firstNonZeroIndex = -1;
+            var lastNonZeroIndex = -1;
+            var valuesSum = module.helper.sum(values);
+            var barCounts = $bars.length;
+            var isMultiple = barCounts > 1;
+            var percents = values.map(function(value, index) {
+              var allZero = (index === barCounts - 1 && valuesSum === 0);
+              var $bar = $($bars[index]);
+              if (value === 0 && isMultiple && !allZero) {
+                $bar.css('display', 'none');
+              } else {
+                if (isMultiple && allZero) {
+                  $bar.css('background', 'transparent');
                 }
-                return parseInt(value, 10);
-              });
-              values.forEach(function(_, index) {
-                var $bar = $($bars[index]);
+                if (firstNonZeroIndex == -1) {
+                  firstNonZeroIndex = index;
+                }
+                lastNonZeroIndex = index;
                 $bar.css({
-                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                  display: 'block',
+                  width: value + '%'
                 });
+              }
+              return parseInt(value, 10);
+            });
+            values.forEach(function(_, index) {
+              var $bar = $($bars[index]);
+              $bar.css({
+                borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
+                borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
               });
-              $module
-                .attr('data-percent', percents)
-              ;
-            }
+            });
+            $module
+              .attr('data-percent', percents)
+            ;
           },
           duration: function(duration) {
             duration = duration || settings.duration;
@@ -512,40 +503,48 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
-            var autoPrecision = settings.precision > 0
-              ? settings.precision
-              : percents.length > 1 && module.has.total()
-                ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
-                : undefined;
+            // Sum before rouding since sum of rounded may have error though sum of actual is fine
+            var total = module.helper.sum(percents);
+            if (total > 100) {
+              module.error(error.tooHigh, total);
+            } else if (total < 0) {
+              module.error(error.tooLow, total);
+            } else {
+              var autoPrecision = settings.precision > 0
+                ? settings.precision
+                : percents.length > 1 && module.has.total()
+                  ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
+                  : undefined;
 
-            // round display percentage
-            percents = percents.map(function(percent){
-              return (autoPrecision > 0)
-                ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
-                : Math.round(percent)
-              ;
-            });
-            module.percent = percents;
-            if( !module.has.total() ) {
-              module.value = percents.map(function(percent){
+              // round display percentage
+              percents = percents.map(function (percent) {
                 return (autoPrecision > 0)
-                  ? Math.round( (percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
-                  : Math.round( (percent / 100) * module.total * 10) / 10
-                ;
+                  ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
+                  : Math.round(percent)
+                  ;
               });
-              if(settings.limitValues) {
-                module.value = module.value.map(function(value) {
-                  return (value > 100)
-                    ? 100
-                    : (module.value < 0)
-                      ? 0
-                      : module.value;
+              module.percent = percents;
+              if (!module.has.total()) {
+                module.value = percents.map(function (percent) {
+                  return (autoPrecision > 0)
+                    ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
+                    : Math.round((percent / 100) * module.total * 10) / 10
+                    ;
                 });
+                if (settings.limitValues) {
+                  module.value = module.value.map(function (value) {
+                    return (value > 100)
+                      ? 100
+                      : (module.value < 0)
+                        ? 0
+                        : module.value;
+                  });
+                }
               }
+              module.set.barWidth(percents);
+              module.set.labelInterval();
+              module.set.labels();
             }
-            module.set.barWidth(percents);
-            module.set.labelInterval();
-            module.set.labels();
             settings.onChange.call(element, percents, module.value, module.total);
           },
           labelInterval: function() {
