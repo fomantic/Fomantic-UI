@@ -77,7 +77,7 @@ $.fn.progress = function(parameters) {
           /**
            * Derive precision for multiple progress with total and values.
            *
-           * This helper dervices a precision that is sufficiently small to show minimum value of multiple progress.
+           * This helper dervices a precision that is sufficiently large to show minimum value of multiple progress.
            *
            * Example1
            * - total: 1122
