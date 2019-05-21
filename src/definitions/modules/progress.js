@@ -411,52 +411,43 @@ $.fn.progress = function(parameters) {
           barWidth: function(values) {
             module.debug("set bar width with ", values);
             values = module.helper.forceArray(values);
-            var total = module.helper.sum(values);
-            if(total > 100) {
-              module.error(error.tooHigh, total);
-            }
-            else if (total < 0) {
-              module.error(error.tooLow, total);
-            }
-            else {
-              var firstNonZeroIndex = -1;
-              var lastNonZeroIndex = -1;
-              var valuesSum = module.helper.sum(values);
-              var barCounts = $bars.length;
-              var isMultiple = barCounts > 1;
-              var percents = values.map(function(value, index) {
-                var allZero = (index === barCounts - 1 && valuesSum === 0);
-                var $bar = $($bars[index]);
-                if (value === 0 && isMultiple && !allZero) {
-                  $bar.css('display', 'none');
-                } else {
-                  if (isMultiple && allZero) {
-                    $bar.css('background', 'transparent');
-                  }
-                  if (firstNonZeroIndex == -1) {
-                    firstNonZeroIndex = index;
-                  }
-                  lastNonZeroIndex = index;
-                  $bar.css({
-                    display: 'block',
-                    width: value + '%'
-                  });
+            var firstNonZeroIndex = -1;
+            var lastNonZeroIndex = -1;
+            var valuesSum = module.helper.sum(values);
+            var barCounts = $bars.length;
+            var isMultiple = barCounts > 1;
+            var percents = values.map(function(value, index) {
+              var allZero = (index === barCounts - 1 && valuesSum === 0);
+              var $bar = $($bars[index]);
+              if (value === 0 && isMultiple && !allZero) {
+                $bar.css('display', 'none');
+              } else {
+                if (isMultiple && allZero) {
+                  $bar.css('background', 'transparent');
                 }
-                return parseInt(value, 10);
-              });
-              values.forEach(function(_, index) {
-                var $bar = $($bars[index]);
+                if (firstNonZeroIndex == -1) {
+                  firstNonZeroIndex = index;
+                }
+                lastNonZeroIndex = index;
                 $bar.css({
-                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                  display: 'block',
+                  width: value + '%'
                 });
+              }
+              return parseInt(value, 10);
+            });
+            values.forEach(function(_, index) {
+              var $bar = $($bars[index]);
+              $bar.css({
+                borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
+                borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
               });
-              $module
-                .attr('data-percent', percents)
-              ;
-            }
+            });
+            $module
+              .attr('data-percent', percents)
+            ;
           },
           duration: function(duration) {
             duration = duration || settings.duration;
@@ -478,6 +469,7 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
+            var total = module.helper.sum(percents);
             // round display percentage
             percents = percents.map(function(percent){
               return (settings.precision > 0)
@@ -503,7 +495,15 @@ $.fn.progress = function(parameters) {
                 });
               }
             }
-            module.set.barWidth(percents);
+            if(total > 100) {
+              module.error(error.tooHigh, total);
+            }
+            else if(total < 0) {
+              module.error(error.tooLow, total);
+            }
+            else {
+              module.set.barWidth(percents);
+            }
             module.set.labelInterval();
             module.set.labels();
             settings.onChange.call(element, percents, module.value, module.total);
