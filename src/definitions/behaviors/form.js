@@ -298,9 +298,10 @@ $.fn.form = function(parameters) {
             } else {
               module.set.clean();
             }
-                  
-            if (e) {
+
+            if (e && e.namespace === 'dirty') {
               e.stopImmediatePropagation();
+              e.preventDefault();
             }
           }
         },
