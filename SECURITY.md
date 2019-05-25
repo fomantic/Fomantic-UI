@@ -7,8 +7,11 @@
 | Version   | Supported          |
 | --------- | ------------------ |
 | 2.7.x     | :white_check_mark: |
-| > 2.x.x     | :lock:             |
+| > 2.x.x   | :lock:             |
 | 1.x.x     | :x:                |
+
+> All security fixes will be added the next release. Unless the threat is major the fix will be released with in the normal release
+> schedule.
 
 ## Reporting a Vulnerability
 
