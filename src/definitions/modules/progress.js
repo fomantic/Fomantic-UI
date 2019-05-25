@@ -589,7 +589,7 @@ $.fn.progress = function(parameters) {
               : module.helper.sum(module.percent)
             ;
             if(percent === 100) {
-              if(settings.autoSuccess && !(module.is.warning() || module.is.error() || module.is.success())) {
+              if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                 module.set.success();
                 module.debug('Automatically triggering success at 100%');
               }
