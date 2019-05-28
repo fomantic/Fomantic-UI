@@ -1,0 +1,14 @@
+/***********************************************************
+  Central element variation compilation enablers
+***********************************************************/
+
+@variationButtonFloated: true;
+@variationButtonCompact: true;
+@variationButtonBasic: true;
+@variationButtonTertiary: true;
+@variationButtonLabeledIcon: true;
+@variationButtonToggle: true;
+@variationButtonOr: true;
+@variationButtonAttached: true;
+@variationButtonFluid: true;
+@variationButtonGroups: true;
