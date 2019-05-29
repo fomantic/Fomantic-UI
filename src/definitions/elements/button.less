@@ -677,16 +677,18 @@
   font-size: @medium;
 }
 
-each(@variationButtonSizes, {
-  @s: @@value;
-  .ui.@{value}.buttons .dropdown,
-  .ui.@{value}.buttons .dropdown .menu > .item,
-  .ui.@{value}.buttons .button,
-  .ui.@{value}.buttons .or,
-  .ui.ui.ui.ui.@{value}.button {
-    font-size: @s;
-  }
-})
+& when not (@variationButtonSizes = false) {
+  each(@variationButtonSizes, {
+    @s: @@value;
+    .ui.@{value}.buttons .dropdown,
+    .ui.@{value}.buttons .dropdown .menu > .item,
+    .ui.@{value}.buttons .button,
+    .ui.@{value}.buttons .or,
+    .ui.ui.ui.ui.@{value}.button {
+      font-size: @s;
+    }
+  })
+}
 
 /*--------------
     Icon Only
