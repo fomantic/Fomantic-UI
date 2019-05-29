@@ -12,3 +12,4 @@
 @variationButtonAttached: true;
 @variationButtonFluid: true;
 @variationButtonGroups: true;
+@variationButtonSizes: mini, tiny, small, large, big, huge, massive;

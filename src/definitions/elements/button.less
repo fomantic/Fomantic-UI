@@ -671,90 +671,22 @@
         Sizes
 --------------------*/
 
-.ui.mini.buttons .button,
-.ui.mini.buttons .or,
-.ui.ui.ui.ui.mini.button {
-  font-size: @mini;
-}
-.ui.tiny.buttons .button,
-.ui.tiny.buttons .or,
-.ui.ui.ui.ui.tiny.button {
-  font-size: @tiny;
-}
-.ui.small.buttons .button,
-.ui.small.buttons .or,
-.ui.ui.ui.ui.small.button {
-  font-size: @small;
-}
 .ui.buttons .button,
 .ui.buttons .or,
 .ui.button {
   font-size: @medium;
 }
-.ui.large.buttons .button,
-.ui.large.buttons .or,
-.ui.ui.ui.ui.large.button {
-  font-size: @large;
-}
-.ui.big.buttons .button,
-.ui.big.buttons .or,
-.ui.ui.ui.ui.big.button {
-  font-size: @big;
-}
-.ui.huge.buttons .button,
-.ui.huge.buttons .or,
-.ui.ui.ui.ui.huge.button {
-  font-size: @huge;
-}
-.ui.massive.buttons .button,
-.ui.massive.buttons .or,
-.ui.ui.ui.ui.massive.button {
-  font-size: @massive;
-}
 
-/* Dropdown coupled buttons sizes */
-.ui.mini.buttons .dropdown {
-  font-size: @mini;
-}
-.ui.mini.buttons .dropdown .menu > .item {
-  font-size: @mini;
-}
-.ui.tiny.buttons .dropdown {
-  font-size: @tiny;
-}
-.ui.tiny.buttons .dropdown .menu > .item {
-  font-size: @tiny;
-}
-.ui.small.buttons .dropdown {
-  font-size: @small;
-}
-.ui.small.buttons .dropdown .menu > .item {
-  font-size: @small;
-}
-.ui.large.buttons .dropdown {
-  font-size: @large;
-}
-.ui.large.buttons .dropdown .menu > .item {
-  font-size: @large;
-}
-.ui.big.buttons .dropdown {
-  font-size: @big;
-}
-.ui.big.buttons .dropdown .menu > .item {
-  font-size: @big;
-}
-.ui.huge.buttons .dropdown {
-  font-size: @huge;
-}
-.ui.huge.buttons .dropdown .menu > .item {
-  font-size: @huge;
-}
-.ui.massive.buttons .dropdown {
-  font-size: @massive;
-}
-.ui.massive.buttons .dropdown .menu > .item {
-  font-size: @massive;
-}
+each(@variationButtonSizes, {
+  @s: @@value;
+  .ui.@{value}.buttons .dropdown,
+  .ui.@{value}.buttons .dropdown .menu > .item,
+  .ui.@{value}.buttons .button,
+  .ui.@{value}.buttons .or,
+  .ui.ui.ui.ui.@{value}.button {
+    font-size: @s;
+  }
+})
 
 /*--------------
     Icon Only
