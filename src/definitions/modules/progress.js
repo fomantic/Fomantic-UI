@@ -71,7 +71,7 @@ $.fn.progress = function(parameters) {
         helper: {
           sum: function (nums) {
             return Array.isArray(nums) ? nums.reduce(function (left, right) {
-              return left + right;
+              return left + Number(right);
             }, 0) : 0;
           },
           /**
