@@ -503,16 +503,22 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
-            // Sum before rouding since sum of rounded may have error though sum of actual is fine
-            var total = module.helper.sum(percents);
-            if (total > 100) {
-              module.error(error.tooHigh, total);
-            } else if (total < 0) {
-              module.error(error.tooLow, total);
+            var hasTotal = module.has.total();
+            var totalPecent = module.helper.sum(percents);
+            var isMultpleValues = percents.length > 1 && hasTotal;
+            var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+            if (isMultpleValues && sumTotal > module.total) {
+              // Sum values instead of pecents to avoid precision issues when summing floats
+              module.error(error.sumExceedsTotal, sumTotal, module.total);
+            } else if (!isMultpleValues && totalPecent > 100) {
+              // Sum before rouding since sum of rounded may have error though sum of actual is fine
+              module.error(error.tooHigh, totalPecent);
+            } else if (totalPecent < 0) {
+              module.error(error.tooLow, totalPecent);
             } else {
               var autoPrecision = settings.precision > 0
                 ? settings.precision
-                : percents.length > 1 && module.has.total()
+                : isMultpleValues
                   ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
                   : undefined;
 
@@ -524,7 +530,7 @@ $.fn.progress = function(parameters) {
                   ;
               });
               module.percent = percents;
-              if (!module.has.total()) {
+              if (!hasTotal) {
                 module.value = percents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
@@ -985,10 +991,11 @@ $.fn.progress.settings = {
   onWarning     : function(value, total){},
 
   error    : {
-    method     : 'The method you called is not defined.',
-    nonNumeric : 'Progress value is non numeric',
-    tooHigh    : 'Value specified is above 100%',
-    tooLow     : 'Value specified is below 0%'
+    method          : 'The method you called is not defined.',
+    nonNumeric      : 'Progress value is non numeric',
+    tooHigh         : 'Value specified is above 100%',
+    tooLow          : 'Value specified is below 0%',
+    sumExceedsTotal : 'Sum of multple values exceed total',
   },
 
   regExp: {
