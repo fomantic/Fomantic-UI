@@ -160,6 +160,7 @@ a.ui.label {
 
 /* Padding on next content after a label */
 .ui.top.attached.label:first-child + :not(.attached),
+.ui.top.attached.label:nth-of-type(2) + :not(.attached),
 .ui.top.attached.label + [class*="right floated"] + * {
   margin-top: @attachedSegmentPadding !important;
 }
