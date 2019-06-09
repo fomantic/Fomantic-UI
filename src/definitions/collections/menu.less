@@ -1447,13 +1447,15 @@ each(@colors, {
     .ui.ui.inverted.@{color}.menu .active.item {
       background-color: @invertedColoredActiveBackground;
     }
-    .ui.inverted.pointing.@{color}.menu .active.item:after,
     .ui.inverted.pointing.@{color}.menu .active.item {
       background-color: @h;
     }
   }
 })
 
+.ui.ui.ui.inverted.pointing.menu .active.item:after{
+  background-color: inherit;
+}
 
 /*--------------
      Fitted
