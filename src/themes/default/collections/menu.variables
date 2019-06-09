@@ -407,7 +407,7 @@
 @invertedMenuPressedColor: @invertedSelectedTextColor;
 
 /* Inverted Active */
-@invertedActiveBackground: @strongTransparentWhite;
+@invertedActiveBackground: @invertedArrowActiveColor;
 @invertedActiveColor: @invertedSelectedTextColor;
 @invertedArrowActiveColor: #3D3E3F;
 
