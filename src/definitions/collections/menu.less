@@ -1044,9 +1044,10 @@ Floated Menu / Item
 
 
 /* Active */
-.ui.secondary.inverted.pointing.menu .active.item {
+.ui.ui.secondary.inverted.pointing.menu .active.item {
   border-color: @secondaryPointingInvertedActiveBorderColor;
   color: @secondaryPointingInvertedActiveColor;
+  background-color: transparent;
 }
 
 /*--------------
@@ -1305,8 +1306,11 @@ each(@colors, {
 
   & when not (@color=secondary) {
     .ui.ui.menu .@{color}.active.item,
+    .ui.ui.@{color}.menu .active.item:hover,
     .ui.ui.@{color}.menu .active.item {
-      border-color: @c;
+      & when not (@secondaryPointingActiveBorderColor = currentColor) {
+        border-color: @c;
+      }
       color: @c;
     }
   }
@@ -1430,6 +1434,7 @@ each(@colors, {
 each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
+  @h: @colors[@@color][hover];
 
   & when not (@color=secondary) {
     .ui.ui.inverted.menu .@{color}.active.item,
@@ -1441,6 +1446,10 @@ each(@colors, {
     }
     .ui.ui.inverted.@{color}.menu .active.item {
       background-color: @invertedColoredActiveBackground;
+    }
+    .ui.inverted.pointing.@{color}.menu .active.item:after,
+    .ui.inverted.pointing.@{color}.menu .active.item {
+      background-color: @h;
     }
   }
 })

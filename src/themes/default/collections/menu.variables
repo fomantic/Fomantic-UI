@@ -257,7 +257,7 @@
 
 @secondaryPointingHoverTextColor: @textColor;
 
-@secondaryPointingActiveBorderColor: @black;
+@secondaryPointingActiveBorderColor: currentColor;
 @secondaryPointingActiveTextColor: @selectedTextColor;
 @secondaryPointingActiveFontWeight: @bold;
 
@@ -283,7 +283,7 @@
 @secondaryPointingInvertedBorderColor: @whiteBorderColor;
 @secondaryPointingInvertedItemTextColor: @invertedTextColor;
 @secondaryPointingInvertedItemHeaderColor: @white;
-@secondaryPointingInvertedItemHoverTextColor: @selectedTextColor;
+@secondaryPointingInvertedItemHoverTextColor: @invertedSelectedTextColor;
 @secondaryPointingInvertedActiveBorderColor: @white;
 @secondaryPointingInvertedActiveColor: @invertedSelectedTextColor;
 
