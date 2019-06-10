@@ -159,14 +159,12 @@ a.ui.label {
 }
 
 /* Padding on next content after a label */
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label:nth-of-type(2) + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
-  margin-top: @attachedSegmentPadding !important;
+.ui.top.attached.label ~ :first-of-type:not(.attached) {
+  margin-top: 2rem !important;
 }
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
-  margin-top: 0;
-  margin-bottom: @attachedSegmentPadding !important;
+.ui.bottom.attached.label ~ :last-child:not(.attached) {
+  margin-top:0;
+  margin-bottom: 2rem !important;
 }
 
 
