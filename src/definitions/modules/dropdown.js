@@ -181,7 +181,7 @@ $.fn.dropdown = function(parameters) {
         },
         observe: {
           select: function() {
-            if(module.has.input()) {
+            if(module.has.input() && selectObserver) {
               selectObserver.observe($module[0], {
                 childList : true,
                 subtree   : true
@@ -189,7 +189,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           menu: function() {
-            if(module.has.menu()) {
+            if(module.has.menu() && menuObserver) {
               menuObserver.observe($menu[0], {
                 childList : true,
                 subtree   : true

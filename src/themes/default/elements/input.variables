@@ -45,6 +45,7 @@
 @transparentIconMargin: 2em;
 
 @textareaIconHeight: 3em;
+@transparentTextareaIconHeight: 1.3em;
 
 /* Circular Icon Input */
 @circularIconVerticalOffset: 0.35em;

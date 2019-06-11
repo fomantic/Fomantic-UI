@@ -298,9 +298,10 @@ $.fn.form = function(parameters) {
             } else {
               module.set.clean();
             }
-                  
-            if (e) {
+
+            if (e && e.namespace === 'dirty') {
               e.stopImmediatePropagation();
+              e.preventDefault();
             }
           }
         },
@@ -909,7 +910,7 @@ $.fn.form = function(parameters) {
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
-              if(rules.indexOf(rule.type) !== -1) {
+              if(rule && rules.indexOf(rule.type) !== -1) {
                 module.debug('Removed rule', rule.type);
                 validation[field].rules.splice(index, 1);
               }
