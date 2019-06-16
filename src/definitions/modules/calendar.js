@@ -133,7 +133,9 @@ $.fn.calendar = function(parameters) {
             if (!$container.length) {
               //prepend the popup element to the activator's parent so that it has less chance of messing with
               //the styling (eg input action button needs to be the last child to have correct border radius)
-              $container = $('<div/>').addClass(className.popup).prependTo($activator.parent());
+              var $activatorParent = $activator.parent(),
+                  domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
+              $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
             var onVisible = settings.onVisible;
@@ -504,17 +506,18 @@ $.fn.calendar = function(parameters) {
             }
           },
           keydown: function (event) {
-            if (event.keyCode === 27 || event.keyCode === 9) {
+            var keyCode = event.which;
+            if (keyCode === 27 || keyCode === 9) {
               //esc || tab
               module.popup('hide');
             }
 
             if (module.popup('is visible')) {
-              if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
+              if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
                 //arrow keys
                 var mode = module.get.mode();
                 var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
-                var increment = event.keyCode === 37 ? -1 : event.keyCode === 38 ? -bigIncrement : event.keyCode == 39 ? 1 : bigIncrement;
+                var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                 increment *= mode === 'minute' ? settings.minTimeGap : 1;
                 var focusDate = module.get.focusDate() || module.get.date() || new Date();
                 var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
@@ -529,7 +532,7 @@ $.fn.calendar = function(parameters) {
                 if (module.helper.isDateInRange(newFocusDate, mode)) {
                   module.set.focusDate(newFocusDate);
                 }
-              } else if (event.keyCode === 13) {
+              } else if (keyCode === 13) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
@@ -542,7 +545,7 @@ $.fn.calendar = function(parameters) {
               }
             }
 
-            if (event.keyCode === 38 || event.keyCode === 40) {
+            if (keyCode === 38 || keyCode === 40) {
               //arrow-up || arrow-down
               event.preventDefault(); //don't scroll
               module.popup('show');
@@ -771,7 +774,7 @@ $.fn.calendar = function(parameters) {
         },
 
         selectDate: function (date, forceSet) {
-          module.verbose('New date selection', date)
+          module.verbose('New date selection', date);
           var mode = module.get.mode();
           var complete = forceSet || mode === 'minute' ||
             (settings.disableMinute && mode === 'hour') ||
@@ -832,22 +835,28 @@ $.fn.calendar = function(parameters) {
         helper: {
           isDisabled: function(date, mode) {
             return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if(typeof d === 'string') {
+                d = module.helper.sanitiseDate(d);
+              }
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
-              if (d !== null && typeof d === 'object') {
-                return module.helper.dateEqual(date, d[metadata.date], mode);
+              if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
               }
             }));
           },
           isEnabled: function(date, mode) {
             if (mode === 'day') {
-              return settings.enabledDates.length == 0 || settings.enabledDates.some(function(d){
+              return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date) {
                   return module.helper.dateEqual(date, d, mode);
                 }
-                if (d !== null && typeof d === 'object') {
-                  return module.helper.dateEqual(date, d[metadata.date], mode);
+                if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                  return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                 }
               });
             } else {
@@ -860,12 +869,15 @@ $.fn.calendar = function(parameters) {
               var d;
               for (; i < il; i++) {
                 d = dates[i];
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
                   var dateObject = {};
                   dateObject[metadata.date] = d;
                   return dateObject;
                 }
-                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date,module.helper.sanitiseDate(d[metadata.date]), mode)  ) {
                   return d;
                 }
               }
@@ -1264,6 +1276,10 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
+      var textDate = new Date(text);
+      if(!isNaN(textDate.getDate())) {
+        return textDate;
+      }
 
       var i, j, k;
       var minute = -1, hour = -1, day = -1, month = -1, year = -1;
@@ -1490,7 +1506,8 @@ $.fn.calendar.settings = {
   selector: {
     popup: '.ui.popup',
     input: 'input',
-    activator: 'input'
+    activator: 'input',
+    append: '.inline.field,.inline.fields'
   },
 
   regExp: {
