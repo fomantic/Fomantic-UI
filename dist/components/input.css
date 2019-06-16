@@ -22,17 +22,13 @@
   position: relative;
   font-weight: normal;
   font-style: normal;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
   display: inline-flex;
   color: rgba(0, 0, 0, 0.87);
 }
 .ui.input > input {
   margin: 0;
   max-width: 100%;
-  -webkit-box-flex: 1;
-      -ms-flex: 1 0 auto;
-          flex: 1 0 auto;
+  flex: 1 0 auto;
   outline: none;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: left;
@@ -43,12 +39,8 @@
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
-  -webkit-transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
-  transition: box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 /*--------------------
@@ -95,8 +87,7 @@
   border-color: rgba(0, 0, 0, 0.3);
   background: #FAFAFA;
   color: rgba(0, 0, 0, 0.87);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 /*--------------------
@@ -126,8 +117,7 @@
           animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  -webkit-box-shadow: 0 0 0 1px transparent;
-          box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
 }
 
 /*--------------------
@@ -139,8 +129,7 @@
   border-color: #85B7D9;
   background: #FFFFFF;
   color: rgba(0, 0, 0, 0.8);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
@@ -163,8 +152,7 @@
   background-color: #FFF6F6;
   border-color: #E0B4B4;
   color: #9F3A38;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 
 /* Error Placeholder */
@@ -203,23 +191,25 @@
 .ui.transparent.input > input {
   border-color: transparent !important;
   background-color: transparent !important;
-  padding: 0 !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  padding: 0;
+  box-shadow: none !important;
   border-radius: 0 !important;
+}
+.field .ui.transparent.input > textarea {
+  padding: 0.67857143em 1em;
 }
 
 /* Transparent Icon */
-.ui.transparent.icon.input > i.icon {
+:not(.field) > .ui.transparent.icon.input > i.icon {
   width: 1.1em;
 }
-.ui.transparent.icon.input > input {
-  padding-left: 0 !important;
-  padding-right: 2em !important;
+:not(.field) > .ui.transparent.icon.input > input {
+  padding-left: 0;
+  padding-right: 2em;
 }
-.ui.transparent[class*="left icon"].input > input {
-  padding-left: 2em !important;
-  padding-right: 0 !important;
+:not(.field) > .ui.transparent[class*="left icon"].input > input {
+  padding-left: 2em;
+  padding-right: 0;
 }
 
 /* Transparent Inverted */
@@ -256,15 +246,14 @@
   width: 2.67142857em;
   opacity: 0.5;
   border-radius: 0 0.28571429rem 0.28571429rem 0;
-  -webkit-transition: opacity 0.3s ease;
   transition: opacity 0.3s ease;
 }
 .ui.icon.input > i.icon:not(.link) {
   pointer-events: none;
 }
-.ui.icon.input > textarea,
-.ui.icon.input > input {
-  padding-right: 2.67142857em !important;
+.ui.ui.icon.input > textarea,
+.ui.ui.icon.input > input {
+  padding-right: 2.67142857em;
 }
 .ui.icon.input > i.icon:before,
 .ui.icon.input > i.icon:after {
@@ -293,10 +282,10 @@
   right: auto;
   left: 0.5em;
 }
-.ui[class*="left icon"].input > textarea,
-.ui[class*="left icon"].input > input {
-  padding-left: 2.67142857em !important;
-  padding-right: 1em !important;
+.ui.ui[class*="left icon"].input > textarea,
+.ui.ui[class*="left icon"].input > input {
+  padding-left: 2.67142857em;
+  padding-right: 1em;
 }
 
 /* Focus */
@@ -312,9 +301,7 @@
 
 /* Adjacent Label */
 .ui.labeled.input > .label {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  flex: 0 0 auto;
   margin: 0;
   font-size: 1em;
 }
@@ -387,6 +374,9 @@
 .ui.icon.input > textarea ~ .icon {
   height: 3em;
 }
+:not(.field) > .ui.transparent.icon.input > textarea ~ .icon {
+  height: 1.3em;
+}
 
 /* Corner Label Position  */
 .ui.input > .ui.corner.label {
@@ -429,15 +419,9 @@
 
 .ui.action.input > .button,
 .ui.action.input > .buttons {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 auto;
-          flex: 0 0 auto;
+  align-items: center;
+  flex: 0 0 auto;
 }
 .ui.action.input > .button,
 .ui.action.input > .buttons > .button {
@@ -505,8 +489,6 @@
 ---------------------*/
 
 .ui.fluid.input {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 .ui.fluid.input > input {
@@ -541,12 +523,6 @@
 .ui.massive.input {
   font-size: 1.71428571em;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

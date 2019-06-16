@@ -20,8 +20,7 @@
   background: #FFFFFF;
   margin: 1em 0;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border-radius: 0.28571429rem;
   text-align: left;
   vertical-align: middle;
@@ -50,14 +49,12 @@
 /* Table Content */
 .ui.table th,
 .ui.table td {
-  -webkit-transition: background 0.1s ease, color 0.1s ease;
   transition: background 0.1s ease, color 0.1s ease;
 }
 
 /* Headers */
 .ui.table > thead {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.table > thead > tr > th {
   cursor: auto;
@@ -87,8 +84,7 @@
 
 /* Footer */
 .ui.table > tfoot {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.table > tfoot > tr > th {
   cursor: auto;
@@ -162,6 +158,10 @@
     width: 100%;
     padding: 0;
   }
+  .ui.table:not(.unstackable) > thead,
+  .ui.table:not(.unstackable) > thead > tr,
+  .ui.table:not(.unstackable) > tfoot,
+  .ui.table:not(.unstackable) > tfoot > tr,
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
@@ -186,20 +186,18 @@
   .ui.table:not(.unstackable) > tfoot > tr {
     padding-top: 1em;
     padding-bottom: 1em;
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
   }
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
   .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td {
     background: none;
     border: none;
     padding: 0.25em 0.75em;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
   }
   .ui.table:not(.unstackable) > tr > th:first-child,
   .ui.table:not(.unstackable) > thead > tr > th:first-child,
@@ -212,8 +210,7 @@
   
 /* Definition Table */
   .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -276,26 +273,22 @@
   background: transparent;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px -1px 0 1px #FFFFFF;
-          box-shadow: -1px -1px 0 1px #FFFFFF;
+  box-shadow: -1px -1px 0 1px #FFFFFF;
 }
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
   pointer-events: none;
   background: transparent;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px 1px 0 1px #FFFFFF;
-          box-shadow: -1px 1px 0 1px #FFFFFF;
+  box-shadow: -1px 1px 0 1px #FFFFFF;
 }
 
 /* Remove Border */
 .ui.celled.definition.table > thead:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 -1px 0 1px #FFFFFF;
-          box-shadow: 0 -1px 0 1px #FFFFFF;
+  box-shadow: 0 -1px 0 1px #FFFFFF;
 }
 .ui.celled.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 1px 0 1px #FFFFFF;
-          box-shadow: 0 1px 0 1px #FFFFFF;
+  box-shadow: 0 1px 0 1px #FFFFFF;
 }
 
 /* Highlight Defining Column */
@@ -306,8 +299,7 @@
   font-weight: bold;
   color: rgba(0, 0, 0, 0.95);
   text-transform: '';
-  -webkit-box-shadow: '';
-          box-shadow: '';
+  box-shadow: '';
   text-align: '';
   font-size: 1em;
   padding-left: '';
@@ -338,8 +330,7 @@
 
 .ui.ui.ui.ui.table tr.positive,
 .ui.ui.table td.positive {
-  -webkit-box-shadow: 0 0 0 #A3C293 inset;
-          box-shadow: 0 0 0 #A3C293 inset;
+  box-shadow: 0 0 0 #A3C293 inset;
   background: #FCFFF5;
   color: #2C662D;
 }
@@ -350,8 +341,7 @@
 
 .ui.ui.ui.ui.table tr.negative,
 .ui.ui.table td.negative {
-  -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
-          box-shadow: 0 0 0 #E0B4B4 inset;
+  box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
   color: #9F3A38;
 }
@@ -362,8 +352,7 @@
 
 .ui.ui.ui.ui.table tr.error,
 .ui.ui.table td.error {
-  -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
-          box-shadow: 0 0 0 #E0B4B4 inset;
+  box-shadow: 0 0 0 #E0B4B4 inset;
   background: #FFF6F6;
   color: #9F3A38;
 }
@@ -374,8 +363,7 @@
 
 .ui.ui.ui.ui.table tr.warning,
 .ui.ui.table td.warning {
-  -webkit-box-shadow: 0 0 0 #C9BA9B inset;
-          box-shadow: 0 0 0 #C9BA9B inset;
+  box-shadow: 0 0 0 #C9BA9B inset;
   background: #FFFAF3;
   color: #573A08;
 }
@@ -386,8 +374,7 @@
 
 .ui.ui.ui.ui.table tr.active,
 .ui.ui.table td.active {
-  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
-          box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
   background: #E0E0E0;
   color: rgba(0, 0, 0, 0.87);
 }
@@ -416,6 +403,10 @@
 
 @media only screen and (max-width: 991.98px) {
   .ui[class*="tablet stackable"].table,
+  .ui[class*="tablet stackable"].table > thead,
+  .ui[class*="tablet stackable"].table > thead > tr,
+  .ui[class*="tablet stackable"].table > tfoot,
+  .ui[class*="tablet stackable"].table > tfoot > tr,
   .ui[class*="tablet stackable"].table > tbody,
   .ui[class*="tablet stackable"].table > tbody > tr,
   .ui[class*="tablet stackable"].table > tr,
@@ -443,8 +434,7 @@
   .ui[class*="tablet stackable"].table > tr {
     padding-top: 1em;
     padding-bottom: 1em;
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
+    box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
   }
   .ui[class*="tablet stackable"].table > thead > tr > th,
   .ui[class*="tablet stackable"].table > tbody > tr > th,
@@ -455,14 +445,12 @@
     background: none;
     border: none !important;
     padding: 0.25em 0.75em;
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
   }
   
 /* Definition Table */
   .ui.definition[class*="tablet stackable"].table > thead > tr > th:first-child {
-    -webkit-box-shadow: none !important;
-            box-shadow: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -599,8 +587,7 @@
   margin: 0 -1px;
   width: calc(100% + 2px);
   max-width: calc(100% + 2px);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 1px solid #D4D4D5;
 }
 .ui.attached + .ui.attached.table:not(.top) {
@@ -625,8 +612,7 @@
   margin-top: 0;
   top: 0;
   margin-bottom: 1em;
-  -webkit-box-shadow: none, none;
-          box-shadow: none, none;
+  box-shadow: none, none;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui[class*="bottom attached"].table:last-child {
@@ -678,8 +664,7 @@
 }
 .ui.ui.ui.ui.table tr.primary,
 .ui.ui.table td.primary {
-  -webkit-box-shadow: 0 0 0 #1a69a4 inset;
-          box-shadow: 0 0 0 #1a69a4 inset;
+  box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -698,8 +683,7 @@
 }
 .ui.ui.ui.ui.table tr.secondary,
 .ui.ui.table td.secondary {
-  -webkit-box-shadow: 0 0 0 #020203 inset;
-          box-shadow: 0 0 0 #020203 inset;
+  box-shadow: 0 0 0 #020203 inset;
   background: #dddddd;
   color: rgba(255, 255, 255, 0.9);
 }
@@ -718,8 +702,7 @@
 }
 .ui.ui.ui.ui.table tr.red,
 .ui.ui.table td.red {
-  -webkit-box-shadow: 0 0 0 #b21e1e inset;
-          box-shadow: 0 0 0 #b21e1e inset;
+  box-shadow: 0 0 0 #b21e1e inset;
   background: #ffe1df;
   color: #DB2828;
 }
@@ -738,8 +721,7 @@
 }
 .ui.ui.ui.ui.table tr.orange,
 .ui.ui.table td.orange {
-  -webkit-box-shadow: 0 0 0 #cf590c inset;
-          box-shadow: 0 0 0 #cf590c inset;
+  box-shadow: 0 0 0 #cf590c inset;
   background: #ffe7d1;
   color: #F2711C;
 }
@@ -758,8 +740,7 @@
 }
 .ui.ui.ui.ui.table tr.yellow,
 .ui.ui.table td.yellow {
-  -webkit-box-shadow: 0 0 0 #cd9903 inset;
-          box-shadow: 0 0 0 #cd9903 inset;
+  box-shadow: 0 0 0 #cd9903 inset;
   background: #fff9d2;
   color: #B58105;
 }
@@ -778,8 +759,7 @@
 }
 .ui.ui.ui.ui.table tr.olive,
 .ui.ui.table td.olive {
-  -webkit-box-shadow: 0 0 0 #8d9e13 inset;
-          box-shadow: 0 0 0 #8d9e13 inset;
+  box-shadow: 0 0 0 #8d9e13 inset;
   background: #f7fae4;
   color: #8ABC1E;
 }
@@ -798,8 +778,7 @@
 }
 .ui.ui.ui.ui.table tr.green,
 .ui.ui.table td.green {
-  -webkit-box-shadow: 0 0 0 #198f35 inset;
-          box-shadow: 0 0 0 #198f35 inset;
+  box-shadow: 0 0 0 #198f35 inset;
   background: #d5f5d9;
   color: #1EBC30;
 }
@@ -818,8 +797,7 @@
 }
 .ui.ui.ui.ui.table tr.teal,
 .ui.ui.table td.teal {
-  -webkit-box-shadow: 0 0 0 #00827c inset;
-          box-shadow: 0 0 0 #00827c inset;
+  box-shadow: 0 0 0 #00827c inset;
   background: #e2ffff;
   color: #10A3A3;
 }
@@ -838,8 +816,7 @@
 }
 .ui.ui.ui.ui.table tr.blue,
 .ui.ui.table td.blue {
-  -webkit-box-shadow: 0 0 0 #1a69a4 inset;
-          box-shadow: 0 0 0 #1a69a4 inset;
+  box-shadow: 0 0 0 #1a69a4 inset;
   background: #ddf4ff;
   color: #2185D0;
 }
@@ -858,8 +835,7 @@
 }
 .ui.ui.ui.ui.table tr.violet,
 .ui.ui.table td.violet {
-  -webkit-box-shadow: 0 0 0 #502aa1 inset;
-          box-shadow: 0 0 0 #502aa1 inset;
+  box-shadow: 0 0 0 #502aa1 inset;
   background: #ece9fe;
   color: #6435C9;
 }
@@ -878,8 +854,7 @@
 }
 .ui.ui.ui.ui.table tr.purple,
 .ui.ui.table td.purple {
-  -webkit-box-shadow: 0 0 0 #82299f inset;
-          box-shadow: 0 0 0 #82299f inset;
+  box-shadow: 0 0 0 #82299f inset;
   background: #f8e3ff;
   color: #A333C8;
 }
@@ -898,8 +873,7 @@
 }
 .ui.ui.ui.ui.table tr.pink,
 .ui.ui.table td.pink {
-  -webkit-box-shadow: 0 0 0 #c71f7e inset;
-          box-shadow: 0 0 0 #c71f7e inset;
+  box-shadow: 0 0 0 #c71f7e inset;
   background: #ffe8f9;
   color: #E03997;
 }
@@ -918,8 +892,7 @@
 }
 .ui.ui.ui.ui.table tr.brown,
 .ui.ui.table td.brown {
-  -webkit-box-shadow: 0 0 0 #805031 inset;
-          box-shadow: 0 0 0 #805031 inset;
+  box-shadow: 0 0 0 #805031 inset;
   background: #f7e5d2;
   color: #A5673F;
 }
@@ -938,8 +911,7 @@
 }
 .ui.ui.ui.ui.table tr.grey,
 .ui.ui.table td.grey {
-  -webkit-box-shadow: 0 0 0 #5d5d5d inset;
-          box-shadow: 0 0 0 #5d5d5d inset;
+  box-shadow: 0 0 0 #5d5d5d inset;
   background: #DCDDDE;
   color: #767676;
 }
@@ -958,8 +930,7 @@
 }
 .ui.ui.ui.ui.table tr.black,
 .ui.ui.table td.black {
-  -webkit-box-shadow: 0 0 0 #020203 inset;
-          box-shadow: 0 0 0 #020203 inset;
+  box-shadow: 0 0 0 #020203 inset;
   background: #545454;
   color: #FFFFFF;
 }
@@ -1157,14 +1128,10 @@
 
 /* Inverted */
 .ui.inverted.sortable.table thead th.sorted {
-  background: rgba(255, 255, 255, 0.15) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: rgba(255, 255, 255, 0.15) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: rgba(255, 255, 255, 0.15) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   color: #ffffff;
 }
 .ui.inverted.sortable.table > thead > tr > th:hover {
-  background: rgba(255, 255, 255, 0.08) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: rgba(255, 255, 255, 0.08) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: rgba(255, 255, 255, 0.08) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   color: #ffffff;
 }
@@ -1236,13 +1203,11 @@
 .ui.basic.table {
   background: transparent;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.basic.table > thead,
 .ui.basic.table > tfoot {
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.basic.table > thead > tr > th,
 .ui.basic.table > tbody > tr > th,

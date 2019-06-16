@@ -33,18 +33,10 @@
           animation-fill-mode: both;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
-  -webkit-transition: background-color 0.5s linear;
   transition: background-color 0.5s linear;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -97,8 +89,6 @@
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
 .ui.active.dimmer {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   opacity: 1;
 }
@@ -132,14 +122,10 @@
 ---------------*/
 
 .ui[class*="top aligned"].dimmer {
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  justify-content: flex-start;
 }
 .ui[class*="bottom aligned"].dimmer {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 /*--------------
@@ -170,7 +156,6 @@ body.dimmable > .dimmer {
 .blurring.dimmable > :not(.dimmer) {
   -webkit-filter: initial;
           filter: initial;
-  -webkit-transition: 800ms -webkit-filter ease;
   transition: 800ms -webkit-filter ease;
   transition: 800ms filter ease;
   transition: 800ms filter ease, 800ms -webkit-filter ease;
@@ -450,12 +435,6 @@ body.dimmable > .dimmer {
             transform: translateY(calc(-50% - 15px));
   }
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

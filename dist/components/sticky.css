@@ -15,7 +15,6 @@
 
 .ui.sticky {
   position: static;
-  -webkit-transition: none;
   transition: none;
   z-index: 800;
 }
@@ -64,12 +63,6 @@
   position: -o-sticky;
   position: sticky;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

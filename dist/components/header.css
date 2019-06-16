@@ -302,16 +302,12 @@ h5.ui.header .sub.header {
 }
 .ui.inverted.attached.header {
   background: #1B1C1D;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border-color: transparent;
 }
 .ui.inverted.block.header {
-  background: #545454 -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: #545454 -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: #545454 linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border-bottom: none;
 }
 
@@ -662,8 +658,7 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.block.header {
   background: #F3F4F5;
   padding: 0.78571429rem 1rem;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 1px solid #D4D4D5;
   border-radius: 0.28571429rem;
 }
@@ -691,8 +686,7 @@ a.ui.inverted.black.header.header.header:hover {
   background: #FFFFFF;
   padding: 0.78571429rem 1rem;
   margin: 0 -1px 0 -1px;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
   border: 1px solid #D4D4D5;
   border-radius: 0;
 }
@@ -733,12 +727,6 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
   font-size: 1.28571429em;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************
