@@ -49,7 +49,7 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 #### Setup your enviroment
 These few steps are the easiest way to setup your dev environment.
 
-1. Fork the [main repoository](https://github.com/fomantic/Fomantic-UI).
+1. Fork the [main repository](https://github.com/fomantic/Fomantic-UI).
 2. Clone your fork and add the main repository as a remote
 ```bash
 $ git clone https://github.com/<YOUR_GITHUB_USERNAME>/Fomantic-UI.git
