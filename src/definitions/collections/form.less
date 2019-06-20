@@ -164,6 +164,9 @@
     Checkbox margin
 ---------------------*/
 
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
+  margin-top: @checkboxLabelFieldTopMargin;
+}
 .ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
   margin-top: @inputLineHeight + @checkboxFieldTopMargin;
 }
