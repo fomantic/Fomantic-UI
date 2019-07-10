@@ -53,6 +53,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "ColinFrick",
+      "name": "Colin Frick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5517677?v=4",
+      "profile": "http://frick.io/",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,
