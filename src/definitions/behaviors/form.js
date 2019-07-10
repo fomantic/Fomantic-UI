@@ -733,23 +733,23 @@ $.fn.form = function(parameters) {
                           case 'date':
                           values[name] = settings.formatter.date(date);
                           break;
-                          
+
                           case 'datetime':
                           values[name] = settings.formatter.datetime(date);
                           break;
-                          
+
                           case 'time':
                           values[name] = settings.formatter.time(date);
                           break;
-                          
+
                           case 'month':
                           values[name] = settings.formatter.month(date);
                           break;
-                          
+
                           case 'year':
                           values[name] = settings.formatter.year(date);
                           break;
-  
+
                           default:
                           module.debug('Wrong calendar mode', $calendar, type);
                           values[name] = '';
