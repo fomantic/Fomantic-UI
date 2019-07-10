@@ -13,14 +13,13 @@
       "login": "hammy2899",
       "name": "Sean",
       "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
-      "profile": "https://hamistudios.com",
+      "profile": "https://github.com/hammy2899",
       "contributions": [
         "question",
         "bug",
         "blog",
         "business",
         "code",
-        "content",
         "doc",
         "design",
         "example",
@@ -37,12 +36,35 @@
       ]
     },
     {
-      "login": "exoego",
-      "name": "TATSUNO Yasuhiro",
-      "avatar_url": "https://avatars2.githubusercontent.com/u/127635?v=4",
-      "profile": "https://www.exoego.net/",
+      "login": "prudho",
+      "name": "prudho",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/7557689?v=4",
+      "profile": "https://github.com/prudho",
       "contributions": [
-        "bug"
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "ColinFrick",
+      "name": "Colin Frick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5517677?v=4",
+      "profile": "https://github.com/ColinFrick",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
       ]
     },
     {
@@ -51,25 +73,27 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/18379884?v=4",
       "profile": "https://rasterbuster.lubber.de",
       "contributions": [
-        "bug"
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
       ]
     },
     {
-      "login": "ColinFrick",
-      "name": "Colin Frick",
-      "avatar_url": "https://avatars1.githubusercontent.com/u/5517677?v=4",
-      "profile": "http://frick.io/",
+      "login": "exoego",
+      "name": "TATSUNO Yasuhiro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/127635?v=4",
+      "profile": "https://www.exoego.net/",
       "contributions": [
-        "bug"
-      ]
-    },
-    {
-      "login": "prudho",
-      "name": "prudho",
-      "avatar_url": "https://avatars0.githubusercontent.com/u/7557689?v=4",
-      "profile": "https://github.com/prudho",
-      "contributions": [
-        "bug"
+        "bug",
+        "blog",
+        "code",
+        "doc",
+        "review"
       ]
     }
   ],

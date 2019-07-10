@@ -71,6 +71,7 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^6.7.0",
     "conventional-changelog-cli": "^2.0.21"
   },
   "engines": {
