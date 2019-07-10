@@ -1506,7 +1506,7 @@ $.fn.form.settings = {
 
   className : {
     error   : 'error',
-    label   : 'ui prompt label',
+    label   : 'ui basic red pointing prompt label',
     pressed : 'down',
     success : 'success'
   },
@@ -1535,7 +1535,7 @@ $.fn.form.settings = {
     // template that produces label
     prompt: function(errors) {
       return $('<div/>')
-        .addClass('ui basic red pointing prompt label')
+        .addClass(settings.className.label)
         .html(errors[0])
       ;
     }
