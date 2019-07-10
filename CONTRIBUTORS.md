@@ -10,6 +10,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://www.exoego.net/"><img src="https://avatars2.githubusercontent.com/u/127635?v=4" width="60px;" alt="TATSUNO Yasuhiro"/><br /><sub><b>TATSUNO Yasuhiro</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3Aexoego" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://rasterbuster.lubber.de"><img src="https://avatars1.githubusercontent.com/u/18379884?v=4" width="60px;" alt="Marco 'Lubber' Wienkoop"/><br /><sub><b>Marco 'Lubber' Wienkoop</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3Alubber-de" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://frick.io/"><img src="https://avatars1.githubusercontent.com/u/5517677?v=4" width="60px;" alt="Colin Frick"/><br /><sub><b>Colin Frick</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3AColinFrick" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/prudho"><img src="https://avatars0.githubusercontent.com/u/7557689?v=4" width="60px;" alt="prudho"/><br /><sub><b>prudho</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3Aprudho" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 
