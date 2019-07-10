@@ -1535,7 +1535,7 @@ $.fn.form.settings = {
     // template that produces label
     prompt: function(errors) {
       return $('<div/>')
-        .addClass(settings.className.label)
+        .addClass($.fn.form.settings.className.label)
         .html(errors[0])
       ;
     }
