@@ -1,4 +1,5 @@
 ![Fomantic Logo](http://fomantic-ui.com/images/logo.png#128)
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 # Fomantic UI
 A community fork of the popular Semantic-UI framework

@@ -1,0 +1,24 @@
+{
+  "projectName": "Fomantic-UI",
+  "projectOwner": "fomantic",
+  "files": [
+    "CONTRIBUTORS.md",
+    "README.md"
+  ],
+  "imageSize": 60,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "hammy2899",
+      "name": "Sean",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
+      "profile": "https://hamistudios.com",
+      "contributions": [
+        "question"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "repoType": "github"
+}
