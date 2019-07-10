@@ -15,7 +15,34 @@
       "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
       "profile": "https://hamistudios.com",
       "contributions": [
-        "question"
+        "question",
+        "bug",
+        "blog",
+        "business",
+        "code",
+        "content",
+        "doc",
+        "design",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "review",
+        "security",
+        "tool",
+        "tutorial",
+        "talk"
+      ]
+    },
+    {
+      "login": "exoego",
+      "name": "TATSUNO Yasuhiro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/127635?v=4",
+      "profile": "https://www.exoego.net/",
+      "contributions": [
+        "bug"
       ]
     }
   ],
