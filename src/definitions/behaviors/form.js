@@ -860,7 +860,7 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors);
+                $prompt = settings.templates.prompt(errors, className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
@@ -1533,9 +1533,9 @@ $.fn.form.settings = {
     },
 
     // template that produces label
-    prompt: function(errors) {
+    prompt: function(errors, labelClasses) {
       return $('<div/>')
-        .addClass($.fn.form.settings.className.label)
+        .addClass(labelClasses)
         .html(errors[0])
       ;
     }
