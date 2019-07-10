@@ -36,7 +36,7 @@
     "gulp-git": "^2.9.0",
     "gulp-tap": "^1.0.1",
     "less": "^3.7.0",
-    "merge-stream": "^1.0.0",
+    "merge-stream": "^2.0.0",
     "better-console": "1.0.1",
     "del": "^3.0.0",
     "extend": "^3.0.2",
