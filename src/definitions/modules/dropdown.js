@@ -3952,7 +3952,11 @@ $.fn.dropdown.settings = {
     name         : 'name',     // displayed dropdown text
     value        : 'value',    // actual dropdown value
     text         : 'text',     // displayed text when selected
-    type         : 'type'      // type of dropdown element
+    type         : 'type',     // type of dropdown element
+    image        : 'image',    // optional image path
+    imageClass   : 'imageClass', // optional individual class for image
+    icon        : 'icon',     // optional icon name
+    iconClass   : 'iconClass'  // optional individual class for icon (for example to use flag instead)
   },
 
   keys : {
@@ -3999,6 +4003,8 @@ $.fn.dropdown.settings = {
     dropdown    : 'ui dropdown',
     filtered    : 'filtered',
     hidden      : 'hidden transition',
+    icon        : 'icon',
+    image       : 'image',
     item        : 'item',
     label       : 'ui label',
     loading     : 'loading',
@@ -4093,6 +4099,12 @@ $.fn.dropdown.settings.templates = {
             : ''
         ;
         html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
+        if(option[fields.image]) {
+          html += '<img class="'+(option[fields.imageClass] ? String(option[fields.imageClass]).replace(/"/g,"") : className.image)+'" src="' + String(option[fields.image]).replace(/"/g,"") + '">';
+        }
+        if(option[fields.icon]) {
+          html += '<i class="'+option[fields.icon].replace(/"/g,"")+' '+(option[fields.iconClass] ? String(option[fields.iconClass]).replace(/"/g,"") : className.icon)+'"></i>';
+        }
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
