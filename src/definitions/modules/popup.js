@@ -1376,7 +1376,7 @@ $.fn.popup.settings = {
   // default position relative to element
   position       : 'top left',
 
-  // default position relative to element
+  // if given position should be used regardless if popup fits
   forcePosition  : false,
 
   // name of variation to use
