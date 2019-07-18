@@ -322,6 +322,20 @@
   border-left: @borderWidth solid @borderColor;
 }
 
+/* Legacy */
+.ui.legacy.definition.table {
+  border-collapse: collapse;
+}
+.ui.legacy.definition.table > thead:not(.full-width) > tr > th:first-child,
+.ui.legacy.definition.table > tfoot:not(.full-width) > tr > th:first-child {
+  border-left: @borderWidth solid @definitionPageBackground;
+}
+.ui.legacy.definition.table > thead:not(.full-width) > tr > th:first-child {
+  border-top: @coloredBorderSize solid @definitionPageBackground;
+}
+.ui.legacy.definition.table > tfoot:not(.full-width) > tr > th:first-child {
+  border-bottom: @coloredBorderSize solid @definitionPageBackground;
+}
 
 /*******************************
              States
