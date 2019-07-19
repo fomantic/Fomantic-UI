@@ -196,3 +196,28 @@
 
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;
+
+/* Size */
+@variationCheckboxSizes: mini, tiny, small, large, big, huge, massive;
+
+@miniCheckboxSize: @relativeMini;
+@miniCheckboxCircleScale: @miniRaw / 2;
+@miniCheckboxCircleLeft: unit((@miniRaw - @miniCheckboxCircleScale) / 2 + 0.05 , em);
+@tinyCheckboxSize: @relativeTiny;
+@tinyCheckboxCircleScale: @tinyRaw / 2;
+@tinyCheckboxCircleLeft: unit((@tinyRaw - @tinyCheckboxCircleScale) / 2 + 0.05 , em);
+@smallCheckboxSize: @relativeSmall;
+@smallCheckboxCircleScale: @smallRaw / 2;
+@smallCheckboxCircleLeft: unit((@smallRaw - @smallCheckboxCircleScale) / 2 + 0.05 , em);
+@largeCheckboxSize: @relativeLarge;
+@largeCheckboxCircleScale: @largeRaw / 2;
+@largeCheckboxCircleLeft: unit((@largeRaw - @largeCheckboxCircleScale) / 2 + 0.05 , em);
+@bigCheckboxSize: @relativeBig;
+@bigCheckboxCircleScale: @bigRaw / 2;
+@bigCheckboxCircleLeft: unit((@bigRaw - @bigCheckboxCircleScale) / 2 + 0.05 , em);
+@hugeCheckboxSize: @relativeHuge;
+@hugeCheckboxCircleScale: @hugeRaw / 2;
+@hugeCheckboxCircleLeft: unit((@hugeRaw - @hugeCheckboxCircleScale) / 2 + 0.05 , em);
+@massiveCheckboxSize: @relativeMassive;
+@massiveCheckboxCircleScale: @massiveRaw / 2;
+@massiveCheckboxCircleLeft: unit((@massiveRaw - @massiveCheckboxCircleScale) / 2 + 0.05 , em);

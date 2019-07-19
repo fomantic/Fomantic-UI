@@ -692,26 +692,46 @@
         Size
 ---------------------*/
 
-.ui.mini.checkbox {
-  font-size: @relativeMini;
-}
-.ui.tiny.checkbox {
-  font-size: @relativeTiny;
-}
-.ui.small.checkbox {
-  font-size: @relativeSmall;
-}
-.ui.large.checkbox {
-  font-size: @relativeLarge;
-}
-.ui.big.checkbox {
-  font-size: @relativeBig;
-}
-.ui.huge.checkbox {
-  font-size: @relativeHuge;
-}
-.ui.massive.checkbox {
-  font-size: @relativeMassive;
-}
+each(@variationCheckboxSizes, {
+  @raw: @{value}Raw;
+  @size: @{value}CheckboxSize;
+  @circleScale: @{value}CheckboxCircleScale;
+  @circleLeft: @{value}CheckboxCircleLeft;
+
+  .ui.@{value}.checkbox {
+    font-size: @@size;
+  }
+
+  & when (@@raw > 1) {
+    .ui.@{value}.form .checkbox,
+    .ui.@{value}.checkbox {
+      &:not(.slider):not(.toggle):not(.radio) {
+        &
+        .box:after,
+        .box:before,
+        label:after,
+        label:before {
+          transform: scale(@@raw);
+          transform-origin:left;
+        }
+      }
+      &.radio {
+        &
+        .box:before,
+        label:before {
+          transform: scale(@@raw);
+          transform-origin:left;
+        }
+        &
+        .box:after,
+        label:after {
+          transform:scale(@@circleScale);
+          transform-origin:left;
+          left: @@circleLeft;
+        }
+      }
+    }
+  }
+})
 
 .loadUIOverrides();
