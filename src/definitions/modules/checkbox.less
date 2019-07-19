@@ -35,7 +35,7 @@
   font-style: normal;
 
   min-height: @checkboxSize;
-  font-size: @medium;
+  font-size: @relativeMedium;
   line-height: @checkboxLineHeight;
   min-width: @checkboxSize;
 }
@@ -686,6 +686,32 @@
 .ui.inverted.toggle.checkbox input:focus:checked ~ .box:before,
 .ui.inverted.toggle.checkbox input:focus:checked ~ label:before {
   background-color: @toggleOnFocusLaneColor !important;
+}
+
+/*--------------------
+        Size
+---------------------*/
+
+.ui.mini.checkbox {
+  font-size: @relativeMini;
+}
+.ui.tiny.checkbox {
+  font-size: @relativeTiny;
+}
+.ui.small.checkbox {
+  font-size: @relativeSmall;
+}
+.ui.large.checkbox {
+  font-size: @relativeLarge;
+}
+.ui.big.checkbox {
+  font-size: @relativeBig;
+}
+.ui.huge.checkbox {
+  font-size: @relativeHuge;
+}
+.ui.massive.checkbox {
+  font-size: @relativeMassive;
 }
 
 .loadUIOverrides();
