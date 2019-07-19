@@ -284,6 +284,7 @@
   font-weight: @definitionHeaderFontWeight;
   color: @definitionHeaderColor;
   box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -292,6 +293,7 @@
   font-weight: @definitionFooterFontWeight;
   color: @definitionFooterColor;
   box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 /* Highlight Defining Column */
@@ -320,21 +322,6 @@
 .ui.definition.table > tr > td:nth-child(2),
 .ui.definition.table > tbody > tr > td:nth-child(2) {
   border-left: @borderWidth solid @borderColor;
-}
-
-/* Legacy */
-.ui.legacy.definition.table {
-  border-collapse: collapse;
-}
-.ui.legacy.definition.table > thead:not(.full-width) > tr > th:first-child,
-.ui.legacy.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  border-left: @borderWidth solid @definitionPageBackground;
-}
-.ui.legacy.definition.table > thead:not(.full-width) > tr > th:first-child {
-  border-top: @coloredBorderSize solid @definitionPageBackground;
-}
-.ui.legacy.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  border-bottom: @coloredBorderSize solid @definitionPageBackground;
 }
 
 /*******************************
