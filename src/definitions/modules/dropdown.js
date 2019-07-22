@@ -2173,7 +2173,7 @@ $.fn.dropdown = function(parameters) {
               module.set.selected();
             }
             var value = module.get.value();
-            if(value && value !== '') {
+            if(value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
               $input.addClass(className.noselection);
