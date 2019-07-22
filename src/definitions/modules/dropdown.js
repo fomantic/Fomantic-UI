@@ -2172,7 +2172,8 @@ $.fn.dropdown = function(parameters) {
             else {
               module.set.selected();
             }
-            if(module.get.value()!=='') {
+            var value = module.get.value();
+            if(value && value !== '') {
               $input.removeClass(className.noselection);
             } else {
               $input.addClass(className.noselection);
