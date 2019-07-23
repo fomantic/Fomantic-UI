@@ -436,7 +436,6 @@ $.fn.search = function(parameters) {
           },
           result: function(value, results) {
             var
-              lookupFields = ['title', 'id'],
               result       = false
             ;
             value = (value !== undefined)
@@ -451,7 +450,7 @@ $.fn.search = function(parameters) {
               module.debug('Finding result that matches', value);
               $.each(results, function(index, category) {
                 if(Array.isArray(category.results)) {
-                  result = module.search.object(value, category.results, lookupFields)[0];
+                  result = module.search.object(value, category.results)[0];
                   // don't continue searching if a result is found
                   if(result) {
                     return false;
@@ -461,7 +460,7 @@ $.fn.search = function(parameters) {
             }
             else {
               module.debug('Finding result in results object', value);
-              result = module.search.object(value, results, lookupFields)[0];
+              result = module.search.object(value, results)[0];
             }
             return result || false;
           },
