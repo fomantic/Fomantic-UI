@@ -1200,7 +1200,9 @@ $.fn.dropdown = function(parameters) {
             },
             hide: function(event) {
               if(module.determine.eventInModule(event, module.hide)){
+                if(element.id && $(event.target).attr('for') === element.id){
                   event.preventDefault();
+                }
               }
             }
           },
