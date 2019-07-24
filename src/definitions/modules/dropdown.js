@@ -2671,7 +2671,7 @@ $.fn.dropdown = function(parameters) {
                       module.set.activeItem($selected);
                     }
                   }
-                  else if(!isFiltered) {
+                  else if(!isFiltered && settings.useLabels) {
                     module.debug('Selected active value, removing label');
                     module.remove.selected(selectedValue);
                   }
