@@ -85,6 +85,7 @@ $.fn.dropdown = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
+        selectActionActive,
         initialLoad,
         pageLostFocus,
         willRefocus,
@@ -1310,7 +1311,9 @@ $.fn.dropdown = function(parameters) {
                   module.remove.filteredItem();
                   module.set.scrollPosition($choice);
                 }
+                selectActionActive = true;
                 module.determine.selectAction.call(this, text, value);
+                selectActionActive = false;
               }
             }
           },
@@ -2671,7 +2674,7 @@ $.fn.dropdown = function(parameters) {
                       module.set.activeItem($selected);
                     }
                   }
-                  else if(!isFiltered && settings.useLabels) {
+                  else if(!isFiltered && (settings.useLabels || selectActionActive)) {
                     module.debug('Selected active value, removing label');
                     module.remove.selected(selectedValue);
                   }
