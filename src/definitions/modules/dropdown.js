@@ -1311,9 +1311,7 @@ $.fn.dropdown = function(parameters) {
                   module.remove.filteredItem();
                   module.set.scrollPosition($choice);
                 }
-                selectActionActive = true;
                 module.determine.selectAction.call(this, text, value);
-                selectActionActive = false;
               }
             }
           },
@@ -1641,6 +1639,7 @@ $.fn.dropdown = function(parameters) {
 
         determine: {
           selectAction: function(text, value) {
+            selectActionActive = true;
             module.verbose('Determining action', settings.action);
             if( $.isFunction( module.action[settings.action] ) ) {
               module.verbose('Triggering preset action', settings.action, text, value);
@@ -1653,6 +1652,7 @@ $.fn.dropdown = function(parameters) {
             else {
               module.error(error.action, settings.action);
             }
+            selectActionActive = false;
           },
           eventInModule: function(event, callback) {
             var
