@@ -487,7 +487,7 @@ $.fn.modal = function(parameters) {
                     if ( settings.allowMultiple ) {
                       $previousModal.addClass(className.front);
                       $module.removeClass(className.front);
-      
+
                       if ( hideOthersToo ) {
                         $allModals.find(selector.dimmer).removeClass('active');
                       }
