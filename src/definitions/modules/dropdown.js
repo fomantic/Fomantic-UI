@@ -85,6 +85,7 @@ $.fn.dropdown = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
+        selectActionActive,
         initialLoad,
         pageLostFocus,
         willRefocus,
@@ -1638,6 +1639,7 @@ $.fn.dropdown = function(parameters) {
 
         determine: {
           selectAction: function(text, value) {
+            selectActionActive = true;
             module.verbose('Determining action', settings.action);
             if( $.isFunction( module.action[settings.action] ) ) {
               module.verbose('Triggering preset action', settings.action, text, value);
@@ -1650,6 +1652,7 @@ $.fn.dropdown = function(parameters) {
             else {
               module.error(error.action, settings.action);
             }
+            selectActionActive = false;
           },
           eventInModule: function(event, callback) {
             var
@@ -2671,7 +2674,7 @@ $.fn.dropdown = function(parameters) {
                       module.set.activeItem($selected);
                     }
                   }
-                  else if(!isFiltered) {
+                  else if(!isFiltered && (settings.useLabels || selectActionActive)) {
                     module.debug('Selected active value, removing label');
                     module.remove.selected(selectedValue);
                   }
