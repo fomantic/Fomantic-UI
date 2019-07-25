@@ -2027,11 +2027,11 @@ $.fn.dropdown = function(parameters) {
                 ? module.get.values()
                 : module.get.text()
             ;
+            isMultiple = (module.is.multiple() && Array.isArray(value));
             shouldSearch = (isMultiple)
               ? (value.length > 0)
               : (value !== undefined && value !== null)
             ;
-            isMultiple = (module.is.multiple() && Array.isArray(value));
             strict     = (value === '' || value === false  || value === true)
               ? true
               : strict || false
@@ -2175,7 +2175,8 @@ $.fn.dropdown = function(parameters) {
             else {
               module.set.selected();
             }
-            if(module.get.item()) {
+            var value = module.get.value();
+            if(value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
               $input.addClass(className.noselection);
