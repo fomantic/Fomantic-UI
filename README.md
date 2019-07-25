@@ -10,6 +10,7 @@ A community fork of the popular Semantic-UI framework
 [![last commit](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg)](https://packagequality.com/#?package=fomantic-ui)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg)](#contributors)
 
 ---
 

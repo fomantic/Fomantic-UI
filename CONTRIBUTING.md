@@ -63,3 +63,7 @@ $ git checkout -b <BRANCH_NAME> fui/develop
 ```
 
 Now you can start working on your change. Once you submit your PR remember to merge into the `develop` branch NOT `master`.
+
+### The [CONTRIBUTORS](CONTRIBUTORS.md) list
+
+Once you contribute to the project you can be added the the contributors list for any categories you have contributed towards. If you think you should be on the list but aren't already you can request to be added via the [`all-contributors` bot](https://allcontributors.org/docs/en/bot/overview).
