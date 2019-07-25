@@ -124,24 +124,20 @@
 .ui.calendar .ui.table tr td.range {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.calendar .ui.table.inverted tr td.range {
   background: rgba(255, 255, 255, 0.08);
   color: #ffffff;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
 .ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+  box-shadow: inset 0 0 0 1px #85B7D9;
 }
 .ui.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
 .ui.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
-  -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
-          box-shadow: inset 0 0 0 1px #85B7D9;
+  box-shadow: inset 0 0 0 1px #85B7D9;
 }
 
 
@@ -161,12 +157,6 @@
 .ui.disabled.calendar .ui.table tr .link {
   pointer-events: none;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

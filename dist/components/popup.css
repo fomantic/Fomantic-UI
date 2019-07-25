@@ -33,8 +33,7 @@
   font-style: normal;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .ui.popup > .header {
   padding: 0;
@@ -55,8 +54,7 @@
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   z-index: 1901;
-  -webkit-box-shadow: 1px 1px 0 0 #bababc;
-          box-shadow: 1px 1px 0 0 #bababc;
+  box-shadow: 1px 1px 0 0 #bababc;
 }
 
 
@@ -87,8 +85,7 @@
   -webkit-transform: rotate(45deg);
           transform: rotate(45deg);
   z-index: 1901;
-  -webkit-box-shadow: 1px 1px 0 0 #bababc;
-          box-shadow: 1px 1px 0 0 #bababc;
+  box-shadow: 1px 1px 0 0 #bababc;
 }
 
 /* Popup */
@@ -109,8 +106,7 @@
   font-style: normal;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
   z-index: 1900;
 }
 
@@ -144,14 +140,12 @@
           transform: rotate(45deg) scale(0) !important;
   -webkit-transform-origin: center top;
           transform-origin: center top;
-  -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
 [data-tooltip]:after {
   opacity: 1;
   -webkit-transform-origin: center bottom;
           transform-origin: center bottom;
-  -webkit-transition: all 0.1s ease;
   transition: all 0.1s ease;
 }
 [data-tooltip]:hover:before,
@@ -209,8 +203,7 @@
 
 /* Arrow */
 [data-tooltip][data-inverted]:before {
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 /* Arrow Position */
@@ -223,8 +216,7 @@
   background: #1B1C1D;
   color: #FFFFFF;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 [data-tooltip][data-inverted]:after .header {
   background: none;
@@ -372,18 +364,15 @@
 /* Arrow */
 [data-position~="bottom"][data-tooltip]:before {
   background: #FFFFFF;
-  -webkit-box-shadow: -1px -1px 0 0 #bababc;
-          box-shadow: -1px -1px 0 0 #bababc;
+  box-shadow: -1px -1px 0 0 #bababc;
 }
 [data-position="left center"][data-tooltip]:before {
   background: #FFFFFF;
-  -webkit-box-shadow: 1px -1px 0 0 #bababc;
-          box-shadow: 1px -1px 0 0 #bababc;
+  box-shadow: 1px -1px 0 0 #bababc;
 }
 [data-position="right center"][data-tooltip]:before {
   background: #FFFFFF;
-  -webkit-box-shadow: -1px 1px 0 0 #bababc;
-          box-shadow: -1px 1px 0 0 #bababc;
+  box-shadow: -1px 1px 0 0 #bababc;
 }
 [data-position~="top"][data-tooltip]:before {
   background: #FFFFFF;
@@ -392,18 +381,15 @@
 /* Inverted Arrow Color */
 [data-inverted][data-position~="bottom"][data-tooltip]:before {
   background: #1B1C1D;
-  -webkit-box-shadow: -1px -1px 0 0 #bababc;
-          box-shadow: -1px -1px 0 0 #bababc;
+  box-shadow: -1px -1px 0 0 #bababc;
 }
 [data-inverted][data-position="left center"][data-tooltip]:before {
   background: #1B1C1D;
-  -webkit-box-shadow: 1px -1px 0 0 #bababc;
-          box-shadow: 1px -1px 0 0 #bababc;
+  box-shadow: 1px -1px 0 0 #bababc;
 }
 [data-inverted][data-position="right center"][data-tooltip]:before {
   background: #1B1C1D;
-  -webkit-box-shadow: -1px 1px 0 0 #bababc;
-          box-shadow: -1px 1px 0 0 #bababc;
+  box-shadow: -1px 1px 0 0 #bababc;
 }
 [data-inverted][data-position~="top"][data-tooltip]:before {
   background: #1B1C1D;
@@ -537,8 +523,7 @@
   left: 50%;
   right: auto;
   bottom: auto;
-  -webkit-box-shadow: -1px -1px 0 0 #bababc;
-          box-shadow: -1px -1px 0 0 #bababc;
+  box-shadow: -1px -1px 0 0 #bababc;
 }
 .ui.bottom.left.popup {
   margin-left: 0;
@@ -550,8 +535,7 @@
   right: auto;
   bottom: auto;
   margin-left: 0;
-  -webkit-box-shadow: -1px -1px 0 0 #bababc;
-          box-shadow: -1px -1px 0 0 #bababc;
+  box-shadow: -1px -1px 0 0 #bababc;
 }
 .ui.bottom.right.popup {
   margin-right: 0;
@@ -563,8 +547,7 @@
   bottom: auto;
   left: auto;
   margin-left: 0;
-  -webkit-box-shadow: -1px -1px 0 0 #bababc;
-          box-shadow: -1px -1px 0 0 #bababc;
+  box-shadow: -1px -1px 0 0 #bababc;
 }
 
 /*--- Above ---*/
@@ -608,8 +591,7 @@
   bottom: auto;
   left: auto;
   margin-top: -0.30714286em;
-  -webkit-box-shadow: 1px -1px 0 0 #bababc;
-          box-shadow: 1px -1px 0 0 #bababc;
+  box-shadow: 1px -1px 0 0 #bababc;
 }
 
 /*--- Right Center  ---*/
@@ -621,8 +603,7 @@
   bottom: auto;
   right: auto;
   margin-top: -0.30714286em;
-  -webkit-box-shadow: -1px 1px 0 0 #bababc;
-          box-shadow: -1px 1px 0 0 #bababc;
+  box-shadow: -1px 1px 0 0 #bababc;
 }
 
 /* Arrow Color By Location */
@@ -732,8 +713,7 @@
   background: #1B1C1D;
   color: #FFFFFF;
   border: none;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  box-shadow: none;
 }
 .ui.inverted.popup .header {
   background-color: none;
@@ -741,8 +721,7 @@
 }
 .ui.inverted.popup:before {
   background-color: #1B1C1D;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 /*--------------
@@ -775,12 +754,6 @@
 .ui.huge.popup {
   font-size: 1.42857143rem;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

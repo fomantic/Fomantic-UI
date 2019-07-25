@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.5
+ * # Fomantic UI - 2.7.6
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -802,9 +802,10 @@ $.fn.form = function(parameters) {
             } else {
               module.set.clean();
             }
-                  
-            if (e) {
+
+            if (e && e.namespace === 'dirty') {
               e.stopImmediatePropagation();
+              e.preventDefault();
             }
           }
         },
@@ -1413,7 +1414,7 @@ $.fn.form = function(parameters) {
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
-              if(rules.indexOf(rule.type) !== -1) {
+              if(rule && rules.indexOf(rule.type) !== -1) {
                 module.debug('Removed rule', rule.type);
                 validation[field].rules.splice(index, 1);
               }
@@ -3202,7 +3203,9 @@ $.fn.calendar = function(parameters) {
             if (!$container.length) {
               //prepend the popup element to the activator's parent so that it has less chance of messing with
               //the styling (eg input action button needs to be the last child to have correct border radius)
-              $container = $('<div/>').addClass(className.popup).prependTo($activator.parent());
+              var $activatorParent = $activator.parent(),
+                  domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
+              $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
             var onVisible = settings.onVisible;
@@ -3573,17 +3576,18 @@ $.fn.calendar = function(parameters) {
             }
           },
           keydown: function (event) {
-            if (event.keyCode === 27 || event.keyCode === 9) {
+            var keyCode = event.which;
+            if (keyCode === 27 || keyCode === 9) {
               //esc || tab
               module.popup('hide');
             }
 
             if (module.popup('is visible')) {
-              if (event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40) {
+              if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
                 //arrow keys
                 var mode = module.get.mode();
                 var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
-                var increment = event.keyCode === 37 ? -1 : event.keyCode === 38 ? -bigIncrement : event.keyCode == 39 ? 1 : bigIncrement;
+                var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                 increment *= mode === 'minute' ? settings.minTimeGap : 1;
                 var focusDate = module.get.focusDate() || module.get.date() || new Date();
                 var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
@@ -3598,7 +3602,7 @@ $.fn.calendar = function(parameters) {
                 if (module.helper.isDateInRange(newFocusDate, mode)) {
                   module.set.focusDate(newFocusDate);
                 }
-              } else if (event.keyCode === 13) {
+              } else if (keyCode === 13) {
                 //enter
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
@@ -3611,7 +3615,7 @@ $.fn.calendar = function(parameters) {
               }
             }
 
-            if (event.keyCode === 38 || event.keyCode === 40) {
+            if (keyCode === 38 || keyCode === 40) {
               //arrow-up || arrow-down
               event.preventDefault(); //don't scroll
               module.popup('show');
@@ -3840,7 +3844,7 @@ $.fn.calendar = function(parameters) {
         },
 
         selectDate: function (date, forceSet) {
-          module.verbose('New date selection', date)
+          module.verbose('New date selection', date);
           var mode = module.get.mode();
           var complete = forceSet || mode === 'minute' ||
             (settings.disableMinute && mode === 'hour') ||
@@ -3901,22 +3905,28 @@ $.fn.calendar = function(parameters) {
         helper: {
           isDisabled: function(date, mode) {
             return mode === 'day' && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+              if(typeof d === 'string') {
+                d = module.helper.sanitiseDate(d);
+              }
               if (d instanceof Date) {
                 return module.helper.dateEqual(date, d, mode);
               }
-              if (d !== null && typeof d === 'object') {
-                return module.helper.dateEqual(date, d[metadata.date], mode);
+              if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
               }
             }));
           },
           isEnabled: function(date, mode) {
             if (mode === 'day') {
-              return settings.enabledDates.length == 0 || settings.enabledDates.some(function(d){
+              return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date) {
                   return module.helper.dateEqual(date, d, mode);
                 }
-                if (d !== null && typeof d === 'object') {
-                  return module.helper.dateEqual(date, d[metadata.date], mode);
+                if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                  return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                 }
               });
             } else {
@@ -3929,12 +3939,15 @@ $.fn.calendar = function(parameters) {
               var d;
               for (; i < il; i++) {
                 d = dates[i];
+                if(typeof d === 'string') {
+                  d = module.helper.sanitiseDate(d);
+                }
                 if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
                   var dateObject = {};
                   dateObject[metadata.date] = d;
                   return dateObject;
                 }
-                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date, d[metadata.date], mode)  ) {
+                else if (d !== null && typeof d === 'object' && d[metadata.date] && module.helper.dateEqual(date,module.helper.sanitiseDate(d[metadata.date]), mode)  ) {
                   return d;
                 }
               }
@@ -4333,6 +4346,10 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
+      var textDate = new Date(text);
+      if(!isNaN(textDate.getDate())) {
+        return textDate;
+      }
 
       var i, j, k;
       var minute = -1, hour = -1, day = -1, month = -1, year = -1;
@@ -4559,7 +4576,8 @@ $.fn.calendar.settings = {
   selector: {
     popup: '.ui.popup',
     input: 'input',
-    activator: 'input'
+    activator: 'input',
+    append: '.inline.field,.inline.fields'
   },
 
   regExp: {
@@ -6426,7 +6444,7 @@ $.fn.dropdown = function(parameters) {
         },
         observe: {
           select: function() {
-            if(module.has.input()) {
+            if(module.has.input() && selectObserver) {
               selectObserver.observe($module[0], {
                 childList : true,
                 subtree   : true
@@ -6434,7 +6452,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           menu: function() {
-            if(module.has.menu()) {
+            if(module.has.menu() && menuObserver) {
               menuObserver.observe($menu[0], {
                 childList : true,
                 subtree   : true
@@ -11052,7 +11070,7 @@ $.fn.embed.settings = {
       return ''
         + '<iframe src="' + src + '"'
         + ' width="100%" height="100%"'
-        + ' frameborder="0" scrolling="no" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
+        + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       ;
     },
     placeholder : function(image, icon) {
@@ -13485,11 +13503,11 @@ $.fn.popup = function(parameters) {
             if(module.should.centerArrow(calculations)) {
               module.verbose('Adjusting offset to center arrow on small target element');
               if(position == 'top left' || position == 'bottom left') {
-                offset += (target.width / 2)
+                offset += (target.width / 2);
                 offset -= settings.arrowPixelsFromEdge;
               }
               if(position == 'top right' || position == 'bottom right') {
-                offset -= (target.width / 2)
+                offset -= (target.width / 2);
                 offset += settings.arrowPixelsFromEdge;
               }
             }
@@ -14321,8 +14339,42 @@ $.fn.progress = function(parameters) {
         helper: {
           sum: function (nums) {
             return Array.isArray(nums) ? nums.reduce(function (left, right) {
-              return left + right;
+              return left + Number(right);
             }, 0) : 0;
+          },
+          /**
+           * Derive precision for multiple progress with total and values.
+           *
+           * This helper dervices a precision that is sufficiently large to show minimum value of multiple progress.
+           *
+           * Example1
+           * - total: 1122
+           * - values: [325, 111, 74, 612]
+           * - min ratio: 74/1122 = 0.0659...
+           * - required precision:  100
+           *
+           * Example2
+           * - total: 10541
+           * - values: [3235, 1111, 74, 6121]
+           * - min ratio: 74/10541 = 0.0070...
+           * - required precision:   1000
+           *
+           * @param min A minimum value within multiple values
+           * @param total A total amount of multiple values
+           * @returns {number} A precison. Could be 1, 10, 100, ... 1e+10.
+           */
+          derivePrecision: function(min, total) {
+            var precisionPower = 0
+            var precision = 1;
+            var ratio = min / total;
+            while (precisionPower < 10) {
+              ratio = ratio * precision;
+              if (ratio > 1) {
+                break;
+              }
+              precision = Math.pow(10, precisionPower++);
+            }
+            return precision;
           },
           forceArray: function (element) {
             return Array.isArray(element)
@@ -14661,52 +14713,43 @@ $.fn.progress = function(parameters) {
           barWidth: function(values) {
             module.debug("set bar width with ", values);
             values = module.helper.forceArray(values);
-            var total = module.helper.sum(values);
-            if(total > 100) {
-              module.error(error.tooHigh, total);
-            }
-            else if (total < 0) {
-              module.error(error.tooLow, total);
-            }
-            else {
-              var firstNonZeroIndex = -1;
-              var lastNonZeroIndex = -1;
-              var valuesSum = module.helper.sum(values);
-              var barCounts = $bars.length;
-              var isMultiple = barCounts > 1;
-              var percents = values.map(function(value, index) {
-                var allZero = (index === barCounts - 1 && valuesSum === 0);
-                var $bar = $($bars[index]);
-                if (value === 0 && isMultiple && !allZero) {
-                  $bar.css('display', 'none');
-                } else {
-                  if (isMultiple && allZero) {
-                    $bar.css('background', 'transparent');
-                  }
-                  if (firstNonZeroIndex == -1) {
-                    firstNonZeroIndex = index;
-                  }
-                  lastNonZeroIndex = index;
-                  $bar.css({
-                    display: 'block',
-                    width: value + '%'
-                  });
+            var firstNonZeroIndex = -1;
+            var lastNonZeroIndex = -1;
+            var valuesSum = module.helper.sum(values);
+            var barCounts = $bars.length;
+            var isMultiple = barCounts > 1;
+            var percents = values.map(function(value, index) {
+              var allZero = (index === barCounts - 1 && valuesSum === 0);
+              var $bar = $($bars[index]);
+              if (value === 0 && isMultiple && !allZero) {
+                $bar.css('display', 'none');
+              } else {
+                if (isMultiple && allZero) {
+                  $bar.css('background', 'transparent');
                 }
-                return parseInt(value, 10);
-              });
-              values.forEach(function(_, index) {
-                var $bar = $($bars[index]);
+                if (firstNonZeroIndex == -1) {
+                  firstNonZeroIndex = index;
+                }
+                lastNonZeroIndex = index;
                 $bar.css({
-                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                  display: 'block',
+                  width: value + '%'
                 });
+              }
+              return parseInt(value, 10);
+            });
+            values.forEach(function(_, index) {
+              var $bar = $($bars[index]);
+              $bar.css({
+                borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
+                borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
               });
-              $module
-                .attr('data-percent', percents)
-              ;
-            }
+            });
+            $module
+              .attr('data-percent', percents)
+            ;
           },
           duration: function(duration) {
             duration = duration || settings.duration;
@@ -14728,34 +14771,54 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
-            // round display percentage
-            percents = percents.map(function(percent){
-              return (settings.precision > 0)
-                ? Math.round(percent * (10 * settings.precision)) / (10 * settings.precision)
-                : Math.round(percent)
-              ;
-            });
-            module.percent = percents;
-            if( !module.has.total() ) {
-              module.value = percents.map(function(percent){
-                return (settings.precision > 0)
-                  ? Math.round( (percent / 100) * module.total * (10 * settings.precision)) / (10 * settings.precision)
-                  : Math.round( (percent / 100) * module.total * 10) / 10
-                ;
+            var hasTotal = module.has.total();
+            var totalPecent = module.helper.sum(percents);
+            var isMultpleValues = percents.length > 1 && hasTotal;
+            var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+            if (isMultpleValues && sumTotal > module.total) {
+              // Sum values instead of pecents to avoid precision issues when summing floats
+              module.error(error.sumExceedsTotal, sumTotal, module.total);
+            } else if (!isMultpleValues && totalPecent > 100) {
+              // Sum before rouding since sum of rounded may have error though sum of actual is fine
+              module.error(error.tooHigh, totalPecent);
+            } else if (totalPecent < 0) {
+              module.error(error.tooLow, totalPecent);
+            } else {
+              var autoPrecision = settings.precision > 0
+                ? settings.precision
+                : isMultpleValues
+                  ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
+                  : undefined;
+
+              // round display percentage
+              percents = percents.map(function (percent) {
+                return (autoPrecision > 0)
+                  ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
+                  : Math.round(percent)
+                  ;
               });
-              if(settings.limitValues) {
-                module.value = module.value.map(function(value) {
-                  return (value > 100)
-                    ? 100
-                    : (module.value < 0)
-                      ? 0
-                      : module.value;
+              module.percent = percents;
+              if (!hasTotal) {
+                module.value = percents.map(function (percent) {
+                  return (autoPrecision > 0)
+                    ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
+                    : Math.round((percent / 100) * module.total * 10) / 10
+                    ;
                 });
+                if (settings.limitValues) {
+                  module.value = module.value.map(function (value) {
+                    return (value > 100)
+                      ? 100
+                      : (module.value < 0)
+                        ? 0
+                        : module.value;
+                  });
+                }
               }
+              module.set.barWidth(percents);
+              module.set.labelInterval();
+              module.set.labels();
             }
-            module.set.barWidth(percents);
-            module.set.labelInterval();
-            module.set.labels();
             settings.onChange.call(element, percents, module.value, module.total);
           },
           labelInterval: function() {
@@ -14800,7 +14863,7 @@ $.fn.progress = function(parameters) {
               : module.helper.sum(module.percent)
             ;
             if(percent === 100) {
-              if(settings.autoSuccess && !(module.is.warning() || module.is.error() || module.is.success())) {
+              if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                 module.set.success();
                 module.debug('Automatically triggering success at 100%');
               }
@@ -15196,10 +15259,11 @@ $.fn.progress.settings = {
   onWarning     : function(value, total){},
 
   error    : {
-    method     : 'The method you called is not defined.',
-    nonNumeric : 'Progress value is non numeric',
-    tooHigh    : 'Value specified is above 100%',
-    tooLow     : 'Value specified is below 0%'
+    method          : 'The method you called is not defined.',
+    nonNumeric      : 'Progress value is non numeric',
+    tooHigh         : 'Value specified is above 100%',
+    tooLow          : 'Value specified is below 0%',
+    sumExceedsTotal : 'Sum of multple values exceed total',
   },
 
   regExp: {
@@ -15761,14 +15825,18 @@ $.fn.slider = function(parameters) {
             return settings.min;
           },
           max: function() {
-            return settings.max;
+            var step = module.get.step(),
+                min = module.get.min(),
+                quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
+                remainder = step === 0 ? 0 : (settings.max - min) % step;
+            return remainder === 0 ? settings.max : min + quotient * step;
           },
           step: function() {
             return settings.step;
           },
           numLabels: function() {
             var value = Math.round((module.get.max() - module.get.min()) / module.get.step());
-            module.debug('Determined that their should be ' + value + ' labels');
+            module.debug('Determined that there should be ' + value + ' labels');
             return value;
           },
           labelType: function() {
@@ -15781,7 +15849,7 @@ $.fn.slider = function(parameters) {
 
             switch (settings.labelType) {
               case settings.labelTypes.number:
-                return (value * module.get.step()) + module.get.min();
+                return Math.round(((value * module.get.step()) + module.get.min()) * precision ) / precision;
               case settings.labelTypes.letter:
                 return alphabet[(value) % 26];
               default:
@@ -23148,7 +23216,7 @@ $.fn.transition = function() {
         },
 
         complete: function (event) {
-          if(event.target === element) {
+          if(event && event.target === element) {
               event.stopPropagation();
           }
           module.debug('Animation complete', settings.animation);
@@ -24059,7 +24127,6 @@ $.isWindow = $.isWindow || function(obj) {
   return obj != null && obj === obj.window;
 };
 
-var
   window = (typeof window != 'undefined' && window.Math == Math)
     ? window
     : (typeof self != 'undefined' && self.Math == Math)

@@ -206,8 +206,7 @@
 .ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
   padding: 3em 0 2em 2.25em;
-  -webkit-box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
+  box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
 }
 
 /*--------------------
@@ -220,10 +219,8 @@
   top: 0;
   right: 0;
   left: auto;
-  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
-  -webkit-transition-delay: 0.1s;
-          transition-delay: 0.1s;
+  transition-delay: 0.1s;
 }
 .ui.minimal.comments .comment > .content:hover > .actions {
   opacity: 1;
@@ -279,15 +276,8 @@
   color: #ffffff;
 }
 .ui.inverted.threaded.comments .comment > .comments {
-  -webkit-box-shadow: -1px 0 0 #555555;
-          box-shadow: -1px 0 0 #555555;
+  box-shadow: -1px 0 0 #555555;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

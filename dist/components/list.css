@@ -98,7 +98,6 @@ ol.ui.list ol li,
   min-width: 1.55em;
   margin: 0;
   padding-top: 0;
-  -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
 .ui.list .list > .item > i.icon:not(.loading),
@@ -426,7 +425,6 @@ ol.ui.list ol li,
 .ui.link.list a.item,
 .ui.link.list .item a:not(.ui) {
   color: rgba(0, 0, 0, 0.4);
-  -webkit-transition: 0.1s color ease;
   transition: 0.1s color ease;
 }
 .ui.link.list.list a.item:hover,
@@ -473,7 +471,6 @@ ol.ui.list ol li,
   margin: 0;
   color: rgba(0, 0, 0, 0.4);
   border-radius: 0.5em;
-  -webkit-transition: 0.1s color ease, 0.1s padding-left ease, 0.1s background-color ease;
   transition: 0.1s color ease, 0.1s padding-left ease, 0.1s background-color ease;
 }
 .ui.selection.list .list > .item:last-child,
@@ -527,7 +524,6 @@ ol.ui.list ol li,
 --------------------*/
 
 .ui.animated.list > .item {
-  -webkit-transition: 0.25s color ease 0.1s, 0.25s padding-left ease 0.1s, 0.25s background-color ease 0.1s;
   transition: 0.25s color ease 0.1s, 0.25s padding-left ease 0.1s, 0.25s background-color ease 0.1s;
 }
 .ui.animated.list:not(.horizontal) > .item:hover {
@@ -961,12 +957,6 @@ ol.ui.suffixed.list li:before,
 .ui.massive.horizontal.list > .item {
   font-size: 1.71428571rem;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************
