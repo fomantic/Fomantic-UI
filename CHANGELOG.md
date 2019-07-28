@@ -6,7 +6,7 @@
 * **accordion:** remove transition class after animation so loaders work ([0b9801b](https://github.com/fomantic/Fomantic-UI/commit/0b9801b)), closes [#865](https://github.com/fomantic/Fomantic-UI/issues/865)
 * **container:** respect fluid container on mobile screen ([e3a6bc3](https://github.com/fomantic/Fomantic-UI/commit/e3a6bc3)), closes [#900](https://github.com/fomantic/Fomantic-UI/issues/900)
 * **dropdown:** correct clear icon alignment ([6b33c3d](https://github.com/fomantic/Fomantic-UI/commit/6b33c3d)), closes [#837](https://github.com/fomantic/Fomantic-UI/issues/837)
-* **dropdown:** corrected initial clearable icon when '<select>' is used ([31d80d2](https://github.com/fomantic/Fomantic-UI/commit/31d80d2)), closes [#839](https://github.com/fomantic/Fomantic-UI/issues/839)
+* **dropdown:** corrected initial clearable icon when select tag is used ([31d80d2](https://github.com/fomantic/Fomantic-UI/commit/31d80d2)), closes [#839](https://github.com/fomantic/Fomantic-UI/issues/839)
 * **dropdown:** dont toggle on "set selected" when no labels are used ([53c22c9](https://github.com/fomantic/Fomantic-UI/commit/53c22c9)), closes [#670](https://github.com/fomantic/Fomantic-UI/issues/670)
 * **dropdown:** only preventdefault on hide for associating labels ([568858c](https://github.com/fomantic/Fomantic-UI/commit/568858c)), closes [#861](https://github.com/fomantic/Fomantic-UI/issues/861)
 * **flag:** rtl build changed background-position values ([40ae7aa](https://github.com/fomantic/Fomantic-UI/commit/40ae7aa)), closes [#859](https://github.com/fomantic/Fomantic-UI/issues/859)
