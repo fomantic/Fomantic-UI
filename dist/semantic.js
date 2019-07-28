@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.6
+ * # Fomantic UI - 2.7.7
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -1237,23 +1237,23 @@ $.fn.form = function(parameters) {
                           case 'date':
                           values[name] = settings.formatter.date(date);
                           break;
-                          
+
                           case 'datetime':
                           values[name] = settings.formatter.datetime(date);
                           break;
-                          
+
                           case 'time':
                           values[name] = settings.formatter.time(date);
                           break;
-                          
+
                           case 'month':
                           values[name] = settings.formatter.month(date);
                           break;
-                          
+
                           case 'year':
                           values[name] = settings.formatter.year(date);
                           break;
-  
+
                           default:
                           module.debug('Wrong calendar mode', $calendar, type);
                           values[name] = '';
@@ -1364,7 +1364,7 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors);
+                $prompt = settings.templates.prompt(errors, className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
@@ -2010,7 +2010,7 @@ $.fn.form.settings = {
 
   className : {
     error   : 'error',
-    label   : 'ui prompt label',
+    label   : 'ui basic red pointing prompt label',
     pressed : 'down',
     success : 'success'
   },
@@ -2037,9 +2037,9 @@ $.fn.form.settings = {
     },
 
     // template that produces label
-    prompt: function(errors) {
+    prompt: function(errors, labelClasses) {
       return $('<div/>')
-        .addClass('ui basic red pointing prompt label')
+        .addClass(labelClasses)
         .html(errors[0])
       ;
     }
@@ -2644,7 +2644,10 @@ $.fn.accordion = function(parameters) {
                     debug            : settings.debug,
                     verbose          : settings.verbose,
                     duration         : settings.duration,
-                    skipInlineHidden : true
+                    skipInlineHidden : true,
+                    onComplete: function() {
+                      $activeContent.children().removeClass(className.transition);
+                    }
                   })
               ;
             }
@@ -3046,7 +3049,8 @@ $.fn.accordion.settings = {
 
   className   : {
     active    : 'active',
-    animating : 'animating'
+    animating : 'animating',
+    transition: 'transition'
   },
 
   selector    : {
@@ -4877,7 +4881,7 @@ $.fn.checkbox = function(parameters) {
               $input.blur();
               shortcutPressed = true;
             }
-            else if(!event.ctrlKey && ( key == keyCode.space || key == keyCode.enter) ) {
+            else if(!event.ctrlKey && ( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) ) {
               module.verbose('Enter/space key pressed, toggling checkbox');
               module.toggle();
               shortcutPressed = true;
@@ -5462,6 +5466,7 @@ $.fn.checkbox.settings = {
   // delegated event context
   uncheckable         : 'auto',
   fireOnInit          : false,
+  enableEnterKey      : true,
 
   onChange            : function(){},
 
@@ -6348,6 +6353,7 @@ $.fn.dropdown = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
+        selectActionActive,
         initialLoad,
         pageLostFocus,
         willRefocus,
@@ -7463,7 +7469,9 @@ $.fn.dropdown = function(parameters) {
             },
             hide: function(event) {
               if(module.determine.eventInModule(event, module.hide)){
+                if(element.id && $(event.target).attr('for') === element.id){
                   event.preventDefault();
+                }
               }
             }
           },
@@ -7901,6 +7909,7 @@ $.fn.dropdown = function(parameters) {
 
         determine: {
           selectAction: function(text, value) {
+            selectActionActive = true;
             module.verbose('Determining action', settings.action);
             if( $.isFunction( module.action[settings.action] ) ) {
               module.verbose('Triggering preset action', settings.action, text, value);
@@ -7913,6 +7922,7 @@ $.fn.dropdown = function(parameters) {
             else {
               module.error(error.action, settings.action);
             }
+            selectActionActive = false;
           },
           eventInModule: function(event, callback) {
             var
@@ -8287,11 +8297,11 @@ $.fn.dropdown = function(parameters) {
                 ? module.get.values()
                 : module.get.text()
             ;
+            isMultiple = (module.is.multiple() && Array.isArray(value));
             shouldSearch = (isMultiple)
               ? (value.length > 0)
               : (value !== undefined && value !== null)
             ;
-            isMultiple = (module.is.multiple() && Array.isArray(value));
             strict     = (value === '' || value === false  || value === true)
               ? true
               : strict || false
@@ -8435,7 +8445,8 @@ $.fn.dropdown = function(parameters) {
             else {
               module.set.selected();
             }
-            if(module.get.item()) {
+            var value = module.get.value();
+            if(value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
               $input.addClass(className.noselection);
@@ -8934,7 +8945,7 @@ $.fn.dropdown = function(parameters) {
                       module.set.activeItem($selected);
                     }
                   }
-                  else if(!isFiltered) {
+                  else if(!isFiltered && (settings.useLabels || selectActionActive)) {
                     module.debug('Selected active value, removing label');
                     module.remove.selected(selectedValue);
                   }
@@ -10215,7 +10226,11 @@ $.fn.dropdown.settings = {
     name         : 'name',     // displayed dropdown text
     value        : 'value',    // actual dropdown value
     text         : 'text',     // displayed text when selected
-    type         : 'type'      // type of dropdown element
+    type         : 'type',     // type of dropdown element
+    image        : 'image',    // optional image path
+    imageClass   : 'imageClass', // optional individual class for image
+    icon        : 'icon',     // optional icon name
+    iconClass   : 'iconClass'  // optional individual class for icon (for example to use flag instead)
   },
 
   keys : {
@@ -10262,6 +10277,8 @@ $.fn.dropdown.settings = {
     dropdown    : 'ui dropdown',
     filtered    : 'filtered',
     hidden      : 'hidden transition',
+    icon        : 'icon',
+    image       : 'image',
     item        : 'item',
     label       : 'ui label',
     loading     : 'loading',
@@ -10285,6 +10302,9 @@ $.fn.dropdown.settings = {
 
 /* Templates */
 $.fn.dropdown.settings.templates = {
+  deQuote: function(string) {
+      return String(string).replace(/"/g,"");
+  },
   escape: function(string, preserveHTML) {
     if (preserveHTML){
       return string;
@@ -10315,7 +10335,8 @@ $.fn.dropdown.settings.templates = {
       placeholder = select.placeholder || false,
       values      = select.values || [],
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -10326,7 +10347,7 @@ $.fn.dropdown.settings.templates = {
     }
     html += '<div class="'+className.menu+'">';
     $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + deQuote(option.value) + '">' + escape(option.name,preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -10337,7 +10358,8 @@ $.fn.dropdown.settings.templates = {
     var
       values = response[fields.values] || [],
       html   = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     $.each(values, function(index, option) {
       var
@@ -10349,13 +10371,19 @@ $.fn.dropdown.settings.templates = {
       if( itemType === 'item' ) {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + String(option[fields.text]).replace(/"/g,"") + '"'
+            ? ' data-text="' + deQuote(option[fields.text]) + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        if(option[fields.image]) {
+          html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+        }
+        if(option[fields.icon]) {
+          html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
+        }
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
@@ -11256,6 +11284,9 @@ $.fn.modal = function(parameters) {
         },
 
         destroy: function() {
+          if (observer) {
+            observer.disconnect();
+          }
           module.verbose('Destroying previous modal');
           $module
             .removeData(moduleNamespace)
@@ -11585,7 +11616,7 @@ $.fn.modal = function(parameters) {
                     if ( settings.allowMultiple ) {
                       $previousModal.addClass(className.front);
                       $module.removeClass(className.front);
-      
+
                       if ( hideOthersToo ) {
                         $allModals.find(selector.dimmer).removeClass('active');
                       }
@@ -13635,7 +13666,7 @@ $.fn.popup = function(parameters) {
             // see if any boundaries are surpassed with this tentative position
             distanceFromBoundary = module.get.distanceFromBoundary(popupOffset, calculations);
 
-            if( module.is.offstage(distanceFromBoundary, position) ) {
+            if(!settings.forcePosition && module.is.offstage(distanceFromBoundary, position) ) {
               module.debug('Position is outside viewport', position);
               if(searchDepth < settings.maxSearchDepth) {
                 searchDepth++;
@@ -14105,6 +14136,9 @@ $.fn.popup.settings = {
 
   // default position relative to element
   position       : 'top left',
+
+  // if given position should be used regardless if popup fits
+  forcePosition  : false,
 
   // name of variation to use
   variation      : '',
@@ -17489,7 +17523,6 @@ $.fn.search = function(parameters) {
           },
           result: function(value, results) {
             var
-              lookupFields = ['title', 'id'],
               result       = false
             ;
             value = (value !== undefined)
@@ -17504,7 +17537,7 @@ $.fn.search = function(parameters) {
               module.debug('Finding result that matches', value);
               $.each(results, function(index, category) {
                 if(Array.isArray(category.results)) {
-                  result = module.search.object(value, category.results, lookupFields)[0];
+                  result = module.search.object(value, category.results)[0];
                   // don't continue searching if a result is found
                   if(result) {
                     return false;
@@ -17514,7 +17547,7 @@ $.fn.search = function(parameters) {
             }
             else {
               module.debug('Finding result in results object', value);
-              result = module.search.object(value, results, lookupFields)[0];
+              result = module.search.object(value, results)[0];
             }
             return result || false;
           },
@@ -17686,10 +17719,15 @@ $.fn.search = function(parameters) {
             $.each(searchFields, function(index, field) {
               $.each(source, function(label, content) {
                 var
-                  fieldExists = (typeof content[field] == 'string')
+                  fieldExists = (typeof content[field] == 'string') || (typeof content[field] == 'number')
                 ;
                 if(fieldExists) {
-                  var text = module.remove.diacritics(content[field]);
+                  var text;
+                  if (typeof content[field] === 'string'){  
+                      text = module.remove.diacritics(content[field]);
+                  } else {
+                      text = content[field].toString(); 
+                  }
                   if( text.search(matchRegExp) !== -1) {
                     // content starts with value (first in results)
                     addResult(results, content);
@@ -18300,6 +18338,7 @@ $.fn.search.settings = {
 
   // fields to search
   searchFields   : [
+    'id',
     'title',
     'description'
   ],

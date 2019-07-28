@@ -19,7 +19,8 @@
   max-width: 100%;
   border: none;
   margin: 1em 0 2.5em;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   background: rgba(0, 0, 0, 0.1);
   padding: 0;
   border-radius: 0.28571429rem;
@@ -46,6 +47,7 @@
   min-width: 2em;
   background: #888888;
   border-radius: 0.28571429rem;
+  -webkit-transition: width 0.1s ease, background-color 0.1s ease;
   transition: width 0.1s ease, background-color 0.1s ease;
   overflow: hidden;
 }
@@ -91,6 +93,7 @@
   text-shadow: none;
   margin-top: 0.2em;
   text-align: center;
+  -webkit-transition: color 0.4s ease;
   transition: color 0.4s ease;
 }
 
@@ -216,6 +219,8 @@
 
 /* Multiple */
 .ui.multiple.progress {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
 }
 

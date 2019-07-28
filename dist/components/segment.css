@@ -16,7 +16,8 @@
 .ui.segment {
   position: relative;
   background: #FFFFFF;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
   margin: 1rem 0;
   padding: 1em 1em;
   border-radius: 0.28571429rem;
@@ -36,7 +37,8 @@
   padding-right: 0;
   background: none transparent;
   border-radius: 0;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 }
@@ -89,7 +91,8 @@
 .ui.basic.table.segment {
   background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
 }
 .ui[class*="very basic"].table.segment {
   padding: 1em 1em;
@@ -111,10 +114,19 @@
 --------------------*/
 
 .ui.placeholder.segment {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: stretch;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   max-width: initial;
   -webkit-animation: none;
           animation: none;
@@ -123,7 +135,8 @@
   min-height: 18rem;
   background: #F9FAFB;
   border-color: rgba(34, 36, 38, 0.15);
-  box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+  -webkit-box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+          box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
 }
 .ui.placeholder.segment .button,
 .ui.placeholder.segment textarea {
@@ -146,7 +159,8 @@
   margin-right: auto;
 }
 .ui.placeholder.segment > .inline {
-  align-self: center;
+  -ms-flex-item-align: center;
+      align-self: center;
 }
 .ui.placeholder.segment > .inline > .button {
   display: inline-block;
@@ -164,7 +178,8 @@
 .ui.piled.segments,
 .ui.piled.segment {
   margin: 3em 0;
-  box-shadow: '';
+  -webkit-box-shadow: '';
+          box-shadow: '';
   z-index: auto;
 }
 .ui.piled.segment:first-child {
@@ -186,7 +201,8 @@
   position: absolute;
   width: 100%;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: '';
+  -webkit-box-shadow: '';
+          box-shadow: '';
 }
 .ui.piled.segments:before,
 .ui.piled.segment:before {
@@ -289,12 +305,16 @@
 
 /* Compact Group */
 .ui.compact.segments {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
 }
 .ui.compact.segments .segment,
 .ui.segments .compact.segment {
   display: block;
-  flex: 0 1 auto;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
 }
 
 /*-------------------
@@ -315,7 +335,8 @@
 
 .ui.raised.raised.segments,
 .ui.raised.raised.segment {
-  box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 
 
@@ -326,11 +347,15 @@
 
 /* Group */
 .ui.segments {
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   position: relative;
   margin: 1rem 0;
   border: 1px solid rgba(34, 36, 38, 0.15);
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
   border-radius: 0.28571429rem;
 }
 .ui.segments:first-child {
@@ -347,7 +372,8 @@
   border-radius: 0;
   margin: 0;
   width: auto;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
@@ -366,7 +392,8 @@
   bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 
@@ -389,17 +416,24 @@
 
 /* Horizontal Group */
 .ui.horizontal.segments {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   background-color: transparent;
   padding: 0;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
   margin: 1rem 0;
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.stackable.horizontal.segments {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 /* Nested Horizontal Group */
@@ -408,13 +442,15 @@
   background-color: transparent;
   border-radius: 0;
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
 
 /* Horizontal Segment */
 .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
-  flex: 1 1 auto;
+  -webkit-box-flex: 1;
+          flex: 1 1 auto;
   -ms-flex: 1 1 0;
   
 /* Solves #2550 MS Flex */
@@ -424,7 +460,8 @@
   min-width: 0;
   border-radius: 0;
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-left: 1px solid rgba(34, 36, 38, 0.15);
 }
 
@@ -460,6 +497,7 @@
   cursor: default;
   pointer-events: none;
   text-shadow: none !important;
+  -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
 .ui.loading.segment:before {
@@ -485,7 +523,8 @@
           animation: loader 0.6s infinite linear;
   border: 0.2em solid #767676;
   border-radius: 500rem;
-  box-shadow: 0 0 0 1px transparent;
+  -webkit-box-shadow: 0 0 0 1px transparent;
+          box-shadow: 0 0 0 1px transparent;
   visibility: visible;
   z-index: 101;
 }
@@ -504,7 +543,8 @@
 .ui.segments .ui.basic.segment,
 .ui.basic.segments {
   background: none transparent;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: none;
   border-radius: 0;
 }
@@ -649,7 +689,8 @@
 
 .ui.inverted.segment {
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
@@ -689,6 +730,8 @@
   color: rgba(0, 0, 0, 0.6);
 }
 .ui.secondary.inverted.segment {
+  background: #4c4f52 -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.2)), to(rgba(255, 255, 255, 0.2)));
+  background: #4c4f52 -webkit-linear-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.2) 100%);
   background: #4c4f52 linear-gradient(rgba(255, 255, 255, 0.2) 0, rgba(255, 255, 255, 0.2) 100%);
   color: rgba(255, 255, 255, 0.8);
 }
@@ -699,6 +742,8 @@
   color: rgba(0, 0, 0, 0.6);
 }
 .ui.tertiary.inverted.segment {
+  background: #717579 -webkit-gradient(linear, left top, left bottom, color-stop(0, rgba(255, 255, 255, 0.35)), to(rgba(255, 255, 255, 0.35)));
+  background: #717579 -webkit-linear-gradient(rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0.35) 100%);
   background: #717579 linear-gradient(rgba(255, 255, 255, 0.35) 0, rgba(255, 255, 255, 0.35) 100%);
   color: rgba(255, 255, 255, 0.8);
 }
@@ -716,7 +761,8 @@
   margin: 0 -1px;
   width: calc(100% + 2px);
   max-width: calc(100% + 2px);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border: 1px solid #D4D4D5;
 }
 .ui.attached:not(.message) + .ui.attached.segment:not(.top) {
@@ -741,7 +787,8 @@
   margin-top: 0;
   top: 0;
   margin-bottom: 1rem;
-  box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+  -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
+          box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15), none;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui.segment[class*="bottom attached"]:last-child {

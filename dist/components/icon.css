@@ -104,6 +104,7 @@ i.link.icon:not(.disabled),
 i.link.icons:not(.disabled) {
   cursor: pointer;
   opacity: 0.8;
+  -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
 i.link.icon:hover,
@@ -119,13 +120,15 @@ i.circular.icon {
   border-radius: 500em !important;
   line-height: 1 !important;
   padding: 0.5em 0 !important;
-  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
   width: 2em !important;
   height: 2em !important;
 }
 i.circular.inverted.icon {
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /*-------------------
@@ -207,11 +210,13 @@ i.bordered.icon {
   width: 2em;
   height: 2em;
   padding: 0.5em 0 !important;
-  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+          box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 }
 i.bordered.inverted.icon {
   border: none;
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /*-------------------
@@ -513,7 +518,7 @@ i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
 }
 /*
-* Font Awesome 5.8.2 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.9.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -630,9 +635,6 @@ i.icon.angle.double.right:before {
 i.icon.angle.double.up:before {
   content: "\f102";
 }
-i.icon.angle.down:before {
-  content: "\f107";
-}
 i.icon.angle.left:before {
   content: "\f104";
 }
@@ -641,6 +643,9 @@ i.icon.angle.right:before {
 }
 i.icon.angle.up:before {
   content: "\f106";
+}
+i.icon.angle.down:before {
+  content: "\f107";
 }
 i.icon.angry:before {
   content: "\f556";
@@ -738,6 +743,12 @@ i.icon.bacon:before {
 i.icon.balance.scale:before {
   content: "\f24e";
 }
+i.icon.balance.scale.left:before {
+  content: "\f515";
+}
+i.icon.balance.scale.right:before {
+  content: "\f516";
+}
 i.icon.ban:before {
   content: "\f05e";
 }
@@ -795,6 +806,9 @@ i.icon.bible:before {
 i.icon.bicycle:before {
   content: "\f206";
 }
+i.icon.biking:before {
+  content: "\f84a";
+}
 i.icon.binoculars:before {
   content: "\f1e5";
 }
@@ -848,6 +862,15 @@ i.icon.book.reader:before {
 }
 i.icon.bookmark:before {
   content: "\f02e";
+}
+i.icon.border.all:before {
+  content: "\f84c";
+}
+i.icon.border.none:before {
+  content: "\f850";
+}
+i.icon.border.style:before {
+  content: "\f853";
 }
 i.icon.bowling.ball:before {
   content: "\f436";
@@ -1467,6 +1490,9 @@ i.icon.eye.dropper:before {
 i.icon.eye.slash:before {
   content: "\f070";
 }
+i.icon.fan:before {
+  content: "\f863";
+}
 i.icon.fast.backward:before {
   content: "\f049";
 }
@@ -1950,6 +1976,9 @@ i.icon.ice.cream:before {
 i.icon.icicles:before {
   content: "\f7ad";
 }
+i.icon.icons:before {
+  content: "\f86d";
+}
 i.icon.id.badge:before {
   content: "\f2c1";
 }
@@ -2406,14 +2435,23 @@ i.icon.person.booth:before {
 i.icon.phone:before {
   content: "\f095";
 }
+i.icon.phone.alternate:before {
+  content: "\f879";
+}
 i.icon.phone.slash:before {
   content: "\f3dd";
 }
 i.icon.phone.square:before {
   content: "\f098";
 }
+i.icon.phone.square.alternate:before {
+  content: "\f87b";
+}
 i.icon.phone.volume:before {
   content: "\f2a0";
+}
+i.icon.photo.video:before {
+  content: "\f87c";
 }
 i.icon.piggy.bank:before {
   content: "\f4d3";
@@ -2555,6 +2593,9 @@ i.icon.redo.alternate:before {
 }
 i.icon.registered:before {
   content: "\f25d";
+}
+i.icon.remove.format:before {
+  content: "\f87d";
 }
 i.icon.reply:before {
   content: "\f3e5";
@@ -2802,14 +2843,26 @@ i.icon.sort:before {
 i.icon.sort.alphabet.down:before {
   content: "\f15d";
 }
+i.icon.sort.alphabet.down.alternate:before {
+  content: "\f881";
+}
 i.icon.sort.alphabet.up:before {
   content: "\f15e";
+}
+i.icon.sort.alphabet.up.alternate:before {
+  content: "\f882";
 }
 i.icon.sort.amount.down:before {
   content: "\f160";
 }
+i.icon.sort.amount.down.alternate:before {
+  content: "\f884";
+}
 i.icon.sort.amount.up:before {
   content: "\f161";
+}
+i.icon.sort.amount.up.alternate:before {
+  content: "\f885";
 }
 i.icon.sort.down:before {
   content: "\f0dd";
@@ -2817,8 +2870,14 @@ i.icon.sort.down:before {
 i.icon.sort.numeric.down:before {
   content: "\f162";
 }
+i.icon.sort.numeric.down.alternate:before {
+  content: "\f886";
+}
 i.icon.sort.numeric.up:before {
   content: "\f163";
+}
+i.icon.sort.numeric.up.alternate:before {
+  content: "\f887";
 }
 i.icon.sort.up:before {
   content: "\f0de";
@@ -2828,6 +2887,9 @@ i.icon.spa:before {
 }
 i.icon.space.shuttle:before {
   content: "\f197";
+}
+i.icon.spell.check:before {
+  content: "\f891";
 }
 i.icon.spider:before {
   content: "\f717";
@@ -3299,6 +3361,9 @@ i.icon.video.slash:before {
 }
 i.icon.vihara:before {
   content: "\f6a7";
+}
+i.icon.voicemail:before {
+  content: "\f897";
 }
 i.icon.volleyball.ball:before {
   content: "\f45f";
@@ -5764,10 +5829,6 @@ i.icon.neos:before {
 }
 i.icon.nimblr:before {
   content: "\f5a8";
-  font-family: 'brand-icons';
-}
-i.icon.nintendo.switch:before {
-  content: "\f418";
   font-family: 'brand-icons';
 }
 i.icon.node:before {

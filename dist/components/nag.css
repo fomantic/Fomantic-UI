@@ -25,11 +25,13 @@
   margin: 0;
   padding: 0.75em 1em;
   background: #555555;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   font-size: 1rem;
   text-align: center;
   color: rgba(0, 0, 0, 0.87);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
+  -webkit-transition: 0.2s background ease;
   transition: 0.2s background ease;
 }
 a.ui.nag {
@@ -49,6 +51,7 @@ a.ui.nag {
   font-size: 1em;
   margin: -0.5em 0 0;
   color: #FFFFFF;
+  -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
 

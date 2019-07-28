@@ -787,7 +787,8 @@
 .transition.fly {
   -webkit-animation-duration: 0.6s;
           animation-duration: 0.6s;
-  transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+  -webkit-transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+          transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .transition.fly.in {
   -webkit-animation-name: flyIn;

@@ -14,18 +14,27 @@
 *******************************/
 
 .ui.steps {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  flex-direction: row;
-  align-items: stretch;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
   margin: 1em 0;
   background: '';
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   line-height: 1.14285714em;
   border-radius: 0.28571429rem;
   border: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.steps:not(.unstackable) {
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 /* First Steps */
@@ -45,22 +54,38 @@
 
 .ui.steps .step {
   position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex: 1 0 auto;
-  flex-wrap: wrap;
-  flex-direction: row;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 0 auto;
+          flex: 1 0 auto;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   vertical-align: middle;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   margin: 0 0;
   padding: 1.14285714em 2em;
   background: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
-  box-shadow: none;
+  -webkit-box-shadow: none;
+          box-shadow: none;
   border-radius: 0;
   border: none;
   border-right: 1px solid rgba(34, 36, 38, 0.15);
+  -webkit-transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+  transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, -webkit-box-shadow 0.1s ease;
 }
 
 /* Arrow */
@@ -78,7 +103,10 @@
   border-style: solid;
   border-color: rgba(34, 36, 38, 0.15);
   border-width: 0 1px 1px 0;
+  -webkit-transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
+  transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease;
+  transition: background-color 0.1s ease, opacity 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, -webkit-box-shadow 0.1s ease;
   -webkit-transform: translateY(-50%) translateX(50%) rotate(-45deg);
           transform: translateY(-50%) translateX(50%) rotate(-45deg);
 }
@@ -139,8 +167,11 @@
 .ui.steps .step > .icon,
 .ui.steps .step > .icon ~ .content {
   display: block;
-  flex: 0 1 auto;
-  align-self: middle;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 auto;
+          flex: 0 1 auto;
+  -ms-flex-item-align: middle;
+      align-self: middle;
 }
 
 /* Horizontal Icon */
@@ -172,7 +203,8 @@
   position: static;
   text-align: center;
   content: counter(ordered);
-  align-self: middle;
+  -ms-flex-item-align: middle;
+      align-self: middle;
   margin-right: 1rem;
   font-size: 2.5em;
   counter-increment: ordered;
@@ -181,7 +213,8 @@
 }
 .ui.ordered.steps .step > * {
   display: block;
-  align-self: middle;
+  -ms-flex-item-align: middle;
+      align-self: middle;
 }
 
 /*--------------
@@ -189,12 +222,19 @@
 ---------------*/
 
 .ui.vertical.steps {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
   display: inline-flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   overflow: visible;
 }
 .ui.vertical.steps .step {
-  justify-content: flex-start;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
   border-radius: 0;
   padding: 1.14285714em 2em;
   border-right: none;
@@ -237,13 +277,21 @@
 /* Mobile (Default) */
 @media only screen and (max-width: 767.98px) {
   .ui.steps:not(.unstackable) {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     overflow: visible;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   .ui.steps:not(.unstackable) .step {
     width: 100% !important;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     border-radius: 0;
     padding: 1.14285714em 2em;
     border-right: none;
@@ -323,6 +371,9 @@
 }
 
 /* Active Arrow */
+.ui.steps .step:after {
+  display: block;
+}
 .ui.steps .active.step:after {
   display: block;
 }
@@ -378,14 +429,22 @@
 /* Tablet Or Below */
 @media only screen and (max-width: 991.98px) {
   .ui[class*="tablet stackable"].steps {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
     overflow: visible;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   
 /* Steps */
   .ui[class*="tablet stackable"].steps .step {
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     border-radius: 0;
     padding: 1.14285714em 2em;
     border-right: none;
@@ -428,6 +487,8 @@
 
 /* Fluid */
 .ui.fluid.steps {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   width: 100%;
 }
@@ -485,7 +546,8 @@
 .ui.six.steps > .step,
 .ui.seven.steps > .step,
 .ui.eight.steps > .step {
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 .ui.one.steps > .step {
   width: 100%;
