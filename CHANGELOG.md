@@ -1,3 +1,37 @@
+## [2.7.7](https://github.com/fomantic/Fomantic-UI/compare/2.7.6...2.7.7) (2019-07-28)
+
+
+### Bug Fixes
+
+* **accordion:** remove transition class after animation so loaders work ([0b9801b](https://github.com/fomantic/Fomantic-UI/commit/0b9801b)), closes [#865](https://github.com/fomantic/Fomantic-UI/issues/865)
+* **container:** respect fluid container on mobile screen ([e3a6bc3](https://github.com/fomantic/Fomantic-UI/commit/e3a6bc3)), closes [#900](https://github.com/fomantic/Fomantic-UI/issues/900)
+* **dropdown:** correct clear icon alignment ([6b33c3d](https://github.com/fomantic/Fomantic-UI/commit/6b33c3d)), closes [#837](https://github.com/fomantic/Fomantic-UI/issues/837)
+* **dropdown:** corrected initial clearable icon when '<select>' is used ([31d80d2](https://github.com/fomantic/Fomantic-UI/commit/31d80d2)), closes [#839](https://github.com/fomantic/Fomantic-UI/issues/839)
+* **dropdown:** dont toggle on "set selected" when no labels are used ([53c22c9](https://github.com/fomantic/Fomantic-UI/commit/53c22c9)), closes [#670](https://github.com/fomantic/Fomantic-UI/issues/670)
+* **dropdown:** only preventdefault on hide for associating labels ([568858c](https://github.com/fomantic/Fomantic-UI/commit/568858c)), closes [#861](https://github.com/fomantic/Fomantic-UI/issues/861)
+* **flag:** rtl build changed background-position values ([40ae7aa](https://github.com/fomantic/Fomantic-UI/commit/40ae7aa)), closes [#859](https://github.com/fomantic/Fomantic-UI/issues/859)
+* **form:** correct inline checkbox label padding ([2eaaff1](https://github.com/fomantic/Fomantic-UI/commit/2eaaff1)), closes [#823](https://github.com/fomantic/Fomantic-UI/issues/823)
+* **form:** inline field label doesn't respect error styles ([e70a015](https://github.com/fomantic/Fomantic-UI/commit/e70a015)), closes [#818](https://github.com/fomantic/Fomantic-UI/issues/818)
+* **form:** prompt template function ([cc97a30](https://github.com/fomantic/Fomantic-UI/commit/cc97a30))
+* **image:** hidden images were still visible when used in image groups ([a0bf2b3](https://github.com/fomantic/Fomantic-UI/commit/a0bf2b3))
+* **label:** content margin after two attached labels ([2510ea9](https://github.com/fomantic/Fomantic-UI/commit/2510ea9))
+* **search:** 'get result' on numerical or user defined fields didnt work ([04109b2](https://github.com/fomantic/Fomantic-UI/commit/04109b2)), closes [#897](https://github.com/fomantic/Fomantic-UI/issues/897)
+* **site:** revert size variable declaration ([1f1c6f0](https://github.com/fomantic/Fomantic-UI/commit/1f1c6f0))
+* **step:** step visualization also on non active ([a53fe20](https://github.com/fomantic/Fomantic-UI/commit/a53fe20)), closes [#830](https://github.com/fomantic/Fomantic-UI/issues/830)
+* **table:** colored definition table top cell border overlap ([b7ad310](https://github.com/fomantic/Fomantic-UI/commit/b7ad310)), closes [#883](https://github.com/fomantic/Fomantic-UI/issues/883)
+
+
+### Features
+
+* **checkbox:** add sizes and form size inheritance ([58fdc6a](https://github.com/fomantic/Fomantic-UI/commit/58fdc6a)), closes [#666](https://github.com/fomantic/Fomantic-UI/issues/666)
+* **checkbox:** add toggle on ENTER-key option ([5d16709](https://github.com/fomantic/Fomantic-UI/commit/5d16709)), closes [#819](https://github.com/fomantic/Fomantic-UI/issues/819)
+* **dropdown:** add support for images/icons in api response param ([f033782](https://github.com/fomantic/Fomantic-UI/commit/f033782)), closes [#872](https://github.com/fomantic/Fomantic-UI/issues/872)
+* **icons:** update icons to FA 5.9.0 ([dfc9109](https://github.com/fomantic/Fomantic-UI/commit/dfc9109)), closes [#739](https://github.com/fomantic/Fomantic-UI/issues/739) [#887](https://github.com/fomantic/Fomantic-UI/issues/887) [#739](https://github.com/fomantic/Fomantic-UI/issues/739)
+* **modal:** destroy should tear down mutation observer ([d880d35](https://github.com/fomantic/Fomantic-UI/commit/d880d35))
+* **popup:** add optional setting 'forcePosition' to disable calculation ([e103541](https://github.com/fomantic/Fomantic-UI/commit/e103541)), closes [#684](https://github.com/fomantic/Fomantic-UI/issues/684)
+
+
+
 ## [2.7.6](https://github.com/fomantic/Fomantic-UI/compare/2.7.5...2.7.6) (2019-06-16)
 
 
