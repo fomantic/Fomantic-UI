@@ -670,14 +670,14 @@
 @relativeMassive : unit( @massiveRaw, em);
 
 /* rem */
-@absoluteMini    : @mini;
-@absoluteTiny    : @tiny;
-@absoluteSmall   : @small;
-@absoluteMedium  : @medium;
-@absoluteLarge   : @large;
-@absoluteBig     : @big;
-@absoluteHuge    : @huge;
-@absoluteMassive : @massive;
+@absoluteMini    : unit( @miniRaw, rem);
+@absoluteTiny    : unit( @tinyRaw, rem);
+@absoluteSmall   : unit( @smallRaw, rem);
+@absoluteMedium  : unit( @mediumRaw, rem);
+@absoluteLarge   : unit( @largeRaw, rem);
+@absoluteBig     : unit( @bigRaw, rem);
+@absoluteHuge    : unit( @hugeRaw, rem);
+@absoluteMassive : unit( @massiveRaw, rem);
 
 /*-------------------
        Icons
