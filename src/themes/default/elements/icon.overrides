@@ -1,5 +1,5 @@
 /*
-* Font Awesome 5.8.2 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.9.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -64,10 +64,10 @@ i.icon.angle.double.down:before { content: "\f103"; }
 i.icon.angle.double.left:before { content: "\f100"; }
 i.icon.angle.double.right:before { content: "\f101"; }
 i.icon.angle.double.up:before { content: "\f102"; }
-i.icon.angle.down:before { content: "\f107"; }
 i.icon.angle.left:before { content: "\f104"; }
 i.icon.angle.right:before { content: "\f105"; }
 i.icon.angle.up:before { content: "\f106"; }
+i.icon.angle.down:before { content: "\f107"; }
 i.icon.angry:before { content: "\f556"; }
 i.icon.ankh:before { content: "\f644"; }
 i.icon.archive:before { content: "\f187"; }
@@ -100,6 +100,8 @@ i.icon.backspace:before { content: "\f55a"; }
 i.icon.backward:before { content: "\f04a"; }
 i.icon.bacon:before { content: "\f7e5"; }
 i.icon.balance.scale:before { content: "\f24e"; }
+i.icon.balance.scale.left:before { content: "\f515"; }
+i.icon.balance.scale.right:before { content: "\f516"; }
 i.icon.ban:before { content: "\f05e"; }
 i.icon.band.aid:before { content: "\f462"; }
 i.icon.barcode:before { content: "\f02a"; }
@@ -119,6 +121,7 @@ i.icon.bell.slash:before { content: "\f1f6"; }
 i.icon.bezier.curve:before { content: "\f55b"; }
 i.icon.bible:before { content: "\f647"; }
 i.icon.bicycle:before { content: "\f206"; }
+i.icon.biking:before { content: "\f84a"; }
 i.icon.binoculars:before { content: "\f1e5"; }
 i.icon.biohazard:before { content: "\f780"; }
 i.icon.birthday.cake:before { content: "\f1fd"; }
@@ -137,6 +140,9 @@ i.icon.book.medical:before { content: "\f7e6"; }
 i.icon.book.open:before { content: "\f518"; }
 i.icon.book.reader:before { content: "\f5da"; }
 i.icon.bookmark:before { content: "\f02e"; }
+i.icon.border.all:before { content: "\f84c"; }
+i.icon.border.none:before { content: "\f850"; }
+i.icon.border.style:before { content: "\f853"; }
 i.icon.bowling.ball:before { content: "\f436"; }
 i.icon.box:before { content: "\f466"; }
 i.icon.box.open:before { content: "\f49e"; }
@@ -343,6 +349,7 @@ i.icon.external.link.square.alternate:before { content: "\f360"; }
 i.icon.eye:before { content: "\f06e"; }
 i.icon.eye.dropper:before { content: "\f1fb"; }
 i.icon.eye.slash:before { content: "\f070"; }
+i.icon.fan:before { content: "\f863"; }
 i.icon.fast.backward:before { content: "\f049"; }
 i.icon.fast.forward:before { content: "\f050"; }
 i.icon.fax:before { content: "\f1ac"; }
@@ -504,6 +511,7 @@ i.icon.hryvnia:before { content: "\f6f2"; }
 i.icon.i.cursor:before { content: "\f246"; }
 i.icon.ice.cream:before { content: "\f810"; }
 i.icon.icicles:before { content: "\f7ad"; }
+i.icon.icons:before { content: "\f86d"; }
 i.icon.id.badge:before { content: "\f2c1"; }
 i.icon.id.card:before { content: "\f2c2"; }
 i.icon.id.card.alternate:before { content: "\f47f"; }
@@ -656,9 +664,12 @@ i.icon.percent:before { content: "\f295"; }
 i.icon.percentage:before { content: "\f541"; }
 i.icon.person.booth:before { content: "\f756"; }
 i.icon.phone:before { content: "\f095"; }
+i.icon.phone.alternate:before { content: "\f879"; }
 i.icon.phone.slash:before { content: "\f3dd"; }
 i.icon.phone.square:before { content: "\f098"; }
+i.icon.phone.square.alternate:before { content: "\f87b"; }
 i.icon.phone.volume:before { content: "\f2a0"; }
+i.icon.photo.video:before { content: "\f87c"; }
 i.icon.piggy.bank:before { content: "\f4d3"; }
 i.icon.pills:before { content: "\f484"; }
 i.icon.pizza.slice:before { content: "\f818"; }
@@ -706,6 +717,7 @@ i.icon.recycle:before { content: "\f1b8"; }
 i.icon.redo:before { content: "\f01e"; }
 i.icon.redo.alternate:before { content: "\f2f9"; }
 i.icon.registered:before { content: "\f25d"; }
+i.icon.remove.format:before { content: "\f87d"; }
 i.icon.reply:before { content: "\f3e5"; }
 i.icon.reply.all:before { content: "\f122"; }
 i.icon.republican:before { content: "\f75e"; }
@@ -788,15 +800,22 @@ i.icon.socks:before { content: "\f696"; }
 i.icon.solar.panel:before { content: "\f5ba"; }
 i.icon.sort:before { content: "\f0dc"; }
 i.icon.sort.alphabet.down:before { content: "\f15d"; }
+i.icon.sort.alphabet.down.alternate:before { content: "\f881"; }
 i.icon.sort.alphabet.up:before { content: "\f15e"; }
+i.icon.sort.alphabet.up.alternate:before { content: "\f882"; }
 i.icon.sort.amount.down:before { content: "\f160"; }
+i.icon.sort.amount.down.alternate:before { content: "\f884"; }
 i.icon.sort.amount.up:before { content: "\f161"; }
+i.icon.sort.amount.up.alternate:before { content: "\f885"; }
 i.icon.sort.down:before { content: "\f0dd"; }
 i.icon.sort.numeric.down:before { content: "\f162"; }
+i.icon.sort.numeric.down.alternate:before { content: "\f886"; }
 i.icon.sort.numeric.up:before { content: "\f163"; }
+i.icon.sort.numeric.up.alternate:before { content: "\f887"; }
 i.icon.sort.up:before { content: "\f0de"; }
 i.icon.spa:before { content: "\f5bb"; }
 i.icon.space.shuttle:before { content: "\f197"; }
+i.icon.spell.check:before { content: "\f891"; }
 i.icon.spider:before { content: "\f717"; }
 i.icon.spinner:before { content: "\f110"; }
 i.icon.splotch:before { content: "\f5bc"; }
@@ -954,6 +973,7 @@ i.icon.vials:before { content: "\f493"; }
 i.icon.video:before { content: "\f03d"; }
 i.icon.video.slash:before { content: "\f4e2"; }
 i.icon.vihara:before { content: "\f6a7"; }
+i.icon.voicemail:before { content: "\f897"; }
 i.icon.volleyball.ball:before { content: "\f45f"; }
 i.icon.volume.down:before { content: "\f027"; }
 i.icon.volume.mute:before { content: "\f6a9"; }
@@ -1728,7 +1748,6 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.napster:before { content: "\f3d2"; font-family: @brandFontName; }
   i.icon.neos:before { content: "\f612"; font-family: @brandFontName; }
   i.icon.nimblr:before { content: "\f5a8"; font-family: @brandFontName; }
-  i.icon.nintendo.switch:before { content: "\f418"; font-family: @brandFontName; }
   i.icon.node:before { content: "\f419"; font-family: @brandFontName; }
   i.icon.node.js:before { content: "\f3d3"; font-family: @brandFontName; }
   i.icon.npm:before { content: "\f3d4"; font-family: @brandFontName; }
