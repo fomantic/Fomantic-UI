@@ -203,23 +203,26 @@
 .ui.transparent.input > input {
   border-color: transparent !important;
   background-color: transparent !important;
-  padding: 0 !important;
+  padding: 0;
   -webkit-box-shadow: none !important;
           box-shadow: none !important;
   border-radius: 0 !important;
 }
+.field .ui.transparent.input > textarea {
+  padding: 0.67857143em 1em;
+}
 
 /* Transparent Icon */
-.ui.transparent.icon.input > i.icon {
+:not(.field) > .ui.transparent.icon.input > i.icon {
   width: 1.1em;
 }
-.ui.transparent.icon.input > input {
-  padding-left: 0 !important;
-  padding-right: 2em !important;
+:not(.field) > .ui.transparent.icon.input > input {
+  padding-left: 0;
+  padding-right: 2em;
 }
-.ui.transparent[class*="left icon"].input > input {
-  padding-left: 2em !important;
-  padding-right: 0 !important;
+:not(.field) > .ui.transparent[class*="left icon"].input > input {
+  padding-left: 2em;
+  padding-right: 0;
 }
 
 /* Transparent Inverted */
@@ -262,9 +265,9 @@
 .ui.icon.input > i.icon:not(.link) {
   pointer-events: none;
 }
-.ui.icon.input > textarea,
-.ui.icon.input > input {
-  padding-right: 2.67142857em !important;
+.ui.ui.icon.input > textarea,
+.ui.ui.icon.input > input {
+  padding-right: 2.67142857em;
 }
 .ui.icon.input > i.icon:before,
 .ui.icon.input > i.icon:after {
@@ -293,10 +296,10 @@
   right: auto;
   left: 0.5em;
 }
-.ui[class*="left icon"].input > textarea,
-.ui[class*="left icon"].input > input {
-  padding-left: 2.67142857em !important;
-  padding-right: 1em !important;
+.ui.ui[class*="left icon"].input > textarea,
+.ui.ui[class*="left icon"].input > input {
+  padding-left: 2.67142857em;
+  padding-right: 1em;
 }
 
 /* Focus */
@@ -386,6 +389,9 @@
 }
 .ui.icon.input > textarea ~ .icon {
   height: 3em;
+}
+:not(.field) > .ui.transparent.icon.input > textarea ~ .icon {
+  height: 1.3em;
 }
 
 /* Corner Label Position  */
@@ -541,12 +547,6 @@
 .ui.massive.input {
   font-size: 1.71428571em;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.5",
+  "version": "2.7.7",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "keywords": [
     "fomantic-ui",
@@ -36,7 +36,7 @@
     "gulp-git": "^2.9.0",
     "gulp-tap": "^1.0.1",
     "less": "^3.7.0",
-    "merge-stream": "^1.0.0",
+    "merge-stream": "^2.0.0",
     "better-console": "1.0.1",
     "del": "^3.0.0",
     "extend": "^3.0.2",
@@ -71,6 +71,7 @@
     "yamljs": "^0.3.0"
   },
   "devDependencies": {
+    "all-contributors-cli": "^6.7.0",
     "conventional-changelog-cli": "^2.0.21"
   },
   "engines": {

@@ -773,11 +773,11 @@ $.fn.popup = function(parameters) {
             if(module.should.centerArrow(calculations)) {
               module.verbose('Adjusting offset to center arrow on small target element');
               if(position == 'top left' || position == 'bottom left') {
-                offset += (target.width / 2)
+                offset += (target.width / 2);
                 offset -= settings.arrowPixelsFromEdge;
               }
               if(position == 'top right' || position == 'bottom right') {
-                offset -= (target.width / 2)
+                offset -= (target.width / 2);
                 offset += settings.arrowPixelsFromEdge;
               }
             }
@@ -905,7 +905,7 @@ $.fn.popup = function(parameters) {
             // see if any boundaries are surpassed with this tentative position
             distanceFromBoundary = module.get.distanceFromBoundary(popupOffset, calculations);
 
-            if( module.is.offstage(distanceFromBoundary, position) ) {
+            if(!settings.forcePosition && module.is.offstage(distanceFromBoundary, position) ) {
               module.debug('Position is outside viewport', position);
               if(searchDepth < settings.maxSearchDepth) {
                 searchDepth++;
@@ -1375,6 +1375,9 @@ $.fn.popup.settings = {
 
   // default position relative to element
   position       : 'top left',
+
+  // if given position should be used regardless if popup fits
+  forcePosition  : false,
 
   // name of variation to use
   variation      : '',

@@ -36,7 +36,7 @@ img.ui.image {
 *******************************/
 
 .ui.hidden.images,
-.ui.hidden.image {
+.ui.ui.hidden.image {
   display: none;
 }
 .ui.hidden.transition.images,
@@ -296,12 +296,6 @@ img.ui.bordered.image {
   display: inline-block;
   margin: 0 0.25rem 0.5rem;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

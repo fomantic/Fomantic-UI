@@ -83,7 +83,7 @@
 /* Definition */
 @definitionPageBackground: @white;
 
-@definitionHeaderBackground: transparent;
+@definitionHeaderBackground: @white;
 @definitionHeaderColor: @unselectedTextColor;
 @definitionHeaderFontWeight: @normal;
 
@@ -202,6 +202,7 @@
 /* Colors */
 @coloredBorderSize: 0.2em;
 @coloredBorderRadius: 0 0 @borderRadius @borderRadius;
+@coloredBorderSizeCover: @coloredBorderSize / 2;
 
 /* Inverted */
 @invertedBackground: #333333;

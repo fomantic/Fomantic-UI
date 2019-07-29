@@ -146,11 +146,10 @@ a.ui.label {
 }
 
 /* Padding on next content after a label */
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
+.ui.top.attached.label ~ :first-of-type:not(.attached) {
   margin-top: 2rem !important;
 }
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
+.ui.bottom.attached.label ~ :last-child:not(.attached) {
   margin-top: 0;
   margin-bottom: 2rem !important;
 }
@@ -2087,12 +2086,6 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 .ui.massive.label {
   font-size: 1.71428571rem;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************
