@@ -102,3 +102,10 @@
 @transparentInvertedPlaceholderColor: @invertedUnselectedTextColor;
 @transparentInvertedColor: @white;
 
+@miniInputSize: @relativeMini;
+@tinyInputSize: @relativeTiny;
+@smallInputSize: @relativeSmall;
+@largeInputSize: @relativeLarge;
+@bigInputSize: @relativeBig;
+@hugeInputSize: @relativeHuge;
+@massiveInputSize: @relativeMassive;

@@ -49,3 +49,16 @@
 @variationLabelAttached: true;
 @variationLabelFluid: true;
 @variationLabelSizes: @variationAllSizes;
+
+/* Input */
+@variationInputDisabled: true;
+@variationInputInverted: true;
+@variationInputError: true;
+@variationInputTransparent: true;
+@variationInputCorner: true;
+@variationInputLoading: true;
+@variationInputIcon: true;
+@variationInputLabeled: true;
+@variationInputAction: true;
+@variationInputFluid: true;
+@variationInputSizes: @variationAllSizes;
