@@ -16,7 +16,7 @@
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
 @variationButtonLabeled: true;
-@variationButtonLabeledIcon: true; //needs @variationButtonLabeled: true
+@variationButtonLabeledIcon: true;
 @variationButtonToggle: true;
 @variationButtonOr: true;
 @variationButtonAttached: true;
