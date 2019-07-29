@@ -55,7 +55,7 @@
 }
 
 
-& when (@variationCheckboxBox = true) {
+& when (@variationCheckboxBox) {
   /*--------------
         Box
   ---------------*/
@@ -751,7 +751,7 @@ each(@variationCheckboxSizes, {
       }
     }
   }
-  & when (@@raw > 1) and (@variationCheckboxBox = true) {
+  & when (@@raw > 1) and (@variationCheckboxBox) {
     .ui.@{value}.form .checkbox,
     .ui.@{value}.checkbox {
       &:not(.slider):not(.toggle):not(.radio) {
