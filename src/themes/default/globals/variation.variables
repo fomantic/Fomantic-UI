@@ -6,13 +6,17 @@
 @variationAllSizes: mini, tiny, small, large, big, huge, massive;
 
 /* Button */
+@variationButtonDisabled: true;
+@variationButtonAnimated: true;
+@variationButtonInverted: true;
 @variationButtonSocial: true;
 @variationButtonFloated: true;
 @variationButtonFloated: true;
 @variationButtonCompact: true;
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
-@variationButtonLabeledIcon: true;
+@variationButtonLabeled: true;
+@variationButtonLabeledIcon: true; //needs @variationButtonLabeled: true
 @variationButtonToggle: true;
 @variationButtonOr: true;
 @variationButtonAttached: true;
