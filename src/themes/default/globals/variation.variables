@@ -2,6 +2,8 @@
   Central element variation compilation enablers
 ***********************************************************/
 
+@variationButtonSocial: true;
+@variationButtonFloated: true;
 @variationButtonFloated: true;
 @variationButtonCompact: true;
 @variationButtonBasic: true;
