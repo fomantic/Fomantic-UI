@@ -94,14 +94,14 @@ module.exports = {
             element
           ;
           if(error.filename.match(/theme.less/)) {
-            if(error.line == 5) {
+            if(error.line == 9) {
               element  = regExp.variable.exec(error.message)[1];
               if(element) {
                 console.error('Missing theme.config value for ', element);
               }
               console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
             }
-            if(error.line == 46) {
+            if(error.line == 73) {
               element = regExp.element.exec(error.message)[1];
               theme   = regExp.theme.exec(error.message)[1];
               console.error(theme + ' is not an available theme for ' + element);
@@ -117,7 +117,7 @@ module.exports = {
 
     /* What Browsers to Prefix */
     prefix: {
-      browsers: [
+      overrideBrowserslist: [
         'last 2 versions',
         '> 1%',
         'opera 12.1',

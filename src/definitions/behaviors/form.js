@@ -298,9 +298,10 @@ $.fn.form = function(parameters) {
             } else {
               module.set.clean();
             }
-                  
-            if (e) {
+
+            if (e && e.namespace === 'dirty') {
               e.stopImmediatePropagation();
+              e.preventDefault();
             }
           }
         },
@@ -732,23 +733,23 @@ $.fn.form = function(parameters) {
                           case 'date':
                           values[name] = settings.formatter.date(date);
                           break;
-                          
+
                           case 'datetime':
                           values[name] = settings.formatter.datetime(date);
                           break;
-                          
+
                           case 'time':
                           values[name] = settings.formatter.time(date);
                           break;
-                          
+
                           case 'month':
                           values[name] = settings.formatter.month(date);
                           break;
-                          
+
                           case 'year':
                           values[name] = settings.formatter.year(date);
                           break;
-  
+
                           default:
                           module.debug('Wrong calendar mode', $calendar, type);
                           values[name] = '';
@@ -859,7 +860,7 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors);
+                $prompt = settings.templates.prompt(errors, className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
@@ -909,7 +910,7 @@ $.fn.form = function(parameters) {
               return;
             }
             $.each(validation[field].rules, function(index, rule) {
-              if(rules.indexOf(rule.type) !== -1) {
+              if(rule && rules.indexOf(rule.type) !== -1) {
                 module.debug('Removed rule', rule.type);
                 validation[field].rules.splice(index, 1);
               }
@@ -1505,7 +1506,7 @@ $.fn.form.settings = {
 
   className : {
     error   : 'error',
-    label   : 'ui prompt label',
+    label   : 'ui basic red pointing prompt label',
     pressed : 'down',
     success : 'success'
   },
@@ -1532,9 +1533,9 @@ $.fn.form.settings = {
     },
 
     // template that produces label
-    prompt: function(errors) {
+    prompt: function(errors, labelClasses) {
       return $('<div/>')
-        .addClass('ui basic red pointing prompt label')
+        .addClass(labelClasses)
         .html(errors[0])
       ;
     }

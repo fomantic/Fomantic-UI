@@ -51,8 +51,8 @@
   transition: width 0.1s ease, background-color 0.1s ease;
   overflow: hidden;
 }
-.ui.ui.ui.progress:not([data-percent]) .bar,
-.ui.ui.ui.progress[data-percent="0"] .bar {
+.ui.ui.ui.progress:not([data-percent]):not(.indeterminate) .bar,
+.ui.ui.ui.progress[data-percent="0"]:not(.indeterminate) .bar {
   background: transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -425,122 +425,152 @@
      Colors
 ---------------*/
 
+.ui.indeterminate.primary.progress .bar::before,
 .ui.primary.progress .bar,
 .ui.progress .primary.bar {
   background-color: #2185D0;
 }
+.ui.inverted.indeterminate.primary.progress .bar::before,
 .ui.primary.inverted.progress .bar,
 .ui.inverted.progress .primary.bar {
   background-color: #54C8FF;
 }
+.ui.indeterminate.secondary.progress .bar::before,
 .ui.secondary.progress .bar,
 .ui.progress .secondary.bar {
   background-color: #1B1C1D;
 }
+.ui.inverted.indeterminate.secondary.progress .bar::before,
 .ui.secondary.inverted.progress .bar,
 .ui.inverted.progress .secondary.bar {
   background-color: #545454;
 }
+.ui.indeterminate.red.progress .bar::before,
 .ui.red.progress .bar,
 .ui.progress .red.bar {
   background-color: #DB2828;
 }
+.ui.inverted.indeterminate.red.progress .bar::before,
 .ui.red.inverted.progress .bar,
 .ui.inverted.progress .red.bar {
   background-color: #FF695E;
 }
+.ui.indeterminate.orange.progress .bar::before,
 .ui.orange.progress .bar,
 .ui.progress .orange.bar {
   background-color: #F2711C;
 }
+.ui.inverted.indeterminate.orange.progress .bar::before,
 .ui.orange.inverted.progress .bar,
 .ui.inverted.progress .orange.bar {
   background-color: #FF851B;
 }
+.ui.indeterminate.yellow.progress .bar::before,
 .ui.yellow.progress .bar,
 .ui.progress .yellow.bar {
   background-color: #FBBD08;
 }
+.ui.inverted.indeterminate.yellow.progress .bar::before,
 .ui.yellow.inverted.progress .bar,
 .ui.inverted.progress .yellow.bar {
   background-color: #FFE21F;
 }
+.ui.indeterminate.olive.progress .bar::before,
 .ui.olive.progress .bar,
 .ui.progress .olive.bar {
   background-color: #B5CC18;
 }
+.ui.inverted.indeterminate.olive.progress .bar::before,
 .ui.olive.inverted.progress .bar,
 .ui.inverted.progress .olive.bar {
   background-color: #D9E778;
 }
+.ui.indeterminate.green.progress .bar::before,
 .ui.green.progress .bar,
 .ui.progress .green.bar {
   background-color: #21BA45;
 }
+.ui.inverted.indeterminate.green.progress .bar::before,
 .ui.green.inverted.progress .bar,
 .ui.inverted.progress .green.bar {
   background-color: #2ECC40;
 }
+.ui.indeterminate.teal.progress .bar::before,
 .ui.teal.progress .bar,
 .ui.progress .teal.bar {
   background-color: #00B5AD;
 }
+.ui.inverted.indeterminate.teal.progress .bar::before,
 .ui.teal.inverted.progress .bar,
 .ui.inverted.progress .teal.bar {
   background-color: #6DFFFF;
 }
+.ui.indeterminate.blue.progress .bar::before,
 .ui.blue.progress .bar,
 .ui.progress .blue.bar {
   background-color: #2185D0;
 }
+.ui.inverted.indeterminate.blue.progress .bar::before,
 .ui.blue.inverted.progress .bar,
 .ui.inverted.progress .blue.bar {
   background-color: #54C8FF;
 }
+.ui.indeterminate.violet.progress .bar::before,
 .ui.violet.progress .bar,
 .ui.progress .violet.bar {
   background-color: #6435C9;
 }
+.ui.inverted.indeterminate.violet.progress .bar::before,
 .ui.violet.inverted.progress .bar,
 .ui.inverted.progress .violet.bar {
   background-color: #A291FB;
 }
+.ui.indeterminate.purple.progress .bar::before,
 .ui.purple.progress .bar,
 .ui.progress .purple.bar {
   background-color: #A333C8;
 }
+.ui.inverted.indeterminate.purple.progress .bar::before,
 .ui.purple.inverted.progress .bar,
 .ui.inverted.progress .purple.bar {
   background-color: #DC73FF;
 }
+.ui.indeterminate.pink.progress .bar::before,
 .ui.pink.progress .bar,
 .ui.progress .pink.bar {
   background-color: #E03997;
 }
+.ui.inverted.indeterminate.pink.progress .bar::before,
 .ui.pink.inverted.progress .bar,
 .ui.inverted.progress .pink.bar {
   background-color: #FF8EDF;
 }
+.ui.indeterminate.brown.progress .bar::before,
 .ui.brown.progress .bar,
 .ui.progress .brown.bar {
   background-color: #A5673F;
 }
+.ui.inverted.indeterminate.brown.progress .bar::before,
 .ui.brown.inverted.progress .bar,
 .ui.inverted.progress .brown.bar {
   background-color: #D67C1C;
 }
+.ui.indeterminate.grey.progress .bar::before,
 .ui.grey.progress .bar,
 .ui.progress .grey.bar {
   background-color: #767676;
 }
+.ui.inverted.indeterminate.grey.progress .bar::before,
 .ui.grey.inverted.progress .bar,
 .ui.inverted.progress .grey.bar {
   background-color: #DCDDDE;
 }
+.ui.indeterminate.black.progress .bar::before,
 .ui.black.progress .bar,
 .ui.progress .black.bar {
   background-color: #1B1C1D;
 }
+.ui.inverted.indeterminate.black.progress .bar::before,
 .ui.black.inverted.progress .bar,
 .ui.inverted.progress .black.bar {
   background-color: #545454;
@@ -581,11 +611,183 @@
   height: 3.5em;
 }
 
+/*---------------
+  Indeterminate
+----------------*/
 
-/*******************************
-            Progress
-*******************************/
-
+.ui.indeterminate.progress .bar {
+  width: 100%;
+}
+.ui.indeterminate.progress .bar .progress,
+.ui.progress .bar .centered.progress {
+  text-align: center;
+  position: relative;
+}
+.ui.indeterminate.progress .bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 0.28571429rem;
+  -webkit-animation: progress-pulsating 2s ease infinite;
+          animation: progress-pulsating 2s ease infinite;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  width: 100%;
+}
+.ui.slow.indeterminate.progress .bar::before {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+.ui.fast.indeterminate.progress .bar::before {
+  -webkit-animation-duration: 1s;
+          animation-duration: 1s;
+}
+.ui.swinging.indeterminate.progress .bar::before {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-animation-name: progress-swinging;
+          animation-name: progress-swinging;
+}
+.ui.sliding.indeterminate.progress .bar::before {
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  -webkit-animation-name: progress-sliding;
+          animation-name: progress-sliding;
+}
+.ui.filling.indeterminate.progress .bar::before {
+  -webkit-animation-name: progress-filling;
+          animation-name: progress-filling;
+}
+.ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
+  background: #FFFFFF;
+}
+.ui.sliding.indeterminate.progress .bar,
+.ui.swinging.indeterminate.progress .bar,
+.ui.filling.indeterminate.progress .bar {
+  background: rgba(0, 0, 0, 0.1);
+}
+.ui.inverted.sliding.indeterminate.progress .bar,
+.ui.inverted.swinging.indeterminate.progress .bar,
+.ui.inverted.filling.indeterminate.progress .bar {
+  background: rgba(255, 255, 255, 0.08);
+}
+.ui.sliding.indeterminate.progress .bar .progress,
+.ui.swinging.indeterminate.progress .bar .progress {
+  color: #1B1C1D;
+}
+.ui.inverted.sliding.indeterminate.progress .bar .progress,
+.ui.inverted.swinging.indeterminate.progress .bar .progress {
+  color: rgba(255, 255, 255, 0.7);
+}
+@-webkit-keyframes progress-swinging {
+  0%,
+  100% {
+    width: 10%;
+    left: -25%;
+  }
+  25%,
+  65% {
+    width: 70%;
+  }
+  50% {
+    width: 10%;
+    left: 100%;
+  }
+}
+@keyframes progress-swinging {
+  0%,
+  100% {
+    width: 10%;
+    left: -25%;
+  }
+  25%,
+  65% {
+    width: 70%;
+  }
+  50% {
+    width: 10%;
+    left: 100%;
+  }
+}
+@-webkit-keyframes progress-sliding {
+  0% {
+    width: 10%;
+    left: -25%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 10%;
+    left: 100%;
+  }
+}
+@keyframes progress-sliding {
+  0% {
+    width: 10%;
+    left: -25%;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 10%;
+    left: 100%;
+  }
+}
+@-webkit-keyframes progress-filling {
+  0% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+  }
+  80% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes progress-filling {
+  0% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+  }
+  80% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@-webkit-keyframes progress-pulsating {
+  0% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    opacity: 0.7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes progress-pulsating {
+  0% {
+    -webkit-transform: scale(0, 1);
+            transform: scale(0, 1);
+    opacity: 0.7;
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+    opacity: 0;
+  }
+}
 
 
 /*******************************

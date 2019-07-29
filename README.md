@@ -1,15 +1,24 @@
-![Fomantic Logo](http://fomantic-ui.com/images/logo.png#128)
+![Fomantic Logo](https://fomantic-ui.com/images/logo.png#128)
 
-# Fomantic UI
-A community fork of the popular Semantic-UI framework
+# Fomantic-UI
+A community fork of the popular Semantic-UI framework.
 
 [![Build Status](https://travis-ci.org/fomantic/Fomantic-UI.svg?branch=master)](https://travis-ci.org/fomantic/Fomantic-UI)
+[![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
+[![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
+
 [![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
-[![npm downloads](https://img.shields.io/npm/dw/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
-[![npm version](https://img.shields.io/npm/v/fomantic-ui.svg)](https://www.npmjs.com/package/fomantic-ui)
-[![last commit](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg)](https://github.com/fomantic/Fomantic-UI/commits/develop)
+[![Follow on Twitter](https://img.shields.io/twitter/follow/fomanticui?style=social)](https://twitter.com/fomanticui)
+
+[![npm downloads](https://img.shields.io/npm/dm/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
+[![npm version](https://img.shields.io/npm/v/fomantic-ui)](https://www.npmjs.com/package/fomantic-ui)
+
 [![jsdelivr](https://data.jsdelivr.com/v1/package/npm/fomantic-ui/badge?style=rounded)](https://www.jsdelivr.com/package/npm/fomantic-ui)
-[![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg)](https://packagequality.com/#?package=fomantic-ui)
+[![CDNJS](https://img.shields.io/cdnjs/v/fomantic-ui?color=e95420)](https://cdnjs.com/libraries/fomantic-ui)
+
+[![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
+[![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=fomantic/Fomantic-UI)](https://dependabot.com)
 
 ---
 
@@ -43,6 +52,18 @@ Fomantic UI includes an interactive installer to help setup your project.
 * Microsoft Edge 12+
 
 Although some components will work in IE9, [grids](http://semantic-ui.com/collections/grid.html) and other [flexbox](https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes) components are not supported by IE9 and may not appear correctly.
+
+---
+
+## 📦 Other packages
+
+| Environment | Install Command                       | Repository                                                       | Third-Party |
+|-------------|---------------------------------------|------------------------------------------------------------------|-------------|
+| CSS Only    | `npm install --save fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)   |             |
+| LESS        | `npm install --save fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS) |             |
+| SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS) | ✅          |
+
+---
 
 ## 💬 Community
 

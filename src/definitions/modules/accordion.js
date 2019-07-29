@@ -189,7 +189,10 @@ $.fn.accordion = function(parameters) {
                     debug            : settings.debug,
                     verbose          : settings.verbose,
                     duration         : settings.duration,
-                    skipInlineHidden : true
+                    skipInlineHidden : true,
+                    onComplete: function() {
+                      $activeContent.children().removeClass(className.transition);
+                    }
                   })
               ;
             }
@@ -591,7 +594,8 @@ $.fn.accordion.settings = {
 
   className   : {
     active    : 'active',
-    animating : 'animating'
+    animating : 'animating',
+    transition: 'transition'
   },
 
   selector    : {

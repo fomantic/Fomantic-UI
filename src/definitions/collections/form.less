@@ -130,6 +130,7 @@
 }
 
 /* Text Area */
+.ui.input textarea,
 .ui.form textarea {
   margin: 0;
   -webkit-appearance: none;
@@ -163,6 +164,9 @@
     Checkbox margin
 ---------------------*/
 
+.ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
+  margin-top: @checkboxLabelFieldTopMargin;
+}
 .ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) .ui.checkbox {
   margin-top: @inputLineHeight + @checkboxFieldTopMargin;
 }
@@ -186,12 +190,13 @@
       Transparent
 ---------------------*/
 
-.ui.form .field .transparent.input input,
+.ui.form .field .transparent.input:not(.icon) input,
 .ui.form .field input.transparent,
 .ui.form .field textarea.transparent {
-  padding: @transparentPadding !important;
+  padding: @transparentPadding;
 }
 
+.ui.form .field input.transparent,
 .ui.form .field textarea.transparent {
   border-color: transparent !important;
   background-color: transparent !important;
@@ -199,6 +204,7 @@
 }
 
 .ui.form .field.error .transparent.input input,
+.ui.form .field.error .transparent.input textarea,
 .ui.form .field.error input.transparent,
 .ui.form .field.error textarea.transparent {
   background-color: @transparentFormErrorBackground !important;
@@ -487,10 +493,10 @@
 }
 
 /* On Field(s) */
-.ui.form .fields.error .field label,
-.ui.form .field.error label,
-.ui.form .fields.error .field .input,
-.ui.form .field.error .input {
+.ui.ui.form .fields.error .field label,
+.ui.ui.form .field.error label,
+.ui.ui.form .fields.error .field .input,
+.ui.ui.form .field.error .input {
   color: @formErrorColor;
 }
 
