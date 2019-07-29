@@ -1,0 +1,102 @@
+{
+  "projectName": "Fomantic-UI",
+  "projectOwner": "fomantic",
+  "files": [
+    "CONTRIBUTORS.md",
+    "README.md"
+  ],
+  "imageSize": 60,
+  "commit": true,
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "hammy2899",
+      "name": "Sean",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11588822?v=4",
+      "profile": "https://github.com/hammy2899",
+      "contributions": [
+        "question",
+        "bug",
+        "blog",
+        "business",
+        "code",
+        "doc",
+        "design",
+        "example",
+        "ideas",
+        "infra",
+        "maintenance",
+        "platform",
+        "projectManagement",
+        "review",
+        "security",
+        "tool",
+        "tutorial",
+        "talk"
+      ]
+    },
+    {
+      "login": "prudho",
+      "name": "prudho",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/7557689?v=4",
+      "profile": "https://github.com/prudho",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "ColinFrick",
+      "name": "Colin Frick",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/5517677?v=4",
+      "profile": "https://github.com/ColinFrick",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "lubber-de",
+      "name": "Marco 'Lubber' Wienkoop",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/18379884?v=4",
+      "profile": "https://rasterbuster.lubber.de",
+      "contributions": [
+        "question",
+        "bug",
+        "code",
+        "doc",
+        "example",
+        "ideas",
+        "infra",
+        "review"
+      ]
+    },
+    {
+      "login": "exoego",
+      "name": "TATSUNO Yasuhiro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/127635?v=4",
+      "profile": "https://www.exoego.net/",
+      "contributions": [
+        "bug",
+        "blog",
+        "code",
+        "doc",
+        "review"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "repoType": "github"
+}

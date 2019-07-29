@@ -162,6 +162,10 @@
     width: 100%;
     padding: 0;
   }
+  .ui.table:not(.unstackable) > thead,
+  .ui.table:not(.unstackable) > thead > tr,
+  .ui.table:not(.unstackable) > tfoot,
+  .ui.table:not(.unstackable) > tfoot > tr,
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
@@ -189,10 +193,10 @@
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
   }
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
   .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td {
     background: none;
@@ -273,29 +277,21 @@
 
 .ui.definition.table > thead:not(.full-width) > tr > th:first-child {
   pointer-events: none;
-  background: transparent;
+  background: #FFFFFF;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px -1px 0 1px #FFFFFF;
-          box-shadow: -1px -1px 0 1px #FFFFFF;
+  -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
+          box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
+  -moz-transform: scale(1);
 }
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
   pointer-events: none;
-  background: transparent;
+  background: #FFFFFF;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -1px 1px 0 1px #FFFFFF;
-          box-shadow: -1px 1px 0 1px #FFFFFF;
-}
-
-/* Remove Border */
-.ui.celled.definition.table > thead:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 -1px 0 1px #FFFFFF;
-          box-shadow: 0 -1px 0 1px #FFFFFF;
-}
-.ui.celled.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  -webkit-box-shadow: 0 1px 0 1px #FFFFFF;
-          box-shadow: 0 1px 0 1px #FFFFFF;
+  -webkit-box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
+          box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
+  -moz-transform: scale(1);
 }
 
 /* Highlight Defining Column */
@@ -416,6 +412,10 @@
 
 @media only screen and (max-width: 991.98px) {
   .ui[class*="tablet stackable"].table,
+  .ui[class*="tablet stackable"].table > thead,
+  .ui[class*="tablet stackable"].table > thead > tr,
+  .ui[class*="tablet stackable"].table > tfoot,
+  .ui[class*="tablet stackable"].table > tfoot > tr,
   .ui[class*="tablet stackable"].table > tbody,
   .ui[class*="tablet stackable"].table > tbody > tr,
   .ui[class*="tablet stackable"].table > tr,

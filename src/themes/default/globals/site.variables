@@ -641,34 +641,43 @@
   This rounds @size values to the closest pixel then expresses that value in (r)em.
   This ensures all size values round to exact pixels
 */
-@mini            : unit( round(@miniSize * @emSize) / @emSize, rem);
-@tiny            : unit( round(@tinySize * @emSize) / @emSize, rem);
-@small           : unit( round(@smallSize * @emSize) / @emSize, rem);
-@medium          : unit( round(@mediumSize * @emSize) / @emSize, rem);
-@large           : unit( round(@largeSize * @emSize) / @emSize, rem);
-@big             : unit( round(@bigSize * @emSize) / @emSize, rem);
-@huge            : unit( round(@hugeSize * @emSize) / @emSize, rem);
-@massive         : unit( round(@massiveSize * @emSize) / @emSize, rem);
+@miniRaw         : unit( round(@miniSize * @emSize) / @emSize );
+@tinyRaw         : unit( round(@tinySize * @emSize) / @emSize );
+@smallRaw        : unit( round(@smallSize * @emSize) / @emSize );
+@mediumRaw       : unit( round(@mediumSize * @emSize) / @emSize );
+@largeRaw        : unit( round(@largeSize * @emSize) / @emSize );
+@bigRaw          : unit( round(@bigSize * @emSize) / @emSize );
+@hugeRaw         : unit( round(@hugeSize * @emSize) / @emSize );
+@massiveRaw      : unit( round(@massiveSize * @emSize) / @emSize );
+
+@mini            : unit( @miniRaw, rem);
+@tiny            : unit( @tinyRaw, rem);
+@small           : unit( @smallRaw, rem);
+@medium          : unit( @mediumRaw, rem);
+@large           : unit( @largeRaw, rem);
+@big             : unit( @bigRaw, rem);
+@huge            : unit( @hugeRaw, rem);
+@massive         : unit( @massiveRaw, rem);
 
 /* em */
-@relativeMini    : unit( round(@miniSize * @emSize) / @emSize, em);
-@relativeTiny    : unit( round(@tinySize * @emSize) / @emSize, em);
-@relativeSmall   : unit( round(@smallSize * @emSize) / @emSize, em);
-@relativeMedium  : unit( round(@mediumSize * @emSize) / @emSize, em);
-@relativeLarge   : unit( round(@largeSize * @emSize) / @emSize, em);
-@relativeBig     : unit( round(@bigSize * @emSize) / @emSize, em);
-@relativeHuge    : unit( round(@hugeSize * @emSize) / @emSize, em);
-@relativeMassive : unit( round(@massiveSize * @emSize) / @emSize, em);
+@relativeMini    : unit( @miniRaw, em);
+@relativeTiny    : unit( @tinyRaw, em);
+@relativeSmall   : unit( @smallRaw, em);
+@relativeMedium  : unit( @mediumRaw, em);
+@relativeLarge   : unit( @largeRaw, em);
+@relativeBig     : unit( @bigRaw, em);
+@relativeHuge    : unit( @hugeRaw, em);
+@relativeMassive : unit( @massiveRaw, em);
 
 /* rem */
-@absoluteMini    : unit( round(@miniSize * @emSize) / @emSize, rem);
-@absoluteTiny    : unit( round(@tinySize * @emSize) / @emSize, rem);
-@absoluteSmall   : unit( round(@smallSize * @emSize) / @emSize, rem);
-@absoluteMedium  : unit( round(@mediumSize * @emSize) / @emSize, rem);
-@absoluteLarge   : unit( round(@largeSize * @emSize) / @emSize, rem);
-@absoluteBig     : unit( round(@bigSize * @emSize) / @emSize, rem);
-@absoluteHuge    : unit( round(@hugeSize * @emSize) / @emSize, rem);
-@absoluteMassive : unit( round(@massiveSize * @emSize) / @emSize, rem);
+@absoluteMini    : unit( @miniRaw, rem);
+@absoluteTiny    : unit( @tinyRaw, rem);
+@absoluteSmall   : unit( @smallRaw, rem);
+@absoluteMedium  : unit( @mediumRaw, rem);
+@absoluteLarge   : unit( @largeRaw, rem);
+@absoluteBig     : unit( @bigRaw, rem);
+@absoluteHuge    : unit( @hugeRaw, rem);
+@absoluteMassive : unit( @massiveRaw, rem);
 
 /*-------------------
        Icons

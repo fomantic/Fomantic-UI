@@ -49,7 +49,7 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 #### Setup your enviroment
 These few steps are the easiest way to setup your dev environment.
 
-1. Fork the [main repoository](https://github.com/fomantic/Fomantic-UI).
+1. Fork the [main repository](https://github.com/fomantic/Fomantic-UI).
 2. Clone your fork and add the main repository as a remote
 ```bash
 $ git clone https://github.com/<YOUR_GITHUB_USERNAME>/Fomantic-UI.git
@@ -63,3 +63,7 @@ $ git checkout -b <BRANCH_NAME> fui/develop
 ```
 
 Now you can start working on your change. Once you submit your PR remember to merge into the `develop` branch NOT `master`.
+
+### The [CONTRIBUTORS](CONTRIBUTORS.md) list
+
+Once you contribute to the project you can be added the the contributors list for any categories you have contributed towards. If you think you should be on the list but aren't already you can request to be added via the [`all-contributors` bot](https://allcontributors.org/docs/en/bot/overview).

@@ -3,6 +3,7 @@
 /*******************************
          Theme Overrides
 *******************************/
+/*rtl:begin:ignore*/
 
 i.flag.ad:before,
 i.flag.andorra:before {
@@ -989,3 +990,5 @@ i.flag.zw:before,
 i.flag.zimbabwe:before {
   background-position: -108px -390px;
 }
+
+/*rtl:end:ignore*/

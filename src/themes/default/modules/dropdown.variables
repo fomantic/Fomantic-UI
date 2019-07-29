@@ -99,6 +99,7 @@
 /* Item Sub-Element */
 @itemElementFloat: none;
 @itemElementDistance: @mini;
+@itemElementBottomDistance: @itemElementDistance / 2;
 
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
@@ -273,6 +274,9 @@
 @labelVerticalPadding: @relative5px;
 @labelHorizontalPadding: @relativeMini;
 @labelPadding: @labelVerticalPadding @labelHorizontalPadding;
+
+@imageLabelHeight: (1em + @labelVerticalPadding * 2);  /* Logic adopted from label.less */
+@imageLabelImageMargin: -@labelVerticalPadding @labelHorizontalPadding -@labelVerticalPadding -@labelHorizontalPadding;
 
 /*-------------------
        States

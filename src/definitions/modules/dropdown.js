@@ -85,6 +85,7 @@ $.fn.dropdown = function(parameters) {
         element         = this,
         instance        = $module.data(moduleNamespace),
 
+        selectActionActive,
         initialLoad,
         pageLostFocus,
         willRefocus,
@@ -1200,7 +1201,9 @@ $.fn.dropdown = function(parameters) {
             },
             hide: function(event) {
               if(module.determine.eventInModule(event, module.hide)){
+                if(element.id && $(event.target).attr('for') === element.id){
                   event.preventDefault();
+                }
               }
             }
           },
@@ -1638,6 +1641,7 @@ $.fn.dropdown = function(parameters) {
 
         determine: {
           selectAction: function(text, value) {
+            selectActionActive = true;
             module.verbose('Determining action', settings.action);
             if( $.isFunction( module.action[settings.action] ) ) {
               module.verbose('Triggering preset action', settings.action, text, value);
@@ -1650,6 +1654,7 @@ $.fn.dropdown = function(parameters) {
             else {
               module.error(error.action, settings.action);
             }
+            selectActionActive = false;
           },
           eventInModule: function(event, callback) {
             var
@@ -2024,11 +2029,11 @@ $.fn.dropdown = function(parameters) {
                 ? module.get.values()
                 : module.get.text()
             ;
+            isMultiple = (module.is.multiple() && Array.isArray(value));
             shouldSearch = (isMultiple)
               ? (value.length > 0)
               : (value !== undefined && value !== null)
             ;
-            isMultiple = (module.is.multiple() && Array.isArray(value));
             strict     = (value === '' || value === false  || value === true)
               ? true
               : strict || false
@@ -2172,7 +2177,8 @@ $.fn.dropdown = function(parameters) {
             else {
               module.set.selected();
             }
-            if(module.get.item()) {
+            var value = module.get.value();
+            if(value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
               $input.addClass(className.noselection);
@@ -2671,7 +2677,7 @@ $.fn.dropdown = function(parameters) {
                       module.set.activeItem($selected);
                     }
                   }
-                  else if(!isFiltered) {
+                  else if(!isFiltered && (settings.useLabels || selectActionActive)) {
                     module.debug('Selected active value, removing label');
                     module.remove.selected(selectedValue);
                   }
@@ -3952,7 +3958,11 @@ $.fn.dropdown.settings = {
     name         : 'name',     // displayed dropdown text
     value        : 'value',    // actual dropdown value
     text         : 'text',     // displayed text when selected
-    type         : 'type'      // type of dropdown element
+    type         : 'type',     // type of dropdown element
+    image        : 'image',    // optional image path
+    imageClass   : 'imageClass', // optional individual class for image
+    icon        : 'icon',     // optional icon name
+    iconClass   : 'iconClass'  // optional individual class for icon (for example to use flag instead)
   },
 
   keys : {
@@ -3999,6 +4009,8 @@ $.fn.dropdown.settings = {
     dropdown    : 'ui dropdown',
     filtered    : 'filtered',
     hidden      : 'hidden transition',
+    icon        : 'icon',
+    image       : 'image',
     item        : 'item',
     label       : 'ui label',
     loading     : 'loading',
@@ -4022,6 +4034,9 @@ $.fn.dropdown.settings = {
 
 /* Templates */
 $.fn.dropdown.settings.templates = {
+  deQuote: function(string) {
+      return String(string).replace(/"/g,"");
+  },
   escape: function(string, preserveHTML) {
     if (preserveHTML){
       return string;
@@ -4052,7 +4067,8 @@ $.fn.dropdown.settings.templates = {
       placeholder = select.placeholder || false,
       values      = select.values || [],
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -4063,7 +4079,7 @@ $.fn.dropdown.settings.templates = {
     }
     html += '<div class="'+className.menu+'">';
     $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + String(option.value).replace(/"/g,"") + '">' + escape(option.name,preserveHTML) + '</div>';
+      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + deQuote(option.value) + '">' + escape(option.name,preserveHTML) + '</div>';
     });
     html += '</div>';
     return html;
@@ -4074,7 +4090,8 @@ $.fn.dropdown.settings.templates = {
     var
       values = response[fields.values] || [],
       html   = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     $.each(values, function(index, option) {
       var
@@ -4086,13 +4103,19 @@ $.fn.dropdown.settings.templates = {
       if( itemType === 'item' ) {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + String(option[fields.text]).replace(/"/g,"") + '"'
+            ? ' data-text="' + deQuote(option[fields.text]) + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + String(option[fields.value]).replace(/"/g,"") + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        if(option[fields.image]) {
+          html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+        }
+        if(option[fields.icon]) {
+          html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
+        }
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {

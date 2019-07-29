@@ -283,7 +283,8 @@
   background: @definitionHeaderBackground;
   font-weight: @definitionHeaderFontWeight;
   color: @definitionHeaderColor;
-  box-shadow: -@borderWidth -@borderWidth 0 @borderWidth @definitionPageBackground;
+  box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -291,15 +292,8 @@
   background: @definitionFooterBackground;
   font-weight: @definitionFooterFontWeight;
   color: @definitionFooterColor;
-  box-shadow: -@borderWidth @borderWidth 0 @borderWidth @definitionPageBackground;
-}
-
-/* Remove Border */
-.ui.celled.definition.table > thead:not(.full-width) > tr > th:first-child {
-  box-shadow: 0 -@borderWidth 0 @borderWidth @definitionPageBackground;
-}
-.ui.celled.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  box-shadow: 0 @borderWidth 0 @borderWidth @definitionPageBackground;
+  box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 /* Highlight Defining Column */
@@ -329,7 +323,6 @@
 .ui.definition.table > tbody > tr > td:nth-child(2) {
   border-left: @borderWidth solid @borderColor;
 }
-
 
 /*******************************
              States

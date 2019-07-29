@@ -71,8 +71,42 @@ $.fn.progress = function(parameters) {
         helper: {
           sum: function (nums) {
             return Array.isArray(nums) ? nums.reduce(function (left, right) {
-              return left + right;
+              return left + Number(right);
             }, 0) : 0;
+          },
+          /**
+           * Derive precision for multiple progress with total and values.
+           *
+           * This helper dervices a precision that is sufficiently large to show minimum value of multiple progress.
+           *
+           * Example1
+           * - total: 1122
+           * - values: [325, 111, 74, 612]
+           * - min ratio: 74/1122 = 0.0659...
+           * - required precision:  100
+           *
+           * Example2
+           * - total: 10541
+           * - values: [3235, 1111, 74, 6121]
+           * - min ratio: 74/10541 = 0.0070...
+           * - required precision:   1000
+           *
+           * @param min A minimum value within multiple values
+           * @param total A total amount of multiple values
+           * @returns {number} A precison. Could be 1, 10, 100, ... 1e+10.
+           */
+          derivePrecision: function(min, total) {
+            var precisionPower = 0
+            var precision = 1;
+            var ratio = min / total;
+            while (precisionPower < 10) {
+              ratio = ratio * precision;
+              if (ratio > 1) {
+                break;
+              }
+              precision = Math.pow(10, precisionPower++);
+            }
+            return precision;
           },
           forceArray: function (element) {
             return Array.isArray(element)
@@ -411,52 +445,43 @@ $.fn.progress = function(parameters) {
           barWidth: function(values) {
             module.debug("set bar width with ", values);
             values = module.helper.forceArray(values);
-            var total = module.helper.sum(values);
-            if(total > 100) {
-              module.error(error.tooHigh, total);
-            }
-            else if (total < 0) {
-              module.error(error.tooLow, total);
-            }
-            else {
-              var firstNonZeroIndex = -1;
-              var lastNonZeroIndex = -1;
-              var valuesSum = module.helper.sum(values);
-              var barCounts = $bars.length;
-              var isMultiple = barCounts > 1;
-              var percents = values.map(function(value, index) {
-                var allZero = (index === barCounts - 1 && valuesSum === 0);
-                var $bar = $($bars[index]);
-                if (value === 0 && isMultiple && !allZero) {
-                  $bar.css('display', 'none');
-                } else {
-                  if (isMultiple && allZero) {
-                    $bar.css('background', 'transparent');
-                  }
-                  if (firstNonZeroIndex == -1) {
-                    firstNonZeroIndex = index;
-                  }
-                  lastNonZeroIndex = index;
-                  $bar.css({
-                    display: 'block',
-                    width: value + '%'
-                  });
+            var firstNonZeroIndex = -1;
+            var lastNonZeroIndex = -1;
+            var valuesSum = module.helper.sum(values);
+            var barCounts = $bars.length;
+            var isMultiple = barCounts > 1;
+            var percents = values.map(function(value, index) {
+              var allZero = (index === barCounts - 1 && valuesSum === 0);
+              var $bar = $($bars[index]);
+              if (value === 0 && isMultiple && !allZero) {
+                $bar.css('display', 'none');
+              } else {
+                if (isMultiple && allZero) {
+                  $bar.css('background', 'transparent');
                 }
-                return parseInt(value, 10);
-              });
-              values.forEach(function(_, index) {
-                var $bar = $($bars[index]);
+                if (firstNonZeroIndex == -1) {
+                  firstNonZeroIndex = index;
+                }
+                lastNonZeroIndex = index;
                 $bar.css({
-                  borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                  borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                  borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                  display: 'block',
+                  width: value + '%'
                 });
+              }
+              return parseInt(value, 10);
+            });
+            values.forEach(function(_, index) {
+              var $bar = $($bars[index]);
+              $bar.css({
+                borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
+                borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
+                borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
               });
-              $module
-                .attr('data-percent', percents)
-              ;
-            }
+            });
+            $module
+              .attr('data-percent', percents)
+            ;
           },
           duration: function(duration) {
             duration = duration || settings.duration;
@@ -478,34 +503,54 @@ $.fn.progress = function(parameters) {
                 : percent
                 ;
             });
-            // round display percentage
-            percents = percents.map(function(percent){
-              return (settings.precision > 0)
-                ? Math.round(percent * (10 * settings.precision)) / (10 * settings.precision)
-                : Math.round(percent)
-              ;
-            });
-            module.percent = percents;
-            if( !module.has.total() ) {
-              module.value = percents.map(function(percent){
-                return (settings.precision > 0)
-                  ? Math.round( (percent / 100) * module.total * (10 * settings.precision)) / (10 * settings.precision)
-                  : Math.round( (percent / 100) * module.total * 10) / 10
-                ;
+            var hasTotal = module.has.total();
+            var totalPecent = module.helper.sum(percents);
+            var isMultpleValues = percents.length > 1 && hasTotal;
+            var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
+            if (isMultpleValues && sumTotal > module.total) {
+              // Sum values instead of pecents to avoid precision issues when summing floats
+              module.error(error.sumExceedsTotal, sumTotal, module.total);
+            } else if (!isMultpleValues && totalPecent > 100) {
+              // Sum before rouding since sum of rounded may have error though sum of actual is fine
+              module.error(error.tooHigh, totalPecent);
+            } else if (totalPecent < 0) {
+              module.error(error.tooLow, totalPecent);
+            } else {
+              var autoPrecision = settings.precision > 0
+                ? settings.precision
+                : isMultpleValues
+                  ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
+                  : undefined;
+
+              // round display percentage
+              percents = percents.map(function (percent) {
+                return (autoPrecision > 0)
+                  ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
+                  : Math.round(percent)
+                  ;
               });
-              if(settings.limitValues) {
-                module.value = module.value.map(function(value) {
-                  return (value > 100)
-                    ? 100
-                    : (module.value < 0)
-                      ? 0
-                      : module.value;
+              module.percent = percents;
+              if (!hasTotal) {
+                module.value = percents.map(function (percent) {
+                  return (autoPrecision > 0)
+                    ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
+                    : Math.round((percent / 100) * module.total * 10) / 10
+                    ;
                 });
+                if (settings.limitValues) {
+                  module.value = module.value.map(function (value) {
+                    return (value > 100)
+                      ? 100
+                      : (module.value < 0)
+                        ? 0
+                        : module.value;
+                  });
+                }
               }
+              module.set.barWidth(percents);
+              module.set.labelInterval();
+              module.set.labels();
             }
-            module.set.barWidth(percents);
-            module.set.labelInterval();
-            module.set.labels();
             settings.onChange.call(element, percents, module.value, module.total);
           },
           labelInterval: function() {
@@ -550,7 +595,7 @@ $.fn.progress = function(parameters) {
               : module.helper.sum(module.percent)
             ;
             if(percent === 100) {
-              if(settings.autoSuccess && !(module.is.warning() || module.is.error() || module.is.success())) {
+              if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                 module.set.success();
                 module.debug('Automatically triggering success at 100%');
               }
@@ -946,10 +991,11 @@ $.fn.progress.settings = {
   onWarning     : function(value, total){},
 
   error    : {
-    method     : 'The method you called is not defined.',
-    nonNumeric : 'Progress value is non numeric',
-    tooHigh    : 'Value specified is above 100%',
-    tooLow     : 'Value specified is below 0%'
+    method          : 'The method you called is not defined.',
+    nonNumeric      : 'Progress value is non numeric',
+    tooHigh         : 'Value specified is above 100%',
+    tooLow          : 'Value specified is below 0%',
+    sumExceedsTotal : 'Sum of multple values exceed total',
   },
 
   regExp: {

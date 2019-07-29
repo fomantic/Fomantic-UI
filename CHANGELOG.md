@@ -1,3 +1,65 @@
+## [2.7.7](https://github.com/fomantic/Fomantic-UI/compare/2.7.6...2.7.7) (2019-07-28)
+
+
+### Bug Fixes
+
+* **accordion:** remove transition class after animation so loaders work ([0b9801b](https://github.com/fomantic/Fomantic-UI/commit/0b9801b)), closes [#865](https://github.com/fomantic/Fomantic-UI/issues/865)
+* **container:** respect fluid container on mobile screen ([e3a6bc3](https://github.com/fomantic/Fomantic-UI/commit/e3a6bc3)), closes [#900](https://github.com/fomantic/Fomantic-UI/issues/900)
+* **dropdown:** correct clear icon alignment ([6b33c3d](https://github.com/fomantic/Fomantic-UI/commit/6b33c3d)), closes [#837](https://github.com/fomantic/Fomantic-UI/issues/837)
+* **dropdown:** corrected initial clearable icon when select tag is used ([31d80d2](https://github.com/fomantic/Fomantic-UI/commit/31d80d2)), closes [#839](https://github.com/fomantic/Fomantic-UI/issues/839)
+* **dropdown:** dont toggle on "set selected" when no labels are used ([53c22c9](https://github.com/fomantic/Fomantic-UI/commit/53c22c9)), closes [#670](https://github.com/fomantic/Fomantic-UI/issues/670)
+* **dropdown:** only preventdefault on hide for associating labels ([568858c](https://github.com/fomantic/Fomantic-UI/commit/568858c)), closes [#861](https://github.com/fomantic/Fomantic-UI/issues/861)
+* **flag:** rtl build changed background-position values ([40ae7aa](https://github.com/fomantic/Fomantic-UI/commit/40ae7aa)), closes [#859](https://github.com/fomantic/Fomantic-UI/issues/859)
+* **form:** correct inline checkbox label padding ([2eaaff1](https://github.com/fomantic/Fomantic-UI/commit/2eaaff1)), closes [#823](https://github.com/fomantic/Fomantic-UI/issues/823)
+* **form:** inline field label doesn't respect error styles ([e70a015](https://github.com/fomantic/Fomantic-UI/commit/e70a015)), closes [#818](https://github.com/fomantic/Fomantic-UI/issues/818)
+* **form:** prompt template function ([cc97a30](https://github.com/fomantic/Fomantic-UI/commit/cc97a30))
+* **image:** hidden images were still visible when used in image groups ([a0bf2b3](https://github.com/fomantic/Fomantic-UI/commit/a0bf2b3))
+* **label:** content margin after two attached labels ([2510ea9](https://github.com/fomantic/Fomantic-UI/commit/2510ea9))
+* **search:** 'get result' on numerical or user defined fields didnt work ([04109b2](https://github.com/fomantic/Fomantic-UI/commit/04109b2)), closes [#897](https://github.com/fomantic/Fomantic-UI/issues/897)
+* **site:** revert size variable declaration ([1f1c6f0](https://github.com/fomantic/Fomantic-UI/commit/1f1c6f0))
+* **step:** step visualization also on non active ([a53fe20](https://github.com/fomantic/Fomantic-UI/commit/a53fe20)), closes [#830](https://github.com/fomantic/Fomantic-UI/issues/830)
+* **table:** colored definition table top cell border overlap ([b7ad310](https://github.com/fomantic/Fomantic-UI/commit/b7ad310)), closes [#883](https://github.com/fomantic/Fomantic-UI/issues/883)
+
+
+### Features
+
+* **checkbox:** add sizes and form size inheritance ([58fdc6a](https://github.com/fomantic/Fomantic-UI/commit/58fdc6a)), closes [#666](https://github.com/fomantic/Fomantic-UI/issues/666)
+* **checkbox:** add toggle on ENTER-key option ([5d16709](https://github.com/fomantic/Fomantic-UI/commit/5d16709)), closes [#819](https://github.com/fomantic/Fomantic-UI/issues/819)
+* **dropdown:** add support for images/icons in api response param ([f033782](https://github.com/fomantic/Fomantic-UI/commit/f033782)), closes [#872](https://github.com/fomantic/Fomantic-UI/issues/872)
+* **icons:** update icons to FA 5.9.0 ([dfc9109](https://github.com/fomantic/Fomantic-UI/commit/dfc9109)), closes [#739](https://github.com/fomantic/Fomantic-UI/issues/739) [#887](https://github.com/fomantic/Fomantic-UI/issues/887) [#739](https://github.com/fomantic/Fomantic-UI/issues/739)
+* **modal:** destroy should tear down mutation observer ([d880d35](https://github.com/fomantic/Fomantic-UI/commit/d880d35))
+* **popup:** add optional setting 'forcePosition' to disable calculation ([e103541](https://github.com/fomantic/Fomantic-UI/commit/e103541)), closes [#684](https://github.com/fomantic/Fomantic-UI/issues/684)
+
+
+
+## [2.7.6](https://github.com/fomantic/Fomantic-UI/compare/2.7.5...2.7.6) (2019-06-16)
+
+
+### Bug Fixes
+
+* **button:** center text in fluid & vertically aligned button group ([bfd7c84](https://github.com/fomantic/Fomantic-UI/commit/bfd7c84))
+* **button,table:** move LESS functions out of LESS file and into variables ([e3d7eb6](https://github.com/fomantic/Fomantic-UI/commit/e3d7eb6)), closes [#736](https://github.com/fomantic/Fomantic-UI/issues/736)
+* **calendar:** support dynamic way to append popup instead of prepending to the parent ([1acf30e](https://github.com/fomantic/Fomantic-UI/commit/1acf30e)), closes [#699](https://github.com/fomantic/Fomantic-UI/issues/699)
+* **calendar:** support JSON dates ([2d1ffdc](https://github.com/fomantic/Fomantic-UI/commit/2d1ffdc)), closes [#741](https://github.com/fomantic/Fomantic-UI/issues/741)
+* **dropdown:** check for existing observer before accessing it ([e7ebb38](https://github.com/fomantic/Fomantic-UI/commit/e7ebb38)), closes [#784](https://github.com/fomantic/Fomantic-UI/issues/784)
+* **form:** remove rule function lead to TypeError ([752827e](https://github.com/fomantic/Fomantic-UI/commit/752827e))
+* **form:** stop propagation only when dirty event was triggered and prevent default action ([2b33903](https://github.com/fomantic/Fomantic-UI/commit/2b33903)), closes [#746](https://github.com/fomantic/Fomantic-UI/issues/746) [#770](https://github.com/fomantic/Fomantic-UI/issues/770) [#786](https://github.com/fomantic/Fomantic-UI/issues/786) [atk4/ui#718](https://github.com/atk4/ui/issues/718)
+* **form:** transparent input padding and texarea support ([dd561b5](https://github.com/fomantic/Fomantic-UI/commit/dd561b5)), closes [#798](https://github.com/fomantic/Fomantic-UI/issues/798)
+* **icon:** don't import default theme overrides ([c4d5307](https://github.com/fomantic/Fomantic-UI/commit/c4d5307)), closes [#763](https://github.com/fomantic/Fomantic-UI/issues/763)
+* **icon:** improve default theme overrides import ([0bf3ddf](https://github.com/fomantic/Fomantic-UI/commit/0bf3ddf)), closes [#763](https://github.com/fomantic/Fomantic-UI/issues/763)
+* **menu:** hover & active state colors on inverted secondary pointing ([d34b681](https://github.com/fomantic/Fomantic-UI/commit/d34b681)), closes [#777](https://github.com/fomantic/Fomantic-UI/issues/777)
+* **progress:** wrong error on validating total on multiple progress ([52bfd66](https://github.com/fomantic/Fomantic-UI/commit/52bfd66)), closes [#757](https://github.com/fomantic/Fomantic-UI/issues/757)
+* **slider:** non reachable max value and rounding issues ([014b7ef](https://github.com/fomantic/Fomantic-UI/commit/014b7ef)), closes [#716](https://github.com/fomantic/Fomantic-UI/issues/716)
+* **table:** table header on mobile ([e09b2ab](https://github.com/fomantic/Fomantic-UI/commit/e09b2ab)), closes [#787](https://github.com/fomantic/Fomantic-UI/issues/787)
+* **transition:** not checking for event object lead to TypeError ([0c56c8d](https://github.com/fomantic/Fomantic-UI/commit/0c56c8d)), closes [#698](https://github.com/fomantic/Fomantic-UI/issues/698) [#745](https://github.com/fomantic/Fomantic-UI/issues/745)
+
+
+### Features
+
+* **progress:** add indeterminate states ([816fbbd](https://github.com/fomantic/Fomantic-UI/commit/816fbbd))
+
+
+
 ## [2.7.5](https://github.com/fomantic/Fomantic-UI/compare/2.7.4...2.7.5) (2019-05-09)
 
 

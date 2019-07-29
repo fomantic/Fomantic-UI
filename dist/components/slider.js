@@ -519,14 +519,18 @@ $.fn.slider = function(parameters) {
             return settings.min;
           },
           max: function() {
-            return settings.max;
+            var step = module.get.step(),
+                min = module.get.min(),
+                quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
+                remainder = step === 0 ? 0 : (settings.max - min) % step;
+            return remainder === 0 ? settings.max : min + quotient * step;
           },
           step: function() {
             return settings.step;
           },
           numLabels: function() {
             var value = Math.round((module.get.max() - module.get.min()) / module.get.step());
-            module.debug('Determined that their should be ' + value + ' labels');
+            module.debug('Determined that there should be ' + value + ' labels');
             return value;
           },
           labelType: function() {
@@ -539,7 +543,7 @@ $.fn.slider = function(parameters) {
 
             switch (settings.labelType) {
               case settings.labelTypes.number:
-                return (value * module.get.step()) + module.get.min();
+                return Math.round(((value * module.get.step()) + module.get.min()) * precision ) / precision;
               case settings.labelTypes.letter:
                 return alphabet[(value) % 26];
               default:
