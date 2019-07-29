@@ -3065,7 +3065,7 @@
   1f3fd: tone3;
   1f3fe: tone4;
   1f3ff: tone5;
-);
+};
 
 @size-map: {
 	small: 1;
