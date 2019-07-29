@@ -34,3 +34,18 @@
 @variationCheckboxIndeterminate: true;
 @variationCheckboxFitted: true;
 @variationCheckboxSizes: @variationAllSizes;
+
+/* Label */
+@variationLabelDisabled: true;
+@variationLabelInverted: true;
+@variationLabelImage: true;
+@variationLabelTag: true;
+@variationLabelCorner: true;
+@variationLabelRibbon: true;
+@variationLabelCircular: true;
+@variationLabelPointing: true;
+@variationLabelFloating: true;
+@variationLabelBasic: true;
+@variationLabelAttached: true;
+@variationLabelFluid: true;
+@variationLabelSizes: @variationAllSizes;
