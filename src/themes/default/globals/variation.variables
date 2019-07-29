@@ -2,6 +2,10 @@
   Central element variation compilation enablers
 ***********************************************************/
 
+/* General */
+@variationAllSizes: mini, tiny, small, large, big, huge, massive;
+
+/* Button */
 @variationButtonSocial: true;
 @variationButtonFloated: true;
 @variationButtonFloated: true;
@@ -14,4 +18,8 @@
 @variationButtonAttached: true;
 @variationButtonFluid: true;
 @variationButtonGroups: true;
-@variationButtonSizes: mini, tiny, small, large, big, huge, massive;
+@variationButtonSizes: @variationAllSizes;
+
+/* Checkbox */
+@variationCheckboxBox: false;   //.box (instead of label) is an ancient fragment of sui v1 and not even documented in v2.x anymore
+@variationCheckboxSizes: @variationAllSizes;
