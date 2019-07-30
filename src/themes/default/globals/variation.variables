@@ -153,6 +153,14 @@
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
 
+/* Placeholder */
+@variationPlaceholderInverted: true;
+@variationPlaceholderImage: true;
+@variationPlaceholderLine: true;
+@variationPlaceholderHeader: true;
+@variationPlaceholderFluid: true;
+@variationPlaceholderLengths: true;
+
 /* Rail */
 @variationRailInternal: true;
 @variationRailDividing: true;
