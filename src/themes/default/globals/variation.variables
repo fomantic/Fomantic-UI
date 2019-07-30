@@ -311,3 +311,22 @@
 @variationTablePadded: true;
 @variationTableCompact: true;
 @variationTableSizes: @variationAllSizes;
+
+
+/*******************************
+             Views
+*******************************/
+
+/* Ad */
+@variationAdLeaderboard: true;
+@variationAdBillboard: true;
+@variationAdPanorama: true;
+@variationAdNetboard: true;
+@variationAdRectangle: true;
+@variationAdSquare: true;
+@variationAdButton: true;
+@variationAdSkyscraper: true;
+@variationAdBanner: true;
+@variationAdMobile: true;
+@variationAdCentered: true;
+@variationAdTest: true;
