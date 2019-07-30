@@ -49,6 +49,21 @@
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 
+/* Image */
+@variationImageDisabled: true;
+@variationImageCircular: true;
+@variationImageBordered: true;
+@variationImageRounded: true;
+@variationImageInline: true;
+@variationImageAligned: true;
+@variationImageFluid: true;
+@variationImageAvatar: true;
+@variationImageFloated: true;
+@variationImageSpaced: true;
+@variationImageCentered: true;
+@variationImageGroups: true;
+@variationImageSizes: @variationAllSizes;
+
 /* Input */
 @variationInputDisabled: true;
 @variationInputInverted: true;
