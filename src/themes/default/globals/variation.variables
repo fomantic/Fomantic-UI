@@ -360,3 +360,10 @@
 @variationItemLink: true;
 @variationItemUnstackable: true;
 @variationItemSizes: @variationAllSizes;
+
+/* Statistic */
+@variationStatisticInverted: true;
+@variationStatisticStackable: true;
+@variationStatisticFloated: true;
+@variationStatisticHorizontal: true;
+@variationStatisticSizes: @variationAllSizes;
