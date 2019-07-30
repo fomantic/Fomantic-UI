@@ -330,3 +330,14 @@
 @variationAdMobile: true;
 @variationAdCentered: true;
 @variationAdTest: true;
+
+/* Card */
+@variationCardInverted: true;
+@variationCardHorizontal: true;
+@variationCardRaised: true;
+@variationCardCentered: true;
+@variationCardFluid: true;
+@variationCardLink: true;
+@variationCardDoubling: true;
+@variationCardStackable: true;
+@variationCardSizes: @variationAllSizes;
