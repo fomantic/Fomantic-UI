@@ -35,6 +35,20 @@
 @variationCheckboxFitted: true;
 @variationCheckboxSizes: @variationAllSizes;
 
+/* Header */
+@variationHeaderDisabled: true;
+@variationHeaderInverted: true;
+@variationHeaderSub: true;
+@variationHeaderIcon: true;
+@variationHeaderAligned: true;
+@variationHeaderFloated: true;
+@variationHeaderFitted: true;
+@variationHeaderDividing: true;
+@variationHeaderBlock: true;
+@variationHeaderAttached: true;
+@variationHeaderTags: h1, h2, h3, h4, h5, h6;
+@variationHeaderSizes: @variationAllSizes;
+
 /* Input */
 @variationInputDisabled: true;
 @variationInputInverted: true;

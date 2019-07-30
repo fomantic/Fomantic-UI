@@ -28,9 +28,13 @@
 @subHeadingTextTransform: uppercase;
 @subHeadingColor: '';
 
+@miniSubHeadingSize: @relativeMini;
+@tinySubHeadingSize: @relativeMini;
 @smallSubHeadingSize: @relativeMini;
 @largeSubHeadingSize: @relativeSmall;
+@bigSubHeadingSize: @relativeMedium;
 @hugeSubHeadingSize: @relativeMedium;
+@massiveSubHeadingSize: @relativeLarge;
 
 /* Sub Header */
 @subHeaderMargin: 0;
@@ -69,11 +73,14 @@
 --------------------*/
 
 /* Sizing */
+@massiveFontSize: unit(32 / 14, em);
 @hugeFontSize   : unit(@h1, em);
+@bigFontSize    : unit(26 / 14, em);
 @largeFontSize  : unit(@h2, em);
 @mediumFontSize : unit(@h3, em);
 @smallFontSize  : unit(@h4, em);
 @tinyFontSize   : unit(@h5, em);
+@miniFontSize   : unit(@h6, em);
 
 /* Sub Header */
 @h1SubHeaderFontSize: @large;
@@ -81,12 +88,16 @@
 @h3SubHeaderFontSize: @medium;
 @h4SubHeaderFontSize: @medium;
 @h5SubHeaderFontSize: @small;
+@h6SubHeaderFontSize: @small;
 
+@massiveSubHeaderFontSize  : @huge;
 @hugeSubHeaderFontSize  : @h1SubHeaderFontSize;
+@bigSubHeaderFontSize   : @h1SubHeaderFontSize;
 @largeSubHeaderFontSize : @h2SubHeaderFontSize;
 @subHeaderFontSize      : @h3SubHeaderFontSize;
 @smallSubHeaderFontSize : @h4SubHeaderFontSize;
 @tinySubHeaderFontSize  : @h5SubHeaderFontSize;
+@miniSubHeaderFontSize  : @h6SubHeaderFontSize;
 
 /* Icon Header */
 @iconHeaderSize: 3em;
@@ -119,11 +130,14 @@
 @blockVerticalPadding: @mini;
 @blockBorderRadius: @defaultBorderRadius;
 
+@miniBlock: @mini;
 @tinyBlock: @tiny;
 @smallBlock: @small;
 @mediumBlock: @medium;
 @largeBlock: @large;
+@bigBlock: @big;
 @hugeBlock: @huge;
+@massiveBlock: @massive;
 
 /* Attached */
 @attachedOffset: -1px;
@@ -134,12 +148,14 @@
 @attachedBackground: @white;
 @attachedBorderRadius: @blockBorderRadius;
 
+@miniAttachedSize: @relativeMini;
 @tinyAttachedSize: @relativeTiny;
 @smallAttachedSize: @relativeSmall;
 @mediumAttachedSize: @relativeMedium;
 @largeAttachedSize: @relativeLarge;
 @bigAttachedSize: @relativeBig;
 @hugeAttachedSize: @relativeHuge;
+@massiveAttachedSize: @relativeMassive;
 
 /* Inverted */
 @invertedColor: @white;
