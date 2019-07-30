@@ -46,6 +46,7 @@
 @variationContainerText: true;
 @variationContainerFluid: true;
 @variationContainerAligned: true;
+@variationContainerJustified: true;
 
 /* Divider */
 @variationDividerInverted: true;
@@ -64,6 +65,7 @@
 @variationHeaderSub: true;
 @variationHeaderIcon: true;
 @variationHeaderAligned: true;
+@variationHeaderJustified: true;
 @variationHeaderFloated: true;
 @variationHeaderFitted: true;
 @variationHeaderDividing: true;
