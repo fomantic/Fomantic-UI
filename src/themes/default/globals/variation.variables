@@ -341,3 +341,9 @@
 @variationCardDoubling: true;
 @variationCardStackable: true;
 @variationCardSizes: @variationAllSizes;
+
+/* Comment */
+@variationCommentInverted: true;
+@variationCommentThreaded: true;
+@variationCommentMinimal: true;
+@variationCommentSizes: @variationAllSizes;
