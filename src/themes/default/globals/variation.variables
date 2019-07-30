@@ -68,6 +68,20 @@
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
 
+/* Icon */
+@variationIconDisabled: true;
+@variationIconInverted: true;
+@variationIconLoading: true;
+@variationIconFitted: true;
+@variationIconLink: true;
+@variationIconCircular: true;
+@variationIconBordered: true;
+@variationIconRotated: true;
+@variationIconFlipped: true;
+@variationIconCorner: true;
+@variationIconGroups: true;
+@variationIconSizes: @variationAllSizes;
+
 /* Image */
 @variationImageDisabled: true;
 @variationImageCircular: true;
