@@ -36,6 +36,13 @@
 @variationCheckboxFitted: true;
 @variationCheckboxSizes: @variationAllSizes;
 
+/* Container */
+@variationContainerGrid: true;
+@variationContainerRelaxed: true;
+@variationContainerText: true;
+@variationContainerFluid: true;
+@variationContainerAligned: true;
+
 /* Header */
 @variationHeaderDisabled: true;
 @variationHeaderInverted: true;
