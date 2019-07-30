@@ -167,3 +167,11 @@
 @variationRailDistance: true;
 @variationRailAttached: true;
 @variationRailSizes: @variationAllSizes;
+
+/* Reveal */
+@variationRevealDisabled: true;
+@variationRevealSlide: true;
+@variationRevealFade: true;
+@variationRevealMove: true;
+@variationRevealRotate: true;
+@variationRevealSizes: @variationAllSizes;
