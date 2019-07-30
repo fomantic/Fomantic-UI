@@ -127,3 +127,10 @@
 @variationLoaderInline: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
+
+/* Rail */
+@variationRailInternal: true;
+@variationRailDividing: true;
+@variationRailDistance: true;
+@variationRailAttached: true;
+@variationRailSizes: @variationAllSizes;
