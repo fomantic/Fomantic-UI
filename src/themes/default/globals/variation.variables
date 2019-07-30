@@ -227,3 +227,16 @@
 /* Breadcrumb */
 @variationBreadcrumbInverted: true;
 @variationBreadcrumbSizes: @variationAllSizes;
+
+/* Form */
+@variationFormInverted: true;
+@variationFormDisabled: true;
+@variationFormTransparent: true;
+@variationFormLoading: true;
+@variationFormSuccess: true;
+@variationFormError: true;
+@variationFormWarning: true;
+@variationFormRequired: true;
+@variationFormInline: true;
+@variationFormGrouped: true;
+@variationFormSizes: @variationAllSizes;
