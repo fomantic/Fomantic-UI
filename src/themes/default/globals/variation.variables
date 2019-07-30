@@ -21,6 +21,7 @@
 @variationButtonOr: true;
 @variationButtonAttached: true;
 @variationButtonFluid: true;
+@variationButtonCircular: true;
 @variationButtonGroups: true;
 @variationButtonSizes: @variationAllSizes;
 
@@ -91,6 +92,26 @@
 @variationLabelAttached: true;
 @variationLabelFluid: true;
 @variationLabelSizes: @variationAllSizes;
+
+/* List */
+@variationListInverted: true;
+@variationListDisabled: true;
+@variationListBulleted: true;
+@variationListOrdered: true;
+@variationListIcon: true;
+@variationListImage: true;
+@variationListFloated: true;
+@variationListLink: true;
+@variationListAligned: true;
+@variationListFitted: true;
+@variationListAnimated: true;
+@variationListHorizontal: true;
+@variationListSuffixed: true;
+@variationListSelection: true;
+@variationListDivided: true;
+@variationListCelled: true;
+@variationListRelaxed: true;
+@variationListSizes: @variationAllSizes;
 
 /* Loader */
 @variationLoaderSpeeds: true;
