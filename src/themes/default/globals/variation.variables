@@ -199,3 +199,13 @@
 @variationSegmentAttached: true;
 @variationSegmentFitted: true;
 @variationSegmentSizes: @variationAllSizes;
+
+/* Step */
+@variationStepInverted: true;
+@variationStepDisabled: true;
+@variationStepStackable: true;
+@variationStepVertical: true;
+@variationStepOrdered: true;
+@variationStepFluid: true;
+@variationStepAttached: true;
+@variationStepSizes: @variationAllSizes;
