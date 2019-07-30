@@ -209,3 +209,8 @@
 @variationStepFluid: true;
 @variationStepAttached: true;
 @variationStepSizes: @variationAllSizes;
+
+/* Text */
+@variationTextInverted: true;
+@variationTextDisabled: true;
+@variationTextSizes: @variationAllSizes;
