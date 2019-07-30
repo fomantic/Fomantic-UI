@@ -287,3 +287,27 @@
 @variationMessageFloating: true;
 @variationMessageConsequences: true;
 @variationMessageSizes: @variationAllSizes;
+
+/* Table */
+@variationTableInverted: true;
+@variationTableDisabled: true;
+@variationTableDefinition: true;
+@variationTableStructured: true;
+@variationTablePositive: true;
+@variationTableNegative: true;
+@variationTableError: true;
+@variationTableWarning: true;
+@variationTableActive: true;
+@variationTableStackable: true;
+@variationTableAligned: true;
+@variationTableFixed: true;
+@variationTableSelectable: true;
+@variationTableAttached: true;
+@variationTableStriped: true;
+@variationTableSortable: true;
+@variationTableCollapsing: true;
+@variationTableBasic: true;
+@variationTableCelled: true;
+@variationTablePadded: true;
+@variationTableCompact: true;
+@variationTableSizes: @variationAllSizes;
