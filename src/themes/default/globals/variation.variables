@@ -367,3 +367,18 @@
 @variationStatisticFloated: true;
 @variationStatisticHorizontal: true;
 @variationStatisticSizes: @variationAllSizes;
+
+
+/*******************************
+            Modules
+*******************************/
+
+/* Modal */
+@variationModalInverted: true;
+@variationModalBasic: true;
+@variationModalFullscreen: true;
+@variationModalOverlay: true;
+@variationModalAligned: true;
+@variationModalScrolling: true;
+@variationModalLegacy: true;
+@variationModalSizes: @variationAllSizes;
