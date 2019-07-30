@@ -278,3 +278,12 @@
 @variationMenuFixed: true;
 @variationMenuAttached: true;
 @variationMenuSizes: @variationAllSizes;
+
+/* Message */
+@variationMessageInverted: true;
+@variationMessageCompact: true;
+@variationMessageAttached: true;
+@variationMessageIcon: true;
+@variationMessageFloating: true;
+@variationMessageConsequences: true;
+@variationMessageSizes: @variationAllSizes;
