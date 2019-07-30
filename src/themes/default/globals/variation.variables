@@ -175,3 +175,27 @@
 @variationRevealMove: true;
 @variationRevealRotate: true;
 @variationRevealSizes: @variationAllSizes;
+
+/* Segment */
+@variationSegmentInverted: true;
+@variationSegmentDisabled: true;
+@variationSegmentVertical: true;
+@variationSegmentPlaceholder: true;
+@variationSegmentHorizontal: true;
+@variationSegmentPiled: true;
+@variationSegmentStacked: true;
+@variationSegmentPadded: true;
+@variationSegmentCircular: true;
+@variationSegmentCompact: true;
+@variationSegmentRaised: true;
+@variationSegmentGroups: true;
+@variationSegmentBasic: true;
+@variationSegmentClearing: true;
+@variationSegmentLoading: true;
+@variationSegmentFloating: true;
+@variationSegmentAligned: true;
+@variationSegmentSecondary: true;
+@variationSegmentTertiary: true;
+@variationSegmentAttached: true;
+@variationSegmentFitted: true;
+@variationSegmentSizes: @variationAllSizes;
