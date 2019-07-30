@@ -5,6 +5,10 @@
 /* General */
 @variationAllSizes: mini, tiny, small, large, big, huge, massive;
 
+/*******************************
+           Elements
+*******************************/
+
 /* Button */
 @variationButtonDisabled: true;
 @variationButtonAnimated: true;
@@ -214,3 +218,12 @@
 @variationTextInverted: true;
 @variationTextDisabled: true;
 @variationTextSizes: @variationAllSizes;
+
+
+/*******************************
+           Collections
+*******************************/
+
+/* Breadcrumb */
+@variationBreadcrumbInverted: true;
+@variationBreadcrumbSizes: @variationAllSizes;
