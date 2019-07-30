@@ -260,3 +260,21 @@
 @variationGridStackable: true;
 @variationGridCompact: true;
 
+/* Menu */
+@variationMenuInverted: true;
+@variationMenuSecondary: true;
+@variationMenuPointing: true;
+@variationMenuVertical: true;
+@variationMenuTabular: true;
+@variationMenuPagination: true;
+@variationMenuText: true;
+@variationMenuFluid: true;
+@variationMenuLabeled: true;
+@variationMenuStackable: true;
+@variationMenuFloated: true;
+@variationMenuFitted: true;
+@variationMenuBorderless: true;
+@variationMenuCompact: true;
+@variationMenuFixed: true;
+@variationMenuAttached: true;
+@variationMenuSizes: @variationAllSizes;
