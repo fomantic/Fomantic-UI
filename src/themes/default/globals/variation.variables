@@ -347,3 +347,7 @@
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
 @variationCommentSizes: @variationAllSizes;
+
+/* Feed */
+@variationFeedInverted: true;
+@variationFeedSizes: @variationAllSizes;
