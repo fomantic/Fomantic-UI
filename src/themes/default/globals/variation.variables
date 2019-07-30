@@ -240,3 +240,21 @@
 @variationFormInline: true;
 @variationFormGrouped: true;
 @variationFormSizes: @variationAllSizes;
+
+/* Grid */
+@variationGridInverted: true;
+@variationGridPage: true;
+@variationGridCelled: true;
+@variationGridCentered: true;
+@variationGridRelaxed: true;
+@variationGridPadded: true;
+@variationGridFloated: true;
+@variationGridDivided: true;
+@variationGridAligned: true;
+@variationGridStretched: true;
+@variationGridJustified: true;
+@variationGridReversed: true;
+@variationGridDoubling: true;
+@variationGridStackable: true;
+@variationGridCompact: true;
+
