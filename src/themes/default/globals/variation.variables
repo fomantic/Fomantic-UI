@@ -351,3 +351,12 @@
 /* Feed */
 @variationFeedInverted: true;
 @variationFeedSizes: @variationAllSizes;
+
+/* Item */
+@variationItemInverted: true;
+@variationItemAligned: true;
+@variationItemRelaxed: true;
+@variationItemDivided: true;
+@variationItemLink: true;
+@variationItemUnstackable: true;
+@variationItemSizes: @variationAllSizes;
