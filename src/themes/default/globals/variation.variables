@@ -43,6 +43,17 @@
 @variationContainerFluid: true;
 @variationContainerAligned: true;
 
+/* Divider */
+@variationDividerInverted: true;
+@variationDividerHorizontal: true;
+@variationDividerVertical: true;
+@variationDividerIcon: true;
+@variationDividerHidden: true;
+@variationDividerFitted: true;
+@variationDividerClearing: true;
+@variationDividerSection: true;
+@variationDividerSizes: @variationAllSizes;
+
 /* Header */
 @variationHeaderDisabled: true;
 @variationHeaderInverted: true;
