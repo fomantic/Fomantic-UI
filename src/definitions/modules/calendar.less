@@ -167,17 +167,19 @@
             States
 *******************************/
 
-/*--------------------
-        Disabled
----------------------*/
+& when (@variationCalendarDisabled) {
+  /*--------------------
+          Disabled
+  ---------------------*/
 
-.ui.disabled.calendar {
-  opacity: @disabledOpacity;
-}
+  .ui.disabled.calendar {
+    opacity: @disabledOpacity;
+  }
 
-.ui.disabled.calendar > .input,
-.ui.disabled.calendar .ui.table tr .link {
-  pointer-events: none;
+  .ui.disabled.calendar > .input,
+  .ui.disabled.calendar .ui.table tr .link {
+    pointer-events: none;
+  }
 }
 
 

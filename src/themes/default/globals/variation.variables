@@ -378,6 +378,9 @@
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
 
+/* Calendar */
+@variationCalendarDisabled: true;
+
 /* Dropdown */
 @variationDropdownInverted: true;
 @variationDropdownDisabled: true;
