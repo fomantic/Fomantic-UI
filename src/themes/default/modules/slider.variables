@@ -67,14 +67,15 @@
 @smallHeight            : 1em;
 @smallLabelHeight       : @smallHeight;
 @smallTrackHeight       : 0.3em;
-@trackPositionTopSmall  : (@smallHeight / 2) - (@smallTrackHeight / 2);
+@smallTrackPositionTop  : (@smallHeight / 2) - (@smallTrackHeight / 2);
 
 @largeHeight            : 2em;
 @largeLabelHeight       : @largeHeight;
 @largeTrackHeight       : 0.5em;
-@trackPositionTopLarge  : (@largeHeight / 2) - (@largeTrackHeight / 2);
+@largeTrackPositionTop  : (@largeHeight / 2) - (@largeTrackHeight / 2);
 
 @bigHeight              : 2.5em;
 @bigLabelHeight         : @bigHeight;
 @bigTrackHeight         : 0.6em;
-@trackPositionTopBig    : (@bigHeight / 2) - (@bigTrackHeight / 2);
+@bigTrackPositionTop    : (@bigHeight / 2) - (@bigTrackHeight / 2);
+

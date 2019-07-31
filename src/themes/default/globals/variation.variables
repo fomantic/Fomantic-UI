@@ -493,3 +493,13 @@
 @variationSidebarScale: true;
 @variationSidebarPush: true;
 @variationSidebarUncover: true;
+
+/* Slider */
+@variationSliderInverted: true;
+@variationSliderDisabled: true;
+@variationSliderReversed: true;
+@variationSliderLabeled: true;
+@variationSliderTicked: true;
+@variationSliderVertical: true;
+@variationSliderBasic: true;
+@variationSliderSizes: small, large, big;
