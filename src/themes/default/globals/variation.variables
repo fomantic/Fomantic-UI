@@ -381,6 +381,17 @@
 @variationCheckboxFitted: true;
 @variationCheckboxSizes: @variationAllSizes;
 
+/* Dimmer */
+@variationDimmerInverted: true;
+@variationDimmerDisabled: true;
+@variationDimmerLegacy: true;
+@variationDimmerAligned: true;
+@variationDimmerPage: true;
+@variationDimmerBlurring: true;
+@variationDimmerShades: true;
+@variationDimmerSimple: true;
+@variationDimmerPartially: true;
+
 /* Dropdown */
 @variationDropdownInverted: true;
 @variationDropdownDisabled: true;
