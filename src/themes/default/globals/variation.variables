@@ -373,6 +373,11 @@
             Modules
 *******************************/
 
+/* Accordion */
+@variationAccordionInverted: true;
+@variationAccordionStyled: true;
+@variationAccordionFluid: true;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;
