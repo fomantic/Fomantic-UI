@@ -382,3 +382,19 @@
 @variationModalScrolling: true;
 @variationModalLegacy: true;
 @variationModalSizes: @variationAllSizes;
+
+/* Popup */
+@variationPopupInverted: true;
+@variationPopupTooltip: true;
+@variationPopupPosition: true;
+@variationPopupTop: true;
+@variationPopupBottom: true;
+@variationPopupLeft: true;
+@variationPopupRight: true;
+@variationPopupCenter: true;
+@variationPopupLoading: true;
+@variationPopupBasic: true;
+@variationPopupWide: true;
+@variationPopupFluid: true;
+@variationPopupFlowing: true;
+@variationPopupSizes: @variationAllSizes;
