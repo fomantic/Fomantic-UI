@@ -444,3 +444,20 @@
 @variationPopupFluid: true;
 @variationPopupFlowing: true;
 @variationPopupSizes: @variationAllSizes;
+
+/* Progress */
+@variationProgressInverted: true;
+@variationProgressDisabled: true;
+@variationProgressIndicating: true;
+@variationProgressIndeterminate: true;
+@variationProgressSliding: true;
+@variationProgressFilling: true;
+@variationProgressSwinging: true;
+@variationProgressMultiple: true;
+@variationProgressSuccess: true;
+@variationProgressWarning: true;
+@variationProgressError: true;
+@variationProgressActive: true;
+@variationProgressAttached: true;
+@variationProgressSpeeds: true;
+@variationProgressSizes: @variationAllSizes
