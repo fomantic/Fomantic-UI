@@ -506,3 +506,19 @@
 
 /* Tab */
 @variationTabLoading: true;
+
+/* Toast */
+@variationToastInverted: true;
+@variationToastTop: true;
+@variationToastBottom: true;
+@variationToastLeft: true;
+@variationToastRight: true;
+@variationToastCenter: true;
+@variationToastInfo: true;
+@variationToastWarning: true;
+@variationToastSuccess: true;
+@variationToastError: true;
+@variationToastFloating: true;
+@variationToastProgress: true;
+@variationToastIcon: true;
+@variationToastClose: true;

@@ -26,41 +26,52 @@
     position: fixed;
     z-index: 9999;
 }
-
-.ui.top.right.toast-container {
-    top: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
+& when (@variationToastTop) {
+  & when (@variationToastRight) {
+    .ui.top.right.toast-container {
+        top: @toastContainerDistance;
+        right: @toastContainerDistance;
+        margin-left: @toastContainerDistance;
+    }
+  }
+  & when (@variationToastLeft) {
+    .ui.top.left.toast-container {
+        top: @toastContainerDistance;
+        left: @toastContainerDistance;
+        margin-right: @toastContainerDistance;
+    }
+  }
+  & when (@variationToastCenter) {
+    .ui.top.center.toast-container {
+        left: 50%;
+        transform: translate(-50%, 0);
+        top: @toastContainerDistance;
+    }
+  }
 }
 
-.ui.top.left.toast-container {
-    top: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.top.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: @toastContainerDistance;
-}
-
-.ui.bottom.right.toast-container {
-    bottom: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
-}
-
-.ui.bottom.left.toast-container {
-    bottom: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.bottom.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: @toastContainerDistance;
+& when (@variationToastBottom) {
+  & when (@variationToastRight) {
+    .ui.bottom.right.toast-container {
+        bottom: @toastContainerDistance;
+        right: @toastContainerDistance;
+        margin-left: @toastContainerDistance;
+    }
+  }
+  & when (@variationToastLeft) {
+    .ui.bottom.left.toast-container {
+        bottom: @toastContainerDistance;
+        left: @toastContainerDistance;
+        margin-right: @toastContainerDistance;
+    }
+  }
+  & when (@variationToastCenter) {
+    .ui.bottom.center.toast-container {
+        left: 50%;
+        transform: translate(-50%, 0);
+        bottom: @toastContainerDistance;
+    }
+  }
 }
 
 /*******************************
@@ -75,22 +86,26 @@
     color: @toastTextColor;
 }
 
-.floating.toast,
-.hoverfloating.toast:hover {
-  box-shadow: @floatingShadow;
-}
+& when (@variationToastFloating) {
+  .floating.toast,
+  .hoverfloating.toast:hover {
+    box-shadow: @floatingShadow;
+  }
 
-.hoverfloating.message:hover {
-  box-shadow: 0 0 0 1px inset, @floatingShadow;
+  .hoverfloating.message:hover {
+    box-shadow: 0 0 0 1px inset, @floatingShadow;
+  }
 }
-
-.center.toast-container .toast-box,
-.right.toast-container .toast-box {
-    margin-left: auto;
+& when (@variationToastCenter) or (@variationToastRight)  {
+  .center.toast-container .toast-box,
+  .right.toast-container .toast-box {
+      margin-left: auto;
+  }
 }
-
-.center.toast-container .toast-box {
-    margin-right: auto;
+& when (@variationToastCenter) {
+  .center.toast-container .toast-box {
+      margin-right: auto;
+  }
 }
 
 .visible.toast-box,
@@ -111,45 +126,54 @@
     cursor: @toastCursorOnHover;
 }
 
-
-.icon.toast .content {
-  padding-left: @toastIconContentPadding;
+& when (@variationToastIcon) {
+  .icon.toast .content {
+    padding-left: @toastIconContentPadding;
+  }
 }
 
 .toast > .content > .header {
     font-weight: bold;
 }
-
-.info.toast {
-    background-color: @toastInfoColor;
+& when (@variationToastInfo) {
+  .info.toast {
+      background-color: @toastInfoColor;
+  }
 }
-
-.warning.toast {
-    background-color: @toastWarningColor;
+& when (@variationToastWarning) {
+  .warning.toast {
+      background-color: @toastWarningColor;
+  }
 }
-
-.success.toast {
-    background-color: @toastSuccessColor;
+& when (@variationToastSuccess) {
+  .success.toast {
+      background-color: @toastSuccessColor;
+  }
 }
-
-.error.toast {
-    background-color: @toastErrorColor;
+& when (@variationToastError) {
+  .error.toast {
+      background-color: @toastErrorColor;
+  }
 }
-
-.toast-box .info.attached.progress .bar {
-    background: @toastInfoProgressColor !important;
+& when (@variationToastInfo) {
+  .toast-box .info.attached.progress .bar {
+      background: @toastInfoProgressColor !important;
+  }
 }
-
-.toast-box .warning.attached.progress .bar {
-    background: @toastWarningProgressColor !important;
+& when (@variationToastWarning) {
+  .toast-box .warning.attached.progress .bar {
+      background: @toastWarningProgressColor !important;
+  }
 }
-
-.toast-box .success.attached.progress .bar {
-    background: @toastSuccessProgressColor !important;
+& when (@variationToastSuccess) {
+  .toast-box .success.attached.progress .bar {
+      background: @toastSuccessProgressColor !important;
+  }
 }
-
-.toast-box .error.attached.progress .bar {
-    background: @toastErrorProgressColor !important;
+& when (@variationToastError) {
+  .toast-box .error.attached.progress .bar {
+      background: @toastErrorProgressColor !important;
+  }
 }
 
 /*--------------
@@ -164,88 +188,96 @@ each(@colors, {
   .@{color}.toast {
     background-color: @c;
   }
-  .inverted.@{color}.toast,
-  .toast-box .inverted.@{color}.attached.progress .bar {
-    background-color: @l;
+  & when (@variationToastInverted) {
+    .inverted.@{color}.toast,
+    .toast-box .inverted.@{color}.attached.progress .bar {
+      background-color: @l;
+    }
   }
 })
-
-.inverted.toast {
-  color: @toastInvertedTextColor;
+& when (@variationToastInverted) {
+  .inverted.toast {
+    color: @toastInvertedTextColor;
+  }
 }
 
-/*--------------
-      Icon
----------------*/
+& when (@variationToastIcon) {
+  /*--------------
+        Icon
+  ---------------*/
 
-.icon.toast > .icon:not(.close) {
-    display: inline-block;
-    vertical-align: @toastIconVerticalAlign;
-    font-size: @toastIconFontSize;
-    position: absolute;
+  .icon.toast > .icon:not(.close) {
+      display: inline-block;
+      vertical-align: @toastIconVerticalAlign;
+      font-size: @toastIconFontSize;
+      position: absolute;
+  }
+
+  .icon.toast > .content {
+      display: inline-block;
+      vertical-align: @toastContentVerticalAlign;
+  }
 }
 
+& when (@variationToastProgress) {
+  /*---------------
+     Progress Bar
+   ----------------*/
 
+  .toast-box .attached.progress .bar {
+      min-width: 0;
+  }
 
-.icon.toast > .content {
-    display: inline-block;
-    vertical-align: @toastContentVerticalAlign;
-}
+  .toast-box .active.progress .bar:after {
+    animation: progress-active 2s @defaultEasing infinite !important;
+  }
 
-/*---------------
-   Progress Bar
- ----------------*/
+  .toast-box .attached.progress{
+      z-index:1;
+  }
 
-.toast-box .attached.progress .bar {
-    min-width: 0;
-}
+  .toast-box .bottom.attached.progress {
+    margin: -3px 0 @toastMarginBottom;
+  }
 
-.toast-box .active.progress .bar:after {
-  animation: progress-active 2s @defaultEasing infinite !important;
+  .toast-box .top.attached.progress {
+    margin: @toastMarginBottom 0 -3px;
+  }
 }
 
 .toast-box {
-    margin-bottom: @toastMarginBottom;
+  margin-bottom: @toastMarginBottom;
 }
 
 .toast-box .toast,
 .toast-box .message {
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-}
-.toast-box .attached.progress{
-    z-index:1;
+  margin-top: 0;
+  margin-bottom: 0;
+  position: relative;
 }
 
-.toast-box .bottom.attached.progress {
-  margin: -3px 0 @toastMarginBottom;
-}
+& when (@variationToastClose) {
+  /* --------
+   Close Icon
+   -----------*/
 
-.toast-box .top.attached.progress {
-  margin: @toastMarginBottom 0 -3px;
-}
-
-/* --------
- Close Icon
- -----------*/
-
-.toast-box .message > .close.icon {
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-}
+  .toast-box .message > .close.icon {
+    top: @toastCloseTopDistance;
+    right: @toastCloseRightDistance;
+  }
 
 
-.toast-box .toast>.close.icon {
-  cursor: pointer;
-  position: absolute;
-  margin: 0;
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-  opacity: @toastCloseOpacity;
-  transition: @toastCloseTransition;
-}
+  .toast-box .toast > .close.icon {
+    cursor: pointer;
+    position: absolute;
+    margin: 0;
+    top: @toastCloseTopDistance;
+    right: @toastCloseRightDistance;
+    opacity: @toastCloseOpacity;
+    transition: @toastCloseTransition;
+  }
 
-.toast-box .toast > .close.icon:hover {
-  opacity: 1;
+  .toast-box .toast > .close.icon:hover {
+    opacity: 1;
+  }
 }
