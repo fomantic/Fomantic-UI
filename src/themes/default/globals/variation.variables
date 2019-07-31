@@ -378,6 +378,30 @@
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
 
+/* Dropdown */
+@variationDropdownInverted: true;
+@variationDropdownDisabled: true;
+@variationDropdownLabel: true;
+@variationDropdownButton: true;
+@variationDropdownSelection: true;
+@variationDropdownShort: true;
+@variationDropdownLong: true;
+@variationDropdownCompact: true;
+@variationDropdownSearch: true;
+@variationDropdownMultiple: true;
+@variationDropdownInline: true;
+@variationDropdownLoading: true;
+@variationDropdownError: true;
+@variationDropdownClear: true;
+@variationDropdownLeft: true;
+@variationDropdownUpward: true;
+@variationDropdownSimple: true;
+@variationDropdownScrolling: true;
+@variationDropdownFluid: true;
+@variationDropdownFloating: true;
+@variationDropdownPointing: true;
+@variationDropdownSizes: @variationAllSizes;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;
