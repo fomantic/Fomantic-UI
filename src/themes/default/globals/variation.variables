@@ -460,4 +460,8 @@
 @variationProgressActive: true;
 @variationProgressAttached: true;
 @variationProgressSpeeds: true;
-@variationProgressSizes: @variationAllSizes
+@variationProgressSizes: @variationAllSizes;
+
+/* Rating */
+@variationRatingDisabled: true;
+@variationRatingSizes: @variationAllSizes;
