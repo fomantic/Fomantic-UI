@@ -522,3 +522,7 @@
 @variationToastProgress: true;
 @variationToastIcon: true;
 @variationToastClose: true;
+
+/* Loading */
+@variationTransitionDisabled: true;
+@variationTransitionLoading: true;
