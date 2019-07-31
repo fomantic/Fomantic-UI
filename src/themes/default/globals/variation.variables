@@ -416,6 +416,9 @@
 @variationDropdownPointing: true;
 @variationDropdownSizes: @variationAllSizes;
 
+/* Embed */
+@variationEmbedRatio: true;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;
