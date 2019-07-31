@@ -474,3 +474,8 @@
 @variationSearchAligned: true;
 @variationSearchFluid: true;
 @variationSearchSizes: @variationAllSizes;
+
+/* Shape */
+@variationShapeCube: true;
+@variationShapeText: true;
+@variationShapeLoading: true;
