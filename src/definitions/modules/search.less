@@ -195,38 +195,40 @@
   color: @promptFocusColor;
 }
 
-/*--------------------
-       Loading
----------------------*/
+& when (@variationSearchLoading) {
+  /*--------------------
+         Loading
+  ---------------------*/
 
-.ui.loading.search .input > i.icon:before {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 50%;
+  .ui.loading.search .input > i.icon:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  border-radius: @circularRadius;
-  border: @loaderLineWidth solid @loaderFillColor;
-}
-.ui.loading.search .input > i.icon:after {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 50%;
+    border-radius: @circularRadius;
+    border: @loaderLineWidth solid @loaderFillColor;
+  }
+  .ui.loading.search .input > i.icon:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  animation: loader @loaderSpeed infinite linear;
-  border: @loaderLineWidth solid @loaderLineColor;
-  border-radius: @circularRadius;
+    animation: loader @loaderSpeed infinite linear;
+    border: @loaderLineWidth solid @loaderLineColor;
+    border-radius: @circularRadius;
 
-  box-shadow: 0 0 0 1px transparent;
+    box-shadow: 0 0 0 1px transparent;
+  }
 }
 
 
@@ -245,12 +247,13 @@
 /*--------------
       Active
 ---------------*/
-
-.ui.category.search > .results .category.active {
-  background: @categoryActiveBackground;
-}
-.ui.category.search > .results .category.active > .name {
-  color: @categoryNameActiveColor;
+& when (@variationSearchCategory) {
+  .ui.category.search > .results .category.active {
+    background: @categoryActiveBackground;
+  }
+  .ui.category.search > .results .category.active > .name {
+    color: @categoryNameActiveColor;
+  }
 }
 
 .ui.search > .results .result.active,
@@ -267,15 +270,17 @@
   color: @resultActiveDescriptionColor;
 }
 
-/*--------------------
-        Disabled
-----------------------*/
+& when (@variationSearchDisabled) {
+  /*--------------------
+          Disabled
+  ----------------------*/
 
-/* Disabled */
-.ui.disabled.search {
-  cursor: default;
-  pointer-events: none;
-  opacity: @disabledOpacity;
+  /* Disabled */
+  .ui.disabled.search {
+    cursor: default;
+    pointer-events: none;
+    opacity: @disabledOpacity;
+  }
 }
 
 
@@ -283,124 +288,131 @@
            Types
 *******************************/
 
-/*--------------
-    Selection
----------------*/
+& when (@variationSearchSelection) {
+  /*--------------
+      Selection
+  ---------------*/
 
-.ui.search.selection .prompt {
-  border-radius: @selectionPromptBorderRadius;
-}
+  .ui.search.selection .prompt {
+    border-radius: @selectionPromptBorderRadius;
+  }
 
-/* Remove input */
-.ui.search.selection > .icon.input > .remove.icon {
-  pointer-events: none;
-  position: absolute;
-  left: auto;
-  opacity: 0;
-  color: @selectionCloseIconColor;
-  top: @selectionCloseTop;
-  right: @selectionCloseRight;
-  transition: @selectionCloseTransition;
-}
-.ui.search.selection > .icon.input > .active.remove.icon {
-  cursor: pointer;
-  opacity: @selectionCloseIconOpacity;
-  pointer-events: auto;
-}
-.ui.search.selection > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
-  right: @selectionCloseIconInputRight;
-}
-.ui.search.selection > .icon.input > .remove.icon:hover {
-  opacity: @selectionCloseIconHoverOpacity;
-  color: @selectionCloseIconHoverColor;
-}
-
-
-/*--------------
-    Category
----------------*/
-
-.ui.category.search .results {
-  width: @categoryResultsWidth;
+  /* Remove input */
+  .ui.search.selection > .icon.input > .remove.icon {
+    pointer-events: none;
+    position: absolute;
+    left: auto;
+    opacity: 0;
+    color: @selectionCloseIconColor;
+    top: @selectionCloseTop;
+    right: @selectionCloseRight;
+    transition: @selectionCloseTransition;
+  }
+  .ui.search.selection > .icon.input > .active.remove.icon {
+    cursor: pointer;
+    opacity: @selectionCloseIconOpacity;
+    pointer-events: auto;
+  }
+  .ui.search.selection > .icon.input:not([class*="left icon"]) > .icon ~ .remove.icon {
+    right: @selectionCloseIconInputRight;
+  }
+  .ui.search.selection > .icon.input > .remove.icon:hover {
+    opacity: @selectionCloseIconHoverOpacity;
+    color: @selectionCloseIconHoverColor;
+  }
 }
 
-.ui.category.search .results.animating,
-.ui.category.search .results.visible {
-  display: table;
-}
+& when (@variationSearchCategory) {
+  /*--------------
+      Category
+  ---------------*/
 
-/* Category */
-.ui.category.search > .results .category {
-  display: table-row;
-  background: @categoryBackground;
-  box-shadow: @categoryBoxShadow;
-  transition: @categoryTransition;
-}
+  .ui.category.search .results {
+    width: @categoryResultsWidth;
+  }
 
-/* Last Category */
-.ui.category.search > .results .category:last-child {
-  border-bottom: none;
-}
+  .ui.category.search .results.animating,
+  .ui.category.search .results.visible {
+    display: table;
+  }
 
-/* First / Last */
-.ui.category.search > .results .category:first-child .name + .result {
-  border-radius: 0 @resultsBorderRadius 0 0;
-}
-.ui.category.search > .results .category:last-child .result:last-child {
-  border-radius: 0 0 @resultsBorderRadius 0;
-}
+  /* Category */
+  .ui.category.search > .results .category {
+    display: table-row;
+    background: @categoryBackground;
+    box-shadow: @categoryBoxShadow;
+    transition: @categoryTransition;
+  }
 
-/* Category Result Name */
-.ui.category.search > .results .category > .name {
-  display: table-cell;
-  text-overflow: ellipsis;
-  width: @categoryNameWidth;
-  white-space: @categoryNameWhitespace;
-  background: @categoryNameBackground;
-  font-family: @categoryNameFont;
-  font-size: @categoryNameFontSize;
-  padding: @categoryNamePadding;
-  font-weight: @categoryNameFontWeight;
-  color: @categoryNameColor;
-  border-bottom: @categoryDivider;
-}
+  /* Last Category */
+  .ui.category.search > .results .category:last-child {
+    border-bottom: none;
+  }
 
-/* Category Result */
-.ui.category.search > .results .category .results {
-  display: table-cell;
-  background: @categoryResultBackground;
-  border-left: @categoryResultLeftBorder;
-  border-bottom: @categoryDivider;
-}
-.ui.category.search > .results .category .result {
-  border-bottom: @categoryResultDivider;
-  transition: @categoryResultTransition;
-  padding: @categoryResultPadding;
+  /* First / Last */
+  .ui.category.search > .results .category:first-child .name + .result {
+    border-radius: 0 @resultsBorderRadius 0 0;
+  }
+  .ui.category.search > .results .category:last-child .result:last-child {
+    border-radius: 0 0 @resultsBorderRadius 0;
+  }
+
+  /* Category Result Name */
+  .ui.category.search > .results .category > .name {
+    display: table-cell;
+    text-overflow: ellipsis;
+    width: @categoryNameWidth;
+    white-space: @categoryNameWhitespace;
+    background: @categoryNameBackground;
+    font-family: @categoryNameFont;
+    font-size: @categoryNameFontSize;
+    padding: @categoryNamePadding;
+    font-weight: @categoryNameFontWeight;
+    color: @categoryNameColor;
+    border-bottom: @categoryDivider;
+  }
+
+  /* Category Result */
+  .ui.category.search > .results .category .results {
+    display: table-cell;
+    background: @categoryResultBackground;
+    border-left: @categoryResultLeftBorder;
+    border-bottom: @categoryDivider;
+  }
+  .ui.category.search > .results .category .result {
+    border-bottom: @categoryResultDivider;
+    transition: @categoryResultTransition;
+    padding: @categoryResultPadding;
+  }
 }
 
 /*******************************
            Variations
 *******************************/
 
-/*-------------------
-     Left / Right
---------------------*/
+& when (@variationSearchAligned) {
+  /*-------------------
+       Left / Right
+  --------------------*/
 
-.ui[class*="left aligned"].search > .results {
-  right: auto;
-  left: 0;
-}
-.ui[class*="right aligned"].search > .results {
-  right: 0;
-  left: auto;
+  .ui[class*="left aligned"].search > .results {
+    right: auto;
+    left: 0;
+  }
+  .ui[class*="right aligned"].search > .results {
+    right: 0;
+    left: auto;
+  }
 }
 
 /*--------------
     Fluid
 ---------------*/
 
-.ui.fluid.search .results {
-  width: 100%;
+& when (@variationSearchFluid) {
+  .ui.fluid.search .results {
+    width: 100%;
+  }
 }
 
 
@@ -408,26 +420,16 @@
       Sizes
 ---------------*/
 
-.ui.mini.search {
-  font-size: @relativeMini;
-}
-.ui.small.search {
-  font-size: @relativeSmall;
-}
 .ui.search {
   font-size: @relativeMedium;
 }
-.ui.large.search {
-  font-size: @relativeLarge;
-}
-.ui.big.search {
-  font-size: @relativeBig;
-}
-.ui.huge.search {
-  font-size: @relativeHuge;
-}
-.ui.massive.search {
-  font-size: @relativeMassive;
+& when not (@variationFeedSizes = false) {
+  each(@variationFeedSizes, {
+    @s: @{value}SearchSize;
+    .ui.@{value}.search  {
+      font-size: @@s;
+    }
+  })
 }
 
 /*--------------

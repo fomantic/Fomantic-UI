@@ -159,3 +159,11 @@
 @categoryNamePadding: 0.4em 1em;
 @categoryNameFontWeight: @bold;
 @categoryNameColor: @lightTextColor;
+
+@miniSearchSize: @relativeMini;
+@tinySearchSize: @relativeTiny;
+@smallSearchSize: @relativeSmall;
+@largeSearchSize: @relativeLarge;
+@bigSearchSize: @relativeBig;
+@hugeSearchSize: @relativeHuge;
+@massiveSearchSize: @relativeMassive;

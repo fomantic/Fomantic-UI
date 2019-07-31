@@ -465,3 +465,12 @@
 /* Rating */
 @variationRatingDisabled: true;
 @variationRatingSizes: @variationAllSizes;
+
+/* Search */
+@variationSearchDisabled: true;
+@variationSearchSelection: true;
+@variationSearchCategory: true;
+@variationSearchLoading: true;
+@variationSearchAligned: true;
+@variationSearchFluid: true;
+@variationSearchSizes: @variationAllSizes;
