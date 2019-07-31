@@ -479,3 +479,17 @@
 @variationShapeCube: true;
 @variationShapeText: true;
 @variationShapeLoading: true;
+
+/* Sidebar */
+@variationSidebarThin: true;
+@variationSidebarWide: true;
+@variationSidebarTop: true;
+@variationSidebarBottom: true;
+@variationSidebarLeft: true;
+@variationSidebarRight: true;
+@variationSidebarOverlay: true;
+@variationSidebarSlideAlong: true;
+@variationSidebarSlideOut: true;
+@variationSidebarScale: true;
+@variationSidebarPush: true;
+@variationSidebarUncover: true;
