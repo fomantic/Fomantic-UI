@@ -503,3 +503,6 @@
 @variationSliderVertical: true;
 @variationSliderBasic: true;
 @variationSliderSizes: small, large, big;
+
+/* Tab */
+@variationTabLoading: true;
