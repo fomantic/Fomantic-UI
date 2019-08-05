@@ -397,6 +397,7 @@ $.fn.dropdown = function(parameters) {
                 $module.addClass(className.disabled);
               }
               $input
+                .removeAttr('required')
                 .removeAttr('class')
                 .detach()
                 .prependTo($module)
