@@ -192,7 +192,7 @@ $.fn.form = function(parameters) {
               $calendar    = $field.closest(selector.uiCalendar),
               defaultValue = $field.data(metadata.defaultValue) || '',
               isCheckbox   = $element.is(selector.uiCheckbox),
-              isDropdown   = $element.is(selector.uiDropdown && $.fn.dropdown !== undefined),
+              isDropdown   = $element.is(selector.uiDropdown) && $.fn.dropdown !== undefined,
               isCalendar   = ($calendar.length > 0 && $.fn.calendar !== undefined),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
@@ -228,7 +228,7 @@ $.fn.form = function(parameters) {
               $prompt      = $fieldGroup.find(selector.prompt),
               defaultValue = $field.data(metadata.defaultValue),
               isCheckbox   = $element.is(selector.uiCheckbox),
-              isDropdown   = $element.is(selector.uiDropdown && $.fn.dropdown !== undefined),
+              isDropdown   = $element.is(selector.uiDropdown) && $.fn.dropdown !== undefined,
               isCalendar   = ($calendar.length > 0 && $.fn.calendar !== undefined),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
@@ -980,7 +980,7 @@ $.fn.form = function(parameters) {
                 $el        = $(el),
                 $parent    = $el.parent(),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
-                isDropdown = $parent.is(selector.uiDropdown && $.fn.dropdown !== undefined),
+                isDropdown = $parent.is(selector.uiDropdown) && $.fn.dropdown !== undefined,
                 value      = (isCheckbox)
                   ? $el.is(':checked')
                   : $el.val()
@@ -1014,8 +1014,8 @@ $.fn.form = function(parameters) {
                 $field      = module.get.field(key),
                 $element    = $field.parent(),
                 isMultiple  = Array.isArray(value),
-                isCheckbox  = $element.is(selector.uiCheckbox && $.fn.checkbox !== undefined),
-                isDropdown  = $element.is(selector.uiDropdown && $.fn.dropdown !== undefined),
+                isCheckbox  = $element.is(selector.uiCheckbox) && $.fn.checkbox !== undefined,
+                isDropdown  = $element.is(selector.uiDropdown) && $.fn.dropdown !== undefined,
                 isRadio     = ($field.is(selector.radio) && isCheckbox),
                 fieldExists = ($field.length > 0),
                 $multipleField
