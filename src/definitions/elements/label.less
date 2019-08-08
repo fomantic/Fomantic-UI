@@ -159,6 +159,7 @@ a.ui.label {
 }
 
 /* Padding on next content after a label */
+.ui.top.attached.label ~ .ui.bottom.attached.label + :not(.attached),
 .ui.top.attached.label + :not(.attached) {
   margin-top: @attachedSegmentPadding !important;
 }
