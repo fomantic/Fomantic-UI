@@ -800,7 +800,7 @@ $.fn.form = function(parameters) {
                if ($.fn[element] !== undefined) {
                    return true;
                }
-               module.error(error.noElement.replace(/{element}/,element));
+               module.error(error.noElement.replace('{element}',element));
                return false;
             }
         },
