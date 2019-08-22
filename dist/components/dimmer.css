@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Dimmer
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Dimmer
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -175,7 +175,7 @@ body.dimmable > .dimmer {
   transition: 800ms filter ease;
   transition: 800ms filter ease, 800ms -webkit-filter ease;
 }
-.blurring.dimmed.dimmable > :not(.dimmer) {
+.blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
   -webkit-filter: blur(5px) grayscale(0.7);
           filter: blur(5px) grayscale(0.7);
 }

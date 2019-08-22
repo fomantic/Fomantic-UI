@@ -159,12 +159,11 @@ a.ui.label {
 }
 
 /* Padding on next content after a label */
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
+.ui.top.attached.label ~ :first-of-type:not(.attached) {
   margin-top: @attachedSegmentPadding !important;
 }
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
-  margin-top: 0;
+.ui.bottom.attached.label ~ :last-child:not(.attached) {
+  margin-top:0;
   margin-bottom: @attachedSegmentPadding !important;
 }
 
@@ -255,7 +254,7 @@ a.ui.label {
   border-color: inherit;
   border-width: @basicBorderWidth 0 0 @basicBorderWidth;
   border-style: inherit;
-  right: e(%("calc(100%% + %d)", @basicBorderWidth));
+  right: @basicBorderFullWidthOffset;
 }
 .ui.basic.tag.labels .label:after,
 .ui.basic.tag.label:after {
@@ -384,6 +383,27 @@ a.ui.label {
   left: @rightRibbonOffset;
   padding-left: @ribbonTriangleSize;
   padding-right: @ribbonDistance;
+}
+.ui.basic.ribbon.label {
+  padding-top: @basicRibbonOffset;
+  padding-bottom: @basicRibbonOffset;
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"]) {
+  padding-left: @basicRibbonTriangleSizeOffset;
+  padding-right: @basicRibbonTriangleSize;
+}
+.ui.basic[class*="right ribbon"].label {
+  padding-left: @basicRibbonTriangleSize;
+  padding-right: @basicRibbonTriangleSizeOffset;
+}
+.ui.basic.ribbon.label::after {
+  top: @basicBorderFullWidthOffset;
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"])::after {
+  left: @basicBorderWidthOffset;
+}
+.ui.basic[class*="right ribbon"].label::after {
+  right: @basicBorderWidthOffset;
 }
 
 /* Right Ribbon */

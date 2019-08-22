@@ -168,6 +168,10 @@
     width: 100%;
     padding: 0;
   }
+  .ui.table:not(.unstackable) > thead,
+  .ui.table:not(.unstackable) > thead > tr,
+  .ui.table:not(.unstackable) > tfoot,
+  .ui.table:not(.unstackable) > tfoot > tr,
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
@@ -196,10 +200,10 @@
     box-shadow: @responsiveRowBoxShadow;
   }
 
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
   .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
   .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td {
     background: none;
@@ -279,7 +283,8 @@
   background: @definitionHeaderBackground;
   font-weight: @definitionHeaderFontWeight;
   color: @definitionHeaderColor;
-  box-shadow: -@borderWidth -@borderWidth 0 @borderWidth @definitionPageBackground;
+  box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -287,15 +292,8 @@
   background: @definitionFooterBackground;
   font-weight: @definitionFooterFontWeight;
   color: @definitionFooterColor;
-  box-shadow: -@borderWidth @borderWidth 0 @borderWidth @definitionPageBackground;
-}
-
-/* Remove Border */
-.ui.celled.definition.table > thead:not(.full-width) > tr > th:first-child {
-  box-shadow: 0 -@borderWidth 0 @borderWidth @definitionPageBackground;
-}
-.ui.celled.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-  box-shadow: 0 @borderWidth 0 @borderWidth @definitionPageBackground;
+  box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+  -moz-transform: scale(1);
 }
 
 /* Highlight Defining Column */
@@ -325,7 +323,6 @@
 .ui.definition.table > tbody > tr > td:nth-child(2) {
   border-left: @borderWidth solid @borderColor;
 }
-
 
 /*******************************
              States
@@ -411,6 +408,10 @@
 @media only screen and (max-width : @largestTabletScreen) {
 
   .ui[class*="tablet stackable"].table,
+  .ui[class*="tablet stackable"].table > thead,
+  .ui[class*="tablet stackable"].table > thead > tr,
+  .ui[class*="tablet stackable"].table > tfoot,
+  .ui[class*="tablet stackable"].table > tfoot > tr,
   .ui[class*="tablet stackable"].table > tbody,
   .ui[class*="tablet stackable"].table > tbody > tr,
   .ui[class*="tablet stackable"].table > tr,
@@ -670,6 +671,8 @@ each(@colors, {
   @l: @colors[@@color][light];
   @lh: @colors[@@color][lightHover];
   @r: @colors[@@color][ribbon];
+  @b: @colors[@@color][bright];
+  @bh: @colors[@@color][brightHover];
   @isDark: @colors[@@color][isDark];
   @isVeryDark: @colors[@@color][isVeryDark];
 
@@ -687,7 +690,7 @@ each(@colors, {
       background: @l;
     }
     & when not (@isDark) {
-      background: screen(@l,@blendingBaseColor);
+      background: @b;
     }
     & when (@isVeryDark) {
       color: @white;
@@ -703,7 +706,7 @@ each(@colors, {
       background: @lh;
     }
     & when not (@isDark) {
-      background: screen(@lh,@blendingBaseColor);
+      background: @bh;
     }
     & when (@isVeryDark) {
       color: @white;

@@ -57,8 +57,8 @@
   transition: @barTransition;
   overflow: hidden;
 }
-.ui.ui.ui.progress:not([data-percent]) .bar,
-.ui.ui.ui.progress[data-percent="0"] .bar {
+.ui.ui.ui.progress:not([data-percent]):not(.indeterminate) .bar,
+.ui.ui.ui.progress[data-percent="0"]:not(.indeterminate) .bar {
   background:transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
@@ -414,10 +414,12 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
+  .ui.indeterminate.@{color}.progress .bar::before,
   .ui.@{color}.progress .bar,
   .ui.progress .@{color}.bar {
     background-color: @c;
   }
+  .ui.inverted.indeterminate.@{color}.progress .bar::before,
   .ui.@{color}.inverted.progress .bar,
   .ui.inverted.progress .@{color}.bar {
     background-color: @l;
@@ -461,6 +463,119 @@ each(@colors, {
 }
 .ui.big.progress .bar {
   height: @bigBarHeight;
+}
+
+/*---------------
+  Indeterminate
+----------------*/
+
+.ui.indeterminate.progress .bar {
+  width: 100%;
+}
+.ui.indeterminate.progress .bar .progress,
+.ui.progress .bar .centered.progress {
+  text-align: center;
+  position: relative;
+}
+.ui.indeterminate.progress .bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: @barBorderRadius;
+  animation: progress-pulsating @indeterminatePulseDuration @defaultEasing infinite;
+  transform-origin: center;
+  width: 100%;
+}
+.ui.slow.indeterminate.progress .bar::before {
+  animation-duration: @indeterminatePulseDurationSlow;
+}
+.ui.fast.indeterminate.progress .bar::before {
+  animation-duration: @indeterminatePulseDurationFast;
+}
+.ui.swinging.indeterminate.progress .bar::before {
+  transform-origin: left;
+  animation-name: progress-swinging;
+}
+.ui.sliding.indeterminate.progress .bar::before {
+  transform-origin: left;
+  animation-name: progress-sliding;
+}
+.ui.filling.indeterminate.progress .bar::before {
+  animation-name: progress-filling;
+}
+.ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
+  background: @indeterminatePulseColor;
+}
+.ui.sliding.indeterminate.progress .bar,
+.ui.swinging.indeterminate.progress .bar,
+.ui.filling.indeterminate.progress .bar {
+  background: @background;
+}
+.ui.inverted.sliding.indeterminate.progress .bar,
+.ui.inverted.swinging.indeterminate.progress .bar,
+.ui.inverted.filling.indeterminate.progress .bar {
+  background: @invertedBackground;
+}
+.ui.sliding.indeterminate.progress .bar .progress,
+.ui.swinging.indeterminate.progress .bar .progress {
+  color: @invertedProgressColor;
+}
+.ui.inverted.sliding.indeterminate.progress .bar .progress,
+.ui.inverted.swinging.indeterminate.progress .bar .progress {
+  color: @progressColor;
+}
+
+@keyframes progress-swinging {
+  0%, 100% {
+    width:10%;
+    left:-25%;
+  }
+  25%, 65% {
+    width:70%;
+  }
+  50% {
+    width: 10%;
+    left:100%;
+  }
+}
+
+@keyframes progress-sliding {
+  0% {
+    width:10%;
+    left:-25%;
+  }
+  50% {
+    width:70%;
+  }
+  100% {
+    width:10%;
+    left:100%;
+  }
+}
+
+@keyframes progress-filling {
+  0% {
+    transform: scale(0,1);
+  }
+  80% {
+    transform: scale(1);
+    opacity:1;
+  }
+  100% {
+    opacity:0;
+  }
+}
+
+@keyframes progress-pulsating {
+  0% {
+    transform: scale(0,1);
+    opacity:0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity:0;
+  }
 }
 
 .loadUIOverrides();

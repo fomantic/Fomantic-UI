@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Step
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Step
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -275,7 +275,7 @@
 
 
 /* Mobile (Default) */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.steps:not(.unstackable) {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
@@ -371,6 +371,9 @@
 }
 
 /* Active Arrow */
+.ui.steps .step:after {
+  display: block;
+}
 .ui.steps .active.step:after {
   display: block;
 }
@@ -424,7 +427,7 @@
 
 
 /* Tablet Or Below */
-@media only screen and (max-width: 991.99px) {
+@media only screen and (max-width: 991.98px) {
   .ui[class*="tablet stackable"].steps {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;

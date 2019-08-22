@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Label
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Label
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -146,11 +146,10 @@ a.ui.label {
 }
 
 /* Padding on next content after a label */
-.ui.top.attached.label:first-child + :not(.attached),
-.ui.top.attached.label + [class*="right floated"] + * {
+.ui.top.attached.label ~ :first-of-type:not(.attached) {
   margin-top: 2rem !important;
 }
-.ui.bottom.attached.label:first-child ~ :last-child:not(.attached) {
+.ui.bottom.attached.label ~ :last-child:not(.attached) {
   margin-top: 0;
   margin-bottom: 2rem !important;
 }
@@ -359,6 +358,27 @@ a.ui.label {
   left: calc(100% + 1rem + 1.2em);
   padding-left: 1.2em;
   padding-right: calc(1rem + 1.2em);
+}
+.ui.basic.ribbon.label {
+  padding-top: calc(0.5833em - 1px);
+  padding-bottom: calc(0.5833em - 1px);
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"]) {
+  padding-left: calc(1rem + 1.2em - 1px);
+  padding-right: calc(1.2em - 1px);
+}
+.ui.basic[class*="right ribbon"].label {
+  padding-left: calc(1.2em - 1px);
+  padding-right: calc(1rem + 1.2em - 1px);
+}
+.ui.basic.ribbon.label::after {
+  top: calc(100% + 1px);
+}
+.ui.basic.ribbon.label:not([class*="right ribbon"])::after {
+  left: -1px;
+}
+.ui.basic[class*="right ribbon"].label::after {
+  right: -1px;
 }
 
 /* Right Ribbon */

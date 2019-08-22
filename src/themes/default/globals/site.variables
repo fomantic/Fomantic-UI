@@ -641,34 +641,43 @@
   This rounds @size values to the closest pixel then expresses that value in (r)em.
   This ensures all size values round to exact pixels
 */
-@mini            : unit( round(@miniSize * @emSize) / @emSize, rem);
-@tiny            : unit( round(@tinySize * @emSize) / @emSize, rem);
-@small           : unit( round(@smallSize * @emSize) / @emSize, rem);
-@medium          : unit( round(@mediumSize * @emSize) / @emSize, rem);
-@large           : unit( round(@largeSize * @emSize) / @emSize, rem);
-@big             : unit( round(@bigSize * @emSize) / @emSize, rem);
-@huge            : unit( round(@hugeSize * @emSize) / @emSize, rem);
-@massive         : unit( round(@massiveSize * @emSize) / @emSize, rem);
+@miniRaw         : unit( round(@miniSize * @emSize) / @emSize );
+@tinyRaw         : unit( round(@tinySize * @emSize) / @emSize );
+@smallRaw        : unit( round(@smallSize * @emSize) / @emSize );
+@mediumRaw       : unit( round(@mediumSize * @emSize) / @emSize );
+@largeRaw        : unit( round(@largeSize * @emSize) / @emSize );
+@bigRaw          : unit( round(@bigSize * @emSize) / @emSize );
+@hugeRaw         : unit( round(@hugeSize * @emSize) / @emSize );
+@massiveRaw      : unit( round(@massiveSize * @emSize) / @emSize );
+
+@mini            : unit( @miniRaw, rem);
+@tiny            : unit( @tinyRaw, rem);
+@small           : unit( @smallRaw, rem);
+@medium          : unit( @mediumRaw, rem);
+@large           : unit( @largeRaw, rem);
+@big             : unit( @bigRaw, rem);
+@huge            : unit( @hugeRaw, rem);
+@massive         : unit( @massiveRaw, rem);
 
 /* em */
-@relativeMini    : unit( round(@miniSize * @emSize) / @emSize, em);
-@relativeTiny    : unit( round(@tinySize * @emSize) / @emSize, em);
-@relativeSmall   : unit( round(@smallSize * @emSize) / @emSize, em);
-@relativeMedium  : unit( round(@mediumSize * @emSize) / @emSize, em);
-@relativeLarge   : unit( round(@largeSize * @emSize) / @emSize, em);
-@relativeBig     : unit( round(@bigSize * @emSize) / @emSize, em);
-@relativeHuge    : unit( round(@hugeSize * @emSize) / @emSize, em);
-@relativeMassive : unit( round(@massiveSize * @emSize) / @emSize, em);
+@relativeMini    : unit( @miniRaw, em);
+@relativeTiny    : unit( @tinyRaw, em);
+@relativeSmall   : unit( @smallRaw, em);
+@relativeMedium  : unit( @mediumRaw, em);
+@relativeLarge   : unit( @largeRaw, em);
+@relativeBig     : unit( @bigRaw, em);
+@relativeHuge    : unit( @hugeRaw, em);
+@relativeMassive : unit( @massiveRaw, em);
 
 /* rem */
-@absoluteMini    : unit( round(@miniSize * @emSize) / @emSize, rem);
-@absoluteTiny    : unit( round(@tinySize * @emSize) / @emSize, rem);
-@absoluteSmall   : unit( round(@smallSize * @emSize) / @emSize, rem);
-@absoluteMedium  : unit( round(@mediumSize * @emSize) / @emSize, rem);
-@absoluteLarge   : unit( round(@largeSize * @emSize) / @emSize, rem);
-@absoluteBig     : unit( round(@bigSize * @emSize) / @emSize, rem);
-@absoluteHuge    : unit( round(@hugeSize * @emSize) / @emSize, rem);
-@absoluteMassive : unit( round(@massiveSize * @emSize) / @emSize, rem);
+@absoluteMini    : unit( @miniRaw, rem);
+@absoluteTiny    : unit( @tinyRaw, rem);
+@absoluteSmall   : unit( @smallRaw, rem);
+@absoluteMedium  : unit( @mediumRaw, rem);
+@absoluteLarge   : unit( @largeRaw, rem);
+@absoluteBig     : unit( @bigRaw, rem);
+@absoluteHuge    : unit( @hugeRaw, rem);
+@absoluteMassive : unit( @massiveRaw, rem);
 
 /*-------------------
        Icons
@@ -780,10 +789,10 @@
 
 
 /* Responsive */
-@largestMobileScreen : (@tabletBreakpoint - 0.01px);
-@largestTabletScreen : (@computerBreakpoint - 0.01px);
-@largestSmallMonitor : (@largeMonitorBreakpoint - 0.01px);
-@largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.01px);
+@largestMobileScreen : (@tabletBreakpoint - 0.02px);
+@largestTabletScreen : (@computerBreakpoint - 0.02px);
+@largestSmallMonitor : (@largeMonitorBreakpoint - 0.02px);
+@largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.02px);
 
 
 /*-------------------
@@ -1234,3 +1243,98 @@
 @whiteActive               : darken(@white, 5);
 @offWhiteActive            : darken(@offWhite, 5);
 @darkWhiteActive           : darken(@darkWhite, 5);
+
+/*---  Tertiary  ---*/
+@primaryTertiaryColor        : saturate(@primaryColor, 20%);
+@primaryTertiaryColorHover   : desaturate(@primaryColorHover, 20%);
+@primaryTertiaryColorFocus   : desaturate(@primaryColorFocus, 20%);
+@primaryTertiaryColorActive  : saturate(@primaryColorActive, 20%);
+@secondaryTertiaryColor      : saturate(@secondaryColor, 20%);
+@secondaryTertiaryColorHover : desaturate(@secondaryColorHover, 20%);
+@secondaryTertiaryColorFocus : desaturate(@secondaryColorFocus, 20%);
+@secondaryTertiaryColorActive: saturate(@secondaryColorActive, 20%);
+@redTertiaryColor            : saturate(@red, 20%);
+@redTertiaryColorHover       : desaturate(@redHover, 20%);
+@redTertiaryColorFocus       : desaturate(@redFocus, 20%);
+@redTertiaryColorActive      : saturate(@redActive, 20%);
+@orangeTertiaryColor         : saturate(@orange, 20%);
+@orangeTertiaryColorHover    : desaturate(@orangeHover, 20%);
+@orangeTertiaryColorFocus    : desaturate(@orangeFocus, 20%);
+@orangeTertiaryColorActive   : saturate(@orangeActive, 20%);
+@yellowTertiaryColor         : saturate(@yellow, 20%);
+@yellowTertiaryColorHover    : desaturate(@yellowHover, 20%);
+@yellowTertiaryColorFocus    : desaturate(@yellowFocus, 20%);
+@yellowTertiaryColorActive   : saturate(@yellowActive, 20%);
+@oliveTertiaryColor          : saturate(@olive, 20%);
+@oliveTertiaryColorHover     : desaturate(@oliveHover, 20%);
+@oliveTertiaryColorFocus     : desaturate(@oliveFocus, 20%);
+@oliveTertiaryColorActive    : saturate(@oliveActive, 20%);
+@greenTertiaryColor          : saturate(@green, 20%);
+@greenTertiaryColorHover     : desaturate(@greenHover, 20%);
+@greenTertiaryColorFocus     : desaturate(@greenFocus, 20%);
+@greenTertiaryColorActive    : saturate(@greenActive, 20%);
+@tealTertiaryColor           : saturate(@teal, 20%);
+@tealTertiaryColorHover      : desaturate(@tealHover, 20%);
+@tealTertiaryColorFocus      : desaturate(@tealFocus, 20%);
+@tealTertiaryColorActive     : saturate(@tealActive, 20%);
+@blueTertiaryColor           : saturate(@blue, 20%);
+@blueTertiaryColorHover      : desaturate(@blueHover, 20%);
+@blueTertiaryColorFocus      : desaturate(@blueFocus, 20%);
+@blueTertiaryColorActive     : saturate(@blueActive, 20%);
+@violetTertiaryColor         : saturate(@violet, 20%);
+@violetTertiaryColorHover    : desaturate(@violetHover, 20%);
+@violetTertiaryColorFocus    : desaturate(@violetFocus, 20%);
+@violetTertiaryColorActive   : saturate(@violetActive, 20%);
+@purpleTertiaryColor         : saturate(@purple, 20%);
+@purpleTertiaryColorHover    : desaturate(@purpleHover, 20%);
+@purpleTertiaryColorFocus    : desaturate(@purpleFocus, 20%);
+@purpleTertiaryColorActive   : saturate(@purpleActive, 20%);
+@pinkTertiaryColor           : saturate(@pink, 20%);
+@pinkTertiaryColorHover      : desaturate(@pinkHover, 20%);
+@pinkTertiaryColorFocus      : desaturate(@pinkFocus, 20%);
+@pinkTertiaryColorActive     : saturate(@pinkActive, 20%);
+@brownTertiaryColor          : saturate(@brown, 20%);
+@brownTertiaryColorHover     : desaturate(@brownHover, 20%);
+@brownTertiaryColorFocus     : desaturate(@brownFocus, 20%);
+@brownTertiaryColorActive    : saturate(@brownActive, 20%);
+@greyTertiaryColor           : saturate(@grey, 20%);
+@greyTertiaryColorHover      : desaturate(@greyHover, 20%);
+@greyTertiaryColorFocus      : desaturate(@greyFocus, 20%);
+@greyTertiaryColorActive     : saturate(@greyActive, 20%);
+@blackTertiaryColor          : lighten(@black, 20%);
+@blackTertiaryColorHover     : lighten(@blackHover, 40%);
+@blackTertiaryColorFocus     : lighten(@blackFocus, 40%);
+@blackTertiaryColorActive    : lighten(@blackActive, 20%);
+
+/*---  Bright  ---*/
+@primaryBright        : screen(@lightPrimaryColor,@blendingBaseColor);
+@secondaryBright      : screen(@lightSecondaryColor,@blendingBaseColor);
+@redBright            : screen(@lightRed,@blendingBaseColor);
+@orangeBright         : screen(@lightOrange,@blendingBaseColor);
+@yellowBright         : screen(@lightYellow,@blendingBaseColor);
+@oliveBright          : screen(@lightOlive,@blendingBaseColor);
+@greenBright          : screen(@lightGreen,@blendingBaseColor);
+@tealBright           : screen(@lightTeal,@blendingBaseColor);
+@blueBright           : screen(@lightBlue,@blendingBaseColor);
+@violetBright         : screen(@lightViolet,@blendingBaseColor);
+@purpleBright         : screen(@lightPurple,@blendingBaseColor);
+@pinkBright           : screen(@lightPink,@blendingBaseColor);
+@brownBright          : screen(@lightBrown,@blendingBaseColor);
+@greyBright           : @lightGrey;
+@blackBright          : @lightBlack;
+
+@primaryBrightHover   : screen(@lightPrimaryColorHover,@blendingBaseColor);
+@secondaryBrightHover : screen(@lightSecondaryColorHover,@blendingBaseColor);
+@redBrightHover       : screen(@lightRedHover,@blendingBaseColor);
+@orangeBrightHover    : screen(@lightOrangeHover,@blendingBaseColor);
+@yellowBrightHover    : screen(@lightYellowHover,@blendingBaseColor);
+@oliveBrightHover     : screen(@lightOliveHover,@blendingBaseColor);
+@greenBrightHover     : screen(@lightGreenHover,@blendingBaseColor);
+@tealBrightHover      : screen(@lightTealHover,@blendingBaseColor);
+@blueBrightHover      : screen(@lightBlueHover,@blendingBaseColor);
+@violetBrightHover    : screen(@lightVioletHover,@blendingBaseColor);
+@purpleBrightHover    : screen(@lightPurpleHover,@blendingBaseColor);
+@pinkBrightHover      : screen(@lightPinkHover,@blendingBaseColor);
+@brownBrightHover     : screen(@lightBrownHover,@blendingBaseColor);
+@greyBrightHover      : @lightGreyHover;
+@blackBrightHover     : @lightBlackHover;

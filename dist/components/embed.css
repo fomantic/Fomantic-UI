@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Video
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Video
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -37,6 +37,7 @@
   left: 0;
   margin: 0;
   padding: 0;
+  overflow: hidden;
 }
 
 /*-----------------

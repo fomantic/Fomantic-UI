@@ -1,31 +1,42 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.4",
-  "title": "Fomantic UI",
+  "version": "2.7.7",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
+  "keywords": [
+    "fomantic-ui",
+    "fomantic",
+    "semantic-ui",
+    "semantic",
+    "ui",
+    "css3",
+    "framework"
+  ],
   "homepage": "http://fomantic-ui.com",
-  "author": "Jack Lukic <jack@semantic-ui.com>",
+  "bugs": {
+    "url": "https://github.com/fomantic/Fomantic-UI/issues",
+    "email": "contact@fomantic-ui.com"
+  },
   "license": "MIT",
+  "author": "Jack Lukic <jack@semantic-ui.com>",
   "main": "dist/semantic",
   "repository": {
     "type": "git",
-    "url": "git://github.com/fomantic/Fomantic-UI.git"
-  },
-  "bugs": {
-    "url": "https://github.com/fomantic/Fomantic-UI/issues"
+    "url": "https://github.com/fomantic/Fomantic-UI.git"
   },
   "scripts": {
-    "install": "gulp install"
+    "install": "gulp install",
+    "build": "gulp build",
+    "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "dependencies": {
-    "jquery": "^3.2.1",
+    "jquery": "^3.4.0",
     "@octokit/rest": "^16.16.0",
     "gulp-concat-filenames": "^1.2.0",
     "gulp-debug": "^4.0.0",
     "gulp-git": "^2.9.0",
     "gulp-tap": "^1.0.1",
     "less": "^3.7.0",
-    "merge-stream": "^1.0.0",
+    "merge-stream": "^2.0.0",
     "better-console": "1.0.1",
     "del": "^3.0.0",
     "extend": "^3.0.2",
@@ -59,5 +70,14 @@
     "wrench-sui": "^0.0.3",
     "yamljs": "^0.3.0"
   },
+  "devDependencies": {
+    "all-contributors-cli": "^6.7.0",
+    "conventional-changelog-cli": "^2.0.21"
+  },
+  "engines": {
+    "node": ">=10.15.3",
+    "npm": "6.4.1"
+  },
+  "title": "Fomantic UI",
   "style": "dist/semantic.css"
 }

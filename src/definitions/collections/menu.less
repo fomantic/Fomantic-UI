@@ -477,16 +477,22 @@ Floated Menu / Item
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
-.ui.menu:not(.vertical) :not(.dropdown) > .left.menu {
+.ui.menu:not(.vertical) .left.menu {
   display: flex;
   margin-right: auto !important;
 }
 /* Right Floated */
 .ui.menu:not(.vertical) .right.item,
-.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+.ui.menu:not(.vertical) .right.menu {
   display: flex;
   margin-left: auto !important;
 }
+
+.ui.menu:not(.vertical) :not(.dropdown) > .left.menu,
+.ui.menu:not(.vertical) :not(.dropdown) > .right.menu {
+  display: inherit;
+}
+
 /* Center */
 .ui.menu:not(.vertical) .center.item,
 .ui.menu:not(.vertical) .center.menu {
@@ -912,7 +918,7 @@ Floated Menu / Item
 }
 
 /* Inverted */
-.ui.secondary.inverted.menu.menu {
+.ui.secondary.inverted.menu {
   background-color: transparent;
 }
 
@@ -941,7 +947,7 @@ Floated Menu / Item
   border-bottom-width: 0;
 }
 
-.ui.secondary.pointing.menu .item > .label {
+.ui.secondary.pointing.menu .item > .label:not(.floating) {
   margin-top: -@labelVerticalPadding;
   margin-bottom: -@labelVerticalPadding;
 }
@@ -1038,9 +1044,10 @@ Floated Menu / Item
 
 
 /* Active */
-.ui.secondary.inverted.pointing.menu .active.item {
+.ui.ui.secondary.inverted.pointing.menu .active.item {
   border-color: @secondaryPointingInvertedActiveBorderColor;
   color: @secondaryPointingInvertedActiveColor;
+  background-color: transparent;
 }
 
 /*--------------
@@ -1299,8 +1306,11 @@ each(@colors, {
 
   & when not (@color=secondary) {
     .ui.ui.menu .@{color}.active.item,
+    .ui.ui.@{color}.menu .active.item:hover,
     .ui.ui.@{color}.menu .active.item {
-      border-color: @c;
+      & when not (@secondaryPointingActiveBorderColor = currentColor) {
+        border-color: @c;
+      }
       color: @c;
     }
   }
@@ -1424,6 +1434,7 @@ each(@colors, {
 each(@colors, {
   @color: replace(@key, '@', '');
   @c: @colors[@@color][color];
+  @h: @colors[@@color][hover];
 
   & when not (@color=secondary) {
     .ui.ui.inverted.menu .@{color}.active.item,
@@ -1436,9 +1447,15 @@ each(@colors, {
     .ui.ui.inverted.@{color}.menu .active.item {
       background-color: @invertedColoredActiveBackground;
     }
+    .ui.inverted.pointing.@{color}.menu .active.item {
+      background-color: @h;
+    }
   }
 })
 
+.ui.ui.ui.inverted.pointing.menu .active.item:after{
+  background-color: inherit;
+}
 
 /*--------------
      Fitted
@@ -1523,7 +1540,7 @@ each(@colors, {
   text-align: center;
   justify-content: center;
 }
-.ui.attached.item.menu {
+.ui.attached.item.menu:not(.tabular) {
   margin: 0 @attachedHorizontalOffset !important;
 }
 

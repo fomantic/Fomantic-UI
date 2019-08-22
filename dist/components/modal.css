@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Modal
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Modal
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -114,8 +114,6 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 
 /* Image */
@@ -193,7 +191,7 @@
 
 
 /* Modal Width */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.modal:not(.fullscreen) {
     width: 95%;
     margin: 0 0 0 0;
@@ -225,7 +223,7 @@
 }
 
 /* Tablet and Mobile */
-@media only screen and (max-width: 991.99px) {
+@media only screen and (max-width: 991.98px) {
   .ui.modal > .header {
     padding-right: 2.25rem;
   }
@@ -237,15 +235,15 @@
 }
 
 /* Mobile */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.modal > .header {
     padding: 0.75rem 1rem !important;
     padding-right: 2.25rem !important;
   }
-  .ui.overlay.fullscreen.modal .content.content.content {
+  .ui.overlay.fullscreen.modal > .content.content.content {
     min-height: calc(100vh - 8.1rem);
   }
-  .ui.overlay.fullscreen.modal .scrolling.content.content.content {
+  .ui.overlay.fullscreen.modal > .scrolling.content.content.content {
     max-height: calc(100vh - 8.1rem);
   }
   .ui.modal > .content {
@@ -385,7 +383,7 @@
 .ui.bottom.aligned.modal {
   bottom: 5vh;
 }
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.top.aligned.modal {
     top: 1rem;
   }
@@ -432,14 +430,14 @@
 }
 
 /* Scrolling Content */
-.ui.modal .scrolling.content {
+.ui.modal > .scrolling.content {
   max-height: calc(80vh - 10rem);
   overflow: auto;
 }
-.ui.overlay.fullscreen.modal .content {
+.ui.overlay.fullscreen.modal > .content {
   min-height: calc(100vh - 9.1rem);
 }
-.ui.overlay.fullscreen.modal .scrolling.content {
+.ui.overlay.fullscreen.modal > .scrolling.content {
   max-height: calc(100vh - 9.1rem);
 }
 
@@ -485,7 +483,7 @@
 }
 
 /* Mini Modal Width */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.mini.modal {
     width: 95%;
     margin: 0 0 0 0;
@@ -522,7 +520,7 @@
 }
 
 /* Tiny Modal Width */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.tiny.modal {
     width: 95%;
     margin: 0 0 0 0;
@@ -559,7 +557,7 @@
 }
 
 /* Small Modal Width */
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.small.modal {
     width: 95%;
     margin: 0 0 0 0;
@@ -594,7 +592,7 @@
 .ui.large.modal > .header {
   font-size: 1.6em;
 }
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.large.modal {
     width: 95%;
     margin: 0 0 0 0;
@@ -646,7 +644,7 @@
 .ui.inverted.dimmer > .modal > .close {
   color: rgba(0, 0, 0, 0.85);
 }
-@media only screen and (max-width: 991.99px) {
+@media only screen and (max-width: 991.98px) {
   .ui.dimmer .inverted.modal > .close {
     color: #FFFFFF;
   }

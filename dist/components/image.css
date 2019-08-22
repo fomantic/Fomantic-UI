@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Image
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Image
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -36,7 +36,7 @@ img.ui.image {
 *******************************/
 
 .ui.hidden.images,
-.ui.hidden.image {
+.ui.ui.hidden.image {
   display: none;
 }
 .ui.hidden.transition.images,

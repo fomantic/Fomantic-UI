@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Segment
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Segment
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -793,6 +793,19 @@
 }
 .ui.segment[class*="bottom attached"]:last-child {
   margin-bottom: 1rem;
+}
+
+/*--------------
+     Fitted
+---------------*/
+
+.ui.fitted.segment:not(.horizontally) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.ui.fitted.segment:not(.vertically) {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /*-------------------

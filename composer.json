@@ -1,7 +1,7 @@
 {
   "name"        : "fomantic/ui",
   "description" : "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
-  "homepage"    : "http://www.semantic-ui.com",
+  "homepage"    : "https://fomantic-ui.com",
   "authors"     : [
     {
       "name"     : "Jack Lukic",
@@ -11,10 +11,12 @@
     }
   ],
   "support": {
-    "issues": "https://github.com/Semantic-Org/Semantic-UI/issues",
-    "source": "https://github.com/Semantic-Org/Semantic-UI"
+    "issues": "https://github.com/fomantic/Fomantic-UI/issues",
+    "source": "https://github.com/fomantic/Fomantic-UI"
   },
   "keywords" : [
+    "fomantic",
+    "fomantic-ui",
     "semantic",
     "ui",
     "css",

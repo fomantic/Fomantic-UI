@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Statistic
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Statistic
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -498,7 +498,7 @@
     Stackable
 ---------------*/
 
-@media only screen and (max-width: 767.99px) {
+@media only screen and (max-width: 767.98px) {
   .ui.stackable.statistics {
     width: auto;
     margin-left: 0 !important;

@@ -1,6 +1,6 @@
 /*!
- * # Semantic UI 2.7.2 - Button
- * http://github.com/semantic-org/semantic-ui/
+ * # Fomantic-UI - Button
+ * http://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -176,7 +176,7 @@
       Disabled
 --------------------*/
 
-.ui.buttons .disabled.button,
+.ui.buttons .disabled.button:not(.basic),
 .ui.disabled.button,
 .ui.button:disabled,
 .ui.disabled.button:hover,
@@ -684,6 +684,10 @@
 .ui.compact.labeled.icon.buttons .button,
 .ui.compact.labeled.icon.button {
   padding: 0.58928571em 3.69642857em 0.58928571em;
+}
+.ui.compact.labeled.icon.buttons .button > .icon,
+.ui.compact.labeled.icon.button > .icon {
+  padding: 0.58928571em 0 0.58928571em 0;
 }
 
 /*-------------------
@@ -1315,6 +1319,9 @@
   display: -ms-flexbox;
   display: flex;
   width: auto;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 .ui.two.vertical.buttons > .button {
   height: 50%;
@@ -4110,14 +4117,14 @@
 .ui.tertiary.black.button:hover {
   -webkit-box-shadow: inset 0 -0.2em 0 #8b8f93;
           box-shadow: inset 0 -0.2em 0 #8b8f93;
-  color: #585c5f;
+  color: #8b8f93;
 }
 .ui.tertiary.black.buttons .button:focus,
 .ui.tertiary.black.buttons .tertiary.button:focus,
 .ui.tertiary.black.button:focus {
   -webkit-box-shadow: inset 0 -0.2em 0 #93969a;
           box-shadow: inset 0 -0.2em 0 #93969a;
-  color: #606367;
+  color: #93969a;
 }
 .ui.tertiary.black.buttons .active.button,
 .ui.tertiary.black.buttons .tertiary.active.button,
