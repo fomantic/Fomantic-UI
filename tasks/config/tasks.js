@@ -105,7 +105,7 @@ module.exports = {
               theme   = regExp.theme.exec(error.message)[1];
               console.error(theme + ' is not an available theme for ' + element);
             } else {
-              throw new Error(error);
+              console.error(error);
             }
           }
           else {
