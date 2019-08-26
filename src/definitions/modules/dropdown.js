@@ -3979,7 +3979,6 @@ $.fn.dropdown.settings = {
     icon         : 'icon',     // optional icon name
     iconClass    : 'iconClass', // optional individual class for icon (for example to use flag instead)
     class        : 'class',    // optional individual class for item/header
-    group        : 'group',    // optional group header an option belongs
     divider      : 'divider'   // optional divider append for group headers
   },
 
