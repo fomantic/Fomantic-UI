@@ -2438,6 +2438,9 @@ $.fn.dropdown = function(parameters) {
               ? forceScroll
               : false
             ;
+            if(module.get.activeItem().length === 0){
+              forceScroll = false;
+            }
             if($item && $menu.length > 0 && hasActive) {
               itemOffset = $item.position().top;
 
