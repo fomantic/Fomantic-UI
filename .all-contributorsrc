@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "bartocc",
+      "name": "Julien Palmas",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/47953?v=4",
+      "profile": "https://github.com/bartocc",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
