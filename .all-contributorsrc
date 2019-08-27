@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "egoisticalgoat",
+      "name": "Pascal",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18332886?v=4",
+      "profile": "https://github.com/egoisticalgoat",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
