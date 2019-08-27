@@ -104,6 +104,71 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "patilkiranm",
+      "name": "Kiran Patil",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3204107?v=4",
+      "profile": "https://github.com/patilkiranm",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "douglasg14b",
+      "name": "Douglas Gaskell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1400380?v=4",
+      "profile": "https://github.com/douglasg14b",
+      "contributions": [
+        "code",
+        "talk"
+      ]
+    },
+    {
+      "login": "ko2in",
+      "name": "Ko Ko Zin",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/930315?v=4",
+      "profile": "https://www.mvhnetworks.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "dutrieux",
+      "name": "dutrieux",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1622751?v=4",
+      "profile": "https://github.com/dutrieux",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "globophobe",
+      "name": "Alex",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/891192?v=4",
+      "profile": "http://alexnewby.com",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "ryamaguchi0220",
+      "name": "ryamaguchi0220",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/14275842?v=4",
+      "profile": "https://twitter.com/y_ryu0220",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    },
+    {
+      "login": "egoisticalgoat",
+      "name": "Pascal",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/18332886?v=4",
+      "profile": "https://github.com/egoisticalgoat",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
