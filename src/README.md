@@ -31,7 +31,7 @@ Each gulp task can be imported into your own Gulpfile using `require`
 ```javascript
 const watch = require('path/to/semantic/tasks/watch');
 
-gulp.task('watch ui', 'Watch Fomantic-UI', watch));
+gulp.task('watch ui', 'Watch Fomantic-UI', watch);
 ```
 
 #### Importing LESS
