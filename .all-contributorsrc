@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "bborn",
+      "name": "Bruno Bornsztein",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/3760?v=4",
+      "profile": "http://www.brunobornsztein.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
