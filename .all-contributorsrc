@@ -95,8 +95,19 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "douglasg14b",
+      "name": "Douglas Gaskell",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1400380?v=4",
+      "profile": "https://github.com/douglasg14b",
+      "contributions": [
+        "code",
+        "talk"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
