@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "GammaGames",
+      "name": "Jesse Lieberg",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7832163?v=4",
+      "profile": "http://gammagames.net",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
