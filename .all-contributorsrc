@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "rubenhbaca",
+      "name": "Ruben H. Baca",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/19667830?v=4",
+      "profile": "https://github.com/rubenhbaca",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
