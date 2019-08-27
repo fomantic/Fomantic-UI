@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "danthedeckie",
+      "name": "Daniel",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1070206?v=4",
+      "profile": "https://madprof.net/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
