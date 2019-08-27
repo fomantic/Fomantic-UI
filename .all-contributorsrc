@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "iarspider",
+      "name": "iarspider",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/636602?v=4",
+      "profile": "https://github.com/iarspider",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
