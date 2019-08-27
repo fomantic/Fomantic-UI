@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "euangoddard",
+      "name": "Euan Goddard",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/412672?v=4",
+      "profile": "https://www.stockopedia.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
