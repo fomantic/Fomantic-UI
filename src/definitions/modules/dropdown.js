@@ -382,7 +382,7 @@ $.fn.dropdown = function(parameters) {
                 .attr('class', $input.attr('class') )
                 .addClass(className.selection)
                 .addClass(className.dropdown)
-                .html( templates.dropdown(selectValues,settings.preserveHTML, settings.className) )
+                .html( templates.dropdown(selectValues, fields, settings.preserveHTML, settings.className) )
                 .insertBefore($input)
               ;
               if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -1296,7 +1296,7 @@ $.fn.dropdown = function(parameters) {
                 isBubbledEvent = ($subMenu.find($target).length > 0)
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
-              if (!module.has.search() || !document.activeElement.isEqualNode($search[0])) {
+              if (document.activeElement.tagName.toLowerCase() !== 'input') {
                 $(document.activeElement).blur();
               }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
@@ -1865,7 +1865,7 @@ $.fn.dropdown = function(parameters) {
             }
             return ( !module.has.selectInput() && module.is.multiple() )
               ? (typeof value == 'string') // delimited string
-                ? value.split(settings.delimiter)
+                ? module.escape.htmlEntities(value).split(settings.delimiter)
                 : ''
               : value
             ;
@@ -1942,7 +1942,8 @@ $.fn.dropdown = function(parameters) {
           },
           selectValues: function() {
             var
-              select = {}
+              select = {},
+              oldGroup = []
             ;
             select.values = [];
             $module
@@ -1954,12 +1955,21 @@ $.fn.dropdown = function(parameters) {
                     disabled = $option.attr('disabled'),
                     value    = ( $option.attr('value') !== undefined )
                       ? $option.attr('value')
-                      : name
+                      : name,
+                    group = $option.parent('optgroup')
                   ;
                   if(settings.placeholder === 'auto' && value === '') {
                     select.placeholder = name;
                   }
                   else {
+                    if(group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
+                      select.values.push({
+                        type: 'header',
+                        divider: settings.headerDivider,
+                        name: group.attr('label') || ''
+                      });
+                      oldGroup = group;
+                    }
                     select.values.push({
                       name     : name,
                       value    : value,
@@ -2428,6 +2438,9 @@ $.fn.dropdown = function(parameters) {
               ? forceScroll
               : false
             ;
+            if(module.get.activeItem().length === 0){
+              forceScroll = false;
+            }
             if($item && $menu.length > 0 && hasActive) {
               itemOffset = $item.position().top;
 
@@ -3886,6 +3899,8 @@ $.fn.dropdown.settings = {
 
   glyphWidth             : 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
+  headerDivider          : true,       // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
+
   // label settings on multi-select
   label: {
     transition : 'scale',
@@ -3961,8 +3976,10 @@ $.fn.dropdown.settings = {
     type         : 'type',     // type of dropdown element
     image        : 'image',    // optional image path
     imageClass   : 'imageClass', // optional individual class for image
-    icon        : 'icon',     // optional icon name
-    iconClass   : 'iconClass'  // optional individual class for icon (for example to use flag instead)
+    icon         : 'icon',     // optional icon name
+    iconClass    : 'iconClass', // optional individual class for icon (for example to use flag instead)
+    class        : 'class',    // optional individual class for item/header
+    divider      : 'divider'   // optional divider append for group headers
   },
 
   keys : {
@@ -4027,7 +4044,10 @@ $.fn.dropdown.settings = {
     visible     : 'visible',
     clearable   : 'clearable',
     noselection : 'noselection',
-    delete      : 'delete'
+    delete      : 'delete',
+    header      : 'header',
+    divider     : 'divider',
+    groupIcon   : ''
   }
 
 };
@@ -4062,13 +4082,11 @@ $.fn.dropdown.settings.templates = {
     return string;
   },
   // generates dropdown from select values
-  dropdown: function(select, preserveHTML, className) {
+  dropdown: function(select, fields, preserveHTML, className) {
     var
       placeholder = select.placeholder || false,
-      values      = select.values || [],
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape,
-      deQuote = $.fn.dropdown.settings.templates.deQuote
+      escape = $.fn.dropdown.settings.templates.escape
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -4078,9 +4096,7 @@ $.fn.dropdown.settings.templates = {
       html += '<div class="text"></div>';
     }
     html += '<div class="'+className.menu+'">';
-    $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + deQuote(option.value) + '">' + escape(option.name,preserveHTML) + '</div>';
-    });
+    html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML,className);
     html += '</div>';
     return html;
   },
@@ -4109,7 +4125,7 @@ $.fn.dropdown.settings.templates = {
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
         if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
@@ -4119,9 +4135,20 @@ $.fn.dropdown.settings.templates = {
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
-        html += '<div class="header">';
-        html +=   escape(option[fields.name],preserveHTML);
-        html += '</div>';
+        var groupName = escape(option[fields.name],preserveHTML),
+            groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
+        ;
+        if(groupName !== '' || groupIcon !== '') {
+          html += '<div class="' + (option[fields.class] ? deQuote(option[fields.class]) : className.header) + '">';
+          if (groupIcon !== '') {
+            html += '<i class="' + groupIcon + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
+          }
+          html += groupName;
+          html += '</div>';
+        }
+        if(option[fields.divider]){
+          html += '<div class="'+className.divider+'"></div>';
+        }
       }
     });
     return html;
