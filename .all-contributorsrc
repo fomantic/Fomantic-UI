@@ -95,8 +95,18 @@
         "doc",
         "review"
       ]
+    },
+    {
+      "login": "MikeyFriedChicken",
+      "name": "Michael Ceber",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/4342380?v=4",
+      "profile": "https://github.com/MikeyFriedChicken",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
-  "repoType": "github"
+  "repoType": "github",
+  "repoHost": "https://github.com"
 }
