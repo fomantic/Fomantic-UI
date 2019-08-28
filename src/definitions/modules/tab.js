@@ -694,7 +694,7 @@ $.fn.tab = function(parameters) {
               if( $tab.hasClass(className.active) ) {
                 var
                   tabPath = $(this).data(metadata.tab),
-                  $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
+                  $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]')
                 ;
 
                 if( $anchor.hasClass(className.active) ) {
