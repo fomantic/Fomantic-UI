@@ -299,6 +299,7 @@ $.fn.slider = function(parameters) {
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
             if(module.is.touch()) {
