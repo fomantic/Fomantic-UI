@@ -1023,10 +1023,12 @@ $.fn.form = function(parameters) {
               var
                 $field      = module.get.field(key),
                 $element    = $field.parent(),
+                $calendar   = $field.closest(selector.uiCalendar),
                 isMultiple  = Array.isArray(value),
                 isCheckbox  = $element.is(selector.uiCheckbox)  && module.can.useElement('checkbox'),
                 isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                 isRadio     = ($field.is(selector.radio) && isCheckbox),
+                isCalendar  = ($calendar.length > 0  && module.can.useElement('calendar')),
                 fieldExists = ($field.length > 0),
                 $multipleField
               ;
@@ -1061,6 +1063,9 @@ $.fn.form = function(parameters) {
                 else if(isDropdown) {
                   module.verbose('Setting dropdown value', value, $element);
                   $element.dropdown('set selected', value);
+                }
+                else if (isCalendar) {
+                  $calendar.calendar('set date',value);
                 }
                 else {
                   module.verbose('Setting field value', value, $field);
