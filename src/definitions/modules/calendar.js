@@ -674,7 +674,8 @@ $.fn.calendar = function(parameters) {
 
             var mode = module.get.mode();
             var text = formatter.datetime(date, settings);
-            if (fireChange && settings.onChange.call(element, date, text, mode) === false) {
+
+            if (fireChange && settings.onBeforeChange.call(element, date, text, mode) === false) {
               return false;
             }
 
@@ -693,6 +694,10 @@ $.fn.calendar = function(parameters) {
 
             if (updateInput && $input.length) {
               $input.val(text);
+            }
+
+            if (fireChange) {
+              settings.onChange.call(element, date, text, mode);
             }
           },
           startDate: function (date, refreshCalendar) {
@@ -1473,9 +1478,13 @@ $.fn.calendar.settings = {
     }
   },
 
-  // callback when date changes, return false to cancel the change
-  onChange: function (date, text, mode) {
+  // callback before date is changed, return false to cancel the change
+  onBeforeChange: function (date, text, mode) {
     return true;
+  },
+
+  // callback when date changes
+  onChange: function (date, text, mode) {
   },
 
   // callback before show animation, return false to prevent show
