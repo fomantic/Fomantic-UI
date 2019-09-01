@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.7
+ * # Fomantic UI - 2.7.8
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -8,7 +8,7 @@
  * http://opensource.org/licenses/MIT
  *
  */
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin&display=swap');
 /*!
  * # Fomantic-UI - Reset
  * http://github.com/fomantic/Fomantic-UI/
@@ -18082,7 +18082,8 @@ a.ui.label {
 
 /* Padding on next content after a label */
 
-.ui.top.attached.label ~ :first-of-type:not(.attached) {
+.ui.top.attached.label ~ .ui.bottom.attached.label + :not(.attached),
+.ui.top.attached.label + :not(.attached) {
   margin-top: 2rem !important;
 }
 
@@ -39457,16 +39458,23 @@ body.dimmable > .dimmer {
 .ui.dropdown .menu > .header {
   margin: 1rem 0 0.75rem;
   padding: 0 1.14285714rem;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 0.78571429em;
   font-weight: bold;
   text-transform: uppercase;
+}
+
+.ui.dropdown .menu > .header:not(.ui) {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 0.78571429em;
 }
 
 .ui.dropdown .menu > .divider {
   border-top: 1px solid rgba(34, 36, 38, 0.1);
   height: 0;
   margin: 0.5em 0;
+}
+
+.ui.dropdown .menu > .horizontal.divider {
+  border-top: none;
 }
 
 .ui.dropdown.dropdown .menu > .input {
@@ -44366,6 +44374,10 @@ a.ui.nag {
   left: 50%;
 }
 
+.ui.labeled.ticked.slider > .labels .halftick.label:after {
+  height: 0.75em;
+}
+
 /* Vertical Labels */
 
 .ui.labeled.vertical.slider > .labels {
@@ -44388,6 +44400,11 @@ a.ui.nag {
   height: 1px;
   left: 100%;
   top: 50%;
+}
+
+.ui.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 0.75em;
+  height: 1px;
 }
 
 /* Vertical Reversed Labels */
@@ -44964,6 +44981,10 @@ a.ui.nag {
   height: 1em;
 }
 
+.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 0.5em;
+}
+
 /* Small Vertical */
 
 .ui.slider.small.vertical .inner {
@@ -44979,6 +45000,10 @@ a.ui.nag {
 .ui.small.labeled.vertical.slider > .labels,
 .ui.small.labeled.vertical.slider > .labels .label:after {
   width: 1em;
+}
+
+.ui.small.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 0.5em;
 }
 
 /* Large */
@@ -45003,6 +45028,10 @@ a.ui.nag {
   height: 2em;
 }
 
+.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 1em;
+}
+
 /* Large Vertical */
 
 .ui.slider.large.vertical .inner {
@@ -45018,6 +45047,10 @@ a.ui.nag {
 .ui.large.labeled.vertical.slider > .labels,
 .ui.large.labeled.vertical.slider > .labels .label:after {
   width: 2em;
+}
+
+.ui.large.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 1em;
 }
 
 /* Big */
@@ -45042,6 +45075,10 @@ a.ui.nag {
   height: 2.5em;
 }
 
+.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 1.25em;
+}
+
 /* Big Vertical */
 
 .ui.slider.big.vertical .inner {
@@ -45057,6 +45094,10 @@ a.ui.nag {
 .ui.big.labeled.vertical.slider > .labels,
 .ui.big.labeled.vertical.slider > .labels .label:after {
   width: 2.5em;
+}
+
+.ui.big.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 1.25em;
 }
 
 /*******************************
