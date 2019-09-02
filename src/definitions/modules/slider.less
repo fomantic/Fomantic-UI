@@ -203,6 +203,9 @@
       top: 100%;
       left: 50%;
     }
+    .ui.labeled.ticked.slider > .labels .halftick.label:after {
+      height: @labelHeight / 2;
+    }
   }
 
   & when (@variationSliderVertical) {
@@ -227,6 +230,11 @@
       left: 100%;
       top: 50%;
     }
+    .ui.labeled.vertical.slider > .labels .halftick.label:after {
+      width: @labelHeight / 2;
+      height: @labelWidth;
+    }
+
     & when (@variationSliderReversed) {
       /* Vertical Reversed Labels */
       .ui.labeled.vertical.reversed.slider > .labels .label {
@@ -364,6 +372,9 @@ each(@colors, {
        .ui.@{value}.labeled.slider:not(.vertical) > .labels .label:after {
          height: @@lh;
        }
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+         height: @@lh / 2;
+       }
      }
      & when (@variationSliderVertical) {
        /* Small Vertical */
@@ -379,6 +390,9 @@ each(@colors, {
          .ui.@{value}.labeled.vertical.slider> .labels,
          .ui.@{value}.labeled.vertical.slider> .labels .label:after {
            width: @@lh;
+         }
+         .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
+           width: @@lh / 2;
          }
        }
      }

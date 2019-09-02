@@ -168,16 +168,20 @@
 .ui.dropdown .menu > .header {
   margin: @menuHeaderMargin;
   padding: @menuHeaderPadding;
-  color: @menuHeaderColor;
-  font-size: @menuHeaderFontSize;
   font-weight: @menuHeaderFontWeight;
   text-transform: @menuHeaderTextTransform;
 }
-
+.ui.dropdown .menu > .header:not(.ui) {
+  color: @menuHeaderColor;
+  font-size: @menuHeaderFontSize;
+}
 .ui.dropdown .menu > .divider {
   border-top: @menuDividerBorder;
   height: 0;
   margin: @menuDividerMargin;
+}
+.ui.dropdown .menu > .horizontal.divider {
+  border-top: none;
 }
 
 .ui.dropdown.dropdown .menu > .input {

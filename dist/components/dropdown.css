@@ -162,15 +162,20 @@
 .ui.dropdown .menu > .header {
   margin: 1rem 0 0.75rem;
   padding: 0 1.14285714rem;
-  color: rgba(0, 0, 0, 0.85);
-  font-size: 0.78571429em;
   font-weight: bold;
   text-transform: uppercase;
+}
+.ui.dropdown .menu > .header:not(.ui) {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 0.78571429em;
 }
 .ui.dropdown .menu > .divider {
   border-top: 1px solid rgba(34, 36, 38, 0.1);
   height: 0;
   margin: 0.5em 0;
+}
+.ui.dropdown .menu > .horizontal.divider {
+  border-top: none;
 }
 .ui.dropdown.dropdown .menu > .input {
   width: auto;

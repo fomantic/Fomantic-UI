@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.7.7
+ * # Fomantic UI - 2.7.8
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -696,8 +696,8 @@ $.fn.form = function(parameters) {
               $calendar    = $field.closest(selector.uiCalendar),
               defaultValue = $field.data(metadata.defaultValue) || '',
               isCheckbox   = $element.is(selector.uiCheckbox),
-              isDropdown   = $element.is(selector.uiDropdown),
-              isCalendar   = ($calendar.length > 0),
+              isDropdown   = $element.is(selector.uiDropdown)  && module.can.useElement('dropdown'),
+              isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(isErrored) {
@@ -732,8 +732,8 @@ $.fn.form = function(parameters) {
               $prompt      = $fieldGroup.find(selector.prompt),
               defaultValue = $field.data(metadata.defaultValue),
               isCheckbox   = $element.is(selector.uiCheckbox),
-              isDropdown   = $element.is(selector.uiDropdown),
-              isCalendar   = ($calendar.length > 0),
+              isDropdown   = $element.is(selector.uiDropdown)  && module.can.useElement('dropdown'),
+              isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
               isErrored    = $fieldGroup.hasClass(className.error)
             ;
             if(defaultValue === undefined) {
@@ -1182,7 +1182,7 @@ $.fn.form = function(parameters) {
                 isCheckbox   = $field.is(selector.checkbox),
                 isRadio      = $field.is(selector.radio),
                 isMultiple   = (name.indexOf('[]') !== -1),
-                isCalendar   = ($calendar.length > 0),
+                isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
                 isChecked    = (isCheckbox)
                   ? $field.is(':checked')
                   : false
@@ -1299,6 +1299,16 @@ $.fn.form = function(parameters) {
 
         },
 
+        can: {
+            useElement: function(element){
+               if ($.fn[element] !== undefined) {
+                   return true;
+               }
+               module.error(error.noElement.replace('{element}',element));
+               return false;
+            }
+        },
+
         escape: {
           string: function(text) {
             text =  String(text);
@@ -1373,7 +1383,7 @@ $.fn.form = function(parameters) {
                 .html(errors[0])
               ;
               if(!promptExists) {
-                if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                   module.verbose('Displaying error with css transition', settings.transition);
                   $prompt.transition(settings.transition + ' in', settings.duration);
                 }
@@ -1455,7 +1465,7 @@ $.fn.form = function(parameters) {
             ;
             if(settings.inline && $prompt.is(':visible')) {
               module.verbose('Removing prompt for field', identifier);
-              if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+              if(settings.transition  && module.can.useElement('transition') && $module.transition('is supported')) {
                 $prompt.transition(settings.transition + ' out', settings.duration, function() {
                   $prompt.remove();
                 });
@@ -1484,7 +1494,7 @@ $.fn.form = function(parameters) {
                 $el        = $(el),
                 $parent    = $el.parent(),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
-                isDropdown = $parent.is(selector.uiDropdown),
+                isDropdown = $parent.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                 value      = (isCheckbox)
                   ? $el.is(':checked')
                   : $el.val()
@@ -1517,10 +1527,12 @@ $.fn.form = function(parameters) {
               var
                 $field      = module.get.field(key),
                 $element    = $field.parent(),
+                $calendar   = $field.closest(selector.uiCalendar),
                 isMultiple  = Array.isArray(value),
-                isCheckbox  = $element.is(selector.uiCheckbox),
-                isDropdown  = $element.is(selector.uiDropdown),
+                isCheckbox  = $element.is(selector.uiCheckbox)  && module.can.useElement('checkbox'),
+                isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                 isRadio     = ($field.is(selector.radio) && isCheckbox),
+                isCalendar  = ($calendar.length > 0  && module.can.useElement('calendar')),
                 fieldExists = ($field.length > 0),
                 $multipleField
               ;
@@ -1555,6 +1567,9 @@ $.fn.form = function(parameters) {
                 else if(isDropdown) {
                   module.verbose('Setting dropdown value', value, $element);
                   $element.dropdown('set selected', value);
+                }
+                else if (isCalendar) {
+                  $calendar.calendar('set date',value);
                 }
                 else {
                   module.verbose('Setting field value', value, $field);
@@ -2019,7 +2034,8 @@ $.fn.form.settings = {
     identifier : 'You must specify a string identifier for each field',
     method     : 'The method you called is not defined.',
     noRule     : 'There is no rule matching the one you specified',
-    oldSyntax  : 'Starting in 2.0 forms now only take a single settings object. Validation settings converted to new syntax automatically.'
+    oldSyntax  : 'Starting in 2.0 forms now only take a single settings object. Validation settings converted to new syntax automatically.',
+    noElement  : 'This module requires ui {element}'
   },
 
   templates: {
@@ -6650,7 +6666,7 @@ $.fn.dropdown = function(parameters) {
                 .attr('class', $input.attr('class') )
                 .addClass(className.selection)
                 .addClass(className.dropdown)
-                .html( templates.dropdown(selectValues,settings.preserveHTML, settings.className) )
+                .html( templates.dropdown(selectValues, fields, settings.preserveHTML, settings.className) )
                 .insertBefore($input)
               ;
               if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
@@ -7564,7 +7580,7 @@ $.fn.dropdown = function(parameters) {
                 isBubbledEvent = ($subMenu.find($target).length > 0)
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
-              if (!module.has.search() || !document.activeElement.isEqualNode($search[0])) {
+              if (document.activeElement.tagName.toLowerCase() !== 'input') {
                 $(document.activeElement).blur();
               }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
@@ -8133,7 +8149,7 @@ $.fn.dropdown = function(parameters) {
             }
             return ( !module.has.selectInput() && module.is.multiple() )
               ? (typeof value == 'string') // delimited string
-                ? value.split(settings.delimiter)
+                ? module.escape.htmlEntities(value).split(settings.delimiter)
                 : ''
               : value
             ;
@@ -8210,7 +8226,8 @@ $.fn.dropdown = function(parameters) {
           },
           selectValues: function() {
             var
-              select = {}
+              select = {},
+              oldGroup = []
             ;
             select.values = [];
             $module
@@ -8222,12 +8239,21 @@ $.fn.dropdown = function(parameters) {
                     disabled = $option.attr('disabled'),
                     value    = ( $option.attr('value') !== undefined )
                       ? $option.attr('value')
-                      : name
+                      : name,
+                    group = $option.parent('optgroup')
                   ;
                   if(settings.placeholder === 'auto' && value === '') {
                     select.placeholder = name;
                   }
                   else {
+                    if(group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
+                      select.values.push({
+                        type: 'header',
+                        divider: settings.headerDivider,
+                        name: group.attr('label') || ''
+                      });
+                      oldGroup = group;
+                    }
                     select.values.push({
                       name     : name,
                       value    : value,
@@ -8696,6 +8722,9 @@ $.fn.dropdown = function(parameters) {
               ? forceScroll
               : false
             ;
+            if(module.get.activeItem().length === 0){
+              forceScroll = false;
+            }
             if($item && $menu.length > 0 && hasActive) {
               itemOffset = $item.position().top;
 
@@ -10154,6 +10183,8 @@ $.fn.dropdown.settings = {
 
   glyphWidth             : 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
+  headerDivider          : true,       // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
+
   // label settings on multi-select
   label: {
     transition : 'scale',
@@ -10229,8 +10260,10 @@ $.fn.dropdown.settings = {
     type         : 'type',     // type of dropdown element
     image        : 'image',    // optional image path
     imageClass   : 'imageClass', // optional individual class for image
-    icon        : 'icon',     // optional icon name
-    iconClass   : 'iconClass'  // optional individual class for icon (for example to use flag instead)
+    icon         : 'icon',     // optional icon name
+    iconClass    : 'iconClass', // optional individual class for icon (for example to use flag instead)
+    class        : 'class',    // optional individual class for item/header
+    divider      : 'divider'   // optional divider append for group headers
   },
 
   keys : {
@@ -10295,7 +10328,10 @@ $.fn.dropdown.settings = {
     visible     : 'visible',
     clearable   : 'clearable',
     noselection : 'noselection',
-    delete      : 'delete'
+    delete      : 'delete',
+    header      : 'header',
+    divider     : 'divider',
+    groupIcon   : ''
   }
 
 };
@@ -10330,13 +10366,11 @@ $.fn.dropdown.settings.templates = {
     return string;
   },
   // generates dropdown from select values
-  dropdown: function(select, preserveHTML, className) {
+  dropdown: function(select, fields, preserveHTML, className) {
     var
       placeholder = select.placeholder || false,
-      values      = select.values || [],
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape,
-      deQuote = $.fn.dropdown.settings.templates.deQuote
+      escape = $.fn.dropdown.settings.templates.escape
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -10346,9 +10380,7 @@ $.fn.dropdown.settings.templates = {
       html += '<div class="text"></div>';
     }
     html += '<div class="'+className.menu+'">';
-    $.each(values, function(index, option) {
-      html += '<div class="'+(option.disabled ? className.disabled+' ':'')+className.item+'" data-value="' + deQuote(option.value) + '">' + escape(option.name,preserveHTML) + '</div>';
-    });
+    html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML,className);
     html += '</div>';
     return html;
   },
@@ -10377,7 +10409,7 @@ $.fn.dropdown.settings.templates = {
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + className.item+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
         if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
@@ -10387,9 +10419,20 @@ $.fn.dropdown.settings.templates = {
         html +=   escape(option[fields.name],preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
-        html += '<div class="header">';
-        html +=   escape(option[fields.name],preserveHTML);
-        html += '</div>';
+        var groupName = escape(option[fields.name],preserveHTML),
+            groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
+        ;
+        if(groupName !== '' || groupIcon !== '') {
+          html += '<div class="' + (option[fields.class] ? deQuote(option[fields.class]) : className.header) + '">';
+          if (groupIcon !== '') {
+            html += '<i class="' + groupIcon + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
+          }
+          html += groupName;
+          html += '</div>';
+        }
+        if(option[fields.divider]){
+          html += '<div class="'+className.divider+'"></div>';
+        }
       }
     });
     return html;
@@ -14770,7 +14813,7 @@ $.fn.progress = function(parameters) {
                   width: value + '%'
                 });
               }
-              return parseInt(value, 10);
+              return parseFloat(value);
             });
             values.forEach(function(_, index) {
               var $bar = $($bars[index]);
@@ -14825,15 +14868,15 @@ $.fn.progress = function(parameters) {
                   : undefined;
 
               // round display percentage
-              percents = percents.map(function (percent) {
+              var roundedPercents = percents.map(function (percent) {
                 return (autoPrecision > 0)
                   ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                   : Math.round(percent)
                   ;
               });
-              module.percent = percents;
+              module.percent = roundedPercents;
               if (!hasTotal) {
-                module.value = percents.map(function (percent) {
+                module.value = roundedPercents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                     : Math.round((percent / 100) * module.total * 10) / 10
@@ -15363,6 +15406,7 @@ $.fn.slider = function(parameters) {
 
   var
     $allModules    = $(this),
+    $window        = $(window),
 
     moduleSelector = $allModules.selector || '',
 
@@ -15426,6 +15470,7 @@ $.fn.slider = function(parameters) {
         offset,
         precision,
         isTouch,
+        gapRatio = 1,
 
         module
       ;
@@ -15550,7 +15595,11 @@ $.fn.slider = function(parameters) {
               for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
                 var
                   labelText = module.get.label(i),
-                  $label = (labelText !== "") ? $('<li class="label">' + labelText + '</li>') : null,
+                  $label = (labelText !== "") 
+                    ? !(i % module.get.gapRatio())
+                      ? $('<li class="label">' + labelText + '</li>') 
+                      : $('<li class="halftick label"></li>')
+                    : null,
                   ratio  = i / len
                 ;
                 if($label) {
@@ -15569,6 +15618,9 @@ $.fn.slider = function(parameters) {
             module.bind.mouseEvents();
             if(module.is.touch()) {
               module.bind.touchEvents();
+            }
+            if (settings.autoAdjustLabels) {
+              module.bind.windowEvents();
             }
           },
           keyboardEvents: function() {
@@ -15613,6 +15665,9 @@ $.fn.slider = function(parameters) {
               $(document).on('mousemove' + eventNamespace, module.event.move);
               $(document).on('mouseup' + eventNamespace, module.event.up);
             }
+          },
+          windowEvents: function() {
+            $window.on('resize' + eventNamespace, module.event.resize);
           }
         },
 
@@ -15627,6 +15682,7 @@ $.fn.slider = function(parameters) {
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
             if(module.is.touch()) {
@@ -15714,6 +15770,13 @@ $.fn.slider = function(parameters) {
               $module.focus();
             }
           },
+          resize: function(_event) {
+            // To avoid a useless performance cost, we only call the label refresh when its necessary
+            if (gapRatio != module.get.gapRatio()) {
+              module.setup.labels();
+              gapRatio = module.get.gapRatio();
+            }
+          }
         },
 
         resync: function() {
@@ -15927,6 +15990,29 @@ $.fn.slider = function(parameters) {
               case 'first':
               default:
                 return position;
+            }
+          },
+          gapRatio: function() {
+            var gapRatio = 1;
+            
+            if( settings.autoAdjustLabels ) {
+              var 
+                numLabels = module.get.numLabels(),
+                gapCounter = 1
+              ;
+
+              // While the distance between two labels is too short,
+              // we divide the number of labels at each iteration
+              // and apply only if the modulo of the operation is an odd number.
+              while ((module.get.trackLength() / numLabels) * gapCounter < settings.labelDistance) {
+                if( !(numLabels % gapCounter) ) {
+                  gapRatio = gapCounter;
+                }
+                gapCounter += 1;
+              }
+              return gapRatio;
+            } else {
+              return 1;
             }
           }
         },
@@ -16509,14 +16595,16 @@ $.fn.slider.settings = {
     secondThumbVal  : 'secondThumbVal'
   },
 
-  min            : 0,
-  max            : 20,
-  step           : 1,
-  start          : 0,
-  end            : 20,
-  labelType      : 'number',
-  showLabelTicks : false,
-  smooth         : false,
+  min              : 0,
+  max              : 20,
+  step             : 1,
+  start            : 0,
+  end              : 20,
+  labelType        : 'number',
+  showLabelTicks   : false,
+  smooth           : false,
+  autoAdjustLabels : true,
+  labelDistance    : 100,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,
@@ -21570,6 +21658,11 @@ $.fn.tab = function(parameters) {
             initializedHistory = true;
           }
 
+          if(module.determine.activeTab() == null) {
+            module.debug('No active tab detected, setting first tab active', module.get.initialPath());
+            module.changeTab(module.get.initialPath());
+          };
+
           module.instantiate();
         },
 
@@ -22146,6 +22239,29 @@ $.fn.tab = function(parameters) {
           },
           tab: function() {
             return activeTabPath;
+          }
+        },
+
+        determine: {
+          activeTab: function() {
+            var activeTab = null;
+
+            $tabs.each(function(_index, tab) {
+              var $tab = $(tab);
+
+              if( $tab.hasClass(className.active) ) {
+                var
+                  tabPath = $(this).data(metadata.tab),
+                  $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]')
+                ;
+
+                if( $anchor.hasClass(className.active) ) {
+                  activeTab = tabPath;
+                }
+              }
+            });
+
+            return activeTab;
           }
         },
 
