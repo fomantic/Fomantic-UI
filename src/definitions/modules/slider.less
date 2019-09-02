@@ -195,6 +195,9 @@
   top: 100%;
   left: 50%;
 }
+.ui.labeled.ticked.slider > .labels .halftick.label:after {
+  height: @labelHeight / 2;
+}
 
 /* Vertical Labels */
 
@@ -216,6 +219,10 @@
   height: @labelWidth;
   left: 100%;
   top: 50%;
+}
+.ui.labeled.vertical.slider > .labels .halftick.label:after {
+  width: @labelHeight / 2;
+  height: @labelWidth;
 }
 
 /* Vertical Reversed Labels */
@@ -335,6 +342,9 @@ each(@colors, {
 .ui.small.labeled.slider:not(.vertical) > .labels .label:after {
   height: @smallLabelHeight;
 }
+.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: @smallLabelHeight / 2;
+}
 
 /* Small Vertical */
 .ui.slider.small.vertical .inner {
@@ -348,6 +358,9 @@ each(@colors, {
 .ui.small.labeled.vertical.slider> .labels,
 .ui.small.labeled.vertical.slider> .labels .label:after {
   width: @smallLabelHeight;
+}
+.ui.small.labeled.vertical.slider> .labels .halftick.label:after {
+  width: @smallLabelHeight / 2;
 }
 
 /* Large */
@@ -367,6 +380,9 @@ each(@colors, {
 .ui.large.labeled.slider:not(.vertical) > .labels .label:after {
   height: @largeLabelHeight;
 }
+.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: @largeLabelHeight / 2;
+}
 
 /* Large Vertical */
 .ui.slider.large.vertical .inner {
@@ -380,6 +396,9 @@ each(@colors, {
 .ui.large.labeled.vertical.slider> .labels,
 .ui.large.labeled.vertical.slider> .labels .label:after {
   width: @largeLabelHeight;
+}
+.ui.large.labeled.vertical.slider> .labels .halftick.label:after {
+  width: @largeLabelHeight / 2;
 }
 
 /* Big */
@@ -399,6 +418,9 @@ each(@colors, {
 .ui.big.labeled.slider:not(.vertical) > .labels .label:after {
   height: @bigLabelHeight;
 }
+.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: @bigLabelHeight / 2;
+}
 
 /* Big Vertical */
 .ui.slider.big.vertical .inner {
@@ -412,6 +434,9 @@ each(@colors, {
 .ui.big.labeled.vertical.slider> .labels,
 .ui.big.labeled.vertical.slider> .labels .label:after {
   width: @bigLabelHeight;
+}
+.ui.big.labeled.vertical.slider> .labels .halftick.label:after {
+  width: @bigLabelHeight / 2;
 }
 
 .loadUIOverrides();

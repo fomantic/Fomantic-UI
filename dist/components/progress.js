@@ -468,7 +468,7 @@ $.fn.progress = function(parameters) {
                   width: value + '%'
                 });
               }
-              return parseInt(value, 10);
+              return parseFloat(value);
             });
             values.forEach(function(_, index) {
               var $bar = $($bars[index]);
@@ -523,15 +523,15 @@ $.fn.progress = function(parameters) {
                   : undefined;
 
               // round display percentage
-              percents = percents.map(function (percent) {
+              var roundedPercents = percents.map(function (percent) {
                 return (autoPrecision > 0)
                   ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                   : Math.round(percent)
                   ;
               });
-              module.percent = percents;
+              module.percent = roundedPercents;
               if (!hasTotal) {
-                module.value = percents.map(function (percent) {
+                module.value = roundedPercents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                     : Math.round((percent / 100) * module.total * 10) / 10

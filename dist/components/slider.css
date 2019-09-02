@@ -184,6 +184,9 @@
   top: 100%;
   left: 50%;
 }
+.ui.labeled.ticked.slider > .labels .halftick.label:after {
+  height: 0.75em;
+}
 
 /* Vertical Labels */
 .ui.labeled.vertical.slider > .labels {
@@ -204,6 +207,10 @@
   height: 1px;
   left: 100%;
   top: 50%;
+}
+.ui.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 0.75em;
+  height: 1px;
 }
 
 /* Vertical Reversed Labels */
@@ -682,6 +689,9 @@
 .ui.small.labeled.slider:not(.vertical) > .labels .label:after {
   height: 1em;
 }
+.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 0.5em;
+}
 
 /* Small Vertical */
 .ui.slider.small.vertical .inner {
@@ -695,6 +705,9 @@
 .ui.small.labeled.vertical.slider > .labels,
 .ui.small.labeled.vertical.slider > .labels .label:after {
   width: 1em;
+}
+.ui.small.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 0.5em;
 }
 
 /* Large */
@@ -714,6 +727,9 @@
 .ui.large.labeled.slider:not(.vertical) > .labels .label:after {
   height: 2em;
 }
+.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 1em;
+}
 
 /* Large Vertical */
 .ui.slider.large.vertical .inner {
@@ -727,6 +743,9 @@
 .ui.large.labeled.vertical.slider > .labels,
 .ui.large.labeled.vertical.slider > .labels .label:after {
   width: 2em;
+}
+.ui.large.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 1em;
 }
 
 /* Big */
@@ -746,6 +765,9 @@
 .ui.big.labeled.slider:not(.vertical) > .labels .label:after {
   height: 2.5em;
 }
+.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+  height: 1.25em;
+}
 
 /* Big Vertical */
 .ui.slider.big.vertical .inner {
@@ -759,6 +781,9 @@
 .ui.big.labeled.vertical.slider > .labels,
 .ui.big.labeled.vertical.slider > .labels .label:after {
   width: 2.5em;
+}
+.ui.big.labeled.vertical.slider > .labels .halftick.label:after {
+  width: 1.25em;
 }
 
 
