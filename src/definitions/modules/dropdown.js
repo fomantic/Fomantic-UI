@@ -2988,11 +2988,9 @@ $.fn.dropdown = function(parameters) {
             $search.css('width', '');
           },
           searchTerm: function() {
-            if(module.has.search()){
-              module.verbose('Cleared search term');
-              $search.val('');
-              module.set.filtered();
-            }
+            module.verbose('Cleared search term');
+            $search.val('');
+            module.set.filtered();
           },
           userAddition: function() {
             $item.filter(selector.addition).remove();
