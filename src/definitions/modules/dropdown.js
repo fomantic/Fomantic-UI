@@ -988,7 +988,6 @@ $.fn.dropdown = function(parameters) {
           else {
             if(settings.allowAdditions) {
               module.set.selected(module.get.query());
-              module.remove.searchTerm();
             }
             else {
               module.remove.searchTerm();
@@ -2708,7 +2707,8 @@ $.fn.dropdown = function(parameters) {
                 }
               })
             ;
-          },
+            module.remove.searchTerm();
+          }
         },
 
         add: {
@@ -2988,9 +2988,11 @@ $.fn.dropdown = function(parameters) {
             $search.css('width', '');
           },
           searchTerm: function() {
-            module.verbose('Cleared search term');
-            $search.val('');
-            module.set.filtered();
+            if(module.has.search()){
+              module.verbose('Cleared search term');
+              $search.val('');
+              module.set.filtered();
+            }
           },
           userAddition: function() {
             $item.filter(selector.addition).remove();
