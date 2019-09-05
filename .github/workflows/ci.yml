@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   test:
     name: Test build process on node ${{ matrix.node_version }}
