@@ -1276,6 +1276,8 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
+      // Reverse date and month in some cases
+      text = settings.monthFirst ? text : text.replace(/([0-9]+)[\/\-\.]([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
       if(!isNaN(textDate.getDate())) {
         return textDate;
