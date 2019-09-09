@@ -268,7 +268,7 @@ $.fn.rating = function(parameters) {
                   .addClass(className.active)
               ;
             }
-            if(!module.is.initialLoad()) {
+            if(!module.is.initialLoad() || settings.fireOnInit) {
               settings.onRate.call(element, rating);
             }
           },
