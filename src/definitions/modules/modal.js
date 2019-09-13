@@ -694,10 +694,7 @@ $.fn.modal = function(parameters) {
 
         can: {
           useFlex: function() {
-            return (settings.useFlex == 'auto')
-              ? settings.detachable && !module.is.ie()
-              : settings.useFlex
-            ;
+            return settings.useFlex && settings.detachable && !module.is.ie();
           },
           fit: function() {
             var
@@ -806,18 +803,25 @@ $.fn.modal = function(parameters) {
             }
           },
           modalOffset: function() {
-            var
-              width = module.cache.width,
-              height = module.cache.height
-            ;
-            $module
-              .css({
-                marginTop: (!$module.hasClass('aligned') && module.can.fit())
-                  ? -(height / 2)
-                  : 0,
-                marginLeft: -(width / 2)
-              })
-            ;
+            if (!settings.detachable) {
+              $module
+                .css({
+                  top: (!$module.hasClass('aligned') && module.can.fit())
+                    ? parseInt(($(window).height() / 2) + $(document).scrollTop() - ($module.height() - settings.padding))
+                    : $(document).scrollTop() + (settings.padding / 2),
+                  marginLeft: -(module.cache.width / 2)
+                }) 
+              ;
+            } else {
+              $module
+                .css({
+                  marginTop: (!$module.hasClass('aligned') && module.can.fit())
+                    ? -(module.cache.height / 2)
+                    : 0,
+                  marginLeft: -(module.cache.width / 2)
+                }) 
+              ;
+            }
             module.verbose('Setting modal offset for legacy mode');
           },
           screenHeight: function() {
