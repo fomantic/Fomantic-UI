@@ -1176,7 +1176,6 @@ $.fn.calendar.settings = {
   centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
   currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
   selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
-  monthParseLength   : 3,
   // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
   popupOptions: {
     position: 'bottom left',
@@ -1332,10 +1331,9 @@ $.fn.calendar.settings = {
           if (word.length <= 0) {
             continue;
           }
-          word = word.substring(0, Math.min(word.length, settings.monthParseLength));
           for (j = 0; j < settings.text.months.length; j++) {
             monthString = settings.text.months[j];
-            monthString = monthString.substring(0, Math.min(word.length, Math.min(monthString.length, settings.monthParseLength))).toLowerCase();
+            monthString = monthString.substring(0, word.length).toLowerCase();
             if (monthString === word) {
               month = j + 1;
               break;
