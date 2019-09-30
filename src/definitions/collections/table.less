@@ -141,6 +141,9 @@
   padding: @cellVerticalPadding @cellHorizontalPadding;
   text-align: @cellTextAlign;
 }
+.ui.table tr.left > :first-child {
+  padding-left: @cellHorizontalPadding - @coloredBorderSize;
+}
 
 /* Icons */
 .ui.table > .icon {
@@ -683,7 +686,7 @@ each(@colors, {
     background-color: @c;
     color: @white;
   }
-  .ui.ui.ui.ui.table tr.@{color},
+  .ui.ui.ui.ui.table tr.@{color}:not(.left),
   .ui.ui.table td.@{color} {
     box-shadow: @stateMarkerWidth 0 0 @r inset;
     & when (@isDark) {
@@ -699,7 +702,7 @@ each(@colors, {
       color: @t;
     }
   }
-  .ui.ui.selectable.table tr.@{color}:hover,
+  .ui.ui.selectable.table tr.@{color}:not(.left):hover,
   .ui.table tr td.selectable.@{color}:hover,
   .ui.selectable.table tr:hover td.@{color} {
     & when (@isDark) {
@@ -715,6 +718,13 @@ each(@colors, {
       color: @ht;
     }
   }
+  .ui.table tr.left.@{color} :first-child {
+    border-left: @coloredBorderSize solid @c;
+  }
+  .ui.inverted.table tr.left.@{color} :first-child {
+    border-left: @coloredBorderSize solid @l;
+  }
+
 })
 
 /*--------------
@@ -1076,6 +1086,9 @@ each(@colors, {
 .ui.padded.table > tbody > tr > td {
   padding: @paddedVerticalPadding @paddedHorizontalPadding;
 }
+.ui.padded.table tr.left > :first-child {
+  padding-left: @paddedHorizontalPadding - @coloredBorderSize;
+}
 
 /* Very */
 .ui[class*="very padded"].table > tr > th,
@@ -1088,6 +1101,9 @@ each(@colors, {
 .ui[class*="very padded"].table > tr > td,
 .ui[class*="very padded"].table > tbody > tr > td {
   padding: @veryPaddedVerticalPadding @veryPaddedHorizontalPadding;
+}
+.ui[class*="very padded"].table tr.left > :first-child {
+  padding-left: @veryPaddedHorizontalPadding - @coloredBorderSize;
 }
 
 /*--------------
@@ -1105,6 +1121,9 @@ each(@colors, {
 .ui.compact.table > tbody > tr > td {
   padding: @compactVerticalPadding @compactHorizontalPadding;
 }
+.ui.compact.table tr.left > :first-child {
+  padding-left: @compactHorizontalPadding - @coloredBorderSize;
+}
 
 /* Very */
 .ui[class*="very compact"].table > tr > th,
@@ -1117,6 +1136,9 @@ each(@colors, {
 .ui[class*="very compact"].table > tr > td,
 .ui[class*="very compact"].table > tbody > tr > td {
   padding: @veryCompactVerticalPadding @veryCompactHorizontalPadding;
+}
+.ui[class*="very compact"].table tr.left > :first-child {
+  padding-left: @veryCompactHorizontalPadding - @coloredBorderSize;
 }
 
 /*--------------
