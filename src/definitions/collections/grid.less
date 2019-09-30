@@ -1620,8 +1620,6 @@ each(@colors, {
 @media only screen and (max-width: @largestMobileScreen) {
   .ui.stackable.grid {
     width: auto;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
   }
   .ui.stackable.grid > .row > .wide.column,
   .ui.stackable.grid > .wide.column,
@@ -1633,7 +1631,6 @@ each(@colors, {
     width: 100% !important;
     margin: 0 0 !important;
     box-shadow: none !important;
-    padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
   }
   .ui.stackable.grid:not(.vertically) > .row {
     margin: 0;
