@@ -224,27 +224,31 @@
   .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
     box-shadow: none !important;
   }
-  each(@colors, {
-    @color: replace(@key, '@', '');
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
-    .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
-      &.left {
-        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+  & when (@variationTableMarked) {
+    each(@colors, {
+      @color: replace(@key, '@', '');
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+      .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
+        &.left {
+          box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+        }
+        &.right {
+          box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+        }
       }
-      &.right {
-        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+      & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table:not(.unstackable) tr.marked.@{color} {
+          &.left {
+            box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
+          }
+          &.right {
+            box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
+          }
+        }
       }
-    }
-    .ui.ui.ui.ui.inverted.table:not(.unstackable) tr.marked.@{color} {
-      &.left {
-        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
-      }
-      &.right {
-        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
-      }
-    }
-  })
+    })
+  }
 }
 
 
@@ -501,27 +505,31 @@
       }
     }
   }
-  each(@colors, {
-    @color: replace(@key, '@', '');
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
-    .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
-      &.left {
-        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+  & when (@variationTableMarked) {
+    each(@colors, {
+      @color: replace(@key, '@', '');
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+      .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
+        &.left {
+          box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+        }
+        &.right {
+          box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+        }
       }
-      &.right {
-        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+      & when (@variationTableInverted) {
+        .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr.marked.@{color} {
+          &.left {
+            box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
+          }
+          &.right {
+            box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
+          }
+        }
       }
-    }
-    .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr.marked.@{color} {
-      &.left {
-        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
-      }
-      &.right {
-        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
-      }
-    }
-  })
+    })
+  }
 }
 
 & when (@variationTableAligned) {
@@ -808,20 +816,24 @@ each(@colors, {
       }
     }
   }
-  .ui.table tr.marked.@{color} {
-    &.left {
-      box-shadow: @coloredBorderSize 0 0 0 @c inset;
+  & when (@variationTableMarked) {
+    .ui.table tr.marked.@{color} {
+      &.left {
+        box-shadow: @coloredBorderSize 0 0 0 @c inset;
+      }
+      &.right {
+        box-shadow: -@coloredBorderSize 0 0 0 @c inset;
+      }
     }
-    &.right {
-      box-shadow: -@coloredBorderSize 0 0 0 @c inset;
-    }
-  }
-  .ui.inverted.table tr.marked.@{color} {
-    &.left {
-      box-shadow: @coloredBorderSize 0 0 0 @l inset;
-    }
-    &.right {
-      box-shadow: -@coloredBorderSize 0 0 0 @l inset;
+    & when (@variationTableInverted) {
+      .ui.inverted.table tr.marked.@{color} {
+        &.left {
+          box-shadow: @coloredBorderSize 0 0 0 @l inset;
+        }
+        &.right {
+          box-shadow: -@coloredBorderSize 0 0 0 @l inset;
+        }
+      }
     }
   }
 

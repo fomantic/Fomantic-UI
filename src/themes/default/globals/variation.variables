@@ -299,6 +299,7 @@
 @variationTableCelled: true;
 @variationTablePadded: true;
 @variationTableCompact: true;
+@variationTableMarked: true;
 @variationTableSizes: @variationAllSizes;
 
 
