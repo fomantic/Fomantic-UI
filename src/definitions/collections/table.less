@@ -726,7 +726,7 @@ each(@colors, {
     color: @white;
   }
   .ui.ui.ui.ui.table tr.@{color}:not(.marked),
-  .ui.ui.table td.@{color} {
+  .ui.ui.table td.@{color}:not(.marked) {
     & when (@stateMarkerWidth > 0) {
       box-shadow: @stateMarkerWidth 0 0 @r inset;
     }
@@ -744,8 +744,8 @@ each(@colors, {
     }
   }
   .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
-  .ui.table tr td.selectable.@{color}:hover,
-  .ui.selectable.table tr:hover td.@{color} {
+  .ui.table tr td.selectable.@{color}:not(.marked):hover,
+  .ui.selectable.table tr:hover td.@{color}:not(.marked) {
     & when (@isDark) {
       background: @lh;
     }
@@ -759,6 +759,7 @@ each(@colors, {
       color: @ht;
     }
   }
+  .ui.table td.marked.@{color},
   .ui.table tr.marked.@{color} {
     &.left {
       box-shadow: @coloredBorderSize 0 0 0 @c inset;
@@ -767,6 +768,7 @@ each(@colors, {
       box-shadow: -@coloredBorderSize 0 0 0 @c inset;
     }
   }
+  .ui.inverted.table td.marked.@{color},
   .ui.inverted.table tr.marked.@{color} {
     &.left {
       box-shadow: @coloredBorderSize 0 0 0 @l inset;
