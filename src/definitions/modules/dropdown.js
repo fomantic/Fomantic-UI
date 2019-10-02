@@ -484,7 +484,7 @@ $.fn.dropdown = function(parameters) {
           }
         },
 
-        show: function(callback) {
+        show: function(callback, preventFocus) {
           callback = $.isFunction(callback)
             ? callback
             : function(){}
@@ -506,7 +506,7 @@ $.fn.dropdown = function(parameters) {
                 if( module.can.click() ) {
                   module.bind.intent();
                 }
-                if(module.has.search()) {
+                if(module.has.search() && !preventFocus) {
                   module.focusSearch();
                 }
                 module.set.visible();
