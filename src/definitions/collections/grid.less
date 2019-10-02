@@ -1670,11 +1670,11 @@ each(@colors, {
     .ui.stackable.grid > .column.row > .column,
     .ui.stackable.grid > .row > .column,
     .ui.stackable.grid > .column:not(.row),
-    .ui.grid > .stackable.stackable.row > .column {
+    .ui.grid > .stackable.stackable.stackable.row > .column {
       width: 100% !important;
       margin: 0 0 !important;
       box-shadow: none !important;
-      padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
+      padding: (@stackableRowSpacing / 2) (@stackableGutter / 2);
     }
     .ui.stackable.grid:not(.vertically) > .row {
       margin: 0;
@@ -1868,25 +1868,25 @@ each(@colors, {
         Compact
   -----------------*/
 
-  .ui.compact.grid > .column:not(.row),
-  .ui.compact.grid > .row > .column {
+  .ui.ui.ui.compact.grid > .column:not(.row),
+  .ui.ui.ui.compact.grid > .row > .column {
     padding-left: (@compactGutterWidth / 2);
     padding-right: (@compactGutterWidth / 2);
   }
 
-  .ui.compact.grid > * {
+  .ui.ui.ui.compact.grid > * {
     padding-left: (@compactGutterWidth / 2);
     padding-right: (@compactGutterWidth / 2);
   }
 
   /* Row */
-  .ui.compact.grid > .row {
+  .ui.ui.ui.compact.grid > .row {
     padding-top: (@compactRowSpacing / 2);
     padding-bottom: (@compactRowSpacing / 2);
   }
 
   /* Columns */
-  .ui.compact.grid > .column:not(.row) {
+  .ui.ui.ui.compact.grid > .column:not(.row) {
     padding-top: (@compactRowSpacing / 2);
     padding-bottom: (@compactRowSpacing / 2);
   }

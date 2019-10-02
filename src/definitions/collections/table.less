@@ -191,10 +191,10 @@
   .ui.table:not(.unstackable) > tfoot {
     display: @responsiveFooterDisplay;
   }
-  .ui.table:not(.unstackable) > tr,
-  .ui.table:not(.unstackable) > thead > tr,
-  .ui.table:not(.unstackable) > tbody > tr,
-  .ui.table:not(.unstackable) > tfoot > tr {
+  .ui.ui.ui.ui.table:not(.unstackable) > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
     padding-top: @responsiveRowVerticalPadding;
     padding-bottom: @responsiveRowVerticalPadding;
     box-shadow: @responsiveRowBoxShadow;
@@ -224,6 +224,27 @@
   .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
     box-shadow: none !important;
   }
+  each(@colors, {
+    @color: replace(@key, '@', '');
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
+      &.left {
+        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+      }
+      &.right {
+        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+      }
+    }
+    .ui.ui.ui.ui.inverted.table:not(.unstackable) tr.marked.@{color} {
+      &.left {
+        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
+      }
+      &.right {
+        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
+      }
+    }
+  })
 }
 
 
@@ -454,10 +475,10 @@
     .ui[class*="tablet stackable"].table > tfoot {
       display: @responsiveFooterDisplay;
     }
-    .ui[class*="tablet stackable"].table > thead > tr,
-    .ui[class*="tablet stackable"].table > tbody > tr,
-    .ui[class*="tablet stackable"].table > tfoot > tr,
-    .ui[class*="tablet stackable"].table > tr {
+    .ui.ui.ui.ui[class*="tablet stackable"].table > thead > tr,
+    .ui.ui.ui.ui[class*="tablet stackable"].table > tbody > tr,
+    .ui.ui.ui.ui[class*="tablet stackable"].table > tfoot > tr,
+    .ui.ui.ui.ui[class*="tablet stackable"].table > tr {
       padding-top: @responsiveRowVerticalPadding;
       padding-bottom: @responsiveRowVerticalPadding;
       box-shadow: @responsiveRowBoxShadow;
@@ -480,6 +501,27 @@
       }
     }
   }
+  each(@colors, {
+    @color: replace(@key, '@', '');
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
+      &.left {
+        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
+      }
+      &.right {
+        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @c inset;
+      }
+    }
+    .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr.marked.@{color} {
+      &.left {
+        box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
+      }
+      &.right {
+        box-shadow: @responsiveRowBoxShadow, -@coloredBorderSize 0 0 0 @l inset;
+      }
+    }
+  })
 }
 
 & when (@variationTableAligned) {
@@ -730,9 +772,11 @@ each(@colors, {
       color: @white;
     }
   }
-  .ui.ui.ui.ui.table tr.@{color},
+  .ui.ui.ui.ui.table tr.@{color}:not(.marked),
   .ui.ui.table td.@{color} {
-    box-shadow: @stateMarkerWidth 0 0 @r inset;
+    & when (@stateMarkerWidth > 0) {
+      box-shadow: @stateMarkerWidth 0 0 @r inset;
+    }
     & when (@isDark) {
       background: @l;
     }
@@ -747,7 +791,7 @@ each(@colors, {
     }
   }
   & when (@variationTableSelectable) {
-    .ui.ui.selectable.table tr.@{color}:hover,
+    .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
     .ui.table tr td.selectable.@{color}:hover,
     .ui.selectable.table tr:hover td.@{color} {
       & when (@isDark) {
@@ -764,6 +808,23 @@ each(@colors, {
       }
     }
   }
+  .ui.table tr.marked.@{color} {
+    &.left {
+      box-shadow: @coloredBorderSize 0 0 0 @c inset;
+    }
+    &.right {
+      box-shadow: -@coloredBorderSize 0 0 0 @c inset;
+    }
+  }
+  .ui.inverted.table tr.marked.@{color} {
+    &.left {
+      box-shadow: @coloredBorderSize 0 0 0 @l inset;
+    }
+    &.right {
+      box-shadow: -@coloredBorderSize 0 0 0 @l inset;
+    }
+  }
+
 })
 
 /*--------------
