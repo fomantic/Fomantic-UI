@@ -634,6 +634,11 @@ $.fn.modal = function(parameters) {
             $module.removeClass(className.legacy);
           },
           clickaway: function() {
+            if (!settings.detachable) {
+              $module
+                  .off('mousedown' + elementEventNamespace)
+              ;
+            }           
             $dimmer
               .off('mousedown' + elementEventNamespace)
             ;
@@ -755,6 +760,11 @@ $.fn.modal = function(parameters) {
             }
           },
           clickaway: function() {
+            if (!settings.detachable) {
+              $module
+                .on('mousedown' + elementEventNamespace, module.event.mousedown)
+              ;
+            }
             $dimmer
               .on('mousedown' + elementEventNamespace, module.event.mousedown)
             ;
