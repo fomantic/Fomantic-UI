@@ -218,6 +218,16 @@ ol.ui.list ol li,
   color: @itemLinkIconColor;
 }
 
+.ui.list .list > a.item > i.icons,
+.ui.list > a.item > i.icons {
+  color: @lightTextColor;
+}
+
+.ui.list .list > a.item:hover > .icons,
+.ui.list > a.item:hover > .icons {
+  color: @textColor;
+}
+
 /* Header Link */
 .ui.list .list > .item a.header,
 .ui.list > .item a.header {
@@ -322,7 +332,8 @@ ol.ui.list ol li,
 }
 
 /* Horizontal List */
-.ui.horizontal.list > .item > i.icon {
+.ui.horizontal.list > .item > i.icon,
+.ui.horizontal.list .item > i.icons > i.icon {
   margin: 0;
   padding: 0 @horizontalIconDistance 0 0;
 }
