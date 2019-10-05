@@ -5,6 +5,8 @@ A community fork of the popular Semantic-UI framework.
 
 A warm welcome to all of you!
 
+We are happy to see you here!
+
 [![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
