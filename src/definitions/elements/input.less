@@ -456,17 +456,17 @@
 }
 
 /* Input when ui Left*/
-.ui[class*="left action"].action.input > input {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-left-color: transparent !important;
+.ui[class*="left action"].input > input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: transparent;
 }
 
 /* Input when ui Right*/
 .ui.action.input:not([class*="left action"]) > input {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-right-color: transparent !important;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: transparent;
 }
 
 /* Button and Dropdown */
@@ -487,8 +487,8 @@
 }
 
 /* Input Focus */
-.ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: @focusBorderColor !important;
+.ui.ui.action.input:not([class*="left action"]) > input:focus {
+  border-right-color: @focusBorderColor;
 }
 
 /*--------------------
