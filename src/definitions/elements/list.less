@@ -213,19 +213,11 @@ ol.ui.list ol li,
 }
 
 /* Linked Item Icons */
+.ui.list .list > a.item > i.icons,
+.ui.list > a.item > i.icons,
 .ui.list .list > a.item > i.icon,
 .ui.list > a.item > i.icon {
   color: @itemLinkIconColor;
-}
-
-.ui.list .list > a.item > i.icons,
-.ui.list > a.item > i.icons {
-  color: @lightTextColor;
-}
-
-.ui.list .list > a.item:hover > .icons,
-.ui.list > a.item:hover > .icons {
-  color: @textColor;
 }
 
 /* Header Link */
@@ -370,6 +362,8 @@ ol.ui.list ol li,
         Hover
 --------------------*/
 
+.ui.list .list > a.item:hover > .icons,
+.ui.list > a.item:hover > .icons,
 .ui.list .list > a.item:hover > .icon,
 .ui.list > a.item:hover > .icon {
   color: @itemLinkIconHoverColor;
