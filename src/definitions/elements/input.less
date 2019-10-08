@@ -487,8 +487,12 @@
 }
 
 /* Input Focus */
-.ui.ui.action.input:not([class*="left action"]) > input:focus {
+.ui.action.input:not([class*="left action"]) > input:focus {
   border-right-color: @focusBorderColor;
+}
+
+.ui.ui[class*="left action"].input > input:focus {
+  border-left-color: @focusBorderColor;
 }
 
 /*--------------------
