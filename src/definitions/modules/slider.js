@@ -336,8 +336,16 @@ $.fn.slider = function(parameters) {
                 thumbSmoothVal = module.determine.smoothValueFromEvent(event, originalEvent)
               ;
               if(!$currThumb.hasClass('second')) {
+                if(settings.preventCrossover) {
+                  value = Math.min(secondThumbVal, value);
+                  thumbSmoothVal = Math.min(secondThumbVal, thumbSmoothVal);
+                }
                 thumbVal = value;
               } else {
+                if(settings.preventCrossover) {
+                  value = Math.max(thumbVal, value);
+                  thumbSmoothVal = Math.max(thumbVal, thumbSmoothVal);
+                }
                 secondThumbVal = value;
               }
               value = Math.abs(thumbVal - (secondThumbVal || 0));
@@ -885,8 +893,14 @@ $.fn.slider = function(parameters) {
               module.thumbVal = value;
             } else {
               if(!$currThumb.hasClass('second')) {
+                if(settings.preventCrossover) {
+                  newValue = Math.min(module.secondThumbVal, newValue);
+                }
                 module.thumbVal = newValue;
               } else {
+                if(settings.preventCrossover) {
+                  newValue = Math.max(module.thumbVal, newValue);
+                }
                 module.secondThumbVal = newValue;
               }
               value = Math.abs(module.thumbVal - module.secondThumbVal);
@@ -1222,6 +1236,7 @@ $.fn.slider.settings = {
   smooth           : false,
   autoAdjustLabels : true,
   labelDistance    : 100,
+  preventCrossover : true,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,
