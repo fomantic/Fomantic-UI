@@ -658,6 +658,9 @@ $.fn.slider = function(parameters) {
               secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb)),
               secondThumbDelta = Math.abs(eventPos - secondThumbPos)
             ;
+            if(thumbDelta === secondThumbDelta && module.get.thumbValue() === module.get.min()) {
+              return $secondThumb;
+            }
             return thumbDelta <= secondThumbDelta ? $thumb : $secondThumb;
           },
           closestThumbPos: function(eventPos) {
