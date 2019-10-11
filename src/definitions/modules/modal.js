@@ -34,6 +34,7 @@ $.fn.modal = function(parameters) {
 
     time           = new Date().getTime(),
     performance    = [],
+    isRtl          = $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl',
 
     query          = arguments[0],
     methodInvoked  = (typeof query == 'string'),
@@ -285,7 +286,7 @@ $.fn.modal = function(parameters) {
             if(initialMouseDownInModal) {
               module.verbose('Mouse down event registered inside the modal');
             }
-            initialMouseDownInScrollbar = module.is.scrolling() && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX;
+            initialMouseDownInScrollbar = module.is.scrolling() && ((!isRtl && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX) || (isRtl && settings.scrollbarWidth >= event.clientX));
             if(initialMouseDownInScrollbar) {
               module.verbose('Mouse down event registered inside the scrollbar');
             }
