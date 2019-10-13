@@ -2118,8 +2118,8 @@ $.fn.dropdown = function(parameters) {
         },
 
         restore: {
-          defaults: function() {
-            module.clear();
+          defaults: function(preventChangeTrigger) {
+            module.clear(preventChangeTrigger);
             module.restore.defaultText();
             module.restore.defaultValue();
           },
@@ -2271,7 +2271,7 @@ $.fn.dropdown = function(parameters) {
           }
         },
 
-        clear: function() {
+        clear: function(preventChangeTrigger) {
           if(module.is.multiple() && settings.useLabels) {
             module.remove.labels();
           }
@@ -2281,11 +2281,11 @@ $.fn.dropdown = function(parameters) {
             module.remove.filteredItem();
           }
           module.set.placeholderText();
-          module.clearValue();
+          module.clearValue(preventChangeTrigger);
         },
 
-        clearValue: function() {
-          module.set.value('');
+        clearValue: function(preventChangeTrigger) {
+          module.set.value('', null, null, preventChangeTrigger);
         },
 
         scrollPage: function(direction, $selectedItem) {
@@ -2567,7 +2567,7 @@ $.fn.dropdown = function(parameters) {
             var $element = $currentMenu || $menu;
             $element.addClass(className.leftward);
           },
-          value: function(value, text, $selected) {
+          value: function(value, text, $selected, preventChangeTrigger) {
             if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
@@ -2602,7 +2602,7 @@ $.fn.dropdown = function(parameters) {
               if(settings.fireOnInit === false && module.is.initialLoad()) {
                 module.debug('Input native change event ignored on initial load');
               }
-              else {
+              else if(preventChangeTrigger !== true) {
                 module.trigger.change();
               }
               internalChange = false;
@@ -2616,7 +2616,7 @@ $.fn.dropdown = function(parameters) {
             if(settings.fireOnInit === false && module.is.initialLoad()) {
               module.verbose('No callback on initial load', settings.onChange);
             }
-            else {
+            else if(preventChangeTrigger !== true) {
               settings.onChange.call(element, value, text, $selected);
             }
           },
