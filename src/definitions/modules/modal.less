@@ -401,7 +401,7 @@
   margin: @scrollingMargin auto;
 }
 /* Fix for Firefox, Edge, IE11 */
-.modals.dimmer .ui.scrolling.modal:not(.fullscreen)::after {
+.modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
   content:'\00A0';
   position: absolute;
   height: @scrollingMargin;
