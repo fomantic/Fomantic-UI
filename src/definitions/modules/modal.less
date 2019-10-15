@@ -364,18 +364,18 @@
    Aligned
 ---------------*/
 
-.ui.top.aligned.modal {
+.modals.dimmer .ui.top.aligned.modal {
   top: @topAlignedMargin;
 }
-.ui.bottom.aligned.modal {
+.modals.dimmer .ui.bottom.aligned.modal {
   bottom: @bottomAlignedMargin;
 }
 
 @media only screen and (max-width : @largestMobileScreen) {
-  .ui.top.aligned.modal {
+  .modals.dimmer .ui.top.aligned.modal {
     top: @mobileTopAlignedMargin;
   }
-  .ui.bottom.aligned.modal {
+  .modals.dimmer .ui.bottom.aligned.modal {
     bottom: @mobileBottomAlignedMargin;
   }
 }
@@ -412,7 +412,6 @@
 .scrolling.undetached.dimmable .ui.scrolling.modal:not(.fullscreen) {
   position: absolute;
   left: 50%;
-  margin-top: @scrollingMargin !important;
 }
 
 /* Scrolling Content */

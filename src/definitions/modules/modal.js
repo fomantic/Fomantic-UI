@@ -804,11 +804,14 @@ $.fn.modal = function(parameters) {
           },
           modalOffset: function() {
             if (!settings.detachable) {
+              var canFit = module.can.fit();
               $module
                 .css({
-                  top: (!$module.hasClass('aligned') && module.can.fit())
-                    ? parseInt(($(window).height() / 2) + $(document).scrollTop() - ($module.height() - settings.padding))
-                    : $(document).scrollTop() + (settings.padding / 2),
+                  top: (!$module.hasClass('aligned') && canFit)
+                    ? $(document).scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
+                    : !canFit || $module.hasClass('top')
+                      ? $(document).scrollTop() + settings.padding
+                      : $(document).scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
                   marginLeft: -(module.cache.width / 2)
                 }) 
               ;
@@ -817,7 +820,7 @@ $.fn.modal = function(parameters) {
                 .css({
                   marginTop: (!$module.hasClass('aligned') && module.can.fit())
                     ? -(module.cache.height / 2)
-                    : 0,
+                    : settings.padding / 2,
                   marginLeft: -(module.cache.width / 2)
                 }) 
               ;
