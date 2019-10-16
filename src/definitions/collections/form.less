@@ -203,14 +203,6 @@
   box-shadow: none !important;
 }
 
-.ui.form .field.error .transparent.input input,
-.ui.form .field.error .transparent.input textarea,
-.ui.form .field.error input.transparent,
-.ui.form .field.error textarea.transparent {
-  background-color: @transparentFormErrorBackground !important;
-  color: @transparentFormErrorColor !important;
-}
-
 /*--------------------------
   Input w/ attached Button
 ---------------------------*/
@@ -303,13 +295,13 @@
 /*--------------------
    Types of Messages
 ---------------------*/
-
-.ui.form .success.message,
-.ui.form .warning.message,
-.ui.form .error.message,
-.ui.form .error.message:empty {
-  display: none;
-}
+each(@formStates, {
+  @state: replace(@key, '@', '');
+  .ui.form .@{state}.message,
+  .ui.form .@{state}.message:empty {
+    display: none;
+  }
+})
 
 /* Assumptions */
 .ui.form .message:first-child {
@@ -360,12 +352,6 @@
   border-color: @inputAutoFillFocusBorder !important;
 }
 
-/* Error */
-.ui.form .error.error input:-webkit-autofill {
-  box-shadow: 0 0 0 100px @inputAutoFillErrorBackground inset !important;
-  border-color: @inputAutoFillErrorBorder !important;
-}
-
 
 
 /*--------------------
@@ -393,26 +379,6 @@
   color: @inputPlaceholderFocusColor;
 }
 
-/* Error Placeholder */
-.ui.form .error ::-webkit-input-placeholder {
-  color: @inputErrorPlaceholderColor;
-}
-.ui.form .error :-ms-input-placeholder {
-  color: @inputErrorPlaceholderColor !important;
-}
-.ui.form .error ::-moz-placeholder {
-  color: @inputErrorPlaceholderColor;
-}
-
-.ui.form .error :focus::-webkit-input-placeholder {
-  color: @inputErrorPlaceholderFocusColor;
-}
-.ui.form .error :focus:-ms-input-placeholder {
-  color: @inputErrorPlaceholderFocusColor !important;
-}
-.ui.form .error :focus::-moz-placeholder {
-  color: @inputErrorPlaceholderFocusColor;
-}
 
 
 /*--------------------
@@ -448,196 +414,214 @@
 
 
 /*--------------------
-        Success
+        States
 ---------------------*/
+each(@formStates, {
+  @state: replace(@key, '@', '');
+  @c: @formStates[@@state][color];
+  @bg: @formStates[@@state][background];
+  @bdc:  @formStates[@@state][borderColor];
+  //@l: @colors[@@color][light];
+  //@h: @colors[@@color][hover];
+  //@lh: @colors[@@color][lightHover];
 
-/* On Form */
-.ui.form.success .success.message:not(:empty) {
-  display: block;
-}
-.ui.form.success .compact.success.message:not(:empty) {
-  display: inline-block;
-}
-.ui.form.success .icon.success.message:not(:empty) {
-  display: flex;
-}
+  /* On Form */
+  .ui.form.@{state} .@{state}.message:not(:empty) {
+    display: block;
+  }
+  .ui.form.@{state} .compact.@{state}.message:not(:empty) {
+    display: inline-block;
+  }
+  .ui.form.@{state} .icon.@{state}.message:not(:empty) {
+    display: flex;
+  }
 
-/*--------------------
-        Warning
----------------------*/
+  /* On Field(s) */
+  .ui.ui.form .fields.@{state} .field label,
+  .ui.ui.form .field.@{state} label,
+  .ui.ui.form .fields.@{state} .field .input,
+  .ui.ui.form .field.@{state} .input {
+    color: @c;
+  }
 
-/* On Form */
-.ui.form.warning .warning.message:not(:empty) {
-  display: block;
-}
-.ui.form.warning .compact.warning.message:not(:empty) {
-  display: inline-block;
-}
-.ui.form.warning .icon.warning.message:not(:empty) {
-  display: flex;
-}
+  .ui.form .fields.@{state} .field .corner.label,
+  .ui.form .field.@{state} .corner.label {
+    border-color: @c;
+    color: @formStates[@@state][cornerLabelColor];
+  }
 
-/*--------------------
-        Error
----------------------*/
+  .ui.form .fields.@{state} .field textarea,
+  .ui.form .fields.@{state} .field select,
+  .ui.form .fields.@{state} .field input:not([type]),
+  .ui.form .fields.@{state} .field input[type="date"],
+  .ui.form .fields.@{state} .field input[type="datetime-local"],
+  .ui.form .fields.@{state} .field input[type="email"],
+  .ui.form .fields.@{state} .field input[type="number"],
+  .ui.form .fields.@{state} .field input[type="password"],
+  .ui.form .fields.@{state} .field input[type="search"],
+  .ui.form .fields.@{state} .field input[type="tel"],
+  .ui.form .fields.@{state} .field input[type="time"],
+  .ui.form .fields.@{state} .field input[type="text"],
+  .ui.form .fields.@{state} .field input[type="file"],
+  .ui.form .fields.@{state} .field input[type="url"],
+  .ui.form .field.@{state} textarea,
+  .ui.form .field.@{state} select,
+  .ui.form .field.@{state} input:not([type]),
+  .ui.form .field.@{state} input[type="date"],
+  .ui.form .field.@{state} input[type="datetime-local"],
+  .ui.form .field.@{state} input[type="email"],
+  .ui.form .field.@{state} input[type="number"],
+  .ui.form .field.@{state} input[type="password"],
+  .ui.form .field.@{state} input[type="search"],
+  .ui.form .field.@{state} input[type="tel"],
+  .ui.form .field.@{state} input[type="time"],
+  .ui.form .field.@{state} input[type="text"],
+  .ui.form .field.@{state} input[type="file"],
+  .ui.form .field.@{state} input[type="url"] {
+    color: @c;
+    background: @bg;
+    border-color: @formStates[@@state][borderColor];
+    border-radius: @formStates[@@state][borderRadius];
+    box-shadow: @formStates[@@state][boxShadow];
+  }
 
-/* On Form */
-.ui.form.error .error.message:not(:empty) {
-  display: block;
-}
-.ui.form.error .compact.error.message:not(:empty) {
-  display: inline-block;
-}
-.ui.form.error .icon.error.message:not(:empty) {
-  display: flex;
-}
+  .ui.form .field.@{state} textarea:focus,
+  .ui.form .field.@{state} select:focus,
+  .ui.form .field.@{state} input:not([type]):focus,
+  .ui.form .field.@{state} input[type="date"]:focus,
+  .ui.form .field.@{state} input[type="datetime-local"]:focus,
+  .ui.form .field.@{state} input[type="email"]:focus,
+  .ui.form .field.@{state} input[type="number"]:focus,
+  .ui.form .field.@{state} input[type="password"]:focus,
+  .ui.form .field.@{state} input[type="search"]:focus,
+  .ui.form .field.@{state} input[type="tel"]:focus,
+  .ui.form .field.@{state} input[type="time"]:focus,
+  .ui.form .field.@{state} input[type="text"]:focus,
+  .ui.form .field.@{state} input[type="file"]:focus,
+  .ui.form .field.@{state} input[type="url"]:focus {
+    background: @formStates[@@state][inputFocusBackground];
+    border-color: @formStates[@@state][inputFocusBorderColor];
+    color: @formStates[@@state][inputFocusColor];
 
-/* On Field(s) */
-.ui.ui.form .fields.error .field label,
-.ui.ui.form .field.error label,
-.ui.ui.form .fields.error .field .input,
-.ui.ui.form .field.error .input {
-  color: @formErrorColor;
-}
+    box-shadow: @formStates[@@state][inputFocusBoxShadow];
+  }
 
-.ui.form .fields.error .field .corner.label,
-.ui.form .field.error .corner.label {
-  border-color: @formErrorColor;
-  color: @white;
-}
+  /* Preserve Native Select Stylings */
+  .ui.form .field.@{state} select {
+    -webkit-appearance: menulist-button;
+  }
 
-.ui.form .fields.error .field textarea,
-.ui.form .fields.error .field select,
-.ui.form .fields.error .field input:not([type]),
-.ui.form .fields.error .field input[type="date"],
-.ui.form .fields.error .field input[type="datetime-local"],
-.ui.form .fields.error .field input[type="email"],
-.ui.form .fields.error .field input[type="number"],
-.ui.form .fields.error .field input[type="password"],
-.ui.form .fields.error .field input[type="search"],
-.ui.form .fields.error .field input[type="tel"],
-.ui.form .fields.error .field input[type="time"],
-.ui.form .fields.error .field input[type="text"],
-.ui.form .fields.error .field input[type="file"],
-.ui.form .fields.error .field input[type="url"],
-.ui.form .field.error textarea,
-.ui.form .field.error select,
-.ui.form .field.error input:not([type]),
-.ui.form .field.error input[type="date"],
-.ui.form .field.error input[type="datetime-local"],
-.ui.form .field.error input[type="email"],
-.ui.form .field.error input[type="number"],
-.ui.form .field.error input[type="password"],
-.ui.form .field.error input[type="search"],
-.ui.form .field.error input[type="tel"],
-.ui.form .field.error input[type="time"],
-.ui.form .field.error input[type="text"],
-.ui.form .field.error input[type="file"],
-.ui.form .field.error input[type="url"] {
-  background: @formErrorBackground;
-  border-color: @formErrorBorder;
-  color: @formErrorColor;
-  border-radius: @inputErrorBorderRadius;
-  box-shadow: @inputErrorBoxShadow;
-}
-.ui.form .field.error textarea:focus,
-.ui.form .field.error select:focus,
-.ui.form .field.error input:not([type]):focus,
-.ui.form .field.error input[type="date"]:focus,
-.ui.form .field.error input[type="datetime-local"]:focus,
-.ui.form .field.error input[type="email"]:focus,
-.ui.form .field.error input[type="number"]:focus,
-.ui.form .field.error input[type="password"]:focus,
-.ui.form .field.error input[type="search"]:focus,
-.ui.form .field.error input[type="tel"]:focus,
-.ui.form .field.error input[type="time"]:focus,
-.ui.form .field.error input[type="text"]:focus,
-.ui.form .field.error input[type="file"]:focus,
-.ui.form .field.error input[type="url"]:focus {
-  background: @inputErrorFocusBackground;
-  border-color: @inputErrorFocusBorder;
-  color: @inputErrorFocusColor;
+  /*------------------
+      Input State
+  --------------------*/
+  /* Transparent */
+  .ui.form .field.@{state} .transparent.input input,
+  .ui.form .field.@{state} .transparent.input textarea,
+  .ui.form .field.@{state} input.transparent,
+  .ui.form .field.@{state} textarea.transparent {
+    background-color: @formStates[@@state][transparentBackground] !important;
+    color: @formStates[@@state][transparentColor] !important;
+  }
 
-  box-shadow: @inputErrorFocusBoxShadow;
-}
+  /* Autofilled */
+  .ui.form .@{state}.@{state} input:-webkit-autofill {
+    box-shadow: 0 0 0 100px @formStates[@@state][inputAutoFillBackground] inset !important;
+    border-color: @formStates[@@state][inputAutoFillBorderColor]  !important;
+  }
 
-/* Preserve Native Select Stylings */
-.ui.form .field.error select {
-  -webkit-appearance: menulist-button;
-}
+  /* Placeholder */
+  .ui.form .@{state} ::-webkit-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor];
+  }
+  .ui.form .@{state} :-ms-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor] !important;
+  }
+  .ui.form .@{state} ::-moz-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor];
+  }
 
-/*------------------
-    Dropdown Error
---------------------*/
+  .ui.form .@{state} :focus::-webkit-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor];
+  }
+  .ui.form .@{state} :focus:-ms-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor] !important;
+  }
+  .ui.form .@{state} :focus::-moz-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor];
+  }
 
-.ui.form .fields.error .field .ui.dropdown,
-.ui.form .fields.error .field .ui.dropdown .item,
-.ui.form .field.error .ui.dropdown,
-.ui.form .field.error .ui.dropdown .text,
-.ui.form .field.error .ui.dropdown .item {
-  background: @formErrorBackground;
-  color: @formErrorColor;
-}
-.ui.form .fields.error .field .ui.dropdown,
-.ui.form .field.error .ui.dropdown {
-  border-color: @formErrorBorder !important;
-}
-.ui.form .fields.error .field .ui.dropdown:hover,
-.ui.form .field.error .ui.dropdown:hover {
-  border-color: @formErrorBorder !important;
-}
-.ui.form .fields.error .field .ui.dropdown:hover .menu,
-.ui.form .field.error .ui.dropdown:hover .menu {
-  border-color: @formErrorBorder;
-}
-.ui.form .fields.error .field .ui.multiple.selection.dropdown > .label,
-.ui.form .field.error .ui.multiple.selection.dropdown > .label {
-  background-color: @dropdownErrorLabelBackground;
-  color: @dropdownErrorLabelColor;
-}
+  /*------------------
+      Dropdown State
+  --------------------*/
 
-/* Hover */
-.ui.form .fields.error .field .ui.dropdown .menu .item:hover,
-.ui.form .field.error .ui.dropdown .menu .item:hover {
-  background-color: @dropdownErrorHoverBackground;
-}
+  .ui.form .fields.@{state} .field .ui.dropdown,
+  .ui.form .fields.@{state} .field .ui.dropdown .item,
+  .ui.form .field.@{state} .ui.dropdown,
+  .ui.form .field.@{state} .ui.dropdown .text,
+  .ui.form .field.@{state} .ui.dropdown .item {
+    background: @bg;
+    color: @c;
+  }
+  .ui.form .fields.@{state} .field .ui.dropdown,
+  .ui.form .field.@{state} .ui.dropdown {
+    border-color: @bdc !important;
+  }
+  .ui.form .fields.@{state} .field .ui.dropdown:hover,
+  .ui.form .field.@{state} .ui.dropdown:hover {
+    border-color: @bdc !important;
+  }
+  .ui.form .fields.@{state} .field .ui.dropdown:hover .menu,
+  .ui.form .field.@{state} .ui.dropdown:hover .menu {
+    border-color: @bdc;
+  }
+  .ui.form .fields.@{state} .field .ui.multiple.selection.dropdown > .label,
+  .ui.form .field.@{state} .ui.multiple.selection.dropdown > .label {
+    background-color: @formStates[@@state][dropdownLabelBackground];
+    color: @formStates[@@state][dropdownLabelColor];
+  }
 
-/* Selected */
-.ui.form .fields.error .field .ui.dropdown .menu .selected.item,
-.ui.form .field.error .ui.dropdown .menu .selected.item {
-  background-color: @dropdownErrorSelectedBackground;
-}
+  /* Hover */
+  .ui.form .fields.@{state} .field .ui.dropdown .menu .item:hover,
+  .ui.form .field.@{state} .ui.dropdown .menu .item:hover {
+    background-color: @formStates[@@state][dropdownHoverBackground];
+  }
 
+  /* Selected */
+  .ui.form .fields.@{state} .field .ui.dropdown .menu .selected.item,
+  .ui.form .field.@{state} .ui.dropdown .menu .selected.item {
+    background-color: @formStates[@@state][dropdownSelectedBackground];
+  }
 
-/* Active */
-.ui.form .fields.error .field .ui.dropdown .menu .active.item,
-.ui.form .field.error .ui.dropdown .menu .active.item {
-  background-color: @dropdownErrorActiveBackground !important;
-}
+  /* Active */
+  .ui.form .fields.@{state} .field .ui.dropdown .menu .active.item,
+  .ui.form .field.@{state} .ui.dropdown .menu .active.item {
+    background-color: @formStates[@@state][dropdownActiveBackground] !important;
+  }
 
-/*--------------------
-    Checkbox Error
----------------------*/
+  /*--------------------
+      Checkbox State
+  ---------------------*/
+  .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label,
+  .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label,
+  .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) .box,
+  .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) .box {
+    color: @c;
+  }
+  .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label:before,
+  .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label:before,
+  .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) .box:before,
+  .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) .box:before {
+    background: @bg;
+    border-color: @bdc;
+  }
+  .ui.form .fields.@{state} .field .checkbox label:after,
+  .ui.form .field.@{state} .checkbox label:after,
+  .ui.form .fields.@{state} .field .checkbox .box:after,
+  .ui.form .field.@{state} .checkbox .box:after {
+    color: @c;
+  }
+})
 
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) label,
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box {
-  color: @formErrorColor;
-}
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) label:before,
-.ui.form .fields.error .field .checkbox:not(.toggle):not(.slider) .box:before,
-.ui.form .field.error .checkbox:not(.toggle):not(.slider) .box:before {
-  background: @formErrorBackground;
-  border-color: @formErrorBorder;
-}
-.ui.form .fields.error .field .checkbox label:after,
-.ui.form .field.error .checkbox label:after,
-.ui.form .fields.error .field .checkbox .box:after,
-.ui.form .field.error .checkbox .box:after {
-  color: @formErrorColor;
-}
 
 /*--------------------
        Disabled

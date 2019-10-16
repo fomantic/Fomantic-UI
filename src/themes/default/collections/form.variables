@@ -103,43 +103,123 @@
 /* Disabled */
 @disabledLabelOpacity: @disabledOpacity;
 
-/* Errored Input */
+/* Input states */
+@transparentPadding: @inputPadding;
+
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
 @transparentFormErrorColor: @formErrorColor;
 @transparentFormErrorBackground: @formErrorBackground;
-@transparentPadding: @inputPadding;
+
+@formInfoColor: @infoTextColor;
+@formInfoBorder: @infoBorderColor;
+@formInfoBackground: @infoBackgroundColor;
+@transparentFormInfoColor: @formInfoColor;
+@transparentFormInfoBackground: @formInfoBackground;
+
+@formSuccessColor: @positiveTextColor;
+@formSuccessBorder: @positiveBorderColor;
+@formSuccessBackground: @positiveBackgroundColor;
+@transparentFormSuccessColor: @formSuccessColor;
+@transparentFormSuccessBackground: @formSuccessBackground;
+
+@formWarningColor: @warningTextColor;
+@formWarningBorder: @warningBorderColor;
+@formWarningBackground: @warningBackgroundColor;
+@transparentFormWarningColor: @formWarningColor;
+@transparentFormWarningBackground: @formWarningBackground;
 
 /* AutoFill */
 @inputAutoFillBackground: #FFFFF0;
 @inputAutoFillBorder: #E5DFA1;
 @inputAutoFillFocusBackground: @inputAutoFillBackground;
 @inputAutoFillFocusBorder: #D5C315;
+
 @inputAutoFillErrorBackground: #FFFAF0;
 @inputAutoFillErrorBorder: #E0B4B4;
 
+@inputAutoFillInfoBackground: #F0FAFF;
+@inputAutoFillInfoBorder: #b3e0e0;
 
-/* Input Error */
+@inputAutoFillSuccessBackground: #F0FFF0;
+@inputAutoFillSuccessBorder: #bee0b3;
+
+@inputAutoFillWarningBackground: #FFFFe0;
+@inputAutoFillWarningBorder: #e0e0b3;
+
+
+/* Input state */
 @inputErrorBorderRadius: '';
 @inputErrorBoxShadow: none;
 
-/* Dropdown Error */
+@inputInfoBorderRadius: '';
+@inputInfoBoxShadow: none;
+
+@inputSuccessBorderRadius: '';
+@inputSuccessBoxShadow: none;
+
+@inputWarningBorderRadius: '';
+@inputWarningBoxShadow: none;
+
+/* Dropdown state */
 @dropdownErrorHoverBackground: #FBE7E7;
 @dropdownErrorSelectedBackground: @dropdownErrorHoverBackground;
 @dropdownErrorActiveBackground: #FDCFCF;
 @dropdownErrorLabelBackground: #EACBCB;
 @dropdownErrorLabelColor: @errorTextColor;
 
-/* Focused Error */
+@dropdownInfoHoverBackground: #e9f2fb;
+@dropdownInfoSelectedBackground: @dropdownInfoHoverBackground;
+@dropdownInfoActiveBackground: #cef1fd;
+@dropdownInfoLabelBackground: #cce3ea;
+@dropdownInfoLabelColor: @infoTextColor;
+
+@dropdownSuccessHoverBackground: #e9fbe9;
+@dropdownSuccessSelectedBackground: @dropdownSuccessHoverBackground;
+@dropdownSuccessActiveBackground: #dafdce;
+@dropdownSuccessLabelBackground: #cceacc;
+@dropdownSuccessLabelColor: @successTextColor;
+
+@dropdownWarningHoverBackground: #fbfbe9;
+@dropdownWarningSelectedBackground: @dropdownWarningHoverBackground;
+@dropdownWarningActiveBackground: #fdfdce;
+@dropdownWarningLabelBackground: #eaeacc;
+@dropdownWarningLabelColor: @warningTextColor;
+
+/* Focused state */
 @inputErrorFocusBackground: @negativeBackgroundColor;
 @inputErrorFocusColor: @negativeTextColor;
 @inputErrorFocusBorder: @negativeBorderColor;
 @inputErrorFocusBoxShadow: none;
 
+@inputInfoFocusBackground: @infoBackgroundColor;
+@inputInfoFocusColor: @infoTextColor;
+@inputInfoFocusBorder: @infoBorderColor;
+@inputInfoFocusBoxShadow: none;
+
+@inputSuccessFocusBackground: @positiveBackgroundColor;
+@inputSuccessFocusColor: @positiveTextColor;
+@inputSuccessFocusBorder: @positiveBorderColor;
+@inputSuccessFocusBoxShadow: none;
+
+@inputWarningFocusBackground: @warningBackgroundColor;
+@inputWarningFocusColor: @warningTextColor;
+@inputWarningFocusBorder: @warningBorderColor;
+@inputWarningFocusBoxShadow: none;
+
 /* Placeholder Error */
 @inputErrorPlaceholderColor: lighten(@formErrorColor, 40);
 @inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 30);
+
+@inputInfoPlaceholderColor: lighten(@formInfoColor, 40);
+@inputInfoPlaceholderFocusColor: lighten(@formInfoColor, 30);
+
+@inputSuccessPlaceholderColor: lighten(@formSuccessColor, 40);
+@inputSuccessPlaceholderFocusColor: lighten(@formSuccessColor, 30);
+
+@inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
+@inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);
