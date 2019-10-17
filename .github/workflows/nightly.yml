@@ -16,7 +16,7 @@ jobs:
       with:
         node-version: 12
     - name: pre-setup
-      run: sh preinstall.sh
+      run: sh ./scripts/preinstall.sh
     - name: install dependencies
       run: npm install --ignore-scripts
     - name: fomantic install & gulp build
