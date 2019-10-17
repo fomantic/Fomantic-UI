@@ -1,0 +1,23 @@
+name: Nightly
+on:
+#  schedule:
+#    - cron: 0 22 * * *
+  release:
+    types: [created]
+jobs:
+  build:
+    name: Build nightly distribution
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: develop
+      uses: actions/setup-node@v1
+      with:
+        node-version: 12
+    - name: pre-setup
+      run: sh preinstall.sh
+    - name: install dependencies
+      run: npm install --ignore-scripts
+    - name: fomantic install & gulp build
+      run: npx gulp install
