@@ -20,6 +20,8 @@ jobs:
       run: npm install --ignore-scripts
     - name: fomantic install & gulp build
       run: npx gulp install
+    - name: update nightly version
+      run: node ./scripts/nightly-version.js
     - name: publish to npm
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
