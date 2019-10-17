@@ -3,7 +3,7 @@ on:
 #  schedule:
 #    - cron: 0 22 * * *
   release:
-    types: [created]
+    types: [prereleased]
 jobs:
   build:
     name: Build nightly distribution
