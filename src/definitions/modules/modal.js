@@ -34,7 +34,6 @@ $.fn.modal = function(parameters) {
 
     time           = new Date().getTime(),
     performance    = [],
-    isRtl          = $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl',
 
     query          = arguments[0],
     methodInvoked  = (typeof query == 'string'),
@@ -82,6 +81,7 @@ $.fn.modal = function(parameters) {
         initialMouseDownInModal,
         initialMouseDownInScrollbar,
         initialBodyMargin = '',
+        tempBodyMargin = '',
 
         elementEventNamespace,
         id,
@@ -91,6 +91,7 @@ $.fn.modal = function(parameters) {
       module  = {
 
         initialize: function() {
+          module.cache = {};
           module.verbose('Initializing dimmer', $context);
 
           module.create.id();
@@ -280,7 +281,8 @@ $.fn.modal = function(parameters) {
           },
           mousedown: function(event) {
             var
-              $target   = $(event.target)
+              $target   = $(event.target),
+              isRtl = module.is.rtl();
             ;
             initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
             if(initialMouseDownInModal) {
@@ -389,6 +391,7 @@ $.fn.modal = function(parameters) {
           if( module.is.animating() || !module.is.active() ) {
             module.showDimmer();
             module.cacheSizes();
+            module.set.bodyMargin();
             if(module.can.useFlex()) {
               module.remove.legacy();
             }
@@ -606,12 +609,10 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            initialBodyMargin = $body.css('margin-right');
+            initialBodyMargin = $body.css('margin-'+(module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right'));
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth,
-                diffPos = bodyMarginRightPixel + bodyScrollbarWidth;
-            $body.css('margin-right', diffPos + 'px');
-            $body.find(selector.bodyFixed).css('padding-right', diffPos + 'px');
+                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+            tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
           }
         },
 
@@ -622,8 +623,9 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            $body.css('margin-right', initialBodyMargin);
-            $body.find(selector.bodyFixed).css('padding-right', initialBodyMargin);
+            var position = module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right';
+            $body.css('margin-'+position, initialBodyMargin);
+            $body.find(selector.bodyFixed.replace('right',position)).css('padding-'+position, initialBodyMargin);
           }
         },
 
@@ -677,8 +679,8 @@ $.fn.modal = function(parameters) {
             modalWidth   = $module.outerWidth(),
             modalHeight  = $module.outerHeight()
           ;
-          if(module.cache === undefined || modalHeight !== 0) {
-            module.cache = {
+          if(!module.cache.pageHeight === undefined || modalHeight !== 0) {
+            $.extend(module.cache, {
               pageHeight    : $(document).outerHeight(),
               width         : modalWidth,
               height        : modalHeight + settings.offset,
@@ -686,7 +688,7 @@ $.fn.modal = function(parameters) {
               contextHeight : (settings.context == 'body')
                 ? $(window).height()
                 : $dimmable.height(),
-            };
+            });
             module.cache.topOffset = -(module.cache.height / 2);
           }
           $module.removeClass(className.loading);
@@ -694,6 +696,12 @@ $.fn.modal = function(parameters) {
         },
 
         can: {
+          leftBodyScrollbar: function(){
+            if(module.cache.leftBodyScrollbar === undefined) {
+              module.cache.leftBodyScrollbar = module.is.safari() || module.is.edge() || module.is.ie();
+            }
+            return module.cache.leftBodyScrollbar;
+          },
           useFlex: function() {
             return settings.useFlex && settings.detachable && !module.is.ie();
           },
@@ -719,11 +727,14 @@ $.fn.modal = function(parameters) {
             return $module.hasClass(className.active);
           },
           ie: function() {
-            var
-              isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-              isIE   = ('ActiveXObject' in window)
-            ;
-            return (isIE11 || isIE);
+            if(module.cache.isIE === undefined) {
+              var
+                  isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
+                  isIE = ('ActiveXObject' in window)
+              ;
+              module.cache.isIE = (isIE11 || isIE);
+            }
+            return module.cache.isIE;
           },
           animating: function() {
             return $module.transition('is supported')
@@ -737,6 +748,24 @@ $.fn.modal = function(parameters) {
           modernBrowser: function() {
             // appName for IE11 reports 'Netscape' can no longer use
             return !(window.ActiveXObject || 'ActiveXObject' in window);
+          },
+          rtl: function() {
+            if(module.cache.isRTL === undefined) {
+              module.cache.isRTL = $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl';
+            }
+            return module.cache.isRTL;
+          },
+          safari: function() {
+            if(module.cache.isSafari === undefined) {
+              module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
+            }
+            return module.cache.isSafari;
+          },
+          edge: function(){
+            if(module.cache.isEdge === undefined) {
+              module.cache.isEdge = !!window.setImmediate && !module.is.ie();
+            }
+            return module.cache.isEdge;
           }
         },
 
@@ -754,6 +783,13 @@ $.fn.modal = function(parameters) {
             if($input.length > 0) {
               $input.focus();
             }
+          },
+          bodyMargin: function() {
+            var position = module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right';
+            if(settings.detachable || module.can.fit()) {
+              $body.css('margin-'+position, tempBodyMargin + 'px');
+            }
+            $body.find(selector.bodyFixed.replace('right',position)).css('padding-'+position, tempBodyMargin + 'px');
           },
           clickaway: function() {
             $dimmer
