@@ -15,9 +15,14 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: 12
+        registry-url: https://registry.npmjs.org/
     - name: pre-setup
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
       run: npm install --ignore-scripts
     - name: fomantic install & gulp build
       run: npx gulp install
+    - name: publish to npm
+      env:
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+      run: npm publish --tag nightly --dry-run
