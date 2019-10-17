@@ -1,5 +1,6 @@
 // node
 const fs = require('fs')
+const path = require('path')
 
 // npm
 const fetch = require('node-fetch')
@@ -21,6 +22,6 @@ run()
     pkg.version = nextVersion
   })
   .then(() => {
-    fs.writeFileSync('../package.json', JSON.stringify(pkg, null, 2))
+    fs.writeFileSync(path.resolve(__dirname, '../package.json'), JSON.stringify(pkg, null, 2))
   })
   .then(() => console.log('Done'))
