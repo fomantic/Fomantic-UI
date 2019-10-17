@@ -1,7 +1,7 @@
 name: Nightly
-on: [push]
-#  schedule:
-#    - cron: 0 22 * * *
+on:
+  schedule:
+    - cron: 0 22 * * *
 jobs:
   build:
     name: Build nightly distribution
@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        ref: build/nightly-action
+        ref: develop
     - uses: actions/setup-node@v1
       with:
         node-version: 12
@@ -25,4 +25,4 @@ jobs:
     - name: publish to npm
       env:
         NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      run: npm publish --tag nightly --dry-run
+      run: npm publish --tag nightly
