@@ -609,7 +609,7 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            initialBodyMargin = $body.css('margin-'+(module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right'));
+            initialBodyMargin = $body.css('margin-'+(module.can.leftBodyScrollbar() ? 'left':'right'));
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
                 bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
             tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
@@ -623,7 +623,7 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            var position = module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right';
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
             $body.css('margin-'+position, initialBodyMargin);
             $body.find(selector.bodyFixed.replace('right',position)).css('padding-'+position, initialBodyMargin);
           }
@@ -698,7 +698,7 @@ $.fn.modal = function(parameters) {
         can: {
           leftBodyScrollbar: function(){
             if(module.cache.leftBodyScrollbar === undefined) {
-              module.cache.leftBodyScrollbar = module.is.safari() || module.is.edge() || module.is.ie();
+              module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
             }
             return module.cache.leftBodyScrollbar;
           },
@@ -766,6 +766,15 @@ $.fn.modal = function(parameters) {
               module.cache.isEdge = !!window.setImmediate && !module.is.ie();
             }
             return module.cache.isEdge;
+          },
+          firefox: function(){
+            if(module.cache.isFirefox === undefined) {
+                module.cache.isFirefox = !!window.InstallTrigger;
+            }
+            return module.cache.isFirefox;
+          },
+          iframe: function() {
+              return !(self === top);
           }
         },
 
@@ -785,7 +794,7 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            var position = module.is.rtl() && module.can.leftBodyScrollbar() ? 'left':'right';
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
             if(settings.detachable || module.can.fit()) {
               $body.css('margin-'+position, tempBodyMargin + 'px');
             }
