@@ -9,7 +9,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
       with:
-        ref: develop
+        ref: build/nightly-action
     - uses: actions/setup-node@v1
       with:
         node-version: 12
