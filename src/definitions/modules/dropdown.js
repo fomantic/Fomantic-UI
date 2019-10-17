@@ -832,7 +832,8 @@ $.fn.dropdown = function(parameters) {
             ),
             results          =  null,
             escapedTerm      = module.escape.string(searchTerm),
-            beginsWithRegExp = new RegExp('^' + escapedTerm, 'igm')
+            regExpFlags      = (settings.ignoreSearchCase ? 'i' : '') + 'gm',
+            beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
           ;
           // avoid loop if we're matching nothing
           if( module.has.query() ) {
@@ -918,8 +919,8 @@ $.fn.dropdown = function(parameters) {
             termLength  = term.length,
             queryLength = query.length
           ;
-          query = query.toLowerCase();
-          term  = term.toLowerCase();
+          query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
+          term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
           if(queryLength > termLength) {
             return false;
           }
@@ -940,8 +941,8 @@ $.fn.dropdown = function(parameters) {
           return true;
         },
         exactSearch: function (query, term) {
-          query = query.toLowerCase();
-          term  = term.toLowerCase();
+          query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
+          term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
           return term.indexOf(query) > -1;
 
         },
@@ -1921,7 +1922,11 @@ $.fn.dropdown = function(parameters) {
             return ($choice.data(metadata.value) !== undefined)
               ? String( $choice.data(metadata.value) )
               : (typeof choiceText === 'string')
-                ? $.trim(choiceText.toLowerCase())
+                ? $.trim(
+                  settings.ignoreSearchCase
+                  ? choiceText.toLowerCase()
+                  : choiceText
+                )
                 : String(choiceText)
             ;
           },
@@ -3880,7 +3885,8 @@ $.fn.dropdown.settings = {
   forceSelection         : true,       // force a choice on blur with search selection
 
   allowAdditions         : false,      // whether multiple select should allow user added values
-  ignoreCase             : false,       // whether to consider values not matching in case to be the same
+  ignoreCase             : false,      // whether to consider case sensitivity when creating labels
+  ignoreSearchCase       : true,       // whether to consider case sensitivity when filtering items
   hideAdditions          : true,       // whether or not to hide special message prompting a user they can enter a value
 
   maxSelections          : false,      // When set to a number limits the number of selections to this count
