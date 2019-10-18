@@ -1,7 +1,7 @@
 name: Nightly
 on:
   schedule:
-    - cron: 0 22 * * *
+    - cron: 30 22 * * *
 jobs:
   build:
     name: Build nightly distribution
@@ -18,11 +18,11 @@ jobs:
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
       run: npm install --ignore-scripts
-    - name: fomantic install & gulp build
-      run: npx gulp install
     - name: update nightly version
       run: node ./scripts/nightly-version.js
+    - name: fomantic install & build
+      run: npx gulp install
     - name: publish to npm
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
       run: npm publish --tag nightly
