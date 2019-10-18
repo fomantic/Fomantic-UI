@@ -991,12 +991,17 @@ $.fn.form = function(parameters) {
                 $parent    = $el.parent(),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
                 isDropdown = $parent.is(selector.uiDropdown) && module.can.useElement('dropdown'),
+                $calendar   = $el.closest(selector.uiCalendar),
+                isCalendar  = ($calendar.length > 0  && module.can.useElement('calendar')),
                 value      = (isCheckbox)
                   ? $el.is(':checked')
                   : $el.val()
               ;
               if (isDropdown) {
                 $parent.dropdown('save defaults');
+              }
+              else if (isCalendar) {
+                $calendar.calendar('refresh');
               }
               $el.data(metadata.defaultValue, value);
               $el.data(metadata.isDirty, false);

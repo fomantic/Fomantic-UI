@@ -115,6 +115,7 @@ $.fn.calendar = function(parameters) {
             if (module.get.maxDate() !== null) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
+            module.setting('type', module.get.type());
           },
           popup: function () {
             if (settings.inline) {
@@ -185,17 +186,15 @@ $.fn.calendar = function(parameters) {
             }
           },
           date: function () {
+            var date;
             if (settings.initialDate) {
-              var date = parser.date(settings.initialDate, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date(settings.initialDate, settings);
             } else if ($module.data(metadata.date) !== undefined) {
-              var date = parser.date($module.data(metadata.date), settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($module.data(metadata.date), settings);
             } else if ($input.length) {
-              var val = $input.val();
-              var date = parser.date(val, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($input.val(), settings);
             }
+            module.set.date(date, settings.formatInput, false);
           }
         },
 
@@ -626,6 +625,9 @@ $.fn.calendar = function(parameters) {
             return settings.type === 'time' ? 'hour' :
               settings.type === 'month' ? 'month' :
                 settings.type === 'year' ? 'year' : 'day';
+          },
+          type: function() {
+            return $module.data(metadata.type) || settings.type;
           },
           validModes: function () {
             var validModes = [];
@@ -1560,6 +1562,7 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
+    type: 'type',
     monthOffset: 'monthOffset',
     message: 'message',
     class: 'class'
