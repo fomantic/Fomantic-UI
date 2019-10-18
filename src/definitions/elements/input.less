@@ -223,11 +223,11 @@
 :not(.field) > .ui.transparent.icon.input > i.icon {
   width: @transparentIconWidth;
 }
-:not(.field) > .ui.transparent.icon.input > input {
+:not(.field) > .ui.ui.ui.transparent.icon.input > input {
   padding-left: 0;
   padding-right: @transparentIconMargin;
 }
-:not(.field) > .ui.transparent[class*="left icon"].input > input {
+:not(.field) > .ui.ui.ui.transparent[class*="left icon"].input > input {
   padding-left: @transparentIconMargin;
   padding-right: 0;
 }
@@ -274,8 +274,8 @@
 .ui.icon.input > i.icon:not(.link) {
   pointer-events: none;
 }
-.ui.ui.icon.input > textarea,
-.ui.ui.icon.input > input {
+.ui.ui.ui.ui.icon.input > textarea,
+.ui.ui.ui.ui.icon.input > input {
   padding-right: @iconMargin;
 }
 
@@ -306,8 +306,8 @@
   right: auto;
   left: @circularIconHorizontalOffset;
 }
-.ui.ui[class*="left icon"].input > textarea,
-.ui.ui[class*="left icon"].input > input {
+.ui.ui.ui.ui[class*="left icon"].input > textarea,
+.ui.ui.ui.ui[class*="left icon"].input > input {
   padding-left: @iconMargin;
   padding-right: @horizontalPadding;
 }
@@ -455,47 +455,44 @@
   margin: 0;
 }
 
-/* Button on Right */
-.ui.action.input:not([class*="left action"]) > input {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-right-color: transparent !important;
+/* Input when ui Left*/
+.ui[class*="left action"].input > input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: transparent;
 }
-.ui.action.input:not([class*="left action"]) > .dropdown:not(:first-child),
-.ui.action.input:not([class*="left action"]) > .button:not(:first-child),
-.ui.action.input:not([class*="left action"]) > .buttons:not(:first-child) > .button {
+
+/* Input when ui Right*/
+.ui.action.input:not([class*="left action"]) > input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: transparent;
+}
+
+/* Button and Dropdown */
+.ui.action.input > .dropdown:first-child,
+.ui.action.input > .button:first-child,
+.ui.action.input > .buttons:first-child > .button {
+  border-radius: @borderRadius 0 0 @borderRadius;
+}
+.ui.action.input > .dropdown:not(:first-child),
+.ui.action.input > .button:not(:first-child),
+.ui.action.input > .buttons:not(:first-child) > .button {
   border-radius: 0;
 }
-.ui.action.input:not([class*="left action"]) > .dropdown:last-child,
-.ui.action.input:not([class*="left action"]) > .button:last-child,
-.ui.action.input:not([class*="left action"]) > .buttons:last-child > .button {
+.ui.action.input > .dropdown:last-child,
+.ui.action.input > .button:last-child,
+.ui.action.input > .buttons:last-child > .button {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
 
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: @focusBorderColor !important;
+  border-right-color: @focusBorderColor;
 }
 
-/* Button on Left */
-.ui[class*="left action"].input > input {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-left-color: transparent !important;
-}
-.ui[class*="left action"].input > .dropdown,
-.ui[class*="left action"].input > .button,
-.ui[class*="left action"].input > .buttons > .button {
-  border-radius: 0;
-}
-.ui[class*="left action"].input > .dropdown:first-child,
-.ui[class*="left action"].input > .button:first-child,
-.ui[class*="left action"].input > .buttons:first-child > .button {
-  border-radius: @borderRadius 0 0 @borderRadius;
-}
-/* Input Focus */
-.ui[class*="left action"].input > input:focus {
-  border-left-color: @focusBorderColor !important;
+.ui.ui[class*="left action"].input > input:focus {
+  border-left-color: @focusBorderColor;
 }
 
 /*--------------------

@@ -23,6 +23,7 @@ $.fn.slider = function(parameters) {
 
   var
     $allModules    = $(this),
+    $window        = $(window),
 
     moduleSelector = $allModules.selector || '',
 
@@ -86,7 +87,9 @@ $.fn.slider = function(parameters) {
         offset,
         precision,
         isTouch,
+        gapRatio = 1,
 
+        initialLoad,
         module
       ;
 
@@ -94,6 +97,7 @@ $.fn.slider = function(parameters) {
 
         initialize: function() {
           module.debug('Initializing slider', settings);
+          initialLoad = true;
 
           currentRange += 1;
           documentEventID = currentRange;
@@ -109,6 +113,7 @@ $.fn.slider = function(parameters) {
           module.read.metadata();
           module.read.settings();
 
+          initialLoad = false;
           module.instantiate();
         },
 
@@ -210,7 +215,11 @@ $.fn.slider = function(parameters) {
               for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
                 var
                   labelText = module.get.label(i),
-                  $label = (labelText !== "") ? $('<li class="label">' + labelText + '</li>') : null,
+                  $label = (labelText !== "") 
+                    ? !(i % module.get.gapRatio())
+                      ? $('<li class="label">' + labelText + '</li>') 
+                      : $('<li class="halftick label"></li>')
+                    : null,
                   ratio  = i / len
                 ;
                 if($label) {
@@ -229,6 +238,9 @@ $.fn.slider = function(parameters) {
             module.bind.mouseEvents();
             if(module.is.touch()) {
               module.bind.touchEvents();
+            }
+            if (settings.autoAdjustLabels) {
+              module.bind.windowEvents();
             }
           },
           keyboardEvents: function() {
@@ -273,6 +285,9 @@ $.fn.slider = function(parameters) {
               $(document).on('mousemove' + eventNamespace, module.event.move);
               $(document).on('mouseup' + eventNamespace, module.event.up);
             }
+          },
+          windowEvents: function() {
+            $window.on('resize' + eventNamespace, module.event.resize);
           }
         },
 
@@ -287,6 +302,7 @@ $.fn.slider = function(parameters) {
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
             if(module.is.touch()) {
@@ -374,6 +390,13 @@ $.fn.slider = function(parameters) {
               $module.focus();
             }
           },
+          resize: function(_event) {
+            // To avoid a useless performance cost, we only call the label refresh when its necessary
+            if (gapRatio != module.get.gapRatio()) {
+              module.setup.labels();
+              gapRatio = module.get.gapRatio();
+            }
+          }
         },
 
         resync: function() {
@@ -588,6 +611,29 @@ $.fn.slider = function(parameters) {
               default:
                 return position;
             }
+          },
+          gapRatio: function() {
+            var gapRatio = 1;
+            
+            if( settings.autoAdjustLabels ) {
+              var 
+                numLabels = module.get.numLabels(),
+                gapCounter = 1
+              ;
+
+              // While the distance between two labels is too short,
+              // we divide the number of labels at each iteration
+              // and apply only if the modulo of the operation is an odd number.
+              while ((module.get.trackLength() / numLabels) * gapCounter < settings.labelDistance) {
+                if( !(numLabels % gapCounter) ) {
+                  gapRatio = gapCounter;
+                }
+                gapCounter += 1;
+              }
+              return gapRatio;
+            } else {
+              return 1;
+            }
           }
         },
 
@@ -779,8 +825,10 @@ $.fn.slider = function(parameters) {
         set: {
           value: function(newValue) {
             module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
-              settings.onChange.call(element, value, thumbVal, secondThumbVal);
-              settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              if (!initialLoad || settings.fireOnInit){
+                settings.onChange.call(element, value, thumbVal, secondThumbVal);
+                settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              }
             });
           },
           rangeValue: function(first, second) {
@@ -804,8 +852,10 @@ $.fn.slider = function(parameters) {
               value = Math.abs(module.thumbVal - module.secondThumbVal);
               module.update.position(module.thumbVal, $thumb);
               module.update.position(module.secondThumbVal, $secondThumb);
-              settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
-              settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              if (!initialLoad || settings.fireOnInit) {
+                settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+                settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              }
             } else {
               module.error(error.notrange);
             }
@@ -1169,14 +1219,17 @@ $.fn.slider.settings = {
     secondThumbVal  : 'secondThumbVal'
   },
 
-  min            : 0,
-  max            : 20,
-  step           : 1,
-  start          : 0,
-  end            : 20,
-  labelType      : 'number',
-  showLabelTicks : false,
-  smooth         : false,
+  min              : 0,
+  max              : 20,
+  step             : 1,
+  start            : 0,
+  end              : 20,
+  labelType        : 'number',
+  showLabelTicks   : false,
+  smooth           : false,
+  autoAdjustLabels : true,
+  labelDistance    : 100,
+  fireOnInit       : false,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,

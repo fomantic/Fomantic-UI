@@ -115,6 +115,7 @@ $.fn.calendar = function(parameters) {
             if (module.get.maxDate() !== null) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
+            module.setting('type', module.get.type());
           },
           popup: function () {
             if (settings.inline) {
@@ -185,17 +186,15 @@ $.fn.calendar = function(parameters) {
             }
           },
           date: function () {
+            var date;
             if (settings.initialDate) {
-              var date = parser.date(settings.initialDate, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date(settings.initialDate, settings);
             } else if ($module.data(metadata.date) !== undefined) {
-              var date = parser.date($module.data(metadata.date), settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($module.data(metadata.date), settings);
             } else if ($input.length) {
-              var val = $input.val();
-              var date = parser.date(val, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($input.val(), settings);
             }
+            module.set.date(date, settings.formatInput, false);
           }
         },
 
@@ -416,6 +415,10 @@ $.fn.calendar = function(parameters) {
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
               cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
+
+              if (module.helper.isTodayButton(cell)) {
+                return;
+              }
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -622,6 +625,9 @@ $.fn.calendar = function(parameters) {
             return settings.type === 'time' ? 'hour' :
               settings.type === 'month' ? 'month' :
                 settings.type === 'year' ? 'year' : 'day';
+          },
+          type: function() {
+            return $module.data(metadata.type) || settings.type;
           },
           validModes: function () {
             var validModes = [];
@@ -950,6 +956,9 @@ $.fn.calendar = function(parameters) {
           mergeDateTime: function (date, time) {
             return (!date || !time) ? time :
               new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
+          },
+          isTodayButton: function(element) {
+            return element.text() === settings.text.today;
           }
         },
 
@@ -1276,6 +1285,8 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
+      // Reverse date and month in some cases
+      text = settings.monthFirst ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
       if(!isNaN(textDate.getDate())) {
         return textDate;
@@ -1551,6 +1562,7 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
+    type: 'type',
     monthOffset: 'monthOffset',
     message: 'message',
     class: 'class'

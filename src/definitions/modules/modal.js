@@ -34,6 +34,7 @@ $.fn.modal = function(parameters) {
 
     time           = new Date().getTime(),
     performance    = [],
+    isRtl          = $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl',
 
     query          = arguments[0],
     methodInvoked  = (typeof query == 'string'),
@@ -285,7 +286,7 @@ $.fn.modal = function(parameters) {
             if(initialMouseDownInModal) {
               module.verbose('Mouse down event registered inside the modal');
             }
-            initialMouseDownInScrollbar = module.is.scrolling() && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX;
+            initialMouseDownInScrollbar = module.is.scrolling() && ((!isRtl && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX) || (isRtl && settings.scrollbarWidth >= event.clientX));
             if(initialMouseDownInScrollbar) {
               module.verbose('Mouse down event registered inside the scrollbar');
             }
@@ -694,10 +695,7 @@ $.fn.modal = function(parameters) {
 
         can: {
           useFlex: function() {
-            return (settings.useFlex == 'auto')
-              ? settings.detachable && !module.is.ie()
-              : settings.useFlex
-            ;
+            return settings.useFlex && settings.detachable && !module.is.ie();
           },
           fit: function() {
             var
@@ -806,18 +804,28 @@ $.fn.modal = function(parameters) {
             }
           },
           modalOffset: function() {
-            var
-              width = module.cache.width,
-              height = module.cache.height
-            ;
-            $module
-              .css({
-                marginTop: (!$module.hasClass('aligned') && module.can.fit())
-                  ? -(height / 2)
-                  : 0,
-                marginLeft: -(width / 2)
-              })
-            ;
+            if (!settings.detachable) {
+              var canFit = module.can.fit();
+              $module
+                .css({
+                  top: (!$module.hasClass('aligned') && canFit)
+                    ? $(document).scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
+                    : !canFit || $module.hasClass('top')
+                      ? $(document).scrollTop() + settings.padding
+                      : $(document).scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
+                  marginLeft: -(module.cache.width / 2)
+                }) 
+              ;
+            } else {
+              $module
+                .css({
+                  marginTop: (!$module.hasClass('aligned') && module.can.fit())
+                    ? -(module.cache.height / 2)
+                    : settings.padding / 2,
+                  marginLeft: -(module.cache.width / 2)
+                }) 
+              ;
+            }
             module.verbose('Setting modal offset for legacy mode');
           },
           screenHeight: function() {
