@@ -474,44 +474,45 @@
     margin: 0;
   }
 
-/* Input when ui Left*/
-.ui[class*="left action"].input > input {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-  border-left-color: transparent;
-}
+  /* Input when ui Left*/
+  .ui[class*="left action"].input > input {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: transparent;
+  }
 
-/* Input when ui Right*/
-.ui.action.input:not([class*="left action"]) > input {
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-right-color: transparent;
-}
+  /* Input when ui Right*/
+  .ui.action.input:not([class*="left action"]) > input {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-right-color: transparent;
+  }
 
-/* Button and Dropdown */
-.ui.action.input > .dropdown:first-child,
-.ui.action.input > .button:first-child,
-.ui.action.input > .buttons:first-child > .button {
-  border-radius: @borderRadius 0 0 @borderRadius;
-}
-.ui.action.input > .dropdown:not(:first-child),
-.ui.action.input > .button:not(:first-child),
-.ui.action.input > .buttons:not(:first-child) > .button {
-  border-radius: 0;
-}
-.ui.action.input > .dropdown:last-child,
-.ui.action.input > .button:last-child,
-.ui.action.input > .buttons:last-child > .button {
-  border-radius: 0 @borderRadius @borderRadius 0;
-}
+  /* Button and Dropdown */
+  .ui.action.input > .dropdown:first-child,
+  .ui.action.input > .button:first-child,
+  .ui.action.input > .buttons:first-child > .button {
+    border-radius: @borderRadius 0 0 @borderRadius;
+  }
+  .ui.action.input > .dropdown:not(:first-child),
+  .ui.action.input > .button:not(:first-child),
+  .ui.action.input > .buttons:not(:first-child) > .button {
+    border-radius: 0;
+  }
+  .ui.action.input > .dropdown:last-child,
+  .ui.action.input > .button:last-child,
+  .ui.action.input > .buttons:last-child > .button {
+    border-radius: 0 @borderRadius @borderRadius 0;
+  }
 
-/* Input Focus */
-.ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: @focusBorderColor;
-}
+  /* Input Focus */
+  .ui.action.input:not([class*="left action"]) > input:focus {
+    border-right-color: @focusBorderColor;
+  }
 
-.ui.ui[class*="left action"].input > input:focus {
-  border-left-color: @focusBorderColor;
+  .ui.ui[class*="left action"].input > input:focus {
+    border-left-color: @focusBorderColor;
+  }
 }
 
 & when (@variationInputInverted) {
