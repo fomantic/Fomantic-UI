@@ -679,7 +679,7 @@ $.fn.modal = function(parameters) {
             modalWidth   = $module.outerWidth(),
             modalHeight  = $module.outerHeight()
           ;
-          if(!module.cache.pageHeight === undefined || modalHeight !== 0) {
+          if(module.cache.pageHeight === undefined || modalHeight !== 0) {
             $.extend(module.cache, {
               pageHeight    : $(document).outerHeight(),
               width         : modalWidth,
