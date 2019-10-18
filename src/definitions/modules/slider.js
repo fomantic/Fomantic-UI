@@ -89,6 +89,7 @@ $.fn.slider = function(parameters) {
         isTouch,
         gapRatio = 1,
 
+        initialLoad,
         module
       ;
 
@@ -96,6 +97,7 @@ $.fn.slider = function(parameters) {
 
         initialize: function() {
           module.debug('Initializing slider', settings);
+          initialLoad = true;
 
           currentRange += 1;
           documentEventID = currentRange;
@@ -111,6 +113,7 @@ $.fn.slider = function(parameters) {
           module.read.metadata();
           module.read.settings();
 
+          initialLoad = false;
           module.instantiate();
         },
 
@@ -822,8 +825,10 @@ $.fn.slider = function(parameters) {
         set: {
           value: function(newValue) {
             module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
-              settings.onChange.call(element, value, thumbVal, secondThumbVal);
-              settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              if (!initialLoad || settings.fireOnInit){
+                settings.onChange.call(element, value, thumbVal, secondThumbVal);
+                settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              }
             });
           },
           rangeValue: function(first, second) {
@@ -847,8 +852,10 @@ $.fn.slider = function(parameters) {
               value = Math.abs(module.thumbVal - module.secondThumbVal);
               module.update.position(module.thumbVal, $thumb);
               module.update.position(module.secondThumbVal, $secondThumb);
-              settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
-              settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              if (!initialLoad || settings.fireOnInit) {
+                settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+                settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              }
             } else {
               module.error(error.notrange);
             }
@@ -1222,6 +1229,7 @@ $.fn.slider.settings = {
   smooth           : false,
   autoAdjustLabels : true,
   labelDistance    : 100,
+  fireOnInit       : false,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,
