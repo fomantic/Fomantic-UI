@@ -72,7 +72,8 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
-    "auto-changelog": "^1.15.0"
+    "auto-changelog": "^1.15.0",
+    "node-fetch": "^2.6.0"
   },
   "engines": {
     "node": ">=10.15.3",
