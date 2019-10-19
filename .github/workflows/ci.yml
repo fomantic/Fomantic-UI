@@ -19,3 +19,11 @@ jobs:
       run: npm install --ignore-scripts
     - name: pre fomantic install & gulp build
       run: npx gulp install
+  commitsar:
+    name: Verify commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+      - name: Run commitsar
+        uses: docker://commitsar/commitsar:0.8.0
