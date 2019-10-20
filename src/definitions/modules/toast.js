@@ -56,6 +56,7 @@ $.fn.toast = function(parameters) {
         $toast          = $('<div/>'),
         $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
         $progressBar    = $('<div/>',{'class':'bar'}),
+        $animationObject,
 
         $close          = $('<i/>',{'class':'close icon'}),
         $context        = (settings.context)
@@ -81,10 +82,6 @@ $.fn.toast = function(parameters) {
           module.create.toast();
 
           module.bind.events();
-          
-          if(settings.displayTime > 0) {
-            module.closeTimer = setTimeout(module.close, settings.displayTime+(!!settings.showProgress ? 300 : 0));
-          }
           module.show();
         },
 
@@ -106,9 +103,6 @@ $.fn.toast = function(parameters) {
         },
 
         close: function(callback) {
-          if(module.closeTimer) {
-              clearTimeout(module.closeTimer);
-          }
           callback = callback || function(){};
           module.remove.visible();
           module.unbind.events();
@@ -164,23 +158,33 @@ $.fn.toast = function(parameters) {
             } else {
               $progress.removeClass('inverted');
             }
+            if(settings.displayTime === 'auto'){
+              settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(" ").length / settings.wordsPerMinute * 60000);
+            }
+            $animationObject = $toast;
             $toast = $toastBox.append($toast);
-            if(!!settings.showProgress && settings.displayTime > 0){
-              $progress
-                .addClass(settings.showProgress)
-                .append($progressBar);
-              if ($progress.hasClass('top')) {
+            if(settings.displayTime > 0) {
+              if (!!settings.showProgress) {
+                $progress
+                    .addClass(settings.showProgress)
+                    .append($progressBar);
+                if ($progress.hasClass('top')) {
                   $toast.prepend($progress);
-              } else {
+                } else {
                   $toast.append($progress);
-              }
-              $progressBar.css('transition','width '+(settings.displayTime/1000)+'s linear');
-              $progressBar.width(settings.progressUp?'0%':'100%');
-              setTimeout(function() {
-                  if(typeof $progress !== 'undefined'){
-                    $progressBar.width(settings.progressUp?'100%':'0%');
                 }
-              },300);
+                $animationObject = $progressBar;
+                $animationObject.addClass(settings.progressUp ? 'up' : 'down');
+              } else {
+                $animationObject.addClass('wait');
+              }
+              $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
+              if (settings.pauseOnHover) {
+                $animationObject.addClass('pausable');
+              }
+              $animationObject.addClass('progressing');
+            } else {
+               $animationObject = undefined;
             }
             if (settings.newestOnTop) {
               $toast.prependTo(module.get.container());
@@ -197,6 +201,9 @@ $.fn.toast = function(parameters) {
             (settings.closeIcon ? $close : $toast)
               .on('click' + eventNamespace, module.event.click)
             ;
+            if($animationObject) {
+              $animationObject.on('animationend' + eventNamespace, module.close);
+            }
           }
         },
 
@@ -206,13 +213,16 @@ $.fn.toast = function(parameters) {
             (settings.closeIcon ? $close : $toast)
               .off('click' + eventNamespace)
             ;
+            if($animationObject) {
+              $animationObject.off('animationend' + eventNamespace);
+            }
           }
         },
 
         animate: {
           show: function(callback) {
             callback = $.isFunction(callback) ? callback : function(){};
-            if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+            if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
               module.set.visible();
               $toast
                 .transition({
@@ -227,9 +237,6 @@ $.fn.toast = function(parameters) {
                   }
                 })
               ;
-            }
-            else {
-              module.error(error.noTransition);
             }
           },
           close: function(callback) {
@@ -247,6 +254,7 @@ $.fn.toast = function(parameters) {
                   duration   : settings.transition.hideDuration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  interval   : 50,
 
                   onBeforeHide: function(callback){
                       callback = $.isFunction(callback)?callback : function(){};
@@ -318,6 +326,16 @@ $.fn.toast = function(parameters) {
             });
 
             return result;
+          }
+        },
+
+        can: {
+          useElement: function(element){
+            if ($.fn[element] !== undefined) {
+              return true;
+            }
+            module.error(error.noElement.replace('{element}',element));
+            return false;
           }
         },
 
@@ -523,10 +541,13 @@ $.fn.toast.settings = {
   title          : '',
   message        : '',
   displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
+  minDisplayTime : 1000, // minimum displaytime in case displayTime is set to 'auto'
+  wordsPerMinute : 120,
   showIcon       : true,
   newestOnTop    : false,
   showProgress   : false,
-  progressUp     : true, //if false, the bar will start at 100% and decrease to 0%
+  pauseOnHover   : true,
+  progressUp     : false, //if true, the bar will start at 0% and increase to 100%
   opacity        : 1,
   compact        : true,
   closeIcon      : false,
@@ -537,23 +558,23 @@ $.fn.toast.settings = {
     showDuration : 500,
     hideMethod   : 'scale',
     hideDuration : 500,
-    closeEasing  : 'easeOutBounce'  //Set to empty string to stack the closed toast area immediately (old behaviour)
+    closeEasing  : 'easeOutCubic'  //Set to empty string to stack the closed toast area immediately (old behaviour)
   },
 
   error: {
     method       : 'The method you called is not defined.',
-    noTransition : 'This module requires ui transitions <https://github.com/Semantic-Org/UI-Transition>'
+    noElement    : 'This module requires ui {element}'
   },
 
   className      : {
     container    : 'toast-container',
     box          : 'toast-box',
     progress     : 'ui attached active progress',
-    toast        : 'ui toast',
-    icon         : 'icon',
+    toast        : 'ui floating toast',
+    icon         : 'centered icon',
     visible      : 'visible',
     content      : 'content',
-    title        : 'header'
+    title        : 'ui header'
   },
 
   icons          : {
@@ -589,6 +610,9 @@ $.extend( $.easing, {
         } else {
             return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
         }
+    },
+    easeOutCubic: function (t) {
+      return (--t)*t*t+1;
     }
 });
 

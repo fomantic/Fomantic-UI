@@ -118,6 +118,8 @@
 
 .toast > .content > .header {
     font-weight: bold;
+    color: inherit;
+    margin:0;
 }
 
 .info.toast {
@@ -185,11 +187,14 @@ each(@colors, {
     position: absolute;
 }
 
-
-
 .icon.toast > .content {
     display: inline-block;
     vertical-align: @toastContentVerticalAlign;
+}
+
+.icon.toast > .centered.icon {
+  transform: translateY(-50%);
+  top: 50%;
 }
 
 /*---------------
@@ -226,6 +231,45 @@ each(@colors, {
   margin: @toastMarginBottom 0 -3px;
 }
 
+.toast-box .progressing {
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+}
+.toast-box .progressing.up {
+  animation-name: progressUp;
+}
+.toast-box .progressing.down {
+  animation-name: progressDown;
+}
+.toast-box .progressing.wait {
+  animation-name: progressWait;
+}
+.toast-box:hover .pausable.progressing {
+  animation-play-state: paused;
+}
+
+@keyframes progressDown {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
+}
+@keyframes progressUp {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
+}
+@keyframes progressWait {
+  100% {
+    opacity: 1;
+  }
+}
+
 /* --------
  Close Icon
  -----------*/
@@ -234,7 +278,6 @@ each(@colors, {
   top: @toastCloseTopDistance;
   right: @toastCloseRightDistance;
 }
-
 
 .toast-box .toast>.close.icon {
   cursor: pointer;
