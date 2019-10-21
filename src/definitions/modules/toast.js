@@ -80,7 +80,9 @@ $.fn.toast = function(parameters) {
           }
 
           module.create.toast();
-
+          if(settings.closeOnClick && !settings.closeIcon && $($toast).find(selector.input).length > 0){
+              settings.closeOnClick = false;
+          }
           module.bind.events();
           module.show();
         },
@@ -198,9 +200,11 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            (settings.closeIcon ? $close : $toast)
-              .on('click' + eventNamespace, module.event.click)
-            ;
+            if(settings.closeOnClick || settings.closeIcon) {
+              (settings.closeIcon ? $close : $toast)
+                  .on('click' + eventNamespace, module.event.click)
+              ;
+            }
             if($animationObject) {
               $animationObject.on('animationend' + eventNamespace, module.close);
             }
@@ -210,9 +214,11 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            (settings.closeIcon ? $close : $toast)
-              .off('click' + eventNamespace)
-            ;
+            if(settings.closeOnClick || settings.closeIcon) {
+              (settings.closeIcon ? $close : $toast)
+                  .off('click' + eventNamespace)
+              ;
+            }
             if($animationObject) {
               $animationObject.off('animationend' + eventNamespace);
             }
@@ -536,7 +542,7 @@ $.fn.toast.settings = {
   context        : 'body',
 
   position       : 'top right',
-  class          : 'info',
+  class          : 'neutral',
 
   title          : '',
   message        : '',
@@ -551,6 +557,7 @@ $.fn.toast.settings = {
   opacity        : 1,
   compact        : true,
   closeIcon      : false,
+  closeOnClick   : true,
 
   // transition settings
   transition     : {
@@ -587,7 +594,8 @@ $.fn.toast.settings = {
   selector       : {
     container    : '.toast-container',
     box          : '.toast-box',
-    toast        : '.ui.toast'
+    toast        : '.ui.toast',
+    input        : 'input:not([type="hidden"]), textarea, select, button, .ui.button, ui.dropdown'
   },
 
   // callbacks

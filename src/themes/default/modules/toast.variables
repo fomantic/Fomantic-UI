@@ -13,6 +13,7 @@
 @toastMargin: 0 0 @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
 @toastInvertedTextColor: @textColor;
+@toastNeutralTextColor: @textColor;
 
 /* on Hover */
 @toastOpacityOnHover: 1;
@@ -23,6 +24,7 @@
 @toastWarningColor: @warningColor;
 @toastErrorColor: @errorColor;
 @toastSuccessColor: @successColor;
+@toastNeutralColor: @white;
 
 /* Icon */
 @toastIconContentPadding: 3em;

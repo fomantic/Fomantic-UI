@@ -25,56 +25,83 @@
 .ui.toast-container {
     position: fixed;
     z-index: 9999;
+  &.top {
+    &.right {
+      top: @toastContainerDistance;
+      right: @toastContainerDistance;
+      margin-left: @toastContainerDistance;
+    }
+    &.left {
+      top: @toastContainerDistance;
+      left: @toastContainerDistance;
+      margin-right: @toastContainerDistance;
+    }
+    &.center {
+      left: 50%;
+      transform: translate(-50%, 0);
+      top: @toastContainerDistance;
+    }
+  }
+  &.bottom {
+    &.right {
+      bottom: @toastContainerDistance;
+      right: @toastContainerDistance;
+      margin-left: @toastContainerDistance;
+    }
+    &.left {
+      bottom: @toastContainerDistance;
+      left: @toastContainerDistance;
+      margin-right: @toastContainerDistance;
+    }
+    &.center {
+      left: 50%;
+      transform: translate(-50%, 0);
+      bottom: @toastContainerDistance;
+    }
+  }
+  & .compact {
+    display: block;
+    width: @toastWidth;
+  }
 }
 
-.ui.top.right.toast-container {
-    top: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
-}
-
-.ui.top.left.toast-container {
-    top: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.top.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: @toastContainerDistance;
-}
-
-.ui.bottom.right.toast-container {
-    bottom: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
-}
-
-.ui.bottom.left.toast-container {
-    bottom: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.bottom.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: @toastContainerDistance;
-}
 
 /*******************************
             Toast
 *******************************/
 
 .toast {
-    display: block;
+    display: none;
     border-radius: @defaultBorderRadius;
     padding: @toastPadding;
     margin: @toastMargin;
     color: @toastTextColor;
+  & > .content > .header {
+    font-weight: bold;
+    color: inherit;
+    margin:0;
+  }
+  &.info {
+    background-color: @toastInfoColor;
+  }
+  &.warning {
+    background-color: @toastWarningColor;
+  }
+  &.success {
+    background-color: @toastSuccessColor;
+  }
+  &.error {
+    background-color: @toastErrorColor;
+  }
+  &.neutral {
+    background-color: @toastNeutralColor;
+    color: @toastNeutralTextColor;
+  }
 }
 
+.toast-box .toast {
+  display:block;
+}
 .floating.toast,
 .hoverfloating.toast:hover {
   box-shadow: @floatingShadow;
@@ -99,59 +126,30 @@
     display: table !important;
 }
 
-
-.toast-container .compact {
-  display: block;
-  width: @toastWidth;
-}
-
 .toast-container .message,
 .toast:hover {
     opacity: @toastOpacityOnHover;
     cursor: @toastCursorOnHover;
 }
 
-
-.icon.toast .content {
-  padding-left: @toastIconContentPadding;
+.toast-box .info.attached.progress .bar.bar.bar {
+    background: @toastInfoProgressColor;
 }
 
-.toast > .content > .header {
-    font-weight: bold;
-    color: inherit;
-    margin:0;
+.toast-box .warning.attached.progress .bar.bar.bar {
+    background: @toastWarningProgressColor;
 }
 
-.info.toast {
-    background-color: @toastInfoColor;
+.toast-box .success.attached.progress .bar.bar.bar {
+    background: @toastSuccessProgressColor;
 }
 
-.warning.toast {
-    background-color: @toastWarningColor;
+.toast-box .error.attached.progress .bar.bar.bar {
+    background: @toastErrorProgressColor;
 }
 
-.success.toast {
-    background-color: @toastSuccessColor;
-}
-
-.error.toast {
-    background-color: @toastErrorColor;
-}
-
-.toast-box .info.attached.progress .bar {
-    background: @toastInfoProgressColor !important;
-}
-
-.toast-box .warning.attached.progress .bar {
-    background: @toastWarningProgressColor !important;
-}
-
-.toast-box .success.attached.progress .bar {
-    background: @toastSuccessProgressColor !important;
-}
-
-.toast-box .error.attached.progress .bar {
-    background: @toastErrorProgressColor !important;
+.toast-box .neutral.attached.progress .bar.bar.bar {
+  background: @toastErrorProgressColor;
 }
 
 /*--------------
@@ -180,73 +178,84 @@ each(@colors, {
       Icon
 ---------------*/
 
-.icon.toast > .icon:not(.close) {
+.icon.toast {
+  & .content {
+    padding-left: @toastIconContentPadding;
+  }
+  & > .icon:not(.close) {
     display: inline-block;
     vertical-align: @toastIconVerticalAlign;
     font-size: @toastIconFontSize;
     position: absolute;
-}
-
-.icon.toast > .content {
+  }
+  & > .content {
     display: inline-block;
     vertical-align: @toastContentVerticalAlign;
-}
-
-.icon.toast > .centered.icon {
-  transform: translateY(-50%);
-  top: 50%;
+  }
+  & > .centered.icon {
+    transform: translateY(-50%);
+    top: 50%;
+  }
 }
 
 /*---------------
    Progress Bar
  ----------------*/
 
-.toast-box .attached.progress .bar {
-    min-width: 0;
-}
-
-.toast-box .active.progress .bar:after {
-  animation: progress-active 2s @defaultEasing infinite !important;
-}
-
 .toast-box {
     margin-bottom: @toastMarginBottom;
-}
-
-.toast-box .toast,
-.toast-box .message {
+  & .toast,
+    .message {
     margin-top: 0;
     margin-bottom: 0;
     position: relative;
-}
-.toast-box .attached.progress{
+  }
+  & .attached.progress{
     z-index:1;
+    &.bottom {
+      margin: -3px 0 @toastMarginBottom;
+    }
+    &.top {
+      margin: @toastMarginBottom 0 -3px;
+    }
+    & .bar {
+      min-width: 0;
+    }
+  }
+  & .progressing {
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+    &.up {
+      animation-name: progressUp;
+    }
+    &.down {
+      animation-name: progressDown;
+    }
+    &.wait {
+      animation-name: progressWait;
+    }
+  }
+  &:hover .pausable.progressing {
+    animation-play-state: paused;
+  }
+  & .message > .close.icon {
+    top: @toastCloseTopDistance;
+    right: @toastCloseRightDistance;
+  }
+  & .toast > .close.icon {
+    cursor: pointer;
+    position: absolute;
+    margin: 0;
+    top: @toastCloseTopDistance;
+    right: @toastCloseRightDistance;
+    opacity: @toastCloseOpacity;
+    transition: @toastCloseTransition;
+    &:hover {
+      opacity: 1;
+    }
+  }
 }
 
-.toast-box .bottom.attached.progress {
-  margin: -3px 0 @toastMarginBottom;
-}
-
-.toast-box .top.attached.progress {
-  margin: @toastMarginBottom 0 -3px;
-}
-
-.toast-box .progressing {
-  animation-iteration-count: 1;
-  animation-timing-function: linear;
-}
-.toast-box .progressing.up {
-  animation-name: progressUp;
-}
-.toast-box .progressing.down {
-  animation-name: progressDown;
-}
-.toast-box .progressing.wait {
-  animation-name: progressWait;
-}
-.toast-box:hover .pausable.progressing {
-  animation-play-state: paused;
-}
 
 @keyframes progressDown {
   0% {
@@ -268,27 +277,4 @@ each(@colors, {
   100% {
     opacity: 1;
   }
-}
-
-/* --------
- Close Icon
- -----------*/
-
-.toast-box .message > .close.icon {
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-}
-
-.toast-box .toast>.close.icon {
-  cursor: pointer;
-  position: absolute;
-  margin: 0;
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-  opacity: @toastCloseOpacity;
-  transition: @toastCloseTransition;
-}
-
-.toast-box .toast > .close.icon:hover {
-  opacity: 1;
 }
