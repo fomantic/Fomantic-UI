@@ -1,7 +1,7 @@
 name: Nightly
 on:
   schedule:
-    - cron: 30 22 * * *
+  - cron: 00 23 * * *
 jobs:
   build:
     name: Build nightly distribution
@@ -23,6 +23,9 @@ jobs:
     - name: fomantic install & build
       run: npx gulp install
     - name: publish to npm
+      run: |
+        npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
+        npm publish --tag nightly
       env:
-        NPM_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
-      run: npm publish --tag nightly
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        CI: true
