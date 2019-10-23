@@ -28,11 +28,7 @@
 
 /* Icon */
 @toastIconContentPadding: 3em;
-@toastIconVerticalAlign: middle;
 @toastIconFontSize: 1.5em;
-
-/* Content */
-@toastContentVerticalAlign: middle;
 
 /* Progressbar Colors */
 @toastInfoProgressColor: darken(@toastInfoColor,15);
