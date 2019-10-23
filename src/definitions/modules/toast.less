@@ -207,10 +207,10 @@ each(@colors, {
   & .attached.progress{
     z-index:1;
     &.bottom {
-      margin: -3px 0 @toastMarginBottom;
+      margin: @toastMarginProgress 0 @toastMarginBottom;
     }
     &.top {
-      margin: @toastMarginBottom 0 -3px;
+      margin: @toastMarginBottom 0 @toastMarginProgress;
     }
     & .bar {
       min-width: 0;
