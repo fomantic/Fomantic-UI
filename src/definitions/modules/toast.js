@@ -52,19 +52,20 @@ $.fn.toast = function(parameters) {
         moduleNamespace = namespace + '-module',
 
         $module         = $(this),
-        $toastBox       = $('<div/>',{'class':settings.className.box}),
-        $toast          = $('<div/>'),
-        $progress       = $('<div/>',{'class':settings.className.progress+' '+settings.class}),
-        $progressBar    = $('<div/>',{'class':'bar'}),
+        $toastBox,
+        $toast,
+        $progress,
+        $progressBar,
         $animationObject,
-
-        $close          = $('<i/>',{'class':'close icon'}),
+        $close,
         $context        = (settings.context)
           ? $(settings.context)
           : $('body'),
 
+        isComponent     = $module.hasClass('toast') || $module.hasClass('message'),
+
         element         = this,
-        instance        = $module.data(moduleNamespace),
+        instance        = isComponent ? $module.data(moduleNamespace) : undefined,
 
         module
       ;
@@ -72,26 +73,46 @@ $.fn.toast = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
-          if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
-            settings.showProgress = false;
-          }
           if (!module.has.container()) {
             module.create.container();
           }
-
-          module.create.toast();
-          if(settings.closeOnClick && !settings.closeIcon && $($toast).find(selector.input).length > 0){
+          if(isComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '') {
+            if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+              settings.showProgress = false;
+            }
+            if(settings.closeOnClick && !settings.closeIcon && $($toast).find(selector.input).length > 0){
               settings.closeOnClick = false;
+            }
+            module.create.toast();
+            module.bind.events();
           }
-          module.bind.events();
-          module.show();
+          module.instantiate();
+          if($toast) {
+            module.show();
+          }
+        },
+
+        instantiate: function() {
+          module.verbose('Storing instance of toast');
+          instance = module;
+          $module
+              .data(moduleNamespace, instance)
+          ;
         },
 
         destroy: function() {
-          module.debug('Removing toast', $toast);
-          $toast.remove();
-          $toast = undefined;
-          settings.onRemove.call($toast, element);
+          if($toast) {
+            module.debug('Removing toast', $toast);
+            module.unbind.events();
+            $toast.remove();
+            $toast = undefined;
+            $animationObject = undefined;
+            settings.onRemove.call($toast, element);
+          }
+          $toastBox = undefined;
+          $progress = undefined;
+          $progressBar = undefined;
+          $close = undefined;
         },
 
         show: function(callback) {
@@ -118,47 +139,64 @@ $.fn.toast = function(parameters) {
             $context.append('<div class="ui ' + settings.position + ' ' + className.container + '"></div>');
           },
           toast: function() {
-            var $content = $('<div/>').addClass(className.content);
-            module.verbose('Creating toast');
-            if(settings.closeIcon) {
+            $toastBox = $('<div/>',{'class':settings.className.box});
+            if(!!settings.showProgress) {
+              $progress = $('<div/>', {'class': settings.className.progress + ' ' + (settings.classProgress || settings.class)}).attr('data-percent', '');
+              $progressBar = $('<div/>', {'class': 'bar'})
+            }
+            if(!isComponent) {
+              module.verbose('Creating toast');
+              $toast = $('<div/>');
+              var $content = $('<div/>').addClass(className.content);
+              if(settings.closeIcon) {
+                $close =  $('<i/>',{'class':'close icon'});
                 $toast.append($close);
-                $toast.css('cursor','default');
-            }
+                $toast.css('cursor', 'default');
+              }
 
-            var iconClass = typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
-            if (iconClass != '') {
-               var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
+              var iconClass = module.get.iconClass();
+              if (iconClass !== '') {
+                var $icon = $('<i/>').addClass(iconClass + ' ' + className.icon);
 
-              $toast
-                .addClass(className.icon)
-                .append($icon)
-              ;
-            }
+                $toast
+                  .addClass(className.icon)
+                  .append($icon)
+                ;
+              }
 
-            if (settings.title !== '') {
-              var 
-                $title = $('<div/>')
-                  .addClass(className.title)
-                  .text(settings.title)
+              if (settings.title !== '') {
+                var
+                  $title = $('<div/>')
+                    .addClass(className.title)
+                    .text(settings.title)
                 ;
 
-              $content.append($title);
-            }
+                $content.append($title);
+              }
 
-            $content.append($('<div/>').html(settings.message));
+              $content.append($('<div/>').html(settings.message));
 
-            $toast
-              .addClass(settings.class + ' ' + className.toast)
-              .append($content)
-            ;
-            $toast.css('opacity', settings.opacity);
-            if(settings.compact || $toast.hasClass('compact')) {
+              $toast
+                .addClass(settings.class + ' ' + className.toast)
+                .append($content)
+              ;
+              $toast.css('opacity', settings.opacity);
+              if (settings.compact || $toast.hasClass('compact')) {
                 $toastBox.addClass('compact');
-            }
-            if($toast.hasClass('toast') && !$toast.hasClass('inverted')){
-              $progress.addClass('inverted');
+              }
             } else {
-              $progress.removeClass('inverted');
+              $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
+            }
+            if($module !== $toast) {
+              $module = $toast;
+              element = $toast[0];
+            }
+            if(!settings.classProgress && !!settings.showProgress) {
+              if ($toast.hasClass('toast') && !$toast.hasClass('inverted')) {
+                $progress.addClass('inverted');
+              } else {
+                $progress.removeClass('inverted');
+              }
             }
             if(settings.displayTime === 'auto'){
               settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(" ").length / settings.wordsPerMinute * 60000);
@@ -267,17 +305,19 @@ $.fn.toast = function(parameters) {
                       if(settings.transition.closeEasing !== ''){
                           $toast.css('opacity',0);
                           $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                            if($toast){
                               $toast.parent().remove();
                               callback.call($toast);
+                            }
                           });
                       } else {
                         callback.call($toast);
                       }
                   },
                   onComplete : function() {
-                    module.destroy();
                     callback.call($toast, element);
                     settings.onHidden.call($toast, element);
+                    module.destroy();
                   }
                 })
               ;
@@ -292,12 +332,27 @@ $.fn.toast = function(parameters) {
           container: function() {
             module.verbose('Determining if there is already a container');
             return ($context.find(module.helpers.toClass(settings.position) + selector.container).length > 0);
+          },
+          toast: function(){
+            return !!module.get.toast();
+          },
+          toasts: function(){
+            return module.get.toasts().length > 0;
           }
         },
 
         get: {
           container: function() {
             return ($context.find(module.helpers.toClass(settings.position) + selector.container)[0]);
+          },
+          toast: function() {
+            return $toast || null;
+          },
+          toasts: function() {
+            return $(module.get.container()).find(selector.box);
+          },
+          iconClass: function() {
+            return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
           }
         },
 
@@ -519,6 +574,7 @@ $.fn.toast = function(parameters) {
           instance.invoke('destroy');
         }
         module.initialize();
+        returnedValue = $module;
       }
     })
   ;
@@ -543,13 +599,14 @@ $.fn.toast.settings = {
 
   position       : 'top right',
   class          : 'neutral',
+  classProgress  : false,
 
   title          : '',
   message        : '',
   displayTime    : 3000, // set to zero to require manually dismissal, otherwise hides on its own
   minDisplayTime : 1000, // minimum displaytime in case displayTime is set to 'auto'
   wordsPerMinute : 120,
-  showIcon       : true,
+  showIcon       : false,
   newestOnTop    : false,
   showProgress   : false,
   pauseOnHover   : true,
@@ -558,6 +615,7 @@ $.fn.toast.settings = {
   compact        : true,
   closeIcon      : false,
   closeOnClick   : true,
+  cloneModule    : true,
 
   // transition settings
   transition     : {
