@@ -59,9 +59,102 @@
       bottom: @toastContainerDistance;
     }
   }
-  & .compact {
-    display: block;
-    width: @toastWidth;
+  & .visible.toast-box,
+  .animating.toast-box,
+  .toast-box {
+    display: table !important;
+  }
+  & .toast-box {
+    margin-bottom: @toastMarginBottom;
+    &.compact {
+      display: block;
+      width: @toastWidth;
+    }
+    & .ui.toast,
+      > .ui.message {
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+    }
+    & > .attached.progress {
+      z-index:1;
+      &.bottom {
+        margin: @toastMarginProgress 0 @toastMarginBottom;
+      }
+      &.top {
+        margin: @toastMarginBottom 0 @toastMarginProgress;
+      }
+      & .bar {
+        min-width: 0;
+      }
+      &.info .bar.bar.bar {
+        background: @toastInfoProgressColor;
+      }
+      &.warning .bar.bar.bar {
+        background: @toastWarningProgressColor;
+      }
+      &.success .bar.bar.bar {
+        background: @toastSuccessProgressColor;
+      }
+      .error .bar.bar.bar {
+        background: @toastErrorProgressColor;
+      }
+      &.neutral .bar.bar.bar {
+        background: @toastNeutralProgressColor;
+      }
+    }
+    & > .ui.message > .close.icon {
+      top: @toastCloseTopDistance;
+      right: @toastCloseRightDistance;
+    }
+    & .ui.toast > .close.icon {
+      cursor: pointer;
+      position: absolute;
+      margin: 0;
+      top: @toastCloseTopDistance;
+      right: @toastCloseRightDistance;
+      opacity: @toastCloseOpacity;
+      transition: @toastCloseTransition;
+      &:hover {
+        opacity: 1;
+      }
+    }
+    & .progressing {
+      animation-iteration-count: 1;
+      animation-timing-function: linear;
+      &.up {
+        animation-name: progressUp;
+      }
+      &.down {
+        animation-name: progressDown;
+      }
+      &.wait {
+        animation-name: progressWait;
+      }
+    }
+    &:hover .pausable.progressing {
+      animation-play-state: paused;
+    }
+    & .ui.toast {
+      display:block;
+    }
+    & :not(.comment) {
+      & .actions {
+        padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
+        margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
+        text-align: right;
+        &:not(.basic) {
+          background: @toastActionBackground;
+          border-top: @toastActionBorder;
+        }
+        &.left {
+          text-align: left;
+        }
+      }
+    }
+    & > .ui.message > .actions:last-child {
+      margin-bottom: @toastActionMargin;
+    }
   }
 }
 
@@ -70,7 +163,7 @@
             Toast
 *******************************/
 
-.toast {
+.ui.toast {
     display: none;
     border-radius: @defaultBorderRadius;
     padding: @toastPadding;
@@ -97,59 +190,43 @@
     background-color: @toastNeutralColor;
     color: @toastNeutralTextColor;
   }
+  &.floating,
+  &.hoverfloating:hover {
+    box-shadow: @floatingShadow;
+  }
+  &.icon {
+    & > .content {
+      padding-left: @toastIconContentPadding;
+    }
+    & > .icon:not(.close) {
+      font-size: @toastIconFontSize;
+      position: absolute;
+    }
+    & > .centered.icon {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+  }
 }
 
-.toast-box .toast {
-  display:block;
-}
-.floating.toast,
-.hoverfloating.toast:hover {
-  box-shadow: @floatingShadow;
-}
 
-.hoverfloating.message:hover {
+.ui.hoverfloating.message:hover {
   box-shadow: 0 0 0 1px inset, @floatingShadow;
 }
 
-.center.toast-container .toast-box,
-.right.toast-container .toast-box {
+.ui.center.toast-container .toast-box,
+.ui.right.toast-container .toast-box {
     margin-left: auto;
 }
 
-.center.toast-container .toast-box {
+.ui.center.toast-container .toast-box {
     margin-right: auto;
 }
 
-.visible.toast-box,
-.animating.toast-box,
-.toast-box {
-    display: table !important;
-}
-
-.toast-container .message,
-.toast:hover {
-    opacity: @toastOpacityOnHover;
-    cursor: @toastCursorOnHover;
-}
-
-.toast-box .info.attached.progress .bar.bar.bar {
-    background: @toastInfoProgressColor;
-}
-
-.toast-box .warning.attached.progress .bar.bar.bar {
-    background: @toastWarningProgressColor;
-}
-
-.toast-box .success.attached.progress .bar.bar.bar {
-    background: @toastSuccessProgressColor;
-}
-
-.toast-box .error.attached.progress .bar.bar.bar {
-    background: @toastErrorProgressColor;
-}
-
-.toast-box .neutral.attached.progress .bar.bar.bar {
-  background: @toastErrorProgressColor;
+.ui.toast-container .ui.message,
+.ui.toast:hover {
+  opacity: @toastOpacityOnHover;
+  cursor: @toastCursorOnHover;
 }
 
 /*--------------
@@ -161,95 +238,22 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  .@{color}.toast {
+  .ui.@{color}.toast {
     background-color: @c;
   }
-  .inverted.@{color}.toast,
-  .toast-box .inverted.@{color}.attached.progress .bar {
+  .ui.inverted.@{color}.toast,
+  .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
     background-color: @l;
   }
 })
 
-.inverted.toast {
+.ui.inverted.toast {
   color: @toastInvertedTextColor;
-}
-
-/*--------------
-      Icon
----------------*/
-
-.icon.toast {
-  & .content {
-    padding-left: @toastIconContentPadding;
-  }
-  & > .icon:not(.close) {
-    font-size: @toastIconFontSize;
-    position: absolute;
-  }
-  & > .centered.icon {
-    transform: translateY(-50%);
-    top: 50%;
-  }
 }
 
 /*---------------
    Progress Bar
  ----------------*/
-
-.toast-box {
-    margin-bottom: @toastMarginBottom;
-  & .toast,
-    .message {
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-  }
-  & .attached.progress{
-    z-index:1;
-    &.bottom {
-      margin: @toastMarginProgress 0 @toastMarginBottom;
-    }
-    &.top {
-      margin: @toastMarginBottom 0 @toastMarginProgress;
-    }
-    & .bar {
-      min-width: 0;
-    }
-  }
-  & .progressing {
-    animation-iteration-count: 1;
-    animation-timing-function: linear;
-    &.up {
-      animation-name: progressUp;
-    }
-    &.down {
-      animation-name: progressDown;
-    }
-    &.wait {
-      animation-name: progressWait;
-    }
-  }
-  &:hover .pausable.progressing {
-    animation-play-state: paused;
-  }
-  & .message > .close.icon {
-    top: @toastCloseTopDistance;
-    right: @toastCloseRightDistance;
-  }
-  & .toast > .close.icon {
-    cursor: pointer;
-    position: absolute;
-    margin: 0;
-    top: @toastCloseTopDistance;
-    right: @toastCloseRightDistance;
-    opacity: @toastCloseOpacity;
-    transition: @toastCloseTransition;
-    &:hover {
-      opacity: 1;
-    }
-  }
-}
-
 
 @keyframes progressDown {
   0% {
