@@ -250,6 +250,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "RShalman",
+      "name": "Roman Shalman",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/28634001?v=4",
+      "profile": "http://rshalman.github.io",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
