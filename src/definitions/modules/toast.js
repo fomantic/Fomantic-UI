@@ -77,7 +77,7 @@ $.fn.toast = function(parameters) {
           if (!module.has.container()) {
             module.create.container();
           }
-          if(isComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '') {
+          if(isComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
             if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
               settings.showProgress = false;
             }
@@ -142,7 +142,10 @@ $.fn.toast = function(parameters) {
           toast: function() {
             $toastBox = $('<div/>',{class:className.box});
             if(!!settings.showProgress) {
-              $progress = $('<div/>', {class: className.progress + ' ' + (settings.classProgress || settings.class)}).attr('data-percent', '');
+              $progress = $('<div/>', {
+                class: className.progress + ' ' + (settings.classProgress || settings.class),
+                'data-percent': ''
+              });
               $progressBar = $('<div/>', {class: 'bar'});
             }
             if(!isComponent) {
@@ -157,22 +160,20 @@ $.fn.toast = function(parameters) {
 
               var iconClass = module.get.iconClass();
               if (iconClass !== '') {
-                var $icon = $('<i/>',{class:iconClass + ' ' + className.icon});
-
-                $toast
-                  .addClass(className.icon)
-                  .append($icon)
-                ;
+                $toast.append($('<i/>',{class:iconClass + ' ' + className.icon}));
               }
 
+              if (settings.showImage) {
+                $toast.append($('<img>',{
+                  class: className.image + ' ' + settings.classImage,
+                  src:settings.showImage
+                }));
+              }
               if (settings.title !== '') {
-                var
-                  $title = $('<div/>',{
-                    class:className.title,
-                    text:settings.title})
-                ;
-
-                $content.append($title);
+                $content.append($('<div/>',{
+                  class:className.title,
+                  text:settings.title
+                }));
               }
 
               $content.append($('<div/>',{html:module.helpers.escape(settings.message,settings.preserveHTML)}));
@@ -188,8 +189,9 @@ $.fn.toast = function(parameters) {
             } else {
               $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
             }
-            if(Array.isArray(settings.actions) && settings.actions.length > 0) {
-              var $actions = $toast.find('.actions');
+            var $actions;
+            if(module.has.configActions()) {
+              $actions = $toast.find('.actions');
               if ($actions.length === 0) {
                 $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($toast);
               }
@@ -209,6 +211,9 @@ $.fn.toast = function(parameters) {
                   }
                 }));
               });
+            }
+            if($actions && (!$actions.hasClass('basic') || $actions.hasClass('left'))){
+              $toast.addClass(className.actions);
             }
 
             if($module !== $toast) {
@@ -369,6 +374,9 @@ $.fn.toast = function(parameters) {
           },
           toasts: function(){
             return module.get.toasts().length > 0;
+          },
+          configActions: function () {
+            return Array.isArray(settings.actions) && settings.actions.length > 0;
           }
         },
 
@@ -673,6 +681,7 @@ $.fn.toast.settings = {
   class          : 'neutral',
   classProgress  : false,
   classActions   : false,
+  classImage     : 'mini',
 
   title          : '',
   message        : '',
@@ -691,6 +700,7 @@ $.fn.toast.settings = {
   cloneModule    : true,
   actions        : false,
   preserveHTML   : true,
+  showImage      : false,
 
   // transition settings
   transition     : {
@@ -717,7 +727,8 @@ $.fn.toast.settings = {
     title        : 'ui header',
     actions      : 'actions',
     button       : 'ui button',
-    close        : 'close icon'
+    close        : 'close icon',
+    image        : 'ui image'
   },
 
   icons          : {

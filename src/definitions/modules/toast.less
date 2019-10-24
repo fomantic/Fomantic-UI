@@ -194,18 +194,34 @@
   &.hoverfloating:hover {
     box-shadow: @floatingShadow;
   }
-  &.icon {
-    & > .content {
+  & > .icon:not(.close) {
+    font-size: @toastIconFontSize;
+    position: absolute;
+    & + .content {
       padding-left: @toastIconContentPadding;
     }
-    & > .icon:not(.close) {
-      font-size: @toastIconFontSize;
-      position: absolute;
+  }
+  & > .ui.image {
+    position: absolute;
+    &.avatar + .content {
+      padding-left: @toastAvatarImageContentPadding;
     }
-    & > .centered.icon {
-      transform: translateY(-50%);
-      top: 50%;
+    &.mini + .content {
+      padding-left: @toastMiniImageContentPadding;
     }
+    &.tiny + .content {
+      padding-left: @toastTinyImageContentPadding;
+    }
+  }
+
+  & > .centered.image,
+    > .centered.icon {
+    transform: translateY(-50%);
+    top: 50%;
+  }
+  &.actions > .centered.image,
+  &.actions > .centered.icon {
+    top: e(%("calc(50%% - %d)", @toastCenteredAdjustment));
   }
 }
 

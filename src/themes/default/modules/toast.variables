@@ -31,6 +31,13 @@
 @toastIconContentPadding: 3em;
 @toastIconFontSize: 1.5em;
 
+/* Image */
+@toastAvatarImageContentPadding: 3em;
+@toastMiniImageContentPadding: 3.4em;
+@toastTinyImageContentPadding: 7em;
+
+@toastCenteredAdjustment: 1.2em;
+
 /* Progressbar Colors */
 @toastInfoProgressColor: darken(@toastInfoColor,15);
 @toastWarningProgressColor: darken(@toastWarningColor,15);
