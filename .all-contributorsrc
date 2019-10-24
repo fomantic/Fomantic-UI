@@ -250,6 +250,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "shui91",
+      "name": "Sherman Hui",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/11592023?v=4",
+      "profile": "https://shui91.github.io/portfolio",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
