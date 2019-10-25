@@ -437,12 +437,15 @@ each(@formStates, {
   }
 
   /* On Field(s) */
+  .ui.form .fields.@{state} .@{state}.message:not(:empty),
   .ui.form .field.@{state} .@{state}.message:not(:empty) {
     display: block;
   }
+  .ui.form .fields.@{state} .compact.@{state}.message:not(:empty),
   .ui.form .field.@{state} .compact.@{state}.message:not(:empty) {
     display: inline-block;
   }
+  .ui.form .fields.@{state} .icon.@{state}.message:not(:empty),
   .ui.form .field.@{state} .icon.@{state}.message:not(:empty) {
     display: flex;
   }
