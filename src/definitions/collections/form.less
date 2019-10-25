@@ -437,6 +437,16 @@ each(@formStates, {
   }
 
   /* On Field(s) */
+  .ui.form .field.@{state} .@{state}.message:not(:empty) {
+    display: block;
+  }
+  .ui.form .field.@{state} .compact.@{state}.message:not(:empty) {
+    display: inline-block;
+  }
+  .ui.form .field.@{state} .icon.@{state}.message:not(:empty) {
+    display: flex;
+  }
+
   .ui.ui.form .fields.@{state} .field label,
   .ui.ui.form .field.@{state} label,
   .ui.ui.form .fields.@{state} .field .input,
