@@ -55,6 +55,7 @@ $.fn.toast = function(parameters) {
         $module         = $(this),
         $toastBox,
         $toast,
+        $actions,
         $progress,
         $progressBar,
         $animationObject,
@@ -88,7 +89,7 @@ $.fn.toast = function(parameters) {
             module.bind.events();
           }
           module.instantiate();
-          if($toast) {
+          if($toastBox) {
             module.show();
           }
         },
@@ -102,24 +103,27 @@ $.fn.toast = function(parameters) {
         },
 
         destroy: function() {
-          if($toast) {
-            module.debug('Removing toast', $toast);
+          if($toastBox) {
+            module.debug('Removing toast', $toastBox);
             module.unbind.events();
-            $toast.remove();
+            $toastBox.remove();
+            $toastBox = undefined;
             $toast = undefined;
             $animationObject = undefined;
-            settings.onRemove.call($toast, element);
+            settings.onRemove.call($toastBox, element);
           }
-          $toastBox = undefined;
           $progress = undefined;
           $progressBar = undefined;
           $close = undefined;
+          $module
+            .removeData(moduleNamespace)
+          ;
         },
 
         show: function(callback) {
           callback = callback || function(){};
           module.debug('Showing toast');
-          if(settings.onShow.call($toast, element) === false) {
+          if(settings.onShow.call($toastBox, element) === false) {
             module.debug('onShow callback returned false, cancelling toast animation');
             return;
           }
@@ -140,71 +144,71 @@ $.fn.toast = function(parameters) {
             $context.append($('<div/>',{class: settings.position + ' ' + className.container}));
           },
           toast: function() {
-            $toastBox = $('<div/>',{class:className.box});
-            if(!!settings.showProgress) {
+            $toastBox = $('<div/>', {class: className.box});
+            if (!!settings.showProgress) {
               $progress = $('<div/>', {
                 class: className.progress + ' ' + (settings.classProgress || settings.class),
                 'data-percent': ''
               });
               $progressBar = $('<div/>', {class: 'bar'});
             }
-            if(!isComponent) {
+            if (!isComponent) {
               module.verbose('Creating toast');
               $toast = $('<div/>');
-              var $content = $('<div/>',{class:className.content});
-              if(settings.closeIcon) {
-                $close =  $('<i/>',{class:className.close});
+              var $content = $('<div/>', {class: className.content});
+              if (settings.closeIcon) {
+                $close = $('<i/>', {class: className.close});
                 $toast.append($close);
                 $toast.css('cursor', 'default');
               }
 
               var iconClass = module.get.iconClass();
               if (iconClass !== '') {
-                $toast.append($('<i/>',{class:iconClass + ' ' + className.icon}));
+                $toast.append($('<i/>', {class: iconClass + ' ' + className.icon}));
               }
 
               if (settings.showImage) {
-                $toast.append($('<img>',{
+                $toast.append($('<img>', {
                   class: className.image + ' ' + settings.classImage,
-                  src:settings.showImage
+                  src: settings.showImage
                 }));
               }
               if (settings.title !== '') {
-                $content.append($('<div/>',{
-                  class:className.title,
-                  text:settings.title
+                $content.append($('<div/>', {
+                  class: className.title,
+                  text: settings.title
                 }));
               }
 
-              $content.append($('<div/>',{html:module.helpers.escape(settings.message,settings.preserveHTML)}));
+              $content.append($('<div/>', {html: module.helpers.escape(settings.message, settings.preserveHTML)}));
 
               $toast
                 .addClass(settings.class + ' ' + className.toast)
                 .append($content)
               ;
               $toast.css('opacity', settings.opacity);
-              if (settings.compact || $toast.hasClass('compact')) {
-                $toastBox.addClass('compact');
-              }
             } else {
               $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
             }
-            var $actions;
-            if(module.has.configActions()) {
-              $actions = $toast.find('.actions');
+            if (settings.compact || $toast.hasClass('compact')) {
+              $toastBox.addClass('compact');
+            }
+            $actions = $toast.find('.actions');
+            if (module.has.configActions()) {
               if ($actions.length === 0) {
                 $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($toast);
               }
               settings.actions.forEach(function (el) {
-                var icon = el[fields.icon] ? '<i class="'+module.helpers.deQuote(el[fields.icon])+' icon"></i>':'',
-                    text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
-                    cls = module.helpers.deQuote(el[fields.class] || ''),
-                    click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function(){};
+                var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                  text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
+                  cls = module.helpers.deQuote(el[fields.class] || ''),
+                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {
+                  };
                 $actions.append($('<button/>', {
                   html: icon + text,
                   class: className.button + ' ' + cls,
-                  click: function() {
-                    if(click.call(element,$module) === false) {
+                  click: function () {
+                    if (click.call(element, $module) === false) {
                       return;
                     }
                     module.close();
@@ -212,8 +216,13 @@ $.fn.toast = function(parameters) {
                 }));
               });
             }
-            if($actions && (!$actions.hasClass('basic') || $actions.hasClass('left'))){
-              $toast.addClass(className.actions);
+            if ($actions && $actions.hasClass(className.vertical)) {
+                $toast.addClass(className.vertical);
+            }
+            if($actions.length > 0 && !$actions.hasClass('attached')) {
+              if ($actions && (!$actions.hasClass('basic') || $actions.hasClass('left'))) {
+                $toast.addClass(className.actions);
+              }
             }
 
             if($module !== $toast) {
@@ -231,16 +240,31 @@ $.fn.toast = function(parameters) {
               settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(" ").length / settings.wordsPerMinute * 60000);
             }
             $animationObject = $toast;
-            $toast = $toastBox.append($toast);
+            $toastBox.append($toast);
+
+            if($actions.length > 0 && $actions.hasClass('attached')) {
+              $actions.addClass('ui buttons');
+              if (!$actions.hasClass(className.vertical)) {
+                $actions.detach();
+                $toast.addClass('attached');
+                if ($actions.hasClass('top')) {
+                  $toastBox.prepend($actions);
+                  $toast.addClass('bottom');
+                } else {
+                  $toastBox.append($actions);
+                  $toast.addClass('top');
+                }
+              }
+            }
             if(settings.displayTime > 0) {
               if (!!settings.showProgress) {
                 $progress
                     .addClass(settings.showProgress)
                     .append($progressBar);
                 if ($progress.hasClass('top')) {
-                  $toast.prepend($progress);
+                  $toastBox.prepend($progress);
                 } else {
-                  $toast.append($progress);
+                  $toastBox.append($progress);
                 }
                 $animationObject = $progressBar;
                 $animationObject.addClass(settings.progressUp ? 'up' : 'down');
@@ -256,10 +280,10 @@ $.fn.toast = function(parameters) {
                $animationObject = undefined;
             }
             if (settings.newestOnTop) {
-              $toast.prependTo(module.get.container());
+              $toastBox.prependTo(module.get.container());
             }
             else {
-              $toast.appendTo(module.get.container());
+              $toastBox.appendTo(module.get.container());
             }
           }
         },
@@ -275,7 +299,7 @@ $.fn.toast = function(parameters) {
             if($animationObject) {
               $animationObject.on('animationend' + eventNamespace, module.close);
             }
-            $module
+            $toastBox
               .on('click' + eventNamespace, selector.approve, module.event.approve)
               .on('click' + eventNamespace, selector.deny, module.event.deny)
             ;
@@ -293,7 +317,7 @@ $.fn.toast = function(parameters) {
             if($animationObject) {
               $animationObject.off('animationend' + eventNamespace);
             }
-            $module
+            $toastBox
               .off('click' + eventNamespace)
             ;
           }
@@ -304,7 +328,7 @@ $.fn.toast = function(parameters) {
             callback = $.isFunction(callback) ? callback : function(){};
             if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
               module.set.visible();
-              $toast
+              $toastBox
                 .transition({
                   animation  : settings.transition.showMethod + ' in',
                   queue      : false,
@@ -312,8 +336,8 @@ $.fn.toast = function(parameters) {
                   verbose    : settings.verbose,
                   duration   : settings.transition.showDuration,
                   onComplete : function() {
-                    callback.call($toast, element);
-                    settings.onVisible.call($toast, element);
+                    callback.call($toastBox, element);
+                    settings.onVisible.call($toastBox, element);
                   }
                 })
               ;
@@ -322,12 +346,12 @@ $.fn.toast = function(parameters) {
           close: function(callback) {
             callback = $.isFunction(callback) ? callback : function(){};
             module.debug('Closing toast');
-            if(settings.onHide.call($toast, element) === false) {
+            if(settings.onHide.call($toastBox, element) === false) {
               module.debug('onHide callback returned false, cancelling toast animation');
               return;
             }
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
-              $toast
+              $toastBox
                 .transition({
                   animation  : settings.transition.hideMethod + ' out',
                   queue      : false,
@@ -339,20 +363,20 @@ $.fn.toast = function(parameters) {
                   onBeforeHide: function(callback){
                       callback = $.isFunction(callback)?callback : function(){};
                       if(settings.transition.closeEasing !== ''){
-                          $toast.css('opacity',0);
-                          $toast.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
-                            if($toast){
-                              $toast.parent().remove();
-                              callback.call($toast);
+                          $toastBox.css('opacity',0);
+                          $toastBox.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
+                            if($toastBox){
+                              $toastBox.parent().remove();
+                              callback.call($toastBox);
                             }
                           });
                       } else {
-                        callback.call($toast);
+                        callback.call($toastBox);
                       }
                   },
                   onComplete : function() {
-                    callback.call($toast, element);
-                    settings.onHidden.call($toast, element);
+                    callback.call($toastBox, element);
+                    settings.onHidden.call($toastBox, element);
                     module.destroy();
                   }
                 })
@@ -361,6 +385,12 @@ $.fn.toast = function(parameters) {
             else {
               module.error(error.noTransition);
             }
+          },
+          pause: function() {
+            $animationObject.css('animationPlayState','paused');
+          },
+          continue: function() {
+            $animationObject.css('animationPlayState','running');
           }
         },
 
@@ -384,6 +414,9 @@ $.fn.toast = function(parameters) {
           container: function() {
             return ($context.find(module.helpers.toClass(settings.position) + selector.container)[0]);
           },
+          toastBox: function() {
+            return $toastBox || null;
+          },
           toast: function() {
             return $toast || null;
           },
@@ -392,6 +425,9 @@ $.fn.toast = function(parameters) {
           },
           iconClass: function() {
             return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+          },
+          remainingTime: function() {
+            return $animationObject.css('stopOpacity') * settings.displayTime;
           }
         },
 
@@ -408,9 +444,11 @@ $.fn.toast = function(parameters) {
         },
 
         event: {
-          click: function() {
-            settings.onClick.call($toast, element);
-            module.close();
+          click: function(event) {
+            if($(event.target).closest('a').length === 0) {
+              settings.onClick.call($toastBox, element);
+              module.close();
+            }
           },
           approve: function() {
             if(settings.onApprove.call(element, $module) === false) {
@@ -718,9 +756,9 @@ $.fn.toast.settings = {
 
   className      : {
     container    : 'ui toast-container',
-    box          : 'toast-box',
+    box          : 'floating toast-box',
     progress     : 'ui attached active progress',
-    toast        : 'ui floating toast',
+    toast        : 'ui toast',
     icon         : 'centered icon',
     visible      : 'visible',
     content      : 'content',
@@ -728,7 +766,8 @@ $.fn.toast.settings = {
     actions      : 'actions',
     button       : 'ui button',
     close        : 'close icon',
-    image        : 'ui image'
+    image        : 'ui image',
+    vertical     : 'vertical'
   },
 
   icons          : {

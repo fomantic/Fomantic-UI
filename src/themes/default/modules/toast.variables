@@ -9,9 +9,11 @@
 @toastWidth: 300px;
 @toastBorderRadius: @defaultBorderRadius;
 @toastPadding: @inputPadding;
-@toastMarginBottom: 0.5em;
+@toastMarginBottom: -0.01em;
+@toastLeftRightMargin: -1px;
+@toastBoxMarginBottom: 0.5em;
 @toastMarginProgress: -0.2em;
-@toastMargin: 0 0 @toastMarginBottom;
+@toastMargin: 0 @toastLeftRightMargin @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
 @toastInvertedTextColor: @textColor;
 @toastNeutralTextColor: @textColor;
