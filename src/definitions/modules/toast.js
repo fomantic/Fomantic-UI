@@ -79,7 +79,7 @@ $.fn.toast = function(parameters) {
             module.create.container();
           }
           if(isComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
-            if(typeof settings.showProgress !== 'string' || ['top','bottom'].indexOf(settings.showProgress) === -1 ) {
+            if(typeof settings.showProgress !== 'string' || [className.top,className.bottom].indexOf(settings.showProgress) === -1 ) {
               settings.showProgress = false;
             }
             module.create.toast();
@@ -190,8 +190,8 @@ $.fn.toast = function(parameters) {
             } else {
               $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
             }
-            if (settings.compact || $toast.hasClass('compact')) {
-              $toastBox.addClass('compact');
+            if ($toast.hasClass(className.compact)) {
+              settings.compact = true;
             }
             $actions = $toast.find('.actions');
             if (module.has.configActions()) {
@@ -219,49 +219,57 @@ $.fn.toast = function(parameters) {
             if ($actions && $actions.hasClass(className.vertical)) {
                 $toast.addClass(className.vertical);
             }
-            if($actions.length > 0 && !$actions.hasClass('attached')) {
+            if($actions.length > 0 && !$actions.hasClass(className.attached)) {
               if ($actions && (!$actions.hasClass('basic') || $actions.hasClass('left'))) {
                 $toast.addClass(className.actions);
               }
             }
-
-            if($module !== $toast) {
-              $module = $toast;
-              element = $toast[0];
-            }
             if(!settings.classProgress && !!settings.showProgress) {
-              if ($toast.hasClass('toast') && !$toast.hasClass('inverted')) {
-                $progress.addClass('inverted');
+              if ($toast.hasClass('toast') && !$toast.hasClass(className.inverted)) {
+                $progress.addClass(className.inverted);
               } else {
-                $progress.removeClass('inverted');
+                $progress.removeClass(className.inverted);
               }
             }
             if(settings.displayTime === 'auto'){
               settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(" ").length / settings.wordsPerMinute * 60000);
             }
-            $animationObject = $toast;
             $toastBox.append($toast);
 
-            if($actions.length > 0 && $actions.hasClass('attached')) {
-              $actions.addClass('ui buttons');
+            if($actions.length > 0 && $actions.hasClass(className.attached)) {
+              $actions.addClass(className.buttons);
+              $actions.detach();
+              $toast.addClass(className.attached);
               if (!$actions.hasClass(className.vertical)) {
-                $actions.detach();
-                $toast.addClass('attached');
-                if ($actions.hasClass('top')) {
+                if ($actions.hasClass(className.top)) {
                   $toastBox.prepend($actions);
-                  $toast.addClass('bottom');
+                  $toast.addClass(className.bottom);
                 } else {
                   $toastBox.append($actions);
-                  $toast.addClass('top');
+                  $toast.addClass(className.top);
                 }
+              } else {
+                $toast.wrap(
+                  $('<div/>',{
+                    class:className.vertical + ' ' +
+                          className.attached + ' ' +
+                          (settings.compact ? className.compact : '')
+                  })
+                ).parent().append($actions);
               }
             }
+            if($module !== $toast) {
+              $module = $toast;
+              element = $toast[0];
+            }
+            console.log($module);
+            $animationObject = $toast;
             if(settings.displayTime > 0) {
               if (!!settings.showProgress) {
                 $progress
                     .addClass(settings.showProgress)
                     .append($progressBar);
-                if ($progress.hasClass('top')) {
+                if ($progress.hasClass(className.top)) {
                   $toastBox.prepend($progress);
                 } else {
                   $toastBox.append($progress);
@@ -273,11 +281,18 @@ $.fn.toast = function(parameters) {
               }
               $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
               if (settings.pauseOnHover) {
-                $animationObject.addClass('pausable');
+                $animationObject.addClass(className.pausable);
               }
-              $animationObject.addClass('progressing');
+              $animationObject.addClass(className.progressing);
             } else {
                $animationObject = undefined;
+            }
+            if (settings.compact) {
+              $toastBox.addClass(className.compact);
+              $toast.addClass(className.compact);
+              if($progress) {
+                $progress.addClass(className.compact);
+              }
             }
             if (settings.newestOnTop) {
               $toastBox.prependTo(module.get.container());
@@ -765,9 +780,17 @@ $.fn.toast.settings = {
     title        : 'ui header',
     actions      : 'actions',
     button       : 'ui button',
+    buttons      : 'ui buttons',
     close        : 'close icon',
     image        : 'ui image',
-    vertical     : 'vertical'
+    vertical     : 'vertical',
+    attached     : 'attached',
+    inverted     : 'inverted',
+    compact      : 'compact',
+    pausable     : 'pausable',
+    progressing  : 'progressing',
+    top          : 'top',
+    bottom       : 'bottom'
   },
 
   icons          : {

@@ -71,8 +71,8 @@
     &.hoverfloating:hover {
       box-shadow: @floatingShadow;
     }
-    &.compact {
-      display: block;
+    &.compact,
+    > .compact {
       width: @toastWidth;
     }
     & > .ui.toast,
@@ -83,10 +83,10 @@
     & > .attached.progress {
       z-index:1;
       &.bottom {
-        margin: @toastMarginProgress @toastLeftRightMargin @toastMarginBottom;
+        margin: @toastMarginProgress -@toastLeftRightMargin @toastMarginBottom;
       }
       &.top {
-        margin: @toastMarginBottom @toastLeftRightMargin @toastMarginProgress;
+        margin: @toastMarginBottom -@toastLeftRightMargin @toastMarginProgress;
       }
       & .bar {
         min-width: 0;
@@ -142,26 +142,74 @@
     & .ui.toast:not(.vertical) {
       display:block;
     }
-    & :not(.comment) {
-      & .actions {
-        padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
-        margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
-        text-align: right;
-        &:not(.basic) {
-          background: @toastActionBackground;
-          border-top: @toastActionBorder;
-        }
-        &.left {
-          text-align: left;
-        }
+    & > .attached.actions:not(.vertical) {
+      margin-right: @toastLeftRightMargin;
+    }
+    & :not(.comment) .actions {
+      padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
+      margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
+      text-align: right;
+      &.attached:not(.vertical) {
+        margin-right: @toastLeftRightMargin;
+      }
+      &:not(.basic):not(.attached) {
+        background: @toastActionBackground;
+        border-top: @toastActionBorder;
+      }
+      &.left {
+        text-align: left;
       }
     }
     & > .ui.message > .actions:last-child {
       margin-bottom: @toastActionMargin;
     }
+    & > .vertical > .vertical,
+    & > .vertical {
+      display:flex;
+    }
+    & :not(.comment) .vertical.actions {
+      flex-direction: column;
+      &:not(.attached) {
+        border-top: 0;
+        margin-top: -@toastActionPaddingBottom;
+        margin-bottom: -@toastActionPaddingBottom;
+        justify-content: space-around;
+        &:not(.basic) {
+          border-left: @toastActionBorder;
+        }
+        &.top {
+          justify-content: flex-start;
+          & > .ui.button {
+            margin-bottom: @toastActionMarginBottom;
+          }
+        }
+        &.bottom {
+          justify-content: flex-end;
+          & > .ui.button {
+            margin-top: @toastActionMarginTop;
+          }
+        }
+      }
+    }
   }
 }
 
+.ui.vertical.attached {
+  &.toast {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  &.actions {
+    border-top-right-radius: @toastBorderRadius;
+    border-bottom-right-radius: @toastBorderRadius;
+    & .button:first-child {
+      border-top-left-radius: 0;
+    }
+    &.actions .button:last-child {
+      border-bottom-left-radius: 0;
+    }
+  }
+}
 
 /*******************************
             Toast
@@ -213,15 +261,22 @@
       padding-left: @toastTinyImageContentPadding;
     }
   }
-
-  & > .centered.image,
-    > .centered.icon {
-    transform: translateY(-50%);
-    top: 50%;
+  &:not(.vertical) {
+    & > .centered.image,
+      > .centered.icon {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &.actions > .centered.image,
+    &.actions > .centered.icon {
+      top: e(%("calc(50%% - %d)", @toastCenteredAdjustment));
+    }
   }
-  &.actions > .centered.image,
-  &.actions > .centered.icon {
-    top: e(%("calc(50%% - %d)", @toastCenteredAdjustment));
+  &.vertical {
+    & > .centered.image,
+      > .centered.icon {
+      align-self: center;
+    }
   }
 
   &.attached {

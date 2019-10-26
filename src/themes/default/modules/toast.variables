@@ -10,10 +10,10 @@
 @toastBorderRadius: @defaultBorderRadius;
 @toastPadding: @inputPadding;
 @toastMarginBottom: -0.01em;
-@toastLeftRightMargin: -1px;
+@toastLeftRightMargin: 1px;
 @toastBoxMarginBottom: 0.5em;
 @toastMarginProgress: -0.2em;
-@toastMargin: 0 @toastLeftRightMargin @toastMarginBottom;
+@toastMargin: 0 -@toastLeftRightMargin @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
 @toastInvertedTextColor: @textColor;
 @toastNeutralTextColor: @textColor;
@@ -58,5 +58,6 @@
 @toastActionBorder: 1px solid rgba(0, 0, 0, .2);
 @toastActionMargin: -1em;
 @toastActionMarginTop: 0.5em;
+@toastActionMarginBottom: 0.5em;
 @toastActionPadding: 0.5em;
 @toastActionPaddingBottom: 0.75em;
