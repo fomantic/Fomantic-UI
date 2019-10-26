@@ -163,6 +163,7 @@
     & > .ui.message > .actions:last-child {
       margin-bottom: @toastActionMargin;
     }
+    & .vertical.actions > .button,
     & > .vertical > .vertical,
     & > .vertical {
       display:flex;
@@ -179,13 +180,13 @@
         }
         &.top {
           justify-content: flex-start;
-          & > .ui.button {
+          & > .button {
             margin-bottom: @toastActionMarginBottom;
           }
         }
         &.bottom {
           justify-content: flex-end;
-          & > .ui.button {
+          & > .button {
             margin-top: @toastActionMarginTop;
           }
         }
@@ -195,18 +196,66 @@
 }
 
 .ui.vertical.attached {
-  &.toast {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  &.actions {
-    border-top-right-radius: @toastBorderRadius;
-    border-bottom-right-radius: @toastBorderRadius;
-    & .button:first-child {
-      border-top-left-radius: 0;
+  &:not(.left) {
+    &.toast {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
     }
-    &.actions .button:last-child {
+    &.actions {
+      border-top-right-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-top-left-radius: 0;
+      }
+      & .button:last-child {
+        border-bottom-left-radius: 0;
+      }
+    }
+  }
+  &.left {
+    &.toast {
+      border-top-left-radius: 0;
       border-bottom-left-radius: 0;
+    }
+    &.actions {
+      border-top-left-radius: @toastBorderRadius;
+      border-bottom-left-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-top-right-radius: 0;
+      }
+      & .button:last-child {
+        border-bottom-right-radius: 0;
+      }
+      & .button:not(:first-child):not(:last-child) {
+        margin-left: -@toastLeftRightMargin;
+      }
+    }
+  }
+}
+
+.ui.attached.actions:not(.vertical) {
+  &:not(.top) {
+    &.actions {
+      border-bottom-left-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-bottom-left-radius: @toastBorderRadius;
+      }
+      & .button:last-child {
+        border-bottom-right-radius: @toastBorderRadius;
+      }
+    }
+  }
+  &.top {
+    &.actions {
+      border-top-left-radius: @toastBorderRadius;
+      border-top-right-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-top-left-radius: @toastBorderRadius;
+      }
+      & .button:last-child {
+        border-top-right-radius: @toastBorderRadius;
+      }
     }
   }
 }

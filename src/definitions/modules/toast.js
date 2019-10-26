@@ -220,7 +220,7 @@ $.fn.toast = function(parameters) {
                 $toast.addClass(className.vertical);
             }
             if($actions.length > 0 && !$actions.hasClass(className.attached)) {
-              if ($actions && (!$actions.hasClass('basic') || $actions.hasClass('left'))) {
+              if ($actions && (!$actions.hasClass(className.basic) || $actions.hasClass(className.left))) {
                 $toast.addClass(className.actions);
               }
             }
@@ -255,7 +255,12 @@ $.fn.toast = function(parameters) {
                           className.attached + ' ' +
                           (settings.compact ? className.compact : '')
                   })
-                ).parent().append($actions);
+                );
+                if($actions.hasClass(className.left)) {
+                  $toast.addClass(className.left).parent().addClass(className.left).prepend($actions);
+                } else {
+                  $toast.parent().append($actions);
+                }
               }
             }
             if($module !== $toast) {
@@ -790,7 +795,9 @@ $.fn.toast.settings = {
     pausable     : 'pausable',
     progressing  : 'progressing',
     top          : 'top',
-    bottom       : 'bottom'
+    bottom       : 'bottom',
+    left         : 'left',
+    basic        : 'basic'
   },
 
   icons          : {
