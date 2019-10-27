@@ -318,9 +318,11 @@
       transform: translateY(-50%);
       top: 50%;
     }
-    &.actions > .centered.image,
+    &.actions > .centered.image{
+      top: e(%("calc(50%% - %d)", @toastImageCenteredAdjustment));
+    }
     &.actions > .centered.icon {
-      top: e(%("calc(50%% - %d)", @toastCenteredAdjustment));
+      top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
     }
   }
   &.vertical {
@@ -383,6 +385,25 @@ each(@colors, {
 .ui.inverted.toast {
   color: @toastInvertedTextColor;
 }
+
+/* IE11 hacks */
+_:-ms-lang(x),
+.ui.toast.vertical > .centered.avatar.image {
+  top: e(%("calc(50%% - %d)", @toastAvatarImageHeight / 2));
+}
+_:-ms-lang(x),
+.ui.toast.vertical > .centered.mini.image {
+  top: e(%("calc(50%% - %d)", @toastMiniImageHeight / 2));
+}
+_:-ms-lang(x),
+.ui.toast.vertical > .centered.tiny.image {
+  top: e(%("calc(50%% - %d)", @toastTinyImageHeight / 2));
+}
+_:-ms-lang(x),
+.ui.toast.vertical > .centered.icon {
+  top: e(%("calc(50%% - %d)", @toastIconFontSize / 2));
+}
+
 
 /*---------------
    Progress Bar

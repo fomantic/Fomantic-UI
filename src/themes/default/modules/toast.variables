@@ -40,7 +40,13 @@
 @toastMiniImageContentPadding: 3.4em;
 @toastTinyImageContentPadding: 7em;
 
-@toastCenteredAdjustment: 1.2em;
+/* IE11 Adjustments */
+@toastAvatarImageHeight: 2em;
+@toastMiniImageHeight: 35px;
+@toastTinyImageHeight: 80px;
+
+@toastIconCenteredAdjustment: 1.2em;
+@toastImageCenteredAdjustment: 2em;
 
 /* Progressbar Colors */
 @toastInfoProgressColor: darken(@toastInfoColor,15);
