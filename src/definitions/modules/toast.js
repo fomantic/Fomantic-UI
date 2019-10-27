@@ -267,7 +267,6 @@ $.fn.toast = function(parameters) {
               $module = $toast;
               element = $toast[0];
             }
-            console.log($module);
             $animationObject = $toast;
             if(settings.displayTime > 0) {
               if (!!settings.showProgress) {
