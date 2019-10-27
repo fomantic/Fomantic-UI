@@ -29,6 +29,8 @@
 @toastSuccessColor: @successColor;
 @toastNeutralColor: @white;
 
+@toastBoxBorder: 1px solid rgba(34, 36, 38, 0.12);
+
 /* Icon */
 @toastIconContentPadding: 3em;
 @toastIconFontSize: 1.5em;
