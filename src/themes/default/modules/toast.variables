@@ -6,7 +6,7 @@
 @toastContainerDistance: @relative12px;
 
 /* Toast */
-@toastWidth: 300px;
+@toastWidth: 350px;
 @toastBorderRadius: @defaultBorderRadius;
 @toastPadding: @inputPadding;
 @toastMarginBottom: -0.01em;

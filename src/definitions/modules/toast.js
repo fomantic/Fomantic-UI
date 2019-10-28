@@ -111,10 +111,10 @@ $.fn.toast = function(parameters) {
             $toast = undefined;
             $animationObject = undefined;
             settings.onRemove.call($toastBox, element);
+            $progress = undefined;
+            $progressBar = undefined;
+            $close = undefined;
           }
-          $progress = undefined;
-          $progressBar = undefined;
-          $close = undefined;
           $module
             .removeData(moduleNamespace)
           ;
@@ -145,13 +145,6 @@ $.fn.toast = function(parameters) {
           },
           toast: function() {
             $toastBox = $('<div/>', {class: className.box});
-            if (!!settings.showProgress) {
-              $progress = $('<div/>', {
-                class: className.progress + ' ' + (settings.classProgress || settings.class),
-                'data-percent': ''
-              });
-              $progressBar = $('<div/>', {class: 'bar'});
-            }
             if (!isComponent) {
               module.verbose('Creating toast');
               $toast = $('<div/>');
@@ -224,13 +217,6 @@ $.fn.toast = function(parameters) {
                 $toast.addClass(className.actions);
               }
             }
-            if(!settings.classProgress && !!settings.showProgress) {
-              if ($toast.hasClass('toast') && !$toast.hasClass(className.inverted)) {
-                $progress.addClass(className.inverted);
-              } else {
-                $progress.removeClass(className.inverted);
-              }
-            }
             if(settings.displayTime === 'auto'){
               settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(" ").length / settings.wordsPerMinute * 60000);
             }
@@ -267,9 +253,21 @@ $.fn.toast = function(parameters) {
               $module = $toast;
               element = $toast[0];
             }
-            $animationObject = $toast;
             if(settings.displayTime > 0) {
+              var progressingClass = className.progressing+' '+(settings.pauseOnHover ? className.pausable:'');
               if (!!settings.showProgress) {
+                $progress = $('<div/>', {
+                  class: className.progress + ' ' + (settings.classProgress || settings.class),
+                  'data-percent': ''
+                });
+                if(!settings.classProgress) {
+                  if ($toast.hasClass('toast') && !$toast.hasClass(className.inverted)) {
+                    $progress.addClass(className.inverted);
+                  } else {
+                    $progress.removeClass(className.inverted);
+                  }
+                }
+                $progressBar = $('<div/>', {class: 'bar '+(settings.progressUp ? 'up ' : 'down ')+progressingClass});
                 $progress
                     .addClass(settings.showProgress)
                     .append($progressBar);
@@ -278,18 +276,11 @@ $.fn.toast = function(parameters) {
                 } else {
                   $toastBox.append($progress);
                 }
-                $animationObject = $progressBar;
-                $animationObject.addClass(settings.progressUp ? 'up' : 'down');
-              } else {
-                $animationObject.addClass('wait');
+                $progressBar.css('animation-duration', settings.displayTime / 1000 + 's');
               }
+              $animationObject = $('<span/>',{class:'wait '+progressingClass});
               $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
-              if (settings.pauseOnHover) {
-                $animationObject.addClass(className.pausable);
-              }
-              $animationObject.addClass(className.progressing);
-            } else {
-               $animationObject = undefined;
+              $animationObject.appendTo($toast);
             }
             if (settings.compact) {
               $toastBox.addClass(className.compact);
@@ -407,9 +398,15 @@ $.fn.toast = function(parameters) {
           },
           pause: function() {
             $animationObject.css('animationPlayState','paused');
+            if($progressBar) {
+              $progressBar.css('animationPlayState', 'paused');
+            }
           },
           continue: function() {
             $animationObject.css('animationPlayState','running');
+            if($progressBar) {
+              $progressBar.css('animationPlayState', 'running');
+            }
           }
         },
 
@@ -446,7 +443,7 @@ $.fn.toast = function(parameters) {
             return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
           },
           remainingTime: function() {
-            return $animationObject.css('stopOpacity') * settings.displayTime;
+            return $animationObject ? $animationObject.css('opacity') * settings.displayTime : 0;
           }
         },
 

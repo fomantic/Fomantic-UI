@@ -171,6 +171,10 @@
     }
     & :not(.comment) .vertical.actions {
       flex-direction: column;
+      &.attached > .button {
+        justify-content: center;
+        align-items: center;
+      }
       &:not(.attached) {
         border-top: 0;
         margin-top: -@toastActionPaddingBottom;
@@ -206,10 +210,9 @@
     &.actions {
       border-top-right-radius: @toastBorderRadius;
       border-bottom-right-radius: @toastBorderRadius;
-      & .button:first-child {
+      & .button:first-child,
+        .button:last-child {
         border-top-left-radius: 0;
-      }
-      & .button:last-child {
         border-bottom-left-radius: 0;
       }
     }
@@ -222,10 +225,9 @@
     &.actions {
       border-top-left-radius: @toastBorderRadius;
       border-bottom-left-radius: @toastBorderRadius;
-      & .button:first-child {
+      & .button:first-child,
+        .button:last-child {
         border-top-right-radius: 0;
-      }
-      & .button:last-child {
         border-bottom-right-radius: 0;
       }
       & .button:not(:first-child):not(:last-child) {
@@ -408,33 +410,27 @@ _:-ms-lang(x),
 /*---------------
    Progress Bar
  ----------------*/
-// stop-opacity has no real visual use
-// it's just here to be able to properly calculate the remaining time
 @keyframes progressDown {
   0% {
     width: 100%;
-    stop-opacity: 1;
   }
   100% {
     width: 0;
-    stop-opacity: 0;
   }
 }
 @keyframes progressUp {
   0% {
     width: 0;
-    stop-opacity: 1;
   }
   100% {
     width: 100%;
-    stop-opacity: 0;
   }
 }
 @keyframes progressWait {
   0% {
-    stop-opacity: 1;
+    opacity: 1;
   }
   100% {
-    stop-opacity: 0;
+    opacity: 0;
   }
 }
