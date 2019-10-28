@@ -284,6 +284,12 @@ $.fn.rating = function(parameters) {
                 $partialActiveIcon
                   .css(cssVars.filledCustomPropName, filledPercentage + '%')
                 ;
+                if($partialActiveIcon.css('background') === '') {
+                  $partialActiveIcon
+                      .removeClass(className.partiallyActive)
+                      .removeClass(className.active)
+                  ;
+                }
               }
             }
             if(!module.is.initialLoad()) {
