@@ -282,7 +282,8 @@
     border-radius: @defaultBorderRadius;
     padding: @toastPadding;
     margin: @toastMargin;
-    color: @toastTextColor;
+    color: @toastInvertedTextColor;
+    background-color: @toastNeutralColor;
   & > .content > .header {
     font-weight: bold;
     color: inherit;
@@ -290,15 +291,19 @@
   }
   &.info {
     background-color: @toastInfoColor;
+    color: @toastTextColor;
   }
   &.warning {
     background-color: @toastWarningColor;
+    color: @toastTextColor;
   }
   &.success {
     background-color: @toastSuccessColor;
+    color: @toastTextColor;
   }
   &.error {
     background-color: @toastErrorColor;
+    color: @toastTextColor;
   }
   &.neutral {
     background-color: @toastNeutralColor;
@@ -405,15 +410,18 @@ each(@colors, {
 
   .ui.@{color}.toast {
     background-color: @c;
+    color: @toastTextColor;
   }
   .ui.inverted.@{color}.toast,
   .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
     background-color: @l;
+    color: @toastInvertedTextColor;
   }
 })
 
 .ui.inverted.toast {
-  color: @toastInvertedTextColor;
+  color: @toastTextColor;
+  background-color: @toastInvertedColor;
 }
 
 /*---------------
