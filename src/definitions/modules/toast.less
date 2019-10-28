@@ -112,16 +112,26 @@
       top: @toastCloseTopDistance;
       right: @toastCloseRightDistance;
     }
-    & .ui.toast > .close.icon {
-      cursor: pointer;
-      position: absolute;
-      margin: 0;
-      top: @toastCloseTopDistance;
-      right: @toastCloseRightDistance;
-      opacity: @toastCloseOpacity;
-      transition: @toastCloseTransition;
-      &:hover {
-        opacity: 1;
+    & .ui.toast {
+      & > .close.icon {
+        cursor: pointer;
+        margin: 0;
+        opacity: @toastCloseOpacity;
+        transition: @toastCloseTransition;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &.vertical > .close.icon {
+        margin-top: -@toastCloseTopDistance;
+        margin-right: -@toastCloseTopDistance;
+      }
+      &:not(.vertical) > .close.icon {
+        position: absolute;
+        top: @toastCloseTopDistance;
+        &:not(.left) {
+          right: @toastCloseRightDistance;
+        }
       }
     }
     & .progressing {
@@ -171,8 +181,10 @@
     }
     & :not(.comment) .vertical.actions {
       flex-direction: column;
-      &.attached > .button {
+      & > .button {
         justify-content: center;
+      }
+      &.attached > .button {
         align-items: center;
       }
       &:not(.attached) {
@@ -184,17 +196,14 @@
         &:not(.basic) {
           border-left: @toastActionBorder;
         }
+        & > .button:not(:last-child) {
+          margin-bottom: @toastActionMarginBottom;
+        }
         &.top {
           justify-content: flex-start;
-          & > .button {
-            margin-bottom: @toastActionMarginBottom;
-          }
         }
         &.bottom {
           justify-content: flex-end;
-          & > .button {
-            margin-top: @toastActionMarginTop;
-          }
         }
       }
     }
@@ -297,24 +306,29 @@
   }
   & > .icon:not(.close) {
     font-size: @toastIconFontSize;
-    position: absolute;
-    & + .content {
-      padding-left: @toastIconContentPadding;
-    }
-  }
-  & > .ui.image {
-    position: absolute;
-    &.avatar + .content {
-      padding-left: @toastAvatarImageContentPadding;
-    }
-    &.mini + .content {
-      padding-left: @toastMiniImageContentPadding;
-    }
-    &.tiny + .content {
-      padding-left: @toastTinyImageContentPadding;
-    }
   }
   &:not(.vertical) {
+    & > .icon:not(.close) {
+      position: absolute;
+      & + .content {
+        padding-left: @toastIconContentPadding;
+      }
+    }
+    & > .ui.image {
+      position: absolute;
+      &.avatar + .content {
+        padding-left: @toastAvatarImageContentPadding;
+        min-height: @toastAvatarImageHeight;
+      }
+      &.mini + .content {
+        padding-left: @toastMiniImageContentPadding;
+        min-height: @toastMiniImageHeight;
+      }
+      &.tiny + .content {
+        padding-left: @toastTinyImageContentPadding;
+        min-height: @toastTinyImageHeight;
+      }
+    }
     & > .centered.image,
       > .centered.icon {
       transform: translateY(-50%);
@@ -328,6 +342,14 @@
     }
   }
   &.vertical {
+    & > .ui.image + .content,
+      > .icon:not(.close) + .content {
+      padding-left: @toastImageContentPadding;
+    }
+    & > .ui.image {
+      align-self: flex-start;
+      flex-shrink:0; /* IE11 fix */
+    }
     & > .centered.image,
       > .centered.icon {
       align-self: center;
@@ -387,25 +409,6 @@ each(@colors, {
 .ui.inverted.toast {
   color: @toastInvertedTextColor;
 }
-
-/* IE11 hacks */
-_:-ms-lang(x),
-.ui.toast.vertical > .centered.avatar.image {
-  top: e(%("calc(50%% - %d)", @toastAvatarImageHeight / 2));
-}
-_:-ms-lang(x),
-.ui.toast.vertical > .centered.mini.image {
-  top: e(%("calc(50%% - %d)", @toastMiniImageHeight / 2));
-}
-_:-ms-lang(x),
-.ui.toast.vertical > .centered.tiny.image {
-  top: e(%("calc(50%% - %d)", @toastTinyImageHeight / 2));
-}
-_:-ms-lang(x),
-.ui.toast.vertical > .centered.icon {
-  top: e(%("calc(50%% - %d)", @toastIconFontSize / 2));
-}
-
 
 /*---------------
    Progress Bar

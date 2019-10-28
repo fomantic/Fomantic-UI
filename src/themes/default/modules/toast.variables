@@ -36,11 +36,11 @@
 @toastIconFontSize: 1.5em;
 
 /* Image */
+@toastImageContentPadding: 1em;
 @toastAvatarImageContentPadding: 3em;
 @toastMiniImageContentPadding: 3.4em;
 @toastTinyImageContentPadding: 7em;
 
-/* IE11 Adjustments */
 @toastAvatarImageHeight: 2em;
 @toastMiniImageHeight: 35px;
 @toastTinyImageHeight: 80px;
@@ -67,6 +67,6 @@
 @toastActionMargin: -1em;
 @toastActionMarginTop: 0.5em;
 @toastActionMarginLeft: 1em;
-@toastActionMarginBottom: 0.5em;
+@toastActionMarginBottom: 0.3em;
 @toastActionPadding: 0.5em;
 @toastActionPaddingBottom: 0.75em;

@@ -149,12 +149,6 @@ $.fn.toast = function(parameters) {
               module.verbose('Creating toast');
               $toast = $('<div/>');
               var $content = $('<div/>', {class: className.content});
-              if (settings.closeIcon) {
-                $close = $('<i/>', {class: className.close});
-                $toast.append($close);
-                $toast.css('cursor', 'default');
-              }
-
               var iconClass = module.get.iconClass();
               if (iconClass !== '') {
                 $toast.append($('<i/>', {class: iconClass + ' ' + className.icon}));
@@ -180,8 +174,19 @@ $.fn.toast = function(parameters) {
                 .append($content)
               ;
               $toast.css('opacity', settings.opacity);
+              if (settings.closeIcon) {
+                $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : '')});
+                if($close.hasClass(className.left)) {
+                  $toast.prepend($close);
+                } else {
+                  $toast.append($close);
+                }
+                $toast.css('cursor', 'default');
+              }
             } else {
               $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
+              $close = $toast.find('> i'+module.helpers.toClass(className.close));
+              settings.closeIcon = ($close.length > 0);
             }
             if ($toast.hasClass(className.compact)) {
               settings.compact = true;
