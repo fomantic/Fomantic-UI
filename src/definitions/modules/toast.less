@@ -132,6 +132,9 @@
         &:not(.left) {
           right: @toastCloseRightDistance;
         }
+        &.left {
+          margin-left: -@toastCloseRightDistance;
+        }
       }
     }
     & .progressing {
@@ -152,9 +155,6 @@
     }
     & .ui.toast:not(.vertical) {
       display:block;
-    }
-    & > .attached.actions:not(.vertical) {
-      margin-right: @toastLeftRightMargin;
     }
     & :not(.comment) .actions {
       padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
@@ -314,6 +314,9 @@
         padding-left: @toastIconContentPadding;
       }
     }
+    & > .close.icon + .content {
+      padding-left: @toastCloseDistance;
+    }
     & > .ui.image {
       position: absolute;
       &.avatar + .content {
@@ -342,6 +345,9 @@
     }
   }
   &.vertical {
+    & > .close.icon + .content {
+      padding-left: @toastCloseDistanceVertical;
+    }
     & > .ui.image + .content,
       > .icon:not(.close) + .content {
       padding-left: @toastImageContentPadding;
