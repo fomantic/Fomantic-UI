@@ -284,10 +284,10 @@ $.fn.rating = function(parameters) {
                 $partialActiveIcon
                   .css(cssVars.filledCustomPropName, filledPercentage + '%')
                 ;
-                if($partialActiveIcon.css('background') === '') {
+                if($partialActiveIcon.css('backgroundColor') === 'transparent') {
                   $partialActiveIcon
-                      .removeClass(className.partiallyActive)
-                      .removeClass(className.active)
+                    .removeClass(className.partiallyActive)
+                    .removeClass(className.active)
                   ;
                 }
               }
