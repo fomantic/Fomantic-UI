@@ -72,8 +72,8 @@
 /* Partially Active Icon */
 .ui.rating .icon.partial.active {
   background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
 }
 
 /* Selected Icon */
@@ -82,8 +82,7 @@
 .ui.rating .icon.selected.partial.active {
   background: @selectedBackground;
   color: @selectedColor;
-  -webkit-background-clip: unset;
-  -webkit-text-fill-color: unset;
+  background-clip: unset;
 }
 
 /*--------------
@@ -113,16 +112,16 @@ each(@colors, {
                  -@shadowWidth 0px 0px @h,
                  0px @shadowWidth 0px @h,
                  @shadowWidth 0px 0px @h;
-    -webkit-background-clip: unset;
-    -webkit-text-fill-color: unset;
+
     -webkit-text-stroke: unset;
+    background-clip: unset;
   }
   .ui.@{color}.rating .icon.partial.active {
     background: linear-gradient(to right, @l 0% var(--full), @inactiveColor var(--full) 100%);
     text-shadow: none;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
     -webkit-text-stroke: @c 0.78px;
+    background-clip: text;
+    color: transparent;
   }
 })
 
