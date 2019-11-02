@@ -175,8 +175,8 @@
       margin-bottom: @toastActionMargin;
     }
     & .vertical.actions > .button,
-    & > .vertical > .vertical,
-    & > .vertical {
+    & > .vertical > .vertical.vertical,
+    & > .vertical.vertical.vertical {
       display:flex;
     }
     & :not(.comment) .vertical.actions {
@@ -225,6 +225,10 @@
         border-bottom-left-radius: 0;
       }
     }
+    &.message {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: @toastBorderRadius;
+    }
   }
   &.left {
     &.toast {
@@ -242,6 +246,10 @@
       & .button:not(:first-child):not(:last-child) {
         margin-left: -@toastLeftRightMargin;
       }
+    }
+    &.message.message.message {
+      border-top-right-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
     }
   }
 }
