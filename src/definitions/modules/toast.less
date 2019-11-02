@@ -137,6 +137,19 @@
         }
       }
     }
+    & .ui.card {
+      margin:0;
+      &.attached:not(.vertical) {
+        &.bottom {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+        &.top {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
     & .progressing {
       animation-iteration-count: 1;
       animation-timing-function: linear;
@@ -156,19 +169,23 @@
     & .ui.toast:not(.vertical) {
       display:block;
     }
-    & :not(.comment) .actions {
-      padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
-      margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
-      text-align: right;
-      &.attached:not(.vertical) {
-        margin-right: @toastLeftRightMargin;
+    & :not(.comment) {
+      &:not(.card) .actions {
+        margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
       }
-      &:not(.basic):not(.attached) {
-        background: @toastActionBackground;
-        border-top: @toastActionBorder;
-      }
-      &.left {
-        text-align: left;
+      & .actions {
+        padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
+        text-align: right;
+        &.attached:not(.vertical) {
+          margin-right: @toastLeftRightMargin;
+        }
+        &:not(.basic):not(.attached) {
+          background: @toastActionBackground;
+          border-top: @toastActionBorder;
+        }
+        &.left {
+          text-align: left;
+        }
       }
     }
     & > .ui.message > .actions:last-child {
@@ -212,6 +229,7 @@
 
 .ui.vertical.attached {
   &:not(.left) {
+    &.card,
     &.toast {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
@@ -231,6 +249,7 @@
     }
   }
   &.left {
+    &.card,
     &.toast {
       border-top-left-radius: 0;
       border-bottom-left-radius: 0;

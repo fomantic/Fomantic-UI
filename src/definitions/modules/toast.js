@@ -43,16 +43,16 @@ $.fn.toast = function(parameters) {
           ? $.extend(true, {}, $.fn.toast.settings, parameters)
           : $.extend({}, $.fn.toast.settings),
 
-        className       = settings.className,
-        selector        = settings.selector,
-        error           = settings.error,
-        namespace       = settings.namespace,
-        fields          = settings.fields,
+        className        = settings.className,
+        selector         = settings.selector,
+        error            = settings.error,
+        namespace        = settings.namespace,
+        fields           = settings.fields,
 
-        eventNamespace  = '.' + namespace,
-        moduleNamespace = namespace + '-module',
+        eventNamespace   = '.' + namespace,
+        moduleNamespace  = namespace + '-module',
 
-        $module         = $(this),
+        $module          = $(this),
         $toastBox,
         $toast,
         $actions,
@@ -60,14 +60,14 @@ $.fn.toast = function(parameters) {
         $progressBar,
         $animationObject,
         $close,
-        $context        = (settings.context)
+        $context         = (settings.context)
           ? $(settings.context)
           : $('body'),
 
-        isComponent     = $module.hasClass('toast') || $module.hasClass('message'),
+        isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
 
-        element         = this,
-        instance        = isComponent ? $module.data(moduleNamespace) : undefined,
+        element          = this,
+        instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
 
         module
       ;
@@ -78,7 +78,7 @@ $.fn.toast = function(parameters) {
           if (!module.has.container()) {
             module.create.container();
           }
-          if(isComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
+          if(isToastComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
             if(typeof settings.showProgress !== 'string' || [className.top,className.bottom].indexOf(settings.showProgress) === -1 ) {
               settings.showProgress = false;
             }
@@ -145,7 +145,7 @@ $.fn.toast = function(parameters) {
           },
           toast: function() {
             $toastBox = $('<div/>', {class: className.box});
-            if (!isComponent) {
+            if (!isToastComponent) {
               module.verbose('Creating toast');
               $toast = $('<div/>');
               var $content = $('<div/>', {class: className.content});
@@ -196,12 +196,18 @@ $.fn.toast = function(parameters) {
               if ($actions.length === 0) {
                 $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($toast);
               }
+              if($toast.hasClass('card') && !$actions.hasClass(className.attached)) {
+                $actions.addClass(className.extraContent);
+                if($actions.hasClass(className.vertical)) {
+                  $actions.removeClass(className.vertical);
+                  module.error(error.verticalCard);
+                }
+              }
               settings.actions.forEach(function (el) {
                 var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
-                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {
-                  };
+                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
                 $actions.append($('<button/>', {
                   html: icon + text,
                   class: className.button + ' ' + cls,
@@ -772,7 +778,8 @@ $.fn.toast.settings = {
 
   error: {
     method       : 'The method you called is not defined.',
-    noElement    : 'This module requires ui {element}'
+    noElement    : 'This module requires ui {element}',
+    verticalCard : 'Vertical but not attached actions are not supported for card layout'
   },
 
   className      : {
@@ -785,6 +792,7 @@ $.fn.toast.settings = {
     content      : 'content',
     title        : 'ui header',
     actions      : 'actions',
+    extraContent : 'extra content',
     button       : 'ui button',
     buttons      : 'ui buttons',
     close        : 'close icon',
