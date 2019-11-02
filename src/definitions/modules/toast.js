@@ -191,6 +191,9 @@ $.fn.toast = function(parameters) {
             if ($toast.hasClass(className.compact)) {
               settings.compact = true;
             }
+            if ($toast.hasClass('card')) {
+              settings.compact = false;
+            }
             $actions = $toast.find('.actions');
             if (module.has.configActions()) {
               if ($actions.length === 0) {
