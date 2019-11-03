@@ -149,6 +149,14 @@
           border-bottom-right-radius: 0;
         }
       }
+      &.horizontal.actions {
+        & > .image > img {
+          border-bottom-left-radius: 0;
+        }
+        & > .image:last-child > img {
+          border-bottom-right-radius: 0;
+        }
+      }
     }
     & .progressing {
       animation-iteration-count: 1;
@@ -229,6 +237,15 @@
 
 .ui.vertical.attached {
   &:not(.left) {
+    &.card {
+      & > .image > img {
+        border-top-right-radius: 0;
+      }
+      &.horizontal > .image:last-child > img {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
     &.card,
     &.toast {
       border-top-right-radius: 0;
@@ -249,6 +266,15 @@
     }
   }
   &.left {
+    &.card {
+      & > .image > img {
+        border-top-left-radius: 0;
+      }
+      &.horizontal > .image > img {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
     &.card,
     &.toast {
       border-top-left-radius: 0;
@@ -273,7 +299,7 @@
   }
 }
 
-.ui.attached.actions:not(.vertical) {
+.ui.attached:not(.vertical) {
   &:not(.top) {
     &.actions {
       border-bottom-left-radius: @toastBorderRadius;
@@ -295,6 +321,10 @@
       }
       & .button:last-child {
         border-top-right-radius: @toastBorderRadius;
+      }
+      & + .ui.card > .image > img {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
       }
     }
   }
