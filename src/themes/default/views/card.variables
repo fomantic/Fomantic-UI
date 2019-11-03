@@ -161,7 +161,7 @@
 ;
 
 /* Horizontal */
-@horizontalMinWidth: 400px;
+@horizontalMinWidth: 300px;
 @horizontalWidth: 400px;
 @horizontalImageWidth: 150px;
 
