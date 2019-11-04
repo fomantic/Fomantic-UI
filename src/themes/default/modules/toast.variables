@@ -35,6 +35,8 @@
 /* Icon */
 @toastIconContentPadding: 3em;
 @toastIconFontSize: 1.5em;
+@toastIconMessageContentPadding: 5rem;
+@toastIconMessageWidth: 4rem;
 
 /* Image */
 @toastImageContentPadding: 1em;

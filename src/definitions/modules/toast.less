@@ -108,9 +108,36 @@
         background: @toastNeutralProgressColor;
       }
     }
-    & > .ui.message > .close.icon {
-      top: @toastCloseTopDistance;
-      right: @toastCloseRightDistance;
+    & > .ui.message {
+      & > .close.icon {
+        top: @toastCloseTopDistance;
+        right: @toastCloseRightDistance;
+      }
+      & > .actions:last-child {
+        margin-bottom: @toastActionMargin;
+      }
+      &:not(.vertical) {
+        &.icon {
+          & > :not(.icon):not(.actions) {
+            padding-left: @toastIconMessageContentPadding;
+          }
+          & > .icon:not(.close) {
+            display: inline-block;
+            position: absolute;
+            width: @toastIconMessageWidth;
+          }
+          &:not(.actions) > .icon:not(.close) {
+            top: 50%;
+            transform: translateY(-50%);
+          }
+          &.actions > .icon:not(.close) {
+            top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+          }
+          &.icon.icon.icon {
+            display: block;
+          }
+        }
+      }
     }
     & .ui.toast {
       & > .close.icon {
@@ -143,10 +170,26 @@
         &.bottom {
           border-top-left-radius: 0;
           border-top-right-radius: 0;
+          &.horizontal {
+            & > .image > img {
+              border-top-left-radius: 0;
+            }
+            & > .image:last-child > img {
+              border-top-right-radius: 0;
+            }
+          }
         }
         &.top {
           border-bottom-left-radius: 0;
           border-bottom-right-radius: 0;
+          &.horizontal {
+            & > .image > img {
+              border-bottom-left-radius: 0;
+            }
+            & > .image:last-child > img {
+              border-bottom-right-radius: 0;
+            }
+          }
         }
       }
       &.horizontal.actions {
@@ -195,9 +238,6 @@
           text-align: left;
         }
       }
-    }
-    & > .ui.message > .actions:last-child {
-      margin-bottom: @toastActionMargin;
     }
     & .vertical.actions > .button,
     & > .vertical > .vertical.vertical,
@@ -321,10 +361,6 @@
       }
       & .button:last-child {
         border-top-right-radius: @toastBorderRadius;
-      }
-      & + .ui.card > .image > img {
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
       }
     }
   }
