@@ -116,22 +116,21 @@
       & > .actions:last-child {
         margin-bottom: @toastActionMargin;
       }
-      &:not(.vertical) {
-        &.icon {
-          & > :not(.icon):not(.actions) {
-            padding-left: @toastIconMessageContentPadding;
-          }
-          & > .icon:not(.close) {
-            display: inline-block;
-            position: absolute;
-            width: @toastIconMessageWidth;
-          }
-          &:not(.actions) > .icon:not(.close) {
-            top: 50%;
-            transform: translateY(-50%);
-          }
+      &.icon {
+        & > :not(.icon):not(.actions) {
+          padding-left: @toastIconMessageContentPadding;
+        }
+        & > .icon:not(.close) {
+          display: inline-block;
+          position: absolute;
+          width: @toastIconMessageWidth;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:not(.vertical) {
           &.actions > .icon:not(.close) {
             top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+            transform: unset;
           }
           &.icon.icon.icon {
             display: block;
