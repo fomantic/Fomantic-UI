@@ -18,6 +18,10 @@
 @toastInvertedTextColor: @textColor;
 @toastNeutralTextColor: @textColor;
 
+/* Mobile */
+@mobileToastBreakpoint: 420px;
+@mobileWidth: 280px;
+
 /* on Hover */
 @toastOpacityOnHover: 1;
 @toastCursorOnHover: pointer;

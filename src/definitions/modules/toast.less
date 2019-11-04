@@ -517,6 +517,21 @@ each(@colors, {
   background-color: @toastInvertedColor;
 }
 
+@media only screen and (max-width: @mobileToastBreakpoint) {
+  .ui.toast-container .toast-box {
+    &.toast-box,
+    & > .compact,
+    & > .vertical > *,
+    & > * {
+      width: auto;
+      max-width: 100%;
+    }
+    & > *:not(.vertical) {
+      min-width: @mobileWidth;
+    }
+  }
+}
+
 /*---------------
    Progress Bar
  ----------------*/
