@@ -117,7 +117,7 @@
         margin-bottom: @toastActionMargin;
       }
       &.icon {
-        align-items: unset;
+        align-items: inherit;
         & > :not(.icon):not(.actions) {
           padding-left: @toastIconMessageContentPadding;
         }
@@ -131,7 +131,7 @@
         &:not(.vertical) {
           &.actions > .icon:not(.close) {
             top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
-            transform: unset;
+            transform: none;
           }
           &.icon.icon.icon {
             display: block;
