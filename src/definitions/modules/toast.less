@@ -529,6 +529,10 @@ each(@colors, {
     & > *:not(.vertical) {
       min-width: @mobileWidth;
     }
+    & > .ui.card.horizontal,
+      > .vertical > .ui.horizontal.card {
+      min-width: initial;
+    }
   }
 }
 
