@@ -1,5 +1,5 @@
 /*
-* Font Awesome 5.9.0 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.11.2 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -64,10 +64,10 @@ i.icon.angle.double.down:before { content: "\f103"; }
 i.icon.angle.double.left:before { content: "\f100"; }
 i.icon.angle.double.right:before { content: "\f101"; }
 i.icon.angle.double.up:before { content: "\f102"; }
+i.icon.angle.down:before { content: "\f107"; }
 i.icon.angle.left:before { content: "\f104"; }
 i.icon.angle.right:before { content: "\f105"; }
 i.icon.angle.up:before { content: "\f106"; }
-i.icon.angle.down:before { content: "\f107"; }
 i.icon.angry:before { content: "\f556"; }
 i.icon.ankh:before { content: "\f644"; }
 i.icon.archive:before { content: "\f187"; }
@@ -80,10 +80,10 @@ i.icon.arrow.circle.down:before { content: "\f0ab"; }
 i.icon.arrow.circle.left:before { content: "\f0a8"; }
 i.icon.arrow.circle.right:before { content: "\f0a9"; }
 i.icon.arrow.circle.up:before { content: "\f0aa"; }
-i.icon.arrow.down:before { content: "\f063"; }
 i.icon.arrow.left:before { content: "\f060"; }
 i.icon.arrow.right:before { content: "\f061"; }
 i.icon.arrow.up:before { content: "\f062"; }
+i.icon.arrow.down:before { content: "\f063"; }
 i.icon.arrows.alternate:before { content: "\f0b2"; }
 i.icon.arrows.alternate.horizontal:before { content: "\f337"; }
 i.icon.arrows.alternate.vertical:before { content: "\f338"; }
@@ -476,6 +476,8 @@ i.icon.handshake:before { content: "\f2b5"; }
 i.icon.hanukiah:before { content: "\f6e6"; }
 i.icon.hard.hat:before { content: "\f807"; }
 i.icon.hashtag:before { content: "\f292"; }
+i.icon.hat.cowboy:before { content: "\f8c0"; }
+i.icon.hat.cowboy.side:before { content: "\f8c1"; }
 i.icon.hat.wizard:before { content: "\f6e8"; }
 i.icon.haykal:before { content: "\f666"; }
 i.icon.hdd:before { content: "\f0a0"; }
@@ -620,6 +622,7 @@ i.icon.mortar.pestle:before { content: "\f5a7"; }
 i.icon.mosque:before { content: "\f678"; }
 i.icon.motorcycle:before { content: "\f21c"; }
 i.icon.mountain:before { content: "\f6fc"; }
+i.icon.mouse:before { content: "\f8cc"; }
 i.icon.mouse.pointer:before { content: "\f245"; }
 i.icon.mug.hot:before { content: "\f7b6"; }
 i.icon.music:before { content: "\f001"; }
@@ -713,6 +716,7 @@ i.icon.radiation.alternate:before { content: "\f7ba"; }
 i.icon.rainbow:before { content: "\f75b"; }
 i.icon.random:before { content: "\f074"; }
 i.icon.receipt:before { content: "\f543"; }
+i.icon.record.vinyl:before { content: "\f8d9"; }
 i.icon.recycle:before { content: "\f1b8"; }
 i.icon.redo:before { content: "\f01e"; }
 i.icon.redo.alternate:before { content: "\f2f9"; }
@@ -1544,6 +1548,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.btc:before { content: "\f15a"; font-family: @brandFontName; }
   i.icon.buffer:before { content: "\f837"; font-family: @brandFontName; }
   i.icon.buromobelexperte:before { content: "\f37f"; font-family: @brandFontName; }
+  i.icon.buy.n.large:before { content: "\f8a6"; font-family: @brandFontName; }
   i.icon.buysellads:before { content: "\f20d"; font-family: @brandFontName; }
   i.icon.canadian.maple.leaf:before { content: "\f785"; font-family: @brandFontName; }
   i.icon.cc.amazon.pay:before { content: "\f42d"; font-family: @brandFontName; }
@@ -1568,6 +1573,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.confluence:before { content: "\f78d"; font-family: @brandFontName; }
   i.icon.connectdevelop:before { content: "\f20e"; font-family: @brandFontName; }
   i.icon.contao:before { content: "\f26d"; font-family: @brandFontName; }
+  i.icon.cotton.bureau:before { content: "\f89e"; font-family: @brandFontName; }
   i.icon.cpanel:before { content: "\f388"; font-family: @brandFontName; }
   i.icon.creative.commons:before { content: "\f25e"; font-family: @brandFontName; }
   i.icon.creative.commons.by:before { content: "\f4e7"; font-family: @brandFontName; }
@@ -1732,6 +1738,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.markdown:before { content: "\f60f"; font-family: @brandFontName; }
   i.icon.mastodon:before { content: "\f4f6"; font-family: @brandFontName; }
   i.icon.maxcdn:before { content: "\f136"; font-family: @brandFontName; }
+  i.icon.mdb:before { content: "\f8ca"; font-family: @brandFontName; }
   i.icon.medapps:before { content: "\f3c6"; font-family: @brandFontName; }
   i.icon.medium:before { content: "\f23a"; font-family: @brandFontName; }
   i.icon.medium.m:before { content: "\f3c7"; font-family: @brandFontName; }
@@ -1760,6 +1767,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.openid:before { content: "\f19b"; font-family: @brandFontName; }
   i.icon.opera:before { content: "\f26a"; font-family: @brandFontName; }
   i.icon.optin.monster:before { content: "\f23c"; font-family: @brandFontName; }
+  i.icon.orcid:before { content: "\f8d2"; font-family: @brandFontName; }
   i.icon.osi:before { content: "\f41a"; font-family: @brandFontName; }
   i.icon.page4:before { content: "\f3d7"; font-family: @brandFontName; }
   i.icon.pagelines:before { content: "\f18c"; font-family: @brandFontName; }
@@ -1852,6 +1860,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.superpowers:before { content: "\f2dd"; font-family: @brandFontName; }
   i.icon.supple:before { content: "\f3f9"; font-family: @brandFontName; }
   i.icon.suse:before { content: "\f7d6"; font-family: @brandFontName; }
+  i.icon.swift:before { content: "\f8e1"; font-family: @brandFontName; }
   i.icon.symfony:before { content: "\f83d"; font-family: @brandFontName; }
   i.icon.teamspeak:before { content: "\f4f9"; font-family: @brandFontName; }
   i.icon.telegram:before { content: "\f2c6"; font-family: @brandFontName; }
@@ -1872,6 +1881,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.uber:before { content: "\f402"; font-family: @brandFontName; }
   i.icon.ubuntu:before { content: "\f7df"; font-family: @brandFontName; }
   i.icon.uikit:before { content: "\f403"; font-family: @brandFontName; }
+  i.icon.umbraco:before { content: "\f8e8"; font-family: @brandFontName; }
   i.icon.uniregistry:before { content: "\f404"; font-family: @brandFontName; }
   i.icon.untappd:before { content: "\f405"; font-family: @brandFontName; }
   i.icon.ups:before { content: "\f7e0"; font-family: @brandFontName; }
