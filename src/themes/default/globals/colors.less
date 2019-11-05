@@ -484,3 +484,117 @@
     isVeryDark     : true;
   };
 }
+
+/***********************************************************
+  Color Mapping Base for form components to iterate
+***********************************************************/
+
+@formStates: {
+  @error: {
+    color: @formErrorColor;
+    background: @formErrorBackground;
+    borderColor: @formErrorBorder;
+    borderRadius: @inputErrorBorderRadius;
+    boxShadow: @inputErrorBoxShadow;
+    cornerLabelColor: @white;
+
+    dropdownLabelColor: @dropdownErrorLabelColor;
+    dropdownLabelBackground: @dropdownErrorLabelBackground;
+    dropdownHoverBackground: @dropdownErrorHoverBackground;
+    dropdownSelectedBackground: @dropdownErrorSelectedBackground;
+    dropdownActiveBackground: @dropdownErrorActiveBackground;
+
+    inputAutoFillBackground: @inputAutoFillErrorBackground;
+    inputAutoFillBorderColor: @inputAutoFillErrorBorder;
+    inputFocusBackground: @inputErrorFocusBackground;
+    inputFocusColor: @inputErrorFocusColor;
+    inputFocusBorderColor: @inputErrorFocusBorder;
+    inputFocusBoxShadow: @inputErrorFocusBoxShadow;
+    inputPlaceholderColor: @inputErrorPlaceholderColor;
+    inputPlaceholderFocusColor: @inputErrorPlaceholderFocusColor;
+
+    transparentBackground: @transparentFormErrorBackground;
+    transparentColor: @transparentFormErrorColor;
+  };
+
+  @info: {
+    color: @formInfoColor;
+    background: @formInfoBackground;
+    borderColor: @formInfoBorder;
+    borderRadius: @inputInfoBorderRadius;
+    boxShadow: @inputInfoBoxShadow;
+    cornerLabelColor: @white;
+
+    dropdownLabelColor: @dropdownInfoLabelColor;
+    dropdownLabelBackground: @dropdownInfoLabelBackground;
+    dropdownHoverBackground: @dropdownInfoHoverBackground;
+    dropdownSelectedBackground: @dropdownInfoSelectedBackground;
+    dropdownActiveBackground: @dropdownInfoActiveBackground;
+
+    inputAutoFillBackground: @inputAutoFillInfoBackground;
+    inputAutoFillBorderColor: @inputAutoFillInfoBorder;
+    inputFocusBackground: @inputInfoFocusBackground;
+    inputFocusColor: @inputInfoFocusColor;
+    inputFocusBorderColor: @inputInfoFocusBorder;
+    inputFocusBoxShadow: @inputInfoFocusBoxShadow;
+    inputPlaceholderColor: @inputInfoPlaceholderColor;
+    inputPlaceholderFocusColor: @inputInfoPlaceholderFocusColor;
+
+    transparentBackground: @transparentFormInfoBackground;
+    transparentColor: @transparentFormInfoColor;
+  };
+
+  @success: {
+    color: @formSuccessColor;
+    background: @formSuccessBackground;
+    borderColor: @formSuccessBorder;
+    borderRadius: @inputSuccessBorderRadius;
+    boxShadow: @inputSuccessBoxShadow;
+    cornerLabelColor: @white;
+
+    dropdownLabelColor: @dropdownSuccessLabelColor;
+    dropdownLabelBackground: @dropdownSuccessLabelBackground;
+    dropdownHoverBackground: @dropdownSuccessHoverBackground;
+    dropdownSelectedBackground: @dropdownSuccessSelectedBackground;
+    dropdownActiveBackground: @dropdownSuccessActiveBackground;
+
+    inputAutoFillBackground: @inputAutoFillSuccessBackground;
+    inputAutoFillBorderColor: @inputAutoFillSuccessBorder;
+    inputFocusBackground: @inputSuccessFocusBackground;
+    inputFocusColor: @inputSuccessFocusColor;
+    inputFocusBorderColor: @inputSuccessFocusBorder;
+    inputFocusBoxShadow: @inputSuccessFocusBoxShadow;
+    inputPlaceholderColor: @inputSuccessPlaceholderColor;
+    inputPlaceholderFocusColor: @inputSuccessPlaceholderFocusColor;
+
+    transparentBackground: @transparentFormSuccessBackground;
+    transparentColor: @transparentFormSuccessColor;
+  };
+
+  @warning: {
+    color: @formWarningColor;
+    background: @formWarningBackground;
+    borderColor: @formWarningBorder;
+    borderRadius: @inputWarningBorderRadius;
+    boxShadow: @inputWarningBoxShadow;
+    cornerLabelColor: @white;
+
+    dropdownLabelColor: @dropdownWarningLabelColor;
+    dropdownLabelBackground: @dropdownWarningLabelBackground;
+    dropdownHoverBackground: @dropdownWarningHoverBackground;
+    dropdownSelectedBackground: @dropdownWarningSelectedBackground;
+    dropdownActiveBackground: @dropdownWarningActiveBackground;
+
+    inputAutoFillBackground: @inputAutoFillWarningBackground;
+    inputAutoFillBorderColor: @inputAutoFillWarningBorder;
+    inputFocusBackground: @inputWarningFocusBackground;
+    inputFocusColor: @inputWarningFocusColor;
+    inputFocusBorderColor: @inputWarningFocusBorder;
+    inputFocusBoxShadow: @inputWarningFocusBoxShadow;
+    inputPlaceholderColor: @inputWarningPlaceholderColor;
+    inputPlaceholderFocusColor: @inputWarningPlaceholderFocusColor;
+
+    transparentBackground: @transparentFormWarningBackground;
+    transparentColor: @transparentFormWarningColor;
+  };
+}
