@@ -169,39 +169,41 @@
 
 & when (@variationInputError) {
   /*--------------------
-          Error
+          States
   ---------------------*/
+  each(@formStates, {
+    @state: replace(@key, '@', '');
 
-  .ui.input.error > input {
-    background-color: @errorBackground;
-    border-color: @errorBorder;
-    color: @errorColor;
-    box-shadow: @errorBoxShadow;
-  }
+    .ui.input.@{state} > input {
+      background-color: @formStates[@@state][background];
+      border-color: @formStates[@@state][borderColor];
+      color: @formStates[@@state][color];
+      box-shadow: @formStates[@@state][boxShadow];
+    }
 
-  /* Error Placeholder */
-  .ui.input.error > input::-webkit-input-placeholder {
-    color: @placeholderErrorColor;
-  }
-  .ui.input.error > input::-moz-placeholder {
-    color: @placeholderErrorColor;
-  }
-  .ui.input.error > input:-ms-input-placeholder {
-    color: @placeholderErrorColor !important;
-  }
+    /* Placeholder */
+    .ui.input.@{state} > input::-webkit-input-placeholder {
+      color: @formStates[@@state][inputPlaceholderColor];
+    }
+    .ui.input.@{state} > input::-moz-placeholder {
+      color: @formStates[@@state][inputPlaceholderColor];
+    }
+    .ui.input.@{state} > input:-ms-input-placeholder {
+      color: @formStates[@@state][inputPlaceholderColor] !important;
+    }
 
-  /* Focused Error Placeholder */
-  .ui.input.error > input:focus::-webkit-input-placeholder {
-    color: @placeholderErrorFocusColor;
-  }
-  .ui.input.error > input:focus::-moz-placeholder {
-    color: @placeholderErrorFocusColor;
-  }
-  .ui.input.error > input:focus:-ms-input-placeholder {
-    color: @placeholderErrorFocusColor !important;
-  }
+    /* Focused Placeholder */
+    .ui.input.@{state} > input:focus::-webkit-input-placeholder {
+      color: @formStates[@@state][inputPlaceholderFocusColor];
+    }
+    .ui.input.@{state} > input:focus::-moz-placeholder {
+      color: @formStates[@@state][inputPlaceholderFocusColor];
+    }
+    .ui.input.@{state} > input:focus:-ms-input-placeholder {
+      color: @formStates[@@state][inputPlaceholderFocusColor] !important;
+    }
+  })
 }
-
 /*******************************
            Variations
 *******************************/
@@ -430,30 +432,35 @@
 }
 
 & when (@variationInputLabeled)  or (@variationInputAction) {
-  /* Labeled and action input error */
-  .ui.form > .field.error > .ui.action.input > .ui.button,
-  .ui.form > .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
-  .ui.action.input.error > .ui.button,
-  .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
-    border-top: @borderWidth solid @errorBorder;
-    border-bottom: @borderWidth solid @errorBorder;
-  }
-  .ui.form > .field.error > .ui.left.action.input > .ui.button,
-  .ui.form > .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
-  .ui.left.action.input.error > .ui.button,
-  .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
-    border-left: @borderWidth solid @errorBorder;
-  }
-  .ui.form > .field.error > .ui.action.input:not(.left) > input + .ui.button,
-  .ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
-  .ui.action.input.error:not(.left) > input + .ui.button,
-  .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
-    border-right: @borderWidth solid @errorBorder;
-  }
-  .ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
-  .ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
-    border-left: @borderWidth solid @errorBorder;
-  }
+  /* Labeled and action input states */
+  each(@formStates, {
+    @state: replace(@key, '@', '');
+    @borderColor: @formStates[@@state][color];
+
+    .ui.form > .field.@{state} > .ui.action.input > .ui.button,
+    .ui.form > .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
+    .ui.action.input.@{state} > .ui.button,
+    .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
+      border-top: @borderWidth solid @borderColor;
+      border-bottom: @borderWidth solid @borderColor;
+    }
+    .ui.form > .field.@{state} > .ui.left.action.input > .ui.button,
+    .ui.form > .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
+    .ui.left.action.input.@{state} > .ui.button,
+    .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
+      border-left: @borderWidth solid @borderColor;
+    }
+    .ui.form > .field.@{state} > .ui.action.input:not(.left) > input + .ui.button,
+    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
+    .ui.action.input.@{state}:not(.left) > input + .ui.button,
+    .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
+      border-right: @borderWidth solid @borderColor;
+    }
+    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
+    .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
+      border-left: @borderWidth solid @borderColor;
+    }
+  })
 }
 
 & when (@variationInputAction) {

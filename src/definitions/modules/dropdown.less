@@ -988,53 +988,56 @@ select.ui.dropdown {
 }
 
 & when (@variationDropdownError) {
-  /*--------------------
-          Error
-  ----------------------*/
+/*--------------------
+        States
+----------------------*/
+each(@formStates, {
+  @state: replace(@key, '@', '');
+  @c: @formStates[@@state][dropdownLabelColor];
+  @bdc: @formStates[@@state][borderColor];
 
-  .ui.dropdown.error,
-  .ui.dropdown.error > .text,
-  .ui.dropdown.error > .default.text {
-    color: @errorTextColor;
+  .ui.dropdown.@{state},
+  .ui.dropdown.@{state} > .text,
+  .ui.dropdown.@{state} > .default.text {
+    color: @c;
   }
   & when (@variationDropdownSelection) {
-    .ui.selection.dropdown.error {
-      background: @errorBackgroundColor;
-      border-color: @errorBorderColor;
+    .ui.selection.dropdown.@{state} {
+      background: @formStates[@@state][background];
+      border-color: @bdc;
     }
-    .ui.selection.dropdown.error:hover {
-      border-color: @errorBorderColor;
+    .ui.selection.dropdown.@{state}:hover {
+      border-color: @bdc;
     }
     & when (@variationDropdownMultiple) {
-      .ui.multiple.selection.error.dropdown > .label {
-        border-color: @errorBorderColor;
+      .ui.multiple.selection.@{state}.dropdown > .label {
+        border-color: @bdc;
       }
     }
   }
-
-  .ui.dropdown.error > .menu,
-  .ui.dropdown.error > .menu .menu {
-    border-color: @errorBorderColor;
+  .ui.dropdown.@{state} > .menu,
+  .ui.dropdown.@{state} > .menu .menu {
+    border-color: @bdc;
   }
-  .ui.dropdown.error > .menu > .item {
-    color: @errorItemTextColor;
+  .ui.dropdown.@{state} > .menu > .item {
+    color: @c;
   }
 
   /* Item Hover */
-  .ui.dropdown.error > .menu > .item:hover {
-    background-color: @errorItemHoverBackground;
+  .ui.dropdown.@{state} > .menu > .item:hover {
+    background-color: @formStates[@@state][dropdownHoverBackground];
   }
 
   /* Item Active */
-  .ui.dropdown.error > .menu .active.item {
-    background-color: @errorItemActiveBackground;
+  .ui.dropdown.@{state} > .menu .active.item {
+    background-color: @formStates[@@state][dropdownActiveBackground];
   }
-}
+})
 
 & when (@variationDropdownClear) {
-  /*--------------------
-          Clear
-  ----------------------*/
+/*--------------------
+        Clear
+----------------------*/
 
   .ui.dropdown > .clear.dropdown.icon {
     opacity: @clearableIconOpacity;
