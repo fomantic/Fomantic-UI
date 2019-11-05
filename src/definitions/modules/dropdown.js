@@ -2908,7 +2908,7 @@ $.fn.dropdown = function(parameters) {
             else {
               settings.onAdd.call(element, addedValue, addedText, $selectedItem);
             }
-            module.set.value(newValue, addedValue, addedText, $selectedItem);
+            module.set.value(newValue, addedText, $selectedItem);
             module.check.maxSelections();
           },
         },
