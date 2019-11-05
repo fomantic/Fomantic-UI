@@ -987,52 +987,55 @@ select.ui.dropdown {
   display: none !important;
 }
 
-& when (@variationDropdownError) {
-/*--------------------
-        States
-----------------------*/
-each(@formStates, {
-  @state: replace(@key, '@', '');
-  @c: @formStates[@@state][dropdownLabelColor];
-  @bdc: @formStates[@@state][borderColor];
+& when (@variationDropdownStates) {
+  /*--------------------
+          States
+  ----------------------*/
+  each(@formStates, {
+    @state: replace(@key, '@', '');
+    @c: @formStates[@@state][dropdownLabelColor];
+    @bdc: @formStates[@@state][borderColor];
 
-  .ui.dropdown.@{state},
-  .ui.dropdown.@{state} > .text,
-  .ui.dropdown.@{state} > .default.text {
-    color: @c;
-  }
-  & when (@variationDropdownSelection) {
-    .ui.selection.dropdown.@{state} {
-      background: @formStates[@@state][background];
-      border-color: @bdc;
+    .ui.dropdown.@{state},
+    .ui.dropdown.@{state} > .text,
+    .ui.dropdown.@{state} > .default.text {
+      color: @c;
     }
-    .ui.selection.dropdown.@{state}:hover {
-      border-color: @bdc;
-    }
-    & when (@variationDropdownMultiple) {
-      .ui.multiple.selection.@{state}.dropdown > .label {
+    & when (@variationDropdownSelection) {
+      .ui.selection.dropdown.@{state} {
+        background: @formStates[@@state][background];
         border-color: @bdc;
       }
+
+      .ui.selection.dropdown.@{state}:hover {
+        border-color: @bdc;
+      }
+
+      & when (@variationDropdownMultiple) {
+        .ui.multiple.selection.@{state}.dropdown > .label {
+          border-color: @bdc;
+        }
+      }
     }
-  }
-  .ui.dropdown.@{state} > .menu,
-  .ui.dropdown.@{state} > .menu .menu {
-    border-color: @bdc;
-  }
-  .ui.dropdown.@{state} > .menu > .item {
-    color: @c;
-  }
+    .ui.dropdown.@{state} > .menu,
+    .ui.dropdown.@{state} > .menu .menu {
+      border-color: @bdc;
+    }
+    .ui.dropdown.@{state} > .menu > .item {
+      color: @c;
+    }
 
-  /* Item Hover */
-  .ui.dropdown.@{state} > .menu > .item:hover {
-    background-color: @formStates[@@state][dropdownHoverBackground];
-  }
+    /* Item Hover */
+    .ui.dropdown.@{state} > .menu > .item:hover {
+      background-color: @formStates[@@state][dropdownHoverBackground];
+    }
 
-  /* Item Active */
-  .ui.dropdown.@{state} > .menu .active.item {
-    background-color: @formStates[@@state][dropdownActiveBackground];
-  }
-})
+    /* Item Active */
+    .ui.dropdown.@{state} > .menu .active.item {
+      background-color: @formStates[@@state][dropdownActiveBackground];
+    }
+  })
+}
 
 & when (@variationDropdownClear) {
 /*--------------------

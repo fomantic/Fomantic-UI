@@ -197,13 +197,13 @@
     padding: @transparentPadding;
   }
 
-.ui.form .field input.transparent,
-.ui.form .field textarea.transparent {
-  border-color: transparent !important;
-  background-color: transparent !important;
-  box-shadow: none !important;
+  .ui.form .field input.transparent,
+  .ui.form .field textarea.transparent {
+    border-color: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
 }
-
 /*--------------------------
   Input w/ attached Button
 ---------------------------*/
@@ -300,7 +300,7 @@
 /*--------------------
    Types of Messages
 ---------------------*/
-& when (@variationFormSuccess) or (@variationFormWarning) or (@variationFormError) {
+& when (@variationFormStates) {
   each(@formStates, {
     @state: replace(@key, '@', '');
     .ui.form .@{state}.message,
@@ -421,7 +421,7 @@
   -webkit-appearance: none;
 }
 
-& when (@variationFormWarning) {
+& when (@variationFormStates) {
   /*--------------------
           States
   ---------------------*/

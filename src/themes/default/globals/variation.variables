@@ -95,7 +95,7 @@
 /* Input */
 @variationInputDisabled: true;
 @variationInputInverted: true;
-@variationInputError: true;
+@variationInputStates: true;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -224,9 +224,7 @@
 @variationFormDisabled: true;
 @variationFormTransparent: true;
 @variationFormLoading: true;
-@variationFormSuccess: true;
-@variationFormError: true;
-@variationFormWarning: true;
+@variationFormStates: true;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
@@ -406,7 +404,7 @@
 @variationDropdownMultiple: true;
 @variationDropdownInline: true;
 @variationDropdownLoading: true;
-@variationDropdownError: true;
+@variationDropdownStates: true;
 @variationDropdownClear: true;
 @variationDropdownLeft: true;
 @variationDropdownUpward: true;
