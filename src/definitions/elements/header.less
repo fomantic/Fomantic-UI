@@ -147,7 +147,7 @@
   each(@variationHeaderTags, {
     @sf: @{value}SubHeaderFontSize;
     @s: @@value;
-    .@{value}.ui.header {
+    @{value}.ui.header {
       font-size: @s;
     }
     & when (@variationHeaderSub) {
