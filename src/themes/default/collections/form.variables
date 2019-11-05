@@ -103,43 +103,8 @@
 /* Disabled */
 @disabledLabelOpacity: @disabledOpacity;
 
-/* Errored Input */
-@formErrorColor: @negativeTextColor;
-@formErrorBorder: @negativeBorderColor;
-@formErrorBackground: @negativeBackgroundColor;
-@transparentFormErrorColor: @formErrorColor;
-@transparentFormErrorBackground: @formErrorBackground;
+/* Input states */
 @transparentPadding: @inputPadding;
-
-/* AutoFill */
-@inputAutoFillBackground: #FFFFF0;
-@inputAutoFillBorder: #E5DFA1;
-@inputAutoFillFocusBackground: @inputAutoFillBackground;
-@inputAutoFillFocusBorder: #D5C315;
-@inputAutoFillErrorBackground: #FFFAF0;
-@inputAutoFillErrorBorder: #E0B4B4;
-
-
-/* Input Error */
-@inputErrorBorderRadius: '';
-@inputErrorBoxShadow: none;
-
-/* Dropdown Error */
-@dropdownErrorHoverBackground: #FBE7E7;
-@dropdownErrorSelectedBackground: @dropdownErrorHoverBackground;
-@dropdownErrorActiveBackground: #FDCFCF;
-@dropdownErrorLabelBackground: #EACBCB;
-@dropdownErrorLabelColor: @errorTextColor;
-
-/* Focused Error */
-@inputErrorFocusBackground: @negativeBackgroundColor;
-@inputErrorFocusColor: @negativeTextColor;
-@inputErrorFocusBorder: @negativeBorderColor;
-@inputErrorFocusBoxShadow: none;
-
-/* Placeholder Error */
-@inputErrorPlaceholderColor: lighten(@formErrorColor, 40);
-@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 30);
 
 /* Loading Dimmer */
 @loaderDimmerColor: rgba(255, 255, 255, 0.8);

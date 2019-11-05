@@ -213,6 +213,8 @@ ol.ui.list ol li,
 }
 
 /* Linked Item Icons */
+.ui.list .list > a.item > i.icons,
+.ui.list > a.item > i.icons,
 .ui.list .list > a.item > i.icon,
 .ui.list > a.item > i.icon {
   color: @itemLinkIconColor;
@@ -322,7 +324,8 @@ ol.ui.list ol li,
 }
 
 /* Horizontal List */
-.ui.horizontal.list > .item > i.icon {
+.ui.horizontal.list > .item > i.icon,
+.ui.horizontal.list .item > i.icons > i.icon {
   margin: 0;
   padding: 0 @horizontalIconDistance 0 0;
 }
@@ -359,6 +362,8 @@ ol.ui.list ol li,
         Hover
 --------------------*/
 
+.ui.list .list > a.item:hover > .icons,
+.ui.list > a.item:hover > .icons,
 .ui.list .list > a.item:hover > .icon,
 .ui.list > a.item:hover > .icon {
   color: @itemLinkIconHoverColor;
