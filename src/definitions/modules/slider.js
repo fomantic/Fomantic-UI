@@ -643,22 +643,23 @@ $.fn.slider = function(parameters) {
             if( settings.autoAdjustLabels ) {
               var 
                 numLabels = module.get.numLabels(),
+                trackLength = module.get.trackLength(),
                 gapCounter = 1
               ;
 
               // While the distance between two labels is too short,
               // we divide the number of labels at each iteration
               // and apply only if the modulo of the operation is an odd number.
-              while ((module.get.trackLength() / numLabels) * gapCounter < settings.labelDistance) {
-                if( !(numLabels % gapCounter) ) {
-                  gapRatio = gapCounter;
+              if(trackLength>0){
+                while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
+                  if( !(numLabels % gapCounter) ) {
+                    gapRatio = gapCounter;
+                  }
+                  gapCounter += 1;
                 }
-                gapCounter += 1;
               }
-              return gapRatio;
-            } else {
-              return 1;
             }
+            return gapRatio;
           }
         },
 
