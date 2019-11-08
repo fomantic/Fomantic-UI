@@ -67,6 +67,13 @@
   & .toast-box {
     margin-bottom: @toastBoxMarginBottom;
     border-radius: @defaultBorderRadius;
+    cursor: default;
+    &:hover {
+      opacity: @toastOpacityOnHover;
+    }
+    &:not(.unclickable):hover {
+      cursor: @toastCursorOnHover;
+    }
     &.floating,
     &.hoverfloating:hover {
       box-shadow: @floatingShadow;
@@ -484,12 +491,6 @@
 
 .ui.center.toast-container .toast-box {
     margin-right: auto;
-}
-
-.ui.toast-container .ui.message,
-.ui.toast:hover {
-  opacity: @toastOpacityOnHover;
-  cursor: @toastCursorOnHover;
 }
 
 /*--------------

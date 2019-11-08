@@ -83,8 +83,11 @@ $.fn.toast = function(parameters) {
               settings.showProgress = false;
             }
             module.create.toast();
-            if(settings.closeOnClick && !settings.closeIcon && ($($toast).find(selector.input).length > 0 || module.has.configActions())){
+            if(settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
               settings.closeOnClick = false;
+            }
+            if(!settings.closeOnClick) {
+              $toastBox.addClass(className.unclickable);
             }
             module.bind.events();
           }
@@ -181,7 +184,6 @@ $.fn.toast = function(parameters) {
                 } else {
                   $toast.append($close);
                 }
-                $toast.css('cursor', 'default');
               }
             } else {
               $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
@@ -809,7 +811,8 @@ $.fn.toast.settings = {
     top          : 'top',
     bottom       : 'bottom',
     left         : 'left',
-    basic        : 'basic'
+    basic        : 'basic',
+    unclickable  : 'unclickable'
   },
 
   icons          : {
