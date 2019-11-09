@@ -484,7 +484,7 @@ $.fn.dropdown = function(parameters) {
           }
         },
 
-        show: function(callback) {
+        show: function(callback, preventFocus) {
           callback = $.isFunction(callback)
             ? callback
             : function(){}
@@ -506,7 +506,7 @@ $.fn.dropdown = function(parameters) {
                 if( module.can.click() ) {
                   module.bind.intent();
                 }
-                if(module.has.search()) {
+                if(module.has.search() && !preventFocus) {
                   module.focusSearch();
                 }
                 module.set.visible();
@@ -1078,6 +1078,8 @@ $.fn.dropdown = function(parameters) {
                 if(!itemActivated && !pageLostFocus) {
                   if(settings.forceSelection) {
                     module.forceSelection();
+                  } else if(!settings.allowAdditions){
+                    module.remove.searchTerm();
                   }
                   module.hide();
                 }
@@ -2908,7 +2910,7 @@ $.fn.dropdown = function(parameters) {
             else {
               settings.onAdd.call(element, addedValue, addedText, $selectedItem);
             }
-            module.set.value(newValue, addedValue, addedText, $selectedItem);
+            module.set.value(newValue, addedText, $selectedItem);
             module.check.maxSelections();
           },
         },
