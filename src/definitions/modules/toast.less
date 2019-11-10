@@ -436,6 +436,10 @@
         padding-left: @toastTinyImageContentPadding;
         min-height: @toastTinyImageHeight;
       }
+      &.small + .content {
+        padding-left: @toastSmallImageContentPadding;
+        min-height: @toastSmallImageHeight;
+      }
     }
     & > .centered.image,
       > .centered.icon {

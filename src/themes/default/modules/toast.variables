@@ -47,10 +47,12 @@
 @toastAvatarImageContentPadding: 3em;
 @toastMiniImageContentPadding: 3.4em;
 @toastTinyImageContentPadding: 7em;
+@toastSmallImageContentPadding: 12em;
 
 @toastAvatarImageHeight: 2em;
 @toastMiniImageHeight: 35px;
 @toastTinyImageHeight: 80px;
+@toastSmallImageHeight: 150px;
 
 @toastIconCenteredAdjustment: 1.2em;
 @toastImageCenteredAdjustment: 2em;
