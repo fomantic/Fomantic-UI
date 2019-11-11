@@ -5,7 +5,7 @@
 /*--------------
     Path
 ---------------*/
-@emojiPath: "https://twemoji.maxcdn.com/v/latest/72x72/";
+@emojiPath: "https://cdn.jsdelivr.net/joypixels/assets/5.0/png/unicode/128/";
 @emojiFileType: "png";
 
 /*--------------
