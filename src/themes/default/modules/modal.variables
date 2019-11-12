@@ -124,7 +124,7 @@
 @mobileBottomAlignedMargin: @mobileTopAlignedMargin;
 
 /* Scrolling Margin */
-@scrollingMargin: 1rem;
+@scrollingMargin: 2rem;
 @mobileScrollingMargin: @mobileTopAlignedMargin;
 
 /* Scrolling Content */
