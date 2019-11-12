@@ -317,11 +317,11 @@ $.fn.slider = function(parameters) {
         },
 
         event: {
-          down: function(event, originalEvent) {
+          down: function(event) {
             event.preventDefault();
             if(module.is.range()) {
               var
-                eventPos = module.determine.eventPos(event, originalEvent),
+                eventPos = module.determine.eventPos(event),
                 newPos = module.determine.pos(eventPos)
               ;
               // Special handling if range mode and both thumbs have the same value
@@ -336,12 +336,12 @@ $.fn.slider = function(parameters) {
               module.bind.slidingEvents();
             }
           },
-          move: function(event, originalEvent) {
+          move: function(event) {
             event.preventDefault();
-            var value = module.determine.valueFromEvent(event, originalEvent);
+            var value = module.determine.valueFromEvent(event);
             if($currThumb === undefined) {
               var
-                eventPos = module.determine.eventPos(event, originalEvent),
+                eventPos = module.determine.eventPos(event),
                 newPos = module.determine.pos(eventPos)
               ;
               $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
@@ -350,7 +350,7 @@ $.fn.slider = function(parameters) {
               var
                 thumbVal = module.thumbVal,
                 secondThumbVal = module.secondThumbVal,
-                thumbSmoothVal = module.determine.smoothValueFromEvent(event, originalEvent)
+                thumbSmoothVal = module.determine.smoothValueFromEvent(event)
               ;
               if(!$currThumb.hasClass('second')) {
                 if(settings.preventCrossover) {
@@ -374,9 +374,9 @@ $.fn.slider = function(parameters) {
               });
             }
           },
-          up: function(event, originalEvent) {
+          up: function(event) {
             event.preventDefault();
-            var value = module.determine.valueFromEvent(event, originalEvent);
+            var value = module.determine.valueFromEvent(event);
             module.set.value(value);
             module.unbind.slidingEvents();
           },
@@ -643,22 +643,23 @@ $.fn.slider = function(parameters) {
             if( settings.autoAdjustLabels ) {
               var 
                 numLabels = module.get.numLabels(),
+                trackLength = module.get.trackLength(),
                 gapCounter = 1
               ;
 
               // While the distance between two labels is too short,
               // we divide the number of labels at each iteration
               // and apply only if the modulo of the operation is an odd number.
-              while ((module.get.trackLength() / numLabels) * gapCounter < settings.labelDistance) {
-                if( !(numLabels % gapCounter) ) {
-                  gapRatio = gapCounter;
+              if(trackLength>0){
+                while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
+                  if( !(numLabels % gapCounter) ) {
+                    gapRatio = gapCounter;
+                  }
+                  gapCounter += 1;
                 }
-                gapCounter += 1;
               }
-              return gapRatio;
-            } else {
-              return 1;
             }
+            return gapRatio;
           }
         },
 
@@ -723,9 +724,9 @@ $.fn.slider = function(parameters) {
             ;
             return adjustedPos;
           },
-          valueFromEvent: function(event, originalEvent) {
+          valueFromEvent: function(event) {
             var
-              eventPos = module.determine.eventPos(event, originalEvent),
+              eventPos = module.determine.eventPos(event),
               newPos = module.determine.pos(eventPos),
               value
             ;
@@ -738,12 +739,12 @@ $.fn.slider = function(parameters) {
             }
             return value;
           },
-          smoothValueFromEvent: function(event, originalEvent) {
+          smoothValueFromEvent: function(event) {
             var
               min = module.get.min(),
               max = module.get.max(),
               trackLength = module.get.trackLength(),
-              eventPos = module.determine.eventPos(event, originalEvent),
+              eventPos = module.determine.eventPos(event),
               newPos = eventPos - module.get.trackOffset(),
               ratio,
               value
@@ -756,17 +757,19 @@ $.fn.slider = function(parameters) {
             value = ratio * (max - min) + min;
             return value;
           },
-          eventPos: function(event, originalEvent) {
+          eventPos: function(event) {
             if(module.is.touch()) {
               var
-                touchY = event.changedTouches[0].pageY || event.touches[0].pageY,
-                touchX = event.changedTouches[0].pageX || event.touches[0].pageX
+                touchEvent = event.changedTouches ? event : event.originalEvent,
+                touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
+                touchY = touches[0].pageY,
+                touchX = touches[0].pageX
               ;
               return module.is.vertical() ? touchY : touchX;
             }
             var
-              clickY = event.pageY || originalEvent.pageY,
-              clickX = event.pageX || originalEvent.pageX
+              clickY = event.pageY || event.originalEvent.pageY,
+              clickX = event.pageX || event.originalEvent.pageX
             ;
             return module.is.vertical() ? clickY : clickX;
           },
