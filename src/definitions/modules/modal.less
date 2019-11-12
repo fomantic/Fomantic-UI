@@ -364,18 +364,18 @@
    Aligned
 ---------------*/
 
-.ui.top.aligned.modal {
+.modals.dimmer .ui.top.aligned.modal {
   top: @topAlignedMargin;
 }
-.ui.bottom.aligned.modal {
+.modals.dimmer .ui.bottom.aligned.modal {
   bottom: @bottomAlignedMargin;
 }
 
 @media only screen and (max-width : @largestMobileScreen) {
-  .ui.top.aligned.modal {
+  .modals.dimmer .ui.top.aligned.modal {
     top: @mobileTopAlignedMargin;
   }
-  .ui.bottom.aligned.modal {
+  .modals.dimmer .ui.bottom.aligned.modal {
     bottom: @mobileBottomAlignedMargin;
   }
 }
@@ -400,7 +400,12 @@
 .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
   margin: @scrollingMargin auto;
 }
-
+/* Fix for Firefox, Edge, IE11 */
+.modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
+  content:'\00A0';
+  position: absolute;
+  height: @scrollingMargin;
+}
 /* Undetached Scrolling */
 .scrolling.undetached.dimmable.dimmed {
   overflow: auto;
@@ -412,7 +417,6 @@
 .scrolling.undetached.dimmable .ui.scrolling.modal:not(.fullscreen) {
   position: absolute;
   left: 50%;
-  margin-top: @scrollingMargin !important;
 }
 
 /* Scrolling Content */

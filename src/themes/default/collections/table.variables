@@ -70,10 +70,10 @@
 @responsiveHeaderDisplay: block;
 @responsiveFooterDisplay: block;
 @responsiveRowVerticalPadding: 1em;
-@responsiveRowBoxShadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset !important;
+@responsiveRowBoxShadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset;
 @responsiveCellVerticalPadding: 0.25em;
 @responsiveCellHorizontalPadding: 0.75em;
-@responsiveCellBoxShadow: none !important;
+@responsiveCellBoxShadow: none;
 @responsiveCellHeaderFontWeight: @bold;
 
 /*-------------------
