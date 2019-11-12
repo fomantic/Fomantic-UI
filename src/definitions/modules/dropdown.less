@@ -84,7 +84,7 @@
  Dropdown Icon
 ---------------*/
 
-.ui.dropdown > .dropdown.icon.icon {
+.ui.dropdown:not(.labeled) > .dropdown.icon {
   position: relative;
   width: auto;
   font-size: @dropdownIconSize;
@@ -956,44 +956,48 @@ select.ui.dropdown {
 
 
 /*--------------------
-        Error
+        States
 ----------------------*/
+each(@formStates, {
+  @state: replace(@key, '@', '');
+  @c: @formStates[@@state][dropdownLabelColor];
+  @bdc: @formStates[@@state][borderColor];
 
-.ui.dropdown.error,
-.ui.dropdown.error > .text,
-.ui.dropdown.error > .default.text {
-  color: @errorTextColor;
-}
+  .ui.dropdown.@{state},
+  .ui.dropdown.@{state} > .text,
+  .ui.dropdown.@{state} > .default.text {
+    color: @c;
+  }
 
-.ui.selection.dropdown.error {
-  background: @errorBackgroundColor;
-  border-color: @errorBorderColor;
-}
-.ui.selection.dropdown.error:hover {
-  border-color: @errorBorderColor;
-}
+  .ui.selection.dropdown.@{state} {
+    background: @formStates[@@state][background];
+    border-color: @bdc;
+  }
+  .ui.selection.dropdown.@{state}:hover {
+    border-color: @bdc;
+  }
 
-.ui.dropdown.error > .menu,
-.ui.dropdown.error > .menu .menu {
-  border-color: @errorBorderColor;
-}
-.ui.dropdown.error > .menu > .item {
-  color: @errorItemTextColor;
-}
-.ui.multiple.selection.error.dropdown > .label {
-  border-color: @errorBorderColor;
-}
+  .ui.dropdown.@{state} > .menu,
+  .ui.dropdown.@{state} > .menu .menu {
+    border-color: @bdc;
+  }
+  .ui.dropdown.@{state} > .menu > .item {
+    color: @c;
+  }
+  .ui.multiple.selection.@{state}.dropdown > .label {
+    border-color: @bdc;
+  }
 
-/* Item Hover */
-.ui.dropdown.error > .menu > .item:hover {
-  background-color: @errorItemHoverBackground;
-}
+  /* Item Hover */
+  .ui.dropdown.@{state} > .menu > .item:hover {
+    background-color: @formStates[@@state][dropdownHoverBackground];
+  }
 
-/* Item Active */
-.ui.dropdown.error > .menu .active.item {
-  background-color: @errorItemActiveBackground;
-}
-
+  /* Item Active */
+  .ui.dropdown.@{state} > .menu .active.item {
+    background-color: @formStates[@@state][dropdownActiveBackground];
+  }
+})
 
 /*--------------------
         Clear

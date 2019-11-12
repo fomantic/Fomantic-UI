@@ -166,37 +166,40 @@
 
 
 /*--------------------
-        Error
+        States
 ---------------------*/
+each(@formStates, {
+  @state: replace(@key, '@', '');
 
-.ui.input.error > input {
-  background-color: @errorBackground;
-  border-color: @errorBorder;
-  color: @errorColor;
-  box-shadow: @errorBoxShadow;
-}
+  .ui.input.@{state} > input {
+    background-color: @formStates[@@state][background];
+    border-color: @formStates[@@state][borderColor];
+    color: @formStates[@@state][color];
+    box-shadow: @formStates[@@state][boxShadow];
+  }
 
-/* Error Placeholder */
-.ui.input.error > input::-webkit-input-placeholder {
-  color: @placeholderErrorColor;
-}
-.ui.input.error > input::-moz-placeholder {
-  color: @placeholderErrorColor;
-}
-.ui.input.error > input:-ms-input-placeholder {
-  color: @placeholderErrorColor !important;
-}
+  /* Placeholder */
+  .ui.input.@{state} > input::-webkit-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor];
+  }
+  .ui.input.@{state} > input::-moz-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor];
+  }
+  .ui.input.@{state} > input:-ms-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderColor] !important;
+  }
 
-/* Focused Error Placeholder */
-.ui.input.error > input:focus::-webkit-input-placeholder {
-  color: @placeholderErrorFocusColor;
-}
-.ui.input.error > input:focus::-moz-placeholder {
-  color: @placeholderErrorFocusColor;
-}
-.ui.input.error > input:focus:-ms-input-placeholder {
-  color: @placeholderErrorFocusColor !important;
-}
+  /* Focused Placeholder */
+  .ui.input.@{state} > input:focus::-webkit-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor];
+  }
+  .ui.input.@{state} > input:focus::-moz-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor];
+  }
+  .ui.input.@{state} > input:focus:-ms-input-placeholder {
+    color: @formStates[@@state][inputPlaceholderFocusColor] !important;
+  }
+})
 
 /*******************************
            Variations
@@ -223,11 +226,11 @@
 :not(.field) > .ui.transparent.icon.input > i.icon {
   width: @transparentIconWidth;
 }
-:not(.field) > .ui.transparent.icon.input > input {
+:not(.field) > .ui.ui.ui.transparent.icon.input > input {
   padding-left: 0;
   padding-right: @transparentIconMargin;
 }
-:not(.field) > .ui.transparent[class*="left icon"].input > input {
+:not(.field) > .ui.ui.ui.transparent[class*="left icon"].input > input {
   padding-left: @transparentIconMargin;
   padding-right: 0;
 }
@@ -274,8 +277,8 @@
 .ui.icon.input > i.icon:not(.link) {
   pointer-events: none;
 }
-.ui.ui.icon.input > textarea,
-.ui.ui.icon.input > input {
+.ui.ui.ui.ui.icon.input > textarea,
+.ui.ui.ui.ui.icon.input > input {
   padding-right: @iconMargin;
 }
 
@@ -306,8 +309,8 @@
   right: auto;
   left: @circularIconHorizontalOffset;
 }
-.ui.ui[class*="left icon"].input > textarea,
-.ui.ui[class*="left icon"].input > input {
+.ui.ui.ui.ui[class*="left icon"].input > textarea,
+.ui.ui.ui.ui[class*="left icon"].input > input {
   padding-left: @iconMargin;
   padding-right: @horizontalPadding;
 }
@@ -412,31 +415,35 @@
   left: @borderWidth;
 }
 
-/* Labeled and action input error */
-.ui.form > .field.error > .ui.action.input > .ui.button,
-.ui.form > .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
-.ui.action.input.error > .ui.button,
-.ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
-  border-top: @borderWidth solid @errorBorder;
-  border-bottom: @borderWidth solid @errorBorder;
-}
-.ui.form > .field.error > .ui.left.action.input > .ui.button,
-.ui.form > .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
-.ui.left.action.input.error > .ui.button,
-.ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: @borderWidth solid @errorBorder;
-}
-.ui.form > .field.error > .ui.action.input:not(.left) > input + .ui.button,
-.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
-.ui.action.input.error:not(.left) > input + .ui.button,
-.ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: @borderWidth solid @errorBorder;
-}
-.ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
-.ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: @borderWidth solid @errorBorder;
-}
+/* Labeled and action input states */
+each(@formStates, {
+  @state: replace(@key, '@', '');
+  @borderColor: @formStates[@@state][color];
 
+  .ui.form > .field.@{state} > .ui.action.input > .ui.button,
+  .ui.form > .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
+  .ui.action.input.@{state} > .ui.button,
+  .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
+    border-top: @borderWidth solid @borderColor;
+    border-bottom: @borderWidth solid @borderColor;
+  }
+  .ui.form > .field.@{state} > .ui.left.action.input > .ui.button,
+  .ui.form > .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
+  .ui.left.action.input.@{state} > .ui.button,
+  .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
+    border-left: @borderWidth solid @borderColor;
+  }
+  .ui.form > .field.@{state} > .ui.action.input:not(.left) > input + .ui.button,
+  .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
+  .ui.action.input.@{state}:not(.left) > input + .ui.button,
+  .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
+    border-right: @borderWidth solid @borderColor;
+  }
+  .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
+  .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
+    border-left: @borderWidth solid @borderColor;
+  }
+})
 
 /*--------------------
         Action
@@ -455,47 +462,44 @@
   margin: 0;
 }
 
-/* Button on Right */
-.ui.action.input:not([class*="left action"]) > input {
-  border-top-right-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  border-right-color: transparent !important;
+/* Input when ui Left*/
+.ui[class*="left action"].input > input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: transparent;
 }
-.ui.action.input:not([class*="left action"]) > .dropdown:not(:first-child),
-.ui.action.input:not([class*="left action"]) > .button:not(:first-child),
-.ui.action.input:not([class*="left action"]) > .buttons:not(:first-child) > .button {
+
+/* Input when ui Right*/
+.ui.action.input:not([class*="left action"]) > input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: transparent;
+}
+
+/* Button and Dropdown */
+.ui.action.input > .dropdown:first-child,
+.ui.action.input > .button:first-child,
+.ui.action.input > .buttons:first-child > .button {
+  border-radius: @borderRadius 0 0 @borderRadius;
+}
+.ui.action.input > .dropdown:not(:first-child),
+.ui.action.input > .button:not(:first-child),
+.ui.action.input > .buttons:not(:first-child) > .button {
   border-radius: 0;
 }
-.ui.action.input:not([class*="left action"]) > .dropdown:last-child,
-.ui.action.input:not([class*="left action"]) > .button:last-child,
-.ui.action.input:not([class*="left action"]) > .buttons:last-child > .button {
+.ui.action.input > .dropdown:last-child,
+.ui.action.input > .button:last-child,
+.ui.action.input > .buttons:last-child > .button {
   border-radius: 0 @borderRadius @borderRadius 0;
 }
 
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: @focusBorderColor !important;
+  border-right-color: @focusBorderColor;
 }
 
-/* Button on Left */
-.ui[class*="left action"].input > input {
-  border-top-left-radius: 0 !important;
-  border-bottom-left-radius: 0 !important;
-  border-left-color: transparent !important;
-}
-.ui[class*="left action"].input > .dropdown,
-.ui[class*="left action"].input > .button,
-.ui[class*="left action"].input > .buttons > .button {
-  border-radius: 0;
-}
-.ui[class*="left action"].input > .dropdown:first-child,
-.ui[class*="left action"].input > .button:first-child,
-.ui[class*="left action"].input > .buttons:first-child > .button {
-  border-radius: @borderRadius 0 0 @borderRadius;
-}
-/* Input Focus */
-.ui[class*="left action"].input > input:focus {
-  border-left-color: @focusBorderColor !important;
+.ui.ui[class*="left action"].input > input:focus {
+  border-left-color: @focusBorderColor;
 }
 
 /*--------------------
