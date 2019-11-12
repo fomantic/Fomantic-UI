@@ -110,9 +110,13 @@
   right: 0;
 }
 
-.ui.reversed.slider .inner .thumb {
+.ui.reversed.slider:not(.vertical) .inner .thumb {
   left: auto;
   right: 0;
+}
+
+.ui.reversed.vertical.slider .inner .thumb {
+  left: @thumbVerticalSliderOffset;
 }
 
 .ui.labeled.reversed.slider > .labels .label {
