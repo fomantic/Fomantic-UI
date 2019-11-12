@@ -151,10 +151,12 @@ $.fn.progress = function(parameters) {
           module.update.progress(0);
         },
 
-        complete: function() {
+        complete: function(keepState) {
           if(module.percent === undefined || module.percent < 100) {
             module.remove.progressPoll();
-            module.set.percent(100);
+            if(keepState !== true){
+                module.set.percent(100);
+            }
           }
         },
 
@@ -468,7 +470,7 @@ $.fn.progress = function(parameters) {
                   width: value + '%'
                 });
               }
-              return parseInt(value, 10);
+              return parseFloat(value);
             });
             values.forEach(function(_, index) {
               var $bar = $($bars[index]);
@@ -523,15 +525,15 @@ $.fn.progress = function(parameters) {
                   : undefined;
 
               // round display percentage
-              percents = percents.map(function (percent) {
+              var roundedPercents = percents.map(function (percent) {
                 return (autoPrecision > 0)
                   ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                   : Math.round(percent)
                   ;
               });
-              module.percent = percents;
+              module.percent = roundedPercents;
               if (!hasTotal) {
-                module.value = percents.map(function (percent) {
+                module.value = roundedPercents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                     : Math.round((percent / 100) * module.total * 10) / 10
@@ -647,14 +649,14 @@ $.fn.progress = function(parameters) {
               settings.onActive.call(element, module.value, module.total);
             });
           },
-          success : function(text) {
+          success : function(text, keepState) {
             text = text || settings.text.success || settings.text.active;
             module.debug('Setting success state');
             $module.addClass(className.success);
             module.remove.active();
             module.remove.warning();
             module.remove.error();
-            module.complete();
+            module.complete(keepState);
             if(settings.text.success) {
               text = settings.onLabelUpdate('success', text, module.value, module.total);
               module.set.label(text);
@@ -667,14 +669,14 @@ $.fn.progress = function(parameters) {
               settings.onSuccess.call(element, module.total);
             });
           },
-          warning : function(text) {
+          warning : function(text, keepState) {
             text = text || settings.text.warning;
             module.debug('Setting warning state');
             $module.addClass(className.warning);
             module.remove.active();
             module.remove.success();
             module.remove.error();
-            module.complete();
+            module.complete(keepState);
             text = settings.onLabelUpdate('warning', text, module.value, module.total);
             if(text) {
               module.set.label(text);
@@ -683,14 +685,14 @@ $.fn.progress = function(parameters) {
               settings.onWarning.call(element, module.value, module.total);
             });
           },
-          error : function(text) {
+          error : function(text, keepState) {
             text = text || settings.text.error;
             module.debug('Setting error state');
             $module.addClass(className.error);
             module.remove.active();
             module.remove.success();
             module.remove.warning();
-            module.complete();
+            module.complete(keepState);
             text = settings.onLabelUpdate('error', text, module.value, module.total);
             if(text) {
               module.set.label(text);

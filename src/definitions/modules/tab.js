@@ -100,6 +100,11 @@ $.fn.tab = function(parameters) {
             initializedHistory = true;
           }
 
+          if(instance === undefined && module.determine.activeTab() == null) {
+            module.debug('No active tab detected, setting first tab active', module.get.initialPath());
+            module.changeTab(module.get.initialPath());
+          };
+
           module.instantiate();
         },
 
@@ -676,6 +681,29 @@ $.fn.tab = function(parameters) {
           },
           tab: function() {
             return activeTabPath;
+          }
+        },
+
+        determine: {
+          activeTab: function() {
+            var activeTab = null;
+
+            $tabs.each(function(_index, tab) {
+              var $tab = $(tab);
+
+              if( $tab.hasClass(className.active) ) {
+                var
+                  tabPath = $(this).data(metadata.tab),
+                  $anchor = $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]')
+                ;
+
+                if( $anchor.hasClass(className.active) ) {
+                  activeTab = tabPath;
+                }
+              }
+            });
+
+            return activeTab;
           }
         },
 
