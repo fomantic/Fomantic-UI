@@ -1,7 +1,7 @@
 ---
 name: 🐛 Bug Report
 about: When something isn't working correctly
-
+labels: ":mag_right: needs investigating"
 ---
 
 # Bug Report
