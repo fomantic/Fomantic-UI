@@ -40,6 +40,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://github.com/egoisticalgoat"><img src="https://avatars3.githubusercontent.com/u/18332886?v=4" width="60px;" alt="Pascal"/><br /><sub><b>Pascal</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=egoisticalgoat" title="Documentation">📖</a></td>
     <td align="center"><a href="https://alexviscreanu.com"><img src="https://avatars2.githubusercontent.com/u/8055505?v=4" width="60px;" alt="Alex Viscreanu"/><br /><sub><b>Alex Viscreanu</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=aexvir" title="Code">💻</a></td>
     <td align="center"><a href="https://shui91.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/11592023?v=4" width="60px;" alt="Sherman Hui"/><br /><sub><b>Sherman Hui</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=shui91" title="Code">💻</a></td>
+    <td align="center"><a href="http://rshalman.github.io"><img src="https://avatars2.githubusercontent.com/u/28634001?v=4" width="60px;" alt="Roman Shalman"/><br /><sub><b>Roman Shalman</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=RShalman" title="Code">💻</a></td>
   </tr>
 </table>
 

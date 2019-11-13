@@ -252,6 +252,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "login": "aexvir",
       "name": "Alex Viscreanu",
       "avatar_url": "https://avatars2.githubusercontent.com/u/8055505?v=4",
@@ -264,6 +265,14 @@
       "name": "Sherman Hui",
       "avatar_url": "https://avatars2.githubusercontent.com/u/11592023?v=4",
       "profile": "https://shui91.github.io/portfolio",
+      "contributions": [
+        "code"
+      ]
+    },
+      "login": "RShalman",
+      "name": "Roman Shalman",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/28634001?v=4",
+      "profile": "http://rshalman.github.io",
       "contributions": [
         "code"
       ]
