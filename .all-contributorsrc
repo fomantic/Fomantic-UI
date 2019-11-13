@@ -250,6 +250,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "zombietfk",
+      "name": "ZombieTFK",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6123140?v=4",
+      "profile": "https://github.com/zombietfk",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
