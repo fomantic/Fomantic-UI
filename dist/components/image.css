@@ -61,8 +61,8 @@ img.ui.image {
 
 
 /*--------------
-     Inline
----------------*/
+       Inline
+  ---------------*/
 
 .ui.inline.image,
 .ui.inline.image svg,
@@ -71,8 +71,8 @@ img.ui.image {
 }
 
 /*------------------
-  Vertical Aligned
--------------------*/
+    Vertical Aligned
+  -------------------*/
 
 .ui.top.aligned.images .image,
 .ui.top.aligned.image,
@@ -97,8 +97,8 @@ img.ui.image {
 }
 
 /*--------------
-     Rounded
----------------*/
+       Rounded
+  ---------------*/
 
 .ui.rounded.images .image,
 .ui.rounded.image,
@@ -108,8 +108,8 @@ img.ui.image {
 }
 
 /*--------------
-    Bordered
----------------*/
+      Bordered
+  ---------------*/
 
 .ui.bordered.images .image,
 .ui.bordered.images img,
@@ -121,8 +121,8 @@ img.ui.bordered.image {
 }
 
 /*--------------
-    Circular
----------------*/
+      Circular
+  ---------------*/
 
 .ui.circular.images,
 .ui.circular.image {
@@ -136,8 +136,8 @@ img.ui.bordered.image {
 }
 
 /*--------------
-     Fluid
----------------*/
+       Fluid
+  ---------------*/
 
 .ui.fluid.images,
 .ui.fluid.image,
@@ -151,8 +151,8 @@ img.ui.bordered.image {
 }
 
 /*--------------
-     Avatar
----------------*/
+       Avatar
+  ---------------*/
 
 .ui.avatar.images .image,
 .ui.avatar.images img,
@@ -168,8 +168,8 @@ img.ui.bordered.image {
 }
 
 /*-------------------
-       Spaced
---------------------*/
+         Spaced
+  --------------------*/
 
 .ui.spaced.image {
   display: inline-block !important;
@@ -186,8 +186,8 @@ img.ui.bordered.image {
 }
 
 /*-------------------
-       Floated
---------------------*/
+         Floated
+  --------------------*/
 
 .ui.floated.image,
 .ui.floated.images {
@@ -216,6 +216,14 @@ img.ui.bordered.image {
      Sizes
 ---------------*/
 
+.ui.medium.images .image,
+.ui.medium.images img,
+.ui.medium.images svg,
+.ui.medium.image {
+  width: 300px;
+  height: auto;
+  font-size: 1rem;
+}
 .ui.mini.images .image,
 .ui.mini.images img,
 .ui.mini.images svg,
@@ -239,14 +247,6 @@ img.ui.bordered.image {
   width: 150px;
   height: auto;
   font-size: 0.92857143rem;
-}
-.ui.medium.images .image,
-.ui.medium.images img,
-.ui.medium.images svg,
-.ui.medium.image {
-  width: 300px;
-  height: auto;
-  font-size: 1rem;
 }
 .ui.large.images .image,
 .ui.large.images img,
@@ -283,8 +283,8 @@ img.ui.bordered.image {
 
 
 /*******************************
-              Groups
-*******************************/
+                Groups
+  *******************************/
 
 .ui.images {
   font-size: 0;

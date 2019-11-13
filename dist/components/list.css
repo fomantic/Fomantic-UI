@@ -201,6 +201,8 @@ ol.ui.list ol li,
 }
 
 /* Linked Item Icons */
+.ui.list .list > a.item > i.icons,
+.ui.list > a.item > i.icons,
 .ui.list .list > a.item > i.icon,
 .ui.list > a.item > i.icon {
   color: rgba(0, 0, 0, 0.4);
@@ -271,8 +273,8 @@ ol.ui.list ol li,
 
 
 /*-------------------
-      Horizontal
---------------------*/
+        Horizontal
+  --------------------*/
 
 .ui.horizontal.list {
   display: inline-block;
@@ -308,7 +310,8 @@ ol.ui.list ol li,
 }
 
 /* Horizontal List */
-.ui.horizontal.list > .item > i.icon {
+.ui.horizontal.list > .item > i.icon,
+.ui.horizontal.list .item > i.icons > i.icon {
   margin: 0;
   padding: 0 0.25em 0 0;
 }
@@ -330,8 +333,8 @@ ol.ui.list ol li,
 
 
 /*-------------------
-       Disabled
---------------------*/
+         Disabled
+  --------------------*/
 
 .ui.list .list > .disabled.item,
 .ui.list > .disabled.item {
@@ -347,6 +350,8 @@ ol.ui.list ol li,
         Hover
 --------------------*/
 
+.ui.list .list > a.item:hover > .icons,
+.ui.list > a.item:hover > .icons,
 .ui.list .list > a.item:hover > .icon,
 .ui.list > a.item:hover > .icon {
   color: rgba(0, 0, 0, 0.87);
@@ -359,8 +364,8 @@ ol.ui.list ol li,
 
 
 /*-------------------
-       Inverted
---------------------*/
+         Inverted
+  --------------------*/
 
 .ui.inverted.list .list > a.item > .icon,
 .ui.inverted.list > a.item > .icon {
@@ -399,8 +404,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-       Aligned
---------------------*/
+         Aligned
+  --------------------*/
 
 .ui.list[class*="top aligned"] .image,
 .ui.list[class*="top aligned"] .content,
@@ -419,8 +424,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-       Link
---------------------*/
+         Link
+  --------------------*/
 
 .ui.link.list .item,
 .ui.link.list a.item,
@@ -462,8 +467,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-      Selection
---------------------*/
+        Selection
+  --------------------*/
 
 .ui.selection.list .list > .item,
 .ui.selection.list > .item {
@@ -523,8 +528,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-       Animated
---------------------*/
+         Animated
+  --------------------*/
 
 .ui.animated.list > .item {
   -webkit-transition: 0.25s color ease 0.1s, 0.25s padding-left ease 0.1s, 0.25s background-color ease 0.1s;
@@ -535,8 +540,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-       Fitted
---------------------*/
+         Fitted
+  --------------------*/
 
 .ui.fitted.list:not(.selection) .list > .item,
 .ui.fitted.list:not(.selection) > .item {
@@ -550,8 +555,8 @@ ol.ui.list ol li,
 }
 
 /*-------------------
-      Bulleted
---------------------*/
+        Bulleted
+  --------------------*/
 
 ul.ui.list,
 .ui.bulleted.list {
@@ -575,7 +580,7 @@ ul.ui.list li:before,
   left: auto;
   font-weight: normal;
   margin-left: -1.25rem;
-  content: '•';
+  content: '\2022';
   opacity: 1;
   color: inherit;
   vertical-align: top;
@@ -613,8 +618,8 @@ ul.ui.horizontal.bulleted.list li:first-child::before,
 }
 
 /*-------------------
-       Ordered
---------------------*/
+         Ordered
+  --------------------*/
 
 ol.ui.list,
 .ui.ordered.list,
@@ -694,8 +699,8 @@ ol.ui.suffixed.list li:before,
 }
 
 /*-------------------
-       Divided
---------------------*/
+         Divided
+  --------------------*/
 
 .ui.divided.list > .item {
   border-top: 1px solid rgba(34, 36, 38, 0.15);
@@ -778,8 +783,8 @@ ol.ui.suffixed.list li:before,
 }
 
 /*-------------------
-        Celled
---------------------*/
+          Celled
+  --------------------*/
 
 .ui.celled.list > .item,
 .ui.celled.list > .list {
@@ -867,8 +872,8 @@ ol.ui.suffixed.list li:before,
 }
 
 /*-------------------
-       Relaxed
---------------------*/
+         Relaxed
+  --------------------*/
 
 .ui.relaxed.list:not(.horizontal) > .item:not(:first-child) {
   padding-top: 0.42857143em;
@@ -905,57 +910,53 @@ ol.ui.suffixed.list li:before,
       Sizes
 --------------------*/
 
-.ui.mini.list {
-  font-size: 0.78571429em;
-}
-.ui.tiny.list {
-  font-size: 0.85714286em;
-}
-.ui.small.list {
-  font-size: 0.92857143em;
-}
 .ui.list {
   font-size: 1em;
 }
-.ui.large.list {
-  font-size: 1.14285714em;
-}
-.ui.big.list {
-  font-size: 1.28571429em;
-}
-.ui.huge.list {
-  font-size: 1.42857143em;
-}
-.ui.massive.list {
-  font-size: 1.71428571em;
+.ui.mini.list {
+  font-size: 0.78571429em;
 }
 .ui.mini.horizontal.list .list > .item,
 .ui.mini.horizontal.list > .item {
   font-size: 0.78571429rem;
 }
+.ui.tiny.list {
+  font-size: 0.85714286em;
+}
 .ui.tiny.horizontal.list .list > .item,
 .ui.tiny.horizontal.list > .item {
   font-size: 0.85714286rem;
+}
+.ui.small.list {
+  font-size: 0.92857143em;
 }
 .ui.small.horizontal.list .list > .item,
 .ui.small.horizontal.list > .item {
   font-size: 0.92857143rem;
 }
-.ui.horizontal.list .list > .item,
-.ui.horizontal.list > .item {
-  font-size: 1rem;
+.ui.large.list {
+  font-size: 1.14285714em;
 }
 .ui.large.horizontal.list .list > .item,
 .ui.large.horizontal.list > .item {
   font-size: 1.14285714rem;
 }
+.ui.big.list {
+  font-size: 1.28571429em;
+}
 .ui.big.horizontal.list .list > .item,
 .ui.big.horizontal.list > .item {
   font-size: 1.28571429rem;
 }
+.ui.huge.list {
+  font-size: 1.42857143em;
+}
 .ui.huge.horizontal.list .list > .item,
 .ui.huge.horizontal.list > .item {
   font-size: 1.42857143rem;
+}
+.ui.massive.list {
+  font-size: 1.71428571em;
 }
 .ui.massive.horizontal.list .list > .item,
 .ui.massive.horizontal.list > .item {

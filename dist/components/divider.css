@@ -49,8 +49,8 @@
 }
 
 /*--------------
-   Horizontal
----------------*/
+     Horizontal
+  ---------------*/
 
 .ui.horizontal.divider {
   display: table;
@@ -77,8 +77,8 @@
 }
 
 /*--------------
-    Vertical
----------------*/
+      Vertical
+  ---------------*/
 
 .ui.vertical.divider {
   position: absolute;
@@ -155,8 +155,8 @@
 }
 
 /*--------------
-      Icon
----------------*/
+        Icon
+  ---------------*/
 
 .ui.divider > .icon {
   margin: 0;
@@ -166,8 +166,8 @@
 }
 
 /*--------------
-     Header
----------------*/
+       Header
+  ---------------*/
 
 .ui.horizontal.divider[class*="left aligned"]:before {
   display: none;
@@ -189,8 +189,8 @@
 
 
 /*--------------
-    Hidden
----------------*/
+      Hidden
+  ---------------*/
 
 .ui.hidden.divider {
   border-color: transparent !important;
@@ -227,16 +227,16 @@
 }
 
 /*--------------
-    Clearing
----------------*/
+      Clearing
+  ---------------*/
 
 .ui.clearing.divider {
   clear: both;
 }
 
 /*--------------
-    Section
----------------*/
+      Section
+  ---------------*/
 
 .ui.section.divider {
   margin-top: 2rem;
@@ -249,6 +249,27 @@
 
 .ui.divider {
   font-size: 1rem;
+}
+.ui.mini.divider {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.divider {
+  font-size: 0.85714286rem;
+}
+.ui.small.divider {
+  font-size: 0.92857143rem;
+}
+.ui.large.divider {
+  font-size: 1.14285714rem;
+}
+.ui.big.divider {
+  font-size: 1.28571429rem;
+}
+.ui.huge.divider {
+  font-size: 1.42857143rem;
+}
+.ui.massive.divider {
+  font-size: 1.71428571rem;
 }
 
 

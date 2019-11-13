@@ -115,6 +115,7 @@ $.fn.calendar = function(parameters) {
             if (module.get.maxDate() !== null) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
+            module.setting('type', module.get.type());
           },
           popup: function () {
             if (settings.inline) {
@@ -185,17 +186,15 @@ $.fn.calendar = function(parameters) {
             }
           },
           date: function () {
+            var date;
             if (settings.initialDate) {
-              var date = parser.date(settings.initialDate, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date(settings.initialDate, settings);
             } else if ($module.data(metadata.date) !== undefined) {
-              var date = parser.date($module.data(metadata.date), settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($module.data(metadata.date), settings);
             } else if ($input.length) {
-              var val = $input.val();
-              var date = parser.date(val, settings);
-              module.set.date(date, settings.formatInput, false);
+              date = parser.date($input.val(), settings);
             }
+            module.set.date(date, settings.formatInput, false);
           }
         },
 
@@ -416,6 +415,10 @@ $.fn.calendar = function(parameters) {
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
               cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
+
+              if (module.helper.isTodayButton(cell)) {
+                return;
+              }
               cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
@@ -623,6 +626,9 @@ $.fn.calendar = function(parameters) {
               settings.type === 'month' ? 'month' :
                 settings.type === 'year' ? 'year' : 'day';
           },
+          type: function() {
+            return $module.data(metadata.type) || settings.type;
+          },
           validModes: function () {
             var validModes = [];
             if (settings.type !== 'time') {
@@ -674,7 +680,8 @@ $.fn.calendar = function(parameters) {
 
             var mode = module.get.mode();
             var text = formatter.datetime(date, settings);
-            if (fireChange && settings.onChange.call(element, date, text, mode) === false) {
+
+            if (fireChange && settings.onBeforeChange.call(element, date, text, mode) === false) {
               return false;
             }
 
@@ -693,6 +700,10 @@ $.fn.calendar = function(parameters) {
 
             if (updateInput && $input.length) {
               $input.val(text);
+            }
+
+            if (fireChange) {
+              settings.onChange.call(element, date, text, mode);
             }
           },
           startDate: function (date, refreshCalendar) {
@@ -950,6 +961,9 @@ $.fn.calendar = function(parameters) {
           mergeDateTime: function (date, time) {
             return (!date || !time) ? time :
               new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
+          },
+          isTodayButton: function(element) {
+            return element.text() === settings.text.today;
           }
         },
 
@@ -1276,6 +1290,8 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
+      // Reverse date and month in some cases
+      text = settings.monthFirst ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
       if(!isNaN(textDate.getDate())) {
         return textDate;
@@ -1288,8 +1304,11 @@ $.fn.calendar.settings = {
       var isTimeOnly = settings.type === 'time';
       var isDateOnly = settings.type.indexOf('time') < 0;
 
-      var words = text.split(settings.regExp.dateWords);
-      var numbers = text.split(settings.regExp.dateNumbers);
+      var words = text.split(settings.regExp.dateWords), word;
+      var numbers = text.split(settings.regExp.dateNumbers), number;
+
+      var parts;
+      var monthString;
 
       if (!isDateOnly) {
         //am/pm
@@ -1298,10 +1317,10 @@ $.fn.calendar.settings = {
 
         //time with ':'
         for (i = 0; i < numbers.length; i++) {
-          var number = numbers[i];
+          number = numbers[i];
           if (number.indexOf(':') >= 0) {
             if (hour < 0 || minute < 0) {
-              var parts = number.split(':');
+              parts = number.split(':');
               for (k = 0; k < Math.min(2, parts.length); k++) {
                 j = parseInt(parts[k]);
                 if (isNaN(j)) {
@@ -1322,14 +1341,13 @@ $.fn.calendar.settings = {
       if (!isTimeOnly) {
         //textual month
         for (i = 0; i < words.length; i++) {
-          var word = words[i];
+          word = words[i];
           if (word.length <= 0) {
             continue;
           }
-          word = word.substring(0, Math.min(word.length, 3));
           for (j = 0; j < settings.text.months.length; j++) {
-            var monthString = settings.text.months[j];
-            monthString = monthString.substring(0, Math.min(word.length, Math.min(monthString.length, 3))).toLowerCase();
+            monthString = settings.text.months[j];
+            monthString = monthString.substring(0, word.length).toLowerCase();
             if (monthString === word) {
               month = j + 1;
               break;
@@ -1473,9 +1491,13 @@ $.fn.calendar.settings = {
     }
   },
 
-  // callback when date changes, return false to cancel the change
-  onChange: function (date, text, mode) {
+  // callback before date is changed, return false to cancel the change
+  onBeforeChange: function (date, text, mode) {
     return true;
+  },
+
+  // callback when date changes
+  onChange: function (date, text, mode) {
   },
 
   // callback before show animation, return false to prevent show
@@ -1551,6 +1573,7 @@ $.fn.calendar.settings = {
     minDate: 'minDate',
     maxDate: 'maxDate',
     mode: 'mode',
+    type: 'type',
     monthOffset: 'monthOffset',
     message: 'message',
     class: 'class'

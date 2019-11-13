@@ -168,8 +168,8 @@
 
 
 /*-----------------------
-       Page Grid
--------------------------*/
+         Page Grid
+  -------------------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.page.grid {
@@ -959,8 +959,8 @@
 }
 
 /*----------------------
-        Centered
------------------------*/
+          Centered
+  -----------------------*/
 
 .ui.centered.grid,
 .ui.centered.grid > .row,
@@ -983,8 +983,8 @@
 }
 
 /*----------------------
-        Relaxed
------------------------*/
+          Relaxed
+  -----------------------*/
 
 .ui.relaxed.grid > .column:not(.row),
 .ui.relaxed.grid > .row > .column,
@@ -1012,8 +1012,8 @@
 }
 
 /*----------------------
-        Padded
------------------------*/
+          Padded
+  -----------------------*/
 
 .ui.padded.grid:not(.vertically):not(.horizontally) {
   margin: 0 !important;
@@ -1028,8 +1028,8 @@
 }
 
 /*----------------------
-       "Floated"
------------------------*/
+         "Floated"
+  -----------------------*/
 
 .ui.grid [class*="left floated"].column {
   margin-right: auto;
@@ -1039,8 +1039,8 @@
 }
 
 /*----------------------
-        Divided
------------------------*/
+          Divided
+  -----------------------*/
 
 .ui.divided.grid:not([class*="vertically divided"]) > .column:not(.row),
 .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
@@ -1140,8 +1140,8 @@
 }
 
 /*----------------------
-         Celled
------------------------*/
+           Celled
+  -----------------------*/
 
 .ui.celled.grid {
   width: 100%;
@@ -1195,8 +1195,8 @@
 }
 
 /*----------------------
-   Vertically Aligned
------------------------*/
+     Vertically Aligned
+  -----------------------*/
 
 
 /* Top Aligned */
@@ -1271,8 +1271,8 @@
 }
 
 /*----------------------
-  Horizontally Centered
------------------------*/
+    Horizontally Centered
+  -----------------------*/
 
 
 /* Left Aligned */
@@ -1441,8 +1441,8 @@
 }
 
 /*----------------------
-        Reverse
------------------------*/
+          Reverse
+  -----------------------*/
 
 
 /* Mobile */
@@ -1597,8 +1597,8 @@
 }
 
 /*-------------------
-      Doubling
---------------------*/
+        Doubling
+  --------------------*/
 
 
 /* Tablet Only */
@@ -1790,8 +1790,8 @@
 }
 
 /*-------------------
-      Stackable
---------------------*/
+        Stackable
+  --------------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.stackable.grid {
@@ -1805,12 +1805,12 @@
   .ui.stackable.grid > .column.row > .column,
   .ui.stackable.grid > .row > .column,
   .ui.stackable.grid > .column:not(.row),
-  .ui.grid > .stackable.stackable.row > .column {
+  .ui.grid > .stackable.stackable.stackable.row > .column {
     width: 100% !important;
     margin: 0 0 !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
-    padding: 1rem 1rem !important;
+    padding: 1rem 1rem;
   }
   .ui.stackable.grid:not(.vertically) > .row {
     margin: 0;
@@ -1995,27 +1995,27 @@
 }
 
 /*-----------------
-      Compact
------------------*/
+        Compact
+  -----------------*/
 
-.ui.compact.grid > .column:not(.row),
-.ui.compact.grid > .row > .column {
+.ui.ui.ui.compact.grid > .column:not(.row),
+.ui.ui.ui.compact.grid > .row > .column {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
-.ui.compact.grid > * {
+.ui.ui.ui.compact.grid > * {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
 
 /* Row */
-.ui.compact.grid > .row {
+.ui.ui.ui.compact.grid > .row {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
 
 /* Columns */
-.ui.compact.grid > .column:not(.row) {
+.ui.ui.ui.compact.grid > .column:not(.row) {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
 }
@@ -2031,8 +2031,8 @@
 }
 
 /*-----------------
-    Very compact
------------------*/
+      Very compact
+  -----------------*/
 
 .ui[class*="very compact"].grid > .column:not(.row),
 .ui[class*="very compact"].grid > .row > .column {

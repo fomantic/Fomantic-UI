@@ -322,8 +322,8 @@ a.ui.label {
 }
 
 /*-------------------
-       Ribbon
---------------------*/
+         Ribbon
+  --------------------*/
 
 .ui.ribbon.label {
   position: relative;
@@ -424,8 +424,8 @@ a.ui.label {
 }
 
 /*-------------------
-      Attached
---------------------*/
+        Attached
+  --------------------*/
 
 .ui[class*="top attached"].label,
 .ui.attached.label {
@@ -557,8 +557,8 @@ a.ui.active.label:hover:before {
 
 
 /*-------------------
-        Basic
---------------------*/
+          Basic
+  --------------------*/
 
 .ui.basic.labels .label,
 .ui.basic.label {
@@ -585,8 +585,8 @@ a.ui.basic.label:hover {
 }
 
 /*-------------------
-       Fluid
---------------------*/
+         Fluid
+  --------------------*/
 
 .ui.label.fluid,
 .ui.fluid.labels > .label {
@@ -596,8 +596,8 @@ a.ui.basic.label:hover {
 }
 
 /*-------------------
-       Inverted
---------------------*/
+         Inverted
+  --------------------*/
 
 .ui.inverted.labels .label,
 .ui.inverted.label {
@@ -1868,8 +1868,8 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 }
 
 /*-------------------
-       Circular
---------------------*/
+         Circular
+  --------------------*/
 
 .ui.circular.labels .label,
 .ui.circular.label {
@@ -1891,8 +1891,8 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 }
 
 /*-------------------
-       Pointing
---------------------*/
+         Pointing
+  --------------------*/
 
 .ui.pointing.label {
   position: relative;
@@ -2020,8 +2020,8 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 }
 
 /*------------------
-   Floating Label
--------------------*/
+     Floating Label
+  -------------------*/
 
 .ui.floating.label {
   position: absolute;
@@ -2055,6 +2055,10 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
         Sizes
 --------------------*/
 
+.ui.labels .label,
+.ui.label {
+  font-size: 0.85714286rem;
+}
 .ui.mini.labels .label,
 .ui.mini.label {
   font-size: 0.64285714rem;
@@ -2066,10 +2070,6 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 .ui.small.labels .label,
 .ui.small.label {
   font-size: 0.78571429rem;
-}
-.ui.labels .label,
-.ui.label {
-  font-size: 0.85714286rem;
 }
 .ui.large.labels .label,
 .ui.large.label {

@@ -385,8 +385,8 @@
 }
 
 /*--------------
-     Sidebar
----------------*/
+       Sidebar
+  ---------------*/
 
 
 /* Show vertical dividers below last */
@@ -542,8 +542,8 @@ Floated Menu / Item
 }
 
 /*--------------
-    Vertical
----------------*/
+      Vertical
+  ---------------*/
 
 .ui.vertical.menu {
   display: block;
@@ -651,8 +651,8 @@ Floated Menu / Item
 }
 
 /*--------------
-     Tabular
----------------*/
+       Tabular
+  ---------------*/
 
 .ui.tabular.menu {
   border-radius: 0;
@@ -795,8 +795,8 @@ Floated Menu / Item
 }
 
 /*--------------
-   Pagination
----------------*/
+     Pagination
+  ---------------*/
 
 .ui.pagination.menu {
   margin: 0;
@@ -833,8 +833,8 @@ Floated Menu / Item
 }
 
 /*--------------
-   Secondary
----------------*/
+     Secondary
+  ---------------*/
 
 .ui.secondary.menu {
   background: none;
@@ -932,6 +932,11 @@ Floated Menu / Item
           box-shadow: none;
 }
 
+/*---------------------
+       Secondary Vertical
+    -----------------------*/
+
+
 /* Sub Menu */
 .ui.vertical.secondary.menu .item:not(.dropdown) > .menu {
   margin: 0 -0.92857143em;
@@ -940,11 +945,6 @@ Floated Menu / Item
   margin: 0;
   padding: 0.5em 1.33333333em;
 }
-
-/*---------------------
-   Secondary Vertical
------------------------*/
-
 .ui.secondary.vertical.menu > .item {
   border: none;
   margin: 0 0 0.35714286em;
@@ -965,8 +965,8 @@ Floated Menu / Item
 }
 
 /*---------------------
-   Secondary Pointing
------------------------*/
+       Secondary Pointing
+    -----------------------*/
 
 .ui.secondary.pointing.menu {
   margin-left: 0;
@@ -1092,8 +1092,8 @@ Floated Menu / Item
 }
 
 /*--------------
-    Text Menu
----------------*/
+      Text Menu
+  ---------------*/
 
 .ui.text.menu {
   background: none transparent;
@@ -1274,8 +1274,8 @@ Floated Menu / Item
 }
 
 /*--------------
-   Labeled Icon
----------------*/
+     Labeled Icon
+  ---------------*/
 
 
 /* Menu */
@@ -1312,8 +1312,8 @@ Floated Menu / Item
 
 
 /*--------------
-    Stackable
----------------*/
+      Stackable
+  ---------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.stackable.menu {
@@ -1434,8 +1434,8 @@ Floated Menu / Item
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.menu {
   border: 0 solid transparent;
@@ -1534,8 +1534,8 @@ Floated Menu / Item
 }
 
 /*--------------
-     Floated
----------------*/
+       Floated
+  ---------------*/
 
 .ui.floated.menu {
   float: left;
@@ -1550,8 +1550,8 @@ Floated Menu / Item
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.ui.inverted.menu .primary.active.item,
 .ui.ui.inverted.primary.menu {
@@ -1740,8 +1740,8 @@ Floated Menu / Item
 }
 
 /*--------------
-     Fitted
----------------*/
+       Fitted
+  ---------------*/
 
 .ui.fitted.menu .item,
 .ui.fitted.menu .item .menu .item,
@@ -1762,8 +1762,8 @@ Floated Menu / Item
 }
 
 /*--------------
-   Borderless
----------------*/
+     Borderless
+  ---------------*/
 
 .ui.borderless.menu .item:before,
 .ui.borderless.menu .item .menu .item:before,
@@ -1772,8 +1772,8 @@ Floated Menu / Item
 }
 
 /*-------------------
-       Compact
---------------------*/
+         Compact
+  --------------------*/
 
 .ui.compact.menu {
   display: -webkit-inline-box;
@@ -1802,8 +1802,8 @@ Floated Menu / Item
 }
 
 /*-------------------
-        Fluid
---------------------*/
+          Fluid
+  --------------------*/
 
 .ui.menu.fluid,
 .ui.vertical.menu.fluid {
@@ -1867,8 +1867,8 @@ Floated Menu / Item
 }
 
 /*--------------
-     Fixed
----------------*/
+       Fixed
+  ---------------*/
 
 .ui.menu.fixed {
   position: fixed;
@@ -1931,8 +1931,8 @@ Floated Menu / Item
 }
 
 /*-------------------
-       Pointing
---------------------*/
+         Pointing
+  --------------------*/
 
 .ui.pointing.menu .item:after {
   visibility: hidden;
@@ -2051,8 +2051,8 @@ Floated Menu / Item
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 
 /* Middle */
@@ -2121,111 +2121,67 @@ Floated Menu / Item
      Sizes
 ---------------*/
 
-
-/* Mini */
-.ui.mini.menu {
-  font-size: 0.78571429rem;
-}
-.ui.mini.vertical.menu:not(.icon) {
-  width: 9rem;
-}
-.ui.mini.menu .dropdown {
-  font-size: 0.78571429rem;
-}
-.ui.mini.menu .dropdown .menu > .item {
-  font-size: 0.78571429rem;
-}
-
-/* Tiny */
-.ui.tiny.menu {
-  font-size: 0.85714286rem;
-}
-.ui.tiny.vertical.menu:not(.icon) {
-  width: 11rem;
-}
-.ui.tiny.menu .dropdown {
-  font-size: 0.85714286rem;
-}
-.ui.tiny.menu .dropdown .menu > .item {
-  font-size: 0.85714286rem;
-}
-
-/* Small */
-.ui.small.menu {
-  font-size: 0.92857143rem;
-}
-.ui.small.vertical.menu:not(.icon) {
-  width: 13rem;
-}
-.ui.small.menu .dropdown {
-  font-size: 0.92857143rem;
-}
-.ui.small.menu .dropdown .menu > .item {
-  font-size: 0.92857143rem;
-}
-
-/* Medium */
 .ui.menu {
   font-size: 1rem;
 }
 .ui.vertical.menu {
   width: 15rem;
 }
-
-/* Large */
-.ui.large.menu {
+.ui.mini.menu,
+.ui.mini.menu .dropdown,
+.ui.mini.menu .dropdown .menu > .item {
+  font-size: 0.78571429rem;
+}
+.ui.mini.vertical.menu:not(.icon) {
+  width: 9rem;
+}
+.ui.tiny.menu,
+.ui.tiny.menu .dropdown,
+.ui.tiny.menu .dropdown .menu > .item {
+  font-size: 0.85714286rem;
+}
+.ui.tiny.vertical.menu:not(.icon) {
+  width: 11rem;
+}
+.ui.small.menu,
+.ui.small.menu .dropdown,
+.ui.small.menu .dropdown .menu > .item {
+  font-size: 0.92857143rem;
+}
+.ui.small.vertical.menu:not(.icon) {
+  width: 13rem;
+}
+.ui.large.menu,
+.ui.large.menu .dropdown,
+.ui.large.menu .dropdown .menu > .item {
   font-size: 1.07142857rem;
 }
 .ui.large.vertical.menu:not(.icon) {
   width: 18rem;
 }
-.ui.large.menu .dropdown {
-  font-size: 1.07142857rem;
-}
-.ui.large.menu .dropdown .menu > .item {
-  font-size: 1.07142857rem;
-}
-
-/* Huge */
-.ui.huge.menu {
-  font-size: 1.21428571rem;
-}
-.ui.huge.vertical.menu:not(.icon) {
-  width: 22rem;
-}
-.ui.huge.menu .dropdown {
-  font-size: 1.21428571rem;
-}
-.ui.huge.menu .dropdown .menu > .item {
-  font-size: 1.21428571rem;
-}
-
-/* Big */
-.ui.big.menu {
+.ui.big.menu,
+.ui.big.menu .dropdown,
+.ui.big.menu .dropdown .menu > .item {
   font-size: 1.14285714rem;
 }
 .ui.big.vertical.menu:not(.icon) {
   width: 20rem;
 }
-.ui.big.menu .dropdown {
-  font-size: 1.14285714rem;
+.ui.huge.menu,
+.ui.huge.menu .dropdown,
+.ui.huge.menu .dropdown .menu > .item {
+  font-size: 1.21428571rem;
 }
-.ui.big.menu .dropdown .menu > .item {
-  font-size: 1.14285714rem;
+.ui.huge.vertical.menu:not(.icon) {
+  width: 22rem;
 }
-
-/* Massive */
-.ui.massive.menu {
+.ui.massive.menu,
+.ui.massive.menu .dropdown,
+.ui.massive.menu .dropdown .menu > .item {
   font-size: 1.28571429rem;
 }
 .ui.massive.vertical.menu:not(.icon) {
   width: 25rem;
-}
-.ui.massive.menu .dropdown {
-  font-size: 1.28571429rem;
-}
-.ui.massive.menu .dropdown .menu > .item {
-  font-size: 1.28571429rem;
 }
 
 /*-------------------

@@ -259,8 +259,8 @@
 }
 
 /*--------------
-   Horizontal
----------------*/
+     Horizontal
+  ---------------*/
 
 .ui.horizontal.statistic {
   -webkit-box-orient: horizontal;
@@ -311,8 +311,8 @@
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.statistics .statistic > .value,
 .ui.inverted.statistic .value {
@@ -479,8 +479,8 @@
 }
 
 /*--------------
-    Floated
----------------*/
+      Floated
+  ---------------*/
 
 .ui[class*="left floated"].statistic {
   float: left;
@@ -495,8 +495,8 @@
 }
 
 /*--------------
-    Stackable
----------------*/
+      Stackable
+  ---------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.stackable.statistics {
@@ -516,88 +516,102 @@
 ---------------*/
 
 
-/* Mini */
-.ui.mini.statistics .statistic > .value,
-.ui.mini.statistic > .value {
-  font-size: 1.5rem !important;
-}
-.ui.mini.horizontal.statistics .statistic > .value,
-.ui.mini.horizontal.statistic > .value {
-  font-size: 1.5rem !important;
-}
-.ui.mini.statistics .statistic > .text.value,
-.ui.mini.statistic > .text.value {
-  font-size: 1rem !important;
-}
-
-/* Tiny */
-.ui.tiny.statistics .statistic > .value,
-.ui.tiny.statistic > .value {
-  font-size: 2rem !important;
-}
-.ui.tiny.horizontal.statistics .statistic > .value,
-.ui.tiny.horizontal.statistic > .value {
-  font-size: 2rem !important;
-}
-.ui.tiny.statistics .statistic > .text.value,
-.ui.tiny.statistic > .text.value {
-  font-size: 1rem !important;
-}
-
-/* Small */
-.ui.small.statistics .statistic > .value,
-.ui.small.statistic > .value {
-  font-size: 3rem !important;
-}
-.ui.small.horizontal.statistics .statistic > .value,
-.ui.small.horizontal.statistic > .value {
-  font-size: 2rem !important;
-}
-.ui.small.statistics .statistic > .text.value,
-.ui.small.statistic > .text.value {
-  font-size: 1rem !important;
-}
-
 /* Medium */
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-size: 4rem !important;
+  font-size: 4rem;
 }
 .ui.horizontal.statistics .statistic > .value,
 .ui.horizontal.statistic > .value {
-  font-size: 3rem !important;
+  font-size: 3rem;
 }
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
-  font-size: 2rem !important;
+  font-size: 2rem;
 }
-
-/* Large */
+.ui.mini.statistics .statistic > .value,
+.ui.mini.statistic > .value {
+  font-size: 1.5rem;
+}
+.ui.mini.horizontal.statistics .statistic > .value,
+.ui.mini.horizontal.statistic > .value {
+  font-size: 1.5rem;
+}
+.ui.mini.statistics .statistic > .text.value,
+.ui.mini.statistic > .text.value {
+  font-size: 1rem;
+}
+.ui.tiny.statistics .statistic > .value,
+.ui.tiny.statistic > .value {
+  font-size: 2rem;
+}
+.ui.tiny.horizontal.statistics .statistic > .value,
+.ui.tiny.horizontal.statistic > .value {
+  font-size: 2rem;
+}
+.ui.tiny.statistics .statistic > .text.value,
+.ui.tiny.statistic > .text.value {
+  font-size: 1rem;
+}
+.ui.small.statistics .statistic > .value,
+.ui.small.statistic > .value {
+  font-size: 3rem;
+}
+.ui.small.horizontal.statistics .statistic > .value,
+.ui.small.horizontal.statistic > .value {
+  font-size: 2rem;
+}
+.ui.small.statistics .statistic > .text.value,
+.ui.small.statistic > .text.value {
+  font-size: 1rem;
+}
 .ui.large.statistics .statistic > .value,
 .ui.large.statistic > .value {
-  font-size: 5rem !important;
+  font-size: 5rem;
 }
 .ui.large.horizontal.statistics .statistic > .value,
 .ui.large.horizontal.statistic > .value {
-  font-size: 4rem !important;
+  font-size: 4rem;
 }
 .ui.large.statistics .statistic > .text.value,
 .ui.large.statistic > .text.value {
-  font-size: 2.5rem !important;
+  font-size: 2.5rem;
 }
-
-/* Huge */
+.ui.big.statistics .statistic > .value,
+.ui.big.statistic > .value {
+  font-size: 5.5rem;
+}
+.ui.big.horizontal.statistics .statistic > .value,
+.ui.big.horizontal.statistic > .value {
+  font-size: 4.5rem;
+}
+.ui.big.statistics .statistic > .text.value,
+.ui.big.statistic > .text.value {
+  font-size: 2.5rem;
+}
 .ui.huge.statistics .statistic > .value,
 .ui.huge.statistic > .value {
-  font-size: 6rem !important;
+  font-size: 6rem;
 }
 .ui.huge.horizontal.statistics .statistic > .value,
 .ui.huge.horizontal.statistic > .value {
-  font-size: 5rem !important;
+  font-size: 5rem;
 }
 .ui.huge.statistics .statistic > .text.value,
 .ui.huge.statistic > .text.value {
-  font-size: 2.5rem !important;
+  font-size: 2.5rem;
+}
+.ui.massive.statistics .statistic > .value,
+.ui.massive.statistic > .value {
+  font-size: 7rem;
+}
+.ui.massive.horizontal.statistics .statistic > .value,
+.ui.massive.horizontal.statistic > .value {
+  font-size: 6rem;
+}
+.ui.massive.statistics .statistic > .text.value,
+.ui.massive.statistic > .text.value {
+  font-size: 3rem;
 }
 
 

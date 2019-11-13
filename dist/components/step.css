@@ -96,7 +96,6 @@
   content: '';
   top: 50%;
   right: 0;
-  border: medium none;
   background-color: #FFFFFF;
   width: 1.14285714em;
   height: 1.14285714em;
@@ -192,8 +191,8 @@
 
 
 /*--------------
-     Ordered
----------------*/
+       Ordered
+  ---------------*/
 
 .ui.ordered.steps {
   counter-reset: ordered;
@@ -218,8 +217,8 @@
 }
 
 /*--------------
-    Vertical
----------------*/
+      Vertical
+  ---------------*/
 
 .ui.vertical.steps {
   display: -webkit-inline-box;
@@ -422,8 +421,8 @@
 
 
 /*--------------
-   Stackable
----------------*/
+     Stackable
+  ---------------*/
 
 
 /* Tablet Or Below */
@@ -481,8 +480,8 @@
 }
 
 /*--------------
-      Fluid
----------------*/
+        Fluid
+  ---------------*/
 
 
 /* Fluid */
@@ -494,8 +493,8 @@
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 
 /* Top */
@@ -578,6 +577,10 @@
        Sizes
 --------------------*/
 
+.ui.steps .step,
+.ui.step {
+  font-size: 1rem;
+}
 .ui.mini.steps .step,
 .ui.mini.step {
   font-size: 0.78571429rem;
@@ -589,10 +592,6 @@
 .ui.small.steps .step,
 .ui.small.step {
   font-size: 0.92857143rem;
-}
-.ui.steps .step,
-.ui.step {
-  font-size: 1rem;
 }
 .ui.large.steps .step,
 .ui.large.step {
@@ -612,8 +611,8 @@
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.steps {
   border: 1px solid #555555;

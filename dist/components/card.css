@@ -437,8 +437,8 @@
 
 
 /*-------------------
-      Horizontal
---------------------*/
+        Horizontal
+  --------------------*/
 
 .ui.horizontal.cards > .card,
 .ui.card.horizontal {
@@ -448,7 +448,7 @@
           flex-direction: row;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-  min-width: 400px;
+  min-width: 270px;
   width: 400px;
   max-width: 100%;
 }
@@ -475,6 +475,10 @@
   height: 100%;
   border-radius: 0.28571429rem 0 0 0.28571429rem;
 }
+.ui.horizontal.cards > .card > .image:last-child > img,
+.ui.card.horizontal > .image:last-child > img {
+  border-radius: 0 0.28571429rem 0.28571429rem 0;
+}
 .ui.horizontal.cards > .card > .content,
 .ui.horizontal.card > .content {
   -ms-flex-preferred-size: 1px;
@@ -487,8 +491,8 @@
 }
 
 /*-------------------
-       Raised
---------------------*/
+         Raised
+  --------------------*/
 
 .ui.raised.cards > .card,
 .ui.raised.card {
@@ -504,8 +508,8 @@ a.ui.raised.card:hover,
 }
 
 /*-------------------
-       Centered
---------------------*/
+         Centered
+  --------------------*/
 
 .ui.centered.cards {
   -webkit-box-pack: center;
@@ -518,8 +522,8 @@ a.ui.raised.card:hover,
 }
 
 /*-------------------
-        Fluid
---------------------*/
+          Fluid
+  --------------------*/
 
 .ui.fluid.card {
   width: 100%;
@@ -527,8 +531,8 @@ a.ui.raised.card:hover,
 }
 
 /*-------------------
-        Link
---------------------*/
+          Link
+  --------------------*/
 
 .ui.cards a.card,
 .ui.link.cards .card,
@@ -1012,8 +1016,8 @@ a.ui.card:hover,
 }
 
 /*-------------------
-      Doubling
---------------------*/
+        Doubling
+  --------------------*/
 
 
 /* Mobile Only */
@@ -1187,8 +1191,8 @@ a.ui.card:hover,
 }
 
 /*-------------------
-      Stackable
---------------------*/
+        Stackable
+  --------------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.stackable.cards {
@@ -1213,10 +1217,31 @@ a.ui.card:hover,
 .ui.cards > .card {
   font-size: 1em;
 }
+.ui.mini.cards .card {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.cards .card {
+  font-size: 0.85714286rem;
+}
+.ui.small.cards .card {
+  font-size: 0.92857143rem;
+}
+.ui.large.cards .card {
+  font-size: 1.14285714rem;
+}
+.ui.big.cards .card {
+  font-size: 1.28571429rem;
+}
+.ui.huge.cards .card {
+  font-size: 1.42857143rem;
+}
+.ui.massive.cards .card {
+  font-size: 1.71428571rem;
+}
 
 /*-----------------
-      Inverted
-------------------*/
+        Inverted
+  ------------------*/
 
 .ui.inverted.cards > .card,
 .ui.inverted.card {

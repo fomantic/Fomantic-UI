@@ -171,8 +171,8 @@
 
 
 /*--------------
-    Compact
----------------*/
+      Compact
+  ---------------*/
 
 .ui.compact.message {
   display: inline-block;
@@ -185,8 +185,8 @@
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 .ui.attached.message {
   margin-bottom: -1px;
@@ -214,8 +214,8 @@
 }
 
 /*--------------
-      Icon
----------------*/
+        Icon
+  ---------------*/
 
 .ui.icon.message {
   display: -webkit-box;
@@ -252,8 +252,8 @@
 }
 
 /*--------------
-    Floating
----------------*/
+      Floating
+  ---------------*/
 
 .ui.floating.message {
   -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
@@ -605,6 +605,9 @@
      Sizes
 ---------------*/
 
+.ui.message {
+  font-size: 1em;
+}
 .ui.mini.message {
   font-size: 0.78571429em;
 }
@@ -613,9 +616,6 @@
 }
 .ui.small.message {
   font-size: 0.92857143em;
-}
-.ui.message {
-  font-size: 1em;
 }
 .ui.large.message {
   font-size: 1.14285714em;

@@ -173,8 +173,8 @@
 }
 
 /*-------------------
-      Disabled
---------------------*/
+        Disabled
+  --------------------*/
 
 .ui.buttons .disabled.button:not(.basic),
 .ui.disabled.button,
@@ -201,8 +201,8 @@
 
 
 /*-------------------
-       Animated
---------------------*/
+         Animated
+  --------------------*/
 
 .ui.animated.button {
   position: relative;
@@ -320,8 +320,8 @@
 }
 
 /*-------------------
-       Inverted
---------------------*/
+         Inverted
+  --------------------*/
 
 .ui.inverted.button {
   -webkit-box-shadow: 0 0 0 2px #FFFFFF inset;
@@ -373,8 +373,8 @@
 }
 
 /*-------------------
-    Labeled Button
---------------------*/
+      Labeled Button
+  --------------------*/
 
 .ui.labeled.button:not(.icon) {
   display: -webkit-inline-box;
@@ -433,8 +433,8 @@
 }
 
 /*-------------------
-       Social
---------------------*/
+         Social
+  --------------------*/
 
 
 /* Facebook */
@@ -653,8 +653,8 @@
 
 
 /*-------------------
-       Floated
---------------------*/
+         Floated
+  --------------------*/
 
 .ui[class*="left floated"].buttons,
 .ui[class*="left floated"].button {
@@ -670,8 +670,8 @@
 }
 
 /*-------------------
-       Compact
---------------------*/
+         Compact
+  --------------------*/
 
 .ui.compact.buttons .button,
 .ui.compact.button {
@@ -694,88 +694,58 @@
         Sizes
 --------------------*/
 
-.ui.mini.buttons .button,
-.ui.mini.buttons .or,
-.ui.ui.ui.ui.mini.button {
-  font-size: 0.78571429rem;
-}
-.ui.tiny.buttons .button,
-.ui.tiny.buttons .or,
-.ui.ui.ui.ui.tiny.button {
-  font-size: 0.85714286rem;
-}
-.ui.small.buttons .button,
-.ui.small.buttons .or,
-.ui.ui.ui.ui.small.button {
-  font-size: 0.92857143rem;
-}
 .ui.buttons .button,
 .ui.buttons .or,
 .ui.button {
   font-size: 1rem;
 }
+.ui.mini.buttons .dropdown,
+.ui.mini.buttons .dropdown .menu > .item,
+.ui.mini.buttons .button,
+.ui.mini.buttons .or,
+.ui.ui.ui.ui.mini.button {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.buttons .dropdown,
+.ui.tiny.buttons .dropdown .menu > .item,
+.ui.tiny.buttons .button,
+.ui.tiny.buttons .or,
+.ui.ui.ui.ui.tiny.button {
+  font-size: 0.85714286rem;
+}
+.ui.small.buttons .dropdown,
+.ui.small.buttons .dropdown .menu > .item,
+.ui.small.buttons .button,
+.ui.small.buttons .or,
+.ui.ui.ui.ui.small.button {
+  font-size: 0.92857143rem;
+}
+.ui.large.buttons .dropdown,
+.ui.large.buttons .dropdown .menu > .item,
 .ui.large.buttons .button,
 .ui.large.buttons .or,
 .ui.ui.ui.ui.large.button {
   font-size: 1.14285714rem;
 }
+.ui.big.buttons .dropdown,
+.ui.big.buttons .dropdown .menu > .item,
 .ui.big.buttons .button,
 .ui.big.buttons .or,
 .ui.ui.ui.ui.big.button {
   font-size: 1.28571429rem;
 }
+.ui.huge.buttons .dropdown,
+.ui.huge.buttons .dropdown .menu > .item,
 .ui.huge.buttons .button,
 .ui.huge.buttons .or,
 .ui.ui.ui.ui.huge.button {
   font-size: 1.42857143rem;
 }
+.ui.massive.buttons .dropdown,
+.ui.massive.buttons .dropdown .menu > .item,
 .ui.massive.buttons .button,
 .ui.massive.buttons .or,
 .ui.ui.ui.ui.massive.button {
-  font-size: 1.71428571rem;
-}
-
-/* Dropdown coupled buttons sizes */
-.ui.mini.buttons .dropdown {
-  font-size: 0.78571429rem;
-}
-.ui.mini.buttons .dropdown .menu > .item {
-  font-size: 0.78571429rem;
-}
-.ui.tiny.buttons .dropdown {
-  font-size: 0.85714286rem;
-}
-.ui.tiny.buttons .dropdown .menu > .item {
-  font-size: 0.85714286rem;
-}
-.ui.small.buttons .dropdown {
-  font-size: 0.92857143rem;
-}
-.ui.small.buttons .dropdown .menu > .item {
-  font-size: 0.92857143rem;
-}
-.ui.large.buttons .dropdown {
-  font-size: 1.14285714rem;
-}
-.ui.large.buttons .dropdown .menu > .item {
-  font-size: 1.14285714rem;
-}
-.ui.big.buttons .dropdown {
-  font-size: 1.28571429rem;
-}
-.ui.big.buttons .dropdown .menu > .item {
-  font-size: 1.28571429rem;
-}
-.ui.huge.buttons .dropdown {
-  font-size: 1.42857143rem;
-}
-.ui.huge.buttons .dropdown .menu > .item {
-  font-size: 1.42857143rem;
-}
-.ui.massive.buttons .dropdown {
-  font-size: 1.71428571rem;
-}
-.ui.massive.buttons .dropdown .menu > .item {
   font-size: 1.71428571rem;
 }
 
@@ -795,8 +765,8 @@
 }
 
 /*-------------------
-        Basic
---------------------*/
+          Basic
+  --------------------*/
 
 .ui.basic.buttons .button,
 .ui.basic.button {
@@ -923,8 +893,8 @@
 }
 
 /*-------------------
-       Tertiary
---------------------*/
+         Tertiary
+  --------------------*/
 
 
 /* Overline Mixin */
@@ -960,8 +930,8 @@
 }
 
 /*--------------
-  Labeled Icon
----------------*/
+    Labeled Icon
+  ---------------*/
 
 .ui.labeled.icon.buttons .button,
 .ui.labeled.icon.button {
@@ -1044,8 +1014,8 @@
 }
 
 /*--------------
-     Toggle
----------------*/
+       Toggle
+  ---------------*/
 
 
 /* Toggle (Modifies active state to give affordances) */
@@ -1065,8 +1035,8 @@
 }
 
 /*--------------
-    Circular
----------------*/
+      Circular
+  ---------------*/
 
 .ui.circular.button {
   border-radius: 10em;
@@ -1077,8 +1047,8 @@
 }
 
 /*-------------------
-      Or Buttons
---------------------*/
+        Or Buttons
+  --------------------*/
 
 .ui.buttons .or {
   position: relative;
@@ -1119,8 +1089,8 @@
 }
 
 /*-------------------
-       Attached
---------------------*/
+         Attached
+  --------------------*/
 
 
 /* Singular */
@@ -1235,8 +1205,8 @@
 }
 
 /*-------------------
-        Fluid
---------------------*/
+          Fluid
+  --------------------*/
 
 .ui.fluid.buttons,
 .ui.fluid.button {
@@ -4305,8 +4275,8 @@
 
 
 /*******************************
-            Groups
-*******************************/
+              Groups
+  *******************************/
 
 .ui.buttons {
   display: -webkit-inline-box;

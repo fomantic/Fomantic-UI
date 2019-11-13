@@ -108,6 +108,9 @@ span.ui.disabled.text {
 }
 
 /* Sizes */
+span.ui.medium.text {
+  font-size: 1em;
+}
 span.ui.mini.text {
   font-size: 0.4em;
 }
@@ -116,9 +119,6 @@ span.ui.tiny.text {
 }
 span.ui.small.text {
   font-size: 0.75em;
-}
-span.ui.medium.text {
-  font-size: 1em;
 }
 span.ui.large.text {
   font-size: 1.5em;

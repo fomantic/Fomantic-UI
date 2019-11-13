@@ -79,8 +79,8 @@
 
 
 /*--------------
-     Disabled
----------------*/
+       Disabled
+  ---------------*/
 
 .ui.disabled.slider:not(.checkbox) {
   opacity: 0.5;
@@ -93,16 +93,19 @@
 }
 
 /*--------------
-    Reversed
----------------*/
+      Reversed
+  ---------------*/
 
 .ui.reversed.slider .inner .track-fill {
   left: auto;
   right: 0;
 }
-.ui.reversed.slider .inner .thumb {
+.ui.reversed.slider:not(.vertical) .inner .thumb {
   left: auto;
   right: 0;
+}
+.ui.reversed.vertical.slider .inner .thumb {
+  left: 0.03em;
 }
 .ui.labeled.reversed.slider > .labels .label {
   -webkit-transform: translate(-100%, -100%);
@@ -116,8 +119,8 @@
 
 
 /*--------------
-    Vertical
----------------*/
+      Vertical
+  ---------------*/
 
 .ui.vertical.slider {
   height: 100%;
@@ -150,8 +153,8 @@
 }
 
 /*--------------
-    Labeled
----------------*/
+      Labeled
+  ---------------*/
 
 .ui.labeled.slider > .labels {
   height: 1.5em;
@@ -234,8 +237,8 @@
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.slider .inner .track-fill {
   background-color: #545454;
@@ -640,8 +643,8 @@
 }
 
 /*--------------
-     Basic
----------------*/
+       Basic
+  ---------------*/
 
 
 /* Standard */
@@ -654,8 +657,8 @@
 }
 
 /*--------------
-  Basic Inverted
----------------*/
+      Basic Inverted
+    ---------------*/
 
 
 /* Standard */
@@ -671,8 +674,6 @@
      Sizing
 ---------------*/
 
-
-/* Small */
 .ui.slider.small .inner .thumb {
   height: 1em;
   width: 1em;
@@ -709,8 +710,6 @@
 .ui.small.labeled.vertical.slider > .labels .halftick.label:after {
   width: 0.5em;
 }
-
-/* Large */
 .ui.slider.large .inner .thumb {
   height: 2em;
   width: 2em;
@@ -731,7 +730,7 @@
   height: 1em;
 }
 
-/* Large Vertical */
+/* Small Vertical */
 .ui.slider.large.vertical .inner {
   width: 2em;
 }
@@ -747,8 +746,6 @@
 .ui.large.labeled.vertical.slider > .labels .halftick.label:after {
   width: 1em;
 }
-
-/* Big */
 .ui.slider.big .inner .thumb {
   height: 2.5em;
   width: 2.5em;
@@ -769,7 +766,7 @@
   height: 1.25em;
 }
 
-/* Big Vertical */
+/* Small Vertical */
 .ui.slider.big.vertical .inner {
   width: 2.5em;
 }

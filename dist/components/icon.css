@@ -51,8 +51,8 @@ i.icon:before {
 
 
 /*--------------
-    Loading
----------------*/
+      Loading
+  ---------------*/
 
 i.icon.loading {
   height: 1em;
@@ -88,8 +88,8 @@ i.disabled.icons {
 
 
 /*-------------------
-        Fitted
---------------------*/
+          Fitted
+  --------------------*/
 
 i.fitted.icon {
   width: auto;
@@ -97,8 +97,8 @@ i.fitted.icon {
 }
 
 /*-------------------
-         Link
---------------------*/
+           Link
+  --------------------*/
 
 i.link.icon:not(.disabled),
 i.link.icons:not(.disabled) {
@@ -113,8 +113,8 @@ i.link.icons:hover {
 }
 
 /*-------------------
-      Circular
---------------------*/
+        Circular
+  --------------------*/
 
 i.circular.icon {
   border-radius: 500em !important;
@@ -132,8 +132,8 @@ i.circular.inverted.icon {
 }
 
 /*-------------------
-      Flipped
---------------------*/
+        Flipped
+  --------------------*/
 
 i.flipped.icon,
 i.horizontally.flipped.icon {
@@ -146,8 +146,8 @@ i.vertically.flipped.icon {
 }
 
 /*-------------------
-      Rotated
---------------------*/
+        Rotated
+  --------------------*/
 
 i.rotated.icon,
 i.right.rotated.icon,
@@ -166,8 +166,8 @@ i.halfway.rotated.icon {
 }
 
 /*--------------------------
-      Flipped & Rotated
----------------------------*/
+        Flipped & Rotated
+  ---------------------------*/
 
 i.rotated.flipped.icon,
 i.right.rotated.flipped.icon,
@@ -201,8 +201,8 @@ i.halfway.rotated.vertically.flipped.icon {
 }
 
 /*-------------------
-      Bordered
---------------------*/
+        Bordered
+  --------------------*/
 
 i.bordered.icon {
   line-height: 1;
@@ -220,8 +220,8 @@ i.bordered.inverted.icon {
 }
 
 /*-------------------
-      Inverted
---------------------*/
+        Inverted
+  --------------------*/
 
 
 /* Inverted Shapes */
@@ -408,24 +408,27 @@ i.inverted.circular.black.icon.icon.icon.icon {
         Sizes
 --------------------*/
 
+i.icon,
+i.icons {
+  font-size: 1em;
+}
 i.mini.mini.mini.icon,
 i.mini.mini.mini.icons {
   line-height: 1;
+  vertical-align: middle;
   font-size: 0.4em;
 }
 i.tiny.tiny.tiny.icon,
 i.tiny.tiny.tiny.icons {
   line-height: 1;
+  vertical-align: middle;
   font-size: 0.5em;
 }
 i.small.small.small.icon,
 i.small.small.small.icons {
   line-height: 1;
+  vertical-align: middle;
   font-size: 0.75em;
-}
-i.icon,
-i.icons {
-  font-size: 1em;
 }
 i.large.large.large.icon,
 i.large.large.large.icons {
@@ -454,8 +457,8 @@ i.massive.massive.massive.icons {
 
 
 /*******************************
-            Groups
-*******************************/
+              Groups
+  *******************************/
 
 i.icons {
   display: inline-block;
@@ -518,7 +521,7 @@ i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
 }
 /*
-* Font Awesome 5.9.0 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.11.2 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -635,6 +638,9 @@ i.icon.angle.double.right:before {
 i.icon.angle.double.up:before {
   content: "\f102";
 }
+i.icon.angle.down:before {
+  content: "\f107";
+}
 i.icon.angle.left:before {
   content: "\f104";
 }
@@ -643,9 +649,6 @@ i.icon.angle.right:before {
 }
 i.icon.angle.up:before {
   content: "\f106";
-}
-i.icon.angle.down:before {
-  content: "\f107";
 }
 i.icon.angry:before {
   content: "\f556";
@@ -683,9 +686,6 @@ i.icon.arrow.circle.right:before {
 i.icon.arrow.circle.up:before {
   content: "\f0aa";
 }
-i.icon.arrow.down:before {
-  content: "\f063";
-}
 i.icon.arrow.left:before {
   content: "\f060";
 }
@@ -694,6 +694,9 @@ i.icon.arrow.right:before {
 }
 i.icon.arrow.up:before {
   content: "\f062";
+}
+i.icon.arrow.down:before {
+  content: "\f063";
 }
 i.icon.arrows.alternate:before {
   content: "\f0b2";
@@ -1871,6 +1874,12 @@ i.icon.hard.hat:before {
 i.icon.hashtag:before {
   content: "\f292";
 }
+i.icon.hat.cowboy:before {
+  content: "\f8c0";
+}
+i.icon.hat.cowboy.side:before {
+  content: "\f8c1";
+}
 i.icon.hat.wizard:before {
   content: "\f6e8";
 }
@@ -2303,6 +2312,9 @@ i.icon.motorcycle:before {
 i.icon.mountain:before {
   content: "\f6fc";
 }
+i.icon.mouse:before {
+  content: "\f8cc";
+}
 i.icon.mouse.pointer:before {
   content: "\f245";
 }
@@ -2581,6 +2593,9 @@ i.icon.random:before {
 }
 i.icon.receipt:before {
   content: "\f543";
+}
+i.icon.record.vinyl:before {
+  content: "\f8d9";
 }
 i.icon.recycle:before {
   content: "\f1b8";
@@ -5015,6 +5030,10 @@ i.icon.buromobelexperte:before {
   content: "\f37f";
   font-family: 'brand-icons';
 }
+i.icon.buy.n.large:before {
+  content: "\f8a6";
+  font-family: 'brand-icons';
+}
 i.icon.buysellads:before {
   content: "\f20d";
   font-family: 'brand-icons';
@@ -5109,6 +5128,10 @@ i.icon.connectdevelop:before {
 }
 i.icon.contao:before {
   content: "\f26d";
+  font-family: 'brand-icons';
+}
+i.icon.cotton.bureau:before {
+  content: "\f89e";
   font-family: 'brand-icons';
 }
 i.icon.cpanel:before {
@@ -5767,6 +5790,10 @@ i.icon.maxcdn:before {
   content: "\f136";
   font-family: 'brand-icons';
 }
+i.icon.mdb:before {
+  content: "\f8ca";
+  font-family: 'brand-icons';
+}
 i.icon.medapps:before {
   content: "\f3c6";
   font-family: 'brand-icons';
@@ -5877,6 +5904,10 @@ i.icon.opera:before {
 }
 i.icon.optin.monster:before {
   content: "\f23c";
+  font-family: 'brand-icons';
+}
+i.icon.orcid:before {
+  content: "\f8d2";
   font-family: 'brand-icons';
 }
 i.icon.osi:before {
@@ -6247,6 +6278,10 @@ i.icon.suse:before {
   content: "\f7d6";
   font-family: 'brand-icons';
 }
+i.icon.swift:before {
+  content: "\f8e1";
+  font-family: 'brand-icons';
+}
 i.icon.symfony:before {
   content: "\f83d";
   font-family: 'brand-icons';
@@ -6325,6 +6360,10 @@ i.icon.ubuntu:before {
 }
 i.icon.uikit:before {
   content: "\f403";
+  font-family: 'brand-icons';
+}
+i.icon.umbraco:before {
+  content: "\f8e8";
   font-family: 'brand-icons';
 }
 i.icon.uniregistry:before {
