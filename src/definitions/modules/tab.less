@@ -39,51 +39,53 @@
   display: block;
 }
 
-/*--------------------
-       Loading
----------------------*/
+& when (@variationTabLoading) {
+  /*--------------------
+         Loading
+  ---------------------*/
 
-.ui.tab.loading {
-  position: relative;
-  overflow: hidden;
-  display: block;
-  min-height: @loadingMinHeight;
-}
-.ui.tab.loading * {
-  position: @loadingContentPosition !important;
-  left: @loadingContentOffset !important;
-}
+  .ui.tab.loading {
+    position: relative;
+    overflow: hidden;
+    display: block;
+    min-height: @loadingMinHeight;
+  }
+  .ui.tab.loading * {
+    position: @loadingContentPosition !important;
+    left: @loadingContentOffset !important;
+  }
 
-.ui.tab.loading:before,
-.ui.tab.loading.segment:before {
-  position: absolute;
-  content: '';
-  top: @loaderDistanceFromTop;
-  left: 50%;
+  .ui.tab.loading:before,
+  .ui.tab.loading.segment:before {
+    position: absolute;
+    content: '';
+    top: @loaderDistanceFromTop;
+    left: 50%;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  border-radius: @circularRadius;
-  border: @loaderLineWidth solid @loaderFillColor;
-}
-.ui.tab.loading:after,
-.ui.tab.loading.segment:after {
-  position: absolute;
-  content: '';
-  top: @loaderDistanceFromTop;
-  left: 50%;
+    border-radius: @circularRadius;
+    border: @loaderLineWidth solid @loaderFillColor;
+  }
+  .ui.tab.loading:after,
+  .ui.tab.loading.segment:after {
+    position: absolute;
+    content: '';
+    top: @loaderDistanceFromTop;
+    left: 50%;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  animation: loader @loaderSpeed infinite linear;
-  border: @loaderLineWidth solid @loaderLineColor;
-  border-radius: @circularRadius;
+    animation: loader @loaderSpeed infinite linear;
+    border: @loaderLineWidth solid @loaderLineColor;
+    border-radius: @circularRadius;
 
-  box-shadow: 0 0 0 1px transparent;
+    box-shadow: 0 0 0 1px transparent;
+  }
 }
 
 .loadUIOverrides();

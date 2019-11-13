@@ -262,59 +262,62 @@
 
 
 
+& when (@variationStatisticHorizontal) {
+  /*--------------
+     Horizontal
+  ---------------*/
 
-/*--------------
-   Horizontal
----------------*/
+  .ui.horizontal.statistic {
+    flex-direction: row;
+    align-items: center;
+  }
+  .ui.horizontal.statistics {
+    flex-direction: column;
+    margin: 0;
+    max-width: none;
+  }
+  .ui.horizontal.statistics .statistic {
+    flex-direction: row;
+    align-items: center;
+    max-width: none;
+    margin: @horizontalGroupElementMargin;
+  }
 
-.ui.horizontal.statistic {
-  flex-direction: row;
-  align-items: center;
-}
-.ui.horizontal.statistics {
-  flex-direction: column;
-  margin: 0;
-  max-width: none;
-}
-.ui.horizontal.statistics .statistic {
-  flex-direction: row;
-  align-items: center;
-  max-width: none;
-  margin: @horizontalGroupElementMargin;
-}
+  .ui.horizontal.statistic > .text.value,
+  .ui.horizontal.statistics > .statistic > .text.value {
+    min-height: 0 !important;
+  }
+  .ui.horizontal.statistics .statistic > .value .icon,
+  .ui.horizontal.statistic > .value .icon {
+    width: @iconWidth;
+  }
 
-.ui.horizontal.statistic > .text.value,
-.ui.horizontal.statistics > .statistic > .text.value {
-  min-height: 0 !important;
-}
-.ui.horizontal.statistics .statistic > .value .icon,
-.ui.horizontal.statistic > .value .icon {
-  width: @iconWidth;
-}
-
-.ui.horizontal.statistics .statistic > .value,
-.ui.horizontal.statistic > .value {
-  display: inline-block;
-  vertical-align: middle;
-}
-.ui.horizontal.statistics .statistic > .label,
-.ui.horizontal.statistic > .label {
-  display: inline-block;
-  vertical-align: middle;
-  margin: 0 0 0 @horizontalLabelDistance;
+  .ui.horizontal.statistics .statistic > .value,
+  .ui.horizontal.statistic > .value {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .ui.horizontal.statistics .statistic > .label,
+  .ui.horizontal.statistic > .label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 0 0 @horizontalLabelDistance;
+  }
 }
 
-/*--------------
-    Inverted
----------------*/
+& when (@variationStatisticInverted) {
+  /*--------------
+      Inverted
+  ---------------*/
 
-.ui.inverted.statistics .statistic > .value,
-.ui.inverted.statistic .value {
-  color: @invertedValueColor;
-}
-.ui.inverted.statistics .statistic > .label,
-.ui.inverted.statistic .label {
-  color: @invertedLabelColor;
+  .ui.inverted.statistics .statistic > .value,
+  .ui.inverted.statistic .value {
+    color: @invertedValueColor;
+  }
+  .ui.inverted.statistics .statistic > .label,
+  .ui.inverted.statistic .label {
+    color: @invertedLabelColor;
+  }
 }
 
 /*--------------
@@ -331,136 +334,88 @@ each(@colors,{
   .ui.@{color}.statistic > .value {
     color: @c;
   }
-  .ui.inverted.@{color}.statistics .statistic > .value,
-  .ui.statistics .inverted.@{color}.statistic > .value,
-  .ui.inverted.@{color}.statistic > .value {
-    color: @l;
+  & when (@variationStatisticInverted) {
+    .ui.inverted.@{color}.statistics .statistic > .value,
+    .ui.statistics .inverted.@{color}.statistic > .value,
+    .ui.inverted.@{color}.statistic > .value {
+      color: @l;
+    }
   }
 })
 
-/*--------------
-    Floated
----------------*/
+& when (@variationStatisticFloated) {
+  /*--------------
+      Floated
+  ---------------*/
 
-.ui[class*="left floated"].statistic {
-  float: left;
-  margin: @leftFloatedMargin;
-}
-.ui[class*="right floated"].statistic {
-  float: right;
-  margin: @rightFloatedMargin;
-}
-.ui.floated.statistic:last-child {
-  margin-bottom: 0;
-}
-
-/*--------------
-    Stackable
----------------*/
-
-@media only screen and (max-width: @largestMobileScreen) {
-  .ui.stackable.statistics {
-    width: auto;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+  .ui[class*="left floated"].statistic {
+    float: left;
+    margin: @leftFloatedMargin;
   }
-  .ui.stackable.statistics > .statistic {
-    width: 100% !important;
-    margin: 0 0 !important;
-    padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
+  .ui[class*="right floated"].statistic {
+    float: right;
+    margin: @rightFloatedMargin;
+  }
+  .ui.floated.statistic:last-child {
+    margin-bottom: 0;
   }
 }
 
+& when (@variationStatisticStackable) {
+  /*--------------
+      Stackable
+  ---------------*/
+
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.stackable.statistics {
+      width: auto;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }
+    .ui.stackable.statistics > .statistic {
+      width: 100% !important;
+      margin: 0 0 !important;
+      padding: (@stackableRowSpacing / 2) (@stackableGutter / 2) !important;
+    }
+  }
+}
 
 /*--------------
      Sizes
 ---------------*/
 
 
-/* Mini */
-.ui.mini.statistics .statistic > .value,
-.ui.mini.statistic > .value {
-  font-size: @miniValueSize !important;
-}
-.ui.mini.horizontal.statistics .statistic > .value,
-.ui.mini.horizontal.statistic > .value {
-  font-size: @miniHorizontalValueSize !important;
-}
-.ui.mini.statistics .statistic > .text.value,
-.ui.mini.statistic > .text.value {
-  font-size: @miniTextValueSize !important;
-}
-
-
-/* Tiny */
-.ui.tiny.statistics .statistic > .value,
-.ui.tiny.statistic > .value {
-  font-size: @tinyValueSize !important;
-}
-.ui.tiny.horizontal.statistics .statistic > .value,
-.ui.tiny.horizontal.statistic > .value {
-  font-size: @tinyHorizontalValueSize !important;
-}
-.ui.tiny.statistics .statistic > .text.value,
-.ui.tiny.statistic > .text.value {
-  font-size: @tinyTextValueSize !important;
-}
-
-/* Small */
-.ui.small.statistics .statistic > .value,
-.ui.small.statistic > .value {
-  font-size: @smallValueSize !important;
-}
-.ui.small.horizontal.statistics .statistic > .value,
-.ui.small.horizontal.statistic > .value {
-  font-size: @smallHorizontalValueSize !important;
-}
-.ui.small.statistics .statistic > .text.value,
-.ui.small.statistic > .text.value {
-  font-size: @smallTextValueSize !important;
-}
-
 /* Medium */
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-size: @valueSize !important;
+  font-size: @valueSize;
 }
 .ui.horizontal.statistics .statistic > .value,
 .ui.horizontal.statistic > .value {
-  font-size: @horizontalValueSize !important;
+  font-size: @horizontalValueSize;
 }
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
-  font-size: @textValueSize !important;
+  font-size: @textValueSize;
 }
-
-/* Large */
-.ui.large.statistics .statistic > .value,
-.ui.large.statistic > .value {
-  font-size: @largeValueSize !important;
+& when not (@variationStatisticSizes = false) {
+  each(@variationStatisticSizes, {
+    @s: @{value}ValueSize;
+    @hs: @{value}HorizontalValueSize;
+    @ts: @{value}TextValueSize;
+    .ui.@{value}.statistics .statistic > .value,
+    .ui.@{value}.statistic > .value {
+      font-size: @@s;
+    }
+    .ui.@{value}.horizontal.statistics .statistic > .value,
+    .ui.@{value}.horizontal.statistic > .value {
+      font-size: @@hs;
+    }
+    .ui.@{value}.statistics .statistic > .text.value,
+    .ui.@{value}.statistic > .text.value {
+      font-size: @@ts;
+    }
+  })
 }
-.ui.large.horizontal.statistics .statistic > .value,
-.ui.large.horizontal.statistic > .value {
-  font-size: @largeHorizontalValueSize !important;
-}
-.ui.large.statistics .statistic > .text.value,
-.ui.large.statistic > .text.value {
-  font-size: @largeTextValueSize !important;
-}
-
-/* Huge */
-.ui.huge.statistics .statistic > .value,
-.ui.huge.statistic > .value {
-  font-size: @hugeValueSize !important;
-}
-.ui.huge.horizontal.statistics .statistic > .value,
-.ui.huge.horizontal.statistic > .value {
-  font-size: @hugeHorizontalValueSize !important;
-}
-.ui.huge.statistics .statistic > .text.value,
-.ui.huge.statistic > .text.value {
-  font-size: @hugeTextValueSize !important;
-}
-
 
 .loadUIOverrides();

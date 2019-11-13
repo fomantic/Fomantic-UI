@@ -98,6 +98,14 @@
 @largeValueSize: 5rem;
 @largeHorizontalValueSize: 4rem;
 
+@bigTextValueSize: 2.5rem;
+@bigValueSize: 5.5rem;
+@bigHorizontalValueSize: 4.5rem;
+
 @hugeTextValueSize: 2.5rem;
 @hugeValueSize: 6rem;
 @hugeHorizontalValueSize: 5rem;
+
+@massiveTextValueSize: 3rem;
+@massiveValueSize: 7rem;
+@massiveHorizontalValueSize: 6rem;
