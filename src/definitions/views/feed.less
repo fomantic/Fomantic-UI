@@ -264,36 +264,40 @@
             Variations
 *******************************/
 
-.ui.small.feed {
-  font-size: @small;
-}
 .ui.feed {
   font-size: @medium;
 }
-.ui.large.feed {
-  font-size: @large;
+& when not (@variationFeedSizes = false) {
+  each(@variationFeedSizes, {
+    @s: @@value;
+    .ui.@{value}.feed  {
+      font-size: @s;
+    }
+  })
 }
 
-/*------------------
-      Inverted
--------------------*/
+& when (@variationFeedInverted) {
+  /*------------------
+        Inverted
+  -------------------*/
 
-.ui.inverted.feed > .event {
-  background: @black;
-}
+  .ui.inverted.feed > .event {
+    background: @black;
+  }
 
-.ui.inverted.feed > .event > .content .date,
-.ui.inverted.feed > .event > .content .meta .like {
-  color: @invertedLightTextColor;
-}
+  .ui.inverted.feed > .event > .content .date,
+  .ui.inverted.feed > .event > .content .meta .like {
+    color: @invertedLightTextColor;
+  }
 
-.ui.inverted.feed > .event > .content .summary,
-.ui.inverted.feed > .event > .content .extra.text {
-  color: @invertedTextColor;
-}
+  .ui.inverted.feed > .event > .content .summary,
+  .ui.inverted.feed > .event > .content .extra.text {
+    color: @invertedTextColor;
+  }
 
-.ui.inverted.feed > .event > .content .meta .like:hover {
-  color: @invertedSelectedTextColor;
+  .ui.inverted.feed > .event > .content .meta .like:hover {
+    color: @invertedSelectedTextColor;
+  }
 }
 
 

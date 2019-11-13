@@ -197,9 +197,6 @@
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;
 
-/* Size */
-@variationCheckboxSizes: mini, tiny, small, large, big, huge, massive;
-
 @miniCheckboxSize: @relativeMini;
 @miniCheckboxCircleScale: @miniRaw / 2;
 @miniCheckboxCircleLeft: unit((@miniRaw - @miniCheckboxCircleScale) / 2 + 0.05 , em);

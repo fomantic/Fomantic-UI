@@ -227,3 +227,10 @@
 @veryRelaxedHeaderMargin: 0.5rem;
 @veryRelaxedHorizontalPadding: 1.5rem;
 
+@miniListSize: @relativeMini;
+@tinyListSize: @relativeTiny;
+@smallListSize: @relativeSmall;
+@largeListSize: @relativeLarge;
+@bigListSize: @relativeBig;
+@hugeListSize: @relativeHuge;
+@massiveListSize: @relativeMassive;

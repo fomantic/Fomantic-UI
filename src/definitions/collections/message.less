@@ -170,85 +170,93 @@
             Variations
 *******************************/
 
-/*--------------
-    Compact
----------------*/
+& when (@variationMessageCompact) {
+  /*--------------
+      Compact
+  ---------------*/
 
-.ui.compact.message {
-  display: inline-block;
-}
-.ui.compact.icon.message {
-  display: inline-flex;
-  width: auto;
-}
-
-
-/*--------------
-    Attached
----------------*/
-
-.ui.attached.message {
-  margin-bottom: @attachedYOffset;
-  border-radius: @borderRadius @borderRadius 0 0;
-  box-shadow: @attachedBoxShadow;
-  margin-left: @attachedXOffset;
-  margin-right: @attachedXOffset;
-}
-.ui.attached + .ui.attached.message:not(.top):not(.bottom) {
-  margin-top: @attachedYOffset;
-  border-radius: 0;
-}
-.ui.bottom.attached.message {
-  margin-top: @attachedYOffset;
-  border-radius: 0 0 @borderRadius @borderRadius;
-  box-shadow: @attachedBottomBoxShadow;
-}
-.ui.bottom.attached.message:not(:last-child) {
-  margin-bottom: @verticalMargin;
-}
-.ui.attached.icon.message {
-  width: auto;
+  .ui.compact.message {
+    display: inline-block;
+  }
+  .ui.compact.icon.message {
+    display: inline-flex;
+    width: auto;
+  }
 }
 
+& when (@variationMessageAttached) {
+  /*--------------
+      Attached
+  ---------------*/
 
-/*--------------
-      Icon
----------------*/
-
-.ui.icon.message {
-  display: flex;
-  width: 100%;
-  align-items: center;
-}
-.ui.icon.message > .icon:not(.close) {
-  display: block;
-  flex: 0 0 auto;
-  width: auto;
-  line-height: 1;
-  vertical-align: @iconVerticalAlign;
-  font-size: @iconSize;
-  opacity: @iconOpacity;
-}
-.ui.icon.message > .content {
-  display: block;
-  flex: 1 1 auto;
-  vertical-align: @iconVerticalAlign;
-}
-
-
-.ui.icon.message .icon:not(.close) + .content {
-  padding-left: @iconContentDistance;
-}
-.ui.icon.message .circular.icon {
-  width: 1em;
+  .ui.attached.message {
+    margin-bottom: @attachedYOffset;
+    border-radius: @borderRadius @borderRadius 0 0;
+    box-shadow: @attachedBoxShadow;
+    margin-left: @attachedXOffset;
+    margin-right: @attachedXOffset;
+  }
+  .ui.attached + .ui.attached.message:not(.top):not(.bottom) {
+    margin-top: @attachedYOffset;
+    border-radius: 0;
+  }
+  .ui.bottom.attached.message {
+    margin-top: @attachedYOffset;
+    border-radius: 0 0 @borderRadius @borderRadius;
+    box-shadow: @attachedBottomBoxShadow;
+  }
+  .ui.bottom.attached.message:not(:last-child) {
+    margin-bottom: @verticalMargin;
+  }
+  & when (@variationMessageIcon) {
+    .ui.attached.icon.message {
+      width: auto;
+    }
+  }
 }
 
-/*--------------
-    Floating
----------------*/
+& when (@variationMessageIcon) {
+  /*--------------
+        Icon
+  ---------------*/
 
-.ui.floating.message {
-  box-shadow: @floatingBoxShadow;
+  .ui.icon.message {
+    display: flex;
+    width: 100%;
+    align-items: center;
+  }
+  .ui.icon.message > .icon:not(.close) {
+    display: block;
+    flex: 0 0 auto;
+    width: auto;
+    line-height: 1;
+    vertical-align: @iconVerticalAlign;
+    font-size: @iconSize;
+    opacity: @iconOpacity;
+  }
+  .ui.icon.message > .content {
+    display: block;
+    flex: 1 1 auto;
+    vertical-align: @iconVerticalAlign;
+  }
+
+
+  .ui.icon.message .icon:not(.close) + .content {
+    padding-left: @iconContentDistance;
+  }
+  .ui.icon.message .circular.icon {
+    width: 1em;
+  }
+}
+
+& when (@variationMessageFloating) {
+  /*--------------
+      Floating
+  ---------------*/
+
+  .ui.floating.message {
+    box-shadow: @floatingBoxShadow;
+  }
 }
 
 
@@ -259,81 +267,82 @@
 /*--------------
      Types
 ---------------*/
+& when (@variationMessageConsequences) {
 
+  @consequences: {
+    @positive: {
+      background     : @positiveBackgroundColor;
+      header         : @positiveHeaderColor;
+      boxShadow      : @positiveBoxShadow;
+      boxFloatShadow : @positiveBoxFloatingShadow;
+      text           : @positiveTextColor;
+    };
+    @negative: {
+      background     : @negativeBackgroundColor;
+      header         : @negativeHeaderColor;
+      boxShadow      : @negativeBoxShadow;
+      boxFloatShadow : @negativeBoxFloatingShadow;
+      text           : @negativeTextColor;
+    };
+    @info: {
+      background     : @infoBackgroundColor;
+      header         : @infoHeaderColor;
+      boxShadow      : @infoBoxShadow;
+      boxFloatShadow : @infoBoxFloatingShadow;
+      text           : @infoTextColor;
+    };
+    @warning: {
+      background     : @warningBackgroundColor;
+      header         : @warningHeaderColor;
+      boxShadow      : @warningBoxShadow;
+      boxFloatShadow : @warningBoxFloatingShadow;
+      text           : @warningTextColor;
+    };
+    @error: {
+      background     : @errorBackgroundColor;
+      header         : @errorHeaderColor;
+      boxShadow      : @errorBoxShadow;
+      boxFloatShadow : @errorBoxFloatingShadow;
+      text           : @errorTextColor;
+    };
+    @success: {
+      background     : @successBackgroundColor;
+      header         : @successHeaderColor;
+      boxShadow      : @successBoxShadow;
+      boxFloatShadow : @successBoxFloatingShadow;
+      text           : @successTextColor;
+    };
+  }
 
-@consequences: {
-  @positive: {
-    background     : @positiveBackgroundColor;
-    header         : @positiveHeaderColor;
-    boxShadow      : @positiveBoxShadow;
-    boxFloatShadow : @positiveBoxFloatingShadow;
-    text           : @positiveTextColor;
-  };
-  @negative: {
-    background     : @negativeBackgroundColor;
-    header         : @negativeHeaderColor;
-    boxShadow      : @negativeBoxShadow;
-    boxFloatShadow : @negativeBoxFloatingShadow;
-    text           : @negativeTextColor;
-  };
-  @info: {
-    background     : @infoBackgroundColor;
-    header         : @infoHeaderColor;
-    boxShadow      : @infoBoxShadow;
-    boxFloatShadow : @infoBoxFloatingShadow;
-    text           : @infoTextColor;
-  };
-  @warning: {
-    background     : @warningBackgroundColor;
-    header         : @warningHeaderColor;
-    boxShadow      : @warningBoxShadow;
-    boxFloatShadow : @warningBoxFloatingShadow;
-    text           : @warningTextColor;
-  };
-  @error: {
-    background     : @errorBackgroundColor;
-    header         : @errorHeaderColor;
-    boxShadow      : @errorBoxShadow;
-    boxFloatShadow : @errorBoxFloatingShadow;
-    text           : @errorTextColor;
-  };
-  @success: {
-    background     : @successBackgroundColor;
-    header         : @successHeaderColor;
-    boxShadow      : @successBoxShadow;
-    boxFloatShadow : @successBoxFloatingShadow;
-    text           : @successTextColor;
-  };
+  /* Colors */
+
+  each(@consequences, {
+    @color: replace(@key, '@', '');
+    @bg: @consequences[@@color][background];
+    @hd: @consequences[@@color][header];
+    @bs: @consequences[@@color][boxShadow];
+    @bfs: @consequences[@@color][boxFloatShadow];
+    @t: @consequences[@@color][text];
+
+    .ui.@{color}.message {
+      background-color: @bg;
+      color: @t;
+    }
+
+    .ui.@{color}.message,
+    .ui.attached.@{color}.message {
+      box-shadow: @bs;
+    }
+    & when (@variationMessageFloating) {
+      .ui.floating.@{color}.message {
+        box-shadow: @bfs;
+      }
+    }
+    .ui.@{color}.message .header {
+      color: @hd;
+    }
+  })
 }
-
-/* Colors */
-
-each(@consequences, {
-  @color: replace(@key, '@', '');
-  @bg: @consequences[@@color][background];
-  @hd: @consequences[@@color][header];
-  @bs: @consequences[@@color][boxShadow];
-  @bfs: @consequences[@@color][boxFloatShadow];
-  @t: @consequences[@@color][text];
-
-  .ui.@{color}.message {
-    background-color: @bg;
-    color: @t;
-  }
-
-  .ui.@{color}.message,
-  .ui.attached.@{color}.message {
-    box-shadow: @bs;
-  }
-
-  .ui.floating.@{color}.message {
-      box-shadow: @bfs;
-  }
-
-  .ui.@{color}.message .header {
-    color: @hd;
-  }
-})
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -361,10 +370,11 @@ each(@colors, {
       box-shadow: @bs;
     }
   }
-
-  .ui.floating.@{color}.message {
-    & when not (@isVeryDark) {
-      box-shadow: @bfs;
+  & when (@variationMessageFloating) {
+    .ui.floating.@{color}.message {
+      & when not (@isVeryDark) {
+        box-shadow: @bfs;
+      }
     }
   }
 
@@ -378,39 +388,27 @@ each(@colors, {
   }
 })
 
-
-.ui.inverted.message {
-  background-color: @black;
-  color: @invertedTextColor;
+& when (@variationMessageInverted) {
+  .ui.inverted.message {
+    background-color: @black;
+    color: @invertedTextColor;
+  }
 }
 
 /*--------------
      Sizes
 ---------------*/
 
-.ui.mini.message {
-  font-size: @relativeMini;
-}
-.ui.tiny.message {
-  font-size: @relativeTiny;
-}
-.ui.small.message {
-  font-size: @relativeSmall;
-}
 .ui.message {
   font-size: @relativeMedium;
 }
-.ui.large.message {
-  font-size: @relativeLarge;
-}
-.ui.big.message {
-  font-size: @relativeBig;
-}
-.ui.huge.message {
-  font-size: @relativeHuge;
-}
-.ui.massive.message {
-  font-size: @relativeMassive;
+& when not (@variationMessageSizes = false) {
+  each(@variationMessageSizes, {
+    @s: @{value}MessageSize;
+    .ui.@{value}.message {
+      font-size: @@s;
+    }
+  })
 }
 
 .loadUIOverrides();

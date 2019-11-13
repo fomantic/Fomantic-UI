@@ -31,39 +31,30 @@ each(@colors, {
   span.ui.@{color}.text {
     color: @c;
   }
-  span.ui.inverted.@{color}.text {
-    color: @l;
+  & when (@variationTextInverted) {
+    span.ui.inverted.@{color}.text {
+      color: @l;
+    }
   }
 })
 
-span.ui.disabled.text {
-  opacity: @disabledOpacity;
+& when (@variationTextDisabled) {
+  span.ui.disabled.text {
+    opacity: @disabledOpacity;
+  }
 }
 
 /* Sizes */
-span.ui.mini.text {
-  font-size: @mini;
-}
-span.ui.tiny.text {
-  font-size: @tiny;
-}
-span.ui.small.text {
-  font-size: @small;
-}
 span.ui.medium.text {
   font-size: @medium;
 }
-span.ui.large.text {
-  font-size: @large;
-}
-span.ui.big.text {
-  font-size: @big;
-}
-span.ui.huge.text {
-  font-size: @huge;
-}
-span.ui.massive.text {
-  font-size: @massive;
+& when not (@variationTextSizes = false) {
+  each(@variationTextSizes, {
+    @s: @@value;
+    span.ui.@{value}.text {
+      font-size: @s;
+    }
+  })
 }
 
 .loadUIOverrides();

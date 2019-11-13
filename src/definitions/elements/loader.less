@@ -62,20 +62,22 @@
   box-shadow: 0 0 0 1px transparent;
 }
 
-/* Speeds */
+& when (@variationLoaderSpeeds) {
+  /* Speeds */
 
-.ui.fast.loading.loading:after,
-.ui.fast.loading.loading .input > i.icon:after,
-.ui.fast.loading.loading > i.icon:after,
-.ui.fast.loader:after {
-  animation-duration: @loaderSpeedFast;
-}
+  .ui.fast.loading.loading:after,
+  .ui.fast.loading.loading .input > i.icon:after,
+  .ui.fast.loading.loading > i.icon:after,
+  .ui.fast.loader:after {
+    animation-duration: @loaderSpeedFast;
+  }
 
-.ui.slow.loading.loading:after,
-.ui.slow.loading.loading .input > i.icon:after,
-.ui.slow.loading.loading > i.icon:after,
-.ui.slow.loader:after {
-  animation-duration: @loaderSpeedSlow;
+  .ui.slow.loading.loading:after,
+  .ui.slow.loading.loading .input > i.icon:after,
+  .ui.slow.loading.loading > i.icon:after,
+  .ui.slow.loader:after {
+    animation-duration: @loaderSpeedSlow;
+  }
 }
 
 /* Active Animation */
@@ -83,56 +85,6 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-/* Sizes */
-.ui.mini.loader:before,
-.ui.mini.loader:after {
-  width: @mini;
-  height: @mini;
-  margin: @miniOffset;
-}
-.ui.tiny.loader:before,
-.ui.tiny.loader:after {
-  width: @tiny;
-  height: @tiny;
-  margin: @tinyOffset;
-}
-.ui.small.loader:before,
-.ui.small.loader:after {
-  width: @small;
-  height: @small;
-  margin: @smallOffset;
-}
-.ui.loader:before,
-.ui.loader:after {
-  width: @medium;
-  height: @medium;
-  margin: @mediumOffset;
-}
-.ui.large.loader:before,
-.ui.large.loader:after {
-  width: @large;
-  height: @large;
-  margin: @largeOffset;
-}
-.ui.big.loader:before,
-.ui.big.loader:after {
-  width: @big;
-  height: @big;
-  margin: @bigOffset;
-}
-.ui.huge.loader:before,
-.ui.huge.loader:after {
-  width: @huge;
-  height: @huge;
-  margin: @hugeOffset;
-}
-.ui.massive.loader:before,
-.ui.massive.loader:after {
-  width: @massive;
-  height: @massive;
-  margin: @massiveOffset;
 }
 
 /*-------------------
@@ -164,25 +116,28 @@
              Types
 *******************************/
 
-/*-------------------
-        Text
---------------------*/
+& when (@variationLoaderText) {
+  /*-------------------
+          Text
+  --------------------*/
 
-.ui.ui.ui.ui.text.loader {
-  width: auto;
-  height: auto;
-  text-align: center;
-  font-style: normal;
+  .ui.ui.ui.ui.text.loader {
+    width: auto;
+    height: auto;
+    text-align: center;
+    font-style: normal;
+  }
 }
 
 
 /*******************************
             States
 *******************************/
-
-.ui.indeterminate.loader:after {
-  animation-direction: @indeterminateDirection;
-  animation-duration: @indeterminateSpeed;
+& when (@variationLoaderIndeterminate) {
+  .ui.indeterminate.loader:after {
+    animation-direction: @indeterminateDirection;
+    animation-duration: @indeterminateSpeed;
+  }
 }
 
 .ui.loader.active,
@@ -203,83 +158,47 @@
         Sizes
 --------------------*/
 
-
-/* Loader */
-.ui.mini.loader {
-  width: @mini;
-  height: @mini;
-  font-size: @miniFontSize;
-}
-.ui.tiny.loader {
-  width: @tiny;
-  height: @tiny;
-  font-size: @tinyFontSize;
-}
-.ui.small.loader {
-  width: @small;
-  height: @small;
-  font-size: @smallFontSize;
-}
 .ui.loader {
   width: @medium;
   height: @medium;
   font-size: @mediumFontSize;
 }
-.ui.large.loader {
-  width: @large;
-  height: @large;
-  font-size: @largeFontSize;
+.ui.loader:before,
+.ui.loader:after {
+  width: @medium;
+  height: @medium;
+  margin: @mediumOffset;
 }
-.ui.big.loader {
-  width: @big;
-  height: @big;
-  font-size: @bigFontSize;
+& when (@variationLoaderText) {
+  .ui.text.loader {
+    min-width: @medium;
+    padding-top: (@medium + @textDistance);
+  }
 }
-.ui.huge.loader {
-  width: @huge;
-  height: @huge;
-  font-size: @hugeFontSize;
+& when not (@variationLoaderSizes = false) {
+  each(@variationLoaderSizes, {
+    @o: @{value}Offset;
+    @f: @{value}FontSize;
+    @s: @@value;
+    .ui.@{value}.loader {
+      width: @s;
+      height: @s;
+      font-size: @@f;
+    }
+    .ui.@{value}.loader:before,
+    .ui.@{value}.loader:after {
+      width: @s;
+      height: @s;
+      margin: @@o;
+    }
+    & when (@variationLoaderText) {
+      .ui.@{value}.text.loader {
+        min-width: @s;
+        padding-top: (@s + @textDistance);
+      }
+    }
+  })
 }
-.ui.massive.loader {
-  width: @massive;
-  height: @massive;
-  font-size: @massiveFontSize;
-}
-
-/* Text Loader */
-.ui.mini.text.loader {
-  min-width: @mini;
-  padding-top: (@mini + @textDistance);
-}
-.ui.tiny.text.loader {
-  min-width: @tiny;
-  padding-top: (@tiny + @textDistance);
-}
-.ui.small.text.loader {
-  min-width: @small;
-  padding-top: (@small + @textDistance);
-}
-.ui.text.loader {
-  min-width: @medium;
-  padding-top: (@medium + @textDistance);
-}
-.ui.large.text.loader {
-  min-width: @large;
-  padding-top: (@large + @textDistance);
-}
-.ui.big.text.loader {
-  min-width: @big;
-  padding-top: (@big + @textDistance);
-}
-.ui.huge.text.loader {
-  min-width: @huge;
-  padding-top: (@huge + @textDistance);
-}
-.ui.massive.text.loader {
-  min-width: @massive;
-  padding-top: (@massive + @textDistance);
-}
-
 
 /*-------------------
        Colors
@@ -334,30 +253,33 @@ each(@colors, {
 .ui.double.loading.loading.loading.loading.button:after {
   border-bottom-color: currentColor;
 }
-/*-------------------
-       Inline
---------------------*/
 
-.ui.inline.loader {
-  position: relative;
-  vertical-align: @inlineVerticalAlign;
-  margin: @inlineMargin;
-  left: 0;
-  top: 0;
-  transform: none;
-}
+& when (@variationLoaderInline) {
+  /*-------------------
+         Inline
+  --------------------*/
 
-.ui.inline.loader.active,
-.ui.inline.loader.visible {
-  display: inline-block;
-}
+  .ui.inline.loader {
+    position: relative;
+    vertical-align: @inlineVerticalAlign;
+    margin: @inlineMargin;
+    left: 0;
+    top: 0;
+    transform: none;
+  }
 
-/* Centered Inline */
-.ui.centered.inline.loader.active,
-.ui.centered.inline.loader.visible {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+  .ui.inline.loader.active,
+  .ui.inline.loader.visible {
+    display: inline-block;
+  }
+
+  /* Centered Inline */
+  .ui.centered.inline.loader.active,
+  .ui.centered.inline.loader.visible {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .ui.loading.loading.loading.loading.loading.loading:after,
@@ -383,105 +305,111 @@ each(@colors, {
   border-bottom-color: @loaderFillColor;
 }
 
-/*-------------------
-       Elastic
---------------------*/
+& when (@variationLoaderElastic) {
+  /*-------------------
+         Elastic
+  --------------------*/
 
-.ui.dimmer > .ui.elastic.loader {
-  color: @invertedLoaderLineColor;
-}
-.ui.inverted.dimmer > .ui.elastic.loader {
-  color: @loaderLineColor;
-}
-.ui.elastic.loading.loading:not(.form):not(.segment):after,
-.ui.elastic.loading.loading .input > i.icon:after,
-.ui.elastic.loading.loading > i.icon:after,
-.ui.elastic.loader.loader:after {
-  animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
-  animation-delay: 0.3s;
-}
-.ui.elastic.loading.loading.loading:not(.form):not(.segment):before,
-.ui.elastic.loading.loading.loading .input > i.icon:before,
-.ui.elastic.loading.loading.loading > i.icon:before,
-.ui.elastic.loader.loader:before {
-  animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
-  -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
-  border-right-color: transparent;
-}
-.ui.elastic.inline.loader:empty {
-  animation: loader 8s infinite linear;
-}
-.ui.slow.elastic.loading.loading:not(.form):not(.segment):after,
-.ui.slow.elastic.loading.loading .input > i.icon:after,
-.ui.slow.elastic.loading.loading > i.icon:after,
-.ui.slow.elastic.loader.loader:after {
-  animation-duration: 1.5s;
-  animation-delay: 0.45s;
-}
-.ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):before,
-.ui.slow.elastic.loading.loading.loading .input > i.icon:before,
-.ui.slow.elastic.loading.loading.loading > i.icon:before,
-.ui.slow.elastic.loader.loader:before {
-  animation-duration: 1.5s;
-}
-.ui.fast.elastic.loading.loading:not(.form):not(.segment):after,
-.ui.fast.elastic.loading.loading .input > i.icon:after,
-.ui.fast.elastic.loading.loading > i.icon:after,
-.ui.fast.elastic.loader.loader:after {
-  animation-duration: 0.66s;
-  animation-delay: 0.20s;
-}
-.ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):before,
-.ui.fast.elastic.loading.loading.loading .input > i.icon:before,
-.ui.fast.elastic.loading.loading.loading > i.icon:before,
-.ui.fast.elastic.loader.loader:before {
-  animation-duration: 0.66s;
-}
-@keyframes elastic-loader {
-  0%, 1% {
-    border-left-color: transparent;
-    border-bottom-color: transparent
+  .ui.dimmer > .ui.elastic.loader {
+    color: @invertedLoaderLineColor;
   }
-  1.1%, 50% {
-    border-left-color: inherit;
+  .ui.inverted.dimmer > .ui.elastic.loader {
+    color: @loaderLineColor;
   }
-  10%, 35.1%{
-    border-bottom-color: transparent;
+  .ui.elastic.loading.loading:not(.form):not(.segment):after,
+  .ui.elastic.loading.loading .input > i.icon:after,
+  .ui.elastic.loading.loading > i.icon:after,
+  .ui.elastic.loader.loader:after {
+    animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+    animation-delay: 0.3s;
   }
-  10.1%, 35%{
-    border-bottom-color: inherit;
+  .ui.elastic.loading.loading.loading:not(.form):not(.segment):before,
+  .ui.elastic.loading.loading.loading .input > i.icon:before,
+  .ui.elastic.loading.loading.loading > i.icon:before,
+  .ui.elastic.loader.loader:before {
+    animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+    -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+    border-right-color: transparent;
   }
-  50.1%{
-    border-left-color: transparent;
+  & when (@variationLoaderInline) {
+    .ui.elastic.inline.loader:empty {
+      animation: loader 8s infinite linear;
+    }
   }
-  100% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    transform: rotate(360deg);
+  & when (@variationLoaderSpeeds) {
+    .ui.slow.elastic.loading.loading:not(.form):not(.segment):after,
+    .ui.slow.elastic.loading.loading .input > i.icon:after,
+    .ui.slow.elastic.loading.loading > i.icon:after,
+    .ui.slow.elastic.loader.loader:after {
+      animation-duration: 1.5s;
+      animation-delay: 0.45s;
+    }
+    .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):before,
+    .ui.slow.elastic.loading.loading.loading .input > i.icon:before,
+    .ui.slow.elastic.loading.loading.loading > i.icon:before,
+    .ui.slow.elastic.loader.loader:before {
+      animation-duration: 1.5s;
+    }
+    .ui.fast.elastic.loading.loading:not(.form):not(.segment):after,
+    .ui.fast.elastic.loading.loading .input > i.icon:after,
+    .ui.fast.elastic.loading.loading > i.icon:after,
+    .ui.fast.elastic.loader.loader:after {
+      animation-duration: 0.66s;
+      animation-delay: 0.20s;
+    }
+    .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):before,
+    .ui.fast.elastic.loading.loading.loading .input > i.icon:before,
+    .ui.fast.elastic.loading.loading.loading > i.icon:before,
+    .ui.fast.elastic.loader.loader:before {
+      animation-duration: 0.66s;
+    }
   }
-}
+  @keyframes elastic-loader {
+    0%, 1% {
+      border-left-color: transparent;
+      border-bottom-color: transparent
+    }
+    1.1%, 50% {
+      border-left-color: inherit;
+    }
+    10%, 35.1%{
+      border-bottom-color: transparent;
+    }
+    10.1%, 35%{
+      border-bottom-color: inherit;
+    }
+    50.1%{
+      border-left-color: transparent;
+    }
+    100% {
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(360deg);
+    }
+  }
 
-@keyframes currentcolor-elastic-loader {
-  0%, 1% {
-    border-left-color: transparent;
-    border-bottom-color: transparent
-  }
-  1.1%, 50% {
-    border-left-color: currentColor;
-  }
-  10%, 35.1%{
-    border-bottom-color: transparent;
-  }
-  10.1%, 35%{
-    border-bottom-color: currentColor;
-  }
-  50.1%{
-    border-left-color: transparent;
-  }
-  100% {
-    border-left-color: transparent;
-    border-bottom-color: transparent;
-    transform: rotate(360deg);
+  @keyframes currentcolor-elastic-loader {
+    0%, 1% {
+      border-left-color: transparent;
+      border-bottom-color: transparent
+    }
+    1.1%, 50% {
+      border-left-color: currentColor;
+    }
+    10%, 35.1%{
+      border-bottom-color: transparent;
+    }
+    10.1%, 35%{
+      border-bottom-color: currentColor;
+    }
+    50.1%{
+      border-left-color: transparent;
+    }
+    100% {
+      border-left-color: transparent;
+      border-bottom-color: transparent;
+      transform: rotate(360deg);
+    }
   }
 }
 

@@ -108,70 +108,72 @@
             Types
 *******************************/
 
-/*--------------
-     Styled
----------------*/
+& when (@variationAccordionStyled) {
+  /*--------------
+       Styled
+  ---------------*/
 
-.ui.styled.accordion {
-  width: @styledWidth;
-}
+  .ui.styled.accordion {
+    width: @styledWidth;
+  }
 
-.ui.styled.accordion,
-.ui.styled.accordion .accordion {
-  border-radius: @styledBorderRadius;
-  background: @styledBackground;
-  box-shadow: @styledBoxShadow;
-}
-.ui.styled.accordion .title,
-.ui.styled.accordion .accordion .title {
-  margin: @styledTitleMargin;
-  padding: @styledTitlePadding;
-  color: @styledTitleColor;
-  font-weight: @styledTitleFontWeight;
-  border-top: @styledTitleBorder;
-  transition: @styledTitleTransition;
-}
-.ui.styled.accordion > .title:first-child,
-.ui.styled.accordion .accordion .title:first-child {
-  border-top: none;
-}
-
-
-/* Content */
-.ui.styled.accordion .content,
-.ui.styled.accordion .accordion .content {
-  margin: @styledContentMargin;
-  padding: @styledContentPadding;
-}
-.ui.styled.accordion .accordion .content {
-  margin: @styledChildContentMargin;
-  padding: @styledChildContentPadding;
-}
+  .ui.styled.accordion,
+  .ui.styled.accordion .accordion {
+    border-radius: @styledBorderRadius;
+    background: @styledBackground;
+    box-shadow: @styledBoxShadow;
+  }
+  .ui.styled.accordion .title,
+  .ui.styled.accordion .accordion .title {
+    margin: @styledTitleMargin;
+    padding: @styledTitlePadding;
+    color: @styledTitleColor;
+    font-weight: @styledTitleFontWeight;
+    border-top: @styledTitleBorder;
+    transition: @styledTitleTransition;
+  }
+  .ui.styled.accordion > .title:first-child,
+  .ui.styled.accordion .accordion .title:first-child {
+    border-top: none;
+  }
 
 
-/* Hover */
-.ui.styled.accordion .title:hover,
-.ui.styled.accordion .active.title,
-.ui.styled.accordion .accordion .title:hover,
-.ui.styled.accordion .accordion .active.title {
-  background: @styledTitleHoverBackground;
-  color: @styledTitleHoverColor;
-}
-.ui.styled.accordion .accordion .title:hover,
-.ui.styled.accordion .accordion .active.title {
-  background: @styledHoverChildTitleBackground;
-  color: @styledHoverChildTitleColor;
-}
+  /* Content */
+  .ui.styled.accordion .content,
+  .ui.styled.accordion .accordion .content {
+    margin: @styledContentMargin;
+    padding: @styledContentPadding;
+  }
+  .ui.styled.accordion .accordion .content {
+    margin: @styledChildContentMargin;
+    padding: @styledChildContentPadding;
+  }
 
 
-/* Active */
-.ui.styled.accordion .active.title {
-  background: @styledActiveTitleBackground;
-  color: @styledActiveTitleColor;
-}
-.ui.styled.accordion .accordion .active.title {
-  background: @styledActiveChildTitleBackground;
-  color: @styledActiveChildTitleColor;
+  /* Hover */
+  .ui.styled.accordion .title:hover,
+  .ui.styled.accordion .active.title,
+  .ui.styled.accordion .accordion .title:hover,
+  .ui.styled.accordion .accordion .active.title {
+    background: @styledTitleHoverBackground;
+    color: @styledTitleHoverColor;
+  }
+  .ui.styled.accordion .accordion .title:hover,
+  .ui.styled.accordion .accordion .active.title {
+    background: @styledHoverChildTitleBackground;
+    color: @styledHoverChildTitleColor;
+  }
+
+
+  /* Active */
+  .ui.styled.accordion .active.title {
+    background: @styledActiveTitleBackground;
+    color: @styledActiveTitleColor;
+  }
+  .ui.styled.accordion .accordion .active.title {
+    background: @styledActiveChildTitleBackground;
+    color: @styledActiveChildTitleColor;
+  }
 }
 
 
@@ -192,21 +194,25 @@
            Variations
 *******************************/
 
-/*--------------
-     Fluid
----------------*/
+& when (@variationAccordionFluid) {
+  /*--------------
+       Fluid
+  ---------------*/
 
-.ui.fluid.accordion,
-.ui.fluid.accordion .accordion {
-  width: 100%;
+  .ui.fluid.accordion,
+  .ui.fluid.accordion .accordion {
+    width: 100%;
+  }
 }
 
-/*--------------
-     Inverted
----------------*/
+& when (@variationAccordionInverted) {
+  /*--------------
+       Inverted
+  ---------------*/
 
-.ui.inverted.accordion .title:not(.ui) {
-  color: @invertedTitleColor;
+  .ui.inverted.accordion .title:not(.ui) {
+    color: @invertedTitleColor;
+  }
 }
 
 .loadUIOverrides();

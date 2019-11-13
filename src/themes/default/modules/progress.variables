@@ -114,10 +114,13 @@
 @invertedLabelColor: @white;
 
 /* Sizing */
+@miniBarHeight: 0.3em;
 @tinyBarHeight: 0.5em;
 @smallBarHeight: 1em;
 @largeBarHeight: 2.5em;
 @bigBarHeight: 3.5em;
+@hugeBarHeight: 4em;
+@massiveBarHeight: 5em;
 
 /* Indeterminate */
 @indeterminatePulseColor: @white;

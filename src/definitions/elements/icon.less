@@ -63,14 +63,16 @@ i.icon:before {
              Types
 *******************************/
 
-/*--------------
-    Loading
----------------*/
+& when (@variationIconLoading) {
+  /*--------------
+      Loading
+  ---------------*/
 
-i.icon.loading {
-  height: 1em;
-  line-height: 1;
-  animation: loader @loadingDuration linear infinite;
+  i.icon.loading {
+    height: 1em;
+    line-height: 1;
+    animation: loader @loadingDuration linear infinite;
+  }
 }
 
 /*******************************
@@ -83,156 +85,176 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
   opacity: 1;
 }
 
-i.disabled.icon, i.disabled.icons {
-  opacity: @disabledOpacity;
-  cursor: default;
-  pointer-events: none;
+& when (@variationIconDisabled) {
+  i.disabled.icon, i.disabled.icons {
+    opacity: @disabledOpacity;
+    cursor: default;
+    pointer-events: none;
+  }
 }
-
 
 /*******************************
            Variations
 *******************************/
 
+& when (@variationIconFitted) {
+  /*-------------------
+          Fitted
+  --------------------*/
 
-/*-------------------
-        Fitted
---------------------*/
-
-i.fitted.icon {
-  width: auto;
-  margin: 0 !important;
+  i.fitted.icon {
+    width: auto;
+    margin: 0 !important;
+  }
 }
 
-/*-------------------
-         Link
---------------------*/
+& when (@variationIconLink) {
+  /*-------------------
+           Link
+  --------------------*/
 
-i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
-  cursor: pointer;
-  opacity: @linkOpacity;
-  transition: opacity @defaultDuration @defaultEasing;
-}
-i.link.icon:hover, i.link.icons:hover {
-  opacity: 1;
-}
-
-/*-------------------
-      Circular
---------------------*/
-
-i.circular.icon {
-  border-radius: 500em !important;
-  line-height: 1 !important;
-
-  padding: @circularPadding !important;
-  box-shadow: @circularShadow;
-
-  width: @circularSize !important;
-  height: @circularSize !important;
-}
-i.circular.inverted.icon {
-  border: none;
-  box-shadow: none;
+  i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
+    cursor: pointer;
+    opacity: @linkOpacity;
+    transition: opacity @defaultDuration @defaultEasing;
+  }
+  i.link.icon:hover, i.link.icons:hover {
+    opacity: 1;
+  }
 }
 
-/*-------------------
-      Flipped
---------------------*/
+& when (@variationIconCircular) {
+  /*-------------------
+        Circular
+  --------------------*/
 
-i.flipped.icon,
-i.horizontally.flipped.icon {
-  transform: scale(-1, 1);
-}
-i.vertically.flipped.icon {
-  transform: scale(1, -1);
-}
+  i.circular.icon {
+    border-radius: 500em !important;
+    line-height: 1 !important;
 
-/*-------------------
-      Rotated
---------------------*/
+    padding: @circularPadding !important;
+    box-shadow: @circularShadow;
 
-i.rotated.icon,
-i.right.rotated.icon,
-i.clockwise.rotated.icon {
-  transform: rotate(90deg);
-}
-
-i.left.rotated.icon,
-i.counterclockwise.rotated.icon {
-  transform: rotate(-90deg);
+    width: @circularSize !important;
+    height: @circularSize !important;
+  }
+  & when (@variationIconInverted) {
+    i.circular.inverted.icon {
+      border: none;
+      box-shadow: none;
+    }
+  }
 }
 
-i.halfway.rotated.icon {
-  transform: rotate(180deg);
+& when (@variationIconFlipped) {
+  /*-------------------
+        Flipped
+  --------------------*/
+
+  i.flipped.icon,
+  i.horizontally.flipped.icon {
+    transform: scale(-1, 1);
+  }
+  i.vertically.flipped.icon {
+    transform: scale(1, -1);
+  }
 }
 
-/*--------------------------
-      Flipped & Rotated
----------------------------*/
-i.rotated.flipped.icon,
-i.right.rotated.flipped.icon,
-i.clockwise.rotated.flipped.icon {
-  transform: scale(-1, 1) rotate(90deg);
+& when (@variationIconRotated) {
+  /*-------------------
+        Rotated
+  --------------------*/
+
+  i.rotated.icon,
+  i.right.rotated.icon,
+  i.clockwise.rotated.icon {
+    transform: rotate(90deg);
+  }
+
+  i.left.rotated.icon,
+  i.counterclockwise.rotated.icon {
+    transform: rotate(-90deg);
+  }
+
+  i.halfway.rotated.icon {
+    transform: rotate(180deg);
+  }
 }
 
-i.left.rotated.flipped.icon,
-i.counterclockwise.rotated.flipped.icon {
-  transform: scale(-1, 1) rotate(-90deg);
+& when (@variationIconFlipped) and (@variationIconRotated) {
+  /*--------------------------
+        Flipped & Rotated
+  ---------------------------*/
+
+  i.rotated.flipped.icon,
+  i.right.rotated.flipped.icon,
+  i.clockwise.rotated.flipped.icon {
+    transform: scale(-1, 1) rotate(90deg);
+  }
+
+  i.left.rotated.flipped.icon,
+  i.counterclockwise.rotated.flipped.icon {
+    transform: scale(-1, 1) rotate(-90deg);
+  }
+
+  i.halfway.rotated.flipped.icon {
+    transform: scale(-1, 1) rotate(180deg);
+  }
+
+  i.rotated.vertically.flipped.icon,
+  i.right.rotated.vertically.flipped.icon,
+  i.clockwise.rotated.vertically.flipped.icon {
+    transform: scale(1, -1) rotate(90deg);
+  }
+
+  i.left.rotated.vertically.flipped.icon,
+  i.counterclockwise.rotated.vertically.flipped.icon {
+    transform: scale(1, -1) rotate(-90deg);
+  }
+
+  i.halfway.rotated.vertically.flipped.icon {
+    transform: scale(1, -1) rotate(180deg);
+  }
 }
 
-i.halfway.rotated.flipped.icon {
-  transform: scale(-1, 1) rotate(180deg);
+& when (@variationIconBordered) {
+  /*-------------------
+        Bordered
+  --------------------*/
+
+  i.bordered.icon {
+    line-height: 1;
+    vertical-align: baseline;
+
+    width: @borderedSize;
+    height: @borderedSize;
+    padding: @borderedVerticalPadding @borderedHorizontalPadding !important;
+    box-shadow: @borderedShadow;
+  }
+  & when (@variationIconInverted) {
+    i.bordered.inverted.icon {
+      border: none;
+      box-shadow: none;
+    }
+  }
 }
 
-i.rotated.vertically.flipped.icon,
-i.right.rotated.vertically.flipped.icon,
-i.clockwise.rotated.vertically.flipped.icon {
-  transform: scale(1, -1) rotate(90deg);
+& when (@variationIconInverted) {
+  /*-------------------
+        Inverted
+  --------------------*/
+
+  /* Inverted Shapes */
+  i.inverted.bordered.icon,
+  i.inverted.circular.icon {
+    background-color: @black;
+    color: @white;
+  }
+
+  i.inverted.icon {
+    color: @white;
+  }
 }
-
-i.left.rotated.vertically.flipped.icon,
-i.counterclockwise.rotated.vertically.flipped.icon {
-  transform: scale(1, -1) rotate(-90deg);
-}
-
-i.halfway.rotated.vertically.flipped.icon {
-  transform: scale(1, -1) rotate(180deg);
-}
-
-/*-------------------
-      Bordered
---------------------*/
-
-i.bordered.icon {
-  line-height: 1;
-  vertical-align: baseline;
-
-  width: @borderedSize;
-  height: @borderedSize;
-  padding: @borderedVerticalPadding @borderedHorizontalPadding !important;
-  box-shadow: @borderedShadow;
-}
-i.bordered.inverted.icon {
-  border: none;
-  box-shadow: none;
-}
-
-/*-------------------
-      Inverted
---------------------*/
-
-/* Inverted Shapes */
-i.inverted.bordered.icon,
-i.inverted.circular.icon {
-  background-color: @black;
-  color: @white;
-}
-
-i.inverted.icon {
-  color: @white;
-}
-
 
 /*-------------------
        Colors
@@ -246,13 +268,15 @@ each(@colors, {
   i.@{color}.icon.icon.icon.icon {
     color: @c;
   }
-  i.inverted.@{color}.icon.icon.icon.icon {
-    color: @l;
-  }
-  i.inverted.bordered.@{color}.icon.icon.icon.icon,
-  i.inverted.circular.@{color}.icon.icon.icon.icon {
-    background-color: @c;
-    color: @white;
+  & when (@variationIconInverted) {
+    i.inverted.@{color}.icon.icon.icon.icon {
+      color: @l;
+    }
+    i.inverted.bordered.@{color}.icon.icon.icon.icon,
+    i.inverted.circular.@{color}.icon.icon.icon.icon {
+      background-color: @c;
+      color: @white;
+    }
   }
 })
 
@@ -261,113 +285,90 @@ each(@colors, {
         Sizes
 --------------------*/
 
-i.mini.mini.mini.icon,
-i.mini.mini.mini.icons {
-  line-height: 1;
-  font-size: @mini;
-}
-i.tiny.tiny.tiny.icon,
-i.tiny.tiny.tiny.icons {
-  line-height: 1;
-  font-size: @tiny;
-}
-i.small.small.small.icon,
-i.small.small.small.icons {
-  line-height: 1;
-  font-size: @small;
-}
 i.icon,
 i.icons {
   font-size: @medium;
 }
-i.large.large.large.icon,
-i.large.large.large.icons {
-  line-height: 1;
-  vertical-align: middle;
-  font-size: @large;
-}
-i.big.big.big.icon,
-i.big.big.big.icons {
-  line-height: 1;
-  vertical-align: middle;
-  font-size: @big;
-}
-i.huge.huge.huge.icon,
-i.huge.huge.huge.icons {
-  line-height: 1;
-  vertical-align: middle;
-  font-size: @huge;
-}
-i.massive.massive.massive.icon,
-i.massive.massive.massive.icons {
-  line-height: 1;
-  vertical-align: middle;
-  font-size: @massive;
+& when not (@variationIconSizes = false) {
+  each(@variationIconSizes, {
+    @s: @@value;
+    i.@{value}.@{value}.@{value}.icon,
+    i.@{value}.@{value}.@{value}.icons {
+      line-height: 1;
+      vertical-align: middle;
+      font-size: @s;
+    }
+  })
 }
 
-/*******************************
-            Groups
-*******************************/
+& when (@variationIconGroups) or (@variationIconCorner) {
+  /*******************************
+              Groups
+  *******************************/
 
-i.icons {
-  display: inline-block;
-  position: relative;
-  line-height: 1;
-}
+  i.icons {
+    display: inline-block;
+    position: relative;
+    line-height: 1;
+  }
 
-i.icons .icon {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  margin: 0;
-}
+  i.icons .icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    margin: 0;
+  }
 
-i.icons .icon:first-child {
-  position: static;
-  width: auto;
-  height: auto;
-  vertical-align: top;
-  transform: none;
-}
+  i.icons .icon:first-child {
+    position: static;
+    width: auto;
+    height: auto;
+    vertical-align: top;
+    transform: none;
+  }
 
-/* Corner Icon */
-i.icons .corner.icon {
-  top: auto;
-  left: auto;
-  right: 0;
-  bottom: 0;
-  transform: none;
-  font-size: @cornerIconSize;
-  text-shadow: @cornerIconShadow;
-}
-i.icons .icon.corner[class*="top right"] {
-  top: 0;
-  left: auto;
-  right: 0;
-  bottom: auto;
-}
-i.icons .icon.corner[class*="top left"] {
-  top: 0;
-  left: 0;
-  right: auto;
-  bottom: auto;
-}
-i.icons .icon.corner[class*="bottom left"] {
-  top: auto;
-  left: 0;
-  right: auto;
-  bottom: 0;
-}
-i.icons .icon.corner[class*="bottom right"] {
-  top: auto;
-  left: auto;
-  right: 0;
-  bottom: 0;
-}
-
-i.icons .inverted.corner.icon {
-  text-shadow: @cornerIconInvertedShadow;
+  & when (@variationIconCorner) {
+    /* Corner Icon */
+    i.icons .corner.icon {
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 0;
+      transform: none;
+      font-size: @cornerIconSize;
+      text-shadow: @cornerIconShadow;
+    }
+    i.icons .icon.corner[class*="top right"] {
+      top: 0;
+      left: auto;
+      right: 0;
+      bottom: auto;
+    }
+    i.icons .icon.corner[class*="top left"] {
+      top: 0;
+      left: 0;
+      right: auto;
+      bottom: auto;
+    }
+    i.icons .icon.corner[class*="bottom left"] {
+      top: auto;
+      left: 0;
+      right: auto;
+      bottom: 0;
+    }
+    i.icons .icon.corner[class*="bottom right"] {
+      top: auto;
+      left: auto;
+      right: 0;
+      bottom: 0;
+    }
+    & when (@variationIconInverted) {
+      i.icons .inverted.corner.icon {
+        text-shadow: @cornerIconInvertedShadow;
+      }
+    }
+  }
 }
 
 .loadUIOverrides();

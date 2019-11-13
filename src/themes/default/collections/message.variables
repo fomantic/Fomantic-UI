@@ -224,3 +224,11 @@
   0 0 0 @borderWidth @successBorderColor inset,
   @floatingShadow
 ;
+
+@miniMessageSize: @relativeMini;
+@tinyMessageSize: @relativeTiny;
+@smallMessageSize: @relativeSmall;
+@largeMessageSize: @relativeLarge;
+@bigMessageSize: @relativeBig;
+@hugeMessageSize: @relativeHuge;
+@massiveMessageSize: @relativeMassive;
