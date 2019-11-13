@@ -51,6 +51,7 @@ module.exports = {
     'button',
     'container',
     'divider',
+    'emoji',
     'flag',
     'header',
     'icon',
