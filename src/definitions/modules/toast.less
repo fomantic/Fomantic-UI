@@ -25,131 +25,476 @@
 .ui.toast-container {
     position: fixed;
     z-index: 9999;
+  &.top {
+    &.right {
+      top: @toastContainerDistance;
+      right: @toastContainerDistance;
+      margin-left: @toastContainerDistance;
+    }
+    &.left {
+      top: @toastContainerDistance;
+      left: @toastContainerDistance;
+      margin-right: @toastContainerDistance;
+    }
+    &.center {
+      left: 50%;
+      transform: translate(-50%, 0);
+      top: @toastContainerDistance;
+    }
+  }
+  &.bottom {
+    &.right {
+      bottom: @toastContainerDistance;
+      right: @toastContainerDistance;
+      margin-left: @toastContainerDistance;
+    }
+    &.left {
+      bottom: @toastContainerDistance;
+      left: @toastContainerDistance;
+      margin-right: @toastContainerDistance;
+    }
+    &.center {
+      left: 50%;
+      transform: translate(-50%, 0);
+      bottom: @toastContainerDistance;
+    }
+  }
+  & .visible.toast-box,
+  .animating.toast-box,
+  .toast-box {
+    display: table !important;
+  }
+  & .toast-box {
+    margin-bottom: @toastBoxMarginBottom;
+    border-radius: @defaultBorderRadius;
+    cursor: default;
+    &:hover {
+      opacity: @toastOpacityOnHover;
+    }
+    &:not(.unclickable):hover {
+      cursor: @toastCursorOnHover;
+    }
+    &.floating,
+    &.hoverfloating:hover {
+      box-shadow: @floatingShadow;
+      border: @toastBoxBorder;
+    }
+    &.compact,
+    > .compact {
+      width: @toastWidth;
+    }
+    & > .ui.toast,
+      > .ui.message {
+      margin: @toastMargin;
+      position: relative;
+    }
+    & > .attached.progress {
+      z-index:1;
+      &.bottom {
+        margin: @toastMarginProgress -@toastLeftRightMargin @toastMarginBottom;
+      }
+      &.top {
+        margin: @toastMarginBottom -@toastLeftRightMargin @toastMarginProgress;
+      }
+      & .bar {
+        min-width: 0;
+      }
+      &.info .bar.bar.bar {
+        background: @toastInfoProgressColor;
+      }
+      &.warning .bar.bar.bar {
+        background: @toastWarningProgressColor;
+      }
+      &.success .bar.bar.bar {
+        background: @toastSuccessProgressColor;
+      }
+      .error .bar.bar.bar {
+        background: @toastErrorProgressColor;
+      }
+      &.neutral .bar.bar.bar {
+        background: @toastNeutralProgressColor;
+      }
+    }
+    & > .ui.message {
+      & > .close.icon {
+        top: @toastCloseTopDistance;
+        right: @toastCloseRightDistance;
+      }
+      & > .actions:last-child {
+        margin-bottom: @toastActionMargin;
+      }
+      &.icon {
+        align-items: inherit;
+        & > :not(.icon):not(.actions) {
+          padding-left: @toastIconMessageContentPadding;
+        }
+        & > .icon:not(.close) {
+          display: inline-block;
+          position: absolute;
+          width: @toastIconMessageWidth;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &:not(.vertical) {
+          &.actions > .icon:not(.close) {
+            top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+            transform: none;
+          }
+          &.icon.icon.icon {
+            display: block;
+          }
+        }
+      }
+    }
+    & .ui.toast {
+      & > .close.icon {
+        cursor: pointer;
+        margin: 0;
+        opacity: @toastCloseOpacity;
+        transition: @toastCloseTransition;
+        &:hover {
+          opacity: 1;
+        }
+      }
+      &.vertical > .close.icon {
+        margin-top: -@toastCloseTopDistance;
+        margin-right: -@toastCloseTopDistance;
+      }
+      &:not(.vertical) > .close.icon {
+        position: absolute;
+        top: @toastCloseTopDistance;
+        &:not(.left) {
+          right: @toastCloseRightDistance;
+        }
+        &.left {
+          margin-left: -@toastCloseRightDistance;
+        }
+      }
+    }
+    & .ui.card {
+      margin:0;
+      &.attached:not(.vertical) {
+        &.bottom {
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+          &.horizontal {
+            & > .image > img {
+              border-top-left-radius: 0;
+            }
+            & > .image:last-child > img {
+              border-top-right-radius: 0;
+            }
+          }
+        }
+        &.top {
+          border-bottom-left-radius: 0;
+          border-bottom-right-radius: 0;
+          &.horizontal {
+            & > .image > img {
+              border-bottom-left-radius: 0;
+            }
+            & > .image:last-child > img {
+              border-bottom-right-radius: 0;
+            }
+          }
+        }
+      }
+      &.horizontal.actions {
+        & > .image > img {
+          border-bottom-left-radius: 0;
+        }
+        & > .image:last-child > img {
+          border-bottom-right-radius: 0;
+        }
+      }
+    }
+    & .progressing {
+      animation-iteration-count: 1;
+      animation-timing-function: linear;
+      &.up {
+        animation-name: progressUp;
+      }
+      &.down {
+        animation-name: progressDown;
+      }
+      &.wait {
+        animation-name: progressWait;
+      }
+    }
+    &:hover .pausable.progressing {
+      animation-play-state: paused;
+    }
+    & .ui.toast:not(.vertical) {
+      display:block;
+    }
+    & :not(.comment) {
+      &:not(.card) .actions {
+        margin: @toastActionMarginTop @toastActionMargin @toastActionMargin @toastActionMargin;
+      }
+      & .actions {
+        padding: @toastActionPadding @toastActionPadding @toastActionPaddingBottom @toastActionPadding;
+        text-align: right;
+        &.attached:not(.vertical) {
+          margin-right: @toastLeftRightMargin;
+        }
+        &:not(.basic):not(.attached) {
+          background: @toastActionBackground;
+          border-top: @toastActionBorder;
+        }
+        &.left {
+          text-align: left;
+        }
+      }
+    }
+    & .vertical.actions > .button,
+    & > .vertical > .vertical.vertical,
+    & > .vertical.vertical.vertical {
+      display:flex;
+    }
+    & :not(.comment) .vertical.actions {
+      flex-direction: column;
+      & > .button {
+        justify-content: center;
+      }
+      &.attached > .button {
+        align-items: center;
+      }
+      &:not(.attached) {
+        border-top: 0;
+        margin-top: -@toastActionPaddingBottom;
+        margin-bottom: -@toastActionPaddingBottom;
+        margin-left: @toastActionMarginLeft;
+        justify-content: space-around;
+        &:not(.basic) {
+          border-left: @toastActionBorder;
+        }
+        & > .button:not(:last-child) {
+          margin-bottom: @toastActionMarginBottom;
+        }
+        &.top {
+          justify-content: flex-start;
+        }
+        &.bottom {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
 }
 
-.ui.top.right.toast-container {
-    top: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
+.ui.vertical.attached {
+  &:not(.left) {
+    &.card {
+      & > .image > img {
+        border-top-right-radius: 0;
+      }
+      &.horizontal > .image:last-child > img {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+    }
+    &.card,
+    &.toast {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+    &.actions {
+      border-top-right-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
+      & .button:first-child,
+        .button:last-child {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    &.message {
+      border-top-right-radius: 0;
+      border-bottom-left-radius: @toastBorderRadius;
+    }
+  }
+  &.left {
+    &.card {
+      & > .image > img {
+        border-top-left-radius: 0;
+      }
+      &.horizontal > .image > img {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+    }
+    &.card,
+    &.toast {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+    &.actions {
+      border-top-left-radius: @toastBorderRadius;
+      border-bottom-left-radius: @toastBorderRadius;
+      & .button:first-child,
+        .button:last-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      & .button:not(:first-child):not(:last-child) {
+        margin-left: -@toastLeftRightMargin;
+      }
+    }
+    &.message.message.message {
+      border-top-right-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
+    }
+  }
 }
 
-.ui.top.left.toast-container {
-    top: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.top.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: @toastContainerDistance;
-}
-
-.ui.bottom.right.toast-container {
-    bottom: @toastContainerDistance;
-    right: @toastContainerDistance;
-    margin-left: @toastContainerDistance;
-}
-
-.ui.bottom.left.toast-container {
-    bottom: @toastContainerDistance;
-    left: @toastContainerDistance;
-    margin-right: @toastContainerDistance;
-}
-
-.ui.bottom.center.toast-container {
-    left: 50%;
-    transform: translate(-50%, 0);
-    bottom: @toastContainerDistance;
+.ui.attached:not(.vertical) {
+  &:not(.top) {
+    &.actions {
+      border-bottom-left-radius: @toastBorderRadius;
+      border-bottom-right-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-bottom-left-radius: @toastBorderRadius;
+      }
+      & .button:last-child {
+        border-bottom-right-radius: @toastBorderRadius;
+      }
+    }
+  }
+  &.top {
+    &.actions {
+      border-top-left-radius: @toastBorderRadius;
+      border-top-right-radius: @toastBorderRadius;
+      & .button:first-child {
+        border-top-left-radius: @toastBorderRadius;
+      }
+      & .button:last-child {
+        border-top-right-radius: @toastBorderRadius;
+      }
+    }
+  }
 }
 
 /*******************************
             Toast
 *******************************/
 
-.toast {
-    display: block;
+.ui.toast {
+    display: none;
     border-radius: @defaultBorderRadius;
     padding: @toastPadding;
     margin: @toastMargin;
+    color: @toastInvertedTextColor;
+    background-color: @toastNeutralColor;
+  & > .content > .header {
+    font-weight: bold;
+    color: inherit;
+    margin:0;
+  }
+  &.info {
+    background-color: @toastInfoColor;
     color: @toastTextColor;
+  }
+  &.warning {
+    background-color: @toastWarningColor;
+    color: @toastTextColor;
+  }
+  &.success {
+    background-color: @toastSuccessColor;
+    color: @toastTextColor;
+  }
+  &.error {
+    background-color: @toastErrorColor;
+    color: @toastTextColor;
+  }
+  &.neutral {
+    background-color: @toastNeutralColor;
+    color: @toastNeutralTextColor;
+  }
+  & > .icon:not(.close) {
+    font-size: @toastIconFontSize;
+  }
+  &:not(.vertical) {
+    & > .icon:not(.close) {
+      position: absolute;
+      & + .content {
+        padding-left: @toastIconContentPadding;
+      }
+    }
+    & > .close.icon + .content {
+      padding-left: @toastCloseDistance;
+    }
+    & > .ui.image {
+      position: absolute;
+      &.avatar + .content {
+        padding-left: @toastAvatarImageContentPadding;
+        min-height: @toastAvatarImageHeight;
+      }
+      &.mini + .content {
+        padding-left: @toastMiniImageContentPadding;
+        min-height: @toastMiniImageHeight;
+      }
+      &.tiny + .content {
+        padding-left: @toastTinyImageContentPadding;
+        min-height: @toastTinyImageHeight;
+      }
+      &.small + .content {
+        padding-left: @toastSmallImageContentPadding;
+        min-height: @toastSmallImageHeight;
+      }
+    }
+    & > .centered.image,
+      > .centered.icon {
+      transform: translateY(-50%);
+      top: 50%;
+    }
+    &.actions > .centered.image{
+      top: e(%("calc(50%% - %d)", @toastImageCenteredAdjustment));
+    }
+    &.actions > .centered.icon {
+      top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
+    }
+  }
+  &.vertical {
+    & > .close.icon + .content {
+      padding-left: @toastCloseDistanceVertical;
+    }
+    & > .ui.image + .content,
+      > .icon:not(.close) + .content {
+      padding-left: @toastImageContentPadding;
+    }
+    & > .ui.image {
+      align-self: flex-start;
+      flex-shrink:0; /* IE11 fix */
+    }
+    & > .centered.image,
+      > .centered.icon {
+      align-self: center;
+    }
+  }
+
+  &.attached {
+    &.bottom {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+    &.top {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
 }
 
-.floating.toast,
-.hoverfloating.toast:hover {
-  box-shadow: @floatingShadow;
-}
 
-.hoverfloating.message:hover {
+.ui.hoverfloating.message:hover {
   box-shadow: 0 0 0 1px inset, @floatingShadow;
 }
 
-.center.toast-container .toast-box,
-.right.toast-container .toast-box {
+.ui.center.toast-container .toast-box,
+.ui.right.toast-container .toast-box {
     margin-left: auto;
 }
 
-.center.toast-container .toast-box {
+.ui.center.toast-container .toast-box {
     margin-right: auto;
-}
-
-.visible.toast-box,
-.animating.toast-box,
-.toast-box {
-    display: table !important;
-}
-
-
-.toast-container .compact {
-  display: block;
-  width: @toastWidth;
-}
-
-.toast-container .message,
-.toast:hover {
-    opacity: @toastOpacityOnHover;
-    cursor: @toastCursorOnHover;
-}
-
-
-.icon.toast .content {
-  padding-left: @toastIconContentPadding;
-}
-
-.toast > .content > .header {
-    font-weight: bold;
-}
-
-.info.toast {
-    background-color: @toastInfoColor;
-}
-
-.warning.toast {
-    background-color: @toastWarningColor;
-}
-
-.success.toast {
-    background-color: @toastSuccessColor;
-}
-
-.error.toast {
-    background-color: @toastErrorColor;
-}
-
-.toast-box .info.attached.progress .bar {
-    background: @toastInfoProgressColor !important;
-}
-
-.toast-box .warning.attached.progress .bar {
-    background: @toastWarningProgressColor !important;
-}
-
-.toast-box .success.attached.progress .bar {
-    background: @toastSuccessProgressColor !important;
-}
-
-.toast-box .error.attached.progress .bar {
-    background: @toastErrorProgressColor !important;
 }
 
 /*--------------
@@ -161,91 +506,65 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  .@{color}.toast {
+  .ui.@{color}.toast {
     background-color: @c;
+    color: @toastTextColor;
   }
-  .inverted.@{color}.toast,
-  .toast-box .inverted.@{color}.attached.progress .bar {
+  .ui.inverted.@{color}.toast,
+  .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
     background-color: @l;
+    color: @toastInvertedTextColor;
   }
 })
 
-.inverted.toast {
-  color: @toastInvertedTextColor;
+.ui.inverted.toast {
+  color: @toastTextColor;
+  background-color: @toastInvertedColor;
 }
 
-/*--------------
-      Icon
----------------*/
-
-.icon.toast > .icon:not(.close) {
-    display: inline-block;
-    vertical-align: @toastIconVerticalAlign;
-    font-size: @toastIconFontSize;
-    position: absolute;
-}
-
-
-
-.icon.toast > .content {
-    display: inline-block;
-    vertical-align: @toastContentVerticalAlign;
+@media only screen and (max-width: @mobileToastBreakpoint) {
+  .ui.toast-container .toast-box {
+    &.toast-box,
+    & > .compact,
+    & > .vertical > *,
+    & > * {
+      width: auto;
+      max-width: 100%;
+    }
+    & > *:not(.vertical) {
+      min-width: @mobileWidth;
+    }
+    & > .ui.card.horizontal,
+      > .vertical > .ui.horizontal.card {
+      min-width: initial;
+    }
+  }
 }
 
 /*---------------
    Progress Bar
  ----------------*/
-
-.toast-box .attached.progress .bar {
-    min-width: 0;
+@keyframes progressDown {
+  0% {
+    width: 100%;
+  }
+  100% {
+    width: 0;
+  }
 }
-
-.toast-box .active.progress .bar:after {
-  animation: progress-active 2s @defaultEasing infinite !important;
+@keyframes progressUp {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
-
-.toast-box {
-    margin-bottom: @toastMarginBottom;
-}
-
-.toast-box .toast,
-.toast-box .message {
-    margin-top: 0;
-    margin-bottom: 0;
-    position: relative;
-}
-.toast-box .attached.progress{
-    z-index:1;
-}
-
-.toast-box .bottom.attached.progress {
-  margin: -3px 0 @toastMarginBottom;
-}
-
-.toast-box .top.attached.progress {
-  margin: @toastMarginBottom 0 -3px;
-}
-
-/* --------
- Close Icon
- -----------*/
-
-.toast-box .message > .close.icon {
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-}
-
-
-.toast-box .toast>.close.icon {
-  cursor: pointer;
-  position: absolute;
-  margin: 0;
-  top: @toastCloseTopDistance;
-  right: @toastCloseRightDistance;
-  opacity: @toastCloseOpacity;
-  transition: @toastCloseTransition;
-}
-
-.toast-box .toast > .close.icon:hover {
-  opacity: 1;
+@keyframes progressWait {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
