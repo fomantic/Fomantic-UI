@@ -255,6 +255,7 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "login": "rmarchiori",
       "name": "Ricardo",
       "avatar_url": "https://avatars3.githubusercontent.com/u/13880165?v=4",
@@ -315,6 +316,15 @@
       "name": "Jose J Barneto",
       "avatar_url": "https://avatars0.githubusercontent.com/u/22933565?v=4",
       "profile": "https://github.com/josejbarneto",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "aardbol",
+      "name": "Leonardo",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/14614620?v=4",
+      "profile": "https://github.com/aardbol",
       "contributions": [
         "doc"
       ]

@@ -49,6 +49,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/josejbarneto"><img src="https://avatars0.githubusercontent.com/u/22933565?v=4" width="60px;" alt="Jose J Barneto"/><br /><sub><b>Jose J Barneto</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=josejbarneto" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/aardbol"><img src="https://avatars2.githubusercontent.com/u/14614620?v=4" width="60px;" alt="Leonardo"/><br /><sub><b>Leonardo</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=aardbol" title="Documentation">📖</a></td>
   </tr>
 </table>
 
