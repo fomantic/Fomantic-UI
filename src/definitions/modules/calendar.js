@@ -680,7 +680,8 @@ $.fn.calendar = function(parameters) {
 
             var mode = module.get.mode();
             var text = formatter.datetime(date, settings);
-            if (fireChange && settings.onChange.call(element, date, text, mode) === false) {
+
+            if (fireChange && settings.onBeforeChange.call(element, date, text, mode) === false) {
               return false;
             }
 
@@ -699,6 +700,10 @@ $.fn.calendar = function(parameters) {
 
             if (updateInput && $input.length) {
               $input.val(text);
+            }
+
+            if (fireChange) {
+              settings.onChange.call(element, date, text, mode);
             }
           },
           startDate: function (date, refreshCalendar) {
@@ -1299,8 +1304,11 @@ $.fn.calendar.settings = {
       var isTimeOnly = settings.type === 'time';
       var isDateOnly = settings.type.indexOf('time') < 0;
 
-      var words = text.split(settings.regExp.dateWords);
-      var numbers = text.split(settings.regExp.dateNumbers);
+      var words = text.split(settings.regExp.dateWords), word;
+      var numbers = text.split(settings.regExp.dateNumbers), number;
+
+      var parts;
+      var monthString;
 
       if (!isDateOnly) {
         //am/pm
@@ -1309,10 +1317,10 @@ $.fn.calendar.settings = {
 
         //time with ':'
         for (i = 0; i < numbers.length; i++) {
-          var number = numbers[i];
+          number = numbers[i];
           if (number.indexOf(':') >= 0) {
             if (hour < 0 || minute < 0) {
-              var parts = number.split(':');
+              parts = number.split(':');
               for (k = 0; k < Math.min(2, parts.length); k++) {
                 j = parseInt(parts[k]);
                 if (isNaN(j)) {
@@ -1333,14 +1341,13 @@ $.fn.calendar.settings = {
       if (!isTimeOnly) {
         //textual month
         for (i = 0; i < words.length; i++) {
-          var word = words[i];
+          word = words[i];
           if (word.length <= 0) {
             continue;
           }
-          word = word.substring(0, Math.min(word.length, 3));
           for (j = 0; j < settings.text.months.length; j++) {
-            var monthString = settings.text.months[j];
-            monthString = monthString.substring(0, Math.min(word.length, Math.min(monthString.length, 3))).toLowerCase();
+            monthString = settings.text.months[j];
+            monthString = monthString.substring(0, word.length).toLowerCase();
             if (monthString === word) {
               month = j + 1;
               break;
@@ -1484,9 +1491,13 @@ $.fn.calendar.settings = {
     }
   },
 
-  // callback when date changes, return false to cancel the change
-  onChange: function (date, text, mode) {
+  // callback before date is changed, return false to cancel the change
+  onBeforeChange: function (date, text, mode) {
     return true;
+  },
+
+  // callback when date changes
+  onChange: function (date, text, mode) {
   },
 
   // callback before show animation, return false to prevent show

@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.8",
+  "version": "2.8.1",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "keywords": [
     "fomantic-ui",
@@ -73,7 +73,8 @@
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^1.15.0",
-    "node-fetch": "^2.6.0"
+    "node-fetch": "^2.6.0",
+    "semver": "^6.3.0"
   },
   "engines": {
     "node": ">=10.15.3",
