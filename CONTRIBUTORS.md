@@ -44,6 +44,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   <tr>
     <td align="center"><a href="https://cruzdanilo.com"><img src="https://avatars2.githubusercontent.com/u/216636?v=4" width="60px;" alt="danilo neves cruz"/><br /><sub><b>danilo neves cruz</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=cruzdanilo" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/zombietfk"><img src="https://avatars1.githubusercontent.com/u/6123140?v=4" width="60px;" alt="ZombieTFK"/><br /><sub><b>ZombieTFK</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=zombietfk" title="Code">💻</a> <a href="https://github.com/fomantic/Fomantic-UI/commits?author=zombietfk" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://www.travel21.fr"><img src="https://avatars1.githubusercontent.com/u/24317434?v=4" width="60px;" alt="RenonDis"/><br /><sub><b>RenonDis</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=RenonDis" title="Documentation">📖</a></td>
   </tr>
 </table>
 

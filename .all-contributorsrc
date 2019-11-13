@@ -252,6 +252,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "login": "rmarchiori",
       "name": "Ricardo",
       "avatar_url": "https://avatars3.githubusercontent.com/u/13880165?v=4",
@@ -285,6 +286,15 @@
       "profile": "https://github.com/zombietfk",
       "contributions": [
         "code",
+        "doc"
+      ]
+    },
+    {
+      "login": "RenonDis",
+      "name": "RenonDis",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/24317434?v=4",
+      "profile": "https://www.travel21.fr",
+      "contributions": [
         "doc"
       ]
     }
