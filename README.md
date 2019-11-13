@@ -35,7 +35,12 @@ Fomantic allows developers to build beautiful websites fast, with **concise HTML
 ## 📡 Installation
 
 ```bash
-$ npm install fomantic-ui --save
+$ npm install fomantic-ui
+```
+
+Living on the edge? Try our nightly build and test new features and bug fixes early!
+```bash
+$ npm install fomantic-ui@nightly
 ```
 
 Fomantic UI includes an interactive installer to help setup your project.
@@ -59,8 +64,8 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 | Environment | Install Command                       | Repository                                                       | Third-Party |
 |-------------|---------------------------------------|------------------------------------------------------------------|-------------|
-| CSS Only    | `npm install --save fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)   |             |
-| LESS        | `npm install --save fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS) |             |
+| CSS Only    | `npm install fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)          |             |
+| LESS        | `npm install fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS)        |             |
 | SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS) | ✅          |
 
 ---
