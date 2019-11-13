@@ -39,6 +39,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://twitter.com/y_ryu0220"><img src="https://avatars0.githubusercontent.com/u/14275842?v=4" width="60px;" alt="ryamaguchi0220"/><br /><sub><b>ryamaguchi0220</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=ryamaguchi0220" title="Code">💻</a> <a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3Aryamaguchi0220" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/egoisticalgoat"><img src="https://avatars3.githubusercontent.com/u/18332886?v=4" width="60px;" alt="Pascal"/><br /><sub><b>Pascal</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=egoisticalgoat" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/rmarchiori"><img src="https://avatars3.githubusercontent.com/u/13880165?v=4" width="60px;" alt="Ricardo"/><br /><sub><b>Ricardo</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=rmarchiori" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/justkey007"><img src="https://avatars2.githubusercontent.com/u/36489637?v=4" width="60px;" alt="Juste Méthode B."/><br /><sub><b>Juste Méthode B.</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=justkey007" title="Code">💻</a></td>
   </tr>
 </table>
 
