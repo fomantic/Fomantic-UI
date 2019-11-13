@@ -460,6 +460,10 @@
     height: 100%;
     border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
   }
+  .ui.horizontal.cards > .card > .image:last-child > img,
+  .ui.card.horizontal > .image:last-child > img {
+    border-radius: 0 @defaultBorderRadius @defaultBorderRadius 0;
+  }
   .ui.horizontal.cards > .card > .content, .ui.horizontal.card > .content {
     flex-basis: 1px;
   }

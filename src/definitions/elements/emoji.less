@@ -1,0 +1,67 @@
+/*!
+ * # Fomantic UI - Emoji
+ * https://github.com/fomantic/Fomantic-UI/
+ *
+ *
+ * Released under the MIT license
+ * https://github.com/fomantic/Fomantic-UI/blob/master/LICENSE.md
+ *
+ */
+
+
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'element';
+@element : 'emoji';
+
+@import (multiple) '../../theme.config';
+
+
+/*******************************
+             Emoji
+*******************************/
+
+
+em[data-emoji] {
+  display: inline-block;
+  opacity: @opacity;
+
+  speak: none;
+  backface-visibility: hidden;
+
+  line-height: normal;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+
+/*******************************
+             States
+*******************************/
+
+em[data-emoji].disabled {
+  opacity: @disabledOpacity;
+}
+
+
+/*******************************
+           Variations
+*******************************/
+
+em[data-emoji].loading {
+  animation: loader @loadingDuration linear infinite;
+}
+
+
+/*-------------------
+         Link
+--------------------*/
+
+em[data-emoji].link {
+  cursor: pointer;
+}
+
+.loadUIOverrides();
