@@ -521,6 +521,12 @@
 @variationToastProgress: true;
 @variationToastIcon: true;
 @variationToastClose: true;
+@variationToastImage: true;
+@variationToastMessage: true;
+@variationToastCard: true;
+@variationToastActions: true;
+@variationToastVertical: true;
+@variationToastAttached: true;
 
 /* Loading */
 @variationTransitionDisabled: true;
