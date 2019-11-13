@@ -254,6 +254,7 @@
     {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       "login": "rmarchiori",
       "name": "Ricardo",
       "avatar_url": "https://avatars3.githubusercontent.com/u/13880165?v=4",
@@ -305,6 +306,15 @@
       "name": "RenonDis",
       "avatar_url": "https://avatars1.githubusercontent.com/u/24317434?v=4",
       "profile": "https://www.travel21.fr",
+      "contributions": [
+        "doc"
+      ]
+    },
+    {
+      "login": "josejbarneto",
+      "name": "Jose J Barneto",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/22933565?v=4",
+      "profile": "https://github.com/josejbarneto",
       "contributions": [
         "doc"
       ]

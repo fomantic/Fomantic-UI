@@ -47,6 +47,9 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://www.travel21.fr"><img src="https://avatars1.githubusercontent.com/u/24317434?v=4" width="60px;" alt="RenonDis"/><br /><sub><b>RenonDis</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=RenonDis" title="Documentation">📖</a></td>
     <td align="center"><a href="https://alexviscreanu.com"><img src="https://avatars2.githubusercontent.com/u/8055505?v=4" width="60px;" alt="Alex Viscreanu"/><br /><sub><b>Alex Viscreanu</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=aexvir" title="Code">💻</a> <a href="https://github.com/fomantic/Fomantic-UI/commits?author=aexvir" title="Documentation">📖</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/josejbarneto"><img src="https://avatars0.githubusercontent.com/u/22933565?v=4" width="60px;" alt="Jose J Barneto"/><br /><sub><b>Jose J Barneto</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=josejbarneto" title="Documentation">📖</a></td>
+  </tr>
 </table>
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
