@@ -40,7 +40,10 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://github.com/egoisticalgoat"><img src="https://avatars3.githubusercontent.com/u/18332886?v=4" width="60px;" alt="Pascal"/><br /><sub><b>Pascal</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=egoisticalgoat" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/rmarchiori"><img src="https://avatars3.githubusercontent.com/u/13880165?v=4" width="60px;" alt="Ricardo"/><br /><sub><b>Ricardo</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=rmarchiori" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/justkey007"><img src="https://avatars2.githubusercontent.com/u/36489637?v=4" width="60px;" alt="Juste Méthode B."/><br /><sub><b>Juste Méthode B.</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=justkey007" title="Code">💻</a></td>
+  </tr>
+  <tr>
     <td align="center"><a href="https://cruzdanilo.com"><img src="https://avatars2.githubusercontent.com/u/216636?v=4" width="60px;" alt="danilo neves cruz"/><br /><sub><b>danilo neves cruz</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=cruzdanilo" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/zombietfk"><img src="https://avatars1.githubusercontent.com/u/6123140?v=4" width="60px;" alt="ZombieTFK"/><br /><sub><b>ZombieTFK</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=zombietfk" title="Code">💻</a> <a href="https://github.com/fomantic/Fomantic-UI/commits?author=zombietfk" title="Documentation">📖</a></td>
   </tr>
 </table>
 

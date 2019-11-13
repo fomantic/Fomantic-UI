@@ -260,6 +260,7 @@
         "code"
       ]
     },
+    {
       "login": "justkey007",
       "name": "Juste Méthode B.",
       "avatar_url": "https://avatars2.githubusercontent.com/u/36489637?v=4",
@@ -268,12 +269,23 @@
         "code"
       ]
     },
+    {
       "login": "cruzdanilo",
       "name": "danilo neves cruz",
       "avatar_url": "https://avatars2.githubusercontent.com/u/216636?v=4",
       "profile": "https://cruzdanilo.com",
       "contributions": [
         "code"
+      ]
+    },
+    {
+      "login": "zombietfk",
+      "name": "ZombieTFK",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/6123140?v=4",
+      "profile": "https://github.com/zombietfk",
+      "contributions": [
+        "code",
+        "doc"
       ]
     }
   ],
