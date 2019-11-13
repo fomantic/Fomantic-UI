@@ -39,6 +39,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://twitter.com/y_ryu0220"><img src="https://avatars0.githubusercontent.com/u/14275842?v=4" width="60px;" alt="ryamaguchi0220"/><br /><sub><b>ryamaguchi0220</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=ryamaguchi0220" title="Code">💻</a> <a href="https://github.com/fomantic/Fomantic-UI/issues?q=author%3Aryamaguchi0220" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://github.com/egoisticalgoat"><img src="https://avatars3.githubusercontent.com/u/18332886?v=4" width="60px;" alt="Pascal"/><br /><sub><b>Pascal</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=egoisticalgoat" title="Documentation">📖</a></td>
     <td align="center"><a href="https://alexviscreanu.com"><img src="https://avatars2.githubusercontent.com/u/8055505?v=4" width="60px;" alt="Alex Viscreanu"/><br /><sub><b>Alex Viscreanu</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=aexvir" title="Code">💻</a></td>
+    <td align="center"><a href="https://shui91.github.io/portfolio"><img src="https://avatars2.githubusercontent.com/u/11592023?v=4" width="60px;" alt="Sherman Hui"/><br /><sub><b>Sherman Hui</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=shui91" title="Code">💻</a></td>
   </tr>
 </table>
 
