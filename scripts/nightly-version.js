@@ -40,9 +40,6 @@ const getNightlyVersion = async function () {
   const currentNightlyWithPre = semver.parse(await getCurrentNpmVersion())
   const currentNightly = `${currentNightlyWithPre.major}.${currentNightlyWithPre.minor}.${currentNightlyWithPre.patch}`
 
-  console.log('nextVersion    ', nextVersion);
-  console.log('currentNightly ', currentNightly);
-
   if (!semver.gt(nextVersion, currentNightly)) {
     if (semver.minor(nextVersion) === semver.minor(currentNightly)) {
       const preRelease = await getNpmPreRelease()
