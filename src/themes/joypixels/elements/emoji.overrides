@@ -3076,16 +3076,19 @@
 
 each(@size-map, {
   em[data-emoji].@{key} {
-    width: @baseSize * @value;
-    height: @baseSize * @value;
-    background-size: 1.5em * @value 1.5em * @value;
+    font-size: 1.5em * @value;
+    vertical-align: middle;
   }
 });
 
-em[data-emoji]:extend(em[data-emoji].small) {}
-
 each(@emoji-map,{
-  em[data-emoji="@{value}"],em[data-emoji=":@{value}:"]  {
+  & when (@variationEmojiColons) {
+    em[data-emoji=":@{value}:"]:before {
+      background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
+    }
+    em[data-emoji="@{value}"]:before:extend(em[data-emoji=":@{value}:"]:before) when (@variationEmojiNoColons) {}
+  }
+  em[data-emoji="@{value}"]:before when (@variationEmojiNoColons) and not (@variationEmojiColons) {
     background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
   }
 });

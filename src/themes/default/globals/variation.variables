@@ -531,3 +531,7 @@
 /* Loading */
 @variationTransitionDisabled: true;
 @variationTransitionLoading: true;
+
+/* Emojis */
+@variationEmojiColons: true;
+@variationEmojiNoColons: true;
