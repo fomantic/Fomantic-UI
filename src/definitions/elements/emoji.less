@@ -37,7 +37,9 @@ em[data-emoji]:before {
   line-height: @emojiLineHeight;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: contain;
+  & when not (@emojiFileType = 'svg') {
+    background-size: contain;
+  }
 }
 
 
