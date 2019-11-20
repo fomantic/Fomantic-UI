@@ -1429,7 +1429,7 @@
   @1f1ec-1f1e7: {
     countrycode: gb;
     class: united_kingdom;
-    aliasClass: false;
+    aliasClass: uk;
     aliasClass2: false;
   };
   @1f3f4-e0067-e0062-e0065-e006e-e0067-e007f: {
