@@ -1016,14 +1016,18 @@ each(@colors, {
     color: @sortableDisabledColor;
   }
   .ui.sortable.table > thead > tr > th:hover {
-    background: @sortableHoverBackground;
     color: @sortableHoverColor;
+  }
+  .ui.sortable.table:not(.basic) > thead > tr > th:hover {
+    background: @sortableHoverBackground;
   }
 
   /* Sorted */
   .ui.sortable.table thead th.sorted {
-    background: @sortableActiveBackground;
     color: @sortableActiveColor;
+  }
+  .ui.sortable.table:not(.basic) thead th.sorted {
+    background: @sortableActiveBackground;
   }
   .ui.sortable.table thead th.sorted:after {
     display: inline-block;
@@ -1031,20 +1035,26 @@ each(@colors, {
 
   /* Sorted Hover */
   .ui.sortable.table thead th.sorted:hover {
-    background: @sortableActiveHoverBackground;
     color: @sortableActiveHoverColor;
+  }
+  .ui.sortable.table:not(.basic) thead th.sorted:hover {
+    background: @sortableActiveHoverBackground;
   }
   & when (@variationTableInverted) {
     /* Inverted */
     .ui.inverted.sortable.table thead th.sorted {
-      background: @sortableInvertedActiveBackground;
       color: @sortableInvertedActiveColor;
     }
+    .ui.inverted.sortable.table:not(.basic) thead th.sorted {
+      background: @sortableInvertedActiveBackground;
+    }
     .ui.inverted.sortable.table > thead > tr > th:hover {
-      background: @sortableInvertedHoverBackground;
       color: @sortableInvertedHoverColor;
     }
-    .ui.inverted.sortable.table > thead > tr > th {
+    .ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
+      background: @sortableInvertedHoverBackground;
+    }
+    .ui.inverted.sortable.table:not(.basic) > thead > tr > th {
       border-left-color: @sortableInvertedBorderColor;
       border-right-color: @sortableInvertedBorderColor;
     }
