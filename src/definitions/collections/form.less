@@ -412,6 +412,23 @@
   background: @inputFocusBackground;
   box-shadow: @inputFocusBoxShadow;
 }
+& when (@variationInputAction) {
+  .ui.form .ui.action.input input:not([type]):focus,
+  .ui.form .ui.action.input input[type="date"]:focus,
+  .ui.form .ui.action.input input[type="datetime-local"]:focus,
+  .ui.form .ui.action.input input[type="email"]:focus,
+  .ui.form .ui.action.input input[type="number"]:focus,
+  .ui.form .ui.action.input input[type="password"]:focus,
+  .ui.form .ui.action.input input[type="search"]:focus,
+  .ui.form .ui.action.input input[type="tel"]:focus,
+  .ui.form .ui.action.input input[type="time"]:focus,
+  .ui.form .ui.action.input input[type="text"]:focus,
+  .ui.form .ui.action.input input[type="file"]:focus,
+  .ui.form .ui.action.input input[type="url"]:focus {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+}
 .ui.form textarea:focus {
   color: @textAreaFocusColor;
   border-color: @textAreaFocusBorderColor;
