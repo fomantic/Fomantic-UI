@@ -2079,6 +2079,7 @@ $.fn.dropdown = function(parameters) {
                   if(optionValue === null || optionValue === undefined) {
                     return;
                   }
+                  optionValue = module.escape.htmlEntities(optionValue);
                   if(isMultiple) {
                     if($.inArray( String(optionValue), value) !== -1) {
                       $selectedItem = ($selectedItem)
@@ -3072,6 +3073,7 @@ $.fn.dropdown = function(parameters) {
               values = module.get.values(),
               newValue
             ;
+            removedValue = module.escape.htmlEntities(removedValue);
             if( module.has.selectInput() ) {
               module.verbose('Input is <select> removing selected option', removedValue);
               newValue = module.remove.arrayValue(removedValue, values);
