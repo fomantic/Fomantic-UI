@@ -3661,10 +3661,9 @@ $.fn.dropdown = function(parameters) {
           },
           htmlEntities: function(string) {
               var
-                  badChars     = /[&<>"'`]/g,
+                  badChars     = /[<>"'`]/g,
                   shouldEscape = /[&<>"'`]/,
                   escape       = {
-                      "&": "&amp;",
                       "<": "&lt;",
                       ">": "&gt;",
                       '"': "&quot;",
@@ -3676,6 +3675,7 @@ $.fn.dropdown = function(parameters) {
                   }
               ;
               if(shouldEscape.test(string)) {
+                  string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
                   return string.replace(badChars, escapedChar);
               }
               return string;
@@ -4087,10 +4087,9 @@ $.fn.dropdown.settings.templates = {
       return string;
     }
     var
-        badChars     = /[&<>"'`]/g,
+        badChars     = /[<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
@@ -4102,6 +4101,7 @@ $.fn.dropdown.settings.templates = {
         }
     ;
     if(shouldEscape.test(string)) {
+      string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
       return string.replace(badChars, escapedChar);
     }
     return string;
