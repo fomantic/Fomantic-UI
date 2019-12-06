@@ -1017,7 +1017,7 @@ $.fn.dropdown = function(parameters) {
                 var
                   value = settings.templates.deQuote(item[fields.value]),
                   name = settings.templates.escape(
-                    item[fields.name] || item[fields.value],
+                    item[fields.name] || '',
                     settings.preserveHTML
                   )
                 ;
@@ -4157,10 +4157,10 @@ $.fn.dropdown.settings.templates = {
         if(option[fields.icon]) {
           html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
         }
-        html +=   escape(option[fields.name] || option[fields.value],preserveHTML);
+        html +=   escape(option[fields.name] || '', preserveHTML);
         html += '</div>';
       } else if (itemType === 'header') {
-        var groupName = escape(option[fields.name],preserveHTML),
+        var groupName = escape(option[fields.name] || '', preserveHTML),
             groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
         ;
         if(groupName !== '' || groupIcon !== '') {
