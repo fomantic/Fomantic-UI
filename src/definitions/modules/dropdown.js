@@ -2079,9 +2079,8 @@ $.fn.dropdown = function(parameters) {
                   if(optionValue === null || optionValue === undefined) {
                     return;
                   }
-                  optionValue = module.escape.htmlEntities(optionValue);
                   if(isMultiple) {
-                    if($.inArray( String(optionValue), value) !== -1) {
+                    if($.inArray(module.escape.htmlEntities(String(optionValue)), value) !== -1) {
                       $selectedItem = ($selectedItem)
                         ? $selectedItem.add($choice)
                         : $choice
