@@ -2099,7 +2099,7 @@ $.fn.dropdown = function(parameters) {
                       optionValue = optionValue.toLowerCase();
                       value = value.toLowerCase();
                     }
-                    if( String(optionValue) == String(value)) {
+                    if(module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
                       module.verbose('Found select item by value', optionValue, value);
                       $selectedItem = $choice;
                       return true;
