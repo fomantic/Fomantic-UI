@@ -205,7 +205,23 @@
   [data-tooltip][data-position="bottom right"]:hover:after {
     transform: scale(1) !important;
   }
-
+  & when (@variationPopupFixed) {
+    [data-tooltip][data-variation~="fixed"]:after {
+      white-space: normal;
+      width: @maxWidth;
+    }
+    [data-tooltip][data-variation*="wide fixed"]:after {
+      width: @wideWidth;
+    }
+    [data-tooltip][data-variation*="very wide fixed"]:after {
+      width: @veryWideWidth;
+    }
+    @media only screen and (max-width: @largestMobileScreen) {
+      [data-tooltip][data-variation~="fixed"]:after {
+        width: @maxWidth;
+      }
+    }
+  }
   & when (@variationPopupInverted) {
     /*--------------
         Inverted
