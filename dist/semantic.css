@@ -656,6 +656,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #f2f3f736;
 }
 
 @font-face {
