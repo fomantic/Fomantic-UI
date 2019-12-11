@@ -149,30 +149,27 @@
   [data-tooltip]:after {
     pointer-events: none;
     visibility: hidden;
+    opacity: 0;
+    transition:
+            transform @tooltipDuration @tooltipEasing,
+            opacity @tooltipDuration @tooltipEasing
+    ;
   }
   [data-tooltip]:before {
-    opacity: 0;
     transform: rotate(45deg) scale(0) !important;
     transform-origin: center top;
-    transition:
-      all @tooltipDuration @tooltipEasing
-    ;
   }
   [data-tooltip]:after {
-    opacity: 1;
     transform-origin: center bottom;
-    transition:
-      all @tooltipDuration @tooltipEasing
-    ;
   }
   [data-tooltip]:hover:before,
   [data-tooltip]:hover:after {
     visibility: visible;
     pointer-events: auto;
+    opacity: 1;
   }
   [data-tooltip]:hover:before {
     transform: rotate(45deg) scale(1) !important;
-    opacity: 1;
   }
 
   /* Animation Position */
