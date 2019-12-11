@@ -442,6 +442,7 @@
 @variationPopupWide: true;
 @variationPopupFluid: true;
 @variationPopupFlowing: true;
+@variationPopupFixed: true;
 @variationPopupSizes: @variationAllSizes;
 
 /* Progress */

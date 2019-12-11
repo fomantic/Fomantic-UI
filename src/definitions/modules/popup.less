@@ -721,6 +721,12 @@
   }
 }
 
+& when (@variationPopupFixed) {
+  .ui.fixed.popup {
+    width: @maxWidth;
+  }
+}
+
 & when (@variationPopupWide) {
   /*--------------
        Wide
@@ -728,15 +734,24 @@
 
   .ui.wide.popup {
     max-width: @wideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @wideWidth;
+    }
   }
   .ui[class*="very wide"].popup {
     max-width: @veryWideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @veryWideWidth;
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
     .ui.wide.popup,
     .ui[class*="very wide"].popup {
       max-width: @maxWidth;
+      &.fixed when (@variationPopupFixed) {
+        width:@maxWidth;
+      }
     }
   }
 }
