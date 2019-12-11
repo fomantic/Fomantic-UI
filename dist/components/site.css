@@ -13,7 +13,6 @@
              Page
 *******************************/
 
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin&display=swap');
 html,
 body {
   height: 100%;
@@ -30,7 +29,7 @@ body {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 14px;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 
@@ -124,32 +123,32 @@ a:hover {
 /* Site */
 ::-webkit-selection {
   background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 ::-moz-selection {
   background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 ::selection {
   background-color: #CCE2FF;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Form */
 textarea::-webkit-selection,
 input::-webkit-selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 textarea::-moz-selection,
 input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Force Simple Scrollbars */
@@ -201,3 +200,43 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/Lato_400_normal.eot);
+  
+/* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWg.eot */
+  src: local('☺'), url(../assets/fonts/Lato_400_normal.eot?#iefix) format('embedded-opentype'), 
+/* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWg.eot */ url(../assets/fonts/Lato_400_normal.woff2) format('woff2'), 
+/* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2 */ url(../assets/fonts/Lato_400_normal.woff) format('woff'), 
+/* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWA.woff */ url(../assets/fonts/Lato_400_normal.ttf) format('truetype'), 
+/* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWyWtFCc.ttf */ url(../assets/fonts/Lato_400_normal.svg#Lato_400_normal) format('svg');
+  
+/* http://fonts.gstatic.com/l/font?kit=S6uyw4BMUTPHjx4wWQ&skey=2d58b92a99e1c086&v=v16#Lato */
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../assets/fonts/Lato_400_italic.eot);
+  src: local('☺'), url(../assets/fonts/Lato_400_italic.eot?#iefix) format('embedded-opentype'), url(../assets/fonts/Lato_400_italic.woff2) format('woff2'), url(../assets/fonts/Lato_400_italic.woff) format('woff'), url(../assets/fonts/Lato_400_italic.ttf) format('truetype'), url(../assets/fonts/Lato_400_italic.svg#Lato_400_italic) format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../assets/fonts/Lato_700_italic.eot);
+  src: local('☺'), url(../assets/fonts/Lato_700_italic.eot?#iefix) format('embedded-opentype'), url(../assets/fonts/Lato_700_italic.woff2) format('woff2'), url(../assets/fonts/Lato_700_italic.woff) format('woff'), url(../assets/fonts/Lato_700_italic.ttf) format('truetype'), url(../assets/fonts/Lato_700_italic.svg#Lato_700_italic) format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../assets/fonts/Lato_700_normal.eot);
+  src: local('☺'), url(../assets/fonts/Lato_700_normal.eot?#iefix) format('embedded-opentype'), url(../assets/fonts/Lato_700_normal.woff2) format('woff2'), url(../assets/fonts/Lato_700_normal.woff) format('woff'), url(../assets/fonts/Lato_700_normal.ttf) format('truetype'), url(../assets/fonts/Lato_700_normal.svg#Lato_700_normal) format('svg');
+}

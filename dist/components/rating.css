@@ -64,14 +64,14 @@
 /* Active Icon */
 .ui.rating .active.icon {
   background: transparent;
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Partially Active Icon */
 .ui.rating .icon.partial.active {
-  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.85)), to(rgba(0, 0, 0, 0.15)));
-  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
+  background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.15)));
+  background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.7) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.7) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   -webkit-background-clip: text;
           background-clip: text;
   color: transparent;
@@ -82,7 +82,7 @@
 .ui.rating .icon.selected.active,
 .ui.rating .icon.selected.partial.active {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
   background-clip: unset;
 }
 

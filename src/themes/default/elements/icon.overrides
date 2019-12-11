@@ -1473,9 +1473,9 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.window.maximize.outline:before { content: "\f2d0"; }
   i.icon.window.minimize.outline:before { content: "\f2d1"; }
   i.icon.window.restore.outline:before { content: "\f2d2"; }
-  
 
-  
+
+
 }
 .loadOutlineIcons();
 
@@ -1499,7 +1499,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   }
 
   /* Icons */
-  i.icon.\35 00px:before { content: "\f26e"; font-family: @brandFontName; }
+  i.icon.notsure:before { content: "\f26e"; font-family: @brandFontName; }
   i.icon.accessible:before { content: "\f368"; font-family: @brandFontName; }
   i.icon.accusoft:before { content: "\f369"; font-family: @brandFontName; }
   i.icon.acquisitions.incorporated:before { content: "\f6af"; font-family: @brandFontName; }
@@ -1932,7 +1932,7 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.youtube:before { content: "\f167"; font-family: @brandFontName; }
   i.icon.youtube.square:before { content: "\f431"; font-family: @brandFontName; }
   i.icon.zhihu:before { content: "\f63f"; font-family: @brandFontName; }
-  
+
 
   /* Aliases */
   i.icon.american.express:before { content: "\f1f3"; font-family: @brandFontName; }
@@ -1987,6 +1987,6 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.yc:before { content: "\f23b"; font-family: @brandFontName; }
   i.icon.ycombinator:before { content: "\f23b"; font-family: @brandFontName; }
   i.icon.youtube.play:before { content: "\f167"; font-family: @brandFontName; }
-  
+
 }
 .loadBrandIcons();

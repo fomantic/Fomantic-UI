@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Theming - Semantic</title>
+
+
+    <link rel="stylesheet" type="text/css" href="../../dist/semantic.css">
+
+    <!--- Component JS -->
+    <script src="../assets/library/jquery.min.js"></script>
+    <script src="../assets/library/iframe-content.js"></script>
+    <script type="text/javascript" src="../../dist/semantic.js"></script>
+
+    <!--- Show Names -->
+    <script src="../assets/show-examples.js"></script>
+
+    <!--- Example CSS -->
+    <style>
+        body {
+            padding: 1em;
+        }
+    </style>
+
+    <!--- Example Javascript -->
+    <script>
+        $(document)
+            .ready(function () {
+                $('.special.card .image').dimmer({
+                    on: 'hover'
+                })
+                $('.star.rating')
+                    .rating()
+
+                $('.card .dimmer')
+                    .dimmer({
+                        on: 'hover'
+                    })
+
+            })
+
+    </script>
+</head>
+
+<body>
+<div class="ui piled segment"></div>
+<div class="ui stacked segment"></div>
+<div class="ui raised segment"></div>
+<div class="ui secondary segment"></div>
+<div class="ui tertiary segment"></div>
+<div class="ui compact stacked segment"></div>
+<div class="ui top attached segment"></div>
+<div class="ui attached segment"></div>
+<div class="ui bottom attached segment"></div>
+<div class="ui placeholder segment">
+    <div class="ui icon header">
+        <i class="pdf file outline icon"></i>
+        No documents are listed for this customer.
+    </div>
+    <div class="ui primary button">Add Document</div>
+</div>
+<div class="ui placeholder segment">
+    <div class="ui two column stackable center aligned grid">
+        <div class="ui vertical divider">Or</div>
+        <div class="middle aligned row">
+            <div class="column">
+                <div class="ui icon header">
+                    <i class="search icon"></i>
+                    Find Country
+                </div>
+                <div class="field">
+                    <div class="ui search">
+                        <div class="ui icon input">
+                            <input class="prompt" type="text" placeholder="Search countries...">
+                            <i class="search icon"></i>
+                        </div>
+                        <div class="results"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="ui icon header">
+                    <i class="world icon"></i>
+                    Add New Country
+                </div>
+                <div class="ui primary button">
+                    Create
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="ui segments">
+    <div class="ui segment">
+        <p>Top</p>
+    </div>
+    <div class="ui red segment">
+        <p>Middle</p>
+    </div>
+    <div class="ui blue segment">
+        <p>Middle</p>
+    </div>
+    <div class="ui green segment">
+        <p>Middle</p>
+    </div>
+    <div class="ui yellow segment">
+        <p>Bottom</p>
+    </div>
+</div>
+
+</body>
+</html>

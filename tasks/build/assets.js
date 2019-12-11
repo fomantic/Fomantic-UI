@@ -37,14 +37,21 @@ function buildAssets(src, config, callback) {
   if (callback === undefined) {
     callback = config;
     config   = src;
-    src      = config.paths.source.themes + '/**/assets/**/*.*';
-  }
+    src      = config.paths.source.themes + '/default/assets/**/*.*';
 
+  }
+  var src2      = config.paths.source.themes + '/../site/assets/**/*.*';
   // copy assets
   var assets         = () => build(src, config);
+  var siteAssets         = () => build(src2, config);
   assets.displayName = "Building Assets";
 
-  gulp.series(assets)(callback);
+  // gulp.series(assets)(callback);
+
+  gulp.parallel(
+      gulp.series(assets,),
+      gulp.series(siteAssets)
+  )(callback);
 }
 
 module.exports = function (callback) {
@@ -53,7 +60,7 @@ module.exports = function (callback) {
 
 module.exports.watch = function (type, config) {
   gulp
-    .watch([normalize(config.paths.source.themes + '/**/assets/**/*.*')])
+    .watch([normalize(config.paths.source.themes + '/default/assets/**/*.*')])
     .on('all', function (event, path) {
       console.log('Change in assets detected');
       return gulp.series((callback) => buildAssets(path, config, callback))();

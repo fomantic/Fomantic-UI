@@ -40,7 +40,6 @@
     "better-console": "1.0.1",
     "del": "^3.0.0",
     "extend": "^3.0.2",
-    "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-chmod": "^2.0.0",
     "gulp-clean-css": "^3.10.0",
@@ -73,6 +72,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^1.15.0",
+    "gulp": "^4.0.2",
     "node-fetch": "^2.6.0",
     "semver": "^6.3.0"
   },

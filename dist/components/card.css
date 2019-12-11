@@ -33,10 +33,10 @@
   min-height: 0;
   background: #FFFFFF;
   padding: 0;
-  border: none;
-  border-radius: 0.28571429rem;
-  -webkit-box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
-          box-shadow: 0 1px 3px 0 #D4D4D5, 0 0 0 1px #D4D4D5;
+  border: 1px solid #ececec;
+  border-radius: 0.6rem;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+          box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
   -webkit-transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: -webkit-box-shadow 0.1s ease, -webkit-transform 0.1s ease;
   transition: box-shadow 0.1s ease, transform 0.1s ease;
@@ -100,16 +100,16 @@
 
 .ui.cards > .card > :first-child,
 .ui.card > :first-child {
-  border-radius: 0.28571429rem 0.28571429rem 0 0 !important;
+  border-radius: 0.6rem 0.6rem 0 0 !important;
   border-top: none !important;
 }
 .ui.cards > .card > :last-child,
 .ui.card > :last-child {
-  border-radius: 0 0 0.28571429rem 0.28571429rem !important;
+  border-radius: 0 0 0.6rem 0.6rem !important;
 }
 .ui.cards > .card > :only-child,
 .ui.card > :only-child {
-  border-radius: 0.28571429rem !important;
+  border-radius: 0.6rem !important;
 }
 
 /*--------------
@@ -171,7 +171,7 @@
   display: block;
   margin: '';
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Default Header Size */
@@ -304,7 +304,7 @@
 /* Header */
 .ui.cards > .card > .content > a.header,
 .ui.card > .content > a.header {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.cards > .card > .content > a.header:hover,
 .ui.card > .content > a.header:hover {
@@ -318,7 +318,7 @@
 }
 .ui.cards > .card .meta > a:not(.ui):hover,
 .ui.card .meta > a:not(.ui):hover {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /*--------------
@@ -548,7 +548,7 @@ a.ui.card:hover,
   cursor: pointer;
   z-index: 5;
   background: #FFFFFF;
-  border: none;
+  border: 1px solid #ececec;
   -webkit-box-shadow: 0 1px 3px 0 #BCBDBD, 0 0 0 1px #D4D4D5;
           box-shadow: 0 1px 3px 0 #BCBDBD, 0 0 0 1px #D4D4D5;
   -webkit-transform: translateY(-3px);
@@ -1316,3 +1316,42 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 
+.ui.cards > .card,
+.ui.card {
+  border: none !important;
+}
+.ui.cards > .card > .content,
+.ui.card > .content,
+.card > .extra:not(.content) {
+  border: 1px solid #ececec;
+  border-top: none;
+}
+.ui[class*="bottom attached"].buttons .button:first-child {
+  border-radius: 0 0 0 0.6rem;
+}
+.ui[class*="bottom attached"].buttons .button:last-child {
+  border-radius: 0 0 0.6rem 0;
+}
+.ui.cards > .card > .extra,
+.ui.card > .extra {
+  border-top: none !important;
+}
+.ui.cards > .card > .buttons:last-child,
+.ui.card > .buttons:last-child,
+.ui.cards > .card > .button:last-child,
+.ui.card > .button:last-child {
+  margin-bottom: 0;
+}
+.ui.cards > .card > .buttons,
+.ui.card > .buttons,
+.ui.cards > .card > .button,
+.ui.card > .button {
+  margin: 0;
+  width: 100%;
+}
+.card > .ui.basic.buttons {
+  border: 1px solid #ececec;
+}
+.card > .ui[class*="bottom attached"].buttons {
+  border-top: none;
+}

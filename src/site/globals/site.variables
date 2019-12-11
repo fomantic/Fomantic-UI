@@ -1,0 +1,7 @@
+/*******************************
+     User Global Variables
+*******************************/
+@importGoogleFonts : false;
+@darkTextColor: rgba(0, 0, 0, 0.7);
+@textColor: rgba(0, 0, 0, 0.7);
+@borderColor: #ececec;

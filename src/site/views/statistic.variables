@@ -1,0 +1,7 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@valueFontWeight: @bold;
+@valueLineHeight: 1em;
+@valueColor: @darkTextColor;

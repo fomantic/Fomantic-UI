@@ -1,0 +1,29 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+.ui.attached.button {
+  border: 1px solid #ececec;
+}
+
+.ui.basic.buttons .button, .ui.basic.button {
+  font-weight: bold;
+}
+
+.ui.basic.buttons .button:hover {
+  box-shadow: none;
+}
+
+
+.ui.basic.buttons .active.button,
+.ui.basic.active.button {
+  background: rgba(0, 0, 0, 0.05);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.ui.basic.buttons .active.button {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}

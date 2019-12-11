@@ -55,9 +55,9 @@
   font-size: 1em;
   text-shadow: none;
   text-align: left;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
+  border: 1px solid #ececec;
   border-radius: 0.28571429rem;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
@@ -120,7 +120,7 @@
   border-top: none;
   line-height: 1em;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
   padding: 0.78571429rem 1.14285714rem !important;
   text-transform: none;
   font-weight: normal;
@@ -166,7 +166,7 @@
   text-transform: uppercase;
 }
 .ui.dropdown .menu > .header:not(.ui) {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.7);
   font-size: 0.78571429em;
 }
 .ui.dropdown .menu > .divider {
@@ -351,7 +351,7 @@
 select.ui.dropdown {
   height: 38px;
   padding: 0.5em;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid #ececec;
   visibility: visible;
 }
 
@@ -374,10 +374,10 @@ select.ui.dropdown {
   background: #FFFFFF;
   display: inline-block;
   padding: 0.78571429em 3.2em 0.78571429em 1em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
   -webkit-box-shadow: none;
           box-shadow: none;
-  border: 1px solid rgba(34, 36, 38, 0.15);
+  border: 1px solid #ececec;
   border-radius: 0.28571429rem;
   -webkit-transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: width 0.1s ease, -webkit-box-shadow 0.1s ease;
@@ -425,8 +425,8 @@ select.ui.dropdown {
   min-width: calc(100% + 2px);
   width: calc(100% + 2px);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
@@ -534,13 +534,13 @@ select.ui.dropdown {
 /* Active */
 .ui.selection.active.dropdown {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
 }
 .ui.selection.active.dropdown .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
 }
 
 /* Focus */
@@ -551,8 +551,8 @@ select.ui.dropdown {
 }
 .ui.selection.dropdown:focus .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
 }
 
 /* Visible */
@@ -564,13 +564,13 @@ select.ui.dropdown {
 /* Visible Hover */
 .ui.selection.active.dropdown:hover {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
 }
 .ui.selection.active.dropdown:hover .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 2px 3px 0 #ececec;
+          box-shadow: 0 2px 3px 0 #ececec;
 }
 
 /* Dropdown Icon */
@@ -665,7 +665,7 @@ select.ui.dropdown {
   opacity: 0.45;
 }
 .ui.active.search.dropdown input.search:focus + .text {
-  color: rgba(115, 115, 115, 0.87) !important;
+  color: rgba(115, 115, 115, 0.7) !important;
 }
 
 /* Search Menu */
@@ -740,8 +740,8 @@ select.ui.dropdown {
   font-size: 1em;
   padding: 0.35714286em 0.78571429em;
   margin: 0.14285714rem 0.28571429rem 0.14285714rem 0;
-  -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
-          box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.15) inset;
+  -webkit-box-shadow: 0 0 0 1px #ececec inset;
+          box-shadow: 0 0 0 1px #ececec inset;
 }
 
 /* Dropdown Icon */
@@ -871,11 +871,11 @@ select.ui.dropdown {
 
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
-  color: rgba(191, 191, 191, 0.87);
+  color: rgba(191, 191, 191, 0.7);
 }
 .ui.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
-  color: rgba(115, 115, 115, 0.87);
+  color: rgba(115, 115, 115, 0.7);
 }
 
 /*--------------------
@@ -1271,7 +1271,7 @@ select.ui.dropdown {
   margin: 0 !important;
   min-width: 100% !important;
   width: auto !important;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-top: 1px solid #ececec;
 }
 .ui.scrolling.dropdown .menu .item.item.item,
 .ui.dropdown .scrolling.menu > .item.item.item {
@@ -1458,8 +1458,8 @@ select.ui.dropdown {
           transform: rotate(45deg);
   width: 0.5em;
   height: 0.5em;
-  -webkit-box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: -1px -1px 0 0 #ececec;
+          box-shadow: -1px -1px 0 0 #ececec;
   background: #FFFFFF;
   z-index: 2;
 }
@@ -1610,8 +1610,8 @@ select.ui.dropdown {
 .ui.top.pointing.upward.dropdown .menu:after {
   top: 100% !important;
   bottom: auto !important;
-  -webkit-box-shadow: 1px 1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: 1px 1px 0 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 1px 1px 0 0 #ececec;
+          box-shadow: 1px 1px 0 0 #ececec;
   margin: -0.25em 0 0;
 }
 
@@ -1625,8 +1625,8 @@ select.ui.dropdown {
   top: auto !important;
   bottom: 0 !important;
   margin: 0 0 1em 0;
-  -webkit-box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: -1px -1px 0 0 #ececec;
+          box-shadow: -1px -1px 0 0 #ececec;
 }
 
 /* Left Pointing Upward */
@@ -1639,8 +1639,8 @@ select.ui.dropdown {
   top: auto !important;
   bottom: 0 !important;
   margin: 0 0 1em 0;
-  -webkit-box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
-          box-shadow: -1px -1px 0 0 rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: -1px -1px 0 0 #ececec;
+          box-shadow: -1px -1px 0 0 #ececec;
 }
 
 /*--------------------

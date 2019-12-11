@@ -4834,7 +4834,7 @@ i.icon.window.restore.outline:before {
 }
 
 /* Icons */
-i.icon.\35 00px:before {
+i.icon.notsure:before {
   content: "\f26e";
   font-family: 'brand-icons';
 }

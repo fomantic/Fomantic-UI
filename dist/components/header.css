@@ -23,7 +23,7 @@
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.header:first-child {
   margin-top: -0.14285714em;
@@ -670,7 +670,7 @@ a.ui.inverted.black.header.header.header:hover {
 
 .ui.dividing.header {
   padding-bottom: 0.21428571rem;
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  border-bottom: 1px solid #ececec;
 }
 .ui.dividing.header .sub.header {
   padding-bottom: 0.21428571rem;

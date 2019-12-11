@@ -1,0 +1,6 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+@attachBorder: 1px solid #ececec;
+@hoverBoxShadow: none;

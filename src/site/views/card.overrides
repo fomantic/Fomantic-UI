@@ -1,0 +1,43 @@
+/*******************************
+    User Variable Overrides
+*******************************/
+
+
+.ui.cards > .card, .ui.card {
+  border: none !important;
+}
+
+.ui.cards > .card > .content, .ui.card > .content, .card > .extra:not(.content)  {
+  border: @border;
+  border-top: none;
+}
+
+.ui[class*="bottom attached"].buttons .button:first-child {
+  border-radius: 0 0 0 @borderRadius;
+}
+
+.ui[class*="bottom attached"].buttons .button:last-child {
+  border-radius: 0 0 @borderRadius 0;
+}
+
+.ui.cards > .card > .extra, .ui.card > .extra {
+  border-top: none !important;
+}
+
+.ui.cards > .card > .buttons:last-child, .ui.card > .buttons:last-child, .ui.cards > .card > .button:last-child, .ui.card > .button:last-child {
+  margin-bottom: 0;
+}
+
+.ui.cards > .card > .buttons, .ui.card > .buttons, .ui.cards > .card > .button, .ui.card > .button {
+  margin: 0;
+  width: 100%;
+}
+
+
+.card > .ui.basic.buttons {
+  border: @border;
+}
+
+.card > .ui[class*="bottom attached"].buttons {
+  border-top: none;
+}

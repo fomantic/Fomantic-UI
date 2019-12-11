@@ -1,0 +1,58 @@
+/*******************************
+         Site Overrides
+*******************************/
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: url(../assets/fonts/Lato_400_normal.eot); /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWg.eot */
+  src: local('☺'),
+  url(../assets/fonts/Lato_400_normal.eot?#iefix) format('embedded-opentype'), /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWg.eot */
+  url(../assets/fonts/Lato_400_normal.woff2) format('woff2'), /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wXg.woff2 */
+  url(../assets/fonts/Lato_400_normal.woff) format('woff'), /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWA.woff */
+  url(../assets/fonts/Lato_400_normal.ttf) format('truetype'), /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWyWtFCc.ttf */
+  url(../assets/fonts/Lato_400_normal.svg#Lato_400_normal) format('svg'); /* http://fonts.gstatic.com/l/font?kit=S6uyw4BMUTPHjx4wWQ&skey=2d58b92a99e1c086&v=v16#Lato */
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 400;
+  src: url(../assets/fonts/Lato_400_italic.eot);
+  src: local('☺'),
+  url(../assets/fonts/Lato_400_italic.eot?#iefix) format('embedded-opentype'),
+  url(../assets/fonts/Lato_400_italic.woff2) format('woff2'),
+  url(../assets/fonts/Lato_400_italic.woff) format('woff'),
+  url(../assets/fonts/Lato_400_italic.ttf) format('truetype'),
+  url(../assets/fonts/Lato_400_italic.svg#Lato_400_italic) format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: italic;
+  font-weight: 700;
+  src: url(../assets/fonts/Lato_700_italic.eot);
+  src: local('☺'),
+  url(../assets/fonts/Lato_700_italic.eot?#iefix) format('embedded-opentype'),
+  url(../assets/fonts/Lato_700_italic.woff2) format('woff2'),
+  url(../assets/fonts/Lato_700_italic.woff) format('woff'),
+  url(../assets/fonts/Lato_700_italic.ttf) format('truetype'),
+  url(../assets/fonts/Lato_700_italic.svg#Lato_700_italic) format('svg');
+}
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: url(../assets/fonts/Lato_700_normal.eot);
+  src: local('☺'),
+  url(../assets/fonts/Lato_700_normal.eot?#iefix) format('embedded-opentype'),
+  url(../assets/fonts/Lato_700_normal.woff2) format('woff2'),
+  url(../assets/fonts/Lato_700_normal.woff) format('woff'),
+  url(../assets/fonts/Lato_700_normal.ttf) format('truetype'),
+  url(../assets/fonts/Lato_700_normal.svg#Lato_700_normal) format('svg'); 
+}
+

@@ -101,9 +101,9 @@
 .ui.statistic > .value {
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 4rem;
-  font-weight: normal;
+  font-weight: bold;
   line-height: 1em;
-  color: #1B1C1D;
+  color: rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
   text-align: center;
 }
@@ -117,7 +117,7 @@
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   font-size: 1em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
   text-transform: uppercase;
   text-align: center;
 }

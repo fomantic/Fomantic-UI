@@ -85,8 +85,8 @@
   padding: 1.25rem 1.5rem;
   -webkit-box-shadow: none;
           box-shadow: none;
-  color: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #ececec;
 }
 .ui.modal > .header:not(.ui) {
   font-size: 1.42857143rem;
@@ -175,7 +175,7 @@
 .ui.modal > .actions {
   background: #F9FAFB;
   padding: 1rem 1rem;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-top: 1px solid #ececec;
   text-align: right;
 }
 .ui.modal .actions > .button {
@@ -230,7 +230,7 @@
   .ui.modal > .close {
     top: 1.0535rem;
     right: 1rem;
-    color: rgba(0, 0, 0, 0.87);
+    color: rgba(0, 0, 0, 0.7);
   }
 }
 
@@ -328,10 +328,10 @@
   color: #FFFFFF;
 }
 .ui.inverted.dimmer > .basic.modal {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.dimmer > .ui.basic.modal > .header {
-  color: rgba(0, 0, 0, 0.85);
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Resort to margin positioning if legacy */
@@ -469,7 +469,7 @@
 .ui.fullscreen.modal > .close {
   top: 1.0535rem;
   right: 1rem;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.basic.fullscreen.modal > .close {
   color: #FFFFFF;

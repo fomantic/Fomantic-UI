@@ -207,13 +207,13 @@ body.pushable > .pusher {
 /* Shadow Direction */
 .ui.left.visible.sidebar,
 .ui.right.visible.sidebar {
-  -webkit-box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
-          box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 0 20px #ececec;
+          box-shadow: 0 0 20px #ececec;
 }
 .ui.top.visible.sidebar,
 .ui.bottom.visible.sidebar {
-  -webkit-box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
-          box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
+  -webkit-box-shadow: 0 0 20px #ececec;
+          box-shadow: 0 0 20px #ececec;
 }
 
 /* Visible On Load */
