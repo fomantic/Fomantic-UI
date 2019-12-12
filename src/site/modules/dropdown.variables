@@ -1,3 +1,5 @@
 /*******************************
     User Variable Overrides
 *******************************/
+
+@raisedShadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;

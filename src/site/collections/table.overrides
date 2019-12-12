@@ -1,3 +1,11 @@
 /*******************************
          Site Overrides
 *******************************/
+
+@media only screen and (max-width: 767.98px) {
+  .ui.ui.ui.ui.table:not(.unstackable) > tr, .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr, .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}

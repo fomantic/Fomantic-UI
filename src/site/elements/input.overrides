@@ -1,3 +1,26 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: @borderColor;
+}
+
+.ui[class*="right labeled"].input > input {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-color: @borderColor !important;
+}
+
+.ui.input.focus > input, .ui.input > input:focus {
+  -webkit-box-shadow: 1px 2px 8px -4px #a9acc999 inset;
+  box-shadow: 1px 2px 8px -4px #a9acc999 inset;
+}
+
+.ui.action.input:not([class*="left action"]) > input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: @borderColor;
+}

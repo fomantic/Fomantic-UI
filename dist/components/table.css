@@ -22,7 +22,7 @@
   border: 1px solid #ececec;
   -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
           box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
-  border-radius: 0.28571429rem;
+  border-radius: 0.6em;
   text-align: left;
   vertical-align: middle;
   color: rgba(0, 0, 0, 0.7);
@@ -76,13 +76,13 @@
   border-left: none;
 }
 .ui.table > thead > tr:first-child > th:first-child {
-  border-radius: 0.28571429rem 0 0 0;
+  border-radius: 0.6em 0 0 0;
 }
 .ui.table > thead > tr:first-child > th:last-child {
-  border-radius: 0 0.28571429rem 0 0;
+  border-radius: 0 0.6em 0 0;
 }
 .ui.table > thead > tr:first-child > th:only-child {
-  border-radius: 0.28571429rem 0.28571429rem 0 0;
+  border-radius: 0.6em 0.6em 0 0;
 }
 
 /* Footer */
@@ -109,15 +109,15 @@
 }
 .ui.table > tfoot > tr:first-child > th:first-child,
 .ui.table > tfoot > tr:first-child > td:first-child {
-  border-radius: 0 0 0 0.28571429rem;
+  border-radius: 0 0 0 0.6em;
 }
 .ui.table > tfoot > tr:first-child > th:last-child,
 .ui.table > tfoot > tr:first-child > td:last-child {
-  border-radius: 0 0 0.28571429rem 0;
+  border-radius: 0 0 0.6em 0;
 }
 .ui.table > tfoot > tr:first-child > th:only-child,
 .ui.table > tfoot > tr:first-child > td:only-child {
-  border-radius: 0 0 0.28571429rem 0.28571429rem;
+  border-radius: 0 0 0.6em 0.6em;
 }
 
 /* Table Row */
@@ -1106,7 +1106,7 @@
   margin-bottom: 0;
   top: 0;
   margin-top: 1em;
-  border-radius: 0.28571429rem 0.28571429rem 0 0;
+  border-radius: 0.6em 0.6em 0 0;
 }
 .ui.table[class*="top attached"]:first-child {
   margin-top: 0;
@@ -1120,7 +1120,7 @@
   margin-bottom: 1em;
   -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9, none;
           box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9, none;
-  border-radius: 0 0 0.28571429rem 0.28571429rem;
+  border-radius: 0 0 0.6em 0.6em;
 }
 .ui[class*="bottom attached"].table:last-child {
   margin-bottom: 0;
@@ -2191,3 +2191,12 @@
          Site Overrides
 *******************************/
 
+@media only screen and (max-width: 767.98px) {
+  .ui.ui.ui.ui.table:not(.unstackable) > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}

@@ -32872,8 +32872,8 @@ img.ui.bordered.image {
   transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  -webkit-box-shadow: none;
-  box-shadow: none;
+  -webkit-box-shadow: 2px 4px 8px -4px #a9acc999 inset;
+  box-shadow: 2px 4px 8px -4px #a9acc999 inset;
 }
 
 /*--------------------
@@ -33629,6 +33629,30 @@ img.ui.bordered.image {
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: #ececec;
+}
+
+.ui[class*="right labeled"].input > input {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-color: #ececec !important;
+}
+
+.ui.input.focus > input,
+.ui.input > input:focus {
+  -webkit-box-shadow: 1px 2px 8px -4px #a9acc999 inset;
+  box-shadow: 1px 2px 8px -4px #a9acc999 inset;
+}
+
+.ui.action.input:not([class*="left action"]) > input {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-color: #ececec;
+}
 /*!
  * # Fomantic-UI - Label
  * http://github.com/fomantic/Fomantic-UI/
@@ -48478,7 +48502,7 @@ Floated Menu / Item
   border: 1px solid #ececec;
   -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
   box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
-  border-radius: 0.28571429rem;
+  border-radius: 0.6em;
   text-align: left;
   vertical-align: middle;
   color: rgba(0, 0, 0, 0.7);
@@ -48538,15 +48562,15 @@ Floated Menu / Item
 }
 
 .ui.table > thead > tr:first-child > th:first-child {
-  border-radius: 0.28571429rem 0 0 0;
+  border-radius: 0.6em 0 0 0;
 }
 
 .ui.table > thead > tr:first-child > th:last-child {
-  border-radius: 0 0.28571429rem 0 0;
+  border-radius: 0 0.6em 0 0;
 }
 
 .ui.table > thead > tr:first-child > th:only-child {
-  border-radius: 0.28571429rem 0.28571429rem 0 0;
+  border-radius: 0.6em 0.6em 0 0;
 }
 
 /* Footer */
@@ -48577,17 +48601,17 @@ Floated Menu / Item
 
 .ui.table > tfoot > tr:first-child > th:first-child,
 .ui.table > tfoot > tr:first-child > td:first-child {
-  border-radius: 0 0 0 0.28571429rem;
+  border-radius: 0 0 0 0.6em;
 }
 
 .ui.table > tfoot > tr:first-child > th:last-child,
 .ui.table > tfoot > tr:first-child > td:last-child {
-  border-radius: 0 0 0.28571429rem 0;
+  border-radius: 0 0 0.6em 0;
 }
 
 .ui.table > tfoot > tr:first-child > th:only-child,
 .ui.table > tfoot > tr:first-child > td:only-child {
-  border-radius: 0 0 0.28571429rem 0.28571429rem;
+  border-radius: 0 0 0.6em 0.6em;
 }
 
 /* Table Row */
@@ -49737,7 +49761,7 @@ Floated Menu / Item
   margin-bottom: 0;
   top: 0;
   margin-top: 1em;
-  border-radius: 0.28571429rem 0.28571429rem 0 0;
+  border-radius: 0.6em 0.6em 0 0;
 }
 
 .ui.table[class*="top attached"]:first-child {
@@ -49753,7 +49777,7 @@ Floated Menu / Item
   margin-bottom: 1em;
   -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9, none;
   box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9, none;
-  border-radius: 0 0 0.28571429rem 0.28571429rem;
+  border-radius: 0 0 0.6em 0.6em;
 }
 
 .ui[class*="bottom attached"].table:last-child {
@@ -51019,6 +51043,16 @@ Floated Menu / Item
 /*******************************
          Site Overrides
 *******************************/
+
+@media only screen and (max-width: 767.98px) {
+  .ui.ui.ui.ui.table:not(.unstackable) > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr,
+  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+}
 /*!
  * # Fomantic-UI - Ad
  * http://github.com/fomantic/Fomantic-UI/
@@ -56139,8 +56173,8 @@ a.inverted.ui.card:hover,
 *******************************/
 
 .ui.toggle.checkbox label::before {
-  -webkit-box-shadow: inset 5px 5px 15px -4px #A9ACC9;
-  box-shadow: inset 5px 5px 15px -4px #A9ACC9;
+  -webkit-box-shadow: 2px 4px 8px -4px #a9acc999 inset;
+  box-shadow: 2px 4px 8px -4px #a9acc999 inset;
 }
 /*!
  * # Fomantic-UI - Dimmer
@@ -56700,8 +56734,8 @@ body.dimmable > .dimmer {
   font-size: 1em;
   text-shadow: none;
   text-align: left;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
   border: 1px solid #ececec;
   border-radius: 0.28571429rem;
   -webkit-transition: opacity 0.1s ease;
@@ -57091,8 +57125,8 @@ select.ui.dropdown {
   min-width: calc(100% + 2px);
   width: calc(100% + 2px);
   border-radius: 0 0 0.28571429rem 0.28571429rem;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
@@ -57225,14 +57259,14 @@ select.ui.dropdown {
 
 .ui.selection.active.dropdown {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
 }
 
 .ui.selection.active.dropdown .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
 }
 
 /* Focus */
@@ -57245,8 +57279,8 @@ select.ui.dropdown {
 
 .ui.selection.dropdown:focus .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
 }
 
 /* Visible */
@@ -57260,14 +57294,14 @@ select.ui.dropdown {
 
 .ui.selection.active.dropdown:hover {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
 }
 
 .ui.selection.active.dropdown:hover .menu {
   border-color: #96C8DA;
-  -webkit-box-shadow: 0 2px 3px 0 #ececec;
-  box-shadow: 0 2px 3px 0 #ececec;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
 }
 
 /* Dropdown Icon */

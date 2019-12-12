@@ -767,6 +767,6 @@
 *******************************/
 
 .ui.toggle.checkbox label::before {
-  -webkit-box-shadow: inset 5px 5px 15px -4px #A9ACC9;
-          box-shadow: inset 5px 5px 15px -4px #A9ACC9;
+  -webkit-box-shadow: 2px 4px 8px -4px #a9acc999 inset;
+          box-shadow: 2px 4px 8px -4px #a9acc999 inset;
 }
