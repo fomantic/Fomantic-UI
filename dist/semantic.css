@@ -664,13 +664,7 @@ body {
   font-style: normal;
   font-weight: 400;
   src: url(../assets/fonts/Lato_400_normal.eot);
-  /* http://fonts.gstatic.com/s/lato/v16/S6uyw4BMUTPHjx4wWg.eot */
-  src: local('☺'), url(../assets/fonts/Lato_400_normal.eot?#iefix) format('embedded-opentype'), 
- url(../assets/fonts/Lato_400_normal.woff2) format('woff2'), 
- url(../assets/fonts/Lato_400_normal.woff) format('woff'), 
- url(../assets/fonts/Lato_400_normal.ttf) format('truetype'), 
- url(../assets/fonts/Lato_400_normal.svg#Lato_400_normal) format('svg');
-  /* http://fonts.gstatic.com/l/font?kit=S6uyw4BMUTPHjx4wWQ&skey=2d58b92a99e1c086&v=v16#Lato */
+  src: local('☺'), url(../assets/fonts/Lato_400_normal.eot?#iefix) format('embedded-opentype'), url(../assets/fonts/Lato_400_normal.woff2) format('woff2'), url(../assets/fonts/Lato_400_normal.woff) format('woff'), url(../assets/fonts/Lato_400_normal.ttf) format('truetype'), url(../assets/fonts/Lato_400_normal.svg#Lato_400_normal) format('svg');
 }
 
 @font-face {
@@ -32883,15 +32877,15 @@ img.ui.bordered.image {
 /* browsers require these rules separate */
 
 .ui.input > input::-webkit-input-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 .ui.input > input::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 .ui.input > input:-ms-input-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 /*******************************
@@ -32972,17 +32966,17 @@ img.ui.bordered.image {
 
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 .ui.input.focus > input::-moz-placeholder,
 .ui.input > input:focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 .ui.input.focus > input:-ms-input-placeholder,
 .ui.input > input:focus:-ms-input-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 /*--------------------
@@ -41298,27 +41292,27 @@ span.ui.massive.text {
 /* browsers require these rules separate */
 
 .ui.form ::-webkit-input-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 .ui.form :-ms-input-placeholder {
-  color: rgba(191, 191, 191, 0.7) !important;
+  color: rgba(128, 128, 128, 0.7) !important;
 }
 
 .ui.form ::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 .ui.form :focus::-webkit-input-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 .ui.form :focus:-ms-input-placeholder {
-  color: rgba(115, 115, 115, 0.7) !important;
+  color: rgba(51, 51, 51, 0.7) !important;
 }
 
 .ui.form :focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 /*--------------------
@@ -45464,8 +45458,8 @@ span.ui.massive.text {
   border-radius: 0 0 0.28571429rem 0.28571429rem;
   background: #FFFFFF;
   margin: 0 0 0;
-  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
+  -webkit-box-shadow: 5px 5px 15px -4px #A9ACC9;
+  box-shadow: 5px 5px 15px -4px #A9ACC9;
   -webkit-box-orient: vertical !important;
   -webkit-box-direction: normal !important;
   -ms-flex-direction: column !important;
@@ -49144,7 +49138,7 @@ Floated Menu / Item
 .ui.definition.table tr td.definition {
   background: rgba(0, 0, 0, 0.03);
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(0, 0, 0, 0.7);
   text-transform: '';
   -webkit-box-shadow: '';
   box-shadow: '';
@@ -57439,7 +57433,7 @@ select.ui.dropdown {
 }
 
 .ui.active.search.dropdown input.search:focus + .text {
-  color: rgba(115, 115, 115, 0.7) !important;
+  color: rgba(51, 51, 51, 0.7) !important;
 }
 
 /* Search Menu */
@@ -57666,12 +57660,12 @@ select.ui.dropdown {
 
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 
 .ui.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 /*--------------------

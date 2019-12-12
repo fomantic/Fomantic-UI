@@ -550,7 +550,7 @@
 .ui.definition.table tr td.definition {
   background: rgba(0, 0, 0, 0.03);
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(0, 0, 0, 0.7);
   text-transform: '';
   -webkit-box-shadow: '';
           box-shadow: '';

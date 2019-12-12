@@ -364,22 +364,22 @@
 
 /* browsers require these rules separate */
 .ui.form ::-webkit-input-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 .ui.form :-ms-input-placeholder {
-  color: rgba(191, 191, 191, 0.7) !important;
+  color: rgba(128, 128, 128, 0.7) !important;
 }
 .ui.form ::-moz-placeholder {
-  color: rgba(191, 191, 191, 0.7);
+  color: rgba(128, 128, 128, 0.7);
 }
 .ui.form :focus::-webkit-input-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 .ui.form :focus:-ms-input-placeholder {
-  color: rgba(115, 115, 115, 0.7) !important;
+  color: rgba(51, 51, 51, 0.7) !important;
 }
 .ui.form :focus::-moz-placeholder {
-  color: rgba(115, 115, 115, 0.7);
+  color: rgba(51, 51, 51, 0.7);
 }
 
 /*--------------------
