@@ -9,3 +9,14 @@
     box-shadow: none;
   }
 }
+
+.ui.inverted.table {
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF55, 5px 5px 15px -4px #A9ACC9;
+}
+
+
+.ui.definition.table > thead:not(.full-width) > tr > th:first-child {
+  -webkit-box-shadow: -1px -1px 0 0.5px #FFFFFF;
+  *box-shadow: -1px -1px 0 0.5px #FFFFFF;
+
+}

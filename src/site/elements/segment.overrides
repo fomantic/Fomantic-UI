@@ -1,3 +1,17 @@
 /*******************************
          Site Overrides
 *******************************/
+
+.ui.piled.segments:before, .ui.piled.segment:before {
+  border-radius: 0.6rem;
+}
+
+.ui.piled.segments:after, .ui.piled.segments:before, .ui.piled.segment:after, .ui.piled.segment:before {
+  border-radius: 0.6rem;
+}
+
+.ui.stacked.segments:before, .ui.stacked.segments:after, .ui.stacked.segment:before, .ui.stacked.segment:after {
+  border-radius: 0.6rem;
+  border-top-color: transparent!important;
+}
+
