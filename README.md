@@ -14,6 +14,7 @@ components folder can be ignored
 install:
 
     npm install --global gulp-cli
+    npm install
 
 to build:
 

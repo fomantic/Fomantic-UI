@@ -5,7 +5,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f2f3f736;
+  background: #f4f6fb78;
 }
 
 @font-face {

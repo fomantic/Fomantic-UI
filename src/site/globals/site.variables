@@ -1,10 +1,10 @@
 /*******************************
      User Global Variables
 *******************************/
-@importGoogleFonts: false;
+
 @darkTextColor: rgba(0, 0, 0, 0.7);
 @textColor: rgba(0, 0, 0, 0.7);
 @borderColor: #ececec;
 @inputPlaceholderColor: lighten(@inputColor, 50);
 @inputPlaceholderFocusColor: lighten(@inputColor, 20);
-
+@importGoogleFonts: false;
