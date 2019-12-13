@@ -658,9 +658,9 @@ $.fn.dropdown = function(parameters) {
               }
             }
             $menu
-              .on('mouseenter' + eventNamespace, selector.item, module.event.item.mouseenter)
+              .on((hasTouch ? 'touchstart' : 'mouseenter') + eventNamespace, selector.item, module.event.item.mouseenter)
               .on('mouseleave' + eventNamespace, selector.item, module.event.item.mouseleave)
-              .on(clickEvent   + eventNamespace, selector.item, module.event.item.click)
+              .on('click'      + eventNamespace, selector.item, module.event.item.click)
             ;
           },
           intent: function() {
