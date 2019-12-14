@@ -15,7 +15,6 @@
 @variationButtonInverted: true;
 @variationButtonSocial: true;
 @variationButtonFloated: true;
-@variationButtonFloated: true;
 @variationButtonCompact: true;
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
