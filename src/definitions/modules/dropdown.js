@@ -1975,8 +1975,8 @@ $.fn.dropdown = function(parameters) {
                     value    = ( $option.attr('value') !== undefined )
                       ? $option.attr('value')
                       : name,
-                    text     = ( $option.data('text') !== undefined )
-                      ? $option.data('text')
+                    text     = ( $option.data(metadata.text) !== undefined )
+                      ? $option.data(metadata.text)
                       : name,
                     group = $option.parent('optgroup')
                   ;
