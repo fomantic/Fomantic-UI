@@ -822,7 +822,7 @@ $.fn.form = function(parameters) {
             if(validation[name] === undefined || validation[name].rules === undefined) {
               validation[name] = {
                 rules: []
-              }
+              };
             }
             var
               newValidation = {
@@ -843,7 +843,7 @@ $.fn.form = function(parameters) {
             }
             // For each new rule, check if there's not already one with the same type
             $.each(newValidation.rules, function (_index, rule) {
-              if (validation[name].rules.findIndex(function(item) { return item.type == rule.type }) == -1) {
+              if ($.grep(validation[name].rules, function(item){ return item.type == rule.type; }).length == 0) {
                 validation[name].rules.push(rule);
               }
             });
