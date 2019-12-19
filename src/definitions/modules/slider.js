@@ -353,13 +353,13 @@ $.fn.slider = function(parameters) {
                 thumbSmoothVal = module.determine.smoothValueFromEvent(event)
               ;
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(module.is.range() && settings.preventCrossover) {
                   value = Math.min(secondThumbVal, value);
                   thumbSmoothVal = Math.min(secondThumbVal, thumbSmoothVal);
                 }
                 thumbVal = value;
               } else {
-                if(settings.preventCrossover) {
+                if(module.is.range() && settings.preventCrossover) {
                   value = Math.max(thumbVal, value);
                   thumbSmoothVal = Math.max(thumbVal, thumbSmoothVal);
                 }
@@ -926,12 +926,12 @@ $.fn.slider = function(parameters) {
                 $currThumb = newValue <= module.get.currentThumbValue() ? $thumb : $secondThumb;
               }
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(module.is.range() && settings.preventCrossover) {
                   newValue = Math.min(module.secondThumbVal, newValue);
                 }
                 module.thumbVal = newValue;
               } else {
-                if(settings.preventCrossover) {
+                if(module.is.range() && settings.preventCrossover) {
                   newValue = Math.max(module.thumbVal, newValue);
                 }
                 module.secondThumbVal = newValue;
