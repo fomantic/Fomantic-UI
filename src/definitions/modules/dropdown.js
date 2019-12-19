@@ -4077,7 +4077,7 @@ $.fn.dropdown.settings = {
     header      : 'header',
     divider     : 'divider',
     groupIcon   : '',
-    unfiltered  : 'unfiltered
+    unfiltered  : 'unfiltered'
   }
 
 };
