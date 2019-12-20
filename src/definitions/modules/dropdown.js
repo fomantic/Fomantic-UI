@@ -848,7 +848,7 @@ $.fn.dropdown = function(parameters) {
                   text,
                   value
                 ;
-                if($choice.hasClass(className.unfiltered)) {
+                if($choice.hasClass(className.unfilterable)) {
                   results.push(this);
                   return true;
                 }
@@ -4077,7 +4077,7 @@ $.fn.dropdown.settings = {
     header      : 'header',
     divider     : 'divider',
     groupIcon   : '',
-    unfiltered  : 'unfiltered'
+    unfilterable : 'unfilterable'
   }
 
 };
