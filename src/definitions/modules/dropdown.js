@@ -2075,7 +2075,7 @@ $.fn.dropdown = function(parameters) {
                     return;
                   }
                   if(isMultiple) {
-                    if($.inArray( String(optionValue), value) !== -1) {
+                    if($.inArray(module.escape.htmlEntities(String(optionValue)), value) !== -1) {
                       $selectedItem = ($selectedItem)
                         ? $selectedItem.add($choice)
                         : $choice
@@ -2094,7 +2094,7 @@ $.fn.dropdown = function(parameters) {
                       optionValue = optionValue.toLowerCase();
                       value = value.toLowerCase();
                     }
-                    if( String(optionValue) == String(value)) {
+                    if(module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
                       module.verbose('Found select item by value', optionValue, value);
                       $selectedItem = $choice;
                       return true;
@@ -3067,6 +3067,7 @@ $.fn.dropdown = function(parameters) {
               values = module.get.values(),
               newValue
             ;
+            removedValue = module.escape.htmlEntities(removedValue);
             if( module.has.selectInput() ) {
               module.verbose('Input is <select> removing selected option', removedValue);
               newValue = module.remove.arrayValue(removedValue, values);
@@ -3656,10 +3657,9 @@ $.fn.dropdown = function(parameters) {
           },
           htmlEntities: function(string) {
               var
-                  badChars     = /[&<>"'`]/g,
+                  badChars     = /[<>"'`]/g,
                   shouldEscape = /[&<>"'`]/,
                   escape       = {
-                      "&": "&amp;",
                       "<": "&lt;",
                       ">": "&gt;",
                       '"': "&quot;",
@@ -3671,6 +3671,7 @@ $.fn.dropdown = function(parameters) {
                   }
               ;
               if(shouldEscape.test(string)) {
+                  string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
                   return string.replace(badChars, escapedChar);
               }
               return string;
@@ -4083,10 +4084,9 @@ $.fn.dropdown.settings.templates = {
       return string;
     }
     var
-        badChars     = /[&<>"'`]/g,
+        badChars     = /[<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
@@ -4098,6 +4098,7 @@ $.fn.dropdown.settings.templates = {
         }
     ;
     if(shouldEscape.test(string)) {
+      string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
       return string.replace(badChars, escapedChar);
     }
     return string;
