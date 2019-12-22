@@ -37,18 +37,21 @@ const getNpmPreRelease = async function () {
 
 const getNightlyVersion = async function () {
   const nextVersion = await getGitHubVersion()
-  const currentNightly = await getCurrentNpmVersion()
+  const currentNightlyWithPre = semver.parse(await getCurrentNpmVersion())
+  const currentNightly = `${currentNightlyWithPre.major}.${currentNightlyWithPre.minor}.${currentNightlyWithPre.patch}`
 
-  if (semver.minor(nextVersion) === semver.minor(currentNightly)) {
-    const preRelease = await getNpmPreRelease()
+  if (!semver.gt(nextVersion, currentNightly)) {
+    if (semver.minor(nextVersion) === semver.minor(currentNightly)) {
+      const preRelease = await getNpmPreRelease()
 
-    return semver.inc(
-      `${nextVersion}-${preRelease[0]}.${preRelease[1]}`,
-      'prerelease'
-    )
-  } else {
-    return `${nextVersion}-beta.1`
+      return semver.inc(
+        `${nextVersion}-${preRelease[0]}.${preRelease[1]}`,
+        'prerelease'
+      )
+    }
   }
+
+  return `${nextVersion}-beta.0`
 }
 
 getNightlyVersion()

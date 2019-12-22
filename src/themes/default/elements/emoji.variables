@@ -5,8 +5,8 @@
 /*--------------
     Path
 ---------------*/
-@emojiPath: "https://twemoji.maxcdn.com/v/latest/72x72/";
-@emojiFileType: "png";
+@emojiPath: "https://twemoji.maxcdn.com/v/latest/svg/";
+@emojiFileType: "svg";
 
 /*--------------
    Definition
@@ -15,7 +15,4 @@
 /* Emoji Variables */
 @opacity: 1;
 @loadingDuration: 2s;
-
-/* Size */
-@baseSize: 24px;
-
+@emojiLineHeight: @headerLineHeight;

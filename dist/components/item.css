@@ -387,8 +387,8 @@
 
 
 /*-------------------
-       Aligned
---------------------*/
+         Aligned
+  --------------------*/
 
 .ui.items > .item > .image + [class*="top aligned"].content {
   -ms-flex-item-align: start;
@@ -404,8 +404,8 @@
 }
 
 /*--------------
-     Relaxed
----------------*/
+       Relaxed
+  ---------------*/
 
 .ui.relaxed.items > .item {
   margin: 1.5em 0;
@@ -415,8 +415,8 @@
 }
 
 /*-------------------
-      Divided
---------------------*/
+        Divided
+  --------------------*/
 
 .ui.divided.items > .item {
   border-top: 1px solid rgba(34, 36, 38, 0.15);
@@ -444,8 +444,8 @@
 }
 
 /*-------------------
-        Link
---------------------*/
+          Link
+  --------------------*/
 
 .ui.items a.item:hover,
 .ui.link.items > .item:hover {
@@ -463,10 +463,31 @@
 .ui.items > .item {
   font-size: 1em;
 }
+.ui.mini.items > .item {
+  font-size: 0.78571429em;
+}
+.ui.tiny.items > .item {
+  font-size: 0.85714286em;
+}
+.ui.small.items > .item {
+  font-size: 0.92857143em;
+}
+.ui.large.items > .item {
+  font-size: 1.14285714em;
+}
+.ui.big.items > .item {
+  font-size: 1.28571429em;
+}
+.ui.huge.items > .item {
+  font-size: 1.42857143em;
+}
+.ui.massive.items > .item {
+  font-size: 1.71428571em;
+}
 
 /*---------------
-   Unstackable
-----------------*/
+     Unstackable
+  ----------------*/
 
 @media only screen and (max-width: 767.98px) {
   .ui.unstackable.items > .item > .image,
@@ -476,8 +497,8 @@
 }
 
 /*--------------
-     Inverted
----------------*/
+       Inverted
+  ---------------*/
 
 .ui.inverted.items > .item {
   background: transparent;

@@ -200,8 +200,8 @@
 
 
 /*--------------------
-        Threaded
----------------------*/
+          Threaded
+  ---------------------*/
 
 .ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
@@ -211,8 +211,8 @@
 }
 
 /*--------------------
-        Minimal
----------------------*/
+          Minimal
+  ---------------------*/
 
 .ui.minimal.comments .comment .actions {
   opacity: 0;
@@ -233,6 +233,9 @@
         Sizes
 --------------------*/
 
+.ui.comments {
+  font-size: 1rem;
+}
 .ui.mini.comments {
   font-size: 0.78571429rem;
 }
@@ -241,9 +244,6 @@
 }
 .ui.small.comments {
   font-size: 0.92857143rem;
-}
-.ui.comments {
-  font-size: 1rem;
 }
 .ui.large.comments {
   font-size: 1.14285714rem;
@@ -259,8 +259,8 @@
 }
 
 /*-------------------
-        Inverted
---------------------*/
+          Inverted
+  --------------------*/
 
 .ui.inverted.comments .comment {
   background-color: #1B1C1D;

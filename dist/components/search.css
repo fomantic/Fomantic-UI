@@ -183,8 +183,8 @@
 }
 
 /*--------------------
-       Loading
----------------------*/
+         Loading
+  ---------------------*/
 
 .ui.loading.search .input > i.icon:before {
   position: absolute;
@@ -251,8 +251,8 @@
 }
 
 /*--------------------
-        Disabled
-----------------------*/
+          Disabled
+  ----------------------*/
 
 
 /* Disabled */
@@ -269,8 +269,8 @@
 
 
 /*--------------
-    Selection
----------------*/
+      Selection
+  ---------------*/
 
 .ui.search.selection .prompt {
   border-radius: 0.28571429rem;
@@ -302,8 +302,8 @@
 }
 
 /*--------------
-    Category
----------------*/
+      Category
+  ---------------*/
 
 .ui.category.search .results {
   width: 28em;
@@ -372,8 +372,8 @@
 
 
 /*-------------------
-     Left / Right
---------------------*/
+       Left / Right
+  --------------------*/
 
 .ui[class*="left aligned"].search > .results {
   right: auto;
@@ -396,14 +396,17 @@
       Sizes
 ---------------*/
 
+.ui.search {
+  font-size: 1em;
+}
 .ui.mini.search {
   font-size: 0.78571429em;
 }
+.ui.tiny.search {
+  font-size: 0.85714286em;
+}
 .ui.small.search {
   font-size: 0.92857143em;
-}
-.ui.search {
-  font-size: 1em;
 }
 .ui.large.search {
   font-size: 1.14285714em;

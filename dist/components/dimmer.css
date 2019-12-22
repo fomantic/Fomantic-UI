@@ -63,7 +63,7 @@
 }
 
 /* Loose Coupling */
-.ui.segment > .ui.dimmer {
+.ui.segment > .ui.dimmer:not(.page) {
   border-radius: inherit !important;
 }
 
@@ -116,8 +116,8 @@
 
 
 /*--------------
-    Legacy
----------------*/
+      Legacy
+  ---------------*/
 
 
 /* Animating / Active / Visible */
@@ -128,8 +128,8 @@
 }
 
 /*--------------
-    Alignment
----------------*/
+      Alignment
+  ---------------*/
 
 .ui[class*="top aligned"].dimmer {
   -webkit-box-pack: start;
@@ -143,8 +143,8 @@
 }
 
 /*--------------
-      Page
----------------*/
+        Page
+  ---------------*/
 
 .ui.page.dimmer {
   position: fixed;
@@ -164,8 +164,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-    Blurring
----------------*/
+      Blurring
+  ---------------*/
 
 .blurring.dimmable > :not(.dimmer) {
   -webkit-filter: initial;
@@ -189,8 +189,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-    Aligned
----------------*/
+      Aligned
+  ---------------*/
 
 .ui.dimmer > .top.aligned.content > * {
   vertical-align: top;
@@ -200,8 +200,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-    Shades
----------------*/
+      Shades
+  ---------------*/
 
 .medium.medium.medium.medium.medium.dimmer {
   background-color: rgba(0, 0, 0, 0.65);
@@ -214,8 +214,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.dimmer {
   background-color: rgba(255, 255, 255, 0.85);
@@ -226,8 +226,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
- Inverted Shades
----------------*/
+     Inverted Shades
+    ---------------*/
 
 .medium.medium.medium.medium.medium.inverted.dimmer {
   background-color: rgba(255, 255, 255, 0.65);
@@ -240,8 +240,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-     Simple
----------------*/
+       Simple
+  ---------------*/
 
 
 /* Displays without javascript */
@@ -270,8 +270,8 @@ body.dimmable > .dimmer {
 }
 
 /*--------------
-     Partially
-----------------*/
+       Partially
+  ----------------*/
 
 .ui[class*="top dimmer"],
 .ui[class*="center dimmer"],

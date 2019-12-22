@@ -435,7 +435,7 @@
   /* Labeled and action input states */
   each(@formStates, {
     @state: replace(@key, '@', '');
-    @borderColor: @formStates[@@state][color];
+    @borderColor: @formStates[@@state][borderColor];
 
     .ui.form > .field.@{state} > .ui.action.input > .ui.button,
     .ui.form > .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,

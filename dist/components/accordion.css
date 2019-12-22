@@ -111,8 +111,8 @@
 
 
 /*--------------
-     Styled
----------------*/
+       Styled
+  ---------------*/
 
 .ui.styled.accordion {
   width: 600px;
@@ -196,8 +196,8 @@
 
 
 /*--------------
-     Fluid
----------------*/
+       Fluid
+  ---------------*/
 
 .ui.fluid.accordion,
 .ui.fluid.accordion .accordion {
@@ -205,8 +205,8 @@
 }
 
 /*--------------
-     Inverted
----------------*/
+       Inverted
+  ---------------*/
 
 .ui.inverted.accordion .title:not(.ui) {
   color: rgba(255, 255, 255, 0.9);

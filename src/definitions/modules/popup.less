@@ -143,39 +143,32 @@
     margin-bottom: @tooltipDistanceAway;
   }
 
-/* Animation */
-[data-tooltip]:before,
-[data-tooltip]:after {
-  pointer-events: none;
-  visibility: hidden;
-  opacity: 0;
-  transition:
-    all @tooltipDuration @tooltipEasing
-;
-}
-[data-tooltip]:after,
-[data-tooltip]:hover:before {
-    transition-delay: @tooltipDelay;
-}
-[data-tooltip]:before,
-[data-tooltip]:hover:after {
-    transition-delay: 0s;
-}
-[data-tooltip]:before {
-  transform: rotate(45deg) scale(0);
-  transform-origin: center top;
-}
-[data-tooltip]:after {
-  transform-origin: center bottom;
-}
-[data-tooltip]:hover:before,
-[data-tooltip]:hover:after {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: auto;
-}
-[data-tooltip]:hover:before {
-  transform: rotate(45deg) scale(1);
+  /* Animation */
+  [data-tooltip]:before,
+  [data-tooltip]:after {
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transition:
+            transform @tooltipDuration @tooltipEasing,
+            opacity @tooltipDuration @tooltipEasing
+    ;
+  }
+  [data-tooltip]:before {
+    transform: rotate(45deg) scale(0) !important;
+    transform-origin: center top;
+  }
+  [data-tooltip]:after {
+    transform-origin: center bottom;
+  }
+  [data-tooltip]:hover:before,
+  [data-tooltip]:hover:after {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+  }
+  [data-tooltip]:hover:before {
+    transform: rotate(45deg) scale(1) !important;
   }
 
   /* Animation Position */
@@ -209,7 +202,23 @@
   [data-tooltip][data-position="bottom right"]:hover:after {
     transform: scale(1);
   }
-
+  & when (@variationPopupFixed) {
+    [data-tooltip][data-variation~="fixed"]:after {
+      white-space: normal;
+      width: @maxWidth;
+    }
+    [data-tooltip][data-variation*="wide fixed"]:after {
+      width: @wideWidth;
+    }
+    [data-tooltip][data-variation*="very wide fixed"]:after {
+      width: @veryWideWidth;
+    }
+    @media only screen and (max-width: @largestMobileScreen) {
+      [data-tooltip][data-variation~="fixed"]:after {
+        width: @maxWidth;
+      }
+    }
+  }
   & when (@variationPopupInverted) {
     /*--------------
         Inverted
@@ -735,6 +744,12 @@
   }
 }
 
+& when (@variationPopupFixed) {
+  .ui.fixed.popup {
+    width: @maxWidth;
+  }
+}
+
 & when (@variationPopupWide) {
   /*--------------
        Wide
@@ -742,15 +757,24 @@
 
   .ui.wide.popup {
     max-width: @wideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @wideWidth;
+    }
   }
   .ui[class*="very wide"].popup {
     max-width: @veryWideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @veryWideWidth;
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
     .ui.wide.popup,
     .ui[class*="very wide"].popup {
       max-width: @maxWidth;
+      &.fixed when (@variationPopupFixed) {
+        width:@maxWidth;
+      }
     }
   }
 }

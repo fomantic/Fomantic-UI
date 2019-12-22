@@ -25,16 +25,21 @@
 
 
 em[data-emoji] {
-  display: inline-block;
   opacity: @opacity;
 
   speak: none;
   backface-visibility: hidden;
+}
 
-  line-height: normal;
-  vertical-align: middle;
+em[data-emoji]:before {
+  content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
+  display: inline-block;
+  line-height: @emojiLineHeight;
   background-repeat: no-repeat;
   background-position: center center;
+  & when not (@emojiFileType = 'svg') {
+    background-size: contain;
+  }
 }
 
 
@@ -51,7 +56,7 @@ em[data-emoji].disabled {
            Variations
 *******************************/
 
-em[data-emoji].loading {
+em[data-emoji].loading:before {
   animation: loader @loadingDuration linear infinite;
 }
 
