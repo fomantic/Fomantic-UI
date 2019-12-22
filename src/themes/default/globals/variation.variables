@@ -425,6 +425,7 @@
 @variationModalAligned: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
+@variationModalCloseInside: true;
 @variationModalSizes: @variationAllSizes;
 
 /* Popup */

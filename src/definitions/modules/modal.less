@@ -442,7 +442,7 @@
   }
 }
 
-& when (@variationModalFullscreen) or (@variationModalOverlay) {
+& when (@variationModalFullscreen) or (@variationModalOverlay) or (@variationModalCloseInside) {
   /*--------------
      Full Screen
   ---------------*/
@@ -461,9 +461,11 @@
       border-radius:0;
     }
   }
+  .ui.modal > .close.inside + .header,
   .ui.fullscreen.modal > .header {
     padding-right: @closeHitbox;
   }
+  .ui.modal > .close.inside,
   .ui.fullscreen.modal > .close {
     top: @innerCloseTop;
     right: @innerCloseRight;
@@ -562,7 +564,8 @@
       color: @invertedCloseColor;
     }
   }
-  & when (@variationModalFullscreen) {
+  & when (@variationModalFullscreen) or (@variationModalCloseInside) {
+    .ui.inverted.modal > .close.inside,
     .ui.inverted.fullscreen.modal > .close {
       color: @invertedCloseColor;
     }
