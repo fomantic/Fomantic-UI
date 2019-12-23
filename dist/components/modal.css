@@ -463,9 +463,11 @@
   top: 0;
   border-radius: 0;
 }
+.ui.modal > .close.inside + .header,
 .ui.fullscreen.modal > .header {
   padding-right: 2.25rem;
 }
+.ui.modal > .close.inside,
 .ui.fullscreen.modal > .close {
   top: 1.0535rem;
   right: 1rem;
@@ -740,6 +742,7 @@
     color: #FFFFFF;
   }
 }
+.ui.inverted.modal > .close.inside,
 .ui.inverted.fullscreen.modal > .close {
   color: #FFFFFF;
 }
