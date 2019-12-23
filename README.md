@@ -25,7 +25,7 @@ A community fork of the popular Semantic-UI framework.
 
 > *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
 >
-> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the > v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
+> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
 >
 > To be clear merging back into SUI is still our intention, read [this comment](https://github.com/fomantic/Fomantic-UI/issues/319#issuecomment-461736399) for more info
 
@@ -44,7 +44,7 @@ Living on the edge? Try our nightly build and test new features and bug fixes ea
 $ npm install fomantic-ui@nightly
 ```
 
-Fomantic UI includes an interactive installer to help setup your project.
+Fomantic includes an interactive installer to help setup your project.
 
 * For more details on setup visit our [getting started guide](http://fomantic-ui.com/introduction/getting-started.html).
 * To learn more about theming please read our [theming guide](http://fomantic-ui.com/usage/theming.html)
@@ -75,18 +75,18 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 ### 💡 Getting Help
 
-If you have a usage question please **do not post** post it to GitHub Issues. You can ask for usage help via our [Discord](https://discord.gg/YChxjJ3) server.
-Please only create Github issues for bug's and feature requests or any other related issue.
+If your looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
+or you can ask in our community [Discord](https://discord.gg/YChxjJ3) server.
 
 ### 🐛 Submitting Bugs and Enhancements
 [GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submitting a bug make sure you do the following:
 * Check to see if the issue has already been raised.
-* [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a test case for your bug. If a bug is apparent in the docs, that's ok as a test case, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
+* [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a reproducible example of the bug. If a bug is apparent in the docs you can simply link to the docs example, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
 * If submitting an enhancement try and create it in the [JSFiddle](https://jsfiddle.net/31d6y7mn) if not it's fine but explain clearly what you want.
 
 ### 📝 Pull Requests
 
-Before creating a pull request be sure to read the [contributing](CONTRIBUTING.md) guide, this is where we explain everything you need to know about contributing to Fomantic-UI.
+Before creating a pull request be sure to read the [Contributing Guide](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md), this is where we explain everything you need to know about contributing to Fomantic.
 
 ## Sponsors
 
