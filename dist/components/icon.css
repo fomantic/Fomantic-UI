@@ -521,7 +521,7 @@ i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
 }
 /*
-* Font Awesome 5.11.2 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.12.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -742,6 +742,9 @@ i.icon.backward:before {
 }
 i.icon.bacon:before {
   content: "\f7e5";
+}
+i.icon.bahai:before {
+  content: "\f666";
 }
 i.icon.balance.scale:before {
   content: "\f24e";
@@ -995,6 +998,9 @@ i.icon.car.crash:before {
 i.icon.car.side:before {
   content: "\f5e4";
 }
+i.icon.caravan:before {
+  content: "\f8ff";
+}
 i.icon.caret.down:before {
   content: "\f0d7";
 }
@@ -1247,6 +1253,9 @@ i.icon.compass:before {
 i.icon.compress:before {
   content: "\f066";
 }
+i.icon.compress.alternate:before {
+  content: "\f422";
+}
 i.icon.compress.arrows.alternate:before {
   content: "\f78c";
 }
@@ -1474,6 +1483,9 @@ i.icon.exclamation.triangle:before {
 }
 i.icon.expand:before {
   content: "\f065";
+}
+i.icon.expand.alternate:before {
+  content: "\f424";
 }
 i.icon.expand.arrows.alternate:before {
   content: "\f31e";
@@ -1882,9 +1894,6 @@ i.icon.hat.cowboy.side:before {
 }
 i.icon.hat.wizard:before {
   content: "\f6e8";
-}
-i.icon.haykal:before {
-  content: "\f666";
 }
 i.icon.hdd:before {
   content: "\f0a0";
@@ -3178,6 +3187,9 @@ i.icon.trademark:before {
 }
 i.icon.traffic.light:before {
   content: "\f637";
+}
+i.icon.trailer:before {
+  content: "\f941";
 }
 i.icon.train:before {
   content: "\f238";
@@ -5386,6 +5398,10 @@ i.icon.firefox:before {
   content: "\f269";
   font-family: 'brand-icons';
 }
+i.icon.firefox.browser:before {
+  content: "\f907";
+  font-family: 'brand-icons';
+}
 i.icon.first.order:before {
   content: "\f2b0";
   font-family: 'brand-icons';
@@ -5626,6 +5642,10 @@ i.icon.hubspot:before {
   content: "\f3b2";
   font-family: 'brand-icons';
 }
+i.icon.ideal:before {
+  content: "\f913";
+  font-family: 'brand-icons';
+}
 i.icon.imdb:before {
   content: "\f2d8";
   font-family: 'brand-icons';
@@ -5822,6 +5842,10 @@ i.icon.mendeley:before {
   content: "\f7b3";
   font-family: 'brand-icons';
 }
+i.icon.microblog:before {
+  content: "\f91a";
+  font-family: 'brand-icons';
+}
 i.icon.microsoft:before {
   content: "\f3ca";
   font-family: 'brand-icons';
@@ -5972,6 +5996,10 @@ i.icon.pied.piper.hat:before {
 }
 i.icon.pied.piper.pp:before {
   content: "\f1a7";
+  font-family: 'brand-icons';
+}
+i.icon.pied.piper.square:before {
+  content: "\f91e";
   font-family: 'brand-icons';
 }
 i.icon.pinterest:before {
@@ -6368,6 +6396,10 @@ i.icon.umbraco:before {
 }
 i.icon.uniregistry:before {
   content: "\f404";
+  font-family: 'brand-icons';
+}
+i.icon.unity:before {
+  content: "\f949";
   font-family: 'brand-icons';
 }
 i.icon.untappd:before {
