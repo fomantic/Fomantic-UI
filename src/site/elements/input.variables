@@ -1,5 +1,7 @@
 /*******************************
     User Variable Overrides
+
+
+@boxShadow: inset 0 1px 1px rgba(0,0,0,.39), 0 -1px 1px #f9f9fa, 0 1px 0 #f9f9fa;
 *******************************/
 
-@boxShadow: 2px 4px 8px -4px #a9acc999 inset;

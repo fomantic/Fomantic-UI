@@ -2,6 +2,13 @@
      User Global Variables
 *******************************/
 
+@primaryColor   : #00aeff;
+@blue           : #00aeff;
+@green          : #6cac30;
+@red            : #ff6d56;
+@orange         : #f99132;
+@yellow         : #ffbe0a;
+
 @darkTextColor: rgba(0, 0, 0, 0.7);
 @textColor: rgba(0, 0, 0, 0.7);
 @borderColor: #ececec;

@@ -2,12 +2,6 @@
          Site Overrides
 *******************************/
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #f4f6fb78;
-}
-
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -59,4 +53,12 @@ body {
   url(../assets/fonts/Lato_700_normal.ttf) format('truetype'),
   url(../assets/fonts/Lato_700_normal.svg#Lato_700_normal) format('svg');
 }
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f9f9fa;
+}
+
+
 

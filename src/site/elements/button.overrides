@@ -11,7 +11,8 @@
 }
 
 .ui.basic.buttons .button:hover {
-  box-shadow: none;
+  -webkit-box-shadow: 0 0.313rem 0.719rem rgba(122,123,151,.1), 0 0.156rem 0.125rem rgba(122,123,151,.06);
+  box-shadow: 0 0.313rem 0.719rem rgba(122,123,151,.1), 0 0.156rem 0.125rem rgba(122,123,151,.06);
 }
 
 
