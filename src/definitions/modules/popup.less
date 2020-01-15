@@ -149,30 +149,27 @@
   [data-tooltip]:after {
     pointer-events: none;
     visibility: hidden;
+    opacity: 0;
+    transition:
+            transform @tooltipDuration @tooltipEasing,
+            opacity @tooltipDuration @tooltipEasing
+    ;
   }
   [data-tooltip]:before {
-    opacity: 0;
     transform: rotate(45deg) scale(0) !important;
     transform-origin: center top;
-    transition:
-      all @tooltipDuration @tooltipEasing
-    ;
   }
   [data-tooltip]:after {
-    opacity: 1;
     transform-origin: center bottom;
-    transition:
-      all @tooltipDuration @tooltipEasing
-    ;
   }
   [data-tooltip]:hover:before,
   [data-tooltip]:hover:after {
     visibility: visible;
     pointer-events: auto;
+    opacity: 1;
   }
   [data-tooltip]:hover:before {
     transform: rotate(45deg) scale(1) !important;
-    opacity: 1;
   }
 
   /* Animation Position */
@@ -205,7 +202,23 @@
   [data-tooltip][data-position="bottom right"]:hover:after {
     transform: scale(1) !important;
   }
-
+  & when (@variationPopupFixed) {
+    [data-tooltip][data-variation~="fixed"]:after {
+      white-space: normal;
+      width: @maxWidth;
+    }
+    [data-tooltip][data-variation*="wide fixed"]:after {
+      width: @wideWidth;
+    }
+    [data-tooltip][data-variation*="very wide fixed"]:after {
+      width: @veryWideWidth;
+    }
+    @media only screen and (max-width: @largestMobileScreen) {
+      [data-tooltip][data-variation~="fixed"]:after {
+        width: @maxWidth;
+      }
+    }
+  }
   & when (@variationPopupInverted) {
     /*--------------
         Inverted
@@ -721,6 +734,12 @@
   }
 }
 
+& when (@variationPopupFixed) {
+  .ui.fixed.popup {
+    width: @maxWidth;
+  }
+}
+
 & when (@variationPopupWide) {
   /*--------------
        Wide
@@ -728,15 +747,24 @@
 
   .ui.wide.popup {
     max-width: @wideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @wideWidth;
+    }
   }
   .ui[class*="very wide"].popup {
     max-width: @veryWideWidth;
+    &.fixed when (@variationPopupFixed) {
+      width: @veryWideWidth;
+    }
   }
 
   @media only screen and (max-width: @largestMobileScreen) {
     .ui.wide.popup,
     .ui[class*="very wide"].popup {
       max-width: @maxWidth;
+      &.fixed when (@variationPopupFixed) {
+        width:@maxWidth;
+      }
     }
   }
 }
