@@ -2075,7 +2075,7 @@ $.fn.dropdown = function(parameters) {
                     return;
                   }
                   if(isMultiple) {
-                    if($.inArray(module.escape.htmlEntities(String(optionValue)), value) !== -1) {
+                    if($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function(v){return String(v);})) !== -1) {
                       $selectedItem = ($selectedItem)
                         ? $selectedItem.add($choice)
                         : $choice
