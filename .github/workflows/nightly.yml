@@ -3,9 +3,10 @@ on:
   schedule:
   - cron: 00 23 * * *
 jobs:
-  build:
+  publish:
     name: Build nightly distribution
     runs-on: ubuntu-latest
+    if: github.repository == 'fomantic/Fomantic-UI'
     steps:
     - uses: actions/checkout@v1
       with:

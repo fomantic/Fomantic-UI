@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.8.2
+ * # Fomantic UI - 2.8.3
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -24352,7 +24352,7 @@ i.icons .inverted.corner.icon {
 }
 
 /*
-* Font Awesome 5.11.2 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.12.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -24626,6 +24626,10 @@ i.icon.backward:before {
 
 i.icon.bacon:before {
   content: "\f7e5";
+}
+
+i.icon.bahai:before {
+  content: "\f666";
 }
 
 i.icon.balance.scale:before {
@@ -24964,6 +24968,10 @@ i.icon.car.side:before {
   content: "\f5e4";
 }
 
+i.icon.caravan:before {
+  content: "\f8ff";
+}
+
 i.icon.caret.down:before {
   content: "\f0d7";
 }
@@ -25300,6 +25308,10 @@ i.icon.compress:before {
   content: "\f066";
 }
 
+i.icon.compress.alternate:before {
+  content: "\f422";
+}
+
 i.icon.compress.arrows.alternate:before {
   content: "\f78c";
 }
@@ -25602,6 +25614,10 @@ i.icon.exclamation.triangle:before {
 
 i.icon.expand:before {
   content: "\f065";
+}
+
+i.icon.expand.alternate:before {
+  content: "\f424";
 }
 
 i.icon.expand.arrows.alternate:before {
@@ -26146,10 +26162,6 @@ i.icon.hat.cowboy.side:before {
 
 i.icon.hat.wizard:before {
   content: "\f6e8";
-}
-
-i.icon.haykal:before {
-  content: "\f666";
 }
 
 i.icon.hdd:before {
@@ -27874,6 +27886,10 @@ i.icon.trademark:before {
 
 i.icon.traffic.light:before {
   content: "\f637";
+}
+
+i.icon.trailer:before {
+  content: "\f941";
 }
 
 i.icon.train:before {
@@ -30756,6 +30772,11 @@ i.icon.firefox:before {
   font-family: 'brand-icons';
 }
 
+i.icon.firefox.browser:before {
+  content: "\f907";
+  font-family: 'brand-icons';
+}
+
 i.icon.first.order:before {
   content: "\f2b0";
   font-family: 'brand-icons';
@@ -31056,6 +31077,11 @@ i.icon.hubspot:before {
   font-family: 'brand-icons';
 }
 
+i.icon.ideal:before {
+  content: "\f913";
+  font-family: 'brand-icons';
+}
+
 i.icon.imdb:before {
   content: "\f2d8";
   font-family: 'brand-icons';
@@ -31301,6 +31327,11 @@ i.icon.mendeley:before {
   font-family: 'brand-icons';
 }
 
+i.icon.microblog:before {
+  content: "\f91a";
+  font-family: 'brand-icons';
+}
+
 i.icon.microsoft:before {
   content: "\f3ca";
   font-family: 'brand-icons';
@@ -31488,6 +31519,11 @@ i.icon.pied.piper.hat:before {
 
 i.icon.pied.piper.pp:before {
   content: "\f1a7";
+  font-family: 'brand-icons';
+}
+
+i.icon.pied.piper.square:before {
+  content: "\f91e";
   font-family: 'brand-icons';
 }
 
@@ -31983,6 +32019,11 @@ i.icon.umbraco:before {
 
 i.icon.uniregistry:before {
   content: "\f404";
+  font-family: 'brand-icons';
+}
+
+i.icon.unity:before {
+  content: "\f949";
   font-family: 'brand-icons';
 }
 
@@ -33382,108 +33423,108 @@ img.ui.bordered.image {
 .ui.form > .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #9F3A38;
-  border-bottom: 1px solid #9F3A38;
+  border-top: 1px solid #E0B4B4;
+  border-bottom: 1px solid #E0B4B4;
 }
 
 .ui.form > .field.error > .ui.left.action.input > .ui.button,
 .ui.form > .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #9F3A38;
+  border-left: 1px solid #E0B4B4;
 }
 
 .ui.form > .field.error > .ui.action.input:not(.left) > input + .ui.button,
 .ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.error:not(.left) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #9F3A38;
+  border-right: 1px solid #E0B4B4;
 }
 
 .ui.form > .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #9F3A38;
+  border-left: 1px solid #E0B4B4;
 }
 
 .ui.form > .field.info > .ui.action.input > .ui.button,
 .ui.form > .field.info > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.info > .ui.button,
 .ui.labeled.input.info:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #276F86;
-  border-bottom: 1px solid #276F86;
+  border-top: 1px solid #A9D5DE;
+  border-bottom: 1px solid #A9D5DE;
 }
 
 .ui.form > .field.info > .ui.left.action.input > .ui.button,
 .ui.form > .field.info > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.info > .ui.button,
 .ui.labeled.input.info:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #276F86;
+  border-left: 1px solid #A9D5DE;
 }
 
 .ui.form > .field.info > .ui.action.input:not(.left) > input + .ui.button,
 .ui.form > .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.info:not(.left) > input + .ui.button,
 .ui.right.labeled.input.info:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #276F86;
+  border-right: 1px solid #A9D5DE;
 }
 
 .ui.form > .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.info:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #276F86;
+  border-left: 1px solid #A9D5DE;
 }
 
 .ui.form > .field.success > .ui.action.input > .ui.button,
 .ui.form > .field.success > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.success > .ui.button,
 .ui.labeled.input.success:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #2C662D;
-  border-bottom: 1px solid #2C662D;
+  border-top: 1px solid #A3C293;
+  border-bottom: 1px solid #A3C293;
 }
 
 .ui.form > .field.success > .ui.left.action.input > .ui.button,
 .ui.form > .field.success > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.success > .ui.button,
 .ui.labeled.input.success:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #2C662D;
+  border-left: 1px solid #A3C293;
 }
 
 .ui.form > .field.success > .ui.action.input:not(.left) > input + .ui.button,
 .ui.form > .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.success:not(.left) > input + .ui.button,
 .ui.right.labeled.input.success:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #2C662D;
+  border-right: 1px solid #A3C293;
 }
 
 .ui.form > .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.success:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #2C662D;
+  border-left: 1px solid #A3C293;
 }
 
 .ui.form > .field.warning > .ui.action.input > .ui.button,
 .ui.form > .field.warning > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.warning > .ui.button,
 .ui.labeled.input.warning:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #573A08;
-  border-bottom: 1px solid #573A08;
+  border-top: 1px solid #C9BA9B;
+  border-bottom: 1px solid #C9BA9B;
 }
 
 .ui.form > .field.warning > .ui.left.action.input > .ui.button,
 .ui.form > .field.warning > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui.left.action.input.warning > .ui.button,
 .ui.labeled.input.warning:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #573A08;
+  border-left: 1px solid #C9BA9B;
 }
 
 .ui.form > .field.warning > .ui.action.input:not(.left) > input + .ui.button,
 .ui.form > .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.warning:not(.left) > input + .ui.button,
 .ui.right.labeled.input.warning:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #573A08;
+  border-right: 1px solid #C9BA9B;
 }
 
 .ui.form > .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.warning:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #573A08;
+  border-left: 1px solid #C9BA9B;
 }
 
 /*--------------------
@@ -40943,6 +40984,7 @@ span.ui.massive.text {
   margin: 0 0 1em;
 }
 
+.ui.form .fields .fields,
 .ui.form .field:last-child,
 .ui.form .fields:last-child .field {
   margin-bottom: 0;
@@ -41337,6 +41379,38 @@ span.ui.massive.text {
   background: #FFFFFF;
   -webkit-box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
   box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
+}
+
+.ui.form .ui.action.input:not(.left) input:not([type]):focus,
+.ui.form .ui.action.input:not(.left) input[type="date"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="datetime-local"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="email"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="number"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="password"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="search"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="tel"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="time"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="text"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="file"]:focus,
+.ui.form .ui.action.input:not(.left) input[type="url"]:focus {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.ui.form .ui.action.input.left input:not([type]),
+.ui.form .ui.action.input.left input[type="date"],
+.ui.form .ui.action.input.left input[type="datetime-local"],
+.ui.form .ui.action.input.left input[type="email"],
+.ui.form .ui.action.input.left input[type="number"],
+.ui.form .ui.action.input.left input[type="password"],
+.ui.form .ui.action.input.left input[type="search"],
+.ui.form .ui.action.input.left input[type="tel"],
+.ui.form .ui.action.input.left input[type="time"],
+.ui.form .ui.action.input.left input[type="text"],
+.ui.form .ui.action.input.left input[type="file"],
+.ui.form .ui.action.input.left input[type="url"] {
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
 }
 
 .ui.form textarea:focus {
@@ -50730,15 +50804,21 @@ Floated Menu / Item
 }
 
 .ui.sortable.table > thead > tr > th:hover {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.8);
+}
+
+.ui.sortable.table:not(.basic) > thead > tr > th:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* Sorted */
 
 .ui.sortable.table thead th.sorted {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
+}
+
+.ui.sortable.table:not(.basic) thead th.sorted {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 .ui.sortable.table thead th.sorted:after {
@@ -50748,27 +50828,36 @@ Floated Menu / Item
 /* Sorted Hover */
 
 .ui.sortable.table thead th.sorted:hover {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
+}
+
+.ui.sortable.table:not(.basic) thead th.sorted:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* Inverted */
 
 .ui.inverted.sortable.table thead th.sorted {
+  color: #ffffff;
+}
+
+.ui.inverted.sortable.table:not(.basic) thead th.sorted {
   background: rgba(255, 255, 255, 0.15) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
   background: rgba(255, 255, 255, 0.15) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: rgba(255, 255, 255, 0.15) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  color: #ffffff;
 }
 
 .ui.inverted.sortable.table > thead > tr > th:hover {
-  background: rgba(255, 255, 255, 0.08) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
-  background: rgba(255, 255, 255, 0.08) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  background: rgba(255, 255, 255, 0.08) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   color: #ffffff;
 }
 
-.ui.inverted.sortable.table > thead > tr > th {
+.ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
+  background: rgba(255, 255, 255, 0.08) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
+  background: rgba(255, 255, 255, 0.08) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+  background: rgba(255, 255, 255, 0.08) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
+}
+
+.ui.inverted.sortable.table:not(.basic) > thead > tr > th {
   border-left-color: transparent;
   border-right-color: transparent;
 }
@@ -56268,7 +56357,7 @@ a.inverted.ui.card:hover,
 /* Loose Coupling */
 
 .ui.segment > .ui.dimmer:not(.page) {
-  border-radius: inherit !important;
+  border-radius: inherit;
 }
 
 /* Scrollbars */
@@ -56512,18 +56601,18 @@ body.dimmable > .dimmer {
   -webkit-transform: translateY(calc(-50% - 0.5px));
 }
 
-.ui.segment > .ui[class*="top dimmer"] {
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
+.ui.segment > .ui.ui[class*="top dimmer"] {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
-.ui.segment > .ui[class*="center dimmer"] {
-  border-radius: 0 !important;
+.ui.segment > .ui.ui[class*="center dimmer"] {
+  border-radius: 0;
 }
 
-.ui.segment > .ui[class*="bottom dimmer"] {
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
+.ui.segment > .ui.ui[class*="bottom dimmer"] {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
 .ui[class*="center dimmer"].transition[class*="fade up"].in {
@@ -56822,6 +56911,7 @@ body.dimmable > .dimmer {
   display: block;
   border: none;
   height: auto;
+  min-height: 2.57142857rem;
   text-align: left;
   border-top: none;
   line-height: 1em;
@@ -59514,10 +59604,12 @@ select.ui.dropdown {
   border-radius: 0;
 }
 
+.ui.modal > .close.inside + .header,
 .ui.fullscreen.modal > .header {
   padding-right: 2.25rem;
 }
 
+.ui.modal > .close.inside,
 .ui.fullscreen.modal > .close {
   top: 1.0535rem;
   right: 1rem;
@@ -59839,6 +59931,7 @@ select.ui.dropdown {
   }
 }
 
+.ui.inverted.modal > .close.inside,
 .ui.inverted.fullscreen.modal > .close {
   color: #FFFFFF;
 }
@@ -60139,36 +60232,35 @@ a.ui.nag {
 [data-tooltip]:after {
   pointer-events: none;
   visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
+  transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  transition: transform 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease;
 }
 
 [data-tooltip]:before {
-  opacity: 0;
   -webkit-transform: rotate(45deg) scale(0) !important;
   transform: rotate(45deg) scale(0) !important;
   -webkit-transform-origin: center top;
   transform-origin: center top;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 
 [data-tooltip]:after {
-  opacity: 1;
   -webkit-transform-origin: center bottom;
   transform-origin: center bottom;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 
 [data-tooltip]:hover:before,
 [data-tooltip]:hover:after {
   visibility: visible;
   pointer-events: auto;
+  opacity: 1;
 }
 
 [data-tooltip]:hover:before {
   -webkit-transform: rotate(45deg) scale(1) !important;
   transform: rotate(45deg) scale(1) !important;
-  opacity: 1;
 }
 
 /* Animation Position */
@@ -60212,6 +60304,25 @@ a.ui.nag {
 [data-tooltip][data-position="bottom right"]:hover:after {
   -webkit-transform: scale(1) !important;
   transform: scale(1) !important;
+}
+
+[data-tooltip][data-variation~="fixed"]:after {
+  white-space: normal;
+  width: 250px;
+}
+
+[data-tooltip][data-variation*="wide fixed"]:after {
+  width: 350px;
+}
+
+[data-tooltip][data-variation*="very wide fixed"]:after {
+  width: 550px;
+}
+
+@media only screen and (max-width: 767.98px) {
+  [data-tooltip][data-variation~="fixed"]:after {
+    width: 250px;
+  }
 }
 
 /*--------------
@@ -60730,6 +60841,10 @@ a.ui.nag {
   display: none;
 }
 
+.ui.fixed.popup {
+  width: 250px;
+}
+
 /*--------------
        Wide
   ---------------*/
@@ -60738,14 +60853,27 @@ a.ui.nag {
   max-width: 350px;
 }
 
+.ui.wide.popup.fixed {
+  width: 350px;
+}
+
 .ui[class*="very wide"].popup {
   max-width: 550px;
+}
+
+.ui[class*="very wide"].popup.fixed {
+  width: 550px;
 }
 
 @media only screen and (max-width: 767.98px) {
   .ui.wide.popup,
   .ui[class*="very wide"].popup {
     max-width: 250px;
+  }
+
+  .ui.wide.popup.fixed,
+  .ui[class*="very wide"].popup.fixed {
+    width: 250px;
   }
 }
 

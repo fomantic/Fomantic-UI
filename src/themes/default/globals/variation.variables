@@ -15,7 +15,6 @@
 @variationButtonInverted: true;
 @variationButtonSocial: true;
 @variationButtonFloated: true;
-@variationButtonFloated: true;
 @variationButtonCompact: true;
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
@@ -426,6 +425,7 @@
 @variationModalAligned: true;
 @variationModalScrolling: true;
 @variationModalLegacy: true;
+@variationModalCloseInside: true;
 @variationModalSizes: @variationAllSizes;
 
 /* Popup */
@@ -442,6 +442,7 @@
 @variationPopupWide: true;
 @variationPopupFluid: true;
 @variationPopupFlowing: true;
+@variationPopupFixed: true;
 @variationPopupSizes: @variationAllSizes;
 
 /* Progress */

@@ -61,6 +61,7 @@
 @itemLineHeightOffset: (@itemLineHeight - 1em);
 @itemTextTransform: none;
 @itemBoxShadow: none;
+@itemMinHeight: unit(@itemLineHeight + 2 * @itemVerticalPadding, rem);
 
 /* Sub Menu */
 @subMenuTop: 0;

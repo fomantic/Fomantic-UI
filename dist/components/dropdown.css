@@ -116,6 +116,7 @@
   display: block;
   border: none;
   height: auto;
+  min-height: 2.57142857rem;
   text-align: left;
   border-top: none;
   line-height: 1em;

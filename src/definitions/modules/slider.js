@@ -325,7 +325,7 @@ $.fn.slider = function(parameters) {
                 newPos = module.determine.pos(eventPos)
               ;
               // Special handling if range mode and both thumbs have the same value
-              if(module.is.range() && settings.preventCrossover && module.thumbVal === module.secondThumbVal) {
+              if(settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
                 initialPosition = newPos;
                 $currThumb = undefined;
               } else {
@@ -353,13 +353,13 @@ $.fn.slider = function(parameters) {
                 thumbSmoothVal = module.determine.smoothValueFromEvent(event)
               ;
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   value = Math.min(secondThumbVal, value);
                   thumbSmoothVal = Math.min(secondThumbVal, thumbSmoothVal);
                 }
                 thumbVal = value;
               } else {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   value = Math.max(thumbVal, value);
                   thumbSmoothVal = Math.max(thumbVal, thumbSmoothVal);
                 }
@@ -381,7 +381,7 @@ $.fn.slider = function(parameters) {
             module.unbind.slidingEvents();
           },
           keydown: function(event, first) {
-            if(module.is.range() && settings.preventCrossover && module.thumbVal === module.secondThumbVal) {
+            if(settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
               $currThumb = undefined;
             }
             if(module.is.focused()) {
@@ -926,12 +926,12 @@ $.fn.slider = function(parameters) {
                 $currThumb = newValue <= module.get.currentThumbValue() ? $thumb : $secondThumb;
               }
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   newValue = Math.min(module.secondThumbVal, newValue);
                 }
                 module.thumbVal = newValue;
               } else {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   newValue = Math.max(module.thumbVal, newValue);
                 }
                 module.secondThumbVal = newValue;
