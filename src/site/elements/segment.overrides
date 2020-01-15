@@ -2,6 +2,15 @@
          Site Overrides
 *******************************/
 
+.ui.segment,
+.ui.placeholder.segment {
+  border: none;
+  background: white;
+
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+}
+
 .ui.piled.segments:before, .ui.piled.segment:before {
   border-radius: 0.6rem;
 }
@@ -14,4 +23,3 @@
   border-radius: 0.6rem;
   border-top-color: transparent!important;
 }
-
