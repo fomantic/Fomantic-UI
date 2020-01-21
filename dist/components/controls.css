@@ -69,9 +69,10 @@
 .ui.controls a.control:hover > .icon {
   background: rgba(255, 255, 255, 0.3);
 }
-.ui.controls .control .phone.icon {
-  -webkit-transform: translateX(3px) rotate(-135deg);
-          transform: translateX(3px) rotate(-135deg);
+.ui.controls a.control > .icon > .phone.icon {
+  -webkit-transform: rotate(-135deg);
+          transform: rotate(-135deg);
+  margin: 0;
 }
 .ui.controls .divider {
   background: rgba(250, 250, 250, 0.3);
