@@ -1,0 +1,29 @@
+@background: rgba(0, 0, 0, 0.85);
+@borderRadius: 20px;
+@minWidth: 714px;
+@bottom: 50px;
+@fontFamily: @pageFont;
+@color: #FAFAFA;
+
+/* header */
+@headerColor: @color;
+@headerFontSize: 2rem;
+@headerHorizontalPadding: @relativeLarge;
+@headerVerticalPadding: @relativeSmall;
+@subHeaderFontSize: 1rem;
+
+/* control */
+@controlColor: @color;
+@controlHoverIconBackground: rgba(255, 255, 255, 0.3);
+@controlHoverIconRadius: 13.5px;
+@controlHoverIconSize: 2em;
+@controlHoverIconPadding: 0.5em 0;
+@controlIconMinWidth: 6em;
+@controlIconSize: @relativeMassive;
+@controlIconTextMargin: 0.5rem;
+@controlMinWidth: 6em;
+
+/* divider */
+@dividerBackground: rgba(250, 250, 250, 0.3);
+@dividerWidth: 3px;
+@dividerHeight: 70px;

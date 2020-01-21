@@ -1,0 +1,76 @@
+@type    : 'collection';
+@element : 'controls';
+
+@import (multiple) '../../theme.config';
+
+.ui.controls {
+  align-items: center;
+  background: @background;
+  border-radius: @borderRadius;
+  bottom: @bottom;
+  display: flex;
+  font-family: @fontFamily;
+  left: 50%;
+  min-width: @minWidth;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.ui.controls > .header {
+  display: flex;
+  color: @headerColor;
+  flex-direction: column;
+  font-size: @headerFontSize;
+  padding: @headerVerticalPadding @headerHorizontalPadding;
+}
+
+.ui.controls .header .sub.header {
+  margin-top: 5px;
+  font-size: @subHeaderFontSize;
+}
+
+.ui.controls a.control {
+  color: @controlColor;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: @controlMinWidth;
+  text-align: center;
+}
+
+.ui.controls a.control:hover {
+
+}
+
+.ui.controls a.control > .icon {
+  border-radius: @controlHoverIconRadius;
+  display: block;
+  font-size: @controlIconSize !important;
+  height: @controlHoverIconSize !important;
+  margin: 0 auto @controlIconTextMargin !important;
+  padding: @controlHoverIconPadding !important;
+  width: @controlHoverIconSize !important;
+}
+
+.ui.controls a.control:hover > .icon {
+  background: @controlHoverIconBackground;
+}
+
+.ui.controls .control .phone.icon {
+  transform:  translateX(3px) rotate(-135deg);
+}
+
+.ui.controls .divider {
+  background: @dividerBackground;
+  height: @dividerHeight;
+  margin: 0 25px;
+  width: @dividerWidth;
+}
+
+.ui.controls .right.controls {
+  display: flex;
+  margin-left: auto !important;
+}
+
+.loadUIOverrides();
