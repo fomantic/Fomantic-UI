@@ -1332,7 +1332,7 @@
 .ui.grid > .primary.row,
 .ui.grid > .primary.column,
 .ui.grid > .row > .primary.column {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: #FFFFFF;
 }
 .ui.grid > .secondary.row,
@@ -1344,19 +1344,19 @@
 .ui.grid > .red.row,
 .ui.grid > .red.column,
 .ui.grid > .row > .red.column {
-  background-color: #DB2828;
+  background-color: #ff6d56;
   color: #FFFFFF;
 }
 .ui.grid > .orange.row,
 .ui.grid > .orange.column,
 .ui.grid > .row > .orange.column {
-  background-color: #F2711C;
+  background-color: #f99132;
   color: #FFFFFF;
 }
 .ui.grid > .yellow.row,
 .ui.grid > .yellow.column,
 .ui.grid > .row > .yellow.column {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
   color: #FFFFFF;
 }
 .ui.grid > .olive.row,
@@ -1368,7 +1368,7 @@
 .ui.grid > .green.row,
 .ui.grid > .green.column,
 .ui.grid > .row > .green.column {
-  background-color: #21BA45;
+  background-color: #6cac30;
   color: #FFFFFF;
 }
 .ui.grid > .teal.row,
@@ -1380,7 +1380,7 @@
 .ui.grid > .blue.row,
 .ui.grid > .blue.column,
 .ui.grid > .row > .blue.column {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: #FFFFFF;
 }
 .ui.grid > .violet.row,

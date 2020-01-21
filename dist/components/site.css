@@ -145,6 +145,10 @@ input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.7);
 }
+textarea::-moz-selection, input::-moz-selection {
+  background-color: rgba(100, 100, 100, 0.4);
+  color: rgba(0, 0, 0, 0.7);
+}
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);
@@ -200,11 +204,6 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background: #f4f6fb78;
-}
 @font-face {
   font-family: 'Lato';
   font-style: normal;
@@ -232,4 +231,9 @@ body {
   font-weight: 700;
   src: url(../assets/fonts/Lato_700_normal.eot);
   src: local('☺'), url(../assets/fonts/Lato_700_normal.eot?#iefix) format('embedded-opentype'), url(../assets/fonts/Lato_700_normal.woff2) format('woff2'), url(../assets/fonts/Lato_700_normal.woff) format('woff'), url(../assets/fonts/Lato_700_normal.ttf) format('truetype'), url(../assets/fonts/Lato_700_normal.svg#Lato_700_normal) format('svg');
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f9f9fa;
 }

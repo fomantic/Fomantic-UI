@@ -239,14 +239,14 @@ i.inverted.icon {
 --------------------*/
 
 i.primary.icon.icon.icon.icon {
-  color: #2185D0;
+  color: #00aeff;
 }
 i.inverted.primary.icon.icon.icon.icon {
   color: #54C8FF;
 }
 i.inverted.bordered.primary.icon.icon.icon.icon,
 i.inverted.circular.primary.icon.icon.icon.icon {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: #FFFFFF;
 }
 i.secondary.icon.icon.icon.icon {
@@ -261,36 +261,36 @@ i.inverted.circular.secondary.icon.icon.icon.icon {
   color: #FFFFFF;
 }
 i.red.icon.icon.icon.icon {
-  color: #DB2828;
+  color: #ff6d56;
 }
 i.inverted.red.icon.icon.icon.icon {
   color: #FF695E;
 }
 i.inverted.bordered.red.icon.icon.icon.icon,
 i.inverted.circular.red.icon.icon.icon.icon {
-  background-color: #DB2828;
+  background-color: #ff6d56;
   color: #FFFFFF;
 }
 i.orange.icon.icon.icon.icon {
-  color: #F2711C;
+  color: #f99132;
 }
 i.inverted.orange.icon.icon.icon.icon {
   color: #FF851B;
 }
 i.inverted.bordered.orange.icon.icon.icon.icon,
 i.inverted.circular.orange.icon.icon.icon.icon {
-  background-color: #F2711C;
+  background-color: #f99132;
   color: #FFFFFF;
 }
 i.yellow.icon.icon.icon.icon {
-  color: #FBBD08;
+  color: #ffbe0a;
 }
 i.inverted.yellow.icon.icon.icon.icon {
   color: #FFE21F;
 }
 i.inverted.bordered.yellow.icon.icon.icon.icon,
 i.inverted.circular.yellow.icon.icon.icon.icon {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
   color: #FFFFFF;
 }
 i.olive.icon.icon.icon.icon {
@@ -305,14 +305,14 @@ i.inverted.circular.olive.icon.icon.icon.icon {
   color: #FFFFFF;
 }
 i.green.icon.icon.icon.icon {
-  color: #21BA45;
+  color: #6cac30;
 }
 i.inverted.green.icon.icon.icon.icon {
   color: #2ECC40;
 }
 i.inverted.bordered.green.icon.icon.icon.icon,
 i.inverted.circular.green.icon.icon.icon.icon {
-  background-color: #21BA45;
+  background-color: #6cac30;
   color: #FFFFFF;
 }
 i.teal.icon.icon.icon.icon {
@@ -327,14 +327,14 @@ i.inverted.circular.teal.icon.icon.icon.icon {
   color: #FFFFFF;
 }
 i.blue.icon.icon.icon.icon {
-  color: #2185D0;
+  color: #00aeff;
 }
 i.inverted.blue.icon.icon.icon.icon {
   color: #54C8FF;
 }
 i.inverted.bordered.blue.icon.icon.icon.icon,
 i.inverted.circular.blue.icon.icon.icon.icon {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: #FFFFFF;
 }
 i.violet.icon.icon.icon.icon {

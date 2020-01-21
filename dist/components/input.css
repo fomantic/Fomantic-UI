@@ -47,8 +47,8 @@
   transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease;
   transition: box-shadow 0.1s ease, border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
-  -webkit-box-shadow: 2px 4px 8px -4px #a9acc999 inset;
-          box-shadow: 2px 4px 8px -4px #a9acc999 inset;
+  -webkit-box-shadow: none;
+          box-shadow: none;
 }
 
 /*--------------------
@@ -720,8 +720,8 @@
 }
 .ui.input.focus > input,
 .ui.input > input:focus {
-  -webkit-box-shadow: 1px 2px 8px -4px #a9acc999 inset;
-  box-shadow: 1px 2px 8px -4px #a9acc999 inset;
+  -webkit-box-shadow: 0 0.313rem 0.719rem rgba(122, 123, 151, 0.1), 0 0.156rem 0.125rem rgba(122, 123, 151, 0.06);
+  box-shadow: 0 0.313rem 0.719rem rgba(122, 123, 151, 0.1), 0 0.156rem 0.125rem rgba(122, 123, 151, 0.06);
 }
 .ui.action.input:not([class*="left action"]) > input {
   border-top-right-radius: 0;
