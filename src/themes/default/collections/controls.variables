@@ -15,9 +15,9 @@
 /* control */
 @controlColor: @color;
 @controlHoverIconBackground: rgba(255, 255, 255, 0.3);
+@controlHoverIconPadding: 0.5em 0;
 @controlHoverIconRadius: 13.5px;
 @controlHoverIconSize: 2em;
-@controlHoverIconPadding: 0.5em 0;
 @controlIconMinWidth: 6em;
 @controlIconSize: @relativeMassive;
 @controlIconTextMargin: 0.5rem;
