@@ -145,10 +145,6 @@ input::-moz-selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(0, 0, 0, 0.7);
 }
-textarea::-moz-selection, input::-moz-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.7);
-}
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);

@@ -6,6 +6,7 @@
 .ui.controls {
   align-items: center;
   background: @background;
+  backdrop-filter: blur(2px);
   border-radius: @borderRadius;
   bottom: @bottom;
   display: flex;
@@ -25,7 +26,7 @@
 }
 
 .ui.controls .header .sub.header {
-  margin-top: 5px;
+  margin-top: 12px;
   font-size: @subHeaderFontSize;
 }
 
@@ -49,19 +50,32 @@
   width: @controlHoverIconSize !important;
 }
 
-.ui.controls a.control:hover > .icon {
+.ui.controls a.control > .icon:before {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+}
+
+.ui.controls a.control:hover > .icon,
+.ui.controls a.control:active > .icon,
+.ui.controls a.control:focus > .icon {
   background: @controlHoverIconBackground;
 }
 
 .ui.controls a.control  > .icon > .phone.icon {
   transform:  rotate(-135deg);
-  margin: 0;
+  margin: 0 0 0 6px !important;
+}
+
+.ui.controls a.control  > .icon > .phone.icon:before {
+  color: @phoneColor !important;
 }
 
 .ui.controls .divider {
   background: @dividerBackground;
   height: @dividerHeight;
-  margin: 0 25px;
+  margin: 0 0 0 1.4em;
   width: @dividerWidth;
 }
 

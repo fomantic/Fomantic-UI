@@ -1461,5 +1461,28 @@
 @inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
 @inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
 
+/*-------------------
+    Default Figma Colors
+--------------------*/
 
+@color-static-white: rgba(255,255,255,1);
+@color-static-black: rgba(0,0,0,1);
 
+@color-theme-lightest: rgba(255,255,255,1);
+@color-theme-light: rgba(249,249,250,1);
+@color-theme-dark: rgba(50,50,50,1);
+@color-theme-darkest: rgba(30,30,30,1);
+
+@color-gray-75: rgba(250,250,250,1);
+@color-gray-200: rgba(234,234,234,1);
+@color-gray-400: rgba(202,202,202,1);
+@color-gray-600: rgba(142,142,142,1);
+
+@color-action-primary: rgba(0,153,255,1);
+@color-theme-pitcher: rgba(204,0,0,1);
+
+@color-text-body: rgba(75,75,75,1);
+
+@color-green-400: rgba(51,171,132,1);
+
+@color-red-400: rgba(227,72,80,1);

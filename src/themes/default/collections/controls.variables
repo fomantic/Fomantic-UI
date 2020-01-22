@@ -1,29 +1,30 @@
 @background: rgba(0, 0, 0, 0.85);
-@borderRadius: 20px;
+@borderRadius: 0.9rem;
 @minWidth: 714px;
 @bottom: 50px;
 @fontFamily: @pageFont;
 @color: #FAFAFA;
 
 /* header */
-@headerColor: @color;
-@headerFontSize: 2rem;
-@headerHorizontalPadding: @relativeLarge;
-@headerVerticalPadding: @relativeSmall;
-@subHeaderFontSize: 1rem;
+@headerColor: @color-gray-75;
+@headerFontSize: 2em;
+@headerHorizontalPadding: 18px;
+@headerVerticalPadding: 18px;
+@subHeaderFontSize: @fontSize;
 
 /* control */
-@controlColor: @color;
+@controlColor: @color-gray-75;
 @controlHoverIconBackground: rgba(255, 255, 255, 0.3);
 @controlHoverIconPadding: 0.5em 0;
-@controlHoverIconRadius: 13.5px;
+@controlHoverIconRadius: 0.6rem;
 @controlHoverIconSize: 2em;
 @controlIconMinWidth: 6em;
 @controlIconSize: @relativeMassive;
-@controlIconTextMargin: 0.5rem;
-@controlMinWidth: 6em;
+@controlIconTextMargin: 0;
+@controlMinWidth: 5em;
+@phoneColor: @color-red-400;
 
 /* divider */
 @dividerBackground: rgba(250, 250, 250, 0.3);
-@dividerWidth: 3px;
-@dividerHeight: 70px;
+@dividerWidth: 2px;
+@dividerHeight: auto;
