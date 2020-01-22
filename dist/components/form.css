@@ -1379,7 +1379,7 @@
 .ui.form label.required:after {
   margin: -0.2em 0 0 0.2em;
   content: '*';
-  color: #DB2828;
+  color: #ff6d56;
 }
 .ui.form .required.fields:not(.grouped) > .field > label:after,
 .ui.form .required.fields.grouped > label:after,

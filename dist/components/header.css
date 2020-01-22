@@ -347,13 +347,13 @@ h6.ui.header .sub.header {
 --------------------*/
 
 .ui.primary.header {
-  color: #2185D0;
+  color: #00aeff;
 }
 a.ui.primary.header:hover {
-  color: #1678c2;
+  color: #009de6;
 }
 .ui.primary.dividing.header {
-  border-bottom: 2px solid #2185D0;
+  border-bottom: 2px solid #00aeff;
 }
 .ui.inverted.primary.header.header.header {
   color: #54C8FF;
@@ -383,13 +383,13 @@ a.ui.inverted.secondary.header.header.header:hover {
   border-bottom: 2px solid #545454;
 }
 .ui.red.header {
-  color: #DB2828;
+  color: #ff6d56;
 }
 a.ui.red.header:hover {
-  color: #d01919;
+  color: #ff573d;
 }
 .ui.red.dividing.header {
-  border-bottom: 2px solid #DB2828;
+  border-bottom: 2px solid #ff6d56;
 }
 .ui.inverted.red.header.header.header {
   color: #FF695E;
@@ -401,13 +401,13 @@ a.ui.inverted.red.header.header.header:hover {
   border-bottom: 2px solid #FF695E;
 }
 .ui.orange.header {
-  color: #F2711C;
+  color: #f99132;
 }
 a.ui.orange.header:hover {
-  color: #f26202;
+  color: #ff8313;
 }
 .ui.orange.dividing.header {
-  border-bottom: 2px solid #F2711C;
+  border-bottom: 2px solid #f99132;
 }
 .ui.inverted.orange.header.header.header {
   color: #FF851B;
@@ -419,13 +419,13 @@ a.ui.inverted.orange.header.header.header:hover {
   border-bottom: 2px solid #FF851B;
 }
 .ui.yellow.header {
-  color: #FBBD08;
+  color: #ffbe0a;
 }
 a.ui.yellow.header:hover {
-  color: #eaae00;
+  color: #f0b000;
 }
 .ui.yellow.dividing.header {
-  border-bottom: 2px solid #FBBD08;
+  border-bottom: 2px solid #ffbe0a;
 }
 .ui.inverted.yellow.header.header.header {
   color: #FFE21F;
@@ -455,13 +455,13 @@ a.ui.inverted.olive.header.header.header:hover {
   border-bottom: 2px solid #D9E778;
 }
 .ui.green.header {
-  color: #21BA45;
+  color: #6cac30;
 }
 a.ui.green.header:hover {
-  color: #16ab39;
+  color: #5f9e25;
 }
 .ui.green.dividing.header {
-  border-bottom: 2px solid #21BA45;
+  border-bottom: 2px solid #6cac30;
 }
 .ui.inverted.green.header.header.header {
   color: #2ECC40;
@@ -491,13 +491,13 @@ a.ui.inverted.teal.header.header.header:hover {
   border-bottom: 2px solid #6DFFFF;
 }
 .ui.blue.header {
-  color: #2185D0;
+  color: #00aeff;
 }
 a.ui.blue.header:hover {
-  color: #1678c2;
+  color: #009de6;
 }
 .ui.blue.dividing.header {
-  border-bottom: 2px solid #2185D0;
+  border-bottom: 2px solid #00aeff;
 }
 .ui.inverted.blue.header.header.header {
   color: #54C8FF;

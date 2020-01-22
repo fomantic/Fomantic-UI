@@ -564,24 +564,24 @@
 --------------------*/
 
 .ui.red.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #DB2828;
+  border-top: 2px solid #ff6d56;
 }
 .ui.inverted.red.segment.segment.segment.segment.segment {
-  background-color: #DB2828;
+  background-color: #ff6d56;
   color: #FFFFFF;
 }
 .ui.orange.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #F2711C;
+  border-top: 2px solid #f99132;
 }
 .ui.inverted.orange.segment.segment.segment.segment.segment {
-  background-color: #F2711C;
+  background-color: #f99132;
   color: #FFFFFF;
 }
 .ui.yellow.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #FBBD08;
+  border-top: 2px solid #ffbe0a;
 }
 .ui.inverted.yellow.segment.segment.segment.segment.segment {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
   color: #FFFFFF;
 }
 .ui.olive.segment.segment.segment.segment.segment:not(.inverted) {
@@ -592,10 +592,10 @@
   color: #FFFFFF;
 }
 .ui.green.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #21BA45;
+  border-top: 2px solid #6cac30;
 }
 .ui.inverted.green.segment.segment.segment.segment.segment {
-  background-color: #21BA45;
+  background-color: #6cac30;
   color: #FFFFFF;
 }
 .ui.teal.segment.segment.segment.segment.segment:not(.inverted) {
@@ -606,10 +606,10 @@
   color: #FFFFFF;
 }
 .ui.blue.segment.segment.segment.segment.segment:not(.inverted) {
-  border-top: 2px solid #2185D0;
+  border-top: 2px solid #00aeff;
 }
 .ui.inverted.blue.segment.segment.segment.segment.segment {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: #FFFFFF;
 }
 .ui.violet.segment.segment.segment.segment.segment:not(.inverted) {
@@ -856,6 +856,13 @@
          Site Overrides
 *******************************/
 
+.ui.segment,
+.ui.placeholder.segment {
+  border: none;
+  background: white;
+  -webkit-box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+  box-shadow: inset 2px 2px 5px 0px #FFFFFF, 5px 5px 15px -4px #A9ACC9;
+}
 .ui.piled.segments:before,
 .ui.piled.segment:before {
   border-radius: 0.6rem;

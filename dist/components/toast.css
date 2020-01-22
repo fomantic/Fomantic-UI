@@ -99,10 +99,10 @@
   background: #cf9b0d;
 }
 .ui.toast-container .toast-box > .attached.progress.success .bar.bar.bar {
-  background: #15792d;
+  background: #46701f;
 }
 .ui.toast-container .toast-box > .attached.progress .error .bar.bar.bar {
-  background: #9c1a1a;
+  background: #ff2b0a;
 }
 .ui.toast-container .toast-box > .attached.progress.neutral .bar.bar.bar {
   background: #d9d9d9;
@@ -381,11 +381,11 @@
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.toast.success {
-  background-color: #21BA45;
+  background-color: #6cac30;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.toast.error {
-  background-color: #DB2828;
+  background-color: #ff6d56;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.toast.neutral {
@@ -480,7 +480,7 @@
 -------------- */
 
 .ui.primary.toast {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.primary.toast,
@@ -498,7 +498,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 .ui.red.toast {
-  background-color: #DB2828;
+  background-color: #ff6d56;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.red.toast,
@@ -507,7 +507,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 .ui.orange.toast {
-  background-color: #F2711C;
+  background-color: #f99132;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.orange.toast,
@@ -516,7 +516,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 .ui.yellow.toast {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.yellow.toast,
@@ -534,7 +534,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 .ui.green.toast {
-  background-color: #21BA45;
+  background-color: #6cac30;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.green.toast,
@@ -552,7 +552,7 @@
   color: rgba(0, 0, 0, 0.7);
 }
 .ui.blue.toast {
-  background-color: #2185D0;
+  background-color: #00aeff;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.blue.toast,

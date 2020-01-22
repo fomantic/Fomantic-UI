@@ -1808,6 +1808,10 @@ select.ui.dropdown {
   background-color: rgba(255, 255, 255, 0.25);
   color: rgba(255, 255, 255, 0.8);
 }
+.ui.inverted.dropdown textarea::-moz-selection, .ui.inverted.dropdown input::-moz-selection {
+  background-color: rgba(255, 255, 255, 0.25);
+  color: rgba(255, 255, 255, 0.8);
+}
 .ui.inverted.dropdown textarea::selection,
 .ui.inverted.dropdown input::selection {
   background-color: rgba(255, 255, 255, 0.25);

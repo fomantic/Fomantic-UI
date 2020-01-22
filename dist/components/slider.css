@@ -254,7 +254,7 @@
 
 /* Standard */
 .ui.primary.slider .inner .track-fill {
-  background-color: #2185D0;
+  background-color: #00aeff;
 }
 .ui.primary.inverted.slider .inner .track-fill {
   background-color: #54C8FF;
@@ -262,11 +262,11 @@
 
 /* Basic */
 .ui.primary.slider.basic .inner .thumb {
-  background-color: #2185D0;
+  background-color: #00aeff;
 }
 .ui.primary.slider.basic .inner .thumb:hover,
 .ui.primary.slider.basic:focus .inner .thumb {
-  background-color: #1678c2;
+  background-color: #009de6;
 }
 
 /* Basic Inverted */
@@ -306,7 +306,7 @@
 
 /* Standard */
 .ui.red.slider .inner .track-fill {
-  background-color: #DB2828;
+  background-color: #ff6d56;
 }
 .ui.red.inverted.slider .inner .track-fill {
   background-color: #FF695E;
@@ -314,11 +314,11 @@
 
 /* Basic */
 .ui.red.slider.basic .inner .thumb {
-  background-color: #DB2828;
+  background-color: #ff6d56;
 }
 .ui.red.slider.basic .inner .thumb:hover,
 .ui.red.slider.basic:focus .inner .thumb {
-  background-color: #d01919;
+  background-color: #ff573d;
 }
 
 /* Basic Inverted */
@@ -332,7 +332,7 @@
 
 /* Standard */
 .ui.orange.slider .inner .track-fill {
-  background-color: #F2711C;
+  background-color: #f99132;
 }
 .ui.orange.inverted.slider .inner .track-fill {
   background-color: #FF851B;
@@ -340,11 +340,11 @@
 
 /* Basic */
 .ui.orange.slider.basic .inner .thumb {
-  background-color: #F2711C;
+  background-color: #f99132;
 }
 .ui.orange.slider.basic .inner .thumb:hover,
 .ui.orange.slider.basic:focus .inner .thumb {
-  background-color: #f26202;
+  background-color: #ff8313;
 }
 
 /* Basic Inverted */
@@ -358,7 +358,7 @@
 
 /* Standard */
 .ui.yellow.slider .inner .track-fill {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
 }
 .ui.yellow.inverted.slider .inner .track-fill {
   background-color: #FFE21F;
@@ -366,11 +366,11 @@
 
 /* Basic */
 .ui.yellow.slider.basic .inner .thumb {
-  background-color: #FBBD08;
+  background-color: #ffbe0a;
 }
 .ui.yellow.slider.basic .inner .thumb:hover,
 .ui.yellow.slider.basic:focus .inner .thumb {
-  background-color: #eaae00;
+  background-color: #f0b000;
 }
 
 /* Basic Inverted */
@@ -410,7 +410,7 @@
 
 /* Standard */
 .ui.green.slider .inner .track-fill {
-  background-color: #21BA45;
+  background-color: #6cac30;
 }
 .ui.green.inverted.slider .inner .track-fill {
   background-color: #2ECC40;
@@ -418,11 +418,11 @@
 
 /* Basic */
 .ui.green.slider.basic .inner .thumb {
-  background-color: #21BA45;
+  background-color: #6cac30;
 }
 .ui.green.slider.basic .inner .thumb:hover,
 .ui.green.slider.basic:focus .inner .thumb {
-  background-color: #16ab39;
+  background-color: #5f9e25;
 }
 
 /* Basic Inverted */
@@ -462,7 +462,7 @@
 
 /* Standard */
 .ui.blue.slider .inner .track-fill {
-  background-color: #2185D0;
+  background-color: #00aeff;
 }
 .ui.blue.inverted.slider .inner .track-fill {
   background-color: #54C8FF;
@@ -470,11 +470,11 @@
 
 /* Basic */
 .ui.blue.slider.basic .inner .thumb {
-  background-color: #2185D0;
+  background-color: #00aeff;
 }
 .ui.blue.slider.basic .inner .thumb:hover,
 .ui.blue.slider.basic:focus .inner .thumb {
-  background-color: #1678c2;
+  background-color: #009de6;
 }
 
 /* Basic Inverted */
@@ -788,3 +788,17 @@
         Slider Overrides
 *******************************/
 
+
+
+/*******************************
+        Slider Overrides
+*******************************/
+
+.ui.slider .inner div.thumb {
+  -webkit-box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+          box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+.ui.slider .inner .track {
+  -webkit-box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+          box-shadow: inset 0 2px 2px 0 rgba(0, 0, 0, 0.12);
+}
