@@ -13,16 +13,16 @@
       -ms-flex-align: center;
           align-items: center;
   background: rgba(0, 0, 0, 0.85);
-  -webkit-backdrop-filter: blur(2px);
-          backdrop-filter: blur(2px);
-  border-radius: 0.9rem;
-  bottom: 50px;
+  -webkit-backdrop-filter: blur(0.143em);
+          backdrop-filter: blur(0.143em);
+  border-radius: 0.9em;
+  bottom: 3.571em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
   left: 50%;
-  min-width: 714px;
+  min-width: 51em;
   position: absolute;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
@@ -37,10 +37,10 @@
       -ms-flex-direction: column;
           flex-direction: column;
   font-size: 2em;
-  padding: 18px 18px;
+  padding: 0.643em 0.643em;
 }
 .ui.controls .header .sub.header {
-  margin-top: 12px;
+  margin-top: 0.857em;
   font-size: 14px;
 }
 .ui.controls a.control {
@@ -83,7 +83,7 @@
 .ui.controls a.control > .icon > .phone.icon {
   -webkit-transform: rotate(-135deg);
           transform: rotate(-135deg);
-  margin: 0 0 0 6px !important;
+  margin: 0 0 0 0.3em !important;
 }
 .ui.controls a.control > .icon > .phone.icon:before {
   color: #e34850 !important;
@@ -92,7 +92,7 @@
   background: rgba(250, 250, 250, 0.3);
   height: auto;
   margin: 0 0 0 1.4em;
-  width: 2px;
+  width: 0.143em;
 }
 .ui.controls .right.controls {
   display: -webkit-box;

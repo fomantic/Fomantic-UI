@@ -1,15 +1,15 @@
 @background: rgba(0, 0, 0, 0.85);
-@borderRadius: 0.9rem;
-@minWidth: 714px;
-@bottom: 50px;
+@borderRadius: 0.9em;
+@minWidth: 51em;
+@bottom: 3.571em;
 @fontFamily: @pageFont;
 @color: #FAFAFA;
 
 /* header */
 @headerColor: @color-gray-75;
 @headerFontSize: 2em;
-@headerHorizontalPadding: 18px;
-@headerVerticalPadding: 18px;
+@headerHorizontalPadding: 0.643em;
+@headerVerticalPadding: 0.643em;
 @subHeaderFontSize: @fontSize;
 
 /* control */
@@ -26,5 +26,5 @@
 
 /* divider */
 @dividerBackground: rgba(250, 250, 250, 0.3);
-@dividerWidth: 2px;
+@dividerWidth: 0.143em;
 @dividerHeight: auto;
