@@ -592,12 +592,6 @@ input::-moz-selection {
   color: rgba(0, 0, 0, 0.7);
 }
 
-textarea::-moz-selection,
-input::-moz-selection {
-  background-color: rgba(100, 100, 100, 0.4);
-  color: rgba(0, 0, 0, 0.7);
-}
-
 textarea::selection,
 input::selection {
   background-color: rgba(100, 100, 100, 0.4);
@@ -58855,12 +58849,6 @@ select.ui.dropdown {
 
 .ui.inverted.dropdown textarea::-webkit-selection,
 .ui.inverted.dropdown input::-webkit-selection {
-  background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.ui.inverted.dropdown textarea::-moz-selection,
-.ui.inverted.dropdown input::-moz-selection {
   background-color: rgba(255, 255, 255, 0.25);
   color: rgba(255, 255, 255, 0.8);
 }

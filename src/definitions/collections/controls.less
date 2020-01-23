@@ -1,0 +1,87 @@
+@type    : 'collection';
+@element : 'controls';
+
+@import (multiple) '../../theme.config';
+
+.ui.controls {
+  align-items: center;
+  background: @background;
+  backdrop-filter: blur(0.143em);
+  border-radius: @borderRadius;
+  bottom: @bottom;
+  display: flex;
+  font-family: @fontFamily;
+  left: 50%;
+  min-width: @minWidth;
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.ui.controls > .header {
+  display: flex;
+  color: @headerColor;
+  flex-direction: column;
+  font-size: @headerFontSize;
+  padding: @headerVerticalPadding @headerHorizontalPadding;
+}
+
+.ui.controls .header .sub.header {
+  margin-top: 0.857em;
+  font-size: @subHeaderFontSize;
+}
+
+.ui.controls a.control {
+  color: @controlColor;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: @controlMinWidth;
+  text-align: center;
+}
+
+.ui.controls a.control > .icon {
+  border-radius: @controlHoverIconRadius;
+  display: block;
+  font-size: @controlIconSize !important;
+  height: @controlHoverIconSize !important;
+  margin: 0 auto @controlIconTextMargin !important;
+  padding: @controlHoverIconPadding !important;
+  width: @controlHoverIconSize !important;
+}
+
+.ui.controls a.control > .icon:before {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+  display: block;
+}
+
+.ui.controls a.control:hover > .icon,
+.ui.controls a.control:active > .icon,
+.ui.controls a.control:focus > .icon {
+  background: @controlHoverIconBackground;
+}
+
+.ui.controls a.control  > .icon > .phone.icon {
+  transform:  rotate(-135deg);
+  margin: 0 0 0 0.3em !important;
+}
+
+.ui.controls a.control  > .icon > .phone.icon:before {
+  color: @phoneColor !important;
+}
+
+.ui.controls .divider {
+  background: @dividerBackground;
+  height: @dividerHeight;
+  margin: 0 0 0 1.4em;
+  width: @dividerWidth;
+}
+
+.ui.controls .right.controls {
+  display: flex;
+  margin-left: auto !important;
+}
+
+.loadUIOverrides();

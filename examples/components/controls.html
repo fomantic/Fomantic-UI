@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Theming - Semantic</title>
+
+  <!--- Site CSS -->
+  <link rel="stylesheet" type="text/css" href="../../dist/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/site.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/grid.css">
+
+  <!--- Component CSS -->
+  <link rel="stylesheet" type="text/css" href="../../dist/components/controls.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/input.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/dropdown.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/icon.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/button.css">
+  <link rel="stylesheet" type="text/css" href="../../dist/components/transition.css">
+
+  <!--- Example Libs -->
+  <link rel="stylesheet" type="text/css" href="../../dist/components/popup.css">
+  <script src="../assets/library/jquery.min.js"></script>
+  <script src="../assets/library/iframe-content.js"></script>
+  <script src="../assets/show-examples.js"></script>
+  <script type="text/javascript" src="../../dist/components/popup.js"></script>
+
+  <!--- Component JS -->
+  <script type="text/javascript" src="../../dist/components/transition.js"></script>
+  <script type="text/javascript" src="../../dist/components/dropdown.js"></script>
+
+  <!--- Example CSS -->
+  <style>
+  body {
+    padding: 1em;
+  }
+  </style>
+
+  <!--- Example Javascript -->
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.menu .ui.dropdown').dropdown({
+        on: 'hover'
+      });
+      $('.ui.menu a.item')
+        .on('click', function() {
+          $(this)
+            .addClass('active')
+            .siblings()
+            .removeClass('active')
+          ;
+        })
+      ;
+    })
+  ;
+  </script>
+</head>
+<body>
+
+<div class="ui controls">
+  <div class="header">
+    000-000-000
+    <div class="sub header">
+      <i class="users icon"></i>
+      0 Participants
+    </div>
+  </div>
+  <div class="right controls">
+    <a class="control">
+      <i class="user add icon"></i>
+      Invite
+    </a>
+    <a class="control">
+      <i class="slideshare icon"></i>
+      Start Sharing
+    </a>
+    <div class="divider"></div>
+    <a class="control">
+      <i class="mute icon"></i>
+      Mute
+    </a>
+    <a class="control">
+      <i class="video icon"></i>
+      Hide Camera
+    </a>
+    <a class="control">
+      <div class="icon">
+        <i class="phone icon"></i>
+      </div>
+      Exit
+    </a>
+  </div>
+</div>
+
+</body>
+</html>
