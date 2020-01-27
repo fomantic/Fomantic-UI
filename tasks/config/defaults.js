@@ -69,6 +69,7 @@ module.exports = {
 
     // collections
     'breadcrumb',
+    'controls',
     'form',
     'grid',
     'menu',

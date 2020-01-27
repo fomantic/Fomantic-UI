@@ -33,29 +33,16 @@
 
   <!--- Example CSS -->
   <style>
-  body {
-    padding: 1em;
-  }
+    .ui.controls {
+      margin: 3em 0em;
+    }
+    .ui.controls:last-child {
+      margin-bottom: 110px;
+    }
   </style>
 
   <!--- Example Javascript -->
   <script>
-  $(document)
-    .ready(function() {
-      $('.ui.menu .ui.dropdown').dropdown({
-        on: 'hover'
-      });
-      $('.ui.menu a.item')
-        .on('click', function() {
-          $(this)
-            .addClass('active')
-            .siblings()
-            .removeClass('active')
-          ;
-        })
-      ;
-    })
-  ;
   </script>
 </head>
 <body>

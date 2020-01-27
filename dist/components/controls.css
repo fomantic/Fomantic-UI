@@ -45,7 +45,6 @@
 }
 .ui.controls a.control {
   color: #fafafa;
-  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -62,6 +61,7 @@
 .ui.controls a.control > .icon {
   border-radius: 0.6rem;
   display: block;
+  cursor: pointer;
   font-size: 1.71428571em !important;
   height: 2em !important;
   margin: 0 auto 0 !important;
