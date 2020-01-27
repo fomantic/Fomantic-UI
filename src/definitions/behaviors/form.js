@@ -1121,7 +1121,7 @@ $.fn.form = function(parameters) {
                 isDisabled = $el.prop('disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                 validation = module.get.validation($el),
                 hasEmptyRule = validation
-                  ? (validation.rules.findIndex(function(rule) { return rule.type == "empty" }) > -1)
+                  ? $.grep(validation.rules, function(rule) { return rule.type == "empty" }) !== 0
                   : false,
                 identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
               ;
