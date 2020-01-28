@@ -38,6 +38,9 @@
   justify-content: center;
   min-width: @controlMinWidth;
   text-align: center;
+  margin-right: 0.714em;
+
+  &:last-child {margin-right: 0;}
 }
 
 .ui.controls a.control > .icon {
@@ -57,10 +60,16 @@
   display: block;
 }
 
-.ui.controls a.control:hover > .icon,
-.ui.controls a.control:active > .icon,
-.ui.controls a.control:focus > .icon {
+.ui.controls a.control:hover > .icon {
   background: @controlHoverIconBackground;
+}
+
+//todo
+.ui.controls a.active.control > .slideshare.icon,
+.ui.controls a.active.control > .slideshare.icon,
+.ui.controls a.active.control > .record.icon,
+.ui.controls a.active.control > .record.icon {
+  color: @color-green-400;
 }
 
 .ui.controls a.control  > .icon > .phone.icon {
@@ -72,10 +81,14 @@
   color: @phoneColor !important;
 }
 
+.ui.controls a.control  > .icon > .record.icon:before {
+  color: @phoneColor !important;
+}
+
 .ui.controls .divider {
   background: @dividerBackground;
   height: @dividerHeight;
-  margin: 0 0 0 1.4em;
+  margin-right: 0.714em;
   width: @dividerWidth;
 }
 

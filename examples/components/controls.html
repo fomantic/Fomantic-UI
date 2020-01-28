@@ -31,7 +31,7 @@
   <script type="text/javascript" src="../../dist/components/transition.js"></script>
   <script type="text/javascript" src="../../dist/components/dropdown.js"></script>
 
-  <!--- Example CSS -->
+  <!--- Example CSS
   <style>
     .ui.controls {
       margin: 3em 0;
@@ -39,13 +39,54 @@
     .ui.controls:last-child {
       margin-bottom: 110px;
     }
-  </style>
+  </style>-->
 
   <!--- Example Javascript -->
   <script>
   </script>
 </head>
 <body>
+
+
+<div class="ui controls" style="bottom: auto">
+  <div class="header">
+    000-000-000
+    <div class="sub header">
+      <i class="users icon"></i>
+      0 Participants
+    </div>
+  </div>
+  <div class="right controls">
+    <a class="control">
+      <i class="user add icon"></i>
+      Invite
+    </a>
+    <a class="control active">
+      <i class="slideshare icon"></i>
+      Stop sharing
+    </a>
+    <a class="control active">
+      <i class="record vinyl icon"></i>
+      Stop recording
+    </a>
+    <div class="divider"></div>
+    <a class="control active">
+      <i class="mute icon"></i>
+      Unmute
+    </a>
+    <a class="control active">
+      <i class="video slash icon"></i>
+      Show camera
+    </a>
+    <a class="control">
+      <div class="icon">
+        <i class="phone icon"></i>
+      </div>
+      Exit
+    </a>
+  </div>
+</div>
+
 
 <div class="ui controls">
   <div class="header">
@@ -64,9 +105,13 @@
       <i class="slideshare icon"></i>
       Start Sharing
     </a>
+    <a class="control">
+      <i class="record vinyl icon"></i>
+      Start recording
+    </a>
     <div class="divider"></div>
     <a class="control">
-      <i class="mute icon"></i>
+      <i class="unmute icon"></i>
       Mute
     </a>
     <a class="control">
@@ -81,6 +126,7 @@
     </a>
   </div>
 </div>
+
 
 </body>
 </html>

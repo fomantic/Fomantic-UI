@@ -45,6 +45,7 @@
 }
 .ui.controls a.control {
   color: #fafafa;
+  cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -57,11 +58,14 @@
           justify-content: center;
   min-width: 5em;
   text-align: center;
+  margin-right: 0.714em;
+}
+.ui.controls a.control:last-child {
+  margin-right: 0;
 }
 .ui.controls a.control > .icon {
   border-radius: 0.6rem;
   display: block;
-  cursor: pointer;
   font-size: 1.71428571em !important;
   height: 2em !important;
   margin: 0 auto 0 !important;
@@ -75,10 +79,14 @@
           transform: translateY(-50%);
   display: block;
 }
-.ui.controls a.control:hover > .icon,
-.ui.controls a.control:active > .icon,
-.ui.controls a.control:focus > .icon {
+.ui.controls a.control:hover > .icon {
   background: rgba(255, 255, 255, 0.3);
+}
+.ui.controls a.active.control > .slideshare.icon,
+.ui.controls a.active.control > .slideshare.icon,
+.ui.controls a.active.control > .record.icon,
+.ui.controls a.active.control > .record.icon {
+  color: #33ab84;
 }
 .ui.controls a.control > .icon > .phone.icon {
   -webkit-transform: rotate(-135deg);
@@ -88,10 +96,13 @@
 .ui.controls a.control > .icon > .phone.icon:before {
   color: #e34850 !important;
 }
+.ui.controls a.control > .icon > .record.icon:before {
+  color: #e34850 !important;
+}
 .ui.controls .divider {
   background: rgba(250, 250, 250, 0.3);
   height: auto;
-  margin: 0 0 0 1.4em;
+  margin-right: 0.714em;
   width: 0.143em;
 }
 .ui.controls .right.controls {
