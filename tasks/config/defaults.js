@@ -116,8 +116,8 @@ module.exports = {
 
   // globs used for matching file patterns
   globs      : {
-    ignored    : '!(*.min|*.map|*.rtl)',
-    ignoredRTL : '!(*.min|*.map)'
+    ignored    : '!(*.map|*.rtl)',
+    ignoredRTL : '!(*.map)'
   }
 
 };
