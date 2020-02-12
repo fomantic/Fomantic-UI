@@ -553,7 +553,7 @@ $.fn.form = function(parameters) {
                 ? $label.text()
                 : $field.prop('placeholder') || settings.text.unspecifiedField
               ;
-              prompt = prompt.replace(/\{name\}/g', name);
+              prompt = prompt.replace(/\{name\}/g, name);
             }
             prompt = prompt.replace(/\{identifier\}/g, field.identifier);
             prompt = prompt.replace(/\{ruleValue\}/g, ancillary);
