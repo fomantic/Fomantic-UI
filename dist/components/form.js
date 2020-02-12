@@ -542,7 +542,7 @@ $.fn.form = function(parameters) {
               name
             ;
             if(requiresValue) {
-              prompt = prompt.replace(/\{value\}/g $field.val());
+              prompt = prompt.replace('{value}', $field.val());
             }
             if(requiresName) {
               $label = $field.closest(selector.group).find('label').eq(0);
@@ -550,10 +550,10 @@ $.fn.form = function(parameters) {
                 ? $label.text()
                 : $field.prop('placeholder') || settings.text.unspecifiedField
               ;
-              prompt = prompt.replace(/\{name\}/g', name);
+              prompt = prompt.replace('{name}', name);
             }
-            prompt = prompt.replace(/\{identifier\}/g, field.identifier);
-            prompt = prompt.replace(/\{ruleValue\}/g, ancillary);
+            prompt = prompt.replace('{identifier}', field.identifier);
+            prompt = prompt.replace('{ruleValue}', ancillary);
             if(!rule.prompt) {
               module.verbose('Using default validation prompt for type', prompt, ruleName);
             }
