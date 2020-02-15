@@ -1343,7 +1343,7 @@ each(@colors, {
   @c: @colors[@@color][color];
 
   & when not (@color=secondary) {
-    .ui.ui.menu .@{color}.active.item,
+    .ui.ui.ui.menu .@{color}.active.item,
     .ui.ui.@{color}.menu .active.item:hover,
     .ui.ui.@{color}.menu .active.item {
       & when not (@secondaryPointingActiveBorderColor = currentColor) {
@@ -1485,7 +1485,7 @@ each(@colors, {
     @h: @colors[@@color][hover];
 
     & when not (@color=secondary) {
-      .ui.ui.inverted.menu .@{color}.active.item,
+      .ui.ui.ui.inverted.menu .@{color}.active.item,
       .ui.ui.inverted.@{color}.menu {
         background-color: @c;
       }
