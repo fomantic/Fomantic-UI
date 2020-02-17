@@ -815,7 +815,7 @@ $.fn.calendar = function(parameters) {
             module.set.mode(newMode);
             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
               //the user has chosen enough to consider a valid date/time has been chosen
-              module.set.date(date);
+              module.set.date(date, true, false);
             } else {
               module.set.focusDate(date);
             }
