@@ -59,6 +59,12 @@
   transition: @transition;
 }
 
+/* Rowspan helper class */
+.ui.table th.rowspanned,
+.ui.table td.rowspanned {
+  display:none;
+}
+
 /* Headers */
 .ui.table > thead {
   box-shadow: @headerBoxShadow;
@@ -180,13 +186,13 @@
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
-  .ui.table:not(.unstackable) > tr > td,
-  .ui.table:not(.unstackable) > tbody > tr > td,
-  .ui.table:not(.unstackable) > tfoot > tr > td {
+  .ui.table:not(.unstackable) > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > thead > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
     display: block !important;
     width: auto !important;
   }
@@ -469,13 +475,13 @@
     .ui[class*="tablet stackable"].table > tbody,
     .ui[class*="tablet stackable"].table > tbody > tr,
     .ui[class*="tablet stackable"].table > tr,
-    .ui[class*="tablet stackable"].table > thead > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > th,
-    .ui[class*="tablet stackable"].table > tfoot > tr > th,
-    .ui[class*="tablet stackable"].table > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > td,
-    .ui[class*="tablet stackable"].table > tfoot > tr > td,
-    .ui[class*="tablet stackable"].table > tr > td  {
+    .ui[class*="tablet stackable"].table > thead > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
       display: block !important;
       width: 100% !important;
     }
