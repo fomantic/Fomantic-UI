@@ -633,7 +633,7 @@ select.ui.dropdown {
   cursor: text;
   position: relative;
   left: 1px;
-  z-index: 3;
+  z-index: auto;
 }
 
 /* Search Selection */

@@ -45,6 +45,9 @@
   border-bottom-left-radius: 0.28571429rem;
   border-bottom-right-radius: 0.28571429rem;
 }
+.ui.modal > .ui.dimmer {
+  border-radius: inherit;
+}
 
 
 /*******************************
@@ -321,6 +324,7 @@
 }
 .ui.basic.modal > .header {
   color: #FFFFFF;
+  border-bottom: none;
 }
 .ui.basic.modal > .close {
   top: 1rem;
