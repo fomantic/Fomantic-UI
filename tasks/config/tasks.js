@@ -1,9 +1,21 @@
 var
+  browserslist = require('browserslist'),
   console = require('better-console'),
   config  = require('./user'),
   release = require('./project/release')
 ;
 
+var defaultBrowsers = browserslist(browserslist.defaults)
+var userBrowsers = browserslist()
+var hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers)
+
+var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
+  'last 2 versions',
+  '> 1%',
+  'opera 12.1',
+  'bb 10',
+  'android 4'
+]
 
 module.exports = {
 
@@ -118,13 +130,7 @@ module.exports = {
 
     /* What Browsers to Prefix */
     prefix: {
-      overrideBrowserslist: [
-        'last 2 versions',
-        '> 1%',
-        'opera 12.1',
-        'bb 10',
-        'android 4'
-      ]
+      overrideBrowserslist
     },
 
     /* File Renames */

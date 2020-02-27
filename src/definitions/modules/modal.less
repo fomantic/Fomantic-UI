@@ -53,6 +53,10 @@
   border-bottom-right-radius: @borderRadius;
 }
 
+.ui.modal > .ui.dimmer {
+  border-radius: inherit;
+}
+
 /*******************************
             Content
 *******************************/
@@ -309,6 +313,7 @@
   }
   .ui.basic.modal > .header {
     color: @basicModalHeaderColor;
+    border-bottom: none;
   }
   .ui.basic.modal > .close {
     top: @basicModalCloseTop;

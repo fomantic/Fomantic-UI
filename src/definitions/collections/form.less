@@ -1097,6 +1097,16 @@
     font-size: @inlineInputSize;
   }
 
+  .ui.form .inline.fields .field .calendar:not(.popup),
+  .ui.form .inline.field .calendar:not(.popup) {
+    display:inline-block;
+  }
+
+  .ui.form .inline.fields .field .calendar:not(.popup) > .input > input,
+  .ui.form .inline.field .calendar:not(.popup) > .input > input {
+    width: @inlineCalendarWidth;
+  }
+
   /* Label */
   .ui.form .inline.fields .field > :first-child,
   .ui.form .inline.field > :first-child {

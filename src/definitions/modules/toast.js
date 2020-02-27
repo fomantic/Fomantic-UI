@@ -389,13 +389,15 @@ $.fn.toast = function(parameters) {
                   onBeforeHide: function(callback){
                       callback = $.isFunction(callback)?callback : function(){};
                       if(settings.transition.closeEasing !== ''){
-                          $toastBox.css('opacity',0);
-                          $toastBox.wrap('<div/>').parent().slideUp(500,settings.transition.closeEasing,function(){
-                            if($toastBox){
-                              $toastBox.parent().remove();
-                              callback.call($toastBox);
-                            }
-                          });
+                          if($toastBox) {
+                            $toastBox.css('opacity', 0);
+                            $toastBox.wrap('<div/>').parent().slideUp(500, settings.transition.closeEasing, function () {
+                              if ($toastBox) {
+                                $toastBox.parent().remove();
+                                callback.call($toastBox);
+                              }
+                            });
+                          }
                       } else {
                         callback.call($toastBox);
                       }
