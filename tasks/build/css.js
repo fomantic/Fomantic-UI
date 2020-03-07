@@ -140,8 +140,11 @@ function buildCSS(src, type, config, opts, callback) {
   packCompressed.displayName = 'Packing compressed CSS';
 
   gulp.parallel(
-    gulp.series(buildUncompressed, packUncompressed),
-    gulp.series(buildCompressed, packCompressed)
+    gulp.series(
+      buildUncompressed,
+      gulp.parallel(packUncompressed, packCompressed)
+    ),
+    gulp.series(buildCompressed)
   )(callback);
 }
 
