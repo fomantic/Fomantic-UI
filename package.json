@@ -63,7 +63,7 @@
     "gulp-uglify": "^3.0.1",
     "inquirer": "^6.2.1",
     "map-stream": "^0.1.0",
-    "mkdirp": "^0.5.1",
+    "mkdirp": "^1.0.0",
     "normalize-path": "^3.0.0",
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
