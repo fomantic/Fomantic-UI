@@ -444,15 +444,15 @@
       border-top: @borderWidth solid @borderColor;
       border-bottom: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.left.action.input > .ui.button,
+    .ui.form > .field.@{state} > .ui[class*="left action"].input > .ui.button,
     .ui.form > .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
-    .ui.left.action.input.@{state} > .ui.button,
+    .ui[class*="left action"].input.@{state} > .ui.button,
     .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
       border-left: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.action.input:not(.left) > input + .ui.button,
+    .ui.form > .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
     .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
-    .ui.action.input.@{state}:not(.left) > input + .ui.button,
+    .ui.action.input.@{state}:not([class*="left action"]) > input + .ui.button,
     .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
       border-right: @borderWidth solid @borderColor;
     }

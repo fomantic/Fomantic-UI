@@ -414,36 +414,40 @@
   box-shadow: @inputFocusBoxShadow;
 }
 & when (@variationInputAction) {
-  .ui.form .ui.action.input:not(.left) input:not([type]):focus,
-  .ui.form .ui.action.input:not(.left) input[type="date"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="datetime-local"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="email"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="number"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="password"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="search"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="tel"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="time"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="text"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="file"]:focus,
-  .ui.form .ui.action.input:not(.left) input[type="url"]:focus {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
+  .ui.form .ui.action.input:not([class*="left action"]) {
+    & input:not([type]):focus,
+      input[type="date"]:focus,
+      input[type="datetime-local"]:focus,
+      input[type="email"]:focus,
+      input[type="number"]:focus,
+      input[type="password"]:focus,
+      input[type="search"]:focus,
+      input[type="tel"]:focus,
+      input[type="time"]:focus,
+      input[type="text"]:focus,
+      input[type="file"]:focus,
+      input[type="url"]:focus {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
   }
 
-  .ui.form .ui.action.input.left input:not([type]),
-  .ui.form .ui.action.input.left input[type="date"],
-  .ui.form .ui.action.input.left input[type="datetime-local"],
-  .ui.form .ui.action.input.left input[type="email"],
-  .ui.form .ui.action.input.left input[type="number"],
-  .ui.form .ui.action.input.left input[type="password"],
-  .ui.form .ui.action.input.left input[type="search"],
-  .ui.form .ui.action.input.left input[type="tel"],
-  .ui.form .ui.action.input.left input[type="time"],
-  .ui.form .ui.action.input.left input[type="text"],
-  .ui.form .ui.action.input.left input[type="file"],
-  .ui.form .ui.action.input.left input[type="url"] {
-    border-bottom-left-radius: 0;
-    border-top-left-radius: 0;
+  .ui.form .ui[class*="left action"].input {
+    & input:not([type]),
+      input[type="date"],
+      input[type="datetime-local"],
+      input[type="email"],
+      input[type="number"],
+      input[type="password"],
+      input[type="search"],
+      input[type="tel"],
+      input[type="time"],
+      input[type="text"],
+      input[type="file"],
+      input[type="url"] {
+      border-bottom-left-radius: 0;
+      border-top-left-radius: 0;
+    }
   }
 }
 .ui.form textarea:focus {
