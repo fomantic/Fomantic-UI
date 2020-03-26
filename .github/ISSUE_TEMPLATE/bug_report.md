@@ -3,7 +3,7 @@ name: Bug report
 about: Use this if something isn't working how you think it should or you think you've
   found a bug
 title: "[scope] summary of your bug"
-labels: type/bug, state/awaiting-investigation, state/awaiting-triage
+labels: state/awaiting-investigation, state/awaiting-triage, type/bug
 assignees: ''
 
 ---
