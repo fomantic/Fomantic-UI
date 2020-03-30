@@ -127,6 +127,13 @@ function buildCSS(src, type, config, opts, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
   }
 
+  if (globs.individuals !== undefined) {
+    const individuals = config.globs.individuals.replace('{','');
+    const components = config.globs.components.replace('}',',').concat(individuals);
+
+    src = config.paths.source.definitions + '/**/' + components + '.less';
+  }
+
   const buildUncompressed       = () => build(src, type, false, config, opts);
   buildUncompressed.displayName = 'Building uncompressed CSS';
 
