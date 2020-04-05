@@ -1080,6 +1080,9 @@ $.fn.dropdown = function(parameters) {
               if(settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) {
                 module.search();
               }
+              else {
+                iconClicked = false;
+              }
             },
             blur: function(event) {
               pageLostFocus = (document.activeElement === this);
