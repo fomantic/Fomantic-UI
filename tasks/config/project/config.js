@@ -135,6 +135,14 @@ module.exports = {
       : '{' + defaults.components.join(',') + '}'
     ;
 
+    // components that should be built, but excluded from main .css/.js files
+    config.globs.individuals = (typeof config.individuals == 'object')
+      ? (config.individuals.length > 1)
+        ? '{' + config.individuals.join(',') + '}'
+        : config.individuals[0]
+      : undefined
+    ;
+
     return config;
 
   }
