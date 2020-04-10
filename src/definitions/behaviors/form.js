@@ -336,7 +336,7 @@ $.fn.form = function(parameters) {
             }
           },
           blank: function($field) {
-            return $.trim($field.val()) === '';
+            return String($field.val()).trim() === '';
           },
           valid: function(field) {
             var
@@ -1264,7 +1264,7 @@ $.fn.form = function(parameters) {
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
                     ? ''
-                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                    : (settings.shouldTrim) ? String(value + '').trim() : String(value + '')
                 ;
                 return ruleFunction.call(field, value, ancillary, $module);
               }
