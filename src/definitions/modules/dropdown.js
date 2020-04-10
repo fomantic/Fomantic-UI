@@ -497,6 +497,11 @@ $.fn.dropdown = function(parameters) {
           ;
         },
 
+        clearItems: function() {
+          $menu.empty();
+          module.refreshItems();
+        },
+
         toggle: function() {
           module.verbose('Toggling menu visibility');
           if( !module.is.active() ) {
@@ -512,6 +517,10 @@ $.fn.dropdown = function(parameters) {
             ? callback
             : function(){}
           ;
+          if (iconClicked && module.is.remote() && module.is.noApiCache()) {
+            module.clearItems();
+            iconClicked = false;
+          }
           if(!module.can.show() && module.is.remote()) {
             module.debug('No API results retrieved, searching before show');
             module.queryRemote(module.get.query(), module.show, [callback, preventFocus]);
@@ -819,6 +828,13 @@ $.fn.dropdown = function(parameters) {
 
                 if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
+                }
+                else {
+                  var value = module.get.value();
+                  if (value !== '') {
+                    module.verbose('Value present after update items, select value in items');
+                    module.set.selected(value);
+                  }
                 }
                 callback.apply(null, callbackParameters);
               }
@@ -3385,6 +3401,9 @@ $.fn.dropdown = function(parameters) {
           },
           remote: function() {
             return settings.apiSettings && module.can.useAPI();
+          },
+          noApiCache: function() {
+            return settings.apiSettings && !settings.apiSettings.cache
           },
           single: function() {
             return !module.is.multiple();
