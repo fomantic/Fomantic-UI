@@ -541,6 +541,7 @@ $.fn.dropdown = function(parameters) {
           } else if( module.can.click() ) {
               module.unbind.intent();
           }
+          iconClicked = false;
         },
 
         hideOthers: function() {
