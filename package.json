@@ -29,7 +29,7 @@
     "changelog": "auto-changelog -p"
   },
   "dependencies": {
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "@octokit/rest": "^16.16.0",
     "gulp-concat-filenames": "^1.2.0",
     "gulp-debug": "^4.0.0",
