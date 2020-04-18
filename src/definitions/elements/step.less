@@ -235,6 +235,12 @@
     border-width: @verticalArrowBorderWidth;
     display: @verticalArrowDisplay;
   }
+  .ui.right.vertical.steps .step:after {
+    border-width: @verticalLeftArrowBorderWidth;
+    left: @verticalLeftArrowLeftOffset;
+    right: @verticalLeftArrowRightOffset;
+    transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+  }
 
   .ui.vertical.steps .active.step:after {
     display: @verticalActiveArrowDisplay;
