@@ -185,40 +185,40 @@
   }
 
   /* Single Digits */
-  .ui.indicating.progress[data-percent="1"] .bar,
-  .ui.indicating.progress[data-percent="2"] .bar,
-  .ui.indicating.progress[data-percent="3"] .bar,
-  .ui.indicating.progress[data-percent="4"] .bar,
-  .ui.indicating.progress[data-percent="5"] .bar,
-  .ui.indicating.progress[data-percent="6"] .bar,
-  .ui.indicating.progress[data-percent="7"] .bar,
-  .ui.indicating.progress[data-percent="8"] .bar,
-  .ui.indicating.progress[data-percent="9"] .bar {
+  .ui.indicating.progress[data-percent="1"] .bar, .ui.indicating.progress[data-percent^="1."] .bar,
+  .ui.indicating.progress[data-percent="2"] .bar, .ui.indicating.progress[data-percent^="2."] .bar,
+  .ui.indicating.progress[data-percent="3"] .bar, .ui.indicating.progress[data-percent^="3."] .bar,
+  .ui.indicating.progress[data-percent="4"] .bar, .ui.indicating.progress[data-percent^="4."] .bar,
+  .ui.indicating.progress[data-percent="5"] .bar, .ui.indicating.progress[data-percent^="5."] .bar,
+  .ui.indicating.progress[data-percent="6"] .bar, .ui.indicating.progress[data-percent^="6."] .bar,
+  .ui.indicating.progress[data-percent="7"] .bar, .ui.indicating.progress[data-percent^="7."] .bar,
+  .ui.indicating.progress[data-percent="8"] .bar, .ui.indicating.progress[data-percent^="8."] .bar,
+  .ui.indicating.progress[data-percent="9"] .bar, .ui.indicating.progress[data-percent^="9."] .bar {
     background-color: @indicatingFirstColor;
   }
-  .ui.indicating.progress[data-percent="0"] .label,
-  .ui.indicating.progress[data-percent="1"] .label,
-  .ui.indicating.progress[data-percent="2"] .label,
-  .ui.indicating.progress[data-percent="3"] .label,
-  .ui.indicating.progress[data-percent="4"] .label,
-  .ui.indicating.progress[data-percent="5"] .label,
-  .ui.indicating.progress[data-percent="6"] .label,
-  .ui.indicating.progress[data-percent="7"] .label,
-  .ui.indicating.progress[data-percent="8"] .label,
-  .ui.indicating.progress[data-percent="9"] .label {
+  .ui.indicating.progress[data-percent="0"] .label, .ui.indicating.progress[data-percent^="0."] .label,
+  .ui.indicating.progress[data-percent="1"] .label, .ui.indicating.progress[data-percent^="1."] .label,
+  .ui.indicating.progress[data-percent="2"] .label, .ui.indicating.progress[data-percent^="2."] .label,
+  .ui.indicating.progress[data-percent="3"] .label, .ui.indicating.progress[data-percent^="3."] .label,
+  .ui.indicating.progress[data-percent="4"] .label, .ui.indicating.progress[data-percent^="4."] .label,
+  .ui.indicating.progress[data-percent="5"] .label, .ui.indicating.progress[data-percent^="5."] .label,
+  .ui.indicating.progress[data-percent="6"] .label, .ui.indicating.progress[data-percent^="6."] .label,
+  .ui.indicating.progress[data-percent="7"] .label, .ui.indicating.progress[data-percent^="7."] .label,
+  .ui.indicating.progress[data-percent="8"] .label, .ui.indicating.progress[data-percent^="8."] .label,
+  .ui.indicating.progress[data-percent="9"] .label, .ui.indicating.progress[data-percent^="9."] .label {
     color: @indicatingFirstLabelColor;
   }
   & when (@variationProgressInverted) {
-    .ui.inverted.indicating.progress[data-percent="0"] .label,
-    .ui.inverted.indicating.progress[data-percent="1"] .label,
-    .ui.inverted.indicating.progress[data-percent="2"] .label,
-    .ui.inverted.indicating.progress[data-percent="3"] .label,
-    .ui.inverted.indicating.progress[data-percent="4"] .label,
-    .ui.inverted.indicating.progress[data-percent="5"] .label,
-    .ui.inverted.indicating.progress[data-percent="6"] .label,
-    .ui.inverted.indicating.progress[data-percent="7"] .label,
-    .ui.inverted.indicating.progress[data-percent="8"] .label,
-    .ui.inverted.indicating.progress[data-percent="9"] .label {
+    .ui.inverted.indicating.progress[data-percent="0"] .label, .ui.inverted.indicating.progress[data-percent^="0."] .label,
+    .ui.inverted.indicating.progress[data-percent="1"] .label, .ui.inverted.indicating.progress[data-percent^="1."] .label,
+    .ui.inverted.indicating.progress[data-percent="2"] .label, .ui.inverted.indicating.progress[data-percent^="2."] .label,
+    .ui.inverted.indicating.progress[data-percent="3"] .label, .ui.inverted.indicating.progress[data-percent^="3."] .label,
+    .ui.inverted.indicating.progress[data-percent="4"] .label, .ui.inverted.indicating.progress[data-percent^="4."] .label,
+    .ui.inverted.indicating.progress[data-percent="5"] .label, .ui.inverted.indicating.progress[data-percent^="5."] .label,
+    .ui.inverted.indicating.progress[data-percent="6"] .label, .ui.inverted.indicating.progress[data-percent^="6."] .label,
+    .ui.inverted.indicating.progress[data-percent="7"] .label, .ui.inverted.indicating.progress[data-percent^="7."] .label,
+    .ui.inverted.indicating.progress[data-percent="8"] .label, .ui.inverted.indicating.progress[data-percent^="8."] .label,
+    .ui.inverted.indicating.progress[data-percent="9"] .label, .ui.inverted.indicating.progress[data-percent^="9."] .label {
       color: @invertedIndicatingFirstLabelColor;
     }
   }
