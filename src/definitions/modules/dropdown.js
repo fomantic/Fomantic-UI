@@ -519,7 +519,6 @@ $.fn.dropdown = function(parameters) {
           ;
           if (iconClicked && module.is.remote() && module.is.noApiCache()) {
             module.clearItems();
-            iconClicked = false;
           }
           if(!module.can.show() && module.is.remote()) {
             module.debug('No API results retrieved, searching before show');
@@ -830,10 +829,13 @@ $.fn.dropdown = function(parameters) {
                   module.add.message(message.noResults);
                 }
                 else {
-                  var value = module.get.value();
-                  if (value !== '') {
-                    module.verbose('Value present after update items, select value in items');
-                    module.set.selected(value);
+                  if (iconClicked) {
+                    iconClicked = false;
+                    var value = module.get.value();
+                    if (value !== '') {
+                      module.verbose('Value present after click icon, select value in items');
+                      module.set.selected(value);
+                    }
                   }
                 }
                 callback.apply(null, callbackParameters);
