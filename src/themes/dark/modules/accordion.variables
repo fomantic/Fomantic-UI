@@ -1,0 +1,9 @@
+@styledTitleColor: white;
+@styledBackground: @gray-darker;
+
+/* Styled Title States */
+@styledActiveTitleColor: @primary;
+
+/* Styled Child Title States */
+@styledHoverChildTitleColor: @primary;
+@styledActiveChildTitleColor: @primary;

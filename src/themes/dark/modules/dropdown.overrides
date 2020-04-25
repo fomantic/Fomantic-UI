@@ -1,0 +1,19 @@
+.ui.menu .ui.dropdown .menu>.active.item {
+  background: @primary !important;
+  color: @white !important; 
+}
+
+.ui.menu .ui.dropdown .menu>.item:hover {
+  background: @primary !important;
+  color: @white !important; 
+}
+
+.ui.dropdown .menu>.item>.description,
+.ui.dropdown>.text>.description {
+   color: @gray-300;
+}
+
+.ui.dropdown.error>.menu>.item:hover {
+  background-color:  @red !important;
+  color: @white;
+}
