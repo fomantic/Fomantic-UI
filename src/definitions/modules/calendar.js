@@ -792,10 +792,9 @@ $.fn.calendar = function(parameters) {
             var canceled = module.set.date(date) === false;
             if (!canceled && settings.closable) {
               module.popup('hide');
-              //if this is a range calendar, show the end date calendar popup and focus the input
+              //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
               var endModule = module.get.calendarModule(settings.endCalendar);
               if (endModule) {
-                endModule.popup('show');
                 endModule.focus();
               }
             }
