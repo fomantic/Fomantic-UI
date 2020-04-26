@@ -440,7 +440,6 @@ $.fn.calendar = function(parameters) {
               $input.on('input' + eventNamespace, module.event.inputChange);
               $input.on('focus' + eventNamespace, module.event.inputFocus);
               $input.on('blur' + eventNamespace, module.event.inputBlur);
-              $input.on('click' + eventNamespace, module.event.inputClick);
               $input.on('keydown' + eventNamespace, module.event.keydown);
             } else {
               $container.on('keydown' + eventNamespace, module.event.keydown);
@@ -569,9 +568,6 @@ $.fn.calendar = function(parameters) {
               var text = formatter.datetime(date, settings);
               $input.val(text);
             }
-          },
-          inputClick: function () {
-            module.popup('show');
           }
         },
 
