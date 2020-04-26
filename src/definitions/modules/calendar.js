@@ -116,6 +116,7 @@ $.fn.calendar = function(parameters) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
             module.setting('type', module.get.type());
+            module.setting('on', settings.on || ($input.length ? 'focus' : 'click'));
           },
           popup: function () {
             if (settings.inline) {
@@ -159,7 +160,7 @@ $.fn.calendar = function(parameters) {
               module.set.mode(settings.startMode);
               return settings.onShow.apply($container, arguments);
             };
-            var on = settings.on || ($input.length ? 'focus' : 'click');
+            var on = module.setting('on');
             var options = $.extend({}, settings.popupOptions, {
               popup: $container,
               on: on,
@@ -795,6 +796,9 @@ $.fn.calendar = function(parameters) {
               //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
               var endModule = module.get.calendarModule(settings.endCalendar);
               if (endModule) {
+                if (endModule.setting('on') !== 'focus') {
+                  endModule.popup('show');
+                }
                 endModule.focus();
               }
             }
