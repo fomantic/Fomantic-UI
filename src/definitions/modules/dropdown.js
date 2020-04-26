@@ -808,7 +808,6 @@ $.fn.dropdown = function(parameters) {
                 }
                 else {
                   if (iconClicked) {
-                    iconClicked = false;
                     var value = module.get.value();
                     if (value !== '') {
                       module.verbose('Value present after click icon, select value in items');
@@ -816,6 +815,7 @@ $.fn.dropdown = function(parameters) {
                     }
                   }
                 }
+                iconClicked = false;
                 callback();
               }
             }
