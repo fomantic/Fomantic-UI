@@ -254,7 +254,7 @@
    Tertiary
 -------------*/
 @tertiaryVerticalPadding: 0.5em;
-@tertiaryHorizontalPadding: 0;
+@tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
 @tertiaryTextColor: @textColor;
 @tertiaryLineColor: lighten(@tertiaryTextColor, 20%);
