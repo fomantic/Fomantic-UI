@@ -808,9 +808,9 @@ $.fn.dropdown = function(parameters) {
                 }
                 else {
                   if (iconClicked) {
-                    var value = module.get.value();
+                    var value = module.is.multiple() ? module.get.values() : module.get.value();
                     if (value !== '') {
-                      module.verbose('Value present after click icon, select value in items');
+                      module.verbose('Value(s) present after click icon, select value(s) in items');
                       module.set.selected(value);
                     }
                   }
