@@ -26,10 +26,12 @@
   "scripts": {
     "install": "gulp install",
     "build": "gulp build",
-    "changelog": "auto-changelog -p"
+    "changelog": "auto-changelog -p",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "dependencies": {
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "@octokit/rest": "^16.16.0",
     "gulp-concat-filenames": "^1.2.0",
     "gulp-debug": "^4.0.0",
@@ -68,7 +70,8 @@
     "replace-ext": "^1.0.0",
     "require-dot-file": "^0.4.0",
     "wrench-sui": "^0.0.3",
-    "yamljs": "^0.3.0"
+    "yamljs": "^0.3.0",
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
@@ -81,5 +84,6 @@
     "npm": ">=6.4.1"
   },
   "title": "Fomantic UI",
-  "style": "dist/semantic.css"
+  "style": "dist/semantic.css",
+  "snyk": true
 }
