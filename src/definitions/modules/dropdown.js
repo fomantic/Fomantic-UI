@@ -807,12 +807,10 @@ $.fn.dropdown = function(parameters) {
                   module.add.message(message.noResults);
                 }
                 else {
-                  if (iconClicked) {
-                    var value = module.is.multiple() ? module.get.values() : module.get.value();
-                    if (value !== '') {
-                      module.verbose('Value(s) present after click icon, select value(s) in items');
-                      module.set.selected(value);
-                    }
+                  var value = module.is.multiple() ? module.get.values() : module.get.value();
+                  if (value !== '') {
+                    module.verbose('Value(s) present after click icon, select value(s) in items');
+                    module.set.selected(value);
                   }
                 }
                 iconClicked = false;
