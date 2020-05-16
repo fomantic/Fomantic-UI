@@ -117,7 +117,9 @@ $.fn.dropdown = function(parameters) {
             module.setup.layout();
 
             if(settings.values) {
+              module.set.initialLoad();
               module.change.values(settings.values);
+              module.remove.initialLoad();
             }
 
             module.refreshData();
