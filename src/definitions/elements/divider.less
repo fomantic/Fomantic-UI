@@ -42,8 +42,8 @@
 ---------------*/
 
 .ui.divider:not(.vertical):not(.horizontal) {
-  border-top: @shadowWidth solid @shadowColor;
-  border-bottom: @highlightWidth solid @highlightColor;
+  border-top: @shadowWidth @borderStyle @shadowColor;
+  border-bottom: @highlightWidth @borderStyle @highlightColor;
 }
 
 /*--------------
@@ -117,8 +117,8 @@
     content: '';
     z-index: 3;
 
-    border-left: @shadowWidth solid @shadowColor;
-    border-right: @highlightWidth solid @highlightColor;
+    border-left: @shadowWidth @borderStyle @shadowColor;
+    border-right: @highlightWidth @borderStyle @highlightColor;
 
     width: 0;
     height: @verticalDividerHeight;
