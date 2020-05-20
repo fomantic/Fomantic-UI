@@ -87,6 +87,7 @@ $.fn.dropdown = function(parameters) {
         internalChange  = false,
         iconClicked     = false,
         element         = this,
+        focused         = false,
         instance        = $module.data(moduleNamespace),
 
         selectActionActive,
@@ -499,7 +500,7 @@ $.fn.dropdown = function(parameters) {
             ? callback
             : function(){}
           ;
-          if (iconClicked && module.is.remote() && module.is.noApiCache()) {
+          if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
             module.clearItems();
           }
           if(!module.can.show() && module.is.remote()) {
@@ -549,6 +550,7 @@ $.fn.dropdown = function(parameters) {
           } else if( module.can.click() ) {
               module.unbind.intent();
           }
+          iconClicked = false;
         },
 
         hideOthers: function() {
@@ -627,6 +629,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 $module
                   .on(clickEvent + eventNamespace, module.event.click)
+                  .on(clickEvent + eventNamespace, module.event.search.focus)
                 ;
               }
             }
@@ -756,11 +759,13 @@ $.fn.dropdown = function(parameters) {
                 if(!Array.isArray(preSelected)) {
                     preSelected = preSelected && preSelected!=="" ? preSelected.split(settings.delimiter) : [];
                 }
-                $.each(preSelected,function(index,value){
-                  $item.filter('[data-value="'+value+'"]')
-                      .addClass(className.filtered)
-                  ;
-                });
+                if (module.is.multiple()) {
+                  $.each(preSelected,function(index,value){
+                    $item.filter('[data-value="'+value+'"]')
+                        .addClass(className.filtered)
+                    ;
+                  });
+                }
                 afterFiltered();
               });
             }
@@ -810,10 +815,11 @@ $.fn.dropdown = function(parameters) {
                   var value = module.is.multiple() ? module.get.values() : module.get.value();
                   if (value !== '') {
                     module.verbose('Value(s) present after click icon, select value(s) in items');
-                    module.set.selected(value);
+                    module.set.selected(value, null, true);
                   }
                 }
                 iconClicked = false;
+                focused = false;
                 callback();
               }
             }
@@ -1044,6 +1050,7 @@ $.fn.dropdown = function(parameters) {
           },
           focus: function() {
             if(settings.showOnFocus && !activated && module.is.hidden() && !pageLostFocus) {
+              focused = true;
               module.show();
             }
           },
@@ -1093,7 +1100,8 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) {
+              if(!module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin'))) {
+                focused = true;
                 module.search();
               }
             },
@@ -1138,6 +1146,7 @@ $.fn.dropdown = function(parameters) {
               } else {
                 module.toggle();
               }
+              event.stopPropagation();
             }
           },
           text: {
@@ -1177,10 +1186,11 @@ $.fn.dropdown = function(parameters) {
                 $label.addClass(className.active);
               }
               settings.onLabelSelect.apply(this, $labels.filter('.' + className.active));
+              event.stopPropagation();
             }
           },
           remove: {
-            click: function() {
+            click: function(event) {
               var
                 $label = $(this).parent()
               ;
@@ -1192,6 +1202,7 @@ $.fn.dropdown = function(parameters) {
                 // remove this label only
                 module.remove.activeLabels( $label );
               }
+              event.stopPropagation();
             }
           },
           test: {
@@ -1203,6 +1214,9 @@ $.fn.dropdown = function(parameters) {
               ;
               if(module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                 return;
+              }
+              if (!module.is.multiple() || (module.is.multiple() && !module.is.active())) {
+                focused = true;
               }
               if( module.determine.eventOnElement(event, toggleBehavior) ) {
                 event.preventDefault();
@@ -2671,7 +2685,7 @@ $.fn.dropdown = function(parameters) {
             module.clear();
             module.set.selected(value, $selectedItem);
           },
-          selected: function(value, $selectedItem) {
+          selected: function(value, $selectedItem, keepSearchTerm) {
             var
               isMultiple = module.is.multiple()
             ;
@@ -2733,7 +2747,9 @@ $.fn.dropdown = function(parameters) {
                   if(settings.apiSettings && settings.saveRemoteData) {
                     module.save.remoteData(selectedText, selectedValue);
                   }
-                  module.set.text(selectedText);
+                  if (!keepSearchTerm) {
+                    module.set.text(selectedText);
+                  }
                   module.set.value(selectedValue, selectedText, $selected);
                   $selected
                     .addClass(className.active)
@@ -2742,7 +2758,9 @@ $.fn.dropdown = function(parameters) {
                 }
               })
             ;
-            module.remove.searchTerm();
+            if (!keepSearchTerm) {
+              module.remove.searchTerm();
+            }
           }
         },
 
