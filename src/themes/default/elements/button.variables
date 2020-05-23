@@ -49,7 +49,7 @@
 @iconDistance: @relative6px;
 @iconColor: '';
 @iconTransition: opacity @defaultDuration @defaultEasing;
-@iconVerticalAlign: '';
+@iconVerticalAlign: baseline;
 
 @iconMargin: 0 @iconDistance 0 -(@iconDistance / 2);
 @rightIconMargin: 0 -(@iconDistance / 2) 0 @iconDistance;
