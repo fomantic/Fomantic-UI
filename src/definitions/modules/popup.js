@@ -510,9 +510,14 @@ $.fn.popup = function(parameters) {
               $popupOffsetParent = module.get.offsetParent($popup),
               targetElement      = $target[0],
               isWindow           = ($boundary[0] == window),
-              targetPosition     = (settings.inline || (settings.popup && settings.movePopup))
+              usePosition        = settings.inline || (settings.popup && settings.movePopup),
+              targetOffset       = $target.offset(),
+              targetPosition     = usePosition
                 ? $target.position()
-                : $target.offset(),
+                : targetOffset,
+              offsetParentOffset = usePosition
+                ? $target.offsetParent().offset()
+                : {},
               screenPosition = (isWindow)
                 ? { top: 0, left: 0 }
                 : $boundary.offset(),
@@ -528,8 +533,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : targetPosition.top,
-                left    : targetPosition.left,
+                top     : usePosition ? Math.max(targetOffset.top - offsetParentOffset.top, 0) : targetPosition.top,
+                left    : usePosition ? Math.max(targetOffset.left - offsetParentOffset.left, 0) : targetPosition.left,
                 margin  : {}
               },
               // popup itself
