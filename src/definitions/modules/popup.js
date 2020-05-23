@@ -530,8 +530,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : usePosition ? Math.max(targetOffset.top - offsetParentOffset.top, 0) : targetOffset.top,
-                left    : usePosition ? Math.max(targetOffset.left - offsetParentOffset.left, 0) : targetOffset.left,
+                top     : usePosition ? targetOffset.top - offsetParentOffset.top : targetOffset.top,
+                left    : usePosition ? targetOffset.left - offsetParentOffset.left : targetOffset.left,
                 margin  : {}
               },
               // popup itself
