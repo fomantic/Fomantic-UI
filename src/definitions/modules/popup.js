@@ -512,9 +512,6 @@ $.fn.popup = function(parameters) {
               isWindow           = ($boundary[0] == window),
               usePosition        = settings.inline || (settings.popup && settings.movePopup),
               targetOffset       = $target.offset(),
-              targetPosition     = usePosition
-                ? $target.position()
-                : targetOffset,
               offsetParentOffset = usePosition
                 ? $target.offsetParent().offset()
                 : {},
@@ -533,8 +530,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : usePosition ? Math.max(targetOffset.top - offsetParentOffset.top, 0) : targetPosition.top,
-                left    : usePosition ? Math.max(targetOffset.left - offsetParentOffset.left, 0) : targetPosition.left,
+                top     : usePosition ? Math.max(targetOffset.top - offsetParentOffset.top, 0) : targetOffset.top,
+                left    : usePosition ? Math.max(targetOffset.left - offsetParentOffset.left, 0) : targetOffset.left,
                 margin  : {}
               },
               // popup itself
