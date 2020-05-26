@@ -318,10 +318,9 @@
 }
 
 /* Automatically float dropdown menu right on last menu item */
-.ui.menu .right.menu .dropdown:last-child .menu,
-.ui.menu .right.dropdown.item .menu,
-.ui.buttons > .ui.dropdown:last-child .menu {
-  left: auto;
+.ui.menu .right.menu .dropdown:last-child .menu:not(.left),
+.ui.menu .right.dropdown.item .menu:not(.left),
+.ui.buttons > .ui.dropdown:last-child .menu:not(.left) {
   right: 0;
 }
 
@@ -1097,7 +1096,7 @@ select.ui.dropdown {
 
   .ui.dropdown > .left.menu .menu,
   .ui.dropdown .menu .left.menu {
-    left: auto;
+    left: auto !important;
     right: 100%;
     margin: @leftSubMenuMargin !important;
     border-radius: @leftSubMenuBorderRadius !important;
@@ -1318,12 +1317,12 @@ select.ui.dropdown {
     opacity: 1;
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
-  .ui.simple.dropdown:hover > .menu > .item:hover > .menu {
+  .ui.simple.dropdown .menu .item:hover > .menu {
     overflow: visible;
     width: auto;
     height: auto;
     top: 0 !important;
-    left: 100% !important;
+    left: 100%;
     opacity: 1;
   }
   & when (@variationDropdownDisabled) {
