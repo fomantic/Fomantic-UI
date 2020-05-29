@@ -102,7 +102,7 @@ $.fn.tab = function(parameters) {
 
           if(settings.autoTabActivation && instance === undefined && module.determine.activeTab() == null) {
             module.debug('No active tab detected, setting first tab active', module.get.initialPath());
-            module.changeTab(module.get.initialPath());
+            module.changeTab(settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation);
           };
 
           module.instantiate();
