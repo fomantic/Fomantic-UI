@@ -116,6 +116,7 @@ $.fn.calendar = function(parameters) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
             module.setting('type', module.get.type());
+            module.setting('on', settings.on || ($input.length ? 'focus' : 'click'));
           },
           popup: function () {
             if (settings.inline) {
@@ -159,7 +160,7 @@ $.fn.calendar = function(parameters) {
               module.set.mode(settings.startMode);
               return settings.onShow.apply($container, arguments);
             };
-            var on = settings.on || ($input.length ? 'focus' : 'click');
+            var on = module.setting('on');
             var options = $.extend({}, settings.popupOptions, {
               popup: $container,
               on: on,
@@ -202,33 +203,38 @@ $.fn.calendar = function(parameters) {
           calendar: function () {
             var i, r, c, p, row, cell, pageGrid;
 
-            var mode = module.get.mode();
-            var today = new Date();
-            var date = module.get.date();
-            var focusDate = module.get.focusDate();
-            var display = focusDate || date || settings.initialDate || today;
-            display = module.helper.dateInRange(display);
+            var
+              mode = module.get.mode(),
+              today = new Date(),
+              date = module.get.date(),
+              focusDate = module.get.focusDate(),
+              display = module.helper.dateInRange(focusDate || date || settings.initialDate || today)
+            ;
 
             if (!focusDate) {
               focusDate = display;
               module.set.focusDate(focusDate, false, false);
             }
 
-            var isYear = mode === 'year';
-            var isMonth = mode === 'month';
-            var isDay = mode === 'day';
-            var isHour = mode === 'hour';
-            var isMinute = mode === 'minute';
-            var isTimeOnly = settings.type === 'time';
+            var
+              isYear = mode === 'year',
+              isMonth = mode === 'month',
+              isDay = mode === 'day',
+              isHour = mode === 'hour',
+              isMinute = mode === 'minute',
+              isTimeOnly = settings.type === 'time'
+            ;
 
             var multiMonth = Math.max(settings.multiMonth, 1);
             var monthOffset = !isDay ? 0 : module.get.monthOffset();
 
-            var minute = display.getMinutes();
-            var hour = display.getHours();
-            var day = display.getDate();
-            var startMonth = display.getMonth() + monthOffset;
-            var year = display.getFullYear();
+            var
+              minute = display.getMinutes(),
+              hour = display.getHours(),
+              day = display.getDate(),
+              startMonth = display.getMonth() + monthOffset,
+              year = display.getFullYear()
+            ;
 
             var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
             var rows = isDay || isHour ? 6 : timeGap['row'];
@@ -254,17 +260,18 @@ $.fn.calendar = function(parameters) {
                 rows = Math.ceil(requiredCells / 7);
               }
 
-              var yearChange = isYear ? 10 : isMonth ? 1 : 0;
-              var monthChange = isDay ? 1 : 0;
-              var dayChange = isHour || isMinute ? 1 : 0;
-              var prevNextDay = isHour || isMinute ? day : 1;
-              var prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour);
-              var nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour);
-
-              var prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
-                isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1);
-              var nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
-                isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
+              var
+                yearChange = isYear ? 10 : isMonth ? 1 : 0,
+                monthChange = isDay ? 1 : 0,
+                dayChange = isHour || isMinute ? 1 : 0,
+                prevNextDay = isHour || isMinute ? day : 1,
+                prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour),
+                nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
+                prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
+                  isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1),
+                nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
+                  isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1)
+              ;
 
               var tempMode = mode;
               if (isDay && settings.showWeekNumbers){
@@ -440,7 +447,6 @@ $.fn.calendar = function(parameters) {
               $input.on('input' + eventNamespace, module.event.inputChange);
               $input.on('focus' + eventNamespace, module.event.inputFocus);
               $input.on('blur' + eventNamespace, module.event.inputBlur);
-              $input.on('click' + eventNamespace, module.event.inputClick);
               $input.on('keydown' + eventNamespace, module.event.keydown);
             } else {
               $container.on('keydown' + eventNamespace, module.event.keydown);
@@ -569,9 +575,6 @@ $.fn.calendar = function(parameters) {
               var text = formatter.datetime(date, settings);
               $input.val(text);
             }
-          },
-          inputClick: function () {
-            module.popup('show');
           }
         },
 
@@ -796,10 +799,12 @@ $.fn.calendar = function(parameters) {
             var canceled = module.set.date(date) === false;
             if (!canceled && settings.closable) {
               module.popup('hide');
-              //if this is a range calendar, show the end date calendar popup and focus the input
+              //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
               var endModule = module.get.calendarModule(settings.endCalendar);
               if (endModule) {
-                endModule.popup('show');
+                if (endModule.setting('on') !== 'focus') {
+                  endModule.popup('show');
+                }
                 endModule.focus();
               }
             }
@@ -809,7 +814,7 @@ $.fn.calendar = function(parameters) {
             module.set.mode(newMode);
             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
               //the user has chosen enough to consider a valid date/time has been chosen
-              module.set.date(date);
+              module.set.date(date, true, false);
             } else {
               module.set.focusDate(date);
             }

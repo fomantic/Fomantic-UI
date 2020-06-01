@@ -336,7 +336,7 @@ $.fn.form = function(parameters) {
             }
           },
           blank: function($field) {
-            return $.trim($field.val()) === '';
+            return String($field.val()).trim() === '';
           },
           valid: function(field) {
             var
@@ -1128,7 +1128,7 @@ $.fn.form = function(parameters) {
                 $elGroup   = $(el).closest($group),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
-                isDisabled = $el.prop('disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
+                isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                 validation = module.get.validation($el),
                 hasEmptyRule = validation
                   ? $.grep(validation.rules, function(rule) { return rule.type == "empty" }) !== 0
@@ -1207,13 +1207,7 @@ $.fn.form = function(parameters) {
               module.debug('Using field name as identifier', identifier);
               field.identifier = identifier;
             }
-            var isDisabled = true;
-            $.each($field, function(){
-                if(!$(this).prop('disabled')) {
-                  isDisabled = false;
-                  return false;
-                }
-            });
+            var isDisabled = !$field.filter(':not(:disabled)').length;
             if(isDisabled) {
               module.debug('Field is disabled. Skipping', identifier);
             }
@@ -1270,7 +1264,7 @@ $.fn.form = function(parameters) {
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
                     ? ''
-                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                    : (settings.shouldTrim) ? String(value + '').trim() : String(value + '')
                 ;
                 return ruleFunction.call(field, value, ancillary, $module);
               }

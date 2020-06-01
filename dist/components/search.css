@@ -372,6 +372,96 @@
 
 
 /*-------------------
+       Scrolling
+  --------------------*/
+
+.ui.scrolling.search > .results,
+.ui.search.long > .results,
+.ui.search.short > .results {
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.scrolling.search > .results {
+    max-height: 12.17714286em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.scrolling.search > .results {
+    max-height: 18.26571429em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.scrolling.search > .results {
+    max-height: 24.35428571em;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.scrolling.search > .results {
+    max-height: 36.53142857em;
+  }
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.search.short > .results {
+    max-height: 12.17714286em;
+  }
+  .ui.search[class*="very short"] > .results {
+    max-height: 9.13285714em;
+  }
+  .ui.search.long > .results {
+    max-height: 24.35428571em;
+  }
+  .ui.search[class*="very long"] > .results {
+    max-height: 36.53142857em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.search.short > .results {
+    max-height: 18.26571429em;
+  }
+  .ui.search[class*="very short"] > .results {
+    max-height: 13.69928571em;
+  }
+  .ui.search.long > .results {
+    max-height: 36.53142857em;
+  }
+  .ui.search[class*="very long"] > .results {
+    max-height: 54.79714286em;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.search.short > .results {
+    max-height: 24.35428571em;
+  }
+  .ui.search[class*="very short"] > .results {
+    max-height: 18.26571429em;
+  }
+  .ui.search.long > .results {
+    max-height: 48.70857143em;
+  }
+  .ui.search[class*="very long"] > .results {
+    max-height: 73.06285714em;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.search.short > .results {
+    max-height: 36.53142857em;
+  }
+  .ui.search[class*="very short"] > .results {
+    max-height: 27.39857143em;
+  }
+  .ui.search.long > .results {
+    max-height: 73.06285714em;
+  }
+  .ui.search[class*="very long"] > .results {
+    max-height: 109.59428571em;
+  }
+}
+
+/*-------------------
        Left / Right
   --------------------*/
 

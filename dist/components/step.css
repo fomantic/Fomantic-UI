@@ -258,6 +258,13 @@
   border-width: 0 1px 1px 0;
   display: none;
 }
+.ui.right.vertical.steps .step:after {
+  border-width: 1px 0 0 1px;
+  left: 0;
+  right: 100%;
+  -webkit-transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+          transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+}
 .ui.vertical.steps .active.step:after {
   display: block;
 }

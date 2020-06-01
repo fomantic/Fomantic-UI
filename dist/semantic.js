@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.8.4
+ * # Fomantic UI - 2.8.5
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -840,7 +840,7 @@ $.fn.form = function(parameters) {
             }
           },
           blank: function($field) {
-            return $.trim($field.val()) === '';
+            return String($field.val()).trim() === '';
           },
           valid: function(field) {
             var
@@ -1632,7 +1632,7 @@ $.fn.form = function(parameters) {
                 $elGroup   = $(el).closest($group),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
-                isDisabled = $el.prop('disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
+                isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                 validation = module.get.validation($el),
                 hasEmptyRule = validation
                   ? $.grep(validation.rules, function(rule) { return rule.type == "empty" }) !== 0
@@ -1711,13 +1711,7 @@ $.fn.form = function(parameters) {
               module.debug('Using field name as identifier', identifier);
               field.identifier = identifier;
             }
-            var isDisabled = true;
-            $.each($field, function(){
-                if(!$(this).prop('disabled')) {
-                  isDisabled = false;
-                  return false;
-                }
-            });
+            var isDisabled = !$field.filter(':not(:disabled)').length;
             if(isDisabled) {
               module.debug('Field is disabled. Skipping', identifier);
             }
@@ -1774,7 +1768,7 @@ $.fn.form = function(parameters) {
                 // cast to string avoiding encoding special values
                 value = (value === undefined || value === '' || value === null)
                     ? ''
-                    : (settings.shouldTrim) ? $.trim(value + '') : String(value + '')
+                    : (settings.shouldTrim) ? String(value + '').trim() : String(value + '')
                 ;
                 return ruleFunction.call(field, value, ancillary, $module);
               }
@@ -3253,6 +3247,7 @@ $.fn.calendar = function(parameters) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
             module.setting('type', module.get.type());
+            module.setting('on', settings.on || ($input.length ? 'focus' : 'click'));
           },
           popup: function () {
             if (settings.inline) {
@@ -3296,7 +3291,7 @@ $.fn.calendar = function(parameters) {
               module.set.mode(settings.startMode);
               return settings.onShow.apply($container, arguments);
             };
-            var on = settings.on || ($input.length ? 'focus' : 'click');
+            var on = module.setting('on');
             var options = $.extend({}, settings.popupOptions, {
               popup: $container,
               on: on,
@@ -3339,33 +3334,38 @@ $.fn.calendar = function(parameters) {
           calendar: function () {
             var i, r, c, p, row, cell, pageGrid;
 
-            var mode = module.get.mode();
-            var today = new Date();
-            var date = module.get.date();
-            var focusDate = module.get.focusDate();
-            var display = focusDate || date || settings.initialDate || today;
-            display = module.helper.dateInRange(display);
+            var
+              mode = module.get.mode(),
+              today = new Date(),
+              date = module.get.date(),
+              focusDate = module.get.focusDate(),
+              display = module.helper.dateInRange(focusDate || date || settings.initialDate || today)
+            ;
 
             if (!focusDate) {
               focusDate = display;
               module.set.focusDate(focusDate, false, false);
             }
 
-            var isYear = mode === 'year';
-            var isMonth = mode === 'month';
-            var isDay = mode === 'day';
-            var isHour = mode === 'hour';
-            var isMinute = mode === 'minute';
-            var isTimeOnly = settings.type === 'time';
+            var
+              isYear = mode === 'year',
+              isMonth = mode === 'month',
+              isDay = mode === 'day',
+              isHour = mode === 'hour',
+              isMinute = mode === 'minute',
+              isTimeOnly = settings.type === 'time'
+            ;
 
             var multiMonth = Math.max(settings.multiMonth, 1);
             var monthOffset = !isDay ? 0 : module.get.monthOffset();
 
-            var minute = display.getMinutes();
-            var hour = display.getHours();
-            var day = display.getDate();
-            var startMonth = display.getMonth() + monthOffset;
-            var year = display.getFullYear();
+            var
+              minute = display.getMinutes(),
+              hour = display.getHours(),
+              day = display.getDate(),
+              startMonth = display.getMonth() + monthOffset,
+              year = display.getFullYear()
+            ;
 
             var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
             var rows = isDay || isHour ? 6 : timeGap['row'];
@@ -3391,17 +3391,18 @@ $.fn.calendar = function(parameters) {
                 rows = Math.ceil(requiredCells / 7);
               }
 
-              var yearChange = isYear ? 10 : isMonth ? 1 : 0;
-              var monthChange = isDay ? 1 : 0;
-              var dayChange = isHour || isMinute ? 1 : 0;
-              var prevNextDay = isHour || isMinute ? day : 1;
-              var prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour);
-              var nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour);
-
-              var prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
-                isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1);
-              var nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
-                isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
+              var
+                yearChange = isYear ? 10 : isMonth ? 1 : 0,
+                monthChange = isDay ? 1 : 0,
+                dayChange = isHour || isMinute ? 1 : 0,
+                prevNextDay = isHour || isMinute ? day : 1,
+                prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour),
+                nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
+                prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
+                  isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1),
+                nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
+                  isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1)
+              ;
 
               var tempMode = mode;
               if (isDay && settings.showWeekNumbers){
@@ -3577,7 +3578,6 @@ $.fn.calendar = function(parameters) {
               $input.on('input' + eventNamespace, module.event.inputChange);
               $input.on('focus' + eventNamespace, module.event.inputFocus);
               $input.on('blur' + eventNamespace, module.event.inputBlur);
-              $input.on('click' + eventNamespace, module.event.inputClick);
               $input.on('keydown' + eventNamespace, module.event.keydown);
             } else {
               $container.on('keydown' + eventNamespace, module.event.keydown);
@@ -3706,9 +3706,6 @@ $.fn.calendar = function(parameters) {
               var text = formatter.datetime(date, settings);
               $input.val(text);
             }
-          },
-          inputClick: function () {
-            module.popup('show');
           }
         },
 
@@ -3933,10 +3930,12 @@ $.fn.calendar = function(parameters) {
             var canceled = module.set.date(date) === false;
             if (!canceled && settings.closable) {
               module.popup('hide');
-              //if this is a range calendar, show the end date calendar popup and focus the input
+              //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
               var endModule = module.get.calendarModule(settings.endCalendar);
               if (endModule) {
-                endModule.popup('show');
+                if (endModule.setting('on') !== 'focus') {
+                  endModule.popup('show');
+                }
                 endModule.focus();
               }
             }
@@ -3946,7 +3945,7 @@ $.fn.calendar = function(parameters) {
             module.set.mode(newMode);
             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
               //the user has chosen enough to consider a valid date/time has been chosen
-              module.set.date(date);
+              module.set.date(date, true, false);
             } else {
               module.set.focusDate(date);
             }
@@ -6524,7 +6523,9 @@ $.fn.dropdown = function(parameters) {
             module.setup.layout();
 
             if(settings.values) {
+              module.set.initialLoad();
               module.change.values(settings.values);
+              module.remove.initialLoad();
             }
 
             module.refreshData();
@@ -6948,6 +6949,7 @@ $.fn.dropdown = function(parameters) {
           } else if( module.can.click() ) {
               module.unbind.intent();
           }
+          iconClicked = false;
         },
 
         hideOthers: function() {
@@ -8179,7 +8181,7 @@ $.fn.dropdown = function(parameters) {
             return $text.text();
           },
           query: function() {
-            return $.trim($search.val());
+            return String($search.val()).trim();
           },
           searchWidth: function(value) {
             value = (value !== undefined)
@@ -8322,8 +8324,8 @@ $.fn.dropdown = function(parameters) {
               return ($choice.data(metadata.text) !== undefined)
                 ? $choice.data(metadata.text)
                 : (preserveHTML)
-                  ? $.trim($choice.html())
-                  : $.trim($choice.text())
+                  ? $choice.html().trim()
+                  : $choice.text().trim()
               ;
             }
           },
@@ -8335,11 +8337,11 @@ $.fn.dropdown = function(parameters) {
             return ($choice.data(metadata.value) !== undefined)
               ? String( $choice.data(metadata.value) )
               : (typeof choiceText === 'string')
-                ? $.trim(
+                ? String(
                   settings.ignoreSearchCase
                   ? choiceText.toLowerCase()
                   : choiceText
-                )
+                ).trim()
                 : String(choiceText)
             ;
           },
@@ -13530,9 +13532,10 @@ $.fn.popup = function(parameters) {
               $popupOffsetParent = module.get.offsetParent($popup),
               targetElement      = $target[0],
               isWindow           = ($boundary[0] == window),
-              targetPosition     = (settings.inline || (settings.popup && settings.movePopup))
-                ? $target.position()
-                : $target.offset(),
+              targetOffset       = $target.offset(),
+              parentOffset       = settings.inline || (settings.popup && settings.movePopup)
+                ? $target.offsetParent().offset()
+                : { top: 0, left: 0 },
               screenPosition = (isWindow)
                 ? { top: 0, left: 0 }
                 : $boundary.offset(),
@@ -13548,8 +13551,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : targetPosition.top,
-                left    : targetPosition.left,
+                top     : targetOffset.top - parentOffset.top,
+                left    : targetOffset.left - parentOffset.left,
                 margin  : {}
               },
               // popup itself
@@ -17721,6 +17724,25 @@ $.fn.search = function(parameters) {
             }
           }
         },
+        ensureVisible: function ensureVisible($el) {
+          var elTop, elBottom, resultsScrollTop, resultsHeight;
+
+          elTop = $el.position().top;
+          elBottom = elTop + $el.outerHeight(true);
+
+          resultsScrollTop = $results.scrollTop();
+          resultsHeight = $results.height()
+            parseInt($results.css('paddingTop'), 0) +
+            parseInt($results.css('paddingBottom'), 0);
+            
+          if (elTop < 0) {
+            $results.scrollTop(resultsScrollTop + elTop);
+          }
+
+          else if (resultsHeight < elBottom) {
+            $results.scrollTop(resultsScrollTop + (elBottom - resultsHeight));
+          }
+        },
         handleKeyboard: function(event) {
           var
             // force selector refresh
@@ -17772,6 +17794,7 @@ $.fn.search = function(parameters) {
                   .closest($category)
                     .addClass(className.active)
               ;
+              module.ensureVisible($result.eq(newIndex));
               event.preventDefault();
             }
             else if(keyCode == keys.downArrow) {
@@ -17790,6 +17813,7 @@ $.fn.search = function(parameters) {
                   .closest($category)
                     .addClass(className.active)
               ;
+              module.ensureVisible($result.eq(newIndex));
               event.preventDefault();
             }
           }
@@ -18423,6 +18447,12 @@ $.fn.search = function(parameters) {
                   debug      : settings.debug,
                   verbose    : settings.verbose,
                   duration   : settings.duration,
+                  onShow     : function() {
+                    var $firstResult = $module.find(selector.result).eq(0);
+                    if($firstResult.length > 0) {
+                      module.ensureVisible($firstResult);
+                    }
+                  },
                   onComplete : function() {
                     callback();
                   },
@@ -21953,9 +21983,9 @@ $.fn.tab = function(parameters) {
             initializedHistory = true;
           }
 
-          if(instance === undefined && module.determine.activeTab() == null) {
+          if(settings.autoTabActivation && instance === undefined && module.determine.activeTab() == null) {
             module.debug('No active tab detected, setting first tab active', module.get.initialPath());
-            module.changeTab(module.get.initialPath());
+            module.changeTab(settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation);
           };
 
           module.instantiate();
@@ -22806,6 +22836,7 @@ $.fn.tab.settings = {
 
   apiSettings     : false,      // settings for api call
   evaluateScripts : 'once',     // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
+  autoTabActivation: true,      // whether a non existing active tab will auto activate the first available tab
 
   onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
   onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
@@ -27629,7 +27660,7 @@ $.fn.visibility = function(parameters) {
               element.offset.top += $context.scrollTop() - $context.offset().top;
             }
             if(module.is.horizontallyScrollableContext()) {
-              element.offset.left += $context.scrollLeft - $context.offset().left;
+              element.offset.left += $context.scrollLeft() - $context.offset().left;
             }
             // store
             module.cache.element = element;
