@@ -1,13 +1,12 @@
 ---
-name: ":bug: Bug Report"
-about: "Use this if something isn't working how you think it should or you think you've found a bug"
-labels: "type/bug", "state/awaiting-investigation", "state/awaiting-triage"
----
+name: Bug Report
+about: Use this if something isn't working how you think it should or you think you've
+  found a bug
+title: "[scope] summary of your bug"
+labels: state/awaiting-investigation, state/awaiting-triage, type/bug
+assignees: ''
 
-<!--
- Please use the following issue title format:
- "[<scope>] <summary of what is wrong>"
--->
+---
 
 # Bug Report
 <!-- Describe what's wrong in great detail (required). -->

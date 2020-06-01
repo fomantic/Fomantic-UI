@@ -1,13 +1,11 @@
 ---
-name: ":rocket: Feature Request"
-about: "Use this to suggest new feature/enhancements"
-labels: "type/feat", "state/awaiting-triage"
----
+name: Feature Request
+about: Use this to suggest new feature/enhancements
+title: "[scope] summary of your request"
+labels: state/awaiting-triage, type/feat
+assignees: ''
 
-<!--
- Please use the following issue title format:
- "[<scope>] <summary of your request>"
--->
+---
 
 # Feature Request
 <!--

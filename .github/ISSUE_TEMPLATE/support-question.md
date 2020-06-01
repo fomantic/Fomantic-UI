@@ -1,7 +1,10 @@
 ---
-name: ":notebook: Support Question"
-about: "Use this if you have a any question or need a helping hand"
-labels: "type/usage", "state/awaiting-triage"
+name: Support Question
+about: Use this if you have a any question or need a helping hand
+title: "[Help] summary of your issue"
+labels: state/awaiting-triage, type/usage
+assignees: ''
+
 ---
 
 # Help Wanted
