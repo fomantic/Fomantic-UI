@@ -53,6 +53,7 @@
 @width: @iconWidth;
 @height: 1em;
 @distanceFromText: 0.25rem;
+@lineHeight: 1;
 
 
 /* Variations */
