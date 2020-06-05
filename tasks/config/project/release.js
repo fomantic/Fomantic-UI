@@ -15,7 +15,7 @@ var
 *******************************/
 
 try {
-  config = requireDotFile('semantic.json');
+  config = requireDotFile('semantic.json', process.cwd());
 }
 catch(error) {}
 
