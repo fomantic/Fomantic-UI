@@ -204,6 +204,9 @@
 @attachedCornerBorderRadius: @3px;
 @attachedBorderRadius: @borderRadius;
 
+@attachedOffset: -@borderWidth;
+@attachedWidthOffset: e(%("calc(100%% + %d)", @borderWidth * 2));
+
 /* Corner */
 @cornerSizeRatio: 1;
 @cornerTransition: color @labelTransitionDuration @labelTransitionEasing;
