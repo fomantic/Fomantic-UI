@@ -174,7 +174,7 @@ a.ui.label {
 *******************************/
 & when (@variationLabelImage) {
   .ui.image.label {
-    width: auto !important;
+    width: auto;
     margin-top: 0;
     margin-bottom: 0;
     max-width: 9999px;
@@ -185,6 +185,9 @@ a.ui.label {
     padding: @imageLabelPadding;
     border-radius: @imageLabelBorderRadius;
     box-shadow: @imageLabelBoxShadow;
+    &.attached:not(.basic) when (@variationLabelAttached) {
+      padding: @imageLabelPadding;
+    }
   }
 
   .ui.image.label img {
@@ -610,6 +613,18 @@ a.ui.active.label:hover:before {
     border: @basicBorder;
     color: @basicColor;
     box-shadow: @basicBoxShadow;
+    padding-top: @basicVerticalPadding;
+    padding-bottom: @basicVerticalPadding;
+    padding-right: @basicHorizontalPadding;
+  }
+  .ui.basic.labels:not(.tag):not(.image):not(.ribbon) .label,
+  .ui.basic.label:not(.tag):not(.image):not(.ribbon) {
+    padding-left: @basicHorizontalPadding;
+  }
+  & when (@variationLabelImage) {
+    .ui.basic.image.label {
+      padding-left: @basicImageLabelPadding;
+    }
   }
 
   /* Link */

@@ -116,6 +116,10 @@
 @basicHoverBorder: @basicBorder;
 @basicHoverBoxShadow: @basicBoxShadow;
 
+@basicVerticalPadding: e(%("calc(%d - %d)", @verticalPadding, @basicBorderWidth));
+@basicHorizontalPadding: e(%("calc(%d - %d)", @horizontalPadding, @basicBorderWidth));
+@basicImageLabelPadding: e(%("calc(%d - %d)", @imageLabelTextDistance, @basicBorderWidth));
+
 /* Tag */
 @tagCircleColor: @white;
 @tagCircleSize: 0.5em;
