@@ -222,6 +222,17 @@ a.ui.label {
     padding: @imageLabelDetailPadding;
     border-radius: 0 @imageLabelBorderRadius @imageLabelBorderRadius 0;
   }
+  & when (@variationLabelAttached) {
+    .ui.bottom.attached.image.label:not(.right) > img,
+    .ui.top.right.attached.image.label > img {
+      border-top-left-radius: 0;
+    }
+
+    .ui.top.attached.image.label:not(.right) > img,
+    .ui.bottom.right.attached.image.label > img {
+      border-bottom-left-radius: 0;
+    }
+  }
 }
 
 & when (@variationLabelTag) {
@@ -503,7 +514,7 @@ a.ui.label {
 
   .ui[class*="top left attached"].label {
     width: auto;
-    margin-top: 0 !important;
+    margin-top: 0;
     border-radius: @attachedCornerBorderRadius 0 @attachedBorderRadius 0;
   }
 
