@@ -165,7 +165,7 @@ $.fn.calendar = function(parameters) {
               popup: $container,
               on: on,
               hoverable: on === 'hover',
-              closable: on !== 'focus',
+              closable: on === 'click',
               onShow: onShow,
               onVisible: onVisible,
               onHide: settings.onHide,
