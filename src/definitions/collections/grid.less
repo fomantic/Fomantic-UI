@@ -1906,25 +1906,27 @@ each(@colors, {
       Very compact
   -----------------*/
 
-  .ui[class*="very compact"].grid > .column:not(.row),
-  .ui[class*="very compact"].grid > .row > .column {
+  .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
+  .ui.ui.ui[class*="very compact"].grid > .row > .column {
     padding-left: (@veryCompactGutterWidth / 2);
-    padding-right: (@compactGutterWidth / 2);
+    padding-right: (@veryCompactGutterWidth / 2);
   }
 
-  .ui[class*="very compact"].grid > * {
+  .ui.ui.ui[class*="very compact"].grid > * {
     padding-left: (@veryCompactGutterWidth / 2);
     padding-right: (@veryCompactGutterWidth / 2);
   }
 
   /* Row */
-  .ui[class*="very compact"].grid > .row {
+  .ui.ui.ui[class*="very compact"].grid > .row {
     padding-top: (@veryCompactRowSpacing / 2);
     padding-bottom: (@veryCompactRowSpacing / 2);
+    padding-left: (@veryCompactGutterWidth * 1.5);
+    padding-right: (@veryCompactGutterWidth * 1.5);
   }
 
   /* Columns */
-  .ui[class*="very compact"].grid > .column:not(.row) {
+  .ui.ui.ui[class*="very compact"].grid > .column:not(.row) {
     padding-top: (@veryCompactRowSpacing / 2);
     padding-bottom: (@veryCompactRowSpacing / 2);
   }
