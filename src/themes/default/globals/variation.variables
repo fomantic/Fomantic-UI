@@ -532,9 +532,25 @@
 @variationToastVertical: true;
 @variationToastAttached: true;
 
-/* Loading */
+/* Transition */
 @variationTransitionDisabled: true;
 @variationTransitionLoading: true;
+@variationTransitionBrowse: true;
+@variationTransitionDrop: true;
+@variationTransitionFade: true;
+@variationTransitionFlip: true;
+@variationTransitionScale: true;
+@variationTransitionFly: true;
+@variationTransitionSlide: true;
+@variationTransitionSwing: true;
+@variationTransitionZoom: true;
+@variationTransitionFlash: true;
+@variationTransitionShake: true;
+@variationTransitionBounce: true;
+@variationTransitionTada: true;
+@variationTransitionPulse: true;
+@variationTransitionJiggle: true;
+@variationTransitionGlow: true;
 
 /* Emojis */
 @variationEmojiColons: true;
