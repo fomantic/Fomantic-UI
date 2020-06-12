@@ -68,7 +68,7 @@
 @subMenuLeft: 100%;
 @subMenuRight: auto;
 @subMenuDistanceAway: -0.5em;
-@subMenuMargin: 0 0 0 @subMenuDistanceAway;
+@subMenuMargin: 0 @subMenuDistanceAway;
 @subMenuBorderRadius: @borderRadius;
 @subMenuZIndex: 21;
 
