@@ -168,13 +168,30 @@ a.ui.label {
   margin-bottom: @attachedSegmentPadding !important;
 }
 
+.ui.segment:not(.basic) > .ui.top.attached.label {
+  margin-top: @attachedOffset;
+}
+.ui.segment:not(.basic) > .ui.bottom.attached.label {
+  margin-bottom: @attachedOffset;
+}
+.ui.segment:not(.basic) > .ui.attached.label:not(.right) {
+  margin-left: @attachedOffset;
+}
+.ui.segment:not(.basic) > .ui.right.attached.label {
+  margin-right: @attachedOffset;
+}
+.ui.segment:not(.basic) > .ui.attached.label:not(.left):not(.right) {
+  width: @attachedWidthOffset;
+}
+
+
 
 /*******************************
              Types
 *******************************/
 & when (@variationLabelImage) {
   .ui.image.label {
-    width: auto !important;
+    width: auto;
     margin-top: 0;
     margin-bottom: 0;
     max-width: 9999px;
@@ -185,6 +202,9 @@ a.ui.label {
     padding: @imageLabelPadding;
     border-radius: @imageLabelBorderRadius;
     box-shadow: @imageLabelBoxShadow;
+    &.attached:not(.basic) when (@variationLabelAttached) {
+      padding: @imageLabelPadding;
+    }
   }
 
   .ui.image.label img {
@@ -201,6 +221,17 @@ a.ui.label {
     margin: @imageLabelDetailMargin;
     padding: @imageLabelDetailPadding;
     border-radius: 0 @imageLabelBorderRadius @imageLabelBorderRadius 0;
+  }
+  & when (@variationLabelAttached) {
+    .ui.bottom.attached.image.label:not(.right) > img,
+    .ui.top.right.attached.image.label > img {
+      border-top-left-radius: 0;
+    }
+
+    .ui.top.attached.image.label:not(.right) > img,
+    .ui.bottom.right.attached.image.label > img {
+      border-bottom-left-radius: 0;
+    }
   }
 }
 
@@ -483,7 +514,7 @@ a.ui.label {
 
   .ui[class*="top left attached"].label {
     width: auto;
-    margin-top: 0 !important;
+    margin-top: 0;
     border-radius: @attachedCornerBorderRadius 0 @attachedBorderRadius 0;
   }
 
@@ -610,6 +641,18 @@ a.ui.active.label:hover:before {
     border: @basicBorder;
     color: @basicColor;
     box-shadow: @basicBoxShadow;
+    padding-top: @basicVerticalPadding;
+    padding-bottom: @basicVerticalPadding;
+    padding-right: @basicHorizontalPadding;
+  }
+  .ui.basic.labels:not(.tag):not(.image):not(.ribbon) .label,
+  .ui.basic.label:not(.tag):not(.image):not(.ribbon) {
+    padding-left: @basicHorizontalPadding;
+  }
+  & when (@variationLabelImage) {
+    .ui.basic.image.label {
+      padding-left: @basicImageLabelPadding;
+    }
   }
 
   /* Link */
