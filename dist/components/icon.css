@@ -412,35 +412,41 @@ i.icon,
 i.icons {
   font-size: 1em;
   line-height: 1;
-  vertical-align: middle;
 }
 i.mini.mini.mini.icon,
 i.mini.mini.mini.icons {
   font-size: 0.4em;
+  vertical-align: middle;
 }
 i.tiny.tiny.tiny.icon,
 i.tiny.tiny.tiny.icons {
   font-size: 0.5em;
+  vertical-align: middle;
 }
 i.small.small.small.icon,
 i.small.small.small.icons {
   font-size: 0.75em;
+  vertical-align: middle;
 }
 i.large.large.large.icon,
 i.large.large.large.icons {
   font-size: 1.5em;
+  vertical-align: middle;
 }
 i.big.big.big.icon,
 i.big.big.big.icons {
   font-size: 2em;
+  vertical-align: middle;
 }
 i.huge.huge.huge.icon,
 i.huge.huge.huge.icons {
   font-size: 4em;
+  vertical-align: middle;
 }
 i.massive.massive.massive.icon,
 i.massive.massive.massive.icons {
   font-size: 8em;
+  vertical-align: middle;
 }
 
 

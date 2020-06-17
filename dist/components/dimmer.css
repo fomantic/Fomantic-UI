@@ -155,6 +155,9 @@
   -webkit-transform-origin: center center;
           transform-origin: center center;
 }
+.ui.page.dimmer.modals {
+  -moz-perspective: none;
+}
 body.animating.in.dimmable,
 body.dimmed.dimmable {
   overflow: hidden;

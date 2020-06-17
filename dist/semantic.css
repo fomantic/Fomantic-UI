@@ -1,5 +1,5 @@
  /*
- * # Fomantic UI - 2.8.5
+ * # Fomantic UI - 2.8.6
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
@@ -24172,42 +24172,48 @@ i.icon,
 i.icons {
   font-size: 1em;
   line-height: 1;
-  vertical-align: middle;
 }
 
 i.mini.mini.mini.icon,
 i.mini.mini.mini.icons {
   font-size: 0.4em;
+  vertical-align: middle;
 }
 
 i.tiny.tiny.tiny.icon,
 i.tiny.tiny.tiny.icons {
   font-size: 0.5em;
+  vertical-align: middle;
 }
 
 i.small.small.small.icon,
 i.small.small.small.icons {
   font-size: 0.75em;
+  vertical-align: middle;
 }
 
 i.large.large.large.icon,
 i.large.large.large.icons {
   font-size: 1.5em;
+  vertical-align: middle;
 }
 
 i.big.big.big.icon,
 i.big.big.big.icons {
   font-size: 2em;
+  vertical-align: middle;
 }
 
 i.huge.huge.huge.icon,
 i.huge.huge.huge.icons {
   font-size: 4em;
+  vertical-align: middle;
 }
 
 i.massive.massive.massive.icon,
 i.massive.massive.massive.icons {
   font-size: 8em;
+  vertical-align: middle;
 }
 
 /*******************************
@@ -33917,12 +33923,32 @@ a.ui.label {
   margin-bottom: 2rem !important;
 }
 
+.ui.segment:not(.basic) > .ui.top.attached.label {
+  margin-top: -1px;
+}
+
+.ui.segment:not(.basic) > .ui.bottom.attached.label {
+  margin-bottom: -1px;
+}
+
+.ui.segment:not(.basic) > .ui.attached.label:not(.right) {
+  margin-left: -1px;
+}
+
+.ui.segment:not(.basic) > .ui.right.attached.label {
+  margin-right: -1px;
+}
+
+.ui.segment:not(.basic) > .ui.attached.label:not(.left):not(.right) {
+  width: calc(100% + 2px);
+}
+
 /*******************************
              Types
 *******************************/
 
 .ui.image.label {
-  width: auto !important;
+  width: auto;
   margin-top: 0;
   margin-bottom: 0;
   max-width: 9999px;
@@ -33933,6 +33959,10 @@ a.ui.label {
   border-radius: 0.28571429rem;
   -webkit-box-shadow: none;
   box-shadow: none;
+}
+
+.ui.image.label.attached:not(.basic) {
+  padding: 0.5833em 0.833em 0.5833em 0.5em;
 }
 
 .ui.image.label img {
@@ -33948,6 +33978,16 @@ a.ui.label {
   margin: -0.5833em -0.833em -0.5833em 0.5em;
   padding: 0.5833em 0.833em;
   border-radius: 0 0.28571429rem 0.28571429rem 0;
+}
+
+.ui.bottom.attached.image.label:not(.right) > img,
+.ui.top.right.attached.image.label > img {
+  border-top-left-radius: 0;
+}
+
+.ui.top.attached.image.label:not(.right) > img,
+.ui.bottom.right.attached.image.label > img {
+  border-bottom-left-radius: 0;
 }
 
 /*-------------------
@@ -34237,7 +34277,7 @@ a.ui.label {
 
 .ui[class*="top left attached"].label {
   width: auto;
-  margin-top: 0 !important;
+  margin-top: 0;
   border-radius: 0.21428571rem 0 0.28571429rem 0;
 }
 
@@ -34362,6 +34402,18 @@ a.ui.active.label:hover:before {
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
   box-shadow: none;
+  padding-top: calc(0.5833em - 1px);
+  padding-bottom: calc(0.5833em - 1px);
+  padding-right: calc(0.833em - 1px);
+}
+
+.ui.basic.labels:not(.tag):not(.image):not(.ribbon) .label,
+.ui.basic.label:not(.tag):not(.image):not(.ribbon) {
+  padding-left: calc(0.833em - 1px);
+}
+
+.ui.basic.image.label {
+  padding-left: calc(0.5em - 1px);
 }
 
 /* Link */
@@ -40678,6 +40730,10 @@ ol.ui.suffixed.list li:before,
              Text
 *******************************/
 
+span.ui.text {
+  line-height: 1;
+}
+
 span.ui.primary.text {
   color: #2185D0;
 }
@@ -45301,27 +45357,29 @@ span.ui.massive.text {
       Very compact
   -----------------*/
 
-.ui[class*="very compact"].grid > .column:not(.row),
-.ui[class*="very compact"].grid > .row > .column {
+.ui.ui.ui[class*="very compact"].grid > .column:not(.row),
+.ui.ui.ui[class*="very compact"].grid > .row > .column {
   padding-left: 0.25rem;
-  padding-right: 0.5rem;
+  padding-right: 0.25rem;
 }
 
-.ui[class*="very compact"].grid > * {
+.ui.ui.ui[class*="very compact"].grid > * {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
 /* Row */
 
-.ui[class*="very compact"].grid > .row {
+.ui.ui.ui[class*="very compact"].grid > .row {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 /* Columns */
 
-.ui[class*="very compact"].grid > .column:not(.row) {
+.ui.ui.ui[class*="very compact"].grid > .column:not(.row) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }
@@ -56438,6 +56496,10 @@ a.inverted.ui.card:hover,
   transform-origin: center center;
 }
 
+.ui.page.dimmer.modals {
+  -moz-perspective: none;
+}
+
 body.animating.in.dimmable,
 body.dimmed.dimmable {
   overflow: hidden;
@@ -57021,7 +57083,7 @@ body.dimmable > .dimmer {
   top: 0;
   left: 100%;
   right: auto;
-  margin: 0 0 0 -0.5em !important;
+  margin: 0 -0.5em !important;
   border-radius: 0.28571429rem !important;
   z-index: 21 !important;
 }
@@ -57108,9 +57170,10 @@ body.dimmable > .dimmer {
 
 /* Automatically float dropdown menu right on last menu item */
 
-.ui.menu .right.menu .dropdown:last-child .menu:not(.left),
-.ui.menu .right.dropdown.item .menu:not(.left),
-.ui.buttons > .ui.dropdown:last-child .menu:not(.left) {
+.ui.menu .right.menu .dropdown:last-child > .menu:not(.left),
+.ui.menu .right.dropdown.item > .menu:not(.left),
+.ui.buttons > .ui.dropdown:last-child > .menu:not(.left) {
+  left: auto;
   right: 0;
 }
 
@@ -58061,7 +58124,7 @@ select.ui.dropdown {
 
 .ui.dropdown > .left.menu .menu,
 .ui.dropdown .menu .left.menu {
-  left: auto !important;
+  left: auto;
   right: 100%;
   margin: 0 -0.5em 0 0 !important;
   border-radius: 0.28571429rem !important;
@@ -58319,6 +58382,14 @@ select.ui.dropdown {
   top: 0 !important;
   left: 100%;
   opacity: 1;
+}
+
+.ui.simple.dropdown > .menu > .item:active > .left.menu,
+.ui.simple.dropdown .menu .item:hover > .left.menu,
+.right.menu .ui.simple.dropdown > .menu > .item:active > .menu:not(.right),
+.right.menu .ui.simple.dropdown > .menu .item:hover > .menu:not(.right) {
+  left: auto;
+  right: 100%;
 }
 
 .ui.simple.disabled.dropdown:hover .menu {
@@ -65953,8 +66024,8 @@ body.pushable > .pusher {
 */
 
 /*--------------
-     Browse
----------------*/
+       Browse
+  ---------------*/
 
 .transition.browse {
   -webkit-animation-duration: 500ms;
@@ -66138,8 +66209,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-     Drop
----------------*/
+       Drop
+  ---------------*/
 
 .drop.transition {
   -webkit-transform-origin: top center;
@@ -66219,8 +66290,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-      Fade
----------------*/
+        Fade
+  ---------------*/
 
 .transition.fade.in {
   -webkit-animation-name: fadeIn;
@@ -66541,8 +66612,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-     Flips
----------------*/
+       Flips
+  ---------------*/
 
 .flip.transition.in,
 .flip.transition.out {
@@ -66687,8 +66758,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-      Scale
----------------*/
+        Scale
+  ---------------*/
 
 .scale.transition.in {
   -webkit-animation-name: scaleIn;
@@ -66759,8 +66830,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-      Fly
----------------*/
+        Fly
+  ---------------*/
 
 /* Inward */
 
@@ -67300,8 +67371,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-     Slide
----------------*/
+       Slide
+  ---------------*/
 
 .transition.slide.in,
 .transition[class*="slide down"].in {
@@ -67321,15 +67392,15 @@ body.pushable > .pusher {
 .transition[class*="slide left"].in {
   -webkit-animation-name: slideInX;
   animation-name: slideInX;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
 }
 
 .transition[class*="slide right"].in {
   -webkit-animation-name: slideInX;
   animation-name: slideInX;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
 .transition.slide.out,
@@ -67350,15 +67421,15 @@ body.pushable > .pusher {
 .transition[class*="slide left"].out {
   -webkit-animation-name: slideOutX;
   animation-name: slideOutX;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
 }
 
 .transition[class*="slide right"].out {
   -webkit-animation-name: slideOutX;
   animation-name: slideOutX;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
 /* In */
@@ -67478,8 +67549,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-     Swing
----------------*/
+       Swing
+  ---------------*/
 
 .transition.swing {
   -webkit-animation-duration: 800ms;
@@ -67503,15 +67574,15 @@ body.pushable > .pusher {
 .transition[class*="swing left"].in {
   -webkit-animation-name: swingInY;
   animation-name: swingInY;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
 }
 
 .transition[class*="swing right"].in {
   -webkit-animation-name: swingInY;
   animation-name: swingInY;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
 .transition.swing.out,
@@ -67532,15 +67603,15 @@ body.pushable > .pusher {
 .transition[class*="swing left"].out {
   -webkit-animation-name: swingOutY;
   animation-name: swingOutY;
-  -webkit-transform-origin: center right;
-  transform-origin: center right;
+  -webkit-transform-origin: right center;
+  transform-origin: right center;
 }
 
 .transition[class*="swing right"].out {
   -webkit-animation-name: swingOutY;
   animation-name: swingOutY;
-  -webkit-transform-origin: center left;
-  transform-origin: center left;
+  -webkit-transform-origin: left center;
+  transform-origin: left center;
 }
 
 /* In */
@@ -67780,8 +67851,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-      Zoom
----------------*/
+        Zoom
+  ---------------*/
 
 .transition.zoom.in {
   -webkit-animation-name: zoomIn;

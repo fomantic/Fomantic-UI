@@ -2034,24 +2034,26 @@
       Very compact
   -----------------*/
 
-.ui[class*="very compact"].grid > .column:not(.row),
-.ui[class*="very compact"].grid > .row > .column {
+.ui.ui.ui[class*="very compact"].grid > .column:not(.row),
+.ui.ui.ui[class*="very compact"].grid > .row > .column {
   padding-left: 0.25rem;
-  padding-right: 0.5rem;
+  padding-right: 0.25rem;
 }
-.ui[class*="very compact"].grid > * {
+.ui.ui.ui[class*="very compact"].grid > * {
   padding-left: 0.25rem;
   padding-right: 0.25rem;
 }
 
 /* Row */
-.ui[class*="very compact"].grid > .row {
+.ui.ui.ui[class*="very compact"].grid > .row {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
 }
 
 /* Columns */
-.ui[class*="very compact"].grid > .column:not(.row) {
+.ui.ui.ui[class*="very compact"].grid > .column:not(.row) {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
 }

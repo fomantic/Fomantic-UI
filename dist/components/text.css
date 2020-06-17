@@ -13,6 +13,9 @@
              Text
 *******************************/
 
+span.ui.text {
+  line-height: 1;
+}
 span.ui.primary.text {
   color: #2185D0;
 }
