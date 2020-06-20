@@ -94,8 +94,7 @@
     width: @arrowSize;
     height: @arrowSize;
 
-    background: @tooltipArrowBackground;
-    transform: rotate(45deg);
+  background: @tooltipArrowBackground;
 
     z-index: @arrowZIndex;
     box-shadow: @tooltipArrowBoxShadow;
@@ -173,34 +172,35 @@
   }
 
   /* Animation Position */
-  [data-tooltip]:after,
+  [data-tooltip]:not([data-position]):after,
   [data-tooltip][data-position="top center"]:after,
   [data-tooltip][data-position="bottom center"]:after {
-    transform: translateX(-50%) scale(0) !important;
+    transform: translateX(-50%) scale(0.8);
   }
-  [data-tooltip]:hover:after,
+  [data-tooltip]:not([data-position]):hover:after,
+[data-tooltip][data-position="top center"]:hover:after,
   [data-tooltip][data-position="bottom center"]:hover:after {
-    transform: translateX(-50%) scale(1) !important;
+    transform: translateX(-50%) scale(1);
   }
   [data-tooltip][data-position="left center"]:after,
   [data-tooltip][data-position="right center"]:after {
-    transform: translateY(-50%) scale(0) !important;
+    transform: translateY(-50%) scale(0.8);
   }
   [data-tooltip][data-position="left center"]:hover:after,
   [data-tooltip][data-position="right center"]:hover:after {
-    transform: translateY(-50%) scale(1) !important;
+    transform: translateY(-50%) scale(1);
   }
   [data-tooltip][data-position="top left"]:after,
   [data-tooltip][data-position="top right"]:after,
   [data-tooltip][data-position="bottom left"]:after,
   [data-tooltip][data-position="bottom right"]:after {
-    transform: scale(0) !important;
+    transform: scale(0.8);
   }
   [data-tooltip][data-position="top left"]:hover:after,
   [data-tooltip][data-position="top right"]:hover:after,
   [data-tooltip][data-position="bottom left"]:hover:after,
   [data-tooltip][data-position="bottom right"]:hover:after {
-    transform: scale(1) !important;
+    transform: scale(1);
   }
   & when (@variationPopupFixed) {
     [data-tooltip][data-variation~="fixed"]:after {
@@ -226,7 +226,7 @@
 
     /* Arrow */
     [data-tooltip][data-inverted]:before {
-      box-shadow: none !important;
+      box-shadow: none;
     }
 
     /* Arrow Position */
@@ -256,15 +256,16 @@
         background: @arrowBottomBackground;
       }
       & when (@variationPopupCenter) {
-        /* Top Center */
+        /* Top Center (default) */
+[data-tooltip]:not([data-position]):after,
         [data-position="top center"][data-tooltip]:after {
           top: auto;
           right: auto;
           left: 50%;
           bottom: 100%;
-          transform: translateX(-50%);
           margin-bottom: @tooltipDistanceAway;
-        }
+}
+[data-tooltip]:not([data-position]):before,
         [data-position="top center"][data-tooltip]:before {
           top: auto;
           right: auto;
@@ -325,7 +326,6 @@
           right: auto;
           left: 50%;
           top: 100%;
-          transform: translateX(-50%);
           margin-top: @tooltipDistanceAway;
         }
         [data-position="bottom center"][data-tooltip]:before {
@@ -372,12 +372,11 @@
     }
     & when (@variationPopupCenter) {
       & when (@variationPopupLeft) {
-        /* Left Center */
-        [data-position="left center"][data-tooltip]:after {
-          right: 100%;
-          top: 50%;
-          margin-right: @tooltipDistanceAway;
-          transform: translateY(-50%);
+/* Left Center */
+[data-position="left center"][data-tooltip]:after {
+  right: 100%;
+  top: 50%;
+  margin-right: @tooltipDistanceAway;
         }
         [data-position="left center"][data-tooltip]:before {
           right: 100%;
@@ -388,13 +387,11 @@
           box-shadow: @leftArrowBoxShadow;
         }
       }
-      & when (@variationPopupRight) {
-        /* Right Center */
-        [data-position="right center"][data-tooltip]:after {
-          left: 100%;
-          top: 50%;
-          margin-left: @tooltipDistanceAway;
-          transform: translateY(-50%);
+      & when (@variationPopupRight) {/* Right Center */
+[data-position="right center"][data-tooltip]:after {
+  left: 100%;
+  top: 50%;
+  margin-left: @tooltipDistanceAway;
         }
         [data-position="right center"][data-tooltip]:before {
           left: 100%;
@@ -462,6 +459,19 @@
         }
       }
     }
+  }
+
+  [data-position="top left"][data-tooltip]:after {
+    transform-origin: bottom left;
+  }
+  [data-position="top right"][data-tooltip]:after {
+    transform-origin: bottom right;
+  }
+  [data-position="bottom left"][data-tooltip]:after {
+    transform-origin: top left;
+  }
+  [data-position="bottom right"][data-tooltip]:after {
+    transform-origin: top right;
   }
 
   & when (@variationPopupBasic) {
@@ -798,7 +808,7 @@
   }
   .ui.inverted.popup:before {
     background-color: @invertedArrowColor;
-    box-shadow: none !important;
+    box-shadow: none;
   }
 }
 
