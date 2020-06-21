@@ -157,7 +157,7 @@ $.fn.calendar = function(parameters) {
             var onShow = function () {
               //reset the focus date onShow
               module.set.focusDate(module.get.date());
-              module.set.mode(settings.startMode);
+              module.set.mode(module.get.validatedMode(settings.startMode));
               return settings.onShow.apply($container, arguments);
             };
             var on = module.setting('on');
@@ -197,6 +197,7 @@ $.fn.calendar = function(parameters) {
               date = parser.date($input.val(), settings);
             }
             module.set.date(date, settings.formatInput, false);
+            module.set.mode(module.get.mode(), false);
           }
         },
 
@@ -622,6 +623,9 @@ $.fn.calendar = function(parameters) {
           mode: function () {
             //only returns valid modes for the current settings
             var mode = $module.data(metadata.mode) || settings.startMode;
+            return module.get.validatedMode(mode);
+          },
+          validatedMode: function(mode){
             var validModes = module.get.validModes();
             if ($.inArray(mode, validModes) >= 0) {
               return mode;
@@ -739,7 +743,7 @@ $.fn.calendar = function(parameters) {
                 module.set.monthOffset(monthOffset, false);
               }
             }
-            var changed = module.set.dataKeyValue(metadata.focusDate, date, refreshCalendar);
+            var changed = module.set.dataKeyValue(metadata.focusDate, date, !!date && refreshCalendar);
             updateFocus = (updateFocus !== false && changed && refreshCalendar === false) || focusDateUsedForRange != updateRange;
             focusDateUsedForRange = updateRange;
             if (updateFocus) {
