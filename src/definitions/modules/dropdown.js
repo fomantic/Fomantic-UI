@@ -3536,10 +3536,9 @@ $.fn.dropdown = function(parameters) {
               var displayType = $module.hasClass('column') ? 'flex' : false;
               if(transition == 'none') {
                 start();
-                $currentMenu.transition('setting',{
+                $currentMenu.transition({
                   displayType: displayType
-                });
-                $currentMenu.transition('show');
+                }).transition('show');
                 callback.call(element);
               }
               else if($.fn.transition !== undefined && $module.transition('is supported')) {
