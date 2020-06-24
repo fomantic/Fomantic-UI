@@ -3533,8 +3533,12 @@ $.fn.dropdown = function(parameters) {
               module.set.scrollPosition(module.get.selectedItem(), true);
             }
             if( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
+              var displayType = $module.hasClass('column') ? 'flex' : false;
               if(transition == 'none') {
                 start();
+                $currentMenu.transition('setting',{
+                  displayType: displayType
+                });
                 $currentMenu.transition('show');
                 callback.call(element);
               }
@@ -3547,6 +3551,7 @@ $.fn.dropdown = function(parameters) {
                     duration   : settings.duration,
                     queue      : true,
                     onStart    : start,
+                    displayType: displayType,
                     onComplete : function() {
                       callback.call(element);
                     }
