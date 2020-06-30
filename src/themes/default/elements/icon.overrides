@@ -868,7 +868,7 @@ i.icon.sticky.note:before { content: "\f249"; }
 i.icon.stop:before { content: "\f04d"; }
 i.icon.stop.circle:before { content: "\f28d"; }
 i.icon.stopwatch:before { content: "\f2f2"; }
-i.icon.stopwatch.20:before { content: "\f96f"; }
+i.icon.stopwatch.twenty:before { content: "\f96f"; }
 i.icon.store:before { content: "\f54e"; }
 i.icon.store.alternate:before { content: "\f54f"; }
 i.icon.store.alternate.slash:before { content: "\f970"; }
