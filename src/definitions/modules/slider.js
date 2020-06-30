@@ -789,7 +789,6 @@ $.fn.slider = function(parameters) {
             }
             // Use precision to avoid ugly Javascript floating point rounding issues
             // (like 35 * .01 = 0.35000000000000003)
-            difference = Math.round(difference * precision) / precision;
             module.verbose('Cutting off additional decimal places');
             return Math.round((difference + module.get.min()) * precision) / precision;
           },
