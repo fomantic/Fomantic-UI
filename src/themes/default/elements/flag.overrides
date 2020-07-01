@@ -146,6 +146,10 @@ i.flag.bz:before,
 i.flag.belize:before {
   background-position: 0 -884px;
 }
+i.flag.es.ca:before,
+i.flag.catalonia:before {
+  background-position: 0 -936px
+}
 i.flag.ca:before,
 i.flag.canada:before {
   background-position: 0 -910px;
