@@ -1357,7 +1357,8 @@ $.fn.calendar.settings = {
       // Reverse date and month in some cases
       text = settings.monthFirst || !text.match(/^[0-9]{2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
-      if(!isNaN(textDate.getDate())) {
+      var numberOnly = text.match(/^[0-9]+$/) !== null;
+      if(!numberOnly && !isNaN(textDate.getDate())) {
         return textDate;
       }
       text = text.toLowerCase();
