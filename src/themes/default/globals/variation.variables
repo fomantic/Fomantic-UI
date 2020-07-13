@@ -207,6 +207,7 @@
 /* Text */
 @variationTextInverted: true;
 @variationTextDisabled: true;
+@variationTextStates: true;
 @variationTextSizes: @variationAllSizes;
 
 
