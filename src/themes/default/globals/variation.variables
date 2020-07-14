@@ -473,6 +473,7 @@
 @variationSearchCategory: true;
 @variationSearchLoading: true;
 @variationSearchAligned: true;
+@variationSearchSquared: true;
 @variationSearchFluid: true;
 @variationSearchShort: true;
 @variationSearchLong: true;
