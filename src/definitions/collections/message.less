@@ -107,7 +107,7 @@
 
 
 /* Icon */
-.ui.message > .icon {
+.ui.message > i.icon {
   margin-right: @iconDistance;
 }
 
@@ -225,7 +225,7 @@
     width: 100%;
     align-items: center;
   }
-  .ui.icon.message > .icon:not(.close) {
+  .ui.icon.message > i.icon:not(.close) {
     display: block;
     flex: 0 0 auto;
     width: auto;
@@ -241,10 +241,10 @@
   }
 
 
-  .ui.icon.message .icon:not(.close) + .content {
+  .ui.icon.message > i.icon:not(.close) + .content {
     padding-left: @iconContentDistance;
   }
-  .ui.icon.message .circular.icon {
+  .ui.icon.message > i.circular.icon {
     width: 1em;
   }
 }
