@@ -469,6 +469,12 @@
     .ui.horizontal.segments:not(.stackable) > .segment:first-child {
       border-left: none;
     }
+    .ui.horizontal.segments > .segment:first-child {
+      border-radius: @borderRadius 0 0 @borderRadius;
+    }
+    .ui.horizontal.segments > .segment:last-child {
+      border-radius: 0 @borderRadius @borderRadius 0;
+    }
   }
 }
 
