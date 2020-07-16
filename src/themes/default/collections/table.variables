@@ -58,7 +58,7 @@
 @footerDivider: none;
 @footerBackground: @offWhite;
 @footerAlign: inherit;
-@footerVerticalAlign: middle;
+@footerVerticalAlign: inherit;
 @footerColor: @textColor;
 @footerVerticalPadding: @cellVerticalPadding;
 @footerHorizontalPadding: @cellHorizontalPadding;
