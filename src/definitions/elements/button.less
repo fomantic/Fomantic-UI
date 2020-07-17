@@ -1043,16 +1043,16 @@
   .ui.toggle.buttons .active.button,
   .ui.buttons .button.toggle.active,
   .ui.button.toggle.active {
-    background-color: @positiveColor;
+    background-color: @toggleBackgroundColor;
     box-shadow: none;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    text-shadow: @toggleTextShadow;
+    color: @toggleColor;
   }
 
   .ui.button.toggle.active:hover {
-    background-color: @positiveColorHover;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    background-color: @toggleHoverBackgroundColor;
+    text-shadow: @toggleHoverTextShadow;
+    color: @toggleHoverColor;
   }
 }
 
@@ -1062,11 +1062,11 @@
   ---------------*/
 
   .ui.circular.button {
-    border-radius: 10em;
+    border-radius: @circularBorderRadius;
   }
 
   .ui.circular.button > .icon {
-    width: 1em;
+    width: @circularIconWidth;
     vertical-align: baseline;
   }
 }
