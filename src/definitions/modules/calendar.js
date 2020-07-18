@@ -75,6 +75,7 @@ $.fn.calendar = function(parameters) {
 
         isTouch,
         isTouchDown = false,
+        isInverted = $module.hasClass(className.inverted),
         focusDateUsedForRange = false,
         module
       ;
@@ -141,6 +142,9 @@ $.fn.calendar = function(parameters) {
               $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
+            if(isInverted){
+              $container.addClass(className.inverted);
+            }
             var onVisible = settings.onVisible;
             var onHidden = settings.onHidden;
             if (!$input.length) {
@@ -281,6 +285,9 @@ $.fn.calendar = function(parameters) {
                 tempMode += ' andweek';
               }
               var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
+              if(isInverted){
+                table.addClass(className.inverted);
+              }
               var textColumns = columns;
               //no header for time-only mode
               if (!isTimeOnly) {
@@ -351,6 +358,12 @@ $.fn.calendar = function(parameters) {
                     if (disabledDate !== null && disabledDate[metadata.message]) {
                       cell.attr("data-tooltip", disabledDate[metadata.message]);
                       cell.attr("data-position", tooltipPosition);
+                      if(disabledDate[metadata.inverted] || (isInverted && disabledDate[metadata.inverted] === undefined)) {
+                        cell.attr("data-inverted", '');
+                      }
+                      if(disabledDate[metadata.variation]) {
+                        cell.attr("data-variation", disabledDate[metadata.variation]);
+                      }
                     }
                   } else {
                     var eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
@@ -359,6 +372,12 @@ $.fn.calendar = function(parameters) {
                       if (eventDate[metadata.message]) {
                         cell.attr("data-tooltip", eventDate[metadata.message]);
                         cell.attr("data-position", tooltipPosition);
+                        if(eventDate[metadata.inverted] || (isInverted && eventDate[metadata.inverted] === undefined)) {
+                          cell.attr("data-inverted", '');
+                        }
+                        if(eventDate[metadata.variation]) {
+                          cell.attr("data-variation", eventDate[metadata.variation]);
+                        }
                       }
                     }
                   }
@@ -1616,6 +1635,7 @@ $.fn.calendar.settings = {
     grid: 'ui equal width grid',
     column: 'column',
     table: 'ui celled center aligned unstackable table',
+    inverted: 'inverted',
     prev: 'prev link',
     next: 'next link',
     prevIcon: 'chevron left icon',
@@ -1644,6 +1664,8 @@ $.fn.calendar.settings = {
     monthOffset: 'monthOffset',
     message: 'message',
     class: 'class',
+    inverted: 'inverted',
+    variation: 'variation',
     month: 'month',
     year: 'year'
   },
