@@ -357,7 +357,7 @@ $.fn.calendar = function(parameters) {
                     var disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
                     if (disabledDate !== null && disabledDate[metadata.message]) {
                       cell.attr("data-tooltip", disabledDate[metadata.message]);
-                      cell.attr("data-position", tooltipPosition);
+                      cell.attr("data-position", disabledDate[metadata.position] || tooltipPosition);
                       if(disabledDate[metadata.inverted] || (isInverted && disabledDate[metadata.inverted] === undefined)) {
                         cell.attr("data-inverted", '');
                       }
@@ -371,7 +371,7 @@ $.fn.calendar = function(parameters) {
                       cell.addClass(eventDate[metadata.class] || settings.eventClass);
                       if (eventDate[metadata.message]) {
                         cell.attr("data-tooltip", eventDate[metadata.message]);
-                        cell.attr("data-position", tooltipPosition);
+                        cell.attr("data-position", eventDate[metadata.position] || tooltipPosition);
                         if(eventDate[metadata.inverted] || (isInverted && eventDate[metadata.inverted] === undefined)) {
                           cell.attr("data-inverted", '');
                         }
@@ -1666,6 +1666,7 @@ $.fn.calendar.settings = {
     class: 'class',
     inverted: 'inverted',
     variation: 'variation',
+    position: 'position',
     month: 'month',
     year: 'year'
   },
