@@ -182,6 +182,7 @@ $.fn.calendar = function(parameters) {
             if ($activator.length && !settings.inline) {
               return;
             }
+            settings.inline = true;
             $container = $('<div/>').addClass(className.calendar).appendTo($module);
             if (!$input.length) {
               $container.attr('tabindex', '0');
@@ -401,6 +402,10 @@ $.fn.calendar = function(parameters) {
               }
 
               module.update.focus(false, table);
+
+              if(settings.inline){
+                module.refreshTooltips();
+              }
             }
           }
         },
@@ -443,12 +448,16 @@ $.fn.calendar = function(parameters) {
         },
 
         refreshTooltips: function() {
-          var popupPos = $container.hasClass('left') ? 'left' : 'right';
-          var popupPosOpposite = popupPos === 'left' ? 'right' : 'left';
-          $container.find('td[data-position*="'+popupPos+'"]').each(function () {
+          var winWidth = $(window).width();
+          $container.find('td[data-position]').each(function () {
             var cell = $(this);
+            var tooltipWidth = window.getComputedStyle(cell[0], ':after').width.replace(/[^0-9\.]/g,'');
             var tooltipPosition = cell.attr('data-position');
-            cell.attr('data-position',tooltipPosition.replace(popupPos,popupPosOpposite));
+            // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
+            var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';
+            if(tooltipPosition.indexOf(calcPosition) === -1) {
+              cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
+            }
            });
         },
 
