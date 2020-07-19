@@ -141,12 +141,16 @@ $.fn.calendar = function(parameters) {
               $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
-            var onVisible = settings.onVisible;
+            var onVisible = function () {
+              module.refreshTooltips();
+              return settings.onVisible.apply($container, arguments);
+            };
             var onHidden = settings.onHidden;
             if (!$input.length) {
               //no input, $container has to handle focus/blur
               $container.attr('tabindex', '0');
               onVisible = function () {
+                module.refreshTooltips();
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
               };
@@ -436,6 +440,16 @@ $.fn.calendar = function(parameters) {
 
         refresh: function () {
           module.create.calendar();
+        },
+
+        refreshTooltips: function() {
+          var popupPos = $container.hasClass('left') ? 'left' : 'right';
+          var popupPosOpposite = popupPos === 'left' ? 'right' : 'left';
+          $container.find('td[data-position*="'+popupPos+'"]').each(function () {
+            var cell = $(this);
+            var tooltipPosition = cell.attr('data-position');
+            cell.attr('data-position',tooltipPosition.replace(popupPos,popupPosOpposite));
+           });
         },
 
         bind: {
