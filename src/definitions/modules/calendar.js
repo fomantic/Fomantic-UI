@@ -140,7 +140,7 @@ $.fn.calendar = function(parameters) {
                   domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
               $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
-            $container.addClass(className.calendar);
+            $container.addClass(className.calendar).addClass(settings.type);
             var onVisible = settings.onVisible;
             var onHidden = settings.onHidden;
             if (!$input.length) {

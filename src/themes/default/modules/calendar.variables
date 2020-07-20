@@ -16,3 +16,5 @@
 
 @adjacentTextColor: @mutedTextColor;
 @adjacentBackground: @subtleTransparentBlack;
+
+@headerBackground: @offWhite;
