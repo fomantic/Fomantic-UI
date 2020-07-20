@@ -392,7 +392,7 @@
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
     padding-right: @labeledIconInputMargin !important;
   }
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .icon {
+  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
     margin-right: @labeledIconMargin;
   }
 
@@ -406,16 +406,16 @@
     .ui[class*="left corner labeled"].icon.input > input {
       padding-left: @labeledIconInputMargin !important;
     }
-    .ui[class*="left corner labeled"].icon.input > .icon {
+    .ui[class*="left corner labeled"].icon.input > i.icon {
       margin-left: @labeledIconMargin;
     }
   }
 }
 & when (@variationInputIcon) {
-  .ui.icon.input > textarea ~ .icon {
+  .ui.icon.input > textarea ~ i.icon {
     height: @textareaIconHeight;
   }
-  :not(.field) > .ui.transparent.icon.input > textarea ~ .icon {
+  :not(.field) > .ui.transparent.icon.input > textarea ~ i.icon {
     height: @transparentTextareaIconHeight;
   }
 }

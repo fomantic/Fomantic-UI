@@ -41,9 +41,9 @@
 }
 
 .ui.modal > :first-child:not(.icon):not(.dimmer),
-.ui.modal > .icon:first-child + *,
+.ui.modal > i.icon:first-child + *,
 .ui.modal > .dimmer:first-child + *:not(.icon),
-.ui.modal > .dimmer:first-child + .icon + * {
+.ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: @borderRadius;
   border-top-right-radius: @borderRadius;
 }
@@ -148,7 +148,7 @@
   align-self: @descriptionVerticalAlign;
 }
 
-.ui.modal > .content > .icon + .description,
+.ui.modal > .content > i.icon + .description,
 .ui.modal > .content > .image + .description {
   flex: 0 1 auto;
   min-width: @descriptionMinWidth;
