@@ -137,6 +137,11 @@
   border-top-width: 0;
 }
 
+.ui.dropdown .menu > .item.vertical {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 /*--------------
   Floated Content
 ---------------*/
@@ -213,6 +218,18 @@
   float: @itemDescriptionFloat;
   margin: @itemDescriptionMargin;
   color: @itemDescriptionColor;
+}
+
+.ui.dropdown .menu > .item.vertical > .description {
+  margin: 0;
+}
+
+/*-----------------
+      Item Text
+-------------------*/
+
+.ui.dropdown .menu > .item.vertical > .text {
+  margin-bottom: @verticalItemMargin;
 }
 
 /*-----------------

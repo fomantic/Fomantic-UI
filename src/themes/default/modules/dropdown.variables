@@ -63,6 +63,9 @@
 @itemBoxShadow: none;
 @itemMinHeight: unit(@itemLineHeight + 2 * @itemVerticalPadding, rem);
 
+/* Vertical Item */
+@verticalItemMargin: 0.25em;
+
 /* Sub Menu */
 @subMenuTop: 0;
 @subMenuLeft: 100%;
