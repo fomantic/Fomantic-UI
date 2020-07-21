@@ -154,7 +154,7 @@
   margin-right: @floatedDistance !important;
 }
 
-.ui.dropdown .menu .item > .icon.floated,
+.ui.dropdown .menu .item > i.icon.floated,
 .ui.dropdown .menu .item > .flag.floated,
 .ui.dropdown .menu .item > .image.floated,
 .ui.dropdown .menu .item > img.floated {
@@ -198,7 +198,7 @@
   padding: @menuInputPadding;
 }
 .ui.dropdown .menu > .input:not(.transparent) .button,
-.ui.dropdown .menu > .input:not(.transparent) .icon,
+.ui.dropdown .menu > .input:not(.transparent) i.icon,
 .ui.dropdown .menu > .input:not(.transparent) .label {
   padding-top: @menuInputVerticalPadding;
   padding-bottom: @menuInputVerticalPadding;
@@ -250,14 +250,14 @@
 ---------------*/
 
 /* Icons / Flags / Labels / Image */
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image {
   margin-top: @textLineHeightOffset;
 }
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
@@ -265,12 +265,12 @@
   margin-top: @itemLineHeightOffset;
 }
 
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
@@ -673,7 +673,7 @@ select.ui.dropdown {
   }
 
   /* Filtered Text */
-  .ui.active.search.dropdown input.search:focus + .text .icon,
+  .ui.active.search.dropdown input.search:focus + .text i.icon,
   .ui.active.search.dropdown input.search:focus + .text .flag {
     opacity: @selectionTextUnderlayIconOpacity;
   }
@@ -1699,7 +1699,7 @@ select.ui.dropdown {
     color: @invertedDefaultTextFocusColor;
   }
 
-  .ui.inverted.active.search.dropdown input.search:focus + .text .icon,
+  .ui.inverted.active.search.dropdown input.search:focus + .text i.icon,
   .ui.inverted.active.search.dropdown input.search:focus + .text .flag {
     opacity: @invertedSelectionTextUnderlayIconOpacity;
   }

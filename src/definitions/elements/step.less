@@ -144,20 +144,20 @@
 }
 
 /* Icon */
-.ui.steps .step > .icon {
+.ui.steps .step > i.icon {
   line-height: 1;
   font-size: @iconSize;
   margin: 0 @iconDistance 0 0;
 }
-.ui.steps .step > .icon,
-.ui.steps .step > .icon ~ .content {
+.ui.steps .step > i.icon,
+.ui.steps .step > i.icon ~ .content {
   display: block;
   flex: 0 1 auto;
   align-self: @iconAlign;
 }
 
 /* Horizontal Icon */
-.ui.steps:not(.vertical) .step > .icon {
+.ui.steps:not(.vertical) .step > i.icon {
   width: auto;
 }
 
@@ -299,7 +299,7 @@
   }
 
   /* Icon */
-  .ui.steps:not(.unstackable) .step > .icon,
+  .ui.steps:not(.unstackable) .step > i.icon,
   .ui.ordered.steps:not(.unstackable) .step:before {
     margin: 0 0 @mobileIconDistance 0;
   }
@@ -340,7 +340,7 @@
   color: @activeColor;
 }
 .ui.ordered.steps .step.active:before,
-.ui.steps .active.step .icon {
+.ui.steps .active.step i.icon {
   color: @activeIconColor;
 }
 
@@ -369,7 +369,7 @@
 }
 
 /* Completed */
-.ui.steps .step.completed > .icon:before,
+.ui.steps .step.completed > i.icon:before,
 .ui.ordered.steps .step.completed:before {
   color: @completedColor;
 }
@@ -441,7 +441,7 @@
     }
 
     /* Icon */
-    .ui[class*="tablet stackable"].steps .step > .icon,
+    .ui[class*="tablet stackable"].steps .step > i.icon,
     .ui[class*="tablet stackable"].ordered.steps .step:before {
       margin: 0 0 @mobileIconDistance 0;
     }
@@ -590,7 +590,7 @@
     background: @invertedActiveBackground;
   }
   .ui.inverted.ordered.steps .step.active:before,
-  .ui.inverted.steps .active.step .icon {
+  .ui.inverted.steps .active.step i.icon {
     color: @invertedSelectedTextColor;
   }
 
