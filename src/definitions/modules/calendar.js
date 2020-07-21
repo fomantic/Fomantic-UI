@@ -141,12 +141,16 @@ $.fn.calendar = function(parameters) {
               $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
-            var onVisible = settings.onVisible;
+            var onVisible = function () {
+              module.refreshTooltips();
+              return settings.onVisible.apply($container, arguments);
+            };
             var onHidden = settings.onHidden;
             if (!$input.length) {
               //no input, $container has to handle focus/blur
               $container.attr('tabindex', '0');
               onVisible = function () {
+                module.refreshTooltips();
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
               };
@@ -178,6 +182,7 @@ $.fn.calendar = function(parameters) {
             if ($activator.length && !settings.inline) {
               return;
             }
+            settings.inline = true;
             $container = $('<div/>').addClass(className.calendar).appendTo($module);
             if (!$input.length) {
               $container.attr('tabindex', '0');
@@ -397,6 +402,10 @@ $.fn.calendar = function(parameters) {
               }
 
               module.update.focus(false, table);
+
+              if(settings.inline){
+                module.refreshTooltips();
+              }
             }
           }
         },
@@ -436,6 +445,20 @@ $.fn.calendar = function(parameters) {
 
         refresh: function () {
           module.create.calendar();
+        },
+
+        refreshTooltips: function() {
+          var winWidth = $(window).width();
+          $container.find('td[data-position]').each(function () {
+            var cell = $(this);
+            var tooltipWidth = window.getComputedStyle(cell[0], ':after').width.replace(/[^0-9\.]/g,'');
+            var tooltipPosition = cell.attr('data-position');
+            // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
+            var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';
+            if(tooltipPosition.indexOf(calcPosition) === -1) {
+              cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
+            }
+           });
         },
 
         bind: {
