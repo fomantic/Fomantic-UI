@@ -367,6 +367,7 @@
 @variationAccordionFluid: true;
 
 /* Calendar */
+@variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 
 /* Checkbox */
