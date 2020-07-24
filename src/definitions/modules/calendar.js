@@ -211,6 +211,20 @@ $.fn.calendar = function(parameters) {
           }
         },
 
+        trigger: {
+          change: function() {
+            var
+                events       = document.createEvent('HTMLEvents'),
+                inputElement = $input[0]
+            ;
+            if(inputElement) {
+              module.verbose('Triggering native change event');
+              events.initEvent('change', true, false);
+              inputElement.dispatchEvent(events);
+            }
+          }
+        },
+
         create: {
           calendar: function () {
             var i, r, c, p, row, cell, pageGrid;
@@ -845,15 +859,18 @@ $.fn.calendar = function(parameters) {
             (settings.type === 'year' && mode === 'year');
           if (complete) {
             var canceled = module.set.date(date) === false;
-            if (!canceled && settings.closable) {
-              module.popup('hide');
-              //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
-              var endModule = module.get.calendarModule(settings.endCalendar);
-              if (endModule) {
-                if (endModule.setting('on') !== 'focus') {
-                  endModule.popup('show');
+            if (!canceled) {
+              module.trigger.change();
+              if(settings.closable) {
+                module.popup('hide');
+                //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
+                var endModule = module.get.calendarModule(settings.endCalendar);
+                if (endModule) {
+                  if (endModule.setting('on') !== 'focus') {
+                    endModule.popup('show');
+                  }
+                  endModule.focus();
                 }
-                endModule.focus();
               }
             }
           } else {
