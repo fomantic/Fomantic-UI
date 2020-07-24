@@ -215,10 +215,10 @@ $.fn.calendar = function(parameters) {
         trigger: {
           change: function() {
             var
-                events       = document.createEvent('HTMLEvents'),
                 inputElement = $input[0]
             ;
             if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
               module.verbose('Triggering native change event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
