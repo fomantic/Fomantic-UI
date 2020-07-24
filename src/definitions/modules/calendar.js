@@ -43,7 +43,8 @@ $.fn.calendar = function(parameters) {
       '20': {'row': 3, 'column': 1 },
       '30': {'row': 2, 'column': 1 }
     },
-    numberText = ['','one','two','three','four','five','six','seven','eight']
+    numberText = ['','one','two','three','four','five','six','seven','eight'],
+    selectionComplete = false
   ;
 
   $allModules
@@ -634,6 +635,10 @@ $.fn.calendar = function(parameters) {
               var text = formatter.datetime(date, settings);
               $input.val(text);
             }
+            if(selectionComplete){
+              module.trigger.change();
+              selectionComplete = false;
+            }
           }
         },
 
@@ -860,7 +865,7 @@ $.fn.calendar = function(parameters) {
           if (complete) {
             var canceled = module.set.date(date) === false;
             if (!canceled) {
-              module.trigger.change();
+              selectionComplete = true;
               if(settings.closable) {
                 module.popup('hide');
                 //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
