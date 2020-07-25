@@ -368,9 +368,9 @@ $.fn.dropdown = function(parameters) {
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
               $search = $('<input />')
-                  .addClass(className.search)
-                  .prop('autocomplete', 'off')
-                  .insertBefore($text)
+                 .addClass(className.search)
+                 .prop('autocomplete', 'off')
+                 .insertBefore($text)
               ;
             }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
