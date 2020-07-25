@@ -365,16 +365,13 @@ $.fn.dropdown = function(parameters) {
                 .insertBefore($text)
               ;
             }
-            if( module.is.search()){
-              if(!module.has.search()) {
-                module.verbose('Adding search input');
-                $search = $('<input />')
-                    .addClass(className.search)
-                    .prop('autocomplete', 'off')
-                    .insertBefore($text)
-                ;
-              }
-              module.check.disabled();
+            if( module.is.search() && !module.has.search() ) {
+              module.verbose('Adding search input');
+              $search = $('<input />')
+                  .addClass(className.search)
+                  .prop('autocomplete', 'off')
+                  .insertBefore($text)
+              ;
             }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
@@ -2166,7 +2163,7 @@ $.fn.dropdown = function(parameters) {
             return true;
           },
           disabled: function(){
-            $search.prop('disabled',module.is.disabled());
+            $search.attr('tabindex',module.is.disabled() ? -1 : 0);
           }
         },
 
@@ -2432,8 +2429,8 @@ $.fn.dropdown = function(parameters) {
               module.debug('Added tabindex to searchable dropdown');
               $search
                 .val('')
-                .attr('tabindex', 0)
               ;
+              module.check.disabled();
               $menu
                 .attr('tabindex', -1)
               ;

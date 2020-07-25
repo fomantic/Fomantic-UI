@@ -689,7 +689,7 @@ $.fn.calendar = function(parameters) {
 
         check: {
           disabled: function(){
-            $input.prop('disabled',module.is.disabled());
+            $input.attr('tabindex',module.is.disabled() ? -1 : 0);
           }
         },
 
