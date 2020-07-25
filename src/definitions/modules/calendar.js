@@ -43,8 +43,7 @@ $.fn.calendar = function(parameters) {
       '20': {'row': 3, 'column': 1 },
       '30': {'row': 2, 'column': 1 }
     },
-    numberText = ['','one','two','three','four','five','six','seven','eight'],
-    selectionComplete = false
+    numberText = ['','one','two','three','four','five','six','seven','eight']
   ;
 
   $allModules
@@ -78,6 +77,8 @@ $.fn.calendar = function(parameters) {
         isTouchDown = false,
         isInverted = $module.hasClass(className.inverted),
         focusDateUsedForRange = false,
+        selectionComplete = false,
+        classObserver,
         module
       ;
 
@@ -95,6 +96,7 @@ $.fn.calendar = function(parameters) {
           module.create.calendar();
 
           module.bind.events();
+          module.observeChanges();
           module.instantiate();
         },
 
@@ -108,6 +110,7 @@ $.fn.calendar = function(parameters) {
           module.verbose('Destroying previous calendar for', element);
           $module.removeData(moduleNamespace);
           module.unbind.events();
+          module.disconnect.classObserver();
         },
 
         setup: {
@@ -197,6 +200,7 @@ $.fn.calendar = function(parameters) {
             if (settings.touchReadonly && $input.length && isTouch) {
               $input.prop('readonly', true);
             }
+            module.check.disabled();
           },
           date: function () {
             var date;
@@ -639,6 +643,53 @@ $.fn.calendar = function(parameters) {
               module.trigger.change();
               selectionComplete = false;
             }
+          },
+          class: {
+            mutation: function(mutations) {
+              mutations.forEach(function(mutation) {
+                if(mutation.attributeName === "class") {
+                  module.check.disabled();
+                }
+              });
+            }
+          }
+        },
+
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            classObserver  = new MutationObserver(module.event.class.mutation);
+            module.debug('Setting up mutation observer', classObserver);
+            module.observe.class();
+          }
+        },
+
+        disconnect: {
+          classObserver: function() {
+            if($input.length && classObserver) {
+              classObserver.disconnect();
+            }
+          }
+        },
+
+        observe: {
+          class: function() {
+            if($input.length && classObserver) {
+              classObserver.observe($module[0], {
+                attributes : true
+              });
+            }
+          }
+        },
+
+        is: {
+          disabled: function() {
+            return $module.hasClass(className.disabled);
+          }
+        },
+
+        check: {
+          disabled: function(){
+            $input.prop('disabled',module.is.disabled());
           }
         },
 
@@ -1694,7 +1745,8 @@ $.fn.calendar.settings = {
     rangeCell: 'range',
     focusCell: 'focus',
     todayCell: 'today',
-    today: 'today link'
+    today: 'today link',
+    disabled: 'disabled'
   },
 
   metadata: {
