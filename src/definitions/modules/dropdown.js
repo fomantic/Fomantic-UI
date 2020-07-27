@@ -811,10 +811,14 @@ $.fn.dropdown = function(parameters) {
               },
               onError: function() {
                 module.add.message(message.serverError);
+                iconClicked = false;
+                focused = false;
                 callback.apply(null, callbackParameters);
               },
               onFailure: function() {
                 module.add.message(message.serverError);
+                iconClicked = false;
+                focused = false;
                 callback.apply(null, callbackParameters);
               },
               onSuccess : function(response) {
