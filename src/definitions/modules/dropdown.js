@@ -790,10 +790,14 @@ $.fn.dropdown = function(parameters) {
               },
               onError: function() {
                 module.add.message(message.serverError);
+                iconClicked = false;
+                focused = false;
                 callback();
               },
               onFailure: function() {
                 module.add.message(message.serverError);
+                iconClicked = false;
+                focused = false;
                 callback();
               },
               onSuccess : function(response) {
