@@ -219,11 +219,7 @@ $.fn.form = function(parameters) {
               $field.val('');
             }
           });
-          $module.removeClass(className.error).removeClass(className.success);
-          if(!settings.inline) {
-            module.remove.errors();
-          }
-          module.determine.isDirty();
+          module.remove.states();
         },
 
         reset: function() {
@@ -264,11 +260,7 @@ $.fn.form = function(parameters) {
               $field.val(defaultValue);
             }
           });
-          $module.removeClass(className.error).removeClass(className.success);
-          if(!settings.inline) {
-            module.remove.errors();
-          }
-          module.determine.isDirty();
+          module.remove.states();
         },
 
         determine: {
@@ -932,6 +924,13 @@ $.fn.form = function(parameters) {
           errors: function() {
             module.debug('Removing form error messages');
             $message.empty();
+          },
+          states: function() {
+            $module.removeClass(className.error).removeClass(className.success);
+            if(!settings.inline) {
+              module.remove.errors();
+            }
+            module.determine.isDirty();
           },
           rule: function(field, rule) {
             var
