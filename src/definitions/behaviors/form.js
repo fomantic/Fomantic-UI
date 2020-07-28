@@ -368,7 +368,13 @@ $.fn.form = function(parameters) {
             if (initialValue == null) { initialValue = ''; }
             var currentValue = $el.val();
             if (currentValue == null) { currentValue = ''; }
-
+            // multiple select values are returned as arrays which are never equal, so do string conversion first
+            if(Array.isArray(currentValue)) {
+              currentValue = currentValue.toString();
+            }
+            if(Array.isArray(initialValue)) {
+              initialValue = initialValue.toString();
+            }
             // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison
             var boolRegex = /^(true|false)$/i;
             var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
