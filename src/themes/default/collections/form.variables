@@ -161,6 +161,7 @@
 @inlineCalendarWidth: 13.11em;
 
 @groupedInlineLabelMargin: 0.035714em 1em 0 0;
+@groupedInlineCheckboxBottomMargin: 0.4em;
 
 /*-------------------
        Groups
