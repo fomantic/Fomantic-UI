@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "author": "Jack Lukic <jack@semantic-ui.com>",
-  "main": "dist/semantic",
+  "main": "dist/semantic.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/fomantic/Fomantic-UI.git"
