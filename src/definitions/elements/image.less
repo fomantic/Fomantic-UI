@@ -91,26 +91,35 @@ img.ui.image {
     Vertical Aligned
   -------------------*/
 
-  .ui.top.aligned.images .image,
   .ui.top.aligned.image,
   .ui.top.aligned.image svg,
   .ui.top.aligned.image img {
     display: inline-block;
     vertical-align: top;
   }
-  .ui.middle.aligned.images .image,
   .ui.middle.aligned.image,
   .ui.middle.aligned.image svg,
   .ui.middle.aligned.image img {
     display: inline-block;
     vertical-align: middle;
   }
-  .ui.bottom.aligned.images .image,
   .ui.bottom.aligned.image,
   .ui.bottom.aligned.image svg,
   .ui.bottom.aligned.image img {
     display: inline-block;
     vertical-align: bottom;
+  }
+  .ui.top.aligned.images .image, 
+  .ui.images .ui.top.aligned.image {
+    align-self: flex-start;
+  }
+  .ui.middle.aligned.images .image, 
+  .ui.images .ui.middle.aligned.image {
+    align-self: center;
+  }
+  .ui.bottom.aligned.images .image, 
+  .ui.images .ui.bottom.aligned.image {
+    align-self: flex-end;
   }
 }
 
@@ -250,10 +259,17 @@ img.ui.image {
 }
 
 & when (@variationImageCentered) {
-  .ui.centered.images,
   .ui.centered.image {
+    display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+  .ui.centered.images {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: stretch;
+    justify-content: center;
   }
 }
 
