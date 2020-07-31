@@ -892,7 +892,7 @@ $.fn.form = function(parameters) {
                 ;
               }
               $prompt
-                .html(errors[0])
+                .html(settings.inline === 'all' ? settings.templates.promptError(errors) : errors[0])
               ;
               if(!promptExists) {
                 if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -1486,7 +1486,7 @@ $.fn.form.settings = {
 
   keyboardShortcuts : true,
   on                : 'submit',
-  inline            : false,
+  inline            : false,  // false (no inline errors), true (show first error of field) , 'all' (show all errors of field)
 
   delay             : 200,
   revalidate        : true,
@@ -1603,15 +1603,26 @@ $.fn.form.settings = {
         html += '<li>' + value + '</li>';
       });
       html += '</ul>';
-      return $(html);
+      return html;
     },
 
     // template that produces label
     prompt: function(errors, labelClasses) {
       return $('<div/>')
         .addClass(labelClasses)
-        .html(errors[0])
       ;
+    },
+
+    // template that produces the multiple prompt error messages
+    promptError: function(errors){
+      var
+          html = '<ul class="ui list">'
+      ;
+      $.each(errors, function(index, value) {
+        html += '<li>' + value + '</li>';
+      });
+      html += '</ul>';
+      return html;
     }
   },
 
