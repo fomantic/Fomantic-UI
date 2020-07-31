@@ -1186,6 +1186,7 @@ $.fn.form = function(parameters) {
             }
             else {
               module.debug('Form has errors');
+              submitting = false;
               module.set.error();
               if(!settings.inline) {
                 module.add.errors(formErrors);
