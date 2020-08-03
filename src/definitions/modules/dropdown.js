@@ -412,9 +412,7 @@ $.fn.dropdown = function(parameters) {
             module.refresh();
           },
           menu: function(values) {
-            const response = values;
-            response[fields.values] = values.values;
-            $menu.html( templates.menu(response, fields,settings.preserveHTML,settings.className));
+            $menu.html( templates.menu(values, fields,settings.preserveHTML,settings.className));
             $item    = $menu.find(selector.item);
             $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
           },
