@@ -795,7 +795,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 module.remove.message();
                 module.setup.menu({
-                  values: values
+                  [fields.values]: values
                 });
 
                 if(values.length===0 && !settings.allowAdditions) {
@@ -992,7 +992,7 @@ $.fn.dropdown = function(parameters) {
               module.clear();
             }
             module.debug('Creating dropdown with specified values', values);
-            module.setup.menu({values: values});
+            module.setup.menu({[fields.values]: values});
             $.each(values, function(index, item) {
               if(item.selected == true) {
                 module.debug('Setting initial selection to', item[fields.value]);
@@ -1958,7 +1958,7 @@ $.fn.dropdown = function(parameters) {
               select = {},
               oldGroup = []
             ;
-            select.values = [];
+            select[fields.values] = [];
             $module
               .find('option')
                 .each(function() {
@@ -1979,14 +1979,14 @@ $.fn.dropdown = function(parameters) {
                   }
                   else {
                     if(group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
-                      select.values.push({
+                      select[fields.values].push({
                         type: 'header',
                         divider: settings.headerDivider,
                         name: group.attr('label') || ''
                       });
                       oldGroup = group;
                     }
-                    select.values.push({
+                    select[fields.values].push({
                       name     : name,
                       value    : value,
                       text     : text,
@@ -2001,15 +2001,15 @@ $.fn.dropdown = function(parameters) {
             }
             if(settings.sortSelect) {
               if(settings.sortSelect === true) {
-                select.values.sort(function(a, b) {
+                select[fields.values].sort(function(a, b) {
                   return a.name.localeCompare(b.name);
                 });
               } else if(settings.sortSelect === 'natural') {
-                select.values.sort(function(a, b) {
+                select[fields.values].sort(function(a, b) {
                   return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
                 });
               } else if($.isFunction(settings.sortSelect)) {
-                select.values.sort(settings.sortSelect);
+                select[fields.values].sort(settings.sortSelect);
               }
               module.debug('Retrieved and sorted values from select', select);
             }
