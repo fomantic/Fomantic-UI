@@ -506,21 +506,21 @@ $.fn.progress = function(parameters) {
                 ;
             });
             var hasTotal = module.has.total();
-            var totalPecent = module.helper.sum(percents);
-            var isMultpleValues = percents.length > 1 && hasTotal;
+            var totalPercent = module.helper.sum(percents);
+            var isMultipleValues = percents.length > 1 && hasTotal;
             var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
-            if (isMultpleValues && sumTotal > module.total) {
+            if (isMultipleValues && sumTotal > module.total) {
               // Sum values instead of pecents to avoid precision issues when summing floats
               module.error(error.sumExceedsTotal, sumTotal, module.total);
-            } else if (!isMultpleValues && totalPecent > 100) {
+            } else if (!isMultipleValues && totalPercent > 100) {
               // Sum before rounding since sum of rounded may have error though sum of actual is fine
-              module.error(error.tooHigh, totalPecent);
-            } else if (totalPecent < 0) {
-              module.error(error.tooLow, totalPecent);
+              module.error(error.tooHigh, totalPercent);
+            } else if (totalPercent < 0) {
+              module.error(error.tooLow, totalPercent);
             } else {
               var autoPrecision = settings.precision > 0
                 ? settings.precision
-                : isMultpleValues
+                : isMultipleValues
                   ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
                   : 0;
 
@@ -541,11 +541,7 @@ $.fn.progress = function(parameters) {
                 });
                 if (settings.limitValues) {
                   module.value = module.value.map(function (value) {
-                    return (value > 100)
-                      ? 100
-                      : (value < 0)
-                        ? 0
-                        : value;
+                    return Math.max(0, Math.min(100, value));
                   });
                 }
               }
