@@ -128,18 +128,14 @@ module.exports = {
     }
 
     // takes component object and creates file glob matching selected components
-    config.globs.components = (typeof config.components == 'object')
-      ? (config.components.length > 1)
-        ? '{' + config.components.join(',') + '}'
-        : config.components[0]
+    config.globs.components = (Array.isArray(config.components) && config.components.length >= 1)
+      ? '{' + config.components.join(',') + '}'
       : '{' + defaults.components.join(',') + '}'
     ;
 
     // components that should be built, but excluded from main .css/.js files
-    config.globs.individuals = (typeof config.individuals == 'object')
-      ? (config.individuals.length > 1)
-        ? '{' + config.individuals.join(',') + '}'
-        : config.individuals[0]
+    config.globs.individuals = (Array.isArray(config.individuals) && config.individuals.length >= 1)
+      ? '{' + config.individuals.join(',') + '}'
       : undefined
     ;
 
