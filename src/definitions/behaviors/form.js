@@ -1486,7 +1486,7 @@ $.fn.form.settings = {
 
   keyboardShortcuts : true,
   on                : 'submit',
-  inline            : false,  // false (no inline errors), true (show first error of field) , 'all' (show all errors of field)
+  inline            : false,
 
   delay             : 200,
   revalidate        : true,
