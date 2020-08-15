@@ -886,13 +886,13 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors, className.label);
+                $prompt = $('<div/>').addClass(className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
               }
               $prompt
-                .html(settings.inline === 'all' ? settings.templates.promptError(errors) : errors[0])
+                .html(settings.templates.prompt(errors))
               ;
               if(!promptExists) {
                 if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -1606,15 +1606,11 @@ $.fn.form.settings = {
       return html;
     },
 
-    // template that produces label
-    prompt: function(errors, labelClasses) {
-      return $('<div/>')
-        .addClass(labelClasses)
-      ;
-    },
-
-    // template that produces the multiple prompt error messages
-    promptError: function(errors){
+    // template that produces label content
+    prompt: function(errors) {
+      if(errors.length === 1){
+        return errors[0];
+      }
       var
           html = '<ul class="ui list">'
       ;
