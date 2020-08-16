@@ -794,9 +794,9 @@ $.fn.dropdown = function(parameters) {
                     values = [];
                 }
                 module.remove.message();
-                module.setup.menu({
-                  [fields.values]: values
-                });
+                var menuConfig = {};
+                menuConfig[fields.values] = values;
+                module.setup.menu(menuConfig);
 
                 if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
@@ -992,7 +992,9 @@ $.fn.dropdown = function(parameters) {
               module.clear();
             }
             module.debug('Creating dropdown with specified values', values);
-            module.setup.menu({[fields.values]: values});
+            var menuConfig = {};
+            menuConfig[fields.values] = values;
+            module.setup.menu(menuConfig);
             $.each(values, function(index, item) {
               if(item.selected == true) {
                 module.debug('Setting initial selection to', item[fields.value]);
