@@ -608,6 +608,40 @@ select.ui.dropdown {
     border: none !important;
     box-shadow: none !important;
   }
+  & when (@variationDropdownScrollhint) {
+    @supports (-webkit-overflow-scrolling: touch) {
+      /* CSS specific to iOS devices only  */
+      .ui.selection.dropdown .scrollhint.menu:not(.hidden):before {
+        content: '';
+        z-index: @scrollhintZIndex;
+        display: block;
+        position: absolute;
+        opacity: 0;
+        right: 0;
+        top: 0;
+        height: 100%;
+        border-right: @scrollhintRightBorder;
+        border-left: @scrollhintLeftBorder;
+        animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+        border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
+      }
+
+      .ui.inverted.selection.dropdown .scrollhint.menu:not(.hidden):before {
+        border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
+      }
+
+      @keyframes scrollhint {
+        0% {
+          opacity: 1;
+          top: 100%;
+        }
+        100% {
+          opacity: 0;
+          top: 0;
+        }
+      }
+    }
+  }
 }
 
 & when (@variationDropdownSearch) {

@@ -414,6 +414,7 @@
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
 @variationDropdownPointing: true;
+@variationDropdownScrollhint: true;
 @variationDropdownSizes: @variationAllSizes;
 
 /* Embed */
