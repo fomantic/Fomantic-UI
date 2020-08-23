@@ -375,12 +375,14 @@
 @pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @menuBorderColor;
 
 /* Scrollhint */
-@scrollhintRightBorder: 4px solid;
+@scrollhintWidth: 0.25em;
+@scrollhintRightBorder: @scrollhintWidth solid;
 @scrollhintLeftBorder: 0;
 @scrollhintZIndex: 15;
 @scrollhintDuration: 2s;
 @scrollhintEasing: @defaultEasing;
 @scrollhintIteration: 2;
+@scrollhintOffsetRight: @scrollhintWidth;
 @scrollhintStartColor: rgba(0, 0, 0, 0.75);
 @scrollhintEndColor: rgba(0, 0, 0, 0);
 

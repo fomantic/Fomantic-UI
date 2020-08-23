@@ -611,24 +611,24 @@ select.ui.dropdown {
   & when (@variationDropdownScrollhint) {
     /* CSS specific to iOS devices only  */
     @supports (-webkit-touch-callout: none) {
-      .ui.selection.dropdown .scrollhint.menu:not(.hidden):before {
+      .ui.dropdown .scrollhint.menu:not(.hidden):before {
         animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
       }
     }
     /* CSS specific to Firefox mobile only  */
     @media (-moz-touch-enabled) {
-      .ui.selection.dropdown .scrollhint.menu:not(.hidden):before {
+      .ui.dropdown .scrollhint.menu:not(.hidden):before {
         animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
       }
     }
 
-    .ui.selection.dropdown .scrollhint.menu:not(.hidden):before {
+    .ui.dropdown .scrollhint.menu:not(.hidden):before {
       content: '';
       z-index: @scrollhintZIndex;
       display: block;
       position: absolute;
       opacity: 0;
-      right: 0;
+      right: @scrollhintOffsetRight;
       top: 0;
       height: 100%;
       border-right: @scrollhintRightBorder;
@@ -636,7 +636,7 @@ select.ui.dropdown {
       border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
     }
 
-    .ui.inverted.selection.dropdown .scrollhint.menu:not(.hidden):before {
+    .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
       border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
     }
 
