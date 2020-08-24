@@ -614,36 +614,33 @@ select.ui.dropdown {
       @media (-moz-touch-enabled), (pointer: coarse) {
         .ui.dropdown .scrollhint.menu:not(.hidden):before {
           animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+          content: '';
+          z-index: @scrollhintZIndex;
+          display: block;
+          position: absolute;
+          opacity: 0;
+          right: @scrollhintOffsetRight;
+          top: 0;
+          height: 100%;
+          border-right: @scrollhintRightBorder;
+          border-left: @scrollhintLeftBorder;
+          border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
         }
-      }
-    }
 
-    .ui.dropdown .scrollhint.menu:not(.hidden):before {
-      content: '';
-      z-index: @scrollhintZIndex;
-      display: block;
-      position: absolute;
-      opacity: 0;
-      right: @scrollhintOffsetRight;
-      top: 0;
-      height: 100%;
-      border-right: @scrollhintRightBorder;
-      border-left: @scrollhintLeftBorder;
-      border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
-    }
+        .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
+          border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
+        }
 
-    .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
-      border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
-    }
-
-    @keyframes scrollhint {
-      0% {
-        opacity: 1;
-        top: 100%;
-      }
-      100% {
-        opacity: 0;
-        top: 0;
+        @keyframes scrollhint {
+          0% {
+            opacity: 1;
+            top: 100%;
+          }
+          100% {
+            opacity: 0;
+            top: 0;
+          }
+        }
       }
     }
   }
