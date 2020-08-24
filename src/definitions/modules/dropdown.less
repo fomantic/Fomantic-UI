@@ -609,16 +609,12 @@ select.ui.dropdown {
     box-shadow: none !important;
   }
   & when (@variationDropdownScrollhint) {
-    /* CSS specific to iOS devices only  */
-    @supports (-webkit-touch-callout: none) {
-      .ui.dropdown .scrollhint.menu:not(.hidden):before {
-        animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
-      }
-    }
-    /* CSS specific to Firefox mobile only  */
-    @media (-moz-touch-enabled) {
-      .ui.dropdown .scrollhint.menu:not(.hidden):before {
-        animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+    /* CSS specific to iOS devices or firefox mobile only  */
+    @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+      @media (-moz-touch-enabled), (pointer: coarse) {
+        .ui.dropdown .scrollhint.menu:not(.hidden):before {
+          animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+        }
       }
     }
 
