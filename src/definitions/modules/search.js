@@ -239,6 +239,7 @@ $.fn.search = function(parameters) {
               }
               module.hideResults();
               if(href) {
+                event.preventDefault();
                 module.verbose('Opening search link found in result', $link);
                 if(target == '_blank' || event.ctrlKey) {
                   window.open(href);
