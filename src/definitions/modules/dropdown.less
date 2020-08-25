@@ -775,6 +775,11 @@ select.ui.dropdown {
     max-width: 100%;
     margin: @multipleSelectionChildMargin;
     line-height: @multipleSelectionChildLineHeight;
+    &.default {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .ui.multiple.dropdown > .label ~ input.search {
     margin-left: @multipleSelectionSearchAfterLabelDistance !important;
