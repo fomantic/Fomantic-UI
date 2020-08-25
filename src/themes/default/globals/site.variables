@@ -1015,8 +1015,6 @@
 @purpleHover              : saturate(darken(@purple, 5), 10, relative);
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
-@greyHover                : saturate(darken(@grey, 5), 10, relative);
-@blackHover               : saturate(darken(@black, 5), 10, relative);
 
 @lightRedHover            : saturate(darken(@lightRed, 10), 10, relative);
 @lightOrangeHover         : saturate(darken(@lightOrange, 10), 10, relative);
