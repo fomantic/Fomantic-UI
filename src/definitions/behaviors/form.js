@@ -1571,7 +1571,7 @@ $.fn.form.settings = {
   selector : {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
-    field      : 'input, textarea, select',
+    field      : 'input:not(.search):not([type="hidden"]), textarea, select',
     group      : '.field',
     input      : 'input',
     message    : '.error.message',
