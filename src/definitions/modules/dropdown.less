@@ -608,6 +608,42 @@ select.ui.dropdown {
     border: none !important;
     box-shadow: none !important;
   }
+  & when (@variationDropdownScrollhint) {
+    /* CSS specific to iOS devices or firefox mobile only  */
+    @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+      @media (-moz-touch-enabled), (pointer: coarse) {
+        .ui.dropdown .scrollhint.menu:not(.hidden):before {
+          animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+          content: '';
+          z-index: @scrollhintZIndex;
+          display: block;
+          position: absolute;
+          opacity: 0;
+          right: @scrollhintOffsetRight;
+          top: 0;
+          height: 100%;
+          border-right: @scrollhintRightBorder;
+          border-left: @scrollhintLeftBorder;
+          border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
+        }
+
+        .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
+          border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
+        }
+
+        @keyframes scrollhint {
+          0% {
+            opacity: 1;
+            top: 100%;
+          }
+          100% {
+            opacity: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 & when (@variationDropdownSearch) {
