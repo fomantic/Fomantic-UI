@@ -101,7 +101,7 @@
 .ui.toast-container .toast-box > .attached.progress.success .bar.bar.bar {
   background: #15792d;
 }
-.ui.toast-container .toast-box > .attached.progress .error .bar.bar.bar {
+.ui.toast-container .toast-box > .attached.progress.error .bar.bar.bar {
   background: #9c1a1a;
 }
 .ui.toast-container .toast-box > .attached.progress.neutral .bar.bar.bar {
@@ -122,7 +122,7 @@
 .ui.toast-container .toast-box > .ui.message.icon > :not(.icon):not(.actions) {
   padding-left: 5rem;
 }
-.ui.toast-container .toast-box > .ui.message.icon > .icon:not(.close) {
+.ui.toast-container .toast-box > .ui.message.icon > i.icon:not(.close) {
   display: inline-block;
   position: absolute;
   width: 4rem;
@@ -130,7 +130,7 @@
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-.ui.toast-container .toast-box > .ui.message.icon:not(.vertical).actions > .icon:not(.close) {
+.ui.toast-container .toast-box > .ui.message.icon:not(.vertical).actions > i.icon:not(.close) {
   top: calc(50% - 1.2em);
   -webkit-transform: none;
           transform: none;
@@ -392,13 +392,13 @@
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
 }
-.ui.toast > .icon:not(.close) {
+.ui.toast > i.icon:not(.close) {
   font-size: 1.5em;
 }
-.ui.toast:not(.vertical) > .icon:not(.close) {
+.ui.toast:not(.vertical) > i.icon:not(.close) {
   position: absolute;
 }
-.ui.toast:not(.vertical) > .icon:not(.close) + .content {
+.ui.toast:not(.vertical) > i.icon:not(.close) + .content {
   padding-left: 3em;
 }
 .ui.toast:not(.vertical) > .close.icon + .content {
@@ -439,7 +439,7 @@
   padding-left: 1em;
 }
 .ui.toast.vertical > .ui.image + .content,
-.ui.toast.vertical > .icon:not(.close) + .content {
+.ui.toast.vertical > i.icon:not(.close) + .content {
   padding-left: 1em;
 }
 .ui.toast.vertical > .ui.image {

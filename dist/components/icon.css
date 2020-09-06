@@ -1061,6 +1061,9 @@ i.icon.chart.bar:before {
 i.icon.chart.line:before {
   content: "\f201";
 }
+i.icon.chartline:before {
+  content: "\f201";
+}
 i.icon.chart.pie:before {
   content: "\f200";
 }
@@ -3044,7 +3047,7 @@ i.icon.stop.circle:before {
 i.icon.stopwatch:before {
   content: "\f2f2";
 }
-i.icon.stopwatch.20:before {
+i.icon.stopwatch.twenty:before {
   content: "\f96f";
 }
 i.icon.store:before {
@@ -3968,6 +3971,9 @@ i.icon.like:before {
   content: "\f004";
 }
 i.icon.line.graph:before {
+  content: "\f201";
+}
+i.icon.linegraph:before {
   content: "\f201";
 }
 i.icon.linkify:before {

@@ -143,16 +143,16 @@ ol.ui.list ol li,
   color: rgba(0, 0, 0, 0.87);
 }
 .ui.list .list > .item > .image + .content,
-.ui.list .list > .item > .icon + .content,
+.ui.list .list > .item > i.icon + .content,
 .ui.list > .item > .image + .content,
-.ui.list > .item > .icon + .content {
+.ui.list > .item > i.icon + .content {
   display: table-cell;
   width: 100%;
   padding: 0 0 0 0.5em;
   vertical-align: top;
 }
-.ui.list .list > .item > .loading.icon + .content,
-.ui.list > .item > .loading.icon + .content {
+.ui.list .list > .item > i.loading.icon + .content,
+.ui.list > .item > i.loading.icon + .content {
   padding-left: calc(0.2857142857142857em + 0.5em);
 }
 .ui.list .list > .item > img.image + .content,
@@ -295,8 +295,8 @@ ol.ui.list ol li,
 }
 .ui.horizontal.list > .item > .image,
 .ui.horizontal.list .list > .item > .image,
-.ui.horizontal.list > .item > .icon,
-.ui.horizontal.list .list > .item > .icon,
+.ui.horizontal.list > .item > i.icon,
+.ui.horizontal.list .list > .item > i.icon,
 .ui.horizontal.list > .item > .content,
 .ui.horizontal.list .list > .item > .content {
   vertical-align: middle;
@@ -316,8 +316,8 @@ ol.ui.list ol li,
   padding: 0 0.25em 0 0;
 }
 .ui.horizontal.list > .item > .image + .content,
-.ui.horizontal.list > .item > .icon,
-.ui.horizontal.list > .item > .icon + .content {
+.ui.horizontal.list > .item > i.icon,
+.ui.horizontal.list > .item > i.icon + .content {
   float: none;
   display: inline-block;
   width: auto;
@@ -352,8 +352,8 @@ ol.ui.list ol li,
 
 .ui.list .list > a.item:hover > .icons,
 .ui.list > a.item:hover > .icons,
-.ui.list .list > a.item:hover > .icon,
-.ui.list > a.item:hover > .icon {
+.ui.list .list > a.item:hover > i.icon,
+.ui.list > a.item:hover > i.icon {
   color: rgba(0, 0, 0, 0.87);
 }
 
@@ -367,8 +367,8 @@ ol.ui.list ol li,
          Inverted
   --------------------*/
 
-.ui.inverted.list .list > a.item > .icon,
-.ui.inverted.list > a.item > .icon {
+.ui.inverted.list .list > a.item > i.icon,
+.ui.inverted.list > a.item > i.icon {
   color: rgba(255, 255, 255, 0.7);
 }
 .ui.inverted.list .list > .item .header,

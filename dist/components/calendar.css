@@ -72,7 +72,7 @@
 .ui.calendar .ui.table tr th {
   border-left: none;
 }
-.ui.calendar .ui.table tr th .icon {
+.ui.calendar .ui.table tr th i.icon {
   margin: 0;
 }
 .ui.calendar .ui.table tr:first-child th {
@@ -104,7 +104,7 @@
   position: absolute;
   right: 0;
 }
-.ui.calendar .ui.table tr .disabled {
+.ui.ui.calendar .ui.table tr .disabled {
   pointer-events: auto;
   cursor: default;
   color: rgba(40, 40, 40, 0.3);
@@ -127,21 +127,28 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.ui.calendar .ui.table.inverted tr td.range {
-  background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-}
 .ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
 .ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
   -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
           box-shadow: inset 0 0 0 1px #85B7D9;
 }
-.ui.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
+.ui.inverted.calendar .ui.table.inverted tr td.range {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+.ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
+.ui.inverted.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
   -webkit-box-shadow: inset 0 0 0 1px #85B7D9;
           box-shadow: inset 0 0 0 1px #85B7D9;
+}
+.ui.inverted.calendar .ui.inverted.table tr .disabled {
+  color: rgba(225, 225, 225, 0.3);
+}
+.ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled) {
+  color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 

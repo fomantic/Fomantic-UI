@@ -98,6 +98,7 @@
   position: absolute;
   text-transform: none;
   text-align: left;
+  text-shadow: none;
   white-space: nowrap;
   font-size: 1rem;
   border: 1px solid #D4D4D5;
@@ -185,6 +186,7 @@
 [data-tooltip][data-position="right center"]:hover:after {
   -webkit-transform: translateY(-50%) scale(1) !important;
           transform: translateY(-50%) scale(1) !important;
+  -moz-transform: translateY(-50%) scale(1.0001) !important;
 }
 [data-tooltip][data-position="top left"]:after,
 [data-tooltip][data-position="top right"]:after,
