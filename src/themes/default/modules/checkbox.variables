@@ -116,6 +116,7 @@
 
 @sliderHandleOffset: (1rem - @sliderHandleSize) / 2;
 @sliderHandleTransition: left @sliderTransitionDuration @defaultEasing;
+@sliderHandleTransitionRightAligned: right @sliderTransitionDuration @defaultEasing;
 
 @sliderWidth: @sliderLineWidth;
 @sliderHeight: (@sliderHandleSize + @sliderHandleOffset);
@@ -158,6 +159,10 @@
 @toggleHandleTransition:
   background @sliderTransitionDuration @defaultEasing,
   left @sliderTransitionDuration @defaultEasing
+;
+@toggleHandleTransitionRightAligned:
+  background @sliderTransitionDuration @defaultEasing,
+  right @sliderTransitionDuration @defaultEasing
 ;
 
 @toggleLaneBackground: @transparentBlack;

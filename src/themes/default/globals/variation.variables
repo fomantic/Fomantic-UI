@@ -379,6 +379,7 @@
 @variationCheckboxToggle: true;
 @variationCheckboxIndeterminate: true;
 @variationCheckboxFitted: true;
+@variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
 
 /* Dimmer */
