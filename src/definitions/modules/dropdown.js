@@ -3565,7 +3565,7 @@ $.fn.dropdown = function(parameters) {
               module.set.scrollPosition(module.get.selectedItem(), true);
             }
             if( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
-              var displayType = $module.hasClass('column') ? 'flex' : false;
+              var displayType = $module.hasClass('column') ? 'flex' : settings.displayType;
               if(transition == 'none') {
                 start();
                 $currentMenu.transition({
@@ -3956,6 +3956,7 @@ $.fn.dropdown.settings = {
 
   transition             : 'auto',     // auto transition will slide down or up based on direction
   duration               : 200,        // duration of transition
+  displayType            : false,      // displayType of transition
 
   glyphWidth             : 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
