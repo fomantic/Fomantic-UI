@@ -468,6 +468,7 @@
     @c: @formStates[@@state][color];
     @bg: @formStates[@@state][background];
     @bdc: @formStates[@@state][borderColor];
+    @lbg: @formStates[@@state][labelBackground];
 
     /* On Form */
     .ui.form.@{state} .@{state}.message:not(:empty) {
@@ -495,12 +496,17 @@
     }
 
     .ui.ui.form .fields.@{state} .field label,
-    .ui.ui.form .fields.@{state} .field .ui.label,
+    .ui.ui.form .fields.@{state} .field .ui.label:not(.corner),
     .ui.ui.form .field.@{state} label,
-    .ui.ui.form .field.@{state} .ui.label,
+    .ui.ui.form .field.@{state} .ui.label:not(.corner),
     .ui.ui.form .fields.@{state} .field .input,
     .ui.ui.form .field.@{state} .input {
       color: @c;
+    }
+
+    .ui.form .fields.@{state} .field .ui.label, 
+    .ui.form .field.@{state} .ui.label {
+      background-color: @lbg;
     }
 
     .ui.form .fields.@{state} .field .corner.label,
