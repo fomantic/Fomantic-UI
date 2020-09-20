@@ -1942,15 +1942,16 @@ $.fn.dropdown = function(parameters) {
                 $choice.find(selector.menu).remove();
                 $choice.find(selector.menuIcon).remove();
               }
-              else if(settings.allowAdditions && settings.forceSelection) {
-                return;
+              if($choice.data(metadata.text) !== undefined) {
+                return $choice.data(metadata.text);
               }
-              return ($choice.data(metadata.text) !== undefined)
-                ? $choice.data(metadata.text)
-                : (preserveHTML)
-                  ? $choice.html().trim()
-                  : $choice.text().trim()
-              ;
+              else {
+                if($choice.length == 0 && settings.allowAdditions && settings.forceSelection){
+                  return;
+                }
+
+                return (preserveHTML) ? $choice.html().trim() : $choice.text().trim();
+              }
             }
           },
           choiceValue: function($choice, choiceText) {
