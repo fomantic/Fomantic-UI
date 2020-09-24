@@ -2693,7 +2693,7 @@ $.fn.dropdown = function(parameters) {
             module.clear();
             module.set.selected(value, $selectedItem);
           },
-          selected: function(value, $selectedItem) {
+          selected: function(value, $selectedItem, preventChangeTrigger) {
             var
               isMultiple = module.is.multiple()
             ;
@@ -2756,7 +2756,7 @@ $.fn.dropdown = function(parameters) {
                     module.save.remoteData(selectedText, selectedValue);
                   }
                   module.set.text(selectedText);
-                  module.set.value(selectedValue, selectedText, $selected);
+                  module.set.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                   $selected
                     .addClass(className.active)
                     .addClass(className.selected)
