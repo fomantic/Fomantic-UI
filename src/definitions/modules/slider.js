@@ -577,7 +577,7 @@ $.fn.slider = function(parameters) {
             return settings.step;
           },
           numLabels: function() {
-            var value = Math.round((module.get.max() - module.get.min()) / module.get.step());
+            var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
             module.debug('Determined that there should be ' + value + ' labels');
             return value;
           },
