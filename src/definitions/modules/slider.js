@@ -205,28 +205,26 @@ $.fn.slider = function(parameters) {
             });
           },
           autoLabel: function() {
-            if(module.get.step() != 0) {
-              $labels = $module.find('.labels');
-              if($labels.length != 0) {
-                $labels.empty();
-              }
-              else {
-                $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
-              }
-              for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
-                var
-                  labelText = module.get.label(i),
-                  $label = (labelText !== "") 
-                    ? !(i % module.get.gapRatio())
-                      ? $('<li class="label">' + labelText + '</li>') 
-                      : $('<li class="halftick label"></li>')
-                    : null,
-                  ratio  = i / len
-                ;
-                if($label) {
-                  module.update.labelPosition(ratio, $label);
-                  $labels.append($label);
-                }
+            $labels = $module.find('.labels');
+            if($labels.length != 0) {
+              $labels.empty();
+            }
+            else {
+              $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
+            }
+            for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
+              var
+                labelText = module.get.label(i),
+                $label = (labelText !== "")
+                  ? !(i % module.get.gapRatio())
+                    ? $('<li class="label">' + labelText + '</li>')
+                    : $('<li class="halftick label"></li>')
+                  : null,
+                ratio  = i / len
+              ;
+              if($label) {
+                module.update.labelPosition(ratio, $label);
+                $labels.append($label);
               }
             }
           }
