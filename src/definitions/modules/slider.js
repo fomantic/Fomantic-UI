@@ -589,7 +589,7 @@ $.fn.slider = function(parameters) {
 
             switch (settings.labelType) {
               case settings.labelTypes.number:
-                return Math.round(((value * module.get.step()) + module.get.min()) * precision ) / precision;
+                return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision ) / precision;
               case settings.labelTypes.letter:
                 return alphabet[(value) % 26];
               default:
