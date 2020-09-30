@@ -500,10 +500,14 @@ $.fn.progress = function(parameters) {
           },
           percent: function(percents) {
             percents = module.helper.forceArray(percents).map(function(percent) {
-              return (typeof percent == 'string')
+              percent = (typeof percent == 'string')
                 ? +(percent.replace('%', ''))
                 : percent
                 ;
+              return (settings.limitValues)
+                  ? Math.max(0, Math.min(100, percent))
+                  : percent
+              ;
             });
             var hasTotal = module.has.total();
             var totalPercent = module.helper.sum(percents);
@@ -539,11 +543,6 @@ $.fn.progress = function(parameters) {
                     : Math.round((percent / 100) * module.total * 10) / 10
                     ;
                 });
-                if (settings.limitValues) {
-                  module.value = module.value.map(function (value) {
-                    return Math.max(0, Math.min(100, value));
-                  });
-                }
               }
               module.set.barWidth(percents);
               module.set.labelInterval();
