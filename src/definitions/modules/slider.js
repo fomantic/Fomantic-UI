@@ -88,6 +88,7 @@ $.fn.slider = function(parameters) {
         precision,
         isTouch,
         gapRatio = 1,
+        previousValue,
 
         initialPosition,
         initialLoad,
@@ -329,7 +330,13 @@ $.fn.slider = function(parameters) {
               } else {
                 $currThumb = module.determine.closestThumb(newPos);
               }
+              if (previousValue === undefined) {
+                previousValue = module.get.currentThumbValue();
+              }
+            } else if (previousValue === undefined) {
+                previousValue = module.get.value();
             }
+
             if(!module.is.disabled()) {
               module.bind.slidingEvents();
             }
@@ -377,6 +384,9 @@ $.fn.slider = function(parameters) {
             var value = module.determine.valueFromEvent(event);
             module.set.value(value);
             module.unbind.slidingEvents();
+            if (previousValue !== undefined) {
+              previousValue = undefined;
+            }
           },
           keydown: function(event, first) {
             if(settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
@@ -852,10 +862,17 @@ $.fn.slider = function(parameters) {
 
         set: {
           value: function(newValue) {
+            var toReset = previousValue === undefined;
+            previousValue = previousValue === undefined ? module.get.value() : previousValue;
             module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
               if (!initialLoad || settings.fireOnInit){
-                settings.onChange.call(element, value, thumbVal, secondThumbVal);
+                if (newValue !== previousValue) {
+                  settings.onChange.call(element, value, thumbVal, secondThumbVal);
+                }
                 settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              }
+              if (toReset) {
+                previousValue = undefined;
               }
             });
           },
@@ -863,8 +880,10 @@ $.fn.slider = function(parameters) {
             if(module.is.range()) {
               var
                 min = module.get.min(),
-                max = module.get.max()
+                max = module.get.max(),
+                toReset = previousValue === undefined
               ;
+              previousValue = previousValue === undefined ? module.get.value() : previousValue;
               if (first <= min) {
                 first = min;
               } else if(first >= max){
@@ -881,8 +900,13 @@ $.fn.slider = function(parameters) {
               module.update.position(module.thumbVal, $thumb);
               module.update.position(module.secondThumbVal, $secondThumb);
               if (!initialLoad || settings.fireOnInit) {
-                settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+                if (value !== previousValue) {
+                  settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+                }
                 settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              }
+              if (toReset) {
+                previousValue = undefined;
               }
             } else {
               module.error(error.notrange);
