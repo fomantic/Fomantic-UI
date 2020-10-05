@@ -62,6 +62,7 @@ This is a list of components which will be added or are proposed to be added.
   - Sorting
   - Filtering
   - Pagination
+  - Search
 - Utility helpers (these will work on any component) ✏
   - Margin (top, right, bottom, left)
   - Padding (top, right, bottom, left)
