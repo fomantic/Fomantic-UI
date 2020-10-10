@@ -1167,10 +1167,7 @@ $.fn.form = function(parameters) {
             });
           },
           optional: function(identifier, bool) {
-            bool = (bool !== undefined)
-              ? bool
-              : true
-            ;
+            bool = (bool !== false);
             $.each(validation, function(fieldName, field) {
               if (identifier == fieldName || identifier == field.identifier) {
                 field.optional = bool;
