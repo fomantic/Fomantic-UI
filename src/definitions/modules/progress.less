@@ -87,6 +87,17 @@
   text-align: @progressTextAlign;
 }
 
+& when (@variationProgressRightAligned) {
+  .ui.right.aligned.progress {
+    display: flex;
+    justify-content: flex-end;
+    & .bar > .progress {
+      left: @progressRightAlignedLeft;
+      right: @progressRightAlignedRight;
+    }
+  }
+}
+
 /* Label */
 .ui.progress > .label {
   position: absolute;
@@ -316,6 +327,12 @@
     animation: progress-active @activePulseDuration @defaultEasing infinite;
     transform-origin: left;
   }
+  & when (@variationProgressRightAligned) {
+    .ui.active.right.aligned.progress .bar::after {
+      transform-origin: right;
+    }
+  }
+
   @keyframes progress-active {
     0% {
       opacity: @activePulseMaxOpacity;
