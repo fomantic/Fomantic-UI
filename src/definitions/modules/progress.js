@@ -546,7 +546,6 @@ $.fn.progress = function(parameters) {
               }
               module.set.barWidth(percents);
               module.set.labelInterval();
-              module.set.labels();
             }
             settings.onChange.call(element, percents, module.value, module.total);
           },
