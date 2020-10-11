@@ -24,7 +24,7 @@
 
 .ui.progress {
   position: relative;
-  display: block;
+  display: flex;
   max-width: 100%;
   border: @border;
   margin: @margin;
@@ -89,7 +89,6 @@
 
 & when (@variationProgressRightAligned) {
   .ui.right.aligned.progress {
-    display: flex;
     justify-content: flex-end;
     & .bar > .progress {
       left: @progressRightAlignedLeft;
@@ -240,12 +239,6 @@
   }
 }
 
-& when (@variationProgressMultiple) {
-  /* Multiple */
-  .ui.multiple.progress {
-    display: flex;
-  }
-}
 
 /*******************************
              States
@@ -413,7 +406,6 @@
   }
   .ui.progress.attached,
   .ui.progress.attached .bar {
-    display: block;
     height: @attachedHeight;
     padding: 0;
     overflow: hidden;
