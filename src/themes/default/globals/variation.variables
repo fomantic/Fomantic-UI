@@ -464,6 +464,7 @@
 @variationProgressActive: true;
 @variationProgressAttached: true;
 @variationProgressSpeeds: true;
+@variationProgressRightAligned: true;
 @variationProgressSizes: @variationAllSizes;
 
 /* Rating */
