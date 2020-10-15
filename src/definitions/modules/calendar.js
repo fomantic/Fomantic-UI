@@ -1467,11 +1467,11 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
-      if(text.match(/^[0-9]{4}[\/\-\.][0-9]{2}[\/\-\.][0-9]{2}$/)){
+      if(text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
         text = text.replace(/[\/\-\.]/g,'/') + ' 00:00:00';
       }
       // Reverse date and month in some cases
-      text = settings.monthFirst || !text.match(/^[0-9]{2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
+      text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
       var numberOnly = text.match(/^[0-9]+$/) !== null;
       if(!numberOnly && !isNaN(textDate.getDate())) {
