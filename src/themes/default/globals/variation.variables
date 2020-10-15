@@ -26,6 +26,7 @@
 @variationButtonFluid: true;
 @variationButtonCircular: true;
 @variationButtonGroups: true;
+@variationButtonStackable: true;
 @variationButtonSizes: @variationAllSizes;
 
 /* Container */
