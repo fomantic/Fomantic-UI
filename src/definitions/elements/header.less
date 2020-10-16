@@ -111,7 +111,7 @@
 }
 
 /* After Icon */
-.ui.header > i.icon + .content {
+.ui.header:not(.centered):not(.aligned) > i.icon + .content {
   padding-left: @iconMargin;
   display: table-cell;
   vertical-align: @contentIconAlignment;
@@ -234,7 +234,7 @@
   .ui.icon.header .corner.icon {
     font-size: @cornerIconHeaderSize;
   }
-  .ui.ui.icon.header .content {
+  .ui.icon.header .content {
     display: block;
     padding: 0;
   }
