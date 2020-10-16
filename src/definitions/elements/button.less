@@ -635,6 +635,33 @@
            Variations
 *******************************/
 
+& when (@variationButtonStackable) {
+  /*--------------
+     Stackable
+  ---------------*/
+
+  /* Tablet Or Below */
+  @media only screen and (max-width: @largestMobileScreen) {
+
+    .ui.stackable.buttons {
+      flex-direction: column;
+      width: 100%;
+      & .button:first-child {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: @borderRadius;
+      }
+      & .button:last-child {
+        border-bottom-left-radius: @borderRadius;
+        border-top-right-radius: 0;
+      }
+      & .button:only-child {
+        border-radius: @borderRadius;
+      }
+    }
+
+  }
+}
+
 & when (@variationButtonFloated) {
   /*-------------------
          Floated
