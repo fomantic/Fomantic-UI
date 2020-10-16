@@ -1209,6 +1209,9 @@ $.fn.form = function(parameters) {
               if(event && $module.data('moduleApi') !== undefined) {
                 event.stopImmediatePropagation();
               }
+              if(settings.errorFocus) {
+                $group.filter('.' + className.error).first().find(selector.field).focus();
+              }
               if(ignoreCallbacks !== true) {
                 return settings.onFailure.call(element, formErrors, values);
               }
@@ -1514,6 +1517,7 @@ $.fn.form.settings = {
 
   autoCheckRequired : false,
   preventLeaving    : false,
+  errorFocus        : false,
   dateHandling      : 'date', // 'date', 'input', 'formatter'
 
   onValid           : function() {},
