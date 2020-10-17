@@ -514,7 +514,7 @@ $.fn.dropdown = function(parameters) {
           ;
           if(!module.can.show() && module.is.remote()) {
             module.debug('No API results retrieved, searching before show');
-            module.queryRemote(module.get.query(), module.show);
+            module.queryRemote(module.get.query(), module.show, [callback, preventFocus]);
           }
           if( module.can.show() && !module.is.active() ) {
             module.debug('Showing dropdown');
@@ -785,7 +785,10 @@ $.fn.dropdown = function(parameters) {
           }
         },
 
-        queryRemote: function(query, callback) {
+        queryRemote: function(query, callback, callbackParameters) {
+          if(!Array.isArray(callbackParameters)){
+            callbackParameters = [callbackParameters];
+          }
           var
             apiSettings = {
               errorDuration : false,
@@ -796,11 +799,11 @@ $.fn.dropdown = function(parameters) {
               },
               onError: function() {
                 module.add.message(message.serverError);
-                callback();
+                callback.apply(null, callbackParameters);
               },
               onFailure: function() {
                 module.add.message(message.serverError);
-                callback();
+                callback.apply(null, callbackParameters);
               },
               onSuccess : function(response) {
                 var
@@ -817,7 +820,7 @@ $.fn.dropdown = function(parameters) {
                 if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
                 }
-                callback();
+                callback.apply(null, callbackParameters);
               }
             }
           ;
