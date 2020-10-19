@@ -57,6 +57,7 @@
 @labelHeight  : @height;
 @labelWidth   : 1px;
 @labelColor   : @background;
+@labelPadding : 0.2em 0;
 
 /* Hover */
 @hoverVarOpacity                 : 0;

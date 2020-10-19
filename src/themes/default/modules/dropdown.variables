@@ -63,12 +63,15 @@
 @itemBoxShadow: none;
 @itemMinHeight: unit(@itemLineHeight + 2 * @itemVerticalPadding, rem);
 
+/* Vertical Item */
+@verticalItemMargin: 0.25em;
+
 /* Sub Menu */
 @subMenuTop: 0;
 @subMenuLeft: 100%;
 @subMenuRight: auto;
 @subMenuDistanceAway: -0.5em;
-@subMenuMargin: 0 0 0 @subMenuDistanceAway;
+@subMenuMargin: 0 @subMenuDistanceAway;
 @subMenuBorderRadius: @borderRadius;
 @subMenuZIndex: 21;
 
@@ -374,6 +377,17 @@
 @pointingUpwardMenuBorderRadius: @borderRadius;
 @pointingUpwardArrowBoxShadow: @menuBorderWidth @menuBorderWidth 0 0 @menuBorderColor;
 
+/* Scrollhint */
+@scrollhintWidth: 0.25em;
+@scrollhintRightBorder: @scrollhintWidth solid;
+@scrollhintLeftBorder: 0;
+@scrollhintZIndex: 15;
+@scrollhintDuration: 2s;
+@scrollhintEasing: @defaultEasing;
+@scrollhintIteration: 2;
+@scrollhintOffsetRight: @scrollhintWidth;
+@scrollhintStartColor: rgba(0, 0, 0, 0.75);
+@scrollhintEndColor: rgba(0, 0, 0, 0);
 
 /*--------------
     Inverted
@@ -451,3 +465,7 @@
 
 @invertedLabelIconOpacity: 0.6;
 @invertedLabelIconHoverOpacity: 0.8;
+
+/* Scrollhint */
+@invertedScrollhintStartColor: rgba(255, 255, 255, 0.75);
+@invertedScrollhintEndColor: rgba(255, 255, 255, 0);

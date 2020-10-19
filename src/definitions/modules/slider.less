@@ -195,8 +195,14 @@
 
   .ui.labeled.slider > .labels .label {
     display: inline-flex;
+    padding: @labelPadding;
     position: absolute;
     transform: translate(-50%, -100%);
+    white-space: nowrap;
+  }
+
+  .ui.bottom.aligned.labeled.slider > .labels .label {
+    transform: translate(-50%, 100%);
   }
   & when (@variationSliderTicked) {
     .ui.labeled.ticked.slider > .labels .label:after {
@@ -207,6 +213,9 @@
       position: absolute;
       top: 100%;
       left: 50%;
+    }
+    .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+      top: -100%;
     }
     .ui.labeled.ticked.slider > .labels .halftick.label:after {
       height: @labelHeight / 2;

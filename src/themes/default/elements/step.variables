@@ -81,6 +81,9 @@
 @verticalDivider: @divider;
 @verticalArrowTopOffset: 50%;
 @verticalArrowRightOffset: 0;
+@verticalLeftArrowLeftOffset: 0;
+@verticalLeftArrowRightOffset: 100%;
+@verticalLeftArrowBorderWidth: @borderWidth 0 0 @borderWidth;
 @verticalArrowBorderWidth: 0 @borderWidth @borderWidth 0;
 
 @verticalArrowDisplay: none;

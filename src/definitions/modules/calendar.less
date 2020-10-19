@@ -81,7 +81,7 @@
   border-left: none;
 }
 
-.ui.calendar .ui.table tr th .icon {
+.ui.calendar .ui.table tr th i.icon {
   margin: 0;
 }
 
@@ -121,7 +121,7 @@
   right: 0;
 }
 
-.ui.calendar .ui.table tr .disabled {
+.ui.ui.calendar .ui.table tr .disabled {
   pointer-events: auto;
   cursor: default;
   color: @disabledTextColor;
@@ -146,22 +146,31 @@
   box-shadow: @rangeBoxShadow;
 }
 
-.ui.calendar .ui.table.inverted tr td.range {
-  background: @rangeInvertedBackground;
-  color: @rangeInvertedTextColor;
-  box-shadow: @rangeInvertedBoxShadow;
-}
-
 .ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
 .ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
   box-shadow: @focusBoxShadow;
 }
 
-.ui.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-.ui.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
-  box-shadow: @focusInvertedBoxShadow;
-}
+& when (@variationCalendarInverted) {
+  .ui.inverted.calendar .ui.table.inverted tr td.range {
+    background: @rangeInvertedBackground;
+    color: @rangeInvertedTextColor;
+    box-shadow: @rangeInvertedBoxShadow;
+  }
 
+  .ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
+  .ui.inverted.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
+    box-shadow: @focusInvertedBoxShadow;
+  }
+  .ui.inverted.calendar .ui.inverted.table tr .disabled {
+    color: @invertedDisabledTextColor;
+  }
+
+  .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled) {
+    color: @adjacentInvertedTextColor;
+    background: @adjacentInvertedBackground;
+  }
+}
 
 /*******************************
             States

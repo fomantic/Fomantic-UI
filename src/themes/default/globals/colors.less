@@ -497,6 +497,7 @@
     borderRadius: @inputErrorBorderRadius;
     boxShadow: @inputErrorBoxShadow;
     cornerLabelColor: @white;
+    labelBackground: darken(@formErrorBorder, -8);
 
     dropdownLabelColor: @dropdownErrorLabelColor;
     dropdownLabelBackground: @dropdownErrorLabelBackground;
@@ -524,6 +525,7 @@
     borderRadius: @inputInfoBorderRadius;
     boxShadow: @inputInfoBoxShadow;
     cornerLabelColor: @white;
+    labelBackground: darken(@formInfoBorder, -8);
 
     dropdownLabelColor: @dropdownInfoLabelColor;
     dropdownLabelBackground: @dropdownInfoLabelBackground;
@@ -551,6 +553,7 @@
     borderRadius: @inputSuccessBorderRadius;
     boxShadow: @inputSuccessBoxShadow;
     cornerLabelColor: @white;
+    labelBackground: darken(@formSuccessBorder, -8);
 
     dropdownLabelColor: @dropdownSuccessLabelColor;
     dropdownLabelBackground: @dropdownSuccessLabelBackground;
@@ -578,6 +581,7 @@
     borderRadius: @inputWarningBorderRadius;
     boxShadow: @inputWarningBoxShadow;
     cornerLabelColor: @white;
+    labelBackground: darken(@formWarningBorder, -8);
 
     dropdownLabelColor: @dropdownWarningLabelColor;
     dropdownLabelBackground: @dropdownWarningLabelBackground;
@@ -596,5 +600,20 @@
 
     transparentBackground: @transparentFormWarningBackground;
     transparentColor: @transparentFormWarningColor;
+  };
+}
+
+@textStates: {
+  @error: {
+    color: @negativeColor;
+  };
+  @info: {
+    color: @infoColor;
+  };
+  @success: {
+    color: @positiveColor;
+  };
+  @warning: {
+    color: @warningColor;
   };
 }

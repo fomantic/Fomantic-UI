@@ -37,7 +37,7 @@ If you want to find out more about v3 we recommend you read the following issues
 - Changing icon implementation from class based to HTML attribute based (`data-icon="user"`) ✏🛳
 - Theming implementation rewrite (behaviour will stay the same) ✏🛳
 - Move from LESS to SASS ✏🛳
-- v3 to v2 JavaScript pollyfill package 💡
+- v3 to v2 JavaScript polyfill package 💡
 - Browser support for all major browsers and IE11 ✏
 - Move SASS variables to CSS variables so they can be easily changed without compiling.
 
@@ -52,6 +52,7 @@ This is a list of libraries we are wanting and proposing to create implementatio
 - Meteor 💡
 - Stencil 💡
 - Mithril 💡
+- Web Components (Shadow DOM) 💡
 
 ### New Components:
 
@@ -61,10 +62,11 @@ This is a list of components which will be added or are proposed to be added.
   - Sorting
   - Filtering
   - Pagination
+  - Search
 - Utility helpers (these will work on any component) ✏
   - Margin (top, right, bottom, left)
   - Padding (top, right, bottom, left)
-  - Visability modifiers
+  - Visibility modifiers
     - `only show on x`
     - `only show on x and y`
     - `dont show on x`

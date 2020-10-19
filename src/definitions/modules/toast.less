@@ -110,7 +110,7 @@
       &.success .bar.bar.bar {
         background: @toastSuccessProgressColor;
       }
-      .error .bar.bar.bar {
+      &.error .bar.bar.bar {
         background: @toastErrorProgressColor;
       }
       &.neutral .bar.bar.bar {
@@ -130,7 +130,7 @@
         & > :not(.icon):not(.actions) {
           padding-left: @toastIconMessageContentPadding;
         }
-        & > .icon:not(.close) when (@variationToastIcon) {
+        & > i.icon:not(.close) when (@variationToastIcon) {
           display: inline-block;
           position: absolute;
           width: @toastIconMessageWidth;
@@ -138,7 +138,7 @@
           transform: translateY(-50%);
         }
         &:not(.vertical) {
-          &.actions > .icon:not(.close) when (@variationToastActions) and (@variationToastIcon) {
+          &.actions > i.icon:not(.close) when (@variationToastActions) and (@variationToastIcon) {
             top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
             transform: none;
           }
@@ -415,11 +415,11 @@
     background-color: @toastNeutralColor;
     color: @toastNeutralTextColor;
   }
-  & > .icon:not(.close) when (@variationToastIcon) {
+  & > i.icon:not(.close) when (@variationToastIcon) {
     font-size: @toastIconFontSize;
   }
   &:not(.vertical) {
-    & > .icon:not(.close) when (@variationToastIcon) {
+    & > i.icon:not(.close) when (@variationToastIcon) {
       position: absolute;
       & + .content {
         padding-left: @toastIconContentPadding;
@@ -467,7 +467,7 @@
     }
     & when (@variationToastImage) or (@variationToastIcon) {
       & > .ui.image + .content,
-      > .icon:not(.close) + .content {
+      > i.icon:not(.close) + .content {
         padding-left: @toastImageContentPadding;
       }
     }

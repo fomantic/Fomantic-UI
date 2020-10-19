@@ -392,7 +392,7 @@
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
     padding-right: @labeledIconInputMargin !important;
   }
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .icon {
+  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
     margin-right: @labeledIconMargin;
   }
 
@@ -406,16 +406,16 @@
     .ui[class*="left corner labeled"].icon.input > input {
       padding-left: @labeledIconInputMargin !important;
     }
-    .ui[class*="left corner labeled"].icon.input > .icon {
+    .ui[class*="left corner labeled"].icon.input > i.icon {
       margin-left: @labeledIconMargin;
     }
   }
 }
 & when (@variationInputIcon) {
-  .ui.icon.input > textarea ~ .icon {
+  .ui.icon.input > textarea ~ i.icon {
     height: @textareaIconHeight;
   }
-  :not(.field) > .ui.transparent.icon.input > textarea ~ .icon {
+  :not(.field) > .ui.transparent.icon.input > textarea ~ i.icon {
     height: @transparentTextareaIconHeight;
   }
 }
@@ -437,26 +437,26 @@
     @state: replace(@key, '@', '');
     @borderColor: @formStates[@@state][borderColor];
 
-    .ui.form > .field.@{state} > .ui.action.input > .ui.button,
-    .ui.form > .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
+    .ui.form .field.@{state} > .ui.action.input > .ui.button,
+    .ui.form .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
     .ui.action.input.@{state} > .ui.button,
     .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
       border-top: @borderWidth solid @borderColor;
       border-bottom: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui[class*="left action"].input > .ui.button,
-    .ui.form > .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
+    .ui.form .field.@{state} > .ui[class*="left action"].input > .ui.button,
+    .ui.form .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
     .ui[class*="left action"].input.@{state} > .ui.button,
     .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
       border-left: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
-    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
+    .ui.form .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
+    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
     .ui.action.input.@{state}:not([class*="left action"]) > input + .ui.button,
     .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
       border-right: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
+    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
     .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
       border-left: @borderWidth solid @borderColor;
     }

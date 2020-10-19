@@ -108,6 +108,7 @@
     position: absolute;
     text-transform: none;
     text-align: left;
+    text-shadow: none;
     white-space: nowrap;
 
     font-size: @tooltipFontSize;
@@ -189,6 +190,7 @@
   [data-tooltip][data-position="left center"]:hover:after,
   [data-tooltip][data-position="right center"]:hover:after {
     transform: translateY(-50%) scale(1) !important;
+    -moz-transform: translateY(-50%) scale(1.0001) !important;
   }
   [data-tooltip][data-position="top left"]:after,
   [data-tooltip][data-position="top right"]:after,

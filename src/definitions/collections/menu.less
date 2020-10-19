@@ -252,7 +252,8 @@
 .ui.menu .ui.dropdown.item .menu .item:not(.filtered) {
   display: block;
 }
-.ui.menu .ui.dropdown .menu > .item .icon:not(.dropdown) {
+.ui.menu .ui.dropdown .menu > .item > .icons,
+.ui.menu .ui.dropdown .menu > .item > i.icon:not(.dropdown) {
   display: inline-block;
   font-size: @dropdownItemIconFontSize !important;
   float: @dropdownItemIconFloat;
@@ -283,7 +284,7 @@
 
 & when (@variationMenuVertical) {
   /* Vertical */
-  .ui.vertical.menu .dropdown.item > .icon {
+  .ui.vertical.menu .dropdown.item > i.icon {
     float: right;
     content: "\f0da";
     margin-left: 1em;
@@ -1224,24 +1225,24 @@ Floated Menu / Item
 }
 
 /* Icon */
-.ui.icon.menu .item > .icon:not(.dropdown) {
+.ui.icon.menu .item > i.icon:not(.dropdown) {
   margin: 0;
   opacity: 1;
 }
 
 /* Icon Gylph */
-.ui.icon.menu .icon:before {
+.ui.icon.menu i.icon:before {
   opacity: 1;
 }
 
 /* (x) Item Icon */
-.ui.menu .icon.item > .icon {
+.ui.menu .icon.item > i.icon {
   width: auto;
   margin: 0 auto;
 }
 
 /* Vertical Icon */
-.ui.vertical.icon.menu .item > .icon:not(.dropdown) {
+.ui.vertical.icon.menu .item > i.icon:not(.dropdown) {
   display: block;
   opacity: 1;
   margin: 0 auto;
@@ -1270,7 +1271,7 @@ Floated Menu / Item
   }
 
   /* Icon */
-  .ui.labeled.icon.menu > .item > .icon:not(.dropdown) {
+  .ui.labeled.icon.menu > .item > i.icon:not(.dropdown) {
     height: 1em;
     display: block;
     font-size: @labeledIconSize !important;

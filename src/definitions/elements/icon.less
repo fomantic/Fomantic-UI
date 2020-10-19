@@ -288,8 +288,7 @@ each(@colors, {
 i.icon,
 i.icons {
   font-size: @medium;
-  line-height: 1;
-  vertical-align: middle;
+  line-height: @lineHeight;
 }
 & when not (@variationIconSizes = false) {
   each(@variationIconSizes, {
@@ -297,6 +296,7 @@ i.icons {
     i.@{value}.@{value}.@{value}.icon,
     i.@{value}.@{value}.@{value}.icons {
       font-size: @s;
+      vertical-align: middle;
     }
   })
 }

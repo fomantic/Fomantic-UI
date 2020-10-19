@@ -632,15 +632,17 @@
 .ui.button > .icon:not(.button) {
   height: auto;
   opacity: 0.8;
-  margin: 0 0.42857143em 0 -0.21428571em;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
-  vertical-align: '';
   color: '';
 }
 .ui.button:not(.icon) > .icon:not(.button):not(.dropdown),
 .ui.button:not(.icon) > .icons:not(.button):not(.dropdown) {
   margin: 0 0.42857143em 0 -0.21428571em;
+  vertical-align: baseline;
+}
+.ui.button:not(.icon) > .icons:not(.button):not(.dropdown) > .icon {
+  vertical-align: baseline;
 }
 .ui.button:not(.icon) > .right.icon:not(.button):not(.dropdown) {
   margin: 0 -0.21428571em 0 0.42857143em;
@@ -754,13 +756,17 @@
 ---------------*/
 
 .ui.icon.buttons .button,
-.ui.icon.button {
+.ui.icon.button:not(.animated):not(.compact) {
   padding: 0.78571429em 0.78571429em 0.78571429em;
 }
+.ui.animated.icon.button > .content > .icon,
 .ui.icon.buttons .button > .icon,
 .ui.icon.button > .icon {
   opacity: 0.9;
   margin: 0 !important;
+  vertical-align: top;
+}
+.ui.animated.button > .content > .icon {
   vertical-align: top;
 }
 
