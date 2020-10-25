@@ -569,6 +569,7 @@ $.fn.dropdown = function(parameters) {
               module.unbind.intent();
           }
           iconClicked = false;
+          focused = false;
         },
 
         hideOthers: function() {
@@ -784,6 +785,7 @@ $.fn.dropdown = function(parameters) {
                     ;
                   });
                 }
+                module.focusSearch(true);
                 afterFiltered();
               });
             }
@@ -1127,7 +1129,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(!module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin'))) {
+              if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin'))) {
                 focused = true;
                 module.search();
               }
