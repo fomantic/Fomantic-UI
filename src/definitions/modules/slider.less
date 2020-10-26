@@ -202,6 +202,7 @@
   }
 
   .ui.bottom.aligned.labeled.slider > .labels .label {
+    bottom: 0;
     transform: translate(-50%, 100%);
   }
   & when (@variationSliderTicked) {
@@ -215,7 +216,8 @@
       left: 50%;
     }
     .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
-      top: -100%;
+      top: auto;
+      bottom: 100%;
     }
     .ui.labeled.ticked.slider > .labels .halftick.label:after {
       height: @labelHeight / 2;
