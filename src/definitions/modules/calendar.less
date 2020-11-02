@@ -127,7 +127,7 @@
   color: @disabledTextColor;
 }
 
-.ui.calendar .ui.table tr .adjacent:not(.disabled) {
+.ui.calendar .ui.table tr .adjacent:not(.disabled):not(.active) {
   color: @adjacentTextColor;
   background: @adjacentBackground;
 }
@@ -166,7 +166,7 @@
     color: @invertedDisabledTextColor;
   }
 
-  .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled) {
+  .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
     color: @adjacentInvertedTextColor;
     background: @adjacentInvertedBackground;
   }
