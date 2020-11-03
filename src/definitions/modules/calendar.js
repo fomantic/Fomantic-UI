@@ -358,8 +358,9 @@ $.fn.calendar = function(parameters) {
 
               var tbody = $('<tbody/>').appendTo(table);
               i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
+              rowsLoop:
               for (r = 0; r < rows; r++) {
-                row = $('<tr/>').appendTo(tbody);
+                row = $('<tr/>');
                 if(isDay && settings.showWeekNumbers){
                     cell = $('<th/>').appendTo(row);
                     cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
@@ -376,6 +377,9 @@ $.fn.calendar = function(parameters) {
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
+                  if(adjacent && c === 0 && r > 0) {
+                    break rowsLoop;
+                  }
                   var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
                   var eventDate;
                   if (disabled) {
@@ -431,6 +435,7 @@ $.fn.calendar = function(parameters) {
                     module.set.focusDate(cellDate, false, false);
                   }
                 }
+                row.appendTo(tbody);
               }
 
               if (settings.today) {
