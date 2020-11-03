@@ -15,7 +15,7 @@
 
 @googleFontName    : @fontName;
 @importGoogleFonts : true;
-@googleFontSizes   : 'ital,wght@0,400;0,700;1,400;1,700';
+@googleFontSizes   : 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
 @googleSubset      : 'latin';
 @googleFontDisplay : 'swap';
 
