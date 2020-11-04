@@ -265,15 +265,15 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  i.@{color}.icon.icon.icon.icon {
+  i.@{color}.icon.icon.icon.icon.icon {
     color: @c;
   }
   & when (@variationIconInverted) {
-    i.inverted.@{color}.icon.icon.icon.icon {
+    i.inverted.@{color}.icon.icon.icon.icon.icon {
       color: @l;
     }
-    i.inverted.bordered.@{color}.icon.icon.icon.icon,
-    i.inverted.circular.@{color}.icon.icon.icon.icon {
+    i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
+    i.inverted.circular.@{color}.icon.icon.icon.icon.icon {
       background-color: @c;
       color: @white;
     }
