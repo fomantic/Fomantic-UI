@@ -861,11 +861,12 @@ $.fn.slider = function(parameters) {
         },
 
         set: {
-          value: function(newValue) {
+          value: function(newValue, fireChange) {
+            fireChange = fireChange !== false;
             var toReset = previousValue === undefined;
             previousValue = previousValue === undefined ? module.get.value() : previousValue;
             module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
-              if (!initialLoad || settings.fireOnInit){
+              if ((!initialLoad || settings.fireOnInit) && fireChange){
                 if (newValue !== previousValue) {
                   settings.onChange.call(element, value, thumbVal, secondThumbVal);
                 }
@@ -876,7 +877,8 @@ $.fn.slider = function(parameters) {
               }
             });
           },
-          rangeValue: function(first, second) {
+          rangeValue: function(first, second, fireChange) {
+            fireChange = fireChange !== false;
             if(module.is.range()) {
               var
                 min = module.get.min(),
@@ -899,7 +901,7 @@ $.fn.slider = function(parameters) {
               value = Math.abs(module.thumbVal - module.secondThumbVal);
               module.update.position(module.thumbVal, $thumb);
               module.update.position(module.secondThumbVal, $secondThumb);
-              if (!initialLoad || settings.fireOnInit) {
+              if ((!initialLoad || settings.fireOnInit) && fireChange) {
                 if (value !== previousValue) {
                   settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
                 }
