@@ -372,4 +372,49 @@ i.icons {
   }
 }
 
+& when ((@variationIconGroups) or (@variationIconCorner)) and (@variationIconBordered) {
+  i.bordered.icons {
+    width: @borderedSize;
+    height: @borderedSize;
+    box-shadow: @borderedShadow;
+  }
+  i.bordered.icons i.icon:first-child {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  & when (@variationIconCorner) {
+    i.bordered.icons .corner.icon {
+      top: auto;
+      left: auto;
+      right: .8em;
+      bottom: .8em;
+    }
+    i.bordered.icons .icon.corner[class*="top right"] {
+      top: .8em;
+      left: auto;
+      right: .8em;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="top left"] {
+      top: .8em;
+      left: .8em;
+      right: auto;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="bottom left"] {
+      top: auto;
+      left: .8em;
+      right: auto;
+      bottom: .8em;
+    }
+    i.bordered.icons .icon.corner[class*="bottom right"] {
+      top: auto;
+      left: auto;
+      right: .8em;
+      bottom: .8em;
+    }
+  }
+}
+
 .loadUIOverrides();
