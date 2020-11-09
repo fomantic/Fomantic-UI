@@ -408,8 +408,10 @@ i.icons {
 
   & when (@variationIconCorner) {
     /* Corner Icon */
-    i.bordered.icons .corner.icon,
-    i.circular.icons .corner.icon {
+    i.bordered.icons .icon.corner,
+    i.circular.icons .icon.corner,
+    i.bordered.icons .icon.corner[class*="bottom right"],
+    i.circular.icons .icon.corner[class*="bottom right"] {
       top: auto;
       left: auto;
       right: @borderedGroupCornerOffset;
@@ -434,13 +436,6 @@ i.icons {
       top: auto;
       left: @borderedGroupCornerOffset;
       right: auto;
-      bottom: @borderedGroupCornerOffset;
-    }
-    i.bordered.icons .icon.corner[class*="bottom right"],
-    i.circular.icons .icon.corner[class*="bottom right"] {
-      top: auto;
-      left: auto;
-      right: @borderedGroupCornerOffset;
       bottom: @borderedGroupCornerOffset;
     }
   }
