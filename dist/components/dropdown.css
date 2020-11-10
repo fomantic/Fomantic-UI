@@ -1402,6 +1402,29 @@ select.ui.dropdown {
   }
 }
 
+/*--------------------
+          Labeled
+  ---------------------*/
+
+
+/* Regular Label on Left */
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + .dropdown {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: transparent;
+}
+
+/* Regular Label on Right */
+.ui[class*="right labeled"].input > .dropdown:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-color: transparent !important;
+}
+.ui[class*="right labeled"].input > .dropdown + .label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
 /*--------------
      Columnar
 ---------------*/

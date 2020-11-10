@@ -654,6 +654,33 @@
 *******************************/
 
 
+/*--------------
+     Stackable
+  ---------------*/
+
+
+/* Tablet Or Below */
+@media only screen and (max-width: 767.98px) {
+  .ui.stackable.buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .ui.stackable.buttons .button:first-child {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.28571429rem;
+  }
+  .ui.stackable.buttons .button:last-child {
+    border-bottom-left-radius: 0.28571429rem;
+    border-top-right-radius: 0;
+  }
+  .ui.stackable.buttons .button:only-child {
+    border-radius: 0.28571429rem;
+  }
+}
+
 /*-------------------
          Floated
   --------------------*/

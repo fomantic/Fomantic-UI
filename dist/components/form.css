@@ -480,10 +480,16 @@
   display: flex;
 }
 .ui.ui.form .fields.error .field label,
+.ui.ui.form .fields.error .field .ui.label:not(.corner),
 .ui.ui.form .field.error label,
+.ui.ui.form .field.error .ui.label:not(.corner),
 .ui.ui.form .fields.error .field .input,
 .ui.ui.form .field.error .input {
   color: #9F3A38;
+}
+.ui.form .fields.error .field .ui.label,
+.ui.form .field.error .ui.label {
+  background-color: #ecd1d1;
 }
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
@@ -693,10 +699,16 @@
   display: flex;
 }
 .ui.ui.form .fields.info .field label,
+.ui.ui.form .fields.info .field .ui.label:not(.corner),
 .ui.ui.form .field.info label,
+.ui.ui.form .field.info .ui.label:not(.corner),
 .ui.ui.form .fields.info .field .input,
 .ui.ui.form .field.info .input {
   color: #276F86;
+}
+.ui.form .fields.info .field .ui.label,
+.ui.form .field.info .ui.label {
+  background-color: #c6e3e9;
 }
 .ui.form .fields.info .field .corner.label,
 .ui.form .field.info .corner.label {
@@ -906,10 +918,16 @@
   display: flex;
 }
 .ui.ui.form .fields.success .field label,
+.ui.ui.form .fields.success .field .ui.label:not(.corner),
 .ui.ui.form .field.success label,
+.ui.ui.form .field.success .ui.label:not(.corner),
 .ui.ui.form .fields.success .field .input,
 .ui.ui.form .field.success .input {
   color: #2C662D;
+}
+.ui.form .fields.success .field .ui.label,
+.ui.form .field.success .ui.label {
+  background-color: #b9d1ad;
 }
 .ui.form .fields.success .field .corner.label,
 .ui.form .field.success .corner.label {
@@ -1119,10 +1137,16 @@
   display: flex;
 }
 .ui.ui.form .fields.warning .field label,
+.ui.ui.form .fields.warning .field .ui.label:not(.corner),
 .ui.ui.form .field.warning label,
+.ui.ui.form .field.warning .ui.label:not(.corner),
 .ui.ui.form .fields.warning .field .input,
 .ui.ui.form .field.warning .input {
   color: #573A08;
+}
+.ui.form .fields.warning .field .ui.label,
+.ui.form .field.warning .ui.label {
+  background-color: #d7ccb5;
 }
 .ui.form .fields.warning .field .corner.label,
 .ui.form .field.warning .corner.label {

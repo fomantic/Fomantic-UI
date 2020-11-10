@@ -421,24 +421,17 @@
 .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  border-left-color: transparent;
-}
-.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-  border-left-color: #85B7D9;
 }
 
 /* Regular Label on Right */
 .ui[class*="right labeled"].input > input {
   border-top-right-radius: 0 !important;
   border-bottom-right-radius: 0 !important;
-  border-right-color: transparent !important;
 }
 .ui[class*="right labeled"].input > input + .label {
+  border-left-color: transparent;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-}
-.ui[class*="right labeled"].input > input:focus {
-  border-right-color: #85B7D9 !important;
 }
 
 /* Corner Label */

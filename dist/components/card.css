@@ -472,7 +472,6 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 100%;
   border-radius: 0.28571429rem 0 0 0.28571429rem;
 }
 .ui.horizontal.cards > .card > .image:last-child > img,

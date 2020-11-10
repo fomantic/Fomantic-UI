@@ -99,7 +99,7 @@
 }
 
 /* After Icon */
-.ui.header > i.icon + .content {
+.ui.header:not(.centered):not(.aligned) > i.icon + .content {
   padding-left: 0.75rem;
   display: table-cell;
   vertical-align: middle;
