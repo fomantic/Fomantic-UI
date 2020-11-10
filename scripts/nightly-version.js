@@ -18,7 +18,7 @@ const npmPackage = 'fomantic-ui'
 const getGitHubVersion = async function () {
   return fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
     .then(r => r.json())
-    .then(milestones => milestones.filter(m => m.title.indexOf('x') === -1)[0].title)
+    .then(milestones => milestones.filter(m => m.title.indexOf('x') === -1).map(m => m.title).sort()[0])
 }
 
 const getCurrentNpmVersion = async function () {
