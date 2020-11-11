@@ -334,6 +334,10 @@
     -moz-transform: scale(1);
   }
 
+  .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+    pointer-events: auto;
+  }
+
   .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
     pointer-events: none;
     background: @definitionFooterBackground;
