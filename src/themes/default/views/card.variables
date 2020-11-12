@@ -143,6 +143,19 @@
 @buttonMargin: 0 -@borderWidth;
 @buttonWidth: e(%("calc(100%% + %d)", @borderWidth * 2));
 
+/*******************************
+            States
+*******************************/
+
+/* Loading Dimmer */
+@loaderDimmerColor: rgba(255, 255, 255, 0.8);
+@loaderInvertedDimmerColor: rgba(0, 0, 0 , 0.85);
+@loaderDimmerZIndex: 100;
+
+/* Loading Spinner */
+@loaderSize: 3em;
+@loaderLineZIndex: 101;
+
 /*-------------------
       Variations
 --------------------*/
