@@ -928,6 +928,13 @@ each(@colors,{
   .ui.inverted.card > .content > .header {
     color: @invertedHeaderColor;
   }
+  .ui.inverted.cards > .card > .content > a.header,
+  .ui.inverted.card > .content > a.header {
+    color: @invertedHeaderLinkColor;
+    &:hover {
+      color: @invertedHeaderLinkHoverColor;
+    }
+  }
 
   /* Description */
   .ui.inverted.cards > .card > .content > .description,
