@@ -322,6 +322,8 @@
 
 /* Card */
 @variationCardInverted: true;
+@variationCardDisabled: true;
+@variationCardLoading: true;
 @variationCardHorizontal: true;
 @variationCardRaised: true;
 @variationCardCentered: true;
