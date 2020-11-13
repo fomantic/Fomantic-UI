@@ -491,6 +491,8 @@
   .ui.disabled.segment {
     opacity: @disabledOpacity;
     color: @disabledTextColor;
+    pointer-events: none;
+    user-select: none;
   }
 }
 
@@ -503,7 +505,7 @@
     position: relative;
     cursor: default;
     pointer-events: none;
-    text-shadow: none !important;
+    user-select: none;
     transition: all 0s linear;
   }
   .ui.loading.segment:before {
