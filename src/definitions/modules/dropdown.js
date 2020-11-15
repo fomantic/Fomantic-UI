@@ -3179,8 +3179,9 @@ $.fn.dropdown = function(parameters) {
           },
           label: function(value, shouldAnimate) {
             var
+              escapedValue  = module.escape.value(value),
               $labels       = $module.find(selector.label),
-              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? value.toLowerCase() : value) +'"]')
+              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]')
             ;
             module.verbose('Removing label', $removedLabel);
             $removedLabel.remove();
