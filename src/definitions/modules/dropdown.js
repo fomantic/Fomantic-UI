@@ -1930,7 +1930,7 @@ $.fn.dropdown = function(parameters) {
               : value
             ;
           },
-          values: function() {
+          values: function(raw) {
             var
               value = module.get.value()
             ;
@@ -1939,7 +1939,7 @@ $.fn.dropdown = function(parameters) {
             }
             return ( !module.has.selectInput() && module.is.multiple() )
               ? (typeof value == 'string') // delimited string
-                ? module.escape.htmlEntities(value).split(settings.delimiter)
+                ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
                 : ''
               : value
             ;
@@ -2970,7 +2970,7 @@ $.fn.dropdown = function(parameters) {
           },
           value: function(addedValue, addedText, $selectedItem) {
             var
-              currentValue = module.get.values(),
+              currentValue = module.get.values(true),
               newValue
             ;
             if(module.has.value(addedValue)) {
@@ -3179,8 +3179,9 @@ $.fn.dropdown = function(parameters) {
           },
           label: function(value, shouldAnimate) {
             var
+              escapedValue  = module.escape.value(value),
               $labels       = $module.find(selector.label),
-              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? value.toLowerCase() : value) +'"]')
+              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]')
             ;
             module.verbose('Removing label', $removedLabel);
             $removedLabel.remove();
@@ -3329,7 +3330,7 @@ $.fn.dropdown = function(parameters) {
           },
           valueMatchingCase: function(value) {
             var
-              values   = module.get.values(),
+              values   = module.get.values(true),
               hasValue = Array.isArray(values)
                ? values && ($.inArray(value, values) !== -1)
                : (values == value)
@@ -3341,7 +3342,7 @@ $.fn.dropdown = function(parameters) {
           },
           valueIgnoringCase: function(value) {
             var
-              values   = module.get.values(),
+              values   = module.get.values(true),
               hasValue = false
             ;
             if(!Array.isArray(values)) {
@@ -4166,8 +4167,8 @@ $.fn.dropdown.settings = {
 
 /* Templates */
 $.fn.dropdown.settings.templates = {
-  deQuote: function(string) {
-      return String(string).replace(/"/g,"");
+  deQuote: function(string, encode) {
+      return String(string).replace(/"/g,encode ? "&quot;" : "");
   },
   escape: function(string, preserveHTML) {
     if (preserveHTML){
@@ -4231,13 +4232,13 @@ $.fn.dropdown.settings.templates = {
       if( itemType === 'item' ) {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + deQuote(option[fields.text]) + '"'
+            ? ' data-text="' + deQuote(option[fields.text],true) + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
