@@ -64,6 +64,13 @@
   .toast-box {
     display: table !important;
   }
+  &.horizontal when (@variationToastHorizontal) {
+    display: flex;
+    flex-direction: row;
+    & .toast-box {
+      margin-right: @toastBoxMarginRight;
+    }
+  }
   & .toast-box {
     margin-bottom: @toastBoxMarginBottom;
     border-radius: @defaultBorderRadius;

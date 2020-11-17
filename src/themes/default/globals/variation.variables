@@ -529,6 +529,7 @@
 @variationToastWarning: true;
 @variationToastSuccess: true;
 @variationToastError: true;
+@variationToastHorizontal: true;
 @variationToastFloating: true;
 @variationToastProgress: true;
 @variationToastIcon: true;
