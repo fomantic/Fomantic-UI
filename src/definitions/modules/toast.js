@@ -403,7 +403,7 @@ $.fn.toast = function(parameters) {
                       if(settings.transition.closeEasing !== ''){
                           if($toastBox) {
                             $toastBox.css('opacity', 0);
-                            $toastBox.wrap('<div/>').parent().hide(500, settings.transition.closeEasing, function () {
+                            $toastBox.wrap('<div/>').parent().hide(settings.transition.closeDuration, settings.transition.closeEasing, function () {
                               if ($toastBox) {
                                 $toastBox.parent().remove();
                                 callback.call($toastBox);
@@ -793,7 +793,8 @@ $.fn.toast.settings = {
     showDuration : 500,
     hideMethod   : 'scale',
     hideDuration : 500,
-    closeEasing  : 'easeOutCubic'  //Set to empty string to stack the closed toast area immediately (old behaviour)
+    closeEasing  : 'easeOutCubic',  //Set to empty string to stack the closed toast area immediately (old behaviour)
+    closeDuration: 500
   },
 
   error: {
