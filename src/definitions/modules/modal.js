@@ -58,6 +58,7 @@ $.fn.modal = function(parameters) {
         selector        = settings.selector,
         className       = settings.className,
         namespace       = settings.namespace,
+        fields           = settings.fields,
         error           = settings.error,
 
         eventNamespace  = '.' + namespace,
@@ -74,7 +75,7 @@ $.fn.modal = function(parameters) {
         $dimmer,
 
         element         = this,
-        instance        = $module.data(moduleNamespace),
+        instance        = $module.hasClass('modal') ? $module.data(moduleNamespace) : undefined,
 
         ignoreRepeatedEvents = false,
 
@@ -91,6 +92,39 @@ $.fn.modal = function(parameters) {
       module  = {
 
         initialize: function() {
+          if(!$module.hasClass('modal')) {
+            module.create.modal();
+            settings.onHidden = function(){
+              module.destroy();
+              $module.remove();
+            };
+          }
+          $module.addClass(settings.class);
+          if (settings.title !== '') {
+            $module.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML));
+          }
+          if (settings.content !== '') {
+            $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
+          }
+          if(module.has.configActions()){
+            var $actions = $module.find(selector.actions);
+            settings.actions.forEach(function (el) {
+              var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                  text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
+                  cls = module.helpers.deQuote(el[fields.class] || ''),
+                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
+              $actions.append($('<button/>', {
+                html: icon + text,
+                class: className.button + ' ' + cls,
+                click: function () {
+                  if (click.call(element, $module) === false) {
+                    return;
+                  }
+                  module.hide();
+                }
+              }));
+            });
+          }
           module.cache = {};
           module.verbose('Initializing dimmer', $context);
 
@@ -121,6 +155,22 @@ $.fn.modal = function(parameters) {
         },
 
         create: {
+          modal: function() {
+            $module = $('<div/>', {class: 'ui modal'});
+            if (settings.closeIcon) {
+              $close = $('<i/>', {class: className.close})
+              $module.append($close);
+            }
+            if (settings.title !== '') {
+              $('<div/>', {class: 'header'}).appendTo($module);
+            }
+            if (settings.content !== '') {
+              $('<div/>', {class: 'content'}).appendTo($module);
+            }
+            if (module.has.configActions()) {
+              $('<div/>', {class: 'actions'}).appendTo($module);
+            }
+          },
           dimmer: function() {
             var
               defaultSettings = {
@@ -699,7 +749,35 @@ $.fn.modal = function(parameters) {
           $module.removeClass(className.loading);
           module.debug('Caching modal and container sizes', module.cache);
         },
-
+        helpers: {
+          deQuote: function(string) {
+            return String(string).replace(/"/g,"");
+          },
+          escape: function(string, preserveHTML) {
+            if (preserveHTML){
+              return string;
+            }
+            var
+                badChars     = /[<>"'`]/g,
+                shouldEscape = /[&<>"'`]/,
+                escape       = {
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#x27;",
+                  "`": "&#x60;"
+                },
+                escapedChar  = function(chr) {
+                  return escape[chr];
+                }
+            ;
+            if(shouldEscape.test(string)) {
+              string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+              return string.replace(badChars, escapedChar);
+            }
+            return string;
+          }
+        },
         can: {
           leftBodyScrollbar: function(){
             if(module.cache.leftBodyScrollbar === undefined) {
@@ -734,7 +812,11 @@ $.fn.modal = function(parameters) {
             ;
           }
         },
-
+        has: {
+          configActions: function () {
+            return Array.isArray(settings.actions) && settings.actions.length > 0;
+          }
+        },
         is: {
           active: function() {
             return $module.hasClass(className.active);
@@ -1107,6 +1189,7 @@ $.fn.modal = function(parameters) {
           instance.invoke('destroy');
         }
         module.initialize();
+        returnedValue = $module;
       }
     })
   ;
@@ -1161,6 +1244,22 @@ $.fn.modal.settings = {
   padding    : 50,
   scrollbarWidth: 10,
 
+  //dynamic content
+  title        : '',
+  content      : '',
+  class        : '',
+  classContent : '',
+  closeIcon    : false,
+  actions      : false,
+  preserveHTML : true,
+
+  fields         : {
+    class        : 'class',
+    text         : 'text',
+    icon         : 'icon',
+    click        : 'click'
+  },
+
   // called before show animation
   onShow     : function(){},
 
@@ -1180,6 +1279,9 @@ $.fn.modal.settings = {
   onDeny     : function(){ return true; },
 
   selector    : {
+    title    : '> .header',
+    content  : '> .content',
+    actions  : '> .actions',
     close    : '> .close',
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
@@ -1201,7 +1303,9 @@ $.fn.modal.settings = {
     loading    : 'loading',
     scrolling  : 'scrolling',
     undetached : 'undetached',
-    front      : 'front'
+    front      : 'front',
+    close      : 'close icon',
+    button     : 'ui button'
   }
 };
 
