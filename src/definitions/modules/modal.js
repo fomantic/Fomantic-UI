@@ -107,7 +107,7 @@ $.fn.modal = function(parameters) {
             $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
           }
           if(module.has.configActions()){
-            var $actions = $module.find(selector.actions);
+            var $actions = $module.find(selector.actions).addClass(settings.classActions);
             settings.actions.forEach(function (el) {
               var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
@@ -1249,8 +1249,9 @@ $.fn.modal.settings = {
   title        : '',
   content      : '',
   class        : '',
-  classContent : '',
   classTitle   : '',
+  classContent : '',
+  classActions : '',
   closeIcon    : false,
   actions      : false,
   preserveHTML : true,
