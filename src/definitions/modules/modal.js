@@ -101,7 +101,7 @@ $.fn.modal = function(parameters) {
           }
           $module.addClass(settings.class);
           if (settings.title !== '') {
-            $module.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML));
+            $module.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML)).addClass(settings.classTitle);
           }
           if (settings.content !== '') {
             $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
@@ -1250,6 +1250,7 @@ $.fn.modal.settings = {
   content      : '',
   class        : '',
   classContent : '',
+  classTitle   : '',
   closeIcon    : false,
   actions      : false,
   preserveHTML : true,
