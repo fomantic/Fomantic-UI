@@ -170,6 +170,7 @@ $.fn.modal = function(parameters) {
             if (module.has.configActions()) {
               $('<div/>', {class: 'actions'}).appendTo($module);
             }
+            $context.append($module);
           },
           dimmer: function() {
             var
