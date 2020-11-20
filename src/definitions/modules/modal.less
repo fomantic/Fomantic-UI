@@ -185,6 +185,10 @@
 .ui.modal > .centered,
 .ui.modal > .center.aligned {
   text-align: center;
+  &.actions > .button:not(.fluid) {
+    margin-left: @buttonCenteredDistance;
+    margin-right: @buttonCenteredDistance;
+  }
 }
 
 /*-------------------
@@ -225,7 +229,7 @@
 
 /* Tablet and Mobile */
 @media only screen and (max-width : @largestTabletScreen) {
-  .ui.modal > .header {
+  .ui.modal > .close + .header {
     padding-right: @closeHitbox;
   }
   .ui.modal > .close {
@@ -239,8 +243,10 @@
 @media only screen and (max-width : @largestMobileScreen) {
 
   .ui.modal > .header {
-    padding: @mobileHeaderPadding !important;
-    padding-right: @closeHitbox !important;
+    padding: @mobileHeaderPadding;
+  }
+  .ui.modal > .close + .header {
+    padding-right: @closeHitbox;
   }
   .ui.overlay.fullscreen.modal > .content.content.content {
     min-height: @overlayFullscreenScrollingContentMaxHeightMobile;
