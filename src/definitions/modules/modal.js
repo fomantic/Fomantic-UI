@@ -58,7 +58,7 @@ $.fn.modal = function(parameters) {
         selector        = settings.selector,
         className       = settings.className,
         namespace       = settings.namespace,
-        fields           = settings.fields,
+        fields          = settings.fields,
         error           = settings.error,
 
         eventNamespace  = '.' + namespace,
@@ -94,10 +94,12 @@ $.fn.modal = function(parameters) {
         initialize: function() {
           if(!$module.hasClass('modal')) {
             module.create.modal();
-            settings.onHidden = function(){
-              module.destroy();
-              $module.remove();
-            };
+            if(!$.isFunction(settings.onHidden)) {
+              settings.onHidden = function () {
+                module.destroy();
+                $module.remove();
+              };
+            }
           }
           $module.addClass(settings.class);
           if (settings.title !== '') {
@@ -550,7 +552,9 @@ $.fn.modal = function(parameters) {
                         $previousModal.find(selector.dimmer).removeClass('active');
                       }
                     }
-                    settings.onHidden.call(element);
+                    if($.isFunction(settings.onHidden)) {
+                      settings.onHidden.call(element);
+                    }
                     module.remove.dimmerStyles();
                     module.restore.focus();
                     callback();
@@ -1273,7 +1277,7 @@ $.fn.modal.settings = {
   onHide     : function(){ return true; },
 
   // called after hide animation
-  onHidden   : function(){},
+  onHidden   : false,
 
   // called after approve selector match
   onApprove  : function(){ return true; },
