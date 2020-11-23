@@ -1074,14 +1074,11 @@ $.fn.calendar = function(parameters) {
             return null;
           },
           sanitiseDate: function (date) {
-            if (!date) {
-              return undefined;
-            }
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
             }
-            if (!date || date === null || isNaN(date.getTime())) {
-              return undefined;
+            if (!date || isNaN(date.getTime())) {
+              return null;
             }
             return date;
           },
