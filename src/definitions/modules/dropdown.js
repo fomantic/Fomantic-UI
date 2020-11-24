@@ -3527,7 +3527,7 @@ $.fn.dropdown = function(parameters) {
               calculations.menu.offset.top += calculations.context.scrollTop;
             }
             if(module.has.subMenu()) {
-              calculations.menu.height += $menu.find(selector.menu).first().outerHeight();
+              calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
             }
             onScreen = {
               above : (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
