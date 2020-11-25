@@ -3294,8 +3294,8 @@ $.fn.dropdown = function(parameters) {
           menu: function() {
             return ($menu.length > 0);
           },
-          subMenu: function() {
-            return $menu.find(selector.menu).length > 0;
+          subMenu: function($currentMenu) {
+            return $currentMenu.find(selector.menu).length > 0;
           },
           message: function() {
             return ($menu.children(selector.message).length !== 0);
@@ -3526,7 +3526,7 @@ $.fn.dropdown = function(parameters) {
             if(module.is.verticallyScrollableContext()) {
               calculations.menu.offset.top += calculations.context.scrollTop;
             }
-            if(module.has.subMenu()) {
+            if(module.has.subMenu($currentMenu)) {
               calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
             }
             onScreen = {
