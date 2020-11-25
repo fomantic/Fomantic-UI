@@ -3295,7 +3295,7 @@ $.fn.dropdown = function(parameters) {
             return ($menu.length > 0);
           },
           subMenu: function($currentMenu) {
-            return $currentMenu.find(selector.menu).length > 0;
+            return ($currentMenu || $menu).find(selector.menu).length > 0;
           },
           message: function() {
             return ($menu.children(selector.message).length !== 0);
