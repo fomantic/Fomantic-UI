@@ -3215,7 +3215,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 else {
                   // selected will also remove label
-                  module.remove.selected(stringValue, module.get.item(stringValue), preventChangeTrigger);
+                  module.remove.selected(stringValue, false, preventChangeTrigger);
                 }
               })
             ;
