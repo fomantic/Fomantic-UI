@@ -2368,7 +2368,7 @@ $.fn.dropdown = function(parameters) {
 
         clear: function(preventChangeTrigger) {
           if(module.is.multiple() && settings.useLabels) {
-            module.remove.labels();
+            module.remove.labels($module.find(selector.label), preventChangeTrigger);
           }
           else {
             module.remove.activeItem();
@@ -3094,7 +3094,7 @@ $.fn.dropdown = function(parameters) {
           userAddition: function() {
             $item.filter(selector.addition).remove();
           },
-          selected: function(value, $selectedItem) {
+          selected: function(value, $selectedItem, preventChangeTrigger) {
             $selectedItem = (settings.allowAdditions)
               ? $selectedItem || module.get.itemWithAdditions(value)
               : $selectedItem || module.get.item(value)
@@ -3113,11 +3113,11 @@ $.fn.dropdown = function(parameters) {
                 ;
                 if(module.is.multiple()) {
                   if(settings.useLabels) {
-                    module.remove.value(selectedValue, selectedText, $selected);
+                    module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                     module.remove.label(selectedValue);
                   }
                   else {
-                    module.remove.value(selectedValue, selectedText, $selected);
+                    module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                     if(module.get.selectionCount() === 0) {
                       module.set.placeholderText();
                     }
@@ -3127,7 +3127,7 @@ $.fn.dropdown = function(parameters) {
                   }
                 }
                 else {
-                  module.remove.value(selectedValue, selectedText, $selected);
+                  module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                 }
                 $selected
                   .removeClass(className.filtered)
@@ -3142,7 +3142,7 @@ $.fn.dropdown = function(parameters) {
           selectedItem: function() {
             $item.removeClass(className.selected);
           },
-          value: function(removedValue, removedText, $removedItem) {
+          value: function(removedValue, removedText, $removedItem, preventChangeTrigger) {
             var
               values = module.get.values(),
               newValue
@@ -3164,7 +3164,7 @@ $.fn.dropdown = function(parameters) {
             else {
               settings.onRemove.call(element, removedValue, removedText, $removedItem);
             }
-            module.set.value(newValue, removedText, $removedItem);
+            module.set.value(newValue, removedText, $removedItem, preventChangeTrigger);
             module.check.maxSelections();
           },
           arrayValue: function(removedValue, values) {
@@ -3191,7 +3191,7 @@ $.fn.dropdown = function(parameters) {
             module.verbose('Removing active label selections', $activeLabels);
             module.remove.labels($activeLabels);
           },
-          labels: function($labels) {
+          labels: function($labels, preventChangeTrigger) {
             $labels = $labels || $module.find(selector.label);
             module.verbose('Removing labels', $labels);
             $labels
@@ -3210,12 +3210,12 @@ $.fn.dropdown = function(parameters) {
                 }
                 module.remove.message();
                 if(isUserValue) {
-                  module.remove.value(stringValue);
+                  module.remove.value(stringValue, stringValue, module.get.item(stringValue), preventChangeTrigger);
                   module.remove.label(stringValue);
                 }
                 else {
                   // selected will also remove label
-                  module.remove.selected(stringValue);
+                  module.remove.selected(stringValue, module.get.item(stringValue), preventChangeTrigger);
                 }
               })
             ;
