@@ -3294,6 +3294,9 @@ $.fn.dropdown = function(parameters) {
           menu: function() {
             return ($menu.length > 0);
           },
+          subMenu: function($currentMenu) {
+            return ($currentMenu || $menu).find(selector.menu).length > 0;
+          },
           message: function() {
             return ($menu.children(selector.message).length !== 0);
           },
@@ -3522,6 +3525,9 @@ $.fn.dropdown = function(parameters) {
             };
             if(module.is.verticallyScrollableContext()) {
               calculations.menu.offset.top += calculations.context.scrollTop;
+            }
+            if(module.has.subMenu($currentMenu)) {
+              calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
             }
             onScreen = {
               above : (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
