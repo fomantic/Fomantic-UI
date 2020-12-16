@@ -435,6 +435,14 @@
 @variationModalCloseInside: true;
 @variationModalSizes: @variationAllSizes;
 
+/* Nag */
+@variationNagInverted: true;
+@variationNagBottom: true;
+@variationNagOverlay: true;
+@variationNagFixed: true;
+@variationNagGroups: true;
+@variationNagSizes: @variationAllSizes;
+
 /* Popup */
 @variationPopupInverted: true;
 @variationPopupTooltip: true;

@@ -183,7 +183,7 @@ $.fn.nag = function(parameters) {
                       .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
                       .replace(/[()]/g, escape);
                   value = encodeURIComponent(value)
-                      .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent)
+                      .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
 
                   var cookieOptions = '';
                   for (var option in options) {
