@@ -1707,46 +1707,55 @@ select.ui.dropdown {
   ---------------*/
 
   /* General rules and basic dropdowns */
+  .ui.dropdown .inverted.menu,
   .ui.inverted.dropdown .menu {
     background: @invertedMenuBackground;
     box-shadow: @invertedMenuBoxShadow;
     border: @invertedMenuBorder;
   }
 
+  .ui.dropdown .inverted.menu > .item,
   .ui.inverted.dropdown .menu > .item {
     color: @invertedMenuColor;
   }
 
+  .ui.dropdown .inverted.menu .active.item,
   .ui.inverted.dropdown .menu .active.item {
     background: @invertedActiveItemBackground;
     color: @invertedActiveItemColor;
     box-shadow: @invertedActiveItemBoxShadow;
   }
 
+  .ui.dropdown .inverted.menu > .item:hover,
   .ui.inverted.dropdown .menu > .item:hover {
     background: @invertedHoveredItemBackground;
     color: @invertedHoveredItemColor;
   }
 
   .ui.inverted.dropdown.selected,
+  .ui.dropdown .inverted.menu .selected.item,
   .ui.inverted.dropdown .menu .selected.item {
     background: @invertedSelectedBackground;
     color: @invertedSelectedColor;
   }
 
+  .ui.dropdown .inverted.menu > .header,
   .ui.inverted.dropdown .menu > .header {
     color: @invertedMenuHeaderColor;
   }
 
   .ui.inverted.dropdown > .text > .description,
+  .ui.dropdown .inverted.menu > .item > .description,
   .ui.inverted.dropdown .menu > .item > .description {
     color: @invertedItemDescriptionColor;
   }
 
+  .ui.dropdown .inverted.menu > .divider,
   .ui.inverted.dropdown .menu > .divider {
     border-top: @invertedMenuDividerBorder;
   }
 
+  .ui.dropdown .inverted.scrolling.menu,
   .ui.inverted.dropdown .scrolling.menu {
     border: none;
     border-top: @invertedMenuBorder;
@@ -1773,11 +1782,13 @@ select.ui.dropdown {
       color: @invertedSelectionVisibleTextColor;
     }
 
+    .ui.selection.active.dropdown .inverted.menu,
     .ui.inverted.selection.active.dropdown .menu,
     .ui.inverted.selection.active.dropdown:hover {
       border-color: @invertedSelectionVisibleBorderColor;
     }
 
+    .ui.selection.dropdown .inverted.menu > .item,
     .ui.inverted.selection.dropdown .menu > .item {
       border-top: @invertedSelectionItemDivider;
     }
@@ -1800,11 +1811,13 @@ select.ui.dropdown {
     color: @invertedSelectionTextUnderlayColor !important;
   }
 
+  .ui.dropdown .inverted.menu > .message:not(.ui),
   .ui.inverted.dropdown .menu > .message:not(.ui) {
     color: @invertedMessageColor;
   }
 
   /* Fixing the border */
+  .ui.dropdown .inverted.menu > .item:first-child,
   .ui.inverted.dropdown .menu > .item:first-child {
     border-top-width: 0;
   }
@@ -1855,19 +1868,24 @@ select.ui.dropdown {
   }
 
   /* Scrollbars */
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
     background: @thumbInvertedBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
     background: @thumbInvertedInactiveBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
   & when (@variationDropdownPointing) {
+    .ui.pointing.dropdown > .inverted.menu:after,
     .ui.inverted.pointing.dropdown > .menu:after {
       background: @invertedPointingArrowBackground;
       box-shadow: @invertedPointingArrowBoxShadow;
