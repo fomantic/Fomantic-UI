@@ -274,6 +274,7 @@
 @variationMessageIcon: true;
 @variationMessageFloating: true;
 @variationMessageConsequences: true;
+@variationMessageCentered: true;
 @variationMessageSizes: @variationAllSizes;
 
 /* Table */
