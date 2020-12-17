@@ -1732,8 +1732,16 @@ $.fn.form.settings = {
 
     // is valid integer or matches range
     integer: function(value, range) {
+      return $.fn.form.settings.rules.range(value, range, 'integer');
+    },
+    range: function(value, range, regExp) {
+      if(typeof regExp == "string") {
+        regExp = $.fn.form.settings.regExp[regExp];
+      }
+      if(!(regExp instanceof RegExp)) {
+        regExp = $.fn.form.settings.regExp.integer;
+      }
       var
-        intRegExp = $.fn.form.settings.regExp.integer,
         min,
         max,
         parts
@@ -1742,34 +1750,34 @@ $.fn.form.settings = {
         // do nothing
       }
       else if(range.indexOf('..') == -1) {
-        if(intRegExp.test(range)) {
+        if(regExp.test(range)) {
           min = max = range - 0;
         }
       }
       else {
         parts = range.split('..', 2);
-        if(intRegExp.test(parts[0])) {
+        if(regExp.test(parts[0])) {
           min = parts[0] - 0;
         }
-        if(intRegExp.test(parts[1])) {
+        if(regExp.test(parts[1])) {
           max = parts[1] - 0;
         }
       }
       return (
-        intRegExp.test(value) &&
+        regExp.test(value) &&
         (min === undefined || value >= min) &&
         (max === undefined || value <= max)
       );
     },
 
     // is valid number (with decimal)
-    decimal: function(value) {
-      return $.fn.form.settings.regExp.decimal.test(value);
+    decimal: function(value, range) {
+      return $.fn.form.settings.rules.range(value, range, 'decimal');
     },
 
     // is valid number
-    number: function(value) {
-      return $.fn.form.settings.regExp.number.test(value);
+    number: function(value, range) {
+      return $.fn.form.settings.rules.range(value, range, 'number');
     },
 
     // is value (case insensitive)
