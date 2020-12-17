@@ -74,7 +74,9 @@ a.ui.nag {
   transition: @closeTransition;
 }
 
-
+.ui.nag:not(.overlay):not(.fixed) {
+  border-radius: @borderRadius;
+}
 
 /*******************************
              States
@@ -99,7 +101,7 @@ a.ui.nag {
   /*--------------
        Static
   ---------------*/
-
+  .ui.overlay.nags,
   .ui.overlay.nag {
     position: absolute;
     display: block;
@@ -110,7 +112,7 @@ a.ui.nag {
 /*--------------
      Fixed
 ---------------*/
-
+  .ui.fixed.nags,
   .ui.fixed.nag {
     position: fixed;
   }
@@ -194,8 +196,12 @@ each(@colors, {
 /*******************************
            Groups
 *******************************/
-
-  .ui.nags .nag {
+  .ui.nags {
+    top: @top;
+    left: 0;
+    width: @width;
+  }
+  .ui.ui.nags .nag {
     border-radius: @groupedBorderRadius;
   }
   .ui.nags:not(.bottom) .nag:last-child {
@@ -205,6 +211,12 @@ each(@colors, {
     .ui.bottom.nags .nag:first-child {
       border-radius: @bottomBorderRadius;
     }
+  }
+  .ui.nags:not(.fixed):not(.overlay) .nag:first-child {
+    border-radius: @bottomBorderRadius;
+  }
+  .ui.nags:not(.fixed):not(.overlay) .nag:only-child {
+    border-radius: @borderRadius;
   }
 }
 .loadUIOverrides();
