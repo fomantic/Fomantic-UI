@@ -18,6 +18,7 @@
 @toastTextColor: @invertedTextColor;
 @toastInvertedTextColor: @textColor;
 @toastNeutralTextColor: @textColor;
+@toastAttachedMargin: 1px;
 
 /* Mobile */
 @mobileToastBreakpoint: 420px;
@@ -82,3 +83,4 @@
 @toastActionMarginBottom: 0.3em;
 @toastActionPadding: 0.5em;
 @toastActionPaddingBottom: 0.75em;
+@toastActionCenteredMargin: 0.25em;

@@ -540,6 +540,8 @@
 @variationToastActions: true;
 @variationToastVertical: true;
 @variationToastAttached: true;
+@variationToastCompact: true;
+@variationToastCentered: true;
 
 /* Transition */
 @variationTransitionDisabled: true;
