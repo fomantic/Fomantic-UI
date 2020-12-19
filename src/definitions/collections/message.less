@@ -107,9 +107,12 @@
 
 
 /* Icon */
-.ui.message > .icons,
-.ui.message > i.icon {
+.ui.icon.message > .icons,
+.ui.icon.message > i.icon {
   margin-right: @iconDistance;
+  &:last-child {
+    margin: 0 0 0 @iconDistance;
+  }
 }
 
 /* Close Icon */
@@ -170,6 +173,21 @@
 /*******************************
             Variations
 *******************************/
+& when (@variationMessageCentered) {
+  .ui.centered.message,
+  .ui.center.aligned.message {
+    text-align: center;
+    justify-content: center;
+    & > .content {
+      flex: 0 0 auto;
+    }
+  }
+}
+& when (@variationMessageRightAligned) {
+  .ui.right.aligned.message {
+    text-align: right;
+  }
+}
 
 & when (@variationMessageCompact) {
   /*--------------
