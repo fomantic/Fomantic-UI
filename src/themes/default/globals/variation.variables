@@ -376,6 +376,7 @@
 /* Checkbox */
 @variationCheckboxBox: false;   //.box (instead of label) is an ancient fragment of sui v1 and not even documented in v2.x anymore
 @variationCheckboxDisabled: true;
+@variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
@@ -399,6 +400,7 @@
 /* Dropdown */
 @variationDropdownInverted: true;
 @variationDropdownDisabled: true;
+@variationDropdownReadonly: true;
 @variationDropdownLabel: true;
 @variationDropdownButton: true;
 @variationDropdownSelection: true;
