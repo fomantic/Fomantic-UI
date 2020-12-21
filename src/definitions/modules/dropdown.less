@@ -1135,6 +1135,16 @@ select.ui.dropdown {
   }
 }
 
+& when (@variationDropdownReadonly) {
+  /*--------------------
+          Read-Only
+  ----------------------*/
+
+  .ui.read-only.dropdown {
+    cursor: default;
+    pointer-events: none;
+  }
+}
 
 /*******************************
            Variations

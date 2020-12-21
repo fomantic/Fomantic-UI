@@ -349,14 +349,16 @@
   color: @checkboxActiveFocusCheckColor;
 }
 
+& when (@variationCheckboxReadonly) {
+  /*--------------
+      Read-Only
+  ---------------*/
 
-/*--------------
-    Read-Only
----------------*/
-
-.ui.read-only.checkbox,
-.ui.read-only.checkbox label {
-  cursor: default;
+  .ui.read-only.checkbox,
+  .ui.read-only.checkbox label {
+    cursor: default;
+    pointer-events: none;
+  }
 }
 
 & when (@variationCheckboxDisabled) {
@@ -366,7 +368,7 @@
 
   .ui.disabled.checkbox label,
   .ui.checkbox input[disabled] ~ label {
-    cursor: default !important;
+    cursor: default;
     opacity: @disabledCheckboxOpacity;
     color: @disabledCheckboxLabelColor;
     pointer-events: none;
