@@ -158,6 +158,16 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
   i.vertically.flipped.icon {
     transform: scale(1, -1);
   }
+
+  & when(@variationIconGroups) {
+    .icons i.flipped.icon:not(.corner):not(:first-child),
+    .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1);
+    }
+    .icons i.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1);
+    }
+  }
 }
 
 & when (@variationIconRotated) {
@@ -178,6 +188,21 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 
   i.halfway.rotated.icon {
     transform: rotate(180deg);
+  }
+
+  & when(@variationIconGroups) {
+    .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    }
+    .icons i.left.rotated.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    }
   }
 }
 
@@ -214,6 +239,33 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 
   i.halfway.rotated.vertically.flipped.icon {
     transform: scale(1, -1) rotate(180deg);
+  }
+
+  & when(@variationIconGroups) {
+    .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
+    }
+    .icons i.left.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
+    }
+    .icons i.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
+    }
+    .icons i.left.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
+    }
   }
 }
 
@@ -319,8 +371,10 @@ i.icons {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     margin: 0;
+    &:not(.corner):not(.rotated):not(.flipped) {
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   i.icons .icon:first-child {
@@ -328,6 +382,8 @@ i.icons {
     width: auto;
     height: auto;
     vertical-align: top;
+  }
+  i.icons:not(.bordered):not(.circular) .icon:first-child:not(.rotated):not(.flipped) {
     transform: none;
   }
 
@@ -338,9 +394,11 @@ i.icons {
       left: auto;
       right: 0;
       bottom: 0;
-      transform: none;
       font-size: @cornerIconSize;
       text-shadow: @cornerIconShadow;
+      &:not(.rotated):not(.flipped) {
+        transform: none;
+      }
     }
     i.icons .icon.corner[class*="top right"] {
       top: 0;
