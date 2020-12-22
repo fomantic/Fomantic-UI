@@ -58,14 +58,14 @@ $.fn.nag = function(parameters) {
 
         element         = this,
         instance        = $module.data(moduleNamespace),
-
+        storage,
         module
       ;
       module = {
 
         initialize: function() {
           module.verbose('Initializing element');
-
+          storage = module.get.storage();
           $module
             .on('click' + eventNamespace, selector.close, module.dismiss)
             .data(moduleNamespace, module)
@@ -110,9 +110,9 @@ $.fn.nag = function(parameters) {
 
         hide: function() {
           module.debug('Showing nag', settings.animation.hide);
-          if(settings.animation.show == 'fade') {
+          if(settings.animation.hide == 'fade') {
             $module
-              .fadeIn(settings.duration, settings.easing)
+              .fadeOut(settings.duration, settings.easing)
             ;
           }
           else {
@@ -155,18 +155,83 @@ $.fn.nag = function(parameters) {
         },
 
         get: {
+          expirationDate: function(expires) {
+            if (typeof expires === 'number') {
+              expires = new Date(Date.now() + expires * 864e5);
+            }
+            if(expires instanceof Date && expires.getTime() ){
+              return expires.toUTCString();
+            } else {
+              module.error(error.expiresFormat);
+            }
+          },
+          storage: function(){
+            if(settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
+              module.debug('Using local storage');
+              return window.localStorage;
+            }
+            else if(settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+              module.debug('Using session storage');
+              return window.sessionStorage;
+            }
+            else if("cookie" in document) {
+              module.debug('Using cookie');
+              return {
+                setItem: function(key, value, options) {
+                  // RFC6265 compliant encoding
+                  key   = encodeURIComponent(key)
+                      .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
+                      .replace(/[()]/g, escape);
+                  value = encodeURIComponent(value)
+                      .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
+
+                  var cookieOptions = '';
+                  for (var option in options) {
+                    if (options.hasOwnProperty(option)) {
+                      cookieOptions += '; ' + option;
+                      if (typeof options[option] === 'string') {
+                        cookieOptions += '=' + options[option].split(';')[0];
+                      }
+                    }
+                  }
+                  document.cookie = key + '=' + value + cookieOptions;
+                },
+                getItem: function(key) {
+                  var cookies = document.cookie.split('; ');
+                  for (var i = 0, il = cookies.length; i < il; i++) {
+                    var parts    = cookies[i].split('='),
+                        foundKey = parts[0].replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+                    if (key === foundKey) {
+                      return parts[1] || '';
+                    }
+                  }
+                },
+                removeItem: function(key, options) {
+                  storage.setItem(key,'',options);
+                }
+              };
+            } else {
+              module.error(error.noStorage);
+            }
+          },
           storageOptions: function() {
             var
               options = {}
             ;
             if(settings.expires) {
-              options.expires = settings.expires;
+              options.expires = module.get.expirationDate(settings.expires);
             }
             if(settings.domain) {
               options.domain = settings.domain;
             }
             if(settings.path) {
               options.path = settings.path;
+            }
+            if(settings.secure) {
+              options.secure = settings.secure;
+            }
+            if(settings.samesite) {
+              options.samesite = settings.samesite;
             }
             return options;
           }
@@ -181,39 +246,30 @@ $.fn.nag = function(parameters) {
             var
               options = module.get.storageOptions()
             ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              window.localStorage.setItem(key, value);
-              module.debug('Value stored using local storage', key, value);
+            if(storage === window.localStorage && options.expires) {
+              module.debug('Storing expiration value in localStorage', key, options.expires);
+              storage.setItem(key + settings.expirationKey, options.expires );
             }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              window.sessionStorage.setItem(key, value);
-              module.debug('Value stored using session storage', key, value);
+            module.debug('Value stored', key, value);
+            try {
+              storage.setItem(key, value, options);
             }
-            else if($.cookie !== undefined) {
-              $.cookie(key, value, options);
-              module.debug('Value stored using cookie', key, value, options);
-            }
-            else {
-              module.error(error.noCookieStorage);
-              return;
+            catch(e) {
+              module.error(error.setItem, e);
             }
           },
-          get: function(key, value) {
+          get: function(key) {
             var
               storedValue
             ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              storedValue = window.localStorage.getItem(key);
-            }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              storedValue = window.sessionStorage.getItem(key);
-            }
-            // get by cookie
-            else if($.cookie !== undefined) {
-              storedValue = $.cookie(key);
-            }
-            else {
-              module.error(error.noCookieStorage);
+            storedValue = storage.getItem(key);
+            if(storage === window.localStorage) {
+              var expiration = storage.getItem(key + settings.expirationKey);
+              if(expiration !== null && expiration !== undefined && new Date(expiration) < new Date()) {
+                module.debug('Value in localStorage has expired. Deleting key', key);
+                module.storage.remove(key);
+                storedValue = null;
+              }
             }
             if(storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
               storedValue = undefined;
@@ -224,19 +280,11 @@ $.fn.nag = function(parameters) {
             var
               options = module.get.storageOptions()
             ;
-            if(settings.storageMethod == 'localstorage' && window.localStorage !== undefined) {
-              window.localStorage.removeItem(key);
+            options.expires = module.get.expirationDate(-1);
+            if(storage === window.localStorage) {
+              storage.removeItem(key + settings.expirationKey);
             }
-            else if(settings.storageMethod == 'sessionstorage' && window.sessionStorage !== undefined) {
-              window.sessionStorage.removeItem(key);
-            }
-            // store by cookie
-            else if($.cookie !== undefined) {
-              $.removeCookie(key, options);
-            }
-            else {
-              module.error(error.noStorage);
-            }
+            storage.removeItem(key, options);
           }
         },
 
@@ -450,8 +498,12 @@ $.fn.nag.settings = {
   detachable    : false,
 
   expires       : 30,
+
+// cookie storage only options
   domain        : false,
   path          : '/',
+  secure        : false,
+  samesite      : false,
 
   // type of storage to use
   storageMethod : 'cookie',
@@ -460,10 +512,14 @@ $.fn.nag.settings = {
   key           : 'nag',
   value         : 'dismiss',
 
+// Key suffix to support expiration in localstorage
+  expirationKey : 'ExpirationDate',
+
   error: {
-    noCookieStorage : '$.cookie is not included. A storage solution is required.',
-    noStorage       : 'Neither $.cookie or store is defined. A storage solution is required for storing state',
-    method          : 'The method you called is not defined.'
+    noStorage       : 'Unsupported storage method',
+    method          : 'The method you called is not defined.',
+    setItem         : 'Unexpected error while setting value',
+    expiresFormat   : '"expires" must be a number of days or a Date Object'
   },
 
   className     : {
@@ -472,7 +528,7 @@ $.fn.nag.settings = {
   },
 
   selector      : {
-    close : '.close.icon'
+    close : '> .close.icon'
   },
 
   speed         : 500,
