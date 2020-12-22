@@ -444,15 +444,11 @@ $.fn.form = function(parameters) {
                 $fieldGroup     = $field.closest($group),
                 validationRules = module.get.validation($field)
               ;
-              if( $fieldGroup.hasClass(className.error) ) {
+              if(validationRules && (settings.on == 'blur' || ( $fieldGroup.hasClass(className.error) && settings.revalidate) )) {
                 module.debug('Revalidating field', $field, validationRules);
-                if(validationRules) {
-                  module.validate.field( validationRules );
-                }
-              }
-              else if(settings.on == 'blur') {
-                if(validationRules) {
-                  module.validate.field( validationRules );
+                module.validate.field( validationRules );
+                if(!settings.inline) {
+                  module.validate.form(false,true);
                 }
               }
             },
@@ -465,7 +461,7 @@ $.fn.form = function(parameters) {
               if(validationRules && (settings.on == 'change' || ( $fieldGroup.hasClass(className.error) && settings.revalidate) )) {
                 clearTimeout(module.timer);
                 module.timer = setTimeout(function() {
-                  module.debug('Revalidating field', $field,  module.get.validation($field));
+                  module.debug('Revalidating field', $field, validationRules);
                   module.validate.field( validationRules );
                   if(!settings.inline) {
                     module.validate.form(false,true);
