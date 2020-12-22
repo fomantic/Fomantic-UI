@@ -631,7 +631,7 @@ $.fn.form = function(parameters) {
             instance = $module.data(moduleNamespace);
 
             // refresh selector cache
-            module.refresh();
+            (instance || module).refresh();
           },
           field: function(identifier) {
             module.verbose('Finding field with identifier', identifier);
