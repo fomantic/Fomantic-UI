@@ -87,6 +87,7 @@
 .ui.dropdown:not(.labeled) > .dropdown.icon {
   position: relative;
   width: auto;
+  min-width: @dropdownIconMinWidth;
   font-size: @dropdownIconSize;
   margin: @dropdownIconMargin;
 }
@@ -771,29 +772,44 @@ select.ui.dropdown {
   }
 }
 
-/* Clearable Selection */
-.ui.dropdown > .remove.icon {
-  cursor: pointer;
-  font-size: @dropdownIconSize;
-  margin: @selectionIconMargin;
-  padding: @selectionIconPadding;
-  right: 3em;
-  top: @selectionVerticalPadding;
-  position: absolute;
-  opacity: 0.6;
-  z-index: @selectionIconZIndex;
-}
+& when (@variationDropdownClear) {
+  /* Clearable Selection */
+  .ui.dropdown > .remove.icon {
+    cursor: pointer;
+    font-size: @dropdownIconSize;
+    margin: @selectionIconMargin;
+    padding: @selectionIconPadding;
+    right: @clearableIconPosition;
+    top: @selectionVerticalPadding;
+    position: absolute;
+    opacity: @clearableIconOpacity;
+    z-index: @selectionIconZIndex;
+  }
+  .ui.selection.dropdown > .remove.icon {
+    right: @clearableIconSelectionPosition;
+  }
+  .ui.inline.dropdown > .remove.icon {
+    right: @clearableIconInlinePosition;
+  }
 
-.ui.clearable.dropdown .text,
-.ui.clearable.dropdown a:last-of-type {
-  margin-right: 1.5em;
-}
+  .ui.clearable.dropdown .text,
+  .ui.clearable.dropdown a:last-of-type {
+    margin-right: @clearableTextMargin;
+  }
 
-.ui.dropdown select.noselection ~ .remove.icon,
-.ui.dropdown input[value=''] ~ .remove.icon,
-.ui.dropdown input:not([value]) ~ .remove.icon,
-.ui.dropdown.loading > .remove.icon {
-  display: none;
+  .ui.dropdown select.noselection ~ .remove.icon,
+  .ui.dropdown input[value=''] ~ .remove.icon,
+  .ui.dropdown input:not([value]) ~ .remove.icon,
+  .ui.dropdown.loading > .remove.icon {
+    display: none;
+  }
+
+  .ui.dropdown:not(.selection) > .remove.icon ~ .dropdown.icon {
+    margin-left: @clearableIconMargin;
+  }
+  .ui.dropdown:not(.selection) > .remove.icon {
+    margin-top: -@clearableIconMarginTop;
+  }
 }
 
 & when (@variationDropdownMultiple) {
@@ -1111,11 +1127,12 @@ select.ui.dropdown {
 /*--------------------
         Clear
 ----------------------*/
-
+  .ui.dropdown > .remove.icon,
   .ui.dropdown > .clear.dropdown.icon {
     opacity: @clearableIconOpacity;
     transition: opacity @defaultDuration @defaultEasing;
   }
+  .ui.dropdown > .remove.icon:hover,
   .ui.dropdown > .clear.dropdown.icon:hover {
     opacity: @clearableIconActiveOpacity;
   }
