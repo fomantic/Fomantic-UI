@@ -51,7 +51,7 @@ module.exports = {
 
       // add version to first comment
       license: {
-        in  : /(^\/\*[\s\S]+)(# Semantic UI )([\s\S]+?\*\/)/,
+        in  : /(^\/\*[\s\S]+)(# Fomantic-UI )([\s\S]+?\*\/)/,
         out : '$1$2' + release.version + ' $3'
       },
 
@@ -87,6 +87,7 @@ module.exports = {
 
     /* Comment Banners */
     header: {
+      year       : (new Date()).getFullYear(),
       title      : release.title,
       version    : release.version,
       repository : release.repository,
