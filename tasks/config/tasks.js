@@ -143,10 +143,11 @@ module.exports = {
 
     /* Minified CSS Concat */
     minify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : 1,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false
+        }
+      }
     },
 
     /* Minified JS Settings */
@@ -159,10 +160,12 @@ module.exports = {
 
     /* Minified Concat CSS Settings */
     concatMinify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : false,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false,
+          specialComments : false
+        }
+      }
     },
 
     /* Minified Concat JS */
