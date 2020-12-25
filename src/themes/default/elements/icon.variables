@@ -85,6 +85,7 @@
    @cornerIconStroke  @cornerIconStroke 0 @black
 ;
 
+@cornerOffset: 0;
 @borderedGroupCornerOffset: 1.15em;
 
 @mini: 0.4em;
