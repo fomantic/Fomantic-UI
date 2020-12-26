@@ -645,14 +645,14 @@
   This rounds @size values to the closest pixel then expresses that value in (r)em.
   This ensures all size values round to exact pixels
 */
-@miniRaw         : unit( round(@miniSize * @emSize) / @emSize );
-@tinyRaw         : unit( round(@tinySize * @emSize) / @emSize );
-@smallRaw        : unit( round(@smallSize * @emSize) / @emSize );
-@mediumRaw       : unit( round(@mediumSize * @emSize) / @emSize );
-@largeRaw        : unit( round(@largeSize * @emSize) / @emSize );
-@bigRaw          : unit( round(@bigSize * @emSize) / @emSize );
-@hugeRaw         : unit( round(@hugeSize * @emSize) / @emSize );
-@massiveRaw      : unit( round(@massiveSize * @emSize) / @emSize );
+@miniRaw         : unit( (round(@miniSize * @emSize) / @emSize ));
+@tinyRaw         : unit( (round(@tinySize * @emSize) / @emSize ));
+@smallRaw        : unit( (round(@smallSize * @emSize) / @emSize ));
+@mediumRaw       : unit( (round(@mediumSize * @emSize) / @emSize ));
+@largeRaw        : unit( (round(@largeSize * @emSize) / @emSize ));
+@bigRaw          : unit( (round(@bigSize * @emSize) / @emSize ));
+@hugeRaw         : unit( (round(@hugeSize * @emSize) / @emSize ));
+@massiveRaw      : unit( (round(@massiveSize * @emSize) / @emSize ));
 
 @mini            : unit( @miniRaw, rem);
 @tiny            : unit( @tinyRaw, rem);
@@ -766,7 +766,7 @@
 
 /* Used to match floats with text */
 @lineHeightOffset       : ((@lineHeight - 1em) / 2);
-@headerLineHeightOffset : (@headerLineHeight - 1em) / 2;
+@headerLineHeightOffset : ((@headerLineHeight - 1em) / 2);
 
 /* Header Spacing */
 @headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));

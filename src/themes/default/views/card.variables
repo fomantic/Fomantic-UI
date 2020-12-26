@@ -73,7 +73,7 @@
 @headerMargin: '';
 @headerFontWeight: @bold;
 @headerFontSize: @relativeBig;
-@headerLineHeightOffset: -(@lineHeight - 1em) / 2;
+@headerLineHeightOffset: (-(@lineHeight - 1em) / 2);
 @headerColor: @darkTextColor;
 
 /* Metadata */
