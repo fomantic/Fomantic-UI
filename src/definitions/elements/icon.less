@@ -324,12 +324,14 @@ each(@colors, {
     i.inverted.@{color}.icon.icon.icon.icon.icon {
       color: @l;
     }
-    i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
-    i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
-    i.inverted.bordered.@{color}.icons,
-    i.inverted.circular.@{color}.icons {
-      background-color: @c;
-      color: @white;
+    & when (@variationIconBordered) or (@variationIconCircular) {
+      i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
+      i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
+      i.inverted.bordered.@{color}.icons,
+      i.inverted.circular.@{color}.icons {
+        background-color: @c;
+        color: @white;
+      }
     }
   }
 })
@@ -392,8 +394,8 @@ i.icons {
     i.icons .corner.icon {
       top: auto;
       left: auto;
-      right: 0;
-      bottom: 0;
+      right: @cornerOffset;
+      bottom: @cornerOffset;
       font-size: @cornerIconSize;
       text-shadow: @cornerIconShadow;
       &:not(.rotated):not(.flipped) {
@@ -401,28 +403,28 @@ i.icons {
       }
     }
     i.icons .icon.corner[class*="top right"] {
-      top: 0;
+      top: @cornerOffset;
       left: auto;
-      right: 0;
+      right: @cornerOffset;
       bottom: auto;
     }
     i.icons .icon.corner[class*="top left"] {
-      top: 0;
-      left: 0;
+      top: @cornerOffset;
+      left: @cornerOffset;
       right: auto;
       bottom: auto;
     }
     i.icons .icon.corner[class*="bottom left"] {
       top: auto;
-      left: 0;
+      left: @cornerOffset;
       right: auto;
-      bottom: 0;
+      bottom: @cornerOffset;
     }
     i.icons .icon.corner[class*="bottom right"] {
       top: auto;
       left: auto;
-      right: 0;
-      bottom: 0;
+      right: @cornerOffset;
+      bottom: @cornerOffset;
     }
     & when (@variationIconInverted) {
       i.icons .inverted.corner.icon {
