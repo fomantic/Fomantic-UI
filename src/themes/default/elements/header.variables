@@ -73,9 +73,9 @@
 --------------------*/
 
 /* Sizing */
-@massiveFontSize: unit(32 / 14, em);
+@massiveFontSize: unit((32 / 14), em);
 @hugeFontSize   : unit(@h1, em);
-@bigFontSize    : unit(26 / 14, em);
+@bigFontSize    : unit((26 / 14), em);
 @largeFontSize  : unit(@h2, em);
 @mediumFontSize : unit(@h3, em);
 @smallFontSize  : unit(@h4, em);

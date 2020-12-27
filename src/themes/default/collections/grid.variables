@@ -74,18 +74,18 @@
 /*--------------
     Compact
 ---------------*/
-@compactGutterWidth: @gutterWidth / 2;
-@compactRowSpacing: @rowSpacing / 2;
-@compactCelledRelaxedPadding: @celledRelaxedPadding / 2;
-@compactCelledVeryRelaxedPadding: @celledVeryRelaxedPadding / 2;
+@compactGutterWidth: (@gutterWidth / 2);
+@compactRowSpacing: (@rowSpacing / 2);
+@compactCelledRelaxedPadding: (@celledRelaxedPadding / 2);
+@compactCelledVeryRelaxedPadding: (@celledVeryRelaxedPadding / 2);
 
 /*------------------
     Very Compact
 ------------------*/
-@veryCompactGutterWidth: @compactGutterWidth / 2;
-@veryCompactRowSpacing: @compactRowSpacing / 2;
-@veryCompactCelledRelaxedPadding: @compactCelledRelaxedPadding / 2;
-@veryCompactCelledVeryRelaxedPadding: @compactCelledVeryRelaxedPadding / 2;
+@veryCompactGutterWidth: (@compactGutterWidth / 2);
+@veryCompactRowSpacing: (@compactRowSpacing / 2);
+@veryCompactCelledRelaxedPadding: (@compactCelledRelaxedPadding / 2);
+@veryCompactCelledVeryRelaxedPadding: (@compactCelledVeryRelaxedPadding / 2);
 
 
 /*******************************

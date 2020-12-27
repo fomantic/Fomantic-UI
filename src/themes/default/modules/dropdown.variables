@@ -99,12 +99,12 @@
 
 /* Menu Image */
 @menuImageMaxHeight: 2em;
-@menuImageVerticalMargin: -(@menuImageMaxHeight - 1em) / 2;
+@menuImageVerticalMargin: (-(@menuImageMaxHeight - 1em) / 2);
 
 /* Item Sub-Element */
 @itemElementFloat: none;
 @itemElementDistance: @mini;
-@itemElementBottomDistance: @itemElementDistance / 2;
+@itemElementBottomDistance: (@itemElementDistance / 2);
 
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
@@ -166,7 +166,7 @@
 @selectionIconZIndex: 3;
 @selectionIconHitbox: @selectionVerticalPadding;
 @selectionIconMargin: -@selectionIconHitbox;
-@selectionIconPadding: @selectionIconHitbox / @dropdownIconSize;
+@selectionIconPadding: (@selectionIconHitbox / @dropdownIconSize);
 @selectionIconTransition: opacity @defaultDuration @defaultEasing;
 
 @selectionMenuBorderRadius: 0 0 @borderRadius @borderRadius;

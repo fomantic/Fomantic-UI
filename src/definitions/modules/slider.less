@@ -220,7 +220,7 @@
       bottom: 100%;
     }
     .ui.labeled.ticked.slider > .labels .halftick.label:after {
-      height: @labelHeight / 2;
+      height: (@labelHeight / 2);
     }
   }
 
@@ -389,7 +389,7 @@ each(@colors, {
          height: @@lh;
        }
        .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-         height: @@lh / 2;
+         height: (@@lh / 2);
        }
      }
      & when (@variationSliderVertical) {
@@ -408,7 +408,7 @@ each(@colors, {
            width: @@lh;
          }
          .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
-           width: @@lh / 2;
+           width: (@@lh / 2);
          }
        }
      }

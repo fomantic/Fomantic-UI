@@ -47,7 +47,7 @@
 /* Content */
 @contentDistance: 0.5em;
 @contentLineHeight: @itemLineHeight;
-@contentLineHeightOffset: (@contentLineHeight - 1em) / 2;
+@contentLineHeightOffset: ((@contentLineHeight - 1em) / 2);
 @contentVerticalAlign: top;
 @contentColor: @textColor;
 
