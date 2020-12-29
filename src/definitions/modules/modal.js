@@ -680,7 +680,12 @@ $.fn.modal = function(parameters) {
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
             $body.css('margin-'+position, initialBodyMargin);
-            $body.find(selector.bodyFixed.replace('right',position)).css('padding-'+position, initialBodyMargin);
+            $body.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, '');
+            });
           }
         },
 
@@ -898,7 +903,12 @@ $.fn.modal = function(parameters) {
             if(settings.detachable || module.can.fit()) {
               $body.css('margin-'+position, tempBodyMargin + 'px');
             }
-            $body.find(selector.bodyFixed.replace('right',position)).css('padding-'+position, tempBodyMargin + 'px');
+            $body.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
+            });
           },
           clickaway: function() {
             if (!settings.detachable) {
@@ -1294,7 +1304,7 @@ $.fn.modal.settings = {
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
     modal    : '.ui.modal',
     dimmer   : '> .ui.dimmer',
-    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar'
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.fixed.nag, > .ui.fixed.nag > .close'
   },
   error : {
     dimmer    : 'UI Dimmer, a required component is not included in this page',
