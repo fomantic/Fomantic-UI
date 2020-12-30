@@ -4157,6 +4157,7 @@ $.fn.dropdown.settings = {
     search      : 'search',
     selected    : 'selected',
     selection   : 'selection',
+    text        : 'text',
     upward      : 'upward',
     leftward    : 'left',
     visible     : 'visible',
@@ -4223,41 +4224,54 @@ $.fn.dropdown.settings.templates = {
   // generates just menu from select
   menu: function(response, fields, preserveHTML, className) {
     var
-      values = response[fields.values] || [],
-      html   = '',
-      escape = $.fn.dropdown.settings.templates.escape,
-      deQuote = $.fn.dropdown.settings.templates.deQuote
+        values = response[fields.values] || [],
+        html = '',
+        escape = $.fn.dropdown.settings.templates.escape,
+        deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
-    $.each(values, function(index, option) {
+    $.each(values, function (index, option) {
       var
-        itemType = (option[fields.type])
-          ? option[fields.type]
-          : 'item'
+          itemType = (option[fields.type])
+              ? option[fields.type]
+              : 'item',
+          isMenu = itemType.indexOf('menu') !== -1
       ;
 
-      if( itemType === 'item' ) {
+      if (itemType === 'item' || isMenu) {
         var
-          maybeText = (option[fields.text])
-            ? ' data-text="' + deQuote(option[fields.text],true) + '"'
-            : '',
-          maybeDisabled = (option[fields.disabled])
-            ? className.disabled+' '
-            : ''
+            maybeText = (option[fields.text])
+                ? ' data-text="' + deQuote(option[fields.text], true) + '"'
+                : '',
+            maybeDisabled = (option[fields.disabled])
+                ? className.disabled + ' '
+                : ''
         ;
-        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
-        if(option[fields.image]) {
-          html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+        html += '<div class="' + maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+        if (isMenu) {
+          html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
-        if(option[fields.icon]) {
-          html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
+        if (option[fields.image]) {
+          html += '<img class="' + (option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+        }
+        if (option[fields.icon]) {
+          html += '<i class="' + deQuote(option[fields.icon]) + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
+        }
+        if(isMenu) {
+          html += '<span class="' + className.text + '">';
         }
         html +=   escape(option[fields.name] || '', preserveHTML);
+        if (isMenu) {
+          html += '</span>';
+          html += '<div class="' + itemType + '">';
+          html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
+          html += '</div>';
+        }
         html += '</div>';
       } else if (itemType === 'header') {
         var groupName = escape(option[fields.name] || '', preserveHTML),
             groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
         ;
-        if(groupName !== '' || groupIcon !== '') {
+        if (groupName !== '' || groupIcon !== '') {
           html += '<div class="' + (option[fields.class] ? deQuote(option[fields.class]) : className.header) + '">';
           if (groupIcon !== '') {
             html += '<i class="' + groupIcon + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
@@ -4265,8 +4279,8 @@ $.fn.dropdown.settings.templates = {
           html += groupName;
           html += '</div>';
         }
-        if(option[fields.divider]){
-          html += '<div class="'+className.divider+'"></div>';
+        if (option[fields.divider]) {
+          html += '<div class="' + className.divider + '"></div>';
         }
       }
     });
