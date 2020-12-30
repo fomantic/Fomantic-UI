@@ -4229,7 +4229,7 @@ $.fn.dropdown.settings.templates = {
       escape = $.fn.dropdown.settings.templates.escape,
       deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
-    $.each(values, function (index, option) {
+    $.each(values, function(index, option) {
       var
         itemType = (option[fields.type])
           ? option[fields.type]
@@ -4246,11 +4246,11 @@ $.fn.dropdown.settings.templates = {
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+ '" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if (isMenu) {
           html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
-        if (option[fields.image]) {
+        if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
         if(option[fields.icon]) {
