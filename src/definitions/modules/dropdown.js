@@ -4157,6 +4157,7 @@ $.fn.dropdown.settings = {
     search      : 'search',
     selected    : 'selected',
     selection   : 'selection',
+    text        : 'text',
     upward      : 'upward',
     leftward    : 'left',
     visible     : 'visible',
@@ -4232,10 +4233,11 @@ $.fn.dropdown.settings.templates = {
       var
         itemType = (option[fields.type])
           ? option[fields.type]
-          : 'item'
+          : 'item',
+        isMenu = itemType.indexOf('menu') !== -1
       ;
 
-      if( itemType === 'item' ) {
+      if( itemType === 'item' || isMenu) {
         var
           maybeText = (option[fields.text])
             ? ' data-text="' + deQuote(option[fields.text],true) + '"'
@@ -4245,13 +4247,25 @@ $.fn.dropdown.settings.templates = {
             : ''
         ;
         html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        if (isMenu) {
+          html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+        }
         if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
         if(option[fields.icon]) {
           html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
         }
+        if (isMenu) {
+          html += '<span class="' + className.text + '">';
+        }
         html +=   escape(option[fields.name] || '', preserveHTML);
+        if (isMenu) {
+          html += '</span>';
+          html += '<div class="' + itemType + '">';
+          html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
+          html += '</div>';
+        }
         html += '</div>';
       } else if (itemType === 'header') {
         var groupName = escape(option[fields.name] || '', preserveHTML),
