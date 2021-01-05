@@ -1346,24 +1346,28 @@
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
+@formErrorLabelBackground: darken(@formErrorBorder, -8);
 @transparentFormErrorColor: @formErrorColor;
 @transparentFormErrorBackground: @formErrorBackground;
 
 @formInfoColor: @infoTextColor;
 @formInfoBorder: @infoBorderColor;
 @formInfoBackground: @infoBackgroundColor;
+@formInfoLabelBackground: darken(@formInfoBorder, -8);
 @transparentFormInfoColor: @formInfoColor;
 @transparentFormInfoBackground: @formInfoBackground;
 
 @formSuccessColor: @positiveTextColor;
 @formSuccessBorder: @positiveBorderColor;
 @formSuccessBackground: @positiveBackgroundColor;
+@formSuccessLabelBackground: darken(@formSuccessBorder, -8);
 @transparentFormSuccessColor: @formSuccessColor;
 @transparentFormSuccessBackground: @formSuccessBackground;
 
 @formWarningColor: @warningTextColor;
 @formWarningBorder: @warningBorderColor;
 @formWarningBackground: @warningBackgroundColor;
+@formWarningLabelBackground: darken(@formWarningBorder, -8);
 @transparentFormWarningColor: @formWarningColor;
 @transparentFormWarningBackground: @formWarningBackground;
 
