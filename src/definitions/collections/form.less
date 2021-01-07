@@ -686,6 +686,13 @@
     .ui.form .field.@{state} .checkbox .box:after {
       color: @c;
     }
+
+    & when (@variationFormInverted) {
+      .ui.inverted.form .fields.@{state} .field label,
+      .ui.inverted.form .@{state}.field label {
+        color: @lbg;
+      }
+    }
   })
 }
 
