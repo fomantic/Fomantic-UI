@@ -76,7 +76,7 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 ### 💡 Getting Help
 
-If your looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
+If you're looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
 or you can ask in our community [Discord](https://discord.gg/YChxjJ3) server.
 
 ### 🐛 Submitting Bugs and Enhancements
