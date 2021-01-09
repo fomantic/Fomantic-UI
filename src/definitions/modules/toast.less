@@ -38,6 +38,10 @@
       margin: 0;
       width: 100%;
       border-radius: 0;
+      & > .ui.toast,
+      > .ui.message {
+        margin-left: 0;
+      }
       & when (@variationToastFloating) {
         &.floating,
         &.hoverfloating:hover {
