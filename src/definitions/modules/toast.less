@@ -28,7 +28,6 @@
   &.ui.attached when (@variationToastAttached) {
     width: 100%;
     left: 0;
-    margin-top: -@toastAttachedMargin;
     & .vertical.attached when (@variationToastVertical) {
       border-radius: 0;
     }
@@ -36,10 +35,15 @@
       border-radius: 0;
     }
     & .toast-box {
-      margin-top: -@toastAttachedMargin;
-      margin-bottom: 0;
+      margin: 0;
       width: 100%;
       border-radius: 0;
+      & when (@variationToastFloating) {
+        &.floating,
+        &.hoverfloating:hover {
+          border: none;
+        }
+      }
       & > .vertical > .content when (@variationToastVertical) {
         flex: 1;
       }
