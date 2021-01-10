@@ -109,10 +109,12 @@
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
 @itemDropdownIconFloat: right;
+@itemDropdownIconOrder: 1;
 @itemDropdownIconMargin: @itemLineHeightOffset 0 0 @itemDropdownIconDistance;
 
 /* Description */
 @itemDescriptionFloat: right;
+@itemDescriptionOrder: 1;
 @itemDescriptionMargin: 0 0 0 1em;
 @itemDescriptionColor: @lightTextColor;
 
@@ -352,8 +354,8 @@
 @upwardSelectionActiveHoverMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
 
 /* Flyout Direction */
-@leftMenuDropdownIconFloat: left;
-@leftMenuDropdownIconMargin: @itemLineHeightOffset 0 0 0;
+@leftMenuDropdownIconOrder: 0;
+@leftMenuDropdownIconMargin: @itemLineHeightOffset @itemDropdownIconDistance 0 0;
 
 /* Left */
 @leftSubMenuBorderRadius: @borderRadius;
