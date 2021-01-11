@@ -222,11 +222,13 @@
 .ui.dropdown .menu > .item > .description {
   order: @itemDescriptionOrder;
   margin: @itemDescriptionMargin;
+  padding: @itemDescriptionPadding;
   color: @itemDescriptionColor;
 }
 
 .ui.dropdown .menu > .item.vertical > .description {
   margin: 0;
+  padding: 0;
 }
 
 /*-----------------
@@ -301,6 +303,7 @@
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
 .ui.dropdown .menu > .item > img  {
+  align-self: center;
   margin-left: 0;
   margin-right: @itemElementDistance;
 }

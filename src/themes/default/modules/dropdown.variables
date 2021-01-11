@@ -116,6 +116,7 @@
 @itemDescriptionFloat: right;
 @itemDescriptionOrder: 1;
 @itemDescriptionMargin: 0 0 0 auto;
+@itemDescriptionPadding: 0 0 0 1em;
 @itemDescriptionColor: @lightTextColor;
 
 /* Message */
