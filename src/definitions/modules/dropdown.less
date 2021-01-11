@@ -95,6 +95,7 @@
   width: auto;
   order: @itemDropdownIconOrder;
   margin: @itemDropdownIconMargin;
+  padding-left: @itemDropdownIconDistance;
 }
 .ui.dropdown .menu > .item .text {
   flex-grow: 1;
@@ -153,13 +154,12 @@
 
 .ui.dropdown > .text > [class*="right floated"],
 .ui.dropdown .menu .item > [class*="right floated"] {
-  float: right !important;
-  margin-right: 0 !important;
-  margin-left: @floatedDistance !important;
+  order: 1;
+  padding-left: @floatedDistance;
+  margin-left: auto !important;
 }
 .ui.dropdown > .text > [class*="left floated"],
 .ui.dropdown .menu .item > [class*="left floated"] {
-  float: left !important;
   margin-left: 0 !important;
   margin-right: @floatedDistance !important;
 }
@@ -1207,6 +1207,7 @@ select.ui.dropdown {
   order: @leftMenuDropdownIconOrder;
   width: auto;
   margin: @leftMenuDropdownIconMargin;
+  padding: 0 @floatedDistance 0 0;
 }
 
 & when (@variationDropdownUpward) {
