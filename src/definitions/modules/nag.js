@@ -94,47 +94,47 @@ $.fn.nag = function(parameters) {
 
         show: function() {
           if( module.should.show() && !$module.is(':visible') ) {
+            if(settings.onShow.call(element) === false) {
+              module.debug('onShow callback returned false, cancelling nag animation');
+              return false;
+            }
             module.debug('Showing nag', settings.animation.show);
-            if(settings.animation.show == 'fade') {
+            if(settings.animation.show === 'fade') {
               $module
-                .fadeIn(settings.duration, settings.easing)
+                .fadeIn(settings.duration, settings.easing, settings.onVisible)
               ;
             }
             else {
               $module
-                .slideDown(settings.duration, settings.easing)
+                .slideDown(settings.duration, settings.easing, settings.onVisible)
               ;
             }
           }
         },
 
         hide: function() {
-          module.debug('Showing nag', settings.animation.hide);
-          if(settings.animation.hide == 'fade') {
+          if(settings.onHide.call(element) === false) {
+            module.debug('onHide callback returned false, cancelling nag animation');
+            return false;
+          }
+          module.debug('Hiding nag', settings.animation.hide);
+          if(settings.animation.hide === 'fade') {
             $module
-              .fadeOut(settings.duration, settings.easing)
+              .fadeOut(settings.duration, settings.easing, settings.onHidden)
             ;
           }
           else {
             $module
-              .slideUp(settings.duration, settings.easing)
+              .slideUp(settings.duration, settings.easing, settings.onHidden)
             ;
           }
         },
 
-        onHide: function() {
-          module.debug('Removing nag', settings.animation.hide);
-          $module.remove();
-          if (settings.onHide) {
-            settings.onHide();
-          }
-        },
-
         dismiss: function(event) {
-          if(settings.storageMethod) {
+          if(module.hide() !== false && settings.storageMethod) {
+            module.debug('Dismissing nag', settings.storageMethod, settings.key, settings.value, settings.expires);
             module.storage.set(settings.key, settings.value);
           }
-          module.hide();
           event.stopImmediatePropagation();
           event.preventDefault();
         },
@@ -531,10 +531,20 @@ $.fn.nag.settings = {
     close : '> .close.icon'
   },
 
-  speed         : 500,
+  duration      : 500,
   easing        : 'easeOutQuad',
 
-  onHide: function() {}
+  // callback before show animation, return false to prevent show
+  onShow        : function() {},
+
+  // called after show animation
+  onVisible     : function() {},
+
+  // callback before hide animation, return false to prevent hide
+  onHide        : function() {},
+
+  // callback after hide animation
+  onHidden      : function() {}
 
 };
 
