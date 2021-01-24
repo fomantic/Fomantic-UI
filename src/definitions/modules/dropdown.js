@@ -300,10 +300,7 @@ $.fn.dropdown = function(parameters) {
           if(settings.fireOnInit === false && module.is.initialLoad()) {
             module.verbose('Skipping callback on initial load', settings.onSearch);
           }
-          else {
-            settings.onSearch.call(element, query);
-          }
-          if(module.has.minCharacters(query)) {
+          if(module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
             module.filter(query);
           }
           else {
