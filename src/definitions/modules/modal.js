@@ -1207,7 +1207,7 @@ $.fn.modal = function(parameters) {
           if ($.isFunction(settings.templates[query])) {
             settings.autoShow = true;
             settings.className.modal = settings.className.template;
-            settings = $.extend(settings, settings.templates[query].apply(module ,queryArguments));
+            settings = $.extend(true, settings, settings.templates[query].apply(module ,queryArguments));
           }
           module.initialize();
         }
