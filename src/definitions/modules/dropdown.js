@@ -2677,7 +2677,11 @@ $.fn.dropdown = function(parameters) {
                 : value,
               newValue
             ;
-            if(hasInput) {
+            if($selected && $selected.hasClass(className.actionable)){
+              settings.onActionable.call(element, value, text, $selected);
+              return;
+            }
+            else if(hasInput) {
               if(!settings.allowReselection && stringValue == currentValue) {
                 module.verbose('Skipping value update already same value', value, currentValue);
                 if(!module.is.initialLoad()) {
@@ -4038,6 +4042,7 @@ $.fn.dropdown.settings = {
   onChange      : function(value, text, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
+  onActionable  : function(value, text, $selected){},
 
   onLabelSelect : function($selectedLabels){},
   onLabelCreate : function(value, text) { return $(this); },
@@ -4097,7 +4102,8 @@ $.fn.dropdown.settings = {
     icon         : 'icon',     // optional icon name
     iconClass    : 'iconClass', // optional individual class for icon (for example to use flag instead)
     class        : 'class',    // optional individual class for item/header
-    divider      : 'divider'   // optional divider append for group headers
+    divider      : 'divider',  // optional divider append for group headers
+    actionable   : 'actionable' // optional actionable item
   },
 
   keys : {
@@ -4167,7 +4173,8 @@ $.fn.dropdown.settings = {
     header      : 'header',
     divider     : 'divider',
     groupIcon   : '',
-    unfilterable : 'unfilterable'
+    unfilterable : 'unfilterable',
+    actionable : 'actionable'
   }
 
 };
@@ -4242,11 +4249,14 @@ $.fn.dropdown.settings.templates = {
           maybeText = (option[fields.text])
             ? ' data-text="' + deQuote(option[fields.text],true) + '"'
             : '',
+          maybeActionable = (option[fields.actionable])
+            ? className.actionable+' '
+            : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
             : ''
         ;
-        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeActionable + maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if (isMenu) {
           html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
