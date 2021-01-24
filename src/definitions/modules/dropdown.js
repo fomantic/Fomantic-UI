@@ -299,8 +299,7 @@ $.fn.dropdown = function(parameters) {
           module.verbose('Searching for query', query);
           if(settings.fireOnInit === false && module.is.initialLoad()) {
             module.verbose('Skipping callback on initial load', settings.onSearch);
-          }
-          if(module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
+          } else if(module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
             module.filter(query);
           }
           else {
