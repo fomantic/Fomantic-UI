@@ -486,9 +486,9 @@ $.fn.modal = function(parameters) {
                 $module
                   .transition({
                     debug       : settings.debug,
-                    animation   : settings.transition + ' in',
+                    animation   : (settings.transition.showMethod || settings.transition) + ' in',
                     queue       : settings.queue,
-                    duration    : settings.duration,
+                    duration    : settings.transition.showDuration || settings.duration,
                     useFailSafe : true,
                     onComplete : function() {
                       settings.onVisible.apply(element);
@@ -536,9 +536,9 @@ $.fn.modal = function(parameters) {
               $module
                 .transition({
                   debug       : settings.debug,
-                  animation   : settings.transition + ' out',
+                  animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : settings.queue,
-                  duration    : settings.duration,
+                  duration    : settings.transition.hideDuration || settings.duration,
                   useFailSafe : true,
                   onStart     : function() {
                     if(!module.others.active() && !module.others.animating() && !keepDimmed) {
