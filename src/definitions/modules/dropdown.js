@@ -297,6 +297,12 @@ $.fn.dropdown = function(parameters) {
             : module.get.query()
           ;
           module.verbose('Searching for query', query);
+          if(settings.fireOnInit === false && module.is.initialLoad()) {
+            module.verbose('Skipping callback on initial load', settings.onSearch);
+          }
+          else {
+            settings.onSearch.call(element, query);
+          }
           if(module.has.minCharacters(query)) {
             module.filter(query);
           }
@@ -4038,6 +4044,7 @@ $.fn.dropdown.settings = {
   onChange      : function(value, text, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
+  onSearch      : function(searchTerm){},
 
   onLabelSelect : function($selectedLabels){},
   onLabelCreate : function(value, text) { return $(this); },
