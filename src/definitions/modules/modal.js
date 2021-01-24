@@ -944,8 +944,8 @@ $.fn.modal = function(parameters) {
                 closable   : 'auto',
                 useFlex    : module.can.useFlex(),
                 duration   : {
-                  show     : settings.duration,
-                  hide     : settings.duration
+                  show     : settings.transition.showDuration || settings.duration,
+                  hide     : settings.transition.hideDuration || settings.duration
                 }
               },
               dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
