@@ -40,9 +40,9 @@
   will-change: top, left, margin, transform, opacity;
 }
 
-.ui.modal > :first-child:not(.icon):not(.dimmer),
+.ui.modal > :first-child:not(.close):not(.dimmer),
 .ui.modal > i.icon:first-child + *,
-.ui.modal > .dimmer:first-child + *:not(.icon),
+.ui.modal > .dimmer:first-child + *:not(.close),
 .ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: @borderRadius;
   border-top-right-radius: @borderRadius;
@@ -477,8 +477,8 @@
       border-radius:0;
     }
   }
-  .ui.modal > .close.inside + .header,
-  .ui.fullscreen.modal > .close + .header {
+  .ui.modal > .close.inside + .header:not(.centered):not(.center):not(.icon),
+  .ui.fullscreen.modal > .close + .header:not(.centered):not(.center):not(.icon) {
     padding-right: @closeHitbox;
   }
   .ui.modal > .close.inside,
