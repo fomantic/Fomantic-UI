@@ -1627,7 +1627,7 @@ $.fn.dropdown = function(parameters) {
                       .addClass(className.selected)
                     ;
                     module.set.scrollPosition($nextItem);
-                    if(settings.selectOnKeydown && module.is.single()) {
+                    if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                       module.set.selectedItem($nextItem);
                     }
                   }
@@ -1654,7 +1654,7 @@ $.fn.dropdown = function(parameters) {
                       .addClass(className.selected)
                     ;
                     module.set.scrollPosition($nextItem);
-                    if(settings.selectOnKeydown && module.is.single()) {
+                    if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                       module.set.selectedItem($nextItem);
                     }
                   }
@@ -2422,7 +2422,7 @@ $.fn.dropdown = function(parameters) {
             $nextSelectedItem
               .addClass(className.selected)
             ;
-            if(settings.selectOnKeydown && module.is.single()) {
+            if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
               module.set.selectedItem($nextSelectedItem);
             }
             $menu
@@ -2625,7 +2625,7 @@ $.fn.dropdown = function(parameters) {
               module.set.scrollPosition($nextValue);
               $selectedItem.removeClass(className.selected);
               $nextValue.addClass(className.selected);
-              if(settings.selectOnKeydown && module.is.single()) {
+              if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                 module.set.selectedItem($nextValue);
               }
             }
@@ -2797,7 +2797,7 @@ $.fn.dropdown = function(parameters) {
                   if(settings.apiSettings && settings.saveRemoteData) {
                     module.save.remoteData(selectedText, selectedValue);
                   }
-                  if (!keepSearchTerm) {
+                  if (!keepSearchTerm && !$selected.hasClass(className.actionable)) {
                     module.set.text(selectedText);
                   }
                   module.set.value(selectedValue, selectedText, $selected, preventChangeTrigger);
