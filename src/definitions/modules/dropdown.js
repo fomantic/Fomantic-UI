@@ -2788,8 +2788,8 @@ $.fn.dropdown = function(parameters) {
                     }
                     else {
                       module.add.value(selectedValue, selectedText, $selected);
-                      module.set.text(module.add.variables(message.count));
                       if(!$selected.hasClass(className.actionable)){
+                        module.set.text(module.add.variables(message.count));
                         module.set.activeItem($selected);
                       }
                     }
