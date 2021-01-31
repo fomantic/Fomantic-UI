@@ -71,6 +71,7 @@
 @variationIconLink: true;
 @variationIconCircular: true;
 @variationIconBordered: true;
+@variationIconColored: true;
 @variationIconRotated: true;
 @variationIconFlipped: true;
 @variationIconCorner: true;
