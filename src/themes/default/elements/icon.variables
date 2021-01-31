@@ -70,6 +70,8 @@
 @borderedHorizontalPadding: 0;
 @borderedShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 
+@coloredBoxShadow: 0 0 0 0.1em currentColor inset;
+
 @cornerIconSize: 0.45em;
 @cornerIconStroke: 1px;
 @cornerIconShadow:

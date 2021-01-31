@@ -144,6 +144,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
       box-shadow: none;
     }
   }
+  &.colored when (@variationIconColored){
+    box-shadow: @coloredBoxShadow;
+  }
 }
 
 & when (@variationIconFlipped) {
@@ -288,6 +291,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
       border: none;
       box-shadow: none;
     }
+  }
+  &.colored when (@variationIconColored){
+    box-shadow: @coloredBoxShadow;
   }
 }
 
@@ -445,6 +451,9 @@ i.icons {
     height: @borderedSize;
     box-shadow: @borderedShadow;
     vertical-align: middle;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
   }
   i.circular.icons {
     border-radius: 500em;
