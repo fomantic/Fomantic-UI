@@ -46,7 +46,7 @@
     "gulp-clean-css": "^4.3.0",
     "gulp-clone": "^2.0.1",
     "gulp-concat": "^2.6.1",
-    "gulp-concat-css": "^3.1.0",
+    "gulp-concat-css-safe": "^3.1.0",
     "gulp-copy": "^4.0.0",
     "gulp-dedupe": "0.0.2",
     "gulp-flatten": "^0.4.0",
