@@ -29,6 +29,7 @@ var
   del            = require('del'),
   jsonEditor     = require('gulp-json-editor'),
   plumber        = require('gulp-plumber'),
+  gulpInstall    = require("gulp-install")
   inquirer       = require('inquirer'),
   rename         = require('gulp-rename'),
   replace        = require('gulp-replace'),
@@ -321,6 +322,11 @@ module.exports = function (callback) {
       gulp.src(source.userGulpFile)
         .pipe(plumber())
         .pipe(gulp.dest(installFolder))
+      ;
+
+      // create re2 binaries.
+      gulp.src("../node_modules/re2")
+        .pipe(gulpInstall())
       ;
 
     }

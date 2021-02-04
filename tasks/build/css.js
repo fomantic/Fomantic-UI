@@ -11,7 +11,6 @@ const
   // gulp dependencies
   autoprefixer = require('gulp-autoprefixer'),
   chmod        = require('gulp-chmod'),
-  concatCSS    = require('gulp-concat-css-safe'),
   dedupe       = require('gulp-dedupe'),
   flatten      = require('gulp-flatten'),
   gulpif       = require('gulp-if'),
@@ -89,6 +88,9 @@ function build(src, type, compress, config, opts) {
  * @param {boolean} compress - should the output be compressed
  */
 function pack(type, compress) {
+
+  const concatCSS    = require('gulp-concat-css-safe');
+
   const output       = type === 'docs' ? docsConfig.paths.output : config.paths.output;
   const ignoredGlobs = type === 'rtl' ? globs.ignoredRTL + '.rtl.css' : globs.ignored + '.css';
 
