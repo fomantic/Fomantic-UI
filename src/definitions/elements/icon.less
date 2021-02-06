@@ -137,15 +137,15 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 
     width: @circularSize !important;
     height: @circularSize !important;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
   }
   & when (@variationIconInverted) {
     i.circular.inverted.icon {
       border: none;
       box-shadow: none;
     }
-  }
-  &.colored when (@variationIconColored){
-    box-shadow: @coloredBoxShadow;
   }
 }
 
@@ -285,15 +285,15 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     height: @borderedSize;
     padding: @borderedVerticalPadding @borderedHorizontalPadding !important;
     box-shadow: @borderedShadow;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
   }
   & when (@variationIconInverted) {
     i.bordered.inverted.icon {
       border: none;
       box-shadow: none;
     }
-  }
-  &.colored when (@variationIconColored){
-    box-shadow: @coloredBoxShadow;
   }
 }
 
