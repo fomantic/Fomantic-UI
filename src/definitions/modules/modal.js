@@ -1207,7 +1207,13 @@ $.fn.modal = function(parameters) {
           if ($.isFunction(settings.templates[query])) {
             settings.autoShow = true;
             settings.className.modal = settings.className.template;
-            settings = $.extend(true, settings, settings.templates[query].apply(module ,queryArguments));
+            settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
+
+            // reassign shortcuts
+            className = settings.className;
+            namespace = settings.namespace;
+            fields    = settings.fields;
+            error     = settings.error;
           }
           module.initialize();
         }
