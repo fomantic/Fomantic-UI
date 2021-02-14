@@ -4094,7 +4094,6 @@ $.fn.dropdown.settings = {
     name                 : 'name',     // displayed dropdown text
     description          : 'description', // displayed dropdown description
     descriptionVertical  : 'descriptionVertical', // whether description should be vertical
-    name                 : 'name',     // displayed dropdown text
     value                : 'value',    // actual dropdown value
     text                 : 'text',     // displayed text when selected
     type                 : 'type',     // type of dropdown element
