@@ -2679,11 +2679,7 @@ $.fn.dropdown = function(parameters) {
                 : value,
               newValue
             ;
-            if($selected && $selected.hasClass(className.actionable)){
-              settings.onActionable.call(element, $selected.data('value'), text, $selected);
-              return;
-            }
-            else if(hasInput) {
+            if(hasInput) {
               if(!settings.allowReselection && stringValue == currentValue) {
                 module.verbose('Skipping value update already same value', value, currentValue);
                 if(!module.is.initialLoad()) {
@@ -2769,29 +2765,32 @@ $.fn.dropdown = function(parameters) {
 
                   isFiltered     = $selected.hasClass(className.filtered),
                   isActive       = $selected.hasClass(className.active),
+                  isActionable   = $selected.hasClass(className.actionable),
                   isUserValue    = $selected.hasClass(className.addition),
                   shouldAnimate  = (isMultiple && $selectedItem.length == 1)
                 ;
-                if(isMultiple) {
+                if(isActionable){
+                  if((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
+                    module.save.remoteData(selectedText, selectedValue);
+                  }
+                  settings.onActionable.call(element, selectedValue, selectedText, $selected);
+                }
+                else if(isMultiple) {
                   if(!isActive || isUserValue) {
                     if(settings.apiSettings && settings.saveRemoteData) {
                       module.save.remoteData(selectedText, selectedValue);
                     }
                     if(settings.useLabels) {
                       module.add.value(selectedValue, selectedText, $selected);
-                      if(!$selected.hasClass(className.actionable)){
-                        module.add.label(selectedValue, selectedText, shouldAnimate);
-                        module.set.activeItem($selected);
-                      }
+                      module.add.label(selectedValue, selectedText, shouldAnimate);
+                      module.set.activeItem($selected);
                       module.filterActive();
                       module.select.nextAvailable($selectedItem);
                     }
                     else {
                       module.add.value(selectedValue, selectedText, $selected);
-                      if(!$selected.hasClass(className.actionable)){
-                        module.set.text(module.add.variables(message.count));
-                        module.set.activeItem($selected);
-                      }
+                      module.set.text(module.add.variables(message.count));
+                      module.set.activeItem($selected);
                     }
                   }
                   else if(!isFiltered && (settings.useLabels || selectActionActive)) {
