@@ -1993,6 +1993,9 @@ $.fn.form.settings = {
 
       // allow dashes in card
       cardNumber = cardNumber.replace(/[\-]/g, '');
+      
+      // allow spaces in card
+      cardNumber = cardNumber.replace(/\s/g, '');
 
       // verify card types
       if(requiredTypes) {
