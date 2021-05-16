@@ -127,7 +127,7 @@ function buildCSS(src, type, config, opts, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
   }
 
-  if (globs.individuals !== undefined) {
+  if (globs.individuals !== undefined && typeof src === 'string') {
     const individuals = config.globs.individuals.replace('{','');
     const components = config.globs.components.replace('}',',').concat(individuals);
 

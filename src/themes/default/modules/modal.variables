@@ -19,7 +19,7 @@
 
 @closeHitbox: 2.25rem;
 @closeDistance: 0.25rem;
-@closeHitBoxOffset: (@closeHitbox - 1rem) / 2;
+@closeHitBoxOffset: ((@closeHitbox - 1rem) / 2);
 @closePadding: @closeHitBoxOffset 0 0 0;
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
@@ -60,6 +60,7 @@
 @actionAlign: right;
 
 @buttonDistance: 0.75em;
+@buttonCenteredDistance: 0.5em;
 
 /* Inner Close Position (Tablet/Mobile) */
 @innerCloseTop: (@headerVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
@@ -91,7 +92,7 @@
 @widescreenMonitorMargin: 0 0 0 0;
 
 @fullScreenWidth: 95%;
-@fullScreenOffset: (100% - @fullScreenWidth) / 2;
+@fullScreenOffset: ((100% - @fullScreenWidth) / 2);
 @fullScreenMargin: 1em auto;
 
 /* Coupling */

@@ -26,6 +26,7 @@
 @variationButtonFluid: true;
 @variationButtonCircular: true;
 @variationButtonGroups: true;
+@variationButtonStackable: true;
 @variationButtonSizes: @variationAllSizes;
 
 /* Container */
@@ -70,6 +71,7 @@
 @variationIconLink: true;
 @variationIconCircular: true;
 @variationIconBordered: true;
+@variationIconColored: true;
 @variationIconRotated: true;
 @variationIconFlipped: true;
 @variationIconCorner: true;
@@ -207,6 +209,7 @@
 /* Text */
 @variationTextInverted: true;
 @variationTextDisabled: true;
+@variationTextStates: true;
 @variationTextSizes: @variationAllSizes;
 
 
@@ -272,6 +275,8 @@
 @variationMessageIcon: true;
 @variationMessageFloating: true;
 @variationMessageConsequences: true;
+@variationMessageCentered: true;
+@variationMessageRightAligned: true;
 @variationMessageSizes: @variationAllSizes;
 
 /* Table */
@@ -320,6 +325,8 @@
 
 /* Card */
 @variationCardInverted: true;
+@variationCardDisabled: true;
+@variationCardLoading: true;
 @variationCardHorizontal: true;
 @variationCardRaised: true;
 @variationCardCentered: true;
@@ -366,17 +373,20 @@
 @variationAccordionFluid: true;
 
 /* Calendar */
+@variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 
 /* Checkbox */
 @variationCheckboxBox: false;   //.box (instead of label) is an ancient fragment of sui v1 and not even documented in v2.x anymore
 @variationCheckboxDisabled: true;
+@variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
 @variationCheckboxRadio: true;
 @variationCheckboxSlider: true;
 @variationCheckboxToggle: true;
 @variationCheckboxIndeterminate: true;
 @variationCheckboxFitted: true;
+@variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
 
 /* Dimmer */
@@ -393,6 +403,7 @@
 /* Dropdown */
 @variationDropdownInverted: true;
 @variationDropdownDisabled: true;
+@variationDropdownReadonly: true;
 @variationDropdownLabel: true;
 @variationDropdownButton: true;
 @variationDropdownSelection: true;
@@ -412,6 +423,7 @@
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
 @variationDropdownPointing: true;
+@variationDropdownScrollhint: true;
 @variationDropdownSizes: @variationAllSizes;
 
 /* Embed */
@@ -427,6 +439,14 @@
 @variationModalLegacy: true;
 @variationModalCloseInside: true;
 @variationModalSizes: @variationAllSizes;
+
+/* Nag */
+@variationNagInverted: true;
+@variationNagBottom: true;
+@variationNagOverlay: true;
+@variationNagFixed: true;
+@variationNagGroups: true;
+@variationNagSizes: @variationAllSizes;
 
 /* Popup */
 @variationPopupInverted: true;
@@ -460,6 +480,7 @@
 @variationProgressActive: true;
 @variationProgressAttached: true;
 @variationProgressSpeeds: true;
+@variationProgressRightAligned: true;
 @variationProgressSizes: @variationAllSizes;
 
 /* Rating */
@@ -473,6 +494,9 @@
 @variationSearchLoading: true;
 @variationSearchAligned: true;
 @variationSearchFluid: true;
+@variationSearchShort: true;
+@variationSearchLong: true;
+@variationSearchScrolling: true;
 @variationSearchSizes: @variationAllSizes;
 
 /* Shape */
@@ -518,6 +542,7 @@
 @variationToastWarning: true;
 @variationToastSuccess: true;
 @variationToastError: true;
+@variationToastHorizontal: true;
 @variationToastFloating: true;
 @variationToastProgress: true;
 @variationToastIcon: true;
@@ -528,10 +553,28 @@
 @variationToastActions: true;
 @variationToastVertical: true;
 @variationToastAttached: true;
+@variationToastCompact: true;
+@variationToastCentered: true;
 
-/* Loading */
+/* Transition */
 @variationTransitionDisabled: true;
 @variationTransitionLoading: true;
+@variationTransitionBrowse: true;
+@variationTransitionDrop: true;
+@variationTransitionFade: true;
+@variationTransitionFlip: true;
+@variationTransitionScale: true;
+@variationTransitionFly: true;
+@variationTransitionSlide: true;
+@variationTransitionSwing: true;
+@variationTransitionZoom: true;
+@variationTransitionFlash: true;
+@variationTransitionShake: true;
+@variationTransitionBounce: true;
+@variationTransitionTada: true;
+@variationTransitionPulse: true;
+@variationTransitionJiggle: true;
+@variationTransitionGlow: true;
 
 /* Emojis */
 @variationEmojiColons: true;

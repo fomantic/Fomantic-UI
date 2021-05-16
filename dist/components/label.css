@@ -154,6 +154,21 @@ a.ui.label {
   margin-top: 0;
   margin-bottom: 2rem !important;
 }
+.ui.segment:not(.basic) > .ui.top.attached.label {
+  margin-top: -1px;
+}
+.ui.segment:not(.basic) > .ui.bottom.attached.label {
+  margin-bottom: -1px;
+}
+.ui.segment:not(.basic) > .ui.attached.label:not(.right) {
+  margin-left: -1px;
+}
+.ui.segment:not(.basic) > .ui.right.attached.label {
+  margin-right: -1px;
+}
+.ui.segment:not(.basic) > .ui.attached.label:not(.left):not(.right) {
+  width: calc(100% + 2px);
+}
 
 
 /*******************************
@@ -161,7 +176,7 @@ a.ui.label {
 *******************************/
 
 .ui.image.label {
-  width: auto !important;
+  width: auto;
   margin-top: 0;
   margin-bottom: 0;
   max-width: 9999px;
@@ -172,6 +187,9 @@ a.ui.label {
   border-radius: 0.28571429rem;
   -webkit-box-shadow: none;
           box-shadow: none;
+}
+.ui.image.label.attached:not(.basic) {
+  padding: 0.5833em 0.833em 0.5833em 0.5em;
 }
 .ui.image.label img {
   display: inline-block;
@@ -185,6 +203,14 @@ a.ui.label {
   margin: -0.5833em -0.833em -0.5833em 0.5em;
   padding: 0.5833em 0.833em;
   border-radius: 0 0.28571429rem 0.28571429rem 0;
+}
+.ui.bottom.attached.image.label:not(.right) > img,
+.ui.top.right.attached.image.label > img {
+  border-top-left-radius: 0;
+}
+.ui.top.attached.image.label:not(.right) > img,
+.ui.bottom.right.attached.image.label > img {
+  border-bottom-left-radius: 0;
 }
 
 /*-------------------
@@ -444,7 +470,7 @@ a.ui.label {
 }
 .ui[class*="top left attached"].label {
   width: auto;
-  margin-top: 0 !important;
+  margin-top: 0;
   border-radius: 0.21428571rem 0 0.28571429rem 0;
 }
 .ui[class*="top right attached"].label {
@@ -567,6 +593,16 @@ a.ui.active.label:hover:before {
   color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
           box-shadow: none;
+  padding-top: calc(0.5833em - 1px);
+  padding-bottom: calc(0.5833em - 1px);
+  padding-right: calc(0.833em - 1px);
+}
+.ui.basic.labels:not(.tag):not(.image):not(.ribbon) .label,
+.ui.basic.label:not(.tag):not(.image):not(.ribbon) {
+  padding-left: calc(0.833em - 1px);
+}
+.ui.basic.image.label {
+  padding-left: calc(0.5em - 1px);
 }
 
 /* Link */

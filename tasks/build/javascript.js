@@ -99,7 +99,7 @@ function buildJS(src, type, config, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + (config.globs.ignored || '') + '.js';
   }
 
-  if (globs.individuals !== undefined) {
+  if (globs.individuals !== undefined && typeof src === 'string') {
     const individuals = config.globs.individuals.replace('{','');
     const components = config.globs.components.replace('}',',').concat(individuals);
 
