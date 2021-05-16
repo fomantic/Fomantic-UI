@@ -358,6 +358,7 @@ module.exports = {
           { name: "button", checked: true },
           { name: "container", checked: true },
           { name: "divider", checked: true },
+          { name: "emoji", checked: true },
           { name: "flag", checked: true },
           { name: "header", checked: true },
           { name: "icon", checked: true },

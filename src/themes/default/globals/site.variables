@@ -2,6 +2,8 @@
          Site Settings
 *******************************/
 
+@import "variation.variables";
+
 /*-------------------
        Fonts
 --------------------*/
@@ -13,7 +15,7 @@
 
 @googleFontName    : @fontName;
 @importGoogleFonts : true;
-@googleFontSizes   : '400,700,400italic,700italic';
+@googleFontSizes   : 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
 @googleSubset      : 'latin';
 @googleFontDisplay : 'swap';
 
@@ -72,6 +74,7 @@
 @h3 : unit((18 / 14), rem);
 @h4 : unit((15 / 14), rem);
 @h5 : unit((14 / 14), rem);
+@h6 : unit((12 / 14), rem);
 
 /*--------------
    Form Input
@@ -642,14 +645,14 @@
   This rounds @size values to the closest pixel then expresses that value in (r)em.
   This ensures all size values round to exact pixels
 */
-@miniRaw         : unit( round(@miniSize * @emSize) / @emSize );
-@tinyRaw         : unit( round(@tinySize * @emSize) / @emSize );
-@smallRaw        : unit( round(@smallSize * @emSize) / @emSize );
-@mediumRaw       : unit( round(@mediumSize * @emSize) / @emSize );
-@largeRaw        : unit( round(@largeSize * @emSize) / @emSize );
-@bigRaw          : unit( round(@bigSize * @emSize) / @emSize );
-@hugeRaw         : unit( round(@hugeSize * @emSize) / @emSize );
-@massiveRaw      : unit( round(@massiveSize * @emSize) / @emSize );
+@miniRaw         : unit( (round(@miniSize * @emSize) / @emSize ));
+@tinyRaw         : unit( (round(@tinySize * @emSize) / @emSize ));
+@smallRaw        : unit( (round(@smallSize * @emSize) / @emSize ));
+@mediumRaw       : unit( (round(@mediumSize * @emSize) / @emSize ));
+@largeRaw        : unit( (round(@largeSize * @emSize) / @emSize ));
+@bigRaw          : unit( (round(@bigSize * @emSize) / @emSize ));
+@hugeRaw         : unit( (round(@hugeSize * @emSize) / @emSize ));
+@massiveRaw      : unit( (round(@massiveSize * @emSize) / @emSize ));
 
 @mini            : unit( @miniRaw, rem);
 @tiny            : unit( @tinyRaw, rem);
@@ -699,7 +702,6 @@
 @hoveredTextColor            : rgba(0, 0, 0, 0.8);
 @pressedTextColor            : rgba(0, 0, 0, 0.9);
 @selectedTextColor           : rgba(0, 0, 0, 0.95);
-@disabledTextColor           : rgba(0, 0, 0, 0.2);
 
 @invertedTextColor           : rgba(255, 255, 255, 0.9);
 @invertedMutedTextColor      : rgba(255, 255, 255, 0.8);
@@ -708,7 +710,6 @@
 @invertedHoveredTextColor    : rgba(255, 255, 255, 1);
 @invertedPressedTextColor    : rgba(255, 255, 255, 1);
 @invertedSelectedTextColor   : rgba(255, 255, 255, 1);
-@invertedDisabledTextColor   : rgba(255, 255, 255, 0.2);
 
 /*-------------------
      Brand Colors
@@ -765,7 +766,7 @@
 
 /* Used to match floats with text */
 @lineHeightOffset       : ((@lineHeight - 1em) / 2);
-@headerLineHeightOffset : (@headerLineHeight - 1em) / 2;
+@headerLineHeightOffset : ((@headerLineHeight - 1em) / 2);
 
 /* Header Spacing */
 @headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));
@@ -1014,8 +1015,6 @@
 @purpleHover              : saturate(darken(@purple, 5), 10, relative);
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
-@greyHover                : saturate(darken(@grey, 5), 10, relative);
-@blackHover               : saturate(darken(@black, 5), 10, relative);
 
 @lightRedHover            : saturate(darken(@lightRed, 10), 10, relative);
 @lightOrangeHover         : saturate(darken(@lightOrange, 10), 10, relative);
@@ -1339,3 +1338,128 @@
 @brownBrightHover     : screen(@lightBrownHover,@blendingBaseColor);
 @greyBrightHover      : @lightGreyHover;
 @blackBrightHover     : @lightBlackHover;
+
+/*******************************
+ States shared in Form-related components
+ *******************************/
+/* Form state*/
+@formErrorColor: @negativeTextColor;
+@formErrorBorder: @negativeBorderColor;
+@formErrorBackground: @negativeBackgroundColor;
+@formErrorLabelBackground: darken(@formErrorBorder, -8);
+@transparentFormErrorColor: @formErrorColor;
+@transparentFormErrorBackground: @formErrorBackground;
+
+@formInfoColor: @infoTextColor;
+@formInfoBorder: @infoBorderColor;
+@formInfoBackground: @infoBackgroundColor;
+@formInfoLabelBackground: darken(@formInfoBorder, -8);
+@transparentFormInfoColor: @formInfoColor;
+@transparentFormInfoBackground: @formInfoBackground;
+
+@formSuccessColor: @positiveTextColor;
+@formSuccessBorder: @positiveBorderColor;
+@formSuccessBackground: @positiveBackgroundColor;
+@formSuccessLabelBackground: darken(@formSuccessBorder, -8);
+@transparentFormSuccessColor: @formSuccessColor;
+@transparentFormSuccessBackground: @formSuccessBackground;
+
+@formWarningColor: @warningTextColor;
+@formWarningBorder: @warningBorderColor;
+@formWarningBackground: @warningBackgroundColor;
+@formWarningLabelBackground: darken(@formWarningBorder, -8);
+@transparentFormWarningColor: @formWarningColor;
+@transparentFormWarningBackground: @formWarningBackground;
+
+/* Input state */
+@inputErrorBorderRadius: '';
+@inputErrorBoxShadow: none;
+
+@inputInfoBorderRadius: '';
+@inputInfoBoxShadow: none;
+
+@inputSuccessBorderRadius: '';
+@inputSuccessBoxShadow: none;
+
+@inputWarningBorderRadius: '';
+@inputWarningBoxShadow: none;
+
+/* AutoFill */
+@inputAutoFillBackground: #FFFFF0;
+@inputAutoFillBorder: #E5DFA1;
+@inputAutoFillFocusBackground: @inputAutoFillBackground;
+@inputAutoFillFocusBorder: #D5C315;
+
+@inputAutoFillErrorBackground: #FFFAF0;
+@inputAutoFillErrorBorder: #E0B4B4;
+
+@inputAutoFillInfoBackground: #F0FAFF;
+@inputAutoFillInfoBorder: #b3e0e0;
+
+@inputAutoFillSuccessBackground: #F0FFF0;
+@inputAutoFillSuccessBorder: #bee0b3;
+
+@inputAutoFillWarningBackground: #FFFFe0;
+@inputAutoFillWarningBorder: #e0e0b3;
+
+/* Dropdown state */
+@dropdownErrorHoverBackground: #FBE7E7;
+@dropdownErrorSelectedBackground: @dropdownErrorHoverBackground;
+@dropdownErrorActiveBackground: #FDCFCF;
+@dropdownErrorLabelBackground: #EACBCB;
+@dropdownErrorLabelColor: @errorTextColor;
+
+@dropdownInfoHoverBackground: #e9f2fb;
+@dropdownInfoSelectedBackground: @dropdownInfoHoverBackground;
+@dropdownInfoActiveBackground: #cef1fd;
+@dropdownInfoLabelBackground: #cce3ea;
+@dropdownInfoLabelColor: @infoTextColor;
+
+@dropdownSuccessHoverBackground: #e9fbe9;
+@dropdownSuccessSelectedBackground: @dropdownSuccessHoverBackground;
+@dropdownSuccessActiveBackground: #dafdce;
+@dropdownSuccessLabelBackground: #cceacc;
+@dropdownSuccessLabelColor: @successTextColor;
+
+@dropdownWarningHoverBackground: #fbfbe9;
+@dropdownWarningSelectedBackground: @dropdownWarningHoverBackground;
+@dropdownWarningActiveBackground: #fdfdce;
+@dropdownWarningLabelBackground: #eaeacc;
+@dropdownWarningLabelColor: @warningTextColor;
+
+/* Focused state */
+@inputErrorFocusBackground: @negativeBackgroundColor;
+@inputErrorFocusColor: @negativeTextColor;
+@inputErrorFocusBorder: @negativeBorderColor;
+@inputErrorFocusBoxShadow: none;
+
+@inputInfoFocusBackground: @infoBackgroundColor;
+@inputInfoFocusColor: @infoTextColor;
+@inputInfoFocusBorder: @infoBorderColor;
+@inputInfoFocusBoxShadow: none;
+
+@inputSuccessFocusBackground: @positiveBackgroundColor;
+@inputSuccessFocusColor: @positiveTextColor;
+@inputSuccessFocusBorder: @positiveBorderColor;
+@inputSuccessFocusBoxShadow: none;
+
+@inputWarningFocusBackground: @warningBackgroundColor;
+@inputWarningFocusColor: @warningTextColor;
+@inputWarningFocusBorder: @warningBorderColor;
+@inputWarningFocusBoxShadow: none;
+
+/* Placeholder state */
+@inputErrorPlaceholderColor: lighten(@formErrorColor, 40);
+@inputErrorPlaceholderFocusColor: lighten(@formErrorColor, 30);
+
+@inputInfoPlaceholderColor: lighten(@formInfoColor, 40);
+@inputInfoPlaceholderFocusColor: lighten(@formInfoColor, 30);
+
+@inputSuccessPlaceholderColor: lighten(@formSuccessColor, 40);
+@inputSuccessPlaceholderFocusColor: lighten(@formSuccessColor, 30);
+
+@inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
+@inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
+
+
+

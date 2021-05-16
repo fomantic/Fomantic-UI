@@ -52,7 +52,7 @@
 
 
 /* Header */
-.ui.inverted.segment > .ui.header > .sub.header,
+.ui.inverted.segment > .ui.header .sub.header,
 .ui.inverted.segment > .ui.header {
   color: #FFFFFF;
 }
@@ -110,8 +110,8 @@
 
 
 /*-------------------
-     Placeholder
---------------------*/
+       Placeholder
+  --------------------*/
 
 .ui.placeholder.segment {
   display: -webkit-box;
@@ -172,8 +172,8 @@
 }
 
 /*-------------------
-        Piled
---------------------*/
+          Piled
+  --------------------*/
 
 .ui.piled.segments,
 .ui.piled.segment {
@@ -236,8 +236,8 @@
 }
 
 /*-------------------
-       Stacked
---------------------*/
+         Stacked
+  --------------------*/
 
 .ui.stacked.segment {
   padding-bottom: 1.4em;
@@ -278,8 +278,8 @@
 }
 
 /*-------------------
-       Padded
---------------------*/
+         Padded
+  --------------------*/
 
 .ui.padded.segment {
   padding: 1.5em;
@@ -296,8 +296,8 @@
 }
 
 /*-------------------
-       Compact
---------------------*/
+         Compact
+  --------------------*/
 
 .ui.compact.segment {
   display: table;
@@ -318,8 +318,8 @@
 }
 
 /*-------------------
-       Circular
---------------------*/
+         Circular
+  --------------------*/
 
 .ui.circular.segment {
   display: table-cell;
@@ -330,8 +330,8 @@
 }
 
 /*-------------------
-       Raised
---------------------*/
+         Raised
+  --------------------*/
 
 .ui.raised.raised.segments,
 .ui.raised.raised.segment {
@@ -341,8 +341,8 @@
 
 
 /*******************************
-            Groups
-*******************************/
+              Groups
+  *******************************/
 
 
 /* Group */
@@ -472,6 +472,12 @@
 .ui.horizontal.segments:not(.stackable) > .segment:first-child {
   border-left: none;
 }
+.ui.horizontal.segments > .segment:first-child {
+  border-radius: 0.28571429rem 0 0 0.28571429rem;
+}
+.ui.horizontal.segments > .segment:last-child {
+  border-radius: 0 0.28571429rem 0.28571429rem 0;
+}
 
 
 /*******************************
@@ -480,8 +486,8 @@
 
 
 /*--------------
-    Disabled
----------------*/
+      Disabled
+  ---------------*/
 
 .ui.disabled.segment {
   opacity: 0.45;
@@ -489,8 +495,8 @@
 }
 
 /*--------------
-    Loading
----------------*/
+      Loading
+  ---------------*/
 
 .ui.loading.segment {
   position: relative;
@@ -536,8 +542,8 @@
 
 
 /*-------------------
-       Basic
---------------------*/
+         Basic
+  --------------------*/
 
 .ui.basic.segment,
 .ui.segments .ui.basic.segment,
@@ -550,8 +556,8 @@
 }
 
 /*-------------------
-       Clearing
---------------------*/
+         Clearing
+  --------------------*/
 
 .ui.clearing.segment:after {
   content: "";
@@ -656,8 +662,8 @@
 }
 
 /*-------------------
-       Aligned
---------------------*/
+         Aligned
+  --------------------*/
 
 .ui[class*="left aligned"].segment {
   text-align: left;
@@ -670,8 +676,8 @@
 }
 
 /*-------------------
-       Floated
---------------------*/
+         Floated
+  --------------------*/
 
 .ui.floated.segment,
 .ui[class*="left floated"].segment {
@@ -684,8 +690,8 @@
 }
 
 /*-------------------
-      Inverted
---------------------*/
+        Inverted
+  --------------------*/
 
 .ui.inverted.segment {
   border: none;
@@ -749,8 +755,8 @@
 }
 
 /*-------------------
-      Attached
---------------------*/
+        Attached
+  --------------------*/
 
 
 /* Middle */
@@ -796,8 +802,8 @@
 }
 
 /*--------------
-     Fitted
----------------*/
+       Fitted
+  ---------------*/
 
 .ui.fitted.segment:not(.horizontally) {
   padding-top: 0;
@@ -812,6 +818,10 @@
         Size
 --------------------*/
 
+.ui.segments .segment,
+.ui.segment {
+  font-size: 1rem;
+}
 .ui.mini.segments .segment,
 .ui.mini.segment {
   font-size: 0.78571429rem;
@@ -823,10 +833,6 @@
 .ui.small.segments .segment,
 .ui.small.segment {
   font-size: 0.92857143rem;
-}
-.ui.segments .segment,
-.ui.segment {
-  font-size: 1rem;
 }
 .ui.large.segments .segment,
 .ui.large.segment {

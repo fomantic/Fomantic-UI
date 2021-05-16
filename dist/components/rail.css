@@ -39,8 +39,8 @@
 
 
 /*--------------
-     Internal
----------------*/
+       Internal
+  ---------------*/
 
 .ui.left.internal.rail {
   left: 0;
@@ -56,8 +56,8 @@
 }
 
 /*--------------
-    Dividing
----------------*/
+      Dividing
+  ---------------*/
 
 .ui.dividing.rail {
   width: 302.5px;
@@ -74,8 +74,8 @@
 }
 
 /*--------------
-    Distance
----------------*/
+      Distance
+  ---------------*/
 
 .ui.close.rail {
   width: calc(300px + 1em);
@@ -101,8 +101,8 @@
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 .ui.attached.left.rail,
 .ui.attached.right.rail {
@@ -114,6 +114,9 @@
      Sizing
 ---------------*/
 
+.ui.rail {
+  font-size: 1rem;
+}
 .ui.mini.rail {
   font-size: 0.78571429rem;
 }
@@ -122,9 +125,6 @@
 }
 .ui.small.rail {
   font-size: 0.92857143rem;
-}
-.ui.rail {
-  font-size: 1rem;
 }
 .ui.large.rail {
   font-size: 1.14285714rem;

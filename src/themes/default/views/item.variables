@@ -176,3 +176,11 @@
 @invertedFavoriteColor: lighten(@favoriteColor,10);
 @invertedFavoriteActiveColor: lighten(@favoriteActiveColor,10);
 @invertedDividedBorder: 1px solid @whiteBorderColor;
+
+@miniItemSize: @relativeMini;
+@tinyItemSize: @relativeTiny;
+@smallItemSize: @relativeSmall;
+@largeItemSize: @relativeLarge;
+@bigItemSize: @relativeBig;
+@hugeItemSize: @relativeHuge;
+@massiveItemSize: @relativeMassive;

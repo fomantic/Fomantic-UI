@@ -32,6 +32,7 @@
 @thumbShadow              : @subtleShadow, 0 0 0 1px @borderColor inset;
 @thumbTransitionDuration  : 0.3s;
 @thumbTransition          : background @thumbTransitionDuration @defaultEasing;
+@thumbVerticalSliderOffset: 0.03em;
 
 /* Thumb Hover */
 @thumbHoverPointer    : pointer;
@@ -56,6 +57,7 @@
 @labelHeight  : @height;
 @labelWidth   : 1px;
 @labelColor   : @background;
+@labelPadding : 0.2em 0;
 
 /* Hover */
 @hoverVarOpacity                 : 0;
@@ -67,14 +69,15 @@
 @smallHeight            : 1em;
 @smallLabelHeight       : @smallHeight;
 @smallTrackHeight       : 0.3em;
-@trackPositionTopSmall  : (@smallHeight / 2) - (@smallTrackHeight / 2);
+@smallTrackPositionTop  : (@smallHeight / 2) - (@smallTrackHeight / 2);
 
 @largeHeight            : 2em;
 @largeLabelHeight       : @largeHeight;
 @largeTrackHeight       : 0.5em;
-@trackPositionTopLarge  : (@largeHeight / 2) - (@largeTrackHeight / 2);
+@largeTrackPositionTop  : (@largeHeight / 2) - (@largeTrackHeight / 2);
 
 @bigHeight              : 2.5em;
 @bigLabelHeight         : @bigHeight;
 @bigTrackHeight         : 0.6em;
-@trackPositionTopBig    : (@bigHeight / 2) - (@bigTrackHeight / 2);
+@bigTrackPositionTop    : (@bigHeight / 2) - (@bigTrackHeight / 2);
+

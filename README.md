@@ -6,8 +6,9 @@ A community fork of the popular Semantic-UI framework.
 [![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
+[![Rate on Openbase](https://badges.openbase.io/js/rating/fomantic-ui.svg)](https://openbase.io/js/fomantic-ui?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 
-[![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
+[![Discord Server](https://discordapp.com/api/guilds/453127116427493376/widget.png?style=shield)](https://discord.gg/YChxjJ3)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/fomanticui?style=social)](https://twitter.com/fomanticui)
 
 [![npm downloads](https://img.shields.io/npm/dm/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
@@ -19,12 +20,13 @@ A community fork of the popular Semantic-UI framework.
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=fomantic/Fomantic-UI)](https://dependabot.com)
+[![Known Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
 
 ---
 
 > *NOTE:* Fomantic was created to continue active development of Semantic-UI and has the intent to be merged back into the master repository once active development can restart. For more info please read the following issues https://github.com/Semantic-Org/Semantic-UI/issues/6109 https://github.com/Semantic-Org/Semantic-UI/issues/6413
 >
-> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the > v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
+> *EDIT:* Lots has changed since we started this project and we are now starting the development of FUI v3. You can read more about the v3 proposals [here](https://github.com/fomantic/Fomantic-UI/issues/319).
 >
 > To be clear merging back into SUI is still our intention, read [this comment](https://github.com/fomantic/Fomantic-UI/issues/319#issuecomment-461736399) for more info
 
@@ -35,10 +37,15 @@ Fomantic allows developers to build beautiful websites fast, with **concise HTML
 ## 📡 Installation
 
 ```bash
-$ npm install fomantic-ui --save
+$ npm install fomantic-ui
 ```
 
-Fomantic UI includes an interactive installer to help setup your project.
+Living on the edge? Try our nightly build and test new features and bug fixes early!
+```bash
+$ npm install fomantic-ui@nightly
+```
+
+Fomantic includes an interactive installer to help setup your project.
 
 * For more details on setup visit our [getting started guide](http://fomantic-ui.com/introduction/getting-started.html).
 * To learn more about theming please read our [theming guide](http://fomantic-ui.com/usage/theming.html)
@@ -59,8 +66,8 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 | Environment | Install Command                       | Repository                                                       | Third-Party |
 |-------------|---------------------------------------|------------------------------------------------------------------|-------------|
-| CSS Only    | `npm install --save fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)   |             |
-| LESS        | `npm install --save fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS) |             |
+| CSS Only    | `npm install fomantic-ui-css`  | [Fomantic-UI-CSS](https://github.com/fomantic/Fomantic-UI-CSS)          |             |
+| LESS        | `npm install fomantic-ui-less` | [Fomantic-UI-LESS](https://github.com/fomantic/Fomantic-UI-LESS)        |             |
 | SASS        | `gem 'fomantic-ui-sass'`              | [Fomantic-UI-SASS](https://github.com/fomantic/Fomantic-UI-SASS) | ✅          |
 
 ---
@@ -69,25 +76,32 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 ### 💡 Getting Help
 
-If you have a usage question please **do not post** post it to GitHub Issues. You can ask for usage help via our [Discord](https://discord.gg/YChxjJ3) server.
-Please only create Github issues for bug's and feature requests or any other related issue.
+If you're looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
+or you can ask in our community [Discord](https://discord.gg/YChxjJ3) server.
 
 ### 🐛 Submitting Bugs and Enhancements
 [GitHub Issues](https://github.com/fomantic/Fomantic-UI/issues) is for suggesting enhancements and reporting bugs. Before submitting a bug make sure you do the following:
 * Check to see if the issue has already been raised.
-* [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a test case for your bug. If a bug is apparent in the docs, that's ok as a test case, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
+* [Fork this boilerplate JSFiddle](https://jsfiddle.net/31d6y7mn) to create a reproducible example of the bug. If a bug is apparent in the docs you can simply link to the docs example, just make it clear exactly how to reproduce the issue. Only bugs that include a test case can be triaged.
 * If submitting an enhancement try and create it in the [JSFiddle](https://jsfiddle.net/31d6y7mn) if not it's fine but explain clearly what you want.
 
 ### 📝 Pull Requests
 
-Before creating a pull request be sure to read the [contributing](CONTRIBUTING.md) guide, this is where we explain everything you need to know about contributing to Fomantic-UI.
+Before creating a pull request be sure to read the [Contributing Guide](CONTRIBUTING.md) and our [Code of Conduct](CODE_OF_CONDUCT.md), this is where we explain everything you need to know about contributing to Fomantic.
 
 ## Sponsors
 
-#### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
+### Infrastructure hosted and powered by [DigitalOcean](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
+[![DigitalOcean](https://opensource.nyc3.cdn.digitaloceanspaces.com/attribution/assets/PNG/DO_Logo_Horizontal_Blue.png)](https://www.digitalocean.com/?utm_medium=opensource&utm_source=fomantic)
+
+Sign up now and get $100 in credit for 60 days! [Sign up here!](https://m.do.co/c/bece3e1afb7f)
+
+
+### Cross-browser testing provided by [BrowserStack](https://www.browserstack.com)
 [![BrowserStack](https://cdn.rawgit.com/fomantic/Fomantic-UI-Docs/35180e95/server/raw/images/browserstack.png)](https://www.browserstack.com)
 
-#### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
+
+### IDE's provided by [JetBrains](https://www.jetbrains.com?from=Fomantic-UI)
 [![JetBrains](https://fomantic-ui.com/images/jetbrains.svg)](https://www.jetbrains.com?from=Fomantic-UI)
 
 ---

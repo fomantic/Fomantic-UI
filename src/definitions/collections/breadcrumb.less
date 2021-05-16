@@ -81,15 +81,17 @@
   padding: @segmentPadding;
 }
 
-/* Inverted */
-.ui.inverted.breadcrumb {
-  color: @invertedColor;
-}
-.ui.inverted.breadcrumb > .active.section {
-  color: @invertedActiveColor;
-}
-.ui.inverted.breadcrumb > .divider {
-  color: @invertedDividerColor;
+& when (@variationBreadcrumbInverted) {
+  /* Inverted */
+  .ui.inverted.breadcrumb {
+    color: @invertedColor;
+  }
+  .ui.inverted.breadcrumb > .active.section {
+    color: @invertedActiveColor;
+  }
+  .ui.inverted.breadcrumb > .divider {
+    color: @invertedDividerColor;
+  }
 }
 
 /*******************************
@@ -105,29 +107,16 @@
            Variations
 *******************************/
 
-.ui.mini.breadcrumb {
-  font-size: @mini;
-}
-.ui.tiny.breadcrumb {
-  font-size: @tiny;
-}
-.ui.small.breadcrumb {
-  font-size: @small;
-}
 .ui.breadcrumb {
   font-size: @medium;
 }
-.ui.large.breadcrumb {
-  font-size: @large;
-}
-.ui.big.breadcrumb {
-  font-size: @big;
-}
-.ui.huge.breadcrumb {
-  font-size: @huge;
-}
-.ui.massive.breadcrumb {
-  font-size: @massive;
+& when not (@variationBreadcrumbSizes = false) {
+  each(@variationBreadcrumbSizes, {
+    @s: @@value;
+    .ui.@{value}.breadcrumb {
+      font-size: @s;
+    }
+  })
 }
 
 .loadUIOverrides();

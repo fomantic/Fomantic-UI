@@ -237,10 +237,10 @@
   -webkit-transition: 0.2s color ease;
   transition: 0.2s color ease;
 }
-.ui.feed > .event > .content .meta .like:hover .icon {
+.ui.feed > .event > .content .meta .like:hover i.icon {
   color: #FF2733;
 }
-.ui.feed > .event > .content .meta .active.like .icon {
+.ui.feed > .event > .content .meta .active.like i.icon {
   color: #EF404A;
 }
 
@@ -254,7 +254,7 @@
 
 /* Action */
 .ui.feed > .event > .content .meta a,
-.ui.feed > .event > .content .meta > .icon {
+.ui.feed > .event > .content .meta > i.icon {
   cursor: pointer;
   opacity: 1;
   color: rgba(0, 0, 0, 0.5);
@@ -262,8 +262,8 @@
   transition: color 0.1s ease;
 }
 .ui.feed > .event > .content .meta a:hover,
-.ui.feed > .event > .content .meta a:hover .icon,
-.ui.feed > .event > .content .meta > .icon:hover {
+.ui.feed > .event > .content .meta a:hover i.icon,
+.ui.feed > .event > .content .meta > i.icon:hover {
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -272,19 +272,34 @@
             Variations
 *******************************/
 
-.ui.small.feed {
-  font-size: 0.92857143rem;
-}
 .ui.feed {
   font-size: 1rem;
+}
+.ui.mini.feed {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.feed {
+  font-size: 0.85714286rem;
+}
+.ui.small.feed {
+  font-size: 0.92857143rem;
 }
 .ui.large.feed {
   font-size: 1.14285714rem;
 }
+.ui.big.feed {
+  font-size: 1.28571429rem;
+}
+.ui.huge.feed {
+  font-size: 1.42857143rem;
+}
+.ui.massive.feed {
+  font-size: 1.71428571rem;
+}
 
 /*------------------
-      Inverted
--------------------*/
+        Inverted
+  -------------------*/
 
 .ui.inverted.feed > .event {
   background: #1B1C1D;

@@ -47,7 +47,7 @@
 /* Content */
 @contentDistance: 0.5em;
 @contentLineHeight: @itemLineHeight;
-@contentLineHeightOffset: (@contentLineHeight - 1em) / 2;
+@contentLineHeightOffset: ((@contentLineHeight - 1em) / 2);
 @contentVerticalAlign: top;
 @contentColor: @textColor;
 
@@ -227,3 +227,10 @@
 @veryRelaxedHeaderMargin: 0.5rem;
 @veryRelaxedHorizontalPadding: 1.5rem;
 
+@miniListSize: @relativeMini;
+@tinyListSize: @relativeTiny;
+@smallListSize: @relativeSmall;
+@largeListSize: @relativeLarge;
+@bigListSize: @relativeBig;
+@hugeListSize: @relativeHuge;
+@massiveListSize: @relativeMassive;

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Support Question
+    url: https://github.com/fomantic/Fomantic-UI/discussions
+    about: For usage questions please use github discussions
+  - name: Discord Community
+    url: https://discord.gg/YChxjJ3
+    about: Get quick support for your issue from the community.

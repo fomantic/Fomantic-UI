@@ -88,6 +88,7 @@ $.fn.slider = function(parameters) {
         precision,
         isTouch,
         gapRatio = 1,
+        previousValue,
 
         initialPosition,
         initialLoad,
@@ -205,28 +206,26 @@ $.fn.slider = function(parameters) {
             });
           },
           autoLabel: function() {
-            if(module.get.step() != 0) {
-              $labels = $module.find('.labels');
-              if($labels.length != 0) {
-                $labels.empty();
-              }
-              else {
-                $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
-              }
-              for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
-                var
-                  labelText = module.get.label(i),
-                  $label = (labelText !== "") 
-                    ? !(i % module.get.gapRatio())
-                      ? $('<li class="label">' + labelText + '</li>') 
-                      : $('<li class="halftick label"></li>')
-                    : null,
-                  ratio  = i / len
-                ;
-                if($label) {
-                  module.update.labelPosition(ratio, $label);
-                  $labels.append($label);
-                }
+            $labels = $module.find('.labels');
+            if($labels.length != 0) {
+              $labels.empty();
+            }
+            else {
+              $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
+            }
+            for(var i = 0, len = module.get.numLabels(); i <= len; i++) {
+              var
+                labelText = module.get.label(i),
+                $label = (labelText !== "")
+                  ? !(i % module.get.gapRatio())
+                    ? $('<li class="label">' + labelText + '</li>')
+                    : $('<li class="halftick label"></li>')
+                  : null,
+                ratio  = i / len
+              ;
+              if($label) {
+                module.update.labelPosition(ratio, $label);
+                $labels.append($label);
               }
             }
           }
@@ -317,31 +316,37 @@ $.fn.slider = function(parameters) {
         },
 
         event: {
-          down: function(event, originalEvent) {
+          down: function(event) {
             event.preventDefault();
             if(module.is.range()) {
               var
-                eventPos = module.determine.eventPos(event, originalEvent),
+                eventPos = module.determine.eventPos(event),
                 newPos = module.determine.pos(eventPos)
               ;
               // Special handling if range mode and both thumbs have the same value
-              if(module.is.range() && settings.preventCrossover && module.thumbVal === module.secondThumbVal) {
+              if(settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
                 initialPosition = newPos;
                 $currThumb = undefined;
               } else {
                 $currThumb = module.determine.closestThumb(newPos);
               }
+              if (previousValue === undefined) {
+                previousValue = module.get.currentThumbValue();
+              }
+            } else if (previousValue === undefined) {
+                previousValue = module.get.value();
             }
+
             if(!module.is.disabled()) {
               module.bind.slidingEvents();
             }
           },
-          move: function(event, originalEvent) {
+          move: function(event) {
             event.preventDefault();
-            var value = module.determine.valueFromEvent(event, originalEvent);
+            var value = module.determine.valueFromEvent(event);
             if($currThumb === undefined) {
               var
-                eventPos = module.determine.eventPos(event, originalEvent),
+                eventPos = module.determine.eventPos(event),
                 newPos = module.determine.pos(eventPos)
               ;
               $currThumb = initialPosition > newPos ? $thumb : $secondThumb;
@@ -350,16 +355,16 @@ $.fn.slider = function(parameters) {
               var
                 thumbVal = module.thumbVal,
                 secondThumbVal = module.secondThumbVal,
-                thumbSmoothVal = module.determine.smoothValueFromEvent(event, originalEvent)
+                thumbSmoothVal = module.determine.smoothValueFromEvent(event)
               ;
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   value = Math.min(secondThumbVal, value);
                   thumbSmoothVal = Math.min(secondThumbVal, thumbSmoothVal);
                 }
                 thumbVal = value;
               } else {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   value = Math.max(thumbVal, value);
                   thumbSmoothVal = Math.max(thumbVal, thumbSmoothVal);
                 }
@@ -374,14 +379,17 @@ $.fn.slider = function(parameters) {
               });
             }
           },
-          up: function(event, originalEvent) {
+          up: function(event) {
             event.preventDefault();
-            var value = module.determine.valueFromEvent(event, originalEvent);
+            var value = module.determine.valueFromEvent(event);
             module.set.value(value);
             module.unbind.slidingEvents();
+            if (previousValue !== undefined) {
+              previousValue = undefined;
+            }
           },
           keydown: function(event, first) {
-            if(module.is.range() && settings.preventCrossover && module.thumbVal === module.secondThumbVal) {
+            if(settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
               $currThumb = undefined;
             }
             if(module.is.focused()) {
@@ -577,7 +585,7 @@ $.fn.slider = function(parameters) {
             return settings.step;
           },
           numLabels: function() {
-            var value = Math.round((module.get.max() - module.get.min()) / module.get.step());
+            var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
             module.debug('Determined that there should be ' + value + ' labels');
             return value;
           },
@@ -591,7 +599,7 @@ $.fn.slider = function(parameters) {
 
             switch (settings.labelType) {
               case settings.labelTypes.number:
-                return Math.round(((value * module.get.step()) + module.get.min()) * precision ) / precision;
+                return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision ) / precision;
               case settings.labelTypes.letter:
                 return alphabet[(value) % 26];
               default:
@@ -643,22 +651,23 @@ $.fn.slider = function(parameters) {
             if( settings.autoAdjustLabels ) {
               var 
                 numLabels = module.get.numLabels(),
+                trackLength = module.get.trackLength(),
                 gapCounter = 1
               ;
 
               // While the distance between two labels is too short,
               // we divide the number of labels at each iteration
               // and apply only if the modulo of the operation is an odd number.
-              while ((module.get.trackLength() / numLabels) * gapCounter < settings.labelDistance) {
-                if( !(numLabels % gapCounter) ) {
-                  gapRatio = gapCounter;
+              if(trackLength>0){
+                while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
+                  if( !(numLabels % gapCounter) ) {
+                    gapRatio = gapCounter;
+                  }
+                  gapCounter += 1;
                 }
-                gapCounter += 1;
               }
-              return gapRatio;
-            } else {
-              return 1;
             }
+            return gapRatio;
           }
         },
 
@@ -723,9 +732,9 @@ $.fn.slider = function(parameters) {
             ;
             return adjustedPos;
           },
-          valueFromEvent: function(event, originalEvent) {
+          valueFromEvent: function(event) {
             var
-              eventPos = module.determine.eventPos(event, originalEvent),
+              eventPos = module.determine.eventPos(event),
               newPos = module.determine.pos(eventPos),
               value
             ;
@@ -738,12 +747,12 @@ $.fn.slider = function(parameters) {
             }
             return value;
           },
-          smoothValueFromEvent: function(event, originalEvent) {
+          smoothValueFromEvent: function(event) {
             var
               min = module.get.min(),
               max = module.get.max(),
               trackLength = module.get.trackLength(),
-              eventPos = module.determine.eventPos(event, originalEvent),
+              eventPos = module.determine.eventPos(event),
               newPos = eventPos - module.get.trackOffset(),
               ratio,
               value
@@ -756,17 +765,19 @@ $.fn.slider = function(parameters) {
             value = ratio * (max - min) + min;
             return value;
           },
-          eventPos: function(event, originalEvent) {
+          eventPos: function(event) {
             if(module.is.touch()) {
               var
-                touchY = event.changedTouches[0].pageY || event.touches[0].pageY,
-                touchX = event.changedTouches[0].pageX || event.touches[0].pageX
+                touchEvent = event.changedTouches ? event : event.originalEvent,
+                touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
+                touchY = touches[0].pageY,
+                touchX = touches[0].pageX
               ;
               return module.is.vertical() ? touchY : touchX;
             }
             var
-              clickY = event.pageY || originalEvent.pageY,
-              clickX = event.pageX || originalEvent.pageX
+              clickY = event.pageY || event.originalEvent.pageY,
+              clickX = event.pageX || event.originalEvent.pageX
             ;
             return module.is.vertical() ? clickY : clickX;
           },
@@ -786,9 +797,8 @@ $.fn.slider = function(parameters) {
             }
             // Use precision to avoid ugly Javascript floating point rounding issues
             // (like 35 * .01 = 0.35000000000000003)
-            difference = Math.round(difference * precision) / precision;
             module.verbose('Cutting off additional decimal places');
-            return difference + module.get.min();
+            return Math.round((difference + module.get.min()) * precision) / precision;
           },
           keyMovement: function(event) {
             var
@@ -851,20 +861,31 @@ $.fn.slider = function(parameters) {
         },
 
         set: {
-          value: function(newValue) {
+          value: function(newValue, fireChange) {
+            fireChange = fireChange !== false;
+            var toReset = previousValue === undefined;
+            previousValue = previousValue === undefined ? module.get.value() : previousValue;
             module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
-              if (!initialLoad || settings.fireOnInit){
-                settings.onChange.call(element, value, thumbVal, secondThumbVal);
+              if ((!initialLoad || settings.fireOnInit) && fireChange){
+                if (newValue !== previousValue) {
+                  settings.onChange.call(element, value, thumbVal, secondThumbVal);
+                }
                 settings.onMove.call(element, value, thumbVal, secondThumbVal);
+              }
+              if (toReset) {
+                previousValue = undefined;
               }
             });
           },
-          rangeValue: function(first, second) {
+          rangeValue: function(first, second, fireChange) {
+            fireChange = fireChange !== false;
             if(module.is.range()) {
               var
                 min = module.get.min(),
-                max = module.get.max()
+                max = module.get.max(),
+                toReset = previousValue === undefined
               ;
+              previousValue = previousValue === undefined ? module.get.value() : previousValue;
               if (first <= min) {
                 first = min;
               } else if(first >= max){
@@ -880,9 +901,14 @@ $.fn.slider = function(parameters) {
               value = Math.abs(module.thumbVal - module.secondThumbVal);
               module.update.position(module.thumbVal, $thumb);
               module.update.position(module.secondThumbVal, $secondThumb);
-              if (!initialLoad || settings.fireOnInit) {
-                settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+              if ((!initialLoad || settings.fireOnInit) && fireChange) {
+                if (value !== previousValue) {
+                  settings.onChange.call(element, value, module.thumbVal, module.secondThumbVal);
+                }
                 settings.onMove.call(element, value, module.thumbVal, module.secondThumbVal);
+              }
+              if (toReset) {
+                previousValue = undefined;
               }
             } else {
               module.error(error.notrange);
@@ -923,12 +949,12 @@ $.fn.slider = function(parameters) {
                 $currThumb = newValue <= module.get.currentThumbValue() ? $thumb : $secondThumb;
               }
               if(!$currThumb.hasClass('second')) {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   newValue = Math.min(module.secondThumbVal, newValue);
                 }
                 module.thumbVal = newValue;
               } else {
-                if(settings.preventCrossover) {
+                if(settings.preventCrossover && module.is.range()) {
                   newValue = Math.max(module.thumbVal, newValue);
                 }
                 module.secondThumbVal = newValue;
@@ -1268,6 +1294,7 @@ $.fn.slider.settings = {
   labelDistance    : 100,
   preventCrossover : true,
   fireOnInit       : false,
+  interpretLabel   : false,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,

@@ -19,7 +19,7 @@
 
 @closeHitbox: 2.25rem;
 @closeDistance: 0.25rem;
-@closeHitBoxOffset: (@closeHitbox - 1rem) / 2;
+@closeHitBoxOffset: ((@closeHitbox - 1rem) / 2);
 @closePadding: @closeHitBoxOffset 0 0 0;
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
@@ -60,6 +60,7 @@
 @actionAlign: right;
 
 @buttonDistance: 0.75em;
+@buttonCenteredDistance: 0.5em;
 
 /* Inner Close Position (Tablet/Mobile) */
 @innerCloseTop: (@headerVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
@@ -91,7 +92,7 @@
 @widescreenMonitorMargin: 0 0 0 0;
 
 @fullScreenWidth: 95%;
-@fullScreenOffset: (100% - @fullScreenWidth) / 2;
+@fullScreenOffset: ((100% - @fullScreenWidth) / 2);
 @fullScreenMargin: 1em auto;
 
 /* Coupling */
@@ -141,6 +142,9 @@
 @tinyRatio: 0.6;
 @smallRatio: 0.8;
 @largeRatio: 1.2;
+@bigRatio: 1.4;
+@hugeRatio: 1.6;
+@massiveRatio: 1.8;
 
 /* Derived Responsive Sizes */
 @miniHeaderSize: 1.3em;
@@ -194,6 +198,45 @@
 @largeComputerMargin: 0 0 0 0;
 @largeLargeMonitorMargin: 0 0 0 0;
 @largeWidescreenMonitorMargin: 0 0 0 0;
+
+@bigHeaderSize: 1.6em;
+@bigMobileWidth: @mobileWidth;
+@bigTabletWidth: @tabletWidth;
+@bigComputerWidth: (@computerWidth * @bigRatio);
+@bigLargeMonitorWidth: (@largeMonitorWidth * @bigRatio);
+@bigWidescreenMonitorWidth: (@widescreenMonitorWidth * @bigRatio);
+
+@bigMobileMargin: 0 0 0 0;
+@bigTabletMargin: 0 0 0 0;
+@bigComputerMargin: 0 0 0 0;
+@bigLargeMonitorMargin: 0 0 0 0;
+@bigWidescreenMonitorMargin: 0 0 0 0;
+
+@hugeHeaderSize: 1.6em;
+@hugeMobileWidth: @mobileWidth;
+@hugeTabletWidth: @tabletWidth;
+@hugeComputerWidth: (@computerWidth * @hugeRatio);
+@hugeLargeMonitorWidth: (@largeMonitorWidth * @hugeRatio);
+@hugeWidescreenMonitorWidth: (@widescreenMonitorWidth * @hugeRatio);
+
+@hugeMobileMargin: 0 0 0 0;
+@hugeTabletMargin: 0 0 0 0;
+@hugeComputerMargin: 0 0 0 0;
+@hugeLargeMonitorMargin: 0 0 0 0;
+@hugeWidescreenMonitorMargin: 0 0 0 0;
+
+@massiveHeaderSize: 1.8em;
+@massiveMobileWidth: @mobileWidth;
+@massiveTabletWidth: @tabletWidth;
+@massiveComputerWidth: (@computerWidth * @massiveRatio);
+@massiveLargeMonitorWidth: (@largeMonitorWidth * @massiveRatio);
+@massiveWidescreenMonitorWidth: (@widescreenMonitorWidth * @massiveRatio);
+
+@massiveMobileMargin: 0 0 0 0;
+@massiveTabletMargin: 0 0 0 0;
+@massiveComputerMargin: 0 0 0 0;
+@massiveLargeMonitorMargin: 0 0 0 0;
+@massiveWidescreenMonitorMargin: 0 0 0 0;
 
 /*-------------------
       Inverted
