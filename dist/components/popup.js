@@ -510,9 +510,10 @@ $.fn.popup = function(parameters) {
               $popupOffsetParent = module.get.offsetParent($popup),
               targetElement      = $target[0],
               isWindow           = ($boundary[0] == window),
-              targetPosition     = (settings.inline || (settings.popup && settings.movePopup))
-                ? $target.position()
-                : $target.offset(),
+              targetOffset       = $target.offset(),
+              parentOffset       = settings.inline || (settings.popup && settings.movePopup)
+                ? $target.offsetParent().offset()
+                : { top: 0, left: 0 },
               screenPosition = (isWindow)
                 ? { top: 0, left: 0 }
                 : $boundary.offset(),
@@ -528,8 +529,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : targetPosition.top,
-                left    : targetPosition.left,
+                top     : targetOffset.top - parentOffset.top,
+                left    : targetOffset.left - parentOffset.left,
                 margin  : {}
               },
               // popup itself
@@ -1496,10 +1497,9 @@ $.fn.popup.settings = {
   templates: {
     escape: function(string) {
       var
-        badChars     = /[&<>"'`]/g,
+        badChars     = /[<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
@@ -1511,6 +1511,7 @@ $.fn.popup.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
+        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;

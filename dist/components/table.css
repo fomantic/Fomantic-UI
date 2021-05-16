@@ -54,6 +54,12 @@
   transition: background 0.1s ease, color 0.1s ease;
 }
 
+/* Rowspan helper class */
+.ui.table th.rowspanned,
+.ui.table td.rowspanned {
+  display: none;
+}
+
 /* Headers */
 .ui.table > thead {
   -webkit-box-shadow: none;
@@ -98,7 +104,7 @@
   text-align: inherit;
   color: rgba(0, 0, 0, 0.87);
   padding: 0.78571429em 0.78571429em;
-  vertical-align: middle;
+  vertical-align: inherit;
   font-style: normal;
   font-weight: normal;
   text-transform: none;
@@ -143,10 +149,10 @@
 }
 
 /* Icons */
-.ui.table > .icon {
+.ui.table > i.icon {
   vertical-align: baseline;
 }
-.ui.table > .icon:only-child {
+.ui.table > i.icon:only-child {
   margin: 0;
 }
 
@@ -174,13 +180,13 @@
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
-  .ui.table:not(.unstackable) > tr > td,
-  .ui.table:not(.unstackable) > tbody > tr > td,
-  .ui.table:not(.unstackable) > tfoot > tr > td {
+  .ui.table:not(.unstackable) > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > thead > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
     display: block !important;
     width: auto !important;
   }
@@ -670,13 +676,13 @@
   .ui[class*="tablet stackable"].table > tbody,
   .ui[class*="tablet stackable"].table > tbody > tr,
   .ui[class*="tablet stackable"].table > tr,
-  .ui[class*="tablet stackable"].table > thead > tr > th,
-  .ui[class*="tablet stackable"].table > tbody > tr > th,
-  .ui[class*="tablet stackable"].table > tfoot > tr > th,
-  .ui[class*="tablet stackable"].table > tr > th,
-  .ui[class*="tablet stackable"].table > tbody > tr > td,
-  .ui[class*="tablet stackable"].table > tfoot > tr > td,
-  .ui[class*="tablet stackable"].table > tr > td {
+  .ui[class*="tablet stackable"].table > thead > tr > th:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
+  .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned) {
     display: block !important;
     width: 100% !important;
   }
@@ -1899,14 +1905,18 @@
   color: rgba(40, 40, 40, 0.3);
 }
 .ui.sortable.table > thead > tr > th:hover {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.8);
+}
+.ui.sortable.table:not(.basic) > thead > tr > th:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* Sorted */
 .ui.sortable.table thead th.sorted {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
+}
+.ui.sortable.table:not(.basic) thead th.sorted {
+  background: rgba(0, 0, 0, 0.05);
 }
 .ui.sortable.table thead th.sorted:after {
   display: inline-block;
@@ -1914,24 +1924,30 @@
 
 /* Sorted Hover */
 .ui.sortable.table thead th.sorted:hover {
-  background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
+}
+.ui.sortable.table:not(.basic) thead th.sorted:hover {
+  background: rgba(0, 0, 0, 0.05);
 }
 
 /* Inverted */
 .ui.inverted.sortable.table thead th.sorted {
+  color: #ffffff;
+}
+.ui.inverted.sortable.table:not(.basic) thead th.sorted {
   background: rgba(255, 255, 255, 0.15) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
   background: rgba(255, 255, 255, 0.15) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: rgba(255, 255, 255, 0.15) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  color: #ffffff;
 }
 .ui.inverted.sortable.table > thead > tr > th:hover {
+  color: #ffffff;
+}
+.ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
   background: rgba(255, 255, 255, 0.08) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
   background: rgba(255, 255, 255, 0.08) -webkit-linear-gradient(transparent, rgba(0, 0, 0, 0.05));
   background: rgba(255, 255, 255, 0.08) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
-  color: #ffffff;
 }
-.ui.inverted.sortable.table > thead > tr > th {
+.ui.inverted.sortable.table:not(.basic) > thead > tr > th {
   border-left-color: transparent;
   border-right-color: transparent;
 }

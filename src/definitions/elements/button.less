@@ -615,15 +615,17 @@
 .ui.button > .icon:not(.button) {
   height: @iconHeight;
   opacity: @iconOpacity;
-  margin: @iconMargin;
   transition: @iconTransition;
-  vertical-align: @iconVerticalAlign;
   color: @iconColor;
 }
 
 .ui.button:not(.icon) > .icon:not(.button):not(.dropdown),
 .ui.button:not(.icon) > .icons:not(.button):not(.dropdown) {
   margin: @iconMargin;
+  vertical-align: @iconVerticalAlign;
+}
+.ui.button:not(.icon) > .icons:not(.button):not(.dropdown) > .icon {
+  vertical-align: @iconVerticalAlign;
 }
 .ui.button:not(.icon) > .right.icon:not(.button):not(.dropdown) {
   margin: @rightIconMargin;
@@ -632,6 +634,33 @@
 /*******************************
            Variations
 *******************************/
+
+& when (@variationButtonStackable) {
+  /*--------------
+     Stackable
+  ---------------*/
+
+  /* Tablet Or Below */
+  @media only screen and (max-width: @largestMobileScreen) {
+
+    .ui.stackable.buttons {
+      flex-direction: column;
+      width: 100%;
+      & .button:first-child {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: @borderRadius;
+      }
+      & .button:last-child {
+        border-bottom-left-radius: @borderRadius;
+        border-top-right-radius: 0;
+      }
+      & .button:only-child {
+        border-radius: @borderRadius;
+      }
+    }
+
+  }
+}
 
 & when (@variationButtonFloated) {
   /*-------------------
@@ -706,13 +735,17 @@
 ---------------*/
 
 .ui.icon.buttons .button,
-.ui.icon.button {
+.ui.icon.button:not(.animated):not(.compact):not(.labeled) {
   padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
 }
+.ui.animated.icon.button > .content > .icon,
 .ui.icon.buttons .button > .icon,
 .ui.icon.button > .icon {
   opacity: @iconButtonOpacity;
   margin: 0 !important;
+  vertical-align: top;
+}
+.ui.animated.button > .content > .icon {
   vertical-align: top;
 }
 
@@ -1037,16 +1070,16 @@
   .ui.toggle.buttons .active.button,
   .ui.buttons .button.toggle.active,
   .ui.button.toggle.active {
-    background-color: @positiveColor;
+    background-color: @toggleBackgroundColor;
     box-shadow: none;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    text-shadow: @toggleTextShadow;
+    color: @toggleColor;
   }
 
   .ui.button.toggle.active:hover {
-    background-color: @positiveColorHover;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    background-color: @toggleHoverBackgroundColor;
+    text-shadow: @toggleHoverTextShadow;
+    color: @toggleHoverColor;
   }
 }
 
@@ -1056,11 +1089,11 @@
   ---------------*/
 
   .ui.circular.button {
-    border-radius: 10em;
+    border-radius: @circularBorderRadius;
   }
 
   .ui.circular.button > .icon {
-    width: 1em;
+    width: @circularIconWidth;
     vertical-align: baseline;
   }
 }

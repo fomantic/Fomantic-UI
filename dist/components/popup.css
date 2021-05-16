@@ -98,6 +98,7 @@
   position: absolute;
   text-transform: none;
   text-align: left;
+  text-shadow: none;
   white-space: nowrap;
   font-size: 1rem;
   border: 1px solid #D4D4D5;
@@ -137,32 +138,31 @@
 [data-tooltip]:after {
   pointer-events: none;
   visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
+  transition: opacity 0.1s ease, -webkit-transform 0.1s ease;
+  transition: transform 0.1s ease, opacity 0.1s ease;
+  transition: transform 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease;
 }
 [data-tooltip]:before {
-  opacity: 0;
   -webkit-transform: rotate(45deg) scale(0) !important;
           transform: rotate(45deg) scale(0) !important;
   -webkit-transform-origin: center top;
           transform-origin: center top;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 [data-tooltip]:after {
-  opacity: 1;
   -webkit-transform-origin: center bottom;
           transform-origin: center bottom;
-  -webkit-transition: all 0.1s ease;
-  transition: all 0.1s ease;
 }
 [data-tooltip]:hover:before,
 [data-tooltip]:hover:after {
   visibility: visible;
   pointer-events: auto;
+  opacity: 1;
 }
 [data-tooltip]:hover:before {
   -webkit-transform: rotate(45deg) scale(1) !important;
           transform: rotate(45deg) scale(1) !important;
-  opacity: 1;
 }
 
 /* Animation Position */
@@ -186,6 +186,7 @@
 [data-tooltip][data-position="right center"]:hover:after {
   -webkit-transform: translateY(-50%) scale(1) !important;
           transform: translateY(-50%) scale(1) !important;
+  -moz-transform: translateY(-50%) scale(1.0001) !important;
 }
 [data-tooltip][data-position="top left"]:after,
 [data-tooltip][data-position="top right"]:after,
@@ -200,6 +201,21 @@
 [data-tooltip][data-position="bottom right"]:hover:after {
   -webkit-transform: scale(1) !important;
           transform: scale(1) !important;
+}
+[data-tooltip][data-variation~="fixed"]:after {
+  white-space: normal;
+  width: 250px;
+}
+[data-tooltip][data-variation*="wide fixed"]:after {
+  width: 350px;
+}
+[data-tooltip][data-variation*="very wide fixed"]:after {
+  width: 550px;
+}
+@media only screen and (max-width: 767.98px) {
+  [data-tooltip][data-variation~="fixed"]:after {
+    width: 250px;
+  }
 }
 
 /*--------------
@@ -660,6 +676,9 @@
 .ui.basic.popup:before {
   display: none;
 }
+.ui.fixed.popup {
+  width: 250px;
+}
 
 /*--------------
        Wide
@@ -668,13 +687,23 @@
 .ui.wide.popup {
   max-width: 350px;
 }
+.ui.wide.popup.fixed {
+  width: 350px;
+}
 .ui[class*="very wide"].popup {
   max-width: 550px;
+}
+.ui[class*="very wide"].popup.fixed {
+  width: 550px;
 }
 @media only screen and (max-width: 767.98px) {
   .ui.wide.popup,
   .ui[class*="very wide"].popup {
     max-width: 250px;
+  }
+  .ui.wide.popup.fixed,
+  .ui[class*="very wide"].popup.fixed {
+    width: 250px;
   }
 }
 

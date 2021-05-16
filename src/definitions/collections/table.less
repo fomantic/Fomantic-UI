@@ -59,6 +59,12 @@
   transition: @transition;
 }
 
+/* Rowspan helper class */
+.ui.table th.rowspanned,
+.ui.table td.rowspanned {
+  display:none;
+}
+
 /* Headers */
 .ui.table > thead {
   box-shadow: @headerBoxShadow;
@@ -148,10 +154,10 @@
 }
 
 /* Icons */
-.ui.table > .icon {
+.ui.table > i.icon {
   vertical-align: @iconVerticalAlign;
 }
-.ui.table > .icon:only-child {
+.ui.table > i.icon:only-child {
   margin: 0;
 }
 
@@ -180,13 +186,13 @@
   .ui.table:not(.unstackable) > tbody,
   .ui.table:not(.unstackable) > tr,
   .ui.table:not(.unstackable) > tbody > tr,
-  .ui.table:not(.unstackable) > tr > th,
-  .ui.table:not(.unstackable) > thead > tr > th,
-  .ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.table:not(.unstackable) > tfoot > tr > th,
-  .ui.table:not(.unstackable) > tr > td,
-  .ui.table:not(.unstackable) > tbody > tr > td,
-  .ui.table:not(.unstackable) > tfoot > tr > td {
+  .ui.table:not(.unstackable) > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > thead > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
+  .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
+  .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
     display: block !important;
     width: auto !important;
   }
@@ -326,6 +332,10 @@
     color: @definitionHeaderColor;
     box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
     -moz-transform: scale(1);
+  }
+
+  .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+    pointer-events: auto;
   }
 
   .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -469,13 +479,13 @@
     .ui[class*="tablet stackable"].table > tbody,
     .ui[class*="tablet stackable"].table > tbody > tr,
     .ui[class*="tablet stackable"].table > tr,
-    .ui[class*="tablet stackable"].table > thead > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > th,
-    .ui[class*="tablet stackable"].table > tfoot > tr > th,
-    .ui[class*="tablet stackable"].table > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > td,
-    .ui[class*="tablet stackable"].table > tfoot > tr > td,
-    .ui[class*="tablet stackable"].table > tr > td  {
+    .ui[class*="tablet stackable"].table > thead > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
+    .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
       display: block !important;
       width: 100% !important;
     }
@@ -1016,14 +1026,18 @@ each(@colors, {
     color: @sortableDisabledColor;
   }
   .ui.sortable.table > thead > tr > th:hover {
-    background: @sortableHoverBackground;
     color: @sortableHoverColor;
+  }
+  .ui.sortable.table:not(.basic) > thead > tr > th:hover {
+    background: @sortableHoverBackground;
   }
 
   /* Sorted */
   .ui.sortable.table thead th.sorted {
-    background: @sortableActiveBackground;
     color: @sortableActiveColor;
+  }
+  .ui.sortable.table:not(.basic) thead th.sorted {
+    background: @sortableActiveBackground;
   }
   .ui.sortable.table thead th.sorted:after {
     display: inline-block;
@@ -1031,20 +1045,26 @@ each(@colors, {
 
   /* Sorted Hover */
   .ui.sortable.table thead th.sorted:hover {
-    background: @sortableActiveHoverBackground;
     color: @sortableActiveHoverColor;
+  }
+  .ui.sortable.table:not(.basic) thead th.sorted:hover {
+    background: @sortableActiveHoverBackground;
   }
   & when (@variationTableInverted) {
     /* Inverted */
     .ui.inverted.sortable.table thead th.sorted {
-      background: @sortableInvertedActiveBackground;
       color: @sortableInvertedActiveColor;
     }
+    .ui.inverted.sortable.table:not(.basic) thead th.sorted {
+      background: @sortableInvertedActiveBackground;
+    }
     .ui.inverted.sortable.table > thead > tr > th:hover {
-      background: @sortableInvertedHoverBackground;
       color: @sortableInvertedHoverColor;
     }
-    .ui.inverted.sortable.table > thead > tr > th {
+    .ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
+      background: @sortableInvertedHoverBackground;
+    }
+    .ui.inverted.sortable.table:not(.basic) > thead > tr > th {
       border-left-color: @sortableInvertedBorderColor;
       border-right-color: @sortableInvertedBorderColor;
     }
@@ -1096,7 +1116,7 @@ each(@colors, {
     .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
       background: @definitionPageBackground;
     }
-    .ui.inverted.definition.table > tbody > tr > td:first-child
+    .ui.inverted.definition.table > tbody > tr > td:first-child,
     .ui.inverted.definition.table > tfoot > tr > td:first-child,
     .ui.inverted.definition.table > tr > td:first-child {
       background: @invertedDefinitionColumnBackground;

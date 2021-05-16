@@ -220,6 +220,7 @@
   cursor: default !important;
   opacity: 0.5;
   color: #000000;
+  pointer-events: none;
 }
 
 /*--------------

@@ -371,6 +371,15 @@
       "contributions": [
         "doc"
       ]
+    },
+    {
+      "login": "LolHens",
+      "name": "Pierre Kisters",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1524059?v=4",
+      "profile": "https://lolhens.de",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,

@@ -708,7 +708,15 @@ $.fn.modal = function(parameters) {
             return module.cache.leftBodyScrollbar;
           },
           useFlex: function() {
-            return settings.useFlex && settings.detachable && !module.is.ie();
+            if (settings.useFlex === 'auto') {
+              return settings.detachable && !module.is.ie();
+            }
+            if(settings.useFlex && module.is.ie()) {
+              module.debug('useFlex true is not supported in IE');
+            } else if(settings.useFlex && !settings.detachable) {
+              module.debug('useFlex true in combination with detachable false is not supported');
+            }
+            return settings.useFlex;
           },
           fit: function() {
             var
