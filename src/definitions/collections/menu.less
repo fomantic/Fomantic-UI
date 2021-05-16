@@ -218,7 +218,9 @@
   background: @dropdownBackground;
   margin: @dropdownMenuDistance 0 0;
   box-shadow: @dropdownMenuBoxShadow;
-  flex-direction: column !important;
+}
+.ui.menu .dropdown.item:not(.column) .menu {
+  flex-direction: column;
 }
 
 

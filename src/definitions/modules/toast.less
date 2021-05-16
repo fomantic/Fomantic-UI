@@ -25,6 +25,50 @@
 .ui.toast-container {
     position: fixed;
     z-index: 9999;
+  &.ui.attached when (@variationToastAttached) {
+    width: 100%;
+    left: 0;
+    & .vertical.attached when (@variationToastVertical) {
+      border-radius: 0;
+    }
+    &.ui.ui .attached.actions .button when (@variationToastActions) {
+      border-radius: 0;
+    }
+    & .toast-box {
+      margin: 0;
+      width: 100%;
+      border-radius: 0;
+      & > .ui.toast,
+      > .ui.message {
+        margin-left: 0;
+      }
+      & when (@variationToastFloating) {
+        &.floating,
+        &.hoverfloating:hover {
+          border: none;
+        }
+      }
+      & > .vertical > .content when (@variationToastVertical) {
+        flex: 1;
+      }
+      & > * {
+        width: 100%;
+        border-radius: 0;
+        & > .vertical:not(.actions) when (@variationToastVertical) {
+          flex: 1;
+        }
+      }
+      & > .attached.actions when (@variationToastActions) {
+        margin-right: @toastLeftRightMargin;
+      }
+    }
+    &.top when (@variationToastTop) {
+      top: 0;
+    }
+    &.bottom when (@variationToastBottom) {
+      bottom: 0;
+    }
+  }
   &.top when (@variationToastTop) {
     &.right when (@variationToastRight) {
       top: @toastContainerDistance;
@@ -64,6 +108,13 @@
   .toast-box {
     display: table !important;
   }
+  &.horizontal when (@variationToastHorizontal) {
+    display: flex;
+    flex-direction: row;
+    & .toast-box {
+      margin-right: @toastBoxMarginRight;
+    }
+  }
   & .toast-box {
     margin-bottom: @toastBoxMarginBottom;
     border-radius: @defaultBorderRadius;
@@ -81,9 +132,11 @@
         border: @toastBoxBorder;
       }
     }
-    &.compact,
-    > .compact {
-      width: @toastWidth;
+    & when (@variationToastCompact) {
+      &.compact,
+      > .compact {
+        width: @toastWidth;
+      }
     }
     & > .ui.toast,
       > .ui.message {
@@ -341,9 +394,6 @@
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
-      & .button:not(:first-child):not(:last-child) {
-        margin-left: -@toastLeftRightMargin;
-      }
     }
     &.message.message.message when (@variationToastMessage) {
       border-top-right-radius: @toastBorderRadius;
@@ -419,8 +469,15 @@
     font-size: @toastIconFontSize;
   }
   &:not(.vertical) {
+    &:not(.centered):not(.center) {
+      & > i.icon:not(.close) when (@variationToastIcon) {
+        position: absolute;
+      }
+      & > .ui.image when (@variationToastImage) {
+        position: absolute;
+      }
+    }
     & > i.icon:not(.close) when (@variationToastIcon) {
-      position: absolute;
       & + .content {
         padding-left: @toastIconContentPadding;
       }
@@ -429,7 +486,6 @@
       padding-left: @toastCloseDistance;
     }
     & > .ui.image when (@variationToastImage) {
-      position: absolute;
       &.avatar + .content {
         padding-left: @toastAvatarImageContentPadding;
         min-height: @toastAvatarImageHeight;
@@ -447,7 +503,7 @@
         min-height: @toastSmallImageHeight;
       }
     }
-    & when (@variationToastImage) or (@variationToastIcon) {
+    &:not(.centered):not(.center) when (@variationToastImage) or (@variationToastIcon) {
       & > .centered.image,
       > .centered.icon {
         transform: translateY(-50%);
@@ -507,6 +563,36 @@
 
 .ui.center.toast-container .toast-box {
     margin-right: auto;
+}
+
+& when (@variationToastCentered) {
+  .ui.ui.toast-container .toast-box .centered.toast,
+  .ui.ui.toast-container .toast-box .center.aligned.toast {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    & > .content,
+    & > .ui.image,
+    & > i.icon:not(.close) {
+      align-self: center;
+    }
+  }
+
+  .ui.toast-container .toast-box .toast .centered.content,
+  .ui.toast-container .toast-box .toast .center.aligned.content {
+    text-align: center;
+  }
+
+  .ui.toast-container .toast-box .centered.actions,
+  .ui.toast-container .toast-box .center.aligned.actions {
+    text-align: center;
+
+    &:not(.attached) > .button:not(.fluid) {
+      margin-left: @toastActionCenteredMargin;
+      margin-right: @toastActionCenteredMargin;
+    }
+  }
 }
 
 /*--------------

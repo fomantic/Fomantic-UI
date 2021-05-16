@@ -972,7 +972,7 @@ $.fn.calendar = function(parameters) {
 
         helper: {
           isDisabled: function(date, mode) {
-            return (mode === 'day' || mode === 'month' || mode === 'year') && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+            return (mode === 'day' || mode === 'month' || mode === 'year') && ((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
               if(typeof d === 'string') {
                 d = module.helper.sanitiseDate(d);
               }
@@ -1074,14 +1074,11 @@ $.fn.calendar = function(parameters) {
             return null;
           },
           sanitiseDate: function (date) {
-            if (!date) {
-              return undefined;
-            }
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
             }
-            if (!date || date === null || isNaN(date.getTime())) {
-              return undefined;
+            if (!date || isNaN(date.getTime())) {
+              return null;
             }
             return date;
           },
