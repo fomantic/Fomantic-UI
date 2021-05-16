@@ -195,8 +195,15 @@
 
   .ui.labeled.slider > .labels .label {
     display: inline-flex;
+    padding: @labelPadding;
     position: absolute;
     transform: translate(-50%, -100%);
+    white-space: nowrap;
+  }
+
+  .ui.bottom.aligned.labeled.slider > .labels .label {
+    bottom: 0;
+    transform: translate(-50%, 100%);
   }
   & when (@variationSliderTicked) {
     .ui.labeled.ticked.slider > .labels .label:after {
@@ -208,8 +215,12 @@
       top: 100%;
       left: 50%;
     }
+    .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+      top: auto;
+      bottom: 100%;
+    }
     .ui.labeled.ticked.slider > .labels .halftick.label:after {
-      height: @labelHeight / 2;
+      height: (@labelHeight / 2);
     }
   }
 
@@ -378,7 +389,7 @@ each(@colors, {
          height: @@lh;
        }
        .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-         height: @@lh / 2;
+         height: (@@lh / 2);
        }
      }
      & when (@variationSliderVertical) {
@@ -397,7 +408,7 @@ each(@colors, {
            width: @@lh;
          }
          .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
-           width: @@lh / 2;
+           width: (@@lh / 2);
          }
        }
      }

@@ -87,6 +87,7 @@
 .ui.dropdown:not(.labeled) > .dropdown.icon {
   position: relative;
   width: auto;
+  min-width: @dropdownIconMinWidth;
   font-size: @dropdownIconSize;
   margin: @dropdownIconMargin;
 }
@@ -137,6 +138,11 @@
   border-top-width: 0;
 }
 
+.ui.dropdown .menu > .item.vertical {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 /*--------------
   Floated Content
 ---------------*/
@@ -154,7 +160,7 @@
   margin-right: @floatedDistance !important;
 }
 
-.ui.dropdown .menu .item > .icon.floated,
+.ui.dropdown .menu .item > i.icon.floated,
 .ui.dropdown .menu .item > .flag.floated,
 .ui.dropdown .menu .item > .image.floated,
 .ui.dropdown .menu .item > img.floated {
@@ -198,7 +204,7 @@
   padding: @menuInputPadding;
 }
 .ui.dropdown .menu > .input:not(.transparent) .button,
-.ui.dropdown .menu > .input:not(.transparent) .icon,
+.ui.dropdown .menu > .input:not(.transparent) i.icon,
 .ui.dropdown .menu > .input:not(.transparent) .label {
   padding-top: @menuInputVerticalPadding;
   padding-bottom: @menuInputVerticalPadding;
@@ -213,6 +219,18 @@
   float: @itemDescriptionFloat;
   margin: @itemDescriptionMargin;
   color: @itemDescriptionColor;
+}
+
+.ui.dropdown .menu > .item.vertical > .description {
+  margin: 0;
+}
+
+/*-----------------
+      Item Text
+-------------------*/
+
+.ui.dropdown .menu > .item.vertical > .text {
+  margin-bottom: @verticalItemMargin;
 }
 
 /*-----------------
@@ -250,14 +268,16 @@
 ---------------*/
 
 /* Icons / Flags / Labels / Image */
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icons,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image {
   margin-top: @textLineHeightOffset;
 }
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icons,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
@@ -265,12 +285,14 @@
   margin-top: @itemLineHeightOffset;
 }
 
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icons,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icons,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
@@ -318,9 +340,9 @@
 }
 
 /* Automatically float dropdown menu right on last menu item */
-.ui.menu .right.menu .dropdown:last-child .menu,
-.ui.menu .right.dropdown.item .menu,
-.ui.buttons > .ui.dropdown:last-child .menu {
+.ui.menu .right.menu .dropdown:last-child > .menu:not(.left),
+.ui.menu .right.dropdown.item > .menu:not(.left),
+.ui.buttons > .ui.dropdown:last-child > .menu:not(.left) {
   left: auto;
   right: 0;
 }
@@ -448,11 +470,11 @@ select.ui.dropdown {
 
   @media only screen and (max-width : @largestMobileScreen) {
     & when (@variationDropdownShort) {
-      .ui.selection.dropdown[class*="very short"] .menu {
-        max-height: @selectionMobileMaxMenuHeight * 0.5;
-      }
       .ui.selection.dropdown.short .menu {
         max-height: @selectionMobileMaxMenuHeight * 0.75;
+      }
+      .ui.selection.dropdown[class*="very short"] .menu {
+        max-height: @selectionMobileMaxMenuHeight * 0.5;
       }
     }
     .ui.selection.dropdown .menu {
@@ -469,11 +491,11 @@ select.ui.dropdown {
   }
   @media only screen and (min-width: @tabletBreakpoint) {
     & when (@variationDropdownShort) {
-      .ui.selection.dropdown[class*="very short"] .menu {
-        max-height: @selectionTabletMaxMenuHeight * 0.5;
-      }
       .ui.selection.dropdown.short .menu {
         max-height: @selectionTabletMaxMenuHeight * 0.75;
+      }
+      .ui.selection.dropdown[class*="very short"] .menu {
+        max-height: @selectionTabletMaxMenuHeight * 0.5;
       }
     }
     .ui.selection.dropdown .menu {
@@ -490,11 +512,11 @@ select.ui.dropdown {
   }
   @media only screen and (min-width: @computerBreakpoint) {
     & when (@variationDropdownShort) {
-      .ui.selection.dropdown[class*="very short"] .menu {
-        max-height: @selectionComputerMaxMenuHeight * 0.5;
-      }
       .ui.selection.dropdown.short .menu {
         max-height: @selectionComputerMaxMenuHeight * 0.75;
+      }
+      .ui.selection.dropdown[class*="very short"] .menu {
+        max-height: @selectionComputerMaxMenuHeight * 0.5;
       }
     }
     .ui.selection.dropdown .menu {
@@ -511,11 +533,11 @@ select.ui.dropdown {
   }
   @media only screen and (min-width: @widescreenMonitorBreakpoint) {
     & when (@variationDropdownShort) {
-      .ui.selection.dropdown[class*="very short"] .menu {
-        max-height: @selectionWidescreenMaxMenuHeight * 0.5;
-      }
       .ui.selection.dropdown.short .menu {
         max-height: @selectionWidescreenMaxMenuHeight * 0.75;
+      }
+      .ui.selection.dropdown[class*="very short"] .menu {
+        max-height: @selectionWidescreenMaxMenuHeight * 0.5;
       }
     }
     .ui.selection.dropdown .menu {
@@ -608,6 +630,42 @@ select.ui.dropdown {
     border: none !important;
     box-shadow: none !important;
   }
+  & when (@variationDropdownScrollhint) {
+    /* CSS specific to iOS devices or firefox mobile only  */
+    @supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+      @media (-moz-touch-enabled), (pointer: coarse) {
+        .ui.dropdown .scrollhint.menu:not(.hidden):before {
+          animation: scrollhint @scrollhintDuration @scrollhintEasing @scrollhintIteration;
+          content: '';
+          z-index: @scrollhintZIndex;
+          display: block;
+          position: absolute;
+          opacity: 0;
+          right: @scrollhintOffsetRight;
+          top: 0;
+          height: 100%;
+          border-right: @scrollhintRightBorder;
+          border-left: @scrollhintLeftBorder;
+          border-image: linear-gradient(to bottom, @scrollhintStartColor, @scrollhintEndColor) 1 100%;
+        }
+
+        .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
+          border-image: linear-gradient(to bottom, @invertedScrollhintStartColor, @invertedScrollhintEndColor) 1 100%;
+        }
+
+        @keyframes scrollhint {
+          0% {
+            opacity: 1;
+            top: 100%;
+          }
+          100% {
+            opacity: 0;
+            top: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 & when (@variationDropdownSearch) {
@@ -673,7 +731,7 @@ select.ui.dropdown {
   }
 
   /* Filtered Text */
-  .ui.active.search.dropdown input.search:focus + .text .icon,
+  .ui.active.search.dropdown input.search:focus + .text i.icon,
   .ui.active.search.dropdown input.search:focus + .text .flag {
     opacity: @selectionTextUnderlayIconOpacity;
   }
@@ -681,6 +739,9 @@ select.ui.dropdown {
     color: @selectionTextUnderlayColor !important;
   }
 
+  .ui.search.dropdown.button > span.sizer {
+    display: none;
+  }
 
   /* Search Menu */
   .ui.search.dropdown .menu {
@@ -711,29 +772,44 @@ select.ui.dropdown {
   }
 }
 
-/* Clearable Selection */
-.ui.dropdown > .remove.icon {
-  cursor: pointer;
-  font-size: @dropdownIconSize;
-  margin: @selectionIconMargin;
-  padding: @selectionIconPadding;
-  right: 3em;
-  top: @selectionVerticalPadding;
-  position: absolute;
-  opacity: 0.6;
-  z-index: @selectionIconZIndex;
-}
+& when (@variationDropdownClear) {
+  /* Clearable Selection */
+  .ui.dropdown > .remove.icon {
+    cursor: pointer;
+    font-size: @dropdownIconSize;
+    margin: @selectionIconMargin;
+    padding: @selectionIconPadding;
+    right: @clearableIconPosition;
+    top: @selectionVerticalPadding;
+    position: absolute;
+    opacity: @clearableIconOpacity;
+    z-index: @selectionIconZIndex;
+  }
+  .ui.selection.dropdown > .remove.icon {
+    right: @clearableIconSelectionPosition;
+  }
+  .ui.inline.dropdown > .remove.icon {
+    right: @clearableIconInlinePosition;
+  }
 
-.ui.clearable.dropdown .text,
-.ui.clearable.dropdown a:last-of-type {
-  margin-right: 1.5em;
-}
+  .ui.clearable.dropdown .text,
+  .ui.clearable.dropdown a:last-of-type {
+    margin-right: @clearableTextMargin;
+  }
 
-.ui.dropdown select.noselection ~ .remove.icon,
-.ui.dropdown input[value=''] ~ .remove.icon,
-.ui.dropdown input:not([value]) ~ .remove.icon,
-.ui.dropdown.loading > .remove.icon {
-  display: none;
+  .ui.dropdown select.noselection ~ .remove.icon,
+  .ui.dropdown input[value=''] ~ .remove.icon,
+  .ui.dropdown input:not([value]) ~ .remove.icon,
+  .ui.dropdown.loading > .remove.icon {
+    display: none;
+  }
+
+  .ui.dropdown:not(.selection) > .remove.icon ~ .dropdown.icon {
+    margin-left: @clearableIconMargin;
+  }
+  .ui.dropdown:not(.selection) > .remove.icon {
+    margin-top: -@clearableIconMarginTop;
+  }
 }
 
 & when (@variationDropdownMultiple) {
@@ -742,7 +818,7 @@ select.ui.dropdown {
   ---------------*/
 
   /* Multiple Selection */
-  .ui.multiple.dropdown {
+  .ui.ui.multiple.dropdown {
     padding: @multipleSelectionPadding;
   }
   .ui.multiple.dropdown .menu {
@@ -772,6 +848,11 @@ select.ui.dropdown {
     max-width: 100%;
     margin: @multipleSelectionChildMargin;
     line-height: @multipleSelectionChildLineHeight;
+    &.default {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
   }
   .ui.multiple.dropdown > .label ~ input.search {
     margin-left: @multipleSelectionSearchAfterLabelDistance !important;
@@ -824,6 +905,10 @@ select.ui.dropdown {
       margin: @multipleSelectionChildMargin;
       width: @multipleSelectionSearchStartWidth;
       line-height: @multipleSelectionChildLineHeight;
+    }
+
+    .ui.multiple.search.dropdown.button {
+      min-width: @selectionMinWidth;
     }
   }
 }
@@ -1042,11 +1127,12 @@ select.ui.dropdown {
 /*--------------------
         Clear
 ----------------------*/
-
+  .ui.dropdown > .remove.icon,
   .ui.dropdown > .clear.dropdown.icon {
     opacity: @clearableIconOpacity;
     transition: opacity @defaultDuration @defaultEasing;
   }
+  .ui.dropdown > .remove.icon:hover,
   .ui.dropdown > .clear.dropdown.icon:hover {
     opacity: @clearableIconActiveOpacity;
   }
@@ -1066,6 +1152,16 @@ select.ui.dropdown {
   }
 }
 
+& when (@variationDropdownReadonly) {
+  /*--------------------
+          Read-Only
+  ----------------------*/
+
+  .ui.read-only.dropdown {
+    cursor: default;
+    pointer-events: none;
+  }
+}
 
 /*******************************
            Variations
@@ -1258,23 +1354,46 @@ select.ui.dropdown {
   }
 }
 
+& when (@variationInputLabeled) {
+  /*--------------------
+          Labeled
+  ---------------------*/
+
+  /* Regular Label on Left */
+  .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + .dropdown {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: transparent;
+  }
+
+  /* Regular Label on Right */
+  .ui[class*="right labeled"].input > .dropdown:not(:last-child) {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right-color: transparent !important;
+  }
+  .ui[class*="right labeled"].input > .dropdown + .label {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
 /*--------------
      Columnar
 ---------------*/
+.ui.column.dropdown > .menu {
+  flex-wrap:wrap;
+}
 .ui.dropdown[class*="two column"] > .menu > .item {
-  display: inline-block;
   width: 50%;
 }
 .ui.dropdown[class*="three column"] > .menu > .item {
-  display: inline-block;
   width: 33%;
 }
 .ui.dropdown[class*="four column"] > .menu > .item {
-  display: inline-block;
   width: 25%;
 }
 .ui.dropdown[class*="five column"] > .menu > .item {
-  display: inline-block;
   width: 20%;
 }
 
@@ -1318,13 +1437,20 @@ select.ui.dropdown {
     opacity: 1;
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
-  .ui.simple.dropdown:hover > .menu > .item:hover > .menu {
+  .ui.simple.dropdown .menu .item:hover > .menu {
     overflow: visible;
     width: auto;
     height: auto;
     top: 0 !important;
-    left: 100% !important;
+    left: 100%;
     opacity: 1;
+  }
+  .ui.simple.dropdown > .menu > .item:active > .left.menu,
+  .ui.simple.dropdown .menu .item:hover > .left.menu, 
+  .right.menu .ui.simple.dropdown > .menu > .item:active > .menu:not(.right), 
+  .right.menu .ui.simple.dropdown > .menu .item:hover > .menu:not(.right) {
+    left: auto;
+    right: 100%;
   }
   & when (@variationDropdownDisabled) {
     .ui.simple.disabled.dropdown:hover .menu {
@@ -1608,46 +1734,55 @@ select.ui.dropdown {
   ---------------*/
 
   /* General rules and basic dropdowns */
+  .ui.dropdown .inverted.menu,
   .ui.inverted.dropdown .menu {
     background: @invertedMenuBackground;
     box-shadow: @invertedMenuBoxShadow;
     border: @invertedMenuBorder;
   }
 
+  .ui.dropdown .inverted.menu > .item,
   .ui.inverted.dropdown .menu > .item {
     color: @invertedMenuColor;
   }
 
+  .ui.dropdown .inverted.menu .active.item,
   .ui.inverted.dropdown .menu .active.item {
     background: @invertedActiveItemBackground;
     color: @invertedActiveItemColor;
     box-shadow: @invertedActiveItemBoxShadow;
   }
 
+  .ui.dropdown .inverted.menu > .item:hover,
   .ui.inverted.dropdown .menu > .item:hover {
     background: @invertedHoveredItemBackground;
     color: @invertedHoveredItemColor;
   }
 
   .ui.inverted.dropdown.selected,
+  .ui.dropdown .inverted.menu .selected.item,
   .ui.inverted.dropdown .menu .selected.item {
     background: @invertedSelectedBackground;
     color: @invertedSelectedColor;
   }
 
+  .ui.dropdown .inverted.menu > .header,
   .ui.inverted.dropdown .menu > .header {
     color: @invertedMenuHeaderColor;
   }
 
   .ui.inverted.dropdown > .text > .description,
+  .ui.dropdown .inverted.menu > .item > .description,
   .ui.inverted.dropdown .menu > .item > .description {
     color: @invertedItemDescriptionColor;
   }
 
+  .ui.dropdown .inverted.menu > .divider,
   .ui.inverted.dropdown .menu > .divider {
     border-top: @invertedMenuDividerBorder;
   }
 
+  .ui.dropdown .inverted.scrolling.menu,
   .ui.inverted.dropdown .scrolling.menu {
     border: none;
     border-top: @invertedMenuBorder;
@@ -1674,11 +1809,13 @@ select.ui.dropdown {
       color: @invertedSelectionVisibleTextColor;
     }
 
+    .ui.selection.active.dropdown .inverted.menu,
     .ui.inverted.selection.active.dropdown .menu,
     .ui.inverted.selection.active.dropdown:hover {
       border-color: @invertedSelectionVisibleBorderColor;
     }
 
+    .ui.selection.dropdown .inverted.menu > .item,
     .ui.inverted.selection.dropdown .menu > .item {
       border-top: @invertedSelectionItemDivider;
     }
@@ -1693,7 +1830,7 @@ select.ui.dropdown {
     color: @invertedDefaultTextFocusColor;
   }
 
-  .ui.inverted.active.search.dropdown input.search:focus + .text .icon,
+  .ui.inverted.active.search.dropdown input.search:focus + .text i.icon,
   .ui.inverted.active.search.dropdown input.search:focus + .text .flag {
     opacity: @invertedSelectionTextUnderlayIconOpacity;
   }
@@ -1701,11 +1838,13 @@ select.ui.dropdown {
     color: @invertedSelectionTextUnderlayColor !important;
   }
 
+  .ui.dropdown .inverted.menu > .message:not(.ui),
   .ui.inverted.dropdown .menu > .message:not(.ui) {
     color: @invertedMessageColor;
   }
 
   /* Fixing the border */
+  .ui.dropdown .inverted.menu > .item:first-child,
   .ui.inverted.dropdown .menu > .item:first-child {
     border-top-width: 0;
   }
@@ -1756,19 +1895,24 @@ select.ui.dropdown {
   }
 
   /* Scrollbars */
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
     background: @thumbInvertedBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
     background: @thumbInvertedInactiveBackground;
   }
+  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
   .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
   & when (@variationDropdownPointing) {
+    .ui.pointing.dropdown > .inverted.menu:after,
     .ui.inverted.pointing.dropdown > .menu:after {
       background: @invertedPointingArrowBackground;
       box-shadow: @invertedPointingArrowBoxShadow;

@@ -76,7 +76,7 @@
       Icon
 ---------------*/
 
-.ui.embed > .icon {
+.ui.embed > i.icon {
   cursor: pointer;
   position: absolute;
   top: 0;
@@ -85,7 +85,7 @@
   height: 100%;
   z-index: 2;
 }
-.ui.embed > .icon:after {
+.ui.embed > i.icon:after {
   position: absolute;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@
   opacity: @placeholderBackgroundOpacity;
   transition: @placeholderBackgroundTransition;
 }
-.ui.embed > .icon:before {
+.ui.embed > i.icon:before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -118,11 +118,11 @@
      Hover
 ---------------*/
 
-.ui.embed .icon:hover:after {
+.ui.embed i.icon:hover:after {
   background: @hoverPlaceholderBackground;
   opacity: @hoverPlaceholderBackgroundOpacity;
 }
-.ui.embed .icon:hover:before {
+.ui.embed i.icon:hover:before {
   color: @hoverIconColor;
 }
 
@@ -130,7 +130,7 @@
      Active
 ---------------*/
 
-.ui.active.embed > .icon,
+.ui.active.embed > i.icon,
 .ui.active.embed > .placeholder {
   display: none;
 }

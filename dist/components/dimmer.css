@@ -26,7 +26,7 @@
   text-align: center;
   vertical-align: middle;
   padding: 1em;
-  background-color: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.85);
   opacity: 0;
   line-height: 1;
   -webkit-animation-fill-mode: both;
@@ -155,6 +155,9 @@
   -webkit-transform-origin: center center;
           transform-origin: center center;
 }
+.ui.page.dimmer.modals {
+  -moz-perspective: none;
+}
 body.animating.in.dimmable,
 body.dimmed.dimmable {
   overflow: hidden;
@@ -182,10 +185,10 @@ body.dimmable > .dimmer {
 
 /* Dimmer Color */
 .blurring.dimmable > .dimmer {
-  background-color: rgba(0, 0, 0, 0.6);
+  background: rgba(0, 0, 0, 0.6);
 }
 .blurring.dimmable > .inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.6);
 }
 
 /*--------------
@@ -204,13 +207,13 @@ body.dimmable > .dimmer {
   ---------------*/
 
 .medium.medium.medium.medium.medium.dimmer {
-  background-color: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.65);
 }
 .light.light.light.light.light.dimmer {
-  background-color: rgba(0, 0, 0, 0.45);
+  background: rgba(0, 0, 0, 0.45);
 }
 .very.light.light.light.light.dimmer {
-  background-color: rgba(0, 0, 0, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 
 /*--------------
@@ -218,7 +221,7 @@ body.dimmable > .dimmer {
   ---------------*/
 
 .ui.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85);
 }
 .ui.inverted.dimmer > .content,
 .ui.inverted.dimmer > .content > * {
@@ -230,13 +233,13 @@ body.dimmable > .dimmer {
     ---------------*/
 
 .medium.medium.medium.medium.medium.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.65);
+  background: rgba(255, 255, 255, 0.65);
 }
 .light.light.light.light.light.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.45);
 }
 .very.light.light.light.light.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.25);
 }
 
 /*--------------
@@ -252,21 +255,21 @@ body.dimmable > .dimmer {
   width: 0;
   height: 0;
   z-index: -100;
-  background-color: rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
 }
 .dimmed.dimmable > .ui.simple.dimmer {
   overflow: visible;
   opacity: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.85);
   z-index: 1;
 }
 .ui.simple.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0);
 }
 .dimmed.dimmable > .ui.simple.inverted.dimmer {
-  background-color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.85);
 }
 
 /*--------------

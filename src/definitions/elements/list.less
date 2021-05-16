@@ -158,9 +158,9 @@ ol.ui.list ol li,
 }
 & when (@variationListImage) or (@variationListIcon) {
   .ui.list .list > .item > .image + .content,
-  .ui.list .list > .item > .icon + .content,
+  .ui.list .list > .item > i.icon + .content,
   .ui.list > .item > .image + .content,
-  .ui.list > .item > .icon + .content {
+  .ui.list > .item > i.icon + .content {
     display: table-cell;
     width: 100%;
     padding: 0 0 0 @contentDistance;
@@ -168,8 +168,8 @@ ol.ui.list ol li,
   }
 }
 & when (@variationListIcon) {
-  .ui.list .list > .item > .loading.icon + .content,
-  .ui.list > .item > .loading.icon + .content {
+  .ui.list .list > .item > i.loading.icon + .content,
+  .ui.list > .item > i.loading.icon + .content {
     padding-left: e(%("calc(%d + %d)", @iconDistance, @contentDistance));
   }
 }
@@ -321,8 +321,8 @@ ol.ui.list ol li,
   }
   .ui.horizontal.list > .item > .image,
   .ui.horizontal.list .list > .item > .image,
-  .ui.horizontal.list > .item > .icon,
-  .ui.horizontal.list .list > .item > .icon,
+  .ui.horizontal.list > .item > i.icon,
+  .ui.horizontal.list .list > .item > i.icon,
   .ui.horizontal.list > .item > .content,
   .ui.horizontal.list .list > .item > .content {
     vertical-align: @horizontalVerticalAlign;
@@ -344,8 +344,8 @@ ol.ui.list ol li,
   }
   & when (@variationListImage) or (@variationListIcon) {
     .ui.horizontal.list > .item > .image + .content,
-    .ui.horizontal.list > .item > .icon,
-    .ui.horizontal.list > .item > .icon + .content {
+    .ui.horizontal.list > .item > i.icon,
+    .ui.horizontal.list > .item > i.icon + .content {
       float: none;
       display: inline-block;
       width: auto;
@@ -386,8 +386,8 @@ ol.ui.list ol li,
 & when (@variationListIcon) {
   .ui.list .list > a.item:hover > .icons,
   .ui.list > a.item:hover > .icons,
-  .ui.list .list > a.item:hover > .icon,
-  .ui.list > a.item:hover > .icon {
+  .ui.list .list > a.item:hover > i.icon,
+  .ui.list > a.item:hover > i.icon {
     color: @itemLinkIconHoverColor;
   }
 }
@@ -401,8 +401,8 @@ ol.ui.list ol li,
          Inverted
   --------------------*/
   & when (@variationListIcon) {
-    .ui.inverted.list .list > a.item > .icon,
-    .ui.inverted.list > a.item > .icon {
+    .ui.inverted.list .list > a.item > i.icon,
+    .ui.inverted.list > a.item > i.icon {
       color: @invertedIconLinkColor;
     }
   }

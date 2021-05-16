@@ -217,7 +217,17 @@
   color: @checkboxColor;
   transition: @checkboxTransition;
 }
-
+& when (@variationCheckboxRightAligned) {
+  .ui.right.aligned.checkbox label {
+    padding-left: 0;
+    padding-right: @labelDistance;
+    &:after,
+    &:before {
+      right: 0;
+      left: auto;
+    }
+  }
+}
 /*--------------
       Label
 ---------------*/
@@ -317,6 +327,12 @@
       left: @toggleCenterOffset;
     }
   }
+  & when (@variationCheckboxRightAligned) {
+    .ui.right.aligned.indeterminate.toggle.checkbox input:not([type=radio]) ~ label:after {
+      left: auto;
+      right: @toggleCenterOffset;
+    }
+  }
 }
 
 /*--------------
@@ -333,14 +349,16 @@
   color: @checkboxActiveFocusCheckColor;
 }
 
+& when (@variationCheckboxReadonly) {
+  /*--------------
+      Read-Only
+  ---------------*/
 
-/*--------------
-    Read-Only
----------------*/
-
-.ui.read-only.checkbox,
-.ui.read-only.checkbox label {
-  cursor: default;
+  .ui.read-only.checkbox,
+  .ui.read-only.checkbox label {
+    cursor: default;
+    pointer-events: none;
+  }
 }
 
 & when (@variationCheckboxDisabled) {
@@ -350,7 +368,7 @@
 
   .ui.disabled.checkbox label,
   .ui.checkbox input[disabled] ~ label {
-    cursor: default !important;
+    cursor: default;
     opacity: @disabledCheckboxOpacity;
     color: @disabledCheckboxLabelColor;
     pointer-events: none;
@@ -542,6 +560,22 @@
   .ui.slider.checkbox input:focus:checked ~ label:before {
     background-color: @sliderOnFocusLineColor !important;
   }
+
+  & when (@variationCheckboxRightAligned) {
+    .ui.right.aligned.slider.checkbox label {
+      padding-left: 0;
+      padding-right: @sliderLabelDistance;
+    }
+    .ui.right.aligned.slider.checkbox label:after {
+      left: auto;
+      right: @sliderTravelDistance;
+      transition: @sliderHandleTransitionRightAligned;
+    }
+    .ui.right.aligned.slider.checkbox input:checked ~ label:after {
+      left: auto;
+      right: 0;
+    }
+  }
 }
 
 & when (@variationCheckboxToggle) {
@@ -642,6 +676,22 @@
   }
   .ui.toggle.checkbox input:focus:checked ~ label:before {
     background-color: @toggleOnFocusLaneColor !important;
+  }
+
+  & when (@variationCheckboxRightAligned) {
+    .ui.right.aligned.toggle.checkbox label {
+      padding-left: 0;
+      padding-right: @toggleLabelDistance;
+    }
+    .ui.right.aligned.toggle.checkbox input ~ label:after {
+      left: auto;
+      right: @toggleOnOffset;
+      transition: @toggleHandleTransitionRightAligned;
+    }
+    .ui.right.aligned.toggle.checkbox input:checked ~ label:after {
+      left: auto;
+      right: @toggleOffOffset;
+    }
   }
 }
 
