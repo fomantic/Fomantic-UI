@@ -34,14 +34,18 @@
     margin-left: @mobileGutter;
     margin-right: @mobileGutter;
   }
-  .ui.ui.grid.container {
-    width: @mobileGridWidth;
-  }
-  .ui.ui.relaxed.grid.container {
-    width: @mobileRelaxedGridWidth;
-  }
-  .ui.ui.very.relaxed.grid.container {
-    width: @mobileVeryRelaxedGridWidth;
+  & when (@variationContainerGrid) or (@variationContainerRelaxed) {
+    .ui.ui.ui.grid.container {
+      width: @mobileGridWidth;
+    }
+    & when (@variationContainerRelaxed) {
+      .ui.ui.ui.relaxed.grid.container {
+        width: @mobileRelaxedGridWidth;
+      }
+      .ui.ui.ui.very.relaxed.grid.container {
+        width: @mobileVeryRelaxedGridWidth;
+      }
+    }
   }
 }
 
@@ -52,14 +56,18 @@
     margin-left: @tabletGutter;
     margin-right: @tabletGutter;
   }
-  .ui.ui.grid.container {
-    width: @tabletGridWidth;
-  }
-  .ui.ui.relaxed.grid.container {
-    width: @tabletRelaxedGridWidth;
-  }
-  .ui.ui.very.relaxed.grid.container {
-    width: @tabletVeryRelaxedGridWidth;
+  & when (@variationContainerGrid) or (@variationContainerRelaxed) {
+    .ui.ui.ui.grid.container {
+      width: @tabletGridWidth;
+    }
+    & when (@variationContainerRelaxed) {
+      .ui.ui.ui.relaxed.grid.container {
+        width: @tabletRelaxedGridWidth;
+      }
+      .ui.ui.ui.very.relaxed.grid.container {
+        width: @tabletVeryRelaxedGridWidth;
+      }
+    }
   }
 }
 
@@ -70,14 +78,18 @@
     margin-left: @computerGutter;
     margin-right: @computerGutter;
   }
-  .ui.ui.grid.container {
-    width: @computerGridWidth;
-  }
-  .ui.ui.relaxed.grid.container {
-    width: @computerRelaxedGridWidth;
-  }
-  .ui.ui.very.relaxed.grid.container {
-    width: @computerVeryRelaxedGridWidth;
+  & when (@variationContainerGrid) or (@variationContainerRelaxed) {
+    .ui.ui.ui.grid.container {
+      width: @computerGridWidth;
+    }
+    & when (@variationContainerRelaxed) {
+      .ui.ui.ui.relaxed.grid.container {
+        width: @computerRelaxedGridWidth;
+      }
+      .ui.ui.ui.very.relaxed.grid.container {
+        width: @computerVeryRelaxedGridWidth;
+      }
+    }
   }
 }
 
@@ -88,14 +100,18 @@
     margin-left: @largeMonitorGutter;
     margin-right: @largeMonitorGutter;
   }
-  .ui.ui.grid.container {
-    width: @largeMonitorGridWidth;
-  }
-  .ui.ui.relaxed.grid.container {
-    width: @largeMonitorRelaxedGridWidth;
-  }
-  .ui.ui.very.relaxed.grid.container {
-    width: @largeMonitorVeryRelaxedGridWidth;
+  & when (@variationContainerGrid) or (@variationContainerRelaxed) {
+    .ui.ui.ui.grid.container {
+      width: @largeMonitorGridWidth;
+    }
+    & when (@variationContainerRelaxed) {
+      .ui.ui.ui.relaxed.grid.container {
+        width: @largeMonitorRelaxedGridWidth;
+      }
+      .ui.ui.ui.very.relaxed.grid.container {
+        width: @largeMonitorVeryRelaxedGridWidth;
+      }
+    }
   }
 }
 
@@ -103,38 +119,42 @@
              Types
 *******************************/
 
-
-/* Text Container */
-.ui.text.container {
-  font-family: @textFontFamily;
-  max-width: @textWidth;
-  line-height: @textLineHeight;
-  font-size: @textSize;
+& when (@variationContainerText) {
+  /* Text Container */
+  .ui.text.container {
+    font-family: @textFontFamily;
+    max-width: @textWidth;
+    line-height: @textLineHeight;
+    font-size: @textSize;
+  }
 }
 
-/* Fluid */
-.ui.fluid.container {
-  width: 100%;
+& when (@variationContainerFluid) {
+  /* Fluid */
+  .ui.fluid.container {
+    width: 100%;
+  }
 }
-
 
 /*******************************
            Variations
 *******************************/
-
-.ui[class*="left aligned"].container {
-  text-align: left;
+& when (@variationContainerAligned) {
+  .ui[class*="left aligned"].container {
+    text-align: left;
+  }
+  .ui[class*="center aligned"].container {
+    text-align: center;
+  }
+  .ui[class*="right aligned"].container {
+    text-align: right;
+  }
 }
-.ui[class*="center aligned"].container {
-  text-align: center;
+& when (@variationContainerJustified) {
+  .ui.justified.container {
+    text-align: justify;
+    hyphens: auto;
+  }
 }
-.ui[class*="right aligned"].container {
-  text-align: right;
-}
-.ui.justified.container {
-  text-align: justify;
-  hyphens: auto;
-}
-
 
 .loadUIOverrides();

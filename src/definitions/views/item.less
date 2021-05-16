@@ -380,76 +380,81 @@
            Variations
 *******************************/
 
+& when (@variationItemAligned) {
+  /*-------------------
+         Aligned
+  --------------------*/
 
-/*-------------------
-       Aligned
---------------------*/
-
-.ui.items > .item > .image + [class*="top aligned"].content {
-  align-self: flex-start;
-}
-.ui.items > .item > .image + [class*="middle aligned"].content {
-  align-self: center;
-}
-.ui.items > .item > .image + [class*="bottom aligned"].content {
-  align-self: flex-end;
-}
-
-
-/*--------------
-     Relaxed
----------------*/
-
-.ui.relaxed.items > .item {
-  margin: @relaxedItemSpacing 0;
-}
-.ui[class*="very relaxed"].items > .item {
-  margin: @veryRelaxedItemSpacing 0;
+  .ui.items > .item > .image + [class*="top aligned"].content {
+    align-self: flex-start;
+  }
+  .ui.items > .item > .image + [class*="middle aligned"].content {
+    align-self: center;
+  }
+  .ui.items > .item > .image + [class*="bottom aligned"].content {
+    align-self: flex-end;
+  }
 }
 
+& when (@variationItemRelaxed) {
+  /*--------------
+       Relaxed
+  ---------------*/
 
-/*-------------------
-      Divided
---------------------*/
-
-.ui.divided.items > .item {
-  border-top: @dividedBorder;
-  margin: @dividedMargin;
-  padding: @dividedPadding;
-}
-.ui.divided.items > .item:first-child {
-  border-top: none;
-  margin-top: @dividedFirstLastMargin !important;
-  padding-top: @dividedFirstLastPadding !important;
-}
-.ui.divided.items > .item:last-child {
-  margin-bottom: @dividedFirstLastMargin !important;
-  padding-bottom: @dividedFirstLastPadding !important;
+  .ui.relaxed.items > .item {
+    margin: @relaxedItemSpacing 0;
+  }
+  .ui[class*="very relaxed"].items > .item {
+    margin: @veryRelaxedItemSpacing 0;
+  }
 }
 
-/* Relaxed Divided */
-.ui.relaxed.divided.items > .item {
-  margin: 0;
-  padding: @relaxedItemSpacing 0;
+& when (@variationItemDivided) {
+  /*-------------------
+        Divided
+  --------------------*/
+
+  .ui.divided.items > .item {
+    border-top: @dividedBorder;
+    margin: @dividedMargin;
+    padding: @dividedPadding;
+  }
+  .ui.divided.items > .item:first-child {
+    border-top: none;
+    margin-top: @dividedFirstLastMargin !important;
+    padding-top: @dividedFirstLastPadding !important;
+  }
+  .ui.divided.items > .item:last-child {
+    margin-bottom: @dividedFirstLastMargin !important;
+    padding-bottom: @dividedFirstLastPadding !important;
+  }
+  & when (@variationItemRelaxed) {
+    /* Relaxed Divided */
+    .ui.relaxed.divided.items > .item {
+      margin: 0;
+      padding: @relaxedItemSpacing 0;
+    }
+    .ui[class*="very relaxed"].divided.items > .item {
+      margin: 0;
+      padding: @veryRelaxedItemSpacing 0;
+    }
+  }
 }
-.ui[class*="very relaxed"].divided.items > .item {
-  margin: 0;
-  padding: @veryRelaxedItemSpacing 0;
-}
 
+& when (@variationItemLink) {
+  /*-------------------
+          Link
+  --------------------*/
 
-/*-------------------
-        Link
---------------------*/
+  .ui.items a.item:hover,
+  .ui.link.items > .item:hover {
+    cursor: pointer;
+  }
 
-.ui.items a.item:hover,
-.ui.link.items > .item:hover {
-  cursor: pointer;
-}
-
-.ui.items a.item:hover .content .header,
-.ui.link.items > .item:hover .content .header {
-  color: @headerLinkHoverColor;
+  .ui.items a.item:hover .content .header,
+  .ui.link.items > .item:hover .content .header {
+    color: @headerLinkHoverColor;
+  }
 }
 
 
@@ -460,83 +465,95 @@
 .ui.items > .item {
   font-size: @relativeMedium;
 }
+& when not (@variationItemSizes = false) {
+  each(@variationItemSizes, {
+    @s: @{value}ItemSize;
+    .ui.@{value}.items > .item  {
+      font-size: @@s;
+    }
+  })
+}
 
-/*---------------
-   Unstackable
-----------------*/
+& when (@variationItemUnstackable) {
+  /*---------------
+     Unstackable
+  ----------------*/
 
-@media only screen and (max-width: @largestMobileScreen) {
-  .ui.unstackable.items > .item > .image,
-  .ui.unstackable.items > .item > .image > img {
-    width: @unstackableMobileImageWidth !important;
+  @media only screen and (max-width: @largestMobileScreen) {
+    .ui.unstackable.items > .item > .image,
+    .ui.unstackable.items > .item > .image > img {
+      width: @unstackableMobileImageWidth !important;
+    }
   }
 }
 
-/*--------------
-     Inverted
----------------*/
+& when (@variationItemInverted) {
+  /*--------------
+       Inverted
+  ---------------*/
 
-.ui.inverted.items > .item {
-  background: @invertedBackground;
-}
-.ui.inverted.items > .item > .content {
-  background: @invertedContentBackground;
-  color: @invertedContentColor;
-}
-.ui.inverted.items > .item .extra {
-  background: @invertedExtraBackground;
-}
-.ui.inverted.items > .item > .content > .header {
-  color: @invertedHeaderColor;
-}
-.ui.inverted.items > .item > .content > .description {
-  color: @invertedDescriptionColor;
-}
-.ui.inverted.items > .item .meta {
-  color: @invertedMetaColor;
-}
-.ui.inverted.items > .item > .content a:not(.ui) {
-  color: @invertedContentLinkColor;
-}
-.ui.inverted.items > .item > .content a:not(.ui):hover {
-  color: @invertedContentLinkHoverColor;
-}
-.ui.inverted.items > .item > .content > a.header {
-  color: @invertedHeaderLinkColor;
-}
-.ui.inverted.items > .item > .content > a.header:hover {
-  color: @invertedHeaderLinkHoverColor;
-}
-.ui.inverted.items > .item .meta > a:not(.ui) {
-  color: @invertedMetaLinkColor;
-}
-.ui.inverted.items > .item .meta > a:not(.ui):hover {
-  color: @invertedMetaLinkHoverColor;
-}
-.ui.inverted.items > .item > .content .favorite.icon:hover {
-  color: @invertedFavoriteColor;
-}
-.ui.inverted.items > .item > .content .active.favorite.icon {
-  color: @invertedFavoriteActiveColor;
-}
-.ui.inverted.items > .item > .content .like.icon:hover {
-  color: @invertedLikeColor;
-}
-.ui.inverted.items > .item > .content .active.like.icon {
-  color: @invertedLikeActiveColor;
-}
-.ui.inverted.items > .item .extra {
-  color: @invertedExtraColor;
-}
-.ui.inverted.items a.item:hover .content .header,
-.ui.inverted.link.items > .item:hover .content .header {
-  color: @invertedHeaderLinkHoverColor;
-}
-.ui.inverted.divided.items > .item {
-  border-top: @invertedDividedBorder;
-}
-.ui.inverted.divided.items > .item:first-child {
-  border-top: none;
+  .ui.inverted.items > .item {
+    background: @invertedBackground;
+  }
+  .ui.inverted.items > .item > .content {
+    background: @invertedContentBackground;
+    color: @invertedContentColor;
+  }
+  .ui.inverted.items > .item .extra {
+    background: @invertedExtraBackground;
+  }
+  .ui.inverted.items > .item > .content > .header {
+    color: @invertedHeaderColor;
+  }
+  .ui.inverted.items > .item > .content > .description {
+    color: @invertedDescriptionColor;
+  }
+  .ui.inverted.items > .item .meta {
+    color: @invertedMetaColor;
+  }
+  .ui.inverted.items > .item > .content a:not(.ui) {
+    color: @invertedContentLinkColor;
+  }
+  .ui.inverted.items > .item > .content a:not(.ui):hover {
+    color: @invertedContentLinkHoverColor;
+  }
+  .ui.inverted.items > .item > .content > a.header {
+    color: @invertedHeaderLinkColor;
+  }
+  .ui.inverted.items > .item > .content > a.header:hover {
+    color: @invertedHeaderLinkHoverColor;
+  }
+  .ui.inverted.items > .item .meta > a:not(.ui) {
+    color: @invertedMetaLinkColor;
+  }
+  .ui.inverted.items > .item .meta > a:not(.ui):hover {
+    color: @invertedMetaLinkHoverColor;
+  }
+  .ui.inverted.items > .item > .content .favorite.icon:hover {
+    color: @invertedFavoriteColor;
+  }
+  .ui.inverted.items > .item > .content .active.favorite.icon {
+    color: @invertedFavoriteActiveColor;
+  }
+  .ui.inverted.items > .item > .content .like.icon:hover {
+    color: @invertedLikeColor;
+  }
+  .ui.inverted.items > .item > .content .active.like.icon {
+    color: @invertedLikeActiveColor;
+  }
+  .ui.inverted.items > .item .extra {
+    color: @invertedExtraColor;
+  }
+  .ui.inverted.items a.item:hover .content .header,
+  .ui.inverted.link.items > .item:hover .content .header {
+    color: @invertedHeaderLinkHoverColor;
+  }
+  .ui.inverted.divided.items > .item {
+    border-top: @invertedDividedBorder;
+  }
+  .ui.inverted.divided.items > .item:first-child {
+    border-top: none;
+  }
 }
 
 .loadUIOverrides();

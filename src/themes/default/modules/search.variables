@@ -56,6 +56,18 @@
 @resultTitleFontSize: @relativeMedium;
 @resultTitleColor: @darkTextColor;
 
+/* Result Scrolling */
+@scrollingMobileMaxResults: 4;
+@scrollingTabletMaxResults: 6;
+@scrollingComputerMaxResults: 8;
+@scrollingWidescreenMaxResults: 12;
+
+@scrollingResultHeight: (@resultVerticalPadding * 2) + @resultLineHeight;
+@scrollingMobileMaxResultsHeight: (@scrollingResultHeight * @scrollingMobileMaxResults);
+@scrollingTabletMaxResultsHeight: (@scrollingResultHeight * @scrollingTabletMaxResults);
+@scrollingComputerMaxResultsHeight: (@scrollingResultHeight * @scrollingComputerMaxResults);
+@scrollingWidescreenMaxResultsHeight: (@scrollingResultHeight * @scrollingWidescreenMaxResults);
+
 /* Description */
 @resultDescriptionFontSize: @relativeSmall;
 @resultDescriptionDistance: 0;
@@ -159,3 +171,11 @@
 @categoryNamePadding: 0.4em 1em;
 @categoryNameFontWeight: @bold;
 @categoryNameColor: @lightTextColor;
+
+@miniSearchSize: @relativeMini;
+@tinySearchSize: @relativeTiny;
+@smallSearchSize: @relativeSmall;
+@largeSearchSize: @relativeLarge;
+@bigSearchSize: @relativeBig;
+@hugeSearchSize: @relativeHuge;
+@massiveSearchSize: @relativeMassive;

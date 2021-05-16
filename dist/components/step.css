@@ -96,7 +96,6 @@
   content: '';
   top: 50%;
   right: 0;
-  border: medium none;
   background-color: #FFFFFF;
   width: 1.14285714em;
   height: 1.14285714em;
@@ -159,13 +158,13 @@
 }
 
 /* Icon */
-.ui.steps .step > .icon {
+.ui.steps .step > i.icon {
   line-height: 1;
   font-size: 2.5em;
   margin: 0 1rem 0 0;
 }
-.ui.steps .step > .icon,
-.ui.steps .step > .icon ~ .content {
+.ui.steps .step > i.icon,
+.ui.steps .step > i.icon ~ .content {
   display: block;
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -175,7 +174,7 @@
 }
 
 /* Horizontal Icon */
-.ui.steps:not(.vertical) .step > .icon {
+.ui.steps:not(.vertical) .step > i.icon {
   width: auto;
 }
 
@@ -192,8 +191,8 @@
 
 
 /*--------------
-     Ordered
----------------*/
+       Ordered
+  ---------------*/
 
 .ui.ordered.steps {
   counter-reset: ordered;
@@ -218,8 +217,8 @@
 }
 
 /*--------------
-    Vertical
----------------*/
+      Vertical
+  ---------------*/
 
 .ui.vertical.steps {
   display: -webkit-inline-box;
@@ -258,6 +257,13 @@
   right: 0;
   border-width: 0 1px 1px 0;
   display: none;
+}
+.ui.right.vertical.steps .step:after {
+  border-width: 1px 0 0 1px;
+  left: 0;
+  right: 100%;
+  -webkit-transform: translateY(-50%) translateX(-50%) rotate(-45deg);
+          transform: translateY(-50%) translateX(-50%) rotate(-45deg);
 }
 .ui.vertical.steps .active.step:after {
   display: block;
@@ -324,7 +330,7 @@
   }
   
 /* Icon */
-  .ui.steps:not(.unstackable) .step > .icon,
+  .ui.steps:not(.unstackable) .step > i.icon,
   .ui.ordered.steps:not(.unstackable) .step:before {
     margin: 0 0 1rem 0;
   }
@@ -366,7 +372,7 @@
   color: #4183C4;
 }
 .ui.ordered.steps .step.active:before,
-.ui.steps .active.step .icon {
+.ui.steps .active.step i.icon {
   color: rgba(0, 0, 0, 0.85);
 }
 
@@ -395,7 +401,7 @@
 }
 
 /* Completed */
-.ui.steps .step.completed > .icon:before,
+.ui.steps .step.completed > i.icon:before,
 .ui.ordered.steps .step.completed:before {
   color: #21BA45;
 }
@@ -422,8 +428,8 @@
 
 
 /*--------------
-   Stackable
----------------*/
+     Stackable
+  ---------------*/
 
 
 /* Tablet Or Below */
@@ -474,15 +480,15 @@
   }
   
 /* Icon */
-  .ui[class*="tablet stackable"].steps .step > .icon,
+  .ui[class*="tablet stackable"].steps .step > i.icon,
   .ui[class*="tablet stackable"].ordered.steps .step:before {
     margin: 0 0 1rem 0;
   }
 }
 
 /*--------------
-      Fluid
----------------*/
+        Fluid
+  ---------------*/
 
 
 /* Fluid */
@@ -494,8 +500,8 @@
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 
 /* Top */
@@ -578,6 +584,10 @@
        Sizes
 --------------------*/
 
+.ui.steps .step,
+.ui.step {
+  font-size: 1rem;
+}
 .ui.mini.steps .step,
 .ui.mini.step {
   font-size: 0.78571429rem;
@@ -589,10 +599,6 @@
 .ui.small.steps .step,
 .ui.small.step {
   font-size: 0.92857143rem;
-}
-.ui.steps .step,
-.ui.step {
-  font-size: 1rem;
 }
 .ui.large.steps .step,
 .ui.large.step {
@@ -612,8 +618,8 @@
 }
 
 /*--------------
-    Inverted
----------------*/
+      Inverted
+  ---------------*/
 
 .ui.inverted.steps {
   border: 1px solid #555555;
@@ -637,7 +643,7 @@
   background: #333333;
 }
 .ui.inverted.ordered.steps .step.active:before,
-.ui.inverted.steps .active.step .icon {
+.ui.inverted.steps .active.step i.icon {
   color: #ffffff;
 }
 

@@ -1,9 +1,21 @@
 var
+  browserslist = require('browserslist'),
   console = require('better-console'),
   config  = require('./user'),
   release = require('./project/release')
 ;
 
+var defaultBrowsers = browserslist(browserslist.defaults)
+var userBrowsers = browserslist()
+var hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers)
+
+var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
+  'last 2 versions',
+  '> 1%',
+  'opera 12.1',
+  'bb 10',
+  'android 4'
+]
 
 module.exports = {
 
@@ -39,7 +51,7 @@ module.exports = {
 
       // add version to first comment
       license: {
-        in  : /(^\/\*[\s\S]+)(# Semantic UI )([\s\S]+?\*\/)/,
+        in  : /(^\/\*[\s\S]+)(# Fomantic-UI )([\s\S]+?\*\/)/,
         out : '$1$2' + release.version + ' $3'
       },
 
@@ -75,6 +87,7 @@ module.exports = {
 
     /* Comment Banners */
     header: {
+      year       : (new Date()).getFullYear(),
       title      : release.title,
       version    : release.version,
       repository : release.repository,
@@ -93,7 +106,7 @@ module.exports = {
             theme,
             element
           ;
-          if(error.filename.match(/theme.less/)) {
+          if(error && error.filename && error.filename.match(/theme.less/)) {
             if (error.line == 9) {
               element = regExp.variable.exec(error.message)[1];
               if (element) {
@@ -118,13 +131,7 @@ module.exports = {
 
     /* What Browsers to Prefix */
     prefix: {
-      overrideBrowserslist: [
-        'last 2 versions',
-        '> 1%',
-        'opera 12.1',
-        'bb 10',
-        'android 4'
-      ]
+      overrideBrowserslist
     },
 
     /* File Renames */
@@ -137,10 +144,11 @@ module.exports = {
 
     /* Minified CSS Concat */
     minify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : 1,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false
+        }
+      }
     },
 
     /* Minified JS Settings */
@@ -153,10 +161,12 @@ module.exports = {
 
     /* Minified Concat CSS Settings */
     concatMinify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : false,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false,
+          specialComments : false
+        }
+      }
     },
 
     /* Minified Concat JS */

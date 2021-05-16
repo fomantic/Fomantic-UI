@@ -101,7 +101,7 @@
 }
 
 /* Icon */
-.ui.message > .icon {
+.ui.message > i.icon {
   margin-right: 0.6em;
 }
 
@@ -171,8 +171,8 @@
 
 
 /*--------------
-    Compact
----------------*/
+      Compact
+  ---------------*/
 
 .ui.compact.message {
   display: inline-block;
@@ -185,8 +185,8 @@
 }
 
 /*--------------
-    Attached
----------------*/
+      Attached
+  ---------------*/
 
 .ui.attached.message {
   margin-bottom: -1px;
@@ -214,8 +214,8 @@
 }
 
 /*--------------
-      Icon
----------------*/
+        Icon
+  ---------------*/
 
 .ui.icon.message {
   display: -webkit-box;
@@ -226,7 +226,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.ui.icon.message > .icon:not(.close) {
+.ui.icon.message > i.icon:not(.close) {
   display: block;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -244,16 +244,16 @@
           flex: 1 1 auto;
   vertical-align: middle;
 }
-.ui.icon.message .icon:not(.close) + .content {
+.ui.icon.message > i.icon:not(.close) + .content {
   padding-left: 0;
 }
-.ui.icon.message .circular.icon {
+.ui.icon.message > i.circular.icon {
   width: 1em;
 }
 
 /*--------------
-    Floating
----------------*/
+      Floating
+  ---------------*/
 
 .ui.floating.message {
   -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.22) inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
@@ -605,6 +605,9 @@
      Sizes
 ---------------*/
 
+.ui.message {
+  font-size: 1em;
+}
 .ui.mini.message {
   font-size: 0.78571429em;
 }
@@ -613,9 +616,6 @@
 }
 .ui.small.message {
   font-size: 0.92857143em;
-}
-.ui.message {
-  font-size: 1em;
 }
 .ui.large.message {
   font-size: 1.14285714em;

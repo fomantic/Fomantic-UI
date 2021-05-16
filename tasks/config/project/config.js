@@ -127,12 +127,23 @@ module.exports = {
       });
     }
 
+    const components = (Array.isArray(config.components) && config.components.length >= 1)
+      ? config.components
+      : defaults.components
+    ;
+    const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
+      ? config.individuals
+      : []
+    ;
+    const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
+
     // takes component object and creates file glob matching selected components
-    config.globs.components = (typeof config.components == 'object')
-      ? (config.components.length > 1)
-        ? '{' + config.components.join(',') + '}'
-        : config.components[0]
-      : '{' + defaults.components.join(',') + '}'
+    config.globs.components = '{' + componentsExceptIndividuals.join(',') + '}';
+
+    // components that should be built, but excluded from main .css/.js files
+    config.globs.individuals = (individuals.length >= 1)
+      ? '{' + individuals.join(',') + '}'
+      : undefined
     ;
 
     return config;

@@ -10,8 +10,8 @@ module.exports = {
   // base path when installed with npm
   pmRoot: 'semantic/',
 
-  // octal permission for output files, i.e. 644 (false does not adjust)
-  permission : 744,
+  // octal permission for output files, i.e. 0o644 or '644' (false does not adjust)
+  permission : '744',
 
   // whether to generate rtl files
   rtl        : false,
@@ -51,6 +51,7 @@ module.exports = {
     'button',
     'container',
     'divider',
+    'emoji',
     'flag',
     'header',
     'icon',

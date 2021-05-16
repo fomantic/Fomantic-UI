@@ -208,31 +208,35 @@
            Variations
 *******************************/
 
-/*--------------------
-        Threaded
----------------------*/
+& when (@variationCommentThreaded) {
+  /*--------------------
+          Threaded
+  ---------------------*/
 
-.ui.threaded.comments .comment > .comments {
-  margin: @threadedCommentMargin;
-  padding: @threadedCommentPadding;
-  box-shadow: @threadedCommentBoxShadow;
+  .ui.threaded.comments .comment > .comments {
+    margin: @threadedCommentMargin;
+    padding: @threadedCommentPadding;
+    box-shadow: @threadedCommentBoxShadow;
+  }
 }
 
-/*--------------------
-        Minimal
----------------------*/
+& when (@variationCommentMinimal) {
+  /*--------------------
+          Minimal
+  ---------------------*/
 
-.ui.minimal.comments .comment .actions {
-  opacity: 0;
-  position: @minimalActionPosition;
-  top: @minimalActionTop;
-  right: @minimalActionRight;
-  left: @minimalActionLeft;
-  transition: @minimalTransition;
-  transition-delay: @minimalTransitionDelay;
-}
-.ui.minimal.comments .comment > .content:hover > .actions {
-  opacity: 1;
+  .ui.minimal.comments .comment .actions {
+    opacity: 0;
+    position: @minimalActionPosition;
+    top: @minimalActionTop;
+    right: @minimalActionRight;
+    left: @minimalActionLeft;
+    transition: @minimalTransition;
+    transition-delay: @minimalTransitionDelay;
+  }
+  .ui.minimal.comments .comment > .content:hover > .actions {
+    opacity: 1;
+  }
 }
 
 
@@ -240,56 +244,47 @@
         Sizes
 --------------------*/
 
-.ui.mini.comments {
-  font-size: @mini;
-}
-.ui.tiny.comments {
-  font-size: @tiny;
-}
-.ui.small.comments {
-  font-size: @small;
-}
 .ui.comments {
   font-size: @medium;
 }
-.ui.large.comments {
-  font-size: @large;
-}
-.ui.big.comments {
-  font-size: @big;
-}
-.ui.huge.comments {
-  font-size: @huge;
-}
-.ui.massive.comments {
-  font-size: @massive;
+& when not (@variationCommentSizes = false) {
+  each(@variationCommentSizes, {
+    @s: @@value;
+    .ui.@{value}.comments  {
+      font-size: @s;
+    }
+  })
 }
 
-/*-------------------
-        Inverted
---------------------*/
-.ui.inverted.comments .comment {
-  background-color: @black;
-}
 
-.ui.inverted.comments .comment .author,
-.ui.inverted.comments .comment .text {
-  color: @invertedTextColor;
-}
+& when (@variationCommentInverted) {
+  /*-------------------
+          Inverted
+  --------------------*/
+  .ui.inverted.comments .comment {
+    background-color: @black;
+  }
 
-.ui.inverted.comments .comment .metadata,
-.ui.inverted.comments .comment .actions a {
-  color: @invertedLightTextColor;
-}
+  .ui.inverted.comments .comment .author,
+  .ui.inverted.comments .comment .text {
+    color: @invertedTextColor;
+  }
 
-.ui.inverted.comments .comment a.author:hover,
-.ui.inverted.comments .comment .actions a.active,
-.ui.inverted.comments .comment .actions a:hover {
-  color: @invertedHoveredTextColor;
-}
+  .ui.inverted.comments .comment .metadata,
+  .ui.inverted.comments .comment .actions a {
+    color: @invertedLightTextColor;
+  }
 
-.ui.inverted.threaded.comments .comment > .comments {
-  box-shadow: -1px 0 0 @solidWhiteBorderColor;
+  .ui.inverted.comments .comment a.author:hover,
+  .ui.inverted.comments .comment .actions a.active,
+  .ui.inverted.comments .comment .actions a:hover {
+    color: @invertedHoveredTextColor;
+  }
+  & when (@variationCommentThreaded) {
+    .ui.inverted.threaded.comments .comment > .comments {
+      box-shadow: -1px 0 0 @solidWhiteBorderColor;
+    }
+  }
 }
 
 

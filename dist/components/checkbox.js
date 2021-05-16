@@ -175,7 +175,7 @@ $.fn.checkbox = function(parameters) {
         },
 
         preventDefaultOnInputTarget: function() {
-          if(typeof event !== 'undefined' && $(event.target).is(selector.input)) {
+          if(typeof event !== 'undefined' && event !== null && $(event.target).is(selector.input)) {
             module.verbose('Preventing default check action after manual check action');
             event.preventDefault();
           }
@@ -556,10 +556,10 @@ $.fn.checkbox = function(parameters) {
         trigger: {
           change: function() {
             var
-              events       = document.createEvent('HTMLEvents'),
               inputElement = $input[0]
             ;
             if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
               module.verbose('Triggering native change event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
