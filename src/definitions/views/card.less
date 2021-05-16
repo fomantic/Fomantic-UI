@@ -419,6 +419,63 @@
   color: @extraLinkHoverColor;
 }
 
+/*******************************
+            States
+*******************************/
+
+& when (@variationCardDisabled) {
+  /*--------------
+      Disabled
+  ---------------*/
+
+  .ui.disabled.card {
+    opacity: @disabledOpacity;
+    color: @disabledTextColor;
+    pointer-events: none;
+  }
+}
+
+& when (@variationCardLoading) {
+  /*--------------
+      Loading
+  ---------------*/
+
+  .ui.loading.card {
+    position: relative;
+    cursor: default;
+    pointer-events: none;
+    transition: all 0s linear;
+  }
+  .ui.loading.card:before {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    background: @loaderDimmerColor;
+    width: 100%;
+    height: 100%;
+    border-radius: @borderRadius;
+    z-index: @loaderDimmerZIndex;
+  }
+  .ui.loading.card:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
+
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
+
+    animation: loader @loaderSpeed infinite linear;
+    border: @loaderLineWidth solid @loaderLineColor;
+    border-radius: @circularRadius;
+
+    box-shadow: 0 0 0 1px transparent;
+    visibility: visible;
+    z-index: @loaderLineZIndex;
+  }
+}
 
 /*******************************
            Variations
@@ -457,7 +514,6 @@
     display: -webkit-flex;
     display: flex;
     width: 100%;
-    height: 100%;
     border-radius: @defaultBorderRadius 0 0 @defaultBorderRadius;
   }
   .ui.horizontal.cards > .card > .image:last-child > img,
@@ -465,6 +521,7 @@
     border-radius: 0 @defaultBorderRadius @defaultBorderRadius 0;
   }
   .ui.horizontal.cards > .card > .content, .ui.horizontal.card > .content {
+    border-top: none;
     flex-basis: 1px;
   }
   .ui.horizontal.cards > .card > .extra, .ui.horizontal.card > .extra {
@@ -929,6 +986,13 @@ each(@colors,{
   .ui.inverted.card > .content > .header {
     color: @invertedHeaderColor;
   }
+  .ui.inverted.cards > .card > .content > a.header,
+  .ui.inverted.card > .content > a.header {
+    color: @invertedHeaderLinkColor;
+    &:hover {
+      color: @invertedHeaderLinkHoverColor;
+    }
+  }
 
   /* Description */
   .ui.inverted.cards > .card > .content > .description,
@@ -971,6 +1035,16 @@ each(@colors,{
   a.inverted.ui.card:hover,
   .ui.inverted.link.card:hover {
     background: @invertedLinkHoverBackground;
+  }
+
+  & when (@variationCardLoading) {
+    /* Loading */
+    .ui.inverted.loading.card {
+      color: @invertedLoaderLineColor;
+    }
+    .ui.inverted.loading.card:before {
+      background: @loaderInvertedDimmerColor;
+    }
   }
 }
 

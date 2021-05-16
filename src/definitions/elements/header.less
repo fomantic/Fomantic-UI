@@ -62,6 +62,7 @@
       Icon
 ---------------*/
 
+.ui.header > .icons,
 .ui.header > i.icon {
   display: table-cell;
   opacity: @iconOpacity;
@@ -71,7 +72,8 @@
 }
 
 /* With Text Node */
-.ui.header > i.icon:only-child {
+.ui.header:not(.icon) > .icons:only-child,
+.ui.header:not(.icon) > i.icon:only-child {
   display: inline-block;
   padding: 0;
   margin-right: @iconMargin;
@@ -111,7 +113,8 @@
 }
 
 /* After Icon */
-.ui.header > i.icon + .content {
+.ui.header:not(.icon):not(.centered):not(.aligned) > .icons + .content,
+.ui.header:not(.icon):not(.centered):not(.aligned) > i.icon + .content {
   padding-left: @iconMargin;
   display: table-cell;
   vertical-align: @contentIconAlignment;
@@ -220,6 +223,7 @@
   .ui.icon.header:first-child {
     margin-top: @iconHeaderFirstMargin;
   }
+  .ui.icon.header > .icons,
   .ui.icon.header > i.icon {
     float: none;
     display: block;
@@ -238,13 +242,14 @@
     display: block;
     padding: 0;
   }
-  .ui.icon.header > i.circular.icon {
+  .ui.icon.header > i.circular {
     font-size: @circularHeaderIconSize;
   }
-  .ui.icon.header > i.square.icon {
+  .ui.icon.header > i.square {
     font-size: @squareHeaderIconSize;
   }
   & when (@variationHeaderBlock) {
+    .ui.block.icon.header > .icons,
     .ui.block.icon.header > i.icon {
       margin-bottom: 0;
     }

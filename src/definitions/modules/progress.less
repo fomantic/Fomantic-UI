@@ -24,7 +24,7 @@
 
 .ui.progress {
   position: relative;
-  display: block;
+  display: flex;
   max-width: 100%;
   border: @border;
   margin: @margin;
@@ -85,6 +85,16 @@
   margin-top: @progressOffset;
   font-weight: @progressFontWeight;
   text-align: @progressTextAlign;
+}
+
+& when (@variationProgressRightAligned) {
+  .ui.right.aligned.progress {
+    justify-content: flex-end;
+    & .bar > .progress {
+      left: @progressRightAlignedLeft;
+      right: @progressRightAlignedRight;
+    }
+  }
 }
 
 /* Label */
@@ -229,12 +239,6 @@
   }
 }
 
-& when (@variationProgressMultiple) {
-  /* Multiple */
-  .ui.multiple.progress {
-    display: flex;
-  }
-}
 
 /*******************************
              States
@@ -316,6 +320,12 @@
     animation: progress-active @activePulseDuration @defaultEasing infinite;
     transform-origin: left;
   }
+  & when (@variationProgressRightAligned) {
+    .ui.active.right.aligned.progress .bar::after {
+      transform-origin: right;
+    }
+  }
+
   @keyframes progress-active {
     0% {
       opacity: @activePulseMaxOpacity;
@@ -396,7 +406,6 @@
   }
   .ui.progress.attached,
   .ui.progress.attached .bar {
-    display: block;
     height: @attachedHeight;
     padding: 0;
     overflow: hidden;
@@ -492,6 +501,7 @@ each(@colors, {
   .ui.progress .bar .centered.progress {
     text-align: center;
     position: relative;
+    right: 0;
   }
   .ui.indeterminate.progress .bar::before {
     content: '';

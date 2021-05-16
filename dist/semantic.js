@@ -723,6 +723,7 @@ $.fn.form = function(parameters) {
               $field.val('');
             }
           });
+          module.remove.states();
         },
 
         reset: function() {
@@ -763,8 +764,7 @@ $.fn.form = function(parameters) {
               $field.val(defaultValue);
             }
           });
-
-          module.determine.isDirty();
+          module.remove.states();
         },
 
         determine: {
@@ -842,18 +842,18 @@ $.fn.form = function(parameters) {
           blank: function($field) {
             return String($field.val()).trim() === '';
           },
-          valid: function(field) {
+          valid: function(field, showErrors) {
             var
               allValid = true
             ;
             if(field) {
               module.verbose('Checking if field is valid', field);
-              return module.validate.field(validation[field], field, false);
+              return module.validate.field(validation[field], field, !!showErrors);
             }
             else {
               module.verbose('Checking if form is valid');
               $.each(validation, function(fieldName, field) {
-                if( !module.is.valid(fieldName) ) {
+                if( !module.is.valid(fieldName, showErrors) ) {
                   allValid = false;
                 }
               });
@@ -870,9 +870,15 @@ $.fn.form = function(parameters) {
             var initialValue = $el.data(metadata.defaultValue);
             // Explicitly check for null/undefined here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
             if (initialValue == null) { initialValue = ''; }
+            else if(Array.isArray(initialValue)) {
+              initialValue = initialValue.toString();
+            }
             var currentValue = $el.val();
             if (currentValue == null) { currentValue = ''; }
-
+            // multiple select values are returned as arrays which are never equal, so do string conversion first
+            else if(Array.isArray(currentValue)) {
+              currentValue = currentValue.toString();
+            }
             // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison
             var boolRegex = /^(true|false)$/i;
             var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
@@ -965,6 +971,9 @@ $.fn.form = function(parameters) {
                 module.timer = setTimeout(function() {
                   module.debug('Revalidating field', $field,  module.get.validation($field));
                   module.validate.field( validationRules );
+                  if(!settings.inline) {
+                    module.validate.form(false,true);
+                  }
                 }, settings.delay);
               }
             }
@@ -1422,6 +1431,17 @@ $.fn.form = function(parameters) {
         },
 
         remove: {
+          errors: function() {
+            module.debug('Removing form error messages');
+            $message.empty();
+          },
+          states: function() {
+            $module.removeClass(className.error).removeClass(className.success);
+            if(!settings.inline) {
+              module.remove.errors();
+            }
+            module.determine.isDirty();
+          },
           rule: function(field, rule) {
             var
               rules = Array.isArray(rule)
@@ -1667,12 +1687,16 @@ $.fn.form = function(parameters) {
             if( module.determine.isValid() ) {
               module.debug('Form has no validation errors, submitting');
               module.set.success();
+              if(!settings.inline) {
+                module.remove.errors();
+              }
               if(ignoreCallbacks !== true) {
                 return settings.onSuccess.call(element, event, values);
               }
             }
             else {
               module.debug('Form has errors');
+              submitting = false;
               module.set.error();
               if(!settings.inline) {
                 module.add.errors(formErrors);
@@ -1722,7 +1746,9 @@ $.fn.form = function(parameters) {
               module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
             }
             else if(field.rules !== undefined) {
-              $field.closest($group).removeClass(className.error);
+              if(showErrors) {
+                $field.closest($group).removeClass(className.error);
+              }
               $.each(field.rules, function(index, rule) {
                 if( module.has.field(identifier)) {
                   var invalidFields = module.validate.rule(field, rule,true) || [];
@@ -2049,7 +2075,7 @@ $.fn.form.settings = {
   selector : {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
-    field      : 'input, textarea, select',
+    field      : 'input:not(.search), textarea, select',
     group      : '.field',
     input      : 'input',
     message    : '.error.message',
@@ -3173,7 +3199,8 @@ $.fn.calendar = function(parameters) {
       '15': {'row': 2, 'column': 2 },
       '20': {'row': 3, 'column': 1 },
       '30': {'row': 2, 'column': 1 }
-    }
+    },
+    numberText = ['','one','two','three','four','five','six','seven','eight']
   ;
 
   $allModules
@@ -3205,7 +3232,10 @@ $.fn.calendar = function(parameters) {
 
         isTouch,
         isTouchDown = false,
+        isInverted = $module.hasClass(className.inverted),
         focusDateUsedForRange = false,
+        selectionComplete = false,
+        classObserver,
         module
       ;
 
@@ -3223,6 +3253,7 @@ $.fn.calendar = function(parameters) {
           module.create.calendar();
 
           module.bind.events();
+          module.observeChanges();
           module.instantiate();
         },
 
@@ -3236,6 +3267,7 @@ $.fn.calendar = function(parameters) {
           module.verbose('Destroying previous calendar for', element);
           $module.removeData(moduleNamespace);
           module.unbind.events();
+          module.disconnect.classObserver();
         },
 
         setup: {
@@ -3271,12 +3303,19 @@ $.fn.calendar = function(parameters) {
               $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
             }
             $container.addClass(className.calendar);
-            var onVisible = settings.onVisible;
+            if(isInverted){
+              $container.addClass(className.inverted);
+            }
+            var onVisible = function () {
+              module.refreshTooltips();
+              return settings.onVisible.apply($container, arguments);
+            };
             var onHidden = settings.onHidden;
             if (!$input.length) {
               //no input, $container has to handle focus/blur
               $container.attr('tabindex', '0');
               onVisible = function () {
+                module.refreshTooltips();
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
               };
@@ -3288,7 +3327,7 @@ $.fn.calendar = function(parameters) {
             var onShow = function () {
               //reset the focus date onShow
               module.set.focusDate(module.get.date());
-              module.set.mode(settings.startMode);
+              module.set.mode(module.get.validatedMode(settings.startMode));
               return settings.onShow.apply($container, arguments);
             };
             var on = module.setting('on');
@@ -3308,6 +3347,7 @@ $.fn.calendar = function(parameters) {
             if ($activator.length && !settings.inline) {
               return;
             }
+            settings.inline = true;
             $container = $('<div/>').addClass(className.calendar).appendTo($module);
             if (!$input.length) {
               $container.attr('tabindex', '0');
@@ -3317,6 +3357,7 @@ $.fn.calendar = function(parameters) {
             if (settings.touchReadonly && $input.length && isTouch) {
               $input.prop('readonly', true);
             }
+            module.check.disabled();
           },
           date: function () {
             var date;
@@ -3328,6 +3369,21 @@ $.fn.calendar = function(parameters) {
               date = parser.date($input.val(), settings);
             }
             module.set.date(date, settings.formatInput, false);
+            module.set.mode(module.get.mode(), false);
+          }
+        },
+
+        trigger: {
+          change: function() {
+            var
+                inputElement = $input[0]
+            ;
+            if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
+              module.verbose('Triggering native change event');
+              events.initEvent('change', true, false);
+              inputElement.dispatchEvent(events);
+            }
           }
         },
 
@@ -3409,7 +3465,10 @@ $.fn.calendar = function(parameters) {
               if (isDay && settings.showWeekNumbers){
                 tempMode += ' andweek';
               }
-              var table = $('<table/>').addClass(className.table).addClass(tempMode).appendTo(container);
+              var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
+              if(isInverted){
+                table.addClass(className.inverted);
+              }
               var textColumns = columns;
               //no header for time-only mode
               if (!isTimeOnly) {
@@ -3479,7 +3538,13 @@ $.fn.calendar = function(parameters) {
                     var disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
                     if (disabledDate !== null && disabledDate[metadata.message]) {
                       cell.attr("data-tooltip", disabledDate[metadata.message]);
-                      cell.attr("data-position", tooltipPosition);
+                      cell.attr("data-position", disabledDate[metadata.position] || tooltipPosition);
+                      if(disabledDate[metadata.inverted] || (isInverted && disabledDate[metadata.inverted] === undefined)) {
+                        cell.attr("data-inverted", '');
+                      }
+                      if(disabledDate[metadata.variation]) {
+                        cell.attr("data-variation", disabledDate[metadata.variation]);
+                      }
                     }
                   } else {
                     var eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
@@ -3487,7 +3552,13 @@ $.fn.calendar = function(parameters) {
                       cell.addClass(eventDate[metadata.class] || settings.eventClass);
                       if (eventDate[metadata.message]) {
                         cell.attr("data-tooltip", eventDate[metadata.message]);
-                        cell.attr("data-position", tooltipPosition);
+                        cell.attr("data-position", eventDate[metadata.position] || tooltipPosition);
+                        if(eventDate[metadata.inverted] || (isInverted && eventDate[metadata.inverted] === undefined)) {
+                          cell.attr("data-inverted", '');
+                        }
+                        if(eventDate[metadata.variation]) {
+                          cell.attr("data-variation", eventDate[metadata.variation]);
+                        }
                       }
                     }
                   }
@@ -3526,6 +3597,10 @@ $.fn.calendar = function(parameters) {
               }
 
               module.update.focus(false, table);
+
+              if(settings.inline){
+                module.refreshTooltips();
+              }
             }
           }
         },
@@ -3565,6 +3640,20 @@ $.fn.calendar = function(parameters) {
 
         refresh: function () {
           module.create.calendar();
+        },
+
+        refreshTooltips: function() {
+          var winWidth = $(window).width();
+          $container.find('td[data-position]').each(function () {
+            var cell = $(this);
+            var tooltipWidth = window.getComputedStyle(cell[0], ':after').width.replace(/[^0-9\.]/g,'');
+            var tooltipPosition = cell.attr('data-position');
+            // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
+            var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';
+            if(tooltipPosition.indexOf(calcPosition) === -1) {
+              cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
+            }
+           });
         },
 
         bind: {
@@ -3707,6 +3796,57 @@ $.fn.calendar = function(parameters) {
               var text = formatter.datetime(date, settings);
               $input.val(text);
             }
+            if(selectionComplete){
+              module.trigger.change();
+              selectionComplete = false;
+            }
+          },
+          class: {
+            mutation: function(mutations) {
+              mutations.forEach(function(mutation) {
+                if(mutation.attributeName === "class") {
+                  module.check.disabled();
+                }
+              });
+            }
+          }
+        },
+
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            classObserver  = new MutationObserver(module.event.class.mutation);
+            module.debug('Setting up mutation observer', classObserver);
+            module.observe.class();
+          }
+        },
+
+        disconnect: {
+          classObserver: function() {
+            if($input.length && classObserver) {
+              classObserver.disconnect();
+            }
+          }
+        },
+
+        observe: {
+          class: function() {
+            if($input.length && classObserver) {
+              classObserver.observe($module[0], {
+                attributes : true
+              });
+            }
+          }
+        },
+
+        is: {
+          disabled: function() {
+            return $module.hasClass(className.disabled);
+          }
+        },
+
+        check: {
+          disabled: function(){
+            $input.attr('tabindex',module.is.disabled() ? -1 : 0);
           }
         },
 
@@ -3753,6 +3893,9 @@ $.fn.calendar = function(parameters) {
           mode: function () {
             //only returns valid modes for the current settings
             var mode = $module.data(metadata.mode) || settings.startMode;
+            return module.get.validatedMode(mode);
+          },
+          validatedMode: function(mode){
             var validModes = module.get.validModes();
             if ($.inArray(mode, validModes) >= 0) {
               return mode;
@@ -3870,7 +4013,7 @@ $.fn.calendar = function(parameters) {
                 module.set.monthOffset(monthOffset, false);
               }
             }
-            var changed = module.set.dataKeyValue(metadata.focusDate, date, refreshCalendar);
+            var changed = module.set.dataKeyValue(metadata.focusDate, date, !!date && refreshCalendar);
             updateFocus = (updateFocus !== false && changed && refreshCalendar === false) || focusDateUsedForRange != updateRange;
             focusDateUsedForRange = updateRange;
             if (updateFocus) {
@@ -3929,15 +4072,18 @@ $.fn.calendar = function(parameters) {
             (settings.type === 'year' && mode === 'year');
           if (complete) {
             var canceled = module.set.date(date) === false;
-            if (!canceled && settings.closable) {
-              module.popup('hide');
-              //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
-              var endModule = module.get.calendarModule(settings.endCalendar);
-              if (endModule) {
-                if (endModule.setting('on') !== 'focus') {
-                  endModule.popup('show');
+            if (!canceled) {
+              selectionComplete = true;
+              if(settings.closable) {
+                module.popup('hide');
+                //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
+                var endModule = module.get.calendarModule(settings.endCalendar);
+                if (endModule) {
+                  if (endModule.setting('on') !== 'focus') {
+                    endModule.popup('show');
+                  }
+                  endModule.focus();
                 }
-                endModule.focus();
               }
             }
           } else {
@@ -4479,12 +4625,13 @@ $.fn.calendar.settings = {
         return null;
       }
       if(text.match(/^[0-9]{4}[\/\-\.][0-9]{2}[\/\-\.][0-9]{2}$/)){
-        text += ' 00:00:00';
+        text = text.replace(/[\/\-\.]/g,'/') + ' 00:00:00';
       }
       // Reverse date and month in some cases
       text = settings.monthFirst || !text.match(/^[0-9]{2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
-      if(!isNaN(textDate.getDate())) {
+      var numberOnly = text.match(/^[0-9]+$/) !== null;
+      if(!numberOnly && !isNaN(textDate.getDate())) {
         return textDate;
       }
       text = text.toLowerCase();
@@ -4741,6 +4888,7 @@ $.fn.calendar.settings = {
     grid: 'ui equal width grid',
     column: 'column',
     table: 'ui celled center aligned unstackable table',
+    inverted: 'inverted',
     prev: 'prev link',
     next: 'next link',
     prevIcon: 'chevron left icon',
@@ -4754,7 +4902,8 @@ $.fn.calendar.settings = {
     rangeCell: 'range',
     focusCell: 'focus',
     todayCell: 'today',
-    today: 'today link'
+    today: 'today link',
+    disabled: 'disabled'
   },
 
   metadata: {
@@ -4769,6 +4918,9 @@ $.fn.calendar.settings = {
     monthOffset: 'monthOffset',
     message: 'message',
     class: 'class',
+    inverted: 'inverted',
+    variation: 'variation',
+    position: 'position',
     month: 'month',
     year: 'year'
   },
@@ -5336,10 +5488,10 @@ $.fn.checkbox = function(parameters) {
         trigger: {
           change: function() {
             var
-              events       = document.createEvent('HTMLEvents'),
               inputElement = $input[0]
             ;
             if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
               module.verbose('Triggering native change event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
@@ -6065,11 +6217,11 @@ $.fn.dimmer = function(parameters) {
             var
               color      = $dimmer.css('background-color'),
               colorArray = color.split(','),
-              isRGB      = (colorArray && colorArray.length == 3),
-              isRGBA     = (colorArray && colorArray.length == 4)
+              isRGB      = (colorArray && colorArray.length >= 3)
             ;
             opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
-            if(isRGB || isRGBA) {
+            if(isRGB) {
+              colorArray[2] = colorArray[2].replace(')','');
               colorArray[3] = opacity + ')';
               color         = colorArray.join(',');
             }
@@ -6508,6 +6660,7 @@ $.fn.dropdown = function(parameters) {
         id,
         selectObserver,
         menuObserver,
+        classObserver,
         module
       ;
 
@@ -6573,15 +6726,18 @@ $.fn.dropdown = function(parameters) {
           ;
           module.disconnect.menuObserver();
           module.disconnect.selectObserver();
+          module.disconnect.classObserver();
         },
 
         observeChanges: function() {
           if('MutationObserver' in window) {
             selectObserver = new MutationObserver(module.event.select.mutation);
             menuObserver   = new MutationObserver(module.event.menu.mutation);
-            module.debug('Setting up mutation observer', selectObserver, menuObserver);
+            classObserver  = new MutationObserver(module.event.class.mutation);
+            module.debug('Setting up mutation observer', selectObserver, menuObserver, classObserver);
             module.observe.select();
             module.observe.menu();
+            module.observe.class();
           }
         },
 
@@ -6594,6 +6750,11 @@ $.fn.dropdown = function(parameters) {
           selectObserver: function() {
             if(selectObserver) {
               selectObserver.disconnect();
+            }
+          },
+          classObserver: function() {
+            if(classObserver) {
+              classObserver.disconnect();
             }
           }
         },
@@ -6611,6 +6772,13 @@ $.fn.dropdown = function(parameters) {
               menuObserver.observe($menu[0], {
                 childList : true,
                 subtree   : true
+              });
+            }
+          },
+          class: function() {
+            if(module.has.search() && classObserver) {
+              classObserver.observe($module[0], {
+                attributes : true
               });
             }
           }
@@ -7205,9 +7373,9 @@ $.fn.dropdown = function(parameters) {
                     values = [];
                 }
                 module.remove.message();
-                module.setup.menu({
-                  values: values
-                });
+                var menuConfig = {};
+                menuConfig[fields.values] = values;
+                module.setup.menu(menuConfig);
 
                 if(values.length===0 && !settings.allowAdditions) {
                   module.add.message(message.noResults);
@@ -7403,7 +7571,9 @@ $.fn.dropdown = function(parameters) {
               module.clear();
             }
             module.debug('Creating dropdown with specified values', values);
-            module.setup.menu({values: values});
+            var menuConfig = {};
+            menuConfig[fields.values] = values;
+            module.setup.menu(menuConfig);
             $.each(values, function(index, item) {
               if(item.selected == true) {
                 module.debug('Setting initial selection to', item[fields.value]);
@@ -7625,6 +7795,15 @@ $.fn.dropdown = function(parameters) {
                   event.preventDefault();
                 }
               }
+            }
+          },
+          class: {
+            mutation: function(mutations) {
+              mutations.forEach(function(mutation) {
+                if(mutation.attributeName === "class") {
+                  module.check.disabled();
+                }
+              });
             }
           },
           select: {
@@ -8048,10 +8227,10 @@ $.fn.dropdown = function(parameters) {
         trigger: {
           change: function() {
             var
-              events       = document.createEvent('HTMLEvents'),
               inputElement = $input[0]
             ;
             if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
               module.verbose('Triggering native change event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
@@ -8183,7 +8362,7 @@ $.fn.dropdown = function(parameters) {
             return $module.data(metadata.placeholderText) || '';
           },
           text: function() {
-            return $text.text();
+            return settings.preserveHTML ? $text.html() : $text.text();
           },
           query: function() {
             return String($search.val()).trim();
@@ -8367,9 +8546,9 @@ $.fn.dropdown = function(parameters) {
           selectValues: function() {
             var
               select = {},
-              oldGroup = []
+              oldGroup = [],
+              values = []
             ;
-            select.values = [];
             $module
               .find('option')
                 .each(function() {
@@ -8390,14 +8569,14 @@ $.fn.dropdown = function(parameters) {
                   }
                   else {
                     if(group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
-                      select.values.push({
+                      values.push({
                         type: 'header',
                         divider: settings.headerDivider,
                         name: group.attr('label') || ''
                       });
                       oldGroup = group;
                     }
-                    select.values.push({
+                    values.push({
                       name     : name,
                       value    : value,
                       text     : text,
@@ -8412,19 +8591,21 @@ $.fn.dropdown = function(parameters) {
             }
             if(settings.sortSelect) {
               if(settings.sortSelect === true) {
-                select.values.sort(function(a, b) {
+                values.sort(function(a, b) {
                   return a.name.localeCompare(b.name);
                 });
               } else if(settings.sortSelect === 'natural') {
-                select.values.sort(function(a, b) {
+                values.sort(function(a, b) {
                   return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
                 });
               } else if($.isFunction(settings.sortSelect)) {
-                select.values.sort(settings.sortSelect);
+                values.sort(settings.sortSelect);
               }
+              select[fields.values] = values;
               module.debug('Retrieved and sorted values from select', select);
             }
             else {
+              select[fields.values] = values;
               module.debug('Retrieved values from select', select);
             }
             return select;
@@ -8547,6 +8728,9 @@ $.fn.dropdown = function(parameters) {
               }
             }
             return true;
+          },
+          disabled: function(){
+            $search.attr('tabindex',module.is.disabled() ? -1 : 0);
           }
         },
 
@@ -8812,8 +8996,8 @@ $.fn.dropdown = function(parameters) {
               module.debug('Added tabindex to searchable dropdown');
               $search
                 .val('')
-                .attr('tabindex', 0)
               ;
+              module.check.disabled();
               $menu
                 .attr('tabindex', -1)
               ;
@@ -9944,9 +10128,12 @@ $.fn.dropdown = function(parameters) {
               module.set.scrollPosition(module.get.selectedItem(), true);
             }
             if( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
+              var displayType = $module.hasClass('column') ? 'flex' : false;
               if(transition == 'none') {
                 start();
-                $currentMenu.transition('show');
+                $currentMenu.transition({
+                  displayType: displayType
+                }).transition('show');
                 callback.call(element);
               }
               else if($.fn.transition !== undefined && $module.transition('is supported')) {
@@ -9958,6 +10145,7 @@ $.fn.dropdown = function(parameters) {
                     duration   : settings.duration,
                     queue      : true,
                     onStart    : start,
+                    displayType: displayType,
                     onComplete : function() {
                       callback.call(element);
                     }
@@ -14738,7 +14926,7 @@ $.fn.progress = function(parameters) {
                 value   : module.helper.forceArray($module.data(metadata.value))
               }
             ;
-            if(data.total) {
+            if(data.total !== undefined) {
               module.debug('Total value set from metadata', data.total);
               module.set.total(data.total);
             }
@@ -14841,18 +15029,18 @@ $.fn.progress = function(parameters) {
             var
               index_  = index || 0,
               value   = module.get.value(index_),
-              total   = module.total || 0,
+              total   = module.get.total(),
               percent = (animating)
                 ? module.get.displayPercent(index_)
                 : module.get.percent(index_),
-              left = (module.total > 0)
-                ? (total - value)
+              left = (total !== false)
+                ? Math.max(0,total - value)
                 : (100 - percent)
             ;
             templateText = templateText || '';
             templateText = templateText
               .replace('{value}', value)
-              .replace('{total}', total)
+              .replace('{total}', total || 0)
               .replace('{left}', left)
               .replace('{percent}', percent)
               .replace('{bar}', settings.text.bars[index_] || '')
@@ -14942,7 +15130,7 @@ $.fn.progress = function(parameters) {
             return module.nextValue || module.value && module.value[index || 0] || 0;
           },
           total: function() {
-            return module.total || false;
+            return module.total !== undefined ? module.total : false;
           }
         },
 
@@ -15075,23 +15263,23 @@ $.fn.progress = function(parameters) {
                 ;
             });
             var hasTotal = module.has.total();
-            var totalPecent = module.helper.sum(percents);
-            var isMultpleValues = percents.length > 1 && hasTotal;
+            var totalPercent = module.helper.sum(percents);
+            var isMultipleValues = percents.length > 1 && hasTotal;
             var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
-            if (isMultpleValues && sumTotal > module.total) {
+            if (isMultipleValues && sumTotal > module.total) {
               // Sum values instead of pecents to avoid precision issues when summing floats
               module.error(error.sumExceedsTotal, sumTotal, module.total);
-            } else if (!isMultpleValues && totalPecent > 100) {
-              // Sum before rouding since sum of rounded may have error though sum of actual is fine
-              module.error(error.tooHigh, totalPecent);
-            } else if (totalPecent < 0) {
-              module.error(error.tooLow, totalPecent);
+            } else if (!isMultipleValues && totalPercent > 100) {
+              // Sum before rounding since sum of rounded may have error though sum of actual is fine
+              module.error(error.tooHigh, totalPercent);
+            } else if (totalPercent < 0) {
+              module.error(error.tooLow, totalPercent);
             } else {
               var autoPrecision = settings.precision > 0
                 ? settings.precision
-                : isMultpleValues
+                : isMultipleValues
                   ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
-                  : undefined;
+                  : 0;
 
               // round display percentage
               var roundedPercents = percents.map(function (percent) {
@@ -15101,7 +15289,7 @@ $.fn.progress = function(parameters) {
                   ;
               });
               module.percent = roundedPercents;
-              if (!hasTotal) {
+              if (hasTotal) {
                 module.value = roundedPercents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
@@ -15110,11 +15298,7 @@ $.fn.progress = function(parameters) {
                 });
                 if (settings.limitValues) {
                   module.value = module.value.map(function (value) {
-                    return (value > 100)
-                      ? 100
-                      : (module.value < 0)
-                        ? 0
-                        : module.value;
+                    return Math.max(0, Math.min(100, value));
                   });
                 }
               }
@@ -15191,7 +15375,7 @@ $.fn.progress = function(parameters) {
               if (text !== undefined) {
                 $progress.text( module.get.text(text, index) );
               }
-              else if (settings.label == 'ratio' && module.total) {
+              else if (settings.label == 'ratio' && module.has.total()) {
                 module.verbose('Adding ratio to bar label');
                 $progress.text( module.get.text(settings.text.ratio, index) );
               }
@@ -15321,7 +15505,7 @@ $.fn.progress = function(parameters) {
               }
               value = module.get.normalizedValue(value);
               if (hasTotal) {
-                percentComplete = (value / module.total) * 100;
+                percentComplete = module.total > 0 ? (value / module.total) * 100 : 100;
                 module.debug('Calculating percent complete from total', percentComplete);
               }
               else {
@@ -16398,9 +16582,8 @@ $.fn.slider = function(parameters) {
             }
             // Use precision to avoid ugly Javascript floating point rounding issues
             // (like 35 * .01 = 0.35000000000000003)
-            difference = Math.round(difference * precision) / precision;
             module.verbose('Cutting off additional decimal places');
-            return difference + module.get.min();
+            return Math.round((difference + module.get.min()) * precision) / precision;
           },
           keyMovement: function(event) {
             var
@@ -16880,6 +17063,7 @@ $.fn.slider.settings = {
   labelDistance    : 100,
   preventCrossover : true,
   fireOnInit       : false,
+  interpretLabel   : false,
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,
@@ -17718,6 +17902,7 @@ $.fn.search = function(parameters) {
               }
               module.hideResults();
               if(href) {
+                event.preventDefault();
                 module.verbose('Opening search link found in result', $link);
                 if(target == '_blank' || event.ctrlKey) {
                   window.open(href);

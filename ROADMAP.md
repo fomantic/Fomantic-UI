@@ -52,6 +52,7 @@ This is a list of libraries we are wanting and proposing to create implementatio
 - Meteor 💡
 - Stencil 💡
 - Mithril 💡
+- Web Components (Shadow DOM) 💡
 
 ### New Components:
 
@@ -61,6 +62,7 @@ This is a list of components which will be added or are proposed to be added.
   - Sorting
   - Filtering
   - Pagination
+  - Search
 - Utility helpers (these will work on any component) ✏
   - Margin (top, right, bottom, left)
   - Padding (top, right, bottom, left)

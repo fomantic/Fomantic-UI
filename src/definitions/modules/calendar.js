@@ -43,8 +43,7 @@ $.fn.calendar = function(parameters) {
       '20': {'row': 3, 'column': 1 },
       '30': {'row': 2, 'column': 1 }
     },
-    numberText = ['','one','two','three','four','five','six','seven','eight'],
-    selectionComplete = false
+    numberText = ['','one','two','three','four','five','six','seven','eight']
   ;
 
   $allModules
@@ -78,6 +77,8 @@ $.fn.calendar = function(parameters) {
         isTouchDown = false,
         isInverted = $module.hasClass(className.inverted),
         focusDateUsedForRange = false,
+        selectionComplete = false,
+        classObserver,
         module
       ;
 
@@ -95,6 +96,7 @@ $.fn.calendar = function(parameters) {
           module.create.calendar();
 
           module.bind.events();
+          module.observeChanges();
           module.instantiate();
         },
 
@@ -108,6 +110,7 @@ $.fn.calendar = function(parameters) {
           module.verbose('Destroying previous calendar for', element);
           $module.removeData(moduleNamespace);
           module.unbind.events();
+          module.disconnect.classObserver();
         },
 
         setup: {
@@ -197,6 +200,7 @@ $.fn.calendar = function(parameters) {
             if (settings.touchReadonly && $input.length && isTouch) {
               $input.prop('readonly', true);
             }
+            module.check.disabled();
           },
           date: function () {
             var date;
@@ -373,6 +377,7 @@ $.fn.calendar = function(parameters) {
                   cell.data(metadata.date, cellDate);
                   var adjacent = isDay && cellDate.getMonth() !== ((month + 12) % 12);
                   var disabled = (!settings.selectAdjacentDays && adjacent) || !module.helper.isDateInRange(cellDate, mode) || settings.isDisabled(cellDate, mode) || module.helper.isDisabled(cellDate, mode) || !module.helper.isEnabled(cellDate, mode);
+                  var eventDate;
                   if (disabled) {
                     var disabledDate = module.helper.findDayAsObject(cellDate, mode, settings.disabledDates);
                     if (disabledDate !== null && disabledDate[metadata.message]) {
@@ -386,7 +391,7 @@ $.fn.calendar = function(parameters) {
                       }
                     }
                   } else {
-                    var eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
+                    eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
                     if (eventDate !== null) {
                       cell.addClass(eventDate[metadata.class] || settings.eventClass);
                       if (eventDate[metadata.message]) {
@@ -403,9 +408,9 @@ $.fn.calendar = function(parameters) {
                   }
                   var active = module.helper.dateEqual(cellDate, date, mode);
                   var isToday = module.helper.dateEqual(cellDate, today, mode);
-                  cell.toggleClass(className.adjacentCell, adjacent);
+                  cell.toggleClass(className.adjacentCell, adjacent && !eventDate);
                   cell.toggleClass(className.disabledCell, disabled);
-                  cell.toggleClass(className.activeCell, active && !adjacent);
+                  cell.toggleClass(className.activeCell, active && !(adjacent && disabled));
                   if (!isHour && !isMinute) {
                     cell.toggleClass(className.todayCell, !adjacent && isToday);
                   }
@@ -639,6 +644,53 @@ $.fn.calendar = function(parameters) {
               module.trigger.change();
               selectionComplete = false;
             }
+          },
+          class: {
+            mutation: function(mutations) {
+              mutations.forEach(function(mutation) {
+                if(mutation.attributeName === "class") {
+                  module.check.disabled();
+                }
+              });
+            }
+          }
+        },
+
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            classObserver  = new MutationObserver(module.event.class.mutation);
+            module.debug('Setting up mutation observer', classObserver);
+            module.observe.class();
+          }
+        },
+
+        disconnect: {
+          classObserver: function() {
+            if($input.length && classObserver) {
+              classObserver.disconnect();
+            }
+          }
+        },
+
+        observe: {
+          class: function() {
+            if($input.length && classObserver) {
+              classObserver.observe($module[0], {
+                attributes : true
+              });
+            }
+          }
+        },
+
+        is: {
+          disabled: function() {
+            return $module.hasClass(className.disabled);
+          }
+        },
+
+        check: {
+          disabled: function(){
+            $input.attr('tabindex',module.is.disabled() ? -1 : 0);
           }
         },
 
@@ -920,7 +972,7 @@ $.fn.calendar = function(parameters) {
 
         helper: {
           isDisabled: function(date, mode) {
-            return (mode === 'day' || mode === 'month' || mode === 'year') && ((settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+            return (mode === 'day' || mode === 'month' || mode === 'year') && ((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
               if(typeof d === 'string') {
                 d = module.helper.sanitiseDate(d);
               }
@@ -1022,14 +1074,11 @@ $.fn.calendar = function(parameters) {
             return null;
           },
           sanitiseDate: function (date) {
-            if (!date) {
-              return undefined;
-            }
             if (!(date instanceof Date)) {
               date = parser.date('' + date, settings);
             }
-            if (!date || date === null || isNaN(date.getTime())) {
-              return undefined;
+            if (!date || isNaN(date.getTime())) {
+              return null;
             }
             return date;
           },
@@ -1416,11 +1465,11 @@ $.fn.calendar.settings = {
       if (text.length === 0) {
         return null;
       }
-      if(text.match(/^[0-9]{4}[\/\-\.][0-9]{2}[\/\-\.][0-9]{2}$/)){
-        text += ' 00:00:00';
+      if(text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
+        text = text.replace(/[\/\-\.]/g,'/') + ' 00:00:00';
       }
       // Reverse date and month in some cases
-      text = settings.monthFirst || !text.match(/^[0-9]{2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
+      text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
       var textDate = new Date(text);
       var numberOnly = text.match(/^[0-9]+$/) !== null;
       if(!numberOnly && !isNaN(textDate.getDate())) {
@@ -1694,7 +1743,8 @@ $.fn.calendar.settings = {
     rangeCell: 'range',
     focusCell: 'focus',
     todayCell: 'today',
-    today: 'today link'
+    today: 'today link',
+    disabled: 'disabled'
   },
 
   metadata: {

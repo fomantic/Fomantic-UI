@@ -334,6 +334,10 @@
     -moz-transform: scale(1);
   }
 
+  .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+    pointer-events: auto;
+  }
+
   .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
     pointer-events: none;
     background: @definitionFooterBackground;
@@ -1112,7 +1116,7 @@ each(@colors, {
     .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
       background: @definitionPageBackground;
     }
-    .ui.inverted.definition.table > tbody > tr > td:first-child
+    .ui.inverted.definition.table > tbody > tr > td:first-child,
     .ui.inverted.definition.table > tfoot > tr > td:first-child,
     .ui.inverted.definition.table > tr > td:first-child {
       background: @invertedDefinitionColumnBackground;

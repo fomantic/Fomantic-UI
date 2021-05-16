@@ -139,7 +139,7 @@
   margin: (@rowSpacing / 2) (@gutterWidth / 2);
 }
 .ui.grid .column + .ui.vertical.divider {
-  height: e(%("calc(50%% - %d)", @rowSpacing / 2));
+  height: e(%("calc(50%% - %d)", (@rowSpacing / 2)));
 }
 
 /* Remove Border on Last Horizontal Segment */
@@ -1659,7 +1659,7 @@ each(@colors, {
   --------------------*/
 
   @media only screen and (max-width: @largestMobileScreen) {
-    .ui.stackable.grid {
+    .ui.ui.ui.ui.stackable.grid {
       width: auto;
       margin-left: 0 !important;
       margin-right: 0 !important;
@@ -1868,6 +1868,10 @@ each(@colors, {
         Compact
   -----------------*/
 
+  .ui.ui.ui.compact.grid {
+    margin: -(@compactGutterWidth / 2);
+  }
+
   .ui.ui.ui.compact.grid > .column:not(.row),
   .ui.ui.ui.compact.grid > .row > .column {
     padding-left: (@compactGutterWidth / 2);
@@ -1883,6 +1887,8 @@ each(@colors, {
   .ui.ui.ui.compact.grid > .row {
     padding-top: (@compactRowSpacing / 2);
     padding-bottom: (@compactRowSpacing / 2);
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Columns */
@@ -1906,6 +1912,10 @@ each(@colors, {
       Very compact
   -----------------*/
 
+  .ui.ui.ui[class*="very compact"].grid {
+    margin: -(@veryCompactGutterWidth / 2);
+  }
+
   .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
   .ui.ui.ui[class*="very compact"].grid > .row > .column {
     padding-left: (@veryCompactGutterWidth / 2);
@@ -1921,8 +1931,8 @@ each(@colors, {
   .ui.ui.ui[class*="very compact"].grid > .row {
     padding-top: (@veryCompactRowSpacing / 2);
     padding-bottom: (@veryCompactRowSpacing / 2);
-    padding-left: (@veryCompactGutterWidth * 1.5);
-    padding-right: (@veryCompactGutterWidth * 1.5);
+    padding-left: 0;
+    padding-right: 0;
   }
 
   /* Columns */
