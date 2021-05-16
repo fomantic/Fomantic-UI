@@ -114,8 +114,9 @@
 @sliderLineWidth: 3.5rem;
 @sliderTransitionDuration: 0.3s;
 
-@sliderHandleOffset: (1rem - @sliderHandleSize) / 2;
+@sliderHandleOffset: ((1rem - @sliderHandleSize) / 2);
 @sliderHandleTransition: left @sliderTransitionDuration @defaultEasing;
+@sliderHandleTransitionRightAligned: right @sliderTransitionDuration @defaultEasing;
 
 @sliderWidth: @sliderLineWidth;
 @sliderHeight: (@sliderHandleSize + @sliderHandleOffset);
@@ -159,6 +160,10 @@
   background @sliderTransitionDuration @defaultEasing,
   left @sliderTransitionDuration @defaultEasing
 ;
+@toggleHandleTransitionRightAligned:
+  background @sliderTransitionDuration @defaultEasing,
+  right @sliderTransitionDuration @defaultEasing
+;
 
 @toggleLaneBackground: @transparentBlack;
 @toggleLaneHeight: @toggleHandleSize;
@@ -166,7 +171,7 @@
 @toggleLaneVerticalOffset: 0;
 @toggleOffOffset: -0.05rem;
 @toggleOnOffset: (@toggleLaneWidth - @toggleHandleSize) + 0.15rem;
-@toggleCenterOffset: @toggleOnOffset / 2;
+@toggleCenterOffset: (@toggleOnOffset / 2);
 @toggleCenterLaneBackground: @veryStrongTransparentBlack;
 
 @toggleLabelDistance: @toggleLaneWidth + 1rem;
@@ -198,23 +203,23 @@
 @checkboxInvertedHoverBackground: @black;
 
 @miniCheckboxSize: @relativeMini;
-@miniCheckboxCircleScale: @miniRaw / 2;
-@miniCheckboxCircleLeft: unit((@miniRaw - @miniCheckboxCircleScale) / 2 + 0.05 , em);
+@miniCheckboxCircleScale: (@miniRaw / 2);
+@miniCheckboxCircleLeft: unit(((@miniRaw - @miniCheckboxCircleScale) / 2) + 0.05 , em);
 @tinyCheckboxSize: @relativeTiny;
-@tinyCheckboxCircleScale: @tinyRaw / 2;
-@tinyCheckboxCircleLeft: unit((@tinyRaw - @tinyCheckboxCircleScale) / 2 + 0.05 , em);
+@tinyCheckboxCircleScale: (@tinyRaw / 2);
+@tinyCheckboxCircleLeft: unit(((@tinyRaw - @tinyCheckboxCircleScale) / 2) + 0.05 , em);
 @smallCheckboxSize: @relativeSmall;
-@smallCheckboxCircleScale: @smallRaw / 2;
-@smallCheckboxCircleLeft: unit((@smallRaw - @smallCheckboxCircleScale) / 2 + 0.05 , em);
+@smallCheckboxCircleScale: (@smallRaw / 2);
+@smallCheckboxCircleLeft: unit(((@smallRaw - @smallCheckboxCircleScale) / 2) + 0.05 , em);
 @largeCheckboxSize: @relativeLarge;
-@largeCheckboxCircleScale: @largeRaw / 2;
-@largeCheckboxCircleLeft: unit((@largeRaw - @largeCheckboxCircleScale) / 2 + 0.05 , em);
+@largeCheckboxCircleScale: (@largeRaw / 2);
+@largeCheckboxCircleLeft: unit(((@largeRaw - @largeCheckboxCircleScale) / 2) + 0.05 , em);
 @bigCheckboxSize: @relativeBig;
-@bigCheckboxCircleScale: @bigRaw / 2;
-@bigCheckboxCircleLeft: unit((@bigRaw - @bigCheckboxCircleScale) / 2 + 0.05 , em);
+@bigCheckboxCircleScale: (@bigRaw / 2);
+@bigCheckboxCircleLeft: unit(((@bigRaw - @bigCheckboxCircleScale) / 2) + 0.05 , em);
 @hugeCheckboxSize: @relativeHuge;
-@hugeCheckboxCircleScale: @hugeRaw / 2;
-@hugeCheckboxCircleLeft: unit((@hugeRaw - @hugeCheckboxCircleScale) / 2 + 0.05 , em);
+@hugeCheckboxCircleScale: (@hugeRaw / 2);
+@hugeCheckboxCircleLeft: unit(((@hugeRaw - @hugeCheckboxCircleScale) / 2) + 0.05 , em);
 @massiveCheckboxSize: @relativeMassive;
-@massiveCheckboxCircleScale: @massiveRaw / 2;
-@massiveCheckboxCircleLeft: unit((@massiveRaw - @massiveCheckboxCircleScale) / 2 + 0.05 , em);
+@massiveCheckboxCircleScale: (@massiveRaw / 2);
+@massiveCheckboxCircleLeft: unit(((@massiveRaw - @massiveCheckboxCircleScale) / 2) + 0.05 , em);

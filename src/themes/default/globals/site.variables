@@ -15,7 +15,7 @@
 
 @googleFontName    : @fontName;
 @importGoogleFonts : true;
-@googleFontSizes   : '400,700,400italic,700italic';
+@googleFontSizes   : 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
 @googleSubset      : 'latin';
 @googleFontDisplay : 'swap';
 
@@ -645,14 +645,14 @@
   This rounds @size values to the closest pixel then expresses that value in (r)em.
   This ensures all size values round to exact pixels
 */
-@miniRaw         : unit( round(@miniSize * @emSize) / @emSize );
-@tinyRaw         : unit( round(@tinySize * @emSize) / @emSize );
-@smallRaw        : unit( round(@smallSize * @emSize) / @emSize );
-@mediumRaw       : unit( round(@mediumSize * @emSize) / @emSize );
-@largeRaw        : unit( round(@largeSize * @emSize) / @emSize );
-@bigRaw          : unit( round(@bigSize * @emSize) / @emSize );
-@hugeRaw         : unit( round(@hugeSize * @emSize) / @emSize );
-@massiveRaw      : unit( round(@massiveSize * @emSize) / @emSize );
+@miniRaw         : unit( (round(@miniSize * @emSize) / @emSize ));
+@tinyRaw         : unit( (round(@tinySize * @emSize) / @emSize ));
+@smallRaw        : unit( (round(@smallSize * @emSize) / @emSize ));
+@mediumRaw       : unit( (round(@mediumSize * @emSize) / @emSize ));
+@largeRaw        : unit( (round(@largeSize * @emSize) / @emSize ));
+@bigRaw          : unit( (round(@bigSize * @emSize) / @emSize ));
+@hugeRaw         : unit( (round(@hugeSize * @emSize) / @emSize ));
+@massiveRaw      : unit( (round(@massiveSize * @emSize) / @emSize ));
 
 @mini            : unit( @miniRaw, rem);
 @tiny            : unit( @tinyRaw, rem);
@@ -702,7 +702,6 @@
 @hoveredTextColor            : rgba(0, 0, 0, 0.8);
 @pressedTextColor            : rgba(0, 0, 0, 0.9);
 @selectedTextColor           : rgba(0, 0, 0, 0.95);
-@disabledTextColor           : rgba(0, 0, 0, 0.2);
 
 @invertedTextColor           : rgba(255, 255, 255, 0.9);
 @invertedMutedTextColor      : rgba(255, 255, 255, 0.8);
@@ -711,7 +710,6 @@
 @invertedHoveredTextColor    : rgba(255, 255, 255, 1);
 @invertedPressedTextColor    : rgba(255, 255, 255, 1);
 @invertedSelectedTextColor   : rgba(255, 255, 255, 1);
-@invertedDisabledTextColor   : rgba(255, 255, 255, 0.2);
 
 /*-------------------
      Brand Colors
@@ -768,7 +766,7 @@
 
 /* Used to match floats with text */
 @lineHeightOffset       : ((@lineHeight - 1em) / 2);
-@headerLineHeightOffset : (@headerLineHeight - 1em) / 2;
+@headerLineHeightOffset : ((@headerLineHeight - 1em) / 2);
 
 /* Header Spacing */
 @headerTopMargin    : e(%("calc(2rem - %d)", @headerLineHeightOffset));
@@ -1017,8 +1015,6 @@
 @purpleHover              : saturate(darken(@purple, 5), 10, relative);
 @pinkHover                : saturate(darken(@pink, 5), 10, relative);
 @brownHover               : saturate(darken(@brown, 5), 10, relative);
-@greyHover                : saturate(darken(@grey, 5), 10, relative);
-@blackHover               : saturate(darken(@black, 5), 10, relative);
 
 @lightRedHover            : saturate(darken(@lightRed, 10), 10, relative);
 @lightOrangeHover         : saturate(darken(@lightOrange, 10), 10, relative);
@@ -1350,24 +1346,28 @@
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;
+@formErrorLabelBackground: darken(@formErrorBorder, -8);
 @transparentFormErrorColor: @formErrorColor;
 @transparentFormErrorBackground: @formErrorBackground;
 
 @formInfoColor: @infoTextColor;
 @formInfoBorder: @infoBorderColor;
 @formInfoBackground: @infoBackgroundColor;
+@formInfoLabelBackground: darken(@formInfoBorder, -8);
 @transparentFormInfoColor: @formInfoColor;
 @transparentFormInfoBackground: @formInfoBackground;
 
 @formSuccessColor: @positiveTextColor;
 @formSuccessBorder: @positiveBorderColor;
 @formSuccessBackground: @positiveBackgroundColor;
+@formSuccessLabelBackground: darken(@formSuccessBorder, -8);
 @transparentFormSuccessColor: @formSuccessColor;
 @transparentFormSuccessBackground: @formSuccessBackground;
 
 @formWarningColor: @warningTextColor;
 @formWarningBorder: @warningBorderColor;
 @formWarningBackground: @warningBackgroundColor;
+@formWarningLabelBackground: darken(@formWarningBorder, -8);
 @transparentFormWarningColor: @formWarningColor;
 @transparentFormWarningBackground: @formWarningBackground;
 

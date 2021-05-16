@@ -411,48 +411,42 @@ i.inverted.circular.black.icon.icon.icon.icon {
 i.icon,
 i.icons {
   font-size: 1em;
+  line-height: 1;
 }
 i.mini.mini.mini.icon,
 i.mini.mini.mini.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 0.4em;
+  vertical-align: middle;
 }
 i.tiny.tiny.tiny.icon,
 i.tiny.tiny.tiny.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 0.5em;
+  vertical-align: middle;
 }
 i.small.small.small.icon,
 i.small.small.small.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 0.75em;
+  vertical-align: middle;
 }
 i.large.large.large.icon,
 i.large.large.large.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 1.5em;
+  vertical-align: middle;
 }
 i.big.big.big.icon,
 i.big.big.big.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 2em;
+  vertical-align: middle;
 }
 i.huge.huge.huge.icon,
 i.huge.huge.huge.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 4em;
+  vertical-align: middle;
 }
 i.massive.massive.massive.icon,
 i.massive.massive.massive.icons {
-  line-height: 1;
-  vertical-align: middle;
   font-size: 8em;
+  vertical-align: middle;
 }
 
 
@@ -521,7 +515,7 @@ i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
 }
 /*
-* Font Awesome 5.12.0 by @fontawesome [https://fontawesome.com]
+* Font Awesome 5.13.0 by @fontawesome [https://fontawesome.com]
 * License - https://fontawesome.com/license (Icons: CC BY 4.0 License, Fonts: SIL OFL 1.1 License, CSS: MIT License)
 */
 
@@ -887,6 +881,9 @@ i.icon.box:before {
 i.icon.box.open:before {
   content: "\f49e";
 }
+i.icon.box.tissue:before {
+  content: "\f95b";
+}
 i.icon.boxes:before {
   content: "\f468";
 }
@@ -1062,6 +1059,9 @@ i.icon.chart.bar:before {
   content: "\f080";
 }
 i.icon.chart.line:before {
+  content: "\f201";
+}
+i.icon.chartline:before {
   content: "\f201";
 }
 i.icon.chart.pie:before {
@@ -1361,6 +1361,9 @@ i.icon.digital.tachograph:before {
 i.icon.directions:before {
   content: "\f5eb";
 }
+i.icon.disease:before {
+  content: "\f7fa";
+}
 i.icon.divide:before {
   content: "\f529";
 }
@@ -1513,6 +1516,9 @@ i.icon.fast.backward:before {
 }
 i.icon.fast.forward:before {
   content: "\f050";
+}
+i.icon.faucet:before {
+  content: "\f905";
 }
 i.icon.fax:before {
   content: "\f1ac";
@@ -1829,8 +1835,14 @@ i.icon.hand.holding:before {
 i.icon.hand.holding.heart:before {
   content: "\f4be";
 }
+i.icon.hand.holding.medical:before {
+  content: "\f95c";
+}
 i.icon.hand.holding.usd:before {
   content: "\f4c0";
+}
+i.icon.hand.holding.water:before {
+  content: "\f4c1";
 }
 i.icon.hand.lizard:before {
   content: "\f258";
@@ -1865,6 +1877,9 @@ i.icon.hand.rock:before {
 i.icon.hand.scissors:before {
   content: "\f257";
 }
+i.icon.hand.sparkles:before {
+  content: "\f95d";
+}
 i.icon.hand.spock:before {
   content: "\f259";
 }
@@ -1874,8 +1889,17 @@ i.icon.hands:before {
 i.icon.hands.helping:before {
   content: "\f4c4";
 }
+i.icon.hands.wash:before {
+  content: "\f95e";
+}
 i.icon.handshake:before {
   content: "\f2b5";
+}
+i.icon.handshake.alternate.slash:before {
+  content: "\f95f";
+}
+i.icon.handshake.slash:before {
+  content: "\f960";
 }
 i.icon.hanukiah:before {
   content: "\f6e6";
@@ -1897,6 +1921,18 @@ i.icon.hat.wizard:before {
 }
 i.icon.hdd:before {
   content: "\f0a0";
+}
+i.icon.head.side.cough:before {
+  content: "\f961";
+}
+i.icon.head.side.cough.slash:before {
+  content: "\f962";
+}
+i.icon.head.side.mask:before {
+  content: "\f963";
+}
+i.icon.head.side.virus:before {
+  content: "\f964";
 }
 i.icon.heading:before {
   content: "\f1dc";
@@ -1958,6 +1994,9 @@ i.icon.hospital.alternate:before {
 i.icon.hospital.symbol:before {
   content: "\f47e";
 }
+i.icon.hospital.user:before {
+  content: "\f80d";
+}
 i.icon.hot.tub:before {
   content: "\f593";
 }
@@ -1981,6 +2020,9 @@ i.icon.hourglass.start:before {
 }
 i.icon.house.damage:before {
   content: "\f6f1";
+}
+i.icon.house.user:before {
+  content: "\f965";
 }
 i.icon.hryvnia:before {
   content: "\f6f2";
@@ -2081,6 +2123,9 @@ i.icon.laptop:before {
 i.icon.laptop.code:before {
   content: "\f5fc";
 }
+i.icon.laptop.house:before {
+  content: "\f966";
+}
 i.icon.laptop.medical:before {
   content: "\f812";
 }
@@ -2167,6 +2212,12 @@ i.icon.low.vision:before {
 }
 i.icon.luggage.cart:before {
   content: "\f59d";
+}
+i.icon.lungs:before {
+  content: "\f604";
+}
+i.icon.lungs.virus:before {
+  content: "\f967";
 }
 i.icon.magic:before {
   content: "\f0d0";
@@ -2438,6 +2489,9 @@ i.icon.pencil.alternate:before {
 i.icon.pencil.ruler:before {
   content: "\f5ae";
 }
+i.icon.people.arrows:before {
+  content: "\f968";
+}
 i.icon.people.carry:before {
   content: "\f4ce";
 }
@@ -2494,6 +2548,9 @@ i.icon.plane.arrival:before {
 }
 i.icon.plane.departure:before {
   content: "\f5b0";
+}
+i.icon.plane.slash:before {
+  content: "\f969";
 }
 i.icon.play:before {
   content: "\f04b";
@@ -2563,6 +2620,12 @@ i.icon.procedures:before {
 }
 i.icon.project.diagram:before {
   content: "\f542";
+}
+i.icon.pump.medical:before {
+  content: "\f96a";
+}
+i.icon.pump.soap:before {
+  content: "\f96b";
 }
 i.icon.puzzle.piece:before {
   content: "\f12e";
@@ -2750,6 +2813,9 @@ i.icon.shekel.sign:before {
 i.icon.shield.alternate:before {
   content: "\f3ed";
 }
+i.icon.shield.virus:before {
+  content: "\f96c";
+}
 i.icon.ship:before {
   content: "\f21a";
 }
@@ -2854,6 +2920,9 @@ i.icon.snowman:before {
 }
 i.icon.snowplow:before {
   content: "\f7d2";
+}
+i.icon.soap:before {
+  content: "\f96e";
 }
 i.icon.socks:before {
   content: "\f696";
@@ -2978,11 +3047,20 @@ i.icon.stop.circle:before {
 i.icon.stopwatch:before {
   content: "\f2f2";
 }
+i.icon.stopwatch.twenty:before {
+  content: "\f96f";
+}
 i.icon.store:before {
   content: "\f54e";
 }
 i.icon.store.alternate:before {
   content: "\f54f";
+}
+i.icon.store.alternate.slash:before {
+  content: "\f970";
+}
+i.icon.store.slash:before {
+  content: "\f971";
 }
 i.icon.stream:before {
   content: "\f550";
@@ -3163,6 +3241,9 @@ i.icon.toilet:before {
 }
 i.icon.toilet.paper:before {
   content: "\f71e";
+}
+i.icon.toilet.paper.slash:before {
+  content: "\f972";
 }
 i.icon.toolbox:before {
   content: "\f552";
@@ -3388,6 +3469,15 @@ i.icon.video.slash:before {
 }
 i.icon.vihara:before {
   content: "\f6a7";
+}
+i.icon.virus:before {
+  content: "\f974";
+}
+i.icon.virus.slash:before {
+  content: "\f975";
+}
+i.icon.viruses:before {
+  content: "\f976";
 }
 i.icon.voicemail:before {
   content: "\f897";
@@ -3881,6 +3971,9 @@ i.icon.like:before {
   content: "\f004";
 }
 i.icon.line.graph:before {
+  content: "\f201";
+}
+i.icon.linegraph:before {
   content: "\f201";
 }
 i.icon.linkify:before {
@@ -5230,6 +5323,10 @@ i.icon.d.and.d.beyond:before {
   content: "\f6ca";
   font-family: 'brand-icons';
 }
+i.icon.dailymotion:before {
+  content: "\f952";
+  font-family: 'brand-icons';
+}
 i.icon.dashcube:before {
   content: "\f210";
   font-family: 'brand-icons';
@@ -5654,6 +5751,10 @@ i.icon.instagram:before {
   content: "\f16d";
   font-family: 'brand-icons';
 }
+i.icon.instagram.square:before {
+  content: "\f955";
+  font-family: 'brand-icons';
+}
 i.icon.intercom:before {
   content: "\f7af";
   font-family: 'brand-icons';
@@ -5856,6 +5957,10 @@ i.icon.mix:before {
 }
 i.icon.mixcloud:before {
   content: "\f289";
+  font-family: 'brand-icons';
+}
+i.icon.mixer:before {
+  content: "\f956";
   font-family: 'brand-icons';
 }
 i.icon.mizuni:before {
@@ -6160,6 +6265,10 @@ i.icon.servicestack:before {
 }
 i.icon.shirtsinbulk:before {
   content: "\f214";
+  font-family: 'brand-icons';
+}
+i.icon.shopify:before {
+  content: "\f957";
   font-family: 'brand-icons';
 }
 i.icon.shopware:before {

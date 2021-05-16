@@ -22,6 +22,9 @@
 /*******************************
              Text
 *******************************/
+span.ui.text {
+  line-height: @lineHeight;
+}
 
 each(@colors, {
   @color: replace(@key, '@', '');
@@ -37,6 +40,17 @@ each(@colors, {
     }
   }
 })
+
+& when (@variationTextStates) {
+  each(@textStates, {
+    @state: replace(@key, '@', '');
+    @c: @textStates[@@state][color];
+
+    span.ui.@{state}.text {
+      color: @c;
+    }
+  })
+}
 
 & when (@variationTextDisabled) {
   span.ui.disabled.text {

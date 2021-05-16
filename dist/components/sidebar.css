@@ -98,6 +98,7 @@ body.pushable.dimmed {
 .pushable:not(body) {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+  overflow-y: hidden;
 }
 .pushable:not(body) > .ui.sidebar,
 .pushable:not(body) > .fixed,
@@ -153,7 +154,7 @@ body.pushable > .pusher {
   top: 0;
   right: 0;
   content: '';
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4);
   overflow: hidden;
   opacity: 0;
   -webkit-transition: opacity 500ms;
