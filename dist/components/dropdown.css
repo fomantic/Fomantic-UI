@@ -132,6 +132,15 @@
 .ui.dropdown .menu > .item:first-child {
   border-top-width: 0;
 }
+.ui.dropdown .menu > .item.vertical {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: column-reverse;
+          flex-direction: column-reverse;
+}
 
 /*--------------
   Floated Content
@@ -149,7 +158,7 @@
   margin-left: 0 !important;
   margin-right: 1em !important;
 }
-.ui.dropdown .menu .item > .icon.floated,
+.ui.dropdown .menu .item > i.icon.floated,
 .ui.dropdown .menu .item > .flag.floated,
 .ui.dropdown .menu .item > .image.floated,
 .ui.dropdown .menu .item > img.floated {
@@ -193,7 +202,7 @@
   padding: 0.5em 1em;
 }
 .ui.dropdown .menu > .input:not(.transparent) .button,
-.ui.dropdown .menu > .input:not(.transparent) .icon,
+.ui.dropdown .menu > .input:not(.transparent) i.icon,
 .ui.dropdown .menu > .input:not(.transparent) .label {
   padding-top: 0.5em;
   padding-bottom: 0.5em;
@@ -208,6 +217,17 @@
   float: right;
   margin: 0 0 0 1em;
   color: rgba(0, 0, 0, 0.4);
+}
+.ui.dropdown .menu > .item.vertical > .description {
+  margin: 0;
+}
+
+/*-----------------
+      Item Text
+-------------------*/
+
+.ui.dropdown .menu > .item.vertical > .text {
+  margin-bottom: 0.25em;
 }
 
 /*-----------------
@@ -246,26 +266,26 @@
 
 
 /* Icons / Flags / Labels / Image */
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image {
   margin-top: 0em;
 }
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
 .ui.dropdown .menu > .item > img {
   margin-top: 0em;
 }
-.ui.dropdown > .text > .icon,
+.ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
-.ui.dropdown .menu > .item > .icon,
+.ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
@@ -444,11 +464,11 @@ select.ui.dropdown {
   padding: 0.78571429rem 1.14285714rem;
 }
 @media only screen and (max-width: 767.98px) {
-  .ui.selection.dropdown[class*="very short"] .menu {
-    max-height: 4.00714286rem;
-  }
   .ui.selection.dropdown.short .menu {
     max-height: 6.01071429rem;
+  }
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 4.00714286rem;
   }
   .ui.selection.dropdown .menu {
     max-height: 8.01428571rem;
@@ -461,11 +481,11 @@ select.ui.dropdown {
   }
 }
 @media only screen and (min-width: 768px) {
-  .ui.selection.dropdown[class*="very short"] .menu {
-    max-height: 5.34285714rem;
-  }
   .ui.selection.dropdown.short .menu {
     max-height: 8.01428571rem;
+  }
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 5.34285714rem;
   }
   .ui.selection.dropdown .menu {
     max-height: 10.68571429rem;
@@ -478,11 +498,11 @@ select.ui.dropdown {
   }
 }
 @media only screen and (min-width: 992px) {
-  .ui.selection.dropdown[class*="very short"] .menu {
-    max-height: 8.01428571rem;
-  }
   .ui.selection.dropdown.short .menu {
     max-height: 12.02142857rem;
+  }
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 8.01428571rem;
   }
   .ui.selection.dropdown .menu {
     max-height: 16.02857143rem;
@@ -495,11 +515,11 @@ select.ui.dropdown {
   }
 }
 @media only screen and (min-width: 1920px) {
-  .ui.selection.dropdown[class*="very short"] .menu {
-    max-height: 10.68571429rem;
-  }
   .ui.selection.dropdown.short .menu {
     max-height: 16.02857143rem;
+  }
+  .ui.selection.dropdown[class*="very short"] .menu {
+    max-height: 10.68571429rem;
   }
   .ui.selection.dropdown .menu {
     max-height: 21.37142857rem;
@@ -599,6 +619,58 @@ select.ui.dropdown {
           box-shadow: none !important;
 }
 
+/* CSS specific to iOS devices or firefox mobile only  */
+@supports (-webkit-touch-callout: none) or (-webkit-overflow-scrolling: touch) or (-moz-appearance:none) {
+  @media (-moz-touch-enabled), (pointer: coarse) {
+    .ui.dropdown .scrollhint.menu:not(.hidden):before {
+      -webkit-animation: scrollhint 2s ease 2;
+              animation: scrollhint 2s ease 2;
+      content: '';
+      z-index: 15;
+      display: block;
+      position: absolute;
+      opacity: 0;
+      right: 0.25em;
+      top: 0;
+      height: 100%;
+      border-right: 0.25em solid;
+      border-left: 0;
+      -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0))) 1 100%;
+      -webkit-border-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)) 1 100%;
+           -o-border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)) 1 100%;
+              border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.75)), to(rgba(0, 0, 0, 0))) 1 100%;
+              border-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)) 1 100%;
+    }
+    .ui.inverted.dropdown .scrollhint.menu:not(.hidden):before {
+      -webkit-border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0))) 1 100%;
+      -webkit-border-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)) 1 100%;
+           -o-border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)) 1 100%;
+              border-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.75)), to(rgba(255, 255, 255, 0))) 1 100%;
+              border-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0)) 1 100%;
+    }
+    @-webkit-keyframes scrollhint {
+      0% {
+        opacity: 1;
+        top: 100%;
+      }
+      100% {
+        opacity: 0;
+        top: 0;
+      }
+    }
+    @keyframes scrollhint {
+      0% {
+        opacity: 1;
+        top: 100%;
+      }
+      100% {
+        opacity: 0;
+        top: 0;
+      }
+    }
+  }
+}
+
 /*--------------
      Searchable
   ---------------*/
@@ -661,12 +733,15 @@ select.ui.dropdown {
 }
 
 /* Filtered Text */
-.ui.active.search.dropdown input.search:focus + .text .icon,
+.ui.active.search.dropdown input.search:focus + .text i.icon,
 .ui.active.search.dropdown input.search:focus + .text .flag {
   opacity: 0.45;
 }
 .ui.active.search.dropdown input.search:focus + .text {
   color: rgba(115, 115, 115, 0.87) !important;
+}
+.ui.search.dropdown.button > span.sizer {
+  display: none;
 }
 
 /* Search Menu */
@@ -727,7 +802,7 @@ select.ui.dropdown {
 
 
 /* Multiple Selection */
-.ui.multiple.dropdown {
+.ui.ui.multiple.dropdown {
   padding: 0.22619048em 3.2em 0.22619048em 0.35714286em;
 }
 .ui.multiple.dropdown .menu {
@@ -758,6 +833,11 @@ select.ui.dropdown {
   max-width: 100%;
   margin: 0.45238095em 0 0.45238095em 0.64285714em;
   line-height: 1.21428571em;
+}
+.ui.multiple.dropdown > .text.default {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .ui.multiple.dropdown > .label ~ input.search {
   margin-left: 0.14285714em !important;
@@ -809,6 +889,9 @@ select.ui.dropdown {
   margin: 0.45238095em 0 0.45238095em 0.64285714em;
   width: 2.2em;
   line-height: 1.21428571em;
+}
+.ui.multiple.search.dropdown.button {
+  min-width: 14em;
 }
 
 /*--------------
@@ -1323,20 +1406,20 @@ select.ui.dropdown {
      Columnar
 ---------------*/
 
+.ui.column.dropdown > .menu {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
 .ui.dropdown[class*="two column"] > .menu > .item {
-  display: inline-block;
   width: 50%;
 }
 .ui.dropdown[class*="three column"] > .menu > .item {
-  display: inline-block;
   width: 33%;
 }
 .ui.dropdown[class*="four column"] > .menu > .item {
-  display: inline-block;
   width: 25%;
 }
 .ui.dropdown[class*="five column"] > .menu > .item {
-  display: inline-block;
   width: 20%;
 }
 
@@ -1765,7 +1848,7 @@ select.ui.dropdown {
 .ui.inverted.default.dropdown:not(.button) > input:focus ~ .text {
   color: rgba(255, 255, 255, 0.7);
 }
-.ui.inverted.active.search.dropdown input.search:focus + .text .icon,
+.ui.inverted.active.search.dropdown input.search:focus + .text i.icon,
 .ui.inverted.active.search.dropdown input.search:focus + .text .flag {
   opacity: 0.45;
 }

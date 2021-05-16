@@ -62,6 +62,8 @@
 --------------------*/
 & when (@variationSegmentInverted) {
   /* Header */
+  .ui.inverted.segments .segment > .ui.header .sub.header,
+  .ui.inverted.segments .segment > .ui.header,
   .ui.inverted.segment > .ui.header .sub.header,
   .ui.inverted.segment > .ui.header {
     color: @white;
@@ -137,6 +139,12 @@
     background: @placeholderBackground;
     border-color: @placeholderBorderColor;
     box-shadow: @placeholderBoxShadow;
+    &.tab {
+      display: none;
+      &.active {
+        display: flex;
+      }
+    }
   }
 
   .ui.placeholder.segment .button,
@@ -469,6 +477,12 @@
     .ui.horizontal.segments:not(.stackable) > .segment:first-child {
       border-left: none;
     }
+    .ui.horizontal.segments > .segment:first-child {
+      border-radius: @borderRadius 0 0 @borderRadius;
+    }
+    .ui.horizontal.segments > .segment:last-child {
+      border-radius: 0 @borderRadius @borderRadius 0;
+    }
   }
 }
 
@@ -482,9 +496,12 @@
       Disabled
   ---------------*/
 
+  .ui.disabled.segments,
   .ui.disabled.segment {
     opacity: @disabledOpacity;
     color: @disabledTextColor;
+    pointer-events: none;
+    user-select: none;
   }
 }
 
@@ -493,13 +510,15 @@
       Loading
   ---------------*/
 
+  .ui.loading.segments,
   .ui.loading.segment {
     position: relative;
     cursor: default;
     pointer-events: none;
-    text-shadow: none !important;
+    user-select: none;
     transition: all 0s linear;
   }
+  .ui.loading.segments:before,
   .ui.loading.segment:before {
     position: absolute;
     content: '';
@@ -511,6 +530,7 @@
     border-radius: @borderRadius;
     z-index: @loaderDimmerZIndex;
   }
+  .ui.loading.segments:after,
   .ui.loading.segment:after {
     position: absolute;
     content: '';
@@ -620,11 +640,13 @@ each(@colors,{
   /*-------------------
         Inverted
   --------------------*/
-
+  .ui.inverted.segments,
+  .ui.inverted.segments .segment,
   .ui.inverted.segment {
     border: none;
     box-shadow: none;
   }
+  .ui.inverted.segments .segment,
   .ui.inverted.segment,
   .ui.primary.inverted.segment {
     background: @invertedBackground;
@@ -646,9 +668,11 @@ each(@colors,{
   }
   & when (@variationSegmentLoading) {
     /* Loading */
+    .ui.inverted.loading.segments,
     .ui.inverted.loading.segment {
       color: @invertedLoaderLineColor;
     }
+    .ui.inverted.loading.segments:before,
     .ui.inverted.loading.segment:before {
       background: @loaderInvertedDimmerColor;
     }

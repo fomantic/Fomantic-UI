@@ -41,6 +41,17 @@ each(@colors, {
   }
 })
 
+& when (@variationTextStates) {
+  each(@textStates, {
+    @state: replace(@key, '@', '');
+    @c: @textStates[@@state][color];
+
+    span.ui.@{state}.text {
+      color: @c;
+    }
+  })
+}
+
 & when (@variationTextDisabled) {
   span.ui.disabled.text {
     opacity: @disabledOpacity;

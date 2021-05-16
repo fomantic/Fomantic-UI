@@ -208,6 +208,7 @@ i.icon.charging.station:before { content: "\f5e7"; }
 i.icon.chart.area:before { content: "\f1fe"; }
 i.icon.chart.bar:before { content: "\f080"; }
 i.icon.chart.line:before { content: "\f201"; }
+i.icon.chartline:before { content: "\f201"; }
 i.icon.chart.pie:before { content: "\f200"; }
 i.icon.check:before { content: "\f00c"; }
 i.icon.check.circle:before { content: "\f058"; }
@@ -1181,6 +1182,7 @@ i.icon.level.up:before { content: "\f3bf"; }
 i.icon.lightning:before { content: "\f0e7"; }
 i.icon.like:before { content: "\f004"; }
 i.icon.line.graph:before { content: "\f201"; }
+i.icon.linegraph:before { content: "\f201"; }
 i.icon.linkify:before { content: "\f0c1"; }
 i.icon.lira:before { content: "\f195"; }
 i.icon.list.layout:before { content: "\f00b"; }
