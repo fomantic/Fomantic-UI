@@ -202,7 +202,7 @@
 /* Colors */
 @coloredBorderSize: 0.2em;
 @coloredBorderRadius: 0 0 @borderRadius @borderRadius;
-@coloredBorderSizeCover: @coloredBorderSize / 2;
+@coloredBorderSizeCover: (@coloredBorderSize / 2);
 
 /* Inverted */
 @invertedBackground: #333333;

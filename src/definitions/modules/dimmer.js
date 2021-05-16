@@ -155,7 +155,7 @@ $.fn.dimmer = function(parameters) {
 
         event: {
           click: function(event) {
-            module.verbose('Determining if event occured on dimmer', event);
+            module.verbose('Determining if event occurred on dimmer', event);
             if( $dimmer.find(event.target).length === 0 || $(event.target).is(selector.content) ) {
               module.hide();
               event.stopImmediatePropagation();
@@ -255,7 +255,7 @@ $.fn.dimmer = function(parameters) {
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
-                  animation   : settings.transition + ' in',
+                  animation   : (settings.transition.showMethod || settings.transition) + ' in',
                   queue       : false,
                   duration    : module.get.duration(),
                   useFailSafe : true,
@@ -302,7 +302,7 @@ $.fn.dimmer = function(parameters) {
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
-                  animation   : settings.transition + ' out',
+                  animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : false,
                   duration    : module.get.duration(),
                   useFailSafe : true,

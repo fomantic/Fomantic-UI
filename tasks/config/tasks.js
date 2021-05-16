@@ -51,7 +51,7 @@ module.exports = {
 
       // add version to first comment
       license: {
-        in  : /(^\/\*[\s\S]+)(# Semantic UI )([\s\S]+?\*\/)/,
+        in  : /(^\/\*[\s\S]+)(# Fomantic-UI )([\s\S]+?\*\/)/,
         out : '$1$2' + release.version + ' $3'
       },
 
@@ -87,6 +87,7 @@ module.exports = {
 
     /* Comment Banners */
     header: {
+      year       : (new Date()).getFullYear(),
       title      : release.title,
       version    : release.version,
       repository : release.repository,
@@ -143,10 +144,11 @@ module.exports = {
 
     /* Minified CSS Concat */
     minify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : 1,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false
+        }
+      }
     },
 
     /* Minified JS Settings */
@@ -159,10 +161,12 @@ module.exports = {
 
     /* Minified Concat CSS Settings */
     concatMinify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : false,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false,
+          specialComments : false
+        }
+      }
     },
 
     /* Minified Concat JS */

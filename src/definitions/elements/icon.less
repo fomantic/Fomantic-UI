@@ -137,6 +137,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 
     width: @circularSize !important;
     height: @circularSize !important;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
   }
   & when (@variationIconInverted) {
     i.circular.inverted.icon {
@@ -158,6 +161,16 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
   i.vertically.flipped.icon {
     transform: scale(1, -1);
   }
+
+  & when(@variationIconGroups) {
+    .icons i.flipped.icon:not(.corner):not(:first-child),
+    .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1);
+    }
+    .icons i.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1);
+    }
+  }
 }
 
 & when (@variationIconRotated) {
@@ -178,6 +191,21 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 
   i.halfway.rotated.icon {
     transform: rotate(180deg);
+  }
+
+  & when(@variationIconGroups) {
+    .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(90deg);
+    }
+    .icons i.left.rotated.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) rotate(180deg);
+    }
   }
 }
 
@@ -215,6 +243,33 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
   i.halfway.rotated.vertically.flipped.icon {
     transform: scale(1, -1) rotate(180deg);
   }
+
+  & when(@variationIconGroups) {
+    .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
+    }
+    .icons i.left.rotated.flipped.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
+    }
+    .icons i.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.right.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.clockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
+    }
+    .icons i.left.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+    .icons i.counterclockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
+    }
+    .icons i.halfway.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+      transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
+    }
+  }
 }
 
 & when (@variationIconBordered) {
@@ -230,6 +285,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     height: @borderedSize;
     padding: @borderedVerticalPadding @borderedHorizontalPadding !important;
     box-shadow: @borderedShadow;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
   }
   & when (@variationIconInverted) {
     i.bordered.inverted.icon {
@@ -265,17 +323,21 @@ each(@colors, {
   @c: @colors[@@color][color];
   @l: @colors[@@color][light];
 
-  i.@{color}.icon.icon.icon.icon {
+  i.@{color}.icon.icon.icon.icon.icon {
     color: @c;
   }
   & when (@variationIconInverted) {
-    i.inverted.@{color}.icon.icon.icon.icon {
+    i.inverted.@{color}.icon.icon.icon.icon.icon {
       color: @l;
     }
-    i.inverted.bordered.@{color}.icon.icon.icon.icon,
-    i.inverted.circular.@{color}.icon.icon.icon.icon {
-      background-color: @c;
-      color: @white;
+    & when (@variationIconBordered) or (@variationIconCircular) {
+      i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
+      i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
+      i.inverted.bordered.@{color}.icons,
+      i.inverted.circular.@{color}.icons {
+        background-color: @c;
+        color: @white;
+      }
     }
   }
 })
@@ -317,8 +379,10 @@ i.icons {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
     margin: 0;
+    &:not(.corner):not(.rotated):not(.flipped) {
+      transform: translateX(-50%) translateY(-50%);
+    }
   }
 
   i.icons .icon:first-child {
@@ -326,6 +390,8 @@ i.icons {
     width: auto;
     height: auto;
     vertical-align: top;
+  }
+  i.icons:not(.bordered):not(.circular) .icon:first-child:not(.rotated):not(.flipped) {
     transform: none;
   }
 
@@ -334,40 +400,112 @@ i.icons {
     i.icons .corner.icon {
       top: auto;
       left: auto;
-      right: 0;
-      bottom: 0;
-      transform: none;
+      right: @cornerOffset;
+      bottom: @cornerOffset;
       font-size: @cornerIconSize;
       text-shadow: @cornerIconShadow;
+      &:not(.rotated):not(.flipped) {
+        transform: none;
+      }
     }
     i.icons .icon.corner[class*="top right"] {
-      top: 0;
+      top: @cornerOffset;
       left: auto;
-      right: 0;
+      right: @cornerOffset;
       bottom: auto;
     }
     i.icons .icon.corner[class*="top left"] {
-      top: 0;
-      left: 0;
+      top: @cornerOffset;
+      left: @cornerOffset;
       right: auto;
       bottom: auto;
     }
     i.icons .icon.corner[class*="bottom left"] {
       top: auto;
-      left: 0;
+      left: @cornerOffset;
       right: auto;
-      bottom: 0;
+      bottom: @cornerOffset;
     }
     i.icons .icon.corner[class*="bottom right"] {
       top: auto;
       left: auto;
-      right: 0;
-      bottom: 0;
+      right: @cornerOffset;
+      bottom: @cornerOffset;
     }
     & when (@variationIconInverted) {
       i.icons .inverted.corner.icon {
         text-shadow: @cornerIconInvertedShadow;
       }
+    }
+  }
+}
+
+& when ((@variationIconGroups) or (@variationIconCorner))
+   and ((@variationIconBordered) or (@variationIconCircular)) {
+  /*************************************************
+     Bordered/circular with corner or group icons
+  *************************************************/
+  i.bordered.icons,
+  i.circular.icons {
+    width: @borderedSize;
+    height: @borderedSize;
+    box-shadow: @borderedShadow;
+    vertical-align: middle;
+    &.colored when (@variationIconColored){
+      box-shadow: @coloredBoxShadow;
+    }
+  }
+  i.circular.icons {
+    border-radius: 500em;
+  }
+  i.bordered.icons i.icon:first-child,
+  i.circular.icons i.icon:first-child {
+    position: absolute;
+    transform: translateX(-50%) translateY(-50%);
+  }
+
+  & when (@variationIconInverted) {
+    /* Inverted Icon */
+    i.bordered.inverted.icons,
+    i.circular.inverted.icons {
+      border: none;
+      box-shadow: none;
+      background-color: @black;
+      color: @white;
+    }
+  }
+
+  & when (@variationIconCorner) {
+    /* Corner Icon */
+    i.bordered.icons .icon.corner,
+    i.circular.icons .icon.corner,
+    i.bordered.icons .icon.corner[class*="bottom right"],
+    i.circular.icons .icon.corner[class*="bottom right"] {
+      top: auto;
+      left: auto;
+      right: @borderedGroupCornerOffset;
+      bottom: @borderedGroupCornerOffset;
+    }
+    i.bordered.icons .icon.corner[class*="top right"],
+    i.circular.icons .icon.corner[class*="top right"] {
+      top: @borderedGroupCornerOffset;
+      left: auto;
+      right: @borderedGroupCornerOffset;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="top left"],
+    i.circular.icons .icon.corner[class*="top left"] {
+      top: @borderedGroupCornerOffset;
+      left: @borderedGroupCornerOffset;
+      right: auto;
+      bottom: auto;
+    }
+    i.bordered.icons .icon.corner[class*="bottom left"],
+    i.circular.icons .icon.corner[class*="bottom left"] {
+      top: auto;
+      left: @borderedGroupCornerOffset;
+      right: auto;
+      bottom: @borderedGroupCornerOffset;
     }
   }
 }

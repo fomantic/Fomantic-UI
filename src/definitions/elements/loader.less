@@ -212,7 +212,7 @@ each(@colors, {
   .ui.@{color}.elastic.loader.loader:before,
   .ui.@{color}.basic.elastic.loading.button:before,
   .ui.@{color}.basic.elastic.loading.button:after,
-  .ui.@{color}.elastic.loading.loading.loading:not(.segment):before,
+  .ui.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
   .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
   .ui.@{color}.elastic.loading.loading.loading.loading > i.icon:before,
   .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -222,7 +222,7 @@ each(@colors, {
     color: @c;
   }
   .ui.inverted.@{color}.elastic.loader:before,
-  .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):before,
+  .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
   .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon:before,
   .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon:before,
   .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
@@ -295,11 +295,15 @@ each(@colors, {
 .ui.loader.loader.loader.loader.loader.loader:not(.double):after {
   border-bottom-color: transparent;
 }
+.ui.loading.loading.loading.loading.loading.loading.card:after,
+.ui.loading.loading.loading.loading.loading.loading.segments:after,
 .ui.loading.loading.loading.loading.loading.loading.segment:after,
 .ui.loading.loading.loading.loading.loading.loading.form:after {
   border-left-color:@loaderFillColor;
   border-right-color:@loaderFillColor;
 }
+.ui.loading.loading.loading.loading.loading.loading.card:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading.segments:not(.double):after,
 .ui.loading.loading.loading.loading.loading.loading.segment:not(.double):after,
 .ui.loading.loading.loading.loading.loading.loading.form:not(.double):after {
   border-bottom-color: @loaderFillColor;
@@ -316,14 +320,14 @@ each(@colors, {
   .ui.inverted.dimmer > .ui.elastic.loader {
     color: @loaderLineColor;
   }
-  .ui.elastic.loading.loading:not(.form):not(.segment):after,
+  .ui.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
   .ui.elastic.loading.loading .input > i.icon:after,
   .ui.elastic.loading.loading > i.icon:after,
   .ui.elastic.loader.loader:after {
     animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
     animation-delay: 0.3s;
   }
-  .ui.elastic.loading.loading.loading:not(.form):not(.segment):before,
+  .ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
   .ui.elastic.loading.loading.loading .input > i.icon:before,
   .ui.elastic.loading.loading.loading > i.icon:before,
   .ui.elastic.loader.loader:before {
@@ -337,27 +341,27 @@ each(@colors, {
     }
   }
   & when (@variationLoaderSpeeds) {
-    .ui.slow.elastic.loading.loading:not(.form):not(.segment):after,
+    .ui.slow.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
     .ui.slow.elastic.loading.loading .input > i.icon:after,
     .ui.slow.elastic.loading.loading > i.icon:after,
     .ui.slow.elastic.loader.loader:after {
       animation-duration: 1.5s;
       animation-delay: 0.45s;
     }
-    .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):before,
+    .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
     .ui.slow.elastic.loading.loading.loading .input > i.icon:before,
     .ui.slow.elastic.loading.loading.loading > i.icon:before,
     .ui.slow.elastic.loader.loader:before {
       animation-duration: 1.5s;
     }
-    .ui.fast.elastic.loading.loading:not(.form):not(.segment):after,
+    .ui.fast.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
     .ui.fast.elastic.loading.loading .input > i.icon:after,
     .ui.fast.elastic.loading.loading > i.icon:after,
     .ui.fast.elastic.loader.loader:after {
       animation-duration: 0.66s;
       animation-delay: 0.20s;
     }
-    .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):before,
+    .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
     .ui.fast.elastic.loading.loading.loading .input > i.icon:before,
     .ui.fast.elastic.loading.loading.loading > i.icon:before,
     .ui.fast.elastic.loader.loader:before {

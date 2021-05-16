@@ -21,6 +21,7 @@
 /* Icon */
 @dropdownIconSize: @relative12px;
 @dropdownIconMargin: 0 0 0 1em;
+@dropdownIconMinWidth: 1em;
 
 /* Current Text */
 @textTransition: none;
@@ -98,12 +99,12 @@
 
 /* Menu Image */
 @menuImageMaxHeight: 2em;
-@menuImageVerticalMargin: -(@menuImageMaxHeight - 1em) / 2;
+@menuImageVerticalMargin: (-(@menuImageMaxHeight - 1em) / 2);
 
 /* Item Sub-Element */
 @itemElementFloat: none;
 @itemElementDistance: @mini;
-@itemElementBottomDistance: @itemElementDistance / 2;
+@itemElementBottomDistance: (@itemElementDistance / 2);
 
 /* Sub-Menu Dropdown Icon */
 @itemDropdownIconDistance: 1em;
@@ -165,7 +166,7 @@
 @selectionIconZIndex: 3;
 @selectionIconHitbox: @selectionVerticalPadding;
 @selectionIconMargin: -@selectionIconHitbox;
-@selectionIconPadding: @selectionIconHitbox / @dropdownIconSize;
+@selectionIconPadding: (@selectionIconHitbox / @dropdownIconSize);
 @selectionIconTransition: opacity @defaultDuration @defaultEasing;
 
 @selectionMenuBorderRadius: 0 0 @borderRadius @borderRadius;
@@ -310,8 +311,14 @@
 @selectedColor: @selectedTextColor;
 
 /* Clearable */
-@clearableIconOpacity: 0.8;
+@clearableIconOpacity: 0.6;
 @clearableIconActiveOpacity: 1;
+@clearableTextMargin: 1.5em;
+@clearableIconMargin: 1.5em;
+@clearableIconMarginTop: 1.35em;
+@clearableIconPosition: 2em;
+@clearableIconSelectionPosition: 3em;
+@clearableIconInlinePosition: 2.2em;
 
 /*-------------------
       Variations

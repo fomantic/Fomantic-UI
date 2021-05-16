@@ -336,7 +336,8 @@
           top: 100%;
           left: 50%;
           margin-left: @tooltipArrowHorizontalOffset;
-          margin-top: -@tooltipArrowVerticalOffset;
+          margin-top: -@arrowOffset;
+          transform-origin: center top;
         }
       }
       & when (@variationPopupLeft) {

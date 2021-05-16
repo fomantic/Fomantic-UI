@@ -297,7 +297,9 @@ $.fn.dropdown = function(parameters) {
             : module.get.query()
           ;
           module.verbose('Searching for query', query);
-          if(module.has.minCharacters(query)) {
+          if(settings.fireOnInit === false && module.is.initialLoad()) {
+            module.verbose('Skipping callback on initial load', settings.onSearch);
+          } else if(module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
             module.filter(query);
           }
           else {
@@ -359,7 +361,7 @@ $.fn.dropdown = function(parameters) {
             if( !module.has.menu() ) {
               module.create.menu();
             }
-            if ( module.is.selection() && module.is.clearable() && !module.has.clearItem() ) {
+            if ( module.is.clearable() && !module.has.clearItem() ) {
               module.verbose('Adding clear icon');
               $clear = $('<i />')
                 .addClass('remove icon')
@@ -370,7 +372,7 @@ $.fn.dropdown = function(parameters) {
               module.verbose('Adding search input');
               $search = $('<input />')
                 .addClass(className.search)
-                .prop('autocomplete', 'off')
+                .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
                 .insertBefore($text)
               ;
             }
@@ -1933,7 +1935,7 @@ $.fn.dropdown = function(parameters) {
               : value
             ;
           },
-          values: function() {
+          values: function(raw) {
             var
               value = module.get.value()
             ;
@@ -1942,7 +1944,7 @@ $.fn.dropdown = function(parameters) {
             }
             return ( !module.has.selectInput() && module.is.multiple() )
               ? (typeof value == 'string') // delimited string
-                ? module.escape.htmlEntities(value).split(settings.delimiter)
+                ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
                 : ''
               : value
             ;
@@ -2371,7 +2373,7 @@ $.fn.dropdown = function(parameters) {
 
         clear: function(preventChangeTrigger) {
           if(module.is.multiple() && settings.useLabels) {
-            module.remove.labels();
+            module.remove.labels($module.find(selector.label), preventChangeTrigger);
           }
           else {
             module.remove.activeItem();
@@ -2973,7 +2975,7 @@ $.fn.dropdown = function(parameters) {
           },
           value: function(addedValue, addedText, $selectedItem) {
             var
-              currentValue = module.get.values(),
+              currentValue = module.get.values(true),
               newValue
             ;
             if(module.has.value(addedValue)) {
@@ -3097,7 +3099,7 @@ $.fn.dropdown = function(parameters) {
           userAddition: function() {
             $item.filter(selector.addition).remove();
           },
-          selected: function(value, $selectedItem) {
+          selected: function(value, $selectedItem, preventChangeTrigger) {
             $selectedItem = (settings.allowAdditions)
               ? $selectedItem || module.get.itemWithAdditions(value)
               : $selectedItem || module.get.item(value)
@@ -3116,11 +3118,11 @@ $.fn.dropdown = function(parameters) {
                 ;
                 if(module.is.multiple()) {
                   if(settings.useLabels) {
-                    module.remove.value(selectedValue, selectedText, $selected);
+                    module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                     module.remove.label(selectedValue);
                   }
                   else {
-                    module.remove.value(selectedValue, selectedText, $selected);
+                    module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                     if(module.get.selectionCount() === 0) {
                       module.set.placeholderText();
                     }
@@ -3130,7 +3132,7 @@ $.fn.dropdown = function(parameters) {
                   }
                 }
                 else {
-                  module.remove.value(selectedValue, selectedText, $selected);
+                  module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                 }
                 $selected
                   .removeClass(className.filtered)
@@ -3145,7 +3147,7 @@ $.fn.dropdown = function(parameters) {
           selectedItem: function() {
             $item.removeClass(className.selected);
           },
-          value: function(removedValue, removedText, $removedItem) {
+          value: function(removedValue, removedText, $removedItem, preventChangeTrigger) {
             var
               values = module.get.values(),
               newValue
@@ -3167,7 +3169,7 @@ $.fn.dropdown = function(parameters) {
             else {
               settings.onRemove.call(element, removedValue, removedText, $removedItem);
             }
-            module.set.value(newValue, removedText, $removedItem);
+            module.set.value(newValue, removedText, $removedItem, preventChangeTrigger);
             module.check.maxSelections();
           },
           arrayValue: function(removedValue, values) {
@@ -3182,8 +3184,9 @@ $.fn.dropdown = function(parameters) {
           },
           label: function(value, shouldAnimate) {
             var
+              escapedValue  = module.escape.value(value),
               $labels       = $module.find(selector.label),
-              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? value.toLowerCase() : value) +'"]')
+              $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]')
             ;
             module.verbose('Removing label', $removedLabel);
             $removedLabel.remove();
@@ -3193,7 +3196,7 @@ $.fn.dropdown = function(parameters) {
             module.verbose('Removing active label selections', $activeLabels);
             module.remove.labels($activeLabels);
           },
-          labels: function($labels) {
+          labels: function($labels, preventChangeTrigger) {
             $labels = $labels || $module.find(selector.label);
             module.verbose('Removing labels', $labels);
             $labels
@@ -3212,12 +3215,12 @@ $.fn.dropdown = function(parameters) {
                 }
                 module.remove.message();
                 if(isUserValue) {
-                  module.remove.value(stringValue);
+                  module.remove.value(stringValue, stringValue, module.get.item(stringValue), preventChangeTrigger);
                   module.remove.label(stringValue);
                 }
                 else {
                   // selected will also remove label
-                  module.remove.selected(stringValue);
+                  module.remove.selected(stringValue, false, preventChangeTrigger);
                 }
               })
             ;
@@ -3296,6 +3299,9 @@ $.fn.dropdown = function(parameters) {
           menu: function() {
             return ($menu.length > 0);
           },
+          subMenu: function($currentMenu) {
+            return ($currentMenu || $menu).find(selector.menu).length > 0;
+          },
           message: function() {
             return ($menu.children(selector.message).length !== 0);
           },
@@ -3332,7 +3338,7 @@ $.fn.dropdown = function(parameters) {
           },
           valueMatchingCase: function(value) {
             var
-              values   = module.get.values(),
+              values   = module.get.values(true),
               hasValue = Array.isArray(values)
                ? values && ($.inArray(value, values) !== -1)
                : (values == value)
@@ -3344,7 +3350,7 @@ $.fn.dropdown = function(parameters) {
           },
           valueIgnoringCase: function(value) {
             var
-              values   = module.get.values(),
+              values   = module.get.values(true),
               hasValue = false
             ;
             if(!Array.isArray(values)) {
@@ -3375,6 +3381,9 @@ $.fn.dropdown = function(parameters) {
           },
           bubbledIconClick: function(event) {
             return $(event.target).closest($icon).length > 0;
+          },
+          chrome: function() {
+            return !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
           },
           alreadySetup: function() {
             return ($module.is('select') && $module.parent(selector.dropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
@@ -3524,6 +3533,9 @@ $.fn.dropdown = function(parameters) {
             };
             if(module.is.verticallyScrollableContext()) {
               calculations.menu.offset.top += calculations.context.scrollTop;
+            }
+            if(module.has.subMenu($currentMenu)) {
+              calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
             }
             onScreen = {
               above : (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
@@ -4034,6 +4046,7 @@ $.fn.dropdown.settings = {
   onChange      : function(value, text, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
+  onSearch      : function(searchTerm){},
 
   onLabelSelect : function($selectedLabels){},
   onLabelCreate : function(value, text) { return $(this); },
@@ -4081,19 +4094,21 @@ $.fn.dropdown.settings = {
 
   // property names for remote query
   fields: {
-    remoteValues : 'results',  // grouping for api results
-    values       : 'values',   // grouping for all dropdown values
-    disabled     : 'disabled', // whether value should be disabled
-    name         : 'name',     // displayed dropdown text
-    value        : 'value',    // actual dropdown value
-    text         : 'text',     // displayed text when selected
-    type         : 'type',     // type of dropdown element
-    image        : 'image',    // optional image path
-    imageClass   : 'imageClass', // optional individual class for image
-    icon         : 'icon',     // optional icon name
-    iconClass    : 'iconClass', // optional individual class for icon (for example to use flag instead)
-    class        : 'class',    // optional individual class for item/header
-    divider      : 'divider'   // optional divider append for group headers
+    remoteValues         : 'results',  // grouping for api results
+    values               : 'values',   // grouping for all dropdown values
+    disabled             : 'disabled', // whether value should be disabled
+    name                 : 'name',     // displayed dropdown text
+    description          : 'description', // displayed dropdown description
+    descriptionVertical  : 'descriptionVertical', // whether description should be vertical
+    value                : 'value',    // actual dropdown value
+    text                 : 'text',     // displayed text when selected
+    type                 : 'type',     // type of dropdown element
+    image                : 'image',    // optional image path
+    imageClass           : 'imageClass', // optional individual class for image
+    icon                 : 'icon',     // optional icon name
+    iconClass            : 'iconClass', // optional individual class for icon (for example to use flag instead)
+    class                : 'class',    // optional individual class for item/header
+    divider              : 'divider'   // optional divider append for group headers
   },
 
   keys : {
@@ -4132,45 +4147,48 @@ $.fn.dropdown.settings = {
   },
 
   className : {
-    active      : 'active',
-    addition    : 'addition',
-    animating   : 'animating',
-    disabled    : 'disabled',
-    empty       : 'empty',
-    dropdown    : 'ui dropdown',
-    filtered    : 'filtered',
-    hidden      : 'hidden transition',
-    icon        : 'icon',
-    image       : 'image',
-    item        : 'item',
-    label       : 'ui label',
-    loading     : 'loading',
-    menu        : 'menu',
-    message     : 'message',
-    multiple    : 'multiple',
-    placeholder : 'default',
-    sizer       : 'sizer',
-    search      : 'search',
-    selected    : 'selected',
-    selection   : 'selection',
-    upward      : 'upward',
-    leftward    : 'left',
-    visible     : 'visible',
-    clearable   : 'clearable',
-    noselection : 'noselection',
-    delete      : 'delete',
-    header      : 'header',
-    divider     : 'divider',
-    groupIcon   : '',
-    unfilterable : 'unfilterable'
+    active              : 'active',
+    addition            : 'addition',
+    animating           : 'animating',
+    description         : 'description',
+    descriptionVertical : 'vertical',
+    disabled            : 'disabled',
+    empty               : 'empty',
+    dropdown            : 'ui dropdown',
+    filtered            : 'filtered',
+    hidden              : 'hidden transition',
+    icon                : 'icon',
+    image               : 'image',
+    item                : 'item',
+    label               : 'ui label',
+    loading             : 'loading',
+    menu                : 'menu',
+    message             : 'message',
+    multiple            : 'multiple',
+    placeholder         : 'default',
+    sizer               : 'sizer',
+    search              : 'search',
+    selected            : 'selected',
+    selection           : 'selection',
+    text                : 'text',
+    upward              : 'upward',
+    leftward            : 'left',
+    visible             : 'visible',
+    clearable           : 'clearable',
+    noselection         : 'noselection',
+    delete              : 'delete',
+    header              : 'header',
+    divider             : 'divider',
+    groupIcon           : '',
+    unfilterable        : 'unfilterable'
   }
 
 };
 
 /* Templates */
 $.fn.dropdown.settings.templates = {
-  deQuote: function(string) {
-      return String(string).replace(/"/g,"");
+  deQuote: function(string, encode) {
+      return String(string).replace(/"/g,encode ? "&quot;" : "");
   },
   escape: function(string, preserveHTML) {
     if (preserveHTML){
@@ -4228,26 +4246,49 @@ $.fn.dropdown.settings.templates = {
       var
         itemType = (option[fields.type])
           ? option[fields.type]
-          : 'item'
+          : 'item',
+        isMenu = itemType.indexOf('menu') !== -1
       ;
 
-      if( itemType === 'item' ) {
+      if( itemType === 'item' || isMenu) {
         var
           maybeText = (option[fields.text])
-            ? ' data-text="' + deQuote(option[fields.text]) + '"'
+            ? ' data-text="' + deQuote(option[fields.text],true) + '"'
             : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
-            : ''
+            : '',
+          maybeDescriptionVertical = (option[fields.descriptionVertical])
+            ? className.descriptionVertical+' '
+            : '',
+          hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
         ;
-        html += '<div class="'+ maybeDisabled + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value]) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        if (isMenu) {
+          html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+        }
         if(option[fields.image]) {
           html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
         if(option[fields.icon]) {
           html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
         }
+        if(hasDescription){
+          html += '<span class="'+ className.description +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
+          html += (!isMenu) ? '<span class="'+ className.text + '">' : '';
+        }
+        if (isMenu) {
+          html += '<span class="' + className.text + '">';
+        }
         html +=   escape(option[fields.name] || '', preserveHTML);
+        if (isMenu) {
+          html += '</span>';
+          html += '<div class="' + itemType + '">';
+          html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
+          html += '</div>';
+        } else if(hasDescription){
+          html += '</span>';
+        }
         html += '</div>';
       } else if (itemType === 'header') {
         var groupName = escape(option[fields.name] || '', preserveHTML),
