@@ -239,6 +239,7 @@ $.fn.search = function(parameters) {
               }
               module.hideResults();
               if(href) {
+                event.preventDefault();
                 module.verbose('Opening search link found in result', $link);
                 if(target == '_blank' || event.ctrlKey) {
                   window.open(href);
@@ -248,6 +249,25 @@ $.fn.search = function(parameters) {
                 }
               }
             }
+          }
+        },
+        ensureVisible: function ensureVisible($el) {
+          var elTop, elBottom, resultsScrollTop, resultsHeight;
+
+          elTop = $el.position().top;
+          elBottom = elTop + $el.outerHeight(true);
+
+          resultsScrollTop = $results.scrollTop();
+          resultsHeight = $results.height()
+            parseInt($results.css('paddingTop'), 0) +
+            parseInt($results.css('paddingBottom'), 0);
+            
+          if (elTop < 0) {
+            $results.scrollTop(resultsScrollTop + elTop);
+          }
+
+          else if (resultsHeight < elBottom) {
+            $results.scrollTop(resultsScrollTop + (elBottom - resultsHeight));
           }
         },
         handleKeyboard: function(event) {
@@ -301,6 +321,7 @@ $.fn.search = function(parameters) {
                   .closest($category)
                     .addClass(className.active)
               ;
+              module.ensureVisible($result.eq(newIndex));
               event.preventDefault();
             }
             else if(keyCode == keys.downArrow) {
@@ -319,6 +340,7 @@ $.fn.search = function(parameters) {
                   .closest($category)
                     .addClass(className.active)
               ;
+              module.ensureVisible($result.eq(newIndex));
               event.preventDefault();
             }
           }
@@ -952,6 +974,12 @@ $.fn.search = function(parameters) {
                   debug      : settings.debug,
                   verbose    : settings.verbose,
                   duration   : settings.duration,
+                  onShow     : function() {
+                    var $firstResult = $module.find(selector.result).eq(0);
+                    if($firstResult.length > 0) {
+                      module.ensureVisible($firstResult);
+                    }
+                  },
                   onComplete : function() {
                     callback();
                   },
@@ -1369,10 +1397,9 @@ $.fn.search.settings = {
         return string;
       }
       var
-        badChars     = /[&<>"'`]/g,
+        badChars     = /[<>"'`]/g,
         shouldEscape = /[&<>"'`]/,
         escape       = {
-          "&": "&amp;",
           "<": "&lt;",
           ">": "&gt;",
           '"': "&quot;",
@@ -1384,6 +1411,7 @@ $.fn.search.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
+        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;

@@ -82,15 +82,6 @@
 @focusColor: @hoveredTextColor;
 @focusBoxShadow: none;
 
-/* Error */
-@errorBackground: @negativeBackgroundColor;
-@errorColor: @negativeTextColor;
-@errorBorder: @negativeBorderColor;
-@errorBoxShadow: none;
-
-@placeholderErrorColor: lighten(@errorColor, 40);
-@placeholderErrorFocusColor: lighten(@errorColor, 30);
-
 /* Loader */
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
 
@@ -102,3 +93,10 @@
 @transparentInvertedPlaceholderColor: @invertedUnselectedTextColor;
 @transparentInvertedColor: @white;
 
+@miniInputSize: @relativeMini;
+@tinyInputSize: @relativeTiny;
+@smallInputSize: @relativeSmall;
+@largeInputSize: @relativeLarge;
+@bigInputSize: @relativeBig;
+@hugeInputSize: @relativeHuge;
+@massiveInputSize: @relativeMassive;

@@ -16,7 +16,7 @@
 .ui.reveal {
   display: inherit;
   position: relative !important;
-  font-size: 0 !important;
+  font-size: 0;
 }
 .ui.reveal > .visible.content {
   position: absolute !important;
@@ -44,8 +44,8 @@
 
 
 /*--------------
-      Slide
----------------*/
+        Slide
+  ---------------*/
 
 .ui.slide.reveal {
   position: relative !important;
@@ -131,8 +131,8 @@
 }
 
 /*--------------
-      Fade
----------------*/
+        Fade
+  ---------------*/
 
 .ui.fade.reveal > .visible.content {
   opacity: 1;
@@ -143,8 +143,8 @@
 }
 
 /*--------------
-      Move
----------------*/
+        Move
+  ---------------*/
 
 .ui.move.reveal {
   position: relative !important;
@@ -191,8 +191,8 @@
 }
 
 /*--------------
-     Rotate
----------------*/
+       Rotate
+  ---------------*/
 
 .ui.rotate.reveal > .visible.content {
   -webkit-transition-duration: 0.5s;
@@ -279,7 +279,28 @@
 ---------------*/
 
 .ui.reveal > .content {
-  font-size: 1rem !important;
+  font-size: 1rem;
+}
+.ui.mini.reveal > .content {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.reveal > .content {
+  font-size: 0.85714286rem;
+}
+.ui.small.reveal > .content {
+  font-size: 0.92857143rem;
+}
+.ui.large.reveal > .content {
+  font-size: 1.14285714rem;
+}
+.ui.big.reveal > .content {
+  font-size: 1.28571429rem;
+}
+.ui.huge.reveal > .content {
+  font-size: 1.42857143rem;
+}
+.ui.massive.reveal > .content {
+  font-size: 1.71428571rem;
 }
 
 

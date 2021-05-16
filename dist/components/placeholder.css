@@ -122,12 +122,6 @@
   margin-top: 0.5em;
 }
 
-/* Header Image + 2 Lines */
-.ui.placeholder .header {
-  position: relative;
-  overflow: hidden;
-}
-
 /* Line Outdent */
 .ui.placeholder .line:nth-child(1):after {
   width: 0;
@@ -143,6 +137,12 @@
 }
 .ui.placeholder .line:nth-child(5):after {
   width: 65%;
+}
+
+/* Header Image + 2 Lines */
+.ui.placeholder .header {
+  position: relative;
+  overflow: hidden;
 }
 
 /* Header Line 1 & 2*/
@@ -234,8 +234,8 @@
 }
 
 /*-------------------
-        Fluid
---------------------*/
+          Fluid
+  --------------------*/
 
 .ui.fluid.placeholder {
   max-width: none;

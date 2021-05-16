@@ -35,15 +35,18 @@
   will-change: top, left, margin, transform, opacity;
 }
 .ui.modal > :first-child:not(.icon):not(.dimmer),
-.ui.modal > .icon:first-child + *,
+.ui.modal > i.icon:first-child + *,
 .ui.modal > .dimmer:first-child + *:not(.icon),
-.ui.modal > .dimmer:first-child + .icon + * {
+.ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: 0.28571429rem;
   border-top-right-radius: 0.28571429rem;
 }
 .ui.modal > :last-child {
   border-bottom-left-radius: 0.28571429rem;
   border-bottom-right-radius: 0.28571429rem;
+}
+.ui.modal > .ui.dimmer {
+  border-radius: inherit;
 }
 
 
@@ -150,7 +153,7 @@
   -ms-flex-item-align: start;
       align-self: start;
 }
-.ui.modal > .content > .icon + .description,
+.ui.modal > .content > i.icon + .description,
 .ui.modal > .content > .image + .description {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -178,7 +181,7 @@
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   text-align: right;
 }
-.ui.modal .actions > .button {
+.ui.modal .actions > .button:not(.fluid) {
   margin-left: 0.75em;
 }
 .ui.basic.modal > .actions {
@@ -261,7 +264,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .ui.modal .content > .image {
+  .ui.modal > .content > .image {
     display: block;
     max-width: 100%;
     margin: 0 auto !important;
@@ -273,7 +276,7 @@
     text-align: center;
   }
   /*rtl:ignore*/
-  .ui.modal .content > .description {
+  .ui.modal > .content > .description {
     display: block;
     width: 100% !important;
     margin: 0 !important;
@@ -321,6 +324,7 @@
 }
 .ui.basic.modal > .header {
   color: #FFFFFF;
+  border-bottom: none;
 }
 .ui.basic.modal > .close {
   top: 1rem;
@@ -350,7 +354,7 @@
   top: auto;
 }
 .ui.legacy.overlay.fullscreen.modal {
-  margin-top: -1rem !important;
+  margin-top: -2rem !important;
 }
 
 
@@ -374,27 +378,27 @@
 
 
 /*--------------
-   Aligned
----------------*/
+     Aligned
+  ---------------*/
 
-.ui.top.aligned.modal {
+.modals.dimmer .ui.top.aligned.modal {
   top: 5vh;
 }
-.ui.bottom.aligned.modal {
+.modals.dimmer .ui.bottom.aligned.modal {
   bottom: 5vh;
 }
 @media only screen and (max-width: 767.98px) {
-  .ui.top.aligned.modal {
+  .modals.dimmer .ui.top.aligned.modal {
     top: 1rem;
   }
-  .ui.bottom.aligned.modal {
+  .modals.dimmer .ui.bottom.aligned.modal {
     bottom: 1rem;
   }
 }
 
 /*--------------
-    Scrolling
----------------*/
+      Scrolling
+  ---------------*/
 
 
 /* Scrolling Dimmer */
@@ -412,7 +416,14 @@
   -webkit-overflow-scrolling: touch;
 }
 .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
-  margin: 1rem auto;
+  margin: 2rem auto;
+}
+
+/* Fix for Firefox, Edge, IE11 */
+.modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
+  content: '\00A0';
+  position: absolute;
+  height: 2rem;
 }
 
 /* Undetached Scrolling */
@@ -426,7 +437,6 @@
 .scrolling.undetached.dimmable .ui.scrolling.modal:not(.fullscreen) {
   position: absolute;
   left: 50%;
-  margin-top: 1rem !important;
 }
 
 /* Scrolling Content */
@@ -442,8 +452,8 @@
 }
 
 /*--------------
-   Full Screen
----------------*/
+     Full Screen
+  ---------------*/
 
 .ui.fullscreen.modal {
   width: 95%;
@@ -457,9 +467,11 @@
   top: 0;
   border-radius: 0;
 }
+.ui.modal > .close.inside + .header,
 .ui.fullscreen.modal > .header {
   padding-right: 2.25rem;
 }
+.ui.modal > .close.inside,
 .ui.fullscreen.modal > .close {
   top: 1.0535rem;
   right: 1rem;
@@ -476,13 +488,9 @@
 .ui.modal {
   font-size: 1rem;
 }
-
-/* Mini */
 .ui.mini.modal > .header:not(.ui) {
   font-size: 1.3em;
 }
-
-/* Mini Modal Width */
 @media only screen and (max-width: 767.98px) {
   .ui.mini.modal {
     width: 95%;
@@ -513,13 +521,9 @@
     margin: 0 0 0 0;
   }
 }
-
-/* Tiny */
 .ui.tiny.modal > .header:not(.ui) {
   font-size: 1.3em;
 }
-
-/* Tiny Modal Width */
 @media only screen and (max-width: 767.98px) {
   .ui.tiny.modal {
     width: 95%;
@@ -550,13 +554,9 @@
     margin: 0 0 0 0;
   }
 }
-
-/* Small */
 .ui.small.modal > .header:not(.ui) {
   font-size: 1.3em;
 }
-
-/* Small Modal Width */
 @media only screen and (max-width: 767.98px) {
   .ui.small.modal {
     width: 95%;
@@ -587,9 +587,7 @@
     margin: 0 0 0 0;
   }
 }
-
-/* Large Modal Width */
-.ui.large.modal > .header {
+.ui.large.modal > .header:not(.ui) {
   font-size: 1.6em;
 }
 @media only screen and (max-width: 767.98px) {
@@ -622,11 +620,110 @@
     margin: 0 0 0 0;
   }
 }
+.ui.big.modal > .header:not(.ui) {
+  font-size: 1.6em;
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.big.modal {
+    width: 95%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.big.modal {
+    width: 88%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.big.modal {
+    width: 1190px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ui.big.modal {
+    width: 1260px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.big.modal {
+    width: 1330px;
+    margin: 0 0 0 0;
+  }
+}
+.ui.huge.modal > .header:not(.ui) {
+  font-size: 1.6em;
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.huge.modal {
+    width: 95%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.huge.modal {
+    width: 88%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.huge.modal {
+    width: 1360px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ui.huge.modal {
+    width: 1440px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.huge.modal {
+    width: 1520px;
+    margin: 0 0 0 0;
+  }
+}
+.ui.massive.modal > .header:not(.ui) {
+  font-size: 1.8em;
+}
+@media only screen and (max-width: 767.98px) {
+  .ui.massive.modal {
+    width: 95%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .ui.massive.modal {
+    width: 88%;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 992px) {
+  .ui.massive.modal {
+    width: 1530px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  .ui.massive.modal {
+    width: 1620px;
+    margin: 0 0 0 0;
+  }
+}
+@media only screen and (min-width: 1920px) {
+  .ui.massive.modal {
+    width: 1710px;
+    margin: 0 0 0 0;
+  }
+}
 
 
 /*****************************
-          Inverted
-*******************************/
+            Inverted
+  *******************************/
 
 .ui.inverted.modal {
   background: rgba(0, 0, 0, 0.9);
@@ -649,6 +746,7 @@
     color: #FFFFFF;
   }
 }
+.ui.inverted.modal > .close.inside,
 .ui.inverted.fullscreen.modal > .close {
   color: #FFFFFF;
 }

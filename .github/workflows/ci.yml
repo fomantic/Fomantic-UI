@@ -1,12 +1,12 @@
 name: CI
-on: [push, pull_request]
+on: [pull_request]
 jobs:
   test:
     name: Test build process on node ${{ matrix.node_version }}
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: [8, 10, 11, 12]
+        node_version: [8, 10, 11, 12, 13, 14]
     steps:
     - uses: actions/checkout@v1
     - name: Use Node.js ${{ matrix.node-version }}
@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
-      run: sh preinstall.sh
+      run: sh ./scripts/preinstall.sh
     - name: install dependencies
       run: npm install --ignore-scripts
     - name: pre fomantic install & gulp build

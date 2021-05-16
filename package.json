@@ -1,6 +1,6 @@
 {
   "name": "fomantic-ui",
-  "version": "2.7.8",
+  "version": "2.8.8",
   "description": "Fomantic empowers designers and developers by creating a shared vocabulary for UI.",
   "keywords": [
     "fomantic-ui",
@@ -18,7 +18,7 @@
   },
   "license": "MIT",
   "author": "Jack Lukic <jack@semantic-ui.com>",
-  "main": "dist/semantic",
+  "main": "dist/semantic.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/fomantic/Fomantic-UI.git"
@@ -43,7 +43,7 @@
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
     "gulp-chmod": "^2.0.0",
-    "gulp-clean-css": "^3.10.0",
+    "gulp-clean-css": "^4.3.0",
     "gulp-clone": "^2.0.1",
     "gulp-concat": "^2.6.1",
     "gulp-concat-css": "^3.1.0",
@@ -72,11 +72,13 @@
   },
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
-    "auto-changelog": "^1.15.0"
+    "auto-changelog": "^1.15.0",
+    "node-fetch": "^2.6.0",
+    "semver": "^6.3.0"
   },
   "engines": {
     "node": ">=10.15.3",
-    "npm": "6.4.1"
+    "npm": ">=6.4.1"
   },
   "title": "Fomantic UI",
   "style": "dist/semantic.css"

@@ -2,10 +2,10 @@
              Theme
  *******************************/
 
- @type    : 'module';
- @element : 'slider';
+@type    : 'module';
+@element : 'slider';
 
- @import (multiple) '../../theme.config';
+@import (multiple) '../../theme.config';
 
 .ui.slider:not(.vertical):not(.checkbox) {
   width: 100%;
@@ -84,150 +84,180 @@
             States
 *******************************/
 
+& when (@variationSliderDisabled) {
+  /*--------------
+       Disabled
+  ---------------*/
 
-/*--------------
-     Disabled
----------------*/
+  .ui.disabled.slider:not(.checkbox) {
+    opacity: @disabledOpactiy;
+  }
 
-.ui.disabled.slider:not(.checkbox) {
-  opacity: @disabledOpactiy;
+  .ui.disabled.slider .inner:hover {
+    cursor: auto;
+  }
+
+  .ui.disabled.slider .inner .track-fill {
+    background: @disabledTrackFillColor;
+  }
 }
 
-.ui.disabled.slider .inner:hover {
-  cursor: auto;
-}
+& when (@variationSliderReversed) {
+  /*--------------
+      Reversed
+  ---------------*/
 
-.ui.disabled.slider .inner .track-fill {
-  background: @disabledTrackFillColor;
-}
+  .ui.reversed.slider .inner .track-fill {
+    left: auto;
+    right: 0;
+  }
 
-/*--------------
-    Reversed
----------------*/
+  .ui.reversed.slider:not(.vertical) .inner .thumb {
+    left: auto;
+    right: 0;
+  }
 
-.ui.reversed.slider .inner .track-fill {
-  left: auto;
-  right: 0;
-}
+  .ui.reversed.vertical.slider .inner .thumb {
+    left: @thumbVerticalSliderOffset;
+  }
 
-.ui.reversed.slider .inner .thumb {
-  left: auto;
-  right: 0;
-}
-
-.ui.labeled.reversed.slider > .labels .label {
-  transform: translate(-100%, -100%);
+  & when (@variationSliderLabeled) {
+    .ui.labeled.reversed.slider > .labels .label {
+      transform: translate(-100%, -100%);
+    }
+  }
 }
 
 /*******************************
            Variations
 *******************************/
 
-/*--------------
-    Vertical
----------------*/
+& when (@variationSliderVertical) {
+  /*--------------
+      Vertical
+  ---------------*/
 
-.ui.vertical.slider {
-  height: 100%;
-  width: @height;
-  padding: @verticalPadding;
+  .ui.vertical.slider {
+    height: 100%;
+    width: @height;
+    padding: @verticalPadding;
+  }
+
+  .ui.vertical.slider .inner {
+    height: 100%;
+  }
+
+  .ui.vertical.slider .inner .track {
+    height: 100%;
+    width: @trackHeight;
+    left: @trackPositionTop;
+    top: 0;
+  }
+
+  .ui.vertical.slider .inner .track-fill {
+    width: @trackFillHeight;
+    left: @trackPositionTop;
+    top: 0;
+  }
+  & when (@variationSliderReversed) {
+    /* Vertical Reversed */
+    .ui.vertical.reversed.slider .inner .thumb {
+      top: auto;
+      bottom: 0;
+    }
+
+    .ui.vertical.reversed.slider .inner .track-fill {
+      top: auto;
+      bottom: 0;
+    }
+  }
 }
 
-.ui.vertical.slider .inner {
-  height: 100%;
-}
+& when (@variationSliderLabeled) {
+  /*--------------
+      Labeled
+  ---------------*/
 
-.ui.vertical.slider .inner .track {
-  height: 100%;
-  width: @trackHeight;
-  left: @trackPositionTop;
-  top: 0;
-}
+  .ui.labeled.slider > .labels {
+    height: @labelHeight;
+    width: auto;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+  }
 
-.ui.vertical.slider .inner .track-fill {
-  width: @trackFillHeight;
-  left: @trackPositionTop;
-  top: 0;
-}
+  .ui.labeled.slider:not(.vertical) > .labels {
+    transform: translateY(-50%);
+  }
 
-/* Vertical Reversed */
-.ui.vertical.reversed.slider .inner .thumb {
-  top: auto;
-  bottom: 0;
-}
+  .ui.labeled.slider > .labels .label {
+    display: inline-flex;
+    padding: @labelPadding;
+    position: absolute;
+    transform: translate(-50%, -100%);
+    white-space: nowrap;
+  }
 
-.ui.vertical.reversed.slider .inner .track-fill {
-  top: auto;
-  bottom: 0;
-}
+  .ui.bottom.aligned.labeled.slider > .labels .label {
+    bottom: 0;
+    transform: translate(-50%, 100%);
+  }
+  & when (@variationSliderTicked) {
+    .ui.labeled.ticked.slider > .labels .label:after {
+      content: ' ';
+      height: @labelHeight;
+      width: @labelWidth;
+      background: @labelColor;
+      position: absolute;
+      top: 100%;
+      left: 50%;
+    }
+    .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+      top: auto;
+      bottom: 100%;
+    }
+    .ui.labeled.ticked.slider > .labels .halftick.label:after {
+      height: (@labelHeight / 2);
+    }
+  }
 
-/*--------------
-    Labeled
----------------*/
+  & when (@variationSliderVertical) {
+    /* Vertical Labels */
 
-.ui.labeled.slider > .labels {
-  height: @labelHeight;
-  width: auto;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  top: 50%;
-  left: 0;
-  right: 0;
-}
+    .ui.labeled.vertical.slider > .labels {
+      width: @labelHeight;
+      height: auto;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      transform: translateX(-50%);
+    }
 
-.ui.labeled.slider:not(.vertical) > .labels {
-  transform: translateY(-50%);
-}
+    .ui.labeled.vertical.slider > .labels .label {
+      transform: translate(-100%, -50%);
+    }
 
-.ui.labeled.slider > .labels .label {
-  display: inline-flex;
-  position: absolute;
-  transform: translate(-50%, -100%);
-}
+    .ui.labeled.vertical.slider > .labels .label:after {
+      width: @labelHeight;
+      height: @labelWidth;
+      left: 100%;
+      top: 50%;
+    }
+    .ui.labeled.vertical.slider > .labels .halftick.label:after {
+      width: @labelHeight / 2;
+      height: @labelWidth;
+    }
 
-.ui.labeled.ticked.slider > .labels .label:after {
-  content: ' ';
-  height: @labelHeight;
-  width: @labelWidth;
-  background: @labelColor;
-  position: absolute;
-  top: 100%;
-  left: 50%;
-}
-.ui.labeled.ticked.slider > .labels .halftick.label:after {
-  height: @labelHeight / 2;
-}
-
-/* Vertical Labels */
-
-.ui.labeled.vertical.slider > .labels {
-  width: @labelHeight;
-  height: auto;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  transform: translateX(-50%);
-}
-
-.ui.labeled.vertical.slider > .labels .label {
-  transform: translate(-100%, -50%);
-}
-
-.ui.labeled.vertical.slider > .labels .label:after {
-  width: @labelHeight;
-  height: @labelWidth;
-  left: 100%;
-  top: 50%;
-}
-.ui.labeled.vertical.slider > .labels .halftick.label:after {
-  width: @labelHeight / 2;
-  height: @labelWidth;
-}
-
-/* Vertical Reversed Labels */
-.ui.labeled.vertical.reversed.slider > .labels .label {
-  transform: translate(-100%, 50%);
+    & when (@variationSliderReversed) {
+      /* Vertical Reversed Labels */
+      .ui.labeled.vertical.reversed.slider > .labels .label {
+        transform: translate(-100%, 50%);
+      }
+    }
+  }
 }
 
 /*--------------
@@ -244,17 +274,18 @@
 }
 
 
+& when (@variationSliderInverted) {
+  /*--------------
+      Inverted
+  ---------------*/
 
-/*--------------
-    Inverted
----------------*/
+  .ui.inverted.slider .inner .track-fill {
+    background-color: @invertedTrackFillColor;
+  }
 
-.ui.inverted.slider .inner .track-fill {
-  background-color: @invertedTrackFillColor;
-}
-
-.ui.inverted.slider .inner .track {
-  background-color: @transparentWhite;
+  .ui.inverted.slider .inner .track {
+    background-color: @transparentWhite;
+  }
 }
 
 /*--------------
@@ -272,52 +303,61 @@ each(@colors, {
   .ui.@{color}.slider .inner .track-fill {
     background-color: @c;
   }
-  .ui.@{color}.inverted.slider .inner .track-fill {
-    background-color: @l;
+  & when (@variationSliderInverted) {
+    .ui.@{color}.inverted.slider .inner .track-fill {
+      background-color: @l;
+    }
   }
 
-  /* Basic */
-  .ui.@{color}.slider.basic .inner .thumb {
-    background-color: @c;
-  }
-  .ui.@{color}.slider.basic .inner .thumb:hover,
-  .ui.@{color}.slider.basic:focus .inner .thumb {
-    background-color: @h;
-  }
-
-  /* Basic Inverted */
-  .ui.@{color}.inverted.slider.basic .inner .thumb {
-    background-color: @l;
-  }
-  .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
-  .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
-    background-color: @lh;
+  & when (@variationSliderBasic) {
+    /* Basic */
+    .ui.@{color}.slider.basic .inner .thumb {
+      background-color: @c;
+    }
+    .ui.@{color}.slider.basic .inner .thumb:hover,
+    .ui.@{color}.slider.basic:focus .inner .thumb {
+      background-color: @h;
+    }
+    & when (@variationSliderInverted) {
+      /* Basic Inverted */
+      .ui.@{color}.inverted.slider.basic .inner .thumb {
+        background-color: @l;
+      }
+      .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
+      .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
+        background-color: @lh;
+      }
+    }
   }
 
 })
 
-/*--------------
-     Basic
----------------*/
+& when (@variationSliderBasic) {
+  /*--------------
+       Basic
+  ---------------*/
 
-/* Standard */
-.ui.slider.basic .inner .thumb {
-  background-color: @trackFillColor;
-}
-.ui.slider.basic .inner .thumb:hover, .ui.slider.basic:focus .inner .thumb {
-  background-color: @trackFillColorFocus;
-}
+  /* Standard */
+  .ui.slider.basic .inner .thumb {
+    background-color: @trackFillColor;
+  }
+  .ui.slider.basic .inner .thumb:hover, .ui.slider.basic:focus .inner .thumb {
+    background-color: @trackFillColorFocus;
+  }
 
-/*--------------
-  Basic Inverted
----------------*/
+  & when (@variationSliderInverted) {
+    /*--------------
+      Basic Inverted
+    ---------------*/
 
-/* Standard */
-.ui.inverted.slider.basic .inner .thumb {
-  background-color: @invertedTrackFillColor;
-}
-.ui.inverted.slider.basic .inner .thumb:hover, .ui.inverted.slider.basic:focus .inner .thumb {
-  background-color: @invertedTrackFillColorFocus;
+    /* Standard */
+    .ui.inverted.slider.basic .inner .thumb {
+      background-color: @invertedTrackFillColor;
+    }
+    .ui.inverted.slider.basic .inner .thumb:hover, .ui.inverted.slider.basic:focus .inner .thumb {
+      background-color: @invertedTrackFillColorFocus;
+    }
+  }
 }
 
 
@@ -325,118 +365,55 @@ each(@colors, {
      Sizing
 ---------------*/
 
-/* Small */
-.ui.slider.small .inner .thumb {
-  height: @smallHeight;
-  width: @smallHeight;
-}
-.ui.slider.small:not(.vertical) .inner {
-  height: @smallHeight;
-}
-.ui.slider.small:not(.vertical) .inner .track,
-.ui.slider.small:not(.vertical) .inner .track-fill {
-  height: @smallTrackHeight;
-  top: @trackPositionTopSmall;
-}
-.ui.small.labeled.slider:not(.vertical) > .labels,
-.ui.small.labeled.slider:not(.vertical) > .labels .label:after {
-  height: @smallLabelHeight;
-}
-.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-  height: @smallLabelHeight / 2;
-}
-
-/* Small Vertical */
-.ui.slider.small.vertical .inner {
-  width: @smallHeight;
-}
-.ui.slider.small.vertical .inner .track,
-.ui.slider.small.vertical .inner .track-fill {
-  width: @smallTrackHeight;
-  left: @trackPositionTopSmall;
-}
-.ui.small.labeled.vertical.slider> .labels,
-.ui.small.labeled.vertical.slider> .labels .label:after {
-  width: @smallLabelHeight;
-}
-.ui.small.labeled.vertical.slider> .labels .halftick.label:after {
-  width: @smallLabelHeight / 2;
-}
-
-/* Large */
-.ui.slider.large .inner .thumb {
-  height: @largeHeight;
-  width: @largeHeight;
-}
-.ui.slider.large:not(.vertical) .inner {
-  height: @largeHeight;
-}
-.ui.slider.large:not(.vertical) .inner .track,
-.ui.slider.large:not(.vertical) .inner .track-fill {
-  height: @largeTrackHeight;
-  top: @trackPositionTopLarge;
-}
-.ui.large.labeled.slider:not(.vertical) > .labels,
-.ui.large.labeled.slider:not(.vertical) > .labels .label:after {
-  height: @largeLabelHeight;
-}
-.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-  height: @largeLabelHeight / 2;
+& when not (@variationSliderSizes = false) {
+   each(@variationSliderSizes, {
+     @h: @{value}Height;
+     @th: @{value}TrackHeight;
+     @tp: @{value}TrackPositionTop;
+     @lh: @{value}LabelHeight;
+     .ui.slider.@{value} .inner .thumb {
+       height: @@h;
+       width: @@h;
+     }
+     .ui.slider.@{value}:not(.vertical) .inner {
+       height: @@h;
+     }
+     .ui.slider.@{value}:not(.vertical) .inner .track,
+     .ui.slider.@{value}:not(.vertical) .inner .track-fill {
+       height: @@th;
+       top: @@tp;
+     }
+     & when (@variationSliderLabeled) {
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels,
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels .label:after {
+         height: @@lh;
+       }
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+         height: (@@lh / 2);
+       }
+     }
+     & when (@variationSliderVertical) {
+       /* Small Vertical */
+       .ui.slider.@{value}.vertical .inner {
+         width: @@h;
+       }
+       .ui.slider.@{value}.vertical .inner .track,
+       .ui.slider.@{value}.vertical .inner .track-fill {
+         width: @@th;
+         left: @@tp;
+       }
+       & when (@variationSliderLabeled) {
+         .ui.@{value}.labeled.vertical.slider> .labels,
+         .ui.@{value}.labeled.vertical.slider> .labels .label:after {
+           width: @@lh;
+         }
+         .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
+           width: (@@lh / 2);
+         }
+       }
+     }
+   })
 }
 
-/* Large Vertical */
-.ui.slider.large.vertical .inner {
-  width: @largeHeight;
-}
-.ui.slider.large.vertical .inner .track,
-.ui.slider.large.vertical .inner .track-fill {
-  width: @largeTrackHeight;
-  left: @trackPositionTopLarge;
-}
-.ui.large.labeled.vertical.slider> .labels,
-.ui.large.labeled.vertical.slider> .labels .label:after {
-  width: @largeLabelHeight;
-}
-.ui.large.labeled.vertical.slider> .labels .halftick.label:after {
-  width: @largeLabelHeight / 2;
-}
-
-/* Big */
-.ui.slider.big .inner .thumb {
-  height: @bigHeight;
-  width: @bigHeight;
-}
-.ui.slider.big:not(.vertical) .inner {
-  height: @bigHeight;
-}
-.ui.slider.big:not(.vertical) .inner .track,
-.ui.slider.big:not(.vertical) .inner .track-fill {
-  height: @bigTrackHeight;
-  top: @trackPositionTopBig;
-}
-.ui.big.labeled.slider:not(.vertical) > .labels,
-.ui.big.labeled.slider:not(.vertical) > .labels .label:after {
-  height: @bigLabelHeight;
-}
-.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-  height: @bigLabelHeight / 2;
-}
-
-/* Big Vertical */
-.ui.slider.big.vertical .inner {
-  width: @bigHeight;
-}
-.ui.slider.big.vertical .inner .track,
-.ui.slider.big.vertical .inner .track-fill {
-  width: @bigTrackHeight;
-  left: @trackPositionTopBig;
-}
-.ui.big.labeled.vertical.slider> .labels,
-.ui.big.labeled.vertical.slider> .labels .label:after {
-  width: @bigLabelHeight;
-}
-.ui.big.labeled.vertical.slider> .labels .halftick.label:after {
-  width: @bigLabelHeight / 2;
-}
 
 .loadUIOverrides();

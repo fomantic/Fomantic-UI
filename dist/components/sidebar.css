@@ -98,6 +98,7 @@ body.pushable.dimmed {
 .pushable:not(body) {
   -webkit-transform: translate3d(0, 0, 0);
           transform: translate3d(0, 0, 0);
+  overflow-y: hidden;
 }
 .pushable:not(body) > .ui.sidebar,
 .pushable:not(body) > .fixed,
@@ -153,7 +154,7 @@ body.pushable > .pusher {
   top: 0;
   right: 0;
   content: '';
-  background-color: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.4);
   overflow: hidden;
   opacity: 0;
   -webkit-transition: opacity 500ms;
@@ -336,8 +337,8 @@ body.pushable > .pusher {
 
 
 /*--------------
-    Overlay
----------------*/
+      Overlay
+  ---------------*/
 
 
 /* Set-up */
@@ -398,8 +399,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-      Push
----------------*/
+        Push
+  ---------------*/
 
 
 /* Initial */
@@ -436,8 +437,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-    Uncover
----------------*/
+      Uncover
+  ---------------*/
 
 
 /* Initial */
@@ -458,8 +459,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-   Slide Along
----------------*/
+     Slide Along
+  ---------------*/
 
 
 /* Initial */
@@ -500,8 +501,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-   Slide Out
----------------*/
+     Slide Out
+  ---------------*/
 
 
 /* Initial */
@@ -542,8 +543,8 @@ body.pushable > .pusher {
 }
 
 /*--------------
-   Scale Down
----------------*/
+     Scale Down
+  ---------------*/
 
 
 /* Initial */
@@ -554,8 +555,6 @@ body.pushable > .pusher {
   transition: transform 500ms ease, -webkit-transform 500ms ease;
   z-index: 102;
 }
-
-/* Sidebar - Initial  */
 .ui.left.scale.down.sidebar {
   -webkit-transform: translate3d(-100%, 0, 0);
           transform: translate3d(-100%, 0, 0);
