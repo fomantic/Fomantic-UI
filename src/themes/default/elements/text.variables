@@ -5,6 +5,8 @@
 /*-------------------
        Element
 --------------------*/
+@lineHeight: 1;
+
 @mini: 0.4em;
 @tiny: 0.5em;
 @small: 0.75em;

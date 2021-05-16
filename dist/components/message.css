@@ -101,7 +101,7 @@
 }
 
 /* Icon */
-.ui.message > .icon {
+.ui.message > i.icon {
   margin-right: 0.6em;
 }
 
@@ -226,7 +226,7 @@
       -ms-flex-align: center;
           align-items: center;
 }
-.ui.icon.message > .icon:not(.close) {
+.ui.icon.message > i.icon:not(.close) {
   display: block;
   -webkit-box-flex: 0;
       -ms-flex: 0 0 auto;
@@ -244,10 +244,10 @@
           flex: 1 1 auto;
   vertical-align: middle;
 }
-.ui.icon.message .icon:not(.close) + .content {
+.ui.icon.message > i.icon:not(.close) + .content {
   padding-left: 0;
 }
-.ui.icon.message .circular.icon {
+.ui.icon.message > i.circular.icon {
   width: 1em;
 }
 

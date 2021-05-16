@@ -13,6 +13,9 @@
              Text
 *******************************/
 
+span.ui.text {
+  line-height: 1;
+}
 span.ui.primary.text {
   color: #2185D0;
 }
@@ -102,6 +105,18 @@ span.ui.black.text {
 }
 span.ui.inverted.black.text {
   color: #545454;
+}
+span.ui.error.text {
+  color: #DB2828;
+}
+span.ui.info.text {
+  color: #31CCEC;
+}
+span.ui.success.text {
+  color: #21BA45;
+}
+span.ui.warning.text {
+  color: #F2C037;
 }
 span.ui.disabled.text {
   opacity: 0.45;

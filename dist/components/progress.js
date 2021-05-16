@@ -169,7 +169,7 @@ $.fn.progress = function(parameters) {
                 value   : module.helper.forceArray($module.data(metadata.value))
               }
             ;
-            if(data.total) {
+            if(data.total !== undefined) {
               module.debug('Total value set from metadata', data.total);
               module.set.total(data.total);
             }
@@ -272,18 +272,18 @@ $.fn.progress = function(parameters) {
             var
               index_  = index || 0,
               value   = module.get.value(index_),
-              total   = module.total || 0,
+              total   = module.get.total(),
               percent = (animating)
                 ? module.get.displayPercent(index_)
                 : module.get.percent(index_),
-              left = (module.total > 0)
-                ? (total - value)
+              left = (total !== false)
+                ? Math.max(0,total - value)
                 : (100 - percent)
             ;
             templateText = templateText || '';
             templateText = templateText
               .replace('{value}', value)
-              .replace('{total}', total)
+              .replace('{total}', total || 0)
               .replace('{left}', left)
               .replace('{percent}', percent)
               .replace('{bar}', settings.text.bars[index_] || '')
@@ -373,7 +373,7 @@ $.fn.progress = function(parameters) {
             return module.nextValue || module.value && module.value[index || 0] || 0;
           },
           total: function() {
-            return module.total || false;
+            return module.total !== undefined ? module.total : false;
           }
         },
 
@@ -506,23 +506,23 @@ $.fn.progress = function(parameters) {
                 ;
             });
             var hasTotal = module.has.total();
-            var totalPecent = module.helper.sum(percents);
-            var isMultpleValues = percents.length > 1 && hasTotal;
+            var totalPercent = module.helper.sum(percents);
+            var isMultipleValues = percents.length > 1 && hasTotal;
             var sumTotal = module.helper.sum(module.helper.forceArray(module.value));
-            if (isMultpleValues && sumTotal > module.total) {
+            if (isMultipleValues && sumTotal > module.total) {
               // Sum values instead of pecents to avoid precision issues when summing floats
               module.error(error.sumExceedsTotal, sumTotal, module.total);
-            } else if (!isMultpleValues && totalPecent > 100) {
-              // Sum before rouding since sum of rounded may have error though sum of actual is fine
-              module.error(error.tooHigh, totalPecent);
-            } else if (totalPecent < 0) {
-              module.error(error.tooLow, totalPecent);
+            } else if (!isMultipleValues && totalPercent > 100) {
+              // Sum before rounding since sum of rounded may have error though sum of actual is fine
+              module.error(error.tooHigh, totalPercent);
+            } else if (totalPercent < 0) {
+              module.error(error.tooLow, totalPercent);
             } else {
               var autoPrecision = settings.precision > 0
                 ? settings.precision
-                : isMultpleValues
+                : isMultipleValues
                   ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
-                  : undefined;
+                  : 0;
 
               // round display percentage
               var roundedPercents = percents.map(function (percent) {
@@ -532,7 +532,7 @@ $.fn.progress = function(parameters) {
                   ;
               });
               module.percent = roundedPercents;
-              if (!hasTotal) {
+              if (hasTotal) {
                 module.value = roundedPercents.map(function (percent) {
                   return (autoPrecision > 0)
                     ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
@@ -541,11 +541,7 @@ $.fn.progress = function(parameters) {
                 });
                 if (settings.limitValues) {
                   module.value = module.value.map(function (value) {
-                    return (value > 100)
-                      ? 100
-                      : (module.value < 0)
-                        ? 0
-                        : module.value;
+                    return Math.max(0, Math.min(100, value));
                   });
                 }
               }
@@ -622,7 +618,7 @@ $.fn.progress = function(parameters) {
               if (text !== undefined) {
                 $progress.text( module.get.text(text, index) );
               }
-              else if (settings.label == 'ratio' && module.total) {
+              else if (settings.label == 'ratio' && module.has.total()) {
                 module.verbose('Adding ratio to bar label');
                 $progress.text( module.get.text(settings.text.ratio, index) );
               }
@@ -752,7 +748,7 @@ $.fn.progress = function(parameters) {
               }
               value = module.get.normalizedValue(value);
               if (hasTotal) {
-                percentComplete = (value / module.total) * 100;
+                percentComplete = module.total > 0 ? (value / module.total) * 100 : 100;
                 module.debug('Calculating percent complete from total', percentComplete);
               }
               else {

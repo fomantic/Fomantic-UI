@@ -635,6 +635,33 @@
            Variations
 *******************************/
 
+& when (@variationButtonStackable) {
+  /*--------------
+     Stackable
+  ---------------*/
+
+  /* Tablet Or Below */
+  @media only screen and (max-width: @largestMobileScreen) {
+
+    .ui.stackable.buttons {
+      flex-direction: column;
+      width: 100%;
+      & .button:first-child {
+        border-bottom-left-radius: 0;
+        border-top-right-radius: @borderRadius;
+      }
+      & .button:last-child {
+        border-bottom-left-radius: @borderRadius;
+        border-top-right-radius: 0;
+      }
+      & .button:only-child {
+        border-radius: @borderRadius;
+      }
+    }
+
+  }
+}
+
 & when (@variationButtonFloated) {
   /*-------------------
          Floated
@@ -708,7 +735,7 @@
 ---------------*/
 
 .ui.icon.buttons .button,
-.ui.icon.button:not(.animated) {
+.ui.icon.button:not(.animated):not(.compact):not(.labeled) {
   padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
 }
 .ui.animated.icon.button > .content > .icon,
@@ -1043,16 +1070,16 @@
   .ui.toggle.buttons .active.button,
   .ui.buttons .button.toggle.active,
   .ui.button.toggle.active {
-    background-color: @positiveColor;
+    background-color: @toggleBackgroundColor;
     box-shadow: none;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    text-shadow: @toggleTextShadow;
+    color: @toggleColor;
   }
 
   .ui.button.toggle.active:hover {
-    background-color: @positiveColorHover;
-    text-shadow: @invertedTextShadow;
-    color: @invertedTextColor;
+    background-color: @toggleHoverBackgroundColor;
+    text-shadow: @toggleHoverTextShadow;
+    color: @toggleHoverColor;
   }
 }
 
@@ -1062,11 +1089,11 @@
   ---------------*/
 
   .ui.circular.button {
-    border-radius: 10em;
+    border-radius: @circularBorderRadius;
   }
 
   .ui.circular.button > .icon {
-    width: 1em;
+    width: @circularIconWidth;
     vertical-align: baseline;
   }
 }

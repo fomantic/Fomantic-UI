@@ -53,6 +53,7 @@
 @width: @iconWidth;
 @height: 1em;
 @distanceFromText: 0.25rem;
+@lineHeight: 1;
 
 
 /* Variations */
@@ -69,6 +70,8 @@
 @borderedHorizontalPadding: 0;
 @borderedShadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
 
+@coloredBoxShadow: 0 0 0 0.1em currentColor inset;
+
 @cornerIconSize: 0.45em;
 @cornerIconStroke: 1px;
 @cornerIconShadow:
@@ -83,6 +86,9 @@
   -@cornerIconStroke  @cornerIconStroke 0 @black,
    @cornerIconStroke  @cornerIconStroke 0 @black
 ;
+
+@cornerOffset: 0;
+@borderedGroupCornerOffset: 1.15em;
 
 @mini: 0.4em;
 @tiny: 0.5em;

@@ -207,6 +207,7 @@ i.icon.charging.station:before { content: "\f5e7"; }
 i.icon.chart.area:before { content: "\f1fe"; }
 i.icon.chart.bar:before { content: "\f080"; }
 i.icon.chart.line:before { content: "\f201"; }
+i.icon.chartline:before { content: "\f201"; }
 i.icon.chart.pie:before { content: "\f200"; }
 i.icon.check:before { content: "\f00c"; }
 i.icon.check.circle:before { content: "\f058"; }
@@ -868,7 +869,7 @@ i.icon.sticky.note:before { content: "\f249"; }
 i.icon.stop:before { content: "\f04d"; }
 i.icon.stop.circle:before { content: "\f28d"; }
 i.icon.stopwatch:before { content: "\f2f2"; }
-i.icon.stopwatch.20:before { content: "\f96f"; }
+i.icon.stopwatch.twenty:before { content: "\f96f"; }
 i.icon.store:before { content: "\f54e"; }
 i.icon.store.alternate:before { content: "\f54f"; }
 i.icon.store.alternate.slash:before { content: "\f970"; }
@@ -1178,6 +1179,7 @@ i.icon.level.up:before { content: "\f3bf"; }
 i.icon.lightning:before { content: "\f0e7"; }
 i.icon.like:before { content: "\f004"; }
 i.icon.line.graph:before { content: "\f201"; }
+i.icon.linegraph:before { content: "\f201"; }
 i.icon.linkify:before { content: "\f0c1"; }
 i.icon.lira:before { content: "\f195"; }
 i.icon.list.layout:before { content: "\f00b"; }

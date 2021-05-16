@@ -412,35 +412,41 @@ i.icon,
 i.icons {
   font-size: 1em;
   line-height: 1;
-  vertical-align: middle;
 }
 i.mini.mini.mini.icon,
 i.mini.mini.mini.icons {
   font-size: 0.4em;
+  vertical-align: middle;
 }
 i.tiny.tiny.tiny.icon,
 i.tiny.tiny.tiny.icons {
   font-size: 0.5em;
+  vertical-align: middle;
 }
 i.small.small.small.icon,
 i.small.small.small.icons {
   font-size: 0.75em;
+  vertical-align: middle;
 }
 i.large.large.large.icon,
 i.large.large.large.icons {
   font-size: 1.5em;
+  vertical-align: middle;
 }
 i.big.big.big.icon,
 i.big.big.big.icons {
   font-size: 2em;
+  vertical-align: middle;
 }
 i.huge.huge.huge.icon,
 i.huge.huge.huge.icons {
   font-size: 4em;
+  vertical-align: middle;
 }
 i.massive.massive.massive.icon,
 i.massive.massive.massive.icons {
   font-size: 8em;
+  vertical-align: middle;
 }
 
 
@@ -1053,6 +1059,9 @@ i.icon.chart.bar:before {
   content: "\f080";
 }
 i.icon.chart.line:before {
+  content: "\f201";
+}
+i.icon.chartline:before {
   content: "\f201";
 }
 i.icon.chart.pie:before {
@@ -3038,7 +3047,7 @@ i.icon.stop.circle:before {
 i.icon.stopwatch:before {
   content: "\f2f2";
 }
-i.icon.stopwatch.20:before {
+i.icon.stopwatch.twenty:before {
   content: "\f96f";
 }
 i.icon.store:before {
@@ -3962,6 +3971,9 @@ i.icon.like:before {
   content: "\f004";
 }
 i.icon.line.graph:before {
+  content: "\f201";
+}
+i.icon.linegraph:before {
   content: "\f201";
 }
 i.icon.linkify:before {
