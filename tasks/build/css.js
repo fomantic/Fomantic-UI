@@ -127,6 +127,13 @@ function buildCSS(src, type, config, opts, callback) {
     src      = config.paths.source.definitions + '/**/' + config.globs.components + '.less';
   }
 
+  if (globs.individuals !== undefined && typeof src === 'string') {
+    const individuals = config.globs.individuals.replace('{','');
+    const components = config.globs.components.replace('}',',').concat(individuals);
+
+    src = config.paths.source.definitions + '/**/' + components + '.less';
+  }
+
   const buildUncompressed       = () => build(src, type, false, config, opts);
   buildUncompressed.displayName = 'Building uncompressed CSS';
 
@@ -140,8 +147,11 @@ function buildCSS(src, type, config, opts, callback) {
   packCompressed.displayName = 'Packing compressed CSS';
 
   gulp.parallel(
-    gulp.series(buildUncompressed, packUncompressed),
-    gulp.series(buildCompressed, packCompressed)
+    gulp.series(
+      buildUncompressed,
+      gulp.parallel(packUncompressed, packCompressed)
+    ),
+    gulp.series(buildCompressed)
   )(callback);
 }
 

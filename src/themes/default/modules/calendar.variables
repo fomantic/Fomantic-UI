@@ -16,3 +16,5 @@
 
 @adjacentTextColor: @mutedTextColor;
 @adjacentBackground: @subtleTransparentBlack;
+@adjacentInvertedTextColor: @invertedMutedTextColor;
+@adjacentInvertedBackground: @subtleTransparentWhite;

@@ -40,10 +40,10 @@
   will-change: top, left, margin, transform, opacity;
 }
 
-.ui.modal > :first-child:not(.icon):not(.dimmer),
-.ui.modal > .icon:first-child + *,
-.ui.modal > .dimmer:first-child + *:not(.icon),
-.ui.modal > .dimmer:first-child + .icon + * {
+.ui.modal > :first-child:not(.close):not(.dimmer),
+.ui.modal > i.icon:first-child + *,
+.ui.modal > .dimmer:first-child + *:not(.close),
+.ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: @borderRadius;
   border-top-right-radius: @borderRadius;
 }
@@ -148,7 +148,7 @@
   align-self: @descriptionVerticalAlign;
 }
 
-.ui.modal > .content > .icon + .description,
+.ui.modal > .content > i.icon + .description,
 .ui.modal > .content > .image + .description {
   flex: 0 1 auto;
   min-width: @descriptionMinWidth;
@@ -175,11 +175,20 @@
   border-top: @actionBorder;
   text-align: @actionAlign;
 }
-.ui.modal .actions > .button {
+.ui.modal .actions > .button:not(.fluid) {
   margin-left: @buttonDistance;
 }
 .ui.basic.modal > .actions {
   border-top:none;
+}
+
+.ui.modal > .centered,
+.ui.modal > .center.aligned {
+  text-align: center;
+  &.actions > .button:not(.fluid) {
+    margin-left: @buttonCenteredDistance;
+    margin-right: @buttonCenteredDistance;
+  }
 }
 
 /*-------------------
@@ -220,7 +229,7 @@
 
 /* Tablet and Mobile */
 @media only screen and (max-width : @largestTabletScreen) {
-  .ui.modal > .header {
+  .ui.modal > .close + .header {
     padding-right: @closeHitbox;
   }
   .ui.modal > .close {
@@ -234,8 +243,10 @@
 @media only screen and (max-width : @largestMobileScreen) {
 
   .ui.modal > .header {
-    padding: @mobileHeaderPadding !important;
-    padding-right: @closeHitbox !important;
+    padding: @mobileHeaderPadding;
+  }
+  .ui.modal > .close + .header {
+    padding-right: @closeHitbox;
   }
   .ui.overlay.fullscreen.modal > .content.content.content {
     min-height: @overlayFullscreenScrollingContentMaxHeightMobile;
@@ -256,7 +267,7 @@
   .ui.modal .image.content {
     flex-direction: column;
   }
-  .ui.modal .content > .image {
+  .ui.modal > .content > .image {
     display: block;
     max-width: 100%;
     margin: 0 auto !important;
@@ -269,7 +280,7 @@
   }
 
   /*rtl:ignore*/
-  .ui.modal .content > .description {
+  .ui.modal > .content > .description {
     display: block;
     width: 100% !important;
     margin: 0 !important;
@@ -466,8 +477,8 @@
       border-radius:0;
     }
   }
-  .ui.modal > .close.inside + .header,
-  .ui.fullscreen.modal > .header {
+  .ui.modal > .close.inside + .header:not(.centered):not(.center):not(.icon),
+  .ui.fullscreen.modal > .close + .header:not(.centered):not(.center):not(.icon) {
     padding-right: @closeHitbox;
   }
   .ui.modal > .close.inside,
