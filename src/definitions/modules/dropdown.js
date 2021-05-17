@@ -3638,7 +3638,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : transition + ' in',
                     debug      : settings.debug,
                     verbose    : settings.verbose,
-                    duration   : settings.duration,
+                    duration   : settings.transition.showDuration || settings.duration,
                     queue      : true,
                     onStart    : start,
                     displayType: module.get.displayType(),
@@ -3684,7 +3684,7 @@ $.fn.dropdown = function(parameters) {
                 $currentMenu
                   .transition({
                     animation  : transition + ' out',
-                    duration   : settings.duration,
+                    duration   : settings.transition.hideDuration || settings.duration,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
                     queue      : false,
