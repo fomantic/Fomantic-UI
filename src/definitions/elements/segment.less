@@ -139,6 +139,12 @@
     background: @placeholderBackground;
     border-color: @placeholderBorderColor;
     box-shadow: @placeholderBoxShadow;
+    &.tab {
+      display: none;
+      &.active {
+        display: flex;
+      }
+    }
   }
 
   .ui.placeholder.segment .button,
