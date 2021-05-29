@@ -172,10 +172,8 @@ $.fn.form = function(parameters) {
           }
 
           $field.on('change click keyup keydown blur', function(e) {
-            $(this).triggerHandler(e.type + ".dirty");
+            module.determine.isDirty();
           });
-
-          $field.on('change.dirty click.dirty keyup.dirty keydown.dirty blur.dirty', module.determine.isDirty);
 
           $module.on('dirty' + eventNamespace, function(e) {
             settings.onDirty.call();
@@ -303,10 +301,6 @@ $.fn.form = function(parameters) {
               module.set.clean();
             }
 
-            if (e && e.namespace === 'dirty') {
-              e.stopImmediatePropagation();
-              e.preventDefault();
-            }
           }
         },
 
@@ -1602,9 +1596,9 @@ $.fn.form.settings = {
   selector : {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
-    field      : 'input:not(.search), textarea, select',
+    field      : 'input:not(.search):not([type="file"]), textarea, select',
     group      : '.field',
-    input      : 'input',
+    input      : 'input:not([type="file"])',
     message    : '.error.message',
     prompt     : '.prompt.label',
     radio      : 'input[type="radio"]',
@@ -1991,8 +1985,8 @@ $.fn.form.settings = {
         return;
       }
 
-      // allow dashes in card
-      cardNumber = cardNumber.replace(/[\-]/g, '');
+      // allow dashes and spaces in card
+      cardNumber = cardNumber.replace(/[\s\-]/g, '');
 
       // verify card types
       if(requiredTypes) {

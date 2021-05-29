@@ -139,6 +139,12 @@
     background: @placeholderBackground;
     border-color: @placeholderBorderColor;
     box-shadow: @placeholderBoxShadow;
+    &.tab {
+      display: none;
+      &.active {
+        display: flex;
+      }
+    }
   }
 
   .ui.placeholder.segment .button,
@@ -476,6 +482,10 @@
     }
     .ui.horizontal.segments > .segment:last-child {
       border-radius: 0 @borderRadius @borderRadius 0;
+    }
+    /* Equal Width */
+    .ui[class*="equal width"].horizontal.segments > .segment {
+      width: 100%;
     }
   }
 }

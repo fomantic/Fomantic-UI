@@ -118,7 +118,7 @@ $.fn.search = function(parameters) {
                 .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input)
               ;
               $prompt
-                .attr('autocomplete', 'off')
+                .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
               ;
             }
             $module
@@ -227,9 +227,7 @@ $.fn.search = function(parameters) {
                 results = module.get.results(),
                 result  = $result.data(metadata.result) || module.get.result(value, results)
               ;
-              if(value) {
-                module.set.value(value);
-              }
+              var oldValue = module.get.value();
               if( $.isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
                   module.debug('Custom onSelect callback cancelled default select action');
@@ -238,6 +236,9 @@ $.fn.search = function(parameters) {
                 }
               }
               module.hideResults();
+              if(value && module.get.value() === oldValue) {
+                module.set.value(value);
+              }
               if(href) {
                 event.preventDefault();
                 module.verbose('Opening search link found in result', $link);
@@ -251,16 +252,16 @@ $.fn.search = function(parameters) {
             }
           }
         },
-        ensureVisible: function ensureVisible($el) {
+        ensureVisible: function($el) {
           var elTop, elBottom, resultsScrollTop, resultsHeight;
-
+          if($el.length === 0) {
+            return;
+          }
           elTop = $el.position().top;
           elBottom = elTop + $el.outerHeight(true);
 
           resultsScrollTop = $results.scrollTop();
-          resultsHeight = $results.height()
-            parseInt($results.css('paddingTop'), 0) +
-            parseInt($results.css('paddingBottom'), 0);
+          resultsHeight = $results.height();
             
           if (elTop < 0) {
             $results.scrollTop(resultsScrollTop + elTop);
@@ -400,6 +401,9 @@ $.fn.search = function(parameters) {
         is: {
           animating: function() {
             return $results.hasClass(className.animating);
+          },
+          chrome: function() {
+            return !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
           },
           hidden: function() {
             return $results.hasClass(className.hidden);
@@ -976,9 +980,7 @@ $.fn.search = function(parameters) {
                   duration   : settings.duration,
                   onShow     : function() {
                     var $firstResult = $module.find(selector.result).eq(0);
-                    if($firstResult.length > 0) {
-                      module.ensureVisible($firstResult);
-                    }
+                    module.ensureVisible($firstResult);
                   },
                   onComplete : function() {
                     callback();
