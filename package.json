@@ -41,7 +41,7 @@
     "del": "^3.0.0",
     "extend": "^3.0.2",
     "gulp": "^4.0.0",
-    "gulp-autoprefixer": "^6.0.0",
+    "gulp-autoprefixer": "^8.0.0",
     "gulp-chmod": "^2.0.0",
     "gulp-clean-css": "^3.10.0",
     "gulp-clone": "^2.0.1",
