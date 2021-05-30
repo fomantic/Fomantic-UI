@@ -339,7 +339,7 @@ $.fn.dimmer = function(parameters) {
               return settings.transition.hideDuration || settings.duration.hide || settings.duration;
             }
             else {
-              return settings.transition.hideDuration || settings.duration.show || settings.duration;
+              return settings.transition.showDuration || settings.duration.show || settings.duration;
             }
           }
         },
