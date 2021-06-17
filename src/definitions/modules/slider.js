@@ -283,7 +283,7 @@ $.fn.slider = function(parameters) {
               event.preventDefault();
               module.event.down(event);
             });
-            if(!slideEverywhere) {
+            if(!settings.slideEverywhere) {
               $module.on('touchstart' + eventNamespace, module.event.down);
             }
           },
