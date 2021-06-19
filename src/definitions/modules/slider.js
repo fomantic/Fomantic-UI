@@ -284,6 +284,13 @@ $.fn.slider = function(parameters) {
               module.event.down(event);
             });
             if(!settings.slideEverywhere) {
+              $module.find('.track, .inner').on('click' + eventNamespace, function(event) {
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                module.event.up(event);
+              });
+              $module.on('click' + eventNamespace, module.event.up);
+            } else {
               $module.on('touchstart' + eventNamespace, module.event.down);
             }
           },
@@ -779,7 +786,7 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event) {
-            if(module.is.touch()) {
+            if(event.type !== 'click') {
               var
                 touchEvent = event.changedTouches ? event : event.originalEvent,
                 touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
