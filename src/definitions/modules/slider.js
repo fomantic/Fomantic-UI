@@ -786,7 +786,11 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event) {
-            if(event.type !== 'click') {
+            // unwrap jQuery event objects
+            if(!(event.pageX || event.changedTouches)) {
+              event = event.originalEvent;
+            }
+            if(event.changedTouches) {
               var
                 touchEvent = event.changedTouches ? event : event.originalEvent,
                 touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
