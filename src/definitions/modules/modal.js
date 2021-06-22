@@ -110,6 +110,10 @@ $.fn.modal = function(parameters) {
           }
           if(module.has.configActions()){
             var $actions = $module.find(selector.actions).addClass(settings.classActions);
+            if ($actions.length === 0) {
+              $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($module);
+            }
+            $actions.empty();
             settings.actions.forEach(function (el) {
               var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
