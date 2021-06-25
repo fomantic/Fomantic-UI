@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Reset
+ * # Fomantic-UI 2.8.8 - Reset
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -126,8 +126,7 @@ abbr[title] {
   text-decoration: underline;
   
 /* 2 */
-  -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
   
 /* 2 */
 }
