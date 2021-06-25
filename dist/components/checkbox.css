@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Checkbox
+ * # Fomantic-UI 2.8.8 - Checkbox
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -87,6 +87,15 @@
   transition: border 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
+}
+.ui.right.aligned.checkbox label {
+  padding-left: 0;
+  padding-right: 1.85714em;
+}
+.ui.right.aligned.checkbox label:after,
+.ui.right.aligned.checkbox label:before {
+  right: 0;
+  left: auto;
 }
 
 /*--------------
@@ -187,6 +196,10 @@
 .ui.indeterminate.toggle.checkbox input:not([type=radio]) ~ label:after {
   left: 1.075rem;
 }
+.ui.right.aligned.indeterminate.toggle.checkbox input:not([type=radio]) ~ label:after {
+  left: auto;
+  right: 1.075rem;
+}
 
 /*--------------
   Active Focus
@@ -203,12 +216,13 @@
 }
 
 /*--------------
-    Read-Only
----------------*/
+      Read-Only
+  ---------------*/
 
 .ui.read-only.checkbox,
 .ui.read-only.checkbox label {
   cursor: default;
+  pointer-events: none;
 }
 
 /*--------------
@@ -217,7 +231,7 @@
 
 .ui.disabled.checkbox label,
 .ui.checkbox input[disabled] ~ label {
-  cursor: default !important;
+  cursor: default;
   opacity: 0.5;
   color: #000000;
   pointer-events: none;
@@ -411,6 +425,20 @@
 .ui.slider.checkbox input:focus:checked ~ label:before {
   background-color: #000000 !important;
 }
+.ui.right.aligned.slider.checkbox label {
+  padding-left: 0;
+  padding-right: 4.5rem;
+}
+.ui.right.aligned.slider.checkbox label:after {
+  left: auto;
+  right: 2rem;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
+}
+.ui.right.aligned.slider.checkbox input:checked ~ label:after {
+  left: auto;
+  right: 0;
+}
 
 /*--------------
        Toggle
@@ -511,6 +539,20 @@
 }
 .ui.toggle.checkbox input:focus:checked ~ label:before {
   background-color: #0d71bb !important;
+}
+.ui.right.aligned.toggle.checkbox label {
+  padding-left: 0;
+  padding-right: 4.5rem;
+}
+.ui.right.aligned.toggle.checkbox input ~ label:after {
+  left: auto;
+  right: 2.15rem;
+  -webkit-transition: background 0.3s ease, right 0.3s ease;
+  transition: background 0.3s ease, right 0.3s ease;
+}
+.ui.right.aligned.toggle.checkbox input:checked ~ label:after {
+  left: auto;
+  right: -0.05rem;
 }
 
 
