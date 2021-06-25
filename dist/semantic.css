@@ -1,16 +1,16 @@
- /*
- * # Fomantic UI - 2.8.6
+/*
+ * # Fomantic UI - 2.8.8
  * https://github.com/fomantic/Fomantic-UI
  * http://fomantic-ui.com/
  *
- * Copyright 2014 Contributors
+ * Copyright 2021 Contributors
  * Released under the MIT license
  * http://opensource.org/licenses/MIT
  *
  */
-@import url('https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic&subset=latin&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400%3B0,700%3B1,400%3B1,700&subset=latin&display=swap');
 /*!
- * # Fomantic-UI - Reset
+ * # Fomantic-UI 2.8.8 - Reset
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -145,7 +145,6 @@ abbr[title] {
   /* 1 */
   text-decoration: underline;
   /* 2 */
-  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   /* 2 */
 }
@@ -436,7 +435,7 @@ template {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Site
+ * # Fomantic-UI 2.8.8 - Site
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -654,7 +653,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Button
+ * # Fomantic-UI 2.8.8 - Button
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1376,6 +1375,36 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
            Variations
 *******************************/
 
+/*--------------
+     Stackable
+  ---------------*/
+
+/* Tablet Or Below */
+
+@media only screen and (max-width: 767.98px) {
+  .ui.stackable.buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .ui.stackable.buttons .button:first-child {
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.28571429rem;
+  }
+
+  .ui.stackable.buttons .button:last-child {
+    border-bottom-left-radius: 0.28571429rem;
+    border-top-right-radius: 0;
+  }
+
+  .ui.stackable.buttons .button:only-child {
+    border-radius: 0.28571429rem;
+  }
+}
+
 /*-------------------
          Floated
   --------------------*/
@@ -1489,7 +1518,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
 ---------------*/
 
 .ui.icon.buttons .button,
-.ui.icon.button:not(.animated):not(.compact) {
+.ui.icon.button:not(.animated):not(.compact):not(.labeled) {
   padding: 0.78571429em 0.78571429em 0.78571429em;
 }
 
@@ -5637,7 +5666,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Container
+ * # Fomantic-UI 2.8.8 - Container
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -5782,7 +5811,6 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
 
 .ui.justified.container {
   text-align: justify;
-  -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
 }
@@ -5795,7 +5823,7 @@ body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Divider
+ * # Fomantic-UI 2.8.8 - Divider
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -21476,7 +21504,7 @@ em[data-emoji="tone5"]:before {
   background-image: url("https://twemoji.maxcdn.com/v/latest/svg/1f3ff.svg");
 }
 /*!
- * # Fomantic-UI - Flag
+ * # Fomantic-UI 2.8.8 - Flag
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22757,7 +22785,7 @@ i.flag.zimbabwe:before {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Header
+ * # Fomantic-UI 2.8.8 - Header
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -22809,6 +22837,7 @@ i.flag.zimbabwe:before {
       Icon
 ---------------*/
 
+.ui.header > .icons,
 .ui.header > i.icon {
   display: table-cell;
   opacity: 1;
@@ -22819,7 +22848,8 @@ i.flag.zimbabwe:before {
 
 /* With Text Node */
 
-.ui.header > i.icon:only-child {
+.ui.header:not(.icon) > .icons:only-child,
+.ui.header:not(.icon) > i.icon:only-child {
   display: inline-block;
   padding: 0;
   margin-right: 0.75rem;
@@ -22862,7 +22892,8 @@ i.flag.zimbabwe:before {
 
 /* After Icon */
 
-.ui.header > i.icon + .content {
+.ui.header:not(.icon):not(.centered):not(.aligned) > .icons + .content,
+.ui.header:not(.icon):not(.centered):not(.aligned) > i.icon + .content {
   padding-left: 0.75rem;
   display: table-cell;
   vertical-align: middle;
@@ -23065,6 +23096,7 @@ h6.ui.header .sub.header {
   margin-top: 0;
 }
 
+.ui.icon.header > .icons,
 .ui.icon.header > i.icon {
   float: none;
   display: block;
@@ -23086,14 +23118,15 @@ h6.ui.header .sub.header {
   padding: 0;
 }
 
-.ui.icon.header > i.circular.icon {
+.ui.icon.header > i.circular {
   font-size: 2em;
 }
 
-.ui.icon.header > i.square.icon {
+.ui.icon.header > i.square {
   font-size: 2em;
 }
 
+.ui.block.icon.header > .icons,
 .ui.block.icon.header > i.icon {
   margin-bottom: 0;
 }
@@ -23706,7 +23739,7 @@ a.ui.inverted.black.header.header.header:hover {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Icon
+ * # Fomantic-UI 2.8.8 - Icon
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -23760,9 +23793,13 @@ i.icon:before {
       Loading
   ---------------*/
 
-i.icon.loading {
+i.loading.icon {
   height: 1em;
   line-height: 1;
+}
+
+i.loading.icon,
+i.loading.icons {
   -webkit-animation: loader 2s linear infinite;
   animation: loader 2s linear infinite;
 }
@@ -23831,6 +23868,11 @@ i.circular.icon {
   height: 2em !important;
 }
 
+i.circular.icon.colored {
+  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
+}
+
 i.circular.inverted.icon {
   border: none;
   -webkit-box-shadow: none;
@@ -23850,6 +23892,17 @@ i.horizontally.flipped.icon {
 i.vertically.flipped.icon {
   -webkit-transform: scale(1, -1);
   transform: scale(1, -1);
+}
+
+.icons i.flipped.icon:not(.corner):not(:first-child),
+.icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1);
+}
+
+.icons i.vertically.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1);
 }
 
 /*-------------------
@@ -23872,6 +23925,24 @@ i.counterclockwise.rotated.icon {
 i.halfway.rotated.icon {
   -webkit-transform: rotate(180deg);
   transform: rotate(180deg);
+}
+
+.icons i.rotated.rotated.icon:not(.corner):not(:first-child),
+.icons i.right.rotated.icon:not(.corner):not(:first-child),
+.icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(90deg);
+}
+
+.icons i.left.rotated.icon:not(.corner):not(:first-child),
+.icons i.counterclockwise.rotated.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) rotate(-90deg);
+}
+
+.icons i.halfway.rotated.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) rotate(180deg);
 }
 
 /*--------------------------
@@ -23914,6 +23985,42 @@ i.halfway.rotated.vertically.flipped.icon {
   transform: scale(1, -1) rotate(180deg);
 }
 
+.icons i.rotated.flipped.icon:not(.corner):not(:first-child),
+.icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
+.icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(90deg);
+}
+
+.icons i.left.rotated.flipped.icon:not(.corner):not(:first-child),
+.icons i.counterclockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(-90deg);
+}
+
+.icons i.halfway.rotated.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) scale(-1, 1) rotate(180deg);
+}
+
+.icons i.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+.icons i.right.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+.icons i.clockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(90deg);
+}
+
+.icons i.left.rotated.vertically.flipped.icon:not(.corner):not(:first-child),
+.icons i.counterclockwise.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(-90deg);
+}
+
+.icons i.halfway.rotated.vertically.flipped.icon:not(.corner):not(:first-child) {
+  -webkit-transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
+  transform: translateX(-50%) translateY(-50%) scale(1, -1) rotate(180deg);
+}
+
 /*-------------------
         Bordered
   --------------------*/
@@ -23926,6 +24033,11 @@ i.bordered.icon {
   padding: 0.5em 0 !important;
   -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
   box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+}
+
+i.bordered.icon.colored {
+  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
 }
 
 i.bordered.inverted.icon {
@@ -23954,212 +24066,242 @@ i.inverted.icon {
        Colors
 --------------------*/
 
-i.primary.icon.icon.icon.icon {
+i.primary.icon.icon.icon.icon.icon {
   color: #2185D0;
 }
 
-i.inverted.primary.icon.icon.icon.icon {
+i.inverted.primary.icon.icon.icon.icon.icon {
   color: #54C8FF;
 }
 
-i.inverted.bordered.primary.icon.icon.icon.icon,
-i.inverted.circular.primary.icon.icon.icon.icon {
+i.inverted.bordered.primary.icon.icon.icon.icon.icon,
+i.inverted.circular.primary.icon.icon.icon.icon.icon,
+i.inverted.bordered.primary.icons,
+i.inverted.circular.primary.icons {
   background-color: #2185D0;
   color: #FFFFFF;
 }
 
-i.secondary.icon.icon.icon.icon {
+i.secondary.icon.icon.icon.icon.icon {
   color: #1B1C1D;
 }
 
-i.inverted.secondary.icon.icon.icon.icon {
+i.inverted.secondary.icon.icon.icon.icon.icon {
   color: #545454;
 }
 
-i.inverted.bordered.secondary.icon.icon.icon.icon,
-i.inverted.circular.secondary.icon.icon.icon.icon {
+i.inverted.bordered.secondary.icon.icon.icon.icon.icon,
+i.inverted.circular.secondary.icon.icon.icon.icon.icon,
+i.inverted.bordered.secondary.icons,
+i.inverted.circular.secondary.icons {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
 
-i.red.icon.icon.icon.icon {
+i.red.icon.icon.icon.icon.icon {
   color: #DB2828;
 }
 
-i.inverted.red.icon.icon.icon.icon {
+i.inverted.red.icon.icon.icon.icon.icon {
   color: #FF695E;
 }
 
-i.inverted.bordered.red.icon.icon.icon.icon,
-i.inverted.circular.red.icon.icon.icon.icon {
+i.inverted.bordered.red.icon.icon.icon.icon.icon,
+i.inverted.circular.red.icon.icon.icon.icon.icon,
+i.inverted.bordered.red.icons,
+i.inverted.circular.red.icons {
   background-color: #DB2828;
   color: #FFFFFF;
 }
 
-i.orange.icon.icon.icon.icon {
+i.orange.icon.icon.icon.icon.icon {
   color: #F2711C;
 }
 
-i.inverted.orange.icon.icon.icon.icon {
+i.inverted.orange.icon.icon.icon.icon.icon {
   color: #FF851B;
 }
 
-i.inverted.bordered.orange.icon.icon.icon.icon,
-i.inverted.circular.orange.icon.icon.icon.icon {
+i.inverted.bordered.orange.icon.icon.icon.icon.icon,
+i.inverted.circular.orange.icon.icon.icon.icon.icon,
+i.inverted.bordered.orange.icons,
+i.inverted.circular.orange.icons {
   background-color: #F2711C;
   color: #FFFFFF;
 }
 
-i.yellow.icon.icon.icon.icon {
+i.yellow.icon.icon.icon.icon.icon {
   color: #FBBD08;
 }
 
-i.inverted.yellow.icon.icon.icon.icon {
+i.inverted.yellow.icon.icon.icon.icon.icon {
   color: #FFE21F;
 }
 
-i.inverted.bordered.yellow.icon.icon.icon.icon,
-i.inverted.circular.yellow.icon.icon.icon.icon {
+i.inverted.bordered.yellow.icon.icon.icon.icon.icon,
+i.inverted.circular.yellow.icon.icon.icon.icon.icon,
+i.inverted.bordered.yellow.icons,
+i.inverted.circular.yellow.icons {
   background-color: #FBBD08;
   color: #FFFFFF;
 }
 
-i.olive.icon.icon.icon.icon {
+i.olive.icon.icon.icon.icon.icon {
   color: #B5CC18;
 }
 
-i.inverted.olive.icon.icon.icon.icon {
+i.inverted.olive.icon.icon.icon.icon.icon {
   color: #D9E778;
 }
 
-i.inverted.bordered.olive.icon.icon.icon.icon,
-i.inverted.circular.olive.icon.icon.icon.icon {
+i.inverted.bordered.olive.icon.icon.icon.icon.icon,
+i.inverted.circular.olive.icon.icon.icon.icon.icon,
+i.inverted.bordered.olive.icons,
+i.inverted.circular.olive.icons {
   background-color: #B5CC18;
   color: #FFFFFF;
 }
 
-i.green.icon.icon.icon.icon {
+i.green.icon.icon.icon.icon.icon {
   color: #21BA45;
 }
 
-i.inverted.green.icon.icon.icon.icon {
+i.inverted.green.icon.icon.icon.icon.icon {
   color: #2ECC40;
 }
 
-i.inverted.bordered.green.icon.icon.icon.icon,
-i.inverted.circular.green.icon.icon.icon.icon {
+i.inverted.bordered.green.icon.icon.icon.icon.icon,
+i.inverted.circular.green.icon.icon.icon.icon.icon,
+i.inverted.bordered.green.icons,
+i.inverted.circular.green.icons {
   background-color: #21BA45;
   color: #FFFFFF;
 }
 
-i.teal.icon.icon.icon.icon {
+i.teal.icon.icon.icon.icon.icon {
   color: #00B5AD;
 }
 
-i.inverted.teal.icon.icon.icon.icon {
+i.inverted.teal.icon.icon.icon.icon.icon {
   color: #6DFFFF;
 }
 
-i.inverted.bordered.teal.icon.icon.icon.icon,
-i.inverted.circular.teal.icon.icon.icon.icon {
+i.inverted.bordered.teal.icon.icon.icon.icon.icon,
+i.inverted.circular.teal.icon.icon.icon.icon.icon,
+i.inverted.bordered.teal.icons,
+i.inverted.circular.teal.icons {
   background-color: #00B5AD;
   color: #FFFFFF;
 }
 
-i.blue.icon.icon.icon.icon {
+i.blue.icon.icon.icon.icon.icon {
   color: #2185D0;
 }
 
-i.inverted.blue.icon.icon.icon.icon {
+i.inverted.blue.icon.icon.icon.icon.icon {
   color: #54C8FF;
 }
 
-i.inverted.bordered.blue.icon.icon.icon.icon,
-i.inverted.circular.blue.icon.icon.icon.icon {
+i.inverted.bordered.blue.icon.icon.icon.icon.icon,
+i.inverted.circular.blue.icon.icon.icon.icon.icon,
+i.inverted.bordered.blue.icons,
+i.inverted.circular.blue.icons {
   background-color: #2185D0;
   color: #FFFFFF;
 }
 
-i.violet.icon.icon.icon.icon {
+i.violet.icon.icon.icon.icon.icon {
   color: #6435C9;
 }
 
-i.inverted.violet.icon.icon.icon.icon {
+i.inverted.violet.icon.icon.icon.icon.icon {
   color: #A291FB;
 }
 
-i.inverted.bordered.violet.icon.icon.icon.icon,
-i.inverted.circular.violet.icon.icon.icon.icon {
+i.inverted.bordered.violet.icon.icon.icon.icon.icon,
+i.inverted.circular.violet.icon.icon.icon.icon.icon,
+i.inverted.bordered.violet.icons,
+i.inverted.circular.violet.icons {
   background-color: #6435C9;
   color: #FFFFFF;
 }
 
-i.purple.icon.icon.icon.icon {
+i.purple.icon.icon.icon.icon.icon {
   color: #A333C8;
 }
 
-i.inverted.purple.icon.icon.icon.icon {
+i.inverted.purple.icon.icon.icon.icon.icon {
   color: #DC73FF;
 }
 
-i.inverted.bordered.purple.icon.icon.icon.icon,
-i.inverted.circular.purple.icon.icon.icon.icon {
+i.inverted.bordered.purple.icon.icon.icon.icon.icon,
+i.inverted.circular.purple.icon.icon.icon.icon.icon,
+i.inverted.bordered.purple.icons,
+i.inverted.circular.purple.icons {
   background-color: #A333C8;
   color: #FFFFFF;
 }
 
-i.pink.icon.icon.icon.icon {
+i.pink.icon.icon.icon.icon.icon {
   color: #E03997;
 }
 
-i.inverted.pink.icon.icon.icon.icon {
+i.inverted.pink.icon.icon.icon.icon.icon {
   color: #FF8EDF;
 }
 
-i.inverted.bordered.pink.icon.icon.icon.icon,
-i.inverted.circular.pink.icon.icon.icon.icon {
+i.inverted.bordered.pink.icon.icon.icon.icon.icon,
+i.inverted.circular.pink.icon.icon.icon.icon.icon,
+i.inverted.bordered.pink.icons,
+i.inverted.circular.pink.icons {
   background-color: #E03997;
   color: #FFFFFF;
 }
 
-i.brown.icon.icon.icon.icon {
+i.brown.icon.icon.icon.icon.icon {
   color: #A5673F;
 }
 
-i.inverted.brown.icon.icon.icon.icon {
+i.inverted.brown.icon.icon.icon.icon.icon {
   color: #D67C1C;
 }
 
-i.inverted.bordered.brown.icon.icon.icon.icon,
-i.inverted.circular.brown.icon.icon.icon.icon {
+i.inverted.bordered.brown.icon.icon.icon.icon.icon,
+i.inverted.circular.brown.icon.icon.icon.icon.icon,
+i.inverted.bordered.brown.icons,
+i.inverted.circular.brown.icons {
   background-color: #A5673F;
   color: #FFFFFF;
 }
 
-i.grey.icon.icon.icon.icon {
+i.grey.icon.icon.icon.icon.icon {
   color: #767676;
 }
 
-i.inverted.grey.icon.icon.icon.icon {
+i.inverted.grey.icon.icon.icon.icon.icon {
   color: #DCDDDE;
 }
 
-i.inverted.bordered.grey.icon.icon.icon.icon,
-i.inverted.circular.grey.icon.icon.icon.icon {
+i.inverted.bordered.grey.icon.icon.icon.icon.icon,
+i.inverted.circular.grey.icon.icon.icon.icon.icon,
+i.inverted.bordered.grey.icons,
+i.inverted.circular.grey.icons {
   background-color: #767676;
   color: #FFFFFF;
 }
 
-i.black.icon.icon.icon.icon {
+i.black.icon.icon.icon.icon.icon {
   color: #1B1C1D;
 }
 
-i.inverted.black.icon.icon.icon.icon {
+i.inverted.black.icon.icon.icon.icon.icon {
   color: #545454;
 }
 
-i.inverted.bordered.black.icon.icon.icon.icon,
-i.inverted.circular.black.icon.icon.icon.icon {
+i.inverted.bordered.black.icon.icon.icon.icon.icon,
+i.inverted.circular.black.icon.icon.icon.icon.icon,
+i.inverted.bordered.black.icons,
+i.inverted.circular.black.icons {
   background-color: #1B1C1D;
   color: #FFFFFF;
 }
@@ -24172,6 +24314,7 @@ i.icon,
 i.icons {
   font-size: 1em;
   line-height: 1;
+  font-style: normal;
 }
 
 i.mini.mini.mini.icon,
@@ -24230,9 +24373,12 @@ i.icons .icon {
   position: absolute;
   top: 50%;
   left: 50%;
+  margin: 0;
+}
+
+i.icons .icon:not(.corner):not(.rotated):not(.flipped) {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
-  margin: 0;
 }
 
 i.icons .icon:first-child {
@@ -24240,6 +24386,9 @@ i.icons .icon:first-child {
   width: auto;
   height: auto;
   vertical-align: top;
+}
+
+i.icons:not(.bordered):not(.circular) .icon:first-child:not(.rotated):not(.flipped) {
   -webkit-transform: none;
   transform: none;
 }
@@ -24251,10 +24400,13 @@ i.icons .corner.icon {
   left: auto;
   right: 0;
   bottom: 0;
-  -webkit-transform: none;
-  transform: none;
   font-size: 0.45em;
   text-shadow: -1px -1px 0 #FFFFFF, 1px -1px 0 #FFFFFF, -1px 1px 0 #FFFFFF, 1px 1px 0 #FFFFFF;
+}
+
+i.icons .corner.icon:not(.rotated):not(.flipped) {
+  -webkit-transform: none;
+  transform: none;
 }
 
 i.icons .icon.corner[class*="top right"] {
@@ -24287,6 +24439,83 @@ i.icons .icon.corner[class*="bottom right"] {
 
 i.icons .inverted.corner.icon {
   text-shadow: -1px -1px 0 #1B1C1D, 1px -1px 0 #1B1C1D, -1px 1px 0 #1B1C1D, 1px 1px 0 #1B1C1D;
+}
+
+/*************************************************
+     Bordered/circular with corner or group icons
+  *************************************************/
+
+i.bordered.icons,
+i.circular.icons {
+  width: 2em;
+  height: 2em;
+  -webkit-box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0 0 0 0.1em rgba(0, 0, 0, 0.1) inset;
+  vertical-align: middle;
+}
+
+i.bordered.icons.colored,
+i.circular.icons.colored {
+  -webkit-box-shadow: 0 0 0 0.1em currentColor inset;
+  box-shadow: 0 0 0 0.1em currentColor inset;
+}
+
+i.circular.icons {
+  border-radius: 500em;
+}
+
+i.bordered.icons i.icon:first-child,
+i.circular.icons i.icon:first-child {
+  position: absolute;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Inverted Icon */
+
+i.bordered.inverted.icons,
+i.circular.inverted.icons {
+  border: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-color: #1B1C1D;
+  color: #FFFFFF;
+}
+
+/* Corner Icon */
+
+i.bordered.icons .icon.corner,
+i.circular.icons .icon.corner,
+i.bordered.icons .icon.corner[class*="bottom right"],
+i.circular.icons .icon.corner[class*="bottom right"] {
+  top: auto;
+  left: auto;
+  right: 1.15em;
+  bottom: 1.15em;
+}
+
+i.bordered.icons .icon.corner[class*="top right"],
+i.circular.icons .icon.corner[class*="top right"] {
+  top: 1.15em;
+  left: auto;
+  right: 1.15em;
+  bottom: auto;
+}
+
+i.bordered.icons .icon.corner[class*="top left"],
+i.circular.icons .icon.corner[class*="top left"] {
+  top: 1.15em;
+  left: 1.15em;
+  right: auto;
+  bottom: auto;
+}
+
+i.bordered.icons .icon.corner[class*="bottom left"],
+i.circular.icons .icon.corner[class*="bottom left"] {
+  top: auto;
+  left: 1.15em;
+  right: auto;
+  bottom: 1.15em;
 }
 
 /*
@@ -32628,7 +32857,7 @@ i.icon.youtube.play:before {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Image
+ * # Fomantic-UI 2.8.8 - Image
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -32983,7 +33212,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Input
+ * # Fomantic-UI 2.8.8 - Input
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -33046,6 +33275,7 @@ img.ui.bordered.image {
 
 .ui.input > input::-moz-placeholder {
   color: rgba(191, 191, 191, 0.87);
+  opacity: 1;
 }
 
 .ui.input > input:-ms-input-placeholder {
@@ -33788,7 +34018,7 @@ img.ui.bordered.image {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Label
+ * # Fomantic-UI 2.8.8 - Label
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -36188,7 +36418,7 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - List
+ * # Fomantic-UI 2.8.8 - List
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -37294,7 +37524,7 @@ ol.ui.suffixed.list li:before,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Loader
+ * # Fomantic-UI 2.8.8 - Loader
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -37609,7 +37839,7 @@ ol.ui.suffixed.list li:before,
 .ui.primary.elastic.loader.loader:before,
 .ui.primary.basic.elastic.loading.button:before,
 .ui.primary.basic.elastic.loading.button:after,
-.ui.primary.elastic.loading.loading.loading:not(.segment):before,
+.ui.primary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.primary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.primary.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.primary.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37620,7 +37850,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.primary.elastic.loader:before,
-.ui.inverted.primary.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.primary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.primary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.primary.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.primary.loading.loading.loading.loading:not(.usual):after,
@@ -37633,7 +37863,7 @@ ol.ui.suffixed.list li:before,
 .ui.secondary.elastic.loader.loader:before,
 .ui.secondary.basic.elastic.loading.button:before,
 .ui.secondary.basic.elastic.loading.button:after,
-.ui.secondary.elastic.loading.loading.loading:not(.segment):before,
+.ui.secondary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.secondary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.secondary.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.secondary.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37644,7 +37874,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.secondary.elastic.loader:before,
-.ui.inverted.secondary.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.secondary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.secondary.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.secondary.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.secondary.loading.loading.loading.loading:not(.usual):after,
@@ -37657,7 +37887,7 @@ ol.ui.suffixed.list li:before,
 .ui.red.elastic.loader.loader:before,
 .ui.red.basic.elastic.loading.button:before,
 .ui.red.basic.elastic.loading.button:after,
-.ui.red.elastic.loading.loading.loading:not(.segment):before,
+.ui.red.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.red.elastic.loading.loading.loading .input > i.icon:before,
 .ui.red.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.red.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37668,7 +37898,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.red.elastic.loader:before,
-.ui.inverted.red.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.red.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.red.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.red.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.red.loading.loading.loading.loading:not(.usual):after,
@@ -37681,7 +37911,7 @@ ol.ui.suffixed.list li:before,
 .ui.orange.elastic.loader.loader:before,
 .ui.orange.basic.elastic.loading.button:before,
 .ui.orange.basic.elastic.loading.button:after,
-.ui.orange.elastic.loading.loading.loading:not(.segment):before,
+.ui.orange.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.orange.elastic.loading.loading.loading .input > i.icon:before,
 .ui.orange.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.orange.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37692,7 +37922,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.orange.elastic.loader:before,
-.ui.inverted.orange.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.orange.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.orange.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.orange.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.orange.loading.loading.loading.loading:not(.usual):after,
@@ -37705,7 +37935,7 @@ ol.ui.suffixed.list li:before,
 .ui.yellow.elastic.loader.loader:before,
 .ui.yellow.basic.elastic.loading.button:before,
 .ui.yellow.basic.elastic.loading.button:after,
-.ui.yellow.elastic.loading.loading.loading:not(.segment):before,
+.ui.yellow.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.yellow.elastic.loading.loading.loading .input > i.icon:before,
 .ui.yellow.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.yellow.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37716,7 +37946,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.yellow.elastic.loader:before,
-.ui.inverted.yellow.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.yellow.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.yellow.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.yellow.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.yellow.loading.loading.loading.loading:not(.usual):after,
@@ -37729,7 +37959,7 @@ ol.ui.suffixed.list li:before,
 .ui.olive.elastic.loader.loader:before,
 .ui.olive.basic.elastic.loading.button:before,
 .ui.olive.basic.elastic.loading.button:after,
-.ui.olive.elastic.loading.loading.loading:not(.segment):before,
+.ui.olive.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.olive.elastic.loading.loading.loading .input > i.icon:before,
 .ui.olive.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.olive.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37740,7 +37970,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.olive.elastic.loader:before,
-.ui.inverted.olive.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.olive.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.olive.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.olive.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.olive.loading.loading.loading.loading:not(.usual):after,
@@ -37753,7 +37983,7 @@ ol.ui.suffixed.list li:before,
 .ui.green.elastic.loader.loader:before,
 .ui.green.basic.elastic.loading.button:before,
 .ui.green.basic.elastic.loading.button:after,
-.ui.green.elastic.loading.loading.loading:not(.segment):before,
+.ui.green.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.green.elastic.loading.loading.loading .input > i.icon:before,
 .ui.green.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.green.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37764,7 +37994,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.green.elastic.loader:before,
-.ui.inverted.green.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.green.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.green.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.green.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.green.loading.loading.loading.loading:not(.usual):after,
@@ -37777,7 +38007,7 @@ ol.ui.suffixed.list li:before,
 .ui.teal.elastic.loader.loader:before,
 .ui.teal.basic.elastic.loading.button:before,
 .ui.teal.basic.elastic.loading.button:after,
-.ui.teal.elastic.loading.loading.loading:not(.segment):before,
+.ui.teal.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.teal.elastic.loading.loading.loading .input > i.icon:before,
 .ui.teal.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.teal.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37788,7 +38018,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.teal.elastic.loader:before,
-.ui.inverted.teal.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.teal.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.teal.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.teal.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.teal.loading.loading.loading.loading:not(.usual):after,
@@ -37801,7 +38031,7 @@ ol.ui.suffixed.list li:before,
 .ui.blue.elastic.loader.loader:before,
 .ui.blue.basic.elastic.loading.button:before,
 .ui.blue.basic.elastic.loading.button:after,
-.ui.blue.elastic.loading.loading.loading:not(.segment):before,
+.ui.blue.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.blue.elastic.loading.loading.loading .input > i.icon:before,
 .ui.blue.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.blue.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37812,7 +38042,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.blue.elastic.loader:before,
-.ui.inverted.blue.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.blue.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.blue.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.blue.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.blue.loading.loading.loading.loading:not(.usual):after,
@@ -37825,7 +38055,7 @@ ol.ui.suffixed.list li:before,
 .ui.violet.elastic.loader.loader:before,
 .ui.violet.basic.elastic.loading.button:before,
 .ui.violet.basic.elastic.loading.button:after,
-.ui.violet.elastic.loading.loading.loading:not(.segment):before,
+.ui.violet.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.violet.elastic.loading.loading.loading .input > i.icon:before,
 .ui.violet.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.violet.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37836,7 +38066,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.violet.elastic.loader:before,
-.ui.inverted.violet.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.violet.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.violet.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.violet.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.violet.loading.loading.loading.loading:not(.usual):after,
@@ -37849,7 +38079,7 @@ ol.ui.suffixed.list li:before,
 .ui.purple.elastic.loader.loader:before,
 .ui.purple.basic.elastic.loading.button:before,
 .ui.purple.basic.elastic.loading.button:after,
-.ui.purple.elastic.loading.loading.loading:not(.segment):before,
+.ui.purple.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.purple.elastic.loading.loading.loading .input > i.icon:before,
 .ui.purple.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.purple.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37860,7 +38090,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.purple.elastic.loader:before,
-.ui.inverted.purple.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.purple.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.purple.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.purple.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.purple.loading.loading.loading.loading:not(.usual):after,
@@ -37873,7 +38103,7 @@ ol.ui.suffixed.list li:before,
 .ui.pink.elastic.loader.loader:before,
 .ui.pink.basic.elastic.loading.button:before,
 .ui.pink.basic.elastic.loading.button:after,
-.ui.pink.elastic.loading.loading.loading:not(.segment):before,
+.ui.pink.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.pink.elastic.loading.loading.loading .input > i.icon:before,
 .ui.pink.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.pink.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37884,7 +38114,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.pink.elastic.loader:before,
-.ui.inverted.pink.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.pink.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.pink.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.pink.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.pink.loading.loading.loading.loading:not(.usual):after,
@@ -37897,7 +38127,7 @@ ol.ui.suffixed.list li:before,
 .ui.brown.elastic.loader.loader:before,
 .ui.brown.basic.elastic.loading.button:before,
 .ui.brown.basic.elastic.loading.button:after,
-.ui.brown.elastic.loading.loading.loading:not(.segment):before,
+.ui.brown.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.brown.elastic.loading.loading.loading .input > i.icon:before,
 .ui.brown.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.brown.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37908,7 +38138,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.brown.elastic.loader:before,
-.ui.inverted.brown.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.brown.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.brown.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.brown.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.brown.loading.loading.loading.loading:not(.usual):after,
@@ -37921,7 +38151,7 @@ ol.ui.suffixed.list li:before,
 .ui.grey.elastic.loader.loader:before,
 .ui.grey.basic.elastic.loading.button:before,
 .ui.grey.basic.elastic.loading.button:after,
-.ui.grey.elastic.loading.loading.loading:not(.segment):before,
+.ui.grey.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.grey.elastic.loading.loading.loading .input > i.icon:before,
 .ui.grey.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.grey.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37932,7 +38162,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.grey.elastic.loader:before,
-.ui.inverted.grey.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.grey.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.grey.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.grey.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.grey.loading.loading.loading.loading:not(.usual):after,
@@ -37945,7 +38175,7 @@ ol.ui.suffixed.list li:before,
 .ui.black.elastic.loader.loader:before,
 .ui.black.basic.elastic.loading.button:before,
 .ui.black.basic.elastic.loading.button:after,
-.ui.black.elastic.loading.loading.loading:not(.segment):before,
+.ui.black.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.black.elastic.loading.loading.loading .input > i.icon:before,
 .ui.black.elastic.loading.loading.loading.loading > i.icon:before,
 .ui.black.loading.loading.loading.loading:not(.usual):not(.button):after,
@@ -37956,7 +38186,7 @@ ol.ui.suffixed.list li:before,
 }
 
 .ui.inverted.black.elastic.loader:before,
-.ui.inverted.black.elastic.loading.loading.loading:not(.segment):before,
+.ui.inverted.black.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
 .ui.inverted.black.elastic.loading.loading.loading .input > i.icon:before,
 .ui.inverted.black.elastic.loading.loading.loading > i.icon:before,
 .ui.inverted.black.loading.loading.loading.loading:not(.usual):after,
@@ -38033,12 +38263,16 @@ ol.ui.suffixed.list li:before,
   border-bottom-color: transparent;
 }
 
+.ui.loading.loading.loading.loading.loading.loading.card:after,
+.ui.loading.loading.loading.loading.loading.loading.segments:after,
 .ui.loading.loading.loading.loading.loading.loading.segment:after,
 .ui.loading.loading.loading.loading.loading.loading.form:after {
   border-left-color: rgba(0, 0, 0, 0.1);
   border-right-color: rgba(0, 0, 0, 0.1);
 }
 
+.ui.loading.loading.loading.loading.loading.loading.card:not(.double):after,
+.ui.loading.loading.loading.loading.loading.loading.segments:not(.double):after,
 .ui.loading.loading.loading.loading.loading.loading.segment:not(.double):after,
 .ui.loading.loading.loading.loading.loading.loading.form:not(.double):after {
   border-bottom-color: rgba(0, 0, 0, 0.1);
@@ -38056,7 +38290,7 @@ ol.ui.suffixed.list li:before,
   color: #767676;
 }
 
-.ui.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
 .ui.elastic.loading.loading .input > i.icon:after,
 .ui.elastic.loading.loading > i.icon:after,
 .ui.elastic.loader.loader:after {
@@ -38066,7 +38300,7 @@ ol.ui.suffixed.list li:before,
   animation-delay: 0.3s;
 }
 
-.ui.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
 .ui.elastic.loading.loading.loading .input > i.icon:before,
 .ui.elastic.loading.loading.loading > i.icon:before,
 .ui.elastic.loader.loader:before {
@@ -38081,7 +38315,7 @@ ol.ui.suffixed.list li:before,
   animation: loader 8s infinite linear;
 }
 
-.ui.slow.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.slow.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
 .ui.slow.elastic.loading.loading .input > i.icon:after,
 .ui.slow.elastic.loading.loading > i.icon:after,
 .ui.slow.elastic.loader.loader:after {
@@ -38091,7 +38325,7 @@ ol.ui.suffixed.list li:before,
   animation-delay: 0.45s;
 }
 
-.ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
 .ui.slow.elastic.loading.loading.loading .input > i.icon:before,
 .ui.slow.elastic.loading.loading.loading > i.icon:before,
 .ui.slow.elastic.loader.loader:before {
@@ -38099,7 +38333,7 @@ ol.ui.suffixed.list li:before,
   animation-duration: 1.5s;
 }
 
-.ui.fast.elastic.loading.loading:not(.form):not(.segment):after,
+.ui.fast.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
 .ui.fast.elastic.loading.loading .input > i.icon:after,
 .ui.fast.elastic.loading.loading > i.icon:after,
 .ui.fast.elastic.loader.loader:after {
@@ -38109,7 +38343,7 @@ ol.ui.suffixed.list li:before,
   animation-delay: 0.2s;
 }
 
-.ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):before,
+.ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
 .ui.fast.elastic.loading.loading.loading .input > i.icon:before,
 .ui.fast.elastic.loading.loading.loading > i.icon:before,
 .ui.fast.elastic.loader.loader:before {
@@ -38245,7 +38479,7 @@ ol.ui.suffixed.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Loader
+ * # Fomantic-UI 2.8.8 - Loader
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -38532,7 +38766,7 @@ ol.ui.suffixed.list li:before,
          Theme Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Rail
+ * # Fomantic-UI 2.8.8 - Rail
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -38694,7 +38928,7 @@ ol.ui.suffixed.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Reveal
+ * # Fomantic-UI 2.8.8 - Reveal
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -39037,7 +39271,7 @@ ol.ui.suffixed.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Segment
+ * # Fomantic-UI 2.8.8 - Segment
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -39093,6 +39327,8 @@ ol.ui.suffixed.list li:before,
 
 /* Header */
 
+.ui.inverted.segments .segment > .ui.header .sub.header,
+.ui.inverted.segments .segment > .ui.header,
 .ui.inverted.segment > .ui.header .sub.header,
 .ui.inverted.segment > .ui.header {
   color: #FFFFFF;
@@ -39185,6 +39421,16 @@ ol.ui.suffixed.list li:before,
   border-color: rgba(34, 36, 38, 0.15);
   -webkit-box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
   box-shadow: 0 2px 25px 0 rgba(34, 36, 38, 0.05) inset;
+}
+
+.ui.placeholder.segment.tab {
+  display: none;
+}
+
+.ui.placeholder.segment.tab.active {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .ui.placeholder.segment .button,
@@ -39566,6 +39812,12 @@ ol.ui.suffixed.list li:before,
   border-radius: 0 0.28571429rem 0.28571429rem 0;
 }
 
+/* Equal Width */
+
+.ui[class*="equal width"].horizontal.segments > .segment {
+  width: 100%;
+}
+
 /*******************************
             States
 *******************************/
@@ -39574,24 +39826,35 @@ ol.ui.suffixed.list li:before,
       Disabled
   ---------------*/
 
+.ui.disabled.segments,
 .ui.disabled.segment {
   opacity: 0.45;
   color: rgba(40, 40, 40, 0.3);
+  pointer-events: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 /*--------------
       Loading
   ---------------*/
 
+.ui.loading.segments,
 .ui.loading.segment {
   position: relative;
   cursor: default;
   pointer-events: none;
-  text-shadow: none !important;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
 
+.ui.loading.segments:before,
 .ui.loading.segment:before {
   position: absolute;
   content: '';
@@ -39604,6 +39867,7 @@ ol.ui.suffixed.list li:before,
   z-index: 100;
 }
 
+.ui.loading.segments:after,
 .ui.loading.segment:after {
   position: absolute;
   content: '';
@@ -39806,12 +40070,15 @@ ol.ui.suffixed.list li:before,
         Inverted
   --------------------*/
 
+.ui.inverted.segments,
+.ui.inverted.segments .segment,
 .ui.inverted.segment {
   border: none;
   -webkit-box-shadow: none;
   box-shadow: none;
 }
 
+.ui.inverted.segments .segment,
 .ui.inverted.segment,
 .ui.primary.inverted.segment {
   background: #1B1C1D;
@@ -39836,10 +40103,12 @@ ol.ui.suffixed.list li:before,
 
 /* Loading */
 
+.ui.inverted.loading.segments,
 .ui.inverted.loading.segment {
   color: #FFFFFF;
 }
 
+.ui.inverted.loading.segments:before,
 .ui.inverted.loading.segment:before {
   background: rgba(0, 0, 0, 0.85);
 }
@@ -39994,7 +40263,7 @@ ol.ui.suffixed.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Step
+ * # Fomantic-UI 2.8.8 - Step
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -40766,7 +41035,7 @@ ol.ui.suffixed.list li:before,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Text
+ * # Fomantic-UI 2.8.8 - Text
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -40961,7 +41230,7 @@ span.ui.massive.text {
          Theme Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Breadcrumb
+ * # Fomantic-UI 2.8.8 - Breadcrumb
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -41106,7 +41375,7 @@ span.ui.massive.text {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Form
+ * # Fomantic-UI 2.8.8 - Form
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -41504,6 +41773,7 @@ span.ui.massive.text {
 
 .ui.form ::-moz-placeholder {
   color: rgba(191, 191, 191, 0.87);
+  opacity: 1;
 }
 
 .ui.form :focus::-webkit-input-placeholder {
@@ -41624,10 +41894,17 @@ span.ui.massive.text {
 }
 
 .ui.ui.form .fields.error .field label,
+.ui.ui.form .fields.error .field .ui.label:not(.corner),
 .ui.ui.form .field.error label,
+.ui.ui.form .field.error .ui.label:not(.corner),
 .ui.ui.form .fields.error .field .input,
 .ui.ui.form .field.error .input {
   color: #9F3A38;
+}
+
+.ui.form .fields.error .field .ui.label,
+.ui.form .field.error .ui.label {
+  background-color: #ecd1d1;
 }
 
 .ui.form .fields.error .field .corner.label,
@@ -41754,7 +42031,7 @@ span.ui.massive.text {
 .ui.form .fields.error .field .ui.dropdown,
 .ui.form .fields.error .field .ui.dropdown .item,
 .ui.form .field.error .ui.dropdown,
-.ui.form .field.error .ui.dropdown .text,
+.ui.form .field.error .ui.dropdown > .text,
 .ui.form .field.error .ui.dropdown .item {
   background: #FFF6F6;
   color: #9F3A38;
@@ -41828,6 +42105,11 @@ span.ui.massive.text {
   color: #9F3A38;
 }
 
+.ui.inverted.form .fields.error .field label,
+.ui.inverted.form .error.field label {
+  color: #ecd1d1;
+}
+
 /* On Form */
 
 .ui.form.info .info.message:not(:empty) {
@@ -41864,10 +42146,17 @@ span.ui.massive.text {
 }
 
 .ui.ui.form .fields.info .field label,
+.ui.ui.form .fields.info .field .ui.label:not(.corner),
 .ui.ui.form .field.info label,
+.ui.ui.form .field.info .ui.label:not(.corner),
 .ui.ui.form .fields.info .field .input,
 .ui.ui.form .field.info .input {
   color: #276F86;
+}
+
+.ui.form .fields.info .field .ui.label,
+.ui.form .field.info .ui.label {
+  background-color: #c6e3e9;
 }
 
 .ui.form .fields.info .field .corner.label,
@@ -41994,7 +42283,7 @@ span.ui.massive.text {
 .ui.form .fields.info .field .ui.dropdown,
 .ui.form .fields.info .field .ui.dropdown .item,
 .ui.form .field.info .ui.dropdown,
-.ui.form .field.info .ui.dropdown .text,
+.ui.form .field.info .ui.dropdown > .text,
 .ui.form .field.info .ui.dropdown .item {
   background: #F8FFFF;
   color: #276F86;
@@ -42068,6 +42357,11 @@ span.ui.massive.text {
   color: #276F86;
 }
 
+.ui.inverted.form .fields.info .field label,
+.ui.inverted.form .info.field label {
+  color: #c6e3e9;
+}
+
 /* On Form */
 
 .ui.form.success .success.message:not(:empty) {
@@ -42104,10 +42398,17 @@ span.ui.massive.text {
 }
 
 .ui.ui.form .fields.success .field label,
+.ui.ui.form .fields.success .field .ui.label:not(.corner),
 .ui.ui.form .field.success label,
+.ui.ui.form .field.success .ui.label:not(.corner),
 .ui.ui.form .fields.success .field .input,
 .ui.ui.form .field.success .input {
   color: #2C662D;
+}
+
+.ui.form .fields.success .field .ui.label,
+.ui.form .field.success .ui.label {
+  background-color: #b9d1ad;
 }
 
 .ui.form .fields.success .field .corner.label,
@@ -42234,7 +42535,7 @@ span.ui.massive.text {
 .ui.form .fields.success .field .ui.dropdown,
 .ui.form .fields.success .field .ui.dropdown .item,
 .ui.form .field.success .ui.dropdown,
-.ui.form .field.success .ui.dropdown .text,
+.ui.form .field.success .ui.dropdown > .text,
 .ui.form .field.success .ui.dropdown .item {
   background: #FCFFF5;
   color: #2C662D;
@@ -42308,6 +42609,11 @@ span.ui.massive.text {
   color: #2C662D;
 }
 
+.ui.inverted.form .fields.success .field label,
+.ui.inverted.form .success.field label {
+  color: #b9d1ad;
+}
+
 /* On Form */
 
 .ui.form.warning .warning.message:not(:empty) {
@@ -42344,10 +42650,17 @@ span.ui.massive.text {
 }
 
 .ui.ui.form .fields.warning .field label,
+.ui.ui.form .fields.warning .field .ui.label:not(.corner),
 .ui.ui.form .field.warning label,
+.ui.ui.form .field.warning .ui.label:not(.corner),
 .ui.ui.form .fields.warning .field .input,
 .ui.ui.form .field.warning .input {
   color: #573A08;
+}
+
+.ui.form .fields.warning .field .ui.label,
+.ui.form .field.warning .ui.label {
+  background-color: #d7ccb5;
 }
 
 .ui.form .fields.warning .field .corner.label,
@@ -42474,7 +42787,7 @@ span.ui.massive.text {
 .ui.form .fields.warning .field .ui.dropdown,
 .ui.form .fields.warning .field .ui.dropdown .item,
 .ui.form .field.warning .ui.dropdown,
-.ui.form .field.warning .ui.dropdown .text,
+.ui.form .field.warning .ui.dropdown > .text,
 .ui.form .field.warning .ui.dropdown .item {
   background: #FFFAF3;
   color: #573A08;
@@ -42546,6 +42859,11 @@ span.ui.massive.text {
 .ui.form .fields.warning .field .checkbox .box:after,
 .ui.form .field.warning .checkbox .box:after {
   color: #573A08;
+}
+
+.ui.inverted.form .fields.warning .field label,
+.ui.inverted.form .warning.field label {
+  color: #d7ccb5;
 }
 
 /*--------------------
@@ -43060,7 +43378,7 @@ span.ui.massive.text {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Grid
+ * # Fomantic-UI 2.8.8 - Grid
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -44559,7 +44877,6 @@ span.ui.massive.text {
 .ui.grid > .justified.column.column,
 .ui.grid > .row > .justified.column.column {
   text-align: justify;
-  -webkit-hyphens: auto;
   -ms-hyphens: auto;
   hyphens: auto;
 }
@@ -45105,7 +45422,7 @@ span.ui.massive.text {
   --------------------*/
 
 @media only screen and (max-width: 767.98px) {
-  .ui.stackable.grid {
+  .ui.ui.ui.ui.stackable.grid {
     width: auto;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -45334,6 +45651,10 @@ span.ui.massive.text {
         Compact
   -----------------*/
 
+.ui.ui.ui.compact.grid {
+  margin: -0.5rem;
+}
+
 .ui.ui.ui.compact.grid > .column:not(.row),
 .ui.ui.ui.compact.grid > .row > .column {
   padding-left: 0.5rem;
@@ -45350,6 +45671,8 @@ span.ui.massive.text {
 .ui.ui.ui.compact.grid > .row {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */
@@ -45375,6 +45698,10 @@ span.ui.massive.text {
       Very compact
   -----------------*/
 
+.ui.ui.ui[class*="very compact"].grid {
+  margin: -0.25rem;
+}
+
 .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
 .ui.ui.ui[class*="very compact"].grid > .row > .column {
   padding-left: 0.25rem;
@@ -45391,8 +45718,8 @@ span.ui.massive.text {
 .ui.ui.ui[class*="very compact"].grid > .row {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */
@@ -45660,10 +45987,13 @@ span.ui.massive.text {
   margin: 0 0 0;
   -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.08);
-  -webkit-box-orient: vertical !important;
-  -webkit-box-direction: normal !important;
-  -ms-flex-direction: column !important;
-  flex-direction: column !important;
+}
+
+.ui.menu .dropdown.item:not(.column) .menu {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 /* Menu Items */
@@ -47946,7 +48276,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Message
+ * # Fomantic-UI 2.8.8 - Message
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -48061,8 +48391,14 @@ Floated Menu / Item
 
 /* Icon */
 
-.ui.message > i.icon {
+.ui.icon.message > .icons,
+.ui.icon.message > i.icon {
   margin-right: 0.6em;
+}
+
+.ui.icon.message > .icons:last-child,
+.ui.icon.message > i.icon:last-child {
+  margin: 0 0 0 0.6em;
 }
 
 /* Close Icon */
@@ -48130,6 +48466,25 @@ Floated Menu / Item
             Variations
 *******************************/
 
+.ui.centered.message,
+.ui.center.aligned.message {
+  text-align: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.ui.centered.message > .content,
+.ui.center.aligned.message > .content {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+}
+
+.ui.right.aligned.message {
+  text-align: right;
+}
+
 /*--------------
       Compact
   ---------------*/
@@ -48192,6 +48547,7 @@ Floated Menu / Item
   align-items: center;
 }
 
+.ui.icon.message > .icons,
 .ui.icon.message > i.icon:not(.close) {
   display: block;
   -webkit-box-flex: 0;
@@ -48212,11 +48568,12 @@ Floated Menu / Item
   vertical-align: middle;
 }
 
+.ui.icon.message > .icons + .content,
 .ui.icon.message > i.icon:not(.close) + .content {
   padding-left: 0;
 }
 
-.ui.icon.message > i.circular.icon {
+.ui.icon.message > i.circular {
   width: 1em;
 }
 
@@ -48257,6 +48614,11 @@ Floated Menu / Item
   color: #1A531B;
 }
 
+.ui.inverted.positive.message,
+.ui.inverted.positive.message .header {
+  color: #A3C293;
+}
+
 .ui.negative.message {
   background-color: #FFF6F6;
   color: #9F3A38;
@@ -48275,6 +48637,11 @@ Floated Menu / Item
 
 .ui.negative.message .header {
   color: #912D2B;
+}
+
+.ui.inverted.negative.message,
+.ui.inverted.negative.message .header {
+  color: #E0B4B4;
 }
 
 .ui.info.message {
@@ -48297,6 +48664,11 @@ Floated Menu / Item
   color: #0E566C;
 }
 
+.ui.inverted.info.message,
+.ui.inverted.info.message .header {
+  color: #c6e3e9;
+}
+
 .ui.warning.message {
   background-color: #FFFAF3;
   color: #573A08;
@@ -48315,6 +48687,11 @@ Floated Menu / Item
 
 .ui.warning.message .header {
   color: #794B02;
+}
+
+.ui.inverted.warning.message,
+.ui.inverted.warning.message .header {
+  color: #d7ccb5;
 }
 
 .ui.error.message {
@@ -48337,6 +48714,11 @@ Floated Menu / Item
   color: #912D2B;
 }
 
+.ui.inverted.error.message,
+.ui.inverted.error.message .header {
+  color: #ecd1d1;
+}
+
 .ui.success.message {
   background-color: #FCFFF5;
   color: #2C662D;
@@ -48355,6 +48737,11 @@ Floated Menu / Item
 
 .ui.success.message .header {
   color: #1A531B;
+}
+
+.ui.inverted.success.message,
+.ui.inverted.success.message .header {
+  color: #b9d1ad;
 }
 
 .ui.primary.message {
@@ -48695,7 +49082,7 @@ Floated Menu / Item
         Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Table
+ * # Fomantic-UI 2.8.8 - Table
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -49326,6 +49713,10 @@ Floated Menu / Item
   -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
   box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
+}
+
+.ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+  pointer-events: auto;
 }
 
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
@@ -51046,7 +51437,8 @@ Floated Menu / Item
   background: #FFFFFF;
 }
 
-.ui.inverted.definition.table > tbody > tr > td:first-child .ui.inverted.definition.table > tfoot > tr > td:first-child,
+.ui.inverted.definition.table > tbody > tr > td:first-child,
+.ui.inverted.definition.table > tfoot > tr > td:first-child,
 .ui.inverted.definition.table > tr > td:first-child {
   background: rgba(255, 255, 255, 0.02);
   color: #ffffff;
@@ -51281,7 +51673,7 @@ Floated Menu / Item
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Ad
+ * # Fomantic-UI 2.8.8 - Ad
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -51570,7 +51962,7 @@ Floated Menu / Item
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Card
+ * # Fomantic-UI 2.8.8 - Card
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -52034,6 +52426,62 @@ Floated Menu / Item
 }
 
 /*******************************
+            States
+*******************************/
+
+/*--------------
+      Disabled
+  ---------------*/
+
+.ui.disabled.card {
+  opacity: 0.45;
+  color: rgba(40, 40, 40, 0.3);
+  pointer-events: none;
+}
+
+/*--------------
+      Loading
+  ---------------*/
+
+.ui.loading.card {
+  position: relative;
+  cursor: default;
+  pointer-events: none;
+  -webkit-transition: all 0s linear;
+  transition: all 0s linear;
+}
+
+.ui.loading.card:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.28571429rem;
+  z-index: 100;
+}
+
+.ui.loading.card:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  margin: -1.5em 0 0 -1.5em;
+  width: 3em;
+  height: 3em;
+  -webkit-animation: loader 0.6s infinite linear;
+  animation: loader 0.6s infinite linear;
+  border: 0.2em solid #767676;
+  border-radius: 500rem;
+  -webkit-box-shadow: 0 0 0 1px transparent;
+  box-shadow: 0 0 0 1px transparent;
+  visibility: visible;
+  z-index: 101;
+}
+
+/*******************************
            Variations
 *******************************/
 
@@ -52075,7 +52523,6 @@ Floated Menu / Item
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 100%;
   border-radius: 0.28571429rem 0 0 0.28571429rem;
 }
 
@@ -52086,6 +52533,7 @@ Floated Menu / Item
 
 .ui.horizontal.cards > .card > .content,
 .ui.horizontal.card > .content {
+  border-top: none;
   -ms-flex-preferred-size: 1px;
   flex-basis: 1px;
 }
@@ -52995,6 +53443,16 @@ a.ui.card:hover,
   color: rgba(255, 255, 255, 0.9);
 }
 
+.ui.inverted.cards > .card > .content > a.header,
+.ui.inverted.card > .content > a.header {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.cards > .card > .content > a.header:hover,
+.ui.inverted.card > .content > a.header:hover {
+  color: #1e70bf;
+}
+
 /* Description */
 
 .ui.inverted.cards > .card > .content > .description,
@@ -53046,6 +53504,16 @@ a.inverted.ui.card:hover,
   background: #1B1C1D;
 }
 
+/* Loading */
+
+.ui.inverted.loading.card {
+  color: #FFFFFF;
+}
+
+.ui.inverted.loading.card:before {
+  background: rgba(0, 0, 0, 0.85);
+}
+
 /*******************************
          Theme Overrides
 *******************************/
@@ -53054,7 +53522,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Comment
+ * # Fomantic-UI 2.8.8 - Comment
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -53369,7 +53837,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Feed
+ * # Fomantic-UI 2.8.8 - Feed
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -53724,7 +54192,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Item
+ * # Fomantic-UI 2.8.8 - Item
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -54360,7 +54828,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Statistic
+ * # Fomantic-UI 2.8.8 - Statistic
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -55066,7 +55534,7 @@ a.inverted.ui.card:hover,
     User Variable Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Accordion
+ * # Fomantic-UI 2.8.8 - Accordion
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -55322,7 +55790,7 @@ a.inverted.ui.card:hover,
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Calendar
+ * # Fomantic-UI 2.8.8 - Calendar
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -55444,7 +55912,7 @@ a.inverted.ui.card:hover,
   color: rgba(40, 40, 40, 0.3);
 }
 
-.ui.calendar .ui.table tr .adjacent:not(.disabled) {
+.ui.calendar .ui.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(0, 0, 0, 0.6);
   background: rgba(0, 0, 0, 0.03);
 }
@@ -55487,7 +55955,7 @@ a.inverted.ui.card:hover,
   color: rgba(225, 225, 225, 0.3);
 }
 
-.ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled) {
+.ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.02);
 }
@@ -55513,7 +55981,7 @@ a.inverted.ui.card:hover,
          Theme Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Checkbox
+ * # Fomantic-UI 2.8.8 - Checkbox
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -55602,6 +56070,17 @@ a.inverted.ui.card:hover,
   transition: border 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
+}
+
+.ui.right.aligned.checkbox label {
+  padding-left: 0;
+  padding-right: 1.85714em;
+}
+
+.ui.right.aligned.checkbox label:after,
+.ui.right.aligned.checkbox label:before {
+  right: 0;
+  left: auto;
 }
 
 /*--------------
@@ -55711,6 +56190,11 @@ a.inverted.ui.card:hover,
   left: 1.075rem;
 }
 
+.ui.right.aligned.indeterminate.toggle.checkbox input:not([type=radio]) ~ label:after {
+  left: auto;
+  right: 1.075rem;
+}
+
 /*--------------
   Active Focus
 ---------------*/
@@ -55727,12 +56211,13 @@ a.inverted.ui.card:hover,
 }
 
 /*--------------
-    Read-Only
----------------*/
+      Read-Only
+  ---------------*/
 
 .ui.read-only.checkbox,
 .ui.read-only.checkbox label {
   cursor: default;
+  pointer-events: none;
 }
 
 /*--------------
@@ -55741,7 +56226,7 @@ a.inverted.ui.card:hover,
 
 .ui.disabled.checkbox label,
 .ui.checkbox input[disabled] ~ label {
-  cursor: default !important;
+  cursor: default;
   opacity: 0.5;
   color: #000000;
   pointer-events: none;
@@ -55957,6 +56442,23 @@ a.inverted.ui.card:hover,
   background-color: #000000 !important;
 }
 
+.ui.right.aligned.slider.checkbox label {
+  padding-left: 0;
+  padding-right: 4.5rem;
+}
+
+.ui.right.aligned.slider.checkbox label:after {
+  left: auto;
+  right: 2rem;
+  -webkit-transition: right 0.3s ease;
+  transition: right 0.3s ease;
+}
+
+.ui.right.aligned.slider.checkbox input:checked ~ label:after {
+  left: auto;
+  right: 0;
+}
+
 /*--------------
        Toggle
   ---------------*/
@@ -56069,6 +56571,23 @@ a.inverted.ui.card:hover,
 
 .ui.toggle.checkbox input:focus:checked ~ label:before {
   background-color: #0d71bb !important;
+}
+
+.ui.right.aligned.toggle.checkbox label {
+  padding-left: 0;
+  padding-right: 4.5rem;
+}
+
+.ui.right.aligned.toggle.checkbox input ~ label:after {
+  left: auto;
+  right: 2.15rem;
+  -webkit-transition: background 0.3s ease, right 0.3s ease;
+  transition: background 0.3s ease, right 0.3s ease;
+}
+
+.ui.right.aligned.toggle.checkbox input:checked ~ label:after {
+  left: auto;
+  right: -0.05rem;
 }
 
 /*******************************
@@ -56361,7 +56880,7 @@ a.inverted.ui.card:hover,
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Dimmer
+ * # Fomantic-UI 2.8.8 - Dimmer
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -56869,7 +57388,7 @@ body.dimmable > .dimmer {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Dropdown
+ * # Fomantic-UI 2.8.8 - Dropdown
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -56952,6 +57471,7 @@ body.dimmable > .dimmer {
 .ui.dropdown:not(.labeled) > .dropdown.icon {
   position: relative;
   width: auto;
+  min-width: 1em;
   font-size: 0.85714286em;
   margin: 0 0 0 1em;
 }
@@ -57150,6 +57670,7 @@ body.dimmable > .dimmer {
 
 /* Icons / Flags / Labels / Image */
 
+.ui.dropdown > .text > i.icons,
 .ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
@@ -57158,6 +57679,7 @@ body.dimmable > .dimmer {
   margin-top: 0em;
 }
 
+.ui.dropdown .menu > .item > i.icons,
 .ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
@@ -57166,11 +57688,13 @@ body.dimmable > .dimmer {
   margin-top: 0em;
 }
 
+.ui.dropdown > .text > i.icons,
 .ui.dropdown > .text > i.icon,
 .ui.dropdown > .text > .label,
 .ui.dropdown > .text > .flag,
 .ui.dropdown > .text > img,
 .ui.dropdown > .text > .image,
+.ui.dropdown .menu > .item > i.icons,
 .ui.dropdown .menu > .item > i.icon,
 .ui.dropdown .menu > .item > .label,
 .ui.dropdown .menu > .item > .flag,
@@ -57726,11 +58250,19 @@ select.ui.dropdown {
   font-size: 0.85714286em;
   margin: -0.78571429em;
   padding: 0.91666667em;
-  right: 3em;
+  right: 2em;
   top: 0.78571429em;
   position: absolute;
   opacity: 0.6;
   z-index: 3;
+}
+
+.ui.selection.dropdown > .remove.icon {
+  right: 3em;
+}
+
+.ui.inline.dropdown > .remove.icon {
+  right: 2.2em;
 }
 
 .ui.clearable.dropdown .text,
@@ -57743,6 +58275,14 @@ select.ui.dropdown {
 .ui.dropdown input:not([value]) ~ .remove.icon,
 .ui.dropdown.loading > .remove.icon {
   display: none;
+}
+
+.ui.dropdown:not(.selection) > .remove.icon ~ .dropdown.icon {
+  margin-left: 1.5em;
+}
+
+.ui.dropdown:not(.selection) > .remove.icon {
+  margin-top: -1.35em;
 }
 
 /*--------------
@@ -58191,12 +58731,14 @@ select.ui.dropdown {
         Clear
 ----------------------*/
 
+.ui.dropdown > .remove.icon,
 .ui.dropdown > .clear.dropdown.icon {
-  opacity: 0.8;
+  opacity: 0.6;
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
 
+.ui.dropdown > .remove.icon:hover,
 .ui.dropdown > .clear.dropdown.icon:hover {
   opacity: 1;
 }
@@ -58212,6 +58754,15 @@ select.ui.dropdown {
   cursor: default;
   pointer-events: none;
   opacity: 0.45;
+}
+
+/*--------------------
+          Read-Only
+  ----------------------*/
+
+.ui.read-only.dropdown {
+  cursor: default;
+  pointer-events: none;
 }
 
 /*******************************
@@ -58429,6 +58980,31 @@ select.ui.dropdown {
   .ui.dropdown .scrolling.menu {
     max-height: 20.57142857rem;
   }
+}
+
+/*--------------------
+          Labeled
+  ---------------------*/
+
+/* Regular Label on Left */
+
+.ui.labeled.input:not([class*="corner labeled"]) .label:first-child + .dropdown {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-color: transparent;
+}
+
+/* Regular Label on Right */
+
+.ui[class*="right labeled"].input > .dropdown:not(:last-child) {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  border-right-color: transparent !important;
+}
+
+.ui[class*="right labeled"].input > .dropdown + .label {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
 /*--------------
@@ -58854,6 +59430,7 @@ select.ui.dropdown {
 
 /* General rules and basic dropdowns */
 
+.ui.dropdown .inverted.menu,
 .ui.inverted.dropdown .menu {
   background: #1B1C1D;
   -webkit-box-shadow: none;
@@ -58861,10 +59438,12 @@ select.ui.dropdown {
   border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.ui.dropdown .inverted.menu > .item,
 .ui.inverted.dropdown .menu > .item {
   color: rgba(255, 255, 255, 0.8);
 }
 
+.ui.dropdown .inverted.menu .active.item,
 .ui.inverted.dropdown .menu .active.item {
   background: transparent;
   color: rgba(255, 255, 255, 0.8);
@@ -58872,30 +59451,36 @@ select.ui.dropdown {
   box-shadow: none;
 }
 
+.ui.dropdown .inverted.menu > .item:hover,
 .ui.inverted.dropdown .menu > .item:hover {
   background: rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.8);
 }
 
 .ui.inverted.dropdown.selected,
+.ui.dropdown .inverted.menu .selected.item,
 .ui.inverted.dropdown .menu .selected.item {
   background: rgba(255, 255, 255, 0.15);
   color: rgba(255, 255, 255, 0.8);
 }
 
+.ui.dropdown .inverted.menu > .header,
 .ui.inverted.dropdown .menu > .header {
   color: #FFFFFF;
 }
 
 .ui.inverted.dropdown > .text > .description,
+.ui.dropdown .inverted.menu > .item > .description,
 .ui.inverted.dropdown .menu > .item > .description {
   color: rgba(255, 255, 255, 0.5);
 }
 
+.ui.dropdown .inverted.menu > .divider,
 .ui.inverted.dropdown .menu > .divider {
   border-top: 1px solid rgba(255, 255, 255, 0.15);
 }
 
+.ui.dropdown .inverted.scrolling.menu,
 .ui.inverted.dropdown .scrolling.menu {
   border: none;
   border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -58923,11 +59508,13 @@ select.ui.dropdown {
   color: rgba(255, 255, 255, 0.9);
 }
 
+.ui.selection.active.dropdown .inverted.menu,
 .ui.inverted.selection.active.dropdown .menu,
 .ui.inverted.selection.active.dropdown:hover {
   border-color: rgba(255, 255, 255, 0.15);
 }
 
+.ui.selection.dropdown .inverted.menu > .item,
 .ui.inverted.selection.dropdown .menu > .item {
   border-top: 1px solid #242526;
 }
@@ -58951,12 +59538,14 @@ select.ui.dropdown {
   color: rgba(255, 255, 255, 0.7) !important;
 }
 
+.ui.dropdown .inverted.menu > .message:not(.ui),
 .ui.inverted.dropdown .menu > .message:not(.ui) {
   color: rgba(255, 255, 255, 0.5);
 }
 
 /* Fixing the border */
 
+.ui.dropdown .inverted.menu > .item:first-child,
 .ui.inverted.dropdown .menu > .item:first-child {
   border-top-width: 0;
 }
@@ -59010,22 +59599,27 @@ select.ui.dropdown {
 
 /* Scrollbars */
 
+.ui.dropdown .inverted.menu::-webkit-scrollbar-track,
 .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
   background: rgba(255, 255, 255, 0.1);
 }
 
+.ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
 .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
   background: rgba(255, 255, 255, 0.25);
 }
 
+.ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
 .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(255, 255, 255, 0.15);
 }
 
+.ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
 .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
 
+.ui.pointing.dropdown > .inverted.menu:after,
 .ui.inverted.pointing.dropdown > .menu:after {
   background: #1B1C1D;
   -webkit-box-shadow: -1px -1px 0 0 rgba(255, 255, 255, 0.15);
@@ -59101,7 +59695,7 @@ select.ui.dropdown {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Video
+ * # Fomantic-UI 2.8.8 - Video
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -59266,7 +59860,7 @@ select.ui.dropdown {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Modal
+ * # Fomantic-UI 2.8.8 - Modal
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -59301,9 +59895,9 @@ select.ui.dropdown {
   will-change: top, left, margin, transform, opacity;
 }
 
-.ui.modal > :first-child:not(.icon):not(.dimmer),
+.ui.modal > :first-child:not(.close):not(.dimmer),
 .ui.modal > i.icon:first-child + *,
-.ui.modal > .dimmer:first-child + *:not(.icon),
+.ui.modal > .dimmer:first-child + *:not(.close),
 .ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: 0.28571429rem;
   border-top-right-radius: 0.28571429rem;
@@ -59468,6 +60062,17 @@ select.ui.dropdown {
   border-top: none;
 }
 
+.ui.modal > .centered,
+.ui.modal > .center.aligned {
+  text-align: center;
+}
+
+.ui.modal > .centered.actions > .button:not(.fluid),
+.ui.modal > .center.aligned.actions > .button:not(.fluid) {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+}
+
 /*-------------------
        Responsive
 --------------------*/
@@ -59512,7 +60117,7 @@ select.ui.dropdown {
 /* Tablet and Mobile */
 
 @media only screen and (max-width: 991.98px) {
-  .ui.modal > .header {
+  .ui.modal > .close + .header {
     padding-right: 2.25rem;
   }
 
@@ -59527,8 +60132,11 @@ select.ui.dropdown {
 
 @media only screen and (max-width: 767.98px) {
   .ui.modal > .header {
-    padding: 0.75rem 1rem !important;
-    padding-right: 2.25rem !important;
+    padding: 0.75rem 1rem;
+  }
+
+  .ui.modal > .close + .header {
+    padding-right: 2.25rem;
   }
 
   .ui.overlay.fullscreen.modal > .content.content.content {
@@ -59787,8 +60395,8 @@ select.ui.dropdown {
   border-radius: 0;
 }
 
-.ui.modal > .close.inside + .header,
-.ui.fullscreen.modal > .header {
+.ui.modal > .close.inside + .header:not(.centered):not(.center):not(.icon),
+.ui.fullscreen.modal > .close + .header:not(.centered):not(.center):not(.icon) {
   padding-right: 2.25rem;
 }
 
@@ -60127,7 +60735,7 @@ select.ui.dropdown {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Nag
+ * # Fomantic-UI 2.8.8 - Nag
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -60151,7 +60759,7 @@ select.ui.dropdown {
   width: 100%;
   margin: 0;
   padding: 0.75em 1em;
-  background: #555555;
+  background: #777777;
   -webkit-box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   font-size: 1rem;
@@ -60185,6 +60793,10 @@ a.ui.nag {
   transition: opacity 0.2s ease;
 }
 
+.ui.nag:not(.overlay):not(.fixed) {
+  border-radius: 0.28571429rem;
+}
+
 /*******************************
              States
 *******************************/
@@ -60192,11 +60804,11 @@ a.ui.nag {
 /* Hover */
 
 .ui.nag:hover {
-  background: #555555;
+  background: #777777;
   opacity: 1;
 }
 
-.ui.nag .close:hover {
+.ui.nag > .close:hover {
   opacity: 1;
 }
 
@@ -60205,9 +60817,10 @@ a.ui.nag {
 *******************************/
 
 /*--------------
-     Static
----------------*/
+       Static
+  ---------------*/
 
+.ui.overlay.nags,
 .ui.overlay.nag {
   position: absolute;
   display: block;
@@ -60217,6 +60830,7 @@ a.ui.nag {
      Fixed
 ---------------*/
 
+.ui.fixed.nags,
 .ui.fixed.nag {
   position: fixed;
 }
@@ -60233,7 +60847,7 @@ a.ui.nag {
 }
 
 /*--------------
-     White
+     Inverted
 ---------------*/
 
 .ui.inverted.nags .nag,
@@ -60242,27 +60856,214 @@ a.ui.nag {
   color: rgba(0, 0, 0, 0.85);
 }
 
-.ui.inverted.nags .nag .close,
-.ui.inverted.nags .nag .title,
-.ui.inverted.nag .close,
-.ui.inverted.nag .title {
-  color: rgba(0, 0, 0, 0.4);
+.ui.inverted.nags .nag > .close,
+.ui.inverted.nag > .close {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.ui.inverted.nags .nag > .title,
+.ui.inverted.nag > .title {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/*-------------------
+        Sizes
+--------------------*/
+
+.ui.mini.nag,
+.ui.mini.nags .nag {
+  font-size: 0.78571429rem;
+}
+
+.ui.tiny.nag,
+.ui.tiny.nags .nag {
+  font-size: 0.85714286rem;
+}
+
+.ui.small.nag,
+.ui.small.nags .nag {
+  font-size: 0.92857143rem;
+}
+
+.ui.large.nag,
+.ui.large.nags .nag {
+  font-size: 1.14285714rem;
+}
+
+.ui.big.nag,
+.ui.big.nags .nag {
+  font-size: 1.28571429rem;
+}
+
+.ui.huge.nag,
+.ui.huge.nags .nag {
+  font-size: 1.42857143rem;
+  line-height: 1;
+}
+
+.ui.massive.nag,
+.ui.massive.nags .nag {
+  font-size: 1.71428571rem;
+  line-height: 1;
+}
+
+/*--------------
+     Colors
+-------------- */
+
+.ui.primary.nag {
+  background-color: #2185D0;
+}
+
+.ui.inverted.primary.nag {
+  background-color: #54C8FF;
+}
+
+.ui.secondary.nag {
+  background-color: #1B1C1D;
+}
+
+.ui.inverted.secondary.nag {
+  background-color: #545454;
+}
+
+.ui.red.nag {
+  background-color: #DB2828;
+}
+
+.ui.inverted.red.nag {
+  background-color: #FF695E;
+}
+
+.ui.orange.nag {
+  background-color: #F2711C;
+}
+
+.ui.inverted.orange.nag {
+  background-color: #FF851B;
+}
+
+.ui.yellow.nag {
+  background-color: #FBBD08;
+}
+
+.ui.inverted.yellow.nag {
+  background-color: #FFE21F;
+}
+
+.ui.olive.nag {
+  background-color: #B5CC18;
+}
+
+.ui.inverted.olive.nag {
+  background-color: #D9E778;
+}
+
+.ui.green.nag {
+  background-color: #21BA45;
+}
+
+.ui.inverted.green.nag {
+  background-color: #2ECC40;
+}
+
+.ui.teal.nag {
+  background-color: #00B5AD;
+}
+
+.ui.inverted.teal.nag {
+  background-color: #6DFFFF;
+}
+
+.ui.blue.nag {
+  background-color: #2185D0;
+}
+
+.ui.inverted.blue.nag {
+  background-color: #54C8FF;
+}
+
+.ui.violet.nag {
+  background-color: #6435C9;
+}
+
+.ui.inverted.violet.nag {
+  background-color: #A291FB;
+}
+
+.ui.purple.nag {
+  background-color: #A333C8;
+}
+
+.ui.inverted.purple.nag {
+  background-color: #DC73FF;
+}
+
+.ui.pink.nag {
+  background-color: #E03997;
+}
+
+.ui.inverted.pink.nag {
+  background-color: #FF8EDF;
+}
+
+.ui.brown.nag {
+  background-color: #A5673F;
+}
+
+.ui.inverted.brown.nag {
+  background-color: #D67C1C;
+}
+
+.ui.grey.nag {
+  background-color: #767676;
+}
+
+.ui.inverted.grey.nag {
+  background-color: #DCDDDE;
+}
+
+.ui.black.nag {
+  background-color: #1B1C1D;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.ui.inverted.black.nag {
+  background-color: #545454;
+}
+
+.ui.inverted.black.nag .title {
+  color: #FFFFFF;
 }
 
 /*******************************
            Groups
 *******************************/
 
-.ui.nags .nag {
-  border-radius: 0 !important;
+.ui.nags {
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-.ui.nags .nag:last-child {
+.ui.ui.nags .nag {
+  border-radius: 0;
+}
+
+.ui.nags:not(.bottom) .nag:last-child {
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 
-.ui.bottom.nags .nag:last-child {
+.ui.bottom.nags .nag:first-child {
   border-radius: 0.28571429rem 0.28571429rem 0 0;
+}
+
+.ui.nags:not(.fixed):not(.overlay) .nag:first-child {
+  border-radius: 0.28571429rem 0.28571429rem 0 0;
+}
+
+.ui.nags:not(.fixed):not(.overlay) .nag:only-child {
+  border-radius: 0.28571429rem;
 }
 
 /*******************************
@@ -60273,7 +61074,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Popup
+ * # Fomantic-UI 2.8.8 - Popup
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -60634,7 +61435,9 @@ a.ui.nag {
   top: 100%;
   left: 50%;
   margin-left: -0.07142857rem;
-  margin-top: 0.14285714rem;
+  margin-top: 0.30714286em;
+  -webkit-transform-origin: center top;
+  transform-origin: center top;
 }
 
 /* Bottom Left */
@@ -61183,7 +61986,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Progress Bar
+ * # Fomantic-UI 2.8.8 - Progress Bar
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -61198,7 +62001,9 @@ a.ui.nag {
 
 .ui.progress {
   position: relative;
-  display: block;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   max-width: 100%;
   border: none;
   margin: 1em 0 2.5em;
@@ -61265,6 +62070,17 @@ a.ui.nag {
   margin-top: -0.5em;
   font-weight: bold;
   text-align: left;
+}
+
+.ui.right.aligned.progress {
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.ui.right.aligned.progress .bar > .progress {
+  left: 0.5em;
+  right: auto;
 }
 
 /* Label */
@@ -61455,14 +62271,6 @@ a.ui.nag {
   color: #1A531B;
 }
 
-/* Multiple */
-
-.ui.multiple.progress {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 /*******************************
              States
 *******************************/
@@ -61544,6 +62352,11 @@ a.ui.nag {
   animation: progress-active 2s ease infinite;
   -webkit-transform-origin: left;
   transform-origin: left;
+}
+
+.ui.active.right.aligned.progress .bar::after {
+  -webkit-transform-origin: right;
+  transform-origin: right;
 }
 
 @-webkit-keyframes progress-active {
@@ -61640,7 +62453,6 @@ a.ui.nag {
 
 .ui.progress.attached,
 .ui.progress.attached .bar {
-  display: block;
   height: 0.2rem;
   padding: 0;
   overflow: hidden;
@@ -61944,6 +62756,7 @@ a.ui.nag {
 .ui.progress .bar .centered.progress {
   text-align: center;
   position: relative;
+  right: 0;
 }
 
 .ui.indeterminate.progress .bar::before {
@@ -62349,6 +63162,7 @@ a.ui.nag {
 }
 
 .ui.bottom.aligned.labeled.slider > .labels .label {
+  bottom: 0;
   -webkit-transform: translate(-50%, 100%);
   transform: translate(-50%, 100%);
 }
@@ -62364,7 +63178,8 @@ a.ui.nag {
 }
 
 .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
-  top: -100%;
+  top: auto;
+  bottom: 100%;
 }
 
 .ui.labeled.ticked.slider > .labels .halftick.label:after {
@@ -63091,7 +63906,7 @@ a.ui.nag {
         Slider Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Rating
+ * # Fomantic-UI 2.8.8 - Rating
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -63165,7 +63980,6 @@ a.ui.nag {
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.85)), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63205,7 +64019,6 @@ a.ui.nag {
   background: linear-gradient(to right, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #2185D0 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63231,7 +64044,6 @@ a.ui.nag {
   background: linear-gradient(to right, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #1B1C1D 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63257,7 +64069,6 @@ a.ui.nag {
   background: linear-gradient(to right, #FF695E 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #DB2828 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63283,7 +64094,6 @@ a.ui.nag {
   background: linear-gradient(to right, #FF851B 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #F2711C 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63309,7 +64119,6 @@ a.ui.nag {
   background: linear-gradient(to right, #FFE21F 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #FBBD08 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63335,7 +64144,6 @@ a.ui.nag {
   background: linear-gradient(to right, #D9E778 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #B5CC18 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63361,7 +64169,6 @@ a.ui.nag {
   background: linear-gradient(to right, #2ECC40 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #21BA45 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63387,7 +64194,6 @@ a.ui.nag {
   background: linear-gradient(to right, #6DFFFF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #00B5AD 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63413,7 +64219,6 @@ a.ui.nag {
   background: linear-gradient(to right, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #2185D0 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63439,7 +64244,6 @@ a.ui.nag {
   background: linear-gradient(to right, #A291FB 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #6435C9 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63465,7 +64269,6 @@ a.ui.nag {
   background: linear-gradient(to right, #DC73FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #A333C8 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63491,7 +64294,6 @@ a.ui.nag {
   background: linear-gradient(to right, #FF8EDF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #E03997 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63517,7 +64319,6 @@ a.ui.nag {
   background: linear-gradient(to right, #D67C1C 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #A5673F 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63543,7 +64344,6 @@ a.ui.nag {
   background: linear-gradient(to right, #DCDDDE 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #767676 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63569,7 +64369,6 @@ a.ui.nag {
   background: linear-gradient(to right, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   text-shadow: none;
   -webkit-text-stroke: #1B1C1D 0.78px;
-  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
 }
@@ -63586,6 +64385,7 @@ a.ui.nag {
 
 .ui.disabled.rating .icon {
   cursor: default;
+  pointer-events: none;
 }
 
 /*-------------------
@@ -63647,7 +64447,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Search
+ * # Fomantic-UI 2.8.8 - Search
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -64229,7 +65029,7 @@ a.ui.nag {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Shape
+ * # Fomantic-UI 2.8.8 - Shape
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -64390,7 +65190,7 @@ a.ui.nag {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Sidebar
+ * # Fomantic-UI 2.8.8 - Sidebar
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -65074,7 +65874,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Sticky
+ * # Fomantic-UI 2.8.8 - Sticky
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -65133,7 +65933,6 @@ body.pushable > .pusher {
 *******************************/
 
 .ui.native.sticky {
-  position: -webkit-sticky;
   position: -moz-sticky;
   position: -ms-sticky;
   position: -o-sticky;
@@ -65148,7 +65947,7 @@ body.pushable > .pusher {
          Site Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Tab
+ * # Fomantic-UI 2.8.8 - Tab
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -65232,7 +66031,7 @@ body.pushable > .pusher {
         User Overrides
 *******************************/
 /*!
- * # Fomantic-UI - Toast
+ * # Fomantic-UI 2.8.8 - Toast
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -65248,6 +66047,64 @@ body.pushable > .pusher {
 .ui.toast-container {
   position: fixed;
   z-index: 9999;
+}
+
+.ui.toast-container.ui.attached {
+  width: 100%;
+  left: 0;
+}
+
+.ui.toast-container.ui.attached .vertical.attached {
+  border-radius: 0;
+}
+
+.ui.toast-container.ui.attached.ui.ui .attached.actions .button {
+  border-radius: 0;
+}
+
+.ui.toast-container.ui.attached .toast-box {
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+}
+
+.ui.toast-container.ui.attached .toast-box > .ui.toast,
+.ui.toast-container.ui.attached .toast-box > .ui.message {
+  margin-left: 0;
+}
+
+.ui.toast-container.ui.attached .toast-box.floating,
+.ui.toast-container.ui.attached .toast-box.hoverfloating:hover {
+  border: none;
+}
+
+.ui.toast-container.ui.attached .toast-box > .vertical > .content {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.ui.toast-container.ui.attached .toast-box > * {
+  width: 100%;
+  border-radius: 0;
+}
+
+.ui.toast-container.ui.attached .toast-box > * > .vertical:not(.actions) {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.ui.toast-container.ui.attached .toast-box > .attached.actions {
+  margin-right: 1px;
+}
+
+.ui.toast-container.ui.attached.top {
+  top: 0;
+}
+
+.ui.toast-container.ui.attached.bottom {
+  bottom: 0;
 }
 
 .ui.toast-container.top.right {
@@ -65292,6 +66149,20 @@ body.pushable > .pusher {
 .ui.toast-container .animating.toast-box,
 .ui.toast-container .toast-box {
   display: table !important;
+}
+
+.ui.toast-container.horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.ui.toast-container.horizontal .toast-box {
+  margin-right: 0.5em;
 }
 
 .ui.toast-container .toast-box {
@@ -65634,10 +66505,6 @@ body.pushable > .pusher {
   border-bottom-right-radius: 0;
 }
 
-.ui.vertical.attached.left.actions .button:not(:first-child):not(:last-child) {
-  margin-left: -1px;
-}
-
 .ui.vertical.attached.left.message.message.message {
   border-top-right-radius: 0.28571429rem;
   border-bottom-right-radius: 0.28571429rem;
@@ -65717,7 +66584,11 @@ body.pushable > .pusher {
   font-size: 1.5em;
 }
 
-.ui.toast:not(.vertical) > i.icon:not(.close) {
+.ui.toast:not(.vertical):not(.centered):not(.center) > i.icon:not(.close) {
+  position: absolute;
+}
+
+.ui.toast:not(.vertical):not(.centered):not(.center) > .ui.image {
   position: absolute;
 }
 
@@ -65727,10 +66598,6 @@ body.pushable > .pusher {
 
 .ui.toast:not(.vertical) > .close.icon + .content {
   padding-left: 1.5em;
-}
-
-.ui.toast:not(.vertical) > .ui.image {
-  position: absolute;
 }
 
 .ui.toast:not(.vertical) > .ui.image.avatar + .content {
@@ -65753,8 +66620,8 @@ body.pushable > .pusher {
   min-height: 150px;
 }
 
-.ui.toast:not(.vertical) > .centered.image,
-.ui.toast:not(.vertical) > .centered.icon {
+.ui.toast:not(.vertical):not(.centered):not(.center) > .centered.image,
+.ui.toast:not(.vertical):not(.centered):not(.center) > .centered.icon {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
   top: 50%;
@@ -65813,6 +66680,43 @@ body.pushable > .pusher {
 
 .ui.center.toast-container .toast-box {
   margin-right: auto;
+}
+
+.ui.ui.toast-container .toast-box .centered.toast,
+.ui.ui.toast-container .toast-box .center.aligned.toast {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.ui.ui.toast-container .toast-box .centered.toast > .content,
+.ui.ui.toast-container .toast-box .center.aligned.toast > .content,
+.ui.ui.toast-container .toast-box .centered.toast > .ui.image,
+.ui.ui.toast-container .toast-box .center.aligned.toast > .ui.image,
+.ui.ui.toast-container .toast-box .centered.toast > i.icon:not(.close),
+.ui.ui.toast-container .toast-box .center.aligned.toast > i.icon:not(.close) {
+  -ms-flex-item-align: center;
+  align-self: center;
+}
+
+.ui.toast-container .toast-box .toast .centered.content,
+.ui.toast-container .toast-box .toast .center.aligned.content {
+  text-align: center;
+}
+
+.ui.toast-container .toast-box .centered.actions,
+.ui.toast-container .toast-box .center.aligned.actions {
+  text-align: center;
+}
+
+.ui.toast-container .toast-box .centered.actions:not(.attached) > .button:not(.fluid),
+.ui.toast-container .toast-box .center.aligned.actions:not(.attached) > .button:not(.fluid) {
+  margin-left: 0.25em;
+  margin-right: 0.25em;
 }
 
 /*--------------
@@ -66072,7 +66976,7 @@ body.pushable > .pusher {
   }
 }
 /*!
- * # Fomantic-UI - Transition
+ * # Fomantic-UI 2.8.8 - Transition
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
