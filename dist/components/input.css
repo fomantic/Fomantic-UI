@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Input
+ * # Fomantic-UI 2.8.8 - Input
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -62,6 +62,7 @@
 }
 .ui.input > input::-moz-placeholder {
   color: rgba(191, 191, 191, 0.87);
+  opacity: 1;
 }
 .ui.input > input:-ms-input-placeholder {
   color: rgba(191, 191, 191, 0.87);
