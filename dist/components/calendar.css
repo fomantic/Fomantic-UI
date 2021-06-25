@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Calendar
+ * # Fomantic-UI 2.8.8 - Calendar
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -109,7 +109,7 @@
   cursor: default;
   color: rgba(40, 40, 40, 0.3);
 }
-.ui.calendar .ui.table tr .adjacent:not(.disabled) {
+.ui.calendar .ui.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(0, 0, 0, 0.6);
   background: rgba(0, 0, 0, 0.03);
 }
@@ -146,7 +146,7 @@
 .ui.inverted.calendar .ui.inverted.table tr .disabled {
   color: rgba(225, 225, 225, 0.3);
 }
-.ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled) {
+.ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.02);
 }

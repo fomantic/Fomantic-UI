@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Container
+ * # Fomantic-UI 2.8.8 - Container
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -127,9 +127,8 @@
 }
 .ui.justified.container {
   text-align: justify;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
+  -ms-hyphens: auto;
+      hyphens: auto;
 }
 
 
