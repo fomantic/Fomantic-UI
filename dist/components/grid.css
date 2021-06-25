@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Grid
+ * # Fomantic-UI 2.8.8 - Grid
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1320,9 +1320,8 @@
 .ui.grid > .justified.column.column,
 .ui.grid > .row > .justified.column.column {
   text-align: justify;
-  -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-          hyphens: auto;
+  -ms-hyphens: auto;
+      hyphens: auto;
 }
 
 /*----------------------
@@ -1794,7 +1793,7 @@
   --------------------*/
 
 @media only screen and (max-width: 767.98px) {
-  .ui.stackable.grid {
+  .ui.ui.ui.ui.stackable.grid {
     width: auto;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -1998,6 +1997,9 @@
         Compact
   -----------------*/
 
+.ui.ui.ui.compact.grid {
+  margin: -0.5rem;
+}
 .ui.ui.ui.compact.grid > .column:not(.row),
 .ui.ui.ui.compact.grid > .row > .column {
   padding-left: 0.5rem;
@@ -2012,6 +2014,8 @@
 .ui.ui.ui.compact.grid > .row {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */
@@ -2034,6 +2038,9 @@
       Very compact
   -----------------*/
 
+.ui.ui.ui[class*="very compact"].grid {
+  margin: -0.25rem;
+}
 .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
 .ui.ui.ui[class*="very compact"].grid > .row > .column {
   padding-left: 0.25rem;
@@ -2048,8 +2055,8 @@
 .ui.ui.ui[class*="very compact"].grid > .row {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */
