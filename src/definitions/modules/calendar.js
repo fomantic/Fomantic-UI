@@ -165,10 +165,6 @@ $.fn.calendar = function(parameters) {
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
               };
-              onHidden = function () {
-                module.blur();
-                return settings.onHidden.apply($container, arguments);
-              };
             }
             var onShow = function () {
               //reset the focus date onShow
