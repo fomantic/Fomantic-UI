@@ -923,6 +923,7 @@ $.fn.calendar = function(parameters) {
                 //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
                 var endModule = module.get.calendarModule(settings.endCalendar);
                 if (endModule) {
+                  endModule.refresh();
                   if (endModule.setting('on') !== 'focus') {
                     endModule.popup('show');
                   }
