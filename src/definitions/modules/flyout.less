@@ -1,0 +1,654 @@
+/*!
+ * # Fomantic-UI - Flyout
+ * http://github.com/fomantic/Fomantic-UI/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+
+/*******************************
+            Theme
+*******************************/
+
+@type    : 'module';
+@element : 'flyout';
+
+@import (multiple) '../../theme.config';
+
+/*******************************
+             Flyout
+*******************************/
+
+/* Flyout Menu */
+.ui.flyout {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  backface-visibility: hidden;
+  transition: none;
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+  visibility: hidden;
+  -webkit-overflow-scrolling: touch;
+
+  height: 100% !important;
+  max-height: 100%;
+  border-radius: 0 !important;
+  margin: 0 !important;
+  overflow-y: auto !important;
+  z-index: @topLayer;
+}
+
+/* GPU Layers for Child Elements */
+.ui.flyout > * {
+  backface-visibility: hidden;
+}
+
+
+/*--------------
+   Direction
+---------------*/
+& when (@variationFlyoutLeft) {
+  .ui.left.flyout {
+    right: auto;
+    left: 0;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+& when (@variationFlyoutRight) {
+  .ui.right.flyout {
+    right: 0 !important;
+    left: auto !important;
+    transform: translate3d(100%, 0, 0);
+  }
+}
+
+& when (@variationFlyoutTop) or (@variationFlyoutBottom) {
+  .ui.top.flyout,
+  .ui.bottom.flyout {
+    width: 100% !important;
+    height: auto !important;
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.flyout {
+      top: 0 !important;
+      bottom: auto !important;
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.flyout {
+      top: auto !important;
+      bottom: 0 !important;
+      transform: translate3d(0, 100%, 0);
+    }
+  }
+}
+
+
+/*--------------
+     Pushable
+---------------*/
+
+.pushable {
+  height: 100%;
+  overflow-x: hidden;
+  padding: 0 !important;
+}
+
+/* Whole Page */
+body.pushable {
+  background: @canvasBackground;
+  &.dimmed {
+    background: inherit;
+  }
+}
+
+/* Page Context */
+.pushable:not(body) {
+  transform: translate3d(0, 0, 0);
+  overflow-y: hidden;
+}
+.pushable:not(body) > .ui.flyout,
+.pushable:not(body) > .fixed,
+.pushable:not(body) > .pusher:after {
+  position: absolute;
+}
+
+
+/*--------------
+     Fixed
+---------------*/
+
+.pushable > .fixed {
+  position: fixed;
+  backface-visibility: hidden;
+
+  transition: transform @duration @easing;
+  will-change: transform;
+  z-index: @fixedLayer;
+}
+
+/*--------------
+     Page
+---------------*/
+
+.pushable > .pusher {
+  position: relative;
+  backface-visibility: hidden;
+  overflow: hidden;
+  min-height: 100%;
+  transition: transform @duration @easing;
+  z-index: @middleLayer;
+
+  /* Pusher should inherit background from context */
+  background: inherit;
+}
+
+body.pushable > .pusher {
+  background: @pageBackground;
+}
+
+/*--------------
+     Dimmer
+---------------*/
+
+.pushable > .pusher:after {
+  position: fixed;
+  top: 0;
+  right: 0;
+  content: '';
+  background: @dimmerColor;
+  overflow: hidden;
+  opacity: 0;
+  transition: @dimmerTransition;
+  will-change: opacity;
+  z-index: @dimmerLayer;
+}
+
+/*--------------
+    Coupling
+---------------*/
+
+.ui.flyout.menu .item {
+  border-radius: 0 !important;
+}
+
+/*******************************
+            States
+*******************************/
+
+/*--------------
+     Dimmed
+---------------*/
+
+.pushable > .pusher.dimmed:after {
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 1 !important;
+}
+
+/*--------------
+    Animating
+---------------*/
+
+.ui.animating.flyout {
+  visibility: visible;
+}
+
+/*--------------
+     Visible
+---------------*/
+
+.ui.visible.flyout {
+  visibility: visible;
+  transform: translate3d(0, 0, 0);
+}
+
+/* Shadow Direction */
+& when (@variationFlyoutLeft) or (@variationFlyoutRight) {
+  .ui.left.visible.flyout,
+  .ui.right.visible.flyout {
+    box-shadow: @horizontalBoxShadow;
+  }
+}
+& when (@variationFlyoutTop) or (@variationFlyoutBottom) {
+  .ui.top.visible.flyout,
+  .ui.bottom.visible.flyout {
+    box-shadow: @verticalBoxShadow;
+  }
+}
+
+/* Visible On Load */
+& when (@variationFlyoutLeft) {
+  .ui.visible.left.flyout ~ .fixed,
+  .ui.visible.left.flyout ~ .pusher {
+    transform: translate3d(@width, 0, 0);
+  }
+}
+& when (@variationFlyoutRight) {
+  .ui.visible.right.flyout ~ .fixed,
+  .ui.visible.right.flyout ~ .pusher {
+    transform: translate3d(-@width, 0, 0);
+  }
+}
+& when (@variationFlyoutTop) {
+  .ui.visible.top.flyout ~ .fixed,
+  .ui.visible.top.flyout ~ .pusher {
+    transform: translate3d(0, @height, 0);
+  }
+}
+& when (@variationFlyoutBottom) {
+  .ui.visible.bottom.flyout ~ .fixed,
+  .ui.visible.bottom.flyout ~ .pusher {
+    transform: translate3d(0, -@height, 0);
+  }
+}
+
+& when (@variationFlyoutLeft) or (@variationFlyoutRight) {
+  /* opposite sides visible forces content overlay */
+  .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .fixed,
+  .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .pusher,
+  .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .fixed,
+  .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .pusher {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/*--------------
+       iOS
+---------------*/
+
+
+/*******************************
+          Variations
+*******************************/
+
+/*--------------
+     Width
+---------------*/
+
+/* Left / Right */
+& when (@variationFlyoutLeft) or (@variationFlyoutRight) {
+  & when (@variationFlyoutThin) {
+    .ui.thin.left.flyout,
+    .ui.thin.right.flyout {
+      width: @thinWidth;
+    }
+
+    .ui[class*="very thin"].left.flyout,
+    .ui[class*="very thin"].right.flyout {
+      width: @veryThinWidth;
+    }
+  }
+
+  .ui.left.flyout,
+  .ui.right.flyout {
+    width: @width;
+  }
+
+  & when (@variationFlyoutWide) {
+    .ui.wide.left.flyout,
+    .ui.wide.right.flyout {
+      width: @wideWidth;
+    }
+
+    .ui[class*="very wide"].left.flyout,
+    .ui[class*="very wide"].right.flyout {
+      width: @veryWideWidth;
+    }
+  }
+
+  /* Left Visible */
+  & when (@variationFlyoutLeft) {
+    & when (@variationFlyoutThin) {
+      .ui.visible.thin.left.flyout ~ .fixed,
+      .ui.visible.thin.left.flyout ~ .pusher {
+        transform: translate3d(@thinWidth, 0, 0);
+      }
+
+      .ui.visible[class*="very thin"].left.flyout ~ .fixed,
+      .ui.visible[class*="very thin"].left.flyout ~ .pusher {
+        transform: translate3d(@veryThinWidth, 0, 0);
+      }
+    }
+
+    & when (@variationFlyoutWide) {
+      .ui.visible.wide.left.flyout ~ .fixed,
+      .ui.visible.wide.left.flyout ~ .pusher {
+        transform: translate3d(@wideWidth, 0, 0);
+      }
+
+      .ui.visible[class*="very wide"].left.flyout ~ .fixed,
+      .ui.visible[class*="very wide"].left.flyout ~ .pusher {
+        transform: translate3d(@veryWideWidth, 0, 0);
+      }
+    }
+  }
+
+  /* Right Visible */
+  & when (@variationFlyoutRight) {
+    & when (@variationFlyoutThin) {
+      .ui.visible.thin.right.flyout ~ .fixed,
+      .ui.visible.thin.right.flyout ~ .pusher {
+        transform: translate3d(-@thinWidth, 0, 0);
+      }
+
+      .ui.visible[class*="very thin"].right.flyout ~ .fixed,
+      .ui.visible[class*="very thin"].right.flyout ~ .pusher {
+        transform: translate3d(-@veryThinWidth, 0, 0);
+      }
+    }
+
+    & when (@variationFlyoutWide) {
+      .ui.visible.wide.right.flyout ~ .fixed,
+      .ui.visible.wide.right.flyout ~ .pusher {
+        transform: translate3d(-@wideWidth, 0, 0);
+      }
+
+      .ui.visible[class*="very wide"].right.flyout ~ .fixed,
+      .ui.visible[class*="very wide"].right.flyout ~ .pusher {
+        transform: translate3d(-@veryWideWidth, 0, 0);
+      }
+    }
+  }
+}
+
+
+
+/*******************************
+          Animations
+*******************************/
+
+& when (@variationFlyoutOverlay) {
+  /*--------------
+      Overlay
+  ---------------*/
+
+  /* Set-up */
+  .ui.overlay.flyout {
+    z-index: @topLayer;
+  }
+
+  /* Initial */
+  & when (@variationFlyoutLeft) {
+    .ui.left.overlay.flyout {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.right.overlay.flyout {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.overlay.flyout {
+      transform: translate3d(0%, -100%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.overlay.flyout {
+      transform: translate3d(0%, 100%, 0);
+    }
+  }
+
+  /* Animation */
+  .animating.ui.overlay.flyout,
+  .ui.visible.overlay.flyout {
+    transition: transform @duration @easing;
+  }
+
+  /* End - flyout */
+  & when (@variationFlyoutLeft) {
+    .ui.visible.left.overlay.flyout {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.visible.right.overlay.flyout {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.visible.top.overlay.flyout {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.visible.bottom.overlay.flyout {
+      transform: translate3d(0%, 0, 0);
+    }
+  }
+  /* End - Pusher */
+  .ui.visible.overlay.flyout ~ .fixed,
+  .ui.visible.overlay.flyout ~ .pusher {
+    transform: none !important;
+  }
+}
+
+
+& when (@variationFlyoutPush) {
+  /*--------------
+        Push
+  ---------------*/
+
+  /* Initial */
+  .ui.push.flyout {
+    transition: transform @duration @easing;
+    z-index: @topLayer;
+  }
+
+  /* flyout - Initial */
+  & when (@variationFlyoutLeft) {
+    .ui.left.push.flyout {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.right.push.flyout {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.push.flyout {
+      transform: translate3d(0%, -100%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.push.flyout {
+      transform: translate3d(0%, 100%, 0);
+    }
+  }
+
+  /* End */
+  .ui.visible.push.flyout {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+& when (@variationFlyoutUncover) {
+  /*--------------
+      Uncover
+  ---------------*/
+
+  /* Initial */
+  .ui.uncover.flyout {
+    transform: translate3d(0, 0, 0);
+    z-index: @bottomLayer;
+  }
+
+  /* End */
+  .ui.visible.uncover.flyout {
+    transform: translate3d(0, 0, 0);
+    transition: transform @duration @easing;
+  }
+}
+
+& when (@variationFlyoutSlideAlong) {
+  /*--------------
+     Slide Along
+  ---------------*/
+
+  /* Initial */
+  .ui.slide.along.flyout {
+    z-index: @bottomLayer;
+  }
+
+  /* flyout - Initial */
+  & when (@variationFlyoutLeft) {
+    .ui.left.slide.along.flyout {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.right.slide.along.flyout {
+      transform: translate3d(50%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.slide.along.flyout {
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.slide.along.flyout {
+      transform: translate3d(0%, 50%, 0);
+    }
+  }
+
+  /* Animation */
+  .ui.animating.slide.along.flyout {
+    transition: transform @duration @easing;
+  }
+
+  /* End */
+  .ui.visible.slide.along.flyout {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+& when (@variationFlyoutSlideOut) {
+  /*--------------
+     Slide Out
+  ---------------*/
+
+  /* Initial */
+  .ui.slide.out.flyout {
+    z-index: @bottomLayer;
+  }
+
+  /* flyout - Initial */
+  & when (@variationFlyoutLeft) {
+    .ui.left.slide.out.flyout {
+      transform: translate3d(50%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.right.slide.out.flyout {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.slide.out.flyout {
+      transform: translate3d(0%, 50%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.slide.out.flyout {
+      transform: translate3d(0%, -50%, 0);
+    }
+  }
+
+  /* Animation */
+  .ui.animating.slide.out.flyout {
+    transition: transform @duration @easing;
+  }
+
+  /* End */
+  .ui.visible.slide.out.flyout {
+    transform: translate3d(0%, 0, 0);
+  }
+}
+
+& when (@variationFlyoutScale) {
+  /*--------------
+     Scale Down
+  ---------------*/
+
+  /* Initial */
+  .ui.scale.down.flyout {
+    transition: transform @duration @easing;
+    z-index: @topLayer;
+  }
+
+
+  & when (@variationFlyoutLeft) {
+    .ui.left.scale.down.flyout {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.right.scale.down.flyout {
+      transform: translate3d(100%, 0, 0);
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.top.scale.down.flyout {
+      transform: translate3d(0%, -100%, 0);
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.bottom.scale.down.flyout {
+      transform: translate3d(0%, 100%, 0);
+    }
+  }
+
+  /* Pusher - Initial */
+  & when (@variationFlyoutLeft) {
+    .ui.scale.down.left.flyout ~ .pusher {
+      transform-origin: 75% 50%;
+    }
+  }
+  & when (@variationFlyoutRight) {
+    .ui.scale.down.right.flyout ~ .pusher {
+      transform-origin: 25% 50%;
+    }
+  }
+  & when (@variationFlyoutTop) {
+    .ui.scale.down.top.flyout ~ .pusher {
+      transform-origin: 50% 75%;
+    }
+  }
+  & when (@variationFlyoutBottom) {
+    .ui.scale.down.bottom.flyout ~ .pusher {
+      transform-origin: 50% 25%;
+    }
+  }
+
+  /* Animation */
+  .ui.animating.scale.down > .visible.ui.flyout {
+    transition: transform @duration @easing;
+  }
+  .ui.visible.scale.down.flyout ~ .pusher,
+  .ui.animating.scale.down.flyout ~ .pusher {
+    display: block !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden !important;
+  }
+
+  /* End */
+  .ui.visible.scale.down.flyout {
+    transform: translate3d(0, 0, 0);
+  }
+  .ui.visible.scale.down.flyout ~ .pusher {
+    transform: scale(0.75);
+  }
+}
+
+.loadUIOverrides();
