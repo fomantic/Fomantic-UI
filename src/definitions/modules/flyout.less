@@ -42,6 +42,8 @@
   margin: 0 !important;
   overflow-y: auto !important;
   z-index: @topLayer;
+
+  background: #FFFFFF;
 }
 
 /* GPU Layers for Child Elements */
@@ -49,6 +51,82 @@
   backface-visibility: hidden;
 }
 
+/*--------------
+   Close
+---------------*/
+.ui.flyout > .close {
+  cursor: pointer;
+  position: absolute;
+  top: 1.25rem;
+  right: 1.5rem;
+  z-index: 1;
+  opacity: 0.8;
+  font-size: 1.25em;
+  color: rgba(0, 0, 0, 0.85);
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  margin: 0 0 0 0.25rem;
+  text-align: right;
+}
+
+.ui.flyout > .close:hover {
+  opacity: 1;
+}
+
+/*--------------
+   Header
+---------------*/
+.ui.flyout > .header {
+  display: block;
+  background: #FFFFFF;
+  margin: 0;
+  padding: 1.25rem 1.5rem;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  color: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+/*--------------
+   Content
+---------------*/
+.ui.flyout > .content {
+  display: block;
+  width: 100%;
+  font-size: 1em;
+  line-height: 1.4;
+  padding: 1.5rem;
+  background: #FFFFFF;
+}
+.ui.flyout.left > .content,
+.ui.flyout.right > .content {
+  min-height: calc(100vh - 9.1rem);
+}
+
+.ui.flyout.left > .scrolling.content,
+.ui.flyout.right > .scrolling.content{
+  max-height: calc(100vh - 9.1rem);
+  overflow: auto;
+}
+
+.ui.flyout.top > .scrolling.content,
+.ui.flyout.bottom > .scrolling.content{
+  max-height: calc(80vh - 9.1rem);
+  overflow: auto;
+}
+
+/*--------------
+   Actions
+---------------*/
+.ui.flyout > .actions {
+  padding: 1rem 1rem;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  text-align: right;
+}
+.ui.flyout .actions > .button:not(.fluid) {
+  margin-left: 0.75em;
+}
 
 /*--------------
    Direction
@@ -264,6 +342,27 @@ body.pushable > .pusher {
        iOS
 ---------------*/
 
+/*--------------
+     Inverted
+---------------*/
+.ui.flyout.inverted {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.ui.flyout.inverted > .close {
+  color: #FFFFFF;
+}
+
+.ui.flyout.inverted > .header,
+.ui.flyout.inverted > .content {
+  background: rgba(0, 0, 0, 0.9);
+  color: #FFFFFF;
+}
+.ui.flyout.inverted > .actions {
+  background: #191A1B;
+  border-top: 1px solid rgba(34, 36, 38, 0.85);
+  color: #FFFFFF;
+}
 
 /*******************************
           Variations
