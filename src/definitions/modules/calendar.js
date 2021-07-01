@@ -392,7 +392,6 @@ $.fn.calendar = function(parameters) {
                     }
                     if (mode === 'hour') {
                       var disabledHour = module.helper.findHourAsObject(cellDate, mode, settings.disabledHours);
-                      console.log(cellDate, disabledHour)
                       if (disabledHour !== null && disabledHour[metadata.message]) {
                         cell.attr("data-tooltip", disabledHour[metadata.message]);
                         cell.attr("data-position", disabledHour[metadata.position] || tooltipPosition);
