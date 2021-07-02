@@ -1019,7 +1019,7 @@ $.fn.calendar = function(parameters) {
                 }
               }
             })) || (mode === 'hour' && settings.disabledHours.some(function(d){
-              if(typeof d === 'string') {
+              if (typeof d === 'string') {
                 d = module.helper.sanitiseDate(d);
               }
               if (d instanceof Date) {
@@ -1127,20 +1127,31 @@ $.fn.calendar = function(parameters) {
           findHourAsObject: function(date, mode, hours) {
             if (mode === 'hour') {
               var d;
+              var hourCheck = function(date, d) {
+                 if (d[metadata.hours]) {
+                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
+                      return d;
+                  } else if (Array.isArray(d[metadata.hours])) {
+                    if (d[metadata.hours].indexOf(date.getHours()) > -1) {
+                      return d;
+                    }
+                  }
+                }
+              }
               for (var i = 0; i < hours.length; i++) {
                 d = hours[i];
                 if (typeof d === 'number' && date.getHours() == d) {
                   return null;
                 } else if (d !== null && typeof d === 'object') {
-                  if (d[metadata.days]) {
+                  if (d[metadata.days] && hourCheck(date,d)) {
                     if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
-                        return d;
+                      return d;
                     } else if (Array.isArray(d[metadata.days])) {
                       if (d[metadata.days].indexOf(date.getDay()) > -1) {
                         return d;
                       }
                     }
-                  } else if (d[metadata.date]) {
+                  } else if (d[metadata.date] && hourCheck(date,d)) {
                     if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                       return d;
                     } else if (Array.isArray(d[metadata.date])) {
@@ -1148,14 +1159,8 @@ $.fn.calendar = function(parameters) {
                         return d;
                       }
                     }
-                  } else if (d[metadata.hours]) {
-                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
-                      return d;
-                    } else if (Array.isArray(d[metadata.hours])) {
-                      if (d[metadata.hours].indexOf(date.getHours()) > -1) {
-                        return d;
-                      }
-                    }
+                  } else if (hourCheck(date,d)) {
+                    return d;
                   }
                 }
               }
