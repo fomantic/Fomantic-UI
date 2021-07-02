@@ -624,7 +624,9 @@ $.fn.calendar = function(parameters) {
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
                 if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
-                  module.selectDate(date);
+                  if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
+                    module.selectDate(date);
+                  }
                 }
                 //disable form submission:
                 event.preventDefault();
