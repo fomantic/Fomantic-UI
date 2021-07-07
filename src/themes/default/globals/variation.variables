@@ -388,6 +388,8 @@
 @variationCheckboxFitted: true;
 @variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
+@variationCheckboxColored: true;
+@variationCheckboxOutline: true;
 
 /* Dimmer */
 @variationDimmerInverted: true;
