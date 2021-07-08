@@ -334,7 +334,7 @@ $.api = $.fn.api = function(parameters) {
           cancelled: function() {
             return (module.cancelled || false);
           },
-          succesful: function() {
+          successful: function() {
             module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
             return module.was.successful();
           },
