@@ -122,7 +122,7 @@ $.fn.calendar = function(parameters) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
             module.setting('type', module.get.type());
-            module.setting('on', settings.on || ($input.length ? 'focus' : 'click'));
+            module.setting('on', settings.on || 'click');
           },
           popup: function () {
             if (settings.inline) {
