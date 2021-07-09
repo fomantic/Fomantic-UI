@@ -90,7 +90,7 @@ function build(src, type, compress, config, opts) {
  */
 function pack(type, compress) {
   const output       = type === 'docs' ? docsConfig.paths.output : config.paths.output;
-  const ignoredGlobs = type === 'rtl' ? globs.ignoredRTL + '.rtl.css' : globs.ignored + '.css';
+  const ignoredGlobs = type === 'rtl' ? globs.ignoredRTL + (compress ? '.min.rtl.css' : '!(*.min).rtl.css') : globs.ignored + (compress ? '.min.css' : '!(*.min).css');
 
   let concatenatedCSS;
   if (type === 'rtl') {
@@ -98,11 +98,10 @@ function pack(type, compress) {
   } else {
     concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
   }
-
-  return gulp.src(output.uncompressed + '/**/' + globs.components + ignoredGlobs)
+  return gulp.src((compress ? output.compressed : output.uncompressed) + '/**/' + globs.components + ignoredGlobs)
     .pipe(plumber())
     .pipe(dedupe())
-    .pipe(replace(assets.uncompressed, assets.packaged))
+    .pipe(replace(compress ? assets.compressed : assets.uncompressed, assets.packaged))
     .pipe(concatCSS(concatenatedCSS, settings.concatCSS))
     .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
     .pipe(gulpif(compress, minifyCSS(settings.concatMinify)))
@@ -146,13 +145,16 @@ function buildCSS(src, type, config, opts, callback) {
   const packCompressed       = () => pack(type, true);
   packCompressed.displayName = 'Packing compressed CSS';
 
-  gulp.parallel(
-    gulp.series(
-      buildUncompressed,
-      gulp.parallel(packUncompressed, packCompressed)
-    ),
-    gulp.series(buildCompressed)
-  )(callback);
+  if ([null, undefined, 'both'].includes(config.compressed)) {
+    gulp.parallel(
+      gulp.series(buildUncompressed, packUncompressed),
+      gulp.series(buildCompressed, packCompressed)
+    )(callback);
+  } else if (config.compressed === true || config.compressed === 'Yes') {
+    gulp.series(buildCompressed, packCompressed)(callback);
+  } else {
+    gulp.series(buildUncompressed, packUncompressed)(callback);
+  }
 }
 
 function rtlAndNormal(src, callback) {

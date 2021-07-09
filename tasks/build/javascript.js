@@ -46,19 +46,16 @@ const
  * @param config
  * @return {*}
  */
-function build(src, type, config) {
+function build(src, type, compress, config) {
   return gulp.src(src)
     .pipe(plumber())
     .pipe(flatten())
     .pipe(replace(comments.license.in, comments.license.out))
-    .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
-    .pipe(gulp.dest(config.paths.output.uncompressed))
-    .pipe(print(log.created))
-    .pipe(uglify(settings.uglify))
-    .pipe(rename(settings.rename.minJS))
+    .pipe(gulpif(compress, uglify(settings.uglify)))
+    .pipe(gulpif(compress, rename(settings.rename.minJS)))
     .pipe(header(banner, settings.header))
     .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
-    .pipe(gulp.dest(config.paths.output.compressed))
+    .pipe(gulp.dest(compress ? config.paths.output.compressed : config.paths.output.uncompressed))
     .pipe(print(log.created))
     ;
 }
@@ -72,10 +69,10 @@ function pack(type, compress) {
   const output         = type === 'docs' ? docsConfig.paths.output : config.paths.output;
   const concatenatedJS = compress ? filenames.concatenatedMinifiedJS : filenames.concatenatedJS;
 
-  return gulp.src(output.uncompressed + '/**/' + globs.components + globs.ignored + '.js')
+  return gulp.src((compress ? output.compressed : output.uncompressed) + '/**/' + globs.components + globs.ignored + (compress ? '.min.js' : '!(*.min).js'))
     .pipe(plumber())
     .pipe(dedupe())
-    .pipe(replace(assets.uncompressed, assets.packaged))
+    .pipe(replace(compress ? assets.compressed : assets.uncompressed, assets.packaged))
     .pipe(concat(concatenatedJS))
     .pipe(gulpif(compress, uglify(settings.concatUglify)))
     .pipe(header(banner, settings.header))
@@ -107,8 +104,11 @@ function buildJS(src, type, config, callback) {
   }
 
   // copy source javascript
-  const js       = () => build(src, type, config);
-  js.displayName = "Building un/compressed Javascript";
+  const buildUncompressed       = () => build(src, type, false, config);
+  buildUncompressed.displayName = "Building uncompressed Javascript";
+
+  const buildCompressed       = () => build(src, type, true, config);
+  buildCompressed.displayName = "Building compressed Javascript";
 
   const packUncompressed       = () => pack(type, false);
   packUncompressed.displayName = 'Packing uncompressed Javascript';
@@ -116,7 +116,16 @@ function buildJS(src, type, config, callback) {
   const packCompressed       = () => pack(type, true);
   packCompressed.displayName = 'Packing compressed Javascript';
 
-  gulp.series(js, gulp.parallel(packUncompressed, packCompressed))(callback);
+  if ([null, undefined, 'both'].includes(config.compressed)) {
+    gulp.parallel(
+      gulp.series(buildUncompressed, packUncompressed),
+      gulp.series(buildCompressed, packCompressed)
+    )(callback);
+  } else if (config.compressed === true || config.compressed === 'Yes') {
+    gulp.series(buildCompressed, packCompressed)(callback);
+  } else {
+    gulp.series(buildUncompressed, packUncompressed)(callback);
+  }
 }
 
 module.exports = function (callback) {
