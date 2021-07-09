@@ -24,29 +24,19 @@
 *******************************/
 
 i.flag:not(.icon) {
-  display: inline-block;
-
-  width: @width;
-  height: @height;
-
-  line-height: @height;
-  vertical-align: @verticalAlign;
-  margin: 0 @margin 0 0;
-
-  text-decoration: inherit;
-
   speak: none;
-  -webkit-font-smoothing: antialiased;
   backface-visibility: hidden;
 }
 
-/* Sprite */
 i.flag:not(.icon):before {
+  content: '\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
   display: inline-block;
-  content: '';
-  background: url(@spritePath) no-repeat -108px -1976px;
-  width: @width;
-  height: @height;
+  line-height: @flagLineHeight;
+  background-repeat: no-repeat;
+  background-position: center center;
+  & when not (@flagFileType = 'svg') {
+    background-size: contain;
+  }
 }
 
 .loadUIOverrides();
