@@ -93,11 +93,12 @@
 }
 .ui.dropdown .menu > .item .dropdown.icon {
   width: auto;
-  float: @itemDropdownIconFloat;
+  order: @itemDropdownIconOrder;
   margin: @itemDropdownIconMargin;
+  padding-left: @itemDropdownIconDistance;
 }
-.ui.dropdown .menu > .item .dropdown.icon + .text {
-  margin-right: @itemDropdownIconDistance;
+.ui.dropdown .menu > .item .text {
+  flex-grow: 1;
 }
 
 
@@ -106,8 +107,11 @@
 ---------------*/
 
 .ui.dropdown > .text {
-  display: inline-block;
+  display: inline-flex;
+  order: 0;
   transition: @textTransition;
+  vertical-align: middle;
+  word-break: break-all;
 }
 
 /*--------------
@@ -117,7 +121,7 @@
 .ui.dropdown .menu > .item {
   position: relative;
   cursor: pointer;
-  display: block;
+  display: flex;
   border: @itemBorder;
   height: @itemHeight;
   min-height: @itemMinHeight;
@@ -133,6 +137,7 @@
   font-weight: @itemFontWeight;
   box-shadow: @itemBoxShadow;
   -webkit-touch-callout: none;
+  word-break: break-all;
 }
 .ui.dropdown .menu > .item:first-child {
   border-top-width: 0;
@@ -140,7 +145,7 @@
 
 .ui.dropdown .menu > .item.vertical {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
 }
 
 /*--------------
@@ -149,13 +154,12 @@
 
 .ui.dropdown > .text > [class*="right floated"],
 .ui.dropdown .menu .item > [class*="right floated"] {
-  float: right !important;
-  margin-right: 0 !important;
-  margin-left: @floatedDistance !important;
+  order: 1;
+  padding-left: @floatedDistance;
+  margin-left: auto !important;
 }
 .ui.dropdown > .text > [class*="left floated"],
 .ui.dropdown .menu .item > [class*="left floated"] {
-  float: left !important;
   margin-left: 0 !important;
   margin-right: @floatedDistance !important;
 }
@@ -216,13 +220,15 @@
 
 .ui.dropdown > .text > .description,
 .ui.dropdown .menu > .item > .description {
-  float: @itemDescriptionFloat;
+  order: @itemDescriptionOrder;
   margin: @itemDescriptionMargin;
+  padding: @itemDescriptionPadding;
   color: @itemDescriptionColor;
 }
 
 .ui.dropdown .menu > .item.vertical > .description {
   margin: 0;
+  padding: 0;
 }
 
 /*-----------------
@@ -297,8 +303,8 @@
 .ui.dropdown .menu > .item > .flag,
 .ui.dropdown .menu > .item > .image,
 .ui.dropdown .menu > .item > img  {
+  align-self: center;
   margin-left: 0;
-  float: @itemElementFloat;
   margin-right: @itemElementDistance;
 }
 
@@ -310,8 +316,7 @@
 .ui.dropdown > .text > .image:not(.icon),
 .ui.dropdown .menu > .item > .image:not(.icon),
 .ui.dropdown .menu > .item > img {
-  display: inline-block;
-  vertical-align: top;
+  align-self: center;
   width: auto;
   margin-top: @menuImageVerticalMargin;
   margin-bottom: @menuImageVerticalMargin;
@@ -1202,20 +1207,10 @@ select.ui.dropdown {
 
 .ui.dropdown .item .left.dropdown.icon,
 .ui.dropdown .left.menu .item .dropdown.icon {
+  order: @leftMenuDropdownIconOrder;
   width: auto;
-  float: @leftMenuDropdownIconFloat;
   margin: @leftMenuDropdownIconMargin;
-}
-.ui.dropdown .item .left.dropdown.icon,
-.ui.dropdown .left.menu .item .dropdown.icon {
-  width: auto;
-  float: @leftMenuDropdownIconFloat;
-  margin: @leftMenuDropdownIconMargin;
-}
-.ui.dropdown .item .left.dropdown.icon + .text,
-.ui.dropdown .left.menu .item .dropdown.icon + .text {
-  margin-left: @itemDropdownIconDistance;
-  margin-right: 0;
+  padding: 0 @floatedDistance 0 0;
 }
 
 & when (@variationDropdownUpward) {
