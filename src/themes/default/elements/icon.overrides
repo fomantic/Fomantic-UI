@@ -31,7 +31,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 /*******************************
              Icons
 *******************************/
-
+& when(@variationIconDeprecated) {
 /* Deprecated *In/Out Naming Conflict) */
 i.icon.linkedin.in:before { content: "\f0e1"; }
 i.icon.zoom.in:before { content: "\f00e"; }
@@ -40,8 +40,9 @@ i.icon.sign.in:before { content: "\f2f6"; }
 i.icon.in.cart:before { content: "\f218"; }
 i.icon.log.out:before { content: "\f2f5"; }
 i.icon.sign.out:before { content: "\f2f5"; }
+}
 
-
+& when(@variationIconSolid) {
 /*******************************
           Solid Icons
 *******************************/
@@ -1043,7 +1044,9 @@ i.icon.wrench:before { content: "\f0ad"; }
 i.icon.x.ray:before { content: "\f497"; }
 i.icon.yen.sign:before { content: "\f157"; }
 i.icon.yin.yang:before { content: "\f6ad"; }
+}
 
+& when(@variationIconAliases) {
 /* Aliases */
 i.icon.add:before { content: "\f067"; }
 i.icon.add.circle:before { content: "\f055"; }
@@ -1335,23 +1338,26 @@ i.icon.zip:before { content: "\f187"; }
 i.icon.zoom:before { content: "\f00e"; }
 i.icon.zoom.in:before { content: "\f00e"; }
 i.icon.zoom.out:before { content: "\f010"; }
+}
 
+& when (@variationIconOutline) {
 /*******************************
          Outline Icons
 *******************************/
 
 /* Outline Icon */
-.loadOutlineIcons() when (@importOutlineIcons) {
-  /* Load & Define Icon Font */
-  @font-face {
-    font-family: @outlineFontName;
-    src: @outlineFallbackSRC;
-    src: @outlineSrc;
-    font-style: normal;
-    font-weight: @normal;
-    font-variant: normal;
-    text-decoration: inherit;
-    text-transform: none;
+  & when (@importOutlineIcons) {
+    /* Load & Define Icon Font */
+    @font-face {
+      font-family: @outlineFontName;
+      src: @outlineFallbackSRC;
+      src: @outlineSrc;
+      font-style: normal;
+      font-weight: @normal;
+      font-variant: normal;
+      text-decoration: inherit;
+      text-transform: none;
+    }
   }
 
   i.icon.outline {
@@ -1514,25 +1520,26 @@ i.icon.zoom.out:before { content: "\f010"; }
 
   
 }
-.loadOutlineIcons();
 
 
 
+& when (@variationIconBrand) {
 /*******************************
           Brand Icons
 *******************************/
 
-.loadBrandIcons() when (@importBrandIcons) {
-  /* Load & Define Brand Font */
-  @font-face {
-    font-family: @brandFontName;
-    src: @brandFallbackSRC;
-    src: @brandSrc;
-    font-style: normal;
-    font-weight: @normal;
-    font-variant: normal;
-    text-decoration: inherit;
-    text-transform: none;
+  & when (@importBrandIcons) {
+    /* Load & Define Brand Font */
+    @font-face {
+      font-family: @brandFontName;
+      src: @brandFallbackSRC;
+      src: @brandSrc;
+      font-style: normal;
+      font-weight: @normal;
+      font-variant: normal;
+      text-decoration: inherit;
+      text-transform: none;
+    }
   }
 
   /* Icons */
@@ -1978,8 +1985,8 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.youtube:before { content: "\f167"; font-family: @brandFontName; }
   i.icon.youtube.square:before { content: "\f431"; font-family: @brandFontName; }
   i.icon.zhihu:before { content: "\f63f"; font-family: @brandFontName; }
-  
 
+  & when(@variationIconAliases) {
   /* Aliases */
   i.icon.american.express:before { content: "\f1f3"; font-family: @brandFontName; }
   i.icon.american.express.card:before { content: "\f1f3"; font-family: @brandFontName; }
@@ -2033,6 +2040,6 @@ i.icon.zoom.out:before { content: "\f010"; }
   i.icon.yc:before { content: "\f23b"; font-family: @brandFontName; }
   i.icon.ycombinator:before { content: "\f23b"; font-family: @brandFontName; }
   i.icon.youtube.play:before { content: "\f167"; font-family: @brandFontName; }
-  
+  }
 }
-.loadBrandIcons();
+

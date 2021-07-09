@@ -22,16 +22,17 @@
 /*******************************
              Icon
 *******************************/
-
-@font-face {
-  font-family: 'Icons';
-  src: @fallbackSRC;
-  src: @src;
-  font-style: normal;
-  font-weight: @normal;
-  font-variant: normal;
-  text-decoration: inherit;
-  text-transform: none;
+& when (@importIcons) {
+  @font-face {
+    font-family: 'Icons';
+    src: @fallbackSRC;
+    src: @src;
+    font-style: normal;
+    font-weight: @normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+  }
 }
 
 i.icon {
