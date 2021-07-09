@@ -325,6 +325,9 @@
   background: @promptBackground !important;
   border: @promptBorder !important;
   color: @promptTextColor !important;
+  & li:before {
+    color: @promptTextColor;
+  }
 }
 & when (@variationFormInline) {
   .ui.form .inline.fields .field .prompt,
