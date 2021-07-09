@@ -252,12 +252,22 @@ $.fn.slider = function(parameters) {
           },
           mouseEvents: function() {
             module.verbose('Binding mouse events');
-            $module.find('.track, .thumb, .inner').on('mousedown' + eventNamespace, function(event) {
+            var downElements = settings.slideEverywhere ? '.thumb,.inner,.track' : '.thumb';
+            $module.find(downElements).on('mousedown' + eventNamespace, function(event) {
               event.stopImmediatePropagation();
               event.preventDefault();
               module.event.down(event);
             });
-            $module.on('mousedown' + eventNamespace, module.event.down);
+            if(!settings.slideEverywhere) {
+              $module.find('.track, .inner').on('click' + eventNamespace, function(event) {
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                module.event.up(event);
+              });
+              $module.on('click' + eventNamespace, module.event.up);
+            } else {
+              $module.on('mousedown' + eventNamespace, module.event.down);
+            }
             $module.on('mouseenter' + eventNamespace, function(event) {
               isHover = true;
             });
@@ -267,12 +277,22 @@ $.fn.slider = function(parameters) {
           },
           touchEvents: function() {
             module.verbose('Binding touch events');
-            $module.find('.track, .thumb, .inner').on('touchstart' + eventNamespace, function(event) {
+            var downElements = settings.slideEverywhere ? '.thumb,.inner,.track' : '.thumb';
+            $module.find(downElements).on('touchstart' + eventNamespace, function(event) {
               event.stopImmediatePropagation();
               event.preventDefault();
               module.event.down(event);
             });
-            $module.on('touchstart' + eventNamespace, module.event.down);
+            if(!settings.slideEverywhere) {
+              $module.find('.track, .inner').on('click' + eventNamespace, function(event) {
+                event.stopImmediatePropagation();
+                event.preventDefault();
+                module.event.up(event);
+              });
+              $module.on('click' + eventNamespace, module.event.up);
+            } else {
+              $module.on('touchstart' + eventNamespace, module.event.down);
+            }
           },
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
@@ -766,7 +786,11 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event) {
-            if(module.is.touch()) {
+            // unwrap jQuery event objects
+            if(!(event.pageX || event.changedTouches)) {
+              event = event.originalEvent;
+            }
+            if(event.changedTouches) {
               var
                 touchEvent = event.changedTouches ? event : event.originalEvent,
                 touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
@@ -1295,6 +1319,7 @@ $.fn.slider.settings = {
   preventCrossover : true,
   fireOnInit       : false,
   interpretLabel   : false,
+  slideEverywhere  : true,       // If false, only allow clicking, not sliding on the track
 
   //the decimal place to round to if step is undefined
   decimalPlaces  : 2,
