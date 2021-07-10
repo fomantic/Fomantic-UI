@@ -746,12 +746,12 @@
     return maxVal;
   }
 
-  function getAllMeasurements(dimention) {
+  function getAllMeasurements(dimension) {
     return [
-      dimention.bodyOffset(),
-      dimention.bodyScroll(),
-      dimention.documentElementOffset(),
-      dimention.documentElementScroll()
+      dimension.bodyOffset(),
+      dimension.bodyScroll(),
+      dimension.documentElementOffset(),
+      dimension.documentElementScroll()
     ];
   }
 
