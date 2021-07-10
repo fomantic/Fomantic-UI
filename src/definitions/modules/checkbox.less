@@ -793,6 +793,62 @@
     }
 }
 
+& when (@variationCheckboxColored) {
+  /*--------------
+       Colored
+  ---------------*/
+
+  each(@colors, {
+    @color: replace(@key, '@', '');
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @isVeryDark: @colors[@@color][isVeryDark];
+  
+    .ui.@{color}.checkbox input:checked ~ label::after {
+      color: @color;
+    }
+    .ui.@{color}.radio.checkbox input:checked ~ label::after {
+      background-color: @color;
+    }
+    .ui.@{color}.toggle.checkbox input:checked ~ label::before,
+    .ui.@{color}.slider.checkbox input:checked ~ label::before {
+      background-color: @color !important;
+    }
+
+    & when (@variationCheckboxOutline) {
+      /*--------------
+        Outline
+      ---------------*/
+      .ui.@{color}.outline.checkbox input:checked ~ label::before {
+        border-color: @color;
+      }
+      .ui.@{color}.outline.toggle.checkbox input:checked ~ label::after,
+      .ui.@{color}.outline.slider.checkbox input:checked ~ label::after {
+        box-shadow: @subtleShadow,
+        0 0 0 1px @color inset;
+      }
+    }
+  })
+}
+
+/*--------------------
+        outline
+---------------------*/
+
+& when (@variationCheckboxOutline) {
+  .ui.outline.checkbox input:checked ~ label::before {
+    border-color: @checkboxActiveCheckColor;
+  }
+  .ui.outline.toggle.checkbox input:checked ~ label::after {
+    box-shadow: @subtleShadow,
+    0 0 0 1px @toggleOnLaneColor inset;
+  }
+  .ui.outline.slider.checkbox input:checked ~ label::after {
+    box-shadow: @subtleShadow,
+    0 0 0 1px @checkboxActiveCheckColor inset;
+  }
+}
+
 /*--------------------
         Size
 ---------------------*/
