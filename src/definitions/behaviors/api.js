@@ -335,10 +335,6 @@ $.api = $.fn.api = function(parameters) {
             return (module.cancelled || false);
           },
           successful: function() {
-            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
-            return module.was.successful();
-          },
-          successful: function() {
             return (module.request && module.request.state() == 'resolved');
           },
           failure: function() {
