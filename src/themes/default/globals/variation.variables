@@ -429,6 +429,20 @@
 /* Embed */
 @variationEmbedRatio: true;
 
+/* Flyout */
+@variationFlyoutThin: true;
+@variationFlyoutWide: true;
+@variationFlyoutTop: true;
+@variationFlyoutBottom: true;
+@variationFlyoutLeft: true;
+@variationFlyoutRight: true;
+@variationFlyoutOverlay: true;
+@variationFlyoutSlideAlong: true;
+@variationFlyoutSlideOut: true;
+@variationFlyoutScale: true;
+@variationFlyoutPush: true;
+@variationFlyoutUncover: true;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;

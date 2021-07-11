@@ -389,6 +389,7 @@ module.exports = {
           { name: "dimmer", checked: true },
           { name: "dropdown", checked: true },
           { name: "embed", checked: true },
+          { name: "flyout", checked: true },
           { name: "modal", checked: true },
           { name: "nag", checked: true },
           { name: "placeholder", checked: true },
