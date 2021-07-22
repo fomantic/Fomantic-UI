@@ -69,14 +69,20 @@
   color: @activeColor;
 }
 
-/* Partially Active Icon */
-.ui.rating .icon.partial.active {
-  background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
+& when (@variationRatingPartial) {
+  /* Partially Active Icon */
+  .ui.rating .icon.partial.active {
+    background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
+  }
 
+  /* central override for colors */
+  .ui.ui.rating .icon.partial.active {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+}
 /* Selected Icon */
 .ui.rating .icon.selected,
 .ui.rating .icon.selected.active,
@@ -117,12 +123,11 @@ each(@colors, {
     -webkit-text-stroke: unset;
     background-clip: unset;
   }
-  .ui.@{color}.rating .icon.partial.active {
-    background: linear-gradient(to right, @l 0% var(--full), @inactiveColor var(--full) 100%);
-    text-shadow: none;
-    -webkit-text-stroke: @c 0.78px;
-    background-clip: text;
-    color: transparent;
+  & when (@variationRatingPartial) {
+    .ui.@{color}.rating .icon.partial.active {
+      background: linear-gradient(to right, @l 0% var(--full), @inactiveColor var(--full) 100%);
+      -webkit-text-stroke: @c 0.78px;
+    }
   }
 })
 
