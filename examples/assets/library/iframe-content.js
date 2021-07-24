@@ -779,7 +779,7 @@
       },
 
       offset: function() {
-        return getHeight.bodyOffset(); //Backwards compatability
+        return getHeight.bodyOffset(); //Backwards compatibility
       },
 
       bodyScroll: function getBodyScrollHeight() {
@@ -1029,7 +1029,7 @@
       moveToAnchor: function moveToAnchorF() {
         inPageLinks.findTarget(getData());
       },
-      inPageLink: function inPageLinkF() {this.moveToAnchor();}, //Backward compatability
+      inPageLink: function inPageLinkF() {this.moveToAnchor();}, //Backward compatibility
 
       pageInfo: function pageInfoFromParent() {
         var msgBody = getData();
@@ -1065,7 +1065,7 @@
 
     function isInitMsg() {
       //Test if this message is from a child below us. This is an ugly test, however, updating
-      //the message format would break backwards compatibity.
+      //the message format would break backwards compatibility.
       return event.data.split(':')[2] in {'true':1,'false':1};
     }
 

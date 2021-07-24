@@ -337,7 +337,6 @@
           left: 50%;
           margin-left: @tooltipArrowHorizontalOffset;
           margin-top: -@arrowOffset;
-          transform-origin: center top;
         }
       }
       & when (@variationPopupLeft) {
@@ -448,6 +447,11 @@
       }
     }
     & when (@variationPopupCenter) {
+      & when (@variationPopupBottom) {
+        [data-position="bottom center"][data-tooltip]:before {
+          transform-origin: center top;
+        }
+      }
       & when (@variationPopupLeft) {
         [data-position="left center"][data-tooltip]:before {
           transform-origin: top center;
