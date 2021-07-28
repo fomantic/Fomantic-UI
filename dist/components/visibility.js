@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Visibility
+ * # Fomantic-UI 2.8.8 - Visibility
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -1237,7 +1237,7 @@ $.fn.visibility.settings = {
   // callback should only occur one time
   once                   : true,
 
-  // callback should fire continuously whe evaluates to true
+  // callback should fire continuously when evaluates to true
   continuous             : false,
 
   // offset to use with scroll top

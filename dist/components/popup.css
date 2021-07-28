@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Popup
+ * # Fomantic-UI 2.8.8 - Popup
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -330,7 +330,9 @@
   top: 100%;
   left: 50%;
   margin-left: -0.07142857rem;
-  margin-top: 0.14285714rem;
+  margin-top: 0.30714286em;
+  -webkit-transform-origin: center top;
+          transform-origin: center top;
 }
 
 /* Bottom Left */

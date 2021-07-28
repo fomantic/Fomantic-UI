@@ -560,7 +560,7 @@ $.fn.dropdown = function(parameters) {
             if(settings.onHide.call(element) !== false) {
               module.animate.hide(function() {
                 module.remove.visible();
-                // hidding search focus
+                // hiding search focus
                 if ( module.is.focusedOnSearch() && preventBlur !== true ) {
                   $search.blur();
                 }
@@ -1869,7 +1869,7 @@ $.fn.dropdown = function(parameters) {
             return count;
           },
           transition: function($subMenu) {
-            return (settings.transition == 'auto')
+            return (settings.transition === 'auto')
               ? module.is.upward($subMenu)
                 ? 'slide up'
                 : 'slide down'
@@ -3627,12 +3627,12 @@ $.fn.dropdown = function(parameters) {
             ;
             module.verbose('Doing menu show animation', $currentMenu);
             module.set.direction($subMenu);
-            transition = module.get.transition($subMenu);
+            transition = settings.transition.showMethod || module.get.transition($subMenu);
             if( module.is.selection() ) {
               module.set.scrollPosition(module.get.selectedItem(), true);
             }
             if( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
-              if(transition == 'none') {
+              if(transition === 'none') {
                 start();
                 $currentMenu.transition({
                   displayType: module.get.displayType()
@@ -3645,7 +3645,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : transition + ' in',
                     debug      : settings.debug,
                     verbose    : settings.verbose,
-                    duration   : settings.duration,
+                    duration   : settings.transition.showDuration || settings.duration,
                     queue      : true,
                     onStart    : start,
                     displayType: module.get.displayType(),
@@ -3671,7 +3671,7 @@ $.fn.dropdown = function(parameters) {
                   }
                   module.remove.active();
                 },
-              transition = module.get.transition($subMenu)
+              transition = settings.transition.hideMethod || module.get.transition($subMenu)
             ;
             callback = $.isFunction(callback)
               ? callback
@@ -3680,7 +3680,7 @@ $.fn.dropdown = function(parameters) {
             if( module.is.visible($currentMenu) || module.is.animating($currentMenu) ) {
               module.verbose('Doing menu hide animation', $currentMenu);
 
-              if(transition == 'none') {
+              if(transition === 'none') {
                 start();
                 $currentMenu.transition({
                   displayType: module.get.displayType()
@@ -3691,7 +3691,7 @@ $.fn.dropdown = function(parameters) {
                 $currentMenu
                   .transition({
                     animation  : transition + ' out',
-                    duration   : settings.duration,
+                    duration   : settings.transition.hideDuration || settings.duration,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
                     queue      : false,

@@ -264,6 +264,7 @@ $.fn.dimmer = function(parameters) {
                   },
                   onComplete  : function() {
                     module.set.active();
+                    settings.onVisible.call($dimmer);
                     callback();
                   }
                 })
@@ -285,6 +286,7 @@ $.fn.dimmer = function(parameters) {
                 .fadeTo(module.get.duration(), settings.opacity, function() {
                   $dimmer.removeAttr('style');
                   module.set.active();
+                  settings.onVisible.call($dimmer);
                   callback();
                 })
               ;
@@ -310,6 +312,7 @@ $.fn.dimmer = function(parameters) {
                     module.remove.dimmed();
                     module.remove.variation();
                     module.remove.active();
+                    settings.onHidden.call($dimmer);
                     callback();
                   }
                 })
@@ -323,6 +326,7 @@ $.fn.dimmer = function(parameters) {
                   module.remove.dimmed();
                   module.remove.active();
                   $dimmer.removeAttr('style');
+                  settings.onHidden.call($dimmer);
                   callback();
                 })
               ;
@@ -335,15 +339,12 @@ $.fn.dimmer = function(parameters) {
             return $dimmer;
           },
           duration: function() {
-            if(typeof settings.duration == 'object') {
-              if( module.is.active() ) {
-                return settings.duration.hide;
-              }
-              else {
-                return settings.duration.show;
-              }
+            if( module.is.active() ) {
+              return settings.transition.hideDuration || settings.duration.hide || settings.duration;
             }
-            return settings.duration;
+            else {
+              return settings.transition.showDuration || settings.duration.show || settings.duration;
+            }
           }
         },
 
@@ -707,6 +708,8 @@ $.fn.dimmer.settings = {
   onChange    : function(){},
   onShow      : function(){},
   onHide      : function(){},
+  onVisible   : function(){},
+  onHidden    : function(){},
 
   error   : {
     method   : 'The method you called is not defined.'
