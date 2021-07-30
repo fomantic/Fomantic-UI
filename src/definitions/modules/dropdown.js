@@ -3070,10 +3070,7 @@ $.fn.dropdown = function(parameters) {
               return;
             }
             // temporarily disconnect observer
-            if(selectObserver) {
-              selectObserver.disconnect();
-              module.verbose('Temporarily disconnecting mutation observer');
-            }
+            module.disconnect.selectObserver();
             $option.remove();
             module.verbose('Removing user addition as an <option>', escapedValue);
             module.observe.select();
