@@ -92,6 +92,7 @@ $.fn.modal = function(parameters) {
       module  = {
 
         initialize: function() {
+          module.create.id();
           if(!$module.hasClass('modal')) {
             module.create.modal();
             if(!$.isFunction(settings.onHidden)) {
@@ -116,12 +117,13 @@ $.fn.modal = function(parameters) {
               $actions.empty();
             }
             settings.actions.forEach(function (el) {
-              var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+              var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
                   click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
               $actions.append($('<button/>', {
                 html: icon + text,
+                'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
                 class: className.button + ' ' + cls,
                 click: function () {
                   if (click.call(element, $module) === false) {
@@ -135,7 +137,6 @@ $.fn.modal = function(parameters) {
           module.cache = {};
           module.verbose('Initializing dimmer', $context);
 
-          module.create.id();
           module.create.dimmer();
 
           if ( settings.allowMultiple ) {
@@ -166,16 +167,20 @@ $.fn.modal = function(parameters) {
 
         create: {
           modal: function() {
-            $module = $('<div/>', {class: className.modal});
+            $module = $('<div/>', {class: className.modal, role: 'dialog', 'aria-modal': true});
             if (settings.closeIcon) {
-              $close = $('<i/>', {class: className.close})
+              $close = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
               $module.append($close);
             }
             if (settings.title !== '') {
-              $('<div/>', {class: className.title}).appendTo($module);
+              var titleId = '_' + module.get.id() + 'title';
+              $module.attr('aria-labelledby', titleId);
+              $('<div/>', {class: className.title, id: titleId}).appendTo($module);
             }
             if (settings.content !== '') {
-              $('<div/>', {class: className.content}).appendTo($module);
+              var descId = '_' + module.get.id() + 'desc';
+              $module.attr('aria-describedby', descId);
+              $('<div/>', {class: className.content, id: descId}).appendTo($module);
             }
             if (module.has.configActions()) {
               $('<div/>', {class: className.actions}).appendTo($module);
@@ -307,7 +312,7 @@ $.fn.modal = function(parameters) {
 
         get: {
           id: function() {
-            return (Math.random().toString(16) + '000000000').substr(2, 8);
+            return id;
           },
           element: function() {
             return $module;
@@ -1363,7 +1368,8 @@ $.fn.modal.settings = {
   },
   text: {
     ok    : 'Ok',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    close : 'Close'
   }
 };
 
