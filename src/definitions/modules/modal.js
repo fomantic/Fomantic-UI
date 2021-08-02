@@ -911,7 +911,7 @@ $.fn.modal = function(parameters) {
               $autofocus = $inputs.filter('[autofocus]'),
               $input     = ($autofocus.length > 0)
                 ? $autofocus.first()
-                : $inputs.first()
+                : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
             ;
             if($input.length > 0) {
               $input.focus();
