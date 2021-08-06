@@ -249,8 +249,8 @@ $.fn.modal = function(parameters) {
               module.refreshInputs();
             });
             observer.observe(element, {
-              childList: true,
-              subtree: true
+              childList : true,
+              subtree   : true
             });
             module.debug('Setting up mutation observer', observer);
           }
