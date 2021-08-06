@@ -66,7 +66,7 @@ $.fn.modal = function(parameters) {
 
         $module         = $(this),
         $context        = $(settings.context),
-        $close          = $module.find(selector.close),
+        $closeIcon      = $module.find(selector.closeIcon),
         $inputs,
 
         $allModals,
@@ -168,8 +168,8 @@ $.fn.modal = function(parameters) {
           modal: function() {
             $module = $('<div/>', {class: className.modal, role: 'dialog', 'aria-modal': true});
             if (settings.closeIcon) {
-              $close = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
-              $module.append($close);
+              $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+              $module.append($closeIcon);
             }
             if (settings.title !== '') {
               var titleId = '_' + module.get.id() + 'title';
@@ -232,7 +232,7 @@ $.fn.modal = function(parameters) {
           ;
           $window.off(elementEventNamespace);
           $dimmer.off(elementEventNamespace);
-          $close.off(eventNamespace);
+          $closeIcon.off(elementEventNamespace);
           if($inputs) {
             $inputs.off(elementEventNamespace);
           }
@@ -313,9 +313,11 @@ $.fn.modal = function(parameters) {
             module.verbose('Attaching events');
             $module
               .on('click' + eventNamespace, selector.close, module.event.close)
-              .on('keyup' + eventNamespace, selector.close, module.event.closeKeyUp)
               .on('click' + eventNamespace, selector.approve, module.event.approve)
               .on('click' + eventNamespace, selector.deny, module.event.deny)
+            ;
+            $closeIcon
+                .on('keyup' + elementEventNamespace, module.event.closeKeyUp)
             ;
             $window
               .on('resize' + elementEventNamespace, module.event.resize)
@@ -1387,6 +1389,7 @@ $.fn.modal.settings = {
     content  : '> .content',
     actions  : '> .actions',
     close    : '> .close',
+    closeIcon: '> .close',
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
     modal    : '.ui.modal',
