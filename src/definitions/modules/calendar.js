@@ -153,7 +153,10 @@ $.fn.calendar = function(parameters) {
               module.refreshTooltips();
               return settings.onVisible.apply($container, arguments);
             };
-            var onHidden = settings.onHidden;
+            var onHidden = function () {
+              module.blur();
+              return settings.onHidden.apply($container, arguments)
+            }
             if (!$input.length) {
               //no input, $container has to handle focus/blur
               $container.attr('tabindex', '0');
@@ -161,10 +164,6 @@ $.fn.calendar = function(parameters) {
                 module.refreshTooltips();
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
-              };
-              onHidden = function () {
-                module.blur();
-                return settings.onHidden.apply($container, arguments);
               };
             }
             var onShow = function () {
