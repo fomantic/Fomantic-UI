@@ -67,6 +67,7 @@ $.fn.modal = function(parameters) {
         $module         = $(this),
         $context        = $(settings.context),
         $close          = $module.find(selector.close),
+        $inputs,
 
         $allModals,
         $otherModals,
@@ -146,11 +147,9 @@ $.fn.modal = function(parameters) {
             $module.addClass('top aligned');
           }
           module.refreshModals();
-
+          module.refreshInputs();
           module.bind.events();
-          if(settings.observeChanges) {
-            module.observeChanges();
-          }
+          module.observeChanges();
           module.instantiate();
           if(settings.autoShow){
             module.show();
@@ -234,18 +233,24 @@ $.fn.modal = function(parameters) {
           $window.off(elementEventNamespace);
           $dimmer.off(elementEventNamespace);
           $close.off(eventNamespace);
+          if($inputs) {
+            $inputs.off(elementEventNamespace);
+          }
           $context.dimmer('destroy');
         },
 
         observeChanges: function() {
           if('MutationObserver' in window) {
             observer = new MutationObserver(function(mutations) {
-              module.debug('DOM tree modified, refreshing');
-              module.refresh();
+              if(settings.observeChanges) {
+                module.debug('DOM tree modified, refreshing');
+                module.refresh();
+              }
+              module.refreshInputs();
             });
             observer.observe(element, {
-              childList : true,
-              subtree   : true
+              childList: true,
+              subtree: true
             });
             module.debug('Setting up mutation observer', observer);
           }
@@ -264,6 +269,23 @@ $.fn.modal = function(parameters) {
         refreshModals: function() {
           $otherModals = $module.siblings(selector.modal);
           $allModals   = $otherModals.add($module);
+        },
+
+        refreshInputs: function(){
+          if($inputs){
+            $inputs
+              .off('keydown' + elementEventNamespace)
+            ;
+          }
+          $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+            return $(this).closest('.disabled').length === 0;
+          });
+          $inputs.first()
+              .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
+          ;
+          $inputs.last()
+              .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
+          ;
         },
 
         attachEvents: function(selector, event) {
@@ -291,6 +313,7 @@ $.fn.modal = function(parameters) {
             module.verbose('Attaching events');
             $module
               .on('click' + eventNamespace, selector.close, module.event.close)
+              .on('keyup' + eventNamespace, selector.close, module.event.closeKeyUp)
               .on('click' + eventNamespace, selector.approve, module.event.approve)
               .on('click' + eventNamespace, selector.deny, module.event.deny)
             ;
@@ -351,10 +374,38 @@ $.fn.modal = function(parameters) {
           close: function() {
             module.hide();
           },
+          closeKeyUp: function(event){
+            var
+              keyCode   = event.which
+            ;
+            if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
+              module.hide();
+            }
+          },
+          inputKeyDown: {
+            first: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && event.shiftKey) {
+                $inputs.last().focus();
+                event.preventDefault();
+              }
+            },
+            last: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && !event.shiftKey) {
+                $inputs.first().focus();
+                event.preventDefault();
+              }
+            }
+          },
           mousedown: function(event) {
             var
               $target   = $(event.target),
-              isRtl = module.is.rtl();
+              isRtl = module.is.rtl()
             ;
             initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
             if(initialMouseDownInModal) {
@@ -402,10 +453,9 @@ $.fn.modal = function(parameters) {
           },
           keyboard: function(event) {
             var
-              keyCode   = event.which,
-              escapeKey = 27
+              keyCode   = event.which
             ;
-            if(keyCode == escapeKey) {
+            if(keyCode === settings.keys.escape) {
               if(settings.closable) {
                 module.debug('Escape key pressed hiding modal');
                 if ( $module.hasClass(className.front) ) {
@@ -905,9 +955,6 @@ $.fn.modal = function(parameters) {
         set: {
           autofocus: function() {
             var
-              $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
-                return $(this).closest('.disabled').length === 0;
-              }),
               $autofocus = $inputs.filter('[autofocus]'),
               $input     = ($autofocus.length > 0)
                 ? $autofocus.first()
@@ -1327,6 +1374,13 @@ $.fn.modal.settings = {
 
   // called after deny selector match
   onDeny     : function(){ return true; },
+
+  keys : {
+    space      : 32,
+    enter      : 13,
+    escape     : 27,
+    tab        :  9,
+  },
 
   selector    : {
     title    : '> .header',
