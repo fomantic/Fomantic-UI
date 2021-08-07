@@ -231,7 +231,7 @@
 
     function isMessageFromMetaParent() {
       //Test if this message is from a parent above us. This is an ugly test, however, updating
-      //the message format would break backwards compatibity.
+      //the message format would break backwards compatibility.
       var retCode = messageData.type in {'true':1,'false':1,'undefined':1};
 
       if (retCode) {
@@ -659,7 +659,7 @@
       function warning() {
         if (settings[id] && !settings[id].loaded && !errorShown) {
           errorShown = true;
-          warn(id, 'IFrame has not responded within '+ settings[id].warningTimeout/1000 +' seconds. Check iFrameResizer.contentWindow.js has been loaded in iFrame. This message can be ingored if everything is working, or you can set the warningTimeout option to a higher value or zero to suppress this warning.');
+          warn(id, 'IFrame has not responded within '+ settings[id].warningTimeout/1000 +' seconds. Check iFrameResizer.contentWindow.js has been loaded in iFrame. This message can be ignored if everything is working, or you can set the warningTimeout option to a higher value or zero to suppress this warning.');
         }
       }
 
@@ -941,7 +941,7 @@
     }
 
     if('hidden' !== document.visibilityState) {
-      log('document','Trigger event: Visiblity change');
+      log('document','Trigger event: Visibility change');
       debouce(resize,16);
     }
   }

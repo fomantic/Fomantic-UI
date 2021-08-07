@@ -46,7 +46,7 @@ Anyone can jump on the issues board and grab off bugs to fix. This is probably t
 - Please try and stick to a similar code style so everyone can read your code.
 - When you commit don't include your dist files, this can cause merge conflicts and also adds unnecessary changes to the PR.
 
-#### Setup your enviroment
+#### Setup your environment
 These few steps are the easiest way to setup your dev environment.
 
 1. Fork the [main repository](https://github.com/fomantic/Fomantic-UI).
