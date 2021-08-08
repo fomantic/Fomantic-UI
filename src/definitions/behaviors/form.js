@@ -419,6 +419,7 @@ $.fn.form = function(parameters) {
                   $field.one('keyup' + eventNamespace, module.event.field.keyup);
                   module.submit();
                   module.debug('Enter pressed on input submitting form');
+                  event.preventDefault();
                 }
                 keyHeldDown = true;
               }
