@@ -6,8 +6,8 @@
 
  This task pulls the latest version of each component from GitHub
 
-  * Creates new repo if doesnt exist (locally & GitHub)
-  * Adds remote it doesnt exists
+  * Creates new repo if doesn't exist (locally & GitHub)
+  * Adds remote it doesn't exists
   * Pulls latest changes from repo
 
 */
