@@ -1433,7 +1433,7 @@ $.fn.calendar.settings = {
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
-  constantHeight     : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
+  constantHeight     : false,      // add rows to shorter months to keep day calendar height consistent (6 rows)
   today              : false,      // show a 'today/now' button at the bottom of the calendar
   closable           : true,       // close the popup after selecting a date/time
   monthFirst         : true,       // month before day when parsing/converting date from/to text
