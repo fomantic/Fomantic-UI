@@ -805,14 +805,14 @@
     @isVeryDark: @colors[@@color][isVeryDark];
   
     .ui.@{color}.checkbox input:checked ~ label::after {
-      color: @color;
+      color: @c;
     }
     .ui.@{color}.radio.checkbox input:checked ~ label::after {
-      background-color: @color;
+      background-color: @c;
     }
     .ui.@{color}.toggle.checkbox input:checked ~ label::before,
     .ui.@{color}.slider.checkbox input:checked ~ label::before {
-      background-color: @color !important;
+      background-color: @c !important;
     }
 
     & when (@variationCheckboxOutline) {
@@ -820,12 +820,12 @@
         Outline
       ---------------*/
       .ui.@{color}.outline.checkbox input:checked ~ label::before {
-        border-color: @color;
+        border-color: @c;
       }
       .ui.@{color}.outline.toggle.checkbox input:checked ~ label::after,
       .ui.@{color}.outline.slider.checkbox input:checked ~ label::after {
         box-shadow: @subtleShadow,
-        0 0 0 1px @color inset;
+        0 0 0 1px @c inset;
       }
     }
   })
