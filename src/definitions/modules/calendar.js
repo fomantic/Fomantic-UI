@@ -122,7 +122,7 @@ $.fn.calendar = function(parameters) {
               module.set.maxDate($module.data(metadata.maxDate));
             }
             module.setting('type', module.get.type());
-            module.setting('on', settings.on || ($input.length ? 'focus' : 'click'));
+            module.setting('on', settings.on || 'click');
           },
           popup: function () {
             if (settings.inline) {
@@ -153,7 +153,10 @@ $.fn.calendar = function(parameters) {
               module.refreshTooltips();
               return settings.onVisible.apply($container, arguments);
             };
-            var onHidden = settings.onHidden;
+            var onHidden = function () {
+              module.blur();
+              return settings.onHidden.apply($container, arguments)
+            }
             if (!$input.length) {
               //no input, $container has to handle focus/blur
               $container.attr('tabindex', '0');
@@ -161,10 +164,6 @@ $.fn.calendar = function(parameters) {
                 module.refreshTooltips();
                 module.focus();
                 return settings.onVisible.apply($container, arguments);
-              };
-              onHidden = function () {
-                module.blur();
-                return settings.onHidden.apply($container, arguments);
               };
             }
             var onShow = function () {
@@ -390,6 +389,19 @@ $.fn.calendar = function(parameters) {
                         cell.attr("data-variation", disabledDate[metadata.variation]);
                       }
                     }
+                    if (mode === 'hour') {
+                      var disabledHour = module.helper.findHourAsObject(cellDate, mode, settings.disabledHours);
+                      if (disabledHour !== null && disabledHour[metadata.message]) {
+                        cell.attr("data-tooltip", disabledHour[metadata.message]);
+                        cell.attr("data-position", disabledHour[metadata.position] || tooltipPosition);
+                        if(disabledHour[metadata.inverted] || (isInverted && disabledHour[metadata.inverted] === undefined)) {
+                          cell.attr("data-inverted", '');
+                        }
+                        if(disabledHour[metadata.variation]) {
+                          cell.attr("data-variation", disabledHour[metadata.variation]);
+                        }
+                      }
+                    }
                   } else {
                     eventDate = module.helper.findDayAsObject(cellDate, mode, settings.eventDates);
                     if (eventDate !== null) {
@@ -611,7 +623,9 @@ $.fn.calendar = function(parameters) {
                 var mode = module.get.mode();
                 var date = module.get.focusDate();
                 if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
-                  module.selectDate(date);
+                  if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
+                    module.selectDate(date);
+                  }
                 }
                 //disable form submission:
                 event.preventDefault();
@@ -923,6 +937,7 @@ $.fn.calendar = function(parameters) {
                 //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
                 var endModule = module.get.calendarModule(settings.endCalendar);
                 if (endModule) {
+                  endModule.refresh();
                   if (endModule.setting('on') !== 'focus') {
                     endModule.popup('show');
                   }
@@ -972,7 +987,7 @@ $.fn.calendar = function(parameters) {
 
         helper: {
           isDisabled: function(date, mode) {
-            return (mode === 'day' || mode === 'month' || mode === 'year') && ((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+            return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
               if(typeof d === 'string') {
                 d = module.helper.sanitiseDate(d);
               }
@@ -1005,7 +1020,45 @@ $.fn.calendar = function(parameters) {
                   }
                 }
               }
-            }));
+            })) || (mode === 'hour' && settings.disabledHours.some(function(d){
+              if (typeof d === 'string') {
+                d = module.helper.sanitiseDate(d);
+              }
+              if (d instanceof Date) {
+                return module.helper.dateEqual(date, d, mode);
+              } else if (typeof d === 'number') {
+                return date.getHours() === d;
+              }
+              if (d !== null && typeof d === 'object') {
+                var blocked = true;
+
+                if (d[metadata.date]) {
+                  if (d[metadata.date] instanceof Date) {
+                    blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]));
+                  } else if (Array.isArray(d[metadata.date])) {
+                    return d[metadata.date].some(function(idate) {
+                      blocked = module.helper.dateEqual(date, idate, mode);
+                    });
+                  }
+                }
+
+                if (d[metadata.days]) {
+                  if (typeof d[metadata.days] === 'number') {
+                    blocked = date.getDay() == d[metadata.days];
+                  } else if (Array.isArray(d[metadata.days])) {
+                    blocked = d[metadata.days].indexOf(date.getDay()) > -1;
+                  }
+                }
+
+                if (d[metadata.hours]) {
+                  if (typeof d[metadata.hours] === 'number') {
+                    return blocked && date.getHours() == d[metadata.hours];
+                  } else if (Array.isArray(d[metadata.hours])) {
+                    return blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
+                  }
+                }
+              }
+            })));
           },
           isEnabled: function(date, mode) {
             if (mode === 'day') {
@@ -1067,6 +1120,49 @@ $.fn.calendar = function(parameters) {
                         return d;
                       }
                     }
+                  }
+                }
+              }
+            }
+            return null;
+          },
+          findHourAsObject: function(date, mode, hours) {
+            if (mode === 'hour') {
+              var d;
+              var hourCheck = function(date, d) {
+                 if (d[metadata.hours]) {
+                    if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
+                      return d;
+                  } else if (Array.isArray(d[metadata.hours])) {
+                    if (d[metadata.hours].indexOf(date.getHours()) > -1) {
+                      return d;
+                    }
+                  }
+                }
+              }
+              for (var i = 0; i < hours.length; i++) {
+                d = hours[i];
+                if (typeof d === 'number' && date.getHours() == d) {
+                  return null;
+                } else if (d !== null && typeof d === 'object') {
+                  if (d[metadata.days] && hourCheck(date,d)) {
+                    if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
+                      return d;
+                    } else if (Array.isArray(d[metadata.days])) {
+                      if (d[metadata.days].indexOf(date.getDay()) > -1) {
+                        return d;
+                      }
+                    }
+                  } else if (d[metadata.date] && hourCheck(date,d)) {
+                    if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
+                      return d;
+                    } else if (Array.isArray(d[metadata.date])) {
+                      if (d[metadata.date].some(function(idate) { return module.helper.dateEqual(date, idate, mode); })) {
+                        return d;
+                      }
+                    }
+                  } else if (hourCheck(date,d)) {
+                    return d;
                   }
                 }
               }
@@ -1358,6 +1454,7 @@ $.fn.calendar.settings = {
   multiMonth         : 1,          // show multiple months when in 'day' mode
   minTimeGap         : 5,
   showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
+  disabledHours      : [],         // specific hour(s) which won't be selectable and contain additional information.
   disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
   enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
@@ -1763,7 +1860,9 @@ $.fn.calendar.settings = {
     variation: 'variation',
     position: 'position',
     month: 'month',
-    year: 'year'
+    year: 'year',
+    hours: 'hours',
+    days: 'days'
   },
 
   eventClass: 'blue'
