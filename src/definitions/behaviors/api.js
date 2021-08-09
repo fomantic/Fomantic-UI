@@ -132,7 +132,7 @@ $.api = $.fn.api = function(parameters) {
                response = JSON.parse(response);
               }
               catch(e) {
-                // isnt json string
+                // isn't json string
               }
             }
             return response;
@@ -333,10 +333,6 @@ $.api = $.fn.api = function(parameters) {
         was: {
           cancelled: function() {
             return (module.cancelled || false);
-          },
-          succesful: function() {
-            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
-            return module.was.successful();
           },
           successful: function() {
             return (module.request && module.request.state() == 'resolved');

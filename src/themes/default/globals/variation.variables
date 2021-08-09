@@ -64,6 +64,12 @@
 @variationHeaderSizes: @variationAllSizes;
 
 /* Icon */
+@variationIconDeprecated: true;
+@variationIconSolid: true;
+@variationIconAliases: true;
+@variationIconOutline: true;
+@variationIconBrand: true;
+@variationIconThin: true; /* Font Awesome Pro only */
 @variationIconDisabled: true;
 @variationIconInverted: true;
 @variationIconLoading: true;
@@ -485,6 +491,7 @@
 
 /* Rating */
 @variationRatingDisabled: true;
+@variationRatingPartial: true;
 @variationRatingSizes: @variationAllSizes;
 
 /* Search */
@@ -538,6 +545,7 @@
 @variationToastLeft: true;
 @variationToastRight: true;
 @variationToastCenter: true;
+@variationToastCentered: true;
 @variationToastInfo: true;
 @variationToastWarning: true;
 @variationToastSuccess: true;

@@ -103,6 +103,11 @@
       bottom: @toastContainerDistance;
     }
   }
+  &.centered when (@variationToastCentered) {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
   & .visible.toast-box,
   .animating.toast-box,
   .toast-box {
