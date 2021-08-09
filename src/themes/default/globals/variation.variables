@@ -485,6 +485,7 @@
 
 /* Rating */
 @variationRatingDisabled: true;
+@variationRatingPartial: true;
 @variationRatingSizes: @variationAllSizes;
 
 /* Search */
@@ -538,6 +539,7 @@
 @variationToastLeft: true;
 @variationToastRight: true;
 @variationToastCenter: true;
+@variationToastCentered: true;
 @variationToastInfo: true;
 @variationToastWarning: true;
 @variationToastSuccess: true;
