@@ -2324,7 +2324,7 @@ $.fn.dropdown = function(parameters) {
               module.error(error.noStorage);
               return;
             }
-            name = sessionStorage.getItem(value);
+            name = sessionStorage.getItem(value + elementNamespace);
             return (name !== undefined)
               ? name
               : false
@@ -2368,7 +2368,7 @@ $.fn.dropdown = function(parameters) {
               return;
             }
             module.verbose('Saving remote data to session storage', value, name);
-            sessionStorage.setItem(value, name);
+            sessionStorage.setItem(value + elementNamespace, name);
           }
         },
 
