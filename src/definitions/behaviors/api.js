@@ -148,7 +148,7 @@ $.api = $.fn.api = function(parameters) {
               module.error(error.noStorage);
               return;
             }
-            response = sessionStorage.getItem(url + JSON.stringify(settings.data));
+            response = sessionStorage.getItem(url + JSON.stringify(settings.data,Object.keys(settings.data).sort()));
             module.debug('Using cached response', url, settings.data, response);
             response = module.decode.json(response);
             return response;
@@ -167,7 +167,7 @@ $.api = $.fn.api = function(parameters) {
             if( $.isPlainObject(response) ) {
               response = JSON.stringify(response);
             }
-            sessionStorage.setItem(url + JSON.stringify(settings.data), response);
+            sessionStorage.setItem(url + JSON.stringify(settings.data,Object.keys(settings.data).sort()), response);
             module.verbose('Storing cached response for url', url, settings.data, response);
           }
         },
@@ -425,25 +425,29 @@ $.api = $.fn.api = function(parameters) {
           },
           formData: function(data) {
             var
-              canSerialize = ($.fn.serializeObject !== undefined),
-              formData     = (canSerialize)
-                ? $form.serializeObject()
-                : $form.serialize(),
+              formData = {},
               hasOtherData
             ;
             data         = data || settings.data;
             hasOtherData = $.isPlainObject(data);
 
+            $.each($form.serializeArray(), function (i, element) {
+              var node = formData[element.name];
+
+              if ('undefined' !== typeof node && node !== null) {
+                if (Array.isArray(node)) {
+                  node.push(element.value);
+                } else {
+                  formData[element.name] = [node, element.value];
+                }
+              } else {
+                formData[element.name] = element.value;
+              }
+            });
+
             if(hasOtherData) {
-              if(canSerialize) {
-                module.debug('Extending existing data with form data', data, formData);
-                data = $.extend(true, {}, data, formData);
-              }
-              else {
-                module.error(error.missingSerialize);
-                module.debug('Cant extend data. Replacing data with form data', data, formData);
-                data = formData;
-              }
+              module.debug('Extending existing data with form data', data, formData);
+              data = $.extend(true, {}, data, formData);
             }
             else {
               module.debug('Adding form data', formData);
@@ -1137,7 +1141,6 @@ $.api.settings = {
     legacyParameters  : 'You are using legacy API success callback names',
     method            : 'The method you called is not defined',
     missingAction     : 'API action used but no url was defined',
-    missingSerialize  : 'jquery-serialize-object is required to add form data to an existing data object',
     missingURL        : 'No URL specified for api event',
     noReturnedValue   : 'The beforeSend callback must return a settings object, beforeSend ignored.',
     noStorage         : 'Caching responses locally requires session storage',
