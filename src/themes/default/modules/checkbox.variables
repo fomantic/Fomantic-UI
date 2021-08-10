@@ -26,6 +26,7 @@
 @checkboxCheckTop: 0;
 @checkboxCheckLeft: 0;
 @checkboxCheckSize: @checkboxSize;
+@checkboxIconCheckFontSize: 12px;
 
 /* Label */
 @labelFontSize: @relativeMedium;

@@ -850,7 +850,7 @@
 }
 
 /*--------------------
-        Size
+          Size
 ---------------------*/
 
 each(@variationCheckboxSizes, {
@@ -916,5 +916,48 @@ each(@variationCheckboxSizes, {
     }
   }
 })
+
+/*--------------------
+          Icon
+---------------------*/
+
+& when (@variationCheckboxIcon) {
+  .ui.icon.checkbox input ~ label i {
+    width: auto;
+    margin: 0 !important;
+    line-height: @checkboxLineHeight;
+  }
+
+  .ui.icon.checkbox input:not(:checked) ~ label i {
+    display: none;
+  }
+
+  .ui.icon.checkbox input:checked ~ label i:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @checkboxSize;
+    height: @checkboxSize;
+    text-align: center;
+    font-size: @checkboxIconCheckFontSize;
+  }
+
+  & when (@variationCheckboxColored) {
+    /*--------------
+        Colored
+    ---------------*/
+
+    each(@colors, {
+      @color: replace(@key, '@', '');
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+      @isVeryDark: @colors[@@color][isVeryDark];
+    
+      .ui.@{color}.checkbox input:checked ~ label i::before {
+        color: @c;
+      }
+    })
+  }
+}
 
 .loadUIOverrides();

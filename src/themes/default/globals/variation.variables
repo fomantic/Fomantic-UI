@@ -390,6 +390,7 @@
 @variationCheckboxSizes: @variationAllSizes;
 @variationCheckboxColored: true;
 @variationCheckboxOutline: true;
+@variationCheckboxIcon: true;
 
 /* Dimmer */
 @variationDimmerInverted: true;
