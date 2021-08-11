@@ -377,6 +377,7 @@
 @variationAccordionInverted: true;
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
+@variationAccordionCompact: true;
 
 /* Calendar */
 @variationCalendarInverted: true;

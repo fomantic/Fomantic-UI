@@ -176,6 +176,56 @@
   }
 }
 
+& when (@variationAccordionCompact) {
+  /*--------------
+       Compact
+  ---------------*/
+
+  /* Default Styling */
+  .ui.compact.accordion:not(.styled) .title:not(.ui) {
+    padding: @titlePaddingCompact;
+  }
+
+  .ui.compact.accordion:not(.styled) .title ~ .content:not(.ui),
+  .ui.compact.accordion:not(.styled) .accordion .title ~ .content:not(.ui) {
+    padding: @contentPaddingCompact;
+  }
+
+  /* Styled */
+  .ui.compact.styled.accordion .title,
+  .ui.compact.styled.accordion .accordion .title {
+    padding: @styledTitlePaddingCompact;
+  }
+
+  .ui.compact.styled.accordion .title ~ .content:not(.ui),
+  .ui.compact.styled.accordion .accordion .title ~ .content:not(.ui) {
+    padding: @styledContentPaddingCompact;
+  }
+
+  /*--------------
+    Very Compact
+  ---------------*/
+
+  .ui[class*="very compact"].accordion:not(.styled) .title:not(.ui) {
+    padding: @titlePaddingVeryCompact;
+  }
+
+  .ui[class*="very compact"].accordion:not(.styled) .title ~ .content:not(.ui),
+  .ui[class*="very compact"].accordion:not(.styled) .accordion .title ~ .content:not(.ui) {
+    padding: @contentPaddingVeryCompact;
+  }
+
+  .ui[class*="very compact"].styled.accordion .title,
+  .ui[class*="very compact"].styled.accordion .accordion .title {
+    padding: @styledTitlePaddingVeryCompact;
+  }
+
+  .ui[class*="very compact"].styled.accordion .title ~ .content:not(.ui),
+  .ui[class*="very compact"].styled.accordion .accordion .title ~ .content:not(.ui) {
+    padding: @styledContentPaddingVeryCompact;
+  }
+}
+
 
 /*******************************
             States
