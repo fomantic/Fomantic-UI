@@ -98,3 +98,18 @@
 /* Inverted */
 @invertedTitleColor: @invertedTextColor;
 
+/* Compact */
+@titlePaddingCompact: 0.25em 0;
+@contentPaddingCompact: 0.25em 0 0.5em;
+
+/* Very Compact */
+@titlePaddingVeryCompact: 0.125em 0;
+@contentPaddingVeryCompact: 0.125em 0 0.25em;
+
+/* Styled Compact */
+@styledTitlePaddingCompact: 0.375em 0.5em;
+@styledContentPaddingCompact: 0.25em 0.5em 0.75em;
+
+/* Styled Very Compact */
+@styledTitlePaddingVeryCompact: 0.1875em 0.25em;
+@styledContentPaddingVeryCompact: 0.125em 0.25em 0.375em;
