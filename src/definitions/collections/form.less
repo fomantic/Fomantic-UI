@@ -79,9 +79,11 @@
 
 .ui.form textarea,
 .ui.form input:not([type]),
+.ui.form input[type="color"],
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
 .ui.form input[type="email"],
+.ui.form input[type="month"],
 .ui.form input[type="number"],
 .ui.form input[type="password"],
 .ui.form input[type="search"],
@@ -89,7 +91,8 @@
 .ui.form input[type="time"],
 .ui.form input[type="text"],
 .ui.form input[type="file"],
-.ui.form input[type="url"] {
+.ui.form input[type="url"],
+.ui.form input[type="week"] {
   width: @inputWidth;
   vertical-align: top;
 }
@@ -101,9 +104,11 @@
 }
 
 .ui.form input:not([type]),
+.ui.form input[type="color"],
 .ui.form input[type="date"],
 .ui.form input[type="datetime-local"],
 .ui.form input[type="email"],
+.ui.form input[type="month"],
 .ui.form input[type="number"],
 .ui.form input[type="password"],
 .ui.form input[type="search"],
@@ -111,7 +116,8 @@
 .ui.form input[type="time"],
 .ui.form input[type="text"],
 .ui.form input[type="file"],
-.ui.form input[type="url"] {
+.ui.form input[type="url"],
+.ui.form input[type="week"] {
   font-family: @inputFont;
   margin: 0;
   outline: none;
@@ -128,6 +134,9 @@
   border-radius: @inputBorderRadius;
   box-shadow: @inputBoxShadow;
   transition: @inputTransition;
+}
+.ui.form input[type="color"] {
+  padding: initial;
 }
 
 /* Text Area */
@@ -400,9 +409,11 @@
 ---------------------*/
 
 .ui.form input:not([type]):focus,
+.ui.form input[type="color"]:focus,
 .ui.form input[type="date"]:focus,
 .ui.form input[type="datetime-local"]:focus,
 .ui.form input[type="email"]:focus,
+.ui.form input[type="month"]:focus,
 .ui.form input[type="number"]:focus,
 .ui.form input[type="password"]:focus,
 .ui.form input[type="search"]:focus,
@@ -410,7 +421,8 @@
 .ui.form input[type="time"]:focus,
 .ui.form input[type="text"]:focus,
 .ui.form input[type="file"]:focus,
-.ui.form input[type="url"]:focus {
+.ui.form input[type="url"]:focus,
+.ui.form input[type="week"]:focus {
   color: @inputFocusColor;
   border-color: @inputFocusBorderColor;
   border-radius: @inputFocusBorderRadius;
@@ -420,9 +432,11 @@
 & when (@variationInputAction) {
   .ui.form .ui.action.input:not([class*="left action"]) {
     & input:not([type]):focus,
+      input[type="color"]:focus,
       input[type="date"]:focus,
       input[type="datetime-local"]:focus,
       input[type="email"]:focus,
+      input[type="month"]:focus,
       input[type="number"]:focus,
       input[type="password"]:focus,
       input[type="search"]:focus,
@@ -430,7 +444,8 @@
       input[type="time"]:focus,
       input[type="text"]:focus,
       input[type="file"]:focus,
-      input[type="url"]:focus {
+      input[type="url"]:focus,
+      input[type="week"]:focus {
       border-top-right-radius: 0;
       border-bottom-right-radius: 0;
     }
@@ -438,9 +453,11 @@
 
   .ui.form .ui[class*="left action"].input {
     & input:not([type]),
+      input[type="color"],
       input[type="date"],
       input[type="datetime-local"],
       input[type="email"],
+      input[type="month"],
       input[type="number"],
       input[type="password"],
       input[type="search"],
@@ -448,7 +465,8 @@
       input[type="time"],
       input[type="text"],
       input[type="file"],
-      input[type="url"] {
+      input[type="url"],
+      input[type="week"] {
       border-bottom-left-radius: 0;
       border-top-left-radius: 0;
     }
@@ -522,9 +540,11 @@
     .ui.form .fields.@{state} .field textarea,
     .ui.form .fields.@{state} .field select,
     .ui.form .fields.@{state} .field input:not([type]),
+    .ui.form .fields.@{state} .field input[type="color"],
     .ui.form .fields.@{state} .field input[type="date"],
     .ui.form .fields.@{state} .field input[type="datetime-local"],
     .ui.form .fields.@{state} .field input[type="email"],
+    .ui.form .fields.@{state} .field input[type="month"],
     .ui.form .fields.@{state} .field input[type="number"],
     .ui.form .fields.@{state} .field input[type="password"],
     .ui.form .fields.@{state} .field input[type="search"],
@@ -533,12 +553,15 @@
     .ui.form .fields.@{state} .field input[type="text"],
     .ui.form .fields.@{state} .field input[type="file"],
     .ui.form .fields.@{state} .field input[type="url"],
+    .ui.form .fields.@{state} .field input[type="week"],
     .ui.form .field.@{state} textarea,
     .ui.form .field.@{state} select,
     .ui.form .field.@{state} input:not([type]),
+    .ui.form .field.@{state} input[type="color"],
     .ui.form .field.@{state} input[type="date"],
     .ui.form .field.@{state} input[type="datetime-local"],
     .ui.form .field.@{state} input[type="email"],
+    .ui.form .field.@{state} input[type="month"],
     .ui.form .field.@{state} input[type="number"],
     .ui.form .field.@{state} input[type="password"],
     .ui.form .field.@{state} input[type="search"],
@@ -546,7 +569,8 @@
     .ui.form .field.@{state} input[type="time"],
     .ui.form .field.@{state} input[type="text"],
     .ui.form .field.@{state} input[type="file"],
-    .ui.form .field.@{state} input[type="url"] {
+    .ui.form .field.@{state} input[type="url"],
+    .ui.form .field.@{state} input[type="week"] {
       color: @c;
       background: @bg;
       border-color: @formStates[@@state][borderColor];
@@ -557,9 +581,11 @@
     .ui.form .field.@{state} textarea:focus,
     .ui.form .field.@{state} select:focus,
     .ui.form .field.@{state} input:not([type]):focus,
+    .ui.form .field.@{state} input[type="color"]:focus,
     .ui.form .field.@{state} input[type="date"]:focus,
     .ui.form .field.@{state} input[type="datetime-local"]:focus,
     .ui.form .field.@{state} input[type="email"]:focus,
+    .ui.form .field.@{state} input[type="month"]:focus,
     .ui.form .field.@{state} input[type="number"]:focus,
     .ui.form .field.@{state} input[type="password"]:focus,
     .ui.form .field.@{state} input[type="search"]:focus,
@@ -567,7 +593,8 @@
     .ui.form .field.@{state} input[type="time"]:focus,
     .ui.form .field.@{state} input[type="text"]:focus,
     .ui.form .field.@{state} input[type="file"]:focus,
-    .ui.form .field.@{state} input[type="url"]:focus {
+    .ui.form .field.@{state} input[type="url"]:focus,
+    .ui.form .field.@{state} input[type="week"]:focus {
       background: @formStates[@@state][inputFocusBackground];
       border-color: @formStates[@@state][inputFocusBorderColor];
       color: @formStates[@@state][inputFocusColor];
@@ -823,9 +850,11 @@
   }
   /* Inverted Field */
   .ui.inverted.form input:not([type]),
+  .ui.inverted.form input[type="color"],
   .ui.inverted.form input[type="date"],
   .ui.inverted.form input[type="datetime-local"],
   .ui.inverted.form input[type="email"],
+  .ui.inverted.form input[type="month"],
   .ui.inverted.form input[type="number"],
   .ui.inverted.form input[type="password"],
   .ui.inverted.form input[type="search"],
@@ -833,7 +862,8 @@
   .ui.inverted.form input[type="time"],
   .ui.inverted.form input[type="text"],
   .ui.inverted.form input[type="file"],
-  .ui.inverted.form input[type="url"] {
+  .ui.inverted.form input[type="url"],
+  .ui.inverted.form input[type="week"] {
     background: @invertedInputBackground;
     border-color: @invertedInputBorderColor;
     color: @invertedInputColor;
