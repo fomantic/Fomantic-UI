@@ -44,7 +44,6 @@
   line-height: @lineHeight;
 
   font-family: @inputFont;
-  padding: @padding;
 
   background: @background;
   border: @border;
@@ -53,6 +52,9 @@
   transition: @transition;
 
   box-shadow: @boxShadow;
+  &:not([type="color"]) {
+    padding: @padding;
+  }
 }
 
 
