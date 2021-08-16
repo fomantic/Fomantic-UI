@@ -506,6 +506,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "das7pad",
+      "name": "Jakob Ackermann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17931887?v=4",
+      "profile": "https://github.com/das7pad",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
