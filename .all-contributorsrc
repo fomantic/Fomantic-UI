@@ -416,6 +416,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Yrlish",
+      "name": "Dennis Alexandersson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/3358782?v=4",
+      "profile": "https://dennis.alexandersson.xyz",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
