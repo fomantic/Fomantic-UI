@@ -515,6 +515,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "cmoeke",
+      "name": "Christoph Möke",
+      "avatar_url": "https://avatars.githubusercontent.com/u/1618434?v=4",
+      "profile": "https://christoph.moeke.dev/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
