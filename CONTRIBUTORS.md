@@ -78,6 +78,9 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://github.com/mareeo"><img src="https://avatars.githubusercontent.com/u/9520224?v=4?s=60" width="60px;" alt=""/><br /><sub><b>mareeo</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=mareeo" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/eikek"><img src="https://avatars.githubusercontent.com/u/701128?v=4?s=60" width="60px;" alt=""/><br /><sub><b>eikek</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=eikek" title="Code">💻</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/ucyildirim"><img src="https://avatars.githubusercontent.com/u/38659860?v=4?s=60" width="60px;" alt=""/><br /><sub><b>ucyildirim</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=ucyildirim" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
