@@ -452,6 +452,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "rkomiyama",
+      "name": "Ryu Komiyama",
+      "avatar_url": "https://avatars.githubusercontent.com/u/347483?v=4",
+      "profile": "https://github.com/rkomiyama",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
