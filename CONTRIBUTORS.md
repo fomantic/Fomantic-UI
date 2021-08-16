@@ -69,6 +69,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   <tr>
     <td align="center"><a href="https://dennis.alexandersson.xyz"><img src="https://avatars.githubusercontent.com/u/3358782?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Dennis Alexandersson</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=Yrlish" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/Giandrop"><img src="https://avatars.githubusercontent.com/u/12598149?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Gianfranco Polinesi</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=Giandrop" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/MrL1605"><img src="https://avatars.githubusercontent.com/u/7734245?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Lalit Umbarkar</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=MrL1605" title="Code">💻</a></td>
   </tr>
 </table>
 
