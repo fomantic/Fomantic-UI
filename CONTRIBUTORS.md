@@ -74,6 +74,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   </tr>
   <tr>
     <td align="center"><a href="https://github.com/rkomiyama"><img src="https://avatars.githubusercontent.com/u/347483?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Ryu Komiyama</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=rkomiyama" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/WardLootens"><img src="https://avatars.githubusercontent.com/u/8817311?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Ward Lootens</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=WardLootens" title="Code">💻</a></td>
   </tr>
 </table>
 
