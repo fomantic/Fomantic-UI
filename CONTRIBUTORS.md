@@ -62,6 +62,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   </tr>
   <tr>
     <td align="center"><a href="https://fractal-farming.com"><img src="https://avatars.githubusercontent.com/u/5436121?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Hugo Peek</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=hugopeek" title="Code">💻</a></td>
+    <td align="center"><a href="https://lutonite.ch/"><img src="https://avatars.githubusercontent.com/u/21953109?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Loïc Herman</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=Lutonite" title="Code">💻</a></td>
   </tr>
 </table>
 
