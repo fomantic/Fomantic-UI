@@ -389,6 +389,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Lutonite",
+      "name": "Loïc Herman",
+      "avatar_url": "https://avatars.githubusercontent.com/u/21953109?v=4",
+      "profile": "https://lutonite.ch/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
