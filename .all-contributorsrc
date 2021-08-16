@@ -380,9 +380,19 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hugopeek",
+      "name": "Hugo Peek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5436121?v=4",
+      "profile": "https://fractal-farming.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
   "repoType": "github",
-  "repoHost": "https://github.com"
+  "repoHost": "https://github.com",
+  "skipCi": true
 }
