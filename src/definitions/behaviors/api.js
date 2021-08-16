@@ -148,7 +148,7 @@ $.api = $.fn.api = function(parameters) {
               module.error(error.noStorage);
               return;
             }
-            response = sessionStorage.getItem(url + JSON.stringify(settings.data,Object.keys(settings.data).sort()));
+            response = sessionStorage.getItem(url + (typeof settings.data === "string" ? settings.data : JSON.stringify(settings.data,Object.keys(settings.data).sort())));
             module.debug('Using cached response', url, settings.data, response);
             response = module.decode.json(response);
             return response;
@@ -167,7 +167,7 @@ $.api = $.fn.api = function(parameters) {
             if( $.isPlainObject(response) ) {
               response = JSON.stringify(response);
             }
-            sessionStorage.setItem(url + JSON.stringify(settings.data,Object.keys(settings.data).sort()), response);
+            sessionStorage.setItem(url + (typeof settings.data === "string" ? settings.data : JSON.stringify(settings.data,Object.keys(settings.data).sort())), response);
             module.verbose('Storing cached response for url', url, settings.data, response);
           }
         },
