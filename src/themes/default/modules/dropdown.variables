@@ -345,7 +345,7 @@
 @upwardSelectionVisibleBorderRadius: @selectionVisibleConnectingBorder @selectionVisibleConnectingBorder @borderRadius @borderRadius;
 @upwardMenuBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 @upwardSelectionMenuBoxShadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.08);
-@upwardMenuBorderRadius: @borderRadius @borderRadius 0 0;
+@upwardSelectionMenuBorderRadius: @borderRadius @borderRadius 0 0;
 @upwardSelectionHoverBoxShadow: 0 0 2px 0 rgba(0, 0, 0, 0.05);
 @upwardSelectionVisibleBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.08);
 @upwardSelectionActiveHoverBoxShadow: 0 0 3px 0 rgba(0, 0, 0, 0.05);
