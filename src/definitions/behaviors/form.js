@@ -1204,7 +1204,7 @@ $.fn.form = function(parameters) {
               if(event && $module.data('moduleApi') !== undefined) {
                 event.stopImmediatePropagation();
               }
-              if(settings.errorFocus) {
+              if(settings.errorFocus && ignoreCallbacks !== true) {
                 var focusElement, hasTabIndex = true;
                 if (typeof settings.errorFocus === 'string') {
                   focusElement = $(settings.errorFocus);
