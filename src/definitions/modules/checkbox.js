@@ -323,7 +323,6 @@ $.fn.checkbox = function(parameters) {
             settings.onEnable.call(input);
             // preserve legacy callbacks
             settings.onEnabled.call(input);
-            module.trigger.change();
           }
         },
 
@@ -338,7 +337,6 @@ $.fn.checkbox = function(parameters) {
             settings.onDisable.call(input);
             // preserve legacy callbacks
             settings.onDisabled.call(input);
-            module.trigger.change();
           }
         },
 
@@ -866,7 +864,7 @@ $.fn.checkbox.settings = {
 
   selector : {
     checkbox : '.ui.checkbox',
-    label    : 'label, .box',
+    label    : 'label',
     input    : 'input[type="checkbox"], input[type="radio"]',
     link     : 'a[href]'
   }

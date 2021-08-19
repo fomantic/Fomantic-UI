@@ -64,6 +64,12 @@
 @variationHeaderSizes: @variationAllSizes;
 
 /* Icon */
+@variationIconDeprecated: true;
+@variationIconSolid: true;
+@variationIconAliases: true;
+@variationIconOutline: true;
+@variationIconBrand: true;
+@variationIconThin: true; /* Font Awesome Pro only */
 @variationIconDisabled: true;
 @variationIconInverted: true;
 @variationIconLoading: true;
@@ -371,13 +377,13 @@
 @variationAccordionInverted: true;
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
+@variationAccordionCompact: true;
 
 /* Calendar */
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 
 /* Checkbox */
-@variationCheckboxBox: false;   //.box (instead of label) is an ancient fragment of sui v1 and not even documented in v2.x anymore
 @variationCheckboxDisabled: true;
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
@@ -485,6 +491,7 @@
 
 /* Rating */
 @variationRatingDisabled: true;
+@variationRatingPartial: true;
 @variationRatingSizes: @variationAllSizes;
 
 /* Search */
@@ -538,6 +545,7 @@
 @variationToastLeft: true;
 @variationToastRight: true;
 @variationToastCenter: true;
+@variationToastCentered: true;
 @variationToastInfo: true;
 @variationToastWarning: true;
 @variationToastSuccess: true;

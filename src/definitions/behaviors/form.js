@@ -419,6 +419,7 @@ $.fn.form = function(parameters) {
                   $field.one('keyup' + eventNamespace, module.event.field.keyup);
                   module.submit();
                   module.debug('Enter pressed on input submitting form');
+                  event.preventDefault();
                 }
                 keyHeldDown = true;
               }
@@ -886,13 +887,13 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors, className.label);
+                $prompt = $('<div/>').addClass(className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
               }
               $prompt
-                .html(errors[0])
+                .html(settings.templates.prompt(errors))
               ;
               if(!promptExists) {
                 if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -1085,11 +1086,14 @@ $.fn.form = function(parameters) {
                 }
                 else if(isCheckbox) {
                   module.verbose('Setting checkbox value', value, $element);
-                  if(value === true || value === 1) {
+                  if(value === true || value === 1 || value === 'on') {
                     $element.checkbox('check');
                   }
                   else {
                     $element.checkbox('uncheck');
+                  }
+                  if(typeof value === 'string') {
+                    $field.val(value);
                   }
                 }
                 else if(isDropdown) {
@@ -1203,7 +1207,7 @@ $.fn.form = function(parameters) {
               if(event && $module.data('moduleApi') !== undefined) {
                 event.stopImmediatePropagation();
               }
-              if(settings.errorFocus) {
+              if(settings.errorFocus && ignoreCallbacks !== true) {
                 var focusElement, hasTabIndex = true;
                 if (typeof settings.errorFocus === 'string') {
                   focusElement = $(settings.errorFocus);
@@ -1526,7 +1530,7 @@ $.fn.form.settings = {
 
   autoCheckRequired : false,
   preventLeaving    : false,
-  errorFocus        : false,
+  errorFocus        : true,
   dateHandling      : 'date', // 'date', 'input', 'formatter'
 
   onValid           : function() {},
@@ -1596,7 +1600,7 @@ $.fn.form.settings = {
   selector : {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
-    field      : 'input:not(.search):not([type="file"]), textarea, select',
+    field      : 'input:not(.search):not([type="file"]):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
     group      : '.field',
     input      : 'input:not([type="file"])',
     message    : '.error.message',
@@ -1637,15 +1641,22 @@ $.fn.form.settings = {
         html += '<li>' + value + '</li>';
       });
       html += '</ul>';
-      return $(html);
+      return html;
     },
 
-    // template that produces label
-    prompt: function(errors, labelClasses) {
-      return $('<div/>')
-        .addClass(labelClasses)
-        .html(errors[0])
+    // template that produces label content
+    prompt: function(errors) {
+      if(errors.length === 1){
+        return errors[0];
+      }
+      var
+          html = '<ul class="ui list">'
       ;
+      $.each(errors, function(index, value) {
+        html += '<li>' + value + '</li>';
+      });
+      html += '</ul>';
+      return html;
     }
   },
 
