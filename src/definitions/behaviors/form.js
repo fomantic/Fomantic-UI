@@ -1086,11 +1086,14 @@ $.fn.form = function(parameters) {
                 }
                 else if(isCheckbox) {
                   module.verbose('Setting checkbox value', value, $element);
-                  if(value === true || value === 1) {
+                  if(value === true || value === 1 || value === 'on') {
                     $element.checkbox('check');
                   }
                   else {
                     $element.checkbox('uncheck');
+                  }
+                  if(typeof value === 'string') {
+                    $field.val(value);
                   }
                 }
                 else if(isDropdown) {
