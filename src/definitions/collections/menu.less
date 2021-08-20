@@ -1476,6 +1476,14 @@ each(@colors, {
   }
 }
 
+& when (@variationMenuCentered) {
+  .ui.centered.menu {
+    display: inline-flex;
+    transform: translateX(-50%);
+    margin-left:50%;
+  }
+}
+
 & when (@variationMenuInverted) {
   /*--------------
       Inverted
