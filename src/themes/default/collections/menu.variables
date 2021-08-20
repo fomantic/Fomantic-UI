@@ -481,3 +481,9 @@
 
 @invertedDropdownSelectedItemBackground: @strongTransparentWhite;
 @invertedDropdownSelectedItemColor: @invertedDropdownItemColor;
+
+/* Tabular */
+@invertedTabularBorderColor: @solidWhiteBorderColor;
+@invertedTabularBorder: @borderWidth solid @invertedTabularBorderColor;
+@invertedTabularActiveBackground: none @black;
+@invertedTabularHoveredTextColor: @invertedHoveredTextColor;
