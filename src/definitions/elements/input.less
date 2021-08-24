@@ -184,7 +184,13 @@
       box-shadow: @formStates[@@state][boxShadow];
     }
     & when (@state=error) {
-      .ui.input > input:invalid {
+      .ui.input > input:not(:placeholder-shown):invalid {
+        background-color: @formStates[@@state][background];
+        border-color: @formStates[@@state][borderColor];
+        color: @formStates[@@state][color];
+        box-shadow: @formStates[@@state][boxShadow];
+      }
+      .ui.input > input:not(:-ms-input-placeholder):invalid {
         background-color: @formStates[@@state][background];
         border-color: @formStates[@@state][borderColor];
         color: @formStates[@@state][color];
