@@ -735,7 +735,7 @@ each(@colors,{
   }
 
   /* Top */
-  .ui[class*="top attached"].segment {
+  .ui.segment[class*="top attached"] {
     bottom: 0;
     margin-bottom: 0;
     top: @attachedTopOffset;
@@ -744,6 +744,9 @@ each(@colors,{
   }
   .ui.segment[class*="top attached"]:first-child {
     margin-top: 0;
+  }
+  .ui.tab.segment[class*="top attached"]:first-child {
+    margin-top: @verticalMargin;
   }
 
   /* Bottom */
@@ -756,6 +759,9 @@ each(@colors,{
     border-radius: 0 0 @borderRadius @borderRadius;
   }
   .ui.segment[class*="bottom attached"]:last-child {
+    margin-bottom: 0;
+  }
+  .ui.tab.segment[class*="bottom attached"]:last-child {
     margin-bottom: @verticalMargin;
   }
 }
