@@ -1866,14 +1866,6 @@ $.fn.form.settings = {
       ;
     },
 
-    // see rls notes for 2.0.6 (this is a duplicate of minLength)
-    length: function(value, requiredLength) {
-      return (value !== undefined)
-        ? (value.length >= requiredLength)
-        : false
-      ;
-    },
-
     // is exactly length
     exactLength: function(value, requiredLength) {
       return (value !== undefined)
