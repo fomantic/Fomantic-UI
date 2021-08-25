@@ -1586,7 +1586,6 @@ $.fn.form.settings = {
     doesntContain        : '{name} cannot contain  "{ruleValue}"',
     doesntContainExactly : '{name} cannot contain exactly "{ruleValue}"',
     minLength            : '{name} must be at least {ruleValue} characters',
-    length               : '{name} must be at least {ruleValue} characters',
     exactLength          : '{name} must be exactly {ruleValue} characters',
     maxLength            : '{name} cannot be longer than {ruleValue} characters',
     match                : '{name} must match {ruleValue} field',
