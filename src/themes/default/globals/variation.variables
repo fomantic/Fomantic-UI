@@ -4,6 +4,9 @@
 
 /* General */
 @variationAllSizes: mini, tiny, small, large, big, huge, massive;
+@variationAllColors: primary, secondary, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black;
+@variationAllStates: error, info, success, warning;
+@variationAllConsequences: positive, negative, error, info, success, warning;
 
 /*******************************
            Elements
@@ -28,6 +31,7 @@
 @variationButtonGroups: true;
 @variationButtonStackable: true;
 @variationButtonSizes: @variationAllSizes;
+@variationButtonColors: @variationAllColors;
 
 /* Container */
 @variationContainerGrid: true;
@@ -47,6 +51,7 @@
 @variationDividerClearing: true;
 @variationDividerSection: true;
 @variationDividerSizes: @variationAllSizes;
+@variationDividerColors: @variationAllColors;
 
 /* Header */
 @variationHeaderDisabled: true;
@@ -62,6 +67,7 @@
 @variationHeaderAttached: true;
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
+@variationHeaderColors: @variationAllColors;
 
 /* Icon */
 @variationIconDeprecated: true;
@@ -83,6 +89,7 @@
 @variationIconCorner: true;
 @variationIconGroups: true;
 @variationIconSizes: @variationAllSizes;
+@variationIconColors: @variationAllColors;
 
 /* Image */
 @variationImageDisabled: true;
@@ -102,7 +109,7 @@
 /* Input */
 @variationInputDisabled: true;
 @variationInputInverted: true;
-@variationInputStates: true;
+@variationInputStates: @variationAllStates;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -126,6 +133,7 @@
 @variationLabelAttached: true;
 @variationLabelFluid: true;
 @variationLabelSizes: @variationAllSizes;
+@variationLabelColors: @variationAllColors;
 
 /* List */
 @variationListInverted: true;
@@ -154,6 +162,7 @@
 @variationLoaderInline: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
+@variationLoaderColors: @variationAllColors;
 
 /* Placeholder */
 @variationPlaceholderInverted: true;
@@ -201,6 +210,7 @@
 @variationSegmentAttached: true;
 @variationSegmentFitted: true;
 @variationSegmentSizes: @variationAllSizes;
+@variationSegmentColors: @variationAllColors;
 
 /* Step */
 @variationStepInverted: true;
@@ -215,8 +225,9 @@
 /* Text */
 @variationTextInverted: true;
 @variationTextDisabled: true;
-@variationTextStates: true;
+@variationTextStates: @variationAllStates;
 @variationTextSizes: @variationAllSizes;
+@variationTextColors: @variationAllColors;
 
 
 /*******************************
@@ -232,7 +243,7 @@
 @variationFormDisabled: true;
 @variationFormTransparent: true;
 @variationFormLoading: true;
-@variationFormStates: true;
+@variationFormStates: @variationAllStates;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
@@ -254,6 +265,7 @@
 @variationGridDoubling: true;
 @variationGridStackable: true;
 @variationGridCompact: true;
+@variationGridColors: @variationAllColors;
 
 /* Menu */
 @variationMenuInverted: true;
@@ -274,6 +286,7 @@
 @variationMenuFixed: true;
 @variationMenuAttached: true;
 @variationMenuSizes: @variationAllSizes;
+@variationMenuColors: @variationAllColors;
 
 /* Message */
 @variationMessageInverted: true;
@@ -281,10 +294,11 @@
 @variationMessageAttached: true;
 @variationMessageIcon: true;
 @variationMessageFloating: true;
-@variationMessageConsequences: true;
+@variationMessageConsequences: @variationAllConsequences;
 @variationMessageCentered: true;
 @variationMessageRightAligned: true;
 @variationMessageSizes: @variationAllSizes;
+@variationMessageColors: @variationAllColors;
 
 /* Table */
 @variationTableInverted: true;
@@ -310,6 +324,7 @@
 @variationTableCompact: true;
 @variationTableMarked: true;
 @variationTableSizes: @variationAllSizes;
+@variationTableColors: @variationAllColors;
 
 
 /*******************************
@@ -342,12 +357,14 @@
 @variationCardDoubling: true;
 @variationCardStackable: true;
 @variationCardSizes: @variationAllSizes;
+@variationCardColors: @variationAllColors;
 
 /* Comment */
 @variationCommentInverted: true;
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
 @variationCommentSizes: @variationAllSizes;
+@variationCommentColors: @variationAllColors;
 
 /* Feed */
 @variationFeedInverted: true;
@@ -368,6 +385,7 @@
 @variationStatisticFloated: true;
 @variationStatisticHorizontal: true;
 @variationStatisticSizes: @variationAllSizes;
+@variationStatisticColors: @variationAllColors;
 
 
 /*******************************
@@ -395,6 +413,7 @@
 @variationCheckboxFitted: true;
 @variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
+@variationCheckboxColors: @variationAllColors;
 
 /* Dimmer */
 @variationDimmerInverted: true;
@@ -421,7 +440,7 @@
 @variationDropdownMultiple: true;
 @variationDropdownInline: true;
 @variationDropdownLoading: true;
-@variationDropdownStates: true;
+@variationDropdownStates: @variationAllStates;
 @variationDropdownClear: true;
 @variationDropdownLeft: true;
 @variationDropdownUpward: true;
@@ -454,6 +473,7 @@
 @variationNagFixed: true;
 @variationNagGroups: true;
 @variationNagSizes: @variationAllSizes;
+@variationNagColors: @variationAllColors;
 
 /* Popup */
 @variationPopupInverted: true;
@@ -471,6 +491,7 @@
 @variationPopupFlowing: true;
 @variationPopupFixed: true;
 @variationPopupSizes: @variationAllSizes;
+@variationPopupColors: @variationAllColors;
 
 /* Progress */
 @variationProgressInverted: true;
@@ -489,11 +510,13 @@
 @variationProgressSpeeds: true;
 @variationProgressRightAligned: true;
 @variationProgressSizes: @variationAllSizes;
+@variationProgressColors: @variationAllColors;
 
 /* Rating */
 @variationRatingDisabled: true;
 @variationRatingPartial: true;
 @variationRatingSizes: @variationAllSizes;
+@variationRatingColors: @variationAllColors;
 
 /* Search */
 @variationSearchDisabled: true;
@@ -535,6 +558,7 @@
 @variationSliderVertical: true;
 @variationSliderBasic: true;
 @variationSliderSizes: small, large, big;
+@variationSliderColors: @variationAllColors;
 
 /* Tab */
 @variationTabLoading: true;
@@ -564,6 +588,7 @@
 @variationToastAttached: true;
 @variationToastCompact: true;
 @variationToastCentered: true;
+@variationToastColors: @variationAllColors;
 
 /* Transition */
 @variationTransitionDisabled: true;

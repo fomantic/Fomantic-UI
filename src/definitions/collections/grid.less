@@ -1306,18 +1306,19 @@
 /*----------------------
          Colored
 -----------------------*/
+& when not (@variationGridColors = false) {
+  each(@variationGridColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-
-  .ui.grid > .@{color}.row,
-  .ui.grid > .@{color}.column,
-  .ui.grid > .row > .@{color}.column {
-    background-color: @c;
-    color: @white;
-  }
-})
+    .ui.grid > .@{color}.row,
+    .ui.grid > .@{color}.column,
+    .ui.grid > .row > .@{color}.column {
+      background-color: @c;
+      color: @white;
+    }
+  })
+}
 
 
 /*----------------------

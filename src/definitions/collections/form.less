@@ -310,9 +310,9 @@
 /*--------------------
    Types of Messages
 ---------------------*/
-& when (@variationFormStates) {
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+& when not (@variationFormStates = false) {
+  each(@variationFormStates, {
+    @state: @value;
     .ui.form .@{state}.message,
     .ui.form .@{state}.message:empty {
       display: none;
@@ -481,12 +481,12 @@
   -webkit-appearance: none;
 }
 
-& when (@variationFormStates) {
+& when not (@variationFormStates = false) {
   /*--------------------
           States
   ---------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationFormStates, {
+    @state: @value;
     @c: @formStates[@@state][color];
     @bg: @formStates[@@state][background];
     @bdc: @formStates[@@state][borderColor];

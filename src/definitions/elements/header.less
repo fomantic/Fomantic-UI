@@ -306,37 +306,38 @@
 /*-------------------
        Colors
 --------------------*/
+& when not (@variationHeaderColors = false) {
+  each(@variationHeaderColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @h: @colors[@@color][hover];
+    @lh: @colors[@@color][lightHover];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-  @h: @colors[@@color][hover];
-  @lh: @colors[@@color][lightHover];
-
-  .ui.@{color}.header {
-    color: @c;
-  }
-  a.ui.@{color}.header:hover {
-    color: @h;
-  }
-  & when (@variationHeaderDividing) {
-    .ui.@{color}.dividing.header {
-      border-bottom: @dividedColoredBorderWidth solid @c;
+    .ui.@{color}.header {
+      color: @c;
     }
-  }
-  & when (@variationHeaderInverted) {
-    .ui.inverted.@{color}.header.header.header {
-      color: @l;
+    a.ui.@{color}.header:hover {
+      color: @h;
     }
-    a.ui.inverted.@{color}.header.header.header:hover {
-      color: @lh;
+    & when (@variationHeaderDividing) {
+      .ui.@{color}.dividing.header {
+        border-bottom: @dividedColoredBorderWidth solid @c;
+      }
     }
-    .ui.inverted.@{color}.dividing.header {
-      border-bottom: @dividedColoredBorderWidth solid @l;
+    & when (@variationHeaderInverted) {
+      .ui.inverted.@{color}.header.header.header {
+        color: @l;
+      }
+      a.ui.inverted.@{color}.header.header.header:hover {
+        color: @lh;
+      }
+      .ui.inverted.@{color}.dividing.header {
+        border-bottom: @dividedColoredBorderWidth solid @l;
+      }
     }
-  }
-})
+  })
+}
 
 & when (@variationHeaderAligned) {
   /*-------------------

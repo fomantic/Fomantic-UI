@@ -238,9 +238,9 @@
   .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
     box-shadow: none !important;
   }
-  & when (@variationTableMarked) {
-    each(@colors, {
-      @color: replace(@key, '@', '');
+  & when (@variationTableMarked) and not (@variationTableColors = false) {
+    each(@variationTableColors, {
+      @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
       .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
@@ -526,9 +526,9 @@
       }
     }
   }
-  & when (@variationTableMarked) {
-    each(@colors, {
-      @color: replace(@key, '@', '');
+  & when (@variationTableMarked) and not (@variationTableColors = false) {
+    each(@variationTableColors, {
+      @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
       .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
@@ -778,89 +778,90 @@
 /*-------------------
        Colors
 --------------------*/
+& when not (@variationTableColors = false) {
+  each(@variationTableColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @t: @colors[@@color][text];
+    @ht: @colors[@@color][hoverText];
+    @l: @colors[@@color][light];
+    @lh: @colors[@@color][lightHover];
+    @r: @colors[@@color][ribbon];
+    @b: @colors[@@color][bright];
+    @bh: @colors[@@color][brightHover];
+    @isDark: @colors[@@color][isDark];
+    @isVeryDark: @colors[@@color][isVeryDark];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @t: @colors[@@color][text];
-  @ht: @colors[@@color][hoverText];
-  @l: @colors[@@color][light];
-  @lh: @colors[@@color][lightHover];
-  @r: @colors[@@color][ribbon];
-  @b: @colors[@@color][bright];
-  @bh: @colors[@@color][brightHover];
-  @isDark: @colors[@@color][isDark];
-  @isVeryDark: @colors[@@color][isVeryDark];
-
-  .ui.@{color}.table {
-    border-top: @coloredBorderSize solid @c;
-  }
-  & when (@variationTableInverted) {
-    .ui.inverted.@{color}.table {
-      background-color: @c;
-      color: @white;
+    .ui.@{color}.table {
+      border-top: @coloredBorderSize solid @c;
     }
-  }
-  .ui.ui.ui.ui.table tr.@{color}:not(.marked),
-  .ui.ui.table td.@{color}:not(.marked) {
-    & when (@stateMarkerWidth > 0) {
-      box-shadow: @stateMarkerWidth 0 0 @r inset;
+    & when (@variationTableInverted) {
+      .ui.inverted.@{color}.table {
+        background-color: @c;
+        color: @white;
+      }
     }
-    & when (@isDark) {
-      background: @l;
-    }
-    & when not (@isDark) {
-      background: @b;
-    }
-    & when (@isVeryDark) {
-      color: @white;
-    }
-    & when not (@isVeryDark) {
-      color: @t;
-    }
-  }
-  & when (@variationTableSelectable) {
-    .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
-    .ui.table tr td.selectable.@{color}:not(.marked):hover,
-    .ui.selectable.table tr:hover td.@{color}:not(.marked) {
+    .ui.ui.ui.ui.table tr.@{color}:not(.marked),
+    .ui.ui.table td.@{color}:not(.marked) {
+      & when (@stateMarkerWidth > 0) {
+        box-shadow: @stateMarkerWidth 0 0 @r inset;
+      }
       & when (@isDark) {
-        background: @lh;
+        background: @l;
       }
       & when not (@isDark) {
-        background: @bh;
+        background: @b;
       }
       & when (@isVeryDark) {
         color: @white;
       }
       & when not (@isVeryDark) {
-        color: @ht;
+        color: @t;
       }
     }
-  }
-  & when (@variationTableMarked) {
-    .ui.table td.marked.@{color},
-    .ui.table tr.marked.@{color} {
-      &.left {
-        box-shadow: @coloredBorderSize 0 0 0 @c inset;
-      }
-      &.right {
-        box-shadow: -@coloredBorderSize 0 0 0 @c inset;
+    & when (@variationTableSelectable) {
+      .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
+      .ui.table tr td.selectable.@{color}:not(.marked):hover,
+      .ui.selectable.table tr:hover td.@{color}:not(.marked) {
+        & when (@isDark) {
+          background: @lh;
+        }
+        & when not (@isDark) {
+          background: @bh;
+        }
+        & when (@isVeryDark) {
+          color: @white;
+        }
+        & when not (@isVeryDark) {
+          color: @ht;
+        }
       }
     }
-    & when (@variationTableInverted) {
-      .ui.inverted.table td.marked.@{color},
-      .ui.inverted.table tr.marked.@{color} {
+    & when (@variationTableMarked) {
+      .ui.table td.marked.@{color},
+      .ui.table tr.marked.@{color} {
         &.left {
-          box-shadow: @coloredBorderSize 0 0 0 @l inset;
+          box-shadow: @coloredBorderSize 0 0 0 @c inset;
         }
         &.right {
-          box-shadow: -@coloredBorderSize 0 0 0 @l inset;
+          box-shadow: -@coloredBorderSize 0 0 0 @c inset;
+        }
+      }
+      & when (@variationTableInverted) {
+        .ui.inverted.table td.marked.@{color},
+        .ui.inverted.table tr.marked.@{color} {
+          &.left {
+            box-shadow: @coloredBorderSize 0 0 0 @l inset;
+          }
+          &.right {
+            box-shadow: -@coloredBorderSize 0 0 0 @l inset;
+          }
         }
       }
     }
-  }
 
-})
+  })
+}
 
 /*--------------
   Column Count
