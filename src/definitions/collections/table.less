@@ -642,6 +642,8 @@
   .ui.table tbody tr td.selectable > a:not(.ui) {
     display: block;
     color: inherit;
+  }
+  .ui.table:not(compact) tbody tr td.selectable > a:not(.ui) {
     padding: @cellVerticalPadding @cellHorizontalPadding;
   }
   .ui.table > tr > td.selectable,
