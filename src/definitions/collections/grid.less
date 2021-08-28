@@ -1478,11 +1478,14 @@ each(@colors, {
     }
     .ui.grid > .doubling.row > .column,
     .ui.doubling.grid > .row > .column {
-      display: inline-block !important;
       padding-top: (@rowSpacing / 2) !important;
       padding-bottom: (@rowSpacing / 2) !important;
       box-shadow: none !important;
       margin: 0;
+    }
+    .ui.grid:not(.stretched) > .doubling.row:not(.stretched) > .column:not(.stretched),
+    .ui.doubling.grid:not(.stretched) > .row:not(.stretched) > .column:not(.stretched) {
+      display: inline-block !important;
     }
     .ui[class*="two column"].doubling.grid > .row > .column,
     .ui[class*="two column"].doubling.grid > .column:not(.row),
