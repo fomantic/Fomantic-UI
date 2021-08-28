@@ -1491,6 +1491,15 @@ each(@colors, {
   }
 }
 
+& when (@variationMenuCentered) {
+  .ui.center.aligned.menu,
+  .ui.centered.menu {
+    display: inline-flex;
+    transform: translateX(-50%);
+    margin-left:50%;
+  }
+}
+
 & when (@variationMenuInverted) {
   /*--------------
       Inverted
@@ -1876,7 +1885,7 @@ each(@colors, {
   }
 
   /* Tabular Attached */
-  .ui.attached.menu:not(.tabular) {
+  .ui.attached.menu:not(.tabular):not(.text) {
     border: @attachedBorder;
   }
   & when (@variationMenuInverted) {

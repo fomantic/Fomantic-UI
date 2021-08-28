@@ -267,6 +267,7 @@
 @variationMenuLabeled: true;
 @variationMenuStackable: true;
 @variationMenuFloated: true;
+@variationMenuCentered: true;
 @variationMenuFitted: true;
 @variationMenuBorderless: true;
 @variationMenuCompact: true;
