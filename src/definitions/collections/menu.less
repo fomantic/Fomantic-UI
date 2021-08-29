@@ -679,6 +679,9 @@ Floated Menu / Item
     margin-bottom: -@tabularBorderWidth;
     box-shadow: @tabularActiveBoxShadow;
     border-radius: @tabularBorderRadius @tabularBorderRadius 0 0 !important;
+    &:hover {
+      cursor: default;
+    }
   }
 
   /* Coupling with segment for attachment */
@@ -772,6 +775,18 @@ Floated Menu / Item
     border-right: @tabularBorderWidth solid transparent;
     border-top: @tabularOppositeBorderWidth solid transparent;
     border-bottom: none;
+  }
+  & when (@variationMenuInverted) {
+    .ui.inverted.tabular.menu .active.item,
+    .ui.inverted.tabular.menu .active.item:hover {
+      background: @invertedTabularActiveBackground;
+      border-color: @invertedTabularBorderColor;
+    }
+    .ui.inverted.tabular.menu .item:not(.active):hover {
+      color: @invertedTabularHoveredTextColor;
+      background: transparent;
+      cursor: pointer;
+    }
   }
 }
 
@@ -1876,6 +1891,11 @@ each(@colors, {
   & when (@variationMenuInverted) {
     .ui.attached.inverted.menu {
       border: none;
+    }
+    & when (@variationMenuTabular) {
+      .ui[class*="top attached"].inverted.tabular.menu {
+        border-bottom: @invertedTabularBorder;
+      }
     }
   }
   & when (@variationMenuTabular) {
