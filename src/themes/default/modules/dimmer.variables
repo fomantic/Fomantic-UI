@@ -12,7 +12,7 @@
 
 @duration: 0.5s;
 @transition:
-  background-color @duration linear
+  all @duration linear
 ;
 @zIndex: 1000;
 @textAlign: center;
