@@ -68,7 +68,7 @@
 }
 
 /* Scrollbars */
-.addScrollbars() when (@useCustomScrollbars) {
+& when (@useCustomScrollbars) {
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
@@ -92,7 +92,6 @@
     scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
   }
 }
-.addScrollbars();
 
 /*******************************
             States
