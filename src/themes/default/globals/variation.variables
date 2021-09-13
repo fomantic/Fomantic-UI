@@ -430,6 +430,7 @@
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
 @variationDropdownPointing: true;
+@variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
 @variationDropdownSizes: @variationAllSizes;
 
