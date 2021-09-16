@@ -16,6 +16,8 @@
 @variationButtonSocial: true;
 @variationButtonFloated: true;
 @variationButtonCompact: true;
+@variationButtonIcon: true;
+@variationButtonLoading: true;
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
 @variationButtonLabeled: true;
@@ -24,6 +26,8 @@
 @variationButtonOr: true;
 @variationButtonAttached: true;
 @variationButtonFluid: true;
+@variationButtonEqualWidth: true;
+@variationButtonVertical: true;
 @variationButtonCircular: true;
 @variationButtonGroups: true;
 @variationButtonStackable: true;

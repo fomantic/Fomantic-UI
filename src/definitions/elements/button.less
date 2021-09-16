@@ -123,51 +123,52 @@
   background-image: @activeBackgroundImage;
 }
 
+& when (@variationButtonLoading) {
+  /*--------------
+      Loading
+  ---------------*/
 
-/*--------------
-    Loading
----------------*/
+  /* Specificity hack */
+  .ui.loading.loading.loading.loading.loading.loading.button {
+    position: relative;
+    cursor: default;
+    text-shadow: none !important;
+    color: transparent;
+    opacity: @loadingOpacity;
+    pointer-events: @loadingPointerEvents;
+    transition: @loadingTransition;
+  }
+  .ui.loading.button:before {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
 
-/* Specificity hack */
-.ui.loading.loading.loading.loading.loading.loading.button {
-  position: relative;
-  cursor: default;
-  text-shadow: none !important;
-  color: transparent;
-  opacity: @loadingOpacity;
-  pointer-events: @loadingPointerEvents;
-  transition: @loadingTransition;
-}
-.ui.loading.button:before {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 50%;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    border-radius: @circularRadius;
+    border: @loaderLineWidth solid @invertedLoaderFillColor;
+  }
+  .ui.loading.button:after {
+    position: absolute;
+    content: '';
+    top: 50%;
+    left: 50%;
 
-  border-radius: @circularRadius;
-  border: @loaderLineWidth solid @invertedLoaderFillColor;
-}
-.ui.loading.button:after {
-  position: absolute;
-  content: '';
-  top: 50%;
-  left: 50%;
+    margin: @loaderMargin;
+    width: @loaderSize;
+    height: @loaderSize;
 
-  margin: @loaderMargin;
-  width: @loaderSize;
-  height: @loaderSize;
+    border-radius: @circularRadius;
 
-  border-radius: @circularRadius;
+    animation: loader @loaderSpeed infinite linear;
+    border: @loaderLineWidth solid currentColor;
+    color: @invertedLoaderLineColor;
 
-  animation: loader @loaderSpeed infinite linear;
-  border: @loaderLineWidth solid currentColor;
-  color: @invertedLoaderLineColor;
-
-  box-shadow: 0 0 0 1px transparent;
+    box-shadow: 0 0 0 1px transparent;
+  }
 }
 & when (@variationButtonLabeledIcon){
   .ui.labeled.icon.loading.button .icon {
@@ -730,20 +731,22 @@
   })
 }
 
-/*--------------
-    Icon Only
----------------*/
+& when (@variationButtonIcon) {
+  /*--------------
+      Icon Only
+  ---------------*/
 
-.ui.icon.buttons .button,
-.ui.icon.button:not(.animated):not(.compact):not(.labeled) {
-  padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
-}
-.ui.animated.icon.button > .content > .icon,
-.ui.icon.buttons .button > .icon,
-.ui.icon.button > .icon {
-  opacity: @iconButtonOpacity;
-  margin: 0 !important;
-  vertical-align: top;
+  .ui.icon.buttons .button,
+  .ui.icon.button:not(.animated):not(.compact):not(.labeled) {
+    padding: @verticalPadding @verticalPadding ( @verticalPadding + @shadowOffset );
+  }
+  .ui.animated.icon.button > .content > .icon,
+  .ui.icon.buttons .button > .icon,
+  .ui.icon.button > .icon {
+    opacity: @iconButtonOpacity;
+    margin: 0 !important;
+    vertical-align: top;
+  }
 }
 .ui.animated.button > .content > .icon {
   vertical-align: top;
@@ -1291,7 +1294,8 @@
   .ui.fluid.button {
     display: block;
   }
-
+}
+& when (@variationButtonEqualWidth) {
   .ui.two.buttons {
     width: 100%;
   }
@@ -1379,57 +1383,63 @@
   .ui.twelve.buttons > .button {
     width: 8.3333%;
   }
+}
 
-  /* Fluid Vertical Buttons */
-  .ui.fluid.vertical.buttons,
-  .ui.fluid.vertical.buttons > .button {
-    display: flex;
-    width: auto;
-    justify-content: center;
+& when (@variationButtonVertical) {
+  & when (@variationButtonFluid) {
+    /* Fluid Vertical Buttons */
+    .ui.fluid.vertical.buttons,
+    .ui.fluid.vertical.buttons > .button {
+      display: flex;
+      width: auto;
+      justify-content: center;
+    }
   }
 
-  .ui.two.vertical.buttons > .button {
-    height: 50%;
-  }
+  & when (@variationButtonEqualWidth) {
+    .ui.two.vertical.buttons > .button {
+      height: 50%;
+    }
 
-  .ui.three.vertical.buttons > .button {
-    height: 33.333%;
-  }
+    .ui.three.vertical.buttons > .button {
+      height: 33.333%;
+    }
 
-  .ui.four.vertical.buttons > .button {
-    height: 25%;
-  }
+    .ui.four.vertical.buttons > .button {
+      height: 25%;
+    }
 
-  .ui.five.vertical.buttons > .button {
-    height: 20%;
-  }
+    .ui.five.vertical.buttons > .button {
+      height: 20%;
+    }
 
-  .ui.six.vertical.buttons > .button {
-    height: 16.666%;
-  }
+    .ui.six.vertical.buttons > .button {
+      height: 16.666%;
+    }
 
-  .ui.seven.vertical.buttons > .button {
-    height: 14.285%;
-  }
+    .ui.seven.vertical.buttons > .button {
+      height: 14.285%;
+    }
 
-  .ui.eight.vertical.buttons > .button {
-    height: 12.500%;
-  }
+    .ui.eight.vertical.buttons > .button {
+      height: 12.500%;
+    }
 
-  .ui.nine.vertical.buttons > .button {
-    height: 11.11%;
-  }
+    .ui.nine.vertical.buttons > .button {
+      height: 11.11%;
+    }
 
-  .ui.ten.vertical.buttons > .button {
-    height: 10%;
-  }
+    .ui.ten.vertical.buttons > .button {
+      height: 10%;
+    }
 
-  .ui.eleven.vertical.buttons > .button {
-    height: 9.09%;
-  }
+    .ui.eleven.vertical.buttons > .button {
+      height: 9.09%;
+    }
 
-  .ui.twelve.vertical.buttons > .button {
-    height: 8.3333%;
+    .ui.twelve.vertical.buttons > .button {
+      height: 8.3333%;
+    }
   }
 }
 
@@ -1874,35 +1884,36 @@ each(@colors, {
     border-top-right-radius: @borderRadius;
     border-bottom-right-radius: @borderRadius;
   }
+  & when (@variationButtonVertical) {
+    /* Vertical  Style */
+    .ui.vertical.buttons {
+      display: inline-flex;
+      flex-direction: column;
+    }
 
-  /* Vertical  Style */
-  .ui.vertical.buttons {
-    display: inline-flex;
-    flex-direction: column;
-  }
+    .ui.vertical.buttons .button {
+      display: block;
+      float: none;
+      width: 100%;
+      margin: @verticalGroupOffset;
+      box-shadow: @verticalBoxShadow;
+      border-radius: 0;
+    }
 
-  .ui.vertical.buttons .button {
-    display: block;
-    float: none;
-    width: 100%;
-    margin: @verticalGroupOffset;
-    box-shadow: @verticalBoxShadow;
-    border-radius: 0;
-  }
+    .ui.vertical.buttons .button:first-child {
+      border-top-left-radius: @borderRadius;
+      border-top-right-radius: @borderRadius;
+    }
 
-  .ui.vertical.buttons .button:first-child {
-    border-top-left-radius: @borderRadius;
-    border-top-right-radius: @borderRadius;
-  }
+    .ui.vertical.buttons .button:last-child {
+      margin-bottom: 0;
+      border-bottom-left-radius: @borderRadius;
+      border-bottom-right-radius: @borderRadius;
+    }
 
-  .ui.vertical.buttons .button:last-child {
-    margin-bottom: 0;
-    border-bottom-left-radius: @borderRadius;
-    border-bottom-right-radius: @borderRadius;
-  }
-
-  .ui.vertical.buttons .button:only-child {
-    border-radius: @borderRadius;
+    .ui.vertical.buttons .button:only-child {
+      border-radius: @borderRadius;
+    }
   }
 }
 .loadUIOverrides();
