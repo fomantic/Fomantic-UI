@@ -392,8 +392,17 @@
 
 /* Item */
 @variationItemInverted: true;
+@variationItemImage: true;
+@variationItemHeader: true;
+@variationItemDescription: true;
+@variationItemMeta: true;
+@variationItemExtra: true;
+@variationItemFavorite: true;
+@variationItemLike: true;
+@variationItemFloated: true;
 @variationItemAligned: true;
 @variationItemRelaxed: true;
+@variationItemVeryRelaxed: true;
 @variationItemDivided: true;
 @variationItemLink: true;
 @variationItemUnstackable: true;
