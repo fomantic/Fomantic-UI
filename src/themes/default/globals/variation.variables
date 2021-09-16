@@ -373,6 +373,11 @@
 @variationCommentInverted: true;
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
+@variationCommentAvatar: true;
+@variationCommentAuthor: true;
+@variationCommentMeta: true;
+@variationCommentActions: true;
+@variationCommentReply: true;
 @variationCommentSizes: @variationAllSizes;
 
 /* Feed */
