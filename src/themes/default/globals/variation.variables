@@ -240,6 +240,8 @@
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
+@variationFormEqualWidth: true;
+@variationFormWide: true;
 @variationFormSizes: @variationAllSizes;
 
 /* Grid */
