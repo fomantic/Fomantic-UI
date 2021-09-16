@@ -382,6 +382,12 @@
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedMeta: true;
+@variationFeedSummary: true;
+@variationFeedUser: true;
+@variationFeedExtra: true;
+@variationFeedDate: true;
+@variationFeedLike: true;
 @variationFeedSizes: @variationAllSizes;
 
 /* Item */
