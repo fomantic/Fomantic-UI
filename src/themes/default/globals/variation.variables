@@ -149,6 +149,9 @@
 @variationListDivided: true;
 @variationListCelled: true;
 @variationListRelaxed: true;
+@variationListVeryRelaxed: true;
+@variationListHeader: true;
+@variationListDescription: true;
 @variationListSizes: @variationAllSizes;
 
 /* Loader */
