@@ -416,6 +416,7 @@
 @variationStatisticStackable: true;
 @variationStatisticFloated: true;
 @variationStatisticHorizontal: true;
+@variationStatisticEqualWidth: true;
 @variationStatisticSizes: @variationAllSizes;
 
 
