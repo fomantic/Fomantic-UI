@@ -36,6 +36,7 @@
 /* Container */
 @variationContainerGrid: true;
 @variationContainerRelaxed: true;
+@variationContainerVeryRelaxed: true;
 @variationContainerText: true;
 @variationContainerFluid: true;
 @variationContainerAligned: true;
