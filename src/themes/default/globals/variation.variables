@@ -315,10 +315,15 @@
 @variationTableSortable: true;
 @variationTableCollapsing: true;
 @variationTableBasic: true;
+@variationTableVeryBasic: true;
 @variationTableCelled: true;
 @variationTablePadded: true;
+@variationTableVeryPadded: true;
 @variationTableCompact: true;
+@variationTableVeryCompact: true;
 @variationTableMarked: true;
+@variationTableEqualWidth: true;
+@variationTableWide: true;
 @variationTableSizes: @variationAllSizes;
 
 
