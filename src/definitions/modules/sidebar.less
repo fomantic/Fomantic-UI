@@ -281,9 +281,11 @@ body.pushable > .pusher {
       width: @thinWidth;
     }
 
-    .ui[class*="very thin"].left.sidebar,
-    .ui[class*="very thin"].right.sidebar {
-      width: @veryThinWidth;
+    & when (@variationSidebarVeryThin) {
+      .ui[class*="very thin"].left.sidebar,
+      .ui[class*="very thin"].right.sidebar {
+        width: @veryThinWidth;
+      }
     }
   }
 
@@ -298,9 +300,11 @@ body.pushable > .pusher {
       width: @wideWidth;
     }
 
-    .ui[class*="very wide"].left.sidebar,
-    .ui[class*="very wide"].right.sidebar {
-      width: @veryWideWidth;
+    & when (@variationSidebarVeryWide) {
+      .ui[class*="very wide"].left.sidebar,
+      .ui[class*="very wide"].right.sidebar {
+        width: @veryWideWidth;
+      }
     }
   }
 
@@ -312,9 +316,11 @@ body.pushable > .pusher {
         transform: translate3d(@thinWidth, 0, 0);
       }
 
-      .ui.visible[class*="very thin"].left.sidebar ~ .fixed,
-      .ui.visible[class*="very thin"].left.sidebar ~ .pusher {
-        transform: translate3d(@veryThinWidth, 0, 0);
+      & when (@variationSidebarVeryThin) {
+        .ui.visible[class*="very thin"].left.sidebar ~ .fixed,
+        .ui.visible[class*="very thin"].left.sidebar ~ .pusher {
+          transform: translate3d(@veryThinWidth, 0, 0);
+        }
       }
     }
 
@@ -324,9 +330,11 @@ body.pushable > .pusher {
         transform: translate3d(@wideWidth, 0, 0);
       }
 
-      .ui.visible[class*="very wide"].left.sidebar ~ .fixed,
-      .ui.visible[class*="very wide"].left.sidebar ~ .pusher {
-        transform: translate3d(@veryWideWidth, 0, 0);
+      & when (@variationSidebarVeryWide) {
+        .ui.visible[class*="very wide"].left.sidebar ~ .fixed,
+        .ui.visible[class*="very wide"].left.sidebar ~ .pusher {
+          transform: translate3d(@veryWideWidth, 0, 0);
+        }
       }
     }
   }
@@ -339,9 +347,11 @@ body.pushable > .pusher {
         transform: translate3d(-@thinWidth, 0, 0);
       }
 
-      .ui.visible[class*="very thin"].right.sidebar ~ .fixed,
-      .ui.visible[class*="very thin"].right.sidebar ~ .pusher {
-        transform: translate3d(-@veryThinWidth, 0, 0);
+      & when (@variationSidebarVeryThin) {
+        .ui.visible[class*="very thin"].right.sidebar ~ .fixed,
+        .ui.visible[class*="very thin"].right.sidebar ~ .pusher {
+          transform: translate3d(-@veryThinWidth, 0, 0);
+        }
       }
     }
 
@@ -351,9 +361,11 @@ body.pushable > .pusher {
         transform: translate3d(-@wideWidth, 0, 0);
       }
 
-      .ui.visible[class*="very wide"].right.sidebar ~ .fixed,
-      .ui.visible[class*="very wide"].right.sidebar ~ .pusher {
-        transform: translate3d(-@veryWideWidth, 0, 0);
+      & when (@variationSidebarVeryWide) {
+        .ui.visible[class*="very wide"].right.sidebar ~ .fixed,
+        .ui.visible[class*="very wide"].right.sidebar ~ .pusher {
+          transform: translate3d(-@veryWideWidth, 0, 0);
+        }
       }
     }
   }

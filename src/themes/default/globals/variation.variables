@@ -572,7 +572,9 @@
 
 /* Sidebar */
 @variationSidebarThin: true;
+@variationSidebarVeryThin: true;
 @variationSidebarWide: true;
+@variationSidebarVeryWide: true;
 @variationSidebarTop: true;
 @variationSidebarBottom: true;
 @variationSidebarLeft: true;
