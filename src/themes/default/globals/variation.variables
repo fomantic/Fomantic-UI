@@ -281,6 +281,8 @@
 @variationMenuCompact: true;
 @variationMenuFixed: true;
 @variationMenuAttached: true;
+@variationMenuIcon: true;
+@variationMenuEqualWidth: true;
 @variationMenuSizes: @variationAllSizes;
 
 /* Message */
