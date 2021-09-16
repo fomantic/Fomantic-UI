@@ -260,6 +260,8 @@
 @variationGridDoubling: true;
 @variationGridStackable: true;
 @variationGridCompact: true;
+@variationGridWide: true;
+@variationGridEqualWidth: true;
 
 /* Menu */
 @variationMenuInverted: true;
