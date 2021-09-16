@@ -356,6 +356,17 @@
 @variationCardLink: true;
 @variationCardDoubling: true;
 @variationCardStackable: true;
+@variationCardFloated: true;
+@variationCardAligned: true;
+@variationCardImage: true;
+@variationCardHeader: true;
+@variationCardDescription: true;
+@variationCardMeta: true;
+@variationCardExtra: true;
+@variationCardButton: true;
+@variationCardStar: true;
+@variationCardLike: true;
+@variationCardEqualWidth: true;
 @variationCardSizes: @variationAllSizes;
 
 /* Comment */
