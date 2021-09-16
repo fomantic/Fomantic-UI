@@ -643,3 +643,6 @@
 /* Emojis */
 @variationEmojiColons: true;
 @variationEmojiNoColons: true;
+@variationEmojiDisabled: true;
+@variationEmojiLoading: true;
+@variationEmojiLink: true;
