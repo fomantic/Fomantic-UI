@@ -254,10 +254,12 @@
       margin-bottom: 0;
     }
   }
-  .ui.icon.header.aligned {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  & when (@variationHeaderAligned) {
+    .ui.icon.header.aligned {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
   }
 }
 
@@ -403,8 +405,10 @@ each(@colors, {
     padding-bottom: @dividedBorderPadding;
     border-bottom: @dividedBorder;
   }
-  .ui.dividing.header .sub.header {
-    padding-bottom: @dividedSubHeaderPadding;
+  & when (@variationHeaderSub) {
+    .ui.dividing.header .sub.header {
+      padding-bottom: @dividedSubHeaderPadding;
+    }
   }
   .ui.dividing.header i.icon {
     margin-bottom: @dividedIconPadding;
@@ -454,8 +458,10 @@ each(@colors, {
     border: @attachedBorder;
     border-radius: 0;
   }
-  .ui.attached.block.header {
-    background: @blockBackground;
+  & when (@variationHeaderBlock) {
+    .ui.attached.block.header {
+      background: @blockBackground;
+    }
   }
   .ui.attached:not(.top).header {
     border-top: none;
