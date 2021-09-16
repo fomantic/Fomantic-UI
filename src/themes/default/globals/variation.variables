@@ -219,6 +219,7 @@
 @variationStepOrdered: true;
 @variationStepFluid: true;
 @variationStepAttached: true;
+@variationStepEqualWidth: true;
 @variationStepSizes: @variationAllSizes;
 
 /* Text */
