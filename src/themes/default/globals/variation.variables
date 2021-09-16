@@ -195,6 +195,7 @@
 @variationSegmentPiled: true;
 @variationSegmentStacked: true;
 @variationSegmentPadded: true;
+@variationSegmentVeryPadded: true;
 @variationSegmentCircular: true;
 @variationSegmentCompact: true;
 @variationSegmentRaised: true;
