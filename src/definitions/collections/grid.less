@@ -39,13 +39,17 @@
   margin-left: -(@gutterWidth / 2);
   margin-right: -(@gutterWidth / 2);
 }
-.ui.relaxed.grid  {
-  margin-left: -(@relaxedGutterWidth / 2);
-  margin-right: -(@relaxedGutterWidth / 2);
-}
-.ui[class*="very relaxed"].grid  {
-  margin-left: -(@veryRelaxedGutterWidth / 2);
-  margin-right: -(@veryRelaxedGutterWidth / 2);
+& when (@variationGridRelaxed) {
+  .ui.relaxed.grid {
+    margin-left: -(@relaxedGutterWidth / 2);
+    margin-right: -(@relaxedGutterWidth / 2);
+  }
+  & when (@variationGridVeryRelaxed) {
+    .ui[class*="very relaxed"].grid {
+      margin-left: -(@veryRelaxedGutterWidth / 2);
+      margin-right: -(@veryRelaxedGutterWidth / 2);
+    }
+  }
 }
 
 
@@ -983,11 +987,13 @@
     padding-right: (@relaxedGutterWidth / 2);
   }
 
-  .ui[class*="very relaxed"].grid > .column:not(.row),
-  .ui[class*="very relaxed"].grid > .row > .column,
-  .ui.grid > [class*="very relaxed"].row > .column {
-    padding-left: (@veryRelaxedGutterWidth / 2);
-    padding-right: (@veryRelaxedGutterWidth / 2);
+  & when (@variationGridVeryRelaxed) {
+    .ui[class*="very relaxed"].grid > .column:not(.row),
+    .ui[class*="very relaxed"].grid > .row > .column,
+    .ui.grid > [class*="very relaxed"].row > .column {
+      padding-left: (@veryRelaxedGutterWidth / 2);
+      padding-right: (@veryRelaxedGutterWidth / 2);
+    }
   }
 
   /* Coupling with UI Divider */
@@ -996,10 +1002,12 @@
     margin-left: (@relaxedGutterWidth / 2);
     margin-right: (@relaxedGutterWidth / 2);
   }
-  .ui[class*="very relaxed"].grid .row + .ui.divider,
-  .ui.grid [class*="very relaxed"].row + .ui.divider {
-    margin-left: (@veryRelaxedGutterWidth / 2);
-    margin-right: (@veryRelaxedGutterWidth / 2);
+  & when (@variationGridVeryRelaxed) {
+    .ui[class*="very relaxed"].grid .row + .ui.divider,
+    .ui.grid [class*="very relaxed"].row + .ui.divider {
+      margin-left: (@veryRelaxedGutterWidth / 2);
+      margin-right: (@veryRelaxedGutterWidth / 2);
+    }
   }
 }
 
@@ -1044,17 +1052,19 @@
     box-shadow: @dividedBorder;
   }
 
-  /* Swap from padding to margin on columns to have dividers align */
-  .ui[class*="vertically divided"].grid > .column:not(.row),
-  .ui[class*="vertically divided"].grid > .row > .column {
-    margin-top: (@rowSpacing / 2);
-    margin-bottom: (@rowSpacing / 2);
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .ui[class*="vertically divided"].grid > .row {
-    margin-top: 0;
-    margin-bottom: 0;
+  & when (@variationGridVertical) {
+    /* Swap from padding to margin on columns to have dividers align */
+    .ui[class*="vertically divided"].grid > .column:not(.row),
+    .ui[class*="vertically divided"].grid > .row > .column {
+      margin-top: (@rowSpacing / 2);
+      margin-bottom: (@rowSpacing / 2);
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .ui[class*="vertically divided"].grid > .row {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
   }
 
 
@@ -1065,9 +1075,11 @@
     box-shadow: none;
   }
 
-  /* No space on top of first row */
-  .ui[class*="vertically divided"].grid > .row:first-child > .column {
-    margin-top: 0;
+  & when (@variationGridVertical) {
+    /* No space on top of first row */
+    .ui[class*="vertically divided"].grid > .row:first-child > .column {
+      margin-top: 0;
+    }
   }
 
 
@@ -1079,21 +1091,23 @@
     box-shadow: none;
   }
 
-  /* Vertically Divided */
-  .ui[class*="vertically divided"].grid > .row {
-    position: relative;
-  }
-  .ui[class*="vertically divided"].grid > .row:before {
-    position: absolute;
-    content: "";
-    top: 0;
-    left: 0;
+  & when (@variationGridVertical) {
+    /* Vertically Divided */
+    .ui[class*="vertically divided"].grid > .row {
+      position: relative;
+    }
+    .ui[class*="vertically divided"].grid > .row:before {
+      position: absolute;
+      content: "";
+      top: 0;
+      left: 0;
 
-    width: e(%("calc(100%% - %d)", @gutterWidth));
-    height: 1px;
+      width: e(%("calc(100%% - %d)", @gutterWidth));
+      height: 1px;
 
-    margin: 0 (@gutterWidth / 2);
-    box-shadow: @verticallyDividedBorder;
+      margin: 0 (@gutterWidth / 2);
+      box-shadow: @verticallyDividedBorder;
+    }
   }
 
   & when (@variationGridPadded) {
@@ -1103,9 +1117,11 @@
       width: 100%;
     }
   }
-  /* First Row Vertically Divided */
-  .ui[class*="vertically divided"].grid > .row:first-child:before {
-    box-shadow: none;
+  & when (@variationGridVertical) {
+    /* First Row Vertically Divided */
+    .ui[class*="vertically divided"].grid > .row:first-child:before {
+      box-shadow: none;
+    }
   }
   & when (@variationGridInverted) {
     /* Inverted Divided */
@@ -1117,21 +1133,25 @@
     .ui.inverted.divided.grid:not([class*="vertically divided"]) > .row > .column:first-child {
       box-shadow: none;
     }
-    .ui.inverted[class*="vertically divided"].grid > .row:before {
-      box-shadow: @verticallyDividedInvertedBorder;
+    & when (@variationGridVertical) {
+      .ui.inverted[class*="vertically divided"].grid > .row:before {
+        box-shadow: @verticallyDividedInvertedBorder;
+      }
     }
   }
-  & when (@variationGridRelaxed) {
+  & when (@variationGridRelaxed) and (@variationGridVertical) {
     /* Relaxed */
     .ui.relaxed[class*="vertically divided"].grid > .row:before {
       margin-left: (@relaxedGutterWidth / 2);
       margin-right: (@relaxedGutterWidth / 2);
       width: e(%("calc(100%% - %d)", @relaxedGutterWidth));
     }
-    .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
-      margin-left: (@veryRelaxedGutterWidth / 2);
-      margin-right: (@veryRelaxedGutterWidth / 2);
-      width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
+    & when (@variationGridVeryRelaxed) {
+      .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
+        margin-left: (@veryRelaxedGutterWidth / 2);
+        margin-right: (@veryRelaxedGutterWidth / 2);
+        width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
+      }
     }
   }
 }
@@ -1172,6 +1192,8 @@
     .ui.relaxed.celled.grid > .row > .column {
       padding: @celledRelaxedPadding;
     }
+  }
+  & when (@variationGridVeryRelaxed) {
     .ui[class*="very relaxed"].celled.grid > .column:not(.row),
     .ui[class*="very relaxed"].celled.grid > .row > .column {
       padding: @celledVeryRelaxedPadding;
@@ -1909,9 +1931,11 @@ each(@colors, {
     .ui.compact.relaxed.celled.grid > .row > .column {
       padding: @compactCelledRelaxedPadding;
     }
-    .ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
-    .ui.compact[class*="very relaxed"].celled.grid > .row > .column {
-      padding: @compactCelledVeryRelaxedPadding;
+    & when (@variationGridVeryRelaxed) {
+      .ui.compact[class*="very relaxed"].celled.grid > .column:not(.row),
+      .ui.compact[class*="very relaxed"].celled.grid > .row > .column {
+        padding: @compactCelledVeryRelaxedPadding;
+      }
     }
   }
 
@@ -1919,43 +1943,47 @@ each(@colors, {
       Very compact
   -----------------*/
 
-  .ui.ui.ui[class*="very compact"].grid {
-    margin: -(@veryCompactGutterWidth / 2);
-  }
-
-  .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
-  .ui.ui.ui[class*="very compact"].grid > .row > .column {
-    padding-left: (@veryCompactGutterWidth / 2);
-    padding-right: (@veryCompactGutterWidth / 2);
-  }
-
-  .ui.ui.ui[class*="very compact"].grid > * {
-    padding-left: (@veryCompactGutterWidth / 2);
-    padding-right: (@veryCompactGutterWidth / 2);
-  }
-
-  /* Row */
-  .ui.ui.ui[class*="very compact"].grid > .row {
-    padding-top: (@veryCompactRowSpacing / 2);
-    padding-bottom: (@veryCompactRowSpacing / 2);
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Columns */
-  .ui.ui.ui[class*="very compact"].grid > .column:not(.row) {
-    padding-top: (@veryCompactRowSpacing / 2);
-    padding-bottom: (@veryCompactRowSpacing / 2);
-  }
-  & when (@variationGridRelaxed) and (@variationGridCelled) {
-    /* Relaxed + Celled */
-    .ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
-    .ui[class*="very compact"].relaxed.celled.grid > .row > .column {
-      padding: @veryCompactCelledRelaxedPadding;
+  & when (@variationGridVeryCompact) {
+    .ui.ui.ui[class*="very compact"].grid {
+      margin: -(@veryCompactGutterWidth / 2);
     }
-    .ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
-    .ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
-      padding: @veryCompactCelledVeryRelaxedPadding;
+
+    .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
+    .ui.ui.ui[class*="very compact"].grid > .row > .column {
+      padding-left: (@veryCompactGutterWidth / 2);
+      padding-right: (@veryCompactGutterWidth / 2);
+    }
+
+    .ui.ui.ui[class*="very compact"].grid > * {
+      padding-left: (@veryCompactGutterWidth / 2);
+      padding-right: (@veryCompactGutterWidth / 2);
+    }
+
+    /* Row */
+    .ui.ui.ui[class*="very compact"].grid > .row {
+      padding-top: (@veryCompactRowSpacing / 2);
+      padding-bottom: (@veryCompactRowSpacing / 2);
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    /* Columns */
+    .ui.ui.ui[class*="very compact"].grid > .column:not(.row) {
+      padding-top: (@veryCompactRowSpacing / 2);
+      padding-bottom: (@veryCompactRowSpacing / 2);
+    }
+    & when (@variationGridRelaxed) and (@variationGridCelled) {
+      /* Relaxed + Celled */
+      .ui[class*="very compact"].relaxed.celled.grid > .column:not(.row),
+      .ui[class*="very compact"].relaxed.celled.grid > .row > .column {
+        padding: @veryCompactCelledRelaxedPadding;
+      }
+      & when (@variationGridVeryRelaxed) {
+        .ui[class*="very compact"][class*="very relaxed"].celled.grid > .column:not(.row),
+        .ui[class*="very compact"][class*="very relaxed"].celled.grid > .row > .column {
+          padding: @veryCompactCelledVeryRelaxedPadding;
+        }
+      }
     }
   }
 }

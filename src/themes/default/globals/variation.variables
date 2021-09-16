@@ -250,9 +250,11 @@
 @variationGridCelled: true;
 @variationGridCentered: true;
 @variationGridRelaxed: true;
+@variationGridVeryRelaxed: true;
 @variationGridPadded: true;
 @variationGridFloated: true;
 @variationGridDivided: true;
+@variationGridVertical: true;
 @variationGridAligned: true;
 @variationGridStretched: true;
 @variationGridJustified: true;
@@ -260,6 +262,7 @@
 @variationGridDoubling: true;
 @variationGridStackable: true;
 @variationGridCompact: true;
+@variationGridVeryCompact: true;
 @variationGridWide: true;
 @variationGridEqualWidth: true;
 
