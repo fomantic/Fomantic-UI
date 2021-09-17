@@ -271,9 +271,9 @@
   }
 }
 
-/* Pointing */
-.ui.menu .pointing.dropdown.item .menu {
-  margin-top: @pointingDropdownMenuDistance;
+  /* Pointing */
+  .ui.menu .pointing.dropdown.item .menu {
+    margin-top: @pointingDropdownMenuDistance;
 }
 
 & when (@variationMenuInverted) {
@@ -679,6 +679,9 @@ Floated Menu / Item
     margin-bottom: -@tabularBorderWidth;
     box-shadow: @tabularActiveBoxShadow;
     border-radius: @tabularBorderRadius @tabularBorderRadius 0 0 !important;
+    &:hover {
+      cursor: default;
+    }
   }
 
   /* Coupling with segment for attachment */
@@ -772,6 +775,18 @@ Floated Menu / Item
     border-right: @tabularBorderWidth solid transparent;
     border-top: @tabularOppositeBorderWidth solid transparent;
     border-bottom: none;
+  }
+  & when (@variationMenuInverted) {
+    .ui.inverted.tabular.menu .active.item,
+    .ui.inverted.tabular.menu .active.item:hover {
+      background: @invertedTabularActiveBackground;
+      border-color: @invertedTabularBorderColor;
+    }
+    .ui.inverted.tabular.menu .item:not(.active):hover {
+      color: @invertedTabularHoveredTextColor;
+      background: transparent;
+      cursor: pointer;
+    }
   }
 }
 
@@ -938,10 +953,11 @@ Floated Menu / Item
     .ui.vertical.secondary.menu .item > .menu .item {
       background-color: transparent;
     }
-
-    /* Inverted */
-    .ui.secondary.inverted.menu {
-      background-color: transparent;
+    & when (@variationMenuInverted) {
+      /* Inverted */
+      .ui.secondary.inverted.menu {
+        background-color: transparent;
+      }
     }
   }
 
@@ -1208,51 +1224,59 @@ Floated Menu / Item
   }
 }
 
-/*--------------
-    Icon Only
----------------*/
+& when (@variationMenuIcon) {
+  /*--------------
+      Icon Only
+  ---------------*/
 
-/* Vertical Menu */
-.ui.vertical.icon.menu {
-  display: inline-block;
-  width: auto;
-}
+  & when (@variationMenuVertical) {
+    /* Vertical Menu */
+    .ui.vertical.icon.menu {
+      display: inline-block;
+      width: auto;
+    }
+  }
 
-/* Item */
-.ui.icon.menu .item {
-  height: auto;
-  text-align: @iconMenuTextAlign;
-  color: @iconMenuItemColor;
-}
+  /* Item */
+  .ui.icon.menu .item {
+    height: auto;
+    text-align: @iconMenuTextAlign;
+    color: @iconMenuItemColor;
+  }
 
-/* Icon */
-.ui.icon.menu .item > i.icon:not(.dropdown) {
-  margin: 0;
-  opacity: 1;
-}
+  /* Icon */
+  .ui.icon.menu .item > i.icon:not(.dropdown) {
+    margin: 0;
+    opacity: 1;
+  }
 
-/* Icon Glyph */
-.ui.icon.menu i.icon:before {
-  opacity: 1;
-}
+  /* Icon Glyph */
+  .ui.icon.menu i.icon:before {
+    opacity: 1;
+  }
 
-/* (x) Item Icon */
-.ui.menu .icon.item > i.icon {
-  width: auto;
-  margin: 0 auto;
-}
+  /* (x) Item Icon */
+  .ui.menu .icon.item > i.icon {
+    width: auto;
+    margin: 0 auto;
+  }
 
-/* Vertical Icon */
-.ui.vertical.icon.menu .item > i.icon:not(.dropdown) {
-  display: block;
-  opacity: 1;
-  margin: 0 auto;
-  float: none;
-}
+  /* Vertical Icon */
+  & when (@variationMenuVertical) {
+    .ui.vertical.icon.menu .item > i.icon:not(.dropdown) {
+      display: block;
+      opacity: 1;
+      margin: 0 auto;
+      float: none;
+    }
+  }
 
-/* Inverted */
-.ui.inverted.icon.menu .item {
-  color: @iconMenuInvertedItemColor;
+  /* Inverted */
+  & when (@variationMenuInverted) {
+    .ui.inverted.icon.menu .item {
+      color: @iconMenuInvertedItemColor;
+    }
+  }
 }
 
 & when (@variationMenuLabeled) {
@@ -1624,38 +1648,40 @@ each(@colors, {
   display: none;
 }
 
-.ui.menu.two.item .item {
-  width: 50%;
-}
-.ui.menu.three.item .item {
-  width: 33.333%;
-}
-.ui.menu.four.item .item {
-  width: 25%;
-}
-.ui.menu.five.item .item {
-  width: 20%;
-}
-.ui.menu.six.item .item {
-  width: 16.666%;
-}
-.ui.menu.seven.item .item {
-  width: 14.285%;
-}
-.ui.menu.eight.item .item {
-  width: 12.500%;
-}
-.ui.menu.nine.item .item {
-  width: 11.11%;
-}
-.ui.menu.ten.item .item {
-  width: 10.0%;
-}
-.ui.menu.eleven.item .item {
-  width: 9.09%;
-}
-.ui.menu.twelve.item .item {
-  width: 8.333%;
+& when (@variationMenuEqualWidth) {
+  .ui.menu.two.item .item {
+    width: 50%;
+  }
+  .ui.menu.three.item .item {
+    width: 33.333%;
+  }
+  .ui.menu.four.item .item {
+    width: 25%;
+  }
+  .ui.menu.five.item .item {
+    width: 20%;
+  }
+  .ui.menu.six.item .item {
+    width: 16.666%;
+  }
+  .ui.menu.seven.item .item {
+    width: 14.285%;
+  }
+  .ui.menu.eight.item .item {
+    width: 12.500%;
+  }
+  .ui.menu.nine.item .item {
+    width: 11.11%;
+  }
+  .ui.menu.ten.item .item {
+    width: 10.0%;
+  }
+  .ui.menu.eleven.item .item {
+    width: 9.09%;
+  }
+  .ui.menu.twelve.item .item {
+    width: 8.333%;
+  }
 }
 
 & when (@variationMenuFixed) {
@@ -1877,6 +1903,11 @@ each(@colors, {
     .ui.attached.inverted.menu {
       border: none;
     }
+    & when (@variationMenuTabular) {
+      .ui[class*="top attached"].inverted.tabular.menu {
+        border-bottom: @invertedTabularBorder;
+      }
+    }
   }
   & when (@variationMenuTabular) {
     .ui.attached.tabular.menu {
@@ -1894,8 +1925,10 @@ each(@colors, {
 .ui.menu {
   font-size: @medium;
 }
-.ui.vertical.menu {
-  width: @mediumWidth;
+& when (@variationMenuVertical) {
+  .ui.vertical.menu {
+    width: @mediumWidth;
+  }
 }
 & when not (@variationMenuSizes = false) {
   each(@variationMenuSizes, {
@@ -1906,8 +1939,10 @@ each(@colors, {
     .ui.@{value}.menu .dropdown .menu > .item {
       font-size: @s;
     }
-    .ui.@{value}.vertical.menu:not(.icon) {
-      width: @@w;
+    & when (@variationMenuVertical) {
+      .ui.@{value}.vertical.menu:not(.icon) {
+        width: @@w;
+      }
     }
   })
 }
