@@ -105,6 +105,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
           Fitted
   --------------------*/
 
+  i.fitted.icons,
   i.fitted.icon {
     width: auto;
     margin: 0 !important;
@@ -376,6 +377,10 @@ i.icons {
     display: inline-block;
     position: relative;
     line-height: 1;
+    min-width: @width;
+    min-height: @height;
+    margin: 0 @distanceFromText 0 0;
+    text-align: center;
   }
 
   i.icons .icon {
