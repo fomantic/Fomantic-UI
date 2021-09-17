@@ -180,17 +180,21 @@ body.dimmable > .dimmer {
       Blurring
   ---------------*/
 
-  .blurring.dimmable > :not(.dimmer) {
-    filter: @blurredStartFilter;
-    transition: @blurredTransition;
-  }
-  .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
-    filter: @blurredEndFilter;
+  @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
+    .blurring.dimmable > :not(.dimmer) {
+      filter: @blurredStartFilter;
+      transition: @blurredTransition;
+    }
+    .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+      filter: @blurredEndFilter;
+    }
   }
 
   /* Dimmer Color */
   .blurring.dimmable > .dimmer {
     background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
   }
   .blurring.dimmable > .inverted.dimmer {
     background: @blurredInvertedBackgroundColor;
