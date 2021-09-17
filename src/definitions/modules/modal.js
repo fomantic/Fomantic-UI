@@ -127,7 +127,8 @@ $.fn.modal = function(parameters) {
                 'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
                 class: className.button + ' ' + cls,
                 click: function () {
-                  if (click.call(element, $module) === false) {
+                  var button = $(this);
+                  if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
                     return;
                   }
                   module.hide();
@@ -772,7 +773,7 @@ $.fn.modal = function(parameters) {
               $module
                   .off('mousedown' + elementEventNamespace)
               ;
-            }           
+            }
             $dimmer
               .off('mousedown' + elementEventNamespace)
             ;
@@ -1042,7 +1043,7 @@ $.fn.modal = function(parameters) {
                       ? $(document).scrollTop() + settings.padding
                       : $(document).scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
                   marginLeft: -(module.cache.width / 2)
-                }) 
+                })
               ;
             } else {
               $module
@@ -1051,7 +1052,7 @@ $.fn.modal = function(parameters) {
                     ? -(module.cache.height / 2)
                     : settings.padding / 2,
                   marginLeft: -(module.cache.width / 2)
-                }) 
+                })
               ;
             }
             module.verbose('Setting modal offset for legacy mode');

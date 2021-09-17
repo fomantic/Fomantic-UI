@@ -185,22 +185,25 @@ ol.ui.list ol li,
   margin-left: 0;
   padding-left: 0;
 }
-
-/* Header */
-.ui.list .list > .item .header,
-.ui.list > .item .header {
-  display: block;
-  margin: 0;
-  font-family: @itemHeaderFontFamily;
-  font-weight: @itemHeaderFontWeight;
-  color: @itemHeaderColor;
+& when (@variationListHeader) {
+  /* Header */
+  .ui.list .list > .item .header,
+  .ui.list > .item .header {
+    display: block;
+    margin: 0;
+    font-family: @itemHeaderFontFamily;
+    font-weight: @itemHeaderFontWeight;
+    color: @itemHeaderColor;
+  }
 }
 
-/* Description */
-.ui.list .list > .item .description,
-.ui.list > .item .description {
-  display: block;
-  color: @itemDescriptionColor;
+& when (@variationListDescription) {
+  /* Description */
+  .ui.list .list > .item .description,
+  .ui.list > .item .description {
+    display: block;
+    color: @itemDescriptionColor;
+  }
 }
 
 /* Child Link */
@@ -230,15 +233,17 @@ ol.ui.list ol li,
   }
 }
 
-/* Header Link */
-.ui.list .list > .item a.header,
-.ui.list > .item a.header {
-  cursor: pointer;
-  color: @itemHeaderLinkColor !important;
-}
-.ui.list .list > .item > a.header:hover,
-.ui.list > .item > a.header:hover {
-  color: @itemHeaderLinkHoverColor !important;
+& when (@variationListHeader) {
+  /* Header Link */
+  .ui.list .list > .item a.header,
+  .ui.list > .item a.header {
+    cursor: pointer;
+    color: @itemHeaderLinkColor !important;
+  }
+  .ui.list .list > .item > a.header:hover,
+  .ui.list > .item > a.header:hover {
+    color: @itemHeaderLinkHoverColor !important;
+  }
 }
 
 & when (@variationListFloated) {
@@ -406,13 +411,17 @@ ol.ui.list ol li,
       color: @invertedIconLinkColor;
     }
   }
-  .ui.inverted.list .list > .item .header,
-  .ui.inverted.list > .item .header {
-    color: @invertedHeaderColor;
+  & when (@variationListHeader) {
+    .ui.inverted.list .list > .item .header,
+    .ui.inverted.list > .item .header {
+      color: @invertedHeaderColor;
+    }
   }
-  .ui.inverted.list .list > .item .description,
-  .ui.inverted.list > .item .description {
-    color: @invertedDescriptionColor;
+  & when (@variationListDescription) {
+    .ui.inverted.list .list > .item .description,
+    .ui.inverted.list > .item .description {
+      color: @invertedDescriptionColor;
+    }
   }
   .ui.inverted.list .list > .item > .content,
   .ui.inverted.list > .item > .content {
@@ -974,23 +983,24 @@ ol.ui.list ol li,
       padding-right: @relaxedHorizontalPadding;
     }
   }
-
-  /* Very Relaxed */
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
-    padding-top: @veryRelaxedItemVerticalPadding;
-  }
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
-    padding-bottom: @veryRelaxedItemVerticalPadding;
-  }
-
-  & when (@variationListHorizontal) {
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
-      padding-left: @veryRelaxedHorizontalPadding;
+  & when (@variationListVeryRelaxed) {
+    /* Very Relaxed */
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
+      padding-top: @veryRelaxedItemVerticalPadding;
     }
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
-      padding-right: @veryRelaxedHorizontalPadding;
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
+      padding-bottom: @veryRelaxedItemVerticalPadding;
+    }
+
+    & when (@variationListHorizontal) {
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
+        padding-left: @veryRelaxedHorizontalPadding;
+      }
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
+        padding-right: @veryRelaxedHorizontalPadding;
+      }
     }
   }
 }
