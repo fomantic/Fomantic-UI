@@ -299,9 +299,10 @@
   .ui.padded.segment {
     padding: @paddedSegmentPadding;
   }
-
-  .ui[class*="very padded"].segment {
-    padding: @veryPaddedSegmentPadding;
+  & when (@variationSegmentVeryPadded) {
+    .ui[class*="very padded"].segment {
+      padding: @veryPaddedSegmentPadding;
+    }
   }
 
   & when (@variationSegmentVertical) {

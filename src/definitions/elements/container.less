@@ -42,8 +42,10 @@
       .ui.ui.ui.relaxed.grid.container {
         width: @mobileRelaxedGridWidth;
       }
-      .ui.ui.ui.very.relaxed.grid.container {
-        width: @mobileVeryRelaxedGridWidth;
+      & when (@variationContainerVeryRelaxed) {
+        .ui.ui.ui.very.relaxed.grid.container {
+          width: @mobileVeryRelaxedGridWidth;
+        }
       }
     }
   }
@@ -64,8 +66,10 @@
       .ui.ui.ui.relaxed.grid.container {
         width: @tabletRelaxedGridWidth;
       }
-      .ui.ui.ui.very.relaxed.grid.container {
-        width: @tabletVeryRelaxedGridWidth;
+      & when (@variationContainerVeryRelaxed) {
+        .ui.ui.ui.very.relaxed.grid.container {
+          width: @tabletVeryRelaxedGridWidth;
+        }
       }
     }
   }
@@ -86,8 +90,10 @@
       .ui.ui.ui.relaxed.grid.container {
         width: @computerRelaxedGridWidth;
       }
-      .ui.ui.ui.very.relaxed.grid.container {
-        width: @computerVeryRelaxedGridWidth;
+      & when (@variationContainerVeryRelaxed) {
+        .ui.ui.ui.very.relaxed.grid.container {
+          width: @computerVeryRelaxedGridWidth;
+        }
       }
     }
   }
@@ -108,8 +114,10 @@
       .ui.ui.ui.relaxed.grid.container {
         width: @largeMonitorRelaxedGridWidth;
       }
-      .ui.ui.ui.very.relaxed.grid.container {
-        width: @largeMonitorVeryRelaxedGridWidth;
+      & when (@variationContainerVeryRelaxed) {
+        .ui.ui.ui.very.relaxed.grid.container {
+          width: @largeMonitorVeryRelaxedGridWidth;
+        }
       }
     }
   }
