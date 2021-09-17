@@ -1395,23 +1395,25 @@ select.ui.dropdown {
   }
 }
 
-/*--------------
-     Columnar
----------------*/
-.ui.column.dropdown > .menu {
-  flex-wrap:wrap;
-}
-.ui.dropdown[class*="two column"] > .menu > .item {
-  width: 50%;
-}
-.ui.dropdown[class*="three column"] > .menu > .item {
-  width: 33%;
-}
-.ui.dropdown[class*="four column"] > .menu > .item {
-  width: 25%;
-}
-.ui.dropdown[class*="five column"] > .menu > .item {
-  width: 20%;
+& when (@variationDropdownColumnar) {
+  /*--------------
+       Columnar
+  ---------------*/
+  .ui.column.dropdown > .menu {
+    flex-wrap: wrap;
+  }
+  .ui.dropdown[class*="two column"] > .menu > .item {
+    width: 50%;
+  }
+  .ui.dropdown[class*="three column"] > .menu > .item {
+    width: 33%;
+  }
+  .ui.dropdown[class*="four column"] > .menu > .item {
+    width: 25%;
+  }
+  .ui.dropdown[class*="five column"] > .menu > .item {
+    width: 20%;
+  }
 }
 
 & when (@variationDropdownSimple) {
@@ -1912,21 +1914,34 @@ select.ui.dropdown {
   }
 
   /* Scrollbars */
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
-    background: @trackInvertedBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
-    background: @thumbInvertedBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
-    background: @thumbInvertedInactiveBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
-    background: @thumbInvertedHoverBackground;
+  & when (@useCustomScrollbars) {
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
+      background: @trackInvertedBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
+      background: @thumbInvertedBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
+      background: @thumbInvertedInactiveBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
+      background: @thumbInvertedHoverBackground;
+    }
+    .ui.dropdown .inverted.menu,
+    .ui.inverted.dropdown .menu {
+      /* IE11 */
+      scrollbar-face-color: @thumbInvertedBackgroundHex;
+      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+      scrollbar-track-color: @trackInvertedBackgroundHex;
+      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+
+      /* firefox : first color thumb, second track */
+      scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
+    }
   }
   & when (@variationDropdownPointing) {
     .ui.pointing.dropdown > .inverted.menu:after,

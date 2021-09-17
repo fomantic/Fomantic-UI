@@ -105,13 +105,14 @@
   margin-bottom: 0;
 }
 
-
-/* Icon */
-.ui.icon.message > .icons,
-.ui.icon.message > i.icon {
-  margin-right: @iconDistance;
-  &:last-child {
-    margin: 0 0 0 @iconDistance;
+& when (@variationMessageIcon) {
+  /* Icon */
+  .ui.icon.message > .icons,
+  .ui.icon.message > i.icon {
+    margin-right: @iconDistance;
+    &:last-child {
+      margin: 0 0 0 @iconDistance;
+    }
   }
 }
 
