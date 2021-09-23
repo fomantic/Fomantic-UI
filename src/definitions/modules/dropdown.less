@@ -1079,12 +1079,12 @@ select.ui.dropdown {
   display: none !important;
 }
 
-& when (@variationDropdownStates) {
+& when not (@variationDropdownStates = false) {
   /*--------------------
           States
   ----------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationDropdownStates, {
+    @state: @value;
     @c: @formStates[@@state][dropdownLabelColor];
     @bdc: @formStates[@@state][borderColor];
 

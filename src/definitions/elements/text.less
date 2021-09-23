@@ -26,24 +26,26 @@ span.ui.text {
   line-height: @lineHeight;
 }
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
+& when not (@variationTextColors = false) {
+  each(@variationTextColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-  span.ui.@{color}.text {
-    color: @c;
-  }
-  & when (@variationTextInverted) {
-    span.ui.inverted.@{color}.text {
-      color: @l;
+    span.ui.@{color}.text {
+      color: @c;
     }
-  }
-})
+    & when (@variationTextInverted) {
+      span.ui.inverted.@{color}.text {
+        color: @l;
+      }
+    }
+  })
+}
 
-& when (@variationTextStates) {
-  each(@textStates, {
-    @state: replace(@key, '@', '');
+& when not (@variationTextStates = false) {
+  each(@variationTextStates, {
+    @state: @value;
     @c: @textStates[@@state][color];
 
     span.ui.@{state}.text {

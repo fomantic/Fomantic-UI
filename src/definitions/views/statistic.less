@@ -324,25 +324,26 @@
 /*--------------
      Colors
 ---------------*/
+& when not (@variationStatisticColors = false) {
+  each(@variationStatisticColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.@{color}.statistics .statistic > .value,
-  .ui.statistics .@{color}.statistic > .value,
-  .ui.@{color}.statistic > .value {
-    color: @c;
-  }
-  & when (@variationStatisticInverted) {
-    .ui.inverted.@{color}.statistics .statistic > .value,
-    .ui.statistics .inverted.@{color}.statistic > .value,
-    .ui.inverted.@{color}.statistic > .value {
-      color: @l;
+    .ui.@{color}.statistics .statistic > .value,
+    .ui.statistics .@{color}.statistic > .value,
+    .ui.@{color}.statistic > .value {
+      color: @c;
     }
-  }
-})
+    & when (@variationStatisticInverted) {
+      .ui.inverted.@{color}.statistics .statistic > .value,
+      .ui.statistics .inverted.@{color}.statistic > .value,
+      .ui.inverted.@{color}.statistic > .value {
+        color: @l;
+      }
+    }
+  })
+}
 
 & when (@variationStatisticFloated) {
   /*--------------

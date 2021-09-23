@@ -629,49 +629,50 @@
 /*-------------------
        Colors
 --------------------*/
+& when not (@variationCardColors = false) {
+  each(@variationCardColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @h: @colors[@@color][hover];
+    @l: @colors[@@color][light];
+    @lh: @colors[@@color][lightHover];
 
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  @h: @colors[@@color][hover];
-  @l: @colors[@@color][light];
-  @lh: @colors[@@color][lightHover];
-
-  .ui.@{color}.cards > .card,
-  .ui.cards > .@{color}.card,
-  .ui.@{color}.card {
-    box-shadow:
+    .ui.@{color}.cards > .card,
+    .ui.cards > .@{color}.card,
+    .ui.@{color}.card {
+      box-shadow:
             @borderShadow,
             0 @coloredShadowDistance 0 0 @c,
             @shadowBoxShadow
-  ;
-    &:hover {
-    box-shadow:
+      ;
+      &:hover {
+      box-shadow:
             @borderShadow,
             0 @coloredShadowDistance 0 0 @h,
             @shadowHoverBoxShadow
-    ;
-    }
-  }
-  & when (@variationCardInverted) {
-    .ui.inverted.@{color}.cards > .card,
-    .ui.inverted.cards > .@{color}.card,
-    .ui.inverted.@{color}.card {
-      box-shadow:
-              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-              0 @coloredShadowDistance 0 0 @l,
-              0 0 0 @borderWidth @solidWhiteBorderColor
-    ;
-      &:hover {
-      box-shadow:
-              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-              0 @coloredShadowDistance 0 0 @lh,
-              0 0 0 @borderWidth @solidWhiteBorderColor
       ;
       }
     }
-  }
-})
+    & when (@variationCardInverted) {
+      .ui.inverted.@{color}.cards > .card,
+      .ui.inverted.cards > .@{color}.card,
+      .ui.inverted.@{color}.card {
+        box-shadow:
+              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+              0 @coloredShadowDistance 0 0 @l,
+              0 0 0 @borderWidth @solidWhiteBorderColor
+        ;
+        &:hover {
+        box-shadow:
+              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+              0 @coloredShadowDistance 0 0 @lh,
+              0 0 0 @borderWidth @solidWhiteBorderColor
+        ;
+        }
+      }
+    }
+  })
+}
 
 & when (@variationCardEqualWidth) {
   /*--------------

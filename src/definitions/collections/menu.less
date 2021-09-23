@@ -1363,22 +1363,23 @@ Floated Menu / Item
 /*--------------
      Colors
 ---------------*/
+& when not (@variationMenuColors = false) {
+  each(@variationMenuColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-
-  & when not (@color=secondary) {
-    .ui.ui.ui.menu .@{color}.active.item,
-    .ui.ui.@{color}.menu .active.item:hover,
-    .ui.ui.@{color}.menu .active.item {
-      & when not (@secondaryPointingActiveBorderColor = currentColor) {
-        border-color: @c;
+    & when not (@color=secondary) {
+      .ui.ui.ui.menu .@{color}.active.item,
+      .ui.ui.@{color}.menu .active.item:hover,
+      .ui.ui.@{color}.menu .active.item {
+        & when not (@secondaryPointingActiveBorderColor = currentColor) {
+          border-color: @c;
+        }
+        color: @c;
       }
-      color: @c;
     }
-  }
-})
+  })
+}
 
 & when (@variationMenuInverted) {
   /*--------------
@@ -1513,30 +1514,31 @@ each(@colors, {
   /*--------------
       Inverted
   ---------------*/
+  & when not (@variationMenuColors = false) {
+    each(@variationMenuColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @h: @colors[@@color][hover];
 
-  each(@colors, {
-    @color: replace(@key, '@', '');
-    @c: @colors[@@color][color];
-    @h: @colors[@@color][hover];
-
-    & when not (@color=secondary) {
-      .ui.ui.ui.inverted.menu .@{color}.active.item,
-      .ui.ui.inverted.@{color}.menu {
-        background-color: @c;
-      }
-      .ui.inverted.@{color}.menu .item:before {
-        background-color: @invertedColoredDividerBackground;
-      }
-      .ui.ui.inverted.@{color}.menu .active.item {
-        background-color: @invertedColoredActiveBackground;
-      }
-      & when (@variationMenuPointing) {
-        .ui.inverted.pointing.@{color}.menu .active.item {
-          background-color: @h;
+      & when not (@color=secondary) {
+        .ui.ui.ui.inverted.menu .@{color}.active.item,
+        .ui.ui.inverted.@{color}.menu {
+          background-color: @c;
+        }
+        .ui.inverted.@{color}.menu .item:before {
+          background-color: @invertedColoredDividerBackground;
+        }
+        .ui.ui.inverted.@{color}.menu .active.item {
+          background-color: @invertedColoredActiveBackground;
+        }
+        & when (@variationMenuPointing) {
+          .ui.inverted.pointing.@{color}.menu .active.item {
+            background-color: @h;
+          }
         }
       }
-    }
-  })
+    })
+  }
 
   & when (@variationMenuPointing) {
     .ui.ui.ui.inverted.pointing.menu .active.item:after {
@@ -1834,14 +1836,16 @@ each(@colors, {
   }
 }
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
+& when not (@variationMenuColors = false) {
+  each(@variationMenuColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
 
-  .ui.inverted.pointing.menu .@{color}.active.item:after {
-    background-color: @c;
-  }
-})
+    .ui.inverted.pointing.menu .@{color}.active.item:after {
+      background-color: @c;
+    }
+  })
+}
 
 & when (@variationMenuAttached) {
   /*--------------
