@@ -88,6 +88,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://github.com/jameschenjav"><img src="https://avatars.githubusercontent.com/u/30246313?v=4?s=60" width="60px;" alt=""/><br /><sub><b>jameschenjav</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=jameschenjav" title="Code">💻</a></td>
     <td align="center"><a href="http://elliotzlin.com"><img src="https://avatars.githubusercontent.com/u/12807901?v=4?s=60" width="60px;" alt=""/><br /><sub><b>elliotzlin</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=elliotzlin" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/maidzen"><img src="https://avatars.githubusercontent.com/u/17901424?v=4?s=60" width="60px;" alt=""/><br /><sub><b>maidzen</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=maidzen" title="Code">💻</a></td>
+    <td align="center"><a href="https://twitter.com/melek_rebai"><img src="https://avatars.githubusercontent.com/u/1449151?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Melek REBAI</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=shadoWalker89" title="Code">💻</a></td>
   </tr>
 </table>
 

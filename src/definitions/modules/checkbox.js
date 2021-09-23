@@ -239,18 +239,26 @@ $.fn.checkbox = function(parameters) {
               }
             }
 
+            shortcutPressed = false;
             if(key == keyCode.escape) {
               module.verbose('Escape key pressed blurring field');
               $input.blur();
               shortcutPressed = true;
             }
-            else if(!event.ctrlKey && ( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) ) {
-              module.verbose('Enter/space key pressed, toggling checkbox');
-              module.toggle();
-              shortcutPressed = true;
-            }
-            else {
-              shortcutPressed = false;
+            else if(!event.ctrlKey && module.can.change()) {
+                if( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey) ) {
+                  module.verbose('Enter/space key pressed, toggling checkbox');
+                  module.toggle();
+                  shortcutPressed = true;
+                } else if($module.is('.toggle, .slider') && !module.is.radio()) {
+                  if(key == keyCode.left && module.is.checked()) {
+                    module.uncheck();
+                    shortcutPressed = true;
+                  } else if(key == keyCode.right && module.is.unchecked()) {
+                    module.check();
+                    shortcutPressed = true;
+                  }
+                }
             }
           },
           keyup: function(event) {
