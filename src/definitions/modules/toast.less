@@ -603,24 +603,25 @@
 /*--------------
      Colors
 -------------- */
+& when not (@variationToastColors = false) {
+  each(@variationToastColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.@{color}.toast {
-    background-color: @c;
-    color: @toastTextColor;
-  }
-  & when (@variationToastInverted) {
-    .ui.inverted.@{color}.toast,
-    .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
-      background-color: @l;
-      color: @toastInvertedTextColor;
+    .ui.@{color}.toast {
+      background-color: @c;
+      color: @toastTextColor;
     }
-  }
-})
+    & when (@variationToastInverted) {
+      .ui.inverted.@{color}.toast,
+      .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
+        background-color: @l;
+        color: @toastInvertedTextColor;
+      }
+    }
+  })
+}
 
 & when (@variationToastInverted) {
   .ui.inverted.toast {

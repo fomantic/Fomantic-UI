@@ -592,22 +592,23 @@
 /*-------------------
        Colors
 --------------------*/
-
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  & when not (@color=primary) and not (@color=secondary) {
-    .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-      border-top: @coloredBorderSize solid @c;
-    }
-    & when (@variationSegmentInverted) {
-      .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-        background-color: @c;
-        color: @white;
+& when not (@variationSegmentColors = false) {
+  each(@variationSegmentColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    & when not (@color=primary) and not (@color=secondary) {
+      .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+        border-top: @coloredBorderSize solid @c;
+      }
+      & when (@variationSegmentInverted) {
+        .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+          background-color: @c;
+          color: @white;
+        }
       }
     }
-  }
-})
+  })
+}
 
 & when (@variationSegmentAligned) {
   /*-------------------

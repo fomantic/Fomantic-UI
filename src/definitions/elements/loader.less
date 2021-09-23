@@ -203,35 +203,36 @@
 /*-------------------
        Colors
 --------------------*/
+& when not (@variationLoaderColors = false) {
+  each(@variationLoaderColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.@{color}.elastic.loader.loader:before,
-  .ui.@{color}.basic.elastic.loading.button:before,
-  .ui.@{color}.basic.elastic.loading.button:after,
-  .ui.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
-  .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
-  .ui.@{color}.elastic.loading.loading.loading.loading > i.icon:before,
-  .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
-  .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
-  .ui.@{color}.loading.loading.loading.loading > i.icon:after,
-  .ui.@{color}.loader.loader.loader:after {
-    color: @c;
-  }
-  .ui.inverted.@{color}.elastic.loader:before,
-  .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
-  .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon:before,
-  .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon:before,
-  .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
-  .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
-  .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
-  .ui.inverted.@{color}.loader.loader.loader:after {
-    color: @l;
-  }
-})
+    .ui.@{color}.elastic.loader.loader:before,
+    .ui.@{color}.basic.elastic.loading.button:before,
+    .ui.@{color}.basic.elastic.loading.button:after,
+    .ui.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
+    .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
+    .ui.@{color}.elastic.loading.loading.loading.loading > i.icon:before,
+    .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
+    .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
+    .ui.@{color}.loading.loading.loading.loading > i.icon:after,
+    .ui.@{color}.loader.loader.loader:after {
+      color: @c;
+    }
+    .ui.inverted.@{color}.elastic.loader:before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon:before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon:before,
+    .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
+    .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
+    .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
+    .ui.inverted.@{color}.loader.loader.loader:after {
+      color: @l;
+    }
+  })
+}
 
 .ui.elastic.loader.loader:before,
 .ui.elastic.loading.loading.loading:before,

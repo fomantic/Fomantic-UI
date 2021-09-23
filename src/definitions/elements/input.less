@@ -170,12 +170,12 @@
 }
 
 
-& when (@variationInputStates) {
+& when not (@variationInputStates = false) {
   /*--------------------
           States
   ---------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
 
     .ui.input.@{state} > input {
       background-color: @formStates[@@state][background];
@@ -448,10 +448,10 @@
   }
 }
 
-& when (@variationInputLabeled)  or (@variationInputAction) {
+& when ((@variationInputLabeled) or (@variationInputAction)) and not (@variationInputStates = false) {
   /* Labeled and action input states */
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
     @borderColor: @formStates[@@state][borderColor];
 
     .ui.form .field.@{state} > .ui.action.input > .ui.button,
