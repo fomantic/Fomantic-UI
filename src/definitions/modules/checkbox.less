@@ -674,8 +674,64 @@
     }
 }
 
+& when (@variationCheckboxColored) {
+  /*--------------
+       Colored
+  ---------------*/
+
+  each(@colors, {
+    @color: replace(@key, '@', '');
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @isVeryDark: @colors[@@color][isVeryDark];
+  
+    .ui.@{color}.checkbox input:checked ~ label::after {
+      color: @c;
+    }
+    .ui.@{color}.radio.checkbox input:checked ~ label::after {
+      background-color: @c;
+    }
+    .ui.@{color}.toggle.checkbox input:checked ~ label::before,
+    .ui.@{color}.slider.checkbox input:checked ~ label::before {
+      background-color: @c !important;
+    }
+
+    & when (@variationCheckboxOutline) {
+      /*--------------
+        Outline
+      ---------------*/
+      .ui.@{color}.outline.checkbox input:checked ~ label::before {
+        border-color: @c;
+      }
+      .ui.@{color}.outline.toggle.checkbox input:checked ~ label::after,
+      .ui.@{color}.outline.slider.checkbox input:checked ~ label::after {
+        box-shadow: @subtleShadow,
+        0 0 0 1px @c inset;
+      }
+    }
+  })
+}
+
 /*--------------------
-        Size
+        outline
+---------------------*/
+
+& when (@variationCheckboxOutline) {
+  .ui.outline.checkbox input:checked ~ label::before {
+    border-color: @checkboxActiveCheckColor;
+  }
+  .ui.outline.toggle.checkbox input:checked ~ label::after {
+    box-shadow: @subtleShadow,
+    0 0 0 1px @toggleOnLaneColor inset;
+  }
+  .ui.outline.slider.checkbox input:checked ~ label::after {
+    box-shadow: @subtleShadow,
+    0 0 0 1px @checkboxActiveCheckColor inset;
+  }
+}
+
+/*--------------------
+          Size
 ---------------------*/
 
 each(@variationCheckboxSizes, {
@@ -715,5 +771,48 @@ each(@variationCheckboxSizes, {
     }
   }
 })
+
+/*--------------------
+          Icon
+---------------------*/
+
+& when (@variationCheckboxIcon) {
+  .ui.icon.checkbox input ~ label i {
+    width: auto;
+    margin: 0 !important;
+    line-height: @checkboxLineHeight;
+  }
+
+  .ui.icon.checkbox input:not(:checked) ~ label i {
+    display: none;
+  }
+
+  .ui.icon.checkbox input:checked ~ label i:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: @checkboxSize;
+    height: @checkboxSize;
+    text-align: center;
+    font-size: @checkboxIconCheckFontSize;
+  }
+
+  & when (@variationCheckboxColored) {
+    /*--------------
+        Colored
+    ---------------*/
+
+    each(@colors, {
+      @color: replace(@key, '@', '');
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+      @isVeryDark: @colors[@@color][isVeryDark];
+    
+      .ui.@{color}.checkbox input:checked ~ label i::before {
+        color: @c;
+      }
+    })
+  }
+}
 
 .loadUIOverrides();

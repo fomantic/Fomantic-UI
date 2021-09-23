@@ -16,8 +16,8 @@
 }
 
 /* Checked */
-.ui.checkbox input:checked ~ .box:after,
-.ui.checkbox input:checked ~ label:after {
+.ui.checkbox:not(.icon) input:checked ~ .box:after,
+.ui.checkbox:not(.icon) input:checked ~ label:after {
   content: '\e800';
 }
 
