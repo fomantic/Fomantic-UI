@@ -62,7 +62,8 @@
       Icon
 ---------------*/
 
-.ui.header > .icon {
+.ui.header > .icons,
+.ui.header > i.icon {
   display: table-cell;
   opacity: @iconOpacity;
   font-size: @iconSize;
@@ -71,7 +72,8 @@
 }
 
 /* With Text Node */
-.ui.header .icon:only-child {
+.ui.header:not(.icon) > .icons:only-child,
+.ui.header:not(.icon) > i.icon:only-child {
   display: inline-block;
   padding: 0;
   margin-right: @iconMargin;
@@ -111,7 +113,8 @@
 }
 
 /* After Icon */
-.ui.header > .icon + .content {
+.ui.header:not(.icon):not(.centered):not(.aligned) > .icons + .content,
+.ui.header:not(.icon):not(.centered):not(.aligned) > i.icon + .content {
   padding-left: @iconMargin;
   display: table-cell;
   vertical-align: @contentIconAlignment;
@@ -220,7 +223,8 @@
   .ui.icon.header:first-child {
     margin-top: @iconHeaderFirstMargin;
   }
-  .ui.icon.header .icon {
+  .ui.icon.header > .icons,
+  .ui.icon.header > i.icon {
     float: none;
     display: block;
     width: auto;
@@ -238,21 +242,24 @@
     display: block;
     padding: 0;
   }
-  .ui.icon.header .circular.icon {
+  .ui.icon.header > i.circular {
     font-size: @circularHeaderIconSize;
   }
-  .ui.icon.header .square.icon {
+  .ui.icon.header > i.square {
     font-size: @squareHeaderIconSize;
   }
   & when (@variationHeaderBlock) {
-    .ui.block.icon.header .icon {
+    .ui.block.icon.header > .icons,
+    .ui.block.icon.header > i.icon {
       margin-bottom: 0;
     }
   }
-  .ui.icon.header.aligned {
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
+  & when (@variationHeaderAligned) {
+    .ui.icon.header.aligned {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
   }
 }
 
@@ -301,37 +308,38 @@
 /*-------------------
        Colors
 --------------------*/
+& when not (@variationHeaderColors = false) {
+  each(@variationHeaderColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @h: @colors[@@color][hover];
+    @lh: @colors[@@color][lightHover];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-  @h: @colors[@@color][hover];
-  @lh: @colors[@@color][lightHover];
-
-  .ui.@{color}.header {
-    color: @c;
-  }
-  a.ui.@{color}.header:hover {
-    color: @h;
-  }
-  & when (@variationHeaderDividing) {
-    .ui.@{color}.dividing.header {
-      border-bottom: @dividedColoredBorderWidth solid @c;
+    .ui.@{color}.header {
+      color: @c;
     }
-  }
-  & when (@variationHeaderInverted) {
-    .ui.inverted.@{color}.header.header.header {
-      color: @l;
+    a.ui.@{color}.header:hover {
+      color: @h;
     }
-    a.ui.inverted.@{color}.header.header.header:hover {
-      color: @lh;
+    & when (@variationHeaderDividing) {
+      .ui.@{color}.dividing.header {
+        border-bottom: @dividedColoredBorderWidth solid @c;
+      }
     }
-    .ui.inverted.@{color}.dividing.header {
-      border-bottom: @dividedColoredBorderWidth solid @l;
+    & when (@variationHeaderInverted) {
+      .ui.inverted.@{color}.header.header.header {
+        color: @l;
+      }
+      a.ui.inverted.@{color}.header.header.header:hover {
+        color: @lh;
+      }
+      .ui.inverted.@{color}.dividing.header {
+        border-bottom: @dividedColoredBorderWidth solid @l;
+      }
     }
-  }
-})
+  })
+}
 
 & when (@variationHeaderAligned) {
   /*-------------------
@@ -398,10 +406,12 @@ each(@colors, {
     padding-bottom: @dividedBorderPadding;
     border-bottom: @dividedBorder;
   }
-  .ui.dividing.header .sub.header {
-    padding-bottom: @dividedSubHeaderPadding;
+  & when (@variationHeaderSub) {
+    .ui.dividing.header .sub.header {
+      padding-bottom: @dividedSubHeaderPadding;
+    }
   }
-  .ui.dividing.header .icon {
+  .ui.dividing.header i.icon {
     margin-bottom: @dividedIconPadding;
   }
   & when (@variationHeaderInverted) {
@@ -449,8 +459,10 @@ each(@colors, {
     border: @attachedBorder;
     border-radius: 0;
   }
-  .ui.attached.block.header {
-    background: @blockBackground;
+  & when (@variationHeaderBlock) {
+    .ui.attached.block.header {
+      background: @blockBackground;
+    }
   }
   .ui.attached:not(.top).header {
     border-top: none;

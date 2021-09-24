@@ -158,9 +158,9 @@ ol.ui.list ol li,
 }
 & when (@variationListImage) or (@variationListIcon) {
   .ui.list .list > .item > .image + .content,
-  .ui.list .list > .item > .icon + .content,
+  .ui.list .list > .item > i.icon + .content,
   .ui.list > .item > .image + .content,
-  .ui.list > .item > .icon + .content {
+  .ui.list > .item > i.icon + .content {
     display: table-cell;
     width: 100%;
     padding: 0 0 0 @contentDistance;
@@ -168,8 +168,8 @@ ol.ui.list ol li,
   }
 }
 & when (@variationListIcon) {
-  .ui.list .list > .item > .loading.icon + .content,
-  .ui.list > .item > .loading.icon + .content {
+  .ui.list .list > .item > i.loading.icon + .content,
+  .ui.list > .item > i.loading.icon + .content {
     padding-left: e(%("calc(%d + %d)", @iconDistance, @contentDistance));
   }
 }
@@ -185,22 +185,25 @@ ol.ui.list ol li,
   margin-left: 0;
   padding-left: 0;
 }
-
-/* Header */
-.ui.list .list > .item .header,
-.ui.list > .item .header {
-  display: block;
-  margin: 0;
-  font-family: @itemHeaderFontFamily;
-  font-weight: @itemHeaderFontWeight;
-  color: @itemHeaderColor;
+& when (@variationListHeader) {
+  /* Header */
+  .ui.list .list > .item .header,
+  .ui.list > .item .header {
+    display: block;
+    margin: 0;
+    font-family: @itemHeaderFontFamily;
+    font-weight: @itemHeaderFontWeight;
+    color: @itemHeaderColor;
+  }
 }
 
-/* Description */
-.ui.list .list > .item .description,
-.ui.list > .item .description {
-  display: block;
-  color: @itemDescriptionColor;
+& when (@variationListDescription) {
+  /* Description */
+  .ui.list .list > .item .description,
+  .ui.list > .item .description {
+    display: block;
+    color: @itemDescriptionColor;
+  }
 }
 
 /* Child Link */
@@ -230,15 +233,17 @@ ol.ui.list ol li,
   }
 }
 
-/* Header Link */
-.ui.list .list > .item a.header,
-.ui.list > .item a.header {
-  cursor: pointer;
-  color: @itemHeaderLinkColor !important;
-}
-.ui.list .list > .item > a.header:hover,
-.ui.list > .item > a.header:hover {
-  color: @itemHeaderLinkHoverColor !important;
+& when (@variationListHeader) {
+  /* Header Link */
+  .ui.list .list > .item a.header,
+  .ui.list > .item a.header {
+    cursor: pointer;
+    color: @itemHeaderLinkColor !important;
+  }
+  .ui.list .list > .item > a.header:hover,
+  .ui.list > .item > a.header:hover {
+    color: @itemHeaderLinkHoverColor !important;
+  }
 }
 
 & when (@variationListFloated) {
@@ -321,8 +326,8 @@ ol.ui.list ol li,
   }
   .ui.horizontal.list > .item > .image,
   .ui.horizontal.list .list > .item > .image,
-  .ui.horizontal.list > .item > .icon,
-  .ui.horizontal.list .list > .item > .icon,
+  .ui.horizontal.list > .item > i.icon,
+  .ui.horizontal.list .list > .item > i.icon,
   .ui.horizontal.list > .item > .content,
   .ui.horizontal.list .list > .item > .content {
     vertical-align: @horizontalVerticalAlign;
@@ -344,8 +349,8 @@ ol.ui.list ol li,
   }
   & when (@variationListImage) or (@variationListIcon) {
     .ui.horizontal.list > .item > .image + .content,
-    .ui.horizontal.list > .item > .icon,
-    .ui.horizontal.list > .item > .icon + .content {
+    .ui.horizontal.list > .item > i.icon,
+    .ui.horizontal.list > .item > i.icon + .content {
       float: none;
       display: inline-block;
       width: auto;
@@ -386,8 +391,8 @@ ol.ui.list ol li,
 & when (@variationListIcon) {
   .ui.list .list > a.item:hover > .icons,
   .ui.list > a.item:hover > .icons,
-  .ui.list .list > a.item:hover > .icon,
-  .ui.list > a.item:hover > .icon {
+  .ui.list .list > a.item:hover > i.icon,
+  .ui.list > a.item:hover > i.icon {
     color: @itemLinkIconHoverColor;
   }
 }
@@ -401,18 +406,22 @@ ol.ui.list ol li,
          Inverted
   --------------------*/
   & when (@variationListIcon) {
-    .ui.inverted.list .list > a.item > .icon,
-    .ui.inverted.list > a.item > .icon {
+    .ui.inverted.list .list > a.item > i.icon,
+    .ui.inverted.list > a.item > i.icon {
       color: @invertedIconLinkColor;
     }
   }
-  .ui.inverted.list .list > .item .header,
-  .ui.inverted.list > .item .header {
-    color: @invertedHeaderColor;
+  & when (@variationListHeader) {
+    .ui.inverted.list .list > .item .header,
+    .ui.inverted.list > .item .header {
+      color: @invertedHeaderColor;
+    }
   }
-  .ui.inverted.list .list > .item .description,
-  .ui.inverted.list > .item .description {
-    color: @invertedDescriptionColor;
+  & when (@variationListDescription) {
+    .ui.inverted.list .list > .item .description,
+    .ui.inverted.list > .item .description {
+      color: @invertedDescriptionColor;
+    }
   }
   .ui.inverted.list .list > .item > .content,
   .ui.inverted.list > .item > .content {
@@ -974,23 +983,24 @@ ol.ui.list ol li,
       padding-right: @relaxedHorizontalPadding;
     }
   }
-
-  /* Very Relaxed */
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
-    padding-top: @veryRelaxedItemVerticalPadding;
-  }
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
-    padding-bottom: @veryRelaxedItemVerticalPadding;
-  }
-
-  & when (@variationListHorizontal) {
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
-      padding-left: @veryRelaxedHorizontalPadding;
+  & when (@variationListVeryRelaxed) {
+    /* Very Relaxed */
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
+      padding-top: @veryRelaxedItemVerticalPadding;
     }
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
-      padding-right: @veryRelaxedHorizontalPadding;
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
+      padding-bottom: @veryRelaxedItemVerticalPadding;
+    }
+
+    & when (@variationListHorizontal) {
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
+        padding-left: @veryRelaxedHorizontalPadding;
+      }
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
+        padding-right: @veryRelaxedHorizontalPadding;
+      }
     }
   }
 }

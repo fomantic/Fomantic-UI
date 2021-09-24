@@ -108,6 +108,7 @@
     position: absolute;
     text-transform: none;
     text-align: left;
+    text-shadow: none;
     white-space: nowrap;
 
     font-size: @tooltipFontSize;
@@ -189,6 +190,7 @@
   [data-tooltip][data-position="left center"]:hover:after,
   [data-tooltip][data-position="right center"]:hover:after {
     transform: translateY(-50%) scale(1) !important;
+    -moz-transform: translateY(-50%) scale(1.0001) !important;
   }
   [data-tooltip][data-position="top left"]:after,
   [data-tooltip][data-position="top right"]:after,
@@ -334,7 +336,7 @@
           top: 100%;
           left: 50%;
           margin-left: @tooltipArrowHorizontalOffset;
-          margin-top: -@tooltipArrowVerticalOffset;
+          margin-top: -@arrowOffset;
         }
       }
       & when (@variationPopupLeft) {
@@ -445,6 +447,11 @@
       }
     }
     & when (@variationPopupCenter) {
+      & when (@variationPopupBottom) {
+        [data-position="bottom center"][data-tooltip]:before {
+          transform-origin: center top;
+        }
+      }
       & when (@variationPopupLeft) {
         [data-position="left center"][data-tooltip]:before {
           transform-origin: top center;

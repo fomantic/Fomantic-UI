@@ -6,8 +6,9 @@ A community fork of the popular Semantic-UI framework.
 [![GitHub Actions Status](https://github.com/fomantic/Fomantic-UI/workflows/CI/badge.svg)](https://github.com/fomantic/Fomantic-UI/actions)
 [![last commit (develop)](https://img.shields.io/github/last-commit/fomantic/Fomantic-UI/develop.svg?label=last%20commit%20%28develop%29)](https://github.com/fomantic/Fomantic-UI/commits/develop)
 [![License](https://img.shields.io/github/license/fomantic/Fomantic-UI?color=%233fb911)](https://github.com/fomantic/Fomantic-UI/blob/1fd94d2479f297c906bed557f0567d1d3f0a4d2c/LICENSE.md)
+[![Rate on Openbase](https://badges.openbase.io/js/rating/fomantic-ui.svg)](https://openbase.io/js/fomantic-ui?utm_source=embedded&utm_medium=badge&utm_campaign=rate-badge)
 
-[![Discord Server](https://img.shields.io/discord/453127116427493376.svg?label=Discord)](https://discord.gg/YChxjJ3)
+[![Discord Server](https://discordapp.com/api/guilds/453127116427493376/widget.png?style=shield)](https://discord.gg/YChxjJ3)
 [![Follow on Twitter](https://img.shields.io/twitter/follow/fomanticui?style=social)](https://twitter.com/fomanticui)
 
 [![npm downloads](https://img.shields.io/npm/dm/fomantic-ui.svg?label=npm%20downloads)](https://www.npmjs.com/package/fomantic-ui)
@@ -18,7 +19,7 @@ A community fork of the popular Semantic-UI framework.
 
 [![Package Quality](https://npm.packagequality.com/shield/fomantic-ui.svg?label=package%20quality)](https://packagequality.com/#?package=fomantic-ui)
 [![GitHub contributors](https://img.shields.io/github/contributors/fomantic/Fomantic-UI)](https://github.com/fomantic/Fomantic-UI/graphs/contributors)
-[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=fomantic/Fomantic-UI)](https://dependabot.com)
+[![Dependabot Status](https://badgen.net/github/dependabot/fomantic/Fomantic-UI/?icon=dependabot)](https://github.com/features/security)
 [![Known Vulnerabilities](https://snyk.io/test/github/fomantic/Fomantic-UI/badge.svg?targetFile=package.json)](https://snyk.io/test/github/fomantic/Fomantic-UI?targetFile=package.json)
 
 ---
@@ -75,7 +76,7 @@ Although some components will work in IE9, [grids](http://semantic-ui.com/collec
 
 ### 💡 Getting Help
 
-If your looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
+If you're looking for help with an issue we offer multiple ways for you to get support. You can post usage questions here on GitHub
 or you can ask in our community [Discord](https://discord.gg/YChxjJ3) server.
 
 ### 🐛 Submitting Bugs and Enhancements

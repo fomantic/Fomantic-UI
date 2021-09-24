@@ -195,8 +195,15 @@
 
   .ui.labeled.slider > .labels .label {
     display: inline-flex;
+    padding: @labelPadding;
     position: absolute;
     transform: translate(-50%, -100%);
+    white-space: nowrap;
+  }
+
+  .ui.bottom.aligned.labeled.slider > .labels .label {
+    bottom: 0;
+    transform: translate(-50%, 100%);
   }
   & when (@variationSliderTicked) {
     .ui.labeled.ticked.slider > .labels .label:after {
@@ -208,8 +215,12 @@
       top: 100%;
       left: 50%;
     }
+    .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+      top: auto;
+      bottom: 100%;
+    }
     .ui.labeled.ticked.slider > .labels .halftick.label:after {
-      height: @labelHeight / 2;
+      height: (@labelHeight / 2);
     }
   }
 
@@ -236,7 +247,7 @@
       top: 50%;
     }
     .ui.labeled.vertical.slider > .labels .halftick.label:after {
-      width: @labelHeight / 2;
+      width: (@labelHeight / 2);
       height: @labelWidth;
     }
 
@@ -280,46 +291,47 @@
 /*--------------
      Colors
 ---------------*/
+& when not (@variationSliderColors = false) {
+   each(@variationSliderColors, {
+     @color: @value;
+     @c: @colors[@@color][color];
+     @l: @colors[@@color][light];
+     @h: @colors[@@color][hover];
+     @lh: @colors[@@color][lightHover];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-  @h: @colors[@@color][hover];
-  @lh: @colors[@@color][lightHover];
+     /* Standard */
+     .ui.@{color}.slider .inner .track-fill {
+       background-color: @c;
+     }
+     & when (@variationSliderInverted) {
+       .ui.@{color}.inverted.slider .inner .track-fill {
+         background-color: @l;
+       }
+     }
 
-  /* Standard */
-  .ui.@{color}.slider .inner .track-fill {
-    background-color: @c;
-  }
-  & when (@variationSliderInverted) {
-    .ui.@{color}.inverted.slider .inner .track-fill {
-      background-color: @l;
-    }
-  }
+     & when (@variationSliderBasic) {
+       /* Basic */
+       .ui.@{color}.slider.basic .inner .thumb {
+         background-color: @c;
+       }
+       .ui.@{color}.slider.basic .inner .thumb:hover,
+       .ui.@{color}.slider.basic:focus .inner .thumb {
+         background-color: @h;
+       }
+       & when (@variationSliderInverted) {
+         /* Basic Inverted */
+         .ui.@{color}.inverted.slider.basic .inner .thumb {
+           background-color: @l;
+         }
+         .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
+         .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
+           background-color: @lh;
+         }
+       }
+     }
 
-  & when (@variationSliderBasic) {
-    /* Basic */
-    .ui.@{color}.slider.basic .inner .thumb {
-      background-color: @c;
-    }
-    .ui.@{color}.slider.basic .inner .thumb:hover,
-    .ui.@{color}.slider.basic:focus .inner .thumb {
-      background-color: @h;
-    }
-    & when (@variationSliderInverted) {
-      /* Basic Inverted */
-      .ui.@{color}.inverted.slider.basic .inner .thumb {
-        background-color: @l;
-      }
-      .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
-      .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
-        background-color: @lh;
-      }
-    }
-  }
-
-})
+   })
+}
 
 & when (@variationSliderBasic) {
   /*--------------
@@ -378,7 +390,7 @@ each(@colors, {
          height: @@lh;
        }
        .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
-         height: @@lh / 2;
+         height: (@@lh / 2);
        }
      }
      & when (@variationSliderVertical) {
@@ -397,7 +409,7 @@ each(@colors, {
            width: @@lh;
          }
          .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
-           width: @@lh / 2;
+           width: (@@lh / 2);
          }
        }
      }

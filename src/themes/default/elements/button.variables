@@ -253,7 +253,8 @@
 /*-------------
    Tertiary
 -------------*/
-@tertiaryLinePadding: 0.5em;
+@tertiaryVerticalPadding: 0.5em;
+@tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
 @tertiaryTextColor: @textColor;
 @tertiaryLineColor: lighten(@tertiaryTextColor, 20%);
@@ -390,3 +391,15 @@
 @animationEasing: ease;
 @fadeScaleHigh: 1.5;
 @fadeScaleLow: 0.75;
+
+/* Toggle */
+@toggleColor: @invertedTextColor;
+@toggleBackgroundColor: @positiveColor;
+@toggleTextShadow: @invertedTextShadow;
+@toggleHoverColor: @invertedTextColor;
+@toggleHoverBackgroundColor: @positiveColorHover;
+@toggleHoverTextShadow: @invertedTextShadow;
+
+/* Circular */
+@circularBorderRadius: 10em;
+@circularIconWidth: 1em;

@@ -74,7 +74,9 @@ a.ui.nag {
   transition: @closeTransition;
 }
 
-
+.ui.nag:not(.overlay):not(.fixed) {
+  border-radius: @borderRadius;
+}
 
 /*******************************
              States
@@ -86,7 +88,7 @@ a.ui.nag {
   opacity: @nagHoverOpacity;
 }
 
-.ui.nag .close:hover {
+.ui.nag > .close:hover {
   opacity: @closeHoverOpacity;
 }
 
@@ -95,64 +97,127 @@ a.ui.nag {
            Variations
 *******************************/
 
-
-/*--------------
-     Static
----------------*/
-
-.ui.overlay.nag {
-  position: absolute;
-  display: block;
+& when(@variationNagOverlay) {
+  /*--------------
+       Static
+  ---------------*/
+  .ui.overlay.nags,
+  .ui.overlay.nag {
+    position: absolute;
+    display: block;
+  }
 }
 
+& when(@variationNagFixed) {
 /*--------------
      Fixed
 ---------------*/
-
-.ui.fixed.nag {
-  position: fixed;
+  .ui.fixed.nags,
+  .ui.fixed.nag {
+    position: fixed;
+  }
 }
-
+& when(@variationNagBottom) {
 /*--------------
      Bottom
 ---------------*/
+  .ui.bottom.nags,
+  .ui.bottom.nag {
+    border-radius: @bottomBorderRadius;
+    top: auto;
+    bottom: @bottom;
+  }
+}
 
-.ui.bottom.nags,
-.ui.bottom.nag {
-  border-radius: @bottomBorderRadius;
-  top: auto;
-  bottom: @bottom;
+& when(@variationNagInverted) {
+/*--------------
+     Inverted
+---------------*/
+
+  .ui.inverted.nags .nag,
+  .ui.inverted.nag {
+    background-color: @invertedBackground;
+    color: @darkTextColor;
+  }
+  .ui.inverted.nags .nag > .close,
+  .ui.inverted.nag > .close {
+    color: @invertedCloseColor;
+  }
+  .ui.inverted.nags .nag > .title,
+  .ui.inverted.nag > .title {
+    color: @invertedTitleColor;
+  }
+}
+
+& when not (@variationNagSizes = false) {
+/*-------------------
+        Sizes
+--------------------*/
+  each(@variationNagSizes, {
+    @s: @@value;
+    @sr: "@{value}Raw";
+    .ui.@{value}.nag,
+    .ui.@{value}.nags .nag {
+      font-size: @s;
+      & when (@@sr > 1.4) {
+        line-height: 1;
+      }
+    }
+  })
 }
 
 /*--------------
-     White
----------------*/
+     Colors
+-------------- */
+& when not (@variationNagColors = false) {
+  each(@variationNagColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @isVeryDark: @colors[@@color][isVeryDark];
 
-.ui.inverted.nags .nag,
-.ui.inverted.nag {
-  background-color: @invertedBackground;
-  color: @darkTextColor;
+    .ui.@{color}.nag {
+      background-color: @c;
+      & when (@isVeryDark) {
+        color: @invertedTextColor;
+      }
+    }
+    & when (@variationNagInverted) {
+      .ui.inverted.@{color}.nag {
+        background-color: @l;
+        & .title when (@isVeryDark) {
+          color: @titleColor;
+        }
+      }
+    }
+  })
 }
-.ui.inverted.nags .nag .close,
-.ui.inverted.nags .nag .title,
-.ui.inverted.nag .close,
-.ui.inverted.nag .title {
-  color: @lightTextColor;
-}
 
-
+& when (@variationNagGroups) {
 /*******************************
            Groups
 *******************************/
-
-.ui.nags .nag {
-  border-radius: @groupedBorderRadius !important;
+  .ui.nags {
+    top: @top;
+    left: 0;
+    width: @width;
+  }
+  .ui.ui.nags .nag {
+    border-radius: @groupedBorderRadius;
+  }
+  .ui.nags:not(.bottom) .nag:last-child {
+    border-radius: @topBorderRadius;
+  }
+  & when(@variationNagBottom) {
+    .ui.bottom.nags .nag:first-child {
+      border-radius: @bottomBorderRadius;
+    }
+  }
+  .ui.nags:not(.fixed):not(.overlay) .nag:first-child {
+    border-radius: @bottomBorderRadius;
+  }
+  .ui.nags:not(.fixed):not(.overlay) .nag:only-child {
+    border-radius: @borderRadius;
+  }
 }
-.ui.nags .nag:last-child {
-  border-radius: @topBorderRadius;
-}
-.ui.bottom.nags .nag:last-child {
-  border-radius: @bottomBorderRadius;
-}
-
 .loadUIOverrides();

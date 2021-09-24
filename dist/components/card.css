@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Card
+ * # Fomantic-UI 2.8.8 - Card
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -345,7 +345,7 @@
 
 .ui.cards > .card .dimmer,
 .ui.card .dimmer {
-  background-color: '';
+  background: '';
   z-index: 10;
 }
 
@@ -432,6 +432,62 @@
 
 
 /*******************************
+            States
+*******************************/
+
+
+/*--------------
+      Disabled
+  ---------------*/
+
+.ui.disabled.card {
+  opacity: 0.45;
+  color: rgba(40, 40, 40, 0.3);
+  pointer-events: none;
+}
+
+/*--------------
+      Loading
+  ---------------*/
+
+.ui.loading.card {
+  position: relative;
+  cursor: default;
+  pointer-events: none;
+  -webkit-transition: all 0s linear;
+  transition: all 0s linear;
+}
+.ui.loading.card:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.8);
+  width: 100%;
+  height: 100%;
+  border-radius: 0.28571429rem;
+  z-index: 100;
+}
+.ui.loading.card:after {
+  position: absolute;
+  content: '';
+  top: 50%;
+  left: 50%;
+  margin: -1.5em 0 0 -1.5em;
+  width: 3em;
+  height: 3em;
+  -webkit-animation: loader 0.6s infinite linear;
+          animation: loader 0.6s infinite linear;
+  border: 0.2em solid #767676;
+  border-radius: 500rem;
+  -webkit-box-shadow: 0 0 0 1px transparent;
+          box-shadow: 0 0 0 1px transparent;
+  visibility: visible;
+  z-index: 101;
+}
+
+
+/*******************************
            Variations
 *******************************/
 
@@ -472,7 +528,6 @@
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  height: 100%;
   border-radius: 0.28571429rem 0 0 0.28571429rem;
 }
 .ui.horizontal.cards > .card > .image:last-child > img,
@@ -481,6 +536,7 @@
 }
 .ui.horizontal.cards > .card > .content,
 .ui.horizontal.card > .content {
+  border-top: none;
   -ms-flex-preferred-size: 1px;
       flex-basis: 1px;
 }
@@ -1261,6 +1317,14 @@ a.ui.card:hover,
 .ui.inverted.card > .content > .header {
   color: rgba(255, 255, 255, 0.9);
 }
+.ui.inverted.cards > .card > .content > a.header,
+.ui.inverted.card > .content > a.header {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.cards > .card > .content > a.header:hover,
+.ui.inverted.card > .content > a.header:hover {
+  color: #1e70bf;
+}
 
 /* Description */
 .ui.inverted.cards > .card > .content > .description,
@@ -1303,6 +1367,14 @@ a.ui.card:hover,
 a.inverted.ui.card:hover,
 .ui.inverted.link.card:hover {
   background: #1B1C1D;
+}
+
+/* Loading */
+.ui.inverted.loading.card {
+  color: #FFFFFF;
+}
+.ui.inverted.loading.card:before {
+  background: rgba(0, 0, 0, 0.85);
 }
 
 

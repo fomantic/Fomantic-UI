@@ -38,7 +38,7 @@
   vertical-align: @verticalAlign;
   padding: @padding;
 
-  background-color: @backgroundColor;
+  background: @backgroundColor;
   opacity: @hiddenOpacity;
   line-height: @lineHeight;
 
@@ -68,7 +68,7 @@
 }
 
 /* Scrollbars */
-.addScrollbars() when (@useCustomScrollbars) {
+& when (@useCustomScrollbars) {
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
@@ -81,8 +81,17 @@
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
+  .ui.dimmer:not(.inverted) {
+    /* IE11 */
+    scrollbar-face-color: @thumbInvertedBackgroundHex;
+    scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+    scrollbar-track-color: @trackInvertedBackgroundHex;
+    scrollbar-arrow-color: @trackInvertedBackgroundHex;
+
+    /* firefox : first color thumb, second track */
+    scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
+  }
 }
-.addScrollbars();
 
 /*******************************
             States
@@ -151,6 +160,9 @@
     transform-style: @transformStyle;
     perspective: @perspective;
     transform-origin: center center;
+    &.modals {
+      -moz-perspective: none;
+    }
   }
 }
 
@@ -168,20 +180,24 @@ body.dimmable > .dimmer {
       Blurring
   ---------------*/
 
-  .blurring.dimmable > :not(.dimmer) {
-    filter: @blurredStartFilter;
-    transition: @blurredTransition;
-  }
-  .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
-    filter: @blurredEndFilter;
+  @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
+    .blurring.dimmable > :not(.dimmer) {
+      filter: @blurredStartFilter;
+      transition: @blurredTransition;
+    }
+    .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+      filter: @blurredEndFilter;
+    }
   }
 
   /* Dimmer Color */
   .blurring.dimmable > .dimmer {
-    background-color: @blurredBackgroundColor;
+    background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
   }
   .blurring.dimmable > .inverted.dimmer {
-    background-color: @blurredInvertedBackgroundColor;
+    background: @blurredInvertedBackgroundColor;
   }
 }
 & when (@variationDimmerAligned) {
@@ -203,13 +219,13 @@ body.dimmable > .dimmer {
   ---------------*/
 
   .medium.medium.medium.medium.medium.dimmer {
-    background-color: @mediumBackgroundColor;
+    background: @mediumBackgroundColor;
   }
   .light.light.light.light.light.dimmer {
-    background-color: @lightBackgroundColor;
+    background: @lightBackgroundColor;
   }
   .very.light.light.light.light.dimmer {
-    background-color: @veryLightBackgroundColor;
+    background: @veryLightBackgroundColor;
   }
 }
 
@@ -219,7 +235,7 @@ body.dimmable > .dimmer {
   ---------------*/
 
   .ui.inverted.dimmer {
-    background-color: @invertedBackgroundColor;
+    background: @invertedBackgroundColor;
   }
   .ui.inverted.dimmer > .content,
   .ui.inverted.dimmer > .content > * {
@@ -232,13 +248,13 @@ body.dimmable > .dimmer {
     ---------------*/
 
     .medium.medium.medium.medium.medium.inverted.dimmer {
-      background-color: @mediumInvertedBackgroundColor;
+      background: @mediumInvertedBackgroundColor;
     }
     .light.light.light.light.light.inverted.dimmer {
-      background-color: @lightInvertedBackgroundColor;
+      background: @lightInvertedBackgroundColor;
     }
     .very.light.light.light.light.inverted.dimmer {
-      background-color: @veryLightInvertedBackgroundColor;
+      background: @veryLightInvertedBackgroundColor;
     }
   }
 }
@@ -256,22 +272,22 @@ body.dimmable > .dimmer {
     width: 0;
     height: 0;
     z-index: -100;
-    background-color: @simpleStartBackgroundColor;
+    background: @simpleStartBackgroundColor;
   }
   .dimmed.dimmable > .ui.simple.dimmer {
     overflow: visible;
     opacity: 1;
     width: 100%;
     height: 100%;
-    background-color: @simpleEndBackgroundColor;
+    background: @simpleEndBackgroundColor;
     z-index: @simpleZIndex;
   }
 
   .ui.simple.inverted.dimmer {
-    background-color: @simpleInvertedStartBackgroundColor;
+    background: @simpleInvertedStartBackgroundColor;
   }
   .dimmed.dimmable > .ui.simple.inverted.dimmer {
-    background-color: @simpleInvertedEndBackgroundColor;
+    background: @simpleInvertedEndBackgroundColor;
   }
 }
 
