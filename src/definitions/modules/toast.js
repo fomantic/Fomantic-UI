@@ -355,7 +355,7 @@ $.fn.toast = function(parameters) {
             }
             $toast.on('click' + eventNamespace, module.event.click);
             if($animationObject) {
-              $animationObject.on('animationend' + eventNamespace, module.close);
+              $animationObject.on('animationend' + eventNamespace, module.event.close);
             }
             $toastBox
               .on('click' + eventNamespace, selector.approve, module.event.approve)
@@ -367,9 +367,10 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            (settings.closeIcon ? $close : $toast)
-                .off('click' + eventNamespace)
-            ;
+            if(settings.closeIcon) {
+              $close.off('click' + eventNamespace);
+            }
+            $toast.off('click' + eventNamespace);
             if($animationObject) {
               $animationObject.off('animationend' + eventNamespace);
             }
