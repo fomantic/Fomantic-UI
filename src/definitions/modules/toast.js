@@ -85,7 +85,7 @@ $.fn.toast = function(parameters) {
               settings.showProgress = false;
             }
             module.create.toast();
-            if(settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
+            if(settings.closeOnClick && ($($toast).find(selector.input).length > 0 || module.has.configActions())){
               settings.closeOnClick = false;
             }
             if(!settings.closeOnClick) {
@@ -126,17 +126,22 @@ $.fn.toast = function(parameters) {
         },
 
         show: function(callback) {
-          callback = callback || function(){};
-          module.debug('Showing toast');
           if(settings.onShow.call($toastBox, element) === false) {
             module.debug('onShow callback returned false, cancelling toast animation');
             return;
           }
+          callback = callback || function(){};
+          module.debug('Showing toast');
           module.animate.show(callback);
         },
 
         close: function(callback) {
+          if(settings.onHide.call($toastBox, element) === false) {
+            module.debug('onHide callback returned false, cancelling toast animation');
+            return;
+          }
           callback = callback || function(){};
+          module.debug('Closing toast');
           module.remove.visible();
           module.unbind.events();
           module.animate.close(callback);
@@ -345,9 +350,10 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            (settings.closeIcon ? $close : $toast)
-                .on('click' + eventNamespace, module.event.click)
-            ;
+            if(settings.closeIcon) {
+              $close.on('click' + eventNamespace, module.event.close);
+            }
+            $toast.on('click' + eventNamespace, module.event.click);
             if($animationObject) {
               $animationObject.on('animationend' + eventNamespace, module.close);
             }
@@ -395,11 +401,6 @@ $.fn.toast = function(parameters) {
           },
           close: function(callback) {
             callback = $.isFunction(callback) ? callback : function(){};
-            module.debug('Closing toast');
-            if(settings.onHide.call($toastBox, element) === false) {
-              module.debug('onHide callback returned false, cancelling toast animation');
-              return;
-            }
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $toastBox
                 .transition({
@@ -505,6 +506,9 @@ $.fn.toast = function(parameters) {
         },
 
         event: {
+          close: function(){
+            module.close();
+          },
           click: function(event) {
             if($(event.target).closest('a').length === 0) {
               if(settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
