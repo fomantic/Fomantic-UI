@@ -69,12 +69,14 @@ $.fn.toast = function(parameters) {
         element          = this,
         instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
 
+        id,
         module
       ;
       module = {
 
         initialize: function() {
           module.verbose('Initializing element');
+          module.create.id();
           if (!module.has.container()) {
             module.create.container();
           }
@@ -146,12 +148,16 @@ $.fn.toast = function(parameters) {
             module.verbose('Creating container');
             $context.append($('<div/>',{class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '')}));
           },
+          id: function() {
+            id = (Math.random().toString(16) + '000000000').substr(2, 8);
+            module.verbose('Creating unique id for element', id);
+          },
           toast: function() {
             $toastBox = $('<div/>', {class: className.box});
             var iconClass = module.get.iconClass();
             if (!isToastComponent) {
               module.verbose('Creating toast');
-              $toast = $('<div/>');
+              $toast = $('<div/>', {role: 'alert'});
               var $content = $('<div/>', {class: className.content});
               if (iconClass !== '') {
                 $toast.append($('<i/>', {class: iconClass + ' ' + className.icon}));
@@ -164,13 +170,21 @@ $.fn.toast = function(parameters) {
                 }));
               }
               if (settings.title !== '') {
+                var titleId = '_' + module.get.id() + 'title';
+                $toast.attr('aria-labelledby', titleId);
                 $content.append($('<div/>', {
                   class: className.title,
-                  text: settings.title
+                  id: titleId,
+                  html: module.helpers.escape(settings.title, settings.preserveHTML)
                 }));
               }
-
-              $content.append($('<div/>', {class: className.message, html: module.helpers.escape(settings.message, settings.preserveHTML)}));
+              var descId = '_' + module.get.id() + 'desc';
+              $toast.attr('aria-describedby', descId);
+              $content.append($('<div/>', {
+                class: className.message,
+                id: descId,
+                html: module.helpers.escape(settings.message, settings.preserveHTML)
+              }));
 
               $toast
                 .addClass(settings.class + ' ' + className.toast)
@@ -178,7 +192,7 @@ $.fn.toast = function(parameters) {
               ;
               $toast.css('opacity', settings.opacity);
               if (settings.closeIcon) {
-                $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : '')});
+                $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
                 if($close.hasClass(className.left)) {
                   $toast.prepend($close);
                 } else {
@@ -221,12 +235,13 @@ $.fn.toast = function(parameters) {
                 }
               }
               settings.actions.forEach(function (el) {
-                var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
                   click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
                 $actions.append($('<button/>', {
                   html: icon + text,
+                  'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
                   class: className.button + ' ' + cls,
                   click: function () {
                     var button = $(this);
@@ -330,11 +345,9 @@ $.fn.toast = function(parameters) {
         bind: {
           events: function() {
             module.debug('Binding events to toast');
-            if(settings.closeOnClick || settings.closeIcon) {
-              (settings.closeIcon ? $close : $toast)
-                  .on('click' + eventNamespace, module.event.click)
-              ;
-            }
+            (settings.closeIcon ? $close : $toast)
+                .on('click' + eventNamespace, module.event.click)
+            ;
             if($animationObject) {
               $animationObject.on('animationend' + eventNamespace, module.close);
             }
@@ -348,11 +361,9 @@ $.fn.toast = function(parameters) {
         unbind: {
           events: function() {
             module.debug('Unbinding events to toast');
-            if(settings.closeOnClick || settings.closeIcon) {
-              (settings.closeIcon ? $close : $toast)
-                  .off('click' + eventNamespace)
-              ;
-            }
+            (settings.closeIcon ? $close : $toast)
+                .off('click' + eventNamespace)
+            ;
             if($animationObject) {
               $animationObject.off('animationend' + eventNamespace);
             }
@@ -458,6 +469,9 @@ $.fn.toast = function(parameters) {
         },
 
         get: {
+          id: function() {
+            return id;
+          },
           container: function() {
             return ($context.find(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not('+module.helpers.toClass(className.horizontal)+')'))[0]);
           },
@@ -493,7 +507,10 @@ $.fn.toast = function(parameters) {
         event: {
           click: function(event) {
             if($(event.target).closest('a').length === 0) {
-              settings.onClick.call($toastBox, element);
+              if(settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
+                module.verbose('Click callback returned false or close denied by setting cancelling close');
+                return;
+              }
               module.close();
             }
           },
@@ -832,6 +849,10 @@ $.fn.toast.settings = {
     left         : 'left',
     basic        : 'basic',
     unclickable  : 'unclickable'
+  },
+
+  text: {
+    close : 'Close'
   },
 
   icons          : {

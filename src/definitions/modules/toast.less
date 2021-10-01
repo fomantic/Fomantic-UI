@@ -523,6 +523,12 @@
     }
   }
   &.vertical when (@variationToastVertical) {
+    & > .content {
+      flex-grow: 1;
+    }
+    &.attached when (@variationToastAttached){
+      flex-grow: 1;
+    }
     & > .close.icon + .content when (@variationToastClose){
       padding-left: @toastCloseDistanceVertical;
     }
@@ -552,6 +558,25 @@
     &.top {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+    }
+  }
+
+  &.ui.ui.ui.image when (@variationToastImage) {
+    padding: 0;
+    & > .content {
+      padding-top: @inputVerticalPadding;
+      padding-bottom: @inputVerticalPadding;
+      padding-right: @inputHorizontalPadding;
+    }
+    & > .actions when (@variationToastActions) {
+      margin: 0;
+    }
+    & > .ui.mini.image {
+      min-width: @toastImageMiniImageSize;
+      & + .content {
+        min-height: @toastImageMiniImageAdjustment;
+        padding-left: @toastImageMiniImagePadding;
+      }
     }
   }
 }
