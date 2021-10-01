@@ -85,7 +85,7 @@ $.fn.toast = function(parameters) {
               settings.showProgress = false;
             }
             module.create.toast();
-            if(settings.closeOnClick && ($($toast).find(selector.input).length > 0 || module.has.configActions())){
+            if(settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
               settings.closeOnClick = false;
             }
             if(!settings.closeOnClick) {
