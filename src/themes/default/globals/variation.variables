@@ -4,6 +4,9 @@
 
 /* General */
 @variationAllSizes: mini, tiny, small, large, big, huge, massive;
+@variationAllColors: primary, secondary, red, orange, yellow, olive, green, teal, blue, violet, purple, pink, brown, grey, black;
+@variationAllStates: error, info, success, warning;
+@variationAllConsequences: positive, negative, error, info, success, warning;
 
 /*******************************
            Elements
@@ -16,6 +19,8 @@
 @variationButtonSocial: true;
 @variationButtonFloated: true;
 @variationButtonCompact: true;
+@variationButtonIcon: true;
+@variationButtonLoading: true;
 @variationButtonBasic: true;
 @variationButtonTertiary: true;
 @variationButtonLabeled: true;
@@ -24,14 +29,18 @@
 @variationButtonOr: true;
 @variationButtonAttached: true;
 @variationButtonFluid: true;
+@variationButtonEqualWidth: true;
+@variationButtonVertical: true;
 @variationButtonCircular: true;
 @variationButtonGroups: true;
 @variationButtonStackable: true;
 @variationButtonSizes: @variationAllSizes;
+@variationButtonColors: @variationAllColors;
 
 /* Container */
 @variationContainerGrid: true;
 @variationContainerRelaxed: true;
+@variationContainerVeryRelaxed: true;
 @variationContainerText: true;
 @variationContainerFluid: true;
 @variationContainerAligned: true;
@@ -47,6 +56,7 @@
 @variationDividerClearing: true;
 @variationDividerSection: true;
 @variationDividerSizes: @variationAllSizes;
+@variationDividerColors: @variationAllColors;
 
 /* Header */
 @variationHeaderDisabled: true;
@@ -62,8 +72,15 @@
 @variationHeaderAttached: true;
 @variationHeaderTags: h1, h2, h3, h4, h5, h6;
 @variationHeaderSizes: @variationAllSizes;
+@variationHeaderColors: @variationAllColors;
 
 /* Icon */
+@variationIconDeprecated: true;
+@variationIconSolid: true;
+@variationIconAliases: true;
+@variationIconOutline: true;
+@variationIconBrand: true;
+@variationIconThin: true; /* Font Awesome Pro only */
 @variationIconDisabled: true;
 @variationIconInverted: true;
 @variationIconLoading: true;
@@ -77,6 +94,7 @@
 @variationIconCorner: true;
 @variationIconGroups: true;
 @variationIconSizes: @variationAllSizes;
+@variationIconColors: @variationAllColors;
 
 /* Image */
 @variationImageDisabled: true;
@@ -96,7 +114,7 @@
 /* Input */
 @variationInputDisabled: true;
 @variationInputInverted: true;
-@variationInputStates: true;
+@variationInputStates: @variationAllStates;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -120,6 +138,7 @@
 @variationLabelAttached: true;
 @variationLabelFluid: true;
 @variationLabelSizes: @variationAllSizes;
+@variationLabelColors: @variationAllColors;
 
 /* List */
 @variationListInverted: true;
@@ -139,6 +158,9 @@
 @variationListDivided: true;
 @variationListCelled: true;
 @variationListRelaxed: true;
+@variationListVeryRelaxed: true;
+@variationListHeader: true;
+@variationListDescription: true;
 @variationListSizes: @variationAllSizes;
 
 /* Loader */
@@ -148,6 +170,7 @@
 @variationLoaderInline: true;
 @variationLoaderElastic: true;
 @variationLoaderSizes: @variationAllSizes;
+@variationLoaderColors: @variationAllColors;
 
 /* Placeholder */
 @variationPlaceholderInverted: true;
@@ -181,6 +204,7 @@
 @variationSegmentPiled: true;
 @variationSegmentStacked: true;
 @variationSegmentPadded: true;
+@variationSegmentVeryPadded: true;
 @variationSegmentCircular: true;
 @variationSegmentCompact: true;
 @variationSegmentRaised: true;
@@ -195,6 +219,7 @@
 @variationSegmentAttached: true;
 @variationSegmentFitted: true;
 @variationSegmentSizes: @variationAllSizes;
+@variationSegmentColors: @variationAllColors;
 
 /* Step */
 @variationStepInverted: true;
@@ -204,13 +229,15 @@
 @variationStepOrdered: true;
 @variationStepFluid: true;
 @variationStepAttached: true;
+@variationStepEqualWidth: true;
 @variationStepSizes: @variationAllSizes;
 
 /* Text */
 @variationTextInverted: true;
 @variationTextDisabled: true;
-@variationTextStates: true;
+@variationTextStates: @variationAllStates;
 @variationTextSizes: @variationAllSizes;
+@variationTextColors: @variationAllColors;
 
 
 /*******************************
@@ -226,10 +253,12 @@
 @variationFormDisabled: true;
 @variationFormTransparent: true;
 @variationFormLoading: true;
-@variationFormStates: true;
+@variationFormStates: @variationAllStates;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
+@variationFormEqualWidth: true;
+@variationFormWide: true;
 @variationFormSizes: @variationAllSizes;
 
 /* Grid */
@@ -238,9 +267,11 @@
 @variationGridCelled: true;
 @variationGridCentered: true;
 @variationGridRelaxed: true;
+@variationGridVeryRelaxed: true;
 @variationGridPadded: true;
 @variationGridFloated: true;
 @variationGridDivided: true;
+@variationGridVertical: true;
 @variationGridAligned: true;
 @variationGridStretched: true;
 @variationGridJustified: true;
@@ -248,6 +279,10 @@
 @variationGridDoubling: true;
 @variationGridStackable: true;
 @variationGridCompact: true;
+@variationGridVeryCompact: true;
+@variationGridWide: true;
+@variationGridEqualWidth: true;
+@variationGridColors: @variationAllColors;
 
 /* Menu */
 @variationMenuInverted: true;
@@ -261,12 +296,16 @@
 @variationMenuLabeled: true;
 @variationMenuStackable: true;
 @variationMenuFloated: true;
+@variationMenuCentered: true;
 @variationMenuFitted: true;
 @variationMenuBorderless: true;
 @variationMenuCompact: true;
 @variationMenuFixed: true;
 @variationMenuAttached: true;
+@variationMenuIcon: true;
+@variationMenuEqualWidth: true;
 @variationMenuSizes: @variationAllSizes;
+@variationMenuColors: @variationAllColors;
 
 /* Message */
 @variationMessageInverted: true;
@@ -274,10 +313,11 @@
 @variationMessageAttached: true;
 @variationMessageIcon: true;
 @variationMessageFloating: true;
-@variationMessageConsequences: true;
+@variationMessageConsequences: @variationAllConsequences;
 @variationMessageCentered: true;
 @variationMessageRightAligned: true;
 @variationMessageSizes: @variationAllSizes;
+@variationMessageColors: @variationAllColors;
 
 /* Table */
 @variationTableInverted: true;
@@ -298,11 +338,17 @@
 @variationTableSortable: true;
 @variationTableCollapsing: true;
 @variationTableBasic: true;
+@variationTableVeryBasic: true;
 @variationTableCelled: true;
 @variationTablePadded: true;
+@variationTableVeryPadded: true;
 @variationTableCompact: true;
+@variationTableVeryCompact: true;
 @variationTableMarked: true;
+@variationTableEqualWidth: true;
+@variationTableWide: true;
 @variationTableSizes: @variationAllSizes;
+@variationTableColors: @variationAllColors;
 
 
 /*******************************
@@ -334,22 +380,55 @@
 @variationCardLink: true;
 @variationCardDoubling: true;
 @variationCardStackable: true;
+@variationCardFloated: true;
+@variationCardAligned: true;
+@variationCardImage: true;
+@variationCardHeader: true;
+@variationCardDescription: true;
+@variationCardMeta: true;
+@variationCardExtra: true;
+@variationCardButton: true;
+@variationCardStar: true;
+@variationCardLike: true;
+@variationCardEqualWidth: true;
 @variationCardSizes: @variationAllSizes;
+@variationCardColors: @variationAllColors;
 
 /* Comment */
 @variationCommentInverted: true;
 @variationCommentThreaded: true;
 @variationCommentMinimal: true;
+@variationCommentAvatar: true;
+@variationCommentAuthor: true;
+@variationCommentMeta: true;
+@variationCommentActions: true;
+@variationCommentReply: true;
 @variationCommentSizes: @variationAllSizes;
+@variationCommentColors: @variationAllColors;
 
 /* Feed */
 @variationFeedInverted: true;
+@variationFeedMeta: true;
+@variationFeedSummary: true;
+@variationFeedUser: true;
+@variationFeedExtra: true;
+@variationFeedDate: true;
+@variationFeedLike: true;
 @variationFeedSizes: @variationAllSizes;
 
 /* Item */
 @variationItemInverted: true;
+@variationItemImage: true;
+@variationItemHeader: true;
+@variationItemDescription: true;
+@variationItemMeta: true;
+@variationItemExtra: true;
+@variationItemFavorite: true;
+@variationItemLike: true;
+@variationItemFloated: true;
 @variationItemAligned: true;
 @variationItemRelaxed: true;
+@variationItemVeryRelaxed: true;
 @variationItemDivided: true;
 @variationItemLink: true;
 @variationItemUnstackable: true;
@@ -360,7 +439,9 @@
 @variationStatisticStackable: true;
 @variationStatisticFloated: true;
 @variationStatisticHorizontal: true;
+@variationStatisticEqualWidth: true;
 @variationStatisticSizes: @variationAllSizes;
+@variationStatisticColors: @variationAllColors;
 
 
 /*******************************
@@ -371,13 +452,13 @@
 @variationAccordionInverted: true;
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
+@variationAccordionCompact: true;
 
 /* Calendar */
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
 
 /* Checkbox */
-@variationCheckboxBox: false;   //.box (instead of label) is an ancient fragment of sui v1 and not even documented in v2.x anymore
 @variationCheckboxDisabled: true;
 @variationCheckboxReadonly: true;
 @variationCheckboxInverted: true;
@@ -388,6 +469,7 @@
 @variationCheckboxFitted: true;
 @variationCheckboxRightAligned: true;
 @variationCheckboxSizes: @variationAllSizes;
+@variationCheckboxColors: @variationAllColors;
 
 /* Dimmer */
 @variationDimmerInverted: true;
@@ -414,7 +496,7 @@
 @variationDropdownMultiple: true;
 @variationDropdownInline: true;
 @variationDropdownLoading: true;
-@variationDropdownStates: true;
+@variationDropdownStates: @variationAllStates;
 @variationDropdownClear: true;
 @variationDropdownLeft: true;
 @variationDropdownUpward: true;
@@ -423,6 +505,7 @@
 @variationDropdownFluid: true;
 @variationDropdownFloating: true;
 @variationDropdownPointing: true;
+@variationDropdownColumnar: true;
 @variationDropdownScrollhint: true;
 @variationDropdownSizes: @variationAllSizes;
 
@@ -447,6 +530,7 @@
 @variationNagFixed: true;
 @variationNagGroups: true;
 @variationNagSizes: @variationAllSizes;
+@variationNagColors: @variationAllColors;
 
 /* Popup */
 @variationPopupInverted: true;
@@ -464,6 +548,7 @@
 @variationPopupFlowing: true;
 @variationPopupFixed: true;
 @variationPopupSizes: @variationAllSizes;
+@variationPopupColors: @variationAllColors;
 
 /* Progress */
 @variationProgressInverted: true;
@@ -482,11 +567,13 @@
 @variationProgressSpeeds: true;
 @variationProgressRightAligned: true;
 @variationProgressSizes: @variationAllSizes;
+@variationProgressColors: @variationAllColors;
 
 /* Rating */
 @variationRatingDisabled: true;
 @variationRatingPartial: true;
 @variationRatingSizes: @variationAllSizes;
+@variationRatingColors: @variationAllColors;
 
 /* Search */
 @variationSearchDisabled: true;
@@ -496,7 +583,9 @@
 @variationSearchAligned: true;
 @variationSearchFluid: true;
 @variationSearchShort: true;
+@variationSearchVeryShort: true;
 @variationSearchLong: true;
+@variationSearchVeryLong: true;
 @variationSearchScrolling: true;
 @variationSearchSizes: @variationAllSizes;
 
@@ -507,7 +596,9 @@
 
 /* Sidebar */
 @variationSidebarThin: true;
+@variationSidebarVeryThin: true;
 @variationSidebarWide: true;
+@variationSidebarVeryWide: true;
 @variationSidebarTop: true;
 @variationSidebarBottom: true;
 @variationSidebarLeft: true;
@@ -528,6 +619,7 @@
 @variationSliderVertical: true;
 @variationSliderBasic: true;
 @variationSliderSizes: small, large, big;
+@variationSliderColors: @variationAllColors;
 
 /* Tab */
 @variationTabLoading: true;
@@ -557,6 +649,7 @@
 @variationToastAttached: true;
 @variationToastCompact: true;
 @variationToastCentered: true;
+@variationToastColors: @variationAllColors;
 
 /* Transition */
 @variationTransitionDisabled: true;
@@ -581,3 +674,6 @@
 /* Emojis */
 @variationEmojiColons: true;
 @variationEmojiNoColons: true;
+@variationEmojiDisabled: true;
+@variationEmojiLoading: true;
+@variationEmojiLink: true;

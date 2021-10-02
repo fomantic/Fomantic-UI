@@ -55,126 +55,6 @@
 }
 
 
-& when (@variationCheckboxBox) {
-  /*--------------
-        Box
-  ---------------*/
-
-  /* .box selector is deprecated and will be removed in v3 */
-  .ui.checkbox .box {
-    &:extend(.ui.checkbox label all);
-  }
-  .ui.checkbox + .box {
-    &:extend(.ui.checkbox + label all);
-  }
-  .ui.checkbox input:focus ~ .box {
-    &:extend(.ui.checkbox input:focus ~ label all);
-  }
-  .ui.checkbox input:checked ~ .box {
-    &:extend(.ui.checkbox input:checked ~ label all);
-  }
-  & when (@variationCheckboxIndeterminate) {
-    .ui.checkbox input:not([type=radio]):indeterminate ~ .box {
-      &:extend(.ui.checkbox input:not([type=radio]):indeterminate ~ label all);
-    }
-    .ui.checkbox input:not([type=radio]):indeterminate:focus ~ .box {
-      &:extend(.ui.checkbox input:not([type=radio]):indeterminate:focus ~ label all);
-    }
-  }
-  .ui.checkbox input:checked:focus ~ .box {
-    &:extend(.ui.checkbox input:checked:focus ~ label all);
-  }
-  & when (@variationCheckboxDisabled) {
-    .ui.disabled.checkbox .box {
-      &:extend(.ui.disabled.checkbox label all);
-    }
-
-    .ui.checkbox input[disabled] ~ .box {
-      &:extend(.ui.checkbox input[disabled] ~ label all);
-    }
-  }
-  & when (@variationCheckboxRadio) {
-    .ui.radio.checkbox .box {
-      &:extend(.ui.radio.checkbox label all);
-    }
-    .ui.radio.checkbox input:focus ~ .box {
-      &:extend(.ui.radio.checkbox input:focus ~ label all);
-    }
-    .ui.radio.checkbox input:indeterminate ~ .box {
-      &:extend(.ui.radio.checkbox input:indeterminate ~ label all);
-    }
-    .ui.radio.checkbox input:checked ~ .box {
-      &:extend(.ui.radio.checkbox input:checked ~ label all);
-    }
-    .ui.radio.checkbox input:focus:checked ~ .box {
-      &:extend(.ui.radio.checkbox input:focus:checked ~ label all);
-    }
-  }
-  & when (@variationCheckboxSlider) {
-    .ui.slider.checkbox .box {
-      &:extend(.ui.slider.checkbox label all);
-    }
-    .ui.slider.checkbox input:focus ~ .box {
-      &:extend(.ui.slider.checkbox input:focus ~ label all);
-    }
-    .ui.slider.checkbox input:checked ~ .box {
-      &:extend(.ui.slider.checkbox input:checked ~ label all);
-    }
-    .ui.slider.checkbox input:focus:checked ~ .box {
-      &:extend(.ui.slider.checkbox input:focus:checked ~ label all);
-    }
-  }
-  & when (@variationCheckboxToggle) {
-    .ui.toggle.checkbox .box {
-      &:extend(.ui.toggle.checkbox label all);
-    }
-    .ui.toggle.checkbox input ~ .box {
-      &:extend(.ui.toggle.checkbox input ~ label all);
-    }
-    .ui.toggle.checkbox input:focus ~ .box {
-      &:extend(.ui.toggle.checkbox input:focus ~ label all);
-    }
-    .ui.toggle.checkbox input:checked ~ .box {
-      &:extend(.ui.toggle.checkbox input:checked ~ label all);
-    }
-    .ui.toggle.checkbox input:focus:checked ~ .box {
-      &:extend(.ui.toggle.checkbox input:focus:checked ~ label all);
-    }
-  }
-  & when (@variationCheckboxFitted) {
-    .ui.fitted.checkbox .box {
-      &:extend(.ui.fitted.checkbox label all);
-    }
-  }
-  & when (@variationCheckboxInverted) {
-    .ui.inverted.checkbox .box {
-      &:extend(.ui.inverted.checkbox label all);
-    }
-    & when (@variationCheckboxSlider) {
-      .ui.inverted.slider.checkbox .box {
-        &:extend(.ui.inverted.slider.checkbox label all);
-      }
-      .ui.inverted.slider.checkbox input:checked ~ .box {
-        &:extend(.ui.inverted.slider.checkbox input:checked ~ label all);
-      }
-      .ui.inverted.slider.checkbox input:focus:checked ~ .box {
-        &:extend(.ui.inverted.slider.checkbox input:focus:checked ~ label all);
-      }
-    }
-    & when (@variationCheckboxToggle) {
-      .ui.inverted.toggle.checkbox .box {
-        &:extend(.ui.inverted.toggle.checkbox label all);
-      }
-      .ui.inverted.toggle.checkbox input:checked ~ .box {
-        &:extend(.ui.inverted.toggle.checkbox input:checked ~ label all);
-      }
-      .ui.inverted.toggle.checkbox input:focus:checked ~ .box {
-        &:extend(.ui.inverted.toggle.checkbox input:focus:checked ~ label all);
-      }
-    }
-  }
-}
-
 .ui.checkbox label {
   cursor: auto;
   position: relative;
@@ -386,6 +266,7 @@
 }
 
 /* Selectable Label */
+.ui.checkbox input + label[for],
 .ui.checkbox input.hidden + label {
   cursor: pointer;
   user-select: none;
@@ -796,69 +677,44 @@
 /*--------------------
         Size
 ---------------------*/
+& when not (@variationCheckboxSizes = false) {
+  each(@variationCheckboxSizes, {
+    @raw: @{value}Raw;
+    @size: @{value}CheckboxSize;
+    @circleScale: @{value}CheckboxCircleScale;
+    @circleLeft: @{value}CheckboxCircleLeft;
 
-each(@variationCheckboxSizes, {
-  @raw: @{value}Raw;
-  @size: @{value}CheckboxSize;
-  @circleScale: @{value}CheckboxCircleScale;
-  @circleLeft: @{value}CheckboxCircleLeft;
-
-  .ui.@{value}.checkbox {
-    font-size: @@size;
-  }
-
-  & when (@@raw > 1) {
-    .ui.@{value}.form .checkbox,
     .ui.@{value}.checkbox {
-      &:not(.slider):not(.toggle):not(.radio) {
-        &
-        label:after,
-        label:before {
-          transform: scale(@@raw);
-          transform-origin:left;
+      font-size: @@size;
+    }
+
+    & when (@@raw > 1) {
+      .ui.@{value}.form .checkbox,
+      .ui.@{value}.checkbox {
+        &:not(.slider):not(.toggle):not(.radio) {
+          &
+          label:after,
+          label:before {
+            transform: scale(@@raw);
+            transform-origin: left;
+          }
         }
-      }
-      &.radio when (@variationCheckboxRadio) {
-        &
-        label:before {
-          transform: scale(@@raw);
-          transform-origin:left;
-        }
-        &
-        label:after {
-          transform:scale(@@circleScale);
-          transform-origin:left;
-          left: @@circleLeft;
+        &.radio when (@variationCheckboxRadio) {
+          &
+          label:before {
+            transform: scale(@@raw);
+            transform-origin: left;
+          }
+          &
+          label:after {
+            transform: scale(@@circleScale);
+            transform-origin: left;
+            left: @@circleLeft;
+          }
         }
       }
     }
-  }
-  & when (@@raw > 1) and (@variationCheckboxBox) {
-    .ui.@{value}.form .checkbox,
-    .ui.@{value}.checkbox {
-      &:not(.slider):not(.toggle):not(.radio) {
-        &
-        .box:after,
-        .box:before {
-          transform: scale(@@raw);
-          transform-origin:left;
-        }
-      }
-      &.radio when (@variationCheckboxRadio) {
-        &
-        .box:before {
-          transform: scale(@@raw);
-          transform-origin:left;
-        }
-        &
-        .box:after {
-          transform:scale(@@circleScale);
-          transform-origin:left;
-          left: @@circleLeft;
-        }
-      }
-    }
-  }
-})
+  })
+}
 
 .loadUIOverrides();

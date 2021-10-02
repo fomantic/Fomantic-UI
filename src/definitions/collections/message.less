@@ -105,13 +105,14 @@
   margin-bottom: 0;
 }
 
-
-/* Icon */
-.ui.icon.message > .icons,
-.ui.icon.message > i.icon {
-  margin-right: @iconDistance;
-  &:last-child {
-    margin: 0 0 0 @iconDistance;
+& when (@variationMessageIcon) {
+  /* Icon */
+  .ui.icon.message > .icons,
+  .ui.icon.message > i.icon {
+    margin-right: @iconDistance;
+    &:last-child {
+      margin: 0 0 0 @iconDistance;
+    }
   }
 }
 
@@ -287,7 +288,7 @@
 /*--------------
      Types
 ---------------*/
-& when (@variationMessageConsequences) {
+& when not (@variationMessageConsequences = false) {
 
   @consequences: {
     @positive: {
@@ -342,8 +343,8 @@
 
   /* Colors */
 
-  each(@consequences, {
-    @color: replace(@key, '@', '');
+  each(@variationMessageConsequences, {
+    @color: @value;
     @bg: @consequences[@@color][background];
     @hd: @consequences[@@color][header];
     @bs: @consequences[@@color][boxShadow];
@@ -376,50 +377,51 @@
     }
   })
 }
+& when not (@variationMessageColors = false) {
+  each(@variationMessageColors, {
+    @color: @value;
+    @bg: @colors[@@color][background];
+    @hd: @colors[@@color][header];
+    @bs: @colors[@@color][boxShadow];
+    @bfs: @colors[@@color][boxFloatShadow];
+    @t: @colors[@@color][text];
+    @isVeryDark: @colors[@@color][isVeryDark];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @bg: @colors[@@color][background];
-  @hd: @colors[@@color][header];
-  @bs: @colors[@@color][boxShadow];
-  @bfs: @colors[@@color][boxFloatShadow];
-  @t: @colors[@@color][text];
-  @isVeryDark: @colors[@@color][isVeryDark];
-
-  .ui.@{color}.message {
-    & when not (@isVeryDark) {
-      background-color: @bg;
-      color: @t;
-    }
-    & when (@isVeryDark) {
-      background-color: @black;
-      color: @invertedTextColor;
-    }
-  }
-
-  .ui.@{color}.message,
-  .ui.attached.@{color}.message {
-    & when not (@isVeryDark) {
-      box-shadow: @bs;
-    }
-  }
-  & when (@variationMessageFloating) {
-    .ui.floating.@{color}.message {
+    .ui.@{color}.message {
       & when not (@isVeryDark) {
-        box-shadow: @bfs;
+        background-color: @bg;
+        color: @t;
+      }
+      & when (@isVeryDark) {
+        background-color: @black;
+        color: @invertedTextColor;
       }
     }
-  }
 
-  .ui.@{color}.message .header {
-    & when not (@isVeryDark) {
-      color: @hd;
+    .ui.@{color}.message,
+    .ui.attached.@{color}.message {
+      & when not (@isVeryDark) {
+        box-shadow: @bs;
+      }
     }
-    & when (@isVeryDark) {
-      color: @invertedTextColor;
+    & when (@variationMessageFloating) {
+      .ui.floating.@{color}.message {
+        & when not (@isVeryDark) {
+          box-shadow: @bfs;
+        }
+      }
     }
-  }
-})
+
+    .ui.@{color}.message .header {
+      & when not (@isVeryDark) {
+        color: @hd;
+      }
+      & when (@isVeryDark) {
+        color: @invertedTextColor;
+      }
+    }
+  })
+}
 
 & when (@variationMessageInverted) {
   .ui.inverted.message {

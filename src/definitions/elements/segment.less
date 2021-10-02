@@ -49,10 +49,10 @@
     border-radius: 0;
     box-shadow: none;
     border: none;
-    border-bottom: @borderWidth solid @borderColor;
+    border-top: @borderWidth solid @borderColor;
   }
-  .ui.vertical.segment:last-child {
-    border-bottom: none;
+  .ui.vertical.segment:first-child {
+    border-top: none;
   }
 }
 
@@ -299,9 +299,10 @@
   .ui.padded.segment {
     padding: @paddedSegmentPadding;
   }
-
-  .ui[class*="very padded"].segment {
-    padding: @veryPaddedSegmentPadding;
+  & when (@variationSegmentVeryPadded) {
+    .ui[class*="very padded"].segment {
+      padding: @veryPaddedSegmentPadding;
+    }
   }
 
   & when (@variationSegmentVertical) {
@@ -591,22 +592,23 @@
 /*-------------------
        Colors
 --------------------*/
-
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  & when not (@color=primary) and not (@color=secondary) {
-    .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-      border-top: @coloredBorderSize solid @c;
-    }
-    & when (@variationSegmentInverted) {
-      .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-        background-color: @c;
-        color: @white;
+& when not (@variationSegmentColors = false) {
+  each(@variationSegmentColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    & when not (@color=primary) and not (@color=secondary) {
+      .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+        border-top: @coloredBorderSize solid @c;
+      }
+      & when (@variationSegmentInverted) {
+        .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+          background-color: @c;
+          color: @white;
+        }
       }
     }
-  }
-})
+  })
+}
 
 & when (@variationSegmentAligned) {
   /*-------------------
@@ -730,12 +732,12 @@ each(@colors,{
     box-shadow: @attachedBoxShadow;
     border: @attachedBorder;
   }
-  .ui.attached:not(.message) + .ui.attached.segment:not(.top) {
+  .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
     border-top: none;
   }
 
   /* Top */
-  .ui[class*="top attached"].segment {
+  .ui.segment[class*="top attached"] {
     bottom: 0;
     margin-bottom: 0;
     top: @attachedTopOffset;
@@ -744,6 +746,9 @@ each(@colors,{
   }
   .ui.segment[class*="top attached"]:first-child {
     margin-top: 0;
+  }
+  .ui.tab.segment[class*="top attached"]:first-child {
+    margin-top: @verticalMargin;
   }
 
   /* Bottom */
@@ -756,6 +761,9 @@ each(@colors,{
     border-radius: 0 0 @borderRadius @borderRadius;
   }
   .ui.segment[class*="bottom attached"]:last-child {
+    margin-bottom: 0;
+  }
+  .ui.tab.segment[class*="bottom attached"]:last-child {
     margin-bottom: @verticalMargin;
   }
 }

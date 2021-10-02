@@ -44,7 +44,6 @@
   line-height: @lineHeight;
 
   font-family: @inputFont;
-  padding: @padding;
 
   background: @background;
   border: @border;
@@ -53,6 +52,9 @@
   transition: @transition;
 
   box-shadow: @boxShadow;
+  &:not([type="color"]) {
+    padding: @padding;
+  }
 }
 
 
@@ -168,18 +170,32 @@
 }
 
 
-& when (@variationInputStates) {
+& when not (@variationInputStates = false) {
   /*--------------------
           States
   ---------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
 
     .ui.input.@{state} > input {
       background-color: @formStates[@@state][background];
       border-color: @formStates[@@state][borderColor];
       color: @formStates[@@state][color];
       box-shadow: @formStates[@@state][boxShadow];
+    }
+    & when (@state=error) {
+      .ui.input > input:not(:placeholder-shown):invalid {
+        background-color: @formStates[@@state][background];
+        border-color: @formStates[@@state][borderColor];
+        color: @formStates[@@state][color];
+        box-shadow: @formStates[@@state][boxShadow];
+      }
+      .ui.input > input:not(:-ms-input-placeholder):invalid {
+        background-color: @formStates[@@state][background];
+        border-color: @formStates[@@state][borderColor];
+        color: @formStates[@@state][color];
+        box-shadow: @formStates[@@state][boxShadow];
+      }
     }
 
     /* Placeholder */
@@ -432,10 +448,10 @@
   }
 }
 
-& when (@variationInputLabeled)  or (@variationInputAction) {
+& when ((@variationInputLabeled) or (@variationInputAction)) and not (@variationInputStates = false) {
   /* Labeled and action input states */
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
     @borderColor: @formStates[@@state][borderColor];
 
     .ui.form .field.@{state} > .ui.action.input > .ui.button,

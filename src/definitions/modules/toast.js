@@ -229,7 +229,8 @@ $.fn.toast = function(parameters) {
                   html: icon + text,
                   class: className.button + ' ' + cls,
                   click: function () {
-                    if (click.call(element, $module) === false) {
+                    var button = $(this);
+                    if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
                       return;
                     }
                     module.close();
@@ -443,7 +444,7 @@ $.fn.toast = function(parameters) {
         has: {
           container: function() {
             module.verbose('Determining if there is already a container');
-            return ($context.find(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : '')).length > 0);
+            return ($context.find(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not('+module.helpers.toClass(className.horizontal)+')')).length > 0);
           },
           toast: function(){
             return !!module.get.toast();
@@ -458,7 +459,7 @@ $.fn.toast = function(parameters) {
 
         get: {
           container: function() {
-            return ($context.find(module.helpers.toClass(settings.position) + selector.container)[0]);
+            return ($context.find(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not('+module.helpers.toClass(className.horizontal)+')'))[0]);
           },
           toastBox: function() {
             return $toastBox || null;

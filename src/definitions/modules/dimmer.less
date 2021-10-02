@@ -68,7 +68,7 @@
 }
 
 /* Scrollbars */
-.addScrollbars() when (@useCustomScrollbars) {
+& when (@useCustomScrollbars) {
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
     background: @trackInvertedBackground;
   }
@@ -81,8 +81,17 @@
   .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
   }
+  .ui.dimmer:not(.inverted) {
+    /* IE11 */
+    scrollbar-face-color: @thumbInvertedBackgroundHex;
+    scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+    scrollbar-track-color: @trackInvertedBackgroundHex;
+    scrollbar-arrow-color: @trackInvertedBackgroundHex;
+
+    /* firefox : first color thumb, second track */
+    scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
+  }
 }
-.addScrollbars();
 
 /*******************************
             States
@@ -171,17 +180,21 @@ body.dimmable > .dimmer {
       Blurring
   ---------------*/
 
-  .blurring.dimmable > :not(.dimmer) {
-    filter: @blurredStartFilter;
-    transition: @blurredTransition;
-  }
-  .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
-    filter: @blurredEndFilter;
+  @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
+    .blurring.dimmable > :not(.dimmer) {
+      filter: @blurredStartFilter;
+      transition: @blurredTransition;
+    }
+    .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+      filter: @blurredEndFilter;
+    }
   }
 
   /* Dimmer Color */
   .blurring.dimmable > .dimmer {
     background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
   }
   .blurring.dimmable > .inverted.dimmer {
     background: @blurredInvertedBackgroundColor;
