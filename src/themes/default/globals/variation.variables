@@ -347,6 +347,11 @@
 @variationTableMarked: true;
 @variationTableEqualWidth: true;
 @variationTableWide: true;
+@variationTableScrolling: true;
+@variationTableScrollingShort: true;
+@variationTableScrollingVeryShort: true;
+@variationTableScrollingLong: true;
+@variationTableScrollingVeryLong: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 

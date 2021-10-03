@@ -243,6 +243,17 @@
 @veryCompactVerticalPadding: 0.4em;
 @veryCompactHorizontalPadding: 0.6em;
 
+/* Scrolling */
+@scrollingMobileMaxItems: 3;
+@scrollingTabletMaxItems: 4;
+@scrollingComputerMaxItems: 6;
+@scrollingWidescreenMaxItems: 8;
+
+@scrollingItemHeight: (@cellVerticalPadding * 2) + @lineHeight;
+@scrollingMobileMaxBodyHeight: (@scrollingItemHeight * @scrollingMobileMaxItems);
+@scrollingTabletMaxBodyHeight: (@scrollingItemHeight * @scrollingTabletMaxItems);
+@scrollingComputerMaxBodyHeight: (@scrollingItemHeight * @scrollingComputerMaxItems);
+@scrollingWidescreenMaxBodyHeight: (@scrollingItemHeight * @scrollingWidescreenMaxItems);
 
 /* Sizes */
 @small: 0.9em;
