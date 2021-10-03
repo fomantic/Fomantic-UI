@@ -383,6 +383,24 @@
   }
 
   /* Camouflage scrollbars, we need them only to gain the same width as tbody */
+  .ui.scrolling.table > thead {
+    background-color: @headerBackground;
+    color: @headerBackground;
+  }
+  .ui.scrolling.table > tfoot {
+    background-color: @footerBackground;
+    color: @footerBackground;
+  }
+  & when (@variationTableInverted) {
+    .ui.inverted.scrolling.table > thead {
+      background-color: @invertedHeaderBackground;
+      color: @invertedHeaderBackground;
+    }
+    .ui.inverted.scrolling.table > tfoot {
+      background-color: @invertedFooterBackground;
+      color: @invertedFooterBackground;
+    }
+  }
   .ui.scrolling.table > thead::-webkit-scrollbar-track,
   .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
     background: inherit;
@@ -938,6 +956,21 @@
         color: @white;
       }
     }
+    /* Same color for background and color to camouflage the scrollbar */
+    & when (@variationTableScrolling) {
+      .ui.scrolling.table > thead.@{color},
+      .ui.scrolling.table > tfoot.@{color} {
+        background-color: @l;
+        color: @l;
+      }
+      & when (@variationTableInverted) {
+        .ui.inverted.scrolling.table > thead.@{color},
+        .ui.inverted.scrolling.table > tfoot.@{color} {
+          background-color: @c;
+          color: @c;
+        }
+      }
+    }
     .ui.ui.ui.ui.table tr.@{color}:not(.marked),
     .ui.ui.table td.@{color}:not(.marked) {
       & when (@stateMarkerWidth > 0) {
@@ -1226,12 +1259,16 @@
   }
   .ui.ui.inverted.table > thead > tr > th,
   .ui.ui.inverted.table > tbody > tr > th,
-  .ui.ui.inverted.table > tfoot > tr > th,
-  .ui.ui.inverted.table > tfoot > tr > td,
   .ui.ui.inverted.table > tr > th {
     background-color: @invertedHeaderBackground;
     border-color: @invertedHeaderBorderColor;
     color: @invertedHeaderColor;
+  }
+  .ui.ui.inverted.table > tfoot > tr > th,
+  .ui.ui.inverted.table > tfoot > tr > td {
+    background-color: @invertedFooterBackground;
+    border-color: @invertedFooterBorderColor;
+    color: @invertedFooterColor;
   }
   .ui.inverted.table > tbody > tr > td,
   .ui.inverted.table > tfoot > tr > td,

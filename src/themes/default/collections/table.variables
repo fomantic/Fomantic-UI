@@ -215,6 +215,10 @@
 @invertedHeaderColor: @invertedTextColor;
 @invertedHeaderBorderColor: @invertedCellBorderColor;
 
+@invertedFooterBackground: @invertedHeaderBackground;
+@invertedFooterColor: @invertedHeaderColor;
+@invertedFooterBorderColor: @invertedHeaderBorderColor;
+
 @invertedDefinitionColumnBackground: @subtleTransparentWhite;
 @invertedDefinitionColumnColor: @invertedSelectedTextColor;
 @invertedDefinitionColumnFontWeight: @bold;
