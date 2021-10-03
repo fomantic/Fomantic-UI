@@ -264,14 +264,14 @@
     })
   }
   & when (@variationTableScrolling) {
-    & when (@variationDropdownShort) {
+    & when (@variationTableScrollingShort) {
       .ui.scrolling.table.short > tbody {
         max-height: @scrollingMobileMaxBodyHeight * 0.75;
       }
-      & when (@variationTableScrollingVeryShort) {
-        .ui.scrolling.table[class*="very short"] > tbody {
-          max-height: @scrollingMobileMaxBodyHeight * 0.5;
-        }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 0.5;
       }
     }
     .ui.scrolling.table > tbody {
@@ -281,13 +281,123 @@
       .ui.scrolling.table.long > tbody {
         max-height: @scrollingMobileMaxBodyHeight * 2;
       }
-      & when (@variationTableScrollingVeryLong) {
-        .ui.scrolling.table[class*="very long"] > tbody {
-          max-height: @scrollingMobileMaxBodyHeight * 3;
-        }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 3;
       }
     }
   }
+}
+& when (@variationTableScrolling) {
+  /*--------------
+    Scrolling
+  ---------------*/
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingTabletMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingComputerMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingWidescreenMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 3;
+      }
+    }
+  }
+
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot,
+  .ui.scrolling.table > tbody {
+    display: block;
+    overflow-y: scroll;
+    scrollbar-width: thin;  /* Firefox */
+    & > tr {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+  }
+
+  /* Camouflage scrollbars, we need them only to gain the same width as tbody */
+  .ui.scrolling.table > thead::-webkit-scrollbar-track,
+  .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
+    background: inherit;
+  }
+
+  /* Firefox & IE */
+  .ui.scrolling > thead,
+  .ui.scrolling > tfoot {
+    scrollbar-color: currentColor currentColor;
+    scrollbar-face-color: currentColor;
+    scrollbar-shadow-color: currentColor;
+    scrollbar-track-color: currentColor;
+    scrollbar-arrow-color: currentColor;
+  }
+
 }
 
 
@@ -1343,9 +1453,6 @@
   }
 }
 
-& when (@variationTableScrolling) {
-
-}
 /*--------------
       Sizes
 ---------------*/
