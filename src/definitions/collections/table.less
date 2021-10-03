@@ -384,20 +384,20 @@
 
   /* Camouflage scrollbars, we need them only to gain the same width as tbody */
   .ui.scrolling.table > thead {
-    background-color: @headerBackground;
+    background: @headerBackground;
     color: @headerBackground;
   }
   .ui.scrolling.table > tfoot {
-    background-color: @footerBackground;
+    background: @footerBackground;
     color: @footerBackground;
   }
   & when (@variationTableInverted) {
     .ui.inverted.scrolling.table > thead {
-      background-color: @invertedHeaderBackground;
+      background: @invertedHeaderBackground;
       color: @invertedHeaderBackground;
     }
     .ui.inverted.scrolling.table > tfoot {
-      background-color: @invertedFooterBackground;
+      background: @invertedFooterBackground;
       color: @invertedFooterBackground;
     }
   }
@@ -952,7 +952,7 @@
     }
     & when (@variationTableInverted) {
       .ui.inverted.@{color}.table {
-        background-color: @c;
+        background: @c;
         color: @white;
       }
     }
@@ -960,18 +960,34 @@
     & when (@variationTableScrolling) {
       .ui.scrolling.table > thead.@{color},
       .ui.scrolling.table > tfoot.@{color} {
-        background-color: @l;
+        background: @l;
         color: @l;
+        & > tr > th,
+          > tr > td {
+          background: inherit;
+          & when (@isVeryDark) {
+            color: @white;
+          }
+          & when not (@isVeryDark) {
+            color: @b;
+          }
+        }
       }
       & when (@variationTableInverted) {
         .ui.inverted.scrolling.table > thead.@{color},
         .ui.inverted.scrolling.table > tfoot.@{color} {
-          background-color: @c;
+          background: @c;
           color: @c;
+          & > tr > th,
+            > tr > td {
+            background: inherit;
+            color: @white;
+          }
         }
       }
     }
     .ui.ui.ui.ui.table tr.@{color}:not(.marked),
+    .ui.ui.table th.@{color}:not(.marked),
     .ui.ui.table td.@{color}:not(.marked) {
       & when (@stateMarkerWidth > 0) {
         box-shadow: @stateMarkerWidth 0 0 @r inset;
@@ -989,6 +1005,14 @@
         color: @t;
       }
     }
+    & when (@variationTableInverted) {
+      .ui.ui.ui.ui.inverted.table tr.@{color}:not(.marked),
+      .ui.ui.inverted.table th.@{color}:not(.marked),
+      .ui.ui.inverted.table td.@{color}:not(.marked) {
+        background: @c;
+        color: @white;
+      }
+    }
     & when (@variationTableSelectable) {
       .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
       .ui.table tr td.selectable.@{color}:not(.marked):hover,
@@ -1004,6 +1028,24 @@
         }
         & when not (@isVeryDark) {
           color: @ht;
+        }
+      }
+      & when (@variationTableInverted) {
+        .ui.ui.inverted.selectable.table tr.@{color}:not(.marked):hover,
+        .ui.inverted.table tr td.selectable.@{color}:not(.marked):hover,
+        .ui.inverted.selectable.table tr:hover td.@{color}:not(.marked) {
+          & when (@isDark) {
+            background: @bh;
+          }
+          & when not (@isDark) {
+            background: @lh;
+          }
+          & when (@isVeryDark) {
+            color: @ht;
+          }
+          & when not (@isVeryDark) {
+            color: @white;
+          }
         }
       }
     }
