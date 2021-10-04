@@ -386,10 +386,12 @@
   .ui.scrolling.table > thead {
     background: @headerBackground;
     color: @headerBackground;
+    border-radius: @borderRadius @borderRadius 0 0;
   }
   .ui.scrolling.table > tfoot {
     background: @footerBackground;
     color: @footerBackground;
+    border-radius: 0 0 @borderRadius @borderRadius;
   }
   & when (@variationTableInverted) {
     .ui.inverted.scrolling.table > thead {
@@ -404,6 +406,7 @@
   .ui.scrolling.table > thead::-webkit-scrollbar-track,
   .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
     background: inherit;
+    border-radius: @borderRadius;
   }
 
   /* Firefox & IE */
@@ -414,6 +417,23 @@
     scrollbar-shadow-color: currentColor;
     scrollbar-track-color: currentColor;
     scrollbar-arrow-color: currentColor;
+  }
+  /* IE scrollbar color needs hex values */
+  @media all and (-ms-high-contrast:none) {
+    .ui.scrolling.table > thead {
+      color: @headerBackgroundHex;
+    }
+    .ui.scrolling.table > tfoot {
+      color: @footerBackgroundHex;
+    }
+    & when (@variationTableInverted) {
+      .ui.inverted.scrolling.table > thead {
+        color: @invertedHeaderBackgroundHex;
+      }
+      .ui.inverted.scrolling.table > tfoot {
+        color: @invertedFooterBackgroundHex;
+      }
+    }
   }
 
 }
