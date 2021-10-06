@@ -980,8 +980,14 @@
     & when (@variationTableScrolling) {
       .ui.scrolling.table > thead.@{color},
       .ui.scrolling.table > tfoot.@{color} {
-        background: @l;
-        color: @l;
+        & when (@isDark) {
+          background: @l;
+          color: @l;
+        }
+        & when not (@isDark) {
+          background: @b;
+          color: @b;
+        }
         & > tr > th,
           > tr > td {
           background: inherit;
@@ -989,7 +995,7 @@
             color: @white;
           }
           & when not (@isVeryDark) {
-            color: @b;
+            color: @t;
           }
         }
       }
@@ -1025,11 +1031,29 @@
         color: @t;
       }
     }
+    .ui.table > thead > tr.@{color}:not(.marked) > th,
+    .ui.table > tfoot > tr.@{color}:not(.marked) > th,
+    .ui.table > tfoot > tr.@{color}:not(.marked) > td {
+      background: inherit;
+      & when (@isVeryDark) {
+        color: @white;
+      }
+      & when not (@isVeryDark) {
+        color: @t;
+      }
+    }
+
     & when (@variationTableInverted) {
       .ui.ui.ui.ui.inverted.table tr.@{color}:not(.marked),
       .ui.ui.inverted.table th.@{color}:not(.marked),
       .ui.ui.inverted.table td.@{color}:not(.marked) {
         background: @c;
+        color: @white;
+      }
+      .ui.inverted.table > thead > tr.@{color}:not(.marked) > th,
+      .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > th,
+      .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > td {
+        background: inherit;
         color: @white;
       }
     }
