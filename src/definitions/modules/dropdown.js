@@ -274,7 +274,7 @@ $.fn.dropdown = function(parameters) {
               module.debug('Adding user labels', userValues);
               $.each(userValues, function(index, value) {
                 module.verbose('Adding custom user value');
-                module.add.label(value, value);
+                module.add.label({value: value, text: value});
               });
             }
           },
@@ -2308,7 +2308,7 @@ $.fn.dropdown = function(parameters) {
               }
               else {
                 $.each(values, function(value, name) {
-                  module.add.label(value, name);
+                  module.add.label({value: value, text: name});
                 });
               }
             }
@@ -2777,17 +2777,26 @@ $.fn.dropdown = function(parameters) {
                     if(settings.apiSettings && settings.saveRemoteData) {
                       module.save.remoteData(selectedText, selectedValue);
                     }
-                    if(settings.useLabels) {
-                      module.add.label(selectedValue, selectedText, shouldAnimate);
-                      module.add.value(selectedValue, selectedText, $selected);
-                      module.set.activeItem($selected);
-                      module.filterActive();
-                      module.select.nextAvailable($selectedItem);
-                    }
-                    else {
-                      module.add.value(selectedValue, selectedText, $selected);
-                      module.set.text(module.add.variables(message.count));
-                      module.set.activeItem($selected);
+
+                    let wrapper = {
+                      value: selectedValue,
+                      text: selectedText
+                    };
+
+                    // Method add.value will also run the onBeforeAdd callback
+                    // If the callback fails, add.value is aborted; related instructions must follow suit
+                    // Passing an object to allow onBeforeAdd to mutate the values
+                    if(module.add.value(wrapper, $selected) !== false) {
+                      if(settings.useLabels) {
+                        module.add.label(wrapper, shouldAnimate);
+                        module.set.activeItem($selected);
+                        module.filterActive();
+                        module.select.nextAvailable($selectedItem);
+                      }
+                      else {
+                        module.set.text(module.add.variables(message.count));
+                        module.set.activeItem($selected);
+                      }
                     }
                   }
                   else if(!isFiltered && (settings.useLabels || selectActionActive)) {
@@ -2817,11 +2826,14 @@ $.fn.dropdown = function(parameters) {
         },
 
         add: {
-          label: function(value, text, shouldAnimate) {
+          // Accepts a wrapper to preserve mutations made by onBeforeAdd callback
+          label: function(valueWrapper, shouldAnimate) {
             var
               $next  = module.is.searchSelection()
                 ? $search
                 : $text,
+              value = valueWrapper.value,
+              text = valueWrapper.text,
               escapedValue = module.escape.value(value),
               $label
             ;
@@ -2974,19 +2986,36 @@ $.fn.dropdown = function(parameters) {
             }
             return message;
           },
-          value: function(addedValue, addedText, $selectedItem) {
+
+          // Accepts a wrapper to preserve mutations made by onBeforeAdd callback
+          value: function(valueWrapper, $selectedItem) {
             var
               currentValue = module.get.values(true),
               newValue
             ;
-            if(module.has.value(addedValue)) {
+            if(module.has.value(valueWrapper.value)) {
               module.debug('Value already selected');
               return;
             }
-            if(addedValue === '') {
+            if(valueWrapper.value === '') {
               module.debug('Cannot select blank values from multiselect');
               return;
             }
+
+            if(settings.fireOnInit === false && module.is.initialLoad()) {
+              module.verbose('Skipping onbeforeadd callback on initial load', settings.onBeforeAdd);
+            }
+            else if(settings.onBeforeAdd.call(element, valueWrapper, $selectedItem) === false) {
+              module.debug('Onbeforeadd callback failed, aborting');
+              return false;
+            }
+
+            // local copy of the (possibly) mutated values
+            let
+              addedValue = valueWrapper.value,
+              addedText = valueWrapper.text
+            ;
+
             // extend current array
             if(Array.isArray(currentValue)) {
               newValue = currentValue.concat([addedValue]);
@@ -4037,6 +4066,7 @@ $.fn.dropdown.settings = {
 
   /* Callbacks */
   onChange      : function(value, text, $selected){},
+  onBeforeAdd   : function(wrappedParams, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
   onSearch      : function(searchTerm){},
