@@ -565,6 +565,13 @@
     background: @positiveBackgroundColor;
     color: @positiveColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.positive,
+    .ui.ui.inverted.table td.positive {
+      background: @invertedPositiveBackgroundColor;
+      color: @invertedPositiveColor;
+    }
+  }
 }
 
 & when (@variationTableNegative) {
@@ -577,6 +584,13 @@
     box-shadow: @negativeBoxShadow;
     background: @negativeBackgroundColor;
     color: @negativeColor;
+  }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.negative,
+    .ui.ui.inverted.table td.negative {
+      background: @invertedNegativeBackgroundColor;
+      color: @invertedNegativeColor;
+    }
   }
 }
 
@@ -591,6 +605,13 @@
     background: @errorBackgroundColor;
     color: @errorColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.error,
+    .ui.ui.inverted.table td.error {
+      background: @invertedErrorBackgroundColor;
+      color: @invertedErrorColor;
+    }
+  }
 }
 
 & when (@variationTableWarning) {
@@ -603,6 +624,13 @@
     box-shadow: @warningBoxShadow;
     background: @warningBackgroundColor;
     color: @warningColor;
+  }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.warning,
+    .ui.ui.inverted.table td.warning {
+      background: @invertedWarningBackgroundColor;
+      color: @invertedWarningColor;
+    }
   }
 }
 
@@ -617,6 +645,13 @@
     background: @activeBackgroundColor;
     color: @activeColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.active,
+    .ui.ui.inverted.table td.active {
+      background: @invertedActiveBackgroundColor;
+      color: @invertedActiveColor;
+    }
+  }
 }
 
 
@@ -625,8 +660,8 @@
        Disabled
   ---------------*/
 
-  .ui.table tr.disabled td,
-  .ui.table tr td.disabled,
+  .ui.ui.ui.table tr.disabled td,
+  .ui.ui.ui.table tr td.disabled,
   .ui.table tr.disabled:hover,
   .ui.table tr:hover td.disabled {
     pointer-events: none;
@@ -1281,10 +1316,12 @@
     content: @sortableIconDescending;
   }
 
-  /* Hover */
-  .ui.sortable.table th.disabled:hover {
-    cursor: auto;
-    color: @sortableDisabledColor;
+  & when (@variationTableDisabled) {
+    /* Hover */
+    .ui.sortable.table th.disabled:hover {
+      cursor: auto;
+      color: @sortableDisabledColor;
+    }
   }
   .ui.sortable.table > thead > tr > th:hover {
     color: @sortableHoverColor;
@@ -1361,19 +1398,20 @@
   .ui.inverted.table > tr > td {
     border-color: @invertedCellBorderColor;
   }
-
-  .ui.inverted.table tr.disabled td,
-  .ui.inverted.table tr td.disabled,
-  .ui.inverted.table tr.disabled:hover td,
-  .ui.inverted.table tr:hover td.disabled {
-    pointer-events: none;
-    color: @invertedDisabledTextColor;
-  }
-  .ui.inverted.table tr td.disabled:not([class="disabled"]),
-  .ui.inverted.table tr.disabled:not([class="disabled"]) td,
-  .ui.inverted.table tr.disabled td[class]:not(.disabled),
-  .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
-    color: @disabledTextColor;
+  & when (@variationTableDisabled) {
+    .ui.inverted.table tr.disabled td,
+    .ui.inverted.table tr td.disabled,
+    .ui.inverted.table tr.disabled:hover td,
+    .ui.inverted.table tr:hover td.disabled {
+      pointer-events: none;
+      color: @invertedDisabledTextColor;
+    }
+    .ui.ui.ui.inverted.table tr td.disabled:not([class="disabled"]),
+    .ui.inverted.table tr.disabled:not([class="disabled"]) td,
+    .ui.inverted.table tr.disabled td[class]:not(.disabled),
+    .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
+      color: @disabledTextColor;
+    }
   }
   & when (@variationTableDefinition) {
     /* Definition */

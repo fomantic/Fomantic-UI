@@ -120,29 +120,39 @@
 @positiveBoxShadow: @stateMarkerWidth 0 0 @positiveBorderColor inset;
 @positiveBackgroundHover: darken(@positiveBackgroundColor, 3);
 @positiveColorHover: darken(@positiveColor, 3);
+@invertedPositiveColor: @positiveTextColor;
+@invertedPositiveBackgroundColor: @positiveBorderColor;
 
 /* Negative */
 @negativeColor: @negativeTextColor;
 @negativeBoxShadow: @stateMarkerWidth 0 0 @negativeBorderColor inset;
 @negativeBackgroundHover: darken(@negativeBackgroundColor, 3);
 @negativeColorHover: darken(@negativeColor, 3);
+@invertedNegativeColor: @negativeTextColor;
+@invertedNegativeBackgroundColor: @negativeBorderColor;
 
 /* Error */
 @errorColor: @errorTextColor;
 @errorBoxShadow: @stateMarkerWidth 0 0 @errorBorderColor inset;
 @errorBackgroundHover: darken(@errorBackgroundColor, 3);
 @errorColorHover: darken(@errorColor, 3);
+@invertedErrorColor: @errorTextColor;
+@invertedErrorBackgroundColor: @errorBorderColor;
 
 /* Warning */
 @warningColor: @warningTextColor;
 @warningBoxShadow: @stateMarkerWidth 0 0 @warningBorderColor inset;
 @warningBackgroundHover: darken(@warningBackgroundColor, 3);
 @warningColorHover: darken(@warningColor, 3);
+@invertedWarningColor: @warningTextColor;
+@invertedWarningBackgroundColor: #EEC97E;
 
 /* Active */
 @activeColor: @textColor;
 @activeBackgroundColor: #E0E0E0;
 @activeBoxShadow: @stateMarkerWidth 0 0 @activeColor inset;
+@invertedActiveColor: @textColor;
+@invertedActiveBackgroundColor: #A0A0A0;
 
 @activeBackgroundHover: #EFEFEF;
 @activeColorHover: @selectedTextColor;
