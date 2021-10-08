@@ -1633,7 +1633,7 @@ $.fn.dropdown = function(parameters) {
                       .addClass(className.selected)
                     ;
                     module.set.scrollPosition($nextItem);
-                    if(settings.selectOnKeydown && module.is.single()) {
+                    if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                       module.set.selectedItem($nextItem);
                     }
                   }
@@ -1660,7 +1660,7 @@ $.fn.dropdown = function(parameters) {
                       .addClass(className.selected)
                     ;
                     module.set.scrollPosition($nextItem);
-                    if(settings.selectOnKeydown && module.is.single()) {
+                    if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                       module.set.selectedItem($nextItem);
                     }
                   }
@@ -1791,7 +1791,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.selected(value, $(element));
-              if(!module.is.multiple()) {
+              if(!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                 module.hideAndClear();
               }
             }
@@ -1804,7 +1804,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if( module.can.activate( $(element) ) ) {
               module.set.value(value, text, $(element));
-              if(!module.is.multiple()) {
+              if(!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                 module.hideAndClear();
               }
             }
@@ -2428,7 +2428,7 @@ $.fn.dropdown = function(parameters) {
             $nextSelectedItem
               .addClass(className.selected)
             ;
-            if(settings.selectOnKeydown && module.is.single()) {
+            if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
               module.set.selectedItem($nextSelectedItem);
             }
             $menu
@@ -2631,7 +2631,7 @@ $.fn.dropdown = function(parameters) {
               module.set.scrollPosition($nextValue);
               $selectedItem.removeClass(className.selected);
               $nextValue.addClass(className.selected);
-              if(settings.selectOnKeydown && module.is.single()) {
+              if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                 module.set.selectedItem($nextValue);
               }
             }
@@ -2769,17 +2769,24 @@ $.fn.dropdown = function(parameters) {
 
                   isFiltered     = $selected.hasClass(className.filtered),
                   isActive       = $selected.hasClass(className.active),
+                  isActionable   = $selected.hasClass(className.actionable),
                   isUserValue    = $selected.hasClass(className.addition),
                   shouldAnimate  = (isMultiple && $selectedItem.length == 1)
                 ;
-                if(isMultiple) {
+                if(isActionable){
+                  if((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
+                    module.save.remoteData(selectedText, selectedValue);
+                  }
+                  settings.onActionable.call(element, selectedValue, selectedText, $selected);
+                }
+                else if(isMultiple) {
                   if(!isActive || isUserValue) {
                     if(settings.apiSettings && settings.saveRemoteData) {
                       module.save.remoteData(selectedText, selectedValue);
                     }
                     if(settings.useLabels) {
-                      module.add.label(selectedValue, selectedText, shouldAnimate);
                       module.add.value(selectedValue, selectedText, $selected);
+                      module.add.label(selectedValue, selectedText, shouldAnimate);
                       module.set.activeItem($selected);
                       module.filterActive();
                       module.select.nextAvailable($selectedItem);
@@ -2799,7 +2806,7 @@ $.fn.dropdown = function(parameters) {
                   if(settings.apiSettings && settings.saveRemoteData) {
                     module.save.remoteData(selectedText, selectedValue);
                   }
-                  if (!keepSearchTerm) {
+                  if (!keepSearchTerm && !$selected.hasClass(className.actionable)) {
                     module.set.text(selectedText);
                   }
                   module.set.value(selectedValue, selectedText, $selected, preventChangeTrigger);
@@ -2989,7 +2996,7 @@ $.fn.dropdown = function(parameters) {
             }
             // extend current array
             if(Array.isArray(currentValue)) {
-              newValue = currentValue.concat([addedValue]);
+              newValue = $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
               newValue = module.get.uniqueArray(newValue);
             }
             else {
@@ -4020,6 +4027,8 @@ $.fn.dropdown.settings = {
 
   headerDivider          : true,       // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 
+  collapseOnActionable   : true,      // whether the dropdown should collapse upon selection of an actionable item
+
   // label settings on multi-select
   label: {
     transition : 'scale',
@@ -4039,6 +4048,7 @@ $.fn.dropdown.settings = {
   onChange      : function(value, text, $selected){},
   onAdd         : function(value, text, $selected){},
   onRemove      : function(value, text, $selected){},
+  onActionable  : function(value, text, $selected){},
   onSearch      : function(searchTerm){},
 
   onLabelSelect : function($selectedLabels){},
@@ -4101,7 +4111,8 @@ $.fn.dropdown.settings = {
     icon                 : 'icon',     // optional icon name
     iconClass            : 'iconClass', // optional individual class for icon (for example to use flag instead)
     class                : 'class',    // optional individual class for item/header
-    divider              : 'divider'   // optional divider append for group headers
+    divider              : 'divider',   // optional divider append for group headers
+    actionable           : 'actionable' // optional actionable item
   },
 
   keys : {
@@ -4173,7 +4184,8 @@ $.fn.dropdown.settings = {
     header              : 'header',
     divider             : 'divider',
     groupIcon           : '',
-    unfilterable        : 'unfilterable'
+    unfilterable        : 'unfilterable',
+    actionable          : 'actionable'
   }
 
 };
@@ -4248,6 +4260,9 @@ $.fn.dropdown.settings.templates = {
           maybeText = (option[fields.text])
             ? ' data-text="' + deQuote(option[fields.text],true) + '"'
             : '',
+          maybeActionable = (option[fields.actionable])
+            ? className.actionable+' '
+            : '',
           maybeDisabled = (option[fields.disabled])
             ? className.disabled+' '
             : '',
@@ -4256,7 +4271,7 @@ $.fn.dropdown.settings.templates = {
             : '',
           hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
         ;
-        html += '<div class="'+ maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        html += '<div class="'+ maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if (isMenu) {
           html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
