@@ -58,6 +58,9 @@
 @toastIconCenteredAdjustment: 1.2em;
 @toastImageCenteredAdjustment: 2em;
 
+@toastImageMiniImageAdjustment: e(%("calc(%d + %d)", @inputVerticalPadding, @toastMiniImageHeight));
+@toastImageMiniImagePadding: 4.4em;
+
 /* Progressbar Colors */
 @toastInfoProgressColor: darken(@toastInfoColor,15);
 @toastWarningProgressColor: darken(@toastWarningColor,15);
