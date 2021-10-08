@@ -263,6 +263,203 @@
       }
     })
   }
+  & when (@variationTableScrolling) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingMobileMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingMobileMaxBodyHeight * 3;
+      }
+    }
+  }
+}
+& when (@variationTableScrolling) {
+  /*--------------
+    Scrolling
+  ---------------*/
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingTabletMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingTabletMaxBodyHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingComputerMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingComputerMaxBodyHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationTableScrollingShort) {
+      .ui.scrolling.table.short > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 0.75;
+      }
+    }
+    & when (@variationTableScrollingVeryShort) {
+      .ui.scrolling.table[class*="very short"] > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 0.5;
+      }
+    }
+    .ui.scrolling.table > tbody {
+      max-height: @scrollingWidescreenMaxBodyHeight;
+    }
+    & when (@variationTableScrollingLong) {
+      .ui.scrolling.table.long > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 2;
+      }
+    }
+    & when (@variationTableScrollingVeryLong) {
+      .ui.scrolling.table[class*="very long"] > tbody {
+        max-height: @scrollingWidescreenMaxBodyHeight * 3;
+      }
+    }
+  }
+
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot,
+  .ui.scrolling.table > tbody {
+    display: block;
+    overflow-y: scroll;
+    scrollbar-width: thin;  /* Firefox */
+    & > tr {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
+  }
+
+  /* Camouflage scrollbars, we need them only to gain the same width as tbody */
+  .ui.scrolling.table > thead {
+    background: @headerBackground;
+    color: @headerBackground;
+    border-radius: @borderRadius @borderRadius 0 0;
+  }
+  .ui.scrolling.table > tfoot {
+    background: @footerBackground;
+    color: @footerBackground;
+    border-radius: 0 0 @borderRadius @borderRadius;
+  }
+  & when (@variationTableInverted) {
+    .ui.inverted.scrolling.table > thead {
+      background: @invertedHeaderBackground;
+      color: @invertedHeaderBackground;
+    }
+    .ui.inverted.scrolling.table > tfoot {
+      background: @invertedFooterBackground;
+      color: @invertedFooterBackground;
+    }
+  }
+  .ui.scrolling.table > thead::-webkit-scrollbar-track,
+  .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
+    background: inherit;
+    border-radius: @borderRadius;
+  }
+
+  /* Firefox & IE */
+  .ui.scrolling.table > thead,
+  .ui.scrolling.table > tfoot {
+    scrollbar-color: currentColor currentColor;
+    scrollbar-face-color: currentColor;
+    scrollbar-shadow-color: currentColor;
+    scrollbar-track-color: currentColor;
+    scrollbar-arrow-color: currentColor;
+  }
+  /* IE scrollbar color needs hex values */
+  @media all and (-ms-high-contrast:none) {
+    .ui.scrolling.table > thead {
+      color: @headerBackgroundHex;
+    }
+    .ui.scrolling.table > tfoot {
+      color: @footerBackgroundHex;
+    }
+    & when (@variationTableInverted) {
+      .ui.inverted.scrolling.table > thead {
+        color: @invertedHeaderBackgroundHex;
+      }
+      .ui.inverted.scrolling.table > tfoot {
+        color: @invertedFooterBackgroundHex;
+      }
+    }
+  }
+  & when (@variationTableInverted) {
+    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
+      background: @trackInvertedBackground;
+    }
+    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
+      background: @thumbInvertedBackground;
+    }
+    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
+      background: @thumbInvertedInactiveBackground;
+    }
+    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
+      background: @thumbInvertedHoverBackground;
+    }
+    .ui.inverted.scrolling.table > tbody {
+      /* IE11 */
+      scrollbar-face-color: @thumbInvertedBackgroundHex;
+      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+      scrollbar-track-color: @trackInvertedBackgroundHex;
+      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+
+      /* firefox : first color thumb, second track */
+      scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+    }
+  }
+
 }
 
 
@@ -392,6 +589,13 @@
     background: @positiveBackgroundColor;
     color: @positiveColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.positive,
+    .ui.ui.inverted.table td.positive {
+      background: @invertedPositiveBackgroundColor;
+      color: @invertedPositiveColor;
+    }
+  }
 }
 
 & when (@variationTableNegative) {
@@ -404,6 +608,13 @@
     box-shadow: @negativeBoxShadow;
     background: @negativeBackgroundColor;
     color: @negativeColor;
+  }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.negative,
+    .ui.ui.inverted.table td.negative {
+      background: @invertedNegativeBackgroundColor;
+      color: @invertedNegativeColor;
+    }
   }
 }
 
@@ -418,6 +629,13 @@
     background: @errorBackgroundColor;
     color: @errorColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.error,
+    .ui.ui.inverted.table td.error {
+      background: @invertedErrorBackgroundColor;
+      color: @invertedErrorColor;
+    }
+  }
 }
 
 & when (@variationTableWarning) {
@@ -430,6 +648,13 @@
     box-shadow: @warningBoxShadow;
     background: @warningBackgroundColor;
     color: @warningColor;
+  }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.warning,
+    .ui.ui.inverted.table td.warning {
+      background: @invertedWarningBackgroundColor;
+      color: @invertedWarningColor;
+    }
   }
 }
 
@@ -444,6 +669,13 @@
     background: @activeBackgroundColor;
     color: @activeColor;
   }
+  & when (@variationTableInverted) {
+    .ui.ui.ui.ui.inverted.table tr.active,
+    .ui.ui.inverted.table td.active {
+      background: @invertedActiveBackgroundColor;
+      color: @invertedActiveColor;
+    }
+  }
 }
 
 
@@ -452,8 +684,8 @@
        Disabled
   ---------------*/
 
-  .ui.table tr.disabled td,
-  .ui.table tr td.disabled,
+  .ui.ui.ui.table tr.disabled td,
+  .ui.ui.ui.table tr td.disabled,
   .ui.table tr.disabled:hover,
   .ui.table tr:hover td.disabled {
     pointer-events: none;
@@ -799,11 +1031,48 @@
     }
     & when (@variationTableInverted) {
       .ui.inverted.@{color}.table {
-        background-color: @c;
+        background: @c;
         color: @white;
       }
     }
+    /* Same color for background and color to camouflage the scrollbar */
+    & when (@variationTableScrolling) {
+      .ui.scrolling.table > thead.@{color},
+      .ui.scrolling.table > tfoot.@{color} {
+        & when (@isDark) {
+          background: @l;
+          color: @l;
+        }
+        & when not (@isDark) {
+          background: @b;
+          color: @b;
+        }
+        & > tr > th,
+          > tr > td {
+          background: inherit;
+          & when (@isVeryDark) {
+            color: @white;
+          }
+          & when not (@isVeryDark) {
+            color: @t;
+          }
+        }
+      }
+      & when (@variationTableInverted) {
+        .ui.inverted.scrolling.table > thead.@{color},
+        .ui.inverted.scrolling.table > tfoot.@{color} {
+          background: @c;
+          color: @c;
+          & > tr > th,
+            > tr > td {
+            background: inherit;
+            color: @white;
+          }
+        }
+      }
+    }
     .ui.ui.ui.ui.table tr.@{color}:not(.marked),
+    .ui.ui.table th.@{color}:not(.marked),
     .ui.ui.table td.@{color}:not(.marked) {
       & when (@stateMarkerWidth > 0) {
         box-shadow: @stateMarkerWidth 0 0 @r inset;
@@ -821,6 +1090,32 @@
         color: @t;
       }
     }
+    .ui.table > thead > tr.@{color}:not(.marked) > th,
+    .ui.table > tfoot > tr.@{color}:not(.marked) > th,
+    .ui.table > tfoot > tr.@{color}:not(.marked) > td {
+      background: inherit;
+      & when (@isVeryDark) {
+        color: @white;
+      }
+      & when not (@isVeryDark) {
+        color: @t;
+      }
+    }
+
+    & when (@variationTableInverted) {
+      .ui.ui.ui.ui.inverted.table tr.@{color}:not(.marked),
+      .ui.ui.inverted.table th.@{color}:not(.marked),
+      .ui.ui.inverted.table td.@{color}:not(.marked) {
+        background: @c;
+        color: @white;
+      }
+      .ui.inverted.table > thead > tr.@{color}:not(.marked) > th,
+      .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > th,
+      .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > td {
+        background: inherit;
+        color: @white;
+      }
+    }
     & when (@variationTableSelectable) {
       .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
       .ui.table tr td.selectable.@{color}:not(.marked):hover,
@@ -836,6 +1131,24 @@
         }
         & when not (@isVeryDark) {
           color: @ht;
+        }
+      }
+      & when (@variationTableInverted) {
+        .ui.ui.inverted.selectable.table tr.@{color}:not(.marked):hover,
+        .ui.inverted.table tr td.selectable.@{color}:not(.marked):hover,
+        .ui.inverted.selectable.table tr:hover td.@{color}:not(.marked) {
+          & when (@isDark) {
+            background: @bh;
+          }
+          & when not (@isDark) {
+            background: @lh;
+          }
+          & when (@isVeryDark) {
+            color: @ht;
+          }
+          & when not (@isVeryDark) {
+            color: @white;
+          }
         }
       }
     }
@@ -1027,10 +1340,12 @@
     content: @sortableIconDescending;
   }
 
-  /* Hover */
-  .ui.sortable.table th.disabled:hover {
-    cursor: auto;
-    color: @sortableDisabledColor;
+  & when (@variationTableDisabled) {
+    /* Hover */
+    .ui.sortable.table th.disabled:hover {
+      cursor: auto;
+      color: @sortableDisabledColor;
+    }
   }
   .ui.sortable.table > thead > tr > th:hover {
     color: @sortableHoverColor;
@@ -1091,31 +1406,36 @@
   }
   .ui.ui.inverted.table > thead > tr > th,
   .ui.ui.inverted.table > tbody > tr > th,
-  .ui.ui.inverted.table > tfoot > tr > th,
-  .ui.ui.inverted.table > tfoot > tr > td,
   .ui.ui.inverted.table > tr > th {
     background-color: @invertedHeaderBackground;
     border-color: @invertedHeaderBorderColor;
     color: @invertedHeaderColor;
+  }
+  .ui.ui.inverted.table > tfoot > tr > th,
+  .ui.ui.inverted.table > tfoot > tr > td {
+    background-color: @invertedFooterBackground;
+    border-color: @invertedFooterBorderColor;
+    color: @invertedFooterColor;
   }
   .ui.inverted.table > tbody > tr > td,
   .ui.inverted.table > tfoot > tr > td,
   .ui.inverted.table > tr > td {
     border-color: @invertedCellBorderColor;
   }
-
-  .ui.inverted.table tr.disabled td,
-  .ui.inverted.table tr td.disabled,
-  .ui.inverted.table tr.disabled:hover td,
-  .ui.inverted.table tr:hover td.disabled {
-    pointer-events: none;
-    color: @invertedDisabledTextColor;
-  }
-  .ui.inverted.table tr td.disabled:not([class="disabled"]),
-  .ui.inverted.table tr.disabled:not([class="disabled"]) td,
-  .ui.inverted.table tr.disabled td[class]:not(.disabled),
-  .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
-    color: @disabledTextColor;
+  & when (@variationTableDisabled) {
+    .ui.inverted.table tr.disabled td,
+    .ui.inverted.table tr td.disabled,
+    .ui.inverted.table tr.disabled:hover td,
+    .ui.inverted.table tr:hover td.disabled {
+      pointer-events: none;
+      color: @invertedDisabledTextColor;
+    }
+    .ui.ui.ui.inverted.table tr td.disabled:not([class="disabled"]),
+    .ui.inverted.table tr.disabled:not([class="disabled"]) td,
+    .ui.inverted.table tr.disabled td[class]:not(.disabled),
+    .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
+      color: @disabledTextColor;
+    }
   }
   & when (@variationTableDefinition) {
     /* Definition */
