@@ -393,25 +393,11 @@ $.fn.flyout = function(parameters) {
           ;
           if(module.is.hidden()) {
             module.refreshFlyouts();
-            if(settings.overlay)  {
-              module.error(error.overlay);
-              settings.transition = 'overlay';
-            }
             module.refresh();
             if(module.othersActive()) {
               module.debug('Other flyouts currently visible');
               if(settings.exclusive) {
-                // if not overlay queue animation after hide
-                if(settings.transition != 'overlay') {
-                  module.hideOthers(module.show);
-                  return;
-                }
-                else {
-                  module.hideOthers();
-                }
-              }
-              else {
-                settings.transition = 'overlay';
+                module.hideOthers();
               }
             }
             module.pushPage(function() {
@@ -482,10 +468,6 @@ $.fn.flyout = function(parameters) {
 
         pushPage: function(callback) {
           var
-            transition = module.get.transition(),
-            $transition = (transition === 'overlay' || module.othersActive())
-              ? $module
-              : $pusher,
             animate,
             dim,
             transitionEnd
@@ -494,10 +476,7 @@ $.fn.flyout = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(settings.transition == 'scale down') {
-            module.scrollToTop();
-          }
-          module.set.transition(transition);
+          module.set.overlay();
           module.repaint();
           animate = function() {
             module.bind.clickaway();
@@ -509,15 +488,15 @@ $.fn.flyout = function(parameters) {
             module.set.dimmed();
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
-              $transition.off(transitionEvent + elementNamespace, transitionEnd);
+            if( event.target == $module[0] ) {
+              $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
               module.bind.scrollLock();
               callback.call(element);
             }
           };
-          $transition.off(transitionEvent + elementNamespace);
-          $transition.on(transitionEvent + elementNamespace, transitionEnd);
+          $module.off(transitionEvent + elementNamespace);
+          $module.on(transitionEvent + elementNamespace, transitionEnd);
           requestAnimationFrame(animate);
           if(settings.dimPage && !module.othersVisible()) {
             requestAnimationFrame(dim);
@@ -526,10 +505,6 @@ $.fn.flyout = function(parameters) {
 
         pullPage: function(callback) {
           var
-            transition = module.get.transition(),
-            $transition = (transition == 'overlay' || module.othersActive())
-              ? $module
-              : $pusher,
             animate,
             transitionEnd
           ;
@@ -543,18 +518,18 @@ $.fn.flyout = function(parameters) {
           module.unbind.scrollLock();
 
           animate = function() {
-            module.set.transition(transition);
+            module.set.overlay();
             module.set.animating();
             module.remove.visible();
             
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
-              $transition.off(transitionEvent + elementNamespace, transitionEnd);
+            if( event.target == $module[0] ) {
+              $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
-              module.remove.transition();
+              module.remove.overlay();
               module.remove.inlineCSS();
-              if(transition == 'scale down' || (settings.returnScroll && module.is.mobile()) ) {
+              if(settings.returnScroll && module.is.mobile() ) {
                 module.scrollBack();
               }
               if (settings.dimPage && !module.othersVisible()) {
@@ -563,8 +538,8 @@ $.fn.flyout = function(parameters) {
               callback.call(element);
             }
           };
-          $transition.off(transitionEvent + elementNamespace);
-          $transition.on(transitionEvent + elementNamespace, transitionEnd);
+          $module.off(transitionEvent + elementNamespace);
+          $module.on(transitionEvent + elementNamespace, transitionEnd);
           requestAnimationFrame(animate);
         },
 
@@ -615,10 +590,6 @@ $.fn.flyout = function(parameters) {
           animating: function() {
             $module.addClass(className.animating);
           },
-          transition: function(transition) {
-            transition = transition || module.get.transition();
-            $module.addClass(transition);
-          },
           direction: function(direction) {
             direction = direction || module.get.direction();
             $module.addClass(className[direction]);
@@ -659,10 +630,6 @@ $.fn.flyout = function(parameters) {
           animating: function() {
             $module.removeClass(className.animating);
           },
-          transition: function(transition) {
-            transition = transition || module.get.transition();
-            $module.removeClass(transition);
-          },
           direction: function(direction) {
             direction = direction || module.get.direction();
             $module.removeClass(className[direction]);
@@ -687,22 +654,6 @@ $.fn.flyout = function(parameters) {
               return className.bottom;
             }
             return className.left;
-          },
-          transition: function() {
-            var
-              direction = module.get.direction(),
-              transition
-            ;
-            transition = ( module.is.mobile() )
-              ? (settings.mobileTransition == 'auto')
-                ? settings.defaultTransition.mobile[direction]
-                : settings.mobileTransition
-              : (settings.transition == 'auto')
-                ? settings.defaultTransition.computer[direction]
-                : settings.transition
-            ;
-            module.verbose('Determined transition', transition);
-            return transition;
           },
           transitionEvent: function() {
             var
@@ -982,24 +933,6 @@ $.fn.flyout.settings = {
   verbose           : false,
   performance       : true,
 
-  transition        : 'auto',
-  mobileTransition  : 'auto',
-
-  defaultTransition : {
-    computer: {
-      left   : 'uncover',
-      right  : 'uncover',
-      top    : 'overlay',
-      bottom : 'overlay'
-    },
-    mobile: {
-      left   : 'uncover',
-      right  : 'uncover',
-      top    : 'overlay',
-      bottom : 'overlay'
-    }
-  },
-
   context           : 'body',
   exclusive         : false,
   closable          : true,
@@ -1031,7 +964,8 @@ $.fn.flyout.settings = {
     top       : 'top',
     left      : 'left',
     bottom    : 'bottom',
-    visible   : 'visible'
+    visible   : 'visible',
+    overlay   : 'overlay'
   },
 
   selector: {
@@ -1053,8 +987,7 @@ $.fn.flyout.settings = {
   error   : {
     method       : 'The method you called is not defined.',
     pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
-    movedFlyout : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
-    overlay      : 'The overlay setting is no longer supported, use animation: overlay',
+    movedFlyout  : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
     notFound     : 'There were no elements that matched the specified selector'
   }
 
