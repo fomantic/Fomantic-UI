@@ -352,6 +352,11 @@
 @variationTableScrollingVeryShort: true;
 @variationTableScrollingLong: true;
 @variationTableScrollingVeryLong: true;
+@variationTableStuck: true;
+@variationTableStuckHead: true;
+@variationTableStuckFoot: true;
+@variationTableStuckFirst: true;
+@variationTableStuckLast: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 

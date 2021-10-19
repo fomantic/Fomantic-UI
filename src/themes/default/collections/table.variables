@@ -273,6 +273,17 @@
 @scrollingComputerMaxBodyHeight: (@scrollingItemHeight * @scrollingComputerMaxItems);
 @scrollingWidescreenMaxBodyHeight: (@scrollingItemHeight * @scrollingWidescreenMaxItems);
 
+/* Stuck */
+@stuckBackground: @background;
+@stuckHeaderBackground: @offWhite;
+@stuckFooterBackground: @stuckHeaderBackground;
+
+@invertedStuckBackground: @invertedBackground;
+@invertedStuckHeaderBackground: @invertedHeaderBackgroundHex;
+@invertedStuckFooterBackground: @invertedStuckHeaderBackground;
+
+@stuckZIndex: 800;
+
 /* Sizes */
 @small: 0.9em;
 @medium: 1em;
