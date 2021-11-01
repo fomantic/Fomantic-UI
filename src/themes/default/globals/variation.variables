@@ -45,6 +45,11 @@
 @variationContainerFluid: true;
 @variationContainerAligned: true;
 @variationContainerJustified: true;
+@variationContainerScrolling: true;
+@variationContainerScrollingShort: true;
+@variationContainerScrollingVeryShort: true;
+@variationContainerScrollingLong: true;
+@variationContainerScrollingVeryLong: true;
 
 /* Divider */
 @variationDividerInverted: true;
@@ -218,6 +223,11 @@
 @variationSegmentTertiary: true;
 @variationSegmentAttached: true;
 @variationSegmentFitted: true;
+@variationSegmentScrolling: true;
+@variationSegmentScrollingShort: true;
+@variationSegmentScrollingVeryShort: true;
+@variationSegmentScrollingLong: true;
+@variationSegmentScrollingVeryLong: true;
 @variationSegmentSizes: @variationAllSizes;
 @variationSegmentColors: @variationAllColors;
 
@@ -357,6 +367,11 @@
 @variationTableStuckFoot: true;
 @variationTableStuckFirst: true;
 @variationTableStuckLast: true;
+@variationTableOverflowing: true;
+@variationTableOverflowingShort: true;
+@variationTableOverflowingVeryShort: true;
+@variationTableOverflowingLong: true;
+@variationTableOverflowingVeryLong: true;
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 

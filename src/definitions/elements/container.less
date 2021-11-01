@@ -164,5 +164,115 @@
     hyphens: auto;
   }
 }
+& when (@variationContainerScrolling) {
+  /*--------------
+    Scrolling
+  ---------------*/
+  .ui.scrolling.container {
+    overflow: auto;
+  }
+  @media only screen and (max-width : @largestMobileScreen) {
+    & when (@variationContainerScrollingShort) {
+      .ui.scrolling.container.short {
+        max-height: @scrollingMobileMaxHeight * 0.75;
+      }
+    }
+    & when (@variationContainerScrollingVeryShort) {
+      .ui.scrolling.container[class*="very short"] {
+        max-height: @scrollingMobileMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.container {
+      max-height: @scrollingMobileMaxHeight;
+    }
+    & when (@variationContainerScrollingLong) {
+      .ui.scrolling.container.long {
+        max-height: @scrollingMobileMaxHeight * 2;
+      }
+    }
+    & when (@variationContainerScrollingVeryLong) {
+      .ui.scrolling.container[class*="very long"] {
+        max-height: @scrollingMobileMaxHeight * 3;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationContainerScrollingShort) {
+      .ui.scrolling.container.short {
+        max-height: @scrollingTabletMaxHeight * 0.75;
+      }
+    }
+    & when (@variationContainerScrollingVeryShort) {
+      .ui.scrolling.container[class*="very short"] {
+        max-height: @scrollingTabletMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.container {
+      max-height: @scrollingTabletMaxHeight;
+    }
+    & when (@variationContainerScrollingLong) {
+      .ui.scrolling.container.long {
+        max-height: @scrollingTabletMaxHeight * 2;
+      }
+    }
+    & when (@variationContainerScrollingVeryLong) {
+      .ui.scrolling.container[class*="very long"] {
+        max-height: @scrollingTabletMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationContainerScrollingShort) {
+      .ui.scrolling.container.short {
+        max-height: @scrollingComputerMaxHeight * 0.75;
+      }
+    }
+    & when (@variationContainerScrollingVeryShort) {
+      .ui.scrolling.container[class*="very short"] {
+        max-height: @scrollingComputerMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.container {
+      max-height: @scrollingComputerMaxHeight;
+    }
+    & when (@variationContainerScrollingLong) {
+      .ui.scrolling.container.long {
+        max-height: @scrollingComputerMaxHeight * 2;
+      }
+    }
+    & when (@variationContainerScrollingVeryLong) {
+      .ui.scrolling.container[class*="very long"]{
+        max-height: @scrollingComputerMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationContainerScrollingShort) {
+      .ui.scrolling.container.short {
+        max-height: @scrollingWidescreenMaxHeight * 0.75;
+      }
+    }
+    & when (@variationContainerScrollingVeryShort) {
+      .ui.scrolling.container[class*="very short"] {
+        max-height: @scrollingWidescreenMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.container {
+      max-height: @scrollingWidescreenMaxHeight;
+    }
+    & when (@variationContainerScrollingLong) {
+      .ui.scrolling.container.long {
+        max-height: @scrollingWidescreenMaxHeight * 2;
+      }
+    }
+    & when (@variationContainerScrollingVeryLong) {
+      .ui.scrolling.container[class*="very long"] {
+        max-height: @scrollingWidescreenMaxHeight * 3;
+      }
+    }
+  }
+}
+
 
 .loadUIOverrides();

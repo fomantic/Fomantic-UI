@@ -288,6 +288,31 @@
       }
     }
   }
+  & when (@variationTableOverflowing) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingMobileMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingMobileMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingMobileMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingMobileMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingMobileMaxHeight * 3;
+      }
+    }
+  }
 }
 & when (@variationTableScrolling) {
   /*--------------
@@ -460,6 +485,86 @@
     }
   }
 
+}
+& when (@variationTableOverflowing) {
+  /*--------------
+    Overflowing
+  ---------------*/
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingTabletMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingTabletMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingTabletMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingTabletMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingTabletMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingComputerMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingComputerMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingComputerMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingComputerMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"]{
+        max-height: @overflowingComputerMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingWidescreenMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingWidescreenMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingWidescreenMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingWidescreenMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingWidescreenMaxHeight * 3;
+      }
+    }
+  }
 }
 
 
@@ -1778,6 +1883,12 @@
           border-left: @invertedCellBorder;
         }
       }
+    }
+  }
+  & when (@variationTableStuckOverflowing) {
+    .ui.overflowing.table {
+      display: block;
+      overflow: auto;
     }
   }
 }
