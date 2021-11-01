@@ -675,7 +675,7 @@
       .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
         background-color: @h;
         color: @white;
-        &.inverted {
+        &.inverted when (@variationButtonInverted) {
           background-color: @lh;
         }
       }
@@ -686,21 +686,31 @@
     each(@variationInputColors, {
       @color: @value;
       @c: @colors[@@color][color];
+      @h: @colors[@@color][hover];
 
       input[type="file"].ui.@{color}.file.input::-webkit-file-upload-button,
       .ui.@{color}.file.input input[type="file"]::-webkit-file-upload-button {
         background: @c;
         color: @white;
+        &:hover {
+          background: @h;
+        }
       }
       input[type="file"].ui.@{color}.file.input::-ms-browse,
       .ui.@{color}.file.input input[type="file"]::-ms-browse {
         background: @c;
         color: @white;
+        &:hover {
+          background: @h;
+        }
       }
       input[type="file"].ui.@{color}.file.input::file-selector-button,
       .ui.@{color}.file.input input[type="file"]::file-selector-button {
         background: @c;
         color: @white;
+        &:hover {
+          background: @h;
+        }
       }
     })
   }
