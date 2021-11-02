@@ -490,6 +490,10 @@
   /*--------------
     Overflowing
   ---------------*/
+  .ui.overflowing.table {
+    display: block;
+    overflow: auto;
+  }
   @media only screen and (min-width: @tabletBreakpoint) {
     & when (@variationTableOverflowingShort) {
       .ui.overflowing.table.short {
@@ -1883,12 +1887,6 @@
           border-left: @invertedCellBorder;
         }
       }
-    }
-  }
-  & when (@variationTableOverflowing) {
-    .ui.overflowing.table {
-      display: block;
-      overflow: auto;
     }
   }
 }
