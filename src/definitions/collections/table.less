@@ -288,6 +288,31 @@
       }
     }
   }
+  & when (@variationTableOverflowing) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingMobileMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingMobileMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingMobileMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingMobileMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingMobileMaxHeight * 3;
+      }
+    }
+  }
 }
 & when (@variationTableScrolling) {
   /*--------------
@@ -460,6 +485,90 @@
     }
   }
 
+}
+& when (@variationTableOverflowing) {
+  /*--------------
+    Overflowing
+  ---------------*/
+  .ui.overflowing.table {
+    display: block;
+    overflow: auto;
+  }
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingTabletMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingTabletMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingTabletMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingTabletMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingTabletMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingComputerMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingComputerMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingComputerMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingComputerMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"]{
+        max-height: @overflowingComputerMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationTableOverflowingShort) {
+      .ui.overflowing.table.short {
+        max-height: @overflowingWidescreenMaxHeight * 0.75;
+      }
+    }
+    & when (@variationTableOverflowingVeryShort) {
+      .ui.overflowing.table[class*="very short"] {
+        max-height: @overflowingWidescreenMaxHeight * 0.5;
+      }
+    }
+    .ui.overflowing.table {
+      max-height: @overflowingWidescreenMaxHeight;
+    }
+    & when (@variationTableOverflowingLong) {
+      .ui.overflowing.table.long {
+        max-height: @overflowingWidescreenMaxHeight * 2;
+      }
+    }
+    & when (@variationTableOverflowingVeryLong) {
+      .ui.overflowing.table[class*="very long"] {
+        max-height: @overflowingWidescreenMaxHeight * 3;
+      }
+    }
+  }
 }
 
 
@@ -1634,6 +1743,150 @@
     .ui[class*="very compact"].table > tbody > tr > td,
     .ui[class*="very compact"].table > tfoot > tr > td {
       padding: @veryCompactVerticalPadding @veryCompactHorizontalPadding;
+    }
+  }
+}
+
+& when (@variationTableStuck) {
+  /*--------------
+       Stuck
+  ---------------*/
+
+  .ui.stuck.table:not(.inverted) {
+    background: @stuckBackground;
+    & > thead > tr {
+      background: @stuckHeaderBackground;
+    }
+    & > tbody > tr {
+      background: @stuckBackground;
+    }
+    & > tfoot > tr {
+      background: @stuckFooterBackground;
+    }
+    &.basic when (@variationTableBasic) {
+      & > thead > tr,
+        > tfoot > tr {
+        background: @stuckBackground;
+      }
+    }
+  }
+  .ui.inverted.stuck.table when (@variationTableInverted) {
+    & > thead > tr {
+      background: @invertedStuckHeaderBackground;
+    }
+    & > tbody > tr {
+      background: @invertedStuckBackground;
+    }
+    & > tfoot > tr {
+      background: @invertedStuckFooterBackground;
+    }
+    &.basic when (@variationTableBasic){
+      & > thead > tr,
+        > tfoot > tr {
+        background: @invertedStuckBackground;
+      }
+    }
+  }
+  & when (@variationTableStuckHead) or (@variationTableStuckFoot) {
+    .ui.head.stuck.table > thead,
+    .ui.foot.stuck.table > tfoot {
+      position: -webkit-sticky;
+      position: sticky;
+      z-index: @stuckZIndex;
+    }
+  }
+  .ui.head.stuck.table when (@variationTableStuckHead) {
+    border-top: 0;
+    & > thead {
+      top: 0;
+      bottom: auto;
+      & > tr:first-child > th {
+        border-top: @cellBorder;
+      }
+    }
+    &.inverted > thead > tr:first-child > th when (@variationTableInverted) {
+      border-top: @invertedCellBorder;
+    }
+  }
+  .ui.foot.stuck.table when (@variationTableStuckFoot) {
+    border-bottom: 0;
+    & > tfoot {
+      top: auto;
+      bottom: 0;
+      & > tr:last-child > td,
+        > tr:last-child > th {
+        border-bottom: @cellBorder;
+      }
+    }
+    & when (@variationTableInverted) {
+      &.inverted > tfoot > tr:first-child > td,
+      &.inverted > tfoot > tr:first-child > th {
+        border-top: @invertedCellBorder;
+      }
+    }
+  }
+
+  .ui.first.stuck.table when (@variationTableStuckFirst) {
+    border-left: 0;
+    & th:first-child,
+      td:first-child {
+      position: -webkit-sticky;
+      position: sticky;
+      left: 0;
+      border-left: @cellBorder;
+      background: inherit;
+    }
+    & when (@variationTableInverted) {
+      &.inverted th:first-child,
+      &.inverted td:first-child {
+        border-left: @invertedCellBorder;
+      }
+    }
+  }
+
+  .ui.last.stuck.table when (@variationTableStuckLast) {
+    border-right: 0;
+    & th:last-child,
+      td:last-child {
+      position: -webkit-sticky;
+      position: sticky;
+      right: 0;
+      border-right: @cellBorder;
+      background: inherit;
+    }
+    & when (@variationTableInverted) {
+      &.inverted th:last-child,
+      &.inverted td:last-child {
+        border-right: @invertedCellBorder;
+      }
+    }
+  }
+  & when (@variationTableCelled) {
+    & when (@variationTableStuckFirst) {
+      .ui.celled.first.stuck.table th:first-child,
+      .ui.celled.first.stuck.table td:first-child {
+        border-right: @cellBorder;
+      }
+    }
+    & when (@variationTableStuckLast) {
+      .ui.celled.last.stuck.table th:last-child,
+      .ui.celled.last.stuck.table td:last-child {
+        border-left: @cellBorder;
+      }
+    }
+    & when (@variationTableInverted) {
+      & when (@variationTableStuckFirst) {
+        .ui.inverted.celled.first.stuck.table th:first-child,
+        .ui.inverted.celled.first.stuck.table td:first-child {
+          border-right: @invertedCellBorder;
+        }
+      }
+      & when (@variationTableStuckLast) {
+        .ui.inverted.celled.last.stuck.table th:last-child,
+        .ui.inverted.celled.last.stuck.table td:last-child {
+          border-left: @invertedCellBorder;
+        }
+      }
     }
   }
 }
