@@ -127,6 +127,8 @@
 @variationInputLabeled: true;
 @variationInputAction: true;
 @variationInputFluid: true;
+@variationInputFile: true;
+@variationInputColors: @variationAllColors;
 @variationInputSizes: @variationAllSizes;
 
 /* Label */

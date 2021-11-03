@@ -66,10 +66,12 @@
 .ui.form .field > label {
   display: block;
   margin: @labelMargin;
-  color: @labelColor;
   font-size: @labelFontSize;
   font-weight: @labelFontWeight;
   text-transform: @labelTextTransform;
+  &:not(.button) {
+    color: @labelColor;
+  }
 }
 
 /*--------------------

@@ -544,7 +544,7 @@ $.fn.form = function(parameters) {
               parts,
               suffixPrompt
             ;
-            if(ancillary && ancillary.indexOf('..') >= 0) {
+            if(ancillary && ['integer', 'decimal', 'number'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
               parts = ancillary.split('..', 2);
               if(!rule.prompt) {
                 suffixPrompt = (

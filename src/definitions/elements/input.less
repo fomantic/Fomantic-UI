@@ -563,6 +563,159 @@
   }
 }
 
+
+& when (@variationInputFile) {
+  /*--------------------
+          File
+  ---------------------*/
+
+  /* width hack for chrome/edge */
+  .ui.file.input {
+    width: 100%;
+    & input[type="file"] {
+      width: 0;
+    }
+  }
+
+  .ui.form .field > input[type="file"],
+  .ui.file.input:not(.action) input[type="file"] {
+    padding: 0;
+  }
+
+  .ui.action.file.input input[type="file"]::-webkit-file-upload-button {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::-webkit-file-upload-button,
+  .ui.file.input input[type="file"]::-webkit-file-upload-button {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin-right: @fileButtonMargin;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+  .ui.action.file.input input[type="file"]::-ms-browse {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::-ms-browse,
+  .ui.file.input input[type="file"]::-ms-browse {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin: 0;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+  /* IE needs additional styling for input field :S */
+  @media all and (-ms-high-contrast:none) {
+    .ui.file.input > input[type="file"],
+    input[type="file"].ui.file.input {
+      padding: 0 !important;
+    }
+  }
+
+  .ui.action.file.input input[type="file"]::file-selector-button {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::file-selector-button,
+  .ui.file.input input[type="file"]::file-selector-button {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin-right: @fileButtonMargin;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+
+  .ui.form .field input[type="file"]:required:invalid,
+  .ui.file.input input[type="file"]:required:invalid {
+    color: @negativeTextColor;
+    background: @negativeBackgroundColor ;
+    border-color: @negativeBorderColor;
+  }
+
+  input[type="file"].ui.invisible.file.input,
+  .ui.invisible.file.input input[type="file"] {
+    left: -99999px;
+    position: absolute;
+  }
+
+  input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary),
+  .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary) {
+    background: @fileButtonBackgroundHover;
+    color: @hoveredTextColor;
+    &.inverted {
+      background: @fileButtonInvertedBackgroundHover;
+    }
+  }
+
+  /* this is related to existing buttons, so the button color variable is used here! */
+  & when not (@variationButtonColors = false) {
+    each(@variationButtonColors, {
+      @color: @value;
+      @h: @colors[@@color][hover];
+      @lh: @colors[@@color][lightHover];
+
+      input[type="file"].ui.file.input:focus + label.ui.@{color}.button:not(.basic):not(.tertiary),
+      .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
+        background-color: @h;
+        color: @white;
+        &.inverted when (@variationButtonInverted) {
+          background-color: @lh;
+        }
+      }
+    })
+  }
+
+  & when not (@variationInputColors = false) {
+    each(@variationInputColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @h: @colors[@@color][hover];
+
+      input[type="file"].ui.@{color}.file.input::-webkit-file-upload-button,
+      .ui.@{color}.file.input input[type="file"]::-webkit-file-upload-button {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+      input[type="file"].ui.@{color}.file.input::-ms-browse,
+      .ui.@{color}.file.input input[type="file"]::-ms-browse {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+      input[type="file"].ui.@{color}.file.input::file-selector-button,
+      .ui.@{color}.file.input input[type="file"]::file-selector-button {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+    })
+  }
+}
+
 /*--------------------
         Size
 ---------------------*/
