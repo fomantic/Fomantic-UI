@@ -1419,11 +1419,12 @@
   .ui.sortable.table > thead > tr > th {
     cursor: pointer;
     white-space: nowrap;
-    border-left: @sortableBorder;
     color: @sortableColor;
   }
-  .ui.sortable.table > thead > tr > th:first-child {
-    border-left: none;
+  & when (@variationTableCelled) {
+    .ui.celled.sortable.table > thead > tr > th:not(:first-child) {
+      border-left: @sortableBorder;
+    }
   }
   .ui.sortable.table thead th.sorted,
   .ui.sortable.table thead th.sorted:hover {
