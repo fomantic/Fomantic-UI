@@ -100,10 +100,18 @@ $.fn.tab = function(parameters) {
             initializedHistory = true;
           }
 
-          if(settings.autoTabActivation && instance === undefined && module.determine.activeTab() == null) {
-            module.debug('No active tab detected, setting first tab active', module.get.initialPath());
-            module.changeTab(settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation);
-          };
+          var activeTab = module.determine.activeTab();
+          if(settings.autoTabActivation && instance === undefined && activeTab == null) {
+            activeTab = settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation;
+            module.debug('No active tab detected, setting tab active', activeTab);
+            module.changeTab(activeTab);
+          }
+          if(activeTab != null && settings.history) {
+            var autoUpdate = $.address.autoUpdate();
+            $.address.autoUpdate(false);
+            $.address.value(activeTab);
+            $.address.autoUpdate(autoUpdate);
+          }
 
           module.instantiate();
         },
@@ -203,6 +211,7 @@ $.fn.tab = function(parameters) {
                   .history(true)
                   .state(settings.path)
                 ;
+                $(window).trigger('popstate');
               }
               else {
                 module.error(error.path);
