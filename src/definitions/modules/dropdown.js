@@ -848,7 +848,7 @@ $.fn.dropdown = function(parameters) {
                   var value = module.is.multiple() ? module.get.values() : module.get.value();
                   if (value !== '') {
                     module.verbose('Value(s) present after click icon, select value(s) in items');
-                    module.set.selected(value, null, null, true);
+                    module.set.selected(value, null, true, true);
                   }
                 }
                 iconClicked = false;
