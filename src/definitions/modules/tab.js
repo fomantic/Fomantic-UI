@@ -379,6 +379,10 @@ $.fn.tab = function(parameters) {
                   module.verbose('Tab parameters found', nextPathArray);
                 }
               }
+              if (settings.onBeforeChange.call(element, currentPath) === false) {
+                module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+                return false;
+              }
               if(isLastTab && remoteContent) {
                 if(!shouldIgnoreLoad) {
                   module.activate.navigation(currentPath);
@@ -415,6 +419,10 @@ $.fn.tab = function(parameters) {
               // if anchor exists use parent tab
               if($anchor && $anchor.length > 0 && currentPath) {
                 module.debug('Anchor link used, opening parent tab', $tab, $anchor);
+                if (settings.onBeforeChange.call(element, currentPath) === false) {
+                  module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+                  return false;
+                }
                 if( !$tab.hasClass(className.active) ) {
                   setTimeout(function() {
                     module.scrollTo($anchor);
@@ -968,6 +976,7 @@ $.fn.tab.settings = {
   onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
   onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
   onRequest   : function(tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
+  onBeforeChange: function(tabPath) {}, // called before a tab is about to be changed. Returning false will cancel the tab change
 
   templates : {
     determineTitle: function(tabArray) {} // returns page title for path
