@@ -730,7 +730,9 @@
     width: @attachedWidth;
     max-width: @attachedWidth;
     box-shadow: @attachedBoxShadow;
-    border: @attachedBorder;
+    &:not(.basic) {
+      border: @attachedBorder;
+    }
   }
   .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
     border-top: none;
