@@ -607,6 +607,9 @@ $.fn.progress = function(parameters) {
             }
             else {
               module.remove.active();
+              module.remove.warning();
+              module.remove.error();
+              module.remove.success();
               module.set.label(settings.text.active);
             }
           },
