@@ -443,6 +443,9 @@ $.api = $.fn.api = function(parameters) {
               } else {
                 formData[element.name] = element.value;
               }
+              if(hasOtherData && data[element.name]) {
+                delete data[element.name];
+              }
             });
 
             if(hasOtherData) {
