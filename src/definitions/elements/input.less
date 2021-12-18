@@ -300,8 +300,8 @@
   .ui.icon.input > i.icon:not(.link) {
     pointer-events: none;
   }
-  .ui.ui.ui.ui.icon.input > textarea,
-  .ui.ui.ui.ui.icon.input > input {
+  .ui.ui.ui.ui.icon.input:not(.corner) > textarea,
+  .ui.ui.ui.ui.icon.input:not(.corner) > input {
     padding-right: @iconMargin;
   }
 
@@ -401,31 +401,80 @@
   }
 
   /* Spacing with corner label */
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > textarea,
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > input {
-    padding-right: @labeledMargin !important;
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > textarea,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > input {
+    padding-right: @labeledMargin;
   }
+  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .ui.dropdown,
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > textarea,
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
-    padding-right: @labeledIconInputMargin !important;
+    padding-right: @labeledIconInputMargin;
   }
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
     margin-right: @labeledIconMargin;
   }
 
   /* Left Labeled */
-  .ui[class*="left corner labeled"].labeled.input > textarea,
-  .ui[class*="left corner labeled"].labeled.input > input {
-    padding-left: @labeledMargin !important;
+  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > textarea,
+  .ui[class*="left corner labeled"].input > input {
+    padding-left: @labeledMargin;
   }
   & when (@variationInputIcon) {
-    .ui[class*="left corner labeled"].icon.input > textarea,
-    .ui[class*="left corner labeled"].icon.input > input {
-      padding-left: @labeledIconInputMargin !important;
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > .ui.dropdown,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > textarea,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
+      padding-right: @labeledIconInputMargin;
+    }
+    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
+    .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
+    .ui[class*="left corner labeled"][class*="left icon"].input > input {
+      padding-left: @labeledIconInputMargin;
     }
     .ui[class*="left corner labeled"].icon.input > i.icon {
       margin-left: @labeledIconMargin;
     }
+  }
+
+  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > .ui.dropdown {
+    & > .search {
+      padding-left: @labeledMargin;
+    }
+    & > .menu {
+      padding-left: @labeledIconMargin;
+      & > .item {
+        padding-left: @labeledMargin;
+        margin-left: -@labeledIconMargin;
+      }
+    }
+  }
+  .ui.icon.input:not([class*="left icon"]) > .ui.dropdown,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown {
+    & > .search {
+      padding-right: @labeledMargin + @labeledIconInputMargin;
+    }
+    & > .remove.icon,
+      > .dropdown.icon  {
+      padding-right: @labeledMargin;
+    }
+  }
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
+    & > .search {
+      padding-right: @labeledRightIconMargin + @labeledIconInputMargin;
+    }
+    & > .remove.icon,
+    > .dropdown.icon  {
+      padding-right: @labeledRightIconMargin;
+    }
+  }
+  .ui.icon.input > .ui.visible.dropdown ~ i.icon,
+  .ui.icon.input > .ui.active.dropdown ~ i.icon,
+  .ui[class*="corner labeled"].input > .ui.visible.dropdown ~ .ui.corner.label,
+  .ui[class*="corner labeled"].input > .ui.active.dropdown ~ .ui.corner.label {
+    z-index: @labeledDropdownZIndex;
   }
 }
 & when (@variationInputIcon) {

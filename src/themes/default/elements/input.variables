@@ -60,7 +60,10 @@
 
 @labeledMargin: 2.5em;
 @labeledIconInputMargin: 3.25em;
+@labeledRightIconMargin: 4em;
 @labeledIconMargin: 1.25em;
+
+@labeledDropdownZIndex: 10;
 
 /*-------------------
         States
