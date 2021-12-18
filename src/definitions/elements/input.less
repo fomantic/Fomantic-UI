@@ -332,9 +332,12 @@
     right: auto;
     left: @circularIconHorizontalOffset;
   }
-  .ui.ui.ui.ui[class*="left icon"].input > textarea,
-  .ui.ui.ui.ui[class*="left icon"].input > input {
+  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > textarea,
+  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > input {
     padding-left: @iconMargin;
+  }
+  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > textarea,
+  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > input {
     padding-right: @horizontalPadding;
   }
 
@@ -431,10 +434,16 @@
     .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
     .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
     .ui[class*="left corner labeled"][class*="left icon"].input > input {
-      padding-left: @labeledIconInputMargin;
+      padding-left: @labeledAndIconMargin;
     }
     .ui[class*="left corner labeled"].icon.input > i.icon {
       margin-left: @labeledIconMargin;
+    }
+    .ui[class*="left corner labeled"].icon:not([class*="left icon"]).input > input {
+      padding-right: @labeledMargin;
+    }
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > input {
+      padding-right: @labeledMargin * 2;
     }
   }
 
@@ -451,6 +460,14 @@
       }
     }
   }
+  .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown {
+    & > .search {
+      padding-left: @labeledAndIconMargin;
+    }
+    & > .menu > .item {
+      padding-left: @labeledAndIconMargin;
+    }
+  }
   .ui.icon.input:not([class*="left icon"]) > .ui.dropdown,
   .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown {
     & > .search {
@@ -463,11 +480,11 @@
   }
   .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
     & > .search {
-      padding-right: @labeledRightIconMargin + @labeledIconInputMargin;
+      padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
     }
     & > .remove.icon,
     > .dropdown.icon  {
-      padding-right: @labeledRightIconMargin;
+      padding-right: @labeledAndIconMargin;
     }
   }
   .ui.icon.input > .ui.visible.dropdown ~ i.icon,
