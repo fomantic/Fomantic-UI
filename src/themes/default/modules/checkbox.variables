@@ -149,7 +149,7 @@
 /* Toggle */
 @toggleLaneWidth: 3.5rem;
 @toggleHandleSize: 1.5rem;
-@toggleTransitionDuration: 0.2s;
+@toggleTransitionDuration: 0.3s;
 
 @toggleWidth: @toggleLaneWidth;
 @toggleHeight: @toggleHandleSize;
@@ -157,12 +157,12 @@
 @toggleHandleRadius: @circularRadius;
 @toggleHandleOffset: 0;
 @toggleHandleTransition:
-  background @sliderTransitionDuration @defaultEasing,
-  left @sliderTransitionDuration @defaultEasing
+  background @toggleTransitionDuration @defaultEasing,
+  left @toggleTransitionDuration @defaultEasing
 ;
 @toggleHandleTransitionRightAligned:
-  background @sliderTransitionDuration @defaultEasing,
-  right @sliderTransitionDuration @defaultEasing
+  background @toggleTransitionDuration @defaultEasing,
+  right @toggleTransitionDuration @defaultEasing
 ;
 
 @toggleLaneBackground: @transparentBlack;
