@@ -2,4 +2,4 @@
            Overrides
 *******************************/
 
-@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+@import (css) url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro');
