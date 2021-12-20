@@ -74,6 +74,7 @@ $.api = $.fn.api = function(parameters) {
         url,
         data,
         requestStartTime,
+        originalData,
 
         // standard module
         element         = this,
@@ -86,6 +87,7 @@ $.api = $.fn.api = function(parameters) {
 
         initialize: function() {
           if(!methodInvoked) {
+            originalData = settings.data;
             module.bind.events();
           }
           module.instantiate();
@@ -197,7 +199,7 @@ $.api = $.fn.api = function(parameters) {
 
           // Add form content
           if(settings.serializeForm) {
-            settings.data = module.add.formData(settings.data);
+            settings.data = module.add.formData(originalData || settings.data);
           }
 
           // call beforesend and get any settings changes
@@ -428,7 +430,7 @@ $.api = $.fn.api = function(parameters) {
               formData = {},
               hasOtherData
             ;
-            data         = data || settings.data;
+            data         = data || originalData || settings.data;
             hasOtherData = $.isPlainObject(data);
 
             $.each($form.serializeArray(), function (i, element) {
@@ -442,9 +444,6 @@ $.api = $.fn.api = function(parameters) {
                 }
               } else {
                 formData[element.name] = element.value;
-              }
-              if(hasOtherData && data[element.name]) {
-                delete data[element.name];
               }
             });
 
