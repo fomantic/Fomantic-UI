@@ -1453,33 +1453,39 @@ $.fn.modal.settings.templates = {
   },
   alert: function () {
     var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+        args     = settings.templates.getArguments(arguments),
+        approveFn = args.handler
     ;
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
       actions: [{
         text : settings.text.ok,
         class: settings.className.ok,
-        click: args.handler
+        click: approveFn
       }]
     }
   },
   confirm: function () {
     var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+        args     = settings.templates.getArguments(arguments),
+        approveFn = function(){args.handler(true)},
+        denyFn = function(){args.handler(false)}
     ;
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
+      onDeny: denyFn,
       actions: [{
         text : settings.text.ok,
         class: settings.className.ok,
-        click: function(){args.handler(true)}
+        click: approveFn
       },{
         text: settings.text.cancel,
         class: settings.className.cancel,
-        click: function(){args.handler(false)}
+        click: denyFn
       }]
     }
   },
@@ -1487,7 +1493,14 @@ $.fn.modal.settings.templates = {
     var $this    = this,
         settings = this.get.settings(),
         args     = settings.templates.getArguments(arguments),
-        input    = $($.parseHTML(args.content)).filter('.ui.input')
+        input    = $($.parseHTML(args.content)).filter('.ui.input'),
+        approveFn = function(){
+          var settings = $this.get.settings(),
+              inputField = $this.get.element().find(settings.selector.prompt)[0]
+          ;
+          args.handler($(inputField).val());
+        },
+        denyFn = function(){args.handler(null)}
     ;
     if (input.length === 0) {
       args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
@@ -1495,19 +1508,16 @@ $.fn.modal.settings.templates = {
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
+      onDeny: denyFn,
       actions: [{
         text: settings.text.ok,
         class: settings.className.ok,
-        click: function(){
-          var settings = $this.get.settings(),
-              inputField = $this.get.element().find(settings.selector.prompt)[0]
-          ;
-          args.handler($(inputField).val());
-        }
+        click:  approveFn
       },{
         text: settings.text.cancel,
         class: settings.className.cancel,
-        click: function(){args.handler(null)}
+        click: denyFn
       }]
     }
   }
