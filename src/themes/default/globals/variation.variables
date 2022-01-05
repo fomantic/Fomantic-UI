@@ -480,6 +480,7 @@
 @variationAccordionStyled: true;
 @variationAccordionFluid: true;
 @variationAccordionCompact: true;
+@variationAccordionRightDropdown: true;
 
 /* Calendar */
 @variationCalendarInverted: true;

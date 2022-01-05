@@ -42,6 +42,7 @@
   font-family: @titleFont;
   font-size: @titleFontSize;
   color: @titleColor;
+  list-style: none;
 }
 
 /* Default Styling */
@@ -68,6 +69,9 @@
   transition: @iconTransition;
   vertical-align: @iconVerticalAlign;
   transform: @iconTransform;
+  &.right when (@variationAccordionRightDropdown) {
+    float:right;
+  }
 }
 
 /*--------------
@@ -95,9 +99,14 @@
             States
 *******************************/
 
+.ui.accordion[open] > .title .dropdown.icon,
+.ui.accordion .accordion[open] > .title .dropdown.icon,
 .ui.accordion .active.title .dropdown.icon,
 .ui.accordion .accordion .active.title .dropdown.icon {
   transform: @activeIconTransform;
+  &.right when (@variationAccordionRightDropdown) {
+    transform: @activeIconTransformRight;
+  }
 }
 
 .ui.accordion.menu .item .active.title > .dropdown.icon {
@@ -139,8 +148,7 @@
 
 
   /* Content */
-  .ui.styled.accordion .content,
-  .ui.styled.accordion .accordion .content {
+  .ui.styled.accordion .content {
     margin: @styledContentMargin;
     padding: @styledContentPadding;
   }
@@ -151,25 +159,23 @@
 
 
   /* Hover */
-  .ui.styled.accordion .title:hover,
-  .ui.styled.accordion .active.title,
-  .ui.styled.accordion .accordion .title:hover,
-  .ui.styled.accordion .accordion .active.title {
+  .ui.styled.accordion .title:hover {
     background: @styledTitleHoverBackground;
     color: @styledTitleHoverColor;
   }
-  .ui.styled.accordion .accordion .title:hover,
-  .ui.styled.accordion .accordion .active.title {
+  .ui.styled.accordion .accordion .title:hover {
     background: @styledHoverChildTitleBackground;
     color: @styledHoverChildTitleColor;
   }
 
 
   /* Active */
+  .ui.styled.accordion[open] > .title,
   .ui.styled.accordion .active.title {
     background: @styledActiveTitleBackground;
     color: @styledActiveTitleColor;
   }
+  .ui.styled.accordion .accordion[open] > .title,
   .ui.styled.accordion .accordion .active.title {
     background: @styledActiveChildTitleBackground;
     color: @styledActiveChildTitleColor;
@@ -235,8 +241,8 @@
    Not Active
 ---------------*/
 
-.ui.accordion .title ~ .content:not(.active),
-.ui.accordion .accordion .title ~ .content:not(.active) {
+.ui.accordion:not(details) .title ~ .content:not(.active),
+.ui.accordion .accordion:not(details) .title ~ .content:not(.active) {
   display: none;
 }
 

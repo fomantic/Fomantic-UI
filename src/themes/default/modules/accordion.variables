@@ -49,6 +49,7 @@
 --------------------*/
 
 @activeIconTransform: rotate(90deg);
+@activeIconTransformRight: rotate(-90deg);
 
 /*-------------------
       Variations
