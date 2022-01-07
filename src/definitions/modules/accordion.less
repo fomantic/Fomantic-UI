@@ -308,6 +308,50 @@
   }
 }
 
+& when (@variationAccordionBasicStyled) {
+  .ui.basic.styled.accordion,
+  .ui.basic.styled.accordion .accordion {
+    background: transparent;
+    box-shadow: none;
+  }
+  .ui.basic.styled.accordion > .title,
+  .ui.basic.styled.accordion .accordion > .title {
+    border: none;
+    color: @basicStyledTitleColor;
+  }
+  .ui.basic.styled.accordion > .title:hover,
+  .ui.basic.styled.accordion .accordion > .title:hover {
+    background: transparent;
+    color: @basicStyledTitleHoverColor;
+  }
+  .ui.basic.styled.accordion[open] > .title,
+  .ui.basic.styled.accordion .active.title,
+  .ui.basic.styled.accordion .accordion[open] > .title,
+  .ui.basic.styled.accordion .accordion .active.title {
+    background: transparent;
+    color: @basicStyledActiveTitleColor;
+  }
+  & when (@variationAccordionInverted) {
+    .ui.inverted.basic.styled.accordion > .title,
+    .ui.inverted.basic.styled.accordion .accordion > .title {
+      background: transparent;
+      color: @invertedBasicStyledTitleColor;
+    }
+    .ui.inverted.basic.styled.accordion > .title:hover,
+    .ui.inverted.basic.styled.accordion .accordion > .title:hover {
+      background: transparent;
+      color: @invertedBasicStyledTitleHoverColor;
+    }
+    .ui.inverted.basic.styled.accordion[open] > .title,
+    .ui.inverted.basic.styled.accordion .active.title,
+    .ui.inverted.basic.styled.accordion .accordion[open] > .title,
+    .ui.inverted.basic.styled.accordion .accordion .active.title {
+      background: transparent;
+      color: @invertedBasicStyledActiveTitleColor;
+    }
+  }
+}
+
 & when (@variationAccordionTree) {
   .ui.tree.accordion:not(.styled) .title ~ .content,
   .ui.tree.accordion:not(.styled) .accordion .title ~ .content {

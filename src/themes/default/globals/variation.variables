@@ -478,6 +478,7 @@
 /* Accordion */
 @variationAccordionInverted: true;
 @variationAccordionStyled: true;
+@variationAccordionBasicStyled: true;
 @variationAccordionFluid: true;
 @variationAccordionCompact: true;
 @variationAccordionVeryCompact: true;
