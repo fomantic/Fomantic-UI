@@ -31,18 +31,16 @@
 }
 
 /* Title */
-.ui.accordion .title,
-.ui.accordion .accordion .title {
+.ui.accordion.menu .item > .title,
+.ui.accordion > .title,
+.ui.accordion .accordion > .title {
   cursor: pointer;
-}
-
-/* Default Styling */
-.ui.accordion .title {
   padding: @titlePadding;
   font-family: @titleFont;
   font-size: @titleFontSize;
   color: @titleColor;
   list-style: none;
+  line-height: @titleLineHeight;
 }
 
 /* Default Styling */
@@ -71,7 +69,7 @@
   transform: @iconTransform;
   &.right when (@variationAccordionRightDropdown) {
     float:right;
-    margin: @iconMarginRight;
+    transform: @iconTransformRight;
   }
 }
 
@@ -105,9 +103,6 @@
 .ui.accordion .active.title .dropdown.icon,
 .ui.accordion .accordion .active.title .dropdown.icon {
   transform: @activeIconTransform;
-  &.right when (@variationAccordionRightDropdown) {
-    transform: @activeIconTransformRight;
-  }
 }
 
 .ui.accordion.menu .item .active.title > .dropdown.icon {
@@ -133,8 +128,8 @@
     background: @styledBackground;
     box-shadow: @styledBoxShadow;
   }
-  .ui.styled.accordion .title,
-  .ui.styled.accordion .accordion .title {
+  .ui.styled.accordion > .title,
+  .ui.styled.accordion .accordion > .title {
     margin: @styledTitleMargin;
     padding: @styledTitlePadding;
     color: @styledTitleColor;
@@ -143,7 +138,7 @@
     transition: @styledTitleTransition;
   }
   .ui.styled.accordion > .title:first-child,
-  .ui.styled.accordion .accordion .title:first-child {
+  .ui.styled.accordion .accordion > .title:first-child {
     border-top: none;
   }
 
@@ -160,11 +155,11 @@
 
 
   /* Hover */
-  .ui.styled.accordion .title:hover {
+  .ui.styled.accordion > .title:hover {
     background: @styledTitleHoverBackground;
     color: @styledTitleHoverColor;
   }
-  .ui.styled.accordion .accordion .title:hover {
+  .ui.styled.accordion .accordion > .title:hover {
     background: @styledHoverChildTitleBackground;
     color: @styledHoverChildTitleColor;
   }
@@ -189,7 +184,9 @@
   ---------------*/
 
   /* Default Styling */
-  .ui.compact.accordion:not(.styled) .title {
+
+  .ui.compact.accordion:not(.styled) > .title,
+  .ui.compact.accordion:not(.styled) .accordion > .title {
     padding: @titlePaddingCompact;
   }
 
@@ -199,8 +196,9 @@
   }
 
   /* Styled */
-  .ui.compact.styled.accordion .title,
-  .ui.compact.styled.accordion .accordion .title {
+
+  .ui.compact.styled.accordion > .title,
+  .ui.compact.styled.accordion .accordion > .title {
     padding: @styledTitlePaddingCompact;
   }
 
@@ -208,12 +206,14 @@
   .ui.compact.styled.accordion .accordion .title ~ .content {
     padding: @styledContentPaddingCompact;
   }
-
+}
   /*--------------
     Very Compact
   ---------------*/
 
-  .ui[class*="very compact"].accordion:not(.styled) .title {
+& when (@variationAccordionVeryCompact) {
+  .ui[class*="very compact"].accordion:not(.styled) > .title,
+  .ui[class*="very compact"].accordion:not(.styled) .accordion > .title {
     padding: @titlePaddingVeryCompact;
   }
 
@@ -222,8 +222,8 @@
     padding: @contentPaddingVeryCompact;
   }
 
-  .ui[class*="very compact"].styled.accordion .title,
-  .ui[class*="very compact"].styled.accordion .accordion .title {
+  .ui[class*="very compact"].styled.accordion > .title,
+  .ui[class*="very compact"].styled.accordion .accordion > .title {
     padding: @styledTitlePaddingVeryCompact;
   }
 
@@ -267,7 +267,9 @@
        Inverted
   ---------------*/
 
-  .ui.inverted.accordion .title {
+  .ui.inverted.accordion.menu .item > .title,
+  .ui.inverted.accordion > .title,
+  .ui.inverted.accordion .accordion > .title {
     color: @invertedTitleColor;
   }
   & when (@variationAccordionStyled) {
@@ -276,18 +278,18 @@
       background: @invertedStyledBackground;
       box-shadow: @invertedStyledBoxShadow;
     }
-    .ui.inverted.styled.accordion .title,
-    .ui.inverted.styled.accordion .accordion .title {
+    .ui.inverted.styled.accordion > .title,
+    .ui.inverted.styled.accordion .accordion > .title {
       color: @invertedStyledTitleColor;
       border-top: @invertedStyledTitleBorder;
     }
 
     /* Hover */
-    .ui.inverted.styled.accordion .title:hover {
+    .ui.inverted.styled.accordion > .title:hover {
       background: @invertedStyledTitleHoverBackground;
       color: @invertedStyledTitleHoverColor;
     }
-    .ui.inverted.styled.accordion .accordion .title:hover {
+    .ui.inverted.styled.accordion .accordion > .title:hover {
       background: @invertedStyledHoverChildTitleBackground;
       color: @invertedStyledHoverChildTitleColor;
     }
