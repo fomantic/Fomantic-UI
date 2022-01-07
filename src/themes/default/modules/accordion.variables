@@ -98,6 +98,22 @@
 
 /* Inverted */
 @invertedTitleColor: @invertedTextColor;
+@invertedStyledTitleColor: @invertedUnselectedTextColor;
+@invertedStyledBackground: @black;
+@invertedStyledTitleBorder: 1px solid @whiteBorderColor;
+@invertedStyledBoxShadow:
+        @subtleShadow,
+        0 0 0 1px @whiteBorderColor
+;
+@invertedStyledTitleHoverBackground: transparent;
+@invertedStyledTitleHoverColor: @invertedTextColor;
+@invertedStyledActiveTitleBackground: transparent;
+@invertedStyledActiveTitleColor: @invertedSelectedTextColor;
+
+@invertedStyledHoverChildTitleBackground: @invertedStyledTitleHoverBackground;
+@invertedStyledHoverChildTitleColor: @invertedStyledTitleHoverColor;
+@invertedStyledActiveChildTitleBackground: @invertedStyledActiveTitleBackground;
+@invertedStyledActiveChildTitleColor: @invertedStyledActiveTitleColor;
 
 /* Compact */
 @titlePaddingCompact: 0.25em 0;

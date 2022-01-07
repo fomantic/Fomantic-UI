@@ -269,6 +269,40 @@
   .ui.inverted.accordion .title {
     color: @invertedTitleColor;
   }
+  & when (@variationAccordionStyled) {
+    .ui.inverted.styled.accordion,
+    .ui.inverted.styled.accordion .accordion {
+      background: @invertedStyledBackground;
+      box-shadow: @invertedStyledBoxShadow;
+    }
+    .ui.inverted.styled.accordion .title,
+    .ui.inverted.styled.accordion .accordion .title {
+      color: @invertedStyledTitleColor;
+      border-top: @invertedStyledTitleBorder;
+    }
+
+    /* Hover */
+    .ui.inverted.styled.accordion .title:hover {
+      background: @invertedStyledTitleHoverBackground;
+      color: @invertedStyledTitleHoverColor;
+    }
+    .ui.inverted.styled.accordion .accordion .title:hover {
+      background: @invertedStyledHoverChildTitleBackground;
+      color: @invertedStyledHoverChildTitleColor;
+    }
+
+    /* Active */
+    .ui.inverted.styled.accordion[open] > .title,
+    .ui.inverted.styled.accordion .active.title {
+      background: @invertedStyledActiveTitleBackground;
+      color: @invertedStyledActiveTitleColor;
+    }
+    .ui.inverted.styled.accordion .accordion[open] > .title,
+    .ui.inverted.styled.accordion .accordion .active.title {
+      background: @invertedStyledActiveChildTitleBackground;
+      color: @invertedStyledActiveChildTitleColor;
+    }
+  }
 }
 
 .loadUIOverrides();
