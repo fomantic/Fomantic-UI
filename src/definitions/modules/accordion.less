@@ -305,5 +305,19 @@
   }
 }
 
+& when (@variationAccordionTree) {
+  .ui.tree.accordion:not(.styled) .title ~ .content,
+  .ui.tree.accordion:not(.styled) .accordion .title ~ .content {
+    padding:@treeContentPadding;
+  }
+  .ui.tree.accordion .content,
+  .ui.tree.accordion .accordion .content {
+    margin-left: @treeContentLeftMargin;
+  }
+  .ui.tree.accordion .accordion {
+    margin-top: @treeContentTopMargin;
+  }
+}
+
 .loadUIOverrides();
 

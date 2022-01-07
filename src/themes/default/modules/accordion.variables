@@ -130,3 +130,8 @@
 /* Styled Very Compact */
 @styledTitlePaddingVeryCompact: 0.1875em 0.25em;
 @styledContentPaddingVeryCompact: 0.125em 0.25em 0.375em;
+
+/* Tree */
+@treeContentPadding: 0;
+@treeContentTopMargin: 0;
+@treeContentLeftMargin: 1.7em;

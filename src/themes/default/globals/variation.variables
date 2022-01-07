@@ -481,6 +481,7 @@
 @variationAccordionFluid: true;
 @variationAccordionCompact: true;
 @variationAccordionRightDropdown: true;
+@variationAccordionTree: true;
 
 /* Calendar */
 @variationCalendarInverted: true;
