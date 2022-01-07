@@ -71,6 +71,7 @@
   transform: @iconTransform;
   &.right when (@variationAccordionRightDropdown) {
     float:right;
+    margin: @iconMarginRight;
   }
 }
 
@@ -148,11 +149,11 @@
 
 
   /* Content */
-  .ui.styled.accordion .content {
+  .ui.styled.accordion > .content {
     margin: @styledContentMargin;
     padding: @styledContentPadding;
   }
-  .ui.styled.accordion .accordion .content {
+  .ui.styled.accordion .accordion > .content {
     margin: @styledChildContentMargin;
     padding: @styledChildContentPadding;
   }
@@ -310,8 +311,8 @@
   .ui.tree.accordion:not(.styled) .accordion .title ~ .content {
     padding:@treeContentPadding;
   }
-  .ui.tree.accordion .content,
-  .ui.tree.accordion .accordion .content {
+  .ui.tree.accordion > .content,
+  .ui.tree.accordion .accordion > .content {
     margin-left: @treeContentLeftMargin;
   }
   .ui.tree.accordion .accordion {
