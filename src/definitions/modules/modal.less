@@ -208,6 +208,16 @@
   .ui.modal:not(.fullscreen) {
     width: @tabletWidth;
     margin: @tabletMargin;
+    & > .active.dimmer + .close:not(.inside) {
+      pointer-events: none;
+      opacity: @closeOpacityDimmed;
+    }
+  }
+  .ui.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside){
+    text-shadow: @closeShadow;
+  }
+  .ui.inverted.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside){
+    text-shadow: @invertedCloseShadow;
   }
 }
 @media only screen and (min-width : @computerBreakpoint) {
