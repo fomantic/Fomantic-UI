@@ -511,7 +511,7 @@ $.fn.toast = function(parameters) {
             module.close();
           },
           click: function(event) {
-            if($(event.target).closest('a').length === 0) {
+            if($(event.target).closest(selector.clickable).length === 0) {
               if(settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
                 module.verbose('Click callback returned false or close denied by setting cancelling close');
                 return;
@@ -876,6 +876,7 @@ $.fn.toast.settings = {
     image        : '> img.image, > .image > img',
     icon         : '> i.icon',
     input        : 'input:not([type="hidden"]), textarea, select, button, .ui.button, ui.dropdown',
+    clickable    : 'a, details, .ui.accordion',
     approve      : '.actions .positive, .actions .approve, .actions .ok',
     deny         : '.actions .negative, .actions .deny, .actions .cancel'
   },
