@@ -216,8 +216,8 @@ $.fn.modal = function(parameters) {
             module.verbose('Creating unique id for element', id);
           },
           innerDimmer: function() {
-            if ( $module.find(selector.dimmer).length == 0 ) {
-              $module.prepend('<div class="ui inverted dimmer"></div>');
+            if ( $module.find(selector.dimmer).length === 0 ) {
+              $('<div/>', {class: className.innerDimmer}).prependTo($module);
             }
           }
         },
@@ -1422,7 +1422,8 @@ $.fn.modal.settings = {
     template   : 'ui tiny modal',
     ok         : 'positive',
     cancel     : 'negative',
-    prompt     : 'ui fluid input'
+    prompt     : 'ui fluid input',
+    innerDimmer: 'ui inverted dimmer'
   },
   text: {
     ok    : 'Ok',
