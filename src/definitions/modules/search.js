@@ -403,7 +403,7 @@ $.fn.search = function(parameters) {
             return $results.hasClass(className.animating);
           },
           chrome: function() {
-            return !!window.chrome;
+            return !!window.chrome && !window.StyleMedia;
           },
           hidden: function() {
             return $results.hasClass(className.hidden);

@@ -3397,7 +3397,7 @@ $.fn.dropdown = function(parameters) {
             return $(event.target).closest($icon).length > 0;
           },
           chrome: function() {
-            return !!window.chrome;
+            return !!window.chrome && !window.StyleMedia;
           },
           alreadySetup: function() {
             return ($module.is('select') && $module.parent(selector.dropdown).data(moduleNamespace) !== undefined && $module.prev().length === 0);
