@@ -28,5 +28,5 @@ jobs:
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm publish --tag nightly
       env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
+        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION}}
         CI: true
