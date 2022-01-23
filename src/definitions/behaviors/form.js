@@ -586,7 +586,7 @@ $.fn.form = function(parameters) {
               if(isLegacySettings) {
                 // 1.x (ducktyped)
                 settings   = $.extend(true, {}, $.fn.form.settings, legacyParameters);
-                validation = $.extend({}, $.fn.form.settings.defaults, parameters);
+                validation = $.extend(true, {}, $.fn.form.settings.defaults, parameters);
                 module.error(settings.error.oldSyntax, element);
                 module.verbose('Extending settings from legacy parameters', validation, settings);
               }
@@ -596,13 +596,13 @@ $.fn.form = function(parameters) {
                   parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
                 }
                 settings   = $.extend(true, {}, $.fn.form.settings, parameters);
-                validation = $.extend({}, $.fn.form.settings.defaults, settings.fields);
+                validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                 module.verbose('Extending settings', validation, settings);
               }
             }
             else {
-              settings   = $.fn.form.settings;
-              validation = $.fn.form.settings.defaults;
+              settings   = $.extend(true, {}, $.fn.form.settings);
+              validation = $.extend(true, {}, $.fn.form.settings.defaults);
               module.verbose('Using default form validation', validation, settings);
             }
 
@@ -866,7 +866,7 @@ $.fn.form = function(parameters) {
             module.debug('Adding rules', newValidation.rules, validation);
           },
           fields: function(fields) {
-            validation = $.extend({}, validation, module.get.fieldsFromShorthand(fields));
+            validation = $.extend(true, {}, validation, module.get.fieldsFromShorthand(fields));
           },
           prompt: function(identifier, errors, internal) {
             var
