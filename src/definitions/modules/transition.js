@@ -798,10 +798,9 @@ $.fn.transition = function() {
 
         show: function(display) {
           module.verbose('Showing element', display);
-          if(module.force.visible()) {
+          if(module.force.visible() && settings.onShow.call(element) !== false) {
             module.remove.hidden();
             module.set.visible();
-            settings.onShow.call(element);
             settings.onComplete.call(element);
             // module.repaint();
           }
@@ -1055,7 +1054,9 @@ $.fn.transition.settings = {
   onStart       : function() {},
   onComplete    : function() {},
   onShow        : function() {},
+  onVisible     : function() {},
   onHide        : function() {},
+  onHidden      : function() {},
 
   // whether timeout should be used to ensure callback fires in cases animationend does not
   useFailSafe   : true,

@@ -514,6 +514,10 @@ $.fn.modal = function(parameters) {
             : function(){}
           ;
           if( module.is.animating() || !module.is.active() ) {
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling show');
+              return;
+            }
             module.showDimmer();
             module.cacheSizes();
             module.set.bodyMargin();
@@ -543,7 +547,6 @@ $.fn.modal = function(parameters) {
                   $module.detach().appendTo($dimmer);
                 }
               }
-              settings.onShow.call(element);
               if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                 module.debug('Showing modal with css animations');
                 $module
