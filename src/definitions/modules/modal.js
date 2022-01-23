@@ -589,7 +589,6 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          module.debug('Hiding modal');
           if(settings.onHide.call(element, $(this)) === false) {
             module.verbose('Hide callback returned false cancelling hide');
             ignoreRepeatedEvents = false;
@@ -597,6 +596,7 @@ $.fn.modal = function(parameters) {
           }
 
           if( module.is.animating() || module.is.active() ) {
+            module.debug('Hiding modal');
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
               $module
