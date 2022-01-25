@@ -403,3 +403,6 @@
 /* Circular */
 @circularBorderRadius: 10em;
 @circularIconWidth: 1em;
+
+/* Spaced */
+@spacedMargin: 1em;

@@ -34,6 +34,9 @@
 @variationButtonCircular: true;
 @variationButtonGroups: true;
 @variationButtonStackable: true;
+@variationButtonWrapping: true;
+@variationButtonWrapped: true;
+@variationButtonSpaced: true;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 

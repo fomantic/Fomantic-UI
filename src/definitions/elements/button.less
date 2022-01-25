@@ -767,15 +767,17 @@
     text-shadow: none !important;
     box-shadow: @basicBoxShadow;
   }
+  & when (@variationButtonGroups) {
+    .ui.basic.buttons {
+      box-shadow: @basicGroupBoxShadow;
+      border: @basicGroupBorder;
+      border-radius: @borderRadius;
+      border-right: none;
+    }
 
-  .ui.basic.buttons {
-    box-shadow: @basicGroupBoxShadow;
-    border: @basicGroupBorder;
-    border-radius: @borderRadius;
-  }
-
-  .ui.basic.buttons .button {
-    border-radius: 0;
+    .ui.basic.buttons .button {
+      border-radius: 0;
+    }
   }
 
   .ui.basic.buttons .button:hover,
@@ -810,18 +812,19 @@
   .ui.basic.active.button:hover {
     background-color: @transparentBlack;
   }
+  & when (@variationButtonGroups) {
 
-  /* Vertical */
-  .ui.basic.buttons .button:hover {
-    box-shadow: @basicHoverBoxShadow inset;
-  }
+    .ui.basic.buttons .button:hover {
+      box-shadow: @basicHoverBoxShadow inset;
+    }
 
-  .ui.basic.buttons .button:active {
-    box-shadow: @basicDownBoxShadow inset;
-  }
+    .ui.basic.buttons .button:active {
+      box-shadow: @basicDownBoxShadow inset;
+    }
 
-  .ui.basic.buttons .active.button {
-    box-shadow: @basicActiveBoxShadow;
+    .ui.basic.buttons .active.button {
+      box-shadow: @basicActiveBoxShadow;
+    }
   }
   & when (@variationButtonInverted) {
     /* Standard Basic Inverted */
@@ -867,21 +870,23 @@
     }
   }
 
-  & when (@variationButtonBasic) {
+  & when (@variationButtonGroups) {
     /* Basic Group */
     .ui.basic.buttons .button {
-      border-left: @basicGroupBorder;
+      border-right: @basicGroupBorder;
       box-shadow: none;
     }
 
-    .ui.basic.vertical.buttons .button {
-      border-left: none;
-      border-left-width: 0;
-      border-top: @basicGroupBorder;
-    }
+    & when (@variationButtonVertical) {
+      .ui.basic.vertical.buttons .button {
+        border-left: none;
+        border-left-width: 0;
+        border-top: @basicGroupBorder;
+      }
 
-    .ui.basic.vertical.buttons .button:first-child {
-      border-top-width: 0;
+      .ui.basic.vertical.buttons:not(.spaced) .button:first-child {
+        border-top: none;
+      }
     }
   }
 }
@@ -1539,10 +1544,6 @@
         box-shadow: 0 0 0 @basicColoredBorderSize @d inset;
         color: @d;
       }
-
-      .ui.buttons:not(.vertical) > .basic.@{color}.button:not(:first-child) {
-        margin-left: -@basicColoredBorderSize;
-      }
     }
     & when (@variationButtonInverted) {
       /* Inverted */
@@ -1898,8 +1899,10 @@
       float: none;
       width: 100%;
       margin: @verticalGroupOffset;
-      box-shadow: @verticalBoxShadow;
       border-radius: 0;
+      &:not(.basic) {
+        box-shadow: @verticalBoxShadow;
+      }
     }
 
     .ui.vertical.buttons .button:first-child {
@@ -1915,6 +1918,82 @@
 
     .ui.vertical.buttons .button:only-child {
       border-radius: @borderRadius;
+    }
+    & when (@variationButtonBasic) {
+      .ui.vertical.buttons .basic.button:not(:first-child) {
+        border-top: none;
+      }
+    }
+  }
+
+  & when (@variationButtonWrapping) {
+    .ui.wrapping.buttons {
+      flex-wrap: wrap;
+    }
+    & when (@variationButtonBasic) {
+      .ui.wrapping.basic.buttons {
+        border-bottom: none;
+        &:not(.spaced) .button {
+          margin-bottom: -@basicColoredBorderSize;
+        }
+        & .button {
+          border-bottom: @basicGroupBorder;
+          &:hover {
+            background: transparent !important;
+          }
+        }
+      }
+    }
+    & when (@variationButtonCompact) {
+      .ui.compact.wrapping.buttons .button {
+        flex: none;
+      }
+    }
+  }
+  & when (@variationButtonWrapped) {
+    .ui.wrapped.buttons:not(.spaced) .button {
+      &:first-child {
+        border-radius: @basicBorderRadius 0 0 0;
+      }
+      &:last-child {
+        border-radius: 0 0 @basicBorderRadius 0;
+      }
+    }
+  }
+  & when (@variationButtonSpaced) {
+    .ui.spaced.buttons .ui.button {
+      margin-bottom: @spacedMargin;
+      margin-right: @spacedMargin;
+      border-radius: @basicBorderRadius;
+    }
+    & when (@variationButtonBasic) {
+      .ui.spaced.basic.buttons {
+        border: none;
+        & .button {
+          border: @basicGroupBorder;
+        }
+      }
+      & when (@variationButtonVertical) {
+        .ui.basic.vertical.spaced.buttons .button:first-child {
+          border-top: @basicGroupBorder;
+        }
+      }
+      & when (@variationButtonWrapping) {
+        .ui.wrapping.spaced.basic.buttons .button {
+          border-top: @basicGroupBorder;
+          border-right: @basicGroupBorder;
+          &:first-child {
+            border-left: @basicGroupBorder;
+          }
+        }
+      }
+    }
+  }
+
+  & when (@variationButtonBasic) {
+    .ui.buttons:not(.vertical) .basic.button:not(:first-child) {
+      margin-left: -@basicColoredBorderSize;
+      border-right: none;
     }
   }
 }
