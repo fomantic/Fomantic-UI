@@ -262,61 +262,64 @@
     right: 0;
   }
 
-  /* Vertical */
-  .ui.vertical.animated.button .visible.content,
-  .ui.vertical.animated.button .hidden.content {
-    transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+  & when (@variationButtonVertical) {
+    /* Vertical */
+    .ui.vertical.animated.button .visible.content,
+    .ui.vertical.animated.button .hidden.content {
+      transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+    }
+    .ui.vertical.animated.button .visible.content {
+      transform: translateY(0%);
+      right: auto;
+    }
+    .ui.vertical.animated.button .hidden.content {
+      top: -50%;
+      left: 0;
+      right: auto;
+    }
+    .ui.vertical.animated.button:focus .visible.content,
+    .ui.vertical.animated.button:hover .visible.content {
+      transform: translateY(200%);
+      right: auto;
+    }
+    .ui.vertical.animated.button:focus .hidden.content,
+    .ui.vertical.animated.button:hover .hidden.content {
+      top: 50%;
+      right: auto;
+    }
   }
-  .ui.vertical.animated.button .visible.content {
-    transform: translateY(0%);
-    right: auto;
-  }
-  .ui.vertical.animated.button .hidden.content {
-    top: -50%;
-    left: 0;
-    right: auto;
-  }
-  .ui.vertical.animated.button:focus .visible.content,
-  .ui.vertical.animated.button:hover .visible.content {
-    transform: translateY(200%);
-    right: auto;
-  }
-  .ui.vertical.animated.button:focus .hidden.content,
-  .ui.vertical.animated.button:hover .hidden.content {
-    top: 50%;
-    right: auto;
-  }
-
-  /* Fade */
-  .ui.fade.animated.button .visible.content,
-  .ui.fade.animated.button .hidden.content {
-    transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
-  }
-  .ui.fade.animated.button .visible.content {
-    left: auto;
-    right: auto;
-    opacity: 1;
-    transform: scale(1);
-  }
-  .ui.fade.animated.button .hidden.content {
-    opacity: 0;
-    left: 0;
-    right: auto;
-    transform: scale(@fadeScaleHigh);
-  }
-  .ui.fade.animated.button:focus .visible.content,
-  .ui.fade.animated.button:hover .visible.content {
-    left: auto;
-    right: auto;
-    opacity: 0;
-    transform: scale(@fadeScaleLow);
-  }
-  .ui.fade.animated.button:focus .hidden.content,
-  .ui.fade.animated.button:hover .hidden.content {
-    left: 0;
-    right: auto;
-    opacity: 1;
-    transform: scale(1);
+  & when (@variationButtonAnimatedFade) {
+    /* Fade */
+    .ui.fade.animated.button .visible.content,
+    .ui.fade.animated.button .hidden.content {
+      transition: opacity @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+    }
+    .ui.fade.animated.button .visible.content {
+      left: auto;
+      right: auto;
+      opacity: 1;
+      transform: scale(1);
+    }
+    .ui.fade.animated.button .hidden.content {
+      opacity: 0;
+      left: 0;
+      right: auto;
+      transform: scale(@fadeScaleHigh);
+    }
+    .ui.fade.animated.button:focus .visible.content,
+    .ui.fade.animated.button:hover .visible.content {
+      left: auto;
+      right: auto;
+      opacity: 0;
+      transform: scale(@fadeScaleLow);
+    }
+    .ui.fade.animated.button:focus .hidden.content,
+    .ui.fade.animated.button:hover .hidden.content {
+      left: 0;
+      right: auto;
+      opacity: 1;
+      transform: scale(1);
+    }
   }
 }
 
@@ -332,20 +335,23 @@
     text-shadow: none !important;
   }
 
-  /* Group */
-  .ui.inverted.buttons .button {
-    margin: @invertedGroupButtonOffset;
+  & when (@variationButtonGroups) {
+    /* Group */
+    .ui.inverted.buttons .button {
+      margin: @invertedGroupButtonOffset;
+    }
+    .ui.inverted.buttons .button:first-child {
+      margin-left: 0;
+    }
+    & when (@variationButtonVertical) {
+      .ui.inverted.vertical.buttons .button {
+        margin: @invertedVerticalGroupButtonOffset;
+      }
+      .ui.inverted.vertical.buttons .button:first-child {
+        margin-top: 0;
+      }
+    }
   }
-  .ui.inverted.buttons .button:first-child {
-    margin-left: 0;
-  }
-  .ui.inverted.vertical.buttons .button {
-    margin: @invertedVerticalGroupButtonOffset;
-  }
-  .ui.inverted.vertical.buttons .button:first-child {
-    margin-top: 0;
-  }
-
   /* States */
 
   /* Hover */
@@ -748,8 +754,10 @@
     vertical-align: top;
   }
 }
-.ui.animated.button > .content > .icon {
-  vertical-align: top;
+& when (@variationButtonAnimated) {
+  .ui.animated.button > .content > .icon {
+    vertical-align: top;
+  }
 }
 
 & when (@variationButtonBasic) {
@@ -1948,12 +1956,15 @@
     }
   }
   & when (@variationButtonWrapped) {
-    .ui.wrapped.buttons:not(.spaced) .button {
-      &:first-child {
-        border-radius: @basicBorderRadius 0 0 0;
-      }
-      &:last-child {
-        border-radius: 0 0 @basicBorderRadius 0;
+    .ui.wrapped.buttons:not(.spaced) {
+      border-top-right-radius: 0;
+      & .button {
+        &:first-child {
+          border-radius: @basicBorderRadius 0 0 0;
+        }
+        &:last-child {
+          border-radius: 0 0 @basicBorderRadius 0;
+        }
       }
     }
     & when (@variationButtonAttached) {
@@ -2011,6 +2022,7 @@
   }
 
   & when (@variationButtonBasic) {
+    .ui.basic.buttons:not(.vertical).inverted .button,
     .ui.basic.buttons:not(.vertical) .basic.button {
       margin-left: -@basicColoredBorderSize;
       border-right: none;
@@ -2019,8 +2031,8 @@
       margin-top: -@basicColoredBorderSize;
       border-bottom: none;
     }
-    & when (@variationButtonAttached) {
-      .ui.attached.basic.buttons.inverted .button,
+    & when (@variationButtonAttached) or (@variationButtonInverted) {
+      .ui.inverted.basic.buttons:not(.spaced) .button,
       .ui.attached.basic.buttons:not(.wrapping):not(.inverted) .basic.button {
         margin-bottom: @attachedOffset;
       }

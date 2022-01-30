@@ -15,6 +15,7 @@
 /* Button */
 @variationButtonDisabled: true;
 @variationButtonAnimated: true;
+@variationButtonAnimatedFade: true;
 @variationButtonInverted: true;
 @variationButtonSocial: true;
 @variationButtonFloated: true;
