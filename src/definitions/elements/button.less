@@ -872,7 +872,7 @@
 
   & when (@variationButtonGroups) {
     /* Basic Group */
-    .ui.basic.buttons .button {
+    .ui.basic.buttons:not(.inverted) .button:not(.basic) {
       border-right: @basicGroupBorder;
       box-shadow: none;
     }
@@ -1225,7 +1225,7 @@
 
   /* Top / Bottom */
   .ui[class*="top attached"].buttons {
-    margin-bottom: @attachedOffset;
+    margin-bottom: @topAttachedOffset;
     border-radius: @borderRadius @borderRadius 0 0;
   }
 
@@ -1238,7 +1238,7 @@
   }
 
   .ui[class*="bottom attached"].buttons {
-    margin-top: @attachedOffset;
+    margin-top: @bottomAttachedOffset;
     border-radius: 0 0 @borderRadius @borderRadius;
   }
 
@@ -1933,9 +1933,6 @@
     & when (@variationButtonBasic) {
       .ui.wrapping.basic.buttons {
         border-bottom: none;
-        &:not(.spaced) .button {
-          margin-bottom: -@basicColoredBorderSize;
-        }
         & .button {
           border-bottom: @basicGroupBorder;
           &:hover {
@@ -1959,6 +1956,20 @@
         border-radius: 0 0 @basicBorderRadius 0;
       }
     }
+    & when (@variationButtonAttached) {
+      .ui.wrapped[class*="top attached"].buttons {
+        border-radius: @basicBorderRadius 0 0 0;
+        & .button:last-child {
+          border-radius: 0;
+        }
+      }
+      .ui.wrapped[class*="bottom attached"].buttons {
+        border-radius: 0 0 0 @basicBorderRadius;
+        & .button:first-child {
+          border-radius: 0;
+        }
+      }
+    }
   }
   & when (@variationButtonSpaced) {
     .ui.spaced.buttons .ui.button {
@@ -1971,15 +1982,18 @@
         border: none;
         & .button {
           border: @basicGroupBorder;
+          &.basic {
+            border: none;
+          }
         }
       }
       & when (@variationButtonVertical) {
-        .ui.basic.vertical.spaced.buttons .button:first-child {
+        .ui.spaced.basic.vertical.buttons .button:first-child {
           border-top: @basicGroupBorder;
         }
       }
       & when (@variationButtonWrapping) {
-        .ui.wrapping.spaced.basic.buttons .button {
+        .ui.spaced.basic.wrapping.buttons .button:not(.basic) {
           border-top: @basicGroupBorder;
           border-right: @basicGroupBorder;
           &:first-child {
@@ -1987,13 +2001,32 @@
           }
         }
       }
+      & when (@variationButtonInverted) {
+        .ui.spaced.basic.inverted.buttons .basic.button {
+          margin-bottom: e(%("calc(%d + %d)", @spacedMargin, @basicColoredBorderSize));
+          margin-top: @basicColoredBorderSize;
+        }
+      }
     }
   }
 
   & when (@variationButtonBasic) {
-    .ui.buttons:not(.vertical) .basic.button:not(:first-child) {
+    .ui.basic.buttons:not(.vertical) .basic.button {
       margin-left: -@basicColoredBorderSize;
       border-right: none;
+    }
+    .ui.basic.buttons:not(.vertical):not(.spaced):not(.inverted) .basic.button {
+      margin-top: -@basicColoredBorderSize;
+      border-bottom: none;
+    }
+    & when (@variationButtonAttached) {
+      .ui.attached.basic.buttons.inverted .button,
+      .ui.attached.basic.buttons:not(.wrapping):not(.inverted) .basic.button {
+        margin-bottom: @attachedOffset;
+      }
+    }
+    .ui.basic.buttons:not(.vertical):not(.attached):not(.spaced):not(.wrapping):not(.inverted) .basic.button {
+      margin-bottom: -@basicColoredBorderSize;
     }
   }
 }

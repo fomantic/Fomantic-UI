@@ -377,6 +377,8 @@
 
 /* Attached */
 @attachedOffset: -1px;
+@topAttachedOffset: 0;
+@bottomAttachedOffset: @attachedOffset;
 @attachedBoxShadow: 0 0 0 1px @borderColor;
 @attachedHorizontalPadding: 0.75em;
 @attachedZIndex: auto;
