@@ -488,6 +488,7 @@
 /* Calendar */
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
+@variationCalendarMultiMonth: true;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;
