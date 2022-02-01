@@ -362,6 +362,9 @@
 /* Simple */
 @simpleTransitionDuration: @defaultDuration;
 @simpleTransition: opacity @simpleTransitionDuration @defaultEasing;
+@simpleUpwardMenuMargin: 1.5em;
+@simpleUpwardSelectionMenuMargin: 2.5em;
+@simpleUpwardItemMenuMargin: 2.8em;
 
 /* Floating */
 @floatingMenuDistance: 0.5em;
@@ -452,15 +455,6 @@
 @invertedInputHighlightColor: @invertedMutedTextColor;
 
 /* Multiple */
-/*@invertedLabelBackgroundColor: rgba(255, 255, 255, 0.06);
-@invertedLabelBackgroundImage: none;
-@invertedLabelColor: rgba(255, 255, 255, 0.6);
-@invertedLabelBoxShadow: 0 0 0 @labelBorderWidth rgba(255, 255, 255, 0.16) inset;
-
-@invertedLabelHoverBackgroundColor: rgba(255, 255, 255, 0.12);
-@invertedLabelHoverBackgroundImage: none;
-@invertedLabelHoverTextColor: rgba(255, 255, 255, 0.7);*/
-
 @invertedLabelBackgroundColor: rgba(255, 255, 255, 0.7);
 @invertedLabelBackgroundImage: none;
 @invertedLabelColor: rgba(0, 0, 0, 1);
