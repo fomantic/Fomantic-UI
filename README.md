@@ -52,7 +52,7 @@ Fomantic includes an interactive installer to help setup your project.
 
 ### 💻 Browser Support
 
-* Last 2 Versions Firefox, Chrome, Safari Mac, Edge
+* Last 2 Versions of Firefox, Chrome, Safari Mac, Edge
 * Last 4 Versions of Android, Chrome for Android, iOS Safari[^1]
 * IE 11[^2]
 * Microsoft Edge 12-44[^2]
