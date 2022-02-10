@@ -1110,7 +1110,7 @@ $.api.settings = {
   responseAsync     : false,
 
 // whether onResponse should work with response value without force converting into an object
-  rawResponse       : false,
+  rawResponse       : true,
 
   // callbacks before request
   beforeSend  : function(settings) { return settings; },
