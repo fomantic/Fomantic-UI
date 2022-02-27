@@ -1531,7 +1531,7 @@ $.fn.dropdown = function(parameters) {
           keydown: function(event) {
             var
               pressedKey    = event.which,
-              isShortcutKey = module.is.inObject(pressedKey, keys)
+              isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter
             ;
             if(isShortcutKey) {
               var
@@ -1549,7 +1549,7 @@ $.fn.dropdown = function(parameters) {
                 hasSubMenu            = ($subMenu.length> 0),
                 hasSelectedItem       = ($selectedItem.length > 0),
                 selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
-                delimiterPressed      = (pressedKey == keys.delimiter && module.is.multiple()),
+                delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
                 isAdditionWithoutMenu = (settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed) && selectedIsSelectable),
                 $nextItem,
                 isSubMenuItem,
@@ -4131,7 +4131,6 @@ $.fn.dropdown.settings = {
 
   keys : {
     backspace  : 8,
-    delimiter  : 188, // comma
     deleteKey  : 46,
     enter      : 13,
     escape     : 27,
