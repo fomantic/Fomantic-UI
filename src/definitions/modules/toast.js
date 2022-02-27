@@ -154,7 +154,7 @@ $.fn.toast = function(parameters) {
             $context.append($('<div/>',{class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '')}));
           },
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2, 8);
+            id = (Math.random().toString(16) + '000000000').slice(2, 10);
             module.verbose('Creating unique id for element', id);
           },
           toast: function() {

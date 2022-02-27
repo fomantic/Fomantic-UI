@@ -309,7 +309,7 @@ $.fn.popup = function(parameters) {
         },
 
         createID: function() {
-          id = (Math.random().toString(16) + '000000000').substr(2, 8);
+          id = (Math.random().toString(16) + '000000000').slice(2, 10);
           elementNamespace = '.' + id;
           module.verbose('Creating unique id for element', id);
         },
