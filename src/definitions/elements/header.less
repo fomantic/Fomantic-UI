@@ -223,6 +223,7 @@
   .ui.icon.header:first-child {
     margin-top: @iconHeaderFirstMargin;
   }
+  .ui.icon.header > .image.icon,
   .ui.icon.header > .icons,
   .ui.icon.header > i.icon {
     float: none;
@@ -249,6 +250,7 @@
     font-size: @squareHeaderIconSize;
   }
   & when (@variationHeaderBlock) {
+    .ui.block.icon.header > .image.icon,
     .ui.block.icon.header > .icons,
     .ui.block.icon.header > i.icon {
       margin-bottom: 0;

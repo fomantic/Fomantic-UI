@@ -15,6 +15,7 @@
 /* Button */
 @variationButtonDisabled: true;
 @variationButtonAnimated: true;
+@variationButtonAnimatedFade: true;
 @variationButtonInverted: true;
 @variationButtonSocial: true;
 @variationButtonFloated: true;
@@ -34,6 +35,9 @@
 @variationButtonCircular: true;
 @variationButtonGroups: true;
 @variationButtonStackable: true;
+@variationButtonWrapping: true;
+@variationButtonWrapped: true;
+@variationButtonSpaced: true;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 
@@ -488,6 +492,7 @@
 /* Calendar */
 @variationCalendarInverted: true;
 @variationCalendarDisabled: true;
+@variationCalendarMultiMonth: true;
 
 /* Checkbox */
 @variationCheckboxDisabled: true;

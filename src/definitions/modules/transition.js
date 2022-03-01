@@ -771,6 +771,10 @@ $.fn.transition = function() {
         },
 
         hide: function() {
+          if(settings.onHide.call(element) === false) {
+            module.verbose('Hide callback returned false cancelling hide');
+            return false;
+          }
           module.verbose('Hiding element');
           if( module.is.animating() ) {
             module.reset();
@@ -778,33 +782,30 @@ $.fn.transition = function() {
           element.blur(); // IE will trigger focus change if element is not blurred before hiding
           module.remove.display();
           module.remove.visible();
-          if($.isFunction(settings.onBeforeHide)){
-            settings.onBeforeHide.call(element,function(){
-                module.hideNow();
-            });
-          } else {
-              module.hideNow();
-          }
-
+          settings.onBeforeHide.call(element, module.hideNow);
         },
 
         hideNow: function() {
             module.set.hidden();
             module.force.hidden();
-            settings.onHide.call(element);
+            settings.onHidden.call(element);
             settings.onComplete.call(element);
             // module.repaint();
         },
 
         show: function(display) {
-          module.verbose('Showing element', display);
-          if(module.force.visible()) {
+          if(module.force.visible() && settings.onShow.call(element) !== false) {
+            module.verbose('Showing element', display);
             module.remove.hidden();
-            module.set.visible();
-            settings.onShow.call(element);
-            settings.onComplete.call(element);
-            // module.repaint();
+            settings.onBeforeShow.call(element, module.showNow);
           }
+        },
+
+        showNow: function(){
+          module.set.visible();
+          settings.onVisible.call(element);
+          settings.onComplete.call(element);
+          // module.repaint();
         },
 
         toggle: function() {
@@ -1055,7 +1056,11 @@ $.fn.transition.settings = {
   onStart       : function() {},
   onComplete    : function() {},
   onShow        : function() {},
+  onBeforeShow  : function(callback) {callback.call(this)},
+  onVisible     : function() {},
   onHide        : function() {},
+  onHidden      : function() {},
+  onBeforeHide  : function(callback) {callback.call(this)},
 
   // whether timeout should be used to ensure callback fires in cases animationend does not
   useFailSafe   : true,

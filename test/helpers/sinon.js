@@ -580,7 +580,7 @@ define.amd = true;
         var content = element.innerHTML;
 
         if (content.length > 20) {
-            content = content.substr(0, 20) + "[...]";
+            content = content.slice(0, 20) + "[...]";
         }
 
         var res = formatted + pairs.join(" ") + ">" + content +

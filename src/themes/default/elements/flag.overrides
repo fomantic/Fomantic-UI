@@ -4,6 +4,12 @@
 /*rtl:begin:ignore*/
 
 @flags: {
+  @1f3f3-fe0f-200d-26a7-fe0f: {
+    countrycode: transgender;
+    class: transgender;
+    aliasClass: false;
+    aliasClass2: false;
+  };
   @1f3f3-fe0f-200d-1f308: {
     countrycode: rainbow;
     class: rainbow;
