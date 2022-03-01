@@ -211,7 +211,7 @@ $.fn.modal = function(parameters) {
             $dimmer = $dimmable.dimmer('get dimmer');
           },
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2, 8);
+            id = (Math.random().toString(16) + '000000000').slice(2, 10);
             elementEventNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
           },
@@ -514,6 +514,10 @@ $.fn.modal = function(parameters) {
             : function(){}
           ;
           if( module.is.animating() || !module.is.active() ) {
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling show');
+              return;
+            }
             module.showDimmer();
             module.cacheSizes();
             module.set.bodyMargin();
@@ -543,7 +547,6 @@ $.fn.modal = function(parameters) {
                   $module.detach().appendTo($dimmer);
                 }
               }
-              settings.onShow.call(element);
               if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                 module.debug('Showing modal with css animations');
                 $module
@@ -586,7 +589,6 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          module.debug('Hiding modal');
           if(settings.onHide.call(element, $(this)) === false) {
             module.verbose('Hide callback returned false cancelling hide');
             ignoreRepeatedEvents = false;
@@ -594,6 +596,7 @@ $.fn.modal = function(parameters) {
           }
 
           if( module.is.animating() || module.is.active() ) {
+            module.debug('Hiding modal');
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
               $module

@@ -746,7 +746,7 @@ $.fn.calendar = function(parameters) {
             return $module.data(metadata.maxDate) || null;
           },
           monthOffset: function () {
-            return $module.data(metadata.monthOffset) || 0;
+            return $module.data(metadata.monthOffset) || settings.monthOffset || 0;
           },
           mode: function () {
             //only returns valid modes for the current settings
@@ -1452,6 +1452,7 @@ $.fn.calendar.settings = {
   startCalendar      : null,       // jquery object or selector for another calendar that represents the start date of a date range
   endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
   multiMonth         : 1,          // show multiple months when in 'day' mode
+  monthOffset        : 0,          // position current month by offset when multimonth > 1
   minTimeGap         : 5,
   showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
   disabledHours      : [],         // specific hour(s) which won't be selectable and contain additional information.
@@ -1467,6 +1468,7 @@ $.fn.calendar.settings = {
     position: 'bottom left',
     lastResort: 'bottom left',
     prefer: 'opposite',
+    observeChanges: false,
     hideOnScroll: false
   },
 
@@ -1558,7 +1560,7 @@ $.fn.calendar.settings = {
       if (!text) {
         return null;
       }
-      text = String(text).trim();
+      text = String(text).replace(/\s/g,'');
       if (text.length === 0) {
         return null;
       }
