@@ -573,6 +573,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "CommanderRoot",
+      "name": "CommanderRoot",
+      "avatar_url": "https://avatars.githubusercontent.com/u/4395417?v=4",
+      "profile": "https://github.com/CommanderRoot",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
