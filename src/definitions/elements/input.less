@@ -348,10 +348,10 @@
   }
 
   /* Focus */
-  input:focus::-webkit-calendar-picker-indicator,
+  .ui.input > input:focus::-webkit-calendar-picker-indicator,
   .ui.icon.input > textarea:focus ~ i.icon,
   .ui.icon.input > input:focus ~ i.icon {
-    opacity: 1;
+    opacity: @iconFocusOpacity;
   }
 }
 
