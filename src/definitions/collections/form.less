@@ -141,6 +141,13 @@
   padding: initial;
 }
 
+.ui.form input::-webkit-calendar-picker-indicator {
+  padding: 0;
+  opacity: @iconOpacity;
+  transition: @iconTransition;
+  cursor: pointer;
+}
+
 /* Text Area */
 .ui.input textarea,
 .ui.form textarea {
@@ -483,6 +490,10 @@
   background: @textAreaFocusBackground;
   box-shadow: @textAreaFocusBoxShadow;
   -webkit-appearance: none;
+}
+/* Focus */
+.ui.form input:focus::-webkit-calendar-picker-indicator {
+  opacity: @iconFocusOpacity;
 }
 
 & when not (@variationFormStates = false) {
