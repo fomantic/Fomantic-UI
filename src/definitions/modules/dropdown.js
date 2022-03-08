@@ -1869,7 +1869,7 @@ $.fn.dropdown = function(parameters) {
             ;
             $sizer.text(value);
             // prevent rounding issues
-            return Math.ceil( $sizer.width() + (!!window.StyleMedia ? 3 : 1));
+            return Math.ceil( $sizer.width() + (module.is.edge() ? 3 : 1));
           },
           selectionCount: function() {
             var
@@ -3395,6 +3395,9 @@ $.fn.dropdown = function(parameters) {
           },
           bubbledIconClick: function(event) {
             return $(event.target).closest($icon).length > 0;
+          },
+          edge: function() {
+            return !!window.chrome && !!window.StyleMedia;
           },
           chrome: function() {
             return !!window.chrome && !window.StyleMedia;
