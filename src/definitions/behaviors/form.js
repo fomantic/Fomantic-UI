@@ -119,7 +119,7 @@ $.fn.form = function(parameters) {
           ;
         },
 
-        refresh: function() {
+        refresh: function(rebindEvents) {
           module.verbose('Refreshing selector cache');
           $field      = $module.find(selector.field);
           $group      = $module.find(selector.group);
@@ -129,6 +129,10 @@ $.fn.form = function(parameters) {
           $submit     = $module.find(selector.submit);
           $clear      = $module.find(selector.clear);
           $reset      = $module.find(selector.reset);
+          if(rebindEvents) {
+            module.removeEvents();
+            module.bindEvents();
+          }
         },
 
         submit: function() {
@@ -391,7 +395,6 @@ $.fn.form = function(parameters) {
           $module.off(eventNamespace);
           $field.off(eventNamespace);
           $submit.off(eventNamespace);
-          $field.off(eventNamespace);
         },
 
         event: {
@@ -864,9 +867,11 @@ $.fn.form = function(parameters) {
               }
             });
             module.debug('Adding rules', newValidation.rules, validation);
+            module.refresh(true);
           },
           fields: function(fields) {
             validation = $.extend(true, {}, validation, module.get.fieldsFromShorthand(fields));
+            module.refresh(true);
           },
           prompt: function(identifier, errors, internal) {
             var
@@ -963,6 +968,7 @@ $.fn.form = function(parameters) {
             $.each(fields, function(index, field) {
               module.remove.rule(field);
             });
+            module.refresh(true);
           },
           // alias
           rules: function(field, rules) {
