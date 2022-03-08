@@ -1869,7 +1869,7 @@ $.fn.dropdown = function(parameters) {
             ;
             $sizer.text(value);
             // prevent rounding issues
-            return Math.ceil( $sizer.width() + 1);
+            return Math.ceil( $sizer.width() + (!!window.StyleMedia ? 3 : 1));
           },
           selectionCount: function() {
             var
