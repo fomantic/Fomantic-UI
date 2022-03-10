@@ -430,6 +430,7 @@
 @variationEmbedRatio: true;
 
 /* Flyout */
+@variationFlyoutColumnWidth: true;
 @variationFlyoutThin: true;
 @variationFlyoutWide: true;
 @variationFlyoutTop: true;
