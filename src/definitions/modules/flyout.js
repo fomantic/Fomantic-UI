@@ -330,7 +330,6 @@ $.fn.flyout = function(parameters) {
         repaint: function() {
           module.verbose('Forcing repaint event');
           element.style.display = 'none';
-          var ignored = element.offsetHeight;
           element.scrollTop = element.scrollTop;
           element.style.display = '';
         },
@@ -360,6 +359,9 @@ $.fn.flyout = function(parameters) {
               module.error(error.movedFlyout, element);
               $module.detach().prependTo($context);
               module.refresh();
+            }
+            if( module.is.mobile() ) {
+              $module.addClass(className.fullscreen);
             }
             module.clear.cache();
             module.set.pushable();
@@ -965,7 +967,8 @@ $.fn.flyout.settings = {
     left      : 'left',
     bottom    : 'bottom',
     visible   : 'visible',
-    overlay   : 'overlay'
+    overlay   : 'overlay',
+    fullscreen: 'fullscreen'
   },
 
   selector: {
