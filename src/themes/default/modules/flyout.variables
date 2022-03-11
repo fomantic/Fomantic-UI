@@ -35,11 +35,11 @@
 --------------------*/
 
 /* Width */
-@veryThinWidth: 60px;
-@thinWidth: 150px;
-@width: 260px;
-@wideWidth: 350px;
-@veryWideWidth: 475px;
+@veryThinWidth: 120px;
+@thinWidth: 200px;
+@width: 400px;
+@wideWidth: 600px;
+@veryWideWidth: 800px;
 
 /* Height */
 @height: 36px;
