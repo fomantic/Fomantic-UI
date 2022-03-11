@@ -105,6 +105,11 @@ $.fn.flyout = function(parameters) {
             module.setup.cache();
           });
 
+          if (module.get.direction() == 'left' || module.get.direction() == 'right') {
+            module.setup.heights();
+            module.bind.resize();
+          }
+
           module.instantiate();
         },
 
@@ -140,6 +145,9 @@ $.fn.flyout = function(parameters) {
         },
 
         event: {
+          resize: function() {
+            module.setup.heights();
+          },
           clickaway: function(event) {
             if(settings.closable){
               var
@@ -192,6 +200,10 @@ $.fn.flyout = function(parameters) {
         },
 
         bind: {
+          resize: function() {
+            module.verbose('Adding resize event to window', $window);
+            $window.on('resize' + elementNamespace, module.event.resize);
+          },
           clickaway: function() {
             module.verbose('Adding clickaway events to context', $context);
             $context
@@ -227,7 +239,7 @@ $.fn.flyout = function(parameters) {
           scrollLock: function() {
             module.verbose('Removing scroll lock from page');
             $document.off(elementNamespace);
-            $window.off(elementNamespace);
+            $window.off('DOMMouseScroll' + elementNamespace);
             $module.off('scroll' + eventNamespace);
           }
         },
@@ -366,6 +378,15 @@ $.fn.flyout = function(parameters) {
             module.clear.cache();
             module.set.pushable();
             module.set.direction();
+          },
+          heights: function() {
+            module.debug('Setting up heights', $module);
+            var
+              $header = $module.children('.header'),
+              $content = $module.children('.content'),
+              $actions = $module.children('.actions')
+            ;
+            $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
           }
         },
 
