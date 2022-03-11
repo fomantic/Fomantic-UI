@@ -36,11 +36,11 @@
   visibility: hidden;
   -webkit-overflow-scrolling: touch;
 
-  height: 100% !important;
+  height: 100%;
   max-height: 100%;
-  border-radius: 0 !important;
-  margin: 0 !important;
-  overflow-y: hidden !important;
+  border-radius: 0;
+  margin: 0;
+  overflow-y: hidden;
   z-index: @topLayer;
 
   background: #FFFFFF;
@@ -140,8 +140,8 @@
 }
 & when (@variationFlyoutRight) {
   .ui.right.flyout {
-    right: 0 !important;
-    left: auto !important;
+    right: 0;
+    left: auto;
     transform: translate3d(100%, 0, 0);
   }
 }
@@ -149,20 +149,20 @@
 & when (@variationFlyoutTop) or (@variationFlyoutBottom) {
   .ui.top.flyout,
   .ui.bottom.flyout {
-    width: 100% !important;
-    height: auto !important;
+    width: 100%;
+    height: auto;
   }
   & when (@variationFlyoutTop) {
     .ui.top.flyout {
-      top: 0 !important;
-      bottom: auto !important;
+      top: 0;
+      bottom: auto;
       transform: translate3d(0, -100%, 0);
     }
   }
   & when (@variationFlyoutBottom) {
     .ui.bottom.flyout {
-      top: auto !important;
-      bottom: 0 !important;
+      top: auto;
+      bottom: 0;
       transform: translate3d(0, 100%, 0);
     }
   }
