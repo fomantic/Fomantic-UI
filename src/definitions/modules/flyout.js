@@ -59,6 +59,7 @@ $.fn.flyout = function(parameters) {
         selector        = settings.selector,
         className       = settings.className,
         namespace       = settings.namespace,
+        fields          = settings.fields,
         regExp          = settings.regExp,
         error           = settings.error,
 
@@ -67,14 +68,15 @@ $.fn.flyout = function(parameters) {
 
         $module         = $(this),
         $context        = $(settings.context),
+        $close          = $module.find(selector.close),
 
-        $flyouts       = $module.children(selector.flyout),
+        $flyouts        = $module.children(selector.flyout),
         $fixed          = $context.children(selector.fixed),
         $pusher         = $context.children(selector.pusher),
         $style,
 
         element         = this,
-        instance        = $module.data(moduleNamespace),
+        instance        = $module.hasClass(namespace) ? $module.data(moduleNamespace) : undefined,
 
         elementNamespace,
         id,
@@ -88,6 +90,47 @@ $.fn.flyout = function(parameters) {
 
         initialize: function() {
           module.debug('Initializing flyout', parameters);
+
+          if(!$module.hasClass(namespace)) {
+            module.create.flyout();
+            if(!$.isFunction(settings.onHidden)) {
+              settings.onHidden = function () {
+                module.destroy();
+                $module.remove();
+              };
+            }
+          }
+          $module.addClass(settings.class);
+          if (settings.title !== '') {
+            $module.find(selector.header).html(module.helpers.escape(settings.title, settings.preserveHTML)).addClass(settings.classTitle);
+          }
+          if (settings.content !== '') {
+            $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
+          }
+          if(module.has.configActions()){
+            var $actions = $module.find(selector.actions).addClass(settings.classActions);
+            if ($actions.length === 0) {
+              $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($module);
+            } else {
+              $actions.empty();
+            }
+            settings.actions.forEach(function (el) {
+              var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                  text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
+                  cls = module.helpers.deQuote(el[fields.class] || ''),
+                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
+              $actions.append($('<button/>', {
+                html: icon + text,
+                class: className.button + ' ' + cls,
+                click: function () {
+                  if (click.call(element, $module) === false) {
+                    return;
+                  }
+                  module.hide();
+                }
+              }));
+            });
+          }
 
           module.create.id();
 
@@ -109,19 +152,40 @@ $.fn.flyout = function(parameters) {
             module.setup.heights();
             module.bind.resize();
           }
-
           module.instantiate();
+
+          if(settings.autoShow){
+            module.show();
+          }
         },
 
         instantiate: function() {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module
-            .data(moduleNamespace, module)
+            .data(moduleNamespace, instance)
           ;
         },
 
         create: {
+          flyout: function() {
+            module.verbose('Programmaticaly create flyout', $context);
+            $module = $('<div/>', {class: className.flyout});
+            if (settings.closeIcon) {
+              $close = $('<i/>', {class: className.close})
+              $module.append($close);
+            }
+            if (settings.title !== '') {
+              $('<div/>', {class: className.header}).appendTo($module);
+            }
+            if (settings.content !== '') {
+              $('<div/>', {class: className.content}).appendTo($module);
+            }
+            if (module.has.configActions()) {
+              $('<div/>', {class: className.actions}).appendTo($module);
+            }
+            $context.append($module);
+          },
           id: function() {
             id = (Math.random().toString(16) + '000000000').substr(2,8);
             elementNamespace = '.' + id;
@@ -382,9 +446,9 @@ $.fn.flyout = function(parameters) {
           heights: function() {
             module.debug('Setting up heights', $module);
             var
-              $header = $module.children('.header'),
-              $content = $module.children('.content'),
-              $actions = $module.children('.actions')
+              $header = $module.children(selector.header),
+              $content = $module.children(selector.content),
+              $actions = $module.children(selector.actions)
             ;
             $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
           }
@@ -445,7 +509,9 @@ $.fn.flyout = function(parameters) {
             module.refreshFlyouts();
             module.pullPage(function() {
               callback.call(element);
-              settings.onHidden.call(element);
+              if($.isFunction(settings.onHidden)) {
+                settings.onHidden.call(element);
+              }
             });
             settings.onChange.call(element);
             settings.onHide.call(element);
@@ -694,6 +760,9 @@ $.fn.flyout = function(parameters) {
                 return transitions[transition];
               }
             }
+          },
+          settings: function() {
+            return settings;
           }
         },
 
@@ -759,6 +828,42 @@ $.fn.flyout = function(parameters) {
               module.cache.rtl = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl';
             }
             return module.cache.rtl;
+          }
+        },
+
+        has: {
+          configActions: function () {
+            return Array.isArray(settings.actions) && settings.actions.length > 0;
+          }
+        },
+
+        helpers: {
+          deQuote: function(string) {
+            return String(string).replace(/"/g,"");
+          },
+          escape: function(string, preserveHTML) {
+            if (preserveHTML){
+              return string;
+            }
+            var
+                badChars     = /[<>"'`]/g,
+                shouldEscape = /[&<>"'`]/,
+                escape       = {
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#x27;",
+                  "`": "&#x60;"
+                },
+                escapedChar  = function(chr) {
+                  return escape[chr];
+                }
+            ;
+            if(shouldEscape.test(string)) {
+              string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+              return string.replace(badChars, escapedChar);
+            }
+            return string;
           }
         },
 
@@ -928,15 +1033,29 @@ $.fn.flyout = function(parameters) {
 
     if(methodInvoked) {
       if(instance === undefined) {
+        if ($.isFunction(settings.templates[query])) {
+          settings.autoShow = true;
+          settings.className.flyout = settings.className.template;
+          settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
+
+          // reassign shortcuts
+          className = settings.className;
+          namespace = settings.namespace;
+          fields    = settings.fields;
+          error     = settings.error;
+        }
         module.initialize();
       }
-      module.invoke(query);
+      if (!$.isFunction(settings.templates[query])) {
+        module.invoke(query);
+      }
     }
     else {
       if(instance !== undefined) {
-        module.invoke('destroy');
+        instance.invoke('destroy');
       }
       module.initialize();
+      returnedValue = $module;
     }
   });
 
@@ -963,20 +1082,44 @@ $.fn.flyout.settings = {
   scrollLock        : false,
   returnScroll      : false,
   delaySetup        : false,
+  autoShow          : false,
 
   duration          : 500,
+
+  //dynamic content
+  title        : '',
+  content      : '',
+  class        : '',
+  classTitle   : '',
+  classContent : '',
+  classActions : '',
+  closeIcon    : false,
+  actions      : false,
+  preserveHTML : true,
+
+  fields         : {
+    class        : 'class',
+    text         : 'text',
+    icon         : 'icon',
+    click        : 'click'
+  },
 
   onChange          : function(){},
   onShow            : function(){},
   onHide            : function(){},
 
-  onHidden          : function(){},
+  onHidden          : false,
   onVisible         : function(){},
 
   onApprove         : function(){},
   onDeny            : function(){},
 
   className         : {
+    flyout    : 'ui flyout',
+    close     : 'close icon',
+    header    : 'ui header',
+    content   : 'content',
+    actions   : 'actions',
     active    : 'active',
     animating : 'animating',
     dimmed    : 'dimmed',
@@ -989,7 +1132,12 @@ $.fn.flyout.settings = {
     bottom    : 'bottom',
     visible   : 'visible',
     overlay   : 'overlay',
-    fullscreen: 'fullscreen'
+    fullscreen: 'fullscreen',
+    template  : 'ui flyout',
+    button    : 'ui button',
+    ok        : 'positive',
+    cancel    : 'negative',
+    prompt    : 'ui fluid input'
   },
 
   selector: {
@@ -997,6 +1145,9 @@ $.fn.flyout.settings = {
     omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
     pusher  : '.pusher',
     flyout  : '.ui.flyout',
+    header  : '.ui.header',
+    content : '.content',
+    actions : '.actions',
     close   : '.close',
     approve : '.actions .positive, .actions .approve, .actions .ok',
     deny    : '.actions .negative, .actions .deny, .actions .cancel'
@@ -1013,9 +1164,94 @@ $.fn.flyout.settings = {
     pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
     movedFlyout  : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
     notFound     : 'There were no elements that matched the specified selector'
-  }
+  },
 
+  text: {
+    ok    : 'Ok',
+    cancel: 'Cancel'
+  }
 };
 
+$.fn.flyout.settings.templates = {
+  getArguments: function(args) {
+    var queryArguments = [].slice.call(args);
+    if($.isPlainObject(queryArguments[0])){
+      return $.extend({
+        handler:function(){},
+        content:'',
+        title: ''
+      }, queryArguments[0]);
+    } else {
+      if(!$.isFunction(queryArguments[queryArguments.length-1])) {
+        queryArguments.push(function() {});
+      }
+      return {
+        handler: queryArguments.pop(),
+        content: queryArguments.pop() || '',
+        title: queryArguments.pop() || ''
+      };
+    }
+  },
+  alert: function () {
+    var settings = this.get.settings(),
+        args     = settings.templates.getArguments(arguments)
+    ;
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text : settings.text.ok,
+        class: settings.className.ok,
+        click: args.handler
+      }]
+    }
+  },
+  confirm: function () {
+    var settings = this.get.settings(),
+        args     = settings.templates.getArguments(arguments)
+    ;
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text : settings.text.ok,
+        class: settings.className.ok,
+        click: function(){args.handler(true)}
+      },{
+        text: settings.text.cancel,
+        class: settings.className.cancel,
+        click: function(){args.handler(false)}
+      }]
+    }
+  },
+  prompt: function () {
+    var $this    = this,
+        settings = this.get.settings(),
+        args     = settings.templates.getArguments(arguments),
+        input    = $($.parseHTML(args.content)).filter('.ui.input')
+    ;
+    if (input.length === 0) {
+      args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
+    }
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text: settings.text.ok,
+        class: settings.className.ok,
+        click: function(){
+          var settings = $this.get.settings(),
+              inputField = $this.get.element().find(settings.selector.prompt)[0]
+          ;
+          args.handler($(inputField).val());
+        }
+      },{
+        text: settings.text.cancel,
+        class: settings.className.cancel,
+        click: function(){args.handler(null)}
+      }]
+    }
+  }
+};
 
 })( jQuery, window, document );
