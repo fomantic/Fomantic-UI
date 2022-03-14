@@ -419,6 +419,7 @@ $.fn.form = function(parameters) {
                   $field.one('keyup' + eventNamespace, module.event.field.keyup);
                   module.submit();
                   module.debug('Enter pressed on input submitting form');
+                  event.preventDefault();
                 }
                 keyHeldDown = true;
               }
@@ -543,7 +544,7 @@ $.fn.form = function(parameters) {
               parts,
               suffixPrompt
             ;
-            if(ancillary && ancillary.indexOf('..') >= 0) {
+            if(ancillary && ['integer', 'decimal', 'number'].indexOf(ruleName) >= 0 && ancillary.indexOf('..') >= 0) {
               parts = ancillary.split('..', 2);
               if(!rule.prompt) {
                 suffixPrompt = (
@@ -585,7 +586,7 @@ $.fn.form = function(parameters) {
               if(isLegacySettings) {
                 // 1.x (ducktyped)
                 settings   = $.extend(true, {}, $.fn.form.settings, legacyParameters);
-                validation = $.extend({}, $.fn.form.settings.defaults, parameters);
+                validation = $.extend(true, {}, $.fn.form.settings.defaults, parameters);
                 module.error(settings.error.oldSyntax, element);
                 module.verbose('Extending settings from legacy parameters', validation, settings);
               }
@@ -595,13 +596,13 @@ $.fn.form = function(parameters) {
                   parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
                 }
                 settings   = $.extend(true, {}, $.fn.form.settings, parameters);
-                validation = $.extend({}, $.fn.form.settings.defaults, settings.fields);
+                validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                 module.verbose('Extending settings', validation, settings);
               }
             }
             else {
-              settings   = $.fn.form.settings;
-              validation = $.fn.form.settings.defaults;
+              settings   = $.extend(true, {}, $.fn.form.settings);
+              validation = $.extend(true, {}, $.fn.form.settings.defaults);
               module.verbose('Using default form validation', validation, settings);
             }
 
@@ -865,7 +866,7 @@ $.fn.form = function(parameters) {
             module.debug('Adding rules', newValidation.rules, validation);
           },
           fields: function(fields) {
-            validation = $.extend({}, validation, module.get.fieldsFromShorthand(fields));
+            validation = $.extend(true, {}, validation, module.get.fieldsFromShorthand(fields));
           },
           prompt: function(identifier, errors, internal) {
             var
@@ -886,13 +887,13 @@ $.fn.form = function(parameters) {
             }
             if(settings.inline) {
               if(!promptExists) {
-                $prompt = settings.templates.prompt(errors, className.label);
+                $prompt = $('<div/>').addClass(className.label);
                 $prompt
                   .appendTo($fieldGroup)
                 ;
               }
               $prompt
-                .html(errors[0])
+                .html(settings.templates.prompt(errors))
               ;
               if(!promptExists) {
                 if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -1085,11 +1086,14 @@ $.fn.form = function(parameters) {
                 }
                 else if(isCheckbox) {
                   module.verbose('Setting checkbox value', value, $element);
-                  if(value === true || value === 1) {
+                  if(value === true || value === 1 || value === 'on') {
                     $element.checkbox('check');
                   }
                   else {
                     $element.checkbox('uncheck');
+                  }
+                  if(typeof value === 'string') {
+                    $field.val(value);
                   }
                 }
                 else if(isDropdown) {
@@ -1203,7 +1207,7 @@ $.fn.form = function(parameters) {
               if(event && $module.data('moduleApi') !== undefined) {
                 event.stopImmediatePropagation();
               }
-              if(settings.errorFocus) {
+              if(settings.errorFocus && ignoreCallbacks !== true) {
                 var focusElement, hasTabIndex = true;
                 if (typeof settings.errorFocus === 'string') {
                   focusElement = $(settings.errorFocus);
@@ -1526,7 +1530,7 @@ $.fn.form.settings = {
 
   autoCheckRequired : false,
   preventLeaving    : false,
-  errorFocus        : false,
+  errorFocus        : true,
   dateHandling      : 'date', // 'date', 'input', 'formatter'
 
   onValid           : function() {},
@@ -1582,7 +1586,6 @@ $.fn.form.settings = {
     doesntContain        : '{name} cannot contain  "{ruleValue}"',
     doesntContainExactly : '{name} cannot contain exactly "{ruleValue}"',
     minLength            : '{name} must be at least {ruleValue} characters',
-    length               : '{name} must be at least {ruleValue} characters',
     exactLength          : '{name} must be exactly {ruleValue} characters',
     maxLength            : '{name} cannot be longer than {ruleValue} characters',
     match                : '{name} must match {ruleValue} field',
@@ -1596,7 +1599,7 @@ $.fn.form.settings = {
   selector : {
     checkbox   : 'input[type="checkbox"], input[type="radio"]',
     clear      : '.clear',
-    field      : 'input:not(.search):not([type="file"]), textarea, select',
+    field      : 'input:not(.search):not([type="file"]):not([type="reset"]):not([type="button"]):not([type="submit"]), textarea, select',
     group      : '.field',
     input      : 'input:not([type="file"])',
     message    : '.error.message',
@@ -1637,15 +1640,22 @@ $.fn.form.settings = {
         html += '<li>' + value + '</li>';
       });
       html += '</ul>';
-      return $(html);
+      return html;
     },
 
-    // template that produces label
-    prompt: function(errors, labelClasses) {
-      return $('<div/>')
-        .addClass(labelClasses)
-        .html(errors[0])
+    // template that produces label content
+    prompt: function(errors) {
+      if(errors.length === 1){
+        return errors[0];
+      }
+      var
+          html = '<ul class="ui list">'
       ;
+      $.each(errors, function(index, value) {
+        html += '<li>' + value + '</li>';
+      });
+      html += '</ul>';
+      return html;
     }
   },
 
@@ -1849,14 +1859,6 @@ $.fn.form.settings = {
 
     // is at least string length
     minLength: function(value, requiredLength) {
-      return (value !== undefined)
-        ? (value.length >= requiredLength)
-        : false
-      ;
-    },
-
-    // see rls notes for 2.0.6 (this is a duplicate of minLength)
-    length: function(value, requiredLength) {
       return (value !== undefined)
         ? (value.length >= requiredLength)
         : false

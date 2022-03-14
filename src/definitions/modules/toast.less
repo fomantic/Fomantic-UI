@@ -103,6 +103,11 @@
       bottom: @toastContainerDistance;
     }
   }
+  &.centered when (@variationToastCentered) {
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+  }
   & .visible.toast-box,
   .animating.toast-box,
   .toast-box {
@@ -518,6 +523,12 @@
     }
   }
   &.vertical when (@variationToastVertical) {
+    & > .content {
+      flex-grow: 1;
+    }
+    &.attached when (@variationToastAttached){
+      flex-grow: 1;
+    }
     & > .close.icon + .content when (@variationToastClose){
       padding-left: @toastCloseDistanceVertical;
     }
@@ -547,6 +558,29 @@
     &.top {
       border-bottom-left-radius: 0;
       border-bottom-right-radius: 0;
+    }
+  }
+
+  &.ui.ui.ui.image when (@variationToastImage) {
+    padding: 0;
+    & > .content {
+      padding-top: @inputVerticalPadding;
+      padding-bottom: @inputVerticalPadding;
+      padding-right: @inputHorizontalPadding;
+    }
+    & > .actions when (@variationToastActions) {
+      margin: 0;
+    }
+    & > .ui.image {
+      border-top-left-radius: @defaultBorderRadius;
+      border-bottom-left-radius: @defaultBorderRadius;
+      &.mini {
+        min-width: @toastImageMiniImageAdjustment;
+        & + .content {
+          min-height: @toastImageMiniImageAdjustment;
+          padding-left: @toastImageMiniImagePadding;
+        }
+      }
     }
   }
 }
@@ -598,24 +632,25 @@
 /*--------------
      Colors
 -------------- */
+& when not (@variationToastColors = false) {
+  each(@variationToastColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.@{color}.toast {
-    background-color: @c;
-    color: @toastTextColor;
-  }
-  & when (@variationToastInverted) {
-    .ui.inverted.@{color}.toast,
-    .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
-      background-color: @l;
-      color: @toastInvertedTextColor;
+    .ui.@{color}.toast {
+      background-color: @c;
+      color: @toastTextColor;
     }
-  }
-})
+    & when (@variationToastInverted) {
+      .ui.inverted.@{color}.toast,
+      .ui.toast-container .toast-box > .inverted.@{color}.attached.progress .bar {
+        background-color: @l;
+        color: @toastInvertedTextColor;
+      }
+    }
+  })
+}
 
 & when (@variationToastInverted) {
   .ui.inverted.toast {
@@ -674,3 +709,5 @@ each(@colors, {
     opacity: 0;
   }
 }
+
+.loadUIOverrides();

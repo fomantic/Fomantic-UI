@@ -304,7 +304,7 @@ module.exports = {
       {
         type    : 'input',
         name    : 'semanticRoot',
-        message : 'Where should we put Semantic UI inside your project?',
+        message : 'Where should we put Fomantic UI inside your project?',
         default : 'semantic/'
       }
     ],
@@ -329,7 +329,7 @@ module.exports = {
       {
         type: 'list',
         name: 'install',
-        message: 'Set-up Semantic UI',
+        message: 'Set-up Fomantic UI',
         when: when.allowOverwrite,
         choices: [
           {
@@ -353,8 +353,10 @@ module.exports = {
 
         // duplicated manually from tasks/defaults.js with additional property
         choices: [
+          { name: "\x1b[4mGlobal\x1b[0m", disabled: "Styles that are applied across a site"},
           { name: "reset", checked: true },
           { name: "site", checked: true },
+          { name: "\x1b[4mElements\x1b[0m", disabled: "Page elements with a single function"},
           { name: "button", checked: true },
           { name: "container", checked: true },
           { name: "divider", checked: true },
@@ -371,18 +373,21 @@ module.exports = {
           { name: "reveal", checked: true },
           { name: "segment", checked: true },
           { name: "step", checked: true },
+          { name: "\x1b[4mCollections\x1b[0m", disabled: "Heterogeneous groups of components"},
           { name: "breadcrumb", checked: true },
           { name: "form", checked: true },
           { name: "grid", checked: true },
           { name: "menu", checked: true },
           { name: "message", checked: true },
           { name: "table", checked: true },
+          { name: "\x1b[4mViews\x1b[0m", disabled: "Convention for presenting specific types of content"},
           { name: "ad", checked: true },
           { name: "card", checked: true },
           { name: "comment", checked: true },
           { name: "feed", checked: true },
           { name: "item", checked: true },
           { name: "statistic", checked: true },
+          { name: "\x1b[4mModules\x1b[0m", disabled: "Components which need Javascript for interactivity"},
           { name: "accordion", checked: true },
           { name: "calendar", checked: true },
           { name: "checkbox", checked: true },
@@ -405,6 +410,7 @@ module.exports = {
           { name: "text", checked: true },
           { name: "toast", checked: true },
           { name: "transition", checked: true },
+          { name: "\x1b[4mBehaviors\x1b[0m", disabled: "Standalone javascript components"},
           { name: "api", checked: true },
           { name: "form", checked: true },
           { name: "state", checked: true },
@@ -458,7 +464,7 @@ module.exports = {
       {
         type: 'input',
         name: 'dist',
-        message: 'Where should we output Semantic UI?',
+        message: 'Where should we output Fomantic UI?',
         default: defaults.paths.output.packaged,
         filter: filter.removeTrailingSlash,
         when: when.express
@@ -505,7 +511,7 @@ module.exports = {
         message: 'Should we remove set-up files?',
         choices: [
           {
-            name: 'Yes (re-install will require redownloading semantic).',
+            name: 'Yes (re-install will require redownloading fomantic).',
             value: 'yes'
           },
           {
@@ -517,7 +523,7 @@ module.exports = {
       {
         type: 'list',
         name: 'build',
-        message: 'Do you want to build Semantic now?',
+        message: 'Do you want to build Fomantic now?',
         choices: [
           {
             name: 'Yes',

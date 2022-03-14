@@ -446,25 +446,26 @@
 /*--------------
      Colors
 ---------------*/
+& when not (@variationProgressColors = false) {
+  each(@variationProgressColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.indeterminate.@{color}.progress .bar::before,
-  .ui.@{color}.progress .bar,
-  .ui.progress .@{color}.bar {
-    background-color: @c;
-  }
-  & when (@variationProgressInverted) {
-    .ui.inverted.indeterminate.@{color}.progress .bar::before,
-    .ui.@{color}.inverted.progress .bar,
-    .ui.inverted.progress .@{color}.bar {
-      background-color: @l;
+    .ui.indeterminate.@{color}.progress .bar::before,
+    .ui.@{color}.progress .bar,
+    .ui.progress .@{color}.bar {
+      background-color: @c;
     }
-  }
-})
+    & when (@variationProgressInverted) {
+      .ui.inverted.indeterminate.@{color}.progress .bar::before,
+      .ui.@{color}.inverted.progress .bar,
+      .ui.inverted.progress .@{color}.bar {
+        background-color: @l;
+      }
+    }
+  })
+}
 
 /*--------------
      Sizes

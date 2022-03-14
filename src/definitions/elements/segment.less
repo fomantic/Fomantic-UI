@@ -49,10 +49,10 @@
     border-radius: 0;
     box-shadow: none;
     border: none;
-    border-bottom: @borderWidth solid @borderColor;
+    border-top: @borderWidth solid @borderColor;
   }
-  .ui.vertical.segment:last-child {
-    border-bottom: none;
+  .ui.vertical.segment:first-child {
+    border-top: none;
   }
 }
 
@@ -299,9 +299,10 @@
   .ui.padded.segment {
     padding: @paddedSegmentPadding;
   }
-
-  .ui[class*="very padded"].segment {
-    padding: @veryPaddedSegmentPadding;
+  & when (@variationSegmentVeryPadded) {
+    .ui[class*="very padded"].segment {
+      padding: @veryPaddedSegmentPadding;
+    }
   }
 
   & when (@variationSegmentVertical) {
@@ -437,10 +438,10 @@
       flex-direction: row;
       background-color: transparent;
       padding: 0;
-      box-shadow: @boxShadow;
-      margin: @margin;
-      border-radius: @borderRadius;
-      border: @border;
+      box-shadow: @groupedBoxShadow;
+      margin: @groupedMargin;
+      border-radius: @groupedBorderRadius;
+      border: @groupedBorder;
     }
     .ui.stackable.horizontal.segments {
       flex-wrap: wrap;
@@ -591,22 +592,23 @@
 /*-------------------
        Colors
 --------------------*/
-
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  & when not (@color=primary) and not (@color=secondary) {
-    .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-      border-top: @coloredBorderSize solid @c;
-    }
-    & when (@variationSegmentInverted) {
-      .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-        background-color: @c;
-        color: @white;
+& when not (@variationSegmentColors = false) {
+  each(@variationSegmentColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    & when not (@color=primary) and not (@color=secondary) {
+      .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+        border-top: @coloredBorderSize solid @c;
+      }
+      & when (@variationSegmentInverted) {
+        .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+          background-color: @c;
+          color: @white;
+        }
       }
     }
-  }
-})
+  })
+}
 
 & when (@variationSegmentAligned) {
   /*-------------------
@@ -666,7 +668,7 @@ each(@colors,{
   }
   & when (@variationSegmentAttached) {
     /* Attached */
-    .ui.inverted.attached.segment {
+    .ui.ui.inverted.attached.segment {
       border-color: @solidWhiteBorderColor;
     }
   }
@@ -728,14 +730,16 @@ each(@colors,{
     width: @attachedWidth;
     max-width: @attachedWidth;
     box-shadow: @attachedBoxShadow;
-    border: @attachedBorder;
+    &:not(.basic) {
+      border: @attachedBorder;
+    }
   }
-  .ui.attached:not(.message) + .ui.attached.segment:not(.top) {
+  .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
     border-top: none;
   }
 
   /* Top */
-  .ui[class*="top attached"].segment {
+  .ui.segment[class*="top attached"] {
     bottom: 0;
     margin-bottom: 0;
     top: @attachedTopOffset;
@@ -744,6 +748,9 @@ each(@colors,{
   }
   .ui.segment[class*="top attached"]:first-child {
     margin-top: 0;
+  }
+  .ui.tab.segment[class*="top attached"]:first-child {
+    margin-top: @verticalMargin;
   }
 
   /* Bottom */
@@ -756,6 +763,9 @@ each(@colors,{
     border-radius: 0 0 @borderRadius @borderRadius;
   }
   .ui.segment[class*="bottom attached"]:last-child {
+    margin-bottom: 0;
+  }
+  .ui.tab.segment[class*="bottom attached"]:last-child {
     margin-bottom: @verticalMargin;
   }
 }
@@ -775,6 +785,115 @@ each(@colors,{
   }
 }
 
+& when (@variationSegmentScrolling) {
+  /*--------------
+    Scrolling
+  ---------------*/
+  .ui.scrolling.segment {
+    overflow: auto;
+  }
+  @media only screen and (max-width : @largestMobileScreen) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingMobileMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingMobileMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingMobileMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingMobileMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingMobileMaxHeight * 3;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingTabletMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingTabletMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingTabletMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingTabletMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingTabletMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingComputerMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingComputerMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingComputerMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingComputerMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"]{
+        max-height: @scrollingComputerMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingWidescreenMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingWidescreenMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingWidescreenMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingWidescreenMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingWidescreenMaxHeight * 3;
+      }
+    }
+  }
+}
 /*-------------------
         Size
 --------------------*/

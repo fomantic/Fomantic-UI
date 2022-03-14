@@ -291,46 +291,47 @@
 /*--------------
      Colors
 ---------------*/
+& when not (@variationSliderColors = false) {
+   each(@variationSliderColors, {
+     @color: @value;
+     @c: @colors[@@color][color];
+     @l: @colors[@@color][light];
+     @h: @colors[@@color][hover];
+     @lh: @colors[@@color][lightHover];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-  @h: @colors[@@color][hover];
-  @lh: @colors[@@color][lightHover];
+     /* Standard */
+     .ui.@{color}.slider .inner .track-fill {
+       background-color: @c;
+     }
+     & when (@variationSliderInverted) {
+       .ui.@{color}.inverted.slider .inner .track-fill {
+         background-color: @l;
+       }
+     }
 
-  /* Standard */
-  .ui.@{color}.slider .inner .track-fill {
-    background-color: @c;
-  }
-  & when (@variationSliderInverted) {
-    .ui.@{color}.inverted.slider .inner .track-fill {
-      background-color: @l;
-    }
-  }
+     & when (@variationSliderBasic) {
+       /* Basic */
+       .ui.@{color}.slider.basic .inner .thumb {
+         background-color: @c;
+       }
+       .ui.@{color}.slider.basic .inner .thumb:hover,
+       .ui.@{color}.slider.basic:focus .inner .thumb {
+         background-color: @h;
+       }
+       & when (@variationSliderInverted) {
+         /* Basic Inverted */
+         .ui.@{color}.inverted.slider.basic .inner .thumb {
+           background-color: @l;
+         }
+         .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
+         .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
+           background-color: @lh;
+         }
+       }
+     }
 
-  & when (@variationSliderBasic) {
-    /* Basic */
-    .ui.@{color}.slider.basic .inner .thumb {
-      background-color: @c;
-    }
-    .ui.@{color}.slider.basic .inner .thumb:hover,
-    .ui.@{color}.slider.basic:focus .inner .thumb {
-      background-color: @h;
-    }
-    & when (@variationSliderInverted) {
-      /* Basic Inverted */
-      .ui.@{color}.inverted.slider.basic .inner .thumb {
-        background-color: @l;
-      }
-      .ui.@{color}.inverted.slider.basic .inner .thumb:hover,
-      .ui.@{color}.inverted.slider.basic:focus .inner .thumb {
-        background-color: @lh;
-      }
-    }
-  }
-
-})
+   })
+}
 
 & when (@variationSliderBasic) {
   /*--------------

@@ -66,7 +66,8 @@ $.fn.modal = function(parameters) {
 
         $module         = $(this),
         $context        = $(settings.context),
-        $close          = $module.find(selector.close),
+        $closeIcon      = $module.find(selector.closeIcon),
+        $inputs,
 
         $allModals,
         $otherModals,
@@ -92,6 +93,7 @@ $.fn.modal = function(parameters) {
       module  = {
 
         initialize: function() {
+          module.create.id();
           if(!$module.hasClass('modal')) {
             module.create.modal();
             if(!$.isFunction(settings.onHidden)) {
@@ -116,15 +118,17 @@ $.fn.modal = function(parameters) {
               $actions.empty();
             }
             settings.actions.forEach(function (el) {
-              var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+              var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
                   click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
               $actions.append($('<button/>', {
                 html: icon + text,
+                'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
                 class: className.button + ' ' + cls,
                 click: function () {
-                  if (click.call(element, $module) === false) {
+                  var button = $(this);
+                  if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
                     return;
                   }
                   module.hide();
@@ -135,7 +139,6 @@ $.fn.modal = function(parameters) {
           module.cache = {};
           module.verbose('Initializing dimmer', $context);
 
-          module.create.id();
           module.create.dimmer();
 
           if ( settings.allowMultiple ) {
@@ -145,11 +148,9 @@ $.fn.modal = function(parameters) {
             $module.addClass('top aligned');
           }
           module.refreshModals();
-
+          module.refreshInputs();
           module.bind.events();
-          if(settings.observeChanges) {
-            module.observeChanges();
-          }
+          module.observeChanges();
           module.instantiate();
           if(settings.autoShow){
             module.show();
@@ -166,16 +167,20 @@ $.fn.modal = function(parameters) {
 
         create: {
           modal: function() {
-            $module = $('<div/>', {class: className.modal});
+            $module = $('<div/>', {class: className.modal, role: 'dialog', 'aria-modal': true});
             if (settings.closeIcon) {
-              $close = $('<i/>', {class: className.close})
-              $module.append($close);
+              $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+              $module.append($closeIcon);
             }
             if (settings.title !== '') {
-              $('<div/>', {class: className.title}).appendTo($module);
+              var titleId = '_' + module.get.id() + 'title';
+              $module.attr('aria-labelledby', titleId);
+              $('<div/>', {class: className.title, id: titleId}).appendTo($module);
             }
             if (settings.content !== '') {
-              $('<div/>', {class: className.content}).appendTo($module);
+              var descId = '_' + module.get.id() + 'desc';
+              $module.attr('aria-describedby', descId);
+              $('<div/>', {class: className.content, id: descId}).appendTo($module);
             }
             if (module.has.configActions()) {
               $('<div/>', {class: className.actions}).appendTo($module);
@@ -206,13 +211,13 @@ $.fn.modal = function(parameters) {
             $dimmer = $dimmable.dimmer('get dimmer');
           },
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2, 8);
+            id = (Math.random().toString(16) + '000000000').slice(2, 10);
             elementEventNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
           },
           innerDimmer: function() {
-            if ( $module.find(selector.dimmer).length == 0 ) {
-              $module.prepend('<div class="ui inverted dimmer"></div>');
+            if ( $module.find(selector.dimmer).length === 0 ) {
+              $('<div/>', {class: className.innerDimmer}).prependTo($module);
             }
           }
         },
@@ -228,15 +233,21 @@ $.fn.modal = function(parameters) {
           ;
           $window.off(elementEventNamespace);
           $dimmer.off(elementEventNamespace);
-          $close.off(eventNamespace);
+          $closeIcon.off(elementEventNamespace);
+          if($inputs) {
+            $inputs.off(elementEventNamespace);
+          }
           $context.dimmer('destroy');
         },
 
         observeChanges: function() {
           if('MutationObserver' in window) {
             observer = new MutationObserver(function(mutations) {
-              module.debug('DOM tree modified, refreshing');
-              module.refresh();
+              if(settings.observeChanges) {
+                module.debug('DOM tree modified, refreshing');
+                module.refresh();
+              }
+              module.refreshInputs();
             });
             observer.observe(element, {
               childList : true,
@@ -259,6 +270,23 @@ $.fn.modal = function(parameters) {
         refreshModals: function() {
           $otherModals = $module.siblings(selector.modal);
           $allModals   = $otherModals.add($module);
+        },
+
+        refreshInputs: function(){
+          if($inputs){
+            $inputs
+              .off('keydown' + elementEventNamespace)
+            ;
+          }
+          $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+            return $(this).closest('.disabled').length === 0;
+          });
+          $inputs.first()
+              .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
+          ;
+          $inputs.last()
+              .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
+          ;
         },
 
         attachEvents: function(selector, event) {
@@ -289,6 +317,9 @@ $.fn.modal = function(parameters) {
               .on('click' + eventNamespace, selector.approve, module.event.approve)
               .on('click' + eventNamespace, selector.deny, module.event.deny)
             ;
+            $closeIcon
+                .on('keyup' + elementEventNamespace, module.event.closeKeyUp)
+            ;
             $window
               .on('resize' + elementEventNamespace, module.event.resize)
             ;
@@ -307,7 +338,7 @@ $.fn.modal = function(parameters) {
 
         get: {
           id: function() {
-            return (Math.random().toString(16) + '000000000').substr(2, 8);
+            return id;
           },
           element: function() {
             return $module;
@@ -346,10 +377,38 @@ $.fn.modal = function(parameters) {
           close: function() {
             module.hide();
           },
+          closeKeyUp: function(event){
+            var
+              keyCode   = event.which
+            ;
+            if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
+              module.hide();
+            }
+          },
+          inputKeyDown: {
+            first: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && event.shiftKey) {
+                $inputs.last().focus();
+                event.preventDefault();
+              }
+            },
+            last: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && !event.shiftKey) {
+                $inputs.first().focus();
+                event.preventDefault();
+              }
+            }
+          },
           mousedown: function(event) {
             var
               $target   = $(event.target),
-              isRtl = module.is.rtl();
+              isRtl = module.is.rtl()
             ;
             initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
             if(initialMouseDownInModal) {
@@ -397,10 +456,9 @@ $.fn.modal = function(parameters) {
           },
           keyboard: function(event) {
             var
-              keyCode   = event.which,
-              escapeKey = 27
+              keyCode   = event.which
             ;
-            if(keyCode == escapeKey) {
+            if(keyCode === settings.keys.escape) {
               if(settings.closable) {
                 module.debug('Escape key pressed hiding modal');
                 if ( $module.hasClass(className.front) ) {
@@ -456,6 +514,10 @@ $.fn.modal = function(parameters) {
             : function(){}
           ;
           if( module.is.animating() || !module.is.active() ) {
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling show');
+              return;
+            }
             module.showDimmer();
             module.cacheSizes();
             module.set.bodyMargin();
@@ -485,7 +547,6 @@ $.fn.modal = function(parameters) {
                   $module.detach().appendTo($dimmer);
                 }
               }
-              settings.onShow.call(element);
               if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                 module.debug('Showing modal with css animations');
                 $module
@@ -528,7 +589,6 @@ $.fn.modal = function(parameters) {
             ? callback
             : function(){}
           ;
-          module.debug('Hiding modal');
           if(settings.onHide.call(element, $(this)) === false) {
             module.verbose('Hide callback returned false cancelling hide');
             ignoreRepeatedEvents = false;
@@ -536,6 +596,7 @@ $.fn.modal = function(parameters) {
           }
 
           if( module.is.animating() || module.is.active() ) {
+            module.debug('Hiding modal');
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.remove.active();
               $module
@@ -715,7 +776,7 @@ $.fn.modal = function(parameters) {
               $module
                   .off('mousedown' + elementEventNamespace)
               ;
-            }           
+            }
             $dimmer
               .off('mousedown' + elementEventNamespace)
             ;
@@ -900,13 +961,10 @@ $.fn.modal = function(parameters) {
         set: {
           autofocus: function() {
             var
-              $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
-                return $(this).closest('.disabled').length === 0;
-              }),
               $autofocus = $inputs.filter('[autofocus]'),
               $input     = ($autofocus.length > 0)
                 ? $autofocus.first()
-                : $inputs.first()
+                : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
             ;
             if($input.length > 0) {
               $input.focus();
@@ -988,7 +1046,7 @@ $.fn.modal = function(parameters) {
                       ? $(document).scrollTop() + settings.padding
                       : $(document).scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
                   marginLeft: -(module.cache.width / 2)
-                }) 
+                })
               ;
             } else {
               $module
@@ -997,7 +1055,7 @@ $.fn.modal = function(parameters) {
                     ? -(module.cache.height / 2)
                     : settings.padding / 2,
                   marginLeft: -(module.cache.width / 2)
-                }) 
+                })
               ;
             }
             module.verbose('Setting modal offset for legacy mode');
@@ -1323,11 +1381,19 @@ $.fn.modal.settings = {
   // called after deny selector match
   onDeny     : function(){ return true; },
 
+  keys : {
+    space      : 32,
+    enter      : 13,
+    escape     : 27,
+    tab        :  9,
+  },
+
   selector    : {
     title    : '> .header',
     content  : '> .content',
     actions  : '> .actions',
     close    : '> .close',
+    closeIcon: '> .close',
     approve  : '.actions .positive, .actions .approve, .actions .ok',
     deny     : '.actions .negative, .actions .deny, .actions .cancel',
     modal    : '.ui.modal',
@@ -1359,11 +1425,13 @@ $.fn.modal.settings = {
     template   : 'ui tiny modal',
     ok         : 'positive',
     cancel     : 'negative',
-    prompt     : 'ui fluid input'
+    prompt     : 'ui fluid input',
+    innerDimmer: 'ui inverted dimmer'
   },
   text: {
     ok    : 'Ok',
-    cancel: 'Cancel'
+    cancel: 'Cancel',
+    close : 'Close'
   }
 };
 
@@ -1389,33 +1457,39 @@ $.fn.modal.settings.templates = {
   },
   alert: function () {
     var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+        args     = settings.templates.getArguments(arguments),
+        approveFn = args.handler
     ;
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
       actions: [{
         text : settings.text.ok,
         class: settings.className.ok,
-        click: args.handler
+        click: approveFn
       }]
     }
   },
   confirm: function () {
     var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+        args     = settings.templates.getArguments(arguments),
+        approveFn = function(){args.handler(true)},
+        denyFn = function(){args.handler(false)}
     ;
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
+      onDeny: denyFn,
       actions: [{
         text : settings.text.ok,
         class: settings.className.ok,
-        click: function(){args.handler(true)}
+        click: approveFn
       },{
         text: settings.text.cancel,
         class: settings.className.cancel,
-        click: function(){args.handler(false)}
+        click: denyFn
       }]
     }
   },
@@ -1423,7 +1497,14 @@ $.fn.modal.settings.templates = {
     var $this    = this,
         settings = this.get.settings(),
         args     = settings.templates.getArguments(arguments),
-        input    = $($.parseHTML(args.content)).filter('.ui.input')
+        input    = $($.parseHTML(args.content)).filter('.ui.input'),
+        approveFn = function(){
+          var settings = $this.get.settings(),
+              inputField = $this.get.element().find(settings.selector.prompt)[0]
+          ;
+          args.handler($(inputField).val());
+        },
+        denyFn = function(){args.handler(null)}
     ;
     if (input.length === 0) {
       args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
@@ -1431,19 +1512,16 @@ $.fn.modal.settings.templates = {
     return {
       title  : args.title,
       content: args.content,
+      onApprove: approveFn,
+      onDeny: denyFn,
       actions: [{
         text: settings.text.ok,
         class: settings.className.ok,
-        click: function(){
-          var settings = $this.get.settings(),
-              inputField = $this.get.element().find(settings.selector.prompt)[0]
-          ;
-          args.handler($(inputField).val());
-        }
+        click:  approveFn
       },{
         text: settings.text.cancel,
         class: settings.className.cancel,
-        click: function(){args.handler(null)}
+        click: denyFn
       }]
     }
   }

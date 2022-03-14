@@ -128,7 +128,7 @@
   font-size: @itemFontSize;
   color: @itemColor;
 
-  padding: @itemPadding !important;
+  padding: @itemPadding;
   text-transform: @itemTextTransform;
   font-weight: @itemFontWeight;
   box-shadow: @itemBoxShadow;
@@ -367,8 +367,14 @@
   .ui.dropdown.icon.button > .dropdown.icon {
     margin: 0;
   }
-  .ui.button.dropdown .menu {
+  .ui.dropdown.button .menu {
     min-width: 100%;
+  }
+  .ui.dropdown.button:not(.pointing):not(.floating).active {
+    border-radius: @borderRadius @borderRadius 0 0;
+  }
+  .ui.dropdown.button:not(.pointing):not(.floating) > .menu {
+    border-radius: 0 0 @borderRadius @borderRadius;
   }
 }
 
@@ -556,7 +562,7 @@ select.ui.dropdown {
   /* Menu Item */
   .ui.selection.dropdown .menu > .item {
     border-top: @selectionItemDivider;
-    padding: @selectionItemPadding !important;
+    padding: @selectionItemPadding;
     white-space: normal;
     word-wrap: normal;
   }
@@ -573,10 +579,12 @@ select.ui.dropdown {
   }
 
   /* Active */
+  .ui.selection.simple.dropdown:hover,
   .ui.selection.active.dropdown {
     border-color: @selectionVisibleBorderColor;
     box-shadow: @selectionVisibleBoxShadow;
   }
+  .ui.selection.simple.dropdown:hover .menu,
   .ui.selection.active.dropdown .menu {
     border-color: @selectionVisibleBorderColor;
     box-shadow: @selectionVisibleMenuBoxShadow;
@@ -785,11 +793,15 @@ select.ui.dropdown {
     opacity: @clearableIconOpacity;
     z-index: @selectionIconZIndex;
   }
-  .ui.selection.dropdown > .remove.icon {
-    right: @clearableIconSelectionPosition;
+  & when (@variationDropdownSelection) {
+    .ui.selection.dropdown > .remove.icon {
+      right: @clearableIconSelectionPosition;
+    }
   }
-  .ui.inline.dropdown > .remove.icon {
-    right: @clearableIconInlinePosition;
+  & when (@variationDropdownInline) {
+    .ui.inline.dropdown > .remove.icon {
+      right: @clearableIconInlinePosition;
+    }
   }
 
   .ui.clearable.dropdown .text,
@@ -1073,12 +1085,12 @@ select.ui.dropdown {
   display: none !important;
 }
 
-& when (@variationDropdownStates) {
+& when not (@variationDropdownStates = false) {
   /*--------------------
           States
   ----------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationDropdownStates, {
+    @state: @value;
     @c: @formStates[@@state][dropdownLabelColor];
     @bdc: @formStates[@@state][borderColor];
 
@@ -1198,24 +1210,24 @@ select.ui.dropdown {
     margin: @leftSubMenuMargin !important;
     border-radius: @leftSubMenuBorderRadius !important;
   }
-}
 
-.ui.dropdown .item .left.dropdown.icon,
-.ui.dropdown .left.menu .item .dropdown.icon {
-  width: auto;
-  float: @leftMenuDropdownIconFloat;
-  margin: @leftMenuDropdownIconMargin;
-}
-.ui.dropdown .item .left.dropdown.icon,
-.ui.dropdown .left.menu .item .dropdown.icon {
-  width: auto;
-  float: @leftMenuDropdownIconFloat;
-  margin: @leftMenuDropdownIconMargin;
-}
-.ui.dropdown .item .left.dropdown.icon + .text,
-.ui.dropdown .left.menu .item .dropdown.icon + .text {
-  margin-left: @itemDropdownIconDistance;
-  margin-right: 0;
+  .ui.dropdown .item .left.dropdown.icon,
+  .ui.dropdown .left.menu .item .dropdown.icon {
+    width: auto;
+    float: @leftMenuDropdownIconFloat;
+    margin: @leftMenuDropdownIconMargin;
+  }
+  .ui.dropdown .item .left.dropdown.icon,
+  .ui.dropdown .left.menu .item .dropdown.icon {
+    width: auto;
+    float: @leftMenuDropdownIconFloat;
+    margin: @leftMenuDropdownIconMargin;
+  }
+  .ui.dropdown .item .left.dropdown.icon + .text,
+  .ui.dropdown .left.menu .item .dropdown.icon + .text {
+    margin-left: @itemDropdownIconDistance;
+    margin-right: 0;
+  }
 }
 
 & when (@variationDropdownUpward) {
@@ -1228,7 +1240,6 @@ select.ui.dropdown {
     top: auto;
     bottom: 100%;
     box-shadow: @upwardMenuBoxShadow;
-    border-radius: @upwardMenuBorderRadius;
   }
 
   /* Upward Sub Menu */
@@ -1237,42 +1248,54 @@ select.ui.dropdown {
     bottom: 0 !important;
   }
 
-  /* Active Upward */
-  .ui.simple.upward.active.dropdown,
-  .ui.simple.upward.dropdown:hover {
-    border-radius: @borderRadius @borderRadius 0 0 !important;
-  }
-  .ui.upward.dropdown.button:not(.pointing):not(.floating).active {
-    border-radius: @borderRadius @borderRadius 0 0;
-  }
-
-  /* Selection */
-  .ui.upward.selection.dropdown .menu {
-    border-top-width: @menuBorderWidth !important;
-    border-bottom-width: 0 !important;
-    box-shadow: @upwardSelectionMenuBoxShadow;
-  }
-  .ui.upward.selection.dropdown:hover {
-    box-shadow: @upwardSelectionHoverBoxShadow;
+  & when (@variationDropdownSimple) {
+    /* Active Upward */
+    .ui.simple.upward.active.dropdown,
+    .ui.simple.upward.dropdown:hover {
+      border-radius: 0 0 @borderRadius @borderRadius;
+    }
   }
 
-  /* Active Upward */
-  .ui.active.upward.selection.dropdown {
-    border-radius: @upwardSelectionVisibleBorderRadius !important;
+  & when (@variationDropdownButton) {
+    /* Button */
+    .ui.upward.dropdown.button:not(.pointing):not(.floating).active {
+      border-radius: 0 0 @borderRadius @borderRadius;
+    }
+    .ui.upward.dropdown.button:not(.pointing):not(.floating) > .menu {
+      border-radius: @borderRadius @borderRadius 0 0;
+    }
   }
 
-  /* Visible Upward */
-  .ui.upward.selection.dropdown.visible {
-    box-shadow: @upwardSelectionVisibleBoxShadow;
-    border-radius: @upwardSelectionVisibleBorderRadius !important;
-  }
+  & when (@variationDropdownSelection) {
+    /* Selection */
+    .ui.ui.upward.selection.dropdown .menu {
+      border-top-width: @menuBorderWidth !important;
+      border-bottom-width: 0 !important;
+      box-shadow: @upwardSelectionMenuBoxShadow;
+      border-radius: @upwardSelectionMenuBorderRadius;
+    }
+    .ui.upward.selection.dropdown:hover {
+      box-shadow: @upwardSelectionHoverBoxShadow;
+    }
 
-  /* Visible Hover Upward */
-  .ui.upward.active.selection.dropdown:hover {
-    box-shadow: @upwardSelectionActiveHoverBoxShadow;
-  }
-  .ui.upward.active.selection.dropdown:hover .menu {
-    box-shadow: @upwardSelectionActiveHoverMenuBoxShadow;
+    /* Active Upward */
+    .ui.active.upward.selection.dropdown {
+      border-radius: @upwardSelectionVisibleBorderRadius !important;
+    }
+
+    /* Visible Upward */
+    .ui.upward.selection.dropdown.visible {
+      box-shadow: @upwardSelectionVisibleBoxShadow;
+      border-radius: @upwardSelectionVisibleBorderRadius !important;
+    }
+
+    /* Visible Hover Upward */
+    .ui.upward.active.selection.dropdown:hover {
+      box-shadow: @upwardSelectionActiveHoverBoxShadow;
+    }
+    .ui.upward.active.selection.dropdown:hover .menu {
+      box-shadow: @upwardSelectionActiveHoverMenuBoxShadow;
+    }
   }
 }
 
@@ -1378,23 +1401,25 @@ select.ui.dropdown {
   }
 }
 
-/*--------------
-     Columnar
----------------*/
-.ui.column.dropdown > .menu {
-  flex-wrap:wrap;
-}
-.ui.dropdown[class*="two column"] > .menu > .item {
-  width: 50%;
-}
-.ui.dropdown[class*="three column"] > .menu > .item {
-  width: 33%;
-}
-.ui.dropdown[class*="four column"] > .menu > .item {
-  width: 25%;
-}
-.ui.dropdown[class*="five column"] > .menu > .item {
-  width: 20%;
+& when (@variationDropdownColumnar) {
+  /*--------------
+       Columnar
+  ---------------*/
+  .ui.column.dropdown > .menu {
+    flex-wrap: wrap;
+  }
+  .ui.dropdown[class*="two column"] > .menu > .item {
+    width: 50%;
+  }
+  .ui.dropdown[class*="three column"] > .menu > .item {
+    width: 33%;
+  }
+  .ui.dropdown[class*="four column"] > .menu > .item {
+    width: 25%;
+  }
+  .ui.dropdown[class*="five column"] > .menu > .item {
+    width: 20%;
+  }
 }
 
 & when (@variationDropdownSimple) {
@@ -1421,16 +1446,27 @@ select.ui.dropdown {
     transition: @simpleTransition;
     margin-top: 0 !important;
   }
+  & when (@variationDropdownUpward) {
+    .ui.simple.dropdown .upward.menu {
+      margin-bottom: @simpleUpwardMenuMargin;
+    }
+    .ui.simple.selection.dropdown .upward.menu {
+      margin-bottom: @simpleUpwardSelectionMenuMargin;
+    }
+    .ui.menu:not(.vertical) .ui.simple.dropdown.item .upward.menu {
+      margin-bottom: @simpleUpwardItemMenuMargin;
+    }
+  }
 
   .ui.simple.active.dropdown,
   .ui.simple.dropdown:hover {
-    border-bottom-left-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
   }
 
   .ui.simple.active.dropdown > .menu,
   .ui.simple.dropdown:hover > .menu {
-    overflow: visible;
+    overflow: auto;
     width: auto;
     height: auto;
     top: 100%;
@@ -1438,7 +1474,7 @@ select.ui.dropdown {
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
   .ui.simple.dropdown .menu .item:hover > .menu {
-    overflow: visible;
+    overflow: auto;
     width: auto;
     height: auto;
     top: 0 !important;
@@ -1809,6 +1845,8 @@ select.ui.dropdown {
       color: @invertedSelectionVisibleTextColor;
     }
 
+    .ui.selection.simple.dropdown:hover .inverted.menu,
+    .ui.inverted.selection.simple.dropdown:hover .menu,
     .ui.selection.active.dropdown .inverted.menu,
     .ui.inverted.selection.active.dropdown .menu,
     .ui.inverted.selection.active.dropdown:hover {
@@ -1895,21 +1933,34 @@ select.ui.dropdown {
   }
 
   /* Scrollbars */
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
-    background: @trackInvertedBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
-    background: @thumbInvertedBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
-    background: @thumbInvertedInactiveBackground;
-  }
-  .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
-  .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
-    background: @thumbInvertedHoverBackground;
+  & when (@useCustomScrollbars) {
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-track,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-track {
+      background: @trackInvertedBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb {
+      background: @thumbInvertedBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:window-inactive,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:window-inactive {
+      background: @thumbInvertedInactiveBackground;
+    }
+    .ui.dropdown .inverted.menu::-webkit-scrollbar-thumb:hover,
+    .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
+      background: @thumbInvertedHoverBackground;
+    }
+    .ui.dropdown .inverted.menu,
+    .ui.inverted.dropdown .menu {
+      /* IE11 */
+      scrollbar-face-color: @thumbInvertedBackgroundHex;
+      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+      scrollbar-track-color: @trackInvertedBackgroundHex;
+      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+
+      /* firefox : first color thumb, second track */
+      scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
+    }
   }
   & when (@variationDropdownPointing) {
     .ui.pointing.dropdown > .inverted.menu:after,

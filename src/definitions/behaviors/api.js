@@ -74,6 +74,7 @@ $.api = $.fn.api = function(parameters) {
         url,
         data,
         requestStartTime,
+        originalData,
 
         // standard module
         element         = this,
@@ -86,6 +87,7 @@ $.api = $.fn.api = function(parameters) {
 
         initialize: function() {
           if(!methodInvoked) {
+            originalData = settings.data;
             module.bind.events();
           }
           module.instantiate();
@@ -132,7 +134,7 @@ $.api = $.fn.api = function(parameters) {
                response = JSON.parse(response);
               }
               catch(e) {
-                // isnt json string
+                // isn't json string
               }
             }
             return response;
@@ -148,8 +150,8 @@ $.api = $.fn.api = function(parameters) {
               module.error(error.noStorage);
               return;
             }
-            response = sessionStorage.getItem(url);
-            module.debug('Using cached response', url, response);
+            response = sessionStorage.getItem(url + module.get.normalizedData());
+            module.debug('Using cached response', url, settings.data, response);
             response = module.decode.json(response);
             return response;
           }
@@ -167,8 +169,8 @@ $.api = $.fn.api = function(parameters) {
             if( $.isPlainObject(response) ) {
               response = JSON.stringify(response);
             }
-            sessionStorage.setItem(url, response);
-            module.verbose('Storing cached response for url', url, response);
+            sessionStorage.setItem(url + module.get.normalizedData(), response);
+            module.verbose('Storing cached response for url', url, settings.data, response);
           }
         },
 
@@ -197,7 +199,7 @@ $.api = $.fn.api = function(parameters) {
 
           // Add form content
           if(settings.serializeForm) {
-            settings.data = module.add.formData(settings.data);
+            settings.data = module.add.formData(originalData || settings.data);
           }
 
           // call beforesend and get any settings changes
@@ -334,10 +336,6 @@ $.api = $.fn.api = function(parameters) {
           cancelled: function() {
             return (module.cancelled || false);
           },
-          succesful: function() {
-            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
-            return module.was.successful();
-          },
           successful: function() {
             return (module.request && module.request.state() == 'resolved');
           },
@@ -365,8 +363,8 @@ $.api = $.fn.api = function(parameters) {
                   var
                     // allow legacy {$var} style
                     variable = (templatedString.indexOf('$') !== -1)
-                      ? templatedString.substr(2, templatedString.length - 3)
-                      : templatedString.substr(1, templatedString.length - 2),
+                      ? templatedString.slice(2, -1)
+                      : templatedString.slice(1, -1),
                     value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                       ? urlData[variable]
                       : ($module.data(variable) !== undefined)
@@ -397,8 +395,8 @@ $.api = $.fn.api = function(parameters) {
                   var
                     // allow legacy {/$var} style
                     variable = (templatedString.indexOf('$') !== -1)
-                      ? templatedString.substr(3, templatedString.length - 4)
-                      : templatedString.substr(2, templatedString.length - 3),
+                      ? templatedString.slice(3, -1)
+                      : templatedString.slice(2, -1),
                     value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                       ? urlData[variable]
                       : ($module.data(variable) !== undefined)
@@ -429,25 +427,29 @@ $.api = $.fn.api = function(parameters) {
           },
           formData: function(data) {
             var
-              canSerialize = ($.fn.serializeObject !== undefined),
-              formData     = (canSerialize)
-                ? $form.serializeObject()
-                : $form.serialize(),
+              formData = {},
               hasOtherData
             ;
-            data         = data || settings.data;
+            data         = data || originalData || settings.data;
             hasOtherData = $.isPlainObject(data);
 
+            $.each($form.serializeArray(), function (i, element) {
+              var node = formData[element.name];
+
+              if ('undefined' !== typeof node && node !== null) {
+                if (Array.isArray(node)) {
+                  node.push(element.value);
+                } else {
+                  formData[element.name] = [node, element.value];
+                }
+              } else {
+                formData[element.name] = element.value;
+              }
+            });
+
             if(hasOtherData) {
-              if(canSerialize) {
-                module.debug('Extending existing data with form data', data, formData);
-                data = $.extend(true, {}, data, formData);
-              }
-              else {
-                module.error(error.missingSerialize);
-                module.debug('Cant extend data. Replacing data with form data', data, formData);
-                data = formData;
-              }
+              module.debug('Extending existing data with form data', data, formData);
+              data = $.extend(true, {}, data, formData);
             }
             else {
               module.debug('Adding form data', formData);
@@ -698,6 +700,9 @@ $.api = $.fn.api = function(parameters) {
         },
 
         get: {
+          normalizedData: function(){
+            return typeof settings.data === "string" ? settings.data : JSON.stringify(settings.data, Object.keys(settings.data).sort());
+          },
           responseFromXHR: function(xhr) {
             return $.isPlainObject(xhr)
               ? (module.is.expectingJSON())
@@ -1105,7 +1110,7 @@ $.api.settings = {
   responseAsync     : false,
 
 // whether onResponse should work with response value without force converting into an object
-  rawResponse       : false,
+  rawResponse       : true,
 
   // callbacks before request
   beforeSend  : function(settings) { return settings; },
@@ -1141,7 +1146,6 @@ $.api.settings = {
     legacyParameters  : 'You are using legacy API success callback names',
     method            : 'The method you called is not defined',
     missingAction     : 'API action used but no url was defined',
-    missingSerialize  : 'jquery-serialize-object is required to add form data to an existing data object',
     missingURL        : 'No URL specified for api event',
     noReturnedValue   : 'The beforeSend callback must return a settings object, beforeSend ignored.',
     noStorage         : 'Caching responses locally requires session storage',

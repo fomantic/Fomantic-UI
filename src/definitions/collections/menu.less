@@ -271,9 +271,9 @@
   }
 }
 
-/* Pointing */
-.ui.menu .pointing.dropdown.item .menu {
-  margin-top: @pointingDropdownMenuDistance;
+  /* Pointing */
+  .ui.menu .pointing.dropdown.item .menu {
+    margin-top: @pointingDropdownMenuDistance;
 }
 
 & when (@variationMenuInverted) {
@@ -372,7 +372,7 @@
      List
 ---------------*/
 
-/* Menu divider shouldnt apply */
+/* Menu divider shouldn't apply */
 .ui.menu .list .item:before {
   background: none !important;
 }
@@ -679,11 +679,13 @@ Floated Menu / Item
     margin-bottom: -@tabularBorderWidth;
     box-shadow: @tabularActiveBoxShadow;
     border-radius: @tabularBorderRadius @tabularBorderRadius 0 0 !important;
+    &:hover {
+      cursor: default;
+    }
   }
 
   /* Coupling with segment for attachment */
-  .ui.tabular.menu + .attached:not(.top).segment,
-  .ui.tabular.menu + .attached:not(.top).segment + .attached:not(.top).segment {
+  .ui.tabular.menu ~ .attached:not(.top).segment {
     border-top: none;
     margin-left: 0;
     margin-top: 0;
@@ -773,6 +775,18 @@ Floated Menu / Item
     border-right: @tabularBorderWidth solid transparent;
     border-top: @tabularOppositeBorderWidth solid transparent;
     border-bottom: none;
+  }
+  & when (@variationMenuInverted) {
+    .ui.inverted.tabular.menu .active.item,
+    .ui.inverted.tabular.menu .active.item:hover {
+      background: @invertedTabularActiveBackground;
+      border-color: @invertedTabularBorderColor;
+    }
+    .ui.inverted.tabular.menu .item:not(.active):hover {
+      color: @invertedTabularHoveredTextColor;
+      background: transparent;
+      cursor: pointer;
+    }
   }
 }
 
@@ -939,10 +953,11 @@ Floated Menu / Item
     .ui.vertical.secondary.menu .item > .menu .item {
       background-color: transparent;
     }
-
-    /* Inverted */
-    .ui.secondary.inverted.menu {
-      background-color: transparent;
+    & when (@variationMenuInverted) {
+      /* Inverted */
+      .ui.secondary.inverted.menu {
+        background-color: transparent;
+      }
     }
   }
 
@@ -1209,51 +1224,59 @@ Floated Menu / Item
   }
 }
 
-/*--------------
-    Icon Only
----------------*/
+& when (@variationMenuIcon) {
+  /*--------------
+      Icon Only
+  ---------------*/
 
-/* Vertical Menu */
-.ui.vertical.icon.menu {
-  display: inline-block;
-  width: auto;
-}
+  & when (@variationMenuVertical) {
+    /* Vertical Menu */
+    .ui.vertical.icon.menu {
+      display: inline-block;
+      width: auto;
+    }
+  }
 
-/* Item */
-.ui.icon.menu .item {
-  height: auto;
-  text-align: @iconMenuTextAlign;
-  color: @iconMenuItemColor;
-}
+  /* Item */
+  .ui.icon.menu .item {
+    height: auto;
+    text-align: @iconMenuTextAlign;
+    color: @iconMenuItemColor;
+  }
 
-/* Icon */
-.ui.icon.menu .item > i.icon:not(.dropdown) {
-  margin: 0;
-  opacity: 1;
-}
+  /* Icon */
+  .ui.icon.menu .item > i.icon:not(.dropdown) {
+    margin: 0;
+    opacity: 1;
+  }
 
-/* Icon Gylph */
-.ui.icon.menu i.icon:before {
-  opacity: 1;
-}
+  /* Icon Glyph */
+  .ui.icon.menu i.icon:before {
+    opacity: 1;
+  }
 
-/* (x) Item Icon */
-.ui.menu .icon.item > i.icon {
-  width: auto;
-  margin: 0 auto;
-}
+  /* (x) Item Icon */
+  .ui.menu .icon.item > i.icon {
+    width: auto;
+    margin: 0 auto;
+  }
 
-/* Vertical Icon */
-.ui.vertical.icon.menu .item > i.icon:not(.dropdown) {
-  display: block;
-  opacity: 1;
-  margin: 0 auto;
-  float: none;
-}
+  /* Vertical Icon */
+  & when (@variationMenuVertical) {
+    .ui.vertical.icon.menu .item > i.icon:not(.dropdown) {
+      display: block;
+      opacity: 1;
+      margin: 0 auto;
+      float: none;
+    }
+  }
 
-/* Inverted */
-.ui.inverted.icon.menu .item {
-  color: @iconMenuInvertedItemColor;
+  /* Inverted */
+  & when (@variationMenuInverted) {
+    .ui.inverted.icon.menu .item {
+      color: @iconMenuInvertedItemColor;
+    }
+  }
 }
 
 & when (@variationMenuLabeled) {
@@ -1340,22 +1363,23 @@ Floated Menu / Item
 /*--------------
      Colors
 ---------------*/
+& when not (@variationMenuColors = false) {
+  each(@variationMenuColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-
-  & when not (@color=secondary) {
-    .ui.ui.ui.menu .@{color}.active.item,
-    .ui.ui.@{color}.menu .active.item:hover,
-    .ui.ui.@{color}.menu .active.item {
-      & when not (@secondaryPointingActiveBorderColor = currentColor) {
-        border-color: @c;
+    & when not (@color=secondary) {
+      .ui.ui.ui.menu .@{color}.active.item,
+      .ui.ui.@{color}.menu .active.item:hover,
+      .ui.ui.@{color}.menu .active.item {
+        & when not (@secondaryPointingActiveBorderColor = currentColor) {
+          border-color: @c;
+        }
+        color: @c;
       }
-      color: @c;
     }
-  }
-})
+  })
+}
 
 & when (@variationMenuInverted) {
   /*--------------
@@ -1477,34 +1501,44 @@ each(@colors, {
   }
 }
 
+& when (@variationMenuCentered) {
+  .ui.center.aligned.menu,
+  .ui.centered.menu {
+    display: inline-flex;
+    transform: translateX(-50%);
+    margin-left:50%;
+  }
+}
+
 & when (@variationMenuInverted) {
   /*--------------
       Inverted
   ---------------*/
+  & when not (@variationMenuColors = false) {
+    each(@variationMenuColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @h: @colors[@@color][hover];
 
-  each(@colors, {
-    @color: replace(@key, '@', '');
-    @c: @colors[@@color][color];
-    @h: @colors[@@color][hover];
-
-    & when not (@color=secondary) {
-      .ui.ui.ui.inverted.menu .@{color}.active.item,
-      .ui.ui.inverted.@{color}.menu {
-        background-color: @c;
-      }
-      .ui.inverted.@{color}.menu .item:before {
-        background-color: @invertedColoredDividerBackground;
-      }
-      .ui.ui.inverted.@{color}.menu .active.item {
-        background-color: @invertedColoredActiveBackground;
-      }
-      & when (@variationMenuPointing) {
-        .ui.inverted.pointing.@{color}.menu .active.item {
-          background-color: @h;
+      & when not (@color=secondary) {
+        .ui.ui.ui.inverted.menu .@{color}.active.item,
+        .ui.ui.inverted.@{color}.menu {
+          background-color: @c;
+        }
+        .ui.inverted.@{color}.menu .item:before {
+          background-color: @invertedColoredDividerBackground;
+        }
+        .ui.ui.inverted.@{color}.menu .active.item {
+          background-color: @invertedColoredActiveBackground;
+        }
+        & when (@variationMenuPointing) {
+          .ui.inverted.pointing.@{color}.menu .active.item {
+            background-color: @h;
+          }
         }
       }
-    }
-  })
+    })
+  }
 
   & when (@variationMenuPointing) {
     .ui.ui.ui.inverted.pointing.menu .active.item:after {
@@ -1616,38 +1650,40 @@ each(@colors, {
   display: none;
 }
 
-.ui.menu.two.item .item {
-  width: 50%;
-}
-.ui.menu.three.item .item {
-  width: 33.333%;
-}
-.ui.menu.four.item .item {
-  width: 25%;
-}
-.ui.menu.five.item .item {
-  width: 20%;
-}
-.ui.menu.six.item .item {
-  width: 16.666%;
-}
-.ui.menu.seven.item .item {
-  width: 14.285%;
-}
-.ui.menu.eight.item .item {
-  width: 12.500%;
-}
-.ui.menu.nine.item .item {
-  width: 11.11%;
-}
-.ui.menu.ten.item .item {
-  width: 10.0%;
-}
-.ui.menu.eleven.item .item {
-  width: 9.09%;
-}
-.ui.menu.twelve.item .item {
-  width: 8.333%;
+& when (@variationMenuEqualWidth) {
+  .ui.menu.two.item .item {
+    width: 50%;
+  }
+  .ui.menu.three.item .item {
+    width: 33.333%;
+  }
+  .ui.menu.four.item .item {
+    width: 25%;
+  }
+  .ui.menu.five.item .item {
+    width: 20%;
+  }
+  .ui.menu.six.item .item {
+    width: 16.666%;
+  }
+  .ui.menu.seven.item .item {
+    width: 14.285%;
+  }
+  .ui.menu.eight.item .item {
+    width: 12.500%;
+  }
+  .ui.menu.nine.item .item {
+    width: 11.11%;
+  }
+  .ui.menu.ten.item .item {
+    width: 10.0%;
+  }
+  .ui.menu.eleven.item .item {
+    width: 9.09%;
+  }
+  .ui.menu.twelve.item .item {
+    width: 8.333%;
+  }
 }
 
 & when (@variationMenuFixed) {
@@ -1800,14 +1836,16 @@ each(@colors, {
   }
 }
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
+& when not (@variationMenuColors = false) {
+  each(@variationMenuColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
 
-  .ui.inverted.pointing.menu .@{color}.active.item:after {
-    background-color: @c;
-  }
-})
+    .ui.inverted.pointing.menu .@{color}.active.item:after {
+      background-color: @c;
+    }
+  })
+}
 
 & when (@variationMenuAttached) {
   /*--------------
@@ -1862,12 +1900,17 @@ each(@colors, {
   }
 
   /* Tabular Attached */
-  .ui.attached.menu:not(.tabular) {
+  .ui.attached.menu:not(.tabular):not(.text) {
     border: @attachedBorder;
   }
   & when (@variationMenuInverted) {
     .ui.attached.inverted.menu {
       border: none;
+    }
+    & when (@variationMenuTabular) {
+      .ui[class*="top attached"].inverted.tabular.menu {
+        border-bottom: @invertedTabularBorder;
+      }
     }
   }
   & when (@variationMenuTabular) {
@@ -1886,8 +1929,10 @@ each(@colors, {
 .ui.menu {
   font-size: @medium;
 }
-.ui.vertical.menu {
-  width: @mediumWidth;
+& when (@variationMenuVertical) {
+  .ui.vertical.menu {
+    width: @mediumWidth;
+  }
 }
 & when not (@variationMenuSizes = false) {
   each(@variationMenuSizes, {
@@ -1898,8 +1943,10 @@ each(@colors, {
     .ui.@{value}.menu .dropdown .menu > .item {
       font-size: @s;
     }
-    .ui.@{value}.vertical.menu:not(.icon) {
-      width: @@w;
+    & when (@variationMenuVertical) {
+      .ui.@{value}.vertical.menu:not(.icon) {
+        width: @@w;
+      }
     }
   })
 }

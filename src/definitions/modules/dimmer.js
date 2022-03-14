@@ -192,11 +192,14 @@ $.fn.dimmer = function(parameters) {
             ? callback
             : function(){}
           ;
-          module.debug('Showing dimmer', $dimmer, settings);
-          module.set.variation();
           if( (!module.is.dimmed() || module.is.animating()) && module.is.enabled() ) {
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling dimmer show');
+              return;
+            }
+            module.debug('Showing dimmer', $dimmer, settings);
+            module.set.variation();
             module.animate.show(callback);
-            settings.onShow.call(element);
             settings.onChange.call(element);
           }
           else {
@@ -210,9 +213,12 @@ $.fn.dimmer = function(parameters) {
             : function(){}
           ;
           if( module.is.dimmed() || module.is.animating() ) {
+            if(settings.onHide.call(element) === false) {
+              module.verbose('Hide callback returned false cancelling dimmer hide');
+              return;
+            }
             module.debug('Hiding dimmer', $dimmer);
             module.animate.hide(callback);
-            settings.onHide.call(element);
             settings.onChange.call(element);
           }
           else {
@@ -264,6 +270,7 @@ $.fn.dimmer = function(parameters) {
                   },
                   onComplete  : function() {
                     module.set.active();
+                    settings.onVisible.call($dimmer);
                     callback();
                   }
                 })
@@ -285,6 +292,7 @@ $.fn.dimmer = function(parameters) {
                 .fadeTo(module.get.duration(), settings.opacity, function() {
                   $dimmer.removeAttr('style');
                   module.set.active();
+                  settings.onVisible.call($dimmer);
                   callback();
                 })
               ;
@@ -310,6 +318,7 @@ $.fn.dimmer = function(parameters) {
                     module.remove.dimmed();
                     module.remove.variation();
                     module.remove.active();
+                    settings.onHidden.call($dimmer);
                     callback();
                   }
                 })
@@ -323,6 +332,7 @@ $.fn.dimmer = function(parameters) {
                   module.remove.dimmed();
                   module.remove.active();
                   $dimmer.removeAttr('style');
+                  settings.onHidden.call($dimmer);
                   callback();
                 })
               ;
@@ -704,6 +714,8 @@ $.fn.dimmer.settings = {
   onChange    : function(){},
   onShow      : function(){},
   onHide      : function(){},
+  onVisible   : function(){},
+  onHidden    : function(){},
 
   error   : {
     method   : 'The method you called is not defined.'
