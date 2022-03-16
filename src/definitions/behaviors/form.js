@@ -131,6 +131,11 @@ $.fn.form = function(parameters) {
           $reset      = $module.find(selector.reset);
         },
 
+        refreshEvents: function() {
+          module.removeEvents();
+          module.bindEvents();
+        },
+
         submit: function() {
           module.verbose('Submitting form', $module);
           submitting = true;
@@ -391,7 +396,6 @@ $.fn.form = function(parameters) {
           $module.off(eventNamespace);
           $field.off(eventNamespace);
           $submit.off(eventNamespace);
-          $field.off(eventNamespace);
         },
 
         event: {
@@ -864,9 +868,11 @@ $.fn.form = function(parameters) {
               }
             });
             module.debug('Adding rules', newValidation.rules, validation);
+            module.refreshEvents();
           },
           fields: function(fields) {
             validation = $.extend(true, {}, validation, module.get.fieldsFromShorthand(fields));
+            module.refreshEvents();
           },
           prompt: function(identifier, errors, internal) {
             var
@@ -963,6 +969,7 @@ $.fn.form = function(parameters) {
             $.each(fields, function(index, field) {
               module.remove.rule(field);
             });
+            module.refreshEvents();
           },
           // alias
           rules: function(field, rules) {
