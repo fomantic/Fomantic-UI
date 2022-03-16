@@ -1017,15 +1017,15 @@
   -----------------------*/
 
   .ui.padded.grid:not(.vertically):not(.horizontally) {
-    margin: 0 !important;
+    margin: 0;
   }
   [class*="horizontally padded"].ui.grid {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+    margin-left: 0;
+    margin-right: 0;
   }
   [class*="vertically padded"].ui.grid {
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
+    margin-top: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -1689,10 +1689,10 @@
   --------------------*/
 
   @media only screen and (max-width: @largestMobileScreen) {
-    .ui.ui.ui.ui.stackable.grid {
+    .ui.stackable.grid {
       width: auto;
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+      margin-left: @stackableMobileGutter;
+      margin-right: @stackableMobileGutter;
     }
     .ui.stackable.grid > .row > .wide.column,
     .ui.stackable.grid > .wide.column,
@@ -1721,8 +1721,8 @@
     /* Don't pad inside segment or nested grid */
     .ui.grid .ui.stackable.grid,
     .ui.segment:not(.vertical) .ui.stackable.page.grid {
-      margin-left: -(@stackableGutter / 2) !important;
-      margin-right: -(@stackableGutter / 2) !important;
+      margin-left: -(@stackableGutter / 2);
+      margin-right: -(@stackableGutter / 2);
     }
 
     /* Divided Stackable */
