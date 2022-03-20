@@ -24,7 +24,6 @@
     "url": "https://github.com/fomantic/Fomantic-UI.git"
   },
   "scripts": {
-    "install": "gulp install",
     "build": "gulp build",
     "changelog": "auto-changelog -p"
   },
