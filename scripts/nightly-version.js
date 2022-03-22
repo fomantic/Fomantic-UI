@@ -9,6 +9,7 @@ const semver = require('semver')
 
 // pkg
 const pkg = require('../package.json')
+const process = require('process')
 
 const ghBase = 'https://api.github.com'
 const repoUrlPath = 'fomantic/Fomantic-UI'
@@ -46,8 +47,8 @@ const getNightlyVersion = async function () {
   const current = semver.parse(await getPublishedVersion())
 
   if (current.build[0] === currentRev) {
-    console.warn('No new commits since last publish. Exiting.')
-    childProcess.spawnSync.stdin.write('\x03');
+    console.log('No new commits since last publish. Exiting.')
+    process.exit(1)
     return
   }
 
