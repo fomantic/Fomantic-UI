@@ -22,8 +22,10 @@ jobs:
     - name: update nightly version
       run: node ./scripts/nightly-version.js
     - name: fomantic install & build
+      if: ${{ success() }}
       run: npx gulp install
     - name: publish to npm
+      if: ${{ success() }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm publish --tag nightly
