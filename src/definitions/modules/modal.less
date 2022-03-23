@@ -208,6 +208,12 @@
   .ui.modal:not(.fullscreen) {
     width: @tabletWidth;
     margin: @tabletMargin;
+  }
+}
+@media only screen and (min-width : @computerBreakpoint) {
+  .ui.modal:not(.fullscreen) {
+    width: @computerWidth;
+    margin: @computerMargin;
     & > .active.dimmer + .close:not(.inside) {
       pointer-events: none;
       opacity: @closeOpacityDimmed;
@@ -218,12 +224,6 @@
   }
   .ui.inverted.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside){
     text-shadow: @invertedCloseShadow;
-  }
-}
-@media only screen and (min-width : @computerBreakpoint) {
-  .ui.modal:not(.fullscreen) {
-    width: @computerWidth;
-    margin: @computerMargin;
   }
 }
 @media only screen and (min-width : @largeMonitorBreakpoint) {

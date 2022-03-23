@@ -44,7 +44,6 @@
 --------------------*/
 
 @imagePath : '../../themes/material/assets/images';
-@fontPath  : '../../themes/material/assets/fonts';
 
 /*--------------
    Paragraphs

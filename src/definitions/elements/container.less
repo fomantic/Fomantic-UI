@@ -137,6 +137,25 @@
   }
 }
 
+& when (@variationContainerWide) {
+  /* Wide Container */
+  @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+    .ui.ui.ui.wide.container {
+      width: @tabletWideWidth;
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+    .ui.ui.ui.wide.container {
+      width: @computerWideWidth;
+    }
+  }
+  @media only screen and (min-width: @largeMonitorBreakpoint) {
+    .ui.ui.ui.wide.container {
+      width: @largeMonitorWideWidth;
+    }
+  }
+}
+
 & when (@variationContainerFluid) {
   /* Fluid */
   .ui.fluid.container {

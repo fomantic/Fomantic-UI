@@ -46,6 +46,7 @@
 @variationContainerRelaxed: true;
 @variationContainerVeryRelaxed: true;
 @variationContainerText: true;
+@variationContainerWide: true;
 @variationContainerFluid: true;
 @variationContainerAligned: true;
 @variationContainerJustified: true;
