@@ -1560,7 +1560,7 @@ $.fn.calendar.settings = {
       if (!text) {
         return null;
       }
-      text = String(text).replace(/\s/g,'');
+      text = String(text).trim().replace(/([.:\/\-])\s+/g,'$1').replace(/\s+([.:\/-])/g,'$1').replace(/\s+/g,' ');
       if (text.length === 0) {
         return null;
       }
