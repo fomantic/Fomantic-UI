@@ -19,7 +19,7 @@ const currentRev = childProcess // get the current rev from the repo
   .execSync('git rev-parse HEAD')
   .toString()
   .trim()
-  .substr(0, 7)
+  .slice(0, 7)
 
 const getNextVersion = async function () {
   const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
@@ -38,7 +38,12 @@ const getPublishedVersion = async function () {
   return semver.parse(
     await fetch(`${npmBase}/${npmPackage}`)
       .then(r => r.json())
-      .then(p => p['dist-tags'].nightly)
+      .then(p => {
+        let nightly = p['dist-tags'].nightly ?? '';
+        let versionInfo = p.versions[nightly] ?? {};
+        let buildCommit = nightly.indexOf('+')===-1 ? '+'+(versionInfo.gitHead ?? '').slice(0,7) : '';
+        return nightly+buildCommit;
+      })
   )
 }
 
