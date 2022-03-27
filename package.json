@@ -28,6 +28,7 @@
     "changelog": "auto-changelog -p"
   },
   "dependencies": {
+    "@actions/core": "^1.6.0",
     "@octokit/rest": "^16.16.0",
     "better-console": "1.0.1",
     "browserslist": "^4.19.1",
