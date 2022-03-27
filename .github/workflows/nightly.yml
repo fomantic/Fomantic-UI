@@ -7,6 +7,10 @@ jobs:
     name: Build nightly distribution
     runs-on: ubuntu-latest
     if: github.repository == 'fomantic/Fomantic-UI'
+    outputs:
+      shouldPublish:
+        description: "If the package should be published"
+        value: ${{ steps.nightly-version.outputs.shouldPublish }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -20,12 +24,13 @@ jobs:
     - name: install dependencies
       run: npm install --ignore-scripts
     - name: update nightly version
+      id: nightly-version
       run: node ./scripts/nightly-version.js
     - name: fomantic install & build
-      if: ${{ success() }}
+      if: ${{ steps.nightly-version.outputs.shouldPublish }}
       run: npx gulp install
     - name: publish to npm
-      if: ${{ success() }}
+      if: ${{ steps.nightly-version.outputs.shouldPublish }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm publish --tag nightly
