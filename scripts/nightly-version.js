@@ -6,6 +6,7 @@ const childProcess = require('child_process')
 // npm
 const fetch = require('node-fetch')
 const semver = require('semver')
+const actions = require('@actions/core')
 
 // pkg
 const pkg = require('../package.json')
@@ -52,8 +53,10 @@ const getNightlyVersion = async function () {
   const current = semver.parse(await getPublishedVersion())
 
   if (current.build[0] === currentRev) {
+    actions.setOutput('shouldPublish', false)
+
     console.log('No new commits since last publish. Exiting.')
-    process.exit(1)
+    process.exit(0)
     return
   }
 
@@ -71,6 +74,7 @@ const getNightlyVersion = async function () {
     )
   }
 
+  actions.setOutput('shouldPublish', true)
   return `${nightlyVersion}+${currentRev}`
 }
 
