@@ -9,29 +9,32 @@ jobs:
     if: github.repository == 'fomantic/Fomantic-UI'
     outputs:
       shouldPublish: ${{ steps.nightly-version.outputs.shouldPublish }}
+      publishVersion: ${{ steps.nightly-version.outputs.publishVersion }}
     steps:
     - uses: actions/checkout@v2
       with:
         ref: develop
     - uses: actions/setup-node@v2
       with:
-        node-version: 14
+        node-version: 16
         registry-url: https://registry.npmjs.org/
     - name: pre-setup
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
-      run: npm install --ignore-scripts
+      run: yarn
     - name: update nightly version
       id: nightly-version
       run: node ./scripts/nightly-version.js
     - name: fomantic install & build
       if: ${{ steps.nightly-version.outputs.shouldPublish }}
-      run: npx gulp install
+      run: yarn gulp install
     - name: publish to npm
       if: ${{ steps.nightly-version.outputs.shouldPublish }}
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
+        PUBLISH_VERSION: ${{ steps.nightly-version.outputs.version }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        npm publish --tag nightly
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION}}
-        CI: true
+        yarn config set registry https://registry.npmjs.org
+        yarn publish --tag nightly --new-version $PUBLISH_VERSION --non-interactive

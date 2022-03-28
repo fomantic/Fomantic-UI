@@ -16,6 +16,6 @@ jobs:
     - name: pre-install
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
-      run: npm install --ignore-scripts
+      run: yarn
     - name: pre fomantic install & gulp build
-      run: npx gulp install
+      run: yarn gulp install
