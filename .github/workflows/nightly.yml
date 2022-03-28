@@ -8,9 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     if: github.repository == 'fomantic/Fomantic-UI'
     outputs:
-      shouldPublish:
-        description: "If the package should be published"
-        value: ${{ steps.nightly-version.outputs.shouldPublish }}
+      shouldPublish: ${{ steps.nightly-version.outputs.shouldPublish }}
     steps:
     - uses: actions/checkout@v2
       with:
