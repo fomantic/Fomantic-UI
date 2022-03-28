@@ -93,6 +93,7 @@ This is a list of all project contributors powered by [All Contributors](https:/
   <tr>
     <td align="center"><a href="https://github.com/NotWearingPants"><img src="https://avatars.githubusercontent.com/u/26556598?v=4?s=60" width="60px;" alt=""/><br /><sub><b>NotWearingPants</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=NotWearingPants" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/CommanderRoot"><img src="https://avatars.githubusercontent.com/u/4395417?v=4?s=60" width="60px;" alt=""/><br /><sub><b>CommanderRoot</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=CommanderRoot" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/grandeljay"><img src="https://avatars.githubusercontent.com/u/45571053?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Jay</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=grandeljay" title="Code">💻</a></td>
   </tr>
 </table>
 
