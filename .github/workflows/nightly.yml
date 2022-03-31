@@ -9,7 +9,6 @@ jobs:
     if: github.repository == 'fomantic/Fomantic-UI'
     outputs:
       shouldPublish: ${{ steps.nightly-version.outputs.shouldPublish }}
-      publishVersion: ${{ steps.nightly-version.outputs.publishVersion }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -33,8 +32,6 @@ jobs:
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
-        PUBLISH_VERSION: ${{ steps.nightly-version.outputs.publishVersion }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        yarn config set registry https://registry.npmjs.org
-        yarn publish --tag nightly --new-version $PUBLISH_VERSION --non-interactive
+        npm publish
