@@ -74,7 +74,7 @@ const getNightlyVersion = async function () {
     )
   }
 
-  actions.setOutput('shouldPublish', true)
+  actions.setOutput('shouldPublish', 'yes')
   return `${nightlyVersion}+${currentRev}`
 }
 
