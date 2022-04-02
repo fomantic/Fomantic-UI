@@ -25,10 +25,10 @@ jobs:
       id: nightly-version
       run: node ./scripts/nightly-version.js
     - name: fomantic install & build
-      if: ${{ steps.nightly-version.outputs.shouldPublish }}
+      if: ${{ steps.nightly-version.outputs.shouldPublish == 'yes' }}
       run: yarn gulp install
     - name: publish to npm
-      if: ${{ steps.nightly-version.outputs.shouldPublish }}
+      if: ${{ steps.nightly-version.outputs.shouldPublish == 'yes' }}
       env:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
