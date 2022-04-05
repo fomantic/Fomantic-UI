@@ -85,7 +85,7 @@
   height: 100%;
   z-index: 2;
 }
-.ui.embed > i.icon:after {
+.ui.embed > i.icon::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -97,7 +97,7 @@
   opacity: @placeholderBackgroundOpacity;
   transition: @placeholderBackgroundTransition;
 }
-.ui.embed > i.icon:before {
+.ui.embed > i.icon::before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -118,11 +118,11 @@
      Hover
 ---------------*/
 
-.ui.embed i.icon:hover:after {
+.ui.embed i.icon:hover::after {
   background: @hoverPlaceholderBackground;
   opacity: @hoverPlaceholderBackgroundOpacity;
 }
-.ui.embed i.icon:hover:before {
+.ui.embed i.icon:hover::before {
   color: @hoverIconColor;
 }
 

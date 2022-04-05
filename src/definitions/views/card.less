@@ -77,8 +77,8 @@
 }
 
 /* Clearing */
-.ui.cards:after,
-.ui.card:after {
+.ui.cards::after,
+.ui.card::after {
   display: block;
   content: ' ';
   height: 0;
@@ -157,8 +157,8 @@
   border-radius: @contentBorderRadius;
 }
 
-.ui.cards > .card > .content:after,
-.ui.card > .content:after {
+.ui.cards > .card > .content::after,
+.ui.card > .content::after {
   display: block;
   content: ' ';
   height: 0;
@@ -473,7 +473,7 @@
     pointer-events: none;
     transition: all 0s linear;
   }
-  .ui.loading.card:before {
+  .ui.loading.card::before {
     position: absolute;
     content: '';
     top: 0;
@@ -484,7 +484,7 @@
     border-radius: @borderRadius;
     z-index: @loaderDimmerZIndex;
   }
-  .ui.loading.card:after {
+  .ui.loading.card::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -1083,7 +1083,7 @@
     .ui.inverted.loading.card {
       color: @invertedLoaderLineColor;
     }
-    .ui.inverted.loading.card:before {
+    .ui.inverted.loading.card::before {
       background: @loaderInvertedDimmerColor;
     }
   }
