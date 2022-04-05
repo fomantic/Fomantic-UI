@@ -76,7 +76,7 @@
   height: 100%;
   z-index: 2;
 }
-.ui.embed > i.icon:after {
+.ui.embed > i.icon::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -114,7 +114,7 @@
      Hover
 ---------------*/
 
-.ui.embed i.icon:hover:after {
+.ui.embed i.icon:hover::after {
   background: -webkit-radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   background: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   opacity: 1;
@@ -163,4 +163,3 @@
 /*******************************
          Site Overrides
 *******************************/
-

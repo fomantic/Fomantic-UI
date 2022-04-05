@@ -223,7 +223,7 @@
   position: relative;
   margin-left: 0.75em;
 }
-.ui.feed > .event > .content .meta > *:after {
+.ui.feed > .event > .content .meta > *::after {
   content: '';
   color: rgba(0, 0, 0, 0.2);
   top: 0;
@@ -326,4 +326,3 @@
 /*******************************
     User Variable Overrides
 *******************************/
-

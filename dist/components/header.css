@@ -262,7 +262,7 @@ h6.ui.header .sub.header {
   text-align: center;
   margin: 2rem 0 1rem;
 }
-.ui.icon.header:after {
+.ui.icon.header::after {
   content: '';
   display: block;
   height: 0;
@@ -639,7 +639,7 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.justified.header {
   text-align: justify;
 }
-.ui.justified.header:after {
+.ui.justified.header::after {
   display: inline-block;
   content: '';
   width: 100%;
@@ -794,4 +794,3 @@ a.ui.inverted.black.header.header.header:hover {
 /*******************************
          Site Overrides
 *******************************/
-

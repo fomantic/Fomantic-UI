@@ -13,7 +13,7 @@
   ;
 }
 
-.ui.progress.active .bar:after {
+.ui.progress.active .bar::after {
   animation: none;
 }
 .ui.progress.active .bar {

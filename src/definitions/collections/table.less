@@ -165,10 +165,10 @@
 .ui.table.segment {
   padding: 0;
 }
-.ui.table.segment:after {
+.ui.table.segment::after {
   display: none;
 }
-.ui.table.segment.stacked:after {
+.ui.table.segment.stacked::after {
   display: block;
 }
 
@@ -1431,7 +1431,7 @@
     user-select: none;
   }
 
-  .ui.sortable.table > thead > tr > th:after {
+  .ui.sortable.table > thead > tr > th::after {
     display: none;
     font-style: normal;
     font-weight: @normal;
@@ -1443,10 +1443,10 @@
     margin: 0 0 0 @sortableIconDistance;
     font-family: @sortableIconFont;
   }
-  .ui.sortable.table thead th.ascending:after {
+  .ui.sortable.table thead th.ascending::after {
     content: @sortableIconAscending;
   }
-  .ui.sortable.table thead th.descending:after {
+  .ui.sortable.table thead th.descending::after {
     content: @sortableIconDescending;
   }
 
@@ -1471,7 +1471,7 @@
   .ui.sortable.table:not(.basic) thead th.sorted {
     background: @sortableActiveBackground;
   }
-  .ui.sortable.table thead th.sorted:after {
+  .ui.sortable.table thead th.sorted::after {
     display: inline-block;
   }
 
