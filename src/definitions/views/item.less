@@ -62,7 +62,7 @@
       Item
 ---------------*/
 
-.ui.items > .item:after {
+.ui.items > .item::after {
   display: block;
   content: ' ';
   height: 0;
@@ -123,7 +123,7 @@
   border: @contentBorder;
   border-radius: @contentBorderRadius;
 }
-.ui.items > .item > .content:after {
+.ui.items > .item > .content::after {
   display: block;
   content: ' ';
   height: 0;
@@ -341,7 +341,7 @@
     }
   }
 
-  .ui.items > .item .extra:after {
+  .ui.items > .item .extra::after {
     display: block;
     content: ' ';
     height: 0;

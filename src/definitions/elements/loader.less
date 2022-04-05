@@ -34,7 +34,7 @@
 }
 
 /* Static Shape */
-.ui.loader:before {
+.ui.loader::before {
   position: absolute;
   content: '';
   top: 0;
@@ -47,7 +47,7 @@
 }
 
 /* Active Shape */
-.ui.loader:after {
+.ui.loader::after {
   position: absolute;
   content: '';
   top: 0;
@@ -65,17 +65,17 @@
 & when (@variationLoaderSpeeds) {
   /* Speeds */
 
-  .ui.fast.loading.loading:after,
-  .ui.fast.loading.loading .input > i.icon:after,
-  .ui.fast.loading.loading > i.icon:after,
-  .ui.fast.loader:after {
+  .ui.fast.loading.loading::after,
+  .ui.fast.loading.loading .input > i.icon::after,
+  .ui.fast.loading.loading > i.icon::after,
+  .ui.fast.loader::after {
     animation-duration: @loaderSpeedFast;
   }
 
-  .ui.slow.loading.loading:after,
-  .ui.slow.loading.loading .input > i.icon:after,
-  .ui.slow.loading.loading > i.icon:after,
-  .ui.slow.loader:after {
+  .ui.slow.loading.loading::after,
+  .ui.slow.loading.loading .input > i.icon::after,
+  .ui.slow.loading.loading > i.icon::after,
+  .ui.slow.loader::after {
     animation-duration: @loaderSpeedSlow;
   }
 }
@@ -100,7 +100,7 @@
 .ui.dimmer > .ui.loader {
   color: @invertedLoaderTextColor;
 }
-.ui.dimmer > .ui.loader:not(.elastic):before {
+.ui.dimmer > .ui.loader:not(.elastic)::before {
   border-color: @invertedLoaderFillColor;
 }
 
@@ -108,7 +108,7 @@
 .ui.inverted.dimmer > .ui.loader {
   color: @loaderTextColor;
 }
-.ui.inverted.dimmer > .ui.loader:not(.elastic):before {
+.ui.inverted.dimmer > .ui.loader:not(.elastic)::before {
   border-color: @loaderFillColor;
 }
 
@@ -134,7 +134,7 @@
             States
 *******************************/
 & when (@variationLoaderIndeterminate) {
-  .ui.indeterminate.loader:after {
+  .ui.indeterminate.loader::after {
     animation-direction: @indeterminateDirection;
     animation-duration: @indeterminateSpeed;
   }
@@ -163,8 +163,8 @@
   height: @medium;
   font-size: @mediumFontSize;
 }
-.ui.loader:before,
-.ui.loader:after {
+.ui.loader::before,
+.ui.loader::after {
   width: @medium;
   height: @medium;
   margin: @mediumOffset;
@@ -185,8 +185,8 @@
       height: @s;
       font-size: @@f;
     }
-    .ui.@{value}.loader:before,
-    .ui.@{value}.loader:after {
+    .ui.@{value}.loader::before,
+    .ui.@{value}.loader::after {
       width: @s;
       height: @s;
       margin: @@o;
@@ -209,49 +209,49 @@
     @c: @colors[@@color][color];
     @l: @colors[@@color][light];
 
-    .ui.@{color}.elastic.loader.loader:before,
-    .ui.@{color}.basic.elastic.loading.button:before,
-    .ui.@{color}.basic.elastic.loading.button:after,
-    .ui.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
-    .ui.@{color}.elastic.loading.loading.loading .input > i.icon:before,
-    .ui.@{color}.elastic.loading.loading.loading.loading > i.icon:before,
-    .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button):after,
-    .ui.@{color}.loading.loading.loading.loading .input > i.icon:after,
-    .ui.@{color}.loading.loading.loading.loading > i.icon:after,
-    .ui.@{color}.loader.loader.loader:after {
+    .ui.@{color}.elastic.loader.loader::before,
+    .ui.@{color}.basic.elastic.loading.button::before,
+    .ui.@{color}.basic.elastic.loading.button::after,
+    .ui.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
+    .ui.@{color}.elastic.loading.loading.loading .input > i.icon::before,
+    .ui.@{color}.elastic.loading.loading.loading.loading > i.icon::before,
+    .ui.@{color}.loading.loading.loading.loading:not(.usual):not(.button)::after,
+    .ui.@{color}.loading.loading.loading.loading .input > i.icon::after,
+    .ui.@{color}.loading.loading.loading.loading > i.icon::after,
+    .ui.@{color}.loader.loader.loader::after {
       color: @c;
     }
-    .ui.inverted.@{color}.elastic.loader:before,
-    .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card):before,
-    .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon:before,
-    .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon:before,
-    .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual):after,
-    .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon:after,
-    .ui.inverted.@{color}.loading.loading.loading.loading > i.icon:after,
-    .ui.inverted.@{color}.loader.loader.loader:after {
+    .ui.inverted.@{color}.elastic.loader::before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading .input > i.icon::before,
+    .ui.inverted.@{color}.elastic.loading.loading.loading > i.icon::before,
+    .ui.inverted.@{color}.loading.loading.loading.loading:not(.usual)::after,
+    .ui.inverted.@{color}.loading.loading.loading.loading .input > i.icon::after,
+    .ui.inverted.@{color}.loading.loading.loading.loading > i.icon::after,
+    .ui.inverted.@{color}.loader.loader.loader::after {
       color: @l;
     }
   })
 }
 
-.ui.elastic.loader.loader:before,
-.ui.elastic.loading.loading.loading:before,
-.ui.elastic.loading.loading.loading .input > i.icon:before,
-.ui.elastic.loading.loading.loading > i.icon:before,
-.ui.loading.loading.loading.loading:not(.usual):after,
-.ui.loading.loading.loading.loading .input > i.icon:after,
-.ui.loading.loading.loading.loading > i.icon:after,
-.ui.loader.loader.loader:after {
+.ui.elastic.loader.loader::before,
+.ui.elastic.loading.loading.loading::before,
+.ui.elastic.loading.loading.loading .input > i.icon::before,
+.ui.elastic.loading.loading.loading > i.icon::before,
+.ui.loading.loading.loading.loading:not(.usual)::after,
+.ui.loading.loading.loading.loading .input > i.icon::after,
+.ui.loading.loading.loading.loading > i.icon::after,
+.ui.loader.loader.loader::after {
   border-color: currentColor;
 }
-.ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic):before {
+.ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic)::before {
   color: @invertedLoaderLineColor;
 }
-.ui.elastic.basic.loading.button:before,
-.ui.elastic.basic.loading.button:after {
+.ui.elastic.basic.loading.button::before,
+.ui.elastic.basic.loading.button::after {
   color: @loaderLineColor;
 }
-.ui.double.loading.loading.loading.loading.button:after {
+.ui.double.loading.loading.loading.loading.button::after {
   border-bottom-color: currentColor;
 }
 
@@ -283,30 +283,30 @@
   }
 }
 
-.ui.loading.loading.loading.loading.loading.loading:after,
-.ui.loading.loading.loading.loading.loading.loading .input > i.icon:after,
-.ui.loading.loading.loading.loading.loading.loading > i.icon:after,
-.ui.loader.loader.loader.loader.loader:after {
+.ui.loading.loading.loading.loading.loading.loading::after,
+.ui.loading.loading.loading.loading.loading.loading .input > i.icon::after,
+.ui.loading.loading.loading.loading.loading.loading > i.icon::after,
+.ui.loader.loader.loader.loader.loader::after {
   border-left-color:transparent;
   border-right-color:transparent;
 }
-.ui.loading.loading.loading.loading.loading.loading.loading:not(.double):after,
-.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) .input > i.icon:after,
-.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) > i.icon:after,
-.ui.loader.loader.loader.loader.loader.loader:not(.double):after {
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double)::after,
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) .input > i.icon::after,
+.ui.loading.loading.loading.loading.loading.loading.loading:not(.double) > i.icon::after,
+.ui.loader.loader.loader.loader.loader.loader:not(.double)::after {
   border-bottom-color: transparent;
 }
-.ui.loading.loading.loading.loading.loading.loading.card:after,
-.ui.loading.loading.loading.loading.loading.loading.segments:after,
-.ui.loading.loading.loading.loading.loading.loading.segment:after,
-.ui.loading.loading.loading.loading.loading.loading.form:after {
+.ui.loading.loading.loading.loading.loading.loading.card::after,
+.ui.loading.loading.loading.loading.loading.loading.segments::after,
+.ui.loading.loading.loading.loading.loading.loading.segment::after,
+.ui.loading.loading.loading.loading.loading.loading.form::after {
   border-left-color:@loaderFillColor;
   border-right-color:@loaderFillColor;
 }
-.ui.loading.loading.loading.loading.loading.loading.card:not(.double):after,
-.ui.loading.loading.loading.loading.loading.loading.segments:not(.double):after,
-.ui.loading.loading.loading.loading.loading.loading.segment:not(.double):after,
-.ui.loading.loading.loading.loading.loading.loading.form:not(.double):after {
+.ui.loading.loading.loading.loading.loading.loading.card:not(.double)::after,
+.ui.loading.loading.loading.loading.loading.loading.segments:not(.double)::after,
+.ui.loading.loading.loading.loading.loading.loading.segment:not(.double)::after,
+.ui.loading.loading.loading.loading.loading.loading.form:not(.double)::after {
   border-bottom-color: @loaderFillColor;
 }
 
@@ -321,17 +321,17 @@
   .ui.inverted.dimmer > .ui.elastic.loader {
     color: @loaderLineColor;
   }
-  .ui.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
-  .ui.elastic.loading.loading .input > i.icon:after,
-  .ui.elastic.loading.loading > i.icon:after,
-  .ui.elastic.loader.loader:after {
+  .ui.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+  .ui.elastic.loading.loading .input > i.icon::after,
+  .ui.elastic.loading.loading > i.icon::after,
+  .ui.elastic.loader.loader::after {
     animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
     animation-delay: 0.3s;
   }
-  .ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
-  .ui.elastic.loading.loading.loading .input > i.icon:before,
-  .ui.elastic.loading.loading.loading > i.icon:before,
-  .ui.elastic.loader.loader:before {
+  .ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+  .ui.elastic.loading.loading.loading .input > i.icon::before,
+  .ui.elastic.loading.loading.loading > i.icon::before,
+  .ui.elastic.loader.loader::before {
     animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
     -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
     border-right-color: transparent;
@@ -342,30 +342,30 @@
     }
   }
   & when (@variationLoaderSpeeds) {
-    .ui.slow.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
-    .ui.slow.elastic.loading.loading .input > i.icon:after,
-    .ui.slow.elastic.loading.loading > i.icon:after,
-    .ui.slow.elastic.loader.loader:after {
+    .ui.slow.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+    .ui.slow.elastic.loading.loading .input > i.icon::after,
+    .ui.slow.elastic.loading.loading > i.icon::after,
+    .ui.slow.elastic.loader.loader::after {
       animation-duration: 1.5s;
       animation-delay: 0.45s;
     }
-    .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
-    .ui.slow.elastic.loading.loading.loading .input > i.icon:before,
-    .ui.slow.elastic.loading.loading.loading > i.icon:before,
-    .ui.slow.elastic.loader.loader:before {
+    .ui.slow.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+    .ui.slow.elastic.loading.loading.loading .input > i.icon::before,
+    .ui.slow.elastic.loading.loading.loading > i.icon::before,
+    .ui.slow.elastic.loader.loader::before {
       animation-duration: 1.5s;
     }
-    .ui.fast.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card):after,
-    .ui.fast.elastic.loading.loading .input > i.icon:after,
-    .ui.fast.elastic.loading.loading > i.icon:after,
-    .ui.fast.elastic.loader.loader:after {
+    .ui.fast.elastic.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::after,
+    .ui.fast.elastic.loading.loading .input > i.icon::after,
+    .ui.fast.elastic.loading.loading > i.icon::after,
+    .ui.fast.elastic.loader.loader::after {
       animation-duration: 0.66s;
       animation-delay: 0.20s;
     }
-    .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card):before,
-    .ui.fast.elastic.loading.loading.loading .input > i.icon:before,
-    .ui.fast.elastic.loading.loading.loading > i.icon:before,
-    .ui.fast.elastic.loader.loader:before {
+    .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
+    .ui.fast.elastic.loading.loading.loading .input > i.icon::before,
+    .ui.fast.elastic.loading.loading.loading > i.icon::before,
+    .ui.fast.elastic.loader.loader::before {
       animation-duration: 0.66s;
     }
   }
