@@ -1793,11 +1793,6 @@ Floated Menu / Item
       border-top: @arrowBorder;
       border-right: @arrowBorder;
     }
-    @media only screen and (max-width: @largestMobileScreen) {
-      .ui.vertical.pointing.menu .item::after {
-        display: none;
-      }
-    }
   }
   .ui.pointing.menu .ui.dropdown .menu .item::after,
   .ui.vertical.pointing.menu .ui.dropdown .menu .item::after {
@@ -1834,6 +1829,11 @@ Floated Menu / Item
     }
     .ui.vertical.pointing.menu .active.item::after {
       background-color: @arrowVerticalActiveColor;
+    }
+    @media only screen and (max-width: @largestMobileScreen) {
+      .stackable .ui.vertical.pointing.menu .active.item::after {
+        display: none;
+      }
     }
     .ui.vertical.pointing.menu .menu .active.item::after {
       background-color: @arrowVerticalSubMenuColor;
