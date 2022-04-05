@@ -371,7 +371,7 @@ img + img {
 .grid {
   position: relative;
 }
-.grid::before {
+.grid:before {
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -381,14 +381,14 @@ img + img {
   height: calc(100% - 2rem);
   box-shadow: 0px 0px 0px 1px #DDDDDD inset;
 }
-.ui.divided.grid::before,
-.celled.grid::before {
+.ui.divided.grid:before,
+.celled.grid:before {
   display: none;
 }
-.ui.aligned .column::after {
+.ui.aligned .column:after {
   display: none !important;
 }
-.grid .column:not(.row):not(.grid)::after {
+.grid .column:not(.row):not(.grid):after {
   background-color: rgba(86, 61, 124, .15);
   box-shadow: 0px 0px 0px 1px rgba(86, 61, 124, 0.2) inset;
   content: "";
@@ -396,7 +396,7 @@ img + img {
   min-height: 50px;
 }
 @media only screen and (max-width: 768px) {
-  .stackable.grid::before {
+  .stackable.grid:before {
     width: 100%;
     left: 0em;
   }

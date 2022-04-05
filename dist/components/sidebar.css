@@ -102,7 +102,7 @@ body.pushable.dimmed {
 }
 .pushable:not(body) > .ui.sidebar,
 .pushable:not(body) > .fixed,
-.pushable:not(body) > .pusher::after {
+.pushable:not(body) > .pusher:after {
   position: absolute;
 }
 
@@ -137,7 +137,7 @@ body.pushable.dimmed {
   transition: transform 500ms ease;
   transition: transform 500ms ease, -webkit-transform 500ms ease;
   z-index: 2;
-
+  
 /* Pusher should inherit background from context */
   background: inherit;
 }
@@ -149,7 +149,7 @@ body.pushable > .pusher {
      Dimmer
 ---------------*/
 
-.pushable > .pusher::after {
+.pushable > .pusher:after {
   position: fixed;
   top: 0;
   right: 0;
@@ -181,7 +181,7 @@ body.pushable > .pusher {
      Dimmed
 ---------------*/
 
-.pushable > .pusher.dimmed::after {
+.pushable > .pusher.dimmed:after {
   width: 100% !important;
   height: 100% !important;
   opacity: 1 !important;
@@ -625,3 +625,4 @@ body.pushable > .pusher {
 /*******************************
          Site Overrides
 *******************************/
+

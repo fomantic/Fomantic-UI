@@ -115,7 +115,7 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.loading.loading.input > i.icon::after {
+.ui.loading.loading.input > i.icon:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -358,7 +358,7 @@
   padding-right: 2.67142857em;
 }
 .ui.icon.input > i.icon:before,
-.ui.icon.input > i.icon::after {
+.ui.icon.input > i.icon:after {
   left: 0;
   position: absolute;
   text-align: center;
@@ -708,3 +708,4 @@
 /*******************************
          Site Overrides
 *******************************/
+

@@ -160,10 +160,10 @@
 .ui.table.segment {
   padding: 0;
 }
-.ui.table.segment::after {
+.ui.table.segment:after {
   display: none;
 }
-.ui.table.segment.stacked::after {
+.ui.table.segment.stacked:after {
   display: block;
 }
 
@@ -227,7 +227,7 @@
   .ui.table:not(.unstackable) > tfoot > tr > td:first-child {
     font-weight: bold;
   }
-
+  
 /* Definition Table */
   .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
     -webkit-box-shadow: none !important;
@@ -720,7 +720,7 @@
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-
+  
 /* Definition Table */
   .ui.definition[class*="tablet stackable"].table > thead > tr > th:first-child {
     -webkit-box-shadow: none !important;
@@ -1883,7 +1883,7 @@
       -ms-user-select: none;
           user-select: none;
 }
-.ui.sortable.table > thead > tr > th::after {
+.ui.sortable.table > thead > tr > th:after {
   display: none;
   font-style: normal;
   font-weight: normal;
@@ -1895,10 +1895,10 @@
   margin: 0 0 0 0.5em;
   font-family: 'Icons';
 }
-.ui.sortable.table thead th.ascending::after {
+.ui.sortable.table thead th.ascending:after {
   content: '\f0d8';
 }
-.ui.sortable.table thead th.descending::after {
+.ui.sortable.table thead th.descending:after {
   content: '\f0d7';
 }
 
@@ -1921,7 +1921,7 @@
 .ui.sortable.table:not(.basic) thead th.sorted {
   background: rgba(0, 0, 0, 0.05);
 }
-.ui.sortable.table thead th.sorted::after {
+.ui.sortable.table thead th.sorted:after {
   display: inline-block;
 }
 
@@ -2210,3 +2210,4 @@
 /*******************************
          Site Overrides
 *******************************/
+

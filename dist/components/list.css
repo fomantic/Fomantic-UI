@@ -51,10 +51,10 @@ ol.ui.list li,
   padding: 0.21428571em 0;
   line-height: 1.14285714em;
 }
-ul.ui.list > li:first-child::after,
-ol.ui.list > li:first-child::after,
-.ui.list > .list > .item::after,
-.ui.list > .item::after {
+ul.ui.list > li:first-child:after,
+ol.ui.list > li:first-child:after,
+.ui.list > .list > .item:after,
+.ui.list > .item:after {
   content: '';
   display: block;
   height: 0;
@@ -973,3 +973,4 @@ ol.ui.suffixed.list li:before,
 /*******************************
     User Variable Overrides
 *******************************/
+

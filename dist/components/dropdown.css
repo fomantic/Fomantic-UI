@@ -257,7 +257,7 @@
 }
 
 /* Hide Arrow */
-.ui.dropdown .menu .menu::after {
+.ui.dropdown .menu .menu:after {
   display: none;
 }
 
@@ -456,7 +456,7 @@ select.ui.dropdown {
   -webkit-transition: opacity 0.1s ease;
   transition: opacity 0.1s ease;
 }
-.ui.selection.dropdown .menu::after,
+.ui.selection.dropdown .menu:after,
 .ui.selection.dropdown .menu:before {
   display: none;
 }
@@ -1000,7 +1000,7 @@ select.ui.dropdown {
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.loading.dropdown > i.icon::after {
+.ui.loading.dropdown > i.icon:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -1018,7 +1018,7 @@ select.ui.dropdown {
 
 /* Coupling */
 .ui.loading.dropdown.button > i.icon:before,
-.ui.loading.dropdown.button > i.icon::after {
+.ui.loading.dropdown.button > i.icon:after {
   display: none;
 }
 .ui.loading.dropdown > .text {
@@ -1481,12 +1481,12 @@ select.ui.dropdown {
 
 /* Displays without javascript */
 .ui.simple.dropdown .menu:before,
-.ui.simple.dropdown .menu::after {
+.ui.simple.dropdown .menu:after {
   display: none;
 }
 .ui.simple.dropdown .menu {
   position: absolute;
-
+  
 /* IE hack to make dropdown icons appear inline */
   display: -ms-inline-flexbox !important;
   display: block;
@@ -1590,7 +1590,7 @@ select.ui.dropdown {
   margin-top: 0.78571429rem;
   border-radius: 0.28571429rem;
 }
-.ui.pointing.dropdown > .menu:not(.hidden)::after {
+.ui.pointing.dropdown > .menu:not(.hidden):after {
   display: block;
   position: absolute;
   pointer-events: none;
@@ -1605,7 +1605,7 @@ select.ui.dropdown {
   background: #FFFFFF;
   z-index: 2;
 }
-.ui.pointing.dropdown > .menu:not(.hidden)::after {
+.ui.pointing.dropdown > .menu:not(.hidden):after {
   top: -0.25em;
   left: 50%;
   margin: 0 0 0 -0.25em;
@@ -1626,7 +1626,7 @@ select.ui.dropdown {
   right: auto;
   margin: 1em 0 0;
 }
-.ui.top.left.pointing.dropdown > .menu::after {
+.ui.top.left.pointing.dropdown > .menu:after {
   top: -0.25em;
   left: 1em;
   right: auto;
@@ -1643,8 +1643,8 @@ select.ui.dropdown {
   left: auto;
   margin: 1em 0 0;
 }
-.ui.top.pointing.dropdown > .left.menu::after,
-.ui.top.right.pointing.dropdown > .menu::after {
+.ui.top.pointing.dropdown > .left.menu:after,
+.ui.top.right.pointing.dropdown > .menu:after {
   top: -0.25em;
   left: auto !important;
   right: 1em !important;
@@ -1660,7 +1660,7 @@ select.ui.dropdown {
   right: auto;
   margin: 0 0 0 1em;
 }
-.ui.left.pointing.dropdown > .menu::after {
+.ui.left.pointing.dropdown > .menu:after {
   top: 1em;
   left: -0.25em;
   margin: 0 0 0 0;
@@ -1672,7 +1672,7 @@ select.ui.dropdown {
   right: 100% !important;
   margin: 0 1em 0 0;
 }
-.ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu::after {
+.ui.left:not(.top):not(.bottom).pointing.dropdown > .left.menu:after {
   top: 1em;
   left: auto;
   right: -0.25em;
@@ -1688,7 +1688,7 @@ select.ui.dropdown {
   right: 100%;
   margin: 0 1em 0 0;
 }
-.ui.right.pointing.dropdown > .menu::after {
+.ui.right.pointing.dropdown > .menu:after {
   top: 1em;
   left: auto;
   right: -0.25em;
@@ -1705,7 +1705,7 @@ select.ui.dropdown {
   right: auto;
   margin: 0 0 1em;
 }
-.ui.bottom.pointing.dropdown > .menu::after {
+.ui.bottom.pointing.dropdown > .menu:after {
   top: auto;
   bottom: -0.25em;
   right: auto;
@@ -1725,7 +1725,7 @@ select.ui.dropdown {
   left: 0;
   right: auto;
 }
-.ui.bottom.left.pointing.dropdown > .menu::after {
+.ui.bottom.left.pointing.dropdown > .menu:after {
   left: 1em;
   right: auto;
 }
@@ -1735,7 +1735,7 @@ select.ui.dropdown {
   right: 0;
   left: auto;
 }
-.ui.bottom.right.pointing.dropdown > .menu::after {
+.ui.bottom.right.pointing.dropdown > .menu:after {
   left: auto;
   right: 1em;
 }
@@ -1748,8 +1748,8 @@ select.ui.dropdown {
   margin: 0 0 0.78571429rem;
   border-radius: 0.28571429rem;
 }
-.ui.pointing.upward.dropdown .menu::after,
-.ui.top.pointing.upward.dropdown .menu::after {
+.ui.pointing.upward.dropdown .menu:after,
+.ui.top.pointing.upward.dropdown .menu:after {
   top: 100% !important;
   bottom: auto !important;
   -webkit-box-shadow: 1px 1px 0 0 rgba(34, 36, 38, 0.15);
@@ -1763,7 +1763,7 @@ select.ui.dropdown {
   bottom: 0 !important;
   margin: 0 1em 0 0;
 }
-.ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+.ui.right.pointing.upward.dropdown:not(.top):not(.bottom) .menu:after {
   top: auto !important;
   bottom: 0 !important;
   margin: 0 0 1em 0;
@@ -1777,7 +1777,7 @@ select.ui.dropdown {
   bottom: 0 !important;
   margin: 0 0 0 1em;
 }
-.ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu::after {
+.ui.left.pointing.upward.dropdown:not(.top):not(.bottom) .menu:after {
   top: auto !important;
   bottom: 0 !important;
   margin: 0 0 1em 0;
@@ -1985,8 +1985,8 @@ select.ui.dropdown {
 .ui.inverted.dropdown .menu::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
 }
-.ui.pointing.dropdown > .inverted.menu::after,
-.ui.inverted.pointing.dropdown > .menu::after {
+.ui.pointing.dropdown > .inverted.menu:after,
+.ui.inverted.pointing.dropdown > .menu:after {
   background: #1B1C1D;
   -webkit-box-shadow: -1px -1px 0 0 rgba(255, 255, 255, 0.15);
           box-shadow: -1px -1px 0 0 rgba(255, 255, 255, 0.15);
@@ -2055,3 +2055,4 @@ select.ui.dropdown {
 /*******************************
         User Overrides
 *******************************/
+

@@ -242,8 +242,8 @@ a.ui.label {
   -webkit-transition: none;
   transition: none;
 }
-.ui.tag.labels .label::after,
-.ui.tag.label::after {
+.ui.tag.labels .label:after,
+.ui.tag.label:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -263,8 +263,8 @@ a.ui.label {
   border-style: inherit;
   right: calc(100% + 1px);
 }
-.ui.basic.tag.labels .label::after,
-.ui.basic.tag.label::after {
+.ui.basic.tag.labels .label:after,
+.ui.basic.tag.label:after {
   -webkit-box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.8);
           box-shadow: 0 -1px 3px 0 rgba(0, 0, 0, 0.8);
 }
@@ -292,7 +292,7 @@ a.ui.label {
 .ui.corner.label {
   background-color: transparent !important;
 }
-.ui.corner.label::after {
+.ui.corner.label:after {
   position: absolute;
   content: "";
   right: 0;
@@ -321,11 +321,11 @@ a.ui.label {
 
 /* Left Corner */
 .ui.left.corner.label,
-.ui.left.corner.label::after {
+.ui.left.corner.label:after {
   right: auto;
   left: 0;
 }
-.ui.left.corner.label::after {
+.ui.left.corner.label:after {
   border-top: 4em solid transparent;
   border-right: 4em solid transparent;
   border-bottom: 0 solid transparent;
@@ -360,7 +360,7 @@ a.ui.label {
   border-radius: 0 0.28571429rem 0.28571429rem 0;
   border-color: rgba(0, 0, 0, 0.15);
 }
-.ui.ribbon.label::after {
+.ui.ribbon.label:after {
   position: absolute;
   content: '';
   top: 100%;
@@ -415,7 +415,7 @@ a.ui.label {
           transform: translateX(-100%);
   border-radius: 0.28571429rem 0 0 0.28571429rem;
 }
-.ui[class*="right ribbon"].label::after {
+.ui[class*="right ribbon"].label:after {
   left: auto;
   right: 0;
   border-style: solid;
@@ -2134,3 +2134,4 @@ a.ui.ui.ui.inverted.basic.black.label:hover {
 /*******************************
          Site Overrides
 *******************************/
+

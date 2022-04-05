@@ -133,7 +133,7 @@
   -webkit-transition: all 0s linear, opacity 0.1s ease;
   transition: all 0s linear, opacity 0.1s ease;
 }
-.ui.loading.button::before {
+.ui.loading.button:before {
   position: absolute;
   content: '';
   top: 50%;
@@ -144,7 +144,7 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.15);
 }
-.ui.loading.button::after {
+.ui.loading.button:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -165,10 +165,10 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.ui.basic.loading.button:not(.inverted)::before {
+.ui.basic.loading.button:not(.inverted):before {
   border-color: rgba(0, 0, 0, 0.1);
 }
-.ui.basic.loading.button:not(.inverted)::after {
+.ui.basic.loading.button:not(.inverted):after {
   border-color: #767676;
 }
 
@@ -407,7 +407,7 @@
 }
 
 /* Tag */
-.ui.labeled.button > .tag.label::before {
+.ui.labeled.button > .tag.label:before {
   width: 1.85em;
   height: 1.85em;
 }
@@ -1010,10 +1010,10 @@
   -webkit-box-shadow: 1px 0 0 0 transparent inset;
           box-shadow: 1px 0 0 0 transparent inset;
 }
-.ui.labeled.icon.buttons > .button > .icon::before,
-.ui.labeled.icon.button > .icon::before,
-.ui.labeled.icon.buttons > .button > .icon::after,
-.ui.labeled.icon.button > .icon::after {
+.ui.labeled.icon.buttons > .button > .icon:before,
+.ui.labeled.icon.button > .icon:before,
+.ui.labeled.icon.buttons > .button > .icon:after,
+.ui.labeled.icon.button > .icon:after {
   display: block;
   position: relative;
   width: 100%;
@@ -1041,7 +1041,7 @@
 }
 
 /* Loading Icon in Labeled Button */
-.ui.labeled.icon.button > .loading.icon::before {
+.ui.labeled.icon.button > .loading.icon:before {
   -webkit-animation: loader 2s linear infinite;
           animation: loader 2s linear infinite;
 }
@@ -1089,7 +1089,7 @@
   height: 2.57142857em;
   z-index: 3;
 }
-.ui.buttons .or::before {
+.ui.buttons .or:before {
   position: absolute;
   text-align: center;
   border-radius: 500rem;
@@ -1109,7 +1109,7 @@
   -webkit-box-shadow: 0 0 0 1px transparent inset;
           box-shadow: 0 0 0 1px transparent inset;
 }
-.ui.buttons .or[data-text]::before {
+.ui.buttons .or[data-text]:before {
   content: attr(data-text);
 }
 
@@ -1117,7 +1117,7 @@
 .ui.fluid.buttons .or {
   width: 0 !important;
 }
-.ui.fluid.buttons .or::after {
+.ui.fluid.buttons .or:after {
   display: none;
 }
 
@@ -4329,7 +4329,7 @@
 }
 
 /* Clearfix */
-.ui.buttons::after {
+.ui.buttons:after {
   content: ".";
   display: block;
   height: 0;
@@ -4402,3 +4402,4 @@
 /*******************************
          Site Overrides
 *******************************/
+

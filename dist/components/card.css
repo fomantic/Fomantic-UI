@@ -79,8 +79,8 @@
 }
 
 /* Clearing */
-.ui.cards::after,
-.ui.card::after {
+.ui.cards:after,
+.ui.card:after {
   display: block;
   content: ' ';
   height: 0;
@@ -157,8 +157,8 @@
   font-size: 1em;
   border-radius: 0;
 }
-.ui.cards > .card > .content::after,
-.ui.card > .content::after {
+.ui.cards > .card > .content:after,
+.ui.card > .content:after {
   display: block;
   content: ' ';
   height: 0;
@@ -457,7 +457,7 @@
   -webkit-transition: all 0s linear;
   transition: all 0s linear;
 }
-.ui.loading.card::before {
+.ui.loading.card:before {
   position: absolute;
   content: '';
   top: 0;
@@ -468,7 +468,7 @@
   border-radius: 0.28571429rem;
   z-index: 100;
 }
-.ui.loading.card::after {
+.ui.loading.card:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -1373,7 +1373,7 @@ a.inverted.ui.card:hover,
 .ui.inverted.loading.card {
   color: #FFFFFF;
 }
-.ui.inverted.loading.card::before {
+.ui.inverted.loading.card:before {
   background: rgba(0, 0, 0, 0.85);
 }
 
@@ -1387,3 +1387,4 @@ a.inverted.ui.card:hover,
 /*******************************
     User Variable Overrides
 *******************************/
+

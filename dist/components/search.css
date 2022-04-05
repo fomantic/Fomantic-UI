@@ -186,7 +186,7 @@
          Loading
   ---------------------*/
 
-.ui.loading.search .input > i.icon::before {
+.ui.loading.search .input > i.icon:before {
   position: absolute;
   content: '';
   top: 50%;
@@ -197,7 +197,7 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.loading.search .input > i.icon::after {
+.ui.loading.search .input > i.icon:after {
   position: absolute;
   content: '';
   top: 50%;
@@ -531,3 +531,4 @@
 /*******************************
          Site Overrides
 *******************************/
+

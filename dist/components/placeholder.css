@@ -63,9 +63,9 @@
 }
 .ui.placeholder,
 .ui.placeholder > :before,
-.ui.placeholder .image.header::after,
+.ui.placeholder .image.header:after,
 .ui.placeholder .line,
-.ui.placeholder .line::after {
+.ui.placeholder .line:after {
   background-color: #FFFFFF;
 }
 .ui.placeholder.hidden {
@@ -79,14 +79,14 @@
 .ui.placeholder .square.image:not(.header) {
   height: 0;
   overflow: hidden;
-
+  
 /* 1/1 aspect ratio */
   padding-top: 100%;
 }
 .ui.placeholder .rectangular.image:not(.header) {
   height: 0;
   overflow: hidden;
-
+  
 /* 4/3 aspect ratio */
   padding-top: 75%;
 }
@@ -97,7 +97,7 @@
   height: 0.85714286em;
 }
 .ui.placeholder .line:before,
-.ui.placeholder .line::after {
+.ui.placeholder .line:after {
   top: 100%;
   position: absolute;
   content: '';
@@ -106,7 +106,7 @@
 .ui.placeholder .line:before {
   left: 0;
 }
-.ui.placeholder .line::after {
+.ui.placeholder .line:after {
   right: 0;
 }
 
@@ -115,7 +115,7 @@
   margin-bottom: 0.5em;
 }
 .ui.placeholder .line:before,
-.ui.placeholder .line::after {
+.ui.placeholder .line:after {
   height: 0.5em;
 }
 .ui.placeholder .line:not(:first-child) {
@@ -123,19 +123,19 @@
 }
 
 /* Line Outdent */
-.ui.placeholder .line:nth-child(1)::after {
+.ui.placeholder .line:nth-child(1):after {
   width: 0;
 }
-.ui.placeholder .line:nth-child(2)::after {
+.ui.placeholder .line:nth-child(2):after {
   width: 50%;
 }
-.ui.placeholder .line:nth-child(3)::after {
+.ui.placeholder .line:nth-child(3):after {
   width: 10%;
 }
-.ui.placeholder .line:nth-child(4)::after {
+.ui.placeholder .line:nth-child(4):after {
   width: 35%;
 }
-.ui.placeholder .line:nth-child(5)::after {
+.ui.placeholder .line:nth-child(5):after {
   width: 65%;
 }
 
@@ -150,16 +150,16 @@
   margin-bottom: 0.64285714em;
 }
 .ui.placeholder .header .line:before,
-.ui.placeholder .header .line::after {
+.ui.placeholder .header .line:after {
   height: 0.64285714em;
 }
 .ui.placeholder .header .line:not(:first-child) {
   margin-top: 0.64285714em;
 }
-.ui.placeholder .header .line::after {
+.ui.placeholder .header .line:after {
   width: 20%;
 }
-.ui.placeholder .header .line:nth-child(2)::after {
+.ui.placeholder .header .line:nth-child(2):after {
   width: 60%;
 }
 /* Image Header */
@@ -169,7 +169,7 @@
 .ui.placeholder .image.header .line:before {
   width: 0.71428571rem;
 }
-.ui.placeholder .image.header::after {
+.ui.placeholder .image.header:after {
   display: block;
   height: 0.85714286em;
   content: '';
@@ -198,9 +198,9 @@
 }
 .ui.inverted.placeholder,
 .ui.inverted.placeholder > :before,
-.ui.inverted.placeholder .image.header::after,
+.ui.inverted.placeholder .image.header:after,
 .ui.inverted.placeholder .line,
-.ui.inverted.placeholder .line::after {
+.ui.inverted.placeholder .line:after {
   background-color: #1B1C1D;
 }
 
@@ -214,22 +214,22 @@
         Sizes
 --------------------*/
 
-.ui.placeholder .full.line.line.line::after {
+.ui.placeholder .full.line.line.line:after {
   width: 0;
 }
-.ui.placeholder .very.long.line.line.line::after {
+.ui.placeholder .very.long.line.line.line:after {
   width: 10%;
 }
-.ui.placeholder .long.line.line.line::after {
+.ui.placeholder .long.line.line.line:after {
   width: 35%;
 }
-.ui.placeholder .medium.line.line.line::after {
+.ui.placeholder .medium.line.line.line:after {
   width: 50%;
 }
-.ui.placeholder .short.line.line.line::after {
+.ui.placeholder .short.line.line.line:after {
   width: 65%;
 }
-.ui.placeholder .very.short.line.line.line::after {
+.ui.placeholder .very.short.line.line.line:after {
   width: 80%;
 }
 
@@ -245,3 +245,4 @@
 /*******************************
          Theme Overrides
 *******************************/
+

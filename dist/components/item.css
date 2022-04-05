@@ -59,7 +59,7 @@
       Item
 ---------------*/
 
-.ui.items > .item::after {
+.ui.items > .item:after {
   display: block;
   content: ' ';
   height: 0;
@@ -121,7 +121,7 @@
   border: none;
   border-radius: 0;
 }
-.ui.items > .item > .content::after {
+.ui.items > .item > .content:after {
   display: block;
   content: ' ';
   height: 0;
@@ -320,7 +320,7 @@
 .ui.items > .item .extra > [class*="right floated"] {
   margin: 0.25rem 0 0.25rem 0.5rem;
 }
-.ui.items > .item .extra::after {
+.ui.items > .item .extra:after {
   display: block;
   content: ' ';
   height: 0;
@@ -573,3 +573,4 @@
 /*******************************
     User Variable Overrides
 *******************************/
+

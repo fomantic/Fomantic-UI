@@ -295,7 +295,7 @@
     -webkit-box-shadow: none;
             box-shadow: none;
   }
-
+  
 /* Let Buttons Stack */
   .ui.modal > .actions {
     padding: 1rem 1rem 0rem !important;
@@ -772,3 +772,4 @@
 /*******************************
          Site Overrides
 *******************************/
+
