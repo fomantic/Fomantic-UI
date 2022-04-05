@@ -1793,6 +1793,11 @@ Floated Menu / Item
       border-top: @arrowBorder;
       border-right: @arrowBorder;
     }
+    @media only screen and (max-width: @largestMobileScreen) {
+      .ui.vertical.pointing.menu .item::after {
+        display: none;
+      }
+    }
   }
   .ui.pointing.menu .ui.dropdown .menu .item::after,
   .ui.vertical.pointing.menu .ui.dropdown .menu .item::after {
