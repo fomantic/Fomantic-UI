@@ -134,7 +134,7 @@
       Hover
 ---------------*/
 
-.ui.checkbox label:hover::before {
+.ui.checkbox label:hover:::before {
   background: @checkboxHoverBackground;
   border-color: @checkboxHoverBorderColor;
 }
@@ -147,7 +147,7 @@
       Down
 ---------------*/
 
-.ui.checkbox label:active::before {
+.ui.checkbox label:active:::before {
   background: @checkboxPressedBackground;
   border-color: @checkboxPressedBorderColor;
 }
@@ -419,7 +419,7 @@
   .ui.slider.checkbox label:hover {
     color: @sliderHoverLabelColor;
   }
-  .ui.slider.checkbox label:hover::before {
+  .ui.slider.checkbox label:hover:::before {
     background: @sliderHoverLaneBackground;
   }
 
@@ -533,7 +533,7 @@
   }
 
   /* Hover */
-  .ui.toggle.checkbox label:hover::before {
+  .ui.toggle.checkbox label:hover:::before {
     background-color: @toggleHoverColor;
     border: none;
   }
@@ -610,7 +610,7 @@
   .ui.inverted.checkbox label:hover {
     color: @invertedHoveredTextColor !important;
   }
-  .ui.inverted.checkbox label:hover::before {
+  .ui.inverted.checkbox label:hover:::before {
     border-color: @strongSelectedBorderColor;
   }
   & when (@variationCheckboxSlider) {
@@ -625,7 +625,7 @@
     }
 
     /* Slider Hover */
-    .ui.inverted.slider.checkbox label:hover::before {
+    .ui.inverted.slider.checkbox label:hover:::before {
       background: @invertedLightTextColor !important;
     }
 
@@ -652,7 +652,7 @@
     }
 
     /* Toggle Hover */
-    .ui.inverted.toggle.checkbox label:hover::before {
+    .ui.inverted.toggle.checkbox label:hover:::before {
       background: @invertedHoveredTextColor !important;
     }
 

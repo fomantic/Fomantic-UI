@@ -387,7 +387,7 @@
   .ui.vertical.sidebar.menu > .item:first-child::before {
     display: block !important;
   }
-  .ui.vertical.sidebar.menu > .item::before {
+  .ui.vertical.sidebar.menu > .item:::before {
     top: auto;
     bottom: 0;
   }
@@ -518,15 +518,15 @@ Floated Menu / Item
 }
 
 /* Swapped Borders */
-.ui.menu .right.item::before,
-.ui.menu .right.menu > .item::before {
+.ui.menu .right.item:::before,
+.ui.menu .right.menu > .item:::before {
   right: auto;
   left: 0;
 }
 
 /* Remove Outer Borders */
-.ui.menu .center.item:last-child::before,
-.ui.menu .center.menu > .item:last-child::before {
+.ui.menu .center.item:last-child:::before,
+.ui.menu .center.menu > .item:last-child:::before {
   display: none;
 }
 
@@ -1610,7 +1610,7 @@ Floated Menu / Item
     .ui.compact.vertical.menu {
       width: auto !important;
     }
-    .ui.compact.vertical.menu .item:last-child::before {
+    .ui.compact.vertical.menu .item:last-child:::before {
       display: block;
     }
   }
