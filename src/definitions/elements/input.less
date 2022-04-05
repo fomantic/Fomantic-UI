@@ -118,7 +118,7 @@
          Loading
   ---------------------*/
 
-  .ui.loading.loading.input > i.icon::before {
+  .ui.loading.loading.input > i.icon:before {
     position: absolute;
     content: '';
     top: 50%;
@@ -131,7 +131,7 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @loaderFillColor;
   }
-  .ui.loading.loading.input > i.icon::after {
+  .ui.loading.loading.input > i.icon:after {
     position: absolute;
     content: '';
     top: 50%;
@@ -311,8 +311,8 @@
     padding-right: @iconMargin;
   }
 
-  .ui.icon.input > i.icon::before,
-  .ui.icon.input > i.icon::after {
+  .ui.icon.input > i.icon:before,
+  .ui.icon.input > i.icon:after {
     left: 0;
     position: absolute;
     text-align: center;

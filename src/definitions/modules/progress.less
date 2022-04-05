@@ -452,13 +452,13 @@
     @c: @colors[@@color][color];
     @l: @colors[@@color][light];
 
-    .ui.indeterminate.@{color}.progress .bar::after,
+    .ui.indeterminate.@{color}.progress .bar::before,
     .ui.@{color}.progress .bar,
     .ui.progress .@{color}.bar {
       background-color: @c;
     }
     & when (@variationProgressInverted) {
-      .ui.inverted.indeterminate.@{color}.progress .bar::after,
+      .ui.inverted.indeterminate.@{color}.progress .bar::before,
       .ui.@{color}.inverted.progress .bar,
       .ui.inverted.progress .@{color}.bar {
         background-color: @l;
@@ -504,7 +504,7 @@
     position: relative;
     right: 0;
   }
-  .ui.indeterminate.progress .bar::after {
+  .ui.indeterminate.progress .bar::before {
     content: '';
     position: absolute;
     top: 0;
@@ -515,31 +515,31 @@
     width: 100%;
   }
   & when (@variationProgressSpeeds) {
-    .ui.slow.indeterminate.progress .bar::after {
+    .ui.slow.indeterminate.progress .bar::before {
       animation-duration: @indeterminatePulseDurationSlow;
     }
-    .ui.fast.indeterminate.progress .bar::after {
+    .ui.fast.indeterminate.progress .bar::before {
       animation-duration: @indeterminatePulseDurationFast;
     }
   }
   & when (@variationProgressSwinging) {
-    .ui.swinging.indeterminate.progress .bar::after {
+    .ui.swinging.indeterminate.progress .bar::before {
       transform-origin: left;
       animation-name: progress-swinging;
     }
   }
   & when (@variationProgressSliding) {
-    .ui.sliding.indeterminate.progress .bar::after {
+    .ui.sliding.indeterminate.progress .bar::before {
       transform-origin: left;
       animation-name: progress-sliding;
     }
   }
   & when (@variationProgressFilling) {
-    .ui.filling.indeterminate.progress .bar::after {
+    .ui.filling.indeterminate.progress .bar::before {
       animation-name: progress-filling;
     }
   }
-  .ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::after {
+  .ui.indeterminate.progress:not(.sliding):not(.filling):not(.swinging) .bar::before {
     background: @indeterminatePulseColor;
   }
   & when (@variationProgressSliding) or (@variationProgressSwinging)  or (@variationProgressFilling) {

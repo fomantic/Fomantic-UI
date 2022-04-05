@@ -31,7 +31,7 @@ em[data-emoji] {
   backface-visibility: hidden;
 }
 
-em[data-emoji]::before {
+em[data-emoji]:before {
   content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
   display: inline-block;
   line-height: @emojiLineHeight;
@@ -59,7 +59,7 @@ em[data-emoji]::before {
 *******************************/
 
 & when (@variationEmojiLoading) {
-  em[data-emoji].loading::before {
+  em[data-emoji].loading:before {
     animation: loader @loadingDuration linear infinite;
   }
 }
