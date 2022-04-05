@@ -126,7 +126,7 @@
       Hover
 ---------------*/
 
-.ui.checkbox label:hover:::before {
+.ui.checkbox label:hover::before {
   background: #FFFFFF;
   border-color: rgba(34, 36, 38, 0.35);
 }
@@ -139,7 +139,7 @@
       Down
 ---------------*/
 
-.ui.checkbox label:active:::before {
+.ui.checkbox label:active::before {
   background: #F9FAFB;
   border-color: rgba(34, 36, 38, 0.35);
 }
@@ -403,7 +403,7 @@
 .ui.slider.checkbox label:hover {
   color: rgba(0, 0, 0, 0.8);
 }
-.ui.slider.checkbox label:hover:::before {
+.ui.slider.checkbox label:hover::before {
   background: rgba(0, 0, 0, 0.15);
 }
 
@@ -515,7 +515,7 @@
 }
 
 /* Hover */
-.ui.toggle.checkbox label:hover:::before {
+.ui.toggle.checkbox label:hover::before {
   background-color: rgba(0, 0, 0, 0.15);
   border: none;
 }
@@ -588,7 +588,7 @@
 .ui.inverted.checkbox label:hover {
   color: #ffffff !important;
 }
-.ui.inverted.checkbox label:hover:::before {
+.ui.inverted.checkbox label:hover::before {
   border-color: rgba(34, 36, 38, 0.5);
 }
 /*Slider Label */
@@ -602,7 +602,7 @@
 }
 
 /* Slider Hover */
-.ui.inverted.slider.checkbox label:hover:::before {
+.ui.inverted.slider.checkbox label:hover::before {
   background: rgba(255, 255, 255, 0.7) !important;
 }
 
@@ -628,7 +628,7 @@
 }
 
 /* Toggle Hover */
-.ui.inverted.toggle.checkbox label:hover:::before {
+.ui.inverted.toggle.checkbox label:hover::before {
   background: #ffffff !important;
 }
 
