@@ -502,7 +502,7 @@ $.fn.calendar = function(parameters) {
           var winWidth = $(window).width();
           $container.find('td[data-position]').each(function () {
             var cell = $(this);
-            var tooltipWidth = window.getComputedStyle(cell[0], ':after').width.replace(/[^0-9\.]/g,'');
+            var tooltipWidth = window.getComputedStyle(cell[0], '::after').width.replace(/[^0-9\.]/g,'');
             var tooltipPosition = cell.attr('data-position');
             // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
             var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';

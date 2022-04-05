@@ -116,7 +116,7 @@ body.pushable {
 }
 .pushable:not(body) > .ui.sidebar,
 .pushable:not(body) > .fixed,
-.pushable:not(body) > .pusher:after {
+.pushable:not(body) > .pusher::after {
   position: absolute;
 }
 
@@ -160,7 +160,7 @@ body.pushable > .pusher {
      Dimmer
 ---------------*/
 
-.pushable > .pusher:after {
+.pushable > .pusher::after {
   position: fixed;
   top: 0;
   right: 0;
@@ -189,7 +189,7 @@ body.pushable > .pusher {
      Dimmed
 ---------------*/
 
-.pushable > .pusher.dimmed:after {
+.pushable > .pusher.dimmed::after {
   width: 100% !important;
   height: 100% !important;
   opacity: 1 !important;
