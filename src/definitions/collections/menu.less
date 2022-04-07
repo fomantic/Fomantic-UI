@@ -1323,6 +1323,10 @@ Floated Menu / Item
   @media only screen and (max-width: @largestMobileScreen) {
     .ui.stackable.menu {
       flex-direction: column;
+
+      &.pointing .active.item::after when (@variationMenuPointing) {
+        display: none;
+      }
     }
     .ui.stackable.menu .item {
       width: 100% !important;
@@ -1830,13 +1834,15 @@ Floated Menu / Item
     .ui.vertical.pointing.menu .active.item::after {
       background-color: @arrowVerticalActiveColor;
     }
-    @media only screen and (max-width: @largestMobileScreen) {
-      .stackable .ui.vertical.pointing.menu .active.item::after {
-        display: none;
-      }
-    }
     .ui.vertical.pointing.menu .menu .active.item::after {
       background-color: @arrowVerticalSubMenuColor;
+    }
+    & when (@variationMenuFluid) and (@variationGridStackable) {
+      @media only screen and (max-width: @largestMobileScreen) {
+        .ui.stackable.grid .ui.fluid.vertical.pointing.menu .active.item::after {
+          display: none;
+        }
+      }
     }
   }
 }
