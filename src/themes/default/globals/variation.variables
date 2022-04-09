@@ -403,6 +403,7 @@
 
 /* Card */
 @variationCardInverted: true;
+@variationCardBasic: true;
 @variationCardDisabled: true;
 @variationCardLoading: true;
 @variationCardHorizontal: true;
