@@ -703,6 +703,7 @@
       }
     }
     & when (@variationCardBasic) {
+      .ui.cards > .basic.@{color}.card,
       .ui.basic.@{color}.cards > .card,
       .ui.basic.cards > .@{color}.card,
       .ui.basic.@{color}.card {
@@ -718,7 +719,9 @@
       }
       & when (@variationCardLink) {
         .ui.basic.cards a.@{color}.card:hover,
+        .ui.cards a.basic.@{color}.card:hover,
         .ui.basic.@{color}.cards a.card:hover,
+        .ui.link.cards .basic.@{color}.card:not(.icon):hover,
         .ui.link.basic.@{color}.cards .card:not(.icon):hover,
         .ui.link.basic.cards .@{color}.card:not(.icon):hover,
         a.ui.basic.@{color}.card:hover,
@@ -752,14 +755,17 @@
         }
       }
       & when (@variationCardBasic) {
+        .ui.inverted.cards > .basic.@{color}.card,
         .ui.basic.inverted.@{color}.cards > .card,
         .ui.basic.inverted.cards > .@{color}.card,
         .ui.basic.inverted.@{color}.card {
           background: @c;
         }
         & when (@variationCardLink) {
+          .ui.inverted.cards a.basic.@{color}.card:hover,
           .ui.basic.inverted.cards a.@{color}.card:hover,
           .ui.basic.inverted.@{color}.cards a.card:hover,
+          .ui.link.inverted.cards .basic.@{color}.card:not(.icon):hover,
           .ui.link.basic.inverted.@{color}.cards .card:not(.icon):hover,
           .ui.link.basic.inverted.cards .@{color}.card:not(.icon):hover,
           a.ui.basic.inverted.@{color}.card:hover,
