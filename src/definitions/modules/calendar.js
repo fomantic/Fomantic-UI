@@ -1029,7 +1029,8 @@ $.fn.calendar = function(parameters) {
                   a:    a,
                   A:    a.toUpperCase(),
                   S:    ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
-                  w:    w
+                  w:    w,
+                  ww:   ('0'+w).slice(-2)
                 }
             ;
             return format.replace(settings.regExp.token, function (match) {
@@ -1823,7 +1824,7 @@ $.fn.calendar.settings = {
   regExp: {
     dateWords: /[^A-Za-z\u00C0-\u024F]+/g,
     dateNumbers: /[^\d:]+/g,
-    token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhms])\1?|[SwAaY]|"[^"]*"|'[^']*'/g
+    token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[SAaY]|"[^"]*"|'[^']*'/g
   },
 
   error: {
