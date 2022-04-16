@@ -370,7 +370,7 @@ $.fn.calendar = function(parameters) {
                       isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
                   var cellText = isYear ? i :
                     isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
-                        module.helper.dateFormat(formatter.time,cellDate);
+                        module.helper.dateFormat(formatter.cellTime,cellDate);
                   cell = $('<td/>').addClass(className.cell).appendTo(row);
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
@@ -721,6 +721,9 @@ $.fn.calendar = function(parameters) {
 
                   return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
               }();
+          },
+          formattedDate: function(format, date) {
+            return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
           },
           date: function () {
             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
@@ -1553,6 +1556,7 @@ $.fn.calendar.settings = {
     datetime: 'MMMM D, YYYY h:mm A',
     date: 'MMMM D, YYYY',
     time: 'h:mm A',
+    cellTime: 'h:mm A',
     month: 'MMMM YYYY',
     year: 'YYYY',
     today: function (settings) {
