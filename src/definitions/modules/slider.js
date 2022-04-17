@@ -86,7 +86,6 @@ $.fn.slider = function(parameters) {
         secondPos,
         offset,
         precision,
-        isTouch,
         gapRatio = 1,
         previousValue,
 
@@ -104,7 +103,6 @@ $.fn.slider = function(parameters) {
           currentRange += 1;
           documentEventID = currentRange;
 
-          isTouch = module.setup.testOutTouch();
           module.setup.layout();
           module.setup.labels();
 
@@ -175,14 +173,6 @@ $.fn.slider = function(parameters) {
               }
             }
           },
-          testOutTouch: function() {
-            try {
-             document.createEvent('TouchEvent');
-             return true;
-            } catch (e) {
-             return false;
-            }
-          },
           customLabel: function() {
             var
               $children   = $labels.find('.label'),
@@ -236,9 +226,6 @@ $.fn.slider = function(parameters) {
             module.bind.globalKeyboardEvents();
             module.bind.keyboardEvents();
             module.bind.mouseEvents();
-            if(module.is.touch()) {
-              module.bind.touchEvents();
-            }
             if (settings.autoAdjustLabels) {
               module.bind.windowEvents();
             }
@@ -265,26 +252,11 @@ $.fn.slider = function(parameters) {
               isHover = false;
             });
           },
-          touchEvents: function() {
-            module.verbose('Binding touch events');
-            $module.find('.track, .thumb, .inner').on('touchstart' + eventNamespace, function(event) {
-              event.stopImmediatePropagation();
-              event.preventDefault();
-              module.event.down(event);
-            });
-            $module.on('touchstart' + eventNamespace, module.event.down);
-          },
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
             module.verbose('Binding page wide events while handle is being draged');
-            if(module.is.touch()) {
-              $(document).on('touchmove' + eventNamespace, module.event.move);
-              $(document).on('touchend' + eventNamespace, module.event.up);
-            }
-            else {
-              $(document).on('mousemove' + eventNamespace, module.event.move);
-              $(document).on('mouseup' + eventNamespace, module.event.up);
-            }
+            $(document).on('mousemove' + eventNamespace, module.event.move);
+            $(document).on('mouseup' + eventNamespace, module.event.up);
           },
           windowEvents: function() {
             $window.on('resize' + eventNamespace, module.event.resize);
@@ -294,24 +266,17 @@ $.fn.slider = function(parameters) {
         unbind: {
           events: function() {
             $module.find('.track, .thumb, .inner').off('mousedown' + eventNamespace);
-            $module.find('.track, .thumb, .inner').off('touchstart' + eventNamespace);
             $module.off('mousedown' + eventNamespace);
             $module.off('mouseenter' + eventNamespace);
             $module.off('mouseleave' + eventNamespace);
-            $module.off('touchstart' + eventNamespace);
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
             $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
-            if(module.is.touch()) {
-              $(document).off('touchmove' + eventNamespace);
-              $(document).off('touchend' + eventNamespace);
-            } else {
-              $(document).off('mousemove' + eventNamespace);
-              $(document).off('mouseup' + eventNamespace);
-            }
+            $(document).off('mousemove' + eventNamespace);
+            $(document).off('mouseup' + eventNamespace);
           },
         },
 
@@ -500,9 +465,6 @@ $.fn.slider = function(parameters) {
           },
           smooth: function() {
             return settings.smooth || $module.hasClass(settings.className.smooth);
-          },
-          touch: function() {
-            return isTouch;
           }
         },
 
@@ -766,7 +728,7 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event) {
-            if(module.is.touch()) {
+            if(event.type === "touchmove") {
               var
                 touchEvent = event.changedTouches ? event : event.originalEvent,
                 touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
