@@ -70,6 +70,7 @@ $.fn.slider = function(parameters) {
 
         $module         = $(this),
         $currThumb,
+        touchIdentifier,
         $thumb,
         $secondThumb,
         $track,
@@ -238,7 +239,7 @@ $.fn.slider = function(parameters) {
             $(document).on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
           },
           mouseEvents: function() {
-            module.verbose('Binding mouse events');
+            module.verbose('Binding mouse and touch events');
             $module.find('.track, .thumb, .inner').on('mousedown' + eventNamespace, function(event) {
               event.stopImmediatePropagation();
               event.preventDefault();
@@ -251,6 +252,14 @@ $.fn.slider = function(parameters) {
             $module.on('mouseleave' + eventNamespace, function(event) {
               isHover = false;
             });
+            // All touch events are invoked on the element where the touch *started*. Thus, we can bind them all
+            // on the thumb(s) and don't need to worry about interference with other components, i.e. no dynamic binding
+            // and unbinding required.
+            $module.find('.thumb')
+              .on('touchstart' + eventNamespace,  module.event.touchDown)
+              .on('touchmove' + eventNamespace, module.event.move)
+              .on('touchend' + eventNamespace, module.event.up)
+              .on('touchcancel' + eventNamespace, module.event.touchCancel);
           },
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
@@ -269,6 +278,11 @@ $.fn.slider = function(parameters) {
             $module.off('mousedown' + eventNamespace);
             $module.off('mouseenter' + eventNamespace);
             $module.off('mouseleave' + eventNamespace);
+            $module.find('.thumb')
+              .off('touchstart' + eventNamespace)
+              .off('touchmove' + eventNamespace)
+              .off('touchend' + eventNamespace)
+              .off('touchcancel' + eventNamespace);
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
             $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
@@ -306,10 +320,30 @@ $.fn.slider = function(parameters) {
               module.bind.slidingEvents();
             }
           },
+          touchDown: function(event) {
+            event.preventDefault();  // disable mouse emulation and touch-scrolling
+            if(touchIdentifier !== undefined) {
+              // ignore multiple touches on the same slider --
+              // we cannot handle changing both thumbs at once due to shared state
+              return;
+            }
+            $currThumb = $(event.target);
+            var touchEvent = event.touches ? event : event.originalEvent;
+            touchIdentifier = touchEvent.targetTouches[0].identifier;
+            if(previousValue === undefined) {
+              previousValue = module.get.currentThumbValue();
+            }
+          },
           move: function(event) {
-            event.preventDefault();
+            if(event.type == 'mousemove') {
+              event.preventDefault();  // prevent text selection etc.
+            }
+            if(module.is.disabled()) {
+              // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
+              return;
+            }
             var value = module.determine.valueFromEvent(event);
-            if($currThumb === undefined) {
+            if(event.type == 'mousemove' && $currThumb === undefined) {
               var
                 eventPos = module.determine.eventPos(event),
                 newPos = module.determine.pos(eventPos)
@@ -346,10 +380,23 @@ $.fn.slider = function(parameters) {
           },
           up: function(event) {
             event.preventDefault();
+            if(module.is.disabled()) {
+              // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
+              return;
+            }
             var value = module.determine.valueFromEvent(event);
             module.set.value(value);
             module.unbind.slidingEvents();
+            touchIdentifier = undefined;
             if (previousValue !== undefined) {
+              previousValue = undefined;
+            }
+          },
+          touchCancel: function(event) {
+            event.preventDefault();
+            touchIdentifier = undefined;
+            if (previousValue !== undefined) {
+              module.update.value(previousValue);
               previousValue = undefined;
             }
           },
@@ -728,12 +775,19 @@ $.fn.slider = function(parameters) {
             return value;
           },
           eventPos: function(event) {
-            if(event.type === "touchmove") {
+            if(event.type === "touchmove" || event.type === "touchend") {
               var
-                touchEvent = event.changedTouches ? event : event.originalEvent,
-                touches = touchEvent.changedTouches[0] ? touchEvent.changedTouches : touchEvent.touches,
-                touchY = touches[0].pageY,
-                touchX = touches[0].pageX
+                touchEvent = event.Touches ? event : event.originalEvent,
+                touch = touchEvent.changedTouches[0];  // fall back to first touch if correct touch not found
+              for(var i=0; i < touchEvent.touches.length; i++) {
+                if(touchEvent.touches[i].identifier === touchIdentifier) {
+                  touch = touchEvent.touches[i];
+                  break;
+                }
+              }
+              var
+                touchY = touch.pageY,
+                touchX = touch.pageX
               ;
               return module.is.vertical() ? touchY : touchX;
             }
