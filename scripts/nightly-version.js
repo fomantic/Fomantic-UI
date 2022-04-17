@@ -6,6 +6,7 @@ const childProcess = require('child_process')
 // npm
 const fetch = require('node-fetch')
 const semver = require('semver')
+const actions = require('@actions/core')
 
 // pkg
 const pkg = require('../package.json')
@@ -19,7 +20,7 @@ const currentRev = childProcess // get the current rev from the repo
   .execSync('git rev-parse HEAD')
   .toString()
   .trim()
-  .substr(0, 7)
+  .slice(0, 7)
 
 const getNextVersion = async function () {
   const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
@@ -38,7 +39,12 @@ const getPublishedVersion = async function () {
   return semver.parse(
     await fetch(`${npmBase}/${npmPackage}`)
       .then(r => r.json())
-      .then(p => p['dist-tags'].nightly)
+      .then(p => {
+        let nightly = p['dist-tags'].nightly ?? '';
+        let versionInfo = p.versions[nightly] ?? {};
+        let buildCommit = nightly.indexOf('+')===-1 && versionInfo.gitHead ? '+'+(versionInfo.gitHead ?? '').slice(0,7) : '';
+        return nightly+buildCommit;
+      })
   )
 }
 
@@ -47,8 +53,10 @@ const getNightlyVersion = async function () {
   const current = semver.parse(await getPublishedVersion())
 
   if (current.build[0] === currentRev) {
+    actions.setOutput('shouldPublish', false)
+
     console.log('No new commits since last publish. Exiting.')
-    process.exit(1)
+    process.exit(0)
     return
   }
 
@@ -66,6 +74,7 @@ const getNightlyVersion = async function () {
     )
   }
 
+  actions.setOutput('shouldPublish', 'yes')
   return `${nightlyVersion}+${currentRev}`
 }
 

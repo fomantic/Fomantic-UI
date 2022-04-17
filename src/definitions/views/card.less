@@ -77,8 +77,8 @@
 }
 
 /* Clearing */
-.ui.cards:after,
-.ui.card:after {
+.ui.cards::after,
+.ui.card::after {
   display: block;
   content: ' ';
   height: 0;
@@ -157,8 +157,8 @@
   border-radius: @contentBorderRadius;
 }
 
-.ui.cards > .card > .content:after,
-.ui.card > .content:after {
+.ui.cards > .card > .content::after,
+.ui.card > .content::after {
   display: block;
   content: ' ';
   height: 0;
@@ -358,6 +358,28 @@
   }
 }
 
+& when (@variationCardBasic) {
+  /*--------------
+     Basic
+  ---------------*/
+  .ui.cards:not(.raised) > .basic.card:not(.raised),
+  .ui.ui.ui.basic.cards:not(.raised) > .card:not(.raised),
+  .ui.ui.ui.basic.card:not(.raised) {
+    box-shadow: none;
+    & > .buttons,
+      > .button {
+      margin: 0;
+      width: 100%;
+    }
+  }
+  & when (@variationCardLink) {
+    .ui.ui.ui.ui.ui.basic.card:not(.raised):hover,
+    .ui.ui.ui.ui.ui.basic.cards:not(.raised) .card:not(.raised):hover {
+      box-shadow: none;
+    }
+  }
+}
+
 /*--------------
       Dimmer
 ---------------*/
@@ -473,7 +495,7 @@
     pointer-events: none;
     transition: all 0s linear;
   }
-  .ui.loading.card:before {
+  .ui.loading.card::before {
     position: absolute;
     content: '';
     top: 0;
@@ -484,7 +506,7 @@
     border-radius: @borderRadius;
     z-index: @loaderDimmerZIndex;
   }
-  .ui.loading.card:after {
+  .ui.loading.card::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -561,6 +583,7 @@
          Raised
   --------------------*/
 
+  .ui.cards > .raised.card,
   .ui.raised.cards > .card,
   .ui.raised.card {
     box-shadow: @raisedShadow;
@@ -571,6 +594,24 @@
     a.ui.raised.card:hover,
     .ui.link.raised.card:hover {
       box-shadow: @raisedShadowHover;
+    }
+  }
+  & when (@variationCardBasic) {
+    .ui.basic.cards > .raised.card,
+    .ui.basic.raised.cards > .card,
+    .ui.raised.cards > .basic.card,
+    .ui.basic.raised.card {
+      box-shadow: @basicRaisedShadow;
+    }
+    & when (@variationCardLink) {
+      .ui.basic.raised.cards a.card:hover,
+      .ui.link.cards .basic.raised.card:hover,
+      .ui.link.basic.cards .raised.card:hover,
+      .ui.link.basic.raised.cards .card:hover,
+      a.ui.basic.raised.card:hover,
+      .ui.link.basic.raised.card:hover {
+        box-shadow: @basicRaisedShadowHover;
+      }
     }
   }
 }
@@ -636,6 +677,7 @@
     @h: @colors[@@color][hover];
     @l: @colors[@@color][light];
     @lh: @colors[@@color][lightHover];
+    @isVeryDark: @colors[@@color][isVeryDark];
 
     .ui.@{color}.cards > .card,
     .ui.cards > .@{color}.card,
@@ -645,12 +687,47 @@
             0 @coloredShadowDistance 0 0 @c,
             @shadowBoxShadow
       ;
-      &:hover {
-      box-shadow:
-            @borderShadow,
-            0 @coloredShadowDistance 0 0 @h,
-            @shadowHoverBoxShadow
+    }
+    & when (@variationCardLink) {
+      .ui.cards a.@{color}.card:hover,
+      .ui.@{color}.cards a.card:hover,
+      .ui.link.@{color}.cards .card:not(.icon):hover,
+      .ui.link.cards .@{color}.card:not(.icon):hover,
+      a.ui.@{color}.card:hover,
+      .ui.link.@{color}.card:hover {
+        box-shadow:
+              @borderShadow,
+              0 @coloredShadowDistance 0 0 @h,
+              @shadowHoverBoxShadow
       ;
+      }
+    }
+    & when (@variationCardBasic) {
+      .ui.cards > .basic.@{color}.card,
+      .ui.basic.@{color}.cards > .card,
+      .ui.basic.cards > .@{color}.card,
+      .ui.basic.@{color}.card {
+        background: @l;
+        &  when (@isVeryDark) {
+          & .header,
+            .content,
+            .meta,
+            .description {
+            color: @white;
+          }
+        }
+      }
+      & when (@variationCardLink) {
+        .ui.basic.cards a.@{color}.card:hover,
+        .ui.cards a.basic.@{color}.card:hover,
+        .ui.basic.@{color}.cards a.card:hover,
+        .ui.link.cards .basic.@{color}.card:not(.icon):hover,
+        .ui.link.basic.@{color}.cards .card:not(.icon):hover,
+        .ui.link.basic.cards .@{color}.card:not(.icon):hover,
+        a.ui.basic.@{color}.card:hover,
+        .ui.link.basic.@{color}.card:hover {
+          background: @lh;
+        }
       }
     }
     & when (@variationCardInverted) {
@@ -662,12 +739,39 @@
               0 @coloredShadowDistance 0 0 @l,
               0 0 0 @borderWidth @solidWhiteBorderColor
         ;
-        &:hover {
-        box-shadow:
-              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-              0 @coloredShadowDistance 0 0 @lh,
-              0 0 0 @borderWidth @solidWhiteBorderColor
+      }
+      & when (@variationCardLink) {
+        .ui.inverted.cards a.@{color}.card:hover,
+        .ui.inverted.@{color}.cards a.card:hover,
+        .ui.link.inverted.@{color}.cards .card:not(.icon):hover,
+        .ui.link.inverted.cards .@{color}.card:not(.icon):hover,
+        a.ui.inverted.@{color}.card:hover,
+        .ui.link.inverted.@{color}.card:hover {
+          box-shadow:
+                  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                  0 @coloredShadowDistance 0 0 @lh,
+                  0 0 0 @borderWidth @solidWhiteBorderColor
         ;
+        }
+      }
+      & when (@variationCardBasic) {
+        .ui.inverted.cards > .basic.@{color}.card,
+        .ui.basic.inverted.@{color}.cards > .card,
+        .ui.basic.inverted.cards > .@{color}.card,
+        .ui.basic.inverted.@{color}.card {
+          background: @c;
+        }
+        & when (@variationCardLink) {
+          .ui.inverted.cards a.basic.@{color}.card:hover,
+          .ui.basic.inverted.cards a.@{color}.card:hover,
+          .ui.basic.inverted.@{color}.cards a.card:hover,
+          .ui.link.inverted.cards .basic.@{color}.card:not(.icon):hover,
+          .ui.link.basic.inverted.@{color}.cards .card:not(.icon):hover,
+          .ui.link.basic.inverted.cards .@{color}.card:not(.icon):hover,
+          a.ui.basic.inverted.@{color}.card:hover,
+          .ui.link.basic.inverted.@{color}.card:hover {
+            background: @h;
+          }
         }
       }
     }
@@ -1083,7 +1187,7 @@
     .ui.inverted.loading.card {
       color: @invertedLoaderLineColor;
     }
-    .ui.inverted.loading.card:before {
+    .ui.inverted.loading.card::before {
       background: @loaderInvertedDimmerColor;
     }
   }

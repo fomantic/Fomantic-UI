@@ -138,7 +138,7 @@
     pointer-events: @loadingPointerEvents;
     transition: @loadingTransition;
   }
-  .ui.loading.button:before {
+  .ui.loading.button::before {
     position: absolute;
     content: '';
     top: 50%;
@@ -151,7 +151,7 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @invertedLoaderFillColor;
   }
-  .ui.loading.button:after {
+  .ui.loading.button::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -169,19 +169,24 @@
 
     box-shadow: 0 0 0 1px transparent;
   }
-}
-& when (@variationButtonLabeledIcon){
-  .ui.labeled.icon.loading.button .icon {
+  .ui.ui.ui.loading.button .label {
     background-color: transparent;
-    box-shadow: none;
+    border-color: transparent;
+    color: transparent;
   }
-}
-& when (@variationButtonBasic){
-  .ui.basic.loading.button:not(.inverted):before {
-    border-color: @loaderFillColor;
+  & when (@variationButtonLabeledIcon){
+    .ui.labeled.icon.loading.button .icon {
+      background-color: transparent;
+      box-shadow: none;
+    }
   }
-  .ui.basic.loading.button:not(.inverted):after {
-    border-color: @loaderLineColor;
+  & when (@variationButtonBasic){
+    .ui.basic.loading.button:not(.inverted)::before {
+      border-color: @loaderFillColor;
+    }
+    .ui.basic.loading.button:not(.inverted)::after {
+      border-color: @loaderLineColor;
+    }
   }
 }
 & when (@variationButtonDisabled){
@@ -404,7 +409,7 @@
   }
 
   /* Tag */
-  .ui.labeled.button > .tag.label:before {
+  .ui.labeled.button > .tag.label::before {
     width: @labeledTagLabelSize;
     height: @labeledTagLabelSize;
   }
@@ -1036,10 +1041,10 @@
   }
 
 
-  .ui.labeled.icon.buttons > .button > .icon:before,
-  .ui.labeled.icon.button > .icon:before,
-  .ui.labeled.icon.buttons > .button > .icon:after,
-  .ui.labeled.icon.button > .icon:after {
+  .ui.labeled.icon.buttons > .button > .icon::before,
+  .ui.labeled.icon.button > .icon::before,
+  .ui.labeled.icon.buttons > .button > .icon::after,
+  .ui.labeled.icon.button > .icon::after {
     display: block;
     position: relative;
     width: 100%;
@@ -1072,7 +1077,7 @@
   }
 
   /* Loading Icon in Labeled Button */
-  .ui.labeled.icon.button > .loading.icon:before {
+  .ui.labeled.icon.button > .loading.icon::before {
     animation: loader 2s linear infinite;
   }
 }
@@ -1126,7 +1131,7 @@
     z-index: @orZIndex;
   }
 
-  .ui.buttons .or:before {
+  .ui.buttons .or::before {
     position: absolute;
     text-align: center;
     border-radius: @circularRadius;
@@ -1152,7 +1157,7 @@
     box-shadow: @orBoxShadow;
   }
 
-  .ui.buttons .or[data-text]:before {
+  .ui.buttons .or[data-text]::before {
     content: attr(data-text);
   }
 
@@ -1161,7 +1166,7 @@
     width: 0 !important;
   }
 
-  .ui.fluid.buttons .or:after {
+  .ui.fluid.buttons .or::after {
     display: none;
   }
 
@@ -1865,7 +1870,7 @@
   }
 
   /* Clearfix */
-  .ui.buttons:after {
+  .ui.buttons::after {
     content: ".";
     display: block;
     height: 0;

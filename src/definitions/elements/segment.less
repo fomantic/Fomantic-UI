@@ -198,10 +198,10 @@
   .ui.piled.segment:last-child {
     margin-bottom: 0;
   }
-  .ui.piled.segments:after,
-  .ui.piled.segments:before,
-  .ui.piled.segment:after,
-  .ui.piled.segment:before {
+  .ui.piled.segments::after,
+  .ui.piled.segments::before,
+  .ui.piled.segment::after,
+  .ui.piled.segment::before {
     background-color: @white;
     visibility: visible;
     content: '';
@@ -213,14 +213,14 @@
     border: @piledBorder;
     box-shadow: @piledBoxShadow;
   }
-  .ui.piled.segments:before,
-  .ui.piled.segment:before {
+  .ui.piled.segments::before,
+  .ui.piled.segment::before {
     transform: rotate(-@piledDegrees);
     top: 0;
     z-index: -2;
   }
-  .ui.piled.segments:after,
-  .ui.piled.segment:after {
+  .ui.piled.segments::after,
+  .ui.piled.segment::after {
     transform: rotate(@piledDegrees);
     top: 0;
     z-index: -1;
@@ -252,10 +252,10 @@
   .ui.stacked.segment {
     padding-bottom: @stackedPadding;
   }
-  .ui.stacked.segments:before,
-  .ui.stacked.segments:after,
-  .ui.stacked.segment:before,
-  .ui.stacked.segment:after {
+  .ui.stacked.segments::before,
+  .ui.stacked.segments::after,
+  .ui.stacked.segment::before,
+  .ui.stacked.segment::after {
     content: '';
     position: absolute;
     bottom: -(@stackedHeight / 2);
@@ -268,23 +268,23 @@
     height: @stackedHeight;
     visibility: visible;
   }
-  .ui.stacked.segments:before,
-  .ui.stacked.segment:before {
+  .ui.stacked.segments::before,
+  .ui.stacked.segment::before {
     display: none;
   }
 
   /* Add additional page */
-  .ui.tall.stacked.segments:before,
-  .ui.tall.stacked.segment:before {
+  .ui.tall.stacked.segments::before,
+  .ui.tall.stacked.segment::before {
     display: block;
     bottom: 0;
   }
   & when (@variationSegmentInverted) {
     /* Inverted */
-    .ui.stacked.inverted.segments:before,
-    .ui.stacked.inverted.segments:after,
-    .ui.stacked.inverted.segment:before,
-    .ui.stacked.inverted.segment:after {
+    .ui.stacked.inverted.segments::before,
+    .ui.stacked.inverted.segments::after,
+    .ui.stacked.inverted.segment::before,
+    .ui.stacked.inverted.segment::after {
       background-color: @subtleTransparentBlack;
       border-top: 1px solid @selectedBorderColor;
     }
@@ -523,8 +523,8 @@
     user-select: none;
     transition: all 0s linear;
   }
-  .ui.loading.segments:before,
-  .ui.loading.segment:before {
+  .ui.loading.segments::before,
+  .ui.loading.segment::before {
     position: absolute;
     content: '';
     top: 0;
@@ -535,8 +535,8 @@
     border-radius: @borderRadius;
     z-index: @loaderDimmerZIndex;
   }
-  .ui.loading.segments:after,
-  .ui.loading.segment:after {
+  .ui.loading.segments::after,
+  .ui.loading.segment::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -582,7 +582,7 @@
          Clearing
   --------------------*/
 
-  .ui.clearing.segment:after {
+  .ui.clearing.segment::after {
     content: "";
     display: block;
     clear: both;
@@ -678,8 +678,8 @@
     .ui.inverted.loading.segment {
       color: @invertedLoaderLineColor;
     }
-    .ui.inverted.loading.segments:before,
-    .ui.inverted.loading.segment:before {
+    .ui.inverted.loading.segments::before,
+    .ui.inverted.loading.segment::before {
       background: @loaderInvertedDimmerColor;
     }
   }

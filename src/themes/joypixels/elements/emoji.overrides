@@ -3585,12 +3585,12 @@ each(@size-map, {
 
 each(@emoji-map,{
   & when (@variationEmojiColons) {
-    em[data-emoji=":@{value}:"]:before {
+    em[data-emoji=":@{value}:"]::before {
       background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
     }
-    em[data-emoji="@{value}"]:before:extend(em[data-emoji=":@{value}:"]:before) when (@variationEmojiNoColons) {}
+    em[data-emoji="@{value}"]::before:extend(em[data-emoji=":@{value}:"]::before) when (@variationEmojiNoColons) {}
   }
-  em[data-emoji="@{value}"]:before when (@variationEmojiNoColons) and not (@variationEmojiColons) {
+  em[data-emoji="@{value}"]::before when (@variationEmojiNoColons) and not (@variationEmojiColons) {
     background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
   }
 });

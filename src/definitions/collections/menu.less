@@ -39,7 +39,7 @@
   min-height: @minHeight;
 }
 
-.ui.menu:after {
+.ui.menu::after {
   content: '';
   display: block;
   height: 0;
@@ -98,7 +98,7 @@
 }
 
 /* Border */
-.ui.menu .item:before {
+.ui.menu .item::before {
   position: absolute;
   content: '';
   top: 0;
@@ -373,7 +373,7 @@
 ---------------*/
 
 /* Menu divider shouldn't apply */
-.ui.menu .list .item:before {
+.ui.menu .list .item::before {
   background: none !important;
 }
 
@@ -384,7 +384,7 @@
 
   /* Show vertical dividers below last */
 
-  .ui.vertical.sidebar.menu > .item:first-child:before {
+  .ui.vertical.sidebar.menu > .item:first-child::before {
     display: block !important;
   }
   .ui.vertical.sidebar.menu > .item::before {
@@ -576,7 +576,7 @@ Floated Menu / Item
 
 
   /*--- Border ---*/
-  .ui.vertical.menu .item:before {
+  .ui.vertical.menu .item::before {
     position: absolute;
     content: '';
     top: 0;
@@ -586,7 +586,7 @@ Floated Menu / Item
     background: @verticalDividerBackground;
   }
 
-  .ui.vertical.menu .item:first-child:before {
+  .ui.vertical.menu .item:first-child::before {
     display: none !important;
   }
 
@@ -605,7 +605,7 @@ Floated Menu / Item
   .ui.vertical.menu .item .menu .link.item:hover {
     color: @darkTextColor;
   }
-  .ui.vertical.menu .menu .item:before {
+  .ui.vertical.menu .menu .item::before {
     display: none;
   }
 
@@ -659,7 +659,7 @@ Floated Menu / Item
     padding: @tabularVerticalPadding @tabularHorizontalPadding;
     color: @tabularTextColor;
   }
-  .ui.tabular.menu .item:before {
+  .ui.tabular.menu .item::before {
     display: none;
   }
 
@@ -807,7 +807,7 @@ Floated Menu / Item
   .ui.compact.menu .item:last-child {
     border-radius: 0 @borderRadius @borderRadius 0;
   }
-  .ui.pagination.menu .item:last-child:before {
+  .ui.pagination.menu .item:last-child::before {
     display: none;
   }
 
@@ -856,7 +856,7 @@ Floated Menu / Item
   }
 
   /* No Divider */
-  .ui.secondary.menu .item:before {
+  .ui.secondary.menu .item::before {
     display: none !important;
   }
 
@@ -1003,7 +1003,7 @@ Floated Menu / Item
     .ui.secondary.pointing.menu .text.item {
       box-shadow: none !important;
     }
-    .ui.secondary.pointing.menu .item:after {
+    .ui.secondary.pointing.menu .item::after {
       display: none;
     }
 
@@ -1119,8 +1119,8 @@ Floated Menu / Item
   }
 
   /* Border */
-  .ui.text.menu .item:before,
-  .ui.text.menu .menu .item:before {
+  .ui.text.menu .item::before,
+  .ui.text.menu .menu .item::before {
     display: none !important;
   }
 
@@ -1197,7 +1197,7 @@ Floated Menu / Item
   }
   & when (@variationMenuPointing) {
     /* Disable Bariations */
-    .ui.text.pointing.menu .active.item:after {
+    .ui.text.pointing.menu .active.item::after {
       box-shadow: none;
     }
   }
@@ -1251,7 +1251,7 @@ Floated Menu / Item
   }
 
   /* Icon Glyph */
-  .ui.icon.menu i.icon:before {
+  .ui.icon.menu i.icon::before {
     opacity: 1;
   }
 
@@ -1323,11 +1323,15 @@ Floated Menu / Item
   @media only screen and (max-width: @largestMobileScreen) {
     .ui.stackable.menu {
       flex-direction: column;
+
+      &.pointing .active.item::after when (@variationMenuPointing) {
+        display: none;
+      }
     }
     .ui.stackable.menu .item {
       width: 100% !important;
     }
-    .ui.stackable.menu .item:before {
+    .ui.stackable.menu .item::before {
       position: absolute;
       content: '';
       top: auto;
@@ -1403,11 +1407,11 @@ Floated Menu / Item
   }
 
   /*--- Border ---*/
-  .ui.inverted.menu .item:before {
+  .ui.inverted.menu .item::before {
     background: @invertedDividerBackground;
   }
   & when (@variationMenuVertical) {
-    .ui.vertical.inverted.menu .item:before {
+    .ui.vertical.inverted.menu .item::before {
       background: @invertedVerticalDividerBackground;
     }
     /* Sub Menu */
@@ -1462,7 +1466,7 @@ Floated Menu / Item
     }
   }
   & when (@variationMenuPointing) {
-    .ui.inverted.pointing.menu .active.item:after {
+    .ui.inverted.pointing.menu .active.item::after {
       background: @invertedArrowActiveColor;
       margin: 0 !important;
       box-shadow: none !important;
@@ -1476,7 +1480,7 @@ Floated Menu / Item
     color: @invertedActiveHoverColor !important;
   }
   & when (@variationMenuPointing) {
-    .ui.inverted.pointing.menu .active.item:hover:after {
+    .ui.inverted.pointing.menu .active.item:hover::after {
       background: @invertedArrowActiveHoverColor;
     }
   }
@@ -1491,7 +1495,7 @@ Floated Menu / Item
     float: left;
     margin: 0 @floatedDistance 0 0;
   }
-  .ui.floated.menu .item:last-child:before {
+  .ui.floated.menu .item:last-child::before {
     display: none;
   }
 
@@ -1525,7 +1529,7 @@ Floated Menu / Item
         .ui.ui.inverted.@{color}.menu {
           background-color: @c;
         }
-        .ui.inverted.@{color}.menu .item:before {
+        .ui.inverted.@{color}.menu .item::before {
           background-color: @invertedColoredDividerBackground;
         }
         .ui.ui.inverted.@{color}.menu .active.item {
@@ -1541,7 +1545,7 @@ Floated Menu / Item
   }
 
   & when (@variationMenuPointing) {
-    .ui.ui.ui.inverted.pointing.menu .active.item:after {
+    .ui.ui.ui.inverted.pointing.menu .active.item::after {
       background-color: inherit;
     }
   }
@@ -1576,9 +1580,9 @@ Floated Menu / Item
      Borderless
   ---------------*/
 
-  .ui.borderless.menu .item:before,
-  .ui.borderless.menu .item .menu .item:before,
-  .ui.menu .borderless.item:before {
+  .ui.borderless.menu .item::before,
+  .ui.borderless.menu .item .menu .item::before,
+  .ui.menu .borderless.item::before {
     background: none !important;
   }
 }
@@ -1603,7 +1607,7 @@ Floated Menu / Item
   .ui.compact.menu:not(.secondary) .item:last-child {
     border-radius: 0 @borderRadius @borderRadius 0;
   }
-  .ui.compact.menu .item:last-child:before {
+  .ui.compact.menu .item:last-child::before {
     display: none;
   }
   & when (@variationMenuVertical) {
@@ -1646,7 +1650,7 @@ Floated Menu / Item
   margin: 0 @attachedHorizontalOffset !important;
 }
 
-.ui.item.menu .item:last-child:before {
+.ui.item.menu .item:last-child::before {
   display: none;
 }
 
@@ -1758,7 +1762,7 @@ Floated Menu / Item
          Pointing
   --------------------*/
 
-  .ui.pointing.menu .item:after {
+  .ui.pointing.menu .item::after {
     visibility: hidden;
     position: absolute;
     content: '';
@@ -1779,7 +1783,7 @@ Floated Menu / Item
     transition: @arrowTransition;
   }
   & when (@variationMenuVertical) {
-    .ui.vertical.pointing.menu .item:after {
+    .ui.vertical.pointing.menu .item::after {
       position: absolute;
       top: 50%;
       right: 0;
@@ -1794,44 +1798,51 @@ Floated Menu / Item
       border-right: @arrowBorder;
     }
   }
-  .ui.pointing.menu .ui.dropdown .menu .item:after,
-  .ui.vertical.pointing.menu .ui.dropdown .menu .item:after {
+  .ui.pointing.menu .ui.dropdown .menu .item::after,
+  .ui.vertical.pointing.menu .ui.dropdown .menu .item::after {
     display: none;
   }
 
   /* Active */
-  .ui.pointing.menu .active.item:after {
+  .ui.pointing.menu .active.item::after {
     visibility: visible;
   }
-  .ui.pointing.menu .active.dropdown.item:after {
+  .ui.pointing.menu .active.dropdown.item::after {
     visibility: hidden;
   }
 
   /* Don't double up pointers */
-  .ui.pointing.menu .dropdown.active.item:after,
-  .ui.pointing.menu .active.item .menu .active.item:after {
+  .ui.pointing.menu .dropdown.active.item::after,
+  .ui.pointing.menu .active.item .menu .active.item::after {
     display: none;
   }
 
   /* Colors */
-  .ui.pointing.menu .active.item:hover:after {
+  .ui.pointing.menu .active.item:hover::after {
     background-color: @arrowHoverColor;
   }
-  .ui.pointing.menu .active.item:after {
+  .ui.pointing.menu .active.item::after {
     background-color: @arrowActiveColor;
   }
-  .ui.pointing.menu .active.item:hover:after {
+  .ui.pointing.menu .active.item:hover::after {
     background-color: @arrowActiveHoverColor;
   }
   & when (@variationMenuVertical) {
-    .ui.vertical.pointing.menu .active.item:hover:after {
+    .ui.vertical.pointing.menu .active.item:hover::after {
       background-color: @arrowVerticalHoverColor;
     }
-    .ui.vertical.pointing.menu .active.item:after {
+    .ui.vertical.pointing.menu .active.item::after {
       background-color: @arrowVerticalActiveColor;
     }
-    .ui.vertical.pointing.menu .menu .active.item:after {
+    .ui.vertical.pointing.menu .menu .active.item::after {
       background-color: @arrowVerticalSubMenuColor;
+    }
+    & when (@variationMenuFluid) and (@variationGridStackable) {
+      @media only screen and (max-width: @largestMobileScreen) {
+        .ui.stackable.grid .ui.fluid.vertical.pointing.menu .active.item::after {
+          display: none;
+        }
+      }
     }
   }
 }
@@ -1841,7 +1852,7 @@ Floated Menu / Item
     @color: @value;
     @c: @colors[@@color][color];
 
-    .ui.inverted.pointing.menu .@{color}.active.item:after {
+    .ui.inverted.pointing.menu .@{color}.active.item::after {
       background-color: @c;
     }
   })

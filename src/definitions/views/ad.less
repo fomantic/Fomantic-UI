@@ -271,7 +271,7 @@
     position: relative;
     background: @testBackground;
   }
-  .ui.test.ad:after {
+  .ui.test.ad::after {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -285,11 +285,11 @@
     font-weight: @testFontWeight;
   }
   & when (@variationAdMobile) {
-    .ui.mobile.test.ad:after {
+    .ui.mobile.test.ad::after {
       font-size: @testMobileFontSize;
     }
   }
-  .ui.test.ad[data-text]:after {
+  .ui.test.ad[data-text]::after {
     content: attr(data-text);
   }
 }
