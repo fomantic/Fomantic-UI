@@ -322,6 +322,7 @@ $.fn.slider = function(parameters) {
           },
           touchDown: function(event) {
             event.preventDefault();  // disable mouse emulation and touch-scrolling
+            event.stopImmediatePropagation();
             if(touchIdentifier !== undefined) {
               // ignore multiple touches on the same slider --
               // we cannot handle changing both thumbs at once due to shared state
