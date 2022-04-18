@@ -777,7 +777,7 @@ $.fn.slider = function(parameters) {
           eventPos: function(event) {
             if(event.type === "touchmove" || event.type === "touchend") {
               var
-                touchEvent = event.Touches ? event : event.originalEvent,
+                touchEvent = event.touches ? event : event.originalEvent,
                 touch = touchEvent.changedTouches[0];  // fall back to first touch if correct touch not found
               for(var i=0; i < touchEvent.touches.length; i++) {
                 if(touchEvent.touches[i].identifier === touchIdentifier) {
