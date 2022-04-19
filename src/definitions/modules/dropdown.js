@@ -1340,13 +1340,15 @@ $.fn.dropdown = function(parameters) {
             },
             mouseleave: function(event) {
               var
-                $subMenu = $(this).children(selector.menu)
+                $subMenu = $(this).find(selector.menu)
               ;
               if($subMenu.length > 0) {
                 clearTimeout(module.itemTimer);
                 module.itemTimer = setTimeout(function() {
                   module.verbose('Hiding sub-menu', $subMenu);
-                  module.animate.hide(false, $subMenu);
+                  $subMenu.each(function() {
+                    module.animate.hide(false, $(this));
+                  });
                 }, settings.delay.hide);
               }
             },
