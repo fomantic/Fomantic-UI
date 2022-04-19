@@ -563,6 +563,15 @@ $.fn.dropdown = function(parameters) {
                 }
                 callback.call(element);
               });
+              // Hide submenus explicitly. On some browsers (esp. mobile), they will not automatically receive a
+              // mouseleave event
+              var $subMenu = $module.find(selector.menu);
+              if($subMenu.length > 0) {
+                module.verbose('Hiding sub-menu', $subMenu);
+                $subMenu.each(function() {
+                  module.animate.hide(false, $(this));
+                });
+              }
             }
           } else {
               module.unbind.intent();
