@@ -60,6 +60,7 @@ $.fn.slider = function(parameters) {
         className       = settings.className,
         metadata        = settings.metadata,
         namespace       = settings.namespace,
+        selector        = settings.selector,
         error           = settings.error,
         keys            = settings.keys,
         interpretLabel  = settings.interpretLabel,
@@ -240,7 +241,7 @@ $.fn.slider = function(parameters) {
           },
           mouseEvents: function() {
             module.verbose('Binding mouse and touch events');
-            $module.find('.track, .thumb, .inner').on('mousedown' + eventNamespace, function(event) {
+            $module.find(selector.mouseTarget).on('mousedown' + eventNamespace, function(event) {
               event.stopImmediatePropagation();
               event.preventDefault();
               module.event.down(event);
@@ -255,7 +256,7 @@ $.fn.slider = function(parameters) {
             // All touch events are invoked on the element where the touch *started*. Thus, we can bind them all
             // on the thumb(s) and don't need to worry about interference with other components, i.e. no dynamic binding
             // and unbinding required.
-            $module.find('.thumb')
+            $module.find(selector.touchTarget)
               .on('touchstart' + eventNamespace,  module.event.touchDown)
               .on('touchmove' + eventNamespace, module.event.move)
               .on('touchend' + eventNamespace, module.event.up)
@@ -274,11 +275,11 @@ $.fn.slider = function(parameters) {
 
         unbind: {
           events: function() {
-            $module.find('.track, .thumb, .inner').off('mousedown' + eventNamespace);
+            $module.find(selector.mouseTarget).off('mousedown' + eventNamespace);
             $module.off('mousedown' + eventNamespace);
             $module.off('mouseenter' + eventNamespace);
             $module.off('mouseleave' + eventNamespace);
-            $module.find('.thumb')
+            $module.find(selector.touchTarget)
               .off('touchstart' + eventNamespace)
               .off('touchmove' + eventNamespace)
               .off('touchend' + eventNamespace)
@@ -1320,7 +1321,8 @@ $.fn.slider.settings = {
   pageMultiplier : 2,
 
   selector: {
-
+    mouseTarget: '.track, .thumb, .inner',
+    touchTarget: '.thumb'
   },
 
   className     : {
