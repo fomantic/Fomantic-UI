@@ -12,4 +12,4 @@
        Element
 --------------------*/
 
-@flagLineHeight: @headerLineHeight;
+@flagLineHeight: 1em;
