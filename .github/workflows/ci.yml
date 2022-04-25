@@ -5,6 +5,7 @@ jobs:
     name: Test build process on node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         node-version: [12, 14, 16]
     steps:
