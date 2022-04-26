@@ -15,4 +15,4 @@
 /* Emoji Variables */
 @opacity: 1;
 @loadingDuration: 2s;
-@emojiLineHeight: @headerLineHeight;
+@emojiLineHeight: 1em;
