@@ -1074,7 +1074,7 @@ $.fn.dropdown = function(parameters) {
                     settings.preserveHTML
                   )
                 ;
-                $input.append('<option value="' + value + '">' + name + '</option>');
+                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
               });
               module.observe.select();
             }
