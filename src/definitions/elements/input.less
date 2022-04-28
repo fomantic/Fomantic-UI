@@ -44,7 +44,6 @@
   line-height: @lineHeight;
 
   font-family: @inputFont;
-  padding: @padding;
 
   background: @background;
   border: @border;
@@ -53,6 +52,15 @@
   transition: @transition;
 
   box-shadow: @boxShadow;
+  &:not([type="color"]) {
+    padding: @padding;
+  }
+  &::-webkit-calendar-picker-indicator {
+    padding: 0;
+    opacity: @iconOpacity;
+    transition: @iconTransition;
+    cursor: pointer;
+  }
 }
 
 
@@ -67,6 +75,7 @@
 }
 .ui.input > input::-moz-placeholder {
   color: @placeholderColor;
+  opacity: 1;
 }
 .ui.input > input:-ms-input-placeholder {
   color: @placeholderColor;
@@ -109,7 +118,7 @@
          Loading
   ---------------------*/
 
-  .ui.loading.loading.input > i.icon:before {
+  .ui.loading.loading.input > i.icon::before {
     position: absolute;
     content: '';
     top: 50%;
@@ -122,7 +131,7 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @loaderFillColor;
   }
-  .ui.loading.loading.input > i.icon:after {
+  .ui.loading.loading.input > i.icon::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -167,18 +176,32 @@
 }
 
 
-& when (@variationInputStates) {
+& when not (@variationInputStates = false) {
   /*--------------------
           States
   ---------------------*/
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
 
     .ui.input.@{state} > input {
       background-color: @formStates[@@state][background];
       border-color: @formStates[@@state][borderColor];
       color: @formStates[@@state][color];
       box-shadow: @formStates[@@state][boxShadow];
+    }
+    & when (@state=error) {
+      .ui.input > input:not(:placeholder-shown):invalid {
+        background-color: @formStates[@@state][background];
+        border-color: @formStates[@@state][borderColor];
+        color: @formStates[@@state][color];
+        box-shadow: @formStates[@@state][boxShadow];
+      }
+      .ui.input > input:not(:-ms-input-placeholder):invalid {
+        background-color: @formStates[@@state][background];
+        border-color: @formStates[@@state][borderColor];
+        color: @formStates[@@state][color];
+        box-shadow: @formStates[@@state][boxShadow];
+      }
     }
 
     /* Placeholder */
@@ -283,13 +306,13 @@
   .ui.icon.input > i.icon:not(.link) {
     pointer-events: none;
   }
-  .ui.ui.ui.ui.icon.input > textarea,
-  .ui.ui.ui.ui.icon.input > input {
+  .ui.ui.ui.ui.icon.input:not(.corner) > textarea,
+  .ui.ui.ui.ui.icon.input:not(.corner) > input {
     padding-right: @iconMargin;
   }
 
-  .ui.icon.input > i.icon:before,
-  .ui.icon.input > i.icon:after {
+  .ui.icon.input > i.icon::before,
+  .ui.icon.input > i.icon::after {
     left: 0;
     position: absolute;
     text-align: center;
@@ -315,16 +338,20 @@
     right: auto;
     left: @circularIconHorizontalOffset;
   }
-  .ui.ui.ui.ui[class*="left icon"].input > textarea,
-  .ui.ui.ui.ui[class*="left icon"].input > input {
+  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > textarea,
+  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > input {
     padding-left: @iconMargin;
+  }
+  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > textarea,
+  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > input {
     padding-right: @horizontalPadding;
   }
 
   /* Focus */
+  .ui.input > input:focus::-webkit-calendar-picker-indicator,
   .ui.icon.input > textarea:focus ~ i.icon,
   .ui.icon.input > input:focus ~ i.icon {
-    opacity: 1;
+    opacity: @iconFocusOpacity;
   }
 }
 
@@ -384,38 +411,101 @@
   }
 
   /* Spacing with corner label */
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > textarea,
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).labeled.input > input {
-    padding-right: @labeledMargin !important;
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > textarea,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > input {
+    padding-right: @labeledMargin;
   }
+  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .ui.dropdown,
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > textarea,
   .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
-    padding-right: @labeledIconInputMargin !important;
+    padding-right: @labeledIconInputMargin;
   }
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .icon {
+  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
     margin-right: @labeledIconMargin;
   }
 
   /* Left Labeled */
-  .ui[class*="left corner labeled"].labeled.input > textarea,
-  .ui[class*="left corner labeled"].labeled.input > input {
-    padding-left: @labeledMargin !important;
+  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > textarea,
+  .ui[class*="left corner labeled"].input > input {
+    padding-left: @labeledMargin;
   }
   & when (@variationInputIcon) {
-    .ui[class*="left corner labeled"].icon.input > textarea,
-    .ui[class*="left corner labeled"].icon.input > input {
-      padding-left: @labeledIconInputMargin !important;
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > .ui.dropdown,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > textarea,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
+      padding-right: @labeledIconInputMargin;
     }
-    .ui[class*="left corner labeled"].icon.input > .icon {
+    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
+    .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
+    .ui[class*="left corner labeled"][class*="left icon"].input > input {
+      padding-left: @labeledAndIconMargin;
+    }
+    .ui[class*="left corner labeled"].icon.input > i.icon {
       margin-left: @labeledIconMargin;
     }
+    .ui[class*="left corner labeled"].icon:not([class*="left icon"]).input > input {
+      padding-right: @labeledMargin;
+    }
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > input {
+      padding-right: @labeledMargin * 2;
+    }
+  }
+
+  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left corner labeled"].input > .ui.dropdown {
+    & > .search {
+      padding-left: @labeledMargin;
+    }
+    & > .menu {
+      padding-left: @labeledIconMargin;
+      & > .item {
+        padding-left: @labeledMargin;
+        margin-left: -@labeledIconMargin;
+      }
+    }
+  }
+  .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown {
+    & > .search {
+      padding-left: @labeledAndIconMargin;
+    }
+    & > .menu > .item {
+      padding-left: @labeledAndIconMargin;
+    }
+  }
+  .ui.icon.input:not([class*="left icon"]) > .ui.dropdown,
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown {
+    & > .search {
+      padding-right: @labeledMargin + @labeledIconInputMargin;
+    }
+    & > .remove.icon,
+      > .dropdown.icon  {
+      padding-right: @labeledMargin;
+    }
+  }
+  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
+    & > .search {
+      padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
+    }
+    & > .remove.icon,
+    > .dropdown.icon  {
+      padding-right: @labeledAndIconMargin;
+    }
+  }
+  .ui.icon.input > .ui.visible.dropdown ~ i.icon,
+  .ui.icon.input > .ui.active.dropdown ~ i.icon,
+  .ui[class*="corner labeled"].input > .ui.visible.dropdown ~ .ui.corner.label,
+  .ui[class*="corner labeled"].input > .ui.active.dropdown ~ .ui.corner.label {
+    z-index: @labeledDropdownZIndex;
   }
 }
 & when (@variationInputIcon) {
-  .ui.icon.input > textarea ~ .icon {
+  .ui.icon.input > textarea ~ i.icon {
     height: @textareaIconHeight;
   }
-  :not(.field) > .ui.transparent.icon.input > textarea ~ .icon {
+  :not(.field) > .ui.transparent.icon.input > textarea ~ i.icon {
     height: @transparentTextareaIconHeight;
   }
 }
@@ -431,32 +521,32 @@
   }
 }
 
-& when (@variationInputLabeled)  or (@variationInputAction) {
+& when ((@variationInputLabeled) or (@variationInputAction)) and not (@variationInputStates = false) {
   /* Labeled and action input states */
-  each(@formStates, {
-    @state: replace(@key, '@', '');
+  each(@variationInputStates, {
+    @state: @value;
     @borderColor: @formStates[@@state][borderColor];
 
-    .ui.form > .field.@{state} > .ui.action.input > .ui.button,
-    .ui.form > .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
+    .ui.form .field.@{state} > .ui.action.input > .ui.button,
+    .ui.form .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
     .ui.action.input.@{state} > .ui.button,
     .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
       border-top: @borderWidth solid @borderColor;
       border-bottom: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.left.action.input > .ui.button,
-    .ui.form > .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
-    .ui.left.action.input.@{state} > .ui.button,
+    .ui.form .field.@{state} > .ui[class*="left action"].input > .ui.button,
+    .ui.form .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
+    .ui[class*="left action"].input.@{state} > .ui.button,
     .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
       border-left: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.action.input:not(.left) > input + .ui.button,
-    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
-    .ui.action.input.@{state}:not(.left) > input + .ui.button,
+    .ui.form .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
+    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
+    .ui.action.input.@{state}:not([class*="left action"]) > input + .ui.button,
     .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
       border-right: @borderWidth solid @borderColor;
     }
-    .ui.form > .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
+    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
     .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
       border-left: @borderWidth solid @borderColor;
     }
@@ -543,6 +633,159 @@
   }
   .ui.fluid.input > input {
     width: 0 !important;
+  }
+}
+
+
+& when (@variationInputFile) {
+  /*--------------------
+          File
+  ---------------------*/
+
+  /* width hack for chrome/edge */
+  .ui.file.input {
+    width: 100%;
+    & input[type="file"] {
+      width: 0;
+    }
+  }
+
+  .ui.form .field > input[type="file"],
+  .ui.file.input:not(.action) input[type="file"] {
+    padding: 0;
+  }
+
+  .ui.action.file.input input[type="file"]::-webkit-file-upload-button {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::-webkit-file-upload-button,
+  .ui.file.input input[type="file"]::-webkit-file-upload-button {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin-right: @fileButtonMargin;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+  .ui.action.file.input input[type="file"]::-ms-browse {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::-ms-browse,
+  .ui.file.input input[type="file"]::-ms-browse {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin: 0;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+  /* IE needs additional styling for input field :S */
+  @media all and (-ms-high-contrast:none) {
+    .ui.file.input > input[type="file"],
+    input[type="file"].ui.file.input {
+      padding: 0 !important;
+    }
+  }
+
+  .ui.action.file.input input[type="file"]::file-selector-button {
+    display: none;
+  }
+  .ui.form .field input[type="file"]::file-selector-button,
+  .ui.file.input input[type="file"]::file-selector-button {
+    border: none;
+    cursor: pointer;
+    padding: @padding;
+    margin-right: @fileButtonMargin;
+    background: @fileButtonBackground;
+    font-weight: @fileButtonFontWeight;
+    color: @fileButtonTextColor;
+    &:hover {
+      background: @fileButtonBackgroundHover;
+      color: @fileButtonTextColor;
+    }
+  }
+
+  .ui.form .field input[type="file"]:required:invalid,
+  .ui.file.input input[type="file"]:required:invalid {
+    color: @negativeTextColor;
+    background: @negativeBackgroundColor ;
+    border-color: @negativeBorderColor;
+  }
+
+  input[type="file"].ui.invisible.file.input,
+  .ui.invisible.file.input input[type="file"] {
+    left: -99999px;
+    position: absolute;
+  }
+
+  input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary),
+  .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary) {
+    background: @fileButtonBackgroundHover;
+    color: @hoveredTextColor;
+    &.inverted {
+      background: @fileButtonInvertedBackgroundHover;
+    }
+  }
+
+  /* this is related to existing buttons, so the button color variable is used here! */
+  & when not (@variationButtonColors = false) {
+    each(@variationButtonColors, {
+      @color: @value;
+      @h: @colors[@@color][hover];
+      @lh: @colors[@@color][lightHover];
+
+      input[type="file"].ui.file.input:focus + label.ui.@{color}.button:not(.basic):not(.tertiary),
+      .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
+        background-color: @h;
+        color: @white;
+        &.inverted when (@variationButtonInverted) {
+          background-color: @lh;
+        }
+      }
+    })
+  }
+
+  & when not (@variationInputColors = false) {
+    each(@variationInputColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @h: @colors[@@color][hover];
+
+      input[type="file"].ui.@{color}.file.input::-webkit-file-upload-button,
+      .ui.@{color}.file.input input[type="file"]::-webkit-file-upload-button {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+      input[type="file"].ui.@{color}.file.input::-ms-browse,
+      .ui.@{color}.file.input input[type="file"]::-ms-browse {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+      input[type="file"].ui.@{color}.file.input::file-selector-button,
+      .ui.@{color}.file.input input[type="file"]::file-selector-button {
+        background: @c;
+        color: @white;
+        &:hover {
+          background: @h;
+        }
+      }
+    })
   }
 }
 

@@ -100,10 +100,18 @@ $.fn.tab = function(parameters) {
             initializedHistory = true;
           }
 
-          if(instance === undefined && module.determine.activeTab() == null) {
-            module.debug('No active tab detected, setting first tab active', module.get.initialPath());
-            module.changeTab(module.get.initialPath());
-          };
+          var activeTab = module.determine.activeTab();
+          if(settings.autoTabActivation && instance === undefined && activeTab == null) {
+            activeTab = settings.autoTabActivation === true ? module.get.initialPath() : settings.autoTabActivation;
+            module.debug('No active tab detected, setting tab active', activeTab);
+            module.changeTab(activeTab);
+          }
+          if(activeTab != null && settings.history) {
+            var autoUpdate = $.address.autoUpdate();
+            $.address.autoUpdate(false);
+            $.address.value(activeTab);
+            $.address.autoUpdate(autoUpdate);
+          }
 
           module.instantiate();
         },
@@ -203,6 +211,7 @@ $.fn.tab = function(parameters) {
                   .history(true)
                   .state(settings.path)
                 ;
+                $(window).trigger('popstate');
               }
               else {
                 module.error(error.path);
@@ -370,6 +379,10 @@ $.fn.tab = function(parameters) {
                   module.verbose('Tab parameters found', nextPathArray);
                 }
               }
+              if (settings.onBeforeChange.call(element, currentPath) === false) {
+                module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+                return false;
+              }
               if(isLastTab && remoteContent) {
                 if(!shouldIgnoreLoad) {
                   module.activate.navigation(currentPath);
@@ -406,6 +419,10 @@ $.fn.tab = function(parameters) {
               // if anchor exists use parent tab
               if($anchor && $anchor.length > 0 && currentPath) {
                 module.debug('Anchor link used, opening parent tab', $tab, $anchor);
+                if (settings.onBeforeChange.call(element, currentPath) === false) {
+                  module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+                  return false;
+                }
                 if( !$tab.hasClass(className.active) ) {
                   setTimeout(function() {
                     module.scrollTo($anchor);
@@ -953,11 +970,13 @@ $.fn.tab.settings = {
 
   apiSettings     : false,      // settings for api call
   evaluateScripts : 'once',     // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
+  autoTabActivation: true,      // whether a non existing active tab will auto activate the first available tab
 
   onFirstLoad : function(tabPath, parameterArray, historyEvent) {}, // called first time loaded
   onLoad      : function(tabPath, parameterArray, historyEvent) {}, // called on every load
   onVisible   : function(tabPath, parameterArray, historyEvent) {}, // called every time tab visible
   onRequest   : function(tabPath, parameterArray, historyEvent) {}, // called ever time a tab beings loading remote content
+  onBeforeChange: function(tabPath) {}, // called before a tab is about to be changed. Returning false will cancel the tab change
 
   templates : {
     determineTitle: function(tabArray) {} // returns page title for path

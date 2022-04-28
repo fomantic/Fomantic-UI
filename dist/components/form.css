@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Form
+ * # Fomantic-UI 2.8.8 - Form
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -372,6 +372,7 @@
 }
 .ui.form ::-moz-placeholder {
   color: rgba(191, 191, 191, 0.87);
+  opacity: 1;
 }
 .ui.form :focus::-webkit-input-placeholder {
   color: rgba(115, 115, 115, 0.87);
@@ -406,33 +407,33 @@
   -webkit-box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
           box-shadow: 0 0 0 0 rgba(34, 36, 38, 0.35) inset;
 }
-.ui.form .ui.action.input:not(.left) input:not([type]):focus,
-.ui.form .ui.action.input:not(.left) input[type="date"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="datetime-local"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="email"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="number"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="password"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="search"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="tel"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="time"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="text"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="file"]:focus,
-.ui.form .ui.action.input:not(.left) input[type="url"]:focus {
+.ui.form .ui.action.input:not([class*="left action"]) input:not([type]):focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="date"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="datetime-local"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="email"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="number"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="password"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="search"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="tel"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="time"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="text"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="file"]:focus,
+.ui.form .ui.action.input:not([class*="left action"]) input[type="url"]:focus {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.ui.form .ui.action.input.left input:not([type]),
-.ui.form .ui.action.input.left input[type="date"],
-.ui.form .ui.action.input.left input[type="datetime-local"],
-.ui.form .ui.action.input.left input[type="email"],
-.ui.form .ui.action.input.left input[type="number"],
-.ui.form .ui.action.input.left input[type="password"],
-.ui.form .ui.action.input.left input[type="search"],
-.ui.form .ui.action.input.left input[type="tel"],
-.ui.form .ui.action.input.left input[type="time"],
-.ui.form .ui.action.input.left input[type="text"],
-.ui.form .ui.action.input.left input[type="file"],
-.ui.form .ui.action.input.left input[type="url"] {
+.ui.form .ui[class*="left action"].input input:not([type]),
+.ui.form .ui[class*="left action"].input input[type="date"],
+.ui.form .ui[class*="left action"].input input[type="datetime-local"],
+.ui.form .ui[class*="left action"].input input[type="email"],
+.ui.form .ui[class*="left action"].input input[type="number"],
+.ui.form .ui[class*="left action"].input input[type="password"],
+.ui.form .ui[class*="left action"].input input[type="search"],
+.ui.form .ui[class*="left action"].input input[type="tel"],
+.ui.form .ui[class*="left action"].input input[type="time"],
+.ui.form .ui[class*="left action"].input input[type="text"],
+.ui.form .ui[class*="left action"].input input[type="file"],
+.ui.form .ui[class*="left action"].input input[type="url"] {
   border-bottom-left-radius: 0;
   border-top-left-radius: 0;
 }
@@ -480,10 +481,16 @@
   display: flex;
 }
 .ui.ui.form .fields.error .field label,
+.ui.ui.form .fields.error .field .ui.label:not(.corner),
 .ui.ui.form .field.error label,
+.ui.ui.form .field.error .ui.label:not(.corner),
 .ui.ui.form .fields.error .field .input,
 .ui.ui.form .field.error .input {
   color: #9F3A38;
+}
+.ui.form .fields.error .field .ui.label,
+.ui.form .field.error .ui.label {
+  background-color: #ecd1d1;
 }
 .ui.form .fields.error .field .corner.label,
 .ui.form .field.error .corner.label {
@@ -599,7 +606,7 @@
 .ui.form .fields.error .field .ui.dropdown,
 .ui.form .fields.error .field .ui.dropdown .item,
 .ui.form .field.error .ui.dropdown,
-.ui.form .field.error .ui.dropdown .text,
+.ui.form .field.error .ui.dropdown > .text,
 .ui.form .field.error .ui.dropdown .item {
   background: #FFF6F6;
   color: #9F3A38;
@@ -663,6 +670,10 @@
 .ui.form .field.error .checkbox .box:after {
   color: #9F3A38;
 }
+.ui.inverted.form .fields.error .field label,
+.ui.inverted.form .error.field label {
+  color: #ecd1d1;
+}
 
 /* On Form */
 .ui.form.info .info.message:not(:empty) {
@@ -693,10 +704,16 @@
   display: flex;
 }
 .ui.ui.form .fields.info .field label,
+.ui.ui.form .fields.info .field .ui.label:not(.corner),
 .ui.ui.form .field.info label,
+.ui.ui.form .field.info .ui.label:not(.corner),
 .ui.ui.form .fields.info .field .input,
 .ui.ui.form .field.info .input {
   color: #276F86;
+}
+.ui.form .fields.info .field .ui.label,
+.ui.form .field.info .ui.label {
+  background-color: #c6e3e9;
 }
 .ui.form .fields.info .field .corner.label,
 .ui.form .field.info .corner.label {
@@ -812,7 +829,7 @@
 .ui.form .fields.info .field .ui.dropdown,
 .ui.form .fields.info .field .ui.dropdown .item,
 .ui.form .field.info .ui.dropdown,
-.ui.form .field.info .ui.dropdown .text,
+.ui.form .field.info .ui.dropdown > .text,
 .ui.form .field.info .ui.dropdown .item {
   background: #F8FFFF;
   color: #276F86;
@@ -876,6 +893,10 @@
 .ui.form .field.info .checkbox .box:after {
   color: #276F86;
 }
+.ui.inverted.form .fields.info .field label,
+.ui.inverted.form .info.field label {
+  color: #c6e3e9;
+}
 
 /* On Form */
 .ui.form.success .success.message:not(:empty) {
@@ -906,10 +927,16 @@
   display: flex;
 }
 .ui.ui.form .fields.success .field label,
+.ui.ui.form .fields.success .field .ui.label:not(.corner),
 .ui.ui.form .field.success label,
+.ui.ui.form .field.success .ui.label:not(.corner),
 .ui.ui.form .fields.success .field .input,
 .ui.ui.form .field.success .input {
   color: #2C662D;
+}
+.ui.form .fields.success .field .ui.label,
+.ui.form .field.success .ui.label {
+  background-color: #b9d1ad;
 }
 .ui.form .fields.success .field .corner.label,
 .ui.form .field.success .corner.label {
@@ -1025,7 +1052,7 @@
 .ui.form .fields.success .field .ui.dropdown,
 .ui.form .fields.success .field .ui.dropdown .item,
 .ui.form .field.success .ui.dropdown,
-.ui.form .field.success .ui.dropdown .text,
+.ui.form .field.success .ui.dropdown > .text,
 .ui.form .field.success .ui.dropdown .item {
   background: #FCFFF5;
   color: #2C662D;
@@ -1089,6 +1116,10 @@
 .ui.form .field.success .checkbox .box:after {
   color: #2C662D;
 }
+.ui.inverted.form .fields.success .field label,
+.ui.inverted.form .success.field label {
+  color: #b9d1ad;
+}
 
 /* On Form */
 .ui.form.warning .warning.message:not(:empty) {
@@ -1119,10 +1150,16 @@
   display: flex;
 }
 .ui.ui.form .fields.warning .field label,
+.ui.ui.form .fields.warning .field .ui.label:not(.corner),
 .ui.ui.form .field.warning label,
+.ui.ui.form .field.warning .ui.label:not(.corner),
 .ui.ui.form .fields.warning .field .input,
 .ui.ui.form .field.warning .input {
   color: #573A08;
+}
+.ui.form .fields.warning .field .ui.label,
+.ui.form .field.warning .ui.label {
+  background-color: #d7ccb5;
 }
 .ui.form .fields.warning .field .corner.label,
 .ui.form .field.warning .corner.label {
@@ -1238,7 +1275,7 @@
 .ui.form .fields.warning .field .ui.dropdown,
 .ui.form .fields.warning .field .ui.dropdown .item,
 .ui.form .field.warning .ui.dropdown,
-.ui.form .field.warning .ui.dropdown .text,
+.ui.form .field.warning .ui.dropdown > .text,
 .ui.form .field.warning .ui.dropdown .item {
   background: #FFFAF3;
   color: #573A08;
@@ -1301,6 +1338,10 @@
 .ui.form .fields.warning .field .checkbox .box:after,
 .ui.form .field.warning .checkbox .box:after {
   color: #573A08;
+}
+.ui.inverted.form .fields.warning .field label,
+.ui.inverted.form .warning.field label {
+  color: #d7ccb5;
 }
 
 /*--------------------
@@ -1471,6 +1512,9 @@
   margin: 0.5em 0;
   padding: 0;
 }
+.ui.form .grouped.inline.fields .ui.checkbox {
+  margin-bottom: 0.4em;
+}
 
 /*--------------------
         Fields
@@ -1544,28 +1588,11 @@
   .ui.form .fields {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    margin-bottom: 0;
   }
-  .ui[class*="equal width"].form:not(.unstackable) .fields > .field,
-  .ui.form:not(.unstackable) [class*="equal width"].fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .six.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .six.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .seven.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .seven.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .eight.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .eight.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .nine.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .nine.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .ten.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .ten.fields:not(.unstackable) > .field {
-    width: 100% !important;
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .fields,
+  .ui.form:not(.unstackable) .fields:not(.unstackable) > .field {
+    width: 100%;
     margin: 0 0 1em;
   }
 }
@@ -1577,84 +1604,52 @@
   padding-right: 0.5em;
 }
 .ui.form .one.wide.field {
-  width: 6.25% !important;
+  width: 6.25%;
 }
 .ui.form .two.wide.field {
-  width: 12.5% !important;
+  width: 12.5%;
 }
 .ui.form .three.wide.field {
-  width: 18.75% !important;
+  width: 18.75%;
 }
 .ui.form .four.wide.field {
-  width: 25% !important;
+  width: 25%;
 }
 .ui.form .five.wide.field {
-  width: 31.25% !important;
+  width: 31.25%;
 }
 .ui.form .six.wide.field {
-  width: 37.5% !important;
+  width: 37.5%;
 }
 .ui.form .seven.wide.field {
-  width: 43.75% !important;
+  width: 43.75%;
 }
 .ui.form .eight.wide.field {
-  width: 50% !important;
+  width: 50%;
 }
 .ui.form .nine.wide.field {
-  width: 56.25% !important;
+  width: 56.25%;
 }
 .ui.form .ten.wide.field {
-  width: 62.5% !important;
+  width: 62.5%;
 }
 .ui.form .eleven.wide.field {
-  width: 68.75% !important;
+  width: 68.75%;
 }
 .ui.form .twelve.wide.field {
-  width: 75% !important;
+  width: 75%;
 }
 .ui.form .thirteen.wide.field {
-  width: 81.25% !important;
+  width: 81.25%;
 }
 .ui.form .fourteen.wide.field {
-  width: 87.5% !important;
+  width: 87.5%;
 }
 .ui.form .fifteen.wide.field {
-  width: 93.75% !important;
+  width: 93.75%;
 }
 .ui.form .sixteen.wide.field {
-  width: 100% !important;
-}
-
-/* Swap to full width on mobile */
-@media only screen and (max-width: 767.98px) {
-  .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .two.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .three.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .four.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .fields,
-  .ui.form:not(.unstackable) .five.fields:not(.unstackable) > .field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .two.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .three.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .four.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .five.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .six.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .seven.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .eight.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .nine.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .ten.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .eleven.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .twelve.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .thirteen.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .fourteen.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .fifteen.wide.field,
-  .ui.form:not(.unstackable) .fields:not(.unstackable) > .sixteen.wide.field {
-    width: 100% !important;
-  }
-  .ui.form .fields {
-    margin-bottom: 0;
-  }
+  width: 100%;
 }
 
 /*--------------------

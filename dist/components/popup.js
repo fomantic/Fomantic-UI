@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Popup
+ * # Fomantic-UI 2.8.8 - Popup
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -434,11 +434,11 @@ $.fn.popup = function(parameters) {
               module.set.visible();
               $popup
                 .transition({
-                  animation  : settings.transition + ' in',
+                  animation  : (settings.transition.showMethod || settings.transition) + ' in',
                   queue      : false,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
-                  duration   : settings.duration,
+                  duration   : settings.transition.showDuration || settings.duration,
                   onComplete : function() {
                     module.bind.close();
                     callback.call($popup, element);
@@ -457,9 +457,9 @@ $.fn.popup = function(parameters) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $popup
                 .transition({
-                  animation  : settings.transition + ' out',
+                  animation  : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue      : false,
-                  duration   : settings.duration,
+                  duration   : settings.transition.hideDuration || settings.duration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
                   onComplete : function() {
@@ -510,9 +510,10 @@ $.fn.popup = function(parameters) {
               $popupOffsetParent = module.get.offsetParent($popup),
               targetElement      = $target[0],
               isWindow           = ($boundary[0] == window),
-              targetPosition     = (settings.inline || (settings.popup && settings.movePopup))
-                ? $target.position()
-                : $target.offset(),
+              targetOffset       = $target.offset(),
+              parentOffset       = settings.inline || (settings.popup && settings.movePopup)
+                ? $target.offsetParent().offset()
+                : { top: 0, left: 0 },
               screenPosition = (isWindow)
                 ? { top: 0, left: 0 }
                 : $boundary.offset(),
@@ -528,8 +529,8 @@ $.fn.popup = function(parameters) {
                 element : $target[0],
                 width   : $target.outerWidth(),
                 height  : $target.outerHeight(),
-                top     : targetPosition.top,
-                left    : targetPosition.left,
+                top     : targetOffset.top - parentOffset.top,
+                left    : targetOffset.left - parentOffset.left,
                 margin  : {}
               },
               // popup itself

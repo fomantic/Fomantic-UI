@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Dimmer
+ * # Fomantic-UI 2.8.8 - Dimmer
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -155,7 +155,7 @@ $.fn.dimmer = function(parameters) {
 
         event: {
           click: function(event) {
-            module.verbose('Determining if event occured on dimmer', event);
+            module.verbose('Determining if event occurred on dimmer', event);
             if( $dimmer.find(event.target).length === 0 || $(event.target).is(selector.content) ) {
               module.hide();
               event.stopImmediatePropagation();
@@ -255,7 +255,7 @@ $.fn.dimmer = function(parameters) {
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
-                  animation   : settings.transition + ' in',
+                  animation   : (settings.transition.showMethod || settings.transition) + ' in',
                   queue       : false,
                   duration    : module.get.duration(),
                   useFailSafe : true,
@@ -302,7 +302,7 @@ $.fn.dimmer = function(parameters) {
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
-                  animation   : settings.transition + ' out',
+                  animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : false,
                   duration    : module.get.duration(),
                   useFailSafe : true,
@@ -335,15 +335,12 @@ $.fn.dimmer = function(parameters) {
             return $dimmer;
           },
           duration: function() {
-            if(typeof settings.duration == 'object') {
-              if( module.is.active() ) {
-                return settings.duration.hide;
-              }
-              else {
-                return settings.duration.show;
-              }
+            if( module.is.active() ) {
+              return settings.transition.hideDuration || settings.duration.hide || settings.duration;
             }
-            return settings.duration;
+            else {
+              return settings.transition.showDuration || settings.duration.show || settings.duration;
+            }
           }
         },
 
@@ -408,11 +405,11 @@ $.fn.dimmer = function(parameters) {
             var
               color      = $dimmer.css('background-color'),
               colorArray = color.split(','),
-              isRGB      = (colorArray && colorArray.length == 3),
-              isRGBA     = (colorArray && colorArray.length == 4)
+              isRGB      = (colorArray && colorArray.length >= 3)
             ;
             opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
-            if(isRGB || isRGBA) {
+            if(isRGB) {
+              colorArray[2] = colorArray[2].replace(')','');
               colorArray[3] = opacity + ')';
               color         = colorArray.join(',');
             }

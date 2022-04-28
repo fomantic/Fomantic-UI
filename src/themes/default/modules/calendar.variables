@@ -16,3 +16,8 @@
 
 @adjacentTextColor: @mutedTextColor;
 @adjacentBackground: @subtleTransparentBlack;
+@adjacentInvertedTextColor: @invertedMutedTextColor;
+@adjacentInvertedBackground: @subtleTransparentWhite;
+
+@multiMonthMargin: -1rem;
+@multiMonthPadding: 0;

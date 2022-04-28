@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Table
+ * # Fomantic-UI 2.8.8 - Table
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -104,7 +104,7 @@
   text-align: inherit;
   color: rgba(0, 0, 0, 0.87);
   padding: 0.78571429em 0.78571429em;
-  vertical-align: middle;
+  vertical-align: inherit;
   font-style: normal;
   font-weight: normal;
   text-transform: none;
@@ -149,10 +149,10 @@
 }
 
 /* Icons */
-.ui.table > .icon {
+.ui.table > i.icon {
   vertical-align: baseline;
 }
-.ui.table > .icon:only-child {
+.ui.table > i.icon:only-child {
   margin: 0;
 }
 
@@ -538,6 +538,9 @@
   -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
           box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
+}
+.ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+  pointer-events: auto;
 }
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
   pointer-events: none;
@@ -1996,7 +1999,8 @@
 .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
   background: #FFFFFF;
 }
-.ui.inverted.definition.table > tbody > tr > td:first-child .ui.inverted.definition.table > tfoot > tr > td:first-child,
+.ui.inverted.definition.table > tbody > tr > td:first-child,
+.ui.inverted.definition.table > tfoot > tr > td:first-child,
 .ui.inverted.definition.table > tr > td:first-child {
   background: rgba(255, 255, 255, 0.02);
   color: #ffffff;

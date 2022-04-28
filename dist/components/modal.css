@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Modal
+ * # Fomantic-UI 2.8.8 - Modal
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -34,10 +34,10 @@
           user-select: text;
   will-change: top, left, margin, transform, opacity;
 }
-.ui.modal > :first-child:not(.icon):not(.dimmer),
-.ui.modal > .icon:first-child + *,
-.ui.modal > .dimmer:first-child + *:not(.icon),
-.ui.modal > .dimmer:first-child + .icon + * {
+.ui.modal > :first-child:not(.close):not(.dimmer),
+.ui.modal > i.icon:first-child + *,
+.ui.modal > .dimmer:first-child + *:not(.close),
+.ui.modal > .dimmer:first-child + i.icon + * {
   border-top-left-radius: 0.28571429rem;
   border-top-right-radius: 0.28571429rem;
 }
@@ -153,7 +153,7 @@
   -ms-flex-item-align: start;
       align-self: start;
 }
-.ui.modal > .content > .icon + .description,
+.ui.modal > .content > i.icon + .description,
 .ui.modal > .content > .image + .description {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 auto;
@@ -181,11 +181,20 @@
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   text-align: right;
 }
-.ui.modal .actions > .button {
+.ui.modal .actions > .button:not(.fluid) {
   margin-left: 0.75em;
 }
 .ui.basic.modal > .actions {
   border-top: none;
+}
+.ui.modal > .centered,
+.ui.modal > .center.aligned {
+  text-align: center;
+}
+.ui.modal > .centered.actions > .button:not(.fluid),
+.ui.modal > .center.aligned.actions > .button:not(.fluid) {
+  margin-left: 0.5em;
+  margin-right: 0.5em;
 }
 
 /*-------------------
@@ -227,7 +236,7 @@
 
 /* Tablet and Mobile */
 @media only screen and (max-width: 991.98px) {
-  .ui.modal > .header {
+  .ui.modal > .close + .header {
     padding-right: 2.25rem;
   }
   .ui.modal > .close {
@@ -240,8 +249,10 @@
 /* Mobile */
 @media only screen and (max-width: 767.98px) {
   .ui.modal > .header {
-    padding: 0.75rem 1rem !important;
-    padding-right: 2.25rem !important;
+    padding: 0.75rem 1rem;
+  }
+  .ui.modal > .close + .header {
+    padding-right: 2.25rem;
   }
   .ui.overlay.fullscreen.modal > .content.content.content {
     min-height: calc(100vh - 8.1rem);
@@ -264,7 +275,7 @@
         -ms-flex-direction: column;
             flex-direction: column;
   }
-  .ui.modal .content > .image {
+  .ui.modal > .content > .image {
     display: block;
     max-width: 100%;
     margin: 0 auto !important;
@@ -276,7 +287,7 @@
     text-align: center;
   }
   /*rtl:ignore*/
-  .ui.modal .content > .description {
+  .ui.modal > .content > .description {
     display: block;
     width: 100% !important;
     margin: 0 !important;
@@ -467,8 +478,8 @@
   top: 0;
   border-radius: 0;
 }
-.ui.modal > .close.inside + .header,
-.ui.fullscreen.modal > .header {
+.ui.modal > .close.inside + .header:not(.centered):not(.center):not(.icon),
+.ui.fullscreen.modal > .close + .header:not(.centered):not(.center):not(.icon) {
   padding-right: 2.25rem;
 }
 .ui.modal > .close.inside,

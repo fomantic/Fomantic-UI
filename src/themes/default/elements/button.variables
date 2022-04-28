@@ -49,7 +49,7 @@
 @iconDistance: @relative6px;
 @iconColor: '';
 @iconTransition: opacity @defaultDuration @defaultEasing;
-@iconVerticalAlign: '';
+@iconVerticalAlign: baseline;
 
 @iconMargin: 0 @iconDistance 0 -(@iconDistance / 2);
 @rightIconMargin: 0 -(@iconDistance / 2) 0 @iconDistance;
@@ -253,7 +253,8 @@
 /*-------------
    Tertiary
 -------------*/
-@tertiaryLinePadding: 0.5em;
+@tertiaryVerticalPadding: 0.5em;
+@tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
 @tertiaryTextColor: @textColor;
 @tertiaryLineColor: lighten(@tertiaryTextColor, 20%);
@@ -376,6 +377,8 @@
 
 /* Attached */
 @attachedOffset: -1px;
+@topAttachedOffset: 0;
+@bottomAttachedOffset: @attachedOffset;
 @attachedBoxShadow: 0 0 0 1px @borderColor;
 @attachedHorizontalPadding: 0.75em;
 @attachedZIndex: auto;
@@ -390,3 +393,18 @@
 @animationEasing: ease;
 @fadeScaleHigh: 1.5;
 @fadeScaleLow: 0.75;
+
+/* Toggle */
+@toggleColor: @invertedTextColor;
+@toggleBackgroundColor: @positiveColor;
+@toggleTextShadow: @invertedTextShadow;
+@toggleHoverColor: @invertedTextColor;
+@toggleHoverBackgroundColor: @positiveColorHover;
+@toggleHoverTextShadow: @invertedTextShadow;
+
+/* Circular */
+@circularBorderRadius: 10em;
+@circularIconWidth: 1em;
+
+/* Spaced */
+@spacedMargin: 1em;

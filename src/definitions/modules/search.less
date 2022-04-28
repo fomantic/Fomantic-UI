@@ -200,7 +200,7 @@
          Loading
   ---------------------*/
 
-  .ui.loading.search .input > i.icon:before {
+  .ui.loading.search .input > i.icon::before {
     position: absolute;
     content: '';
     top: 50%;
@@ -213,7 +213,7 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @loaderFillColor;
   }
-  .ui.loading.search .input > i.icon:after {
+  .ui.loading.search .input > i.icon::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -389,6 +389,137 @@
 /*******************************
            Variations
 *******************************/
+
+& when (@variationSearchScrolling),
+  (@variationSearchShort),
+  (@variationSearchLong) {
+
+  /*-------------------
+       Scrolling
+  --------------------*/
+
+  .ui.scrolling.search > .results,
+    .ui.search.long > .results,
+      .ui.search.short > .results {
+    overflow-x: hidden;
+    overflow-y: auto;
+    backface-visibility: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+
+& when (@variationSearchScrolling) {
+  @media only screen and (max-width : @largestMobileScreen) {
+    .ui.scrolling.search > .results {
+      max-height: @scrollingMobileMaxResultsHeight;
+    }
+  }
+  @media only screen and (min-width: @tabletBreakpoint) {
+    .ui.scrolling.search > .results {
+      max-height: @scrollingTabletMaxResultsHeight;
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    .ui.scrolling.search > .results {
+      max-height: @scrollingComputerMaxResultsHeight;
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    .ui.scrolling.search > .results {
+      max-height: @scrollingWidescreenMaxResultsHeight;
+    }
+  }
+}
+
+@media only screen and (max-width : @largestMobileScreen) {
+  & when (@variationSearchShort) {
+    .ui.search.short > .results {
+      max-height: @scrollingMobileMaxResultsHeight;
+    }
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingMobileMaxResultsHeight * 0.75;
+      }
+    }
+  }
+  & when (@variationSearchLong) {
+    .ui.search.long > .results {
+      max-height: @scrollingMobileMaxResultsHeight * 2;
+    }
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingMobileMaxResultsHeight * 3;
+      }
+    }
+  }
+}
+@media only screen and (min-width: @tabletBreakpoint) {
+  & when (@variationSearchShort) {
+    .ui.search.short > .results {
+      max-height: @scrollingTabletMaxResultsHeight;
+    }
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingTabletMaxResultsHeight * 0.75;
+      }
+    }
+  }
+  & when (@variationSearchLong) {
+    .ui.search.long > .results {
+      max-height: @scrollingTabletMaxResultsHeight * 2;
+    }
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingTabletMaxResultsHeight * 3;
+      }
+    }
+  }
+}
+@media only screen and (min-width: @computerBreakpoint) {
+  & when (@variationSearchShort) {
+    .ui.search.short > .results {
+      max-height: @scrollingComputerMaxResultsHeight;
+    }
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingComputerMaxResultsHeight * 0.75;
+      }
+    }
+  }
+  & when (@variationSearchLong) {
+    .ui.search.long > .results {
+      max-height: @scrollingComputerMaxResultsHeight * 2;
+    }
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingComputerMaxResultsHeight * 3;
+      }
+    }
+  }
+}
+@media only screen and (min-width: @widescreenMonitorBreakpoint) {
+  & when (@variationSearchShort) {
+    .ui.search.short > .results {
+      max-height: @scrollingWidescreenMaxResultsHeight;
+    }
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingWidescreenMaxResultsHeight * 0.75;
+      }
+    }
+  }
+  & when (@variationSearchLong) {
+    .ui.search.long > .results {
+      max-height: @scrollingWidescreenMaxResultsHeight * 2;
+    }
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingWidescreenMaxResultsHeight * 3;
+      }
+    }
+  }
+}
 
 & when (@variationSearchAligned) {
   /*-------------------
