@@ -2,6 +2,9 @@ name: Nightly
 on:
   schedule:
   - cron: 00 23 * * *
+permissions:
+  contents: read
+
 jobs:
   publish:
     name: Build nightly distribution
