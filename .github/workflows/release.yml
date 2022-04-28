@@ -2,6 +2,9 @@ name: Release
 on:
   release:
     types: [released]
+permissions:
+  contents: read
+
 jobs:
   publish:
     name: Build new Release
