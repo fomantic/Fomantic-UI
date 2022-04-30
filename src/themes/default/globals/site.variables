@@ -9,12 +9,40 @@
 --------------------*/
 
 @fontName          : 'Lato';
+@fontFileName      : 'LatoLatin';
 
 @headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont          : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
+@fontDisplay       : swap;
+@fontTextRendering : optimizeLegibility;
+
+@importFonts       : true;
+/* The following detail switches are ignored when @importFonts is set to false */
+@importRegularFonts: true;
+@importBoldFonts   : true;
+@importItalicFonts : true;
+
+@srcRegular:
+        url("@{fontPath}/@{fontFileName}-Regular.woff2") format('woff2'),
+        url("@{fontPath}/@{fontFileName}-Regular.woff") format('woff')
+;
+@srcBold:
+        url("@{fontPath}/@{fontFileName}-Bold.woff2") format('woff2'),
+        url("@{fontPath}/@{fontFileName}-Bold.woff") format('woff')
+;
+@srcItalic:
+        url("@{fontPath}/@{fontFileName}-Italic.woff2") format('woff2'),
+        url("@{fontPath}/@{fontFileName}-Italic.woff") format('woff')
+;
+@srcBoldItalic:
+        url("@{fontPath}/@{fontFileName}-BoldItalic.woff2") format('woff2'),
+        url("@{fontPath}/@{fontFileName}-Bolditalic.woff") format('woff')
+;
+
+
 @googleFontName    : @fontName;
-@importGoogleFonts : true;
+@importGoogleFonts : false;
 @googleFontSizes   : 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
 @googleSubset      : 'latin';
 @googleFontDisplay : 'swap';

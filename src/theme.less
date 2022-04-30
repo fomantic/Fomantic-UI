@@ -60,8 +60,52 @@
        Fonts
 -------------------*/
 
-.loadFonts() when (@importGoogleFonts) {
-  @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
+.loadFonts() {
+  & when (@importGoogleFonts) {
+    @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
+  }
+  & when (@importFonts) {
+    & when (@importRegularFonts) {
+      @font-face {
+        font-family: @fontName;
+        src: @srcRegular;
+        font-style: normal;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @fontTextRendering;
+      }
+    }
+    & when (@importBoldFonts) {
+      @font-face {
+        font-family: @fontName;
+        src: @srcBold;
+        font-style: normal;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @fontTextRendering;
+      }
+    }
+    & when (@importItalicFonts) {
+      @font-face {
+        font-family: @fontName;
+        src: @srcItalic;
+        font-style: italic;
+        font-weight: @normal;
+        font-display: @fontDisplay;
+        text-rendering: @fontTextRendering;
+      }
+    }
+    & when (@importBoldFonts) and (@importItalicFonts) {
+      @font-face {
+        font-family: @fontName;
+        src: @srcBoldItalic;
+        font-style: italic;
+        font-weight: @bold;
+        font-display: @fontDisplay;
+        text-rendering: @fontTextRendering;
+      }
+    }
+  }
 }
 
 /*------------------
