@@ -2,6 +2,8 @@
             Flag
 *******************************/
 
+@imagePath : '../../themes/famfamfam/assets/images';
+
 /*-------------------
        Element
 --------------------*/
@@ -11,3 +13,8 @@
 @height: 11px;
 @verticalAlign: baseline;
 @margin: 0.5em;
+
+@flags: {
+};
+@size-map: {
+};
