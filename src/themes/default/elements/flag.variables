@@ -12,4 +12,1606 @@
        Element
 --------------------*/
 
-@flagLineHeight: @headerLineHeight;
+@flagLineHeight: 1em;
+
+@flags: {
+  @1f3f3-fe0f-200d-26a7-fe0f: {
+    countrycode: transgender;
+    class: transgender;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f3f3-fe0f-200d-1f308: {
+    countrycode: rainbow;
+    class: rainbow;
+    aliasClass: gay_pride;
+    aliasClass2: false;
+  };
+  @1f3f4-200d-2620-fe0f: {
+    countrycode: pirate;
+    class: pirate;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1eb: {
+    countrycode: af;
+    class: afghanistan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1fd: {
+    countrycode: ax;
+    class: åland_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f1: {
+    countrycode: al;
+    class: albania;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1ff: {
+    countrycode: dz;
+    class: algeria;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f8: {
+    countrycode: as;
+    class: american_samoa;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1e9: {
+    countrycode: ad;
+    class: andorra;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f4: {
+    countrycode: ao;
+    class: angola;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1ee: {
+    countrycode: ai;
+    class: anguilla;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f6: {
+    countrycode: aq;
+    class: antarctica;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1ec: {
+    countrycode: ag;
+    class: antigua_and_barbuda;
+    aliasClass: antigua;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f7: {
+    countrycode: ar;
+    class: argentina;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f2: {
+    countrycode: am;
+    class: armenia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1fc: {
+    countrycode: aw;
+    class: aruba;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1fa: {
+    countrycode: au;
+    class: australia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1f9: {
+    countrycode: at;
+    class: austria;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1ff: {
+    countrycode: az;
+    class: azerbaijan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f8: {
+    countrycode: bs;
+    class: bahamas;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ed: {
+    countrycode: bh;
+    class: bahrain;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1e9: {
+    countrycode: bd;
+    class: bangladesh;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1e7: {
+    countrycode: bb;
+    class: barbados;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1fe: {
+    countrycode: by;
+    class: belarus;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ea: {
+    countrycode: be;
+    class: belgium;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ff: {
+    countrycode: bz;
+    class: belize;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ef: {
+    countrycode: bj;
+    class: benin;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f2: {
+    countrycode: bm;
+    class: bermuda;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f9: {
+    countrycode: bt;
+    class: bhutan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f4: {
+    countrycode: bo;
+    class: bolivia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1e6: {
+    countrycode: ba;
+    class: bosnia_and_herzegovina;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1fc: {
+    countrycode: bw;
+    class: botswana;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f7: {
+    countrycode: br;
+    class: brazil;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f4: {
+    countrycode: io;
+    class: british_indian_ocean_territory;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1ec: {
+    countrycode: vg;
+    class: british_virgin_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f3: {
+    countrycode: bn;
+    class: brunei;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ec: {
+    countrycode: bg;
+    class: bulgaria;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1eb: {
+    countrycode: bf;
+    class: burkina_faso;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1ee: {
+    countrycode: bi;
+    class: burundi;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1ed: {
+    countrycode: kh;
+    class: cambodia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f2: {
+    countrycode: cm;
+    class: cameroon;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1e6: {
+    countrycode: ca;
+    class: canada;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1e8: {
+    countrycode: ic;
+    class: canary_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1fb: {
+    countrycode: cv;
+    class: cape_verde;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f6: {
+    countrycode: bq;
+    class: caribbean_netherlands;
+    aliasClass: an;
+    aliasClass2: netherlands_antilles;
+  };
+  @1f1f0-1f1fe: {
+    countrycode: ky;
+    class: cayman_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1eb: {
+    countrycode: cf;
+    class: central_african_republic;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1e9: {
+    countrycode: td;
+    class: chad;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f1: {
+    countrycode: cl;
+    class: chile;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f3: {
+    countrycode: cn;
+    class: china;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1fd: {
+    countrycode: cx;
+    class: christmas_island;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1e8: {
+    countrycode: cc;
+    class: cocos_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f4: {
+    countrycode: co;
+    class: colombia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1f2: {
+    countrycode: km;
+    class: comoros;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1ec: {
+    countrycode: cg;
+    class: congo_brazzaville;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1e9: {
+    countrycode: cd;
+    class: congo_kinshasa;
+    aliasClass: congo;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f0: {
+    countrycode: ck;
+    class: cook_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f7: {
+    countrycode: cr;
+    class: costa_rica;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1ee: {
+    countrycode: ci;
+    class: côte_d’ivoire;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1f7: {
+    countrycode: hr;
+    class: croatia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1fa: {
+    countrycode: cu;
+    class: cuba;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1fc: {
+    countrycode: cw;
+    class: curaçao;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1fe: {
+    countrycode: cy;
+    class: cyprus;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1ff: {
+    countrycode: cz;
+    class: czechia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1f0: {
+    countrycode: dk;
+    class: denmark;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1ef: {
+    countrycode: dj;
+    class: djibouti;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1f2: {
+    countrycode: dm;
+    class: dominica;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1f4: {
+    countrycode: do;
+    class: dominican_republic;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1e8: {
+    countrycode: ec;
+    class: ecuador;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1ec: {
+    countrycode: eg;
+    class: egypt;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1fb: {
+    countrycode: sv;
+    class: el_salvador;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f6: {
+    countrycode: gq;
+    class: equatorial_guinea;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1f7: {
+    countrycode: er;
+    class: eritrea;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1ea: {
+    countrycode: ee;
+    class: estonia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1f9: {
+    countrycode: et;
+    class: ethiopia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1fa: {
+    countrycode: eu;
+    class: european_union;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1f0: {
+    countrycode: fk;
+    class: falkland_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1f4: {
+    countrycode: fo;
+    class: faroe_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1ef: {
+    countrycode: fj;
+    class: fiji;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1ee: {
+    countrycode: fi;
+    class: finland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1f7: {
+    countrycode: fr;
+    class: france;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1eb: {
+    countrycode: gf;
+    class: french_guiana;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1eb: {
+    countrycode: pf;
+    class: french_polynesia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1eb: {
+    countrycode: tf;
+    class: french_southern_territories;
+    aliasClass: french_territories;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1e6: {
+    countrycode: ga;
+    class: gabon;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f2: {
+    countrycode: gm;
+    class: gambia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1ea: {
+    countrycode: ge;
+    class: georgia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1ea: {
+    countrycode: de;
+    class: germany;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1ed: {
+    countrycode: gh;
+    class: ghana;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1ee: {
+    countrycode: gi;
+    class: gibraltar;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f7: {
+    countrycode: gr;
+    class: greece;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f1: {
+    countrycode: gl;
+    class: greenland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1e9: {
+    countrycode: gd;
+    class: grenada;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f5: {
+    countrycode: gp;
+    class: guadeloupe;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1fa: {
+    countrycode: gu;
+    class: guam;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f9: {
+    countrycode: gt;
+    class: guatemala;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1ec: {
+    countrycode: gg;
+    class: guernsey;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f3: {
+    countrycode: gn;
+    class: guinea;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1fc: {
+    countrycode: gw;
+    class: guinea-bissau;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1fe: {
+    countrycode: gy;
+    class: guyana;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1f9: {
+    countrycode: ht;
+    class: haiti;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1f3: {
+    countrycode: hn;
+    class: honduras;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1f0: {
+    countrycode: hk;
+    class: hong_kong_sar_china;
+    aliasClass: hong_kong;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1fa: {
+    countrycode: hu;
+    class: hungary;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f8: {
+    countrycode: is;
+    class: iceland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f3: {
+    countrycode: in;
+    class: india;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1e9: {
+    countrycode: id;
+    class: indonesia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f7: {
+    countrycode: ir;
+    class: iran;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f6: {
+    countrycode: iq;
+    class: iraq;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1ea: {
+    countrycode: ie;
+    class: ireland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f2: {
+    countrycode: im;
+    class: isle_of_man;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f1: {
+    countrycode: il;
+    class: israel;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ee-1f1f9: {
+    countrycode: it;
+    class: italy;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ef-1f1f2: {
+    countrycode: jm;
+    class: jamaica;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ef-1f1f5: {
+    countrycode: jp;
+    class: japan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f38c: {
+    countrycode: crosseds;
+    class: crosseds;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ef-1f1ea: {
+    countrycode: je;
+    class: jersey;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ef-1f1f4: {
+    countrycode: jo;
+    class: jordan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1ff: {
+    countrycode: kz;
+    class: kazakhstan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1ea: {
+    countrycode: ke;
+    class: kenya;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1ee: {
+    countrycode: ki;
+    class: kiribati;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fd-1f1f0: {
+    countrycode: xk;
+    class: kosovo;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1fc: {
+    countrycode: kw;
+    class: kuwait;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1ec: {
+    countrycode: kg;
+    class: kyrgyzstan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1e6: {
+    countrycode: la;
+    class: laos;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1fb: {
+    countrycode: lv;
+    class: latvia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1e7: {
+    countrycode: lb;
+    class: lebanon;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1f8: {
+    countrycode: ls;
+    class: lesotho;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1f7: {
+    countrycode: lr;
+    class: liberia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1fe: {
+    countrycode: ly;
+    class: libya;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1ee: {
+    countrycode: li;
+    class: liechtenstein;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1f9: {
+    countrycode: lt;
+    class: lithuania;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1fa: {
+    countrycode: lu;
+    class: luxembourg;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f4: {
+    countrycode: mo;
+    class: macao_sar_china;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f0: {
+    countrycode: mk;
+    class: macedonia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1ec: {
+    countrycode: mg;
+    class: madagascar;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1fc: {
+    countrycode: mw;
+    class: malawi;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1fe: {
+    countrycode: my;
+    class: malaysia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1fb: {
+    countrycode: mv;
+    class: maldives;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f1: {
+    countrycode: ml;
+    class: mali;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f9: {
+    countrycode: mt;
+    class: malta;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1ed: {
+    countrycode: mh;
+    class: marshall_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f6: {
+    countrycode: mq;
+    class: martinique;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f7: {
+    countrycode: mr;
+    class: mauritania;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1fa: {
+    countrycode: mu;
+    class: mauritius;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fe-1f1f9: {
+    countrycode: yt;
+    class: mayotte;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1fd: {
+    countrycode: mx;
+    class: mexico;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1eb-1f1f2: {
+    countrycode: fm;
+    class: micronesia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1e9: {
+    countrycode: md;
+    class: moldova;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1e8: {
+    countrycode: mc;
+    class: monaco;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f3: {
+    countrycode: mn;
+    class: mongolia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1ea: {
+    countrycode: me;
+    class: montenegro;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f8: {
+    countrycode: ms;
+    class: montserrat;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1e6: {
+    countrycode: ma;
+    class: morocco;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1ff: {
+    countrycode: mz;
+    class: mozambique;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f2: {
+    countrycode: mm;
+    class: myanmar;
+    aliasClass: burma;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1e6: {
+    countrycode: na;
+    class: namibia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1f7: {
+    countrycode: nr;
+    class: nauru;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1f5: {
+    countrycode: np;
+    class: nepal;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1f1: {
+    countrycode: nl;
+    class: netherlands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1e8: {
+    countrycode: nc;
+    class: new_caledonia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1ff: {
+    countrycode: nz;
+    class: new_zealand;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1ee: {
+    countrycode: ni;
+    class: nicaragua;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1ea: {
+    countrycode: ne;
+    class: niger;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1ec: {
+    countrycode: ng;
+    class: nigeria;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1fa: {
+    countrycode: nu;
+    class: niue;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1eb: {
+    countrycode: nf;
+    class: norfolk_island;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1f5: {
+    countrycode: kp;
+    class: north_korea;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1f5: {
+    countrycode: mp;
+    class: northern_mariana_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f3-1f1f4: {
+    countrycode: no;
+    class: norway;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f4-1f1f2: {
+    countrycode: om;
+    class: oman;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f0: {
+    countrycode: pk;
+    class: pakistan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1fc: {
+    countrycode: pw;
+    class: palau;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f8: {
+    countrycode: ps;
+    class: palestinian_territories;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1e6: {
+    countrycode: pa;
+    class: panama;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1ec: {
+    countrycode: pg;
+    class: papua_new_guinea;
+    aliasClass: new_guinea;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1fe: {
+    countrycode: py;
+    class: paraguay;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1ea: {
+    countrycode: pe;
+    class: peru;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1ed: {
+    countrycode: ph;
+    class: philippines;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f3: {
+    countrycode: pn;
+    class: pitcairn_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f1: {
+    countrycode: pl;
+    class: poland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f9: {
+    countrycode: pt;
+    class: portugal;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f7: {
+    countrycode: pr;
+    class: puerto_rico;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f6-1f1e6: {
+    countrycode: qa;
+    class: qatar;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f7-1f1ea: {
+    countrycode: re;
+    class: réunion;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f7-1f1f4: {
+    countrycode: ro;
+    class: romania;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f7-1f1fa: {
+    countrycode: ru;
+    class: russia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f7-1f1fc: {
+    countrycode: rw;
+    class: rwanda;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fc-1f1f8: {
+    countrycode: ws;
+    class: samoa;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f2: {
+    countrycode: sm;
+    class: san_marino;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f9: {
+    countrycode: st;
+    class: são_tomé_and_príncipe;
+    aliasClass: samo_tome;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1e6: {
+    countrycode: sa;
+    class: saudi_arabia;
+    aliasClass: saudiarabia;
+    aliasClass2: saudi
+  };
+  @1f1f8-1f1f3: {
+    countrycode: sn;
+    class: senegal;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f7-1f1f8: {
+    countrycode: rs;
+    class: serbia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1e8: {
+    countrycode: sc;
+    class: seychelles;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f1: {
+    countrycode: sl;
+    class: sierra_leone;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ec: {
+    countrycode: sg;
+    class: singapore;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1fd: {
+    countrycode: sx;
+    class: sint_maarten;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f0: {
+    countrycode: sk;
+    class: slovakia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ee: {
+    countrycode: si;
+    class: slovenia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1f8: {
+    countrycode: gs;
+    class: south_georgia_and_south_sandwich_islands;
+    aliasClass: sandwich_islands;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1e7: {
+    countrycode: sb;
+    class: solomon_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f4: {
+    countrycode: so;
+    class: somalia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ff-1f1e6: {
+    countrycode: za;
+    class: south_africa;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1f7: {
+    countrycode: kr;
+    class: south_korea;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f8: {
+    countrycode: ss;
+    class: south_sudan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1f8: {
+    countrycode: es;
+    class: spain;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1f0: {
+    countrycode: lk;
+    class: sri_lanka;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1f1: {
+    countrycode: bl;
+    class: st_barthélemy;
+    aliasClass: saint_barth;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ed: {
+    countrycode: sh;
+    class: st_helena;
+    aliasClass: saint_helena;
+    aliasClass2: false;
+  };
+  @1f1f0-1f1f3: {
+    countrycode: kn;
+    class: st_kitts_and_nevis;
+    aliasClass: saint_kitts_and_navis;
+    aliasClass2: false;
+  };
+  @1f1f1-1f1e8: {
+    countrycode: lc;
+    class: st_lucia;
+    aliasClass: saint_lucia;
+    aliasClass2: false;
+  };
+  @1f1f5-1f1f2: {
+    countrycode: pm;
+    class: st_pierre_and_miquelon;
+    aliasClass: saint_pierre;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1e8: {
+    countrycode: vc;
+    class: st_vincent_and_grenadines;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1e9: {
+    countrycode: sd;
+    class: sudan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1f7: {
+    countrycode: sr;
+    class: suriname;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ff: {
+    countrycode: sz;
+    class: eswatini;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ea: {
+    countrycode: se;
+    class: sweden;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1ed: {
+    countrycode: ch;
+    class: switzerland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1fe: {
+    countrycode: sy;
+    class: syria;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1fc: {
+    countrycode: tw;
+    class: taiwan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1ef: {
+    countrycode: tj;
+    class: tajikistan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1ff: {
+    countrycode: tz;
+    class: tanzania;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1ed: {
+    countrycode: th;
+    class: thailand;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f1: {
+    countrycode: tl;
+    class: timor-leste;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1ec: {
+    countrycode: tg;
+    class: togo;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f0: {
+    countrycode: tk;
+    class: tokelau;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f4: {
+    countrycode: to;
+    class: tonga;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f9: {
+    countrycode: tt;
+    class: trinidad_and_tobago;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f3: {
+    countrycode: tn;
+    class: tunisia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f7: {
+    countrycode: tr;
+    class: turkey;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1f2: {
+    countrycode: tm;
+    class: turkmenistan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1e8: {
+    countrycode: tc;
+    class: turks_and_caicos_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1ee: {
+    countrycode: vi;
+    class: us_virgin_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f9-1f1fb: {
+    countrycode: tv;
+    class: tuvalu;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1ec: {
+    countrycode: ug;
+    class: uganda;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1e6: {
+    countrycode: ua;
+    class: ukraine;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1ea: {
+    countrycode: ae;
+    class: united_arab_emirates;
+    aliasClass: uae;
+    aliasClass2: false;
+  };
+  @1f1ec-1f1e7: {
+    countrycode: gb;
+    class: united_kingdom;
+    aliasClass: uk;
+    aliasClass2: false;
+  };
+  @1f3f4-e0067-e0062-e0065-e006e-e0067-e007f: {
+    countrycode: gb_eng;
+    class: england;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f3f4-e0067-e0062-e0073-e0063-e0074-e007f: {
+    countrycode: gb_sct;
+    class: scotland;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f3f4-e0067-e0062-e0077-e006c-e0073-e007f: {
+    countrycode: gb_wls;
+    class: wales;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1f8: {
+    countrycode: us;
+    class: united_states;
+    aliasClass: america;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1fe: {
+    countrycode: uy;
+    class: uruguay;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1ff: {
+    countrycode: uz;
+    class: uzbekistan;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1fa: {
+    countrycode: vu;
+    class: vanuatu;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1e6: {
+    countrycode: va;
+    class: vatican_city;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1ea: {
+    countrycode: ve;
+    class: venezuela;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fb-1f1f3: {
+    countrycode: vn;
+    class: vietnam;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fc-1f1eb: {
+    countrycode: wf;
+    class: wallis_and_futuna;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1ed: {
+    countrycode: eh;
+    class: western_sahara;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fe-1f1ea: {
+    countrycode: ye;
+    class: yemen;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ff-1f1f2: {
+    countrycode: zm;
+    class: zambia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ff-1f1fc: {
+    countrycode: zw;
+    class: zimbabwe;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e6-1f1e8: {
+    countrycode: ac;
+    class: ascension_island;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e7-1f1fb: {
+    countrycode: bv;
+    class: bouvet_island;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e8-1f1f5: {
+    countrycode: cp;
+    class: clipperton_island;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ea-1f1e6: {
+    countrycode: ea;
+    class: ceuta_and_melilla;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1e9-1f1ec: {
+    countrycode: dg;
+    class: diego_garcia;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1ed-1f1f2: {
+    countrycode: hm;
+    class: heard_and_mcdonald_islands;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f2-1f1eb: {
+    countrycode: mf;
+    class: st_martin;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1f8-1f1ef: {
+    countrycode: sj;
+    class: svalbard_and_jan_mayen;
+    aliasClass: svalbard;
+    aliasClass2: jan_mayen
+  };
+  @1f1f9-1f1e6: {
+    countrycode: ta;
+    class: tristan_da_cunha;
+    aliasClass: false;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1f2: {
+    countrycode: um;
+    class: us_outlying_islands;
+    aliasClass: minor_islands;
+    aliasClass2: false;
+  };
+  @1f1fa-1f1f3: {
+    countrycode: un;
+    class: united_nations;
+    aliasClass: united_nations;
+    aliasClass2: false;
+  }
+};
+
+@size-map: {
+  small: 1;
+  medium: 2;
+  large: 4;
+  big: 5;
+  huge: 6;
+  massive: 8;
+};
