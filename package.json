@@ -79,8 +79,8 @@
     "semver": "^7.3.5"
   },
   "engines": {
-    "node": ">=10.15.3",
-    "npm": ">=6.4.1"
+    "node": ">=12",
+    "npm": ">=6.14.8"
   },
   "title": "Fomantic UI",
   "style": "dist/semantic.css"
