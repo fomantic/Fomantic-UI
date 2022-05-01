@@ -25,6 +25,9 @@
 .ui.toast-container {
     position: fixed;
     z-index: 9999;
+  &.absolute {
+    position: absolute;
+  }
   &.ui.attached when (@variationToastAttached) {
     width: 100%;
     left: 0;

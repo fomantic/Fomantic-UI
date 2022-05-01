@@ -1046,7 +1046,7 @@ $.fn.dropdown = function(parameters) {
             menuConfig[fields.values] = values;
             module.setup.menu(menuConfig);
             $.each(values, function(index, item) {
-              if(item.selected == true) {
+              if(item.selected === true) {
                 module.debug('Setting initial selection to', item[fields.value]);
                 module.set.selected(item[fields.value]);
                 if(!module.is.multiple()) {
@@ -1067,7 +1067,7 @@ $.fn.dropdown = function(parameters) {
                     settings.preserveHTML
                   )
                 ;
-                $input.append('<option value="' + value + '">' + name + '</option>');
+                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
               });
               module.observe.select();
             }
@@ -1383,7 +1383,7 @@ $.fn.dropdown = function(parameters) {
                     module.remove.userAddition();
                   }
                   module.remove.searchTerm();
-                  if(!module.is.focusedOnSearch() && !(skipRefocus == true)) {
+                  if(!module.is.focusedOnSearch() && skipRefocus !== true) {
                     module.focusSearch(true);
                   }
                 }
@@ -2635,7 +2635,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           direction: function($menu) {
-            if(settings.direction == 'auto') {
+            if(settings.direction === 'auto') {
               // reset position, remove upward if it's base menu
               if (!$menu) {
                 module.remove.upward();
@@ -2654,7 +2654,7 @@ $.fn.dropdown = function(parameters) {
                 module.set.leftward($menu);
               }
             }
-            else if(settings.direction == 'upward') {
+            else if(settings.direction === 'upward') {
               module.set.upward($menu);
             }
           },
@@ -2667,6 +2667,11 @@ $.fn.dropdown = function(parameters) {
             $element.addClass(className.leftward);
           },
           value: function(value, text, $selected, preventChangeTrigger) {
+            if(typeof text === 'boolean') {
+              preventChangeTrigger = text;
+              $selected = undefined;
+              text   = undefined;
+            }
             if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
               $input.removeClass(className.noselection);
             } else {
@@ -2730,12 +2735,21 @@ $.fn.dropdown = function(parameters) {
           visible: function() {
             $module.addClass(className.visible);
           },
-          exactly: function(value, $selectedItem) {
+          exactly: function(value, $selectedItem, preventChangeTrigger) {
+            if(typeof $selectedItem === 'boolean') {
+              preventChangeTrigger = $selectedItem;
+              $selectedItem   = undefined;
+            }
             module.debug('Setting selected to exact values');
             module.clear();
-            module.set.selected(value, $selectedItem);
+            module.set.selected(value, $selectedItem, preventChangeTrigger);
           },
           selected: function(value, $selectedItem, preventChangeTrigger, keepSearchTerm) {
+            if(typeof $selectedItem === 'boolean') {
+              keepSearchTerm = preventChangeTrigger;
+              preventChangeTrigger = $selectedItem;
+              $selectedItem   = undefined;
+            }
             var
               isMultiple = module.is.multiple()
             ;
@@ -2769,7 +2783,7 @@ $.fn.dropdown = function(parameters) {
                   isActive       = $selected.hasClass(className.active),
                   isActionable   = $selected.hasClass(className.actionable),
                   isUserValue    = $selected.hasClass(className.addition),
-                  shouldAnimate  = (isMultiple && $selectedItem.length == 1)
+                  shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1)
                 ;
                 if(isActionable){
                   if((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
@@ -2783,14 +2797,14 @@ $.fn.dropdown = function(parameters) {
                       module.save.remoteData(selectedText, selectedValue);
                     }
                     if(settings.useLabels) {
-                      module.add.value(selectedValue, selectedText, $selected);
+                      module.add.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                       module.add.label(selectedValue, selectedText, shouldAnimate);
                       module.set.activeItem($selected);
                       module.filterActive();
                       module.select.nextAvailable($selectedItem);
                     }
                     else {
-                      module.add.value(selectedValue, selectedText, $selected);
+                      module.add.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                       module.set.text(module.add.variables(message.count));
                       module.set.activeItem($selected);
                     }
@@ -2979,7 +2993,12 @@ $.fn.dropdown = function(parameters) {
             }
             return message;
           },
-          value: function(addedValue, addedText, $selectedItem) {
+          value: function(addedValue, addedText, $selectedItem, preventChangeTrigger) {
+            if(typeof addedText === 'boolean') {
+              preventChangeTrigger = addedText;
+              $selectedItem = undefined;
+              addedText   = undefined;
+            }
             var
               currentValue = module.get.values(true),
               newValue
@@ -2994,7 +3013,7 @@ $.fn.dropdown = function(parameters) {
             }
             // extend current array
             if(Array.isArray(currentValue)) {
-              newValue = $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
+              newValue = $selectedItem && $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
               newValue = module.get.uniqueArray(newValue);
             }
             else {
@@ -3018,7 +3037,7 @@ $.fn.dropdown = function(parameters) {
             else {
               settings.onAdd.call(element, addedValue, addedText, $selectedItem);
             }
-            module.set.value(newValue, addedText, $selectedItem);
+            module.set.value(newValue, addedText, $selectedItem, preventChangeTrigger);
             module.check.maxSelections();
           },
         },
