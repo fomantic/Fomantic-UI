@@ -609,6 +609,15 @@
       "contributions": [
         "security"
       ]
+    },
+    {
+      "login": "mvorisek",
+      "name": "Michael Voříšek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2228672?v=4",
+      "profile": "https://www.mvorisek.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,
