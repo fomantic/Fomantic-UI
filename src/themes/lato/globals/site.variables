@@ -1,6 +1,0 @@
-/*******************************
-     User Global Variables
-*******************************/
-
-@fontPath     : '../../themes/lato/assets/fonts';
-@fontFileName : 'Lato';
