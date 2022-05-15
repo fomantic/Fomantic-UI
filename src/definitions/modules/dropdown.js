@@ -30,11 +30,6 @@ $.fn.dropdown = function(parameters) {
 
     moduleSelector = $allModules.selector || '',
 
-    hasTouch       = ('ontouchstart' in document.documentElement),
-    clickEvent      = hasTouch
-        ? 'touchstart'
-        : 'click',
-
     time           = new Date().getTime(),
     performance    = [],
 
@@ -541,9 +536,7 @@ $.fn.dropdown = function(parameters) {
             }
             if(settings.onShow.call(element) !== false) {
               module.animate.show(function() {
-                if( module.can.click() ) {
-                  module.bind.intent();
-                }
+                module.bind.intent();
                 if(module.has.search() && !preventFocus) {
                   module.focusSearch();
                 }
@@ -570,8 +563,17 @@ $.fn.dropdown = function(parameters) {
                 }
                 callback.call(element);
               });
+              // Hide submenus explicitly. On some browsers (esp. mobile), they will not automatically receive a
+              // mouseleave event
+              var $subMenu = $module.find(selector.menu);
+              if($subMenu.length > 0) {
+                module.verbose('Hiding sub-menu', $subMenu);
+                $subMenu.each(function() {
+                  module.animate.hide(false, $(this));
+                });
+              }
             }
-          } else if( module.can.click() ) {
+          } else {
               module.unbind.intent();
           }
           iconClicked = false;
@@ -639,8 +641,8 @@ $.fn.dropdown = function(parameters) {
             module.verbose('Binding mouse events');
             if(module.is.multiple()) {
               $module
-                .on(clickEvent   + eventNamespace, selector.label,  module.event.label.click)
-                .on(clickEvent   + eventNamespace, selector.remove, module.event.remove.click)
+                .on('click'   + eventNamespace, selector.label,  module.event.label.click)
+                .on('click'   + eventNamespace, selector.remove, module.event.remove.click)
               ;
             }
             if( module.is.searchSelection() ) {
@@ -649,31 +651,33 @@ $.fn.dropdown = function(parameters) {
                 .on('mouseup'   + eventNamespace, module.event.mouseup)
                 .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
                 .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
-                .on(clickEvent  + eventNamespace, selector.icon,   module.event.icon.click)
-                .on(clickEvent  + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
+                .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
                 .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
-                .on(clickEvent  + eventNamespace, selector.search, module.event.search.focus)
+                .on('click'     + eventNamespace, selector.search, module.event.search.focus)
                 .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
-                .on(clickEvent  + eventNamespace, selector.text,   module.event.text.focus)
+                .on('click'     + eventNamespace, selector.text,   module.event.text.focus)
               ;
               if(module.is.multiple()) {
                 $module
-                  .on(clickEvent + eventNamespace, module.event.click)
-                  .on(clickEvent + eventNamespace, module.event.search.focus)
+                  .on('click' + eventNamespace, module.event.click)
+                  .on('click' + eventNamespace, module.event.search.focus)
                 ;
               }
             }
             else {
               if(settings.on == 'click') {
                 $module
-                  .on(clickEvent + eventNamespace, selector.icon, module.event.icon.click)
-                  .on(clickEvent + eventNamespace, module.event.test.toggle)
+                  .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                  .on('click' + eventNamespace, module.event.test.toggle)
                 ;
               }
               else if(settings.on == 'hover') {
                 $module
                   .on('mouseenter' + eventNamespace, module.delay.show)
                   .on('mouseleave' + eventNamespace, module.delay.hide)
+                  .on('touchstart' + eventNamespace, module.event.test.toggle)
+                  .on('touchstart' + eventNamespace, selector.icon, module.event.icon.click)
                 ;
               }
               else {
@@ -685,7 +689,7 @@ $.fn.dropdown = function(parameters) {
                 .on('mousedown' + eventNamespace, module.event.mousedown)
                 .on('mouseup'   + eventNamespace, module.event.mouseup)
                 .on('focus'     + eventNamespace, module.event.focus)
-                .on(clickEvent  + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
+                .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
               ;
               if(module.has.menuSearch() ) {
                 $module
@@ -699,21 +703,16 @@ $.fn.dropdown = function(parameters) {
               }
             }
             $menu
-              .on((hasTouch ? 'touchstart' : 'mouseenter') + eventNamespace, selector.item, module.event.item.mouseenter)
+              .on('mouseenter' + eventNamespace, selector.item, module.event.item.mouseenter)
+              .on('touchstart' + eventNamespace, selector.item, module.event.item.mouseenter)
               .on('mouseleave' + eventNamespace, selector.item, module.event.item.mouseleave)
               .on('click'      + eventNamespace, selector.item, module.event.item.click)
             ;
           },
           intent: function() {
             module.verbose('Binding hide intent event to document');
-            if(hasTouch) {
-              $document
-                .on('touchstart' + elementNamespace, module.event.test.touch)
-                .on('touchmove'  + elementNamespace, module.event.test.touch)
-              ;
-            }
             $document
-              .on(clickEvent + elementNamespace, module.event.test.hide)
+              .on('click' + elementNamespace, module.event.test.hide)
             ;
           }
         },
@@ -721,14 +720,8 @@ $.fn.dropdown = function(parameters) {
         unbind: {
           intent: function() {
             module.verbose('Removing hide intent event from document');
-            if(hasTouch) {
-              $document
-                .off('touchstart' + elementNamespace)
-                .off('touchmove' + elementNamespace)
-              ;
-            }
             $document
-              .off(clickEvent + elementNamespace)
+              .off('click' + elementNamespace)
             ;
           }
         },
@@ -1074,7 +1067,7 @@ $.fn.dropdown = function(parameters) {
                     settings.preserveHTML
                   )
                 ;
-                $input.append('<option value="' + value + '">' + name + '</option>');
+                $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
               });
               module.observe.select();
             }
@@ -1267,22 +1260,11 @@ $.fn.dropdown = function(parameters) {
               if (!module.is.multiple() || (module.is.multiple() && !module.is.active())) {
                 focused = true;
               }
-              if( module.determine.eventOnElement(event, toggleBehavior) ) {
+              if( module.determine.eventOnElement(event, toggleBehavior) && event.type !== 'touchstart') {
+                // do not preventDefault of touchstart; so emulated mouseenter is triggered on first touch and not later
+                // (when selecting an item). The double-showing of the dropdown through both events does not hurt.
                 event.preventDefault();
               }
-            },
-            touch: function(event) {
-              module.determine.eventOnElement(event, function() {
-                if(event.type == 'touchstart') {
-                  module.timer = setTimeout(function() {
-                    module.hide();
-                  }, settings.delay.touch);
-                }
-                else if(event.type == 'touchmove') {
-                  clearTimeout(module.timer);
-                }
-              });
-              event.stopPropagation();
             },
             hide: function(event) {
               if(module.determine.eventInModule(event, module.hide)){
@@ -1367,13 +1349,15 @@ $.fn.dropdown = function(parameters) {
             },
             mouseleave: function(event) {
               var
-                $subMenu = $(this).children(selector.menu)
+                $subMenu = $(this).find(selector.menu)
               ;
               if($subMenu.length > 0) {
                 clearTimeout(module.itemTimer);
                 module.itemTimer = setTimeout(function() {
                   module.verbose('Hiding sub-menu', $subMenu);
-                  module.animate.hide(false, $subMenu);
+                  $subMenu.each(function() {
+                    module.animate.hide(false, $(this));
+                  });
                 }, settings.delay.hide);
               }
             },
@@ -3626,9 +3610,6 @@ $.fn.dropdown = function(parameters) {
             $currentMenu.removeClass(className.loading);
             return canOpenRightward;
           },
-          click: function() {
-            return (hasTouch || settings.on == 'click');
-          },
           extendSelect: function() {
             return settings.allowAdditions || settings.apiSettings;
           },
@@ -3698,9 +3679,7 @@ $.fn.dropdown = function(parameters) {
               start = ($subMenu)
                 ? function() {}
                 : function() {
-                  if( module.can.click() ) {
-                    module.unbind.intent();
-                  }
+                  module.unbind.intent();
                   module.remove.active();
                 },
               transition = settings.transition.hideMethod || module.get.transition($subMenu)
@@ -4077,7 +4056,6 @@ $.fn.dropdown.settings = {
     hide   : 300,
     show   : 200,
     search : 20,
-    touch  : 50
   },
 
   /* Callbacks */
