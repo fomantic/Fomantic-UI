@@ -62,9 +62,9 @@ $.fn.popup = function(parameters) {
         moduleNamespace    = 'module-' + namespace,
 
         $module            = $(this),
-        $context           = $(settings.context),
-        $scrollContext     = $(settings.scrollContext),
-        $boundary          = $(settings.boundary),
+        $context           = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+        $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
+        $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $(document).find(settings.boundary) : $(settings.boundary),
         $target            = (settings.target)
           ? $(settings.target)
           : $module,
@@ -368,7 +368,7 @@ $.fn.popup = function(parameters) {
         },
 
         hideAll: function() {
-          $(selector.popup)
+          $(document).find(selector.popup)
             .filter('.' + className.popupVisible)
             .each(function() {
               $(this)

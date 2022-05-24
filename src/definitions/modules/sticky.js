@@ -53,7 +53,7 @@ $.fn.sticky = function(parameters) {
 
         $module               = $(this),
         $window               = $(window),
-        $scroll               = $(settings.scrollContext),
+        $scroll               = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
         $container,
         $context,
 
@@ -148,7 +148,7 @@ $.fn.sticky = function(parameters) {
 
         determineContext: function() {
           if(settings.context) {
-            $context = $(settings.context);
+            $context = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
           }
           else {
             $context = $container;
