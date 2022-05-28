@@ -121,8 +121,8 @@ $.fn.popup = function(parameters) {
         },
 
         refresh: function() {
-          if(settings.popup) {
-            $popup = $(settings.popup).eq(0);
+          if(settings.popup && typeof settings.popup === 'string') {
+            $popup = $(document).find(settings.popup).eq(0);
           }
           else {
             if(settings.inline) {
@@ -286,8 +286,8 @@ $.fn.popup = function(parameters) {
             }
             settings.onCreate.call($popup, element);
           }
-          else if(settings.popup) {
-            $(settings.popup).data(metadata.activator, $module);
+          else if(settings.popup && typeof settings.popup === 'string') {
+            $(document).find(settings.popup).data(metadata.activator, $module);
             module.verbose('Used popup specified in settings');
             module.refresh();
             if(settings.hoverable) {
