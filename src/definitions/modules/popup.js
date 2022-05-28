@@ -66,7 +66,7 @@ $.fn.popup = function(parameters) {
         $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
         $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $(document).find(settings.boundary) : $(settings.boundary),
         $target            = (settings.target)
-          ? $(settings.target)
+          ? ([window,document].indexOf(settings.target) < 0 ? $(document).find(settings.target) : $(settings.target))
           : $module,
 
         $popup,

@@ -1217,7 +1217,7 @@ $.fn.form = function(parameters) {
               if(settings.errorFocus && ignoreCallbacks !== true) {
                 var focusElement, hasTabIndex = true;
                 if (typeof settings.errorFocus === 'string') {
-                  focusElement = $(settings.errorFocus);
+                  focusElement = $(document).find(settings.errorFocus);
                   hasTabIndex = focusElement.is('[tabindex]');
                   // to be able to focus/scroll into non input elements we need a tabindex
                   if (!hasTabIndex) {

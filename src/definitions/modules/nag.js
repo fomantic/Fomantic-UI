@@ -53,7 +53,7 @@ $.fn.nag = function(parameters) {
         $module         = $(this),
 
         $context        = (settings.context)
-          ? [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context)
+          ? ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
           : $('body'),
 
         element         = this,
