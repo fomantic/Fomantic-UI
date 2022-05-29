@@ -243,7 +243,7 @@
       @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
-      .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
+      .ui.ui.ui.ui.table:not(.unstackable) tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
         }
@@ -252,7 +252,7 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.ui.ui.ui.inverted.table:not(.unstackable) tr.marked.@{color} {
+        .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
           }
@@ -872,7 +872,7 @@
       @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
-      .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
+      .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
         }
@@ -881,7 +881,7 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr.marked.@{color} {
+        .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
           }
@@ -1180,6 +1180,9 @@
         }
       }
     }
+    .ui.ui.ui.ui.table tr[class*="@{color} colored"],
+    .ui.ui.table th[class*="@{color} colored"],
+    .ui.ui.table td[class*="@{color} colored"],
     .ui.ui.ui.ui.table tr.@{color}:not(.marked),
     .ui.ui.table th.@{color}:not(.marked),
     .ui.ui.table td.@{color}:not(.marked) {
@@ -1199,6 +1202,9 @@
         color: @t;
       }
     }
+    .ui.table > thead > tr[class*="@{color} colored"] > th,
+    .ui.table > tfoot > tr[class*="@{color} colored"] > th,
+    .ui.table > tfoot > tr[class*="@{color} colored"] > td,
     .ui.table > thead > tr.@{color}:not(.marked) > th,
     .ui.table > tfoot > tr.@{color}:not(.marked) > th,
     .ui.table > tfoot > tr.@{color}:not(.marked) > td {
@@ -1212,12 +1218,18 @@
     }
 
     & when (@variationTableInverted) {
+      .ui.ui.ui.ui.inverted.table tr[class*="@{color} colored"],
+      .ui.ui.inverted.table th[class*="@{color} colored"],
+      .ui.ui.inverted.table td[class*="@{color} colored"],
       .ui.ui.ui.ui.inverted.table tr.@{color}:not(.marked),
       .ui.ui.inverted.table th.@{color}:not(.marked),
       .ui.ui.inverted.table td.@{color}:not(.marked) {
         background: @c;
         color: @white;
       }
+      .ui.inverted.table > thead > tr[class*="@{color} colored"] > th,
+      .ui.inverted.table > tfoot > tr[class*="@{color} colored"] > th,
+      .ui.inverted.table > tfoot > tr[class*="@{color} colored"] > td,
       .ui.inverted.table > thead > tr.@{color}:not(.marked) > th,
       .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > th,
       .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > td {
@@ -1226,6 +1238,9 @@
       }
     }
     & when (@variationTableSelectable) {
+      .ui.ui.selectable.table tr[class*="@{color} colored"]:hover,
+      .ui.table tr td.selectable[class*="@{color} colored"]:hover,
+      .ui.selectable.table tr:hover td[class*="@{color} colored"],
       .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
       .ui.table tr td.selectable.@{color}:not(.marked):hover,
       .ui.selectable.table tr:hover td.@{color}:not(.marked) {
@@ -1243,6 +1258,9 @@
         }
       }
       & when (@variationTableInverted) {
+        .ui.ui.inverted.selectable.table tr[class*="@{color} colored"]:hover,
+        .ui.inverted.table tr td.selectable[class*="@{color} colored"]:hover,
+        .ui.inverted.selectable.table tr:hover td[class*="@{color} colored"],
         .ui.ui.inverted.selectable.table tr.@{color}:not(.marked):hover,
         .ui.inverted.table tr td.selectable.@{color}:not(.marked):hover,
         .ui.inverted.selectable.table tr:hover td.@{color}:not(.marked) {
@@ -1262,8 +1280,8 @@
       }
     }
     & when (@variationTableMarked) {
-      .ui.table td.marked.@{color},
-      .ui.table tr.marked.@{color} {
+      .ui.table td[class*="@{color} marked"],
+      .ui.table tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @coloredBorderSize 0 0 0 @c inset;
         }
@@ -1272,8 +1290,8 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.inverted.table td.marked.@{color},
-        .ui.inverted.table tr.marked.@{color} {
+        .ui.inverted.table td[class*="@{color} marked"],
+        .ui.inverted.table tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @coloredBorderSize 0 0 0 @l inset;
           }
