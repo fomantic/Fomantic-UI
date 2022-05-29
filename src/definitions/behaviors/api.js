@@ -65,7 +65,7 @@ $.api = $.fn.api = function(parameters) {
 
         // context used for state
         $context        = (settings.stateContext)
-          ? $(settings.stateContext)
+          ? ([window,document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
           : $module,
 
         // request details

@@ -61,7 +61,7 @@ $.fn.toast = function(parameters) {
         $animationObject,
         $close,
         $context         = (settings.context)
-          ? $(settings.context)
+          ? ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
           : $('body'),
 
         isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
@@ -246,7 +246,7 @@ $.fn.toast = function(parameters) {
                   click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
                 $actions.append($('<button/>', {
                   html: icon + text,
-                  'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
+                  'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
                   class: className.button + ' ' + cls,
                   click: function () {
                     var button = $(this);
