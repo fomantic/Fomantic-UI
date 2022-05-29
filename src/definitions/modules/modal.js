@@ -65,7 +65,7 @@ $.fn.modal = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
         $closeIcon      = $module.find(selector.closeIcon),
         $inputs,
 
@@ -124,7 +124,7 @@ $.fn.modal = function(parameters) {
                   click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
               $actions.append($('<button/>', {
                 html: icon + text,
-                'aria-label': $('<div>'+(el[fields.text] || el[fields.icon] || '')+'</div>').text(),
+                'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
                 class: className.button + ' ' + cls,
                 click: function () {
                   var button = $(this);

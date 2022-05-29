@@ -61,7 +61,7 @@ $.fn.dropdown = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
         $text           = $module.find(selector.text),
         $search         = $module.find(selector.search),
         $sizer          = $module.find(selector.sizer),
@@ -2917,7 +2917,7 @@ $.fn.dropdown = function(parameters) {
             $('<option/>')
               .prop('value', escapedValue)
               .addClass(className.addition)
-              .html(value)
+              .text(value)
               .appendTo($input)
             ;
             module.verbose('Adding user addition as an <option>', value);
