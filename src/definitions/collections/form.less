@@ -395,7 +395,7 @@
 .ui.form ::-webkit-input-placeholder {
   color: @inputPlaceholderColor;
 }
-.ui.form :-ms-input-placeholder {
+.ui.form :-ms-input-placeholder when (@supportIE) {
   color: @inputPlaceholderColor !important;
 }
 .ui.form ::-moz-placeholder {
@@ -406,7 +406,7 @@
 .ui.form :focus::-webkit-input-placeholder {
   color: @inputPlaceholderFocusColor;
 }
-.ui.form :focus:-ms-input-placeholder {
+.ui.form :focus:-ms-input-placeholder when (@supportIE) {
   color: @inputPlaceholderFocusColor !important;
 }
 .ui.form :focus::-moz-placeholder {
@@ -600,7 +600,7 @@
         border-radius: @formStates[@@state][borderRadius];
         box-shadow: @formStates[@@state][boxShadow];
       }
-      .ui.form .field input:not(:-ms-input-placeholder):invalid {
+      .ui.form .field input:not(:-ms-input-placeholder):invalid when (@supportIE) {
         color: @c;
         background: @bg;
         border-color: @formStates[@@state][borderColor];
@@ -662,7 +662,7 @@
     .ui.form .@{state} ::-webkit-input-placeholder {
       color: @formStates[@@state][inputPlaceholderColor];
     }
-    .ui.form .@{state} :-ms-input-placeholder {
+    .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
       color: @formStates[@@state][inputPlaceholderColor] !important;
     }
     .ui.form .@{state} ::-moz-placeholder {
@@ -672,7 +672,7 @@
     .ui.form .@{state} :focus::-webkit-input-placeholder {
       color: @formStates[@@state][inputPlaceholderFocusColor];
     }
-    .ui.form .@{state} :focus:-ms-input-placeholder {
+    .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
       color: @formStates[@@state][inputPlaceholderFocusColor] !important;
     }
     .ui.form .@{state} :focus::-moz-placeholder {

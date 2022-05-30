@@ -77,7 +77,7 @@
   color: @placeholderColor;
   opacity: 1;
 }
-.ui.input > input:-ms-input-placeholder {
+.ui.input > input:-ms-input-placeholder when (@supportIE){
   color: @placeholderColor;
 }
 
@@ -170,9 +170,11 @@
 .ui.input > input:focus::-moz-placeholder {
   color: @placeholderFocusColor;
 }
-.ui.input.focus > input:-ms-input-placeholder,
-.ui.input > input:focus:-ms-input-placeholder {
-  color: @placeholderFocusColor;
+& when (@supportIE) {
+  .ui.input.focus > input:-ms-input-placeholder,
+  .ui.input > input:focus:-ms-input-placeholder {
+    color: @placeholderFocusColor;
+  }
 }
 
 
@@ -196,7 +198,7 @@
         color: @formStates[@@state][color];
         box-shadow: @formStates[@@state][boxShadow];
       }
-      .ui.input > input:not(:-ms-input-placeholder):invalid {
+      .ui.input > input:not(:-ms-input-placeholder):invalid when (@supportIE){
         background-color: @formStates[@@state][background];
         border-color: @formStates[@@state][borderColor];
         color: @formStates[@@state][color];
@@ -211,7 +213,7 @@
     .ui.input.@{state} > input::-moz-placeholder {
       color: @formStates[@@state][inputPlaceholderColor];
     }
-    .ui.input.@{state} > input:-ms-input-placeholder {
+    .ui.input.@{state} > input:-ms-input-placeholder when (@supportIE) {
       color: @formStates[@@state][inputPlaceholderColor] !important;
     }
 
@@ -222,7 +224,7 @@
     .ui.input.@{state} > input:focus::-moz-placeholder {
       color: @formStates[@@state][inputPlaceholderFocusColor];
     }
-    .ui.input.@{state} > input:focus:-ms-input-placeholder {
+    .ui.input.@{state} > input:focus:-ms-input-placeholder when (@supportIE){
       color: @formStates[@@state][inputPlaceholderFocusColor] !important;
     }
   })
@@ -277,7 +279,7 @@
     .ui.transparent.inverted.input > input::-moz-placeholder {
       color: @transparentInvertedPlaceholderColor;
     }
-    .ui.transparent.inverted.input > input:-ms-input-placeholder {
+    .ui.transparent.inverted.input > input:-ms-input-placeholder when (@supportIE) {
       color: @transparentInvertedPlaceholderColor;
     }
   }
@@ -672,28 +674,30 @@
       color: @fileButtonTextColor;
     }
   }
-  .ui.action.file.input input[type="file"]::-ms-browse {
-    display: none;
-  }
-  .ui.form .field input[type="file"]::-ms-browse,
-  .ui.file.input input[type="file"]::-ms-browse {
-    border: none;
-    cursor: pointer;
-    padding: @padding;
-    margin: 0;
-    background: @fileButtonBackground;
-    font-weight: @fileButtonFontWeight;
-    color: @fileButtonTextColor;
-    &:hover {
-      background: @fileButtonBackgroundHover;
-      color: @fileButtonTextColor;
+  & when (@supportIE) {
+    .ui.action.file.input input[type="file"]::-ms-browse {
+      display: none;
     }
-  }
-  /* IE needs additional styling for input field :S */
-  @media all and (-ms-high-contrast:none) {
-    .ui.file.input > input[type="file"],
-    input[type="file"].ui.file.input {
-      padding: 0 !important;
+    .ui.form .field input[type="file"]::-ms-browse,
+    .ui.file.input input[type="file"]::-ms-browse {
+      border: none;
+      cursor: pointer;
+      padding: @padding;
+      margin: 0;
+      background: @fileButtonBackground;
+      font-weight: @fileButtonFontWeight;
+      color: @fileButtonTextColor;
+      &:hover {
+        background: @fileButtonBackgroundHover;
+        color: @fileButtonTextColor;
+      }
+    }
+    /* IE needs additional styling for input field :S */
+    @media all and (-ms-high-contrast: none) {
+      .ui.file.input > input[type="file"],
+      input[type="file"].ui.file.input {
+        padding: 0 !important;
+      }
     }
   }
 
@@ -769,12 +773,14 @@
           background: @h;
         }
       }
-      input[type="file"].ui.@{color}.file.input::-ms-browse,
-      .ui.@{color}.file.input input[type="file"]::-ms-browse {
-        background: @c;
-        color: @white;
-        &:hover {
-          background: @h;
+      & when (@supportIE) {
+        input[type="file"].ui.@{color}.file.input::-ms-browse,
+        .ui.@{color}.file.input input[type="file"]::-ms-browse {
+          background: @c;
+          color: @white;
+          &:hover {
+            background: @h;
+          }
         }
       }
       input[type="file"].ui.@{color}.file.input::file-selector-button,
