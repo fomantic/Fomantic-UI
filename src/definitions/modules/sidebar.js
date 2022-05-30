@@ -66,7 +66,7 @@ $.fn.sidebar = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
 
         $sidebars       = $module.children(selector.sidebar),
         $fixed          = $context.children(selector.fixed),
@@ -294,7 +294,7 @@ $.fn.sidebar = function(parameters) {
 
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $context  = $(settings.context);
+          $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
           $sidebars = $context.children(selector.sidebar);
           $pusher   = $context.children(selector.pusher);
           $fixed    = $context.children(selector.fixed);

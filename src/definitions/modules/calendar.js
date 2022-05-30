@@ -803,7 +803,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $(selector).first();
+              selector = $(document).find(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);

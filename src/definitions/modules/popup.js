@@ -62,11 +62,11 @@ $.fn.popup = function(parameters) {
         moduleNamespace    = 'module-' + namespace,
 
         $module            = $(this),
-        $context           = $(settings.context),
-        $scrollContext     = $(settings.scrollContext),
-        $boundary          = $(settings.boundary),
+        $context           = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+        $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
+        $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $(document).find(settings.boundary) : $(settings.boundary),
         $target            = (settings.target)
-          ? $(settings.target)
+          ? ([window,document].indexOf(settings.target) < 0 ? $(document).find(settings.target) : $(settings.target))
           : $module,
 
         $popup,
@@ -121,8 +121,8 @@ $.fn.popup = function(parameters) {
         },
 
         refresh: function() {
-          if(settings.popup) {
-            $popup = $(settings.popup).eq(0);
+          if(settings.popup && typeof settings.popup === 'string') {
+            $popup = $(document).find(settings.popup).eq(0);
           }
           else {
             if(settings.inline) {
@@ -286,8 +286,8 @@ $.fn.popup = function(parameters) {
             }
             settings.onCreate.call($popup, element);
           }
-          else if(settings.popup) {
-            $(settings.popup).data(metadata.activator, $module);
+          else if(settings.popup && typeof settings.popup === 'string') {
+            $(document).find(settings.popup).data(metadata.activator, $module);
             module.verbose('Used popup specified in settings');
             module.refresh();
             if(settings.hoverable) {
@@ -368,7 +368,7 @@ $.fn.popup = function(parameters) {
         },
 
         hideAll: function() {
-          $(selector.popup)
+          $(document).find(selector.popup)
             .filter('.' + className.popupVisible)
             .each(function() {
               $(this)
