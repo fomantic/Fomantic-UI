@@ -460,7 +460,9 @@
     /* Horizontal Segment */
     .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
       flex: 1 1 auto;
-      -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+      & when (@supportIE) {
+        -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+      }
     }
     .ui.horizontal.segments > .segment {
       margin: 0;
