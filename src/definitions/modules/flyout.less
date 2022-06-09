@@ -38,6 +38,7 @@
 
   height: 100%;
   max-height: 100%;
+  max-width: 100%;
   border-radius: 0;
   margin: 0;
   overflow-y: hidden;
@@ -459,9 +460,8 @@ body.pushable > .pusher {
 
   /* Fullscreen */
 
-  .ui.fullscreen.left.flyout,
-  .ui.fullscreen.right.flyout {
-    width: 100% !important;
+  .ui.fullscreen.flyout {
+    width: 100%;
   }
 
 
@@ -473,83 +473,67 @@ body.pushable > .pusher {
     
     /* Sizing Combinations */
 
-    .ui[class*="one wide"].left.flyout:not(.fullscreen),
-    .ui[class*="one wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="one wide"].flyout:not(.fullscreen) {
       width: @oneWide;
     }
 
-    .ui[class*="two wide"].left.flyout:not(.fullscreen),
-    .ui[class*="two wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="two wide"].flyout:not(.fullscreen) {
       width: @twoWide;
     }
 
-    .ui[class*="three wide"].left.flyout:not(.fullscreen),
-    .ui[class*="three wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="three wide"].flyout:not(.fullscreen) {
       width: @threeWide;
     }
 
-    .ui[class*="four wide"].left.flyout:not(.fullscreen),
-    .ui[class*="four wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="four wide"].flyout:not(.fullscreen) {
       width: @fourWide;
     }
 
-    .ui[class*="five wide"].left.flyout:not(.fullscreen),
-    .ui[class*="five wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="five wide"].flyout:not(.fullscreen) {
       width: @fiveWide;
     }
 
-    .ui[class*="six wide"].left.flyout:not(.fullscreen),
-    .ui[class*="six wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="six wide"].flyout:not(.fullscreen) {
       width: @sixWide;
     }
 
-    .ui[class*="seven wide"].left.flyout:not(.fullscreen),
-    .ui[class*="seven wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="seven wide"].flyout:not(.fullscreen) {
       width: @sevenWide;
     }
 
-    .ui[class*="eight wide"].left.flyout:not(.fullscreen),
-    .ui[class*="eight wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="eight wide"].flyout:not(.fullscreen) {
       width: @eightWide;
     }
 
-    .ui[class*="nine wide"].left.flyout:not(.fullscreen),
-    .ui[class*="nine wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="nine wide"].flyout:not(.fullscreen) {
       width: @nineWide;
     }
 
-    .ui[class*="ten wide"].left.flyout:not(.fullscreen),
-    .ui[class*="ten wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="ten wide"].flyout:not(.fullscreen) {
       width: @tenWide;
     }
 
-    .ui[class*="eleven wide"].left.flyout:not(.fullscreen),
-    .ui[class*="eleven wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="eleven wide"].flyout:not(.fullscreen) {
       width: @elevenWide;
     }
 
-    .ui[class*="twelve wide"].left.flyout:not(.fullscreen),
-    .ui[class*="twelve wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="twelve wide"].flyout:not(.fullscreen) {
       width: @twelveWide;
     }
 
-    .ui[class*="thirteen wide"].left.flyout:not(.fullscreen),
-    .ui[class*="thirteen wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="thirteen wide"].flyout:not(.fullscreen) {
       width: @thirteenWide;
     }
 
-    .ui[class*="fourteen wide"].left.flyout:not(.fullscreen),
-    .ui[class*="fourteen wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="fourteen wide"].flyout:not(.fullscreen) {
       width: @fourteenWide;
     }
 
-    .ui[class*="fifteen wide"].left.flyout:not(.fullscreen),
-    .ui[class*="fifteen wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="fifteen wide"].flyout:not(.fullscreen) {
       width: @fifteenWide;
     }
 
-    .ui[class*="sixteen wide"].left.flyout:not(.fullscreen),
-    .ui[class*="sixteen wide"].right.flyout:not(.fullscreen) {
+    .ui[class*="sixteen wide"].flyout:not(.fullscreen) {
       width: @sixteenWide;
     }
   }
@@ -600,26 +584,10 @@ body.pushable > .pusher {
   }
 
   /* End - flyout */
-  & when (@variationFlyoutLeft) {
-    .ui.visible.left.overlay.flyout {
-      transform: translate3d(0%, 0, 0);
-    }
+  .ui.visible.overlay.flyout {
+    transform: translate3d(0%, 0, 0);
   }
-  & when (@variationFlyoutRight) {
-    .ui.visible.right.overlay.flyout {
-      transform: translate3d(0%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.visible.top.overlay.flyout {
-      transform: translate3d(0%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.visible.bottom.overlay.flyout {
-      transform: translate3d(0%, 0, 0);
-    }
-  }
+  
   /* End - Pusher */
   .ui.visible.overlay.flyout ~ .fixed,
   .ui.visible.overlay.flyout ~ .pusher {
@@ -628,223 +596,5 @@ body.pushable > .pusher {
 }
 
 
-& when (@variationFlyoutPush) {
-  /*--------------
-        Push
-  ---------------*/
-
-  /* Initial */
-  .ui.push.flyout {
-    transition: transform @duration @easing;
-    z-index: @topLayer;
-  }
-
-  /* flyout - Initial */
-  & when (@variationFlyoutLeft) {
-    .ui.left.push.flyout {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutRight) {
-    .ui.right.push.flyout {
-      transform: translate3d(100%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.top.push.flyout {
-      transform: translate3d(0%, -100%, 0);
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.bottom.push.flyout {
-      transform: translate3d(0%, 100%, 0);
-    }
-  }
-
-  /* End */
-  .ui.visible.push.flyout {
-    transform: translate3d(0%, 0, 0);
-  }
-}
-
-& when (@variationFlyoutUncover) {
-  /*--------------
-      Uncover
-  ---------------*/
-
-  /* Initial */
-  .ui.uncover.flyout {
-    transform: translate3d(0, 0, 0);
-    z-index: @bottomLayer;
-  }
-
-  /* End */
-  .ui.visible.uncover.flyout {
-    transform: translate3d(0, 0, 0);
-    transition: transform @duration @easing;
-  }
-}
-
-& when (@variationFlyoutSlideAlong) {
-  /*--------------
-     Slide Along
-  ---------------*/
-
-  /* Initial */
-  .ui.slide.along.flyout {
-    z-index: @bottomLayer;
-  }
-
-  /* flyout - Initial */
-  & when (@variationFlyoutLeft) {
-    .ui.left.slide.along.flyout {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutRight) {
-    .ui.right.slide.along.flyout {
-      transform: translate3d(50%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.top.slide.along.flyout {
-      transform: translate3d(0, -50%, 0);
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.bottom.slide.along.flyout {
-      transform: translate3d(0%, 50%, 0);
-    }
-  }
-
-  /* Animation */
-  .ui.animating.slide.along.flyout {
-    transition: transform @duration @easing;
-  }
-
-  /* End */
-  .ui.visible.slide.along.flyout {
-    transform: translate3d(0%, 0, 0);
-  }
-}
-
-& when (@variationFlyoutSlideOut) {
-  /*--------------
-     Slide Out
-  ---------------*/
-
-  /* Initial */
-  .ui.slide.out.flyout {
-    z-index: @bottomLayer;
-  }
-
-  /* flyout - Initial */
-  & when (@variationFlyoutLeft) {
-    .ui.left.slide.out.flyout {
-      transform: translate3d(50%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutRight) {
-    .ui.right.slide.out.flyout {
-      transform: translate3d(-50%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.top.slide.out.flyout {
-      transform: translate3d(0%, 50%, 0);
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.bottom.slide.out.flyout {
-      transform: translate3d(0%, -50%, 0);
-    }
-  }
-
-  /* Animation */
-  .ui.animating.slide.out.flyout {
-    transition: transform @duration @easing;
-  }
-
-  /* End */
-  .ui.visible.slide.out.flyout {
-    transform: translate3d(0%, 0, 0);
-  }
-}
-
-& when (@variationFlyoutScale) {
-  /*--------------
-     Scale Down
-  ---------------*/
-
-  /* Initial */
-  .ui.scale.down.flyout {
-    transition: transform @duration @easing;
-    z-index: @topLayer;
-  }
-
-
-  & when (@variationFlyoutLeft) {
-    .ui.left.scale.down.flyout {
-      transform: translate3d(-100%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutRight) {
-    .ui.right.scale.down.flyout {
-      transform: translate3d(100%, 0, 0);
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.top.scale.down.flyout {
-      transform: translate3d(0%, -100%, 0);
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.bottom.scale.down.flyout {
-      transform: translate3d(0%, 100%, 0);
-    }
-  }
-
-  /* Pusher - Initial */
-  & when (@variationFlyoutLeft) {
-    .ui.scale.down.left.flyout ~ .pusher {
-      transform-origin: 75% 50%;
-    }
-  }
-  & when (@variationFlyoutRight) {
-    .ui.scale.down.right.flyout ~ .pusher {
-      transform-origin: 25% 50%;
-    }
-  }
-  & when (@variationFlyoutTop) {
-    .ui.scale.down.top.flyout ~ .pusher {
-      transform-origin: 50% 75%;
-    }
-  }
-  & when (@variationFlyoutBottom) {
-    .ui.scale.down.bottom.flyout ~ .pusher {
-      transform-origin: 50% 25%;
-    }
-  }
-
-  /* Animation */
-  .ui.animating.scale.down > .visible.ui.flyout {
-    transition: transform @duration @easing;
-  }
-  .ui.visible.scale.down.flyout ~ .pusher,
-  .ui.animating.scale.down.flyout ~ .pusher {
-    display: block !important;
-    width: 100%;
-    height: 100%;
-    overflow: hidden !important;
-  }
-
-  /* End */
-  .ui.visible.scale.down.flyout {
-    transform: translate3d(0, 0, 0);
-  }
-  .ui.visible.scale.down.flyout ~ .pusher {
-    transform: scale(0.75);
-  }
-}
 
 .loadUIOverrides();

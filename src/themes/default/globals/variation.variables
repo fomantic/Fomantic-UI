@@ -558,11 +558,6 @@
 @variationFlyoutLeft: true;
 @variationFlyoutRight: true;
 @variationFlyoutOverlay: true;
-@variationFlyoutSlideAlong: true;
-@variationFlyoutSlideOut: true;
-@variationFlyoutScale: true;
-@variationFlyoutPush: true;
-@variationFlyoutUncover: true;
 
 /* Modal */
 @variationModalInverted: true;
