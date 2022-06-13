@@ -67,7 +67,7 @@ $.fn.flyout = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
         $close          = $module.find(selector.close),
 
         $flyouts        = $module.children(selector.flyout),
@@ -391,7 +391,7 @@ $.fn.flyout = function(parameters) {
 
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $context  = $(settings.context);
+          $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
           $flyouts = $context.children(selector.flyout);
           $pusher   = $context.children(selector.pusher);
           $fixed    = $context.children(selector.fixed);
