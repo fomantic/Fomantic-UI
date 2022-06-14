@@ -71,7 +71,6 @@ $.fn.flyout = function(parameters) {
         $close          = $module.find(selector.close),
 
         $flyouts        = $module.children(selector.flyout),
-        $fixed          = $context.children(selector.fixed),
         $pusher         = $context.children(selector.pusher),
         $style,
 
@@ -115,10 +114,12 @@ $.fn.flyout = function(parameters) {
               $actions.empty();
             }
             settings.actions.forEach(function (el) {
-              var icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
-                  text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
-                  cls = module.helpers.deQuote(el[fields.class] || ''),
-                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
+              var
+                icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
+                cls = module.helpers.deQuote(el[fields.class] || ''),
+                click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {}
+              ;
               $actions.append($('<button/>', {
                 html: icon + text,
                 class: className.button + ' ' + cls,
@@ -394,7 +395,6 @@ $.fn.flyout = function(parameters) {
           $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
           $flyouts = $context.children(selector.flyout);
           $pusher   = $context.children(selector.pusher);
-          $fixed    = $context.children(selector.fixed);
           module.clear.cache();
         },
 
@@ -732,6 +732,7 @@ $.fn.flyout = function(parameters) {
         },
 
         get: {
+          
           direction: function() {
             if($module.hasClass(className.top)) {
               return className.top;
@@ -809,16 +810,6 @@ $.fn.flyout = function(parameters) {
           },
           visible: function() {
             return $module.hasClass(className.visible);
-          },
-          // alias
-          open: function() {
-            return module.is.visible();
-          },
-          closed: function() {
-            return module.is.hidden();
-          },
-          vertical: function() {
-            return $module.hasClass(className.top);
           },
           animating: function() {
             return $context.hasClass(className.animating);
@@ -1067,24 +1058,22 @@ $.fn.flyout = function(parameters) {
 
 $.fn.flyout.settings = {
 
-  name              : 'Flyout',
-  namespace         : 'flyout',
+  name         : 'Flyout',
+  namespace    : 'flyout',
 
-  silent            : false,
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  silent       : false,
+  debug        : false,
+  verbose      : false,
+  performance  : true,
 
-  context           : 'body',
-  exclusive         : false,
-  closable          : true,
-  dimPage           : true,
-  scrollLock        : false,
-  returnScroll      : false,
-  delaySetup        : false,
-  autoShow          : false,
-
-  duration          : 500,
+  context      : 'body',
+  exclusive    : false,
+  closable     : true,
+  dimPage      : true,
+  scrollLock   : false,
+  returnScroll : false,
+  delaySetup   : false,
+  autoShow     : false,
 
   //dynamic content
   title        : '',
@@ -1097,47 +1086,47 @@ $.fn.flyout.settings = {
   actions      : false,
   preserveHTML : true,
 
-  fields         : {
-    class        : 'class',
-    text         : 'text',
-    icon         : 'icon',
-    click        : 'click'
+  fields       : {
+    class : 'class',
+    text  : 'text',
+    icon  : 'icon',
+    click : 'click'
   },
 
-  onChange          : function(){},
-  onShow            : function(){},
-  onHide            : function(){},
+  onChange     : function(){},
+  onShow       : function(){},
+  onHide       : function(){},
 
-  onHidden          : false,
-  onVisible         : function(){},
+  onHidden     : false,
+  onVisible    : function(){},
 
-  onApprove         : function(){},
-  onDeny            : function(){},
+  onApprove    : function(){},
+  onDeny       : function(){},
 
-  className         : {
-    flyout    : 'ui flyout',
-    close     : 'close icon',
-    header    : 'ui header',
-    content   : 'content',
-    actions   : 'actions',
-    active    : 'active',
-    animating : 'animating',
-    dimmed    : 'dimmed',
-    ios       : 'ios',
-    pushable  : 'pushable',
-    pushed    : 'pushed',
-    right     : 'right',
-    top       : 'top',
-    left      : 'left',
-    bottom    : 'bottom',
-    visible   : 'visible',
-    overlay   : 'overlay',
-    fullscreen: 'fullscreen',
-    template  : 'ui flyout',
-    button    : 'ui button',
-    ok        : 'positive',
-    cancel    : 'negative',
-    prompt    : 'ui fluid input'
+  className    : {
+    flyout     : 'ui flyout',
+    close      : 'close icon',
+    header     : 'ui header',
+    content    : 'content',
+    actions    : 'actions',
+    active     : 'active',
+    animating  : 'animating',
+    dimmed     : 'dimmed',
+    ios        : 'ios',
+    pushable   : 'pushable',
+    pushed     : 'pushed',
+    right      : 'right',
+    top        : 'top',
+    left       : 'left',
+    bottom     : 'bottom',
+    visible    : 'visible',
+    overlay    : 'overlay',
+    fullscreen : 'fullscreen',
+    template   : 'ui flyout',
+    button     : 'ui button',
+    ok         : 'positive',
+    cancel     : 'negative',
+    prompt     : 'ui fluid input'
   },
 
   selector: {
@@ -1160,15 +1149,15 @@ $.fn.flyout.settings = {
   },
 
   error   : {
-    method       : 'The method you called is not defined.',
-    pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
-    movedFlyout  : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
-    notFound     : 'There were no elements that matched the specified selector'
+    method      : 'The method you called is not defined.',
+    pusher      : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
+    movedFlyout : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
+    notFound    : 'There were no elements that matched the specified selector'
   },
 
   text: {
-    ok    : 'Ok',
-    cancel: 'Cancel'
+    ok     : 'Ok',
+    cancel : 'Cancel'
   }
 };
 
@@ -1193,8 +1182,9 @@ $.fn.flyout.settings.templates = {
     }
   },
   alert: function () {
-    var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+    var
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments)
     ;
     return {
       title  : args.title,
@@ -1207,8 +1197,9 @@ $.fn.flyout.settings.templates = {
     }
   },
   confirm: function () {
-    var settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments)
+    var
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments)
     ;
     return {
       title  : args.title,
@@ -1225,10 +1216,11 @@ $.fn.flyout.settings.templates = {
     }
   },
   prompt: function () {
-    var $this    = this,
-        settings = this.get.settings(),
-        args     = settings.templates.getArguments(arguments),
-        input    = $($.parseHTML(args.content)).filter('.ui.input')
+    var
+      $this    = this,
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments),
+      input    = $($.parseHTML(args.content)).filter('.ui.input')
     ;
     if (input.length === 0) {
       args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
