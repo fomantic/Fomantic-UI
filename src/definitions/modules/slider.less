@@ -206,7 +206,7 @@
     transform: translate(-50%, 100%);
   }
   & when (@variationSliderTicked) {
-    .ui.labeled.ticked.slider > .labels .label:after {
+    .ui.labeled.ticked.slider > .labels .label::after {
       content: ' ';
       height: @labelHeight;
       width: @labelWidth;
@@ -215,11 +215,11 @@
       top: 100%;
       left: 50%;
     }
-    .ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+    .ui.bottom.aligned.labeled.ticked.slider > .labels .label::after {
       top: auto;
       bottom: 100%;
     }
-    .ui.labeled.ticked.slider > .labels .halftick.label:after {
+    .ui.labeled.ticked.slider > .labels .halftick.label::after {
       height: (@labelHeight / 2);
     }
   }
@@ -240,13 +240,13 @@
       transform: translate(-100%, -50%);
     }
 
-    .ui.labeled.vertical.slider > .labels .label:after {
+    .ui.labeled.vertical.slider > .labels .label::after {
       width: @labelHeight;
       height: @labelWidth;
       left: 100%;
       top: 50%;
     }
-    .ui.labeled.vertical.slider > .labels .halftick.label:after {
+    .ui.labeled.vertical.slider > .labels .halftick.label::after {
       width: (@labelHeight / 2);
       height: @labelWidth;
     }
@@ -386,10 +386,10 @@
      }
      & when (@variationSliderLabeled) {
        .ui.@{value}.labeled.slider:not(.vertical) > .labels,
-       .ui.@{value}.labeled.slider:not(.vertical) > .labels .label:after {
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels .label::after {
          height: @@lh;
        }
-       .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+       .ui.@{value}.labeled.slider:not(.vertical) > .labels .halftick.label::after {
          height: (@@lh / 2);
        }
      }
@@ -405,10 +405,10 @@
        }
        & when (@variationSliderLabeled) {
          .ui.@{value}.labeled.vertical.slider> .labels,
-         .ui.@{value}.labeled.vertical.slider> .labels .label:after {
+         .ui.@{value}.labeled.vertical.slider> .labels .label::after {
            width: @@lh;
          }
-         .ui.@{value}.labeled.vertical.slider> .labels .halftick.label:after {
+         .ui.@{value}.labeled.vertical.slider> .labels .halftick.label::after {
            width: (@@lh / 2);
          }
        }

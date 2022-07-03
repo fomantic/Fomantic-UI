@@ -1,21 +1,25 @@
 name: CI
 on: [pull_request]
+permissions:
+  contents: read
+
 jobs:
   test:
     name: Test build process on node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         node-version: [12, 14, 16]
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v2
+      uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
     - name: pre-install
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
-      run: npm install --ignore-scripts
+      run: yarn
     - name: pre fomantic install & gulp build
-      run: npx gulp install
+      run: yarn gulp install

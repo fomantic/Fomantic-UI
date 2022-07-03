@@ -140,16 +140,12 @@ module.exports = {
           folder        = pathArray[pathArray.length - 2],
           nextDirectory = path.join(directory, path.sep, '..')
         ;
-        if( folder == 'bower_components') {
+        if(['bower_components', 'node_modules', 'composer'].includes(folder)) {
           moduleFolders++;
+        } else if(folder === '.pnpm') {
+          moduleFolders--;
         }
-        else if(folder == 'node_modules') {
-          moduleFolders++;
-        }
-        else if(folder == 'composer') {
-          moduleFolders++;
-        }
-        if(path.resolve(directory) == path.resolve(nextDirectory)) {
+        if(path.resolve(directory) === path.resolve(nextDirectory)) {
           return (moduleFolders > 1);
         }
         // recurse downward

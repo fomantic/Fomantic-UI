@@ -165,10 +165,10 @@
 .ui.table.segment {
   padding: 0;
 }
-.ui.table.segment:after {
+.ui.table.segment::after {
   display: none;
 }
-.ui.table.segment.stacked:after {
+.ui.table.segment.stacked::after {
   display: block;
 }
 
@@ -243,7 +243,7 @@
       @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
-      .ui.ui.ui.ui.table:not(.unstackable) tr.marked.@{color} {
+      .ui.ui.ui.ui.table:not(.unstackable) tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
         }
@@ -252,7 +252,7 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.ui.ui.ui.inverted.table:not(.unstackable) tr.marked.@{color} {
+        .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
           }
@@ -438,25 +438,29 @@
   .ui.scrolling.table > thead,
   .ui.scrolling.table > tfoot {
     scrollbar-color: currentColor currentColor;
-    scrollbar-face-color: currentColor;
-    scrollbar-shadow-color: currentColor;
-    scrollbar-track-color: currentColor;
-    scrollbar-arrow-color: currentColor;
+    & when (@supportIE) {
+      scrollbar-face-color: currentColor;
+      scrollbar-shadow-color: currentColor;
+      scrollbar-track-color: currentColor;
+      scrollbar-arrow-color: currentColor;
+    }
   }
+  & when (@supportIE) {
   /* IE scrollbar color needs hex values */
-  @media all and (-ms-high-contrast:none) {
-    .ui.scrolling.table > thead {
-      color: @headerBackgroundHex;
-    }
-    .ui.scrolling.table > tfoot {
-      color: @footerBackgroundHex;
-    }
-    & when (@variationTableInverted) {
-      .ui.inverted.scrolling.table > thead {
-        color: @invertedHeaderBackgroundHex;
+    @media all and (-ms-high-contrast: none) {
+      .ui.scrolling.table > thead {
+        color: @headerBackgroundHex;
       }
-      .ui.inverted.scrolling.table > tfoot {
-        color: @invertedFooterBackgroundHex;
+      .ui.scrolling.table > tfoot {
+        color: @footerBackgroundHex;
+      }
+      & when (@variationTableInverted) {
+        .ui.inverted.scrolling.table > thead {
+          color: @invertedHeaderBackgroundHex;
+        }
+        .ui.inverted.scrolling.table > tfoot {
+          color: @invertedFooterBackgroundHex;
+        }
       }
     }
   }
@@ -474,12 +478,13 @@
       background: @thumbInvertedHoverBackground;
     }
     .ui.inverted.scrolling.table > tbody {
-      /* IE11 */
-      scrollbar-face-color: @thumbInvertedBackgroundHex;
-      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-      scrollbar-track-color: @trackInvertedBackgroundHex;
-      scrollbar-arrow-color: @trackInvertedBackgroundHex;
-
+      & when (@supportIE) {
+        /* IE11 */
+        scrollbar-face-color: @thumbInvertedBackgroundHex;
+        scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+        scrollbar-track-color: @trackInvertedBackgroundHex;
+        scrollbar-arrow-color: @trackInvertedBackgroundHex;
+      }
       /* firefox : first color thumb, second track */
       scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
     }
@@ -872,7 +877,7 @@
       @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
-      .ui.ui.ui.ui[class*="tablet stackable"].table tr.marked.@{color} {
+      .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @c inset;
         }
@@ -881,7 +886,7 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr.marked.@{color} {
+        .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @responsiveRowBoxShadow, @coloredBorderSize 0 0 0 @l inset;
           }
@@ -1180,6 +1185,9 @@
         }
       }
     }
+    .ui.ui.ui.ui.table tr[class*="@{color} colored"],
+    .ui.ui.table th[class*="@{color} colored"],
+    .ui.ui.table td[class*="@{color} colored"],
     .ui.ui.ui.ui.table tr.@{color}:not(.marked),
     .ui.ui.table th.@{color}:not(.marked),
     .ui.ui.table td.@{color}:not(.marked) {
@@ -1199,6 +1207,9 @@
         color: @t;
       }
     }
+    .ui.table > thead > tr[class*="@{color} colored"] > th,
+    .ui.table > tfoot > tr[class*="@{color} colored"] > th,
+    .ui.table > tfoot > tr[class*="@{color} colored"] > td,
     .ui.table > thead > tr.@{color}:not(.marked) > th,
     .ui.table > tfoot > tr.@{color}:not(.marked) > th,
     .ui.table > tfoot > tr.@{color}:not(.marked) > td {
@@ -1212,12 +1223,18 @@
     }
 
     & when (@variationTableInverted) {
+      .ui.ui.ui.ui.inverted.table tr[class*="@{color} colored"],
+      .ui.ui.inverted.table th[class*="@{color} colored"],
+      .ui.ui.inverted.table td[class*="@{color} colored"],
       .ui.ui.ui.ui.inverted.table tr.@{color}:not(.marked),
       .ui.ui.inverted.table th.@{color}:not(.marked),
       .ui.ui.inverted.table td.@{color}:not(.marked) {
         background: @c;
         color: @white;
       }
+      .ui.inverted.table > thead > tr[class*="@{color} colored"] > th,
+      .ui.inverted.table > tfoot > tr[class*="@{color} colored"] > th,
+      .ui.inverted.table > tfoot > tr[class*="@{color} colored"] > td,
       .ui.inverted.table > thead > tr.@{color}:not(.marked) > th,
       .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > th,
       .ui.inverted.table > tfoot > tr.@{color}:not(.marked) > td {
@@ -1226,6 +1243,9 @@
       }
     }
     & when (@variationTableSelectable) {
+      .ui.ui.selectable.table tr[class*="@{color} colored"]:hover,
+      .ui.table tr td.selectable[class*="@{color} colored"]:hover,
+      .ui.selectable.table tr:hover td[class*="@{color} colored"],
       .ui.ui.selectable.table tr.@{color}:not(.marked):hover,
       .ui.table tr td.selectable.@{color}:not(.marked):hover,
       .ui.selectable.table tr:hover td.@{color}:not(.marked) {
@@ -1243,6 +1263,9 @@
         }
       }
       & when (@variationTableInverted) {
+        .ui.ui.inverted.selectable.table tr[class*="@{color} colored"]:hover,
+        .ui.inverted.table tr td.selectable[class*="@{color} colored"]:hover,
+        .ui.inverted.selectable.table tr:hover td[class*="@{color} colored"],
         .ui.ui.inverted.selectable.table tr.@{color}:not(.marked):hover,
         .ui.inverted.table tr td.selectable.@{color}:not(.marked):hover,
         .ui.inverted.selectable.table tr:hover td.@{color}:not(.marked) {
@@ -1262,8 +1285,8 @@
       }
     }
     & when (@variationTableMarked) {
-      .ui.table td.marked.@{color},
-      .ui.table tr.marked.@{color} {
+      .ui.table td[class*="@{color} marked"],
+      .ui.table tr[class*="@{color} marked"] {
         &.left {
           box-shadow: @coloredBorderSize 0 0 0 @c inset;
         }
@@ -1272,8 +1295,8 @@
         }
       }
       & when (@variationTableInverted) {
-        .ui.inverted.table td.marked.@{color},
-        .ui.inverted.table tr.marked.@{color} {
+        .ui.inverted.table td[class*="@{color} marked"],
+        .ui.inverted.table tr[class*="@{color} marked"] {
           &.left {
             box-shadow: @coloredBorderSize 0 0 0 @l inset;
           }
@@ -1431,7 +1454,7 @@
     user-select: none;
   }
 
-  .ui.sortable.table > thead > tr > th:after {
+  .ui.sortable.table > thead > tr > th::after {
     display: none;
     font-style: normal;
     font-weight: @normal;
@@ -1443,10 +1466,10 @@
     margin: 0 0 0 @sortableIconDistance;
     font-family: @sortableIconFont;
   }
-  .ui.sortable.table thead th.ascending:after {
+  .ui.sortable.table thead th.ascending::after {
     content: @sortableIconAscending;
   }
-  .ui.sortable.table thead th.descending:after {
+  .ui.sortable.table thead th.descending::after {
     content: @sortableIconDescending;
   }
 
@@ -1471,7 +1494,7 @@
   .ui.sortable.table:not(.basic) thead th.sorted {
     background: @sortableActiveBackground;
   }
-  .ui.sortable.table thead th.sorted:after {
+  .ui.sortable.table thead th.sorted::after {
     display: inline-block;
   }
 

@@ -1096,7 +1096,7 @@
     .ui[class*="vertically divided"].grid > .row {
       position: relative;
     }
-    .ui[class*="vertically divided"].grid > .row:before {
+    .ui[class*="vertically divided"].grid > .row::before {
       position: absolute;
       content: "";
       top: 0;
@@ -1119,7 +1119,7 @@
   }
   & when (@variationGridVertical) {
     /* First Row Vertically Divided */
-    .ui[class*="vertically divided"].grid > .row:first-child:before {
+    .ui[class*="vertically divided"].grid > .row:first-child::before {
       box-shadow: none;
     }
   }
@@ -1134,20 +1134,20 @@
       box-shadow: none;
     }
     & when (@variationGridVertical) {
-      .ui.inverted[class*="vertically divided"].grid > .row:before {
+      .ui.inverted[class*="vertically divided"].grid > .row::before {
         box-shadow: @verticallyDividedInvertedBorder;
       }
     }
   }
   & when (@variationGridRelaxed) and (@variationGridVertical) {
     /* Relaxed */
-    .ui.relaxed[class*="vertically divided"].grid > .row:before {
+    .ui.relaxed[class*="vertically divided"].grid > .row::before {
       margin-left: (@relaxedGutterWidth / 2);
       margin-right: (@relaxedGutterWidth / 2);
       width: e(%("calc(100%% - %d)", @relaxedGutterWidth));
     }
     & when (@variationGridVeryRelaxed) {
-      .ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
+      .ui[class*="very relaxed"][class*="vertically divided"].grid > .row::before {
         margin-left: (@veryRelaxedGutterWidth / 2);
         margin-right: (@veryRelaxedGutterWidth / 2);
         width: e(%("calc(100%% - %d)", @veryRelaxedGutterWidth));
@@ -1391,10 +1391,10 @@
         box-shadow: none;
       }
       /* Vertically Divided Reversed */
-      .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:first-child:before {
+      .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:first-child::before {
         box-shadow: @verticallyDividedBorder;
       }
-      .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:last-child:before {
+      .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:last-child::before {
         box-shadow: none;
       }
     }
@@ -1430,10 +1430,10 @@
         box-shadow: none;
       }
       /* Vertically Divided Reversed */
-      .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:first-child:before {
+      .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:first-child::before {
         box-shadow: @verticallyDividedBorder;
       }
-      .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:last-child:before {
+      .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:last-child::before {
         box-shadow: none;
       }
     }
@@ -1469,10 +1469,10 @@
         box-shadow: none;
       }
       /* Vertically Divided Reversed */
-      .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:first-child:before {
+      .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:first-child::before {
         box-shadow: @verticallyDividedBorder;
       }
-      .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:last-child:before {
+      .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:last-child::before {
         box-shadow: none;
       }
     }

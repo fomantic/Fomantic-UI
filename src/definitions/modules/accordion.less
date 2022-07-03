@@ -54,8 +54,9 @@
 }
 
 /* Arrow */
-.ui.accordion .title .dropdown.icon,
-.ui.accordion .accordion .title .dropdown.icon {
+.ui.accordion .ui.header > .dropdown.icon,
+.ui.accordion .title > .dropdown.icon,
+.ui.accordion .accordion .title > .dropdown.icon {
   display: @iconDisplay;
   float: @iconFloat;
   opacity: @iconOpacity;
@@ -89,7 +90,7 @@
 }
 
 /* Header */
-.ui.accordion .ui.header .dropdown.icon {
+.ui.accordion .ui.header > .dropdown.icon {
   font-size: @iconFontSize;
   margin: @iconMargin;
 }
@@ -98,10 +99,10 @@
             States
 *******************************/
 
-.ui.accordion[open] > .title .dropdown.icon,
-.ui.accordion .accordion[open] > .title .dropdown.icon,
-.ui.accordion .active.title .dropdown.icon,
-.ui.accordion .accordion .active.title .dropdown.icon {
+.ui.accordion[open] > .title > .dropdown.icon,
+.ui.accordion .accordion[open] > .title > .dropdown.icon,
+.ui.accordion .active.title > .dropdown.icon,
+.ui.accordion .accordion .active.title > .dropdown.icon {
   transform: @activeIconTransform;
 }
 

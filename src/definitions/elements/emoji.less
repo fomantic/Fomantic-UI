@@ -31,7 +31,7 @@ em[data-emoji] {
   backface-visibility: hidden;
 }
 
-em[data-emoji]:before {
+em[data-emoji]::before {
   content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
   display: inline-block;
   line-height: @emojiLineHeight;
@@ -59,7 +59,7 @@ em[data-emoji]:before {
 *******************************/
 
 & when (@variationEmojiLoading) {
-  em[data-emoji].loading:before {
+  em[data-emoji].loading::before {
     animation: loader @loadingDuration linear infinite;
   }
 }
@@ -74,5 +74,28 @@ em[data-emoji]:before {
     cursor: pointer;
   }
 }
+
+/*rtl:begin:ignore*/
+
+each(@size-map, {
+  em[data-emoji].@{key} {
+    font-size: 1.5em * @value;
+    vertical-align: middle;
+  }
+});
+
+each(@emoji-map,{
+  & when (@variationEmojiColons) {
+    em[data-emoji=":@{value}:"]::before {
+      background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
+    }
+    em[data-emoji="@{value}"]::before:extend(em[data-emoji=":@{value}:"]::before) when (@variationEmojiNoColons) {}
+  }
+  em[data-emoji="@{value}"]::before when (@variationEmojiNoColons) and not (@variationEmojiColons) {
+    background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
+  }
+});
+
+/*rtl:end:ignore*/
 
 .loadUIOverrides();

@@ -322,7 +322,7 @@ $.fn.calendar = function(parameters) {
                 var headerDate = isYear || isMonth ? new Date(year, 0, 1) :
                   isDay ? new Date(year, month, 1) : new Date(year, month, day, hour, minute);
                 var headerText = $('<span/>').addClass(className.link).appendTo(cell);
-                headerText.text(formatter.header(headerDate, mode, settings));
+                headerText.text(module.helper.dateFormat(formatter[mode+'Header'], headerDate));
                 var newMode = isMonth ? (settings.disableYear ? 'day' : 'year') :
                   isDay ? (settings.disableMonth ? 'year' : 'month') : 'day';
                 headerText.data(metadata.mode, newMode);
@@ -370,7 +370,7 @@ $.fn.calendar = function(parameters) {
                       isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
                   var cellText = isYear ? i :
                     isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
-                      formatter.time(cellDate, settings, true);
+                        module.helper.dateFormat(formatter.cellTime,cellDate);
                   cell = $('<td/>').addClass(className.cell).appendTo(row);
                   cell.text(cellText);
                   cell.data(metadata.date, cellDate);
@@ -502,7 +502,7 @@ $.fn.calendar = function(parameters) {
           var winWidth = $(window).width();
           $container.find('td[data-position]').each(function () {
             var cell = $(this);
-            var tooltipWidth = window.getComputedStyle(cell[0], ':after').width.replace(/[^0-9\.]/g,'');
+            var tooltipWidth = window.getComputedStyle(cell[0], '::after').width.replace(/[^0-9\.]/g,'');
             var tooltipPosition = cell.attr('data-position');
             // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
             var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';
@@ -651,7 +651,7 @@ $.fn.calendar = function(parameters) {
             $container.removeClass(className.active);
             if (settings.formatInput) {
               var date = module.get.date();
-              var text = formatter.datetime(date, settings);
+              var text = module.helper.dateFormat(formatter[settings.type], date);
               $input.val(text);
             }
             if(selectionComplete){
@@ -721,6 +721,9 @@ $.fn.calendar = function(parameters) {
 
                   return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
               }();
+          },
+          formattedDate: function(format, date) {
+            return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
           },
           date: function () {
             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
@@ -800,7 +803,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $(selector).first();
+              selector = $(document).find(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);
@@ -815,7 +818,7 @@ $.fn.calendar = function(parameters) {
             date = module.helper.dateInRange(date);
 
             var mode = module.get.mode();
-            var text = formatter.datetime(date, settings);
+            var text = module.helper.dateFormat(formatter[settings.type],date);
 
             if (fireChange && settings.onBeforeChange.call(element, date, text, mode) === false) {
               return false;
@@ -986,6 +989,60 @@ $.fn.calendar = function(parameters) {
         },
 
         helper: {
+          dateFormat: function(format,date) {
+            if (!(date instanceof Date)) {
+              return '';
+            }
+            if(typeof format === 'function') {
+              return format.call(module, date, settings);
+            }
+
+            var D = date.getDate(),
+                M = date.getMonth(),
+                Y = date.getFullYear(),
+                d = date.getDay(),
+                H = date.getHours(),
+                m = date.getMinutes(),
+                s = date.getSeconds(),
+                w = module.get.weekOfYear(Y,M,D+1-settings.firstDayOfWeek),
+                h = H % 12 || 12,
+                a = H < 12 ? settings.text.am.toLowerCase() : settings.text.pm.toLowerCase(),
+                tokens = {
+                  D:    D,
+                  DD:   ('0'+D).slice(-2),
+                  M:    M + 1,
+                  MM:   ('0'+(M+1)).slice(-2),
+                  MMM:  settings.text.monthsShort[M],
+                  MMMM: settings.text.months[M],
+                  Y:    Y,
+                  YY:   String(Y).slice(2),
+                  YYYY: Y,
+                  d:    d,
+                  dd:   settings.text.dayNamesShort[d].slice(0,2),
+                  ddd:  settings.text.dayNamesShort[d],
+                  dddd: settings.text.dayNames[d],
+                  h:    h,
+                  hh:   ('0'+h).slice(-2),
+                  H:    H,
+                  HH:   ('0'+H).slice(-2),
+                  m:    m,
+                  mm:   ('0'+m).slice(-2),
+                  s:    s,
+                  ss:   ('0'+s).slice(-2),
+                  a:    a,
+                  A:    a.toUpperCase(),
+                  S:    ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
+                  w:    w,
+                  ww:   ('0'+w).slice(-2)
+                }
+            ;
+            return format.replace(settings.regExp.token, function (match) {
+              if (match in tokens) {
+                return tokens[match];
+              }
+              return match.slice(1, match.length - 1);
+            });
+          },
           isDisabled: function(date, mode) {
             return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
               if(typeof d === 'string') {
@@ -1436,7 +1493,7 @@ $.fn.calendar.settings = {
   constantHeight     : true,       // add rows to shorter months to keep day calendar height consistent (6 rows)
   today              : false,      // show a 'today/now' button at the bottom of the calendar
   closable           : true,       // close the popup after selecting a date/time
-  monthFirst         : true,       // month before day when parsing/converting date from/to text
+  monthFirst         : true,       // month before day when parsing date from text
   touchReadonly      : true,       // set input to readonly on touch devices
   inline             : false,      // create the calendar inline instead of inside a popup
   on                 : null,       // when to show the popup (defaults to 'focus' for input, 'click' for others)
@@ -1444,7 +1501,6 @@ $.fn.calendar.settings = {
   startMode          : false,      // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
   minDate            : null,       // minimum date/time that can be selected, dates/times before are disabled
   maxDate            : null,       // maximum date/time that can be selected, dates/times after are disabled
-  ampm               : true,       // show am/pm in time mode
   disableYear        : false,      // disable year selection mode
   disableMonth       : false,      // disable month selection mode
   disableMinute      : false,      // disable minute selection mode
@@ -1454,7 +1510,7 @@ $.fn.calendar.settings = {
   multiMonth         : 1,          // show multiple months when in 'day' mode
   monthOffset        : 0,          // position current month by offset when multimonth > 1
   minTimeGap         : 5,
-  showWeekNumbers    : null,       // show Number of Week at the very first column of a dayView
+  showWeekNumbers    : false,      // show Number of Week at the very first column of a dayView
   disabledHours      : [],         // specific hour(s) which won't be selectable and contain additional information.
   disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
   disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
@@ -1474,6 +1530,8 @@ $.fn.calendar.settings = {
 
   text: {
     days: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+    dayNames: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
     monthsShort: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     today: 'Today',
@@ -1484,67 +1542,23 @@ $.fn.calendar.settings = {
   },
 
   formatter: {
-    header: function (date, mode, settings) {
-      return mode === 'year' ? settings.formatter.yearHeader(date, settings) :
-        mode === 'month' ? settings.formatter.monthHeader(date, settings) :
-          mode === 'day' ? settings.formatter.dayHeader(date, settings) :
-            mode === 'hour' ? settings.formatter.hourHeader(date, settings) :
-              settings.formatter.minuteHeader(date, settings);
-    },
     yearHeader: function (date, settings) {
       var decadeYear = Math.ceil(date.getFullYear() / 10) * 10;
       return (decadeYear - 9) + ' - ' + (decadeYear + 2);
     },
-    monthHeader: function (date, settings) {
-      return date.getFullYear();
-    },
-    dayHeader: function (date, settings) {
-      var month = settings.text.months[date.getMonth()];
-      var year = date.getFullYear();
-      return month + ' ' + year;
-    },
-    hourHeader: function (date, settings) {
-      return settings.formatter.date(date, settings);
-    },
-    minuteHeader: function (date, settings) {
-      return settings.formatter.date(date, settings);
-    },
+    monthHeader: 'YYYY',
+    dayHeader: 'MMMM YYYY',
+    hourHeader: 'MMMM D, YYYY',
+    minuteHeader: 'MMMM D, YYYY',
     dayColumnHeader: function (day, settings) {
       return settings.text.days[day];
     },
-    datetime: function (date, settings) {
-      if (!date) {
-        return '';
-      }
-      var day = settings.type === 'time' ? '' : settings.formatter.date(date, settings);
-      var time = settings.type.indexOf('time') < 0 ? '' : settings.formatter.time(date, settings, false);
-      var separator = settings.type === 'datetime' ? ' ' : '';
-      return day + separator + time;
-    },
-    date: function (date, settings) {
-      if (!date) {
-        return '';
-      }
-      var day = date.getDate();
-      var month = settings.text.months[date.getMonth()];
-      var year = date.getFullYear();
-      return settings.type === 'year' ? year :
-        settings.type === 'month' ? month + ' ' + year :
-        (settings.monthFirst ? month + ' ' + day : day + ' ' + month) + ', ' + year;
-    },
-    time: function (date, settings, forCalendar) {
-      if (!date) {
-        return '';
-      }
-      var hour = date.getHours();
-      var minute = date.getMinutes();
-      var ampm = '';
-      if (settings.ampm) {
-        ampm = ' ' + (hour < 12 ? settings.text.am : settings.text.pm);
-        hour = hour === 0 ? 12 : hour > 12 ? hour - 12 : hour;
-      }
-      return hour + ':' + (minute < 10 ? '0' : '') + minute + ampm;
-    },
+    datetime: 'MMMM D, YYYY h:mm A',
+    date: 'MMMM D, YYYY',
+    time: 'h:mm A',
+    cellTime: 'h:mm A',
+    month: 'MMMM YYYY',
+    year: 'YYYY',
     today: function (settings) {
       return settings.type === 'date' ? settings.text.today : settings.text.now;
     },
@@ -1560,7 +1574,7 @@ $.fn.calendar.settings = {
       if (!text) {
         return null;
       }
-      text = String(text).replace(/\s/g,'');
+      text = String(text).trim().replace(/([.:\/\-])\s+/g,'$1').replace(/\s+([.:\/-])/g,'$1').replace(/\s+/g,' ');
       if (text.length === 0) {
         return null;
       }
@@ -1813,7 +1827,8 @@ $.fn.calendar.settings = {
 
   regExp: {
     dateWords: /[^A-Za-z\u00C0-\u024F]+/g,
-    dateNumbers: /[^\d:]+/g
+    dateNumbers: /[^\d:]+/g,
+    token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[SAaY]|"[^"]*"|'[^']*'/g
   },
 
   error: {

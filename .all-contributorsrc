@@ -582,6 +582,42 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "grandeljay",
+      "name": "Jay",
+      "avatar_url": "https://avatars.githubusercontent.com/u/45571053?v=4",
+      "profile": "https://github.com/grandeljay",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "mhthies",
+      "name": "Michael Thies",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8234059?v=4",
+      "profile": "https://www.mhthies.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "naveensrinivasan",
+      "name": "Naveen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/172697?v=4",
+      "profile": "https://naveensrinivasan.dev",
+      "contributions": [
+        "security"
+      ]
+    },
+    {
+      "login": "mvorisek",
+      "name": "Michael Voříšek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2228672?v=4",
+      "profile": "https://www.mvorisek.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,

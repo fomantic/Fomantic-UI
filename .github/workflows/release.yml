@@ -2,29 +2,33 @@ name: Release
 on:
   release:
     types: [released]
+permissions:
+  contents: read
+
 jobs:
   publish:
     name: Build new Release
     runs-on: ubuntu-latest
     if: github.repository == 'fomantic/Fomantic-UI'
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: master
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
       with:
         node-version: 14
         registry-url: https://registry.npmjs.org/
     - name: pre-setup
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
-      run: npm install --ignore-scripts
+      run: yarn
     - name: fomantic install & build
-      run: npx gulp install
+      run: yarn gulp install
     - name: publish to npm
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
-        npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION}}
-        CI: true
+        yarn config set registry https://registry.npmjs.org
+        yarn publish --non-interactive
