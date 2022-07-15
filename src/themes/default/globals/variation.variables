@@ -559,6 +559,9 @@
 @variationModalScrolling: true;
 @variationModalLegacy: true;
 @variationModalCloseInside: true;
+@variationModalCentered: true;
+@variationModalActions: true;
+@variationModalLeftActions: true;
 @variationModalSizes: @variationAllSizes;
 
 /* Nag */
