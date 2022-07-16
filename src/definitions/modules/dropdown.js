@@ -814,20 +814,28 @@ $.fn.dropdown = function(parameters) {
               throttle      : settings.throttle,
               urlData       : {
                 query: query
-              },
-              onError: function() {
+              }
+            },
+            apiCallbacks = {
+              onError: function(errorMessage, $module, xhr) {
                 module.add.message(message.serverError);
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onError === 'function') {
+                  settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
+                }
               },
-              onFailure: function() {
+              onFailure: function(response, $module, xhr) {
                 module.add.message(message.serverError);
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onFailure === 'function') {
+                  settings.apiSettings.onFailure.call(this, response, $module, xhr);
+                }
               },
-              onSuccess : function(response) {
+              onSuccess : function(response, $module, xhr) {
                 var
                   values          = response[fields.remoteValues]
                 ;
@@ -852,13 +860,16 @@ $.fn.dropdown = function(parameters) {
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onSuccess === 'function') {
+                  settings.apiSettings.onSuccess.call(this, response, $module, xhr);
+                }
               }
             }
           ;
           if( !$module.api('get request') ) {
             module.setup.api();
           }
-          apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings);
+          apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
           $module
             .api('setting', apiSettings)
             .api('query')
