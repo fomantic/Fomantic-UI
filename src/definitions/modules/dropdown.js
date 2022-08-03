@@ -1153,7 +1153,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin'))) {
+              if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) && event.type !== 'touchstart') {
                 focused = true;
                 module.search();
               }
