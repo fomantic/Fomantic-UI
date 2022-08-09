@@ -677,7 +677,7 @@ $.fn.embed.settings = {
           src += '?' + parameters;
       }
       return ''
-        + '<iframe src="' + src + '"'
+        + '<iframe src="' + src.replace(/"/g,"") + '"'
         + ' width="100%" height="100%"'
         + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       ;
@@ -687,10 +687,10 @@ $.fn.embed.settings = {
         html = ''
       ;
       if(icon) {
-        html += '<i class="' + icon + ' icon"></i>';
+        html += '<i class="' + String(icon).replace(/"/g,"") + ' icon"></i>';
       }
       if(image) {
-        html += '<img class="placeholder" src="' + image + '">';
+        html += '<img class="placeholder" src="' + image.replace(/"/g,"") + '">';
       }
       return html;
     }

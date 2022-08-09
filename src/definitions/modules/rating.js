@@ -542,7 +542,7 @@ $.fn.rating.settings = {
         html = ''
       ;
       while(icon <= maxRating) {
-        html += '<i class="'+iconClass+' icon"></i>';
+        html += '<i class="'+String(iconClass).replace(/"/g,"")+' icon"></i>';
         icon++;
       }
       return html;

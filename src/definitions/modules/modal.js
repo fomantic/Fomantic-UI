@@ -1507,7 +1507,7 @@ $.fn.modal.settings.templates = {
         denyFn = function(){args.handler(null)}
     ;
     if (input.length === 0) {
-      args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
+      args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
     }
     return {
       title  : args.title,
