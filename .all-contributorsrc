@@ -627,6 +627,16 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "Inselhopper",
+      "name": "Ingrid Bluoss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5477907?v=4",
+      "profile": "http://www.ingrid-bluoss.de",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 4,
