@@ -80,7 +80,10 @@
         "example",
         "ideas",
         "infra",
-        "review"
+        "review",
+        "a11y",
+        "security",
+        "maintenance"
       ]
     },
     {
