@@ -698,11 +698,13 @@ $.fn.transition = function() {
                 .addClass(className.transition)
                 .css('animationName')
               ;
+              $clone.detach().insertAfter($module);
               inAnimation = $clone
                 .addClass(className.inward)
                 .css('animationName')
               ;
               if(!displayType) {
+                $clone.detach().insertAfter($module);
                 displayType = $clone
                   .attr('class', elementClass)
                   .removeAttr('style')
