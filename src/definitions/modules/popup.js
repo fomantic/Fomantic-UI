@@ -121,7 +121,7 @@ $.fn.popup = function(parameters) {
         },
 
         refresh: function() {
-          if(settings.popup && typeof settings.popup === 'string') {
+          if(settings.popup) {
             $popup = $(document).find(settings.popup).eq(0);
           }
           else {
@@ -286,7 +286,7 @@ $.fn.popup = function(parameters) {
             }
             settings.onCreate.call($popup, element);
           }
-          else if(settings.popup && typeof settings.popup === 'string') {
+          else if(settings.popup) {
             $(document).find(settings.popup).data(metadata.activator, $module);
             module.verbose('Used popup specified in settings');
             module.refresh();
