@@ -593,8 +593,8 @@ $.fn.calendar = function(parameters) {
           },
           keydown: function (event) {
             var keyCode = event.which;
-            if (keyCode === 27 || keyCode === 9) {
-              //esc || tab
+            if (keyCode === 9) {
+              //tab
               module.popup('hide');
             }
 
@@ -629,6 +629,9 @@ $.fn.calendar = function(parameters) {
                 }
                 //disable form submission:
                 event.preventDefault();
+                event.stopPropagation();
+              } else if (keyCode === 27) {
+                module.popup('hide');
                 event.stopPropagation();
               }
             }
