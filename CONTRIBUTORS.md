@@ -102,6 +102,9 @@ This is a list of all project contributors powered by [All Contributors](https:/
     <td align="center"><a href="https://github.com/xamey"><img src="https://avatars.githubusercontent.com/u/34269296?v=4?s=60" width="60px;" alt=""/><br /><sub><b>xamey</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=xamey" title="Code">💻</a></td>
     <td align="center"><a href="http://www.ingrid-bluoss.de"><img src="https://avatars.githubusercontent.com/u/5477907?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Ingrid Bluoss</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=Inselhopper" title="Code">💻</a> <a href="#a11y-Inselhopper" title="Accessibility">️️️️♿️</a></td>
   </tr>
+  <tr>
+    <td align="center"><a href="http://www.mathieumitchell.com"><img src="https://avatars.githubusercontent.com/u/234168?v=4?s=60" width="60px;" alt=""/><br /><sub><b>Mathieu Mitchell</b></sub></a><br /><a href="https://github.com/fomantic/Fomantic-UI/commits?author=mat128" title="Code">💻</a></td>
+  </tr>
 </table>
 
 <!-- markdownlint-restore -->
