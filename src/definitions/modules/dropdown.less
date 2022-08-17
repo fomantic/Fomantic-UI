@@ -565,7 +565,6 @@ select.ui.dropdown {
     padding: @selectionItemPadding;
     white-space: normal;
     word-wrap: normal;
-    z-index: 0;
   }
 
   /* User Item */
@@ -574,13 +573,14 @@ select.ui.dropdown {
   }
 
   /* User addition item */
-    position: sticky;
-    top: 0;
-    box-shadow: @selectionVisibleBoxShadow;
-    background: @menuBackground;
-    z-index: 1;
   @supports (position: sticky) {
     .ui.dropdown > .menu > .sticky.addition.item:first-child {
+      position: sticky;
+      top: 0;
+      box-shadow: @selectionVisibleBoxShadow;
+      background: @menuBackground;
+      z-index: @additionZIndex;
+    }
   }
 
   /* Hover */
