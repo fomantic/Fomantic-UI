@@ -565,11 +565,21 @@ select.ui.dropdown {
     padding: @selectionItemPadding;
     white-space: normal;
     word-wrap: normal;
+    z-index: 0;
   }
 
   /* User Item */
   .ui.selection.dropdown .menu > .hidden.addition.item {
     display: none;
+  }
+
+  /* User addition item */
+  .ui.dropdown > .menu > .addition.item:first-child {
+    position: sticky;
+    top: 0;
+    box-shadow: @selectionVisibleBoxShadow;
+    background: @menuBackground;
+    z-index: 1;
   }
 
   /* Hover */
