@@ -80,7 +80,10 @@
         "example",
         "ideas",
         "infra",
-        "review"
+        "review",
+        "a11y",
+        "security",
+        "maintenance"
       ]
     },
     {
@@ -624,6 +627,25 @@
       "name": "xamey",
       "avatar_url": "https://avatars.githubusercontent.com/u/34269296?v=4",
       "profile": "https://github.com/xamey",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Inselhopper",
+      "name": "Ingrid Bluoss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5477907?v=4",
+      "profile": "http://www.ingrid-bluoss.de",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
+    },
+    {
+      "login": "mat128",
+      "name": "Mathieu Mitchell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234168?v=4",
+      "profile": "http://www.mathieumitchell.com",
       "contributions": [
         "code"
       ]

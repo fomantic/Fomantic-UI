@@ -671,26 +671,32 @@ $.fn.embed.settings = {
   },
 
   templates: {
+    deQuote: function(string, encode) {
+      return String(string).replace(/"/g,encode ? "&quot;" : "");
+    },
     iframe : function(url, parameters) {
-      var src = url;
+      var src = url,
+          deQuote = $.fn.embed.settings.templates.deQuote
+      ;
       if (parameters) {
           src += '?' + parameters;
       }
       return ''
-        + '<iframe src="' + src + '"'
+        + '<iframe src="' + deQuote(src) + '"'
         + ' width="100%" height="100%"'
         + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
       ;
     },
     placeholder : function(image, icon) {
       var
-        html = ''
+        html = '',
+        deQuote = $.fn.embed.settings.templates.deQuote
       ;
       if(icon) {
-        html += '<i class="' + icon + ' icon"></i>';
+        html += '<i class="' + deQuote(icon) + ' icon"></i>';
       }
       if(image) {
-        html += '<img class="placeholder" src="' + image + '">';
+        html += '<img class="placeholder" src="' + deQuote(image) + '">';
       }
       return html;
     }

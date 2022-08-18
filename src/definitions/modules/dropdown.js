@@ -111,6 +111,7 @@ $.fn.dropdown = function(parameters) {
               module.error(error.noNormalize, element);
             }
 
+            module.create.id();
             module.setup.layout();
 
             if(settings.values) {
@@ -124,7 +125,6 @@ $.fn.dropdown = function(parameters) {
             module.save.defaults();
             module.restore.selected();
 
-            module.create.id();
             module.bind.events();
 
             module.observeChanges();
@@ -366,11 +366,20 @@ $.fn.dropdown = function(parameters) {
             }
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
+              var
+                  labelNode = $module.prev('label')
+              ;
               $search = $('<input />')
                 .addClass(className.search)
                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
-                .insertBefore($text)
               ;
+              if (labelNode.length) {
+                if (!labelNode.attr('id')) {
+                  labelNode.attr('id', module.get.id() + '_formLabel');
+                }
+                $search.attr('aria-labelledby', labelNode.attr('id'));
+              }
+              $search.insertBefore($text);
             }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
@@ -1690,6 +1699,7 @@ $.fn.dropdown = function(parameters) {
                 if(pressedKey == keys.escape) {
                   module.verbose('Escape key pressed, closing dropdown');
                   module.hide();
+                  event.stopPropagation();
                 }
 
               }
@@ -4248,7 +4258,8 @@ $.fn.dropdown.settings.templates = {
     var
       placeholder = select.placeholder || false,
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -4257,7 +4268,7 @@ $.fn.dropdown.settings.templates = {
     else {
       html += '<div class="text"></div>';
     }
-    html += '<div class="'+className.menu+'">';
+    html += '<div class="'+deQuote(className.menu)+'">';
     html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML,className);
     html += '</div>';
     return html;
@@ -4295,27 +4306,27 @@ $.fn.dropdown.settings.templates = {
             : '',
           hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
         ;
-        html += '<div class="'+ maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if (isMenu) {
           html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
         if(option[fields.image]) {
-          html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+          html += '<img class="'+deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
         if(option[fields.icon]) {
-          html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
+          html += '<i class="'+deQuote(option[fields.icon]+' '+(option[fields.iconClass] ? option[fields.iconClass] : className.icon))+'"></i>';
         }
         if(hasDescription){
-          html += '<span class="'+ className.description +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
-          html += (!isMenu) ? '<span class="'+ className.text + '">' : '';
+          html += '<span class="'+ deQuote(className.description) +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
+          html += (!isMenu) ? '<span class="'+ deQuote(className.text) + '">' : '';
         }
         if (isMenu) {
-          html += '<span class="' + className.text + '">';
+          html += '<span class="' + deQuote(className.text) + '">';
         }
         html +=   escape(option[fields.name] || '', preserveHTML);
         if (isMenu) {
           html += '</span>';
-          html += '<div class="' + itemType + '">';
+          html += '<div class="' + deQuote(itemType) + '">';
           html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
           html += '</div>';
         } else if(hasDescription){
@@ -4324,18 +4335,18 @@ $.fn.dropdown.settings.templates = {
         html += '</div>';
       } else if (itemType === 'header') {
         var groupName = escape(option[fields.name] || '', preserveHTML),
-            groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
+            groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
         ;
         if(groupName !== '' || groupIcon !== '') {
-          html += '<div class="' + (option[fields.class] ? deQuote(option[fields.class]) : className.header) + '">';
+          html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
           if (groupIcon !== '') {
-            html += '<i class="' + groupIcon + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
+            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
           }
           html += groupName;
           html += '</div>';
         }
         if(option[fields.divider]){
-          html += '<div class="'+className.divider+'"></div>';
+          html += '<div class="'+deQuote(className.divider)+'"></div>';
         }
       }
     });
@@ -4345,8 +4356,10 @@ $.fn.dropdown.settings.templates = {
   // generates label for multiselect
   label: function(value, text, preserveHTML, className) {
     var
-        escape = $.fn.dropdown.settings.templates.escape;
-    return escape(text,preserveHTML) + '<i class="'+className.delete+' icon"></i>';
+        escape = $.fn.dropdown.settings.templates.escape,
+        deQuote = $.fn.dropdown.settings.templates.deQuote
+    ;
+    return escape(text,preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
   },
 
 
