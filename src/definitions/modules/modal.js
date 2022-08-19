@@ -723,7 +723,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Adding keyboard shortcuts');
             $document
-              .on('keyup' + eventNamespace, module.event.keyboard)
+              .on('keydown' + eventNamespace, module.event.keyboard)
             ;
           }
         },
@@ -803,7 +803,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Removing keyboard shortcuts');
             $document
-              .off('keyup' + eventNamespace)
+              .off('keydown' + eventNamespace)
             ;
           },
           scrolling: function() {
