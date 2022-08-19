@@ -830,7 +830,7 @@ $.fn.checkbox.settings = {
 
   silent              : false,
   debug               : false,
-  verbose             : true,
+  verbose             : false,
   performance         : true,
 
   // delegated event context
