@@ -1486,7 +1486,7 @@ $.fn.calendar.settings = {
   silent: false,
   debug: false,
   verbose: false,
-  performance: false,
+  performance: true,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
