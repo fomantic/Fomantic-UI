@@ -287,6 +287,9 @@
        States
 --------------------*/
 
+/* Addition */
+@additionZIndex: @hoveredZIndex + 1;
+
 /* Hovered */
 @hoveredItemBackground: @transparentBlack;
 @hoveredItemColor: @selectedTextColor;
