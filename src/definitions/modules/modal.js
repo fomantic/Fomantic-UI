@@ -65,7 +65,8 @@ $.fn.modal = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+        isBody          = $context[0] === $body[0],
         $closeIcon      = $module.find(selector.closeIcon),
         $inputs,
 
@@ -84,6 +85,8 @@ $.fn.modal = function(parameters) {
         initialMouseDownInScrollbar,
         initialBodyMargin = '',
         tempBodyMargin = '',
+        keepScrollingClass = false,
+        hadScrollbar = false,
 
         elementEventNamespace,
         id,
@@ -201,6 +204,7 @@ $.fn.modal = function(parameters) {
             }
             module.debug('Creating dimmer');
             $dimmable = $context.dimmer(dimmerSettings);
+            keepScrollingClass = module.is.scrolling();
             if(settings.detachable) {
               module.verbose('Modal is detachable, moving content into dimmer');
               $dimmable.dimmer('add content', $module);
@@ -326,13 +330,13 @@ $.fn.modal = function(parameters) {
           },
           scrollLock: function() {
             // touch events default to passive, due to changes in chrome to optimize mobile perf
-            $dimmable.get(0).addEventListener('touchmove', module.event.preventScroll, { passive: false });
+            $dimmable[0].addEventListener('touchmove', module.event.preventScroll, { passive: false });
           }
         },
 
         unbind: {
           scrollLock: function() {
-            $dimmable.get(0).removeEventListener('touchmove', module.event.preventScroll, { passive: false });
+            $dimmable[0].removeEventListener('touchmove', module.event.preventScroll, { passive: false });
           }
         },
 
@@ -414,7 +418,7 @@ $.fn.modal = function(parameters) {
             if(initialMouseDownInModal) {
               module.verbose('Mouse down event registered inside the modal');
             }
-            initialMouseDownInScrollbar = module.is.scrolling() && ((!isRtl && $(window).outerWidth() - settings.scrollbarWidth <= event.clientX) || (isRtl && settings.scrollbarWidth >= event.clientX));
+            initialMouseDownInScrollbar = module.is.scrolling() && ((!isRtl && $window.outerWidth() - settings.scrollbarWidth <= event.clientX) || (isRtl && settings.scrollbarWidth >= event.clientX));
             if(initialMouseDownInScrollbar) {
               module.verbose('Mouse down event registered inside the scrollbar');
             }
@@ -518,9 +522,12 @@ $.fn.modal = function(parameters) {
               module.verbose('Show callback returned false cancelling show');
               return;
             }
+            hadScrollbar = module.has.scrollbar();
             module.showDimmer();
             module.cacheSizes();
-            module.set.bodyMargin();
+            if(hadScrollbar) {
+              module.set.bodyMargin();
+            }
             if(module.can.useFlex()) {
               module.remove.legacy();
             }
@@ -645,7 +652,12 @@ $.fn.modal = function(parameters) {
 
         showDimmer: function() {
           if($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active') ) {
-            module.save.bodyMargin();
+            if(hadScrollbar) {
+              if(!isBody) {
+                $dimmer.css('top', $dimmable.scrollTop());
+              }
+              module.save.bodyMargin();
+            }
             module.debug('Showing dimmer');
             $dimmable.dimmer('show');
           }
@@ -658,7 +670,9 @@ $.fn.modal = function(parameters) {
           if( $dimmable.dimmer('is animating') || ($dimmable.dimmer('is active')) ) {
             module.unbind.scrollLock();
             $dimmable.dimmer('hide', function() {
-              module.restore.bodyMargin();
+              if(hadScrollbar) {
+                module.restore.bodyMargin();
+              }
               module.remove.clickaway();
               module.remove.screenHeight();
             });
@@ -739,9 +753,9 @@ $.fn.modal = function(parameters) {
             }
           },
           bodyMargin: function() {
-            initialBodyMargin = $body.css('margin-'+(module.can.leftBodyScrollbar() ? 'left':'right'));
+            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
             tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
           }
         },
@@ -754,8 +768,8 @@ $.fn.modal = function(parameters) {
           },
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
-            $body.css('margin-'+position, initialBodyMargin);
-            $body.find(selector.bodyFixed.replace('right',position)).each(function(){
+            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
               var el = $(this),
                   attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
               ;
@@ -789,16 +803,17 @@ $.fn.modal = function(parameters) {
             $dimmable.removeClass(className.blurring);
           },
           bodyStyle: function() {
-            if($body.attr('style') === '') {
+            if($context.attr('style') === '') {
               module.verbose('Removing style attribute');
-              $body.removeAttr('style');
+              $context.removeAttr('style');
             }
           },
           screenHeight: function() {
             module.debug('Removing page height');
-            $body
+            $context
               .css('height', '')
             ;
+            module.remove.bodyStyle()
           },
           keyboardShortcuts: function() {
             module.verbose('Removing keyboard shortcuts');
@@ -807,7 +822,9 @@ $.fn.modal = function(parameters) {
             ;
           },
           scrolling: function() {
-            $dimmable.removeClass(className.scrolling);
+            if(!keepScrollingClass) {
+              $dimmable.removeClass(className.scrolling);
+            }
             $module.removeClass(className.scrolling);
           }
         },
@@ -821,12 +838,12 @@ $.fn.modal = function(parameters) {
           ;
           if(module.cache.pageHeight === undefined || modalHeight !== 0) {
             $.extend(module.cache, {
-              pageHeight    : $(document).outerHeight(),
+              pageHeight    : $document.outerHeight(),
               width         : modalWidth,
               height        : modalHeight + settings.offset,
               scrollHeight  : scrollHeight + settings.offset,
-              contextHeight : (settings.context == 'body')
-                ? $(window).height()
+              contextHeight : isBody
+                ? $window.height()
                 : $dimmable.height(),
             });
             module.cache.topOffset = -(module.cache.height / 2);
@@ -900,6 +917,9 @@ $.fn.modal = function(parameters) {
         has: {
           configActions: function () {
             return Array.isArray(settings.actions) && settings.actions.length > 0;
+          },
+          scrollbar: function() {
+            return isBody || $context.css('overflow-y') !== 'visible';
           }
         },
         is: {
@@ -973,9 +993,9 @@ $.fn.modal = function(parameters) {
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
             if(settings.detachable || module.can.fit()) {
-              $body.css('margin-'+position, tempBodyMargin + 'px');
+              $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
             }
-            $body.find(selector.bodyFixed.replace('right',position)).each(function(){
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
               var el = $(this),
                   attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
               ;
@@ -1041,10 +1061,10 @@ $.fn.modal = function(parameters) {
               $module
                 .css({
                   top: (!$module.hasClass('aligned') && canFit)
-                    ? $(document).scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
+                    ? $document.scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
                     : !canFit || $module.hasClass('top')
-                      ? $(document).scrollTop() + settings.padding
-                      : $(document).scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
+                      ? $document.scrollTop() + settings.padding
+                      : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
                   marginLeft: -(module.cache.width / 2)
                 })
               ;
@@ -1062,11 +1082,11 @@ $.fn.modal = function(parameters) {
           },
           screenHeight: function() {
             if( module.can.fit() ) {
-              $body.css('height', '');
+              $context.css('height', '');
             }
             else if(!$module.hasClass('bottom')) {
               module.debug('Modal is taller than page content, resizing page height');
-              $body
+              $context
                 .css('height', module.cache.height + (settings.padding * 2) )
               ;
             }
