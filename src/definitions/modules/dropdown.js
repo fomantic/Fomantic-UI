@@ -61,7 +61,7 @@ $.fn.dropdown = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
         $text           = $module.find(selector.text),
         $search         = $module.find(selector.search),
         $sizer          = $module.find(selector.sizer),
@@ -448,7 +448,7 @@ $.fn.dropdown = function(parameters) {
             // replace module reference
             $module  = $module.parent(selector.dropdown);
             instance = $module.data(moduleNamespace);
-            element  = $module.get(0);
+            element  = $module[0];
             module.refresh();
             module.setup.returnedObject();
           },
@@ -1920,7 +1920,7 @@ $.fn.dropdown = function(parameters) {
           },
           caretPosition: function(returnEndPos) {
             var
-              input = $search.get(0),
+              input = $search[0],
               range,
               rangeLength
             ;
@@ -3519,7 +3519,7 @@ $.fn.dropdown = function(parameters) {
           },
           verticallyScrollableContext: function() {
             var
-              overflowY = ($context.get(0) !== window)
+              overflowY = ($context[0] !== window)
                 ? $context.css('overflow-y')
                 : false
             ;
@@ -3527,7 +3527,7 @@ $.fn.dropdown = function(parameters) {
           },
           horizontallyScrollableContext: function() {
             var
-              overflowX = ($context.get(0) !== window)
+              overflowX = ($context[0] !== window)
                 ? $context.css('overflow-X')
                 : false
             ;
@@ -3560,7 +3560,7 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset    : ($context.get(0) === window)
+                offset    : ($context[0] === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollTop : $context.scrollTop(),
@@ -3608,7 +3608,7 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset     : ($context.get(0) === window)
+                offset     : ($context[0] === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollLeft : $context.scrollLeft(),
