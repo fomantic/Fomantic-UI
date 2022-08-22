@@ -393,9 +393,9 @@ $.fn.sticky = function(parameters) {
           },
           containerSize: function() {
             var
-              tagName = $container.get(0).tagName
+              tagName = $container[0].tagName
             ;
-            if(tagName === 'HTML' || tagName == 'body') {
+            if(tagName === 'HTML' || tagName === 'body') {
               // this can trigger for too many reasons
               //module.error(error.container, tagName, $module);
               module.determineContainer();
