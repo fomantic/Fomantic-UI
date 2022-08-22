@@ -293,8 +293,12 @@ $.fn.search = function(parameters) {
           ;
           // search shortcuts
           if(keyCode == keys.escape) {
-            module.verbose('Escape key pressed, blurring search field');
-            module.hideResults();
+            if(!module.is.visible()) {
+              module.verbose('Escape key pressed, blurring search field');
+              $prompt.blur();
+            } else {
+              module.hideResults();
+            }
             event.stopPropagation();
             resultsDismissed = true;
           }
@@ -531,8 +535,8 @@ $.fn.search = function(parameters) {
           },
           type: function(type) {
             type = type || settings.type;
-            if(settings.type == 'category') {
-              $module.addClass(settings.type);
+            if(className[type]) {
+              $module.addClass(className[type]);
             }
           },
           buttonPressed: function() {
@@ -1351,6 +1355,7 @@ $.fn.search.settings = {
   className: {
     animating : 'animating',
     active    : 'active',
+    category  : 'category',
     empty     : 'empty',
     focus     : 'focus',
     hidden    : 'hidden',
