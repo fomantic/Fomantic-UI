@@ -919,7 +919,7 @@ $.fn.modal = function(parameters) {
             return Array.isArray(settings.actions) && settings.actions.length > 0;
           },
           scrollbar: function() {
-            return isBody || $context.css('overflow-y') !== 'visible';
+            return isBody || $context.css('overflow-y') !== 'hidden';
           }
         },
         is: {
