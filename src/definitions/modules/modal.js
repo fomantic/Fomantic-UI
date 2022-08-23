@@ -552,6 +552,8 @@ $.fn.modal = function(parameters) {
                 $module
                   .transition({
                     debug       : settings.debug,
+                    verbose     : settings.verbose,
+                    silent      : settings.silent,
                     animation   : (settings.transition.showMethod || settings.transition) + ' in',
                     queue       : settings.queue,
                     duration    : settings.transition.showDuration || settings.duration,
@@ -602,6 +604,8 @@ $.fn.modal = function(parameters) {
               $module
                 .transition({
                   debug       : settings.debug,
+                  verbose     : settings.verbose,
+                  silent      : settings.silent,
                   animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : settings.queue,
                   duration    : settings.transition.hideDuration || settings.duration,
