@@ -951,7 +951,7 @@ $.fn.modal = function(parameters) {
           },
           rtl: function() {
             if(module.cache.isRTL === undefined) {
-              module.cache.isRTL = $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl';
+              module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
             }
             return module.cache.isRTL;
           },
