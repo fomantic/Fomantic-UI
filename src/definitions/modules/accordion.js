@@ -190,6 +190,7 @@ $.fn.accordion = function(parameters) {
                     useFailSafe      : true,
                     debug            : settings.debug,
                     verbose          : settings.verbose,
+                    silent           : settings.silent,
                     duration         : settings.duration,
                     skipInlineHidden : true,
                     onComplete: function() {
@@ -255,6 +256,7 @@ $.fn.accordion = function(parameters) {
                       useFailSafe      : true,
                       debug            : settings.debug,
                       verbose          : settings.verbose,
+                      silent           : settings.silent,
                       duration         : settings.duration,
                       skipInlineHidden : true
                     })
@@ -325,6 +327,7 @@ $.fn.accordion = function(parameters) {
                       useFailSafe      : true,
                       debug            : settings.debug,
                       verbose          : settings.verbose,
+                      silent           : settings.silent,
                       duration         : settings.duration,
                       skipInlineHidden : true
                     })

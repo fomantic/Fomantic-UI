@@ -2891,6 +2891,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : settings.label.transition,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     duration   : settings.label.duration
                 })
               ;
@@ -3679,6 +3680,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : transition + ' in',
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     duration   : settings.transition.showDuration || settings.duration,
                     queue      : true,
                     onStart    : start,
@@ -3726,6 +3728,7 @@ $.fn.dropdown = function(parameters) {
                     duration   : settings.transition.hideDuration || settings.duration,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     queue      : false,
                     onStart    : start,
                     displayType: module.get.displayType(),

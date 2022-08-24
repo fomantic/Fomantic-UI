@@ -438,6 +438,7 @@ $.fn.popup = function(parameters) {
                   queue      : false,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.transition.showDuration || settings.duration,
                   onComplete : function() {
                     module.bind.close();
@@ -462,6 +463,7 @@ $.fn.popup = function(parameters) {
                   duration   : settings.transition.hideDuration || settings.duration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   onComplete : function() {
                     module.reset();
                     callback.call($popup, element);
