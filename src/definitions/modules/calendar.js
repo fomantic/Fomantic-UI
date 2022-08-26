@@ -593,8 +593,8 @@ $.fn.calendar = function(parameters) {
           },
           keydown: function (event) {
             var keyCode = event.which;
-            if (keyCode === 27 || keyCode === 9) {
-              //esc || tab
+            if (keyCode === 9) {
+              //tab
               module.popup('hide');
             }
 
@@ -629,6 +629,9 @@ $.fn.calendar = function(parameters) {
                 }
                 //disable form submission:
                 event.preventDefault();
+                event.stopPropagation();
+              } else if (keyCode === 27) {
+                module.popup('hide');
                 event.stopPropagation();
               }
             }
@@ -1486,7 +1489,7 @@ $.fn.calendar.settings = {
   silent: false,
   debug: false,
   verbose: false,
-  performance: false,
+  performance: true,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)

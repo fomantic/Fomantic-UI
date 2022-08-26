@@ -552,6 +552,8 @@ $.fn.modal = function(parameters) {
                 $module
                   .transition({
                     debug       : settings.debug,
+                    verbose     : settings.verbose,
+                    silent      : settings.silent,
                     animation   : (settings.transition.showMethod || settings.transition) + ' in',
                     queue       : settings.queue,
                     duration    : settings.transition.showDuration || settings.duration,
@@ -602,6 +604,8 @@ $.fn.modal = function(parameters) {
               $module
                 .transition({
                   debug       : settings.debug,
+                  verbose     : settings.verbose,
+                  silent      : settings.silent,
                   animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : settings.queue,
                   duration    : settings.transition.hideDuration || settings.duration,
@@ -723,7 +727,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Adding keyboard shortcuts');
             $document
-              .on('keyup' + eventNamespace, module.event.keyboard)
+              .on('keydown' + eventNamespace, module.event.keyboard)
             ;
           }
         },
@@ -803,7 +807,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Removing keyboard shortcuts');
             $document
-              .off('keyup' + eventNamespace)
+              .off('keydown' + eventNamespace)
             ;
           },
           scrolling: function() {
@@ -1507,7 +1511,7 @@ $.fn.modal.settings.templates = {
         denyFn = function(){args.handler(null)}
     ;
     if (input.length === 0) {
-      args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
+      args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
     }
     return {
       title  : args.title,

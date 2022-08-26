@@ -61,7 +61,7 @@ $.fn.dropdown = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
         $text           = $module.find(selector.text),
         $search         = $module.find(selector.search),
         $sizer          = $module.find(selector.sizer),
@@ -111,6 +111,7 @@ $.fn.dropdown = function(parameters) {
               module.error(error.noNormalize, element);
             }
 
+            module.create.id();
             module.setup.layout();
 
             if(settings.values) {
@@ -124,7 +125,6 @@ $.fn.dropdown = function(parameters) {
             module.save.defaults();
             module.restore.selected();
 
-            module.create.id();
             module.bind.events();
 
             module.observeChanges();
@@ -366,11 +366,20 @@ $.fn.dropdown = function(parameters) {
             }
             if( module.is.search() && !module.has.search() ) {
               module.verbose('Adding search input');
+              var
+                  labelNode = $module.prev('label')
+              ;
               $search = $('<input />')
                 .addClass(className.search)
                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
-                .insertBefore($text)
               ;
+              if (labelNode.length) {
+                if (!labelNode.attr('id')) {
+                  labelNode.attr('id', module.get.id() + '_formLabel');
+                }
+                $search.attr('aria-labelledby', labelNode.attr('id'));
+              }
+              $search.insertBefore($text);
             }
             if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
               module.create.sizer();
@@ -439,7 +448,7 @@ $.fn.dropdown = function(parameters) {
             // replace module reference
             $module  = $module.parent(selector.dropdown);
             instance = $module.data(moduleNamespace);
-            element  = $module.get(0);
+            element  = $module[0];
             module.refresh();
             module.setup.returnedObject();
           },
@@ -814,20 +823,28 @@ $.fn.dropdown = function(parameters) {
               throttle      : settings.throttle,
               urlData       : {
                 query: query
-              },
-              onError: function() {
+              }
+            },
+            apiCallbacks = {
+              onError: function(errorMessage, $module, xhr) {
                 module.add.message(message.serverError);
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onError === 'function') {
+                  settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
+                }
               },
-              onFailure: function() {
+              onFailure: function(response, $module, xhr) {
                 module.add.message(message.serverError);
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onFailure === 'function') {
+                  settings.apiSettings.onFailure.call(this, response, $module, xhr);
+                }
               },
-              onSuccess : function(response) {
+              onSuccess : function(response, $module, xhr) {
                 var
                   values          = response[fields.remoteValues]
                 ;
@@ -852,13 +869,16 @@ $.fn.dropdown = function(parameters) {
                 iconClicked = false;
                 focused = false;
                 callback.apply(null, callbackParameters);
+                if(typeof settings.apiSettings.onSuccess === 'function') {
+                  settings.apiSettings.onSuccess.call(this, response, $module, xhr);
+                }
               }
             }
           ;
           if( !$module.api('get request') ) {
             module.setup.api();
           }
-          apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings);
+          apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
           $module
             .api('setting', apiSettings)
             .api('query')
@@ -1142,7 +1162,7 @@ $.fn.dropdown = function(parameters) {
               if(module.is.multiple()) {
                 module.remove.activeLabel();
               }
-              if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin'))) {
+              if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) && event.type !== 'touchstart') {
                 focused = true;
                 module.search();
               }
@@ -1679,6 +1699,7 @@ $.fn.dropdown = function(parameters) {
                 if(pressedKey == keys.escape) {
                   module.verbose('Escape key pressed, closing dropdown');
                   module.hide();
+                  event.stopPropagation();
                 }
 
               }
@@ -1900,7 +1921,7 @@ $.fn.dropdown = function(parameters) {
           },
           caretPosition: function(returnEndPos) {
             var
-              input = $search.get(0),
+              input = $search[0],
               range,
               rangeLength
             ;
@@ -2870,6 +2891,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : settings.label.transition,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     duration   : settings.label.duration
                 })
               ;
@@ -3499,7 +3521,7 @@ $.fn.dropdown = function(parameters) {
           },
           verticallyScrollableContext: function() {
             var
-              overflowY = ($context.get(0) !== window)
+              overflowY = ($context[0] !== window)
                 ? $context.css('overflow-y')
                 : false
             ;
@@ -3507,7 +3529,7 @@ $.fn.dropdown = function(parameters) {
           },
           horizontallyScrollableContext: function() {
             var
-              overflowX = ($context.get(0) !== window)
+              overflowX = ($context[0] !== window)
                 ? $context.css('overflow-X')
                 : false
             ;
@@ -3540,7 +3562,7 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset    : ($context.get(0) === window)
+                offset    : ($context[0] === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollTop : $context.scrollTop(),
@@ -3588,7 +3610,7 @@ $.fn.dropdown = function(parameters) {
             ;
             calculations = {
               context: {
-                offset     : ($context.get(0) === window)
+                offset     : ($context[0] === window)
                   ? { top: 0, left: 0}
                   : $context.offset(),
                 scrollLeft : $context.scrollLeft(),
@@ -3658,6 +3680,7 @@ $.fn.dropdown = function(parameters) {
                     animation  : transition + ' in',
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     duration   : settings.transition.showDuration || settings.duration,
                     queue      : true,
                     onStart    : start,
@@ -3705,6 +3728,7 @@ $.fn.dropdown = function(parameters) {
                     duration   : settings.transition.hideDuration || settings.duration,
                     debug      : settings.debug,
                     verbose    : settings.verbose,
+                    silent     : settings.silent,
                     queue      : false,
                     onStart    : start,
                     displayType: module.get.displayType(),
@@ -4237,7 +4261,8 @@ $.fn.dropdown.settings.templates = {
     var
       placeholder = select.placeholder || false,
       html        = '',
-      escape = $.fn.dropdown.settings.templates.escape
+      escape = $.fn.dropdown.settings.templates.escape,
+      deQuote = $.fn.dropdown.settings.templates.deQuote
     ;
     html +=  '<i class="dropdown icon"></i>';
     if(placeholder) {
@@ -4246,7 +4271,7 @@ $.fn.dropdown.settings.templates = {
     else {
       html += '<div class="text"></div>';
     }
-    html += '<div class="'+className.menu+'">';
+    html += '<div class="'+deQuote(className.menu)+'">';
     html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML,className);
     html += '</div>';
     return html;
@@ -4284,27 +4309,27 @@ $.fn.dropdown.settings.templates = {
             : '',
           hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
         ;
-        html += '<div class="'+ maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? deQuote(option[fields.class]) : className.item)+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+        html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
         if (isMenu) {
           html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
         }
         if(option[fields.image]) {
-          html += '<img class="'+(option[fields.imageClass] ? deQuote(option[fields.imageClass]) : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+          html += '<img class="'+deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
         }
         if(option[fields.icon]) {
-          html += '<i class="'+deQuote(option[fields.icon])+' '+(option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon)+'"></i>';
+          html += '<i class="'+deQuote(option[fields.icon]+' '+(option[fields.iconClass] ? option[fields.iconClass] : className.icon))+'"></i>';
         }
         if(hasDescription){
-          html += '<span class="'+ className.description +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
-          html += (!isMenu) ? '<span class="'+ className.text + '">' : '';
+          html += '<span class="'+ deQuote(className.description) +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
+          html += (!isMenu) ? '<span class="'+ deQuote(className.text) + '">' : '';
         }
         if (isMenu) {
-          html += '<span class="' + className.text + '">';
+          html += '<span class="' + deQuote(className.text) + '">';
         }
         html +=   escape(option[fields.name] || '', preserveHTML);
         if (isMenu) {
           html += '</span>';
-          html += '<div class="' + itemType + '">';
+          html += '<div class="' + deQuote(itemType) + '">';
           html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
           html += '</div>';
         } else if(hasDescription){
@@ -4313,18 +4338,18 @@ $.fn.dropdown.settings.templates = {
         html += '</div>';
       } else if (itemType === 'header') {
         var groupName = escape(option[fields.name] || '', preserveHTML),
-            groupIcon = option[fields.icon] ? deQuote(option[fields.icon]) : className.groupIcon
+            groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
         ;
         if(groupName !== '' || groupIcon !== '') {
-          html += '<div class="' + (option[fields.class] ? deQuote(option[fields.class]) : className.header) + '">';
+          html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
           if (groupIcon !== '') {
-            html += '<i class="' + groupIcon + ' ' + (option[fields.iconClass] ? deQuote(option[fields.iconClass]) : className.icon) + '"></i>';
+            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
           }
           html += groupName;
           html += '</div>';
         }
         if(option[fields.divider]){
-          html += '<div class="'+className.divider+'"></div>';
+          html += '<div class="'+deQuote(className.divider)+'"></div>';
         }
       }
     });
@@ -4334,8 +4359,10 @@ $.fn.dropdown.settings.templates = {
   // generates label for multiselect
   label: function(value, text, preserveHTML, className) {
     var
-        escape = $.fn.dropdown.settings.templates.escape;
-    return escape(text,preserveHTML) + '<i class="'+className.delete+' icon"></i>';
+        escape = $.fn.dropdown.settings.templates.escape,
+        deQuote = $.fn.dropdown.settings.templates.deQuote
+    ;
+    return escape(text,preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
   },
 
 

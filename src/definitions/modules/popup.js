@@ -62,11 +62,11 @@ $.fn.popup = function(parameters) {
         moduleNamespace    = 'module-' + namespace,
 
         $module            = $(this),
-        $context           = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
-        $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
-        $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $(document).find(settings.boundary) : $(settings.boundary),
+        $context           = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+        $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
+        $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
         $target            = (settings.target)
-          ? ([window,document].indexOf(settings.target) < 0 ? $(document).find(settings.target) : $(settings.target))
+          ? ([window,document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
           : $module,
 
         $popup,
@@ -121,8 +121,8 @@ $.fn.popup = function(parameters) {
         },
 
         refresh: function() {
-          if(settings.popup && typeof settings.popup === 'string') {
-            $popup = $(document).find(settings.popup).eq(0);
+          if(settings.popup) {
+            $popup = $document.find(settings.popup).eq(0);
           }
           else {
             if(settings.inline) {
@@ -286,8 +286,8 @@ $.fn.popup = function(parameters) {
             }
             settings.onCreate.call($popup, element);
           }
-          else if(settings.popup && typeof settings.popup === 'string') {
-            $(document).find(settings.popup).data(metadata.activator, $module);
+          else if(settings.popup) {
+            $document.find(settings.popup).data(metadata.activator, $module);
             module.verbose('Used popup specified in settings');
             module.refresh();
             if(settings.hoverable) {
@@ -368,7 +368,7 @@ $.fn.popup = function(parameters) {
         },
 
         hideAll: function() {
-          $(document).find(selector.popup)
+          $document.find(selector.popup)
             .filter('.' + className.popupVisible)
             .each(function() {
               $(this)
@@ -438,6 +438,7 @@ $.fn.popup = function(parameters) {
                   queue      : false,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.transition.showDuration || settings.duration,
                   onComplete : function() {
                     module.bind.close();
@@ -462,6 +463,7 @@ $.fn.popup = function(parameters) {
                   duration   : settings.transition.hideDuration || settings.duration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   onComplete : function() {
                     module.reset();
                     callback.call($popup, element);
@@ -557,7 +559,7 @@ $.fn.popup = function(parameters) {
             };
 
             // if popup offset context is not same as target, then adjust calculations
-            if($popupOffsetParent.get(0) !== $offsetParent.get(0)) {
+            if($popupOffsetParent[0] !== $offsetParent[0]) {
               var
                 popupOffset        = $popupOffsetParent.offset()
               ;
@@ -1135,7 +1137,7 @@ $.fn.popup = function(parameters) {
             return !module.is.visible();
           },
           rtl: function () {
-            return $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl';
+            return $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
           }
         },
 
