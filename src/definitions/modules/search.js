@@ -476,10 +476,7 @@ $.fn.search = function(parameters) {
             return $prompt.val();
           },
           results: function() {
-            var
-              results = $module.data(metadata.results)
-            ;
-            return results;
+            return $module.data(metadata.results);
           },
           result: function(value, results) {
             var
@@ -696,7 +693,7 @@ $.fn.search = function(parameters) {
                     // content fuzzy matches (last in results)
                     addResult(exactResults, content);
                   }
-                  else if(settings.fullTextSearch == true && module.fuzzySearch(searchTerm, text) ) {
+                  else if(settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
                     // content fuzzy matches (last in results)
                     addResult(fuzzyResults, content);
                   }
@@ -1206,7 +1203,7 @@ $.fn.search = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

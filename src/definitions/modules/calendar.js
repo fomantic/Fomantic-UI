@@ -599,9 +599,9 @@ $.fn.calendar = function(parameters) {
             }
 
             if (module.popup('is visible')) {
+              var mode = module.get.mode();
               if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
                 //arrow keys
-                var mode = module.get.mode();
                 var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
                 var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                 increment *= mode === 'minute' ? settings.minTimeGap : 1;
@@ -620,7 +620,6 @@ $.fn.calendar = function(parameters) {
                 }
               } else if (keyCode === 13) {
                 //enter
-                var mode = module.get.mode();
                 var date = module.get.focusDate();
                 if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
                   if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
@@ -1413,7 +1412,7 @@ $.fn.calendar = function(parameters) {
             response
             ;
           passedArguments = passedArguments || queryArguments;
-          context = element || context;
+          context = context || element;
           if (typeof query == 'string' && object !== undefined) {
             query = query.split(/[\. ]/);
             maxDepth = query.length - 1;

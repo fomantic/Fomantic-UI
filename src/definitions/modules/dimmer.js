@@ -380,10 +380,7 @@ $.fn.dimmer = function(parameters) {
           },
           closable: function() {
             if(settings.closable == 'auto') {
-              if(settings.on == 'hover') {
-                return false;
-              }
-              return true;
+              return settings.on != 'hover';
             }
             return settings.closable;
           },
@@ -602,7 +599,7 @@ $.fn.dimmer = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

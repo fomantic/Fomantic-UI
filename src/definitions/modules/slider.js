@@ -454,8 +454,8 @@ $.fn.slider = function(parameters) {
           module.setup.labels();
         },
         takeStep: function(multiplier) {
+          multiplier = multiplier != undefined ? multiplier : 1;
           var
-            multiplier = multiplier != undefined ? multiplier : 1,
             step = module.get.step(),
             currValue = module.get.currentThumbValue()
           ;
@@ -472,8 +472,8 @@ $.fn.slider = function(parameters) {
         },
 
         backStep: function(multiplier) {
+          multiplier = multiplier != undefined ? multiplier : 1;
           var
-            multiplier = multiplier != undefined ? multiplier : 1,
             step = module.get.step(),
             currValue = module.get.currentThumbValue()
           ;
@@ -721,11 +721,11 @@ $.fn.slider = function(parameters) {
             ;
             return pos;
           },
-          positionFromValue: function(value) {
+          positionFromValue: function(val) {
             var
               min = module.get.min(),
               max = module.get.max(),
-              value = value > max ? max : value < min ? min : value,
+              value = val > max ? max : val < min ? min : val,
               trackLength = module.get.trackLength(),
               ratio = (value - min) / (max - min),
               position = Math.round(ratio * trackLength)
@@ -933,14 +933,12 @@ $.fn.slider = function(parameters) {
           },
           position: function(position, which) {
             var thumbVal = module.determine.value(position);
-            switch (which) {
-              case 'second':
-                module.secondThumbVal = thumbVal;
-                module.update.position(thumbVal, $secondThumb);
-                break;
-              default:
-                module.thumbVal = thumbVal;
-                module.update.position(thumbVal, $thumb);
+            if (which === 'second') {
+              module.secondThumbVal = thumbVal;
+              module.update.position(thumbVal, $secondThumb);
+            } else {
+              module.thumbVal = thumbVal;
+              module.update.position(thumbVal, $thumb);
             }
             value = Math.abs(module.thumbVal - (module.secondThumbVal || 0));
             module.set.value(value);
@@ -1209,7 +1207,7 @@ $.fn.slider = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
