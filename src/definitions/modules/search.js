@@ -998,6 +998,7 @@ $.fn.search = function(parameters) {
                   animation  : settings.transition + ' in',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.duration,
                   onShow     : function() {
                     var $firstResult = $module.find(selector.result).eq(0);
@@ -1033,6 +1034,7 @@ $.fn.search = function(parameters) {
                   animation  : settings.transition + ' out',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.duration,
                   onComplete : function() {
                     callback();
