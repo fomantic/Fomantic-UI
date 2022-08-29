@@ -30,6 +30,7 @@ $.fn.flyout = function(parameters) {
     $document       = $(document),
     $html           = $('html'),
     $head           = $('head'),
+    $body           = $('body'),
 
     moduleSelector  = $allModules.selector || '',
 
@@ -52,30 +53,36 @@ $.fn.flyout = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
+        settings             = ( $.isPlainObject(parameters) )
           ? $.extend(true, {}, $.fn.flyout.settings, parameters)
           : $.extend({}, $.fn.flyout.settings),
 
-        selector        = settings.selector,
-        className       = settings.className,
-        namespace       = settings.namespace,
-        fields          = settings.fields,
-        regExp          = settings.regExp,
-        error           = settings.error,
+        selector             = settings.selector,
+        className            = settings.className,
+        namespace            = settings.namespace,
+        fields               = settings.fields,
+        regExp               = settings.regExp,
+        error                = settings.error,
 
-        eventNamespace  = '.' + namespace,
-        moduleNamespace = 'module-' + namespace,
+        eventNamespace       = '.' + namespace,
+        moduleNamespace      = 'module-' + namespace,
 
-        $module         = $(this),
-        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
-        $close          = $module.find(selector.close),
+        $module              = $(this),
+        $context             = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $body,
+        $close               = $module.find(selector.close),
 
-        $flyouts        = $module.children(selector.flyout),
-        $pusher         = $context.children(selector.pusher),
+        $flyouts             = $module.children(selector.flyout),
+        $pusher              = $context.children(selector.pusher),
         $style,
 
-        element         = this,
-        instance        = $module.hasClass(namespace) ? $module.data(moduleNamespace) : undefined,
+        element              = this,
+        instance             = $module.hasClass(namespace) ? $module.data(moduleNamespace) : undefined,
+
+        ignoreRepeatedEvents = false,
+        isBody               = $context[0] === $body[0],
+        initialBodyMargin    = '',
+        tempBodyMargin       = '',
+        hadScrollbar         = false,
 
         elementNamespace,
         id,
@@ -233,18 +240,24 @@ $.fn.flyout = function(parameters) {
             module.hide();
           },
           approve: function(event) {
-            if (settings.onApprove.call(module.element, $(this)) === false) {
+            if (ignoreRepeatedEvents || settings.onApprove.call(module.element, $(this)) === false) {
               module.verbose('Approve callback returned false cancelling close');
               return;
             }
-            module.hide();
+            ignoreRepeatedEvents = true;
+            module.hide(function() {
+              ignoreRepeatedEvents = false;
+            });
           },
           deny: function(event) {
-            if (settings.onDeny.call(module.element, $(this)) === false) {
+            if (ignoreRepeatedEvents || settings.onDeny.call(module.element, $(this)) === false) {
               module.verbose('Deny callback returned false cancelling close');
               return;
             }
-            module.hide();
+            ignoreRepeatedEvents = true;
+            module.hide(function() {
+              ignoreRepeatedEvents = false;
+            });
           },
           touch: function(event) {
             //event.stopPropagation();
@@ -283,9 +296,12 @@ $.fn.flyout = function(parameters) {
           scrollLock: function() {
             if(settings.scrollLock) {
               module.debug('Disabling page scroll');
-              $window
-                .on('DOMMouseScroll' + elementNamespace, module.event.scroll)
-              ;
+              hadScrollbar = module.has.scrollbar();
+              if(hadScrollbar) {
+                module.save.bodyMargin();
+                module.set.bodyMargin();
+              }
+              $context.addClass(className.locked);
             }
             module.verbose('Adding events to contain flyout scroll');
             $document
@@ -303,8 +319,11 @@ $.fn.flyout = function(parameters) {
           },
           scrollLock: function() {
             module.verbose('Removing scroll lock from page');
+            if(hadScrollbar) {
+              module.restore.bodyMargin();
+            }
+            $context.removeClass(className.locked);
             $document.off(elementNamespace);
-            $window.off('DOMMouseScroll' + elementNamespace);
             $module.off('scroll' + eventNamespace);
           }
         },
@@ -485,6 +504,8 @@ $.fn.flyout = function(parameters) {
               module.debug('Other flyouts currently visible');
               if(settings.exclusive) {
                 module.hideOthers();
+              } else {
+                ignoreRepeatedEvents = false;
               }
             }
             module.pushPage(function() {
@@ -504,6 +525,11 @@ $.fn.flyout = function(parameters) {
             ? callback
             : function(){}
           ;
+          if(settings.onHide.call(element, $(this)) === false) {
+            module.verbose('Hide callback returned false cancelling hide');
+            ignoreRepeatedEvents = false;
+            return false;
+          }
           if(module.is.visible() || module.is.animating()) {
             module.debug('Hiding flyout', callback);
             module.refreshFlyouts();
@@ -514,7 +540,6 @@ $.fn.flyout = function(parameters) {
               }
             });
             settings.onChange.call(element);
-            settings.onHide.call(element);
           }
         },
 
@@ -567,6 +592,10 @@ $.fn.flyout = function(parameters) {
           ;
           module.set.overlay();
           module.repaint();
+          if(settings.returnScroll) {
+            currentScroll = (isBody ? $window : $context).scrollTop();
+          }
+          module.bind.scrollLock();
           animate = function() {
             module.bind.clickaway();
             module.add.inlineCSS();
@@ -580,7 +609,6 @@ $.fn.flyout = function(parameters) {
             if( event.target == $module[0] ) {
               $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
-              module.bind.scrollLock();
               callback.call(element);
             }
           };
@@ -604,7 +632,9 @@ $.fn.flyout = function(parameters) {
           module.verbose('Removing context push state', module.get.direction());
 
           module.unbind.clickaway();
-          module.unbind.scrollLock();
+          if(!module.othersActive()) {
+            module.unbind.scrollLock();
+          }
 
           animate = function() {
             module.set.overlay();
@@ -618,7 +648,7 @@ $.fn.flyout = function(parameters) {
               module.remove.animating();
               module.remove.overlay();
               module.remove.inlineCSS();
-              if(settings.returnScroll && module.is.mobile() ) {
+              if(settings.returnScroll) {
                 module.scrollBack();
               }
               if (settings.dimPage && !module.othersVisible()) {
@@ -634,14 +664,13 @@ $.fn.flyout = function(parameters) {
 
         scrollToTop: function() {
           module.verbose('Scrolling to top of page to avoid animation issues');
-          currentScroll = $(window).scrollTop();
           $module.scrollTop(0);
-          window.scrollTo(0, 0);
+          (isBody ? $window : $context)[0].scrollTo(0, 0);
         },
 
         scrollBack: function() {
           module.verbose('Scrolling back to original page position');
-          window.scrollTo(0, currentScroll);
+          (isBody ? $window : $context)[0].scrollTo(0, currentScroll);
         },
 
         clear: {
@@ -652,6 +681,16 @@ $.fn.flyout = function(parameters) {
         },
 
         set: {
+          bodyMargin: function() {
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+            $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
+            });
+          },
 
           // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
           // (This is no longer necessary in latest iOS)
@@ -767,16 +806,56 @@ $.fn.flyout = function(parameters) {
           }
         },
 
+        can: {
+          leftBodyScrollbar: function () {
+            if (module.cache.leftBodyScrollbar === undefined) {
+              module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
+            }
+            return module.cache.leftBodyScrollbar;
+          }
+        },
+
+        save: {
+          bodyMargin: function() {
+            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
+            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+            tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
+          }
+        },
+
         is: {
-
-          ie: function() {
-            var
-              isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-              isIE   = ('ActiveXObject' in window)
-            ;
-            return (isIE11 || isIE);
+          safari: function() {
+            if(module.cache.isSafari === undefined) {
+              module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
+            }
+            return module.cache.isSafari;
           },
-
+          edge: function(){
+            if(module.cache.isEdge === undefined) {
+              module.cache.isEdge = !!window.setImmediate && !module.is.ie();
+            }
+            return module.cache.isEdge;
+          },
+          firefox: function(){
+            if(module.cache.isFirefox === undefined) {
+              module.cache.isFirefox = !!window.InstallTrigger;
+            }
+            return module.cache.isFirefox;
+          },
+          iframe: function() {
+            return !(self === top);
+          },
+          ie: function() {
+            if(module.cache.isIE === undefined) {
+              var
+                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
+                isIE = ('ActiveXObject' in window)
+              ;
+              module.cache.isIE = (isIE11 || isIE);
+            }
+            return module.cache.isIE;
+          },
           ios: function() {
             var
               userAgent      = navigator.userAgent,
@@ -815,16 +894,32 @@ $.fn.flyout = function(parameters) {
             return $context.hasClass(className.animating);
           },
           rtl: function () {
-            if(module.cache.rtl === undefined) {
-              module.cache.rtl = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl';
+            if(module.cache.isRTL === undefined) {
+              module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
             }
-            return module.cache.rtl;
+            return module.cache.isRTL;
           }
         },
 
         has: {
           configActions: function () {
             return Array.isArray(settings.actions) && settings.actions.length > 0;
+          },
+          scrollbar: function() {
+            return isBody || $context.css('overflow-y') !== 'hidden';
+          }
+        },
+
+        restore: {
+          bodyMargin: function() {
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, '');
+            });
           }
         },
 
@@ -1095,7 +1190,7 @@ $.fn.flyout.settings = {
 
   onChange     : function(){},
   onShow       : function(){},
-  onHide       : function(){},
+  onHide       : function(){ return true; },
 
   onHidden     : false,
   onVisible    : function(){},
@@ -1113,6 +1208,7 @@ $.fn.flyout.settings = {
     animating  : 'animating',
     dimmed     : 'dimmed',
     ios        : 'ios',
+    locked     : 'locked',
     pushable   : 'pushable',
     pushed     : 'pushed',
     right      : 'right',
@@ -1130,16 +1226,17 @@ $.fn.flyout.settings = {
   },
 
   selector: {
-    fixed   : '.fixed',
-    omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
-    pusher  : '.pusher',
-    flyout  : '.ui.flyout',
-    header  : '.ui.header',
-    content : '.content',
-    actions : '.actions',
-    close   : '.close',
-    approve : '.actions .positive, .actions .approve, .actions .ok',
-    deny    : '.actions .negative, .actions .deny, .actions .cancel'
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.right.flyout, > .ui.fixed.nag, > .ui.fixed.nag > .close',
+    fixed    : '.fixed',
+    omitted  : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
+    pusher   : '.pusher',
+    flyout   : '.ui.flyout',
+    header   : '.ui.header',
+    content  : '.content',
+    actions  : '.actions',
+    close    : '.close',
+    approve  : '.actions .positive, .actions .approve, .actions .ok',
+    deny     : '.actions .negative, .actions .deny, .actions .cancel'
   },
 
   regExp: {
