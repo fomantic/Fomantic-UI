@@ -611,9 +611,6 @@ $.fn.modal = function(parameters) {
                   duration    : settings.transition.hideDuration || settings.duration,
                   useFailSafe : true,
                   onStart     : function() {
-                    if(!module.others.active() && !module.others.animating() && !keepDimmed) {
-                      module.hideDimmer();
-                    }
                     if( settings.keyboardShortcuts && !module.others.active() ) {
                       module.remove.keyboardShortcuts();
                     }
@@ -630,6 +627,9 @@ $.fn.modal = function(parameters) {
                       else {
                         $previousModal.find(selector.dimmer).removeClass('active');
                       }
+                    }
+                    if(!module.others.active() && !module.others.animating() && !keepDimmed) {
+                      module.hideDimmer();
                     }
                     if($.isFunction(settings.onHidden)) {
                       settings.onHidden.call(element);
