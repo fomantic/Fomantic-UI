@@ -614,6 +614,9 @@ $.fn.modal = function(parameters) {
                     if( settings.keyboardShortcuts && !module.others.active() ) {
                       module.remove.keyboardShortcuts();
                     }
+                    if(!module.others.active() && !module.others.animating() && !keepDimmed) {
+                      module.hideDimmer();
+                    }
                   },
                   onComplete : function() {
                     module.unbind.scrollLock();
@@ -627,9 +630,9 @@ $.fn.modal = function(parameters) {
                       else {
                         $previousModal.find(selector.dimmer).removeClass('active');
                       }
-                    }
-                    if(!module.others.active() && !module.others.animating() && !keepDimmed) {
-                      module.hideDimmer();
+                      if(!module.others.active() && !module.others.animating() && !keepDimmed) {
+                        module.hideDimmer();
+                      }
                     }
                     if($.isFunction(settings.onHidden)) {
                       settings.onHidden.call(element);
