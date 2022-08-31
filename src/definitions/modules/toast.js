@@ -23,7 +23,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.toast = function(parameters) {
+$.toast = $.fn.toast = function(parameters) {
   var
     $allModules    = $(this),
     moduleSelector = $allModules.selector || '',

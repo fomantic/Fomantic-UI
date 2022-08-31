@@ -23,7 +23,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.modal = function(parameters) {
+$.modal = $.fn.modal = function(parameters) {
   var
     $allModules    = $(this),
     $window        = $(window),
@@ -75,8 +75,10 @@ $.fn.modal = function(parameters) {
         $dimmable,
         $dimmer,
 
+        isModalComponent = $module.hasClass('modal'),
+
         element         = this,
-        instance        = $module.hasClass('modal') ? $module.data(moduleNamespace) : undefined,
+        instance        = isModalComponent ? $module.data(moduleNamespace) : undefined,
 
         ignoreRepeatedEvents = false,
 
@@ -94,7 +96,7 @@ $.fn.modal = function(parameters) {
 
         initialize: function() {
           module.create.id();
-          if(!$module.hasClass('modal')) {
+          if(!isModalComponent) {
             module.create.modal();
             if(!$.isFunction(settings.onHidden)) {
               settings.onHidden = function () {
