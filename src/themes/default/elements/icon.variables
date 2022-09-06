@@ -7,42 +7,26 @@
 ---------------*/
 
 /* Solid Icons */
-@importIcons: true;
-@fontName: 'icons';
-@src:
-  url("@{fontPath}/@{fontName}.eot?#iefix") format('embedded-opentype'),
-  url("@{fontPath}/@{fontName}.woff2") format('woff2'),
-  url("@{fontPath}/@{fontName}.woff") format('woff'),
-  url("@{fontPath}/@{fontName}.ttf") format('truetype'),
-  url("@{fontPath}/@{fontName}.svg#icons") format('svg')
+@iconsSolidFontName: 'icons-fa-solid';
+@iconsSolidSrc:
+  url("@{fontPath}/@{iconsSolidFontName}.woff2") format("woff2"),
+  url("@{fontPath}/@{iconsSolidFontName}.ttf") format("truetype")
 ;
-@fallbackSRC: url("@{fontPath}/@{fontName}.eot");
 
-/* Outline Icons */
-@importOutlineIcons: true;
-@outlineFontName: 'outline-icons';
-@outlineSrc:
-  url("@{fontPath}/@{outlineFontName}.eot?#iefix") format('embedded-opentype'),
-  url("@{fontPath}/@{outlineFontName}.woff2") format('woff2'),
-  url("@{fontPath}/@{outlineFontName}.woff") format('woff'),
-  url("@{fontPath}/@{outlineFontName}.ttf") format('truetype'),
-  url("@{fontPath}/@{outlineFontName}.svg#icons") format('svg')
+/* Brands Icons */
+@iconsBrandsFontName: 'icons-fa-brands';
+@iconsBrandsSrc:
+  url("@{fontPath}/@{iconsBrandsFontName}.woff2") format("woff2"),
+  url("@{fontPath}/@{iconsBrandsFontName}.ttf") format("truetype")
 ;
-@outlineFallbackSRC: url("@{fontPath}/@{outlineFontName}.eot");
 
-
-
-/* Brand Icons */
-@importBrandIcons: true;
-@brandFontName: 'brand-icons';
-@brandSrc:
-  url("@{fontPath}/@{brandFontName}.eot?#iefix") format('embedded-opentype'),
-  url("@{fontPath}/@{brandFontName}.woff2") format('woff2'),
-  url("@{fontPath}/@{brandFontName}.woff") format('woff'),
-  url("@{fontPath}/@{brandFontName}.ttf") format('truetype'),
-  url("@{fontPath}/@{brandFontName}.svg#icons") format('svg')
+/* Regular Icons */
+@iconsRegularFontName: 'icons-fa-regular';
+@iconsRegularSrc:
+  url("@{fontPath}/@{iconsRegularFontName}.woff2") format("woff2"),
+  url("@{fontPath}/@{iconsRegularFontName}.ttf") format("truetype")
 ;
-@brandFallbackSRC: url("@{fontPath}/@{brandFontName}.eot");
+
 
 
 /*--------------
