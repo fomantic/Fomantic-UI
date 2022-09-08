@@ -228,7 +228,6 @@ $.fn.dropdown = function(parameters) {
             var
               $userChoices,
               $userChoice,
-              isUserValue,
               html
             ;
             values = values || module.get.userValues();
@@ -914,30 +913,18 @@ $.fn.dropdown = function(parameters) {
                 }
                 if(settings.match === 'both' || settings.match === 'text') {
                   text = module.remove.diacritics(String(module.get.choiceText($choice, false)));
-                  if(text.search(beginsWithRegExp) !== -1) {
-                    results.push(this);
-                    return true;
-                  }
-                  else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
-                    results.push(this);
-                    return true;
-                  }
-                  else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text)) {
+                  if(text.search(beginsWithRegExp) !== -1 ||
+                     (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) ||
+                     (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text))) {
                     results.push(this);
                     return true;
                   }
                 }
                 if(settings.match === 'both' || settings.match === 'value') {
                   value = module.remove.diacritics(String(module.get.choiceValue($choice, text)));
-                  if(value.search(beginsWithRegExp) !== -1) {
-                    results.push(this);
-                    return true;
-                  }
-                  else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value)) {
-                    results.push(this);
-                    return true;
-                  }
-                  else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value)) {
+                  if(value.search(beginsWithRegExp) !== -1 ||
+                     (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value)) ||
+                     (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value))) {
                     results.push(this);
                     return true;
                   }
@@ -1438,8 +1425,7 @@ $.fn.dropdown = function(parameters) {
                   isFocusedOnSearch = module.is.focusedOnSearch(),
                   isFocused         = module.is.focused(),
                   caretAtStart      = (isFocusedOnSearch && module.get.caretPosition(false) === 0),
-                  isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0),
-                  $nextLabel
+                  isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0)
                 ;
                 if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                   return;
@@ -1556,8 +1542,7 @@ $.fn.dropdown = function(parameters) {
                 delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
                 isAdditionWithoutMenu = (settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed) && selectedIsSelectable),
                 $nextItem,
-                isSubMenuItem,
-                newIndex
+                isSubMenuItem
               ;
               // allow selection with menu closed
               if(isAdditionWithoutMenu) {
@@ -1661,7 +1646,7 @@ $.fn.dropdown = function(parameters) {
                 // down arrow (traverse menu down)
                 if(pressedKey == keys.downArrow) {
                   $nextItem = (hasSelectedItem && inVisibleMenu)
-                    ? $nextItem = $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
+                    ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                     : $item.eq(0)
                   ;
                   if($nextItem.length === 0) {
@@ -2416,7 +2401,6 @@ $.fn.dropdown = function(parameters) {
             currentScroll = $menu.scrollTop(),
             itemHeight    = $item.eq(0).outerHeight(),
             itemsPerPage  = Math.floor(menuHeight / itemHeight),
-            maxScroll     = $menu.prop('scrollHeight'),
             newScroll     = (direction == 'up')
               ? currentScroll - (itemHeight * itemsPerPage)
               : currentScroll + (itemHeight * itemsPerPage),
@@ -2541,7 +2525,6 @@ $.fn.dropdown = function(parameters) {
               $menu,
               hasActive,
               offset,
-              itemHeight,
               itemOffset,
               menuOffset,
               menuScroll,
@@ -2704,8 +2687,7 @@ $.fn.dropdown = function(parameters) {
               currentValue = module.get.values(),
               stringValue  = (value !== undefined)
                 ? String(value)
-                : value,
-              newValue
+                : value
             ;
             if(hasInput) {
               if(!settings.allowReselection && stringValue == currentValue) {
@@ -2914,7 +2896,7 @@ $.fn.dropdown = function(parameters) {
               ;
             }
             else {
-              $message = $('<div/>')
+              $('<div/>')
                 .html(html)
                 .addClass(className.message)
                 .appendTo($menu)
@@ -2997,16 +2979,13 @@ $.fn.dropdown = function(parameters) {
               hasCount    = (message.search('{count}') !== -1),
               hasMaxCount = (message.search('{maxCount}') !== -1),
               hasTerm     = (message.search('{term}') !== -1),
-              count,
               query
             ;
             module.verbose('Adding templated variables to message', message);
             if(hasCount) {
-              count  = module.get.selectionCount();
-              message = message.replace('{count}', count);
+              message = message.replace('{count}', module.get.selectionCount());
             }
             if(hasMaxCount) {
-              count  = module.get.selectionCount();
               message = message.replace('{maxCount}', settings.maxSelections);
             }
             if(hasTerm) {
@@ -3453,7 +3432,7 @@ $.fn.dropdown = function(parameters) {
             return (document.activeElement === $search[0]);
           },
           allFiltered: function() {
-            return( (module.is.multiple() || module.has.search()) && !(settings.hideAdditions == false && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered() );
+            return( (module.is.multiple() || module.has.search()) && !(!settings.hideAdditions && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered() );
           },
           hidden: function($subMenu) {
             return !module.is.visible($subMenu);
@@ -3539,22 +3518,17 @@ $.fn.dropdown = function(parameters) {
 
         can: {
           activate: function($item) {
-            if(settings.useLabels) {
-              return true;
-            }
-            if(!module.has.maxSelections()) {
-              return true;
-            }
-            if(module.has.maxSelections() && $item.hasClass(className.active)) {
-              return true;
-            }
-            return false;
+            return (
+               settings.useLabels ||
+               !module.has.maxSelections() ||
+               (module.has.maxSelections() && $item.hasClass(className.active))
+            );
           },
           openDownward: function($subMenu) {
             var
               $currentMenu    = $subMenu || $menu,
-              canOpenDownward = true,
-              onScreen        = {},
+              canOpenDownward,
+              onScreen,
               calculations
             ;
             $currentMenu
@@ -3936,7 +3910,7 @@ $.fn.dropdown = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

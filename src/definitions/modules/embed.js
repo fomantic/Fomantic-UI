@@ -128,9 +128,7 @@ $.fn.embed = function(parameters) {
 
         createPlaceholder: function(placeholder) {
           var
-            icon  = module.get.icon(),
-            url   = module.get.url(),
-            embed = module.generate.embed(url)
+            icon  = module.get.icon()
           ;
           placeholder = placeholder || module.get.placeholder();
           $module.html( templates.placeholder(placeholder, icon) );
@@ -509,7 +507,7 @@ $.fn.embed = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
