@@ -1206,8 +1206,8 @@ $.api.settings = {
   },
 
   regExp  : {
-    required : /\{\$*[A-z0-9]+\}/g,
-    optional : /\{\/\$*[A-z0-9]+\}/g,
+    required : /\{\$*[a-z0-9]+\}/gi,
+    optional : /\{\/\$*[a-z0-9]+\}/gi,
     validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
     key:      /[a-z0-9_-]+|(?=\[\])/gi,
     push:     /^$/,
