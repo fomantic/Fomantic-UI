@@ -95,7 +95,9 @@ $.fn.sidebar = function(parameters) {
           module.debug('Initializing sidebar', parameters);
 
           module.create.id();
-
+          if(module.is.ios()) {
+            module.set.ios();
+          }
           transitionEvent = module.get.transitionEvent();
 
           // avoids locking rendering if initialized in onReady
