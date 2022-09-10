@@ -86,7 +86,7 @@ $.fn.transition = function() {
           if(methodInvoked === false) {
             module.verbose('Converted arguments into settings object', settings);
             if(settings.interval) {
-              module.delay(settings.animate);
+              module.delay(settings.interval);
             }
             else  {
               module.animate();
@@ -153,9 +153,9 @@ $.fn.transition = function() {
             : settings.interval
           ;
           shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
-          delay = (shouldReverse || settings.reverse == true)
-            ? ($allModules.length - index) * settings.interval
-            : index * settings.interval
+          delay = (shouldReverse || settings.reverse === true)
+            ? ($allModules.length - index) * interval
+            : index * interval
           ;
           module.debug('Delaying animation by', delay);
           setTimeout(module.animate, delay);
@@ -792,7 +792,6 @@ $.fn.transition = function() {
             module.force.hidden();
             settings.onHidden.call(element);
             settings.onComplete.call(element);
-            // module.repaint();
         },
 
         show: function(display) {
@@ -807,7 +806,6 @@ $.fn.transition = function() {
           module.set.visible();
           settings.onVisible.call(element);
           settings.onComplete.call(element);
-          // module.repaint();
         },
 
         toggle: function() {
@@ -966,7 +964,7 @@ $.fn.transition = function() {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

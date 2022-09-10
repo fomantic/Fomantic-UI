@@ -258,6 +258,9 @@ $.fn.dimmer = function(parameters) {
               }
               $dimmer
                 .transition({
+                  debug       : settings.debug,
+                  verbose     : settings.verbose,
+                  silent      : settings.silent,
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
@@ -307,6 +310,9 @@ $.fn.dimmer = function(parameters) {
               module.verbose('Hiding dimmer with css');
               $dimmer
                 .transition({
+                  debug       : settings.debug,
+                  verbose     : settings.verbose,
+                  silent      : settings.silent,
                   displayType : settings.useFlex
                     ? 'flex'
                     : 'block',
@@ -374,10 +380,7 @@ $.fn.dimmer = function(parameters) {
           },
           closable: function() {
             if(settings.closable == 'auto') {
-              if(settings.on == 'hover') {
-                return false;
-              }
-              return true;
+              return settings.on != 'hover';
             }
             return settings.closable;
           },
@@ -596,7 +599,7 @@ $.fn.dimmer = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

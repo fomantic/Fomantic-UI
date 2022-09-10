@@ -1015,7 +1015,7 @@ $.api = $.fn.api = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1206,8 +1206,8 @@ $.api.settings = {
   },
 
   regExp  : {
-    required : /\{\$*[A-z0-9]+\}/g,
-    optional : /\{\/\$*[A-z0-9]+\}/g,
+    required : /\{\$*[a-z0-9]+\}/gi,
+    optional : /\{\/\$*[a-z0-9]+\}/gi,
     validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
     key:      /[a-z0-9_-]+|(?=\[\])/gi,
     push:     /^$/,

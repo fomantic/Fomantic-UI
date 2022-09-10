@@ -23,7 +23,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.modal = function(parameters) {
+$.modal = $.fn.modal = function(parameters) {
   var
     $allModules    = $(this),
     $window        = $(window),
@@ -76,8 +76,10 @@ $.fn.modal = function(parameters) {
         $dimmable,
         $dimmer,
 
+        isModalComponent = $module.hasClass('modal'),
+
         element         = this,
-        instance        = $module.hasClass('modal') ? $module.data(moduleNamespace) : undefined,
+        instance        = isModalComponent ? $module.data(moduleNamespace) : undefined,
 
         ignoreRepeatedEvents = false,
 
@@ -97,7 +99,7 @@ $.fn.modal = function(parameters) {
 
         initialize: function() {
           module.create.id();
-          if(!$module.hasClass('modal')) {
+          if(!isModalComponent) {
             module.create.modal();
             if(!$.isFunction(settings.onHidden)) {
               settings.onHidden = function () {
@@ -559,6 +561,8 @@ $.fn.modal = function(parameters) {
                 $module
                   .transition({
                     debug       : settings.debug,
+                    verbose     : settings.verbose,
+                    silent      : settings.silent,
                     animation   : (settings.transition.showMethod || settings.transition) + ' in',
                     queue       : settings.queue,
                     duration    : settings.transition.showDuration || settings.duration,
@@ -609,6 +613,8 @@ $.fn.modal = function(parameters) {
               $module
                 .transition({
                   debug       : settings.debug,
+                  verbose     : settings.verbose,
+                  silent      : settings.silent,
                   animation   : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue       : settings.queue,
                   duration    : settings.transition.hideDuration || settings.duration,
@@ -679,7 +685,6 @@ $.fn.modal = function(parameters) {
           }
           else {
             module.debug('Dimmer is not visible cannot hide');
-            return;
           }
         },
 
@@ -737,7 +742,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Adding keyboard shortcuts');
             $document
-              .on('keyup' + eventNamespace, module.event.keyboard)
+              .on('keydown' + eventNamespace, module.event.keyboard)
             ;
           }
         },
@@ -818,7 +823,7 @@ $.fn.modal = function(parameters) {
           keyboardShortcuts: function() {
             module.verbose('Removing keyboard shortcuts');
             $document
-              .off('keyup' + eventNamespace)
+              .off('keydown' + eventNamespace)
             ;
           },
           scrolling: function() {
@@ -874,7 +879,7 @@ $.fn.modal = function(parameters) {
                 }
             ;
             if(shouldEscape.test(string)) {
-              string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+              string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
               return string.replace(badChars, escapedChar);
             }
             return string;
@@ -1238,7 +1243,7 @@ $.fn.modal = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

@@ -640,6 +640,15 @@
         "code",
         "a11y"
       ]
+    },
+    {
+      "login": "mat128",
+      "name": "Mathieu Mitchell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234168?v=4",
+      "profile": "http://www.mathieumitchell.com",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 4,

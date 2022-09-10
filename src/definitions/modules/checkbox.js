@@ -244,6 +244,7 @@ $.fn.checkbox = function(parameters) {
               module.verbose('Escape key pressed blurring field');
               $input.blur();
               shortcutPressed = true;
+              event.stopPropagation();
             }
             else if(!event.ctrlKey && module.can.change()) {
                 if( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey) ) {
@@ -753,7 +754,7 @@ $.fn.checkbox = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -829,7 +830,7 @@ $.fn.checkbox.settings = {
 
   silent              : false,
   debug               : false,
-  verbose             : true,
+  verbose             : false,
   performance         : true,
 
   // delegated event context
