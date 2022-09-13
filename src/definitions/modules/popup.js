@@ -62,11 +62,11 @@ $.fn.popup = function(parameters) {
         moduleNamespace    = 'module-' + namespace,
 
         $module            = $(this),
-        $context           = $(settings.context),
-        $scrollContext     = $(settings.scrollContext),
-        $boundary          = $(settings.boundary),
+        $context           = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+        $scrollContext     = [window,document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
+        $boundary          = [window,document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
         $target            = (settings.target)
-          ? $(settings.target)
+          ? ([window,document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
           : $module,
 
         $popup,
@@ -122,7 +122,7 @@ $.fn.popup = function(parameters) {
 
         refresh: function() {
           if(settings.popup) {
-            $popup = $(settings.popup).eq(0);
+            $popup = $document.find(settings.popup).eq(0);
           }
           else {
             if(settings.inline) {
@@ -287,7 +287,7 @@ $.fn.popup = function(parameters) {
             settings.onCreate.call($popup, element);
           }
           else if(settings.popup) {
-            $(settings.popup).data(metadata.activator, $module);
+            $document.find(settings.popup).data(metadata.activator, $module);
             module.verbose('Used popup specified in settings');
             module.refresh();
             if(settings.hoverable) {
@@ -309,7 +309,7 @@ $.fn.popup = function(parameters) {
         },
 
         createID: function() {
-          id = (Math.random().toString(16) + '000000000').substr(2, 8);
+          id = (Math.random().toString(16) + '000000000').slice(2, 10);
           elementNamespace = '.' + id;
           module.verbose('Creating unique id for element', id);
         },
@@ -368,7 +368,7 @@ $.fn.popup = function(parameters) {
         },
 
         hideAll: function() {
-          $(selector.popup)
+          $document.find(selector.popup)
             .filter('.' + className.popupVisible)
             .each(function() {
               $(this)
@@ -434,11 +434,12 @@ $.fn.popup = function(parameters) {
               module.set.visible();
               $popup
                 .transition({
-                  animation  : settings.transition + ' in',
+                  animation  : (settings.transition.showMethod || settings.transition) + ' in',
                   queue      : false,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
-                  duration   : settings.duration,
+                  silent     : settings.silent,
+                  duration   : settings.transition.showDuration || settings.duration,
                   onComplete : function() {
                     module.bind.close();
                     callback.call($popup, element);
@@ -457,11 +458,12 @@ $.fn.popup = function(parameters) {
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $popup
                 .transition({
-                  animation  : settings.transition + ' out',
+                  animation  : (settings.transition.hideMethod || settings.transition) + ' out',
                   queue      : false,
-                  duration   : settings.duration,
+                  duration   : settings.transition.hideDuration || settings.duration,
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   onComplete : function() {
                     module.reset();
                     callback.call($popup, element);
@@ -557,7 +559,7 @@ $.fn.popup = function(parameters) {
             };
 
             // if popup offset context is not same as target, then adjust calculations
-            if($popupOffsetParent.get(0) !== $offsetParent.get(0)) {
+            if($popupOffsetParent[0] !== $offsetParent[0]) {
               var
                 popupOffset        = $popupOffsetParent.offset()
               ;
@@ -1085,10 +1087,7 @@ $.fn.popup = function(parameters) {
         is: {
           closable: function() {
             if(settings.closable == 'auto') {
-              if(settings.on == 'hover') {
-                return false;
-              }
-              return true;
+              return settings.on != 'hover';
             }
             return settings.closable;
           },
@@ -1103,12 +1102,7 @@ $.fn.popup = function(parameters) {
                 offstage.push(direction);
               }
             });
-            if(offstage.length > 0) {
-              return true;
-            }
-            else {
-              return false;
-            }
+            return offstage.length > 0;
           },
           svg: function(element) {
             return module.supports.svg() && (element instanceof SVGGraphicsElement);
@@ -1135,7 +1129,7 @@ $.fn.popup = function(parameters) {
             return !module.is.visible();
           },
           rtl: function () {
-            return $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl';
+            return $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
           }
         },
 
@@ -1262,7 +1256,7 @@ $.fn.popup = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1511,7 +1505,7 @@ $.fn.popup.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
-        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+        string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;

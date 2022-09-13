@@ -149,6 +149,10 @@
 @groupedLabelFontWeight: @labelFontWeight;
 @groupedLabelTextTransform: @labelTextTransform;
 
+/* Icon */
+@iconOpacity: 0.5;
+@iconFocusOpacity: 1;
+@iconTransition: opacity 0.3s @defaultEasing;
 
 /* Inline */
 @inlineInputSize: @relativeMedium;

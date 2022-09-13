@@ -86,7 +86,7 @@ $.fn.transition = function() {
           if(methodInvoked === false) {
             module.verbose('Converted arguments into settings object', settings);
             if(settings.interval) {
-              module.delay(settings.animate);
+              module.delay(settings.interval);
             }
             else  {
               module.animate();
@@ -153,9 +153,9 @@ $.fn.transition = function() {
             : settings.interval
           ;
           shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
-          delay = (shouldReverse || settings.reverse == true)
-            ? ($allModules.length - index) * settings.interval
-            : index * settings.interval
+          delay = (shouldReverse || settings.reverse === true)
+            ? ($allModules.length - index) * interval
+            : index * interval
           ;
           module.debug('Delaying animation by', delay);
           setTimeout(module.animate, delay);
@@ -698,11 +698,13 @@ $.fn.transition = function() {
                 .addClass(className.transition)
                 .css('animationName')
               ;
+              $clone.detach().insertAfter($module);
               inAnimation = $clone
                 .addClass(className.inward)
                 .css('animationName')
               ;
               if(!displayType) {
+                $clone.detach().insertAfter($module);
                 displayType = $clone
                   .attr('class', elementClass)
                   .removeAttr('style')
@@ -771,6 +773,10 @@ $.fn.transition = function() {
         },
 
         hide: function() {
+          if(settings.onHide.call(element) === false) {
+            module.verbose('Hide callback returned false cancelling hide');
+            return false;
+          }
           module.verbose('Hiding element');
           if( module.is.animating() ) {
             module.reset();
@@ -778,33 +784,28 @@ $.fn.transition = function() {
           element.blur(); // IE will trigger focus change if element is not blurred before hiding
           module.remove.display();
           module.remove.visible();
-          if($.isFunction(settings.onBeforeHide)){
-            settings.onBeforeHide.call(element,function(){
-                module.hideNow();
-            });
-          } else {
-              module.hideNow();
-          }
-
+          settings.onBeforeHide.call(element, module.hideNow);
         },
 
         hideNow: function() {
             module.set.hidden();
             module.force.hidden();
-            settings.onHide.call(element);
+            settings.onHidden.call(element);
             settings.onComplete.call(element);
-            // module.repaint();
         },
 
         show: function(display) {
-          module.verbose('Showing element', display);
-          if(module.force.visible()) {
+          if(module.force.visible() && settings.onShow.call(element) !== false) {
+            module.verbose('Showing element', display);
             module.remove.hidden();
-            module.set.visible();
-            settings.onShow.call(element);
-            settings.onComplete.call(element);
-            // module.repaint();
+            settings.onBeforeShow.call(element, module.showNow);
           }
+        },
+
+        showNow: function(){
+          module.set.visible();
+          settings.onVisible.call(element);
+          settings.onComplete.call(element);
         },
 
         toggle: function() {
@@ -963,7 +964,7 @@ $.fn.transition = function() {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1055,7 +1056,11 @@ $.fn.transition.settings = {
   onStart       : function() {},
   onComplete    : function() {},
   onShow        : function() {},
+  onBeforeShow  : function(callback) {callback.call(this)},
+  onVisible     : function() {},
   onHide        : function() {},
+  onHidden      : function() {},
+  onBeforeHide  : function(callback) {callback.call(this)},
 
   // whether timeout should be used to ensure callback fires in cases animationend does not
   useFailSafe   : true,
@@ -1097,7 +1102,7 @@ $.fn.transition.settings = {
 
   // possible errors
   error: {
-    noAnimation : 'Element is no longer attached to DOM. Unable to animate.  Use silent setting to surpress this warning in production.',
+    noAnimation : 'Element is no longer attached to DOM. Unable to animate.  Use silent setting to suppress this warning in production.',
     repeated    : 'That animation is already occurring, cancelling repeated animation',
     method      : 'The method you called is not defined',
     support     : 'This browser does not support CSS animations'

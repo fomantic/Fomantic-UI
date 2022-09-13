@@ -61,10 +61,10 @@ ol.ui.list li,
   line-height: @itemLineHeight;
 }
 
-ul.ui.list > li:first-child:after,
-ol.ui.list > li:first-child:after,
-.ui.list > .list > .item:after,
-.ui.list > .item:after {
+ul.ui.list > li:first-child::after,
+ol.ui.list > li:first-child::after,
+.ui.list > .list > .item::after,
+.ui.list > .item::after {
   content: '';
   display: block;
   height: 0;
@@ -185,22 +185,25 @@ ol.ui.list ol li,
   margin-left: 0;
   padding-left: 0;
 }
-
-/* Header */
-.ui.list .list > .item .header,
-.ui.list > .item .header {
-  display: block;
-  margin: 0;
-  font-family: @itemHeaderFontFamily;
-  font-weight: @itemHeaderFontWeight;
-  color: @itemHeaderColor;
+& when (@variationListHeader) {
+  /* Header */
+  .ui.list .list > .item .header,
+  .ui.list > .item .header {
+    display: block;
+    margin: 0;
+    font-family: @itemHeaderFontFamily;
+    font-weight: @itemHeaderFontWeight;
+    color: @itemHeaderColor;
+  }
 }
 
-/* Description */
-.ui.list .list > .item .description,
-.ui.list > .item .description {
-  display: block;
-  color: @itemDescriptionColor;
+& when (@variationListDescription) {
+  /* Description */
+  .ui.list .list > .item .description,
+  .ui.list > .item .description {
+    display: block;
+    color: @itemDescriptionColor;
+  }
 }
 
 /* Child Link */
@@ -230,15 +233,17 @@ ol.ui.list ol li,
   }
 }
 
-/* Header Link */
-.ui.list .list > .item a.header,
-.ui.list > .item a.header {
-  cursor: pointer;
-  color: @itemHeaderLinkColor !important;
-}
-.ui.list .list > .item > a.header:hover,
-.ui.list > .item > a.header:hover {
-  color: @itemHeaderLinkHoverColor !important;
+& when (@variationListHeader) {
+  /* Header Link */
+  .ui.list .list > .item a.header,
+  .ui.list > .item a.header {
+    cursor: pointer;
+    color: @itemHeaderLinkColor !important;
+  }
+  .ui.list .list > .item > a.header:hover,
+  .ui.list > .item > a.header:hover {
+    color: @itemHeaderLinkHoverColor !important;
+  }
 }
 
 & when (@variationListFloated) {
@@ -278,8 +283,8 @@ ol.ui.list ol li,
   padding: @itemVerticalPadding @itemHorizontalPadding;
   line-height: @itemLineHeight;
 }
-.ui.menu .ui.list .list > .item:before,
-.ui.menu .ui.list > .item:before {
+.ui.menu .ui.list .list > .item::before,
+.ui.menu .ui.list > .item::before {
   border: none;
   background: none;
 }
@@ -406,13 +411,17 @@ ol.ui.list ol li,
       color: @invertedIconLinkColor;
     }
   }
-  .ui.inverted.list .list > .item .header,
-  .ui.inverted.list > .item .header {
-    color: @invertedHeaderColor;
+  & when (@variationListHeader) {
+    .ui.inverted.list .list > .item .header,
+    .ui.inverted.list > .item .header {
+      color: @invertedHeaderColor;
+    }
   }
-  .ui.inverted.list .list > .item .description,
-  .ui.inverted.list > .item .description {
-    color: @invertedDescriptionColor;
+  & when (@variationListDescription) {
+    .ui.inverted.list .list > .item .description,
+    .ui.inverted.list > .item .description {
+      color: @invertedDescriptionColor;
+    }
   }
   .ui.inverted.list .list > .item > .content,
   .ui.inverted.list > .item > .content {
@@ -615,9 +624,9 @@ ol.ui.list ol li,
   .ui.bulleted.list > .item {
     position: relative;
   }
-  ul.ui.list li:before,
-  .ui.bulleted.list .list > .item:before,
-  .ui.bulleted.list > .item:before {
+  ul.ui.list li::before,
+  .ui.bulleted.list .list > .item::before,
+  .ui.bulleted.list > .item::before {
     user-select: none;
     pointer-events: none;
     position: absolute;
@@ -631,9 +640,9 @@ ol.ui.list ol li,
     vertical-align: @bulletVerticalAlign;
   }
 
-  ul.ui.list li:before,
-  .ui.bulleted.list .list > a.item:before,
-  .ui.bulleted.list > a.item:before {
+  ul.ui.list li::before,
+  .ui.bulleted.list .list > a.item::before,
+  .ui.bulleted.list > a.item::before {
     color: @bulletLinkColor;
   }
 
@@ -686,9 +695,9 @@ ol.ui.list ol li,
     list-style-type: none;
     position: relative;
   }
-  ol.ui.list li:before,
-  .ui.ordered.list .list > .item:before,
-  .ui.ordered.list > .item:before {
+  ol.ui.list li::before,
+  .ui.ordered.list .list > .item::before,
+  .ui.ordered.list > .item::before {
     position: absolute;
     top: auto;
     left: auto;
@@ -704,19 +713,19 @@ ol.ui.list ol li,
   }
 
   & when (@variationListInverted) {
-    ol.ui.inverted.list li:before,
-    .ui.ordered.inverted.list .list > .item:before,
-    .ui.ordered.inverted.list > .item:before {
+    ol.ui.inverted.list li::before,
+    .ui.ordered.inverted.list .list > .item::before,
+    .ui.ordered.inverted.list > .item::before {
       color: @orderedInvertedCountColor;
     }
   }
 
   /* Value */
-  .ui.ordered.list .list > .item[data-value]:before,
-  .ui.ordered.list > .item[data-value]:before {
+  .ui.ordered.list .list > .item[data-value]::before,
+  .ui.ordered.list > .item[data-value]::before {
     content: attr(data-value);
   }
-  ol.ui.list li[value]:before {
+  ol.ui.list li[value]::before {
     content: attr(value);
   }
 
@@ -725,8 +734,8 @@ ol.ui.list ol li,
   .ui.ordered.list .list:not(.icon) {
     margin-left: @orderedChildCountDistance;
   }
-  ol.ui.list ol li:before,
-  .ui.ordered.list .list > .item:before {
+  ol.ui.list ol li::before,
+  .ui.ordered.list .list > .item::before {
     margin-left: @orderedChildCountOffset;
   }
 
@@ -736,9 +745,9 @@ ol.ui.list ol li,
     .ui.ordered.horizontal.list {
       margin-left: 0;
     }
-    ol.ui.horizontal.list li:before,
-    .ui.ordered.horizontal.list .list > .item:before,
-    .ui.ordered.horizontal.list > .item:before {
+    ol.ui.horizontal.list li::before,
+    .ui.ordered.horizontal.list .list > .item::before,
+    .ui.ordered.horizontal.list > .item::before {
       position: static;
       margin: 0 @horizontalOrderedCountDistance 0 0;
     }
@@ -747,9 +756,9 @@ ol.ui.list ol li,
 
 & when (@variationListSuffixed) {
   /* Suffixed Ordered */
-  ol.ui.suffixed.list li:before,
-  .ui.suffixed.ordered.list .list > .item:before,
-  .ui.suffixed.ordered.list > .item:before {
+  ol.ui.suffixed.list li::before,
+  .ui.suffixed.ordered.list .list > .item::before,
+  .ui.suffixed.ordered.list > .item::before {
     content: @orderedCountContentSuffixed;
   }
 }
@@ -974,23 +983,24 @@ ol.ui.list ol li,
       padding-right: @relaxedHorizontalPadding;
     }
   }
-
-  /* Very Relaxed */
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
-    padding-top: @veryRelaxedItemVerticalPadding;
-  }
-  .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
-    padding-bottom: @veryRelaxedItemVerticalPadding;
-  }
-
-  & when (@variationListHorizontal) {
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
-      padding-left: @veryRelaxedHorizontalPadding;
+  & when (@variationListVeryRelaxed) {
+    /* Very Relaxed */
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:first-child) {
+      padding-top: @veryRelaxedItemVerticalPadding;
     }
-    .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
-    .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
-      padding-right: @veryRelaxedHorizontalPadding;
+    .ui[class*="very relaxed"].list:not(.horizontal) > .item:not(:last-child) {
+      padding-bottom: @veryRelaxedItemVerticalPadding;
+    }
+
+    & when (@variationListHorizontal) {
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:first-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:first-child) {
+        padding-left: @veryRelaxedHorizontalPadding;
+      }
+      .ui.horizontal[class*="very relaxed"].list .list > .item:not(:last-child),
+      .ui.horizontal[class*="very relaxed"].list > .item:not(:last-child) {
+        padding-right: @veryRelaxedHorizontalPadding;
+      }
     }
   }
 }
@@ -1018,4 +1028,3 @@ ol.ui.list ol li,
 }
 
 .loadUIOverrides();
-

@@ -128,7 +128,7 @@ a:hover {
          Scrollbars
 *******************************/
 
-.addScrollbars() when (@useCustomScrollbars) {
+& when (@useCustomScrollbars) {
 
   /* Force Simple Scrollbars */
   body ::-webkit-scrollbar {
@@ -152,6 +152,18 @@ a:hover {
   body ::-webkit-scrollbar-thumb:hover {
     background: @thumbHoverBackground;
   }
+  body .ui {
+    & when (@supportIE) {
+      /* IE11 */
+      scrollbar-face-color: @thumbBackgroundHex;
+      scrollbar-shadow-color: @thumbBackgroundHex;
+      scrollbar-track-color: @trackBackgroundHex;
+      scrollbar-arrow-color: @trackBackgroundHex;
+    }
+    /* firefox : first color thumb, second track*/
+    scrollbar-color:  @thumbBackground @trackBackground;
+    scrollbar-width: thin;
+  }
 
   /* Inverted UI */
   body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
@@ -165,6 +177,18 @@ a:hover {
   }
   body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
     background: @thumbInvertedHoverBackground;
+  }
+
+  body .ui.inverted:not(.dimmer) {
+    & when (@supportIE) {
+      /* IE11 */
+      scrollbar-face-color: @thumbInvertedBackgroundHex;
+      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+      scrollbar-track-color: @trackInvertedBackgroundHex;
+      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+    }
+    /* firefox : first color thumb, second track */
+    scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
   }
 }
 
@@ -203,5 +227,4 @@ input::selection {
   color: @inputHighlightColor;
 }
 
-.addScrollbars();
 .loadUIOverrides();

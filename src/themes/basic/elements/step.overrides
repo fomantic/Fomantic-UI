@@ -2,7 +2,7 @@
            Overrides
 *******************************/
 
-.ui.steps .step:after {
+.ui.steps .step::after {
   display: none !important;
 }
 .ui.steps .step {

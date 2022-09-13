@@ -99,7 +99,12 @@ function pack(type, compress) {
     concatenatedCSS = compress ? filenames.concatenatedMinifiedCSS : filenames.concatenatedCSS;
   }
 
-  return gulp.src(output.uncompressed + '/**/' + globs.components + ignoredGlobs)
+  let src = output.uncompressed + '/**/' + globs.components + ignoredGlobs;
+  if (globs.components.indexOf('table') < 0 && globs.components.indexOf('tab') > 0) {
+    src = [src, '!' + output.uncompressed + '/**/table.css'];
+  }
+
+  return gulp.src(src)
     .pipe(plumber())
     .pipe(dedupe())
     .pipe(replace(assets.uncompressed, assets.packaged))
@@ -128,8 +133,8 @@ function buildCSS(src, type, config, opts, callback) {
   }
 
   if (globs.individuals !== undefined && typeof src === 'string') {
-    const individuals = config.globs.individuals.replace('{','');
-    const components = config.globs.components.replace('}',',').concat(individuals);
+    const individuals = config.globs.individuals.replace(/\{/g,'');
+    const components = config.globs.components.replace(/\}/g,',').concat(individuals);
 
     src = config.paths.source.definitions + '/**/' + components + '.less';
   }

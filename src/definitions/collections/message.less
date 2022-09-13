@@ -94,7 +94,7 @@
   margin: 0 0 @listItemMargin @listItemIndent;
   padding: 0;
 }
-.ui.message .list:not(.ui) li:before {
+.ui.message .list:not(.ui) li::before {
   position: absolute;
   content: '•';
   left: -1em;
@@ -105,10 +105,15 @@
   margin-bottom: 0;
 }
 
-
-/* Icon */
-.ui.message > i.icon {
-  margin-right: @iconDistance;
+& when (@variationMessageIcon) {
+  /* Icon */
+  .ui.icon.message > .icons,
+  .ui.icon.message > i.icon {
+    margin-right: @iconDistance;
+    &:last-child {
+      margin: 0 0 0 @iconDistance;
+    }
+  }
 }
 
 /* Close Icon */
@@ -169,6 +174,21 @@
 /*******************************
             Variations
 *******************************/
+& when (@variationMessageCentered) {
+  .ui.centered.message,
+  .ui.center.aligned.message {
+    text-align: center;
+    justify-content: center;
+    & > .content {
+      flex: 0 0 auto;
+    }
+  }
+}
+& when (@variationMessageRightAligned) {
+  .ui.right.aligned.message {
+    text-align: right;
+  }
+}
 
 & when (@variationMessageCompact) {
   /*--------------
@@ -225,6 +245,7 @@
     width: 100%;
     align-items: center;
   }
+  .ui.icon.message > .icons,
   .ui.icon.message > i.icon:not(.close) {
     display: block;
     flex: 0 0 auto;
@@ -240,11 +261,11 @@
     vertical-align: @iconVerticalAlign;
   }
 
-
+  .ui.icon.message > .icons + .content,
   .ui.icon.message > i.icon:not(.close) + .content {
     padding-left: @iconContentDistance;
   }
-  .ui.icon.message > i.circular.icon {
+  .ui.icon.message > i.circular {
     width: 1em;
   }
 }
@@ -267,7 +288,7 @@
 /*--------------
      Types
 ---------------*/
-& when (@variationMessageConsequences) {
+& when not (@variationMessageConsequences = false) {
 
   @consequences: {
     @positive: {
@@ -276,6 +297,7 @@
       boxShadow      : @positiveBoxShadow;
       boxFloatShadow : @positiveBoxFloatingShadow;
       text           : @positiveTextColor;
+      invertedText   : @positiveBorderColor;
     };
     @negative: {
       background     : @negativeBackgroundColor;
@@ -283,6 +305,7 @@
       boxShadow      : @negativeBoxShadow;
       boxFloatShadow : @negativeBoxFloatingShadow;
       text           : @negativeTextColor;
+      invertedText   : @negativeBorderColor;
     };
     @info: {
       background     : @infoBackgroundColor;
@@ -290,6 +313,7 @@
       boxShadow      : @infoBoxShadow;
       boxFloatShadow : @infoBoxFloatingShadow;
       text           : @infoTextColor;
+      invertedText   : @formInfoLabelBackground;
     };
     @warning: {
       background     : @warningBackgroundColor;
@@ -297,6 +321,7 @@
       boxShadow      : @warningBoxShadow;
       boxFloatShadow : @warningBoxFloatingShadow;
       text           : @warningTextColor;
+      invertedText   : @formWarningLabelBackground;
     };
     @error: {
       background     : @errorBackgroundColor;
@@ -304,6 +329,7 @@
       boxShadow      : @errorBoxShadow;
       boxFloatShadow : @errorBoxFloatingShadow;
       text           : @errorTextColor;
+      invertedText   : @formErrorLabelBackground;
     };
     @success: {
       background     : @successBackgroundColor;
@@ -311,18 +337,20 @@
       boxShadow      : @successBoxShadow;
       boxFloatShadow : @successBoxFloatingShadow;
       text           : @successTextColor;
+      invertedText   : @formSuccessLabelBackground;
     };
   }
 
   /* Colors */
 
-  each(@consequences, {
-    @color: replace(@key, '@', '');
+  each(@variationMessageConsequences, {
+    @color: @value;
     @bg: @consequences[@@color][background];
     @hd: @consequences[@@color][header];
     @bs: @consequences[@@color][boxShadow];
     @bfs: @consequences[@@color][boxFloatShadow];
     @t: @consequences[@@color][text];
+    @it: @consequences[@@color][invertedText];
 
     .ui.@{color}.message {
       background-color: @bg;
@@ -341,52 +369,59 @@
     .ui.@{color}.message .header {
       color: @hd;
     }
-  })
-}
-
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @bg: @colors[@@color][background];
-  @hd: @colors[@@color][header];
-  @bs: @colors[@@color][boxShadow];
-  @bfs: @colors[@@color][boxFloatShadow];
-  @t: @colors[@@color][text];
-  @isVeryDark: @colors[@@color][isVeryDark];
-
-  .ui.@{color}.message {
-    & when not (@isVeryDark) {
-      background-color: @bg;
-      color: @t;
-    }
-    & when (@isVeryDark) {
-      background-color: @black;
-      color: @invertedTextColor;
-    }
-  }
-
-  .ui.@{color}.message,
-  .ui.attached.@{color}.message {
-    & when not (@isVeryDark) {
-      box-shadow: @bs;
-    }
-  }
-  & when (@variationMessageFloating) {
-    .ui.floating.@{color}.message {
-      & when not (@isVeryDark) {
-        box-shadow: @bfs;
+    & when (@variationMessageInverted) {
+      .ui.inverted.@{color}.message,
+      .ui.inverted.@{color}.message .header {
+        color: @it;
       }
     }
-  }
+  })
+}
+& when not (@variationMessageColors = false) {
+  each(@variationMessageColors, {
+    @color: @value;
+    @bg: @colors[@@color][background];
+    @hd: @colors[@@color][header];
+    @bs: @colors[@@color][boxShadow];
+    @bfs: @colors[@@color][boxFloatShadow];
+    @t: @colors[@@color][text];
+    @isVeryDark: @colors[@@color][isVeryDark];
 
-  .ui.@{color}.message .header {
-    & when not (@isVeryDark) {
-      color: @hd;
+    .ui.@{color}.message {
+      & when not (@isVeryDark) {
+        background-color: @bg;
+        color: @t;
+      }
+      & when (@isVeryDark) {
+        background-color: @black;
+        color: @invertedTextColor;
+      }
     }
-    & when (@isVeryDark) {
-      color: @invertedTextColor;
+
+    .ui.@{color}.message,
+    .ui.attached.@{color}.message {
+      & when not (@isVeryDark) {
+        box-shadow: @bs;
+      }
     }
-  }
-})
+    & when (@variationMessageFloating) {
+      .ui.floating.@{color}.message {
+        & when not (@isVeryDark) {
+          box-shadow: @bfs;
+        }
+      }
+    }
+
+    .ui.@{color}.message .header {
+      & when not (@isVeryDark) {
+        color: @hd;
+      }
+      & when (@isVeryDark) {
+        color: @invertedTextColor;
+      }
+    }
+  })
+}
 
 & when (@variationMessageInverted) {
   .ui.inverted.message {

@@ -200,7 +200,7 @@
          Loading
   ---------------------*/
 
-  .ui.loading.search .input > i.icon:before {
+  .ui.loading.search .input > i.icon::before {
     position: absolute;
     content: '';
     top: 50%;
@@ -213,7 +213,7 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @loaderFillColor;
   }
-  .ui.loading.search .input > i.icon:after {
+  .ui.loading.search .input > i.icon::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -393,7 +393,7 @@
 & when (@variationSearchScrolling),
   (@variationSearchShort),
   (@variationSearchLong) {
-  
+
   /*-------------------
        Scrolling
   --------------------*/
@@ -437,16 +437,20 @@
     .ui.search.short > .results {
       max-height: @scrollingMobileMaxResultsHeight;
     }
-    .ui.search[class*="very short"] > .results {
-      max-height: @scrollingMobileMaxResultsHeight * 0.75;
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingMobileMaxResultsHeight * 0.75;
+      }
     }
   }
   & when (@variationSearchLong) {
     .ui.search.long > .results {
       max-height: @scrollingMobileMaxResultsHeight * 2;
     }
-    .ui.search[class*="very long"] > .results {
-      max-height: @scrollingMobileMaxResultsHeight * 3;
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingMobileMaxResultsHeight * 3;
+      }
     }
   }
 }
@@ -455,16 +459,20 @@
     .ui.search.short > .results {
       max-height: @scrollingTabletMaxResultsHeight;
     }
-    .ui.search[class*="very short"] > .results {
-      max-height: @scrollingTabletMaxResultsHeight * 0.75;
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingTabletMaxResultsHeight * 0.75;
+      }
     }
   }
   & when (@variationSearchLong) {
     .ui.search.long > .results {
       max-height: @scrollingTabletMaxResultsHeight * 2;
     }
-    .ui.search[class*="very long"] > .results {
-      max-height: @scrollingTabletMaxResultsHeight * 3;
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingTabletMaxResultsHeight * 3;
+      }
     }
   }
 }
@@ -473,16 +481,20 @@
     .ui.search.short > .results {
       max-height: @scrollingComputerMaxResultsHeight;
     }
-    .ui.search[class*="very short"] > .results {
-      max-height: @scrollingComputerMaxResultsHeight * 0.75;
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingComputerMaxResultsHeight * 0.75;
+      }
     }
   }
   & when (@variationSearchLong) {
     .ui.search.long > .results {
       max-height: @scrollingComputerMaxResultsHeight * 2;
     }
-    .ui.search[class*="very long"] > .results {
-      max-height: @scrollingComputerMaxResultsHeight * 3;
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingComputerMaxResultsHeight * 3;
+      }
     }
   }
 }
@@ -491,16 +503,20 @@
     .ui.search.short > .results {
       max-height: @scrollingWidescreenMaxResultsHeight;
     }
-    .ui.search[class*="very short"] > .results {
-      max-height: @scrollingWidescreenMaxResultsHeight * 0.75;
+    & when (@variationSearchVeryShort) {
+      .ui.search[class*="very short"] > .results {
+        max-height: @scrollingWidescreenMaxResultsHeight * 0.75;
+      }
     }
   }
   & when (@variationSearchLong) {
     .ui.search.long > .results {
       max-height: @scrollingWidescreenMaxResultsHeight * 2;
     }
-    .ui.search[class*="very long"] > .results {
-      max-height: @scrollingWidescreenMaxResultsHeight * 3;
+    & when (@variationSearchVeryLong) {
+      .ui.search[class*="very long"] > .results {
+        max-height: @scrollingWidescreenMaxResultsHeight * 3;
+      }
     }
   }
 }

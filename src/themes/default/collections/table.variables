@@ -42,6 +42,7 @@
 @headerBorder: 1px solid @internalBorderColor;
 @headerDivider: none;
 @headerBackground: @offWhite;
+@headerBackgroundHex: @offWhite;
 @headerAlign: inherit;
 @headerVerticalAlign: inherit;
 @headerColor: @textColor;
@@ -57,6 +58,7 @@
 @footerBorder: 1px solid @borderColor;
 @footerDivider: none;
 @footerBackground: @offWhite;
+@footerBackgroundHex: @offWhite;
 @footerAlign: inherit;
 @footerVerticalAlign: inherit;
 @footerColor: @textColor;
@@ -118,29 +120,39 @@
 @positiveBoxShadow: @stateMarkerWidth 0 0 @positiveBorderColor inset;
 @positiveBackgroundHover: darken(@positiveBackgroundColor, 3);
 @positiveColorHover: darken(@positiveColor, 3);
+@invertedPositiveColor: @positiveTextColor;
+@invertedPositiveBackgroundColor: @positiveBorderColor;
 
 /* Negative */
 @negativeColor: @negativeTextColor;
 @negativeBoxShadow: @stateMarkerWidth 0 0 @negativeBorderColor inset;
 @negativeBackgroundHover: darken(@negativeBackgroundColor, 3);
 @negativeColorHover: darken(@negativeColor, 3);
+@invertedNegativeColor: @negativeTextColor;
+@invertedNegativeBackgroundColor: @negativeBorderColor;
 
 /* Error */
 @errorColor: @errorTextColor;
 @errorBoxShadow: @stateMarkerWidth 0 0 @errorBorderColor inset;
 @errorBackgroundHover: darken(@errorBackgroundColor, 3);
 @errorColorHover: darken(@errorColor, 3);
+@invertedErrorColor: @errorTextColor;
+@invertedErrorBackgroundColor: @errorBorderColor;
 
 /* Warning */
 @warningColor: @warningTextColor;
 @warningBoxShadow: @stateMarkerWidth 0 0 @warningBorderColor inset;
 @warningBackgroundHover: darken(@warningBackgroundColor, 3);
 @warningColorHover: darken(@warningColor, 3);
+@invertedWarningColor: @warningTextColor;
+@invertedWarningBackgroundColor: #EEC97E;
 
 /* Active */
 @activeColor: @textColor;
 @activeBackgroundColor: #E0E0E0;
 @activeBoxShadow: @stateMarkerWidth 0 0 @activeColor inset;
+@invertedActiveColor: @textColor;
+@invertedActiveBackgroundColor: #A0A0A0;
 
 @activeBackgroundHover: #EFEFEF;
 @activeColorHover: @selectedTextColor;
@@ -202,7 +214,7 @@
 /* Colors */
 @coloredBorderSize: 0.2em;
 @coloredBorderRadius: 0 0 @borderRadius @borderRadius;
-@coloredBorderSizeCover: @coloredBorderSize / 2;
+@coloredBorderSizeCover: (@coloredBorderSize / 2);
 
 /* Inverted */
 @invertedBackground: #333333;
@@ -212,8 +224,14 @@
 @invertedCellColor: @invertedTextColor;
 
 @invertedHeaderBackground: @veryStrongTransparentBlack;
+@invertedHeaderBackgroundHex: #252525;
 @invertedHeaderColor: @invertedTextColor;
 @invertedHeaderBorderColor: @invertedCellBorderColor;
+
+@invertedFooterBackground: @invertedHeaderBackground;
+@invertedFooterBackgroundHex: @invertedHeaderBackgroundHex;
+@invertedFooterColor: @invertedHeaderColor;
+@invertedFooterBorderColor: @invertedHeaderBorderColor;
 
 @invertedDefinitionColumnBackground: @subtleTransparentWhite;
 @invertedDefinitionColumnColor: @invertedSelectedTextColor;
@@ -242,6 +260,40 @@
 @compactHorizontalPadding: 0.7em;
 @veryCompactVerticalPadding: 0.4em;
 @veryCompactHorizontalPadding: 0.6em;
+
+/* Scrolling */
+@scrollingMobileMaxItems: 3;
+@scrollingTabletMaxItems: 4;
+@scrollingComputerMaxItems: 6;
+@scrollingWidescreenMaxItems: 8;
+
+@scrollingItemHeight: (@cellVerticalPadding * 2) + @lineHeight;
+@scrollingMobileMaxBodyHeight: (@scrollingItemHeight * @scrollingMobileMaxItems);
+@scrollingTabletMaxBodyHeight: (@scrollingItemHeight * @scrollingTabletMaxItems);
+@scrollingComputerMaxBodyHeight: (@scrollingItemHeight * @scrollingComputerMaxItems);
+@scrollingWidescreenMaxBodyHeight: (@scrollingItemHeight * @scrollingWidescreenMaxItems);
+
+/* Stuck */
+@stuckBackground: @background;
+@stuckHeaderBackground: @offWhite;
+@stuckFooterBackground: @stuckHeaderBackground;
+
+@invertedStuckBackground: @invertedBackground;
+@invertedStuckHeaderBackground: @invertedHeaderBackgroundHex;
+@invertedStuckFooterBackground: @invertedStuckHeaderBackground;
+
+@stuckZIndex: 800;
+
+@overflowingMobileMaxItems: 5;
+@overflowingTabletMaxItems: 6;
+@overflowingComputerMaxItems: 8;
+@overflowingWidescreenMaxItems: 10;
+
+@overflowingItemHeight: (@cellVerticalPadding * 2) + @lineHeight;
+@overflowingMobileMaxHeight: (@overflowingItemHeight * @overflowingMobileMaxItems);
+@overflowingTabletMaxHeight: (@overflowingItemHeight * @overflowingTabletMaxItems);
+@overflowingComputerMaxHeight: (@overflowingItemHeight * @overflowingComputerMaxItems);
+@overflowingWidescreenMaxHeight: (@overflowingItemHeight * @overflowingWidescreenMaxItems);
 
 
 /* Sizes */

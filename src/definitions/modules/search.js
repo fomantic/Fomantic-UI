@@ -118,7 +118,7 @@ $.fn.search = function(parameters) {
                 .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input)
               ;
               $prompt
-                .attr('autocomplete', 'off')
+                .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
               ;
             }
             $module
@@ -227,9 +227,7 @@ $.fn.search = function(parameters) {
                 results = module.get.results(),
                 result  = $result.data(metadata.result) || module.get.result(value, results)
               ;
-              if(value) {
-                module.set.value(value);
-              }
+              var oldValue = module.get.value();
               if( $.isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
                   module.debug('Custom onSelect callback cancelled default select action');
@@ -238,6 +236,9 @@ $.fn.search = function(parameters) {
                 }
               }
               module.hideResults();
+              if(value && module.get.value() === oldValue) {
+                module.set.value(value);
+              }
               if(href) {
                 event.preventDefault();
                 module.verbose('Opening search link found in result', $link);
@@ -251,17 +252,17 @@ $.fn.search = function(parameters) {
             }
           }
         },
-        ensureVisible: function ensureVisible($el) {
+        ensureVisible: function($el) {
           var elTop, elBottom, resultsScrollTop, resultsHeight;
-
+          if($el.length === 0) {
+            return;
+          }
           elTop = $el.position().top;
           elBottom = elTop + $el.outerHeight(true);
 
           resultsScrollTop = $results.scrollTop();
-          resultsHeight = $results.height()
-            parseInt($results.css('paddingTop'), 0) +
-            parseInt($results.css('paddingBottom'), 0);
-            
+          resultsHeight = $results.height();
+
           if (elTop < 0) {
             $results.scrollTop(resultsScrollTop + elTop);
           }
@@ -292,8 +293,13 @@ $.fn.search = function(parameters) {
           ;
           // search shortcuts
           if(keyCode == keys.escape) {
-            module.verbose('Escape key pressed, blurring search field');
-            module.hideResults();
+            if(!module.is.visible()) {
+              module.verbose('Escape key pressed, blurring search field');
+              $prompt.blur();
+            } else {
+              module.hideResults();
+            }
+            event.stopPropagation();
             resultsDismissed = true;
           }
           if( module.is.visible() ) {
@@ -366,20 +372,36 @@ $.fn.search = function(parameters) {
                 urlData           : {
                   query : searchTerm
                 },
-                onSuccess         : function(response) {
+              },
+              apiCallbacks = {
+                onSuccess         : function(response, $module, xhr) {
                   module.parse.response.call(element, response, searchTerm);
                   callback();
+                  if(settings.apiSettings && typeof settings.apiSettings.onSuccess === 'function') {
+                    settings.apiSettings.onSuccess.call(this, response, $module, xhr);
+                  }
                 },
-                onFailure         : function() {
+                onFailure         : function(response, $module, xhr) {
                   module.displayMessage(error.serverError);
                   callback();
+                  if(settings.apiSettings && typeof settings.apiSettings.onFailure === 'function') {
+                    settings.apiSettings.onFailure.call(this, response, $module, xhr);
+                  }
                 },
-                onAbort : function(response) {
+                onAbort : function(status, $module, xhr) {
+                  if(settings.apiSettings && typeof settings.apiSettings.onAbort === 'function') {
+                    settings.apiSettings.onAbort.call(this, status, $module, xhr);
+                  }
                 },
-                onError           : module.error
+                onError           : function(errorMessage, $module, xhr){
+                  module.error();
+                  if(settings.apiSettings && typeof settings.apiSettings.onError === 'function') {
+                    settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
+                  }
+                }
               }
             ;
-            $.extend(true, apiSettings, settings.apiSettings);
+            $.extend(true, apiSettings, settings.apiSettings, apiCallbacks);
             module.verbose('Setting up API request', apiSettings);
             $module.api(apiSettings);
           }
@@ -400,6 +422,9 @@ $.fn.search = function(parameters) {
         is: {
           animating: function() {
             return $results.hasClass(className.animating);
+          },
+          chrome: function() {
+            return !!window.chrome && !window.StyleMedia;
           },
           hidden: function() {
             return $results.hasClass(className.hidden);
@@ -451,10 +476,7 @@ $.fn.search = function(parameters) {
             return $prompt.val();
           },
           results: function() {
-            var
-              results = $module.data(metadata.results)
-            ;
-            return results;
+            return $module.data(metadata.results);
           },
           result: function(value, results) {
             var
@@ -510,8 +532,8 @@ $.fn.search = function(parameters) {
           },
           type: function(type) {
             type = type || settings.type;
-            if(settings.type == 'category') {
-              $module.addClass(settings.type);
+            if(className[type]) {
+              $module.addClass(className[type]);
             }
           },
           buttonPressed: function() {
@@ -658,10 +680,10 @@ $.fn.search = function(parameters) {
                 ;
                 if(fieldExists) {
                   var text;
-                  if (typeof content[field] === 'string'){  
+                  if (typeof content[field] === 'string'){
                       text = module.remove.diacritics(content[field]);
                   } else {
-                      text = content[field].toString(); 
+                      text = content[field].toString();
                   }
                   if( text.search(matchRegExp) !== -1) {
                     // content starts with value (first in results)
@@ -671,7 +693,7 @@ $.fn.search = function(parameters) {
                     // content fuzzy matches (last in results)
                     addResult(exactResults, content);
                   }
-                  else if(settings.fullTextSearch == true && module.fuzzySearch(searchTerm, text) ) {
+                  else if(settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
                     // content fuzzy matches (last in results)
                     addResult(fuzzyResults, content);
                   }
@@ -973,12 +995,11 @@ $.fn.search = function(parameters) {
                   animation  : settings.transition + ' in',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.duration,
                   onShow     : function() {
                     var $firstResult = $module.find(selector.result).eq(0);
-                    if($firstResult.length > 0) {
-                      module.ensureVisible($firstResult);
-                    }
+                    module.ensureVisible($firstResult);
                   },
                   onComplete : function() {
                     callback();
@@ -1010,6 +1031,7 @@ $.fn.search = function(parameters) {
                   animation  : settings.transition + ' out',
                   debug      : settings.debug,
                   verbose    : settings.verbose,
+                  silent     : settings.silent,
                   duration   : settings.duration,
                   onComplete : function() {
                     callback();
@@ -1181,7 +1203,7 @@ $.fn.search = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1332,6 +1354,7 @@ $.fn.search.settings = {
   className: {
     animating : 'animating',
     active    : 'active',
+    category  : 'category',
     empty     : 'empty',
     focus     : 'focus',
     hidden    : 'hidden',
@@ -1411,7 +1434,7 @@ $.fn.search.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
-        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+        string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;
@@ -1561,5 +1584,11 @@ $.fn.search.settings = {
     }
   }
 };
+
+$.extend($.easing, {
+  easeOutExpo: function(x) {
+    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  }
+});
 
 })( jQuery, window, document );

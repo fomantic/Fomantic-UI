@@ -78,7 +78,7 @@
 }
 
 /* Arrow */
-.ui.steps .step:after {
+.ui.steps .step::after {
   display: none;
   position: absolute;
   z-index: 2;
@@ -179,7 +179,7 @@
   .ui.ordered.steps {
     counter-reset: ordered;
   }
-  .ui.ordered.steps .step:before {
+  .ui.ordered.steps .step::before {
     display: block;
     position: static;
     text-align: center;
@@ -229,26 +229,26 @@
 
 
   /* Arrow */
-  .ui.vertical.steps .step:after {
+  .ui.vertical.steps .step::after {
     top: @verticalArrowTopOffset;
     right: @verticalArrowRightOffset;
     border-width: @verticalArrowBorderWidth;
     display: @verticalArrowDisplay;
   }
-  .ui.right.vertical.steps .step:after {
+  .ui.right.vertical.steps .step::after {
     border-width: @verticalLeftArrowBorderWidth;
     left: @verticalLeftArrowLeftOffset;
     right: @verticalLeftArrowRightOffset;
     transform: translateY(-50%) translateX(-50%) rotate(-45deg);
   }
 
-  .ui.vertical.steps .active.step:after {
+  .ui.vertical.steps .active.step::after {
     display: @verticalActiveArrowDisplay;
   }
-  .ui.vertical.steps .step:last-child:after {
+  .ui.vertical.steps .step:last-child::after {
     display: @verticalLastArrowDisplay;
   }
-  .ui.vertical.steps .active.step:last-child:after {
+  .ui.vertical.steps .active.step:last-child::after {
     display: @verticalActiveLastArrowDisplay;
   }
 }
@@ -284,14 +284,16 @@
   }
 
   /* Arrow */
-  .ui.steps:not(.unstackable) .step:after {
+  .ui.steps:not(.unstackable) .step::after {
     top: unset;
     bottom: -@arrowSize;
     right: 50%;
     transform: translateY(-50%) translateX(50%) rotate(45deg);
   }
-  .ui.vertical.steps .active.step:last-child:after {
-    display: none;
+  & when (@variationStepVertical) {
+    .ui.vertical.steps .active.step:last-child::after {
+      display: none;
+    }
   }
   /* Content */
   .ui.steps:not(.unstackable) .step .content {
@@ -300,7 +302,7 @@
 
   /* Icon */
   .ui.steps:not(.unstackable) .step > i.icon,
-  .ui.ordered.steps:not(.unstackable) .step:before {
+  .ui.ordered.steps:not(.unstackable) .step::before {
     margin: 0 0 @mobileIconDistance 0;
   }
 
@@ -333,28 +335,28 @@
   cursor: auto;
   background: @activeBackground;
 }
-.ui.steps .step.active:after {
+.ui.steps .step.active::after {
   background: @activeBackground;
 }
 .ui.steps .step.active .title {
   color: @activeColor;
 }
-.ui.ordered.steps .step.active:before,
+.ui.ordered.steps .step.active::before,
 .ui.steps .active.step i.icon {
   color: @activeIconColor;
 }
 
 /* Active Arrow */
-.ui.steps .step:after {
+.ui.steps .step::after {
   display: @arrowDisplay;
 }
-.ui.steps .active.step:after {
+.ui.steps .active.step::after {
   display: @activeArrowDisplay;
 }
-.ui.steps .step:last-child:after {
+.ui.steps .step:last-child::after {
   display: @lastArrowDisplay;
 }
-.ui.steps .active.step:last-child:after {
+.ui.steps .active.step:last-child::after {
   display: @activeLastArrowDisplay;
 }
 
@@ -369,8 +371,8 @@
 }
 
 /* Completed */
-.ui.steps .step.completed > i.icon:before,
-.ui.ordered.steps .step.completed:before {
+.ui.steps .step.completed > i.icon::before,
+.ui.ordered.steps .step.completed::before {
   color: @completedColor;
 }
 
@@ -386,7 +388,7 @@
   .ui.steps .disabled.step .description {
     color: @disabledColor;
   }
-  .ui.steps .disabled.step:after {
+  .ui.steps .disabled.step::after {
     background: @disabledBackground;
   }
 }
@@ -428,7 +430,7 @@
     }
 
     /* Arrow */
-    .ui[class*="tablet stackable"].steps .step:after {
+    .ui[class*="tablet stackable"].steps .step::after {
       top: unset;
       bottom: -@arrowSize;
       right: 50%;
@@ -442,7 +444,7 @@
 
     /* Icon */
     .ui[class*="tablet stackable"].steps .step > i.icon,
-    .ui[class*="tablet stackable"].ordered.steps .step:before {
+    .ui[class*="tablet stackable"].ordered.steps .step::before {
       margin: 0 0 @mobileIconDistance 0;
     }
 
@@ -493,53 +495,55 @@
   }
 }
 
-/*-------------------
-    Evenly Divided
---------------------*/
+& when (@variationStepEqualWidth) {
+  /*-------------------
+      Evenly Divided
+  --------------------*/
 
-.ui.one.steps,
-.ui.two.steps,
-.ui.three.steps,
-.ui.four.steps,
-.ui.five.steps,
-.ui.six.steps,
-.ui.seven.steps,
-.ui.eight.steps {
-  width: 100%;
-}
-.ui.one.steps > .step,
-.ui.two.steps > .step,
-.ui.three.steps > .step,
-.ui.four.steps > .step,
-.ui.five.steps > .step,
-.ui.six.steps > .step,
-.ui.seven.steps > .step,
-.ui.eight.steps > .step {
-  flex-wrap: nowrap;
-}
-.ui.one.steps > .step {
-  width: 100%;
-}
-.ui.two.steps > .step {
-  width: 50%;
-}
-.ui.three.steps > .step {
-  width: 33.333%;
-}
-.ui.four.steps > .step {
-  width: 25%;
-}
-.ui.five.steps > .step {
-  width: 20%;
-}
-.ui.six.steps > .step {
-  width: 16.666%;
-}
-.ui.seven.steps > .step {
-  width: 14.285%;
-}
-.ui.eight.steps > .step {
-  width: 12.500%;
+  .ui.one.steps,
+  .ui.two.steps,
+  .ui.three.steps,
+  .ui.four.steps,
+  .ui.five.steps,
+  .ui.six.steps,
+  .ui.seven.steps,
+  .ui.eight.steps {
+    width: 100%;
+  }
+  .ui.one.steps > .step,
+  .ui.two.steps > .step,
+  .ui.three.steps > .step,
+  .ui.four.steps > .step,
+  .ui.five.steps > .step,
+  .ui.six.steps > .step,
+  .ui.seven.steps > .step,
+  .ui.eight.steps > .step {
+    flex-wrap: nowrap;
+  }
+  .ui.one.steps > .step {
+    width: 100%;
+  }
+  .ui.two.steps > .step {
+    width: 50%;
+  }
+  .ui.three.steps > .step {
+    width: 33.333%;
+  }
+  .ui.four.steps > .step {
+    width: 25%;
+  }
+  .ui.five.steps > .step {
+    width: 20%;
+  }
+  .ui.six.steps > .step {
+    width: 16.666%;
+  }
+  .ui.seven.steps > .step {
+    width: 14.285%;
+  }
+  .ui.eight.steps > .step {
+    width: 12.500%;
+  }
 }
 
 /*-------------------
@@ -575,7 +579,7 @@
     border-color: @solidWhiteBorderColor;
   }
 
-  .ui.inverted.steps .step:after {
+  .ui.inverted.steps .step::after {
     background-color: @black;
     border-color: @solidWhiteBorderColor;
   }
@@ -586,10 +590,10 @@
 
   /* Active */
   .ui.inverted.steps .step.active,
-  .ui.inverted.steps .step.active:after {
+  .ui.inverted.steps .step.active::after {
     background: @invertedActiveBackground;
   }
-  .ui.inverted.ordered.steps .step.active:before,
+  .ui.inverted.ordered.steps .step.active::before,
   .ui.inverted.steps .active.step i.icon {
     color: @invertedSelectedTextColor;
   }
@@ -597,7 +601,7 @@
   & when (@variationStepDisabled) {
     /* Disabled */
     .ui.inverted.steps .disabled.step,
-    .ui.inverted.steps .disabled.step:after {
+    .ui.inverted.steps .disabled.step::after {
       background: @invertedDisabledBackground;
     }
     .ui.inverted.steps .disabled.step,

@@ -69,13 +69,20 @@
   color: @activeColor;
 }
 
-/* Partially Active Icon */
-.ui.rating .icon.partial.active {
-  background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
-  background-clip: text;
-  color: transparent;
-}
+& when (@variationRatingPartial) {
+  /* Partially Active Icon */
+  .ui.rating .icon.partial.active {
+    background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
+  }
 
+  /* central override for colors */
+  .ui.ui.rating .icon.partial.active {
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-shadow: none;
+  }
+}
 /* Selected Icon */
 .ui.rating .icon.selected,
 .ui.rating .icon.selected.active,
@@ -88,42 +95,42 @@
 /*--------------
      Colors
 -------------- */
+& when not (@variationRatingColors = false) {
+  each(@variationRatingColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+    @h: @colors[@@color][hover];
+    @lh: @colors[@@color][lightHover];
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-  @h: @colors[@@color][hover];
-  @lh: @colors[@@color][lightHover];
+    .ui.@{color}.rating .active.icon {
+      color: @l;
+      text-shadow: 0px -@shadowWidth 0px @c,
+      -@shadowWidth 0px 0px @c,
+      0px @shadowWidth 0px @c,
+      @shadowWidth 0px 0px @c;
+    }
+    .ui.@{color}.rating .icon.selected,
+    .ui.@{color}.rating .icon.selected.active,
+    .ui.@{color}.rating .icon.selected.partial.active {
+      background: inherit;
+      color: @lh;
+      text-shadow: 0px -@shadowWidth 0px @h,
+      -@shadowWidth 0px 0px @h,
+      0px @shadowWidth 0px @h,
+      @shadowWidth 0px 0px @h;
 
-  .ui.@{color}.rating .active.icon {
-    color: @l;
-    text-shadow: 0px -@shadowWidth 0px @c,
-                 -@shadowWidth 0px 0px @c,
-                 0px @shadowWidth 0px @c,
-                 @shadowWidth 0px 0px @c;
-  }
-  .ui.@{color}.rating .icon.selected,
-  .ui.@{color}.rating .icon.selected.active,
-  .ui.@{color}.rating .icon.selected.partial.active {
-    background: inherit;
-    color: @lh;
-    text-shadow: 0px -@shadowWidth 0px @h,
-                 -@shadowWidth 0px 0px @h,
-                 0px @shadowWidth 0px @h,
-                 @shadowWidth 0px 0px @h;
-
-    -webkit-text-stroke: unset;
-    background-clip: unset;
-  }
-  .ui.@{color}.rating .icon.partial.active {
-    background: linear-gradient(to right, @l 0% var(--full), @inactiveColor var(--full) 100%);
-    text-shadow: none;
-    -webkit-text-stroke: @c 0.78px;
-    background-clip: text;
-    color: transparent;
-  }
-})
+      -webkit-text-stroke: unset;
+      background-clip: unset;
+    }
+    & when (@variationRatingPartial) {
+      .ui.@{color}.rating .icon.partial.active {
+        background: linear-gradient(to right, @l 0% var(--full), @inactiveColor var(--full) 100%);
+        -webkit-text-stroke: @c 0.78px;
+      }
+    }
+  })
+}
 
 
 /*******************************
@@ -138,6 +145,7 @@ each(@colors, {
   /* disabled rating */
   .ui.disabled.rating .icon {
     cursor: default;
+    pointer-events: none;
   }
 }
 

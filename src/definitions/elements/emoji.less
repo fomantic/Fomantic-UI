@@ -31,7 +31,7 @@ em[data-emoji] {
   backface-visibility: hidden;
 }
 
-em[data-emoji]:before {
+em[data-emoji]::before {
   content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
   display: inline-block;
   line-height: @emojiLineHeight;
@@ -47,8 +47,10 @@ em[data-emoji]:before {
              States
 *******************************/
 
-em[data-emoji].disabled {
-  opacity: @disabledOpacity;
+& when (@variationEmojiDisabled) {
+  em[data-emoji].disabled {
+    opacity: @disabledOpacity;
+  }
 }
 
 
@@ -56,17 +58,44 @@ em[data-emoji].disabled {
            Variations
 *******************************/
 
-em[data-emoji].loading:before {
-  animation: loader @loadingDuration linear infinite;
+& when (@variationEmojiLoading) {
+  em[data-emoji].loading::before {
+    animation: loader @loadingDuration linear infinite;
+  }
 }
 
 
-/*-------------------
-         Link
---------------------*/
+& when (@variationEmojiLink) {
+  /*-------------------
+           Link
+  --------------------*/
 
-em[data-emoji].link:not(.disabled) {
-  cursor: pointer;
+  em[data-emoji].link:not(.disabled) {
+    cursor: pointer;
+  }
 }
+
+/*rtl:begin:ignore*/
+
+each(@size-map, {
+  em[data-emoji].@{key} {
+    font-size: 1.5em * @value;
+    vertical-align: middle;
+  }
+});
+
+each(@emoji-map,{
+  & when (@variationEmojiColons) {
+    em[data-emoji=":@{value}:"]::before {
+      background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
+    }
+    em[data-emoji="@{value}"]::before:extend(em[data-emoji=":@{value}:"]::before) when (@variationEmojiNoColons) {}
+  }
+  em[data-emoji="@{value}"]::before when (@variationEmojiNoColons) and not (@variationEmojiColons) {
+    background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
+  }
+});
+
+/*rtl:end:ignore*/
 
 .loadUIOverrides();

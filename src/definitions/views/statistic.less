@@ -65,7 +65,7 @@
 }
 
 /* Clearing */
-.ui.statistics:after {
+.ui.statistics::after {
   display: block;
   content: ' ';
   height: 0;
@@ -179,85 +179,86 @@
       Count
 ---------------*/
 
+& when (@variationStatisticEqualWidth) {
+  .ui.ten.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.ten.statistics .statistic {
+    min-width: @tenColumn;
+    margin: @itemMargin;
+  }
 
-.ui.ten.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.ten.statistics .statistic {
-  min-width: @tenColumn;
-  margin: @itemMargin;
-}
+  .ui.nine.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.nine.statistics .statistic {
+    min-width: @nineColumn;
+    margin: @itemMargin;
+  }
 
-.ui.nine.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.nine.statistics .statistic {
-  min-width: @nineColumn;
-  margin: @itemMargin;
-}
+  .ui.eight.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.eight.statistics .statistic {
+    min-width: @eightColumn;
+    margin: @itemMargin;
+  }
 
-.ui.eight.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.eight.statistics .statistic {
-  min-width: @eightColumn;
-  margin: @itemMargin;
-}
+  .ui.seven.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.seven.statistics .statistic {
+    min-width: @sevenColumn;
+    margin: @itemMargin;
+  }
 
-.ui.seven.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.seven.statistics .statistic {
-  min-width: @sevenColumn;
-  margin: @itemMargin;
-}
+  .ui.six.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.six.statistics .statistic {
+    min-width: @sixColumn;
+    margin: @itemMargin;
+  }
 
-.ui.six.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.six.statistics .statistic {
-  min-width: @sixColumn;
-  margin: @itemMargin;
-}
+  .ui.five.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.five.statistics .statistic {
+    min-width: @fiveColumn;
+    margin: @itemMargin;
+  }
 
-.ui.five.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.five.statistics .statistic {
-  min-width: @fiveColumn;
-  margin: @itemMargin;
-}
+  .ui.four.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.four.statistics .statistic {
+    min-width: @fourColumn;
+    margin: @itemMargin;
+  }
 
-.ui.four.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.four.statistics .statistic {
-  min-width: @fourColumn;
-  margin: @itemMargin;
-}
+  .ui.three.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.three.statistics .statistic {
+    min-width: @threeColumn;
+    margin: @itemMargin;
+  }
 
-.ui.three.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.three.statistics .statistic {
-  min-width: @threeColumn;
-  margin: @itemMargin;
-}
+  .ui.two.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.two.statistics .statistic {
+    min-width: @twoColumn;
+    margin: @itemMargin;
+  }
 
-.ui.two.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.two.statistics .statistic {
-  min-width: @twoColumn;
-  margin: @itemMargin;
-}
-
-.ui.one.statistics {
-  margin: @itemGroupMargin;
-}
-.ui.one.statistics .statistic {
-  min-width: @oneColumn;
-  margin: @itemMargin;
+  .ui.one.statistics {
+    margin: @itemGroupMargin;
+  }
+  .ui.one.statistics .statistic {
+    min-width: @oneColumn;
+    margin: @itemMargin;
+  }
 }
 
 
@@ -323,25 +324,26 @@
 /*--------------
      Colors
 ---------------*/
+& when not (@variationStatisticColors = false) {
+  each(@variationStatisticColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
-
-  .ui.@{color}.statistics .statistic > .value,
-  .ui.statistics .@{color}.statistic > .value,
-  .ui.@{color}.statistic > .value {
-    color: @c;
-  }
-  & when (@variationStatisticInverted) {
-    .ui.inverted.@{color}.statistics .statistic > .value,
-    .ui.statistics .inverted.@{color}.statistic > .value,
-    .ui.inverted.@{color}.statistic > .value {
-      color: @l;
+    .ui.@{color}.statistics .statistic > .value,
+    .ui.statistics .@{color}.statistic > .value,
+    .ui.@{color}.statistic > .value {
+      color: @c;
     }
-  }
-})
+    & when (@variationStatisticInverted) {
+      .ui.inverted.@{color}.statistics .statistic > .value,
+      .ui.statistics .inverted.@{color}.statistic > .value,
+      .ui.inverted.@{color}.statistic > .value {
+        color: @l;
+      }
+    }
+  })
+}
 
 & when (@variationStatisticFloated) {
   /*--------------

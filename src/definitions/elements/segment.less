@@ -49,10 +49,10 @@
     border-radius: 0;
     box-shadow: none;
     border: none;
-    border-bottom: @borderWidth solid @borderColor;
+    border-top: @borderWidth solid @borderColor;
   }
-  .ui.vertical.segment:last-child {
-    border-bottom: none;
+  .ui.vertical.segment:first-child {
+    border-top: none;
   }
 }
 
@@ -62,6 +62,8 @@
 --------------------*/
 & when (@variationSegmentInverted) {
   /* Header */
+  .ui.inverted.segments .segment > .ui.header .sub.header,
+  .ui.inverted.segments .segment > .ui.header,
   .ui.inverted.segment > .ui.header .sub.header,
   .ui.inverted.segment > .ui.header {
     color: @white;
@@ -137,6 +139,12 @@
     background: @placeholderBackground;
     border-color: @placeholderBorderColor;
     box-shadow: @placeholderBoxShadow;
+    &.tab {
+      display: none;
+      &.active {
+        display: flex;
+      }
+    }
   }
 
   .ui.placeholder.segment .button,
@@ -190,10 +198,10 @@
   .ui.piled.segment:last-child {
     margin-bottom: 0;
   }
-  .ui.piled.segments:after,
-  .ui.piled.segments:before,
-  .ui.piled.segment:after,
-  .ui.piled.segment:before {
+  .ui.piled.segments::after,
+  .ui.piled.segments::before,
+  .ui.piled.segment::after,
+  .ui.piled.segment::before {
     background-color: @white;
     visibility: visible;
     content: '';
@@ -205,14 +213,14 @@
     border: @piledBorder;
     box-shadow: @piledBoxShadow;
   }
-  .ui.piled.segments:before,
-  .ui.piled.segment:before {
+  .ui.piled.segments::before,
+  .ui.piled.segment::before {
     transform: rotate(-@piledDegrees);
     top: 0;
     z-index: -2;
   }
-  .ui.piled.segments:after,
-  .ui.piled.segment:after {
+  .ui.piled.segments::after,
+  .ui.piled.segment::after {
     transform: rotate(@piledDegrees);
     top: 0;
     z-index: -1;
@@ -244,10 +252,10 @@
   .ui.stacked.segment {
     padding-bottom: @stackedPadding;
   }
-  .ui.stacked.segments:before,
-  .ui.stacked.segments:after,
-  .ui.stacked.segment:before,
-  .ui.stacked.segment:after {
+  .ui.stacked.segments::before,
+  .ui.stacked.segments::after,
+  .ui.stacked.segment::before,
+  .ui.stacked.segment::after {
     content: '';
     position: absolute;
     bottom: -(@stackedHeight / 2);
@@ -260,23 +268,23 @@
     height: @stackedHeight;
     visibility: visible;
   }
-  .ui.stacked.segments:before,
-  .ui.stacked.segment:before {
+  .ui.stacked.segments::before,
+  .ui.stacked.segment::before {
     display: none;
   }
 
   /* Add additional page */
-  .ui.tall.stacked.segments:before,
-  .ui.tall.stacked.segment:before {
+  .ui.tall.stacked.segments::before,
+  .ui.tall.stacked.segment::before {
     display: block;
     bottom: 0;
   }
   & when (@variationSegmentInverted) {
     /* Inverted */
-    .ui.stacked.inverted.segments:before,
-    .ui.stacked.inverted.segments:after,
-    .ui.stacked.inverted.segment:before,
-    .ui.stacked.inverted.segment:after {
+    .ui.stacked.inverted.segments::before,
+    .ui.stacked.inverted.segments::after,
+    .ui.stacked.inverted.segment::before,
+    .ui.stacked.inverted.segment::after {
       background-color: @subtleTransparentBlack;
       border-top: 1px solid @selectedBorderColor;
     }
@@ -291,9 +299,10 @@
   .ui.padded.segment {
     padding: @paddedSegmentPadding;
   }
-
-  .ui[class*="very padded"].segment {
-    padding: @veryPaddedSegmentPadding;
+  & when (@variationSegmentVeryPadded) {
+    .ui[class*="very padded"].segment {
+      padding: @veryPaddedSegmentPadding;
+    }
   }
 
   & when (@variationSegmentVertical) {
@@ -429,10 +438,10 @@
       flex-direction: row;
       background-color: transparent;
       padding: 0;
-      box-shadow: @boxShadow;
-      margin: @margin;
-      border-radius: @borderRadius;
-      border: @border;
+      box-shadow: @groupedBoxShadow;
+      margin: @groupedMargin;
+      border-radius: @groupedBorderRadius;
+      border: @groupedBorder;
     }
     .ui.stackable.horizontal.segments {
       flex-wrap: wrap;
@@ -451,7 +460,9 @@
     /* Horizontal Segment */
     .ui.horizontal.segments:not(.compact) > .segment:not(.compact) {
       flex: 1 1 auto;
-      -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+      & when (@supportIE) {
+        -ms-flex: 1 1 0; /* Solves #2550 MS Flex */
+      }
     }
     .ui.horizontal.segments > .segment {
       margin: 0;
@@ -475,6 +486,10 @@
     .ui.horizontal.segments > .segment:last-child {
       border-radius: 0 @borderRadius @borderRadius 0;
     }
+    /* Equal Width */
+    .ui[class*="equal width"].horizontal.segments > .segment {
+      width: 100%;
+    }
   }
 }
 
@@ -488,9 +503,12 @@
       Disabled
   ---------------*/
 
+  .ui.disabled.segments,
   .ui.disabled.segment {
     opacity: @disabledOpacity;
     color: @disabledTextColor;
+    pointer-events: none;
+    user-select: none;
   }
 }
 
@@ -499,14 +517,16 @@
       Loading
   ---------------*/
 
+  .ui.loading.segments,
   .ui.loading.segment {
     position: relative;
     cursor: default;
     pointer-events: none;
-    text-shadow: none !important;
+    user-select: none;
     transition: all 0s linear;
   }
-  .ui.loading.segment:before {
+  .ui.loading.segments::before,
+  .ui.loading.segment::before {
     position: absolute;
     content: '';
     top: 0;
@@ -517,7 +537,8 @@
     border-radius: @borderRadius;
     z-index: @loaderDimmerZIndex;
   }
-  .ui.loading.segment:after {
+  .ui.loading.segments::after,
+  .ui.loading.segment::after {
     position: absolute;
     content: '';
     top: 50%;
@@ -563,7 +584,7 @@
          Clearing
   --------------------*/
 
-  .ui.clearing.segment:after {
+  .ui.clearing.segment::after {
     content: "";
     display: block;
     clear: both;
@@ -573,22 +594,23 @@
 /*-------------------
        Colors
 --------------------*/
-
-each(@colors,{
-  @color: replace(@key,'@','');
-  @c: @colors[@@color][color];
-  & when not (@color=primary) and not (@color=secondary) {
-    .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-      border-top: @coloredBorderSize solid @c;
-    }
-    & when (@variationSegmentInverted) {
-      .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-        background-color: @c;
-        color: @white;
+& when not (@variationSegmentColors = false) {
+  each(@variationSegmentColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    & when not (@color=primary) and not (@color=secondary) {
+      .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+        border-top: @coloredBorderSize solid @c;
+      }
+      & when (@variationSegmentInverted) {
+        .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+          background-color: @c;
+          color: @white;
+        }
       }
     }
-  }
-})
+  })
+}
 
 & when (@variationSegmentAligned) {
   /*-------------------
@@ -626,11 +648,13 @@ each(@colors,{
   /*-------------------
         Inverted
   --------------------*/
-
+  .ui.inverted.segments,
+  .ui.inverted.segments .segment,
   .ui.inverted.segment {
     border: none;
     box-shadow: none;
   }
+  .ui.inverted.segments .segment,
   .ui.inverted.segment,
   .ui.primary.inverted.segment {
     background: @invertedBackground;
@@ -646,16 +670,18 @@ each(@colors,{
   }
   & when (@variationSegmentAttached) {
     /* Attached */
-    .ui.inverted.attached.segment {
+    .ui.ui.inverted.attached.segment {
       border-color: @solidWhiteBorderColor;
     }
   }
   & when (@variationSegmentLoading) {
     /* Loading */
+    .ui.inverted.loading.segments,
     .ui.inverted.loading.segment {
       color: @invertedLoaderLineColor;
     }
-    .ui.inverted.loading.segment:before {
+    .ui.inverted.loading.segments::before,
+    .ui.inverted.loading.segment::before {
       background: @loaderInvertedDimmerColor;
     }
   }
@@ -706,14 +732,16 @@ each(@colors,{
     width: @attachedWidth;
     max-width: @attachedWidth;
     box-shadow: @attachedBoxShadow;
-    border: @attachedBorder;
+    &:not(.basic) {
+      border: @attachedBorder;
+    }
   }
-  .ui.attached:not(.message) + .ui.attached.segment:not(.top) {
+  .ui.attached:not(.message):not(.text) + .ui.attached.segment:not(.top) {
     border-top: none;
   }
 
   /* Top */
-  .ui[class*="top attached"].segment {
+  .ui.segment[class*="top attached"] {
     bottom: 0;
     margin-bottom: 0;
     top: @attachedTopOffset;
@@ -722,6 +750,9 @@ each(@colors,{
   }
   .ui.segment[class*="top attached"]:first-child {
     margin-top: 0;
+  }
+  .ui.tab.segment[class*="top attached"]:first-child {
+    margin-top: @verticalMargin;
   }
 
   /* Bottom */
@@ -734,6 +765,9 @@ each(@colors,{
     border-radius: 0 0 @borderRadius @borderRadius;
   }
   .ui.segment[class*="bottom attached"]:last-child {
+    margin-bottom: 0;
+  }
+  .ui.tab.segment[class*="bottom attached"]:last-child {
     margin-bottom: @verticalMargin;
   }
 }
@@ -753,6 +787,115 @@ each(@colors,{
   }
 }
 
+& when (@variationSegmentScrolling) {
+  /*--------------
+    Scrolling
+  ---------------*/
+  .ui.scrolling.segment {
+    overflow: auto;
+  }
+  @media only screen and (max-width : @largestMobileScreen) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingMobileMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingMobileMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingMobileMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingMobileMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingMobileMaxHeight * 3;
+      }
+    }
+  }
+
+  @media only screen and (min-width: @tabletBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingTabletMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingTabletMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingTabletMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingTabletMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingTabletMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @computerBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingComputerMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingComputerMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingComputerMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingComputerMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"]{
+        max-height: @scrollingComputerMaxHeight * 3;
+      }
+    }
+  }
+  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+    & when (@variationSegmentScrollingShort) {
+      .ui.scrolling.segment.short {
+        max-height: @scrollingWidescreenMaxHeight * 0.75;
+      }
+    }
+    & when (@variationSegmentScrollingVeryShort) {
+      .ui.scrolling.segment[class*="very short"] {
+        max-height: @scrollingWidescreenMaxHeight * 0.5;
+      }
+    }
+    .ui.scrolling.segment {
+      max-height: @scrollingWidescreenMaxHeight;
+    }
+    & when (@variationSegmentScrollingLong) {
+      .ui.scrolling.segment.long {
+        max-height: @scrollingWidescreenMaxHeight * 2;
+      }
+    }
+    & when (@variationSegmentScrollingVeryLong) {
+      .ui.scrolling.segment[class*="very long"] {
+        max-height: @scrollingWidescreenMaxHeight * 3;
+      }
+    }
+  }
+}
 /*-------------------
         Size
 --------------------*/

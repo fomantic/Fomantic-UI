@@ -172,6 +172,26 @@
   }
 }
 
+& when (@variationCalendarMultiMonth) {
+  .ui.calendar.popup > .ui.ui.grid {
+    margin: @multiMonthMargin;
+    & > .column:not(:first-child) {
+      padding-left: @multiMonthPadding;
+      & > .ui.table {
+        border-top-left-radius:0;
+        border-bottom-left-radius:0;
+      }
+    }
+    & > .column:not(:last-child) {
+      padding-right:@multiMonthPadding;
+      & > .ui.table {
+        border-top-right-radius:0;
+        border-bottom-right-radius:0;
+      }
+    }
+  }
+}
+
 /*******************************
             States
 *******************************/

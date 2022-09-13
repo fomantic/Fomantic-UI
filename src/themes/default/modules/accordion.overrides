@@ -12,8 +12,9 @@
 }
 
 /* Dropdown Icon */
-.ui.accordion .title .dropdown.icon,
-.ui.accordion .accordion .title .dropdown.icon {
+.ui.accordion .ui.header > .dropdown.icon,
+.ui.accordion .title > .dropdown.icon,
+.ui.accordion .accordion .title > .dropdown.icon {
   font-family: Accordion;
   line-height: 1;
   backface-visibility: hidden;
@@ -21,8 +22,8 @@
   font-style: normal;
   text-align: center;
 }
-
-.ui.accordion .title .dropdown.icon:before,
-.ui.accordion .accordion .title .dropdown.icon:before {
+.ui.accordion .ui.header > .dropdown.icon::before,
+.ui.accordion .title > .dropdown.icon::before,
+.ui.accordion .accordion .title > .dropdown.icon::before {
   content: '\f0da'/*rtl:'\f0d9'*/;
 }
