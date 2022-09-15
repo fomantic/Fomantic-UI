@@ -77,6 +77,7 @@ module.exports = {
     'emoji',
     'feed',
     'flag',
+    'flyout',
     'form',
     'grid',
     'header',

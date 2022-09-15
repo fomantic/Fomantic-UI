@@ -90,6 +90,7 @@ module.exports = {
     'dimmer',
     'dropdown',
     'embed',
+    'flyout',
     'modal',
     'nag',
     'popup',

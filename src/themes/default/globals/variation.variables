@@ -550,6 +550,16 @@
 /* Embed */
 @variationEmbedRatio: true;
 
+/* Flyout */
+@variationFlyoutColumnWidth: true;
+@variationFlyoutThin: true;
+@variationFlyoutWide: true;
+@variationFlyoutTop: true;
+@variationFlyoutBottom: true;
+@variationFlyoutLeft: true;
+@variationFlyoutRight: true;
+@variationFlyoutOverlay: true;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;
