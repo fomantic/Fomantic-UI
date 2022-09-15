@@ -476,10 +476,7 @@ $.fn.search = function(parameters) {
             return $prompt.val();
           },
           results: function() {
-            var
-              results = $module.data(metadata.results)
-            ;
-            return results;
+            return $module.data(metadata.results);
           },
           result: function(value, results) {
             var
@@ -696,7 +693,7 @@ $.fn.search = function(parameters) {
                     // content fuzzy matches (last in results)
                     addResult(exactResults, content);
                   }
-                  else if(settings.fullTextSearch == true && module.fuzzySearch(searchTerm, text) ) {
+                  else if(settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
                     // content fuzzy matches (last in results)
                     addResult(fuzzyResults, content);
                   }
@@ -1206,7 +1203,7 @@ $.fn.search = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1437,7 +1434,7 @@ $.fn.search.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
-        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+        string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;
@@ -1587,5 +1584,11 @@ $.fn.search.settings = {
     }
   }
 };
+
+$.extend($.easing, {
+  easeOutExpo: function(x) {
+    return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+  }
+});
 
 })( jQuery, window, document );

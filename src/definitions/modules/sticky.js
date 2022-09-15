@@ -155,7 +155,6 @@ $.fn.sticky = function(parameters) {
           }
           if($context.length === 0) {
             module.error(error.invalidContext, settings.context, $module);
-            return;
           }
         },
 
@@ -166,7 +165,6 @@ $.fn.sticky = function(parameters) {
           if(module.cache.element.height > module.cache.context.height) {
             module.reset();
             module.error(error.elementSize, $module);
-            return;
           }
         },
 
@@ -317,13 +315,8 @@ $.fn.sticky = function(parameters) {
               direction = 'down'
             ;
             scroll = scroll || $scroll.scrollTop();
-            if(module.lastScroll !== undefined) {
-              if(module.lastScroll < scroll) {
-                direction = 'down';
-              }
-              else if(module.lastScroll > scroll) {
+            if(module.lastScroll && module.lastScroll > scroll) {
                 direction = 'up';
-              }
             }
             return direction;
           },
@@ -371,7 +364,7 @@ $.fn.sticky = function(parameters) {
           lastScroll: function() {
             delete module.lastScroll;
           },
-          elementScroll: function(scroll) {
+          elementScroll: function() {
             delete module.elementScroll;
           },
           minimumSize: function() {
@@ -467,9 +460,9 @@ $.fn.sticky = function(parameters) {
           }
         },
 
-        stick: function(scroll) {
+        stick: function(scrollPosition) {
           var
-            cachedPosition = scroll || $scroll.scrollTop(),
+            cachedPosition = scrollPosition || $scroll.scrollTop(),
             cache          = module.cache,
             fits           = cache.fits,
             sameHeight     = cache.sameHeight,
@@ -816,7 +809,7 @@ $.fn.sticky = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

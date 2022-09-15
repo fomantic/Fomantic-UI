@@ -1087,10 +1087,7 @@ $.fn.popup = function(parameters) {
         is: {
           closable: function() {
             if(settings.closable == 'auto') {
-              if(settings.on == 'hover') {
-                return false;
-              }
-              return true;
+              return settings.on != 'hover';
             }
             return settings.closable;
           },
@@ -1105,12 +1102,7 @@ $.fn.popup = function(parameters) {
                 offstage.push(direction);
               }
             });
-            if(offstage.length > 0) {
-              return true;
-            }
-            else {
-              return false;
-            }
+            return offstage.length > 0;
           },
           svg: function(element) {
             return module.supports.svg() && (element instanceof SVGGraphicsElement);
@@ -1264,7 +1256,7 @@ $.fn.popup = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1513,7 +1505,7 @@ $.fn.popup.settings = {
         }
       ;
       if(shouldEscape.test(string)) {
-        string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+        string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
         return string.replace(badChars, escapedChar);
       }
       return string;
