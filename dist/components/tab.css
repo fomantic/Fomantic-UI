@@ -46,8 +46,8 @@
   position: relative !important;
   left: -10000px !important;
 }
-.ui.tab.loading:before,
-.ui.tab.loading.segment:before {
+.ui.tab.loading::before,
+.ui.tab.loading.segment::before {
   position: absolute;
   content: '';
   top: 50%;
@@ -58,8 +58,8 @@
   border-radius: 500rem;
   border: 0.2em solid rgba(0, 0, 0, 0.1);
 }
-.ui.tab.loading:after,
-.ui.tab.loading.segment:after {
+.ui.tab.loading::after,
+.ui.tab.loading.segment::after {
   position: absolute;
   content: '';
   top: 50%;

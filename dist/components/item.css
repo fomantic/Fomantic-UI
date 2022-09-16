@@ -59,7 +59,7 @@
       Item
 ---------------*/
 
-.ui.items > .item:after {
+.ui.items > .item::after {
   display: block;
   content: ' ';
   height: 0;
@@ -75,8 +75,8 @@
 }
 
 /*--------------
-     Images
----------------*/
+       Images
+  ---------------*/
 
 .ui.items > .item > .image {
   position: relative;
@@ -112,7 +112,7 @@
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   background: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
   margin: 0;
   padding: 0;
   -webkit-box-shadow: none;
@@ -121,7 +121,7 @@
   border: none;
   border-radius: 0;
 }
-.ui.items > .item > .content:after {
+.ui.items > .item > .content::after {
   display: block;
   content: ' ';
   height: 0;
@@ -141,9 +141,9 @@
 .ui.items > .item > .content > .header {
   display: inline-block;
   margin: -0.21425em 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.85);
+  color: #fff;
 }
 
 /* Default Header Size */
@@ -152,8 +152,8 @@
 }
 
 /*--------------
-     Floated
----------------*/
+       Floated
+  ---------------*/
 
 .ui.items > .item [class*="left floated"] {
   float: left;
@@ -163,8 +163,8 @@
 }
 
 /*--------------
-  Content Image
----------------*/
+    Content Image
+  ---------------*/
 
 .ui.items > .item .content img {
   -ms-flex-item-align: center;
@@ -179,15 +179,15 @@
 }
 
 /*--------------
-   Description
----------------*/
+     Description
+  ---------------*/
 
 .ui.items > .item > .content > .description {
   margin-top: 0.6em;
   max-width: auto;
   font-size: 1em;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
+  color: #999;
 }
 
 /*--------------
@@ -202,14 +202,14 @@
 }
 
 /*--------------
-      Meta
----------------*/
+        Meta
+  ---------------*/
 
 .ui.items > .item .meta {
   margin: 0.5em 0 0.5em;
   font-size: 1em;
   line-height: 1em;
-  color: rgba(0, 0, 0, 0.6);
+  color: #999;
 }
 .ui.items > .item .meta * {
   margin-right: 0.3em;
@@ -239,10 +239,10 @@
 
 /* Header */
 .ui.items > .item > .content > a.header {
-  color: rgba(0, 0, 0, 0.85);
+  color: #fff;
 }
 .ui.items > .item > .content > a.header:hover {
-  color: #1e70bf;
+  color: #375a7f;
 }
 
 /* Meta */
@@ -250,7 +250,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.items > .item .meta > a:not(.ui):hover {
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
 }
 
 /*--------------
@@ -295,8 +295,8 @@
 }
 
 /*----------------
-  Extra Content
------------------*/
+    Extra Content
+  -----------------*/
 
 .ui.items > .item .extra {
   display: block;
@@ -307,7 +307,7 @@
   padding: 0 0 0;
   top: 0;
   left: 0;
-  color: rgba(0, 0, 0, 0.4);
+  color: #999;
   -webkit-box-shadow: none;
           box-shadow: none;
   -webkit-transition: color 0.1s ease;
@@ -320,7 +320,7 @@
 .ui.items > .item .extra > [class*="right floated"] {
   margin: 0.25rem 0 0.25rem 0.5rem;
 }
-.ui.items > .item .extra:after {
+.ui.items > .item .extra::after {
   display: block;
   content: ' ';
   height: 0;
@@ -419,7 +419,7 @@
   --------------------*/
 
 .ui.divided.items > .item {
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  border-top: 1px solid #464545;
   margin: 0;
   padding: 1em 0;
 }
@@ -453,7 +453,7 @@
 }
 .ui.items a.item:hover .content .header,
 .ui.link.items > .item:hover .content .header {
-  color: #1e70bf;
+  color: #375a7f;
 }
 
 /*--------------
@@ -520,10 +520,10 @@
   color: rgba(255, 255, 255, 0.8);
 }
 .ui.inverted.items > .item > .content a:not(.ui) {
-  color: #57a4ef;
+  color: #2370c1;
 }
 .ui.inverted.items > .item > .content a:not(.ui):hover {
-  color: #4183C4;
+  color: #375a7f;
 }
 .ui.inverted.items > .item > .content > a.header {
   color: rgba(255, 255, 255, 0.9);
@@ -562,6 +562,12 @@
 .ui.inverted.divided.items > .item:first-child {
   border-top: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

@@ -74,7 +74,7 @@ $.fn.state = function(parameters) {
 
           // bind events with delegated events
           if(settings.context && moduleSelector !== '') {
-            $(settings.context)
+            ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
               .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
               .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
               .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state)
@@ -527,7 +527,7 @@ $.fn.state = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

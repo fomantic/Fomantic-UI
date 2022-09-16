@@ -72,7 +72,7 @@
   background: none;
   border: none;
   border-radius: none;
-  color: rgba(0, 0, 0, 0.6);
+  color: #999;
 }
 .ui.feed > .event > .label img {
   width: 100%;
@@ -109,27 +109,27 @@
 }
 
 /*--------------
-      Date
----------------*/
+        Date
+  ---------------*/
 
 .ui.feed > .event > .content .date {
   margin: -0.5rem 0 0;
   padding: 0;
-  color: rgba(0, 0, 0, 0.4);
+  color: #999;
   font-weight: normal;
   font-size: 1em;
   font-style: normal;
 }
 
 /*--------------
-     Summary
----------------*/
+       Summary
+  ---------------*/
 
 .ui.feed > .event > .content .summary {
   margin: 0;
   font-size: 1em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
 }
 
 /* Summary Image */
@@ -143,8 +143,25 @@
 }
 
 /*--------------
-      User
----------------*/
+       Inline Date
+    ---------------*/
+
+
+/* Date inside Summary */
+.ui.feed > .event > .content .summary > .date {
+  display: inline-block;
+  float: none;
+  font-weight: normal;
+  font-size: 0.85714286em;
+  font-style: normal;
+  margin: 0 0 0 0.5em;
+  padding: 0;
+  color: #999;
+}
+
+/*--------------
+        User
+  ---------------*/
 
 .ui.feed > .event > .content .user {
   display: inline-block;
@@ -160,31 +177,14 @@
 }
 
 /*--------------
-   Inline Date
----------------*/
-
-
-/* Date inside Summary */
-.ui.feed > .event > .content .summary > .date {
-  display: inline-block;
-  float: none;
-  font-weight: normal;
-  font-size: 0.85714286em;
-  font-style: normal;
-  margin: 0 0 0 0.5em;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.4);
-}
-
-/*--------------
-  Extra Summary
----------------*/
+    Extra Summary
+  ---------------*/
 
 .ui.feed > .event > .content .extra {
   margin: 0.5em 0 0;
   background: none;
   padding: 0;
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
 }
 
 /* Images */
@@ -204,8 +204,8 @@
 }
 
 /*--------------
-      Meta
----------------*/
+        Meta
+  ---------------*/
 
 .ui.feed > .event > .content .meta {
   display: inline-block;
@@ -223,7 +223,7 @@
   position: relative;
   margin-left: 0.75em;
 }
-.ui.feed > .event > .content .meta > *:after {
+.ui.feed > .event > .content .meta > *::after {
   content: '';
   color: rgba(0, 0, 0, 0.2);
   top: 0;
@@ -257,7 +257,7 @@
 .ui.feed > .event > .content .meta > i.icon {
   cursor: pointer;
   opacity: 1;
-  color: rgba(0, 0, 0, 0.5);
+  color: #999;
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
@@ -302,7 +302,7 @@
   -------------------*/
 
 .ui.inverted.feed > .event {
-  background: #1B1C1D;
+  background: #000;
 }
 .ui.inverted.feed > .event > .content .date,
 .ui.inverted.feed > .event > .content .meta .like {

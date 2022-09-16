@@ -1,0 +1,45 @@
+@itemTextColor: #fff;
+@background: @gray-dark;
+@border: transparent;
+@hoverItemTextColor: @primaryColor;
+@hoverItemBackground: darken(@gray-dark, 3%);
+@activeItemTextColor: #fff;
+@activeItemBackground: darken(@gray-dark, 10%);
+@activeHoverItemBackground: darken(@gray-dark, 13%);
+@labelBackground: @primaryColor;
+@pressedItemBackground: darken(@gray-dark, 3%);
+@invertedItemTextColor: #fff;
+@invertedBackground: @primaryColor;
+@invertedBorder: transparent;
+@invertedItemTextColor: #fff;
+@invertedHoverColor: @gray-dark;
+@invertedActiveColor: #fff;
+@invertedActiveBackground: darken(@primaryColor, 5%);
+@invertedMenuPressedBackground: darken(@primaryColor, 10%);
+@disabledTextColor: @gray-200;
+@tabularActiveColor: @white;
+@tabularActiveBackground: @gray-dark;
+@paginationActiveTextColor: @white;
+@paginationActiveBackground: lighten(@primaryColor, 6%);
+@subMenuTextColor: @gray-light;
+@verticalBackground: none;
+@dropdownHoveredItemBackground: @gray-dark;
+@dropdownBackground: @gray-dark;
+
+@textMenuActiveItemColor: #fff;
+@textMenuItemColor: @gray-light;
+
+@verticalBackground: @background;
+
+@secondaryItemTextColor: @gray;
+@secondaryItemBackground: @gray-darker;
+@secondaryActiveItemColor: #fff;
+@secondaryActiveItemBackground: @gray-dark;
+@secondaryHoverItemColor: #fff;
+@secondaryActiveHoverItemColor: #fff;
+@secondaryActiveHoverItemBackground: @gray-dark;
+@secondaryHoverItemBackground: @gray-dark;
+
+@secondaryPointingActiveTextColor: #fff;
+@secondaryPointingBorderColor: lighten(@gray-dark, 5%);
+@secondaryPointingActiveBorderColor: lighten(@gray-dark, 5%);

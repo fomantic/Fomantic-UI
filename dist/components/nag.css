@@ -29,7 +29,7 @@
           box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
   font-size: 1rem;
   text-align: center;
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
   -webkit-transition: 0.2s background ease;
   transition: 0.2s background ease;
@@ -40,7 +40,7 @@ a.ui.nag {
 .ui.nag > .title {
   display: inline-block;
   margin: 0 0.5em;
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.nag > .close.icon {
   cursor: pointer;
@@ -50,7 +50,7 @@ a.ui.nag {
   right: 1em;
   font-size: 1em;
   margin: -0.5em 0 0;
-  color: #FFFFFF;
+  color: #fff;
   -webkit-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
 }
@@ -167,31 +167,31 @@ a.ui.nag {
 -------------- */
 
 .ui.primary.nag {
-  background-color: #2185D0;
+  background-color: #375a7f;
 }
 .ui.inverted.primary.nag {
   background-color: #54C8FF;
 }
 .ui.secondary.nag {
-  background-color: #1B1C1D;
+  background-color: #000;
 }
 .ui.inverted.secondary.nag {
   background-color: #545454;
 }
 .ui.red.nag {
-  background-color: #DB2828;
+  background-color: #e74c3c;
 }
 .ui.inverted.red.nag {
   background-color: #FF695E;
 }
 .ui.orange.nag {
-  background-color: #F2711C;
+  background-color: #fd7e14;
 }
 .ui.inverted.orange.nag {
   background-color: #FF851B;
 }
 .ui.yellow.nag {
-  background-color: #FBBD08;
+  background-color: #f39c12;
 }
 .ui.inverted.yellow.nag {
   background-color: #FFE21F;
@@ -203,19 +203,19 @@ a.ui.nag {
   background-color: #D9E778;
 }
 .ui.green.nag {
-  background-color: #21BA45;
+  background-color: #00bc8c;
 }
 .ui.inverted.green.nag {
   background-color: #2ECC40;
 }
 .ui.teal.nag {
-  background-color: #00B5AD;
+  background-color: #20c997;
 }
 .ui.inverted.teal.nag {
   background-color: #6DFFFF;
 }
 .ui.blue.nag {
-  background-color: #2185D0;
+  background-color: #375a7f;
 }
 .ui.inverted.blue.nag {
   background-color: #54C8FF;
@@ -227,13 +227,13 @@ a.ui.nag {
   background-color: #A291FB;
 }
 .ui.purple.nag {
-  background-color: #A333C8;
+  background-color: #6f42c1;
 }
 .ui.inverted.purple.nag {
   background-color: #DC73FF;
 }
 .ui.pink.nag {
-  background-color: #E03997;
+  background-color: #e83e8c;
 }
 .ui.inverted.pink.nag {
   background-color: #FF8EDF;
@@ -251,14 +251,14 @@ a.ui.nag {
   background-color: #DCDDDE;
 }
 .ui.black.nag {
-  background-color: #1B1C1D;
+  background-color: #000;
   color: rgba(255, 255, 255, 0.9);
 }
 .ui.inverted.black.nag {
   background-color: #545454;
 }
 .ui.inverted.black.nag .title {
-  color: #FFFFFF;
+  color: #fff;
 }
 
 

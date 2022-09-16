@@ -38,16 +38,16 @@
   opacity: 0.7;
   margin: 0 0.21428571rem 0;
   font-size: 0.92857143em;
-  color: rgba(0, 0, 0, 0.4);
+  color: #999;
   vertical-align: baseline;
 }
 
 /* Link */
 .ui.breadcrumb a {
-  color: #4183C4;
+  color: #375a7f;
 }
 .ui.breadcrumb a:hover {
-  color: #1e70bf;
+  color: #375a7f;
 }
 
 /* Icon Divider */
@@ -77,7 +77,7 @@
   color: #DCDDDE;
 }
 .ui.inverted.breadcrumb > .active.section {
-  color: #FFFFFF;
+  color: #fff;
 }
 .ui.inverted.breadcrumb > .divider {
   color: rgba(255, 255, 255, 0.7);

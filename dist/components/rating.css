@@ -72,8 +72,14 @@
   background: -webkit-gradient(linear, left top, right top, from(rgba(0, 0, 0, 0.85)), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, rgba(0, 0, 0, 0.85) 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
+}
+
+/* central override for colors */
+.ui.ui.rating .icon.partial.active {
+  -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  text-shadow: none;
 }
 
 /* Selected Icon */
@@ -81,7 +87,7 @@
 .ui.rating .icon.selected.active,
 .ui.rating .icon.selected.partial.active {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: #fff;
   background-clip: unset;
 }
 
@@ -91,14 +97,14 @@
 
 .ui.primary.rating .active.icon {
   color: #54C8FF;
-  text-shadow: 0px -1px 0px #2185D0, -1px 0px 0px #2185D0, 0px 1px 0px #2185D0, 1px 0px 0px #2185D0;
+  text-shadow: 0px -1px 0px #375a7f, -1px 0px 0px #375a7f, 0px 1px 0px #375a7f, 1px 0px 0px #375a7f;
 }
 .ui.primary.rating .icon.selected,
 .ui.primary.rating .icon.selected.active,
 .ui.primary.rating .icon.selected.partial.active {
   background: inherit;
   color: #21b8ff;
-  text-shadow: 0px -1px 0px #1678c2, -1px 0px 0px #1678c2, 0px 1px 0px #1678c2, 1px 0px 0px #1678c2;
+  text-shadow: 0px -1px 0px #2c4d70, -1px 0px 0px #2c4d70, 0px 1px 0px #2c4d70, 1px 0px 0px #2c4d70;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -106,21 +112,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#54C8FF), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #2185D0 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #375a7f 0.78px;
 }
 .ui.secondary.rating .active.icon {
   color: #545454;
-  text-shadow: 0px -1px 0px #1B1C1D, -1px 0px 0px #1B1C1D, 0px 1px 0px #1B1C1D, 1px 0px 0px #1B1C1D;
+  text-shadow: 0px -1px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000, 1px 0px 0px #000;
 }
 .ui.secondary.rating .icon.selected,
 .ui.secondary.rating .icon.selected.active,
 .ui.secondary.rating .icon.selected.partial.active {
   background: inherit;
   color: #6e6e6e;
-  text-shadow: 0px -1px 0px #27292a, -1px 0px 0px #27292a, 0px 1px 0px #27292a, 1px 0px 0px #27292a;
+  text-shadow: 0px -1px 0px #0d0d0d, -1px 0px 0px #0d0d0d, 0px 1px 0px #0d0d0d, 1px 0px 0px #0d0d0d;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -128,21 +131,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#545454), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #1B1C1D 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #000 0.78px;
 }
 .ui.red.rating .active.icon {
   color: #FF695E;
-  text-shadow: 0px -1px 0px #DB2828, -1px 0px 0px #DB2828, 0px 1px 0px #DB2828, 1px 0px 0px #DB2828;
+  text-shadow: 0px -1px 0px #e74c3c, -1px 0px 0px #e74c3c, 0px 1px 0px #e74c3c, 1px 0px 0px #e74c3c;
 }
 .ui.red.rating .icon.selected,
 .ui.red.rating .icon.selected.active,
 .ui.red.rating .icon.selected.partial.active {
   background: inherit;
   color: #ff392b;
-  text-shadow: 0px -1px 0px #d01919, -1px 0px 0px #d01919, 0px 1px 0px #d01919, 1px 0px 0px #d01919;
+  text-shadow: 0px -1px 0px #ee2f1c, -1px 0px 0px #ee2f1c, 0px 1px 0px #ee2f1c, 1px 0px 0px #ee2f1c;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -150,21 +150,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#FF695E), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #FF695E 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #FF695E 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #DB2828 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #e74c3c 0.78px;
 }
 .ui.orange.rating .active.icon {
   color: #FF851B;
-  text-shadow: 0px -1px 0px #F2711C, -1px 0px 0px #F2711C, 0px 1px 0px #F2711C, 1px 0px 0px #F2711C;
+  text-shadow: 0px -1px 0px #fd7e14, -1px 0px 0px #fd7e14, 0px 1px 0px #fd7e14, 1px 0px 0px #fd7e14;
 }
 .ui.orange.rating .icon.selected,
 .ui.orange.rating .icon.selected.active,
 .ui.orange.rating .icon.selected.partial.active {
   background: inherit;
   color: #e76b00;
-  text-shadow: 0px -1px 0px #f26202, -1px 0px 0px #f26202, 0px 1px 0px #f26202, 1px 0px 0px #f26202;
+  text-shadow: 0px -1px 0px #f87100, -1px 0px 0px #f87100, 0px 1px 0px #f87100, 1px 0px 0px #f87100;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -172,21 +169,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#FF851B), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #FF851B 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #FF851B 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #F2711C 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #fd7e14 0.78px;
 }
 .ui.yellow.rating .active.icon {
   color: #FFE21F;
-  text-shadow: 0px -1px 0px #FBBD08, -1px 0px 0px #FBBD08, 0px 1px 0px #FBBD08, 1px 0px 0px #FBBD08;
+  text-shadow: 0px -1px 0px #f39c12, -1px 0px 0px #f39c12, 0px 1px 0px #f39c12, 1px 0px 0px #f39c12;
 }
 .ui.yellow.rating .icon.selected,
 .ui.yellow.rating .icon.selected.active,
 .ui.yellow.rating .icon.selected.partial.active {
   background: inherit;
   color: #ebcd00;
-  text-shadow: 0px -1px 0px #eaae00, -1px 0px 0px #eaae00, 0px 1px 0px #eaae00, 1px 0px 0px #eaae00;
+  text-shadow: 0px -1px 0px #eb9001, -1px 0px 0px #eb9001, 0px 1px 0px #eb9001, 1px 0px 0px #eb9001;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -194,10 +188,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#FFE21F), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #FFE21F 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #FFE21F 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #FBBD08 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #f39c12 0.78px;
 }
 .ui.olive.rating .active.icon {
   color: #D9E778;
@@ -216,21 +207,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#D9E778), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #D9E778 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #D9E778 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
   -webkit-text-stroke: #B5CC18 0.78px;
-  background-clip: text;
-  color: transparent;
 }
 .ui.green.rating .active.icon {
   color: #2ECC40;
-  text-shadow: 0px -1px 0px #21BA45, -1px 0px 0px #21BA45, 0px 1px 0px #21BA45, 1px 0px 0px #21BA45;
+  text-shadow: 0px -1px 0px #00bc8c, -1px 0px 0px #00bc8c, 0px 1px 0px #00bc8c, 1px 0px 0px #00bc8c;
 }
 .ui.green.rating .icon.selected,
 .ui.green.rating .icon.selected.active,
 .ui.green.rating .icon.selected.partial.active {
   background: inherit;
   color: #1ea92e;
-  text-shadow: 0px -1px 0px #16ab39, -1px 0px 0px #16ab39, 0px 1px 0px #16ab39, 1px 0px 0px #16ab39;
+  text-shadow: 0px -1px 0px #00a379, -1px 0px 0px #00a379, 0px 1px 0px #00a379, 1px 0px 0px #00a379;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -238,21 +226,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#2ECC40), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #2ECC40 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #2ECC40 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #21BA45 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #00bc8c 0.78px;
 }
 .ui.teal.rating .active.icon {
   color: #6DFFFF;
-  text-shadow: 0px -1px 0px #00B5AD, -1px 0px 0px #00B5AD, 0px 1px 0px #00B5AD, 1px 0px 0px #00B5AD;
+  text-shadow: 0px -1px 0px #20c997, -1px 0px 0px #20c997, 0px 1px 0px #20c997, 1px 0px 0px #20c997;
 }
 .ui.teal.rating .icon.selected,
 .ui.teal.rating .icon.selected.active,
 .ui.teal.rating .icon.selected.partial.active {
   background: inherit;
   color: #3affff;
-  text-shadow: 0px -1px 0px #009c95, -1px 0px 0px #009c95, 0px 1px 0px #009c95, 1px 0px 0px #009c95;
+  text-shadow: 0px -1px 0px #15bb8a, -1px 0px 0px #15bb8a, 0px 1px 0px #15bb8a, 1px 0px 0px #15bb8a;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -260,21 +245,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#6DFFFF), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #6DFFFF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #6DFFFF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #00B5AD 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #20c997 0.78px;
 }
 .ui.blue.rating .active.icon {
   color: #54C8FF;
-  text-shadow: 0px -1px 0px #2185D0, -1px 0px 0px #2185D0, 0px 1px 0px #2185D0, 1px 0px 0px #2185D0;
+  text-shadow: 0px -1px 0px #375a7f, -1px 0px 0px #375a7f, 0px 1px 0px #375a7f, 1px 0px 0px #375a7f;
 }
 .ui.blue.rating .icon.selected,
 .ui.blue.rating .icon.selected.active,
 .ui.blue.rating .icon.selected.partial.active {
   background: inherit;
   color: #21b8ff;
-  text-shadow: 0px -1px 0px #1678c2, -1px 0px 0px #1678c2, 0px 1px 0px #1678c2, 1px 0px 0px #1678c2;
+  text-shadow: 0px -1px 0px #2c4d70, -1px 0px 0px #2c4d70, 0px 1px 0px #2c4d70, 1px 0px 0px #2c4d70;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -282,10 +264,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#54C8FF), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #54C8FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #2185D0 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #375a7f 0.78px;
 }
 .ui.violet.rating .active.icon {
   color: #A291FB;
@@ -304,21 +283,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#A291FB), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #A291FB 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #A291FB 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
   -webkit-text-stroke: #6435C9 0.78px;
-  background-clip: text;
-  color: transparent;
 }
 .ui.purple.rating .active.icon {
   color: #DC73FF;
-  text-shadow: 0px -1px 0px #A333C8, -1px 0px 0px #A333C8, 0px 1px 0px #A333C8, 1px 0px 0px #A333C8;
+  text-shadow: 0px -1px 0px #6f42c1, -1px 0px 0px #6f42c1, 0px 1px 0px #6f42c1, 1px 0px 0px #6f42c1;
 }
 .ui.purple.rating .icon.selected,
 .ui.purple.rating .icon.selected.active,
 .ui.purple.rating .icon.selected.partial.active {
   background: inherit;
   color: #cf40ff;
-  text-shadow: 0px -1px 0px #9627ba, -1px 0px 0px #9627ba, 0px 1px 0px #9627ba, 1px 0px 0px #9627ba;
+  text-shadow: 0px -1px 0px #6234b6, -1px 0px 0px #6234b6, 0px 1px 0px #6234b6, 1px 0px 0px #6234b6;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -326,21 +302,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#DC73FF), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #DC73FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #DC73FF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #A333C8 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #6f42c1 0.78px;
 }
 .ui.pink.rating .active.icon {
   color: #FF8EDF;
-  text-shadow: 0px -1px 0px #E03997, -1px 0px 0px #E03997, 0px 1px 0px #E03997, 1px 0px 0px #E03997;
+  text-shadow: 0px -1px 0px #e83e8c, -1px 0px 0px #e83e8c, 0px 1px 0px #e83e8c, 1px 0px 0px #e83e8c;
 }
 .ui.pink.rating .icon.selected,
 .ui.pink.rating .icon.selected.active,
 .ui.pink.rating .icon.selected.partial.active {
   background: inherit;
   color: #ff5bd1;
-  text-shadow: 0px -1px 0px #e61a8d, -1px 0px 0px #e61a8d, 0px 1px 0px #e61a8d, 1px 0px 0px #e61a8d;
+  text-shadow: 0px -1px 0px #ef1e7e, -1px 0px 0px #ef1e7e, 0px 1px 0px #ef1e7e, 1px 0px 0px #ef1e7e;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -348,10 +321,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#FF8EDF), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #FF8EDF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #FF8EDF 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #E03997 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #e83e8c 0.78px;
 }
 .ui.brown.rating .active.icon {
   color: #D67C1C;
@@ -370,10 +340,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#D67C1C), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #D67C1C 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #D67C1C 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
   -webkit-text-stroke: #A5673F 0.78px;
-  background-clip: text;
-  color: transparent;
 }
 .ui.grey.rating .active.icon {
   color: #DCDDDE;
@@ -392,21 +359,18 @@
   background: -webkit-gradient(linear, left top, right top, from(#DCDDDE), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #DCDDDE 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #DCDDDE 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
   -webkit-text-stroke: #767676 0.78px;
-  background-clip: text;
-  color: transparent;
 }
 .ui.black.rating .active.icon {
   color: #545454;
-  text-shadow: 0px -1px 0px #1B1C1D, -1px 0px 0px #1B1C1D, 0px 1px 0px #1B1C1D, 1px 0px 0px #1B1C1D;
+  text-shadow: 0px -1px 0px #000, -1px 0px 0px #000, 0px 1px 0px #000, 1px 0px 0px #000;
 }
 .ui.black.rating .icon.selected,
 .ui.black.rating .icon.selected.active,
 .ui.black.rating .icon.selected.partial.active {
   background: inherit;
   color: #000000;
-  text-shadow: 0px -1px 0px #27292a, -1px 0px 0px #27292a, 0px 1px 0px #27292a, 1px 0px 0px #27292a;
+  text-shadow: 0px -1px 0px #0d0d0d, -1px 0px 0px #0d0d0d, 0px 1px 0px #0d0d0d, 1px 0px 0px #0d0d0d;
   -webkit-text-stroke: unset;
   background-clip: unset;
 }
@@ -414,10 +378,7 @@
   background: -webkit-gradient(linear, left top, right top, from(#545454), to(rgba(0, 0, 0, 0.15)));
   background: -webkit-linear-gradient(left, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
   background: linear-gradient(to right, #545454 0% var(--full), rgba(0, 0, 0, 0.15) var(--full) 100%);
-  text-shadow: none;
-  -webkit-text-stroke: #1B1C1D 0.78px;
-  background-clip: text;
-  color: transparent;
+  -webkit-text-stroke: #000 0.78px;
 }
 
 

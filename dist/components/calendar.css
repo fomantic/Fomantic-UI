@@ -107,7 +107,7 @@
 .ui.ui.calendar .ui.table tr .disabled {
   pointer-events: auto;
   cursor: default;
-  color: rgba(40, 40, 40, 0.3);
+  color: #fff;
 }
 .ui.calendar .ui.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(0, 0, 0, 0.6);
@@ -144,11 +144,28 @@
           box-shadow: inset 0 0 0 1px #85B7D9;
 }
 .ui.inverted.calendar .ui.inverted.table tr .disabled {
-  color: rgba(225, 225, 225, 0.3);
+  color: #aaa;
 }
 .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(255, 255, 255, 0.8);
   background: rgba(255, 255, 255, 0.02);
+}
+.ui.calendar.popup > .ui.ui.grid {
+  margin: -1rem;
+}
+.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) {
+  padding-left: 0;
+}
+.ui.calendar.popup > .ui.ui.grid > .column:not(:first-child) > .ui.table {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) {
+  padding-right: 0;
+}
+.ui.calendar.popup > .ui.ui.grid > .column:not(:last-child) > .ui.table {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 
