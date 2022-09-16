@@ -23,7 +23,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.flyout = function(parameters) {
+$.flyout = $.fn.flyout = function(parameters) {
   var
     $allModules     = $(this),
     $window         = $(window),
@@ -75,8 +75,10 @@ $.fn.flyout = function(parameters) {
         $pusher              = $context.children(selector.pusher),
         $style,
 
+        isFlyoutComponent    = $module.hasClass(namespace),
+
         element              = this,
-        instance             = $module.hasClass(namespace) ? $module.data(moduleNamespace) : undefined,
+        instance             = isFlyoutComponent ? $module.data(moduleNamespace) : undefined,
 
         ignoreRepeatedEvents = false,
         isBody               = $context[0] === $body[0],
@@ -97,7 +99,7 @@ $.fn.flyout = function(parameters) {
         initialize: function() {
           module.debug('Initializing flyout', parameters);
 
-          if(!$module.hasClass(namespace)) {
+          if(!isFlyoutComponent) {
             module.create.flyout();
             if(!$.isFunction(settings.onHidden)) {
               settings.onHidden = function () {
@@ -422,13 +424,6 @@ $.fn.flyout = function(parameters) {
           $flyouts = $context.children(selector.flyout);
         },
 
-        repaint: function() {
-          module.verbose('Forcing repaint event');
-          element.style.display = 'none';
-          element.scrollTop = element.scrollTop;
-          element.style.display = '';
-        },
-
         setup: {
           cache: function() {
             module.cache = {
@@ -591,7 +586,6 @@ $.fn.flyout = function(parameters) {
             : function(){}
           ;
           module.set.overlay();
-          module.repaint();
           if(settings.returnScroll) {
             currentScroll = (isBody ? $window : $context).scrollTop();
           }
