@@ -97,7 +97,7 @@ body {
   padding: 0;
   overflow-x: hidden;
   min-width: 320px;
-  background: #2d2d2d;
+  background: #2a2a2a;
   font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 14px;
   line-height: 1.4285em;
@@ -193,18 +193,18 @@ body ::-webkit-scrollbar {
   height: 10px;
 }
 body ::-webkit-scrollbar-track {
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.1);
   border-radius: 0;
 }
 body ::-webkit-scrollbar-thumb {
   cursor: pointer;
   border-radius: 5px;
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.25);
   -webkit-transition: color 0.2s ease;
   transition: color 0.2s ease;
 }
 body ::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.15);
 }
 body ::-webkit-scrollbar-thumb:hover {
   background: rgba(128, 135, 139, 0.8);
@@ -218,21 +218,21 @@ body .ui {
   scrollbar-arrow-color: #e6e6e6;
   
 /* firefox : first color thumb, second track*/
-  scrollbar-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.1);
+  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
   scrollbar-width: thin;
 }
 /* Inverted UI */
 body .ui.inverted:not(.dimmer)::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
 body .ui.inverted:not(.dimmer)::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 body .ui.inverted:not(.dimmer) {
   
@@ -243,7 +243,7 @@ body .ui.inverted:not(.dimmer) {
   scrollbar-arrow-color: #323232;
   
 /* firefox : first color thumb, second track */
-  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+  scrollbar-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.1);
 }
 
 
@@ -286,12 +286,6 @@ input::selection {
   background-color: rgba(100, 100, 100, 0.4);
   color: rgba(255, 255, 255, 0.87);
 }
-
-
-/*******************************
-        Global Overrides
-*******************************/
-
 
 
 /*******************************

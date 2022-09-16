@@ -148,7 +148,7 @@ body.pushable.dimmed {
   overflow: hidden;
 }
 body.pushable > .pusher {
-  background: #2d2d2d;
+  background: #2a2a2a;
 }
 
 /*--------------
@@ -620,12 +620,6 @@ body.pushable > .pusher {
   -webkit-transform: scale(0.75);
           transform: scale(0.75);
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

@@ -27,7 +27,7 @@
   line-height: 1.21428571em;
   padding: 0.67857143em 1em;
   font-size: 1em;
-  background: #1B1C1D;
+  background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(255, 255, 255, 0.87);
   -webkit-box-shadow: 0 0 0 0 transparent inset;
@@ -178,7 +178,7 @@
 
 .ui.search > .prompt:focus {
   border-color: rgba(34, 36, 38, 0.35);
-  background: #1B1C1D;
+  background: #FFFFFF;
   color: rgba(255, 255, 255, 0.95);
 }
 
@@ -520,12 +520,6 @@
     max-width: calc(100vw - 2rem);
   }
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

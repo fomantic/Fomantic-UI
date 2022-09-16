@@ -38,7 +38,7 @@
   text-align: left;
   line-height: 1.21428571em;
   font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background: #1B1C1D;
+  background: #FFFFFF;
   border: 1px solid rgba(34, 36, 38, 0.15);
   color: rgba(255, 255, 255, 0.87);
   border-radius: 0.28571429rem;
@@ -147,7 +147,7 @@
 .ui.input.focus > input,
 .ui.input > input:focus {
   border-color: #85B7D9;
-  background: #1B1C1D;
+  background: #FFFFFF;
   color: rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -1434,12 +1434,6 @@ input[type="file"].ui.black.file.input::file-selector-button:hover,
 .ui.massive.input {
   font-size: 1.71428571em;
 }
-
-
-/*******************************
-         Theme Overrides
-*******************************/
-
 
 
 /*******************************

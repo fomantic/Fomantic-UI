@@ -628,16 +628,16 @@
   }
 }
 .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.1);
 }
 .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.25);
 }
 .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(0, 0, 0, 0.15);
 }
 .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(0, 0, 0, 0.35);
 }
 .ui.inverted.scrolling.table > tbody {
   
@@ -648,7 +648,7 @@
   scrollbar-arrow-color: #323232;
   
 /* firefox : first color thumb, second track */
-  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
+  scrollbar-color: rgba(0, 0, 0, 0.25) rgba(0, 0, 0, 0.1);
 }
 
 /*--------------
