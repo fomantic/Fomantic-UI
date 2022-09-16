@@ -25,7 +25,7 @@
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
-  color: #464545;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.input > input {
   margin: 0;
@@ -37,10 +37,10 @@
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
   text-align: left;
   line-height: 1.21428571em;
-  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background: #fff;
-  border: 1px solid #464545;
-  color: #464545;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  background: #FFFFFF;
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  color: rgba(0, 0, 0, 0.87);
   border-radius: 0.28571429rem;
   -webkit-transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border-color 0.1s ease, -webkit-box-shadow 0.1s ease;
@@ -67,14 +67,14 @@
 
 /* browsers require these rules separate */
 .ui.input > input::-webkit-input-placeholder {
-  color: #999;
+  color: rgba(191, 191, 191, 0.87);
 }
 .ui.input > input::-moz-placeholder {
-  color: #999;
+  color: rgba(191, 191, 191, 0.87);
   opacity: 1;
 }
 .ui.input > input:-ms-input-placeholder {
-  color: #999;
+  color: rgba(191, 191, 191, 0.87);
 }
 
 
@@ -104,7 +104,7 @@
 .ui.input.down input {
   border-color: rgba(0, 0, 0, 0.3);
   background: #FAFAFA;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -146,23 +146,23 @@
 
 .ui.input.focus > input,
 .ui.input > input:focus {
-  border-color: #fff;
-  background: #fff;
-  color: black;
+  border-color: #85B7D9;
+  background: #FFFFFF;
+  color: rgba(0, 0, 0, 0.8);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
-  color: #b9b8b8;
+  color: rgba(115, 115, 115, 0.87);
 }
 .ui.input.focus > input::-moz-placeholder,
 .ui.input > input:focus::-moz-placeholder {
-  color: #b9b8b8;
+  color: rgba(115, 115, 115, 0.87);
 }
 .ui.input.focus > input:-ms-input-placeholder,
 .ui.input > input:focus:-ms-input-placeholder {
-  color: #b9b8b8;
+  color: rgba(115, 115, 115, 0.87);
 }
 
 /*--------------------
@@ -170,145 +170,145 @@
   ---------------------*/
 
 .ui.input.error > input {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #e6e6e6;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .ui.input > input:not(:-moz-placeholder-shown):invalid {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #e6e6e6;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   box-shadow: none;
 }
 .ui.input > input:not(:-ms-input-placeholder):invalid {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #e6e6e6;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   box-shadow: none;
 }
 .ui.input > input:not(:placeholder-shown):invalid {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #e6e6e6;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .ui.input > input:not(:-ms-input-placeholder):invalid {
-  background-color: #e74c3c;
-  border-color: #e74c3c;
-  color: #e6e6e6;
+  background-color: #FFF6F6;
+  border-color: #E0B4B4;
+  color: #9F3A38;
   box-shadow: none;
 }
 
 /* Placeholder */
 .ui.input.error > input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #e7bdbc;
 }
 .ui.input.error > input::-moz-placeholder {
-  color: #ffffff;
+  color: #e7bdbc;
 }
 .ui.input.error > input:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #e7bdbc !important;
 }
 
 /* Focused Placeholder */
 .ui.input.error > input:focus::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #da9796;
 }
 .ui.input.error > input:focus::-moz-placeholder {
-  color: #ffffff;
+  color: #da9796;
 }
 .ui.input.error > input:focus:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #da9796 !important;
 }
 .ui.input.info > input {
-  background-color: #3498db;
-  border-color: #3498db;
-  color: #fff;
+  background-color: #F8FFFF;
+  border-color: #A9D5DE;
+  color: #276F86;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 /* Placeholder */
 .ui.input.info > input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #98cfe1;
 }
 .ui.input.info > input::-moz-placeholder {
-  color: #ffffff;
+  color: #98cfe1;
 }
 .ui.input.info > input:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #98cfe1 !important;
 }
 
 /* Focused Placeholder */
 .ui.input.info > input:focus::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #70bdd6;
 }
 .ui.input.info > input:focus::-moz-placeholder {
-  color: #ffffff;
+  color: #70bdd6;
 }
 .ui.input.info > input:focus:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #70bdd6 !important;
 }
 .ui.input.success > input {
-  background-color: #00bc8c;
-  border-color: #00bc8c;
-  color: #fff;
+  background-color: #FCFFF5;
+  border-color: #A3C293;
+  color: #2C662D;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 /* Placeholder */
 .ui.input.success > input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #8fcf90;
 }
 .ui.input.success > input::-moz-placeholder {
-  color: #ffffff;
+  color: #8fcf90;
 }
 .ui.input.success > input:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #8fcf90 !important;
 }
 
 /* Focused Placeholder */
 .ui.input.success > input:focus::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #6cbf6d;
 }
 .ui.input.success > input:focus::-moz-placeholder {
-  color: #ffffff;
+  color: #6cbf6d;
 }
 .ui.input.success > input:focus:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #6cbf6d !important;
 }
 .ui.input.warning > input {
-  background-color: #f39c12;
-  border-color: #f39c12;
-  color: #fff;
+  background-color: #FFFAF3;
+  border-color: #C9BA9B;
+  color: #573A08;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 
 /* Placeholder */
 .ui.input.warning > input::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #edad3e;
 }
 .ui.input.warning > input::-moz-placeholder {
-  color: #ffffff;
+  color: #edad3e;
 }
 .ui.input.warning > input:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #edad3e !important;
 }
 
 /* Focused Placeholder */
 .ui.input.warning > input:focus::-webkit-input-placeholder {
-  color: #ffffff;
+  color: #e39715;
 }
 .ui.input.warning > input:focus::-moz-placeholder {
-  color: #ffffff;
+  color: #e39715;
 }
 .ui.input.warning > input:focus:-ms-input-placeholder {
-  color: #ffffff !important;
+  color: #e39715 !important;
 }
 
 
@@ -349,7 +349,7 @@
 
 /* Transparent Inverted */
 .ui.transparent.inverted.input {
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.transparent.inverted.input > textarea,
 .ui.ui.transparent.inverted.input > input {
@@ -463,7 +463,7 @@
   border-left-color: transparent;
 }
 .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-  border-left-color: #fff;
+  border-left-color: #85B7D9;
 }
 
 /* Regular Label on Right */
@@ -477,7 +477,7 @@
   border-bottom-left-radius: 0;
 }
 .ui[class*="right labeled"].input > input:focus {
-  border-right-color: #fff !important;
+  border-right-color: #85B7D9 !important;
 }
 
 /* Corner Label */
@@ -593,93 +593,93 @@
 .ui.form .field.error > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.error > .ui.button,
 .ui.labeled.input.error:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #e74c3c;
-  border-bottom: 1px solid #e74c3c;
+  border-top: 1px solid #E0B4B4;
+  border-bottom: 1px solid #E0B4B4;
 }
 .ui.form .field.error > .ui[class*="left action"].input > .ui.button,
 .ui.form .field.error > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui[class*="left action"].input.error > .ui.button,
 .ui.labeled.input.error:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #e74c3c;
+  border-left: 1px solid #E0B4B4;
 }
 .ui.form .field.error > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.error:not([class*="left action"]) > input + .ui.button,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #e74c3c;
+  border-right: 1px solid #E0B4B4;
 }
 .ui.form .field.error > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.error:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #e74c3c;
+  border-left: 1px solid #E0B4B4;
 }
 .ui.form .field.info > .ui.action.input > .ui.button,
 .ui.form .field.info > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.info > .ui.button,
 .ui.labeled.input.info:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #3498db;
-  border-bottom: 1px solid #3498db;
+  border-top: 1px solid #A9D5DE;
+  border-bottom: 1px solid #A9D5DE;
 }
 .ui.form .field.info > .ui[class*="left action"].input > .ui.button,
 .ui.form .field.info > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui[class*="left action"].input.info > .ui.button,
 .ui.labeled.input.info:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #3498db;
+  border-left: 1px solid #A9D5DE;
 }
 .ui.form .field.info > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.info:not([class*="left action"]) > input + .ui.button,
 .ui.right.labeled.input.info:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #3498db;
+  border-right: 1px solid #A9D5DE;
 }
 .ui.form .field.info > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.info:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #3498db;
+  border-left: 1px solid #A9D5DE;
 }
 .ui.form .field.success > .ui.action.input > .ui.button,
 .ui.form .field.success > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.success > .ui.button,
 .ui.labeled.input.success:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #00bc8c;
-  border-bottom: 1px solid #00bc8c;
+  border-top: 1px solid #A3C293;
+  border-bottom: 1px solid #A3C293;
 }
 .ui.form .field.success > .ui[class*="left action"].input > .ui.button,
 .ui.form .field.success > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui[class*="left action"].input.success > .ui.button,
 .ui.labeled.input.success:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #00bc8c;
+  border-left: 1px solid #A3C293;
 }
 .ui.form .field.success > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.success:not([class*="left action"]) > input + .ui.button,
 .ui.right.labeled.input.success:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #00bc8c;
+  border-right: 1px solid #A3C293;
 }
 .ui.form .field.success > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.success:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #00bc8c;
+  border-left: 1px solid #A3C293;
 }
 .ui.form .field.warning > .ui.action.input > .ui.button,
 .ui.form .field.warning > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
 .ui.action.input.warning > .ui.button,
 .ui.labeled.input.warning:not([class*="corner labeled"]) > .ui.label {
-  border-top: 1px solid #f39c12;
-  border-bottom: 1px solid #f39c12;
+  border-top: 1px solid #C9BA9B;
+  border-bottom: 1px solid #C9BA9B;
 }
 .ui.form .field.warning > .ui[class*="left action"].input > .ui.button,
 .ui.form .field.warning > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
 .ui[class*="left action"].input.warning > .ui.button,
 .ui.labeled.input.warning:not(.right):not([class*="corner labeled"]) > .ui.label {
-  border-left: 1px solid #f39c12;
+  border-left: 1px solid #C9BA9B;
 }
 .ui.form .field.warning > .ui.action.input:not([class*="left action"]) > input + .ui.button,
 .ui.form .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
 .ui.action.input.warning:not([class*="left action"]) > input + .ui.button,
 .ui.right.labeled.input.warning:not([class*="corner labeled"]) > input + .ui.label {
-  border-right: 1px solid #f39c12;
+  border-right: 1px solid #C9BA9B;
 }
 .ui.form .field.warning > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
 .ui.right.labeled.input.warning:not([class*="corner labeled"]) > .ui.label:first-child {
-  border-left: 1px solid #f39c12;
+  border-left: 1px solid #C9BA9B;
 }
 
 /*--------------------
@@ -736,10 +736,10 @@
 
 /* Input Focus */
 .ui.action.input:not([class*="left action"]) > input:focus {
-  border-right-color: #fff;
+  border-right-color: #85B7D9;
 }
 .ui.ui[class*="left action"].input > input:focus {
-  border-left-color: #fff;
+  border-left-color: #85B7D9;
 }
 
 /*--------------------
@@ -845,9 +845,9 @@
 }
 .ui.form .field input[type="file"]:required:invalid,
 .ui.file.input input[type="file"]:required:invalid {
-  color: #e6e6e6;
-  background: #e74c3c;
-  border-color: #e74c3c;
+  color: #9F3A38;
+  background: #FFF6F6;
+  border-color: #E0B4B4;
 }
 input[type="file"].ui.invisible.file.input,
 .ui.invisible.file.input input[type="file"] {
@@ -861,14 +861,14 @@ input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertia
 }
 input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary).inverted {
-  background: #fff;
+  background: #FFFFFF;
 }
 
 /* this is related to existing buttons, so the button color variable is used here! */
 input[type="file"].ui.file.input:focus + label.ui.primary.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.primary.button:not(.basic):not(.tertiary) {
-  background-color: #2c4d70;
-  color: #fff;
+  background-color: #1678c2;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.primary.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.primary.button:not(.basic):not(.tertiary).inverted {
@@ -876,8 +876,8 @@ input[type="file"].ui.file.input:focus + label.ui.primary.button:not(.basic):not
 }
 input[type="file"].ui.file.input:focus + label.ui.secondary.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.secondary.button:not(.basic):not(.tertiary) {
-  background-color: #0d0d0d;
-  color: #fff;
+  background-color: #27292a;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.secondary.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.secondary.button:not(.basic):not(.tertiary).inverted {
@@ -885,8 +885,8 @@ input[type="file"].ui.file.input:focus + label.ui.secondary.button:not(.basic):n
 }
 input[type="file"].ui.file.input:focus + label.ui.red.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.red.button:not(.basic):not(.tertiary) {
-  background-color: #ee2f1c;
-  color: #fff;
+  background-color: #d01919;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.red.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.red.button:not(.basic):not(.tertiary).inverted {
@@ -894,8 +894,8 @@ input[type="file"].ui.file.input:focus + label.ui.red.button:not(.basic):not(.te
 }
 input[type="file"].ui.file.input:focus + label.ui.orange.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.orange.button:not(.basic):not(.tertiary) {
-  background-color: #f87100;
-  color: #fff;
+  background-color: #f26202;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.orange.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.orange.button:not(.basic):not(.tertiary).inverted {
@@ -903,8 +903,8 @@ input[type="file"].ui.file.input:focus + label.ui.orange.button:not(.basic):not(
 }
 input[type="file"].ui.file.input:focus + label.ui.yellow.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.yellow.button:not(.basic):not(.tertiary) {
-  background-color: #eb9001;
-  color: #fff;
+  background-color: #eaae00;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.yellow.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.yellow.button:not(.basic):not(.tertiary).inverted {
@@ -913,7 +913,7 @@ input[type="file"].ui.file.input:focus + label.ui.yellow.button:not(.basic):not(
 input[type="file"].ui.file.input:focus + label.ui.olive.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.olive.button:not(.basic):not(.tertiary) {
   background-color: #a7bd0d;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.olive.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.olive.button:not(.basic):not(.tertiary).inverted {
@@ -921,8 +921,8 @@ input[type="file"].ui.file.input:focus + label.ui.olive.button:not(.basic):not(.
 }
 input[type="file"].ui.file.input:focus + label.ui.green.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.green.button:not(.basic):not(.tertiary) {
-  background-color: #00a379;
-  color: #fff;
+  background-color: #16ab39;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.green.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.green.button:not(.basic):not(.tertiary).inverted {
@@ -930,8 +930,8 @@ input[type="file"].ui.file.input:focus + label.ui.green.button:not(.basic):not(.
 }
 input[type="file"].ui.file.input:focus + label.ui.teal.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.teal.button:not(.basic):not(.tertiary) {
-  background-color: #15bb8a;
-  color: #fff;
+  background-color: #009c95;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.teal.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.teal.button:not(.basic):not(.tertiary).inverted {
@@ -939,8 +939,8 @@ input[type="file"].ui.file.input:focus + label.ui.teal.button:not(.basic):not(.t
 }
 input[type="file"].ui.file.input:focus + label.ui.blue.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.blue.button:not(.basic):not(.tertiary) {
-  background-color: #2c4d70;
-  color: #fff;
+  background-color: #1678c2;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.blue.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.blue.button:not(.basic):not(.tertiary).inverted {
@@ -949,7 +949,7 @@ input[type="file"].ui.file.input:focus + label.ui.blue.button:not(.basic):not(.t
 input[type="file"].ui.file.input:focus + label.ui.violet.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.violet.button:not(.basic):not(.tertiary) {
   background-color: #5829bb;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.violet.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.violet.button:not(.basic):not(.tertiary).inverted {
@@ -957,8 +957,8 @@ input[type="file"].ui.file.input:focus + label.ui.violet.button:not(.basic):not(
 }
 input[type="file"].ui.file.input:focus + label.ui.purple.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.purple.button:not(.basic):not(.tertiary) {
-  background-color: #6234b6;
-  color: #fff;
+  background-color: #9627ba;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.purple.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.purple.button:not(.basic):not(.tertiary).inverted {
@@ -966,8 +966,8 @@ input[type="file"].ui.file.input:focus + label.ui.purple.button:not(.basic):not(
 }
 input[type="file"].ui.file.input:focus + label.ui.pink.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.pink.button:not(.basic):not(.tertiary) {
-  background-color: #ef1e7e;
-  color: #fff;
+  background-color: #e61a8d;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.pink.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.pink.button:not(.basic):not(.tertiary).inverted {
@@ -976,7 +976,7 @@ input[type="file"].ui.file.input:focus + label.ui.pink.button:not(.basic):not(.t
 input[type="file"].ui.file.input:focus + label.ui.brown.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.brown.button:not(.basic):not(.tertiary) {
   background-color: #975b33;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.brown.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.brown.button:not(.basic):not(.tertiary).inverted {
@@ -985,7 +985,7 @@ input[type="file"].ui.file.input:focus + label.ui.brown.button:not(.basic):not(.
 input[type="file"].ui.file.input:focus + label.ui.grey.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.grey.button:not(.basic):not(.tertiary) {
   background-color: #838383;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.grey.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.grey.button:not(.basic):not(.tertiary).inverted {
@@ -993,8 +993,8 @@ input[type="file"].ui.file.input:focus + label.ui.grey.button:not(.basic):not(.t
 }
 input[type="file"].ui.file.input:focus + label.ui.black.button:not(.basic):not(.tertiary),
 .ui.file.input input[type="file"]:focus + label.ui.black.button:not(.basic):not(.tertiary) {
-  background-color: #0d0d0d;
-  color: #fff;
+  background-color: #27292a;
+  color: #FFFFFF;
 }
 input[type="file"].ui.file.input:focus + label.ui.black.button:not(.basic):not(.tertiary).inverted,
 .ui.file.input input[type="file"]:focus + label.ui.black.button:not(.basic):not(.tertiary).inverted {
@@ -1002,143 +1002,143 @@ input[type="file"].ui.file.input:focus + label.ui.black.button:not(.basic):not(.
 }
 input[type="file"].ui.primary.file.input::-webkit-file-upload-button,
 .ui.primary.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.primary.file.input::-webkit-file-upload-button:hover,
 .ui.primary.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.primary.file.input::-ms-browse,
 .ui.primary.file.input input[type="file"]::-ms-browse {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.primary.file.input::-ms-browse:hover,
 .ui.primary.file.input input[type="file"]::-ms-browse:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.primary.file.input::file-selector-button,
 .ui.primary.file.input input[type="file"]::file-selector-button {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.primary.file.input::file-selector-button:hover,
 .ui.primary.file.input input[type="file"]::file-selector-button:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.secondary.file.input::-webkit-file-upload-button,
 .ui.secondary.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.secondary.file.input::-webkit-file-upload-button:hover,
 .ui.secondary.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 input[type="file"].ui.secondary.file.input::-ms-browse,
 .ui.secondary.file.input input[type="file"]::-ms-browse {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.secondary.file.input::-ms-browse:hover,
 .ui.secondary.file.input input[type="file"]::-ms-browse:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 input[type="file"].ui.secondary.file.input::file-selector-button,
 .ui.secondary.file.input input[type="file"]::file-selector-button {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.secondary.file.input::file-selector-button:hover,
 .ui.secondary.file.input input[type="file"]::file-selector-button:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 input[type="file"].ui.red.file.input::-webkit-file-upload-button,
 .ui.red.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #e74c3c;
-  color: #fff;
+  background: #DB2828;
+  color: #FFFFFF;
 }
 input[type="file"].ui.red.file.input::-webkit-file-upload-button:hover,
 .ui.red.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #ee2f1c;
+  background: #d01919;
 }
 input[type="file"].ui.red.file.input::-ms-browse,
 .ui.red.file.input input[type="file"]::-ms-browse {
-  background: #e74c3c;
-  color: #fff;
+  background: #DB2828;
+  color: #FFFFFF;
 }
 input[type="file"].ui.red.file.input::-ms-browse:hover,
 .ui.red.file.input input[type="file"]::-ms-browse:hover {
-  background: #ee2f1c;
+  background: #d01919;
 }
 input[type="file"].ui.red.file.input::file-selector-button,
 .ui.red.file.input input[type="file"]::file-selector-button {
-  background: #e74c3c;
-  color: #fff;
+  background: #DB2828;
+  color: #FFFFFF;
 }
 input[type="file"].ui.red.file.input::file-selector-button:hover,
 .ui.red.file.input input[type="file"]::file-selector-button:hover {
-  background: #ee2f1c;
+  background: #d01919;
 }
 input[type="file"].ui.orange.file.input::-webkit-file-upload-button,
 .ui.orange.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #fd7e14;
-  color: #fff;
+  background: #F2711C;
+  color: #FFFFFF;
 }
 input[type="file"].ui.orange.file.input::-webkit-file-upload-button:hover,
 .ui.orange.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #f87100;
+  background: #f26202;
 }
 input[type="file"].ui.orange.file.input::-ms-browse,
 .ui.orange.file.input input[type="file"]::-ms-browse {
-  background: #fd7e14;
-  color: #fff;
+  background: #F2711C;
+  color: #FFFFFF;
 }
 input[type="file"].ui.orange.file.input::-ms-browse:hover,
 .ui.orange.file.input input[type="file"]::-ms-browse:hover {
-  background: #f87100;
+  background: #f26202;
 }
 input[type="file"].ui.orange.file.input::file-selector-button,
 .ui.orange.file.input input[type="file"]::file-selector-button {
-  background: #fd7e14;
-  color: #fff;
+  background: #F2711C;
+  color: #FFFFFF;
 }
 input[type="file"].ui.orange.file.input::file-selector-button:hover,
 .ui.orange.file.input input[type="file"]::file-selector-button:hover {
-  background: #f87100;
+  background: #f26202;
 }
 input[type="file"].ui.yellow.file.input::-webkit-file-upload-button,
 .ui.yellow.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #f39c12;
-  color: #fff;
+  background: #FBBD08;
+  color: #FFFFFF;
 }
 input[type="file"].ui.yellow.file.input::-webkit-file-upload-button:hover,
 .ui.yellow.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #eb9001;
+  background: #eaae00;
 }
 input[type="file"].ui.yellow.file.input::-ms-browse,
 .ui.yellow.file.input input[type="file"]::-ms-browse {
-  background: #f39c12;
-  color: #fff;
+  background: #FBBD08;
+  color: #FFFFFF;
 }
 input[type="file"].ui.yellow.file.input::-ms-browse:hover,
 .ui.yellow.file.input input[type="file"]::-ms-browse:hover {
-  background: #eb9001;
+  background: #eaae00;
 }
 input[type="file"].ui.yellow.file.input::file-selector-button,
 .ui.yellow.file.input input[type="file"]::file-selector-button {
-  background: #f39c12;
-  color: #fff;
+  background: #FBBD08;
+  color: #FFFFFF;
 }
 input[type="file"].ui.yellow.file.input::file-selector-button:hover,
 .ui.yellow.file.input input[type="file"]::file-selector-button:hover {
-  background: #eb9001;
+  background: #eaae00;
 }
 input[type="file"].ui.olive.file.input::-webkit-file-upload-button,
 .ui.olive.file.input input[type="file"]::-webkit-file-upload-button {
   background: #B5CC18;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.olive.file.input::-webkit-file-upload-button:hover,
 .ui.olive.file.input input[type="file"]::-webkit-file-upload-button:hover {
@@ -1147,7 +1147,7 @@ input[type="file"].ui.olive.file.input::-webkit-file-upload-button:hover,
 input[type="file"].ui.olive.file.input::-ms-browse,
 .ui.olive.file.input input[type="file"]::-ms-browse {
   background: #B5CC18;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.olive.file.input::-ms-browse:hover,
 .ui.olive.file.input input[type="file"]::-ms-browse:hover {
@@ -1156,7 +1156,7 @@ input[type="file"].ui.olive.file.input::-ms-browse:hover,
 input[type="file"].ui.olive.file.input::file-selector-button,
 .ui.olive.file.input input[type="file"]::file-selector-button {
   background: #B5CC18;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.olive.file.input::file-selector-button:hover,
 .ui.olive.file.input input[type="file"]::file-selector-button:hover {
@@ -1164,89 +1164,89 @@ input[type="file"].ui.olive.file.input::file-selector-button:hover,
 }
 input[type="file"].ui.green.file.input::-webkit-file-upload-button,
 .ui.green.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #00bc8c;
-  color: #fff;
+  background: #21BA45;
+  color: #FFFFFF;
 }
 input[type="file"].ui.green.file.input::-webkit-file-upload-button:hover,
 .ui.green.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #00a379;
+  background: #16ab39;
 }
 input[type="file"].ui.green.file.input::-ms-browse,
 .ui.green.file.input input[type="file"]::-ms-browse {
-  background: #00bc8c;
-  color: #fff;
+  background: #21BA45;
+  color: #FFFFFF;
 }
 input[type="file"].ui.green.file.input::-ms-browse:hover,
 .ui.green.file.input input[type="file"]::-ms-browse:hover {
-  background: #00a379;
+  background: #16ab39;
 }
 input[type="file"].ui.green.file.input::file-selector-button,
 .ui.green.file.input input[type="file"]::file-selector-button {
-  background: #00bc8c;
-  color: #fff;
+  background: #21BA45;
+  color: #FFFFFF;
 }
 input[type="file"].ui.green.file.input::file-selector-button:hover,
 .ui.green.file.input input[type="file"]::file-selector-button:hover {
-  background: #00a379;
+  background: #16ab39;
 }
 input[type="file"].ui.teal.file.input::-webkit-file-upload-button,
 .ui.teal.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #20c997;
-  color: #fff;
+  background: #00B5AD;
+  color: #FFFFFF;
 }
 input[type="file"].ui.teal.file.input::-webkit-file-upload-button:hover,
 .ui.teal.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #15bb8a;
+  background: #009c95;
 }
 input[type="file"].ui.teal.file.input::-ms-browse,
 .ui.teal.file.input input[type="file"]::-ms-browse {
-  background: #20c997;
-  color: #fff;
+  background: #00B5AD;
+  color: #FFFFFF;
 }
 input[type="file"].ui.teal.file.input::-ms-browse:hover,
 .ui.teal.file.input input[type="file"]::-ms-browse:hover {
-  background: #15bb8a;
+  background: #009c95;
 }
 input[type="file"].ui.teal.file.input::file-selector-button,
 .ui.teal.file.input input[type="file"]::file-selector-button {
-  background: #20c997;
-  color: #fff;
+  background: #00B5AD;
+  color: #FFFFFF;
 }
 input[type="file"].ui.teal.file.input::file-selector-button:hover,
 .ui.teal.file.input input[type="file"]::file-selector-button:hover {
-  background: #15bb8a;
+  background: #009c95;
 }
 input[type="file"].ui.blue.file.input::-webkit-file-upload-button,
 .ui.blue.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.blue.file.input::-webkit-file-upload-button:hover,
 .ui.blue.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.blue.file.input::-ms-browse,
 .ui.blue.file.input input[type="file"]::-ms-browse {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.blue.file.input::-ms-browse:hover,
 .ui.blue.file.input input[type="file"]::-ms-browse:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.blue.file.input::file-selector-button,
 .ui.blue.file.input input[type="file"]::file-selector-button {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 input[type="file"].ui.blue.file.input::file-selector-button:hover,
 .ui.blue.file.input input[type="file"]::file-selector-button:hover {
-  background: #2c4d70;
+  background: #1678c2;
 }
 input[type="file"].ui.violet.file.input::-webkit-file-upload-button,
 .ui.violet.file.input input[type="file"]::-webkit-file-upload-button {
   background: #6435C9;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.violet.file.input::-webkit-file-upload-button:hover,
 .ui.violet.file.input input[type="file"]::-webkit-file-upload-button:hover {
@@ -1255,7 +1255,7 @@ input[type="file"].ui.violet.file.input::-webkit-file-upload-button:hover,
 input[type="file"].ui.violet.file.input::-ms-browse,
 .ui.violet.file.input input[type="file"]::-ms-browse {
   background: #6435C9;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.violet.file.input::-ms-browse:hover,
 .ui.violet.file.input input[type="file"]::-ms-browse:hover {
@@ -1264,7 +1264,7 @@ input[type="file"].ui.violet.file.input::-ms-browse:hover,
 input[type="file"].ui.violet.file.input::file-selector-button,
 .ui.violet.file.input input[type="file"]::file-selector-button {
   background: #6435C9;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.violet.file.input::file-selector-button:hover,
 .ui.violet.file.input input[type="file"]::file-selector-button:hover {
@@ -1272,62 +1272,62 @@ input[type="file"].ui.violet.file.input::file-selector-button:hover,
 }
 input[type="file"].ui.purple.file.input::-webkit-file-upload-button,
 .ui.purple.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #6f42c1;
-  color: #fff;
+  background: #A333C8;
+  color: #FFFFFF;
 }
 input[type="file"].ui.purple.file.input::-webkit-file-upload-button:hover,
 .ui.purple.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #6234b6;
+  background: #9627ba;
 }
 input[type="file"].ui.purple.file.input::-ms-browse,
 .ui.purple.file.input input[type="file"]::-ms-browse {
-  background: #6f42c1;
-  color: #fff;
+  background: #A333C8;
+  color: #FFFFFF;
 }
 input[type="file"].ui.purple.file.input::-ms-browse:hover,
 .ui.purple.file.input input[type="file"]::-ms-browse:hover {
-  background: #6234b6;
+  background: #9627ba;
 }
 input[type="file"].ui.purple.file.input::file-selector-button,
 .ui.purple.file.input input[type="file"]::file-selector-button {
-  background: #6f42c1;
-  color: #fff;
+  background: #A333C8;
+  color: #FFFFFF;
 }
 input[type="file"].ui.purple.file.input::file-selector-button:hover,
 .ui.purple.file.input input[type="file"]::file-selector-button:hover {
-  background: #6234b6;
+  background: #9627ba;
 }
 input[type="file"].ui.pink.file.input::-webkit-file-upload-button,
 .ui.pink.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #e83e8c;
-  color: #fff;
+  background: #E03997;
+  color: #FFFFFF;
 }
 input[type="file"].ui.pink.file.input::-webkit-file-upload-button:hover,
 .ui.pink.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #ef1e7e;
+  background: #e61a8d;
 }
 input[type="file"].ui.pink.file.input::-ms-browse,
 .ui.pink.file.input input[type="file"]::-ms-browse {
-  background: #e83e8c;
-  color: #fff;
+  background: #E03997;
+  color: #FFFFFF;
 }
 input[type="file"].ui.pink.file.input::-ms-browse:hover,
 .ui.pink.file.input input[type="file"]::-ms-browse:hover {
-  background: #ef1e7e;
+  background: #e61a8d;
 }
 input[type="file"].ui.pink.file.input::file-selector-button,
 .ui.pink.file.input input[type="file"]::file-selector-button {
-  background: #e83e8c;
-  color: #fff;
+  background: #E03997;
+  color: #FFFFFF;
 }
 input[type="file"].ui.pink.file.input::file-selector-button:hover,
 .ui.pink.file.input input[type="file"]::file-selector-button:hover {
-  background: #ef1e7e;
+  background: #e61a8d;
 }
 input[type="file"].ui.brown.file.input::-webkit-file-upload-button,
 .ui.brown.file.input input[type="file"]::-webkit-file-upload-button {
   background: #A5673F;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.brown.file.input::-webkit-file-upload-button:hover,
 .ui.brown.file.input input[type="file"]::-webkit-file-upload-button:hover {
@@ -1336,7 +1336,7 @@ input[type="file"].ui.brown.file.input::-webkit-file-upload-button:hover,
 input[type="file"].ui.brown.file.input::-ms-browse,
 .ui.brown.file.input input[type="file"]::-ms-browse {
   background: #A5673F;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.brown.file.input::-ms-browse:hover,
 .ui.brown.file.input input[type="file"]::-ms-browse:hover {
@@ -1345,7 +1345,7 @@ input[type="file"].ui.brown.file.input::-ms-browse:hover,
 input[type="file"].ui.brown.file.input::file-selector-button,
 .ui.brown.file.input input[type="file"]::file-selector-button {
   background: #A5673F;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.brown.file.input::file-selector-button:hover,
 .ui.brown.file.input input[type="file"]::file-selector-button:hover {
@@ -1354,7 +1354,7 @@ input[type="file"].ui.brown.file.input::file-selector-button:hover,
 input[type="file"].ui.grey.file.input::-webkit-file-upload-button,
 .ui.grey.file.input input[type="file"]::-webkit-file-upload-button {
   background: #767676;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.grey.file.input::-webkit-file-upload-button:hover,
 .ui.grey.file.input input[type="file"]::-webkit-file-upload-button:hover {
@@ -1363,7 +1363,7 @@ input[type="file"].ui.grey.file.input::-webkit-file-upload-button:hover,
 input[type="file"].ui.grey.file.input::-ms-browse,
 .ui.grey.file.input input[type="file"]::-ms-browse {
   background: #767676;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.grey.file.input::-ms-browse:hover,
 .ui.grey.file.input input[type="file"]::-ms-browse:hover {
@@ -1372,7 +1372,7 @@ input[type="file"].ui.grey.file.input::-ms-browse:hover,
 input[type="file"].ui.grey.file.input::file-selector-button,
 .ui.grey.file.input input[type="file"]::file-selector-button {
   background: #767676;
-  color: #fff;
+  color: #FFFFFF;
 }
 input[type="file"].ui.grey.file.input::file-selector-button:hover,
 .ui.grey.file.input input[type="file"]::file-selector-button:hover {
@@ -1380,30 +1380,30 @@ input[type="file"].ui.grey.file.input::file-selector-button:hover,
 }
 input[type="file"].ui.black.file.input::-webkit-file-upload-button,
 .ui.black.file.input input[type="file"]::-webkit-file-upload-button {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.black.file.input::-webkit-file-upload-button:hover,
 .ui.black.file.input input[type="file"]::-webkit-file-upload-button:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 input[type="file"].ui.black.file.input::-ms-browse,
 .ui.black.file.input input[type="file"]::-ms-browse {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.black.file.input::-ms-browse:hover,
 .ui.black.file.input input[type="file"]::-ms-browse:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 input[type="file"].ui.black.file.input::file-selector-button,
 .ui.black.file.input input[type="file"]::file-selector-button {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 input[type="file"].ui.black.file.input::file-selector-button:hover,
 .ui.black.file.input input[type="file"]::file-selector-button:hover {
-  background: #0d0d0d;
+  background: #27292a;
 }
 
 /*--------------------
@@ -1440,12 +1440,12 @@ input[type="file"].ui.black.file.input::file-selector-button:hover,
          Theme Overrides
 *******************************/
 
-.ui.transparent.input input {
-  color: #ebebeb;
-}
-.ui.transparent.input .icon {
-  color: #ebebeb;
-}
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

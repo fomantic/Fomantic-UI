@@ -17,15 +17,15 @@
 /* Prototype */
 .ui.table {
   width: 100%;
-  background: #303030;
+  background: #FFFFFF;
   margin: 1em 0;
-  border: 1px solid #464545;
+  border: 1px solid rgba(34, 36, 38, 0.15);
   -webkit-box-shadow: none;
           box-shadow: none;
   border-radius: 0.28571429rem;
   text-align: left;
   vertical-align: middle;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -67,15 +67,15 @@
 }
 .ui.table > thead > tr > th {
   cursor: auto;
-  background: #222222;
+  background: #F9FAFB;
   text-align: inherit;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   padding: 0.92857143em 0.78571429em;
   vertical-align: inherit;
   font-style: none;
   font-weight: bold;
   text-transform: none;
-  border-bottom: 1px solid #393838;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
   border-left: none;
 }
 .ui.table > thead > tr > th:first-child {
@@ -99,10 +99,10 @@
 .ui.table > tfoot > tr > th,
 .ui.table > tfoot > tr > td {
   cursor: auto;
-  border-top: 1px solid #464545;
-  background: #222222;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
+  background: #F9FAFB;
   text-align: inherit;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   padding: 0.78571429em 0.78571429em;
   vertical-align: inherit;
   font-style: normal;
@@ -129,7 +129,7 @@
 /* Table Row */
 .ui.table > tr > td,
 .ui.table > tbody > tr > td {
-  border-top: 1px solid #393838;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.table > tr:first-child > td,
 .ui.table > tbody > tr:first-child > td {
@@ -138,7 +138,7 @@
 
 /* Repeated tbody */
 .ui.table > tbody + tbody tr:first-child > td {
-  border-top: 1px solid #393838;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
 }
 
 /* Table Cells */
@@ -234,12 +234,12 @@
             box-shadow: none !important;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="primary marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="primary marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="primary marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #54C8FF inset;
@@ -250,12 +250,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #54C8FF inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="secondary marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="secondary marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="secondary marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #545454 inset;
@@ -266,12 +266,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #545454 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="red marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e74c3c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e74c3c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DB2828 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DB2828 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="red marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e74c3c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e74c3c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DB2828 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DB2828 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="red marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF695E inset;
@@ -282,12 +282,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FF695E inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="orange marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #fd7e14 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #fd7e14 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #F2711C inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #F2711C inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="orange marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #fd7e14 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #fd7e14 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #F2711C inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #F2711C inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="orange marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF851B inset;
@@ -298,12 +298,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FF851B inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="yellow marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #f39c12 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #f39c12 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FBBD08 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FBBD08 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="yellow marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #f39c12 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #f39c12 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FBBD08 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FBBD08 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="yellow marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FFE21F inset;
@@ -330,12 +330,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #D9E778 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="green marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00bc8c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00bc8c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #21BA45 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #21BA45 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="green marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00bc8c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00bc8c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #21BA45 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #21BA45 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="green marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2ECC40 inset;
@@ -346,12 +346,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2ECC40 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="teal marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #20c997 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #20c997 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00B5AD inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00B5AD inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="teal marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #20c997 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #20c997 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00B5AD inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00B5AD inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="teal marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6DFFFF inset;
@@ -362,12 +362,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6DFFFF inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="blue marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="blue marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="blue marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #54C8FF inset;
@@ -394,12 +394,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A291FB inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="purple marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6f42c1 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6f42c1 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #A333C8 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #A333C8 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="purple marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6f42c1 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6f42c1 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A333C8 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A333C8 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="purple marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DC73FF inset;
@@ -410,12 +410,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DC73FF inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="pink marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e83e8c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e83e8c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #E03997 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #E03997 inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="pink marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e83e8c inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e83e8c inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #E03997 inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #E03997 inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="pink marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF8EDF inset;
@@ -458,12 +458,12 @@
             box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DCDDDE inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="black marked"].left {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
   }
   .ui.ui.ui.ui.table:not(.unstackable) tr[class*="black marked"].right {
-    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
-            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
+    -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
+            box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
   }
   .ui.ui.ui.ui.inverted.table:not(.unstackable) tr[class*="black marked"].left {
     -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #545454 inset;
@@ -579,13 +579,13 @@
 
 /* Camouflage scrollbars, we need them only to gain the same width as tbody */
 .ui.scrolling.table > thead {
-  background: #222222;
-  color: #222222;
+  background: #F9FAFB;
+  color: #F9FAFB;
   border-radius: 0.28571429rem 0.28571429rem 0 0;
 }
 .ui.scrolling.table > tfoot {
-  background: #222222;
-  color: #222222;
+  background: #F9FAFB;
+  color: #F9FAFB;
   border-radius: 0 0 0.28571429rem 0.28571429rem;
 }
 .ui.inverted.scrolling.table > thead {
@@ -741,8 +741,8 @@
   border-right: none;
 }
 .ui.structured.sortable.table > thead > tr > th {
-  border-left: 1px solid #464545;
-  border-right: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.structured.basic.table > tr > th,
 .ui.structured.basic.table > thead > tr > th,
@@ -758,8 +758,8 @@
 .ui.structured.celled.table > tr > td,
 .ui.structured.celled.table > tbody > tr > td,
 .ui.structured.celled.table > tfoot > tr > td {
-  border-left: 1px solid #393838;
-  border-right: 1px solid #393838;
+  border-left: 1px solid rgba(34, 36, 38, 0.1);
+  border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 
 /*--------------
@@ -768,11 +768,11 @@
 
 .ui.definition.table > thead:not(.full-width) > tr > th:first-child {
   pointer-events: none;
-  background: #fff;
+  background: #FFFFFF;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -0.1em -0.2em 0 0.1em #303030;
-          box-shadow: -0.1em -0.2em 0 0.1em #303030;
+  -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
+          box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
 }
 .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
@@ -780,11 +780,11 @@
 }
 .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
   pointer-events: none;
-  background: #fff;
+  background: #FFFFFF;
   font-weight: normal;
   color: rgba(0, 0, 0, 0.4);
-  -webkit-box-shadow: -0.1em 0.2em 0 0.1em #303030;
-          box-shadow: -0.1em 0.2em 0 0.1em #303030;
+  -webkit-box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
+          box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
 }
 
@@ -807,15 +807,15 @@
 
 /* Fix 2nd Column */
 .ui.definition.table > thead:not(.full-width) > tr > th:nth-child(2) {
-  border-left: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.definition.table > tfoot:not(.full-width) > tr > th:nth-child(2),
 .ui.definition.table > tfoot:not(.full-width) > tr > td:nth-child(2) {
-  border-left: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.definition.table > tr > td:nth-child(2),
 .ui.definition.table > tbody > tr > td:nth-child(2) {
-  border-left: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
 }
 
 
@@ -830,15 +830,15 @@
 
 .ui.ui.ui.ui.table tr.positive,
 .ui.ui.table td.positive {
-  -webkit-box-shadow: 0 0 0 #fff inset;
-          box-shadow: 0 0 0 #fff inset;
-  background: #00bc8c;
-  color: #fff;
+  -webkit-box-shadow: 0 0 0 #A3C293 inset;
+          box-shadow: 0 0 0 #A3C293 inset;
+  background: #FCFFF5;
+  color: #2C662D;
 }
 .ui.ui.ui.ui.inverted.table tr.positive,
 .ui.ui.inverted.table td.positive {
-  background: #fff;
-  color: #fff;
+  background: #A3C293;
+  color: #2C662D;
 }
 
 /*--------------
@@ -847,15 +847,15 @@
 
 .ui.ui.ui.ui.table tr.negative,
 .ui.ui.table td.negative {
-  -webkit-box-shadow: 0 0 0 #e6e6e6 inset;
-          box-shadow: 0 0 0 #e6e6e6 inset;
-  background: #e74c3c;
-  color: #e6e6e6;
+  -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
+          box-shadow: 0 0 0 #E0B4B4 inset;
+  background: #FFF6F6;
+  color: #9F3A38;
 }
 .ui.ui.ui.ui.inverted.table tr.negative,
 .ui.ui.inverted.table td.negative {
-  background: #e6e6e6;
-  color: #e6e6e6;
+  background: #E0B4B4;
+  color: #9F3A38;
 }
 
 /*--------------
@@ -864,15 +864,15 @@
 
 .ui.ui.ui.ui.table tr.error,
 .ui.ui.table td.error {
-  -webkit-box-shadow: 0 0 0 #e6e6e6 inset;
-          box-shadow: 0 0 0 #e6e6e6 inset;
-  background: #e74c3c;
-  color: #e6e6e6;
+  -webkit-box-shadow: 0 0 0 #E0B4B4 inset;
+          box-shadow: 0 0 0 #E0B4B4 inset;
+  background: #FFF6F6;
+  color: #9F3A38;
 }
 .ui.ui.ui.ui.inverted.table tr.error,
 .ui.ui.inverted.table td.error {
-  background: #e6e6e6;
-  color: #e6e6e6;
+  background: #E0B4B4;
+  color: #9F3A38;
 }
 
 /*--------------
@@ -881,15 +881,15 @@
 
 .ui.ui.ui.ui.table tr.warning,
 .ui.ui.table td.warning {
-  -webkit-box-shadow: 0 0 0 #fff inset;
-          box-shadow: 0 0 0 #fff inset;
-  background: #f39c12;
-  color: #fff;
+  -webkit-box-shadow: 0 0 0 #C9BA9B inset;
+          box-shadow: 0 0 0 #C9BA9B inset;
+  background: #FFFAF3;
+  color: #573A08;
 }
 .ui.ui.ui.ui.inverted.table tr.warning,
 .ui.ui.inverted.table td.warning {
   background: #EEC97E;
-  color: #fff;
+  color: #573A08;
 }
 
 /*--------------
@@ -898,15 +898,15 @@
 
 .ui.ui.ui.ui.table tr.active,
 .ui.ui.table td.active {
-  -webkit-box-shadow: 0 0 0 #fff inset;
-          box-shadow: 0 0 0 #fff inset;
-  background: #222222;
-  color: #fff;
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
+          box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
+  background: #E0E0E0;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.ui.ui.ui.inverted.table tr.active,
 .ui.ui.inverted.table td.active {
   background: #A0A0A0;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /*--------------
@@ -918,7 +918,7 @@
 .ui.table tr.disabled:hover,
 .ui.table tr:hover td.disabled {
   pointer-events: none;
-  color: #fff;
+  color: rgba(40, 40, 40, 0.3);
 }
 
 
@@ -989,12 +989,12 @@
   }
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="primary marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="primary marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="primary marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #54C8FF inset;
@@ -1005,12 +1005,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #54C8FF inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="secondary marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="secondary marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="secondary marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #545454 inset;
@@ -1021,12 +1021,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #545454 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="red marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e74c3c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e74c3c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DB2828 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DB2828 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="red marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e74c3c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e74c3c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DB2828 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DB2828 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="red marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF695E inset;
@@ -1037,12 +1037,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FF695E inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="orange marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #fd7e14 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #fd7e14 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #F2711C inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #F2711C inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="orange marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #fd7e14 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #fd7e14 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #F2711C inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #F2711C inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="orange marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF851B inset;
@@ -1053,12 +1053,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FF851B inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="yellow marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #f39c12 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #f39c12 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FBBD08 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FBBD08 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="yellow marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #f39c12 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #f39c12 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FBBD08 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #FBBD08 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="yellow marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FFE21F inset;
@@ -1085,12 +1085,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #D9E778 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="green marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00bc8c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00bc8c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #21BA45 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #21BA45 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="green marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00bc8c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00bc8c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #21BA45 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #21BA45 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="green marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2ECC40 inset;
@@ -1101,12 +1101,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2ECC40 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="teal marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #20c997 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #20c997 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00B5AD inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #00B5AD inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="teal marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #20c997 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #20c997 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00B5AD inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #00B5AD inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="teal marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6DFFFF inset;
@@ -1117,12 +1117,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6DFFFF inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="blue marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #2185D0 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="blue marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #2185D0 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="blue marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #54C8FF inset;
@@ -1149,12 +1149,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A291FB inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="purple marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6f42c1 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #6f42c1 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #A333C8 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #A333C8 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="purple marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6f42c1 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #6f42c1 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A333C8 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #A333C8 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="purple marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #DC73FF inset;
@@ -1165,12 +1165,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DC73FF inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="pink marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e83e8c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #e83e8c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #E03997 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #E03997 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="pink marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e83e8c inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #e83e8c inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #E03997 inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #E03997 inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="pink marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #FF8EDF inset;
@@ -1213,12 +1213,12 @@
           box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #DCDDDE inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="black marked"].left {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="black marked"].right {
-  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
-          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, -0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.ui.ui.ui[class*="tablet stackable"].inverted.table tr[class*="black marked"].left {
   -webkit-box-shadow: 0 -1px 0 0 rgba(0, 0, 0, 0.1) inset, 0.2em 0 0 0 #545454 inset;
@@ -1323,32 +1323,32 @@
 .ui.ui.selectable.table tr.error:hover,
 .ui.table tr td.selectable.error:hover,
 .ui.selectable.table tr:hover td.error {
-  background: #e53f2e;
-  color: #dedede;
+  background: #ffe7e7;
+  color: #943634;
 }
 .ui.ui.selectable.table tr.warning:hover,
 .ui.table tr td.selectable.warning:hover,
 .ui.selectable.table tr:hover td.warning {
-  background: #ea940c;
-  color: #f7f7f7;
+  background: #fff4e4;
+  color: #493107;
 }
 .ui.ui.selectable.table tr.active:hover,
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
-  background: #222222;
-  color: #fff;
+  background: #E0E0E0;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
 .ui.selectable.table tr:hover td.positive {
-  background: #00ad81;
-  color: #f7f7f7;
+  background: #f7ffe6;
+  color: #275b28;
 }
 .ui.ui.selectable.table tr.negative:hover,
 .ui.table tr td.selectable.negative:hover,
 .ui.selectable.table tr:hover td.negative {
-  background: #e53f2e;
-  color: #dedede;
+  background: #ffe7e7;
+  color: #943634;
 }
 
 /*-------------------
@@ -1366,7 +1366,7 @@
   max-width: calc(100% + 2px);
   -webkit-box-shadow: none;
           box-shadow: none;
-  border: 1px solid #999;
+  border: 1px solid #D4D4D5;
 }
 .ui.attached + .ui.attached.table:not(.top) {
   border-top: none;
@@ -1406,7 +1406,7 @@
 /* Table Striping */
 .ui.striped.table > tr:nth-child(2n),
 .ui.striped.table > tbody > tr:nth-child(2n) {
-  background-color: #3d3d3d;
+  background-color: rgba(0, 0, 50, 0.02);
 }
 
 /* Stripes */
@@ -1417,7 +1417,7 @@
 
 /* Allow striped active hover */
 .ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
-  background: #303030;
+  background: #EFEFEF;
   color: rgba(0, 0, 0, 0.95);
 }
 
@@ -1435,11 +1435,11 @@
 --------------------*/
 
 .ui.primary.table {
-  border-top: 0.2em solid #375a7f;
+  border-top: 0.2em solid #2185D0;
 }
 .ui.inverted.primary.table {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -1457,15 +1457,15 @@
 }
 .ui.inverted.scrolling.table > thead.primary,
 .ui.inverted.scrolling.table > tfoot.primary {
-  background: #375a7f;
-  color: #375a7f;
+  background: #2185D0;
+  color: #2185D0;
 }
 .ui.inverted.scrolling.table > thead.primary > tr > th,
 .ui.inverted.scrolling.table > tfoot.primary > tr > th,
 .ui.inverted.scrolling.table > thead.primary > tr > td,
 .ui.inverted.scrolling.table > tfoot.primary > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="primary colored"],
 .ui.ui.table th[class*="primary colored"],
@@ -1491,8 +1491,8 @@
 .ui.ui.ui.ui.inverted.table tr.primary:not(.marked),
 .ui.ui.inverted.table th.primary:not(.marked),
 .ui.ui.inverted.table td.primary:not(.marked) {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="primary colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="primary colored"] > th,
@@ -1501,7 +1501,7 @@
 .ui.inverted.table > tfoot > tr.primary:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.primary:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="primary colored"]:hover,
 .ui.table tr td.selectable[class*="primary colored"]:hover,
@@ -1519,17 +1519,17 @@
 .ui.inverted.table tr td.selectable.primary:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.primary:not(.marked) {
   background: #21b8ff;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="primary marked"].left,
 .ui.table tr[class*="primary marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0.2em 0 0 0 #2185D0 inset;
 }
 .ui.table td[class*="primary marked"].right,
 .ui.table tr[class*="primary marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #375a7f inset;
-          box-shadow: -0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #2185D0 inset;
+          box-shadow: -0.2em 0 0 0 #2185D0 inset;
 }
 .ui.inverted.table td[class*="primary marked"].left,
 .ui.inverted.table tr[class*="primary marked"].left {
@@ -1542,11 +1542,11 @@
           box-shadow: -0.2em 0 0 0 #54C8FF inset;
 }
 .ui.secondary.table {
-  border-top: 0.2em solid #000;
+  border-top: 0.2em solid #1B1C1D;
 }
 .ui.inverted.secondary.table {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -1564,15 +1564,15 @@
 }
 .ui.inverted.scrolling.table > thead.secondary,
 .ui.inverted.scrolling.table > tfoot.secondary {
-  background: #000;
-  color: #000;
+  background: #1B1C1D;
+  color: #1B1C1D;
 }
 .ui.inverted.scrolling.table > thead.secondary > tr > th,
 .ui.inverted.scrolling.table > tfoot.secondary > tr > th,
 .ui.inverted.scrolling.table > thead.secondary > tr > td,
 .ui.inverted.scrolling.table > tfoot.secondary > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="secondary colored"],
 .ui.ui.table th[class*="secondary colored"],
@@ -1598,8 +1598,8 @@
 .ui.ui.ui.ui.inverted.table tr.secondary:not(.marked),
 .ui.ui.inverted.table th.secondary:not(.marked),
 .ui.ui.inverted.table td.secondary:not(.marked) {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="secondary colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="secondary colored"] > th,
@@ -1608,7 +1608,7 @@
 .ui.inverted.table > tfoot > tr.secondary:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.secondary:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="secondary colored"]:hover,
 .ui.table tr td.selectable[class*="secondary colored"]:hover,
@@ -1626,17 +1626,17 @@
 .ui.inverted.table tr td.selectable.secondary:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.secondary:not(.marked) {
   background: #6e6e6e;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="secondary marked"].left,
 .ui.table tr[class*="secondary marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #000 inset;
-          box-shadow: 0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.table td[class*="secondary marked"].right,
 .ui.table tr[class*="secondary marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #000 inset;
-          box-shadow: -0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: -0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.inverted.table td[class*="secondary marked"].left,
 .ui.inverted.table tr[class*="secondary marked"].left {
@@ -1649,11 +1649,11 @@
           box-shadow: -0.2em 0 0 0 #545454 inset;
 }
 .ui.red.table {
-  border-top: 0.2em solid #e74c3c;
+  border-top: 0.2em solid #DB2828;
 }
 .ui.inverted.red.table {
-  background: #e74c3c;
-  color: #fff;
+  background: #DB2828;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -1667,19 +1667,19 @@
 .ui.scrolling.table > thead.red > tr > td,
 .ui.scrolling.table > tfoot.red > tr > td {
   background: inherit;
-  color: #e74c3c;
+  color: #DB2828;
 }
 .ui.inverted.scrolling.table > thead.red,
 .ui.inverted.scrolling.table > tfoot.red {
-  background: #e74c3c;
-  color: #e74c3c;
+  background: #DB2828;
+  color: #DB2828;
 }
 .ui.inverted.scrolling.table > thead.red > tr > th,
 .ui.inverted.scrolling.table > tfoot.red > tr > th,
 .ui.inverted.scrolling.table > thead.red > tr > td,
 .ui.inverted.scrolling.table > tfoot.red > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="red colored"],
 .ui.ui.table th[class*="red colored"],
@@ -1688,7 +1688,7 @@
 .ui.ui.table th.red:not(.marked),
 .ui.ui.table td.red:not(.marked) {
   background: #ffe1df;
-  color: #e74c3c;
+  color: #DB2828;
 }
 .ui.table > thead > tr[class*="red colored"] > th,
 .ui.table > tfoot > tr[class*="red colored"] > th,
@@ -1697,7 +1697,7 @@
 .ui.table > tfoot > tr.red:not(.marked) > th,
 .ui.table > tfoot > tr.red:not(.marked) > td {
   background: inherit;
-  color: #e74c3c;
+  color: #DB2828;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="red colored"],
 .ui.ui.inverted.table th[class*="red colored"],
@@ -1705,8 +1705,8 @@
 .ui.ui.ui.ui.inverted.table tr.red:not(.marked),
 .ui.ui.inverted.table th.red:not(.marked),
 .ui.ui.inverted.table td.red:not(.marked) {
-  background: #e74c3c;
-  color: #fff;
+  background: #DB2828;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="red colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="red colored"] > th,
@@ -1715,7 +1715,7 @@
 .ui.inverted.table > tfoot > tr.red:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.red:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="red colored"]:hover,
 .ui.table tr td.selectable[class*="red colored"]:hover,
@@ -1724,7 +1724,7 @@
 .ui.table tr td.selectable.red:not(.marked):hover,
 .ui.selectable.table tr:hover td.red:not(.marked) {
   background: #ffd7d5;
-  color: #e74c3c;
+  color: #DB2828;
 }
 .ui.ui.inverted.selectable.table tr[class*="red colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="red colored"]:hover,
@@ -1733,17 +1733,17 @@
 .ui.inverted.table tr td.selectable.red:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.red:not(.marked) {
   background: #ff392b;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="red marked"].left,
 .ui.table tr[class*="red marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #e74c3c inset;
-          box-shadow: 0.2em 0 0 0 #e74c3c inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #DB2828 inset;
+          box-shadow: 0.2em 0 0 0 #DB2828 inset;
 }
 .ui.table td[class*="red marked"].right,
 .ui.table tr[class*="red marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #e74c3c inset;
-          box-shadow: -0.2em 0 0 0 #e74c3c inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #DB2828 inset;
+          box-shadow: -0.2em 0 0 0 #DB2828 inset;
 }
 .ui.inverted.table td[class*="red marked"].left,
 .ui.inverted.table tr[class*="red marked"].left {
@@ -1756,11 +1756,11 @@
           box-shadow: -0.2em 0 0 0 #FF695E inset;
 }
 .ui.orange.table {
-  border-top: 0.2em solid #fd7e14;
+  border-top: 0.2em solid #F2711C;
 }
 .ui.inverted.orange.table {
-  background: #fd7e14;
-  color: #fff;
+  background: #F2711C;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -1774,19 +1774,19 @@
 .ui.scrolling.table > thead.orange > tr > td,
 .ui.scrolling.table > tfoot.orange > tr > td {
   background: inherit;
-  color: #fd7e14;
+  color: #F2711C;
 }
 .ui.inverted.scrolling.table > thead.orange,
 .ui.inverted.scrolling.table > tfoot.orange {
-  background: #fd7e14;
-  color: #fd7e14;
+  background: #F2711C;
+  color: #F2711C;
 }
 .ui.inverted.scrolling.table > thead.orange > tr > th,
 .ui.inverted.scrolling.table > tfoot.orange > tr > th,
 .ui.inverted.scrolling.table > thead.orange > tr > td,
 .ui.inverted.scrolling.table > tfoot.orange > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="orange colored"],
 .ui.ui.table th[class*="orange colored"],
@@ -1795,7 +1795,7 @@
 .ui.ui.table th.orange:not(.marked),
 .ui.ui.table td.orange:not(.marked) {
   background: #ffe7d1;
-  color: #fd7e14;
+  color: #F2711C;
 }
 .ui.table > thead > tr[class*="orange colored"] > th,
 .ui.table > tfoot > tr[class*="orange colored"] > th,
@@ -1804,7 +1804,7 @@
 .ui.table > tfoot > tr.orange:not(.marked) > th,
 .ui.table > tfoot > tr.orange:not(.marked) > td {
   background: inherit;
-  color: #fd7e14;
+  color: #F2711C;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="orange colored"],
 .ui.ui.inverted.table th[class*="orange colored"],
@@ -1812,8 +1812,8 @@
 .ui.ui.ui.ui.inverted.table tr.orange:not(.marked),
 .ui.ui.inverted.table th.orange:not(.marked),
 .ui.ui.inverted.table td.orange:not(.marked) {
-  background: #fd7e14;
-  color: #fff;
+  background: #F2711C;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="orange colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="orange colored"] > th,
@@ -1822,7 +1822,7 @@
 .ui.inverted.table > tfoot > tr.orange:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.orange:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="orange colored"]:hover,
 .ui.table tr td.selectable[class*="orange colored"]:hover,
@@ -1831,7 +1831,7 @@
 .ui.table tr td.selectable.orange:not(.marked):hover,
 .ui.selectable.table tr:hover td.orange:not(.marked) {
   background: #fae1cc;
-  color: #fd7e14;
+  color: #F2711C;
 }
 .ui.ui.inverted.selectable.table tr[class*="orange colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="orange colored"]:hover,
@@ -1840,17 +1840,17 @@
 .ui.inverted.table tr td.selectable.orange:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.orange:not(.marked) {
   background: #e76b00;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="orange marked"].left,
 .ui.table tr[class*="orange marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #fd7e14 inset;
-          box-shadow: 0.2em 0 0 0 #fd7e14 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #F2711C inset;
+          box-shadow: 0.2em 0 0 0 #F2711C inset;
 }
 .ui.table td[class*="orange marked"].right,
 .ui.table tr[class*="orange marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #fd7e14 inset;
-          box-shadow: -0.2em 0 0 0 #fd7e14 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #F2711C inset;
+          box-shadow: -0.2em 0 0 0 #F2711C inset;
 }
 .ui.inverted.table td[class*="orange marked"].left,
 .ui.inverted.table tr[class*="orange marked"].left {
@@ -1863,11 +1863,11 @@
           box-shadow: -0.2em 0 0 0 #FF851B inset;
 }
 .ui.yellow.table {
-  border-top: 0.2em solid #f39c12;
+  border-top: 0.2em solid #FBBD08;
 }
 .ui.inverted.yellow.table {
-  background: #f39c12;
-  color: #fff;
+  background: #FBBD08;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -1885,15 +1885,15 @@
 }
 .ui.inverted.scrolling.table > thead.yellow,
 .ui.inverted.scrolling.table > tfoot.yellow {
-  background: #f39c12;
-  color: #f39c12;
+  background: #FBBD08;
+  color: #FBBD08;
 }
 .ui.inverted.scrolling.table > thead.yellow > tr > th,
 .ui.inverted.scrolling.table > tfoot.yellow > tr > th,
 .ui.inverted.scrolling.table > thead.yellow > tr > td,
 .ui.inverted.scrolling.table > tfoot.yellow > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="yellow colored"],
 .ui.ui.table th[class*="yellow colored"],
@@ -1919,8 +1919,8 @@
 .ui.ui.ui.ui.inverted.table tr.yellow:not(.marked),
 .ui.ui.inverted.table th.yellow:not(.marked),
 .ui.ui.inverted.table td.yellow:not(.marked) {
-  background: #f39c12;
-  color: #fff;
+  background: #FBBD08;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="yellow colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="yellow colored"] > th,
@@ -1929,7 +1929,7 @@
 .ui.inverted.table > tfoot > tr.yellow:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.yellow:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="yellow colored"]:hover,
 .ui.table tr td.selectable[class*="yellow colored"]:hover,
@@ -1947,17 +1947,17 @@
 .ui.inverted.table tr td.selectable.yellow:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.yellow:not(.marked) {
   background: #ebcd00;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="yellow marked"].left,
 .ui.table tr[class*="yellow marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #f39c12 inset;
-          box-shadow: 0.2em 0 0 0 #f39c12 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #FBBD08 inset;
+          box-shadow: 0.2em 0 0 0 #FBBD08 inset;
 }
 .ui.table td[class*="yellow marked"].right,
 .ui.table tr[class*="yellow marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #f39c12 inset;
-          box-shadow: -0.2em 0 0 0 #f39c12 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #FBBD08 inset;
+          box-shadow: -0.2em 0 0 0 #FBBD08 inset;
 }
 .ui.inverted.table td[class*="yellow marked"].left,
 .ui.inverted.table tr[class*="yellow marked"].left {
@@ -1974,7 +1974,7 @@
 }
 .ui.inverted.olive.table {
   background: #B5CC18;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2000,7 +2000,7 @@
 .ui.inverted.scrolling.table > thead.olive > tr > td,
 .ui.inverted.scrolling.table > tfoot.olive > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="olive colored"],
 .ui.ui.table th[class*="olive colored"],
@@ -2027,7 +2027,7 @@
 .ui.ui.inverted.table th.olive:not(.marked),
 .ui.ui.inverted.table td.olive:not(.marked) {
   background: #B5CC18;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="olive colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="olive colored"] > th,
@@ -2036,7 +2036,7 @@
 .ui.inverted.table > tfoot > tr.olive:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.olive:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="olive colored"]:hover,
 .ui.table tr td.selectable[class*="olive colored"]:hover,
@@ -2054,7 +2054,7 @@
 .ui.inverted.table tr td.selectable.olive:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.olive:not(.marked) {
   background: #d2e745;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="olive marked"].left,
 .ui.table tr[class*="olive marked"].left {
@@ -2077,11 +2077,11 @@
           box-shadow: -0.2em 0 0 0 #D9E778 inset;
 }
 .ui.green.table {
-  border-top: 0.2em solid #00bc8c;
+  border-top: 0.2em solid #21BA45;
 }
 .ui.inverted.green.table {
-  background: #00bc8c;
-  color: #fff;
+  background: #21BA45;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2099,15 +2099,15 @@
 }
 .ui.inverted.scrolling.table > thead.green,
 .ui.inverted.scrolling.table > tfoot.green {
-  background: #00bc8c;
-  color: #00bc8c;
+  background: #21BA45;
+  color: #21BA45;
 }
 .ui.inverted.scrolling.table > thead.green > tr > th,
 .ui.inverted.scrolling.table > tfoot.green > tr > th,
 .ui.inverted.scrolling.table > thead.green > tr > td,
 .ui.inverted.scrolling.table > tfoot.green > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="green colored"],
 .ui.ui.table th[class*="green colored"],
@@ -2133,8 +2133,8 @@
 .ui.ui.ui.ui.inverted.table tr.green:not(.marked),
 .ui.ui.inverted.table th.green:not(.marked),
 .ui.ui.inverted.table td.green:not(.marked) {
-  background: #00bc8c;
-  color: #fff;
+  background: #21BA45;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="green colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="green colored"] > th,
@@ -2143,7 +2143,7 @@
 .ui.inverted.table > tfoot > tr.green:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.green:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="green colored"]:hover,
 .ui.table tr td.selectable[class*="green colored"]:hover,
@@ -2161,17 +2161,17 @@
 .ui.inverted.table tr td.selectable.green:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.green:not(.marked) {
   background: #1ea92e;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="green marked"].left,
 .ui.table tr[class*="green marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #00bc8c inset;
-          box-shadow: 0.2em 0 0 0 #00bc8c inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #21BA45 inset;
+          box-shadow: 0.2em 0 0 0 #21BA45 inset;
 }
 .ui.table td[class*="green marked"].right,
 .ui.table tr[class*="green marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #00bc8c inset;
-          box-shadow: -0.2em 0 0 0 #00bc8c inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #21BA45 inset;
+          box-shadow: -0.2em 0 0 0 #21BA45 inset;
 }
 .ui.inverted.table td[class*="green marked"].left,
 .ui.inverted.table tr[class*="green marked"].left {
@@ -2184,11 +2184,11 @@
           box-shadow: -0.2em 0 0 0 #2ECC40 inset;
 }
 .ui.teal.table {
-  border-top: 0.2em solid #20c997;
+  border-top: 0.2em solid #00B5AD;
 }
 .ui.inverted.teal.table {
-  background: #20c997;
-  color: #fff;
+  background: #00B5AD;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2206,15 +2206,15 @@
 }
 .ui.inverted.scrolling.table > thead.teal,
 .ui.inverted.scrolling.table > tfoot.teal {
-  background: #20c997;
-  color: #20c997;
+  background: #00B5AD;
+  color: #00B5AD;
 }
 .ui.inverted.scrolling.table > thead.teal > tr > th,
 .ui.inverted.scrolling.table > tfoot.teal > tr > th,
 .ui.inverted.scrolling.table > thead.teal > tr > td,
 .ui.inverted.scrolling.table > tfoot.teal > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="teal colored"],
 .ui.ui.table th[class*="teal colored"],
@@ -2240,8 +2240,8 @@
 .ui.ui.ui.ui.inverted.table tr.teal:not(.marked),
 .ui.ui.inverted.table th.teal:not(.marked),
 .ui.ui.inverted.table td.teal:not(.marked) {
-  background: #20c997;
-  color: #fff;
+  background: #00B5AD;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="teal colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="teal colored"] > th,
@@ -2250,7 +2250,7 @@
 .ui.inverted.table > tfoot > tr.teal:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.teal:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="teal colored"]:hover,
 .ui.table tr td.selectable[class*="teal colored"]:hover,
@@ -2268,17 +2268,17 @@
 .ui.inverted.table tr td.selectable.teal:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.teal:not(.marked) {
   background: #3affff;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="teal marked"].left,
 .ui.table tr[class*="teal marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #20c997 inset;
-          box-shadow: 0.2em 0 0 0 #20c997 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #00B5AD inset;
+          box-shadow: 0.2em 0 0 0 #00B5AD inset;
 }
 .ui.table td[class*="teal marked"].right,
 .ui.table tr[class*="teal marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #20c997 inset;
-          box-shadow: -0.2em 0 0 0 #20c997 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #00B5AD inset;
+          box-shadow: -0.2em 0 0 0 #00B5AD inset;
 }
 .ui.inverted.table td[class*="teal marked"].left,
 .ui.inverted.table tr[class*="teal marked"].left {
@@ -2291,11 +2291,11 @@
           box-shadow: -0.2em 0 0 0 #6DFFFF inset;
 }
 .ui.blue.table {
-  border-top: 0.2em solid #375a7f;
+  border-top: 0.2em solid #2185D0;
 }
 .ui.inverted.blue.table {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2309,19 +2309,19 @@
 .ui.scrolling.table > thead.blue > tr > td,
 .ui.scrolling.table > tfoot.blue > tr > td {
   background: inherit;
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.inverted.scrolling.table > thead.blue,
 .ui.inverted.scrolling.table > tfoot.blue {
-  background: #375a7f;
-  color: #375a7f;
+  background: #2185D0;
+  color: #2185D0;
 }
 .ui.inverted.scrolling.table > thead.blue > tr > th,
 .ui.inverted.scrolling.table > tfoot.blue > tr > th,
 .ui.inverted.scrolling.table > thead.blue > tr > td,
 .ui.inverted.scrolling.table > tfoot.blue > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="blue colored"],
 .ui.ui.table th[class*="blue colored"],
@@ -2330,7 +2330,7 @@
 .ui.ui.table th.blue:not(.marked),
 .ui.ui.table td.blue:not(.marked) {
   background: #ddf4ff;
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.table > thead > tr[class*="blue colored"] > th,
 .ui.table > tfoot > tr[class*="blue colored"] > th,
@@ -2339,7 +2339,7 @@
 .ui.table > tfoot > tr.blue:not(.marked) > th,
 .ui.table > tfoot > tr.blue:not(.marked) > td {
   background: inherit;
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="blue colored"],
 .ui.ui.inverted.table th[class*="blue colored"],
@@ -2347,8 +2347,8 @@
 .ui.ui.ui.ui.inverted.table tr.blue:not(.marked),
 .ui.ui.inverted.table th.blue:not(.marked),
 .ui.ui.inverted.table td.blue:not(.marked) {
-  background: #375a7f;
-  color: #fff;
+  background: #2185D0;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="blue colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="blue colored"] > th,
@@ -2357,7 +2357,7 @@
 .ui.inverted.table > tfoot > tr.blue:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.blue:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="blue colored"]:hover,
 .ui.table tr td.selectable[class*="blue colored"]:hover,
@@ -2366,7 +2366,7 @@
 .ui.table tr td.selectable.blue:not(.marked):hover,
 .ui.selectable.table tr:hover td.blue:not(.marked) {
   background: #d3f1ff;
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.ui.inverted.selectable.table tr[class*="blue colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="blue colored"]:hover,
@@ -2375,17 +2375,17 @@
 .ui.inverted.table tr td.selectable.blue:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.blue:not(.marked) {
   background: #21b8ff;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="blue marked"].left,
 .ui.table tr[class*="blue marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #375a7f inset;
-          box-shadow: 0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #2185D0 inset;
+          box-shadow: 0.2em 0 0 0 #2185D0 inset;
 }
 .ui.table td[class*="blue marked"].right,
 .ui.table tr[class*="blue marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #375a7f inset;
-          box-shadow: -0.2em 0 0 0 #375a7f inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #2185D0 inset;
+          box-shadow: -0.2em 0 0 0 #2185D0 inset;
 }
 .ui.inverted.table td[class*="blue marked"].left,
 .ui.inverted.table tr[class*="blue marked"].left {
@@ -2402,7 +2402,7 @@
 }
 .ui.inverted.violet.table {
   background: #6435C9;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2428,7 +2428,7 @@
 .ui.inverted.scrolling.table > thead.violet > tr > td,
 .ui.inverted.scrolling.table > tfoot.violet > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="violet colored"],
 .ui.ui.table th[class*="violet colored"],
@@ -2455,7 +2455,7 @@
 .ui.ui.inverted.table th.violet:not(.marked),
 .ui.ui.inverted.table td.violet:not(.marked) {
   background: #6435C9;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="violet colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="violet colored"] > th,
@@ -2464,7 +2464,7 @@
 .ui.inverted.table > tfoot > tr.violet:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.violet:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="violet colored"]:hover,
 .ui.table tr td.selectable[class*="violet colored"]:hover,
@@ -2482,7 +2482,7 @@
 .ui.inverted.table tr td.selectable.violet:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.violet:not(.marked) {
   background: #745aff;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="violet marked"].left,
 .ui.table tr[class*="violet marked"].left {
@@ -2505,11 +2505,11 @@
           box-shadow: -0.2em 0 0 0 #A291FB inset;
 }
 .ui.purple.table {
-  border-top: 0.2em solid #6f42c1;
+  border-top: 0.2em solid #A333C8;
 }
 .ui.inverted.purple.table {
-  background: #6f42c1;
-  color: #fff;
+  background: #A333C8;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2523,19 +2523,19 @@
 .ui.scrolling.table > thead.purple > tr > td,
 .ui.scrolling.table > tfoot.purple > tr > td {
   background: inherit;
-  color: #6f42c1;
+  color: #A333C8;
 }
 .ui.inverted.scrolling.table > thead.purple,
 .ui.inverted.scrolling.table > tfoot.purple {
-  background: #6f42c1;
-  color: #6f42c1;
+  background: #A333C8;
+  color: #A333C8;
 }
 .ui.inverted.scrolling.table > thead.purple > tr > th,
 .ui.inverted.scrolling.table > tfoot.purple > tr > th,
 .ui.inverted.scrolling.table > thead.purple > tr > td,
 .ui.inverted.scrolling.table > tfoot.purple > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="purple colored"],
 .ui.ui.table th[class*="purple colored"],
@@ -2544,7 +2544,7 @@
 .ui.ui.table th.purple:not(.marked),
 .ui.ui.table td.purple:not(.marked) {
   background: #f8e3ff;
-  color: #6f42c1;
+  color: #A333C8;
 }
 .ui.table > thead > tr[class*="purple colored"] > th,
 .ui.table > tfoot > tr[class*="purple colored"] > th,
@@ -2553,7 +2553,7 @@
 .ui.table > tfoot > tr.purple:not(.marked) > th,
 .ui.table > tfoot > tr.purple:not(.marked) > td {
   background: inherit;
-  color: #6f42c1;
+  color: #A333C8;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="purple colored"],
 .ui.ui.inverted.table th[class*="purple colored"],
@@ -2561,8 +2561,8 @@
 .ui.ui.ui.ui.inverted.table tr.purple:not(.marked),
 .ui.ui.inverted.table th.purple:not(.marked),
 .ui.ui.inverted.table td.purple:not(.marked) {
-  background: #6f42c1;
-  color: #fff;
+  background: #A333C8;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="purple colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="purple colored"] > th,
@@ -2571,7 +2571,7 @@
 .ui.inverted.table > tfoot > tr.purple:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.purple:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="purple colored"]:hover,
 .ui.table tr td.selectable[class*="purple colored"]:hover,
@@ -2580,7 +2580,7 @@
 .ui.table tr td.selectable.purple:not(.marked):hover,
 .ui.selectable.table tr:hover td.purple:not(.marked) {
   background: #f5d9ff;
-  color: #6f42c1;
+  color: #A333C8;
 }
 .ui.ui.inverted.selectable.table tr[class*="purple colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="purple colored"]:hover,
@@ -2589,17 +2589,17 @@
 .ui.inverted.table tr td.selectable.purple:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.purple:not(.marked) {
   background: #cf40ff;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="purple marked"].left,
 .ui.table tr[class*="purple marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #6f42c1 inset;
-          box-shadow: 0.2em 0 0 0 #6f42c1 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #A333C8 inset;
+          box-shadow: 0.2em 0 0 0 #A333C8 inset;
 }
 .ui.table td[class*="purple marked"].right,
 .ui.table tr[class*="purple marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #6f42c1 inset;
-          box-shadow: -0.2em 0 0 0 #6f42c1 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #A333C8 inset;
+          box-shadow: -0.2em 0 0 0 #A333C8 inset;
 }
 .ui.inverted.table td[class*="purple marked"].left,
 .ui.inverted.table tr[class*="purple marked"].left {
@@ -2612,11 +2612,11 @@
           box-shadow: -0.2em 0 0 0 #DC73FF inset;
 }
 .ui.pink.table {
-  border-top: 0.2em solid #e83e8c;
+  border-top: 0.2em solid #E03997;
 }
 .ui.inverted.pink.table {
-  background: #e83e8c;
-  color: #fff;
+  background: #E03997;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2630,19 +2630,19 @@
 .ui.scrolling.table > thead.pink > tr > td,
 .ui.scrolling.table > tfoot.pink > tr > td {
   background: inherit;
-  color: #e83e8c;
+  color: #E03997;
 }
 .ui.inverted.scrolling.table > thead.pink,
 .ui.inverted.scrolling.table > tfoot.pink {
-  background: #e83e8c;
-  color: #e83e8c;
+  background: #E03997;
+  color: #E03997;
 }
 .ui.inverted.scrolling.table > thead.pink > tr > th,
 .ui.inverted.scrolling.table > tfoot.pink > tr > th,
 .ui.inverted.scrolling.table > thead.pink > tr > td,
 .ui.inverted.scrolling.table > tfoot.pink > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="pink colored"],
 .ui.ui.table th[class*="pink colored"],
@@ -2651,7 +2651,7 @@
 .ui.ui.table th.pink:not(.marked),
 .ui.ui.table td.pink:not(.marked) {
   background: #ffe8f9;
-  color: #e83e8c;
+  color: #E03997;
 }
 .ui.table > thead > tr[class*="pink colored"] > th,
 .ui.table > tfoot > tr[class*="pink colored"] > th,
@@ -2660,7 +2660,7 @@
 .ui.table > tfoot > tr.pink:not(.marked) > th,
 .ui.table > tfoot > tr.pink:not(.marked) > td {
   background: inherit;
-  color: #e83e8c;
+  color: #E03997;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="pink colored"],
 .ui.ui.inverted.table th[class*="pink colored"],
@@ -2668,8 +2668,8 @@
 .ui.ui.ui.ui.inverted.table tr.pink:not(.marked),
 .ui.ui.inverted.table th.pink:not(.marked),
 .ui.ui.inverted.table td.pink:not(.marked) {
-  background: #e83e8c;
-  color: #fff;
+  background: #E03997;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="pink colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="pink colored"] > th,
@@ -2678,7 +2678,7 @@
 .ui.inverted.table > tfoot > tr.pink:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.pink:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="pink colored"]:hover,
 .ui.table tr td.selectable[class*="pink colored"]:hover,
@@ -2687,7 +2687,7 @@
 .ui.table tr td.selectable.pink:not(.marked):hover,
 .ui.selectable.table tr:hover td.pink:not(.marked) {
   background: #ffdef6;
-  color: #e83e8c;
+  color: #E03997;
 }
 .ui.ui.inverted.selectable.table tr[class*="pink colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="pink colored"]:hover,
@@ -2696,17 +2696,17 @@
 .ui.inverted.table tr td.selectable.pink:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.pink:not(.marked) {
   background: #ff5bd1;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="pink marked"].left,
 .ui.table tr[class*="pink marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #e83e8c inset;
-          box-shadow: 0.2em 0 0 0 #e83e8c inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #E03997 inset;
+          box-shadow: 0.2em 0 0 0 #E03997 inset;
 }
 .ui.table td[class*="pink marked"].right,
 .ui.table tr[class*="pink marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #e83e8c inset;
-          box-shadow: -0.2em 0 0 0 #e83e8c inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #E03997 inset;
+          box-shadow: -0.2em 0 0 0 #E03997 inset;
 }
 .ui.inverted.table td[class*="pink marked"].left,
 .ui.inverted.table tr[class*="pink marked"].left {
@@ -2723,7 +2723,7 @@
 }
 .ui.inverted.brown.table {
   background: #A5673F;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2749,7 +2749,7 @@
 .ui.inverted.scrolling.table > thead.brown > tr > td,
 .ui.inverted.scrolling.table > tfoot.brown > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="brown colored"],
 .ui.ui.table th[class*="brown colored"],
@@ -2776,7 +2776,7 @@
 .ui.ui.inverted.table th.brown:not(.marked),
 .ui.ui.inverted.table td.brown:not(.marked) {
   background: #A5673F;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="brown colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="brown colored"] > th,
@@ -2785,7 +2785,7 @@
 .ui.inverted.table > tfoot > tr.brown:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.brown:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="brown colored"]:hover,
 .ui.table tr td.selectable[class*="brown colored"]:hover,
@@ -2803,7 +2803,7 @@
 .ui.inverted.table tr td.selectable.brown:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.brown:not(.marked) {
   background: #b0620f;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="brown marked"].left,
 .ui.table tr[class*="brown marked"].left {
@@ -2830,7 +2830,7 @@
 }
 .ui.inverted.grey.table {
   background: #767676;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2856,7 +2856,7 @@
 .ui.inverted.scrolling.table > thead.grey > tr > td,
 .ui.inverted.scrolling.table > tfoot.grey > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="grey colored"],
 .ui.ui.table th[class*="grey colored"],
@@ -2883,7 +2883,7 @@
 .ui.ui.inverted.table th.grey:not(.marked),
 .ui.ui.inverted.table td.grey:not(.marked) {
   background: #767676;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="grey colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="grey colored"] > th,
@@ -2892,7 +2892,7 @@
 .ui.inverted.table > tfoot > tr.grey:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.grey:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="grey colored"]:hover,
 .ui.table tr td.selectable[class*="grey colored"]:hover,
@@ -2910,7 +2910,7 @@
 .ui.inverted.table tr td.selectable.grey:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.grey:not(.marked) {
   background: #c2c4c5;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table td[class*="grey marked"].left,
 .ui.table tr[class*="grey marked"].left {
@@ -2933,11 +2933,11 @@
           box-shadow: -0.2em 0 0 0 #DCDDDE inset;
 }
 .ui.black.table {
-  border-top: 0.2em solid #000;
+  border-top: 0.2em solid #1B1C1D;
 }
 .ui.inverted.black.table {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 
 /* Same color for background and color to camouflage the scrollbar */
@@ -2951,19 +2951,19 @@
 .ui.scrolling.table > thead.black > tr > td,
 .ui.scrolling.table > tfoot.black > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.scrolling.table > thead.black,
 .ui.inverted.scrolling.table > tfoot.black {
-  background: #000;
-  color: #000;
+  background: #1B1C1D;
+  color: #1B1C1D;
 }
 .ui.inverted.scrolling.table > thead.black > tr > th,
 .ui.inverted.scrolling.table > tfoot.black > tr > th,
 .ui.inverted.scrolling.table > thead.black > tr > td,
 .ui.inverted.scrolling.table > tfoot.black > tr > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.table tr[class*="black colored"],
 .ui.ui.table th[class*="black colored"],
@@ -2972,7 +2972,7 @@
 .ui.ui.table th.black:not(.marked),
 .ui.ui.table td.black:not(.marked) {
   background: #545454;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.table > thead > tr[class*="black colored"] > th,
 .ui.table > tfoot > tr[class*="black colored"] > th,
@@ -2981,7 +2981,7 @@
 .ui.table > tfoot > tr.black:not(.marked) > th,
 .ui.table > tfoot > tr.black:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.ui.ui.inverted.table tr[class*="black colored"],
 .ui.ui.inverted.table th[class*="black colored"],
@@ -2989,8 +2989,8 @@
 .ui.ui.ui.ui.inverted.table tr.black:not(.marked),
 .ui.ui.inverted.table th.black:not(.marked),
 .ui.ui.inverted.table td.black:not(.marked) {
-  background: #000;
-  color: #fff;
+  background: #1B1C1D;
+  color: #FFFFFF;
 }
 .ui.inverted.table > thead > tr[class*="black colored"] > th,
 .ui.inverted.table > tfoot > tr[class*="black colored"] > th,
@@ -2999,7 +2999,7 @@
 .ui.inverted.table > tfoot > tr.black:not(.marked) > th,
 .ui.inverted.table > tfoot > tr.black:not(.marked) > td {
   background: inherit;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.selectable.table tr[class*="black colored"]:hover,
 .ui.table tr td.selectable[class*="black colored"]:hover,
@@ -3008,7 +3008,7 @@
 .ui.table tr td.selectable.black:not(.marked):hover,
 .ui.selectable.table tr:hover td.black:not(.marked) {
   background: #000000;
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.ui.inverted.selectable.table tr[class*="black colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="black colored"]:hover,
@@ -3017,17 +3017,17 @@
 .ui.inverted.table tr td.selectable.black:not(.marked):hover,
 .ui.inverted.selectable.table tr:hover td.black:not(.marked) {
   background: #000000;
-  color: #000;
+  color: #1B1C1D;
 }
 .ui.table td[class*="black marked"].left,
 .ui.table tr[class*="black marked"].left {
-  -webkit-box-shadow: 0.2em 0 0 0 #000 inset;
-          box-shadow: 0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: 0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: 0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.table td[class*="black marked"].right,
 .ui.table tr[class*="black marked"].right {
-  -webkit-box-shadow: -0.2em 0 0 0 #000 inset;
-          box-shadow: -0.2em 0 0 0 #000 inset;
+  -webkit-box-shadow: -0.2em 0 0 0 #1B1C1D inset;
+          box-shadow: -0.2em 0 0 0 #1B1C1D inset;
 }
 .ui.inverted.table td[class*="black marked"].left,
 .ui.inverted.table tr[class*="black marked"].left {
@@ -3168,10 +3168,10 @@
 .ui.sortable.table > thead > tr > th {
   cursor: pointer;
   white-space: nowrap;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.celled.sortable.table > thead > tr > th:not(:first-child) {
-  border-left: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.sortable.table thead th.sorted,
 .ui.sortable.table thead th.sorted:hover {
@@ -3202,7 +3202,7 @@
 /* Hover */
 .ui.sortable.table th.disabled:hover {
   cursor: auto;
-  color: #fff;
+  color: rgba(40, 40, 40, 0.3);
 }
 .ui.sortable.table > thead > tr > th:hover {
   color: rgba(0, 0, 0, 0.8);
@@ -3286,19 +3286,19 @@
 .ui.inverted.table tr.disabled:hover td,
 .ui.inverted.table tr:hover td.disabled {
   pointer-events: none;
-  color: #aaa;
+  color: rgba(225, 225, 225, 0.3);
 }
 .ui.ui.ui.inverted.table tr td.disabled:not([class="disabled"]),
 .ui.inverted.table tr.disabled:not([class="disabled"]) td,
 .ui.inverted.table tr.disabled td[class]:not(.disabled),
 .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
-  color: #fff;
+  color: rgba(40, 40, 40, 0.3);
 }
 
 /* Definition */
 .ui.inverted.definition.table > tfoot:not(.full-width) > tr > th:first-child,
 .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
-  background: #303030;
+  background: #FFFFFF;
 }
 .ui.inverted.definition.table > tbody > tr > td:first-child,
 .ui.inverted.definition.table > tfoot > tr > td:first-child,
@@ -3321,7 +3321,7 @@
 
 .ui.basic.table {
   background: transparent;
-  border: 1px solid #464545;
+  border: 1px solid rgba(34, 36, 38, 0.15);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -3394,7 +3394,7 @@
 .ui.celled.table > tr > td,
 .ui.celled.table > tbody > tr > td,
 .ui.celled.table > tfoot > tr > td {
-  border-left: 1px solid #393838;
+  border-left: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.inverted.celled.table > tbody > tr > td,
 .ui.inverted.celled.table > tr > td {
@@ -3481,20 +3481,20 @@
   ---------------*/
 
 .ui.stuck.table:not(.inverted) {
-  background: #303030;
+  background: #FFFFFF;
 }
 .ui.stuck.table:not(.inverted) > thead > tr {
   background: #F9FAFB;
 }
 .ui.stuck.table:not(.inverted) > tbody > tr {
-  background: #303030;
+  background: #FFFFFF;
 }
 .ui.stuck.table:not(.inverted) > tfoot > tr {
   background: #F9FAFB;
 }
 .ui.stuck.table:not(.inverted).basic > thead > tr,
 .ui.stuck.table:not(.inverted).basic > tfoot > tr {
-  background: #303030;
+  background: #FFFFFF;
 }
 .ui.inverted.stuck.table > thead > tr {
   background: #252525;
@@ -3522,7 +3522,7 @@
   bottom: auto;
 }
 .ui.head.stuck.table > thead > tr:first-child > th {
-  border-top: 1px solid #393838;
+  border-top: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.head.stuck.table.inverted > thead > tr:first-child > th {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -3536,7 +3536,7 @@
 }
 .ui.foot.stuck.table > tfoot > tr:last-child > td,
 .ui.foot.stuck.table > tfoot > tr:last-child > th {
-  border-bottom: 1px solid #393838;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.foot.stuck.table.inverted > tfoot > tr:first-child > td,
 .ui.foot.stuck.table.inverted > tfoot > tr:first-child > th {
@@ -3549,7 +3549,7 @@
 .ui.first.stuck.table td:first-child {
   position: sticky;
   left: 0;
-  border-left: 1px solid #393838;
+  border-left: 1px solid rgba(34, 36, 38, 0.1);
   background: inherit;
 }
 .ui.first.stuck.table.inverted th:first-child,
@@ -3563,7 +3563,7 @@
 .ui.last.stuck.table td:last-child {
   position: sticky;
   right: 0;
-  border-right: 1px solid #393838;
+  border-right: 1px solid rgba(34, 36, 38, 0.1);
   background: inherit;
 }
 .ui.last.stuck.table.inverted th:last-child,
@@ -3572,11 +3572,11 @@
 }
 .ui.celled.first.stuck.table th:first-child,
 .ui.celled.first.stuck.table td:first-child {
-  border-right: 1px solid #393838;
+  border-right: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.celled.last.stuck.table th:last-child,
 .ui.celled.last.stuck.table td:last-child {
-  border-left: 1px solid #393838;
+  border-left: 1px solid rgba(34, 36, 38, 0.1);
 }
 .ui.inverted.celled.first.stuck.table th:first-child,
 .ui.inverted.celled.first.stuck.table td:first-child {
@@ -3616,11 +3616,6 @@
 }
 .ui.massive.table {
   font-size: 1.71428571rem;
-}
-.ui.definition.table > thead:not(.full-width) > tr > th:first-child {
-  background: #303030;
-  -webkit-box-shadow: none;
-          box-shadow: none;
 }
 
 

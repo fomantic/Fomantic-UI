@@ -105,14 +105,14 @@
 
 .ui.comments .comment .author {
   font-size: 1em;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   font-weight: bold;
 }
 .ui.comments .comment a.author {
   cursor: pointer;
 }
 .ui.comments .comment a.author:hover {
-  color: #375a7f;
+  color: #1e70bf;
 }
 
 /*--------------
@@ -122,7 +122,7 @@
 .ui.comments .comment .metadata {
   display: inline-block;
   margin-left: 0.5em;
-  color: #999;
+  color: rgba(0, 0, 0, 0.4);
   font-size: 0.875em;
 }
 .ui.comments .comment .metadata > * {
@@ -141,7 +141,7 @@
   margin: 0.25em 0 0.5em;
   font-size: 1em;
   word-wrap: break-word;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   line-height: 1.3;
 }
 
@@ -156,14 +156,14 @@
   cursor: pointer;
   display: inline-block;
   margin: 0 0.75em 0 0;
-  color: #999;
+  color: rgba(0, 0, 0, 0.4);
 }
 .ui.comments .comment .actions a:last-child {
   margin-right: 0;
 }
 .ui.comments .comment .actions a.active,
 .ui.comments .comment .actions a:hover {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /*--------------------
@@ -206,8 +206,8 @@
 .ui.threaded.comments .comment > .comments {
   margin: -1.5em 0 -1em 1.25em;
   padding: 3em 0 2em 2.25em;
-  -webkit-box-shadow: -1px 0 0 #464545;
-          box-shadow: -1px 0 0 #464545;
+  -webkit-box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
+          box-shadow: -1px 0 0 rgba(34, 36, 38, 0.15);
 }
 
 /*--------------------
@@ -263,7 +263,7 @@
   --------------------*/
 
 .ui.inverted.comments .comment {
-  background-color: #000;
+  background-color: #1B1C1D;
 }
 .ui.inverted.comments .comment .author,
 .ui.inverted.comments .comment .text {
@@ -282,6 +282,12 @@
   -webkit-box-shadow: -1px 0 0 #555555;
           box-shadow: -1px 0 0 #555555;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

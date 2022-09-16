@@ -251,7 +251,7 @@
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
   content: 'Ad';
-  color: #fff;
+  color: #FFFFFF;
   font-size: 1em;
   font-weight: bold;
 }
@@ -261,6 +261,12 @@
 .ui.test.ad[data-text]::after {
   content: attr(data-text);
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

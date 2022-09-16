@@ -105,7 +105,7 @@
 
 /* White Dimmer (Inverted) */
 .ui.inverted.dimmer > .ui.loader {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.inverted.dimmer > .ui.loader:not(.elastic)::before {
   border-color: rgba(0, 0, 0, 0.1);
@@ -292,7 +292,7 @@
 .ui.primary.loading.loading.loading.loading .input > i.icon::after,
 .ui.primary.loading.loading.loading.loading > i.icon::after,
 .ui.primary.loader.loader.loader::after {
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.inverted.primary.elastic.loader::before,
 .ui.inverted.primary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -314,7 +314,7 @@
 .ui.secondary.loading.loading.loading.loading .input > i.icon::after,
 .ui.secondary.loading.loading.loading.loading > i.icon::after,
 .ui.secondary.loader.loader.loader::after {
-  color: #000;
+  color: #1B1C1D;
 }
 .ui.inverted.secondary.elastic.loader::before,
 .ui.inverted.secondary.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -336,7 +336,7 @@
 .ui.red.loading.loading.loading.loading .input > i.icon::after,
 .ui.red.loading.loading.loading.loading > i.icon::after,
 .ui.red.loader.loader.loader::after {
-  color: #e74c3c;
+  color: #DB2828;
 }
 .ui.inverted.red.elastic.loader::before,
 .ui.inverted.red.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -358,7 +358,7 @@
 .ui.orange.loading.loading.loading.loading .input > i.icon::after,
 .ui.orange.loading.loading.loading.loading > i.icon::after,
 .ui.orange.loader.loader.loader::after {
-  color: #fd7e14;
+  color: #F2711C;
 }
 .ui.inverted.orange.elastic.loader::before,
 .ui.inverted.orange.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -380,7 +380,7 @@
 .ui.yellow.loading.loading.loading.loading .input > i.icon::after,
 .ui.yellow.loading.loading.loading.loading > i.icon::after,
 .ui.yellow.loader.loader.loader::after {
-  color: #f39c12;
+  color: #FBBD08;
 }
 .ui.inverted.yellow.elastic.loader::before,
 .ui.inverted.yellow.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -424,7 +424,7 @@
 .ui.green.loading.loading.loading.loading .input > i.icon::after,
 .ui.green.loading.loading.loading.loading > i.icon::after,
 .ui.green.loader.loader.loader::after {
-  color: #00bc8c;
+  color: #21BA45;
 }
 .ui.inverted.green.elastic.loader::before,
 .ui.inverted.green.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -446,7 +446,7 @@
 .ui.teal.loading.loading.loading.loading .input > i.icon::after,
 .ui.teal.loading.loading.loading.loading > i.icon::after,
 .ui.teal.loader.loader.loader::after {
-  color: #20c997;
+  color: #00B5AD;
 }
 .ui.inverted.teal.elastic.loader::before,
 .ui.inverted.teal.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -468,7 +468,7 @@
 .ui.blue.loading.loading.loading.loading .input > i.icon::after,
 .ui.blue.loading.loading.loading.loading > i.icon::after,
 .ui.blue.loader.loader.loader::after {
-  color: #375a7f;
+  color: #2185D0;
 }
 .ui.inverted.blue.elastic.loader::before,
 .ui.inverted.blue.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -512,7 +512,7 @@
 .ui.purple.loading.loading.loading.loading .input > i.icon::after,
 .ui.purple.loading.loading.loading.loading > i.icon::after,
 .ui.purple.loader.loader.loader::after {
-  color: #6f42c1;
+  color: #A333C8;
 }
 .ui.inverted.purple.elastic.loader::before,
 .ui.inverted.purple.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -534,7 +534,7 @@
 .ui.pink.loading.loading.loading.loading .input > i.icon::after,
 .ui.pink.loading.loading.loading.loading > i.icon::after,
 .ui.pink.loader.loader.loader::after {
-  color: #e83e8c;
+  color: #E03997;
 }
 .ui.inverted.pink.elastic.loader::before,
 .ui.inverted.pink.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -600,7 +600,7 @@
 .ui.black.loading.loading.loading.loading .input > i.icon::after,
 .ui.black.loading.loading.loading.loading > i.icon::after,
 .ui.black.loader.loader.loader::after {
-  color: #000;
+  color: #1B1C1D;
 }
 .ui.inverted.black.elastic.loader::before,
 .ui.inverted.black.elastic.loading.loading.loading:not(.segment):not(.segments):not(.card)::before,
@@ -623,7 +623,7 @@
   border-color: currentColor;
 }
 .ui.elastic.loading.loading.loading.loading.button:not(.inverted):not(.basic)::before {
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.elastic.basic.loading.button::before,
 .ui.elastic.basic.loading.button::after {
@@ -690,7 +690,7 @@
   --------------------*/
 
 .ui.dimmer > .ui.elastic.loader {
-  color: #fff;
+  color: #FFFFFF;
 }
 .ui.inverted.dimmer > .ui.elastic.loader {
   color: #767676;
@@ -861,6 +861,12 @@
             transform: rotate(360deg);
   }
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

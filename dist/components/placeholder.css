@@ -19,7 +19,7 @@
           animation: placeholderShimmer 2s linear;
   -webkit-animation-iteration-count: infinite;
           animation-iteration-count: infinite;
-  background-color: #fff;
+  background-color: #FFFFFF;
   background-image: -webkit-gradient(linear, left top, right top, color-stop(0, rgba(0, 0, 0, 0.08)), color-stop(15%, rgba(0, 0, 0, 0.15)), color-stop(30%, rgba(0, 0, 0, 0.08)));
   background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
   background-image: linear-gradient(to right, rgba(0, 0, 0, 0.08) 0, rgba(0, 0, 0, 0.15) 15%, rgba(0, 0, 0, 0.08) 30%);
@@ -66,7 +66,7 @@
 .ui.placeholder .image.header::after,
 .ui.placeholder .line,
 .ui.placeholder .line::after {
-  background-color: #fff;
+  background-color: #FFFFFF;
 }
 .ui.placeholder.hidden {
   display: none;
@@ -201,7 +201,7 @@
 .ui.inverted.placeholder .image.header::after,
 .ui.inverted.placeholder .line,
 .ui.inverted.placeholder .line::after {
-  background-color: #000;
+  background-color: #1B1C1D;
 }
 
 
@@ -246,10 +246,9 @@
          Theme Overrides
 *******************************/
 
-.ui.placeholder,
-.ui.placeholder .image.header:after,
-.ui.placeholder .line,
-.ui.placeholder .line:after,
-.ui.placeholder > :before {
-  background-color: #303030;
-}
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+

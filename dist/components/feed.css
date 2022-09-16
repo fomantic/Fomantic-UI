@@ -72,7 +72,7 @@
   background: none;
   border: none;
   border-radius: none;
-  color: #999;
+  color: rgba(0, 0, 0, 0.6);
 }
 .ui.feed > .event > .label img {
   width: 100%;
@@ -115,7 +115,7 @@
 .ui.feed > .event > .content .date {
   margin: -0.5rem 0 0;
   padding: 0;
-  color: #999;
+  color: rgba(0, 0, 0, 0.4);
   font-weight: normal;
   font-size: 1em;
   font-style: normal;
@@ -129,7 +129,7 @@
   margin: 0;
   font-size: 1em;
   font-weight: bold;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /* Summary Image */
@@ -156,7 +156,7 @@
   font-style: normal;
   margin: 0 0 0 0.5em;
   padding: 0;
-  color: #999;
+  color: rgba(0, 0, 0, 0.4);
 }
 
 /*--------------
@@ -184,7 +184,7 @@
   margin: 0.5em 0 0;
   background: none;
   padding: 0;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /* Images */
@@ -257,7 +257,7 @@
 .ui.feed > .event > .content .meta > i.icon {
   cursor: pointer;
   opacity: 1;
-  color: #999;
+  color: rgba(0, 0, 0, 0.5);
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
@@ -302,7 +302,7 @@
   -------------------*/
 
 .ui.inverted.feed > .event {
-  background: #000;
+  background: #1B1C1D;
 }
 .ui.inverted.feed > .event > .content .date,
 .ui.inverted.feed > .event > .content .meta .like {
@@ -315,6 +315,12 @@
 .ui.inverted.feed > .event > .content .meta .like:hover {
   color: #ffffff;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

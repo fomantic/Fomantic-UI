@@ -226,7 +226,7 @@ body.pushable.dimmed {
   background: inherit;
 }
 body.pushable > .pusher {
-  background: #222222;
+  background: #FFFFFF;
 }
 
 /*--------------
@@ -292,13 +292,13 @@ body.pushable > .pusher {
 /* Shadow Direction */
 .ui.left.visible.flyout,
 .ui.right.visible.flyout {
-  -webkit-box-shadow: 0 0 20px #464545;
-          box-shadow: 0 0 20px #464545;
+  -webkit-box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
+          box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
 }
 .ui.top.visible.flyout,
 .ui.bottom.visible.flyout {
-  -webkit-box-shadow: 0 0 20px #464545;
-          box-shadow: 0 0 20px #464545;
+  -webkit-box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
+          box-shadow: 0 0 20px rgba(34, 36, 38, 0.15);
 }
 
 /* Visible On Load */
@@ -550,6 +550,12 @@ body.pushable > .pusher {
   -webkit-transform: none !important;
           transform: none !important;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

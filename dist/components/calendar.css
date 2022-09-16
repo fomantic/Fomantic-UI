@@ -107,7 +107,7 @@
 .ui.ui.calendar .ui.table tr .disabled {
   pointer-events: auto;
   cursor: default;
-  color: #fff;
+  color: rgba(40, 40, 40, 0.3);
 }
 .ui.calendar .ui.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(0, 0, 0, 0.6);
@@ -144,7 +144,7 @@
           box-shadow: inset 0 0 0 1px #85B7D9;
 }
 .ui.inverted.calendar .ui.inverted.table tr .disabled {
-  color: #aaa;
+  color: rgba(225, 225, 225, 0.3);
 }
 .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
   color: rgba(255, 255, 255, 0.8);
@@ -185,6 +185,12 @@
 .ui.disabled.calendar .ui.table tr .link {
   pointer-events: none;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

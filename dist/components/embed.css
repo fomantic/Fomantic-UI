@@ -96,7 +96,7 @@
   left: 50%;
   -webkit-transform: translateX(-50%) translateY(-50%);
           transform: translateX(-50%) translateY(-50%);
-  color: #fff;
+  color: #FFFFFF;
   font-size: 6rem;
   text-shadow: 0 2px 10px rgba(34, 36, 38, 0.2);
   -webkit-transition: opacity 0.5s ease, color 0.5s ease;
@@ -120,7 +120,7 @@
   opacity: 1;
 }
 .ui.embed i.icon:hover::before {
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /*--------------
@@ -152,6 +152,12 @@
 .ui[class*="21:9"].embed {
   padding-bottom: 42.85714286%;
 }
+
+
+/*******************************
+        Video Overrides
+*******************************/
+
 
 
 /*******************************

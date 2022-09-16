@@ -52,7 +52,7 @@
   height: 15em;
   padding: 2em;
   background-color: #E6E6E6;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }
@@ -146,6 +146,12 @@
 .ui.shape .active.side {
   display: block;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

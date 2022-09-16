@@ -1,9 +1,3 @@
-.ui.message {
-  border: none;
-  color: #fff;
-
-  a {
-    color: #fff;
-    text-decoration: underline;
-  }
-}
+/*******************************
+         Theme Overrides
+*******************************/

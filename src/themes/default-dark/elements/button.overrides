@@ -1,10 +1,3 @@
-.ui.inverted.button:hover {
-  background: @background;
-  color: @white;
-}
-
-.ui.basic.button:hover,
-.ui.basic.buttons .button:hover{
-  background: @background;
-  color: @white;
-}
+/*******************************
+         Theme Overrides
+*******************************/

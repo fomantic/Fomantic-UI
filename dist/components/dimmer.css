@@ -59,7 +59,7 @@
      -moz-user-select: text;
       -ms-user-select: text;
           user-select: text;
-  color: #fff;
+  color: #FFFFFF;
 }
 
 /* Loose Coupling */
@@ -468,6 +468,12 @@ body.dimmable > .dimmer {
             transform: translateY(calc(-50% - 15px));
   }
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************

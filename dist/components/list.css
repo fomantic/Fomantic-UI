@@ -140,7 +140,7 @@ ol.ui.list ol li,
 .ui.list .list > .item > .content,
 .ui.list > .item > .content {
   line-height: 1.14285714em;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 .ui.list .list > .item > .image + .content,
 .ui.list .list > .item > i.icon + .content,
@@ -171,16 +171,16 @@ ol.ui.list ol li,
 .ui.list > .item .header {
   display: block;
   margin: 0;
-  font-family: "Lato", system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 /* Description */
 .ui.list .list > .item .description,
 .ui.list > .item .description {
   display: block;
-  color: #999;
+  color: rgba(0, 0, 0, 0.7);
 }
 
 /* Child Link */
@@ -193,11 +193,11 @@ ol.ui.list ol li,
 .ui.list .list > a.item,
 .ui.list > a.item {
   cursor: pointer;
-  color: #375a7f;
+  color: #4183C4;
 }
 .ui.list .list > a.item:hover,
 .ui.list > a.item:hover {
-  color: #375a7f;
+  color: #1e70bf;
 }
 
 /* Linked Item Icons */
@@ -212,11 +212,11 @@ ol.ui.list ol li,
 .ui.list .list > .item a.header,
 .ui.list > .item a.header {
   cursor: pointer;
-  color: #2f4d6d !important;
+  color: #4183C4 !important;
 }
 .ui.list .list > .item > a.header:hover,
 .ui.list > .item > a.header:hover {
-  color: #375a7f !important;
+  color: #1e70bf !important;
 }
 
 /* Floated Content */
@@ -339,11 +339,11 @@ ol.ui.list ol li,
 .ui.list .list > .disabled.item,
 .ui.list > .disabled.item {
   pointer-events: none;
-  color: #fff !important;
+  color: rgba(40, 40, 40, 0.3) !important;
 }
 .ui.inverted.list .list > .disabled.item,
 .ui.inverted.list > .disabled.item {
-  color: #aaa !important;
+  color: rgba(225, 225, 225, 0.3) !important;
 }
 
 /*-------------------
@@ -354,7 +354,7 @@ ol.ui.list ol li,
 .ui.list > a.item:hover > .icons,
 .ui.list .list > a.item:hover > i.icon,
 .ui.list > a.item:hover > i.icon {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 
 
@@ -392,7 +392,7 @@ ol.ui.list ol li,
 }
 .ui.inverted.list .list > a.item:hover,
 .ui.inverted.list > a.item:hover {
-  color: #375a7f;
+  color: #1e70bf;
 }
 
 /* Linking Content */
@@ -400,7 +400,7 @@ ol.ui.list ol li,
   color: rgba(255, 255, 255, 0.9) !important;
 }
 .ui.inverted.list .item a:not(.ui):hover {
-  color: #375a7f !important;
+  color: #1e70bf !important;
 }
 
 /*-------------------
@@ -588,7 +588,7 @@ ul.ui.list li::before,
 ul.ui.list li::before,
 .ui.bulleted.list .list > a.item::before,
 .ui.bulleted.list > a.item::before {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 ul.ui.list ul,
 .ui.bulleted.list .list:not(.icon) {
@@ -610,7 +610,7 @@ ul.ui.horizontal.bulleted.list li:first-child,
 }
 ul.ui.horizontal.bulleted.list li::before,
 .ui.horizontal.bulleted.list > .item::before {
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
 }
 ul.ui.horizontal.bulleted.list li:first-child::before,
 .ui.horizontal.bulleted.list > .item:first-child::before {
@@ -650,7 +650,7 @@ ol.ui.list li::before,
   counter-increment: ordered;
   content: counters(ordered, ".") " ";
   text-align: right;
-  color: #fff;
+  color: rgba(0, 0, 0, 0.87);
   vertical-align: middle;
   opacity: 0.8;
 }
@@ -703,7 +703,7 @@ ol.ui.suffixed.list li::before,
   --------------------*/
 
 .ui.divided.list > .item {
-  border-top: 1px solid #464545;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
 }
 .ui.divided.list .list > .item {
   border-top: none;
@@ -767,7 +767,7 @@ ol.ui.suffixed.list li::before,
 }
 .ui.divided.horizontal.list > .item {
   border-top: none;
-  border-right: 1px solid #464545;
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
   margin: 0;
   line-height: 0.6;
 }
@@ -788,12 +788,12 @@ ol.ui.suffixed.list li::before,
 
 .ui.celled.list > .item,
 .ui.celled.list > .list {
-  border-top: 1px solid #464545;
+  border-top: 1px solid rgba(34, 36, 38, 0.15);
   padding-left: 0.5em;
   padding-right: 0.5em;
 }
 .ui.celled.list > .item:last-child {
-  border-bottom: 1px solid #464545;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
 }
 
 /* Padding on all elements */
@@ -849,7 +849,7 @@ ol.ui.suffixed.list li::before,
 .ui.horizontal.celled.list .list > .item,
 .ui.horizontal.celled.list > .item {
   border-top: none;
-  border-left: 1px solid #464545;
+  border-left: 1px solid rgba(34, 36, 38, 0.15);
   margin: 0;
   padding-left: 0.5em;
   padding-right: 0.5em;
@@ -858,7 +858,7 @@ ol.ui.suffixed.list li::before,
 .ui.horizontal.celled.list .list > .item:last-child,
 .ui.horizontal.celled.list > .item:last-child {
   border-bottom: none;
-  border-right: 1px solid #464545;
+  border-right: 1px solid rgba(34, 36, 38, 0.15);
 }
 
 /* Inverted */
@@ -962,6 +962,12 @@ ol.ui.suffixed.list li::before,
 .ui.massive.horizontal.list > .item {
   font-size: 1.71428571rem;
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+
 
 
 /*******************************
