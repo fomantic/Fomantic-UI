@@ -107,6 +107,9 @@ $.flyout = $.fn.flyout = function(parameters) {
                 $module.remove();
               };
             }
+            if(!settings.autoShow) {
+              settings.autoShow = true;
+            }
           }
           $module.addClass(settings.class);
           if (settings.title !== '') {
