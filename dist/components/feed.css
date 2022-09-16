@@ -129,7 +129,7 @@
   margin: 0;
   font-size: 1em;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /* Summary Image */
@@ -184,7 +184,7 @@
   margin: 0.5em 0 0;
   background: none;
   padding: 0;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /* Images */
@@ -264,7 +264,7 @@
 .ui.feed > .event > .content .meta a:hover,
 .ui.feed > .event > .content .meta a:hover i.icon,
 .ui.feed > .event > .content .meta > i.icon:hover {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 
@@ -306,14 +306,14 @@
 }
 .ui.inverted.feed > .event > .content .date,
 .ui.inverted.feed > .event > .content .meta .like {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.feed > .event > .content .summary,
 .ui.inverted.feed > .event > .content .extra.text {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.feed > .event > .content .meta .like:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 

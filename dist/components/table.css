@@ -25,7 +25,7 @@
   border-radius: 0.28571429rem;
   text-align: left;
   vertical-align: middle;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   border-collapse: separate;
   border-spacing: 0;
 }
@@ -69,7 +69,7 @@
   cursor: auto;
   background: #F9FAFB;
   text-align: inherit;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   padding: 0.92857143em 0.78571429em;
   vertical-align: inherit;
   font-style: none;
@@ -102,7 +102,7 @@
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   background: #F9FAFB;
   text-align: inherit;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   padding: 0.78571429em 0.78571429em;
   vertical-align: inherit;
   font-style: normal;
@@ -770,7 +770,7 @@
   pointer-events: none;
   background: #FFFFFF;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   -webkit-box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
           box-shadow: -0.1em -0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
@@ -782,7 +782,7 @@
   pointer-events: none;
   background: #FFFFFF;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   -webkit-box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
           box-shadow: -0.1em 0.2em 0 0.1em #FFFFFF;
   -moz-transform: scale(1);
@@ -795,7 +795,7 @@
 .ui.definition.table tr td.definition {
   background: rgba(0, 0, 0, 0.03);
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   text-transform: '';
   -webkit-box-shadow: '';
           box-shadow: '';
@@ -898,15 +898,15 @@
 
 .ui.ui.ui.ui.table tr.active,
 .ui.ui.table td.active {
-  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
-          box-shadow: 0 0 0 rgba(0, 0, 0, 0.87) inset;
+  -webkit-box-shadow: 0 0 0 rgba(255, 255, 255, 0.87) inset;
+          box-shadow: 0 0 0 rgba(255, 255, 255, 0.87) inset;
   background: #E0E0E0;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.ui.ui.ui.inverted.table tr.active,
 .ui.ui.inverted.table td.active {
   background: #A0A0A0;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /*--------------
@@ -1293,12 +1293,12 @@
 .ui.ui.selectable.table > tbody > tr:hover,
 .ui.table tbody tr td.selectable:hover {
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.ui.selectable.inverted.table > tbody > tr:hover,
 .ui.inverted.table tbody tr td.selectable:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Selectable Cell Link */
@@ -1336,7 +1336,7 @@
 .ui.table tr td.selectable.active:hover,
 .ui.selectable.table tr:hover td.active {
   background: #E0E0E0;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.ui.selectable.table tr.positive:hover,
 .ui.table tr td.selectable.positive:hover,
@@ -1418,7 +1418,7 @@
 /* Allow striped active hover */
 .ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
   background: #EFEFEF;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -1453,7 +1453,7 @@
 .ui.scrolling.table > thead.primary > tr > td,
 .ui.scrolling.table > tfoot.primary > tr > td {
   background: inherit;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.scrolling.table > thead.primary,
 .ui.inverted.scrolling.table > tfoot.primary {
@@ -1474,7 +1474,7 @@
 .ui.ui.table th.primary:not(.marked),
 .ui.ui.table td.primary:not(.marked) {
   background: #ddf4ff;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.table > thead > tr[class*="primary colored"] > th,
 .ui.table > tfoot > tr[class*="primary colored"] > th,
@@ -1483,7 +1483,7 @@
 .ui.table > tfoot > tr.primary:not(.marked) > th,
 .ui.table > tfoot > tr.primary:not(.marked) > td {
   background: inherit;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.ui.ui.ui.inverted.table tr[class*="primary colored"],
 .ui.ui.inverted.table th[class*="primary colored"],
@@ -1510,7 +1510,7 @@
 .ui.table tr td.selectable.primary:not(.marked):hover,
 .ui.selectable.table tr:hover td.primary:not(.marked) {
   background: #d3f1ff;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.ui.inverted.selectable.table tr[class*="primary colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="primary colored"]:hover,
@@ -1560,7 +1560,7 @@
 .ui.scrolling.table > thead.secondary > tr > td,
 .ui.scrolling.table > tfoot.secondary > tr > td {
   background: inherit;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.scrolling.table > thead.secondary,
 .ui.inverted.scrolling.table > tfoot.secondary {
@@ -1581,7 +1581,7 @@
 .ui.ui.table th.secondary:not(.marked),
 .ui.ui.table td.secondary:not(.marked) {
   background: #dddddd;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.table > thead > tr[class*="secondary colored"] > th,
 .ui.table > tfoot > tr[class*="secondary colored"] > th,
@@ -1590,7 +1590,7 @@
 .ui.table > tfoot > tr.secondary:not(.marked) > th,
 .ui.table > tfoot > tr.secondary:not(.marked) > td {
   background: inherit;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.ui.ui.ui.inverted.table tr[class*="secondary colored"],
 .ui.ui.inverted.table th[class*="secondary colored"],
@@ -1617,7 +1617,7 @@
 .ui.table tr td.selectable.secondary:not(.marked):hover,
 .ui.selectable.table tr:hover td.secondary:not(.marked) {
   background: #e2e2e2;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.ui.inverted.selectable.table tr[class*="secondary colored"]:hover,
 .ui.inverted.table tr td.selectable[class*="secondary colored"]:hover,
@@ -3168,7 +3168,7 @@
 .ui.sortable.table > thead > tr > th {
   cursor: pointer;
   white-space: nowrap;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.celled.sortable.table > thead > tr > th:not(:first-child) {
   border-left: 1px solid rgba(34, 36, 38, 0.15);
@@ -3205,7 +3205,7 @@
   color: rgba(40, 40, 40, 0.3);
 }
 .ui.sortable.table > thead > tr > th:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 .ui.sortable.table:not(.basic) > thead > tr > th:hover {
   background: rgba(0, 0, 0, 0.05);
@@ -3213,7 +3213,7 @@
 
 /* Sorted */
 .ui.sortable.table thead th.sorted {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.sortable.table:not(.basic) thead th.sorted {
   background: rgba(0, 0, 0, 0.05);
@@ -3224,7 +3224,7 @@
 
 /* Sorted Hover */
 .ui.sortable.table thead th.sorted:hover {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.sortable.table:not(.basic) thead th.sorted:hover {
   background: rgba(0, 0, 0, 0.05);
@@ -3232,7 +3232,7 @@
 
 /* Inverted */
 .ui.inverted.sortable.table thead th.sorted {
-  color: #ffffff;
+  color: #000000;
 }
 .ui.inverted.sortable.table:not(.basic) thead th.sorted {
   background: rgba(255, 255, 255, 0.15) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
@@ -3240,7 +3240,7 @@
   background: rgba(255, 255, 255, 0.15) linear-gradient(transparent, rgba(0, 0, 0, 0.05));
 }
 .ui.inverted.sortable.table > thead > tr > th:hover {
-  color: #ffffff;
+  color: #000000;
 }
 .ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
   background: rgba(255, 255, 255, 0.08) -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.05)));
@@ -3260,7 +3260,7 @@
 /* Text Color */
 .ui.inverted.table {
   background: #333333;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
   border: none;
 }
 .ui.ui.inverted.table > thead > tr > th,
@@ -3268,13 +3268,13 @@
 .ui.ui.inverted.table > tr > th {
   background-color: rgba(0, 0, 0, 0.15);
   border-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.ui.inverted.table > tfoot > tr > th,
 .ui.ui.inverted.table > tfoot > tr > td {
   background-color: rgba(0, 0, 0, 0.15);
   border-color: rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.table > tbody > tr > td,
 .ui.inverted.table > tfoot > tr > td,
@@ -3304,7 +3304,7 @@
 .ui.inverted.definition.table > tfoot > tr > td:first-child,
 .ui.inverted.definition.table > tr > td:first-child {
   background: rgba(255, 255, 255, 0.02);
-  color: #ffffff;
+  color: #000000;
 }
 
 /*--------------

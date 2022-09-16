@@ -82,7 +82,7 @@
   height: 17px;
   text-align: center;
   opacity: 0;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   -webkit-transition: border 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, -webkit-transform 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: border 0.1s ease, opacity 0.1s ease, transform 0.1s ease, box-shadow 0.1s ease;
@@ -106,7 +106,7 @@
 /* Inside */
 .ui.checkbox label,
 .ui.checkbox + label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   -webkit-transition: color 0.1s ease;
   transition: color 0.1s ease;
 }
@@ -132,7 +132,7 @@
 }
 .ui.checkbox label:hover,
 .ui.checkbox + label:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /*--------------
@@ -144,10 +144,10 @@
   border-color: rgba(34, 36, 38, 0.35);
 }
 .ui.checkbox label:active::after {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.checkbox input:active ~ label {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -159,10 +159,10 @@
   border-color: #96C8DA;
 }
 .ui.checkbox input:focus ~ label::after {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.checkbox input:focus ~ label {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -175,7 +175,7 @@
 }
 .ui.checkbox input:checked ~ label::after {
   opacity: 1;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -188,7 +188,7 @@
 }
 .ui.checkbox input:not([type=radio]):indeterminate ~ label::after {
   opacity: 1;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.indeterminate.toggle.checkbox input:not([type=radio]):indeterminate ~ label::before {
   background: rgba(0, 0, 0, 0.15);
@@ -212,7 +212,7 @@
 }
 .ui.checkbox input:not([type=radio]):indeterminate:focus ~ label::after,
 .ui.checkbox input:checked:focus ~ label::after {
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -299,7 +299,7 @@
   border-radius: 500rem;
   -webkit-transform: scale(0.46666667);
           transform: scale(0.46666667);
-  background-color: rgba(0, 0, 0, 0.87);
+  background-color: rgba(255, 255, 255, 0.87);
 }
 
 /* Focus */
@@ -307,7 +307,7 @@
   background-color: #FFFFFF;
 }
 .ui.radio.checkbox input:focus ~ label::after {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 /* Indeterminate */
@@ -320,7 +320,7 @@
   background-color: #FFFFFF;
 }
 .ui.radio.checkbox input:checked ~ label::after {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 /* Active Focus */
@@ -328,7 +328,7 @@
   background-color: #FFFFFF;
 }
 .ui.radio.checkbox input:focus:checked ~ label::after {
-  background-color: rgba(0, 0, 0, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -349,7 +349,7 @@
 .ui.slider.checkbox label {
   padding-left: 4.5rem;
   line-height: 1rem;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /* Line */
@@ -402,7 +402,7 @@
 
 /* Hover */
 .ui.slider.checkbox label:hover {
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 .ui.slider.checkbox label:hover::before {
   background: rgba(0, 0, 0, 0.15);
@@ -410,7 +410,7 @@
 
 /* Active */
 .ui.slider.checkbox input:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.slider.checkbox input:checked ~ label::before {
   background-color: #545454 !important;
@@ -421,7 +421,7 @@
 
 /* Active Focus */
 .ui.slider.checkbox input:focus:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.slider.checkbox input:focus:checked ~ label::before {
   background-color: #000000 !important;
@@ -459,7 +459,7 @@
 .ui.toggle.checkbox label {
   min-height: 1.5rem;
   padding-left: 4.5rem;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.toggle.checkbox label {
   padding-top: 0.15em;
@@ -523,7 +523,7 @@
 
 /* Active */
 .ui.toggle.checkbox input:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.toggle.checkbox input:checked ~ label::before {
   background-color: #2185D0 !important;
@@ -536,7 +536,7 @@
 
 /* Active Focus */
 .ui.toggle.checkbox input:focus:checked ~ label {
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.toggle.checkbox input:focus:checked ~ label::before {
   background-color: #0d71bb !important;
@@ -582,34 +582,34 @@
 
 .ui.inverted.checkbox label,
 .ui.inverted.checkbox + label {
-  color: rgba(255, 255, 255, 0.9) !important;
+  color: rgba(0, 0, 0, 0.9) !important;
 }
 
 /* Hover */
 .ui.inverted.checkbox label:hover {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.checkbox label:hover::before {
   border-color: rgba(34, 36, 38, 0.5);
 }
 /*Slider Label */
 .ui.inverted.slider.checkbox label {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Slider Line */
 .ui.inverted.slider.checkbox label::before {
-  background-color: rgba(255, 255, 255, 0.5) !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
 }
 
 /* Slider Hover */
 .ui.inverted.slider.checkbox label:hover::before {
-  background: rgba(255, 255, 255, 0.7) !important;
+  background: rgba(0, 0, 0, 0.7) !important;
 }
 
 /* Slider Active */
 .ui.inverted.slider.checkbox input:checked ~ label {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.slider.checkbox input:checked ~ label::before {
   background-color: rgba(255, 255, 255, 0.8) !important;
@@ -617,7 +617,7 @@
 
 /* Slider Active Focus */
 .ui.inverted.slider.checkbox input:focus:checked ~ label {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.slider.checkbox input:focus:checked ~ label::before {
   background-color: rgba(255, 255, 255, 0.8) !important;
@@ -625,17 +625,17 @@
 
 /* Toggle Switch */
 .ui.inverted.toggle.checkbox label::before {
-  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 /* Toggle Hover */
 .ui.inverted.toggle.checkbox label:hover::before {
-  background: #ffffff !important;
+  background: #000000 !important;
 }
 
 /* Toggle Active */
 .ui.inverted.toggle.checkbox input:checked ~ label {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.toggle.checkbox input:checked ~ label::before {
   background-color: #2185D0 !important;
@@ -643,7 +643,7 @@
 
 /* Toggle Active Focus */
 .ui.inverted.toggle.checkbox input:focus:checked ~ label {
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.toggle.checkbox input:focus:checked ~ label::before {
   background-color: #0d71bb !important;

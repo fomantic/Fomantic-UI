@@ -318,7 +318,7 @@
 }
 .ui.cards > .card .meta > a:not(.ui):hover,
 .ui.card .meta > a:not(.ui):hover {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /*--------------
@@ -448,7 +448,7 @@
 }
 .ui.cards > .card > .extra a:not(.ui),
 .ui.card > .extra a:not(.ui) {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 .ui.cards > .card > .extra a:not(.ui):hover,
 .ui.card > .extra a:not(.ui):hover {
@@ -1952,11 +1952,11 @@ a.ui.basic.inverted.black.card:hover,
 /* Header */
 .ui.inverted.cards > .card > .content > .header,
 .ui.inverted.card > .content > .header {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.cards > .card > .content > a.header,
 .ui.inverted.card > .content > a.header {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.cards > .card > .content > a.header:hover,
 .ui.inverted.card > .content > a.header:hover {
@@ -1966,32 +1966,32 @@ a.ui.basic.inverted.black.card:hover,
 /* Description */
 .ui.inverted.cards > .card > .content > .description,
 .ui.inverted.card > .content > .description {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /* Meta */
 .ui.inverted.cards > .card .meta,
 .ui.inverted.card .meta {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.cards > .card .meta > a:not(.ui),
 .ui.inverted.card .meta > a:not(.ui) {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.cards > .card .meta > a:not(.ui):hover,
 .ui.inverted.card .meta > a:not(.ui):hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Extra */
 .ui.inverted.cards > .card > .extra,
 .ui.inverted.card > .extra {
   border-top: 1px solid rgba(255, 255, 255, 0.15) !important;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.cards > .card > .extra a:not(.ui),
 .ui.inverted.card > .extra a:not(.ui) {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .ui.inverted.cards > .card > .extra a:not(.ui):hover,
 .ui.inverted.card > .extra a:not(.ui):hover {

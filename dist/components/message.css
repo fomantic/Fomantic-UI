@@ -20,7 +20,7 @@
   background: #F8F8F9;
   padding: 1em 1.5em;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   -webkit-transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: opacity 0.1s ease, color 0.1s ease, background 0.1s ease, box-shadow 0.1s ease;
@@ -414,7 +414,7 @@
 }
 .ui.primary.message {
   background-color: #DFF0FF;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.primary.message,
 .ui.attached.primary.message {
@@ -426,11 +426,11 @@
           box-shadow: 0 0 0 1px #2185D0 inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .ui.primary.message .header {
-  color: rgba(242, 242, 242, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.secondary.message {
   background-color: #F4F4F4;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.secondary.message,
 .ui.attached.secondary.message {
@@ -442,7 +442,7 @@
           box-shadow: 0 0 0 1px #1B1C1D inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
 }
 .ui.secondary.message .header {
-  color: rgba(242, 242, 242, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.red.message {
   background-color: #FFE8E6;
@@ -638,14 +638,14 @@
 }
 .ui.black.message {
   background-color: #1B1C1D;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.black.message .header {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.message {
   background-color: #1B1C1D;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /*--------------

@@ -52,7 +52,7 @@
   height: 15em;
   padding: 2em;
   background-color: #E6E6E6;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
           box-shadow: 0 0 2px rgba(0, 0, 0, 0.3);
 }

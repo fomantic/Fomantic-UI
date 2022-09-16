@@ -262,7 +262,7 @@
   .ui.modal > .close {
     top: 1.0535rem;
     right: 1rem;
-    color: rgba(0, 0, 0, 0.87);
+    color: rgba(255, 255, 255, 0.87);
   }
 }
 
@@ -368,7 +368,7 @@
   color: #FFFFFF;
 }
 .ui.inverted.dimmer > .basic.modal {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.inverted.dimmer > .ui.basic.modal > .header {
   color: rgba(0, 0, 0, 0.85);
@@ -517,7 +517,7 @@
 .ui.fullscreen.modal > .close {
   top: 1.0535rem;
   right: 1rem;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.basic.fullscreen.modal > .close {
   color: #FFFFFF;

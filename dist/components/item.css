@@ -112,7 +112,7 @@
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   background: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   margin: 0;
   padding: 0;
   -webkit-box-shadow: none;
@@ -187,7 +187,7 @@
   max-width: auto;
   font-size: 1em;
   line-height: 1.4285em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /*--------------
@@ -250,7 +250,7 @@
   color: rgba(0, 0, 0, 0.4);
 }
 .ui.items > .item .meta > a:not(.ui):hover {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /*--------------
@@ -505,16 +505,16 @@
 }
 .ui.inverted.items > .item > .content {
   background: none;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.items > .item .extra {
   background: none;
 }
 .ui.inverted.items > .item > .content > .header {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.items > .item > .content > .description {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.items > .item .meta {
   color: rgba(255, 255, 255, 0.8);
@@ -526,16 +526,16 @@
   color: #4183C4;
 }
 .ui.inverted.items > .item > .content > a.header {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.items > .item > .content > a.header:hover {
-  color: #ffffff;
+  color: #000000;
 }
 .ui.inverted.items > .item .meta > a:not(.ui) {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.items > .item .meta > a:not(.ui):hover {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.items > .item > .content .favorite.icon:hover {
   color: #ffc63d;
@@ -550,11 +550,11 @@
   color: #ff5a63;
 }
 .ui.inverted.items > .item .extra {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.items a.item:hover .content .header,
 .ui.inverted.link.items > .item:hover .content .header {
-  color: #ffffff;
+  color: #000000;
 }
 .ui.inverted.divided.items > .item {
   border-top: 1px solid rgba(255, 255, 255, 0.1);

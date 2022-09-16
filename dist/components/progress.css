@@ -58,10 +58,10 @@
   background: transparent;
 }
 .ui.progress[data-percent="0"] .bar .progress {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.inverted.progress[data-percent="0"] .bar .progress {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Percent Complete */
@@ -74,7 +74,7 @@
   right: 0.5em;
   left: auto;
   bottom: auto;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
   text-shadow: none;
   margin-top: -0.5em;
   font-weight: bold;
@@ -99,7 +99,7 @@
   right: auto;
   left: 0;
   bottom: auto;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   font-weight: bold;
   text-shadow: none;
   margin-top: 0.2em;
@@ -141,49 +141,49 @@
 /* Indicating Label */
 .ui.indicating.progress[data-percent^="1"] .label,
 .ui.indicating.progress[data-percent^="2"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.indicating.progress[data-percent^="3"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.indicating.progress[data-percent^="4"] .label,
 .ui.indicating.progress[data-percent^="5"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.indicating.progress[data-percent^="6"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.indicating.progress[data-percent^="7"] .label,
 .ui.indicating.progress[data-percent^="8"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.indicating.progress[data-percent^="9"] .label,
 .ui.indicating.progress[data-percent^="100"] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /* Inverted Indicating Label */
 .ui.inverted.indicating.progress[data-percent^="1"] .label,
 .ui.inverted.indicating.progress[data-percent^="2"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.indicating.progress[data-percent^="3"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.indicating.progress[data-percent^="4"] .label,
 .ui.inverted.indicating.progress[data-percent^="5"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.indicating.progress[data-percent^="6"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.indicating.progress[data-percent^="7"] .label,
 .ui.inverted.indicating.progress[data-percent^="8"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.indicating.progress[data-percent^="9"] .label,
 .ui.inverted.indicating.progress[data-percent^="100"] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Single Digits */
@@ -227,7 +227,7 @@
 .ui.indicating.progress[data-percent^="8."] .label,
 .ui.indicating.progress[data-percent="9"] .label,
 .ui.indicating.progress[data-percent^="9."] .label {
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.inverted.indicating.progress[data-percent="0"] .label,
 .ui.inverted.indicating.progress[data-percent^="0."] .label,
@@ -249,7 +249,7 @@
 .ui.inverted.indicating.progress[data-percent^="8."] .label,
 .ui.inverted.indicating.progress[data-percent="9"] .label,
 .ui.inverted.indicating.progress[data-percent^="9."] .label {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Indicating Success */
@@ -733,7 +733,7 @@
 }
 .ui.inverted.sliding.indeterminate.progress .bar .progress,
 .ui.inverted.swinging.indeterminate.progress .bar .progress {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 @-webkit-keyframes progress-swinging {
   0%,

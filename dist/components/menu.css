@@ -25,7 +25,7 @@
   display: flex;
   margin: 1rem 0;
   font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  background: #FFFFFF;
+  background: #1B1C1D;
   font-weight: normal;
   border: 1px solid rgba(34, 36, 38, 0.15);
   -webkit-box-shadow: 0 1px 2px 0 rgba(34, 36, 38, 0.15);
@@ -88,7 +88,7 @@
   background: none;
   padding: 0.92857143em 1.14285714em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   font-weight: normal;
   -webkit-transition: background 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
   transition: background 0.1s ease, color 0.1s ease, -webkit-box-shadow 0.1s ease;
@@ -241,7 +241,7 @@
   font-size: 1em !important;
   padding: 0.78571429em 1.14285714em !important;
   background: transparent !important;
-  color: rgba(0, 0, 0, 0.87) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
   text-transform: none !important;
   font-weight: normal !important;
   -webkit-box-shadow: none !important;
@@ -251,16 +251,16 @@
 }
 .ui.menu .ui.dropdown .menu > .item:hover {
   background: rgba(0, 0, 0, 0.05) !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.menu .ui.dropdown .menu > .selected.item {
   background: rgba(0, 0, 0, 0.05) !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.menu .ui.dropdown .menu > .active.item {
   background: rgba(0, 0, 0, 0.03) !important;
   font-weight: bold !important;
-  color: rgba(0, 0, 0, 0.95) !important;
+  color: rgba(255, 255, 255, 0.95) !important;
 }
 .ui.menu .ui.dropdown.item .menu .item:not(.filtered) {
   display: block;
@@ -288,7 +288,7 @@
 /* Inverted */
 .ui.inverted.menu .search.dropdown.item > .search,
 .ui.inverted.menu .search.dropdown.item > .text {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Vertical */
@@ -438,7 +438,7 @@
 .ui.menu a.item:hover {
   cursor: pointer;
   background: rgba(0, 0, 0, 0.03);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -449,7 +449,7 @@
 .ui.menu .link.item:active,
 .ui.menu a.item:active {
   background: rgba(0, 0, 0, 0.03);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -458,7 +458,7 @@
 
 .ui.menu .active.item {
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   font-weight: normal;
   -webkit-box-shadow: none;
           box-shadow: none;
@@ -474,7 +474,7 @@
 .ui.menu .active.item:hover,
 .ui.vertical.menu .active.item:hover {
   background-color: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -650,7 +650,7 @@ Floated Menu / Item
 .ui.vertical.menu .item .menu .active.item {
   background-color: transparent;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -675,7 +675,7 @@ Floated Menu / Item
   border-right: 1px solid transparent;
   border-top: 2px solid transparent;
   padding: 0.92857143em 1.42857143em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.tabular.menu .item::before {
   display: none;
@@ -684,13 +684,13 @@ Floated Menu / Item
 /* Hover */
 .ui.tabular.menu .item:hover {
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Active */
 .ui.tabular.menu .active.item {
   background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   border-top-width: 1px;
   border-color: #D4D4D5;
   font-weight: bold;
@@ -735,7 +735,7 @@ Floated Menu / Item
 }
 .ui.bottom.tabular.menu .active.item {
   background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   border-color: #D4D4D5;
   margin: -1px 0 0 0;
   border-radius: 0 0 0.28571429rem 0.28571429rem !important;
@@ -759,7 +759,7 @@ Floated Menu / Item
 }
 .ui.vertical.tabular.menu .active.item {
   background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   border-color: #D4D4D5;
   margin: 0 -1px 0 0;
   border-radius: 0.28571429rem 0 0 0.28571429rem !important;
@@ -784,7 +784,7 @@ Floated Menu / Item
 }
 .ui.vertical.right.tabular.menu .active.item {
   background: none #FFFFFF;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   border-color: #D4D4D5;
   margin: 0 0 0 -1px;
   border-radius: 0 0.28571429rem 0.28571429rem 0 !important;
@@ -804,7 +804,7 @@ Floated Menu / Item
   border-color: #555555;
 }
 .ui.inverted.tabular.menu .item:not(.active):hover {
-  color: #ffffff;
+  color: #000000;
   background: transparent;
   cursor: pointer;
 }
@@ -842,7 +842,7 @@ Floated Menu / Item
   border-top: none;
   padding-top: 0.92857143em;
   background-color: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -898,7 +898,7 @@ Floated Menu / Item
 .ui.secondary.menu .link.item:hover,
 .ui.secondary.menu a.item:hover {
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Active */
@@ -906,7 +906,7 @@ Floated Menu / Item
   -webkit-box-shadow: none;
           box-shadow: none;
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   border-radius: 0.28571429rem;
 }
 
@@ -915,23 +915,23 @@ Floated Menu / Item
   -webkit-box-shadow: none;
           box-shadow: none;
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Inverted */
 .ui.secondary.inverted.menu .link.item:not(.disabled),
 .ui.secondary.inverted.menu a.item:not(.disabled) {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.secondary.inverted.menu .dropdown.item:hover,
 .ui.secondary.inverted.menu .link.item:hover,
 .ui.secondary.inverted.menu a.item:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: #000000;
 }
 .ui.secondary.inverted.menu .active.item {
   background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Fix item margins */
@@ -1029,7 +1029,7 @@ Floated Menu / Item
 .ui.secondary.pointing.menu .link.item:hover,
 .ui.secondary.pointing.menu a.item:hover {
   background-color: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /* Pressed */
@@ -1047,13 +1047,13 @@ Floated Menu / Item
           box-shadow: none;
   border-color: currentColor;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Active Hover */
 .ui.secondary.pointing.menu .active.item:hover {
   border-color: currentColor;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /* Active Dropdown */
@@ -1087,7 +1087,7 @@ Floated Menu / Item
   border-color: rgba(255, 255, 255, 0.1);
 }
 .ui.secondary.inverted.pointing.menu .item:not(.disabled) {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.secondary.inverted.pointing.menu .header.item {
   color: #FFFFFF !important;
@@ -1096,13 +1096,13 @@ Floated Menu / Item
 /* Hover */
 .ui.secondary.inverted.pointing.menu .link.item:hover,
 .ui.secondary.inverted.pointing.menu a.item:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 /* Active */
 .ui.ui.secondary.inverted.pointing.menu .active.item {
   border-color: #FFFFFF;
-  color: #ffffff;
+  color: #000000;
   background-color: transparent;
 }
 
@@ -1207,7 +1207,7 @@ Floated Menu / Item
   -webkit-box-shadow: none;
           box-shadow: none;
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--- active hover ---*/
@@ -1457,7 +1457,7 @@ Floated Menu / Item
 
 .ui.inverted.menu {
   border: 0 solid transparent;
-  background: #1B1C1D;
+  background: #FFFFFF;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1466,7 +1466,7 @@ Floated Menu / Item
 .ui.inverted.menu .item,
 .ui.inverted.menu .item > a:not(.ui) {
   background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.menu .item.menu {
   background: transparent;
@@ -1484,7 +1484,7 @@ Floated Menu / Item
 /* Sub Menu */
 .ui.vertical.inverted.menu .menu .item,
 .ui.vertical.inverted.menu .menu .item a:not(.ui) {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Header */
@@ -1507,12 +1507,12 @@ Floated Menu / Item
 .ui.inverted.menu .link.item:hover,
 .ui.inverted.menu a.item:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: #000000;
 }
 .ui.vertical.inverted.menu .item .menu a.item:hover,
 .ui.vertical.inverted.menu .item .menu .link.item:hover {
   background: transparent;
-  color: #ffffff;
+  color: #000000;
 }
 
 /*--- Pressed ---*/
@@ -1520,14 +1520,14 @@ Floated Menu / Item
 .ui.inverted.menu a.item:active,
 .ui.inverted.menu .link.item:active {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: #000000;
 }
 
 /*--- Active ---*/
 
 .ui.inverted.menu .active.item {
   background: #3D3E3F;
-  color: #ffffff !important;
+  color: #000000 !important;
 }
 .ui.inverted.vertical.menu .item .menu .active.item {
   background: transparent;
@@ -2229,19 +2229,19 @@ Floated Menu / Item
           box-shadow: none;
 }
 .ui.menu .ui.inverted.dropdown .menu > .item {
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 .ui.menu .ui.inverted.dropdown .menu > .active.item {
   background: transparent !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 .ui.menu .ui.inverted.dropdown .menu > .item:hover {
   background: rgba(255, 255, 255, 0.08) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 .ui.menu .ui.inverted.dropdown .menu > .selected.item {
   background: rgba(255, 255, 255, 0.15) !important;
-  color: rgba(255, 255, 255, 0.8) !important;
+  color: rgba(0, 0, 0, 0.8) !important;
 }
 
 /* Vertical */

@@ -122,7 +122,7 @@
   border-top: none;
   line-height: 1em;
   font-size: 1rem;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   padding: 0.78571429rem 1.14285714rem;
   text-transform: none;
   font-weight: normal;
@@ -240,7 +240,7 @@
   font-weight: normal;
 }
 .ui.dropdown .menu > .message:not(.ui) {
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
 }
 
 /*--------------
@@ -403,10 +403,10 @@ select.ui.dropdown {
           transform: rotateZ(0deg);
   min-width: 14em;
   min-height: 2.71428571em;
-  background: #FFFFFF;
+  background: #1B1C1D;
   display: inline-block;
   padding: 0.78571429em 3.2em 0.78571429em 1em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   -webkit-box-shadow: none;
           box-shadow: none;
   border: 1px solid rgba(34, 36, 38, 0.15);
@@ -602,7 +602,7 @@ select.ui.dropdown {
 /* Visible */
 .ui.selection.visible.dropdown > .text:not(.default) {
   font-weight: normal;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Visible Hover */
@@ -761,7 +761,7 @@ select.ui.dropdown {
   opacity: 0.45;
 }
 .ui.active.search.dropdown input.search:focus + .text {
-  color: rgba(115, 115, 115, 0.87) !important;
+  color: rgba(255, 255, 255, 0.87) !important;
 }
 .ui.search.dropdown.button > span.sizer {
   display: none;
@@ -966,7 +966,7 @@ select.ui.dropdown {
 .ui.dropdown .menu .active.item {
   background: transparent;
   font-weight: bold;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   -webkit-box-shadow: none;
           box-shadow: none;
   z-index: 12;
@@ -980,7 +980,7 @@ select.ui.dropdown {
 /* Menu Item Hover */
 .ui.dropdown .menu > .item:hover {
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   z-index: 13;
 }
 
@@ -990,11 +990,11 @@ select.ui.dropdown {
 
 .ui.dropdown:not(.button) > .default.text,
 .ui.default.dropdown:not(.button) > .text {
-  color: rgba(191, 191, 191, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.default.dropdown:not(.button) > input:focus ~ .text {
-  color: rgba(115, 115, 115, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /*--------------------
@@ -1068,7 +1068,7 @@ select.ui.dropdown {
 .ui.dropdown.selected,
 .ui.dropdown .menu .selected.item {
   background: rgba(0, 0, 0, 0.03);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------------
@@ -1869,25 +1869,25 @@ select.ui.dropdown {
 }
 .ui.dropdown .inverted.menu > .item,
 .ui.inverted.dropdown .menu > .item {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.dropdown .inverted.menu .active.item,
 .ui.inverted.dropdown .menu .active.item {
   background: transparent;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
 .ui.dropdown .inverted.menu > .item:hover,
 .ui.inverted.dropdown .menu > .item:hover {
   background: rgba(255, 255, 255, 0.08);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.dropdown.selected,
 .ui.dropdown .inverted.menu .selected.item,
 .ui.inverted.dropdown .menu .selected.item {
   background: rgba(255, 255, 255, 0.15);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.dropdown .inverted.menu > .header,
 .ui.inverted.dropdown .menu > .header {
@@ -1896,7 +1896,7 @@ select.ui.dropdown {
 .ui.inverted.dropdown > .text > .description,
 .ui.dropdown .inverted.menu > .item > .description,
 .ui.inverted.dropdown .menu > .item > .description {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .ui.dropdown .inverted.menu > .divider,
 .ui.inverted.dropdown .menu > .divider {
@@ -1912,7 +1912,7 @@ select.ui.dropdown {
 .ui.inverted.selection.dropdown {
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: #1B1C1D;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.selection.dropdown:hover {
   border-color: rgba(255, 255, 255, 0.25);
@@ -1923,7 +1923,7 @@ select.ui.dropdown {
   color: #FFFFFF;
 }
 .ui.inverted.selection.visible.dropdown > .text:not(.default) {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.selection.simple.dropdown:hover .inverted.menu,
 .ui.inverted.selection.simple.dropdown:hover .menu,
@@ -1938,22 +1938,22 @@ select.ui.dropdown {
 }
 .ui.inverted.dropdown:not(.button) > .default.text,
 .ui.inverted.default.dropdown:not(.button) > .text {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 .ui.inverted.dropdown:not(.button) > input:focus ~ .default.text,
 .ui.inverted.default.dropdown:not(.button) > input:focus ~ .text {
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(0, 0, 0, 0.7);
 }
 .ui.inverted.active.search.dropdown input.search:focus + .text i.icon,
 .ui.inverted.active.search.dropdown input.search:focus + .text .flag {
   opacity: 0.45;
 }
 .ui.inverted.active.search.dropdown input.search:focus + .text {
-  color: rgba(255, 255, 255, 0.7) !important;
+  color: rgba(0, 0, 0, 0.7) !important;
 }
 .ui.dropdown .inverted.menu > .message:not(.ui),
 .ui.inverted.dropdown .menu > .message:not(.ui) {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
 }
 
 /* Fixing the border */
@@ -1989,21 +1989,21 @@ select.ui.dropdown {
 .ui.inverted.dropdown textarea::-webkit-selection,
 .ui.inverted.dropdown input::-webkit-selection {
   background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.dropdown textarea::-moz-selection,
 .ui.inverted.dropdown input::-moz-selection {
   background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.dropdown textarea::-moz-selection, .ui.inverted.dropdown input::-moz-selection {
   background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.dropdown textarea::selection,
 .ui.inverted.dropdown input::selection {
   background-color: rgba(255, 255, 255, 0.25);
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 /* Scrollbars */

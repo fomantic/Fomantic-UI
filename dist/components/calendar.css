@@ -123,7 +123,7 @@
 }
 .ui.calendar .ui.table tr td.range {
   background: rgba(0, 0, 0, 0.05);
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -134,7 +134,7 @@
 }
 .ui.inverted.calendar .ui.table.inverted tr td.range {
   background: rgba(255, 255, 255, 0.08);
-  color: #ffffff;
+  color: #000000;
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -147,7 +147,7 @@
   color: rgba(225, 225, 225, 0.3);
 }
 .ui.inverted.calendar .ui.inverted.table tr .adjacent:not(.disabled):not(.active) {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
   background: rgba(255, 255, 255, 0.02);
 }
 .ui.calendar.popup > .ui.ui.grid {

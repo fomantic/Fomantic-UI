@@ -30,7 +30,7 @@
   padding: 0.5em 0;
   font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1em;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
   list-style: none;
   line-height: 1;
 }
@@ -137,7 +137,7 @@
 .ui.styled.accordion .accordion > .title {
   margin: 0;
   padding: 0.75em 1em;
-  color: rgba(0, 0, 0, 0.4);
+  color: rgba(255, 255, 255, 0.4);
   font-weight: bold;
   border-top: 1px solid rgba(34, 36, 38, 0.15);
   -webkit-transition: background 0.1s ease, color 0.1s ease;
@@ -161,23 +161,23 @@
 /* Hover */
 .ui.styled.accordion > .title:hover {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.styled.accordion .accordion > .title:hover {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 
 /* Active */
 .ui.styled.accordion[open] > .title,
 .ui.styled.accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.styled.accordion .accordion[open] > .title,
 .ui.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 
 /*--------------
@@ -263,7 +263,7 @@
 .ui.inverted.accordion.menu .item > .title,
 .ui.inverted.accordion > .title,
 .ui.inverted.accordion .accordion > .title {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.styled.accordion,
 .ui.inverted.styled.accordion .accordion {
@@ -273,30 +273,30 @@
 }
 .ui.inverted.styled.accordion > .title,
 .ui.inverted.styled.accordion .accordion > .title {
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(0, 0, 0, 0.5);
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Hover */
 .ui.inverted.styled.accordion > .title:hover {
   background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.styled.accordion .accordion > .title:hover {
   background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 
 /* Active */
 .ui.inverted.styled.accordion[open] > .title,
 .ui.inverted.styled.accordion .active.title {
   background: transparent;
-  color: #ffffff;
+  color: #000000;
 }
 .ui.inverted.styled.accordion .accordion[open] > .title,
 .ui.inverted.styled.accordion .accordion .active.title {
   background: transparent;
-  color: #ffffff;
+  color: #000000;
 }
 .ui.basic.styled.accordion,
 .ui.basic.styled.accordion .accordion {
@@ -312,31 +312,31 @@
 .ui.basic.styled.accordion > .title:hover,
 .ui.basic.styled.accordion .accordion > .title:hover {
   background: transparent;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.basic.styled.accordion[open] > .title,
 .ui.basic.styled.accordion .active.title,
 .ui.basic.styled.accordion .accordion[open] > .title,
 .ui.basic.styled.accordion .accordion .active.title {
   background: transparent;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.inverted.basic.styled.accordion > .title,
 .ui.inverted.basic.styled.accordion .accordion > .title {
   background: transparent;
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.basic.styled.accordion > .title:hover,
 .ui.inverted.basic.styled.accordion .accordion > .title:hover {
   background: transparent;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(0, 0, 0, 0.9);
 }
 .ui.inverted.basic.styled.accordion[open] > .title,
 .ui.inverted.basic.styled.accordion .active.title,
 .ui.inverted.basic.styled.accordion .accordion[open] > .title,
 .ui.inverted.basic.styled.accordion .accordion .active.title {
   background: transparent;
-  color: #ffffff;
+  color: #000000;
 }
 .ui.tree.accordion:not(.styled) .title ~ .content,
 .ui.tree.accordion:not(.styled) .accordion .title ~ .content {

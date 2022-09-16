@@ -10,7 +10,7 @@
 @verticalMargin: @medium;
 @horizontalMargin: 0;
 @margin: @verticalMargin @horizontalMargin;
-@background: #FFFFFF;
+@background: @black;
 @fontFamily: @pageFont;
 @itemBackground: none;
 @fontWeight: @normal;
@@ -383,7 +383,7 @@
 ---------------*/
 
 /* Inverted */
-@invertedBackground: @black;
+@invertedBackground: @white;
 @invertedBoxShadow: none;
 @invertedBorder: 0 solid transparent;
 @invertedHeaderBackground: transparent;

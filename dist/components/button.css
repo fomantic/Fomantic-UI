@@ -62,7 +62,7 @@
   background-image: none;
   -webkit-box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 .ui.button:hover .icon {
   opacity: 0.85;
@@ -74,7 +74,7 @@
 
 .ui.button:focus {
   background-color: #CACBCD;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   background-image: none;
   -webkit-box-shadow: '';
           box-shadow: '';
@@ -91,7 +91,7 @@
 .ui.active.button:active {
   background-color: #BABBBC;
   background-image: '';
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.9);
   -webkit-box-shadow: 0 0 0 1px transparent inset, none;
           box-shadow: 0 0 0 1px transparent inset, none;
 }
@@ -105,12 +105,12 @@
   background-image: none;
   -webkit-box-shadow: 0 0 0 1px transparent inset;
           box-shadow: 0 0 0 1px transparent inset;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.active.button:hover {
   background-color: #C0C1C2;
   background-image: none;
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.active.button:active {
   background-color: #C0C1C2;
@@ -357,7 +357,7 @@
   background: #FFFFFF;
   -webkit-box-shadow: 0 0 0 2px #FFFFFF inset;
           box-shadow: 0 0 0 2px #FFFFFF inset;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Active / Focus */
@@ -366,7 +366,7 @@
   background: #FFFFFF;
   -webkit-box-shadow: 0 0 0 2px #FFFFFF inset;
           box-shadow: 0 0 0 2px #FFFFFF inset;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /* Active Focus */
@@ -374,7 +374,7 @@
   background: #DCDDDE;
   -webkit-box-shadow: 0 0 0 2px #DCDDDE inset;
           box-shadow: 0 0 0 2px #DCDDDE inset;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 
 /*-------------------
@@ -830,21 +830,21 @@
 .ui.basic.buttons .button:hover,
 .ui.basic.button:hover {
   background: #FFFFFF;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.35) inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.35) inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
 }
 .ui.basic.buttons .button:focus,
 .ui.basic.button:focus {
   background: #FFFFFF;
-  color: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.8);
   -webkit-box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.35) inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0 0 0 1px rgba(34, 36, 38, 0.35) inset, 0 0 0 0 rgba(34, 36, 38, 0.15) inset;
 }
 .ui.basic.buttons .button:active,
 .ui.basic.button:active {
   background: #F8F8F8;
-  color: rgba(0, 0, 0, 0.9);
+  color: rgba(255, 255, 255, 0.9);
   -webkit-box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 4px 0 rgba(34, 36, 38, 0.15) inset;
           box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15) inset, 0 1px 4px 0 rgba(34, 36, 38, 0.15) inset;
 }
@@ -853,7 +853,7 @@
   background: rgba(0, 0, 0, 0.05);
   -webkit-box-shadow: '';
           box-shadow: '';
-  color: rgba(0, 0, 0, 0.95);
+  color: rgba(255, 255, 255, 0.95);
 }
 .ui.basic.buttons .active.button:hover,
 .ui.basic.active.button:hover {

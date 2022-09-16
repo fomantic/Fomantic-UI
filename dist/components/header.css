@@ -23,7 +23,7 @@
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
-  color: rgba(0, 0, 0, 0.87);
+  color: rgba(255, 255, 255, 0.87);
 }
 .ui.header:first-child {
   margin-top: -0.14285714em;
@@ -332,7 +332,7 @@ h6.ui.header .sub.header {
   color: #FFFFFF;
 }
 .ui.inverted.header .sub.header {
-  color: rgba(255, 255, 255, 0.8);
+  color: rgba(0, 0, 0, 0.8);
 }
 .ui.inverted.attached.header {
   background: #1B1C1D;

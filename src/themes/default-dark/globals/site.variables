@@ -176,7 +176,7 @@
 ---------------*/
 
 /* This adjusts the default form input across all elements */
-@inputBackground        : @white;
+@inputBackground        : @black;
 @inputVerticalPadding   : @relative11px;
 @inputHorizontalPadding : @relative14px;
 @inputPadding           : @inputVerticalPadding @inputHorizontalPadding;
@@ -222,11 +222,11 @@
         Page
 --------------------*/
 
-@pageBackground      : #FFFFFF;
+@pageBackground      : #2d2d2d;
 @pageOverflowX       : hidden;
 
 @lineHeight          : 1.4285em;
-@textColor           : rgba(0, 0, 0, 0.87);
+@textColor           : rgba(255, 255, 255, 0.87);
 
 /*-------------------
       Paragraph
@@ -799,18 +799,18 @@
 @mutedTextColor              : rgba(0, 0, 0, 0.6);
 @lightTextColor              : rgba(0, 0, 0, 0.4);
 
-@unselectedTextColor         : rgba(0, 0, 0, 0.4);
-@hoveredTextColor            : rgba(0, 0, 0, 0.8);
-@pressedTextColor            : rgba(0, 0, 0, 0.9);
-@selectedTextColor           : rgba(0, 0, 0, 0.95);
+@unselectedTextColor         : rgba(255, 255, 255, 0.4);
+@hoveredTextColor            : rgba(255, 255, 255, 0.8);
+@pressedTextColor            : rgba(255, 255, 255, 0.9);
+@selectedTextColor           : rgba(255, 255, 255, 0.95);
 
-@invertedTextColor           : rgba(255, 255, 255, 0.9);
-@invertedMutedTextColor      : rgba(255, 255, 255, 0.8);
-@invertedLightTextColor      : rgba(255, 255, 255, 0.7);
-@invertedUnselectedTextColor : rgba(255, 255, 255, 0.5);
-@invertedHoveredTextColor    : rgba(255, 255, 255, 1);
-@invertedPressedTextColor    : rgba(255, 255, 255, 1);
-@invertedSelectedTextColor   : rgba(255, 255, 255, 1);
+@invertedTextColor           : rgba(0, 0, 0, 0.9);
+@invertedMutedTextColor      : rgba(0, 0, 0, 0.8);
+@invertedLightTextColor      : rgba(0, 0, 0, 0.7);
+@invertedUnselectedTextColor : rgba(0, 0, 0, 0.5);
+@invertedHoveredTextColor    : rgba(0, 0, 0, 1);
+@invertedPressedTextColor    : rgba(0, 0, 0, 1);
+@invertedSelectedTextColor   : rgba(0, 0, 0, 1);
 
 /*-------------------
      Brand Colors
@@ -1561,6 +1561,3 @@
 
 @inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
 @inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
-
-
-
