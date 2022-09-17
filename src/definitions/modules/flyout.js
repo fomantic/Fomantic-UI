@@ -75,7 +75,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         $pusher              = $context.children(selector.pusher),
         $style,
 
-        isFlyoutComponent    = $module.hasClass(namespace),
+        isFlyoutComponent    = $module.hasClass('flyout'),
 
         element              = this,
         instance             = isFlyoutComponent ? $module.data(moduleNamespace) : undefined,
