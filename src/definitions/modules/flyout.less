@@ -58,21 +58,23 @@
 .ui.flyout > .close {
   cursor: pointer;
   position: absolute;
-  top: 1.25rem;
-  right: 1.5rem;
+  top: @closeTop;
+  right: @closeRight;
   z-index: 1;
-  opacity: 0.8;
-  font-size: 1.25em;
-  color: rgba(0, 0, 0, 0.85);
-  width: 2.25rem;
-  height: 2.25rem;
-  padding: 0;
-  margin: 0 0 0 0.25rem;
+  opacity: @closeOpacity;
+  font-size: @closeSize;
+  color: @closeColor;
+  width: @closeHitbox;
+  height: @closeHitbox;
+  padding: @closePadding;
+  margin: @closeMargin;
   text-align: right;
 }
 
+.ui.flyout > .close:focus,
 .ui.flyout > .close:hover {
   opacity: 1;
+  outline: none;
 }
 
 /*--------------
@@ -80,13 +82,12 @@
 ---------------*/
 .ui.flyout > .header {
   display: block;
-  background: #FFFFFF;
-  margin: 0;
-  padding: 1.25rem 1.5rem;
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  color: rgba(0, 0, 0, 0.85);
-  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+  background: @headerBackground;
+  margin: @headerMargin;
+  padding: @headerPadding;
+  box-shadow: @headerBoxShadow;
+  color: @headerColor;
+  border-bottom: @headerBorder;
 }
 
 /*--------------
@@ -95,38 +96,74 @@
 .ui.flyout > .content {
   display: block;
   width: 100%;
-  font-size: 1em;
-  line-height: 1.4;
-  padding: 1.5rem;
-  background: #FFFFFF;
+  font-size: @contentFontSize;
+  line-height: @contentLineHeight;
+  padding: @contentPadding;
+  background: @contentBackground;
 }
 .ui.flyout.left > .content,
 .ui.flyout.right > .content {
-  min-height: calc(100vh - 9.1rem);
+  min-height: @contentMinHeight;
 }
 
 .ui.flyout.left > .scrolling.content,
 .ui.flyout.right > .scrolling.content{
-  max-height: calc(100vh - 9.1rem);
+  max-height: @scrollingContentMaxHeight;
   overflow: auto;
 }
 
 .ui.flyout.top > .scrolling.content,
 .ui.flyout.bottom > .scrolling.content{
-  max-height: calc(80vh - 9.1rem);
+  max-height: @scrollingContentMaxHeightTopBottom;
   overflow: auto;
 }
 
-/*--------------
-   Actions
----------------*/
-.ui.flyout > .actions {
-  padding: 1rem 1rem;
-  border-top: 1px solid rgba(34, 36, 38, 0.15);
-  text-align: right;
+& when (@variationFlyoutActions) {
+  /*--------------
+     Actions
+  ---------------*/
+  .ui.flyout > .actions {
+    background: @actionBackground;
+    padding: @actionPadding;
+    border-top: @actionBorder;
+    text-align: @actionAlign;
+  }
+  .ui.flyout .actions > .button:not(.fluid) {
+    margin-left: @buttonDistance;
+  }
+  & when (@variationFlyoutBasic) {
+    .ui.ui.flyout > .basic.actions {
+      border-top: none;
+    }
+  }
+  & when (@variationFlyoutLeftActions) {
+    .ui.flyout > .left.actions {
+      text-align: left;
+      & > .button:not(.fluid) {
+        margin-left: @buttonLeftDistance;
+        margin-right: @buttonLeftDistance;
+      }
+    }
+  }
 }
-.ui.flyout .actions > .button:not(.fluid) {
-  margin-left: 0.75em;
+& when (@variationFlyoutCentered) {
+  .ui.flyout > .centered,
+  .ui.flyout > .center.aligned {
+    text-align: center;
+    &.actions > .button:not(.fluid) when (@variationFlyoutActions){
+      margin-left: @buttonCenteredDistance;
+      margin-right: @buttonCenteredDistance;
+    }
+  }
+}
+& when (@variationFlyoutBasic) {
+  .ui.ui.flyout > .basic.header,
+  .ui.ui.flyout > .basic.actions {
+    background-color: transparent;
+  }
+  .ui.flyout > .basic.header {
+    border-bottom: none;
+  }
 }
 
 /*--------------
@@ -199,7 +236,7 @@ body.pushable {
 }
 .pushable:not(body) > .ui.flyout,
 .pushable:not(body) > .fixed,
-.pushable:not(body) > .pusher:after {
+.pushable:not(body) > .pusher::after {
   position: absolute;
 }
 
@@ -224,13 +261,15 @@ body.pushable {
 .pushable > .pusher {
   position: relative;
   backface-visibility: hidden;
-  overflow: hidden;
   min-height: 100%;
   transition: transform @duration @easing;
   z-index: @middleLayer;
 
   /* Pusher should inherit background from context */
   background: inherit;
+  &:not(.overflowing) {
+    overflow: hidden;
+  }
 }
 
 body.pushable > .pusher {
@@ -241,7 +280,7 @@ body.pushable > .pusher {
      Dimmer
 ---------------*/
 
-.pushable > .pusher:after {
+.pushable > .pusher::after {
   position: fixed;
   top: 0;
   right: 0;
@@ -270,12 +309,21 @@ body.pushable > .pusher {
      Dimmed
 ---------------*/
 
-.pushable > .pusher.dimmed:after {
+.pushable > .pusher.dimmed::after {
   width: 100% !important;
   height: 100% !important;
   opacity: 1 !important;
 }
-
+& when (@variationFlyoutBlurring) {
+  .pushable > .pusher.dimmed.blurring:not(.closing)::after {
+    background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
+  }
+}
+.pushable > .pusher.closing.dimmed::after {
+  opacity: 0 !important;
+}
 /*--------------
     Animating
 ---------------*/
@@ -343,30 +391,28 @@ body.pushable > .pusher {
   }
 }
 
-/*--------------
-       iOS
----------------*/
+& when (@variationFlyoutInverted) {
+  /*--------------
+       Inverted
+  ---------------*/
+  .ui.flyout.inverted {
+    background: @invertedBackground;
+  }
 
-/*--------------
-     Inverted
----------------*/
-.ui.flyout.inverted {
-  background: rgba(0, 0, 0, 0.9);
-}
+  .ui.flyout.inverted > .close {
+    color: @invertedCloseColor;
+  }
 
-.ui.flyout.inverted > .close {
-  color: #FFFFFF;
-}
-
-.ui.flyout.inverted > .header,
-.ui.flyout.inverted > .content {
-  background: rgba(0, 0, 0, 0.9);
-  color: #FFFFFF;
-}
-.ui.flyout.inverted > .actions {
-  background: #191A1B;
-  border-top: 1px solid rgba(34, 36, 38, 0.85);
-  color: #FFFFFF;
+  .ui.flyout.inverted > .header,
+  .ui.flyout.inverted > .content {
+    background: @invertedBackground;
+    color: @invertedHeaderColor;
+  }
+  .ui.flyout.inverted > .actions {
+    background: @invertedActionBackground;
+    border-top: @invertedActionBorder;
+    color: @invertedActionColor;
+  }
 }
 
 /*******************************
@@ -379,6 +425,10 @@ body.pushable > .pusher {
 
 /* Left / Right */
 & when (@variationFlyoutLeft) or (@variationFlyoutRight) {
+  .ui.left.flyout,
+  .ui.right.flyout {
+    width: @width;
+  }
   & when (@variationFlyoutThin) {
     .ui.thin.left.flyout,
     .ui.thin.right.flyout {
@@ -389,11 +439,6 @@ body.pushable > .pusher {
     .ui[class*="very thin"].right.flyout {
       width: @veryThinWidth;
     }
-  }
-
-  .ui.left.flyout,
-  .ui.right.flyout {
-    width: @width;
   }
 
   & when (@variationFlyoutWide) {
@@ -462,10 +507,11 @@ body.pushable > .pusher {
     }
   }
 
-  /* Fullscreen */
-
-  .ui.fullscreen.flyout {
-    width: 100%;
+  & when (@variationFlyoutFullscreen) {
+    /* Fullscreen */
+    .ui.fullscreen.flyout {
+      width: 100%;
+    }
   }
 
 

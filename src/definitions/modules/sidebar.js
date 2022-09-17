@@ -306,7 +306,7 @@ $.fn.sidebar = function(parameters) {
         refresh: function() {
           module.verbose('Refreshing selector cache');
           $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
-          $sidebars = $context.children(selector.sidebar);
+          module.refreshSidebars();
           $pusher   = $context.children(selector.pusher);
           $fixed    = $context.children(selector.fixed);
           module.clear.cache();
@@ -401,7 +401,6 @@ $.fn.sidebar = function(parameters) {
               module.verbose('Show callback returned false cancelling show');
               return;
             }
-            module.refreshSidebars();
             if(settings.overlay)  {
               module.error(error.overlay);
               settings.transition = 'overlay';
@@ -423,6 +422,7 @@ $.fn.sidebar = function(parameters) {
                 settings.transition = 'overlay';
               }
             }
+            module.set.dimmerStyles();
             module.pushPage(function() {
               callback.call(element);
               settings.onVisible.call(element);
@@ -555,6 +555,7 @@ $.fn.sidebar = function(parameters) {
           animate = function() {
             module.set.transition(transition);
             module.set.animating();
+            module.set.closing();
             module.remove.visible();
             if(settings.dimPage && !module.othersVisible()) {
               $pusher.removeClass(className.dimmed);
@@ -564,6 +565,7 @@ $.fn.sidebar = function(parameters) {
             if( event.target == $transition[0] ) {
               $transition.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
+              module.remove.closing();
               module.remove.transition();
               module.remove.inlineCSS();
               if(transition === 'scale down' || settings.returnScroll) {
@@ -606,6 +608,14 @@ $.fn.sidebar = function(parameters) {
               el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
             });
           },
+          dimmerStyles: function() {
+            if(settings.blurring) {
+              $pusher.addClass(className.blurring);
+            }
+            else {
+              $pusher.removeClass(className.blurring);
+            }
+          },
           // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
           // (This is no longer necessary in latest iOS)
           ios: function() {
@@ -631,6 +641,9 @@ $.fn.sidebar = function(parameters) {
           },
           animating: function() {
             $module.addClass(className.animating);
+          },
+          closing: function() {
+            $pusher.addClass(className.closing);
           },
           transition: function(transition) {
             transition = transition || module.get.transition();
@@ -675,6 +688,9 @@ $.fn.sidebar = function(parameters) {
           },
           animating: function() {
             $module.removeClass(className.animating);
+          },
+          closing: function() {
+            $pusher.removeClass(className.closing);
           },
           transition: function(transition) {
             transition = transition || module.get.transition();
@@ -1073,6 +1089,8 @@ $.fn.sidebar.settings = {
   className         : {
     active    : 'active',
     animating : 'animating',
+    blurring  : 'blurring',
+    closing   : 'closing',
     dimmed    : 'dimmed',
     ios       : 'ios',
     locked    : 'locked',
