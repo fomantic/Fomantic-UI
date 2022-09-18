@@ -557,9 +557,6 @@ $.fn.sidebar = function(parameters) {
             module.set.animating();
             module.set.closing();
             module.remove.visible();
-            if(settings.dimPage && !module.othersVisible()) {
-              $pusher.removeClass(className.dimmed);
-            }
           };
           transitionEnd = function(event) {
             if( event.target == $transition[0] ) {
@@ -570,6 +567,9 @@ $.fn.sidebar = function(parameters) {
               module.remove.inlineCSS();
               if(transition === 'scale down' || settings.returnScroll) {
                 module.scrollBack();
+              }
+              if(settings.dimPage && !module.othersVisible()) {
+                $pusher.removeClass(className.dimmed);
               }
               callback.call(element);
             }

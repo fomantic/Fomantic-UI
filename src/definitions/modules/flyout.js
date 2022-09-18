@@ -757,7 +757,6 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.set.animating();
             module.set.closing();
             module.remove.visible();
-            
           };
           transitionEnd = function(event) {
             if( event.target == $module[0] ) {
