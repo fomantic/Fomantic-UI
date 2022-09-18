@@ -68,7 +68,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         moduleNamespace      = 'module-' + namespace,
 
         $module              = $(this),
-        $context             = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $body,
+        $context             = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
         $closeIcon           = $module.find(selector.close),
         $inputs,
         $focusedElement,
@@ -500,8 +500,8 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
-          module.refreshFlyouts();;
+          $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+          module.refreshFlyouts();
           $pusher   = $context.children(selector.pusher);
           module.clear.cache();
         },
