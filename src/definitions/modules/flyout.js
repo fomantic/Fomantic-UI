@@ -207,7 +207,7 @@ $.flyout = $.fn.flyout = function(parameters) {
             if (module.has.configActions()) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
-            $context.append($module);
+            $module.prependTo($context);
           },
           id: function() {
             id = (Math.random().toString(16) + '000000000').slice(2, 10);
