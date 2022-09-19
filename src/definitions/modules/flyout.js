@@ -755,7 +755,7 @@ $.flyout = $.fn.flyout = function(parameters) {
           animate = function() {
             module.set.overlay();
             module.set.animating();
-            if(settings.dimPage && !module.othersActive()) {
+            if(settings.dimPage && !module.othersVisible()) {
               module.set.closing();
             }
             module.remove.visible();
