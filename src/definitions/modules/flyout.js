@@ -755,7 +755,9 @@ $.flyout = $.fn.flyout = function(parameters) {
           animate = function() {
             module.set.overlay();
             module.set.animating();
-            module.set.closing();
+            if(settings.dimPage && !module.othersActive()) {
+              module.set.closing();
+            }
             module.remove.visible();
           };
           transitionEnd = function(event) {

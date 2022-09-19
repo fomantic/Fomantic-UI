@@ -555,7 +555,9 @@ $.fn.sidebar = function(parameters) {
           animate = function() {
             module.set.transition(transition);
             module.set.animating();
-            module.set.closing();
+            if(settings.dimPage && !module.othersActive()) {
+              module.set.closing();
+            }
             module.remove.visible();
           };
           transitionEnd = function(event) {
