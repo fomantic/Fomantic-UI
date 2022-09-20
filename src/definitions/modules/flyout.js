@@ -68,8 +68,10 @@ $.flyout = $.fn.flyout = function(parameters) {
         moduleNamespace      = 'module-' + namespace,
 
         $module              = $(this),
-        $context             = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $body,
-        $close               = $module.find(selector.close),
+        $context             = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+        $closeIcon           = $module.find(selector.close),
+        $inputs,
+        $focusedElement,
 
         $flyouts             = $module.children(selector.flyout),
         $pusher              = $context.children(selector.pusher),
@@ -88,6 +90,7 @@ $.flyout = $.fn.flyout = function(parameters) {
 
         elementNamespace,
         id,
+        observer,
         currentScroll,
         transitionEvent,
 
@@ -99,6 +102,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         initialize: function() {
           module.debug('Initializing flyout', parameters);
 
+          module.create.id();
           if(!isFlyoutComponent) {
             module.create.flyout();
             if(!$.isFunction(settings.onHidden)) {
@@ -127,13 +131,14 @@ $.flyout = $.fn.flyout = function(parameters) {
             }
             settings.actions.forEach(function (el) {
               var
-                icon = el[fields.icon] ? '<i class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                 cls = module.helpers.deQuote(el[fields.class] || ''),
                 click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {}
               ;
               $actions.append($('<button/>', {
                 html: icon + text,
+                'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
                 class: className.button + ' ' + cls,
                 click: function () {
                   if (click.call(element, $module) === false) {
@@ -144,8 +149,6 @@ $.flyout = $.fn.flyout = function(parameters) {
               }));
             });
           }
-
-          module.create.id();
 
           transitionEvent = module.get.transitionEvent();
 
@@ -165,6 +168,9 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.setup.heights();
             module.bind.resize();
           }
+          module.refreshInputs();
+          module.bind.events();
+          module.observeChanges();
           module.instantiate();
 
           if(settings.autoShow){
@@ -183,30 +189,37 @@ $.flyout = $.fn.flyout = function(parameters) {
         create: {
           flyout: function() {
             module.verbose('Programmaticaly create flyout', $context);
-            $module = $('<div/>', {class: className.flyout});
+            $module = $('<div/>', {class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage});
             if (settings.closeIcon) {
-              $close = $('<i/>', {class: className.close})
-              $module.append($close);
+              $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+              $module.append($closeIcon);
             }
             if (settings.title !== '') {
-              $('<div/>', {class: className.header}).appendTo($module);
+              var titleId = '_' + module.get.id() + 'title';
+              $module.attr('aria-labelledby', titleId);
+              $('<div/>', {class: className.header, id: titleId}).appendTo($module);
             }
             if (settings.content !== '') {
-              $('<div/>', {class: className.content}).appendTo($module);
+              var descId = '_' + module.get.id() + 'desc';
+              $module.attr('aria-describedby', descId);
+              $('<div/>', {class: className.content, id: descId}).appendTo($module);
             }
             if (module.has.configActions()) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
-            $context.append($module);
+            $module.prependTo($context);
           },
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2,8);
+            id = (Math.random().toString(16) + '000000000').slice(2, 10);
             elementNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
           }
         },
 
         destroy: function() {
+          if (observer) {
+            observer.disconnect();
+          }
           module.verbose('Destroying previous module for', $module);
           $module
             .off(eventNamespace)
@@ -215,6 +228,10 @@ $.flyout = $.fn.flyout = function(parameters) {
           if(module.is.ios()) {
             module.remove.ios();
           }
+          $closeIcon.off(elementNamespace);
+          if($inputs) {
+            $inputs.off(elementNamespace);
+          }
           // bound by uuid
           $context.off(elementNamespace);
           $window.off(elementNamespace);
@@ -222,6 +239,21 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         event: {
+          keyboard: function(event) {
+            var
+                keyCode   = event.which
+            ;
+            if(keyCode === settings.keys.escape) {
+              if(settings.closable) {
+                module.debug('Escape key pressed hiding flyout');
+                module.hide();
+              }
+              else {
+                module.debug('Escape key pressed, but closable is set to false');
+              }
+              event.preventDefault();
+            }
+          },
           resize: function() {
             module.setup.heights();
           },
@@ -243,6 +275,34 @@ $.flyout = $.fn.flyout = function(parameters) {
           },
           close: function(event) {
             module.hide();
+          },
+          closeKeyUp: function(event){
+            var
+                keyCode   = event.which
+            ;
+            if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
+              module.hide();
+            }
+          },
+          inputKeyDown: {
+            first: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && event.shiftKey) {
+                $inputs.last().focus();
+                event.preventDefault();
+              }
+            },
+            last: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && !event.shiftKey) {
+                $inputs.first().focus();
+                event.preventDefault();
+              }
+            }
           },
           approve: function(event) {
             if (ignoreRepeatedEvents || settings.onApprove.call(module.element, $(this)) === false) {
@@ -287,16 +347,23 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.verbose('Adding resize event to window', $window);
             $window.on('resize' + elementNamespace, module.event.resize);
           },
+          events: function() {
+            module.verbose('Attaching events');
+            $module
+                .on('click' + eventNamespace, selector.close, module.event.close)
+                .on('click' + eventNamespace, selector.approve, module.event.approve)
+                .on('click' + eventNamespace, selector.deny, module.event.deny)
+            ;
+            $closeIcon
+                .on('keyup' + elementNamespace, module.event.closeKeyUp)
+            ;
+          },
           clickaway: function() {
             module.verbose('Adding clickaway events to context', $context);
             $context
               .on('click'    + elementNamespace, module.event.clickaway)
               .on('touchend' + elementNamespace, module.event.clickaway)
             ;
-
-            $module.on('click' + elementNamespace, settings.selector.close, module.event.close);
-            $module.on('click' + elementNamespace, settings.selector.approve, module.event.approve);
-            $module.on('click' + elementNamespace, settings.selector.deny, module.event.deny);
           },
           scrollLock: function() {
             if(settings.scrollLock) {
@@ -383,7 +450,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               if(direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher:after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }'
@@ -391,7 +458,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               }
               else if(direction === 'top' || direction == 'bottom') {
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher:after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }'
@@ -399,8 +466,8 @@ $.flyout = $.fn.flyout = function(parameters) {
               }
               /* opposite sides visible forces content overlay */
               style += ''
-                + ' body.pushable > .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .pusher:after,'
-                + ' body.pushable > .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .pusher:after {'
+                + ' body.pushable > .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .pusher::after,'
+                + ' body.pushable > .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .pusher::after {'
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
                 + ' }'
@@ -411,13 +478,30 @@ $.flyout = $.fn.flyout = function(parameters) {
               .appendTo($head)
             ;
             module.debug('Adding sizing css to head', $style);
+          },
+          keyboardShortcuts: function() {
+            module.verbose('Adding keyboard shortcuts');
+            $document
+                .on('keydown' + eventNamespace, module.event.keyboard)
+            ;
           }
         },
-
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            observer = new MutationObserver(function(mutations) {
+              module.refreshInputs();
+            });
+            observer.observe(element, {
+              childList : true,
+              subtree   : true
+            });
+            module.debug('Setting up mutation observer', observer);
+          }
+        },
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $context  = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
-          $flyouts = $context.children(selector.flyout);
+          $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+          module.refreshFlyouts();
           $pusher   = $context.children(selector.pusher);
           module.clear.cache();
         },
@@ -425,6 +509,26 @@ $.flyout = $.fn.flyout = function(parameters) {
         refreshFlyouts: function() {
           module.verbose('Refreshing other flyouts');
           $flyouts = $context.children(selector.flyout);
+        },
+
+        refreshInputs: function(){
+          if($inputs){
+            $inputs
+                .off('keydown' + elementNamespace)
+            ;
+          }
+          if(!settings.dimPage){
+            return;
+          }
+          $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+            return $(this).closest('.disabled').length === 0;
+          });
+          $inputs.first()
+              .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
+          ;
+          $inputs.last()
+              .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
+          ;
         },
 
         setup: {
@@ -496,7 +600,10 @@ $.flyout = $.fn.flyout = function(parameters) {
             : function(){}
           ;
           if(module.is.hidden()) {
-            module.refreshFlyouts();
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling show');
+              return;
+            }
             module.refresh();
             if(module.othersActive()) {
               module.debug('Other flyouts currently visible');
@@ -506,12 +613,19 @@ $.flyout = $.fn.flyout = function(parameters) {
                 ignoreRepeatedEvents = false;
               }
             }
+            module.set.dimmerStyles();
             module.pushPage(function() {
               callback.call(element);
-              settings.onShow.call(element);
+              settings.onVisible.call(element);
+              if(settings.keyboardShortcuts) {
+                module.add.keyboardShortcuts();
+              }
+              module.save.focus();
+              if(settings.autofocus) {
+                module.set.autofocus();
+              }
             });
             settings.onChange.call(element);
-            settings.onVisible.call(element);
           }
           else {
             module.debug('Flyout is already visible');
@@ -536,6 +650,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               if($.isFunction(settings.onHidden)) {
                 settings.onHidden.call(element);
               }
+              module.restore.focus();
             });
             settings.onChange.call(element);
           }
@@ -631,18 +746,25 @@ $.flyout = $.fn.flyout = function(parameters) {
           module.unbind.clickaway();
           if(!module.othersActive()) {
             module.unbind.scrollLock();
+            if( settings.keyboardShortcuts ) {
+              module.remove.keyboardShortcuts();
+            }
           }
+
 
           animate = function() {
             module.set.overlay();
             module.set.animating();
+            if(settings.dimPage && !module.othersVisible()) {
+              module.set.closing();
+            }
             module.remove.visible();
-            
           };
           transitionEnd = function(event) {
             if( event.target == $module[0] ) {
               $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
+              module.remove.closing();
               module.remove.overlay();
               module.remove.inlineCSS();
               if(settings.returnScroll) {
@@ -678,6 +800,25 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         set: {
+          autofocus: function() {
+            var
+                $autofocus = $inputs.filter('[autofocus]'),
+                $input     = ($autofocus.length > 0)
+                    ? $autofocus.first()
+                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+            ;
+            if($input.length > 0) {
+              $input.focus();
+            }
+          },
+          dimmerStyles: function() {
+            if(settings.blurring) {
+              $pusher.addClass(className.blurring);
+            }
+            else {
+              $pusher.removeClass(className.blurring);
+            }
+          },
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
@@ -715,6 +856,9 @@ $.flyout = $.fn.flyout = function(parameters) {
           animating: function() {
             $module.addClass(className.animating);
           },
+          closing: function() {
+            $pusher.addClass(className.closing);
+          },
           direction: function(direction) {
             direction = direction || module.get.direction();
             $module.addClass(className[direction]);
@@ -733,6 +877,12 @@ $.flyout = $.fn.flyout = function(parameters) {
             if($style && $style.length > 0) {
               $style.remove();
             }
+          },
+          keyboardShortcuts: function() {
+            module.verbose('Removing keyboard shortcuts');
+            $document
+                .off('keydown' + eventNamespace)
+            ;
           },
 
           // ios scroll on html not document
@@ -755,6 +905,9 @@ $.flyout = $.fn.flyout = function(parameters) {
           animating: function() {
             $module.removeClass(className.animating);
           },
+          closing: function() {
+            $pusher.removeClass(className.closing);
+          },
           direction: function(direction) {
             direction = direction || module.get.direction();
             $module.removeClass(className[direction]);
@@ -768,7 +921,6 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         get: {
-          
           direction: function() {
             if($module.hasClass(className.top)) {
               return className.top;
@@ -798,6 +950,12 @@ $.flyout = $.fn.flyout = function(parameters) {
               }
             }
           },
+          id: function() {
+            return id;
+          },
+          element: function() {
+            return $module;
+          },
           settings: function() {
             return settings;
           }
@@ -813,6 +971,15 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         save: {
+          focus: function() {
+            var
+                $activeElement = $(document.activeElement),
+                inCurrentFlyout = $activeElement.closest($module).length > 0
+            ;
+            if(!inCurrentFlyout) {
+              $focusedElement = $(document.activeElement).blur();
+            }
+          },
           bodyMargin: function() {
             initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
             var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
@@ -908,6 +1075,11 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         restore: {
+          focus: function() {
+            if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
+              $focusedElement.focus();
+            }
+          },
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
@@ -943,7 +1115,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                 }
             ;
             if(shouldEscape.test(string)) {
-              string = string.replace(/&(?![a-z0-9#]{1,6};)/, "&amp;");
+              string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
               return string.replace(badChars, escapedChar);
             }
             return string;
@@ -1161,11 +1333,15 @@ $.fn.flyout.settings = {
   context      : 'body',
   exclusive    : false,
   closable     : true,
+  autofocus    : true,
+  restoreFocus : true,
   dimPage      : true,
   scrollLock   : false,
   returnScroll : false,
   delaySetup   : false,
   autoShow     : false,
+
+  keyboardShortcuts: true,
 
   //dynamic content
   title        : '',
@@ -1195,6 +1371,13 @@ $.fn.flyout.settings = {
   onApprove    : function(){},
   onDeny       : function(){},
 
+  keys : {
+    space      : 32,
+    enter      : 13,
+    escape     : 27,
+    tab        :  9,
+  },
+
   className    : {
     flyout     : 'ui flyout',
     close      : 'close icon',
@@ -1203,6 +1386,8 @@ $.fn.flyout.settings = {
     actions    : 'actions',
     active     : 'active',
     animating  : 'animating',
+    blurring   : 'blurring',
+    closing    : 'closing',
     dimmed     : 'dimmed',
     ios        : 'ios',
     locked     : 'locked',
@@ -1251,7 +1436,8 @@ $.fn.flyout.settings = {
 
   text: {
     ok     : 'Ok',
-    cancel : 'Cancel'
+    cancel : 'Cancel',
+    close : 'Close'
   }
 };
 

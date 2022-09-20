@@ -198,6 +198,17 @@ body.pushable > .pusher {
   height: 100% !important;
   opacity: 1 !important;
 }
+& when (@variationSidebarBlurring) {
+  .pushable > .pusher.dimmed.blurring:not(.closing)::after {
+    background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
+
+  }
+}
+.pushable > .pusher.closing.dimmed::after {
+  opacity: 0 !important;
+}
 
 /*--------------
     Animating

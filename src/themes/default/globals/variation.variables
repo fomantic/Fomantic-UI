@@ -551,6 +551,13 @@
 @variationEmbedRatio: true;
 
 /* Flyout */
+@variationFlyoutInverted: true;
+@variationFlyoutBasic: true;
+@variationFlyoutFullscreen: true;
+@variationFlyoutCentered: true;
+@variationFlyoutActions: true;
+@variationFlyoutLeftActions: true;
+@variationFlyoutBlurring: true;
 @variationFlyoutColumnWidth: true;
 @variationFlyoutThin: true;
 @variationFlyoutWide: true;
@@ -660,6 +667,7 @@
 @variationSidebarScale: true;
 @variationSidebarPush: true;
 @variationSidebarUncover: true;
+@variationSidebarBlurring: true;
 
 /* Slider */
 @variationSliderInverted: true;
