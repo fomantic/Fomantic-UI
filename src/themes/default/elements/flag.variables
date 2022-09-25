@@ -17,19 +17,19 @@
 @flags: {
   @1f3f3-fe0f-200d-26a7-fe0f: {
     countrycode: transgender;
-    class: transgender;
+    class: false;
     aliasClass: false;
     aliasClass2: false;
   };
   @1f3f3-fe0f-200d-1f308: {
     countrycode: rainbow;
-    class: rainbow;
-    aliasClass: gay_pride;
+    class: gay_pride;
+    aliasClass: false;
     aliasClass2: false;
   };
   @1f3f4-200d-2620-fe0f: {
     countrycode: pirate;
-    class: pirate;
+    class: false;
     aliasClass: false;
     aliasClass2: false;
   };
@@ -41,7 +41,7 @@
   };
   @1f1e6-1f1fd: {
     countrycode: ax;
-    class: åland_islands;
+    class: aland_islands;
     aliasClass: false;
     aliasClass2: false;
   };
@@ -383,7 +383,7 @@
   };
   @1f1e8-1f1fc: {
     countrycode: cw;
-    class: curaçao;
+    class: curacao;
     aliasClass: false;
     aliasClass2: false;
   };
@@ -702,12 +702,6 @@
   @1f1ef-1f1f5: {
     countrycode: jp;
     class: japan;
-    aliasClass: false;
-    aliasClass2: false;
-  };
-  @1f38c: {
-    countrycode: crosseds;
-    class: crosseds;
     aliasClass: false;
     aliasClass2: false;
   };
@@ -1157,7 +1151,7 @@
   };
   @1f1f8-1f1f9: {
     countrycode: st;
-    class: são_tomé_and_príncipe;
+    class: sao_tome_and_principe;
     aliasClass: samo_tome;
     aliasClass2: false;
   };
@@ -1265,7 +1259,7 @@
   };
   @1f1e7-1f1f1: {
     countrycode: bl;
-    class: st_barthélemy;
+    class: st_barthelemy;
     aliasClass: saint_barth;
     aliasClass2: false;
   };
