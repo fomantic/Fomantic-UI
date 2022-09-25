@@ -374,7 +374,7 @@ $.fn.dropdown = function(parameters) {
               ;
               if (labelNode.length) {
                 if (!labelNode.attr('id')) {
-                  labelNode.attr('id', module.get.id() + '_formLabel');
+                  labelNode.attr('id', '_' + module.get.id() + '_formLabel');
                 }
                 $search.attr('aria-labelledby', labelNode.attr('id'));
               }
