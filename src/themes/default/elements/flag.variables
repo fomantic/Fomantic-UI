@@ -23,8 +23,8 @@
   };
   @1f3f3-fe0f-200d-1f308: {
     countrycode: rainbow;
-    class: gay_pride;
-    aliasClass: false;
+    class: pride;
+    aliasClass: lgbt;
     aliasClass2: false;
   };
   @1f3f4-200d-2620-fe0f: {
