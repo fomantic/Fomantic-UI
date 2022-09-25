@@ -3267,18 +3267,6 @@
   1f565: clock1030;
   1f566: clock1130;
   1f567: clock1230;
-  0030: digit_zero;
-  0031: digit_one;
-  0032: digit_two;
-  0033: digit_three;
-  0034: digit_four;
-  0035: digit_five;
-  0036: digit_six;
-  0037: digit_seven;
-  0038: digit_eight;
-  0039: digit_nine;
-  0023: pound_symbol;
-  002a: asterisk_symbol;
   26a7: transgender_symbol;
   1f3f3: flag_white;
   1f3f4: flag_black;
