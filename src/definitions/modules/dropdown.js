@@ -1886,7 +1886,7 @@ $.fn.dropdown = function(parameters) {
           },
           userValues: function() {
             var
-              values = module.get.values()
+              values = module.get.values(true)
             ;
             if(!values) {
               return false;
@@ -3167,10 +3167,9 @@ $.fn.dropdown = function(parameters) {
           },
           value: function(removedValue, removedText, $removedItem, preventChangeTrigger) {
             var
-              values = module.get.values(),
+              values = module.get.values(true),
               newValue
             ;
-            removedValue = module.escape.htmlEntities(removedValue);
             if( module.has.selectInput() ) {
               module.verbose('Input is <select> removing selected option', removedValue);
               newValue = module.remove.arrayValue(removedValue, values);
