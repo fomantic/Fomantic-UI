@@ -1540,13 +1540,13 @@ $.fn.dropdown = function(parameters) {
                 hasSelectedItem       = ($selectedItem.length > 0),
                 selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
                 delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
-                isAdditionWithoutMenu = settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed),
+                isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
                 $nextItem,
                 isSubMenuItem
               ;
               // allow selection with menu closed
               if(isAdditionWithoutMenu) {
-                if (selectedIsSelectable) {
+                if (selectedIsSelectable && settings.hideAdditions) {
                   module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                   module.event.item.click.call($selectedItem, event);
                 }
