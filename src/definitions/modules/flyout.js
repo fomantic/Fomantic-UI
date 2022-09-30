@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Sidebar
+ * # Fomantic-UI - Flyout
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -23,14 +23,14 @@ window = (typeof window != 'undefined' && window.Math == Math)
     : Function('return this')()
 ;
 
-$.fn.sidebar = function(parameters) {
+$.flyout = $.fn.flyout = function(parameters) {
   var
     $allModules     = $(this),
     $window         = $(window),
     $document       = $(document),
-    $body           = $('body'),
     $html           = $('html'),
     $head           = $('head'),
+    $body           = $('body'),
 
     moduleSelector  = $allModules.selector || '',
 
@@ -53,38 +53,46 @@ $.fn.sidebar = function(parameters) {
   $allModules
     .each(function() {
       var
-        settings        = ( $.isPlainObject(parameters) )
-          ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
-          : $.extend({}, $.fn.sidebar.settings),
+        settings             = ( $.isPlainObject(parameters) )
+          ? $.extend(true, {}, $.fn.flyout.settings, parameters)
+          : $.extend({}, $.fn.flyout.settings),
 
-        selector        = settings.selector,
-        className       = settings.className,
-        namespace       = settings.namespace,
-        regExp          = settings.regExp,
-        error           = settings.error,
+        selector             = settings.selector,
+        className            = settings.className,
+        namespace            = settings.namespace,
+        fields               = settings.fields,
+        regExp               = settings.regExp,
+        error                = settings.error,
 
-        eventNamespace  = '.' + namespace,
-        moduleNamespace = 'module-' + namespace,
+        eventNamespace       = '.' + namespace,
+        moduleNamespace      = 'module-' + namespace,
 
-        $module         = $(this),
-        $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
-        isBody          = $context[0] === $body[0],
+        $module              = $(this),
+        $context             = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+        $closeIcon           = $module.find(selector.close),
+        $inputs,
+        $focusedElement,
 
-        $sidebars       = $module.children(selector.sidebar),
-        $fixed          = $context.children(selector.fixed),
-        $pusher         = $context.children(selector.pusher),
+        $flyouts             = $module.children(selector.flyout),
+        $pusher              = $context.children(selector.pusher),
         $style,
 
-        element         = this,
-        instance        = $module.data(moduleNamespace),
+        isFlyoutComponent    = $module.hasClass('flyout'),
+
+        element              = this,
+        instance             = isFlyoutComponent ? $module.data(moduleNamespace) : undefined,
+
+        ignoreRepeatedEvents = false,
+        isBody               = $context[0] === $body[0],
+        initialBodyMargin    = '',
+        tempBodyMargin       = '',
+        hadScrollbar         = false,
 
         elementNamespace,
         id,
+        observer,
         currentScroll,
         transitionEvent,
-        initialBodyMargin = '',
-        tempBodyMargin = '',
-        hadScrollbar = false,
 
         module
       ;
@@ -92,9 +100,55 @@ $.fn.sidebar = function(parameters) {
       module      = {
 
         initialize: function() {
-          module.debug('Initializing sidebar', parameters);
+          module.debug('Initializing flyout', parameters);
 
           module.create.id();
+          if(!isFlyoutComponent) {
+            module.create.flyout();
+            if(!$.isFunction(settings.onHidden)) {
+              settings.onHidden = function () {
+                module.destroy();
+                $module.remove();
+              };
+            }
+            if(!settings.autoShow) {
+              settings.autoShow = true;
+            }
+          }
+          $module.addClass(settings.class);
+          if (settings.title !== '') {
+            $module.find(selector.header).html(module.helpers.escape(settings.title, settings.preserveHTML)).addClass(settings.classTitle);
+          }
+          if (settings.content !== '') {
+            $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
+          }
+          if(module.has.configActions()){
+            var $actions = $module.find(selector.actions).addClass(settings.classActions);
+            if ($actions.length === 0) {
+              $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($module);
+            } else {
+              $actions.empty();
+            }
+            settings.actions.forEach(function (el) {
+              var
+                icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
+                cls = module.helpers.deQuote(el[fields.class] || ''),
+                click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {}
+              ;
+              $actions.append($('<button/>', {
+                html: icon + text,
+                'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
+                class: className.button + ' ' + cls,
+                click: function () {
+                  if (click.call(element, $module) === false) {
+                    return;
+                  }
+                  module.hide();
+                }
+              }));
+            });
+          }
 
           transitionEvent = module.get.transitionEvent();
 
@@ -110,18 +164,51 @@ $.fn.sidebar = function(parameters) {
             module.setup.cache();
           });
 
+          if (module.get.direction() == 'left' || module.get.direction() == 'right') {
+            module.setup.heights();
+            module.bind.resize();
+          }
+          module.refreshInputs();
+          module.bind.events();
+          module.observeChanges();
           module.instantiate();
+
+          if(settings.autoShow){
+            module.show();
+          }
         },
 
         instantiate: function() {
           module.verbose('Storing instance of module', module);
           instance = module;
           $module
-            .data(moduleNamespace, module)
+            .data(moduleNamespace, instance)
           ;
         },
 
         create: {
+          flyout: function() {
+            module.verbose('Programmaticaly create flyout', $context);
+            $module = $('<div/>', {class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage});
+            if (settings.closeIcon) {
+              $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+              $module.append($closeIcon);
+            }
+            if (settings.title !== '') {
+              var titleId = '_' + module.get.id() + 'title';
+              $module.attr('aria-labelledby', titleId);
+              $('<div/>', {class: className.header, id: titleId}).appendTo($module);
+            }
+            if (settings.content !== '') {
+              var descId = '_' + module.get.id() + 'desc';
+              $module.attr('aria-describedby', descId);
+              $('<div/>', {class: className.content, id: descId}).appendTo($module);
+            }
+            if (module.has.configActions()) {
+              $('<div/>', {class: className.actions}).appendTo($module);
+            }
+            $module.prependTo($context);
+          },
           id: function() {
             id = (Math.random().toString(16) + '000000000').slice(2, 10);
             elementNamespace = '.' + id;
@@ -130,6 +217,9 @@ $.fn.sidebar = function(parameters) {
         },
 
         destroy: function() {
+          if (observer) {
+            observer.disconnect();
+          }
           module.verbose('Destroying previous module for', $module);
           $module
             .off(eventNamespace)
@@ -138,6 +228,10 @@ $.fn.sidebar = function(parameters) {
           if(module.is.ios()) {
             module.remove.ios();
           }
+          $closeIcon.off(elementNamespace);
+          if($inputs) {
+            $inputs.off(elementNamespace);
+          }
           // bound by uuid
           $context.off(elementNamespace);
           $window.off(elementNamespace);
@@ -145,6 +239,24 @@ $.fn.sidebar = function(parameters) {
         },
 
         event: {
+          keyboard: function(event) {
+            var
+                keyCode   = event.which
+            ;
+            if(keyCode === settings.keys.escape) {
+              if(settings.closable) {
+                module.debug('Escape key pressed hiding flyout');
+                module.hide();
+              }
+              else {
+                module.debug('Escape key pressed, but closable is set to false');
+              }
+              event.preventDefault();
+            }
+          },
+          resize: function() {
+            module.setup.heights();
+          },
           clickaway: function(event) {
             if(settings.closable){
               var
@@ -161,6 +273,57 @@ $.fn.sidebar = function(parameters) {
               }
             }
           },
+          close: function(event) {
+            module.hide();
+          },
+          closeKeyUp: function(event){
+            var
+                keyCode   = event.which
+            ;
+            if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
+              module.hide();
+            }
+          },
+          inputKeyDown: {
+            first: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && event.shiftKey) {
+                $inputs.last().focus();
+                event.preventDefault();
+              }
+            },
+            last: function(event) {
+              var
+                  keyCode = event.which
+              ;
+              if (keyCode === settings.keys.tab && !event.shiftKey) {
+                $inputs.first().focus();
+                event.preventDefault();
+              }
+            }
+          },
+          approve: function(event) {
+            if (ignoreRepeatedEvents || settings.onApprove.call(module.element, $(this)) === false) {
+              module.verbose('Approve callback returned false cancelling close');
+              return;
+            }
+            ignoreRepeatedEvents = true;
+            module.hide(function() {
+              ignoreRepeatedEvents = false;
+            });
+          },
+          deny: function(event) {
+            if (ignoreRepeatedEvents || settings.onDeny.call(module.element, $(this)) === false) {
+              module.verbose('Deny callback returned false cancelling close');
+              return;
+            }
+            ignoreRepeatedEvents = true;
+            module.hide(function() {
+              ignoreRepeatedEvents = false;
+            });
+          },
           touch: function(event) {
             //event.stopPropagation();
           },
@@ -173,13 +336,28 @@ $.fn.sidebar = function(parameters) {
             }
           },
           scroll: function(event) {
-            if( $(event.target).closest(selector.sidebar).length === 0 ) {
+            if( $(event.target).closest(selector.flyout).length === 0 ) {
               event.preventDefault();
             }
           }
         },
 
         bind: {
+          resize: function() {
+            module.verbose('Adding resize event to window', $window);
+            $window.on('resize' + elementNamespace, module.event.resize);
+          },
+          events: function() {
+            module.verbose('Attaching events');
+            $module
+                .on('click' + eventNamespace, selector.close, module.event.close)
+                .on('click' + eventNamespace, selector.approve, module.event.approve)
+                .on('click' + eventNamespace, selector.deny, module.event.deny)
+            ;
+            $closeIcon
+                .on('keyup' + elementNamespace, module.event.closeKeyUp)
+            ;
+          },
           clickaway: function() {
             module.verbose('Adding clickaway events to context', $context);
             $context
@@ -197,7 +375,7 @@ $.fn.sidebar = function(parameters) {
               }
               $context.addClass(className.locked);
             }
-            module.verbose('Adding events to contain sidebar scroll');
+            module.verbose('Adding events to contain flyout scroll');
             $document
               .on('touchmove' + elementNamespace, module.event.touch)
             ;
@@ -249,8 +427,8 @@ $.fn.sidebar = function(parameters) {
             if(direction === 'left' || direction === 'right') {
               module.debug('Adding CSS rules for animation distance', width);
               style  += ''
-                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
+                + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
                 + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + ' }'
@@ -258,8 +436,8 @@ $.fn.sidebar = function(parameters) {
             }
             else if(direction === 'top' || direction == 'bottom') {
               style  += ''
-                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
+                + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
                 + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + ' }'
@@ -272,7 +450,7 @@ $.fn.sidebar = function(parameters) {
               if(direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }'
@@ -280,7 +458,7 @@ $.fn.sidebar = function(parameters) {
               }
               else if(direction === 'top' || direction == 'bottom') {
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }'
@@ -288,8 +466,8 @@ $.fn.sidebar = function(parameters) {
               }
               /* opposite sides visible forces content overlay */
               style += ''
-                + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
-                + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
+                + ' body.pushable > .ui.visible.left.flyout ~ .ui.visible.right.flyout ~ .pusher::after,'
+                + ' body.pushable > .ui.visible.right.flyout ~ .ui.visible.left.flyout ~ .pusher::after {'
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
                 + ' }'
@@ -300,29 +478,57 @@ $.fn.sidebar = function(parameters) {
               .appendTo($head)
             ;
             module.debug('Adding sizing css to head', $style);
+          },
+          keyboardShortcuts: function() {
+            module.verbose('Adding keyboard shortcuts');
+            $document
+                .on('keydown' + eventNamespace, module.event.keyboard)
+            ;
           }
         },
-
+        observeChanges: function() {
+          if('MutationObserver' in window) {
+            observer = new MutationObserver(function(mutations) {
+              module.refreshInputs();
+            });
+            observer.observe(element, {
+              childList : true,
+              subtree   : true
+            });
+            module.debug('Setting up mutation observer', observer);
+          }
+        },
         refresh: function() {
           module.verbose('Refreshing selector cache');
           $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
-          module.refreshSidebars();
+          module.refreshFlyouts();
           $pusher   = $context.children(selector.pusher);
-          $fixed    = $context.children(selector.fixed);
           module.clear.cache();
         },
 
-        refreshSidebars: function() {
-          module.verbose('Refreshing other sidebars');
-          $sidebars = $context.children(selector.sidebar);
+        refreshFlyouts: function() {
+          module.verbose('Refreshing other flyouts');
+          $flyouts = $context.children(selector.flyout);
         },
 
-        repaint: function() {
-          module.verbose('Forcing repaint event');
-          element.style.display = 'none';
-          var ignored = element.offsetHeight;
-          element.scrollTop = element.scrollTop;
-          element.style.display = '';
+        refreshInputs: function(){
+          if($inputs){
+            $inputs
+                .off('keydown' + elementNamespace)
+            ;
+          }
+          if(!settings.dimPage){
+            return;
+          }
+          $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+            return $(this).closest('.disabled').length === 0;
+          });
+          $inputs.first()
+              .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
+          ;
+          $inputs.last()
+              .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
+          ;
         },
 
         setup: {
@@ -334,26 +540,38 @@ $.fn.sidebar = function(parameters) {
           },
           layout: function() {
             if( $context.children(selector.pusher).length === 0 ) {
-              module.debug('Adding wrapper element for sidebar');
+              module.debug('Adding wrapper element for flyout');
               module.error(error.pusher);
               $pusher = $('<div class="pusher" />');
               $context
                 .children()
                   .not(selector.omitted)
-                  .not($sidebars)
+                  .not($flyouts)
                   .wrapAll($pusher)
               ;
               module.refresh();
             }
             if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
-              module.debug('Moved sidebar to correct parent element');
-              module.error(error.movedSidebar, element);
+              module.debug('Moved flyout to correct parent element');
+              module.error(error.movedFlyout, element);
               $module.detach().prependTo($context);
               module.refresh();
+            }
+            if( module.is.mobile() ) {
+              $module.addClass(className.fullscreen);
             }
             module.clear.cache();
             module.set.pushable();
             module.set.direction();
+          },
+          heights: function() {
+            module.debug('Setting up heights', $module);
+            var
+              $header = $module.children(selector.header),
+              $content = $module.children(selector.content),
+              $actions = $module.children(selector.actions)
+            ;
+            $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
           }
         },
 
@@ -366,7 +584,7 @@ $.fn.sidebar = function(parameters) {
             : module.toggle
           ;
           if($toggle.length > 0) {
-            module.debug('Attaching sidebar events to element', selector, event);
+            module.debug('Attaching flyout events to element', selector, event);
             $toggle
               .on('click' + eventNamespace, event)
             ;
@@ -375,22 +593,7 @@ $.fn.sidebar = function(parameters) {
             module.error(error.notFound, selector);
           }
         },
-        can: {
-          leftBodyScrollbar: function () {
-            if (module.cache.leftBodyScrollbar === undefined) {
-              module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
-            }
-            return module.cache.leftBodyScrollbar;
-          }
-        },
-        save: {
-          bodyMargin: function() {
-            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
-            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
-            tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
-          }
-        },
+
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
@@ -401,36 +604,31 @@ $.fn.sidebar = function(parameters) {
               module.verbose('Show callback returned false cancelling show');
               return;
             }
-            if(settings.overlay)  {
-              module.error(error.overlay);
-              settings.transition = 'overlay';
-            }
             module.refresh();
             if(module.othersActive()) {
-              module.debug('Other sidebars currently visible');
+              module.debug('Other flyouts currently visible');
               if(settings.exclusive) {
-                // if not overlay queue animation after hide
-                if(settings.transition != 'overlay') {
-                  module.hideOthers(module.show);
-                  return;
-                }
-                else {
-                  module.hideOthers();
-                }
-              }
-              else {
-                settings.transition = 'overlay';
+                module.hideOthers();
+              } else {
+                ignoreRepeatedEvents = false;
               }
             }
             module.set.dimmerStyles();
             module.pushPage(function() {
               callback.call(element);
               settings.onVisible.call(element);
+              if(settings.keyboardShortcuts) {
+                module.add.keyboardShortcuts();
+              }
+              module.save.focus();
+              if(settings.autofocus) {
+                module.set.autofocus();
+              }
             });
             settings.onChange.call(element);
           }
           else {
-            module.debug('Sidebar is already visible');
+            module.debug('Flyout is already visible');
           }
         },
 
@@ -439,22 +637,30 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
-            module.debug('Hiding sidebar', callback);
-            module.refreshSidebars();
+          if(settings.onHide.call(element, $(this)) === false) {
+            module.verbose('Hide callback returned false cancelling hide');
+            ignoreRepeatedEvents = false;
+            return false;
+          }
+          if(module.is.visible() || module.is.animating()) {
+            module.debug('Hiding flyout', callback);
+            module.refreshFlyouts();
             module.pullPage(function() {
               callback.call(element);
-              settings.onHidden.call(element);
+              if($.isFunction(settings.onHidden)) {
+                settings.onHidden.call(element);
+              }
+              module.restore.focus();
             });
             settings.onChange.call(element);
           }
         },
 
         othersAnimating: function() {
-          return ($sidebars.not($module).filter('.' + className.animating).length > 0);
+          return ($flyouts.not($module).filter('.' + className.animating).length > 0);
         },
         othersVisible: function() {
-          return ($sidebars.not($module).filter('.' + className.visible).length > 0);
+          return ($flyouts.not($module).filter('.' + className.visible).length > 0);
         },
         othersActive: function() {
           return(module.othersVisible() || module.othersAnimating());
@@ -462,15 +668,15 @@ $.fn.sidebar = function(parameters) {
 
         hideOthers: function(callback) {
           var
-            $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
-            sidebarCount   = $otherSidebars.length,
+            $otherFlyouts = $flyouts.not($module).filter('.' + className.visible),
+            flyoutCount   = $otherFlyouts.length,
             callbackCount  = 0
           ;
           callback = callback || function(){};
-          $otherSidebars
-            .sidebar('hide', function() {
+          $otherFlyouts
+            .flyout('hide', function() {
               callbackCount++;
-              if(callbackCount == sidebarCount) {
+              if(callbackCount == flyoutCount) {
                 callback();
               }
             })
@@ -489,10 +695,6 @@ $.fn.sidebar = function(parameters) {
 
         pushPage: function(callback) {
           var
-            transition = module.get.transition(),
-            $transition = (transition === 'overlay' || module.othersActive())
-              ? $module
-              : $pusher,
             animate,
             dim,
             transitionEnd
@@ -501,15 +703,11 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
+          module.set.overlay();
           if(settings.returnScroll) {
             currentScroll = (isBody ? $window : $context).scrollTop();
           }
-          if(settings.transition === 'scale down') {
-            module.scrollToTop();
-          }
           module.bind.scrollLock();
-          module.set.transition(transition);
-          module.repaint();
           animate = function() {
             module.bind.clickaway();
             module.add.inlineCSS();
@@ -520,14 +718,14 @@ $.fn.sidebar = function(parameters) {
             module.set.dimmed();
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
-              $transition.off(transitionEvent + elementNamespace, transitionEnd);
+            if( event.target == $module[0] ) {
+              $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
               callback.call(element);
             }
           };
-          $transition.off(transitionEvent + elementNamespace);
-          $transition.on(transitionEvent + elementNamespace, transitionEnd);
+          $module.off(transitionEvent + elementNamespace);
+          $module.on(transitionEvent + elementNamespace, transitionEnd);
           requestAnimationFrame(animate);
           if(settings.dimPage && !module.othersVisible()) {
             requestAnimationFrame(dim);
@@ -536,10 +734,6 @@ $.fn.sidebar = function(parameters) {
 
         pullPage: function(callback) {
           var
-            transition = module.get.transition(),
-            $transition = (transition == 'overlay' || module.othersActive())
-              ? $module
-              : $pusher,
             animate,
             transitionEnd
           ;
@@ -550,10 +744,16 @@ $.fn.sidebar = function(parameters) {
           module.verbose('Removing context push state', module.get.direction());
 
           module.unbind.clickaway();
-          module.unbind.scrollLock();
+          if(!module.othersActive()) {
+            module.unbind.scrollLock();
+            if( settings.keyboardShortcuts ) {
+              module.remove.keyboardShortcuts();
+            }
+          }
+
 
           animate = function() {
-            module.set.transition(transition);
+            module.set.overlay();
             module.set.animating();
             if(settings.dimPage && !module.othersVisible()) {
               module.set.closing();
@@ -561,23 +761,23 @@ $.fn.sidebar = function(parameters) {
             module.remove.visible();
           };
           transitionEnd = function(event) {
-            if( event.target == $transition[0] ) {
-              $transition.off(transitionEvent + elementNamespace, transitionEnd);
+            if( event.target == $module[0] ) {
+              $module.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
               module.remove.closing();
-              module.remove.transition();
+              module.remove.overlay();
               module.remove.inlineCSS();
-              if(transition === 'scale down' || settings.returnScroll) {
+              if(settings.returnScroll) {
                 module.scrollBack();
               }
-              if(settings.dimPage && !module.othersVisible()) {
+              if (settings.dimPage && !module.othersVisible()) {
                 $pusher.removeClass(className.dimmed);
               }
               callback.call(element);
             }
           };
-          $transition.off(transitionEvent + elementNamespace);
-          $transition.on(transitionEvent + elementNamespace, transitionEnd);
+          $module.off(transitionEvent + elementNamespace);
+          $module.on(transitionEvent + elementNamespace, transitionEnd);
           requestAnimationFrame(animate);
         },
 
@@ -600,6 +800,25 @@ $.fn.sidebar = function(parameters) {
         },
 
         set: {
+          autofocus: function() {
+            var
+                $autofocus = $inputs.filter('[autofocus]'),
+                $input     = ($autofocus.length > 0)
+                    ? $autofocus.first()
+                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+            ;
+            if($input.length > 0) {
+              $input.focus();
+            }
+          },
+          dimmerStyles: function() {
+            if(settings.blurring) {
+              $pusher.addClass(className.blurring);
+            }
+            else {
+              $pusher.removeClass(className.blurring);
+            }
+          },
           bodyMargin: function() {
             var position = module.can.leftBodyScrollbar() ? 'left':'right';
             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
@@ -610,14 +829,7 @@ $.fn.sidebar = function(parameters) {
               el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
             });
           },
-          dimmerStyles: function() {
-            if(settings.blurring) {
-              $pusher.addClass(className.blurring);
-            }
-            else {
-              $pusher.removeClass(className.blurring);
-            }
-          },
+
           // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
           // (This is no longer necessary in latest iOS)
           ios: function() {
@@ -637,7 +849,7 @@ $.fn.sidebar = function(parameters) {
             $pusher.addClass(className.dimmed);
           },
 
-          // sidebar
+          // flyout
           active: function() {
             $module.addClass(className.active);
           },
@@ -646,10 +858,6 @@ $.fn.sidebar = function(parameters) {
           },
           closing: function() {
             $pusher.addClass(className.closing);
-          },
-          transition: function(transition) {
-            transition = transition || module.get.transition();
-            $module.addClass(transition);
           },
           direction: function(direction) {
             direction = direction || module.get.direction();
@@ -670,6 +878,12 @@ $.fn.sidebar = function(parameters) {
               $style.remove();
             }
           },
+          keyboardShortcuts: function() {
+            module.verbose('Removing keyboard shortcuts');
+            $document
+                .off('keydown' + eventNamespace)
+            ;
+          },
 
           // ios scroll on html not document
           ios: function() {
@@ -684,7 +898,7 @@ $.fn.sidebar = function(parameters) {
             $context.removeClass(className.pushable);
           },
 
-          // sidebar
+          // flyout
           active: function() {
             $module.removeClass(className.active);
           },
@@ -693,10 +907,6 @@ $.fn.sidebar = function(parameters) {
           },
           closing: function() {
             $pusher.removeClass(className.closing);
-          },
-          transition: function(transition) {
-            transition = transition || module.get.transition();
-            $module.removeClass(transition);
           },
           direction: function(direction) {
             direction = direction || module.get.direction();
@@ -709,18 +919,7 @@ $.fn.sidebar = function(parameters) {
             $module.removeClass(className.overlay);
           }
         },
-        restore: {
-          bodyMargin: function() {
-            var position = module.can.leftBodyScrollbar() ? 'left':'right';
-            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
-              var el = $(this),
-                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
-              ;
-              el.css(attribute, '');
-            });
-          }
-        },
+
         get: {
           direction: function() {
             if($module.hasClass(className.top)) {
@@ -733,22 +932,6 @@ $.fn.sidebar = function(parameters) {
               return className.bottom;
             }
             return className.left;
-          },
-          transition: function() {
-            var
-              direction = module.get.direction(),
-              transition
-            ;
-            transition = ( module.is.mobile() )
-              ? (settings.mobileTransition == 'auto')
-                ? settings.defaultTransition.mobile[direction]
-                : settings.mobileTransition
-              : (settings.transition == 'auto')
-                ? settings.defaultTransition.computer[direction]
-                : settings.transition
-            ;
-            module.verbose('Determined transition', transition);
-            return transition;
           },
           transitionEvent: function() {
             var
@@ -766,13 +949,45 @@ $.fn.sidebar = function(parameters) {
                 return transitions[transition];
               }
             }
+          },
+          id: function() {
+            return id;
+          },
+          element: function() {
+            return $module;
+          },
+          settings: function() {
+            return settings;
           }
         },
-        has: {
-          scrollbar: function() {
-            return isBody || $context.css('overflow-y') !== 'hidden';
+
+        can: {
+          leftBodyScrollbar: function () {
+            if (module.cache.leftBodyScrollbar === undefined) {
+              module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
+            }
+            return module.cache.leftBodyScrollbar;
           }
         },
+
+        save: {
+          focus: function() {
+            var
+                $activeElement = $(document.activeElement),
+                inCurrentFlyout = $activeElement.closest($module).length > 0
+            ;
+            if(!inCurrentFlyout) {
+              $focusedElement = $(document.activeElement).blur();
+            }
+          },
+          bodyMargin: function() {
+            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
+            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+            tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
+          }
+        },
+
         is: {
           safari: function() {
             if(module.cache.isSafari === undefined) {
@@ -798,14 +1013,13 @@ $.fn.sidebar = function(parameters) {
           ie: function() {
             if(module.cache.isIE === undefined) {
               var
-                  isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                  isIE = ('ActiveXObject' in window)
+                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
+                isIE = ('ActiveXObject' in window)
               ;
               module.cache.isIE = (isIE11 || isIE);
             }
             return module.cache.isIE;
           },
-
           ios: function() {
             var
               userAgent      = navigator.userAgent,
@@ -840,25 +1054,72 @@ $.fn.sidebar = function(parameters) {
           visible: function() {
             return $module.hasClass(className.visible);
           },
-          // alias
-          open: function() {
-            return module.is.visible();
-          },
-          closed: function() {
-            return module.is.hidden();
-          },
-          vertical: function() {
-            return $module.hasClass(className.top);
-          },
           animating: function() {
             return $context.hasClass(className.animating);
           },
-          rtl: function() {
+          rtl: function () {
             if(module.cache.isRTL === undefined) {
               module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
             }
             return module.cache.isRTL;
+          }
+        },
+
+        has: {
+          configActions: function () {
+            return Array.isArray(settings.actions) && settings.actions.length > 0;
           },
+          scrollbar: function() {
+            return isBody || $context.css('overflow-y') !== 'hidden';
+          }
+        },
+
+        restore: {
+          focus: function() {
+            if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
+              $focusedElement.focus();
+            }
+          },
+          bodyMargin: function() {
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, '');
+            });
+          }
+        },
+
+        helpers: {
+          deQuote: function(string) {
+            return String(string).replace(/"/g,"");
+          },
+          escape: function(string, preserveHTML) {
+            if (preserveHTML){
+              return string;
+            }
+            var
+                badChars     = /[<>"'`]/g,
+                shouldEscape = /[&<>"'`]/,
+                escape       = {
+                  "<": "&lt;",
+                  ">": "&gt;",
+                  '"': "&quot;",
+                  "'": "&#x27;",
+                  "`": "&#x60;"
+                },
+                escapedChar  = function(chr) {
+                  return escape[chr];
+                }
+            ;
+            if(shouldEscape.test(string)) {
+              string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, "&amp;");
+              return string.replace(badChars, escapedChar);
+            }
+            return string;
+          }
         },
 
         setting: function(name, value) {
@@ -976,7 +1237,7 @@ $.fn.sidebar = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = context         || element;
+          context         = element         || context;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1027,15 +1288,29 @@ $.fn.sidebar = function(parameters) {
 
     if(methodInvoked) {
       if(instance === undefined) {
+        if ($.isFunction(settings.templates[query])) {
+          settings.autoShow = true;
+          settings.className.flyout = settings.className.template;
+          settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
+
+          // reassign shortcuts
+          className = settings.className;
+          namespace = settings.namespace;
+          fields    = settings.fields;
+          error     = settings.error;
+        }
         module.initialize();
       }
-      module.invoke(query);
+      if (!$.isFunction(settings.templates[query])) {
+        module.invoke(query);
+      }
     }
     else {
       if(instance !== undefined) {
-        module.invoke('destroy');
+        instance.invoke('destroy');
       }
       module.initialize();
+      returnedValue = $module;
     }
   });
 
@@ -1045,72 +1320,105 @@ $.fn.sidebar = function(parameters) {
   ;
 };
 
-$.fn.sidebar.settings = {
+$.fn.flyout.settings = {
 
-  name              : 'Sidebar',
-  namespace         : 'sidebar',
+  name         : 'Flyout',
+  namespace    : 'flyout',
 
-  silent            : false,
-  debug             : false,
-  verbose           : false,
-  performance       : true,
+  silent       : false,
+  debug        : false,
+  verbose      : false,
+  performance  : true,
 
-  transition        : 'auto',
-  mobileTransition  : 'auto',
+  context      : 'body',
+  exclusive    : false,
+  closable     : true,
+  autofocus    : true,
+  restoreFocus : true,
+  dimPage      : true,
+  scrollLock   : false,
+  returnScroll : false,
+  delaySetup   : false,
+  autoShow     : false,
 
-  defaultTransition : {
-    computer: {
-      left   : 'uncover',
-      right  : 'uncover',
-      top    : 'overlay',
-      bottom : 'overlay'
-    },
-    mobile: {
-      left   : 'uncover',
-      right  : 'uncover',
-      top    : 'overlay',
-      bottom : 'overlay'
-    }
+  keyboardShortcuts: true,
+
+  //dynamic content
+  title        : '',
+  content      : '',
+  class        : '',
+  classTitle   : '',
+  classContent : '',
+  classActions : '',
+  closeIcon    : false,
+  actions      : false,
+  preserveHTML : true,
+
+  fields       : {
+    class : 'class',
+    text  : 'text',
+    icon  : 'icon',
+    click : 'click'
   },
 
-  context           : 'body',
-  exclusive         : false,
-  closable          : true,
-  dimPage           : true,
-  scrollLock        : false,
-  returnScroll      : false,
-  delaySetup        : false,
+  onChange     : function(){},
+  onShow       : function(){},
+  onHide       : function(){ return true; },
 
-  onChange          : function(){},
-  onShow            : function(){},
-  onHide            : function(){},
+  onHidden     : false,
+  onVisible    : function(){},
 
-  onHidden          : function(){},
-  onVisible         : function(){},
+  onApprove    : function(){},
+  onDeny       : function(){},
 
-  className         : {
-    active    : 'active',
-    animating : 'animating',
-    blurring  : 'blurring',
-    closing   : 'closing',
-    dimmed    : 'dimmed',
-    ios       : 'ios',
-    locked    : 'locked',
-    pushable  : 'pushable',
-    pushed    : 'pushed',
-    right     : 'right',
-    top       : 'top',
-    left      : 'left',
-    bottom    : 'bottom',
-    visible   : 'visible'
+  keys : {
+    space      : 32,
+    enter      : 13,
+    escape     : 27,
+    tab        :  9,
+  },
+
+  className    : {
+    flyout     : 'ui flyout',
+    close      : 'close icon',
+    header     : 'ui header',
+    content    : 'content',
+    actions    : 'actions',
+    active     : 'active',
+    animating  : 'animating',
+    blurring   : 'blurring',
+    closing    : 'closing',
+    dimmed     : 'dimmed',
+    ios        : 'ios',
+    locked     : 'locked',
+    pushable   : 'pushable',
+    pushed     : 'pushed',
+    right      : 'right',
+    top        : 'top',
+    left       : 'left',
+    bottom     : 'bottom',
+    visible    : 'visible',
+    overlay    : 'overlay',
+    fullscreen : 'fullscreen',
+    template   : 'ui flyout',
+    button     : 'ui button',
+    ok         : 'positive',
+    cancel     : 'negative',
+    prompt     : 'ui fluid input'
   },
 
   selector: {
-    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.fixed.nag, > .ui.fixed.nag > .close',
-    fixed   : '.fixed',
-    omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
-    pusher  : '.pusher',
-    sidebar : '.ui.sidebar'
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.right.flyout, > .ui.fixed.nag, > .ui.fixed.nag > .close',
+    fixed    : '.fixed',
+    omitted  : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
+    pusher   : '.pusher',
+    flyout   : '.ui.flyout',
+    header   : '.ui.header',
+    content  : '.content',
+    actions  : '.actions',
+    close    : '.close',
+    approve  : '.actions .positive, .actions .approve, .actions .ok',
+    deny     : '.actions .negative, .actions .deny, .actions .cancel'
   },
 
   regExp: {
@@ -1120,14 +1428,102 @@ $.fn.sidebar.settings = {
   },
 
   error   : {
-    method       : 'The method you called is not defined.',
-    pusher       : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
-    movedSidebar : 'Had to move sidebar. For optimal performance make sure sidebar and pusher are direct children of your body tag',
-    overlay      : 'The overlay setting is no longer supported, use animation: overlay',
-    notFound     : 'There were no elements that matched the specified selector'
-  }
+    method      : 'The method you called is not defined.',
+    pusher      : 'Had to add pusher element. For optimal performance make sure body content is inside a pusher element',
+    movedFlyout : 'Had to move flyout. For optimal performance make sure flyout and pusher are direct children of your body tag',
+    notFound    : 'There were no elements that matched the specified selector'
+  },
 
+  text: {
+    ok     : 'Ok',
+    cancel : 'Cancel',
+    close : 'Close'
+  }
 };
 
+$.fn.flyout.settings.templates = {
+  getArguments: function(args) {
+    var queryArguments = [].slice.call(args);
+    if($.isPlainObject(queryArguments[0])){
+      return $.extend({
+        handler:function(){},
+        content:'',
+        title: ''
+      }, queryArguments[0]);
+    } else {
+      if(!$.isFunction(queryArguments[queryArguments.length-1])) {
+        queryArguments.push(function() {});
+      }
+      return {
+        handler: queryArguments.pop(),
+        content: queryArguments.pop() || '',
+        title: queryArguments.pop() || ''
+      };
+    }
+  },
+  alert: function () {
+    var
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments)
+    ;
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text : settings.text.ok,
+        class: settings.className.ok,
+        click: args.handler
+      }]
+    }
+  },
+  confirm: function () {
+    var
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments)
+    ;
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text : settings.text.ok,
+        class: settings.className.ok,
+        click: function(){args.handler(true)}
+      },{
+        text: settings.text.cancel,
+        class: settings.className.cancel,
+        click: function(){args.handler(false)}
+      }]
+    }
+  },
+  prompt: function () {
+    var
+      $this    = this,
+      settings = this.get.settings(),
+      args     = settings.templates.getArguments(arguments),
+      input    = $($.parseHTML(args.content)).filter('.ui.input')
+    ;
+    if (input.length === 0) {
+      args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
+    }
+    return {
+      title  : args.title,
+      content: args.content,
+      actions: [{
+        text: settings.text.ok,
+        class: settings.className.ok,
+        click: function(){
+          var settings = $this.get.settings(),
+              inputField = $this.get.element().find(settings.selector.prompt)[0]
+          ;
+          args.handler($(inputField).val());
+        }
+      },{
+        text: settings.text.cancel,
+        class: settings.className.cancel,
+        click: function(){args.handler(null)}
+      }]
+    }
+  }
+};
 
 })( jQuery, window, document );

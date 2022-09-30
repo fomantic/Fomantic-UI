@@ -877,7 +877,7 @@ $.fn.progress = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -998,7 +998,7 @@ $.fn.progress.settings = {
   },
 
   regExp: {
-    variable: /\{\$*[A-z0-9]+\}/g
+    variable: /\{\$*[a-z0-9]+\}/gi
   },
 
   metadata: {

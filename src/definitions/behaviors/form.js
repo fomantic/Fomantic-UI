@@ -465,7 +465,7 @@ $.fn.form = function(parameters) {
           },
           beforeUnload: function(event) {
             if (module.is.dirty() && !submitting) {
-              var event = event || window.event;
+              event = event || window.event;
 
               // For modern browsers
               if (event) {
@@ -801,16 +801,11 @@ $.fn.form = function(parameters) {
             if(typeof identifier !== 'string') {
               module.error(error.identifier, identifier);
             }
-            if($field.filter('#' + identifier).length > 0 ) {
-              return true;
-            }
-            else if( $field.filter('[name="' + identifier +'"]').length > 0 ) {
-              return true;
-            }
-            else if( $field.filter('[data-' + metadata.validate + '="'+ identifier +'"]').length > 0 ) {
-              return true;
-            }
-            return false;
+            return (
+              $field.filter('#' + identifier).length > 0 ||
+              $field.filter('[name="' + identifier +'"]').length > 0 ||
+              $field.filter('[data-' + metadata.validate + '="'+ identifier +'"]').length > 0
+            );
           }
 
         },
@@ -1457,7 +1452,7 @@ $.fn.form = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

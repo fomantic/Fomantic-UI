@@ -69,11 +69,10 @@
   font-size: @labelFontSize;
   font-weight: @labelFontWeight;
   text-transform: @labelTextTransform;
-  &:not(.button) {
-    color: @labelColor;
-  }
 }
-
+.ui.form:not(.inverted) .field > label:not(.button) {
+  color: @labelColor;
+}
 /*--------------------
     Standard Inputs
 ---------------------*/

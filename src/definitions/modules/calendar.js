@@ -593,15 +593,15 @@ $.fn.calendar = function(parameters) {
           },
           keydown: function (event) {
             var keyCode = event.which;
-            if (keyCode === 27 || keyCode === 9) {
-              //esc || tab
+            if (keyCode === 9) {
+              //tab
               module.popup('hide');
             }
 
             if (module.popup('is visible')) {
+              var mode = module.get.mode();
               if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
                 //arrow keys
-                var mode = module.get.mode();
                 var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
                 var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                 increment *= mode === 'minute' ? settings.minTimeGap : 1;
@@ -620,7 +620,6 @@ $.fn.calendar = function(parameters) {
                 }
               } else if (keyCode === 13) {
                 //enter
-                var mode = module.get.mode();
                 var date = module.get.focusDate();
                 if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
                   if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
@@ -629,6 +628,9 @@ $.fn.calendar = function(parameters) {
                 }
                 //disable form submission:
                 event.preventDefault();
+                event.stopPropagation();
+              } else if (keyCode === 27) {
+                module.popup('hide');
                 event.stopPropagation();
               }
             }
@@ -1410,7 +1412,7 @@ $.fn.calendar = function(parameters) {
             response
             ;
           passedArguments = passedArguments || queryArguments;
-          context = element || context;
+          context = context || element;
           if (typeof query == 'string' && object !== undefined) {
             query = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1486,7 +1488,7 @@ $.fn.calendar.settings = {
   silent: false,
   debug: false,
   verbose: false,
-  performance: false,
+  performance: true,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)

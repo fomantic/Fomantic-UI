@@ -550,6 +550,23 @@
 /* Embed */
 @variationEmbedRatio: true;
 
+/* Flyout */
+@variationFlyoutInverted: true;
+@variationFlyoutBasic: true;
+@variationFlyoutFullscreen: true;
+@variationFlyoutCentered: true;
+@variationFlyoutActions: true;
+@variationFlyoutLeftActions: true;
+@variationFlyoutBlurring: true;
+@variationFlyoutColumnWidth: true;
+@variationFlyoutThin: true;
+@variationFlyoutWide: true;
+@variationFlyoutTop: true;
+@variationFlyoutBottom: true;
+@variationFlyoutLeft: true;
+@variationFlyoutRight: true;
+@variationFlyoutOverlay: true;
+
 /* Modal */
 @variationModalInverted: true;
 @variationModalBasic: true;
@@ -559,6 +576,9 @@
 @variationModalScrolling: true;
 @variationModalLegacy: true;
 @variationModalCloseInside: true;
+@variationModalCentered: true;
+@variationModalActions: true;
+@variationModalLeftActions: true;
 @variationModalSizes: @variationAllSizes;
 
 /* Nag */
@@ -647,6 +667,7 @@
 @variationSidebarScale: true;
 @variationSidebarPush: true;
 @variationSidebarUncover: true;
+@variationSidebarBlurring: true;
 
 /* Slider */
 @variationSliderInverted: true;
