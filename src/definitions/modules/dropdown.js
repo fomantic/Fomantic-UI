@@ -1540,14 +1540,16 @@ $.fn.dropdown = function(parameters) {
                 hasSelectedItem       = ($selectedItem.length > 0),
                 selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
                 delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
-                isAdditionWithoutMenu = (settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed) && selectedIsSelectable),
+                isAdditionWithoutMenu = settings.allowAdditions && settings.hideAdditions && (pressedKey == keys.enter || delimiterPressed),
                 $nextItem,
                 isSubMenuItem
               ;
               // allow selection with menu closed
               if(isAdditionWithoutMenu) {
-                module.verbose('Selecting item from keyboard shortcut', $selectedItem);
-                module.event.item.click.call($selectedItem, event);
+                if (selectedIsSelectable) {
+                  module.verbose('Selecting item from keyboard shortcut', $selectedItem);
+                  module.event.item.click.call($selectedItem, event);
+                }
                 if(module.is.searchSelection()) {
                   module.remove.searchTerm();
                 }
@@ -1690,7 +1692,7 @@ $.fn.dropdown = function(parameters) {
               }
               else {
                 // delimiter key
-                if(delimiterPressed) {
+                if(pressedKey == keys.enter || delimiterPressed) {
                   event.preventDefault();
                 }
                 // down arrow (open menu)
