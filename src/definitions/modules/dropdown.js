@@ -543,12 +543,12 @@ $.fn.dropdown = function(parameters) {
               return true;
             }
             if(settings.onShow.call(element) !== false) {
+              module.remove.empty();
               module.animate.show(function() {
                 module.bind.intent();
                 if(module.has.search() && !preventFocus) {
                   module.focusSearch();
                 }
-                module.remove.empty();
                 module.set.visible();
                 callback.call(element);
               });
