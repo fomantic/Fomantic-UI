@@ -548,6 +548,7 @@ $.fn.dropdown = function(parameters) {
                 if(module.has.search() && !preventFocus) {
                   module.focusSearch();
                 }
+                module.remove.empty();
                 module.set.visible();
                 callback.call(element);
               });
@@ -602,6 +603,9 @@ $.fn.dropdown = function(parameters) {
           module.remove.active();
           module.remove.visible();
           $menu.transition('hide');
+        },
+        showMenu: function() {
+
         },
 
         hideSubMenus: function() {
