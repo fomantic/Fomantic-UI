@@ -2847,6 +2847,10 @@ $.fn.dropdown = function(parameters) {
             if (!keepSearchTerm) {
               module.remove.searchTerm();
             }
+            if(module.is.allFiltered()) {
+              module.set.empty();
+              module.hideMenu();
+            }
           }
         },
 
