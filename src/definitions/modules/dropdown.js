@@ -1503,12 +1503,18 @@ $.fn.dropdown = function(parameters) {
                     }
                     $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
                     module.remove.activeLabels($activeLabel);
+                    if(!module.is.visible()){
+                      module.show();
+                    }
                     event.preventDefault();
                   }
                   else if(caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
                     module.verbose('Removing last label on input backspace');
                     $activeLabel = $label.last().addClass(className.active);
                     module.remove.activeLabels($activeLabel);
+                    if(!module.is.visible()){
+                      module.show();
+                    }
                   }
                 }
                 else {
