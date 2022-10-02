@@ -1391,6 +1391,10 @@ $.fn.dropdown = function(parameters) {
                   if(settings.allowAdditions) {
                     module.remove.userAddition();
                   }
+                  module.remove.filteredItem();
+                  if(!module.is.visible()) {
+                    module.show();
+                  }
                   module.remove.searchTerm();
                   if(!module.is.focusedOnSearch() && skipRefocus !== true) {
                     module.focusSearch(true);
