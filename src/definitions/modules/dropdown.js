@@ -2605,7 +2605,7 @@ $.fn.dropdown = function(parameters) {
             var
               value      = module.get.choiceValue($item),
               searchText = module.get.choiceText($item, false),
-              text       = module.get.choiceText($item, true)
+              text       = module.get.choiceText($item)
             ;
             module.debug('Setting user selection to item', $item);
             module.remove.activeItem();
