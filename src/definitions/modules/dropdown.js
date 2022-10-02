@@ -1111,7 +1111,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           mousedown: function() {
-            if(module.is.searchSelection()) {
+            if(module.is.searchSelection(true)) {
               // prevent menu hiding on immediate re-focus
               willRefocus = true;
             }
@@ -1121,7 +1121,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           mouseup: function() {
-            if(module.is.searchSelection()) {
+            if(module.is.searchSelection(true)) {
               // prevent menu hiding on immediate re-focus
               willRefocus = false;
             }
