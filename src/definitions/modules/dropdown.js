@@ -602,10 +602,7 @@ $.fn.dropdown = function(parameters) {
           module.verbose('Hiding menu  instantaneously');
           module.remove.active();
           module.remove.visible();
-          $menu.transition('hide');
-        },
-        showMenu: function() {
-
+          $menu.transition('destroy').transition('hide');
         },
 
         hideSubMenus: function() {
@@ -766,6 +763,7 @@ $.fn.dropdown = function(parameters) {
                 }
                 else {
                   module.verbose('All items filtered, hiding dropdown', searchTerm);
+                  module.set.empty();
                   module.hideMenu();
                 }
               }
@@ -776,7 +774,7 @@ $.fn.dropdown = function(parameters) {
               if(settings.allowAdditions) {
                 module.add.userSuggestion(module.escape.htmlEntities(query));
               }
-              if(module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() ) {
+              if(module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                 module.show();
               }
             }
@@ -3417,6 +3415,9 @@ $.fn.dropdown = function(parameters) {
           },
           edge: function() {
             return !!window.chrome && !!window.StyleMedia;
+          },
+          empty: function() {
+            return $module.hasClass(className.empty);
           },
           chrome: function() {
             return !!window.chrome && !window.StyleMedia;
