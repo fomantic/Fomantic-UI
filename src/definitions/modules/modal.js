@@ -265,6 +265,7 @@ $.modal = $.fn.modal = function(parameters) {
             });
             observer.observe(element, {
               attributeFilter: [ "style" ],
+              attributes: true,
               childList : true,
               subtree   : true
             });
