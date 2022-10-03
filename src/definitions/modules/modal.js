@@ -191,6 +191,7 @@ $.modal = $.fn.modal = function(parameters) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
             $context.append($module);
+            element = $module[0];
           },
           dimmer: function() {
             var
@@ -249,6 +250,7 @@ $.modal = $.fn.modal = function(parameters) {
         observeChanges: function() {
           if('MutationObserver' in window) {
             observer = new MutationObserver(function(mutations) {
+              console.log(22);
               if(settings.observeChanges) {
                 module.debug('DOM tree modified, refreshing');
                 module.refresh();
@@ -256,6 +258,7 @@ $.modal = $.fn.modal = function(parameters) {
               module.refreshInputs();
             });
             observer.observe(element, {
+              attributeFilter: [ "height" ],
               childList : true,
               subtree   : true
             });

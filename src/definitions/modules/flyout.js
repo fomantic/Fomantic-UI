@@ -208,6 +208,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
             $module.prependTo($context);
+            element = $module[0];
           },
           id: function() {
             id = (Math.random().toString(16) + '000000000').slice(2, 10);
