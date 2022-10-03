@@ -250,15 +250,22 @@ $.modal = $.fn.modal = function(parameters) {
         observeChanges: function() {
           if('MutationObserver' in window) {
             observer = new MutationObserver(function(mutations) {
-              console.log(22);
               if(settings.observeChanges) {
                 module.debug('DOM tree modified, refreshing');
                 module.refresh();
               }
-              module.refreshInputs();
+              var shouldRefreshInputs = false;
+              mutations.forEach(function(mutation) {
+                if(mutation.type !== 'attributes') {
+                  shouldRefreshInputs = true;
+                }
+              });
+              if(shouldRefreshInputs) {
+                module.refreshInputs();
+              }
             });
             observer.observe(element, {
-              attributeFilter: [ "height" ],
+              attributeFilter: [ "style" ],
               childList : true,
               subtree   : true
             });
