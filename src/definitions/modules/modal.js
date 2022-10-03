@@ -153,7 +153,6 @@ $.modal = $.fn.modal = function(parameters) {
             $module.addClass('top aligned');
           }
           module.refreshModals();
-          module.refreshInputs();
           module.bind.events();
           module.observeChanges();
           module.instantiate();
@@ -584,6 +583,8 @@ $.modal = $.fn.modal = function(parameters) {
                       }
                       module.save.focus();
                       module.set.active();
+                      module.refresh();
+                      module.refreshInputs()
                       if(settings.autofocus) {
                         module.set.autofocus();
                       }

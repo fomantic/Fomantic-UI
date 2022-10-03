@@ -168,7 +168,6 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.setup.heights();
             module.bind.resize();
           }
-          module.refreshInputs();
           module.bind.events();
           module.observeChanges();
           module.instantiate();
@@ -622,6 +621,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                 module.add.keyboardShortcuts();
               }
               module.save.focus();
+              module.refreshInputs();
               if(settings.autofocus) {
                 module.set.autofocus();
               }
