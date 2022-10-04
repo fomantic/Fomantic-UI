@@ -253,19 +253,9 @@ $.modal = $.fn.modal = function(parameters) {
                 module.debug('DOM tree modified, refreshing');
                 module.refresh();
               }
-              var shouldRefreshInputs = false;
-              mutations.forEach(function(mutation) {
-                if(mutation.type !== 'attributes') {
-                  shouldRefreshInputs = true;
-                }
-              });
-              if(shouldRefreshInputs) {
-                module.refreshInputs();
-              }
+              module.refreshInputs();
             });
             observer.observe(element, {
-              attributeFilter: [ "style" ],
-              attributes: true,
               childList : true,
               subtree   : true
             });
