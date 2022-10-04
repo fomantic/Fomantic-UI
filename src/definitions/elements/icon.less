@@ -23,16 +23,13 @@
              Icon
 *******************************/
 & when (@importIcons) {
-  @font-face {
-    font-family: 'Icons';
-    src: @fallbackSRC;
-    src: @src;
-    font-style: normal;
-    font-weight: @normal;
-    font-variant: normal;
-    text-decoration: inherit;
-    text-transform: none;
-  }
+  each(@fonts, {
+    @font-face {
+      each(@value,{
+          @{key}: @value;
+      });
+    }
+  })
 }
 
 i.icon {
@@ -44,7 +41,7 @@ i.icon {
   width: @width;
   height: @height;
 
-  font-family: 'Icons';
+  font-family: @fontName;
   font-style: normal;
   font-weight: @normal;
   text-decoration: inherit;
@@ -516,6 +513,88 @@ i.icons {
       right: auto;
       bottom: @borderedGroupCornerOffset;
     }
+  }
+}
+
+.generateIcons(@map, @fontFamily) {
+  each(@map,{
+    @escapedKey: replace(@key,'^([0-9])','\3$1 ');
+    @normalizedKey: replace(@escapedKey,'_','.','g');
+    i.icon.@{normalizedKey}::before {
+      content: "@{value}";
+      & when not (@fontFamily = false) {
+        font-family: @fontFamily;
+      }
+    }
+  });
+};
+
+& when (@variationIconDeprecated) {
+
+  /* Deprecated *In/Out Naming Conflict) */
+  .generateIcons(@icon-deprecated-map,false);
+}
+
+& when (@variationIconSolid) {
+  /*******************************
+          Solid Icons
+  *******************************/
+
+  /* Icons */
+  .generateIcons(@icon-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-aliases-map,false);
+  }
+}
+
+& when (@variationIconOutline) {
+  /*******************************
+           Outline Icons
+  *******************************/
+
+  i.icon.outline {
+    font-family: @outlineFontName;
+  }
+
+  /* Icons */
+  .generateIcons(@icon-outline-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-outline-aliases-map,false);
+  }
+}
+
+& when (@variationIconThin) {
+  /*******************************
+         Thin Icons
+  *******************************/
+
+  /* Icons */
+  i.icon.thin {
+    font-family: @thinFontName;
+  }
+  .generateIcons(@icon-thin-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-thin-aliases-map,false);
+  }
+}
+
+& when(@variationIconBrand) {
+  /*******************************
+            Brand Icons
+  *******************************/
+
+  /* Icons */
+  .generateIcons(@icon-brand-map,@brandFontName);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-brand-aliases-map,@brandFontName);
   }
 }
 

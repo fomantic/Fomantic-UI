@@ -1113,7 +1113,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           mousedown: function() {
-            if(module.is.searchSelection()) {
+            if(module.is.searchSelection(true)) {
               // prevent menu hiding on immediate re-focus
               willRefocus = true;
             }
@@ -1123,7 +1123,7 @@ $.fn.dropdown = function(parameters) {
             }
           },
           mouseup: function() {
-            if(module.is.searchSelection()) {
+            if(module.is.searchSelection(true)) {
               // prevent menu hiding on immediate re-focus
               willRefocus = false;
             }
@@ -1158,7 +1158,7 @@ $.fn.dropdown = function(parameters) {
             },
             blur: function(event) {
               pageLostFocus = (document.activeElement === this);
-              if(module.is.searchSelection() && !willRefocus) {
+              if(module.is.searchSelection(true) && !willRefocus) {
                 if(!itemActivated && !pageLostFocus) {
                   if(settings.forceSelection) {
                     module.forceSelection();
@@ -3499,8 +3499,8 @@ $.fn.dropdown = function(parameters) {
           search: function() {
             return $module.hasClass(className.search);
           },
-          searchSelection: function() {
-            return ( module.has.search() && $search.parent(selector.dropdown).length === 1 );
+          searchSelection: function(deep) {
+            return ( module.has.search() && (deep ? $search.parents(selector.dropdown) : $search.parent(selector.dropdown)).length === 1 );
           },
           selection: function() {
             return $module.hasClass(className.selection);
