@@ -153,7 +153,6 @@ $.modal = $.fn.modal = function(parameters) {
             $module.addClass('top aligned');
           }
           module.refreshModals();
-          module.refreshInputs();
           module.bind.events();
           module.observeChanges();
           module.instantiate();
@@ -191,6 +190,7 @@ $.modal = $.fn.modal = function(parameters) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
             $context.append($module);
+            element = $module[0];
           },
           dimmer: function() {
             var
@@ -574,6 +574,7 @@ $.modal = $.fn.modal = function(parameters) {
                       }
                       module.save.focus();
                       module.set.active();
+                      module.refreshInputs()
                       if(settings.autofocus) {
                         module.set.autofocus();
                       }
