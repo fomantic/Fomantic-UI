@@ -4,9 +4,9 @@ var
 
 Package.describe({
   name    : 'semantic:ui',
-  summary : 'Semantic UI - LESS Release of Semantic UI',
+  summary : 'Fomantic UI - LESS only distribution',
   version : '{version}',
-  git     : 'git://github.com/Semantic-Org/Semantic-UI-LESS.git',
+  git     : 'git://github.com/fomantic/Fomantic-UI-LESS.git',
 });
 
 Package.onUse(function(api) {
