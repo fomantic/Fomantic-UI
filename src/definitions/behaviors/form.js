@@ -642,6 +642,7 @@ $.fn.form = function(parameters) {
             if((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0 ) {
               return t;
             }
+            module.debug('Field identifier not found.', identifier);
             return $('<input/>');
           },
           fields: function(fields) {
