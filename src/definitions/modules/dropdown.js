@@ -2563,7 +2563,7 @@ $.fn.dropdown = function(parameters) {
               $menu.removeClass(className.loading);
             }
           },
-          text: function(text) {
+          text: function(text, isNotPlaceholder) {
             if(settings.action === 'combo') {
               module.debug('Changing combo button text', text, $combo);
               if(settings.preserveHTML) {
@@ -2574,7 +2574,7 @@ $.fn.dropdown = function(parameters) {
               }
             }
             else if(settings.action === 'activate') {
-              if(text !== module.get.placeholderText()) {
+              if(text !== module.get.placeholderText() || isNotPlaceholder) {
                 $text.removeClass(className.placeholder);
               }
               module.debug('Changing text', text, $text);
@@ -2822,7 +2822,7 @@ $.fn.dropdown = function(parameters) {
                     module.save.remoteData(selectedText, selectedValue);
                   }
                   if (!keepSearchTerm && !$selected.hasClass(className.actionable)) {
-                    module.set.text(selectedText);
+                    module.set.text(selectedText, true);
                   }
                   module.set.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                   $selected
