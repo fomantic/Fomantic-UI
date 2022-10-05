@@ -574,7 +574,6 @@ $.modal = $.fn.modal = function(parameters) {
                       }
                       module.save.focus();
                       module.set.active();
-                      module.refresh();
                       module.refreshInputs()
                       if(settings.autofocus) {
                         module.set.autofocus();
