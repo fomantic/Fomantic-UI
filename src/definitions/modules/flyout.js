@@ -168,7 +168,6 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.setup.heights();
             module.bind.resize();
           }
-          module.refreshInputs();
           module.bind.events();
           module.observeChanges();
           module.instantiate();
@@ -208,6 +207,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               $('<div/>', {class: className.actions}).appendTo($module);
             }
             $module.prependTo($context);
+            element = $module[0];
           },
           id: function() {
             id = (Math.random().toString(16) + '000000000').slice(2, 10);
@@ -621,6 +621,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                 module.add.keyboardShortcuts();
               }
               module.save.focus();
+              module.refreshInputs();
               if(settings.autofocus) {
                 module.set.autofocus();
               }
