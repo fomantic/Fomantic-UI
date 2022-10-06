@@ -15,11 +15,13 @@ Package.onUse(function(api) {
 
   api.use('jquery', 'client');
 
-  api.addFiles([
+  api.addAssets([
     // icons
     'themes/default/assets/fonts/icons.woff',
-    'themes/default/assets/fonts/icons.woff2',
+    'themes/default/assets/fonts/icons.woff2'
+  ], 'client');
 
+  api.addFiles([
       // release
     'semantic.css',
     'semantic.js'
