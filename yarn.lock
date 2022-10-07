@@ -182,9 +182,9 @@ abbrev@1:
   integrity sha512-nne9/IiQ/hzIhY6pdDnbBtz7DjPTKrY00P/zvPSm5pOFkl6xuGrGnXn/VtTNNfNtAfZ9/1RtehkszU9qcTii0Q==
 
 all-contributors-cli@^6.7.0:
-  version "6.23.0"
-  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.23.0.tgz#b048efb8b126375a67d4d56bdc3733a53b1310b8"
-  integrity sha512-myfnxTFLJ1hL5wA705QYkLm08iney2J+A1DC3m2fAe+oyFoXH03u2oK+G7B/cvgrbVl5eWw8yELKmtR6iAtoCw==
+  version "6.23.1"
+  resolved "https://registry.yarnpkg.com/all-contributors-cli/-/all-contributors-cli-6.23.1.tgz#26203323deb716da7804229dce6945ab267da4ff"
+  integrity sha512-k5qS+l7booUL3e/R/8mxliUd4SqP5hmLq7LDcm4uCoQe1sGlSPebVNQEmvEuWbAxUOTPFJZX2pC0U/UNGCUNAA==
   dependencies:
     "@babel/runtime" "^7.7.6"
     async "^3.1.0"
