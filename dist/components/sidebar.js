@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Sidebar
+ * # Fomantic-UI 2.9.0 - Sidebar
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -28,6 +28,7 @@ $.fn.sidebar = function(parameters) {
     $allModules     = $(this),
     $window         = $(window),
     $document       = $(document),
+    $body           = $('body'),
     $html           = $('html'),
     $head           = $('head'),
 
@@ -66,7 +67,8 @@ $.fn.sidebar = function(parameters) {
         moduleNamespace = 'module-' + namespace,
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+        isBody          = $context[0] === $body[0],
 
         $sidebars       = $module.children(selector.sidebar),
         $fixed          = $context.children(selector.fixed),
@@ -80,6 +82,9 @@ $.fn.sidebar = function(parameters) {
         id,
         currentScroll,
         transitionEvent,
+        initialBodyMargin = '',
+        tempBodyMargin = '',
+        hadScrollbar = false,
 
         module
       ;
@@ -118,7 +123,7 @@ $.fn.sidebar = function(parameters) {
 
         create: {
           id: function() {
-            id = (Math.random().toString(16) + '000000000').substr(2,8);
+            id = (Math.random().toString(16) + '000000000').slice(2, 10);
             elementNamespace = '.' + id;
             module.verbose('Creating unique id for element', id);
           }
@@ -185,9 +190,12 @@ $.fn.sidebar = function(parameters) {
           scrollLock: function() {
             if(settings.scrollLock) {
               module.debug('Disabling page scroll');
-              $window
-                .on('DOMMouseScroll' + elementNamespace, module.event.scroll)
-              ;
+              hadScrollbar = module.has.scrollbar();
+              if(hadScrollbar) {
+                module.save.bodyMargin();
+                module.set.bodyMargin();
+              }
+              $context.addClass(className.locked);
             }
             module.verbose('Adding events to contain sidebar scroll');
             $document
@@ -205,8 +213,11 @@ $.fn.sidebar = function(parameters) {
           },
           scrollLock: function() {
             module.verbose('Removing scroll lock from page');
+            if(hadScrollbar) {
+              module.restore.bodyMargin();
+            }
+            $context.removeClass(className.locked);
             $document.off(elementNamespace);
-            $window.off(elementNamespace);
             $module.off('scroll' + eventNamespace);
           }
         },
@@ -261,7 +272,7 @@ $.fn.sidebar = function(parameters) {
               if(direction === 'left' || direction === 'right') {
                 module.debug('Adding CSS rules for animation distance', width);
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }'
@@ -269,7 +280,7 @@ $.fn.sidebar = function(parameters) {
               }
               else if(direction === 'top' || direction == 'bottom') {
                 style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher:after {'
+                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }'
@@ -277,8 +288,8 @@ $.fn.sidebar = function(parameters) {
               }
               /* opposite sides visible forces content overlay */
               style += ''
-                + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher:after,'
-                + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher:after {'
+                + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
+                + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
                 + ' }'
@@ -294,8 +305,8 @@ $.fn.sidebar = function(parameters) {
 
         refresh: function() {
           module.verbose('Refreshing selector cache');
-          $context  = $(settings.context);
-          $sidebars = $context.children(selector.sidebar);
+          $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+          module.refreshSidebars();
           $pusher   = $context.children(selector.pusher);
           $fixed    = $context.children(selector.fixed);
           module.clear.cache();
@@ -364,14 +375,32 @@ $.fn.sidebar = function(parameters) {
             module.error(error.notFound, selector);
           }
         },
-
+        can: {
+          leftBodyScrollbar: function () {
+            if (module.cache.leftBodyScrollbar === undefined) {
+              module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
+            }
+            return module.cache.leftBodyScrollbar;
+          }
+        },
+        save: {
+          bodyMargin: function() {
+            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
+            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+            tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
+          }
+        },
         show: function(callback) {
           callback = $.isFunction(callback)
             ? callback
             : function(){}
           ;
           if(module.is.hidden()) {
-            module.refreshSidebars();
+            if(settings.onShow.call(element) === false) {
+              module.verbose('Show callback returned false cancelling show');
+              return;
+            }
             if(settings.overlay)  {
               module.error(error.overlay);
               settings.transition = 'overlay';
@@ -393,12 +422,12 @@ $.fn.sidebar = function(parameters) {
                 settings.transition = 'overlay';
               }
             }
+            module.set.dimmerStyles();
             module.pushPage(function() {
               callback.call(element);
-              settings.onShow.call(element);
+              settings.onVisible.call(element);
             });
             settings.onChange.call(element);
-            settings.onVisible.call(element);
           }
           else {
             module.debug('Sidebar is already visible');
@@ -410,7 +439,7 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(module.is.visible() || module.is.animating()) {
+          if((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
             module.debug('Hiding sidebar', callback);
             module.refreshSidebars();
             module.pullPage(function() {
@@ -418,7 +447,6 @@ $.fn.sidebar = function(parameters) {
               settings.onHidden.call(element);
             });
             settings.onChange.call(element);
-            settings.onHide.call(element);
           }
         },
 
@@ -473,9 +501,13 @@ $.fn.sidebar = function(parameters) {
             ? callback
             : function(){}
           ;
-          if(settings.transition == 'scale down') {
+          if(settings.returnScroll) {
+            currentScroll = (isBody ? $window : $context).scrollTop();
+          }
+          if(settings.transition === 'scale down') {
             module.scrollToTop();
           }
+          module.bind.scrollLock();
           module.set.transition(transition);
           module.repaint();
           animate = function() {
@@ -491,7 +523,6 @@ $.fn.sidebar = function(parameters) {
             if( event.target == $transition[0] ) {
               $transition.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
-              module.bind.scrollLock();
               callback.call(element);
             }
           };
@@ -524,19 +555,23 @@ $.fn.sidebar = function(parameters) {
           animate = function() {
             module.set.transition(transition);
             module.set.animating();
-            module.remove.visible();
             if(settings.dimPage && !module.othersVisible()) {
-              $pusher.removeClass(className.dimmed);
+              module.set.closing();
             }
+            module.remove.visible();
           };
           transitionEnd = function(event) {
             if( event.target == $transition[0] ) {
               $transition.off(transitionEvent + elementNamespace, transitionEnd);
               module.remove.animating();
+              module.remove.closing();
               module.remove.transition();
               module.remove.inlineCSS();
-              if(transition == 'scale down' || (settings.returnScroll && module.is.mobile()) ) {
+              if(transition === 'scale down' || settings.returnScroll) {
                 module.scrollBack();
+              }
+              if(settings.dimPage && !module.othersVisible()) {
+                $pusher.removeClass(className.dimmed);
               }
               callback.call(element);
             }
@@ -548,14 +583,13 @@ $.fn.sidebar = function(parameters) {
 
         scrollToTop: function() {
           module.verbose('Scrolling to top of page to avoid animation issues');
-          currentScroll = $(window).scrollTop();
           $module.scrollTop(0);
-          window.scrollTo(0, 0);
+          (isBody ? $window : $context)[0].scrollTo(0, 0);
         },
 
         scrollBack: function() {
           module.verbose('Scrolling back to original page position');
-          window.scrollTo(0, currentScroll);
+          (isBody ? $window : $context)[0].scrollTo(0, currentScroll);
         },
 
         clear: {
@@ -566,7 +600,24 @@ $.fn.sidebar = function(parameters) {
         },
 
         set: {
-
+          bodyMargin: function() {
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+            $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
+            });
+          },
+          dimmerStyles: function() {
+            if(settings.blurring) {
+              $pusher.addClass(className.blurring);
+            }
+            else {
+              $pusher.removeClass(className.blurring);
+            }
+          },
           // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
           // (This is no longer necessary in latest iOS)
           ios: function() {
@@ -592,6 +643,9 @@ $.fn.sidebar = function(parameters) {
           },
           animating: function() {
             $module.addClass(className.animating);
+          },
+          closing: function() {
+            $pusher.addClass(className.closing);
           },
           transition: function(transition) {
             transition = transition || module.get.transition();
@@ -637,6 +691,9 @@ $.fn.sidebar = function(parameters) {
           animating: function() {
             $module.removeClass(className.animating);
           },
+          closing: function() {
+            $pusher.removeClass(className.closing);
+          },
           transition: function(transition) {
             transition = transition || module.get.transition();
             $module.removeClass(transition);
@@ -652,7 +709,18 @@ $.fn.sidebar = function(parameters) {
             $module.removeClass(className.overlay);
           }
         },
-
+        restore: {
+          bodyMargin: function() {
+            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+              var el = $(this),
+                  attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+              ;
+              el.css(attribute, '');
+            });
+          }
+        },
         get: {
           direction: function() {
             if($module.hasClass(className.top)) {
@@ -700,15 +768,42 @@ $.fn.sidebar = function(parameters) {
             }
           }
         },
-
+        has: {
+          scrollbar: function() {
+            return isBody || $context.css('overflow-y') !== 'hidden';
+          }
+        },
         is: {
-
+          safari: function() {
+            if(module.cache.isSafari === undefined) {
+              module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
+            }
+            return module.cache.isSafari;
+          },
+          edge: function(){
+            if(module.cache.isEdge === undefined) {
+              module.cache.isEdge = !!window.setImmediate && !module.is.ie();
+            }
+            return module.cache.isEdge;
+          },
+          firefox: function(){
+            if(module.cache.isFirefox === undefined) {
+              module.cache.isFirefox = !!window.InstallTrigger;
+            }
+            return module.cache.isFirefox;
+          },
+          iframe: function() {
+            return !(self === top);
+          },
           ie: function() {
-            var
-              isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-              isIE   = ('ActiveXObject' in window)
-            ;
-            return (isIE11 || isIE);
+            if(module.cache.isIE === undefined) {
+              var
+                  isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
+                  isIE = ('ActiveXObject' in window)
+              ;
+              module.cache.isIE = (isIE11 || isIE);
+            }
+            return module.cache.isIE;
           },
 
           ios: function() {
@@ -758,12 +853,12 @@ $.fn.sidebar = function(parameters) {
           animating: function() {
             return $context.hasClass(className.animating);
           },
-          rtl: function () {
-            if(module.cache.rtl === undefined) {
-              module.cache.rtl = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl';
+          rtl: function() {
+            if(module.cache.isRTL === undefined) {
+              module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
             }
-            return module.cache.rtl;
-          }
+            return module.cache.isRTL;
+          },
         },
 
         setting: function(name, value) {
@@ -881,7 +976,7 @@ $.fn.sidebar = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -986,8 +1081,6 @@ $.fn.sidebar.settings = {
   returnScroll      : false,
   delaySetup        : false,
 
-  duration          : 500,
-
   onChange          : function(){},
   onShow            : function(){},
   onHide            : function(){},
@@ -998,8 +1091,11 @@ $.fn.sidebar.settings = {
   className         : {
     active    : 'active',
     animating : 'animating',
+    blurring  : 'blurring',
+    closing   : 'closing',
     dimmed    : 'dimmed',
     ios       : 'ios',
+    locked    : 'locked',
     pushable  : 'pushable',
     pushed    : 'pushed',
     right     : 'right',
@@ -1010,6 +1106,7 @@ $.fn.sidebar.settings = {
   },
 
   selector: {
+    bodyFixed: '> .ui.fixed.menu, > .ui.right.toast-container, > .ui.right.sidebar, > .ui.fixed.nag, > .ui.fixed.nag > .close',
     fixed   : '.fixed',
     omitted : 'script, link, style, .ui.modal, .ui.dimmer, .ui.nag, .ui.fixed',
     pusher  : '.pusher',

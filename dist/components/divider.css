@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Divider
+ * # Fomantic-UI 2.9.0 - Divider
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -60,8 +60,8 @@
   line-height: 1;
   text-align: center;
 }
-.ui.horizontal.divider:before,
-.ui.horizontal.divider:after {
+.ui.horizontal.divider::before,
+.ui.horizontal.divider::after {
   content: '';
   display: table-cell;
   position: relative;
@@ -69,10 +69,10 @@
   width: 50%;
   background-repeat: no-repeat;
 }
-.ui.horizontal.divider:before {
+.ui.horizontal.divider::before {
   background-position: right 1em top 50%;
 }
-.ui.horizontal.divider:after {
+.ui.horizontal.divider::after {
   background-position: left 1em top 50%;
 }
 
@@ -94,8 +94,8 @@
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
 }
-.ui.vertical.divider:before,
-.ui.vertical.divider:after {
+.ui.vertical.divider::before,
+.ui.vertical.divider::after {
   position: absolute;
   left: 50%;
   content: '';
@@ -105,10 +105,10 @@
   width: 0;
   height: calc(100% - 1rem);
 }
-.ui.vertical.divider:before {
+.ui.vertical.divider::before {
   top: -100%;
 }
-.ui.vertical.divider:after {
+.ui.vertical.divider::after {
   top: auto;
   bottom: 0;
 }
@@ -130,10 +130,10 @@
     -webkit-transform: none;
             transform: none;
   }
-  .ui.stackable.grid .ui.vertical.divider:before,
-  .ui.grid .stackable.row .ui.vertical.divider:before,
-  .ui.stackable.grid .ui.vertical.divider:after,
-  .ui.grid .stackable.row .ui.vertical.divider:after {
+  .ui.stackable.grid .ui.vertical.divider::before,
+  .ui.grid .stackable.row .ui.vertical.divider::before,
+  .ui.stackable.grid .ui.vertical.divider::after,
+  .ui.grid .stackable.row .ui.vertical.divider::after {
     left: 0;
     border-left: none;
     border-right: none;
@@ -144,12 +144,12 @@
     width: 50%;
     background-repeat: no-repeat;
   }
-  .ui.stackable.grid .ui.vertical.divider:before,
-  .ui.grid .stackable.row .ui.vertical.divider:before {
+  .ui.stackable.grid .ui.vertical.divider::before,
+  .ui.grid .stackable.row .ui.vertical.divider::before {
     background-position: right 1em top 50%;
   }
-  .ui.stackable.grid .ui.vertical.divider:after,
-  .ui.grid .stackable.row .ui.vertical.divider:after {
+  .ui.stackable.grid .ui.vertical.divider::after,
+  .ui.grid .stackable.row .ui.vertical.divider::after {
     background-position: left 1em top 50%;
   }
 }
@@ -169,16 +169,16 @@
        Header
   ---------------*/
 
-.ui.horizontal.divider[class*="left aligned"]:before {
+.ui.horizontal.divider[class*="left aligned"]::before {
   display: none;
 }
-.ui.horizontal.divider[class*="left aligned"]:after {
+.ui.horizontal.divider[class*="left aligned"]::after {
   width: 100%;
 }
-.ui.horizontal.divider[class*="right aligned"]:before {
+.ui.horizontal.divider[class*="right aligned"]::before {
   width: 100%;
 }
-.ui.horizontal.divider[class*="right aligned"]:after {
+.ui.horizontal.divider[class*="right aligned"]::after {
   display: none;
 }
 
@@ -195,8 +195,8 @@
 .ui.hidden.divider {
   border-color: transparent !important;
 }
-.ui.hidden.divider:before,
-.ui.hidden.divider:after {
+.ui.hidden.divider::before,
+.ui.hidden.divider::after {
   display: none;
 }
 
@@ -210,8 +210,8 @@
   color: #FFFFFF;
 }
 .ui.divider.inverted,
-.ui.divider.inverted:after,
-.ui.divider.inverted:before {
+.ui.divider.inverted::after,
+.ui.divider.inverted::before {
   border-top-color: rgba(34, 36, 38, 0.15) !important;
   border-left-color: rgba(34, 36, 38, 0.15) !important;
   border-bottom-color: rgba(255, 255, 255, 0.15) !important;
@@ -277,15 +277,15 @@
          Theme Overrides
 *******************************/
 
-.ui.horizontal.divider:before,
-.ui.horizontal.divider:after {
+.ui.horizontal.divider::before,
+.ui.horizontal.divider::after {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAAACCAYAAACuTHuKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1OThBRDY4OUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1OThBRDY4QUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU5OEFENjg3Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU5OEFENjg4Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VU513gAAADVJREFUeNrs0DENACAQBDBIWLGBJQby/mUcJn5sJXQmOQMAAAAAAJqt+2prAAAAAACg2xdgANk6BEVuJgyMAAAAAElFTkSuQmCC');
 }
 @media only screen and (max-width: 767px) {
-  .ui.stackable.grid .ui.vertical.divider:before,
-  .ui.grid .stackable.row .ui.vertical.divider:before,
-  .ui.stackable.grid .ui.vertical.divider:after,
-  .ui.grid .stackable.row .ui.vertical.divider:after {
+  .ui.stackable.grid .ui.vertical.divider::before,
+  .ui.grid .stackable.row .ui.vertical.divider::before,
+  .ui.stackable.grid .ui.vertical.divider::after,
+  .ui.grid .stackable.row .ui.vertical.divider::after {
     background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABaAAAAACCAYAAACuTHuKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyFpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIChXaW5kb3dzKSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDo1OThBRDY4OUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDo1OThBRDY4QUNDMTYxMUU0OUE3NUVGOEJDMzMzMjE2NyI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOjU5OEFENjg3Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3IiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU5OEFENjg4Q0MxNjExRTQ5QTc1RUY4QkMzMzMyMTY3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+VU513gAAADVJREFUeNrs0DENACAQBDBIWLGBJQby/mUcJn5sJXQmOQMAAAAAAJqt+2prAAAAAACg2xdgANk6BEVuJgyMAAAAAElFTkSuQmCC');
   }
 }

@@ -185,7 +185,7 @@
   -webkit-transform: translate(-50%, 100%);
           transform: translate(-50%, 100%);
 }
-.ui.labeled.ticked.slider > .labels .label:after {
+.ui.labeled.ticked.slider > .labels .label::after {
   content: ' ';
   height: 1.5em;
   width: 1px;
@@ -194,11 +194,11 @@
   top: 100%;
   left: 50%;
 }
-.ui.bottom.aligned.labeled.ticked.slider > .labels .label:after {
+.ui.bottom.aligned.labeled.ticked.slider > .labels .label::after {
   top: auto;
   bottom: 100%;
 }
-.ui.labeled.ticked.slider > .labels .halftick.label:after {
+.ui.labeled.ticked.slider > .labels .halftick.label::after {
   height: 0.75em;
 }
 
@@ -216,13 +216,13 @@
   -webkit-transform: translate(-100%, -50%);
           transform: translate(-100%, -50%);
 }
-.ui.labeled.vertical.slider > .labels .label:after {
+.ui.labeled.vertical.slider > .labels .label::after {
   width: 1.5em;
   height: 1px;
   left: 100%;
   top: 50%;
 }
-.ui.labeled.vertical.slider > .labels .halftick.label:after {
+.ui.labeled.vertical.slider > .labels .halftick.label::after {
   width: 0.75em;
   height: 1px;
 }
@@ -698,10 +698,10 @@
   top: 0.35em;
 }
 .ui.small.labeled.slider:not(.vertical) > .labels,
-.ui.small.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.small.labeled.slider:not(.vertical) > .labels .label::after {
   height: 1em;
 }
-.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+.ui.small.labeled.slider:not(.vertical) > .labels .halftick.label::after {
   height: 0.5em;
 }
 
@@ -715,10 +715,10 @@
   left: 0.35em;
 }
 .ui.small.labeled.vertical.slider > .labels,
-.ui.small.labeled.vertical.slider > .labels .label:after {
+.ui.small.labeled.vertical.slider > .labels .label::after {
   width: 1em;
 }
-.ui.small.labeled.vertical.slider > .labels .halftick.label:after {
+.ui.small.labeled.vertical.slider > .labels .halftick.label::after {
   width: 0.5em;
 }
 .ui.slider.large .inner .thumb {
@@ -734,10 +734,10 @@
   top: 0.75em;
 }
 .ui.large.labeled.slider:not(.vertical) > .labels,
-.ui.large.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.large.labeled.slider:not(.vertical) > .labels .label::after {
   height: 2em;
 }
-.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+.ui.large.labeled.slider:not(.vertical) > .labels .halftick.label::after {
   height: 1em;
 }
 
@@ -751,10 +751,10 @@
   left: 0.75em;
 }
 .ui.large.labeled.vertical.slider > .labels,
-.ui.large.labeled.vertical.slider > .labels .label:after {
+.ui.large.labeled.vertical.slider > .labels .label::after {
   width: 2em;
 }
-.ui.large.labeled.vertical.slider > .labels .halftick.label:after {
+.ui.large.labeled.vertical.slider > .labels .halftick.label::after {
   width: 1em;
 }
 .ui.slider.big .inner .thumb {
@@ -770,10 +770,10 @@
   top: 0.95em;
 }
 .ui.big.labeled.slider:not(.vertical) > .labels,
-.ui.big.labeled.slider:not(.vertical) > .labels .label:after {
+.ui.big.labeled.slider:not(.vertical) > .labels .label::after {
   height: 2.5em;
 }
-.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label:after {
+.ui.big.labeled.slider:not(.vertical) > .labels .halftick.label::after {
   height: 1.25em;
 }
 
@@ -787,10 +787,10 @@
   left: 0.95em;
 }
 .ui.big.labeled.vertical.slider > .labels,
-.ui.big.labeled.vertical.slider > .labels .label:after {
+.ui.big.labeled.vertical.slider > .labels .label::after {
   width: 2.5em;
 }
-.ui.big.labeled.vertical.slider > .labels .halftick.label:after {
+.ui.big.labeled.vertical.slider > .labels .halftick.label::after {
   width: 1.25em;
 }
 
