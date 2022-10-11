@@ -97,6 +97,11 @@
   border-radius: @borderRadius 0 0 @borderRadius;
 }
 
+.ui.menu > .item.vertical {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 /* Border */
 .ui.menu .item::before {
   position: absolute;
@@ -125,6 +130,26 @@
 .ui.menu .item > p:last-child {
   margin-bottom: 0;
 }
+
+.ui.menu > .item.vertical > .text {
+  margin-bottom: @verticalItemMargin;
+}
+
+/*-----------------
+  Item Description
+-------------------*/
+
+.ui.menu > .item > .description {
+  float: @itemDescriptionFloat;
+  margin: @itemDescriptionMargin;
+  color: @itemDescriptionColor;
+}
+
+.ui.menu > .item.vertical > .description {
+  margin: 0;
+}
+
+
 
 /*--------------
       Icons
@@ -281,6 +306,10 @@
   .ui.inverted.menu .search.dropdown.item > .search,
   .ui.inverted.menu .search.dropdown.item > .text {
     color: @invertedSelectionDropdownColor;
+  }
+
+  .ui.inverted.menu > .item > .description {
+    color: @invertedItemDescriptionColor;
   }
 }
 
@@ -545,7 +574,7 @@ Floated Menu / Item
   }
 
   /*--- Item ---*/
-  .ui.vertical.menu .item {
+  .ui.vertical.menu .item:not(.vertical) {
     display: block;
     background: @verticalItemBackground;
     border-top: none;

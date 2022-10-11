@@ -53,6 +53,14 @@
     Elements
 ---------------*/
 
+/* Description */
+@itemDescriptionFloat: right;
+@itemDescriptionMargin: 0 0 0 1em;
+@itemDescriptionColor: @lightTextColor;
+
+/* Vertical Item */
+@verticalItemMargin: 0.25em;
+
 /* Icon */
 @iconFloat: none;
 @iconMargin: 0 @relative5px 0 0;
@@ -426,6 +434,9 @@
 /* Inverted Colored */
 @invertedColoredDividerBackground: @dividerBackground;
 @invertedColoredActiveBackground: @strongTransparentBlack;
+
+/* Inverted Vertical Description */
+@invertedItemDescriptionColor: @invertedUnselectedTextColor;
 
 /* Fixed */
 @fixedPrecedingGridMargin: 2.75rem;
