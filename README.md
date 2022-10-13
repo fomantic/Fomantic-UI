@@ -47,8 +47,8 @@ $ npm install fomantic-ui@nightly
 
 Fomantic includes an interactive installer to help setup your project.
 
-* For more details on setup visit our [getting started guide](http://fomantic-ui.com/introduction/getting-started.html).
-* To learn more about theming please read our [theming guide](http://fomantic-ui.com/usage/theming.html)
+* For more details on setup visit our [getting started guide](https://fomantic-ui.com/introduction/getting-started.html).
+* To learn more about theming please read our [theming guide](https://fomantic-ui.com/usage/theming.html)
 
 ### 💻 Browser Support
 
