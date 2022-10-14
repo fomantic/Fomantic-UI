@@ -24,7 +24,7 @@ var nullish = (value,fallback) => {
 
 module.exports = {
 
-  banner : config.banner || release.banner,
+  banner : nullish(config.banner, release.banner),
 
   log: {
     created: function(file) {
