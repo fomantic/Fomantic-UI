@@ -77,6 +77,7 @@ function pack(type, compress) {
     .pipe(dedupe())
     .pipe(replace(assets.uncompressed, assets.packaged))
     .pipe(concat(concatenatedJS))
+    .pipe(gulpif(config.stripHeaders, replace(comments.header.in, comments.header.out)))
     .pipe(gulpif(compress, uglify(settings.concatUglify)))
     .pipe(header(banner, settings.header))
     .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
