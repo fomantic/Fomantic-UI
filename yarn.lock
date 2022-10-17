@@ -1779,7 +1779,7 @@ gulp-header@^2.0.5:
 gulp-if@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/gulp-if/-/gulp-if-2.0.2.tgz#a497b7e7573005041caa2bc8b7dda3c80444d629"
-  integrity sha1-pJe351cwBQQcqivIt92jyARE1ik=
+  integrity sha512-tV0UfXkZodpFq6CYxEqH8tqLQgN6yR9qOhpEEN3O6N5Hfqk3fFLcbAavSex5EqnmoQjyaZ/zvgwclvlTI1KGfw==
   dependencies:
     gulp-match "^1.0.3"
     ternary-stream "^2.0.1"
@@ -2861,7 +2861,7 @@ matchdep@^2.0.0:
 merge-stream@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/merge-stream/-/merge-stream-1.0.1.tgz#4041202d508a342ba00174008df0c251b8c135e1"
-  integrity sha1-QEEgLVCKNCugAXQAjfDCUbjBNeE=
+  integrity sha512-e6RM36aegd4f+r8BZCcYXlO2P3H6xbUM6ktL2Xmf45GAOit9bI4z6/3VU7JwllVO1L7u0UDSg/EhzQ5lmMLolA==
   dependencies:
     readable-stream "^2.0.1"
 
