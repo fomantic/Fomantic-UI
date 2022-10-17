@@ -1877,7 +1877,7 @@ gulp-rtlcss@^2.0.0:
 gulp-tap@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gulp-tap/-/gulp-tap-1.0.1.tgz#e671124e1259b4cea219ed1ca97b7f585c334690"
-  integrity sha1-5nESThJZtM6iGe0cqXt/WFwzRpA=
+  integrity sha512-VpCARRSyr+WP16JGnoIg98/AcmyQjOwCpQgYoE35CWTdEMSbpgtAIK2fndqv2yY7aXstW27v3ZNBs0Ltb0Zkbg==
   dependencies:
     through2 "^2.0.3"
 
