@@ -33,7 +33,7 @@
     "@octokit/rest": "^16.16.0",
     "better-console": "1.0.1",
     "browserslist": "^4.19.1",
-    "del": "^3.0.0",
+    "del": "^6.1.1",
     "extend": "^3.0.2",
     "gulp": "^4.0.0",
     "gulp-autoprefixer": "^6.0.0",
