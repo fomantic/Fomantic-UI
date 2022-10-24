@@ -106,7 +106,7 @@ module.exports = function (callback) {
 
       // perform update if new version
       if (currentConfig.version !== release.version) {
-        console.log('Updating Semantic UI from ' + currentConfig.version + ' to ' + release.version);
+        console.log('Updating Fomantic UI from ' + currentConfig.version + ' to ' + release.version);
 
         console.info('Updating ui definitions...');
         wrench.copyDirSyncRecursive(source.definitions, updatePaths.definition, settings.wrench.overwrite);
@@ -151,7 +151,7 @@ module.exports = function (callback) {
         callback();
         return;
       } else {
-        console.log('Current version of Semantic UI already installed');
+        console.log('Current version of Fomantic UI already installed');
         callback();
         return;
       }
