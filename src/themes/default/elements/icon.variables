@@ -49,6 +49,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     if(@supportIE, e(',') url("@{fontPath}/@{fontName}.woff") format('woff'));
     font-style     : normal;
     font-weight    : @normal;
+    font-display   : block;
     font-variant   : normal;
     text-decoration: inherit;
     text-transform : none;
@@ -59,6 +60,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     if(@supportIE, e(',') url("@{fontPath}/@{outlineFontName}.woff") format('woff'));
     font-style     : normal;
     font-weight    : @normal;
+    font-display   : block;
     font-variant   : normal;
     text-decoration: inherit;
     text-transform : none;
@@ -69,6 +71,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     if(@supportIE, e(',') url("@{fontPath}/@{brandFontName}.woff") format('woff'));
     font-style     : normal;
     font-weight    : @normal;
+    font-display   : block;
     font-variant   : normal;
     text-decoration: inherit;
     text-transform : none;
