@@ -126,6 +126,7 @@
 @variationInputDisabled: true;
 @variationInputInverted: true;
 @variationInputStates: @variationAllStates;
+@variationInputInvalid: true;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -272,6 +273,7 @@
 @variationFormTransparent: true;
 @variationFormLoading: true;
 @variationFormStates: @variationAllStates;
+@variationFormInvalid: true;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
