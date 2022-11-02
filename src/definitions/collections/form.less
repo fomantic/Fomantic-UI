@@ -591,7 +591,7 @@
       border-radius: @formStates[@@state][borderRadius];
       box-shadow: @formStates[@@state][boxShadow];
     }
-    & when (@state=error) {
+    & when (@state=error) and (@variationFormInvalid) {
       .ui.form .field input:not(:placeholder-shown):invalid {
         color: @c;
         background: @bg;
