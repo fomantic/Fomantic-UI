@@ -38,6 +38,7 @@
 @variationButtonWrapping: true;
 @variationButtonWrapped: true;
 @variationButtonSpaced: true;
+@variationButtonConsequences: positive, negative;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 
