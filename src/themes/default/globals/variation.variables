@@ -90,7 +90,8 @@
 @variationIconAliases: true;
 @variationIconOutline: true;
 @variationIconBrand: true;
-@variationIconThin: true; /* Font Awesome Pro only */
+@variationIconThin: false; /* Font Awesome Pro only */
+@variationIconDuotone: false; /* Font Awesome Pro only */
 @variationIconDisabled: true;
 @variationIconInverted: true;
 @variationIconLoading: true;

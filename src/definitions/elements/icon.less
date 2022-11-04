@@ -529,6 +529,16 @@ i.icons {
   });
 };
 
+.generateSecondaryIcons(@map) {
+  each(@map,{
+    @escapedKey: replace(@key,'^([0-9])','\3$1 ');
+    @normalizedKey: replace(@escapedKey,'_','.','g');
+    i.icon.@{normalizedKey}::after {
+      content: "@{value}";
+    }
+  });
+};
+
 & when (@variationIconDeprecated) {
 
   /* Deprecated *In/Out Naming Conflict) */
@@ -595,6 +605,70 @@ i.icons {
 
     /* Aliases */
     .generateIcons(@icon-brand-aliases-map,@brandFontName);
+  }
+}
+
+& when(@variationIconDuotone) {
+  /*******************************
+            Duotone Icons
+  *******************************/
+
+  /* Make duotone icons use the proper font */
+  i.icon.duotone {
+    font-family: @duotoneFontName;
+    /* To position the secondary layer on top of the first layer */
+    position: relative;
+  }
+
+  /* Set the default opacity levels and colors for each layer */
+  i.icon.duotone::before {
+    color: @duotonePrimaryColor;
+    opacity: @duotonePrimaryOpacity;
+  }
+
+  i.icon.duotone::after {
+    /* Position secondary layer to the left, centered horizontally and aligned vertically to flex with different line heights */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+    color: @duotoneSecondaryColor;
+    opacity: @duotoneSecondaryOpacity;
+  }
+
+  .generateIcons(@icon-duotone-map,false);
+  .generateSecondaryIcons(@icon-duotone-secondary-map);
+
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-duotone-aliases-map,false);
+    .generateSecondaryIcons(@icon-duotone-secondary-aliases-map);
+  }
+
+  /*
+   * Colors for duotone icons, in the form `primary-secondary`(e.g. `black-grey duotone icon`).
+   */
+  & when not (@variationIconColors = false) {
+    each(@variationIconColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+
+      i.duotone[class*="@{color}-"]::before,
+      i.duotone[class*="-@{color}"]::after {
+        color: @c;
+      }
+
+      & when (@variationIconInverted) {
+        i.inverted.duotone[class*="@{color}-"]::before,
+        i.inverted.duotone[class*="-@{color}"]::after {
+          color: @l;
+        }
+      }
+    })
   }
 }
 

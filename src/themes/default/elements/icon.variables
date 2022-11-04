@@ -41,6 +41,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @outlineFontName: 'outline-icons';
 @thinFontName: 'thin-icons';
 @brandFontName: 'brand-icons';
+@duotoneFontName: 'duotone-icons';
 
 @fonts: {
 @solid: {
@@ -2062,6 +2063,14 @@ ycombinator: \f23b;
 youtube_play: \f167;
 };
 
+@icon-duotone-map: {
+};
+@icon-duotone-secondary-map: {
+};
+@icon-duotone-aliases-map: {
+};
+@icon-duotone-secondary-aliases-map: {
+};
 
 /*--------------
    Definition
@@ -2117,3 +2126,9 @@ youtube_play: \f167;
 @big: 2em;
 @huge: 4em;
 @massive: 8em;
+
+/* Duotone specifics */
+@duotonePrimaryColor: inherit;
+@duotonePrimaryOpacity: 1;
+@duotoneSecondaryColor: inherit;
+@duotoneSecondaryOpacity: 0.4;
