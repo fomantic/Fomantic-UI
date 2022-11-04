@@ -13,5 +13,5 @@
 @pulsatingInvertedColor: #ffffff;
 @pulsatingDuration: 2000ms;
 @pulsatingDistance: 0.8em;
-@pulsatingOpacity: 40%;
+@pulsatingOpacity: 50%;
 @pulsatingInvertedOpacity: 70%;
