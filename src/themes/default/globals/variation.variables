@@ -713,6 +713,8 @@
 /* Transition */
 @variationTransitionDisabled: true;
 @variationTransitionLoading: true;
+@variationTransitionLooping: true;
+@variationTransitionInverted: true;
 @variationTransitionBrowse: true;
 @variationTransitionDrop: true;
 @variationTransitionFade: true;
@@ -729,6 +731,8 @@
 @variationTransitionPulse: true;
 @variationTransitionJiggle: true;
 @variationTransitionGlow: true;
+@variationTransitionPulsating: true;
+@variationTransitionColors: @variationAllColors;
 
 /* Emojis */
 @variationEmojiColons: true;

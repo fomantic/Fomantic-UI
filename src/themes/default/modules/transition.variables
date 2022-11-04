@@ -8,3 +8,10 @@
 
 @use3DAcceleration: translateZ(0);
 @backfaceVisibility: hidden;
+
+@pulsatingColor: #808080;
+@pulsatingInvertedColor: #ffffff;
+@pulsatingDuration: 2000ms;
+@pulsatingDistance: 0.8em;
+@pulsatingOpacity: 40%;
+@pulsatingInvertedOpacity: 70%;
