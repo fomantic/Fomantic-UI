@@ -38,6 +38,7 @@
 @variationButtonWrapping: true;
 @variationButtonWrapped: true;
 @variationButtonSpaced: true;
+@variationButtonConsequences: positive, negative;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 
@@ -125,6 +126,7 @@
 @variationInputDisabled: true;
 @variationInputInverted: true;
 @variationInputStates: @variationAllStates;
+@variationInputInvalid: true;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -271,6 +273,7 @@
 @variationFormTransparent: true;
 @variationFormLoading: true;
 @variationFormStates: @variationAllStates;
+@variationFormInvalid: true;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
