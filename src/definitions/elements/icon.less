@@ -163,7 +163,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: scale(1, -1);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.flipped.icon:not(.corner):not(:first-child),
     .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
       transform: translateX(-50%) translateY(-50%) scale(-1, 1);
@@ -194,7 +194,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: rotate(180deg);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
     .icons i.right.rotated.icon:not(.corner):not(:first-child),
     .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
@@ -245,7 +245,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: scale(1, -1) rotate(180deg);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
     .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
     .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
@@ -594,7 +594,7 @@ i.icons {
   }
 }
 
-& when(@variationIconBrand) {
+& when (@variationIconBrand) {
   /*******************************
             Brand Icons
   *******************************/
@@ -608,7 +608,7 @@ i.icons {
   }
 }
 
-& when(@variationIconDuotone) {
+& when (@variationIconDuotone) {
   /*******************************
             Duotone Icons
   *******************************/
@@ -657,14 +657,14 @@ i.icons {
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
 
-      i.duotone[class*="@{color}-"]::before,
-      i.duotone[class*="-@{color}"]::after {
+      i.icon.duotone[class*="@{color}-"]::before,
+      i.icon.duotone[class*="-@{color}"]::after {
         color: @c;
       }
 
       & when (@variationIconInverted) {
-        i.inverted.duotone[class*="@{color}-"]::before,
-        i.inverted.duotone[class*="-@{color}"]::after {
+        i.icon.inverted.duotone[class*="@{color}-"]::before,
+        i.icon.inverted.duotone[class*="-@{color}"]::after {
           color: @l;
         }
       }
