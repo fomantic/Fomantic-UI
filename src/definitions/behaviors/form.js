@@ -1550,15 +1550,16 @@ $.fn.form.settings = {
   },
 
   regExp: {
-    htmlID  : /^[a-zA-Z][\w:.-]*$/g,
-    bracket : /\[(.*)\]/i,
-    decimal : /^\d+\.?\d*$/,
-    email   : /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i,
-    escape  : /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|:,=@]/g,
-    flags   : /^\/(.*)\/(.*)?/,
-    integer : /^\-?\d+$/,
-    number  : /^\-?\d*(\.\d+)?$/,
-    url     : /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/i
+    htmlID      : /^[a-zA-Z][\w:.-]*$/g,
+    bracket     : /\[(.*)\]/i,
+    bracketName : /(.*)\[(.*)\]/i,
+    decimal     : /^\d+\.?\d*$/,
+    email       : /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i,
+    escape      : /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|:,=@]/g,
+    flags       : /^\/(.*)\/(.*)?/,
+    integer     : /^\-?\d+$/,
+    number      : /^\-?\d*(\.\d+)?$/,
+    url         : /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/i
   },
 
   text: {
@@ -1932,6 +1933,58 @@ $.fn.form.settings = {
         ? ( value.toString() !== matchingValue.toString() )
         : false
       ;
+    },
+
+    // applies rule if another field's value satisfies a condition
+    condition: function(value, ancillary, $module) {
+      let params = ancillary.split(',');
+      if(params.length !== 3) {
+        return false;
+      }
+
+      let
+          identifier  = params[0].trim(),
+          condition   = params[1].trim(),
+          rule        = params[2].trim()
+      ;
+      if(rule.indexOf('condition') > -1) {
+        // Don't support nested condition rules
+        return false;
+      }
+
+      const
+          settings   = $.fn.form.settings,
+          module     = $module.data('module-' + $.fn.form.settings.namespace),
+          fieldValue = module.get.value(identifier)
+      ;
+      if(fieldValue === undefined) {
+        return false;
+      }
+      if(fieldValue.toString() != condition.toString()) {
+        // If condition is not satisfied, this rule must pass
+        return true;
+      }
+
+      var
+          ruleName,
+          ruleParam,
+          ruleFunction
+      ;
+      if(settings.regExp.bracket.test(rule)) {
+        ruleName      = rule.match(settings.regExp.bracketName)[1] + '';
+        ruleParam     = rule.match(settings.regExp.bracketName)[2] + '';
+      }
+      else {
+        ruleName      = rule;
+      }
+
+      ruleFunction = $.fn.form.settings.rules[ruleName];
+
+      if(!$.isFunction(ruleFunction)) {
+        module.error(settings.error.noRule, ruleName);
+        return false;
+      }
+      return ruleFunction.call($(this), value, ruleParam, $module);
     },
 
     creditCard: function(cardNumber, cardTypes) {
