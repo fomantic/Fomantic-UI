@@ -138,10 +138,10 @@ module.exports = {
     const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
     // takes component object and creates file glob matching selected components
-    config.globs.components = '{' + componentsExceptIndividuals.join(',') + '}';
+    config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
     // components that should be built, but excluded from main .css/.js files
-    config.globs.individuals = (individuals.length >= 1)
+    config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
       ? '{' + individuals.join(',') + '}'
       : undefined
     ;
