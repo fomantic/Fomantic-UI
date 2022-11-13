@@ -134,10 +134,9 @@ function buildCSS(src, type, config, opts, callback) {
   }
 
   if (globs.individuals !== undefined && typeof src === 'string') {
-    const individuals = config.globs.individuals.replace(/\{/g,'');
-    const components = config.globs.components.replace(/\}/g,',').concat(individuals);
+    const components = config.globs.components.replace(/[{}]/g,'') + ',' + config.globs.individuals.replace(/[{}]/g,'');
 
-    src = config.paths.source.definitions + '/**/' + components + '.less';
+    src = config.paths.source.definitions + '/**/{' + components + '}.less';
   }
 
   const buildUncompressed       = () => build(src, type, false, config, opts);
