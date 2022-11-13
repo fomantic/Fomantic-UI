@@ -38,6 +38,7 @@
 @variationButtonWrapping: true;
 @variationButtonWrapped: true;
 @variationButtonSpaced: true;
+@variationButtonConsequences: positive, negative;
 @variationButtonSizes: @variationAllSizes;
 @variationButtonColors: @variationAllColors;
 
@@ -126,6 +127,7 @@
 @variationInputDisabled: true;
 @variationInputInverted: true;
 @variationInputStates: @variationAllStates;
+@variationInputInvalid: true;
 @variationInputTransparent: true;
 @variationInputCorner: true;
 @variationInputLoading: true;
@@ -272,6 +274,7 @@
 @variationFormTransparent: true;
 @variationFormLoading: true;
 @variationFormStates: @variationAllStates;
+@variationFormInvalid: true;
 @variationFormRequired: true;
 @variationFormInline: true;
 @variationFormGrouped: true;
@@ -714,6 +717,8 @@
 /* Transition */
 @variationTransitionDisabled: true;
 @variationTransitionLoading: true;
+@variationTransitionLooping: true;
+@variationTransitionInverted: true;
 @variationTransitionBrowse: true;
 @variationTransitionDrop: true;
 @variationTransitionFade: true;
@@ -730,6 +735,8 @@
 @variationTransitionPulse: true;
 @variationTransitionJiggle: true;
 @variationTransitionGlow: true;
+@variationTransitionPulsating: true;
+@variationTransitionColors: @variationAllColors;
 
 /* Emojis */
 @variationEmojiColons: true;
