@@ -26,6 +26,7 @@ window = (typeof window != 'undefined' && window.Math == Math)
 $.fn.calendar = function(parameters) {
   var
     $allModules    = $(this),
+    $document      = $(document),
 
     moduleSelector = $allModules.selector || '',
 
@@ -67,11 +68,11 @@ $.fn.calendar = function(parameters) {
 
         $module = $(this),
         $input = $module.find(selector.input),
-        $container = $module.find(selector.popup),
         $activator = $module.find(selector.activator),
 
         element = this,
         instance = $module.data(moduleNamespace),
+        $container = instance && instance.popupId ? $document.find('#'+instance.popupId) : $module.find(selector.popup),
 
         isTouch,
         isTouchDown = false,
@@ -139,11 +140,16 @@ $.fn.calendar = function(parameters) {
               return;
             }
             if (!$container.length) {
-              //prepend the popup element to the activator's parent so that it has less chance of messing with
-              //the styling (eg input action button needs to be the last child to have correct border radius)
-              var $activatorParent = $activator.parent(),
-                  domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
-              $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
+              if(settings.context) {
+                module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
+                $container = $('<div/>',{id:module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
+              } else {
+                //prepend the popup element to the activator's parent so that it has less chance of messing with
+                //the styling (eg input action button needs to be the last child to have correct border radius)
+                var $activatorParent = $activator.parent(),
+                    domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
+                $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
+              }
             }
             $container.addClass(className.calendar);
             if(isInverted){
@@ -175,6 +181,7 @@ $.fn.calendar = function(parameters) {
             var on = module.setting('on');
             var options = $.extend({}, settings.popupOptions, {
               popup: $container,
+              movePopup: !settings.context,
               on: on,
               hoverable: on === 'hover',
               closable: on === 'click',
@@ -805,7 +812,7 @@ $.fn.calendar = function(parameters) {
               return null;
             }
             if (!(selector instanceof $)) {
-              selector = $(document).find(selector).first();
+              selector = $document.find(selector).first();
             }
             //assume range related calendars are using the same namespace
             return selector.data(moduleNamespace);
@@ -1489,6 +1496,8 @@ $.fn.calendar.settings = {
   debug: false,
   verbose: false,
   performance: true,
+
+  context            : false,
 
   type               : 'datetime', // picker type, can be 'datetime', 'date', 'time', 'month', or 'year'
   firstDayOfWeek     : 0,          // day for first day column (0 = Sunday)
