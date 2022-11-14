@@ -805,6 +805,56 @@
   }
 }
 
+& when not (@variationPopupColors = false) {
+  each(@variationPopupColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
+
+    & when not (@variationPopupTooltip) {
+      .ui.ui.ui.@{color}.popup::before,
+      .ui.@{color}.popup {
+        background: @c;
+        color: @white;
+        border: none;
+      }
+      .ui.ui.ui.@{color}.popup::before {
+        box-shadow: none;
+      }
+      & when (@variationPopupInverted) {
+        .ui.inverted.@{color}.popup::before,
+        .ui.inverted.@{color}.popup {
+          background: @l;
+          color: @black;
+        }
+      }
+    }
+    & when (@variationPopupTooltip) {
+      .ui.ui.ui.@{color}.popup::before,
+      .ui.@{color}.popup,
+      [data-tooltip][data-variation~="@{color}"]::after,
+      [data-tooltip][data-variation~="@{color}"]::before {
+        background: @c;
+        color: @white;
+        border: none;
+      }
+      .ui.ui.ui.@{color}.popup::before,
+      [data-tooltip][data-variation~="@{color}"]::before {
+        box-shadow: none;
+      }
+      & when (@variationPopupInverted) {
+        .ui.ui.ui.inverted.@{color}.popup::before,
+        .ui.inverted.@{color}.popup,
+        [data-tooltip][data-inverted][data-variation~="@{color}"]::after,
+        [data-tooltip][data-inverted][data-variation~="@{color}"]::before {
+          background: @l;
+          color: @black;
+        }
+      }
+    }
+  })
+}
+
 & when (@variationPopupFlowing) {
   /*--------------
        Flowing
