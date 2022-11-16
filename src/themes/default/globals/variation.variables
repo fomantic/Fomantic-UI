@@ -152,6 +152,7 @@
 @variationLabelBasic: true;
 @variationLabelAttached: true;
 @variationLabelFluid: true;
+@variationLabelCentered: true;
 @variationLabelSizes: @variationAllSizes;
 @variationLabelColors: @variationAllColors;
 

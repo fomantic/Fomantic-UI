@@ -688,6 +688,12 @@ a.ui.active.label:hover::before {
   }
 }
 
+& when (@variationLabelCentered) {
+  .ui.centered.label {
+    text-align: center;
+  }
+}
+
 & when (@variationLabelInverted) {
   /*-------------------
          Inverted
