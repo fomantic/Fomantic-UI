@@ -475,6 +475,12 @@
       display: none;
     }
   }
+
+  & when (@variationPopupMultiline) {
+    [data-tooltip][data-variation~="multiline"]::after {
+      white-space: @multilineWhiteSpace;
+    }
+  }
 }
 
 /*--------------

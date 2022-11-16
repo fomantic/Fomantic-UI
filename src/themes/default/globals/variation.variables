@@ -609,6 +609,7 @@
 @variationPopupFluid: true;
 @variationPopupFlowing: true;
 @variationPopupFixed: true;
+@variationPopupMultiline: true;
 @variationPopupSizes: @variationAllSizes;
 @variationPopupColors: @variationAllColors;
 
