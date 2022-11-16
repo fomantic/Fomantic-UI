@@ -65,6 +65,9 @@ $.fn.nag = function(parameters) {
 
         initialize: function() {
           module.verbose('Initializing element');
+          if(typeof settings.value !== 'string') {
+            settings.value = JSON.stringify(settings.value);
+          }
           storage = module.get.storage();
           $module
             .on('click' + eventNamespace, selector.close, module.dismiss)
