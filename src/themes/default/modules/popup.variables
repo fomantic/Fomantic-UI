@@ -116,6 +116,8 @@
        Variations
 --------------------*/
 
+@multilineWhiteSpace: pre-line;
+
 /* Wide */
 @wideWidth: 350px;
 @veryWideWidth: 550px;
