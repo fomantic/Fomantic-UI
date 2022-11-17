@@ -551,8 +551,10 @@ a.ui.label {
       Disabled
 --------------------*/
 & when (@variationLabelDisabled) {
+  .ui.disabled.labels .label,
   .ui.label.disabled {
-    opacity: 0.5;
+    opacity: @disabledOpacity;
+    pointer-events: @disabledPointerEvents;
   }
 }
 /*-------------------
@@ -683,6 +685,13 @@ a.ui.active.label:hover::before {
   .ui.fluid.labels > .label {
     width: 100%;
     box-sizing: border-box;
+  }
+}
+
+& when (@variationLabelCentered) {
+  .ui.centered.labels .label,
+  .ui.centered.label {
+    text-align: center;
   }
 }
 
