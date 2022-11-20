@@ -468,7 +468,9 @@ $.api = $.fn.api = function(parameters) {
                 } else {
                   pushValues[pushKey] = [pushValues[pushKey] , value];
                 }
-                value = pushValues[pushKey];
+                if(pushKey.indexOf('[]')===-1) {
+                  value = pushValues[pushKey];
+                }
 
                 while ((k = nameKeys.pop()) !== undefined) {
                   // foo[]
