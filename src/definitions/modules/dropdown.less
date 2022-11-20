@@ -1479,7 +1479,7 @@ select.ui.dropdown {
 
   .ui.simple.active.dropdown > .menu,
   .ui.simple.dropdown:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 100%;
@@ -1487,12 +1487,20 @@ select.ui.dropdown {
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
   .ui.simple.dropdown .menu .item:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 0 !important;
     left: 100%;
     opacity: 1;
+  }
+  & when (@variationDropdownSelection) {
+    .ui.simple.selection.active.dropdown > .menu,
+    .ui.simple.selection.dropdown:hover > .menu,
+    .ui.simple.selection.dropdown > .menu > .item:active > .menu,
+    .ui.simple.selection.dropdown .menu .item:hover > .menu {
+      overflow: auto;
+    }
   }
   .ui.simple.dropdown > .menu > .item:active > .left.menu,
   .ui.simple.dropdown .menu .item:hover > .left.menu,
@@ -1553,7 +1561,7 @@ select.ui.dropdown {
   .ui:not(.upward).floating.dropdown > .menu {
     margin-top: @floatingMenuDistance;
   }
-  .ui.upward.floating.dropdown > .menu {
+  .ui.upward.floating.dropdown:not(.simple) > .menu {
     margin-bottom: @floatingMenuDistance;
   }
 }
