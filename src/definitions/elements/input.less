@@ -428,7 +428,8 @@
   }
 
   /* Left Labeled */
-  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left icon"].input > .ui.dropdown:first-child,
+  .ui[class*="left icon"].input > i.icon + .ui.dropdown,
   .ui[class*="left corner labeled"].input > .ui.dropdown,
   .ui[class*="left corner labeled"].input > textarea,
   .ui[class*="left corner labeled"].input > input {
@@ -440,9 +441,9 @@
     .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
       padding-right: @labeledIconInputMargin;
     }
-    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
-    .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
-    .ui[class*="left corner labeled"][class*="left icon"].input > input {
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > textarea,
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > input {
       padding-left: @labeledAndIconMargin;
     }
     .ui[class*="left corner labeled"].icon.input > i.icon {
@@ -487,7 +488,15 @@
       padding-right: @labeledMargin;
     }
   }
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
+  @supports selector(:has(.f)) {
+    .ui.icon.input:not([class*="left icon"]) > .ui.dropdown> .dropdown.icon {
+      padding-right: initial;
+    }
+    .ui.icon.input:not([class*="left icon"]):not(:has(.ui.dropdown~input)) > .ui.dropdown > .dropdown.icon {
+      padding-right: @labeledMargin;
+    }
+  }
+  .ui.ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
     & > .search {
       padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
     }
