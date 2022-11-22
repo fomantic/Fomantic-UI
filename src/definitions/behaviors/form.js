@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -139,7 +139,7 @@ $.fn.form = function(parameters) {
         submit: function() {
           module.verbose('Submitting form', $module);
           submitting = true;
-          $module.submit();
+          $module.trigger('submit');
         },
 
         attachEvents: function(selector, action) {
@@ -538,7 +538,7 @@ $.fn.form = function(parameters) {
               ancillary     = module.get.ancillaryValue(rule),
               $field        = module.get.field(field.identifier),
               value         = $field.val(),
-              prompt        = $.isFunction(rule.prompt)
+              prompt        = isFunction(rule.prompt)
                 ? rule.prompt(value)
                 : rule.prompt || settings.prompt[ruleName] || settings.text.unspecifiedRule,
               requiresValue = (prompt.search('{value}') !== -1),
@@ -1211,21 +1211,21 @@ $.fn.form = function(parameters) {
                 event.stopImmediatePropagation();
               }
               if(settings.errorFocus && ignoreCallbacks !== true) {
-                var focusElement, hasTabIndex = true;
+                var $focusElement, hasTabIndex = true;
                 if (typeof settings.errorFocus === 'string') {
-                  focusElement = $(document).find(settings.errorFocus);
-                  hasTabIndex = focusElement.is('[tabindex]');
+                  $focusElement = $(document).find(settings.errorFocus);
+                  hasTabIndex = $focusElement.is('[tabindex]');
                   // to be able to focus/scroll into non input elements we need a tabindex
                   if (!hasTabIndex) {
-                    focusElement.attr('tabindex',-1);
+                    $focusElement.attr('tabindex',-1);
                   }
                 } else {
-                  focusElement = $group.filter('.' + className.error).first().find(selector.field);
+                  $focusElement = $group.filter('.' + className.error).first().find(selector.field);
                 }
-                focusElement.focus();
+                $focusElement.trigger('focus');
                 // only remove tabindex if it was dynamically created above
                 if (!hasTabIndex){
-                  focusElement.removeAttr('tabindex');
+                  $focusElement.removeAttr('tabindex');
                 }
               }
               if(ignoreCallbacks !== true) {
@@ -1322,7 +1322,7 @@ $.fn.form = function(parameters) {
                 return ruleFunction.call(field, value, ancillary, $module);
               }
             ;
-            if( !$.isFunction(ruleFunction) ) {
+            if( !isFunction(ruleFunction) ) {
               module.error(error.noRule, ruleName);
               return;
             }
@@ -1481,7 +1481,7 @@ $.fn.form = function(parameters) {
               }
             });
           }
-          if( $.isFunction( found ) ) {
+          if( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

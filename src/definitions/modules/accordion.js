@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -525,7 +525,7 @@ $.fn.accordion = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -615,8 +615,8 @@ $.fn.accordion.settings = {
 
 // Adds easing
 $.extend( $.easing, {
-  easeOutQuad: function (x, t, b, c, d) {
-    return -c *(t/=d)*(t-2) + b;
+  easeOutQuad: function (x) {
+    return 1 - (1 - x) * (1 - x);;
   }
 });
 

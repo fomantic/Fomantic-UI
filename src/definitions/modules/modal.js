@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -101,7 +101,7 @@ $.modal = $.fn.modal = function(parameters) {
           module.create.id();
           if(!isModalComponent) {
             module.create.modal();
-            if(!$.isFunction(settings.onHidden)) {
+            if(!isFunction(settings.onHidden)) {
               settings.onHidden = function () {
                 module.destroy();
                 $module.remove();
@@ -126,7 +126,7 @@ $.modal = $.fn.modal = function(parameters) {
               var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
-                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
+                  click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {};
               $actions.append($('<button/>', {
                 html: icon + text,
                 'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
@@ -299,7 +299,7 @@ $.modal = $.fn.modal = function(parameters) {
           var
             $toggle = $(selector)
           ;
-          event = $.isFunction(module[event])
+          event = isFunction(module[event])
             ? module[event]
             : module.toggle
           ;
@@ -397,7 +397,7 @@ $.modal = $.fn.modal = function(parameters) {
                   keyCode = event.which
               ;
               if (keyCode === settings.keys.tab && event.shiftKey) {
-                $inputs.last().focus();
+                $inputs.last().trigger('focus');
                 event.preventDefault();
               }
             },
@@ -406,7 +406,7 @@ $.modal = $.fn.modal = function(parameters) {
                   keyCode = event.which
               ;
               if (keyCode === settings.keys.tab && !event.shiftKey) {
-                $inputs.first().focus();
+                $inputs.first().trigger('focus');
                 event.preventDefault();
               }
             }
@@ -494,7 +494,7 @@ $.modal = $.fn.modal = function(parameters) {
         },
 
         show: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -506,7 +506,7 @@ $.modal = $.fn.modal = function(parameters) {
         },
 
         hide: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -515,7 +515,7 @@ $.modal = $.fn.modal = function(parameters) {
         },
 
         showModal: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -597,7 +597,7 @@ $.modal = $.fn.modal = function(parameters) {
           var
             $previousModal = $otherModals.filter('.' + className.active).last()
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -641,7 +641,7 @@ $.modal = $.fn.modal = function(parameters) {
                         $previousModal.find(selector.dimmer).removeClass('active');
                       }
                     }
-                    if($.isFunction(settings.onHidden)) {
+                    if(isFunction(settings.onHidden)) {
                       settings.onHidden.call(element);
                     }
                     module.remove.dimmerStyles();
@@ -693,7 +693,7 @@ $.modal = $.fn.modal = function(parameters) {
           var
             $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -717,7 +717,7 @@ $.modal = $.fn.modal = function(parameters) {
           var
             $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -755,7 +755,7 @@ $.modal = $.fn.modal = function(parameters) {
               inCurrentModal = $activeElement.closest($module).length > 0
             ;
             if(!inCurrentModal) {
-              $focusedElement = $(document.activeElement).blur();
+              $focusedElement = $(document.activeElement).trigger('blur');
             }
           },
           bodyMargin: function() {
@@ -769,7 +769,7 @@ $.modal = $.fn.modal = function(parameters) {
         restore: {
           focus: function() {
             if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
-              $focusedElement.focus();
+              $focusedElement.trigger('focus');
             }
           },
           bodyMargin: function() {
@@ -993,7 +993,7 @@ $.modal = $.fn.modal = function(parameters) {
                 : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
             ;
             if($input.length > 0) {
-              $input.focus();
+              $input.trigger('focus');
             }
           },
           bodyMargin: function() {
@@ -1093,7 +1093,7 @@ $.modal = $.fn.modal = function(parameters) {
             else if(!$module.hasClass('bottom')) {
               module.debug('Modal is taller than page content, resizing page height');
               $context
-                .css('height', module.cache.height + (settings.padding * 2) )
+                .css('height', module.cache.height + (settings.padding * 2) + 'px')
               ;
             }
           },
@@ -1272,7 +1272,7 @@ $.modal = $.fn.modal = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -1293,7 +1293,7 @@ $.modal = $.fn.modal = function(parameters) {
 
       if(methodInvoked) {
         if(instance === undefined) {
-          if ($.isFunction(settings.templates[query])) {
+          if (isFunction(settings.templates[query])) {
             settings.autoShow = true;
             settings.className.modal = settings.className.template;
             settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
@@ -1306,7 +1306,7 @@ $.modal = $.fn.modal = function(parameters) {
           }
           module.initialize();
         }
-        if (!$.isFunction(settings.templates[query])) {
+        if (!isFunction(settings.templates[query])) {
           module.invoke(query);
         }
       }
@@ -1471,7 +1471,7 @@ $.fn.modal.settings.templates = {
         title: ''
       }, queryArguments[0]);
     } else {
-      if(!$.isFunction(queryArguments[queryArguments.length-1])) {
+      if(!isFunction(queryArguments[queryArguments.length-1])) {
         queryArguments.push(function() {});
       }
       return {

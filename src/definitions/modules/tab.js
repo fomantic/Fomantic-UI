@@ -12,12 +12,12 @@
 
 'use strict';
 
-$.isWindow = $.isWindow || function(obj) {
+function isWindow(obj) {
   return obj != null && obj === obj.window;
-};
-$.isFunction = $.isFunction || function(obj) {
+}
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -30,7 +30,7 @@ $.fn.tab = function(parameters) {
 
   var
     // use window context if none specified
-    $allModules     = $.isFunction(this)
+    $allModules     = isFunction(this)
         ? $(window)
         : $(this),
 
@@ -135,7 +135,7 @@ $.fn.tab = function(parameters) {
         bind: {
           events: function() {
             // if using $.tab don't add events
-            if( !$.isWindow( element ) ) {
+            if( !isWindow( element ) ) {
               module.debug('Attaching tab activation events to element', $module);
               $module
                 .on('click' + eventNamespace, module.event.click)
@@ -897,7 +897,7 @@ $.fn.tab = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

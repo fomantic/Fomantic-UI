@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -243,7 +243,7 @@ $.fn.visibility = function(parameters) {
             handleLoad    = function() {
               loadedCounter++;
               if (loadedCounter >= images.length) {
-                if ($.isFunction(callback)) {
+                if (isFunction(callback)) {
                   callback();
                 }
               }
@@ -1168,7 +1168,7 @@ $.fn.visibility = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

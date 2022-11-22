@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -188,7 +188,7 @@ $.fn.dimmer = function(parameters) {
         },
 
         show: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -208,7 +208,7 @@ $.fn.dimmer = function(parameters) {
         },
 
         hide: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -240,7 +240,7 @@ $.fn.dimmer = function(parameters) {
 
         animate: {
           show: function(callback) {
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -302,7 +302,7 @@ $.fn.dimmer = function(parameters) {
             }
           },
           hide: function(callback) {
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -628,7 +628,7 @@ $.fn.dimmer = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

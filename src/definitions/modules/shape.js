@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -735,7 +735,7 @@ $.fn.shape = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -760,7 +760,7 @@ $.fn.shape = function(parameters) {
         }
         var $inputs = $module.find('input');
         if( $inputs.length > 0) {
-          $inputs.blur();
+          $inputs.trigger('blur');
           setTimeout(function(){
             module.invoke(query);
           }, 150);

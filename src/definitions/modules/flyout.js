@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -105,7 +105,7 @@ $.flyout = $.fn.flyout = function(parameters) {
           module.create.id();
           if(!isFlyoutComponent) {
             module.create.flyout();
-            if(!$.isFunction(settings.onHidden)) {
+            if(!isFunction(settings.onHidden)) {
               settings.onHidden = function () {
                 module.destroy();
                 $module.remove();
@@ -134,7 +134,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                 icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                 cls = module.helpers.deQuote(el[fields.class] || ''),
-                click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
               ;
               $actions.append($('<button/>', {
                 html: icon + text,
@@ -290,7 +290,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                   keyCode = event.which
               ;
               if (keyCode === settings.keys.tab && event.shiftKey) {
-                $inputs.last().focus();
+                $inputs.last().trigger('focus');
                 event.preventDefault();
               }
             },
@@ -299,7 +299,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                   keyCode = event.which
               ;
               if (keyCode === settings.keys.tab && !event.shiftKey) {
-                $inputs.first().focus();
+                $inputs.first().trigger('focus');
                 event.preventDefault();
               }
             }
@@ -579,7 +579,7 @@ $.flyout = $.fn.flyout = function(parameters) {
           var
             $toggle = $(selector)
           ;
-          event = $.isFunction(module[event])
+          event = isFunction(module[event])
             ? module[event]
             : module.toggle
           ;
@@ -595,7 +595,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         show: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -634,7 +634,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         },
 
         hide: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -648,7 +648,7 @@ $.flyout = $.fn.flyout = function(parameters) {
             module.refreshFlyouts();
             module.pullPage(function() {
               callback.call(element);
-              if($.isFunction(settings.onHidden)) {
+              if(isFunction(settings.onHidden)) {
                 settings.onHidden.call(element);
               }
               module.restore.focus();
@@ -700,7 +700,7 @@ $.flyout = $.fn.flyout = function(parameters) {
             dim,
             transitionEnd
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -738,7 +738,7 @@ $.flyout = $.fn.flyout = function(parameters) {
             animate,
             transitionEnd
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -809,7 +809,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                     : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
             ;
             if($input.length > 0) {
-              $input.focus();
+              $input.trigger('focus');
             }
           },
           dimmerStyles: function() {
@@ -978,7 +978,7 @@ $.flyout = $.fn.flyout = function(parameters) {
                 inCurrentFlyout = $activeElement.closest($module).length > 0
             ;
             if(!inCurrentFlyout) {
-              $focusedElement = $(document.activeElement).blur();
+              $focusedElement = $(document.activeElement).trigger('blur');
             }
           },
           bodyMargin: function() {
@@ -1078,7 +1078,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         restore: {
           focus: function() {
             if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
-              $focusedElement.focus();
+              $focusedElement.trigger('focus');
             }
           },
           bodyMargin: function() {
@@ -1267,7 +1267,7 @@ $.flyout = $.fn.flyout = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -1289,7 +1289,7 @@ $.flyout = $.fn.flyout = function(parameters) {
 
     if(methodInvoked) {
       if(instance === undefined) {
-        if ($.isFunction(settings.templates[query])) {
+        if (isFunction(settings.templates[query])) {
           settings.autoShow = true;
           settings.className.flyout = settings.className.template;
           settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
@@ -1302,7 +1302,7 @@ $.flyout = $.fn.flyout = function(parameters) {
         }
         module.initialize();
       }
-      if (!$.isFunction(settings.templates[query])) {
+      if (!isFunction(settings.templates[query])) {
         module.invoke(query);
       }
     }
@@ -1452,7 +1452,7 @@ $.fn.flyout.settings.templates = {
         title: ''
       }, queryArguments[0]);
     } else {
-      if(!$.isFunction(queryArguments[queryArguments.length-1])) {
+      if(!isFunction(queryArguments[queryArguments.length-1])) {
         queryArguments.push(function() {});
       }
       return {

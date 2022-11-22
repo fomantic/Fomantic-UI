@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -195,7 +195,7 @@ $.toast = $.fn.toast = function(parameters) {
                 .addClass(settings.class + ' ' + className.toast)
                 .append($content)
               ;
-              $toast.css('opacity', settings.opacity);
+              $toast.css('opacity', String(settings.opacity));
               if (settings.closeIcon) {
                 $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
                 if($close.hasClass(className.left)) {
@@ -243,7 +243,7 @@ $.toast = $.fn.toast = function(parameters) {
                 var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                   text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                   cls = module.helpers.deQuote(el[fields.class] || ''),
-                  click = el[fields.click] && $.isFunction(el[fields.click]) ? el[fields.click] : function () {};
+                  click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {};
                 $actions.append($('<button/>', {
                   html: icon + text,
                   'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
@@ -382,7 +382,7 @@ $.toast = $.fn.toast = function(parameters) {
 
         animate: {
           show: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = isFunction(callback) ? callback : function(){};
             if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
               module.set.visible();
               $toastBox
@@ -402,7 +402,7 @@ $.toast = $.fn.toast = function(parameters) {
             }
           },
           close: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = isFunction(callback) ? callback : function(){};
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $toastBox
                 .transition({
@@ -415,10 +415,10 @@ $.toast = $.fn.toast = function(parameters) {
                   interval   : 50,
 
                   onBeforeHide: function(callback){
-                      callback = $.isFunction(callback)?callback : function(){};
+                      callback = isFunction(callback)?callback : function(){};
                       if(settings.transition.closeEasing !== ''){
                           if($toastBox) {
-                            $toastBox.css('opacity', 0);
+                            $toastBox.css('opacity', '0');
                             $toastBox.wrap('<div/>').parent().hide(settings.transition.closeDuration, settings.transition.closeEasing, function () {
                               if ($toastBox) {
                                 $toastBox.parent().remove();
@@ -736,7 +736,7 @@ $.toast = $.fn.toast = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -906,16 +906,17 @@ $.fn.toast.settings = {
 };
 
 $.extend( $.easing, {
-    easeOutBounce: function (x, t, b, c, d) {
-        if ((t/=d) < (1/2.75)) {
-            return c*(7.5625*t*t) + b;
-        } else if (t < (2/2.75)) {
-            return c*(7.5625*(t-=(1.5/2.75))*t + .75) + b;
-        } else if (t < (2.5/2.75)) {
-            return c*(7.5625*(t-=(2.25/2.75))*t + .9375) + b;
-        } else {
-            return c*(7.5625*(t-=(2.625/2.75))*t + .984375) + b;
-        }
+    easeOutBounce: function (x) {
+      var n1 = 7.5625, d1 = 2.75;
+      if (x < 1 / d1) {
+        return n1 * x * x;
+      } else if (x < 2 / d1) {
+        return n1 * (x -= 1.5 / d1) * x + 0.75;
+      } else if (x < 2.5 / d1) {
+        return n1 * (x -= 2.25 / d1) * x + 0.9375;
+      } else {
+        return n1 * (x -= 2.625 / d1) * x + 0.984375;
+      }
     },
     easeOutCubic: function (t) {
       return (--t)*t*t+1;

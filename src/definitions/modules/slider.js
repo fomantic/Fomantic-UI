@@ -433,7 +433,7 @@ $.fn.slider = function(parameters) {
             if(!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
               event.preventDefault();
               module.event.keydown(event, true);
-              $module.focus();
+              $module.trigger('focus');
             }
           },
           resize: function(_event) {
@@ -657,9 +657,9 @@ $.fn.slider = function(parameters) {
           },
           gapRatio: function() {
             var gapRatio = 1;
-            
+
             if( settings.autoAdjustLabels ) {
-              var 
+              var
                 numLabels = module.get.numLabels(),
                 trackLength = module.get.trackLength(),
                 gapCounter = 1
@@ -1236,7 +1236,7 @@ $.fn.slider = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

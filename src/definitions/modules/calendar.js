@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -984,16 +984,16 @@ $.fn.calendar = function(parameters) {
 
         focus: function () {
           if ($input.length) {
-            $input.focus();
+            $input.trigger('focus');
           } else {
-            $container.focus();
+            $container.trigger('focus');
           }
         },
         blur: function () {
           if ($input.length) {
-            $input.blur();
+            $input.trigger('blur');
           } else {
-            $container.blur();
+            $container.trigger('blur');
           }
         },
 
@@ -1448,7 +1448,7 @@ $.fn.calendar = function(parameters) {
               }
             });
           }
-          if ($.isFunction(found)) {
+          if (isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {
