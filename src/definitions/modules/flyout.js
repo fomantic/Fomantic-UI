@@ -140,11 +140,13 @@ $.flyout = $.fn.flyout = function(parameters) {
                 html: icon + text,
                 'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
                 class: className.button + ' ' + cls,
-                click: function () {
-                  if (click.call(element, $module) === false) {
-                    return;
+                on: {
+                  click: function () {
+                    if (click.call(element, $module) === false) {
+                      return;
+                    }
+                    module.hide();
                   }
-                  module.hide();
                 }
               }));
             });
