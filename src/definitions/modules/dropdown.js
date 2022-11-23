@@ -429,7 +429,7 @@ $.fn.dropdown = function(parameters) {
                 settings.forceSelection = true;
               }
               $input
-                .removeAttr('required')
+                .prop('required',false)
                 .removeAttr('class')
                 .detach()
                 .prependTo($module)
