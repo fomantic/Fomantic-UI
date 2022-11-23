@@ -249,8 +249,8 @@ $.toast = $.fn.toast = function(parameters) {
                   'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
                   class: className.button + ' ' + cls,
                   click: function () {
-                    var button = $(this);
-                    if (button.is(selector.approve) || button.is(selector.deny) || click.call(element, $module) === false) {
+                    var $button = $(this);
+                    if ($button.is(selector.approve) || $button.is(selector.deny) || click.call(element, $module) === false) {
                       return;
                     }
                     module.close();

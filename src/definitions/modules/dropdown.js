@@ -955,9 +955,9 @@ $.fn.dropdown = function(parameters) {
               .filter(function() {
                 // First find the last divider in this divider group
                 // Dividers which are direct siblings are considered a group
-                var lastDivider = $(this).nextUntil(selector.item);
+                var $lastDivider = $(this).nextUntil(selector.item);
 
-                return (lastDivider.length ? lastDivider : $(this))
+                return ($lastDivider.length ? $lastDivider : $(this))
                 // Count all non-filtered items until the next divider (or end of the dropdown)
                   .nextUntil(selector.divider)
                   .filter(selector.item + ":not(." + className.filtered + ")")

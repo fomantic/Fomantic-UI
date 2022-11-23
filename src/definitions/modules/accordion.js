@@ -356,9 +356,10 @@ $.fn.accordion = function(parameters) {
 
           display: function() {
             module.verbose('Removing inline display from element', this);
-            $(this).css('display', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('display', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;
@@ -367,9 +368,10 @@ $.fn.accordion = function(parameters) {
 
           opacity: function() {
             module.verbose('Removing inline opacity from element', this);
-            $(this).css('opacity', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('opacity', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;

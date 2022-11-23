@@ -1146,7 +1146,7 @@ $.fn.form = function(parameters) {
             $field.each(function (_index, el) {
               var
                 $el        = $(el),
-                $elGroup   = $(el).closest($group),
+                $elGroup   = $el.closest($group),
                 isCheckbox = ($el.filter(selector.checkbox).length > 0),
                 isRequired = $el.prop('required') || $elGroup.hasClass(className.required) || $elGroup.parent().hasClass(className.required),
                 isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
