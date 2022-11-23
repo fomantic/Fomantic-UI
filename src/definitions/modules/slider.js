@@ -27,6 +27,7 @@ $.fn.slider = function(parameters) {
 
   var
     $allModules    = $(this),
+    $document      = $(document),
     $window        = $(window),
 
     moduleSelector = $allModules.selector || '',
@@ -240,7 +241,7 @@ $.fn.slider = function(parameters) {
             $module.on('keydown' + eventNamespace, module.event.keydown);
           },
           globalKeyboardEvents: function() {
-            $(document).on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $document.on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
           },
           mouseEvents: function() {
             module.verbose('Binding mouse and touch events');
@@ -268,8 +269,8 @@ $.fn.slider = function(parameters) {
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
             module.verbose('Binding page wide events while handle is being draged');
-            $(document).on('mousemove' + eventNamespace, module.event.move);
-            $(document).on('mouseup' + eventNamespace, module.event.up);
+            $document.on('mousemove' + eventNamespace, module.event.move);
+            $document.on('mouseup' + eventNamespace, module.event.up);
           },
           windowEvents: function() {
             $window.on('resize' + eventNamespace, module.event.resize);
@@ -289,12 +290,12 @@ $.fn.slider = function(parameters) {
               .off('touchcancel' + eventNamespace);
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
-            $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $document.off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
             $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
-            $(document).off('mousemove' + eventNamespace);
-            $(document).off('mouseup' + eventNamespace);
+            $document.off('mousemove' + eventNamespace);
+            $document.off('mouseup' + eventNamespace);
           },
         },
 
@@ -410,7 +411,7 @@ $.fn.slider = function(parameters) {
               $currThumb = undefined;
             }
             if(module.is.focused()) {
-              $(document).trigger(event);
+              $document.trigger(event);
             }
             if(first || module.is.focused()) {
               var step = module.determine.keyMovement(event);

@@ -33,7 +33,7 @@ $.fn.tab = function(parameters) {
     $allModules     = isFunction(this)
         ? $(window)
         : $(this),
-
+    $document      = $(document),
     moduleSelector  = $allModules.selector || '',
     time            = new Date().getTime(),
     performance     = [],
@@ -162,7 +162,7 @@ $.fn.tab = function(parameters) {
             module.verbose('Determined parent element for creating context', $context);
           }
           else if(settings.context) {
-            $context = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
+            $context = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
             module.verbose('Using selector for tab context', settings.context, $context);
           }
           else {
@@ -453,7 +453,7 @@ $.fn.tab = function(parameters) {
           ;
           if(scrollOffset !== false) {
             module.debug('Forcing scroll to an in-page link in a hidden tab', scrollOffset, $element);
-            $(document).scrollTop(scrollOffset);
+            $document.scrollTop(scrollOffset);
           }
         },
 
