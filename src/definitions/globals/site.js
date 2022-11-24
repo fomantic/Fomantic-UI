@@ -10,9 +10,9 @@
 
 ;(function ($, window, document, undefined) {
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
     return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 $.site = $.fn.site = function(parameters) {
   var
@@ -388,7 +388,7 @@ $.site = $.fn.site = function(parameters) {
           }
         });
       }
-      if ( $.isFunction( found ) ) {
+      if ( isFunction( found ) ) {
         response = found.apply(context, passedArguments);
       }
       else if(found !== undefined) {
@@ -476,17 +476,12 @@ $.site.settings = {
 };
 
 // allows for selection of elements with data attributes
-$.extend($.expr[ ":" ], {
-  data: ($.expr.createPseudo)
-    ? $.expr.createPseudo(function(dataName) {
-        return function(elem) {
-          return !!$.data(elem, dataName);
-        };
-      })
-    : function(elem, i, match) {
-      // support: jQuery < 1.8
-      return !!$.data(elem, match[ 3 ]);
-    }
+$.extend($.expr.pseudos, {
+  data: $.expr.createPseudo(function(dataName) {
+          return function(elem) {
+            return !!$.data(elem, dataName);
+          };
+        })
 });
 
 

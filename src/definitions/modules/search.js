@@ -12,7 +12,7 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
 };
 
@@ -188,7 +188,7 @@ $.fn.search = function(parameters) {
               $module
                 .one('click.close' + eventNamespace, selector.results, function(event) {
                   if(module.is.inMessage(event) || disabledBubbled) {
-                    $prompt.focus();
+                    $prompt.trigger('focus');
                     return;
                   }
                   disabledBubbled = false;
@@ -228,7 +228,7 @@ $.fn.search = function(parameters) {
                 result  = $result.data(metadata.result) || module.get.result(value, results)
               ;
               var oldValue = module.get.value();
-              if( $.isFunction(settings.onSelect) ) {
+              if( isFunction(settings.onSelect) ) {
                 if(settings.onSelect.call(element, result, results) === false) {
                   module.debug('Custom onSelect callback cancelled default select action');
                   disabledBubbled = true;
@@ -295,7 +295,7 @@ $.fn.search = function(parameters) {
           if(keyCode == keys.escape) {
             if(!module.is.visible()) {
               module.verbose('Escape key pressed, blurring search field');
-              $prompt.blur();
+              $prompt.trigger('blur');
             } else {
               module.hideResults();
             }
@@ -557,7 +557,7 @@ $.fn.search = function(parameters) {
         },
 
         query: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -623,7 +623,7 @@ $.fn.search = function(parameters) {
             });
           },
           remote: function(searchTerm, callback) {
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -956,7 +956,7 @@ $.fn.search = function(parameters) {
         },
 
         addResults: function(html) {
-          if( $.isFunction(settings.onResultsAdd) ) {
+          if( isFunction(settings.onResultsAdd) ) {
             if( settings.onResultsAdd.call($results, html) === false ) {
               module.debug('onResultsAdd callback cancelled default action');
               return false;
@@ -980,7 +980,7 @@ $.fn.search = function(parameters) {
         },
 
         showResults: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -1019,7 +1019,7 @@ $.fn.search = function(parameters) {
           }
         },
         hideResults: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -1070,7 +1070,7 @@ $.fn.search = function(parameters) {
                 response[fields.results] = response[fields.results].slice(0, settings.maxResults);
               }
             }
-            if($.isFunction(template)) {
+            if(isFunction(template)) {
               html = template(response, fields, settings.preserveHTML);
             }
             else {
@@ -1231,7 +1231,7 @@ $.fn.search = function(parameters) {
               }
             });
           }
-          if( $.isFunction( found ) ) {
+          if( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

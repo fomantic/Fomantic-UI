@@ -12,12 +12,12 @@
 
 'use strict';
 
-$.isWindow = $.isWindow || function(obj) {
+function isWindow(obj) {
   return obj != null && obj === obj.window;
-};
-$.isFunction = $.isFunction || function(obj) {
+}
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -30,10 +30,10 @@ $.fn.tab = function(parameters) {
 
   var
     // use window context if none specified
-    $allModules     = $.isFunction(this)
+    $allModules     = isFunction(this)
         ? $(window)
         : $(this),
-
+    $document      = $(document),
     moduleSelector  = $allModules.selector || '',
     time            = new Date().getTime(),
     performance     = [],
@@ -135,7 +135,7 @@ $.fn.tab = function(parameters) {
         bind: {
           events: function() {
             // if using $.tab don't add events
-            if( !$.isWindow( element ) ) {
+            if( !isWindow( element ) ) {
               module.debug('Attaching tab activation events to element', $module);
               $module
                 .on('click' + eventNamespace, module.event.click)
@@ -162,7 +162,7 @@ $.fn.tab = function(parameters) {
             module.verbose('Determined parent element for creating context', $context);
           }
           else if(settings.context) {
-            $context = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
+            $context = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
             module.verbose('Using selector for tab context', settings.context, $context);
           }
           else {
@@ -453,7 +453,7 @@ $.fn.tab = function(parameters) {
           ;
           if(scrollOffset !== false) {
             module.debug('Forcing scroll to an in-page link in a hidden tab', scrollOffset, $element);
-            $(document).scrollTop(scrollOffset);
+            $document.scrollTop(scrollOffset);
           }
         },
 
@@ -897,7 +897,7 @@ $.fn.tab = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

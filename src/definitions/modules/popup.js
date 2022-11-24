@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -429,7 +429,7 @@ $.fn.popup = function(parameters) {
         },
         animate: {
           show: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = isFunction(callback) ? callback : function(){};
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               module.set.visible();
               $popup
@@ -453,7 +453,7 @@ $.fn.popup = function(parameters) {
             }
           },
           hide: function(callback) {
-            callback = $.isFunction(callback) ? callback : function(){};
+            callback = isFunction(callback) ? callback : function(){};
             module.debug('Hiding pop-up');
             if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
               $popup
@@ -511,16 +511,16 @@ $.fn.popup = function(parameters) {
             var
               $popupOffsetParent = module.get.offsetParent($popup),
               targetElement      = $target[0],
-              isWindow           = ($boundary[0] == window),
+              isWindowEl         = ($boundary[0] == window),
               targetOffset       = $target.offset(),
               parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                 ? $target.offsetParent().offset()
                 : { top: 0, left: 0 },
-              screenPosition = (isWindow)
+              screenPosition = (isWindowEl)
                 ? { top: 0, left: 0 }
                 : $boundary.offset(),
               calculations   = {},
-              scroll = (isWindow)
+              scroll = (isWindowEl)
                 ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                 : { top: 0, left: 0},
               screen
@@ -1284,7 +1284,7 @@ $.fn.popup = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

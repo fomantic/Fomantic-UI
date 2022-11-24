@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -479,24 +479,24 @@ $.fn.calendar = function(parameters) {
             var rangeDate = (updateRange ? focusDate : null) || date || (!isTouch ? focusDate : null);
 
             container.find('td').each(function () {
-              var cell = $(this);
-              var cellDate = cell.data(metadata.date);
+              var $cell = $(this);
+              var cellDate = $cell.data(metadata.date);
               if (!cellDate) {
                 return;
               }
-              var disabled = cell.hasClass(className.disabledCell);
-              var active = cell.hasClass(className.activeCell);
-              var adjacent = cell.hasClass(className.adjacentCell);
+              var disabled = $cell.hasClass(className.disabledCell);
+              var active = $cell.hasClass(className.activeCell);
+              var adjacent = $cell.hasClass(className.adjacentCell);
               var focused = module.helper.dateEqual(cellDate, focusDate, mode);
               var inRange = !rangeDate ? false :
                 ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
                 (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
-              cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
+              $cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
 
-              if (module.helper.isTodayButton(cell)) {
+              if (module.helper.isTodayButton($cell)) {
                 return;
               }
-              cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
+              $cell.toggleClass(className.rangeCell, inRange && !active && !disabled);
             });
           }
         },
@@ -508,13 +508,13 @@ $.fn.calendar = function(parameters) {
         refreshTooltips: function() {
           var winWidth = $(window).width();
           $container.find('td[data-position]').each(function () {
-            var cell = $(this);
-            var tooltipWidth = window.getComputedStyle(cell[0], '::after').width.replace(/[^0-9\.]/g,'');
-            var tooltipPosition = cell.attr('data-position');
+            var $cell = $(this);
+            var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^0-9\.]/g,'');
+            var tooltipPosition = $cell.attr('data-position');
             // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
-            var calcPosition = (winWidth - cell.width() - (parseInt(tooltipWidth,10) || 250)) > cell.offset().left ? 'right' : 'left';
+            var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth,10) || 250)) > $cell.offset().left ? 'right' : 'left';
             if(tooltipPosition.indexOf(calcPosition) === -1) {
-              cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
+              $cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
             }
            });
         },
@@ -984,16 +984,16 @@ $.fn.calendar = function(parameters) {
 
         focus: function () {
           if ($input.length) {
-            $input.focus();
+            $input.trigger('focus');
           } else {
-            $container.focus();
+            $container.trigger('focus');
           }
         },
         blur: function () {
           if ($input.length) {
-            $input.blur();
+            $input.trigger('blur');
           } else {
-            $container.blur();
+            $container.trigger('blur');
           }
         },
 
@@ -1448,7 +1448,7 @@ $.fn.calendar = function(parameters) {
               }
             });
           }
-          if ($.isFunction(found)) {
+          if (isFunction(found)) {
             response = found.apply(context, passedArguments);
           }
           else if (found !== undefined) {

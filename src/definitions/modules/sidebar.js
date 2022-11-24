@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -361,7 +361,7 @@ $.fn.sidebar = function(parameters) {
           var
             $toggle = $(selector)
           ;
-          event = $.isFunction(module[event])
+          event = isFunction(module[event])
             ? module[event]
             : module.toggle
           ;
@@ -392,7 +392,7 @@ $.fn.sidebar = function(parameters) {
           }
         },
         show: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -435,7 +435,7 @@ $.fn.sidebar = function(parameters) {
         },
 
         hide: function(callback) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -497,7 +497,7 @@ $.fn.sidebar = function(parameters) {
             dim,
             transitionEnd
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -543,7 +543,7 @@ $.fn.sidebar = function(parameters) {
             animate,
             transitionEnd
           ;
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -1005,7 +1005,7 @@ $.fn.sidebar = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

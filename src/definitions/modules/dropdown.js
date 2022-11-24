@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -429,7 +429,7 @@ $.fn.dropdown = function(parameters) {
                 settings.forceSelection = true;
               }
               $input
-                .removeAttr('required')
+                .prop('required',false)
                 .removeAttr('class')
                 .detach()
                 .prependTo($module)
@@ -523,7 +523,7 @@ $.fn.dropdown = function(parameters) {
         },
 
         show: function(callback, preventFocus) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -557,7 +557,7 @@ $.fn.dropdown = function(parameters) {
         },
 
         hide: function(callback, preventBlur) {
-          callback = $.isFunction(callback)
+          callback = isFunction(callback)
             ? callback
             : function(){}
           ;
@@ -568,7 +568,7 @@ $.fn.dropdown = function(parameters) {
                 module.remove.visible();
                 // hiding search focus
                 if ( module.is.focusedOnSearch() && preventBlur !== true ) {
-                  $search.blur();
+                  $search.trigger('blur');
                 }
                 callback.call(element);
               });
@@ -955,9 +955,9 @@ $.fn.dropdown = function(parameters) {
               .filter(function() {
                 // First find the last divider in this divider group
                 // Dividers which are direct siblings are considered a group
-                var lastDivider = $(this).nextUntil(selector.item);
+                var $lastDivider = $(this).nextUntil(selector.item);
 
-                return (lastDivider.length ? lastDivider : $(this))
+                return ($lastDivider.length ? $lastDivider : $(this))
                 // Count all non-filtered items until the next divider (or end of the dropdown)
                   .nextUntil(selector.divider)
                   .filter(selector.item + ":not(." + className.filtered + ")")
@@ -1012,18 +1012,18 @@ $.fn.dropdown = function(parameters) {
           if( module.has.search() && !module.is.focusedOnSearch() ) {
             if(skipHandler) {
               $module.off('focus' + eventNamespace, selector.search);
-              $search.focus();
+              $search.trigger('focus');
               $module.on('focus'  + eventNamespace, selector.search, module.event.search.focus);
             }
             else {
-              $search.focus();
+              $search.trigger('focus');
             }
           }
         },
 
         blurSearch: function() {
           if( module.has.search() ) {
-            $search.blur();
+            $search.trigger('blur');
           }
         },
 
@@ -1384,7 +1384,7 @@ $.fn.dropdown = function(parameters) {
               ;
               // prevents IE11 bug where menu receives focus even though `tabindex=-1`
               if (document.activeElement.tagName.toLowerCase() !== 'input') {
-                $(document.activeElement).blur();
+                $(document.activeElement).trigger('blur');
               }
               if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
                 if(module.is.searchSelection()) {
@@ -1585,7 +1585,7 @@ $.fn.dropdown = function(parameters) {
                     if(module.is.searchSelection()) {
                       module.remove.searchTerm();
                       if(module.is.multiple()) {
-                          $search.focus();
+                          $search.trigger('focus');
                       }
                     }
                   }
@@ -1741,11 +1741,11 @@ $.fn.dropdown = function(parameters) {
           selectAction: function(text, value) {
             selectActionActive = true;
             module.verbose('Determining action', settings.action);
-            if( $.isFunction( module.action[settings.action] ) ) {
+            if( isFunction( module.action[settings.action] ) ) {
               module.verbose('Triggering preset action', settings.action, text, value);
               module.action[ settings.action ].call(element, text, value, this);
             }
-            else if( $.isFunction(settings.action) ) {
+            else if( isFunction(settings.action) ) {
               module.verbose('Triggering user action', settings.action, text, value);
               settings.action.call(element, text, value, this);
             }
@@ -1760,7 +1760,7 @@ $.fn.dropdown = function(parameters) {
               inDocument = ($target.closest(document.documentElement).length > 0),
               inModule   = ($target.closest($module).length > 0)
             ;
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -1782,7 +1782,7 @@ $.fn.dropdown = function(parameters) {
               notOnLabel   = ($module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels)),
               notInMenu    = ($target.closest($menu).length === 0)
             ;
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -2097,7 +2097,7 @@ $.fn.dropdown = function(parameters) {
                 values.sort(function(a, b) {
                   return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
                 });
-              } else if($.isFunction(settings.sortSelect)) {
+              } else if(isFunction(settings.sortSelect)) {
                 values.sort(settings.sortSelect);
               }
               select[fields.values] = values;
@@ -2469,7 +2469,7 @@ $.fn.dropdown = function(parameters) {
             ;
             if(isMultiple && hasSearchValue) {
               module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
-              $search.css('width', searchWidth);
+              $search.css('width', searchWidth + 'px');
             }
             if(hasSearchValue || (isSearchMultiple && valueIsSet)) {
               module.verbose('Hiding placeholder text');
@@ -3650,7 +3650,7 @@ $.fn.dropdown = function(parameters) {
                 },
               transition
             ;
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -3701,7 +3701,7 @@ $.fn.dropdown = function(parameters) {
                 },
               transition = settings.transition.hideMethod || module.get.transition($subMenu)
             ;
-            callback = $.isFunction(callback)
+            callback = isFunction(callback)
               ? callback
               : function(){}
             ;
@@ -3959,7 +3959,7 @@ $.fn.dropdown = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

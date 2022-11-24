@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -356,9 +356,10 @@ $.fn.accordion = function(parameters) {
 
           display: function() {
             module.verbose('Removing inline display from element', this);
-            $(this).css('display', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('display', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;
@@ -367,9 +368,10 @@ $.fn.accordion = function(parameters) {
 
           opacity: function() {
             module.verbose('Removing inline opacity from element', this);
-            $(this).css('opacity', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('opacity', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;
@@ -525,7 +527,7 @@ $.fn.accordion = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -615,8 +617,8 @@ $.fn.accordion.settings = {
 
 // Adds easing
 $.extend( $.easing, {
-  easeOutQuad: function (x, t, b, c, d) {
-    return -c *(t/=d)*(t-2) + b;
+  easeOutQuad: function (x) {
+    return 1 - (1 - x) * (1 - x);;
   }
 });
 

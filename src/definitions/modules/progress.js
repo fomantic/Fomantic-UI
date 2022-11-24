@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -475,10 +475,10 @@ $.fn.progress = function(parameters) {
             values.forEach(function(_, index) {
               var $bar = $($bars[index]);
               $bar.css({
-                borderTopLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : 0,
-                borderTopRightRadius: index == lastNonZeroIndex ? '' : 0,
-                borderBottomRightRadius: index == lastNonZeroIndex ? '' : 0
+                borderTopLeftRadius: index == firstNonZeroIndex ? '' : '0',
+                borderBottomLeftRadius: index == firstNonZeroIndex ? '' : '0',
+                borderTopRightRadius: index == lastNonZeroIndex ? '' : '0',
+                borderBottomRightRadius: index == lastNonZeroIndex ? '' : '0'
               });
             });
             $module
@@ -906,7 +906,7 @@ $.fn.progress = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {

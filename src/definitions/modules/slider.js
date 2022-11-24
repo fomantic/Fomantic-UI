@@ -12,6 +12,10 @@
 
 "use strict";
 
+function isFunction(obj) {
+  return typeof obj === "function" && typeof obj.nodeType !== "number";
+}
+
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
   : (typeof self != 'undefined' && self.Math == Math)
@@ -23,6 +27,7 @@ $.fn.slider = function(parameters) {
 
   var
     $allModules    = $(this),
+    $document      = $(document),
     $window        = $(window),
 
     moduleSelector = $allModules.selector || '',
@@ -236,7 +241,7 @@ $.fn.slider = function(parameters) {
             $module.on('keydown' + eventNamespace, module.event.keydown);
           },
           globalKeyboardEvents: function() {
-            $(document).on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $document.on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
           },
           mouseEvents: function() {
             module.verbose('Binding mouse and touch events');
@@ -264,8 +269,8 @@ $.fn.slider = function(parameters) {
           slidingEvents: function() {
             // these don't need the identifier because we only ever want one of them to be registered with document
             module.verbose('Binding page wide events while handle is being draged');
-            $(document).on('mousemove' + eventNamespace, module.event.move);
-            $(document).on('mouseup' + eventNamespace, module.event.up);
+            $document.on('mousemove' + eventNamespace, module.event.move);
+            $document.on('mouseup' + eventNamespace, module.event.up);
           },
           windowEvents: function() {
             $window.on('resize' + eventNamespace, module.event.resize);
@@ -285,12 +290,12 @@ $.fn.slider = function(parameters) {
               .off('touchcancel' + eventNamespace);
             $module.off('keydown' + eventNamespace);
             $module.off('focusout' + eventNamespace);
-            $(document).off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
+            $document.off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
             $window.off('resize' + eventNamespace);
           },
           slidingEvents: function() {
-            $(document).off('mousemove' + eventNamespace);
-            $(document).off('mouseup' + eventNamespace);
+            $document.off('mousemove' + eventNamespace);
+            $document.off('mouseup' + eventNamespace);
           },
         },
 
@@ -406,7 +411,7 @@ $.fn.slider = function(parameters) {
               $currThumb = undefined;
             }
             if(module.is.focused()) {
-              $(document).trigger(event);
+              $document.trigger(event);
             }
             if(first || module.is.focused()) {
               var step = module.determine.keyMovement(event);
@@ -433,7 +438,7 @@ $.fn.slider = function(parameters) {
             if(!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
               event.preventDefault();
               module.event.keydown(event, true);
-              $module.focus();
+              $module.trigger('focus');
             }
           },
           resize: function(_event) {
@@ -657,9 +662,9 @@ $.fn.slider = function(parameters) {
           },
           gapRatio: function() {
             var gapRatio = 1;
-            
+
             if( settings.autoAdjustLabels ) {
-              var 
+              var
                 numLabels = module.get.numLabels(),
                 trackLength = module.get.trackLength(),
                 gapCounter = 1
@@ -1236,13 +1241,13 @@ $.fn.slider = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
             response = found;
           }
-          if($.isArray(returnedValue)) {
+          if(Array.isArray(returnedValue)) {
             returnedValue.push(response);
           }
           else if(returnedValue !== undefined) {

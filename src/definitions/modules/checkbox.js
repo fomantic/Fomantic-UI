@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -159,7 +159,7 @@ $.fn.checkbox = function(parameters) {
           var
             $element = $(selector)
           ;
-          event = $.isFunction(module[event])
+          event = isFunction(module[event])
             ? module[event]
             : module.toggle
           ;
@@ -200,7 +200,7 @@ $.fn.checkbox = function(parameters) {
               return;
             }
             module.toggle();
-            $input.focus();
+            $input.trigger('focus');
             event.preventDefault();
           },
           keydown: function(event) {
@@ -242,7 +242,7 @@ $.fn.checkbox = function(parameters) {
             shortcutPressed = false;
             if(key == keyCode.escape) {
               module.verbose('Escape key pressed blurring field');
-              $input.blur();
+              $input.trigger('blur');
               shortcutPressed = true;
               event.stopPropagation();
             }
@@ -783,7 +783,7 @@ $.fn.checkbox = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
