@@ -275,6 +275,13 @@
 @trackInvertedBackgroundHex: #323232;
 @thumbInvertedBackgroundHex: #656565;
 
+/* Scrolling */
+@scrollingMobileMaxHeight: 15em;
+@scrollingTabletMaxHeight: 18em;
+@scrollingComputerMaxHeight: 24em;
+@scrollingWidescreenMaxHeight: 30em;
+@overscrollBehavior: none;
+
 /*-------------------
   Highlighted Text
 --------------------*/

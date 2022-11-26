@@ -189,6 +189,7 @@
   ---------------*/
   .ui.scrolling.container {
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
   }
   @media only screen and (max-width : @largestMobileScreen) {
     & when (@variationContainerScrollingShort) {

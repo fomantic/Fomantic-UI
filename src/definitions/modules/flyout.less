@@ -100,22 +100,25 @@
   line-height: @contentLineHeight;
   padding: @contentPadding;
   background: @contentBackground;
+  &.scrolling when(@variationFlyoutScrolling) {
+    overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
+  }
 }
 .ui.flyout.left > .content,
 .ui.flyout.right > .content {
   min-height: @contentMinHeight;
 }
+& when(@variationFlyoutScrolling) {
+  .ui.flyout.left > .scrolling.content,
+  .ui.flyout.right > .scrolling.content {
+    max-height: @scrollingContentMaxHeight;
+  }
 
-.ui.flyout.left > .scrolling.content,
-.ui.flyout.right > .scrolling.content{
-  max-height: @scrollingContentMaxHeight;
-  overflow: auto;
-}
-
-.ui.flyout.top > .scrolling.content,
-.ui.flyout.bottom > .scrolling.content{
-  max-height: @scrollingContentMaxHeightTopBottom;
-  overflow: auto;
+  .ui.flyout.top > .scrolling.content,
+  .ui.flyout.bottom > .scrolling.content {
+    max-height: @scrollingContentMaxHeightTopBottom;
+  }
 }
 
 & when (@variationFlyoutActions) {
@@ -520,7 +523,7 @@ body.pushable > .pusher {
   --------------------*/
 
   & when (@variationFlyoutColumnWidth) {
-    
+
     /* Sizing Combinations */
 
     .ui[class*="one wide"].flyout:not(.fullscreen) {
@@ -637,7 +640,7 @@ body.pushable > .pusher {
   .ui.visible.overlay.flyout {
     transform: translate3d(0%, 0, 0);
   }
-  
+
   /* End - Pusher */
   .ui.visible.overlay.flyout ~ .fixed,
   .ui.visible.overlay.flyout ~ .pusher {
