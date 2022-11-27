@@ -492,6 +492,9 @@ $.flyout = $.fn.flyout = function(parameters) {
           if('MutationObserver' in window) {
             observer = new MutationObserver(function(mutations) {
               module.refreshInputs();
+              if(settings.autofocus && $inputs.filter(':focus').length === 0) {
+                module.set.autofocus();
+              }
             });
             observer.observe(element, {
               childList : true,
