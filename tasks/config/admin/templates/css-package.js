@@ -3,10 +3,10 @@ var
 ;
 
 Package.describe({
-  name    : 'semantic:ui-css',
-  summary : 'Semantic UI - CSS Release of Semantic UI',
+  name    : 'fomantic:ui-css',
+  summary : 'Fomantic UI - CSS only distribution',
   version : '{version}',
-  git     : 'git://github.com/Semantic-Org/Semantic-UI-CSS.git',
+  git     : 'git://github.com/fomantic/Fomantic-UI-CSS.git',
 });
 
 Package.onUse(function(api) {
@@ -15,18 +15,14 @@ Package.onUse(function(api) {
 
   api.use('jquery', 'client');
 
-  api.addFiles([
+  api.addAssets([
     // icons
-    'themes/default/assets/fonts/icons.eot',
-    'themes/default/assets/fonts/icons.svg',
-    'themes/default/assets/fonts/icons.ttf',
     'themes/default/assets/fonts/icons.woff',
-    'themes/default/assets/fonts/icons.woff2',
+    'themes/default/assets/fonts/icons.woff2'
+  ], 'client');
 
-    // flags
-    'themes/default/assets/images/flags.png',
-
-    // release
+  api.addFiles([
+      // release
     'semantic.css',
     'semantic.js'
   ], 'client');

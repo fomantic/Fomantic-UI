@@ -1,6 +1,6 @@
 /*!
  * # Fomantic-UI - Text
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
@@ -26,20 +26,33 @@ span.ui.text {
   line-height: @lineHeight;
 }
 
-each(@colors, {
-  @color: replace(@key, '@', '');
-  @c: @colors[@@color][color];
-  @l: @colors[@@color][light];
+& when not (@variationTextColors = false) {
+  each(@variationTextColors, {
+    @color: @value;
+    @c: @colors[@@color][color];
+    @l: @colors[@@color][light];
 
-  span.ui.@{color}.text {
-    color: @c;
-  }
-  & when (@variationTextInverted) {
-    span.ui.inverted.@{color}.text {
-      color: @l;
+    span.ui.@{color}.text {
+      color: @c;
     }
-  }
-})
+    & when (@variationTextInverted) {
+      span.ui.inverted.@{color}.text {
+        color: @l;
+      }
+    }
+  })
+}
+
+& when not (@variationTextStates = false) {
+  each(@variationTextStates, {
+    @state: @value;
+    @c: @textStates[@@state][color];
+
+    span.ui.@{state}.text {
+      color: @c;
+    }
+  })
+}
 
 & when (@variationTextDisabled) {
   span.ui.disabled.text {

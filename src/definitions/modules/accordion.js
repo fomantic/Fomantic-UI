@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Accordion
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -117,8 +117,10 @@ $.fn.accordion = function(parameters) {
         },
 
         event: {
-          click: function() {
-            module.toggle.call(this);
+          click: function(event) {
+            if($(event.target).closest(selector.ignore).length === 0) {
+              module.toggle.call(this);
+            }
           }
         },
 
@@ -188,6 +190,7 @@ $.fn.accordion = function(parameters) {
                     useFailSafe      : true,
                     debug            : settings.debug,
                     verbose          : settings.verbose,
+                    silent           : settings.silent,
                     duration         : settings.duration,
                     skipInlineHidden : true,
                     onComplete: function() {
@@ -253,6 +256,7 @@ $.fn.accordion = function(parameters) {
                       useFailSafe      : true,
                       debug            : settings.debug,
                       verbose          : settings.verbose,
+                      silent           : settings.silent,
                       duration         : settings.duration,
                       skipInlineHidden : true
                     })
@@ -323,6 +327,7 @@ $.fn.accordion = function(parameters) {
                       useFailSafe      : true,
                       debug            : settings.debug,
                       verbose          : settings.verbose,
+                      silent           : settings.silent,
                       duration         : settings.duration,
                       skipInlineHidden : true
                     })
@@ -351,9 +356,10 @@ $.fn.accordion = function(parameters) {
 
           display: function() {
             module.verbose('Removing inline display from element', this);
-            $(this).css('display', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('display', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;
@@ -362,9 +368,10 @@ $.fn.accordion = function(parameters) {
 
           opacity: function() {
             module.verbose('Removing inline opacity from element', this);
-            $(this).css('opacity', '');
-            if( $(this).attr('style') === '') {
-              $(this)
+            var $element = $(this);
+            $element.css('opacity', '');
+            if($element.attr('style') === '') {
+              $element
                 .attr('style', '')
                 .removeAttr('style')
               ;
@@ -491,7 +498,7 @@ $.fn.accordion = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -520,7 +527,7 @@ $.fn.accordion = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -602,6 +609,7 @@ $.fn.accordion.settings = {
     accordion : '.accordion',
     title     : '.title',
     trigger   : '.title',
+    ignore    : '.ui.dropdown',
     content   : '.content'
   }
 
@@ -609,8 +617,8 @@ $.fn.accordion.settings = {
 
 // Adds easing
 $.extend( $.easing, {
-  easeOutQuad: function (x, t, b, c, d) {
-    return -c *(t/=d)*(t-2) + b;
+  easeOutQuad: function (x) {
+    return 1 - (1 - x) * (1 - x);;
   }
 });
 

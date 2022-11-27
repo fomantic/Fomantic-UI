@@ -185,7 +185,7 @@
       return 'true' === str ? true : false;
     }
 
-    var data = initMsg.substr(msgIdLen).split(':');
+    var data = initMsg.slice(msgIdLen).split(':');
 
     myID               = data[0];
     bodyMargin         = (undefined !== data[1]) ? Number(data[1])   : bodyMargin; //For V1 compatibility
@@ -746,12 +746,12 @@
     return maxVal;
   }
 
-  function getAllMeasurements(dimention) {
+  function getAllMeasurements(dimension) {
     return [
-      dimention.bodyOffset(),
-      dimention.bodyScroll(),
-      dimention.documentElementOffset(),
-      dimention.documentElementScroll()
+      dimension.bodyOffset(),
+      dimension.bodyScroll(),
+      dimension.documentElementOffset(),
+      dimension.documentElementScroll()
     ];
   }
 
@@ -779,7 +779,7 @@
       },
 
       offset: function() {
-        return getHeight.bodyOffset(); //Backwards compatability
+        return getHeight.bodyOffset(); //Backwards compatibility
       },
 
       bodyScroll: function getBodyScrollHeight() {
@@ -1029,7 +1029,7 @@
       moveToAnchor: function moveToAnchorF() {
         inPageLinks.findTarget(getData());
       },
-      inPageLink: function inPageLinkF() {this.moveToAnchor();}, //Backward compatability
+      inPageLink: function inPageLinkF() {this.moveToAnchor();}, //Backward compatibility
 
       pageInfo: function pageInfoFromParent() {
         var msgBody = getData();
@@ -1048,7 +1048,7 @@
     };
 
     function isMessageForUs() {
-      return msgID === (''+event.data).substr(0,msgIdLen); //''+ Protects against non-string messages
+      return msgID === (''+event.data).slice(0,msgIdLen); //''+ Protects against non-string messages
     }
 
     function getMessageType() {
@@ -1056,7 +1056,7 @@
     }
 
     function getData() {
-      return event.data.substr(event.data.indexOf(':')+1);
+      return event.data.slice(event.data.indexOf(':')+1);
     }
 
     function isMiddleTier() {
@@ -1065,7 +1065,7 @@
 
     function isInitMsg() {
       //Test if this message is from a child below us. This is an ugly test, however, updating
-      //the message format would break backwards compatibity.
+      //the message format would break backwards compatibility.
       return event.data.split(':')[2] in {'true':1,'false':1};
     }
 

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Shape
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -126,7 +126,7 @@ $.fn.shape = function(parameters) {
             module.reset();
             module.set.active();
           };
-          settings.beforeChange.call($nextSide[0]);
+          settings.onBeforeChange.call($nextSide[0]);
           if(module.get.transitionEvent()) {
             module.verbose('Starting CSS animation');
             $module
@@ -707,7 +707,7 @@ $.fn.shape = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -735,7 +735,7 @@ $.fn.shape = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -760,7 +760,7 @@ $.fn.shape = function(parameters) {
         }
         var $inputs = $module.find('input');
         if( $inputs.length > 0) {
-          $inputs.blur();
+          $inputs.trigger('blur');
           setTimeout(function(){
             module.invoke(query);
           }, 150);
@@ -813,7 +813,7 @@ $.fn.shape.settings = {
   height: 'initial',
 
   // callback occurs on side change
-  beforeChange : function() {},
+  onBeforeChange : function() {},
   onChange     : function() {},
 
   // allow animation to same side

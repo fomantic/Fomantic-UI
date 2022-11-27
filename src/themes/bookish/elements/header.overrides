@@ -2,7 +2,7 @@
            Overrides
 *******************************/
 
-@import url(https://fonts.googleapis.com/css?family=Karma);
+@import (css) url('https://fonts.googleapis.com/css2?family=Karma');
 
 h1.ui.header,
 .ui.huge.header {

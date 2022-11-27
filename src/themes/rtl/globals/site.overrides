@@ -3,4 +3,4 @@
 *******************************/
 
 /* Import Droid Arabic Kufi */
-@import 'https://fonts.googleapis.com/earlyaccess/droidarabickufi.css';
+@import (css) url('https://fonts.googleapis.com/css2?family=Droid+Arabic+Kufi');

@@ -89,8 +89,6 @@
 @tooltipInvertedColor: @invertedColor;
 @tooltipInvertedBorder: @invertedBorder;
 @tooltipInvertedBoxShadow: @invertedBoxShadow;
-@tooltipInvertedHeaderBackground: @invertedHeaderBackground;
-@tooltipInvertedHeaderColor: @invertedHeaderColor;
 
 /* Arrow */
 @tooltipArrowVerticalOffset: -@2px;
@@ -118,6 +116,8 @@
 /*-------------------
        Variations
 --------------------*/
+
+@multilineWhiteSpace: pre-line;
 
 /* Wide */
 @wideWidth: 350px;

@@ -1,11 +1,11 @@
 /*!
  * # Fomantic-UI - Ad
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Copyright 2013 Contributors
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -271,7 +271,7 @@
     position: relative;
     background: @testBackground;
   }
-  .ui.test.ad:after {
+  .ui.test.ad::after {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -285,11 +285,11 @@
     font-weight: @testFontWeight;
   }
   & when (@variationAdMobile) {
-    .ui.mobile.test.ad:after {
+    .ui.mobile.test.ad::after {
       font-size: @testMobileFontSize;
     }
   }
-  .ui.test.ad[data-text]:after {
+  .ui.test.ad[data-text]::after {
     content: attr(data-text);
   }
 }

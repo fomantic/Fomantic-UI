@@ -17,9 +17,14 @@ var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
   'android 4'
 ]
 
+// Node 12 does not support ??, so a little polyfill
+var nullish = (value,fallback) => {
+  return value !== undefined && value !== null ? value : fallback
+}
+
 module.exports = {
 
-  banner : release.banner,
+  banner : nullish(config.banner, release.banner),
 
   log: {
     created: function(file) {
@@ -42,6 +47,11 @@ module.exports = {
   regExp: {
 
     comments: {
+      // remove all component headers in concatenated file
+      header: {
+        in: /\/\*!(?:(?!\/\*).)*# Fomantic-UI \d+\.\d+\.(?:(?!\/\*).)*MIT license(?:(?!\/\*).)*\*\/\n?/gs,
+        out: ''
+      },
 
       // remove all comments from config files (.variable)
       variables : {
@@ -51,7 +61,7 @@ module.exports = {
 
       // add version to first comment
       license: {
-        in  : /(^\/\*[\s\S]+)(# Semantic UI )([\s\S]+?\*\/)/,
+        in  : /(^\/\*[\s\S]+)(# Fomantic-UI )([\s\S]+?\*\/)/,
         out : '$1$2' + release.version + ' $3'
       },
 
@@ -87,10 +97,11 @@ module.exports = {
 
     /* Comment Banners */
     header: {
-      title      : release.title,
-      version    : release.version,
-      repository : release.repository,
-      url        : release.url
+      year       : nullish(config.header.year,(new Date()).getFullYear()),
+      title      : nullish(config.header.title, release.title),
+      version    : nullish(config.header.version, release.version),
+      repository : nullish(config.header.repository, release.repository),
+      url        : nullish(config.header.url, release.url)
     },
 
     plumber: {
@@ -112,7 +123,7 @@ module.exports = {
                 console.error('Missing theme.config value for ', element);
               }
               console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
-            } else if (error.line == 73) {
+            } else if (error.line == 84) {
               element = regExp.element.exec(error.message)[1];
               theme   = regExp.theme.exec(error.message)[1];
               console.error(theme + ' is not an available theme for ' + element);
@@ -143,10 +154,11 @@ module.exports = {
 
     /* Minified CSS Concat */
     minify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : 1,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false
+        }
+      }
     },
 
     /* Minified JS Settings */
@@ -159,10 +171,12 @@ module.exports = {
 
     /* Minified Concat CSS Settings */
     concatMinify: {
-      processImport       : false,
-      restructuring       : false,
-      keepSpecialComments : false,
-      roundingPrecision   : -1,
+      level: {
+        1: {
+          inline          : false,
+          specialComments : false
+        }
+      }
     },
 
     /* Minified Concat JS */

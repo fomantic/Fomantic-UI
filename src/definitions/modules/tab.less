@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Tab
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -55,8 +55,8 @@
     left: @loadingContentOffset !important;
   }
 
-  .ui.tab.loading:before,
-  .ui.tab.loading.segment:before {
+  .ui.tab.loading::before,
+  .ui.tab.loading.segment::before {
     position: absolute;
     content: '';
     top: @loaderDistanceFromTop;
@@ -69,8 +69,8 @@
     border-radius: @circularRadius;
     border: @loaderLineWidth solid @loaderFillColor;
   }
-  .ui.tab.loading:after,
-  .ui.tab.loading.segment:after {
+  .ui.tab.loading::after,
+  .ui.tab.loading.segment::after {
     position: absolute;
     content: '';
     top: @loaderDistanceFromTop;

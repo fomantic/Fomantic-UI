@@ -90,6 +90,7 @@ module.exports = {
     'dimmer',
     'dropdown',
     'embed',
+    'flyout',
     'modal',
     'nag',
     'popup',
@@ -113,6 +114,8 @@ module.exports = {
 
   // whether to load admin tasks
   admin: false,
+
+  header: {},
 
   // globs used for matching file patterns
   globs      : {

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Visibility
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -58,7 +58,7 @@ $.fn.visibility = function(parameters) {
         $window         = $(window),
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
 
         $placeholder,
 
@@ -243,7 +243,7 @@ $.fn.visibility = function(parameters) {
             handleLoad    = function() {
               loadedCounter++;
               if (loadedCounter >= images.length) {
-                if ($.isFunction(callback)) {
+                if (isFunction(callback)) {
                   callback();
                 }
               }
@@ -428,7 +428,7 @@ $.fn.visibility = function(parameters) {
           },
           verticallyScrollableContext: function() {
             var
-              overflowY = ($context.get(0) !== window)
+              overflowY = ($context[0] !== window)
                 ? $context.css('overflow-y')
                 : false
             ;
@@ -436,7 +436,7 @@ $.fn.visibility = function(parameters) {
           },
           horizontallyScrollableContext: function() {
             var
-              overflowX = ($context.get(0) !== window)
+              overflowX = ($context[0] !== window)
                 ? $context.css('overflow-x')
                 : false
             ;
@@ -1139,7 +1139,7 @@ $.fn.visibility = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -1168,7 +1168,7 @@ $.fn.visibility = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -1237,7 +1237,7 @@ $.fn.visibility.settings = {
   // callback should only occur one time
   once                   : true,
 
-  // callback should fire continuously whe evaluates to true
+  // callback should fire continuously when evaluates to true
   continuous             : false,
 
   // offset to use with scroll top

@@ -12,6 +12,7 @@
 @toastMarginBottom: -0.01em;
 @toastLeftRightMargin: 1px;
 @toastBoxMarginBottom: 0.5em;
+@toastBoxMarginRight: @toastBoxMarginBottom;
 @toastMarginProgress: -0.2em;
 @toastMargin: 0 -@toastLeftRightMargin @toastMarginBottom;
 @toastTextColor: @invertedTextColor;
@@ -57,6 +58,9 @@
 @toastIconCenteredAdjustment: 1.2em;
 @toastImageCenteredAdjustment: 2em;
 
+@toastImageMiniImageAdjustment: e(%("calc(%d + %d)", @inputVerticalPadding, @toastMiniImageHeight));
+@toastImageMiniImagePadding: 4.4em;
+
 /* Progressbar Colors */
 @toastInfoProgressColor: darken(@toastInfoColor,15);
 @toastWarningProgressColor: darken(@toastWarningColor,15);
@@ -81,3 +85,4 @@
 @toastActionMarginBottom: 0.3em;
 @toastActionPadding: 0.5em;
 @toastActionPaddingBottom: 0.75em;
+@toastActionCenteredMargin: 0.25em;

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - API
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,12 @@
 
 'use strict';
 
-$.isWindow = $.isWindow || function(obj) {
-  return obj != null && obj === obj.window;
-};
+  function isWindow(obj) {
+    return obj != null && obj === obj.window;
+  }
+  function isFunction(obj) {
+    return typeof obj === "function" && typeof obj.nodeType !== "number";
+  }
 
   window = (typeof window != 'undefined' && window.Math == Math)
     ? window
@@ -27,7 +30,7 @@ $.api = $.fn.api = function(parameters) {
 
   var
     // use window context if none specified
-    $allModules     = $.isFunction(this)
+    $allModules     = isFunction(this)
         ? $(window)
         : $(this),
     moduleSelector = $allModules.selector || '',
@@ -65,7 +68,7 @@ $.api = $.fn.api = function(parameters) {
 
         // context used for state
         $context        = (settings.stateContext)
-          ? $(settings.stateContext)
+          ? ([window,document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
           : $module,
 
         // request details
@@ -74,6 +77,7 @@ $.api = $.fn.api = function(parameters) {
         url,
         data,
         requestStartTime,
+        originalData,
 
         // standard module
         element         = this,
@@ -86,6 +90,7 @@ $.api = $.fn.api = function(parameters) {
 
         initialize: function() {
           if(!methodInvoked) {
+            originalData = settings.data;
             module.bind.events();
           }
           module.instantiate();
@@ -132,7 +137,7 @@ $.api = $.fn.api = function(parameters) {
                response = JSON.parse(response);
               }
               catch(e) {
-                // isnt json string
+                // isn't json string
               }
             }
             return response;
@@ -148,8 +153,8 @@ $.api = $.fn.api = function(parameters) {
               module.error(error.noStorage);
               return;
             }
-            response = sessionStorage.getItem(url);
-            module.debug('Using cached response', url, response);
+            response = sessionStorage.getItem(url + module.get.normalizedData());
+            module.debug('Using cached response', url, settings.data, response);
             response = module.decode.json(response);
             return response;
           }
@@ -167,8 +172,8 @@ $.api = $.fn.api = function(parameters) {
             if( $.isPlainObject(response) ) {
               response = JSON.stringify(response);
             }
-            sessionStorage.setItem(url, response);
-            module.verbose('Storing cached response for url', url, response);
+            sessionStorage.setItem(url + module.get.normalizedData(), response);
+            module.verbose('Storing cached response for url', url, settings.data, response);
           }
         },
 
@@ -197,7 +202,7 @@ $.api = $.fn.api = function(parameters) {
 
           // Add form content
           if(settings.serializeForm) {
-            settings.data = module.add.formData(settings.data);
+            settings.data = module.add.formData(originalData || settings.data);
           }
 
           // call beforesend and get any settings changes
@@ -314,7 +319,7 @@ $.api = $.fn.api = function(parameters) {
             }
           },
           validResponse: function(response) {
-            if( (!module.is.expectingJSON()) || !$.isFunction(settings.successTest) ) {
+            if( (!module.is.expectingJSON()) || !isFunction(settings.successTest) ) {
               module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
               return true;
             }
@@ -333,10 +338,6 @@ $.api = $.fn.api = function(parameters) {
         was: {
           cancelled: function() {
             return (module.cancelled || false);
-          },
-          succesful: function() {
-            module.verbose('This behavior will be deleted due to typo. Use "was successful" instead.');
-            return module.was.successful();
           },
           successful: function() {
             return (module.request && module.request.state() == 'resolved');
@@ -365,8 +366,8 @@ $.api = $.fn.api = function(parameters) {
                   var
                     // allow legacy {$var} style
                     variable = (templatedString.indexOf('$') !== -1)
-                      ? templatedString.substr(2, templatedString.length - 3)
-                      : templatedString.substr(1, templatedString.length - 2),
+                      ? templatedString.slice(2, -1)
+                      : templatedString.slice(1, -1),
                     value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                       ? urlData[variable]
                       : ($module.data(variable) !== undefined)
@@ -397,8 +398,8 @@ $.api = $.fn.api = function(parameters) {
                   var
                     // allow legacy {/$var} style
                     variable = (templatedString.indexOf('$') !== -1)
-                      ? templatedString.substr(3, templatedString.length - 4)
-                      : templatedString.substr(2, templatedString.length - 3),
+                      ? templatedString.slice(3, -1)
+                      : templatedString.slice(2, -1),
                     value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                       ? urlData[variable]
                       : ($module.data(variable) !== undefined)
@@ -429,24 +430,78 @@ $.api = $.fn.api = function(parameters) {
           },
           formData: function(data) {
             var
-              canSerialize = ($.fn.serializeObject !== undefined),
-              formData     = (canSerialize)
-                ? $form.serializeObject()
-                : $form.serialize(),
-              hasOtherData
+              formData = {},
+              hasOtherData,
+              useFormDataApi = settings.serializeForm === 'formdata'
             ;
-            data         = data || settings.data;
+            data         = data || originalData || settings.data;
             hasOtherData = $.isPlainObject(data);
 
+            if (useFormDataApi) {
+              formData = new FormData($form[0]);
+              settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
+              settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
+            } else {
+              var formArray = $form.serializeArray(),
+                  pushes = {},
+                  pushValues= {},
+                  build = function(base, key, value) {
+                    base[key] = value;
+                    return base;
+                  }
+              ;
+              // add files
+              $.each($('input[type="file"]',$form), function(i, tag) {
+                $.each($(tag)[0].files, function(j, file) {
+                  formArray.push({name:tag.name, value: file});
+                });
+              });
+              $.each(formArray, function(i, el) {
+                if (!settings.regExp.validate.test(el.name)) return;
+                var isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
+                    floatValue = parseFloat(el.value),
+                    value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
+                    nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'')
+                ;
+                if(!(pushKey in pushes)) {
+                  pushes[pushKey] = 0;
+                  pushValues[pushKey] = value;
+                } else if (Array.isArray(pushValues[pushKey])) {
+                  pushValues[pushKey].push(value);
+                } else {
+                  pushValues[pushKey] = [pushValues[pushKey] , value];
+                }
+                if(pushKey.indexOf('[]')===-1) {
+                  value = pushValues[pushKey];
+                }
+
+                while ((k = nameKeys.pop()) !== undefined) {
+                  // foo[]
+                  if (k == '' && !Array.isArray(value)){
+                    value = build([], pushes[pushKey]++, value);
+                  }
+                  // foo[n]
+                  else if (settings.regExp.fixed.test(k)) {
+                    value = build([], k, value);
+                  }
+                  // foo; foo[bar]
+                  else if (settings.regExp.named.test(k)) {
+                    value = build({}, k, value);
+                  }
+                }
+                formData = $.extend(true, formData, value);
+              });
+            }
+
             if(hasOtherData) {
-              if(canSerialize) {
-                module.debug('Extending existing data with form data', data, formData);
-                data = $.extend(true, {}, data, formData);
-              }
-              else {
-                module.error(error.missingSerialize);
-                module.debug('Cant extend data. Replacing data with form data', data, formData);
+              module.debug('Extending existing data with form data', data, formData);
+              if(useFormDataApi) {
+                $.each(Object.keys(data),function(i, el){
+                  formData.append(el, data[el]);
+                });
                 data = formData;
+              } else {
+                data = $.extend(true, {}, data, formData);
               }
             }
             else {
@@ -487,7 +542,7 @@ $.api = $.fn.api = function(parameters) {
                 context            = this,
                 elapsedTime        = (new Date().getTime() - requestStartTime),
                 timeLeft           = (settings.loadingDuration - elapsedTime),
-                translatedResponse = ( $.isFunction(settings.onResponse) )
+                translatedResponse = ( isFunction(settings.onResponse) )
                   ? module.is.expectingJSON() && !settings.rawResponse
                     ? settings.onResponse.call(context, $.extend(true, {}, response))
                     : settings.onResponse.call(context, response)
@@ -631,7 +686,7 @@ $.api = $.fn.api = function(parameters) {
             ;
 
             if(responder) {
-              if( $.isFunction(responder) ) {
+              if( isFunction(responder) ) {
                 module.debug('Using specified synchronous callback', responder);
                 response = responder.call(context, requestSettings);
               }
@@ -642,7 +697,7 @@ $.api = $.fn.api = function(parameters) {
               // simulating response
               mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
             }
-            else if( $.isFunction(asyncResponder) ) {
+            else if( isFunction(asyncResponder) ) {
               asyncCallback = function(response) {
                 module.debug('Async callback returned response', response);
 
@@ -698,6 +753,9 @@ $.api = $.fn.api = function(parameters) {
         },
 
         get: {
+          normalizedData: function(){
+            return typeof settings.data === "string" ? settings.data : JSON.stringify(settings.data, Object.keys(settings.data).sort());
+          },
           responseFromXHR: function(xhr) {
             return $.isPlainObject(xhr)
               ? (module.is.expectingJSON())
@@ -770,7 +828,7 @@ $.api = $.fn.api = function(parameters) {
             var
               data = {}
             ;
-            if( !$.isWindow(element) ) {
+            if( !isWindow(element) ) {
               if( module.is.input() ) {
                 data.value = $module.val();
               }
@@ -784,7 +842,7 @@ $.api = $.fn.api = function(parameters) {
             return data;
           },
           event: function() {
-            if( $.isWindow(element) || settings.on == 'now' ) {
+            if( isWindow(element) || settings.on == 'now' ) {
               module.debug('API called without element, no events attached');
               return false;
             }
@@ -962,7 +1020,7 @@ $.api = $.fn.api = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -991,7 +1049,7 @@ $.api = $.fn.api = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -1083,6 +1141,8 @@ $.api.settings = {
   defaultData          : true,
 
   // whether to serialize closest form
+  // use true to convert complex named keys like a[b][1][c][] into a nested object
+  // use 'formdata' for formdata web api
   serializeForm        : false,
 
   // how long to wait before request should occur
@@ -1105,7 +1165,7 @@ $.api.settings = {
   responseAsync     : false,
 
 // whether onResponse should work with response value without force converting into an object
-  rawResponse       : false,
+  rawResponse       : true,
 
   // callbacks before request
   beforeSend  : function(settings) { return settings; },
@@ -1141,7 +1201,6 @@ $.api.settings = {
     legacyParameters  : 'You are using legacy API success callback names',
     method            : 'The method you called is not defined',
     missingAction     : 'API action used but no url was defined',
-    missingSerialize  : 'jquery-serialize-object is required to add form data to an existing data object',
     missingURL        : 'No URL specified for api event',
     noReturnedValue   : 'The beforeSend callback must return a settings object, beforeSend ignored.',
     noStorage         : 'Caching responses locally requires session storage',
@@ -1152,8 +1211,13 @@ $.api.settings = {
   },
 
   regExp  : {
-    required : /\{\$*[A-z0-9]+\}/g,
-    optional : /\{\/\$*[A-z0-9]+\}/g,
+    required : /\{\$*[a-z0-9]+\}/gi,
+    optional : /\{\/\$*[a-z0-9]+\}/gi,
+    validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
+    key:      /[a-z0-9_-]+|(?=\[\])/gi,
+    push:     /^$/,
+    fixed:    /^\d+$/,
+    named:    /^[a-z0-9_-]+$/i
   },
 
   className: {

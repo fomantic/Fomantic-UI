@@ -9,6 +9,7 @@
 @titlePadding: 0.5em 0;
 @titleFontSize: 1em;
 @titleColor: @textColor;
+@titleLineHeight: 1;
 
 /* Icon */
 @iconOpacity: 1;
@@ -25,6 +26,7 @@
 ;
 @iconVerticalAlign: baseline;
 @iconTransform: none;
+@iconTransformRight: @menuIconTransform;
 
 /* Child Accordion */
 @childAccordionMargin: 1em 0 0;
@@ -40,7 +42,7 @@
 
 @menuTitlePadding: 0;
 @menuIconFloat: right;
-@menuIconMargin: @lineHeightOffset 0 0 1em;
+@menuIconMargin: @iconMargin;
 @menuIconTransform: rotate(180deg);
 
 
@@ -97,4 +99,49 @@
 
 /* Inverted */
 @invertedTitleColor: @invertedTextColor;
+@invertedStyledTitleColor: @invertedUnselectedTextColor;
+@invertedStyledBackground: @black;
+@invertedStyledTitleBorder: 1px solid @whiteBorderColor;
+@invertedStyledBoxShadow:
+        @subtleShadow,
+        0 0 0 1px @whiteBorderColor
+;
+@invertedStyledTitleHoverBackground: transparent;
+@invertedStyledTitleHoverColor: @invertedTextColor;
+@invertedStyledActiveTitleBackground: transparent;
+@invertedStyledActiveTitleColor: @invertedSelectedTextColor;
 
+@invertedStyledHoverChildTitleBackground: @invertedStyledTitleHoverBackground;
+@invertedStyledHoverChildTitleColor: @invertedStyledTitleHoverColor;
+@invertedStyledActiveChildTitleBackground: @invertedStyledActiveTitleBackground;
+@invertedStyledActiveChildTitleColor: @invertedStyledActiveTitleColor;
+
+/* Compact */
+@titlePaddingCompact: 0.25em 0;
+@contentPaddingCompact: 0.25em 0 0.5em;
+
+/* Very Compact */
+@titlePaddingVeryCompact: 0.125em 0;
+@contentPaddingVeryCompact: 0.125em 0 0.25em;
+
+/* Styled Compact */
+@styledTitlePaddingCompact: 0.375em 0.5em;
+@styledContentPaddingCompact: 0.25em 0.5em 0.75em;
+
+/* Styled Very Compact */
+@styledTitlePaddingVeryCompact: 0.1875em 0.25em;
+@styledContentPaddingVeryCompact: 0.125em 0.25em 0.375em;
+
+/* Basic Styled */
+@basicStyledTitleColor: @mutedTextColor;
+@basicStyledTitleHoverColor: @textColor;
+@basicStyledActiveTitleColor: @selectedTextColor;
+
+@invertedBasicStyledTitleColor: @invertedMutedTextColor;
+@invertedBasicStyledTitleHoverColor: @invertedTextColor;
+@invertedBasicStyledActiveTitleColor: @invertedSelectedTextColor;
+
+/* Tree */
+@treeContentPadding: 0;
+@treeContentTopMargin: 0;
+@treeContentLeftMargin: 1.7em;

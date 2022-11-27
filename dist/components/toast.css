@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Toast
+ * # Fomantic-UI 2.9.0 - Toast
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -16,6 +16,55 @@
 .ui.toast-container {
   position: fixed;
   z-index: 9999;
+}
+.ui.toast-container.absolute {
+  position: absolute;
+}
+.ui.toast-container.ui.attached {
+  width: 100%;
+  left: 0;
+}
+.ui.toast-container.ui.attached .vertical.attached {
+  border-radius: 0;
+}
+.ui.toast-container.ui.attached.ui.ui .attached.actions .button {
+  border-radius: 0;
+}
+.ui.toast-container.ui.attached .toast-box {
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+}
+.ui.toast-container.ui.attached .toast-box > .ui.toast,
+.ui.toast-container.ui.attached .toast-box > .ui.message {
+  margin-left: 0;
+}
+.ui.toast-container.ui.attached .toast-box.floating,
+.ui.toast-container.ui.attached .toast-box.hoverfloating:hover {
+  border: none;
+}
+.ui.toast-container.ui.attached .toast-box > .vertical > .content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.ui.toast-container.ui.attached .toast-box > * {
+  width: 100%;
+  border-radius: 0;
+}
+.ui.toast-container.ui.attached .toast-box > * > .vertical:not(.actions) {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.ui.toast-container.ui.attached .toast-box > .attached.actions {
+  margin-right: 1px;
+}
+.ui.toast-container.ui.attached.top {
+  top: 0;
+}
+.ui.toast-container.ui.attached.bottom {
+  bottom: 0;
 }
 .ui.toast-container.top.right {
   top: 0.85714286em;
@@ -49,15 +98,34 @@
           transform: translate(-50%, 0);
   bottom: 0.85714286em;
 }
+.ui.toast-container.centered {
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
 .ui.toast-container .visible.toast-box,
 .ui.toast-container .animating.toast-box,
 .ui.toast-container .toast-box {
   display: table !important;
 }
+.ui.toast-container.horizontal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.ui.toast-container.horizontal .toast-box {
+  margin-right: 0.5em;
+}
 .ui.toast-container .toast-box {
   margin-bottom: 0.5em;
   border-radius: 0.28571429rem;
   cursor: default;
+  will-change: transform, opacity;
 }
 .ui.toast-container .toast-box:hover {
   opacity: 1;
@@ -101,7 +169,7 @@
 .ui.toast-container .toast-box > .attached.progress.success .bar.bar.bar {
   background: #15792d;
 }
-.ui.toast-container .toast-box > .attached.progress .error .bar.bar.bar {
+.ui.toast-container .toast-box > .attached.progress.error .bar.bar.bar {
   background: #9c1a1a;
 }
 .ui.toast-container .toast-box > .attached.progress.neutral .bar.bar.bar {
@@ -122,7 +190,7 @@
 .ui.toast-container .toast-box > .ui.message.icon > :not(.icon):not(.actions) {
   padding-left: 5rem;
 }
-.ui.toast-container .toast-box > .ui.message.icon > .icon:not(.close) {
+.ui.toast-container .toast-box > .ui.message.icon > i.icon:not(.close) {
   display: inline-block;
   position: absolute;
   width: 4rem;
@@ -130,7 +198,7 @@
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
 }
-.ui.toast-container .toast-box > .ui.message.icon:not(.vertical).actions > .icon:not(.close) {
+.ui.toast-container .toast-box > .ui.message.icon:not(.vertical).actions > i.icon:not(.close) {
   top: calc(50% - 1.2em);
   -webkit-transform: none;
           transform: none;
@@ -326,9 +394,6 @@
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-.ui.vertical.attached.left.actions .button:not(:first-child):not(:last-child) {
-  margin-left: -1px;
-}
 .ui.vertical.attached.left.message.message.message {
   border-top-right-radius: 0.28571429rem;
   border-bottom-right-radius: 0.28571429rem;
@@ -392,20 +457,20 @@
   background-color: #FFFFFF;
   color: rgba(0, 0, 0, 0.87);
 }
-.ui.toast > .icon:not(.close) {
+.ui.toast > i.icon:not(.close) {
   font-size: 1.5em;
 }
-.ui.toast:not(.vertical) > .icon:not(.close) {
+.ui.toast:not(.vertical):not(.centered):not(.center) > i.icon:not(.close) {
   position: absolute;
 }
-.ui.toast:not(.vertical) > .icon:not(.close) + .content {
+.ui.toast:not(.vertical):not(.centered):not(.center) > .ui.image {
+  position: absolute;
+}
+.ui.toast:not(.vertical) > i.icon:not(.close) + .content {
   padding-left: 3em;
 }
 .ui.toast:not(.vertical) > .close.icon + .content {
   padding-left: 1.5em;
-}
-.ui.toast:not(.vertical) > .ui.image {
-  position: absolute;
 }
 .ui.toast:not(.vertical) > .ui.image.avatar + .content {
   padding-left: 3em;
@@ -423,8 +488,8 @@
   padding-left: 12em;
   min-height: 150px;
 }
-.ui.toast:not(.vertical) > .centered.image,
-.ui.toast:not(.vertical) > .centered.icon {
+.ui.toast:not(.vertical):not(.centered):not(.center) > .centered.image,
+.ui.toast:not(.vertical):not(.centered):not(.center) > .centered.icon {
   -webkit-transform: translateY(-50%);
           transform: translateY(-50%);
   top: 50%;
@@ -435,11 +500,21 @@
 .ui.toast:not(.vertical).actions > .centered.icon {
   top: calc(50% - 1.2em);
 }
+.ui.toast.vertical > .content {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.ui.toast.vertical.attached {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
 .ui.toast.vertical > .close.icon + .content {
   padding-left: 1em;
 }
 .ui.toast.vertical > .ui.image + .content,
-.ui.toast.vertical > .icon:not(.close) + .content {
+.ui.toast.vertical > i.icon:not(.close) + .content {
   padding-left: 1em;
 }
 .ui.toast.vertical > .ui.image {
@@ -463,6 +538,28 @@
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
+.ui.toast.ui.ui.ui.image {
+  padding: 0;
+}
+.ui.toast.ui.ui.ui.image > .content {
+  padding-top: 0.78571429em;
+  padding-bottom: 0.78571429em;
+  padding-right: 1em;
+}
+.ui.toast.ui.ui.ui.image > .actions {
+  margin: 0;
+}
+.ui.toast.ui.ui.ui.image > .ui.image {
+  border-top-left-radius: 0.28571429rem;
+  border-bottom-left-radius: 0.28571429rem;
+}
+.ui.toast.ui.ui.ui.image > .ui.image.mini {
+  min-width: calc(0.7857142857142857em + 35px);
+}
+.ui.toast.ui.ui.ui.image > .ui.image.mini + .content {
+  min-height: calc(0.7857142857142857em + 35px);
+  padding-left: 4.4em;
+}
 .ui.hoverfloating.message:hover {
   -webkit-box-shadow: 0 0 0 1px inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
           box-shadow: 0 0 0 1px inset, 0 2px 4px 0 rgba(34, 36, 38, 0.12), 0 2px 10px 0 rgba(34, 36, 38, 0.15);
@@ -473,6 +570,38 @@
 }
 .ui.center.toast-container .toast-box {
   margin-right: auto;
+}
+.ui.ui.toast-container .toast-box .centered.toast,
+.ui.ui.toast-container .toast-box .center.aligned.toast {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+.ui.ui.toast-container .toast-box .centered.toast > .content,
+.ui.ui.toast-container .toast-box .center.aligned.toast > .content,
+.ui.ui.toast-container .toast-box .centered.toast > .ui.image,
+.ui.ui.toast-container .toast-box .center.aligned.toast > .ui.image,
+.ui.ui.toast-container .toast-box .centered.toast > i.icon:not(.close),
+.ui.ui.toast-container .toast-box .center.aligned.toast > i.icon:not(.close) {
+  -ms-flex-item-align: center;
+      align-self: center;
+}
+.ui.toast-container .toast-box .toast .centered.content,
+.ui.toast-container .toast-box .toast .center.aligned.content {
+  text-align: center;
+}
+.ui.toast-container .toast-box .centered.actions,
+.ui.toast-container .toast-box .center.aligned.actions {
+  text-align: center;
+}
+.ui.toast-container .toast-box .centered.actions:not(.attached) > .button:not(.fluid),
+.ui.toast-container .toast-box .center.aligned.actions:not(.attached) > .button:not(.fluid) {
+  margin-left: 0.25em;
+  margin-right: 0.25em;
 }
 
 /*--------------
@@ -687,3 +816,9 @@
     opacity: 0;
   }
 }
+
+
+/*******************************
+         Theme Overrides
+*******************************/
+

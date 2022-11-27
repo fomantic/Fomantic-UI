@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Grid
+ * # Fomantic-UI 2.9.0 - Grid
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -351,8 +351,8 @@
 }
 
 /*-------------------
-    Column Width
---------------------*/
+      Column Width
+  --------------------*/
 
 
 /* Sizing Combinations */
@@ -454,8 +454,8 @@
 }
 
 /*----------------------
-    Width per Device
------------------------*/
+      Width per Device
+  -----------------------*/
 
 
 /* Mobile Sizing Combinations */
@@ -1087,7 +1087,7 @@
 .ui[class*="vertically divided"].grid > .row {
   position: relative;
 }
-.ui[class*="vertically divided"].grid > .row:before {
+.ui[class*="vertically divided"].grid > .row::before {
   position: absolute;
   content: "";
   top: 0;
@@ -1106,7 +1106,7 @@
 }
 
 /* First Row Vertically Divided */
-.ui[class*="vertically divided"].grid > .row:first-child:before {
+.ui[class*="vertically divided"].grid > .row:first-child::before {
   -webkit-box-shadow: none;
           box-shadow: none;
 }
@@ -1122,18 +1122,18 @@
   -webkit-box-shadow: none;
           box-shadow: none;
 }
-.ui.inverted[class*="vertically divided"].grid > .row:before {
+.ui.inverted[class*="vertically divided"].grid > .row::before {
   -webkit-box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.1);
           box-shadow: 0 -1px 0 0 rgba(255, 255, 255, 0.1);
 }
 
 /* Relaxed */
-.ui.relaxed[class*="vertically divided"].grid > .row:before {
+.ui.relaxed[class*="vertically divided"].grid > .row::before {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
   width: calc(100% - 3rem);
 }
-.ui[class*="very relaxed"][class*="vertically divided"].grid > .row:before {
+.ui[class*="very relaxed"][class*="vertically divided"].grid > .row::before {
   margin-left: 2.5rem;
   margin-right: 2.5rem;
   width: calc(100% - 5rem);
@@ -1421,8 +1421,8 @@
 }
 
 /*----------------------
-      Equal Width
------------------------*/
+        Equal Width
+  -----------------------*/
 
 .ui[class*="equal width"].grid > .column:not(.row),
 .ui[class*="equal width"].grid > .row > .column,
@@ -1476,11 +1476,11 @@
   }
   
 /* Vertically Divided Reversed */
-  .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:first-child:before {
+  .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:first-child::before {
     -webkit-box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
             box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
   }
-  .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:last-child:before {
+  .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:last-child::before {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -1526,11 +1526,11 @@
   }
   
 /* Vertically Divided Reversed */
-  .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:first-child:before {
+  .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:first-child::before {
     -webkit-box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
             box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
   }
-  .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:last-child:before {
+  .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:last-child::before {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -1576,11 +1576,11 @@
   }
   
 /* Vertically Divided Reversed */
-  .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:first-child:before {
+  .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:first-child::before {
     -webkit-box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
             box-shadow: 0 -1px 0 0 rgba(34, 36, 38, 0.15);
   }
-  .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:last-child:before {
+  .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:last-child::before {
     -webkit-box-shadow: none;
             box-shadow: none;
   }
@@ -1613,12 +1613,15 @@
   }
   .ui.grid > .doubling.row > .column,
   .ui.doubling.grid > .row > .column {
-    display: inline-block !important;
     padding-top: 1rem !important;
     padding-bottom: 1rem !important;
     -webkit-box-shadow: none !important;
             box-shadow: none !important;
     margin: 0;
+  }
+  .ui.grid:not(.stretched) > .doubling.row:not(.stretched) > .column:not(.stretched),
+  .ui.doubling.grid:not(.stretched) > .row:not(.stretched) > .column:not(.stretched) {
+    display: inline-block !important;
   }
   .ui[class*="two column"].doubling.grid > .row > .column,
   .ui[class*="two column"].doubling.grid > .column:not(.row),
@@ -1794,7 +1797,7 @@
   --------------------*/
 
 @media only screen and (max-width: 767.98px) {
-  .ui.stackable.grid {
+  .ui.ui.ui.ui.stackable.grid {
     width: auto;
     margin-left: 0 !important;
     margin-right: 0 !important;
@@ -1998,6 +2001,9 @@
         Compact
   -----------------*/
 
+.ui.ui.ui.compact.grid {
+  margin: -0.5rem;
+}
 .ui.ui.ui.compact.grid > .column:not(.row),
 .ui.ui.ui.compact.grid > .row > .column {
   padding-left: 0.5rem;
@@ -2012,6 +2018,8 @@
 .ui.ui.ui.compact.grid > .row {
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */
@@ -2034,6 +2042,9 @@
       Very compact
   -----------------*/
 
+.ui.ui.ui[class*="very compact"].grid {
+  margin: -0.25rem;
+}
 .ui.ui.ui[class*="very compact"].grid > .column:not(.row),
 .ui.ui.ui[class*="very compact"].grid > .row > .column {
   padding-left: 0.25rem;
@@ -2048,8 +2059,8 @@
 .ui.ui.ui[class*="very compact"].grid > .row {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* Columns */

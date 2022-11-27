@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Checkbox
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,9 @@
 
 'use strict';
 
-$.isFunction = $.isFunction || function(obj) {
+function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -159,7 +159,7 @@ $.fn.checkbox = function(parameters) {
           var
             $element = $(selector)
           ;
-          event = $.isFunction(module[event])
+          event = isFunction(module[event])
             ? module[event]
             : module.toggle
           ;
@@ -200,7 +200,7 @@ $.fn.checkbox = function(parameters) {
               return;
             }
             module.toggle();
-            $input.focus();
+            $input.trigger('focus');
             event.preventDefault();
           },
           keydown: function(event) {
@@ -239,18 +239,27 @@ $.fn.checkbox = function(parameters) {
               }
             }
 
+            shortcutPressed = false;
             if(key == keyCode.escape) {
               module.verbose('Escape key pressed blurring field');
-              $input.blur();
+              $input.trigger('blur');
               shortcutPressed = true;
+              event.stopPropagation();
             }
-            else if(!event.ctrlKey && ( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) ) {
-              module.verbose('Enter/space key pressed, toggling checkbox');
-              module.toggle();
-              shortcutPressed = true;
-            }
-            else {
-              shortcutPressed = false;
+            else if(!event.ctrlKey && module.can.change()) {
+                if( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey) ) {
+                  module.verbose('Enter/space key pressed, toggling checkbox');
+                  module.toggle();
+                  shortcutPressed = true;
+                } else if($module.is('.toggle, .slider') && !module.is.radio()) {
+                  if(key == keyCode.left && module.is.checked()) {
+                    module.uncheck();
+                    shortcutPressed = true;
+                  } else if(key == keyCode.right && module.is.unchecked()) {
+                    module.check();
+                    shortcutPressed = true;
+                  }
+                }
             }
           },
           keyup: function(event) {
@@ -323,7 +332,6 @@ $.fn.checkbox = function(parameters) {
             settings.onEnable.call(input);
             // preserve legacy callbacks
             settings.onEnabled.call(input);
-            module.trigger.change();
           }
         },
 
@@ -338,7 +346,6 @@ $.fn.checkbox = function(parameters) {
             settings.onDisable.call(input);
             // preserve legacy callbacks
             settings.onDisabled.call(input);
-            module.trigger.change();
           }
         },
 
@@ -556,10 +563,10 @@ $.fn.checkbox = function(parameters) {
         trigger: {
           change: function() {
             var
-              events       = document.createEvent('HTMLEvents'),
               inputElement = $input[0]
             ;
             if(inputElement) {
+              var events = document.createEvent('HTMLEvents');
               module.verbose('Triggering native change event');
               events.initEvent('change', true, false);
               inputElement.dispatchEvent(events);
@@ -747,7 +754,7 @@ $.fn.checkbox = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -776,7 +783,7 @@ $.fn.checkbox = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
@@ -823,7 +830,7 @@ $.fn.checkbox.settings = {
 
   silent              : false,
   debug               : false,
-  verbose             : true,
+  verbose             : false,
   performance         : true,
 
   // delegated event context
@@ -866,7 +873,7 @@ $.fn.checkbox.settings = {
 
   selector : {
     checkbox : '.ui.checkbox',
-    label    : 'label, .box',
+    label    : 'label',
     input    : 'input[type="checkbox"], input[type="radio"]',
     link     : 'a[href]'
   }

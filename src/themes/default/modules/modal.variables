@@ -14,15 +14,22 @@
 
 /* Close Icon */
 @closeOpacity: 0.8;
+@closeOpacityDimmed: 0.1;
 @closeSize: 1.25em;
 @closeColor: @white;
 
 @closeHitbox: 2.25rem;
 @closeDistance: 0.25rem;
-@closeHitBoxOffset: (@closeHitbox - 1rem) / 2;
+@closeHitBoxOffset: ((@closeHitbox - 1rem) / 2);
 @closePadding: @closeHitBoxOffset 0 0 0;
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
+@closeShadow:
+  -1px -1px 2px rgba(0, 0, 0, 0.3),
+  1px -1px 2px rgba(0, 0, 0, 0.3),
+  -1px 2px 2px rgba(0, 0, 0, 0.3),
+  1px 2px 2px rgba(0, 0, 0, 0.3)
+;
 
 /* Header */
 @headerMargin: 0;
@@ -41,7 +48,7 @@
 @contentFontSize: 1em;
 @contentPadding: 1.5rem;
 @contentLineHeight: 1.4;
-@contentBackground: #FFFFFF;
+@contentBackground: @white;
 
 /* Image / Description */
 @imageWidth: '';
@@ -60,6 +67,8 @@
 @actionAlign: right;
 
 @buttonDistance: 0.75em;
+@buttonCenteredDistance: 0.5em;
+@buttonLeftDistance: @buttonCenteredDistance;
 
 /* Inner Close Position (Tablet/Mobile) */
 @innerCloseTop: (@headerVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
@@ -91,7 +100,7 @@
 @widescreenMonitorMargin: 0 0 0 0;
 
 @fullScreenWidth: 95%;
-@fullScreenOffset: (100% - @fullScreenWidth) / 2;
+@fullScreenOffset: ((100% - @fullScreenWidth) / 2);
 @fullScreenMargin: 1em auto;
 
 /* Coupling */
@@ -240,7 +249,7 @@
 /*-------------------
       Inverted
 --------------------*/
-@invertedBackground: rgba(0,0,0,.9);
+@invertedBackground: @fullBlack;
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
 @invertedHeaderBackgroundColor: @darkTextColor;
@@ -248,3 +257,9 @@
 @invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
 @invertedActionColor: @white;
 @invertedDimmerCloseColor: rgba(0,0,0,.85);
+@invertedCloseShadow:
+  -1px -1px 2px rgba(255, 255, 255, 0.3),
+  1px -1px 2px rgba(255, 255, 255, 0.3),
+  -1px 2px 2px rgba(255, 255, 255, 0.3),
+  1px 2px 2px rgba(255, 255, 255, 0.3)
+;

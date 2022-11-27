@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Reset
+ * # Fomantic-UI 2.9.0 - Reset
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -16,8 +16,8 @@
 
 /* Border-Box */
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }

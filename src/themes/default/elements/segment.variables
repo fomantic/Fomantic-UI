@@ -153,3 +153,11 @@
   )
 ;
 @tertiaryInvertedColor: @invertedMutedTextColor;
+
+/*-------------------
+       Scrolling
+--------------------*/
+@scrollingMobileMaxHeight: 15em;
+@scrollingTabletMaxHeight: 18em;
+@scrollingComputerMaxHeight: 24em;
+@scrollingWidescreenMaxHeight: 30em;

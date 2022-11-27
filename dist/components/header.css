@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI - Header
+ * # Fomantic-UI 2.9.0 - Header
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -19,7 +19,7 @@
   border: none;
   margin: calc(2rem - 0.1428571428571429em) 0 1rem;
   padding: 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
@@ -50,7 +50,8 @@
       Icon
 ---------------*/
 
-.ui.header > .icon {
+.ui.header > .icons,
+.ui.header > i.icon {
   display: table-cell;
   opacity: 1;
   font-size: 1.5em;
@@ -59,7 +60,8 @@
 }
 
 /* With Text Node */
-.ui.header .icon:only-child {
+.ui.header:not(.icon) > .icons:only-child,
+.ui.header:not(.icon) > i.icon:only-child {
   display: inline-block;
   padding: 0;
   margin-right: 0.75rem;
@@ -99,7 +101,8 @@
 }
 
 /* After Icon */
-.ui.header > .icon + .content {
+.ui.header:not(.icon):not(.centered):not(.aligned) > .icons + .content,
+.ui.header:not(.icon):not(.centered):not(.aligned) > i.icon + .content {
   padding-left: 0.75rem;
   display: table-cell;
   vertical-align: middle;
@@ -259,7 +262,7 @@ h6.ui.header .sub.header {
   text-align: center;
   margin: 2rem 0 1rem;
 }
-.ui.icon.header:after {
+.ui.icon.header::after {
   content: '';
   display: block;
   height: 0;
@@ -269,7 +272,9 @@ h6.ui.header .sub.header {
 .ui.icon.header:first-child {
   margin-top: 0;
 }
-.ui.icon.header .icon {
+.ui.icon.header > .image.icon,
+.ui.icon.header > .icons,
+.ui.icon.header > i.icon {
   float: none;
   display: block;
   width: auto;
@@ -287,13 +292,15 @@ h6.ui.header .sub.header {
   display: block;
   padding: 0;
 }
-.ui.icon.header .circular.icon {
+.ui.icon.header > i.circular {
   font-size: 2em;
 }
-.ui.icon.header .square.icon {
+.ui.icon.header > i.square {
   font-size: 2em;
 }
-.ui.block.icon.header .icon {
+.ui.block.icon.header > .image.icon,
+.ui.block.icon.header > .icons,
+.ui.block.icon.header > i.icon {
   margin-bottom: 0;
 }
 .ui.icon.header.aligned {
@@ -634,7 +641,7 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.justified.header {
   text-align: justify;
 }
-.ui.justified.header:after {
+.ui.justified.header::after {
   display: inline-block;
   content: '';
   width: 100%;
@@ -675,7 +682,7 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.dividing.header .sub.header {
   padding-bottom: 0.21428571rem;
 }
-.ui.dividing.header .icon {
+.ui.dividing.header i.icon {
   margin-bottom: 0;
 }
 .ui.inverted.dividing.header {

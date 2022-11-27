@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - State
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,9 +12,9 @@
 
 "use strict";
 
-$.isFunction = $.isFunction || function(obj) {
+ function isFunction(obj) {
   return typeof obj === "function" && typeof obj.nodeType !== "number";
-};
+}
 
 window = (typeof window != 'undefined' && window.Math == Math)
   ? window
@@ -74,7 +74,7 @@ $.fn.state = function(parameters) {
 
           // bind events with delegated events
           if(settings.context && moduleSelector !== '') {
-            $(settings.context)
+            ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
               .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
               .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
               .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state)
@@ -527,7 +527,7 @@ $.fn.state = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -556,7 +556,7 @@ $.fn.state = function(parameters) {
               }
             });
           }
-          if ( $.isFunction( found ) ) {
+          if ( isFunction( found ) ) {
             response = found.apply(context, passedArguments);
           }
           else if(found !== undefined) {
