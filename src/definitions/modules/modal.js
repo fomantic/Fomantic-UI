@@ -256,6 +256,9 @@ $.modal = $.fn.modal = function(parameters) {
                 module.refresh();
               }
               module.refreshInputs();
+              if(settings.autofocus && $inputs.filter(':focus').length === 0) {
+                module.set.autofocus();
+              }
             });
             observer.observe(element, {
               childList : true,
