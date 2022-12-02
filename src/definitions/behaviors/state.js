@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.state = function(parameters) {
         var
@@ -36,8 +36,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue
-  ;
+            returnedValue;
+  
         $allModules
             .each(function() {
                 var
@@ -60,8 +60,8 @@
                     element         = this,
                     instance        = $module.data(moduleNamespace),
 
-                    module
-      ;
+                    module;
+      
                 module = {
 
                     initialize: function() {
@@ -77,15 +77,15 @@
                             ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
-                                .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state)
-                            ;
+                                .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state);
+                            
                         }
                         else {
                             $module
                                 .on('mouseenter' + eventNamespace, module.change.text)
                                 .on('mouseleave' + eventNamespace, module.reset.text)
-                                .on('click'      + eventNamespace, module.toggle.state)
-                            ;
+                                .on('click'      + eventNamespace, module.toggle.state);
+                            
                         }
                         module.instantiate();
                     },
@@ -94,16 +94,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module)
-                        ;
+                            .data(moduleNamespace, module);
+                        
                     },
 
                     destroy: function() {
                         module.verbose('Destroying previous module', instance);
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace)
-                        ;
+                            .removeData(moduleNamespace);
+                        
                     },
 
                     refresh: function() {
@@ -116,8 +116,8 @@
                             var
                                 userStates = parameters && $.isPlainObject(parameters.states)
                                     ? parameters.states
-                                    : {}
-            ;
+                                    : {};
+            
                             $.each(settings.defaults, function(type, typeStates) {
                                 if( module.is[type] !== undefined && module.is[type]() ) {
                                     module.verbose('Adding default states', type, element);
@@ -204,8 +204,8 @@
                         state: function() {
                             var
                                 apiRequest,
-                                requestCancelled
-            ;
+                                requestCancelled;
+            
                             if( module.allows('active') && module.is.enabled() ) {
                                 module.refresh();
                                 if($.fn.api !== undefined) {
@@ -245,8 +245,8 @@
                                         settings.deactivateTest = function(){ return false; };
                                     }
                                     module.change.state();
-                                })
-                            ;
+                                });
+                            
                         }
                     },
 
@@ -303,8 +303,8 @@
                         if( settings.activateTest.call(element) ) {
                             module.debug('Setting state to active');
                             $module
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
+                            
                             module.update.text(text.active);
                             settings.onActivate.call(element);
                         }
@@ -314,8 +314,8 @@
                         if( settings.deactivateTest.call(element) ) {
                             module.debug('Setting state to inactive');
                             $module
-                                .removeClass(className.active)
-                            ;
+                                .removeClass(className.active);
+                            
                             module.update.text(text.inactive);
                             settings.onDeactivate.call(element);
                         }
@@ -331,8 +331,8 @@
                         else {
                             $allModules
                                 .not($module)
-                                .state('deactivate')
-                            ;
+                                .state('deactivate');
+                            
                         }
                     },
 
@@ -340,8 +340,8 @@
                         text: function() {
                             return (settings.selector.text)
                                 ? $module.find(settings.selector.text).text()
-                                : $module.html()
-                            ;
+                                : $module.html();
+                            
                         },
                         textFor: function(state) {
                             return text[state] || false;
@@ -351,8 +351,8 @@
                     flash: {
                         text: function(text, duration, callback) {
                             var
-                                previousText = module.get.text()
-            ;
+                                previousText = module.get.text();
+            
                             module.debug('Flashing text message', text, duration);
                             text     = text     || settings.text.flash;
                             duration = duration || settings.flashDuration;
@@ -370,8 +370,8 @@
                         text: function() {
                             var
                                 activeText   = text.active   || $module.data(metadata.storedText),
-                                inactiveText = text.inactive || $module.data(metadata.storedText)
-            ;
+                                inactiveText = text.inactive || $module.data(metadata.storedText);
+            
                             if( module.is.textEnabled() ) {
                                 if( module.is.active() && activeText) {
                                     module.verbose('Resetting active text', activeText);
@@ -388,22 +388,22 @@
                     update: {
                         text: function(text) {
                             var
-                                currentText = module.get.text()
-            ;
+                                currentText = module.get.text();
+            
                             if(text && text !== currentText) {
                                 module.debug('Updating text', text);
                                 if(settings.selector.text) {
                                     $module
                                         .data(metadata.storedText, text)
                                         .find(settings.selector.text)
-                                        .text(text)
-                                    ;
+                                        .text(text);
+                                    
                                 }
                                 else {
                                     $module
                                         .data(metadata.storedText, text)
-                                        .html(text)
-                                    ;
+                                        .html(text);
+                                    
                                 }
                             }
                             else {
@@ -473,8 +473,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -493,8 +493,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -524,8 +524,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -534,8 +534,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -587,13 +587,13 @@
                     }
                     module.initialize();
                 }
-            })
-        ;
+            });
+        
 
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.state.settings = {

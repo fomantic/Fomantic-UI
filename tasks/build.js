@@ -7,8 +7,8 @@ var
     gulp     = require('gulp'),
 
     // config
-    install  = require('./config/project/install')
-;
+    install  = require('./config/project/install');
+
 
 module.exports = function (callback) {
 

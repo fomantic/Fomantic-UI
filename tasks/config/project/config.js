@@ -7,8 +7,8 @@ var
     fs       = require('fs'),
     path     = require('path'),
 
-    defaults = require('../defaults')
-;
+    defaults = require('../defaults');
+
 
 
 /*******************************
@@ -23,8 +23,8 @@ module.exports = {
             walk = function(directory) {
                 var
                     nextDirectory = path.resolve( path.join(directory, path.sep, '..') ),
-                    currentPath   = path.normalize( path.join(directory, file) )
-        ;
+                    currentPath   = path.normalize( path.join(directory, file) );
+        
                 if( fs.existsSync(currentPath) ) {
                     // found file
                     configPath = path.normalize(directory);
@@ -38,8 +38,8 @@ module.exports = {
                     // otherwise recurse
                     walk(nextDirectory, file);
                 }
-            }
-    ;
+            };
+    
 
         // start walk from outside require-dot-files directory
         file      = file || defaults.files.config;
@@ -61,8 +61,8 @@ module.exports = {
             configPath = this.getPath(),
             sourcePaths = {},
             outputPaths = {},
-            folder
-    ;
+            folder;
+    
 
         // resolve paths (config location + base + path)
         for(folder in config.paths.source) {
@@ -129,12 +129,12 @@ module.exports = {
 
         const components = (Array.isArray(config.components) && config.components.length >= 1)
             ? config.components
-            : defaults.components
-    ;
+            : defaults.components;
+    
         const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
             ? config.individuals
-            : []
-    ;
+            : [];
+    
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
         // takes component object and creates file glob matching selected components
@@ -143,8 +143,8 @@ module.exports = {
         // components that should be built, but excluded from main .css/.js files
         config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
             ? '{' + individuals.join(',') + '}'
-            : undefined
-        ;
+            : undefined;
+        
 
         return config;
 

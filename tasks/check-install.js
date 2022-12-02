@@ -9,8 +9,8 @@ var
     isSetup = require('./config/project/install').isSetup,
 
     install = require('./install'),
-    watch   = require('./watch')
-;
+    watch   = require('./watch');
+
 
 // export task
 module.exports = function (callback) {

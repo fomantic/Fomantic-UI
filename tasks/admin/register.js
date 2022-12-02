@@ -21,8 +21,8 @@ var
     index   = -1,
 
     stream,
-    stepRepo
-;
+    stepRepo;
+
 
 module.exports = function(callback) {
 
@@ -40,8 +40,8 @@ module.exports = function(callback) {
             outputDirectory = release.outputRoot + repo + '/',
             exec            = process.exec,
             execSettings    = {cwd: outputDirectory},
-            updateNPM       = 'npm publish;meteor publish;'
-    ;
+            updateNPM       = 'npm publish;meteor publish;';
+    
 
         /* Register with NPM */
         exec(updateNPM, execSettings, function(err, stdout, stderr) {

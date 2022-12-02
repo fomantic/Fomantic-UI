@@ -7,8 +7,8 @@ var
     // node dependencies
     console      = require('better-console'),
     fs           = require('fs'),
-    YAML         = require('yamljs')
-;
+    YAML         = require('yamljs');
+
 
 var data = {};
 
@@ -54,8 +54,8 @@ function parser(file, callback) {
             lines    = text.split('\n'),
             filename = file.path.substring(0, file.path.length - 4),
             key      = 'server/documents',
-            position = filename.indexOf(key)
-    ;
+            position = filename.indexOf(key);
+    
 
         // exit conditions
         if(!lines) {
@@ -81,8 +81,8 @@ function parser(file, callback) {
             ],
             index,
             meta,
-            line
-    ;
+            line;
+    
 
         for(index = 0; index < lineCount; index++) {
 

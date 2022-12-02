@@ -15,8 +15,8 @@ var
     oAuth       = fs.existsSync(oAuthConfig)
         ? require(oAuthConfig)
         : false,
-    github
-;
+    github;
+
 
 if(!oAuth) {
     console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');

@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.toast = $.fn.toast = function(parameters) {
         var
@@ -34,8 +34,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue
-  ;
+            returnedValue;
+  
         $allModules
             .each(function() {
                 var
@@ -70,8 +70,8 @@
                     instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
 
                     id,
-                    module
-      ;
+                    module;
+      
                 module = {
 
                     initialize: function() {
@@ -103,8 +103,8 @@
                         module.verbose('Storing instance of toast');
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance)
-                        ;
+                            .data(moduleNamespace, instance);
+                        
                     },
 
                     destroy: function() {
@@ -121,8 +121,8 @@
                             $close = undefined;
                         }
                         $module
-                            .removeData(moduleNamespace)
-                        ;
+                            .removeData(moduleNamespace);
+                        
                     },
 
                     show: function(callback) {
@@ -193,8 +193,8 @@
 
                                 $toast
                                     .addClass(settings.class + ' ' + className.toast)
-                                    .append($content)
-                                ;
+                                    .append($content);
+                                
                                 $toast.css('opacity', String(settings.opacity));
                                 if (settings.closeIcon) {
                                     $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
@@ -361,8 +361,8 @@
                             }
                             $toastBox
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
-                                .on('click' + eventNamespace, selector.deny, module.event.deny)
-                            ;
+                                .on('click' + eventNamespace, selector.deny, module.event.deny);
+                            
                         },
                     },
 
@@ -377,8 +377,8 @@
                                 $animationObject.off('animationend' + eventNamespace);
                             }
                             $toastBox
-                                .off('click' + eventNamespace)
-                            ;
+                                .off('click' + eventNamespace);
+                            
                         },
                     },
 
@@ -399,8 +399,8 @@
                                             callback.call($toastBox, element);
                                             settings.onVisible.call($toastBox, element);
                                         },
-                                    })
-                                ;
+                                    });
+                                
                             }
                         },
                         close: function(callback) {
@@ -437,8 +437,8 @@
                                             settings.onHidden.call($toastBox, element);
                                             module.destroy();
                                         },
-                                    })
-                                ;
+                                    });
+                                
                             }
                             else {
                                 module.error(error.noTransition);
@@ -546,8 +546,8 @@
                         toClass: function(selector) {
                             var
                                 classes = selector.trim().split(/\s+/),
-                                result = ''
-            ;
+                                result = '';
+            
 
                             classes.forEach(function (element) {
                                 result += '.' + element;
@@ -574,8 +574,8 @@
                                 },
                                 escapedChar  = function(chr) {
                                     return escape[chr];
-                                }
-            ;
+                                };
+            
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -655,8 +655,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -675,8 +675,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -706,8 +706,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -716,8 +716,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -770,13 +770,13 @@
                     module.initialize();
                     returnedValue = $module;
                 }
-            })
-        ;
+            });
+        
 
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.toast.settings = {

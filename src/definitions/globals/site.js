@@ -38,8 +38,8 @@
             instance        = $module.data(moduleNamespace),
 
             module,
-            returnedValue
-  ;
+            returnedValue;
+  
         module = {
 
             initialize: function() {
@@ -50,8 +50,8 @@
                 module.verbose('Storing instance of site', module);
                 instance = module;
                 $module
-                    .data(moduleNamespace, module)
-                ;
+                    .data(moduleNamespace, module);
+                
             },
 
             normalize: function() {
@@ -89,8 +89,8 @@
             || window.mozRequestAnimationFrame
             || window.webkitRequestAnimationFrame
             || window.msRequestAnimationFrame
-            || function(callback) { setTimeout(callback, 0); }
-                        ;
+            || function(callback) { setTimeout(callback, 0); };
+                        
                     }
                 },
             },
@@ -102,8 +102,8 @@
             enabled: {
                 modules: function(modules) {
                     var
-                        enabledModules = []
-        ;
+                        enabledModules = [];
+        
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(module.moduleExists(name)) {
@@ -117,8 +117,8 @@
             disabled: {
                 modules: function(modules) {
                     var
-                        disabledModules = []
-        ;
+                        disabledModules = [];
+        
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(!module.moduleExists(name)) {
@@ -135,19 +135,19 @@
                         ? (modules === 'all')
                             ? settings.modules
                             : [modules]
-                        : modules || settings.modules
-                    ;
+                        : modules || settings.modules;
+                    
                     modifyExisting = (modifyExisting !== undefined)
                         ? modifyExisting
-                        : true
-                    ;
+                        : true;
+                    
                     $.each(modules, function(index, name) {
                         var
                             namespace = (module.moduleExists(name))
                                 ? $.fn[name].settings.namespace || false
                                 : true,
-                            $existingModules
-          ;
+                            $existingModules;
+          
                         if(module.moduleExists(name)) {
                             module.verbose('Changing default setting', setting, value, name);
                             $.fn[name].settings[setting] = value;
@@ -164,16 +164,16 @@
                 settings: function(newSettings, modules, modifyExisting) {
                     modules = (typeof modules === 'string')
                         ? [modules]
-                        : modules || settings.modules
-                    ;
+                        : modules || settings.modules;
+                    
                     modifyExisting = (modifyExisting !== undefined)
                         ? modifyExisting
-                        : true
-                    ;
+                        : true;
+                    
                     $.each(modules, function(index, name) {
                         var
-                            $existingModules
-          ;
+                            $existingModules;
+          
                         if(module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
                             $.extend(true, $.fn[name].settings, newSettings);
@@ -249,8 +249,8 @@
             destroy: function() {
                 module.verbose('Destroying previous site for', $module);
                 $module
-                    .removeData(moduleNamespace)
-                ;
+                    .removeData(moduleNamespace);
+                
             },
 
             cache: {},
@@ -308,8 +308,8 @@
                     var
                         currentTime,
                         executionTime,
-                        previousTime
-        ;
+                        previousTime;
+        
                     if(settings.performance) {
                         currentTime   = new Date().getTime();
                         previousTime  = time || currentTime;
@@ -328,8 +328,8 @@
                 display: function() {
                     var
                         title = settings.name + ':',
-                        totalTime = 0
-        ;
+                        totalTime = 0;
+        
                     time = false;
                     clearTimeout(module.performance.timer);
                     $.each(performance, function(index, data) {
@@ -356,8 +356,8 @@
                     object = instance,
                     maxDepth,
                     found,
-                    response
-      ;
+                    response;
+      
                 passedArguments = passedArguments || queryArguments;
                 context         = context         || element;
                 if(typeof query == 'string' && object !== undefined) {
@@ -366,8 +366,8 @@
                     $.each(query, function(depth, value) {
                         var camelCaseValue = (depth != maxDepth)
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                            : query
-          ;
+                            : query;
+          
                         if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                             object = object[camelCaseValue];
                         }
@@ -421,8 +421,8 @@
         }
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.site.settings = {

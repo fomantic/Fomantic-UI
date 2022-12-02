@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.transition = function() {
         var
@@ -36,8 +36,8 @@
             queryArguments  = [].slice.call(arguments, 1),
             methodInvoked   = (typeof query === 'string'),
 
-            returnedValue
-  ;
+            returnedValue;
+  
         $allModules
             .each(function(index) {
                 var
@@ -55,8 +55,8 @@
 
                     moduleNamespace,
                     eventNamespace,
-                    module
-      ;
+                    module;
+      
 
                 module = {
 
@@ -99,15 +99,15 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance)
-                        ;
+                            .data(moduleNamespace, instance);
+                        
                     },
 
                     destroy: function() {
                         module.verbose('Destroying previous module for', element);
                         $module
-                            .removeData(moduleNamespace)
-                        ;
+                            .removeData(moduleNamespace);
+                        
                     },
 
                     refresh: function() {
@@ -119,8 +119,8 @@
                         module.verbose('Forcing element repaint');
                         var
                             $parentElement = $module.parent(),
-                            $nextElement = $module.next()
-          ;
+                            $nextElement = $module.next();
+          
                         if($nextElement.length === 0) {
                             $module.detach().appendTo($parentElement);
                         }
@@ -132,31 +132,31 @@
                     repaint: function() {
                         module.verbose('Repainting element');
                         var
-                            fakeAssignment = element.offsetWidth
-          ;
+                            fakeAssignment = element.offsetWidth;
+          
                     },
 
                     delay: function(interval) {
                         var
                             direction = module.get.animationDirection(),
                             shouldReverse,
-                            delay
-          ;
+                            delay;
+          
                         if(!direction) {
                             direction = module.can.transition()
                                 ? module.get.direction()
-                                : 'static'
-                            ;
+                                : 'static';
+                            
                         }
                         interval = (interval !== undefined)
                             ? interval
-                            : settings.interval
-                        ;
+                            : settings.interval;
+                        
                         shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
                         delay = (shouldReverse || settings.reverse === true)
                             ? ($allModules.length - index) * interval
-                            : index * interval
-                        ;
+                            : index * interval;
+                        
                         module.debug('Delaying animation by', delay);
                         setTimeout(module.animate, delay);
                     },
@@ -210,8 +210,8 @@
                                 module.queuing = false;
                                 module.repaint();
                                 module.animate.apply(this, settings);
-                            })
-                        ;
+                            });
+                        
                     },
 
                     complete: function (event) {
@@ -248,34 +248,34 @@
                                 displayType    = module.get.displayType(),
                                 overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
                                 inlineDisplay  = $module[0].style.display,
-                                mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
-            ;
+                                mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
+            
                             if (mustStayHidden){
                                 module.remove.transition();
                                 return false;
                             }
                             module.verbose('Overriding default display to show element', displayType);
                             $module
-                                .attr('style', overrideStyle)
-                            ;
+                                .attr('style', overrideStyle);
+                            
                             return true;
                         },
                         hidden: function() {
                             var
                                 style          = $module.attr('style'),
                                 currentDisplay = $module.css('display'),
-                                emptyStyle     = (style === undefined || style === '')
-            ;
+                                emptyStyle     = (style === undefined || style === '');
+            
                             if(currentDisplay !== 'none' && !module.is.hidden()) {
                                 module.verbose('Overriding default display to hide element');
                                 $module
-                                    .css('display', 'none')
-                                ;
+                                    .css('display', 'none');
+                                
                             }
                             else if(emptyStyle) {
                                 $module
-                                    .removeAttr('style')
-                                ;
+                                    .removeAttr('style');
+                                
                             }
                         },
                     },
@@ -283,8 +283,8 @@
                     has: {
                         direction: function(animation) {
                             var
-                                hasDirection = false
-            ;
+                                hasDirection = false;
+            
                             animation = animation || settings.animation;
                             if(typeof animation === 'string') {
                                 animation = animation.split(' ');
@@ -298,8 +298,8 @@
                         },
                         inlineDisplay: function() {
                             var
-                                style = $module.attr('style') || ''
-            ;
+                                style = $module.attr('style') || '';
+            
                             return Array.isArray(style.match(/display.*?;/, ''));
                         },
                     },
@@ -327,15 +327,15 @@
                             duration = duration || settings.duration;
                             duration = (typeof duration == 'number')
                                 ? duration + 'ms'
-                                : duration
-                            ;
+                                : duration;
+                            
                             if(duration || duration === 0) {
                                 module.verbose('Setting animation duration', duration);
                                 $module
                                     .css({
                                         'animation-duration': duration,
-                                    })
-                                ;
+                                    });
+                                
                             }
                         },
                         direction: function(direction) {
@@ -350,34 +350,34 @@
                         looping: function() {
                             module.debug('Transition set to loop');
                             $module
-                                .addClass(className.looping)
-                            ;
+                                .addClass(className.looping);
+                            
                         },
                         hidden: function() {
                             $module
                                 .addClass(className.transition)
-                                .addClass(className.hidden)
-                            ;
+                                .addClass(className.hidden);
+                            
                         },
                         inward: function() {
                             module.debug('Setting direction to inward');
                             $module
                                 .removeClass(className.outward)
-                                .addClass(className.inward)
-                            ;
+                                .addClass(className.inward);
+                            
                         },
                         outward: function() {
                             module.debug('Setting direction to outward');
                             $module
                                 .removeClass(className.inward)
-                                .addClass(className.outward)
-                            ;
+                                .addClass(className.outward);
+                            
                         },
                         visible: function() {
                             $module
                                 .addClass(className.transition)
-                                .addClass(className.visible)
-                            ;
+                                .addClass(className.visible);
+                            
                         },
                     },
 
@@ -387,8 +387,8 @@
                             module.debug('Starting tween', animationClass);
                             $module
                                 .addClass(animationClass)
-                                .one(animationEnd + '.complete' + eventNamespace, module.complete)
-                            ;
+                                .one(animationEnd + '.complete' + eventNamespace, module.complete);
+                            
                             if(settings.useFailSafe) {
                                 module.add.failSafe();
                             }
@@ -418,12 +418,12 @@
                     restore: {
                         conditions: function() {
                             var
-                                animation = module.get.currentAnimation()
-            ;
+                                animation = module.get.currentAnimation();
+            
                             if(animation) {
                                 $module
-                                    .removeClass(animation)
-                                ;
+                                    .removeClass(animation);
+                                
                                 module.verbose('Removing animation class', module.cache);
                             }
                             module.remove.duration();
@@ -433,8 +433,8 @@
                     add: {
                         failSafe: function() {
                             var
-                                duration = module.get.duration()
-            ;
+                                duration = module.get.duration();
+            
                             module.timer = setTimeout(function() {
                                 $module.triggerHandler(animationEnd);
                             }, duration + settings.failSafeDelay);
@@ -462,13 +462,13 @@
                         direction: function() {
                             $module
                                 .removeClass(className.inward)
-                                .removeClass(className.outward)
-                            ;
+                                .removeClass(className.outward);
+                            
                         },
                         duration: function() {
                             $module
-                                .css('animation-duration', '')
-                            ;
+                                .css('animation-duration', '');
+                            
                         },
                         failSafe: function() {
                             module.verbose('Removing fail safe timer', module.timer);
@@ -487,16 +487,16 @@
                             if( module.is.looping() ) {
                                 module.reset();
                                 $module
-                                    .removeClass(className.looping)
-                                ;
+                                    .removeClass(className.looping);
+                                
                             }
                         },
                         transition: function() {
                             $module
                                 .removeClass(className.transition)
                                 .removeClass(className.visible)
-                                .removeClass(className.hidden)
-                            ;
+                                .removeClass(className.hidden);
+                            
                         },
                     },
                     get: {
@@ -545,36 +545,36 @@
                                 animationClass = animation || settings.animation,
                                 directionClass = (module.can.transition() && !module.has.direction())
                                     ? module.get.direction() + ' '
-                                    : ''
-            ;
+                                    : '';
+            
                             return className.animating + ' '
               + className.transition + ' '
               + directionClass
-              + animationClass
-                            ;
+              + animationClass;
+                            
                         },
                         currentAnimation: function() {
                             return (module.cache && module.cache.animation !== undefined)
                                 ? module.cache.animation
-                                : false
-                            ;
+                                : false;
+                            
                         },
                         currentDirection: function() {
                             return module.is.inward()
                                 ? className.inward
-                                : className.outward
-                            ;
+                                : className.outward;
+                            
                         },
                         direction: function() {
                             return module.is.hidden() || !module.is.visible()
                                 ? className.inward
-                                : className.outward
-                            ;
+                                : className.outward;
+                            
                         },
                         animationDirection: function(animation) {
                             var
-                                direction
-            ;
+                                direction;
+            
                             animation = animation || settings.animation;
                             if(typeof animation === 'string') {
                                 animation = animation.split(' ');
@@ -603,14 +603,14 @@
                                 ? (duration.indexOf('ms') > -1)
                                     ? parseFloat(duration)
                                     : parseFloat(duration) * 1000
-                                : duration
-                            ;
+                                : duration;
+                            
                         },
                         displayType: function(shouldDetermine) {
                             shouldDetermine = (shouldDetermine !== undefined)
                                 ? shouldDetermine
-                                : true
-                            ;
+                                : true;
+                            
                             if(settings.displayType) {
                                 return settings.displayType;
                             }
@@ -641,8 +641,8 @@
                                     'MozAnimation': 'mozAnimationStart',
                                     'WebkitAnimation': 'webkitAnimationStart',
                                 },
-                                animation
-            ;
+                                animation;
+            
                             for(animation in animations){
                                 if( element.style[animation] !== undefined ){
                                     return animations[animation];
@@ -659,8 +659,8 @@
                                     'MozAnimation': 'mozAnimationEnd',
                                     'WebkitAnimation': 'webkitAnimationEnd',
                                 },
-                                animation
-            ;
+                                animation;
+            
                             for(animation in animations){
                                 if( element.style[animation] !== undefined ){
                                     return animations[animation];
@@ -682,8 +682,8 @@
                                 $clone,
                                 currentAnimation,
                                 inAnimation,
-                                directionExists
-            ;
+                                directionExists;
+            
                             if( transitionExists === undefined || forced) {
                                 module.verbose('Determining whether animation exists');
                                 elementClass = $module.attr('class');
@@ -696,13 +696,13 @@
                                     .removeClass(className.outward)
                                     .addClass(className.animating)
                                     .addClass(className.transition)
-                                    .css('animationName')
-                                ;
+                                    .css('animationName');
+                                
                                 $clone.detach().insertAfter($module);
                                 inAnimation = $clone
                                     .addClass(className.inward)
-                                    .css('animationName')
-                                ;
+                                    .css('animationName');
+                                
                                 if(!displayType) {
                                     $clone.detach().insertAfter($module);
                                     displayType = $clone
@@ -711,8 +711,8 @@
                                         .removeClass(className.hidden)
                                         .removeClass(className.visible)
                                         .show()
-                                        .css('display')
-                                    ;
+                                        .css('display');
+                                    
                                     module.verbose('Determining final display state', displayType);
                                     module.save.displayType(displayType);
                                 }
@@ -734,8 +734,8 @@
                             }
                             return (transitionExists !== undefined)
                                 ? transitionExists
-                                : directionExists
-                            ;
+                                : directionExists;
+                            
                         },
                         animate: function() {
                             // can transition does not return a value if animation does not exist
@@ -906,8 +906,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -926,8 +926,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -961,8 +961,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -971,8 +971,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1010,17 +1010,17 @@
                         }
                         return (found !== undefined)
                             ? found
-                            : false
-                        ;
+                            : false;
+                        
                     },
                 };
                 module.initialize();
-            })
-        ;
+            });
+        
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     // Records if CSS transition is available

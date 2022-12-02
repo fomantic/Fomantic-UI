@@ -22,8 +22,8 @@ var
 
     css         = require('../build/css'),
     js          = require('../build/javascript'),
-    assets      = require('../build/assets')
-;
+    assets      = require('../build/assets');
+
 
 
 module.exports = function () {
@@ -49,10 +49,10 @@ module.exports = function () {
                 base: 'src/',
             })
                 .pipe(gulp.dest(config.paths.output.less))
-                .pipe(print(log.created))
-            ;
-        })
-    ;
+                .pipe(print(log.created));
+            
+        });
+    
 
     /*--------------
     Copy Examples
@@ -69,10 +69,10 @@ module.exports = function () {
                 base: 'examples/',
             })
                 .pipe(gulp.dest(config.paths.output.examples))
-                .pipe(print(log.created))
-            ;
-        })
-    ;
+                .pipe(print(log.created));
+            
+        });
+    
 
     /*--------------
       Watch CSS

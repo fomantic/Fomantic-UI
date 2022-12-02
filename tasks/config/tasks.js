@@ -2,8 +2,8 @@ var
     browserslist = require('browserslist'),
     console = require('better-console'),
     config  = require('./user'),
-    release = require('./project/release')
-;
+    release = require('./project/release');
+
 
 var defaultBrowsers = browserslist(browserslist.defaults);
 var userBrowsers = browserslist();
@@ -114,8 +114,8 @@ module.exports = {
                             element: /[\/\\]([^\/\\*]*)\.overrides/,
                         },
                         theme,
-                        element
-          ;
+                        element;
+          
                     if(error && error.filename && error.filename.match(/theme.less/)) {
                         if (error.line == 9) {
                             element = regExp.variable.exec(error.message)[1];

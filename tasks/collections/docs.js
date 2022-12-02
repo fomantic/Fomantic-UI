@@ -11,8 +11,8 @@ module.exports = function (gulp) {
     var
     // docs tasks
         serveDocs = require('./../docs/serve'),
-        buildDocs = require('./../docs/build')
-  ;
+        buildDocs = require('./../docs/build');
+  
 
     gulp.task('serve-docs', serveDocs);
     gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';

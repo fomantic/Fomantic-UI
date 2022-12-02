@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.calendar = function(parameters) {
         var
@@ -44,8 +44,8 @@
                 '20': {'row': 3, 'column': 1 },
                 '30': {'row': 2, 'column': 1 },
             },
-            numberText = ['','one','two','three','four','five','six','seven','eight']
-  ;
+            numberText = ['','one','two','three','four','five','six','seven','eight'];
+  
 
         $allModules
             .each(function () {
@@ -80,8 +80,8 @@
                     focusDateUsedForRange = false,
                     selectionComplete = false,
                     classObserver,
-                    module
-      ;
+                    module;
+      
 
                 module = {
 
@@ -225,8 +225,8 @@
                     trigger: {
                         change: function() {
                             var
-                                inputElement = $input[0]
-            ;
+                                inputElement = $input[0];
+            
                             if(inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
@@ -245,8 +245,8 @@
                                 today = new Date(),
                                 date = module.get.date(),
                                 focusDate = module.get.focusDate(),
-                                display = module.helper.dateInRange(focusDate || date || settings.initialDate || today)
-            ;
+                                display = module.helper.dateInRange(focusDate || date || settings.initialDate || today);
+            
 
                             if (!focusDate) {
                                 focusDate = display;
@@ -259,8 +259,8 @@
                                 isDay = mode === 'day',
                                 isHour = mode === 'hour',
                                 isMinute = mode === 'minute',
-                                isTimeOnly = settings.type === 'time'
-            ;
+                                isTimeOnly = settings.type === 'time';
+            
 
                             var multiMonth = Math.max(settings.multiMonth, 1);
                             var monthOffset = !isDay ? 0 : module.get.monthOffset();
@@ -270,8 +270,8 @@
                                 hour = display.getHours(),
                                 day = display.getDate(),
                                 startMonth = display.getMonth() + monthOffset,
-                                year = display.getFullYear()
-            ;
+                                year = display.getFullYear();
+            
 
                             var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
                             var rows = isDay || isHour ? 6 : timeGap['row'];
@@ -307,8 +307,8 @@
                                     prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
                                         isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1),
                                     nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
-                                        isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1)
-              ;
+                                        isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1);
+              
 
                                 var tempMode = mode;
                                 if (isDay && settings.showWeekNumbers){
@@ -1043,8 +1043,8 @@
                                     S: ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
                                     w: w,
                                     ww: ('0'+w).slice(-2),
-                                }
-            ;
+                                };
+            
                             return format.replace(settings.regExp.token, function (match) {
                                 if (match in tokens) {
                                     return tokens[match];
@@ -1365,8 +1365,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-              ;
+                                previousTime;
+              
                             if (settings.performance) {
                                 currentTime = new Date().getTime();
                                 previousTime = time || currentTime;
@@ -1385,8 +1385,8 @@
                         display: function () {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-              ;
+                                totalTime = 0;
+              
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function (index, data) {
@@ -1416,8 +1416,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-            ;
+                            response;
+            
                         passedArguments = passedArguments || queryArguments;
                         context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
@@ -1426,8 +1426,8 @@
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-                ;
+                                    : query;
+                
                                 if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
                                 }
@@ -1479,12 +1479,12 @@
                     }
                     module.initialize();
                 }
-            })
-        ;
+            });
+        
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.calendar.settings = {

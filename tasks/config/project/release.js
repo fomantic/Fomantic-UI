@@ -6,8 +6,8 @@ var
     requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
-    version
-;
+    version;
+
 
 
 /*******************************
@@ -34,8 +34,8 @@ catch(error) {
 // looks for version in config or package.json (whichever is available)
 version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui')
     ? npmPackage.version
-    : config.version
-;
+    : config.version;
+
 
 
 /*******************************

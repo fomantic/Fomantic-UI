@@ -10,8 +10,8 @@ module.exports = function (gulp) {
 
     var
         clean   = require('./../clean'),
-        version = require('./../version')
-  ;
+        version = require('./../version');
+  
 
     gulp.task('clean', clean);
     gulp.task('clean').description = 'Clean dist folder';

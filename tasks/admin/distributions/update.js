@@ -33,8 +33,8 @@ var
         : false,
 
     // shorthand
-    version = project.version
-;
+    version = project.version;
+
 
 module.exports = function(callback) {
 
@@ -43,8 +43,8 @@ module.exports = function(callback) {
         total = release.distributions.length,
         timer,
         stream,
-        stepRepo
-  ;
+        stepRepo;
+  
 
     if(!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -89,8 +89,8 @@ module.exports = function(callback) {
             versionOptions =  { args: 'rev-parse --verify HEAD', cwd: outputDirectory },
 
             localRepoSetup  = fs.existsSync(path.join(outputDirectory, '.git')),
-            canProceed      = true
-    ;
+            canProceed      = true;
+    
 
 
         console.info('Processing repository:' + outputDirectory);
@@ -123,8 +123,8 @@ module.exports = function(callback) {
                         console.info('Nothing new to commit');
                         nextRepo();
                     }
-                })
-            ;
+                });
+            
         }
 
         // push changes to remote

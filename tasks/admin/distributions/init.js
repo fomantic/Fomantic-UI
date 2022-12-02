@@ -35,8 +35,8 @@ var
         : false,
 
     // shorthand
-    version = project.version
-;
+    version = project.version;
+
 
 module.exports = function(callback) {
 
@@ -45,8 +45,8 @@ module.exports = function(callback) {
         total = release.distributions.length,
         timer,
         stream,
-        stepRepo
-  ;
+        stepRepo;
+  
 
     if(!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -74,8 +74,8 @@ module.exports = function(callback) {
             resetOptions       = { args: '-q --hard', cwd: outputDirectory, quiet: true },
             gitURL             = 'git@github.com:' + release.org + '/' + repoName + '.git',
             repoURL            = 'https://github.com/' + release.org + '/' + repoName + '/',
-            localRepoSetup     = fs.existsSync(path.join(outputDirectory, '.git'))
-    ;
+            localRepoSetup     = fs.existsSync(path.join(outputDirectory, '.git'));
+    
 
         console.log('Processing repository: ' + outputDirectory);
 

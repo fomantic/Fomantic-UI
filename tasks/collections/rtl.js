@@ -7,8 +7,8 @@ module.exports = function (gulp) {
     // rtl
     var
         buildRTL = require('./../rtl/build'),
-        watchRTL = require('./../rtl/watch')
-  ;
+        watchRTL = require('./../rtl/watch');
+  
 
     gulp.task('watch-rtl', watchRTL);
     gulp.task('watch-rtl').description = 'DEPRECATED - use \'watch\' instead - Watch files as RTL';

@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.sidebar = function(parameters) {
         var
@@ -47,8 +47,8 @@
       || window.msRequestAnimationFrame
       || function(callback) { setTimeout(callback, 0); },
 
-            returnedValue
-  ;
+            returnedValue;
+  
 
         $allModules
             .each(function() {
@@ -86,8 +86,8 @@
                     tempBodyMargin = '',
                     hadScrollbar = false,
 
-                    module
-      ;
+                    module;
+      
 
                 module      = {
 
@@ -117,8 +117,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module)
-                        ;
+                            .data(moduleNamespace, module);
+                        
                     },
 
                     create: {
@@ -133,8 +133,8 @@
                         module.verbose('Destroying previous module for', $module);
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace)
-                        ;
+                            .removeData(moduleNamespace);
+                        
                         if(module.is.ios()) {
                             module.remove.ios();
                         }
@@ -149,8 +149,8 @@
                             if(settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                    clickedContext  = ($context.is(event.target))
-              ;
+                                    clickedContext  = ($context.is(event.target));
+              
                                 if(clickedInPusher) {
                                     module.verbose('User clicked on dimmed page');
                                     module.hide();
@@ -184,8 +184,8 @@
                             module.verbose('Adding clickaway events to context', $context);
                             $context
                                 .on('click'    + elementNamespace, module.event.clickaway)
-                                .on('touchend' + elementNamespace, module.event.clickaway)
-                            ;
+                                .on('touchend' + elementNamespace, module.event.clickaway);
+                            
                         },
                         scrollLock: function() {
                             if(settings.scrollLock) {
@@ -199,11 +199,11 @@
                             }
                             module.verbose('Adding events to contain sidebar scroll');
                             $document
-                                .on('touchmove' + elementNamespace, module.event.touch)
-                            ;
+                                .on('touchmove' + elementNamespace, module.event.touch);
+                            
                             $module
-                                .on('scroll' + eventNamespace, module.event.containScroll)
-                            ;
+                                .on('scroll' + eventNamespace, module.event.containScroll);
+                            
                         },
                     },
                     unbind: {
@@ -235,8 +235,8 @@
                                     top: height,
                                     bottom: -height,
                                 },
-                                style
-            ;
+                                style;
+            
 
                             if(isRTL){
                                 module.verbose('RTL detected, flipping widths');
@@ -253,8 +253,8 @@
                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
                 + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                + ' }'
-                                ;
+                + ' }';
+                                
                             }
                             else if(direction === 'top' || direction == 'bottom') {
                                 style  += ''
@@ -262,8 +262,8 @@
                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
                 + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                + ' }'
-                                ;
+                + ' }';
+                                
                             }
 
                             /* IE is only browser not to create context with transforms */
@@ -275,16 +275,16 @@
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                  + ' }'
-                                    ;
+                  + ' }';
+                                    
                                 }
                                 else if(direction === 'top' || direction == 'bottom') {
                                     style  += ''
                   + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                  + ' }'
-                                    ;
+                  + ' }';
+                                    
                                 }
                                 /* opposite sides visible forces content overlay */
                                 style += ''
@@ -292,13 +292,13 @@
                 + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
-                + ' }'
-                                ;
+                + ' }';
+                                
                             }
                             style += '</style>';
                             $style = $(style)
-                                .appendTo($head)
-                            ;
+                                .appendTo($head);
+                            
                             module.debug('Adding sizing css to head', $style);
                         },
                     },
@@ -341,8 +341,8 @@
                                     .children()
                                     .not(selector.omitted)
                                     .not($sidebars)
-                                    .wrapAll($pusher)
-                                ;
+                                    .wrapAll($pusher);
+                                
                                 module.refresh();
                             }
                             if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -359,17 +359,17 @@
 
                     attachEvents: function(selector, event) {
                         var
-                            $toggle = $(selector)
-          ;
+                            $toggle = $(selector);
+          
                         event = isFunction(module[event])
                             ? module[event]
-                            : module.toggle
-                        ;
+                            : module.toggle;
+                        
                         if($toggle.length > 0) {
                             module.debug('Attaching sidebar events to element', selector, event);
                             $toggle
-                                .on('click' + eventNamespace, event)
-                            ;
+                                .on('click' + eventNamespace, event);
+                            
                         }
                         else {
                             module.error(error.notFound, selector);
@@ -394,8 +394,8 @@
                     show: function(callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if(module.is.hidden()) {
                             if(settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -437,8 +437,8 @@
                     hide: function(callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
                             module.debug('Hiding sidebar', callback);
                             module.refreshSidebars();
@@ -464,8 +464,8 @@
                         var
                             $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
                             sidebarCount   = $otherSidebars.length,
-                            callbackCount  = 0
-          ;
+                            callbackCount  = 0;
+          
                         callback = callback || function(){};
                         $otherSidebars
                             .sidebar('hide', function() {
@@ -473,8 +473,8 @@
                                 if(callbackCount == sidebarCount) {
                                     callback();
                                 }
-                            })
-                        ;
+                            });
+                        
                     },
 
                     toggle: function() {
@@ -495,12 +495,12 @@
                                 : $pusher,
                             animate,
                             dim,
-                            transitionEnd
-          ;
+                            transitionEnd;
+          
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if(settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
                         }
@@ -541,12 +541,12 @@
                                 ? $module
                                 : $pusher,
                             animate,
-                            transitionEnd
-          ;
+                            transitionEnd;
+          
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         module.verbose('Removing context push state', module.get.direction());
 
                         module.unbind.clickaway();
@@ -605,8 +605,8 @@
                             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
-              ;
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+              
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
@@ -715,8 +715,8 @@
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
-              ;
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+              
                                 el.css(attribute, '');
                             });
                         },
@@ -737,16 +737,16 @@
                         transition: function() {
                             var
                                 direction = module.get.direction(),
-                                transition
-            ;
+                                transition;
+            
                             transition = ( module.is.mobile() )
                                 ? (settings.mobileTransition == 'auto')
                                     ? settings.defaultTransition.mobile[direction]
                                     : settings.mobileTransition
                                 : (settings.transition == 'auto')
                                     ? settings.defaultTransition.computer[direction]
-                                    : settings.transition
-                            ;
+                                    : settings.transition;
+                            
                             module.verbose('Determined transition', transition);
                             return transition;
                         },
@@ -759,8 +759,8 @@
                                     'MozTransition': 'transitionend',
                                     'WebkitTransition': 'webkitTransitionEnd',
                                 },
-                                transition
-            ;
+                                transition;
+            
                             for(transition in transitions){
                                 if( element.style[transition] !== undefined ){
                                     return transitions[transition];
@@ -799,8 +799,8 @@
                             if(module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                    isIE = ('ActiveXObject' in window)
-              ;
+                                    isIE = ('ActiveXObject' in window);
+              
                                 module.cache.isIE = (isIE11 || isIE);
                             }
                             return module.cache.isIE;
@@ -810,8 +810,8 @@
                             var
                                 userAgent      = navigator.userAgent,
                                 isIOS          = userAgent.match(regExp.ios),
-                                isMobileChrome = userAgent.match(regExp.mobileChrome)
-            ;
+                                isMobileChrome = userAgent.match(regExp.mobileChrome);
+            
                             if(isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
@@ -823,8 +823,8 @@
                         mobile: function() {
                             var
                                 userAgent    = navigator.userAgent,
-                                isMobile     = userAgent.match(regExp.mobile)
-            ;
+                                isMobile     = userAgent.match(regExp.mobile);
+            
                             if(isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
@@ -922,8 +922,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -942,8 +942,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -973,8 +973,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -983,8 +983,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1022,8 +1022,8 @@
                         }
                         return found;
                     },
-                }
-                ;
+                };
+                
 
                 if(methodInvoked) {
                     if(instance === undefined) {
@@ -1041,8 +1041,8 @@
 
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.sidebar.settings = {

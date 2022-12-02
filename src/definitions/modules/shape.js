@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.shape = function(parameters) {
         var
@@ -40,8 +40,8 @@
       || window.msRequestAnimationFrame
       || function(callback) { setTimeout(callback, 0); },
 
-            returnedValue
-  ;
+            returnedValue;
+  
 
         $allModules
             .each(function() {
@@ -74,8 +74,8 @@
                     // standard module
                     element       = this,
                     instance      = $module.data(moduleNamespace),
-                    module
-      ;
+                    module;
+      
 
                 module = {
 
@@ -89,16 +89,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance)
-                        ;
+                            .data(moduleNamespace, instance);
+                        
                     },
 
                     destroy: function() {
                         module.verbose('Destroying previous module for', element);
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace)
-                        ;
+                            .off(eventNamespace);
+                        
                     },
 
                     refresh: function() {
@@ -112,8 +112,8 @@
                         module.verbose('Forcing repaint event');
                         var
                             shape          = $sides[0] || document.createElement('div'),
-                            fakeAssignment = shape.offsetWidth
-          ;
+                            fakeAssignment = shape.offsetWidth;
+          
                     },
 
                     animate: function(propertyObject, callback) {
@@ -130,20 +130,20 @@
                         if(module.get.transitionEvent()) {
                             module.verbose('Starting CSS animation');
                             $module
-                                .addClass(className.animating)
-                            ;
+                                .addClass(className.animating);
+                            
                             $sides
                                 .css(propertyObject)
-                                .one(module.get.transitionEvent(), callback)
-                            ;
+                                .one(module.get.transitionEvent(), callback);
+                            
                             module.set.duration(settings.duration);
                             requestAnimationFrame(function() {
                                 $module
-                                    .addClass(className.animating)
-                                ;
+                                    .addClass(className.animating);
+                                
                                 $activeSide
-                                    .addClass(className.hidden)
-                                ;
+                                    .addClass(className.hidden);
+                                
                             });
                         }
                         else {
@@ -159,8 +159,8 @@
                                 setTimeout(function(){
                                     $module.shape(method);
                                 }, 0);
-                            })
-                        ;
+                            });
+                        
                     },
 
                     reset: function() {
@@ -168,23 +168,23 @@
                         $module
                             .removeClass(className.animating)
                             .attr('style', '')
-                            .removeAttr('style')
-                        ;
+                            .removeAttr('style');
+                        
                         // removeAttr style does not consistently work in safari
                         $sides
                             .attr('style', '')
-                            .removeAttr('style')
-                        ;
+                            .removeAttr('style');
+                        
                         $side
                             .attr('style', '')
                             .removeAttr('style')
-                            .removeClass(className.hidden)
-                        ;
+                            .removeClass(className.hidden);
+                        
                         $nextSide
                             .removeClass(className.animating)
                             .attr('style', '')
-                            .removeAttr('style')
-                        ;
+                            .removeAttr('style');
+                        
                     },
 
                     is: {
@@ -205,8 +205,8 @@
                             $activeSide = $side.filter('.' + settings.className.active);
                             $nextSide   = ( $activeSide.next(selector.side).length > 0 )
                                 ? $activeSide.next(selector.side)
-                                : $side.first()
-                            ;
+                                : $side.first();
+                            
                             nextIndex = false;
                             module.verbose('Active side set to', $activeSide);
                             module.verbose('Next side set to', $nextSide);
@@ -216,8 +216,8 @@
                             duration = duration || settings.duration;
                             duration = (typeof duration == 'number')
                                 ? duration + 'ms'
-                                : duration
-                            ;
+                                : duration;
+                            
                             module.verbose('Setting animation duration', duration);
                             if(settings.duration || settings.duration === 0) {
                                 $sides.add($side)
@@ -227,8 +227,8 @@
                                         '-ms-transition-duration': duration,
                                         '-o-transition-duration': duration,
                                         'transition-duration': duration,
-                                    })
-                                ;
+                                    });
+                                
                             }
                         },
 
@@ -236,14 +236,14 @@
                             var
                                 $activeSide = $side.filter('.' + settings.className.active),
                                 width       = $activeSide.outerWidth(true),
-                                height      = $activeSide.outerHeight(true)
-            ;
+                                height      = $activeSide.outerHeight(true);
+            
                             $module
                                 .css({
                                     width: width,
                                     height: height,
-                                })
-                            ;
+                                });
+                            
                         },
 
                         stageSize: function() {
@@ -265,8 +265,8 @@
                                     ? $nextSide.outerHeight(true)
                                     : (settings.height === 'initial')
                                         ? $module.height()
-                                        : settings.height
-            ;
+                                        : settings.height;
+            
                             $activeSide.removeClass(className.active);
                             $nextSide.addClass(className.active);
                             $clone.insertAfter($module);
@@ -295,11 +295,11 @@
                         active: function() {
                             module.verbose('Setting new side to active', $nextSide);
                             $side
-                                .removeClass(className.active)
-                            ;
+                                .removeClass(className.active);
+                            
                             $nextSide
-                                .addClass(className.active)
-                            ;
+                                .addClass(className.active);
+                            
                             settings.onChange.call($nextSide[0]);
                             module.set.defaultSide();
                         },
@@ -316,8 +316,8 @@
                                 return;
                             }
                             var
-                                transform = module.get.transform[type]()
-            ;
+                                transform = module.get.transform[type]();
+            
                             if( !module.is.animating()) {
                                 module.debug('Flipping '+type, $nextSide);
                                 module.set.stageSize();
@@ -361,8 +361,8 @@
                             up: function() {
                                 var
                                     translateZ = $activeSide.outerHeight(true) / 2,
-                                    translateY = $nextSide.outerHeight(true) - translateZ
-              ;
+                                    translateY = $nextSide.outerHeight(true) - translateZ;
+              
                                 return {
                                     transform: 'translateY(' + translateY + 'px) translateZ(-'+ translateZ + 'px) rotateX(-90deg)',
                                 };
@@ -372,8 +372,8 @@
                                 var
                                     translate = {
                                         z: $activeSide.outerHeight(true) / 2,
-                                    }
-              ;
+                                    };
+              
                                 return {
                                     transform: 'translateY(-' + translate.z + 'px) translateZ(-'+ translate.z + 'px) rotateX(90deg)',
                                 };
@@ -382,8 +382,8 @@
                             left: function() {
                                 var
                                     translateZ = $activeSide.outerWidth(true) / 2,
-                                    translateX = $nextSide.outerWidth(true) - translateZ
-              ;
+                                    translateX = $nextSide.outerWidth(true) - translateZ;
+              
                                 return {
                                     transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)',
                                 };
@@ -393,8 +393,8 @@
                                 var
                                     translate = {
                                         z: $activeSide.outerWidth(true) / 2,
-                                    }
-              ;
+                                    };
+              
                                 return {
                                     transform: 'translateX(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateY(-90deg)',
                                 };
@@ -404,8 +404,8 @@
                                 var
                                     translate = {
                                         x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                                    }
-              ;
+                                    };
+              
                                 return {
                                     transform: 'translateX(' + translate.x + 'px) rotateY(180deg)',
                                 };
@@ -415,8 +415,8 @@
                                 var
                                     translate = {
                                         x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
-                                    }
-              ;
+                                    };
+              
                                 return {
                                     transform: 'translateX(' + translate.x + 'px) rotateY(-180deg)',
                                 };
@@ -432,8 +432,8 @@
                                     'MozTransition': 'transitionend',
                                     'WebkitTransition': 'webkitTransitionEnd',
                                 },
-                                transition
-            ;
+                                transition;
+            
                             for(transition in transitions){
                                 if( element.style[transition] !== undefined ){
                                     return transitions[transition];
@@ -444,8 +444,8 @@
                         nextSide: function() {
                             return ( $activeSide.next(selector.side).length > 0 )
                                 ? $activeSide.next(selector.side)
-                                : $side.first()
-                            ;
+                                : $side.first();
+                            
                         },
 
                     },
@@ -460,21 +460,21 @@
                                         active: ($nextSide.outerHeight(true) / 2),
                                         next: ($activeSide.outerHeight(true) / 2),
                                     },
-                                }
-            ;
+                                };
+            
                             module.verbose('Setting the initial animation position as above', $nextSide, box);
                             $activeSide
                                 .css({
                                     'transform': 'rotateX(0deg)',
-                                })
-                            ;
+                                });
+                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'top': box.origin + 'px',
                                     'transform': 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
-                                })
-                            ;
+                                });
+                            
                         },
 
                         below: function() {
@@ -485,21 +485,21 @@
                                         active: ($nextSide.outerHeight(true) / 2),
                                         next: ($activeSide.outerHeight(true) / 2),
                                     },
-                                }
-            ;
+                                };
+            
                             module.verbose('Setting the initial animation position as below', $nextSide, box);
                             $activeSide
                                 .css({
                                     'transform': 'rotateX(0deg)',
-                                })
-                            ;
+                                });
+                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'top': box.origin + 'px',
                                     'transform': 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
-                                })
-                            ;
+                                });
+                            
                         },
 
                         left: function() {
@@ -514,21 +514,21 @@
                                         active: (height.next / 2),
                                         next: (height.active / 2),
                                     },
-                                }
-            ;
+                                };
+            
                             module.verbose('Setting the initial animation position as left', $nextSide, box);
                             $activeSide
                                 .css({
                                     'transform': 'rotateY(0deg)',
-                                })
-                            ;
+                                });
+                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
-                                })
-                            ;
+                                });
+                            
                         },
 
                         right: function() {
@@ -543,21 +543,21 @@
                                         active: (height.next / 2),
                                         next: (height.active / 2),
                                     },
-                                }
-            ;
+                                };
+            
                             module.verbose('Setting the initial animation position as right', $nextSide, box);
                             $activeSide
                                 .css({
                                     'transform': 'rotateY(0deg)',
-                                })
-                            ;
+                                });
+                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
-                                })
-                            ;
+                                });
+                            
                         },
 
                         behind: function() {
@@ -572,21 +572,21 @@
                                         active: (height.next / 2),
                                         next: (height.active / 2),
                                     },
-                                }
-            ;
+                                };
+            
                             module.verbose('Setting the initial animation position as behind', $nextSide, box);
                             $activeSide
                                 .css({
                                     'transform': 'rotateY(0deg)',
-                                })
-                            ;
+                                });
+                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(-180deg)',
-                                })
-                            ;
+                                });
+                            
                         },
                     },
                     setting: function(name, value) {
@@ -650,8 +650,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -670,8 +670,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -704,8 +704,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -714,8 +714,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -774,13 +774,13 @@
                     }
                     module.initialize();
                 }
-            })
-        ;
+            });
+        
 
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.shape.settings = {

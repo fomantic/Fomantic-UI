@@ -8,8 +8,8 @@ var
     defaults       = require('../defaults'),
     release        = require('./release'),
 
-    requireDotFile = require('require-dot-file')
-;
+    requireDotFile = require('require-dot-file');
+
 
 /*******************************
           When to Ask
@@ -85,8 +85,8 @@ module.exports = {
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function() {
         var
-            config = when.hasConfig()
-    ;
+            config = when.hasConfig();
+    
         return config['autoInstall'];
     },
 
@@ -98,8 +98,8 @@ module.exports = {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 1],
-                    nextDirectory = path.join(directory, path.sep, '..')
-        ;
+                    nextDirectory = path.join(directory, path.sep, '..');
+        
                 if( folder == 'bower_components') {
                     return {
                         name: 'Bower',
@@ -123,9 +123,9 @@ module.exports = {
                 }
                 // recurse downward
                 return walk(nextDirectory);
-            }
-    ;
-    // start walk from current directory if none specified
+            };
+    
+        // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);
     },
@@ -138,8 +138,8 @@ module.exports = {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 2],
-                    nextDirectory = path.join(directory, path.sep, '..')
-        ;
+                    nextDirectory = path.join(directory, path.sep, '..');
+        
                 if(['bower_components', 'node_modules', 'composer'].includes(folder)) {
                     moduleFolders++;
                 } else if(folder === '.pnpm') {
@@ -150,9 +150,9 @@ module.exports = {
                 }
                 // recurse downward
                 return walk(nextDirectory);
-            }
-    ;
-    // start walk from current directory if none specified
+            };
+    
+        // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);
     },
@@ -165,8 +165,8 @@ module.exports = {
                     source: {},
                     output: {},
                 },
-            }
-    ;
+            };
+    
 
         // add components
         if(answers.components) {

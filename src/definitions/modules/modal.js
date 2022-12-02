@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.modal = $.fn.modal = function(parameters) {
         var
@@ -45,8 +45,8 @@
       || window.msRequestAnimationFrame
       || function(callback) { setTimeout(callback, 0); },
 
-            returnedValue
-  ;
+            returnedValue;
+  
 
         $allModules
             .each(function() {
@@ -93,8 +93,8 @@
                     elementEventNamespace,
                     id,
                     observer,
-                    module
-      ;
+                    module;
+      
                 module  = {
 
                     initialize: function() {
@@ -167,8 +167,8 @@
                         module.verbose('Storing instance of modal');
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance)
-                        ;
+                            .data(moduleNamespace, instance);
+                        
                     },
 
                     create: {
@@ -200,8 +200,8 @@
                                     debug: settings.debug,
                                     dimmerName: 'modals',
                                 },
-                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
-            ;
+                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
+            
                             if($.fn.dimmer === undefined) {
                                 module.error(error.dimmer);
                                 return;
@@ -237,8 +237,8 @@
                         module.verbose('Destroying previous modal');
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace)
-                        ;
+                            .off(eventNamespace);
+                        
                         $window.off(elementEventNamespace);
                         $dimmer.off(elementEventNamespace);
                         $closeIcon.off(elementEventNamespace);
@@ -283,34 +283,34 @@
                     refreshInputs: function(){
                         if($inputs){
                             $inputs
-                                .off('keydown' + elementEventNamespace)
-                            ;
+                                .off('keydown' + elementEventNamespace);
+                            
                         }
                         $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
-                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
-                        ;
+                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first);
+                        
                         $inputs.last()
-                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
-                        ;
+                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last);
+                        
                     },
 
                     attachEvents: function(selector, event) {
                         var
-                            $toggle = $(selector)
-          ;
+                            $toggle = $(selector);
+          
                         event = isFunction(module[event])
                             ? module[event]
-                            : module.toggle
-                        ;
+                            : module.toggle;
+                        
                         if($toggle.length > 0) {
                             module.debug('Attaching modal events to element', selector, event);
                             $toggle
                                 .off(eventNamespace)
-                                .on('click' + eventNamespace, event)
-                            ;
+                                .on('click' + eventNamespace, event);
+                            
                         }
                         else {
                             module.error(error.notFound, selector);
@@ -323,14 +323,14 @@
                             $module
                                 .on('click' + eventNamespace, selector.close, module.event.close)
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
-                                .on('click' + eventNamespace, selector.deny, module.event.deny)
-                            ;
+                                .on('click' + eventNamespace, selector.deny, module.event.deny);
+                            
                             $closeIcon
-                                .on('keyup' + elementEventNamespace, module.event.closeKeyUp)
-                            ;
+                                .on('keyup' + elementEventNamespace, module.event.closeKeyUp);
+                            
                             $window
-                                .on('resize' + elementEventNamespace, module.event.resize)
-                            ;
+                                .on('resize' + elementEventNamespace, module.event.resize);
+                            
                         },
                         scrollLock: function() {
                             // touch events default to passive, due to changes in chrome to optimize mobile perf
@@ -387,8 +387,8 @@
                         },
                         closeKeyUp: function(event){
                             var
-                                keyCode   = event.which
-            ;
+                                keyCode   = event.which;
+            
                             if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
                                 module.hide();
                             }
@@ -396,8 +396,8 @@
                         inputKeyDown: {
                             first: function(event) {
                                 var
-                                    keyCode = event.which
-              ;
+                                    keyCode = event.which;
+              
                                 if (keyCode === settings.keys.tab && event.shiftKey) {
                                     $inputs.last().trigger('focus');
                                     event.preventDefault();
@@ -405,8 +405,8 @@
                             },
                             last: function(event) {
                                 var
-                                    keyCode = event.which
-              ;
+                                    keyCode = event.which;
+              
                                 if (keyCode === settings.keys.tab && !event.shiftKey) {
                                     $inputs.first().trigger('focus');
                                     event.preventDefault();
@@ -416,8 +416,8 @@
                         mousedown: function(event) {
                             var
                                 $target   = $(event.target),
-                                isRtl = module.is.rtl()
-            ;
+                                isRtl = module.is.rtl();
+            
                             initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
                             if(initialMouseDownInModal) {
                                 module.verbose('Mouse down event registered inside the modal');
@@ -443,8 +443,8 @@
                             var
                                 $target   = $(event.target),
                                 isInModal = ($target.closest(selector.modal).length > 0),
-                                isInDOM   = $.contains(document.documentElement, event.target)
-            ;
+                                isInDOM   = $.contains(document.documentElement, event.target);
+            
                             if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front) ) {
                                 module.debug('Dimmer clicked, hiding all modals');
                                 if(settings.allowMultiple) {
@@ -464,8 +464,8 @@
                         },
                         keyboard: function(event) {
                             var
-                                keyCode   = event.which
-            ;
+                                keyCode   = event.which;
+            
                             if(keyCode === settings.keys.escape) {
                                 if(settings.closable) {
                                     module.debug('Escape key pressed hiding modal');
@@ -498,8 +498,8 @@
                     show: function(callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         module.refreshModals();
                         module.set.dimmerSettings();
                         module.set.dimmerStyles();
@@ -510,8 +510,8 @@
                     hide: function(callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         module.refreshModals();
                         return module.hideModal(callback);
                     },
@@ -519,8 +519,8 @@
                     showModal: function(callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if( module.is.animating() || !module.is.active() ) {
                             if(settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -582,8 +582,8 @@
                                                 }
                                                 callback();
                                             },
-                                        })
-                                    ;
+                                        });
+                                    
                                 }
                                 else {
                                     module.error(error.noTransition);
@@ -597,12 +597,12 @@
 
                     hideModal: function(callback, keepDimmed, hideOthersToo) {
                         var
-                            $previousModal = $otherModals.filter('.' + className.active).last()
-          ;
+                            $previousModal = $otherModals.filter('.' + className.active).last();
+          
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if(settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
@@ -650,8 +650,8 @@
                                             module.restore.focus();
                                             callback();
                                         },
-                                    })
-                                ;
+                                    });
+                                
                             }
                             else {
                                 module.error(error.noTransition);
@@ -693,12 +693,12 @@
 
                     hideAll: function(callback) {
                         var
-                            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
-          ;
+                            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating);
+          
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if( $visibleModals.length > 0 ) {
                             module.debug('Hiding all visible modals');
                             var hideOk = true;
@@ -717,17 +717,17 @@
 
                     hideOthers: function(callback) {
                         var
-                            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
-          ;
+                            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating);
+          
                         callback = isFunction(callback)
                             ? callback
-                            : function(){}
-                        ;
+                            : function(){};
+                        
                         if( $visibleModals.length > 0 ) {
                             module.debug('Hiding other modals', $otherModals);
                             $visibleModals
-                                .modal('hide modal', callback, true)
-                            ;
+                                .modal('hide modal', callback, true);
+                            
                         }
                     },
 
@@ -745,8 +745,8 @@
                         keyboardShortcuts: function() {
                             module.verbose('Adding keyboard shortcuts');
                             $document
-                                .on('keydown' + eventNamespace, module.event.keyboard)
-                            ;
+                                .on('keydown' + eventNamespace, module.event.keyboard);
+                            
                         },
                     },
 
@@ -754,8 +754,8 @@
                         focus: function() {
                             var
                                 $activeElement = $(document.activeElement),
-                                inCurrentModal = $activeElement.closest($module).length > 0
-            ;
+                                inCurrentModal = $activeElement.closest($module).length > 0;
+            
                             if(!inCurrentModal) {
                                 $focusedElement = $(document.activeElement).trigger('blur');
                             }
@@ -779,8 +779,8 @@
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
-              ;
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+              
                                 el.css(attribute, '');
                             });
                         },
@@ -796,15 +796,15 @@
                         clickaway: function() {
                             if (!settings.detachable) {
                                 $module
-                                    .off('mousedown' + elementEventNamespace)
-                                ;
+                                    .off('mousedown' + elementEventNamespace);
+                                
                             }
                             $dimmer
-                                .off('mousedown' + elementEventNamespace)
-                            ;
+                                .off('mousedown' + elementEventNamespace);
+                            
                             $dimmer
-                                .off('mouseup' + elementEventNamespace)
-                            ;
+                                .off('mouseup' + elementEventNamespace);
+                            
                         },
                         dimmerStyles: function() {
                             $dimmer.removeClass(className.inverted);
@@ -819,15 +819,15 @@
                         screenHeight: function() {
                             module.debug('Removing page height');
                             $context
-                                .css('height', '')
-                            ;
+                                .css('height', '');
+                            
                             module.remove.bodyStyle();
                         },
                         keyboardShortcuts: function() {
                             module.verbose('Removing keyboard shortcuts');
                             $document
-                                .off('keydown' + eventNamespace)
-                            ;
+                                .off('keydown' + eventNamespace);
+                            
                         },
                         scrolling: function() {
                             if(!keepScrollingClass) {
@@ -842,8 +842,8 @@
                         var
                             scrollHeight = $module.prop('scrollHeight'),
                             modalWidth   = $module.outerWidth(),
-                            modalHeight  = $module.outerHeight()
-          ;
+                            modalHeight  = $module.outerHeight();
+          
                         if(module.cache.pageHeight === undefined || modalHeight !== 0) {
                             $.extend(module.cache, {
                                 pageHeight: $document.outerHeight(),
@@ -879,8 +879,8 @@
                                 },
                                 escapedChar  = function(chr) {
                                     return escape[chr];
-                                }
-            ;
+                                };
+            
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -914,12 +914,12 @@
                                 scrollHeight   = module.cache.scrollHeight,
                                 height         = module.cache.height,
                                 paddingHeight  = settings.padding,
-                                startPosition  = (verticalCenter + topOffset)
-            ;
+                                startPosition  = (verticalCenter + topOffset);
+            
                             return (scrollHeight > height)
                                 ? (startPosition + scrollHeight + paddingHeight < contextHeight)
-                                : (height + (paddingHeight * 2) < contextHeight)
-                            ;
+                                : (height + (paddingHeight * 2) < contextHeight);
+                            
                         },
                     },
                     has: {
@@ -938,8 +938,8 @@
                             if(module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                    isIE = ('ActiveXObject' in window)
-              ;
+                                    isIE = ('ActiveXObject' in window);
+              
                                 module.cache.isIE = (isIE11 || isIE);
                             }
                             return module.cache.isIE;
@@ -947,8 +947,8 @@
                         animating: function() {
                             return $module.transition('is supported')
                                 ? $module.transition('is animating')
-                                : $module.is(':visible')
-                            ;
+                                : $module.is(':visible');
+                            
                         },
                         scrolling: function() {
                             return $dimmable.hasClass(className.scrolling);
@@ -992,8 +992,8 @@
                                 $autofocus = $inputs.filter('[autofocus]'),
                                 $input     = ($autofocus.length > 0)
                                     ? $autofocus.first()
-                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
-            ;
+                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first();
+            
                             if($input.length > 0) {
                                 $input.trigger('focus');
                             }
@@ -1005,23 +1005,23 @@
                             }
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
-              ;
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+              
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
                         clickaway: function() {
                             if (!settings.detachable) {
                                 $module
-                                    .on('mousedown' + elementEventNamespace, module.event.mousedown)
-                                ;
+                                    .on('mousedown' + elementEventNamespace, module.event.mousedown);
+                                
                             }
                             $dimmer
-                                .on('mousedown' + elementEventNamespace, module.event.mousedown)
-                            ;
+                                .on('mousedown' + elementEventNamespace, module.event.mousedown);
+                            
                             $dimmer
-                                .on('mouseup' + elementEventNamespace, module.event.mouseup)
-                            ;
+                                .on('mouseup' + elementEventNamespace, module.event.mouseup);
+                            
                         },
                         dimmerSettings: function() {
                             if($.fn.dimmer === undefined) {
@@ -1039,13 +1039,13 @@
                                         hide: settings.transition.hideDuration || settings.duration,
                                     },
                                 },
-                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
-            ;
+                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
+            
                             if(settings.inverted) {
                                 dimmerSettings.variation = (dimmerSettings.variation !== undefined)
                                     ? dimmerSettings.variation + ' inverted'
-                                    : 'inverted'
-                                ;
+                                    : 'inverted';
+                                
                             }
                             $context.dimmer('setting', dimmerSettings);
                         },
@@ -1074,8 +1074,8 @@
                                                 ? $document.scrollTop() + settings.padding
                                                 : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
                                         marginLeft: -(module.cache.width / 2),
-                                    })
-                                ;
+                                    });
+                                
                             } else {
                                 $module
                                     .css({
@@ -1083,8 +1083,8 @@
                                             ? -(module.cache.height / 2)
                                             : settings.padding / 2,
                                         marginLeft: -(module.cache.width / 2),
-                                    })
-                                ;
+                                    });
+                                
                             }
                             module.verbose('Setting modal offset for legacy mode');
                         },
@@ -1095,8 +1095,8 @@
                             else if(!$module.hasClass('bottom')) {
                                 module.debug('Modal is taller than page content, resizing page height');
                                 $context
-                                    .css('height', module.cache.height + (settings.padding * 2) + 'px')
-                                ;
+                                    .css('height', module.cache.height + (settings.padding * 2) + 'px');
+                                
                             }
                         },
                         active: function() {
@@ -1192,8 +1192,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -1212,8 +1212,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -1243,8 +1243,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -1253,8 +1253,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1319,13 +1319,13 @@
                     module.initialize();
                     returnedValue = $module;
                 }
-            })
-        ;
+            });
+        
 
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.modal.settings = {
@@ -1486,8 +1486,8 @@
         alert: function () {
             var settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = args.handler
-    ;
+                approveFn = args.handler;
+    
             return {
                 title: args.title,
                 content: args.content,
@@ -1503,8 +1503,8 @@
             var settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 approveFn = function(){args.handler(true);},
-                denyFn = function(){args.handler(false);}
-    ;
+                denyFn = function(){args.handler(false);};
+    
             return {
                 title: args.title,
                 content: args.content,
@@ -1528,12 +1528,12 @@
                 input    = $($.parseHTML(args.content)).filter('.ui.input'),
                 approveFn = function(){
                     var settings = $this.get.settings(),
-                        inputField = $this.get.element().find(settings.selector.prompt)[0]
-          ;
+                        inputField = $this.get.element().find(settings.selector.prompt)[0];
+          
                     args.handler($(inputField).val());
                 },
-                denyFn = function(){args.handler(null);}
-    ;
+                denyFn = function(){args.handler(null);};
+    
             if (input.length === 0) {
                 args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
             }

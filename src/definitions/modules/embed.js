@@ -20,8 +20,8 @@
         ? window
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
-            : Function('return this')()
-    ;
+            : Function('return this')();
+    
 
     $.fn.embed = function(parameters) {
 
@@ -37,8 +37,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue
-  ;
+            returnedValue;
+  
 
         $allModules
             .each(function() {
@@ -65,8 +65,8 @@
 
                     element         = this,
                     instance        = $module.data(moduleNamespace),
-                    module
-      ;
+                    module;
+      
 
                 module = {
 
@@ -82,8 +82,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module)
-                        ;
+                            .data(moduleNamespace, module);
+                        
                     },
 
                     destroy: function() {
@@ -91,8 +91,8 @@
                         module.reset();
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace)
-                        ;
+                            .off(eventNamespace);
+                        
                     },
 
                     refresh: function() {
@@ -108,16 +108,16 @@
                                 module.debug('Adding placeholder events');
                                 $module
                                     .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
-                                    .on('click' + eventNamespace, selector.icon, module.createAndShow)
-                                ;
+                                    .on('click' + eventNamespace, selector.icon, module.createAndShow);
+                                
                             }
                         },
                     },
 
                     create: function() {
                         var
-                            placeholder = module.get.placeholder()
-          ;
+                            placeholder = module.get.placeholder();
+          
                         if(placeholder) {
                             module.createPlaceholder();
                         }
@@ -128,8 +128,8 @@
 
                     createPlaceholder: function(placeholder) {
                         var
-                            icon  = module.get.icon()
-          ;
+                            icon  = module.get.icon();
+          
                         placeholder = placeholder || module.get.placeholder();
                         $module.html( templates.placeholder(placeholder, icon) );
                         module.debug('Creating placeholder for embed', placeholder, icon);
@@ -141,16 +141,16 @@
                         $embed = $('<div/>')
                             .addClass(className.embed)
                             .html( module.generate.embed(url) )
-                            .appendTo($module)
-                        ;
+                            .appendTo($module);
+                        
                         settings.onCreate.call(element, url);
                         module.debug('Creating embed object', $embed);
                     },
 
                     changeEmbed: function(url) {
                         $embed
-                            .html( module.generate.embed(url) )
-                        ;
+                            .html( module.generate.embed(url) );
+                        
                     },
 
                     createAndShow: function() {
@@ -163,8 +163,8 @@
                         module.debug('Changing video to ', source, id, url);
                         $module
                             .data(metadata.source, source)
-                            .data(metadata.id, id)
-                        ;
+                            .data(metadata.id, id);
+                        
                         if(url) {
                             $module.data(metadata.url, url);
                         }
@@ -219,31 +219,31 @@
                                 ? settings.icon
                                 : ($module.data(metadata.icon) !== undefined)
                                     ? $module.data(metadata.icon)
-                                    : module.determine.icon()
-                            ;
+                                    : module.determine.icon();
+                            
                         },
                         source: function(url) {
                             return (settings.source)
                                 ? settings.source
                                 : ($module.data(metadata.source) !== undefined)
                                     ? $module.data(metadata.source)
-                                    : module.determine.source()
-                            ;
+                                    : module.determine.source();
+                            
                         },
                         type: function() {
                             var source = module.get.source();
                             return (sources[source] !== undefined)
                                 ? sources[source].type
-                                : false
-                            ;
+                                : false;
+                            
                         },
                         url: function() {
                             return (settings.url)
                                 ? settings.url
                                 : ($module.data(metadata.url) !== undefined)
                                     ? $module.data(metadata.url)
-                                    : module.determine.url()
-                            ;
+                                    : module.determine.url();
+                            
                         },
                     },
 
@@ -255,8 +255,8 @@
                         },
                         source: function(url) {
                             var
-                                matchedSource = false
-            ;
+                                matchedSource = false;
+            
                             url = url || module.get.url();
                             if(url) {
                                 $.each(sources, function(name, source) {
@@ -270,23 +270,23 @@
                         },
                         icon: function() {
                             var
-                                source = module.get.source()
-            ;
+                                source = module.get.source();
+            
                             return (sources[source] !== undefined)
                                 ? sources[source].icon
-                                : false
-                            ;
+                                : false;
+                            
                         },
                         url: function() {
                             var
                                 id     = settings.id     || $module.data(metadata.id),
                                 source = settings.source || $module.data(metadata.source),
-                                url
-            ;
+                                url;
+            
                             url = (sources[source] !== undefined)
                                 ? sources[source].url.replace('{id}', id)
-                                : false
-                            ;
+                                : false;
+                            
                             if(url) {
                                 $module.data(metadata.url, url);
                             }
@@ -308,8 +308,8 @@
                                 .removeData(metadata.icon)
                                 .removeData(metadata.placeholder)
                                 .removeData(metadata.source)
-                                .removeData(metadata.url)
-                            ;
+                                .removeData(metadata.url);
+                            
                         },
                         active: function() {
                             $module.removeClass(className.active);
@@ -323,8 +323,8 @@
                         parameters: function(parameters) {
                             var
                                 urlString = [],
-                                index
-            ;
+                                index;
+            
                             for (index in parameters) {
                                 urlString.push( encodeURIComponent(index) + '=' + encodeURIComponent( parameters[index] ) );
                             }
@@ -338,8 +338,8 @@
                             var
                                 source = module.get.source(),
                                 html,
-                                parameters
-            ;
+                                parameters;
+            
                             url = module.get.url(url);
                             if(url) {
                                 parameters = module.generate.parameters(source);
@@ -354,8 +354,8 @@
                             var
                                 parameters = (sources[source] && sources[source].parameters !== undefined)
                                     ? sources[source].parameters(settings)
-                                    : {}
-            ;
+                                    : {};
+            
                             extraParameters = extraParameters || settings.parameters;
                             if(extraParameters) {
                                 parameters = $.extend({}, parameters, extraParameters);
@@ -378,8 +378,8 @@
                         autoplay: function() {
                             return (settings.autoplay === 'auto')
                                 ? (settings.placeholder || $module.data(metadata.placeholder) !== undefined)
-                                : settings.autoplay
-                            ;
+                                : settings.autoplay;
+                            
                         },
                     },
 
@@ -450,8 +450,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime
-            ;
+                                previousTime;
+            
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -470,8 +470,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0
-            ;
+                                totalTime = 0;
+            
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -504,8 +504,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response
-          ;
+                            response;
+          
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -514,8 +514,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query
-              ;
+                                    : query;
+              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -567,12 +567,12 @@
                     }
                     module.initialize();
                 }
-            })
-        ;
+            });
+        
         return (returnedValue !== undefined)
             ? returnedValue
-            : this
-        ;
+            : this;
+        
     };
 
     $.fn.embed.settings = {
@@ -674,22 +674,22 @@
             },
             iframe: function(url, parameters) {
                 var src = url,
-                    deQuote = $.fn.embed.settings.templates.deQuote
-      ;
+                    deQuote = $.fn.embed.settings.templates.deQuote;
+      
                 if (parameters) {
                     src += '?' + parameters;
                 }
                 return ''
         + '<iframe src="' + deQuote(src) + '"'
         + ' width="100%" height="100%"'
-        + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>'
-                ;
+        + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                
             },
             placeholder: function(image, icon) {
                 var
                     html = '',
-                    deQuote = $.fn.embed.settings.templates.deQuote
-      ;
+                    deQuote = $.fn.embed.settings.templates.deQuote;
+      
                 if(icon) {
                     html += '<i class="' + deQuote(icon) + ' icon"></i>';
                 }

@@ -31,17 +31,17 @@ var
 
     // shorthand
     version         = project.version,
-    output          = config.paths.output
+    output          = config.paths.output;
 
-;
+
 
 
 module.exports = function(callback) {
     var
         stream,
         index,
-        tasks = []
-  ;
+        tasks = [];
+  
 
     for(index in release.distributions) {
 
@@ -70,8 +70,8 @@ module.exports = function(callback) {
                     package: distribution + ' create package.json',
                 },
                 gatherFiles,
-                createList
-      ;
+                createList;
+      
 
             // get files for meteor
             gatherFiles = function(dir) {
@@ -88,14 +88,14 @@ module.exports = function(callback) {
                         'bower.json',
                         '.gitignore',
                     ],
-                    files = []
-        ;
+                    files = [];
+        
                 list.forEach(function(file) {
                     var
                         isOmitted = (omitted.indexOf(file) > -1),
                         filePath  = path.join(dir, file),
-                        stat      = fs.statSync(filePath)
-          ;
+                        stat      = fs.statSync(filePath);
+          
                     if(!isOmitted) {
                         if(stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
@@ -125,16 +125,16 @@ module.exports = function(callback) {
             tasks.push(function() {
                 var
                     files     = gatherFiles(outputDirectory),
-                    filenames = createList(files)
-          ;
+                    filenames = createList(files);
+          
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(replace(regExp.match.version, version))
                     .pipe(replace(regExp.match.files, filenames))
                     .pipe(rename(release.files.meteor))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
+                
             });
 
             if(distribution == 'CSS') {
@@ -142,17 +142,17 @@ module.exports = function(callback) {
                     var
                         themes,
                         components,
-                        releases
-          ;
+                        releases;
+          
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     components = gulp.src('dist/components/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     releases = gulp.src('dist/*', { base: 'dist/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     return mergeStream(themes, components, releases);
                 });
             }
@@ -163,26 +163,26 @@ module.exports = function(callback) {
                         themeImport,
                         themeConfig,
                         siteTheme,
-                        themes
-          ;
+                        themes;
+          
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     themeImport = gulp.src('src/semantic.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     themeImport = gulp.src('src/theme.less', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     themeConfig = gulp.src('src/theme.config.example', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     siteTheme = gulp.src('src/_site/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     themes = gulp.src('src/themes/**/*', { base: 'src/' })
-                        .pipe(gulp.dest(outputDirectory))
-                    ;
+                        .pipe(gulp.dest(outputDirectory));
+                    
                     return mergeStream(definitions, themeImport, themeConfig, siteTheme, themes);
                 });
             }
@@ -197,8 +197,8 @@ module.exports = function(callback) {
                         }
                         return pkg;
                     }))
-                    .pipe(gulp.dest(outputDirectory))
-                ;
+                    .pipe(gulp.dest(outputDirectory));
+                
             });
 
         })(distribution);

@@ -17,9 +17,9 @@ var
     gulpConfig = {},
 
     // semantic.json settings
-    userConfig
+    userConfig;
 
-;
+
 
 
 /*******************************
@@ -42,8 +42,8 @@ catch(error) {
 // extend user config with defaults
 gulpConfig = (!userConfig)
     ? extend(true, {}, defaults)
-    : extend(false, {}, defaults, userConfig)
-;
+    : extend(false, {}, defaults, userConfig);
+
 
 /*******************************
        Add Derived Values
