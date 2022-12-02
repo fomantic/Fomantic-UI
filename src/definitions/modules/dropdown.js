@@ -428,6 +428,9 @@ $.fn.dropdown = function(parameters) {
               if($input.is('[required]')) {
                 settings.forceSelection = true;
               }
+              if(!settings.allowTab) {
+                $input.removeAttr('tabindex');
+              }
               $input
                 .prop('required',false)
                 .removeAttr('class')
@@ -2507,13 +2510,14 @@ $.fn.dropdown = function(parameters) {
               module.debug('Added tabindex to dropdown');
               if( $module.attr('tabindex') === undefined) {
                 $module
-                  .attr('tabindex', 0)
+                  .attr('tabindex', $input.attr('tabindex') || 0)
                 ;
                 $menu
                   .attr('tabindex', -1)
                 ;
               }
             }
+            $input.removeAttr('tabindex');
           },
           initialLoad: function() {
             module.verbose('Setting initial load');
