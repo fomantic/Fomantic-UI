@@ -8,16 +8,16 @@
 */
 module.exports = function (gulp) {
 
-  var
+    var
     // docs tasks
-    install      = require('./../install'),
-    checkInstall = require('./../check-install')
+        install      = require('./../install'),
+        checkInstall = require('./../check-install')
   ;
 
-  gulp.task('install', install);
-  gulp.task('install').description = 'Runs set-up';
+    gulp.task('install', install);
+    gulp.task('install').description = 'Runs set-up';
 
-  gulp.task('check-install', checkInstall);
-  gulp.task('check-install').description = 'Displays current version of Semantic';
+    gulp.task('check-install', checkInstall);
+    gulp.task('check-install').description = 'Displays current version of Semantic';
 
 };

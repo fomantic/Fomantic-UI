@@ -1,8 +1,8 @@
-describe("UI Video", function() {
+describe('UI Video', function() {
 
-  moduleTests({
-    module  : 'video',
-    element : '.ui.video'
-  });
+    moduleTests({
+        module: 'video',
+        element: '.ui.video',
+    });
 
 });

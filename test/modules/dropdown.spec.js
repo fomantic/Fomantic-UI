@@ -1,8 +1,8 @@
-describe("UI Dropdown", function() {
+describe('UI Dropdown', function() {
 
-  moduleTests({
-    module  : 'dropdown',
-    element : '.ui.dropdown'
-  });
+    moduleTests({
+        module: 'dropdown',
+        element: '.ui.dropdown',
+    });
 
 });

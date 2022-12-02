@@ -8,16 +8,16 @@
 */
 module.exports = function (gulp) {
 
-  var
+    var
     // docs tasks
-    serveDocs = require('./../docs/serve'),
-    buildDocs = require('./../docs/build')
+        serveDocs = require('./../docs/serve'),
+        buildDocs = require('./../docs/build')
   ;
 
-  gulp.task('serve-docs', serveDocs);
-  gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';
+    gulp.task('serve-docs', serveDocs);
+    gulp.task('serve-docs').description = 'Serve file changes to SUI Docs';
 
-  gulp.task('build-docs', buildDocs);
-  gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
+    gulp.task('build-docs', buildDocs);
+    gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
 
 };

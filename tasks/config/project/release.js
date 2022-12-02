@@ -3,10 +3,10 @@
 *******************************/
 
 var
-  requireDotFile = require('require-dot-file'),
-  config,
-  npmPackage,
-  version
+    requireDotFile = require('require-dot-file'),
+    config,
+    npmPackage,
+    version
 ;
 
 
@@ -15,26 +15,26 @@ var
 *******************************/
 
 try {
-  config = requireDotFile('semantic.json', process.cwd());
+    config = requireDotFile('semantic.json', process.cwd());
 }
 catch(error) {}
 
 
 try {
-  npmPackage = require('../../../package.json');
+    npmPackage = require('../../../package.json');
 }
 catch(error) {
-  // generate fake package
-  npmPackage = {
-    name: 'Unknown',
-    version: 'x.x'
-  };
+    // generate fake package
+    npmPackage = {
+        name: 'Unknown',
+        version: 'x.x',
+    };
 }
 
 // looks for version in config or package.json (whichever is available)
 version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 'fomantic-ui')
-  ? npmPackage.version
-  : config.version
+    ? npmPackage.version
+    : config.version
 ;
 
 
@@ -44,11 +44,11 @@ version = (npmPackage && npmPackage.version !== undefined && npmPackage.name == 
 
 module.exports = {
 
-  title      : 'Fomantic UI',
-  repository : 'https://github.com/fomantic/Fomantic-UI',
-  url        : 'https://fomantic-ui.com/',
+    title: 'Fomantic UI',
+    repository: 'https://github.com/fomantic/Fomantic-UI',
+    url: 'https://fomantic-ui.com/',
 
-  banner: ''
+    banner: ''
     + '/*' + '\n'
     + ' * # <%= title %> - <%= version %>' + '\n'
     + ' * <%= repository %>' + '\n'
@@ -60,6 +60,6 @@ module.exports = {
     + ' *' + '\n'
     + ' */' + '\n',
 
-  version    : version
+    version: version,
 
 };

@@ -1,8 +1,8 @@
-xdescribe("UI Search", function() {
+xdescribe('UI Search', function() {
 
-  moduleTests({
-    module    : 'search',
-    element   : '.ui.search'
-  });
+    moduleTests({
+        module: 'search',
+        element: '.ui.search',
+    });
 
 });
