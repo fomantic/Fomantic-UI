@@ -868,7 +868,7 @@ $.api = $.fn.api = function(parameters) {
           },
           templatedURL: function(action) {
             action = action || $module.data(metadata.action) || settings.action || false;
-            url    = $module.data(metadata.url) || settings.url || false;
+            url    = settings.url || $module.data(metadata.url) || false;
             if(url) {
               module.debug('Using specified url', url);
               return url;
