@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -175,7 +175,7 @@
                         modal: function() {
                             $module = $('<div/>', {class: className.modal, role: 'dialog', 'aria-modal': true});
                             if (settings.closeIcon) {
-                                $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+                                $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close});
                                 $module.append($closeIcon);
                             }
                             if (settings.title !== '') {
@@ -576,7 +576,7 @@
                                                 }
                                                 module.save.focus();
                                                 module.set.active();
-                                                module.refreshInputs()
+                                                module.refreshInputs();
                                                 if(settings.autofocus) {
                                                     module.set.autofocus();
                                                 }
@@ -821,7 +821,7 @@
                             $context
                                 .css('height', '')
                             ;
-                            module.remove.bodyStyle()
+                            module.remove.bodyStyle();
                         },
                         keyboardShortcuts: function() {
                             module.verbose('Removing keyboard shortcuts');
@@ -1497,13 +1497,13 @@
                     class: settings.className.ok,
                     click: approveFn,
                 }],
-            }
+            };
         },
         confirm: function () {
             var settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = function(){args.handler(true)},
-                denyFn = function(){args.handler(false)}
+                approveFn = function(){args.handler(true);},
+                denyFn = function(){args.handler(false);}
     ;
             return {
                 title: args.title,
@@ -1519,7 +1519,7 @@
                     class: settings.className.cancel,
                     click: denyFn,
                 }],
-            }
+            };
         },
         prompt: function () {
             var $this    = this,
@@ -1532,7 +1532,7 @@
           ;
                     args.handler($(inputField).val());
                 },
-                denyFn = function(){args.handler(null)}
+                denyFn = function(){args.handler(null);}
     ;
             if (input.length === 0) {
                 args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
@@ -1551,8 +1551,8 @@
                     class: settings.className.cancel,
                     click: denyFn,
                 }],
-            }
+            };
         },
-    }
+    };
 
 })( jQuery, window, document );

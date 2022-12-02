@@ -27,6 +27,8 @@ module.exports = {
             imports: 'always-multiline',
             exports: 'always-multiline',
         }],
+        semi: ['error'],
+        'no-extra-semi': ['error'],
     },
     reportUnusedDisableDirectives: true,
 };

@@ -20,7 +20,7 @@ var data = {};
  */
 function startsWith(str, prefix) {
     return str.indexOf(prefix) === 0;
-};
+}
 
 function inArray(needle, haystack) {
     var length = haystack.length;

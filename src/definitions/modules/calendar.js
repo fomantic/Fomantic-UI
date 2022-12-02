@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -161,8 +161,8 @@
                             };
                             var onHidden = function () {
                                 module.blur();
-                                return settings.onHidden.apply($container, arguments)
-                            }
+                                return settings.onHidden.apply($container, arguments);
+                            };
                             if (!$input.length) {
                                 //no input, $container has to handle focus/blur
                                 $container.attr('tabindex', '0');
@@ -1074,7 +1074,7 @@
                                             return d[metadata.month].indexOf(date.getMonth()) > -1;
                                         } else if (d[metadata.month] instanceof Date) {
                                             var sdate = module.helper.sanitiseDate(d[metadata.month]);
-                                            return (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear())
+                                            return (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
                                         }
                                     } else if (d[metadata.date] && mode === 'day') {
                                         if (d[metadata.date] instanceof Date) {
@@ -1205,7 +1205,7 @@
                                             }
                                         }
                                     }
-                                }
+                                };
                                 for (var i = 0; i < hours.length; i++) {
                                     d = hours[i];
                                     if (typeof d === 'number' && date.getHours() == d) {

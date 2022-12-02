@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -618,7 +618,7 @@
     // Adds easing
     $.extend( $.easing, {
         easeOutQuad: function (x) {
-            return 1 - (1 - x) * (1 - x);;
+            return 1 - (1 - x) * (1 - x);
         },
     });
 

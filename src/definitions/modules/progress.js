@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -96,7 +96,7 @@
            * @returns {number} A precision. Could be 1, 10, 100, ... 1e+10.
            */
                         derivePrecision: function(min, total) {
-                            var precisionPower = 0
+                            var precisionPower = 0;
                             var precision = 1;
                             var ratio = min / total;
                             while (precisionPower < 10) {

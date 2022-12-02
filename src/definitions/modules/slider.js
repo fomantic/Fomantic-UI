@@ -8,7 +8,7 @@
  *
  */
 
-;(function ( $, window, document, undefined ) {
+(function ( $, window, document, undefined ) {
 
     'use strict';
 
@@ -175,7 +175,7 @@
                                 }
 
                                 if (settings.showLabelTicks) {
-                                    $module.addClass(className.ticked)
+                                    $module.addClass(className.ticked);
                                 }
                             }
                         },

@@ -1,38 +1,38 @@
 // node
-const fs = require('fs')
-const path = require('path')
-const childProcess = require('child_process')
+const fs = require('fs');
+const path = require('path');
+const childProcess = require('child_process');
 
 // npm
-const fetch = require('node-fetch')
-const semver = require('semver')
-const actions = require('@actions/core')
+const fetch = require('node-fetch');
+const semver = require('semver');
+const actions = require('@actions/core');
 
 // pkg
-const pkg = require('../package.json')
-const process = require('process')
+const pkg = require('../package.json');
+const process = require('process');
 
-const ghBase = 'https://api.github.com'
-const repoUrlPath = 'fomantic/Fomantic-UI'
-const npmBase = 'https://registry.npmjs.org'
-const npmPackage = 'fomantic-ui'
+const ghBase = 'https://api.github.com';
+const repoUrlPath = 'fomantic/Fomantic-UI';
+const npmBase = 'https://registry.npmjs.org';
+const npmPackage = 'fomantic-ui';
 const currentRev = childProcess // get the current rev from the repo
     .execSync('git rev-parse HEAD')
     .toString()
     .trim()
-    .slice(0, 7)
+    .slice(0, 7);
 
 const getNextVersion = async function () {
     const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
         .then(r => r.json())
         .then(milestones => milestones.filter(m => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
         .then(versions => versions.map(m => m.title)) // create array of versions
-        .then(versions => semver.sort(versions))
+        .then(versions => semver.sort(versions));
 
     // Return first entry aka the smallest version in milestones which would therefore
     // be the next version
-    return semver.parse(versions[0])
-}
+    return semver.parse(versions[0]);
+};
 
 const getPublishedVersion = async function () {
     // get the latest published nightly tagged version
@@ -45,22 +45,22 @@ const getPublishedVersion = async function () {
                 let buildCommit = nightly.indexOf('+')===-1 && versionInfo.gitHead ? '+'+(versionInfo.gitHead ?? '').slice(0,7) : '';
                 return nightly+buildCommit;
             })
-    )
-}
+    );
+};
 
 const getNightlyVersion = async function () {
-    const next = semver.parse(await getNextVersion())
-    const current = semver.parse(await getPublishedVersion())
+    const next = semver.parse(await getNextVersion());
+    const current = semver.parse(await getPublishedVersion());
 
     if (current.build[0] === currentRev) {
-        actions.setOutput('shouldPublish', false)
+        actions.setOutput('shouldPublish', false);
 
-        console.log('No new commits since last publish. Exiting.')
-        process.exit(0)
-        return
+        console.log('No new commits since last publish. Exiting.');
+        process.exit(0);
+        return;
     }
 
-    let nightlyVersion = `${next.version}-beta.0`
+    let nightlyVersion = `${next.version}-beta.0`;
 
     // Check if published version is the same version as next version.
     // Only check major, minor and patch as previously published nightly
@@ -71,21 +71,21 @@ const getNightlyVersion = async function () {
         nightlyVersion = semver.inc(
             `${next.version}-beta.${current.prerelease[1]}`,
             'prerelease'
-        )
+        );
     }
 
-    actions.setOutput('shouldPublish', 'yes')
-    return `${nightlyVersion}+${currentRev}`
-}
+    actions.setOutput('shouldPublish', 'yes');
+    return `${nightlyVersion}+${currentRev}`;
+};
 
 getNightlyVersion()
     .then(nightlyVersion => {
-        pkg.version = nightlyVersion
+        pkg.version = nightlyVersion;
     })
     .then(() => {
         fs.writeFileSync(
             path.resolve(__dirname, '../package.json'),
             JSON.stringify(pkg, null, 2)
-        )
+        );
     })
-    .then(() => console.log(`Done (${pkg.version})`))
+    .then(() => console.log(`Done (${pkg.version})`));

@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -192,7 +192,7 @@
                             module.verbose('Programmaticaly create flyout', $context);
                             $module = $('<div/>', {class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage});
                             if (settings.closeIcon) {
-                                $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close})
+                                $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close});
                                 $module.append($closeIcon);
                             }
                             if (settings.title !== '') {
@@ -1477,7 +1477,7 @@
                     class: settings.className.ok,
                     click: args.handler,
                 }],
-            }
+            };
         },
         confirm: function () {
             var
@@ -1490,13 +1490,13 @@
                 actions: [{
                     text: settings.text.ok,
                     class: settings.className.ok,
-                    click: function(){args.handler(true)},
+                    click: function(){args.handler(true);},
                 },{
                     text: settings.text.cancel,
                     class: settings.className.cancel,
-                    click: function(){args.handler(false)},
+                    click: function(){args.handler(false);},
                 }],
-            }
+            };
         },
         prompt: function () {
             var
@@ -1523,9 +1523,9 @@
                 },{
                     text: settings.text.cancel,
                     class: settings.className.cancel,
-                    click: function(){args.handler(null)},
+                    click: function(){args.handler(null);},
                 }],
-            }
+            };
         },
     };
 

@@ -5,9 +5,9 @@ var
     release = require('./project/release')
 ;
 
-var defaultBrowsers = browserslist(browserslist.defaults)
-var userBrowsers = browserslist()
-var hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers)
+var defaultBrowsers = browserslist(browserslist.defaults);
+var userBrowsers = browserslist();
+var hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
 
 var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
     'last 2 versions',
@@ -15,12 +15,12 @@ var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
     'opera 12.1',
     'bb 10',
     'android 4',
-]
+];
 
 // Node 12 does not support ??, so a little polyfill
 var nullish = (value,fallback) => {
-    return value !== undefined && value !== null ? value : fallback
-}
+    return value !== undefined && value !== null ? value : fallback;
+};
 
 module.exports = {
 

@@ -8,13 +8,13 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
-    };
+    }
 
     window = (typeof window != 'undefined' && window.Math == Math)
         ? window

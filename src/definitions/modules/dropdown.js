@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -3483,7 +3483,7 @@
                             return settings.apiSettings && module.can.useAPI();
                         },
                         noApiCache: function() {
-                            return settings.apiSettings && !settings.apiSettings.cache
+                            return settings.apiSettings && !settings.apiSettings.cache;
                         },
                         single: function() {
                             return !module.is.multiple();

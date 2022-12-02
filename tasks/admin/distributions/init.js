@@ -147,7 +147,7 @@ module.exports = function(callback) {
             // avoid rate throttling
             global.clearTimeout(timer);
             timer = global.setTimeout(function() {
-                stepRepo()
+                stepRepo();
             }, 0);
         }
 

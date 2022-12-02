@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -186,7 +186,7 @@
 
                         $module.on('clean' + eventNamespace, function(e) {
                             settings.onClean.call();
-                        })
+                        });
                     },
 
                     clear: function() {
@@ -746,7 +746,7 @@
                                                 if (settings.dateHandling == 'date') {
                                                     values[name] = date;
                                                 } else if(settings.dateHandling == 'input') {
-                                                    values[name] = $calendar.calendar('get input date')
+                                                    values[name] = $calendar.calendar('get input date');
                                                 } else if (settings.dateHandling == 'formatter') {
                                                     var type = $calendar.calendar('setting', 'type');
 
@@ -1152,7 +1152,7 @@
                                     isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                     validation = module.get.validation($el),
                                     hasEmptyRule = validation
-                                        ? $.grep(validation.rules, function(rule) { return rule.type == 'empty' }) !== 0
+                                        ? $.grep(validation.rules, function(rule) { return rule.type == 'empty'; }) !== 0
                                         : false,
                                     identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
               ;

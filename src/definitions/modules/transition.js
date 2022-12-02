@@ -8,7 +8,7 @@
  *
  */
 
-;(function ($, window, document, undefined) {
+(function ($, window, document, undefined) {
 
     'use strict';
 
@@ -1056,11 +1056,11 @@
         onStart: function() {},
         onComplete: function() {},
         onShow: function() {},
-        onBeforeShow: function(callback) {callback.call(this)},
+        onBeforeShow: function(callback) {callback.call(this);},
         onVisible: function() {},
         onHide: function() {},
         onHidden: function() {},
-        onBeforeHide: function(callback) {callback.call(this)},
+        onBeforeHide: function(callback) {callback.call(this);},
 
         // whether timeout should be used to ensure callback fires in cases animationend does not
         useFailSafe: true,
