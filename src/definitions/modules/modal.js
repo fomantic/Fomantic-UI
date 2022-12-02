@@ -447,7 +447,7 @@ $.modal = $.fn.modal = function(parameters) {
             ;
             if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front) ) {
               module.debug('Dimmer clicked, hiding all modals');
-              if(settings.allowMultiple) {
+              if(settings.allowMultiple && settings.multipleHideAll) {
                 if(!module.hideAll()) {
                   return;
                 }
@@ -1344,6 +1344,7 @@ $.fn.modal.settings = {
   observeChanges : false,
 
   allowMultiple  : false,
+  multipleHideAll: true,
   detachable     : true,
   closable       : true,
   autofocus      : true,
