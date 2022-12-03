@@ -1,4 +1,3 @@
-
 function moduleTests(ui) {
     var
         module    = ui.module,
@@ -23,7 +22,6 @@ function moduleTests(ui) {
     $.fn[module].settings.debug       = false;
     $.fn[module].settings.performance = false;
     $.fn[module].settings.verbose     = false;
-
 
     beforeEach(function () {
     // load fixtures

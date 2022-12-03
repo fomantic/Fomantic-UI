@@ -276,7 +276,6 @@
                         },
                     },
 
-
                     set: {
                         active: function () {
                             $module.addClass(className.active);

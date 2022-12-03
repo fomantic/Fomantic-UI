@@ -555,7 +555,6 @@
                         },
                     },
 
-
                     create: {
                         label: function () {
                             if ($input.prevAll(selector.label).length > 0) {

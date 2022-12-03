@@ -1,4 +1,3 @@
-
 /*******************************
            Summarize Docs
 *******************************/
@@ -101,7 +100,6 @@ function parser(file, callback) {
             }
             yaml.push(line);
         }
-
 
         // Parse yaml.
         meta = YAML.parse(yaml.join('\n'));

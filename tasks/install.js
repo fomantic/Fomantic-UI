@@ -72,7 +72,6 @@ module.exports = function (callback) {
   };
   */
 
-
     /* Don't do end user config if SUI is a sub-module */
     if (install.isSubModule()) {
         console.info('SUI is a sub-module, skipping end-user install');
@@ -175,7 +174,6 @@ module.exports = function (callback) {
         questions.cleanup = [];
     }
 
-
     /*--------------
      Create SUI
   ---------------*/
@@ -216,7 +214,6 @@ module.exports = function (callback) {
             console.log('Installing');
         }
         console.log('------------------------------');
-
 
         /*--------------
           Paths
@@ -308,7 +305,6 @@ module.exports = function (callback) {
                 .pipe(plumber())
                 .pipe(gulp.dest(installFolder));
         }
-
 
         /*--------------
        Site Theme

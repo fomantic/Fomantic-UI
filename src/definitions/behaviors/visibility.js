@@ -570,7 +570,6 @@
                         }
                     },
 
-
                     topVisible: function (newCallback) {
                         var
                             calculations = module.get.elementCalculations(),
@@ -672,7 +671,6 @@
                             return !calculations.passing;
                         }
                     },
-
 
                     topVisibleReverse: function (newCallback) {
                         var

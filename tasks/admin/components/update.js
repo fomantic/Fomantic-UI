@@ -26,7 +26,6 @@ var
     release        = require('../../config/admin/release'),
     project        = require('../../config/project/release'),
 
-
     // oAuth configuration for GitHub
     oAuth          = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
         ? require('../../config/admin/oauth')
@@ -94,7 +93,6 @@ module.exports = function (callback) {
             canProceed      = true
         ;
 
-
         console.info('Processing repository:' + outputDirectory);
 
         function setConfig() {
@@ -106,7 +104,6 @@ module.exports = function (callback) {
                 });
             });
         }
-
 
         // standard path
         function commitFiles() {
@@ -162,7 +159,6 @@ module.exports = function (callback) {
             global.clearTimeout(timer);
             timer = global.setTimeout(stepRepo, 100);
         }
-
 
         if (localRepoSetup) {
             setConfig();

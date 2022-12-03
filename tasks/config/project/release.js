@@ -17,7 +17,6 @@ try {
     config = requireDotFile('semantic.json', process.cwd());
 } catch (error) {}
 
-
 try {
     npmPackage = require('../../../package.json');
 } catch (error) {

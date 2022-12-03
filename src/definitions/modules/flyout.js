@@ -722,7 +722,6 @@
                             }
                         }
 
-
                         animate = function () {
                             module.set.overlay();
                             module.set.animating();

@@ -4124,7 +4124,6 @@
             return escape(text, preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
         },
 
-
         // generates messages like "No results"
         message: function (message) {
             return message;

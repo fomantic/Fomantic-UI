@@ -41,7 +41,6 @@ gulpConfig = (!userConfig)
     ? extend(true, {}, defaults)
     : extend(false, {}, defaults, userConfig);
 
-
 /*******************************
        Add Derived Values
 *******************************/
@@ -49,10 +48,8 @@ gulpConfig = (!userConfig)
 // adds calculated values
 config.addDerivedValues(gulpConfig);
 
-
 /*******************************
              Export
 *******************************/
 
 module.exports = gulpConfig;
-

@@ -28,7 +28,6 @@ var
     release   = require('../../config/admin/release'),
     project   = require('../../config/project/release'),
 
-
     // oAuth configuration for GitHub
     oAuth     = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
         ? require('../../config/admin/oauth')
@@ -147,7 +146,6 @@ module.exports = function (callback) {
                 stepRepo();
             }, 0);
         }
-
 
         if (localRepoSetup) {
             pullFiles();

@@ -15,5 +15,3 @@ assets.forEach(function (path) {
         });
     });
 });
-
-

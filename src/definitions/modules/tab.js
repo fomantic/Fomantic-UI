@@ -510,7 +510,6 @@
                             fullTabPath   = fullTabPath || tabPath;
                             cachedContent = module.cache.read(fullTabPath);
 
-
                             if (settings.cache && cachedContent) {
                                 module.activate.tab(tabPath);
                                 module.debug('Adding cached content', fullTabPath);

@@ -155,7 +155,6 @@ module.exports = {
         return walk(directory);
     },
 
-
     createJSON: function (answers) {
         var
             json = {
@@ -496,7 +495,6 @@ module.exports = {
                 when: when.custom,
             },
         ],
-
 
         cleanup: [
             {

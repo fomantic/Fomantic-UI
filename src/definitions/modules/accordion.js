@@ -573,4 +573,3 @@
         },
     });
 })(jQuery, window, document);
-

@@ -26,6 +26,11 @@ module.exports = {
             'asyncArrow': 'always',
         }],
         'padded-blocks': ['error', 'never'],
+        'no-multiple-empty-lines': ['error', {
+            max: 1,
+            maxBOF: 0,
+            maxEOF: 0,
+        }],
         'brace-style': ['error'],
         curly: ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

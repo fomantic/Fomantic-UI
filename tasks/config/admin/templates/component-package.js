@@ -1,4 +1,3 @@
-
 Package.describe({
     name: 'semantic:ui-{component}',
     summary: 'Semantic UI - {Component}: Single component release',

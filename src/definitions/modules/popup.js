@@ -334,7 +334,6 @@
                         }
                     },
 
-
                     hide: function (callback) {
                         callback = callback || function (){};
                         if (module.is.visible() || module.is.animating()) {
