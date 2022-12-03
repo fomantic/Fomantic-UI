@@ -20,6 +20,22 @@ module.exports = {
         'keyword-spacing': ['error'],
         'space-in-parens': ['error'],
         'comma-spacing': ['error'],
+        'comma-style': ['error', 'last', {
+            // https://github.com/airbnb/javascript/blob/eslint-config-airbnb-v19.0.4/packages/eslint-config-airbnb-base/rules/style.js#L54
+            exceptions: {
+                ArrayExpression: false,
+                ArrayPattern: false,
+                ArrowFunctionExpression: false,
+                CallExpression: false,
+                FunctionDeclaration: false,
+                FunctionExpression: false,
+                ImportDeclaration: false,
+                ObjectExpression: false,
+                ObjectPattern: false,
+                VariableDeclaration: false,
+                NewExpression: false,
+            },
+        }],
         'space-before-function-paren': ['error', {
             named: 'never',
             anonymous: 'always',

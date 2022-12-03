@@ -258,8 +258,7 @@
                             $activeIcon = $icon.eq(ratingIndex),
                             $partialActiveIcon = rating <= 1
                                 ? $activeIcon
-                                : $activeIcon.next()
-                            ,
+                                : $activeIcon.next(),
                             filledPercentage = (rating % 1) * 100
                         ;
                         $module
