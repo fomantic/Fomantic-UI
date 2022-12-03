@@ -288,9 +288,9 @@
                             } else {
                                 $toast.wrap(
                                     $('<div/>', {
-                                        class: className.vertical + ' ' +
-                      className.attached + ' ' +
-                      (settings.compact ? className.compact : ''),
+                                        class: className.vertical + ' '
+                                            + className.attached + ' '
+                                            + (settings.compact ? className.compact : ''),
                                     })
                                 );
                                 if ($actions.hasClass(className.left)) {

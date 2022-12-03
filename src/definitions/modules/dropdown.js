@@ -3473,9 +3473,9 @@
                 can: {
                     activate: function ($item) {
                         return (
-                            settings.useLabels ||
-           !module.has.maxSelections() ||
-           (module.has.maxSelections() && $item.hasClass(className.active))
+                            settings.useLabels
+                                || !module.has.maxSelections()
+                                || (module.has.maxSelections() && $item.hasClass(className.active))
                         );
                     },
                     openDownward: function ($subMenu) {

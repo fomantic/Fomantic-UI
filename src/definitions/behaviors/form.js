@@ -797,9 +797,9 @@
                         }
 
                         return (
-                            $field.filter('#' + identifier).length > 0 ||
-          $field.filter('[name="' + identifier + '"]').length > 0 ||
-          $field.filter('[data-' + metadata.validate + '="' + identifier + '"]').length > 0
+                            $field.filter('#' + identifier).length > 0
+                                || $field.filter('[name="' + identifier + '"]').length > 0
+                                || $field.filter('[data-' + metadata.validate + '="' + identifier + '"]').length > 0
                         );
                     },
 
@@ -1757,9 +1757,9 @@
                 }
 
                 return (
-                    regExp.test(value) &&
-        (min === undefined || value >= min) &&
-        (max === undefined || value <= max)
+                    regExp.test(value)
+                        && (min === undefined || value >= min)
+                        && (max === undefined || value <= max)
                 );
             },
 

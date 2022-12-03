@@ -492,9 +492,10 @@
                             var active = $cell.hasClass(className.activeCell);
                             var adjacent = $cell.hasClass(className.adjacentCell);
                             var focused = module.helper.dateEqual(cellDate, focusDate, mode);
-                            var inRange = !rangeDate ? false :
-                                ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate)) ||
-            (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
+                            var inRange = !rangeDate
+                                ? false
+                                : ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
+                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
                             $cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
 
                             if (module.helper.isTodayButton($cell)) {
@@ -944,11 +945,11 @@
                 selectDate: function (date, forceSet) {
                     module.verbose('New date selection', date);
                     var mode = module.get.mode();
-                    var complete = forceSet || mode === 'minute' ||
-        (settings.disableMinute && mode === 'hour') ||
-        (settings.type === 'date' && mode === 'day') ||
-        (settings.type === 'month' && mode === 'month') ||
-        (settings.type === 'year' && mode === 'year');
+                    var complete = forceSet || mode === 'minute'
+                        || (settings.disableMinute && mode === 'hour')
+                        || (settings.type === 'date' && mode === 'day')
+                        || (settings.type === 'month' && mode === 'month')
+                        || (settings.type === 'year' && mode === 'year');
                     if (complete) {
                         var canceled = module.set.date(date) === false;
                         if (!canceled) {
@@ -1298,9 +1299,9 @@
                         }
                         minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
 
-                        return !(!date ||
-        (minDate && module.helper.dateDiff(date, minDate, mode) > 0) ||
-        (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
+                        return !(!date
+                            || (minDate && module.helper.dateDiff(date, minDate, mode) > 0)
+                            || (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
                     },
                     dateInRange: function (date, minDate, maxDate) {
                         if (!minDate && !maxDate) {
