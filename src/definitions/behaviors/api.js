@@ -466,8 +466,8 @@
                                     value = (isCheckbox && el.value === 'on')
                                         || el.value === 'true'
                                         || (String(floatValue) === el.value
-                                        ? floatValue
-                                        : (el.value === 'false' ? false : el.value)),
+                                            ? floatValue
+                                            : (el.value === 'false' ? false : el.value)),
                                     nameKeys = el.name.match(settings.regExp.key) || [],
                                     k,
                                     pushKey = el.name.replace(/\[\]$/, '')

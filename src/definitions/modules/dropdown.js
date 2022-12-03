@@ -867,9 +867,10 @@
 
                 filterItems: function (query) {
                     var
-                        searchTerm = module.remove.diacritics(query !== undefined
-                            ? query
-                            : module.get.query()
+                        searchTerm = module.remove.diacritics(
+                            query !== undefined
+                                ? query
+                                : module.get.query()
                         ),
                         results          =  null,
                         escapedTerm      = module.escape.string(searchTerm),

@@ -73,8 +73,10 @@ function build(src, type, compress, config, opts) {
         .pipe(replace(comments.small.in, comments.small.out))
         .pipe(replace(comments.tiny.in, comments.tiny.out))
         .pipe(flatten())
-        .pipe(replace(config.paths.assets.source,
-            compress ? config.paths.assets.compressed : config.paths.assets.uncompressed))
+        .pipe(replace(
+            config.paths.assets.source,
+            compress ? config.paths.assets.compressed : config.paths.assets.uncompressed
+        ))
         .pipe(gulpif(compress, minifyCSS(settings.minify)))
         .pipe(gulpif(fileExtension, rename(fileExtension)))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))

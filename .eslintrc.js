@@ -30,6 +30,7 @@ module.exports = {
         'object-curly-spacing': ['error', 'always'],
         'space-before-blocks': ['error'],
         'one-var-declaration-per-line': ['error', 'always'],
+        'function-paren-newline': ['error', 'multiline-arguments'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
             prev: '*',

@@ -1286,13 +1286,15 @@
                             isTimeOnly ? 0 : isYear ? 0 : date1.getMonth(),
                             isTimeOnly ? 1 : isYearOrMonth ? 1 : date1.getDate(),
                             !isHourOrMinute ? 0 : date1.getHours(),
-                            !isMinute ? 0 : settings.minTimeGap * Math.floor(date1.getMinutes() / settings.minTimeGap));
+                            !isMinute ? 0 : settings.minTimeGap * Math.floor(date1.getMinutes() / settings.minTimeGap)
+                        );
                         date2 = new Date(
                             isTimeOnly ? 2000 : date2.getFullYear(),
                             isTimeOnly ? 0 : isYear ? 0 : date2.getMonth(),
                             isTimeOnly ? 1 : isYearOrMonth ? 1 : date2.getDate(),
                             !isHourOrMinute ? 0 : date2.getHours(),
-                            !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap));
+                            !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap)
+                        );
 
                         return date2.getTime() - date1.getTime();
                     },
