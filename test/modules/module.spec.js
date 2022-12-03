@@ -34,14 +34,11 @@ function moduleTests(ui) {
         // module available in scope
         $module       = $(element);
 
-        // one module available in fixture
-        if($module.size() == 1) {
+        if($module.size() == 1) { // one module available in fixture
             $oneModule = $module;
             $clone     = $module.clone().appendTo( $(sandbox()) );
             $modules   = $clone.add($module);
-        }
-        // multiple modules available in fixture
-        else {
+        } else { // multiple modules available in fixture
             $modules   = $(element);
             $clone     = $module.eq(1);
             $oneModule = $modules.first();

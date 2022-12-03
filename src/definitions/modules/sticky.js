@@ -498,7 +498,6 @@
 
                             } else if( module.is.fixed() ) {
 
-                                // currently fixed top
                                 if( module.is.top() ) {
                                     if( scroll.top <= element.top ) {
                                         module.debug('Fixed element reached top of container');
@@ -506,30 +505,19 @@
                                     } else if( (element.height + scroll.top - elementScroll) >= context.bottom ) {
                                         module.debug('Fixed element reached bottom of container');
                                         module.bindBottom();
-                                    }
-                                    // scroll element if larger than screen
-                                    else if(doesntFit) {
+                                    } else if(doesntFit) { // scroll element if larger than screen
                                         module.set.scroll(elementScroll);
                                         module.save.lastScroll(scroll.top);
                                         module.save.elementScroll(elementScroll);
                                     }
-                                }
-
-                                // currently fixed bottom
-                                else if(module.is.bottom() ) {
-
-                                    // top edge
-                                    if( (scroll.bottom - element.height) <= element.top) {
+                                } else if(module.is.bottom() ) {
+                                    if( (scroll.bottom - element.height) <= element.top) { // top edge
                                         module.debug('Bottom fixed rail has reached top of container');
                                         module.setInitialPosition();
-                                    }
-                                    // bottom edge
-                                    else if(scroll.bottom >= context.bottom) {
+                                    } else if(scroll.bottom >= context.bottom) { // bottom edge
                                         module.debug('Bottom fixed rail has reached bottom of container');
                                         module.bindBottom();
-                                    }
-                                    // scroll element if larger than screen
-                                    else if(doesntFit) {
+                                    } else if(doesntFit) { // scroll element if larger than screen
                                         module.set.scroll(elementScroll);
                                         module.save.lastScroll(scroll.top);
                                         module.save.elementScroll(elementScroll);

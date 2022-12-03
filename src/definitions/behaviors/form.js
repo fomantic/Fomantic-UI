@@ -352,9 +352,8 @@
                             var currentValue = $el.val();
                             if (currentValue == null) {
                                 currentValue = '';
-                            }
-                            // multiple select values are returned as arrays which are never equal, so do string conversion first
-                            else if(Array.isArray(currentValue)) {
+                            } else if(Array.isArray(currentValue)) {
+                                // multiple select values are returned as arrays which are never equal, so do string conversion first
                                 currentValue = currentValue.toString();
                             }
                             // Boolean values can be encoded as "true/false" or "True/False" depending on underlying frameworks so we need a case insensitive comparison

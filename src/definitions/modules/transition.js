@@ -468,40 +468,29 @@
                     },
                     get: {
                         settings: function(animation, duration, onComplete) {
-                            // single settings object
-                            if(typeof animation == 'object') {
+                            if(typeof animation == 'object') { // single settings object
                                 return $.extend(true, {}, $.fn.transition.settings, animation);
-                            }
-                            // all arguments provided
-                            else if(typeof onComplete == 'function') {
+                            } else if(typeof onComplete == 'function') { // all arguments provided
                                 return $.extend({}, $.fn.transition.settings, {
                                     animation: animation,
                                     onComplete: onComplete,
                                     duration: duration,
                                 });
-                            }
-                            // only duration provided
-                            else if(typeof duration == 'string' || typeof duration == 'number') {
+                            } else if(typeof duration == 'string' || typeof duration == 'number') { // only duration provided
                                 return $.extend({}, $.fn.transition.settings, {
                                     animation: animation,
                                     duration: duration,
                                 });
-                            }
-                            // duration is actually settings object
-                            else if(typeof duration == 'object') {
+                            } else if(typeof duration == 'object') { // duration is actually settings object
                                 return $.extend({}, $.fn.transition.settings, duration, {
                                     animation: animation,
                                 });
-                            }
-                            // duration is actually callback
-                            else if(typeof duration == 'function') {
+                            } else if(typeof duration == 'function') { // duration is actually callback
                                 return $.extend({}, $.fn.transition.settings, {
                                     animation: animation,
                                     onComplete: duration,
                                 });
-                            }
-                            // only animation provided
-                            else {
+                            } else { // only animation provided
                                 return $.extend({}, $.fn.transition.settings, {
                                     animation: animation,
                                 });

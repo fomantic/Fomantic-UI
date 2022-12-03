@@ -463,16 +463,11 @@
                                     }
 
                                     while ((k = nameKeys.pop()) !== undefined) {
-                                        // foo[]
-                                        if (k == '' && !Array.isArray(value)){
+                                        if (k == '' && !Array.isArray(value)){ // foo[]
                                             value = build([], pushes[pushKey]++, value);
-                                        }
-                                        // foo[n]
-                                        else if (settings.regExp.fixed.test(k)) {
+                                        } else if (settings.regExp.fixed.test(k)) { // foo[n]
                                             value = build([], k, value);
-                                        }
-                                        // foo; foo[bar]
-                                        else if (settings.regExp.named.test(k)) {
+                                        } else if (settings.regExp.named.test(k)) { // foo; foo[bar]
                                             value = build({}, k, value);
                                         }
                                     }
