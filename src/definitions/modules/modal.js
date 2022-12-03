@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.modal = $.fn.modal = function(parameters) {
+    $.modal = $.fn.modal = function (parameters) {
         var
             $allModules    = $(this),
             $window        = $(window),
@@ -41,7 +41,7 @@
                 || window.mozRequestAnimationFrame
                 || window.webkitRequestAnimationFrame
                 || window.msRequestAnimationFrame
-                || function(callback) {
+                || function (callback) {
                     setTimeout(callback, 0);
                 },
 
@@ -49,7 +49,7 @@
         ;
 
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings    = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.modal.settings, parameters)
@@ -97,7 +97,7 @@
                 ;
                 module  = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.create.id();
                         if (!isModalComponent) {
                             module.create.modal();
@@ -165,7 +165,7 @@
                         }
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of modal');
                         instance = module;
                         $module
@@ -173,7 +173,7 @@
                     },
 
                     create: {
-                        modal: function() {
+                        modal: function () {
                             $module = $('<div/>', {class: className.modal, role: 'dialog', 'aria-modal': true});
                             if (settings.closeIcon) {
                                 $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close});
@@ -195,7 +195,7 @@
                             $context.append($module);
                             element = $module[0];
                         },
-                        dimmer: function() {
+                        dimmer: function () {
                             var
                                 defaultSettings = {
                                     debug: settings.debug,
@@ -218,19 +218,19 @@
                             }
                             $dimmer = $dimmable.dimmer('get dimmer');
                         },
-                        id: function() {
+                        id: function () {
                             id = (Math.random().toString(16) + '000000000').slice(2, 10);
                             elementEventNamespace = '.' + id;
                             module.verbose('Creating unique id for element', id);
                         },
-                        innerDimmer: function() {
+                        innerDimmer: function () {
                             if ($module.find(selector.dimmer).length === 0) {
                                 $('<div/>', {class: className.innerDimmer}).prependTo($module);
                             }
                         },
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         if (observer) {
                             observer.disconnect();
                         }
@@ -247,9 +247,9 @@
                         $context.dimmer('destroy');
                     },
 
-                    observeChanges: function() {
+                    observeChanges: function () {
                         if ('MutationObserver' in window) {
-                            observer = new MutationObserver(function(mutations) {
+                            observer = new MutationObserver(function (mutations) {
                                 if (settings.observeChanges) {
                                     module.debug('DOM tree modified, refreshing');
                                     module.refresh();
@@ -264,7 +264,7 @@
                         }
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         module.remove.scrolling();
                         module.cacheSizes();
                         if (!module.can.useFlex()) {
@@ -274,17 +274,17 @@
                         module.set.type();
                     },
 
-                    refreshModals: function() {
+                    refreshModals: function () {
                         $otherModals = $module.siblings(selector.modal);
                         $allModals   = $otherModals.add($module);
                     },
 
-                    refreshInputs: function(){
+                    refreshInputs: function (){
                         if ($inputs){
                             $inputs
                                 .off('keydown' + elementEventNamespace);
                         }
-                        $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
+                        $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function () {
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
@@ -293,7 +293,7 @@
                             .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last);
                     },
 
-                    attachEvents: function(selector, event) {
+                    attachEvents: function (selector, event) {
                         var
                             $toggle = $(selector)
                         ;
@@ -311,7 +311,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.verbose('Attaching events');
                             $module
                                 .on('click' + eventNamespace, selector.close, module.event.close)
@@ -322,60 +322,60 @@
                             $window
                                 .on('resize' + elementEventNamespace, module.event.resize);
                         },
-                        scrollLock: function() {
+                        scrollLock: function () {
                             // touch events default to passive, due to changes in chrome to optimize mobile perf
                             $dimmable[0].addEventListener('touchmove', module.event.preventScroll, { passive: false });
                         },
                     },
 
                     unbind: {
-                        scrollLock: function() {
+                        scrollLock: function () {
                             $dimmable[0].removeEventListener('touchmove', module.event.preventScroll, { passive: false });
                         },
                     },
 
                     get: {
-                        id: function() {
+                        id: function () {
                             return id;
                         },
-                        element: function() {
+                        element: function () {
                             return $module;
                         },
-                        settings: function() {
+                        settings: function () {
                             return settings;
                         },
                     },
 
                     event: {
-                        approve: function() {
+                        approve: function () {
                             if (ignoreRepeatedEvents || settings.onApprove.call(element, $(this)) === false) {
                                 module.verbose('Approve callback returned false cancelling hide');
                                 return;
                             }
                             ignoreRepeatedEvents = true;
-                            module.hide(function() {
+                            module.hide(function () {
                                 ignoreRepeatedEvents = false;
                             });
                         },
-                        preventScroll: function(event) {
+                        preventScroll: function (event) {
                             if (event.target.className.indexOf('dimmer') !== -1) {
                                 event.preventDefault();
                             }
                         },
-                        deny: function() {
+                        deny: function () {
                             if (ignoreRepeatedEvents || settings.onDeny.call(element, $(this)) === false) {
                                 module.verbose('Deny callback returned false cancelling hide');
                                 return;
                             }
                             ignoreRepeatedEvents = true;
-                            module.hide(function() {
+                            module.hide(function () {
                                 ignoreRepeatedEvents = false;
                             });
                         },
-                        close: function() {
+                        close: function () {
                             module.hide();
                         },
-                        closeKeyUp: function(event){
+                        closeKeyUp: function (event){
                             var
                                 keyCode   = event.which
                             ;
@@ -384,7 +384,7 @@
                             }
                         },
                         inputKeyDown: {
-                            first: function(event) {
+                            first: function (event) {
                                 var
                                     keyCode = event.which
                                 ;
@@ -393,7 +393,7 @@
                                     event.preventDefault();
                                 }
                             },
-                            last: function(event) {
+                            last: function (event) {
                                 var
                                     keyCode = event.which
                                 ;
@@ -403,7 +403,7 @@
                                 }
                             },
                         },
-                        mousedown: function(event) {
+                        mousedown: function (event) {
                             var
                                 $target   = $(event.target),
                                 isRtl = module.is.rtl()
@@ -417,7 +417,7 @@
                                 module.verbose('Mouse down event registered inside the scrollbar');
                             }
                         },
-                        mouseup: function(event) {
+                        mouseup: function (event) {
                             if (!settings.closable) {
                                 module.verbose('Dimmer clicked but closable setting is disabled');
                                 return;
@@ -447,11 +447,11 @@
                                 module.remove.clickaway();
                             }
                         },
-                        debounce: function(method, delay) {
+                        debounce: function (method, delay) {
                             clearTimeout(module.timer);
                             module.timer = setTimeout(method, delay);
                         },
-                        keyboard: function(event) {
+                        keyboard: function (event) {
                             var
                                 keyCode   = event.which
                             ;
@@ -467,14 +467,14 @@
                                 event.preventDefault();
                             }
                         },
-                        resize: function() {
+                        resize: function () {
                             if ($dimmable.dimmer('is active') && (module.is.animating() || module.is.active())) {
                                 requestAnimationFrame(module.refresh);
                             }
                         },
                     },
 
-                    toggle: function() {
+                    toggle: function () {
                         if (module.is.active() || module.is.animating()) {
                             module.hide();
                         } else {
@@ -482,10 +482,10 @@
                         }
                     },
 
-                    show: function(callback) {
+                    show: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         module.refreshModals();
                         module.set.dimmerSettings();
                         module.set.dimmerStyles();
@@ -493,18 +493,18 @@
                         module.showModal(callback);
                     },
 
-                    hide: function(callback) {
+                    hide: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         module.refreshModals();
                         return module.hideModal(callback);
                     },
 
-                    showModal: function(callback) {
+                    showModal: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (module.is.animating() || !module.is.active()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -551,7 +551,7 @@
                                             queue: settings.queue,
                                             duration: settings.transition.showDuration || settings.duration,
                                             useFailSafe: true,
-                                            onComplete: function() {
+                                            onComplete: function () {
                                                 settings.onVisible.apply(element);
                                                 if (settings.keyboardShortcuts) {
                                                     module.add.keyboardShortcuts();
@@ -574,13 +574,13 @@
                         }
                     },
 
-                    hideModal: function(callback, keepDimmed, hideOthersToo) {
+                    hideModal: function (callback, keepDimmed, hideOthersToo) {
                         var
                             $previousModal = $otherModals.filter('.' + className.active).last()
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
@@ -600,7 +600,7 @@
                                         queue: settings.queue,
                                         duration: settings.transition.hideDuration || settings.duration,
                                         useFailSafe: true,
-                                        onStart: function() {
+                                        onStart: function () {
                                             if (!module.others.active() && !module.others.animating() && !keepDimmed) {
                                                 module.hideDimmer();
                                             }
@@ -608,7 +608,7 @@
                                                 module.remove.keyboardShortcuts();
                                             }
                                         },
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             module.unbind.scrollLock();
                                             if (settings.allowMultiple) {
                                                 $previousModal.addClass(className.front);
@@ -634,7 +634,7 @@
                         }
                     },
 
-                    showDimmer: function() {
+                    showDimmer: function () {
                         if ($dimmable.dimmer('is animating') || !$dimmable.dimmer('is active')) {
                             if (hadScrollbar) {
                                 if (!isBody) {
@@ -649,10 +649,10 @@
                         }
                     },
 
-                    hideDimmer: function() {
+                    hideDimmer: function () {
                         if ($dimmable.dimmer('is animating') || ($dimmable.dimmer('is active'))) {
                             module.unbind.scrollLock();
-                            $dimmable.dimmer('hide', function() {
+                            $dimmable.dimmer('hide', function () {
                                 if (hadScrollbar) {
                                     module.restore.bodyMargin();
                                 }
@@ -664,18 +664,18 @@
                         }
                     },
 
-                    hideAll: function(callback) {
+                    hideAll: function (callback) {
                         var
                             $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if ($visibleModals.length > 0) {
                             module.debug('Hiding all visible modals');
                             var hideOk = true;
                             //check in reverse order trying to hide most top displayed modal first
-                            $($visibleModals.get().reverse()).each(function(index, element){
+                            $($visibleModals.get().reverse()).each(function (index, element){
                                 if (hideOk){
                                     hideOk = $(element).modal('hide modal', callback, false, true);
                                 }
@@ -687,13 +687,13 @@
                         }
                     },
 
-                    hideOthers: function(callback) {
+                    hideOthers: function (callback) {
                         var
                             $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if ($visibleModals.length > 0) {
                             module.debug('Hiding other modals', $otherModals);
                             $visibleModals
@@ -702,17 +702,17 @@
                     },
 
                     others: {
-                        active: function() {
+                        active: function () {
                             return ($otherModals.filter('.' + className.active).length > 0);
                         },
-                        animating: function() {
+                        animating: function () {
                             return ($otherModals.filter('.' + className.animating).length > 0);
                         },
                     },
 
 
                     add: {
-                        keyboardShortcuts: function() {
+                        keyboardShortcuts: function () {
                             module.verbose('Adding keyboard shortcuts');
                             $document
                                 .on('keydown' + eventNamespace, module.event.keyboard);
@@ -720,7 +720,7 @@
                     },
 
                     save: {
-                        focus: function() {
+                        focus: function () {
                             var
                                 $activeElement = $(document.activeElement),
                                 inCurrentModal = $activeElement.closest($module).length > 0
@@ -729,7 +729,7 @@
                                 $focusedElement = $(document.activeElement).trigger('blur');
                             }
                         },
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
                             var
                                 bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
@@ -740,15 +740,15 @@
                     },
 
                     restore: {
-                        focus: function() {
+                        focus: function () {
                             if ($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
                                 $focusedElement.trigger('focus');
                             }
                         },
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -759,13 +759,13 @@
                     },
 
                     remove: {
-                        active: function() {
+                        active: function () {
                             $module.removeClass(className.active);
                         },
-                        legacy: function() {
+                        legacy: function () {
                             $module.removeClass(className.legacy);
                         },
-                        clickaway: function() {
+                        clickaway: function () {
                             if (!settings.detachable) {
                                 $module
                                     .off('mousedown' + elementEventNamespace);
@@ -775,28 +775,28 @@
                             $dimmer
                                 .off('mouseup' + elementEventNamespace);
                         },
-                        dimmerStyles: function() {
+                        dimmerStyles: function () {
                             $dimmer.removeClass(className.inverted);
                             $dimmable.removeClass(className.blurring);
                         },
-                        bodyStyle: function() {
+                        bodyStyle: function () {
                             if ($context.attr('style') === '') {
                                 module.verbose('Removing style attribute');
                                 $context.removeAttr('style');
                             }
                         },
-                        screenHeight: function() {
+                        screenHeight: function () {
                             module.debug('Removing page height');
                             $context
                                 .css('height', '');
                             module.remove.bodyStyle();
                         },
-                        keyboardShortcuts: function() {
+                        keyboardShortcuts: function () {
                             module.verbose('Removing keyboard shortcuts');
                             $document
                                 .off('keydown' + eventNamespace);
                         },
-                        scrolling: function() {
+                        scrolling: function () {
                             if (!keepScrollingClass) {
                                 $dimmable.removeClass(className.scrolling);
                             }
@@ -804,7 +804,7 @@
                         },
                     },
 
-                    cacheSizes: function() {
+                    cacheSizes: function () {
                         $module.addClass(className.loading);
                         var
                             scrollHeight = $module.prop('scrollHeight'),
@@ -827,10 +827,10 @@
                         module.debug('Caching modal and container sizes', module.cache);
                     },
                     helpers: {
-                        deQuote: function(string) {
+                        deQuote: function (string) {
                             return String(string).replace(/"/g, '');
                         },
-                        escape: function(string, preserveHTML) {
+                        escape: function (string, preserveHTML) {
                             if (preserveHTML){
                                 return string;
                             }
@@ -844,7 +844,7 @@
                                     "'": '&#x27;',
                                     '`': '&#x60;',
                                 },
-                                escapedChar  = function(chr) {
+                                escapedChar  = function (chr) {
                                     return escape[chr];
                                 }
                             ;
@@ -856,13 +856,13 @@
                         },
                     },
                     can: {
-                        leftBodyScrollbar: function(){
+                        leftBodyScrollbar: function (){
                             if (module.cache.leftBodyScrollbar === undefined) {
                                 module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
                             }
                             return module.cache.leftBodyScrollbar;
                         },
-                        useFlex: function() {
+                        useFlex: function () {
                             if (settings.useFlex === 'auto') {
                                 return settings.detachable && !module.is.ie();
                             }
@@ -873,7 +873,7 @@
                             }
                             return settings.useFlex;
                         },
-                        fit: function() {
+                        fit: function () {
                             var
                                 contextHeight  = module.cache.contextHeight,
                                 verticalCenter = module.cache.contextHeight / 2,
@@ -892,15 +892,15 @@
                         configActions: function () {
                             return Array.isArray(settings.actions) && settings.actions.length > 0;
                         },
-                        scrollbar: function() {
+                        scrollbar: function () {
                             return isBody || $context.css('overflow-y') !== 'hidden';
                         },
                     },
                     is: {
-                        active: function() {
+                        active: function () {
                             return $module.hasClass(className.active);
                         },
-                        ie: function() {
+                        ie: function () {
                             if (module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
@@ -910,49 +910,49 @@
                             }
                             return module.cache.isIE;
                         },
-                        animating: function() {
+                        animating: function () {
                             return $module.transition('is supported')
                                 ? $module.transition('is animating')
                                 : $module.is(':visible');
                         },
-                        scrolling: function() {
+                        scrolling: function () {
                             return $dimmable.hasClass(className.scrolling);
                         },
-                        modernBrowser: function() {
+                        modernBrowser: function () {
                             // appName for IE11 reports 'Netscape' can no longer use
                             return !(window.ActiveXObject || 'ActiveXObject' in window);
                         },
-                        rtl: function() {
+                        rtl: function () {
                             if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
                             return module.cache.isRTL;
                         },
-                        safari: function() {
+                        safari: function () {
                             if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
                             return module.cache.isSafari;
                         },
-                        edge: function(){
+                        edge: function (){
                             if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
                             return module.cache.isEdge;
                         },
-                        firefox: function(){
+                        firefox: function (){
                             if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
                             return module.cache.isFirefox;
                         },
-                        iframe: function() {
+                        iframe: function () {
                             return !(self === top);
                         },
                     },
 
                     set: {
-                        autofocus: function() {
+                        autofocus: function () {
                             var
                                 $autofocus = $inputs.filter('[autofocus]'),
                                 $input     = ($autofocus.length > 0)
@@ -963,12 +963,12 @@
                                 $input.trigger('focus');
                             }
                         },
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             if (settings.detachable || module.can.fit()) {
                                 $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
                             }
-                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -976,7 +976,7 @@
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
-                        clickaway: function() {
+                        clickaway: function () {
                             if (!settings.detachable) {
                                 $module
                                     .on('mousedown' + elementEventNamespace, module.event.mousedown);
@@ -986,7 +986,7 @@
                             $dimmer
                                 .on('mouseup' + elementEventNamespace, module.event.mouseup);
                         },
-                        dimmerSettings: function() {
+                        dimmerSettings: function () {
                             if ($.fn.dimmer === undefined) {
                                 module.error(error.dimmer);
                                 return;
@@ -1011,7 +1011,7 @@
                             }
                             $context.dimmer('setting', dimmerSettings);
                         },
-                        dimmerStyles: function() {
+                        dimmerStyles: function () {
                             if (settings.inverted) {
                                 $dimmer.addClass(className.inverted);
                             } else {
@@ -1023,7 +1023,7 @@
                                 $dimmable.removeClass(className.blurring);
                             }
                         },
-                        modalOffset: function() {
+                        modalOffset: function () {
                             if (!settings.detachable) {
                                 var canFit = module.can.fit();
                                 $module
@@ -1046,7 +1046,7 @@
                             }
                             module.verbose('Setting modal offset for legacy mode');
                         },
-                        screenHeight: function() {
+                        screenHeight: function () {
                             if (module.can.fit()) {
                                 $context.css('height', '');
                             } else if (!$module.hasClass('bottom')) {
@@ -1055,19 +1055,19 @@
                                     .css('height', module.cache.height + (settings.padding * 2) + 'px');
                             }
                         },
-                        active: function() {
+                        active: function () {
                             $module.addClass(className.active + ' ' + className.front);
                             $otherModals.filter('.' + className.active).removeClass(className.front);
                         },
-                        scrolling: function() {
+                        scrolling: function () {
                             $dimmable.addClass(className.scrolling);
                             $module.addClass(className.scrolling);
                             module.unbind.scrollLock();
                         },
-                        legacy: function() {
+                        legacy: function () {
                             $module.addClass(className.legacy);
                         },
-                        type: function() {
+                        type: function () {
                             if (module.can.fit()) {
                                 module.verbose('Modal fits on screen');
                                 if (!module.others.active() && !module.others.animating()) {
@@ -1081,12 +1081,12 @@
                                 module.verbose('Bottom aligned modal not fitting on screen is unsupported for scrolling');
                             }
                         },
-                        undetached: function() {
+                        undetached: function () {
                             $dimmable.addClass(className.undetached);
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -1100,7 +1100,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -1109,7 +1109,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1119,7 +1119,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1129,14 +1129,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -1157,14 +1157,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -1176,7 +1176,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -1185,7 +1185,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -1197,7 +1197,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
@@ -1328,13 +1328,13 @@
         },
 
         // called before show animation
-        onShow: function(){},
+        onShow: function (){},
 
         // called after show animation
-        onVisible: function(){},
+        onVisible: function (){},
 
         // called before hide animation
-        onHide: function(){
+        onHide: function (){
             return true;
         },
 
@@ -1342,12 +1342,12 @@
         onHidden: false,
 
         // called after approve selector match
-        onApprove: function(){
+        onApprove: function (){
             return true;
         },
 
         // called after deny selector match
-        onDeny: function(){
+        onDeny: function (){
             return true;
         },
 
@@ -1406,17 +1406,17 @@
     };
 
     $.fn.modal.settings.templates = {
-        getArguments: function(args) {
+        getArguments: function (args) {
             var queryArguments = [].slice.call(args);
             if ($.isPlainObject(queryArguments[0])){
                 return $.extend({
-                    handler: function(){},
+                    handler: function (){},
                     content: '',
                     title: '',
                 }, queryArguments[0]);
             } else {
                 if (!isFunction(queryArguments[queryArguments.length-1])) {
-                    queryArguments.push(function() {});
+                    queryArguments.push(function () {});
                 }
                 return {
                     handler: queryArguments.pop(),
@@ -1446,10 +1446,10 @@
             var
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = function(){
+                approveFn = function (){
                     args.handler(true);
                 },
-                denyFn = function(){
+                denyFn = function (){
                     args.handler(false);
                 }
             ;
@@ -1475,14 +1475,14 @@
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 input    = $($.parseHTML(args.content)).filter('.ui.input'),
-                approveFn = function(){
+                approveFn = function (){
                     var
                         settings = $this.get.settings(),
                         inputField = $this.get.element().find(settings.selector.prompt)[0]
                     ;
                     args.handler($(inputField).val());
                 },
-                denyFn = function(){
+                denyFn = function (){
                     args.handler(null);
                 }
             ;

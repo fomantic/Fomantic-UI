@@ -16,10 +16,10 @@ var
 
 module.exports = {
 
-    getPath: function(file, directory) {
+    getPath: function (file, directory) {
         var
             configPath,
-            walk = function(directory) {
+            walk = function (directory) {
                 var
                     nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
                     currentPath   = path.normalize(path.join(directory, file))
@@ -47,7 +47,7 @@ module.exports = {
     },
 
     // adds additional derived values to a config object
-    addDerivedValues: function(config) {
+    addDerivedValues: function (config) {
         config = config || extend(false, {}, defaults);
 
         /*--------------
@@ -118,7 +118,7 @@ module.exports = {
 
         // remove duplicates from component array
         if (config.components instanceof Array) {
-            config.components = config.components.filter(function(component, index) {
+            config.components = config.components.filter(function (component, index) {
                 return config.components.indexOf(component) == index;
             });
         }

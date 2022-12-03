@@ -9,7 +9,7 @@ Package.describe({
     git: 'git://github.com/fomantic/Fomantic-UI-CSS.git',
 });
 
-Package.onUse(function(api) {
+Package.onUse(function (api) {
     api.versionsFrom('1.0');
 
     api.use('jquery', 'client');

@@ -20,6 +20,11 @@ module.exports = {
         'keyword-spacing': ['error'],
         'space-in-parens': ['error'],
         'comma-spacing': ['error'],
+        'space-before-function-paren': ['error', {
+            'named': 'never',
+            'anonymous': 'always',
+            'asyncArrow': 'always',
+        }],
         'padded-blocks': ['error', 'never'],
         'brace-style': ['error'],
         curly: ['error'],

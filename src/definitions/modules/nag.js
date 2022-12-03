@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.nag = function(parameters) {
+    $.fn.nag = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.nag.settings, parameters)
@@ -61,7 +61,7 @@
                 ;
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.verbose('Initializing element');
                         if (typeof settings.value !== 'string') {
                             settings.value = JSON.stringify(settings.value);
@@ -83,14 +83,14 @@
                         module.show();
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying instance');
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
                     },
 
-                    show: function() {
+                    show: function () {
                         if (module.should.show() && !$module.is(':visible')) {
                             if (settings.onShow.call(element) === false) {
                                 module.debug('onShow callback returned false, cancelling nag animation');
@@ -107,7 +107,7 @@
                         }
                     },
 
-                    hide: function() {
+                    hide: function () {
                         if (settings.onHide.call(element) === false) {
                             module.debug('onHide callback returned false, cancelling nag animation');
                             return false;
@@ -122,7 +122,7 @@
                         }
                     },
 
-                    dismiss: function(event) {
+                    dismiss: function (event) {
                         if (module.hide() !== false && settings.storageMethod) {
                             module.debug('Dismissing nag', settings.storageMethod, settings.key, settings.value, settings.expires);
                             module.storage.set(settings.key, settings.value);
@@ -132,7 +132,7 @@
                     },
 
                     should: {
-                        show: function() {
+                        show: function () {
                             if (settings.persist) {
                                 module.debug('Persistent nag is set, can show nag');
                                 return true;
@@ -147,7 +147,7 @@
                     },
 
                     get: {
-                        expirationDate: function(expires) {
+                        expirationDate: function (expires) {
                             if (typeof expires === 'number') {
                                 expires = new Date(Date.now() + expires * 864e5);
                             }
@@ -157,7 +157,7 @@
                                 module.error(error.expiresFormat);
                             }
                         },
-                        storage: function(){
+                        storage: function (){
                             if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                                 module.debug('Using local storage');
                                 return window.localStorage;
@@ -167,7 +167,7 @@
                             } else if ('cookie' in document) {
                                 module.debug('Using cookie');
                                 return {
-                                    setItem: function(key, value, options) {
+                                    setItem: function (key, value, options) {
                                         // RFC6265 compliant encoding
                                         key   = encodeURIComponent(key)
                                             .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
@@ -186,7 +186,7 @@
                                         }
                                         document.cookie = key + '=' + value + cookieOptions;
                                     },
-                                    getItem: function(key) {
+                                    getItem: function (key) {
                                         var cookies = document.cookie.split('; ');
                                         for (var i = 0, il = cookies.length; i < il; i++) {
                                             var
@@ -198,7 +198,7 @@
                                             }
                                         }
                                     },
-                                    removeItem: function(key, options) {
+                                    removeItem: function (key, options) {
                                         storage.setItem(key, '', options);
                                     },
                                 };
@@ -206,7 +206,7 @@
                                 module.error(error.noStorage);
                             }
                         },
-                        storageOptions: function() {
+                        storageOptions: function () {
                             var
                                 options = {}
                             ;
@@ -229,12 +229,12 @@
                         },
                     },
 
-                    clear: function() {
+                    clear: function () {
                         module.storage.remove(settings.key);
                     },
 
                     storage: {
-                        set: function(key, value) {
+                        set: function (key, value) {
                             var
                                 options = module.get.storageOptions()
                             ;
@@ -249,7 +249,7 @@
                                 module.error(error.setItem, e);
                             }
                         },
-                        get: function(key) {
+                        get: function (key) {
                             var
                                 storedValue
                             ;
@@ -267,7 +267,7 @@
                             }
                             return storedValue;
                         },
-                        remove: function(key) {
+                        remove: function (key) {
                             var
                                 options = module.get.storageOptions()
                             ;
@@ -279,7 +279,7 @@
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -293,7 +293,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -302,7 +302,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -312,7 +312,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -322,14 +322,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -350,14 +350,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -369,7 +369,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -378,7 +378,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -390,7 +390,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -508,16 +508,16 @@
         easing: 'easeOutQuad',
 
         // callback before show animation, return false to prevent show
-        onShow: function() {},
+        onShow: function () {},
 
         // called after show animation
-        onVisible: function() {},
+        onVisible: function () {},
 
         // callback before hide animation, return false to prevent hide
-        onHide: function() {},
+        onHide: function () {},
 
         // callback after hide animation
-        onHidden: function() {},
+        onHidden: function () {},
 
     };
 

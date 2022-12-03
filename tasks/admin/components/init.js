@@ -38,7 +38,7 @@ var
     version         = project.version
 ;
 
-module.exports = function(callback) {
+module.exports = function (callback) {
     var
         index = -1,
         total = release.components.length,
@@ -53,7 +53,7 @@ module.exports = function(callback) {
     }
 
     // Do Git commands synchronously per component, to avoid issues
-    stepRepo = function() {
+    stepRepo = function () {
         index = index + 1;
 
         if (index >= total) {
@@ -100,7 +100,7 @@ module.exports = function(callback) {
 
         function initRepo() {
             console.info('Initializing repository for ' + component);
-            git.init(gitOptions, function(error) {
+            git.init(gitOptions, function (error) {
                 if (error) {
                     console.error('Error initializing repo', error);
                 }
@@ -114,28 +114,28 @@ module.exports = function(callback) {
                 org: release.org,
                 name: repoName,
                 homepage: release.homepage,
-            }, function() {
+            }, function () {
                 setupRepo();
             });
         }
 
         function addRemote() {
             console.info('Adding remote origin as ' + gitURL);
-            git.addRemote('origin', gitURL, gitOptions, function(){
+            git.addRemote('origin', gitURL, gitOptions, function (){
                 pullFiles();
             });
         }
 
         function pullFiles() {
             console.info('Pulling ' + component + ' files');
-            git.pull('origin', 'master', pullOptions, function(error) {
+            git.pull('origin', 'master', pullOptions, function (error) {
                 resetFiles();
             });
         }
 
         function resetFiles() {
             console.info('Resetting files to head');
-            git.reset('HEAD', resetOptions, function(error) {
+            git.reset('HEAD', resetOptions, function (error) {
                 nextRepo();
             });
         }
@@ -144,7 +144,7 @@ module.exports = function(callback) {
             //console.log('Sleeping for 1 second...');
             // avoid rate throttling
             global.clearTimeout(timer);
-            timer = global.setTimeout(function() {
+            timer = global.setTimeout(function () {
                 stepRepo();
             }, 0);
         }

@@ -6,7 +6,7 @@ Package.describe({
     git: 'git://github.com/Semantic-Org/UI-{Component}.git',
 });
 
-Package.onUse(function(api) {
+Package.onUse(function (api) {
     api.versionsFrom('1.0');
     api.addFiles([
         {files},

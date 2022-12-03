@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.slider = function(parameters) {
+    $.fn.slider = function (parameters) {
         var
             $allModules    = $(this),
             $document      = $(document),
@@ -52,7 +52,7 @@
         ;
 
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.slider.settings, parameters)
@@ -98,7 +98,7 @@
 
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.debug('Initializing slider', settings);
                         initialLoad = true;
 
@@ -119,14 +119,14 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of slider', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying previous slider for', $module);
                         clearInterval(instance.interval);
                         module.unbind.events();
@@ -136,7 +136,7 @@
                     },
 
                     setup: {
-                        layout: function() {
+                        layout: function () {
                             if ($module.attr('tabindex') === undefined) {
                                 $module.attr('tabindex', 0);
                             }
@@ -160,7 +160,7 @@
                             $trackFill = $module.find('.track-fill');
                             offset = $thumb.width() / 2;
                         },
-                        labels: function() {
+                        labels: function () {
                             if (module.is.labeled()) {
                                 $labels = $module.find('.labels:not(.auto)');
                                 if ($labels.length != 0) {
@@ -174,7 +174,7 @@
                                 }
                             }
                         },
-                        customLabel: function() {
+                        customLabel: function () {
                             var
                                 $children   = $labels.find('.label'),
                                 numChildren = $children.length,
@@ -182,7 +182,7 @@
                                 max         = module.get.max(),
                                 ratio
                             ;
-                            $children.each(function(index) {
+                            $children.each(function (index) {
                                 var
                                     $child = $(this),
                                     attrValue = $child.attr('data-value')
@@ -196,7 +196,7 @@
                                 module.update.labelPosition(ratio, $(this));
                             });
                         },
-                        autoLabel: function() {
+                        autoLabel: function () {
                             $labels = $module.find('.labels');
                             if ($labels.length != 0) {
                                 $labels.empty();
@@ -222,7 +222,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.bind.globalKeyboardEvents();
                             module.bind.keyboardEvents();
                             module.bind.mouseEvents();
@@ -230,25 +230,25 @@
                                 module.bind.windowEvents();
                             }
                         },
-                        keyboardEvents: function() {
+                        keyboardEvents: function () {
                             module.verbose('Binding keyboard events');
                             $module.on('keydown' + eventNamespace, module.event.keydown);
                         },
-                        globalKeyboardEvents: function() {
+                        globalKeyboardEvents: function () {
                             $document.on('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
                         },
-                        mouseEvents: function() {
+                        mouseEvents: function () {
                             module.verbose('Binding mouse and touch events');
-                            $module.find('.track, .thumb, .inner').on('mousedown' + eventNamespace, function(event) {
+                            $module.find('.track, .thumb, .inner').on('mousedown' + eventNamespace, function (event) {
                                 event.stopImmediatePropagation();
                                 event.preventDefault();
                                 module.event.down(event);
                             });
                             $module.on('mousedown' + eventNamespace, module.event.down);
-                            $module.on('mouseenter' + eventNamespace, function(event) {
+                            $module.on('mouseenter' + eventNamespace, function (event) {
                                 isHover = true;
                             });
-                            $module.on('mouseleave' + eventNamespace, function(event) {
+                            $module.on('mouseleave' + eventNamespace, function (event) {
                                 isHover = false;
                             });
                             // All touch events are invoked on the element where the touch *started*. Thus, we can bind them all
@@ -260,19 +260,19 @@
                                 .on('touchend' + eventNamespace, module.event.up)
                                 .on('touchcancel' + eventNamespace, module.event.touchCancel);
                         },
-                        slidingEvents: function() {
+                        slidingEvents: function () {
                             // these don't need the identifier because we only ever want one of them to be registered with document
                             module.verbose('Binding page wide events while handle is being draged');
                             $document.on('mousemove' + eventNamespace, module.event.move);
                             $document.on('mouseup' + eventNamespace, module.event.up);
                         },
-                        windowEvents: function() {
+                        windowEvents: function () {
                             $window.on('resize' + eventNamespace, module.event.resize);
                         },
                     },
 
                     unbind: {
-                        events: function() {
+                        events: function () {
                             $module.find('.track, .thumb, .inner').off('mousedown' + eventNamespace);
                             $module.off('mousedown' + eventNamespace);
                             $module.off('mouseenter' + eventNamespace);
@@ -287,14 +287,14 @@
                             $document.off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);
                             $window.off('resize' + eventNamespace);
                         },
-                        slidingEvents: function() {
+                        slidingEvents: function () {
                             $document.off('mousemove' + eventNamespace);
                             $document.off('mouseup' + eventNamespace);
                         },
                     },
 
                     event: {
-                        down: function(event) {
+                        down: function (event) {
                             event.preventDefault();
                             if (module.is.range()) {
                                 var
@@ -319,7 +319,7 @@
                                 module.bind.slidingEvents();
                             }
                         },
-                        touchDown: function(event) {
+                        touchDown: function (event) {
                             event.preventDefault();  // disable mouse emulation and touch-scrolling
                             event.stopImmediatePropagation();
                             if (touchIdentifier !== undefined) {
@@ -334,7 +334,7 @@
                                 previousValue = module.get.currentThumbValue();
                             }
                         },
-                        move: function(event) {
+                        move: function (event) {
                             if (event.type == 'mousemove') {
                                 event.preventDefault();  // prevent text selection etc.
                             }
@@ -373,12 +373,12 @@
                                 module.update.position(thumbSmoothVal);
                                 settings.onMove.call(element, value, thumbVal, secondThumbVal);
                             } else {
-                                module.update.value(value, function(value, thumbVal, secondThumbVal) {
+                                module.update.value(value, function (value, thumbVal, secondThumbVal) {
                                     settings.onMove.call(element, value, thumbVal, secondThumbVal);
                                 });
                             }
                         },
-                        up: function(event) {
+                        up: function (event) {
                             event.preventDefault();
                             if (module.is.disabled()) {
                                 // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
@@ -392,7 +392,7 @@
                                 previousValue = undefined;
                             }
                         },
-                        touchCancel: function(event) {
+                        touchCancel: function (event) {
                             event.preventDefault();
                             touchIdentifier = undefined;
                             if (previousValue !== undefined) {
@@ -400,7 +400,7 @@
                                 previousValue = undefined;
                             }
                         },
-                        keydown: function(event, first) {
+                        keydown: function (event, first) {
                             if (settings.preventCrossover && module.is.range() && module.thumbVal === module.secondThumbVal) {
                                 $currThumb = undefined;
                             }
@@ -428,14 +428,14 @@
                                 }
                             }
                         },
-                        activateFocus: function(event) {
+                        activateFocus: function (event) {
                             if (!module.is.focused() && module.is.hover() && module.determine.keyMovement(event) != NO_STEP) {
                                 event.preventDefault();
                                 module.event.keydown(event, true);
                                 $module.trigger('focus');
                             }
                         },
-                        resize: function(_event) {
+                        resize: function (_event) {
                             // To avoid a useless performance cost, we only call the label refresh when its necessary
                             if (gapRatio != module.get.gapRatio()) {
                                 module.setup.labels();
@@ -444,7 +444,7 @@
                         },
                     },
 
-                    resync: function() {
+                    resync: function () {
                         module.verbose('Resyncing thumb position based on value');
                         if (module.is.range()) {
                             module.update.position(module.secondThumbVal, $secondThumb);
@@ -452,7 +452,7 @@
                         module.update.position(module.thumbVal, $thumb);
                         module.setup.labels();
                     },
-                    takeStep: function(multiplier) {
+                    takeStep: function (multiplier) {
                         multiplier = multiplier != undefined ? multiplier : 1;
                         var
                             step = module.get.step(),
@@ -470,7 +470,7 @@
                         }
                     },
 
-                    backStep: function(multiplier) {
+                    backStep: function (multiplier) {
                         multiplier = multiplier != undefined ? multiplier : 1;
                         var
                             step = module.get.step(),
@@ -489,58 +489,58 @@
                     },
 
                     is: {
-                        range: function() {
+                        range: function () {
                             return $module.hasClass(settings.className.range);
                         },
-                        hover: function() {
+                        hover: function () {
                             return isHover;
                         },
-                        focused: function() {
+                        focused: function () {
                             return $module.is(':focus');
                         },
-                        disabled: function() {
+                        disabled: function () {
                             return $module.hasClass(settings.className.disabled);
                         },
-                        labeled: function() {
+                        labeled: function () {
                             return $module.hasClass(settings.className.labeled);
                         },
-                        reversed: function() {
+                        reversed: function () {
                             return $module.hasClass(settings.className.reversed);
                         },
-                        vertical: function() {
+                        vertical: function () {
                             return $module.hasClass(settings.className.vertical);
                         },
-                        smooth: function() {
+                        smooth: function () {
                             return settings.smooth || $module.hasClass(settings.className.smooth);
                         },
                     },
 
                     get: {
-                        trackOffset: function() {
+                        trackOffset: function () {
                             if (module.is.vertical()) {
                                 return $track.offset().top;
                             } else {
                                 return $track.offset().left;
                             }
                         },
-                        trackLength: function() {
+                        trackLength: function () {
                             if (module.is.vertical()) {
                                 return $track.height();
                             } else {
                                 return $track.width();
                             }
                         },
-                        trackLeft: function() {
+                        trackLeft: function () {
                             if (module.is.vertical()) {
                                 return $track.position().top;
                             } else {
                                 return $track.position().left;
                             }
                         },
-                        trackStartPos: function() {
+                        trackStartPos: function () {
                             return module.is.reversed() ? module.get.trackLeft() + module.get.trackLength() : module.get.trackLeft();
                         },
-                        trackEndPos: function() {
+                        trackEndPos: function () {
                             return module.is.reversed() ? module.get.trackLeft() : module.get.trackLeft() + module.get.trackLength();
                         },
                         trackStartMargin: function () {
@@ -561,7 +561,7 @@
                             }
                             return margin || '0px';
                         },
-                        precision: function() {
+                        precision: function () {
                             var
                                 decimalPlaces,
                                 step = module.get.step()
@@ -580,10 +580,10 @@
                             module.debug('Precision determined', precision);
                             return precision;
                         },
-                        min: function() {
+                        min: function () {
                             return settings.min;
                         },
-                        max: function() {
+                        max: function () {
                             var
                                 step = module.get.step(),
                                 min = module.get.min(),
@@ -592,18 +592,18 @@
                             ;
                             return remainder === 0 ? settings.max : min + quotient * step;
                         },
-                        step: function() {
+                        step: function () {
                             return settings.step;
                         },
-                        numLabels: function() {
+                        numLabels: function () {
                             var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
                             module.debug('Determined that there should be ' + value + ' labels');
                             return value;
                         },
-                        labelType: function() {
+                        labelType: function () {
                             return settings.labelType;
                         },
-                        label: function(value) {
+                        label: function (value) {
                             if (interpretLabel) {
                                 return interpretLabel(value);
                             }
@@ -617,13 +617,13 @@
                                     return value;
                             }
                         },
-                        value: function() {
+                        value: function () {
                             return value;
                         },
-                        currentThumbValue: function() {
+                        currentThumbValue: function () {
                             return $currThumb !== undefined && $currThumb.hasClass('second') ? module.secondThumbVal : module.thumbVal;
                         },
-                        thumbValue: function(which) {
+                        thumbValue: function (which) {
                             switch (which) {
                                 case 'second':
                                     if (module.is.range()) {
@@ -637,10 +637,10 @@
                                     return module.thumbVal;
                             }
                         },
-                        multiplier: function() {
+                        multiplier: function () {
                             return settings.pageMultiplier;
                         },
-                        thumbPosition: function(which) {
+                        thumbPosition: function (which) {
                             switch (which) {
                                 case 'second':
                                     if (module.is.range()) {
@@ -654,7 +654,7 @@
                                     return position;
                             }
                         },
-                        gapRatio: function() {
+                        gapRatio: function () {
                             var gapRatio = 1;
 
                             if (settings.autoAdjustLabels) {
@@ -681,12 +681,12 @@
                     },
 
                     determine: {
-                        pos: function(pagePos) {
+                        pos: function (pagePos) {
                             return module.is.reversed()
                                 ? module.get.trackStartPos() - pagePos + module.get.trackOffset()
                                 : pagePos - module.get.trackOffset() - module.get.trackStartPos();
                         },
-                        closestThumb: function(eventPos) {
+                        closestThumb: function (eventPos) {
                             var
                                 thumbPos = parseFloat(module.determine.thumbPos($thumb)),
                                 thumbDelta = Math.abs(eventPos - thumbPos),
@@ -698,7 +698,7 @@
                             }
                             return thumbDelta <= secondThumbDelta ? $thumb : $secondThumb;
                         },
-                        closestThumbPos: function(eventPos) {
+                        closestThumbPos: function (eventPos) {
                             var
                                 thumbPos = parseFloat(module.determine.thumbPos($thumb)),
                                 thumbDelta = Math.abs(eventPos - thumbPos),
@@ -707,7 +707,7 @@
                             ;
                             return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
                         },
-                        thumbPos: function($element) {
+                        thumbPos: function ($element) {
                             var
                                 pos = module.is.vertical()
                                     ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
@@ -715,7 +715,7 @@
                             ;
                             return pos;
                         },
-                        positionFromValue: function(val) {
+                        positionFromValue: function (val) {
                             var
                                 min = module.get.min(),
                                 max = module.get.max(),
@@ -727,7 +727,7 @@
                             module.verbose('Determined position: ' + position + ' from value: ' + value);
                             return position;
                         },
-                        positionFromRatio: function(ratio) {
+                        positionFromRatio: function (ratio) {
                             var
                                 trackLength = module.get.trackLength(),
                                 step = module.get.step(),
@@ -736,7 +736,7 @@
                             ;
                             return adjustedPos;
                         },
-                        valueFromEvent: function(event) {
+                        valueFromEvent: function (event) {
                             var
                                 eventPos = module.determine.eventPos(event),
                                 newPos = module.determine.pos(eventPos),
@@ -751,7 +751,7 @@
                             }
                             return value;
                         },
-                        smoothValueFromEvent: function(event) {
+                        smoothValueFromEvent: function (event) {
                             var
                                 min = module.get.min(),
                                 max = module.get.max(),
@@ -769,7 +769,7 @@
                             value = ratio * (max - min) + min;
                             return value;
                         },
-                        eventPos: function(event) {
+                        eventPos: function (event) {
                             if (event.type === 'touchmove' || event.type === 'touchend') {
                                 var
                                     touchEvent = event.touches ? event : event.originalEvent,
@@ -792,7 +792,7 @@
                             ;
                             return module.is.vertical() ? clickY : clickX;
                         },
-                        value: function(position) {
+                        value: function (position) {
                             var
                                 startPos = module.is.reversed() ? module.get.trackEndPos() : module.get.trackStartPos(),
                                 endPos = module.is.reversed() ? module.get.trackStartPos() : module.get.trackEndPos(),
@@ -811,7 +811,7 @@
                             module.verbose('Cutting off additional decimal places');
                             return Math.round((difference + module.get.min()) * precision) / precision;
                         },
-                        keyMovement: function(event) {
+                        keyMovement: function (event) {
                             var
                                 key = event.which,
                                 downArrow = module.is.vertical()
@@ -844,7 +844,7 @@
                         },
                     },
 
-                    handleNewValuePosition: function(val) {
+                    handleNewValuePosition: function (val) {
                         var
                             min = module.get.min(),
                             max = module.get.max(),
@@ -860,11 +860,11 @@
                     },
 
                     set: {
-                        value: function(newValue, fireChange) {
+                        value: function (newValue, fireChange) {
                             fireChange = fireChange !== false;
                             var toReset = previousValue === undefined;
                             previousValue = previousValue === undefined ? module.get.value() : previousValue;
-                            module.update.value(newValue, function(value, thumbVal, secondThumbVal) {
+                            module.update.value(newValue, function (value, thumbVal, secondThumbVal) {
                                 if ((!initialLoad || settings.fireOnInit) && fireChange){
                                     if (newValue !== previousValue) {
                                         settings.onChange.call(element, value, thumbVal, secondThumbVal);
@@ -876,7 +876,7 @@
                                 }
                             });
                         },
-                        rangeValue: function(first, second, fireChange) {
+                        rangeValue: function (first, second, fireChange) {
                             fireChange = fireChange !== false;
                             if (module.is.range()) {
                                 var
@@ -913,7 +913,7 @@
                                 module.error(error.notrange);
                             }
                         },
-                        position: function(position, which) {
+                        position: function (position, which) {
                             var thumbVal = module.determine.value(position);
                             if (which === 'second') {
                                 module.secondThumbVal = thumbVal;
@@ -928,7 +928,7 @@
                     },
 
                     update: {
-                        value: function(newValue, callback) {
+                        value: function (newValue, callback) {
                             var
                                 min = module.get.min(),
                                 max = module.get.max()
@@ -964,7 +964,7 @@
                                 callback(value, module.thumbVal, module.secondThumbVal);
                             }
                         },
-                        position: function(newValue, $element) {
+                        position: function (newValue, $element) {
                             var
                                 newPos = module.handleNewValuePosition(newValue),
                                 $targetThumb = $element != undefined ? $element : $currThumb,
@@ -1028,16 +1028,16 @@
                     },
 
                     goto: {
-                        max: function() {
+                        max: function () {
                             module.set.value(module.get.max());
                         },
-                        min: function() {
+                        min: function () {
                             module.set.value(module.get.min());
                         },
                     },
 
                     read: {
-                        metadata: function() {
+                        metadata: function () {
                             var
                                 data = {
                                     thumbVal: $module.data(metadata.thumbVal),
@@ -1054,7 +1054,7 @@
                                 }
                             }
                         },
-                        settings: function() {
+                        settings: function () {
                             if (settings.start !== false) {
                                 if (module.is.range()) {
                                     module.debug('Start position set from settings', settings.start, settings.end);
@@ -1067,7 +1067,7 @@
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -1081,7 +1081,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -1090,7 +1090,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1100,7 +1100,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1110,7 +1110,7 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
@@ -1118,7 +1118,7 @@
                     },
 
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -1139,14 +1139,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -1158,7 +1158,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -1168,7 +1168,7 @@
                         },
                     },
 
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -1180,7 +1180,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -1303,7 +1303,7 @@
             letter: 'letter',
         },
 
-        onChange: function(value, thumbVal, secondThumbVal){},
-        onMove: function(value, thumbVal, secondThumbVal){},
+        onChange: function (value, thumbVal, secondThumbVal){},
+        onMove: function (value, thumbVal, secondThumbVal){},
     };
 })(jQuery, window, document);

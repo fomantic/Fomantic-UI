@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.calendar = function(parameters) {
+    $.fn.calendar = function (parameters) {
         var
             $allModules    = $(this),
             $document      = $(document),
@@ -223,7 +223,7 @@
                     },
 
                     trigger: {
-                        change: function() {
+                        change: function () {
                             var
                                 inputElement = $input[0]
                             ;
@@ -505,7 +505,7 @@
                         module.create.calendar();
                     },
 
-                    refreshTooltips: function() {
+                    refreshTooltips: function () {
                         var winWidth = $(window).width();
                         $container.find('td[data-position]').each(function () {
                             var $cell = $(this);
@@ -667,8 +667,8 @@
                             }
                         },
                         class: {
-                            mutation: function(mutations) {
-                                mutations.forEach(function(mutation) {
+                            mutation: function (mutations) {
+                                mutations.forEach(function (mutation) {
                                     if (mutation.attributeName === 'class') {
                                         module.check.disabled();
                                     }
@@ -677,7 +677,7 @@
                         },
                     },
 
-                    observeChanges: function() {
+                    observeChanges: function () {
                         if ('MutationObserver' in window) {
                             classObserver  = new MutationObserver(module.event.class.mutation);
                             module.debug('Setting up mutation observer', classObserver);
@@ -686,7 +686,7 @@
                     },
 
                     disconnect: {
-                        classObserver: function() {
+                        classObserver: function () {
                             if ($input.length && classObserver) {
                                 classObserver.disconnect();
                             }
@@ -694,7 +694,7 @@
                     },
 
                     observe: {
-                        class: function() {
+                        class: function () {
                             if ($input.length && classObserver) {
                                 classObserver.observe($module[0], {
                                     attributes: true,
@@ -704,24 +704,24 @@
                     },
 
                     is: {
-                        disabled: function() {
+                        disabled: function () {
                             return $module.hasClass(className.disabled);
                         },
                     },
 
                     check: {
-                        disabled: function(){
+                        disabled: function (){
                             $input.attr('tabindex', module.is.disabled() ? -1 : 0);
                         },
                     },
 
                     get: {
-                        weekOfYear: function(weekYear, weekMonth, weekDay) {
+                        weekOfYear: function (weekYear, weekMonth, weekDay) {
                             // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
                             var ms1d = 864e5, // milliseconds in a day
                                 ms7d = 7 * ms1d; // milliseconds in a week
 
-                            return function() { // return a closure so constants get calculated only once
+                            return function () { // return a closure so constants get calculated only once
                                 var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
                                     AWN = Math.floor(DC3 / 7), // an Absolute Week Number
                                     Wyr = new Date(AWN * ms7d).getUTCFullYear();
@@ -729,13 +729,13 @@
                                 return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
                             }();
                         },
-                        formattedDate: function(format, date) {
+                        formattedDate: function (format, date) {
                             return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
                         },
                         date: function () {
                             return module.helper.sanitiseDate($module.data(metadata.date)) || null;
                         },
-                        inputDate: function() {
+                        inputDate: function () {
                             return $input.val();
                         },
                         focusDate: function () {
@@ -749,10 +749,10 @@
                             var endModule = module.get.calendarModule(settings.endCalendar);
                             return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
                         },
-                        minDate: function() {
+                        minDate: function () {
                             return $module.data(metadata.minDate) || null;
                         },
-                        maxDate: function() {
+                        maxDate: function () {
                             return $module.data(metadata.maxDate) || null;
                         },
                         monthOffset: function () {
@@ -763,7 +763,7 @@
                             var mode = $module.data(metadata.mode) || settings.startMode;
                             return module.get.validatedMode(mode);
                         },
-                        validatedMode: function(mode){
+                        validatedMode: function (mode){
                             var validModes = module.get.validModes();
                             if ($.inArray(mode, validModes) >= 0) {
                                 return mode;
@@ -772,7 +772,7 @@
                                 settings.type === 'month' ? 'month' :
                                     settings.type === 'year' ? 'year' : 'day';
                         },
-                        type: function() {
+                        type: function () {
                             return $module.data(metadata.type) || settings.type;
                         },
                         validModes: function () {
@@ -995,7 +995,7 @@
                     },
 
                     helper: {
-                        dateFormat: function(format, date) {
+                        dateFormat: function (format, date) {
                             if (!(date instanceof Date)) {
                                 return '';
                             }
@@ -1050,8 +1050,8 @@
                                 return match.slice(1, match.length - 1);
                             });
                         },
-                        isDisabled: function(date, mode) {
-                            return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
+                        isDisabled: function (date, mode) {
+                            return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d){
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1078,13 +1078,13 @@
                                         if (d[metadata.date] instanceof Date) {
                                             return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                                         } else if (Array.isArray(d[metadata.date])) {
-                                            return d[metadata.date].some(function(idate) {
+                                            return d[metadata.date].some(function (idate) {
                                                 return module.helper.dateEqual(date, idate, mode);
                                             });
                                         }
                                     }
                                 }
-                            })) || (mode === 'hour' && settings.disabledHours.some(function(d){
+                            })) || (mode === 'hour' && settings.disabledHours.some(function (d){
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1100,7 +1100,7 @@
                                         if (d[metadata.date] instanceof Date) {
                                             blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]));
                                         } else if (Array.isArray(d[metadata.date])) {
-                                            return d[metadata.date].some(function(idate) {
+                                            return d[metadata.date].some(function (idate) {
                                                 blocked = module.helper.dateEqual(date, idate, mode);
                                             });
                                         }
@@ -1124,9 +1124,9 @@
                                 }
                             })));
                         },
-                        isEnabled: function(date, mode) {
+                        isEnabled: function (date, mode) {
                             if (mode === 'day') {
-                                return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
+                                return settings.enabledDates.length === 0 || settings.enabledDates.some(function (d){
                                     if (typeof d === 'string') {
                                         d = module.helper.sanitiseDate(d);
                                     }
@@ -1141,7 +1141,7 @@
                                 return true;
                             }
                         },
-                        findDayAsObject: function(date, mode, dates) {
+                        findDayAsObject: function (date, mode, dates) {
                             if (mode === 'day' || mode === 'month' || mode === 'year') {
                                 var d;
                                 for (var i = 0; i < dates.length; i++) {
@@ -1179,7 +1179,7 @@
                                             if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode)) {
                                                 return d;
                                             } else if (Array.isArray(d[metadata.date])) {
-                                                if (d[metadata.date].some(function(idate) {
+                                                if (d[metadata.date].some(function (idate) {
                                                     return module.helper.dateEqual(date, idate, mode);
                                                 })) {
                                                     return d;
@@ -1191,10 +1191,10 @@
                             }
                             return null;
                         },
-                        findHourAsObject: function(date, mode, hours) {
+                        findHourAsObject: function (date, mode, hours) {
                             if (mode === 'hour') {
                                 var d;
-                                var hourCheck = function(date, d) {
+                                var hourCheck = function (date, d) {
                                     if (d[metadata.hours]) {
                                         if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
                                             return d;
@@ -1222,7 +1222,7 @@
                                             if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                                                 return d;
                                             } else if (Array.isArray(d[metadata.date])) {
-                                                if (d[metadata.date].some(function(idate) {
+                                                if (d[metadata.date].some(function (idate) {
                                                     return module.helper.dateEqual(date, idate, mode);
                                                 })) {
                                                     return d;
@@ -1300,7 +1300,7 @@
                             return (!date || !time) ? time :
                                 new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
                         },
-                        isTodayButton: function(element) {
+                        isTodayButton: function (element) {
                             return element.text() === settings.text.today;
                         },
                     },

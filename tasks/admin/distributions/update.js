@@ -36,7 +36,7 @@ var
     version = project.version
 ;
 
-module.exports = function(callback) {
+module.exports = function (callback) {
     var
         index = -1,
         total = release.distributions.length,
@@ -51,7 +51,7 @@ module.exports = function(callback) {
     }
 
     // Do Git commands synchronously per distribution, to avoid issues
-    stepRepo = function() {
+    stepRepo = function () {
         index = index + 1;
         if (index >= total) {
             callback();
@@ -94,7 +94,7 @@ module.exports = function(callback) {
         console.info('Processing repository:' + outputDirectory);
 
         function setConfig() {
-            git.exec(fileModeOptions, function() {
+            git.exec(fileModeOptions, function () {
                 git.exec(usernameOptions, function () {
                     git.exec(emailOptions, function () {
                         commitFiles();
@@ -110,10 +110,10 @@ module.exports = function(callback) {
             gulp.src('./', gitOptions)
                 .pipe(git.add(gitOptions))
                 .pipe(git.commit(commitMessage, commitOptions))
-                .on('error', function(error) {
+                .on('error', function (error) {
                     // canProceed = false; bug in git commit <https://github.com/stevelacy/gulp-git/issues/49>
                 })
-                .on('finish', function(callback) {
+                .on('finish', function (callback) {
                     if (canProceed) {
                         pushFiles();
                     } else {
@@ -126,7 +126,7 @@ module.exports = function(callback) {
         // push changes to remote
         function pushFiles() {
             console.info('Pushing files for ' + distribution);
-            git.push('origin', 'master', { args: '', cwd: outputDirectory }, function(error) {
+            git.push('origin', 'master', { args: '', cwd: outputDirectory }, function (error) {
                 console.info('Push completed successfully');
                 getSHA();
             });
@@ -134,7 +134,7 @@ module.exports = function(callback) {
 
         // gets SHA of last commit
         function getSHA() {
-            git.exec(versionOptions, function(error, version) {
+            git.exec(versionOptions, function (error, version) {
                 version = version.trim();
                 createRelease(version);
             });
@@ -145,7 +145,7 @@ module.exports = function(callback) {
             if (version) {
                 releaseOptions.target_commitish = version;
             }
-            github.repos.createRelease(releaseOptions, function() {
+            github.repos.createRelease(releaseOptions, function () {
                 nextRepo();
             });
         }

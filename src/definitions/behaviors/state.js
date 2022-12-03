@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.state = function(parameters) {
+    $.fn.state = function (parameters) {
         var
             $allModules     = $(this),
 
@@ -37,7 +37,7 @@
             returnedValue
         ;
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.state.settings, parameters)
@@ -62,7 +62,7 @@
                 ;
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.verbose('Initializing module');
 
                         // allow module to guess desired state based on element
@@ -85,33 +85,33 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying previous module', instance);
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         module.verbose('Refreshing selector cache');
                         $module = $(element);
                     },
 
                     add: {
-                        defaults: function() {
+                        defaults: function () {
                             var
                                 userStates = parameters && $.isPlainObject(parameters.states)
                                     ? parameters.states
                                     : {}
                             ;
-                            $.each(settings.defaults, function(type, typeStates) {
+                            $.each(settings.defaults, function (type, typeStates) {
                                 if (module.is[type] !== undefined && module.is[type]()) {
                                     module.verbose('Adding default states', type, element);
                                     $.extend(settings.states, typeStates, userStates);
@@ -122,79 +122,79 @@
 
                     is: {
 
-                        active: function() {
+                        active: function () {
                             return $module.hasClass(className.active);
                         },
-                        loading: function() {
+                        loading: function () {
                             return $module.hasClass(className.loading);
                         },
-                        inactive: function() {
+                        inactive: function () {
                             return !($module.hasClass(className.active));
                         },
-                        state: function(state) {
+                        state: function (state) {
                             if (className[state] === undefined) {
                                 return false;
                             }
                             return $module.hasClass(className[state]);
                         },
 
-                        enabled: function() {
+                        enabled: function () {
                             return !($module.is(settings.filter.active));
                         },
-                        disabled: function() {
+                        disabled: function () {
                             return ($module.is(settings.filter.active));
                         },
-                        textEnabled: function() {
+                        textEnabled: function () {
                             return !($module.is(settings.filter.text));
                         },
 
                         // definitions for automatic type detection
-                        button: function() {
+                        button: function () {
                             return $module.is('.button:not(a, .submit)');
                         },
-                        input: function() {
+                        input: function () {
                             return $module.is('input');
                         },
-                        progress: function() {
+                        progress: function () {
                             return $module.is('.ui.progress');
                         },
                     },
 
-                    allow: function(state) {
+                    allow: function (state) {
                         module.debug('Now allowing state', state);
                         states[state] = true;
                     },
-                    disallow: function(state) {
+                    disallow: function (state) {
                         module.debug('No longer allowing', state);
                         states[state] = false;
                     },
 
-                    allows: function(state) {
+                    allows: function (state) {
                         return states[state] || false;
                     },
 
-                    enable: function() {
+                    enable: function () {
                         $module.removeClass(className.disabled);
                     },
 
-                    disable: function() {
+                    disable: function () {
                         $module.addClass(className.disabled);
                     },
 
-                    setState: function(state) {
+                    setState: function (state) {
                         if (module.allows(state)) {
                             $module.addClass(className[state]);
                         }
                     },
 
-                    removeState: function(state) {
+                    removeState: function (state) {
                         if (module.allows(state)) {
                             $module.removeClass(className[state]);
                         }
                     },
 
                     toggle: {
-                        state: function() {
+                        state: function () {
                             var
                                 apiRequest,
                                 requestCancelled
@@ -206,10 +206,10 @@
                                     requestCancelled = $module.api('was cancelled');
                                     if (requestCancelled) {
                                         module.debug('API Request cancelled by beforesend');
-                                        settings.activateTest   = function(){
+                                        settings.activateTest   = function (){
                                             return false;
                                         };
-                                        settings.deactivateTest = function(){
+                                        settings.deactivateTest = function (){
                                             return false;
                                         };
                                     } else if (apiRequest) {
@@ -222,28 +222,28 @@
                         },
                     },
 
-                    listenTo: function(apiRequest) {
+                    listenTo: function (apiRequest) {
                         module.debug('API request detected, waiting for state signal', apiRequest);
                         if (apiRequest) {
                             if (text.loading) {
                                 module.update.text(text.loading);
                             }
                             $.when(apiRequest)
-                                .then(function() {
+                                .then(function () {
                                     if (apiRequest.state() == 'resolved') {
                                         module.debug('API request succeeded');
-                                        settings.activateTest   = function(){
+                                        settings.activateTest   = function (){
                                             return true;
                                         };
-                                        settings.deactivateTest = function(){
+                                        settings.deactivateTest = function (){
                                             return true;
                                         };
                                     } else {
                                         module.debug('API request failed');
-                                        settings.activateTest   = function(){
+                                        settings.activateTest   = function (){
                                             return false;
                                         };
-                                        settings.deactivateTest = function(){
+                                        settings.deactivateTest = function (){
                                             return false;
                                         };
                                     }
@@ -255,7 +255,7 @@
                     // checks whether active/inactive state can be given
                     change: {
 
-                        state: function() {
+                        state: function () {
                             module.debug('Determining state change direction');
                             // inactive to active change
                             if (module.is.inactive()) {
@@ -269,7 +269,7 @@
                             settings.onChange.call(element);
                         },
 
-                        text: function() {
+                        text: function () {
                             if (module.is.textEnabled()) {
                                 if (module.is.disabled()) {
                                     module.verbose('Changing text to disabled text', text.hover);
@@ -296,7 +296,7 @@
 
                     },
 
-                    activate: function() {
+                    activate: function () {
                         if (settings.activateTest.call(element)) {
                             module.debug('Setting state to active');
                             $module
@@ -306,7 +306,7 @@
                         }
                     },
 
-                    deactivate: function() {
+                    deactivate: function () {
                         if (settings.deactivateTest.call(element)) {
                             module.debug('Setting state to inactive');
                             $module
@@ -316,7 +316,7 @@
                         }
                     },
 
-                    sync: function() {
+                    sync: function () {
                         module.verbose('Syncing other buttons to current state');
                         if (module.is.active()) {
                             $allModules
@@ -330,26 +330,26 @@
                     },
 
                     get: {
-                        text: function() {
+                        text: function () {
                             return (settings.selector.text)
                                 ? $module.find(settings.selector.text).text()
                                 : $module.html();
                         },
-                        textFor: function(state) {
+                        textFor: function (state) {
                             return text[state] || false;
                         },
                     },
 
                     flash: {
-                        text: function(text, duration, callback) {
+                        text: function (text, duration, callback) {
                             var
                                 previousText = module.get.text();
                             module.debug('Flashing text message', text, duration);
                             text     = text     || settings.text.flash;
                             duration = duration || settings.flashDuration;
-                            callback = callback || function() {};
+                            callback = callback || function () {};
                             module.update.text(text);
-                            setTimeout(function(){
+                            setTimeout(function (){
                                 module.update.text(previousText);
                                 callback.call(element);
                             }, duration);
@@ -358,7 +358,7 @@
 
                     reset: {
                         // on mouseout sets text to previous value
-                        text: function() {
+                        text: function () {
                             var
                                 activeText   = text.active   || $module.data(metadata.storedText),
                                 inactiveText = text.inactive || $module.data(metadata.storedText)
@@ -376,7 +376,7 @@
                     },
 
                     update: {
-                        text: function(text) {
+                        text: function (text) {
                             var
                                 currentText = module.get.text();
                             if (text && text !== currentText) {
@@ -397,7 +397,7 @@
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -411,7 +411,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -420,7 +420,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -430,7 +430,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -440,14 +440,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -468,14 +468,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -487,7 +487,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -496,7 +496,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -508,7 +508,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -581,15 +581,15 @@
         performance: true,
 
         // callback occurs on state change
-        onActivate: function() {},
-        onDeactivate: function() {},
-        onChange: function() {},
+        onActivate: function () {},
+        onDeactivate: function () {},
+        onChange: function () {},
 
         // state test functions
-        activateTest: function() {
+        activateTest: function () {
             return true;
         },
-        deactivateTest: function() {
+        deactivateTest: function () {
             return true;
         },
 

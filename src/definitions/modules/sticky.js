@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.sticky = function(parameters) {
+    $.fn.sticky = function (parameters) {
         var
             $allModules    = $(this),
             $document      = $(document),
@@ -37,7 +37,7 @@
         ;
 
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings              = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.sticky.settings, parameters)
@@ -62,7 +62,7 @@
                         || window.mozRequestAnimationFrame
                         || window.webkitRequestAnimationFrame
                         || window.msRequestAnimationFrame
-                        || function(callback) {
+                        || function (callback) {
                             setTimeout(callback, 0);
                         },
 
@@ -75,7 +75,7 @@
 
                 module      = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.determineContainer();
                         module.determineContext();
                         module.verbose('Initializing sticky', settings, $container);
@@ -90,14 +90,14 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying previous instance');
                         module.reset();
                         if (documentObserver) {
@@ -114,7 +114,7 @@
                         $module.removeData(moduleNamespace);
                     },
 
-                    observeChanges: function() {
+                    observeChanges: function () {
                         if ('MutationObserver' in window) {
                             documentObserver = new MutationObserver(module.event.documentChanged);
                             observer         = new MutationObserver(module.event.changed);
@@ -134,7 +134,7 @@
                         }
                     },
 
-                    determineContainer: function() {
+                    determineContainer: function () {
                         if (settings.container) {
                             $container = [window, document].indexOf(settings.container) < 0 ? $document.find(settings.container) : $(settings.container);
                         } else {
@@ -142,7 +142,7 @@
                         }
                     },
 
-                    determineContext: function() {
+                    determineContext: function () {
                         if (settings.context) {
                             $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
                         } else {
@@ -153,7 +153,7 @@
                         }
                     },
 
-                    checkErrors: function() {
+                    checkErrors: function () {
                         if (module.is.hidden()) {
                             module.error(error.visible, $module);
                         }
@@ -164,7 +164,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             $window
                                 .on('load' + eventNamespace, module.event.load)
                                 .on('resize' + eventNamespace, module.event.resize);
@@ -177,17 +177,17 @@
                     },
 
                     event: {
-                        changed: function(mutations) {
+                        changed: function (mutations) {
                             clearTimeout(module.timer);
-                            module.timer = setTimeout(function() {
+                            module.timer = setTimeout(function () {
                                 module.verbose('DOM tree modified, updating sticky menu', mutations);
                                 module.refresh();
                             }, 100);
                         },
-                        documentChanged: function(mutations) {
-                            [].forEach.call(mutations, function(mutation) {
+                        documentChanged: function (mutations) {
+                            [].forEach.call(mutations, function (mutation) {
                                 if (mutation.removedNodes) {
-                                    [].forEach.call(mutation.removedNodes, function(node) {
+                                    [].forEach.call(mutation.removedNodes, function (node) {
                                         if (node == element || $(node).find(element).length > 0) {
                                             module.debug('Element removed from DOM, tearing down events');
                                             module.destroy();
@@ -196,26 +196,26 @@
                                 }
                             });
                         },
-                        load: function() {
+                        load: function () {
                             module.verbose('Page contents finished loading');
                             requestAnimationFrame(module.refresh);
                         },
-                        resize: function() {
+                        resize: function () {
                             module.verbose('Window resized');
                             requestAnimationFrame(module.refresh);
                         },
-                        scroll: function() {
-                            requestAnimationFrame(function() {
+                        scroll: function () {
+                            requestAnimationFrame(function () {
                                 $scroll.triggerHandler('scrollchange' + eventNamespace, $scroll.scrollTop());
                             });
                         },
-                        scrollchange: function(event, scrollPosition) {
+                        scrollchange: function (event, scrollPosition) {
                             module.stick(scrollPosition);
                             settings.onScroll.call(element);
                         },
                     },
 
-                    refresh: function(hardRefresh) {
+                    refresh: function (hardRefresh) {
                         module.reset();
                         if (!settings.context) {
                             module.determineContext();
@@ -229,7 +229,7 @@
                     },
 
                     supports: {
-                        sticky: function() {
+                        sticky: function () {
                             var
                                 $element = $('<div/>')
                             ;
@@ -239,13 +239,13 @@
                     },
 
                     save: {
-                        lastScroll: function(scroll) {
+                        lastScroll: function (scroll) {
                             module.lastScroll = scroll;
                         },
-                        elementScroll: function(scroll) {
+                        elementScroll: function (scroll) {
                             module.elementScroll = scroll;
                         },
-                        positions: function() {
+                        positions: function () {
                             var
                                 scrollContext = {
                                     height: $scroll.height(),
@@ -303,7 +303,7 @@
                     },
 
                     get: {
-                        direction: function(scroll) {
+                        direction: function (scroll) {
                             var
                                 direction = 'down'
                             ;
@@ -313,13 +313,13 @@
                             }
                             return direction;
                         },
-                        scrollChange: function(scroll) {
+                        scrollChange: function (scroll) {
                             scroll = scroll || $scroll.scrollTop();
                             return (module.lastScroll)
                                 ? (scroll - module.lastScroll)
                                 : 0;
                         },
-                        currentElementScroll: function() {
+                        currentElementScroll: function () {
                             if (module.elementScroll) {
                                 return module.elementScroll;
                             }
@@ -328,7 +328,7 @@
                                 : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
                         },
 
-                        elementScroll: function(scroll) {
+                        elementScroll: function (scroll) {
                             scroll = scroll || $scroll.scrollTop();
                             var
                                 element        = module.cache.element,
@@ -350,28 +350,28 @@
                     },
 
                     remove: {
-                        lastScroll: function() {
+                        lastScroll: function () {
                             delete module.lastScroll;
                         },
-                        elementScroll: function() {
+                        elementScroll: function () {
                             delete module.elementScroll;
                         },
-                        minimumSize: function() {
+                        minimumSize: function () {
                             $container
                                 .css('min-height', '');
                         },
-                        offset: function() {
+                        offset: function () {
                             $module.css('margin-top', '');
                         },
                     },
 
                     set: {
-                        offset: function() {
+                        offset: function () {
                             module.verbose('Setting offset on element', settings.offset);
                             $module
                                 .css('margin-top', settings.offset);
                         },
-                        containerSize: function() {
+                        containerSize: function () {
                             var
                                 tagName = $container[0].tagName
                             ;
@@ -399,14 +399,14 @@
                                 }
                             }
                         },
-                        minimumSize: function() {
+                        minimumSize: function () {
                             var
                                 element   = module.cache.element
                             ;
                             $container
                                 .css('min-height', element.height);
                         },
-                        scroll: function(scroll) {
+                        scroll: function (scroll) {
                             module.debug('Setting scroll on element', scroll);
                             if (module.elementScroll == scroll) {
                                 return;
@@ -422,7 +422,7 @@
                                     .css('bottom', scroll + 'px');
                             }
                         },
-                        size: function() {
+                        size: function () {
                             if (module.cache.element.height !== 0 && module.cache.element.width !== 0) {
                                 element.style.setProperty('width',  module.cache.element.width  + 'px', 'important');
                                 element.style.setProperty('height', module.cache.element.height + 'px', 'important');
@@ -431,30 +431,30 @@
                     },
 
                     is: {
-                        standardScroll: function() {
+                        standardScroll: function () {
                             return ($scroll[0] == window);
                         },
-                        top: function() {
+                        top: function () {
                             return $module.hasClass(className.top);
                         },
-                        bottom: function() {
+                        bottom: function () {
                             return $module.hasClass(className.bottom);
                         },
-                        initialPosition: function() {
+                        initialPosition: function () {
                             return (!module.is.fixed() && !module.is.bound());
                         },
-                        hidden: function() {
+                        hidden: function () {
                             return (!$module.is(':visible'));
                         },
-                        bound: function() {
+                        bound: function () {
                             return $module.hasClass(className.bound);
                         },
-                        fixed: function() {
+                        fixed: function () {
                             return $module.hasClass(className.fixed);
                         },
                     },
 
-                    stick: function(scrollPosition) {
+                    stick: function (scrollPosition) {
                         var
                             cachedPosition = scrollPosition || $scroll.scrollTop(),
                             cache          = module.cache,
@@ -539,7 +539,7 @@
                         }
                     },
 
-                    bindTop: function() {
+                    bindTop: function () {
                         module.debug('Binding element to top of parent container');
                         module.remove.offset();
                         if (settings.setSize) {
@@ -558,7 +558,7 @@
                         settings.onTop.call(element);
                         settings.onUnstick.call(element);
                     },
-                    bindBottom: function() {
+                    bindBottom: function () {
                         module.debug('Binding element to bottom of parent container');
                         module.remove.offset();
                         if (settings.setSize) {
@@ -577,14 +577,14 @@
                         settings.onUnstick.call(element);
                     },
 
-                    setInitialPosition: function() {
+                    setInitialPosition: function () {
                         module.debug('Returning to initial position');
                         module.unfix();
                         module.unbind();
                     },
 
 
-                    fixTop: function() {
+                    fixTop: function () {
                         module.debug('Fixing element to top of page');
                         if (settings.setSize) {
                             module.set.size();
@@ -604,7 +604,7 @@
                         settings.onStick.call(element);
                     },
 
-                    fixBottom: function() {
+                    fixBottom: function () {
                         module.debug('Sticking element to bottom of page');
                         if (settings.setSize) {
                             module.set.size();
@@ -624,7 +624,7 @@
                         settings.onStick.call(element);
                     },
 
-                    unbind: function() {
+                    unbind: function () {
                         if (module.is.bound()) {
                             module.debug('Removing container bound position on element');
                             module.remove.offset();
@@ -635,7 +635,7 @@
                         }
                     },
 
-                    unfix: function() {
+                    unfix: function () {
                         if (module.is.fixed()) {
                             module.debug('Removing fixed position on element');
                             module.remove.minimumSize();
@@ -648,7 +648,7 @@
                         }
                     },
 
-                    reset: function() {
+                    reset: function () {
                         module.debug('Resetting elements position');
                         module.unbind();
                         module.unfix();
@@ -657,7 +657,7 @@
                         module.remove.lastScroll();
                     },
 
-                    resetCSS: function() {
+                    resetCSS: function () {
                         $module
                             .css({
                                 width: '',
@@ -669,7 +669,7 @@
                             });
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
@@ -678,7 +678,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -687,7 +687,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -697,7 +697,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -707,14 +707,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -735,14 +735,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 0);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -754,7 +754,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -763,7 +763,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -775,7 +775,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -864,22 +864,22 @@
         observeChanges: false,
 
         // Called when position is recalculated
-        onReposition: function(){},
+        onReposition: function (){},
 
         // Called on each scroll
-        onScroll: function(){},
+        onScroll: function (){},
 
         // Called when element is stuck to viewport
-        onStick: function(){},
+        onStick: function (){},
 
         // Called when element is unstuck from viewport
-        onUnstick: function(){},
+        onUnstick: function (){},
 
         // Called when element reaches top of context
-        onTop: function(){},
+        onTop: function (){},
 
         // Called when element reaches bottom of context
-        onBottom: function(){},
+        onBottom: function (){},
 
         error: {
             container: 'Sticky element must be inside a relative container',

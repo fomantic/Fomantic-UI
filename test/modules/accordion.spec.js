@@ -1,4 +1,4 @@
-describe('UI Accordion', function() {
+describe('UI Accordion', function () {
     $.fn.dimmer.settings.debug = false;
 
     moduleTests({

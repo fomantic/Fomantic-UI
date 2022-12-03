@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.embed = function(parameters) {
+    $.fn.embed = function (parameters) {
         var
             $allModules     = $(this),
 
@@ -38,7 +38,7 @@
         ;
 
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.embed.settings, parameters)
@@ -67,7 +67,7 @@
 
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.debug('Initializing embed');
                         module.determine.autoplay();
                         module.create();
@@ -75,14 +75,14 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying previous instance of embed');
                         module.reset();
                         $module
@@ -90,7 +90,7 @@
                             .off(eventNamespace);
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         module.verbose('Refreshing selector cache');
                         $placeholder = $module.find(selector.placeholder);
                         $icon        = $module.find(selector.icon);
@@ -98,7 +98,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             if (module.has.placeholder()) {
                                 module.debug('Adding placeholder events');
                                 $module
@@ -108,7 +108,7 @@
                         },
                     },
 
-                    create: function() {
+                    create: function () {
                         var
                             placeholder = module.get.placeholder()
                         ;
@@ -119,7 +119,7 @@
                         }
                     },
 
-                    createPlaceholder: function(placeholder) {
+                    createPlaceholder: function (placeholder) {
                         var
                             icon  = module.get.icon()
                         ;
@@ -128,7 +128,7 @@
                         module.debug('Creating placeholder for embed', placeholder, icon);
                     },
 
-                    createEmbed: function(url) {
+                    createEmbed: function (url) {
                         module.refresh();
                         url = url || module.get.url();
                         $embed = $('<div/>')
@@ -139,18 +139,18 @@
                         module.debug('Creating embed object', $embed);
                     },
 
-                    changeEmbed: function(url) {
+                    changeEmbed: function (url) {
                         $embed
                             .html(module.generate.embed(url));
                     },
 
-                    createAndShow: function() {
+                    createAndShow: function () {
                         module.createEmbed();
                         module.show();
                     },
 
                     // sets new embed
-                    change: function(source, id, url) {
+                    change: function (source, id, url) {
                         module.debug('Changing video to ', source, id, url);
                         $module
                             .data(metadata.source, source)
@@ -168,7 +168,7 @@
                     },
 
                     // clears embed
-                    reset: function() {
+                    reset: function () {
                         module.debug('Clearing embed and showing placeholder');
                         module.remove.data();
                         module.remove.active();
@@ -178,51 +178,51 @@
                     },
 
                     // shows current embed
-                    show: function() {
+                    show: function () {
                         module.debug('Showing embed');
                         module.set.active();
                         settings.onDisplay.call(element);
                     },
 
-                    hide: function() {
+                    hide: function () {
                         module.debug('Hiding embed');
                         module.showPlaceholder();
                     },
 
-                    showPlaceholder: function() {
+                    showPlaceholder: function () {
                         module.debug('Showing placeholder image');
                         module.remove.active();
                         settings.onPlaceholderDisplay.call(element);
                     },
 
                     get: {
-                        id: function() {
+                        id: function () {
                             return settings.id || $module.data(metadata.id);
                         },
-                        placeholder: function() {
+                        placeholder: function () {
                             return settings.placeholder || $module.data(metadata.placeholder);
                         },
-                        icon: function() {
+                        icon: function () {
                             return (settings.icon)
                                 ? settings.icon
                                 : ($module.data(metadata.icon) !== undefined)
                                     ? $module.data(metadata.icon)
                                     : module.determine.icon();
                         },
-                        source: function(url) {
+                        source: function (url) {
                             return (settings.source)
                                 ? settings.source
                                 : ($module.data(metadata.source) !== undefined)
                                     ? $module.data(metadata.source)
                                     : module.determine.source();
                         },
-                        type: function() {
+                        type: function () {
                             var source = module.get.source();
                             return (sources[source] !== undefined)
                                 ? sources[source].type
                                 : false;
                         },
-                        url: function() {
+                        url: function () {
                             return (settings.url)
                                 ? settings.url
                                 : ($module.data(metadata.url) !== undefined)
@@ -232,18 +232,18 @@
                     },
 
                     determine: {
-                        autoplay: function() {
+                        autoplay: function () {
                             if (module.should.autoplay()) {
                                 settings.autoplay = true;
                             }
                         },
-                        source: function(url) {
+                        source: function (url) {
                             var
                                 matchedSource = false
                             ;
                             url = url || module.get.url();
                             if (url) {
-                                $.each(sources, function(name, source) {
+                                $.each(sources, function (name, source) {
                                     if (url.search(source.domain) !== -1) {
                                         matchedSource = name;
                                         return false;
@@ -252,7 +252,7 @@
                             }
                             return matchedSource;
                         },
-                        icon: function() {
+                        icon: function () {
                             var
                                 source = module.get.source()
                             ;
@@ -260,7 +260,7 @@
                                 ? sources[source].icon
                                 : false;
                         },
-                        url: function() {
+                        url: function () {
                             var
                                 id     = settings.id     || $module.data(metadata.id),
                                 source = settings.source || $module.data(metadata.source),
@@ -278,13 +278,13 @@
 
 
                     set: {
-                        active: function() {
+                        active: function () {
                             $module.addClass(className.active);
                         },
                     },
 
                     remove: {
-                        data: function() {
+                        data: function () {
                             $module
                                 .removeData(metadata.id)
                                 .removeData(metadata.icon)
@@ -292,16 +292,16 @@
                                 .removeData(metadata.source)
                                 .removeData(metadata.url);
                         },
-                        active: function() {
+                        active: function () {
                             $module.removeClass(className.active);
                         },
-                        embed: function() {
+                        embed: function () {
                             $embed.empty();
                         },
                     },
 
                     encode: {
-                        parameters: function(parameters) {
+                        parameters: function (parameters) {
                             var
                                 urlString = [],
                                 index
@@ -314,7 +314,7 @@
                     },
 
                     generate: {
-                        embed: function(url) {
+                        embed: function (url) {
                             module.debug('Generating embed html');
                             var
                                 source = module.get.source(),
@@ -330,7 +330,7 @@
                             }
                             return html;
                         },
-                        parameters: function(source, extraParameters) {
+                        parameters: function (source, extraParameters) {
                             var
                                 parameters = (sources[source] && sources[source].parameters !== undefined)
                                     ? sources[source].parameters(settings)
@@ -346,16 +346,16 @@
                     },
 
                     has: {
-                        embed: function() {
+                        embed: function () {
                             return ($embed.length > 0);
                         },
-                        placeholder: function() {
+                        placeholder: function () {
                             return settings.placeholder || $module.data(metadata.placeholder);
                         },
                     },
 
                     should: {
-                        autoplay: function() {
+                        autoplay: function () {
                             return (settings.autoplay === 'auto')
                                 ? (settings.placeholder || $module.data(metadata.placeholder) !== undefined)
                                 : settings.autoplay;
@@ -363,12 +363,12 @@
                     },
 
                     is: {
-                        video: function() {
+                        video: function () {
                             return module.get.type() == 'video';
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -382,7 +382,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -391,7 +391,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -401,7 +401,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -411,14 +411,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -439,14 +439,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -461,7 +461,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -470,7 +470,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -482,7 +482,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -560,11 +560,11 @@
         // additional parameters to include with the embed
         parameters: false,
 
-        onDisplay: function() {},
-        onPlaceholderDisplay: function() {},
-        onReset: function() {},
-        onCreate: function(url) {},
-        onEmbed: function(parameters) {
+        onDisplay: function () {},
+        onPlaceholderDisplay: function () {},
+        onReset: function () {},
+        onCreate: function (url) {},
+        onEmbed: function (parameters) {
             return parameters;
         },
 
@@ -599,7 +599,7 @@
                 icon: 'video play',
                 domain: 'youtube.com',
                 url: '//www.youtube.com/embed/{id}',
-                parameters: function(settings) {
+                parameters: function (settings) {
                     return {
                         autohide: !settings.brandedUI,
                         autoplay: settings.autoplay,
@@ -616,7 +616,7 @@
                 icon: 'video play',
                 domain: 'vimeo.com',
                 url: '//player.vimeo.com/video/{id}',
-                parameters: function(settings) {
+                parameters: function (settings) {
                     return {
                         api: settings.api,
                         autoplay: settings.autoplay,
@@ -630,10 +630,10 @@
         },
 
         templates: {
-            deQuote: function(string, encode) {
+            deQuote: function (string, encode) {
                 return String(string).replace(/"/g, encode ? '&quot;' : '');
             },
-            iframe: function(url, parameters) {
+            iframe: function (url, parameters) {
                 var
                     src = url,
                     deQuote = $.fn.embed.settings.templates.deQuote
@@ -646,7 +646,7 @@
                     + ' width="100%" height="100%"'
                     + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
             },
-            placeholder: function(image, icon) {
+            placeholder: function (image, icon) {
                 var
                     html = '',
                     deQuote = $.fn.embed.settings.templates.deQuote
@@ -663,9 +663,9 @@
 
         // NOT YET IMPLEMENTED
         api: false,
-        onPause: function() {},
-        onPlay: function() {},
-        onStop: function() {},
+        onPause: function () {},
+        onPlay: function () {},
+        onStop: function () {},
 
     };
 })(jQuery, window, document);

@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.toast = $.fn.toast = function(parameters) {
+    $.toast = $.fn.toast = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.toast.settings, parameters)
@@ -72,7 +72,7 @@
                 ;
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.verbose('Initializing element');
                         module.create.id();
                         if (!module.has.container()) {
@@ -97,14 +97,14 @@
                         }
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of toast');
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         if ($toastBox) {
                             module.debug('Removing toast', $toastBox);
                             module.unbind.events();
@@ -121,22 +121,22 @@
                             .removeData(moduleNamespace);
                     },
 
-                    show: function(callback) {
+                    show: function (callback) {
                         if (settings.onShow.call($toastBox, element) === false) {
                             module.debug('onShow callback returned false, cancelling toast animation');
                             return;
                         }
-                        callback = callback || function(){};
+                        callback = callback || function (){};
                         module.debug('Showing toast');
                         module.animate.show(callback);
                     },
 
-                    close: function(callback) {
+                    close: function (callback) {
                         if (settings.onHide.call($toastBox, element) === false) {
                             module.debug('onHide callback returned false, cancelling toast animation');
                             return;
                         }
-                        callback = callback || function(){};
+                        callback = callback || function (){};
                         module.debug('Closing toast');
                         module.remove.visible();
                         module.unbind.events();
@@ -144,15 +144,15 @@
                     },
 
                     create: {
-                        container: function() {
+                        container: function () {
                             module.verbose('Creating container');
                             $context.append($('<div/>', {class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
                         },
-                        id: function() {
+                        id: function () {
                             id = (Math.random().toString(16) + '000000000').slice(2, 10);
                             module.verbose('Creating unique id for element', id);
                         },
-                        toast: function() {
+                        toast: function () {
                             $toastBox = $('<div/>', {class: className.box});
                             var iconClass = module.get.iconClass();
                             if (!isToastComponent) {
@@ -345,7 +345,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.debug('Binding events to toast');
                             if (settings.closeIcon) {
                                 $close.on('click' + eventNamespace, module.event.close);
@@ -361,7 +361,7 @@
                     },
 
                     unbind: {
-                        events: function() {
+                        events: function () {
                             module.debug('Unbinding events to toast');
                             if (settings.closeIcon) {
                                 $close.off('click' + eventNamespace);
@@ -376,8 +376,8 @@
                     },
 
                     animate: {
-                        show: function(callback) {
-                            callback = isFunction(callback) ? callback : function(){};
+                        show: function (callback) {
+                            callback = isFunction(callback) ? callback : function (){};
                             if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                 module.set.visible();
                                 $toastBox
@@ -388,15 +388,15 @@
                                         verbose: settings.verbose,
                                         silent: settings.silent,
                                         duration: settings.transition.showDuration,
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             callback.call($toastBox, element);
                                             settings.onVisible.call($toastBox, element);
                                         },
                                     });
                             }
                         },
-                        close: function(callback) {
-                            callback = isFunction(callback) ? callback : function(){};
+                        close: function (callback) {
+                            callback = isFunction(callback) ? callback : function (){};
                             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                                 $toastBox
                                     .transition({
@@ -408,8 +408,8 @@
                                         silent: settings.silent,
                                         interval: 50,
 
-                                        onBeforeHide: function(callback){
-                                            callback = isFunction(callback)?callback : function(){};
+                                        onBeforeHide: function (callback){
+                                            callback = isFunction(callback)?callback : function (){};
                                             if (settings.transition.closeEasing !== ''){
                                                 if ($toastBox) {
                                                     $toastBox.css('opacity', '0');
@@ -424,7 +424,7 @@
                                                 callback.call($toastBox);
                                             }
                                         },
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             callback.call($toastBox, element);
                                             settings.onHidden.call($toastBox, element);
                                             module.destroy();
@@ -434,13 +434,13 @@
                                 module.error(error.noTransition);
                             }
                         },
-                        pause: function() {
+                        pause: function () {
                             $animationObject.css('animationPlayState', 'paused');
                             if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'paused');
                             }
                         },
-                        continue: function() {
+                        continue: function () {
                             $animationObject.css('animationPlayState', 'running');
                             if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'running');
@@ -449,14 +449,14 @@
                     },
 
                     has: {
-                        container: function() {
+                        container: function () {
                             module.verbose('Determining if there is already a container');
                             return module.get.containers().length > 0;
                         },
-                        toast: function(){
+                        toast: function (){
                             return !!module.get.toast();
                         },
-                        toasts: function(){
+                        toasts: function (){
                             return module.get.toasts().length > 0;
                         },
                         configActions: function () {
@@ -465,49 +465,49 @@
                     },
 
                     get: {
-                        id: function() {
+                        id: function () {
                             return id;
                         },
-                        containers: function() {
+                        containers: function () {
                             return $context.children(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not('+module.helpers.toClass(className.horizontal)+')') + (settings.context && settings.context !== 'body' ? module.helpers.toClass(className.absolute) : ':not('+module.helpers.toClass(className.absolute)+')'));
                         },
-                        container: function() {
+                        container: function () {
                             return module.get.containers()[0];
                         },
-                        toastBox: function() {
+                        toastBox: function () {
                             return $toastBox || null;
                         },
-                        toast: function() {
+                        toast: function () {
                             return $toast || null;
                         },
-                        toasts: function() {
+                        toasts: function () {
                             return $(module.get.container()).find(selector.box);
                         },
-                        iconClass: function() {
+                        iconClass: function () {
                             return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
                         },
-                        remainingTime: function() {
+                        remainingTime: function () {
                             return $animationObject ? $animationObject.css('opacity') * settings.displayTime : 0;
                         },
                     },
 
                     set: {
-                        visible: function() {
+                        visible: function () {
                             $toast.addClass(className.visible);
                         },
                     },
 
                     remove: {
-                        visible: function() {
+                        visible: function () {
                             $toast.removeClass(className.visible);
                         },
                     },
 
                     event: {
-                        close: function(){
+                        close: function (){
                             module.close();
                         },
-                        click: function(event) {
+                        click: function (event) {
                             if ($(event.target).closest(selector.clickable).length === 0) {
                                 if (settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
                                     module.verbose('Click callback returned false or close denied by setting cancelling close');
@@ -516,14 +516,14 @@
                                 module.close();
                             }
                         },
-                        approve: function() {
+                        approve: function () {
                             if (settings.onApprove.call(element, $module) === false) {
                                 module.verbose('Approve callback returned false cancelling close');
                                 return;
                             }
                             module.close();
                         },
-                        deny: function() {
+                        deny: function () {
                             if (settings.onDeny.call(element, $module) === false) {
                                 module.verbose('Deny callback returned false cancelling close');
                                 return;
@@ -533,7 +533,7 @@
                     },
 
                     helpers: {
-                        toClass: function(selector) {
+                        toClass: function (selector) {
                             var
                                 classes = selector.trim().split(/\s+/),
                                 result = ''
@@ -545,10 +545,10 @@
 
                             return result;
                         },
-                        deQuote: function(string) {
+                        deQuote: function (string) {
                             return String(string).replace(/"/g, '');
                         },
-                        escape: function(string, preserveHTML) {
+                        escape: function (string, preserveHTML) {
                             if (preserveHTML){
                                 return string;
                             }
@@ -562,7 +562,7 @@
                                     "'": '&#x27;',
                                     '`': '&#x60;',
                                 },
-                                escapedChar  = function(chr) {
+                                escapedChar  = function (chr) {
                                     return escape[chr];
                                 }
                             ;
@@ -575,7 +575,7 @@
                     },
 
                     can: {
-                        useElement: function(element){
+                        useElement: function (element){
                             if ($.fn[element] !== undefined) {
                                 return true;
                             }
@@ -584,7 +584,7 @@
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -598,7 +598,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -607,7 +607,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -617,7 +617,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -627,14 +627,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -655,14 +655,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -674,7 +674,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -683,7 +683,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -695,7 +695,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -869,14 +869,14 @@
         },
 
         // callbacks
-        onShow: function(){},
-        onVisible: function(){},
-        onClick: function(){},
-        onHide: function(){},
-        onHidden: function(){},
-        onRemove: function(){},
-        onApprove: function(){},
-        onDeny: function(){},
+        onShow: function (){},
+        onVisible: function (){},
+        onClick: function (){},
+        onHide: function (){},
+        onHidden: function (){},
+        onRemove: function (){},
+        onApprove: function (){},
+        onDeny: function (){},
     };
 
     $.extend($.easing, {

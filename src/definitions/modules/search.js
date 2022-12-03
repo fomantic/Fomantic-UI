@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.search = function(parameters) {
+    $.fn.search = function (parameters) {
         var
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $(this)
-            .each(function() {
+            .each(function () {
                 var
                     settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.search.settings, parameters)
@@ -70,7 +70,7 @@
 
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.verbose('Initializing module');
                         module.get.settings();
                         module.determine.searchFields();
@@ -79,20 +79,20 @@
                         module.create.results();
                         module.instantiate();
                     },
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying instance');
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         module.debug('Refreshing selector cache');
                         $prompt         = $module.find(selector.prompt);
                         $searchButton   = $module.find(selector.searchButton);
@@ -101,13 +101,13 @@
                         $result         = $module.find(selector.result);
                     },
 
-                    refreshResults: function() {
+                    refreshResults: function () {
                         $results = $module.find(selector.results);
                         $result  = $module.find(selector.result);
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.verbose('Binding events to search');
                             if (settings.automatic) {
                                 $module
@@ -130,7 +130,7 @@
                     },
 
                     determine: {
-                        searchFields: function() {
+                        searchFields: function () {
                             // this makes sure $.extend does not add specified search fields to default fields
                             // this is the only setting which should not extend defaults
                             if (parameters && parameters.searchFields !== undefined) {
@@ -140,10 +140,10 @@
                     },
 
                     event: {
-                        input: function() {
+                        input: function () {
                             if (settings.searchDelay) {
                                 clearTimeout(module.timer);
-                                module.timer = setTimeout(function() {
+                                module.timer = setTimeout(function () {
                                     if (module.is.focused()) {
                                         module.query();
                                     }
@@ -152,20 +152,20 @@
                                 module.query();
                             }
                         },
-                        focus: function() {
+                        focus: function () {
                             module.set.focus();
                             if (settings.searchOnFocus && module.has.minimumCharacters()) {
-                                module.query(function() {
+                                module.query(function () {
                                     if (module.can.show()) {
                                         module.showResults();
                                     }
                                 });
                             }
                         },
-                        blur: function(event) {
+                        blur: function (event) {
                             var
                                 pageLostFocus = (document.activeElement === this),
-                                callback      = function() {
+                                callback      = function () {
                                     module.cancel.query();
                                     module.remove.focus();
                                     module.timer = setTimeout(module.hideResults, settings.hideDelay);
@@ -178,7 +178,7 @@
                             if (module.resultsClicked) {
                                 module.debug('Determining if user action caused search to close');
                                 $module
-                                    .one('click.close' + eventNamespace, selector.results, function(event) {
+                                    .one('click.close' + eventNamespace, selector.results, function (event) {
                                         if (module.is.inMessage(event) || disabledBubbled) {
                                             $prompt.trigger('focus');
                                             return;
@@ -194,13 +194,13 @@
                             }
                         },
                         result: {
-                            mousedown: function() {
+                            mousedown: function () {
                                 module.resultsClicked = true;
                             },
-                            mouseup: function() {
+                            mouseup: function () {
                                 module.resultsClicked = false;
                             },
-                            click: function(event) {
+                            click: function (event) {
                                 module.debug('Search result selected');
                                 var
                                     $result = $(this),
@@ -241,7 +241,7 @@
                             },
                         },
                     },
-                    ensureVisible: function($el) {
+                    ensureVisible: function ($el) {
                         var elTop, elBottom, resultsScrollTop, resultsHeight;
                         if ($el.length === 0) {
                             return;
@@ -258,7 +258,7 @@
                             $results.scrollTop(resultsScrollTop + (elBottom - resultsHeight));
                         }
                     },
-                    handleKeyboard: function(event) {
+                    handleKeyboard: function (event) {
                         var
                             // force selector refresh
                             $result         = $module.find(selector.result),
@@ -340,7 +340,7 @@
                     },
 
                     setup: {
-                        api: function(searchTerm, callback) {
+                        api: function (searchTerm, callback) {
                             var
                                 apiSettings = {
                                     debug: settings.debug,
@@ -352,26 +352,26 @@
                                     },
                                 },
                                 apiCallbacks = {
-                                    onSuccess: function(response, $module, xhr) {
+                                    onSuccess: function (response, $module, xhr) {
                                         module.parse.response.call(element, response, searchTerm);
                                         callback();
                                         if (settings.apiSettings && typeof settings.apiSettings.onSuccess === 'function') {
                                             settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                                         }
                                     },
-                                    onFailure: function(response, $module, xhr) {
+                                    onFailure: function (response, $module, xhr) {
                                         module.displayMessage(error.serverError);
                                         callback();
                                         if (settings.apiSettings && typeof settings.apiSettings.onFailure === 'function') {
                                             settings.apiSettings.onFailure.call(this, response, $module, xhr);
                                         }
                                     },
-                                    onAbort: function(status, $module, xhr) {
+                                    onAbort: function (status, $module, xhr) {
                                         if (settings.apiSettings && typeof settings.apiSettings.onAbort === 'function') {
                                             settings.apiSettings.onAbort.call(this, status, $module, xhr);
                                         }
                                     },
-                                    onError: function(errorMessage, $module, xhr){
+                                    onError: function (errorMessage, $module, xhr){
                                         module.error();
                                         if (settings.apiSettings && typeof settings.apiSettings.onError === 'function') {
                                             settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
@@ -386,28 +386,28 @@
                     },
 
                     can: {
-                        useAPI: function() {
+                        useAPI: function () {
                             return $.fn.api !== undefined;
                         },
-                        show: function() {
+                        show: function () {
                             return module.is.focused() && !module.is.visible() && !module.is.empty();
                         },
-                        transition: function() {
+                        transition: function () {
                             return settings.transition && $.fn.transition !== undefined && $module.transition('is supported');
                         },
                     },
 
                     is: {
-                        animating: function() {
+                        animating: function () {
                             return $results.hasClass(className.animating);
                         },
-                        chrome: function() {
+                        chrome: function () {
                             return !!window.chrome && !window.StyleMedia;
                         },
-                        hidden: function() {
+                        hidden: function () {
                             return $results.hasClass(className.hidden);
                         },
-                        inMessage: function(event) {
+                        inMessage: function (event) {
                             if (!event.target) {
                                 return;
                             }
@@ -417,19 +417,19 @@
                             ;
                             return (isInDOM && $target.closest(selector.message).length > 0);
                         },
-                        empty: function() {
+                        empty: function () {
                             return ($results.html() === '');
                         },
-                        visible: function() {
+                        visible: function () {
                             return ($results.filter(':visible').length > 0);
                         },
-                        focused: function() {
+                        focused: function () {
                             return ($prompt.filter(':focus').length > 0);
                         },
                     },
 
                     get: {
-                        settings: function() {
+                        settings: function () {
                             if ($.isPlainObject(parameters) && parameters.searchFullText) {
                                 settings.fullTextSearch = parameters.searchFullText;
                                 module.error(settings.error.oldSearchSyntax, element);
@@ -439,7 +439,7 @@
                                 module.error(error.noNormalize, element);
                             }
                         },
-                        inputEvent: function() {
+                        inputEvent: function () {
                             var
                                 prompt = $prompt[0],
                                 inputEvent   = (prompt !== undefined && prompt.oninput !== undefined)
@@ -450,13 +450,13 @@
                             ;
                             return inputEvent;
                         },
-                        value: function() {
+                        value: function () {
                             return $prompt.val();
                         },
-                        results: function() {
+                        results: function () {
                             return $module.data(metadata.results);
                         },
-                        result: function(value, results) {
+                        result: function (value, results) {
                             var
                                 result       = false
                             ;
@@ -468,7 +468,7 @@
                                 : module.get.results();
                             if (settings.type === 'category') {
                                 module.debug('Finding result that matches', value);
-                                $.each(results, function(index, category) {
+                                $.each(results, function (index, category) {
                                     if (Array.isArray(category.results)) {
                                         result = module.search.object(value, category.results)[0];
                                         // don't continue searching if a result is found
@@ -486,59 +486,59 @@
                     },
 
                     select: {
-                        firstResult: function() {
+                        firstResult: function () {
                             module.verbose('Selecting first result');
                             $result.first().addClass(className.active);
                         },
                     },
 
                     set: {
-                        focus: function() {
+                        focus: function () {
                             $module.addClass(className.focus);
                         },
-                        loading: function() {
+                        loading: function () {
                             $module.addClass(className.loading);
                         },
-                        value: function(value) {
+                        value: function (value) {
                             module.verbose('Setting search input value', value);
                             $prompt
                                 .val(value);
                         },
-                        type: function(type) {
+                        type: function (type) {
                             type = type || settings.type;
                             if (className[type]) {
                                 $module.addClass(className[type]);
                             }
                         },
-                        buttonPressed: function() {
+                        buttonPressed: function () {
                             $searchButton.addClass(className.pressed);
                         },
                     },
 
                     remove: {
-                        loading: function() {
+                        loading: function () {
                             $module.removeClass(className.loading);
                         },
-                        focus: function() {
+                        focus: function () {
                             $module.removeClass(className.focus);
                         },
-                        buttonPressed: function() {
+                        buttonPressed: function () {
                             $searchButton.removeClass(className.pressed);
                         },
-                        diacritics: function(text) {
+                        diacritics: function (text) {
                             return settings.ignoreDiacritics ?  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
                         },
                     },
 
-                    query: function(callback) {
+                    query: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         var
                             searchTerm = module.get.value(),
                             cache = module.read.cache(searchTerm)
                         ;
-                        callback = callback || function() {};
+                        callback = callback || function () {};
                         if (module.has.minimumCharacters())  {
                             if (cache) {
                                 module.debug('Reading result from cache', searchTerm);
@@ -565,7 +565,7 @@
                     },
 
                     search: {
-                        local: function(searchTerm) {
+                        local: function (searchTerm) {
                             var
                                 results = module.search.object(searchTerm, settings.source),
                                 searchHTML
@@ -591,10 +591,10 @@
                                 results: results,
                             });
                         },
-                        remote: function(searchTerm, callback) {
+                        remote: function (searchTerm, callback) {
                             callback = isFunction(callback)
                                 ? callback
-                                : function(){};
+                                : function (){};
                             if ($module.api('is loading')) {
                                 $module.api('abort');
                             }
@@ -602,7 +602,7 @@
                             $module
                                 .api('query');
                         },
-                        object: function(searchTerm, source, searchFields) {
+                        object: function (searchTerm, source, searchFields) {
                             searchTerm = module.remove.diacritics(String(searchTerm));
                             var
                                 results      = [],
@@ -612,7 +612,7 @@
                                 matchRegExp  = new RegExp(regExp.beginsWith + searchExp, 'i'),
 
                                 // avoid duplicates when pushing results
-                                addResult = function(array, result) {
+                                addResult = function (array, result) {
                                     var
                                         notResult      = ($.inArray(result, results) == -1),
                                         notFuzzyResult = ($.inArray(result, fuzzyResults) == -1),
@@ -639,8 +639,8 @@
                                 return [];
                             }
                             // iterate through search fields looking for matches
-                            $.each(searchFields, function(index, field) {
-                                $.each(source, function(label, content) {
+                            $.each(searchFields, function (index, field) {
+                                $.each(source, function (label, content) {
                                     var
                                         fieldExists = (typeof content[field] == 'string') || (typeof content[field] == 'number')
                                     ;
@@ -674,7 +674,7 @@
                         term  = term.toLowerCase();
                         return term.indexOf(query) > -1;
                     },
-                    fuzzySearch: function(query, term) {
+                    fuzzySearch: function (query, term) {
                         var
                             termLength  = term.length,
                             queryLength = query.length
@@ -705,7 +705,7 @@
                     },
 
                     parse: {
-                        response: function(response, searchTerm) {
+                        response: function (response, searchTerm) {
                             if (Array.isArray(response)){
                                 var o={};
                                 o[fields.results]=response;
@@ -730,7 +730,7 @@
                     },
 
                     cancel: {
-                        query: function() {
+                        query: function () {
                             if (module.can.useAPI()) {
                                 $module.api('abort');
                             }
@@ -738,14 +738,14 @@
                     },
 
                     has: {
-                        minimumCharacters: function() {
+                        minimumCharacters: function () {
                             var
                                 searchTerm    = module.get.value(),
                                 numCharacters = searchTerm.length
                             ;
                             return (numCharacters >= settings.minCharacters);
                         },
-                        results: function() {
+                        results: function () {
                             if ($results.length === 0) {
                                 return false;
                             }
@@ -757,7 +757,7 @@
                     },
 
                     clear: {
-                        cache: function(value) {
+                        cache: function (value) {
                             var
                                 cache = $module.data(metadata.cache)
                             ;
@@ -773,7 +773,7 @@
                     },
 
                     read: {
-                        cache: function(name) {
+                        cache: function (name) {
                             var
                                 cache = $module.data(metadata.cache)
                             ;
@@ -788,11 +788,11 @@
                     },
 
                     create: {
-                        categoryResults: function(results) {
+                        categoryResults: function (results) {
                             var
                                 categoryResults = {}
                             ;
-                            $.each(results, function(index, result) {
+                            $.each(results, function (index, result) {
                                 if (!result.category) {
                                     return;
                                 }
@@ -808,7 +808,7 @@
                             });
                             return categoryResults;
                         },
-                        id: function(resultIndex, categoryIndex) {
+                        id: function (resultIndex, categoryIndex) {
                             var
                                 resultID      = (resultIndex + 1), // not zero indexed
                                 letterID,
@@ -825,7 +825,7 @@
                             }
                             return id;
                         },
-                        results: function() {
+                        results: function () {
                             if ($results.length === 0) {
                                 $results = $('<div />')
                                     .addClass(className.results)
@@ -835,7 +835,7 @@
                     },
 
                     inject: {
-                        result: function(result, resultIndex, categoryIndex) {
+                        result: function (result, resultIndex, categoryIndex) {
                             module.verbose('Injecting result into results');
                             var
                                 $selectedResult = (categoryIndex !== undefined)
@@ -852,7 +852,7 @@
                             $selectedResult
                                 .data(metadata.result, result);
                         },
-                        id: function(results) {
+                        id: function (results) {
                             module.debug('Injecting unique ids into results');
                             var
                                 // since results may be object, we must use counters
@@ -861,10 +861,10 @@
                             ;
                             if (settings.type === 'category') {
                                 // iterate through each category result
-                                $.each(results, function(index, category) {
+                                $.each(results, function (index, category) {
                                     if (category.results.length > 0){
                                         resultIndex = 0;
-                                        $.each(category.results, function(index, result) {
+                                        $.each(category.results, function (index, result) {
                                             if (result.id === undefined) {
                                                 result.id = module.create.id(resultIndex, categoryIndex);
                                             }
@@ -876,7 +876,7 @@
                                 });
                             } else {
                                 // top level
-                                $.each(results, function(index, result) {
+                                $.each(results, function (index, result) {
                                     if (result.id === undefined) {
                                         result.id = module.create.id(resultIndex);
                                     }
@@ -889,14 +889,14 @@
                     },
 
                     save: {
-                        results: function(results) {
+                        results: function (results) {
                             module.verbose('Saving current search results to metadata', results);
                             $module.data(metadata.results, results);
                         },
                     },
 
                     write: {
-                        cache: function(name, value) {
+                        cache: function (name, value) {
                             var
                                 cache = ($module.data(metadata.cache) !== undefined)
                                     ? $module.data(metadata.cache)
@@ -911,7 +911,7 @@
                         },
                     },
 
-                    addResults: function(html) {
+                    addResults: function (html) {
                         if (isFunction(settings.onResultsAdd)) {
                             if (settings.onResultsAdd.call($results, html) === false) {
                                 module.debug('onResultsAdd callback cancelled default action');
@@ -927,16 +927,16 @@
                             }
                             module.showResults();
                         } else {
-                            module.hideResults(function() {
+                            module.hideResults(function () {
                                 $results.empty();
                             });
                         }
                     },
 
-                    showResults: function(callback) {
+                    showResults: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (resultsDismissed) {
                             return;
                         }
@@ -950,11 +950,11 @@
                                         verbose: settings.verbose,
                                         silent: settings.silent,
                                         duration: settings.duration,
-                                        onShow: function() {
+                                        onShow: function () {
                                             var $firstResult = $module.find(selector.result).eq(0);
                                             module.ensureVisible($firstResult);
                                         },
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             callback();
                                         },
                                         queue: true,
@@ -968,10 +968,10 @@
                             settings.onResultsOpen.call($results);
                         }
                     },
-                    hideResults: function(callback) {
+                    hideResults: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (module.is.visible()) {
                             if (module.can.transition()) {
                                 module.debug('Hiding results with css animations');
@@ -982,7 +982,7 @@
                                         verbose: settings.verbose,
                                         silent: settings.silent,
                                         duration: settings.duration,
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             callback();
                                         },
                                         queue: true,
@@ -997,7 +997,7 @@
                         }
                     },
 
-                    generateResults: function(response) {
+                    generateResults: function (response) {
                         module.debug('Generating html from response', response);
                         var
                             template       = settings.templates[settings.type],
@@ -1027,14 +1027,14 @@
                         return html;
                     },
 
-                    displayMessage: function(text, type, header) {
+                    displayMessage: function (text, type, header) {
                         type = type || 'standard';
                         module.debug('Displaying message', text, type, header);
                         module.addResults(settings.templates.message(text, type, header));
                         return settings.templates.message(text, type, header);
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
@@ -1043,7 +1043,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -1052,7 +1052,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1062,7 +1062,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1072,14 +1072,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -1100,14 +1100,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -1122,7 +1122,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -1131,7 +1131,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -1143,7 +1143,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -1270,11 +1270,11 @@
         onSelect: false,
         onResultsAdd: false,
 
-        onSearchQuery: function(query){},
-        onResults: function(response){},
+        onSearchQuery: function (query){},
+        onResults: function (response){},
 
-        onResultsOpen: function(){},
-        onResultsClose: function(){},
+        onResultsOpen: function (){},
+        onResultsClose: function (){},
 
         className: {
             animating: 'animating',
@@ -1340,7 +1340,7 @@
         },
 
         templates: {
-            escape: function(string, preserveHTML) {
+            escape: function (string, preserveHTML) {
                 if (preserveHTML){
                     return string;
                 }
@@ -1354,7 +1354,7 @@
                         "'": '&#x27;',
                         '`': '&#x60;',
                     },
-                    escapedChar  = function(chr) {
+                    escapedChar  = function (chr) {
                         return escape[chr];
                     };
                 if (shouldEscape.test(string)) {
@@ -1363,7 +1363,7 @@
                 }
                 return string;
             },
-            message: function(message, type, header) {
+            message: function (message, type, header) {
                 var
                     html = ''
                 ;
@@ -1379,14 +1379,14 @@
                 }
                 return html;
             },
-            category: function(response, fields, preserveHTML) {
+            category: function (response, fields, preserveHTML) {
                 var
                     html = '',
                     escape = $.fn.search.settings.templates.escape
                 ;
                 if (response[fields.categoryResults] !== undefined) {
                     // each category
-                    $.each(response[fields.categoryResults], function(index, category) {
+                    $.each(response[fields.categoryResults], function (index, category) {
                         if (category[fields.results] !== undefined && category.results.length > 0) {
                             html  += '<div class="category">';
 
@@ -1396,7 +1396,7 @@
 
                             // each item inside category
                             html += '<div class="results">';
-                            $.each(category.results, function(index, result) {
+                            $.each(category.results, function (index, result) {
                                 if (result[fields.url]) {
                                     html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                                 } else {
@@ -1444,14 +1444,14 @@
                 }
                 return false;
             },
-            standard: function(response, fields, preserveHTML) {
+            standard: function (response, fields, preserveHTML) {
                 var
                     html = '',
                     escape = $.fn.search.settings.templates.escape
                 ;
                 if (response[fields.results] !== undefined) {
                     // each result
-                    $.each(response[fields.results], function(index, result) {
+                    $.each(response[fields.results], function (index, result) {
                         if (result[fields.url]) {
                             html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                         } else {
@@ -1498,7 +1498,7 @@
     };
 
     $.extend($.easing, {
-        easeOutExpo: function(x) {
+        easeOutExpo: function (x) {
             return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
         },
     });

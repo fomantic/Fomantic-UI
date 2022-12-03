@@ -40,7 +40,7 @@ var
     output          = config.paths.output
 ;
 
-module.exports = function(callback) {
+module.exports = function (callback) {
     var
         stream,
         index,
@@ -53,7 +53,7 @@ module.exports = function(callback) {
     ;
 
         // streams... designed to save time and make coding fun...
-        (function(component) {
+        (function (component) {
             var
                 outputDirectory      = path.join(release.outputRoot, component),
                 isJavascript         = fs.existsSync(output.compressed + component + '.js'),
@@ -164,7 +164,7 @@ module.exports = function(callback) {
                 return gulp.src(release.templates.bower)
                     .pipe(plumber())
                     .pipe(flatten())
-                    .pipe(jsonEditor(function(bower) {
+                    .pipe(jsonEditor(function (bower) {
                         bower.name = packageName;
                         bower.description = capitalizedComponent + ' - Semantic UI';
                         if (isJavascript) {
@@ -196,7 +196,7 @@ module.exports = function(callback) {
                 return gulp.src(release.templates.package)
                     .pipe(plumber())
                     .pipe(flatten())
-                    .pipe(jsonEditor(function(npm) {
+                    .pipe(jsonEditor(function (npm) {
                         if (isJavascript) {
                             npm.dependencies = {
                                 jquery: 'x.x.x',
@@ -223,7 +223,7 @@ module.exports = function(callback) {
                 return gulp.src(release.templates.composer)
                     .pipe(plumber())
                     .pipe(flatten())
-                    .pipe(jsonEditor(function(composer) {
+                    .pipe(jsonEditor(function (composer) {
                         if (isJavascript) {
                             composer.dependencies = {
                                 jquery: 'x.x.x',
@@ -261,16 +261,16 @@ module.exports = function(callback) {
                 ;
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))
-                    .pipe(tap(function(file) {
+                    .pipe(tap(function (file) {
                         filenames += file.contents;
                     }))
-                    .on('end', function() {
+                    .on('end', function () {
                         gulp.src(manifest.assets)
                             .pipe(concatFileNames('empty.txt', concatSettings))
-                            .pipe(tap(function(file) {
+                            .pipe(tap(function (file) {
                                 filenames += file.contents;
                             }))
-                            .on('end', function() {
+                            .on('end', function () {
                                 // remove trailing slash
                                 filenames = filenames.replace(regExp.match.trailingComma, '').trim();
                                 gulp.src(release.templates.meteor.component)

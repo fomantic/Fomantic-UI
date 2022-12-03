@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.sidebar = function(parameters) {
+    $.fn.sidebar = function (parameters) {
         var
             $allModules     = $(this),
             $window         = $(window),
@@ -43,14 +43,14 @@
                 || window.mozRequestAnimationFrame
                 || window.webkitRequestAnimationFrame
                 || window.msRequestAnimationFrame
-                || function(callback) {
+                || function (callback) {
                     setTimeout(callback, 0);
                 },
 
             returnedValue;
 
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.sidebar.settings, parameters)
@@ -90,7 +90,7 @@
 
                 module      = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.debug('Initializing sidebar', parameters);
 
                         module.create.id();
@@ -104,14 +104,14 @@
                             module.setup.layout();
                         }
 
-                        requestAnimationFrame(function() {
+                        requestAnimationFrame(function () {
                             module.setup.cache();
                         });
 
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
@@ -119,14 +119,14 @@
                     },
 
                     create: {
-                        id: function() {
+                        id: function () {
                             id = (Math.random().toString(16) + '000000000').slice(2, 10);
                             elementNamespace = '.' + id;
                             module.verbose('Creating unique id for element', id);
                         },
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.verbose('Destroying previous module for', $module);
                         $module
                             .off(eventNamespace)
@@ -141,7 +141,7 @@
                     },
 
                     event: {
-                        clickaway: function(event) {
+                        clickaway: function (event) {
                             if (settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
@@ -157,10 +157,10 @@
                                 }
                             }
                         },
-                        touch: function(event) {
+                        touch: function (event) {
                             //event.stopPropagation();
                         },
-                        containScroll: function(event) {
+                        containScroll: function (event) {
                             if (element.scrollTop <= 0)  {
                                 element.scrollTop = 1;
                             }
@@ -168,7 +168,7 @@
                                 element.scrollTop = element.scrollHeight - element.offsetHeight - 1;
                             }
                         },
-                        scroll: function(event) {
+                        scroll: function (event) {
                             if ($(event.target).closest(selector.sidebar).length === 0) {
                                 event.preventDefault();
                             }
@@ -176,13 +176,13 @@
                     },
 
                     bind: {
-                        clickaway: function() {
+                        clickaway: function () {
                             module.verbose('Adding clickaway events to context', $context);
                             $context
                                 .on('click'    + elementNamespace, module.event.clickaway)
                                 .on('touchend' + elementNamespace, module.event.clickaway);
                         },
-                        scrollLock: function() {
+                        scrollLock: function () {
                             if (settings.scrollLock) {
                                 module.debug('Disabling page scroll');
                                 hadScrollbar = module.has.scrollbar();
@@ -200,11 +200,11 @@
                         },
                     },
                     unbind: {
-                        clickaway: function() {
+                        clickaway: function () {
                             module.verbose('Removing clickaway events from context', $context);
                             $context.off(elementNamespace);
                         },
-                        scrollLock: function() {
+                        scrollLock: function () {
                             module.verbose('Removing scroll lock from page');
                             if (hadScrollbar) {
                                 module.restore.bodyMargin();
@@ -216,7 +216,7 @@
                     },
 
                     add: {
-                        inlineCSS: function() {
+                        inlineCSS: function () {
                             var
                                 width     = module.cache.width  || $module.outerWidth(),
                                 height    = module.cache.height || $module.outerHeight(),
@@ -288,7 +288,7 @@
                         },
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         module.verbose('Refreshing selector cache');
                         $context  = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                         module.refreshSidebars();
@@ -297,12 +297,12 @@
                         module.clear.cache();
                     },
 
-                    refreshSidebars: function() {
+                    refreshSidebars: function () {
                         module.verbose('Refreshing other sidebars');
                         $sidebars = $context.children(selector.sidebar);
                     },
 
-                    repaint: function() {
+                    repaint: function () {
                         module.verbose('Forcing repaint event');
                         element.style.display = 'none';
                         var ignored = element.offsetHeight;
@@ -311,13 +311,13 @@
                     },
 
                     setup: {
-                        cache: function() {
+                        cache: function () {
                             module.cache = {
                                 width: $module.outerWidth(),
                                 height: $module.outerHeight(),
                             };
                         },
-                        layout: function() {
+                        layout: function () {
                             if ($context.children(selector.pusher).length === 0) {
                                 module.debug('Adding wrapper element for sidebar');
                                 module.error(error.pusher);
@@ -341,7 +341,7 @@
                         },
                     },
 
-                    attachEvents: function(selector, event) {
+                    attachEvents: function (selector, event) {
                         var
                             $toggle = $(selector)
                         ;
@@ -365,7 +365,7 @@
                         },
                     },
                     save: {
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
                             var
                                 bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
@@ -374,10 +374,10 @@
                             tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                         },
                     },
-                    show: function(callback) {
+                    show: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (module.is.hidden()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -403,7 +403,7 @@
                                 }
                             }
                             module.set.dimmerStyles();
-                            module.pushPage(function() {
+                            module.pushPage(function () {
                                 callback.call(element);
                                 settings.onVisible.call(element);
                             });
@@ -413,14 +413,14 @@
                         }
                     },
 
-                    hide: function(callback) {
+                    hide: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if ((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
                             module.debug('Hiding sidebar', callback);
                             module.refreshSidebars();
-                            module.pullPage(function() {
+                            module.pullPage(function () {
                                 callback.call(element);
                                 settings.onHidden.call(element);
                             });
@@ -428,25 +428,25 @@
                         }
                     },
 
-                    othersAnimating: function() {
+                    othersAnimating: function () {
                         return ($sidebars.not($module).filter('.' + className.animating).length > 0);
                     },
-                    othersVisible: function() {
+                    othersVisible: function () {
                         return ($sidebars.not($module).filter('.' + className.visible).length > 0);
                     },
-                    othersActive: function() {
+                    othersActive: function () {
                         return (module.othersVisible() || module.othersAnimating());
                     },
 
-                    hideOthers: function(callback) {
+                    hideOthers: function (callback) {
                         var
                             $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
                             sidebarCount   = $otherSidebars.length,
                             callbackCount  = 0
                         ;
-                        callback = callback || function(){};
+                        callback = callback || function (){};
                         $otherSidebars
-                            .sidebar('hide', function() {
+                            .sidebar('hide', function () {
                                 callbackCount++;
                                 if (callbackCount == sidebarCount) {
                                     callback();
@@ -454,7 +454,7 @@
                             });
                     },
 
-                    toggle: function() {
+                    toggle: function () {
                         module.verbose('Determining toggled direction');
                         if (module.is.hidden()) {
                             module.show();
@@ -463,7 +463,7 @@
                         }
                     },
 
-                    pushPage: function(callback) {
+                    pushPage: function (callback) {
                         var
                             transition = module.get.transition(),
                             $transition = (transition === 'overlay' || module.othersActive())
@@ -475,7 +475,7 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         if (settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
                         }
@@ -485,16 +485,16 @@
                         module.bind.scrollLock();
                         module.set.transition(transition);
                         module.repaint();
-                        animate = function() {
+                        animate = function () {
                             module.bind.clickaway();
                             module.add.inlineCSS();
                             module.set.animating();
                             module.set.visible();
                         };
-                        dim = function() {
+                        dim = function () {
                             module.set.dimmed();
                         };
-                        transitionEnd = function(event) {
+                        transitionEnd = function (event) {
                             if (event.target == $transition[0]) {
                                 $transition.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
@@ -509,7 +509,7 @@
                         }
                     },
 
-                    pullPage: function(callback) {
+                    pullPage: function (callback) {
                         var
                             transition = module.get.transition(),
                             $transition = (transition == 'overlay' || module.othersActive())
@@ -520,13 +520,13 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function(){};
+                            : function (){};
                         module.verbose('Removing context push state', module.get.direction());
 
                         module.unbind.clickaway();
                         module.unbind.scrollLock();
 
-                        animate = function() {
+                        animate = function () {
                             module.set.transition(transition);
                             module.set.animating();
                             if (settings.dimPage && !module.othersVisible()) {
@@ -534,7 +534,7 @@
                             }
                             module.remove.visible();
                         };
-                        transitionEnd = function(event) {
+                        transitionEnd = function (event) {
                             if (event.target == $transition[0]) {
                                 $transition.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
@@ -555,29 +555,29 @@
                         requestAnimationFrame(animate);
                     },
 
-                    scrollToTop: function() {
+                    scrollToTop: function () {
                         module.verbose('Scrolling to top of page to avoid animation issues');
                         $module.scrollTop(0);
                         (isBody ? $window : $context)[0].scrollTo(0, 0);
                     },
 
-                    scrollBack: function() {
+                    scrollBack: function () {
                         module.verbose('Scrolling back to original page position');
                         (isBody ? $window : $context)[0].scrollTo(0, currentScroll);
                     },
 
                     clear: {
-                        cache: function() {
+                        cache: function () {
                             module.verbose('Clearing cached dimensions');
                             module.cache = {};
                         },
                     },
 
                     set: {
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
-                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -585,7 +585,7 @@
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
-                        dimmerStyles: function() {
+                        dimmerStyles: function () {
                             if (settings.blurring) {
                                 $pusher.addClass(className.blurring);
                             } else {
@@ -594,51 +594,51 @@
                         },
                         // ios only (scroll on html not document). This prevent auto-resize canvas/scroll in ios
                         // (This is no longer necessary in latest iOS)
-                        ios: function() {
+                        ios: function () {
                             $html.addClass(className.ios);
                         },
 
                         // container
-                        pushed: function() {
+                        pushed: function () {
                             $context.addClass(className.pushed);
                         },
-                        pushable: function() {
+                        pushable: function () {
                             $context.addClass(className.pushable);
                         },
 
                         // pusher
-                        dimmed: function() {
+                        dimmed: function () {
                             $pusher.addClass(className.dimmed);
                         },
 
                         // sidebar
-                        active: function() {
+                        active: function () {
                             $module.addClass(className.active);
                         },
-                        animating: function() {
+                        animating: function () {
                             $module.addClass(className.animating);
                         },
-                        closing: function() {
+                        closing: function () {
                             $pusher.addClass(className.closing);
                         },
-                        transition: function(transition) {
+                        transition: function (transition) {
                             transition = transition || module.get.transition();
                             $module.addClass(transition);
                         },
-                        direction: function(direction) {
+                        direction: function (direction) {
                             direction = direction || module.get.direction();
                             $module.addClass(className[direction]);
                         },
-                        visible: function() {
+                        visible: function () {
                             $module.addClass(className.visible);
                         },
-                        overlay: function() {
+                        overlay: function () {
                             $module.addClass(className.overlay);
                         },
                     },
                     remove: {
 
-                        inlineCSS: function() {
+                        inlineCSS: function () {
                             module.debug('Removing inline css styles', $style);
                             if ($style && $style.length > 0) {
                                 $style.remove();
@@ -646,48 +646,48 @@
                         },
 
                         // ios scroll on html not document
-                        ios: function() {
+                        ios: function () {
                             $html.removeClass(className.ios);
                         },
 
                         // context
-                        pushed: function() {
+                        pushed: function () {
                             $context.removeClass(className.pushed);
                         },
-                        pushable: function() {
+                        pushable: function () {
                             $context.removeClass(className.pushable);
                         },
 
                         // sidebar
-                        active: function() {
+                        active: function () {
                             $module.removeClass(className.active);
                         },
-                        animating: function() {
+                        animating: function () {
                             $module.removeClass(className.animating);
                         },
-                        closing: function() {
+                        closing: function () {
                             $pusher.removeClass(className.closing);
                         },
-                        transition: function(transition) {
+                        transition: function (transition) {
                             transition = transition || module.get.transition();
                             $module.removeClass(transition);
                         },
-                        direction: function(direction) {
+                        direction: function (direction) {
                             direction = direction || module.get.direction();
                             $module.removeClass(className[direction]);
                         },
-                        visible: function() {
+                        visible: function () {
                             $module.removeClass(className.visible);
                         },
-                        overlay: function() {
+                        overlay: function () {
                             $module.removeClass(className.overlay);
                         },
                     },
                     restore: {
-                        bodyMargin: function() {
+                        bodyMargin: function () {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -697,7 +697,7 @@
                         },
                     },
                     get: {
-                        direction: function() {
+                        direction: function () {
                             if ($module.hasClass(className.top)) {
                                 return className.top;
                             } else if ($module.hasClass(className.right)) {
@@ -707,7 +707,7 @@
                             }
                             return className.left;
                         },
-                        transition: function() {
+                        transition: function () {
                             var
                                 direction = module.get.direction(),
                                 transition
@@ -722,7 +722,7 @@
                             module.verbose('Determined transition', transition);
                             return transition;
                         },
-                        transitionEvent: function() {
+                        transitionEvent: function () {
                             var
                                 element     = document.createElement('element'),
                                 transitions = {
@@ -741,33 +741,33 @@
                         },
                     },
                     has: {
-                        scrollbar: function() {
+                        scrollbar: function () {
                             return isBody || $context.css('overflow-y') !== 'hidden';
                         },
                     },
                     is: {
-                        safari: function() {
+                        safari: function () {
                             if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
                             return module.cache.isSafari;
                         },
-                        edge: function(){
+                        edge: function (){
                             if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
                             return module.cache.isEdge;
                         },
-                        firefox: function(){
+                        firefox: function (){
                             if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
                             return module.cache.isFirefox;
                         },
-                        iframe: function() {
+                        iframe: function () {
                             return !(self === top);
                         },
-                        ie: function() {
+                        ie: function () {
                             if (module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
@@ -778,7 +778,7 @@
                             return module.cache.isIE;
                         },
 
-                        ios: function() {
+                        ios: function () {
                             var
                                 userAgent      = navigator.userAgent,
                                 isIOS          = userAgent.match(regExp.ios),
@@ -791,7 +791,7 @@
                                 return false;
                             }
                         },
-                        mobile: function() {
+                        mobile: function () {
                             var
                                 userAgent    = navigator.userAgent,
                                 isMobile     = userAgent.match(regExp.mobile)
@@ -804,26 +804,26 @@
                                 return false;
                             }
                         },
-                        hidden: function() {
+                        hidden: function () {
                             return !module.is.visible();
                         },
-                        visible: function() {
+                        visible: function () {
                             return $module.hasClass(className.visible);
                         },
                         // alias
-                        open: function() {
+                        open: function () {
                             return module.is.visible();
                         },
-                        closed: function() {
+                        closed: function () {
                             return module.is.hidden();
                         },
-                        vertical: function() {
+                        vertical: function () {
                             return $module.hasClass(className.top);
                         },
-                        animating: function() {
+                        animating: function () {
                             return $context.hasClass(className.animating);
                         },
-                        rtl: function() {
+                        rtl: function () {
                             if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
@@ -831,7 +831,7 @@
                         },
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -845,7 +845,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -854,7 +854,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -864,7 +864,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -874,14 +874,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -902,14 +902,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -921,7 +921,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -930,7 +930,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -942,7 +942,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -1033,12 +1033,12 @@
         returnScroll: false,
         delaySetup: false,
 
-        onChange: function(){},
-        onShow: function(){},
-        onHide: function(){},
+        onChange: function (){},
+        onShow: function (){},
+        onHide: function (){},
 
-        onHidden: function(){},
-        onVisible: function(){},
+        onHidden: function (){},
+        onVisible: function (){},
 
         className: {
             active: 'active',

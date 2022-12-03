@@ -27,10 +27,10 @@ module.exports = {
     banner: nullish(config.banner, release.banner),
 
     log: {
-        created: function(file) {
+        created: function (file) {
             return 'Created: ' + file;
         },
-        modified: function(file) {
+        modified: function (file) {
             return 'Modified: ' + file;
         },
     },
@@ -106,7 +106,7 @@ module.exports = {
 
         plumber: {
             less: {
-                errorHandler: function(error) {
+                errorHandler: function (error) {
                     var
                         regExp = {
                             variable: /@(\S.*?)\s/,

@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.popup = function(parameters) {
+    $.fn.popup = function (parameters) {
         var
             $allModules    = $(this),
             $document      = $(document),
@@ -44,7 +44,7 @@
             returnedValue
         ;
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.popup.settings, parameters)
@@ -86,7 +86,7 @@
                 module = {
 
                     // binds events
-                    initialize: function() {
+                    initialize: function () {
                         module.debug('Initializing', $module);
                         module.createID();
                         module.bind.events();
@@ -99,14 +99,14 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         module.verbose('Storing instance', module);
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
                     },
 
-                    observeChanges: function() {
+                    observeChanges: function () {
                         if ('MutationObserver' in window) {
                             documentObserver = new MutationObserver(module.event.documentChanged);
                             documentObserver.observe(document, {
@@ -117,7 +117,7 @@
                         }
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         if (settings.popup) {
                             $popup = $document.find(settings.popup).eq(0);
                         } else {
@@ -152,12 +152,12 @@
                         }
                     },
 
-                    reposition: function() {
+                    reposition: function () {
                         module.refresh();
                         module.set.position();
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.debug('Destroying previous module');
                         if (documentObserver) {
                             documentObserver.disconnect();
@@ -177,7 +177,7 @@
                     },
 
                     event: {
-                        start: function(event) {
+                        start: function (event) {
                             var
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.show
@@ -188,7 +188,7 @@
                                 module.showTimer = setTimeout(module.show, delay);
                             }
                         },
-                        end: function() {
+                        end: function () {
                             var
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.hide
@@ -197,21 +197,21 @@
                             clearTimeout(module.showTimer);
                             module.hideTimer = setTimeout(module.hide, delay);
                         },
-                        touchstart: function(event) {
+                        touchstart: function (event) {
                             openedWithTouch = true;
                             if (settings.addTouchEvents) {
                                 module.show();
                             }
                         },
-                        resize: function() {
+                        resize: function () {
                             if (module.is.visible()) {
                                 module.set.position();
                             }
                         },
-                        documentChanged: function(mutations) {
-                            [].forEach.call(mutations, function(mutation) {
+                        documentChanged: function (mutations) {
+                            [].forEach.call(mutations, function (mutation) {
                                 if (mutation.removedNodes) {
-                                    [].forEach.call(mutation.removedNodes, function(node) {
+                                    [].forEach.call(mutation.removedNodes, function (node) {
                                         if (node == element || $(node).find(element).length > 0) {
                                             module.debug('Element removed from DOM, tearing down events');
                                             module.destroy();
@@ -220,7 +220,7 @@
                                 }
                             });
                         },
-                        hideGracefully: function(event) {
+                        hideGracefully: function (event) {
                             var
                                 $target = $(event.target),
                                 isInDOM = $.contains(document.documentElement, event.target),
@@ -237,7 +237,7 @@
                     },
 
                     // generates popup html from metadata
-                    create: function() {
+                    create: function () {
                         var
                             html      = module.get.html(),
                             title     = module.get.title(),
@@ -292,14 +292,14 @@
                         }
                     },
 
-                    createID: function() {
+                    createID: function () {
                         id = (Math.random().toString(16) + '000000000').slice(2, 10);
                         elementNamespace = '.' + id;
                         module.verbose('Creating unique id for element', id);
                     },
 
                     // determines popup state
-                    toggle: function() {
+                    toggle: function () {
                         module.debug('Toggling pop-up');
                         if (module.is.hidden()) {
                             module.debug('Popup is hidden, showing pop-up');
@@ -311,8 +311,8 @@
                         }
                     },
 
-                    show: function(callback) {
-                        callback = callback || function(){};
+                    show: function (callback) {
+                        callback = callback || function (){};
                         module.debug('Showing pop-up', settings.transition);
                         if (module.is.hidden() && !(module.is.active() && module.is.dropdown())) {
                             if (!module.exists()) {
@@ -335,8 +335,8 @@
                     },
 
 
-                    hide: function(callback) {
-                        callback = callback || function(){};
+                    hide: function (callback) {
+                        callback = callback || function (){};
                         if (module.is.visible() || module.is.animating()) {
                             if (settings.onHide.call($popup, element) === false) {
                                 module.debug('onHide callback returned false, cancelling popup animation');
@@ -349,16 +349,16 @@
                         }
                     },
 
-                    hideAll: function() {
+                    hideAll: function () {
                         $document.find(selector.popup)
                             .filter('.' + className.popupVisible)
-                            .each(function() {
+                            .each(function () {
                                 $(this)
                                     .data(metadata.activator)
                                     .popup('hide');
                             });
                     },
-                    exists: function() {
+                    exists: function () {
                         if (!$popup) {
                             return false;
                         }
@@ -371,7 +371,7 @@
                         }
                     },
 
-                    removePopup: function() {
+                    removePopup: function () {
                         if (module.has.popup() && !settings.popup) {
                             module.debug('Removing popup', $popup);
                             $popup.remove();
@@ -381,7 +381,7 @@
                     },
 
                     save: {
-                        conditions: function() {
+                        conditions: function () {
                             module.cache = {
                                 title: $module.attr('title'),
                             };
@@ -392,7 +392,7 @@
                         },
                     },
                     restore: {
-                        conditions: function() {
+                        conditions: function () {
                             if (module.cache && module.cache.title) {
                                 $module.attr('title', module.cache.title);
                                 module.verbose('Restoring original attributes', module.cache.title);
@@ -401,13 +401,13 @@
                         },
                     },
                     supports: {
-                        svg: function() {
+                        svg: function () {
                             return (typeof SVGGraphicsElement !== 'undefined');
                         },
                     },
                     animate: {
-                        show: function(callback) {
-                            callback = isFunction(callback) ? callback : function(){};
+                        show: function (callback) {
+                            callback = isFunction(callback) ? callback : function (){};
                             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                                 module.set.visible();
                                 $popup
@@ -418,7 +418,7 @@
                                         verbose: settings.verbose,
                                         silent: settings.silent,
                                         duration: settings.transition.showDuration || settings.duration,
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             module.bind.close();
                                             callback.call($popup, element);
                                             settings.onVisible.call($popup, element);
@@ -428,8 +428,8 @@
                                 module.error(error.noTransition);
                             }
                         },
-                        hide: function(callback) {
-                            callback = isFunction(callback) ? callback : function(){};
+                        hide: function (callback) {
+                            callback = isFunction(callback) ? callback : function (){};
                             module.debug('Hiding pop-up');
                             if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                                 $popup
@@ -440,7 +440,7 @@
                                         debug: settings.debug,
                                         verbose: settings.verbose,
                                         silent: settings.silent,
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             module.reset();
                                             callback.call($popup, element);
                                             settings.onHidden.call($popup, element);
@@ -453,35 +453,35 @@
                     },
 
                     change: {
-                        content: function(html) {
+                        content: function (html) {
                             $popup.html(html);
                         },
                     },
 
                     get: {
-                        html: function() {
+                        html: function () {
                             $module.removeData(metadata.html);
                             return $module.data(metadata.html) || settings.html;
                         },
-                        title: function() {
+                        title: function () {
                             $module.removeData(metadata.title);
                             return $module.data(metadata.title) || settings.title;
                         },
-                        content: function() {
+                        content: function () {
                             $module.removeData(metadata.content);
                             return $module.data(metadata.content) || settings.content || $module.attr('title');
                         },
-                        variation: function() {
+                        variation: function () {
                             $module.removeData(metadata.variation);
                             return $module.data(metadata.variation) || settings.variation;
                         },
-                        popup: function() {
+                        popup: function () {
                             return $popup;
                         },
-                        popupOffset: function() {
+                        popupOffset: function () {
                             return $popup.offset();
                         },
-                        calculations: function() {
+                        calculations: function () {
                             var
                                 $popupOffsetParent = module.get.offsetParent($popup),
                                 targetElement      = $target[0],
@@ -570,10 +570,10 @@
                             };
                             return calculations;
                         },
-                        id: function() {
+                        id: function () {
                             return id;
                         },
-                        startEvent: function() {
+                        startEvent: function () {
                             if (settings.on == 'hover') {
                                 return 'mouseenter';
                             } else if (settings.on == 'focus') {
@@ -581,10 +581,10 @@
                             }
                             return false;
                         },
-                        scrollEvent: function() {
+                        scrollEvent: function () {
                             return 'scroll';
                         },
-                        endEvent: function() {
+                        endEvent: function () {
                             if (settings.on == 'hover') {
                                 return 'mouseleave';
                             } else if (settings.on == 'focus') {
@@ -592,7 +592,7 @@
                             }
                             return false;
                         },
-                        distanceFromBoundary: function(offset, calculations) {
+                        distanceFromBoundary: function (offset, calculations) {
                             var
                                 distanceFromBoundary = {},
                                 popup,
@@ -615,7 +615,7 @@
                             }
                             return distanceFromBoundary;
                         },
-                        offsetParent: function($element) {
+                        offsetParent: function ($element) {
                             var
                                 element = ($element !== undefined)
                                     ? $element[0]
@@ -641,7 +641,7 @@
                                 ? $node
                                 : $();
                         },
-                        positions: function() {
+                        positions: function () {
                             return {
                                 'top left': false,
                                 'top center': false,
@@ -653,7 +653,7 @@
                                 'right center': false,
                             };
                         },
-                        nextPosition: function(position) {
+                        nextPosition: function (position) {
                             var
                                 positions          = position.split(' '),
                                 verticalPosition   = positions[0],
@@ -713,7 +713,7 @@
                     },
 
                     set: {
-                        position: function(position, calculations) {
+                        position: function (position, calculations) {
                             // exit conditions
                             if ($target.length === 0 || $popup.length === 0) {
                                 module.error(error.notFound);
@@ -904,13 +904,13 @@
                             return true;
                         },
 
-                        fluidWidth: function(calculations) {
+                        fluidWidth: function (calculations) {
                             calculations = calculations || module.get.calculations();
                             module.debug('Automatically setting element width to parent width', calculations.parent.width);
                             $popup.css('width', calculations.container.width);
                         },
 
-                        variation: function(variation) {
+                        variation: function (variation) {
                             variation = variation || module.get.variation();
                             if (variation && module.has.popup()) {
                                 module.verbose('Adding variation to popup', variation);
@@ -918,26 +918,26 @@
                             }
                         },
 
-                        visible: function() {
+                        visible: function () {
                             $module.addClass(className.visible);
                         },
                     },
 
                     remove: {
-                        loading: function() {
+                        loading: function () {
                             $popup.removeClass(className.loading);
                         },
-                        variation: function(variation) {
+                        variation: function (variation) {
                             variation = variation || module.get.variation();
                             if (variation) {
                                 module.verbose('Removing variation', variation);
                                 $popup.removeClass(variation);
                             }
                         },
-                        visible: function() {
+                        visible: function () {
                             $module.removeClass(className.visible);
                         },
-                        attempts: function() {
+                        attempts: function () {
                             module.verbose('Resetting all searched positions');
                             searchDepth    = 0;
                             triedPositions = false;
@@ -945,7 +945,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.debug('Binding popup events to module');
                             if (settings.on == 'click') {
                                 $module
@@ -965,7 +965,7 @@
                             }
                             $window.on('resize' + elementNamespace, module.event.resize);
                         },
-                        popup: function() {
+                        popup: function () {
                             module.verbose('Allowing hover events on popup to prevent closing');
                             if ($popup && module.has.popup()) {
                                 $popup
@@ -973,7 +973,7 @@
                                     .on('mouseleave' + eventNamespace, module.event.end);
                             }
                         },
-                        close: function() {
+                        close: function () {
                             if (settings.hideOnScroll === true || (settings.hideOnScroll == 'auto' && settings.on != 'click')) {
                                 module.bind.closeOnScroll();
                             }
@@ -983,23 +983,23 @@
                                 module.bind.touchClose();
                             }
                         },
-                        closeOnScroll: function() {
+                        closeOnScroll: function () {
                             module.verbose('Binding scroll close event to document');
                             $scrollContext
                                 .one(module.get.scrollEvent() + elementNamespace, module.event.hideGracefully);
                         },
-                        touchClose: function() {
+                        touchClose: function () {
                             module.verbose('Binding popup touchclose event to document');
                             $document
-                                .on('touchstart' + elementNamespace, function(event) {
+                                .on('touchstart' + elementNamespace, function (event) {
                                     module.verbose('Touched away from popup');
                                     module.event.hideGracefully.call(element, event);
                                 });
                         },
-                        clickaway: function() {
+                        clickaway: function () {
                             module.verbose('Binding popup close event to document');
                             $document
-                                .on(clickEvent + elementNamespace, function(event) {
+                                .on(clickEvent + elementNamespace, function (event) {
                                     module.verbose('Clicked away from popup');
                                     module.event.hideGracefully.call(element, event);
                                 });
@@ -1007,13 +1007,13 @@
                     },
 
                     unbind: {
-                        events: function() {
+                        events: function () {
                             $window
                                 .off(elementNamespace);
                             $module
                                 .off(eventNamespace);
                         },
-                        close: function() {
+                        close: function () {
                             $document
                                 .off(elementNamespace);
                             $scrollContext
@@ -1022,30 +1022,30 @@
                     },
 
                     has: {
-                        popup: function() {
+                        popup: function () {
                             return ($popup && $popup.length > 0);
                         },
                     },
 
                     should: {
-                        centerArrow: function(calculations) {
+                        centerArrow: function (calculations) {
                             return !module.is.basic() && calculations.target.width <= (settings.arrowPixelsFromEdge * 2);
                         },
                     },
 
                     is: {
-                        closable: function() {
+                        closable: function () {
                             if (settings.closable == 'auto') {
                                 return settings.on != 'hover';
                             }
                             return settings.closable;
                         },
-                        offstage: function(distanceFromBoundary, position) {
+                        offstage: function (distanceFromBoundary, position) {
                             var
                                 offstage = []
                             ;
                             // return boundaries that have been surpassed
-                            $.each(distanceFromBoundary, function(direction, distance) {
+                            $.each(distanceFromBoundary, function (direction, distance) {
                                 if (distance < -settings.jitter) {
                                     module.debug('Position exceeds allowable distance from edge', direction, distance, position);
                                     offstage.push(direction);
@@ -1053,28 +1053,28 @@
                             });
                             return offstage.length > 0;
                         },
-                        svg: function(element) {
+                        svg: function (element) {
                             return module.supports.svg() && (element instanceof SVGGraphicsElement);
                         },
-                        basic: function() {
+                        basic: function () {
                             return $module.hasClass(className.basic);
                         },
-                        active: function() {
+                        active: function () {
                             return $module.hasClass(className.active);
                         },
-                        animating: function() {
+                        animating: function () {
                             return ($popup !== undefined && $popup.hasClass(className.animating));
                         },
-                        fluid: function() {
+                        fluid: function () {
                             return ($popup !== undefined && $popup.hasClass(className.fluid));
                         },
-                        visible: function() {
+                        visible: function () {
                             return ($popup !== undefined && $popup.hasClass(className.popupVisible));
                         },
-                        dropdown: function() {
+                        dropdown: function () {
                             return $module.hasClass(className.dropdown);
                         },
-                        hidden: function() {
+                        hidden: function () {
                             return !module.is.visible();
                         },
                         rtl: function () {
@@ -1082,7 +1082,7 @@
                         },
                     },
 
-                    reset: function() {
+                    reset: function () {
                         module.remove.visible();
                         if (settings.preserve) {
                             if ($.fn.transition !== undefined) {
@@ -1094,7 +1094,7 @@
                         }
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
@@ -1103,7 +1103,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
@@ -1112,7 +1112,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1122,7 +1122,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -1132,14 +1132,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -1160,14 +1160,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -1179,7 +1179,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -1188,7 +1188,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -1200,7 +1200,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
@@ -1269,25 +1269,25 @@
         observeChanges: true,
 
         // callback only when element added to dom
-        onCreate: function(){},
+        onCreate: function (){},
 
         // callback before element removed from dom
-        onRemove: function(){},
+        onRemove: function (){},
 
         // callback before show animation
-        onShow: function(){},
+        onShow: function (){},
 
         // callback after show animation
-        onVisible: function(){},
+        onVisible: function (){},
 
         // callback before hide animation
-        onHide: function(){},
+        onHide: function (){},
 
         // callback when popup cannot be positioned in visible screen
-        onUnplaceable: function(){},
+        onUnplaceable: function (){},
 
         // callback after hide animation
-        onHidden: function(){},
+        onHidden: function (){},
 
         // when to show popup
         on: 'hover',
@@ -1419,7 +1419,7 @@
         },
 
         templates: {
-            escape: function(string) {
+            escape: function (string) {
                 var
                     badChars     = /[<>"'`]/g,
                     shouldEscape = /[&<>"'`]/,
@@ -1430,7 +1430,7 @@
                         "'": '&#x27;',
                         '`': '&#x60;',
                     },
-                    escapedChar  = function(chr) {
+                    escapedChar  = function (chr) {
                         return escape[chr];
                     }
                 ;
@@ -1440,7 +1440,7 @@
                 }
                 return string;
             },
-            popup: function(text) {
+            popup: function (text) {
                 var
                     html   = '',
                     escape = $.fn.popup.settings.templates.escape

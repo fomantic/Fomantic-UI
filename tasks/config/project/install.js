@@ -20,41 +20,41 @@ var
 var when = {
 
     // path
-    changeRoot: function(questions) {
+    changeRoot: function (questions) {
         return (questions.useRoot !== undefined && questions.useRoot !== true);
     },
 
     // permissions
-    changePermissions: function(questions) {
+    changePermissions: function (questions) {
         return (questions.changePermissions && questions.changePermissions === true);
     },
 
     // install
-    hasConfig: function() {
+    hasConfig: function () {
         return requireDotFile('semantic.json', process.cwd());
     },
 
-    allowOverwrite: function(questions) {
+    allowOverwrite: function (questions) {
         return (questions.overwrite === undefined || questions.overwrite == 'yes');
     },
-    notAuto: function(questions) {
+    notAuto: function (questions) {
         return (questions.install !== 'auto' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
     },
-    custom: function(questions) {
+    custom: function (questions) {
         return (questions.install === 'custom' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
     },
-    express: function(questions) {
+    express: function (questions) {
         return (questions.install === 'express' && (questions.overwrite === undefined || questions.overwrite == 'yes'));
     },
 
     // customize
-    customize: function(questions) {
+    customize: function (questions) {
         return (questions.customize === true);
     },
-    primaryColor: function(questions) {
+    primaryColor: function (questions) {
         return (questions.primaryColor);
     },
-    secondaryColor: function(questions) {
+    secondaryColor: function (questions) {
         return (questions.secondaryColor);
     },
 };
@@ -66,7 +66,7 @@ var when = {
 /* Filters to user input from install questions */
 
 var filter = {
-    removeTrailingSlash: function(path) {
+    removeTrailingSlash: function (path) {
         return path.replace(/(\/$|\\$)+/mg, '');
     },
 };
@@ -78,12 +78,12 @@ var filter = {
 module.exports = {
 
     // check whether install is setup
-    isSetup: function() {
+    isSetup: function () {
         return when.hasConfig();
     },
 
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
-    shouldAutoInstall: function() {
+    shouldAutoInstall: function () {
         var
             config = when.hasConfig()
         ;
@@ -91,10 +91,10 @@ module.exports = {
     },
 
     // checks if files are in a PM directory
-    getPackageManager: function(directory) {
+    getPackageManager: function (directory) {
         var
             // returns last matching result (avoid sub-module detection)
-            walk = function(directory) {
+            walk = function (directory) {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 1],
@@ -129,10 +129,10 @@ module.exports = {
     },
 
     // checks if files is PMed submodule
-    isSubModule: function(directory) {
+    isSubModule: function (directory) {
         var
             moduleFolders = 0,
-            walk = function(directory) {
+            walk = function (directory) {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 2],
@@ -156,7 +156,7 @@ module.exports = {
     },
 
 
-    createJSON: function(answers) {
+    createJSON: function (answers) {
         var
             json = {
                 paths: {

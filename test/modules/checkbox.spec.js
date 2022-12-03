@@ -1,4 +1,4 @@
-describe('UI Checkbox', function() {
+describe('UI Checkbox', function () {
     moduleTests({
         module: 'checkbox',
         element: '.ui.checkbox',

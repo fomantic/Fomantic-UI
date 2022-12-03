@@ -24,11 +24,11 @@ var
     stepRepo
 ;
 
-module.exports = function(callback) {
+module.exports = function (callback) {
     console.log('Registering repos with package managers');
 
     // Do Git commands synchronously per component, to avoid issues
-    stepRepo = function() {
+    stepRepo = function () {
         index = index + 1;
         if (index >= total) {
             callback();
@@ -43,7 +43,7 @@ module.exports = function(callback) {
         ;
 
         /* Register with NPM */
-        exec(updateNPM, execSettings, function(err, stdout, stderr) {
+        exec(updateNPM, execSettings, function (err, stdout, stderr) {
             console.log(err, stdout, stderr);
             stepRepo();
         });

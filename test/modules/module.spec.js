@@ -25,7 +25,7 @@ function moduleTests(ui) {
     $.fn[module].settings.verbose     = false;
 
 
-    beforeEach(function() {
+    beforeEach(function () {
     // load fixtures
         fixtures.load(module + '.html');
         // save settings
@@ -45,7 +45,7 @@ function moduleTests(ui) {
         }
     });
 
-    afterEach(function() {
+    afterEach(function () {
     // restore settings
         $.fn[module].settings = originalSettings;
         // remove element
@@ -59,24 +59,24 @@ function moduleTests(ui) {
     /*-------------------
       Instantiation
   --------------------*/
-    describe('Module', function() {
-        it('allows chaining when no settings returned', function() {
+    describe('Module', function () {
+        it('allows chaining when no settings returned', function () {
             var $chain = $modules[module]();
             expect($chain).toExist();
             expect($chain.size()).toBe($modules.size());
         });
 
-        it('returns a string when one setting returned', function() {
+        it('returns a string when one setting returned', function () {
             var result = $oneModule[module]('setting', 'name');
             expect(typeof result).toBe('string');
         });
 
-        it('returns an array when multiple settings returned', function() {
+        it('returns an array when multiple settings returned', function () {
             var result = $modules[module]('setting', 'name');
             expect($.isArray(result)).toBeTruthy();
         });
 
-        it('has an instance in metadata after init', function() {
+        it('has an instance in metadata after init', function () {
             $oneModule[module]();
             expect($module).toHaveData('module-' + module);
         });
@@ -86,8 +86,8 @@ function moduleTests(ui) {
          Settings
   --------------------*/
 
-    describe('Settings', function() {
-        it('clears settings on re-init', function() {
+    describe('Settings', function () {
+        it('clears settings on re-init', function () {
             $oneModule[module]({
                 name: testValue,
             });
@@ -101,7 +101,7 @@ function moduleTests(ui) {
             expect(retrievedValue).toBe(name);
         });
 
-        it('allows default settings to be changed', function() {
+        it('allows default settings to be changed', function () {
             $.fn[module].settings.name = testValue;
             $oneModule[module]();
 
@@ -111,7 +111,7 @@ function moduleTests(ui) {
             expect(retrievedValue).toBe(testValue);
         });
 
-        it('allows settings to be changed during init', function() {
+        it('allows settings to be changed during init', function () {
             $oneModule[module]({
                 name: testValue,
             });
@@ -121,7 +121,7 @@ function moduleTests(ui) {
             expect(retrievedValue).toBe(testValue);
         });
 
-        it('allows settings to be changed during runtime', function() {
+        it('allows settings to be changed during runtime', function () {
             $oneModule[module]();
 
             var retrievedValue = $oneModule[module]('setting', 'name');
@@ -135,8 +135,8 @@ function moduleTests(ui) {
   --------------------*/
 
     if (!singleton) {
-        describe('Group Contamination', function() {
-            it('creates settings for all instances', function() {
+        describe('Group Contamination', function () {
+            it('creates settings for all instances', function () {
                 $modules[module]('setting', 'name', testValue);
 
                 var retrievedValue = $oneModule[module]('setting', 'name');
@@ -153,7 +153,7 @@ function moduleTests(ui) {
                 expect(clonedSetting).toBe(testValue);
             });
 
-            it('does not change other elements settings when changing one element', function() {
+            it('does not change other elements settings when changing one element', function () {
                 $modules[module]();
                 $oneModule[module]('setting', 'name', testValue);
 
@@ -164,7 +164,7 @@ function moduleTests(ui) {
                 expect(clonedSetting).toBe(name);
             });
 
-            it('does not change other elements when re-initialized', function() {
+            it('does not change other elements when re-initialized', function () {
                 $modules[module]();
 
                 $oneModule[module]({
@@ -183,8 +183,8 @@ function moduleTests(ui) {
     /*-------------------
          Destroy
   --------------------*/
-    describe('Destroy', function() {
-        it('removes all events from page', function() {
+    describe('Destroy', function () {
+        it('removes all events from page', function () {
             $module[module]('destroy');
             if ($.events().length > 0) {
                 dump($.events());
@@ -192,7 +192,7 @@ function moduleTests(ui) {
             expect($.events().length).toBe(0);
         });
 
-        it('removes instance metadata', function() {
+        it('removes instance metadata', function () {
             $module[module]('destroy');
             expect($module.data('module-'+ module)).toBe(undefined);
         });

@@ -21,7 +21,7 @@
             ? self
             : Function('return this')();
 
-    $.fn.accordion = function(parameters) {
+    $.fn.accordion = function (parameters) {
         var
             $allModules     = $(this),
 
@@ -35,7 +35,7 @@
             returnedValue
         ;
         $allModules
-            .each(function() {
+            .each(function () {
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.accordion.settings, parameters)
@@ -62,7 +62,7 @@
 
                 module = {
 
-                    initialize: function() {
+                    initialize: function () {
                         module.debug('Initializing', $module);
                         module.bind.events();
                         if (settings.observeChanges) {
@@ -71,27 +71,27 @@
                         module.instantiate();
                     },
 
-                    instantiate: function() {
+                    instantiate: function () {
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
                     },
 
-                    destroy: function() {
+                    destroy: function () {
                         module.debug('Destroying previous instance', $module);
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
                     },
 
-                    refresh: function() {
+                    refresh: function () {
                         $title   = $module.find(selector.title);
                         $content = $module.find(selector.content);
                     },
 
-                    observeChanges: function() {
+                    observeChanges: function () {
                         if ('MutationObserver' in window) {
-                            observer = new MutationObserver(function(mutations) {
+                            observer = new MutationObserver(function (mutations) {
                                 module.debug('DOM tree modified, updating selector cache');
                                 module.refresh();
                             });
@@ -104,7 +104,7 @@
                     },
 
                     bind: {
-                        events: function() {
+                        events: function () {
                             module.debug('Binding delegated events');
                             $module
                                 .on(settings.on + eventNamespace, selector.trigger, module.event.click);
@@ -112,14 +112,14 @@
                     },
 
                     event: {
-                        click: function(event) {
+                        click: function (event) {
                             if ($(event.target).closest(selector.ignore).length === 0) {
                                 module.toggle.call(this);
                             }
                         },
                     },
 
-                    toggle: function(query) {
+                    toggle: function (query) {
                         var
                             $activeTitle = (query !== undefined)
                                 ? (typeof query === 'number')
@@ -144,7 +144,7 @@
                         }
                     },
 
-                    open: function(query) {
+                    open: function (query) {
                         var
                             $activeTitle = (query !== undefined)
                                 ? (typeof query === 'number')
@@ -184,7 +184,7 @@
                                         silent: settings.silent,
                                         duration: settings.duration,
                                         skipInlineHidden: true,
-                                        onComplete: function() {
+                                        onComplete: function () {
                                             $activeContent.children().removeClass(className.transition);
                                         },
                                     });
@@ -198,7 +198,7 @@
                             }
                         }
                         $activeContent
-                            .slideDown(settings.duration, settings.easing, function() {
+                            .slideDown(settings.duration, settings.easing, function () {
                                 $activeContent
                                     .removeClass(className.animating)
                                     .addClass(className.active);
@@ -208,7 +208,7 @@
                             });
                     },
 
-                    close: function(query) {
+                    close: function (query) {
                         var
                             $activeTitle = (query !== undefined)
                                 ? (typeof query === 'number')
@@ -254,7 +254,7 @@
                                 }
                             }
                             $activeContent
-                                .slideUp(settings.duration, settings.easing, function() {
+                                .slideUp(settings.duration, settings.easing, function () {
                                     $activeContent
                                         .removeClass(className.animating)
                                         .removeClass(className.active);
@@ -265,7 +265,7 @@
                         }
                     },
 
-                    closeOthers: function(index) {
+                    closeOthers: function (index) {
                         var
                             $activeTitle = (index !== undefined)
                                 ? $title.eq(index)
@@ -317,7 +317,7 @@
                                 }
                             }
                             $openContents
-                                .slideUp(settings.duration, settings.easing, function() {
+                                .slideUp(settings.duration, settings.easing, function () {
                                     $(this).removeClass(className.active);
                                     module.reset.display.call(this);
                                 });
@@ -326,7 +326,7 @@
 
                     reset: {
 
-                        display: function() {
+                        display: function () {
                             module.verbose('Removing inline display from element', this);
                             var $element = $(this);
                             $element.css('display', '');
@@ -337,7 +337,7 @@
                             }
                         },
 
-                        opacity: function() {
+                        opacity: function () {
                             module.verbose('Removing inline opacity from element', this);
                             var $element = $(this);
                             $element.css('opacity', '');
@@ -350,7 +350,7 @@
 
                     },
 
-                    setting: function(name, value) {
+                    setting: function (name, value) {
                         module.debug('Changing setting', name, value);
                         if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
@@ -364,7 +364,7 @@
                             return settings[name];
                         }
                     },
-                    internal: function(name, value) {
+                    internal: function (name, value) {
                         module.debug('Changing internal', name, value);
                         if (value !== undefined) {
                             if ($.isPlainObject(name)) {
@@ -376,7 +376,7 @@
                             return module[name];
                         }
                     },
-                    debug: function() {
+                    debug: function () {
                         if (!settings.silent && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -386,7 +386,7 @@
                             }
                         }
                     },
-                    verbose: function() {
+                    verbose: function () {
                         if (!settings.silent && settings.verbose && settings.debug) {
                             if (settings.performance) {
                                 module.performance.log(arguments);
@@ -396,14 +396,14 @@
                             }
                         }
                     },
-                    error: function() {
+                    error: function () {
                         if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
                     },
                     performance: {
-                        log: function(message) {
+                        log: function (message) {
                             var
                                 currentTime,
                                 executionTime,
@@ -424,14 +424,14 @@
                             clearTimeout(module.performance.timer);
                             module.performance.timer = setTimeout(module.performance.display, 500);
                         },
-                        display: function() {
+                        display: function () {
                             var
                                 title = settings.name + ':',
                                 totalTime = 0
                             ;
                             time = false;
                             clearTimeout(module.performance.timer);
-                            $.each(performance, function(index, data) {
+                            $.each(performance, function (index, data) {
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
@@ -443,7 +443,7 @@
                                 if (console.table) {
                                     console.table(performance);
                                 } else {
-                                    $.each(performance, function(index, data) {
+                                    $.each(performance, function (index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
                                 }
@@ -452,7 +452,7 @@
                             performance = [];
                         },
                     },
-                    invoke: function(query, passedArguments, context) {
+                    invoke: function (query, passedArguments, context) {
                         var
                             object = instance,
                             maxDepth,
@@ -464,7 +464,7 @@
                         if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
-                            $.each(query, function(depth, value) {
+                            $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
@@ -538,13 +538,13 @@
         duration: 350, // duration of animation
         easing: 'easeOutQuad', // easing equation for animation
 
-        onOpening: function(){}, // callback before open animation
-        onClosing: function(){}, // callback before closing animation
-        onChanging: function(){}, // callback before closing or opening animation
+        onOpening: function (){}, // callback before open animation
+        onClosing: function (){}, // callback before closing animation
+        onChanging: function (){}, // callback before closing or opening animation
 
-        onOpen: function(){}, // callback after open animation
-        onClose: function(){}, // callback after closing animation
-        onChange: function(){}, // callback after closing or opening animation
+        onOpen: function (){}, // callback after open animation
+        onClose: function (){}, // callback after closing animation
+        onChange: function (){}, // callback after closing or opening animation
 
         error: {
             method: 'The method you called is not defined',

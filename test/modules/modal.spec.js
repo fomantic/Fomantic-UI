@@ -1,4 +1,4 @@
-describe('UI Modal', function() {
+describe('UI Modal', function () {
     $.fn.dimmer.settings.debug = false;
 
     moduleTests({

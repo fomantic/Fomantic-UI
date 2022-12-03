@@ -1,7 +1,7 @@
 $(document)
-    .ready(function() {
+    .ready(function () {
         // add popup to show name
-        $('.ui:not(.container, .grid)').each(function() {
+        $('.ui:not(.container, .grid)').each(function () {
             $(this)
                 .popup({
                     on: 'hover',

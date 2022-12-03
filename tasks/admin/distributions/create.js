@@ -34,7 +34,7 @@ var
     output          = config.paths.output
 ;
 
-module.exports = function(callback) {
+module.exports = function (callback) {
     var
         stream,
         index,
@@ -47,7 +47,7 @@ module.exports = function(callback) {
     ;
 
         // streams... designed to save time and make coding fun...
-        (function(distribution) {
+        (function (distribution) {
             var
                 distLowerCase   = distribution.toLowerCase(),
                 outputDirectory = path.join(release.outputRoot, distLowerCase),
@@ -70,7 +70,7 @@ module.exports = function(callback) {
             ;
 
             // get files for meteor
-            gatherFiles = function(dir) {
+            gatherFiles = function (dir) {
                 var
                     dir   = dir || path.resolve('.'),
                     list  = fs.readdirSync(dir),
@@ -86,7 +86,7 @@ module.exports = function(callback) {
                     ],
                     files = []
                 ;
-                list.forEach(function(file) {
+                list.forEach(function (file) {
                     var
                         isOmitted = (omitted.indexOf(file) > -1),
                         filePath  = path.join(dir, file),
@@ -104,7 +104,7 @@ module.exports = function(callback) {
             };
 
             // spaces out list correctly
-            createList = function(files) {
+            createList = function (files) {
                 var filenames = '';
                 for (var file in files) {
                     if (file == (files.length - 1)) {
@@ -116,7 +116,7 @@ module.exports = function(callback) {
                 return filenames;
             };
 
-            tasks.push(function() {
+            tasks.push(function () {
                 var
                     files     = gatherFiles(outputDirectory),
                     filenames = createList(files)
@@ -131,7 +131,7 @@ module.exports = function(callback) {
             });
 
             if (distribution == 'CSS') {
-                tasks.push(function() {
+                tasks.push(function () {
                     var
                         themes,
                         components,
@@ -146,7 +146,7 @@ module.exports = function(callback) {
                     return mergeStream(themes, components, releases);
                 });
             } else if (distribution == 'LESS') {
-                tasks.push(function() {
+                tasks.push(function () {
                     var
                         definitions,
                         themeImport,
@@ -171,10 +171,10 @@ module.exports = function(callback) {
             }
 
             // extend package.json
-            tasks.push(function() {
+            tasks.push(function () {
                 return gulp.src(packageFile)
                     .pipe(plumber())
-                    .pipe(jsonEditor(function(pkg) {
+                    .pipe(jsonEditor(function (pkg) {
                         if (version) {
                             pkg.version = version;
                         }
