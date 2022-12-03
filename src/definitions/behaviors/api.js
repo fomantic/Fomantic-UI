@@ -97,14 +97,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     destroy: function () {
                         module.verbose('Destroying previous module for', element);
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace);
+                            .off(eventNamespace)
+                        ;
                     },
 
                     bind: {
@@ -115,7 +117,8 @@
                             if (triggerEvent) {
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
-                                    .on(triggerEvent + eventNamespace, module.event.trigger);
+                                    .on(triggerEvent + eventNamespace, module.event.trigger)
+                                ;
                             } else if (settings.on == 'now') {
                                 module.debug('Querying API endpoint immediately');
                                 module.query();
@@ -651,7 +654,8 @@
                             return $.Deferred()
                                 .always(module.event.request.complete)
                                 .done(module.event.request.done)
-                                .fail(module.event.request.fail);
+                                .fail(module.event.request.fail)
+                            ;
                         },
 
                         mockedXHR: function () {
@@ -670,7 +674,8 @@
                             mockedXHR = $.Deferred()
                                 .always(module.event.xhr.complete)
                                 .done(module.event.xhr.done)
-                                .fail(module.event.xhr.fail);
+                                .fail(module.event.xhr.fail)
+                            ;
 
                             if (responder) {
                                 if (isFunction(responder)) {
@@ -707,7 +712,8 @@
                             xhr = $.ajax(ajaxSettings)
                                 .always(module.event.xhr.always)
                                 .done(module.event.xhr.done)
-                                .fail(module.event.xhr.fail);
+                                .fail(module.event.xhr.fail)
+                            ;
                             module.verbose('Created server request', xhr, ajaxSettings);
 
                             return xhr;

@@ -182,7 +182,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     create: {
@@ -223,7 +224,8 @@
                         module.verbose('Destroying previous module for', $module);
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                         if (module.is.ios()) {
                             module.remove.ios();
                         }
@@ -352,15 +354,18 @@
                             $module
                                 .on('click' + eventNamespace, selector.close, module.event.close)
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
-                                .on('click' + eventNamespace, selector.deny, module.event.deny);
+                                .on('click' + eventNamespace, selector.deny, module.event.deny)
+                            ;
                             $closeIcon
-                                .on('keyup' + elementNamespace, module.event.closeKeyUp);
+                                .on('keyup' + elementNamespace, module.event.closeKeyUp)
+                            ;
                         },
                         clickaway: function () {
                             module.verbose('Adding clickaway events to context', $context);
                             $context
                                 .on('click' + elementNamespace, module.event.clickaway)
-                                .on('touchend' + elementNamespace, module.event.clickaway);
+                                .on('touchend' + elementNamespace, module.event.clickaway)
+                            ;
                         },
                         scrollLock: function () {
                             if (settings.scrollLock) {
@@ -374,9 +379,11 @@
                             }
                             module.verbose('Adding events to contain flyout scroll');
                             $document
-                                .on('touchmove' + elementNamespace, module.event.touch);
+                                .on('touchmove' + elementNamespace, module.event.touch)
+                            ;
                             $module
-                                .on('scroll' + eventNamespace, module.event.containScroll);
+                                .on('scroll' + eventNamespace, module.event.containScroll)
+                            ;
                         },
                     },
                     unbind: {
@@ -463,13 +470,15 @@
                             }
                             style += '</style>';
                             $style = $(style)
-                                .appendTo($head);
+                                .appendTo($head)
+                            ;
                             module.debug('Adding sizing css to head', $style);
                         },
                         keyboardShortcuts: function () {
                             module.verbose('Adding keyboard shortcuts');
                             $document
-                                .on('keydown' + eventNamespace, module.event.keyboard);
+                                .on('keydown' + eventNamespace, module.event.keyboard)
+                            ;
                         },
                     },
                     observeChanges: function () {
@@ -500,7 +509,8 @@
                     refreshInputs: function (){
                         if ($inputs){
                             $inputs
-                                .off('keydown' + elementNamespace);
+                                .off('keydown' + elementNamespace)
+                            ;
                         }
                         if (!settings.dimPage){
                             return;
@@ -509,9 +519,11 @@
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
-                            .on('keydown' + elementNamespace, module.event.inputKeyDown.first);
+                            .on('keydown' + elementNamespace, module.event.inputKeyDown.first)
+                        ;
                         $inputs.last()
-                            .on('keydown' + elementNamespace, module.event.inputKeyDown.last);
+                            .on('keydown' + elementNamespace, module.event.inputKeyDown.last)
+                        ;
                     },
 
                     setup: {
@@ -530,7 +542,8 @@
                                     .children()
                                     .not(selector.omitted)
                                     .not($flyouts)
-                                    .wrapAll($pusher);
+                                    .wrapAll($pusher)
+                                ;
                                 module.refresh();
                             }
                             if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -567,7 +580,8 @@
                         if ($toggle.length > 0) {
                             module.debug('Attaching flyout events to element', selector, event);
                             $toggle
-                                .on('click' + eventNamespace, event);
+                                .on('click' + eventNamespace, event)
+                            ;
                         } else {
                             module.error(error.notFound, selector);
                         }
@@ -855,7 +869,8 @@
                         keyboardShortcuts: function () {
                             module.verbose('Removing keyboard shortcuts');
                             $document
-                                .off('keydown' + eventNamespace);
+                                .off('keydown' + eventNamespace)
+                            ;
                         },
 
                         // ios scroll on html not document

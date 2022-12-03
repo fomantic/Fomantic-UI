@@ -82,7 +82,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     destroy: function () {
@@ -160,7 +161,8 @@
                         if ($element.length > 0) {
                             module.debug('Attaching checkbox events to element', selector, event);
                             $element
-                                .on('click' + eventNamespace, event);
+                                .on('click' + eventNamespace, event)
+                            ;
                         } else {
                             module.error(error.notFound);
                         }
@@ -474,7 +476,8 @@
                             module.verbose('Setting class to checked');
                             $module
                                 .removeClass(className.indeterminate)
-                                .addClass(className.checked);
+                                .addClass(className.checked)
+                            ;
                             if (module.is.radio()) {
                                 module.uncheckOthers();
                             }
@@ -486,13 +489,15 @@
                             module.verbose('Setting state to checked', input);
                             $input
                                 .prop('indeterminate', false)
-                                .prop('checked', true);
+                                .prop('checked', true)
+                            ;
                         },
                         unchecked: function () {
                             module.verbose('Removing checked class');
                             $module
                                 .removeClass(className.indeterminate)
-                                .removeClass(className.checked);
+                                .removeClass(className.checked)
+                            ;
                             if (!module.is.indeterminate() && module.is.unchecked()) {
                                 module.debug('Input is already unchecked');
 
@@ -501,12 +506,14 @@
                             module.debug('Setting state to unchecked');
                             $input
                                 .prop('indeterminate', false)
-                                .prop('checked', false);
+                                .prop('checked', false)
+                            ;
                         },
                         indeterminate: function () {
                             module.verbose('Setting class to indeterminate');
                             $module
-                                .addClass(className.indeterminate);
+                                .addClass(className.indeterminate)
+                            ;
                             if (module.is.indeterminate()) {
                                 module.debug('Input is already indeterminate, skipping input property change');
 
@@ -514,12 +521,14 @@
                             }
                             module.debug('Setting state to indeterminate');
                             $input
-                                .prop('indeterminate', true);
+                                .prop('indeterminate', true)
+                            ;
                         },
                         determinate: function () {
                             module.verbose('Removing indeterminate class');
                             $module
-                                .removeClass(className.indeterminate);
+                                .removeClass(className.indeterminate)
+                            ;
                             if (module.is.determinate()) {
                                 module.debug('Input is already determinate, skipping input property change');
 
@@ -527,12 +536,14 @@
                             }
                             module.debug('Setting state to determinate');
                             $input
-                                .prop('indeterminate', false);
+                                .prop('indeterminate', false)
+                            ;
                         },
                         disabled: function () {
                             module.verbose('Setting class to disabled');
                             $module
-                                .addClass(className.disabled);
+                                .addClass(className.disabled)
+                            ;
                             if (module.is.disabled()) {
                                 module.debug('Input is already disabled, skipping input property change');
 
@@ -540,7 +551,8 @@
                             }
                             module.debug('Setting state to disabled');
                             $input
-                                .prop('disabled', 'disabled');
+                                .prop('disabled', 'disabled')
+                            ;
                         },
                         enabled: function () {
                             module.verbose('Removing disabled class');
@@ -552,7 +564,8 @@
                             }
                             module.debug('Setting state to enabled');
                             $input
-                                .prop('disabled', false);
+                                .prop('disabled', false)
+                            ;
                         },
                         tabbable: function () {
                             module.verbose('Adding tabindex to checkbox');
@@ -607,7 +620,8 @@
                                 .on('click' + eventNamespace, module.event.click)
                                 .on('change' + eventNamespace, module.event.change)
                                 .on('keydown' + eventNamespace, selector.input, module.event.keydown)
-                                .on('keyup' + eventNamespace, selector.input, module.event.keyup);
+                                .on('keyup' + eventNamespace, selector.input, module.event.keyup)
+                            ;
                         },
                     },
 
@@ -615,7 +629,8 @@
                         events: function () {
                             module.debug('Removing events');
                             $module
-                                .off(eventNamespace);
+                                .off(eventNamespace)
+                            ;
                         },
                     },
 

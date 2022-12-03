@@ -133,7 +133,8 @@
                         module.verbose('Storing instance of progress', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
                     destroy: function () {
                         module.verbose('Destroying previous progress for', $module);
@@ -280,7 +281,8 @@
                                 .replace('{total}', total || 0)
                                 .replace('{left}', left)
                                 .replace('{percent}', percent)
-                                .replace('{bar}', settings.text.bars[index_] || '');
+                                .replace('{bar}', settings.text.bars[index_] || '')
+                            ;
                             module.verbose('Adding variables to progress bar text', templateText);
 
                             return templateText;
@@ -481,7 +483,8 @@
                                 });
                             });
                             $module
-                                .attr('data-percent', percents);
+                                .attr('data-percent', percents)
+                            ;
                         },
                         duration: function (duration) {
                             duration = duration || settings.duration;

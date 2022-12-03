@@ -75,12 +75,14 @@
                             ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
-                                .on(moduleSelector, 'click' + eventNamespace, module.toggle.state);
+                                .on(moduleSelector, 'click' + eventNamespace, module.toggle.state)
+                            ;
                         } else {
                             $module
                                 .on('mouseenter' + eventNamespace, module.change.text)
                                 .on('mouseleave' + eventNamespace, module.reset.text)
-                                .on('click' + eventNamespace, module.toggle.state);
+                                .on('click' + eventNamespace, module.toggle.state)
+                            ;
                         }
                         module.instantiate();
                     },
@@ -89,14 +91,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     destroy: function () {
                         module.verbose('Destroying previous module', instance);
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                     },
 
                     refresh: function () {
@@ -302,7 +306,8 @@
                         if (settings.activateTest.call(element)) {
                             module.debug('Setting state to active');
                             $module
-                                .addClass(className.active);
+                                .addClass(className.active)
+                            ;
                             module.update.text(text.active);
                             settings.onActivate.call(element);
                         }
@@ -312,7 +317,8 @@
                         if (settings.deactivateTest.call(element)) {
                             module.debug('Setting state to inactive');
                             $module
-                                .removeClass(className.active);
+                                .removeClass(className.active)
+                            ;
                             module.update.text(text.inactive);
                             settings.onDeactivate.call(element);
                         }
@@ -323,11 +329,13 @@
                         if (module.is.active()) {
                             $allModules
                                 .not($module)
-                                .state('activate');
+                                .state('activate')
+                            ;
                         } else {
                             $allModules
                                 .not($module)
-                                .state('deactivate');
+                                .state('deactivate')
+                            ;
                         }
                     },
 
@@ -387,11 +395,13 @@
                                     $module
                                         .data(metadata.storedText, text)
                                         .find(settings.selector.text)
-                                        .text(text);
+                                        .text(text)
+                                    ;
                                 } else {
                                     $module
                                         .data(metadata.storedText, text)
-                                        .html(text);
+                                        .html(text)
+                                    ;
                                 }
                             } else {
                                 module.debug('Text is already set, ignoring update', text);

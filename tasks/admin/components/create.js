@@ -132,7 +132,8 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(replace(release.paths.source, release.paths.output))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // create npm module
@@ -146,7 +147,8 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.match.settingsReference, regExp.replace.settingsReference))
                     .pipe(replace(regExp.match.jQuery, regExp.replace.jQuery))
                     .pipe(rename('index.js'))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // create readme
@@ -156,7 +158,8 @@ module.exports = function (callback) {
                     .pipe(flatten())
                     .pipe(replace(regExp.match.name, regExp.replace.name))
                     .pipe(replace(regExp.match.titleName, regExp.replace.titleName))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // extend bower.json
@@ -189,7 +192,8 @@ module.exports = function (callback) {
 
                         return bower;
                     }))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // extend package.json
@@ -217,7 +221,8 @@ module.exports = function (callback) {
 
                         return npm;
                     }))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // extend composer.json
@@ -240,7 +245,8 @@ module.exports = function (callback) {
 
                         return composer;
                     }))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // create release notes
@@ -254,7 +260,8 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.match.spacedVersions, regExp.replace.spacedVersions))
                     .pipe(replace(regExp.match.spacedLists, regExp.replace.spacedLists))
                     .pipe(replace(regExp.match.trim, regExp.replace.trim))
-                    .pipe(gulp.dest(outputDirectory));
+                    .pipe(gulp.dest(outputDirectory))
+                ;
             }
 
             // Creates meteor package.js
@@ -285,7 +292,8 @@ module.exports = function (callback) {
                                     .pipe(replace(regExp.match.version, version))
                                     .pipe(replace(regExp.match.files, filenames))
                                     .pipe(rename(release.files.meteor))
-                                    .pipe(gulp.dest(outputDirectory));
+                                    .pipe(gulp.dest(outputDirectory))
+                                ;
                             });
                     });
             }

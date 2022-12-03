@@ -94,7 +94,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     destroy: function () {
@@ -108,9 +109,11 @@
                         }
                         $window
                             .off('load' + eventNamespace, module.event.load)
-                            .off('resize' + eventNamespace, module.event.resize);
+                            .off('resize' + eventNamespace, module.event.resize)
+                        ;
                         $scroll
-                            .off('scrollchange' + eventNamespace, module.event.scrollchange);
+                            .off('scrollchange' + eventNamespace, module.event.scrollchange)
+                        ;
                         $module.removeData(moduleNamespace);
                     },
 
@@ -167,12 +170,14 @@
                         events: function () {
                             $window
                                 .on('load' + eventNamespace, module.event.load)
-                                .on('resize' + eventNamespace, module.event.resize);
+                                .on('resize' + eventNamespace, module.event.resize)
+                            ;
                             // pub/sub pattern
                             $scroll
                                 .off('scroll' + eventNamespace)
                                 .on('scroll' + eventNamespace, module.event.scroll)
-                                .on('scrollchange' + eventNamespace, module.event.scrollchange);
+                                .on('scrollchange' + eventNamespace, module.event.scrollchange)
+                            ;
                         },
                     },
 
@@ -363,7 +368,8 @@
                         },
                         minimumSize: function () {
                             $container
-                                .css('min-height', '');
+                                .css('min-height', '')
+                            ;
                         },
                         offset: function () {
                             $module.css('margin-top', '');
@@ -374,7 +380,8 @@
                         offset: function () {
                             module.verbose('Setting offset on element', settings.offset);
                             $module
-                                .css('margin-top', settings.offset);
+                                .css('margin-top', settings.offset)
+                            ;
                         },
                         containerSize: function () {
                             var
@@ -409,7 +416,8 @@
                                 element   = module.cache.element
                             ;
                             $container
-                                .css('min-height', element.height);
+                                .css('min-height', element.height)
+                            ;
                         },
                         scroll: function (scroll) {
                             module.debug('Setting scroll on element', scroll);
@@ -419,12 +427,14 @@
                             if (module.is.top()) {
                                 $module
                                     .css('bottom', '')
-                                    .css('top', (-scroll) + 'px');
+                                    .css('top', (-scroll) + 'px')
+                                ;
                             }
                             if (module.is.bottom()) {
                                 $module
                                     .css('top', '')
-                                    .css('bottom', scroll + 'px');
+                                    .css('bottom', scroll + 'px')
+                                ;
                             }
                         },
                         size: function () {
@@ -559,7 +569,8 @@
                             .removeClass(className.fixed)
                             .removeClass(className.bottom)
                             .addClass(className.bound)
-                            .addClass(className.top);
+                            .addClass(className.top)
+                        ;
                         settings.onTop.call(element);
                         settings.onUnstick.call(element);
                     },
@@ -577,7 +588,8 @@
                             .removeClass(className.fixed)
                             .removeClass(className.top)
                             .addClass(className.bound)
-                            .addClass(className.bottom);
+                            .addClass(className.bottom)
+                        ;
                         settings.onBottom.call(element);
                         settings.onUnstick.call(element);
                     },
@@ -604,7 +616,8 @@
                             .removeClass(className.bound)
                             .removeClass(className.bottom)
                             .addClass(className.fixed)
-                            .addClass(className.top);
+                            .addClass(className.top)
+                        ;
                         settings.onStick.call(element);
                     },
 
@@ -624,7 +637,8 @@
                             .removeClass(className.bound)
                             .removeClass(className.top)
                             .addClass(className.fixed)
-                            .addClass(className.bottom);
+                            .addClass(className.bottom)
+                        ;
                         settings.onStick.call(element);
                     },
 
@@ -635,7 +649,8 @@
                             $module
                                 .removeClass(className.bound)
                                 .removeClass(className.top)
-                                .removeClass(className.bottom);
+                                .removeClass(className.bottom)
+                            ;
                         }
                     },
 
@@ -647,7 +662,8 @@
                             $module
                                 .removeClass(className.fixed)
                                 .removeClass(className.top)
-                                .removeClass(className.bottom);
+                                .removeClass(className.bottom)
+                            ;
                             settings.onUnstick.call(element);
                         }
                     },

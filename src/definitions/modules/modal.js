@@ -169,7 +169,8 @@
                         module.verbose('Storing instance of modal');
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     create: {
@@ -238,7 +239,8 @@
                         module.verbose('Destroying previous modal');
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace);
+                            .off(eventNamespace)
+                        ;
                         $window.off(elementEventNamespace);
                         $dimmer.off(elementEventNamespace);
                         $closeIcon.off(elementEventNamespace);
@@ -283,15 +285,18 @@
                     refreshInputs: function (){
                         if ($inputs){
                             $inputs
-                                .off('keydown' + elementEventNamespace);
+                                .off('keydown' + elementEventNamespace)
+                            ;
                         }
                         $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
-                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first);
+                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.first)
+                        ;
                         $inputs.last()
-                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last);
+                            .on('keydown' + elementEventNamespace, module.event.inputKeyDown.last)
+                        ;
                     },
 
                     attachEvents: function (selector, event) {
@@ -305,7 +310,8 @@
                             module.debug('Attaching modal events to element', selector, event);
                             $toggle
                                 .off(eventNamespace)
-                                .on('click' + eventNamespace, event);
+                                .on('click' + eventNamespace, event)
+                            ;
                         } else {
                             module.error(error.notFound, selector);
                         }
@@ -317,11 +323,14 @@
                             $module
                                 .on('click' + eventNamespace, selector.close, module.event.close)
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
-                                .on('click' + eventNamespace, selector.deny, module.event.deny);
+                                .on('click' + eventNamespace, selector.deny, module.event.deny)
+                            ;
                             $closeIcon
-                                .on('keyup' + elementEventNamespace, module.event.closeKeyUp);
+                                .on('keyup' + elementEventNamespace, module.event.closeKeyUp)
+                            ;
                             $window
-                                .on('resize' + elementEventNamespace, module.event.resize);
+                                .on('resize' + elementEventNamespace, module.event.resize)
+                            ;
                         },
                         scrollLock: function () {
                             // touch events default to passive, due to changes in chrome to optimize mobile perf
@@ -707,7 +716,8 @@
                         if ($visibleModals.length > 0) {
                             module.debug('Hiding other modals', $otherModals);
                             $visibleModals
-                                .modal('hide modal', callback, true);
+                                .modal('hide modal', callback, true)
+                            ;
                         }
                     },
 
@@ -724,7 +734,8 @@
                         keyboardShortcuts: function () {
                             module.verbose('Adding keyboard shortcuts');
                             $document
-                                .on('keydown' + eventNamespace, module.event.keyboard);
+                                .on('keydown' + eventNamespace, module.event.keyboard)
+                            ;
                         },
                     },
 
@@ -777,12 +788,15 @@
                         clickaway: function () {
                             if (!settings.detachable) {
                                 $module
-                                    .off('mousedown' + elementEventNamespace);
+                                    .off('mousedown' + elementEventNamespace)
+                                ;
                             }
                             $dimmer
-                                .off('mousedown' + elementEventNamespace);
+                                .off('mousedown' + elementEventNamespace)
+                            ;
                             $dimmer
-                                .off('mouseup' + elementEventNamespace);
+                                .off('mouseup' + elementEventNamespace)
+                            ;
                         },
                         dimmerStyles: function () {
                             $dimmer.removeClass(className.inverted);
@@ -797,13 +811,15 @@
                         screenHeight: function () {
                             module.debug('Removing page height');
                             $context
-                                .css('height', '');
+                                .css('height', '')
+                            ;
                             module.remove.bodyStyle();
                         },
                         keyboardShortcuts: function () {
                             module.verbose('Removing keyboard shortcuts');
                             $document
-                                .off('keydown' + eventNamespace);
+                                .off('keydown' + eventNamespace)
+                            ;
                         },
                         scrolling: function () {
                             if (!keepScrollingClass) {
@@ -998,12 +1014,15 @@
                         clickaway: function () {
                             if (!settings.detachable) {
                                 $module
-                                    .on('mousedown' + elementEventNamespace, module.event.mousedown);
+                                    .on('mousedown' + elementEventNamespace, module.event.mousedown)
+                                ;
                             }
                             $dimmer
-                                .on('mousedown' + elementEventNamespace, module.event.mousedown);
+                                .on('mousedown' + elementEventNamespace, module.event.mousedown)
+                            ;
                             $dimmer
-                                .on('mouseup' + elementEventNamespace, module.event.mouseup);
+                                .on('mouseup' + elementEventNamespace, module.event.mouseup)
+                            ;
                         },
                         dimmerSettings: function () {
                             if ($.fn.dimmer === undefined) {
@@ -1072,7 +1091,8 @@
                             } else if (!$module.hasClass('bottom')) {
                                 module.debug('Modal is taller than page content, resizing page height');
                                 $context
-                                    .css('height', module.cache.height + (settings.padding * 2) + 'px');
+                                    .css('height', module.cache.height + (settings.padding * 2) + 'px')
+                                ;
                             }
                         },
                         active: function () {

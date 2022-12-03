@@ -20,14 +20,16 @@ const currentRev = childProcess // get the current rev from the repo
     .execSync('git rev-parse HEAD')
     .toString()
     .trim()
-    .slice(0, 7);
+    .slice(0, 7)
+;
 
 const getNextVersion = async function () {
     const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
         .then(r => r.json())
         .then(milestones => milestones.filter(m => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
         .then(versions => versions.map(m => m.title)) // create array of versions
-        .then(versions => semver.sort(versions));
+        .then(versions => semver.sort(versions))
+    ;
 
     // Return first entry aka the smallest version in milestones which would therefore
     // be the next version
@@ -91,4 +93,5 @@ getNightlyVersion()
             JSON.stringify(pkg, null, 2)
         );
     })
-    .then(() => console.log(`Done (${pkg.version})`));
+    .then(() => console.log(`Done (${pkg.version})`))
+;

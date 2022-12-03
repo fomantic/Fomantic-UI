@@ -116,13 +116,15 @@ module.exports = function (callback) {
                 console.info('Updating gulpfile.js');
                 gulp.src(source.userGulpFile)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updateFolder));
+                    .pipe(gulp.dest(updateFolder))
+                ;
 
                 // copy theme import
                 console.info('Updating theme import file');
                 gulp.src(source.themeImport)
                     .pipe(plumber())
-                    .pipe(gulp.dest(updatePaths.themeImport));
+                    .pipe(gulp.dest(updatePaths.themeImport))
+                ;
 
                 console.info('Adding new site theme files...');
                 wrench.copyDirSyncRecursive(source.site, updatePaths.site, settings.wrench.merge);
@@ -136,7 +138,8 @@ module.exports = function (callback) {
                     .pipe(jsonEditor({
                         version: release.version,
                     }))
-                    .pipe(gulp.dest(manager.root));
+                    .pipe(gulp.dest(manager.root))
+                ;
 
                 console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
 
@@ -163,7 +166,8 @@ module.exports = function (callback) {
     if (manager.name === 'NPM') {
         rootQuestions[0].message = rootQuestions[0].message
             .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
-            .replace('{root}', manager.root);
+            .replace('{root}', manager.root)
+        ;
         // set default path to detected PM root
         rootQuestions[0].default = manager.root;
         rootQuestions[1].default = manager.root;
@@ -297,16 +301,19 @@ module.exports = function (callback) {
             console.info('Adding theme files');
             gulp.src(source.themeImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.themeImport));
+                .pipe(gulp.dest(installPaths.themeImport))
+            ;
             gulp.src(source.lessImport)
                 .pipe(plumber())
-                .pipe(gulp.dest(installPaths.lessImport));
+                .pipe(gulp.dest(installPaths.lessImport))
+            ;
 
             // create gulp file
             console.info('Creating gulpfile.js');
             gulp.src(source.userGulpFile)
                 .pipe(plumber())
-                .pipe(gulp.dest(installFolder));
+                .pipe(gulp.dest(installFolder))
+            ;
         }
 
         /* --------------
@@ -342,7 +349,8 @@ module.exports = function (callback) {
                 return gulp.src(installPaths.themeConfig)
                     .pipe(plumber())
                     .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder));
+                    .pipe(gulp.dest(installPaths.themeConfigFolder))
+                ;
             } else {
                 console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
 
@@ -350,7 +358,8 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(rename({extname: ''}))
                     .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder));
+                    .pipe(gulp.dest(installPaths.themeConfigFolder))
+                ;
             }
         });
 
@@ -371,7 +380,8 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(rename(settings.rename.json)) // preserve file extension
                     .pipe(jsonEditor(jsonConfig))
-                    .pipe(gulp.dest(installPaths.configFolder));
+                    .pipe(gulp.dest(installPaths.configFolder))
+                ;
             } else {
                 console.info('Creating config file (semantic.json)', installPaths.config);
 
@@ -379,7 +389,8 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(rename({extname: ''})) // remove .template from ext
                     .pipe(jsonEditor(jsonConfig, {end_with_newline: true}))
-                    .pipe(gulp.dest(installPaths.configFolder));
+                    .pipe(gulp.dest(installPaths.configFolder))
+                ;
             }
         });
 

@@ -48,7 +48,8 @@ module.exports = function () {
                 base: 'src/',
             })
                 .pipe(gulp.dest(config.paths.output.less))
-                .pipe(print(log.created));
+                .pipe(print(log.created))
+            ;
         });
 
     /* --------------
@@ -67,7 +68,8 @@ module.exports = function () {
                 base: 'examples/',
             })
                 .pipe(gulp.dest(config.paths.output.examples))
-                .pipe(print(log.created));
+                .pipe(print(log.created))
+            ;
         });
 
     /* --------------

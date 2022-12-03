@@ -69,12 +69,14 @@
                         storage = module.get.storage();
                         $module
                             .on('click' + eventNamespace, selector.close, module.dismiss)
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
 
                         if (settings.detachable && $module.parent()[0] !== $context[0]) {
                             $module
                                 .detach()
-                                .prependTo($context);
+                                .prependTo($context)
+                            ;
                         }
 
                         if (settings.displayTime > 0) {
@@ -87,7 +89,8 @@
                         module.verbose('Destroying instance');
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace);
+                            .off(eventNamespace)
+                        ;
                     },
 
                     show: function () {
@@ -100,10 +103,12 @@
                             module.debug('Showing nag', settings.animation.show);
                             if (settings.animation.show === 'fade') {
                                 $module
-                                    .fadeIn(settings.duration, settings.easing, settings.onVisible);
+                                    .fadeIn(settings.duration, settings.easing, settings.onVisible)
+                                ;
                             } else {
                                 $module
-                                    .slideDown(settings.duration, settings.easing, settings.onVisible);
+                                    .slideDown(settings.duration, settings.easing, settings.onVisible)
+                                ;
                             }
                         }
                     },
@@ -117,10 +122,12 @@
                         module.debug('Hiding nag', settings.animation.hide);
                         if (settings.animation.hide === 'fade') {
                             $module
-                                .fadeOut(settings.duration, settings.easing, settings.onHidden);
+                                .fadeOut(settings.duration, settings.easing, settings.onHidden)
+                            ;
                         } else {
                             $module
-                                .slideUp(settings.duration, settings.easing, settings.onHidden);
+                                .slideUp(settings.duration, settings.easing, settings.onHidden)
+                            ;
                         }
                     },
 
@@ -179,9 +186,11 @@
                                         // RFC6265 compliant encoding
                                         key = encodeURIComponent(key)
                                             .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
-                                            .replace(/[()]/g, escape);
+                                            .replace(/[()]/g, escape)
+                                        ;
                                         value = encodeURIComponent(value)
-                                            .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent);
+                                            .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent)
+                                        ;
 
                                         var cookieOptions = '';
                                         for (var option in options) {

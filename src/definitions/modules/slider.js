@@ -123,7 +123,8 @@
                         module.verbose('Storing instance of slider', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     destroy: function () {
@@ -258,7 +259,8 @@
                                 .on('touchstart' + eventNamespace, module.event.touchDown)
                                 .on('touchmove' + eventNamespace, module.event.move)
                                 .on('touchend' + eventNamespace, module.event.up)
-                                .on('touchcancel' + eventNamespace, module.event.touchCancel);
+                                .on('touchcancel' + eventNamespace, module.event.touchCancel)
+                            ;
                         },
                         slidingEvents: function () {
                             // these don't need the identifier because we only ever want one of them to be registered with document
@@ -281,7 +283,8 @@
                                 .off('touchstart' + eventNamespace)
                                 .off('touchmove' + eventNamespace)
                                 .off('touchend' + eventNamespace)
-                                .off('touchcancel' + eventNamespace);
+                                .off('touchcancel' + eventNamespace)
+                            ;
                             $module.off('keydown' + eventNamespace);
                             $module.off('focusout' + eventNamespace);
                             $document.off('keydown' + eventNamespace + documentEventID, module.event.activateFocus);

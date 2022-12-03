@@ -103,14 +103,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     destroy: function () {
                         module.verbose('Destroying previous module', instance);
                         module.removeEvents();
                         $module
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                     },
 
                     refresh: function () {
@@ -151,7 +153,8 @@
                             .on('blur' + eventNamespace, selector.field, module.event.field.blur)
                             .on('click' + eventNamespace, selector.submit, module.submit)
                             .on('click' + eventNamespace, selector.reset, module.reset)
-                            .on('click' + eventNamespace, selector.clear, module.clear);
+                            .on('click' + eventNamespace, selector.clear, module.clear)
+                        ;
                         if (settings.keyboardShortcuts) {
                             $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                         }
@@ -404,7 +407,8 @@
                                 if (key == keyCode.escape) {
                                     module.verbose('Escape key pressed blurring field');
                                     $field[0]
-                                        .blur();
+                                        .blur()
+                                    ;
                                 }
                                 if (!event.ctrlKey && key == keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                     if (!keyHeldDown) {
@@ -876,16 +880,19 @@
                             module.verbose('Adding field error state', identifier);
                             if (!internal) {
                                 $fieldGroup
-                                    .addClass(className.error);
+                                    .addClass(className.error)
+                                ;
                             }
                             if (settings.inline) {
                                 if (!promptExists) {
                                     $prompt = $('<div/>').addClass(className.label);
                                     $prompt
-                                        .appendTo($fieldGroup);
+                                        .appendTo($fieldGroup)
+                                    ;
                                 }
                                 $prompt
-                                    .html(settings.templates.prompt(errors));
+                                    .html(settings.templates.prompt(errors))
+                                ;
                                 if (!promptExists) {
                                     if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                         module.verbose('Displaying error with css transition', settings.transition);
@@ -893,7 +900,8 @@
                                     } else {
                                         module.verbose('Displaying error with fallback javascript animation');
                                         $prompt
-                                            .fadeIn(settings.duration);
+                                            .fadeIn(settings.duration)
+                                        ;
                                     }
                                 } else {
                                     module.verbose('Inline errors are disabled, no inline error added', identifier);
@@ -904,7 +912,8 @@
                             module.debug('Adding form error messages', errors);
                             module.set.error();
                             $message
-                                .html(settings.templates.error(errors));
+                                .html(settings.templates.error(errors))
+                            ;
                         },
                     },
 
@@ -973,7 +982,8 @@
                                 $prompt     = $fieldGroup.children(selector.prompt)
                             ;
                             $fieldGroup
-                                .removeClass(className.error);
+                                .removeClass(className.error)
+                            ;
                             if (settings.inline && $prompt.is(':visible')) {
                                 module.verbose('Removing prompt for field', identifier);
                                 if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -994,7 +1004,8 @@
                         success: function () {
                             $module
                                 .removeClass(className.error)
-                                .addClass(className.success);
+                                .addClass(className.success)
+                            ;
                         },
                         defaults: function () {
                             $field.each(function (index, el) {
@@ -1021,7 +1032,8 @@
                         error: function () {
                             $module
                                 .removeClass(className.success)
-                                .addClass(className.error);
+                                .addClass(className.error)
+                            ;
                         },
                         value: function (field, value) {
                             var
@@ -1063,7 +1075,8 @@
                                         module.verbose('Selecting radio value', value, $field);
                                         $field.filter('[value="' + value + '"]')
                                             .parent(selector.uiCheckbox)
-                                            .checkbox('check');
+                                            .checkbox('check')
+                                        ;
                                     } else if (isCheckbox) {
                                         module.verbose('Setting checkbox value', value, $element);
                                         if (value === true || value === 1 || value === 'on') {

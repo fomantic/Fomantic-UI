@@ -96,7 +96,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     destroy: function () {
@@ -104,7 +105,8 @@
                         module.unbind.events();
                         module.remove.variation();
                         $dimmable
-                            .off(eventNamespace);
+                            .off(eventNamespace)
+                        ;
                     },
 
                     bind: {
@@ -112,10 +114,12 @@
                             if (settings.on == 'hover') {
                                 $dimmable
                                     .on('mouseenter' + eventNamespace, module.show)
-                                    .on('mouseleave' + eventNamespace, module.hide);
+                                    .on('mouseleave' + eventNamespace, module.hide)
+                                ;
                             } else if (settings.on == 'click') {
                                 $dimmable
-                                    .on(clickEvent + eventNamespace, module.toggle);
+                                    .on(clickEvent + eventNamespace, module.toggle)
+                                ;
                             }
                             if (module.is.page()) {
                                 module.debug('Setting as a page dimmer', $dimmable);
@@ -125,7 +129,8 @@
                             if (module.is.closable()) {
                                 module.verbose('Adding dimmer close event', $dimmer);
                                 $dimmable
-                                    .on(clickEvent + eventNamespace, selector.dimmer, module.event.click);
+                                    .on(clickEvent + eventNamespace, selector.dimmer, module.event.click)
+                                ;
                             }
                         },
                     },
@@ -133,9 +138,11 @@
                     unbind: {
                         events: function () {
                             $module
-                                .removeData(moduleNamespace);
+                                .removeData(moduleNamespace)
+                            ;
                             $dimmable
-                                .off(eventNamespace);
+                                .off(eventNamespace)
+                            ;
                         },
                     },
 
@@ -168,7 +175,8 @@
                             $element.addClass(settings.dimmerName);
                         }
                         $element
-                            .appendTo($dimmable);
+                            .appendTo($dimmable)
+                        ;
 
                         return $element;
                     },
@@ -433,7 +441,8 @@
                     remove: {
                         active: function () {
                             $dimmer
-                                .removeClass(className.active);
+                                .removeClass(className.active)
+                            ;
                         },
                         legacy: function () {
                             $dimmer.removeClass(className.legacy);
@@ -706,7 +715,8 @@
                 if (settings.displayLoader) {
                     l = $('<div/>')
                         .addClass(settings.className.loader)
-                        .addClass(settings.loaderVariation);
+                        .addClass(settings.loaderVariation)
+                    ;
                     if (!!settings.loaderText){
                         l.text(settings.loaderText);
                         l.addClass('text');

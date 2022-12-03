@@ -49,7 +49,8 @@
                 module.verbose('Storing instance of site', module);
                 instance = module;
                 $module
-                    .data(moduleNamespace, module);
+                    .data(moduleNamespace, module)
+                ;
             },
 
             normalize: function () {
@@ -246,7 +247,8 @@
             destroy: function () {
                 module.verbose('Destroying previous site for', $module);
                 $module
-                    .removeData(moduleNamespace);
+                    .removeData(moduleNamespace)
+                ;
             },
 
             cache: {},

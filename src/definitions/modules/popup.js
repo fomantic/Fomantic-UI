@@ -103,7 +103,8 @@
                         module.verbose('Storing instance', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     observeChanges: function () {
@@ -134,7 +135,8 @@
                                 module.debug('Moving popup to the same offset parent as target');
                                 $popup
                                     .detach()
-                                    .appendTo($offsetParent);
+                                    .appendTo($offsetParent)
+                                ;
                             }
                         } else {
                             $offsetParent = (settings.inline)
@@ -173,7 +175,8 @@
                         module.unbind.close();
                         module.unbind.events();
                         $module
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                     },
 
                     event: {
@@ -255,15 +258,18 @@
                             $popup = $('<div/>')
                                 .addClass(className.popup)
                                 .data(metadata.activator, $module)
-                                .html(html);
+                                .html(html)
+                            ;
                             if (settings.inline) {
                                 module.verbose('Inserting popup element inline', $popup);
                                 $popup
-                                    .insertAfter($module);
+                                    .insertAfter($module)
+                                ;
                             } else {
                                 module.verbose('Appending popup element to body', $popup);
                                 $popup
-                                    .appendTo($context);
+                                    .appendTo($context)
+                                ;
                             }
                             module.refresh();
                             module.set.variation();
@@ -356,7 +362,8 @@
                             .each(function () {
                                 $(this)
                                     .data(metadata.activator)
-                                    .popup('hide');
+                                    .popup('hide')
+                                ;
                             });
                     },
                     exists: function () {
@@ -887,7 +894,8 @@
                                 .css(positioning)
                                 .removeClass(className.position)
                                 .addClass(position)
-                                .addClass(className.loading);
+                                .addClass(className.loading)
+                            ;
 
                             popupOffset = module.get.popupOffset();
 
@@ -974,16 +982,19 @@
                             module.debug('Binding popup events to module');
                             if (settings.on == 'click') {
                                 $module
-                                    .on(clickEvent + eventNamespace, module.toggle);
+                                    .on(clickEvent + eventNamespace, module.toggle)
+                                ;
                             }
                             if (settings.on == 'hover') {
                                 $module
-                                    .on('touchstart' + eventNamespace, module.event.touchstart);
+                                    .on('touchstart' + eventNamespace, module.event.touchstart)
+                                ;
                             }
                             if (module.get.startEvent()) {
                                 $module
                                     .on(module.get.startEvent() + eventNamespace, module.event.start)
-                                    .on(module.get.endEvent() + eventNamespace, module.event.end);
+                                    .on(module.get.endEvent() + eventNamespace, module.event.end)
+                                ;
                             }
                             if (settings.target) {
                                 module.debug('Target set to element', $target);
@@ -995,7 +1006,8 @@
                             if ($popup && module.has.popup()) {
                                 $popup
                                     .on('mouseenter' + eventNamespace, module.event.start)
-                                    .on('mouseleave' + eventNamespace, module.event.end);
+                                    .on('mouseleave' + eventNamespace, module.event.end)
+                                ;
                             }
                         },
                         close: function () {
@@ -1011,7 +1023,8 @@
                         closeOnScroll: function () {
                             module.verbose('Binding scroll close event to document');
                             $scrollContext
-                                .one(module.get.scrollEvent() + elementNamespace, module.event.hideGracefully);
+                                .one(module.get.scrollEvent() + elementNamespace, module.event.hideGracefully)
+                            ;
                         },
                         touchClose: function () {
                             module.verbose('Binding popup touchclose event to document');
@@ -1034,15 +1047,19 @@
                     unbind: {
                         events: function () {
                             $window
-                                .off(elementNamespace);
+                                .off(elementNamespace)
+                            ;
                             $module
-                                .off(eventNamespace);
+                                .off(eventNamespace)
+                            ;
                         },
                         close: function () {
                             $document
-                                .off(elementNamespace);
+                                .off(elementNamespace)
+                            ;
                             $scrollContext
-                                .off(elementNamespace);
+                                .off(elementNamespace)
+                            ;
                         },
                     },
 
@@ -1114,7 +1131,8 @@
                         if (settings.preserve) {
                             if ($.fn.transition !== undefined) {
                                 $popup
-                                    .transition('remove transition');
+                                    .transition('remove transition')
+                                ;
                             }
                         } else {
                             module.removePopup();

@@ -70,7 +70,8 @@ module.exports = function (callback) {
 
         return gulp.src('examples/**/*.*')
             .pipe(gulp.dest(output.examples))
-            .pipe(print(log.created));
+            .pipe(print(log.created))
+        ;
     }
 
     /* --------------
@@ -83,7 +84,8 @@ module.exports = function (callback) {
 
         return gulp.src('src/**/*.*')
             .pipe(gulp.dest(output.less))
-            .pipe(print(log.created));
+            .pipe(print(log.created))
+        ;
     }
 
     /* --------------

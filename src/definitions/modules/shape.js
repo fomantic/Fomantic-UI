@@ -89,14 +89,16 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     destroy: function () {
                         module.verbose('Destroying previous module for', element);
                         $module
                             .removeData(moduleNamespace)
-                            .off(eventNamespace);
+                            .off(eventNamespace)
+                        ;
                     },
 
                     refresh: function () {
@@ -128,16 +130,20 @@
                         if (module.get.transitionEvent()) {
                             module.verbose('Starting CSS animation');
                             $module
-                                .addClass(className.animating);
+                                .addClass(className.animating)
+                            ;
                             $sides
                                 .css(propertyObject)
-                                .one(module.get.transitionEvent(), callback);
+                                .one(module.get.transitionEvent(), callback)
+                            ;
                             module.set.duration(settings.duration);
                             requestAnimationFrame(function () {
                                 $module
-                                    .addClass(className.animating);
+                                    .addClass(className.animating)
+                                ;
                                 $activeSide
-                                    .addClass(className.hidden);
+                                    .addClass(className.hidden)
+                                ;
                             });
                         } else {
                             callback();
@@ -160,19 +166,23 @@
                         $module
                             .removeClass(className.animating)
                             .attr('style', '')
-                            .removeAttr('style');
+                            .removeAttr('style')
+                        ;
                         // removeAttr style does not consistently work in safari
                         $sides
                             .attr('style', '')
-                            .removeAttr('style');
+                            .removeAttr('style')
+                        ;
                         $side
                             .attr('style', '')
                             .removeAttr('style')
-                            .removeClass(className.hidden);
+                            .removeClass(className.hidden)
+                        ;
                         $nextSide
                             .removeClass(className.animating)
                             .attr('style', '')
-                            .removeAttr('style');
+                            .removeAttr('style')
+                        ;
                     },
 
                     is: {
@@ -279,9 +289,11 @@
                         active: function () {
                             module.verbose('Setting new side to active', $nextSide);
                             $side
-                                .removeClass(className.active);
+                                .removeClass(className.active)
+                            ;
                             $nextSide
-                                .addClass(className.active);
+                                .addClass(className.active)
+                            ;
                             settings.onChange.call($nextSide[0]);
                             module.set.defaultSide();
                         },

@@ -95,13 +95,15 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, instance);
+                            .data(moduleNamespace, instance)
+                        ;
                     },
 
                     destroy: function () {
                         module.verbose('Destroying previous module for', element);
                         $module
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                     },
 
                     refresh: function () {
@@ -243,7 +245,8 @@
                             }
                             module.verbose('Overriding default display to show element', displayType);
                             $module
-                                .attr('style', overrideStyle);
+                                .attr('style', overrideStyle)
+                            ;
 
                             return true;
                         },
@@ -256,10 +259,12 @@
                             if (currentDisplay !== 'none' && !module.is.hidden()) {
                                 module.verbose('Overriding default display to hide element');
                                 $module
-                                    .css('display', 'none');
+                                    .css('display', 'none')
+                                ;
                             } else if (emptyStyle) {
                                 $module
-                                    .removeAttr('style');
+                                    .removeAttr('style')
+                                ;
                             }
                         },
                     },
@@ -333,29 +338,34 @@
                         looping: function () {
                             module.debug('Transition set to loop');
                             $module
-                                .addClass(className.looping);
+                                .addClass(className.looping)
+                            ;
                         },
                         hidden: function () {
                             $module
                                 .addClass(className.transition)
-                                .addClass(className.hidden);
+                                .addClass(className.hidden)
+                            ;
                         },
                         inward: function () {
                             module.debug('Setting direction to inward');
                             $module
                                 .removeClass(className.outward)
-                                .addClass(className.inward);
+                                .addClass(className.inward)
+                            ;
                         },
                         outward: function () {
                             module.debug('Setting direction to outward');
                             $module
                                 .removeClass(className.inward)
-                                .addClass(className.outward);
+                                .addClass(className.outward)
+                            ;
                         },
                         visible: function () {
                             $module
                                 .addClass(className.transition)
-                                .addClass(className.visible);
+                                .addClass(className.visible)
+                            ;
                         },
                     },
 
@@ -365,7 +375,8 @@
                             module.debug('Starting tween', animationClass);
                             $module
                                 .addClass(animationClass)
-                                .one(animationEnd + '.complete' + eventNamespace, module.complete);
+                                .one(animationEnd + '.complete' + eventNamespace, module.complete)
+                            ;
                             if (settings.useFailSafe) {
                                 module.add.failSafe();
                             }
@@ -399,7 +410,8 @@
                             ;
                             if (animation) {
                                 $module
-                                    .removeClass(animation);
+                                    .removeClass(animation)
+                                ;
                                 module.verbose('Removing animation class', module.cache);
                             }
                             module.remove.duration();
@@ -438,11 +450,13 @@
                         direction: function () {
                             $module
                                 .removeClass(className.inward)
-                                .removeClass(className.outward);
+                                .removeClass(className.outward)
+                            ;
                         },
                         duration: function () {
                             $module
-                                .css('animation-duration', '');
+                                .css('animation-duration', '')
+                            ;
                         },
                         failSafe: function () {
                             module.verbose('Removing fail safe timer', module.timer);
@@ -461,14 +475,16 @@
                             if (module.is.looping()) {
                                 module.reset();
                                 $module
-                                    .removeClass(className.looping);
+                                    .removeClass(className.looping)
+                                ;
                             }
                         },
                         transition: function () {
                             $module
                                 .removeClass(className.transition)
                                 .removeClass(className.visible)
-                                .removeClass(className.hidden);
+                                .removeClass(className.hidden)
+                            ;
                         },
                     },
                     get: {
@@ -657,11 +673,13 @@
                                     .removeClass(className.outward)
                                     .addClass(className.animating)
                                     .addClass(className.transition)
-                                    .css('animationName');
+                                    .css('animationName')
+                                ;
                                 $clone.detach().insertAfter($module);
                                 inAnimation = $clone
                                     .addClass(className.inward)
-                                    .css('animationName');
+                                    .css('animationName')
+                                ;
                                 if (!displayType) {
                                     $clone.detach().insertAfter($module);
                                     displayType = $clone
@@ -670,7 +688,8 @@
                                         .removeClass(className.hidden)
                                         .removeClass(className.visible)
                                         .show()
-                                        .css('display');
+                                        .css('display')
+                                    ;
                                     module.verbose('Determining final display state', displayType);
                                     module.save.displayType(displayType);
                                 }

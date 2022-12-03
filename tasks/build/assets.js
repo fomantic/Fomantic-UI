@@ -23,7 +23,8 @@ function build(src, config) {
     return gulp.src(src, {base: config.paths.source.themes})
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.themes))
-        .pipe(print(log.created));
+        .pipe(print(log.created))
+    ;
 }
 
 function buildAssets(src, config, callback) {

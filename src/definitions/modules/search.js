@@ -83,13 +83,15 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
                     destroy: function () {
                         module.verbose('Destroying instance');
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                     },
 
                     refresh: function () {
@@ -111,9 +113,11 @@
                             module.verbose('Binding events to search');
                             if (settings.automatic) {
                                 $module
-                                    .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input);
+                                    .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input)
+                                ;
                                 $prompt
-                                    .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
+                                    .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
+                                ;
                             }
                             $module
                                 // prompt
@@ -125,7 +129,8 @@
                                 // results
                                 .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                                 .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
-                                .on('click' + eventNamespace, selector.result, module.event.result.click);
+                                .on('click' + eventNamespace, selector.result, module.event.result.click)
+                            ;
                         },
                     },
 
@@ -306,13 +311,15 @@
                                     ? currentIndex
                                     : currentIndex - 1;
                                 $category
-                                    .removeClass(className.active);
+                                    .removeClass(className.active)
+                                ;
                                 $result
                                     .removeClass(className.active)
                                     .eq(newIndex)
                                     .addClass(className.active)
                                     .closest($category)
-                                    .addClass(className.active);
+                                    .addClass(className.active)
+                                ;
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
                             } else if (keyCode == keys.downArrow) {
@@ -321,13 +328,15 @@
                                     ? currentIndex
                                     : currentIndex + 1;
                                 $category
-                                    .removeClass(className.active);
+                                    .removeClass(className.active)
+                                ;
                                 $result
                                     .removeClass(className.active)
                                     .eq(newIndex)
                                     .addClass(className.active)
                                     .closest($category)
-                                    .addClass(className.active);
+                                    .addClass(className.active)
+                                ;
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
                             }
@@ -508,7 +517,8 @@
                         value: function (value) {
                             module.verbose('Setting search input value', value);
                             $prompt
-                                .val(value);
+                                .val(value)
+                            ;
                         },
                         type: function (type) {
                             type = type || settings.type;
@@ -606,7 +616,8 @@
                             }
                             module.setup.api(searchTerm, callback);
                             $module
-                                .api('query');
+                                .api('query')
+                            ;
                         },
                         object: function (searchTerm, source, searchFields) {
                             searchTerm = module.remove.diacritics(String(searchTerm));
@@ -846,7 +857,8 @@
                             if ($results.length === 0) {
                                 $results = $('<div />')
                                     .addClass(className.results)
-                                    .appendTo($module);
+                                    .appendTo($module)
+                                ;
                             }
                         },
                     },
@@ -867,7 +879,8 @@
                             ;
                             module.verbose('Injecting results metadata', $selectedResult);
                             $selectedResult
-                                .data(metadata.result, result);
+                                .data(metadata.result, result)
+                            ;
                         },
                         id: function (results) {
                             module.debug('Injecting unique ids into results');
@@ -924,7 +937,8 @@
                                 module.verbose('Writing generated html to cache', name, value);
                                 cache[name] = value;
                                 $module
-                                    .data(metadata.cache, cache);
+                                    .data(metadata.cache, cache)
+                                ;
                             }
                         },
                     },
@@ -939,7 +953,8 @@
                         }
                         if (html) {
                             $results
-                                .html(html);
+                                .html(html)
+                            ;
                             module.refreshResults();
                             if (settings.selectFirstResult) {
                                 module.select.firstResult();
@@ -982,7 +997,8 @@
                                 module.debug('Showing results with javascript');
                                 $results
                                     .stop()
-                                    .fadeIn(settings.duration, settings.easing);
+                                    .fadeIn(settings.duration, settings.easing)
+                                ;
                             }
                             settings.onResultsOpen.call($results);
                         }
@@ -1010,7 +1026,8 @@
                                 module.debug('Hiding results with javascript');
                                 $results
                                     .stop()
-                                    .fadeOut(settings.duration, settings.easing);
+                                    .fadeOut(settings.duration, settings.easing)
+                                ;
                             }
                             settings.onResultsClose.call($results);
                         }

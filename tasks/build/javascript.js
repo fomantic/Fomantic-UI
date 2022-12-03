@@ -59,7 +59,8 @@ function build(src, type, config) {
         .pipe(header(banner, settings.header))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.compressed))
-        .pipe(print(log.created));
+        .pipe(print(log.created))
+    ;
 }
 
 /**
@@ -81,7 +82,8 @@ function pack(type, compress) {
         .pipe(header(banner, settings.header))
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(output.packaged))
-        .pipe(print(log.created));
+        .pipe(print(log.created))
+    ;
 }
 
 function buildJS(src, type, config, callback) {

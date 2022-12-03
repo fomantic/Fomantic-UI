@@ -115,7 +115,8 @@
                         module.verbose('Storing instance of module', module);
                         instance = module;
                         $module
-                            .data(moduleNamespace, module);
+                            .data(moduleNamespace, module)
+                        ;
                     },
 
                     create: {
@@ -130,7 +131,8 @@
                         module.verbose('Destroying previous module for', $module);
                         $module
                             .off(eventNamespace)
-                            .removeData(moduleNamespace);
+                            .removeData(moduleNamespace)
+                        ;
                         if (module.is.ios()) {
                             module.remove.ios();
                         }
@@ -180,7 +182,8 @@
                             module.verbose('Adding clickaway events to context', $context);
                             $context
                                 .on('click' + elementNamespace, module.event.clickaway)
-                                .on('touchend' + elementNamespace, module.event.clickaway);
+                                .on('touchend' + elementNamespace, module.event.clickaway)
+                            ;
                         },
                         scrollLock: function () {
                             if (settings.scrollLock) {
@@ -194,9 +197,11 @@
                             }
                             module.verbose('Adding events to contain sidebar scroll');
                             $document
-                                .on('touchmove' + elementNamespace, module.event.touch);
+                                .on('touchmove' + elementNamespace, module.event.touch)
+                            ;
                             $module
-                                .on('scroll' + eventNamespace, module.event.containScroll);
+                                .on('scroll' + eventNamespace, module.event.containScroll)
+                            ;
                         },
                     },
                     unbind: {
@@ -283,7 +288,8 @@
                             }
                             style += '</style>';
                             $style = $(style)
-                                .appendTo($head);
+                                .appendTo($head)
+                            ;
                             module.debug('Adding sizing css to head', $style);
                         },
                     },
@@ -326,7 +332,8 @@
                                     .children()
                                     .not(selector.omitted)
                                     .not($sidebars)
-                                    .wrapAll($pusher);
+                                    .wrapAll($pusher)
+                                ;
                                 module.refresh();
                             }
                             if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -351,7 +358,8 @@
                         if ($toggle.length > 0) {
                             module.debug('Attaching sidebar events to element', selector, event);
                             $toggle
-                                .on('click' + eventNamespace, event);
+                                .on('click' + eventNamespace, event)
+                            ;
                         } else {
                             module.error(error.notFound, selector);
                         }
