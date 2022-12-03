@@ -144,7 +144,7 @@ function moduleTests(ui) {
                 expect(clonedSetting).toBe(testValue);
 
                 $oneModule[module]({
-                    'name': testValue,
+                    name: testValue,
                 });
 
                 expect(retrievedValue).toBe(testValue);
@@ -166,7 +166,7 @@ function moduleTests(ui) {
                 $modules[module]();
 
                 $oneModule[module]({
-                    'name': testValue,
+                    name: testValue,
                 });
 
                 var retrievedValue = $oneModule[module]('setting', 'name');

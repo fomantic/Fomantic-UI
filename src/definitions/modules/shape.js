@@ -430,10 +430,10 @@
                         var
                             element     = document.createElement('element'),
                             transitions = {
-                                'transition': 'transitionend',
-                                'OTransition': 'oTransitionEnd',
-                                'MozTransition': 'transitionend',
-                                'WebkitTransition': 'webkitTransitionEnd',
+                                transition: 'transitionend',
+                                OTransition: 'oTransitionEnd',
+                                MozTransition: 'transitionend',
+                                WebkitTransition: 'webkitTransitionEnd',
                             },
                             transition
                         ;
@@ -467,14 +467,14 @@
                         module.verbose('Setting the initial animation position as above', $nextSide, box);
                         $activeSide
                             .css({
-                                'transform': 'rotateX(0deg)',
+                                transform: 'rotateX(0deg)',
                             })
                         ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
-                                'top': box.origin + 'px',
-                                'transform': 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
+                                top: box.origin + 'px',
+                                transform: 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
                             })
                         ;
                     },
@@ -492,14 +492,14 @@
                         module.verbose('Setting the initial animation position as below', $nextSide, box);
                         $activeSide
                             .css({
-                                'transform': 'rotateX(0deg)',
+                                transform: 'rotateX(0deg)',
                             })
                         ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
-                                'top': box.origin + 'px',
-                                'transform': 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
+                                top: box.origin + 'px',
+                                transform: 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
                             })
                         ;
                     },
@@ -521,14 +521,14 @@
                         module.verbose('Setting the initial animation position as left', $nextSide, box);
                         $activeSide
                             .css({
-                                'transform': 'rotateY(0deg)',
+                                transform: 'rotateY(0deg)',
                             })
                         ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
-                                'left': box.origin + 'px',
-                                'transform': 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
+                                left: box.origin + 'px',
+                                transform: 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
                             })
                         ;
                     },
@@ -550,14 +550,14 @@
                         module.verbose('Setting the initial animation position as right', $nextSide, box);
                         $activeSide
                             .css({
-                                'transform': 'rotateY(0deg)',
+                                transform: 'rotateY(0deg)',
                             })
                         ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
-                                'left': box.origin + 'px',
-                                'transform': 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
+                                left: box.origin + 'px',
+                                transform: 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
                             })
                         ;
                     },
@@ -579,14 +579,14 @@
                         module.verbose('Setting the initial animation position as behind', $nextSide, box);
                         $activeSide
                             .css({
-                                'transform': 'rotateY(0deg)',
+                                transform: 'rotateY(0deg)',
                             })
                         ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
-                                'left': box.origin + 'px',
-                                'transform': 'rotateY(-180deg)',
+                                left: box.origin + 'px',
+                                transform: 'rotateY(-180deg)',
                             })
                         ;
                     },
@@ -653,9 +653,9 @@
                             executionTime = currentTime - previousTime;
                             time = currentTime;
                             performance.push({
-                                'Name': message[0],
-                                'Arguments': [].slice.call(message, 1) || '',
-                                'Element': element,
+                                Name: message[0],
+                                Arguments: [].slice.call(message, 1) || '',
+                                Element: element,
                                 'Execution Time': executionTime,
                             });
                         }

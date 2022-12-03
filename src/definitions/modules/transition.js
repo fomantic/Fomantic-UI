@@ -612,10 +612,10 @@
                         var
                             element     = document.createElement('div'),
                             animations  = {
-                                'animation': 'animationstart',
-                                'OAnimation': 'oAnimationStart',
-                                'MozAnimation': 'mozAnimationStart',
-                                'WebkitAnimation': 'webkitAnimationStart',
+                                animation: 'animationstart',
+                                OAnimation: 'oAnimationStart',
+                                MozAnimation: 'mozAnimationStart',
+                                WebkitAnimation: 'webkitAnimationStart',
                             },
                             animation
                         ;
@@ -631,10 +631,10 @@
                         var
                             element     = document.createElement('div'),
                             animations  = {
-                                'animation': 'animationend',
-                                'OAnimation': 'oAnimationEnd',
-                                'MozAnimation': 'mozAnimationEnd',
-                                'WebkitAnimation': 'webkitAnimationEnd',
+                                animation: 'animationend',
+                                OAnimation: 'oAnimationEnd',
+                                MozAnimation: 'mozAnimationEnd',
+                                WebkitAnimation: 'webkitAnimationEnd',
                             },
                             animation
                         ;
@@ -885,9 +885,9 @@
                             executionTime = currentTime - previousTime;
                             time = currentTime;
                             performance.push({
-                                'Name': message[0],
-                                'Arguments': [].slice.call(message, 1) || '',
-                                'Element': element,
+                                Name: message[0],
+                                Arguments: [].slice.call(message, 1) || '',
+                                Element: element,
                                 'Execution Time': executionTime,
                             });
                         }

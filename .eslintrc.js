@@ -21,9 +21,9 @@ module.exports = {
         'space-in-parens': ['error'],
         'comma-spacing': ['error'],
         'space-before-function-paren': ['error', {
-            'named': 'never',
-            'anonymous': 'always',
-            'asyncArrow': 'always',
+            named: 'never',
+            anonymous: 'always',
+            asyncArrow: 'always',
         }],
         'space-infix-ops': ['error'],
         'padding-line-between-statements': ['error', {
@@ -57,6 +57,10 @@ module.exports = {
         'brace-style': ['error'],
         curly: ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],
+        'quote-props': ['error', 'as-needed', {
+            keywords: false,
+            numbers: false,
+        }],
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
             objects: 'always-multiline',
