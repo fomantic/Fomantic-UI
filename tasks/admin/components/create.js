@@ -248,7 +248,7 @@ module.exports = function (callback) {
                 return gulp.src(release.templates.notes)
                     .pipe(plumber())
                     .pipe(flatten())
-                // Remove release notes for lines not mentioning component
+                    // Remove release notes for lines not mentioning component
                     .pipe(replace(regExp.match.unrelatedNotes, regExp.replace.unrelatedNotes))
                     .pipe(replace(regExp.match.whitespace, regExp.replace.whitespace))
                     .pipe(replace(regExp.match.spacedVersions, regExp.replace.spacedVersions))

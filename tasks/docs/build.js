@@ -78,7 +78,7 @@ module.exports = function (callback) {
     --------------- */
 
     function copyLess() {
-    // copy src/ to server
+        // copy src/ to server
         console.info('Copying LESS source');
 
         return gulp.src('src/**/*.*')

@@ -15,7 +15,7 @@
 
 module.exports = function (gulp) {
     var
-    // less/css distributions
+        // less/css distributions
         initComponents      = require('../admin/components/init'),
         createComponents    = require('../admin/components/create'),
         updateComponents    = require('../admin/components/update'),

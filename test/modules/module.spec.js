@@ -24,7 +24,7 @@ function moduleTests(ui) {
     $.fn[module].settings.verbose = false;
 
     beforeEach(function () {
-    // load fixtures
+        // load fixtures
         fixtures.load(module + '.html');
         // save settings
         originalSettings = $.fn[module].settings;
@@ -44,7 +44,7 @@ function moduleTests(ui) {
     });
 
     afterEach(function () {
-    // restore settings
+        // restore settings
         $.fn[module].settings = originalSettings;
         // remove element
         $(element).remove();

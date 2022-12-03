@@ -8,7 +8,7 @@
 */
 module.exports = function (gulp) {
     var
-    // docs tasks
+        // docs tasks
         install      = require('./../install'),
         checkInstall = require('./../check-install')
     ;

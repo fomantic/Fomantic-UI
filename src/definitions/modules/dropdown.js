@@ -903,10 +903,10 @@
                                     var $lastDivider = $(this).nextUntil(selector.item);
 
                                     return ($lastDivider.length ? $lastDivider : $(this))
-                                    // Count all non-filtered items until the next divider (or end of the dropdown)
+                                        // Count all non-filtered items until the next divider (or end of the dropdown)
                                         .nextUntil(selector.divider)
                                         .filter(selector.item + ':not(.' + className.filtered + ')')
-                                    // Hide divider if no items are found
+                                        // Hide divider if no items are found
                                         .length === 0;
                                 })
                                 .addClass(className.hidden);

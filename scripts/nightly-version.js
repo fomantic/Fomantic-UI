@@ -68,8 +68,8 @@ const getNightlyVersion = async function () {
     // Only check major, minor and patch as previously published nightly
     // versions would include prerelease tag and build metadata
     if (semver.eq(`${next.major}.${next.minor}.${next.patch}`, `${current.major}.${current.minor}.${current.patch}`)) {
-    // If they match then a nightly version has already been published, so we need to increment
-    // the prerelease and add the new rev as build metadata
+        // If they match then a nightly version has already been published, so we need to increment
+        // the prerelease and add the new rev as build metadata
         nightlyVersion = semver.inc(
             `${next.version}-beta.${current.prerelease[1]}`,
             'prerelease'

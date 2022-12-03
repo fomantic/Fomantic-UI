@@ -116,13 +116,13 @@
                                     .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
                             }
                             $module
-                            // prompt
+                                // prompt
                                 .on('focus' + eventNamespace, selector.prompt, module.event.focus)
                                 .on('blur' + eventNamespace, selector.prompt, module.event.blur)
                                 .on('keydown' + eventNamespace, selector.prompt, module.handleKeyboard)
-                            // search button
+                                // search button
                                 .on('click' + eventNamespace, selector.searchButton, module.query)
-                            // results
+                                // results
                                 .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                                 .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
                                 .on('click' + eventNamespace, selector.result, module.event.result.click);

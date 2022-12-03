@@ -230,7 +230,7 @@ module.exports = {
     ],
 
     regExp: {
-    // used to match siteFolder variable in theme.less
+        // used to match siteFolder variable in theme.less
         siteVariable: /@siteFolder .*\'(.*)/mg,
     },
 

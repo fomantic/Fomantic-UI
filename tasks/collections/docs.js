@@ -8,7 +8,7 @@
 */
 module.exports = function (gulp) {
     var
-    // docs tasks
+        // docs tasks
         serveDocs = require('./../docs/serve'),
         buildDocs = require('./../docs/build')
     ;
