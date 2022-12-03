@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -77,7 +76,6 @@
                 module      = {
 
                     initialize: function() {
-
                         module.determineContainer();
                         module.determineContext();
                         module.verbose('Initializing sticky', settings, $container);
@@ -481,7 +479,6 @@
                             elementVisible = (element.height !== 0)
                         ;
                         if (elementVisible && !sameHeight) {
-
                             if (module.is.initialPosition()) {
                                 if (scroll.top >= context.bottom) {
                                     module.debug('Initial element position is bottom of container');
@@ -495,9 +492,7 @@
                                         module.fixTop();
                                     }
                                 }
-
                             } else if (module.is.fixed()) {
-
                                 if (module.is.top()) {
                                     if (scroll.top <= element.top) {
                                         module.debug('Fixed element reached top of container');
@@ -522,7 +517,6 @@
                                         module.save.lastScroll(scroll.top);
                                         module.save.elementScroll(elementScroll);
                                     }
-
                                 }
                             } else if (module.is.bottom()) {
                                 if (scroll.top <= element.top) {
@@ -904,5 +898,4 @@
         },
 
     };
-
 })(jQuery, window, document);

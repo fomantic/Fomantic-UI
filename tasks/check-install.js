@@ -14,7 +14,6 @@ var
 
 // export task
 module.exports = function (callback) {
-
     setTimeout(function () {
         if (!isSetup()) {
             console.log('Starting install...');
@@ -23,5 +22,4 @@ module.exports = function (callback) {
             watch(callback);
         }
     }, 50); // Delay to allow console.clear to remove messages from check event
-
 };

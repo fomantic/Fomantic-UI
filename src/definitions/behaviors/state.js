@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -677,7 +676,4 @@
         },
 
     };
-
-
-
 })(jQuery, window, document);

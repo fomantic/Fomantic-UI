@@ -48,14 +48,12 @@ module.exports = function(callback) {
     ;
 
     for (index in release.components) {
-
         var
             component = release.components[index]
     ;
 
         // streams... designed to save time and make coding fun...
         (function(component) {
-
             var
                 outputDirectory      = path.join(release.outputRoot, component),
                 isJavascript         = fs.existsSync(output.compressed + component + '.js'),

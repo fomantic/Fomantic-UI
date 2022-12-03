@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -23,7 +22,6 @@
             : Function('return this')();
 
     $.fn.embed = function(parameters) {
-
         var
             $allModules     = $(this),
 
@@ -670,7 +668,4 @@
         onStop: function() {},
 
     };
-
-
-
 })(jQuery, window, document);

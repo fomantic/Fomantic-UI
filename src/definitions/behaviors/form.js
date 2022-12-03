@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -78,7 +77,6 @@
                 module      = {
 
                     initialize: function() {
-
                         // settings grabbed at run time
                         module.get.settings();
                         if (methodInvoked) {
@@ -294,7 +292,6 @@
                             } else {
                                 module.set.clean();
                             }
-
                         },
                     },
 
@@ -1988,5 +1985,4 @@
         },
 
     };
-
 })(jQuery, window, document);

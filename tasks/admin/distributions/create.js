@@ -42,14 +42,12 @@ module.exports = function(callback) {
     ;
 
     for (index in release.distributions) {
-
         var
             distribution = release.distributions[index]
     ;
 
         // streams... designed to save time and make coding fun...
         (function(distribution) {
-
             var
                 distLowerCase   = distribution.toLowerCase(),
                 outputDirectory = path.join(release.outputRoot, distLowerCase),
@@ -184,7 +182,6 @@ module.exports = function(callback) {
                     }))
                     .pipe(gulp.dest(outputDirectory));
             });
-
         })(distribution);
     }
 

@@ -10,7 +10,6 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-
     api.versionsFrom('1.0');
 
     api.use('jquery', 'client');
@@ -26,5 +25,4 @@ Package.onUse(function(api) {
         'semantic.css',
         'semantic.js',
     ], 'client');
-
 });

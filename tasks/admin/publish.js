@@ -15,10 +15,8 @@ var
 
 /* Release All */
 module.exports = function (callback) {
-
     gulp.series(
         'update distributions', // commit less/css versions to github
         'update components' // commit components to github
     )(callback);
-
 };

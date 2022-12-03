@@ -55,7 +55,6 @@ var
 
 // Export install task
 module.exports = function (callback) {
-
     var
         currentConfig = requireDotFile('semantic.json', process.cwd()),
         manager       = install.getPackageManager(),
@@ -87,7 +86,6 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-
         var
             updateFolder = path.join(manager.root, currentConfig.base),
             updatePaths  = {
@@ -103,7 +101,6 @@ module.exports = function (callback) {
 
         // duck-type if there is a project installed
         if (fs.existsSync(updatePaths.definition)) {
-
             // perform update if new version
             if (currentConfig.version !== release.version) {
                 console.log('Updating Fomantic UI from ' + currentConfig.version + ' to ' + release.version);
@@ -152,12 +149,10 @@ module.exports = function (callback) {
                 callback();
                 return;
             }
-
         } else {
             console.error('Cannot locate files to update at path: ', updatePaths.definition);
             console.log('Running installer');
         }
-
     }
 
     /*--------------
@@ -186,7 +181,6 @@ module.exports = function (callback) {
   ---------------*/
 
     gulp.task('run setup', function (callback) {
-
         // If auto-install is switched on, we skip the configuration section and simply reuse the configuration from semantic.json
         if (install.shouldAutoInstall()) {
             answers = {
@@ -206,7 +200,6 @@ module.exports = function (callback) {
     });
 
     gulp.task('create install files', function (callback) {
-
         /*--------------
      Exit Conditions
     ---------------*/
@@ -245,7 +238,6 @@ module.exports = function (callback) {
 
         // Check if PM install
         if (manager && (answers.useRoot || answers.customRoot)) {
-
             // Set root to custom root path if set
             if (answers.customRoot) {
                 if (answers.customRoot === '') {
@@ -315,7 +307,6 @@ module.exports = function (callback) {
             gulp.src(source.userGulpFile)
                 .pipe(plumber())
                 .pipe(gulp.dest(installFolder));
-
         }
 
 
@@ -367,7 +358,6 @@ module.exports = function (callback) {
     ---------------*/
 
         gulp.task('create semantic.json', function () {
-
             var
                 jsonConfig = install.createJSON(answers)
             ;
@@ -388,14 +378,12 @@ module.exports = function (callback) {
                     .pipe(jsonEditor(jsonConfig, {end_with_newline: true}))
                     .pipe(gulp.dest(installPaths.configFolder));
             }
-
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);
     });
 
     gulp.task('clean up install', function (callback) {
-
         // Completion Message
         if (installFolder && !install.shouldAutoInstall()) {
             console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');

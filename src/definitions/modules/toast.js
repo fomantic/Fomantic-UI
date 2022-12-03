@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -142,7 +141,6 @@
                         module.remove.visible();
                         module.unbind.events();
                         module.animate.close(callback);
-
                     },
 
                     create: {
@@ -898,6 +896,4 @@
             return (--t)*t*t+1;
         },
     });
-
-
 })(jQuery, window, document);

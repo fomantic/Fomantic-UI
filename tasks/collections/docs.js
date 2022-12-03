@@ -7,7 +7,6 @@
   https://github.com/Semantic-Org/Semantic-UI-Docs/
 */
 module.exports = function (gulp) {
-
     var
     // docs tasks
         serveDocs = require('./../docs/serve'),
@@ -19,5 +18,4 @@ module.exports = function (gulp) {
 
     gulp.task('build-docs', buildDocs);
     gulp.task('build-docs').description = 'Build all files and add to SUI Docs';
-
 };

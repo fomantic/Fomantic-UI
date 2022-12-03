@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -715,7 +714,6 @@
 
                     set: {
                         position: function(position, calculations) {
-
                             // exit conditions
                             if ($target.length === 0 || $popup.length === 0) {
                                 module.error(error.notFound);
@@ -1462,6 +1460,4 @@
         },
 
     };
-
-
 })(jQuery, window, document);

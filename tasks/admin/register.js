@@ -25,7 +25,6 @@ var
 ;
 
 module.exports = function(callback) {
-
     console.log('Registering repos with package managers');
 
     // Do Git commands synchronously per component, to avoid issues
@@ -48,7 +47,6 @@ module.exports = function(callback) {
             console.log(err, stdout, stderr);
             stepRepo();
         });
-
     };
     stepRepo();
 };

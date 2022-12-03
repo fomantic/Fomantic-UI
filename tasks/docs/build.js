@@ -34,7 +34,6 @@ var
 ;
 
 module.exports = function (callback) {
-
     // use a different config
     config = configSetup.addDerivedValues(config);
 
@@ -106,5 +105,4 @@ module.exports = function (callback) {
         (callback) => buildCSS('docs', config, {}, callback),
         (callback) => buildAssets(config, callback)
     )(callback);
-
 };

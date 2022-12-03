@@ -37,7 +37,6 @@ var
 ;
 
 module.exports = function(callback) {
-
     var
         index = -1,
         total = release.components.length,
@@ -53,7 +52,6 @@ module.exports = function(callback) {
 
     // Do Git commands synchronously per component, to avoid issues
     stepRepo = function() {
-
         index = index + 1;
         if (index >= total) {
             callback();
@@ -171,9 +169,7 @@ module.exports = function(callback) {
         } else {
             console.error('Repository must be setup before running update components');
         }
-
     };
 
     stepRepo();
-
 };

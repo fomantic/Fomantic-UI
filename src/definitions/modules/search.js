@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -1190,7 +1189,6 @@
                     }
                     module.initialize();
                 }
-
             });
 
         return (returnedValue !== undefined)
@@ -1387,11 +1385,9 @@
                     escape = $.fn.search.settings.templates.escape
                 ;
                 if (response[fields.categoryResults] !== undefined) {
-
                     // each category
                     $.each(response[fields.categoryResults], function(index, category) {
                         if (category[fields.results] !== undefined && category.results.length > 0) {
-
                             html  += '<div class="category">';
 
                             if (category[fields.categoryName] !== undefined) {
@@ -1454,7 +1450,6 @@
                     escape = $.fn.search.settings.templates.escape
                 ;
                 if (response[fields.results] !== undefined) {
-
                     // each result
                     $.each(response[fields.results], function(index, result) {
                         if (result[fields.url]) {
@@ -1507,5 +1502,4 @@
             return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
         },
     });
-
 })(jQuery, window, document);

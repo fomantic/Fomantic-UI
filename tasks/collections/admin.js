@@ -60,5 +60,4 @@ module.exports = function (gulp) {
 
     gulp.task('register', register);
     gulp.task('register').description = 'Registers all packages with NPM';
-
 };

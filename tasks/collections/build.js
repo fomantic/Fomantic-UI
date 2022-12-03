@@ -3,7 +3,6 @@
  *******************************/
 
 module.exports = function (gulp) {
-
     // build sub-tasks
     const
         watch       = require('./../watch'),
@@ -28,5 +27,4 @@ module.exports = function (gulp) {
 
     gulp.task('build-assets', buildAssets);
     gulp.task('build-assets').description = 'Copies all assets from source';
-
 };

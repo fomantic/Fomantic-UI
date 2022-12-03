@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isWindow(obj) {
@@ -26,7 +25,6 @@
             : Function('return this')();
 
     $.fn.tab = function(parameters) {
-
         var
             // use window context if none specified
             $allModules     = isFunction(this)
@@ -387,7 +385,6 @@
                                     }
                                     settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                 }
-
                             } else if (tabPath.search('/') == -1 && tabPath !== '') {
                                 // look for in page anchor
                                 tabPath = module.escape.string(tabPath);
@@ -869,7 +866,6 @@
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-
     };
 
     // shortcut for tabbed content with no defined navigation
@@ -951,5 +947,4 @@
         },
 
     };
-
 })(jQuery, window, document);

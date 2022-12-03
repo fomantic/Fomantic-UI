@@ -11,7 +11,6 @@ var
 ;
 
 module.exports = function (callback) {
-
     console.info('Building Semantic');
 
     if (!install.isSetup()) {

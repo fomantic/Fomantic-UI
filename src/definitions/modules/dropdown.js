@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -128,7 +127,6 @@
                             module.observeChanges();
                             module.instantiate();
                         }
-
                     },
 
                     instantiate: function() {
@@ -941,7 +939,6 @@
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
                         term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
                         return term.indexOf(query) > -1;
-
                     },
                     filterActive: function() {
                         if (settings.useLabels) {
@@ -1493,7 +1490,6 @@
 
                                 // visible menu keyboard shortcuts
                                 if (module.is.visible()) {
-
                                     // enter (select or open sub-menu)
                                     if (pressedKey == keys.enter || delimiterPressed) {
                                         if (pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
@@ -1514,9 +1510,7 @@
 
                                     // sub-menu actions
                                     if (hasSelectedItem) {
-
                                         if (pressedKey == keys.leftArrow) {
-
                                             isSubMenuItem = ($parentMenu[0] !== $menu[0]);
 
                                             if (isSubMenuItem) {
@@ -1608,7 +1602,6 @@
                                         module.hide();
                                         event.stopPropagation();
                                     }
-
                                 } else {
                                     // delimiter key
                                     if (pressedKey == keys.enter || delimiterPressed) {
@@ -4143,5 +4136,4 @@
         },
 
     };
-
 })(jQuery, window, document);

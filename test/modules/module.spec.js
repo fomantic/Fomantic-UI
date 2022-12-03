@@ -43,7 +43,6 @@ function moduleTests(ui) {
             $clone     = $module.eq(1);
             $oneModule = $modules.first();
         }
-
     });
 
     afterEach(function() {
@@ -61,7 +60,6 @@ function moduleTests(ui) {
       Instantiation
   --------------------*/
     describe('Module', function() {
-
         it('allows chaining when no settings returned', function() {
             var $chain = $modules[module]();
             expect($chain).toExist();
@@ -82,7 +80,6 @@ function moduleTests(ui) {
             $oneModule[module]();
             expect($module).toHaveData('module-' + module);
         });
-
     });
 
     /*-------------------
@@ -90,7 +87,6 @@ function moduleTests(ui) {
   --------------------*/
 
     describe('Settings', function() {
-
         it('clears settings on re-init', function() {
             $oneModule[module]({
                 name: testValue,
@@ -132,7 +128,6 @@ function moduleTests(ui) {
 
             expect(retrievedValue).toBe(name);
         });
-
     });
 
     /*-------------------
@@ -140,9 +135,7 @@ function moduleTests(ui) {
   --------------------*/
 
     if (!singleton) {
-
         describe('Group Contamination', function() {
-
             it('creates settings for all instances', function() {
                 $modules[module]('setting', 'name', testValue);
 
@@ -158,7 +151,6 @@ function moduleTests(ui) {
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(testValue);
-
             });
 
             it('does not change other elements settings when changing one element', function() {
@@ -170,7 +162,6 @@ function moduleTests(ui) {
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);
-
             });
 
             it('does not change other elements when re-initialized', function() {
@@ -185,18 +176,14 @@ function moduleTests(ui) {
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);
-
             });
-
         });
-
     }
 
     /*-------------------
          Destroy
   --------------------*/
     describe('Destroy', function() {
-
         it('removes all events from page', function() {
             $module[module]('destroy');
             if ($.events().length > 0) {
@@ -209,7 +196,5 @@ function moduleTests(ui) {
             $module[module]('destroy');
             expect($module.data('module-'+ module)).toBe(undefined);
         });
-
     });
-
 }

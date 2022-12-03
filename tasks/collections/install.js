@@ -7,7 +7,6 @@
   https://github.com/Semantic-Org/Semantic-UI-Docs/
 */
 module.exports = function (gulp) {
-
     var
     // docs tasks
         install      = require('./../install'),
@@ -19,5 +18,4 @@ module.exports = function (gulp) {
 
     gulp.task('check-install', checkInstall);
     gulp.task('check-install').description = 'Displays current version of Semantic';
-
 };

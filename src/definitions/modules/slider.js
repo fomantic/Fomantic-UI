@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -23,7 +22,6 @@
             : Function('return this')();
 
     $.fn.slider = function(parameters) {
-
         var
             $allModules    = $(this),
             $document      = $(document),
@@ -55,7 +53,6 @@
 
         $allModules
             .each(function() {
-
                 var
                     settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.slider.settings, parameters)
@@ -1236,7 +1233,6 @@
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-
     };
 
     $.fn.slider.settings = {
@@ -1310,6 +1306,4 @@
         onChange: function(value, thumbVal, secondThumbVal){},
         onMove: function(value, thumbVal, secondThumbVal){},
     };
-
-
 })(jQuery, window, document);

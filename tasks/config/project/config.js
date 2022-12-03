@@ -48,7 +48,6 @@ module.exports = {
 
     // adds additional derived values to a config object
     addDerivedValues: function(config) {
-
         config = config || extend(false, {}, defaults);
 
         /*--------------
@@ -141,7 +140,6 @@ module.exports = {
             : undefined;
 
         return config;
-
     },
 
 };

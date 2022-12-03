@@ -39,7 +39,6 @@ var
 ;
 
 module.exports = function(callback) {
-
     var
         index = -1,
         total = release.distributions.length,
@@ -55,7 +54,6 @@ module.exports = function(callback) {
 
     // Do Git commands synchronously per component, to avoid issues
     stepRepo = function() {
-
         index = index + 1;
 
         if (index >= total) {
@@ -157,10 +155,7 @@ module.exports = function(callback) {
             setupRepo();
             // createRepo() only use to create remote repo (easier to do manually)
         }
-
     };
 
     stepRepo();
-
-
 };

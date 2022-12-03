@@ -49,7 +49,6 @@ function parser(file, callback) {
     }
 
     try {
-
         var
             /** @type {string} */
             text     = String(file.contents.toString('utf8')),
@@ -87,7 +86,6 @@ function parser(file, callback) {
         ;
 
         for (index = 0; index < lineCount; index++) {
-
             line = lines[index];
 
             // Wait for metadata block to begin
@@ -118,14 +116,11 @@ function parser(file, callback) {
             // skip
             // console.log(meta);
         }
-
-
     } catch (error) {
         console.log(error, filename);
     }
 
     callback(null, file);
-
 }
 
 /**

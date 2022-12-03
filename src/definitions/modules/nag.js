@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -528,5 +527,4 @@
             return 1 - (1 - x) * (1 - x);
         },
     });
-
 })(jQuery, window, document);

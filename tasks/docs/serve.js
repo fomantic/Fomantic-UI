@@ -26,7 +26,6 @@ var
 ;
 
 module.exports = function () {
-
     // use a different config
     config = configSetup.addDerivedValues(config);
 
@@ -86,5 +85,4 @@ module.exports = function () {
   ---------------*/
 
     assets.watch('docs', config);
-
 };

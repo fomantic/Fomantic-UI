@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
@@ -461,6 +460,4 @@
             };
         }),
     });
-
-
 })(jQuery, window, document);

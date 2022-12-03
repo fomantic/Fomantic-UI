@@ -3,7 +3,6 @@
  *******************************/
 
 module.exports = function (gulp) {
-
     // rtl
     var
         buildRTL = require('./../rtl/build'),
@@ -15,5 +14,4 @@ module.exports = function (gulp) {
 
     gulp.task('build-rtl', buildRTL);
     gulp.task('build-rtl').description = 'DEPRECATED - use \'build\' instead - Build all files as RTL';
-
 };

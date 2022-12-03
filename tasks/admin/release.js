@@ -16,7 +16,6 @@ var
 
 /* Release All */
 module.exports = function (callback) {
-
     gulp.series(
     //'build', // build Semantic
         'init distributions', // sync with current github version
@@ -24,5 +23,4 @@ module.exports = function (callback) {
         'init components', // sync with current github version
         'create components' // update each repo
     )(callback);
-
 };

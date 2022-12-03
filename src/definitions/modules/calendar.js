@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -1879,5 +1878,4 @@
 
         eventClass: 'blue',
     };
-
 })(jQuery, window, document);

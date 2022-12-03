@@ -9,7 +9,6 @@
  */
 
 (function ($, window, document, undefined) {
-
     'use strict';
 
     function isFunction(obj) {
@@ -87,7 +86,6 @@
                         module.setup.cache();
 
                         if (module.should.trackChanges()) {
-
                             if (settings.type == 'image') {
                                 module.setup.image();
                             }
@@ -460,7 +458,6 @@
                         module.verbose('Checking visibility of element', module.cache.element);
 
                         if (!disabled && module.is.visible()) {
-
                             // save scroll position
                             module.save.scroll(scroll);
 
@@ -1256,5 +1253,4 @@
         },
 
     };
-
 })(jQuery, window, document);
