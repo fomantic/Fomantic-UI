@@ -65,7 +65,7 @@
 
                     // context used for state
                     $context        = (settings.stateContext)
-                        ? ([window,document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
+                        ? ([window, document].indexOf(settings.stateContext) < 0 ? $(document).find(settings.stateContext) : $(settings.stateContext))
                         : $module,
 
                     // request details
@@ -431,7 +431,7 @@
                                     }
                                 ;
                                 // add files
-                                $.each($('input[type="file"]',$form), function(i, tag) {
+                                $.each($('input[type="file"]', $form), function(i, tag) {
                                     $.each($(tag)[0].files, function(j, file) {
                                         formArray.push({name: tag.name, value: file});
                                     });
@@ -444,7 +444,7 @@
                                         isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                         floatValue = parseFloat(el.value),
                                         value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
-                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'')
+                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/, '')
                                     ;
                                     if (!(pushKey in pushes)) {
                                         pushes[pushKey] = 0;
@@ -452,7 +452,7 @@
                                     } else if (Array.isArray(pushValues[pushKey])) {
                                         pushValues[pushKey].push(value);
                                     } else {
-                                        pushValues[pushKey] = [pushValues[pushKey] , value];
+                                        pushValues[pushKey] = [pushValues[pushKey], value];
                                     }
                                     if (pushKey.indexOf('[]')===-1) {
                                         value = pushValues[pushKey];
@@ -474,7 +474,7 @@
                             if (hasOtherData) {
                                 module.debug('Extending existing data with form data', data, formData);
                                 if (useFormDataApi) {
-                                    $.each(Object.keys(data),function(i, el){
+                                    $.each(Object.keys(data), function(i, el){
                                         formData.append(el, data[el]);
                                     });
                                     data = formData;

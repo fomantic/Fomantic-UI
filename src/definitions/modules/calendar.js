@@ -42,7 +42,7 @@
                 '20': {'row': 3, 'column': 1 },
                 '30': {'row': 2, 'column': 1 },
             },
-            numberText = ['','one','two','three','four','five','six','seven','eight']
+            numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
         ;
 
         $allModules
@@ -140,7 +140,7 @@
                             if (!$container.length) {
                                 if (settings.context) {
                                     module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
-                                    $container = $('<div/>',{id: module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
+                                    $container = $('<div/>', {id: module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
                                 } else {
                                     //prepend the popup element to the activator's parent so that it has less chance of messing with
                                     //the styling (eg input action button needs to be the last child to have correct border radius)
@@ -368,7 +368,7 @@
                                     row = $('<tr/>').appendTo(tbody);
                                     if (isDay && settings.showWeekNumbers){
                                         cell = $('<th/>').appendTo(row);
-                                        cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
+                                        cell.text(module.get.weekOfYear(year, month, i+1-settings.firstDayOfWeek));
                                         cell.addClass(className.weekCell);
                                     }
                                     for (c = 0; c < textColumns; c++, i++) {
@@ -377,7 +377,7 @@
                                                 isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
                                         var cellText = isYear ? i :
                                             isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
-                                                module.helper.dateFormat(formatter.cellTime,cellDate);
+                                                module.helper.dateFormat(formatter.cellTime, cellDate);
                                         cell = $('<td/>').addClass(className.cell).appendTo(row);
                                         cell.text(cellText);
                                         cell.data(metadata.date, cellDate);
@@ -509,12 +509,12 @@
                         var winWidth = $(window).width();
                         $container.find('td[data-position]').each(function () {
                             var $cell = $(this);
-                            var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^0-9\.]/g,'');
+                            var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^0-9\.]/g, '');
                             var tooltipPosition = $cell.attr('data-position');
                             // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
-                            var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth,10) || 250)) > $cell.offset().left ? 'right' : 'left';
+                            var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
                             if (tooltipPosition.indexOf(calcPosition) === -1) {
-                                $cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
+                                $cell.attr('data-position', tooltipPosition.replace(/(left|right)/, calcPosition));
                             }
                         });
                     },
@@ -711,12 +711,12 @@
 
                     check: {
                         disabled: function(){
-                            $input.attr('tabindex',module.is.disabled() ? -1 : 0);
+                            $input.attr('tabindex', module.is.disabled() ? -1 : 0);
                         },
                     },
 
                     get: {
-                        weekOfYear: function(weekYear,weekMonth,weekDay) {
+                        weekOfYear: function(weekYear, weekMonth, weekDay) {
                             // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
                             var ms1d = 864e5, // milliseconds in a day
                                 ms7d = 7 * ms1d; // milliseconds in a week
@@ -824,7 +824,7 @@
                             date = module.helper.dateInRange(date);
 
                             var mode = module.get.mode();
-                            var text = module.helper.dateFormat(formatter[settings.type],date);
+                            var text = module.helper.dateFormat(formatter[settings.type], date);
 
                             if (fireChange && settings.onBeforeChange.call(element, date, text, mode) === false) {
                                 return false;
@@ -995,7 +995,7 @@
                     },
 
                     helper: {
-                        dateFormat: function(format,date) {
+                        dateFormat: function(format, date) {
                             if (!(date instanceof Date)) {
                                 return '';
                             }
@@ -1011,7 +1011,7 @@
                                 H = date.getHours(),
                                 m = date.getMinutes(),
                                 s = date.getSeconds(),
-                                w = module.get.weekOfYear(Y,M,D+1-settings.firstDayOfWeek),
+                                w = module.get.weekOfYear(Y, M, D+1-settings.firstDayOfWeek),
                                 h = H % 12 || 12,
                                 a = H < 12 ? settings.text.am.toLowerCase() : settings.text.pm.toLowerCase(),
                                 tokens = {
@@ -1025,7 +1025,7 @@
                                     YY: String(Y).slice(2),
                                     YYYY: Y,
                                     d: d,
-                                    dd: settings.text.dayNamesShort[d].slice(0,2),
+                                    dd: settings.text.dayNamesShort[d].slice(0, 2),
                                     ddd: settings.text.dayNamesShort[d],
                                     dddd: settings.text.dayNames[d],
                                     h: h,
@@ -1210,7 +1210,7 @@
                                     if (typeof d === 'number' && date.getHours() == d) {
                                         return null;
                                     } else if (d !== null && typeof d === 'object') {
-                                        if (d[metadata.days] && hourCheck(date,d)) {
+                                        if (d[metadata.days] && hourCheck(date, d)) {
                                             if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
                                                 return d;
                                             } else if (Array.isArray(d[metadata.days])) {
@@ -1218,7 +1218,7 @@
                                                     return d;
                                                 }
                                             }
-                                        } else if (d[metadata.date] && hourCheck(date,d)) {
+                                        } else if (d[metadata.date] && hourCheck(date, d)) {
                                             if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                                                 return d;
                                             } else if (Array.isArray(d[metadata.date])) {
@@ -1228,7 +1228,7 @@
                                                     return d;
                                                 }
                                             }
-                                        } else if (hourCheck(date,d)) {
+                                        } else if (hourCheck(date, d)) {
                                             return d;
                                         }
                                     }
@@ -1568,15 +1568,15 @@
                 if (!text) {
                     return null;
                 }
-                text = String(text).trim().replace(/([.:\/\-])\s+/g,'$1').replace(/\s+([.:\/-])/g,'$1').replace(/\s+/g,' ');
+                text = String(text).trim().replace(/([.:\/\-])\s+/g, '$1').replace(/\s+([.:\/-])/g, '$1').replace(/\s+/g, ' ');
                 if (text.length === 0) {
                     return null;
                 }
                 if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
-                    text = text.replace(/[\/\-\.]/g,'/') + ' 00:00:00';
+                    text = text.replace(/[\/\-\.]/g, '/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
-                text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
+                text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g, '/').replace(/([0-9]+)\/([0-9]+)/, '$2/$1');
                 var textDate = new Date(text);
                 var numberOnly = text.match(/^[0-9]+$/) !== null;
                 if (!numberOnly && !isNaN(textDate.getDate())) {

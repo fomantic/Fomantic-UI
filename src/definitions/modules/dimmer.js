@@ -391,7 +391,7 @@
                             ;
                             opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                             if (isRGB) {
-                                colorArray[2] = colorArray[2].replace(')','');
+                                colorArray[2] = colorArray[2].replace(')', '');
                                 colorArray[3] = opacity + ')';
                                 color         = colorArray.join(',');
                             } else {
@@ -694,7 +694,7 @@
 
         template: {
             dimmer: function(settings) {
-                var d = $('<div/>').addClass('ui dimmer'),l;
+                var d = $('<div/>').addClass('ui dimmer'), l;
                 if (settings.displayLoader) {
                     l = $('<div/>')
                         .addClass(settings.className.loader)

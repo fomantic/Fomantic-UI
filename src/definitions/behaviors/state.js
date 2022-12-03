@@ -72,7 +72,7 @@
 
                         // bind events with delegated events
                         if (settings.context && moduleSelector !== '') {
-                            ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
+                            ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
                                 .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state);

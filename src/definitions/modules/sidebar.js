@@ -66,7 +66,7 @@
                     moduleNamespace = 'module-' + namespace,
 
                     $module         = $(this),
-                    $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                    $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
                     isBody          = $context[0] === $body[0],
 
                     $sidebars       = $module.children(selector.sidebar),
@@ -290,7 +290,7 @@
 
                     refresh: function() {
                         module.verbose('Refreshing selector cache');
-                        $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                        $context  = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                         module.refreshSidebars();
                         $pusher   = $context.children(selector.pusher);
                         $fixed    = $context.children(selector.fixed);
@@ -577,7 +577,7 @@
                         bodyMargin: function() {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -687,7 +687,7 @@
                         bodyMargin: function() {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position

@@ -497,7 +497,7 @@
 
         templates: {
             deQuote: function(string, encode) {
-                return String(string).replace(/"/g,encode ? '&quot;' : '');
+                return String(string).replace(/"/g, encode ? '&quot;' : '');
             },
             icon: function(maxRating, iconClass) {
                 var

@@ -99,7 +99,7 @@ function buildJS(src, type, config, callback) {
     }
 
     if (globs.individuals !== undefined && typeof src === 'string') {
-        const components = config.globs.components.replace(/[{}]/g,'') + ',' + config.globs.individuals.replace(/[{}]/g,'');
+        const components = config.globs.components.replace(/[{}]/g, '') + ',' + config.globs.individuals.replace(/[{}]/g, '');
 
         src = config.paths.source.definitions + '/**/{' + components + '}' + (config.globs.ignored || '') + '.js';
     }

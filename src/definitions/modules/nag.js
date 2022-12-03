@@ -51,7 +51,7 @@
                     $module         = $(this),
 
                     $context        = (settings.context)
-                        ? ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
+                        ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                         : $('body'),
 
                     element         = this,
@@ -199,7 +199,7 @@
                                         }
                                     },
                                     removeItem: function(key, options) {
-                                        storage.setItem(key,'',options);
+                                        storage.setItem(key, '', options);
                                     },
                                 };
                             } else {

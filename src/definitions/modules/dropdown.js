@@ -59,7 +59,7 @@
                     moduleNamespace = 'module-' + namespace,
 
                     $module         = $(this),
-                    $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
+                    $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
                     $text           = $module.find(selector.text),
                     $search         = $module.find(selector.search),
                     $sizer          = $module.find(selector.sizer),
@@ -283,7 +283,7 @@
                         } else if (module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
                             module.filter(query);
                         } else {
-                            module.hide(null,true);
+                            module.hide(null, true);
                         }
                     },
 
@@ -410,7 +410,7 @@
                                     $input.removeAttr('tabindex');
                                 }
                                 $input
-                                    .prop('required',false)
+                                    .prop('required', false)
                                     .removeAttr('class')
                                     .detach()
                                     .prependTo($module);
@@ -418,7 +418,7 @@
                             module.refresh();
                         },
                         menu: function(values) {
-                            $menu.html(templates.menu(values, fields,settings.preserveHTML,settings.className));
+                            $menu.html(templates.menu(values, fields, settings.preserveHTML, settings.className));
                             $item    = $menu.find(selector.item);
                             $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
                         },
@@ -741,7 +741,7 @@
                                         preSelected = preSelected && preSelected!=='' ? preSelected.split(settings.delimiter) : [];
                                     }
                                     if (module.is.multiple()) {
-                                        $.each(preSelected,function(index,value){
+                                        $.each(preSelected, function(index, value){
                                             $item.filter('[data-value="'+value+'"]')
                                                 .addClass(className.filtered);
                                         });
@@ -2099,7 +2099,7 @@
                             return true;
                         },
                         disabled: function(){
-                            $search.attr('tabindex',module.is.disabled() ? -1 : 0);
+                            $search.attr('tabindex', module.is.disabled() ? -1 : 0);
                         },
                     },
 
@@ -3989,7 +3989,7 @@
     /* Templates */
     $.fn.dropdown.settings.templates = {
         deQuote: function(string, encode) {
-            return String(string).replace(/"/g,encode ? '&quot;' : '');
+            return String(string).replace(/"/g, encode ? '&quot;' : '');
         },
         escape: function(string, preserveHTML) {
             if (preserveHTML){
@@ -4025,12 +4025,12 @@
             ;
             html +=  '<i class="dropdown icon"></i>';
             if (placeholder) {
-                html += '<div class="default text">' + escape(placeholder,preserveHTML) + '</div>';
+                html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
             } else {
                 html += '<div class="text"></div>';
             }
             html += '<div class="'+deQuote(className.menu)+'">';
-            html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML,className);
+            html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
             return html;
         },
@@ -4054,7 +4054,7 @@
                 if (itemType === 'item' || isMenu) {
                     var
                         maybeText = (option[fields.text])
-                            ? ' data-text="' + deQuote(option[fields.text],true) + '"'
+                            ? ' data-text="' + deQuote(option[fields.text], true) + '"'
                             : '',
                         maybeActionable = (option[fields.actionable])
                             ? className.actionable+' '
@@ -4067,7 +4067,7 @@
                             : '',
                         hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
                     ;
-                    html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
+                    html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {
                         html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
@@ -4121,7 +4121,7 @@
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
-            return escape(text,preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
+            return escape(text, preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
         },
 
 

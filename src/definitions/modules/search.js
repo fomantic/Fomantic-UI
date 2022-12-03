@@ -1398,14 +1398,14 @@
                             html += '<div class="results">';
                             $.each(category.results, function(index, result) {
                                 if (result[fields.url]) {
-                                    html  += '<a class="result" href="' + result[fields.url].replace(/"/g,'') + '">';
+                                    html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                                 } else {
                                     html  += '<a class="result">';
                                 }
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
-                                        + ' <img src="' + result[fields.image].replace(/"/g,'') + '">'
+                                        + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
                                         + '</div>';
                                 }
                                 html += '<div class="content">';
@@ -1435,7 +1435,7 @@
                                 + '</div>';
                         } else {
                             html += ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,'') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 +   escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
                         }
@@ -1453,14 +1453,14 @@
                     // each result
                     $.each(response[fields.results], function(index, result) {
                         if (result[fields.url]) {
-                            html  += '<a class="result" href="' + result[fields.url].replace(/"/g,'') + '">';
+                            html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                         } else {
                             html  += '<a class="result">';
                         }
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
-                                + ' <img src="' + result[fields.image].replace(/"/g,'') + '">'
+                                + ' <img src="' + result[fields.image].replace(/"/g, '') + '">'
                                 + '</div>';
                         }
                         html += '<div class="content">';
@@ -1485,7 +1485,7 @@
                                 + '</div>';
                         } else {
                             html += ''
-                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g,'') + '" class="action">'
+                                + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 +   escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
                         }

@@ -65,7 +65,7 @@
                     moduleNamespace = 'module-' + namespace,
 
                     $module         = $(this),
-                    $context        = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                    $context        = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
                     isBody          = $context[0] === $body[0],
                     $closeIcon      = $module.find(selector.closeIcon),
                     $inputs,
@@ -131,7 +131,7 @@
                                 ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
-                                    'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
+                                    'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
                                     class: className.button + ' ' + cls,
                                     on: {
                                         click: function () {
@@ -675,7 +675,7 @@
                             module.debug('Hiding all visible modals');
                             var hideOk = true;
                             //check in reverse order trying to hide most top displayed modal first
-                            $($visibleModals.get().reverse()).each(function(index,element){
+                            $($visibleModals.get().reverse()).each(function(index, element){
                                 if (hideOk){
                                     hideOk = $(element).modal('hide modal', callback, false, true);
                                 }
@@ -748,7 +748,7 @@
                         bodyMargin: function() {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -828,7 +828,7 @@
                     },
                     helpers: {
                         deQuote: function(string) {
-                            return String(string).replace(/"/g,'');
+                            return String(string).replace(/"/g, '');
                         },
                         escape: function(string, preserveHTML) {
                             if (preserveHTML){
@@ -968,7 +968,7 @@
                             if (settings.detachable || module.can.fit()) {
                                 $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
                             }
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -1237,7 +1237,7 @@
                         if (isFunction(settings.templates[query])) {
                             settings.autoShow = true;
                             settings.className.modal = settings.className.template;
-                            settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
+                            settings = $.extend(true, {}, settings, settings.templates[query].apply(module, queryArguments));
 
                             // reassign shortcuts
                             className = settings.className;
@@ -1462,7 +1462,7 @@
                     text: settings.text.ok,
                     class: settings.className.ok,
                     click: approveFn,
-                },{
+                }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
                     click: denyFn,
@@ -1498,7 +1498,7 @@
                     text: settings.text.ok,
                     class: settings.className.ok,
                     click: approveFn,
-                },{
+                }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
                     click: denyFn,

@@ -288,7 +288,7 @@
                     },
 
                     flip: {
-                        to: function(type,stage){
+                        to: function(type, stage){
                             if (module.is.hidden()) {
                                 module.debug('Module not visible', $nextSide);
                                 return;
@@ -311,27 +311,27 @@
                         },
 
                         up: function() {
-                            module.flip.to('up','above');
+                            module.flip.to('up', 'above');
                         },
 
                         down: function() {
-                            module.flip.to('down','below');
+                            module.flip.to('down', 'below');
                         },
 
                         left: function() {
-                            module.flip.to('left','left');
+                            module.flip.to('left', 'left');
                         },
 
                         right: function() {
-                            module.flip.to('right','right');
+                            module.flip.to('right', 'right');
                         },
 
                         over: function() {
-                            module.flip.to('over','behind');
+                            module.flip.to('over', 'behind');
                         },
 
                         back: function() {
-                            module.flip.to('back','behind');
+                            module.flip.to('back', 'behind');
                         },
 
                     },

@@ -270,7 +270,7 @@
                                     ? module.get.displayPercent(index_)
                                     : module.get.percent(index_),
                                 left = (total !== false)
-                                    ? Math.max(0,total - value)
+                                    ? Math.max(0, total - value)
                                     : (100 - percent)
                             ;
                             templateText = templateText || '';

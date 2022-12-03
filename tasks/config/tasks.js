@@ -18,7 +18,7 @@ var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
 ];
 
 // Node 12 does not support ??, so a little polyfill
-var nullish = (value,fallback) => {
+var nullish = (value, fallback) => {
     return value !== undefined && value !== null ? value : fallback;
 };
 
@@ -97,7 +97,7 @@ module.exports = {
 
         /* Comment Banners */
         header: {
-            year: nullish(config.header.year,(new Date()).getFullYear()),
+            year: nullish(config.header.year, (new Date()).getFullYear()),
             title: nullish(config.header.title, release.title),
             version: nullish(config.header.version, release.version),
             repository: nullish(config.header.repository, release.repository),

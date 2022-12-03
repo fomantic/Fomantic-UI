@@ -68,7 +68,7 @@
                     moduleNamespace      = 'module-' + namespace,
 
                     $module              = $(this),
-                    $context             = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
+                    $context             = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body,
                     $closeIcon           = $module.find(selector.close),
                     $inputs,
                     $focusedElement,
@@ -138,7 +138,7 @@
                                 ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
-                                    'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
+                                    'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
                                     class: className.button + ' ' + cls,
                                     on: {
                                         click: function () {
@@ -484,7 +484,7 @@
                     },
                     refresh: function() {
                         module.verbose('Refreshing selector cache');
-                        $context  = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                        $context  = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                         module.refreshFlyouts();
                         $pusher   = $context.children(selector.pusher);
                         module.clear.cache();
@@ -792,7 +792,7 @@
                         bodyMargin: function() {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -1051,7 +1051,7 @@
                         bodyMargin: function() {
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
-                            $context.find(selector.bodyFixed.replace('right',position)).each(function(){
+                            $context.find(selector.bodyFixed.replace('right', position)).each(function(){
                                 var
                                     el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
@@ -1063,7 +1063,7 @@
 
                     helpers: {
                         deQuote: function(string) {
-                            return String(string).replace(/"/g,'');
+                            return String(string).replace(/"/g, '');
                         },
                         escape: function(string, preserveHTML) {
                             if (preserveHTML){
@@ -1244,7 +1244,7 @@
                         if (isFunction(settings.templates[query])) {
                             settings.autoShow = true;
                             settings.className.flyout = settings.className.template;
-                            settings = $.extend(true, {}, settings, settings.templates[query].apply(module ,queryArguments));
+                            settings = $.extend(true, {}, settings, settings.templates[query].apply(module, queryArguments));
 
                             // reassign shortcuts
                             className = settings.className;
@@ -1443,7 +1443,7 @@
                     click: function(){
                         args.handler(true);
                     },
-                },{
+                }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
                     click: function(){
@@ -1475,7 +1475,7 @@
                         ;
                         args.handler($(inputField).val());
                     },
-                },{
+                }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
                     click: function(){

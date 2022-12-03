@@ -425,7 +425,7 @@
                                     module.debug('Revalidating field', $field, validationRules);
                                     module.validate.field(validationRules);
                                     if (!settings.inline) {
-                                        module.validate.form(false,true);
+                                        module.validate.form(false, true);
                                     }
                                 }
                             },
@@ -441,7 +441,7 @@
                                         module.debug('Revalidating field', $field, validationRules);
                                         module.validate.field(validationRules);
                                         if (!settings.inline) {
-                                            module.validate.form(false,true);
+                                            module.validate.form(false, true);
                                         }
                                     }, settings.delay);
                                 }
@@ -533,8 +533,8 @@
                                 parts = ancillary.split('..', 2);
                                 if (!rule.prompt) {
                                     suffixPrompt = (
-                                        parts[0] === '' ? settings.prompt.maxValue.replace(/\{ruleValue\}/g,'{max}') :
-                                            parts[1] === '' ? settings.prompt.minValue.replace(/\{ruleValue\}/g,'{min}') :
+                                        parts[0] === '' ? settings.prompt.maxValue.replace(/\{ruleValue\}/g, '{max}') :
+                                            parts[1] === '' ? settings.prompt.minValue.replace(/\{ruleValue\}/g, '{min}') :
                                                 settings.prompt.range
                                     );
                                     prompt += suffixPrompt.replace(/\{name\}/g, ' ' + settings.text.and);
@@ -620,7 +620,7 @@
                             if ((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0) {
                                 return t;
                             }
-                            module.error(error.noField.replace('{identifier}',identifier));
+                            module.error(error.noField.replace('{identifier}', identifier));
                             return $('<input/>');
                         },
                         fields: function(fields) {
@@ -787,7 +787,7 @@
                             if ($.fn[element] !== undefined) {
                                 return true;
                             }
-                            module.error(error.noElement.replace('{element}',element));
+                            module.error(error.noElement.replace('{element}', element));
                             return false;
                         },
                     },
@@ -1054,7 +1054,7 @@
                                         module.verbose('Setting dropdown value', value, $element);
                                         $element.dropdown('set selected', value);
                                     } else if (isCalendar) {
-                                        $calendar.calendar('set date',value);
+                                        $calendar.calendar('set date', value);
                                     } else {
                                         module.verbose('Setting field value', value, $field);
                                         $field.val(value);
@@ -1167,7 +1167,7 @@
                                         hasTabIndex = $focusElement.is('[tabindex]');
                                         // to be able to focus/scroll into non input elements we need a tabindex
                                         if (!hasTabIndex) {
-                                            $focusElement.attr('tabindex',-1);
+                                            $focusElement.attr('tabindex', -1);
                                         }
                                     } else {
                                         $focusElement = $group.filter('.' + className.error).first().find(selector.field);
@@ -1220,7 +1220,7 @@
                                 }
                                 $.each(field.rules, function(index, rule) {
                                     if (module.has.field(identifier)) {
-                                        var invalidFields = module.validate.rule(field, rule,true) || [];
+                                        var invalidFields = module.validate.rule(field, rule, true) || [];
                                         if (invalidFields.length>0){
                                             module.debug('Field is invalid', identifier, rule.type);
                                             fieldErrors.push(module.get.prompt(rule, field));

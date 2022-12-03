@@ -59,7 +59,7 @@
                     $animationObject,
                     $close,
                     $context         = (settings.context)
-                        ? ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
+                        ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                         : $('body'),
 
                     isToastComponent = $module.hasClass('toast') || $module.hasClass('message') || $module.hasClass('card'),
@@ -79,7 +79,7 @@
                             module.create.container();
                         }
                         if (isToastComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
-                            if (typeof settings.showProgress !== 'string' || [className.top,className.bottom].indexOf(settings.showProgress) === -1) {
+                            if (typeof settings.showProgress !== 'string' || [className.top, className.bottom].indexOf(settings.showProgress) === -1) {
                                 settings.showProgress = false;
                             }
                             module.create.toast();
@@ -146,7 +146,7 @@
                     create: {
                         container: function() {
                             module.verbose('Creating container');
-                            $context.append($('<div/>',{class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
+                            $context.append($('<div/>', {class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
                         },
                         id: function() {
                             id = (Math.random().toString(16) + '000000000').slice(2, 10);
@@ -203,10 +203,10 @@
                                 $close = $toast.find('> i'+module.helpers.toClass(className.close));
                                 settings.closeIcon = ($close.length > 0);
                                 if (iconClass !== '') {
-                                    $toast.find(selector.icon).attr('class',iconClass + ' ' + className.icon);
+                                    $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
                                 }
                                 if (settings.showImage) {
-                                    $toast.find(selector.image).attr('src',settings.showImage);
+                                    $toast.find(selector.image).attr('src', settings.showImage);
                                 }
                                 if (settings.title !== '') {
                                     $toast.find(selector.title).html(module.helpers.escape(settings.title, settings.preserveHTML));
@@ -242,7 +242,7 @@
                                     ;
                                     $actions.append($('<button/>', {
                                         html: icon + text,
-                                        'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
+                                        'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g, ''),
                                         class: className.button + ' ' + cls,
                                         on: {
                                             click: function () {
@@ -283,7 +283,7 @@
                                     }
                                 } else {
                                     $toast.wrap(
-                                        $('<div/>',{
+                                        $('<div/>', {
                                             class: className.vertical + ' ' +
                           className.attached + ' ' +
                           (settings.compact ? className.compact : ''),
@@ -325,7 +325,7 @@
                                     }
                                     $progressBar.css('animation-duration', settings.displayTime / 1000 + 's');
                                 }
-                                $animationObject = $('<span/>',{class: 'wait '+progressingClass});
+                                $animationObject = $('<span/>', {class: 'wait '+progressingClass});
                                 $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
                                 $animationObject.appendTo($toast);
                             }
@@ -435,13 +435,13 @@
                             }
                         },
                         pause: function() {
-                            $animationObject.css('animationPlayState','paused');
+                            $animationObject.css('animationPlayState', 'paused');
                             if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'paused');
                             }
                         },
                         continue: function() {
-                            $animationObject.css('animationPlayState','running');
+                            $animationObject.css('animationPlayState', 'running');
                             if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'running');
                             }
@@ -546,7 +546,7 @@
                             return result;
                         },
                         deQuote: function(string) {
-                            return String(string).replace(/"/g,'');
+                            return String(string).replace(/"/g, '');
                         },
                         escape: function(string, preserveHTML) {
                             if (preserveHTML){
@@ -579,7 +579,7 @@
                             if ($.fn[element] !== undefined) {
                                 return true;
                             }
-                            module.error(error.noElement.replace('{element}',element));
+                            module.error(error.noElement.replace('{element}', element));
                             return false;
                         },
                     },
