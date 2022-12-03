@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.popup = function(parameters) {
         var
@@ -106,7 +105,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
-                        
                     },
 
                     observeChanges: function() {
@@ -139,7 +137,6 @@
                                 $popup
                                     .detach()
                                     .appendTo($offsetParent);
-                                
                             }
                         }
                         else {
@@ -148,7 +145,6 @@
                                 : module.has.popup()
                                     ? module.get.offsetParent($popup)
                                     : $body;
-                            
                         }
                         if( $offsetParent.is('html') && $offsetParent[0] !== $body[0] ) {
                             module.debug('Setting page as offset parent');
@@ -181,7 +177,6 @@
                         module.unbind.events();
                         $module
                             .removeData(moduleNamespace);
-                        
                     },
 
                     event: {
@@ -265,18 +260,15 @@
                                 .addClass(className.popup)
                                 .data(metadata.activator, $module)
                                 .html(html);
-                            
                             if(settings.inline) {
                                 module.verbose('Inserting popup element inline', $popup);
                                 $popup
                                     .insertAfter($module);
-                                
                             }
                             else {
                                 module.verbose('Appending popup element to body', $popup);
                                 $popup
                                     .appendTo( $context );
-                                
                             }
                             module.refresh();
                             module.set.variation();
@@ -374,9 +366,7 @@
                                 $(this)
                                     .data(metadata.activator)
                                     .popup('hide');
-                                
                             });
-                        
                     },
                     exists: function() {
                         if(!$popup) {
@@ -389,7 +379,6 @@
                             return ( $popup.closest($context).length >= 1 )
                                 ? true
                                 : false;
-                            
                         }
                     },
 
@@ -446,7 +435,6 @@
                                             settings.onVisible.call($popup, element);
                                         },
                                     });
-                                
                             }
                             else {
                                 module.error(error.noTransition);
@@ -470,7 +458,6 @@
                                             settings.onHidden.call($popup, element);
                                         },
                                     });
-                                
                             }
                             else {
                                 module.error(error.noTransition);
@@ -562,7 +549,6 @@
                             if($popupOffsetParent[0] !== $offsetParent[0]) {
                                 var
                                     popupOffset        = $popupOffsetParent.offset();
-              
                                 calculations.target.top -= popupOffset.top;
                                 calculations.target.left -= popupOffset.left;
                                 calculations.parent.width = $popupOffsetParent.outerWidth();
@@ -581,13 +567,11 @@
                             calculations.target.margin.top = (settings.inline)
                                 ? parseInt( window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                                 : 0;
-                            
                             calculations.target.margin.left = (settings.inline)
                                 ? module.is.rtl()
                                     ? parseInt( window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
                                     : parseInt( window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10)
                                 : 0;
-                            
                             // calculate screen boundaries
                             screen = calculations.screen;
                             calculations.boundary = {
@@ -670,7 +654,6 @@
                             return ($node && $node.length > 0)
                                 ? $node
                                 : $();
-                            
                         },
                         positions: function() {
                             return {
@@ -813,7 +796,6 @@
                                     return (match == 'left')
                                         ? 'right'
                                         : 'left';
-                                    
                                 });
                                 module.debug('RTL: Popup position updated', position);
                             }
@@ -901,7 +883,6 @@
                                 .removeClass(className.position)
                                 .addClass(position)
                                 .addClass(className.loading);
-                            
 
                             popupOffset = module.get.popupOffset();
 
@@ -917,7 +898,6 @@
                                     return ($popup)
                                         ? module.set.position(position, calculations)
                                         : false;
-                                    
                                 }
                                 else {
                                     if(settings.lastResort) {
@@ -989,18 +969,15 @@
                             if(settings.on == 'click') {
                                 $module
                                     .on(clickEvent + eventNamespace, module.toggle);
-                                
                             }
                             if(settings.on == 'hover') {
                                 $module
                                     .on('touchstart' + eventNamespace, module.event.touchstart);
-                                
                             }
                             if( module.get.startEvent() ) {
                                 $module
                                     .on(module.get.startEvent() + eventNamespace, module.event.start)
                                     .on(module.get.endEvent() + eventNamespace, module.event.end);
-                                
                             }
                             if(settings.target) {
                                 module.debug('Target set to element', $target);
@@ -1013,7 +990,6 @@
                                 $popup
                                     .on('mouseenter' + eventNamespace, module.event.start)
                                     .on('mouseleave' + eventNamespace, module.event.end);
-                                
                             }
                         },
                         close: function() {
@@ -1031,7 +1007,6 @@
                             module.verbose('Binding scroll close event to document');
                             $scrollContext
                                 .one(module.get.scrollEvent() + elementNamespace, module.event.hideGracefully);
-                            
                         },
                         touchClose: function() {
                             module.verbose('Binding popup touchclose event to document');
@@ -1040,7 +1015,6 @@
                                     module.verbose('Touched away from popup');
                                     module.event.hideGracefully.call(element, event);
                                 });
-                            
                         },
                         clickaway: function() {
                             module.verbose('Binding popup close event to document');
@@ -1049,7 +1023,6 @@
                                     module.verbose('Clicked away from popup');
                                     module.event.hideGracefully.call(element, event);
                                 });
-                            
                         },
                     },
 
@@ -1057,18 +1030,14 @@
                         events: function() {
                             $window
                                 .off(elementNamespace);
-                            
                             $module
                                 .off(eventNamespace);
-                            
                         },
                         close: function() {
                             $document
                                 .off(elementNamespace);
-                            
                             $scrollContext
                                 .off(elementNamespace);
-                            
                         },
                     },
 
@@ -1094,7 +1063,6 @@
                         offstage: function(distanceFromBoundary, position) {
                             var
                                 offstage = [];
-            
                             // return boundaries that have been surpassed
                             $.each(distanceFromBoundary, function(direction, distance) {
                                 if(distance < -settings.jitter) {
@@ -1139,7 +1107,6 @@
                             if($.fn.transition !== undefined) {
                                 $popup
                                     .transition('remove transition');
-                                
                             }
                         }
                         else {
@@ -1264,7 +1231,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1316,12 +1282,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.popup.settings = {
@@ -1503,7 +1467,6 @@
                     escapedChar  = function(chr) {
                         return escape[chr];
                     };
-      
                 if(shouldEscape.test(string)) {
                     string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                     return string.replace(badChars, escapedChar);

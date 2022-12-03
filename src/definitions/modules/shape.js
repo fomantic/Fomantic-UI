@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.shape = function(parameters) {
         var
@@ -41,7 +40,6 @@
       || function(callback) { setTimeout(callback, 0); },
 
             returnedValue;
-  
 
         $allModules
             .each(function() {
@@ -90,7 +88,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
-                        
                     },
 
                     destroy: function() {
@@ -98,7 +95,6 @@
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -131,19 +127,15 @@
                             module.verbose('Starting CSS animation');
                             $module
                                 .addClass(className.animating);
-                            
                             $sides
                                 .css(propertyObject)
                                 .one(module.get.transitionEvent(), callback);
-                            
                             module.set.duration(settings.duration);
                             requestAnimationFrame(function() {
                                 $module
                                     .addClass(className.animating);
-                                
                                 $activeSide
                                     .addClass(className.hidden);
-                                
                             });
                         }
                         else {
@@ -160,7 +152,6 @@
                                     $module.shape(method);
                                 }, 0);
                             });
-                        
                     },
 
                     reset: function() {
@@ -169,22 +160,18 @@
                             .removeClass(className.animating)
                             .attr('style', '')
                             .removeAttr('style');
-                        
                         // removeAttr style does not consistently work in safari
                         $sides
                             .attr('style', '')
                             .removeAttr('style');
-                        
                         $side
                             .attr('style', '')
                             .removeAttr('style')
                             .removeClass(className.hidden);
-                        
                         $nextSide
                             .removeClass(className.animating)
                             .attr('style', '')
                             .removeAttr('style');
-                        
                     },
 
                     is: {
@@ -206,7 +193,6 @@
                             $nextSide   = ( $activeSide.next(selector.side).length > 0 )
                                 ? $activeSide.next(selector.side)
                                 : $side.first();
-                            
                             nextIndex = false;
                             module.verbose('Active side set to', $activeSide);
                             module.verbose('Next side set to', $nextSide);
@@ -217,7 +203,6 @@
                             duration = (typeof duration == 'number')
                                 ? duration + 'ms'
                                 : duration;
-                            
                             module.verbose('Setting animation duration', duration);
                             if(settings.duration || settings.duration === 0) {
                                 $sides.add($side)
@@ -228,7 +213,6 @@
                                         '-o-transition-duration': duration,
                                         'transition-duration': duration,
                                     });
-                                
                             }
                         },
 
@@ -243,7 +227,6 @@
                                     width: width,
                                     height: height,
                                 });
-                            
                         },
 
                         stageSize: function() {
@@ -296,10 +279,8 @@
                             module.verbose('Setting new side to active', $nextSide);
                             $side
                                 .removeClass(className.active);
-                            
                             $nextSide
                                 .addClass(className.active);
-                            
                             settings.onChange.call($nextSide[0]);
                             module.set.defaultSide();
                         },
@@ -317,7 +298,6 @@
                             }
                             var
                                 transform = module.get.transform[type]();
-            
                             if( !module.is.animating()) {
                                 module.debug('Flipping '+type, $nextSide);
                                 module.set.stageSize();
@@ -445,7 +425,6 @@
                             return ( $activeSide.next(selector.side).length > 0 )
                                 ? $activeSide.next(selector.side)
                                 : $side.first();
-                            
                         },
 
                     },
@@ -467,14 +446,12 @@
                                 .css({
                                     'transform': 'rotateX(0deg)',
                                 });
-                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'top': box.origin + 'px',
                                     'transform': 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
                                 });
-                            
                         },
 
                         below: function() {
@@ -492,14 +469,12 @@
                                 .css({
                                     'transform': 'rotateX(0deg)',
                                 });
-                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'top': box.origin + 'px',
                                     'transform': 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
                                 });
-                            
                         },
 
                         left: function() {
@@ -521,14 +496,12 @@
                                 .css({
                                     'transform': 'rotateY(0deg)',
                                 });
-                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
                                 });
-                            
                         },
 
                         right: function() {
@@ -550,14 +523,12 @@
                                 .css({
                                     'transform': 'rotateY(0deg)',
                                 });
-                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
                                 });
-                            
                         },
 
                         behind: function() {
@@ -579,14 +550,12 @@
                                 .css({
                                     'transform': 'rotateY(0deg)',
                                 });
-                            
                             $nextSide
                                 .addClass(className.animating)
                                 .css({
                                     'left': box.origin + 'px',
                                     'transform': 'rotateY(-180deg)',
                                 });
-                            
                         },
                     },
                     setting: function(name, value) {
@@ -715,7 +684,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -775,12 +743,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.shape.settings = {

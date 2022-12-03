@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.accordion = function(parameters) {
         var
@@ -77,7 +76,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -85,7 +83,6 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -112,7 +109,6 @@
                             module.debug('Binding delegated events');
                             $module
                                 .on(settings.on + eventNamespace, selector.trigger, module.event.click);
-                            
                         },
                     },
 
@@ -175,11 +171,9 @@
                         }
                         $activeTitle
                             .addClass(className.active);
-                        
                         $activeContent
                             .stop(true, true)
                             .addClass(className.animating);
-                        
                         if(settings.animateChildren) {
                             if($.fn.transition !== undefined && $module.transition('is supported')) {
                                 $activeContent
@@ -197,7 +191,6 @@
                                             $activeContent.children().removeClass(className.transition);
                                         },
                                     });
-                                
                             }
                             else {
                                 $activeContent
@@ -206,7 +199,6 @@
                                     .animate({
                                         opacity: 1,
                                     }, settings.duration, module.resetOpacity);
-                                
                             }
                         }
                         $activeContent
@@ -214,12 +206,10 @@
                                 $activeContent
                                     .removeClass(className.animating)
                                     .addClass(className.active);
-                                
                                 module.reset.display.call(this);
                                 settings.onOpen.call(this);
                                 settings.onChange.call(this);
                             });
-                        
                     },
 
                     close: function(query) {
@@ -241,11 +231,9 @@
                             settings.onChanging.call($activeContent);
                             $activeTitle
                                 .removeClass(className.active);
-                            
                             $activeContent
                                 .stop(true, true)
                                 .addClass(className.animating);
-                            
                             if(settings.animateChildren) {
                                 if($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $activeContent
@@ -260,7 +248,6 @@
                                             duration: settings.duration,
                                             skipInlineHidden: true,
                                         });
-                                    
                                 }
                                 else {
                                     $activeContent
@@ -269,7 +256,6 @@
                                         .animate({
                                             opacity: 0,
                                         }, settings.duration, module.resetOpacity);
-                                    
                                 }
                             }
                             $activeContent
@@ -277,12 +263,10 @@
                                     $activeContent
                                         .removeClass(className.animating)
                                         .removeClass(className.active);
-                                    
                                     module.reset.display.call(this);
                                     settings.onClose.call(this);
                                     settings.onChange.call(this);
                                 });
-                            
                         }
                     },
 
@@ -313,11 +297,9 @@
                             module.debug('Exclusive enabled, closing other content', $openTitles);
                             $openTitles
                                 .removeClass(className.active);
-                            
                             $openContents
                                 .removeClass(className.animating)
                                 .stop(true, true);
-                            
                             if(settings.animateChildren) {
                                 if($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $openContents
@@ -331,7 +313,6 @@
                                             duration: settings.duration,
                                             skipInlineHidden: true,
                                         });
-                                    
                                 }
                                 else {
                                     $openContents
@@ -340,7 +321,6 @@
                                         .animate({
                                             opacity: 0,
                                         }, settings.duration, module.resetOpacity);
-                                    
                                 }
                             }
                             $openContents
@@ -348,7 +328,6 @@
                                     $(this).removeClass(className.active);
                                     module.reset.display.call(this);
                                 });
-                            
                         }
                     },
 
@@ -362,7 +341,6 @@
                                 $element
                                     .attr('style', '')
                                     .removeAttr('style');
-                                
                             }
                         },
 
@@ -374,7 +352,6 @@
                                 $element
                                     .attr('style', '')
                                     .removeAttr('style');
-                                
                             }
                         },
 
@@ -506,7 +483,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -558,11 +534,9 @@
                     module.initialize();
                 }
             });
-        
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.accordion.settings = {

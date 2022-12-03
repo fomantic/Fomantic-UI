@@ -41,7 +41,6 @@ module.exports = function(callback) {
             exec            = process.exec,
             execSettings    = {cwd: outputDirectory},
             updateNPM       = 'npm publish;meteor publish;';
-    
 
         /* Register with NPM */
         exec(updateNPM, execSettings, function(err, stdout, stderr) {

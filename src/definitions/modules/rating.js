@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.rating = function(parameters) {
         var
@@ -88,7 +87,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -96,7 +94,6 @@
                         module.remove.events();
                         $module
                             .removeData(moduleNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -113,7 +110,6 @@
                             module.debug('Generating icon html dynamically');
                             $module
                                 .html(html);
-                            
                             module.refresh();
                         },
                     },
@@ -122,27 +118,21 @@
                         mouseenter: function() {
                             var
                                 $activeIcon = $(this);
-            
                             $activeIcon
                                 .nextAll()
                                 .removeClass(className.selected);
-                            
                             $module
                                 .addClass(className.selected);
-                            
                             $activeIcon
                                 .addClass(className.selected)
                                 .prevAll()
                                 .addClass(className.selected);
-                            
                         },
                         mouseleave: function() {
                             $module
                                 .removeClass(className.selected);
-                            
                             $icon
                                 .removeClass(className.selected);
-                            
                         },
                         click: function() {
                             var
@@ -174,7 +164,6 @@
                                 .on('mouseenter' + eventNamespace, selector.icon, module.event.mouseenter)
                                 .on('mouseleave' + eventNamespace, selector.icon, module.event.mouseleave)
                                 .on('click'      + eventNamespace, selector.icon, module.event.click);
-                            
                         },
                     },
 
@@ -183,7 +172,6 @@
                             module.verbose('Removing events');
                             $module
                                 .off(eventNamespace);
-                            
                         },
                         initialLoad: function() {
                             initialLoad = false;
@@ -195,7 +183,6 @@
                         module.bind.events();
                         $module
                             .removeClass(className.disabled);
-                        
                     },
 
                     disable: function() {
@@ -203,7 +190,6 @@
                         module.remove.events();
                         $module
                             .addClass(className.disabled);
-                        
                     },
 
                     is: {
@@ -240,7 +226,6 @@
                         rating: function() {
                             var
                                 currentRating = $icon.filter('.' + className.active).length;
-            
                             module.verbose('Current rating retrieved', currentRating);
                             return currentRating;
                         },
@@ -263,32 +248,26 @@
                             ;
                             $module
                                 .removeClass(className.selected);
-                            
                             $icon
                                 .removeClass(className.selected)
                                 .removeClass(className.active)
                                 .removeClass(className.partiallyActive);
-                            
                             if(rating > 0) {
                                 module.verbose('Setting current rating to', rating);
                                 $activeIcon
                                     .prevAll()
                                     .addBack()
                                     .addClass(className.active);
-                                
                                 if($activeIcon.next() && rating % 1 !== 0) {
                                     $partialActiveIcon
                                         .addClass(className.partiallyActive)
                                         .addClass(className.active);
-                                    
                                     $partialActiveIcon
                                         .css(cssVars.filledCustomPropName, filledPercentage + '%');
-                                    
                                     if($partialActiveIcon.css('backgroundColor') === 'transparent') {
                                         $partialActiveIcon
                                             .removeClass(className.partiallyActive)
                                             .removeClass(className.active);
-                                        
                                     }
                                 }
                             }
@@ -427,7 +406,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -478,12 +456,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.rating.settings = {

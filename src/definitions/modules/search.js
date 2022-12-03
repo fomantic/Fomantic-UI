@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.search = function(parameters) {
         var
@@ -86,14 +85,12 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
                     destroy: function() {
                         module.verbose('Destroying instance');
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -116,10 +113,8 @@
                             if(settings.automatic) {
                                 $module
                                     .on(module.get.inputEvent() + eventNamespace, selector.prompt, module.event.input);
-                                
                                 $prompt
                                     .attr('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
-                                
                             }
                             $module
                             // prompt
@@ -132,7 +127,6 @@
                                 .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
                                 .on('mouseup'   + eventNamespace, selector.results, module.event.result.mouseup)
                                 .on('click'     + eventNamespace, selector.result,  module.event.result.click);
-                            
                         },
                     },
 
@@ -174,11 +168,11 @@
                             var
                                 pageLostFocus = (document.activeElement === this),
                                 callback      = function() {
-                                    module.cancel.query()
-                                ;module.remove.focus();
+                                    module.cancel.query();
+                                    module.remove.focus();
                                     module.timer = setTimeout(module.hideResults, settings.hideDelay);
-                                };
-            
+                                }
+                            ;
                             if(pageLostFocus) {
                                 return;
                             }
@@ -196,7 +190,6 @@
                                             callback();
                                         }
                                     });
-                                
                             }
                             else {
                                 module.debug('Input blurred without user action, closing results');
@@ -316,17 +309,14 @@
                                 newIndex = (currentIndex - 1 < 0)
                                     ? currentIndex
                                     : currentIndex - 1;
-                                
                                 $category
                                     .removeClass(className.active);
-                                
                                 $result
                                     .removeClass(className.active)
                                     .eq(newIndex)
                                     .addClass(className.active)
                                     .closest($category)
                                     .addClass(className.active);
-                                
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
                             }
@@ -335,17 +325,14 @@
                                 newIndex = (currentIndex + 1 >= resultSize)
                                     ? currentIndex
                                     : currentIndex + 1;
-                                
                                 $category
                                     .removeClass(className.active);
-                                
                                 $result
                                     .removeClass(className.active)
                                     .eq(newIndex)
                                     .addClass(className.active)
                                     .closest($category)
                                     .addClass(className.active);
-                                
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
                             }
@@ -375,8 +362,8 @@
                                 },
                                 apiCallbacks = {
                                     onSuccess: function(response, $module, xhr) {
-                                        module.parse.response.call(element, response, searchTerm)
-                                    ;callback();
+                                        module.parse.response.call(element, response, searchTerm);
+                                        callback();
                                         if(settings.apiSettings && typeof settings.apiSettings.onSuccess === 'function') {
                                             settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                                         }
@@ -399,8 +386,8 @@
                                             settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
                                         }
                                     },
-                                };
-            
+                                }
+                            ;
                             $.extend(true, apiSettings, settings.apiSettings, apiCallbacks);
                             module.verbose('Setting up API request', apiSettings);
                             $module.api(apiSettings);
@@ -481,15 +468,12 @@
                         result: function(value, results) {
                             var
                                 result       = false;
-            
                             value = (value !== undefined)
                                 ? value
                                 : module.get.value();
-                            
                             results = (results !== undefined)
                                 ? results
                                 : module.get.results();
-                            
                             if(settings.type === 'category') {
                                 module.debug('Finding result that matches', value);
                                 $.each(results, function(index, category) {
@@ -528,7 +512,6 @@
                             module.verbose('Setting search input value', value);
                             $prompt
                                 .val(value);
-                            
                         },
                         type: function(type) {
                             type = type || settings.type;
@@ -560,7 +543,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         var
                             searchTerm = module.get.value(),
                             cache = module.read.cache(searchTerm)
@@ -626,14 +608,12 @@
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
-                            
                             if($module.api('is loading')) {
                                 $module.api('abort');
                             }
                             module.setup.api(searchTerm, callback);
                             $module
                                 .api('query');
-                            
                         },
                         object: function(searchTerm, source, searchFields) {
                             searchTerm = module.remove.diacritics(String(searchTerm));
@@ -655,12 +635,10 @@
                                         array.push(result);
                                     }
                                 };
-            
                             source = source || settings.source;
                             searchFields = (searchFields !== undefined)
                                 ? searchFields
                                 : settings.searchFields;
-                            
 
                             // search fields should be array to loop correctly
                             if(!Array.isArray(searchFields)) {
@@ -677,7 +655,6 @@
                                 $.each(source, function(label, content) {
                                     var
                                         fieldExists = (typeof content[field] == 'string') || (typeof content[field] == 'number');
-                
                                     if(fieldExists) {
                                         var text;
                                         if (typeof content[field] === 'string'){
@@ -729,7 +706,6 @@
                         search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                             var
                                 queryCharacter = query.charCodeAt(characterIndex);
-            
                             while(nextCharacterIndex < termLength) {
                                 if(term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
                                     continue search;
@@ -749,7 +725,6 @@
                             }
                             var
                                 searchHTML = module.generateResults(response);
-            
                             module.verbose('Parsing server response', response);
                             if(response !== undefined) {
                                 if(searchTerm !== undefined && response[fields.results] !== undefined) {
@@ -787,7 +762,6 @@
                             }
                             var
                                 html = $results.html();
-            
                             return html != '';
                         },
                     },
@@ -796,7 +770,6 @@
                         cache: function(value) {
                             var
                                 cache = $module.data(metadata.cache);
-            
                             if(!value) {
                                 module.debug('Clearing cache', value);
                                 $module.removeData(metadata.cache);
@@ -813,13 +786,11 @@
                         cache: function(name) {
                             var
                                 cache = $module.data(metadata.cache);
-            
                             if(settings.cache) {
                                 module.verbose('Checking cache for generated html for query', name);
                                 return (typeof cache == 'object') && (cache[name] !== undefined)
                                     ? cache[name]
                                     : false;
-                                
                             }
                             return false;
                         },
@@ -829,7 +800,6 @@
                         categoryResults: function(results) {
                             var
                                 categoryResults = {};
-            
                             $.each(results, function(index, result) {
                                 if(!result.category) {
                                     return;
@@ -870,7 +840,6 @@
                                 $results = $('<div />')
                                     .addClass(className.results)
                                     .appendTo($module);
-                                
                             }
                         },
                     },
@@ -892,7 +861,6 @@
                             module.verbose('Injecting results metadata', $selectedResult);
                             $selectedResult
                                 .data(metadata.result, result);
-                            
                         },
                         id: function(results) {
                             module.debug('Injecting unique ids into results');
@@ -950,7 +918,6 @@
                                 cache[name] = value;
                                 $module
                                     .data(metadata.cache, cache);
-                                
                             }
                         },
                     },
@@ -965,7 +932,6 @@
                         if(html) {
                             $results
                                 .html(html);
-                            
                             module.refreshResults();
                             if(settings.selectFirstResult) {
                                 module.select.firstResult();
@@ -983,7 +949,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if(resultsDismissed) {
                             return;
                         }
@@ -1006,14 +971,12 @@
                                         },
                                         queue: true,
                                     });
-                                
                             }
                             else {
                                 module.debug('Showing results with javascript');
                                 $results
                                     .stop()
                                     .fadeIn(settings.duration, settings.easing);
-                                
                             }
                             settings.onResultsOpen.call($results);
                         }
@@ -1022,7 +985,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if( module.is.visible() ) {
                             if( module.can.transition() ) {
                                 module.debug('Hiding results with css animations');
@@ -1038,14 +1000,12 @@
                                         },
                                         queue: true,
                                     });
-                                
                             }
                             else {
                                 module.debug('Hiding results with javascript');
                                 $results
                                     .stop()
                                     .fadeOut(settings.duration, settings.easing);
-                                
                             }
                             settings.onResultsClose.call($results);
                         }
@@ -1211,7 +1171,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1263,12 +1222,10 @@
                 }
 
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.search.settings = {
@@ -1432,7 +1389,6 @@
                     escapedChar  = function(chr) {
                         return escape[chr];
                     };
-      
                 if(shouldEscape.test(string)) {
                     string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                     return string.replace(badChars, escapedChar);
@@ -1442,15 +1398,12 @@
             message: function(message, type, header) {
                 var
                     html = '';
-      
                 if(message !== undefined && type !== undefined) {
                     html +=  ''
           + '<div class="message ' + type + '">';
-                    
                     if(header) {
                         html += ''
           + '<div class="header">' + header + '</div>';
-                        
                     }
                     html += ' <div class="description">' + message + '</div>';
                     html += '</div>';
@@ -1488,7 +1441,6 @@
                   + '<div class="image">'
                   + ' <img src="' + result[fields.image].replace(/"/g,'') + '">'
                   + '</div>';
-                                    
                                 }
                                 html += '<div class="content">';
                                 if(result[fields.price] !== undefined) {
@@ -1502,13 +1454,11 @@
                                 }
                                 html  += ''
                 + '</div>';
-                                
                                 html += '</a>';
                             });
                             html += '</div>';
                             html  += ''
               + '</div>';
-                            
                         }
                     });
                     if(response[fields.action]) {
@@ -1548,7 +1498,6 @@
               + '<div class="image">'
               + ' <img src="' + result[fields.image].replace(/"/g,'') + '">'
               + '</div>';
-                            
                         }
                         html += '<div class="content">';
                         if(result[fields.price] !== undefined) {
@@ -1562,7 +1511,6 @@
                         }
                         html  += ''
             + '</div>';
-                        
                         html += '</a>';
                     });
                     if(response[fields.action]) {

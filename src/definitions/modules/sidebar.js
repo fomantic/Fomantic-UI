@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.sidebar = function(parameters) {
         var
@@ -48,7 +47,6 @@
       || function(callback) { setTimeout(callback, 0); },
 
             returnedValue;
-  
 
         $allModules
             .each(function() {
@@ -118,7 +116,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     create: {
@@ -134,7 +131,6 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                         if(module.is.ios()) {
                             module.remove.ios();
                         }
@@ -185,7 +181,6 @@
                             $context
                                 .on('click'    + elementNamespace, module.event.clickaway)
                                 .on('touchend' + elementNamespace, module.event.clickaway);
-                            
                         },
                         scrollLock: function() {
                             if(settings.scrollLock) {
@@ -200,10 +195,8 @@
                             module.verbose('Adding events to contain sidebar scroll');
                             $document
                                 .on('touchmove' + elementNamespace, module.event.touch);
-                            
                             $module
                                 .on('scroll' + eventNamespace, module.event.containScroll);
-                            
                         },
                     },
                     unbind: {
@@ -254,7 +247,6 @@
                 + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + ' }';
-                                
                             }
                             else if(direction === 'top' || direction == 'bottom') {
                                 style  += ''
@@ -263,7 +255,6 @@
                 + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + ' }';
-                                
                             }
 
                             /* IE is only browser not to create context with transforms */
@@ -276,7 +267,6 @@
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }';
-                                    
                                 }
                                 else if(direction === 'top' || direction == 'bottom') {
                                     style  += ''
@@ -284,7 +274,6 @@
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }';
-                                    
                                 }
                                 /* opposite sides visible forces content overlay */
                                 style += ''
@@ -293,12 +282,10 @@
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
                 + ' }';
-                                
                             }
                             style += '</style>';
                             $style = $(style)
                                 .appendTo($head);
-                            
                             module.debug('Adding sizing css to head', $style);
                         },
                     },
@@ -342,7 +329,6 @@
                                     .not(selector.omitted)
                                     .not($sidebars)
                                     .wrapAll($pusher);
-                                
                                 module.refresh();
                             }
                             if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -360,16 +346,13 @@
                     attachEvents: function(selector, event) {
                         var
                             $toggle = $(selector);
-          
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
-                        
                         if($toggle.length > 0) {
                             module.debug('Attaching sidebar events to element', selector, event);
                             $toggle
                                 .on('click' + eventNamespace, event);
-                            
                         }
                         else {
                             module.error(error.notFound, selector);
@@ -395,7 +378,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if(module.is.hidden()) {
                             if(settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -438,7 +420,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
                             module.debug('Hiding sidebar', callback);
                             module.refreshSidebars();
@@ -474,7 +455,6 @@
                                     callback();
                                 }
                             });
-                        
                     },
 
                     toggle: function() {
@@ -500,7 +480,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if(settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
                         }
@@ -546,7 +525,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         module.verbose('Removing context push state', module.get.direction());
 
                         module.unbind.clickaway();
@@ -606,7 +584,6 @@
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
-              
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
@@ -716,7 +693,6 @@
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
-              
                                 el.css(attribute, '');
                             });
                         },
@@ -746,7 +722,6 @@
                                 : (settings.transition == 'auto')
                                     ? settings.defaultTransition.computer[direction]
                                     : settings.transition;
-                            
                             module.verbose('Determined transition', transition);
                             return transition;
                         },
@@ -984,7 +959,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1023,7 +997,6 @@
                         return found;
                     },
                 };
-                
 
                 if(methodInvoked) {
                     if(instance === undefined) {
@@ -1042,7 +1015,6 @@
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.sidebar.settings = {

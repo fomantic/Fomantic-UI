@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.visibility = function(parameters) {
         var
@@ -76,7 +75,6 @@
                     contextObserver,
                     observer,
                     module;
-      
 
                 module = {
 
@@ -115,7 +113,6 @@
                         module.debug('Storing instance', module);
                         $module
                             .data(moduleNamespace, module);
-                        
                         instance = module;
                     },
 
@@ -130,11 +127,9 @@
                         $window
                             .off('load'   + eventNamespace, module.event.load)
                             .off('resize' + eventNamespace, module.event.resize);
-                        
                         $context
                             .off('scroll'       + eventNamespace, module.event.scroll)
                             .off('scrollchange' + eventNamespace, module.event.scrollchange);
-                        
                         if(settings.type == 'fixed') {
                             module.resetFixed();
                             module.remove.placeholder();
@@ -142,7 +137,6 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                     },
 
                     observeChanges: function() {
@@ -167,17 +161,14 @@
                             if(settings.refreshOnLoad) {
                                 $window
                                     .on('load'   + eventNamespace, module.event.load);
-                                
                             }
                             $window
                                 .on('resize' + eventNamespace, module.event.resize);
-                            
                             // pub/sub pattern
                             $context
                                 .off('scroll'      + eventNamespace)
                                 .on('scroll'       + eventNamespace, module.event.scroll)
                                 .on('scrollchange' + eventNamespace, module.event.scrollchange);
-                            
                         },
                     },
 
@@ -241,14 +232,14 @@
                             cache         = [],
                             cacheImage    = document.createElement('img'),
                             handleLoad    = function() {
-                                loadedCounter++
-                            ;if (loadedCounter >= images.length) {
+                                loadedCounter++;
+                                if (loadedCounter >= images.length) {
                                     if (isFunction(callback)) {
                                         callback();
                                     }
                                 }
-                            };
-          
+                            }
+                        ;
                         while (imagesLength--) {
                             cacheImage         = document.createElement('img');
                             cacheImage.onload  = handleLoad;
@@ -290,7 +281,6 @@
                         image: function() {
                             var
                                 src = $module.data(metadata.src);
-            
                             if(src) {
                                 module.verbose('Lazy loading image', src);
                                 settings.once           = true;
@@ -348,7 +338,6 @@
                                 .css('display', 'none')
                                 .addClass(className.placeholder)
                                 .insertAfter($module);
-                            
                         },
                     },
 
@@ -358,7 +347,6 @@
                             $placeholder
                                 .css('display', 'block')
                                 .css('visibility', 'hidden');
-                            
                         },
                     },
                     hide: {
@@ -367,7 +355,6 @@
                             $placeholder
                                 .css('display', 'none')
                                 .css('visibility', '');
-                            
                         },
                     },
 
@@ -382,13 +369,11 @@
                                     left: 'auto',
                                     zIndex: settings.zIndex,
                                 });
-                            
                             settings.onFixed.call(element);
                         },
                         image: function(src, callback) {
                             $module
                                 .attr('src', src);
-                            
                             if(settings.transition) {
                                 if( $.fn.transition !== undefined) {
                                     if($module.hasClass(className.visible)) {
@@ -411,13 +396,11 @@
                         onScreen: function() {
                             var
                                 calculations   = module.get.elementCalculations();
-            
                             return calculations.onScreen;
                         },
                         offScreen: function() {
                             var
                                 calculations   = module.get.elementCalculations();
-            
                             return calculations.offScreen;
                         },
                         visible: function() {
@@ -510,7 +493,6 @@
                     passed: function(amount, newCallback) {
                         var
                             calculations   = module.get.elementCalculations();
-          
                         // assign callback
                         if(amount && newCallback) {
                             settings.onPassed[amount] = newCallback;
@@ -824,7 +806,6 @@
                                     left: '',
                                     zIndex: '',
                                 });
-                            
                             settings.onUnfixed.call(element);
                         },
                         placeholder: function() {
@@ -837,7 +818,6 @@
                             if(callback) {
                                 var
                                     occurred = module.cache.occurred;
-              
                                 if(occurred[callback] !== undefined && occurred[callback] === true) {
                                     module.debug('Callback can now be called again', callback);
                                     module.cache.occurred[callback] = false;
@@ -951,7 +931,6 @@
                         screenCalculations: function() {
                             var
                                 scroll = module.get.scroll();
-            
                             module.save.direction();
                             module.cache.screen.top    = scroll;
                             module.cache.screen.bottom = scroll + module.cache.screen.height;
@@ -973,7 +952,6 @@
                         pixelsPassed: function(amount) {
                             var
                                 element = module.get.elementCalculations();
-            
                             if(amount.search('%') > -1) {
                                 return ( element.height * (parseInt(amount, 10) / 100) );
                             }
@@ -983,7 +961,6 @@
                             return (module.cache.occurred !== undefined)
                                 ? module.cache.occurred[callback] || false
                                 : false;
-                            
                         },
                         direction: function() {
                             if(module.cache.direction === undefined) {
@@ -1147,7 +1124,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1202,12 +1178,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.visibility.settings = {

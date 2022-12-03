@@ -124,7 +124,6 @@ module.exports = function(callback) {
                         nextRepo();
                     }
                 });
-            
         }
 
         // push changes to remote

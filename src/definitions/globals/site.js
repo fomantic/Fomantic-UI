@@ -51,7 +51,6 @@
                 instance = module;
                 $module
                     .data(moduleNamespace, module);
-                
             },
 
             normalize: function() {
@@ -90,7 +89,6 @@
             || window.webkitRequestAnimationFrame
             || window.msRequestAnimationFrame
             || function(callback) { setTimeout(callback, 0); };
-                        
                     }
                 },
             },
@@ -103,7 +101,6 @@
                 modules: function(modules) {
                     var
                         enabledModules = [];
-        
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(module.moduleExists(name)) {
@@ -118,7 +115,6 @@
                 modules: function(modules) {
                     var
                         disabledModules = [];
-        
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(!module.moduleExists(name)) {
@@ -136,11 +132,9 @@
                             ? settings.modules
                             : [modules]
                         : modules || settings.modules;
-                    
                     modifyExisting = (modifyExisting !== undefined)
                         ? modifyExisting
                         : true;
-                    
                     $.each(modules, function(index, name) {
                         var
                             namespace = (module.moduleExists(name))
@@ -165,15 +159,12 @@
                     modules = (typeof modules === 'string')
                         ? [modules]
                         : modules || settings.modules;
-                    
                     modifyExisting = (modifyExisting !== undefined)
                         ? modifyExisting
                         : true;
-                    
                     $.each(modules, function(index, name) {
                         var
                             $existingModules;
-          
                         if(module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
                             $.extend(true, $.fn[name].settings, newSettings);
@@ -250,7 +241,6 @@
                 module.verbose('Destroying previous site for', $module);
                 $module
                     .removeData(moduleNamespace);
-                
             },
 
             cache: {},
@@ -367,7 +357,6 @@
                         var camelCaseValue = (depth != maxDepth)
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query;
-          
                         if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                             object = object[camelCaseValue];
                         }
@@ -422,7 +411,6 @@
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.site.settings = {

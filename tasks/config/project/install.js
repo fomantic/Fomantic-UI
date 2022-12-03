@@ -86,7 +86,6 @@ module.exports = {
     shouldAutoInstall: function() {
         var
             config = when.hasConfig();
-    
         return config['autoInstall'];
     },
 
@@ -124,7 +123,6 @@ module.exports = {
                 // recurse downward
                 return walk(nextDirectory);
             };
-    
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);
@@ -151,7 +149,6 @@ module.exports = {
                 // recurse downward
                 return walk(nextDirectory);
             };
-    
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);

@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.state = function(parameters) {
         var
@@ -78,14 +77,12 @@
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
                                 .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state);
-                            
                         }
                         else {
                             $module
                                 .on('mouseenter' + eventNamespace, module.change.text)
                                 .on('mouseleave' + eventNamespace, module.reset.text)
                                 .on('click'      + eventNamespace, module.toggle.state);
-                            
                         }
                         module.instantiate();
                     },
@@ -95,7 +92,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -103,7 +99,6 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -246,7 +241,6 @@
                                     }
                                     module.change.state();
                                 });
-                            
                         }
                     },
 
@@ -304,7 +298,6 @@
                             module.debug('Setting state to active');
                             $module
                                 .addClass(className.active);
-                            
                             module.update.text(text.active);
                             settings.onActivate.call(element);
                         }
@@ -315,7 +308,6 @@
                             module.debug('Setting state to inactive');
                             $module
                                 .removeClass(className.active);
-                            
                             module.update.text(text.inactive);
                             settings.onDeactivate.call(element);
                         }
@@ -332,7 +324,6 @@
                             $allModules
                                 .not($module)
                                 .state('deactivate');
-                            
                         }
                     },
 
@@ -341,7 +332,6 @@
                             return (settings.selector.text)
                                 ? $module.find(settings.selector.text).text()
                                 : $module.html();
-                            
                         },
                         textFor: function(state) {
                             return text[state] || false;
@@ -352,7 +342,6 @@
                         text: function(text, duration, callback) {
                             var
                                 previousText = module.get.text();
-            
                             module.debug('Flashing text message', text, duration);
                             text     = text     || settings.text.flash;
                             duration = duration || settings.flashDuration;
@@ -389,7 +378,6 @@
                         text: function(text) {
                             var
                                 currentText = module.get.text();
-            
                             if(text && text !== currentText) {
                                 module.debug('Updating text', text);
                                 if(settings.selector.text) {
@@ -397,13 +385,11 @@
                                         .data(metadata.storedText, text)
                                         .find(settings.selector.text)
                                         .text(text);
-                                    
                                 }
                                 else {
                                     $module
                                         .data(metadata.storedText, text)
                                         .html(text);
-                                    
                                 }
                             }
                             else {
@@ -535,7 +521,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -588,12 +573,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.state.settings = {

@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.embed = function(parameters) {
 
@@ -83,7 +82,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -92,7 +90,6 @@
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -109,7 +106,6 @@
                                 $module
                                     .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
                                     .on('click' + eventNamespace, selector.icon, module.createAndShow);
-                                
                             }
                         },
                     },
@@ -117,7 +113,6 @@
                     create: function() {
                         var
                             placeholder = module.get.placeholder();
-          
                         if(placeholder) {
                             module.createPlaceholder();
                         }
@@ -129,7 +124,6 @@
                     createPlaceholder: function(placeholder) {
                         var
                             icon  = module.get.icon();
-          
                         placeholder = placeholder || module.get.placeholder();
                         $module.html( templates.placeholder(placeholder, icon) );
                         module.debug('Creating placeholder for embed', placeholder, icon);
@@ -142,7 +136,6 @@
                             .addClass(className.embed)
                             .html( module.generate.embed(url) )
                             .appendTo($module);
-                        
                         settings.onCreate.call(element, url);
                         module.debug('Creating embed object', $embed);
                     },
@@ -150,7 +143,6 @@
                     changeEmbed: function(url) {
                         $embed
                             .html( module.generate.embed(url) );
-                        
                     },
 
                     createAndShow: function() {
@@ -164,7 +156,6 @@
                         $module
                             .data(metadata.source, source)
                             .data(metadata.id, id);
-                        
                         if(url) {
                             $module.data(metadata.url, url);
                         }
@@ -220,7 +211,6 @@
                                 : ($module.data(metadata.icon) !== undefined)
                                     ? $module.data(metadata.icon)
                                     : module.determine.icon();
-                            
                         },
                         source: function(url) {
                             return (settings.source)
@@ -228,14 +218,12 @@
                                 : ($module.data(metadata.source) !== undefined)
                                     ? $module.data(metadata.source)
                                     : module.determine.source();
-                            
                         },
                         type: function() {
                             var source = module.get.source();
                             return (sources[source] !== undefined)
                                 ? sources[source].type
                                 : false;
-                            
                         },
                         url: function() {
                             return (settings.url)
@@ -243,7 +231,6 @@
                                 : ($module.data(metadata.url) !== undefined)
                                     ? $module.data(metadata.url)
                                     : module.determine.url();
-                            
                         },
                     },
 
@@ -256,7 +243,6 @@
                         source: function(url) {
                             var
                                 matchedSource = false;
-            
                             url = url || module.get.url();
                             if(url) {
                                 $.each(sources, function(name, source) {
@@ -271,11 +257,9 @@
                         icon: function() {
                             var
                                 source = module.get.source();
-            
                             return (sources[source] !== undefined)
                                 ? sources[source].icon
                                 : false;
-                            
                         },
                         url: function() {
                             var
@@ -286,7 +270,6 @@
                             url = (sources[source] !== undefined)
                                 ? sources[source].url.replace('{id}', id)
                                 : false;
-                            
                             if(url) {
                                 $module.data(metadata.url, url);
                             }
@@ -309,7 +292,6 @@
                                 .removeData(metadata.placeholder)
                                 .removeData(metadata.source)
                                 .removeData(metadata.url);
-                            
                         },
                         active: function() {
                             $module.removeClass(className.active);
@@ -379,7 +361,6 @@
                             return (settings.autoplay === 'auto')
                                 ? (settings.placeholder || $module.data(metadata.placeholder) !== undefined)
                                 : settings.autoplay;
-                            
                         },
                     },
 
@@ -515,7 +496,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -568,11 +548,9 @@
                     module.initialize();
                 }
             });
-        
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.embed.settings = {
@@ -675,7 +653,6 @@
             iframe: function(url, parameters) {
                 var src = url,
                     deQuote = $.fn.embed.settings.templates.deQuote;
-      
                 if (parameters) {
                     src += '?' + parameters;
                 }
@@ -683,7 +660,6 @@
         + '<iframe src="' + deQuote(src) + '"'
         + ' width="100%" height="100%"'
         + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
-                
             },
             placeholder: function(image, icon) {
                 var

@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.flyout = $.fn.flyout = function(parameters) {
         var
@@ -48,7 +47,6 @@
       || function(callback) { setTimeout(callback, 0); },
 
             returnedValue;
-  
 
         $allModules
             .each(function() {
@@ -184,7 +182,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
-                        
                     },
 
                     create: {
@@ -226,7 +223,6 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        
                         if(module.is.ios()) {
                             module.remove.ios();
                         }
@@ -244,7 +240,6 @@
                         keyboard: function(event) {
                             var
                                 keyCode   = event.which;
-            
                             if(keyCode === settings.keys.escape) {
                                 if(settings.closable) {
                                     module.debug('Escape key pressed hiding flyout');
@@ -281,7 +276,6 @@
                         closeKeyUp: function(event){
                             var
                                 keyCode   = event.which;
-            
                             if (keyCode === settings.keys.enter || keyCode === settings.keys.space) {
                                 module.hide();
                             }
@@ -290,7 +284,6 @@
                             first: function(event) {
                                 var
                                     keyCode = event.which;
-              
                                 if (keyCode === settings.keys.tab && event.shiftKey) {
                                     $inputs.last().trigger('focus');
                                     event.preventDefault();
@@ -299,7 +292,6 @@
                             last: function(event) {
                                 var
                                     keyCode = event.which;
-              
                                 if (keyCode === settings.keys.tab && !event.shiftKey) {
                                     $inputs.first().trigger('focus');
                                     event.preventDefault();
@@ -355,17 +347,14 @@
                                 .on('click' + eventNamespace, selector.close, module.event.close)
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
                                 .on('click' + eventNamespace, selector.deny, module.event.deny);
-                            
                             $closeIcon
                                 .on('keyup' + elementNamespace, module.event.closeKeyUp);
-                            
                         },
                         clickaway: function() {
                             module.verbose('Adding clickaway events to context', $context);
                             $context
                                 .on('click'    + elementNamespace, module.event.clickaway)
                                 .on('touchend' + elementNamespace, module.event.clickaway);
-                            
                         },
                         scrollLock: function() {
                             if(settings.scrollLock) {
@@ -380,10 +369,8 @@
                             module.verbose('Adding events to contain flyout scroll');
                             $document
                                 .on('touchmove' + elementNamespace, module.event.touch);
-                            
                             $module
                                 .on('scroll' + eventNamespace, module.event.containScroll);
-                            
                         },
                     },
                     unbind: {
@@ -434,7 +421,6 @@
                 + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                 + ' }';
-                                
                             }
                             else if(direction === 'top' || direction == 'bottom') {
                                 style  += ''
@@ -443,7 +429,6 @@
                 + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                 + ' }';
-                                
                             }
 
                             /* IE is only browser not to create context with transforms */
@@ -456,7 +441,6 @@
                   + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                   + ' }';
-                                    
                                 }
                                 else if(direction === 'top' || direction == 'bottom') {
                                     style  += ''
@@ -464,7 +448,6 @@
                   + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                   + ' }';
-                                    
                                 }
                                 /* opposite sides visible forces content overlay */
                                 style += ''
@@ -473,19 +456,16 @@
                 + '   -webkit-transform: translate3d(0, 0, 0);'
                 + '           transform: translate3d(0, 0, 0);'
                 + ' }';
-                                
                             }
                             style += '</style>';
                             $style = $(style)
                                 .appendTo($head);
-                            
                             module.debug('Adding sizing css to head', $style);
                         },
                         keyboardShortcuts: function() {
                             module.verbose('Adding keyboard shortcuts');
                             $document
                                 .on('keydown' + eventNamespace, module.event.keyboard);
-                            
                         },
                     },
                     observeChanges: function() {
@@ -517,7 +497,6 @@
                         if($inputs){
                             $inputs
                                 .off('keydown' + elementNamespace);
-                            
                         }
                         if(!settings.dimPage){
                             return;
@@ -527,10 +506,8 @@
                         });
                         $inputs.first()
                             .on('keydown' + elementNamespace, module.event.inputKeyDown.first);
-                        
                         $inputs.last()
                             .on('keydown' + elementNamespace, module.event.inputKeyDown.last);
-                        
                     },
 
                     setup: {
@@ -550,7 +527,6 @@
                                     .not(selector.omitted)
                                     .not($flyouts)
                                     .wrapAll($pusher);
-                                
                                 module.refresh();
                             }
                             if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
@@ -580,16 +556,13 @@
                     attachEvents: function(selector, event) {
                         var
                             $toggle = $(selector);
-          
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
-                        
                         if($toggle.length > 0) {
                             module.debug('Attaching flyout events to element', selector, event);
                             $toggle
                                 .on('click' + eventNamespace, event);
-                            
                         }
                         else {
                             module.error(error.notFound, selector);
@@ -600,7 +573,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if(module.is.hidden()) {
                             if(settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
@@ -639,7 +611,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         if(settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
@@ -683,7 +654,6 @@
                                     callback();
                                 }
                             });
-                        
                     },
 
                     toggle: function() {
@@ -705,7 +675,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         module.set.overlay();
                         if(settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
@@ -743,7 +712,6 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        
                         module.verbose('Removing context push state', module.get.direction());
 
                         module.unbind.clickaway();
@@ -828,7 +796,6 @@
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
-              
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
@@ -885,7 +852,6 @@
                             module.verbose('Removing keyboard shortcuts');
                             $document
                                 .off('keydown' + eventNamespace);
-                            
                         },
 
                         // ios scroll on html not document
@@ -1089,7 +1055,6 @@
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
                                 var el = $(this),
                                     attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
-              
                                 el.css(attribute, '');
                             });
                         },
@@ -1116,7 +1081,6 @@
                                 escapedChar  = function(chr) {
                                     return escape[chr];
                                 };
-            
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -1248,7 +1212,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1287,7 +1250,6 @@
                         return found;
                     },
                 };
-                
 
                 if(methodInvoked) {
                     if(instance === undefined) {
@@ -1320,7 +1282,6 @@
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.flyout.settings = {
@@ -1517,7 +1478,6 @@
                     click: function(){
                         var settings = $this.get.settings(),
                             inputField = $this.get.element().find(settings.selector.prompt)[0];
-          
                         args.handler($(inputField).val());
                     },
                 },{

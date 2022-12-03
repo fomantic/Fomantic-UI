@@ -122,14 +122,12 @@ module.exports = function (callback) {
                 gulp.src(source.userGulpFile)
                     .pipe(plumber())
                     .pipe(gulp.dest(updateFolder));
-                
 
                 // copy theme import
                 console.info('Updating theme import file');
                 gulp.src(source.themeImport)
                     .pipe(plumber())
                     .pipe(gulp.dest(updatePaths.themeImport));
-                
 
                 console.info('Adding new site theme files...');
                 wrench.copyDirSyncRecursive(source.site, updatePaths.site, settings.wrench.merge);
@@ -144,7 +142,6 @@ module.exports = function (callback) {
                         version: release.version,
                     }))
                     .pipe(gulp.dest(manager.root));
-                
 
                 console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
 
@@ -172,7 +169,6 @@ module.exports = function (callback) {
         rootQuestions[0].message = rootQuestions[0].message
             .replace('{packageMessage}', 'We detected you are using ' + manager.name + ' Nice!')
             .replace('{root}', manager.root);
-        
         // set default path to detected PM root
         rootQuestions[0].default = manager.root;
         rootQuestions[1].default = manager.root;
@@ -280,7 +276,6 @@ module.exports = function (callback) {
                     installPaths[destination] = (destination == 'config' || destination == 'configFolder')
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
                         : path.normalize(path.join(installFolder, installPaths[destination]));
-                    
                 }
             }
 
@@ -311,18 +306,15 @@ module.exports = function (callback) {
             gulp.src(source.themeImport)
                 .pipe(plumber())
                 .pipe(gulp.dest(installPaths.themeImport));
-            
             gulp.src(source.lessImport)
                 .pipe(plumber())
                 .pipe(gulp.dest(installPaths.lessImport));
-            
 
             // create gulp file
             console.info('Creating gulpfile.js');
             gulp.src(source.userGulpFile)
                 .pipe(plumber())
                 .pipe(gulp.dest(installFolder));
-            
 
         }
 
@@ -349,7 +341,6 @@ module.exports = function (callback) {
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
                 siteVariable = "@siteFolder   : '" + pathToSite + "/';";
-      
 
             // rewrite site variable in theme.less
             console.info('Adjusting @siteFolder to: ', pathToSite + '/');
@@ -360,7 +351,6 @@ module.exports = function (callback) {
                     .pipe(plumber())
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder));
-                
             } else {
                 console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
                 return gulp.src(source.themeConfig)
@@ -368,7 +358,6 @@ module.exports = function (callback) {
                     .pipe(rename({extname: ''}))
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder));
-                
             }
         });
 
@@ -380,7 +369,6 @@ module.exports = function (callback) {
 
             var
                 jsonConfig = install.createJSON(answers);
-      
 
             // adjust variables in theme.less
             if (fs.existsSync(installPaths.config)) {
@@ -390,7 +378,6 @@ module.exports = function (callback) {
                     .pipe(rename(settings.rename.json)) // preserve file extension
                     .pipe(jsonEditor(jsonConfig))
                     .pipe(gulp.dest(installPaths.configFolder));
-                
             } else {
                 console.info('Creating config file (semantic.json)', installPaths.config);
                 return gulp.src(source.config)
@@ -398,7 +385,6 @@ module.exports = function (callback) {
                     .pipe(rename({extname: ''})) // remove .template from ext
                     .pipe(jsonEditor(jsonConfig, {end_with_newline: true}))
                     .pipe(gulp.dest(installPaths.configFolder));
-                
             }
 
         });

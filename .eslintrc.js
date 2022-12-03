@@ -29,6 +29,7 @@ module.exports = {
         }],
         semi: ['error'],
         'no-extra-semi': ['error'],
+        'no-trailing-spaces': ['error'],
     },
     reportUnusedDisableDirectives: true,
 };

@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.progress = function(parameters) {
         var
@@ -116,7 +115,6 @@
                                     : typeof element == 'string'
                                         ? element.split(',')
                                         : [];
-                            
                         },
                     },
 
@@ -136,7 +134,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
                     destroy: function() {
                         module.verbose('Destroying previous progress for', $module);
@@ -204,13 +201,11 @@
                         transitionEnd: function(callback) {
                             var
                                 transitionEnd = module.get.transitionEnd();
-            
                             $bars
                                 .one(transitionEnd + eventNamespace, function(event) {
                                     clearTimeout(module.failSafeTimer);
                                     callback.call(this, event);
                                 });
-                            
                             module.failSafeTimer = setTimeout(function() {
                                 $bars.triggerHandler(transitionEnd);
                             }, settings.duration + settings.failSafeDelay);
@@ -287,7 +282,6 @@
                                 .replace('{left}', left)
                                 .replace('{percent}', percent)
                                 .replace('{bar}', settings.text.bars[index_] || '');
-                            
                             module.verbose('Adding variables to progress bar text', templateText);
                             return templateText;
                         },
@@ -328,7 +322,6 @@
                                     ? +(value.replace(/[^\d.]/g, ''))
                                     : false
                                 : value;
-                            
                         },
 
                         transitionEnd: function() {
@@ -363,7 +356,6 @@
                             return (settings.precision > 0)
                                 ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
                                 : Math.round(displayPercent);
-                            
                         },
 
                         percent: function(index) {
@@ -483,31 +475,26 @@
                             });
                             $module
                                 .attr('data-percent', percents);
-                            
                         },
                         duration: function(duration) {
                             duration = duration || settings.duration;
                             duration = (typeof duration == 'number')
                                 ? duration + 'ms'
                                 : duration;
-                            
                             module.verbose('Setting progress bar transition duration', duration);
                             $bars
                                 .css({
                                     'transition-duration': duration,
                                 });
-                            
                         },
                         percent: function(percents) {
                             percents = module.helper.forceArray(percents).map(function(percent) {
                                 percent = (typeof percent == 'string')
                                     ? +(percent.replace('%', ''))
                                     : percent;
-                                
                                 return (settings.limitValues)
                                     ? Math.max(0, Math.min(100, percent))
                                     : percent;
-                                
                             });
                             var hasTotal = module.has.total();
                             var totalPercent = module.helper.sum(percents);
@@ -533,7 +520,6 @@
                                     return (autoPrecision > 0)
                                         ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                                         : Math.round(percent);
-                                    
                                 });
                                 module.percent = roundedPercents;
                                 if (hasTotal) {
@@ -541,7 +527,6 @@
                                         return (autoPrecision > 0)
                                             ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                                             : Math.round((percent / 100) * module.total * 10) / 10;
-                                        
                                     });
                                 }
                                 module.set.barWidth(percents);
@@ -552,19 +537,18 @@
                         labelInterval: function() {
                             var
                                 animationCallback = function() {
-                                    module.verbose('Bar finished animating, removing continuous label updates')
-                                ;clearInterval(module.interval);
+                                    module.verbose('Bar finished animating, removing continuous label updates');
+                                    clearInterval(module.interval);
                                     animating = false;
                                     module.set.labels();
-                                };
-            
+                                }
+                            ;
                             clearInterval(module.interval);
                             module.bind.transitionEnd(animationCallback);
                             animating = true;
                             module.interval = setInterval(function() {
                                 var
                                     isInDOM = $.contains(document.documentElement, element);
-              
                                 if(!isInDOM) {
                                     clearInterval(module.interval);
                                     animating = false;
@@ -589,7 +573,6 @@
                             percent = (percent !== undefined)
                                 ? percent
                                 : module.helper.sum(module.percent);
-                            
                             if(percent === 100) {
                                 if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                                     module.set.success();
@@ -727,7 +710,6 @@
                         toNextValue: function() {
                             var
                                 nextValue = module.nextValue;
-            
                             if(nextValue) {
                                 module.debug('Update interval complete using last updated value', nextValue);
                                 module.update.progress(nextValue);
@@ -742,7 +724,6 @@
                             var percentCompletes = module.helper.forceArray(values).map(function(value) {
                                 var
                                     percentComplete;
-              
                                 value = module.get.numericValue(value);
                                 if (value === false) {
                                     module.error(error.nonNumeric, value);
@@ -885,7 +866,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -938,12 +918,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.progress.settings = {

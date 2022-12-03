@@ -9,7 +9,6 @@ $(document)
                     exclusive: true,
                     content: $(this).attr('class'),
                 });
-            
         });
     });
 

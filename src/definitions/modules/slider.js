@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.slider = function(parameters) {
 
@@ -128,7 +127,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -693,7 +691,6 @@
                                 module.get.trackStartPos() - pagePos + module.get.trackOffset()
                                 :
                                 pagePos - module.get.trackOffset() - module.get.trackStartPos();
-                            
                         },
                         closestThumb: function(eventPos) {
                             var
@@ -723,7 +720,6 @@
                   module.is.reversed() ? $element.css('bottom') : $element.css('top')
                   :
                   module.is.reversed() ? $element.css('right') : $element.css('left');
-            
                             return pos;
                         },
                         positionFromValue: function(val) {
@@ -1220,7 +1216,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1273,12 +1268,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
 
     };
 

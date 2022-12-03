@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.nag = function(parameters) {
         var
@@ -72,13 +71,11 @@
                         $module
                             .on('click' + eventNamespace, selector.close, module.dismiss)
                             .data(moduleNamespace, module);
-                        
 
                         if(settings.detachable && $module.parent()[0] !== $context[0]) {
                             $module
                                 .detach()
                                 .prependTo($context);
-                            
                         }
 
                         if(settings.displayTime > 0) {
@@ -92,7 +89,6 @@
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
-                        
                     },
 
                     show: function() {
@@ -105,12 +101,10 @@
                             if(settings.animation.show === 'fade') {
                                 $module
                                     .fadeIn(settings.duration, settings.easing, settings.onVisible);
-                                
                             }
                             else {
                                 $module
                                     .slideDown(settings.duration, settings.easing, settings.onVisible);
-                                
                             }
                         }
                     },
@@ -124,12 +118,10 @@
                         if(settings.animation.hide === 'fade') {
                             $module
                                 .fadeOut(settings.duration, settings.easing, settings.onHidden);
-                            
                         }
                         else {
                             $module
                                 .slideUp(settings.duration, settings.easing, settings.onHidden);
-                            
                         }
                     },
 
@@ -220,7 +212,6 @@
                         storageOptions: function() {
                             var
                                 options = {};
-            
                             if(settings.expires) {
                                 options.expires = module.get.expirationDate(settings.expires);
                             }
@@ -248,7 +239,6 @@
                         set: function(key, value) {
                             var
                                 options = module.get.storageOptions();
-            
                             if(storage === window.localStorage && options.expires) {
                                 module.debug('Storing expiration value in localStorage', key, options.expires);
                                 storage.setItem(key + settings.expirationKey, options.expires );
@@ -264,7 +254,6 @@
                         get: function(key) {
                             var
                                 storedValue;
-            
                             storedValue = storage.getItem(key);
                             if(storage === window.localStorage) {
                                 var expiration = storage.getItem(key + settings.expirationKey);
@@ -282,7 +271,6 @@
                         remove: function(key) {
                             var
                                 options = module.get.storageOptions();
-            
                             options.expires = module.get.expirationDate(-1);
                             if(storage === window.localStorage) {
                                 storage.removeItem(key + settings.expirationKey);
@@ -414,7 +402,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -467,12 +454,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.nag.settings = {

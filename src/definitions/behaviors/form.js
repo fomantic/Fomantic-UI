@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.form = function(parameters) {
         var
@@ -108,7 +107,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -116,7 +114,6 @@
                         module.removeEvents();
                         $module
                             .removeData(moduleNamespace);
-                        
                     },
 
                     refresh: function() {
@@ -158,7 +155,6 @@
                             .on('click'  + eventNamespace, selector.submit, module.submit)
                             .on('click'  + eventNamespace, selector.reset, module.reset)
                             .on('click'  + eventNamespace, selector.clear, module.clear);
-                        
                         if(settings.keyboardShortcuts) {
                             $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                         }
@@ -271,7 +267,6 @@
                         isValid: function() {
                             var
                                 allValid = true;
-            
                             $.each(validation, function(fieldName, field) {
                                 if( !( module.validate.field(field, fieldName, true) ) ) {
                                     allValid = false;
@@ -334,7 +329,6 @@
                         valid: function(field, showErrors) {
                             var
                                 allValid = true;
-            
                             if(field) {
                                 module.verbose('Checking if field is valid', field);
                                 return module.validate.field(validation[field], field, !!showErrors);
@@ -416,7 +410,6 @@
                                     module.verbose('Escape key pressed blurring field');
                                     $field[0]
                                         .blur();
-                                    
                                 }
                                 if(!event.ctrlKey && key == keyCode.enter && isInput && !isInDropdown && !isCheckbox) {
                                     if(!keyHeldDown) {
@@ -487,7 +480,6 @@
                             return (rule.value !== undefined)
                                 ? rule.value
                                 : rule.type.match(settings.regExp.bracket)[1] + '';
-                            
                         },
                         ruleName: function(rule) {
                             if( module.is.bracketedRule(rule) ) {
@@ -509,12 +501,10 @@
                                 : (document.createElement('input').onpropertychange !== undefined)
                                     ? 'propertychange'
                                     : 'keyup';
-                            
                         },
                         fieldsFromShorthand: function(fields) {
                             var
                                 fullFields = {};
-            
                             $.each(fields, function(name, rules) {
                                 if (!Array.isArray(rules) && typeof rules === 'object') {
                                     fullFields[name] = rules;
@@ -569,7 +559,6 @@
                                 name = ($label.length == 1)
                                     ? $label.text()
                                     : $field.prop('placeholder') || settings.text.unspecifiedField;
-                                
                                 prompt = prompt.replace(/\{name\}/g, name);
                             }
                             prompt = prompt.replace(/\{identifier\}/g, field.identifier);
@@ -648,7 +637,6 @@
                         fields: function(fields) {
                             var
                                 $fields = $();
-            
                             $.each(fields, function(index, name) {
                                 $fields = $fields.add( module.get.field(name) );
                             });
@@ -728,7 +716,6 @@
                                                 values[name] = (isChecked)
                                                     ? value || true
                                                     : false;
-                                                
                                             }
                                         }
                                         else if(isCheckbox) {
@@ -849,7 +836,6 @@
                                 rules = Array.isArray(rules)
                                     ? rules
                                     : [rules];
-                                
                                 $.each(rules, function(_index, rule) {
                                     newValidation.rules.push({ type: rule });
                                 });
@@ -880,23 +866,19 @@
                             errors = (typeof errors == 'string')
                                 ? [errors]
                                 : errors;
-                            
                             module.verbose('Adding field error state', identifier);
                             if(!internal) {
                                 $fieldGroup
                                     .addClass(className.error);
-                                
                             }
                             if(settings.inline) {
                                 if(!promptExists) {
                                     $prompt = $('<div/>').addClass(className.label);
                                     $prompt
                                         .appendTo($fieldGroup);
-                                    
                                 }
                                 $prompt
                                     .html(settings.templates.prompt(errors));
-                                
                                 if(!promptExists) {
                                     if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                         module.verbose('Displaying error with css transition', settings.transition);
@@ -906,7 +888,6 @@
                                         module.verbose('Displaying error with fallback javascript animation');
                                         $prompt
                                             .fadeIn(settings.duration);
-                                        
                                     }
                                 }
                                 else {
@@ -919,7 +900,6 @@
                             module.set.error();
                             $message
                                 .html( settings.templates.error(errors) );
-                            
                         },
                     },
 
@@ -989,7 +969,6 @@
                             ;
                             $fieldGroup
                                 .removeClass(className.error);
-                            
                             if(settings.inline && $prompt.is(':visible')) {
                                 module.verbose('Removing prompt for field', identifier);
                                 if(settings.transition  && module.can.useElement('transition') && $module.transition('is supported')) {
@@ -1002,7 +981,6 @@
                                         .fadeOut(settings.duration, function(){
                                             $prompt.remove();
                                         });
-                                    
                                 }
                             }
                         },
@@ -1013,7 +991,6 @@
                             $module
                                 .removeClass(className.error)
                                 .addClass(className.success);
-                            
                         },
                         defaults: function () {
                             $field.each(function (index, el) {
@@ -1042,12 +1019,10 @@
                             $module
                                 .removeClass(className.success)
                                 .addClass(className.error);
-                            
                         },
                         value: function (field, value) {
                             var
                                 fields = {};
-            
                             fields[field] = value;
                             return module.set.values.call(element, fields);
                         },
@@ -1085,7 +1060,6 @@
                                         $field.filter('[value="' + value + '"]')
                                             .parent(selector.uiCheckbox)
                                             .checkbox('check');
-                                        
                                     }
                                     else if(isCheckbox) {
                                         module.verbose('Setting checkbox value', value, $element);
@@ -1155,7 +1129,6 @@
                                         ? $.grep(validation.rules, function(rule) { return rule.type == 'empty'; }) !== 0
                                         : false,
                                     identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate);
-              
                                 if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
                                     if (isCheckbox) {
                                         module.verbose("Adding 'checked' rule on field", identifier);
@@ -1239,7 +1212,6 @@
                             showErrors = (showErrors !== undefined)
                                 ? showErrors
                                 : true;
-                            
                             if(typeof field == 'string') {
                                 module.verbose('Validating field', field);
                                 fieldName = field;
@@ -1318,10 +1290,8 @@
                                     value = (value === undefined || value === '' || value === null)
                                         ? ''
                                         : (settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim ? String(value + '').trim() : String(value + '');
-                                    
                                     return ruleFunction.call(field, value, ancillary, $module);
                                 };
-            
                             if( !isFunction(ruleFunction) ) {
                                 module.error(error.noRule, ruleName);
                                 return;
@@ -1461,7 +1431,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1501,12 +1470,10 @@
                 };
                 module.initialize();
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.form.settings = {
@@ -1639,7 +1606,6 @@
             error: function(errors) {
                 var
                     html = '<ul class="list">';
-      
                 $.each(errors, function(index, value) {
                     html += '<li>' + value + '</li>';
                 });
@@ -1654,7 +1620,6 @@
                 }
                 var
                     html = '<ul class="ui list">';
-      
                 $.each(errors, function(index, value) {
                     html += '<li>' + value + '</li>';
                 });
@@ -1733,11 +1698,9 @@
                     regExp = (regExpParts.length >= 2)
                         ? regExpParts[1]
                         : regExp;
-                    
                     flags = (regExpParts.length >= 3)
                         ? regExpParts[2]
                         : '';
-                    
                 }
                 return value.match( new RegExp(regExp, flags) );
             },
@@ -1802,11 +1765,9 @@
                 text = (typeof text == 'string')
                     ? text.toLowerCase()
                     : text;
-                
                 value = (typeof value == 'string')
                     ? value.toLowerCase()
                     : value;
-                
                 return (value == text);
             },
 
@@ -1820,11 +1781,9 @@
                 value = (typeof value == 'string')
                     ? value.toLowerCase()
                     : value;
-                
                 notValue = (typeof notValue == 'string')
                     ? notValue.toLowerCase()
                     : notValue;
-                
                 return (value != notValue);
             },
 
@@ -1866,7 +1825,6 @@
                 return (value !== undefined)
                     ? (value.length >= requiredLength)
                     : false;
-                
             },
 
             // is exactly length
@@ -1874,7 +1832,6 @@
                 return (value !== undefined)
                     ? (value.length == requiredLength)
                     : false;
-                
             },
 
             // is less than length
@@ -1882,7 +1839,6 @@
                 return (value !== undefined)
                     ? (value.length <= maxLength)
                     : false;
-                
             },
 
             // matches another field
@@ -1906,7 +1862,6 @@
                 return (matchingValue !== undefined)
                     ? ( value.toString() == matchingValue.toString() )
                     : false;
-                
             },
 
             // different than another field
@@ -1931,7 +1886,6 @@
                 return (matchingValue !== undefined)
                     ? ( value.toString() !== matchingValue.toString() )
                     : false;
-                
             },
 
             creditCard: function(cardNumber, cardTypes) {

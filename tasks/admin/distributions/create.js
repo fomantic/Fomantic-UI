@@ -134,7 +134,6 @@ module.exports = function(callback) {
                     .pipe(replace(regExp.match.files, filenames))
                     .pipe(rename(release.files.meteor))
                     .pipe(gulp.dest(outputDirectory));
-                
             });
 
             if(distribution == 'CSS') {
@@ -146,13 +145,10 @@ module.exports = function(callback) {
                     ;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     components = gulp.src('dist/components/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     releases = gulp.src('dist/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     return mergeStream(themes, components, releases);
                 });
             }
@@ -167,22 +163,16 @@ module.exports = function(callback) {
                     ;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     themeImport = gulp.src('src/semantic.less', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     themeImport = gulp.src('src/theme.less', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     themeConfig = gulp.src('src/theme.config.example', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     siteTheme = gulp.src('src/_site/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     themes = gulp.src('src/themes/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
-                    
                     return mergeStream(definitions, themeImport, themeConfig, siteTheme, themes);
                 });
             }
@@ -198,7 +188,6 @@ module.exports = function(callback) {
                         return pkg;
                     }))
                     .pipe(gulp.dest(outputDirectory));
-                
             });
 
         })(distribution);

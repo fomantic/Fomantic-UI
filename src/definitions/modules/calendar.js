@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.calendar = function(parameters) {
         var
@@ -226,7 +225,6 @@
                         change: function() {
                             var
                                 inputElement = $input[0];
-            
                             if(inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
@@ -1044,7 +1042,6 @@
                                     w: w,
                                     ww: ('0'+w).slice(-2),
                                 };
-            
                             return format.replace(settings.regExp.token, function (match) {
                                 if (match in tokens) {
                                     return tokens[match];
@@ -1427,7 +1424,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-                
                                 if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
                                 }
@@ -1480,11 +1476,9 @@
                     module.initialize();
                 }
             });
-        
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.calendar.settings = {

@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.toast = $.fn.toast = function(parameters) {
         var
@@ -104,7 +103,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
-                        
                     },
 
                     destroy: function() {
@@ -122,7 +120,6 @@
                         }
                         $module
                             .removeData(moduleNamespace);
-                        
                     },
 
                     show: function(callback) {
@@ -194,7 +191,6 @@
                                 $toast
                                     .addClass(settings.class + ' ' + className.toast)
                                     .append($content);
-                                
                                 $toast.css('opacity', String(settings.opacity));
                                 if (settings.closeIcon) {
                                     $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
@@ -362,7 +358,6 @@
                             $toastBox
                                 .on('click' + eventNamespace, selector.approve, module.event.approve)
                                 .on('click' + eventNamespace, selector.deny, module.event.deny);
-                            
                         },
                     },
 
@@ -378,7 +373,6 @@
                             }
                             $toastBox
                                 .off('click' + eventNamespace);
-                            
                         },
                     },
 
@@ -400,7 +394,6 @@
                                             settings.onVisible.call($toastBox, element);
                                         },
                                     });
-                                
                             }
                         },
                         close: function(callback) {
@@ -438,7 +431,6 @@
                                             module.destroy();
                                         },
                                     });
-                                
                             }
                             else {
                                 module.error(error.noTransition);
@@ -575,7 +567,6 @@
                                 escapedChar  = function(chr) {
                                     return escape[chr];
                                 };
-            
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -717,7 +708,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -771,12 +761,10 @@
                     returnedValue = $module;
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.toast.settings = {

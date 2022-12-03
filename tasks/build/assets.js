@@ -24,7 +24,6 @@ function build(src, config) {
         .pipe(gulpif(config.hasPermissions, chmod(config.parsedPermissions)))
         .pipe(gulp.dest(config.paths.output.themes))
         .pipe(print(log.created));
-    
 }
 
 function buildAssets(src, config, callback) {

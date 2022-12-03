@@ -128,7 +128,6 @@ module.exports = function(callback) {
                     assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                     component: outputDirectory + '/' + component + '+(.js|.css)',
                 };
-      
 
             // copy dist files into output folder adjusting asset paths
             function copyDist() {
@@ -137,7 +136,6 @@ module.exports = function(callback) {
                     .pipe(flatten())
                     .pipe(replace(release.paths.source, release.paths.output))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // create npm module
@@ -152,7 +150,6 @@ module.exports = function(callback) {
                     .pipe(replace(regExp.match.jQuery, regExp.replace.jQuery))
                     .pipe(rename('index.js'))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // create readme
@@ -163,7 +160,6 @@ module.exports = function(callback) {
                     .pipe(replace(regExp.match.name, regExp.replace.name))
                     .pipe(replace(regExp.match.titleName, regExp.replace.titleName))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // extend bower.json
@@ -198,7 +194,6 @@ module.exports = function(callback) {
                         return bower;
                     }))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // extend package.json
@@ -226,7 +221,6 @@ module.exports = function(callback) {
                         return npm;
                     }))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // extend composer.json
@@ -249,7 +243,6 @@ module.exports = function(callback) {
                         return composer;
                     }))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // create release notes
@@ -264,14 +257,12 @@ module.exports = function(callback) {
                     .pipe(replace(regExp.match.spacedLists, regExp.replace.spacedLists))
                     .pipe(replace(regExp.match.trim, regExp.replace.trim))
                     .pipe(gulp.dest(outputDirectory));
-                
             }
 
             // Creates meteor package.js
             function createMeteorPackage() {
                 var
                     filenames = '';
-        
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))
                     .pipe(tap(function(file) {
@@ -295,11 +286,8 @@ module.exports = function(callback) {
                                     .pipe(replace(regExp.match.files, filenames))
                                     .pipe(rename(release.files.meteor))
                                     .pipe(gulp.dest(outputDirectory));
-                                
                             });
-                        
                     });
-                
             }
 
             tasks.push(gulp.series(

@@ -24,7 +24,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.api = $.fn.api = function(parameters) {
 
@@ -101,7 +100,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, instance);
-                        
                     },
 
                     destroy: function() {
@@ -109,19 +107,16 @@
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
-                        
                     },
 
                     bind: {
                         events: function() {
                             var
                                 triggerEvent = module.get.event();
-            
                             if( triggerEvent ) {
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
                                     .on(triggerEvent + eventNamespace, module.event.trigger);
-                                
                             }
                             else if(settings.on == 'now') {
                                 module.debug('Querying API endpoint immediately');
@@ -148,7 +143,6 @@
                         cachedResponse: function(url) {
                             var
                                 response;
-            
                             if(window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
@@ -306,7 +300,6 @@
                             return (module.request)
                                 ? (module.request.state() == 'pending')
                                 : false;
-                            
                         },
                         abortedRequest: function(xhr) {
                             if(xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
@@ -387,7 +380,6 @@
                                             value = (settings.encodeParameters)
                                                 ? module.get.urlEncodedValue(value)
                                                 : value;
-                                            
                                             url = url.replace(templatedString, value);
                                         }
                                     });
@@ -449,7 +441,6 @@
                                         base[key] = value;
                                         return base;
                                     };
-              
                                 // add files
                                 $.each($('input[type="file"]',$form), function(i, tag) {
                                     $.each($(tag)[0].files, function(j, file) {
@@ -462,7 +453,6 @@
                                         floatValue = parseFloat(el.value),
                                         value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
                                         nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'');
-                
                                     if(!(pushKey in pushes)) {
                                         pushes[pushKey] = 0;
                                         pushValues[pushKey] = value;
@@ -551,7 +541,6 @@
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
-                                
                                 if(translatedResponse) {
                                     module.debug('Modified API response in onResponse callback', settings.onResponse, translatedResponse, response);
                                     response = translatedResponse;
@@ -577,7 +566,6 @@
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
-                                
                                 if(timeLeft > 0) {
                                     module.debug('Response completed early delaying state change by', timeLeft);
                                 }
@@ -663,7 +651,6 @@
                                 .always(module.event.request.complete)
                                 .done(module.event.request.done)
                                 .fail(module.event.request.fail);
-                            
                         },
 
                         mockedXHR: function () {
@@ -683,7 +670,6 @@
                                 .always(module.event.xhr.complete)
                                 .done(module.event.xhr.done)
                                 .fail(module.event.xhr.fail);
-                            
 
                             if(responder) {
                                 if( isFunction(responder) ) {
@@ -717,13 +703,11 @@
                         xhr: function() {
                             var
                                 xhr;
-            
                             // ajax request promise
                             xhr = $.ajax(ajaxSettings)
                                 .always(module.event.xhr.always)
                                 .done(module.event.xhr.done)
                                 .fail(module.event.xhr.fail);
-                            
                             module.verbose('Created server request', xhr, ajaxSettings);
                             return xhr;
                         },
@@ -762,7 +746,6 @@
                                     ? module.decode.json(xhr.responseText)
                                     : xhr.responseText
                                 : false;
-                            
                         },
                         errorFromRequest: function(response, status, httpMessage) {
                             return ($.isPlainObject(response) && response.error !== undefined)
@@ -770,7 +753,6 @@
                                 : (settings.error[status] !== undefined) // use server error message
                                     ? settings.error[status]
                                     : httpMessage;
-                            
                         },
                         request: function() {
                             return module.request || false;
@@ -781,7 +763,6 @@
                         settings: function() {
                             var
                                 runSettings;
-            
                             runSettings = settings.beforeSend.call($module, settings);
                             if(runSettings) {
                                 if(runSettings.success !== undefined) {
@@ -809,7 +790,6 @@
                             return (runSettings !== undefined)
                                 ? $.extend(true, {}, runSettings)
                                 : $.extend(true, {}, settings);
-                            
                         },
                         urlEncodedValue: function(value) {
                             var
@@ -827,7 +807,6 @@
                         defaultData: function() {
                             var
                                 data = {};
-            
                             if( !isWindow(element) ) {
                                 if( module.is.input() ) {
                                     data.value = $module.val();
@@ -853,7 +832,6 @@
                                         : (element.onpropertychange !== undefined)
                                             ? 'propertychange'
                                             : 'keyup';
-                                    
                                 }
                                 else if( $module.is('form') ) {
                                     return 'submit';
@@ -892,7 +870,6 @@
                     abort: function() {
                         var
                             xhr = module.get.xhr();
-          
                         if( xhr && xhr.state() !== 'resolved') {
                             module.debug('Cancelling API request');
                             xhr.abort();
@@ -1028,7 +1005,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1081,12 +1057,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.api.settings = {

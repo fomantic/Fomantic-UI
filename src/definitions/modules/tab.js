@@ -24,7 +24,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.tab = function(parameters) {
 
@@ -77,9 +76,9 @@
                     parameterArray,
                     module,
 
-                    historyEvent;
+                    historyEvent
+                ;
 
-      
 
                 module = {
 
@@ -121,7 +120,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -129,7 +127,6 @@
                         $module
                             .removeData(moduleNamespace)
                             .off(eventNamespace);
-                        
                     },
 
                     bind: {
@@ -139,7 +136,6 @@
                                 module.debug('Attaching tab activation events to element', $module);
                                 $module
                                     .on('click' + eventNamespace, module.event.click);
-                                
                             }
                         },
                     },
@@ -147,7 +143,6 @@
                     determineTabs: function() {
                         var
                             $reference;
-          
 
                         // determine tab context
                         if(settings.context === 'parent') {
@@ -210,7 +205,6 @@
                                     $.address
                                         .history(true)
                                         .state(settings.path);
-                                    
                                     $(window).trigger('popstate');
                                 }
                                 else {
@@ -220,7 +214,6 @@
                             }
                             $.address
                                 .bind('change', module.event.history.change);
-                            
                         }
                     },
 
@@ -228,7 +221,6 @@
                         click: function(event) {
                             var
                                 tabPath = $(this).data(metadata.tab);
-            
                             if(tabPath !== undefined) {
                                 if(settings.history) {
                                     module.verbose('Updating page state', event);
@@ -276,7 +268,6 @@
                             return (cacheKey !== undefined)
                                 ? cache[cacheKey]
                                 : false;
-                            
                         },
                         add: function(cacheKey, content) {
                             cacheKey = cacheKey || activeTabPath;
@@ -325,7 +316,6 @@
                                     .addClass(className.loading)
                                     .siblings($tabs)
                                     .removeClass(className.active + ' ' + className.loading);
-                                
                                 if($tab.length > 0) {
                                     settings.onRequest.call($tab[0], tabPath);
                                 }
@@ -466,12 +456,10 @@
                             evaluateScripts = (evaluateScripts !== undefined)
                                 ? evaluateScripts
                                 : settings.evaluateScripts;
-                            
                             if(typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
                                 $tab
                                     .empty()
                                     .append($(html).clone(true));
-                                
                             }
                             else {
                                 if(evaluateScripts) {
@@ -501,8 +489,8 @@
                                     },
                                     onSuccess: function(response) {
                                         if(settings.cacheType == 'response') {
-                                            module.cache.add(fullTabPath, response)
-                                        ;}
+                                            module.cache.add(fullTabPath, response);
+                                        }
                                         module.update.content(tabPath, response);
                                         if(tabPath == activeTabPath) {
                                             module.debug('Content loaded', tabPath);
@@ -521,7 +509,6 @@
                                             setTimeout(function() {
                                                 var
                                                     $clone = $tab.children().clone(true);
-                      
                                                 $clone = $clone.not('script');
                                                 module.cache.add(fullTabPath, $clone);
                                             }, 0);
@@ -537,8 +524,8 @@
                                 request         = $tab.api('get request') || false,
                                 existingRequest = ( request && request.state() === 'pending' ),
                                 requestSettings,
-                                cachedContent;
-            
+                                cachedContent
+                            ;
 
                             fullTabPath   = fullTabPath || tabPath;
                             cachedContent = module.cache.read(fullTabPath);
@@ -590,10 +577,8 @@
                             if(!isActive) {
                                 $tab
                                     .addClass(className.active);
-                                
                                 $deactiveTabs
                                     .removeClass(className.active + ' ' + className.loading);
-                                
                                 if($tab.length > 0) {
                                     settings.onVisible.call($tab[0], tabPath);
                                 }
@@ -611,10 +596,8 @@
                             if(!isActive) {
                                 $navigation
                                     .addClass(className.active);
-                                
                                 $deactiveNavigation
                                     .removeClass(className.active + ' ' + className.loading);
-                                
                             }
                         },
                     },
@@ -627,12 +610,10 @@
                         navigation: function() {
                             $allModules
                                 .removeClass(className.active);
-                            
                         },
                         tabs: function() {
                             $tabs
                                 .removeClass(className.active + ' ' + className.loading);
-                            
                         },
                     },
 
@@ -641,7 +622,6 @@
                             return (tabName !== undefined)
                                 ? ( module.get.tabElement(tabName).length > 0 )
                                 : false;
-                            
                         },
                     },
 
@@ -694,7 +674,6 @@
                             return ($fullPathTab.length > 0)
                                 ? $fullPathTab
                                 : $simplePathTab;
-                            
                         },
                         tab: function() {
                             return activeTabPath;
@@ -734,7 +713,6 @@
                             return Array.isArray(array)
                                 ? array[ array.length - 1]
                                 : false;
-                            
                         },
                         pathToArray: function(pathName) {
                             if(pathName === undefined) {
@@ -743,13 +721,11 @@
                             return typeof pathName == 'string'
                                 ? pathName.split('/')
                                 : [pathName];
-                            
                         },
                         arrayToPath: function(pathArray) {
                             return Array.isArray(pathArray)
                                 ? pathArray.join('/')
                                 : false;
-                            
                         },
                     },
 
@@ -876,7 +852,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -928,11 +903,9 @@
                     module.initialize();
                 }
             });
-        
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
 
     };
 

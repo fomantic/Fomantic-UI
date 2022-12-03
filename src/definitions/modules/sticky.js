@@ -21,7 +21,6 @@
         : (typeof self != 'undefined' && self.Math == Math)
             ? self
             : Function('return this')();
-    
 
     $.fn.sticky = function(parameters) {
         var
@@ -71,7 +70,6 @@
                     documentObserver,
                     observer,
                     module;
-      
 
                 module      = {
 
@@ -96,7 +94,6 @@
                         instance = module;
                         $module
                             .data(moduleNamespace, module);
-                        
                     },
 
                     destroy: function() {
@@ -111,10 +108,8 @@
                         $window
                             .off('load' + eventNamespace, module.event.load)
                             .off('resize' + eventNamespace, module.event.resize);
-                        
                         $scroll
                             .off('scrollchange' + eventNamespace, module.event.scrollchange);
-                        
                         $module.removeData(moduleNamespace);
                     },
 
@@ -174,13 +169,11 @@
                             $window
                                 .on('load' + eventNamespace, module.event.load)
                                 .on('resize' + eventNamespace, module.event.resize);
-                            
                             // pub/sub pattern
                             $scroll
                                 .off('scroll' + eventNamespace)
                                 .on('scroll' + eventNamespace, module.event.scroll)
                                 .on('scrollchange' + eventNamespace, module.event.scrollchange);
-                            
                         },
                     },
 
@@ -240,7 +233,6 @@
                         sticky: function() {
                             var
                                 $element = $('<div/>');
-            
                             $element.addClass(className.supported);
                             return($element.css('position').match('sticky'));
                         },
@@ -314,7 +306,6 @@
                         direction: function(scroll) {
                             var
                                 direction = 'down';
-            
                             scroll = scroll || $scroll.scrollTop();
                             if(module.lastScroll && module.lastScroll > scroll) {
                                 direction = 'up';
@@ -326,7 +317,6 @@
                             return (module.lastScroll)
                                 ? (scroll - module.lastScroll)
                                 : 0;
-                            
                         },
                         currentElementScroll: function() {
                             if(module.elementScroll) {
@@ -335,7 +325,6 @@
                             return ( module.is.top() )
                                 ? Math.abs(parseInt($module.css('top'), 10))    || 0
                                 : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
-                            
                         },
 
                         elementScroll: function(scroll) {
@@ -371,7 +360,6 @@
                         minimumSize: function() {
                             $container
                                 .css('min-height', '');
-                            
                         },
                         offset: function() {
                             $module.css('margin-top', '');
@@ -383,12 +371,10 @@
                             module.verbose('Setting offset on element', settings.offset);
                             $module
                                 .css('margin-top', settings.offset);
-                            
                         },
                         containerSize: function() {
                             var
                                 tagName = $container[0].tagName;
-            
                             if(tagName === 'HTML' || tagName === 'body') {
                                 // this can trigger for too many reasons
                                 //module.error(error.container, tagName, $module);
@@ -418,10 +404,8 @@
                         minimumSize: function() {
                             var
                                 element   = module.cache.element;
-            
                             $container
                                 .css('min-height', element.height);
-                            
                         },
                         scroll: function(scroll) {
                             module.debug('Setting scroll on element', scroll);
@@ -432,13 +416,11 @@
                                 $module
                                     .css('bottom', '')
                                     .css('top', (-scroll) + 'px');
-                                
                             }
                             if( module.is.bottom() ) {
                                 $module
                                     .css('top', '')
                                     .css('bottom', scroll + 'px');
-                                
                             }
                         },
                         size: function() {
@@ -597,7 +579,6 @@
                             .removeClass(className.bottom)
                             .addClass(className.bound)
                             .addClass(className.top);
-                        
                         settings.onTop.call(element);
                         settings.onUnstick.call(element);
                     },
@@ -616,7 +597,6 @@
                             .removeClass(className.top)
                             .addClass(className.bound)
                             .addClass(className.bottom);
-                        
                         settings.onBottom.call(element);
                         settings.onUnstick.call(element);
                     },
@@ -645,7 +625,6 @@
                             .removeClass(className.bottom)
                             .addClass(className.fixed)
                             .addClass(className.top);
-                        
                         settings.onStick.call(element);
                     },
 
@@ -666,7 +645,6 @@
                             .removeClass(className.top)
                             .addClass(className.fixed)
                             .addClass(className.bottom);
-                        
                         settings.onStick.call(element);
                     },
 
@@ -678,7 +656,6 @@
                                 .removeClass(className.bound)
                                 .removeClass(className.top)
                                 .removeClass(className.bottom);
-                            
                         }
                     },
 
@@ -691,7 +668,6 @@
                                 .removeClass(className.fixed)
                                 .removeClass(className.top)
                                 .removeClass(className.bottom);
-                            
                             settings.onUnstick.call(element);
                         }
                     },
@@ -711,12 +687,10 @@
                                 width: '',
                                 height: '',
                             });
-                        
                         $container
                             .css({
                                 height: '',
                             });
-                        
                     },
 
                     setting: function(name, value) {
@@ -836,7 +810,6 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-              
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -888,12 +861,10 @@
                     module.initialize();
                 }
             });
-        
 
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
-        
     };
 
     $.fn.sticky.settings = {

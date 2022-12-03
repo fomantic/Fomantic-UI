@@ -39,7 +39,6 @@ module.exports = {
                     walk(nextDirectory, file);
                 }
             };
-    
 
         // start walk from outside require-dot-files directory
         file      = file || defaults.files.config;
@@ -130,11 +129,9 @@ module.exports = {
         const components = (Array.isArray(config.components) && config.components.length >= 1)
             ? config.components
             : defaults.components;
-    
         const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
             ? config.individuals
             : [];
-    
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
 
         // takes component object and creates file glob matching selected components
@@ -144,7 +141,6 @@ module.exports = {
         config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
             ? '{' + individuals.join(',') + '}'
             : undefined;
-        
 
         return config;
 
