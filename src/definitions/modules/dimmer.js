@@ -264,7 +264,8 @@
                                         settings.onVisible.call($dimmer);
                                         callback();
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             module.verbose('Showing dimmer animation with javascript');
                             module.set.dimmed();
@@ -283,7 +284,8 @@
                                     module.set.active();
                                     settings.onVisible.call($dimmer);
                                     callback();
-                                });
+                                })
+                            ;
                         }
                     },
                     hide: function (callback) {
@@ -311,7 +313,8 @@
                                         settings.onHidden.call($dimmer);
                                         callback();
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             module.verbose('Hiding dimmer with javascript');
                             $dimmer
@@ -322,7 +325,8 @@
                                     $dimmer.removeAttr('style');
                                     settings.onHidden.call($dimmer);
                                     callback();
-                                });
+                                })
+                            ;
                         }
                     },
                 },

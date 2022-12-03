@@ -200,7 +200,8 @@
                             module.queuing = false;
                             module.repaint();
                             module.animate.apply(this, settings);
-                        });
+                        })
+                    ;
                 },
 
                 complete: function (event) {
@@ -323,7 +324,8 @@
                             $module
                                 .css({
                                     'animation-duration': duration,
-                                });
+                                })
+                            ;
                         }
                     },
                     direction: function (direction) {

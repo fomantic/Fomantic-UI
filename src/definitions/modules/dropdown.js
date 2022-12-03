@@ -895,9 +895,10 @@
                                 }
                                 if (settings.match === 'both' || settings.match === 'text') {
                                     text = module.remove.diacritics(String(module.get.choiceText($choice, false)));
-                                    if (text.search(beginsWithRegExp) !== -1 ||
-                 (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) ||
-                 (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text))) {
+                                    if (text.search(beginsWithRegExp) !== -1
+                                        || (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text))
+                                        || (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text))
+                                    ) {
                                         results.push(this);
 
                                         return true;
@@ -905,15 +906,17 @@
                                 }
                                 if (settings.match === 'both' || settings.match === 'value') {
                                     value = module.remove.diacritics(String(module.get.choiceValue($choice, text)));
-                                    if (value.search(beginsWithRegExp) !== -1 ||
-                 (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value)) ||
-                 (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value))) {
+                                    if (value.search(beginsWithRegExp) !== -1
+                                        || (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value))
+                                        || (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value))
+                                    ) {
                                         results.push(this);
 
                                         return true;
                                     }
                                 }
-                            });
+                            })
+                        ;
                     }
                     module.debug('Showing only matched items', searchTerm);
                     module.remove.filteredItem();
@@ -2033,7 +2036,8 @@
                                         disabled: disabled,
                                     });
                                 }
-                            });
+                            })
+                        ;
                         if (settings.placeholder && settings.placeholder !== 'auto') {
                             module.debug('Setting placeholder value to', settings.placeholder);
                             select.placeholder = settings.placeholder;
@@ -2142,7 +2146,8 @@
                                             return true;
                                         }
                                     }
-                                });
+                                })
+                            ;
                         }
 
                         return $selectedItem;
@@ -2575,7 +2580,8 @@
 
                                         return false;
                                     }
-                                });
+                                })
+                            ;
                         }
                         // set next value
                         if ($nextValue) {
@@ -2769,7 +2775,8 @@
                                         .addClass(className.selected)
                                     ;
                                 }
-                            });
+                            })
+                        ;
                         if (!keepSearchTerm) {
                             module.remove.searchTerm();
                         }
@@ -2818,7 +2825,8 @@
                                     verbose: settings.verbose,
                                     silent: settings.silent,
                                     duration: settings.label.duration,
-                                });
+                                })
+                            ;
                         } else {
                             module.debug('Adding selection label', $label);
                             $label
@@ -3094,7 +3102,8 @@
                                 if (settings.useLabels) {
                                     $selected.removeClass(className.selected);
                                 }
-                            });
+                            })
+                        ;
                     },
                     selectedItem: function () {
                         $item.removeClass(className.selected);
@@ -3172,7 +3181,8 @@
                                     // selected will also remove label
                                     module.remove.selected(stringValue, false, preventChangeTrigger);
                                 }
-                            });
+                            })
+                        ;
                     },
                     tabbable: function () {
                         if (module.is.searchSelection()) {
@@ -3604,7 +3614,8 @@
                                         onComplete: function () {
                                             callback.call(element);
                                         },
-                                    });
+                                    })
+                                ;
                             } else {
                                 module.error(error.noTransition, transition);
                             }
@@ -3647,7 +3658,8 @@
                                         onComplete: function () {
                                             callback.call(element);
                                         },
-                                    });
+                                    })
+                                ;
                             } else {
                                 module.error(error.transition);
                             }

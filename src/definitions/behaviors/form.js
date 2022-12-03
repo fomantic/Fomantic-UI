@@ -993,7 +993,8 @@
                                 $prompt
                                     .fadeOut(settings.duration, function (){
                                         $prompt.remove();
-                                    });
+                                    })
+                                ;
                             }
                         }
                     },

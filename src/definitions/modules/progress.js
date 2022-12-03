@@ -206,7 +206,8 @@
                             .one(transitionEnd + eventNamespace, function (event) {
                                 clearTimeout(module.failSafeTimer);
                                 callback.call(this, event);
-                            });
+                            })
+                        ;
                         module.failSafeTimer = setTimeout(function () {
                             $bars.triggerHandler(transitionEnd);
                         }, settings.duration + settings.failSafeDelay);
@@ -494,7 +495,8 @@
                         $bars
                             .css({
                                 'transition-duration': duration,
-                            });
+                            })
+                        ;
                     },
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {

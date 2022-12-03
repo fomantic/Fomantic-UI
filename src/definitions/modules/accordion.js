@@ -192,7 +192,8 @@
                                     onComplete: function () {
                                         $activeContent.children().removeClass(className.transition);
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             $activeContent
                                 .children()
@@ -211,7 +212,8 @@
                             module.reset.display.call(this);
                             settings.onOpen.call(this);
                             settings.onChange.call(this);
-                        });
+                        })
+                    ;
                 },
 
                 close: function (query) {
@@ -251,7 +253,8 @@
                                         silent: settings.silent,
                                         duration: settings.duration,
                                         skipInlineHidden: true,
-                                    });
+                                    })
+                                ;
                             } else {
                                 $activeContent
                                     .children()
@@ -270,7 +273,8 @@
                                 module.reset.display.call(this);
                                 settings.onClose.call(this);
                                 settings.onChange.call(this);
-                            });
+                            })
+                        ;
                     }
                 },
 
@@ -317,7 +321,8 @@
                                         silent: settings.silent,
                                         duration: settings.duration,
                                         skipInlineHidden: true,
-                                    });
+                                    })
+                                ;
                             } else {
                                 $openContents
                                     .children()
@@ -331,7 +336,8 @@
                             .slideUp(settings.duration, settings.easing, function () {
                                 $(this).removeClass(className.active);
                                 module.reset.display.call(this);
-                            });
+                            })
+                        ;
                     }
                 },
 

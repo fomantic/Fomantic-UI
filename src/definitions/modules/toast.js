@@ -399,7 +399,8 @@
                                         callback.call($toastBox, element);
                                         settings.onVisible.call($toastBox, element);
                                     },
-                                });
+                                })
+                            ;
                         }
                     },
                     close: function (callback) {
@@ -436,7 +437,8 @@
                                         settings.onHidden.call($toastBox, element);
                                         module.destroy();
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             module.error(error.noTransition);
                         }

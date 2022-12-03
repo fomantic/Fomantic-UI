@@ -380,7 +380,8 @@
                                 top: settings.offset + 'px',
                                 left: 'auto',
                                 zIndex: settings.zIndex,
-                            });
+                            })
+                        ;
                         settings.onFixed.call(element);
                     },
                     image: function (src, callback) {
@@ -806,7 +807,8 @@
                                 top: '',
                                 left: '',
                                 zIndex: '',
-                            });
+                            })
+                        ;
                         settings.onUnfixed.call(element);
                     },
                     placeholder: function () {

@@ -198,7 +198,8 @@ module.exports = function (callback) {
                 .then((setupAnswers) => {
                     // hoist
                     answers = setupAnswers;
-                });
+                })
+            ;
         }
     });
 

@@ -192,7 +192,8 @@
                                     if (!module.is.animating() && !module.is.hidden()) {
                                         callback();
                                     }
-                                });
+                                })
+                            ;
                         } else {
                             module.debug('Input blurred without user action, closing results');
                             callback();
@@ -991,7 +992,8 @@
                                         callback();
                                     },
                                     queue: true,
-                                });
+                                })
+                            ;
                         } else {
                             module.debug('Showing results with javascript');
                             $results
@@ -1020,7 +1022,8 @@
                                         callback();
                                     },
                                     queue: true,
-                                });
+                                })
+                            ;
                         } else {
                             module.debug('Hiding results with javascript');
                             $results

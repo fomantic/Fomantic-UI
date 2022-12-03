@@ -363,7 +363,8 @@
                                 .data(metadata.activator)
                                 .popup('hide')
                             ;
-                        });
+                        })
+                    ;
                 },
                 exists: function () {
                     if (!$popup) {
@@ -431,7 +432,8 @@
                                         callback.call($popup, element);
                                         settings.onVisible.call($popup, element);
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             module.error(error.noTransition);
                         }
@@ -453,7 +455,8 @@
                                         callback.call($popup, element);
                                         settings.onHidden.call($popup, element);
                                     },
-                                });
+                                })
+                            ;
                         } else {
                             module.error(error.noTransition);
                         }
@@ -1031,7 +1034,8 @@
                             .on('touchstart' + elementNamespace, function (event) {
                                 module.verbose('Touched away from popup');
                                 module.event.hideGracefully.call(element, event);
-                            });
+                            })
+                        ;
                     },
                     clickaway: function () {
                         module.verbose('Binding popup close event to document');
@@ -1039,7 +1043,8 @@
                             .on(clickEvent + elementNamespace, function (event) {
                                 module.verbose('Clicked away from popup');
                                 module.event.hideGracefully.call(element, event);
-                            });
+                            })
+                        ;
                     },
                 },
 

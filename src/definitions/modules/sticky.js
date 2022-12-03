@@ -681,11 +681,13 @@
                         .css({
                             width: '',
                             height: '',
-                        });
+                        })
+                    ;
                     $container
                         .css({
                             height: '',
-                        });
+                        })
+                    ;
                 },
 
                 setting: function (name, value) {

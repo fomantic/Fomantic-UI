@@ -671,7 +671,8 @@
                             if (callbackCount == flyoutCount) {
                                 callback();
                             }
-                        });
+                        })
+                    ;
                 },
 
                 toggle: function () {

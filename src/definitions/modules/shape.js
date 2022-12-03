@@ -157,7 +157,8 @@
                             setTimeout(function (){
                                 $module.shape(method);
                             }, 0);
-                        });
+                        })
+                    ;
                 },
 
                 reset: function () {
@@ -222,7 +223,8 @@
                                     '-ms-transition-duration': duration,
                                     '-o-transition-duration': duration,
                                     'transition-duration': duration,
-                                });
+                                })
+                            ;
                         }
                     },
 
@@ -236,7 +238,8 @@
                             .css({
                                 width: width,
                                 height: height,
-                            });
+                            })
+                        ;
                     },
 
                     stageSize: function () {
@@ -465,13 +468,15 @@
                         $activeSide
                             .css({
                                 'transform': 'rotateX(0deg)',
-                            });
+                            })
+                        ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 'top': box.origin + 'px',
                                 'transform': 'rotateX(90deg) translateZ(' + box.depth.next + 'px) translateY(-' + box.depth.active + 'px)',
-                            });
+                            })
+                        ;
                     },
 
                     below: function () {
@@ -488,13 +493,15 @@
                         $activeSide
                             .css({
                                 'transform': 'rotateX(0deg)',
-                            });
+                            })
+                        ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 'top': box.origin + 'px',
                                 'transform': 'rotateX(-90deg) translateZ(' + box.depth.next + 'px) translateY(' + box.depth.active + 'px)',
-                            });
+                            })
+                        ;
                     },
 
                     left: function () {
@@ -515,13 +522,15 @@
                         $activeSide
                             .css({
                                 'transform': 'rotateY(0deg)',
-                            });
+                            })
+                        ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 'left': box.origin + 'px',
                                 'transform': 'rotateY(-90deg) translateZ(' + box.depth.next + 'px) translateX(-' + box.depth.active + 'px)',
-                            });
+                            })
+                        ;
                     },
 
                     right: function () {
@@ -542,13 +551,15 @@
                         $activeSide
                             .css({
                                 'transform': 'rotateY(0deg)',
-                            });
+                            })
+                        ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 'left': box.origin + 'px',
                                 'transform': 'rotateY(90deg) translateZ(' + box.depth.next + 'px) translateX(' + box.depth.active + 'px)',
-                            });
+                            })
+                        ;
                     },
 
                     behind: function () {
@@ -569,13 +580,15 @@
                         $activeSide
                             .css({
                                 'transform': 'rotateY(0deg)',
-                            });
+                            })
+                        ;
                         $nextSide
                             .addClass(className.animating)
                             .css({
                                 'left': box.origin + 'px',
                                 'transform': 'rotateY(-180deg)',
-                            });
+                            })
+                        ;
                     },
                 },
                 setting: function (name, value) {

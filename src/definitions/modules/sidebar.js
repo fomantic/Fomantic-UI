@@ -461,7 +461,8 @@
                             if (callbackCount == sidebarCount) {
                                 callback();
                             }
-                        });
+                        })
+                    ;
                 },
 
                 toggle: function () {

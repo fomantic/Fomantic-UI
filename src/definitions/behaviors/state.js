@@ -253,7 +253,8 @@
                                     };
                                 }
                                 module.change.state();
-                            });
+                            })
+                        ;
                     }
                 },
 

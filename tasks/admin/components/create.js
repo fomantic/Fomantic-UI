@@ -294,7 +294,8 @@ module.exports = function (callback) {
                                     .pipe(rename(release.files.meteor))
                                     .pipe(gulp.dest(outputDirectory))
                                 ;
-                            });
+                            })
+                        ;
                     })
                 ;
             }

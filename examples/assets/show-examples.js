@@ -8,7 +8,8 @@ $(document)
                     variation: 'small inverted',
                     exclusive: true,
                     content: $(this).attr('class'),
-                });
+                })
+            ;
         });
     })
 ;
