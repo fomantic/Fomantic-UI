@@ -86,8 +86,7 @@
                             module.verbose('Converted arguments into settings object', settings);
                             if(settings.interval) {
                                 module.delay(settings.interval);
-                            }
-                            else  {
+                            } else  {
                                 module.animate();
                             }
                             module.instantiate();
@@ -120,8 +119,7 @@
                         ;
                         if($nextElement.length === 0) {
                             $module.detach().appendTo($parentElement);
-                        }
-                        else {
+                        } else {
                             $module.detach().insertBefore($nextElement);
                         }
                     },
@@ -166,25 +164,21 @@
                             if(settings.queue) {
                                 if(!settings.allowRepeats && module.has.direction() && module.is.occurring() && module.queuing !== true) {
                                     module.debug('Animation is currently occurring, preventing queueing same animation', settings.animation);
-                                }
-                                else {
+                                } else {
                                     module.queue(settings.animation);
                                 }
                                 return false;
-                            }
-                            else if(!settings.allowRepeats && module.is.occurring()) {
+                            } else if(!settings.allowRepeats && module.is.occurring()) {
                                 module.debug('Animation is already occurring, will not execute repeated animation', settings.animation);
                                 return false;
-                            }
-                            else {
+                            } else {
                                 module.debug('New animation started, completing previous early', settings.animation);
                                 instance.complete();
                             }
                         }
                         if( module.can.animate() ) {
                             module.set.animating(settings.animation);
-                        }
-                        else {
+                        } else {
                             module.error(error.noAnimation, settings.animation, element);
                         }
                     },
@@ -219,13 +213,11 @@
                                 module.verbose('Animation is outward, hiding element');
                                 module.restore.conditions();
                                 module.hide();
-                            }
-                            else if( module.is.inward() ) {
+                            } else if( module.is.inward() ) {
                                 module.verbose('Animation is outward, showing element');
                                 module.restore.conditions();
                                 module.show();
-                            }
-                            else {
+                            } else {
                                 module.verbose('Static animation completed');
                                 module.restore.conditions();
                                 settings.onComplete.call(element);
@@ -262,8 +254,7 @@
                                 module.verbose('Overriding default display to hide element');
                                 $module
                                     .css('display', 'none');
-                            }
-                            else if(emptyStyle) {
+                            } else if(emptyStyle) {
                                 $module
                                     .removeAttr('style');
                             }
@@ -330,8 +321,7 @@
                             direction = direction || module.get.direction();
                             if(direction == className.inward) {
                                 module.set.inward();
-                            }
-                            else {
+                            } else {
                                 module.set.outward();
                             }
                         },
@@ -555,8 +545,7 @@
                                 $.each(animation, function(index, word){
                                     if(word === className.inward) {
                                         direction = className.inward;
-                                    }
-                                    else if(word === className.outward) {
+                                    } else if(word === className.outward) {
                                         direction = className.outward;
                                     }
                                 });
@@ -689,12 +678,10 @@
                                 if(currentAnimation != inAnimation) {
                                     module.debug('Direction exists for animation', animation);
                                     directionExists = true;
-                                }
-                                else if(currentAnimation == 'none' || !currentAnimation) {
+                                } else if(currentAnimation == 'none' || !currentAnimation) {
                                     module.debug('No animation defined in css', animation);
                                     return;
-                                }
-                                else {
+                                } else {
                                     module.debug('Static animation found', animation, displayType);
                                     directionExists = false;
                                 }
@@ -778,8 +765,7 @@
                     toggle: function() {
                         if( module.is.visible() ) {
                             module.hide();
-                        }
-                        else {
+                        } else {
                             module.show();
                         }
                     },
@@ -816,27 +802,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -844,8 +825,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -855,8 +835,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -911,8 +890,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -942,37 +920,30 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
 
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return (found !== undefined)
@@ -1020,11 +991,15 @@
         onStart: function() {},
         onComplete: function() {},
         onShow: function() {},
-        onBeforeShow: function(callback) {callback.call(this);},
+        onBeforeShow: function(callback) {
+            callback.call(this);
+        },
         onVisible: function() {},
         onHide: function() {},
         onHidden: function() {},
-        onBeforeHide: function(callback) {callback.call(this);},
+        onBeforeHide: function(callback) {
+            callback.call(this);
+        },
 
         // whether timeout should be used to ensure callback fires in cases animationend does not
         useFailSafe: true,

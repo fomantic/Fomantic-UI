@@ -63,7 +63,9 @@
                         || window.mozRequestAnimationFrame
                         || window.webkitRequestAnimationFrame
                         || window.msRequestAnimationFrame
-                        || function(callback) { setTimeout(callback, 0); },
+                        || function(callback) {
+                            setTimeout(callback, 0);
+                        },
 
                     element         = this,
 
@@ -137,8 +139,7 @@
                     determineContainer: function() {
                         if(settings.container) {
                             $container = [window,document].indexOf(settings.container) < 0 ? $document.find(settings.container) : $(settings.container);
-                        }
-                        else {
+                        } else {
                             $container = $module.offsetParent();
                         }
                     },
@@ -146,8 +147,7 @@
                     determineContext: function() {
                         if(settings.context) {
                             $context = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
-                        }
-                        else {
+                        } else {
                             $context = $container;
                         }
                         if($context.length === 0) {
@@ -342,11 +342,9 @@
                             ;
                             if(module.cache.fits || possibleScroll < 0) {
                                 elementScroll = 0;
-                            }
-                            else if(possibleScroll > maxScroll ) {
+                            } else if(possibleScroll > maxScroll ) {
                                 elementScroll = maxScroll;
-                            }
-                            else {
+                            } else {
                                 elementScroll = possibleScroll;
                             }
                             return elementScroll;
@@ -383,16 +381,14 @@
                                 // this can trigger for too many reasons
                                 //module.error(error.container, tagName, $module);
                                 module.determineContainer();
-                            }
-                            else {
+                            } else {
                                 var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
                                 if(tallestHeight - $container.outerHeight() > settings.jitter) {
                                     module.debug('Context is taller than container. Specifying exact height for container', module.cache.context.height);
                                     $container.css({
                                         height: tallestHeight,
                                     });
-                                }
-                                else {
+                                } else {
                                     $container.css({
                                         height: '',
                                     });
@@ -490,28 +486,24 @@
                                 if(scroll.top >= context.bottom) {
                                     module.debug('Initial element position is bottom of container');
                                     module.bindBottom();
-                                }
-                                else if(scroll.top > element.top) {
+                                } else if(scroll.top > element.top) {
                                     if( (element.height + scroll.top - elementScroll) >= context.bottom && element.height < context.height) {
                                         module.debug('Initial element position is bottom of container');
                                         module.bindBottom();
-                                    }
-                                    else {
+                                    } else {
                                         module.debug('Initial element position is fixed');
                                         module.fixTop();
                                     }
                                 }
 
-                            }
-                            else if( module.is.fixed() ) {
+                            } else if( module.is.fixed() ) {
 
                                 // currently fixed top
                                 if( module.is.top() ) {
                                     if( scroll.top <= element.top ) {
                                         module.debug('Fixed element reached top of container');
                                         module.setInitialPosition();
-                                    }
-                                    else if( (element.height + scroll.top - elementScroll) >= context.bottom ) {
+                                    } else if( (element.height + scroll.top - elementScroll) >= context.bottom ) {
                                         module.debug('Fixed element reached bottom of container');
                                         module.bindBottom();
                                     }
@@ -544,20 +536,17 @@
                                     }
 
                                 }
-                            }
-                            else if( module.is.bottom() ) {
+                            } else if( module.is.bottom() ) {
                                 if( scroll.top <= element.top ) {
                                     module.debug('Jumped from bottom fixed to top fixed, most likely used home/end button');
                                     module.setInitialPosition();
-                                }
-                                else {
+                                } else {
                                     if(settings.pushing) {
                                         if(module.is.bound() && scroll.bottom <= context.bottom ) {
                                             module.debug('Fixing bottom attached element to bottom of browser.');
                                             module.fixBottom();
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         if(module.is.bound() && (scroll.top <= context.bottom - element.height) ) {
                                             module.debug('Fixing bottom attached element to top of browser.');
                                             module.fixTop();
@@ -701,22 +690,18 @@
                     setting: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             settings[name] = value;
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -724,8 +709,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -735,8 +719,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -788,8 +771,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -818,36 +800,29 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -859,8 +834,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

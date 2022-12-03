@@ -118,8 +118,7 @@ module.exports = function(callback) {
                 .on('finish', function(callback) {
                     if(canProceed) {
                         pushFiles();
-                    }
-                    else {
+                    } else {
                         console.info('Nothing new to commit');
                         nextRepo();
                     }
@@ -164,8 +163,7 @@ module.exports = function(callback) {
 
         if(localRepoSetup) {
             setConfig();
-        }
-        else {
+        } else {
             console.error('Repository must be setup before running update distributions');
         }
 

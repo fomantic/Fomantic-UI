@@ -97,8 +97,7 @@ module.exports = function(callback) {
                     if(!isOmitted) {
                         if(stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
-                        }
-                        else {
+                        } else {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
                         }
                     }
@@ -112,8 +111,7 @@ module.exports = function(callback) {
                 for(var file in files) {
                     if(file == (files.length - 1) ) {
                         filenames += "'" + files[file] + "'";
-                    }
-                    else {
+                    } else {
                         filenames += "'" + files[file] + "',\n    ";
                     }
                 }
@@ -149,8 +147,7 @@ module.exports = function(callback) {
                         .pipe(gulp.dest(outputDirectory));
                     return mergeStream(themes, components, releases);
                 });
-            }
-            else if(distribution == 'LESS') {
+            } else if(distribution == 'LESS') {
                 tasks.push(function() {
                     var
                         definitions,

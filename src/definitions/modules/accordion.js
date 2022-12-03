@@ -137,12 +137,10 @@
                         if(isOpen || isOpening) {
                             if(settings.collapsible) {
                                 module.close.call($activeTitle);
-                            }
-                            else {
+                            } else {
                                 module.debug('Cannot close accordion content collapsing is disabled');
                             }
-                        }
-                        else {
+                        } else {
                             module.open.call($activeTitle);
                         }
                     },
@@ -191,8 +189,7 @@
                                             $activeContent.children().removeClass(className.transition);
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 $activeContent
                                     .children()
                                     .stop(true, true)
@@ -248,8 +245,7 @@
                                             duration: settings.duration,
                                             skipInlineHidden: true,
                                         });
-                                }
-                                else {
+                                } else {
                                     $activeContent
                                         .children()
                                         .stop(true, true)
@@ -286,8 +282,7 @@
                         if(settings.closeNested) {
                             $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
                             $openContents = $openTitles.next($content);
-                        }
-                        else {
+                        } else {
                             $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
                             $nestedTitles = $activeAccordion.find(activeContent).find(activeSelector).not($parentTitles);
                             $openTitles   = $openTitles.not($nestedTitles);
@@ -313,8 +308,7 @@
                                             duration: settings.duration,
                                             skipInlineHidden: true,
                                         });
-                                }
-                                else {
+                                } else {
                                     $openContents
                                         .children()
                                         .stop(true, true)
@@ -361,16 +355,13 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
@@ -379,12 +370,10 @@
                         if(value !== undefined) {
                             if( $.isPlainObject(name) ) {
                                 $.extend(true, module, name);
-                            }
-                            else {
+                            } else {
                                 module[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -392,8 +381,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -403,8 +391,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -456,8 +443,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -485,19 +471,15 @@
                                     : query;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -505,17 +487,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -526,8 +505,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

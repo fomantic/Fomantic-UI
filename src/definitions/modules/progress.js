@@ -222,8 +222,7 @@
                         if( module.has.total() ) {
                             startValue     = module.get.value();
                             incrementValue = incrementValue || 1;
-                        }
-                        else {
+                        } else {
                             startValue     = module.get.percent();
                             incrementValue = incrementValue || module.get.randomValue();
                         }
@@ -243,8 +242,7 @@
                             decrementValue =  decrementValue || 1;
                             newValue       =  startValue - decrementValue;
                             module.debug('Decrementing value by', decrementValue, startValue);
-                        }
-                        else {
+                        } else {
                             startValue     =  module.get.percent();
                             decrementValue =  decrementValue || module.get.randomValue();
                             newValue       =  startValue - decrementValue;
@@ -297,8 +295,7 @@
                                     module.debug('Value cannot increment above total', module.total);
                                     return module.total;
                                 }
-                            }
-                            else if(value > 100 ) {
+                            } else if(value > 100 ) {
                                 module.debug('Value cannot increment above 100 percent');
                                 return 100;
                             }
@@ -521,7 +518,7 @@
                                     return (autoPrecision > 0)
                                         ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                                         : Math.round(percent)
-                                ;
+                                    ;
                                 });
                                 module.percent = roundedPercents;
                                 if (hasTotal) {
@@ -580,18 +577,15 @@
                                 if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                                     module.set.success();
                                     module.debug('Automatically triggering success at 100%');
-                                }
-                                else {
+                                } else {
                                     module.verbose('Reached 100% removing active state');
                                     module.remove.active();
                                     module.remove.progressPoll();
                                 }
-                            }
-                            else if(percent > 0) {
+                            } else if(percent > 0) {
                                 module.verbose('Adjusting active progress bar label', percent);
                                 module.set.active();
-                            }
-                            else {
+                            } else {
                                 module.remove.active();
                                 module.remove.warning();
                                 module.remove.error();
@@ -604,12 +598,10 @@
                                 var $progress = $(element);
                                 if (text !== undefined) {
                                     $progress.text( module.get.text(text, index) );
-                                }
-                                else if (settings.label == 'ratio' && module.has.total()) {
+                                } else if (settings.label == 'ratio' && module.has.total()) {
                                     module.verbose('Adding ratio to bar label');
                                     $progress.text( module.get.text(settings.text.ratio, index) );
-                                }
-                                else if (settings.label == 'percent') {
+                                } else if (settings.label == 'percent') {
                                     module.verbose('Adding percentage to bar label');
                                     $progress.text( module.get.text(settings.text.percent, index) );
                                 }
@@ -643,8 +635,7 @@
                             if(settings.text.success) {
                                 text = settings.onLabelUpdate('success', text, module.value, module.total);
                                 module.set.label(text);
-                            }
-                            else {
+                            } else {
                                 text = settings.onLabelUpdate('active', text, module.value, module.total);
                                 module.set.label(text);
                             }
@@ -698,8 +689,7 @@
                                 module.debug('First update in progress update interval, immediately updating', value);
                                 module.update.progress(value);
                                 module.create.progressPoll();
-                            }
-                            else {
+                            } else {
                                 module.debug('Updated within interval, setting next update to use new value', value);
                                 module.set.nextValue(value);
                             }
@@ -737,8 +727,7 @@
                                 if (hasTotal) {
                                     percentComplete = module.total > 0 ? (value / module.total) * 100 : 100;
                                     module.debug('Calculating percent complete from total', percentComplete);
-                                }
-                                else {
+                                } else {
                                     percentComplete = value;
                                     module.debug('Setting value to exact percentage value', percentComplete);
                                 }
@@ -752,27 +741,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -780,8 +764,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -791,8 +774,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -844,8 +826,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -874,19 +855,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -894,17 +871,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -916,8 +890,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

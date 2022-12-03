@@ -149,26 +149,22 @@
                             if($module.closest(selector.ui).length > 0) {
                                 $reference = $module.closest(selector.ui);
                                 module.verbose('Using closest UI element as parent', $reference);
-                            }
-                            else {
+                            } else {
                                 $reference = $module;
                             }
                             $context = $reference.parent();
                             module.verbose('Determined parent element for creating context', $context);
-                        }
-                        else if(settings.context) {
+                        } else if(settings.context) {
                             $context = [window,document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context);
                             module.verbose('Using selector for tab context', settings.context, $context);
-                        }
-                        else {
+                        } else {
                             $context = $('body');
                         }
                         // find tabs
                         if(settings.childrenOnly) {
                             $tabs = $context.children(selector.tabs);
                             module.debug('Searching tab context children for tabs', $context, $tabs);
-                        }
-                        else {
+                        } else {
                             $tabs = $context.find(selector.tabs);
                             module.debug('Searching tab context for tabs', $context, $tabs);
                         }
@@ -197,8 +193,7 @@
                         if( $.address === undefined ) {
                             module.error(error.state);
                             return false;
-                        }
-                        else {
+                        } else {
                             if(settings.historyType == 'state') {
                                 module.debug('Using HTML5 to manage state');
                                 if(settings.path !== false) {
@@ -206,8 +201,7 @@
                                         .history(true)
                                         .state(settings.path);
                                     $(window).trigger('popstate');
-                                }
-                                else {
+                                } else {
                                     module.error(error.path);
                                     return false;
                                 }
@@ -226,14 +220,12 @@
                                 if(settings.history) {
                                     module.verbose('Updating page state', event);
                                     $.address.value(tabPath);
-                                }
-                                else {
+                                } else {
                                     module.verbose('Changing tab', event);
                                     module.changeTab(tabPath);
                                 }
                                 event.preventDefault();
-                            }
-                            else {
+                            } else {
                                 module.debug('No tab specified');
                             }
                         },
@@ -299,8 +291,7 @@
                             module.verbose('Setting up automatic tab retrieval from server', url);
                             if($.isPlainObject(settings.apiSettings)) {
                                 settings.apiSettings.url = url;
-                            }
-                            else {
+                            } else {
                                 settings.apiSettings = {
                                     url: url,
                                 };
@@ -361,8 +352,7 @@
 
                                 if(isLastIndex) {
                                     isLastTab = true;
-                                }
-                                else {
+                                } else {
                                     nextPathArray = pathArray.slice(0, index + 2);
                                     nextPath      = module.utilities.arrayToPath(nextPathArray);
                                     isLastTab     = ( !module.is.tab(nextPath) );
@@ -378,8 +368,7 @@
                                     if(!shouldIgnoreLoad) {
                                         module.activate.navigation(currentPath);
                                         module.fetch.content(currentPath, tabPath);
-                                    }
-                                    else {
+                                    } else {
                                         module.debug('Ignoring remote content on first tab load', currentPath);
                                         firstLoad = false;
                                         module.cache.add(tabPath, $tab.html());
@@ -388,8 +377,7 @@
                                         settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                     }
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.debug('Opened local tab', currentPath);
                                     module.activate.all(currentPath);
                                     if( !module.cache.read(currentPath) ) {
@@ -400,8 +388,7 @@
                                     settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                 }
 
-                            }
-                            else if(tabPath.search('/') == -1 && tabPath !== '') {
+                            } else if(tabPath.search('/') == -1 && tabPath !== '') {
                                 // look for in page anchor
                                 tabPath = module.escape.string(tabPath);
                                 $anchor     = $('#' + tabPath + ', a[name="' + tabPath + '"]');
@@ -428,8 +415,7 @@
                                     settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                     return false;
                                 }
-                            }
-                            else {
+                            } else {
                                 module.error(error.missingTab, $module, $context, currentPath);
                                 return false;
                             }
@@ -461,13 +447,11 @@
                                 $tab
                                     .empty()
                                     .append($(html).clone(true));
-                            }
-                            else {
+                            } else {
                                 if(evaluateScripts) {
                                     module.debug('Updating HTML and evaluating inline scripts', tabPath, html);
                                     $tab.html(html);
-                                }
-                                else {
+                                } else {
                                     module.debug('Updating HTML', tabPath, html);
                                     tab.innerHTML = html;
                                 }
@@ -496,8 +480,7 @@
                                         if(tabPath == activeTabPath) {
                                             module.debug('Content loaded', tabPath);
                                             module.activate.tab(tabPath);
-                                        }
-                                        else {
+                                        } else {
                                             module.debug('Content loaded in background', tabPath);
                                         }
                                         settings.onFirstLoad.call($tab[0], tabPath, parameterArray, historyEvent);
@@ -505,8 +488,7 @@
 
                                         if(settings.loadOnce) {
                                             module.cache.add(fullTabPath, true);
-                                        }
-                                        else if(typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                        } else if(typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
                                             setTimeout(function() {
                                                 var
                                                     $clone = $tab.children().clone(true)
@@ -514,8 +496,7 @@
                                                 $clone = $clone.not('script');
                                                 module.cache.add(fullTabPath, $clone);
                                             }, 0);
-                                        }
-                                        else {
+                                        } else {
                                             module.cache.add(fullTabPath, $tab.html());
                                         }
                                     },
@@ -539,24 +520,20 @@
                                 if(!settings.loadOnce) {
                                     if(settings.evaluateScripts == 'once') {
                                         module.update.content(tabPath, cachedContent, false);
-                                    }
-                                    else {
+                                    } else {
                                         module.update.content(tabPath, cachedContent);
                                     }
                                 }
                                 settings.onLoad.call($tab[0], tabPath, parameterArray, historyEvent);
-                            }
-                            else if(existingRequest) {
+                            } else if(existingRequest) {
                                 module.set.loading(tabPath);
                                 module.debug('Content is already loading', fullTabPath);
-                            }
-                            else if($.api !== undefined) {
+                            } else if($.api !== undefined) {
                                 requestSettings = $.extend(true, {}, settings.apiSettings, apiSettings);
                                 module.debug('Retrieving remote content', fullTabPath, requestSettings);
                                 module.set.loading(tabPath);
                                 $tab.api(requestSettings);
-                            }
-                            else {
+                            } else {
                                 module.error(error.api);
                             }
                         },
@@ -650,8 +627,7 @@
                                     return module.get.defaultPath(defaultTab);
                                 }
                                 module.error(error.recursion);
-                            }
-                            else {
+                            } else {
                                 module.debug('No default tabs found for', tabPath, $tabs);
                             }
                             recursionDepth = 0;
@@ -735,27 +711,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -763,8 +734,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -774,8 +744,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -827,8 +796,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -857,19 +825,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -877,17 +841,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -898,8 +859,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

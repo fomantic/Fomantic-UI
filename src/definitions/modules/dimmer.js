@@ -72,18 +72,15 @@
 
                             $dimmable = $module.parent();
                             $dimmer   = $module;
-                        }
-                        else {
+                        } else {
                             $dimmable = $module;
                             if( module.has.dimmer() ) {
                                 if(settings.dimmerName) {
                                     $dimmer = $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName);
-                                }
-                                else {
+                                } else {
                                     $dimmer = $dimmable.find(selector.dimmer);
                                 }
-                            }
-                            else {
+                            } else {
                                 $dimmer = module.create();
                             }
                         }
@@ -118,8 +115,7 @@
                                 $dimmable
                                     .on('mouseenter' + eventNamespace, module.show)
                                     .on('mouseleave' + eventNamespace, module.hide);
-                            }
-                            else if(settings.on == 'click') {
+                            } else if(settings.on == 'click') {
                                 $dimmable
                                     .on(clickEvent + eventNamespace, module.toggle);
                             }
@@ -191,8 +187,7 @@
                             module.set.variation();
                             module.animate.show(callback);
                             settings.onChange.call(element);
-                        }
-                        else {
+                        } else {
                             module.debug('Dimmer is already shown or disabled');
                         }
                     },
@@ -209,8 +204,7 @@
                             module.debug('Hiding dimmer', $dimmer);
                             module.animate.hide(callback);
                             settings.onChange.call(element);
-                        }
-                        else {
+                        } else {
                             module.debug('Dimmer is not visible');
                         }
                     },
@@ -219,8 +213,7 @@
                         module.verbose('Toggling dimmer visibility', $dimmer);
                         if( !module.is.dimmed() ) {
                             module.show();
-                        }
-                        else {
+                        } else {
                             if ( module.is.closable() ) {
                                 module.hide();
                             }
@@ -236,8 +229,7 @@
                                 if(settings.useFlex) {
                                     module.debug('Using flex dimmer');
                                     module.remove.legacy();
-                                }
-                                else {
+                                } else {
                                     module.debug('Using legacy non-flex dimmer');
                                     module.set.legacy();
                                 }
@@ -265,8 +257,7 @@
                                             callback();
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 module.verbose('Showing dimmer animation with javascript');
                                 module.set.dimmed();
                                 if(settings.opacity == 'auto') {
@@ -313,8 +304,7 @@
                                             callback();
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 module.verbose('Hiding dimmer with javascript');
                                 $dimmer
                                     .stop()
@@ -336,8 +326,7 @@
                         duration: function() {
                             if( module.is.active() ) {
                                 return settings.transition.hideDuration || settings.duration.hide || settings.duration;
-                            }
-                            else {
+                            } else {
                                 return settings.transition.showDuration || settings.duration.show || settings.duration;
                             }
                         },
@@ -347,8 +336,7 @@
                         dimmer: function() {
                             if(settings.dimmerName) {
                                 return ($module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0);
-                            }
-                            else {
+                            } else {
                                 return ( $module.find(selector.dimmer).length > 0 );
                             }
                         },
@@ -408,8 +396,7 @@
                                 colorArray[2] = colorArray[2].replace(')','');
                                 colorArray[3] = opacity + ')';
                                 color         = colorArray.join(',');
-                            }
-                            else {
+                            } else {
                                 color = 'rgba(0, 0, 0, ' + opacity + ')';
                             }
                             module.debug('Setting opacity to', opacity);
@@ -467,27 +454,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -495,8 +477,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -506,8 +487,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -562,8 +542,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -592,19 +571,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -612,17 +587,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -636,8 +608,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

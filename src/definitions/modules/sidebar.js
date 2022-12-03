@@ -44,7 +44,9 @@
                 || window.mozRequestAnimationFrame
                 || window.webkitRequestAnimationFrame
                 || window.msRequestAnimationFrame
-                || function(callback) { setTimeout(callback, 0); },
+                || function(callback) {
+                    setTimeout(callback, 0);
+                },
 
             returnedValue;
 
@@ -99,8 +101,7 @@
                         // avoids locking rendering if initialized in onReady
                         if(settings.delaySetup) {
                             requestAnimationFrame(module.setup.layout);
-                        }
-                        else {
+                        } else {
                             module.setup.layout();
                         }
 
@@ -247,8 +248,7 @@
                                     + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            }
-                            else if(direction === 'top' || direction == 'bottom') {
+                            } else if(direction === 'top' || direction == 'bottom') {
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
@@ -267,8 +267,7 @@
                                         + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + ' }';
-                                }
-                                else if(direction === 'top' || direction == 'bottom') {
+                                } else if(direction === 'top' || direction == 'bottom') {
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -354,8 +353,7 @@
                             module.debug('Attaching sidebar events to element', selector, event);
                             $toggle
                                 .on('click' + eventNamespace, event);
-                        }
-                        else {
+                        } else {
                             module.error(error.notFound, selector);
                         }
                     },
@@ -398,12 +396,10 @@
                                     if(settings.transition != 'overlay') {
                                         module.hideOthers(module.show);
                                         return;
-                                    }
-                                    else {
+                                    } else {
                                         module.hideOthers();
                                     }
-                                }
-                                else {
+                                } else {
                                     settings.transition = 'overlay';
                                 }
                             }
@@ -413,8 +409,7 @@
                                 settings.onVisible.call(element);
                             });
                             settings.onChange.call(element);
-                        }
-                        else {
+                        } else {
                             module.debug('Sidebar is already visible');
                         }
                     },
@@ -464,8 +459,7 @@
                         module.verbose('Determining toggled direction');
                         if(module.is.hidden()) {
                             module.show();
-                        }
-                        else {
+                        } else {
                             module.hide();
                         }
                     },
@@ -595,8 +589,7 @@
                         dimmerStyles: function() {
                             if(settings.blurring) {
                                 $pusher.addClass(className.blurring);
-                            }
-                            else {
+                            } else {
                                 $pusher.removeClass(className.blurring);
                             }
                         },
@@ -708,11 +701,9 @@
                         direction: function() {
                             if($module.hasClass(className.top)) {
                                 return className.top;
-                            }
-                            else if($module.hasClass(className.right)) {
+                            } else if($module.hasClass(className.right)) {
                                 return className.right;
-                            }
-                            else if($module.hasClass(className.bottom)) {
+                            } else if($module.hasClass(className.bottom)) {
                                 return className.bottom;
                             }
                             return className.left;
@@ -797,8 +788,7 @@
                             if(isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
-                            }
-                            else {
+                            } else {
                                 return false;
                             }
                         },
@@ -810,8 +800,7 @@
                             if(isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
-                            }
-                            else {
+                            } else {
                                 module.verbose('Browser is not mobile, using regular transition', userAgent);
                                 return false;
                             }
@@ -847,27 +836,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -875,8 +859,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -886,8 +869,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -939,8 +921,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -969,19 +950,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -989,17 +966,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1011,8 +985,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         module.invoke('destroy');
                     }

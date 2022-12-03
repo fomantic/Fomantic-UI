@@ -8,8 +8,7 @@ assets.forEach(function (path) {
         HTTP.get('/packages/semantic_ui/' + path, function callback(error, result) {
             if (error) {
                 test.fail({message: 'Image failed to load'});
-            }
-            else {
+            } else {
                 test.isTrue(result.content.length > 10000, 'Image ' + path + ' could not be downloaded');
             }
             done();

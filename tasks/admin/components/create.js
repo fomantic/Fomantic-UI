@@ -175,8 +175,7 @@ module.exports = function(callback) {
                                     component + '.js',
                                     component + '.css',
                                 ];
-                            }
-                            else {
+                            } else {
                                 bower.main = [
                                     component + '.js',
                                 ];
@@ -184,8 +183,7 @@ module.exports = function(callback) {
                             bower.dependencies = {
                                 jquery: '>=1.8',
                             };
-                        }
-                        else {
+                        } else {
                             bower.main = [
                                 component + '.css',
                             ];

@@ -108,12 +108,10 @@
                         if( module.is.indeterminate() ) {
                             module.debug('Initial value is indeterminate');
                             module.indeterminate();
-                        }
-                        else if( module.is.checked() ) {
+                        } else if( module.is.checked() ) {
                             module.debug('Initial value is checked');
                             module.check();
-                        }
-                        else {
+                        } else {
                             module.debug('Initial value is unchecked');
                             module.uncheck();
                         }
@@ -164,8 +162,7 @@
                             module.debug('Attaching checkbox events to element', selector, event);
                             $element
                                 .on('click' + eventNamespace, event);
-                        }
-                        else {
+                        } else {
                             module.error(error.notFound);
                         }
                     },
@@ -243,8 +240,7 @@
                                 $input.trigger('blur');
                                 shortcutPressed = true;
                                 event.stopPropagation();
-                            }
-                            else if(!event.ctrlKey && module.can.change()) {
+                            } else if(!event.ctrlKey && module.can.change()) {
                                 if( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey) ) {
                                     module.verbose('Enter/space key pressed, toggling checkbox');
                                     module.toggle();
@@ -566,8 +562,7 @@
                             if($input.prevAll(selector.label).length > 0) {
                                 $input.prev(selector.label).detach().insertAfter($input);
                                 module.debug('Moving existing label', $label);
-                            }
-                            else if( !module.has.label() ) {
+                            } else if( !module.has.label() ) {
                                 $label = $('<label>').insertAfter($input);
                                 module.debug('Creating label', $label);
                             }
@@ -617,8 +612,7 @@
                         if( module.is.indeterminate() || module.is.unchecked() ) {
                             module.debug('Currently unchecked');
                             module.check();
-                        }
-                        else if( module.is.checked() && module.can.uncheck() ) {
+                        } else if( module.is.checked() && module.can.uncheck() ) {
                             module.debug('Currently checked');
                             module.uncheck();
                         }
@@ -627,27 +621,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -655,8 +644,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -666,8 +654,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -719,8 +706,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -749,19 +735,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -769,17 +751,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -791,8 +770,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

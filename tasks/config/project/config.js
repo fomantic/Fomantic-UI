@@ -28,8 +28,7 @@ module.exports = {
                     // found file
                     configPath = path.normalize(directory);
                     return;
-                }
-                else {
+                } else {
                     // reached file system root, let's stop
                     if(nextDirectory == directory) {
                         return;
@@ -103,8 +102,7 @@ module.exports = {
         if(config.permission) {
             config.hasPermissions = true;
             config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
-        }
-        else {
+        } else {
             // pass blank object to avoid causing errors
             config.permission     = {};
             config.hasPermissions = false;

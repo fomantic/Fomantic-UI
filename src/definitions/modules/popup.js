@@ -121,8 +121,7 @@
                     refresh: function() {
                         if(settings.popup) {
                             $popup = $document.find(settings.popup).eq(0);
-                        }
-                        else {
+                        } else {
                             if(settings.inline) {
                                 $popup = $target.nextAll(selector.popup).eq(0);
                                 settings.popup = $popup;
@@ -138,8 +137,7 @@
                                     .detach()
                                     .appendTo($offsetParent);
                             }
-                        }
-                        else {
+                        } else {
                             $offsetParent = (settings.inline)
                                 ? module.get.offsetParent($target)
                                 : module.has.popup()
@@ -233,8 +231,7 @@
                             if(event && !inPopup && isInDOM) {
                                 module.debug('Click occurred outside popup hiding popup');
                                 module.hide();
-                            }
-                            else {
+                            } else {
                                 module.debug('Click was inside popup, keeping popup open');
                             }
                         },
@@ -264,8 +261,7 @@
                                 module.verbose('Inserting popup element inline', $popup);
                                 $popup
                                     .insertAfter($module);
-                            }
-                            else {
+                            } else {
                                 module.verbose('Appending popup element to body', $popup);
                                 $popup
                                     .appendTo( $context );
@@ -277,16 +273,14 @@
                                 module.bind.popup();
                             }
                             settings.onCreate.call($popup, element);
-                        }
-                        else if(settings.popup) {
+                        } else if(settings.popup) {
                             $document.find(settings.popup).data(metadata.activator, $module);
                             module.verbose('Used popup specified in settings');
                             module.refresh();
                             if(settings.hoverable) {
                                 module.bind.popup();
                             }
-                        }
-                        else if($target.next(selector.popup).length !== 0) {
+                        } else if($target.next(selector.popup).length !== 0) {
                             module.verbose('Pre-existing popup found');
                             settings.inline = true;
                             settings.popup  = $target.next(selector.popup).data(metadata.activator, $module);
@@ -294,8 +288,7 @@
                             if(settings.hoverable) {
                                 module.bind.popup();
                             }
-                        }
-                        else {
+                        } else {
                             module.debug('No content specified skipping display', element);
                         }
                     },
@@ -313,8 +306,7 @@
                             module.debug('Popup is hidden, showing pop-up');
                             module.unbind.close();
                             module.show();
-                        }
-                        else {
+                        } else {
                             module.debug('Popup is visible, hiding pop-up');
                             module.hide();
                         }
@@ -330,8 +322,7 @@
                             if(settings.onShow.call($popup, element) === false) {
                                 module.debug('onShow callback returned false, cancelling popup animation');
                                 return;
-                            }
-                            else if(!settings.preserve && !settings.popup) {
+                            } else if(!settings.preserve && !settings.popup) {
                                 module.refresh();
                             }
                             if( $popup && module.set.position() ) {
@@ -374,8 +365,7 @@
                         }
                         if(settings.inline || settings.popup) {
                             return ( module.has.popup() );
-                        }
-                        else {
+                        } else {
                             return ( $popup.closest($context).length >= 1 )
                                 ? true
                                 : false;
@@ -435,8 +425,7 @@
                                             settings.onVisible.call($popup, element);
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 module.error(error.noTransition);
                             }
                         },
@@ -458,8 +447,7 @@
                                             settings.onHidden.call($popup, element);
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 module.error(error.noTransition);
                             }
                         },
@@ -589,8 +577,7 @@
                         startEvent: function() {
                             if(settings.on == 'hover') {
                                 return 'mouseenter';
-                            }
-                            else if(settings.on == 'focus') {
+                            } else if(settings.on == 'focus') {
                                 return 'focus';
                             }
                             return false;
@@ -601,8 +588,7 @@
                         endEvent: function() {
                             if(settings.on == 'hover') {
                                 return 'mouseleave';
-                            }
-                            else if(settings.on == 'focus') {
+                            } else if(settings.on == 'focus') {
                                 return 'blur';
                             }
                             return false;
@@ -779,12 +765,10 @@
                                 if(position == 'left center' || position == 'right center') {
                                     offset       +=  target.margin.top;
                                     distanceAway += -target.margin.left;
-                                }
-                                else if (position == 'top left' || position == 'top center' || position == 'top right') {
+                                } else if (position == 'top left' || position == 'top center' || position == 'top right') {
                                     offset       += target.margin.left;
                                     distanceAway -= target.margin.top;
-                                }
-                                else {
+                                } else {
                                     offset       += target.margin.left;
                                     distanceAway += target.margin.top;
                                 }
@@ -899,12 +883,10 @@
                                     return ($popup)
                                         ? module.set.position(position, calculations)
                                         : false;
-                                }
-                                else {
+                                } else {
                                     if(settings.lastResort) {
                                         module.debug('No position found, showing with last position');
-                                    }
-                                    else {
+                                    } else {
                                         module.debug('Popup could not find a position to display', $popup);
                                         module.error(error.cannotPlace, element);
                                         module.remove.attempts();
@@ -999,8 +981,7 @@
                             }
                             if(module.is.closable()) {
                                 module.bind.clickaway();
-                            }
-                            else if(settings.on == 'hover' && openedWithTouch) {
+                            } else if(settings.on == 'hover' && openedWithTouch) {
                                 module.bind.touchClose();
                             }
                         },
@@ -1110,8 +1091,7 @@
                                 $popup
                                     .transition('remove transition');
                             }
-                        }
-                        else {
+                        } else {
                             module.removePopup();
                         }
                     },
@@ -1119,22 +1099,18 @@
                     setting: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             settings[name] = value;
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -1142,8 +1118,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -1153,8 +1128,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -1206,8 +1180,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1236,36 +1209,29 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1277,8 +1243,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

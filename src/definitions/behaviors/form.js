@@ -86,8 +86,7 @@
                                 module.instantiate();
                             }
                             module.invoke(query);
-                        }
-                        else {
+                        } else {
                             if(instance !== undefined) {
                                 instance.invoke('destroy');
                                 module.refresh();
@@ -207,14 +206,11 @@
                             if(isDropdown) {
                                 module.verbose('Resetting dropdown value', $element, defaultValue);
                                 $element.dropdown('clear', true);
-                            }
-                            else if(isCheckbox) {
+                            } else if(isCheckbox) {
                                 $field.prop('checked', false);
-                            }
-                            else if (isCalendar) {
+                            } else if (isCalendar) {
                                 $calendar.calendar('clear');
-                            }
-                            else {
+                            } else {
                                 module.verbose('Resetting field value', $field, defaultValue);
                                 $field.val('');
                             }
@@ -247,15 +243,12 @@
                             if(isDropdown) {
                                 module.verbose('Resetting dropdown value', $element, defaultValue);
                                 $element.dropdown('restore defaults', true);
-                            }
-                            else if(isCheckbox) {
+                            } else if(isCheckbox) {
                                 module.verbose('Resetting checkbox value', $element, defaultValue);
                                 $field.prop('checked', defaultValue);
-                            }
-                            else if (isCalendar) {
+                            } else if (isCalendar) {
                                 $calendar.calendar('set date', defaultValue);
-                            }
-                            else {
+                            } else {
                                 module.verbose('Resetting field value', $field, defaultValue);
                                 $field.val(defaultValue);
                             }
@@ -316,11 +309,9 @@
                         empty: function($field) {
                             if(!$field || $field.length === 0) {
                                 return true;
-                            }
-                            else if($field.is(selector.checkbox)) {
+                            } else if($field.is(selector.checkbox)) {
                                 return !$field.is(':checked');
-                            }
-                            else {
+                            } else {
                                 return module.is.blank($field);
                             }
                         },
@@ -334,8 +325,7 @@
                             if(field) {
                                 module.verbose('Checking if field is valid', field);
                                 return module.validate.field(validation[field], field, !!showErrors);
-                            }
-                            else {
+                            } else {
                                 module.verbose('Checking if form is valid');
                                 $.each(validation, function(fieldName, field) {
                                     if( !module.is.valid(fieldName, showErrors) ) {
@@ -354,12 +344,15 @@
                         fieldDirty: function($el) {
                             var initialValue = $el.data(metadata.defaultValue);
                             // Explicitly check for null/undefined here as value may be `false`, so ($el.data(dataInitialValue) || '') would not work
-                            if (initialValue == null) { initialValue = ''; }
-                            else if(Array.isArray(initialValue)) {
+                            if (initialValue == null) {
+                                initialValue = '';
+                            } else if(Array.isArray(initialValue)) {
                                 initialValue = initialValue.toString();
                             }
                             var currentValue = $el.val();
-                            if (currentValue == null) { currentValue = ''; }
+                            if (currentValue == null) {
+                                currentValue = '';
+                            }
                             // multiple select values are returned as arrays which are never equal, so do string conversion first
                             else if(Array.isArray(currentValue)) {
                                 currentValue = currentValue.toString();
@@ -492,8 +485,7 @@
                         changeEvent: function(type, $input) {
                             if(type == 'checkbox' || type == 'radio' || type == 'hidden' || $input.is('select')) {
                                 return 'change';
-                            }
-                            else {
+                            } else {
                                 return module.get.inputEvent();
                             }
                         },
@@ -585,8 +577,7 @@
                                     validation = $.extend(true, {}, $.fn.form.settings.defaults, parameters);
                                     module.error(settings.error.oldSyntax, element);
                                     module.verbose('Extending settings from legacy parameters', validation, settings);
-                                }
-                                else {
+                                } else {
                                     // 2.x
                                     if(parameters.fields) {
                                         parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
@@ -595,8 +586,7 @@
                                     validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                                     module.verbose('Extending settings', validation, settings);
                                 }
-                            }
-                            else {
+                            } else {
                                 settings   = $.extend(true, {}, $.fn.form.settings);
                                 validation = $.extend(true, {}, $.fn.form.settings.defaults);
                                 module.verbose('Using default form validation', validation, settings);
@@ -705,32 +695,26 @@
                                         if(isCheckbox) {
                                             if(isChecked) {
                                                 values[name].push(value || true);
-                                            }
-                                            else {
+                                            } else {
                                                 values[name].push(false);
                                             }
-                                        }
-                                        else {
+                                        } else {
                                             values[name].push(value);
                                         }
-                                    }
-                                    else {
+                                    } else {
                                         if(isRadio) {
                                             if(values[name] === undefined || values[name] === false) {
                                                 values[name] = (isChecked)
                                                     ? value || true
                                                     : false;
                                             }
-                                        }
-                                        else if(isCheckbox) {
+                                        } else if(isCheckbox) {
                                             if(isChecked) {
                                                 values[name] = value || true;
-                                            }
-                                            else {
+                                            } else {
                                                 values[name] = false;
                                             }
-                                        }
-                                        else if(isCalendar) {
+                                        } else if(isCalendar) {
                                             var date = $calendar.calendar('get date');
 
                                             if (date !== null) {
@@ -843,13 +827,14 @@
                                 $.each(rules, function(_index, rule) {
                                     newValidation.rules.push({ type: rule });
                                 });
-                            }
-                            else {
+                            } else {
                                 newValidation.rules = rules.rules;
                             }
                             // For each new rule, check if there's not already one with the same type
                             $.each(newValidation.rules, function (_index, rule) {
-                                if ($.grep(validation[name].rules, function(item){ return item.type == rule.type; }).length == 0) {
+                                if ($.grep(validation[name].rules, function(item){
+                                    return item.type == rule.type;
+                                }).length == 0) {
                                     validation[name].rules.push(rule);
                                 }
                             });
@@ -887,14 +872,12 @@
                                     if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                         module.verbose('Displaying error with css transition', settings.transition);
                                         $prompt.transition(settings.transition + ' in', settings.duration);
-                                    }
-                                    else {
+                                    } else {
                                         module.verbose('Displaying error with fallback javascript animation');
                                         $prompt
                                             .fadeIn(settings.duration);
                                     }
-                                }
-                                else {
+                                } else {
                                     module.verbose('Inline errors are disabled, no inline error added', identifier);
                                 }
                             }
@@ -957,8 +940,7 @@
                                 $.each(field, function(index, field) {
                                     module.remove.rule(field, rules);
                                 });
-                            }
-                            else {
+                            } else {
                                 module.remove.rule(field, rules);
                             }
                         },
@@ -979,8 +961,7 @@
                                     $prompt.transition(settings.transition + ' out', settings.duration, function() {
                                         $prompt.remove();
                                     });
-                                }
-                                else {
+                                } else {
                                     $prompt
                                         .fadeOut(settings.duration, function(){
                                             $prompt.remove();
@@ -1011,8 +992,7 @@
                                 ;
                                 if (isDropdown) {
                                     $parent.dropdown('save defaults');
-                                }
-                                else if (isCalendar) {
+                                } else if (isCalendar) {
                                     $calendar.calendar('refresh');
                                 }
                                 $el.data(metadata.defaultValue, value);
@@ -1059,33 +1039,27 @@
                                                 $element.checkbox('check');
                                             }
                                         });
-                                    }
-                                    else if(isRadio) {
+                                    } else if(isRadio) {
                                         module.verbose('Selecting radio value', value, $field);
                                         $field.filter('[value="' + value + '"]')
                                             .parent(selector.uiCheckbox)
                                             .checkbox('check');
-                                    }
-                                    else if(isCheckbox) {
+                                    } else if(isCheckbox) {
                                         module.verbose('Setting checkbox value', value, $element);
                                         if(value === true || value === 1 || value === 'on') {
                                             $element.checkbox('check');
-                                        }
-                                        else {
+                                        } else {
                                             $element.checkbox('uncheck');
                                         }
                                         if(typeof value === 'string') {
                                             $field.val(value);
                                         }
-                                    }
-                                    else if(isDropdown) {
+                                    } else if(isDropdown) {
                                         module.verbose('Setting dropdown value', value, $element);
                                         $element.dropdown('set selected', value);
-                                    }
-                                    else if (isCalendar) {
+                                    } else if (isCalendar) {
                                         $calendar.calendar('set date',value);
-                                    }
-                                    else {
+                                    } else {
                                         module.verbose('Setting field value', value, $field);
                                         $field.val(value);
                                     }
@@ -1131,7 +1105,9 @@
                                     isDisabled = $el.is(':disabled') || $elGroup.hasClass(className.disabled) || $elGroup.parent().hasClass(className.disabled),
                                     validation = module.get.validation($el),
                                     hasEmptyRule = validation
-                                        ? $.grep(validation.rules, function(rule) { return rule.type == 'empty'; }) !== 0
+                                        ? $.grep(validation.rules, function(rule) {
+                                            return rule.type == 'empty';
+                                        }) !== 0
                                         : false,
                                     identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
                                 ;
@@ -1177,8 +1153,7 @@
                                 if(ignoreCallbacks !== true) {
                                     return settings.onSuccess.call(element, event, values);
                                 }
-                            }
-                            else {
+                            } else {
                                 module.debug('Form has errors');
                                 submitting = false;
                                 module.set.error();
@@ -1239,14 +1214,11 @@
                             var isDisabled = !$field.filter(':not(:disabled)').length;
                             if(isDisabled) {
                                 module.debug('Field is disabled. Skipping', identifier);
-                            }
-                            else if(field.optional && module.is.blank($field)){
+                            } else if(field.optional && module.is.blank($field)){
                                 module.debug('Field is optional and blank. Skipping', identifier);
-                            }
-                            else if(field.depends && module.is.empty($dependsField)) {
+                            } else if(field.depends && module.is.empty($dependsField)) {
                                 module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
-                            }
-                            else if(field.rules !== undefined) {
+                            } else if(field.rules !== undefined) {
                                 if(showErrors) {
                                     $field.closest($group).removeClass(className.error);
                                 }
@@ -1269,8 +1241,7 @@
                                     module.remove.prompt(identifier, fieldErrors);
                                     settings.onValid.call($field);
                                 }
-                            }
-                            else {
+                            } else {
                                 if(showErrors) {
                                     formErrors = formErrors.concat(fieldErrors);
                                     module.add.prompt(identifier, fieldErrors, true);
@@ -1321,22 +1292,18 @@
                     setting: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             settings[name] = value;
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -1344,8 +1311,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -1355,8 +1321,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -1411,8 +1376,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1440,36 +1404,29 @@
                                     : query;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1512,8 +1469,12 @@
 
         onValid: function() {},
         onInvalid: function() {},
-        onSuccess: function() { return true; },
-        onFailure: function() { return false; },
+        onSuccess: function() {
+            return true;
+        },
+        onFailure: function() {
+            return false;
+        },
         onDirty: function() {},
         onClean: function() {},
 
@@ -1737,13 +1698,11 @@
                 ;
                 if( !range || ['', '..'].indexOf(range) !== -1) {
                     // do nothing
-                }
-                else if(range.indexOf('..') == -1) {
+                } else if(range.indexOf('..') == -1) {
                     if(regExp.test(range)) {
                         min = max = range - 0;
                     }
-                }
-                else {
+                } else {
                     parts = range.split('..', 2);
                     if(regExp.test(parts[0])) {
                         min = parts[0] - 0;
@@ -1858,14 +1817,11 @@
                 ;
                 if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+                } else if((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+                } else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+                } else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)
@@ -1882,14 +1838,11 @@
                 ;
                 if((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('#' + identifier)).length > 0) {
+                } else if((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+                } else if((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                }
-                else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+                } else if((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)

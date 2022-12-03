@@ -149,8 +149,7 @@
                                         module.query();
                                     }
                                 }, settings.searchDelay);
-                            }
-                            else {
+                            } else {
                                 module.query();
                             }
                         },
@@ -190,8 +189,7 @@
                                             callback();
                                         }
                                     });
-                            }
-                            else {
+                            } else {
                                 module.debug('Input blurred without user action, closing results');
                                 callback();
                             }
@@ -237,8 +235,7 @@
                                     module.verbose('Opening search link found in result', $link);
                                     if(target == '_blank' || event.ctrlKey) {
                                         window.open(href);
-                                    }
-                                    else {
+                                    } else {
                                         window.location.href = (href);
                                     }
                                 }
@@ -258,9 +255,7 @@
 
                         if (elTop < 0) {
                             $results.scrollTop(resultsScrollTop + elTop);
-                        }
-
-                        else if (resultsHeight < elBottom) {
+                        } else if (resultsHeight < elBottom) {
                             $results.scrollTop(resultsScrollTop + (elBottom - resultsHeight));
                         }
                     },
@@ -303,8 +298,7 @@
                                     event.preventDefault();
                                     return false;
                                 }
-                            }
-                            else if(keyCode == keys.upArrow && hasActiveResult) {
+                            } else if(keyCode == keys.upArrow && hasActiveResult) {
                                 module.verbose('Up key pressed, changing active result');
                                 newIndex = (currentIndex - 1 < 0)
                                     ? currentIndex
@@ -319,8 +313,7 @@
                                     .addClass(className.active);
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
-                            }
-                            else if(keyCode == keys.downArrow) {
+                            } else if(keyCode == keys.downArrow) {
                                 module.verbose('Down key pressed, changing active result');
                                 newIndex = (currentIndex + 1 >= resultSize)
                                     ? currentIndex
@@ -336,8 +329,7 @@
                                 module.ensureVisible($result.eq(newIndex));
                                 event.preventDefault();
                             }
-                        }
-                        else {
+                        } else {
                             // query shortcuts
                             if(keyCode == keys.enter) {
                                 module.verbose('Enter key pressed, executing query');
@@ -486,8 +478,7 @@
                                         }
                                     }
                                 });
-                            }
-                            else {
+                            } else {
                                 module.debug('Finding result in results object', value);
                                 result = module.search.object(value, results)[0];
                             }
@@ -556,24 +547,20 @@
                                 module.addResults(cache.html);
                                 module.inject.id(cache.results);
                                 callback();
-                            }
-                            else {
+                            } else {
                                 module.debug('Querying for', searchTerm);
                                 if($.isPlainObject(settings.source) || Array.isArray(settings.source)) {
                                     module.search.local(searchTerm);
                                     callback();
-                                }
-                                else if( module.can.useAPI() ) {
+                                } else if( module.can.useAPI() ) {
                                     module.search.remote(searchTerm, callback);
-                                }
-                                else {
+                                } else {
                                     module.error(error.source);
                                     callback();
                                 }
                             }
                             settings.onSearchQuery.call(element, searchTerm);
-                        }
-                        else {
+                        } else {
                             module.hideResults();
                         }
                     },
@@ -668,12 +655,10 @@
                                         if( text.search(matchRegExp) !== -1) {
                                             // content starts with value (first in results)
                                             addResult(results, content);
-                                        }
-                                        else if(settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text) ) {
+                                        } else if(settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text) ) {
                                             // content fuzzy matches (last in results)
                                             addResult(exactResults, content);
-                                        }
-                                        else if(settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
+                                        } else if(settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
                                             // content fuzzy matches (last in results)
                                             addResult(fuzzyResults, content);
                                         }
@@ -780,8 +765,7 @@
                             if(!value) {
                                 module.debug('Clearing cache', value);
                                 $module.removeData(metadata.cache);
-                            }
-                            else if(value && cache && cache[value]) {
+                            } else if(value && cache && cache[value]) {
                                 module.debug('Removing value from cache', value);
                                 delete cache[value];
                                 $module.data(metadata.cache, cache);
@@ -819,8 +803,7 @@
                                         name: result.category,
                                         results: [result],
                                     };
-                                }
-                                else {
+                                } else {
                                     categoryResults[result.category].results.push(result);
                                 }
                             });
@@ -837,8 +820,7 @@
                                 letterID = String.fromCharCode(97 + categoryIndex);
                                 id          = letterID + resultID;
                                 module.verbose('Creating category result id', id);
-                            }
-                            else {
+                            } else {
                                 id = resultID;
                                 module.verbose('Creating result id', id);
                             }
@@ -893,8 +875,7 @@
                                         categoryIndex++;
                                     }
                                 });
-                            }
-                            else {
+                            } else {
                                 // top level
                                 $.each(results, function(index, result) {
                                     if(result.id === undefined) {
@@ -946,8 +927,7 @@
                                 module.select.firstResult();
                             }
                             module.showResults();
-                        }
-                        else {
+                        } else {
                             module.hideResults(function() {
                                 $results.empty();
                             });
@@ -980,8 +960,7 @@
                                         },
                                         queue: true,
                                     });
-                            }
-                            else {
+                            } else {
                                 module.debug('Showing results with javascript');
                                 $results
                                     .stop()
@@ -1009,8 +988,7 @@
                                         },
                                         queue: true,
                                     });
-                            }
-                            else {
+                            } else {
                                 module.debug('Hiding results with javascript');
                                 $results
                                     .stop()
@@ -1034,19 +1012,16 @@
                                     if(settings.type == 'standard') {
                                         module.error(error.maxResults);
                                     }
-                                }
-                                else {
+                                } else {
                                     response[fields.results] = response[fields.results].slice(0, settings.maxResults);
                                 }
                             }
                             if(isFunction(template)) {
                                 html = template(response, fields, settings.preserveHTML);
-                            }
-                            else {
+                            } else {
                                 module.error(error.noTemplate, false);
                             }
-                        }
-                        else if(settings.showNoResults) {
+                        } else if(settings.showNoResults) {
                             html = module.displayMessage(error.noResults, 'empty', error.noResultsHeader);
                         }
                         settings.onResults.call(element, response);
@@ -1063,22 +1038,18 @@
                     setting: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             settings[name] = value;
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -1086,8 +1057,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -1097,8 +1067,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -1153,8 +1122,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1183,36 +1151,29 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1223,8 +1184,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }
@@ -1443,8 +1403,7 @@
                             $.each(category.results, function(index, result) {
                                 if(result[fields.url]) {
                                     html  += '<a class="result" href="' + result[fields.url].replace(/"/g,'') + '">';
-                                }
-                                else {
+                                } else {
                                     html  += '<a class="result">';
                                 }
                                 if(result[fields.image] !== undefined) {
@@ -1500,8 +1459,7 @@
                     $.each(response[fields.results], function(index, result) {
                         if(result[fields.url]) {
                             html  += '<a class="result" href="' + result[fields.url].replace(/"/g,'') + '">';
-                        }
-                        else {
+                        } else {
                             html  += '<a class="result">';
                         }
                         if(result[fields.image] !== undefined) {

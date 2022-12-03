@@ -118,8 +118,7 @@
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
                                     .on(triggerEvent + eventNamespace, module.event.trigger);
-                            }
-                            else if(settings.on == 'now') {
+                            } else if(settings.on == 'now') {
                                 module.debug('Querying API endpoint immediately');
                                 module.query();
                             }
@@ -131,8 +130,7 @@
                             if(response !== undefined && typeof response == 'string') {
                                 try {
                                     response = JSON.parse(response);
-                                }
-                                catch(e) {
+                                } catch(e) {
                                     // isn't json string
                                 }
                             }
@@ -184,8 +182,7 @@
                             if(settings.interruptRequests) {
                                 module.debug('Interrupting previous request');
                                 module.abort();
-                            }
-                            else {
+                            } else {
                                 module.debug('Cancelling request, previous request is still pending');
                                 return;
                             }
@@ -209,8 +206,7 @@
                             module.cancelled = true;
                             module.error(error.beforeSend);
                             return;
-                        }
-                        else {
+                        } else {
                             module.cancelled = false;
                         }
 
@@ -254,14 +250,12 @@
                         if( !settings.throttle ) {
                             module.debug('Sending request', data, ajaxSettings.method);
                             module.send.request();
-                        }
-                        else {
+                        } else {
                             if(!settings.throttleFirstRequest && !module.timer) {
                                 module.debug('Sending request', data, ajaxSettings.method);
                                 module.send.request();
                                 module.timer = setTimeout(function(){}, settings.throttle);
-                            }
-                            else {
+                            } else {
                                 module.debug('Throttling request', settings.throttle);
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function() {
@@ -307,8 +301,7 @@
                             if(xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
                                 module.verbose('XHR request determined to be aborted');
                                 return true;
-                            }
-                            else {
+                            } else {
                                 module.verbose('XHR request was not aborted');
                                 return false;
                             }
@@ -322,8 +315,7 @@
                             if( settings.successTest(response) ) {
                                 module.debug('Response passed success test', response);
                                 return true;
-                            }
-                            else {
+                            } else {
                                 module.debug('Response failed success test', response);
                                 return false;
                             }
@@ -376,8 +368,7 @@
                                             module.error(error.requiredParameter, variable, url);
                                             url = false;
                                             return false;
-                                        }
-                                        else {
+                                        } else {
                                             module.verbose('Found required variable', variable, value);
                                             value = (settings.encodeParameters)
                                                 ? module.get.urlEncodedValue(value)
@@ -406,14 +397,12 @@
                                         if(value !== undefined) {
                                             module.verbose('Optional variable Found', variable, value);
                                             url = url.replace(templatedString, value);
-                                        }
-                                        else {
+                                        } else {
                                             module.verbose('Optional variable not found', variable);
                                             // remove preceding slash if set
                                             if(url.indexOf('/' + templatedString) !== -1) {
                                                 url = url.replace('/' + templatedString, '');
-                                            }
-                                            else {
+                                            } else {
                                                 url = url.replace(templatedString, '');
                                             }
                                         }
@@ -452,7 +441,9 @@
                                     });
                                 });
                                 $.each(formArray, function(i, el) {
-                                    if (!settings.regExp.validate.test(el.name)) {return;}
+                                    if (!settings.regExp.validate.test(el.name)) {
+                                        return;
+                                    }
                                     var
                                         isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                         floatValue = parseFloat(el.value),
@@ -499,8 +490,7 @@
                                 } else {
                                     data = $.extend(true, {}, data, formData);
                                 }
-                            }
-                            else {
+                            } else {
                                 module.debug('Adding form data', formData);
                                 data = formData;
                             }
@@ -514,8 +504,7 @@
                             module.request = module.create.request();
                             if( module.is.mocked() ) {
                                 module.mockedXHR = module.create.mockedXHR();
-                            }
-                            else {
+                            } else {
                                 module.xhr = module.create.xhr();
                             }
                             settings.onRequest.call(context, module.request, module.xhr);
@@ -557,8 +546,7 @@
                                 setTimeout(function() {
                                     if( module.is.validResponse(response) ) {
                                         module.request.resolveWith(context, [response, xhr]);
-                                    }
-                                    else {
+                                    } else {
                                         module.request.rejectWith(context, [xhr, 'invalid']);
                                     }
                                 }, timeLeft);
@@ -578,8 +566,7 @@
                                 setTimeout(function() {
                                     if( module.is.abortedRequest(xhr) ) {
                                         module.request.rejectWith(context, [xhr, 'aborted', httpMessage]);
-                                    }
-                                    else {
+                                    } else {
                                         module.request.rejectWith(context, [xhr, 'error', status, httpMessage]);
                                     }
                                 }, timeLeft);
@@ -603,8 +590,7 @@
                                 if( module.was.successful() ) {
                                     response = firstParameter;
                                     xhr      = secondParameter;
-                                }
-                                else {
+                                } else {
                                     xhr      = firstParameter;
                                     response = module.get.responseFromXHR(xhr);
                                 }
@@ -621,11 +607,9 @@
                                     module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                     settings.onAbort.call(context, status, $module, xhr);
                                     return true;
-                                }
-                                else if(status == 'invalid') {
+                                } else if(status == 'invalid') {
                                     module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                                }
-                                else if(status == 'error') {
+                                } else if(status == 'error') {
                                     if(xhr !== undefined) {
                                         module.debug('XHR produced a server error', status, httpMessage);
                                         // make sure we have an error to display to console
@@ -681,22 +665,19 @@
                                 if( isFunction(responder) ) {
                                     module.debug('Using specified synchronous callback', responder);
                                     response = responder.call(context, requestSettings);
-                                }
-                                else {
+                                } else {
                                     module.debug('Using settings specified response', responder);
                                     response = responder;
                                 }
                                 // simulating response
                                 mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
-                            }
-                            else if( isFunction(asyncResponder) ) {
+                            } else if( isFunction(asyncResponder) ) {
                                 asyncCallback = function(response) {
                                     module.debug('Async callback returned response', response);
 
                                     if(response) {
                                         mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
-                                    }
-                                    else {
+                                    } else {
                                         mockedXHR.rejectWith(context, [{ responseText: response }, status, httpMessage]);
                                     }
                                 };
@@ -819,11 +800,9 @@
                             if( !isWindow(element) ) {
                                 if( module.is.input() ) {
                                     data.value = $module.val();
-                                }
-                                else if( module.is.form() ) {
+                                } else if( module.is.form() ) {
 
-                                }
-                                else {
+                                } else {
                                     data.text = $module.text();
                                 }
                             }
@@ -833,23 +812,19 @@
                             if( isWindow(element) || settings.on == 'now' ) {
                                 module.debug('API called without element, no events attached');
                                 return false;
-                            }
-                            else if(settings.on == 'auto') {
+                            } else if(settings.on == 'auto') {
                                 if( $module.is('input') ) {
                                     return (element.oninput !== undefined)
                                         ? 'input'
                                         : (element.onpropertychange !== undefined)
                                             ? 'propertychange'
                                             : 'keyup';
-                                }
-                                else if( $module.is('form') ) {
+                                } else if( $module.is('form') ) {
                                     return 'submit';
-                                }
-                                else {
+                                } else {
                                     return 'click';
                                 }
-                            }
-                            else {
+                            } else {
                                 return settings.on;
                             }
                         },
@@ -867,8 +842,7 @@
                                     return;
                                 }
                                 url = settings.api[action];
-                            }
-                            else if( module.is.form() ) {
+                            } else if( module.is.form() ) {
                                 url = $module.attr('action') || $context.attr('action') || false;
                                 module.debug('No url or action specified, defaulting to form action', url);
                             }
@@ -896,27 +870,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -924,8 +893,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -935,8 +903,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -988,8 +955,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1018,19 +984,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -1038,17 +1000,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1060,8 +1019,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }
@@ -1153,7 +1111,9 @@
         rawResponse: true,
 
         // callbacks before request
-        beforeSend: function(settings) { return settings; },
+        beforeSend: function(settings) {
+            return settings;
+        },
         beforeXHR: function(xhr) {},
         onRequest: function(promise, xhr) {},
 

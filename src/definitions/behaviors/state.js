@@ -77,8 +77,7 @@
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
                                 .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state);
-                        }
-                        else {
+                        } else {
                             $module
                                 .on('mouseenter' + eventNamespace, module.change.text)
                                 .on('mouseleave' + eventNamespace, module.reset.text)
@@ -208,10 +207,13 @@
                                     requestCancelled = $module.api('was cancelled');
                                     if( requestCancelled ) {
                                         module.debug('API Request cancelled by beforesend');
-                                        settings.activateTest   = function(){ return false; };
-                                        settings.deactivateTest = function(){ return false; };
-                                    }
-                                    else if(apiRequest) {
+                                        settings.activateTest   = function(){
+                                            return false;
+                                        };
+                                        settings.deactivateTest = function(){
+                                            return false;
+                                        };
+                                    } else if(apiRequest) {
                                         module.listenTo(apiRequest);
                                         return;
                                     }
@@ -231,13 +233,20 @@
                                 .then(function() {
                                     if(apiRequest.state() == 'resolved') {
                                         module.debug('API request succeeded');
-                                        settings.activateTest   = function(){ return true; };
-                                        settings.deactivateTest = function(){ return true; };
-                                    }
-                                    else {
+                                        settings.activateTest   = function(){
+                                            return true;
+                                        };
+                                        settings.deactivateTest = function(){
+                                            return true;
+                                        };
+                                    } else {
                                         module.debug('API request failed');
-                                        settings.activateTest   = function(){ return false; };
-                                        settings.deactivateTest = function(){ return false; };
+                                        settings.activateTest   = function(){
+                                            return false;
+                                        };
+                                        settings.deactivateTest = function(){
+                                            return false;
+                                        };
                                     }
                                     module.change.state();
                                 });
@@ -252,8 +261,7 @@
                             // inactive to active change
                             if( module.is.inactive() ) {
                                 module.activate();
-                            }
-                            else {
+                            } else {
                                 module.deactivate();
                             }
                             if(settings.sync) {
@@ -267,23 +275,19 @@
                                 if(module.is.disabled() ) {
                                     module.verbose('Changing text to disabled text', text.hover);
                                     module.update.text(text.disabled);
-                                }
-                                else if( module.is.active() ) {
+                                } else if( module.is.active() ) {
                                     if(text.hover) {
                                         module.verbose('Changing text to hover text', text.hover);
                                         module.update.text(text.hover);
-                                    }
-                                    else if(text.deactivate) {
+                                    } else if(text.deactivate) {
                                         module.verbose('Changing text to deactivating text', text.deactivate);
                                         module.update.text(text.deactivate);
                                     }
-                                }
-                                else {
+                                } else {
                                     if(text.hover) {
                                         module.verbose('Changing text to hover text', text.hover);
                                         module.update.text(text.hover);
-                                    }
-                                    else if(text.activate){
+                                    } else if(text.activate){
                                         module.verbose('Changing text to activating text', text.activate);
                                         module.update.text(text.activate);
                                     }
@@ -319,8 +323,7 @@
                             $allModules
                                 .not($module)
                                 .state('activate');
-                        }
-                        else {
+                        } else {
                             $allModules
                                 .not($module)
                                 .state('deactivate');
@@ -365,8 +368,7 @@
                                 if( module.is.active() && activeText) {
                                     module.verbose('Resetting active text', activeText);
                                     module.update.text(activeText);
-                                }
-                                else if(inactiveText) {
+                                } else if(inactiveText) {
                                     module.verbose('Resetting inactive text', activeText);
                                     module.update.text(inactiveText);
                                 }
@@ -385,14 +387,12 @@
                                         .data(metadata.storedText, text)
                                         .find(settings.selector.text)
                                         .text(text);
-                                }
-                                else {
+                                } else {
                                     $module
                                         .data(metadata.storedText, text)
                                         .html(text);
                                 }
-                            }
-                            else {
+                            } else {
                                 module.debug('Text is already set, ignoring update', text);
                             }
                         },
@@ -402,27 +402,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -430,8 +425,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -441,8 +435,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -494,8 +487,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -524,19 +516,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -544,17 +532,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -566,8 +551,7 @@
                         module.initialize();
                     }
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }
@@ -603,8 +587,12 @@
         onChange: function() {},
 
         // state test functions
-        activateTest: function() { return true; },
-        deactivateTest: function() { return true; },
+        activateTest: function() {
+            return true;
+        },
+        deactivateTest: function() {
+            return true;
+        },
 
         // whether to automatically map default states
         automatic: true,

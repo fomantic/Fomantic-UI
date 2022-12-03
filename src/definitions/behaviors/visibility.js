@@ -67,7 +67,9 @@
                         || window.mozRequestAnimationFrame
                         || window.webkitRequestAnimationFrame
                         || window.msRequestAnimationFrame
-                        || function(callback) { setTimeout(callback, 0); },
+                        || function(callback) {
+                            setTimeout(callback, 0);
+                        },
 
                     element         = this,
                     disabled        = false,
@@ -210,8 +212,7 @@
                                 module.timer = setTimeout(function() {
                                     $context.triggerHandler('scrollchange' + eventNamespace, [ $context.scrollTop() ]);
                                 }, settings.throttle);
-                            }
-                            else {
+                            } else {
                                 requestAnimationFrame(function() {
                                     $context.triggerHandler('scrollchange' + eventNamespace, [ $context.scrollTop() ]);
                                 });
@@ -383,12 +384,10 @@
                                         return;
                                     }
                                     $module.transition(settings.transition, settings.duration, callback);
-                                }
-                                else {
+                                } else {
                                     $module.fadeIn(settings.duration, callback);
                                 }
-                            }
-                            else {
+                            } else {
                                 $module.show();
                             }
                         },
@@ -501,16 +500,13 @@
                         // assign callback
                         if(amount && newCallback) {
                             settings.onPassed[amount] = newCallback;
-                        }
-                        else if(amount !== undefined) {
+                        } else if(amount !== undefined) {
                             return (module.get.pixelsPassed(amount) > calculations.pixelsPassed);
-                        }
-                        else if(calculations.passing) {
+                        } else if(calculations.passing) {
                             $.each(settings.onPassed, function(amount, callback) {
                                 if(calculations.bottomVisible || calculations.pixelsPassed > module.get.pixelsPassed(amount)) {
                                     module.execute(callback, amount);
-                                }
-                                else if(!settings.once) {
+                                } else if(!settings.once) {
                                     module.remove.occurred(callback);
                                 }
                             });
@@ -529,8 +525,7 @@
                         }
                         if(calculations.onScreen) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback !== undefined) {
@@ -550,8 +545,7 @@
                         }
                         if(calculations.offScreen) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback !== undefined) {
@@ -571,8 +565,7 @@
                         }
                         if(calculations.passing) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback !== undefined) {
@@ -593,8 +586,7 @@
                         }
                         if(calculations.topVisible) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -614,8 +606,7 @@
                         }
                         if(calculations.bottomVisible) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -635,8 +626,7 @@
                         }
                         if(calculations.topPassed) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -656,8 +646,7 @@
                         }
                         if(calculations.bottomPassed) {
                             module.execute(callback, callbackName);
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -679,8 +668,7 @@
                             if(module.get.occurred('passing')) {
                                 module.execute(callback, callbackName);
                             }
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback !== undefined) {
@@ -703,8 +691,7 @@
                             if(module.get.occurred('topVisible')) {
                                 module.execute(callback, callbackName);
                             }
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -726,8 +713,7 @@
                             if(module.get.occurred('bottomVisible')) {
                                 module.execute(callback, callbackName);
                             }
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -749,8 +735,7 @@
                             if(module.get.occurred('topPassed')) {
                                 module.execute(callback, callbackName);
                             }
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -772,8 +757,7 @@
                             if(module.get.occurred('bottomPassed')) {
                                 module.execute(callback, callbackName);
                             }
-                        }
-                        else if(!settings.once) {
+                        } else if(!settings.once) {
                             module.remove.occurred(callbackName);
                         }
                         if(newCallback === undefined) {
@@ -791,8 +775,7 @@
                             if(settings.continuous) {
                                 module.debug('Callback being called continuously', callbackName, calculations);
                                 callback.call(element, calculations, screen);
-                            }
-                            else if(!module.get.occurred(callbackName)) {
+                            } else if(!module.get.occurred(callbackName)) {
                                 module.debug('Conditions met', callbackName, calculations);
                                 callback.call(element, calculations, screen);
                             }
@@ -828,8 +811,7 @@
                                     module.debug('Callback can now be called again', callback);
                                     module.cache.occurred[callback] = false;
                                 }
-                            }
-                            else {
+                            } else {
                                 module.cache.occurred = {};
                             }
                         },
@@ -862,11 +844,9 @@
                             ;
                             if(scroll > lastScroll && lastScroll) {
                                 direction = 'down';
-                            }
-                            else if(scroll < lastScroll && lastScroll) {
+                            } else if(scroll < lastScroll && lastScroll) {
                                 direction = 'up';
-                            }
-                            else {
+                            } else {
                                 direction = 'static';
                             }
                             module.cache.direction = direction;
@@ -906,8 +886,7 @@
                                 element.margin.bottom = parseInt($module.css('margin-bottom'), 10);
                                 element.top    = element.offset.top - element.margin.top;
                                 element.bottom = element.offset.top + element.height + element.margin.bottom;
-                            }
-                            else {
+                            } else {
                                 element.top    = element.offset.top;
                                 element.bottom = element.offset.top + element.height;
                             }
@@ -1018,22 +997,18 @@
                     setting: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             settings[name] = value;
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -1041,8 +1016,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -1052,8 +1026,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -1105,8 +1078,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1135,19 +1107,15 @@
                                 ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     module.error(error.method, query);
                                     return false;
                                 }
@@ -1155,17 +1123,14 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1179,8 +1144,7 @@
                     instance.save.scroll();
                     instance.save.calculations();
                     module.invoke(query);
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }

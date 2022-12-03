@@ -42,7 +42,9 @@
                 || window.mozRequestAnimationFrame
                 || window.webkitRequestAnimationFrame
                 || window.msRequestAnimationFrame
-                || function(callback) { setTimeout(callback, 0); },
+                || function(callback) {
+                    setTimeout(callback, 0);
+                },
 
             returnedValue
         ;
@@ -212,8 +214,7 @@
                             if(settings.detachable) {
                                 module.verbose('Modal is detachable, moving content into dimmer');
                                 $dimmable.dimmer('add content', $module);
-                            }
-                            else {
+                            } else {
                                 module.set.undetached();
                             }
                             $dimmer = $dimmable.dimmer('get dimmer');
@@ -305,8 +306,7 @@
                             $toggle
                                 .off(eventNamespace)
                                 .on('click' + eventNamespace, event);
-                        }
-                        else {
+                        } else {
                             module.error(error.notFound, selector);
                         }
                     },
@@ -442,8 +442,7 @@
                                     if(!module.hideAll()) {
                                         return;
                                     }
-                                }
-                                else if(!module.hide()){
+                                } else if(!module.hide()){
                                     return;
                                 }
                                 module.remove.clickaway();
@@ -463,8 +462,7 @@
                                     if ( $module.hasClass(className.front) ) {
                                         module.hide();
                                     }
-                                }
-                                else {
+                                } else {
                                     module.debug('Escape key pressed, but closable is set to false');
                                 }
                                 event.preventDefault();
@@ -480,8 +478,7 @@
                     toggle: function() {
                         if( module.is.active() || module.is.animating() ) {
                             module.hide();
-                        }
-                        else {
+                        } else {
                             module.show();
                         }
                     },
@@ -522,8 +519,7 @@
                             }
                             if(module.can.useFlex()) {
                                 module.remove.legacy();
-                            }
-                            else {
+                            } else {
                                 module.set.legacy();
                                 module.set.modalOffset();
                                 module.debug('Using non-flex legacy modal positioning.');
@@ -534,8 +530,7 @@
 
                             if( !settings.allowMultiple && module.others.active() ) {
                                 module.hideOthers(module.showModal);
-                            }
-                            else {
+                            } else {
                                 ignoreRepeatedEvents = false;
                                 if( settings.allowMultiple ) {
                                     if ( module.others.active() ) {
@@ -571,13 +566,11 @@
                                                 callback();
                                             },
                                         });
-                                }
-                                else {
+                                } else {
                                     module.error(error.noTransition);
                                 }
                             }
-                        }
-                        else {
+                        } else {
                             module.debug('Modal is already visible');
                         }
                     },
@@ -624,8 +617,7 @@
 
                                                 if ( hideOthersToo ) {
                                                     $allModals.find(selector.dimmer).removeClass('active');
-                                                }
-                                                else {
+                                                } else {
                                                     $previousModal.find(selector.dimmer).removeClass('active');
                                                 }
                                             }
@@ -637,8 +629,7 @@
                                             callback();
                                         },
                                     });
-                            }
-                            else {
+                            } else {
                                 module.error(error.noTransition);
                             }
                         }
@@ -654,8 +645,7 @@
                             }
                             module.debug('Showing dimmer');
                             $dimmable.dimmer('show');
-                        }
-                        else {
+                        } else {
                             module.debug('Dimmer already visible');
                         }
                     },
@@ -670,8 +660,7 @@
                                 module.remove.clickaway();
                                 module.remove.screenHeight();
                             });
-                        }
-                        else {
+                        } else {
                             module.debug('Dimmer is not visible cannot hide');
                         }
                     },
@@ -1026,14 +1015,12 @@
                         dimmerStyles: function() {
                             if(settings.inverted) {
                                 $dimmer.addClass(className.inverted);
-                            }
-                            else {
+                            } else {
                                 $dimmer.removeClass(className.inverted);
                             }
                             if(settings.blurring) {
                                 $dimmable.addClass(className.blurring);
-                            }
-                            else {
+                            } else {
                                 $dimmable.removeClass(className.blurring);
                             }
                         },
@@ -1063,8 +1050,7 @@
                         screenHeight: function() {
                             if( module.can.fit() ) {
                                 $context.css('height', '');
-                            }
-                            else if(!$module.hasClass('bottom')) {
+                            } else if(!$module.hasClass('bottom')) {
                                 module.debug('Modal is taller than page content, resizing page height');
                                 $context
                                     .css('height', module.cache.height + (settings.padding * 2) + 'px');
@@ -1089,8 +1075,7 @@
                                     module.remove.scrolling();
                                     module.bind.scrollLock();
                                 }
-                            }
-                            else if (!$module.hasClass('bottom')){
+                            } else if (!$module.hasClass('bottom')){
                                 module.verbose('Modal cannot fit on screen setting to scrolling');
                                 module.set.scrolling();
                             } else {
@@ -1106,27 +1091,22 @@
                         module.debug('Changing setting', name, value);
                         if( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             if($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
-                            }
-                            else {
+                            } else {
                                 settings[name] = value;
                             }
-                        }
-                        else {
+                        } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
                         if( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        }
-                        else if(value !== undefined) {
+                        } else if(value !== undefined) {
                             module[name] = value;
-                        }
-                        else {
+                        } else {
                             return module[name];
                         }
                     },
@@ -1134,8 +1114,7 @@
                         if(!settings.silent && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.debug.apply(console, arguments);
                             }
@@ -1145,8 +1124,7 @@
                         if(!settings.silent && settings.verbose && settings.debug) {
                             if(settings.performance) {
                                 module.performance.log(arguments);
-                            }
-                            else {
+                            } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
                                 module.verbose.apply(console, arguments);
                             }
@@ -1198,8 +1176,7 @@
                                 console.groupCollapsed(title);
                                 if(console.table) {
                                     console.table(performance);
-                                }
-                                else {
+                                } else {
                                     $.each(performance, function(index, data) {
                                         console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
                                     });
@@ -1227,36 +1204,29 @@
                                     : query;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                }
-                                else if( object[camelCaseValue] !== undefined ) {
+                                } else if( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                }
-                                else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                }
-                                else if( object[value] !== undefined ) {
+                                } else if( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             });
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        }
-                        else if(found !== undefined) {
+                        } else if(found !== undefined) {
                             response = found;
                         }
                         if(Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        }
-                        else if(returnedValue !== undefined) {
+                        } else if(returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        }
-                        else if(response !== undefined) {
+                        } else if(response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
@@ -1281,8 +1251,7 @@
                     if (!isFunction(settings.templates[query])) {
                         module.invoke(query);
                     }
-                }
-                else {
+                } else {
                     if(instance !== undefined) {
                         instance.invoke('destroy');
                     }
@@ -1366,16 +1335,22 @@
         onVisible: function(){},
 
         // called before hide animation
-        onHide: function(){ return true; },
+        onHide: function(){
+            return true;
+        },
 
         // called after hide animation
         onHidden: false,
 
         // called after approve selector match
-        onApprove: function(){ return true; },
+        onApprove: function(){
+            return true;
+        },
 
         // called after deny selector match
-        onDeny: function(){ return true; },
+        onDeny: function(){
+            return true;
+        },
 
         keys: {
             space: 32,
@@ -1472,8 +1447,12 @@
             var
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = function(){args.handler(true);},
-                denyFn = function(){args.handler(false);}
+                approveFn = function(){
+                    args.handler(true);
+                },
+                denyFn = function(){
+                    args.handler(false);
+                }
             ;
             return {
                 title: args.title,
@@ -1504,7 +1483,9 @@
                     ;
                     args.handler($(inputField).val());
                 },
-                denyFn = function(){args.handler(null);}
+                denyFn = function(){
+                    args.handler(null);
+                }
             ;
             if (input.length === 0) {
                 args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';

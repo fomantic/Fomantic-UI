@@ -25,7 +25,9 @@ function startsWith(str, prefix) {
 function inArray(needle, haystack) {
     var length = haystack.length;
     for(var i = 0; i < length; i++) {
-        if(haystack[i] == needle) {return true;}
+        if(haystack[i] == needle) {
+            return true;
+        }
     }
     return false;
 }
@@ -112,16 +114,13 @@ function parser(file, callback) {
             meta.title    = meta.title;
             // Primary key will by filepath
             data[meta.element] = meta;
-        }
-        else {
+        } else {
             // skip
             // console.log(meta);
         }
 
 
-    }
-
-    catch(error) {
+    } catch(error) {
         console.log(error, filename);
     }
 

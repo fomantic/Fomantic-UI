@@ -30,8 +30,7 @@ try {
     if(userConfig.valueOf() === false) {
         console.error('No semantic.json config found');
     }
-}
-catch(error) {
+} catch(error) {
     if(error.code === 'MODULE_NOT_FOUND') {
         console.error('require-dot-file module not found');
     }

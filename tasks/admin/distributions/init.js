@@ -94,8 +94,7 @@ module.exports = function(callback) {
         function setupRepo() {
             if(localRepoSetup) {
                 addRemote();
-            }
-            else {
+            } else {
                 initRepo();
             }
         }
@@ -154,8 +153,7 @@ module.exports = function(callback) {
 
         if(localRepoSetup) {
             pullFiles();
-        }
-        else {
+        } else {
             setupRepo();
             // createRepo() only use to create remote repo (easier to do manually)
         }

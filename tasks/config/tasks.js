@@ -130,8 +130,7 @@ module.exports = {
                         } else {
                             console.error(error);
                         }
-                    }
-                    else {
+                    } else {
                         throw new Error(error);
                     }
                     this.emit('end');
