@@ -463,8 +463,14 @@
                                 var
                                     isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                     floatValue = parseFloat(el.value),
-                                    value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
-                                    nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey = el.name.replace(/\[\]$/, '')
+                                    value = (isCheckbox && el.value === 'on')
+                                        || el.value === 'true'
+                                        || (String(floatValue) === el.value
+                                        ? floatValue
+                                        : (el.value === 'false' ? false : el.value)),
+                                    nameKeys = el.name.match(settings.regExp.key) || [],
+                                    k,
+                                    pushKey = el.name.replace(/\[\]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;

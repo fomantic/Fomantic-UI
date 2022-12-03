@@ -249,7 +249,12 @@
                     },
                 },
                 ensureVisible: function ($el) {
-                    var elTop, elBottom, resultsScrollTop, resultsHeight;
+                    var
+                        elTop,
+                        elBottom,
+                        resultsScrollTop,
+                        resultsHeight
+                    ;
                     if ($el.length === 0) {
                         return;
                     }

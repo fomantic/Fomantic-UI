@@ -197,7 +197,10 @@ function docs(src, callback) {
 module.exports = rtlAndNormal;
 
 // We keep the changed files in an array to call build with all of them at the same time
-let timeout, files = [];
+let
+    timeout,
+    files = []
+;
 
 /**
  * Watch changes in CSS files and call the correct build pipe

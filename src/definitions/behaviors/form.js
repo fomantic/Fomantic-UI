@@ -1198,7 +1198,10 @@
                                 event.stopImmediatePropagation();
                             }
                             if (settings.errorFocus && ignoreCallbacks !== true) {
-                                var $focusElement, hasTabIndex = true;
+                                var
+                                    $focusElement,
+                                    hasTabIndex = true
+                                ;
                                 if (typeof settings.errorFocus === 'string') {
                                     $focusElement = $(document).find(settings.errorFocus);
                                     hasTabIndex = $focusElement.is('[tabindex]');

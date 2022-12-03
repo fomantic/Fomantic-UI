@@ -125,7 +125,10 @@ module.exports = function (callback) {
 };
 
 // We keep the changed files in an array to call build with all of them at the same time
-let timeout, files = [];
+let
+    timeout,
+    files = []
+;
 
 module.exports.watch = function (type, config) {
     gulp

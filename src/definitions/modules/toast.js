@@ -901,7 +901,10 @@
 
     $.extend($.easing, {
         easeOutBounce: function (x) {
-            var n1 = 7.5625, d1 = 2.75;
+            var
+                n1 = 7.5625,
+                d1 = 2.75
+            ;
             if (x < 1 / d1) {
                 return n1 * x * x;
             } else if (x < 2 / d1) {

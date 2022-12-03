@@ -242,7 +242,15 @@
 
                 create: {
                     calendar: function () {
-                        var i, r, c, p, row, cell, pageGrid;
+                        var
+                            i,
+                            r,
+                            c,
+                            p,
+                            row,
+                            cell,
+                            pageGrid
+                        ;
 
                         var
                             mode = module.get.mode(),
@@ -1613,15 +1621,31 @@
                 }
                 text = text.toLowerCase();
 
-                var i, j, k;
-                var minute = -1, hour = -1, day = -1, month = -1, year = -1;
+                var
+                    i,
+                    j,
+                    k
+                ;
+                var
+                    minute = -1,
+                    hour = -1,
+                    day = -1,
+                    month = -1,
+                    year = -1
+                ;
                 var isAm = undefined;
 
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
 
-                var words = text.split(settings.regExp.dateWords), word;
-                var numbers = text.split(settings.regExp.dateNumbers), number;
+                var
+                    words = text.split(settings.regExp.dateWords),
+                    word
+                ;
+                var
+                    numbers = text.split(settings.regExp.dateNumbers),
+                    number
+                ;
 
                 var parts;
                 var monthString;
