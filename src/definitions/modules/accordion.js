@@ -562,13 +562,13 @@
         duration: 350, // duration of animation
         easing: 'easeOutQuad', // easing equation for animation
 
-        onOpening: function (){}, // callback before open animation
-        onClosing: function (){}, // callback before closing animation
-        onChanging: function (){}, // callback before closing or opening animation
+        onOpening: function () {}, // callback before open animation
+        onClosing: function () {}, // callback before closing animation
+        onChanging: function () {}, // callback before closing or opening animation
 
-        onOpen: function (){}, // callback after open animation
-        onClose: function (){}, // callback after closing animation
-        onChange: function (){}, // callback after closing or opening animation
+        onOpen: function () {}, // callback after open animation
+        onClose: function () {}, // callback after closing animation
+        onChange: function () {}, // callback after closing or opening animation
 
         error: {
             method: 'The method you called is not defined',

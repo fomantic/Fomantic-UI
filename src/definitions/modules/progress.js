@@ -151,7 +151,7 @@
                 complete: function (keepState) {
                     if (module.percent === undefined || module.percent < 100) {
                         module.remove.progressPoll();
-                        if (keepState !== true){
+                        if (keepState !== true) {
                             module.set.percent(100);
                         }
                     }
@@ -342,8 +342,8 @@
                             },
                             transition
                         ;
-                        for (transition in transitions){
-                            if (element.style[transition] !== undefined){
+                        for (transition in transitions) {
+                            if (element.style[transition] !== undefined) {
                                 return transitions[transition];
                             }
                         }
@@ -608,7 +608,7 @@
                         }
                     },
                     barLabel: function (text) {
-                        $progresses.map(function (index, element){
+                        $progresses.map(function (index, element) {
                             var $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
@@ -956,14 +956,14 @@
         // delay in ms for fail safe animation callback
         failSafeDelay: 100,
 
-        onLabelUpdate: function (state, text, value, total){
+        onLabelUpdate: function (state, text, value, total) {
             return text;
         },
-        onChange: function (percent, value, total){},
-        onSuccess: function (total){},
-        onActive: function (value, total){},
-        onError: function (value, total){},
-        onWarning: function (value, total){},
+        onChange: function (percent, value, total) {},
+        onSuccess: function (total) {},
+        onActive: function (value, total) {},
+        onError: function (value, total) {},
+        onWarning: function (value, total) {},
 
         error: {
             method: 'The method you called is not defined.',

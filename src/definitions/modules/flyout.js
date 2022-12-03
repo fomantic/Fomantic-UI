@@ -121,7 +121,7 @@
                     if (settings.content !== '') {
                         $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
                     }
-                    if (module.has.configActions()){
+                    if (module.has.configActions()) {
                         var $actions = $module.find(selector.actions).addClass(settings.classActions);
                         if ($actions.length === 0) {
                             $actions = $('<div/>', { class: className.actions + ' ' + (settings.classActions || '') }).appendTo($module);
@@ -172,7 +172,7 @@
                     module.observeChanges();
                     module.instantiate();
 
-                    if (settings.autoShow){
+                    if (settings.autoShow) {
                         module.show();
                     }
                 },
@@ -257,7 +257,7 @@
                         module.setup.heights();
                     },
                     clickaway: function (event) {
-                        if (settings.closable){
+                        if (settings.closable) {
                             var
                                 clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                                 clickedContext  = ($context.is(event.target))
@@ -275,7 +275,7 @@
                     close: function (event) {
                         module.hide();
                     },
-                    closeKeyUp: function (event){
+                    closeKeyUp: function (event) {
                         var
                             keyCode   = event.which
                         ;
@@ -417,7 +417,7 @@
                             style
                         ;
 
-                        if (isRTL){
+                        if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
                             distance.left = -width;
                             distance.right = width;
@@ -505,13 +505,13 @@
                     $flyouts = $context.children(selector.flyout);
                 },
 
-                refreshInputs: function (){
-                    if ($inputs){
+                refreshInputs: function () {
+                    if ($inputs) {
                         $inputs
                             .off('keydown' + elementNamespace)
                         ;
                     }
-                    if (!settings.dimPage){
+                    if (!settings.dimPage) {
                         return;
                     }
                     $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
@@ -589,7 +589,7 @@
                 show: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.hidden()) {
                         if (settings.onShow.call(element) === false) {
                             module.verbose('Show callback returned false cancelling show');
@@ -627,7 +627,7 @@
                 hide: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (settings.onHide.call(element, $(this)) === false) {
                         module.verbose('Hide callback returned false cancelling hide');
                         ignoreRepeatedEvents = false;
@@ -664,7 +664,7 @@
                         flyoutCount   = $otherFlyouts.length,
                         callbackCount  = 0
                     ;
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     $otherFlyouts
                         .flyout('hide', function () {
                             callbackCount++;
@@ -692,7 +692,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     module.set.overlay();
                     if (settings.returnScroll) {
                         currentScroll = (isBody ? $window : $context).scrollTop();
@@ -729,7 +729,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     module.verbose('Removing context push state', module.get.direction());
 
                     module.unbind.clickaway();
@@ -809,7 +809,7 @@
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -931,8 +931,8 @@
                             },
                             transition
                         ;
-                        for (transition in transitions){
-                            if (element.style[transition] !== undefined){
+                        for (transition in transitions) {
+                            if (element.style[transition] !== undefined) {
                                 return transitions[transition];
                             }
                         }
@@ -986,14 +986,14 @@
 
                         return module.cache.isSafari;
                     },
-                    edge: function (){
+                    edge: function () {
                         if (module.cache.isEdge === undefined) {
                             module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                         }
 
                         return module.cache.isEdge;
                     },
-                    firefox: function (){
+                    firefox: function () {
                         if (module.cache.isFirefox === undefined) {
                             module.cache.isFirefox = !!window.InstallTrigger;
                         }
@@ -1079,7 +1079,7 @@
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -1094,7 +1094,7 @@
                         return String(string).replace(/"/g, '');
                     },
                     escape: function (string, preserveHTML) {
-                        if (preserveHTML){
+                        if (preserveHTML) {
                             return string;
                         }
                         var
@@ -1346,17 +1346,17 @@
             click: 'click',
         },
 
-        onChange: function (){},
-        onShow: function (){},
-        onHide: function (){
+        onChange: function () {},
+        onShow: function () {},
+        onHide: function () {
             return true;
         },
 
         onHidden: false,
-        onVisible: function (){},
+        onVisible: function () {},
 
-        onApprove: function (){},
-        onDeny: function (){},
+        onApprove: function () {},
+        onDeny: function () {},
 
         keys: {
             space: 32,
@@ -1431,9 +1431,9 @@
     $.fn.flyout.settings.templates = {
         getArguments: function (args) {
             var queryArguments = [].slice.call(args);
-            if ($.isPlainObject(queryArguments[0])){
+            if ($.isPlainObject(queryArguments[0])) {
                 return $.extend({
-                    handler: function (){},
+                    handler: function () {},
                     content: '',
                     title: '',
                 }, queryArguments[0]);
@@ -1477,13 +1477,13 @@
                 actions: [{
                     text: settings.text.ok,
                     class: settings.className.ok,
-                    click: function (){
+                    click: function () {
                         args.handler(true);
                     },
                 }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
-                    click: function (){
+                    click: function () {
                         args.handler(false);
                     },
                 }],
@@ -1506,7 +1506,7 @@
                 actions: [{
                     text: settings.text.ok,
                     class: settings.className.ok,
-                    click: function (){
+                    click: function () {
                         var
                             settings = $this.get.settings(),
                             inputField = $this.get.element().find(settings.selector.prompt)[0]
@@ -1516,7 +1516,7 @@
                 }, {
                     text: settings.text.cancel,
                     class: settings.className.cancel,
-                    click: function (){
+                    click: function () {
                         args.handler(null);
                     },
                 }],

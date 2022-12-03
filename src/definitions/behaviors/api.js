@@ -263,7 +263,7 @@
                         if (!settings.throttleFirstRequest && !module.timer) {
                             module.debug('Sending request', data, ajaxSettings.method);
                             module.send.request();
-                            module.timer = setTimeout(function (){}, settings.throttle);
+                            module.timer = setTimeout(function () {}, settings.throttle);
                         } else {
                             module.debug('Throttling request', settings.throttle);
                             clearTimeout(module.timer);
@@ -479,7 +479,7 @@
                                 }
 
                                 while ((k = nameKeys.pop()) !== undefined) {
-                                    if (k == '' && !Array.isArray(value)){ // foo[]
+                                    if (k == '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
                                     } else if (settings.regExp.fixed.test(k)) { // foo[n]
                                         value = build([], k, value);
@@ -494,7 +494,7 @@
                         if (hasOtherData) {
                             module.debug('Extending existing data with form data', data, formData);
                             if (useFormDataApi) {
-                                $.each(Object.keys(data), function (i, el){
+                                $.each(Object.keys(data), function (i, el) {
                                     formData.append(el, data[el]);
                                 });
                                 data = formData;
@@ -743,7 +743,7 @@
                 },
 
                 get: {
-                    normalizedData: function (){
+                    normalizedData: function () {
                         return typeof settings.data === 'string' ? settings.data : JSON.stringify(settings.data, Object.keys(settings.data).sort());
                     },
                     responseFromXHR: function (xhr) {

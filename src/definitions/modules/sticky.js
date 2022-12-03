@@ -888,22 +888,22 @@
         observeChanges: false,
 
         // Called when position is recalculated
-        onReposition: function (){},
+        onReposition: function () {},
 
         // Called on each scroll
-        onScroll: function (){},
+        onScroll: function () {},
 
         // Called when element is stuck to viewport
-        onStick: function (){},
+        onStick: function () {},
 
         // Called when element is unstuck from viewport
-        onUnstick: function (){},
+        onUnstick: function () {},
 
         // Called when element reaches top of context
-        onTop: function (){},
+        onTop: function () {},
 
         // Called when element reaches bottom of context
-        onBottom: function (){},
+        onBottom: function () {},
 
         error: {
             container: 'Sticky element must be inside a relative container',

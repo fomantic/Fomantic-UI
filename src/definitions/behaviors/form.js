@@ -806,7 +806,7 @@
                 },
 
                 can: {
-                    useElement: function (element){
+                    useElement: function (element) {
                         if ($.fn[element] !== undefined) {
                             return true;
                         }
@@ -853,7 +853,7 @@
                         }
                         // For each new rule, check if there's not already one with the same type
                         $.each(newValidation.rules, function (_index, rule) {
-                            if ($.grep(validation[name].rules, function (item){
+                            if ($.grep(validation[name].rules, function (item) {
                                 return item.type == rule.type;
                             }).length == 0) {
                                 validation[name].rules.push(rule);
@@ -991,7 +991,7 @@
                                 });
                             } else {
                                 $prompt
-                                    .fadeOut(settings.duration, function (){
+                                    .fadeOut(settings.duration, function () {
                                         $prompt.remove();
                                     })
                                 ;
@@ -1211,7 +1211,7 @@
                                 }
                                 $focusElement.trigger('focus');
                                 // only remove tabindex if it was dynamically created above
-                                if (!hasTabIndex){
+                                if (!hasTabIndex) {
                                     $focusElement.removeAttr('tabindex');
                                 }
                             }
@@ -1247,7 +1247,7 @@
                         var isDisabled = !$field.filter(':not(:disabled)').length;
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
-                        } else if (field.optional && module.is.blank($field)){
+                        } else if (field.optional && module.is.blank($field)) {
                             module.debug('Field is optional and blank. Skipping', identifier);
                         } else if (field.depends && module.is.empty($dependsField)) {
                             module.debug('Field depends on another value that is not present or empty. Skipping', $dependsField);
@@ -1258,11 +1258,11 @@
                             $.each(field.rules, function (index, rule) {
                                 if (module.has.field(identifier)) {
                                     var invalidFields = module.validate.rule(field, rule, true) || [];
-                                    if (invalidFields.length > 0){
+                                    if (invalidFields.length > 0) {
                                         module.debug('Field is invalid', identifier, rule.type);
                                         fieldErrors.push(module.get.prompt(rule, field));
                                         fieldValid = false;
-                                        if (showErrors){
+                                        if (showErrors) {
                                             $(invalidFields).closest($group).addClass(className.error);
                                         }
                                     }
@@ -1296,7 +1296,7 @@
                             ruleFunction = settings.rules[ruleName],
                             invalidFields = [],
                             isCheckbox = $field.is(selector.checkbox),
-                            isValid = function (field){
+                            isValid = function (field) {
                                 var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
                                 // cast to string avoiding encoding special values
                                 value = (value === undefined || value === '' || value === null)
@@ -1626,7 +1626,7 @@
 
             // template that produces label content
             prompt: function (errors) {
-                if (errors.length === 1){
+                if (errors.length === 1) {
                     return errors[0];
                 }
                 var
@@ -1688,7 +1688,7 @@
             },
 
             // is most likely an email
-            email: function (value){
+            email: function (value) {
                 return $.fn.form.settings.regExp.email.test(value);
             },
 
@@ -1965,7 +1965,7 @@
 
                 // verify card types
                 if (requiredTypes) {
-                    $.each(requiredTypes, function (index, type){
+                    $.each(requiredTypes, function (index, type) {
                         // verify each card type
                         validation = cards[type];
                         if (validation) {

@@ -226,7 +226,7 @@ module.exports = function (callback) {
             }
 
             // extend composer.json
-            function extendComposer(){
+            function extendComposer() {
                 return gulp.src(release.templates.composer)
                     .pipe(plumber())
                     .pipe(flatten())

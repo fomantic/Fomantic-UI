@@ -1270,7 +1270,7 @@
 
         // utility callbacks
         onUpdate: false, // disabled by default for performance
-        onRefresh: function (){},
+        onRefresh: function () {},
 
         metadata: {
             src: 'src',

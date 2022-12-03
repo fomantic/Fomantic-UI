@@ -210,10 +210,10 @@
                                 requestCancelled = $module.api('was cancelled');
                                 if (requestCancelled) {
                                     module.debug('API Request cancelled by beforesend');
-                                    settings.activateTest = function (){
+                                    settings.activateTest = function () {
                                         return false;
                                     };
-                                    settings.deactivateTest = function (){
+                                    settings.deactivateTest = function () {
                                         return false;
                                     };
                                 } else if (apiRequest) {
@@ -237,18 +237,18 @@
                             .then(function () {
                                 if (apiRequest.state() == 'resolved') {
                                     module.debug('API request succeeded');
-                                    settings.activateTest = function (){
+                                    settings.activateTest = function () {
                                         return true;
                                     };
-                                    settings.deactivateTest = function (){
+                                    settings.deactivateTest = function () {
                                         return true;
                                     };
                                 } else {
                                     module.debug('API request failed');
-                                    settings.activateTest = function (){
+                                    settings.activateTest = function () {
                                         return false;
                                     };
-                                    settings.deactivateTest = function (){
+                                    settings.deactivateTest = function () {
                                         return false;
                                     };
                                 }
@@ -292,7 +292,7 @@
                                 if (text.hover) {
                                     module.verbose('Changing text to hover text', text.hover);
                                     module.update.text(text.hover);
-                                } else if (text.activate){
+                                } else if (text.activate) {
                                     module.verbose('Changing text to activating text', text.activate);
                                     module.update.text(text.activate);
                                 }
@@ -359,7 +359,7 @@
                         duration = duration || settings.flashDuration;
                         callback = callback || function () {};
                         module.update.text(text);
-                        setTimeout(function (){
+                        setTimeout(function () {
                             module.update.text(previousText);
                             callback.call(element);
                         }, duration);

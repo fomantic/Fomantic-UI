@@ -467,7 +467,7 @@
                     module.verbose('Taking a step');
                     if (step > 0) {
                         module.set.value(currValue + step * multiplier);
-                    } else if (step == 0){
+                    } else if (step == 0) {
                         var
                             precision = module.get.precision(),
                             newValue = currValue + (multiplier / precision)
@@ -680,7 +680,7 @@
                             // While the distance between two labels is too short,
                             // we divide the number of labels at each iteration
                             // and apply only if the modulo of the operation is an odd number.
-                            if (trackLength > 0){
+                            if (trackLength > 0) {
                                 while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
                                     if (!(numLabels % gapCounter)) {
                                         gapRatio = gapCounter;
@@ -891,7 +891,7 @@
                         var toReset = previousValue === undefined;
                         previousValue = previousValue === undefined ? module.get.value() : previousValue;
                         module.update.value(newValue, function (value, thumbVal, secondThumbVal) {
-                            if ((!initialLoad || settings.fireOnInit) && fireChange){
+                            if ((!initialLoad || settings.fireOnInit) && fireChange) {
                                 if (newValue !== previousValue) {
                                     settings.onChange.call(element, value, thumbVal, secondThumbVal);
                                 }
@@ -913,12 +913,12 @@
                             previousValue = previousValue === undefined ? module.get.value() : previousValue;
                             if (first <= min) {
                                 first = min;
-                            } else if (first >= max){
+                            } else if (first >= max) {
                                 first = max;
                             }
                             if (second <= min) {
                                 second = min;
-                            } else if (second >= max){
+                            } else if (second >= max) {
                                 second = max;
                             }
                             module.thumbVal = first;
@@ -961,7 +961,7 @@
                         ;
                         if (newValue <= min) {
                             newValue = min;
-                        } else if (newValue >= max){
+                        } else if (newValue >= max) {
                             newValue = max;
                         }
                         if (!module.is.range()) {
@@ -1333,7 +1333,7 @@
             letter: 'letter',
         },
 
-        onChange: function (value, thumbVal, secondThumbVal){},
-        onMove: function (value, thumbVal, secondThumbVal){},
+        onChange: function (value, thumbVal, secondThumbVal) {},
+        onMove: function (value, thumbVal, secondThumbVal) {},
     };
 })(jQuery, window, document);

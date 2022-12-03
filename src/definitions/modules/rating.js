@@ -211,7 +211,7 @@
                 },
 
                 get: {
-                    icon: function (){
+                    icon: function () {
                         var icon = $module.data(metadata.icon);
                         if (icon) {
                             $module.removeData(metadata.icon);
@@ -491,7 +491,7 @@
 
         fireOnInit: false,
 
-        onRate: function (rating){},
+        onRate: function (rating) {},
 
         error: {
             method: 'The method you called is not defined',

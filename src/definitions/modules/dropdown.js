@@ -516,7 +516,7 @@
                 show: function (callback, preventFocus) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
                         module.clearItems();
                     }
@@ -549,7 +549,7 @@
                 hide: function (callback, preventBlur) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.active() && !module.is.animatingOutward()) {
                         module.debug('Hiding dropdown');
                         if (settings.onHide.call(element) !== false) {
@@ -775,7 +775,7 @@
                                     preSelected = preSelected && preSelected !== '' ? preSelected.split(settings.delimiter) : [];
                                 }
                                 if (module.is.multiple()) {
-                                    $.each(preSelected, function (index, value){
+                                    $.each(preSelected, function (index, value) {
                                         $item.filter('[data-value="' + value + '"]')
                                             .addClass(className.filtered)
                                         ;
@@ -794,7 +794,7 @@
                 },
 
                 queryRemote: function (query, callback, callbackParameters) {
-                    if (!Array.isArray(callbackParameters)){
+                    if (!Array.isArray(callbackParameters)) {
                         callbackParameters = [callbackParameters];
                     }
                     var
@@ -829,7 +829,7 @@
                                 var
                                     values          = response[fields.remoteValues]
                                 ;
-                                if (!Array.isArray(values)){
+                                if (!Array.isArray(values)) {
                                     values = [];
                                 }
                                 module.remove.message();
@@ -882,7 +882,7 @@
 
                         module.verbose('Searching for matching values', searchTerm);
                         $item
-                            .each(function (){
+                            .each(function () {
                                 var
                                     $choice = $(this),
                                     text,
@@ -1076,7 +1076,7 @@
                             pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
                             tokens = pasteValue.split(settings.delimiter)
                         ;
-                        tokens.forEach(function (value){
+                        tokens.forEach(function (value) {
                             module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true);
                         });
                         event.preventDefault();
@@ -1147,7 +1147,7 @@
                                 if (!itemActivated && !pageLostFocus) {
                                     if (settings.forceSelection) {
                                         module.forceSelection();
-                                    } else if (!settings.allowAdditions){
+                                    } else if (!settings.allowAdditions) {
                                         module.remove.searchTerm();
                                     }
                                     module.hide();
@@ -1171,7 +1171,7 @@
                             iconClicked = true;
                             if (module.has.search()) {
                                 if (!module.is.active()) {
-                                    if (settings.showOnFocus){
+                                    if (settings.showOnFocus) {
                                         module.focusSearch();
                                     } else {
                                         module.toggle();
@@ -1258,8 +1258,8 @@
                             }
                         },
                         hide: function (event) {
-                            if (module.determine.eventInModule(event, module.hide)){
-                                if (element.id && $(event.target).attr('for') === element.id){
+                            if (module.determine.eventInModule(event, module.hide)) {
+                                if (element.id && $(event.target).attr('for') === element.id) {
                                     event.preventDefault();
                                 }
                             }
@@ -1480,7 +1480,7 @@
                                         }
                                         $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
                                         module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()){
+                                        if (!module.is.visible()) {
                                             module.show();
                                         }
                                         event.preventDefault();
@@ -1488,7 +1488,7 @@
                                         module.verbose('Removing last label on input backspace');
                                         $activeLabel = $label.last().addClass(className.active);
                                         module.remove.activeLabels($activeLabel);
-                                        if (!module.is.visible()){
+                                        if (!module.is.visible()) {
                                             module.show();
                                         }
                                     }
@@ -1534,7 +1534,7 @@
                                 if (module.is.searchSelection()) {
                                     module.remove.searchTerm();
                                 }
-                                if (module.is.multiple()){
+                                if (module.is.multiple()) {
                                     event.preventDefault();
                                 }
                             }
@@ -1720,7 +1720,7 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if (inDocument && !inModule) {
                             module.verbose('Triggering event', callback);
                             callback();
@@ -1742,7 +1742,7 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if (inVisibleDOM && notOnLabel && notInMenu) {
                             module.verbose('Triggering event', callback);
                             callback();
@@ -1879,7 +1879,7 @@
                             range,
                             rangeLength
                         ;
-                        if (returnEndPos && 'selectionEnd' in input){
+                        if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
                         } else if (!returnEndPos && 'selectionStart' in input) {
                             return input.selectionStart;
@@ -2120,7 +2120,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function (v){
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function (v) {
                                             return String(v);
                                         })) !== -1) {
                                             $selectedItem = ($selectedItem)
@@ -2185,7 +2185,7 @@
 
                         return true;
                     },
-                    disabled: function (){
+                    disabled: function () {
                         $search.attr('tabindex', module.is.disabled() ? -1 : 0);
                     },
                 },
@@ -2498,7 +2498,7 @@
                         forceScroll = (forceScroll !== undefined)
                             ? forceScroll
                             : false;
-                        if (module.get.activeItem().length === 0){
+                        if (module.get.activeItem().length === 0) {
                             forceScroll = false;
                         }
                         if ($item && $menu.length > 0 && hasActive) {
@@ -2574,7 +2574,7 @@
                         // check all values
                         if (!$nextValue) {
                             $item
-                                .each(function (){
+                                .each(function () {
                                     if (module.has.firstLetter($(this), letter)) {
                                         $nextValue = $(this);
 
@@ -2737,7 +2737,7 @@
                                     isUserValue    = $selected.hasClass(className.addition),
                                     shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1)
                                 ;
-                                if (isActionable){
+                                if (isActionable) {
                                     if ((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
                                         module.save.remoteData(selectedText, selectedValue);
                                     }
@@ -3134,7 +3134,7 @@
                         if (!Array.isArray(values)) {
                             values = [values];
                         }
-                        values = $.grep(values, function (value){
+                        values = $.grep(values, function (value) {
                             return (removedValue != value);
                         });
                         module.verbose('Removed value from delimited string', removedValue, values);
@@ -3159,7 +3159,7 @@
                         $labels = $labels || $module.find(selector.label);
                         module.verbose('Removing labels', $labels);
                         $labels
-                            .each(function (){
+                            .each(function () {
                                 var
                                     $label      = $(this),
                                     value       = $label.data(metadata.value),
@@ -3586,7 +3586,7 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         module.verbose('Doing menu show animation', $currentMenu);
                         module.set.direction($subMenu);
                         transition = settings.transition.showMethod || module.get.transition($subMenu);
@@ -3634,7 +3634,7 @@
                         ;
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if (module.is.visible($currentMenu) || module.is.animating($currentMenu)) {
                             module.verbose('Doing menu hide animation', $currentMenu);
 
@@ -3708,7 +3708,7 @@
                         }
                         module.debug('Encoding quote values for use in select', value);
                         if (multipleValues) {
-                            $.each(value, function (index, value){
+                            $.each(value, function (index, value) {
                                 values.push(value.replace(regExp.quote, '&quot;'));
                             });
 
@@ -3996,13 +3996,13 @@
         },
 
         /* Callbacks */
-        onChange: function (value, text, $selected){},
-        onAdd: function (value, text, $selected){},
-        onRemove: function (value, text, $selected){},
-        onActionable: function (value, text, $selected){},
-        onSearch: function (searchTerm){},
+        onChange: function (value, text, $selected) {},
+        onAdd: function (value, text, $selected) {},
+        onRemove: function (value, text, $selected) {},
+        onActionable: function (value, text, $selected) {},
+        onSearch: function (searchTerm) {},
 
-        onLabelSelect: function ($selectedLabels){},
+        onLabelSelect: function ($selectedLabels) {},
         onLabelCreate: function (value, text) {
             return $(this);
         },
@@ -4012,8 +4012,8 @@
         onNoResults: function (searchTerm) {
             return true;
         },
-        onShow: function (){},
-        onHide: function (){},
+        onShow: function () {},
+        onHide: function () {},
 
         /* Component */
         name: 'Dropdown',
@@ -4152,7 +4152,7 @@
             return String(string).replace(/"/g, encode ? '&quot;' : '');
         },
         escape: function (string, preserveHTML) {
-            if (preserveHTML){
+            if (preserveHTML) {
                 return string;
             }
             var
@@ -4240,7 +4240,7 @@
                     if (option[fields.icon]) {
                         html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
                     }
-                    if (hasDescription){
+                    if (hasDescription) {
                         html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
                         html += (!isMenu) ? '<span class="' + deQuote(className.text) + '">' : '';
                     }
@@ -4253,7 +4253,7 @@
                         html += '<div class="' + deQuote(itemType) + '">';
                         html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
                         html += '</div>';
-                    } else if (hasDescription){
+                    } else if (hasDescription) {
                         html += '</span>';
                     }
                     html += '</div>';
@@ -4270,7 +4270,7 @@
                         html += groupName;
                         html += '</div>';
                     }
-                    if (option[fields.divider]){
+                    if (option[fields.divider]) {
                         html += '<div class="' + deQuote(className.divider) + '"></div>';
                     }
                 }

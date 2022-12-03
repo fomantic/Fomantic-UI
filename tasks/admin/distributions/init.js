@@ -121,7 +121,7 @@ module.exports = function (callback) {
 
         function addRemote() {
             console.info('Adding remote origin as ' + gitURL);
-            git.addRemote('origin', gitURL, gitOptions, function (){
+            git.addRemote('origin', gitURL, gitOptions, function () {
                 pullFiles();
             });
         }

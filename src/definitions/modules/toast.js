@@ -82,7 +82,7 @@
                             settings.showProgress = false;
                         }
                         module.create.toast();
-                        if (settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
+                        if (settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())) {
                             settings.closeOnClick = false;
                         }
                         if (!settings.closeOnClick) {
@@ -128,7 +128,7 @@
 
                         return;
                     }
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     module.debug('Showing toast');
                     module.animate.show(callback);
                 },
@@ -139,7 +139,7 @@
 
                         return;
                     }
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     module.debug('Closing toast');
                     module.remove.visible();
                     module.unbind.events();
@@ -268,7 +268,7 @@
                                 $toast.addClass(className.actions);
                             }
                         }
-                        if (settings.displayTime === 'auto'){
+                        if (settings.displayTime === 'auto') {
                             settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(' ').length / settings.wordsPerMinute * 60000);
                         }
                         $toastBox.append($toast);
@@ -384,7 +384,7 @@
 
                 animate: {
                     show: function (callback) {
-                        callback = isFunction(callback) ? callback : function (){};
+                        callback = isFunction(callback) ? callback : function () {};
                         if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                             module.set.visible();
                             $toastBox
@@ -404,7 +404,7 @@
                         }
                     },
                     close: function (callback) {
-                        callback = isFunction(callback) ? callback : function (){};
+                        callback = isFunction(callback) ? callback : function () {};
                         if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                             $toastBox
                                 .transition({
@@ -416,9 +416,9 @@
                                     silent: settings.silent,
                                     interval: 50,
 
-                                    onBeforeHide: function (callback){
-                                        callback = isFunction(callback) ? callback : function (){};
-                                        if (settings.transition.closeEasing !== ''){
+                                    onBeforeHide: function (callback) {
+                                        callback = isFunction(callback) ? callback : function () {};
+                                        if (settings.transition.closeEasing !== '') {
                                             if ($toastBox) {
                                                 $toastBox.css('opacity', '0');
                                                 $toastBox.wrap('<div/>').parent().hide(settings.transition.closeDuration, settings.transition.closeEasing, function () {
@@ -463,10 +463,10 @@
 
                         return module.get.containers().length > 0;
                     },
-                    toast: function (){
+                    toast: function () {
                         return !!module.get.toast();
                     },
-                    toasts: function (){
+                    toasts: function () {
                         return module.get.toasts().length > 0;
                     },
                     configActions: function () {
@@ -514,7 +514,7 @@
                 },
 
                 event: {
-                    close: function (){
+                    close: function () {
                         module.close();
                     },
                     click: function (event) {
@@ -562,7 +562,7 @@
                         return String(string).replace(/"/g, '');
                     },
                     escape: function (string, preserveHTML) {
-                        if (preserveHTML){
+                        if (preserveHTML) {
                             return string;
                         }
                         var
@@ -590,7 +590,7 @@
                 },
 
                 can: {
-                    useElement: function (element){
+                    useElement: function (element) {
                         if ($.fn[element] !== undefined) {
                             return true;
                         }
@@ -889,14 +889,14 @@
         },
 
         // callbacks
-        onShow: function (){},
-        onVisible: function (){},
-        onClick: function (){},
-        onHide: function (){},
-        onHidden: function (){},
-        onRemove: function (){},
-        onApprove: function (){},
-        onDeny: function (){},
+        onShow: function () {},
+        onVisible: function () {},
+        onClick: function () {},
+        onHide: function () {},
+        onHidden: function () {},
+        onRemove: function () {},
+        onApprove: function () {},
+        onDeny: function () {},
     };
 
     $.extend($.easing, {

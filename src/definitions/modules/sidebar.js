@@ -143,7 +143,7 @@
 
                 event: {
                     clickaway: function (event) {
-                        if (settings.closable){
+                        if (settings.closable) {
                             var
                                 clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                                 clickedContext  = ($context.is(event.target))
@@ -235,7 +235,7 @@
                             style
                         ;
 
-                        if (isRTL){
+                        if (isRTL) {
                             module.verbose('RTL detected, flipping widths');
                             distance.left = -width;
                             distance.right = width;
@@ -385,7 +385,7 @@
                 show: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.hidden()) {
                         if (settings.onShow.call(element) === false) {
                             module.verbose('Show callback returned false cancelling show');
@@ -426,7 +426,7 @@
                 hide: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if ((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
                         module.debug('Hiding sidebar', callback);
                         module.refreshSidebars();
@@ -454,7 +454,7 @@
                         sidebarCount   = $otherSidebars.length,
                         callbackCount  = 0
                     ;
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     $otherSidebars
                         .sidebar('hide', function () {
                             callbackCount++;
@@ -486,7 +486,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (settings.returnScroll) {
                         currentScroll = (isBody ? $window : $context).scrollTop();
                     }
@@ -531,7 +531,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     module.verbose('Removing context push state', module.get.direction());
 
                     module.unbind.clickaway();
@@ -588,7 +588,7 @@
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -698,7 +698,7 @@
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -746,8 +746,8 @@
                             },
                             transition
                         ;
-                        for (transition in transitions){
-                            if (element.style[transition] !== undefined){
+                        for (transition in transitions) {
+                            if (element.style[transition] !== undefined) {
                                 return transitions[transition];
                             }
                         }
@@ -766,14 +766,14 @@
 
                         return module.cache.isSafari;
                     },
-                    edge: function (){
+                    edge: function () {
                         if (module.cache.isEdge === undefined) {
                             module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                         }
 
                         return module.cache.isEdge;
                     },
-                    firefox: function (){
+                    firefox: function () {
                         if (module.cache.isFirefox === undefined) {
                             module.cache.isFirefox = !!window.InstallTrigger;
                         }
@@ -1058,12 +1058,12 @@
         returnScroll: false,
         delaySetup: false,
 
-        onChange: function (){},
-        onShow: function (){},
-        onHide: function (){},
+        onChange: function () {},
+        onShow: function () {},
+        onHide: function () {},
 
-        onHidden: function (){},
-        onVisible: function (){},
+        onHidden: function () {},
+        onVisible: function () {},
 
         className: {
             active: 'active',

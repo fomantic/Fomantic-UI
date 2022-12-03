@@ -162,13 +162,13 @@
                         if (typeof expires === 'number') {
                             expires = new Date(Date.now() + expires * 864e5);
                         }
-                        if (expires instanceof Date && expires.getTime()){
+                        if (expires instanceof Date && expires.getTime()) {
                             return expires.toUTCString();
                         } else {
                             module.error(error.expiresFormat);
                         }
                     },
-                    storage: function (){
+                    storage: function () {
                         if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                             module.debug('Using local storage');
 

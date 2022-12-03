@@ -317,7 +317,7 @@
                 },
 
                 show: function (callback) {
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     module.debug('Showing pop-up', settings.transition);
                     if (module.is.hidden() && !(module.is.active() && module.is.dropdown())) {
                         if (!module.exists()) {
@@ -341,7 +341,7 @@
                 },
 
                 hide: function (callback) {
-                    callback = callback || function (){};
+                    callback = callback || function () {};
                     if (module.is.visible() || module.is.animating()) {
                         if (settings.onHide.call($popup, element) === false) {
                             module.debug('onHide callback returned false, cancelling popup animation');
@@ -416,7 +416,7 @@
                 },
                 animate: {
                     show: function (callback) {
-                        callback = isFunction(callback) ? callback : function (){};
+                        callback = isFunction(callback) ? callback : function () {};
                         if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                             module.set.visible();
                             $popup
@@ -439,7 +439,7 @@
                         }
                     },
                     hide: function (callback) {
-                        callback = isFunction(callback) ? callback : function (){};
+                        callback = isFunction(callback) ? callback : function () {};
                         module.debug('Hiding pop-up');
                         if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                             $popup
@@ -1321,25 +1321,25 @@
         observeChanges: true,
 
         // callback only when element added to dom
-        onCreate: function (){},
+        onCreate: function () {},
 
         // callback before element removed from dom
-        onRemove: function (){},
+        onRemove: function () {},
 
         // callback before show animation
-        onShow: function (){},
+        onShow: function () {},
 
         // callback after show animation
-        onVisible: function (){},
+        onVisible: function () {},
 
         // callback before hide animation
-        onHide: function (){},
+        onHide: function () {},
 
         // callback when popup cannot be positioned in visible screen
-        onUnplaceable: function (){},
+        onUnplaceable: function () {},
 
         // callback after hide animation
-        onHidden: function (){},
+        onHidden: function () {},
 
         // when to show popup
         on: 'hover',

@@ -383,7 +383,7 @@
                                         settings.apiSettings.onAbort.call(this, status, $module, xhr);
                                     }
                                 },
-                                onError: function (errorMessage, $module, xhr){
+                                onError: function (errorMessage, $module, xhr) {
                                     module.error();
                                     if (settings.apiSettings && typeof settings.apiSettings.onError === 'function') {
                                         settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
@@ -549,7 +549,7 @@
                 query: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     var
                         searchTerm = module.get.value(),
                         cache = module.read.cache(searchTerm)
@@ -610,7 +610,7 @@
                     remote: function (searchTerm, callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if ($module.api('is loading')) {
                             $module.api('abort');
                         }
@@ -664,7 +664,7 @@
                                 ;
                                 if (fieldExists) {
                                     var text;
-                                    if (typeof content[field] === 'string'){
+                                    if (typeof content[field] === 'string') {
                                         text = module.remove.diacritics(content[field]);
                                     } else {
                                         text = content[field].toString();
@@ -728,7 +728,7 @@
 
                 parse: {
                     response: function (response, searchTerm) {
-                        if (Array.isArray(response)){
+                        if (Array.isArray(response)) {
                             var o = {};
                             o[fields.results] = response;
                             response = o;
@@ -892,7 +892,7 @@
                         if (settings.type === 'category') {
                             // iterate through each category result
                             $.each(results, function (index, category) {
-                                if (category.results.length > 0){
+                                if (category.results.length > 0) {
                                     resultIndex = 0;
                                     $.each(category.results, function (index, result) {
                                         if (result.id === undefined) {
@@ -970,7 +970,7 @@
                 showResults: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (resultsDismissed) {
                         return;
                     }
@@ -1007,7 +1007,7 @@
                 hideResults: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.visible()) {
                         if (module.can.transition()) {
                             module.debug('Hiding results with css animations');
@@ -1313,11 +1313,11 @@
         onSelect: false,
         onResultsAdd: false,
 
-        onSearchQuery: function (query){},
-        onResults: function (response){},
+        onSearchQuery: function (query) {},
+        onResults: function (response) {},
 
-        onResultsOpen: function (){},
-        onResultsClose: function (){},
+        onResultsOpen: function () {},
+        onResultsClose: function () {},
 
         className: {
             animating: 'animating',
@@ -1384,7 +1384,7 @@
 
         templates: {
             escape: function (string, preserveHTML) {
-                if (preserveHTML){
+                if (preserveHTML) {
                     return string;
                 }
                 var

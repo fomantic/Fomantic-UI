@@ -238,7 +238,7 @@
                             inlineDisplay  = $module[0].style.display,
                             mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
                         ;
-                        if (mustStayHidden){
+                        if (mustStayHidden) {
                             module.remove.transition();
 
                             return false;
@@ -277,7 +277,7 @@
                         animation = animation || settings.animation;
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
-                            $.each(animation, function (index, word){
+                            $.each(animation, function (index, word) {
                                 if (word === className.inward || word === className.outward) {
                                     hasDirection = true;
                                 }
@@ -554,7 +554,7 @@
                         if (typeof animation === 'string') {
                             animation = animation.split(' ');
                             // search animation name for out/in class
-                            $.each(animation, function (index, word){
+                            $.each(animation, function (index, word) {
                                 if (word === className.inward) {
                                     direction = className.inward;
                                 } else if (word === className.outward) {
@@ -590,7 +590,7 @@
                         }
                         if (shouldDetermine && $module.data(metadata.displayType) === undefined) {
                             var currentDisplay = $module.css('display');
-                            if (currentDisplay === '' || currentDisplay === 'none'){
+                            if (currentDisplay === '' || currentDisplay === 'none') {
                                 // create fake element to determine display state
                                 module.can.transition(true);
                             } else {
@@ -619,8 +619,8 @@
                             },
                             animation
                         ;
-                        for (animation in animations){
-                            if (element.style[animation] !== undefined){
+                        for (animation in animations) {
+                            if (element.style[animation] !== undefined) {
                                 return animations[animation];
                             }
                         }
@@ -638,8 +638,8 @@
                             },
                             animation
                         ;
-                        for (animation in animations){
-                            if (element.style[animation] !== undefined){
+                        for (animation in animations) {
+                            if (element.style[animation] !== undefined) {
                                 return animations[animation];
                             }
                         }
@@ -781,7 +781,7 @@
                     }
                 },
 
-                showNow: function (){
+                showNow: function () {
                     module.set.visible();
                     settings.onVisible.call(element);
                     settings.onComplete.call(element);

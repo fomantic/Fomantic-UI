@@ -27,6 +27,7 @@ module.exports = {
         }],
         'space-infix-ops': ['error'],
         'object-curly-spacing': ['error', 'always'],
+        'space-before-blocks': ['error'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
             prev: '*',

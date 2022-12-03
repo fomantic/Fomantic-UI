@@ -154,7 +154,7 @@
                     $sides
                         .one(module.get.transitionEvent(), function () {
                             module.debug('Executing queued animation');
-                            setTimeout(function (){
+                            setTimeout(function () {
                                 $module.shape(method);
                             }, 0);
                         })
@@ -302,7 +302,7 @@
                 },
 
                 flip: {
-                    to: function (type, stage){
+                    to: function (type, stage) {
                         if (module.is.hidden()) {
                             module.debug('Module not visible', $nextSide);
 
@@ -437,8 +437,8 @@
                             },
                             transition
                         ;
-                        for (transition in transitions){
-                            if (element.style[transition] !== undefined){
+                        for (transition in transitions) {
+                            if (element.style[transition] !== undefined) {
                                 return transitions[transition];
                             }
                         }
@@ -751,7 +751,7 @@
                 var $inputs = $module.find('input');
                 if ($inputs.length > 0) {
                     $inputs.trigger('blur');
-                    setTimeout(function (){
+                    setTimeout(function () {
                         module.invoke(query);
                     }, 150);
                 } else {

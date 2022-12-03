@@ -842,25 +842,25 @@
         fireOnInit: false,
         enableEnterKey: true,
 
-        onChange: function (){},
+        onChange: function () {},
 
-        beforeChecked: function (){},
-        beforeUnchecked: function (){},
-        beforeDeterminate: function (){},
-        beforeIndeterminate: function (){},
+        beforeChecked: function () {},
+        beforeUnchecked: function () {},
+        beforeDeterminate: function () {},
+        beforeIndeterminate: function () {},
 
-        onChecked: function (){},
-        onUnchecked: function (){},
+        onChecked: function () {},
+        onUnchecked: function () {},
 
         onDeterminate: function () {},
         onIndeterminate: function () {},
 
-        onEnable: function (){},
-        onDisable: function (){},
+        onEnable: function () {},
+        onDisable: function () {},
 
         // preserve misspelled callbacks (will be removed in 3.0)
-        onEnabled: function (){},
-        onDisabled: function (){},
+        onEnabled: function () {},
+        onDisabled: function () {},
 
         className: {
             checked: 'checked',

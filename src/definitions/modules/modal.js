@@ -114,7 +114,7 @@
                     if (settings.content !== '') {
                         $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
                     }
-                    if (module.has.configActions()){
+                    if (module.has.configActions()) {
                         var $actions = $module.find(selector.actions).addClass(settings.classActions);
                         if ($actions.length === 0) {
                             $actions = $('<div/>', { class: className.actions + ' ' + (settings.classActions || '') }).appendTo($module);
@@ -152,14 +152,14 @@
                     if (settings.allowMultiple) {
                         module.create.innerDimmer();
                     }
-                    if (!settings.centered){
+                    if (!settings.centered) {
                         $module.addClass('top aligned');
                     }
                     module.refreshModals();
                     module.bind.events();
                     module.observeChanges();
                     module.instantiate();
-                    if (settings.autoShow){
+                    if (settings.autoShow) {
                         module.show();
                     }
                 },
@@ -281,8 +281,8 @@
                     $allModals = $otherModals.add($module);
                 },
 
-                refreshInputs: function (){
-                    if ($inputs){
+                refreshInputs: function () {
+                    if ($inputs) {
                         $inputs
                             .off('keydown' + elementEventNamespace)
                         ;
@@ -386,7 +386,7 @@
                     close: function () {
                         module.hide();
                     },
-                    closeKeyUp: function (event){
+                    closeKeyUp: function (event) {
                         var
                             keyCode   = event.which
                         ;
@@ -439,7 +439,7 @@
 
                             return;
                         }
-                        if (initialMouseDownInScrollbar){
+                        if (initialMouseDownInScrollbar) {
                             module.debug('Dimmer clicked but mouse down was initially registered inside the scrollbar');
 
                             return;
@@ -455,7 +455,7 @@
                                 if (!module.hideAll()) {
                                     return;
                                 }
-                            } else if (!module.hide()){
+                            } else if (!module.hide()) {
                                 return;
                             }
                             module.remove.clickaway();
@@ -499,7 +499,7 @@
                 show: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     module.refreshModals();
                     module.set.dimmerSettings();
                     module.set.dimmerStyles();
@@ -510,7 +510,7 @@
                 hide: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     module.refreshModals();
 
                     return module.hideModal(callback);
@@ -519,7 +519,7 @@
                 showModal: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.animating() || !module.is.active()) {
                         if (settings.onShow.call(element) === false) {
                             module.verbose('Show callback returned false cancelling show');
@@ -597,7 +597,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (settings.onHide.call(element, $(this)) === false) {
                         module.verbose('Hide callback returned false cancelling hide');
                         ignoreRepeatedEvents = false;
@@ -689,13 +689,13 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if ($visibleModals.length > 0) {
                         module.debug('Hiding all visible modals');
                         var hideOk = true;
                         // check in reverse order trying to hide most top displayed modal first
-                        $($visibleModals.get().reverse()).each(function (index, element){
-                            if (hideOk){
+                        $($visibleModals.get().reverse()).each(function (index, element) {
+                            if (hideOk) {
                                 hideOk = $(element).modal('hide modal', callback, false, true);
                             }
                         });
@@ -713,7 +713,7 @@
                     ;
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if ($visibleModals.length > 0) {
                         module.debug('Hiding other modals', $otherModals);
                         $visibleModals
@@ -769,7 +769,7 @@
                     bodyMargin: function () {
                         var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                         $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -857,7 +857,7 @@
                         return String(string).replace(/"/g, '');
                     },
                     escape: function (string, preserveHTML) {
-                        if (preserveHTML){
+                        if (preserveHTML) {
                             return string;
                         }
                         var
@@ -884,7 +884,7 @@
                     },
                 },
                 can: {
-                    leftBodyScrollbar: function (){
+                    leftBodyScrollbar: function () {
                         if (module.cache.leftBodyScrollbar === undefined) {
                             module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
                         }
@@ -968,14 +968,14 @@
 
                         return module.cache.isSafari;
                     },
-                    edge: function (){
+                    edge: function () {
                         if (module.cache.isEdge === undefined) {
                             module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                         }
 
                         return module.cache.isEdge;
                     },
-                    firefox: function (){
+                    firefox: function () {
                         if (module.cache.isFirefox === undefined) {
                             module.cache.isFirefox = !!window.InstallTrigger;
                         }
@@ -1004,7 +1004,7 @@
                         if (settings.detachable || module.can.fit()) {
                             $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                         }
-                        $context.find(selector.bodyFixed.replace('right', position)).each(function (){
+                        $context.find(selector.bodyFixed.replace('right', position)).each(function () {
                             var
                                 el = $(this),
                                 attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
@@ -1117,7 +1117,7 @@
                                 module.remove.scrolling();
                                 module.bind.scrollLock();
                             }
-                        } else if (!$module.hasClass('bottom')){
+                        } else if (!$module.hasClass('bottom')) {
                             module.verbose('Modal cannot fit on screen setting to scrolling');
                             module.set.scrolling();
                         } else {
@@ -1374,13 +1374,13 @@
         },
 
         // called before show animation
-        onShow: function (){},
+        onShow: function () {},
 
         // called after show animation
-        onVisible: function (){},
+        onVisible: function () {},
 
         // called before hide animation
-        onHide: function (){
+        onHide: function () {
             return true;
         },
 
@@ -1388,12 +1388,12 @@
         onHidden: false,
 
         // called after approve selector match
-        onApprove: function (){
+        onApprove: function () {
             return true;
         },
 
         // called after deny selector match
-        onDeny: function (){
+        onDeny: function () {
             return true;
         },
 
@@ -1454,9 +1454,9 @@
     $.fn.modal.settings.templates = {
         getArguments: function (args) {
             var queryArguments = [].slice.call(args);
-            if ($.isPlainObject(queryArguments[0])){
+            if ($.isPlainObject(queryArguments[0])) {
                 return $.extend({
-                    handler: function (){},
+                    handler: function () {},
                     content: '',
                     title: '',
                 }, queryArguments[0]);
@@ -1494,10 +1494,10 @@
             var
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = function (){
+                approveFn = function () {
                     args.handler(true);
                 },
-                denyFn = function (){
+                denyFn = function () {
                     args.handler(false);
                 }
             ;
@@ -1524,14 +1524,14 @@
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 input    = $($.parseHTML(args.content)).filter('.ui.input'),
-                approveFn = function (){
+                approveFn = function () {
                     var
                         settings = $this.get.settings(),
                         inputField = $this.get.element().find(settings.selector.prompt)[0]
                     ;
                     args.handler($(inputField).val());
                 },
-                denyFn = function (){
+                denyFn = function () {
                     args.handler(null);
                 }
             ;

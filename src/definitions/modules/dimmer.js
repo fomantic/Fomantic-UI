@@ -183,7 +183,7 @@
                 show: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if ((!module.is.dimmed() || module.is.animating()) && module.is.enabled()) {
                         if (settings.onShow.call(element) === false) {
                             module.verbose('Show callback returned false cancelling dimmer show');
@@ -202,7 +202,7 @@
                 hide: function (callback) {
                     callback = isFunction(callback)
                         ? callback
-                        : function (){};
+                        : function () {};
                     if (module.is.dimmed() || module.is.animating()) {
                         if (settings.onHide.call(element) === false) {
                             module.verbose('Hide callback returned false cancelling dimmer hide');
@@ -232,7 +232,7 @@
                     show: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
                             if (settings.useFlex) {
                                 module.debug('Using flex dimmer');
@@ -291,7 +291,7 @@
                     hide: function (callback) {
                         callback = isFunction(callback)
                             ? callback
-                            : function (){};
+                            : function () {};
                         if (settings.useCSS && $.fn.transition !== undefined && $dimmer.transition('is supported')) {
                             module.verbose('Hiding dimmer with css');
                             $dimmer
@@ -683,11 +683,11 @@
         loaderText: false,
         loaderVariation: '',
 
-        onChange: function (){},
-        onShow: function (){},
-        onHide: function (){},
-        onVisible: function (){},
-        onHidden: function (){},
+        onChange: function () {},
+        onShow: function () {},
+        onHide: function () {},
+        onVisible: function () {},
+        onHidden: function () {},
 
         error: {
             method: 'The method you called is not defined.',
@@ -720,7 +720,7 @@
                         .addClass(settings.className.loader)
                         .addClass(settings.loaderVariation)
                     ;
-                    if (!!settings.loaderText){
+                    if (!!settings.loaderText) {
                         l.text(settings.loaderText);
                         l.addClass('text');
                     }

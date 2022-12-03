@@ -152,7 +152,7 @@
                             }
                         }
                         $container.addClass(className.calendar);
-                        if (isInverted){
+                        if (isInverted) {
                             $container.addClass(className.inverted);
                         }
                         var onVisible = function () {
@@ -315,11 +315,11 @@
                             ;
 
                             var tempMode = mode;
-                            if (isDay && settings.showWeekNumbers){
+                            if (isDay && settings.showWeekNumbers) {
                                 tempMode += ' andweek';
                             }
                             var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
-                            if (isInverted){
+                            if (isInverted) {
                                 table.addClass(className.inverted);
                             }
                             var textColumns = columns;
@@ -370,7 +370,7 @@
                             i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
                             for (r = 0; r < rows; r++) {
                                 row = $('<tr/>').appendTo(tbody);
-                                if (isDay && settings.showWeekNumbers){
+                                if (isDay && settings.showWeekNumbers) {
                                     cell = $('<th/>').appendTo(row);
                                     cell.text(module.get.weekOfYear(year, month, i + 1 - settings.firstDayOfWeek));
                                     cell.addClass(className.weekCell);
@@ -465,7 +465,7 @@
 
                             module.update.focus(false, table);
 
-                            if (settings.inline){
+                            if (settings.inline) {
                                 module.refreshTooltips();
                             }
                         }
@@ -666,7 +666,7 @@
                             var text = module.helper.dateFormat(formatter[settings.type], date);
                             $input.val(text);
                         }
-                        if (selectionComplete){
+                        if (selectionComplete) {
                             module.trigger.change();
                             selectionComplete = false;
                         }
@@ -715,7 +715,7 @@
                 },
 
                 check: {
-                    disabled: function (){
+                    disabled: function () {
                         $input.attr('tabindex', module.is.disabled() ? -1 : 0);
                     },
                 },
@@ -771,7 +771,7 @@
 
                         return module.get.validatedMode(mode);
                     },
-                    validatedMode: function (mode){
+                    validatedMode: function (mode) {
                         var validModes = module.get.validModes();
                         if ($.inArray(mode, validModes) >= 0) {
                             return mode;
@@ -1066,7 +1066,7 @@
                         });
                     },
                     isDisabled: function (date, mode) {
-                        return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d){
+                        return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
@@ -1100,7 +1100,7 @@
                                     }
                                 }
                             }
-                        })) || (mode === 'hour' && settings.disabledHours.some(function (d){
+                        })) || (mode === 'hour' && settings.disabledHours.some(function (d) {
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
@@ -1142,7 +1142,7 @@
                     },
                     isEnabled: function (date, mode) {
                         if (mode === 'day') {
-                            return settings.enabledDates.length === 0 || settings.enabledDates.some(function (d){
+                            return settings.enabledDates.length === 0 || settings.enabledDates.some(function (d) {
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
@@ -1601,7 +1601,7 @@
                 if (text.length === 0) {
                     return null;
                 }
-                if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
+                if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)) {
                     text = text.replace(/[\/\-\.]/g, '/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
