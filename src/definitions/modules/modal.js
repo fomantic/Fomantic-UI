@@ -124,7 +124,7 @@
                             }
                             settings.actions.forEach(function (el) {
                                 var
-                                    icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                    icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                     cls = module.helpers.deQuote(el[fields.class] || ''),
                                     click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
@@ -729,7 +729,7 @@
                             }
                         },
                         bodyMargin: function () {
-                            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
+                            initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                             var
                                 bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
                                 bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
@@ -745,12 +745,12 @@
                             }
                         },
                         bodyMargin: function () {
-                            var position = module.can.leftBodyScrollbar() ? 'left':'right';
-                            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+                            var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                            $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                    attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                                 ;
                                 el.css(attribute, '');
                             });
@@ -963,14 +963,14 @@
                             }
                         },
                         bodyMargin: function () {
-                            var position = module.can.leftBodyScrollbar() ? 'left':'right';
+                            var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
                             if (settings.detachable || module.can.fit()) {
-                                $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
+                                $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                             }
                             $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                    attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                                 ;
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
@@ -1176,7 +1176,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();
@@ -1414,7 +1414,7 @@
                     title: '',
                 }, queryArguments[0]);
             } else {
-                if (!isFunction(queryArguments[queryArguments.length-1])) {
+                if (!isFunction(queryArguments[queryArguments.length - 1])) {
                     queryArguments.push(function () {});
                 }
                 return {
@@ -1486,7 +1486,7 @@
                 }
             ;
             if (input.length === 0) {
-                args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
+                args.content += '<p><div class="' + this.helpers.deQuote(settings.className.prompt) + '"><input placeholder="' + this.helpers.deQuote(args.placeholder || '') + '" type="text" value="' + this.helpers.deQuote(args.defaultValue || '') + '"></div></p>';
             }
             return {
                 title: args.title,

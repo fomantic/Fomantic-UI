@@ -146,7 +146,7 @@
                     create: {
                         container: function () {
                             module.verbose('Creating container');
-                            $context.append($('<div/>', {class: settings.position + ' ' + className.container + ' ' +(settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
+                            $context.append($('<div/>', {class: settings.position + ' ' + className.container + ' ' + (settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
                         },
                         id: function () {
                             id = (Math.random().toString(16) + '000000000').slice(2, 10);
@@ -200,7 +200,7 @@
                                 }
                             } else {
                                 $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
-                                $close = $toast.find('> i'+module.helpers.toClass(className.close));
+                                $close = $toast.find('> i' + module.helpers.toClass(className.close));
                                 settings.closeIcon = ($close.length > 0);
                                 if (iconClass !== '') {
                                     $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
@@ -235,7 +235,7 @@
                                 }
                                 settings.actions.forEach(function (el) {
                                     var
-                                        icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                        icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                                         text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                         cls = module.helpers.deQuote(el[fields.class] || ''),
                                         click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
@@ -301,7 +301,7 @@
                                 element = $toast[0];
                             }
                             if (settings.displayTime > 0) {
-                                var progressingClass = className.progressing+' '+(settings.pauseOnHover ? className.pausable:'');
+                                var progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
                                 if (!!settings.showProgress) {
                                     $progress = $('<div/>', {
                                         class: className.progress + ' ' + (settings.classProgress || settings.class),
@@ -314,7 +314,7 @@
                                             $progress.removeClass(className.inverted);
                                         }
                                     }
-                                    $progressBar = $('<div/>', {class: 'bar '+(settings.progressUp ? 'up ' : 'down ')+progressingClass});
+                                    $progressBar = $('<div/>', {class: 'bar ' + (settings.progressUp ? 'up ' : 'down ') + progressingClass});
                                     $progress
                                         .addClass(settings.showProgress)
                                         .append($progressBar);
@@ -325,7 +325,7 @@
                                     }
                                     $progressBar.css('animation-duration', settings.displayTime / 1000 + 's');
                                 }
-                                $animationObject = $('<span/>', {class: 'wait '+progressingClass});
+                                $animationObject = $('<span/>', {class: 'wait ' + progressingClass});
                                 $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
                                 $animationObject.appendTo($toast);
                             }
@@ -409,7 +409,7 @@
                                         interval: 50,
 
                                         onBeforeHide: function (callback){
-                                            callback = isFunction(callback)?callback : function (){};
+                                            callback = isFunction(callback) ? callback : function (){};
                                             if (settings.transition.closeEasing !== ''){
                                                 if ($toastBox) {
                                                     $toastBox.css('opacity', '0');
@@ -469,7 +469,7 @@
                             return id;
                         },
                         containers: function () {
-                            return $context.children(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not('+module.helpers.toClass(className.horizontal)+')') + (settings.context && settings.context !== 'body' ? module.helpers.toClass(className.absolute) : ':not('+module.helpers.toClass(className.absolute)+')'));
+                            return $context.children(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not(' + module.helpers.toClass(className.horizontal) + ')') + (settings.context && settings.context !== 'body' ? module.helpers.toClass(className.absolute) : ':not(' + module.helpers.toClass(className.absolute) + ')'));
                         },
                         container: function () {
                             return module.get.containers()[0];
@@ -675,7 +675,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();
@@ -893,7 +893,7 @@
             }
         },
         easeOutCubic: function (t) {
-            return (--t)*t*t+1;
+            return (--t) * t * t + 1;
         },
     });
 })(jQuery, window, document);

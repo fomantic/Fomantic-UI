@@ -244,8 +244,8 @@
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                                    + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                                    + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                    + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
+                                    + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
                             } else if (direction === 'top' || direction == 'bottom') {
                                 style  += ''
@@ -263,8 +263,8 @@
                                     module.debug('Adding CSS rules for animation distance', width);
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                                        + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                                        + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                        + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
+                                        + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                         + ' }';
                                 } else if (direction === 'top' || direction == 'bottom') {
                                     style  += ''
@@ -366,7 +366,7 @@
                     },
                     save: {
                         bodyMargin: function () {
-                            initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
+                            initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                             var
                                 bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
                                 bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
@@ -575,12 +575,12 @@
 
                     set: {
                         bodyMargin: function () {
-                            var position = module.can.leftBodyScrollbar() ? 'left':'right';
-                            $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
+                            var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                            $context.css((isBody ? 'margin-' : 'padding-') + position, tempBodyMargin + 'px');
                             $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                    attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                                 ;
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
@@ -685,12 +685,12 @@
                     },
                     restore: {
                         bodyMargin: function () {
-                            var position = module.can.leftBodyScrollbar() ? 'left':'right';
-                            $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
+                            var position = module.can.leftBodyScrollbar() ? 'left' : 'right';
+                            $context.css((isBody ? 'margin-' : 'padding-') + position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right', position)).each(function (){
                                 var
                                     el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                    attribute = el.css('position') === 'fixed' ? 'padding-' + position : position
                                 ;
                                 el.css(attribute, '');
                             });
@@ -922,7 +922,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();

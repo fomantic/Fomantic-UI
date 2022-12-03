@@ -608,16 +608,16 @@
                             module.verbose('Finding field with identifier', identifier);
                             identifier = module.escape.string(identifier);
                             var t;
-                            if ((t=$field.filter('#' + identifier)).length > 0) {
+                            if ((t = $field.filter('#' + identifier)).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[name="' + identifier +'"]')).length > 0) {
+                            if ((t = $field.filter('[name="' + identifier + '"]')).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[name="' + identifier +'[]"]')).length > 0) {
+                            if ((t = $field.filter('[name="' + identifier + '[]"]')).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0) {
+                            if ((t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]')).length > 0) {
                                 return t;
                             }
                             module.error(error.noField.replace('{identifier}', identifier));
@@ -775,8 +775,8 @@
                             }
                             return (
                                 $field.filter('#' + identifier).length > 0 ||
-              $field.filter('[name="' + identifier +'"]').length > 0 ||
-              $field.filter('[data-' + metadata.validate + '="'+ identifier +'"]').length > 0
+              $field.filter('[name="' + identifier + '"]').length > 0 ||
+              $field.filter('[data-' + metadata.validate + '="' + identifier + '"]').length > 0
                             );
                         },
 
@@ -1221,7 +1221,7 @@
                                 $.each(field.rules, function (index, rule) {
                                     if (module.has.field(identifier)) {
                                         var invalidFields = module.validate.rule(field, rule, true) || [];
-                                        if (invalidFields.length>0){
+                                        if (invalidFields.length > 0){
                                             module.debug('Field is invalid', identifier, rule.type);
                                             fieldErrors.push(module.get.prompt(rule, field));
                                             fieldValid = false;
@@ -1281,7 +1281,7 @@
                                     }
                                 });
                             }
-                            return internal ? invalidFields : !(invalidFields.length>0);
+                            return internal ? invalidFields : !(invalidFields.length > 0);
                         },
                     },
 
@@ -1374,7 +1374,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();
@@ -1671,10 +1671,10 @@
                 return value.match(new RegExp(regExp, flags));
             },
             minValue: function (value, range) {
-                return $.fn.form.settings.rules.range(value, range+'..', 'number');
+                return $.fn.form.settings.rules.range(value, range + '..', 'number');
             },
             maxValue: function (value, range) {
-                return $.fn.form.settings.rules.range(value, '..'+range, 'number');
+                return $.fn.form.settings.rules.range(value, '..' + range, 'number');
             },
             // is valid integer or matches range
             integer: function (value, range) {
@@ -1811,13 +1811,13 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0) {
+                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0) {
+                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)
@@ -1832,13 +1832,13 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0) {
+                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
+                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0) {
+                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)

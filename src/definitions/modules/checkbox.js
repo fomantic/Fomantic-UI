@@ -219,15 +219,15 @@
                             if (key == keyCode.left || key == keyCode.up) {
                                 checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
                             } else if (key == keyCode.right || key == keyCode.down) {
-                                checkIndex = rIndex === rLen-1 ? 0 : rIndex+1;
+                                checkIndex = rIndex === rLen - 1 ? 0 : rIndex + 1;
                             }
 
                             if (!module.should.ignoreCallbacks() && checkIndex !== false) {
-                                if (settings.beforeUnchecked.apply(input)===false) {
+                                if (settings.beforeUnchecked.apply(input) === false) {
                                     module.verbose('Option not allowed to be unchecked, cancelling key navigation');
                                     return false;
                                 }
-                                if (settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0])===false) {
+                                if (settings.beforeChecked.apply($(r[checkIndex]).children(selector.input)[0]) === false) {
                                     module.verbose('Next option should not allow check, cancelling key navigation');
                                     return false;
                                 }
@@ -706,7 +706,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();

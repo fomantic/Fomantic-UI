@@ -424,7 +424,7 @@
                                 var
                                     formArray = $form.serializeArray(),
                                     pushes = {},
-                                    pushValues= {},
+                                    pushValues = {},
                                     build = function (base, key, value) {
                                         base[key] = value;
                                         return base;
@@ -444,7 +444,7 @@
                                         isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                         floatValue = parseFloat(el.value),
                                         value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
-                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/, '')
+                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey = el.name.replace(/\[\]$/, '')
                                     ;
                                     if (!(pushKey in pushes)) {
                                         pushes[pushKey] = 0;
@@ -454,7 +454,7 @@
                                     } else {
                                         pushValues[pushKey] = [pushValues[pushKey], value];
                                     }
-                                    if (pushKey.indexOf('[]')===-1) {
+                                    if (pushKey.indexOf('[]') === -1) {
                                         value = pushValues[pushKey];
                                     }
 
@@ -948,7 +948,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();

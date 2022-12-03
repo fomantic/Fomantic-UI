@@ -738,11 +738,11 @@
                                     }
                                     var preSelected = $input.val();
                                     if (!Array.isArray(preSelected)) {
-                                        preSelected = preSelected && preSelected!=='' ? preSelected.split(settings.delimiter) : [];
+                                        preSelected = preSelected && preSelected !== '' ? preSelected.split(settings.delimiter) : [];
                                     }
                                     if (module.is.multiple()) {
                                         $.each(preSelected, function (index, value){
-                                            $item.filter('[data-value="'+value+'"]')
+                                            $item.filter('[data-value="' + value + '"]')
                                                 .addClass(className.filtered);
                                         });
                                     }
@@ -802,7 +802,7 @@
                                     menuConfig[fields.values] = values;
                                     module.setup.menu(menuConfig);
 
-                                    if (values.length===0 && !settings.allowAdditions) {
+                                    if (values.length === 0 && !settings.allowAdditions) {
                                         module.add.message(message.noResults);
                                     } else {
                                         var value = module.is.multiple() ? module.get.values() : module.get.value();
@@ -1118,7 +1118,7 @@
                         },
                         icon: {
                             click: function (event) {
-                                iconClicked=true;
+                                iconClicked = true;
                                 if (module.has.search()) {
                                     if (!module.is.active()) {
                                         if (settings.showOnFocus){
@@ -1461,12 +1461,12 @@
                                         ? $currentlySelected
                                         : $activeItem,
                                     $visibleItems = ($selectedItem.length > 0)
-                                        ? $selectedItem.siblings(':not(.' + className.filtered +')').addBack()
-                                        : $menu.children(':not(.' + className.filtered +')'),
+                                        ? $selectedItem.siblings(':not(.' + className.filtered + ')').addBack()
+                                        : $menu.children(':not(.' + className.filtered + ')'),
                                     $subMenu              = $selectedItem.children(selector.menu),
                                     $parentMenu           = $selectedItem.closest(selector.menu),
                                     inVisibleMenu         = ($parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0),
-                                    hasSubMenu            = ($subMenu.length> 0),
+                                    hasSubMenu            = ($subMenu.length > 0),
                                     hasSelectedItem       = ($selectedItem.length > 0),
                                     selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
                                     delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
@@ -3023,7 +3023,7 @@
                             var
                                 escapedValue  = module.escape.value(value),
                                 $labels       = $module.find(selector.label),
-                                $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]')
+                                $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) + '"]')
                             ;
                             module.verbose('Removing label', $removedLabel);
                             $removedLabel.remove();
@@ -3103,7 +3103,7 @@
                                     : String(module.get.query());
                                 return (searchTerm.length >= settings.minCharacters);
                             }
-                            iconClicked=false;
+                            iconClicked = false;
                             return true;
                         },
                         firstLetter: function ($item, letter) {
@@ -3142,7 +3142,7 @@
                             if (settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
-                            return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) +'"]').length > 0);
+                            return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0);
                         },
                         maxSelections: function () {
                             return (settings.maxSelections && module.get.selectionCount() >= settings.maxSelections);
@@ -3683,7 +3683,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();
@@ -4029,7 +4029,7 @@
             } else {
                 html += '<div class="text"></div>';
             }
-            html += '<div class="'+deQuote(className.menu)+'">';
+            html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
             return html;
@@ -4057,29 +4057,29 @@
                             ? ' data-text="' + deQuote(option[fields.text], true) + '"'
                             : '',
                         maybeActionable = (option[fields.actionable])
-                            ? className.actionable+' '
+                            ? className.actionable + ' '
                             : '',
                         maybeDisabled = (option[fields.disabled])
-                            ? className.disabled+' '
+                            ? className.disabled + ' '
                             : '',
                         maybeDescriptionVertical = (option[fields.descriptionVertical])
-                            ? className.descriptionVertical+' '
+                            ? className.descriptionVertical + ' '
                             : '',
                         hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
                     ;
-                    html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {
-                        html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
+                        html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="'+deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image) + '" src="' + deQuote(option[fields.image]) + '">';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="'+deQuote(option[fields.icon]+' '+(option[fields.iconClass] ? option[fields.iconClass] : className.icon))+'"></i>';
+                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
                     }
                     if (hasDescription){
-                        html += '<span class="'+ deQuote(className.description) +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
-                        html += (!isMenu) ? '<span class="'+ deQuote(className.text) + '">' : '';
+                        html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
+                        html += (!isMenu) ? '<span class="' + deQuote(className.text) + '">' : '';
                     }
                     if (isMenu) {
                         html += '<span class="' + deQuote(className.text) + '">';
@@ -4108,7 +4108,7 @@
                         html += '</div>';
                     }
                     if (option[fields.divider]){
-                        html += '<div class="'+deQuote(className.divider)+'"></div>';
+                        html += '<div class="' + deQuote(className.divider) + '"></div>';
                     }
                 }
             });
@@ -4121,7 +4121,7 @@
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
-            return escape(text, preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
+            return escape(text, preserveHTML) + '<i class="' + deQuote(className.delete) + ' icon"></i>';
         },
 
         // generates messages like "No results"

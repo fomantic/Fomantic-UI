@@ -301,12 +301,12 @@
                                 transform = module.get.transform[type]()
                             ;
                             if (!module.is.animating()) {
-                                module.debug('Flipping '+type, $nextSide);
+                                module.debug('Flipping ' + type, $nextSide);
                                 module.set.stageSize();
                                 module.stage[stage]();
                                 module.animate(transform);
                             } else {
-                                module.queue('flip '+type);
+                                module.queue('flip ' + type);
                             }
                         },
 
@@ -345,7 +345,7 @@
                                     translateY = $nextSide.outerHeight(true) - translateZ
                                 ;
                                 return {
-                                    transform: 'translateY(' + translateY + 'px) translateZ(-'+ translateZ + 'px) rotateX(-90deg)',
+                                    transform: 'translateY(' + translateY + 'px) translateZ(-' + translateZ + 'px) rotateX(-90deg)',
                                 };
                             },
 
@@ -356,7 +356,7 @@
                                     }
                                 ;
                                 return {
-                                    transform: 'translateY(-' + translate.z + 'px) translateZ(-'+ translate.z + 'px) rotateX(90deg)',
+                                    transform: 'translateY(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateX(90deg)',
                                 };
                             },
 
@@ -653,7 +653,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();

@@ -464,7 +464,7 @@
                         } else if (step == 0){
                             var
                                 precision = module.get.precision(),
-                                newValue = currValue + (multiplier/precision)
+                                newValue = currValue + (multiplier / precision)
                             ;
                             module.set.value(Math.round(newValue * precision) / precision);
                         }
@@ -482,7 +482,7 @@
                         } else if (step == 0) {
                             var
                                 precision = module.get.precision(),
-                                newValue = currValue - (multiplier/precision)
+                                newValue = currValue - (multiplier / precision)
                             ;
                             module.set.value(Math.round(newValue * precision) / precision);
                         }
@@ -667,7 +667,7 @@
                                 // While the distance between two labels is too short,
                                 // we divide the number of labels at each iteration
                                 // and apply only if the modulo of the operation is an odd number.
-                                if (trackLength>0){
+                                if (trackLength > 0){
                                     while ((trackLength / numLabels) * gapCounter < settings.labelDistance) {
                                         if (!(numLabels % gapCounter)) {
                                             gapRatio = gapCounter;
@@ -774,7 +774,7 @@
                                 var
                                     touchEvent = event.touches ? event : event.originalEvent,
                                     touch = touchEvent.changedTouches[0];  // fall back to first touch if correct touch not found
-                                for (var i=0; i < touchEvent.touches.length; i++) {
+                                for (var i = 0; i < touchEvent.touches.length; i++) {
                                     if (touchEvent.touches[i].identifier === touchIdentifier) {
                                         touch = touchEvent.touches[i];
                                         break;
@@ -1159,7 +1159,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();

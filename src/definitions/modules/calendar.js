@@ -70,7 +70,7 @@
 
                     element = this,
                     instance = $module.data(moduleNamespace),
-                    $container = instance && instance.popupId ? $document.find('#'+instance.popupId) : $module.find(selector.popup),
+                    $container = instance && instance.popupId ? $document.find('#' + instance.popupId) : $module.find(selector.popup),
 
                     isTouch,
                     isTouchDown = false,
@@ -329,7 +329,7 @@
                                     var headerDate = isYear || isMonth ? new Date(year, 0, 1) :
                                         isDay ? new Date(year, month, 1) : new Date(year, month, day, hour, minute);
                                     var headerText = $('<span/>').addClass(className.link).appendTo(cell);
-                                    headerText.text(module.helper.dateFormat(formatter[mode+'Header'], headerDate));
+                                    headerText.text(module.helper.dateFormat(formatter[mode + 'Header'], headerDate));
                                     var newMode = isMonth ? (settings.disableYear ? 'day' : 'year') :
                                         isDay ? (settings.disableMonth ? 'year' : 'month') : 'day';
                                     headerText.data(metadata.mode, newMode);
@@ -368,7 +368,7 @@
                                     row = $('<tr/>').appendTo(tbody);
                                     if (isDay && settings.showWeekNumbers){
                                         cell = $('<th/>').appendTo(row);
-                                        cell.text(module.get.weekOfYear(year, month, i+1-settings.firstDayOfWeek));
+                                        cell.text(module.get.weekOfYear(year, month, i + 1 - settings.firstDayOfWeek));
                                         cell.addClass(className.weekCell);
                                     }
                                     for (c = 0; c < textColumns; c++, i++) {
@@ -1011,14 +1011,14 @@
                                 H = date.getHours(),
                                 m = date.getMinutes(),
                                 s = date.getSeconds(),
-                                w = module.get.weekOfYear(Y, M, D+1-settings.firstDayOfWeek),
+                                w = module.get.weekOfYear(Y, M, D + 1 - settings.firstDayOfWeek),
                                 h = H % 12 || 12,
                                 a = H < 12 ? settings.text.am.toLowerCase() : settings.text.pm.toLowerCase(),
                                 tokens = {
                                     D: D,
-                                    DD: ('0'+D).slice(-2),
+                                    DD: ('0' + D).slice(-2),
                                     M: M + 1,
-                                    MM: ('0'+(M+1)).slice(-2),
+                                    MM: ('0' + (M + 1)).slice(-2),
                                     MMM: settings.text.monthsShort[M],
                                     MMMM: settings.text.months[M],
                                     Y: Y,
@@ -1029,18 +1029,18 @@
                                     ddd: settings.text.dayNamesShort[d],
                                     dddd: settings.text.dayNames[d],
                                     h: h,
-                                    hh: ('0'+h).slice(-2),
+                                    hh: ('0' + h).slice(-2),
                                     H: H,
-                                    HH: ('0'+H).slice(-2),
+                                    HH: ('0' + H).slice(-2),
                                     m: m,
-                                    mm: ('0'+m).slice(-2),
+                                    mm: ('0' + m).slice(-2),
                                     s: s,
-                                    ss: ('0'+s).slice(-2),
+                                    ss: ('0' + s).slice(-2),
                                     a: a,
                                     A: a.toUpperCase(),
                                     S: ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
                                     w: w,
-                                    ww: ('0'+w).slice(-2),
+                                    ww: ('0' + w).slice(-2),
                                 }
                             ;
                             return format.replace(settings.regExp.token, function (match) {
@@ -1651,7 +1651,7 @@
                         if (isNaN(j)) {
                             continue;
                         }
-                        if (j >= settings.centuryBreak && i === numbers.length-1) {
+                        if (j >= settings.centuryBreak && i === numbers.length - 1) {
                             if (j <= 99) {
                                 j += settings.currentCentury - 100;
                             }

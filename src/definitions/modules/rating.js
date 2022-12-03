@@ -373,7 +373,7 @@
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function (index, data) {
-                                        console.log(data['Name'] + ': ' + data['Execution Time']+'ms');
+                                        console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
                                     });
                                 }
                                 console.groupEnd();
@@ -505,7 +505,7 @@
                     deQuote = $.fn.rating.settings.templates.deQuote
                 ;
                 while (icon <= maxRating) {
-                    html += '<i class="'+deQuote(iconClass)+' icon"></i>';
+                    html += '<i class="' + deQuote(iconClass) + ' icon"></i>';
                     icon++;
                 }
                 return html;

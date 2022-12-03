@@ -192,7 +192,7 @@ function moduleTests(ui) {
 
         it('removes instance metadata', function () {
             $module[module]('destroy');
-            expect($module.data('module-'+ module)).toBe(undefined);
+            expect($module.data('module-' + module)).toBe(undefined);
         });
     });
 }

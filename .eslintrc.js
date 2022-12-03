@@ -25,6 +25,7 @@ module.exports = {
             'anonymous': 'always',
             'asyncArrow': 'always',
         }],
+        'space-infix-ops': ['error'],
         'padded-blocks': ['error', 'never'],
         'no-multiple-empty-lines': ['error', {
             max: 1,
