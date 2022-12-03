@@ -43,8 +43,8 @@ module.exports = function(callback) {
         total = release.components.length,
         timer,
         stream,
-        stepRepo;
-  
+        stepRepo
+    ;
 
     if(!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
@@ -93,8 +93,8 @@ module.exports = function(callback) {
             versionOptions =  { args: 'rev-parse --verify HEAD', cwd: outputDirectory },
 
             localRepoSetup  = fs.existsSync(path.join(outputDirectory, '.git')),
-            canProceed      = true;
-    
+            canProceed      = true
+        ;
 
 
         console.info('Processing repository:' + outputDirectory);

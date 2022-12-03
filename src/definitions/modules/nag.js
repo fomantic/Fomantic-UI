@@ -34,8 +34,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -59,8 +59,8 @@
                     element         = this,
                     instance        = $module.data(moduleNamespace),
                     storage,
-                    module;
-      
+                    module
+                ;
                 module = {
 
                     initialize: function() {
@@ -352,8 +352,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -372,8 +372,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -403,8 +403,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

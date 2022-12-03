@@ -34,8 +34,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -63,8 +63,8 @@
 
                     element   = this,
                     instance  = $module.data(moduleNamespace),
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -418,8 +418,8 @@
                             var
                                 color      = $dimmer.css('background-color'),
                                 colorArray = color.split(','),
-                                isRGB      = (colorArray && colorArray.length >= 3);
-            
+                                isRGB      = (colorArray && colorArray.length >= 3)
+                            ;
                             opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                             if(isRGB) {
                                 colorArray[2] = colorArray[2].replace(')','');
@@ -542,8 +542,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -562,8 +562,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -596,8 +596,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

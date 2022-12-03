@@ -41,8 +41,8 @@
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -83,8 +83,8 @@
                     element         = this,
                     context         = $context[0],
                     instance        = $module.data(moduleNamespace),
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -354,8 +354,8 @@
                         urlData: function(url, urlData) {
                             var
                                 requiredVariables,
-                                optionalVariables;
-            
+                                optionalVariables
+                            ;
                             if(url) {
                                 requiredVariables = url.match(settings.regExp.required);
                                 optionalVariables = url.match(settings.regExp.optional);
@@ -374,8 +374,8 @@
                                                     ? $module.data(variable)
                                                     : ($context.data(variable) !== undefined)
                                                         ? $context.data(variable)
-                                                        : urlData[variable];
-                  
+                                                        : urlData[variable]
+                                                    ;
                                         // remove value
                                         if(value === undefined) {
                                             module.error(error.requiredParameter, variable, url);
@@ -406,8 +406,8 @@
                                                     ? $module.data(variable)
                                                     : ($context.data(variable) !== undefined)
                                                         ? $context.data(variable)
-                                                        : urlData[variable];
-                  
+                                                        : urlData[variable]
+                                                    ;
                                         // optional replacement
                                         if(value !== undefined) {
                                             module.verbose('Optional variable Found', variable, value);
@@ -432,8 +432,8 @@
                             var
                                 formData = {},
                                 hasOtherData,
-                                useFormDataApi = settings.serializeForm === 'formdata';
-            
+                                useFormDataApi = settings.serializeForm === 'formdata'
+                            ;
                             data         = data || originalData || settings.data;
                             hasOtherData = $.isPlainObject(data);
 
@@ -546,8 +546,8 @@
                                         ? module.is.expectingJSON() && !settings.rawResponse
                                             ? settings.onResponse.call(context, $.extend(true, {}, response))
                                             : settings.onResponse.call(context, response)
-                                        : false;
-              
+                                        : false
+                                    ;
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
@@ -572,8 +572,8 @@
                                 var
                                     context     = this,
                                     elapsedTime = (new Date().getTime() - requestStartTime),
-                                    timeLeft    = (settings.loadingDuration - elapsedTime);
-              
+                                    timeLeft    = (settings.loadingDuration - elapsedTime)
+                                ;
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
@@ -603,8 +603,8 @@
                             complete: function(firstParameter, secondParameter) {
                                 var
                                     xhr,
-                                    response;
-              
+                                    response
+                                ;
                                 // have to guess callback parameters based on request success
                                 if( module.was.successful() ) {
                                     response = firstParameter;
@@ -621,8 +621,8 @@
                                 var
                                     // pull response from xhr if available
                                     response     = module.get.responseFromXHR(xhr),
-                                    errorMessage = module.get.errorFromRequest(response, status, httpMessage);
-              
+                                    errorMessage = module.get.errorFromRequest(response, status, httpMessage)
+                                ;
                                 if(status == 'aborted') {
                                     module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                     settings.onAbort.call(context, status, $module, xhr);
@@ -676,8 +676,8 @@
                                 asyncResponder = settings.mockResponseAsync || settings.responseAsync,
                                 asyncCallback,
                                 response,
-                                mockedXHR;
-            
+                                mockedXHR
+                            ;
 
                             mockedXHR = $.Deferred()
                                 .always(module.event.xhr.complete)
@@ -815,8 +815,8 @@
                             var
                                 decodedValue   = window.decodeURIComponent(value),
                                 encodedValue   = window.encodeURIComponent(value),
-                                alreadyEncoded = (decodedValue !== value);
-            
+                                alreadyEncoded = (decodedValue !== value)
+                            ;
                             if(alreadyEncoded) {
                                 module.debug('URL value is already encoded, avoiding double encoding', value);
                                 return value;
@@ -966,8 +966,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -986,8 +986,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -1017,8 +1017,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

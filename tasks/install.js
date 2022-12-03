@@ -61,8 +61,8 @@ module.exports = function (callback) {
         manager       = install.getPackageManager(),
         rootQuestions = questions.root,
         installFolder = false,
-        answers;
-  
+        answers
+    ;
 
     console.clear();
 
@@ -98,8 +98,8 @@ module.exports = function (callback) {
                 site: path.join(currentConfig.paths.source.site),
                 theme: path.join(currentConfig.paths.source.themes),
                 defaultTheme: path.join(currentConfig.paths.source.themes, folders.defaultTheme),
-            };
-    
+            }
+        ;
 
         // duck-type if there is a project installed
         if (fs.existsSync(updatePaths.definition)) {
@@ -240,8 +240,8 @@ module.exports = function (callback) {
                 site: answers.site || folders.site,
                 themeConfig: files.themeConfig,
                 themeConfigFolder: folders.themeConfig,
-            };
-    
+            }
+        ;
 
         /*--------------
       NPM Install

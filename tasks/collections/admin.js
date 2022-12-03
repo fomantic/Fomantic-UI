@@ -28,8 +28,8 @@ module.exports = function (gulp) {
 
         release             = require('../admin/release'),
         publish             = require('../admin/publish'),
-        register            = require('../admin/register');
-  
+        register            = require('../admin/register')
+    ;
 
     /* Release */
     gulp.task('init distributions', initDistributions);

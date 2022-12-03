@@ -36,8 +36,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -60,8 +60,8 @@
                     element         = this,
                     instance        = $module.data(moduleNamespace),
 
-                    module;
-      
+                    module
+                ;
                 module = {
 
                     initialize: function() {
@@ -116,8 +116,8 @@
                             var
                                 userStates = parameters && $.isPlainObject(parameters.states)
                                     ? parameters.states
-                                    : {};
-            
+                                    : {}
+                                ;
                             $.each(settings.defaults, function(type, typeStates) {
                                 if( module.is[type] !== undefined && module.is[type]() ) {
                                     module.verbose('Adding default states', type, element);
@@ -204,8 +204,8 @@
                         state: function() {
                             var
                                 apiRequest,
-                                requestCancelled;
-            
+                                requestCancelled
+                            ;
                             if( module.allows('active') && module.is.enabled() ) {
                                 module.refresh();
                                 if($.fn.api !== undefined) {
@@ -370,8 +370,8 @@
                         text: function() {
                             var
                                 activeText   = text.active   || $module.data(metadata.storedText),
-                                inactiveText = text.inactive || $module.data(metadata.storedText);
-            
+                                inactiveText = text.inactive || $module.data(metadata.storedText)
+                            ;
                             if( module.is.textEnabled() ) {
                                 if( module.is.active() && activeText) {
                                     module.verbose('Resetting active text', activeText);
@@ -473,8 +473,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -493,8 +493,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -524,8 +524,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

@@ -43,8 +43,8 @@
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -82,8 +82,8 @@
                     documentObserver,
                     elementNamespace,
                     id,
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -189,8 +189,8 @@
                             var
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.show
-                                    : settings.delay;
-            
+                                    : settings.delay
+                                ;
                             clearTimeout(module.hideTimer);
                             if(!openedWithTouch || (openedWithTouch && settings.addTouchEvents) ) {
                                 module.showTimer = setTimeout(module.show, delay);
@@ -200,8 +200,8 @@
                             var
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.hide
-                                    : settings.delay;
-            
+                                    : settings.delay
+                                ;
                             clearTimeout(module.showTimer);
                             module.hideTimer = setTimeout(module.hide, delay);
                         },
@@ -232,8 +232,8 @@
                             var
                                 $target = $(event.target),
                                 isInDOM = $.contains(document.documentElement, event.target),
-                                inPopup = ($target.closest(selector.popup).length > 0);
-            
+                                inPopup = ($target.closest(selector.popup).length > 0)
+                            ;
                             // don't close on clicks inside popup
                             if(event && !inPopup && isInDOM) {
                                 module.debug('Click occurred outside popup hiding popup');
@@ -250,8 +250,8 @@
                         var
                             html      = module.get.html(),
                             title     = module.get.title(),
-                            content   = module.get.content();
-          
+                            content   = module.get.content()
+                        ;
 
                         if(html || content || title) {
                             module.debug('Creating pop-up html');
@@ -523,8 +523,8 @@
                                 scroll = (isWindowEl)
                                     ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                                     : { top: 0, left: 0},
-                                screen;
-            
+                                screen
+                            ;
                             calculations = {
                                 // element which is launching popup
                                 target: {
@@ -626,8 +626,8 @@
                             var
                                 distanceFromBoundary = {},
                                 popup,
-                                boundary;
-            
+                                boundary
+                            ;
                             calculations = calculations || module.get.calculations();
 
                             // shorthand
@@ -651,14 +651,14 @@
                                     ? $element[0]
                                     : $target[0],
                                 parentNode = element.parentNode,
-                                $node    = $(parentNode);
-            
+                                $node    = $(parentNode)
+                            ;
                             if(parentNode) {
                                 var
                                     is2D     = ($node.css('transform') === 'none'),
                                     isStatic = ($node.css('position') === 'static'),
-                                    isBody   = $node.is('body');
-              
+                                    isBody   = $node.is('body')
+                                ;
                                 while(parentNode && !isBody && isStatic && is2D) {
                                     parentNode = parentNode.parentNode;
                                     $node    = $(parentNode);
@@ -713,8 +713,8 @@
                                 adjacentsAvailable = (verticalPosition == 'top' || verticalPosition == 'bottom'),
                                 oppositeTried = false,
                                 adjacentTried = false,
-                                nextPosition  = false;
-            
+                                nextPosition  = false
+                            ;
                             if(!triedPositions) {
                                 module.verbose('All available positions available');
                                 triedPositions = module.get.positions();
@@ -759,8 +759,8 @@
                                 parent,
                                 positioning,
                                 popupOffset,
-                                distanceFromBoundary;
-            
+                                distanceFromBoundary
+                            ;
 
                             calculations = calculations || module.get.calculations();
                             position     = position     || $module.data(metadata.position) || settings.position;
@@ -1202,8 +1202,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -1222,8 +1222,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -1253,8 +1253,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -1513,8 +1513,8 @@
             popup: function(text) {
                 var
                     html   = '',
-                    escape = $.fn.popup.settings.templates.escape;
-      
+                    escape = $.fn.popup.settings.templates.escape
+                ;
                 if(typeof text !== undefined) {
                     if(typeof text.title !== undefined && text.title) {
                         text.title = escape(text.title);

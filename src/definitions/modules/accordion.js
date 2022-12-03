@@ -34,8 +34,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -59,8 +59,8 @@
                     element  = this,
                     instance = $module.data(moduleNamespace),
                     observer,
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -135,8 +135,8 @@
                             isAnimating = $activeContent.hasClass(className.animating),
                             isActive    = $activeContent.hasClass(className.active),
                             isOpen      = (isActive && !isAnimating),
-                            isOpening   = (!isActive && isAnimating);
-          
+                            isOpening   = (!isActive && isAnimating)
+                        ;
                         module.debug('Toggling visibility of content', $activeTitle);
                         if(isOpen || isOpening) {
                             if(settings.collapsible) {
@@ -161,8 +161,8 @@
                             $activeContent = $activeTitle.next($content),
                             isAnimating = $activeContent.hasClass(className.animating),
                             isActive    = $activeContent.hasClass(className.active),
-                            isOpen      = (isActive || isAnimating);
-          
+                            isOpen      = (isActive || isAnimating)
+                        ;
                         if(isOpen) {
                             module.debug('Accordion already open, skipping', $activeContent);
                             return;
@@ -233,8 +233,8 @@
                             isAnimating    = $activeContent.hasClass(className.animating),
                             isActive       = $activeContent.hasClass(className.active),
                             isOpening      = (!isActive && isAnimating),
-                            isClosing      = (isActive && isAnimating);
-          
+                            isClosing      = (isActive && isAnimating)
+                        ;
                         if((isActive || isOpening) && !isClosing) {
                             module.debug('Closing accordion content', $activeContent);
                             settings.onClosing.call($activeContent);
@@ -297,8 +297,8 @@
                             activeContent    = selector.content + '.' + className.active + ':visible',
                             $openTitles,
                             $nestedTitles,
-                            $openContents;
-          
+                            $openContents
+                        ;
                         if(settings.closeNested) {
                             $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
                             $openContents = $openTitles.next($content);
@@ -444,8 +444,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -464,8 +464,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -495,8 +495,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

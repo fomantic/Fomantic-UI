@@ -46,8 +46,8 @@ module.exports = function(callback) {
     var
         stream,
         index,
-        tasks = [];
-  
+        tasks = []
+    ;
 
     for(index in release.components) {
 

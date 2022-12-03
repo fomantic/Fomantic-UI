@@ -34,8 +34,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -70,8 +70,8 @@
                     instance         = isToastComponent ? $module.data(moduleNamespace) : undefined,
 
                     id,
-                    module;
-      
+                    module
+                ;
                 module = {
 
                     initialize: function() {
@@ -546,8 +546,8 @@
                         toClass: function(selector) {
                             var
                                 classes = selector.trim().split(/\s+/),
-                                result = '';
-            
+                                result = ''
+                            ;
 
                             classes.forEach(function (element) {
                                 result += '.' + element;
@@ -655,8 +655,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -675,8 +675,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -706,8 +706,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

@@ -86,8 +86,8 @@
                     tempBodyMargin = '',
                     hadScrollbar = false,
 
-                    module;
-      
+                    module
+                ;
 
                 module      = {
 
@@ -149,8 +149,8 @@
                             if(settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                    clickedContext  = ($context.is(event.target));
-              
+                                    clickedContext  = ($context.is(event.target))
+                                ;
                                 if(clickedInPusher) {
                                     module.verbose('User clicked on dimmed page');
                                     module.hide();
@@ -235,8 +235,8 @@
                                     top: height,
                                     bottom: -height,
                                 },
-                                style;
-            
+                                style
+                            ;
 
                             if(isRTL){
                                 module.verbose('RTL detected, flipping widths');
@@ -464,8 +464,8 @@
                         var
                             $otherSidebars = $sidebars.not($module).filter('.' + className.visible),
                             sidebarCount   = $otherSidebars.length,
-                            callbackCount  = 0;
-          
+                            callbackCount  = 0
+                        ;
                         callback = callback || function(){};
                         $otherSidebars
                             .sidebar('hide', function() {
@@ -495,8 +495,8 @@
                                 : $pusher,
                             animate,
                             dim,
-                            transitionEnd;
-          
+                            transitionEnd
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -541,8 +541,8 @@
                                 ? $module
                                 : $pusher,
                             animate,
-                            transitionEnd;
-          
+                            transitionEnd
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -737,8 +737,8 @@
                         transition: function() {
                             var
                                 direction = module.get.direction(),
-                                transition;
-            
+                                transition
+                            ;
                             transition = ( module.is.mobile() )
                                 ? (settings.mobileTransition == 'auto')
                                     ? settings.defaultTransition.mobile[direction]
@@ -759,8 +759,8 @@
                                     'MozTransition': 'transitionend',
                                     'WebkitTransition': 'webkitTransitionEnd',
                                 },
-                                transition;
-            
+                                transition
+                            ;
                             for(transition in transitions){
                                 if( element.style[transition] !== undefined ){
                                     return transitions[transition];
@@ -799,8 +799,8 @@
                             if(module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                    isIE = ('ActiveXObject' in window);
-              
+                                    isIE = ('ActiveXObject' in window)
+                                ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
                             return module.cache.isIE;
@@ -810,8 +810,8 @@
                             var
                                 userAgent      = navigator.userAgent,
                                 isIOS          = userAgent.match(regExp.ios),
-                                isMobileChrome = userAgent.match(regExp.mobileChrome);
-            
+                                isMobileChrome = userAgent.match(regExp.mobileChrome)
+                            ;
                             if(isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
@@ -823,8 +823,8 @@
                         mobile: function() {
                             var
                                 userAgent    = navigator.userAgent,
-                                isMobile     = userAgent.match(regExp.mobile);
-            
+                                isMobile     = userAgent.match(regExp.mobile)
+                            ;
                             if(isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
@@ -922,8 +922,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -942,8 +942,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -973,8 +973,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

@@ -38,8 +38,8 @@
             instance        = $module.data(moduleNamespace),
 
             module,
-            returnedValue;
-  
+            returnedValue
+        ;
         module = {
 
             initialize: function() {
@@ -146,8 +146,8 @@
                             namespace = (module.moduleExists(name))
                                 ? $.fn[name].settings.namespace || false
                                 : true,
-                            $existingModules;
-          
+                            $existingModules
+                        ;
                         if(module.moduleExists(name)) {
                             module.verbose('Changing default setting', setting, value, name);
                             $.fn[name].settings[setting] = value;
@@ -308,8 +308,8 @@
                     var
                         currentTime,
                         executionTime,
-                        previousTime;
-        
+                        previousTime
+                    ;
                     if(settings.performance) {
                         currentTime   = new Date().getTime();
                         previousTime  = time || currentTime;
@@ -328,8 +328,8 @@
                 display: function() {
                     var
                         title = settings.name + ':',
-                        totalTime = 0;
-        
+                        totalTime = 0
+                    ;
                     time = false;
                     clearTimeout(module.performance.timer);
                     $.each(performance, function(index, data) {
@@ -356,8 +356,8 @@
                     object = instance,
                     maxDepth,
                     found,
-                    response;
-      
+                    response
+                ;
                 passedArguments = passedArguments || queryArguments;
                 context         = context         || element;
                 if(typeof query == 'string' && object !== undefined) {

@@ -23,8 +23,8 @@ module.exports = {
             walk = function(directory) {
                 var
                     nextDirectory = path.resolve( path.join(directory, path.sep, '..') ),
-                    currentPath   = path.normalize( path.join(directory, file) );
-        
+                    currentPath   = path.normalize( path.join(directory, file) )
+                ;
                 if( fs.existsSync(currentPath) ) {
                     // found file
                     configPath = path.normalize(directory);
@@ -61,8 +61,8 @@ module.exports = {
             configPath = this.getPath(),
             sourcePaths = {},
             outputPaths = {},
-            folder;
-    
+            folder
+        ;
 
         // resolve paths (config location + base + path)
         for(folder in config.paths.source) {

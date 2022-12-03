@@ -40,8 +40,8 @@ module.exports = function(callback) {
     var
         stream,
         index,
-        tasks = [];
-  
+        tasks = []
+    ;
 
     for(index in release.distributions) {
 
@@ -70,8 +70,8 @@ module.exports = function(callback) {
                     package: distribution + ' create package.json',
                 },
                 gatherFiles,
-                createList;
-      
+                createList
+            ;
 
             // get files for meteor
             gatherFiles = function(dir) {
@@ -88,14 +88,14 @@ module.exports = function(callback) {
                         'bower.json',
                         '.gitignore',
                     ],
-                    files = [];
-        
+                    files = []
+                ;
                 list.forEach(function(file) {
                     var
                         isOmitted = (omitted.indexOf(file) > -1),
                         filePath  = path.join(dir, file),
-                        stat      = fs.statSync(filePath);
-          
+                        stat      = fs.statSync(filePath)
+                    ;
                     if(!isOmitted) {
                         if(stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
@@ -125,8 +125,8 @@ module.exports = function(callback) {
             tasks.push(function() {
                 var
                     files     = gatherFiles(outputDirectory),
-                    filenames = createList(files);
-          
+                    filenames = createList(files)
+                ;
                 gulp.src(release.templates.meteor[distLowerCase])
                     .pipe(plumber())
                     .pipe(flatten())
@@ -142,8 +142,8 @@ module.exports = function(callback) {
                     var
                         themes,
                         components,
-                        releases;
-          
+                        releases
+                    ;
                     themes = gulp.src('dist/themes/default/**/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
                     
@@ -163,8 +163,8 @@ module.exports = function(callback) {
                         themeImport,
                         themeConfig,
                         siteTheme,
-                        themes;
-          
+                        themes
+                    ;
                     definitions = gulp.src('src/definitions/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
                     

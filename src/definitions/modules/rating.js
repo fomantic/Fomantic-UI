@@ -34,8 +34,8 @@
             query           = arguments[0],
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
         $allModules
             .each(function() {
                 var
@@ -59,8 +59,8 @@
                     $icon           = $module.find(selector.icon),
 
                     initialLoad,
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -108,8 +108,8 @@
                             var
                                 maxRating = module.get.maxRating(),
                                 icon      = module.get.icon(),
-                                html      = $.fn.rating.settings.templates.icon(maxRating, icon);
-            
+                                html      = $.fn.rating.settings.templates.icon(maxRating, icon)
+                            ;
                             module.debug('Generating icon html dynamically');
                             $module
                                 .html(html);
@@ -151,8 +151,8 @@
                                 rating        = $icon.index($activeIcon) + 1,
                                 canClear      = (settings.clearable == 'auto')
                                     ? ($icon.length === 1)
-                                    : settings.clearable;
-            
+                                    : settings.clearable
+                                ;
                             if(canClear && currentRating == rating) {
                                 module.clearRating();
                             }
@@ -259,8 +259,8 @@
                                     ? $activeIcon
                                     : $activeIcon.next()
                                 ,
-                                filledPercentage = (rating % 1) * 100;
-            
+                                filledPercentage = (rating % 1) * 100
+                            ;
                             $module
                                 .removeClass(className.selected);
                             
@@ -362,8 +362,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -382,8 +382,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -416,8 +416,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -543,8 +543,8 @@
                 var
                     icon = 1,
                     html = '',
-                    deQuote = $.fn.rating.settings.templates.deQuote;
-      
+                    deQuote = $.fn.rating.settings.templates.deQuote
+                ;
                 while(icon <= maxRating) {
                     html += '<i class="'+deQuote(iconClass)+' icon"></i>';
                     icon++;

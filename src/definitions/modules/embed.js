@@ -37,8 +37,8 @@
             methodInvoked   = (typeof query == 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -65,8 +65,8 @@
 
                     element         = this,
                     instance        = $module.data(moduleNamespace),
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -281,8 +281,8 @@
                             var
                                 id     = settings.id     || $module.data(metadata.id),
                                 source = settings.source || $module.data(metadata.source),
-                                url;
-            
+                                url
+                            ;
                             url = (sources[source] !== undefined)
                                 ? sources[source].url.replace('{id}', id)
                                 : false;
@@ -323,8 +323,8 @@
                         parameters: function(parameters) {
                             var
                                 urlString = [],
-                                index;
-            
+                                index
+                            ;
                             for (index in parameters) {
                                 urlString.push( encodeURIComponent(index) + '=' + encodeURIComponent( parameters[index] ) );
                             }
@@ -338,8 +338,8 @@
                             var
                                 source = module.get.source(),
                                 html,
-                                parameters;
-            
+                                parameters
+                            ;
                             url = module.get.url(url);
                             if(url) {
                                 parameters = module.generate.parameters(source);
@@ -354,8 +354,8 @@
                             var
                                 parameters = (sources[source] && sources[source].parameters !== undefined)
                                     ? sources[source].parameters(settings)
-                                    : {};
-            
+                                    : {}
+                                ;
                             extraParameters = extraParameters || settings.parameters;
                             if(extraParameters) {
                                 parameters = $.extend({}, parameters, extraParameters);
@@ -450,8 +450,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -470,8 +470,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -504,8 +504,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -688,8 +688,8 @@
             placeholder: function(image, icon) {
                 var
                     html = '',
-                    deQuote = $.fn.embed.settings.templates.deQuote;
-      
+                    deQuote = $.fn.embed.settings.templates.deQuote
+                ;
                 if(icon) {
                     html += '<i class="' + deQuote(icon) + ' icon"></i>';
                 }

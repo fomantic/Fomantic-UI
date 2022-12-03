@@ -94,8 +94,8 @@
                     currentScroll,
                     transitionEvent,
 
-                    module;
-      
+                    module
+                ;
 
                 module      = {
 
@@ -134,8 +134,8 @@
                                     icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                     cls = module.helpers.deQuote(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {};
-              
+                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
                                     'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
@@ -263,8 +263,8 @@
                             if(settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                    clickedContext  = ($context.is(event.target));
-              
+                                    clickedContext  = ($context.is(event.target))
+                                ;
                                 if(clickedInPusher) {
                                     module.verbose('User clicked on dimmed page');
                                     module.hide();
@@ -415,8 +415,8 @@
                                     top: height,
                                     bottom: -height,
                                 },
-                                style;
-            
+                                style
+                            ;
 
                             if(isRTL){
                                 module.verbose('RTL detected, flipping widths');
@@ -571,8 +571,8 @@
                             var
                                 $header = $module.children(selector.header),
                                 $content = $module.children(selector.content),
-                                $actions = $module.children(selector.actions);
-            
+                                $actions = $module.children(selector.actions)
+                            ;
                             $content.css('min-height', ($context.height() - $header.outerHeight() - $actions.outerHeight()) + 'px');
                         },
                     },
@@ -673,8 +673,8 @@
                         var
                             $otherFlyouts = $flyouts.not($module).filter('.' + className.visible),
                             flyoutCount   = $otherFlyouts.length,
-                            callbackCount  = 0;
-          
+                            callbackCount  = 0
+                        ;
                         callback = callback || function(){};
                         $otherFlyouts
                             .flyout('hide', function() {
@@ -700,8 +700,8 @@
                         var
                             animate,
                             dim,
-                            transitionEnd;
-          
+                            transitionEnd
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -738,8 +738,8 @@
                     pullPage: function(callback) {
                         var
                             animate,
-                            transitionEnd;
-          
+                            transitionEnd
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -808,8 +808,8 @@
                                 $autofocus = $inputs.filter('[autofocus]'),
                                 $input     = ($autofocus.length > 0)
                                     ? $autofocus.first()
-                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first();
-            
+                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+                                ;
                             if($input.length > 0) {
                                 $input.trigger('focus');
                             }
@@ -945,8 +945,8 @@
                                     'MozTransition': 'transitionend',
                                     'WebkitTransition': 'webkitTransitionEnd',
                                 },
-                                transition;
-            
+                                transition
+                            ;
                             for(transition in transitions){
                                 if( element.style[transition] !== undefined ){
                                     return transitions[transition];
@@ -977,8 +977,8 @@
                         focus: function() {
                             var
                                 $activeElement = $(document.activeElement),
-                                inCurrentFlyout = $activeElement.closest($module).length > 0;
-            
+                                inCurrentFlyout = $activeElement.closest($module).length > 0
+                            ;
                             if(!inCurrentFlyout) {
                                 $focusedElement = $(document.activeElement).trigger('blur');
                             }
@@ -1017,8 +1017,8 @@
                             if(module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                    isIE = ('ActiveXObject' in window);
-              
+                                    isIE = ('ActiveXObject' in window)
+                                ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
                             return module.cache.isIE;
@@ -1027,8 +1027,8 @@
                             var
                                 userAgent      = navigator.userAgent,
                                 isIOS          = userAgent.match(regExp.ios),
-                                isMobileChrome = userAgent.match(regExp.mobileChrome);
-            
+                                isMobileChrome = userAgent.match(regExp.mobileChrome)
+                            ;
                             if(isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
@@ -1040,8 +1040,8 @@
                         mobile: function() {
                             var
                                 userAgent    = navigator.userAgent,
-                                isMobile     = userAgent.match(regExp.mobile);
-            
+                                isMobile     = userAgent.match(regExp.mobile)
+                            ;
                             if(isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
@@ -1186,8 +1186,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -1206,8 +1206,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -1237,8 +1237,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = element         || context;
                         if(typeof query == 'string' && object !== undefined) {
@@ -1467,8 +1467,8 @@
         alert: function () {
             var
                 settings = this.get.settings(),
-                args     = settings.templates.getArguments(arguments);
-    
+                args     = settings.templates.getArguments(arguments)
+            ;
             return {
                 title: args.title,
                 content: args.content,
@@ -1482,8 +1482,8 @@
         confirm: function () {
             var
                 settings = this.get.settings(),
-                args     = settings.templates.getArguments(arguments);
-    
+                args     = settings.templates.getArguments(arguments)
+            ;
             return {
                 title: args.title,
                 content: args.content,
@@ -1503,8 +1503,8 @@
                 $this    = this,
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                input    = $($.parseHTML(args.content)).filter('.ui.input');
-    
+                input    = $($.parseHTML(args.content)).filter('.ui.input')
+            ;
             if (input.length === 0) {
                 args.content += '<p><div class="'+settings.className.prompt+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
             }

@@ -34,8 +34,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -61,8 +61,8 @@
 
                     observer,
                     element         = this,
-                    module;
-      
+                    module
+                ;
 
                 module      = {
 
@@ -214,8 +214,8 @@
                                     up: 38,
                                     right: 39,
                                     down: 40,
-                                };
-            
+                                }
+                            ;
 
                             var r = module.get.radios(),
                                 rIndex = r.index($module),
@@ -700,8 +700,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -720,8 +720,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -751,8 +751,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

@@ -93,8 +93,8 @@
                     elementEventNamespace,
                     id,
                     observer,
-                    module;
-      
+                    module
+                ;
                 module  = {
 
                     initialize: function() {
@@ -200,8 +200,8 @@
                                     debug: settings.debug,
                                     dimmerName: 'modals',
                                 },
-                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
-            
+                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
+                            ;
                             if($.fn.dimmer === undefined) {
                                 module.error(error.dimmer);
                                 return;
@@ -416,8 +416,8 @@
                         mousedown: function(event) {
                             var
                                 $target   = $(event.target),
-                                isRtl = module.is.rtl();
-            
+                                isRtl = module.is.rtl()
+                            ;
                             initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
                             if(initialMouseDownInModal) {
                                 module.verbose('Mouse down event registered inside the modal');
@@ -443,8 +443,8 @@
                             var
                                 $target   = $(event.target),
                                 isInModal = ($target.closest(selector.modal).length > 0),
-                                isInDOM   = $.contains(document.documentElement, event.target);
-            
+                                isInDOM   = $.contains(document.documentElement, event.target)
+                            ;
                             if(!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front) ) {
                                 module.debug('Dimmer clicked, hiding all modals');
                                 if(settings.allowMultiple) {
@@ -754,8 +754,8 @@
                         focus: function() {
                             var
                                 $activeElement = $(document.activeElement),
-                                inCurrentModal = $activeElement.closest($module).length > 0;
-            
+                                inCurrentModal = $activeElement.closest($module).length > 0
+                            ;
                             if(!inCurrentModal) {
                                 $focusedElement = $(document.activeElement).trigger('blur');
                             }
@@ -842,8 +842,8 @@
                         var
                             scrollHeight = $module.prop('scrollHeight'),
                             modalWidth   = $module.outerWidth(),
-                            modalHeight  = $module.outerHeight();
-          
+                            modalHeight  = $module.outerHeight()
+                        ;
                         if(module.cache.pageHeight === undefined || modalHeight !== 0) {
                             $.extend(module.cache, {
                                 pageHeight: $document.outerHeight(),
@@ -914,8 +914,8 @@
                                 scrollHeight   = module.cache.scrollHeight,
                                 height         = module.cache.height,
                                 paddingHeight  = settings.padding,
-                                startPosition  = (verticalCenter + topOffset);
-            
+                                startPosition  = (verticalCenter + topOffset)
+                            ;
                             return (scrollHeight > height)
                                 ? (startPosition + scrollHeight + paddingHeight < contextHeight)
                                 : (height + (paddingHeight * 2) < contextHeight);
@@ -938,8 +938,8 @@
                             if(module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                    isIE = ('ActiveXObject' in window);
-              
+                                    isIE = ('ActiveXObject' in window)
+                                ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
                             return module.cache.isIE;
@@ -992,8 +992,8 @@
                                 $autofocus = $inputs.filter('[autofocus]'),
                                 $input     = ($autofocus.length > 0)
                                     ? $autofocus.first()
-                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first();
-            
+                                    : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
+                                ;
                             if($input.length > 0) {
                                 $input.trigger('focus');
                             }
@@ -1039,8 +1039,8 @@
                                         hide: settings.transition.hideDuration || settings.duration,
                                     },
                                 },
-                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings);
-            
+                                dimmerSettings = $.extend(true, defaultSettings, settings.dimmerSettings)
+                            ;
                             if(settings.inverted) {
                                 dimmerSettings.variation = (dimmerSettings.variation !== undefined)
                                     ? dimmerSettings.variation + ' inverted'
@@ -1192,8 +1192,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -1212,8 +1212,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -1243,8 +1243,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

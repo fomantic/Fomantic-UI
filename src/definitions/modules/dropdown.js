@@ -36,8 +36,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function(elementIndex) {
@@ -94,8 +94,8 @@
                     selectObserver,
                     menuObserver,
                     classObserver,
-                    module;
-      
+                    module
+                ;
 
                 module = {
 
@@ -228,8 +228,8 @@
                             var
                                 $userChoices,
                                 $userChoice,
-                                html;
-            
+                                html
+                            ;
                             values = values || module.get.userValues();
                             if(!values) {
                                 return false;
@@ -318,8 +318,8 @@
                             var
                                 $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0),
                                 $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0),
-                                hasNext        = ($nextAvailable.length > 0);
-            
+                                hasNext        = ($nextAvailable.length > 0)
+                            ;
                             if(hasNext) {
                                 module.verbose('Moving selection to', $nextAvailable);
                                 $nextAvailable.addClass(className.selected);
@@ -341,8 +341,8 @@
                                         query: module.get.query(),
                                     },
                                     on: false,
-                                };
-            
+                                }
+                            ;
                             module.verbose('First request, initializing API');
                             $module
                                 .api(apiSettings);
@@ -457,8 +457,8 @@
                         returnedObject: function() {
                             var
                                 $firstModules = $allModules.slice(0, elementIndex),
-                                $lastModules  = $allModules.slice(elementIndex + 1);
-            
+                                $lastModules  = $allModules.slice(elementIndex + 1)
+                            ;
                             // adjust all modules to use correct reference
                             $allModules = $firstModules.add($module).add($lastModules);
                         },
@@ -745,8 +745,8 @@
                                 : module.get.query(),
                             afterFiltered = function() {
                                 if(module.is.multiple()) {
-                                    module.filterActive();
-                                }
+                                    module.filterActive()
+                                ;}
                                 if(query || (!query && module.get.activeItem().length == 0)) {
                                     module.select.firstUnfiltered();
                                 }
@@ -831,8 +831,8 @@
                             },
                             apiCallbacks = {
                                 onError: function(errorMessage, $module, xhr) {
-                                    module.add.message(message.serverError);
-                                    iconClicked = false;
+                                    module.add.message(message.serverError)
+                                ;iconClicked = false;
                                     focused = false;
                                     callback.apply(null, callbackParameters);
                                     if(typeof settings.apiSettings.onError === 'function') {
@@ -898,8 +898,8 @@
                             results          =  null,
                             escapedTerm      = module.escape.string(searchTerm),
                             regExpFlags      = (settings.ignoreSearchCase ? 'i' : '') + 'gm',
-                            beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags);
-          
+                            beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
+                        ;
                         // avoid loop if we're matching nothing
                         if( module.has.query() ) {
                             results = [];
@@ -910,8 +910,8 @@
                                     var
                                         $choice = $(this),
                                         text,
-                                        value;
-                
+                                        value
+                                    ;
                                     if($choice.hasClass(className.unfilterable)) {
                                         results.push(this);
                                         return true;
@@ -974,8 +974,8 @@
                     fuzzySearch: function(query, term) {
                         var
                             termLength  = term.length,
-                            queryLength = query.length;
-          
+                            queryLength = query.length
+                        ;
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
                         term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
                         if(queryLength > termLength) {
@@ -1037,8 +1037,8 @@
                             $selectedItem      = ($currentlySelected.length > 0)
                                 ? $currentlySelected
                                 : $activeItem,
-                            hasSelected = ($selectedItem.length > 0);
-          
+                            hasSelected = ($selectedItem.length > 0)
+                        ;
                         if(settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                             module.debug('Forcing partial selection to selected item', $selectedItem);
                             module.event.item.click.call($selectedItem, {}, true);
@@ -1077,8 +1077,8 @@
                                         name = settings.templates.escape(
                                             item[fields.name] || '',
                                             settings.preserveHTML
-                                        );
-                
+                                        )
+                                    ;
                                     $input.append('<option value="' + value + '"' + (item.selected === true ? ' selected' : '') + '>' + name + '</option>');
                                 });
                                 module.observe.select();
@@ -1226,8 +1226,8 @@
                                     $prevActive   = $label.prevAll('.' + className.active),
                                     $range = ($nextActive.length > 0)
                                         ? $label.nextUntil($nextActive).add($activeLabels).add($label)
-                                        : $label.prevUntil($prevActive).add($activeLabels).add($label);
-              
+                                        : $label.prevUntil($prevActive).add($activeLabels).add($label)
+                                    ;
                                 if(event.shiftKey) {
                                     $activeLabels.removeClass(className.active);
                                     $range.addClass(className.active);
@@ -1264,8 +1264,8 @@
                                 var
                                     toggleBehavior = (module.is.multiple())
                                         ? module.show
-                                        : module.toggle;
-              
+                                        : module.toggle
+                                    ;
                                 if(module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                                     return;
                                 }
@@ -1319,8 +1319,8 @@
                                         : $(false),
                                     $changedNodes  = $addedNode.add($removedNode),
                                     isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0,
-                                    isMessage      = $changedNodes.is(selector.message)  || $changedNodes.closest(selector.message).length > 0;
-              
+                                    isMessage      = $changedNodes.is(selector.message)  || $changedNodes.closest(selector.message).length > 0
+                                ;
                                 if(isUserAddition || isMessage) {
                                     module.debug('Updating item selector cache');
                                     module.refreshItems();
@@ -1345,8 +1345,8 @@
                                     $subMenu       = $item.children(selector.menu),
                                     $otherMenus    = $item.siblings(selector.item).children(selector.menu),
                                     hasSubMenu     = ($subMenu.length > 0),
-                                    isBubbledEvent = ($subMenu.find($target).length > 0);
-              
+                                    isBubbledEvent = ($subMenu.find($target).length > 0)
+                                ;
                                 if( !isBubbledEvent && hasSubMenu ) {
                                     clearTimeout(module.itemTimer);
                                     module.itemTimer = setTimeout(function() {
@@ -1383,8 +1383,8 @@
                                     text           = module.get.choiceText($choice),
                                     value          = module.get.choiceValue($choice, text),
                                     hasSubMenu     = ($subMenu.length > 0),
-                                    isBubbledEvent = ($subMenu.find($target).length > 0);
-              
+                                    isBubbledEvent = ($subMenu.find($target).length > 0)
+                                ;
                                 // prevents IE11 bug where menu receives focus even though `tabindex=-1`
                                 if (document.activeElement.tagName.toLowerCase() !== 'input') {
                                     $(document.activeElement).trigger('blur');
@@ -1417,8 +1417,8 @@
                             keydown: function(event) {
                                 var
                                     pressedKey    = event.which,
-                                    isShortcutKey = module.is.inObject(pressedKey, keys);
-              
+                                    isShortcutKey = module.is.inObject(pressedKey, keys)
+                                ;
                                 if(isShortcutKey) {
                                     var
                                         $label            = $module.find(selector.label),
@@ -1434,8 +1434,8 @@
                                         isFocusedOnSearch = module.is.focusedOnSearch(),
                                         isFocused         = module.is.focused(),
                                         caretAtStart      = (isFocusedOnSearch && module.get.caretPosition(false) === 0),
-                                        isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0);
-                
+                                        isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0)
+                                    ;
                                     if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                                         return;
                                     }
@@ -1536,8 +1536,8 @@
                         keydown: function(event) {
                             var
                                 pressedKey    = event.which,
-                                isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter;
-            
+                                isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter
+                            ;
                             if(isShortcutKey) {
                                 var
                                     $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0),
@@ -1557,8 +1557,8 @@
                                     delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
                                     isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
                                     $nextItem,
-                                    isSubMenuItem;
-              
+                                    isSubMenuItem
+                                ;
                                 // allow selection with menu closed
                                 if(isAdditionWithoutMenu) {
                                     if (selectedIsSelectable && settings.hideAdditions) {
@@ -1761,8 +1761,8 @@
                             var
                                 $target    = $(event.target),
                                 inDocument = ($target.closest(document.documentElement).length > 0),
-                                inModule   = ($target.closest($module).length > 0);
-            
+                                inModule   = ($target.closest($module).length > 0)
+                            ;
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
@@ -1783,8 +1783,8 @@
                                 $label       = $target.closest(selector.siblingLabel),
                                 inVisibleDOM = document.body.contains(event.target),
                                 notOnLabel   = ($module.find($label).length === 0 || !(module.is.multiple() && settings.useLabels)),
-                                notInMenu    = ($target.closest($menu).length === 0);
-            
+                                notInMenu    = ($target.closest($menu).length === 0)
+                            ;
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
@@ -1881,8 +1881,8 @@
                         selectionCount: function() {
                             var
                                 values = module.get.values(),
-                                count;
-            
+                                count
+                            ;
                             count = ( module.is.multiple() )
                                 ? Array.isArray(values)
                                     ? values.length
@@ -1925,8 +1925,8 @@
                             var
                                 input = $search[0],
                                 range,
-                                rangeLength;
-            
+                                rangeLength
+                            ;
                             if(returnEndPos && 'selectionEnd' in input){
                                 return input.selectionEnd;
                             }
@@ -1949,8 +1949,8 @@
                                 value = ($input.length > 0)
                                     ? $input.val()
                                     : $module.data(metadata.value),
-                                isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '');
-            
+                                isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '')
+                            ;
                             // prevents placeholder element from being selected when multiple
                             return (value === undefined || isEmptyMultiselect)
                                 ? ''
@@ -1974,8 +1974,8 @@
                         remoteValues: function() {
                             var
                                 values = module.get.values(),
-                                remoteValues = false;
-            
+                                remoteValues = false
+                            ;
                             if(values) {
                                 if(typeof values == 'string') {
                                     values = [values];
@@ -2049,8 +2049,8 @@
                             var
                                 select = {},
                                 oldGroup = [],
-                                values = [];
-            
+                                values = []
+                            ;
                             $module
                                 .find('option')
                                 .each(function() {
@@ -2064,8 +2064,8 @@
                                         text     = ( $option.data(metadata.text) !== undefined )
                                             ? $option.data(metadata.text)
                                             : name,
-                                        group = $option.parent('optgroup');
-                  
+                                        group = $option.parent('optgroup')
+                                    ;
                                     if(settings.placeholder === 'auto' && value === '') {
                                         select.placeholder = name;
                                     }
@@ -2128,8 +2128,8 @@
                             var
                                 $items       = module.get.item(value),
                                 $userItems   = module.create.userChoice(value),
-                                hasUserItems = ($userItems && $userItems.length > 0);
-            
+                                hasUserItems = ($userItems && $userItems.length > 0)
+                            ;
                             if(hasUserItems) {
                                 $items = ($items.length > 0)
                                     ? $items.add($userItems)
@@ -2142,8 +2142,8 @@
                             var
                                 $selectedItem = false,
                                 shouldSearch,
-                                isMultiple;
-            
+                                isMultiple
+                            ;
                             value = (value !== undefined)
                                 ? value
                                 : ( module.get.values() !== undefined)
@@ -2165,8 +2165,8 @@
                                         var
                                             $choice       = $(this),
                                             optionText    = module.get.choiceText($choice),
-                                            optionValue   = module.get.choiceValue($choice, optionText);
-                  
+                                            optionValue   = module.get.choiceValue($choice, optionText)
+                                        ;
                                         // safe early exit
                                         if(optionValue === null || optionValue === undefined) {
                                             return;
@@ -2248,8 +2248,8 @@
                         defaultText: function() {
                             var
                                 defaultText     = module.get.defaultText(),
-                                placeholderText = module.get.placeholderText;
-            
+                                placeholderText = module.get.placeholderText
+                            ;
                             if(defaultText === placeholderText) {
                                 module.debug('Restoring default placeholder text', defaultText);
                                 module.set.placeholderText(defaultText);
@@ -2424,8 +2424,8 @@
                             $selectableItem = $item.not(selector.unselectable),
                             isWithinRange,
                             $nextSelectedItem,
-                            elementIndex;
-          
+                            elementIndex
+                        ;
                         elementIndex      = (direction == 'up')
                             ? $selectableItem.index($currentItem) - itemsPerPage
                             : $selectableItem.index($currentItem) + itemsPerPage;
@@ -2468,8 +2468,8 @@
                                     : '',
                                 hasSearchValue   = (typeof searchValue === 'string' && searchValue.length > 0),
                                 searchWidth      = module.get.searchWidth(),
-                                valueIsSet       = searchValue !== '';
-            
+                                valueIsSet       = searchValue !== ''
+                            ;
                             if(isMultiple && hasSearchValue) {
                                 module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
                                 $search.css('width', searchWidth + 'px');
@@ -2548,8 +2548,8 @@
                                 menuScroll,
                                 menuHeight,
                                 abovePage,
-                                belowPage;
-            
+                                belowPage
+                            ;
 
                             $item       = $item || module.get.selectedItem();
                             $menu       = $item.closest(selector.menu);
@@ -2611,8 +2611,8 @@
                             var
                                 value      = module.get.choiceValue($item),
                                 searchText = module.get.choiceText($item, false),
-                                text       = module.get.choiceText($item);
-            
+                                text       = module.get.choiceText($item)
+                            ;
                             module.debug('Setting user selection to item', $item);
                             module.remove.activeItem();
                             module.set.partialSearch(searchText);
@@ -2625,8 +2625,8 @@
                                 $selectedItem         = $item.filter('.' + className.selected),
                                 alreadySelectedLetter = $selectedItem.length > 0 && module.has.firstLetter($selectedItem, letter),
                                 $nextValue            = false,
-                                $nextItem;
-            
+                                $nextItem
+                            ;
                             // check next of same letter
                             if(alreadySelectedLetter) {
                                 $nextItem = $selectedItem.nextAll($item).eq(0);
@@ -2705,8 +2705,8 @@
                                 currentValue = module.get.values(),
                                 stringValue  = (value !== undefined)
                                     ? String(value)
-                                    : value;
-            
+                                    : value
+                                ;
                             if(hasInput) {
                                 if(!settings.allowReselection && stringValue == currentValue) {
                                     module.verbose('Skipping value update already same value', value, currentValue);
@@ -2804,8 +2804,8 @@
                                         isActive       = $selected.hasClass(className.active),
                                         isActionable   = $selected.hasClass(className.actionable),
                                         isUserValue    = $selected.hasClass(className.addition),
-                                        shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1);
-                
+                                        shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1)
+                                    ;
                                     if(isActionable){
                                         if((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
                                             module.save.remoteData(selectedText, selectedValue);
@@ -2867,8 +2867,8 @@
                                     ? $search
                                     : $text,
                                 escapedValue = module.escape.value(value),
-                                $label;
-            
+                                $label
+                            ;
                             if(settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
@@ -2910,8 +2910,8 @@
                         message: function(message) {
                             var
                                 $message = $menu.children(selector.message),
-                                html     = settings.templates.message(module.add.variables(message));
-            
+                                html     = settings.templates.message(module.add.variables(message))
+                            ;
                             if($message.length > 0) {
                                 $message
                                     .html(html);
@@ -2929,8 +2929,8 @@
                             var
                                 escapedValue = module.escape.value(value),
                                 $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                                hasOption    = ($option.length > 0);
-            
+                                hasOption    = ($option.length > 0)
+                            ;
                             if(hasOption) {
                                 return;
                             }
@@ -2955,8 +2955,8 @@
                                 $existingItem     = module.get.item(value),
                                 alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length,
                                 hasUserSuggestion = $addition.length > 0,
-                                html;
-            
+                                html
+                            ;
                             if(settings.useLabels && module.has.maxSelections()) {
                                 return;
                             }
@@ -3001,8 +3001,8 @@
                                 hasCount    = (message.search('{count}') !== -1),
                                 hasMaxCount = (message.search('{maxCount}') !== -1),
                                 hasTerm     = (message.search('{term}') !== -1),
-                                query;
-            
+                                query
+                            ;
                             module.verbose('Adding templated variables to message', message);
                             if(hasCount) {
                                 message = message.replace('{count}', module.get.selectionCount());
@@ -3024,8 +3024,8 @@
                             }
                             var
                                 currentValue = module.get.values(true),
-                                newValue;
-            
+                                newValue
+                            ;
                             if(module.has.value(addedValue)) {
                                 module.debug('Value already selected');
                                 return;
@@ -3114,8 +3114,8 @@
                             var
                                 escapedValue = module.escape.value(value),
                                 $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                                hasOption    = ($option.length > 0);
-            
+                                hasOption    = ($option.length > 0)
+                            ;
                             if(!hasOption || !$option.hasClass(className.addition)) {
                                 return;
                             }
@@ -3154,8 +3154,8 @@
                                     var
                                         $selected     = $(this),
                                         selectedText  = module.get.choiceText($selected),
-                                        selectedValue = module.get.choiceValue($selected, selectedText);
-                
+                                        selectedValue = module.get.choiceValue($selected, selectedText)
+                                    ;
                                     if(module.is.multiple()) {
                                         if(settings.useLabels) {
                                             module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
@@ -3190,8 +3190,8 @@
                         value: function(removedValue, removedText, $removedItem, preventChangeTrigger) {
                             var
                                 values = module.get.values(true),
-                                newValue;
-            
+                                newValue
+                            ;
                             if( module.has.selectInput() ) {
                                 module.verbose('Input is <select> removing selected option', removedValue);
                                 newValue = module.remove.arrayValue(removedValue, values);
@@ -3225,8 +3225,8 @@
                             var
                                 escapedValue  = module.escape.value(value),
                                 $labels       = $module.find(selector.label),
-                                $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]');
-            
+                                $removedLabel = $labels.filter('[data-' + metadata.value + '="' + module.escape.string(settings.ignoreCase ? escapedValue.toLowerCase() : escapedValue) +'"]')
+                            ;
                             module.verbose('Removing label', $removedLabel);
                             $removedLabel.remove();
                         },
@@ -3246,8 +3246,8 @@
                                         stringValue = (value !== undefined)
                                             ? String(value)
                                             : value,
-                                        isUserValue = module.is.userValue(stringValue);
-                
+                                        isUserValue = module.is.userValue(stringValue)
+                                    ;
                                     if(settings.onLabelRemove.call($label, value) === false) {
                                         module.debug('Label remove callback cancelled removal');
                                         return;
@@ -3319,8 +3319,8 @@
                         firstLetter: function($item, letter) {
                             var
                                 text,
-                                firstLetter;
-            
+                                firstLetter
+                            ;
                             if(!$item || $item.length === 0 || typeof letter !== 'string') {
                                 return false;
                             }
@@ -3347,8 +3347,8 @@
                         label: function(value) {
                             var
                                 escapedValue = module.escape.value(value),
-                                $labels      = $module.find(selector.label);
-            
+                                $labels      = $module.find(selector.label)
+                            ;
                             if(settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
@@ -3380,8 +3380,8 @@
                                 values   = module.get.values(true),
                                 hasValue = Array.isArray(values)
                                     ? values && ($.inArray(value, values) !== -1)
-                                    : (values == value);
-            
+                                    : (values == value)
+                                ;
                             return (hasValue)
                                 ? true
                                 : false;
@@ -3390,8 +3390,8 @@
                         valueIgnoringCase: function(value) {
                             var
                                 values   = module.get.values(true),
-                                hasValue = false;
-            
+                                hasValue = false
+                            ;
                             if(!Array.isArray(values)) {
                                 values = [values];
                             }
@@ -3526,16 +3526,16 @@
                             var
                                 overflowY = ($context[0] !== window)
                                     ? $context.css('overflow-y')
-                                    : false;
-            
+                                    : false
+                                ;
                             return (overflowY == 'auto' || overflowY == 'scroll');
                         },
                         horizontallyScrollableContext: function() {
                             var
                                 overflowX = ($context[0] !== window)
                                     ? $context.css('overflow-X')
-                                    : false;
-            
+                                    : false
+                                ;
                             return (overflowX == 'auto' || overflowX == 'scroll');
                         },
                     },
@@ -3553,8 +3553,8 @@
                                 $currentMenu    = $subMenu || $menu,
                                 canOpenDownward,
                                 onScreen,
-                                calculations;
-            
+                                calculations
+                            ;
                             $currentMenu
                                 .addClass(className.loading);
                             
@@ -3601,8 +3601,8 @@
                                 $currentMenu     = $subMenu || $menu,
                                 canOpenRightward = true,
                                 isOffscreenRight = false,
-                                calculations;
-            
+                                calculations
+                            ;
                             $currentMenu
                                 .addClass(className.loading);
                             
@@ -3648,8 +3648,8 @@
                                 start = ($subMenu)
                                     ? function() {}
                                     : function() {
-                                        module.hideSubMenus();
-                                        module.hideOthers();
+                                        module.hideSubMenus()
+                                    ;module.hideOthers();
                                         module.set.active();
                                     },
                                 transition;
@@ -3700,8 +3700,8 @@
                                 start = ($subMenu)
                                     ? function() {}
                                     : function() {
-                                        module.unbind.intent();
-                                        module.remove.active();
+                                        module.unbind.intent()
+                                    ;module.remove.active();
                                     },
                                 transition = settings.transition.hideMethod || module.get.transition($subMenu);
             
@@ -3778,8 +3778,8 @@
                                 stringValue    = (typeof value === 'string'),
                                 isUnparsable   = (!stringValue && !multipleValues),
                                 hasQuotes      = (stringValue && value.search(regExp.quote) !== -1),
-                                values         = [];
-            
+                                values         = []
+                            ;
                             if(isUnparsable || !hasQuotes) {
                                 return value;
                             }
@@ -3880,8 +3880,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -3900,8 +3900,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -3931,8 +3931,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {
@@ -4260,8 +4260,8 @@
                 placeholder = select.placeholder || false,
                 html        = '',
                 escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote;
-    
+                deQuote = $.fn.dropdown.settings.templates.deQuote
+            ;
             html +=  '<i class="dropdown icon"></i>';
             if(placeholder) {
                 html += '<div class="default text">' + escape(placeholder,preserveHTML) + '</div>';
@@ -4281,15 +4281,15 @@
                 values = response[fields.values] || [],
                 html   = '',
                 escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote;
-    
+                deQuote = $.fn.dropdown.settings.templates.deQuote
+            ;
             $.each(values, function(index, option) {
                 var
                     itemType = (option[fields.type])
                         ? option[fields.type]
                         : 'item',
-                    isMenu = itemType.indexOf('menu') !== -1;
-      
+                    isMenu = itemType.indexOf('menu') !== -1
+                ;
 
                 if( itemType === 'item' || isMenu) {
                     var
@@ -4305,8 +4305,8 @@
                         maybeDescriptionVertical = (option[fields.descriptionVertical])
                             ? className.descriptionVertical+' '
                             : '',
-                        hasDescription = (escape(option[fields.description] || '', preserveHTML) != '');
-        
+                        hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
+                    ;
                     html += '<div class="'+ deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item))+'" data-value="' + deQuote(option[fields.value],true) + '"' + maybeText + '>';
                     if (isMenu) {
                         html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
@@ -4358,8 +4358,8 @@
         label: function(value, text, preserveHTML, className) {
             var
                 escape = $.fn.dropdown.settings.templates.escape,
-                deQuote = $.fn.dropdown.settings.templates.deQuote;
-    
+                deQuote = $.fn.dropdown.settings.templates.deQuote
+            ;
             return escape(text,preserveHTML) + '<i class="'+deQuote(className.delete)+' icon"></i>';
         },
 

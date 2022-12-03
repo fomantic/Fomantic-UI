@@ -11,8 +11,8 @@ module.exports = function (gulp) {
         build       = require('./../build'),
         buildJS     = require('./../build/javascript'),
         buildCSS    = require('./../build/css'),
-        buildAssets = require('./../build/assets');
-  
+        buildAssets = require('./../build/assets')
+    ;
 
     gulp.task('watch', watch);
     gulp.task('watch').description = 'Watch for site/theme changes';

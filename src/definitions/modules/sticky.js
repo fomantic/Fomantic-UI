@@ -35,8 +35,8 @@
             query          = arguments[0],
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
-            returnedValue;
-  
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -270,8 +270,8 @@
                                 context = {
                                     offset: $context.offset(),
                                     height: $context.outerHeight(),
-                                };
-            
+                                }
+                            ;
                             if( !module.is.standardScroll() ) {
                                 module.debug('Non-standard scroll. Removing scroll offset from element offset');
 
@@ -346,8 +346,8 @@
                                 delta          = module.get.scrollChange(scroll),
                                 maxScroll      = (element.height - scrollContext.height + settings.offset),
                                 elementScroll  = module.get.currentElementScroll(),
-                                possibleScroll = (elementScroll + delta);
-            
+                                possibleScroll = (elementScroll + delta)
+                            ;
                             if(module.cache.fits || possibleScroll < 0) {
                                 elementScroll = 0;
                             }
@@ -495,8 +495,8 @@
 
                             // shorthand
                             doesntFit      = !fits,
-                            elementVisible = (element.height !== 0);
-          
+                            elementVisible = (element.height !== 0)
+                        ;
                         if(elementVisible && !sameHeight) {
 
                             if( module.is.initialPosition() ) {
@@ -774,8 +774,8 @@
                             var
                                 currentTime,
                                 executionTime,
-                                previousTime;
-            
+                                previousTime
+                            ;
                             if(settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
@@ -794,8 +794,8 @@
                         display: function() {
                             var
                                 title = settings.name + ':',
-                                totalTime = 0;
-            
+                                totalTime = 0
+                            ;
                             time = false;
                             clearTimeout(module.performance.timer);
                             $.each(performance, function(index, data) {
@@ -825,8 +825,8 @@
                             object = instance,
                             maxDepth,
                             found,
-                            response;
-          
+                            response
+                        ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
                         if(typeof query == 'string' && object !== undefined) {

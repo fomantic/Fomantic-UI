@@ -13,8 +13,8 @@ function moduleTests(ui) {
         $modules,
         $oneModule,
         $module,
-        $clone;
-  
+        $clone
+    ;
 
     // set fixture path
     fixtures.fixturesPath = 'base/test/fixtures/';

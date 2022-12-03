@@ -98,8 +98,8 @@ module.exports = {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 1],
-                    nextDirectory = path.join(directory, path.sep, '..');
-        
+                    nextDirectory = path.join(directory, path.sep, '..')
+                ;
                 if( folder == 'bower_components') {
                     return {
                         name: 'Bower',
@@ -138,8 +138,8 @@ module.exports = {
                 var
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 2],
-                    nextDirectory = path.join(directory, path.sep, '..');
-        
+                    nextDirectory = path.join(directory, path.sep, '..')
+                ;
                 if(['bower_components', 'node_modules', 'composer'].includes(folder)) {
                     moduleFolders++;
                 } else if(folder === '.pnpm') {
@@ -165,8 +165,8 @@ module.exports = {
                     source: {},
                     output: {},
                 },
-            };
-    
+            }
+        ;
 
         // add components
         if(answers.components) {
