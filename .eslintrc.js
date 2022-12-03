@@ -60,6 +60,7 @@ module.exports = {
         'brace-style': ['error'],
         curly: ['error'],
         'object-shorthand': ['error', 'never'],
+        'dot-notation': ['error', { allowKeywords: true }],
         'arrow-parens': ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],
         'quote-props': ['error', 'as-needed', {

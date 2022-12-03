@@ -1220,7 +1220,7 @@
                                 console.table(performance);
                             } else {
                                 $.each(performance, function (index, data) {
-                                    console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
+                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
                                 });
                             }
                             console.groupEnd();

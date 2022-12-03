@@ -88,7 +88,7 @@ module.exports = {
             config = when.hasConfig()
         ;
 
-        return config['autoInstall'];
+        return config.autoInstall;
     },
 
     // checks if files are in a PM directory

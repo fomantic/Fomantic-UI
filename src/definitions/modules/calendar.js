@@ -277,8 +277,8 @@
                             year = display.getFullYear()
                         ;
 
-                        var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap['column'];
-                        var rows = isDay || isHour ? 6 : timeGap['row'];
+                        var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap.column;
+                        var rows = isDay || isHour ? 6 : timeGap.row;
                         var pages = isDay ? multiMonth : 1;
 
                         var container = $container;
@@ -612,7 +612,7 @@
                             var mode = module.get.mode();
                             if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
                                 // arrow keys
-                                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
+                                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap.column : 3;
                                 var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                                 increment *= mode === 'minute' ? settings.minTimeGap : 1;
                                 var focusDate = module.get.focusDate() || module.get.date() || new Date();
@@ -1419,7 +1419,7 @@
                                 console.table(performance);
                             } else {
                                 $.each(performance, function (index, data) {
-                                    console.log(data['Name'] + ': ' + data['Execution Time'] + 'ms');
+                                    console.log(data.Name + ': ' + data['Execution Time'] + 'ms');
                                 });
                             }
                             console.groupEnd();
