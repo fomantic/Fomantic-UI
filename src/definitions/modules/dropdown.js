@@ -2537,7 +2537,7 @@
                                 if (!$menu) {
                                     module.remove.upward();
                                 } else if (module.is.upward($menu)) {
-                                    //we need make sure when make assertion openDownward for $menu, $menu does not have upward class
+                                    // we need make sure when make assertion openDownward for $menu, $menu does not have upward class
                                     module.remove.upward($menu);
                                 }
 

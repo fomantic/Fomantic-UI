@@ -52,9 +52,9 @@ module.exports = {
     addDerivedValues: function (config) {
         config = config || extend(false, {}, defaults);
 
-        /*--------------
-       File Paths
-    ---------------*/
+        /* --------------
+            File Paths
+        --------------- */
 
         var
             configPath = this.getPath(),
@@ -82,9 +82,9 @@ module.exports = {
         // resolve "clean" command path
         config.paths.clean = path.resolve(path.join(configPath, config.base, config.paths.clean));
 
-        /*--------------
-        CSS URLs
-    ---------------*/
+        /* --------------
+             CSS URLs
+        --------------- */
 
         // determine asset paths in css by finding relative path between themes and output
         // force forward slashes
@@ -96,9 +96,9 @@ module.exports = {
             packaged: './' + path.relative(config.paths.output.packaged, config.paths.output.themes).replace(/\\/g, '/'),
         };
 
-        /*--------------
-       Permission
-    ---------------*/
+        /* --------------
+            Permission
+        --------------- */
 
         if (config.permission) {
             config.hasPermissions = true;
@@ -110,9 +110,9 @@ module.exports = {
             config.parsedPermissions = {};
         }
 
-        /*--------------
-         Globs
-    ---------------*/
+        /* --------------
+             Globs
+        --------------- */
 
         if (!config.globs) {
             config.globs = {};

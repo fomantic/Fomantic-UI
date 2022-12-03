@@ -31,6 +31,17 @@ module.exports = {
             prev: '*',
             next: ['continue', 'break', 'export', 'return', 'throw'],
         }],
+        'spaced-comment': ['error', 'always', {
+            line: {
+                markers: ['/'],
+                exceptions: ['-', '+'],
+            },
+            block: {
+                markers: ['!'],
+                exceptions: ['*'],
+                balanced: true,
+            },
+        }],
         'padded-blocks': ['error', 'never'],
         'no-multiple-empty-lines': ['error', {
             max: 1,

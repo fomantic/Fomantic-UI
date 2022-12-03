@@ -32,9 +32,9 @@ module.exports = function () {
     console.clear();
     console.log('Watching source files for changes');
 
-    /*--------------
-     Copy Source
-  ---------------*/
+    /* --------------
+       Copy Source
+    --------------- */
 
     gulp
         .watch(['src/**/*.*'])
@@ -51,9 +51,9 @@ module.exports = function () {
                 .pipe(print(log.created));
         });
 
-    /*--------------
-    Copy Examples
-  ---------------*/
+    /* --------------
+      Copy Examples
+    --------------- */
 
     gulp
         .watch(['examples/**/*.*'])
@@ -70,21 +70,21 @@ module.exports = function () {
                 .pipe(print(log.created));
         });
 
-    /*--------------
-      Watch CSS
-  ---------------*/
+    /* --------------
+        Watch CSS
+    --------------- */
 
     css.watch('docs', config);
 
-    /*--------------
-      Watch JS
-  ---------------*/
+    /* --------------
+        Watch JS
+    --------------- */
 
     js.watch('docs', config);
 
-    /*--------------
-    Watch Assets
-  ---------------*/
+    /* --------------
+      Watch Assets
+    --------------- */
 
     assets.watch('docs', config);
 };

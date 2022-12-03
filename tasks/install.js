@@ -11,7 +11,6 @@
    * (NPM) Install - Will ask for where to put semantic (outside pm folder)
    * (NPM) Upgrade - Will look for semantic install, copy over files and update if new version
    * Standard installer runs asking for paths to site files etc
-
 */
 
 var
@@ -66,11 +65,10 @@ module.exports = function (callback) {
     console.clear();
 
     /* Test NPM install
-  manager = {
-    name : 'NPM',
-    root : path.normalize(__dirname + '/../')
-  };
-  */
+    manager = {
+        name: 'NPM',
+        root: path.normalize(__dirname + '/../'),
+    }; */
 
     /* Don't do end user config if SUI is a sub-module */
     if (install.isSubModule()) {
@@ -80,9 +78,9 @@ module.exports = function (callback) {
         return;
     }
 
-    /*-----------------
-      Update SUI
-  -----------------*/
+    /* -----------------
+        Update SUI
+    ----------------- */
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
@@ -157,9 +155,9 @@ module.exports = function (callback) {
         }
     }
 
-    /*--------------
-   Determine Root
-  ---------------*/
+    /* --------------
+      Determine Root
+    --------------- */
 
     // PM that supports Build Tools (NPM Only Now)
     if (manager.name === 'NPM') {
@@ -177,9 +175,9 @@ module.exports = function (callback) {
         questions.cleanup = [];
     }
 
-    /*--------------
-     Create SUI
-  ---------------*/
+    /* --------------
+       Create SUI
+    --------------- */
 
     gulp.task('run setup', function (callback) {
         // If auto-install is switched on, we skip the configuration section and simply reuse the configuration from semantic.json
@@ -201,9 +199,9 @@ module.exports = function (callback) {
     });
 
     gulp.task('create install files', function (callback) {
-        /*--------------
-     Exit Conditions
-    ---------------*/
+        /* --------------
+         Exit Conditions
+        --------------- */
 
         // if config exists and user specifies not to proceed
         if (answers.overwrite !== undefined && answers.overwrite == 'no') {
@@ -219,9 +217,9 @@ module.exports = function (callback) {
         }
         console.log('------------------------------');
 
-        /*--------------
-          Paths
-    ---------------*/
+        /* --------------
+             Paths
+        --------------- */
 
         var
             installPaths = {
@@ -233,9 +231,9 @@ module.exports = function (callback) {
             }
         ;
 
-        /*--------------
-      NPM Install
-    ---------------*/
+        /* --------------
+           NPM Install
+        --------------- */
 
         // Check if PM install
         if (manager && (answers.useRoot || answers.customRoot)) {
@@ -311,9 +309,9 @@ module.exports = function (callback) {
                 .pipe(gulp.dest(installFolder));
         }
 
-        /*--------------
-       Site Theme
-    ---------------*/
+        /* --------------
+            Site Theme
+        --------------- */
 
         // Copy _site templates folder to destination
         if (fs.existsSync(installPaths.site)) {
@@ -323,9 +321,9 @@ module.exports = function (callback) {
         }
         wrench.copyDirSyncRecursive(source.site, installPaths.site, settings.wrench.merge);
 
-        /*--------------
-      Theme Config
-    ---------------*/
+        /* --------------
+           Theme Config
+        --------------- */
 
         gulp.task('create theme.config', function () {
             var
@@ -356,9 +354,9 @@ module.exports = function (callback) {
             }
         });
 
-        /*--------------
-      Semantic.json
-    ---------------*/
+        /* --------------
+          Semantic.json
+        --------------- */
 
         gulp.task('create semantic.json', function () {
             var

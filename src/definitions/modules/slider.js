@@ -1297,7 +1297,7 @@
         fireOnInit: false,
         interpretLabel: false,
 
-        //the decimal place to round to if step is undefined
+        // the decimal place to round to if step is undefined
         decimalPlaces: 2,
 
         // page up/down multiplier. How many more times the steps to take on page up/down press

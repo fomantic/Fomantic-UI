@@ -158,7 +158,7 @@
                             }
                         },
                         touch: function (event) {
-                            //event.stopPropagation();
+                            // event.stopPropagation();
                         },
                         containScroll: function (event) {
                             if (element.scrollTop <= 0) {

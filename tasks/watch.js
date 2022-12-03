@@ -30,20 +30,20 @@ module.exports = function () {
     console.clear();
     console.log('Watching source files for changes');
 
-    /*--------------
-      Watch CSS
-  ---------------*/
+    /* --------------
+        Watch CSS
+    --------------- */
     css.watch('default', config);
 
-    /*--------------
-      Watch JS
-  ---------------*/
+    /* --------------
+        Watch JS
+    --------------- */
 
     js.watch('default', config);
 
-    /*--------------
-    Watch Assets
-  ---------------*/
+    /* --------------
+       Watch Assets
+    --------------- */
 
     assets.watch('default', config);
 };

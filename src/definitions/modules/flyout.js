@@ -325,7 +325,7 @@
                             });
                         },
                         touch: function (event) {
-                            //event.stopPropagation();
+                            // event.stopPropagation();
                         },
                         containScroll: function (event) {
                             if (element.scrollTop <= 0) {
@@ -1313,7 +1313,7 @@
 
         keyboardShortcuts: true,
 
-        //dynamic content
+        // dynamic content
         title: '',
         content: '',
         class: '',

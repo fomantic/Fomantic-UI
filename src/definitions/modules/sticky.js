@@ -382,7 +382,7 @@
                             ;
                             if (tagName === 'HTML' || tagName === 'body') {
                                 // this can trigger for too many reasons
-                                //module.error(error.container, tagName, $module);
+                                // module.error(error.container, tagName, $module);
                                 module.determineContainer();
                             } else {
                                 var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);

@@ -52,11 +52,11 @@ function moduleTests(ui) {
 
     /*******************************
               Module
-  *******************************/
+    *******************************/
 
-    /*-------------------
-      Instantiation
-  --------------------*/
+    /* -------------------
+        Instantiation
+    -------------------- */
     describe('Module', function () {
         it('allows chaining when no settings returned', function () {
             var $chain = $modules[module]();
@@ -80,9 +80,9 @@ function moduleTests(ui) {
         });
     });
 
-    /*-------------------
-         Settings
-  --------------------*/
+    /* -------------------
+          Settings
+    -------------------- */
 
     describe('Settings', function () {
         it('clears settings on re-init', function () {
@@ -128,9 +128,9 @@ function moduleTests(ui) {
         });
     });
 
-    /*-------------------
-          Groups
-  --------------------*/
+    /* -------------------
+           Groups
+    -------------------- */
 
     if (!singleton) {
         describe('Group Contamination', function () {
@@ -178,9 +178,9 @@ function moduleTests(ui) {
         });
     }
 
-    /*-------------------
-         Destroy
-  --------------------*/
+    /* -------------------
+          Destroy
+    -------------------- */
     describe('Destroy', function () {
         it('removes all events from page', function () {
             $module[module]('destroy');

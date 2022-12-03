@@ -41,15 +41,15 @@ module.exports = function (callback) {
     const globs  = config.globs;
     const output = config.paths.output;
 
-    /*--------------
-   Parse metadata
-   ---------------*/
+    /* --------------
+      Parse metadata
+    --------------- */
 
     function buildMetaData() {
-    // parse all *.html.eco in docs repo, data will end up in
-    // metadata.result object.  Note this assumes that the docs
-    // repository is present and in proper directory location as
-    // specified by docs.json.
+        // parse all *.html.eco in docs repo, data will end up in
+        // metadata.result object.  Note this assumes that the docs
+        // repository is present and in proper directory location as
+        // specified by docs.json.
         console.info('Building Metadata');
 
         return gulp.src(config.paths.template.eco + globs.eco)
@@ -60,12 +60,12 @@ module.exports = function (callback) {
             });
     }
 
-    /*--------------
-    Copy Examples
-  ---------------*/
+    /* --------------
+      Copy Examples
+    --------------- */
 
     function copyExample() {
-    // copy src/ to server
+        // copy src/ to server
         console.info('Copying examples');
 
         return gulp.src('examples/**/*.*')
@@ -73,9 +73,9 @@ module.exports = function (callback) {
             .pipe(print(log.created));
     }
 
-    /*--------------
-     Copy Source
-  ---------------*/
+    /* --------------
+       Copy Source
+    --------------- */
 
     function copyLess() {
     // copy src/ to server
@@ -86,9 +86,9 @@ module.exports = function (callback) {
             .pipe(print(log.created));
     }
 
-    /*--------------
-        Build
-  ---------------*/
+    /* --------------
+         Build
+    --------------- */
 
     console.info('Building Semantic for docs');
 

@@ -792,7 +792,7 @@
         newestOnTop: false,
         showProgress: false,
         pauseOnHover: true,
-        progressUp: false, //if true, the bar will start at 0% and increase to 100%
+        progressUp: false, // if true, the bar will start at 0% and increase to 100%
         opacity: 1,
         compact: true,
         closeIcon: false,
@@ -808,7 +808,7 @@
             showDuration: 500,
             hideMethod: 'scale',
             hideDuration: 500,
-            closeEasing: 'easeOutCubic', //Set to empty string to stack the closed toast area immediately (old behaviour)
+            closeEasing: 'easeOutCubic', // Set to empty string to stack the closed toast area immediately (old behaviour)
             closeDuration: 500,
         },
 

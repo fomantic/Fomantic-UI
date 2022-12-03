@@ -143,8 +143,8 @@
                                     module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
                                     $container = $('<div/>', {id: module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
                                 } else {
-                                    //prepend the popup element to the activator's parent so that it has less chance of messing with
-                                    //the styling (eg input action button needs to be the last child to have correct border radius)
+                                    // prepend the popup element to the activator's parent so that it has less chance of messing with
+                                    // the styling (eg input action button needs to be the last child to have correct border radius)
                                     var
                                         $activatorParent = $activator.parent(),
                                         domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo'
@@ -167,7 +167,7 @@
                                 return settings.onHidden.apply($container, arguments);
                             };
                             if (!$input.length) {
-                                //no input, $container has to handle focus/blur
+                                // no input, $container has to handle focus/blur
                                 $container.attr('tabindex', '0');
                                 onVisible = function () {
                                     module.refreshTooltips();
@@ -177,7 +177,7 @@
                                 };
                             }
                             var onShow = function () {
-                                //reset the focus date onShow
+                                // reset the focus date onShow
                                 module.set.focusDate(module.get.date());
                                 module.set.mode(module.get.validatedMode(settings.startMode));
 
@@ -324,7 +324,7 @@
                                     table.addClass(className.inverted);
                                 }
                                 var textColumns = columns;
-                                //no header for time-only mode
+                                // no header for time-only mode
                                 if (!isTimeOnly) {
                                     var thead = $('<thead/>').appendTo(table);
 
@@ -450,8 +450,8 @@
                                         formatter.cell(cell, cellDate, cellOptions);
 
                                         if (module.helper.dateEqual(cellDate, focusDate, mode)) {
-                                            //ensure that the focus date is exactly equal to the cell date
-                                            //so that, if selected, the correct value is set
+                                            // ensure that the focus date is exactly equal to the cell date
+                                            // so that, if selected, the correct value is set
                                             module.set.focusDate(cellDate, false, false);
                                         }
                                     }
@@ -564,7 +564,7 @@
                         },
                         mousedown: function (event) {
                             if ($input.length) {
-                                //prevent the mousedown on the calendar causing the input to lose focus
+                                // prevent the mousedown on the calendar causing the input to lose focus
                                 event.preventDefault();
                             }
                             isTouchDown = event.type.indexOf('touch') >= 0;
@@ -575,7 +575,7 @@
                             }
                         },
                         mouseup: function (event) {
-                            //ensure input has focus so that it receives keydown events for calendar navigation
+                            // ensure input has focus so that it receives keydown events for calendar navigation
                             module.focus();
                             event.preventDefault();
                             event.stopPropagation();
@@ -586,7 +586,7 @@
                             }
                             var parent = target.parent();
                             if (parent.data(metadata.date) || parent.data(metadata.focusDate) || parent.data(metadata.mode)) {
-                                //clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
+                                // clicked on a child element, switch to parent (used when clicking directly on prev/next <i> icon element)
                                 target = parent;
                             }
                             var date = target.data(metadata.date);
@@ -604,14 +604,14 @@
                         keydown: function (event) {
                             var keyCode = event.which;
                             if (keyCode === 9) {
-                                //tab
+                                // tab
                                 module.popup('hide');
                             }
 
                             if (module.popup('is visible')) {
                                 var mode = module.get.mode();
                                 if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
-                                    //arrow keys
+                                    // arrow keys
                                     var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap['column'] : 3;
                                     var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
                                     increment *= mode === 'minute' ? settings.minTimeGap : 1;
@@ -629,14 +629,14 @@
                                         module.set.focusDate(newFocusDate);
                                     }
                                 } else if (keyCode === 13) {
-                                    //enter
+                                    // enter
                                     var date = module.get.focusDate();
                                     if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
                                         if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
                                             module.selectDate(date);
                                         }
                                     }
-                                    //disable form submission:
+                                    // disable form submission:
                                     event.preventDefault();
                                     event.stopPropagation();
                                 } else if (keyCode === 27) {
@@ -646,8 +646,8 @@
                             }
 
                             if (keyCode === 38 || keyCode === 40) {
-                                //arrow-up || arrow-down
-                                event.preventDefault(); //don't scroll
+                                // arrow-up || arrow-down
+                                event.preventDefault(); // don't scroll
                                 module.popup('show');
                             }
                         },
@@ -766,7 +766,7 @@
                             return $module.data(metadata.monthOffset) || settings.monthOffset || 0;
                         },
                         mode: function () {
-                            //only returns valid modes for the current settings
+                            // only returns valid modes for the current settings
                             var mode = $module.data(metadata.mode) || settings.startMode;
 
                             return module.get.validatedMode(mode);
@@ -823,7 +823,7 @@
                                 selector = $document.find(selector).first();
                             }
 
-                            //assume range related calendars are using the same namespace
+                            // assume range related calendars are using the same namespace
                             return selector.data(moduleNamespace);
                         },
                     },
@@ -850,7 +850,7 @@
 
                             var endDate = module.get.endDate();
                             if (!!endDate && !!date && date > endDate) {
-                                //selected date is greater than end date in range, so clear end date
+                                // selected date is greater than end date in range, so clear end date
                                 module.set.endDate(undefined);
                             }
                             module.set.dataKeyValue(metadata.date, date);
@@ -927,7 +927,7 @@
                         },
                         dataKeyValue: function (key, value, refreshCalendar) {
                             var oldValue = $module.data(key);
-                            var equal = oldValue === value || (oldValue <= value && oldValue >= value); //equality test for dates and string objects
+                            var equal = oldValue === value || (oldValue <= value && oldValue >= value); // equality test for dates and string objects
                             if (value) {
                                 $module.data(key, value);
                             } else {
@@ -956,7 +956,7 @@
                                 selectionComplete = true;
                                 if (settings.closable) {
                                     module.popup('hide');
-                                    //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
+                                    // if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
                                     var endModule = module.get.calendarModule(settings.endCalendar);
                                     if (endModule) {
                                         endModule.refresh();
@@ -972,7 +972,7 @@
                                 mode === 'month' ? 'day' : mode === 'day' ? 'hour' : 'minute';
                             module.set.mode(newMode);
                             if (mode === 'hour' || (mode === 'day' && module.get.date())) {
-                                //the user has chosen enough to consider a valid date/time has been chosen
+                                // the user has chosen enough to consider a valid date/time has been chosen
                                 module.set.date(date, true, false);
                             } else {
                                 module.set.focusDate(date);
@@ -1272,7 +1272,7 @@
                             var isYearOrMonth = isYear || mode === 'month';
                             var isMinute = mode === 'minute';
                             var isHourOrMinute = isMinute || mode === 'hour';
-                            //only care about a minute accuracy of settings.minTimeGap
+                            // only care about a minute accuracy of settings.minTimeGap
                             date1 = new Date(
                                 isTimeOnly ? 2000 : date1.getFullYear(),
                                 isTimeOnly ? 0 : isYear ? 0 : date1.getMonth(),
@@ -1627,11 +1627,11 @@
                 var monthString;
 
                 if (!isDateOnly) {
-                    //am/pm
+                    // am/pm
                     isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0 ? true :
                         $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
 
-                    //time with ':'
+                    // time with ':'
                     for (i = 0; i < numbers.length; i++) {
                         number = numbers[i];
                         if (number.indexOf(':') >= 0) {
@@ -1655,7 +1655,7 @@
                 }
 
                 if (!isTimeOnly) {
-                    //textual month
+                    // textual month
                     for (i = 0; i < words.length; i++) {
                         word = words[i];
                         if (word.length <= 0) {
@@ -1675,7 +1675,7 @@
                         }
                     }
 
-                    //year > settings.centuryBreak
+                    // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i]);
                         if (isNaN(j)) {
@@ -1692,7 +1692,7 @@
                         }
                     }
 
-                    //numeric month
+                    // numeric month
                     if (month < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             k = i > 1 || settings.monthFirst ? i : i === 1 ? 0 : 1;
@@ -1709,7 +1709,7 @@
                         }
                     }
 
-                    //day
+                    // day
                     for (i = 0; i < numbers.length; i++) {
                         j = parseInt(numbers[i]);
                         if (isNaN(j)) {
@@ -1723,7 +1723,7 @@
                         }
                     }
 
-                    //year <= settings.centuryBreak
+                    // year <= settings.centuryBreak
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
                             j = parseInt(numbers[i]);
@@ -1742,7 +1742,7 @@
                 }
 
                 if (!isDateOnly) {
-                    //hour
+                    // hour
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i]);
@@ -1758,7 +1758,7 @@
                         }
                     }
 
-                    //minute
+                    // minute
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             j = parseInt(numbers[i]);
@@ -1807,7 +1807,7 @@
 
                 var date = new Date(year, month - 1, day, hour, minute);
                 if (date.getMonth() !== month - 1 || date.getFullYear() !== year) {
-                    //month or year don't match up, switch to last day of the month
+                    // month or year don't match up, switch to last day of the month
                     date = new Date(year, month, 0, hour, minute);
                 }
 

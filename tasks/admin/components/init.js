@@ -142,7 +142,7 @@ module.exports = function (callback) {
         }
 
         function nextRepo() {
-            //console.log('Sleeping for 1 second...');
+            // console.log('Sleeping for 1 second...');
             // avoid rate throttling
             global.clearTimeout(timer);
             timer = global.setTimeout(function () {
