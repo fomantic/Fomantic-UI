@@ -104,6 +104,7 @@
                                 }
                                 precision = Math.pow(10, precisionPower++);
                             }
+
                             return precision;
                         },
                         forceArray: function (element) {
@@ -281,23 +282,28 @@
                                 .replace('{percent}', percent)
                                 .replace('{bar}', settings.text.bars[index_] || '');
                             module.verbose('Adding variables to progress bar text', templateText);
+
                             return templateText;
                         },
 
                         normalizedValue: function (value) {
                             if (value < 0) {
                                 module.debug('Value cannot decrement below 0');
+
                                 return 0;
                             }
                             if (module.has.total()) {
                                 if (value > module.total) {
                                     module.debug('Value cannot increment above total', module.total);
+
                                     return module.total;
                                 }
                             } else if (value > 100) {
                                 module.debug('Value cannot increment above 100 percent');
+
                                 return 100;
                             }
+
                             return value;
                         },
 
@@ -305,11 +311,13 @@
                             if (settings.updateInterval == 'auto') {
                                 return settings.duration;
                             }
+
                             return settings.updateInterval;
                         },
 
                         randomValue: function () {
                             module.debug('Generating random increment percentage');
+
                             return Math.floor((Math.random() * settings.random.max) + settings.random.min);
                         },
 
@@ -350,6 +358,7 @@
                                     ? (barWidth / totalWidth * 100)
                                     : module.percent
                             ;
+
                             return (settings.precision > 0)
                                 ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
                                 : Math.round(displayPercent);
@@ -459,6 +468,7 @@
                                         width: value + '%',
                                     });
                                 }
+
                                 return parseFloat(value);
                             });
                             values.forEach(function (_, index) {
@@ -489,6 +499,7 @@
                                 percent = (typeof percent == 'string')
                                     ? +(percent.replace('%', ''))
                                     : percent;
+
                                 return (settings.limitValues)
                                     ? Math.max(0, Math.min(100, percent))
                                     : percent;
@@ -730,6 +741,7 @@
                                     percentComplete = value;
                                     module.debug('Setting value to exact percentage value', percentComplete);
                                 }
+
                                 return percentComplete;
                             });
                             module.set.percent(percentCompletes);
@@ -856,14 +868,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -880,6 +895,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

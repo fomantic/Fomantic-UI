@@ -88,6 +88,7 @@ function buildJS(src, type, config, callback) {
     if (!install.isSetup()) {
         console.error('Cannot build Javascript. Run "gulp install" to set-up Semantic');
         callback();
+
         return;
     }
 

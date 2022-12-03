@@ -218,6 +218,7 @@
                         },
                         type: function () {
                             var source = module.get.source();
+
                             return (sources[source] !== undefined)
                                 ? sources[source].type
                                 : false;
@@ -246,16 +247,19 @@
                                 $.each(sources, function (name, source) {
                                     if (url.search(source.domain) !== -1) {
                                         matchedSource = name;
+
                                         return false;
                                     }
                                 });
                             }
+
                             return matchedSource;
                         },
                         icon: function () {
                             var
                                 source = module.get.source()
                             ;
+
                             return (sources[source] !== undefined)
                                 ? sources[source].icon
                                 : false;
@@ -272,6 +276,7 @@
                             if (url) {
                                 $module.data(metadata.url, url);
                             }
+
                             return url;
                         },
                     },
@@ -308,6 +313,7 @@
                             for (index in parameters) {
                                 urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
                             }
+
                             return urlString.join('&amp;');
                         },
                     },
@@ -327,6 +333,7 @@
                             } else {
                                 module.error(error.noURL, $module);
                             }
+
                             return html;
                         },
                         parameters: function (source, extraParameters) {
@@ -340,6 +347,7 @@
                                 parameters = $.extend({}, parameters, extraParameters);
                             }
                             parameters = settings.onEmbed(parameters);
+
                             return module.encode.parameters(parameters);
                         },
                     },
@@ -490,14 +498,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -514,6 +525,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -530,6 +542,7 @@
                     module.initialize();
                 }
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
@@ -640,6 +653,7 @@
                 if (parameters) {
                     src += '?' + parameters;
                 }
+
                 return ''
                     + '<iframe src="' + deQuote(src) + '"'
                     + ' width="100%" height="100%"'
@@ -656,6 +670,7 @@
                 if (image) {
                     html += '<img class="placeholder" src="' + deQuote(image) + '">';
                 }
+
                 return html;
             },
         },

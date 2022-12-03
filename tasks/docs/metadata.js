@@ -28,6 +28,7 @@ function inArray(needle, haystack) {
             return true;
         }
     }
+
     return false;
 }
 
@@ -92,6 +93,7 @@ function parser(file, callback) {
                 if (startsWith(line, '---')) {
                     active = true;
                 }
+
                 continue;
             }
             // End of metadata block, stop parsing.

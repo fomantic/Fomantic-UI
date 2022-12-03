@@ -135,6 +135,7 @@
                             }
                             if ($.fn.popup === undefined) {
                                 module.error(error.popup);
+
                                 return;
                             }
                             if (!$container.length) {
@@ -157,10 +158,12 @@
                             }
                             var onVisible = function () {
                                 module.refreshTooltips();
+
                                 return settings.onVisible.apply($container, arguments);
                             };
                             var onHidden = function () {
                                 module.blur();
+
                                 return settings.onHidden.apply($container, arguments);
                             };
                             if (!$input.length) {
@@ -169,6 +172,7 @@
                                 onVisible = function () {
                                     module.refreshTooltips();
                                     module.focus();
+
                                     return settings.onVisible.apply($container, arguments);
                                 };
                             }
@@ -176,6 +180,7 @@
                                 //reset the focus date onShow
                                 module.set.focusDate(module.get.date());
                                 module.set.mode(module.get.validatedMode(settings.startMode));
+
                                 return settings.onShow.apply($container, arguments);
                             };
                             var on = module.setting('on');
@@ -743,10 +748,12 @@
                         },
                         startDate: function () {
                             var startModule = module.get.calendarModule(settings.startCalendar);
+
                             return (startModule ? startModule.get.date() : $module.data(metadata.startDate)) || null;
                         },
                         endDate: function () {
                             var endModule = module.get.calendarModule(settings.endCalendar);
+
                             return (endModule ? endModule.get.date() : $module.data(metadata.endDate)) || null;
                         },
                         minDate: function () {
@@ -761,6 +768,7 @@
                         mode: function () {
                             //only returns valid modes for the current settings
                             var mode = $module.data(metadata.mode) || settings.startMode;
+
                             return module.get.validatedMode(mode);
                         },
                         validatedMode: function (mode){
@@ -768,6 +776,7 @@
                             if ($.inArray(mode, validModes) >= 0) {
                                 return mode;
                             }
+
                             return settings.type === 'time' ? 'hour' :
                                 settings.type === 'month' ? 'month' :
                                     settings.type === 'year' ? 'year' : 'day';
@@ -794,11 +803,13 @@
                                     validModes.push('minute');
                                 }
                             }
+
                             return validModes;
                         },
                         isTouch: function () {
                             try {
                                 document.createEvent('TouchEvent');
+
                                 return true;
                             } catch (e) {
                                 return false;
@@ -811,6 +822,7 @@
                             if (!(selector instanceof $)) {
                                 selector = $document.find(selector).first();
                             }
+
                             //assume range related calendars are using the same namespace
                             return selector.data(moduleNamespace);
                         },
@@ -925,6 +937,7 @@
                             if (refreshCalendar) {
                                 module.refresh();
                             }
+
                             return !equal;
                         },
                     },
@@ -1043,10 +1056,12 @@
                                     ww: ('0' + w).slice(-2),
                                 }
                             ;
+
                             return format.replace(settings.regExp.token, function (match) {
                                 if (match in tokens) {
                                     return tokens[match];
                                 }
+
                                 return match.slice(1, match.length - 1);
                             });
                         },
@@ -1072,6 +1087,7 @@
                                             return d[metadata.month].indexOf(date.getMonth()) > -1;
                                         } else if (d[metadata.month] instanceof Date) {
                                             var sdate = module.helper.sanitiseDate(d[metadata.month]);
+
                                             return (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
                                         }
                                     } else if (d[metadata.date] && mode === 'day') {
@@ -1152,6 +1168,7 @@
                                     if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
                                         var dateObject = {};
                                         dateObject[metadata.date] = d;
+
                                         return dateObject;
                                     } else if (d !== null && typeof d === 'object') {
                                         if (d[metadata.year]) {
@@ -1189,6 +1206,7 @@
                                     }
                                 }
                             }
+
                             return null;
                         },
                         findHourAsObject: function (date, mode, hours) {
@@ -1234,6 +1252,7 @@
                                     }
                                 }
                             }
+
                             return null;
                         },
                         sanitiseDate: function (date) {
@@ -1243,6 +1262,7 @@
                             if (!date || isNaN(date.getTime())) {
                                 return null;
                             }
+
                             return date;
                         },
                         dateDiff: function (date1, date2, mode) {
@@ -1265,6 +1285,7 @@
                                 isTimeOnly ? 1 : isYearOrMonth ? 1 : date2.getDate(),
                                 !isHourOrMinute ? 0 : date2.getHours(),
                                 !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap));
+
                             return date2.getTime() - date1.getTime();
                         },
                         dateEqual: function (date1, date2, mode) {
@@ -1277,6 +1298,7 @@
                                 maxDate = settings.maxDate;
                             }
                             minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
+
                             return !(!date ||
             (minDate && module.helper.dateDiff(date, minDate, mode) > 0) ||
             (maxDate && module.helper.dateDiff(maxDate, date, mode) > 0));
@@ -1289,6 +1311,7 @@
                             }
                             minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
                             var isTimeOnly = settings.type === 'time';
+
                             return !date ? date :
                                 (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0) ?
                                     (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) :
@@ -1425,14 +1448,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -1449,6 +1475,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1465,6 +1492,7 @@
                     module.initialize();
                 }
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;
@@ -1538,6 +1566,7 @@
         formatter: {
             yearHeader: function (date, settings) {
                 var decadeYear = Math.ceil(date.getFullYear() / 10) * 10;
+
                 return (decadeYear - 9) + ' - ' + (decadeYear + 2);
             },
             monthHeader: 'YYYY',
@@ -1637,6 +1666,7 @@
                             monthString = monthString.substring(0, word.length).toLowerCase();
                             if (monthString === word) {
                                 month = j + 1;
+
                                 break;
                             }
                         }
@@ -1657,6 +1687,7 @@
                             }
                             year = j;
                             numbers.splice(i, 1);
+
                             break;
                         }
                     }
@@ -1672,6 +1703,7 @@
                             if (1 <= j && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
+
                                 break;
                             }
                         }
@@ -1686,6 +1718,7 @@
                         if (1 <= j && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
+
                             break;
                         }
                     }
@@ -1702,6 +1735,7 @@
                             }
                             year = j;
                             numbers.splice(i, 1);
+
                             break;
                         }
                     }
@@ -1718,6 +1752,7 @@
                             if (0 <= j && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
+
                                 break;
                             }
                         }
@@ -1733,6 +1768,7 @@
                             if (0 <= j && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
+
                                 break;
                             }
                         }
@@ -1774,6 +1810,7 @@
                     //month or year don't match up, switch to last day of the month
                     date = new Date(year, month, 0, hour, minute);
                 }
+
                 return isNaN(date.getTime()) ? null : date;
             },
         },

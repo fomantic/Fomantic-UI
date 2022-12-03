@@ -27,6 +27,7 @@ module.exports = {
                 if (fs.existsSync(currentPath)) {
                     // found file
                     configPath = path.normalize(directory);
+
                     return;
                 } else {
                     // reached file system root, let's stop
@@ -43,6 +44,7 @@ module.exports = {
         file = file || defaults.files.config;
         directory = directory || path.join(__dirname, path.sep, '..');
         walk(directory);
+
         return configPath || '';
     },
 

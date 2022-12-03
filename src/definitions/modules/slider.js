@@ -414,15 +414,19 @@
                                     switch (step) {
                                         case SINGLE_STEP:
                                             module.takeStep();
+
                                             break;
                                         case BIG_STEP:
                                             module.takeStep(module.get.multiplier());
+
                                             break;
                                         case SINGLE_BACKSTEP:
                                             module.backStep();
+
                                             break;
                                         case BIG_BACKSTEP:
                                             module.backStep(module.get.multiplier());
+
                                             break;
                                     }
                                 }
@@ -550,6 +554,7 @@
                             } else {
                                 margin = module.is.reversed() ? $module.css('padding-right') : $module.css('padding-left');
                             }
+
                             return margin || '0px';
                         },
                         trackEndMargin: function () {
@@ -559,6 +564,7 @@
                             } else {
                                 margin = module.is.reversed() ? $module.css('padding-left') : $module.css('padding-right');
                             }
+
                             return margin || '0px';
                         },
                         precision: function () {
@@ -578,6 +584,7 @@
                             }
                             var precision = Math.pow(10, decimalPlaces);
                             module.debug('Precision determined', precision);
+
                             return precision;
                         },
                         min: function () {
@@ -590,6 +597,7 @@
                                 quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
                                 remainder = step === 0 ? 0 : (settings.max - min) % step
                             ;
+
                             return remainder === 0 ? settings.max : min + quotient * step;
                         },
                         step: function () {
@@ -598,6 +606,7 @@
                         numLabels: function () {
                             var value = Math.round((module.get.max() - module.get.min()) / (module.get.step() === 0 ? 1 : module.get.step()));
                             module.debug('Determined that there should be ' + value + ' labels');
+
                             return value;
                         },
                         labelType: function () {
@@ -630,6 +639,7 @@
                                         return module.secondThumbVal;
                                     } else {
                                         module.error(error.notrange);
+
                                         break;
                                     }
                                 case 'first':
@@ -647,6 +657,7 @@
                                         return secondPos;
                                     } else {
                                         module.error(error.notrange);
+
                                         break;
                                     }
                                 case 'first':
@@ -676,6 +687,7 @@
                                     }
                                 }
                             }
+
                             return gapRatio;
                         },
                     },
@@ -696,6 +708,7 @@
                             if (thumbDelta === secondThumbDelta && module.get.thumbValue() === module.get.min()) {
                                 return $secondThumb;
                             }
+
                             return thumbDelta <= secondThumbDelta ? $thumb : $secondThumb;
                         },
                         closestThumbPos: function (eventPos) {
@@ -705,6 +718,7 @@
                                 secondThumbPos = parseFloat(module.determine.thumbPos($secondThumb)),
                                 secondThumbDelta = Math.abs(eventPos - secondThumbPos)
                             ;
+
                             return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
                         },
                         thumbPos: function ($element) {
@@ -713,6 +727,7 @@
                                     ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
                                     : module.is.reversed() ? $element.css('right') : $element.css('left')
                             ;
+
                             return pos;
                         },
                         positionFromValue: function (val) {
@@ -725,6 +740,7 @@
                                 position = Math.round(ratio * trackLength)
                             ;
                             module.verbose('Determined position: ' + position + ' from value: ' + value);
+
                             return position;
                         },
                         positionFromRatio: function (ratio) {
@@ -734,6 +750,7 @@
                                 position = Math.round(ratio * trackLength),
                                 adjustedPos = (step == 0) ? position : Math.round(position / step) * step
                             ;
+
                             return adjustedPos;
                         },
                         valueFromEvent: function (event) {
@@ -749,6 +766,7 @@
                             } else {
                                 value = module.determine.value(newPos);
                             }
+
                             return value;
                         },
                         smoothValueFromEvent: function (event) {
@@ -767,6 +785,7 @@
                                 ratio = 1 - ratio;
                             }
                             value = ratio * (max - min) + min;
+
                             return value;
                         },
                         eventPos: function (event) {
@@ -777,6 +796,7 @@
                                 for (var i = 0; i < touchEvent.touches.length; i++) {
                                     if (touchEvent.touches[i].identifier === touchIdentifier) {
                                         touch = touchEvent.touches[i];
+
                                         break;
                                     }
                                 }
@@ -784,12 +804,14 @@
                                     touchY = touch.pageY,
                                     touchX = touch.pageX
                                 ;
+
                                 return module.is.vertical() ? touchY : touchX;
                             }
                             var
                                 clickY = event.pageY || event.originalEvent.pageY,
                                 clickX = event.pageX || event.originalEvent.pageX
                             ;
+
                             return module.is.vertical() ? clickY : clickX;
                         },
                         value: function (position) {
@@ -809,6 +831,7 @@
                             // Use precision to avoid ugly Javascript floating point rounding issues
                             // (like 35 * .01 = 0.35000000000000003)
                             module.verbose('Cutting off additional decimal places');
+
                             return Math.round((difference + module.get.min()) * precision) / precision;
                         },
                         keyMovement: function (event) {
@@ -856,6 +879,7 @@
                             val = max;
                         }
                         newPos = module.determine.positionFromValue(val);
+
                         return newPos;
                     },
 
@@ -1189,14 +1213,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -1213,6 +1240,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

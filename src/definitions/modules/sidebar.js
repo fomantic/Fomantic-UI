@@ -361,6 +361,7 @@
                             if (module.cache.leftBodyScrollbar === undefined) {
                                 module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
                             }
+
                             return module.cache.leftBodyScrollbar;
                         },
                     },
@@ -381,6 +382,7 @@
                         if (module.is.hidden()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
+
                                 return;
                             }
                             if (settings.overlay) {
@@ -394,6 +396,7 @@
                                     // if not overlay queue animation after hide
                                     if (settings.transition != 'overlay') {
                                         module.hideOthers(module.show);
+
                                         return;
                                     } else {
                                         module.hideOthers();
@@ -705,6 +708,7 @@
                             } else if ($module.hasClass(className.bottom)) {
                                 return className.bottom;
                             }
+
                             return className.left;
                         },
                         transition: function () {
@@ -720,6 +724,7 @@
                                     ? settings.defaultTransition.computer[direction]
                                     : settings.transition;
                             module.verbose('Determined transition', transition);
+
                             return transition;
                         },
                         transitionEvent: function () {
@@ -750,18 +755,21 @@
                             if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
+
                             return module.cache.isSafari;
                         },
                         edge: function (){
                             if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
+
                             return module.cache.isEdge;
                         },
                         firefox: function (){
                             if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
+
                             return module.cache.isFirefox;
                         },
                         iframe: function () {
@@ -775,6 +783,7 @@
                                 ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
+
                             return module.cache.isIE;
                         },
 
@@ -786,6 +795,7 @@
                             ;
                             if (isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
+
                                 return true;
                             } else {
                                 return false;
@@ -798,9 +808,11 @@
                             ;
                             if (isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
+
                                 return true;
                             } else {
                                 module.verbose('Browser is not mobile, using regular transition', userAgent);
+
                                 return false;
                             }
                         },
@@ -827,6 +839,7 @@
                             if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
+
                             return module.cache.isRTL;
                         },
                     },
@@ -951,14 +964,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -975,6 +991,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

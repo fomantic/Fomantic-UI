@@ -23,6 +23,7 @@ var
 module.exports = function () {
     if (!install.isSetup()) {
         console.error('Cannot watch files. Run "gulp install" to set-up Semantic');
+
         return;
     }
 

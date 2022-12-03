@@ -109,6 +109,7 @@
                             enabledModules.push(name);
                         }
                     });
+
                     return enabledModules;
                 },
             },
@@ -124,6 +125,7 @@
                             disabledModules.push(name);
                         }
                     });
+
                     return disabledModules;
                 },
             },
@@ -219,6 +221,7 @@
                 if (enable) {
                     if (instance.cache.console === undefined) {
                         module.error(error.console);
+
                         return;
                     }
                     module.debug('Restoring console function');
@@ -358,14 +361,17 @@
                             object = object[camelCaseValue];
                         } else if (object[camelCaseValue] !== undefined) {
                             found = object[camelCaseValue];
+
                             return false;
                         } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                             object = object[value];
                         } else if (object[value] !== undefined) {
                             found = object[value];
+
                             return false;
                         } else {
                             module.error(error.method, query);
+
                             return false;
                         }
                     });
@@ -382,6 +388,7 @@
                 } else if (response !== undefined) {
                     returnedValue = response;
                 }
+
                 return found;
             },
         };
@@ -397,6 +404,7 @@
             }
             module.initialize();
         }
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;

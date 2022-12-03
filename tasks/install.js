@@ -76,6 +76,7 @@ module.exports = function (callback) {
     if (install.isSubModule()) {
         console.info('SUI is a sub-module, skipping end-user install');
         callback();
+
         return;
     }
 
@@ -142,10 +143,12 @@ module.exports = function (callback) {
                 console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
 
                 callback();
+
                 return;
             } else {
                 console.log('Current version of Fomantic UI already installed');
                 callback();
+
                 return;
             }
         } else {
@@ -205,6 +208,7 @@ module.exports = function (callback) {
         // if config exists and user specifies not to proceed
         if (answers.overwrite !== undefined && answers.overwrite == 'no') {
             callback();
+
             return;
         }
         console.clear();
@@ -240,6 +244,7 @@ module.exports = function (callback) {
                 if (answers.customRoot === '') {
                     console.log('Unable to proceed, invalid project root');
                     callback();
+
                     return;
                 }
                 manager.root = answers.customRoot;
@@ -335,12 +340,14 @@ module.exports = function (callback) {
 
             if (fs.existsSync(installPaths.themeConfig)) {
                 console.info('Modifying src/theme.config (LESS config)', installPaths.themeConfig);
+
                 return gulp.src(installPaths.themeConfig)
                     .pipe(plumber())
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder));
             } else {
                 console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
+
                 return gulp.src(source.themeConfig)
                     .pipe(plumber())
                     .pipe(rename({extname: ''}))
@@ -361,6 +368,7 @@ module.exports = function (callback) {
             // adjust variables in theme.less
             if (fs.existsSync(installPaths.config)) {
                 console.info('Extending config file (semantic.json)', installPaths.config);
+
                 return gulp.src(installPaths.config)
                     .pipe(plumber())
                     .pipe(rename(settings.rename.json)) // preserve file extension
@@ -368,6 +376,7 @@ module.exports = function (callback) {
                     .pipe(gulp.dest(installPaths.configFolder));
             } else {
                 console.info('Creating config file (semantic.json)', installPaths.config);
+
                 return gulp.src(source.config)
                     .pipe(plumber())
                     .pipe(rename({extname: ''})) // remove .template from ext

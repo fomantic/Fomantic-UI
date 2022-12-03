@@ -135,6 +135,7 @@
                             if (className[state] === undefined) {
                                 return false;
                             }
+
                             return $module.hasClass(className[state]);
                         },
 
@@ -214,6 +215,7 @@
                                         };
                                     } else if (apiRequest) {
                                         module.listenTo(apiRequest);
+
                                         return;
                                     }
                                 }
@@ -517,14 +519,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -541,6 +546,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

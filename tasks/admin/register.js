@@ -32,6 +32,7 @@ module.exports = function (callback) {
         index = index + 1;
         if (index >= total) {
             callback();
+
             return;
         }
         var

@@ -181,6 +181,7 @@
                                     .one('click.close' + eventNamespace, selector.results, function (event) {
                                         if (module.is.inMessage(event) || disabledBubbled) {
                                             $prompt.trigger('focus');
+
                                             return;
                                         }
                                         disabledBubbled = false;
@@ -222,6 +223,7 @@
                                     if (settings.onSelect.call(element, result, results) === false) {
                                         module.debug('Custom onSelect callback cancelled default select action');
                                         disabledBubbled = true;
+
                                         return;
                                     }
                                 }
@@ -295,6 +297,7 @@
                                 if ($result.filter('.' + className.active).length > 0) {
                                     module.event.result.click.call($result.filter('.' + className.active), event);
                                     event.preventDefault();
+
                                     return false;
                                 }
                             } else if (keyCode == keys.upArrow && hasActiveResult) {
@@ -415,6 +418,7 @@
                                 $target = $(event.target),
                                 isInDOM = $.contains(document.documentElement, event.target)
                             ;
+
                             return (isInDOM && $target.closest(selector.message).length > 0);
                         },
                         empty: function () {
@@ -448,6 +452,7 @@
                                         ? 'propertychange'
                                         : 'keyup'
                             ;
+
                             return inputEvent;
                         },
                         value: function () {
@@ -481,6 +486,7 @@
                                 module.debug('Finding result in results object', value);
                                 result = module.search.object(value, results)[0];
                             }
+
                             return result || false;
                         },
                     },
@@ -636,6 +642,7 @@
                             // exit conditions if no source
                             if (source === undefined || source === false) {
                                 module.error(error.source);
+
                                 return [];
                             }
                             // iterate through search fields looking for matches
@@ -666,12 +673,14 @@
                             });
                             $.merge(exactResults, fuzzyResults);
                             $.merge(results, exactResults);
+
                             return results;
                         },
                     },
                     exactSearch: function (query, term) {
                         query = query.toLowerCase();
                         term = term.toLowerCase();
+
                         return term.indexOf(query) > -1;
                     },
                     fuzzySearch: function (query, term) {
@@ -699,8 +708,10 @@
                                     continue search;
                                 }
                             }
+
                             return false;
                         }
+
                         return true;
                     },
 
@@ -743,6 +754,7 @@
                                 searchTerm    = module.get.value(),
                                 numCharacters = searchTerm.length
                             ;
+
                             return (numCharacters >= settings.minCharacters);
                         },
                         results: function () {
@@ -752,6 +764,7 @@
                             var
                                 html = $results.html()
                             ;
+
                             return html != '';
                         },
                     },
@@ -779,10 +792,12 @@
                             ;
                             if (settings.cache) {
                                 module.verbose('Checking cache for generated html for query', name);
+
                                 return (typeof cache == 'object') && (cache[name] !== undefined)
                                     ? cache[name]
                                     : false;
                             }
+
                             return false;
                         },
                     },
@@ -806,6 +821,7 @@
                                     categoryResults[result.category].results.push(result);
                                 }
                             });
+
                             return categoryResults;
                         },
                         id: function (resultIndex, categoryIndex) {
@@ -823,6 +839,7 @@
                                 id = resultID;
                                 module.verbose('Creating result id', id);
                             }
+
                             return id;
                         },
                         results: function () {
@@ -884,6 +901,7 @@
                                     resultIndex++;
                                 });
                             }
+
                             return results;
                         },
                     },
@@ -915,6 +933,7 @@
                         if (isFunction(settings.onResultsAdd)) {
                             if (settings.onResultsAdd.call($results, html) === false) {
                                 module.debug('onResultsAdd callback cancelled default action');
+
                                 return false;
                             }
                         }
@@ -1024,6 +1043,7 @@
                             html = module.displayMessage(error.noResults, 'empty', error.noResultsHeader);
                         }
                         settings.onResults.call(element, response);
+
                         return html;
                     },
 
@@ -1031,6 +1051,7 @@
                         type = type || 'standard';
                         module.debug('Displaying message', text, type, header);
                         module.addResults(settings.templates.message(text, type, header));
+
                         return settings.templates.message(text, type, header);
                     },
 
@@ -1152,11 +1173,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -1175,6 +1198,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1359,8 +1383,10 @@
                     };
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                     return string.replace(badChars, escapedChar);
                 }
+
                 return string;
             },
             message: function (message, type, header) {
@@ -1377,6 +1403,7 @@
                     html += ' <div class="description">' + message + '</div>';
                     html += '</div>';
                 }
+
                 return html;
             },
             category: function (response, fields, preserveHTML) {
@@ -1440,8 +1467,10 @@
                                 + '</a>';
                         }
                     }
+
                     return html;
                 }
+
                 return false;
             },
             standard: function (response, fields, preserveHTML) {
@@ -1490,8 +1519,10 @@
                                 + '</a>';
                         }
                     }
+
                     return html;
                 }
+
                 return false;
             },
         },

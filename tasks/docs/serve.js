@@ -43,6 +43,7 @@ module.exports = function () {
             if (event === 'unlink' || event === 'unlinkDir') {
                 return;
             }
+
             return gulp.src(path, {
                 base: 'src/',
             })
@@ -61,6 +62,7 @@ module.exports = function () {
             if (event === 'unlink' || event === 'unlinkDir') {
                 return;
             }
+
             return gulp.src(path, {
                 base: 'examples/',
             })

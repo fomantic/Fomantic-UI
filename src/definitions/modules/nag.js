@@ -94,6 +94,7 @@
                         if (module.should.show() && !$module.is(':visible')) {
                             if (settings.onShow.call(element) === false) {
                                 module.debug('onShow callback returned false, cancelling nag animation');
+
                                 return false;
                             }
                             module.debug('Showing nag', settings.animation.show);
@@ -110,6 +111,7 @@
                     hide: function () {
                         if (settings.onHide.call(element) === false) {
                             module.debug('onHide callback returned false, cancelling nag animation');
+
                             return false;
                         }
                         module.debug('Hiding nag', settings.animation.hide);
@@ -135,13 +137,16 @@
                         show: function () {
                             if (settings.persist) {
                                 module.debug('Persistent nag is set, can show nag');
+
                                 return true;
                             }
                             if (module.storage.get(settings.key) != settings.value.toString()) {
                                 module.debug('Stored value is not set, can show nag', module.storage.get(settings.key));
+
                                 return true;
                             }
                             module.debug('Stored value is set, cannot show nag', module.storage.get(settings.key));
+
                             return false;
                         },
                     },
@@ -160,12 +165,15 @@
                         storage: function (){
                             if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                                 module.debug('Using local storage');
+
                                 return window.localStorage;
                             } else if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
                                 module.debug('Using session storage');
+
                                 return window.sessionStorage;
                             } else if ('cookie' in document) {
                                 module.debug('Using cookie');
+
                                 return {
                                     setItem: function (key, value, options) {
                                         // RFC6265 compliant encoding
@@ -225,6 +233,7 @@
                             if (settings.samesite) {
                                 options.samesite = settings.samesite;
                             }
+
                             return options;
                         },
                     },
@@ -265,6 +274,7 @@
                             if (storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
                                 storedValue = undefined;
                             }
+
                             return storedValue;
                         },
                         remove: function (key) {
@@ -399,14 +409,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -423,6 +436,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

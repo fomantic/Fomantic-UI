@@ -124,6 +124,7 @@
                     show: function (callback) {
                         if (settings.onShow.call($toastBox, element) === false) {
                             module.debug('onShow callback returned false, cancelling toast animation');
+
                             return;
                         }
                         callback = callback || function (){};
@@ -134,6 +135,7 @@
                     close: function (callback) {
                         if (settings.onHide.call($toastBox, element) === false) {
                             module.debug('onHide callback returned false, cancelling toast animation');
+
                             return;
                         }
                         callback = callback || function (){};
@@ -451,6 +453,7 @@
                     has: {
                         container: function () {
                             module.verbose('Determining if there is already a container');
+
                             return module.get.containers().length > 0;
                         },
                         toast: function (){
@@ -511,6 +514,7 @@
                             if ($(event.target).closest(selector.clickable).length === 0) {
                                 if (settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
                                     module.verbose('Click callback returned false or close denied by setting cancelling close');
+
                                     return;
                                 }
                                 module.close();
@@ -519,6 +523,7 @@
                         approve: function () {
                             if (settings.onApprove.call(element, $module) === false) {
                                 module.verbose('Approve callback returned false cancelling close');
+
                                 return;
                             }
                             module.close();
@@ -526,6 +531,7 @@
                         deny: function () {
                             if (settings.onDeny.call(element, $module) === false) {
                                 module.verbose('Deny callback returned false cancelling close');
+
                                 return;
                             }
                             module.close();
@@ -568,8 +574,10 @@
                             ;
                             if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                                 return string.replace(badChars, escapedChar);
                             }
+
                             return string;
                         },
                     },
@@ -580,6 +588,7 @@
                                 return true;
                             }
                             module.error(error.noElement.replace('{element}', element));
+
                             return false;
                         },
                     },
@@ -704,14 +713,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -728,6 +740,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

@@ -264,6 +264,7 @@
                                     allValid = false;
                                 }
                             });
+
                             return allValid;
                         },
                         isDirty: function (e) {
@@ -321,6 +322,7 @@
                             ;
                             if (field) {
                                 module.verbose('Checking if field is valid', field);
+
                                 return module.validate.field(validation[field], field, !!showErrors);
                             } else {
                                 module.verbose('Checking if form is valid');
@@ -329,6 +331,7 @@
                                         allValid = false;
                                     }
                                 });
+
                                 return allValid;
                             }
                         },
@@ -358,6 +361,7 @@
                             var isBoolValue = boolRegex.test(initialValue) && boolRegex.test(currentValue);
                             if (isBoolValue) {
                                 var regex = new RegExp('^' + initialValue + '$', 'i');
+
                                 return !regex.test(currentValue);
                             }
 
@@ -468,6 +472,7 @@
                             if (!rule.type || (!rule.value && !module.is.bracketedRule(rule))) {
                                 return false;
                             }
+
                             return (rule.value !== undefined)
                                 ? rule.value
                                 : rule.type.match(settings.regExp.bracket)[1] + '';
@@ -476,6 +481,7 @@
                             if (module.is.bracketedRule(rule)) {
                                 return rule.type.replace(rule.type.match(settings.regExp.bracket)[0], '');
                             }
+
                             return rule.type;
                         },
                         changeEvent: function (type, $input) {
@@ -511,6 +517,7 @@
                                     });
                                 }
                             });
+
                             return fullFields;
                         },
                         prompt: function (rule, field) {
@@ -557,6 +564,7 @@
                             if (!rule.prompt) {
                                 module.verbose('Using default validation prompt for type', prompt, ruleName);
                             }
+
                             return prompt;
                         },
                         settings: function () {
@@ -621,6 +629,7 @@
                                 return t;
                             }
                             module.error(error.noField.replace('{identifier}', identifier));
+
                             return $('<input/>');
                         },
                         fields: function (fields) {
@@ -630,6 +639,7 @@
                             $.each(fields, function (index, name) {
                                 $fields = $fields.add(module.get.field(name));
                             });
+
                             return $fields;
                         },
                         validation: function ($field) {
@@ -646,10 +656,12 @@
                                     if (groupField == $field[0]) {
                                         field.identifier = identifier;
                                         fieldValidation = field;
+
                                         return false;
                                     }
                                 });
                             });
+
                             return fieldValidation || false;
                         },
                         value: function (field) {
@@ -659,6 +671,7 @@
                             ;
                             fields.push(field);
                             results = module.get.values.call(element, fields);
+
                             return results[field];
                         },
                         values: function (fields) {
@@ -724,22 +737,27 @@
                                                     switch (type) {
                                                         case 'date':
                                                             values[name] = settings.formatter.date(date);
+
                                                             break;
 
                                                         case 'datetime':
                                                             values[name] = settings.formatter.datetime(date);
+
                                                             break;
 
                                                         case 'time':
                                                             values[name] = settings.formatter.time(date);
+
                                                             break;
 
                                                         case 'month':
                                                             values[name] = settings.formatter.month(date);
+
                                                             break;
 
                                                         case 'year':
                                                             values[name] = settings.formatter.year(date);
+
                                                             break;
 
                                                         default:
@@ -756,6 +774,7 @@
                                     }
                                 }
                             });
+
                             return values;
                         },
                         dirtyFields: function () {
@@ -773,6 +792,7 @@
                             if (typeof identifier !== 'string') {
                                 module.error(error.identifier, identifier);
                             }
+
                             return (
                                 $field.filter('#' + identifier).length > 0 ||
               $field.filter('[name="' + identifier + '"]').length > 0 ||
@@ -788,6 +808,7 @@
                                 return true;
                             }
                             module.error(error.noElement.replace('{element}', element));
+
                             return false;
                         },
                     },
@@ -795,6 +816,7 @@
                     escape: {
                         string: function (text) {
                             text = String(text);
+
                             return text.replace(regExp.escape, '\\$&');
                         },
                     },
@@ -910,6 +932,7 @@
                             if (rule === undefined) {
                                 module.debug('Removed all rules');
                                 validation[field].rules = [];
+
                                 return;
                             }
                             $.each(validation[field].rules, function (index, rule) {
@@ -1005,6 +1028,7 @@
                                 fields = {}
                             ;
                             fields[field] = value;
+
                             return module.set.values.call(element, fields);
                         },
                         values: function (fields) {
@@ -1243,8 +1267,10 @@
                                     module.add.prompt(identifier, fieldErrors, true);
                                     settings.onInvalid.call($field, fieldErrors);
                                 }
+
                                 return false;
                             }
+
                             return true;
                         },
 
@@ -1263,11 +1289,13 @@
                                     value = (value === undefined || value === '' || value === null)
                                         ? ''
                                         : (settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim ? String(value + '').trim() : String(value + '');
+
                                     return ruleFunction.call(field, value, ancillary, $module);
                                 }
                             ;
                             if (!isFunction(ruleFunction)) {
                                 module.error(error.noRule, ruleName);
+
                                 return;
                             }
                             if (isCheckbox) {
@@ -1281,6 +1309,7 @@
                                     }
                                 });
                             }
+
                             return internal ? invalidFields : !(invalidFields.length > 0);
                         },
                     },
@@ -1402,11 +1431,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -1425,6 +1456,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1575,6 +1607,7 @@
                     html += '<li>' + value + '</li>';
                 });
                 html += '</ul>';
+
                 return html;
             },
 
@@ -1590,6 +1623,7 @@
                     html += '<li>' + value + '</li>';
                 });
                 html += '</ul>';
+
                 return html;
             },
         },
@@ -1668,6 +1702,7 @@
                         ? regExpParts[2]
                         : '';
                 }
+
                 return value.match(new RegExp(regExp, flags));
             },
             minValue: function (value, range) {
@@ -1707,6 +1742,7 @@
                         max = parts[1] - 0;
                     }
                 }
+
                 return (
                     regExp.test(value) &&
         (min === undefined || value >= min) &&
@@ -1732,6 +1768,7 @@
                 value = (typeof value == 'string')
                     ? value.toLowerCase()
                     : value;
+
                 return (value == text);
             },
 
@@ -1748,6 +1785,7 @@
                 notValue = (typeof notValue == 'string')
                     ? notValue.toLowerCase()
                     : notValue;
+
                 return (value != notValue);
             },
 
@@ -1760,6 +1798,7 @@
             contains: function (value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
+
                 return (value.search(new RegExp(text, 'i')) !== -1);
             },
 
@@ -1767,6 +1806,7 @@
             containsExactly: function (value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
+
                 return (value.search(new RegExp(text)) !== -1);
             },
 
@@ -1774,6 +1814,7 @@
             doesntContain: function (value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
+
                 return (value.search(new RegExp(text, 'i')) === -1);
             },
 
@@ -1781,6 +1822,7 @@
             doesntContainExactly: function (value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
+
                 return (value.search(new RegExp(text)) === -1);
             },
 
@@ -1820,6 +1862,7 @@
                 } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
+
                 return (matchingValue !== undefined)
                     ? (value.toString() == matchingValue.toString())
                     : false;
@@ -1841,6 +1884,7 @@
                 } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
+
                 return (matchingValue !== undefined)
                     ? (value.toString() !== matchingValue.toString())
                     : false;
@@ -1950,6 +1994,7 @@
                     sum += producedValue[multiple][parseInt(cardNumber.charAt(length), 10)];
                     multiple ^= 1;
                 }
+
                 return (sum % 10 === 0 && sum > 0);
             },
 
@@ -1960,6 +2005,7 @@
                 if (minCount == 1) {
                     return (value !== '');
                 }
+
                 return (value.split(',').length >= minCount);
             },
 
@@ -1970,6 +2016,7 @@
                 if (exactCount == 1) {
                     return (value !== '' && value.search(',') === -1);
                 }
+
                 return (value.split(',').length == exactCount);
             },
 
@@ -1980,6 +2027,7 @@
                 if (maxCount == 1) {
                     return (value.search(',') === -1);
                 }
+
                 return (value.split(',').length <= maxCount);
             },
         },

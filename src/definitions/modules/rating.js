@@ -205,20 +205,25 @@
                             if (icon) {
                                 $module.removeData(metadata.icon);
                             }
+
                             return icon || settings.icon;
                         },
                         initialRating: function () {
                             if ($module.data(metadata.rating) !== undefined) {
                                 $module.removeData(metadata.rating);
+
                                 return $module.data(metadata.rating);
                             }
+
                             return settings.initialRating;
                         },
                         maxRating: function () {
                             if ($module.data(metadata.maxRating) !== undefined) {
                                 $module.removeData(metadata.maxRating);
+
                                 return $module.data(metadata.maxRating);
                             }
+
                             return settings.maxRating;
                         },
                         rating: function () {
@@ -226,6 +231,7 @@
                                 currentRating = $icon.filter('.' + className.active).length
                             ;
                             module.verbose('Current rating retrieved', currentRating);
+
                             return currentRating;
                         },
                     },
@@ -402,11 +408,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -425,6 +433,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -508,6 +517,7 @@
                     html += '<i class="' + deQuote(iconClass) + ' icon"></i>';
                     icon++;
                 }
+
                 return html;
             },
         },

@@ -263,9 +263,11 @@
                         trackChanges: function () {
                             if (methodInvoked) {
                                 module.debug('One time query, no need to bind events');
+
                                 return false;
                             }
                             module.debug('Callbacks being attached');
+
                             return true;
                         },
                     },
@@ -379,6 +381,7 @@
                                 if ($.fn.transition !== undefined) {
                                     if ($module.hasClass(className.visible)) {
                                         module.debug('Transition already occurred on this image, skipping animation');
+
                                         return;
                                     }
                                     $module.transition(settings.transition, settings.duration, callback);
@@ -396,18 +399,21 @@
                             var
                                 calculations   = module.get.elementCalculations()
                             ;
+
                             return calculations.onScreen;
                         },
                         offScreen: function () {
                             var
                                 calculations   = module.get.elementCalculations()
                             ;
+
                             return calculations.offScreen;
                         },
                         visible: function () {
                             if (module.cache && module.cache.element) {
                                 return !(module.cache.element.width === 0 && module.cache.element.offset.top === 0);
                             }
+
                             return false;
                         },
                         verticallyScrollableContext: function () {
@@ -416,6 +422,7 @@
                                     ? $context.css('overflow-y')
                                     : false
                             ;
+
                             return (overflowY == 'auto' || overflowY == 'scroll');
                         },
                         horizontallyScrollableContext: function () {
@@ -424,6 +431,7 @@
                                     ? $context.css('overflow-x')
                                     : false
                             ;
+
                             return (overflowX == 'auto' || overflowX == 'scroll');
                         },
                     },
@@ -845,6 +853,7 @@
                                 direction = 'static';
                             }
                             module.cache.direction = direction;
+
                             return module.cache.direction;
                         },
                         elementPosition: function () {
@@ -867,6 +876,7 @@
                             }
                             // store
                             module.cache.element = element;
+
                             return element;
                         },
                         elementCalculations: function () {
@@ -906,6 +916,7 @@
                             }
                             module.cache.element = element;
                             module.verbose('Updated element calculations', element);
+
                             return element;
                         },
                         screenCalculations: function () {
@@ -915,6 +926,7 @@
                             module.save.direction();
                             module.cache.screen.top = scroll;
                             module.cache.screen.bottom = scroll + module.cache.screen.height;
+
                             return module.cache.screen;
                         },
                         screenSize: function () {
@@ -937,6 +949,7 @@
                             if (amount.search('%') > -1) {
                                 return (element.height * (parseInt(amount, 10) / 100));
                             }
+
                             return parseInt(amount, 10);
                         },
                         occurred: function (callback) {
@@ -948,43 +961,51 @@
                             if (module.cache.direction === undefined) {
                                 module.save.direction();
                             }
+
                             return module.cache.direction;
                         },
                         elementPosition: function () {
                             if (module.cache.element === undefined) {
                                 module.save.elementPosition();
                             }
+
                             return module.cache.element;
                         },
                         elementCalculations: function () {
                             if (module.cache.element === undefined) {
                                 module.save.elementCalculations();
                             }
+
                             return module.cache.element;
                         },
                         screenCalculations: function () {
                             if (module.cache.screen === undefined) {
                                 module.save.screenCalculations();
                             }
+
                             return module.cache.screen;
                         },
                         screenSize: function () {
                             if (module.cache.screen === undefined) {
                                 module.save.screenSize();
                             }
+
                             return module.cache.screen;
                         },
                         scroll: function () {
                             if (module.cache.scroll === undefined) {
                                 module.save.scroll();
                             }
+
                             return module.cache.scroll;
                         },
                         lastScroll: function () {
                             if (module.cache.screen === undefined) {
                                 module.debug('First scroll event, no last scroll could be found');
+
                                 return false;
                             }
+
                             return module.cache.screen.top;
                         },
                     },
@@ -1104,14 +1125,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -1128,6 +1152,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

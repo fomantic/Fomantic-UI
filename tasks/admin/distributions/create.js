@@ -100,6 +100,7 @@ module.exports = function (callback) {
                         }
                     }
                 });
+
                 return files;
             };
 
@@ -113,6 +114,7 @@ module.exports = function (callback) {
                         filenames += "'" + files[file] + "',\n    ";
                     }
                 }
+
                 return filenames;
             };
 
@@ -143,6 +145,7 @@ module.exports = function (callback) {
                         .pipe(gulp.dest(outputDirectory));
                     releases = gulp.src('dist/*', { base: 'dist/' })
                         .pipe(gulp.dest(outputDirectory));
+
                     return mergeStream(themes, components, releases);
                 });
             } else if (distribution == 'LESS') {
@@ -166,6 +169,7 @@ module.exports = function (callback) {
                         .pipe(gulp.dest(outputDirectory));
                     themes = gulp.src('src/themes/**/*', { base: 'src/' })
                         .pipe(gulp.dest(outputDirectory));
+
                     return mergeStream(definitions, themeImport, themeConfig, siteTheme, themes);
                 });
             }
@@ -178,6 +182,7 @@ module.exports = function (callback) {
                         if (version) {
                             pkg.version = version;
                         }
+
                         return pkg;
                     }))
                     .pipe(gulp.dest(outputDirectory));

@@ -234,6 +234,7 @@
                                 $element = $('<div/>')
                             ;
                             $element.addClass(className.supported);
+
                             return ($element.css('position').match('sticky'));
                         },
                     },
@@ -311,10 +312,12 @@
                             if (module.lastScroll && module.lastScroll > scroll) {
                                 direction = 'up';
                             }
+
                             return direction;
                         },
                         scrollChange: function (scroll) {
                             scroll = scroll || $scroll.scrollTop();
+
                             return (module.lastScroll)
                                 ? (scroll - module.lastScroll)
                                 : 0;
@@ -323,6 +326,7 @@
                             if (module.elementScroll) {
                                 return module.elementScroll;
                             }
+
                             return (module.is.top())
                                 ? Math.abs(parseInt($module.css('top'), 10)) || 0
                                 : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
@@ -345,6 +349,7 @@
                             } else {
                                 elementScroll = possibleScroll;
                             }
+
                             return elementScroll;
                         },
                     },
@@ -783,11 +788,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -806,6 +813,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

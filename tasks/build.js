@@ -15,6 +15,7 @@ module.exports = function (callback) {
 
     if (!install.isSetup()) {
         console.error('Cannot find semantic.json. Run "gulp install" to set-up Semantic');
+
         return 1;
     }
 

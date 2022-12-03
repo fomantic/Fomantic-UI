@@ -190,6 +190,7 @@
                         module.debug('Initializing page state');
                         if ($.address === undefined) {
                             module.error(error.state);
+
                             return false;
                         } else {
                             if (settings.historyType == 'state') {
@@ -201,6 +202,7 @@
                                     $(window).trigger('popstate');
                                 } else {
                                     module.error(error.path);
+
                                     return false;
                                 }
                             }
@@ -275,6 +277,7 @@
                     escape: {
                         string: function (text) {
                             text = String(text);
+
                             return text.replace(regExp.escape, '\\$&');
                         },
                     },
@@ -360,6 +363,7 @@
                                 }
                                 if (settings.onBeforeChange.call(element, currentPath) === false) {
                                     module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+
                                     return false;
                                 }
                                 if (isLastTab && remoteContent) {
@@ -374,6 +378,7 @@
                                         settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                         settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                     }
+
                                     return false;
                                 } else {
                                     module.debug('Opened local tab', currentPath);
@@ -396,6 +401,7 @@
                                     module.debug('Anchor link used, opening parent tab', $tab, $anchor);
                                     if (settings.onBeforeChange.call(element, currentPath) === false) {
                                         module.debug('onBeforeChange returned false, cancelling tab change', $tab);
+
                                         return false;
                                     }
                                     if (!$tab.hasClass(className.active)) {
@@ -410,10 +416,12 @@
                                         settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                                     }
                                     settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
+
                                     return false;
                                 }
                             } else {
                                 module.error(error.missingTab, $module, $context, currentPath);
+
                                 return false;
                             }
                         });
@@ -620,6 +628,7 @@
                                 module.debug('Found default tab', defaultTab);
                                 if (recursionDepth < settings.maxDepth) {
                                     recursionDepth++;
+
                                     return module.get.defaultPath(defaultTab);
                                 }
                                 module.error(error.recursion);
@@ -627,10 +636,12 @@
                                 module.debug('No default tabs found for', tabPath, $tabs);
                             }
                             recursionDepth = 0;
+
                             return tabPath;
                         },
                         navElement: function (tabPath) {
                             tabPath = tabPath || activeTabPath;
+
                             return $allModules.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
                         },
                         tabElement: function (tabPath) {
@@ -645,6 +656,7 @@
                             lastTab = module.utilities.last(tabPathArray);
                             $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
                             $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(lastTab) + '"]');
+
                             return ($fullPathTab.length > 0)
                                 ? $fullPathTab
                                 : $simplePathTab;
@@ -692,6 +704,7 @@
                             if (pathName === undefined) {
                                 pathName = activeTabPath;
                             }
+
                             return typeof pathName == 'string'
                                 ? pathName.split('/')
                                 : [pathName];
@@ -823,14 +836,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -847,6 +863,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -862,6 +879,7 @@
                     module.initialize();
                 }
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;

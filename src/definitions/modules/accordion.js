@@ -158,6 +158,7 @@
                         ;
                         if (isOpen) {
                             module.debug('Accordion already open, skipping', $activeContent);
+
                             return;
                         }
                         module.debug('Opening accordion content', $activeTitle);
@@ -472,14 +473,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -496,6 +500,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -511,6 +516,7 @@
                     module.initialize();
                 }
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;

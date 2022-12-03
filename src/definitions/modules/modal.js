@@ -205,6 +205,7 @@
                             ;
                             if ($.fn.dimmer === undefined) {
                                 module.error(error.dimmer);
+
                                 return;
                             }
                             module.debug('Creating dimmer');
@@ -350,6 +351,7 @@
                         approve: function () {
                             if (ignoreRepeatedEvents || settings.onApprove.call(element, $(this)) === false) {
                                 module.verbose('Approve callback returned false cancelling hide');
+
                                 return;
                             }
                             ignoreRepeatedEvents = true;
@@ -365,6 +367,7 @@
                         deny: function () {
                             if (ignoreRepeatedEvents || settings.onDeny.call(element, $(this)) === false) {
                                 module.verbose('Deny callback returned false cancelling hide');
+
                                 return;
                             }
                             ignoreRepeatedEvents = true;
@@ -420,14 +423,17 @@
                         mouseup: function (event) {
                             if (!settings.closable) {
                                 module.verbose('Dimmer clicked but closable setting is disabled');
+
                                 return;
                             }
                             if (initialMouseDownInModal) {
                                 module.debug('Dimmer clicked but mouse down was initially registered inside the modal');
+
                                 return;
                             }
                             if (initialMouseDownInScrollbar){
                                 module.debug('Dimmer clicked but mouse down was initially registered inside the scrollbar');
+
                                 return;
                             }
                             var
@@ -498,6 +504,7 @@
                             ? callback
                             : function (){};
                         module.refreshModals();
+
                         return module.hideModal(callback);
                     },
 
@@ -508,6 +515,7 @@
                         if (module.is.animating() || !module.is.active()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
+
                                 return;
                             }
                             hadScrollbar = module.has.scrollbar();
@@ -584,6 +592,7 @@
                         if (settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
+
                             return false;
                         }
 
@@ -683,6 +692,7 @@
                             if (hideOk) {
                                 module.hideDimmer();
                             }
+
                             return hideOk;
                         }
                     },
@@ -849,8 +859,10 @@
                             ;
                             if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                                 return string.replace(badChars, escapedChar);
                             }
+
                             return string;
                         },
                     },
@@ -859,6 +871,7 @@
                             if (module.cache.leftBodyScrollbar === undefined) {
                                 module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
                             }
+
                             return module.cache.leftBodyScrollbar;
                         },
                         useFlex: function () {
@@ -870,6 +883,7 @@
                             } else if (settings.useFlex && !settings.detachable) {
                                 module.debug('useFlex true in combination with detachable false is not supported');
                             }
+
                             return settings.useFlex;
                         },
                         fit: function () {
@@ -882,6 +896,7 @@
                                 paddingHeight  = settings.padding,
                                 startPosition  = (verticalCenter + topOffset)
                             ;
+
                             return (scrollHeight > height)
                                 ? (startPosition + scrollHeight + paddingHeight < contextHeight)
                                 : (height + (paddingHeight * 2) < contextHeight);
@@ -907,6 +922,7 @@
                                 ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
+
                             return module.cache.isIE;
                         },
                         animating: function () {
@@ -925,24 +941,28 @@
                             if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
+
                             return module.cache.isRTL;
                         },
                         safari: function () {
                             if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
+
                             return module.cache.isSafari;
                         },
                         edge: function (){
                             if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
+
                             return module.cache.isEdge;
                         },
                         firefox: function (){
                             if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
+
                             return module.cache.isFirefox;
                         },
                         iframe: function () {
@@ -988,6 +1008,7 @@
                         dimmerSettings: function () {
                             if ($.fn.dimmer === undefined) {
                                 module.error(error.dimmer);
+
                                 return;
                             }
                             var
@@ -1204,11 +1225,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -1227,6 +1250,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1417,6 +1441,7 @@
                 if (!isFunction(queryArguments[queryArguments.length - 1])) {
                     queryArguments.push(function () {});
                 }
+
                 return {
                     handler: queryArguments.pop(),
                     content: queryArguments.pop() || '',
@@ -1430,6 +1455,7 @@
                 args     = settings.templates.getArguments(arguments),
                 approveFn = args.handler
             ;
+
             return {
                 title: args.title,
                 content: args.content,
@@ -1452,6 +1478,7 @@
                     args.handler(false);
                 }
             ;
+
             return {
                 title: args.title,
                 content: args.content,
@@ -1488,6 +1515,7 @@
             if (input.length === 0) {
                 args.content += '<p><div class="' + this.helpers.deQuote(settings.className.prompt) + '"><input placeholder="' + this.helpers.deQuote(args.placeholder || '') + '" type="text" value="' + this.helpers.deQuote(args.defaultValue || '') + '"></div></p>';
             }
+
             return {
                 title: args.title,
                 content: args.content,

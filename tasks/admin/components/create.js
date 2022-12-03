@@ -186,6 +186,7 @@ module.exports = function (callback) {
                                 component + '.css',
                             ];
                         }
+
                         return bower;
                     }))
                     .pipe(gulp.dest(outputDirectory));
@@ -213,6 +214,7 @@ module.exports = function (callback) {
                             type: 'git',
                             url: gitURL,
                         };
+
                         return npm;
                     }))
                     .pipe(gulp.dest(outputDirectory));
@@ -235,6 +237,7 @@ module.exports = function (callback) {
                             composer.version = version;
                         }
                         composer.description = 'Single component release of ' + component;
+
                         return composer;
                     }))
                     .pipe(gulp.dest(outputDirectory));
@@ -259,6 +262,7 @@ module.exports = function (callback) {
                 var
                     filenames = ''
                 ;
+
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))
                     .pipe(tap(function (file) {

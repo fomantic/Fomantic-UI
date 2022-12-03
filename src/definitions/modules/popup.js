@@ -320,6 +320,7 @@
                             }
                             if (settings.onShow.call($popup, element) === false) {
                                 module.debug('onShow callback returned false, cancelling popup animation');
+
                                 return;
                             } else if (!settings.preserve && !settings.popup) {
                                 module.refresh();
@@ -339,6 +340,7 @@
                         if (module.is.visible() || module.is.animating()) {
                             if (settings.onHide.call($popup, element) === false) {
                                 module.debug('onHide callback returned false, cancelling popup animation');
+
                                 return;
                             }
                             module.remove.visible();
@@ -396,6 +398,7 @@
                                 $module.attr('title', module.cache.title);
                                 module.verbose('Restoring original attributes', module.cache.title);
                             }
+
                             return true;
                         },
                     },
@@ -460,18 +463,22 @@
                     get: {
                         html: function () {
                             $module.removeData(metadata.html);
+
                             return $module.data(metadata.html) || settings.html;
                         },
                         title: function () {
                             $module.removeData(metadata.title);
+
                             return $module.data(metadata.title) || settings.title;
                         },
                         content: function () {
                             $module.removeData(metadata.content);
+
                             return $module.data(metadata.content) || settings.content || $module.attr('title');
                         },
                         variation: function () {
                             $module.removeData(metadata.variation);
+
                             return $module.data(metadata.variation) || settings.variation;
                         },
                         popup: function () {
@@ -567,6 +574,7 @@
                                 left: screen.left + screen.scroll.left,
                                 right: screen.left + screen.scroll.left + screen.width,
                             };
+
                             return calculations;
                         },
                         id: function () {
@@ -578,6 +586,7 @@
                             } else if (settings.on == 'focus') {
                                 return 'focus';
                             }
+
                             return false;
                         },
                         scrollEvent: function () {
@@ -589,6 +598,7 @@
                             } else if (settings.on == 'focus') {
                                 return 'blur';
                             }
+
                             return false;
                         },
                         distanceFromBoundary: function (offset, calculations) {
@@ -612,6 +622,7 @@
                                 };
                                 module.verbose('Distance from boundaries determined', offset, distanceFromBoundary);
                             }
+
                             return distanceFromBoundary;
                         },
                         offsetParent: function ($element) {
@@ -636,6 +647,7 @@
                                     isBody = $node.is('body');
                                 }
                             }
+
                             return ($node && $node.length > 0)
                                 ? $node
                                 : $();
@@ -707,6 +719,7 @@
                                 module.debug('Using backup position', nextPosition);
                                 nextPosition = backup[position];
                             }
+
                             return nextPosition;
                         },
                     },
@@ -716,6 +729,7 @@
                             // exit conditions
                             if ($target.length === 0 || $popup.length === 0) {
                                 module.error(error.notFound);
+
                                 return;
                             }
                             var
@@ -754,6 +768,7 @@
 
                             if (target.width === 0 && target.height === 0 && !module.is.svg(target.element)) {
                                 module.debug('Popup target is hidden, no action taken');
+
                                 return false;
                             }
 
@@ -795,6 +810,7 @@
                                         left: target.left + offset,
                                         right: 'auto',
                                     };
+
                                     break;
                                 case 'top center':
                                     positioning = {
@@ -803,6 +819,7 @@
                                         top: 'auto',
                                         right: 'auto',
                                     };
+
                                     break;
                                 case 'top right':
                                     positioning = {
@@ -811,6 +828,7 @@
                                         top: 'auto',
                                         left: 'auto',
                                     };
+
                                     break;
                                 case 'left center':
                                     positioning = {
@@ -819,6 +837,7 @@
                                         left: 'auto',
                                         bottom: 'auto',
                                     };
+
                                     break;
                                 case 'right center':
                                     positioning = {
@@ -827,6 +846,7 @@
                                         bottom: 'auto',
                                         right: 'auto',
                                     };
+
                                     break;
                                 case 'bottom left':
                                     positioning = {
@@ -835,6 +855,7 @@
                                         bottom: 'auto',
                                         right: 'auto',
                                     };
+
                                     break;
                                 case 'bottom center':
                                     positioning = {
@@ -843,6 +864,7 @@
                                         bottom: 'auto',
                                         right: 'auto',
                                     };
+
                                     break;
                                 case 'bottom right':
                                     positioning = {
@@ -851,6 +873,7 @@
                                         left: 'auto',
                                         bottom: 'auto',
                                     };
+
                                     break;
                             }
                             if (positioning === undefined) {
@@ -877,6 +900,7 @@
                                     searchDepth++;
                                     position = module.get.nextPosition(position);
                                     module.debug('Trying new position', position);
+
                                     return ($popup)
                                         ? module.set.position(position, calculations)
                                         : false;
@@ -890,6 +914,7 @@
                                         module.remove.loading();
                                         module.reset();
                                         settings.onUnplaceable.call($popup, element);
+
                                         return false;
                                     }
                                 }
@@ -900,6 +925,7 @@
                             if (settings.setFluidWidth && module.is.fluid()) {
                                 module.set.fluidWidth(calculations);
                             }
+
                             return true;
                         },
 
@@ -1037,6 +1063,7 @@
                             if (settings.closable == 'auto') {
                                 return settings.on != 'hover';
                             }
+
                             return settings.closable;
                         },
                         offstage: function (distanceFromBoundary, position) {
@@ -1050,6 +1077,7 @@
                                     offstage.push(direction);
                                 }
                             });
+
                             return offstage.length > 0;
                         },
                         svg: function (element) {
@@ -1208,11 +1236,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -1231,6 +1261,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1435,8 +1466,10 @@
                 ;
                 if (shouldEscape.test(string)) {
                     string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                     return string.replace(badChars, escapedChar);
                 }
+
                 return string;
             },
             popup: function (text) {
@@ -1454,6 +1487,7 @@
                         html += '<div class="content">' + text.content + '</div>';
                     }
                 }
+
                 return html;
             },
         },

@@ -120,6 +120,7 @@ function buildCSS(src, type, config, opts, callback) {
     if (!install.isSetup()) {
         console.error('Cannot build CSS files. Run "gulp install" to set-up Semantic');
         callback();
+
         return;
     }
 
@@ -214,6 +215,7 @@ module.exports.watch = function (type, config) {
             // Clear timeout and reset files
             timeout && clearTimeout(timeout);
             files = [];
+
             return gulp.series(method)();
         });
 

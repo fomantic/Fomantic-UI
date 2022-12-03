@@ -30,6 +30,7 @@ function buildAssets(src, config, callback) {
     if (!install.isSetup()) {
         console.error('Cannot build assets. Run "gulp install" to set-up Semantic');
         callback();
+
         return;
     }
 
@@ -55,6 +56,7 @@ module.exports.watch = function (type, config) {
         .watch([normalize(config.paths.source.themes + '/**/assets/**/*.*')])
         .on('all', function (event, path) {
             console.log('Change in assets detected');
+
             return gulp.series((callback) => buildAssets(path, config, callback))();
         });
 };

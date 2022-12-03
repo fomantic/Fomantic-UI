@@ -26,6 +26,11 @@ module.exports = {
             'asyncArrow': 'always',
         }],
         'space-infix-ops': ['error'],
+        'padding-line-between-statements': ['error', {
+            blankLine: 'always',
+            prev: '*',
+            next: ['continue', 'break', 'export', 'return', 'throw'],
+        }],
         'padded-blocks': ['error', 'never'],
         'no-multiple-empty-lines': ['error', {
             max: 1,

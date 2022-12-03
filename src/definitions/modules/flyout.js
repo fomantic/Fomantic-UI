@@ -305,6 +305,7 @@
                         approve: function (event) {
                             if (ignoreRepeatedEvents || settings.onApprove.call(module.element, $(this)) === false) {
                                 module.verbose('Approve callback returned false cancelling close');
+
                                 return;
                             }
                             ignoreRepeatedEvents = true;
@@ -315,6 +316,7 @@
                         deny: function (event) {
                             if (ignoreRepeatedEvents || settings.onDeny.call(module.element, $(this)) === false) {
                                 module.verbose('Deny callback returned false cancelling close');
+
                                 return;
                             }
                             ignoreRepeatedEvents = true;
@@ -578,6 +580,7 @@
                         if (module.is.hidden()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
+
                                 return;
                             }
                             module.refresh();
@@ -615,6 +618,7 @@
                         if (settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
+
                             return false;
                         }
                         if (module.is.visible() || module.is.animating()) {
@@ -898,6 +902,7 @@
                             } else if ($module.hasClass(className.bottom)) {
                                 return className.bottom;
                             }
+
                             return className.left;
                         },
                         transitionEvent: function () {
@@ -933,6 +938,7 @@
                             if (module.cache.leftBodyScrollbar === undefined) {
                                 module.cache.leftBodyScrollbar = module.is.rtl() && ((module.is.iframe && !module.is.firefox()) || module.is.safari() || module.is.edge() || module.is.ie());
                             }
+
                             return module.cache.leftBodyScrollbar;
                         },
                     },
@@ -962,18 +968,21 @@
                             if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
+
                             return module.cache.isSafari;
                         },
                         edge: function (){
                             if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
+
                             return module.cache.isEdge;
                         },
                         firefox: function (){
                             if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
+
                             return module.cache.isFirefox;
                         },
                         iframe: function () {
@@ -987,6 +996,7 @@
                                 ;
                                 module.cache.isIE = (isIE11 || isIE);
                             }
+
                             return module.cache.isIE;
                         },
                         ios: function () {
@@ -997,6 +1007,7 @@
                             ;
                             if (isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
+
                                 return true;
                             } else {
                                 return false;
@@ -1009,9 +1020,11 @@
                             ;
                             if (isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
+
                                 return true;
                             } else {
                                 module.verbose('Browser is not mobile, using regular transition', userAgent);
+
                                 return false;
                             }
                         },
@@ -1028,6 +1041,7 @@
                             if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
+
                             return module.cache.isRTL;
                         },
                     },
@@ -1084,8 +1098,10 @@
                             ;
                             if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                                 return string.replace(badChars, escapedChar);
                             }
+
                             return string;
                         },
                     },
@@ -1210,14 +1226,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -1234,6 +1253,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -1406,6 +1426,7 @@
                 if (!isFunction(queryArguments[queryArguments.length - 1])) {
                     queryArguments.push(function () {});
                 }
+
                 return {
                     handler: queryArguments.pop(),
                     content: queryArguments.pop() || '',
@@ -1418,6 +1439,7 @@
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments)
             ;
+
             return {
                 title: args.title,
                 content: args.content,
@@ -1433,6 +1455,7 @@
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments)
             ;
+
             return {
                 title: args.title,
                 content: args.content,
@@ -1461,6 +1484,7 @@
             if (input.length === 0) {
                 args.content += '<p><div class="' + settings.className.prompt + '"><input placeholder="' + this.helpers.deQuote(args.placeholder || '') + '" type="text" value="' + this.helpers.deQuote(args.defaultValue || '') + '"></div></p>';
             }
+
             return {
                 title: args.title,
                 content: args.content,

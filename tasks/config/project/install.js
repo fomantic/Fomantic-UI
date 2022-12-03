@@ -87,6 +87,7 @@ module.exports = {
         var
             config = when.hasConfig()
         ;
+
         return config['autoInstall'];
     },
 
@@ -119,12 +120,14 @@ module.exports = {
                 if (path.resolve(directory) == path.resolve(nextDirectory)) {
                     return false;
                 }
+
                 // recurse downward
                 return walk(nextDirectory);
             }
         ;
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
+
         return walk(directory);
     },
 
@@ -146,12 +149,14 @@ module.exports = {
                 if (path.resolve(directory) === path.resolve(nextDirectory)) {
                     return (moduleFolders > 1);
                 }
+
                 // recurse downward
                 return walk(nextDirectory);
             }
         ;
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
+
         return walk(directory);
     },
 
@@ -213,6 +218,7 @@ module.exports = {
         if (answers.uncompressed) {
             json.paths.output.uncompressed = path.normalize(answers.uncompressed + '/');
         }
+
         return json;
     },
 

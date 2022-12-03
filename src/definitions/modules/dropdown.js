@@ -247,6 +247,7 @@
                                     module.verbose('Creating user choices for value', value, $userChoice);
                                 }
                             });
+
                             return $userChoices;
                         },
                         userLabels: function (value) {
@@ -854,6 +855,7 @@
                                     ;
                                     if ($choice.hasClass(className.unfilterable)) {
                                         results.push(this);
+
                                         return true;
                                     }
                                     if (settings.match === 'both' || settings.match === 'text') {
@@ -862,6 +864,7 @@
                      (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) ||
                      (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text))) {
                                             results.push(this);
+
                                             return true;
                                         }
                                     }
@@ -871,6 +874,7 @@
                      (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value)) ||
                      (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value))) {
                                             results.push(this);
+
                                             return true;
                                         }
                                     }
@@ -931,13 +935,16 @@
                                     continue search;
                                 }
                             }
+
                             return false;
                         }
+
                         return true;
                     },
                     exactSearch: function (query, term) {
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
                         term = (settings.ignoreSearchCase ? term.toLowerCase() : term);
+
                         return term.indexOf(query) > -1;
                     },
                     filterActive: function () {
@@ -1548,6 +1555,7 @@
                                         if ($visibleItems.index($nextItem) < 0) {
                                             module.verbose('Up key pressed but reached top of current menu');
                                             event.preventDefault();
+
                                             return;
                                         } else {
                                             module.verbose('Up key pressed, changing active item');
@@ -1571,6 +1579,7 @@
                                         if ($nextItem.length === 0) {
                                             module.verbose('Down key pressed but reached bottom of current menu');
                                             event.preventDefault();
+
                                             return;
                                         } else {
                                             module.verbose('Down key pressed, changing active item');
@@ -1663,9 +1672,11 @@
                             if (inDocument && !inModule) {
                                 module.verbose('Triggering event', callback);
                                 callback();
+
                                 return true;
                             } else {
                                 module.verbose('Event occurred in dropdown, canceling callback');
+
                                 return false;
                             }
                         },
@@ -1683,9 +1694,11 @@
                             if (inVisibleDOM && notOnLabel && notInMenu) {
                                 module.verbose('Triggering event', callback);
                                 callback();
+
                                 return true;
                             } else {
                                 module.verbose('Event occurred in dropdown menu, canceling callback');
+
                                 return false;
                             }
                         },
@@ -1748,6 +1761,7 @@
                             if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
                                 return settings.placeholder;
                             }
+
                             return $module.data(metadata.placeholderText) || '';
                         },
                         text: function () {
@@ -1761,6 +1775,7 @@
                                 ? value
                                 : $search.val();
                             $sizer.text(value);
+
                             // prevent rounding issues
                             return Math.ceil($sizer.width() + (module.is.edge() ? 3 : 1));
                         },
@@ -1776,6 +1791,7 @@
                                 : (module.get.value() !== '')
                                     ? 1
                                     : 0;
+
                             return count;
                         },
                         transition: function ($subMenu) {
@@ -1795,6 +1811,7 @@
                             values = Array.isArray(values)
                                 ? values
                                 : [values];
+
                             return $.grep(values, function (value) {
                                 return (module.get.item(value) === false);
                             });
@@ -1823,6 +1840,7 @@
                                     return rangeLength;
                                 }
                                 range.moveStart('character', -input.value.length);
+
                                 return range.text.length - rangeLength;
                             }
                         },
@@ -1833,6 +1851,7 @@
                                     : $module.data(metadata.value),
                                 isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '')
                             ;
+
                             // prevents placeholder element from being selected when multiple
                             return (value === undefined || isEmptyMultiselect)
                                 ? ''
@@ -1845,6 +1864,7 @@
                             if (value === '') {
                                 return '';
                             }
+
                             return (!module.has.selectInput() && module.is.multiple())
                                 ? (typeof value == 'string') // delimited string
                                     ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
@@ -1873,6 +1893,7 @@
                                     }
                                 });
                             }
+
                             return remoteValues;
                         },
                         choiceText: function ($choice, preserveHTML) {
@@ -1886,6 +1907,7 @@
                                     $choice.find(selector.menu).remove();
                                     $choice.find(selector.menuIcon).remove();
                                 }
+
                                 return ($choice.data(metadata.text) !== undefined)
                                     ? $choice.data(metadata.text)
                                     : (preserveHTML)
@@ -1898,6 +1920,7 @@
                             if (!$choice) {
                                 return false;
                             }
+
                             return ($choice.data(metadata.value) !== undefined)
                                 ? String($choice.data(metadata.value))
                                 : (typeof choiceText === 'string')
@@ -1919,6 +1942,7 @@
                                         ? 'propertychange'
                                         : 'keyup';
                             }
+
                             return false;
                         },
                         selectValues: function () {
@@ -1983,6 +2007,7 @@
                                 select[fields.values] = values;
                                 module.debug('Retrieved values from select', select);
                             }
+
                             return select;
                         },
                         activeItem: function () {
@@ -1992,6 +2017,7 @@
                             var
                                 $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
                             ;
+
                             return ($selectedItem.length > 0)
                                 ? $selectedItem
                                 : $item.eq(0);
@@ -2007,6 +2033,7 @@
                                     ? $items.add($userItems)
                                     : $userItems;
                             }
+
                             return $items;
                         },
                         item: function (value, strict) {
@@ -2051,6 +2078,7 @@
                                             module.verbose('Ambiguous dropdown value using strict type check', $choice, value);
                                             if (optionValue === value) {
                                                 $selectedItem = $choice;
+
                                                 return true;
                                             }
                                         } else {
@@ -2061,11 +2089,13 @@
                                             if (module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
                                                 module.verbose('Found select item by value', optionValue, value);
                                                 $selectedItem = $choice;
+
                                                 return true;
                                             }
                                         }
                                     });
                             }
+
                             return $selectedItem;
                         },
                         displayType: function () {
@@ -2085,6 +2115,7 @@
                                         $item.addClass(className.filtered);
                                         module.add.message(message.maxSelections);
                                     }
+
                                     return true;
                                 } else {
                                     module.verbose('No longer at maximum selection count');
@@ -2093,9 +2124,11 @@
                                     if (module.is.searchSelection()) {
                                         module.filterItems();
                                     }
+
                                     return false;
                                 }
                             }
+
                             return true;
                         },
                         disabled: function (){
@@ -2202,9 +2235,11 @@
                             ;
                             if (window.Storage === undefined) {
                                 module.error(error.noStorage);
+
                                 return;
                             }
                             name = sessionStorage.getItem(value + elementNamespace);
+
                             return (name !== undefined)
                                 ? name
                                 : false;
@@ -2244,6 +2279,7 @@
                         remoteData: function (name, value) {
                             if (window.Storage === undefined) {
                                 module.error(error.noStorage);
+
                                 return;
                             }
                             module.verbose('Saving remote data to session storage', value, name);
@@ -2479,6 +2515,7 @@
                                     .each(function (){
                                         if (module.has.firstLetter($(this), letter)) {
                                             $nextValue = $(this);
+
                                             return false;
                                         }
                                     });
@@ -2703,6 +2740,7 @@
 
                             if (module.has.label(value)) {
                                 module.debug('User selection already exists, skipping', escapedValue);
+
                                 return;
                             }
                             if (settings.label.variation) {
@@ -2777,6 +2815,7 @@
                             }
                             if (value === '' || alreadyHasValue) {
                                 $addition.remove();
+
                                 return;
                             }
                             if (hasUserSuggestion) {
@@ -2824,6 +2863,7 @@
                                 query = term || module.get.query();
                                 message = message.replace('{term}', query);
                             }
+
                             return message;
                         },
                         value: function (addedValue, addedText, $selectedItem, preventChangeTrigger) {
@@ -2838,10 +2878,12 @@
                             ;
                             if (module.has.value(addedValue)) {
                                 module.debug('Value already selected');
+
                                 return;
                             }
                             if (addedValue === '') {
                                 module.debug('Cannot select blank values from multiselect');
+
                                 return;
                             }
                             // extend current array
@@ -3017,6 +3059,7 @@
                                 return (removedValue != value);
                             });
                             module.verbose('Removed value from delimited string', removedValue, values);
+
                             return values;
                         },
                         label: function (value, shouldAnimate) {
@@ -3048,6 +3091,7 @@
                                     ;
                                     if (settings.onLabelRemove.call($label, value) === false) {
                                         module.debug('Label remove callback cancelled removal');
+
                                         return;
                                     }
                                     module.remove.message();
@@ -3101,9 +3145,11 @@
                                 searchTerm = (searchTerm !== undefined)
                                     ? String(searchTerm)
                                     : String(module.get.query());
+
                                 return (searchTerm.length >= settings.minCharacters);
                             }
                             iconClicked = false;
+
                             return true;
                         },
                         firstLetter: function ($item, letter) {
@@ -3117,6 +3163,7 @@
                             text = module.get.choiceText($item, false);
                             letter = letter.toLowerCase();
                             firstLetter = String(text).charAt(0).toLowerCase();
+
                             return (letter == firstLetter);
                         },
                         input: function () {
@@ -3142,6 +3189,7 @@
                             if (settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
+
                             return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) + '"]').length > 0);
                         },
                         maxSelections: function () {
@@ -3151,6 +3199,7 @@
                             var
                                 $normalResults = $item.not(selector.addition)
                             ;
+
                             return ($normalResults.filter(selector.unselectable).length === $normalResults.length);
                         },
                         userSuggestion: function () {
@@ -3171,6 +3220,7 @@
                                     ? values && ($.inArray(value, values) !== -1)
                                     : (values == value)
                             ;
+
                             return (hasValue)
                                 ? true
                                 : false;
@@ -3186,9 +3236,11 @@
                             $.each(values, function (index, existingValue) {
                                 if (String(value).toLowerCase() == String(existingValue).toLowerCase()) {
                                     hasValue = true;
+
                                     return false;
                                 }
                             });
+
                             return hasValue;
                         },
                     },
@@ -3228,6 +3280,7 @@
                         },
                         leftward: function ($subMenu) {
                             var $selectedMenu = $subMenu || $menu;
+
                             return $selectedMenu.hasClass(className.leftward);
                         },
                         clearable: function () {
@@ -3258,9 +3311,11 @@
                             $.each(object, function (index, property) {
                                 if (property == needle) {
                                     found = true;
+
                                     return true;
                                 }
                             });
+
                             return found;
                         },
                         multiple: function () {
@@ -3282,9 +3337,11 @@
                             $.each(mutations, function (index, mutation) {
                                 if ($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
                                     selectChanged = true;
+
                                     return false;
                                 }
                             });
+
                             return selectChanged;
                         },
                         search: function () {
@@ -3301,6 +3358,7 @@
                         },
                         upward: function ($menu) {
                             var $element = $menu || $module;
+
                             return $element.hasClass(className.upward);
                         },
                         visible: function ($subMenu) {
@@ -3314,6 +3372,7 @@
                                     ? $context.css('overflow-y')
                                     : false
                             ;
+
                             return (overflowY == 'auto' || overflowY == 'scroll');
                         },
                         horizontallyScrollableContext: function () {
@@ -3322,6 +3381,7 @@
                                     ? $context.css('overflow-X')
                                     : false
                             ;
+
                             return (overflowX == 'auto' || overflowX == 'scroll');
                         },
                     },
@@ -3377,6 +3437,7 @@
                                 canOpenDownward = false;
                             }
                             $currentMenu.removeClass(className.loading);
+
                             return canOpenDownward;
                         },
                         openRightward: function ($subMenu) {
@@ -3410,6 +3471,7 @@
                                 canOpenRightward = false;
                             }
                             $currentMenu.removeClass(className.loading);
+
                             return canOpenRightward;
                         },
                         extendSelect: function () {
@@ -3561,12 +3623,15 @@
                                 $.each(value, function (index, value){
                                     values.push(value.replace(regExp.quote, '&quot;'));
                                 });
+
                                 return values;
                             }
+
                             return value.replace(regExp.quote, '&quot;');
                         },
                         string: function (text) {
                             text = String(text);
+
                             return text.replace(regExp.escape, '\\$&');
                         },
                         htmlEntities: function (string) {
@@ -3586,8 +3651,10 @@
                             ;
                             if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                                 return string.replace(badChars, escapedChar);
                             }
+
                             return string;
                         },
                     },
@@ -3712,14 +3779,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -3736,6 +3806,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -3752,6 +3823,7 @@
                     module.initialize();
                 }
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : $allModules;
@@ -4011,8 +4083,10 @@
             ;
             if (shouldEscape.test(string)) {
                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+
                 return string.replace(badChars, escapedChar);
             }
+
             return string;
         },
         // generates dropdown from select values
@@ -4032,6 +4106,7 @@
             html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
+
             return html;
         },
 
@@ -4112,6 +4187,7 @@
                     }
                 }
             });
+
             return html;
         },
 
@@ -4121,6 +4197,7 @@
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
+
             return escape(text, preserveHTML) + '<i class="' + deQuote(className.delete) + ' icon"></i>';
         },
 

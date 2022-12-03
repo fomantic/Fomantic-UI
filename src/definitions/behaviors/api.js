@@ -132,6 +132,7 @@
                                     // isn't json string
                                 }
                             }
+
                             return response;
                         },
                     },
@@ -143,11 +144,13 @@
                             ;
                             if (window.Storage === undefined) {
                                 module.error(error.noStorage);
+
                                 return;
                             }
                             response = sessionStorage.getItem(url + module.get.normalizedData());
                             module.debug('Using cached response', url, settings.data, response);
                             response = module.decode.json(response);
+
                             return response;
                         },
                     },
@@ -155,10 +158,12 @@
                         cachedResponse: function (url, response) {
                             if (response && response === '') {
                                 module.debug('Response empty, not caching', response);
+
                                 return;
                             }
                             if (window.Storage === undefined) {
                                 module.error(error.noStorage);
+
                                 return;
                             }
                             if ($.isPlainObject(response)) {
@@ -172,6 +177,7 @@
                     query: function () {
                         if (module.is.disabled()) {
                             module.debug('Element is disabled API request aborted');
+
                             return;
                         }
 
@@ -181,6 +187,7 @@
                                 module.abort();
                             } else {
                                 module.debug('Cancelling request, previous request is still pending');
+
                                 return;
                             }
                         }
@@ -202,6 +209,7 @@
                         if (requestSettings === false) {
                             module.cancelled = true;
                             module.error(error.beforeSend);
+
                             return;
                         } else {
                             module.cancelled = false;
@@ -212,6 +220,7 @@
 
                         if (!url && !module.is.mocked()) {
                             module.error(error.missingURL);
+
                             return;
                         }
 
@@ -241,6 +250,7 @@
                             module.debug('Response returned from local cache');
                             module.request = module.create.request();
                             module.request.resolveWith(context, [ module.read.cachedResponse(url) ]);
+
                             return;
                         }
 
@@ -296,23 +306,28 @@
                         abortedRequest: function (xhr) {
                             if (xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
                                 module.verbose('XHR request determined to be aborted');
+
                                 return true;
                             } else {
                                 module.verbose('XHR request was not aborted');
+
                                 return false;
                             }
                         },
                         validResponse: function (response) {
                             if ((!module.is.expectingJSON()) || !isFunction(settings.successTest)) {
                                 module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
+
                                 return true;
                             }
                             module.debug('Checking JSON returned success', settings.successTest, response);
                             if (settings.successTest(response)) {
                                 module.debug('Response passed success test', response);
+
                                 return true;
                             } else {
                                 module.debug('Response failed success test', response);
+
                                 return false;
                             }
                         },
@@ -363,6 +378,7 @@
                                         if (value === undefined) {
                                             module.error(error.requiredParameter, variable, url);
                                             url = false;
+
                                             return false;
                                         } else {
                                             module.verbose('Found required variable', variable, value);
@@ -405,6 +421,7 @@
                                     });
                                 }
                             }
+
                             return url;
                         },
                         formData: function (data) {
@@ -427,6 +444,7 @@
                                     pushValues = {},
                                     build = function (base, key, value) {
                                         base[key] = value;
+
                                         return base;
                                     }
                                 ;
@@ -485,6 +503,7 @@
                                 module.debug('Adding form data', formData);
                                 data = formData;
                             }
+
                             return data;
                         },
                     },
@@ -597,6 +616,7 @@
                                 if (status == 'aborted') {
                                     module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                     settings.onAbort.call(context, status, $module, xhr);
+
                                     return true;
                                 } else if (status == 'invalid') {
                                     module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
@@ -675,6 +695,7 @@
                                 module.debug('Using specified async response callback', asyncResponder);
                                 asyncResponder.call(context, requestSettings, asyncCallback);
                             }
+
                             return mockedXHR;
                         },
 
@@ -688,6 +709,7 @@
                                 .done(module.event.xhr.done)
                                 .fail(module.event.xhr.fail);
                             module.verbose('Created server request', xhr, ajaxSettings);
+
                             return xhr;
                         },
                     },
@@ -767,6 +789,7 @@
                             if (runSettings === false) {
                                 return runSettings;
                             }
+
                             return (runSettings !== undefined)
                                 ? $.extend(true, {}, runSettings)
                                 : $.extend(true, {}, settings);
@@ -779,9 +802,11 @@
                             ;
                             if (alreadyEncoded) {
                                 module.debug('URL value is already encoded, avoiding double encoding', value);
+
                                 return value;
                             }
                             module.verbose('Encoding value using encodeURIComponent', value, encodedValue);
+
                             return encodedValue;
                         },
                         defaultData: function () {
@@ -797,11 +822,13 @@
                                     data.text = $module.text();
                                 }
                             }
+
                             return data;
                         },
                         event: function () {
                             if (isWindow(element) || settings.on == 'now') {
                                 module.debug('API called without element, no events attached');
+
                                 return false;
                             } else if (settings.on == 'auto') {
                                 if ($module.is('input')) {
@@ -824,12 +851,14 @@
                             url = $module.data(metadata.url) || settings.url || false;
                             if (url) {
                                 module.debug('Using specified url', url);
+
                                 return url;
                             }
                             if (action) {
                                 module.debug('Looking up url for action', action, settings.api);
                                 if (settings.api[action] === undefined && !module.is.mocked()) {
                                     module.error(error.missingAction, settings.action, settings.api);
+
                                     return;
                                 }
                                 url = settings.api[action];
@@ -837,6 +866,7 @@
                                 url = $module.attr('action') || $context.attr('action') || false;
                                 module.debug('No url or action specified, defaulting to form action', url);
                             }
+
                             return url;
                         },
                     },
@@ -977,14 +1007,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -1001,6 +1034,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };

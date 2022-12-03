@@ -155,6 +155,7 @@
                         settings = overrideSettings || settings;
                         if (!module.is.supported()) {
                             module.error(error.support);
+
                             return false;
                         }
                         module.debug('Preparing animation', settings.animation);
@@ -165,9 +166,11 @@
                                 } else {
                                     module.queue(settings.animation);
                                 }
+
                                 return false;
                             } else if (!settings.allowRepeats && module.is.occurring()) {
                                 module.debug('Animation is already occurring, will not execute repeated animation', settings.animation);
+
                                 return false;
                             } else {
                                 module.debug('New animation started, completing previous early', settings.animation);
@@ -235,11 +238,13 @@
                             ;
                             if (mustStayHidden){
                                 module.remove.transition();
+
                                 return false;
                             }
                             module.verbose('Overriding default display to show element', displayType);
                             $module
                                 .attr('style', overrideStyle);
+
                             return true;
                         },
                         hidden: function () {
@@ -273,12 +278,14 @@
                                     }
                                 });
                             }
+
                             return hasDirection;
                         },
                         inlineDisplay: function () {
                             var
                                 style = $module.attr('style') || ''
                             ;
+
                             return Array.isArray(style.match(/display.*?;/, ''));
                         },
                     },
@@ -501,6 +508,7 @@
                                     ? module.get.direction() + ' '
                                     : ''
                             ;
+
                             return className.animating + ' '
                                 + className.transition + ' '
                                 + directionClass
@@ -541,6 +549,7 @@
                             if (direction) {
                                 return direction;
                             }
+
                             return false;
                         },
                         duration: function (duration) {
@@ -548,6 +557,7 @@
                             if (duration === false) {
                                 duration = $module.css('animation-duration') || 0;
                             }
+
                             return (typeof duration === 'string')
                                 ? (duration.indexOf('ms') > -1)
                                     ? parseFloat(duration)
@@ -570,10 +580,12 @@
                                     module.save.displayType(currentDisplay);
                                 }
                             }
+
                             return $module.data(metadata.displayType);
                         },
                         userStyle: function (style) {
                             style = style || $module.attr('style') || '';
+
                             return style.replace(/display.*?;/, '');
                         },
                         transitionExists: function (animation) {
@@ -595,6 +607,7 @@
                                     return animations[animation];
                                 }
                             }
+
                             return false;
                         },
                         animationEndEvent: function () {
@@ -613,6 +626,7 @@
                                     return animations[animation];
                                 }
                             }
+
                             return false;
                         },
 
@@ -667,6 +681,7 @@
                                     directionExists = true;
                                 } else if (currentAnimation == 'none' || !currentAnimation) {
                                     module.debug('No animation defined in css', animation);
+
                                     return;
                                 } else {
                                     module.debug('Static animation found', animation, displayType);
@@ -674,6 +689,7 @@
                                 }
                                 module.save.transitionExists(animation, directionExists);
                             }
+
                             return (transitionExists !== undefined)
                                 ? transitionExists
                                 : directionExists;
@@ -700,6 +716,7 @@
                         occurring: function (animation) {
                             animation = animation || settings.animation;
                             animation = '.' + animation.replace(' ', '.');
+
                             return ($module.filter(animation).length > 0);
                         },
                         visible: function () {
@@ -716,6 +733,7 @@
                     hide: function () {
                         if (settings.onHide.call(element) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
+
                             return false;
                         }
                         module.verbose('Hiding element');
@@ -909,11 +927,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -933,6 +953,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return (found !== undefined)
                             ? found
                             : false;
@@ -940,6 +961,7 @@
                 };
                 module.initialize();
             });
+
         return (returnedValue !== undefined)
             ? returnedValue
             : this;

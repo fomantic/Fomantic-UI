@@ -46,6 +46,7 @@ module.exports = function (callback) {
 
     if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
+
         return;
     }
 
@@ -54,6 +55,7 @@ module.exports = function (callback) {
         index = index + 1;
         if (index >= total) {
             callback();
+
             return;
         }
 

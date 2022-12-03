@@ -169,6 +169,7 @@
                         }
                         $element
                             .appendTo($dimmable);
+
                         return $element;
                     },
 
@@ -179,6 +180,7 @@
                         if ((!module.is.dimmed() || module.is.animating()) && module.is.enabled()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling dimmer show');
+
                                 return;
                             }
                             module.debug('Showing dimmer', $dimmer, settings);
@@ -197,6 +199,7 @@
                         if (module.is.dimmed() || module.is.animating()) {
                             if (settings.onHide.call(element) === false) {
                                 module.verbose('Hide callback returned false cancelling dimmer hide');
+
                                 return;
                             }
                             module.debug('Hiding dimmer', $dimmer);
@@ -351,6 +354,7 @@
                             if (settings.closable == 'auto') {
                                 return settings.on != 'hover';
                             }
+
                             return settings.closable;
                         },
                         dimmer: function () {
@@ -571,14 +575,17 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     module.error(error.method, query);
+
                                     return false;
                                 }
                             });
@@ -595,6 +602,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
@@ -705,6 +713,7 @@
                     }
                     d.append(l);
                 }
+
                 return d;
             },
         },

@@ -291,10 +291,12 @@
                         to: function (type, stage){
                             if (module.is.hidden()) {
                                 module.debug('Module not visible', $nextSide);
+
                                 return;
                             }
                             if (module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
                                 module.debug('Side already visible', $nextSide);
+
                                 return;
                             }
                             var
@@ -344,6 +346,7 @@
                                     translateZ = $activeSide.outerHeight(true) / 2,
                                     translateY = $nextSide.outerHeight(true) - translateZ
                                 ;
+
                                 return {
                                     transform: 'translateY(' + translateY + 'px) translateZ(-' + translateZ + 'px) rotateX(-90deg)',
                                 };
@@ -355,6 +358,7 @@
                                         z: $activeSide.outerHeight(true) / 2,
                                     }
                                 ;
+
                                 return {
                                     transform: 'translateY(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateX(90deg)',
                                 };
@@ -365,6 +369,7 @@
                                     translateZ = $activeSide.outerWidth(true) / 2,
                                     translateX = $nextSide.outerWidth(true) - translateZ
                                 ;
+
                                 return {
                                     transform: 'translateX(' + translateX + 'px) translateZ(-' + translateZ + 'px) rotateY(90deg)',
                                 };
@@ -376,6 +381,7 @@
                                         z: $activeSide.outerWidth(true) / 2,
                                     }
                                 ;
+
                                 return {
                                     transform: 'translateX(-' + translate.z + 'px) translateZ(-' + translate.z + 'px) rotateY(-90deg)',
                                 };
@@ -387,6 +393,7 @@
                                         x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                     }
                                 ;
+
                                 return {
                                     transform: 'translateX(' + translate.x + 'px) rotateY(180deg)',
                                 };
@@ -398,6 +405,7 @@
                                         x: -(($activeSide.outerWidth(true) - $nextSide.outerWidth(true)) / 2),
                                     }
                                 ;
+
                                 return {
                                     transform: 'translateX(' + translate.x + 'px) rotateY(-180deg)',
                                 };
@@ -682,11 +690,13 @@
                                     object = object[camelCaseValue];
                                 } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
+
                                     return false;
                                 } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
                                 } else if (object[value] !== undefined) {
                                     found = object[value];
+
                                     return false;
                                 } else {
                                     return false;
@@ -705,6 +715,7 @@
                         } else if (response !== undefined) {
                             returnedValue = response;
                         }
+
                         return found;
                     },
                 };
