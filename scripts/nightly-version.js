@@ -25,10 +25,10 @@ const currentRev = childProcess // get the current rev from the repo
 
 const getNextVersion = async function () {
     const versions = await fetch(`${ghBase}/repos/${repoUrlPath}/milestones`)
-        .then(r => r.json())
-        .then(milestones => milestones.filter(m => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
-        .then(versions => versions.map(m => m.title)) // create array of versions
-        .then(versions => semver.sort(versions))
+        .then((r) => r.json())
+        .then((milestones) => milestones.filter((m) => m.title.indexOf('x') === -1)) // remove all versions with `x` in it
+        .then((versions) => versions.map((m) => m.title)) // create array of versions
+        .then((versions) => semver.sort(versions))
     ;
 
     // Return first entry aka the smallest version in milestones which would therefore
@@ -40,8 +40,8 @@ const getPublishedVersion = async function () {
     // get the latest published nightly tagged version
     return semver.parse(
         await fetch(`${npmBase}/${npmPackage}`)
-            .then(r => r.json())
-            .then(p => {
+            .then((r) => r.json())
+            .then((p) => {
                 let nightly = p['dist-tags'].nightly ?? '';
                 let versionInfo = p.versions[nightly] ?? {};
                 let buildCommit = nightly.indexOf('+') === -1 && versionInfo.gitHead ? '+' + (versionInfo.gitHead ?? '').slice(0, 7) : '';
@@ -84,7 +84,7 @@ const getNightlyVersion = async function () {
 };
 
 getNightlyVersion()
-    .then(nightlyVersion => {
+    .then((nightlyVersion) => {
         pkg.version = nightlyVersion;
     })
     .then(() => {
