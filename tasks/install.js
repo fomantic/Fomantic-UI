@@ -421,7 +421,8 @@ module.exports = function (callback) {
                         } else {
                             callback();
                         }
-                    });
+                    })
+                ;
             }
         }
     });

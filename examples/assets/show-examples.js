@@ -10,4 +10,5 @@ $(document)
                     content: $(this).attr('class'),
                 });
         });
-    });
+    })
+;

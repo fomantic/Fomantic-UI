@@ -59,7 +59,8 @@ module.exports.watch = function (type, config) {
             console.log('Change in assets detected');
 
             return gulp.series((callback) => buildAssets(path, config, callback))();
-        });
+        })
+    ;
 };
 
 module.exports.buildAssets = buildAssets;

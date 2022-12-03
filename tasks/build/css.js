@@ -219,7 +219,8 @@ module.exports.watch = function (type, config) {
             files = [];
 
             return gulp.series(method)();
-        });
+        })
+    ;
 
     // Watch any less / overrides / variables files
     gulp.watch([
@@ -267,7 +268,8 @@ module.exports.watch = function (type, config) {
                 // Reset internal changed files array
                 files = [];
             }, 1000);
-        });
+        })
+    ;
 };
 
 // Expose build css method

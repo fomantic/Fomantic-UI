@@ -295,7 +295,8 @@ module.exports = function (callback) {
                                     .pipe(gulp.dest(outputDirectory))
                                 ;
                             });
-                    });
+                    })
+                ;
             }
 
             tasks.push(gulp.series(

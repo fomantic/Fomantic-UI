@@ -154,7 +154,8 @@ module.exports.watch = function (type, config) {
                 // Reset internal changed files array
                 files = [];
             }, 1000);
-        });
+        })
+    ;
 };
 
 module.exports.buildJS = buildJS;

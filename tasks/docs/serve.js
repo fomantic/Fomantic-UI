@@ -50,7 +50,8 @@ module.exports = function () {
                 .pipe(gulp.dest(config.paths.output.less))
                 .pipe(print(log.created))
             ;
-        });
+        })
+    ;
 
     /* --------------
       Copy Examples
@@ -70,7 +71,8 @@ module.exports = function () {
                 .pipe(gulp.dest(config.paths.output.examples))
                 .pipe(print(log.created))
             ;
-        });
+        })
+    ;
 
     /* --------------
         Watch CSS

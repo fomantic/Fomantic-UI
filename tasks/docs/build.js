@@ -57,7 +57,8 @@ module.exports = function (callback) {
             .on('end', function () {
                 fs.mkdirSync(output.metadata, {recursive: true});
                 fs.writeFileSync(output.metadata + '/metadata.json', JSON.stringify(metadata.result, null, 2));
-            });
+            })
+        ;
     }
 
     /* --------------
