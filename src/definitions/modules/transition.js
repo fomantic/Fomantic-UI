@@ -60,20 +60,20 @@
 
                     initialize: function () {
                         // get full settings
-                        settings        = module.get.settings.apply(element, moduleArguments);
+                        settings = module.get.settings.apply(element, moduleArguments);
 
                         // shorthand
-                        className       = settings.className;
-                        error           = settings.error;
-                        metadata        = settings.metadata;
+                        className = settings.className;
+                        error = settings.error;
+                        metadata = settings.metadata;
 
                         // define namespace
-                        eventNamespace  = '.' + settings.namespace;
+                        eventNamespace = '.' + settings.namespace;
                         moduleNamespace = 'module-' + settings.namespace;
-                        instance        = $module.data(moduleNamespace) || module;
+                        instance = $module.data(moduleNamespace) || module;
 
                         // get vendor specific events
-                        animationEnd    = module.get.animationEndEvent();
+                        animationEnd = module.get.animationEndEvent();
 
                         if (methodInvoked) {
                             methodInvoked = module.invoke(query);
@@ -84,7 +84,7 @@
                             module.verbose('Converted arguments into settings object', settings);
                             if (settings.interval) {
                                 module.delay(settings.interval);
-                            } else  {
+                            } else {
                                 module.animate();
                             }
                             module.instantiate();
@@ -634,7 +634,7 @@
                             if (transitionExists === undefined || forced) {
                                 module.verbose('Determining whether animation exists');
                                 elementClass = $module.attr('class');
-                                tagName      = $module.prop('tagName');
+                                tagName = $module.prop('tagName');
 
                                 $clone = $('<' + tagName + ' />').addClass(elementClass).insertAfter($module);
                                 currentAnimation = $clone
@@ -842,10 +842,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -896,9 +896,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

@@ -274,7 +274,7 @@
 
                     escape: {
                         string: function (text) {
-                            text =  String(text);
+                            text = String(text);
                             return text.replace(regExp.escape, '\\$&');
                         },
                     },
@@ -345,15 +345,15 @@
                             if (isTab) {
                                 module.verbose('Tab was found', tab);
                                 // scope up
-                                activeTabPath  = currentPath;
+                                activeTabPath = currentPath;
                                 parameterArray = module.utilities.filterArray(pathArray, currentPathArray);
 
                                 if (isLastIndex) {
                                     isLastTab = true;
                                 } else {
                                     nextPathArray = pathArray.slice(0, index + 2);
-                                    nextPath      = module.utilities.arrayToPath(nextPathArray);
-                                    isLastTab     = (!module.is.tab(nextPath));
+                                    nextPath = module.utilities.arrayToPath(nextPathArray);
+                                    isLastTab = (!module.is.tab(nextPath));
                                     if (isLastTab) {
                                         module.verbose('Tab parameters found', nextPathArray);
                                     }
@@ -388,9 +388,9 @@
                             } else if (tabPath.search('/') == -1 && tabPath !== '') {
                                 // look for in page anchor
                                 tabPath = module.escape.string(tabPath);
-                                $anchor     = $('#' + tabPath + ', a[name="' + tabPath + '"]');
+                                $anchor = $('#' + tabPath + ', a[name="' + tabPath + '"]');
                                 currentPath = $anchor.closest('[data-tab]').data(metadata.tab);
-                                $tab        = module.get.tabElement(currentPath);
+                                $tab = module.get.tabElement(currentPath);
                                 // if anchor exists use parent tab
                                 if ($anchor && $anchor.length > 0 && currentPath) {
                                     module.debug('Anchor link used, opening parent tab', $tab, $anchor);
@@ -507,7 +507,7 @@
                                 cachedContent
                             ;
 
-                            fullTabPath   = fullTabPath || tabPath;
+                            fullTabPath = fullTabPath || tabPath;
                             cachedContent = module.cache.read(fullTabPath);
 
                             if (settings.cache && cachedContent) {
@@ -640,10 +640,10 @@
                                 tabPathArray,
                                 lastTab
                             ;
-                            tabPath        = tabPath || activeTabPath;
-                            tabPathArray   = module.utilities.pathToArray(tabPath);
-                            lastTab        = module.utilities.last(tabPathArray);
-                            $fullPathTab   = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
+                            tabPath = tabPath || activeTabPath;
+                            tabPathArray = module.utilities.pathToArray(tabPath);
+                            lastTab = module.utilities.last(tabPathArray);
+                            $fullPathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(tabPath) + '"]');
                             $simplePathTab = $tabs.filter('[data-' + metadata.tab + '="' + module.escape.string(lastTab) + '"]');
                             return ($fullPathTab.length > 0)
                                 ? $fullPathTab
@@ -760,10 +760,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -810,9 +810,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -882,26 +882,26 @@
         verbose: false,
         performance: true,
 
-        auto: false,      // uses pjax style endpoints fetching content from same url with remote-content headers
-        history: false,      // use browser history
-        historyType: 'hash',     // #/ or html5 state
-        path: false,      // base path of url
+        auto: false, // uses pjax style endpoints fetching content from same url with remote-content headers
+        history: false, // use browser history
+        historyType: 'hash', // #/ or html5 state
+        path: false, // base path of url
 
-        context: false,      // specify a context that tabs must appear inside
-        childrenOnly: false,      // use only tabs that are children of context
-        maxDepth: 25,         // max depth a tab can be nested
+        context: false, // specify a context that tabs must appear inside
+        childrenOnly: false, // use only tabs that are children of context
+        maxDepth: 25, // max depth a tab can be nested
 
         deactivate: 'siblings', // whether tabs should deactivate sibling menu elements or all elements initialized together
 
-        alwaysRefresh: false,      // load tab content new every tab click
-        cache: true,       // cache the content requests to pull locally
-        loadOnce: false,      // Whether tab data should only be loaded once when using remote content
+        alwaysRefresh: false, // load tab content new every tab click
+        cache: true, // cache the content requests to pull locally
+        loadOnce: false, // Whether tab data should only be loaded once when using remote content
         cacheType: 'response', // Whether to cache exact response, or to html cache contents after scripts execute
-        ignoreFirstLoad: false,      // don't load remote content on first load
+        ignoreFirstLoad: false, // don't load remote content on first load
 
-        apiSettings: false,      // settings for api call
-        evaluateScripts: 'once',     // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
-        autoTabActivation: true,      // whether a non existing active tab will auto activate the first available tab
+        apiSettings: false, // settings for api call
+        evaluateScripts: 'once', // whether inline scripts should be parsed (true/false/once). Once will not re-evaluate on cached content
+        autoTabActivation: true, // whether a non existing active tab will auto activate the first available tab
 
         onFirstLoad: function (tabPath, parameterArray, historyEvent) {}, // called first time loaded
         onLoad: function (tabPath, parameterArray, historyEvent) {}, // called on every load

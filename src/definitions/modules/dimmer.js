@@ -69,7 +69,7 @@
                     preinitialize: function () {
                         if (module.is.dimmer()) {
                             $dimmable = $module.parent();
-                            $dimmer   = $module;
+                            $dimmer = $module;
                         } else {
                             $dimmable = $module;
                             if (module.has.dimmer()) {
@@ -389,11 +389,11 @@
                                 colorArray = color.split(','),
                                 isRGB      = (colorArray && colorArray.length >= 3)
                             ;
-                            opacity    = settings.opacity === 0 ? 0 : settings.opacity || opacity;
+                            opacity = settings.opacity === 0 ? 0 : settings.opacity || opacity;
                             if (isRGB) {
                                 colorArray[2] = colorArray[2].replace(')', '');
                                 colorArray[3] = opacity + ')';
-                                color         = colorArray.join(',');
+                                color = colorArray.join(',');
                             } else {
                                 color = 'rgba(0, 0, 0, ' + opacity + ')';
                             }
@@ -505,10 +505,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -558,9 +558,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

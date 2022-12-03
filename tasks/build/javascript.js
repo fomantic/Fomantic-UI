@@ -93,9 +93,9 @@ function buildJS(src, type, config, callback) {
 
     if (callback === undefined) {
         callback = config;
-        config   = type;
-        type     = src;
-        src      = config.paths.source.definitions + '/**/' + config.globs.components + (config.globs.ignored || '') + '.js';
+        config = type;
+        type = src;
+        src = config.paths.source.definitions + '/**/' + config.globs.components + (config.globs.ignored || '') + '.js';
     }
 
     if (globs.individuals !== undefined && typeof src === 'string') {

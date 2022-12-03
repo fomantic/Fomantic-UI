@@ -219,10 +219,10 @@
                             newValue
                         ;
                         if (module.has.total()) {
-                            startValue     = module.get.value();
+                            startValue = module.get.value();
                             incrementValue = incrementValue || 1;
                         } else {
-                            startValue     = module.get.percent();
+                            startValue = module.get.percent();
                             incrementValue = incrementValue || module.get.randomValue();
                         }
                         newValue = startValue + incrementValue;
@@ -237,14 +237,14 @@
                             newValue
                         ;
                         if (total) {
-                            startValue     =  module.get.value();
-                            decrementValue =  decrementValue || 1;
-                            newValue       =  startValue - decrementValue;
+                            startValue = module.get.value();
+                            decrementValue = decrementValue || 1;
+                            newValue = startValue - decrementValue;
                             module.debug('Decrementing value by', decrementValue, startValue);
                         } else {
-                            startValue     =  module.get.percent();
-                            decrementValue =  decrementValue || module.get.randomValue();
-                            newValue       =  startValue - decrementValue;
+                            startValue = module.get.percent();
+                            decrementValue = decrementValue || module.get.randomValue();
+                            newValue = startValue - decrementValue;
                             module.debug('Decrementing percentage by', decrementValue, startValue);
                         }
                         newValue = module.get.normalizedValue(newValue);
@@ -793,10 +793,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -843,9 +843,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

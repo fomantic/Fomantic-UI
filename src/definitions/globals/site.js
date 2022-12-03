@@ -298,10 +298,10 @@
                         previousTime
                     ;
                     if (settings.performance) {
-                        currentTime   = new Date().getTime();
-                        previousTime  = time || currentTime;
+                        currentTime = new Date().getTime();
+                        previousTime = time || currentTime;
                         executionTime = currentTime - previousTime;
-                        time          = currentTime;
+                        time = currentTime;
                         performance.push({
                             'Element': element,
                             'Name': message[0],
@@ -345,9 +345,9 @@
                     response
                 ;
                 passedArguments = passedArguments || queryArguments;
-                context         = context         || element;
+                context = context || element;
                 if (typeof query == 'string' && object !== undefined) {
-                    query    = query.split(/[\. ]/);
+                    query = query.split(/[\. ]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
                         var camelCaseValue = (depth != maxDepth)

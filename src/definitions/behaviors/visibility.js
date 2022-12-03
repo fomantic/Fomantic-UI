@@ -126,10 +126,10 @@
                             contextObserver.disconnect();
                         }
                         $window
-                            .off('load'   + eventNamespace, module.event.load)
+                            .off('load' + eventNamespace, module.event.load)
                             .off('resize' + eventNamespace, module.event.resize);
                         $context
-                            .off('scroll'       + eventNamespace, module.event.scroll)
+                            .off('scroll' + eventNamespace, module.event.scroll)
                             .off('scrollchange' + eventNamespace, module.event.scrollchange);
                         if (settings.type == 'fixed') {
                             module.resetFixed();
@@ -143,7 +143,7 @@
                     observeChanges: function () {
                         if ('MutationObserver' in window) {
                             contextObserver = new MutationObserver(module.event.contextChanged);
-                            observer        = new MutationObserver(module.event.changed);
+                            observer = new MutationObserver(module.event.changed);
                             contextObserver.observe(document, {
                                 childList: true,
                                 subtree: true,
@@ -161,14 +161,14 @@
                             module.verbose('Binding visibility events to scroll and resize');
                             if (settings.refreshOnLoad) {
                                 $window
-                                    .on('load'   + eventNamespace, module.event.load);
+                                    .on('load' + eventNamespace, module.event.load);
                             }
                             $window
                                 .on('resize' + eventNamespace, module.event.resize);
                             // pub/sub pattern
                             $context
-                                .off('scroll'      + eventNamespace)
-                                .on('scroll'       + eventNamespace, module.event.scroll)
+                                .off('scroll' + eventNamespace)
+                                .on('scroll' + eventNamespace, module.event.scroll)
                                 .on('scrollchange' + eventNamespace, module.event.scrollchange);
                         },
                     },
@@ -241,10 +241,10 @@
                             }
                         ;
                         while (imagesLength--) {
-                            cacheImage         = document.createElement('img');
-                            cacheImage.onload  = handleLoad;
+                            cacheImage = document.createElement('img');
+                            cacheImage.onload = handleLoad;
                             cacheImage.onerror = handleLoad;
-                            cacheImage.src     = images[imagesLength];
+                            cacheImage.src = images[imagesLength];
                             cache.push(cacheImage);
                         }
                     },
@@ -284,7 +284,7 @@
                             ;
                             if (src) {
                                 module.verbose('Lazy loading image', src);
-                                settings.once           = true;
+                                settings.once = true;
                                 settings.observeChanges = false;
 
                                 // show when top visible
@@ -304,10 +304,10 @@
                         },
                         fixed: function () {
                             module.debug('Setting up fixed');
-                            settings.once           = false;
+                            settings.once = false;
                             settings.observeChanges = false;
-                            settings.initialCheck   = true;
-                            settings.refreshOnLoad  = true;
+                            settings.initialCheck = true;
+                            settings.refreshOnLoad = true;
                             if (!parameters.transition) {
                                 settings.transition = false;
                             }
@@ -828,7 +828,7 @@
                             }
                         },
                         scroll: function (scrollPosition) {
-                            scrollPosition      = scrollPosition + settings.offset || $context.scrollTop() + settings.offset;
+                            scrollPosition = scrollPosition + settings.offset || $context.scrollTop() + settings.offset;
                             module.cache.scroll = scrollPosition;
                         },
                         direction: function () {
@@ -854,10 +854,10 @@
                             ;
                             module.verbose('Saving element position');
                             // (quicker than $.extend)
-                            element.fits          = (element.height < screen.height);
-                            element.offset        = $module.offset();
-                            element.width         = $module.outerWidth();
-                            element.height        = $module.outerHeight();
+                            element.fits = (element.height < screen.height);
+                            element.offset = $module.offset();
+                            element.width = $module.outerWidth();
+                            element.height = $module.outerHeight();
                             // compensate for scroll in context
                             if (module.is.verticallyScrollableContext()) {
                                 element.offset.top += $context.scrollTop() - $context.offset().top;
@@ -876,32 +876,32 @@
                             ;
                             // offset
                             if (settings.includeMargin) {
-                                element.margin        = {};
-                                element.margin.top    = parseInt($module.css('margin-top'), 10);
+                                element.margin = {};
+                                element.margin.top = parseInt($module.css('margin-top'), 10);
                                 element.margin.bottom = parseInt($module.css('margin-bottom'), 10);
-                                element.top    = element.offset.top - element.margin.top;
+                                element.top = element.offset.top - element.margin.top;
                                 element.bottom = element.offset.top + element.height + element.margin.bottom;
                             } else {
-                                element.top    = element.offset.top;
+                                element.top = element.offset.top;
                                 element.bottom = element.offset.top + element.height;
                             }
 
                             // visibility
-                            element.topPassed        = (screen.top >= element.top);
-                            element.bottomPassed     = (screen.top >= element.bottom);
-                            element.topVisible       = (screen.bottom >= element.top) && !element.topPassed;
-                            element.bottomVisible    = (screen.bottom >= element.bottom) && !element.bottomPassed;
-                            element.pixelsPassed     = 0;
+                            element.topPassed = (screen.top >= element.top);
+                            element.bottomPassed = (screen.top >= element.bottom);
+                            element.topVisible = (screen.bottom >= element.top) && !element.topPassed;
+                            element.bottomVisible = (screen.bottom >= element.bottom) && !element.bottomPassed;
+                            element.pixelsPassed = 0;
                             element.percentagePassed = 0;
 
                             // meta calculations
-                            element.onScreen  = ((element.topVisible || element.passing) && !element.bottomPassed);
-                            element.passing   = (element.topPassed && !element.bottomPassed);
+                            element.onScreen = ((element.topVisible || element.passing) && !element.bottomPassed);
+                            element.passing = (element.topPassed && !element.bottomPassed);
                             element.offScreen = (!element.onScreen);
 
                             // passing calculations
                             if (element.passing) {
-                                element.pixelsPassed     = (screen.top - element.top);
+                                element.pixelsPassed = (screen.top - element.top);
                                 element.percentagePassed = (screen.top - element.top) / element.height;
                             }
                             module.cache.element = element;
@@ -913,7 +913,7 @@
                                 scroll = module.get.scroll()
                             ;
                             module.save.direction();
-                            module.cache.screen.top    = scroll;
+                            module.cache.screen.top = scroll;
                             module.cache.screen.bottom = scroll + module.cache.screen.height;
                             return module.cache.screen;
                         },
@@ -1041,10 +1041,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1091,9 +1091,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

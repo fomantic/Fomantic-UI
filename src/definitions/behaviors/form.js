@@ -74,7 +74,7 @@
                     module
                 ;
 
-                module      = {
+                module = {
 
                     initialize: function () {
                         // settings grabbed at run time
@@ -115,14 +115,14 @@
 
                     refresh: function () {
                         module.verbose('Refreshing selector cache');
-                        $field      = $module.find(selector.field);
-                        $group      = $module.find(selector.group);
-                        $message    = $module.find(selector.message);
-                        $prompt     = $module.find(selector.prompt);
+                        $field = $module.find(selector.field);
+                        $group = $module.find(selector.group);
+                        $message = $module.find(selector.message);
+                        $prompt = $module.find(selector.prompt);
 
-                        $submit     = $module.find(selector.submit);
-                        $clear      = $module.find(selector.clear);
-                        $reset      = $module.find(selector.reset);
+                        $submit = $module.find(selector.submit);
+                        $clear = $module.find(selector.clear);
+                        $reset = $module.find(selector.reset);
                     },
 
                     refreshEvents: function () {
@@ -148,10 +148,10 @@
                         module.verbose('Attaching form events');
                         $module
                             .on('submit' + eventNamespace, module.validate.form)
-                            .on('blur'   + eventNamespace, selector.field, module.event.field.blur)
-                            .on('click'  + eventNamespace, selector.submit, module.submit)
-                            .on('click'  + eventNamespace, selector.reset, module.reset)
-                            .on('click'  + eventNamespace, selector.clear, module.clear);
+                            .on('blur' + eventNamespace, selector.field, module.event.field.blur)
+                            .on('click' + eventNamespace, selector.submit, module.submit)
+                            .on('click' + eventNamespace, selector.reset, module.reset)
+                            .on('click' + eventNamespace, selector.clear, module.clear);
                         if (settings.keyboardShortcuts) {
                             $module.on('keydown' + eventNamespace, selector.field, module.event.field.keydown);
                         }
@@ -192,8 +192,8 @@
                                 $calendar    = $field.closest(selector.uiCalendar),
                                 defaultValue = $field.data(metadata.defaultValue) || '',
                                 isCheckbox   = $element.is(selector.uiCheckbox),
-                                isDropdown   = $element.is(selector.uiDropdown)  && module.can.useElement('dropdown'),
-                                isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
+                                isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
+                                isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
                                 isErrored    = $fieldGroup.hasClass(className.error)
                             ;
                             if (isErrored) {
@@ -226,8 +226,8 @@
                                 $prompt      = $fieldGroup.find(selector.prompt),
                                 defaultValue = $field.data(metadata.defaultValue),
                                 isCheckbox   = $element.is(selector.uiCheckbox),
-                                isDropdown   = $element.is(selector.uiDropdown)  && module.can.useElement('dropdown'),
-                                isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
+                                isDropdown   = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
+                                isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
                                 isErrored    = $fieldGroup.hasClass(className.error)
                             ;
                             if (defaultValue === undefined) {
@@ -569,7 +569,7 @@
                                 ;
                                 if (isLegacySettings) {
                                     // 1.x (ducktyped)
-                                    settings   = $.extend(true, {}, $.fn.form.settings, legacyParameters);
+                                    settings = $.extend(true, {}, $.fn.form.settings, legacyParameters);
                                     validation = $.extend(true, {}, $.fn.form.settings.defaults, parameters);
                                     module.error(settings.error.oldSyntax, element);
                                     module.verbose('Extending settings from legacy parameters', validation, settings);
@@ -578,25 +578,25 @@
                                     if (parameters.fields) {
                                         parameters.fields = module.get.fieldsFromShorthand(parameters.fields);
                                     }
-                                    settings   = $.extend(true, {}, $.fn.form.settings, parameters);
+                                    settings = $.extend(true, {}, $.fn.form.settings, parameters);
                                     validation = $.extend(true, {}, $.fn.form.settings.defaults, settings.fields);
                                     module.verbose('Extending settings', validation, settings);
                                 }
                             } else {
-                                settings   = $.extend(true, {}, $.fn.form.settings);
+                                settings = $.extend(true, {}, $.fn.form.settings);
                                 validation = $.extend(true, {}, $.fn.form.settings.defaults);
                                 module.verbose('Using default form validation', validation, settings);
                             }
 
                             // shorthand
-                            namespace       = settings.namespace;
-                            metadata        = settings.metadata;
-                            selector        = settings.selector;
-                            className       = settings.className;
-                            regExp          = settings.regExp;
-                            error           = settings.error;
+                            namespace = settings.namespace;
+                            metadata = settings.metadata;
+                            selector = settings.selector;
+                            className = settings.className;
+                            regExp = settings.regExp;
+                            error = settings.error;
                             moduleNamespace = 'module-' + namespace;
-                            eventNamespace  = '.' + namespace;
+                            eventNamespace = '.' + namespace;
 
                             // grab instance
                             instance = $module.data(moduleNamespace);
@@ -677,7 +677,7 @@
                                     isCheckbox   = $field.is(selector.checkbox),
                                     isRadio      = $field.is(selector.radio),
                                     isMultiple   = (name.indexOf('[]') !== -1),
-                                    isCalendar   = ($calendar.length > 0  && module.can.useElement('calendar')),
+                                    isCalendar   = ($calendar.length > 0 && module.can.useElement('calendar')),
                                     isChecked    = (isCheckbox)
                                         ? $field.is(':checked')
                                         : false
@@ -794,7 +794,7 @@
 
                     escape: {
                         string: function (text) {
-                            text =  String(text);
+                            text = String(text);
                             return text.replace(regExp.escape, '\\$&');
                         },
                     },
@@ -953,7 +953,7 @@
                                 .removeClass(className.error);
                             if (settings.inline && $prompt.is(':visible')) {
                                 module.verbose('Removing prompt for field', identifier);
-                                if (settings.transition  && module.can.useElement('transition') && $module.transition('is supported')) {
+                                if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                     $prompt.transition(settings.transition + ' out', settings.duration, function () {
                                         $prompt.remove();
                                     });
@@ -981,7 +981,7 @@
                                     isCheckbox = ($el.filter(selector.checkbox).length > 0),
                                     isDropdown = $parent.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                                     $calendar   = $el.closest(selector.uiCalendar),
-                                    isCalendar  = ($calendar.length > 0  && module.can.useElement('calendar')),
+                                    isCalendar  = ($calendar.length > 0 && module.can.useElement('calendar')),
                                     value      = (isCheckbox)
                                         ? $el.is(':checked')
                                         : $el.val()
@@ -1017,10 +1017,10 @@
                                     $element    = $field.parent(),
                                     $calendar   = $field.closest(selector.uiCalendar),
                                     isMultiple  = Array.isArray(value),
-                                    isCheckbox  = $element.is(selector.uiCheckbox)  && module.can.useElement('checkbox'),
+                                    isCheckbox  = $element.is(selector.uiCheckbox) && module.can.useElement('checkbox'),
                                     isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                                     isRadio     = ($field.is(selector.radio) && isCheckbox),
-                                    isCalendar  = ($calendar.length > 0  && module.can.useElement('calendar')),
+                                    isCalendar  = ($calendar.length > 0 && module.can.useElement('calendar')),
                                     fieldExists = ($field.length > 0),
                                     $multipleField
                                 ;
@@ -1030,7 +1030,7 @@
                                         $element.checkbox('uncheck');
                                         $.each(value, function (index, value) {
                                             $multipleField = $field.filter('[value="' + value + '"]');
-                                            $element       = $multipleField.parent();
+                                            $element = $multipleField.parent();
                                             if ($multipleField.length > 0) {
                                                 $element.checkbox('check');
                                             }
@@ -1192,7 +1192,7 @@
                             if (typeof field == 'string') {
                                 module.verbose('Validating field', field);
                                 fieldName = field;
-                                field     = validation[field];
+                                field = validation[field];
                             }
                             var
                                 identifier    = field.identifier || fieldName,
@@ -1337,10 +1337,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1390,9 +1390,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

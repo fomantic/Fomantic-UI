@@ -97,7 +97,7 @@
                     module
                 ;
 
-                module      = {
+                module = {
 
                     initialize: function () {
                         module.debug('Initializing flyout', parameters);
@@ -326,7 +326,7 @@
                             //event.stopPropagation();
                         },
                         containScroll: function (event) {
-                            if (element.scrollTop <= 0)  {
+                            if (element.scrollTop <= 0) {
                                 element.scrollTop = 1;
                             }
                             if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
@@ -357,7 +357,7 @@
                         clickaway: function () {
                             module.verbose('Adding clickaway events to context', $context);
                             $context
-                                .on('click'    + elementNamespace, module.event.clickaway)
+                                .on('click' + elementNamespace, module.event.clickaway)
                                 .on('touchend' + elementNamespace, module.event.clickaway);
                         },
                         scrollLock: function () {
@@ -396,7 +396,7 @@
                     add: {
                         inlineCSS: function () {
                             var
-                                width     = module.cache.width  || $module.outerWidth(),
+                                width     = module.cache.width || $module.outerWidth(),
                                 height    = module.cache.height || $module.outerHeight(),
                                 isRTL     = module.is.rtl(),
                                 direction = module.get.direction(),
@@ -415,18 +415,18 @@
                                 distance.right = width;
                             }
 
-                            style  = '<style>';
+                            style = '<style>';
 
                             if (direction === 'left' || direction === 'right') {
                                 module.debug('Adding CSS rules for animation distance', width);
-                                style  += ''
+                                style += ''
                                     + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
                             } else if (direction === 'top' || direction == 'bottom') {
-                                style  += ''
+                                style += ''
                                     + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -439,13 +439,13 @@
                             if (module.is.ie()) {
                                 if (direction === 'left' || direction === 'right') {
                                     module.debug('Adding CSS rules for animation distance', width);
-                                    style  += ''
+                                    style += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                         + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                         + ' }';
                                 } else if (direction === 'top' || direction == 'bottom') {
-                                    style  += ''
+                                    style += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                         + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -484,9 +484,9 @@
                     },
                     refresh: function () {
                         module.verbose('Refreshing selector cache');
-                        $context  = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                         module.refreshFlyouts();
-                        $pusher   = $context.children(selector.pusher);
+                        $pusher = $context.children(selector.pusher);
                         module.clear.cache();
                     },
 
@@ -503,7 +503,7 @@
                         if (!settings.dimPage){
                             return;
                         }
-                        $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                        $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
@@ -1147,10 +1147,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1197,9 +1197,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = element         || context;
+                        context = element || context;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -1248,8 +1248,8 @@
                             // reassign shortcuts
                             className = settings.className;
                             namespace = settings.namespace;
-                            fields    = settings.fields;
-                            error     = settings.error;
+                            fields = settings.fields;
+                            error = settings.error;
                         }
                         module.initialize();
                     }

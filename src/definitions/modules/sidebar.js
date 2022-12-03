@@ -88,7 +88,7 @@
                     module
                 ;
 
-                module      = {
+                module = {
 
                     initialize: function () {
                         module.debug('Initializing sidebar', parameters);
@@ -161,7 +161,7 @@
                             //event.stopPropagation();
                         },
                         containScroll: function (event) {
-                            if (element.scrollTop <= 0)  {
+                            if (element.scrollTop <= 0) {
                                 element.scrollTop = 1;
                             }
                             if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
@@ -179,7 +179,7 @@
                         clickaway: function () {
                             module.verbose('Adding clickaway events to context', $context);
                             $context
-                                .on('click'    + elementNamespace, module.event.clickaway)
+                                .on('click' + elementNamespace, module.event.clickaway)
                                 .on('touchend' + elementNamespace, module.event.clickaway);
                         },
                         scrollLock: function () {
@@ -218,7 +218,7 @@
                     add: {
                         inlineCSS: function () {
                             var
-                                width     = module.cache.width  || $module.outerWidth(),
+                                width     = module.cache.width || $module.outerWidth(),
                                 height    = module.cache.height || $module.outerHeight(),
                                 isRTL     = module.is.rtl(),
                                 direction = module.get.direction(),
@@ -237,18 +237,18 @@
                                 distance.right = width;
                             }
 
-                            style  = '<style>';
+                            style = '<style>';
 
                             if (direction === 'left' || direction === 'right') {
                                 module.debug('Adding CSS rules for animation distance', width);
-                                style  += ''
+                                style += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
                             } else if (direction === 'top' || direction == 'bottom') {
-                                style  += ''
+                                style += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -261,13 +261,13 @@
                             if (module.is.ie()) {
                                 if (direction === 'left' || direction === 'right') {
                                     module.debug('Adding CSS rules for animation distance', width);
-                                    style  += ''
+                                    style += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                         + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                         + ' }';
                                 } else if (direction === 'top' || direction == 'bottom') {
-                                    style  += ''
+                                    style += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
                                         + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -290,10 +290,10 @@
 
                     refresh: function () {
                         module.verbose('Refreshing selector cache');
-                        $context  = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
+                        $context = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $body;
                         module.refreshSidebars();
-                        $pusher   = $context.children(selector.pusher);
-                        $fixed    = $context.children(selector.fixed);
+                        $pusher = $context.children(selector.pusher);
+                        $fixed = $context.children(selector.fixed);
                         module.clear.cache();
                     },
 
@@ -383,7 +383,7 @@
                                 module.verbose('Show callback returned false cancelling show');
                                 return;
                             }
-                            if (settings.overlay)  {
+                            if (settings.overlay) {
                                 module.error(error.overlay);
                                 settings.transition = 'overlay';
                             }
@@ -888,10 +888,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -938,9 +938,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

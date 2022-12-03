@@ -85,7 +85,7 @@
                     },
 
                     refresh: function () {
-                        $title   = $module.find(selector.title);
+                        $title = $module.find(selector.title);
                         $content = $module.find(selector.content);
                     },
 
@@ -279,12 +279,12 @@
                             $openContents
                         ;
                         if (settings.closeNested) {
-                            $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
+                            $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
                             $openContents = $openTitles.next($content);
                         } else {
-                            $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
+                            $openTitles = $activeAccordion.find(activeSelector).not($parentTitles);
                             $nestedTitles = $activeAccordion.find(activeContent).find(activeSelector).not($parentTitles);
-                            $openTitles   = $openTitles.not($nestedTitles);
+                            $openTitles = $openTitles.not($nestedTitles);
                             $openContents = $openTitles.next($content);
                         }
                         if (($openTitles.length > 0)) {
@@ -410,10 +410,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -460,9 +460,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -528,12 +528,12 @@
 
         on: 'click', // event on title that opens accordion
 
-        observeChanges: true,  // whether accordion should automatically refresh on DOM insertion
+        observeChanges: true, // whether accordion should automatically refresh on DOM insertion
 
-        exclusive: true,  // whether a single accordion content panel should be open at once
-        collapsible: true,  // whether accordion content can be closed
+        exclusive: true, // whether a single accordion content panel should be open at once
+        collapsible: true, // whether accordion content can be closed
         closeNested: false, // whether nested content should be closed when a panel is closed
-        animateChildren: true,  // whether children opacity should be animated
+        animateChildren: true, // whether children opacity should be animated
 
         duration: 350, // duration of animation
         easing: 'easeOutQuad', // easing equation for animation

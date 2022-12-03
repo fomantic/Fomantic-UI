@@ -95,7 +95,7 @@
                     },
 
                     refresh: function () {
-                        $icon   = $module.find(selector.icon);
+                        $icon = $module.find(selector.icon);
                     },
 
                     setup: {
@@ -161,7 +161,7 @@
                             $module
                                 .on('mouseenter' + eventNamespace, selector.icon, module.event.mouseenter)
                                 .on('mouseleave' + eventNamespace, selector.icon, module.event.mouseleave)
-                                .on('click'      + eventNamespace, selector.icon, module.event.click);
+                                .on('click' + eventNamespace, selector.icon, module.event.click);
                         },
                     },
 
@@ -336,10 +336,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -389,9 +389,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

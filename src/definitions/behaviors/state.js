@@ -75,12 +75,12 @@
                             ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                                 .on(moduleSelector, 'mouseenter' + eventNamespace, module.change.text)
                                 .on(moduleSelector, 'mouseleave' + eventNamespace, module.reset.text)
-                                .on(moduleSelector, 'click'      + eventNamespace, module.toggle.state);
+                                .on(moduleSelector, 'click' + eventNamespace, module.toggle.state);
                         } else {
                             $module
                                 .on('mouseenter' + eventNamespace, module.change.text)
                                 .on('mouseleave' + eventNamespace, module.reset.text)
-                                .on('click'      + eventNamespace, module.toggle.state);
+                                .on('click' + eventNamespace, module.toggle.state);
                         }
                         module.instantiate();
                     },
@@ -202,11 +202,11 @@
                             if (module.allows('active') && module.is.enabled()) {
                                 module.refresh();
                                 if ($.fn.api !== undefined) {
-                                    apiRequest       = $module.api('get request');
+                                    apiRequest = $module.api('get request');
                                     requestCancelled = $module.api('was cancelled');
                                     if (requestCancelled) {
                                         module.debug('API Request cancelled by beforesend');
-                                        settings.activateTest   = function (){
+                                        settings.activateTest = function (){
                                             return false;
                                         };
                                         settings.deactivateTest = function (){
@@ -232,7 +232,7 @@
                                 .then(function () {
                                     if (apiRequest.state() == 'resolved') {
                                         module.debug('API request succeeded');
-                                        settings.activateTest   = function (){
+                                        settings.activateTest = function (){
                                             return true;
                                         };
                                         settings.deactivateTest = function (){
@@ -240,7 +240,7 @@
                                         };
                                     } else {
                                         module.debug('API request failed');
-                                        settings.activateTest   = function (){
+                                        settings.activateTest = function (){
                                             return false;
                                         };
                                         settings.deactivateTest = function (){
@@ -345,7 +345,7 @@
                             var
                                 previousText = module.get.text();
                             module.debug('Flashing text message', text, duration);
-                            text     = text     || settings.text.flash;
+                            text = text || settings.text.flash;
                             duration = duration || settings.flashDuration;
                             callback = callback || function () {};
                             module.update.text(text);
@@ -360,7 +360,7 @@
                         // on mouseout sets text to previous value
                         text: function () {
                             var
-                                activeText   = text.active   || $module.data(metadata.storedText),
+                                activeText   = text.active || $module.data(metadata.storedText),
                                 inactiveText = text.inactive || $module.data(metadata.storedText)
                             ;
                             if (module.is.textEnabled()) {
@@ -454,10 +454,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -504,9 +504,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

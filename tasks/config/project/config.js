@@ -40,7 +40,7 @@ module.exports = {
         ;
 
         // start walk from outside require-dot-files directory
-        file      = file || defaults.files.config;
+        file = file || defaults.files.config;
         directory = directory || path.join(__dirname, path.sep, '..');
         walk(directory);
         return configPath || '';
@@ -103,7 +103,7 @@ module.exports = {
             config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
         } else {
             // pass blank object to avoid causing errors
-            config.permission     = {};
+            config.permission = {};
             config.hasPermissions = false;
             config.parsedPermissions = {};
         }

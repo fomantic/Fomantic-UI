@@ -93,8 +93,8 @@
                     refresh: function () {
                         module.verbose('Refreshing selector cache');
                         $placeholder = $module.find(selector.placeholder);
-                        $icon        = $module.find(selector.icon);
-                        $embed       = $module.find(selector.embed);
+                        $icon = $module.find(selector.icon);
+                        $embed = $module.find(selector.embed);
                     },
 
                     bind: {
@@ -262,7 +262,7 @@
                         },
                         url: function () {
                             var
-                                id     = settings.id     || $module.data(metadata.id),
+                                id     = settings.id || $module.data(metadata.id),
                                 source = settings.source || $module.data(metadata.source),
                                 url
                             ;
@@ -323,7 +323,7 @@
                             url = module.get.url(url);
                             if (url) {
                                 parameters = module.generate.parameters(source);
-                                html       = templates.iframe(url, parameters);
+                                html = templates.iframe(url, parameters);
                             } else {
                                 module.error(error.noURL, $module);
                             }
@@ -424,10 +424,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -477,9 +477,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

@@ -19,9 +19,9 @@ function moduleTests(ui) {
     fixtures.fixturesPath = 'base/test/fixtures/';
 
     // disable debug
-    $.fn[module].settings.debug       = false;
+    $.fn[module].settings.debug = false;
     $.fn[module].settings.performance = false;
-    $.fn[module].settings.verbose     = false;
+    $.fn[module].settings.verbose = false;
 
     beforeEach(function () {
     // load fixtures
@@ -30,15 +30,15 @@ function moduleTests(ui) {
         originalSettings = $.fn[module].settings;
 
         // module available in scope
-        $module       = $(element);
+        $module = $(element);
 
         if ($module.size() == 1) { // one module available in fixture
             $oneModule = $module;
-            $clone     = $module.clone().appendTo($(sandbox()));
-            $modules   = $clone.add($module);
+            $clone = $module.clone().appendTo($(sandbox()));
+            $modules = $clone.add($module);
         } else { // multiple modules available in fixture
-            $modules   = $(element);
-            $clone     = $module.eq(1);
+            $modules = $(element);
+            $clone = $module.eq(1);
             $oneModule = $modules.first();
         }
     });

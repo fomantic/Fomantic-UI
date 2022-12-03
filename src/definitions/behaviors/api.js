@@ -342,7 +342,7 @@
                             if (url) {
                                 requiredVariables = url.match(settings.regExp.required);
                                 optionalVariables = url.match(settings.regExp.optional);
-                                urlData           = urlData || settings.urlData;
+                                urlData = urlData || settings.urlData;
                                 if (requiredVariables) {
                                     module.debug('Looking for required URL variables', requiredVariables);
                                     $.each(requiredVariables, function (index, templatedString) {
@@ -413,7 +413,7 @@
                                 hasOtherData,
                                 useFormDataApi = settings.serializeForm === 'formdata'
                             ;
-                            data         = data || originalData || settings.data;
+                            data = data || originalData || settings.data;
                             hasOtherData = $.isPlainObject(data);
 
                             if (useFormDataApi) {
@@ -580,9 +580,9 @@
                                 // have to guess callback parameters based on request success
                                 if (module.was.successful()) {
                                     response = firstParameter;
-                                    xhr      = secondParameter;
+                                    xhr = secondParameter;
                                 } else {
-                                    xhr      = firstParameter;
+                                    xhr = firstParameter;
                                     response = module.get.responseFromXHR(xhr);
                                 }
                                 module.remove.loading();
@@ -640,7 +640,7 @@
                                 textStatus     = false,
                                 status         = false,
                                 httpMessage    = false,
-                                responder      = settings.mockResponse      || settings.response,
+                                responder      = settings.mockResponse || settings.response,
                                 asyncResponder = settings.mockResponseAsync || settings.responseAsync,
                                 asyncCallback,
                                 response,
@@ -821,7 +821,7 @@
                         },
                         templatedURL: function (action) {
                             action = action || $module.data(metadata.action) || settings.action || false;
-                            url    = $module.data(metadata.url) || settings.url || false;
+                            url = $module.data(metadata.url) || settings.url || false;
                             if (url) {
                                 module.debug('Using specified url', url);
                                 return url;
@@ -914,10 +914,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -964,9 +964,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

@@ -62,7 +62,7 @@
                     module
                 ;
 
-                module      = {
+                module = {
 
                     initialize: function () {
                         module.verbose('Initializing checkbox', settings);
@@ -120,7 +120,7 @@
                     refresh: function () {
                         $label = $module.children(selector.label);
                         $input = $module.children(selector.input);
-                        input  = $input[0];
+                        input = $input[0];
                     },
 
                     hide: {
@@ -471,7 +471,7 @@
                             $module
                                 .removeClass(className.indeterminate)
                                 .removeClass(className.checked);
-                            if (!module.is.indeterminate() &&  module.is.unchecked()) {
+                            if (!module.is.indeterminate() && module.is.unchecked()) {
                                 module.debug('Input is already unchecked');
                                 return;
                             }
@@ -577,10 +577,10 @@
                         events: function () {
                             module.verbose('Attaching checkbox events');
                             $module
-                                .on('click'   + eventNamespace, module.event.click)
-                                .on('change'  + eventNamespace, module.event.change)
+                                .on('click' + eventNamespace, module.event.click)
+                                .on('change' + eventNamespace, module.event.change)
                                 .on('keydown' + eventNamespace, selector.input, module.event.keydown)
-                                .on('keyup'   + eventNamespace, selector.input, module.event.keyup);
+                                .on('keyup' + eventNamespace, selector.input, module.event.keyup);
                         },
                     },
 
@@ -672,10 +672,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -722,9 +722,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

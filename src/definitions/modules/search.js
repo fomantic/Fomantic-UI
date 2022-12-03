@@ -94,16 +94,16 @@
 
                     refresh: function () {
                         module.debug('Refreshing selector cache');
-                        $prompt         = $module.find(selector.prompt);
-                        $searchButton   = $module.find(selector.searchButton);
-                        $category       = $module.find(selector.category);
-                        $results        = $module.find(selector.results);
-                        $result         = $module.find(selector.result);
+                        $prompt = $module.find(selector.prompt);
+                        $searchButton = $module.find(selector.searchButton);
+                        $category = $module.find(selector.category);
+                        $results = $module.find(selector.results);
+                        $result = $module.find(selector.result);
                     },
 
                     refreshResults: function () {
                         $results = $module.find(selector.results);
-                        $result  = $module.find(selector.result);
+                        $result = $module.find(selector.result);
                     },
 
                     bind: {
@@ -117,15 +117,15 @@
                             }
                             $module
                             // prompt
-                                .on('focus'     + eventNamespace, selector.prompt, module.event.focus)
-                                .on('blur'      + eventNamespace, selector.prompt, module.event.blur)
-                                .on('keydown'   + eventNamespace, selector.prompt, module.handleKeyboard)
+                                .on('focus' + eventNamespace, selector.prompt, module.event.focus)
+                                .on('blur' + eventNamespace, selector.prompt, module.event.blur)
+                                .on('keydown' + eventNamespace, selector.prompt, module.handleKeyboard)
                             // search button
-                                .on('click'     + eventNamespace, selector.searchButton, module.query)
+                                .on('click' + eventNamespace, selector.searchButton, module.query)
                             // results
                                 .on('mousedown' + eventNamespace, selector.results, module.event.result.mousedown)
-                                .on('mouseup'   + eventNamespace, selector.results, module.event.result.mouseup)
-                                .on('click'     + eventNamespace, selector.result,  module.event.result.click);
+                                .on('mouseup' + eventNamespace, selector.results, module.event.result.mouseup)
+                                .on('click' + eventNamespace, selector.result, module.event.result.click);
                         },
                     },
 
@@ -208,7 +208,7 @@
                                     $link   = $result.is('a[href]')
                                         ? $result
                                         : $result.find('a[href]').eq(0),
-                                    href    = $link.attr('href')   || false,
+                                    href    = $link.attr('href') || false,
                                     target  = $link.attr('target') || false,
                                     // title is used for result lookup
                                     value   = ($title.length > 0)
@@ -526,7 +526,7 @@
                             $searchButton.removeClass(className.pressed);
                         },
                         diacritics: function (text) {
-                            return settings.ignoreDiacritics ?  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                            return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
                         },
                     },
 
@@ -539,7 +539,7 @@
                             cache = module.read.cache(searchTerm)
                         ;
                         callback = callback || function () {};
-                        if (module.has.minimumCharacters())  {
+                        if (module.has.minimumCharacters()) {
                             if (cache) {
                                 module.debug('Reading result from cache', searchTerm);
                                 module.save.results(cache.results);
@@ -671,7 +671,7 @@
                     },
                     exactSearch: function (query, term) {
                         query = query.toLowerCase();
-                        term  = term.toLowerCase();
+                        term = term.toLowerCase();
                         return term.indexOf(query) > -1;
                     },
                     fuzzySearch: function (query, term) {
@@ -683,7 +683,7 @@
                             return false;
                         }
                         query = query.toLowerCase();
-                        term  = term.toLowerCase();
+                        term = term.toLowerCase();
                         if (queryLength > termLength) {
                             return false;
                         }
@@ -817,7 +817,7 @@
                             if (categoryIndex !== undefined) {
                                 // start char code for "A"
                                 letterID = String.fromCharCode(97 + categoryIndex);
-                                id          = letterID + resultID;
+                                id = letterID + resultID;
                                 module.verbose('Creating category result id', id);
                             } else {
                                 id = resultID;
@@ -1086,10 +1086,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1139,9 +1139,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -1315,18 +1315,18 @@
 
         // maps api response attributes to internal representation
         fields: {
-            categories: 'results',     // array of categories (category view)
-            categoryName: 'name',        // name of category (category view)
-            categoryResults: 'results',     // array of results (category view)
+            categories: 'results', // array of categories (category view)
+            categoryName: 'name', // name of category (category view)
+            categoryResults: 'results', // array of results (category view)
             description: 'description', // result description
-            image: 'image',       // result image
-            price: 'price',       // result price
-            results: 'results',     // array of results (standard)
-            title: 'title',       // result title
-            url: 'url',         // result url
-            action: 'action',      // "view more" object name
-            actionText: 'text',        // "view more" text
-            actionURL: 'url',          // "view more" url
+            image: 'image', // result image
+            price: 'price', // result price
+            results: 'results', // array of results (standard)
+            title: 'title', // result title
+            url: 'url', // result url
+            action: 'action', // "view more" object name
+            actionText: 'text', // "view more" text
+            actionURL: 'url', // "view more" url
         },
 
         selector: {
@@ -1368,7 +1368,7 @@
                     html = ''
                 ;
                 if (message !== undefined && type !== undefined) {
-                    html +=  ''
+                    html += ''
                         + '<div class="message ' + type + '">';
                     if (header) {
                         html += ''
@@ -1388,7 +1388,7 @@
                     // each category
                     $.each(response[fields.categoryResults], function (index, category) {
                         if (category[fields.results] !== undefined && category.results.length > 0) {
-                            html  += '<div class="category">';
+                            html += '<div class="category">';
 
                             if (category[fields.categoryName] !== undefined) {
                                 html += '<div class="name">' + escape(category[fields.categoryName], preserveHTML) + '</div>';
@@ -1398,9 +1398,9 @@
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
                                 if (result[fields.url]) {
-                                    html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
+                                    html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                                 } else {
-                                    html  += '<a class="result">';
+                                    html += '<a class="result">';
                                 }
                                 if (result[fields.image] !== undefined) {
                                     html += ''
@@ -1418,12 +1418,12 @@
                                 if (result[fields.description] !== undefined) {
                                     html += '<div class="description">' + escape(result[fields.description], preserveHTML) + '</div>';
                                 }
-                                html  += ''
+                                html += ''
                                     + '</div>';
                                 html += '</a>';
                             });
                             html += '</div>';
-                            html  += ''
+                            html += ''
                                 + '</div>';
                         }
                     });
@@ -1431,12 +1431,12 @@
                         if (fields.actionURL === false) {
                             html += ''
                                 + '<div class="action">'
-                                +   escape(response[fields.action][fields.actionText], preserveHTML)
+                                + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</div>';
                         } else {
                             html += ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
-                                +   escape(response[fields.action][fields.actionText], preserveHTML)
+                                + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
                         }
                     }
@@ -1453,9 +1453,9 @@
                     // each result
                     $.each(response[fields.results], function (index, result) {
                         if (result[fields.url]) {
-                            html  += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
+                            html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
                         } else {
-                            html  += '<a class="result">';
+                            html += '<a class="result">';
                         }
                         if (result[fields.image] !== undefined) {
                             html += ''
@@ -1473,7 +1473,7 @@
                         if (result[fields.description] !== undefined) {
                             html += '<div class="description">' + escape(result[fields.description], preserveHTML) + '</div>';
                         }
-                        html  += ''
+                        html += ''
                             + '</div>';
                         html += '</a>';
                     });
@@ -1481,12 +1481,12 @@
                         if (fields.actionURL === false) {
                             html += ''
                                 + '<div class="action">'
-                                +   escape(response[fields.action][fields.actionText], preserveHTML)
+                                + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</div>';
                         } else {
                             html += ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
-                                +   escape(response[fields.action][fields.actionText], preserveHTML)
+                                + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
                         }
                     }

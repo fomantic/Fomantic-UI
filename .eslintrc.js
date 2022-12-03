@@ -32,6 +32,12 @@ module.exports = {
             maxBOF: 0,
             maxEOF: 0,
         }],
+        'no-multi-spaces': ['error', {
+            exceptions: {
+                Property: true,
+                VariableDeclarator: true,
+            },
+        }],
         'brace-style': ['error'],
         curly: ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

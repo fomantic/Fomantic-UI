@@ -125,7 +125,7 @@ module.exports = {
                             console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
                         } else if (error.line == 84) {
                             element = regExp.element.exec(error.message)[1];
-                            theme   = regExp.theme.exec(error.message)[1];
+                            theme = regExp.theme.exec(error.message)[1];
                             console.error(theme + ' is not an available theme for ' + element);
                         } else {
                             console.error(error);

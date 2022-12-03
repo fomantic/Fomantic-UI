@@ -641,10 +641,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -691,9 +691,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -795,7 +795,7 @@
             showDuration: 500,
             hideMethod: 'scale',
             hideDuration: 500,
-            closeEasing: 'easeOutCubic',  //Set to empty string to stack the closed toast area immediately (old behaviour)
+            closeEasing: 'easeOutCubic', //Set to empty string to stack the closed toast area immediately (old behaviour)
             closeDuration: 500,
         },
 

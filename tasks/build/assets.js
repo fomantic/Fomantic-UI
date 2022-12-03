@@ -35,8 +35,8 @@ function buildAssets(src, config, callback) {
 
     if (callback === undefined) {
         callback = config;
-        config   = src;
-        src      = config.paths.source.themes + '/**/assets/**/*.*';
+        config = src;
+        src = config.paths.source.themes + '/**/assets/**/*.*';
     }
 
     // copy assets

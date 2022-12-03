@@ -255,7 +255,7 @@
                             // on the thumb(s) and don't need to worry about interference with other components, i.e. no dynamic binding
                             // and unbinding required.
                             $module.find('.thumb')
-                                .on('touchstart' + eventNamespace,  module.event.touchDown)
+                                .on('touchstart' + eventNamespace, module.event.touchDown)
                                 .on('touchmove' + eventNamespace, module.event.move)
                                 .on('touchend' + eventNamespace, module.event.up)
                                 .on('touchcancel' + eventNamespace, module.event.touchCancel);
@@ -320,7 +320,7 @@
                             }
                         },
                         touchDown: function (event) {
-                            event.preventDefault();  // disable mouse emulation and touch-scrolling
+                            event.preventDefault(); // disable mouse emulation and touch-scrolling
                             event.stopImmediatePropagation();
                             if (touchIdentifier !== undefined) {
                                 // ignore multiple touches on the same slider --
@@ -336,7 +336,7 @@
                         },
                         move: function (event) {
                             if (event.type == 'mousemove') {
-                                event.preventDefault();  // prevent text selection etc.
+                                event.preventDefault(); // prevent text selection etc.
                             }
                             if (module.is.disabled()) {
                                 // touch events are always bound, so we need to prevent touch-sliding on disabled sliders here
@@ -773,7 +773,7 @@
                             if (event.type === 'touchmove' || event.type === 'touchend') {
                                 var
                                     touchEvent = event.touches ? event : event.originalEvent,
-                                    touch = touchEvent.changedTouches[0];  // fall back to first touch if correct touch not found
+                                    touch = touchEvent.changedTouches[0]; // fall back to first touch if correct touch not found
                                 for (var i = 0; i < touchEvent.touches.length; i++) {
                                     if (touchEvent.touches[i].identifier === touchIdentifier) {
                                         touch = touchEvent.touches[i];
@@ -1125,10 +1125,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1176,9 +1176,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

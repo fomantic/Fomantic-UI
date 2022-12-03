@@ -169,7 +169,7 @@
                                 return {
                                     setItem: function (key, value, options) {
                                         // RFC6265 compliant encoding
-                                        key   = encodeURIComponent(key)
+                                        key = encodeURIComponent(key)
                                             .replace(/%(2[346B]|5E|60|7C)/g, decodeURIComponent)
                                             .replace(/[()]/g, escape);
                                         value = encodeURIComponent(value)
@@ -336,10 +336,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -386,9 +386,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

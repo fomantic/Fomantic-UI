@@ -73,7 +73,7 @@
                     module
                 ;
 
-                module      = {
+                module = {
 
                     initialize: function () {
                         module.determineContainer();
@@ -117,7 +117,7 @@
                     observeChanges: function () {
                         if ('MutationObserver' in window) {
                             documentObserver = new MutationObserver(module.event.documentChanged);
-                            observer         = new MutationObserver(module.event.changed);
+                            observer = new MutationObserver(module.event.changed);
                             documentObserver.observe(document, {
                                 childList: true,
                                 subtree: true,
@@ -267,11 +267,11 @@
                             if (!module.is.standardScroll()) {
                                 module.debug('Non-standard scroll. Removing scroll offset from element offset');
 
-                                scrollContext.top  = $scroll.scrollTop();
+                                scrollContext.top = $scroll.scrollTop();
                                 scrollContext.left = $scroll.scrollLeft();
 
-                                element.offset.top  += scrollContext.top;
-                                context.offset.top  += scrollContext.top;
+                                element.offset.top += scrollContext.top;
+                                context.offset.top += scrollContext.top;
                                 element.offset.left += scrollContext.left;
                                 context.offset.left += scrollContext.left;
                             }
@@ -324,7 +324,7 @@
                                 return module.elementScroll;
                             }
                             return (module.is.top())
-                                ? Math.abs(parseInt($module.css('top'), 10))    || 0
+                                ? Math.abs(parseInt($module.css('top'), 10)) || 0
                                 : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
                         },
 
@@ -424,7 +424,7 @@
                         },
                         size: function () {
                             if (module.cache.element.height !== 0 && module.cache.element.width !== 0) {
-                                element.style.setProperty('width',  module.cache.element.width  + 'px', 'important');
+                                element.style.setProperty('width', module.cache.element.width + 'px', 'important');
                                 element.style.setProperty('height', module.cache.element.height + 'px', 'important');
                             }
                         },
@@ -720,10 +720,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -770,9 +770,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

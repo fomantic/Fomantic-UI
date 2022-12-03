@@ -106,8 +106,8 @@ function parser(file, callback) {
         if (meta && meta.type && meta.title && inArray(meta.type, categories)) {
             meta.category = meta.type;
             meta.filename = filename;
-            meta.url      = '/' + filename;
-            meta.title    = meta.title;
+            meta.url = '/' + filename;
+            meta.title = meta.title;
             // Primary key will by filepath
             data[meta.element] = meta;
         } else {

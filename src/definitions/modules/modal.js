@@ -95,7 +95,7 @@
                     observer,
                     module
                 ;
-                module  = {
+                module = {
 
                     initialize: function () {
                         module.create.id();
@@ -276,7 +276,7 @@
 
                     refreshModals: function () {
                         $otherModals = $module.siblings(selector.modal);
-                        $allModals   = $otherModals.add($module);
+                        $allModals = $otherModals.add($module);
                     },
 
                     refreshInputs: function (){
@@ -284,7 +284,7 @@
                             $inputs
                                 .off('keydown' + elementEventNamespace);
                         }
-                        $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function () {
+                        $inputs = $module.find('[tabindex], :input').filter(':visible').filter(function () {
                             return $(this).closest('.disabled').length === 0;
                         });
                         $inputs.first()
@@ -1142,10 +1142,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1192,9 +1192,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -1241,8 +1241,8 @@
                             // reassign shortcuts
                             className = settings.className;
                             namespace = settings.namespace;
-                            fields    = settings.fields;
-                            error     = settings.error;
+                            fields = settings.fields;
+                            error = settings.error;
                         }
                         module.initialize();
                     }

@@ -282,7 +282,7 @@
                         } else if ($target.next(selector.popup).length !== 0) {
                             module.verbose('Pre-existing popup found');
                             settings.inline = true;
-                            settings.popup  = $target.next(selector.popup).data(metadata.activator, $module);
+                            settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
                             module.refresh();
                             if (settings.hoverable) {
                                 module.bind.popup();
@@ -600,8 +600,8 @@
                             calculations = calculations || module.get.calculations();
 
                             // shorthand
-                            popup        = calculations.popup;
-                            boundary     = calculations.boundary;
+                            popup = calculations.popup;
+                            boundary = calculations.boundary;
 
                             if (offset) {
                                 distanceFromBoundary = {
@@ -630,10 +630,10 @@
                                 ;
                                 while (parentNode && !isBody && isStatic && is2D) {
                                     parentNode = parentNode.parentNode;
-                                    $node    = $(parentNode);
-                                    is2D     = ($node.css('transform') === 'none');
+                                    $node = $(parentNode);
+                                    is2D = ($node.css('transform') === 'none');
                                     isStatic = ($node.css('position') === 'static');
-                                    isBody   = $node.is('body');
+                                    isBody = $node.is('body');
                                 }
                             }
                             return ($node && $node.length > 0)
@@ -692,14 +692,14 @@
                             triedPositions[position] = true;
 
                             if (settings.prefer === 'opposite') {
-                                nextPosition  = [opposite[verticalPosition], horizontalPosition];
-                                nextPosition  = nextPosition.join(' ');
+                                nextPosition = [opposite[verticalPosition], horizontalPosition];
+                                nextPosition = nextPosition.join(' ');
                                 oppositeTried = (triedPositions[nextPosition] === true);
                                 module.debug('Trying opposite strategy', nextPosition);
                             }
                             if ((settings.prefer === 'adjacent') && adjacentsAvailable) {
-                                nextPosition  = [verticalPosition, adjacent[horizontalPosition]];
-                                nextPosition  = nextPosition.join(' ');
+                                nextPosition = [verticalPosition, adjacent[horizontalPosition]];
+                                nextPosition = nextPosition.join(' ');
                                 adjacentTried = (triedPositions[nextPosition] === true);
                                 module.debug('Trying adjacent strategy', nextPosition);
                             }
@@ -730,14 +730,14 @@
                             ;
 
                             calculations = calculations || module.get.calculations();
-                            position     = position     || $module.data(metadata.position) || settings.position;
+                            position = position || $module.data(metadata.position) || settings.position;
 
-                            offset       = $module.data(metadata.offset) || settings.offset;
+                            offset = $module.data(metadata.offset) || settings.offset;
                             distanceAway = settings.distanceAway;
 
                             // shorthand
                             target = calculations.target;
-                            popup  = calculations.popup;
+                            popup = calculations.popup;
                             parent = calculations.parent;
 
                             if (module.should.centerArrow(calculations)) {
@@ -760,13 +760,13 @@
                             if (settings.inline) {
                                 module.debug('Adding margin to calculation', target.margin);
                                 if (position == 'left center' || position == 'right center') {
-                                    offset       +=  target.margin.top;
+                                    offset += target.margin.top;
                                     distanceAway += -target.margin.left;
                                 } else if (position == 'top left' || position == 'top center' || position == 'top right') {
-                                    offset       += target.margin.left;
+                                    offset += target.margin.left;
                                     distanceAway -= target.margin.top;
                                 } else {
-                                    offset       += target.margin.left;
+                                    offset += target.margin.left;
                                     distanceAway += target.margin.top;
                                 }
                             }
@@ -847,7 +847,7 @@
                                 case 'bottom right':
                                     positioning = {
                                         top: target.top + target.height + distanceAway,
-                                        right: parent.width - target.left  - target.width - offset,
+                                        right: parent.width - target.left - target.width - offset,
                                         left: 'auto',
                                         bottom: 'auto',
                                     };
@@ -938,7 +938,7 @@
                         },
                         attempts: function () {
                             module.verbose('Resetting all searched positions');
-                            searchDepth    = 0;
+                            searchDepth = 0;
                             triedPositions = false;
                         },
                     },
@@ -1145,10 +1145,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -1195,9 +1195,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)

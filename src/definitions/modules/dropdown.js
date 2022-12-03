@@ -157,8 +157,8 @@
                     observeChanges: function () {
                         if ('MutationObserver' in window) {
                             selectObserver = new MutationObserver(module.event.select.mutation);
-                            menuObserver   = new MutationObserver(module.event.menu.mutation);
-                            classObserver  = new MutationObserver(module.event.class.mutation);
+                            menuObserver = new MutationObserver(module.event.menu.mutation);
+                            classObserver = new MutationObserver(module.event.class.mutation);
                             module.debug('Setting up mutation observer', selectObserver, menuObserver, classObserver);
                             module.observe.select();
                             module.observe.menu();
@@ -231,8 +231,8 @@
                                 : [values];
                             $.each(values, function (index, value) {
                                 if (module.get.item(value) === false) {
-                                    html         = settings.templates.addition(module.add.variables(message.addResult, value));
-                                    $userChoice  = $('<div />')
+                                    html = settings.templates.addition(module.add.variables(message.addResult, value));
+                                    $userChoice = $('<div />')
                                         .html(html)
                                         .attr('data-' + metadata.value, value)
                                         .attr('data-' + metadata.text, value)
@@ -419,15 +419,15 @@
                         },
                         menu: function (values) {
                             $menu.html(templates.menu(values, fields, settings.preserveHTML, settings.className));
-                            $item    = $menu.find(selector.item);
+                            $item = $menu.find(selector.item);
                             $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
                         },
                         reference: function () {
                             module.debug('Dropdown behavior was called on select, replacing with closest dropdown');
                             // replace module reference
-                            $module  = $module.parent(selector.dropdown);
+                            $module = $module.parent(selector.dropdown);
                             instance = $module.data(moduleNamespace);
-                            element  = $module[0];
+                            element = $module[0];
                             module.refresh();
                             module.setup.returnedObject();
                         },
@@ -447,21 +447,21 @@
                     },
 
                     refreshItems: function () {
-                        $item    = $menu.find(selector.item);
+                        $item = $menu.find(selector.item);
                         $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
                     },
 
                     refreshSelectors: function () {
                         module.verbose('Refreshing selector cache');
-                        $text   = $module.find(selector.text);
+                        $text = $module.find(selector.text);
                         $search = $module.find(selector.search);
-                        $input  = $module.find(selector.input);
-                        $icon   = $module.find(selector.icon);
-                        $combo  = ($module.prev().find(selector.text).length > 0)
+                        $input = $module.find(selector.input);
+                        $icon = $module.find(selector.icon);
+                        $combo = ($module.prev().find(selector.text).length > 0)
                             ? $module.prev().find(selector.text)
                             : $module.prev();
-                        $menu    = $module.children(selector.menu);
-                        $item    = $menu.find(selector.item);
+                        $menu = $module.children(selector.menu);
+                        $item = $menu.find(selector.item);
                         $divider = settings.hideDividers ? $item.parent().children(selector.divider) : $();
                     },
 
@@ -617,21 +617,21 @@
                             module.verbose('Binding mouse events');
                             if (module.is.multiple()) {
                                 $module
-                                    .on('click'   + eventNamespace, selector.label,  module.event.label.click)
-                                    .on('click'   + eventNamespace, selector.remove, module.event.remove.click);
+                                    .on('click' + eventNamespace, selector.label, module.event.label.click)
+                                    .on('click' + eventNamespace, selector.remove, module.event.remove.click);
                             }
                             if (module.is.searchSelection()) {
                                 $module
                                     .on('mousedown' + eventNamespace, module.event.mousedown)
-                                    .on('mouseup'   + eventNamespace, module.event.mouseup)
-                                    .on('mousedown' + eventNamespace, selector.menu,   module.event.menu.mousedown)
-                                    .on('mouseup'   + eventNamespace, selector.menu,   module.event.menu.mouseup)
-                                    .on('click'     + eventNamespace, selector.icon,   module.event.icon.click)
-                                    .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
-                                    .on('focus'     + eventNamespace, selector.search, module.event.search.focus)
-                                    .on('click'     + eventNamespace, selector.search, module.event.search.focus)
-                                    .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
-                                    .on('click'     + eventNamespace, selector.text,   module.event.text.focus);
+                                    .on('mouseup' + eventNamespace, module.event.mouseup)
+                                    .on('mousedown' + eventNamespace, selector.menu, module.event.menu.mousedown)
+                                    .on('mouseup' + eventNamespace, selector.menu, module.event.menu.mouseup)
+                                    .on('click' + eventNamespace, selector.icon, module.event.icon.click)
+                                    .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click)
+                                    .on('focus' + eventNamespace, selector.search, module.event.search.focus)
+                                    .on('click' + eventNamespace, selector.search, module.event.search.focus)
+                                    .on('blur' + eventNamespace, selector.search, module.event.search.blur)
+                                    .on('click' + eventNamespace, selector.text, module.event.text.focus);
                                 if (module.is.multiple()) {
                                     $module
                                         .on('click' + eventNamespace, module.event.click)
@@ -654,9 +654,9 @@
                                 }
                                 $module
                                     .on('mousedown' + eventNamespace, module.event.mousedown)
-                                    .on('mouseup'   + eventNamespace, module.event.mouseup)
-                                    .on('focus'     + eventNamespace, module.event.focus)
-                                    .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click);
+                                    .on('mouseup' + eventNamespace, module.event.mouseup)
+                                    .on('focus' + eventNamespace, module.event.focus)
+                                    .on('click' + eventNamespace, selector.clearIcon, module.event.clearIcon.click);
                                 if (module.has.menuSearch()) {
                                     $module
                                         .on('blur' + eventNamespace, selector.search, module.event.search.blur);
@@ -669,7 +669,7 @@
                                 .on('mouseenter' + eventNamespace, selector.item, module.event.item.mouseenter)
                                 .on('touchstart' + eventNamespace, selector.item, module.event.item.mouseenter)
                                 .on('mouseleave' + eventNamespace, selector.item, module.event.item.mouseleave)
-                                .on('click'      + eventNamespace, selector.item, module.event.item.click);
+                                .on('click' + eventNamespace, selector.item, module.event.item.click);
                         },
                         intent: function () {
                             module.verbose('Binding hide intent event to document');
@@ -915,7 +915,7 @@
                             queryLength = query.length
                         ;
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
-                        term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
+                        term = (settings.ignoreSearchCase ? term.toLowerCase() : term);
                         if (queryLength > termLength) {
                             return false;
                         }
@@ -937,7 +937,7 @@
                     },
                     exactSearch: function (query, term) {
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
-                        term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
+                        term = (settings.ignoreSearchCase ? term.toLowerCase() : term);
                         return term.indexOf(query) > -1;
                     },
                     filterActive: function () {
@@ -952,7 +952,7 @@
                             if (skipHandler) {
                                 $module.off('focus' + eventNamespace, selector.search);
                                 $search.trigger('focus');
-                                $module.on('focus'  + eventNamespace, selector.search, module.event.search.focus);
+                                $module.on('focus' + eventNamespace, selector.search, module.event.search.focus);
                             } else {
                                 $search.trigger('focus');
                             }
@@ -1248,7 +1248,7 @@
                                         : $(false),
                                     $changedNodes  = $addedNode.add($removedNode),
                                     isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0,
-                                    isMessage      = $changedNodes.is(selector.message)  || $changedNodes.closest(selector.message).length > 0
+                                    isMessage      = $changedNodes.is(selector.message) || $changedNodes.closest(selector.message).length > 0
                                 ;
                                 if (isUserAddition || isMessage) {
                                     module.debug('Updating item selector cache');
@@ -1817,7 +1817,7 @@
                             }
                             if (document.selection) {
                                 input.focus();
-                                range       = document.selection.createRange();
+                                range = document.selection.createRange();
                                 rangeLength = range.text.length;
                                 if (returnEndPos) {
                                     return rangeLength;
@@ -1986,11 +1986,11 @@
                             return select;
                         },
                         activeItem: function () {
-                            return $item.filter('.'  + className.active);
+                            return $item.filter('.' + className.active);
                         },
                         selectedItem: function () {
                             var
-                                $selectedItem = $item.not(selector.unselectable).filter('.'  + className.selected)
+                                $selectedItem = $item.not(selector.unselectable).filter('.' + className.selected)
                             ;
                             return ($selectedItem.length > 0)
                                 ? $selectedItem
@@ -2024,7 +2024,7 @@
                             shouldSearch = (isMultiple)
                                 ? (value.length > 0)
                                 : (value !== undefined && value !== null);
-                            strict     = (value === '' || value === false  || value === true)
+                            strict = (value === '' || value === false || value === true)
                                 ? true
                                 : strict || false;
                             if (shouldSearch) {
@@ -2283,7 +2283,7 @@
                             $nextSelectedItem,
                             elementIndex
                         ;
-                        elementIndex      = (direction == 'up')
+                        elementIndex = (direction == 'up')
                             ? $selectableItem.index($currentItem) - itemsPerPage
                             : $selectableItem.index($currentItem) + itemsPerPage;
                         isWithinRange = (direction == 'up')
@@ -2395,9 +2395,9 @@
                                 belowPage
                             ;
 
-                            $item       = $item || module.get.selectedItem();
-                            $menu       = $item.closest(selector.menu);
-                            hasActive   = ($item && $item.length > 0);
+                            $item = $item || module.get.selectedItem();
+                            $menu = $item.closest(selector.menu);
+                            hasActive = ($item && $item.length > 0);
                             forceScroll = (forceScroll !== undefined)
                                 ? forceScroll
                                 : false;
@@ -2411,11 +2411,11 @@
                                 menuScroll = $menu.scrollTop();
                                 menuOffset = $menu.offset().top;
                                 itemOffset = $item.offset().top;
-                                offset     = menuScroll - menuOffset + itemOffset;
+                                offset = menuScroll - menuOffset + itemOffset;
                                 if (!forceScroll) {
                                     menuHeight = $menu.height();
-                                    belowPage  = menuScroll + menuHeight < (offset + edgeTolerance);
-                                    abovePage  = ((offset - edgeTolerance) < menuScroll);
+                                    belowPage = menuScroll + menuHeight < (offset + edgeTolerance);
+                                    abovePage = ((offset - edgeTolerance) < menuScroll);
                                 }
                                 module.debug('Scrolling to active item', offset);
                                 if (forceScroll || abovePage || belowPage) {
@@ -2470,7 +2470,7 @@
                             if (alreadySelectedLetter) {
                                 $nextItem = $selectedItem.nextAll($item).eq(0);
                                 if (module.has.firstLetter($nextItem, letter)) {
-                                    $nextValue  = $nextItem;
+                                    $nextValue = $nextItem;
                                 }
                             }
                             // check all values
@@ -2528,7 +2528,7 @@
                             if (typeof text === 'boolean') {
                                 preventChangeTrigger = text;
                                 $selected = undefined;
-                                text   = undefined;
+                                text = undefined;
                             }
                             if (value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
                                 $input.removeClass(className.noselection);
@@ -2590,7 +2590,7 @@
                         exactly: function (value, $selectedItem, preventChangeTrigger) {
                             if (typeof $selectedItem === 'boolean') {
                                 preventChangeTrigger = $selectedItem;
-                                $selectedItem   = undefined;
+                                $selectedItem = undefined;
                             }
                             module.debug('Setting selected to exact values');
                             module.clear();
@@ -2600,7 +2600,7 @@
                             if (typeof $selectedItem === 'boolean') {
                                 keepSearchTerm = preventChangeTrigger;
                                 preventChangeTrigger = $selectedItem;
-                                $selectedItem   = undefined;
+                                $selectedItem = undefined;
                             }
                             var
                                 isMultiple = module.is.multiple()
@@ -2695,7 +2695,7 @@
                             if (settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
-                            $label =  $('<a />')
+                            $label = $('<a />')
                                 .addClass(className.label)
                                 .attr('data-' + metadata.value, escapedValue)
                                 .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className));
@@ -2821,7 +2821,7 @@
                                 message = message.replace('{maxCount}', settings.maxSelections);
                             }
                             if (hasTerm) {
-                                query   = term || module.get.query();
+                                query = term || module.get.query();
                                 message = message.replace('{term}', query);
                             }
                             return message;
@@ -2830,7 +2830,7 @@
                             if (typeof addedText === 'boolean') {
                                 preventChangeTrigger = addedText;
                                 $selectedItem = undefined;
-                                addedText   = undefined;
+                                addedText = undefined;
                             }
                             var
                                 currentValue = module.get.values(true),
@@ -3076,7 +3076,7 @@
                             }
                         },
                         diacritics: function (text) {
-                            return settings.ignoreDiacritics ?  text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                            return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
                         },
                     },
 
@@ -3114,8 +3114,8 @@
                             if (!$item || $item.length === 0 || typeof letter !== 'string') {
                                 return false;
                             }
-                            text        = module.get.choiceText($item, false);
-                            letter      = letter.toLowerCase();
+                            text = module.get.choiceText($item, false);
+                            letter = letter.toLowerCase();
                             firstLetter = String(text).charAt(0).toLowerCase();
                             return (letter == firstLetter);
                         },
@@ -3224,7 +3224,7 @@
                         animating: function ($subMenu) {
                             return ($subMenu)
                                 ? $subMenu.transition && $subMenu.transition('is animating')
-                                : $menu.transition    && $menu.transition('is animating');
+                                : $menu.transition && $menu.transition('is animating');
                         },
                         leftward: function ($subMenu) {
                             var $selectedMenu = $subMenu || $menu;
@@ -3566,7 +3566,7 @@
                             return value.replace(regExp.quote, '&quot;');
                         },
                         string: function (text) {
-                            text =  String(text);
+                            text = String(text);
                             return text.replace(regExp.escape, '\\$&');
                         },
                         htmlEntities: function (string) {
@@ -3649,10 +3649,10 @@
                                 previousTime
                             ;
                             if (settings.performance) {
-                                currentTime   = new Date().getTime();
-                                previousTime  = time || currentTime;
+                                currentTime = new Date().getTime();
+                                previousTime = time || currentTime;
                                 executionTime = currentTime - previousTime;
-                                time          = currentTime;
+                                time = currentTime;
                                 performance.push({
                                     'Name': message[0],
                                     'Arguments': [].slice.call(message, 1) || '',
@@ -3699,9 +3699,9 @@
                             response
                         ;
                         passedArguments = passedArguments || queryArguments;
-                        context         = context         || element;
+                        context = context || element;
                         if (typeof query == 'string' && object !== undefined) {
-                            query    = query.split(/[\. ]/);
+                            query = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
@@ -3764,62 +3764,62 @@
         verbose: false,
         performance: true,
 
-        on: 'click',    // what event should show menu action on item selection
+        on: 'click', // what event should show menu action on item selection
         action: 'activate', // action on item selection (nothing, activate, select, combo, hide, function(){})
 
-        values: false,      // specify values to use for dropdown
+        values: false, // specify values to use for dropdown
 
-        clearable: false,      // whether the value of the dropdown can be cleared
+        clearable: false, // whether the value of the dropdown can be cleared
 
         apiSettings: false,
-        selectOnKeydown: true,       // Whether selection should occur automatically when keyboard shortcuts used
-        minCharacters: 0,          // Minimum characters required to trigger API call
+        selectOnKeydown: true, // Whether selection should occur automatically when keyboard shortcuts used
+        minCharacters: 0, // Minimum characters required to trigger API call
 
-        filterRemoteData: false,      // Whether API results should be filtered after being returned for query term
-        saveRemoteData: true,       // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
+        filterRemoteData: false, // Whether API results should be filtered after being returned for query term
+        saveRemoteData: true, // Whether remote name/value pairs should be stored in sessionStorage to allow remote data to be restored on page refresh
 
-        throttle: 200,        // How long to wait after last user input to search remotely
+        throttle: 200, // How long to wait after last user input to search remotely
 
-        context: window,     // Context to use when determining if on screen
-        direction: 'auto',     // Whether dropdown should always open in one direction
-        keepOnScreen: true,       // Whether dropdown should check whether it is on screen before showing
+        context: window, // Context to use when determining if on screen
+        direction: 'auto', // Whether dropdown should always open in one direction
+        keepOnScreen: true, // Whether dropdown should check whether it is on screen before showing
 
-        match: 'both',     // what to match against with search selection (both, text, or label)
-        fullTextSearch: 'exact',    // search anywhere in value (set to 'exact' to require exact matches)
-        ignoreDiacritics: false,      // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
-        hideDividers: false,      // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
+        match: 'both', // what to match against with search selection (both, text, or label)
+        fullTextSearch: 'exact', // search anywhere in value (set to 'exact' to require exact matches)
+        ignoreDiacritics: false, // match results also if they contain diacritics of the same base character (for example searching for "a" will also match "á" or "â" or "à", etc...)
+        hideDividers: false, // Whether to hide any divider elements (specified in selector.divider) that are sibling to any items when searched (set to true will hide all dividers, set to 'empty' will hide them when they are not followed by a visible item)
 
-        placeholder: 'auto',     // whether to convert blank <select> values to placeholder text
-        preserveHTML: true,       // preserve html when selecting value
-        sortSelect: false,      // sort selection on init
+        placeholder: 'auto', // whether to convert blank <select> values to placeholder text
+        preserveHTML: true, // preserve html when selecting value
+        sortSelect: false, // sort selection on init
 
-        forceSelection: false,       // force a choice on blur with search selection
+        forceSelection: false, // force a choice on blur with search selection
 
-        allowAdditions: false,      // whether multiple select should allow user added values
-        ignoreCase: false,      // whether to consider case sensitivity when creating labels
-        ignoreSearchCase: true,       // whether to consider case sensitivity when filtering items
-        hideAdditions: true,       // whether or not to hide special message prompting a user they can enter a value
+        allowAdditions: false, // whether multiple select should allow user added values
+        ignoreCase: false, // whether to consider case sensitivity when creating labels
+        ignoreSearchCase: true, // whether to consider case sensitivity when filtering items
+        hideAdditions: true, // whether or not to hide special message prompting a user they can enter a value
 
-        maxSelections: false,      // When set to a number limits the number of selections to this count
-        useLabels: true,       // whether multiple select should filter currently active selections from choices
-        delimiter: ',',        // when multiselect uses normal <input> the values will be delimited with this character
+        maxSelections: false, // When set to a number limits the number of selections to this count
+        useLabels: true, // whether multiple select should filter currently active selections from choices
+        delimiter: ',', // when multiselect uses normal <input> the values will be delimited with this character
 
-        showOnFocus: false,      // show menu on focus
-        allowReselection: false,      // whether current value should trigger callbacks when reselected
-        allowTab: true,       // add tabindex to element
-        allowCategorySelection: false,      // allow elements with sub-menus to be selected
+        showOnFocus: false, // show menu on focus
+        allowReselection: false, // whether current value should trigger callbacks when reselected
+        allowTab: true, // add tabindex to element
+        allowCategorySelection: false, // allow elements with sub-menus to be selected
 
-        fireOnInit: false,      // Whether callbacks should fire when initializing dropdown values
+        fireOnInit: false, // Whether callbacks should fire when initializing dropdown values
 
-        transition: 'auto',     // auto transition will slide down or up based on direction
-        duration: 200,        // duration of transition
-        displayType: false,      // displayType of transition
+        transition: 'auto', // auto transition will slide down or up based on direction
+        duration: 200, // duration of transition
+        displayType: false, // displayType of transition
 
-        glyphWidth: 1.037,      // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
+        glyphWidth: 1.037, // widest glyph width in em (W is 1.037 em) used to calculate multiselect input width
 
-        headerDivider: true,       // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
+        headerDivider: true, // whether option headers should have an additional divider line underneath when converted from <select> <optgroup>
 
-        collapseOnActionable: true,      // whether the dropdown should collapse upon selection of an actionable item
+        collapseOnActionable: true, // whether the dropdown should collapse upon selection of an actionable item
 
         // label settings on multi-select
         label: {
@@ -3894,21 +3894,21 @@
 
         // property names for remote query
         fields: {
-            remoteValues: 'results',  // grouping for api results
-            values: 'values',   // grouping for all dropdown values
+            remoteValues: 'results', // grouping for api results
+            values: 'values', // grouping for all dropdown values
             disabled: 'disabled', // whether value should be disabled
-            name: 'name',     // displayed dropdown text
+            name: 'name', // displayed dropdown text
             description: 'description', // displayed dropdown description
             descriptionVertical: 'descriptionVertical', // whether description should be vertical
-            value: 'value',    // actual dropdown value
-            text: 'text',     // displayed text when selected
-            type: 'type',     // type of dropdown element
-            image: 'image',    // optional image path
+            value: 'value', // actual dropdown value
+            text: 'text', // displayed text when selected
+            type: 'type', // type of dropdown element
+            image: 'image', // optional image path
             imageClass: 'imageClass', // optional individual class for image
-            icon: 'icon',     // optional icon name
+            icon: 'icon', // optional icon name
             iconClass: 'iconClass', // optional individual class for icon (for example to use flag instead)
-            class: 'class',    // optional individual class for item/header
-            divider: 'divider',   // optional divider append for group headers
+            class: 'class', // optional individual class for item/header
+            divider: 'divider', // optional divider append for group headers
             actionable: 'actionable', // optional actionable item
         },
 
@@ -4023,7 +4023,7 @@
                 escape = $.fn.dropdown.settings.templates.escape,
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
-            html +=  '<i class="dropdown icon"></i>';
+            html += '<i class="dropdown icon"></i>';
             if (placeholder) {
                 html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
             } else {
@@ -4084,7 +4084,7 @@
                     if (isMenu) {
                         html += '<span class="' + deQuote(className.text) + '">';
                     }
-                    html +=   escape(option[fields.name] || '', preserveHTML);
+                    html += escape(option[fields.name] || '', preserveHTML);
                     if (isMenu) {
                         html += '</span>';
                         html += '<div class="' + deQuote(itemType) + '">';
