@@ -214,11 +214,11 @@
                         if (settings.throttle) {
                             clearTimeout(module.timer);
                             module.timer = setTimeout(function () {
-                                $context.triggerHandler('scrollchange' + eventNamespace, [ $context.scrollTop() ]);
+                                $context.triggerHandler('scrollchange' + eventNamespace, [$context.scrollTop()]);
                             }, settings.throttle);
                         } else {
                             requestAnimationFrame(function () {
-                                $context.triggerHandler('scrollchange' + eventNamespace, [ $context.scrollTop() ]);
+                                $context.triggerHandler('scrollchange' + eventNamespace, [$context.scrollTop()]);
                             });
                         }
                     },

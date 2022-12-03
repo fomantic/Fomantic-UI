@@ -251,7 +251,7 @@
                     if (settings.cache === 'local' && module.read.cachedResponse(url)) {
                         module.debug('Response returned from local cache');
                         module.request = module.create.request();
-                        module.request.resolveWith(context, [ module.read.cachedResponse(url) ]);
+                        module.request.resolveWith(context, [module.read.cachedResponse(url)]);
 
                         return;
                     }
@@ -685,13 +685,13 @@
                                 response = responder;
                             }
                             // simulating response
-                            mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
+                            mockedXHR.resolveWith(context, [response, textStatus, { responseText: response }]);
                         } else if (isFunction(asyncResponder)) {
                             asyncCallback = function (response) {
                                 module.debug('Async callback returned response', response);
 
                                 if (response) {
-                                    mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
+                                    mockedXHR.resolveWith(context, [response, textStatus, { responseText: response }]);
                                 } else {
                                     mockedXHR.rejectWith(context, [{ responseText: response }, status, httpMessage]);
                                 }
