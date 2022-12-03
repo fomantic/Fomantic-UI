@@ -316,10 +316,20 @@
                                 prevNextDay = isHour || isMinute ? day : 1,
                                 prevDate = new Date(year - yearChange, month - monthChange, prevNextDay - dayChange, hour),
                                 nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
-                                prevLast = isYear ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0) :
-                                    isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1),
-                                nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
-                                    isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1)
+                                prevLast = isYear
+                                    ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
+                                    : isMonth
+                                        ? new Date(year, 0, 0)
+                                        : isDay
+                                            ? new Date(year, month, 0)
+                                            : new Date(year, month, day, -1),
+                                nextFirst = isYear
+                                    ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
+                                    : isMonth
+                                        ? new Date(year + 1, 0, 1)
+                                        : isDay
+                                            ? new Date(year, month + 1, 1)
+                                            : new Date(year, month, day + 1)
                             ;
 
                             var tempMode = mode;
@@ -338,12 +348,18 @@
                                 row = $('<tr/>').appendTo(thead);
                                 cell = $('<th/>').attr('colspan', '' + columns).appendTo(row);
 
-                                var headerDate = isYear || isMonth ? new Date(year, 0, 1) :
-                                    isDay ? new Date(year, month, 1) : new Date(year, month, day, hour, minute);
+                                var headerDate = isYear || isMonth
+                                    ? new Date(year, 0, 1)
+                                    : isDay
+                                        ? new Date(year, month, 1)
+                                        : new Date(year, month, day, hour, minute);
                                 var headerText = $('<span/>').addClass(className.link).appendTo(cell);
                                 headerText.text(module.helper.dateFormat(formatter[mode + 'Header'], headerDate));
-                                var newMode = isMonth ? (settings.disableYear ? 'day' : 'year') :
-                                    isDay ? (settings.disableMonth ? 'year' : 'month') : 'day';
+                                var newMode = isMonth
+                                    ? (settings.disableYear ? 'day' : 'year')
+                                    : isDay
+                                        ? (settings.disableMonth ? 'year' : 'month')
+                                        : 'day';
                                 headerText.data(metadata.mode, newMode);
 
                                 if (p === 0) {
@@ -384,12 +400,22 @@
                                     cell.addClass(className.weekCell);
                                 }
                                 for (c = 0; c < textColumns; c++, i++) {
-                                    var cellDate = isYear ? new Date(i, month, 1, hour, minute) :
-                                        isMonth ? new Date(year, i, 1, hour, minute) : isDay ? new Date(year, month, i, hour, minute) :
-                                            isHour ? new Date(year, month, day, i) : new Date(year, month, day, hour, i * settings.minTimeGap);
-                                    var cellText = isYear ? i :
-                                        isMonth ? settings.text.monthsShort[i] : isDay ? cellDate.getDate() :
-                                            module.helper.dateFormat(formatter.cellTime, cellDate);
+                                    var cellDate = isYear
+                                        ? new Date(i, month, 1, hour, minute)
+                                        : isMonth
+                                            ? new Date(year, i, 1, hour, minute)
+                                            : isDay
+                                                ? new Date(year, month, i, hour, minute)
+                                                : isHour
+                                                    ? new Date(year, month, day, i)
+                                                    : new Date(year, month, day, hour, i * settings.minTimeGap);
+                                    var cellText = isYear
+                                        ? i
+                                        : isMonth
+                                            ? settings.text.monthsShort[i]
+                                            : isDay
+                                                ? cellDate.getDate()
+                                                : module.helper.dateFormat(formatter.cellTime, cellDate);
                                     cell = $('<td/>').addClass(className.cell).appendTo(row);
                                     cell.text(cellText);
                                     cell.data(metadata.date, cellDate);
@@ -785,9 +811,11 @@
                             return mode;
                         }
 
-                        return settings.type === 'time' ? 'hour' :
-                            settings.type === 'month' ? 'month' :
-                                settings.type === 'year' ? 'year' : 'day';
+                        return settings.type === 'time'
+                            ? 'hour'
+                            : settings.type === 'month'
+                                ? 'month'
+                                : settings.type === 'year' ? 'year' : 'day';
                     },
                     type: function () {
                         return $module.data(metadata.type) || settings.type;
@@ -976,8 +1004,11 @@
                             }
                         }
                     } else {
-                        var newMode = mode === 'year' ? (!settings.disableMonth ? 'month' : 'day') :
-                            mode === 'month' ? 'day' : mode === 'day' ? 'hour' : 'minute';
+                        var newMode = mode === 'year'
+                            ? (!settings.disableMonth ? 'month' : 'day')
+                            : mode === 'month'
+                                ? 'day'
+                                : mode === 'day' ? 'hour' : 'minute';
                         module.set.mode(newMode);
                         if (mode === 'hour' || (mode === 'day' && module.get.date())) {
                             // the user has chosen enough to consider a valid date/time has been chosen
@@ -1322,16 +1353,18 @@
                         minDate = minDate && new Date(minDate.getFullYear(), minDate.getMonth(), minDate.getDate(), minDate.getHours(), settings.minTimeGap * Math.ceil(minDate.getMinutes() / settings.minTimeGap));
                         var isTimeOnly = settings.type === 'time';
 
-                        return !date ? date :
-                            (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0) ?
-                                (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) :
-                                (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0) ?
-                                    (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate) :
-                                    date;
+                        return !date
+                            ? date
+                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
+                                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate)
+                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0)
+                                    ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
+                                    : date;
                     },
                     mergeDateTime: function (date, time) {
-                        return (!date || !time) ? time :
-                            new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
+                        return (!date || !time)
+                            ? time
+                            : new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
                     },
                     isTodayButton: function (element) {
                         return element.text() === settings.text.today;
@@ -1654,8 +1687,9 @@
 
                 if (!isDateOnly) {
                     // am/pm
-                    isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0 ? true :
-                        $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
+                    isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0
+                        ? true
+                        : $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
 
                     // time with ':'
                     for (i = 0; i < numbers.length; i++) {

@@ -70,6 +70,7 @@ module.exports = {
             ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
             ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
         }],
+        'operator-linebreak': ['error', 'before', { overrides: { '=': 'none' } }],
         'dot-notation': ['error', { allowKeywords: true }],
         'arrow-parens': ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

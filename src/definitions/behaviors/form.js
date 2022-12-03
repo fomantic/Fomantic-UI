@@ -543,9 +543,11 @@
                             parts = ancillary.split('..', 2);
                             if (!rule.prompt) {
                                 suffixPrompt = (
-                                    parts[0] === '' ? settings.prompt.maxValue.replace(/\{ruleValue\}/g, '{max}') :
-                                        parts[1] === '' ? settings.prompt.minValue.replace(/\{ruleValue\}/g, '{min}') :
-                                            settings.prompt.range
+                                    parts[0] === ''
+                                        ? settings.prompt.maxValue.replace(/\{ruleValue\}/g, '{max}')
+                                        : parts[1] === ''
+                                            ? settings.prompt.minValue.replace(/\{ruleValue\}/g, '{min}')
+                                            : settings.prompt.range
                                 );
                                 prompt += suffixPrompt.replace(/\{name\}/g, ' ' + settings.text.and);
                             }
