@@ -7,8 +7,8 @@ var
     // node dependencies
     console      = require('better-console'),
     fs           = require('fs'),
-    YAML         = require('yamljs');
-
+    YAML         = require('yamljs')
+;
 
 var data = {};
 

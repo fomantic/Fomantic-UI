@@ -17,10 +17,8 @@ var
     gulpConfig = {},
 
     // semantic.json settings
-    userConfig;
-
-
-
+    userConfig
+;
 
 /*******************************
           User Config

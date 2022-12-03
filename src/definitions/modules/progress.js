@@ -200,7 +200,8 @@
                     bind: {
                         transitionEnd: function(callback) {
                             var
-                                transitionEnd = module.get.transitionEnd();
+                                transitionEnd = module.get.transitionEnd()
+                            ;
                             $bars
                                 .one(transitionEnd + eventNamespace, function(event) {
                                     clearTimeout(module.failSafeTimer);
@@ -274,7 +275,7 @@
                                 left = (total !== false)
                                     ? Math.max(0,total - value)
                                     : (100 - percent)
-                                ;
+                            ;
                             templateText = templateText || '';
                             templateText = templateText
                                 .replace('{value}', value)
@@ -352,7 +353,7 @@
                                 displayPercent = (barWidth > minDisplay)
                                     ? (barWidth / totalWidth * 100)
                                     : module.percent
-                                ;
+                            ;
                             return (settings.precision > 0)
                                 ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
                                 : Math.round(displayPercent);
@@ -519,7 +520,8 @@
                                 var roundedPercents = percents.map(function (percent) {
                                     return (autoPrecision > 0)
                                         ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
-                                        : Math.round(percent);
+                                        : Math.round(percent)
+                                ;
                                 });
                                 module.percent = roundedPercents;
                                 if (hasTotal) {
@@ -548,7 +550,8 @@
                             animating = true;
                             module.interval = setInterval(function() {
                                 var
-                                    isInDOM = $.contains(document.documentElement, element);
+                                    isInDOM = $.contains(document.documentElement, element)
+                                ;
                                 if(!isInDOM) {
                                     clearInterval(module.interval);
                                     animating = false;
@@ -709,7 +712,8 @@
                     update: {
                         toNextValue: function() {
                             var
-                                nextValue = module.nextValue;
+                                nextValue = module.nextValue
+                            ;
                             if(nextValue) {
                                 module.debug('Update interval complete using last updated value', nextValue);
                                 module.update.progress(nextValue);
@@ -723,7 +727,8 @@
                             }
                             var percentCompletes = module.helper.forceArray(values).map(function(value) {
                                 var
-                                    percentComplete;
+                                    percentComplete
+                                ;
                                 value = module.get.numericValue(value);
                                 if (value === false) {
                                     module.error(error.nonNumeric, value);
@@ -865,7 +870,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

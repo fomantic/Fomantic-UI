@@ -266,7 +266,8 @@
                     determine: {
                         isValid: function() {
                             var
-                                allValid = true;
+                                allValid = true
+                            ;
                             $.each(validation, function(fieldName, field) {
                                 if( !( module.validate.field(field, fieldName, true) ) ) {
                                     allValid = false;
@@ -328,7 +329,8 @@
                         },
                         valid: function(field, showErrors) {
                             var
-                                allValid = true;
+                                allValid = true
+                            ;
                             if(field) {
                                 module.verbose('Checking if field is valid', field);
                                 return module.validate.field(validation[field], field, !!showErrors);
@@ -504,7 +506,8 @@
                         },
                         fieldsFromShorthand: function(fields) {
                             var
-                                fullFields = {};
+                                fullFields = {}
+                            ;
                             $.each(fields, function(name, rules) {
                                 if (!Array.isArray(rules) && typeof rules === 'object') {
                                     fullFields[name] = rules;
@@ -575,7 +578,7 @@
                                     isLegacySettings = (keys.length > 0)
                                         ? (parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined)
                                         : false
-                                    ;
+                                ;
                                 if(isLegacySettings) {
                                     // 1.x (ducktyped)
                                     settings   = $.extend(true, {}, $.fn.form.settings, legacyParameters);
@@ -636,7 +639,8 @@
                         },
                         fields: function(fields) {
                             var
-                                $fields = $();
+                                $fields = $()
+                            ;
                             $.each(fields, function(index, name) {
                                 $fields = $fields.add( module.get.field(name) );
                             });
@@ -691,7 +695,7 @@
                                     isChecked    = (isCheckbox)
                                         ? $field.is(':checked')
                                         : false
-                                    ;
+                                ;
                                 if(name) {
                                     if(isMultiple) {
                                         name = name.replace('[]', '');
@@ -920,7 +924,7 @@
                                 rules = Array.isArray(rule)
                                     ? rule
                                     : [rule]
-                                ;
+                            ;
                             if(validation[field] === undefined || !Array.isArray(validation[field].rules)) {
                                 return;
                             }
@@ -941,7 +945,7 @@
                                 fields = Array.isArray(field)
                                     ? field
                                     : [field]
-                                ;
+                            ;
                             $.each(fields, function(index, field) {
                                 module.remove.rule(field);
                             });
@@ -1004,7 +1008,7 @@
                                     value      = (isCheckbox)
                                         ? $el.is(':checked')
                                         : $el.val()
-                                    ;
+                                ;
                                 if (isDropdown) {
                                     $parent.dropdown('save defaults');
                                 }
@@ -1022,7 +1026,8 @@
                         },
                         value: function (field, value) {
                             var
-                                fields = {};
+                                fields = {}
+                            ;
                             fields[field] = value;
                             return module.set.values.call(element, fields);
                         },
@@ -1128,7 +1133,8 @@
                                     hasEmptyRule = validation
                                         ? $.grep(validation.rules, function(rule) { return rule.type == 'empty'; }) !== 0
                                         : false,
-                                    identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate);
+                                    identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)
+                                ;
                                 if (isRequired && !isDisabled && !hasEmptyRule && identifier !== undefined) {
                                     if (isCheckbox) {
                                         module.verbose("Adding 'checked' rule on field", identifier);
@@ -1285,13 +1291,14 @@
                                 invalidFields = [],
                                 isCheckbox = $field.is(selector.checkbox),
                                 isValid = function(field){
-                                    var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val())
-                                ;// cast to string avoiding encoding special values
+                                    var value = (isCheckbox ? $(field).filter(':checked').val() : $(field).val());
+                                    // cast to string avoiding encoding special values
                                     value = (value === undefined || value === '' || value === null)
                                         ? ''
                                         : (settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim ? String(value + '').trim() : String(value + '');
                                     return ruleFunction.call(field, value, ancillary, $module);
-                                };
+                                }
+                            ;
                             if( !isFunction(ruleFunction) ) {
                                 module.error(error.noRule, ruleName);
                                 return;
@@ -1605,7 +1612,8 @@
             // template that produces error message
             error: function(errors) {
                 var
-                    html = '<ul class="list">';
+                    html = '<ul class="list">'
+                ;
                 $.each(errors, function(index, value) {
                     html += '<li>' + value + '</li>';
                 });
@@ -1619,7 +1627,8 @@
                     return errors[0];
                 }
                 var
-                    html = '<ul class="ui list">';
+                    html = '<ul class="ui list">'
+                ;
                 $.each(errors, function(index, value) {
                     html += '<li>' + value + '</li>';
                 });

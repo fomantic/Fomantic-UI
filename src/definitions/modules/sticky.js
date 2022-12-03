@@ -60,16 +60,17 @@
                     instance              = $module.data(moduleNamespace),
 
                     requestAnimationFrame = window.requestAnimationFrame
-          || window.mozRequestAnimationFrame
-          || window.webkitRequestAnimationFrame
-          || window.msRequestAnimationFrame
-          || function(callback) { setTimeout(callback, 0); },
+                        || window.mozRequestAnimationFrame
+                        || window.webkitRequestAnimationFrame
+                        || window.msRequestAnimationFrame
+                        || function(callback) { setTimeout(callback, 0); },
 
                     element         = this,
 
                     documentObserver,
                     observer,
-                    module;
+                    module
+                ;
 
                 module      = {
 
@@ -232,7 +233,8 @@
                     supports: {
                         sticky: function() {
                             var
-                                $element = $('<div/>');
+                                $element = $('<div/>')
+                            ;
                             $element.addClass(className.supported);
                             return($element.css('position').match('sticky'));
                         },
@@ -305,7 +307,8 @@
                     get: {
                         direction: function(scroll) {
                             var
-                                direction = 'down';
+                                direction = 'down'
+                            ;
                             scroll = scroll || $scroll.scrollTop();
                             if(module.lastScroll && module.lastScroll > scroll) {
                                 direction = 'up';
@@ -374,7 +377,8 @@
                         },
                         containerSize: function() {
                             var
-                                tagName = $container[0].tagName;
+                                tagName = $container[0].tagName
+                            ;
                             if(tagName === 'HTML' || tagName === 'body') {
                                 // this can trigger for too many reasons
                                 //module.error(error.container, tagName, $module);
@@ -403,7 +407,8 @@
                         },
                         minimumSize: function() {
                             var
-                                element   = module.cache.element;
+                                element   = module.cache.element
+                            ;
                             $container
                                 .css('min-height', element.height);
                         },
@@ -809,7 +814,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

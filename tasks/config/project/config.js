@@ -7,9 +7,8 @@ var
     fs       = require('fs'),
     path     = require('path'),
 
-    defaults = require('../defaults');
-
-
+    defaults = require('../defaults')
+;
 
 /*******************************
             Exports
@@ -38,7 +37,8 @@ module.exports = {
                     // otherwise recurse
                     walk(nextDirectory, file);
                 }
-            };
+            }
+        ;
 
         // start walk from outside require-dot-files directory
         file      = file || defaults.files.config;

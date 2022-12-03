@@ -16,8 +16,8 @@ var
     tasks     = require('../config/tasks'),
     install   = require('../config/project/install'),
 
-    log       = tasks.log;
-
+    log       = tasks.log
+;
 
 function build(src, config) {
     return gulp.src(src, {base: config.paths.source.themes})

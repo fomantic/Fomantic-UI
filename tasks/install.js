@@ -50,8 +50,8 @@ var
     folders        = install.folders,
     regExp         = install.regExp,
     settings       = install.settings,
-    source         = install.source;
-
+    source         = install.source
+;
 
 // Export install task
 module.exports = function (callback) {
@@ -340,7 +340,8 @@ module.exports = function (callback) {
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
-                siteVariable = "@siteFolder   : '" + pathToSite + "/';";
+                siteVariable = "@siteFolder   : '" + pathToSite + "/';"
+            ;
 
             // rewrite site variable in theme.less
             console.info('Adjusting @siteFolder to: ', pathToSite + '/');
@@ -368,7 +369,8 @@ module.exports = function (callback) {
         gulp.task('create semantic.json', function () {
 
             var
-                jsonConfig = install.createJSON(answers);
+                jsonConfig = install.createJSON(answers)
+            ;
 
             // adjust variables in theme.less
             if (fs.existsSync(installPaths.config)) {

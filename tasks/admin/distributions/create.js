@@ -31,10 +31,8 @@ var
 
     // shorthand
     version         = project.version,
-    output          = config.paths.output;
-
-
-
+    output          = config.paths.output
+;
 
 module.exports = function(callback) {
     var

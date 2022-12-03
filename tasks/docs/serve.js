@@ -22,9 +22,8 @@ var
 
     css         = require('../build/css'),
     js          = require('../build/javascript'),
-    assets      = require('../build/assets');
-
-
+    assets      = require('../build/assets')
+;
 
 module.exports = function () {
 

@@ -8,8 +8,8 @@ var
     defaults       = require('../defaults'),
     release        = require('./release'),
 
-    requireDotFile = require('require-dot-file');
-
+    requireDotFile = require('require-dot-file')
+;
 
 /*******************************
           When to Ask
@@ -85,7 +85,8 @@ module.exports = {
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function() {
         var
-            config = when.hasConfig();
+            config = when.hasConfig()
+        ;
         return config['autoInstall'];
     },
 
@@ -122,7 +123,8 @@ module.exports = {
                 }
                 // recurse downward
                 return walk(nextDirectory);
-            };
+            }
+        ;
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);
@@ -148,7 +150,8 @@ module.exports = {
                 }
                 // recurse downward
                 return walk(nextDirectory);
-            };
+            }
+        ;
         // start walk from current directory if none specified
         directory = directory || (__dirname + path.sep);
         return walk(directory);

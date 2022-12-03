@@ -194,8 +194,10 @@
                                     getItem: function(key) {
                                         var cookies = document.cookie.split('; ');
                                         for (var i = 0, il = cookies.length; i < il; i++) {
-                                            var parts    = cookies[i].split('='),
-                                                foundKey = parts[0].replace(/(%[\dA-F]{2})+/gi, decodeURIComponent);
+                                            var
+                                                parts    = cookies[i].split('='),
+                                                foundKey = parts[0].replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+                                            ;
                                             if (key === foundKey) {
                                                 return parts[1] || '';
                                             }
@@ -211,7 +213,8 @@
                         },
                         storageOptions: function() {
                             var
-                                options = {};
+                                options = {}
+                            ;
                             if(settings.expires) {
                                 options.expires = module.get.expirationDate(settings.expires);
                             }
@@ -238,7 +241,8 @@
                     storage: {
                         set: function(key, value) {
                             var
-                                options = module.get.storageOptions();
+                                options = module.get.storageOptions()
+                            ;
                             if(storage === window.localStorage && options.expires) {
                                 module.debug('Storing expiration value in localStorage', key, options.expires);
                                 storage.setItem(key + settings.expirationKey, options.expires );
@@ -253,7 +257,8 @@
                         },
                         get: function(key) {
                             var
-                                storedValue;
+                                storedValue
+                            ;
                             storedValue = storage.getItem(key);
                             if(storage === window.localStorage) {
                                 var expiration = storage.getItem(key + settings.expirationKey);
@@ -270,7 +275,8 @@
                         },
                         remove: function(key) {
                             var
-                                options = module.get.storageOptions();
+                                options = module.get.storageOptions()
+                            ;
                             options.expires = module.get.expirationDate(-1);
                             if(storage === window.localStorage) {
                                 storage.removeItem(key + settings.expirationKey);
@@ -401,7 +407,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

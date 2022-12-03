@@ -40,8 +40,8 @@ const
     filenames    = tasks.filenames,
     comments     = tasks.regExp.comments,
     log          = tasks.log,
-    settings     = tasks.settings;
-
+    settings     = tasks.settings
+;
 
 /**
  * Builds the css

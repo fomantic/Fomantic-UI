@@ -39,12 +39,13 @@
             queryArguments = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
-      || window.mozRequestAnimationFrame
-      || window.webkitRequestAnimationFrame
-      || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
+                || window.mozRequestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.msRequestAnimationFrame
+                || function(callback) { setTimeout(callback, 0); },
 
-            returnedValue;
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -121,10 +122,12 @@
                                 $actions.empty();
                             }
                             settings.actions.forEach(function (el) {
-                                var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                var
+                                    icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                     cls = module.helpers.deQuote(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {};
+                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
                                     'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
@@ -292,7 +295,8 @@
 
                     attachEvents: function(selector, event) {
                         var
-                            $toggle = $(selector);
+                            $toggle = $(selector)
+                        ;
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
@@ -374,7 +378,8 @@
                         },
                         closeKeyUp: function(event){
                             var
-                                keyCode   = event.which;
+                                keyCode   = event.which
+                            ;
                             if ((keyCode === settings.keys.enter || keyCode === settings.keys.space) && $module.hasClass(className.front)) {
                                 module.hide();
                             }
@@ -382,7 +387,8 @@
                         inputKeyDown: {
                             first: function(event) {
                                 var
-                                    keyCode = event.which;
+                                    keyCode = event.which
+                                ;
                                 if (keyCode === settings.keys.tab && event.shiftKey) {
                                     $inputs.last().trigger('focus');
                                     event.preventDefault();
@@ -390,7 +396,8 @@
                             },
                             last: function(event) {
                                 var
-                                    keyCode = event.which;
+                                    keyCode = event.which
+                                ;
                                 if (keyCode === settings.keys.tab && !event.shiftKey) {
                                     $inputs.first().trigger('focus');
                                     event.preventDefault();
@@ -448,7 +455,8 @@
                         },
                         keyboard: function(event) {
                             var
-                                keyCode   = event.which;
+                                keyCode   = event.which
+                            ;
                             if(keyCode === settings.keys.escape) {
                                 if(settings.closable) {
                                     module.debug('Escape key pressed hiding modal');
@@ -576,7 +584,8 @@
 
                     hideModal: function(callback, keepDimmed, hideOthersToo) {
                         var
-                            $previousModal = $otherModals.filter('.' + className.active).last();
+                            $previousModal = $otherModals.filter('.' + className.active).last()
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -669,7 +678,8 @@
 
                     hideAll: function(callback) {
                         var
-                            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating);
+                            $visibleModals = $allModals.filter('.' + className.active + ', .' + className.animating)
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -691,7 +701,8 @@
 
                     hideOthers: function(callback) {
                         var
-                            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating);
+                            $visibleModals = $otherModals.filter('.' + className.active + ', .' + className.animating)
+                        ;
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
@@ -732,8 +743,10 @@
                         },
                         bodyMargin: function() {
                             initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
-                            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                            var
+                                bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
+                            ;
                             tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                         },
                     },
@@ -748,8 +761,10 @@
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
-                                var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+                                var
+                                    el = $(this),
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                ;
                                 el.css(attribute, '');
                             });
                         },
@@ -843,7 +858,8 @@
                                 },
                                 escapedChar  = function(chr) {
                                     return escape[chr];
-                                };
+                                }
+                            ;
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -954,7 +970,7 @@
                                 $input     = ($autofocus.length > 0)
                                     ? $autofocus.first()
                                     : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
-                                ;
+                            ;
                             if($input.length > 0) {
                                 $input.trigger('focus');
                             }
@@ -965,8 +981,10 @@
                                 $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
                             }
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
-                                var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+                                var
+                                    el = $(this),
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                ;
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
@@ -1434,9 +1452,11 @@
             }
         },
         alert: function () {
-            var settings = this.get.settings(),
+            var
+                settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
-                approveFn = args.handler;
+                approveFn = args.handler
+            ;
             return {
                 title: args.title,
                 content: args.content,
@@ -1449,10 +1469,12 @@
             };
         },
         confirm: function () {
-            var settings = this.get.settings(),
+            var
+                settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 approveFn = function(){args.handler(true);},
-                denyFn = function(){args.handler(false);};
+                denyFn = function(){args.handler(false);}
+            ;
             return {
                 title: args.title,
                 content: args.content,
@@ -1470,16 +1492,20 @@
             };
         },
         prompt: function () {
-            var $this    = this,
+            var
+                $this    = this,
                 settings = this.get.settings(),
                 args     = settings.templates.getArguments(arguments),
                 input    = $($.parseHTML(args.content)).filter('.ui.input'),
                 approveFn = function(){
-                    var settings = $this.get.settings(),
-                        inputField = $this.get.element().find(settings.selector.prompt)[0];
+                    var
+                        settings = $this.get.settings(),
+                        inputField = $this.get.element().find(settings.selector.prompt)[0]
+                    ;
                     args.handler($(inputField).val());
                 },
-                denyFn = function(){args.handler(null);};
+                denyFn = function(){args.handler(null);}
+            ;
             if (input.length === 0) {
                 args.content += '<p><div class="'+this.helpers.deQuote(settings.className.prompt)+'"><input placeholder="'+this.helpers.deQuote(args.placeholder || '')+'" type="text" value="'+this.helpers.deQuote(args.defaultValue || '')+'"></div></p>';
             }

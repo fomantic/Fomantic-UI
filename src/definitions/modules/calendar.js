@@ -145,8 +145,10 @@
                                 } else {
                                     //prepend the popup element to the activator's parent so that it has less chance of messing with
                                     //the styling (eg input action button needs to be the last child to have correct border radius)
-                                    var $activatorParent = $activator.parent(),
-                                        domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo';
+                                    var
+                                        $activatorParent = $activator.parent(),
+                                        domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo'
+                                    ;
                                     $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
                                 }
                             }
@@ -224,7 +226,8 @@
                     trigger: {
                         change: function() {
                             var
-                                inputElement = $input[0];
+                                inputElement = $input[0]
+                            ;
                             if(inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
@@ -306,7 +309,7 @@
                                         isMonth ? new Date(year, 0, 0) : isDay ? new Date(year, month, 0) : new Date(year, month, day, -1),
                                     nextFirst = isYear ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1) :
                                         isMonth ? new Date(year + 1, 0, 1) : isDay ? new Date(year, month + 1, 1) : new Date(year, month, day + 1)
-                                    ;
+                                ;
 
                                 var tempMode = mode;
                                 if (isDay && settings.showWeekNumbers){
@@ -1004,7 +1007,8 @@
                                 return format.call(module, date, settings);
                             }
 
-                            var D = date.getDate(),
+                            var
+                                D = date.getDate(),
                                 M = date.getMonth(),
                                 Y = date.getFullYear(),
                                 d = date.getDay(),
@@ -1041,7 +1045,8 @@
                                     S: ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
                                     w: w,
                                     ww: ('0'+w).slice(-2),
-                                };
+                                }
+                            ;
                             return format.replace(settings.regExp.token, function (match) {
                                 if (match in tokens) {
                                     return tokens[match];
@@ -1423,7 +1428,8 @@
                             $.each(query, function (depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
                                 }

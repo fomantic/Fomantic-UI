@@ -185,7 +185,7 @@
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.show
                                     : settings.delay
-                                ;
+                            ;
                             clearTimeout(module.hideTimer);
                             if(!openedWithTouch || (openedWithTouch && settings.addTouchEvents) ) {
                                 module.showTimer = setTimeout(module.show, delay);
@@ -196,7 +196,7 @@
                                 delay = ($.isPlainObject(settings.delay))
                                     ? settings.delay.hide
                                     : settings.delay
-                                ;
+                            ;
                             clearTimeout(module.showTimer);
                             module.hideTimer = setTimeout(module.hide, delay);
                         },
@@ -548,7 +548,8 @@
                             // if popup offset context is not same as target, then adjust calculations
                             if($popupOffsetParent[0] !== $offsetParent[0]) {
                                 var
-                                    popupOffset        = $popupOffsetParent.offset();
+                                    popupOffset        = $popupOffsetParent.offset()
+                                ;
                                 calculations.target.top -= popupOffset.top;
                                 calculations.target.left -= popupOffset.left;
                                 calculations.parent.width = $popupOffsetParent.outerWidth();
@@ -1062,7 +1063,8 @@
                         },
                         offstage: function(distanceFromBoundary, position) {
                             var
-                                offstage = [];
+                                offstage = []
+                            ;
                             // return boundaries that have been surpassed
                             $.each(distanceFromBoundary, function(direction, distance) {
                                 if(distance < -settings.jitter) {
@@ -1230,7 +1232,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -1466,7 +1469,8 @@
                     },
                     escapedChar  = function(chr) {
                         return escape[chr];
-                    };
+                    }
+                ;
                 if(shouldEscape.test(string)) {
                     string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                     return string.replace(badChars, escapedChar);

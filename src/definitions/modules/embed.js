@@ -112,7 +112,8 @@
 
                     create: function() {
                         var
-                            placeholder = module.get.placeholder();
+                            placeholder = module.get.placeholder()
+                        ;
                         if(placeholder) {
                             module.createPlaceholder();
                         }
@@ -123,7 +124,8 @@
 
                     createPlaceholder: function(placeholder) {
                         var
-                            icon  = module.get.icon();
+                            icon  = module.get.icon()
+                        ;
                         placeholder = placeholder || module.get.placeholder();
                         $module.html( templates.placeholder(placeholder, icon) );
                         module.debug('Creating placeholder for embed', placeholder, icon);
@@ -242,7 +244,8 @@
                         },
                         source: function(url) {
                             var
-                                matchedSource = false;
+                                matchedSource = false
+                            ;
                             url = url || module.get.url();
                             if(url) {
                                 $.each(sources, function(name, source) {
@@ -256,7 +259,8 @@
                         },
                         icon: function() {
                             var
-                                source = module.get.source();
+                                source = module.get.source()
+                            ;
                             return (sources[source] !== undefined)
                                 ? sources[source].icon
                                 : false;
@@ -337,7 +341,7 @@
                                 parameters = (sources[source] && sources[source].parameters !== undefined)
                                     ? sources[source].parameters(settings)
                                     : {}
-                                ;
+                            ;
                             extraParameters = extraParameters || settings.parameters;
                             if(extraParameters) {
                                 parameters = $.extend({}, parameters, extraParameters);
@@ -495,7 +499,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -651,15 +656,17 @@
                 return String(string).replace(/"/g,encode ? '&quot;' : '');
             },
             iframe: function(url, parameters) {
-                var src = url,
-                    deQuote = $.fn.embed.settings.templates.deQuote;
+                var
+                    src = url,
+                    deQuote = $.fn.embed.settings.templates.deQuote
+                ;
                 if (parameters) {
                     src += '?' + parameters;
                 }
                 return ''
-        + '<iframe src="' + deQuote(src) + '"'
-        + ' width="100%" height="100%"'
-        + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
+                    + '<iframe src="' + deQuote(src) + '"'
+                    + ' width="100%" height="100%"'
+                    + ' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>';
             },
             placeholder: function(image, icon) {
                 var

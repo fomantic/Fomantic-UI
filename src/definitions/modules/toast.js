@@ -236,10 +236,12 @@
                                     }
                                 }
                                 settings.actions.forEach(function (el) {
-                                    var icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                    var
+                                        icon = el[fields.icon] ? '<i '+(el[fields.text] ? 'aria-hidden="true"' : '')+' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
                                         text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                         cls = module.helpers.deQuote(el[fields.class] || ''),
-                                        click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {};
+                                        click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                    ;
                                     $actions.append($('<button/>', {
                                         html: icon + text,
                                         'aria-label': (el[fields.text] || el[fields.icon] || '').replace(/<[^>]+(>|$)/g,''),
@@ -566,7 +568,8 @@
                                 },
                                 escapedChar  = function(chr) {
                                     return escape[chr];
-                                };
+                                }
+                            ;
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -707,7 +710,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

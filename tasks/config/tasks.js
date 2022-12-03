@@ -2,8 +2,8 @@ var
     browserslist = require('browserslist'),
     console = require('better-console'),
     config  = require('./user'),
-    release = require('./project/release');
-
+    release = require('./project/release')
+;
 
 var defaultBrowsers = browserslist(browserslist.defaults);
 var userBrowsers = browserslist();

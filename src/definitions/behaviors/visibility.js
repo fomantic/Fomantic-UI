@@ -64,17 +64,18 @@
                     instance        = $module.data(moduleNamespace),
 
                     requestAnimationFrame = window.requestAnimationFrame
-          || window.mozRequestAnimationFrame
-          || window.webkitRequestAnimationFrame
-          || window.msRequestAnimationFrame
-          || function(callback) { setTimeout(callback, 0); },
+                        || window.mozRequestAnimationFrame
+                        || window.webkitRequestAnimationFrame
+                        || window.msRequestAnimationFrame
+                        || function(callback) { setTimeout(callback, 0); },
 
                     element         = this,
                     disabled        = false,
 
                     contextObserver,
                     observer,
-                    module;
+                    module
+                ;
 
                 module = {
 
@@ -280,7 +281,8 @@
                         },
                         image: function() {
                             var
-                                src = $module.data(metadata.src);
+                                src = $module.data(metadata.src)
+                            ;
                             if(src) {
                                 module.verbose('Lazy loading image', src);
                                 settings.once           = true;
@@ -395,12 +397,14 @@
                     is: {
                         onScreen: function() {
                             var
-                                calculations   = module.get.elementCalculations();
+                                calculations   = module.get.elementCalculations()
+                            ;
                             return calculations.onScreen;
                         },
                         offScreen: function() {
                             var
-                                calculations   = module.get.elementCalculations();
+                                calculations   = module.get.elementCalculations()
+                            ;
                             return calculations.offScreen;
                         },
                         visible: function() {
@@ -414,7 +418,7 @@
                                 overflowY = ($context[0] !== window)
                                     ? $context.css('overflow-y')
                                     : false
-                                ;
+                            ;
                             return (overflowY == 'auto' || overflowY == 'scroll');
                         },
                         horizontallyScrollableContext: function() {
@@ -422,7 +426,7 @@
                                 overflowX = ($context[0] !== window)
                                     ? $context.css('overflow-x')
                                     : false
-                                ;
+                            ;
                             return (overflowX == 'auto' || overflowX == 'scroll');
                         },
                     },
@@ -492,7 +496,8 @@
 
                     passed: function(amount, newCallback) {
                         var
-                            calculations   = module.get.elementCalculations();
+                            calculations   = module.get.elementCalculations()
+                        ;
                         // assign callback
                         if(amount && newCallback) {
                             settings.onPassed[amount] = newCallback;
@@ -817,7 +822,8 @@
                         occurred: function(callback) {
                             if(callback) {
                                 var
-                                    occurred = module.cache.occurred;
+                                    occurred = module.cache.occurred
+                                ;
                                 if(occurred[callback] !== undefined && occurred[callback] === true) {
                                     module.debug('Callback can now be called again', callback);
                                     module.cache.occurred[callback] = false;
@@ -930,7 +936,8 @@
                         },
                         screenCalculations: function() {
                             var
-                                scroll = module.get.scroll();
+                                scroll = module.get.scroll()
+                            ;
                             module.save.direction();
                             module.cache.screen.top    = scroll;
                             module.cache.screen.bottom = scroll + module.cache.screen.height;
@@ -951,7 +958,8 @@
                     get: {
                         pixelsPassed: function(amount) {
                             var
-                                element = module.get.elementCalculations();
+                                element = module.get.elementCalculations()
+                            ;
                             if(amount.search('%') > -1) {
                                 return ( element.height * (parseInt(amount, 10) / 100) );
                             }
@@ -1123,7 +1131,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

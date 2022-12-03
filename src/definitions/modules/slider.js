@@ -145,10 +145,10 @@
                             }
                             if($module.find('.inner').length == 0) {
                                 $module.append("<div class='inner'>"
-                             + "<div class='track'></div>"
-                             + "<div class='track-fill'></div>"
-                             + "<div class='thumb'></div>"
-                             + '</div>');
+                                    + "<div class='track'></div>"
+                                    + "<div class='track-fill'></div>"
+                                    + "<div class='thumb'></div>"
+                                    + '</div>');
                             }
                             precision = module.get.precision();
                             $thumb = $module.find('.thumb:not(.second)');
@@ -588,10 +588,12 @@
                             return settings.min;
                         },
                         max: function() {
-                            var step = module.get.step(),
+                            var
+                                step = module.get.step(),
                                 min = module.get.min(),
                                 quotient = step === 0 ? 0 : Math.floor((settings.max - min) / step),
-                                remainder = step === 0 ? 0 : (settings.max - min) % step;
+                                remainder = step === 0 ? 0 : (settings.max - min) % step
+                            ;
                             return remainder === 0 ? settings.max : min + quotient * step;
                         },
                         step: function() {
@@ -687,10 +689,8 @@
                     determine: {
                         pos: function(pagePos) {
                             return module.is.reversed()
-                                ?
-                                module.get.trackStartPos() - pagePos + module.get.trackOffset()
-                                :
-                                pagePos - module.get.trackOffset() - module.get.trackStartPos();
+                                ? module.get.trackStartPos() - pagePos + module.get.trackOffset()
+                                : pagePos - module.get.trackOffset() - module.get.trackStartPos();
                         },
                         closestThumb: function(eventPos) {
                             var
@@ -714,12 +714,11 @@
                             return thumbDelta <= secondThumbDelta ? thumbPos : secondThumbPos;
                         },
                         thumbPos: function($element) {
-                            var pos =
-              module.is.vertical()
-                  ?
-                  module.is.reversed() ? $element.css('bottom') : $element.css('top')
-                  :
-                  module.is.reversed() ? $element.css('right') : $element.css('left');
+                            var
+                                pos = module.is.vertical()
+                                    ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
+                                    : module.is.reversed() ? $element.css('right') : $element.css('left')
+                            ;
                             return pos;
                         },
                         positionFromValue: function(val) {
@@ -821,34 +820,22 @@
                         keyMovement: function(event) {
                             var
                                 key = event.which,
-                                downArrow =
-                module.is.vertical()
-                    ?
-                    module.is.reversed() ? keys.downArrow : keys.upArrow
-                    :
-                    keys.downArrow
+                                downArrow = module.is.vertical()
+                                    ? module.is.reversed() ? keys.downArrow : keys.upArrow
+                                    : keys.downArrow
                                 ,
-                                upArrow =
-                module.is.vertical()
-                    ?
-                    module.is.reversed() ? keys.upArrow : keys.downArrow
-                    :
-                    keys.upArrow
+                                upArrow = module.is.vertical()
+                                    ? module.is.reversed() ? keys.upArrow : keys.downArrow
+                                    : keys.upArrow
                                 ,
-                                leftArrow =
-                !module.is.vertical()
-                    ?
-                    module.is.reversed() ? keys.rightArrow : keys.leftArrow
-                    :
-                    keys.leftArrow
+                                leftArrow = !module.is.vertical()
+                                    ? module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                                    : keys.leftArrow
                                 ,
-                                rightArrow =
-                !module.is.vertical()
-                    ?
-                    module.is.reversed() ? keys.leftArrow : keys.rightArrow
-                    :
-                    keys.rightArrow
-                ;
+                                rightArrow = !module.is.vertical()
+                                    ? module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                                    : keys.rightArrow
+                            ;
                             if(key == downArrow || key == leftArrow) {
                                 return SINGLE_BACKSTEP;
                             } else if(key == upArrow || key == rightArrow) {
@@ -1038,12 +1025,9 @@
                             var
                                 startMargin = module.get.trackStartMargin(),
                                 endMargin   = module.get.trackEndMargin(),
-                                posDir =
-                module.is.vertical()
-                    ?
-                    module.is.reversed() ? 'bottom' : 'top'
-                    :
-                    module.is.reversed() ? 'right' : 'left',
+                                posDir = module.is.vertical()
+                                    ? module.is.reversed() ? 'bottom' : 'top'
+                                    : module.is.reversed() ? 'right' : 'left',
                                 startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
                             ;
                             var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
@@ -1215,7 +1199,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

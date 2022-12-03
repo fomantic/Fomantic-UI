@@ -41,10 +41,10 @@
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
-      || window.mozRequestAnimationFrame
-      || window.webkitRequestAnimationFrame
-      || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
+                || window.mozRequestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.msRequestAnimationFrame
+                || function(callback) { setTimeout(callback, 0); },
 
             returnedValue;
 
@@ -242,19 +242,19 @@
                             if(direction === 'left' || direction === 'right') {
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style  += ''
-                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                + ' }';
+                                    + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
+                                    + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                                    + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                    + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                    + ' }';
                             }
                             else if(direction === 'top' || direction == 'bottom') {
                                 style  += ''
-                + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
-                + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
-                + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                + ' }';
+                                    + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
+                                    + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
+                                    + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
+                                    + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
+                                    + ' }';
                             }
 
                             /* IE is only browser not to create context with transforms */
@@ -263,25 +263,25 @@
                                 if(direction === 'left' || direction === 'right') {
                                     module.debug('Adding CSS rules for animation distance', width);
                                     style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                  + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                  + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
-                  + ' }';
+                                        + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
+                                        + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                        + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
+                                        + ' }';
                                 }
                                 else if(direction === 'top' || direction == 'bottom') {
                                     style  += ''
-                  + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
-                  + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                  + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
-                  + ' }';
+                                        + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
+                                        + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
+                                        + '           transform: translate3d(0, ' + distance[direction] + 'px, 0);'
+                                        + ' }';
                                 }
                                 /* opposite sides visible forces content overlay */
                                 style += ''
-                + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
-                + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
-                + '   -webkit-transform: translate3d(0, 0, 0);'
-                + '           transform: translate3d(0, 0, 0);'
-                + ' }';
+                                    + ' body.pushable > .ui.visible.left.sidebar ~ .ui.visible.right.sidebar ~ .pusher::after,'
+                                    + ' body.pushable > .ui.visible.right.sidebar ~ .ui.visible.left.sidebar ~ .pusher::after {'
+                                    + '   -webkit-transform: translate3d(0, 0, 0);'
+                                    + '           transform: translate3d(0, 0, 0);'
+                                    + ' }';
                             }
                             style += '</style>';
                             $style = $(style)
@@ -345,7 +345,8 @@
 
                     attachEvents: function(selector, event) {
                         var
-                            $toggle = $(selector);
+                            $toggle = $(selector)
+                        ;
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
@@ -369,8 +370,10 @@
                     save: {
                         bodyMargin: function() {
                             initialBodyMargin = $context.css((isBody ? 'margin-':'padding-')+(module.can.leftBodyScrollbar() ? 'left':'right'));
-                            var bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
-                                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth;
+                            var
+                                bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                                bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
+                            ;
                             tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
                         },
                     },
@@ -582,8 +585,10 @@
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, tempBodyMargin + 'px');
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
-                                var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+                                var
+                                    el = $(this),
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                ;
                                 el.css(attribute, 'calc(' + el.css(attribute) + ' + ' + tempBodyMargin + 'px)');
                             });
                         },
@@ -691,8 +696,10 @@
                             var position = module.can.leftBodyScrollbar() ? 'left':'right';
                             $context.css((isBody ? 'margin-':'padding-')+position, initialBodyMargin);
                             $context.find(selector.bodyFixed.replace('right',position)).each(function(){
-                                var el = $(this),
-                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position;
+                                var
+                                    el = $(this),
+                                    attribute = el.css('position') === 'fixed' ? 'padding-'+position : position
+                                ;
                                 el.css(attribute, '');
                             });
                         },
@@ -958,7 +965,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

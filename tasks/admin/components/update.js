@@ -33,8 +33,8 @@ var
         : false,
 
     // shorthand
-    version = project.version;
-
+    version = project.version
+;
 
 module.exports = function(callback) {
 

@@ -85,10 +85,10 @@
                     if(window.requestAnimationFrame === undefined) {
                         module.debug('RequestAnimationFrame not available, normalizing event');
                         window.requestAnimationFrame = window.requestAnimationFrame
-            || window.mozRequestAnimationFrame
-            || window.webkitRequestAnimationFrame
-            || window.msRequestAnimationFrame
-            || function(callback) { setTimeout(callback, 0); };
+                            || window.mozRequestAnimationFrame
+                            || window.webkitRequestAnimationFrame
+                            || window.msRequestAnimationFrame
+                            || function(callback) { setTimeout(callback, 0); };
                     }
                 },
             },
@@ -100,7 +100,8 @@
             enabled: {
                 modules: function(modules) {
                     var
-                        enabledModules = [];
+                        enabledModules = []
+                    ;
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(module.moduleExists(name)) {
@@ -114,7 +115,8 @@
             disabled: {
                 modules: function(modules) {
                     var
-                        disabledModules = [];
+                        disabledModules = []
+                    ;
                     modules = modules || settings.modules;
                     $.each(modules, function(index, name) {
                         if(!module.moduleExists(name)) {
@@ -164,7 +166,8 @@
                         : true;
                     $.each(modules, function(index, name) {
                         var
-                            $existingModules;
+                            $existingModules
+                        ;
                         if(module.moduleExists(name)) {
                             module.verbose('Changing default setting', newSettings, name);
                             $.extend(true, $.fn[name].settings, newSettings);
@@ -356,7 +359,8 @@
                     $.each(query, function(depth, value) {
                         var camelCaseValue = (depth != maxDepth)
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                            : query;
+                            : query
+                        ;
                         if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                             object = object[camelCaseValue];
                         }

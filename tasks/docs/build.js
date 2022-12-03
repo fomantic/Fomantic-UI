@@ -30,9 +30,8 @@ var
     buildAssets = require('../build/assets').buildAssets,
 
     // shorthand
-    log         = tasks.log;
-
-
+    log         = tasks.log
+;
 
 module.exports = function (callback) {
 

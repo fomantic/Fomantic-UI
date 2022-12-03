@@ -34,12 +34,13 @@
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
-      || window.mozRequestAnimationFrame
-      || window.webkitRequestAnimationFrame
-      || window.msRequestAnimationFrame
-      || function(callback) { setTimeout(callback, 0); },
+                || window.mozRequestAnimationFrame
+                || window.webkitRequestAnimationFrame
+                || window.msRequestAnimationFrame
+                || function(callback) { setTimeout(callback, 0); },
 
-            returnedValue;
+            returnedValue
+        ;
 
         $allModules
             .each(function() {
@@ -249,7 +250,7 @@
                                     : (settings.height === 'initial')
                                         ? $module.height()
                                         : settings.height
-                                    ;
+                            ;
                             $activeSide.removeClass(className.active);
                             $nextSide.addClass(className.active);
                             $clone.insertAfter($module);
@@ -297,7 +298,8 @@
                                 return;
                             }
                             var
-                                transform = module.get.transform[type]();
+                                transform = module.get.transform[type]()
+                            ;
                             if( !module.is.animating()) {
                                 module.debug('Flipping '+type, $nextSide);
                                 module.set.stageSize();
@@ -683,7 +685,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

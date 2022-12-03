@@ -155,7 +155,8 @@
 
                     attachEvents: function(selector, event) {
                         var
-                            $element = $(selector);
+                            $element = $(selector)
+                        ;
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
@@ -184,7 +185,8 @@
                         },
                         click: function(event) {
                             var
-                                $target = $(event.target);
+                                $target = $(event.target)
+                            ;
                             if( $target.is(selector.input) ) {
                                 module.verbose('Using default check action on initialized checkbox');
                                 return;
@@ -211,10 +213,12 @@
                                 }
                             ;
 
-                            var r = module.get.radios(),
+                            var
+                                r = module.get.radios(),
                                 rIndex = r.index($module),
                                 rLen = r.length,
-                                checkIndex = false;
+                                checkIndex = false
+                            ;
 
                             if(key == keyCode.left || key == keyCode.up) {
                                 checkIndex = (rIndex === 0 ? rLen : rIndex) - 1;
@@ -346,7 +350,8 @@
                     get: {
                         radios: function() {
                             var
-                                name = module.get.name();
+                                name = module.get.name()
+                            ;
                             return $('input[name="' + name + '"]').closest(selector.checkbox);
                         },
                         otherRadios: function() {
@@ -544,7 +549,8 @@
                     trigger: {
                         change: function() {
                             var
-                                inputElement = $input[0];
+                                inputElement = $input[0]
+                            ;
                             if(inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
@@ -595,7 +601,8 @@
 
                     uncheckOthers: function() {
                         var
-                            $radios = module.get.otherRadios();
+                            $radios = module.get.otherRadios()
+                        ;
                         module.debug('Unchecking other radios', $radios);
                         $radios.removeClass(className.checked);
                     },
@@ -738,7 +745,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

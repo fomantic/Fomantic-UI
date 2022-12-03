@@ -79,7 +79,6 @@
                     historyEvent
                 ;
 
-
                 module = {
 
                     initialize: function() {
@@ -142,7 +141,8 @@
 
                     determineTabs: function() {
                         var
-                            $reference;
+                            $reference
+                        ;
 
                         // determine tab context
                         if(settings.context === 'parent') {
@@ -220,7 +220,8 @@
                     event: {
                         click: function(event) {
                             var
-                                tabPath = $(this).data(metadata.tab);
+                                tabPath = $(this).data(metadata.tab)
+                            ;
                             if(tabPath !== undefined) {
                                 if(settings.history) {
                                     module.verbose('Updating page state', event);
@@ -294,7 +295,7 @@
                                 url = (typeof settings.path == 'string')
                                     ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                     : '/{$tab}'
-                                ;
+                            ;
                             module.verbose('Setting up automatic tab retrieval from server', url);
                             if($.isPlainObject(settings.apiSettings)) {
                                 settings.apiSettings.url = url;
@@ -335,7 +336,7 @@
                             pathArray = (remoteContent && !shouldIgnoreLoad)
                                 ? module.utilities.pathToArray(tabPath)
                                 : module.get.defaultPathArray(tabPath)
-                            ;
+                        ;
                         tabPath = module.utilities.arrayToPath(pathArray);
                         $.each(pathArray, function(index, tab) {
                             var
@@ -440,7 +441,7 @@
                             scrollOffset = ($element && $element.length > 0)
                                 ? $element.offset().top
                                 : false
-                            ;
+                        ;
                         if(scrollOffset !== false) {
                             module.debug('Forcing scroll to an in-page link in a hidden tab', scrollOffset, $element);
                             $document.scrollTop(scrollOffset);
@@ -508,7 +509,8 @@
                                         else if(typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
                                             setTimeout(function() {
                                                 var
-                                                    $clone = $tab.children().clone(true);
+                                                    $clone = $tab.children().clone(true)
+                                                ;
                                                 $clone = $clone.not('script');
                                                 module.cache.add(fullTabPath, $clone);
                                             }, 0);
@@ -851,7 +853,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

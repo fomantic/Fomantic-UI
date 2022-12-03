@@ -5,8 +5,8 @@
 var
     del    = require('del'),
     config = require('./config/user'),
-    tasks  = require('./config/tasks');
-
+    tasks  = require('./config/tasks')
+;
 
 // cleans distribution files
 module.exports = function() {

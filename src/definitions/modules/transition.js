@@ -129,7 +129,8 @@
                     repaint: function() {
                         module.verbose('Repainting element');
                         var
-                            fakeAssignment = element.offsetWidth;
+                            fakeAssignment = element.offsetWidth
+                        ;
                     },
 
                     delay: function(interval) {
@@ -240,7 +241,8 @@
                                 displayType    = module.get.displayType(),
                                 overrideStyle  = userStyle + 'display: ' + displayType + ' !important;',
                                 inlineDisplay  = $module[0].style.display,
-                                mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i);
+                                mustStayHidden = !displayType || (inlineDisplay === 'none' && settings.skipInlineHidden) || $module[0].tagName.match(/(script|link|style)/i)
+                            ;
                             if (mustStayHidden){
                                 module.remove.transition();
                                 return false;
@@ -271,7 +273,8 @@
                     has: {
                         direction: function(animation) {
                             var
-                                hasDirection = false;
+                                hasDirection = false
+                            ;
                             animation = animation || settings.animation;
                             if(typeof animation === 'string') {
                                 animation = animation.split(' ');
@@ -285,7 +288,8 @@
                         },
                         inlineDisplay: function() {
                             var
-                                style = $module.attr('style') || '';
+                                style = $module.attr('style') || ''
+                            ;
                             return Array.isArray(style.match(/display.*?;/, ''));
                         },
                     },
@@ -396,7 +400,8 @@
                     restore: {
                         conditions: function() {
                             var
-                                animation = module.get.currentAnimation();
+                                animation = module.get.currentAnimation()
+                            ;
                             if(animation) {
                                 $module
                                     .removeClass(animation);
@@ -409,7 +414,8 @@
                     add: {
                         failSafe: function() {
                             var
-                                duration = module.get.duration();
+                                duration = module.get.duration()
+                            ;
                             module.timer = setTimeout(function() {
                                 $module.triggerHandler(animationEnd);
                             }, duration + settings.failSafeDelay);
@@ -517,11 +523,11 @@
                                 directionClass = (module.can.transition() && !module.has.direction())
                                     ? module.get.direction() + ' '
                                     : ''
-                                ;
+                            ;
                             return className.animating + ' '
-              + className.transition + ' '
-              + directionClass
-              + animationClass;
+                                + className.transition + ' '
+                                + directionClass
+                                + animationClass;
                         },
                         currentAnimation: function() {
                             return (module.cache && module.cache.animation !== undefined)
@@ -540,7 +546,8 @@
                         },
                         animationDirection: function(animation) {
                             var
-                                direction;
+                                direction
+                            ;
                             animation = animation || settings.animation;
                             if(typeof animation === 'string') {
                                 animation = animation.split(' ');
@@ -931,7 +938,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

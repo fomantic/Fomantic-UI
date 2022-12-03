@@ -112,7 +112,8 @@
                     bind: {
                         events: function() {
                             var
-                                triggerEvent = module.get.event();
+                                triggerEvent = module.get.event()
+                            ;
                             if( triggerEvent ) {
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
@@ -142,7 +143,8 @@
                     read: {
                         cachedResponse: function(url) {
                             var
-                                response;
+                                response
+                            ;
                             if(window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
@@ -368,7 +370,7 @@
                                                     : ($context.data(variable) !== undefined)
                                                         ? $context.data(variable)
                                                         : urlData[variable]
-                                                    ;
+                                        ;
                                         // remove value
                                         if(value === undefined) {
                                             module.error(error.requiredParameter, variable, url);
@@ -399,7 +401,7 @@
                                                     : ($context.data(variable) !== undefined)
                                                         ? $context.data(variable)
                                                         : urlData[variable]
-                                                    ;
+                                        ;
                                         // optional replacement
                                         if(value !== undefined) {
                                             module.verbose('Optional variable Found', variable, value);
@@ -434,13 +436,15 @@
                                 settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
                                 settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
                             } else {
-                                var formArray = $form.serializeArray(),
+                                var
+                                    formArray = $form.serializeArray(),
                                     pushes = {},
                                     pushValues= {},
                                     build = function(base, key, value) {
                                         base[key] = value;
                                         return base;
-                                    };
+                                    }
+                                ;
                                 // add files
                                 $.each($('input[type="file"]',$form), function(i, tag) {
                                     $.each($(tag)[0].files, function(j, file) {
@@ -449,10 +453,12 @@
                                 });
                                 $.each(formArray, function(i, el) {
                                     if (!settings.regExp.validate.test(el.name)) {return;}
-                                    var isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
+                                    var
+                                        isCheckbox = $('[name="' + el.name + '"]', $form).attr('type') === 'checkbox',
                                         floatValue = parseFloat(el.value),
                                         value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
-                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'');
+                                        nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'')
+                                    ;
                                     if(!(pushKey in pushes)) {
                                         pushes[pushKey] = 0;
                                         pushValues[pushKey] = value;
@@ -537,7 +543,7 @@
                                             ? settings.onResponse.call(context, $.extend(true, {}, response))
                                             : settings.onResponse.call(context, response)
                                         : false
-                                    ;
+                                ;
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
@@ -702,7 +708,8 @@
 
                         xhr: function() {
                             var
-                                xhr;
+                                xhr
+                            ;
                             // ajax request promise
                             xhr = $.ajax(ajaxSettings)
                                 .always(module.event.xhr.always)
@@ -762,7 +769,8 @@
                         },
                         settings: function() {
                             var
-                                runSettings;
+                                runSettings
+                            ;
                             runSettings = settings.beforeSend.call($module, settings);
                             if(runSettings) {
                                 if(runSettings.success !== undefined) {
@@ -806,7 +814,8 @@
                         },
                         defaultData: function() {
                             var
-                                data = {};
+                                data = {}
+                            ;
                             if( !isWindow(element) ) {
                                 if( module.is.input() ) {
                                     data.value = $module.val();
@@ -869,7 +878,8 @@
 
                     abort: function() {
                         var
-                            xhr = module.get.xhr();
+                            xhr = module.get.xhr()
+                        ;
                         if( xhr && xhr.state() !== 'resolved') {
                             module.debug('Cancelling API request');
                             xhr.abort();
@@ -1004,7 +1014,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

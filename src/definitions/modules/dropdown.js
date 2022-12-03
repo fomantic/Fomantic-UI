@@ -254,7 +254,8 @@
                         },
                         userLabels: function(value) {
                             var
-                                userValues = module.get.userValues();
+                                userValues = module.get.userValues()
+                            ;
                             if(userValues) {
                                 module.debug('Adding user labels', userValues);
                                 $.each(userValues, function(index, value) {
@@ -351,7 +352,8 @@
                             if( module.is.search() && !module.has.search() ) {
                                 module.verbose('Adding search input');
                                 var
-                                    labelNode = $module.prev('label');
+                                    labelNode = $module.prev('label')
+                                ;
                                 $search = $('<input />')
                                     .addClass(className.search)
                                     .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off');
@@ -372,7 +374,8 @@
                         },
                         select: function() {
                             var
-                                selectValues  = module.get.selectValues();
+                                selectValues  = module.get.selectValues()
+                            ;
                             module.debug('Dropdown initialized on a select', selectValues);
                             if( $module.is('select') ) {
                                 $input = $module;
@@ -583,7 +586,8 @@
 
                     hideSubMenus: function() {
                         var
-                            $subMenus = $menu.children(selector.item).find(selector.menu);
+                            $subMenus = $menu.children(selector.item).find(selector.menu)
+                        ;
                         module.verbose('Hiding sub menus', $subMenus);
                         $subMenus.transition('hide');
                     },
@@ -804,7 +808,8 @@
                                 },
                                 onSuccess: function(response, $module, xhr) {
                                     var
-                                        values          = response[fields.remoteValues];
+                                        values          = response[fields.remoteValues]
+                                    ;
                                     if (!Array.isArray(values)){
                                         values = [];
                                     }
@@ -936,7 +941,8 @@
                         }
                         search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                             var
-                                queryCharacter = query.charCodeAt(characterIndex);
+                                queryCharacter = query.charCodeAt(characterIndex)
+                            ;
                             while(nextCharacterIndex < termLength) {
                                 if(term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
                                     continue search;
@@ -1036,8 +1042,10 @@
 
                     event: {
                         paste: function(event) {
-                            var pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
-                                tokens = pasteValue.split(settings.delimiter);
+                            var
+                                pasteValue = (event.originalEvent.clipboardData || window.clipboardData).getData('text'),
+                                tokens = pasteValue.split(settings.delimiter)
+                            ;
                             tokens.forEach(function(value){
                                 module.set.selected(module.escape.htmlEntities(value.trim()), null, true, true);
                             });
@@ -1083,7 +1091,8 @@
                         },
                         click: function(event) {
                             var
-                                $target = $(event.target);
+                                $target = $(event.target)
+                            ;
                             // focus search
                             if($target.is($module)) {
                                 if(!module.is.focusedOnSearch()) {
@@ -1173,7 +1182,7 @@
                                     $range = ($nextActive.length > 0)
                                         ? $label.nextUntil($nextActive).add($activeLabels).add($label)
                                         : $label.prevUntil($prevActive).add($activeLabels).add($label)
-                                    ;
+                                ;
                                 if(event.shiftKey) {
                                     $activeLabels.removeClass(className.active);
                                     $range.addClass(className.active);
@@ -1192,7 +1201,8 @@
                         remove: {
                             click: function(event) {
                                 var
-                                    $label = $(this).parent();
+                                    $label = $(this).parent()
+                                ;
                                 if( $label.hasClass(className.active) ) {
                                     // remove all selected labels
                                     module.remove.activeLabels();
@@ -1210,7 +1220,7 @@
                                     toggleBehavior = (module.is.multiple())
                                         ? module.show
                                         : module.toggle
-                                    ;
+                                ;
                                 if(module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                                     return;
                                 }
@@ -1306,7 +1316,8 @@
                             },
                             mouseleave: function(event) {
                                 var
-                                    $subMenu = $(this).find(selector.menu);
+                                    $subMenu = $(this).find(selector.menu)
+                                ;
                                 if($subMenu.length > 0) {
                                     clearTimeout(module.itemTimer);
                                     module.itemTimer = setTimeout(function() {
@@ -1662,7 +1673,8 @@
                     trigger: {
                         change: function() {
                             var
-                                inputElement = $input[0];
+                                inputElement = $input[0]
+                            ;
                             if(inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
@@ -1827,7 +1839,8 @@
                         },
                         userValues: function() {
                             var
-                                values = module.get.values(true);
+                                values = module.get.values(true)
+                            ;
                             if(!values) {
                                 return false;
                             }
@@ -1880,7 +1893,8 @@
                         },
                         values: function(raw) {
                             var
-                                value = module.get.value();
+                                value = module.get.value()
+                            ;
                             if(value === '') {
                                 return '';
                             }
@@ -1901,7 +1915,8 @@
                                 }
                                 $.each(values, function(index, value) {
                                     var
-                                        name = module.read.remoteData(value);
+                                        name = module.read.remoteData(value)
+                                    ;
                                     module.verbose('Restoring value from session data', name, value);
                                     if(name) {
                                         if(!remoteValues) {
@@ -1948,7 +1963,8 @@
                         },
                         inputEvent: function() {
                             var
-                                input = $search[0];
+                                input = $search[0]
+                            ;
                             if(input) {
                                 return (input.oninput !== undefined)
                                     ? 'input'
@@ -2029,7 +2045,8 @@
                         },
                         selectedItem: function() {
                             var
-                                $selectedItem = $item.not(selector.unselectable).filter('.'  + className.selected);
+                                $selectedItem = $item.not(selector.unselectable).filter('.'  + className.selected)
+                            ;
                             return ($selectedItem.length > 0)
                                 ? $selectedItem
                                 : $item.eq(0);
@@ -2167,7 +2184,8 @@
                         },
                         defaultValue: function() {
                             var
-                                defaultValue = module.get.defaultValue();
+                                defaultValue = module.get.defaultValue()
+                            ;
                             if(defaultValue !== undefined) {
                                 module.debug('Restoring default value', defaultValue);
                                 if(defaultValue !== '') {
@@ -2220,7 +2238,8 @@
                         },
                         remoteValues: function() {
                             var
-                                values = module.get.remoteValues();
+                                values = module.get.remoteValues()
+                            ;
                             module.debug('Recreating selected from session data', values);
                             if(values) {
                                 if( module.is.single() ) {
@@ -2240,7 +2259,8 @@
                     read: {
                         remoteData: function(value) {
                             var
-                                name;
+                                name
+                            ;
                             if(window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
@@ -2260,19 +2280,22 @@
                         },
                         defaultValue: function() {
                             var
-                                value = module.get.value();
+                                value = module.get.value()
+                            ;
                             module.verbose('Saving default value as', value);
                             $module.data(metadata.defaultValue, value);
                         },
                         defaultText: function() {
                             var
-                                text = module.get.text();
+                                text = module.get.text()
+                            ;
                             module.verbose('Saving default text as', text);
                             $module.data(metadata.defaultText, text);
                         },
                         placeholderText: function() {
                             var
-                                text;
+                                text
+                            ;
                             if(settings.placeholder !== false && $text.hasClass(className.placeholder)) {
                                 text = module.get.text();
                                 module.verbose('Saving placeholder text as', text);
@@ -2419,7 +2442,8 @@
                         },
                         partialSearch: function(text) {
                             var
-                                length = module.get.query().length;
+                                length = module.get.query().length
+                            ;
                             $search.val( text.slice(0, length));
                         },
                         scrollPosition: function($item, forceScroll) {
@@ -2588,7 +2612,7 @@
                                 stringValue  = (value !== undefined)
                                     ? String(value)
                                     : value
-                                ;
+                            ;
                             if(hasInput) {
                                 if(!settings.allowReselection && stringValue == currentValue) {
                                     module.verbose('Skipping value update already same value', value, currentValue);
@@ -2652,7 +2676,8 @@
                                 $selectedItem   = undefined;
                             }
                             var
-                                isMultiple = module.is.multiple();
+                                isMultiple = module.is.multiple()
+                            ;
                             $selectedItem = (settings.allowAdditions)
                                 ? $selectedItem || module.get.itemWithAdditions(value)
                                 : $selectedItem || module.get.item(value);
@@ -3216,7 +3241,8 @@
                         },
                         allResultsFiltered: function() {
                             var
-                                $normalResults = $item.not(selector.addition);
+                                $normalResults = $item.not(selector.addition)
+                            ;
                             return ($normalResults.filter(selector.unselectable).length === $normalResults.length);
                         },
                         userSuggestion: function() {
@@ -3236,7 +3262,7 @@
                                 hasValue = Array.isArray(values)
                                     ? values && ($.inArray(value, values) !== -1)
                                     : (values == value)
-                                ;
+                            ;
                             return (hasValue)
                                 ? true
                                 : false;
@@ -3319,7 +3345,8 @@
                         },
                         inObject: function(needle, object) {
                             var
-                                found = false;
+                                found = false
+                            ;
                             $.each(object, function(index, property) {
                                 if(property == needle) {
                                     found = true;
@@ -3342,7 +3369,8 @@
                         },
                         selectMutation: function(mutations) {
                             var
-                                selectChanged = false;
+                                selectChanged = false
+                            ;
                             $.each(mutations, function(index, mutation) {
                                 if($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
                                     selectChanged = true;
@@ -3377,7 +3405,7 @@
                                 overflowY = ($context[0] !== window)
                                     ? $context.css('overflow-y')
                                     : false
-                                ;
+                            ;
                             return (overflowY == 'auto' || overflowY == 'scroll');
                         },
                         horizontallyScrollableContext: function() {
@@ -3385,7 +3413,7 @@
                                 overflowX = ($context[0] !== window)
                                     ? $context.css('overflow-X')
                                     : false
-                                ;
+                            ;
                             return (overflowX == 'auto' || overflowX == 'scroll');
                         },
                     },
@@ -3653,7 +3681,8 @@
                                 },
                                 escapedChar  = function(chr) {
                                     return escape[chr];
-                                };
+                                }
+                            ;
                             if(shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
@@ -3784,7 +3813,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
@@ -4086,7 +4116,8 @@
                 },
                 escapedChar  = function(chr) {
                     return escape[chr];
-                };
+                }
+            ;
             if(shouldEscape.test(string)) {
                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                 return string.replace(badChars, escapedChar);
@@ -4174,8 +4205,10 @@
                     }
                     html += '</div>';
                 } else if (itemType === 'header') {
-                    var groupName = escape(option[fields.name] || '', preserveHTML),
-                        groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon);
+                    var
+                        groupName = escape(option[fields.name] || '', preserveHTML),
+                        groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
+                    ;
                     if(groupName !== '' || groupIcon !== '') {
                         html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
                         if (groupIcon !== '') {

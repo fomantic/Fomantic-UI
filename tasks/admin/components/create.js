@@ -37,10 +37,8 @@ var
 
     // shorthand
     version         = project.version,
-    output          = config.paths.output;
-
-
-
+    output          = config.paths.output
+;
 
 module.exports = function(callback) {
     var
@@ -127,7 +125,8 @@ module.exports = function(callback) {
                 manifest = {
                     assets: outputDirectory + '/assets/**/' + component + '?(s).*',
                     component: outputDirectory + '/' + component + '+(.js|.css)',
-                };
+                }
+            ;
 
             // copy dist files into output folder adjusting asset paths
             function copyDist() {
@@ -262,7 +261,8 @@ module.exports = function(callback) {
             // Creates meteor package.js
             function createMeteorPackage() {
                 var
-                    filenames = '';
+                    filenames = ''
+                ;
                 return gulp.src(manifest.component)
                     .pipe(concatFileNames('empty.txt', concatSettings))
                     .pipe(tap(function(file) {

@@ -117,7 +117,8 @@
                     event: {
                         mouseenter: function() {
                             var
-                                $activeIcon = $(this);
+                                $activeIcon = $(this)
+                            ;
                             $activeIcon
                                 .nextAll()
                                 .removeClass(className.selected);
@@ -142,7 +143,7 @@
                                 canClear      = (settings.clearable == 'auto')
                                     ? ($icon.length === 1)
                                     : settings.clearable
-                                ;
+                            ;
                             if(canClear && currentRating == rating) {
                                 module.clearRating();
                             }
@@ -225,7 +226,8 @@
                         },
                         rating: function() {
                             var
-                                currentRating = $icon.filter('.' + className.active).length;
+                                currentRating = $icon.filter('.' + className.active).length
+                            ;
                             module.verbose('Current rating retrieved', currentRating);
                             return currentRating;
                         },
@@ -405,7 +407,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }

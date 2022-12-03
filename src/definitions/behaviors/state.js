@@ -112,7 +112,7 @@
                                 userStates = parameters && $.isPlainObject(parameters.states)
                                     ? parameters.states
                                     : {}
-                                ;
+                            ;
                             $.each(settings.defaults, function(type, typeStates) {
                                 if( module.is[type] !== undefined && module.is[type]() ) {
                                     module.verbose('Adding default states', type, element);
@@ -520,7 +520,8 @@
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
-                                    : query;
+                                    : query
+                                ;
                                 if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
                                 }
