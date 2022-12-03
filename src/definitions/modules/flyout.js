@@ -190,7 +190,12 @@
                         module.verbose('Programmaticaly create flyout', $context);
                         $module = $('<div/>', { class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage });
                         if (settings.closeIcon) {
-                            $closeIcon = $('<i/>', { class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close });
+                            $closeIcon = $('<i/>', {
+                                class: className.close,
+                                role: 'button',
+                                tabindex: 0,
+                                'aria-label': settings.text.close,
+                            });
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {

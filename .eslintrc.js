@@ -63,6 +63,13 @@ module.exports = {
         'brace-style': ['error'],
         curly: ['error'],
         'object-shorthand': ['error', 'never'],
+        'object-curly-newline': ['error', {
+            // https://github.com/airbnb/javascript/blob/eslint-config-airbnb-v19.0.4/packages/eslint-config-airbnb-base/rules/style.js#L395
+            ObjectExpression: { minProperties: 4, multiline: true, consistent: true },
+            ObjectPattern: { minProperties: 4, multiline: true, consistent: true },
+            ImportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+            ExportDeclaration: { minProperties: 4, multiline: true, consistent: true },
+        }],
         'dot-notation': ['error', { allowKeywords: true }],
         'arrow-parens': ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

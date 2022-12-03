@@ -195,7 +195,12 @@
                             ;
                             $toast.css('opacity', String(settings.opacity));
                             if (settings.closeIcon) {
-                                $close = $('<i/>', { class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close });
+                                $close = $('<i/>', {
+                                    class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''),
+                                    role: 'button',
+                                    tabindex: 0,
+                                    'aria-label': settings.text.close,
+                                });
                                 if ($close.hasClass(className.left)) {
                                     $toast.prepend($close);
                                 } else {

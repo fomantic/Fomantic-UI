@@ -176,7 +176,12 @@
                     modal: function () {
                         $module = $('<div/>', { class: className.modal, role: 'dialog', 'aria-modal': true });
                         if (settings.closeIcon) {
-                            $closeIcon = $('<i/>', { class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close });
+                            $closeIcon = $('<i/>', {
+                                class: className.close,
+                                role: 'button',
+                                tabindex: 0,
+                                'aria-label': settings.text.close,
+                            });
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {
