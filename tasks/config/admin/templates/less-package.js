@@ -14,6 +14,6 @@ Package.onUse(function (api) {
     api.use('less', 'client');
 
     api.addFiles([
-        {files},
+        { files },
     ], 'client');
 });

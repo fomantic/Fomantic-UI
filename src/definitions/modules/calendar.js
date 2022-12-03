@@ -36,11 +36,11 @@
             queryArguments = [].slice.call(arguments, 1),
             returnedValue,
             timeGapTable = {
-                5: {row: 4, column: 3 },
-                10: {row: 3, column: 2 },
-                15: {row: 2, column: 2 },
-                20: {row: 3, column: 1 },
-                30: {row: 2, column: 1 },
+                5: { row: 4, column: 3 },
+                10: { row: 3, column: 2 },
+                15: { row: 2, column: 2 },
+                20: { row: 3, column: 1 },
+                30: { row: 2, column: 1 },
             },
             numberText = ['', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight']
         ;
@@ -140,7 +140,7 @@
                         if (!$container.length) {
                             if (settings.context) {
                                 module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
-                                $container = $('<div/>', {id: module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
+                                $container = $('<div/>', { id: module.popupId }).addClass(className.popup).appendTo($document.find(settings.context));
                             } else {
                                 // prepend the popup element to the activator's parent so that it has less chance of messing with
                                 // the styling (eg input action button needs to be the last child to have correct border radius)

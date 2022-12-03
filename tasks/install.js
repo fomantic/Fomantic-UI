@@ -357,7 +357,7 @@ module.exports = function (callback) {
 
                 return gulp.src(source.themeConfig)
                     .pipe(plumber())
-                    .pipe(rename({extname: ''}))
+                    .pipe(rename({ extname: '' }))
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder))
                 ;
@@ -388,8 +388,8 @@ module.exports = function (callback) {
 
                 return gulp.src(source.config)
                     .pipe(plumber())
-                    .pipe(rename({extname: ''})) // remove .template from ext
-                    .pipe(jsonEditor(jsonConfig, {end_with_newline: true}))
+                    .pipe(rename({ extname: '' })) // remove .template from ext
+                    .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
                     .pipe(gulp.dest(installPaths.configFolder))
                 ;
             }

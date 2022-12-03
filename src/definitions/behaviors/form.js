@@ -516,7 +516,7 @@
                                     rules: [],
                                 };
                                 $.each(rules, function (index, rule) {
-                                    fullFields[name].rules.push({type: rule});
+                                    fullFields[name].rules.push({ type: rule });
                                 });
                             }
                         });

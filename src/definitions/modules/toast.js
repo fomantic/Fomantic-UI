@@ -149,21 +149,21 @@
                 create: {
                     container: function () {
                         module.verbose('Creating container');
-                        $context.append($('<div/>', {class: settings.position + ' ' + className.container + ' ' + (settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '')}));
+                        $context.append($('<div/>', { class: settings.position + ' ' + className.container + ' ' + (settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '') }));
                     },
                     id: function () {
                         id = (Math.random().toString(16) + '000000000').slice(2, 10);
                         module.verbose('Creating unique id for element', id);
                     },
                     toast: function () {
-                        $toastBox = $('<div/>', {class: className.box});
+                        $toastBox = $('<div/>', { class: className.box });
                         var iconClass = module.get.iconClass();
                         if (!isToastComponent) {
                             module.verbose('Creating toast');
-                            $toast = $('<div/>', {role: 'alert'});
-                            var $content = $('<div/>', {class: className.content});
+                            $toast = $('<div/>', { role: 'alert' });
+                            var $content = $('<div/>', { class: className.content });
                             if (iconClass !== '') {
-                                $toast.append($('<i/>', {class: iconClass + ' ' + className.icon}));
+                                $toast.append($('<i/>', { class: iconClass + ' ' + className.icon }));
                             }
 
                             if (settings.showImage) {
@@ -195,7 +195,7 @@
                             ;
                             $toast.css('opacity', String(settings.opacity));
                             if (settings.closeIcon) {
-                                $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
+                                $close = $('<i/>', { class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close });
                                 if ($close.hasClass(className.left)) {
                                     $toast.prepend($close);
                                 } else {
@@ -228,7 +228,7 @@
                         $actions = $toast.find('.actions');
                         if (module.has.configActions()) {
                             if ($actions.length === 0) {
-                                $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($toast);
+                                $actions = $('<div/>', { class: className.actions + ' ' + (settings.classActions || '') }).appendTo($toast);
                             }
                             if ($toast.hasClass('card') && !$actions.hasClass(className.attached)) {
                                 $actions.addClass(className.extraContent);
@@ -318,7 +318,7 @@
                                         $progress.removeClass(className.inverted);
                                     }
                                 }
-                                $progressBar = $('<div/>', {class: 'bar ' + (settings.progressUp ? 'up ' : 'down ') + progressingClass});
+                                $progressBar = $('<div/>', { class: 'bar ' + (settings.progressUp ? 'up ' : 'down ') + progressingClass });
                                 $progress
                                     .addClass(settings.showProgress)
                                     .append($progressBar)
@@ -330,7 +330,7 @@
                                 }
                                 $progressBar.css('animation-duration', settings.displayTime / 1000 + 's');
                             }
-                            $animationObject = $('<span/>', {class: 'wait ' + progressingClass});
+                            $animationObject = $('<span/>', { class: 'wait ' + progressingClass });
                             $animationObject.css('animation-duration', settings.displayTime / 1000 + 's');
                             $animationObject.appendTo($toast);
                         }

@@ -124,7 +124,7 @@
                     if (module.has.configActions()){
                         var $actions = $module.find(selector.actions).addClass(settings.classActions);
                         if ($actions.length === 0) {
-                            $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($module);
+                            $actions = $('<div/>', { class: className.actions + ' ' + (settings.classActions || '') }).appendTo($module);
                         } else {
                             $actions.empty();
                         }
@@ -188,23 +188,23 @@
                 create: {
                     flyout: function () {
                         module.verbose('Programmaticaly create flyout', $context);
-                        $module = $('<div/>', {class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage});
+                        $module = $('<div/>', { class: className.flyout, role: 'dialog', 'aria-modal': settings.dimPage });
                         if (settings.closeIcon) {
-                            $closeIcon = $('<i/>', {class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close});
+                            $closeIcon = $('<i/>', { class: className.close, role: 'button', tabindex: 0, 'aria-label': settings.text.close });
                             $module.append($closeIcon);
                         }
                         if (settings.title !== '') {
                             var titleId = '_' + module.get.id() + 'title';
                             $module.attr('aria-labelledby', titleId);
-                            $('<div/>', {class: className.header, id: titleId}).appendTo($module);
+                            $('<div/>', { class: className.header, id: titleId }).appendTo($module);
                         }
                         if (settings.content !== '') {
                             var descId = '_' + module.get.id() + 'desc';
                             $module.attr('aria-describedby', descId);
-                            $('<div/>', {class: className.content, id: descId}).appendTo($module);
+                            $('<div/>', { class: className.content, id: descId }).appendTo($module);
                         }
                         if (module.has.configActions()) {
-                            $('<div/>', {class: className.actions}).appendTo($module);
+                            $('<div/>', { class: className.actions }).appendTo($module);
                         }
                         $module.prependTo($context);
                         element = $module[0];

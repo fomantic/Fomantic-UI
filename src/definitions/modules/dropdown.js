@@ -3491,7 +3491,7 @@
                         calculations = {
                             context: {
                                 offset: ($context[0] === window)
-                                    ? { top: 0, left: 0}
+                                    ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollTop: $context.scrollTop(),
                                 height: $context.outerHeight(),
@@ -3538,7 +3538,7 @@
                         calculations = {
                             context: {
                                 offset: ($context[0] === window)
-                                    ? { top: 0, left: 0}
+                                    ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollLeft: $context.scrollLeft(),
                                 width: $context.outerWidth(),

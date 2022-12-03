@@ -453,7 +453,7 @@
                             // add files
                             $.each($('input[type="file"]', $form), function (i, tag) {
                                 $.each($(tag)[0].files, function (j, file) {
-                                    formArray.push({name: tag.name, value: file});
+                                    formArray.push({ name: tag.name, value: file });
                                 });
                             });
                             $.each(formArray, function (i, el) {

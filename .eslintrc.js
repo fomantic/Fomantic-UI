@@ -26,6 +26,7 @@ module.exports = {
             asyncArrow: 'always',
         }],
         'space-infix-ops': ['error'],
+        'object-curly-spacing': ['error', 'always'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
             prev: '*',
