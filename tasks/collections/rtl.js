@@ -5,8 +5,8 @@
 module.exports = function (gulp) {
     // rtl
     var
-        buildRTL = require('./../rtl/build'),
-        watchRTL = require('./../rtl/watch')
+        buildRTL = require('../rtl/build'),
+        watchRTL = require('../rtl/watch')
     ;
 
     gulp.task('watch-rtl', watchRTL);

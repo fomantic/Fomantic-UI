@@ -27,8 +27,8 @@ const
     rtlcss       = require('gulp-rtlcss'),
 
     // config
-    config       = require('./../config/user'),
-    docsConfig   = require('./../config/docs'),
+    config       = require('../config/user'),
+    docsConfig   = require('../config/docs'),
     tasks        = require('../config/tasks'),
     install      = require('../config/project/install'),
 

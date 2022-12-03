@@ -9,8 +9,8 @@
 module.exports = function (gulp) {
     var
         // docs tasks
-        serveDocs = require('./../docs/serve'),
-        buildDocs = require('./../docs/build')
+        serveDocs = require('../docs/serve'),
+        buildDocs = require('../docs/build')
     ;
 
     gulp.task('serve-docs', serveDocs);

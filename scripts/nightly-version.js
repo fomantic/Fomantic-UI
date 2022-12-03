@@ -9,8 +9,8 @@ const semver = require('semver');
 const actions = require('@actions/core');
 
 // pkg
-const pkg = require('../package.json');
 const process = require('process');
+const pkg = require('../package.json');
 
 const ghBase = 'https://api.github.com';
 const repoUrlPath = 'fomantic/Fomantic-UI';
