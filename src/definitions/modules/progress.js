@@ -41,7 +41,7 @@
         $allModules
             .each(function() {
                 var
-                    settings          = ( $.isPlainObject(parameters) )
+                    settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.progress.settings, parameters)
                         : $.extend({}, $.fn.progress.settings),
 
@@ -219,7 +219,7 @@
                             startValue,
                             newValue
                         ;
-                        if ( module.has.total() ) {
+                        if (module.has.total()) {
                             startValue     = module.get.value();
                             incrementValue = incrementValue || 1;
                         } else {
@@ -295,7 +295,7 @@
                                     module.debug('Value cannot increment above total', module.total);
                                     return module.total;
                                 }
-                            } else if (value > 100 ) {
+                            } else if (value > 100) {
                                 module.debug('Value cannot increment above 100 percent');
                                 return 100;
                             }
@@ -334,7 +334,7 @@
                                 transition
                             ;
                             for (transition in transitions){
-                                if ( element.style[transition] !== undefined ){
+                                if (element.style[transition] !== undefined){
                                     return transitions[transition];
                                 }
                             }
@@ -597,20 +597,20 @@
                             $progresses.map(function(index, element){
                                 var $progress = $(element);
                                 if (text !== undefined) {
-                                    $progress.text( module.get.text(text, index) );
+                                    $progress.text(module.get.text(text, index));
                                 } else if (settings.label == 'ratio' && module.has.total()) {
                                     module.verbose('Adding ratio to bar label');
-                                    $progress.text( module.get.text(settings.text.ratio, index) );
+                                    $progress.text(module.get.text(settings.text.ratio, index));
                                 } else if (settings.label == 'percent') {
                                     module.verbose('Adding percentage to bar label');
-                                    $progress.text( module.get.text(settings.text.percent, index) );
+                                    $progress.text(module.get.text(settings.text.percent, index));
                                 }
                             });
                         },
                         active: function(text) {
                             text = text || settings.text.active;
                             module.debug('Setting active state');
-                            if (settings.showActivity && !module.is.active() ) {
+                            if (settings.showActivity && !module.is.active()) {
                                 $module.addClass(className.active);
                             }
                             module.remove.warning();
@@ -733,13 +733,13 @@
                                 }
                                 return percentComplete;
                             });
-                            module.set.percent( percentCompletes );
+                            module.set.percent(percentCompletes);
                         },
                     },
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -752,7 +752,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -822,7 +822,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -853,14 +853,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -869,7 +869,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -990,4 +990,4 @@
     };
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

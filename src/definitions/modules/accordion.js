@@ -38,7 +38,7 @@
         $allModules
             .each(function() {
                 var
-                    settings        = ( $.isPlainObject(parameters) )
+                    settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                         : $.extend({}, $.fn.accordion.settings),
 
@@ -288,7 +288,7 @@
                             $openTitles   = $openTitles.not($nestedTitles);
                             $openContents = $openTitles.next($content);
                         }
-                        if ( ($openTitles.length > 0) ) {
+                        if (($openTitles.length > 0)) {
                             module.debug('Exclusive enabled, closing other content', $openTitles);
                             $openTitles
                                 .removeClass(className.active);
@@ -353,7 +353,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -368,7 +368,7 @@
                     internal: function(name, value) {
                         module.debug('Changing internal', name, value);
                         if (value !== undefined) {
-                            if ( $.isPlainObject(name) ) {
+                            if ($.isPlainObject(name)) {
                                 $.extend(true, module, name);
                             } else {
                                 module[name] = value;
@@ -439,7 +439,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -469,14 +469,14 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -485,7 +485,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -568,11 +568,11 @@
     };
 
     // Adds easing
-    $.extend( $.easing, {
+    $.extend($.easing, {
         easeOutQuad: function (x) {
             return 1 - (1 - x) * (1 - x);
         },
     });
 
-})( jQuery, window, document );
+})(jQuery, window, document);
 

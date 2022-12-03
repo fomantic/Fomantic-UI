@@ -36,7 +36,7 @@ function moduleTests(ui) {
 
         if ($module.size() == 1) { // one module available in fixture
             $oneModule = $module;
-            $clone     = $module.clone().appendTo( $(sandbox()) );
+            $clone     = $module.clone().appendTo($(sandbox()));
             $modules   = $clone.add($module);
         } else { // multiple modules available in fixture
             $modules   = $(element);
@@ -75,7 +75,7 @@ function moduleTests(ui) {
 
         it('returns an array when multiple settings returned', function() {
             var result = $modules[module]('setting', 'name');
-            expect( $.isArray(result) ).toBeTruthy();
+            expect($.isArray(result)).toBeTruthy();
         });
 
         it('has an instance in metadata after init', function() {
@@ -207,7 +207,7 @@ function moduleTests(ui) {
 
         it('removes instance metadata', function() {
             $module[module]('destroy');
-            expect( $module.data('module-'+ module) ).toBe(undefined);
+            expect($module.data('module-'+ module)).toBe(undefined);
         });
 
     });

@@ -62,14 +62,14 @@ module.exports = function(callback) {
 
         var
             distribution         = release.distributions[index],
-            outputDirectory      = path.resolve(path.join(release.outputRoot, distribution.toLowerCase() )),
+            outputDirectory      = path.resolve(path.join(release.outputRoot, distribution.toLowerCase())),
             repoName             = release.distRepoRoot + distribution,
 
             commitArgs = (oAuth.name !== undefined && oAuth.email !== undefined)
                 ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
                 : '',
 
-            distributionPackage = fs.existsSync(outputDirectory + 'package.json' )
+            distributionPackage = fs.existsSync(outputDirectory + 'package.json')
                 ? require(outputDirectory + 'package.json')
                 : false,
 

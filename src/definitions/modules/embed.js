@@ -42,7 +42,7 @@
         $allModules
             .each(function() {
                 var
-                    settings        = ( $.isPlainObject(parameters) )
+                    settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.embed.settings, parameters)
                         : $.extend({}, $.fn.embed.settings),
 
@@ -101,7 +101,7 @@
 
                     bind: {
                         events: function() {
-                            if ( module.has.placeholder() ) {
+                            if (module.has.placeholder()) {
                                 module.debug('Adding placeholder events');
                                 $module
                                     .on('click' + eventNamespace, selector.placeholder, module.createAndShow)
@@ -126,7 +126,7 @@
                             icon  = module.get.icon()
                         ;
                         placeholder = placeholder || module.get.placeholder();
-                        $module.html( templates.placeholder(placeholder, icon) );
+                        $module.html(templates.placeholder(placeholder, icon));
                         module.debug('Creating placeholder for embed', placeholder, icon);
                     },
 
@@ -135,7 +135,7 @@
                         url = url || module.get.url();
                         $embed = $('<div/>')
                             .addClass(className.embed)
-                            .html( module.generate.embed(url) )
+                            .html(module.generate.embed(url))
                             .appendTo($module);
                         settings.onCreate.call(element, url);
                         module.debug('Creating embed object', $embed);
@@ -143,7 +143,7 @@
 
                     changeEmbed: function(url) {
                         $embed
-                            .html( module.generate.embed(url) );
+                            .html(module.generate.embed(url));
                     },
 
                     createAndShow: function() {
@@ -309,7 +309,7 @@
                                 index
                             ;
                             for (index in parameters) {
-                                urlString.push( encodeURIComponent(index) + '=' + encodeURIComponent( parameters[index] ) );
+                                urlString.push(encodeURIComponent(index) + '=' + encodeURIComponent(parameters[index]));
                             }
                             return urlString.join('&amp;');
                         },
@@ -372,7 +372,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -385,7 +385,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -458,7 +458,7 @@
                             if ($allModules.length > 1) {
                                 title += ' ' + '(' + $allModules.length + ')';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -489,14 +489,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -505,7 +505,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -673,4 +673,4 @@
 
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

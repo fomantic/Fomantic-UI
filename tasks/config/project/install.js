@@ -100,7 +100,7 @@ module.exports = {
                     folder        = pathArray[pathArray.length - 1],
                     nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if ( folder == 'bower_components') {
+                if (folder == 'bower_components') {
                     return {
                         name: 'Bower',
                         root: nextDirectory,

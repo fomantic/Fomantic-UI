@@ -18,6 +18,7 @@ module.exports = {
     rules: {
         indent: ['error', 4, { SwitchCase: 1 }],
         'keyword-spacing': ['error'],
+        'space-in-parens': ['error'],
         'brace-style': ['error'],
         curly: ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

@@ -109,7 +109,7 @@ module.exports = function(callback) {
             createList = function(files) {
                 var filenames = '';
                 for (var file in files) {
-                    if (file == (files.length - 1) ) {
+                    if (file == (files.length - 1)) {
                         filenames += "'" + files[file] + "'";
                     } else {
                         filenames += "'" + files[file] + "',\n    ";

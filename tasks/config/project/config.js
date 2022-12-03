@@ -21,10 +21,10 @@ module.exports = {
             configPath,
             walk = function(directory) {
                 var
-                    nextDirectory = path.resolve( path.join(directory, path.sep, '..') ),
-                    currentPath   = path.normalize( path.join(directory, file) )
+                    nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
+                    currentPath   = path.normalize(path.join(directory, file))
                 ;
-                if ( fs.existsSync(currentPath) ) {
+                if (fs.existsSync(currentPath)) {
                     // found file
                     configPath = path.normalize(directory);
                     return;
@@ -79,7 +79,7 @@ module.exports = {
         config.paths.output = outputPaths;
 
         // resolve "clean" command path
-        config.paths.clean = path.resolve( path.join(configPath, config.base, config.paths.clean) );
+        config.paths.clean = path.resolve(path.join(configPath, config.base, config.paths.clean));
 
         /*--------------
         CSS URLs

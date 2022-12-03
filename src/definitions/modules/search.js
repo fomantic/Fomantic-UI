@@ -38,7 +38,7 @@
         $(this)
             .each(function() {
                 var
-                    settings          = ( $.isPlainObject(parameters) )
+                    settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.search.settings, parameters)
                         : $.extend({}, $.fn.search.settings),
 
@@ -155,9 +155,9 @@
                         },
                         focus: function() {
                             module.set.focus();
-                            if (settings.searchOnFocus && module.has.minimumCharacters() ) {
+                            if (settings.searchOnFocus && module.has.minimumCharacters()) {
                                 module.query(function() {
-                                    if (module.can.show() ) {
+                                    if (module.can.show()) {
                                         module.showResults();
                                     }
                                 });
@@ -185,7 +185,7 @@
                                             return;
                                         }
                                         disabledBubbled = false;
-                                        if ( !module.is.animating() && !module.is.hidden()) {
+                                        if (!module.is.animating() && !module.is.hidden()) {
                                             callback();
                                         }
                                     });
@@ -219,7 +219,7 @@
                                     result  = $result.data(metadata.result) || module.get.result(value, results)
                                 ;
                                 var oldValue = module.get.value();
-                                if ( isFunction(settings.onSelect) ) {
+                                if (isFunction(settings.onSelect)) {
                                     if (settings.onSelect.call(element, result, results) === false) {
                                         module.debug('Custom onSelect callback cancelled default select action');
                                         disabledBubbled = true;
@@ -265,7 +265,7 @@
                             $result         = $module.find(selector.result),
                             $category       = $module.find(selector.category),
                             $activeResult   = $result.filter('.' + className.active),
-                            currentIndex    = $result.index( $activeResult ),
+                            currentIndex    = $result.index($activeResult),
                             resultSize      = $result.length,
                             hasActiveResult = $activeResult.length > 0,
 
@@ -290,10 +290,10 @@
                             event.stopPropagation();
                             resultsDismissed = true;
                         }
-                        if ( module.is.visible() ) {
+                        if (module.is.visible()) {
                             if (keyCode == keys.enter) {
                                 module.verbose('Enter key pressed, selecting active result');
-                                if ( $result.filter('.' + className.active).length > 0 ) {
+                                if ($result.filter('.' + className.active).length > 0) {
                                     module.event.result.click.call($result.filter('.' + className.active), event);
                                     event.preventDefault();
                                     return false;
@@ -540,7 +540,7 @@
                             cache = module.read.cache(searchTerm)
                         ;
                         callback = callback || function() {};
-                        if ( module.has.minimumCharacters() )  {
+                        if (module.has.minimumCharacters())  {
                             if (cache) {
                                 module.debug('Reading result from cache', searchTerm);
                                 module.save.results(cache.results);
@@ -552,7 +552,7 @@
                                 if ($.isPlainObject(settings.source) || Array.isArray(settings.source)) {
                                     module.search.local(searchTerm);
                                     callback();
-                                } else if ( module.can.useAPI() ) {
+                                } else if (module.can.useAPI()) {
                                     module.search.remote(searchTerm, callback);
                                 } else {
                                     module.error(error.source);
@@ -652,13 +652,13 @@
                                         } else {
                                             text = content[field].toString();
                                         }
-                                        if ( text.search(matchRegExp) !== -1) {
+                                        if (text.search(matchRegExp) !== -1) {
                                             // content starts with value (first in results)
                                             addResult(results, content);
-                                        } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text) ) {
+                                        } else if (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) {
                                             // content fuzzy matches (last in results)
                                             addResult(exactResults, content);
-                                        } else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text) ) {
+                                        } else if (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text)) {
                                             // content fuzzy matches (last in results)
                                             addResult(fuzzyResults, content);
                                         }
@@ -732,7 +732,7 @@
 
                     cancel: {
                         query: function() {
-                            if ( module.can.useAPI() ) {
+                            if (module.can.useAPI()) {
                                 $module.api('abort');
                             }
                         },
@@ -913,8 +913,8 @@
                     },
 
                     addResults: function(html) {
-                        if ( isFunction(settings.onResultsAdd) ) {
-                            if ( settings.onResultsAdd.call($results, html) === false ) {
+                        if (isFunction(settings.onResultsAdd)) {
+                            if (settings.onResultsAdd.call($results, html) === false) {
                                 module.debug('onResultsAdd callback cancelled default action');
                                 return false;
                             }
@@ -942,7 +942,7 @@
                             return;
                         }
                         if (!module.is.visible() && module.has.results()) {
-                            if ( module.can.transition() ) {
+                            if (module.can.transition()) {
                                 module.debug('Showing results with css animations');
                                 $results
                                     .transition({
@@ -973,8 +973,8 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if ( module.is.visible() ) {
-                            if ( module.can.transition() ) {
+                        if (module.is.visible()) {
+                            if (module.can.transition()) {
                                 module.debug('Hiding results with css animations');
                                 $results
                                     .transition({
@@ -1006,7 +1006,7 @@
                             isProperArray  = (Array.isArray(response[fields.results]) && response[fields.results].length > 0),
                             html           = ''
                         ;
-                        if (isProperObject || isProperArray ) {
+                        if (isProperObject || isProperArray) {
                             if (settings.maxResults > 0) {
                                 if (isProperObject) {
                                     if (settings.type == 'standard') {
@@ -1031,12 +1031,12 @@
                     displayMessage: function(text, type, header) {
                         type = type || 'standard';
                         module.debug('Displaying message', text, type, header);
-                        module.addResults( settings.templates.message(text, type, header) );
+                        module.addResults(settings.templates.message(text, type, header));
                         return settings.templates.message(text, type, header);
                     },
 
                     setting: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             settings[name] = value;
@@ -1045,7 +1045,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -1118,7 +1118,7 @@
                             if ($allModules.length > 1) {
                                 title += ' ' + '(' + $allModules.length + ')';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -1149,14 +1149,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -1164,7 +1164,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -1508,4 +1508,4 @@
         },
     });
 
-})( jQuery, window, document );
+})(jQuery, window, document);

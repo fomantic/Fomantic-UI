@@ -262,7 +262,7 @@
                                 allValid = true
                             ;
                             $.each(validation, function(fieldName, field) {
-                                if ( !( module.validate.field(field, fieldName, true) ) ) {
+                                if (!(module.validate.field(field, fieldName, true))) {
                                     allValid = false;
                                 }
                             });
@@ -328,7 +328,7 @@
                             } else {
                                 module.verbose('Checking if form is valid');
                                 $.each(validation, function(fieldName, field) {
-                                    if ( !module.is.valid(fieldName, showErrors) ) {
+                                    if (!module.is.valid(fieldName, showErrors)) {
                                         allValid = false;
                                     }
                                 });
@@ -400,7 +400,7 @@
                                         escape: 27,
                                     }
                                 ;
-                                if ( key == keyCode.escape) {
+                                if (key == keyCode.escape) {
                                     module.verbose('Escape key pressed blurring field');
                                     $field[0]
                                         .blur();
@@ -424,9 +424,9 @@
                                     $fieldGroup     = $field.closest($group),
                                     validationRules = module.get.validation($field)
                                 ;
-                                if (validationRules && (settings.on == 'blur' || ( $fieldGroup.hasClass(className.error) && settings.revalidate) )) {
+                                if (validationRules && (settings.on == 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                     module.debug('Revalidating field', $field, validationRules);
-                                    module.validate.field( validationRules );
+                                    module.validate.field(validationRules);
                                     if (!settings.inline) {
                                         module.validate.form(false,true);
                                     }
@@ -438,11 +438,11 @@
                                     $fieldGroup = $field.closest($group),
                                     validationRules = module.get.validation($field)
                                 ;
-                                if (validationRules && (settings.on == 'change' || ( $fieldGroup.hasClass(className.error) && settings.revalidate) )) {
+                                if (validationRules && (settings.on == 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                     clearTimeout(module.timer);
                                     module.timer = setTimeout(function() {
                                         module.debug('Revalidating field', $field, validationRules);
-                                        module.validate.field( validationRules );
+                                        module.validate.field(validationRules);
                                         if (!settings.inline) {
                                             module.validate.form(false,true);
                                         }
@@ -476,7 +476,7 @@
                                 : rule.type.match(settings.regExp.bracket)[1] + '';
                         },
                         ruleName: function(rule) {
-                            if ( module.is.bracketedRule(rule) ) {
+                            if (module.is.bracketedRule(rule)) {
                                 return rule.type.replace(rule.type.match(settings.regExp.bracket)[0], '');
                             }
                             return rule.type;
@@ -611,16 +611,16 @@
                             module.verbose('Finding field with identifier', identifier);
                             identifier = module.escape.string(identifier);
                             var t;
-                            if ((t=$field.filter('#' + identifier)).length > 0 ) {
+                            if ((t=$field.filter('#' + identifier)).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[name="' + identifier +'"]')).length > 0 ) {
+                            if ((t=$field.filter('[name="' + identifier +'"]')).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[name="' + identifier +'[]"]')).length > 0 ) {
+                            if ((t=$field.filter('[name="' + identifier +'[]"]')).length > 0) {
                                 return t;
                             }
-                            if ((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0 ) {
+                            if ((t=$field.filter('[data-' + metadata.validate + '="'+ identifier +'"]')).length > 0) {
                                 return t;
                             }
                             module.error(error.noField.replace('{identifier}',identifier));
@@ -631,7 +631,7 @@
                                 $fields = $()
                             ;
                             $.each(fields, function(index, name) {
-                                $fields = $fields.add( module.get.field(name) );
+                                $fields = $fields.add(module.get.field(name));
                             });
                             return $fields;
                         },
@@ -885,7 +885,7 @@
                             module.debug('Adding form error messages', errors);
                             module.set.error();
                             $message
-                                .html( settings.templates.error(errors) );
+                                .html(settings.templates.error(errors));
                         },
                     },
 
@@ -1143,7 +1143,7 @@
 
                             // reset errors
                             formErrors = [];
-                            if ( module.determine.isValid() ) {
+                            if (module.determine.isValid()) {
                                 module.debug('Form has no validation errors, submitting');
                                 module.set.success();
                                 if (!settings.inline) {
@@ -1222,7 +1222,7 @@
                                     $field.closest($group).removeClass(className.error);
                                 }
                                 $.each(field.rules, function(index, rule) {
-                                    if ( module.has.field(identifier)) {
+                                    if (module.has.field(identifier)) {
                                         var invalidFields = module.validate.rule(field, rule,true) || [];
                                         if (invalidFields.length>0){
                                             module.debug('Field is invalid', identifier, rule.type);
@@ -1269,7 +1269,7 @@
                                     return ruleFunction.call(field, value, ancillary, $module);
                                 }
                             ;
-                            if ( !isFunction(ruleFunction) ) {
+                            if (!isFunction(ruleFunction)) {
                                 module.error(error.noRule, ruleName);
                                 return;
                             }
@@ -1289,7 +1289,7 @@
                     },
 
                     setting: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             settings[name] = value;
@@ -1298,7 +1298,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -1371,7 +1371,7 @@
                             if ($allModules.length > 1) {
                                 title += ' ' + '(' + $allModules.length + ')';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -1401,14 +1401,14 @@
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -1416,7 +1416,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -1671,7 +1671,7 @@
                         ? regExpParts[2]
                         : '';
                 }
-                return value.match( new RegExp(regExp, flags) );
+                return value.match(new RegExp(regExp, flags));
             },
             minValue: function(value, range) {
                 return $.fn.form.settings.rules.range(value, range+'..', 'number');
@@ -1695,7 +1695,7 @@
                     max,
                     parts
                 ;
-                if ( !range || ['', '..'].indexOf(range) !== -1) {
+                if (!range || ['', '..'].indexOf(range) !== -1) {
                     // do nothing
                 } else if (range.indexOf('..') == -1) {
                     if (regExp.test(range)) {
@@ -1763,28 +1763,28 @@
             contains: function(value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
-                return (value.search( new RegExp(text, 'i') ) !== -1);
+                return (value.search(new RegExp(text, 'i')) !== -1);
             },
 
             // value contains text (case sensitive)
             containsExactly: function(value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
-                return (value.search( new RegExp(text) ) !== -1);
+                return (value.search(new RegExp(text)) !== -1);
             },
 
             // value contains text (insensitive)
             doesntContain: function(value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
-                return (value.search( new RegExp(text, 'i') ) === -1);
+                return (value.search(new RegExp(text, 'i')) === -1);
             },
 
             // value contains text (case sensitive)
             doesntContainExactly: function(value, text) {
                 // escape regex characters
                 text = text.replace($.fn.form.settings.regExp.escape, '\\$&');
-                return (value.search( new RegExp(text) ) === -1);
+                return (value.search(new RegExp(text)) === -1);
             },
 
             // is at least string length
@@ -1814,17 +1814,17 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)
-                    ? ( value.toString() == matchingValue.toString() )
+                    ? (value.toString() == matchingValue.toString())
                     : false;
             },
 
@@ -1835,17 +1835,17 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0 ) {
+                if ((matchingElement = $module.find('[data-validate="'+ identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
                     matchingValue = matchingElement.val();
                 } else if ((matchingElement = $module.find('[name="' + identifier +'"]')).length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0 ) {
+                } else if ((matchingElement = $module.find('[name="' + identifier +'[]"]')).length > 0) {
                     matchingValue = matchingElement;
                 }
                 return (matchingValue !== undefined)
-                    ? ( value.toString() !== matchingValue.toString() )
+                    ? (value.toString() !== matchingValue.toString())
                     : false;
             },
 
@@ -1989,4 +1989,4 @@
 
     };
 
-})( jQuery, window, document );
+})(jQuery, window, document);

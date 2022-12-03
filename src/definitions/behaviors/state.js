@@ -40,7 +40,7 @@
         $allModules
             .each(function() {
                 var
-                    settings          = ( $.isPlainObject(parameters) )
+                    settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.state.settings, parameters)
                         : $.extend({}, $.fn.state.settings),
 
@@ -113,7 +113,7 @@
                                     : {}
                             ;
                             $.each(settings.defaults, function(type, typeStates) {
-                                if ( module.is[type] !== undefined && module.is[type]() ) {
+                                if (module.is[type] !== undefined && module.is[type]()) {
                                     module.verbose('Adding default states', type, element);
                                     $.extend(settings.states, typeStates, userStates);
                                 }
@@ -130,23 +130,23 @@
                             return $module.hasClass(className.loading);
                         },
                         inactive: function() {
-                            return !( $module.hasClass(className.active) );
+                            return !($module.hasClass(className.active));
                         },
                         state: function(state) {
                             if (className[state] === undefined) {
                                 return false;
                             }
-                            return $module.hasClass( className[state] );
+                            return $module.hasClass(className[state]);
                         },
 
                         enabled: function() {
-                            return !( $module.is(settings.filter.active) );
+                            return !($module.is(settings.filter.active));
                         },
                         disabled: function() {
-                            return ( $module.is(settings.filter.active) );
+                            return ($module.is(settings.filter.active));
                         },
                         textEnabled: function() {
-                            return !( $module.is(settings.filter.text) );
+                            return !($module.is(settings.filter.text));
                         },
 
                         // definitions for automatic type detection
@@ -184,13 +184,13 @@
 
                     setState: function(state) {
                         if (module.allows(state)) {
-                            $module.addClass( className[state] );
+                            $module.addClass(className[state]);
                         }
                     },
 
                     removeState: function(state) {
                         if (module.allows(state)) {
-                            $module.removeClass( className[state] );
+                            $module.removeClass(className[state]);
                         }
                     },
 
@@ -200,12 +200,12 @@
                                 apiRequest,
                                 requestCancelled
                             ;
-                            if ( module.allows('active') && module.is.enabled() ) {
+                            if (module.allows('active') && module.is.enabled()) {
                                 module.refresh();
                                 if ($.fn.api !== undefined) {
                                     apiRequest       = $module.api('get request');
                                     requestCancelled = $module.api('was cancelled');
-                                    if ( requestCancelled ) {
+                                    if (requestCancelled) {
                                         module.debug('API Request cancelled by beforesend');
                                         settings.activateTest   = function(){
                                             return false;
@@ -259,7 +259,7 @@
                         state: function() {
                             module.debug('Determining state change direction');
                             // inactive to active change
-                            if ( module.is.inactive() ) {
+                            if (module.is.inactive()) {
                                 module.activate();
                             } else {
                                 module.deactivate();
@@ -271,11 +271,11 @@
                         },
 
                         text: function() {
-                            if ( module.is.textEnabled() ) {
-                                if (module.is.disabled() ) {
+                            if (module.is.textEnabled()) {
+                                if (module.is.disabled()) {
                                     module.verbose('Changing text to disabled text', text.hover);
                                     module.update.text(text.disabled);
-                                } else if ( module.is.active() ) {
+                                } else if (module.is.active()) {
                                     if (text.hover) {
                                         module.verbose('Changing text to hover text', text.hover);
                                         module.update.text(text.hover);
@@ -298,7 +298,7 @@
                     },
 
                     activate: function() {
-                        if ( settings.activateTest.call(element) ) {
+                        if (settings.activateTest.call(element)) {
                             module.debug('Setting state to active');
                             $module
                                 .addClass(className.active);
@@ -308,7 +308,7 @@
                     },
 
                     deactivate: function() {
-                        if ( settings.deactivateTest.call(element) ) {
+                        if (settings.deactivateTest.call(element)) {
                             module.debug('Setting state to inactive');
                             $module
                                 .removeClass(className.active);
@@ -319,7 +319,7 @@
 
                     sync: function() {
                         module.verbose('Syncing other buttons to current state');
-                        if ( module.is.active() ) {
+                        if (module.is.active()) {
                             $allModules
                                 .not($module)
                                 .state('activate');
@@ -364,8 +364,8 @@
                                 activeText   = text.active   || $module.data(metadata.storedText),
                                 inactiveText = text.inactive || $module.data(metadata.storedText)
                             ;
-                            if ( module.is.textEnabled() ) {
-                                if ( module.is.active() && activeText) {
+                            if (module.is.textEnabled()) {
+                                if (module.is.active() && activeText) {
                                     module.verbose('Resetting active text', activeText);
                                     module.update.text(activeText);
                                 } else if (inactiveText) {
@@ -400,7 +400,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -413,7 +413,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -483,7 +483,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -514,14 +514,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -530,7 +530,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -680,4 +680,4 @@
 
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

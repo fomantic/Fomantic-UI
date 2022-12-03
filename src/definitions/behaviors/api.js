@@ -46,7 +46,7 @@
         $allModules
             .each(function() {
                 var
-                    settings          = ( $.isPlainObject(parameters) )
+                    settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.api.settings, parameters)
                         : $.extend({}, $.fn.api.settings),
 
@@ -114,7 +114,7 @@
                             var
                                 triggerEvent = module.get.event()
                             ;
-                            if ( triggerEvent ) {
+                            if (triggerEvent) {
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
                                     .on(triggerEvent + eventNamespace, module.event.trigger);
@@ -163,7 +163,7 @@
                                 module.error(error.noStorage);
                                 return;
                             }
-                            if ( $.isPlainObject(response) ) {
+                            if ($.isPlainObject(response)) {
                                 response = JSON.stringify(response);
                             }
                             sessionStorage.setItem(url + module.get.normalizedData(), response);
@@ -219,9 +219,9 @@
                         }
 
                         // replace variables
-                        url = module.add.urlData( url );
+                        url = module.add.urlData(url);
                         // missing url parameters
-                        if ( !url && !module.is.mocked()) {
+                        if (!url && !module.is.mocked()) {
                             return;
                         }
 
@@ -247,7 +247,7 @@
                             return;
                         }
 
-                        if ( !settings.throttle ) {
+                        if (!settings.throttle) {
                             module.debug('Sending request', data, ajaxSettings.method);
                             module.send.request();
                         } else {
@@ -272,7 +272,7 @@
 
                     should: {
                         removeError: function() {
-                            return ( settings.hideError === true || (settings.hideError === 'auto' && !module.is.form()) );
+                            return (settings.hideError === true || (settings.hideError === 'auto' && !module.is.form()));
                         },
                     },
 
@@ -307,12 +307,12 @@
                             }
                         },
                         validResponse: function(response) {
-                            if ( (!module.is.expectingJSON()) || !isFunction(settings.successTest) ) {
+                            if ((!module.is.expectingJSON()) || !isFunction(settings.successTest)) {
                                 module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
                                 return true;
                             }
                             module.debug('Checking JSON returned success', settings.successTest, response);
-                            if ( settings.successTest(response) ) {
+                            if (settings.successTest(response)) {
                                 module.debug('Response passed success test', response);
                                 return true;
                             } else {
@@ -333,7 +333,7 @@
                             return (module.request && module.request.state() == 'rejected');
                         },
                         complete: function() {
-                            return (module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected') );
+                            return (module.request && (module.request.state() == 'resolved' || module.request.state() == 'rejected'));
                         },
                     },
 
@@ -497,7 +497,7 @@
                         request: function() {
                             module.set.loading();
                             module.request = module.create.request();
-                            if ( module.is.mocked() ) {
+                            if (module.is.mocked()) {
                                 module.mockedXHR = module.create.mockedXHR();
                             } else {
                                 module.xhr = module.create.xhr();
@@ -522,7 +522,7 @@
                                     context            = this,
                                     elapsedTime        = (new Date().getTime() - requestStartTime),
                                     timeLeft           = (settings.loadingDuration - elapsedTime),
-                                    translatedResponse = ( isFunction(settings.onResponse) )
+                                    translatedResponse = (isFunction(settings.onResponse))
                                         ? module.is.expectingJSON() && !settings.rawResponse
                                             ? settings.onResponse.call(context, $.extend(true, {}, response))
                                             : settings.onResponse.call(context, response)
@@ -539,7 +539,7 @@
                                     module.debug('Response completed early delaying state change by', timeLeft);
                                 }
                                 setTimeout(function() {
-                                    if ( module.is.validResponse(response) ) {
+                                    if (module.is.validResponse(response)) {
                                         module.request.resolveWith(context, [response, xhr]);
                                     } else {
                                         module.request.rejectWith(context, [xhr, 'invalid']);
@@ -559,7 +559,7 @@
                                     module.debug('Response completed early delaying state change by', timeLeft);
                                 }
                                 setTimeout(function() {
-                                    if ( module.is.abortedRequest(xhr) ) {
+                                    if (module.is.abortedRequest(xhr)) {
                                         module.request.rejectWith(context, [xhr, 'aborted', httpMessage]);
                                     } else {
                                         module.request.rejectWith(context, [xhr, 'error', status, httpMessage]);
@@ -582,7 +582,7 @@
                                     response
                                 ;
                                 // have to guess callback parameters based on request success
-                                if ( module.was.successful() ) {
+                                if (module.was.successful()) {
                                     response = firstParameter;
                                     xhr      = secondParameter;
                                 } else {
@@ -608,7 +608,7 @@
                                     if (xhr !== undefined) {
                                         module.debug('XHR produced a server error', status, httpMessage);
                                         // make sure we have an error to display to console
-                                        if ( (xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
+                                        if ((xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
                                             module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                                         }
                                         settings.onError.call(context, errorMessage, $module, xhr);
@@ -618,7 +618,7 @@
                                 if (settings.errorDuration && status !== 'aborted') {
                                     module.debug('Adding error state');
                                     module.set.error();
-                                    if ( module.should.removeError() ) {
+                                    if (module.should.removeError()) {
                                         setTimeout(module.remove.error, settings.errorDuration);
                                     }
                                 }
@@ -657,7 +657,7 @@
                                 .fail(module.event.xhr.fail);
 
                             if (responder) {
-                                if ( isFunction(responder) ) {
+                                if (isFunction(responder)) {
                                     module.debug('Using specified synchronous callback', responder);
                                     response = responder.call(context, requestSettings);
                                 } else {
@@ -666,7 +666,7 @@
                                 }
                                 // simulating response
                                 mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
-                            } else if ( isFunction(asyncResponder) ) {
+                            } else if (isFunction(asyncResponder)) {
                                 asyncCallback = function(response) {
                                     module.debug('Async callback returned response', response);
 
@@ -792,10 +792,10 @@
                             var
                                 data = {}
                             ;
-                            if ( !isWindow(element) ) {
-                                if ( module.is.input() ) {
+                            if (!isWindow(element)) {
+                                if (module.is.input()) {
                                     data.value = $module.val();
-                                } else if ( module.is.form() ) {
+                                } else if (module.is.form()) {
 
                                 } else {
                                     data.text = $module.text();
@@ -804,17 +804,17 @@
                             return data;
                         },
                         event: function() {
-                            if ( isWindow(element) || settings.on == 'now' ) {
+                            if (isWindow(element) || settings.on == 'now') {
                                 module.debug('API called without element, no events attached');
                                 return false;
                             } else if (settings.on == 'auto') {
-                                if ( $module.is('input') ) {
+                                if ($module.is('input')) {
                                     return (element.oninput !== undefined)
                                         ? 'input'
                                         : (element.onpropertychange !== undefined)
                                             ? 'propertychange'
                                             : 'keyup';
-                                } else if ( $module.is('form') ) {
+                                } else if ($module.is('form')) {
                                     return 'submit';
                                 } else {
                                     return 'click';
@@ -837,7 +837,7 @@
                                     return;
                                 }
                                 url = settings.api[action];
-                            } else if ( module.is.form() ) {
+                            } else if (module.is.form()) {
                                 url = $module.attr('action') || $context.attr('action') || false;
                                 module.debug('No url or action specified, defaulting to form action', url);
                             }
@@ -849,7 +849,7 @@
                         var
                             xhr = module.get.xhr()
                         ;
-                        if ( xhr && xhr.state() !== 'resolved') {
+                        if (xhr && xhr.state() !== 'resolved') {
                             module.debug('Cancelling API request');
                             xhr.abort();
                         }
@@ -863,7 +863,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -876,7 +876,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -946,7 +946,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -977,14 +977,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -993,7 +993,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -1178,4 +1178,4 @@
 
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

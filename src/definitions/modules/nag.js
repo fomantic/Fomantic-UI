@@ -38,7 +38,7 @@
         $allModules
             .each(function() {
                 var
-                    settings          = ( $.isPlainObject(parameters) )
+                    settings          = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.nag.settings, parameters)
                         : $.extend({}, $.fn.nag.settings),
 
@@ -92,7 +92,7 @@
                     },
 
                     show: function() {
-                        if ( module.should.show() && !$module.is(':visible') ) {
+                        if (module.should.show() && !$module.is(':visible')) {
                             if (settings.onShow.call(element) === false) {
                                 module.debug('onShow callback returned false, cancelling nag animation');
                                 return false;
@@ -138,7 +138,7 @@
                                 module.debug('Persistent nag is set, can show nag');
                                 return true;
                             }
-                            if ( module.storage.get(settings.key) != settings.value.toString() ) {
+                            if (module.storage.get(settings.key) != settings.value.toString()) {
                                 module.debug('Stored value is not set, can show nag', module.storage.get(settings.key));
                                 return true;
                             }
@@ -152,7 +152,7 @@
                             if (typeof expires === 'number') {
                                 expires = new Date(Date.now() + expires * 864e5);
                             }
-                            if (expires instanceof Date && expires.getTime() ){
+                            if (expires instanceof Date && expires.getTime()){
                                 return expires.toUTCString();
                             } else {
                                 module.error(error.expiresFormat);
@@ -241,7 +241,7 @@
                             ;
                             if (storage === window.localStorage && options.expires) {
                                 module.debug('Storing expiration value in localStorage', key, options.expires);
-                                storage.setItem(key + settings.expirationKey, options.expires );
+                                storage.setItem(key + settings.expirationKey, options.expires);
                             }
                             module.debug('Value stored', key, value);
                             try {
@@ -282,7 +282,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -295,7 +295,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -365,7 +365,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -396,14 +396,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -412,7 +412,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -523,10 +523,10 @@
     };
 
     // Adds easing
-    $.extend( $.easing, {
+    $.extend($.easing, {
         easeOutQuad: function (x) {
             return 1 - (1 - x) * (1 - x);
         },
     });
 
-})( jQuery, window, document );
+})(jQuery, window, document);

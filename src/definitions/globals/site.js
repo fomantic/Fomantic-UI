@@ -23,7 +23,7 @@
             methodInvoked  = (typeof query == 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
-            settings        = ( $.isPlainObject(parameters) )
+            settings        = ($.isPlainObject(parameters))
                 ? $.extend(true, {}, $.site.settings, parameters)
                 : $.extend({}, $.site.settings),
 
@@ -250,7 +250,7 @@
             cache: {},
 
             setting: function(name, value) {
-                if ( $.isPlainObject(name) ) {
+                if ($.isPlainObject(name)) {
                     $.extend(true, settings, name);
                 } else if (value !== undefined) {
                     settings[name] = value;
@@ -259,7 +259,7 @@
                 }
             },
             internal: function(name, value) {
-                if ( $.isPlainObject(name) ) {
+                if ($.isPlainObject(name)) {
                     $.extend(true, module, name);
                 } else if (value !== undefined) {
                     module[name] = value;
@@ -324,7 +324,7 @@
                         totalTime += data['Execution Time'];
                     });
                     title += ' ' + totalTime + 'ms';
-                    if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                    if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                         console.groupCollapsed(title);
                         if (console.table) {
                             console.table(performance);
@@ -355,14 +355,14 @@
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query
                         ;
-                        if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                        if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                             object = object[camelCaseValue];
-                        } else if ( object[camelCaseValue] !== undefined ) {
+                        } else if (object[camelCaseValue] !== undefined) {
                             found = object[camelCaseValue];
                             return false;
-                        } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                        } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                             object = object[value];
-                        } else if ( object[value] !== undefined ) {
+                        } else if (object[value] !== undefined) {
                             found = object[value];
                             return false;
                         } else {
@@ -371,7 +371,7 @@
                         }
                     });
                 }
-                if ( isFunction( found ) ) {
+                if (isFunction(found)) {
                     response = found.apply(context, passedArguments);
                 } else if (found !== undefined) {
                     response = found;
@@ -463,4 +463,4 @@
     });
 
 
-})( jQuery, window, document );
+})(jQuery, window, document);

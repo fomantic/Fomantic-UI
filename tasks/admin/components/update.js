@@ -73,7 +73,7 @@ module.exports = function(callback) {
                 ? '--author "' + oAuth.name + ' <' + oAuth.email + '>"'
                 : '',
 
-            componentPackage = fs.existsSync(outputDirectory + 'package.json' )
+            componentPackage = fs.existsSync(outputDirectory + 'package.json')
                 ? require(outputDirectory + 'package.json')
                 : false,
 

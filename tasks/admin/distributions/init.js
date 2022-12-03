@@ -80,7 +80,7 @@ module.exports = function(callback) {
         console.log('Processing repository: ' + outputDirectory);
 
         // create folder if doesn't exist
-        if ( !fs.existsSync(outputDirectory) ) {
+        if (!fs.existsSync(outputDirectory)) {
             mkdirp.sync(outputDirectory);
         }
 

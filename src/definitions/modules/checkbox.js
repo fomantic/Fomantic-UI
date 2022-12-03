@@ -95,7 +95,7 @@
 
                     fix: {
                         reference: function() {
-                            if ( $module.is(selector.input) ) {
+                            if ($module.is(selector.input)) {
                                 module.debug('Behavior called on <input> adjusting invoked element');
                                 $module = $module.closest(selector.checkbox);
                                 module.refresh();
@@ -105,10 +105,10 @@
 
                     setup: function() {
                         module.set.initialLoad();
-                        if ( module.is.indeterminate() ) {
+                        if (module.is.indeterminate()) {
                             module.debug('Initial value is indeterminate');
                             module.indeterminate();
-                        } else if ( module.is.checked() ) {
+                        } else if (module.is.checked()) {
                             module.debug('Initial value is checked');
                             module.check();
                         } else {
@@ -176,7 +176,7 @@
 
                     event: {
                         change: function(event) {
-                            if ( !module.should.ignoreCallbacks() ) {
+                            if (!module.should.ignoreCallbacks()) {
                                 settings.onChange.call(input);
                             }
                         },
@@ -184,11 +184,11 @@
                             var
                                 $target = $(event.target)
                             ;
-                            if ( $target.is(selector.input) ) {
+                            if ($target.is(selector.input)) {
                                 module.verbose('Using default check action on initialized checkbox');
                                 return;
                             }
-                            if ( $target.is(selector.link) ) {
+                            if ($target.is(selector.link)) {
                                 module.debug('Clicking link inside checkbox, skipping toggle');
                                 return;
                             }
@@ -241,7 +241,7 @@
                                 shortcutPressed = true;
                                 event.stopPropagation();
                             } else if (!event.ctrlKey && module.can.change()) {
-                                if ( key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey) ) {
+                                if (key == keyCode.space || (key == keyCode.enter && settings.enableEnterKey)) {
                                     module.verbose('Enter/space key pressed, toggling checkbox');
                                     module.toggle();
                                     shortcutPressed = true;
@@ -264,12 +264,12 @@
                     },
 
                     check: function() {
-                        if ( !module.should.allowCheck() ) {
+                        if (!module.should.allowCheck()) {
                             return;
                         }
                         module.debug('Checking checkbox', $input);
                         module.set.checked();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onChecked.call(input);
                             module.trigger.change();
                         }
@@ -277,12 +277,12 @@
                     },
 
                     uncheck: function() {
-                        if ( !module.should.allowUncheck() ) {
+                        if (!module.should.allowUncheck()) {
                             return;
                         }
                         module.debug('Unchecking checkbox');
                         module.set.unchecked();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onUnchecked.call(input);
                             module.trigger.change();
                         }
@@ -290,39 +290,39 @@
                     },
 
                     indeterminate: function() {
-                        if ( module.should.allowIndeterminate() ) {
+                        if (module.should.allowIndeterminate()) {
                             module.debug('Checkbox is already indeterminate');
                             return;
                         }
                         module.debug('Making checkbox indeterminate');
                         module.set.indeterminate();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onIndeterminate.call(input);
                             module.trigger.change();
                         }
                     },
 
                     determinate: function() {
-                        if ( module.should.allowDeterminate() ) {
+                        if (module.should.allowDeterminate()) {
                             module.debug('Checkbox is already determinate');
                             return;
                         }
                         module.debug('Making checkbox determinate');
                         module.set.determinate();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onDeterminate.call(input);
                             module.trigger.change();
                         }
                     },
 
                     enable: function() {
-                        if ( module.is.enabled() ) {
+                        if (module.is.enabled()) {
                             module.debug('Checkbox is already enabled');
                             return;
                         }
                         module.debug('Enabling checkbox');
                         module.set.enabled();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onEnable.call(input);
                             // preserve legacy callbacks
                             settings.onEnabled.call(input);
@@ -330,13 +330,13 @@
                     },
 
                     disable: function() {
-                        if ( module.is.disabled() ) {
+                        if (module.is.disabled()) {
                             module.debug('Checkbox is already disabled');
                             return;
                         }
                         module.debug('Disabling checkbox');
                         module.set.disabled();
-                        if ( !module.should.ignoreCallbacks() ) {
+                        if (!module.should.ignoreCallbacks()) {
                             settings.onDisable.call(input);
                             // preserve legacy callbacks
                             settings.onDisabled.call(input);
@@ -387,7 +387,7 @@
 
                     should: {
                         allowCheck: function() {
-                            if (module.is.determinate() && module.is.checked() && !module.is.initialLoad() ) {
+                            if (module.is.determinate() && module.is.checked() && !module.is.initialLoad()) {
                                 module.debug('Should not allow check, checkbox is already checked');
                                 return false;
                             }
@@ -398,7 +398,7 @@
                             return true;
                         },
                         allowUncheck: function() {
-                            if (module.is.determinate() && module.is.unchecked() && !module.is.initialLoad() ) {
+                            if (module.is.determinate() && module.is.unchecked() && !module.is.initialLoad()) {
                                 module.debug('Should not allow uncheck, checkbox is already unchecked');
                                 return false;
                             }
@@ -409,7 +409,7 @@
                             return true;
                         },
                         allowIndeterminate: function() {
-                            if (module.is.indeterminate() && !module.is.initialLoad() ) {
+                            if (module.is.indeterminate() && !module.is.initialLoad()) {
                                 module.debug('Should not allow indeterminate, checkbox is already indeterminate');
                                 return false;
                             }
@@ -420,7 +420,7 @@
                             return true;
                         },
                         allowDeterminate: function() {
-                            if (module.is.determinate() && !module.is.initialLoad() ) {
+                            if (module.is.determinate() && !module.is.initialLoad()) {
                                 module.debug('Should not allow determinate, checkbox is already determinate');
                                 return false;
                             }
@@ -437,7 +437,7 @@
 
                     can: {
                         change: function() {
-                            return !( $module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly') );
+                            return !($module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly'));
                         },
                         uncheck: function() {
                             return (typeof settings.uncheckable === 'boolean')
@@ -455,7 +455,7 @@
                             $module
                                 .removeClass(className.indeterminate)
                                 .addClass(className.checked);
-                            if ( module.is.radio() ) {
+                            if (module.is.radio()) {
                                 module.uncheckOthers();
                             }
                             if (!module.is.indeterminate() && module.is.checked()) {
@@ -472,7 +472,7 @@
                             $module
                                 .removeClass(className.indeterminate)
                                 .removeClass(className.checked);
-                            if (!module.is.indeterminate() &&  module.is.unchecked() ) {
+                            if (!module.is.indeterminate() &&  module.is.unchecked()) {
                                 module.debug('Input is already unchecked');
                                 return;
                             }
@@ -485,7 +485,7 @@
                             module.verbose('Setting class to indeterminate');
                             $module
                                 .addClass(className.indeterminate);
-                            if ( module.is.indeterminate() ) {
+                            if (module.is.indeterminate()) {
                                 module.debug('Input is already indeterminate, skipping input property change');
                                 return;
                             }
@@ -497,7 +497,7 @@
                             module.verbose('Removing indeterminate class');
                             $module
                                 .removeClass(className.indeterminate);
-                            if ( module.is.determinate() ) {
+                            if (module.is.determinate()) {
                                 module.debug('Input is already determinate, skipping input property change');
                                 return;
                             }
@@ -509,7 +509,7 @@
                             module.verbose('Setting class to disabled');
                             $module
                                 .addClass(className.disabled);
-                            if ( module.is.disabled() ) {
+                            if (module.is.disabled()) {
                                 module.debug('Input is already disabled, skipping input property change');
                                 return;
                             }
@@ -520,7 +520,7 @@
                         enabled: function() {
                             module.verbose('Removing disabled class');
                             $module.removeClass(className.disabled);
-                            if ( module.is.enabled() ) {
+                            if (module.is.enabled()) {
                                 module.debug('Input is already enabled, skipping input property change');
                                 return;
                             }
@@ -530,7 +530,7 @@
                         },
                         tabbable: function() {
                             module.verbose('Adding tabindex to checkbox');
-                            if ( $input.attr('tabindex') === undefined) {
+                            if ($input.attr('tabindex') === undefined) {
                                 $input.attr('tabindex', 0);
                             }
                         },
@@ -562,7 +562,7 @@
                             if ($input.prevAll(selector.label).length > 0) {
                                 $input.prev(selector.label).detach().insertAfter($input);
                                 module.debug('Moving existing label', $label);
-                            } else if ( !module.has.label() ) {
+                            } else if (!module.has.label()) {
                                 $label = $('<label>').insertAfter($input);
                                 module.debug('Creating label', $label);
                             }
@@ -603,23 +603,23 @@
                     },
 
                     toggle: function() {
-                        if ( !module.can.change() ) {
+                        if (!module.can.change()) {
                             if (!module.is.radio()) {
                                 module.debug('Checkbox is read-only or disabled, ignoring toggle');
                             }
                             return;
                         }
-                        if ( module.is.indeterminate() || module.is.unchecked() ) {
+                        if (module.is.indeterminate() || module.is.unchecked()) {
                             module.debug('Currently unchecked');
                             module.check();
-                        } else if ( module.is.checked() && module.can.uncheck() ) {
+                        } else if (module.is.checked() && module.can.uncheck()) {
                             module.debug('Currently checked');
                             module.uncheck();
                         }
                     },
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -632,7 +632,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -702,7 +702,7 @@
                             if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -733,14 +733,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -749,7 +749,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -840,4 +840,4 @@
 
     };
 
-})( jQuery, window, document );
+})(jQuery, window, document);

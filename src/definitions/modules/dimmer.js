@@ -39,7 +39,7 @@
         $allModules
             .each(function() {
                 var
-                    settings        = ( $.isPlainObject(parameters) )
+                    settings        = ($.isPlainObject(parameters))
                         ? $.extend(true, {}, $.fn.dimmer.settings, parameters)
                         : $.extend({}, $.fn.dimmer.settings),
 
@@ -68,13 +68,13 @@
                 module = {
 
                     preinitialize: function() {
-                        if ( module.is.dimmer() ) {
+                        if (module.is.dimmer()) {
 
                             $dimmable = $module.parent();
                             $dimmer   = $module;
                         } else {
                             $dimmable = $module;
-                            if ( module.has.dimmer() ) {
+                            if (module.has.dimmer()) {
                                 if (settings.dimmerName) {
                                     $dimmer = $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName);
                                 } else {
@@ -119,12 +119,12 @@
                                 $dimmable
                                     .on(clickEvent + eventNamespace, module.toggle);
                             }
-                            if ( module.is.page() ) {
+                            if (module.is.page()) {
                                 module.debug('Setting as a page dimmer', $dimmable);
                                 module.set.pageDimmer();
                             }
 
-                            if ( module.is.closable() ) {
+                            if (module.is.closable()) {
                                 module.verbose('Adding dimmer close event', $dimmer);
                                 $dimmable
                                     .on(clickEvent + eventNamespace, selector.dimmer, module.event.click);
@@ -144,7 +144,7 @@
                     event: {
                         click: function(event) {
                             module.verbose('Determining if event occurred on dimmer', event);
-                            if ( $dimmer.find(event.target).length === 0 || $(event.target).is(selector.content) ) {
+                            if ($dimmer.find(event.target).length === 0 || $(event.target).is(selector.content)) {
                                 module.hide();
                                 event.stopImmediatePropagation();
                             }
@@ -163,7 +163,7 @@
 
                     create: function() {
                         var
-                            $element = $( settings.template.dimmer(settings) )
+                            $element = $(settings.template.dimmer(settings))
                         ;
                         if (settings.dimmerName) {
                             module.debug('Creating named dimmer', settings.dimmerName);
@@ -178,7 +178,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if ( (!module.is.dimmed() || module.is.animating()) && module.is.enabled() ) {
+                        if ((!module.is.dimmed() || module.is.animating()) && module.is.enabled()) {
                             if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling dimmer show');
                                 return;
@@ -196,7 +196,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if ( module.is.dimmed() || module.is.animating() ) {
+                        if (module.is.dimmed() || module.is.animating()) {
                             if (settings.onHide.call(element) === false) {
                                 module.verbose('Hide callback returned false cancelling dimmer hide');
                                 return;
@@ -211,10 +211,10 @@
 
                     toggle: function() {
                         module.verbose('Toggling dimmer visibility', $dimmer);
-                        if ( !module.is.dimmed() ) {
+                        if (!module.is.dimmed()) {
                             module.show();
                         } else {
-                            if ( module.is.closable() ) {
+                            if (module.is.closable()) {
                                 module.hide();
                             }
                         }
@@ -324,7 +324,7 @@
                             return $dimmer;
                         },
                         duration: function() {
-                            if ( module.is.active() ) {
+                            if (module.is.active()) {
                                 return settings.transition.hideDuration || settings.duration.hide || settings.duration;
                             } else {
                                 return settings.transition.showDuration || settings.duration.show || settings.duration;
@@ -337,7 +337,7 @@
                             if (settings.dimmerName) {
                                 return ($module.find(selector.dimmer).filter('.' + settings.dimmerName).length > 0);
                             } else {
-                                return ( $module.find(selector.dimmer).length > 0 );
+                                return ($module.find(selector.dimmer).length > 0);
                             }
                         },
                     },
@@ -347,7 +347,7 @@
                             return $dimmer.hasClass(className.active);
                         },
                         animating: function() {
-                            return ( $dimmer.is(':animated') || $dimmer.hasClass(className.animating) );
+                            return ($dimmer.is(':animated') || $dimmer.hasClass(className.animating));
                         },
                         closable: function() {
                             if (settings.closable == 'auto') {
@@ -452,7 +452,7 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, settings, name);
                         } else if (value !== undefined) {
                             if ($.isPlainObject(settings[name])) {
@@ -465,7 +465,7 @@
                         }
                     },
                     internal: function(name, value) {
-                        if ( $.isPlainObject(name) ) {
+                        if ($.isPlainObject(name)) {
                             $.extend(true, module, name);
                         } else if (value !== undefined) {
                             module[name] = value;
@@ -538,7 +538,7 @@
                             if ($allModules.length > 1) {
                                 title += ' ' + '(' + $allModules.length + ')';
                             }
-                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
                                 if (console.table) {
                                     console.table(performance);
@@ -569,14 +569,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
                                     object = object[camelCaseValue];
-                                } else if ( object[camelCaseValue] !== undefined ) {
+                                } else if (object[camelCaseValue] !== undefined) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ($.isPlainObject(object[value]) && (depth != maxDepth)) {
                                     object = object[value];
-                                } else if ( object[value] !== undefined ) {
+                                } else if (object[value] !== undefined) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -585,7 +585,7 @@
                                 }
                             });
                         }
-                        if ( isFunction( found ) ) {
+                        if (isFunction(found)) {
                             response = found.apply(context, passedArguments);
                         } else if (found !== undefined) {
                             response = found;
@@ -713,4 +713,4 @@
 
     };
 
-})( jQuery, window, document );
+})(jQuery, window, document);
