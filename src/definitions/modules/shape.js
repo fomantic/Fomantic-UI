@@ -119,14 +119,14 @@
                         module.verbose('Animating box with properties', propertyObject);
                         callback = callback || function(event) {
                             module.verbose('Executing animation callback');
-                            if(event !== undefined) {
+                            if (event !== undefined) {
                                 event.stopPropagation();
                             }
                             module.reset();
                             module.set.active();
                         };
                         settings.onBeforeChange.call($nextSide[0]);
-                        if(module.get.transitionEvent()) {
+                        if (module.get.transitionEvent()) {
                             module.verbose('Starting CSS animation');
                             $module
                                 .addClass(className.animating);
@@ -206,7 +206,7 @@
                                 ? duration + 'ms'
                                 : duration;
                             module.verbose('Setting animation duration', duration);
-                            if(settings.duration || settings.duration === 0) {
+                            if (settings.duration || settings.duration === 0) {
                                 $sides.add($side)
                                     .css({
                                         '-webkit-transition-duration': duration,
@@ -256,11 +256,11 @@
                             $nextSide.addClass(className.active);
                             $clone.insertAfter($module);
                             $clone.remove();
-                            if(settings.width !== 'auto') {
+                            if (settings.width !== 'auto') {
                                 $module.css('width', newWidth + settings.jitter);
                                 module.verbose('Specifying width during animation', newWidth);
                             }
-                            if(settings.height !== 'auto') {
+                            if (settings.height !== 'auto') {
                                 $module.css('height', newHeight + settings.jitter);
                                 module.verbose('Specifying height during animation', newHeight);
                             }
@@ -270,7 +270,7 @@
                             nextIndex = selector;
                             $nextSide = $side.filter(selector);
                             nextIndex = $side.index($nextSide);
-                            if($nextSide.length === 0) {
+                            if ($nextSide.length === 0) {
                                 module.set.defaultSide();
                                 module.error(error.side);
                             }
@@ -290,18 +290,18 @@
 
                     flip: {
                         to: function(type,stage){
-                            if(module.is.hidden()) {
+                            if (module.is.hidden()) {
                                 module.debug('Module not visible', $nextSide);
                                 return;
                             }
-                            if(module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
+                            if (module.is.complete() && !module.is.animating() && !settings.allowRepeats) {
                                 module.debug('Side already visible', $nextSide);
                                 return;
                             }
                             var
                                 transform = module.get.transform[type]()
                             ;
-                            if( !module.is.animating()) {
+                            if ( !module.is.animating()) {
                                 module.debug('Flipping '+type, $nextSide);
                                 module.set.stageSize();
                                 module.stage[stage]();
@@ -416,8 +416,8 @@
                                 },
                                 transition
                             ;
-                            for(transition in transitions){
-                                if( element.style[transition] !== undefined ){
+                            for (transition in transitions){
+                                if ( element.style[transition] !== undefined ){
                                     return transitions[transition];
                                 }
                             }
@@ -562,10 +562,10 @@
                     },
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -575,17 +575,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -594,8 +594,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -604,7 +604,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -616,7 +616,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -642,15 +642,15 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if($allModules.length > 1) {
+                            if ($allModules.length > 1) {
                                 title += ' ' + '(' + $allModules.length + ')';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -671,7 +671,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -679,14 +679,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -696,26 +696,26 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     var $inputs = $module.find('input');
-                    if( $inputs.length > 0) {
+                    if ( $inputs.length > 0) {
                         $inputs.trigger('blur');
                         setTimeout(function(){
                             module.invoke(query);
@@ -724,7 +724,7 @@
                         module.invoke(query);
                     }
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

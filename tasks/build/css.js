@@ -234,7 +234,7 @@ module.exports.watch = function (type, config) {
 
             // Determine which LESS file has to be recompiled
             let lessPath;
-            if(path.indexOf('site.variables') !== -1)  {
+            if (path.indexOf('site.variables') !== -1)  {
                 return;
             } else if (path.indexOf(config.paths.source.themes) !== -1) {
                 console.log('Change detected in packaged theme');

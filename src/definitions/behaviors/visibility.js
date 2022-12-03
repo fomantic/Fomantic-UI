@@ -86,27 +86,27 @@
 
                         module.setup.cache();
 
-                        if( module.should.trackChanges() ) {
+                        if ( module.should.trackChanges() ) {
 
-                            if(settings.type == 'image') {
+                            if (settings.type == 'image') {
                                 module.setup.image();
                             }
-                            if(settings.type == 'fixed') {
+                            if (settings.type == 'fixed') {
                                 module.setup.fixed();
                             }
 
-                            if(settings.observeChanges) {
+                            if (settings.observeChanges) {
                                 module.observeChanges();
                             }
                             module.bind.events();
                         }
 
                         module.save.position();
-                        if( !module.is.visible() ) {
+                        if ( !module.is.visible() ) {
                             module.error(error.visible, $module);
                         }
 
-                        if(settings.initialCheck) {
+                        if (settings.initialCheck) {
                             module.checkVisibility();
                         }
                         module.instantiate();
@@ -121,10 +121,10 @@
 
                     destroy: function() {
                         module.verbose('Destroying previous module');
-                        if(observer) {
+                        if (observer) {
                             observer.disconnect();
                         }
-                        if(contextObserver) {
+                        if (contextObserver) {
                             contextObserver.disconnect();
                         }
                         $window
@@ -133,7 +133,7 @@
                         $context
                             .off('scroll'       + eventNamespace, module.event.scroll)
                             .off('scrollchange' + eventNamespace, module.event.scrollchange);
-                        if(settings.type == 'fixed') {
+                        if (settings.type == 'fixed') {
                             module.resetFixed();
                             module.remove.placeholder();
                         }
@@ -143,7 +143,7 @@
                     },
 
                     observeChanges: function() {
-                        if('MutationObserver' in window) {
+                        if ('MutationObserver' in window) {
                             contextObserver = new MutationObserver(module.event.contextChanged);
                             observer        = new MutationObserver(module.event.changed);
                             contextObserver.observe(document, {
@@ -161,7 +161,7 @@
                     bind: {
                         events: function() {
                             module.verbose('Binding visibility events to scroll and resize');
-                            if(settings.refreshOnLoad) {
+                            if (settings.refreshOnLoad) {
                                 $window
                                     .on('load'   + eventNamespace, module.event.load);
                             }
@@ -185,9 +185,9 @@
                         },
                         contextChanged: function(mutations) {
                             [].forEach.call(mutations, function(mutation) {
-                                if(mutation.removedNodes) {
+                                if (mutation.removedNodes) {
                                     [].forEach.call(mutation.removedNodes, function(node) {
-                                        if(node == element || $(node).find(element).length > 0) {
+                                        if (node == element || $(node).find(element).length > 0) {
                                             module.debug('Element removed from DOM, tearing down events');
                                             module.destroy();
                                         }
@@ -197,7 +197,7 @@
                         },
                         resize: function() {
                             module.debug('Window resized');
-                            if(settings.refreshOnResize) {
+                            if (settings.refreshOnResize) {
                                 requestAnimationFrame(module.refresh);
                             }
                         },
@@ -207,7 +207,7 @@
                         },
                         // publishes scrollchange event on one scroll
                         scroll: function() {
-                            if(settings.throttle) {
+                            if (settings.throttle) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function() {
                                     $context.triggerHandler('scrollchange' + eventNamespace, [ $context.scrollTop() ]);
@@ -263,7 +263,7 @@
 
                     should: {
                         trackChanges: function() {
-                            if(methodInvoked) {
+                            if (methodInvoked) {
                                 module.debug('One time query, no need to bind events');
                                 return false;
                             }
@@ -284,7 +284,7 @@
                             var
                                 src = $module.data(metadata.src)
                             ;
-                            if(src) {
+                            if (src) {
                                 module.verbose('Lazy loading image', src);
                                 settings.once           = true;
                                 settings.observeChanges = false;
@@ -295,7 +295,7 @@
                                     module.precache(src, function() {
                                         module.set.image(src, function() {
                                             loadedCount++;
-                                            if(loadedCount == moduleCount) {
+                                            if (loadedCount == moduleCount) {
                                                 settings.onAllLoaded.call(this);
                                             }
                                             settings.onLoad.call(this);
@@ -310,7 +310,7 @@
                             settings.observeChanges = false;
                             settings.initialCheck   = true;
                             settings.refreshOnLoad  = true;
-                            if(!parameters.transition) {
+                            if (!parameters.transition) {
                                 settings.transition = false;
                             }
                             module.create.placeholder();
@@ -319,8 +319,8 @@
                                 module.debug('Element passed, adding fixed position', $module);
                                 module.show.placeholder();
                                 module.set.fixed();
-                                if(settings.transition) {
-                                    if($.fn.transition !== undefined) {
+                                if (settings.transition) {
+                                    if ($.fn.transition !== undefined) {
                                         $module.transition(settings.transition, settings.duration);
                                     }
                                 }
@@ -377,9 +377,9 @@
                         image: function(src, callback) {
                             $module
                                 .attr('src', src);
-                            if(settings.transition) {
-                                if( $.fn.transition !== undefined) {
-                                    if($module.hasClass(className.visible)) {
+                            if (settings.transition) {
+                                if ( $.fn.transition !== undefined) {
+                                    if ($module.hasClass(className.visible)) {
                                         module.debug('Transition already occurred on this image, skipping animation');
                                         return;
                                     }
@@ -407,7 +407,7 @@
                             return calculations.offScreen;
                         },
                         visible: function() {
-                            if(module.cache && module.cache.element) {
+                            if (module.cache && module.cache.element) {
                                 return !(module.cache.element.width === 0 && module.cache.element.offset.top === 0);
                             }
                             return false;
@@ -432,12 +432,12 @@
 
                     refresh: function() {
                         module.debug('Refreshing constants (width/height)');
-                        if(settings.type == 'fixed') {
+                        if (settings.type == 'fixed') {
                             module.resetFixed();
                         }
                         module.reset();
                         module.save.position();
-                        if(settings.checkOnRefresh) {
+                        if (settings.checkOnRefresh) {
                             module.checkVisibility();
                         }
                         settings.onRefresh.call(element);
@@ -450,7 +450,7 @@
 
                     reset: function() {
                         module.verbose('Resetting all cached values');
-                        if( $.isPlainObject(module.cache) ) {
+                        if ( $.isPlainObject(module.cache) ) {
                             module.cache.screen = {};
                             module.cache.element = {};
                         }
@@ -459,7 +459,7 @@
                     checkVisibility: function(scroll) {
                         module.verbose('Checking visibility of element', module.cache.element);
 
-                        if( !disabled && module.is.visible() ) {
+                        if ( !disabled && module.is.visible() ) {
 
                             // save scroll position
                             module.save.scroll(scroll);
@@ -487,7 +487,7 @@
                             module.bottomPassed();
 
                             // on update callback
-                            if(settings.onUpdate) {
+                            if (settings.onUpdate) {
                                 settings.onUpdate.call(element, module.get.elementCalculations());
                             }
                         }
@@ -498,15 +498,15 @@
                             calculations   = module.get.elementCalculations()
                         ;
                         // assign callback
-                        if(amount && newCallback) {
+                        if (amount && newCallback) {
                             settings.onPassed[amount] = newCallback;
-                        } else if(amount !== undefined) {
+                        } else if (amount !== undefined) {
                             return (module.get.pixelsPassed(amount) > calculations.pixelsPassed);
-                        } else if(calculations.passing) {
+                        } else if (calculations.passing) {
                             $.each(settings.onPassed, function(amount, callback) {
-                                if(calculations.bottomVisible || calculations.pixelsPassed > module.get.pixelsPassed(amount)) {
+                                if (calculations.bottomVisible || calculations.pixelsPassed > module.get.pixelsPassed(amount)) {
                                     module.execute(callback, amount);
-                                } else if(!settings.once) {
+                                } else if (!settings.once) {
                                     module.remove.occurred(callback);
                                 }
                             });
@@ -519,16 +519,16 @@
                             callback     = newCallback || settings.onOnScreen,
                             callbackName = 'onScreen'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for onScreen', newCallback);
                             settings.onOnScreen = newCallback;
                         }
-                        if(calculations.onScreen) {
+                        if (calculations.onScreen) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback !== undefined) {
+                        if (newCallback !== undefined) {
                             return calculations.onOnScreen;
                         }
                     },
@@ -539,16 +539,16 @@
                             callback     = newCallback || settings.onOffScreen,
                             callbackName = 'offScreen'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for offScreen', newCallback);
                             settings.onOffScreen = newCallback;
                         }
-                        if(calculations.offScreen) {
+                        if (calculations.offScreen) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback !== undefined) {
+                        if (newCallback !== undefined) {
                             return calculations.onOffScreen;
                         }
                     },
@@ -559,16 +559,16 @@
                             callback     = newCallback || settings.onPassing,
                             callbackName = 'passing'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for passing', newCallback);
                             settings.onPassing = newCallback;
                         }
-                        if(calculations.passing) {
+                        if (calculations.passing) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback !== undefined) {
+                        if (newCallback !== undefined) {
                             return calculations.passing;
                         }
                     },
@@ -580,16 +580,16 @@
                             callback     = newCallback || settings.onTopVisible,
                             callbackName = 'topVisible'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for top visible', newCallback);
                             settings.onTopVisible = newCallback;
                         }
-                        if(calculations.topVisible) {
+                        if (calculations.topVisible) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return calculations.topVisible;
                         }
                     },
@@ -600,16 +600,16 @@
                             callback     = newCallback || settings.onBottomVisible,
                             callbackName = 'bottomVisible'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for bottom visible', newCallback);
                             settings.onBottomVisible = newCallback;
                         }
-                        if(calculations.bottomVisible) {
+                        if (calculations.bottomVisible) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return calculations.bottomVisible;
                         }
                     },
@@ -620,16 +620,16 @@
                             callback     = newCallback || settings.onTopPassed,
                             callbackName = 'topPassed'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for top passed', newCallback);
                             settings.onTopPassed = newCallback;
                         }
-                        if(calculations.topPassed) {
+                        if (calculations.topPassed) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return calculations.topPassed;
                         }
                     },
@@ -640,16 +640,16 @@
                             callback     = newCallback || settings.onBottomPassed,
                             callbackName = 'bottomPassed'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for bottom passed', newCallback);
                             settings.onBottomPassed = newCallback;
                         }
-                        if(calculations.bottomPassed) {
+                        if (calculations.bottomPassed) {
                             module.execute(callback, callbackName);
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return calculations.bottomPassed;
                         }
                     },
@@ -660,18 +660,18 @@
                             callback     = newCallback || settings.onPassingReverse,
                             callbackName = 'passingReverse'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for passing reverse', newCallback);
                             settings.onPassingReverse = newCallback;
                         }
-                        if(!calculations.passing) {
-                            if(module.get.occurred('passing')) {
+                        if (!calculations.passing) {
+                            if (module.get.occurred('passing')) {
                                 module.execute(callback, callbackName);
                             }
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback !== undefined) {
+                        if (newCallback !== undefined) {
                             return !calculations.passing;
                         }
                     },
@@ -683,18 +683,18 @@
                             callback     = newCallback || settings.onTopVisibleReverse,
                             callbackName = 'topVisibleReverse'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for top visible reverse', newCallback);
                             settings.onTopVisibleReverse = newCallback;
                         }
-                        if(!calculations.topVisible) {
-                            if(module.get.occurred('topVisible')) {
+                        if (!calculations.topVisible) {
+                            if (module.get.occurred('topVisible')) {
                                 module.execute(callback, callbackName);
                             }
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return !calculations.topVisible;
                         }
                     },
@@ -705,18 +705,18 @@
                             callback     = newCallback || settings.onBottomVisibleReverse,
                             callbackName = 'bottomVisibleReverse'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for bottom visible reverse', newCallback);
                             settings.onBottomVisibleReverse = newCallback;
                         }
-                        if(!calculations.bottomVisible) {
-                            if(module.get.occurred('bottomVisible')) {
+                        if (!calculations.bottomVisible) {
+                            if (module.get.occurred('bottomVisible')) {
                                 module.execute(callback, callbackName);
                             }
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return !calculations.bottomVisible;
                         }
                     },
@@ -727,18 +727,18 @@
                             callback     = newCallback || settings.onTopPassedReverse,
                             callbackName = 'topPassedReverse'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for top passed reverse', newCallback);
                             settings.onTopPassedReverse = newCallback;
                         }
-                        if(!calculations.topPassed) {
-                            if(module.get.occurred('topPassed')) {
+                        if (!calculations.topPassed) {
+                            if (module.get.occurred('topPassed')) {
                                 module.execute(callback, callbackName);
                             }
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return !calculations.onTopPassed;
                         }
                     },
@@ -749,18 +749,18 @@
                             callback     = newCallback || settings.onBottomPassedReverse,
                             callbackName = 'bottomPassedReverse'
                         ;
-                        if(newCallback) {
+                        if (newCallback) {
                             module.debug('Adding callback for bottom passed reverse', newCallback);
                             settings.onBottomPassedReverse = newCallback;
                         }
-                        if(!calculations.bottomPassed) {
-                            if(module.get.occurred('bottomPassed')) {
+                        if (!calculations.bottomPassed) {
+                            if (module.get.occurred('bottomPassed')) {
                                 module.execute(callback, callbackName);
                             }
-                        } else if(!settings.once) {
+                        } else if (!settings.once) {
                             module.remove.occurred(callbackName);
                         }
-                        if(newCallback === undefined) {
+                        if (newCallback === undefined) {
                             return !calculations.bottomPassed;
                         }
                     },
@@ -771,11 +771,11 @@
                             screen       = module.get.screenCalculations()
                         ;
                         callback = callback || false;
-                        if(callback) {
-                            if(settings.continuous) {
+                        if (callback) {
+                            if (settings.continuous) {
                                 module.debug('Callback being called continuously', callbackName, calculations);
                                 callback.call(element, calculations, screen);
-                            } else if(!module.get.occurred(callbackName)) {
+                            } else if (!module.get.occurred(callbackName)) {
                                 module.debug('Conditions met', callbackName, calculations);
                                 callback.call(element, calculations, screen);
                             }
@@ -798,16 +798,16 @@
                         },
                         placeholder: function() {
                             module.debug('Removing placeholder content');
-                            if($placeholder) {
+                            if ($placeholder) {
                                 $placeholder.remove();
                             }
                         },
                         occurred: function(callback) {
-                            if(callback) {
+                            if (callback) {
                                 var
                                     occurred = module.cache.occurred
                                 ;
-                                if(occurred[callback] !== undefined && occurred[callback] === true) {
+                                if (occurred[callback] !== undefined && occurred[callback] === true) {
                                     module.debug('Callback can now be called again', callback);
                                     module.cache.occurred[callback] = false;
                                 }
@@ -825,8 +825,8 @@
                             module.save.elementCalculations();
                         },
                         occurred: function(callback) {
-                            if(callback) {
-                                if(module.cache.occurred[callback] === undefined || (module.cache.occurred[callback] !== true)) {
+                            if (callback) {
+                                if (module.cache.occurred[callback] === undefined || (module.cache.occurred[callback] !== true)) {
                                     module.verbose('Saving callback occurred', callback);
                                     module.cache.occurred[callback] = true;
                                 }
@@ -842,9 +842,9 @@
                                 lastScroll = module.get.lastScroll(),
                                 direction
                             ;
-                            if(scroll > lastScroll && lastScroll) {
+                            if (scroll > lastScroll && lastScroll) {
                                 direction = 'down';
-                            } else if(scroll < lastScroll && lastScroll) {
+                            } else if (scroll < lastScroll && lastScroll) {
                                 direction = 'up';
                             } else {
                                 direction = 'static';
@@ -864,10 +864,10 @@
                             element.width         = $module.outerWidth();
                             element.height        = $module.outerHeight();
                             // compensate for scroll in context
-                            if(module.is.verticallyScrollableContext()) {
+                            if (module.is.verticallyScrollableContext()) {
                                 element.offset.top += $context.scrollTop() - $context.offset().top;
                             }
-                            if(module.is.horizontallyScrollableContext()) {
+                            if (module.is.horizontallyScrollableContext()) {
                                 element.offset.left += $context.scrollLeft() - $context.offset().left;
                             }
                             // store
@@ -880,7 +880,7 @@
                                 element    = module.get.elementPosition()
                             ;
                             // offset
-                            if(settings.includeMargin) {
+                            if (settings.includeMargin) {
                                 element.margin        = {};
                                 element.margin.top    = parseInt($module.css('margin-top'), 10);
                                 element.margin.bottom = parseInt($module.css('margin-bottom'), 10);
@@ -905,7 +905,7 @@
                             element.offScreen = (!element.onScreen);
 
                             // passing calculations
-                            if(element.passing) {
+                            if (element.passing) {
                                 element.pixelsPassed     = (screen.top - element.top);
                                 element.percentagePassed = (screen.top - element.top) / element.height;
                             }
@@ -939,7 +939,7 @@
                             var
                                 element = module.get.elementCalculations()
                             ;
-                            if(amount.search('%') > -1) {
+                            if (amount.search('%') > -1) {
                                 return ( element.height * (parseInt(amount, 10) / 100) );
                             }
                             return parseInt(amount, 10);
@@ -950,43 +950,43 @@
                                 : false;
                         },
                         direction: function() {
-                            if(module.cache.direction === undefined) {
+                            if (module.cache.direction === undefined) {
                                 module.save.direction();
                             }
                             return module.cache.direction;
                         },
                         elementPosition: function() {
-                            if(module.cache.element === undefined) {
+                            if (module.cache.element === undefined) {
                                 module.save.elementPosition();
                             }
                             return module.cache.element;
                         },
                         elementCalculations: function() {
-                            if(module.cache.element === undefined) {
+                            if (module.cache.element === undefined) {
                                 module.save.elementCalculations();
                             }
                             return module.cache.element;
                         },
                         screenCalculations: function() {
-                            if(module.cache.screen === undefined) {
+                            if (module.cache.screen === undefined) {
                                 module.save.screenCalculations();
                             }
                             return module.cache.screen;
                         },
                         screenSize: function() {
-                            if(module.cache.screen === undefined) {
+                            if (module.cache.screen === undefined) {
                                 module.save.screenSize();
                             }
                             return module.cache.screen;
                         },
                         scroll: function() {
-                            if(module.cache.scroll === undefined) {
+                            if (module.cache.scroll === undefined) {
                                 module.save.scroll();
                             }
                             return module.cache.scroll;
                         },
                         lastScroll: function() {
-                            if(module.cache.screen === undefined) {
+                            if (module.cache.screen === undefined) {
                                 module.debug('First scroll event, no last scroll could be found');
                                 return false;
                             }
@@ -995,26 +995,26 @@
                     },
 
                     setting: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             settings[name] = value;
                         } else {
                             return settings[name];
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -1023,8 +1023,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -1033,7 +1033,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -1045,7 +1045,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -1071,12 +1071,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -1097,7 +1097,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -1105,14 +1105,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -1123,29 +1123,29 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     instance.save.scroll();
                     instance.save.calculations();
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

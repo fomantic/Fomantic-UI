@@ -100,23 +100,23 @@ module.exports = {
                     folder        = pathArray[pathArray.length - 1],
                     nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if( folder == 'bower_components') {
+                if ( folder == 'bower_components') {
                     return {
                         name: 'Bower',
                         root: nextDirectory,
                     };
-                } else if(folder == 'node_modules') {
+                } else if (folder == 'node_modules') {
                     return {
                         name: 'NPM',
                         root: nextDirectory,
                     };
-                } else if(folder == 'composer') {
+                } else if (folder == 'composer') {
                     return {
                         name: 'Composer',
                         root: nextDirectory,
                     };
                 }
-                if(path.resolve(directory) == path.resolve(nextDirectory)) {
+                if (path.resolve(directory) == path.resolve(nextDirectory)) {
                     return false;
                 }
                 // recurse downward
@@ -138,12 +138,12 @@ module.exports = {
                     folder        = pathArray[pathArray.length - 2],
                     nextDirectory = path.join(directory, path.sep, '..')
                 ;
-                if(['bower_components', 'node_modules', 'composer'].includes(folder)) {
+                if (['bower_components', 'node_modules', 'composer'].includes(folder)) {
                     moduleFolders++;
-                } else if(folder === '.pnpm') {
+                } else if (folder === '.pnpm') {
                     moduleFolders--;
                 }
-                if(path.resolve(directory) === path.resolve(nextDirectory)) {
+                if (path.resolve(directory) === path.resolve(nextDirectory)) {
                     return (moduleFolders > 1);
                 }
                 // recurse downward
@@ -167,22 +167,22 @@ module.exports = {
         ;
 
         // add components
-        if(answers.components) {
+        if (answers.components) {
             json.components = answers.components;
         }
 
         // add rtl choice
-        if(answers.rtl) {
+        if (answers.rtl) {
             json.rtl = answers.rtl;
         }
 
         // add permissions
-        if(answers.permission) {
+        if (answers.permission) {
             json.permission = answers.permission;
         }
 
         // add path to semantic
-        if(answers.semanticRoot) {
+        if (answers.semanticRoot) {
             json.base = path.normalize(answers.semanticRoot);
         }
 
@@ -190,7 +190,7 @@ module.exports = {
         json.version = release.version;
 
         // add dist folder paths
-        if(answers.dist) {
+        if (answers.dist) {
             answers.dist = path.normalize(answers.dist);
 
             json.paths.output = {
@@ -202,16 +202,16 @@ module.exports = {
         }
 
         // add site path
-        if(answers.site) {
+        if (answers.site) {
             json.paths.source.site = path.normalize(answers.site + '/');
         }
-        if(answers.packaged) {
+        if (answers.packaged) {
             json.paths.output.packaged = path.normalize(answers.packaged + '/');
         }
-        if(answers.compressed) {
+        if (answers.compressed) {
             json.paths.output.compressed = path.normalize(answers.compressed + '/');
         }
-        if(answers.uncompressed) {
+        if (answers.uncompressed) {
             json.paths.output.uncompressed = path.normalize(answers.uncompressed + '/');
         }
         return json;

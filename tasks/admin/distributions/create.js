@@ -41,7 +41,7 @@ module.exports = function(callback) {
         tasks = []
     ;
 
-    for(index in release.distributions) {
+    for (index in release.distributions) {
 
         var
             distribution = release.distributions[index]
@@ -94,8 +94,8 @@ module.exports = function(callback) {
                         filePath  = path.join(dir, file),
                         stat      = fs.statSync(filePath)
                     ;
-                    if(!isOmitted) {
-                        if(stat && stat.isDirectory()) {
+                    if (!isOmitted) {
+                        if (stat && stat.isDirectory()) {
                             files = files.concat(gatherFiles(filePath));
                         } else {
                             files.push(filePath.replace(outputDirectory + path.sep, ''));
@@ -108,8 +108,8 @@ module.exports = function(callback) {
             // spaces out list correctly
             createList = function(files) {
                 var filenames = '';
-                for(var file in files) {
-                    if(file == (files.length - 1) ) {
+                for (var file in files) {
+                    if (file == (files.length - 1) ) {
                         filenames += "'" + files[file] + "'";
                     } else {
                         filenames += "'" + files[file] + "',\n    ";
@@ -132,7 +132,7 @@ module.exports = function(callback) {
                     .pipe(gulp.dest(outputDirectory));
             });
 
-            if(distribution == 'CSS') {
+            if (distribution == 'CSS') {
                 tasks.push(function() {
                     var
                         themes,
@@ -147,7 +147,7 @@ module.exports = function(callback) {
                         .pipe(gulp.dest(outputDirectory));
                     return mergeStream(themes, components, releases);
                 });
-            } else if(distribution == 'LESS') {
+            } else if (distribution == 'LESS') {
                 tasks.push(function() {
                     var
                         definitions,
@@ -177,7 +177,7 @@ module.exports = function(callback) {
                 return gulp.src(packageFile)
                     .pipe(plumber())
                     .pipe(jsonEditor(function(pkg) {
-                        if(version) {
+                        if (version) {
                             pkg.version = version;
                         }
                         return pkg;

@@ -34,7 +34,7 @@ function moduleTests(ui) {
         // module available in scope
         $module       = $(element);
 
-        if($module.size() == 1) { // one module available in fixture
+        if ($module.size() == 1) { // one module available in fixture
             $oneModule = $module;
             $clone     = $module.clone().appendTo( $(sandbox()) );
             $modules   = $clone.add($module);
@@ -139,7 +139,7 @@ function moduleTests(ui) {
           Groups
   --------------------*/
 
-    if(!singleton) {
+    if (!singleton) {
 
         describe('Group Contamination', function() {
 
@@ -199,7 +199,7 @@ function moduleTests(ui) {
 
         it('removes all events from page', function() {
             $module[module]('destroy');
-            if($.events().length > 0) {
+            if ($.events().length > 0) {
                 dump($.events());
             }
             expect($.events().length).toBe(0);

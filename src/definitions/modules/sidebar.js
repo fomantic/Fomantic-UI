@@ -99,7 +99,7 @@
                         transitionEvent = module.get.transitionEvent();
 
                         // avoids locking rendering if initialized in onReady
-                        if(settings.delaySetup) {
+                        if (settings.delaySetup) {
                             requestAnimationFrame(module.setup.layout);
                         } else {
                             module.setup.layout();
@@ -132,7 +132,7 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        if(module.is.ios()) {
+                        if (module.is.ios()) {
                             module.remove.ios();
                         }
                         // bound by uuid
@@ -143,16 +143,16 @@
 
                     event: {
                         clickaway: function(event) {
-                            if(settings.closable){
+                            if (settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                                     clickedContext  = ($context.is(event.target))
                                 ;
-                                if(clickedInPusher) {
+                                if (clickedInPusher) {
                                     module.verbose('User clicked on dimmed page');
                                     module.hide();
                                 }
-                                if(clickedContext) {
+                                if (clickedContext) {
                                     module.verbose('User clicked on dimmable context (scaled out page)');
                                     module.hide();
                                 }
@@ -162,15 +162,15 @@
                             //event.stopPropagation();
                         },
                         containScroll: function(event) {
-                            if(element.scrollTop <= 0)  {
+                            if (element.scrollTop <= 0)  {
                                 element.scrollTop = 1;
                             }
-                            if((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
+                            if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
                                 element.scrollTop = element.scrollHeight - element.offsetHeight - 1;
                             }
                         },
                         scroll: function(event) {
-                            if( $(event.target).closest(selector.sidebar).length === 0 ) {
+                            if ( $(event.target).closest(selector.sidebar).length === 0 ) {
                                 event.preventDefault();
                             }
                         },
@@ -184,10 +184,10 @@
                                 .on('touchend' + elementNamespace, module.event.clickaway);
                         },
                         scrollLock: function() {
-                            if(settings.scrollLock) {
+                            if (settings.scrollLock) {
                                 module.debug('Disabling page scroll');
                                 hadScrollbar = module.has.scrollbar();
-                                if(hadScrollbar) {
+                                if (hadScrollbar) {
                                     module.save.bodyMargin();
                                     module.set.bodyMargin();
                                 }
@@ -207,7 +207,7 @@
                         },
                         scrollLock: function() {
                             module.verbose('Removing scroll lock from page');
-                            if(hadScrollbar) {
+                            if (hadScrollbar) {
                                 module.restore.bodyMargin();
                             }
                             $context.removeClass(className.locked);
@@ -232,7 +232,7 @@
                                 style
                             ;
 
-                            if(isRTL){
+                            if (isRTL){
                                 module.verbose('RTL detected, flipping widths');
                                 distance.left = -width;
                                 distance.right = width;
@@ -240,7 +240,7 @@
 
                             style  = '<style>';
 
-                            if(direction === 'left' || direction === 'right') {
+                            if (direction === 'left' || direction === 'right') {
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
@@ -248,7 +248,7 @@
                                     + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if(direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction == 'bottom') {
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
@@ -259,15 +259,15 @@
 
                             /* IE is only browser not to create context with transforms */
                             /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
-                            if( module.is.ie() ) {
-                                if(direction === 'left' || direction === 'right') {
+                            if ( module.is.ie() ) {
+                                if (direction === 'left' || direction === 'right') {
                                     module.debug('Adding CSS rules for animation distance', width);
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + ' }';
-                                } else if(direction === 'top' || direction == 'bottom') {
+                                } else if (direction === 'top' || direction == 'bottom') {
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -319,7 +319,7 @@
                             };
                         },
                         layout: function() {
-                            if( $context.children(selector.pusher).length === 0 ) {
+                            if ( $context.children(selector.pusher).length === 0 ) {
                                 module.debug('Adding wrapper element for sidebar');
                                 module.error(error.pusher);
                                 $pusher = $('<div class="pusher" />');
@@ -330,7 +330,7 @@
                                     .wrapAll($pusher);
                                 module.refresh();
                             }
-                            if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
+                            if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
                                 module.debug('Moved sidebar to correct parent element');
                                 module.error(error.movedSidebar, element);
                                 $module.detach().prependTo($context);
@@ -349,7 +349,7 @@
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
-                        if($toggle.length > 0) {
+                        if ($toggle.length > 0) {
                             module.debug('Attaching sidebar events to element', selector, event);
                             $toggle
                                 .on('click' + eventNamespace, event);
@@ -379,21 +379,21 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if(module.is.hidden()) {
-                            if(settings.onShow.call(element) === false) {
+                        if (module.is.hidden()) {
+                            if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
                                 return;
                             }
-                            if(settings.overlay)  {
+                            if (settings.overlay)  {
                                 module.error(error.overlay);
                                 settings.transition = 'overlay';
                             }
                             module.refresh();
-                            if(module.othersActive()) {
+                            if (module.othersActive()) {
                                 module.debug('Other sidebars currently visible');
-                                if(settings.exclusive) {
+                                if (settings.exclusive) {
                                     // if not overlay queue animation after hide
-                                    if(settings.transition != 'overlay') {
+                                    if (settings.transition != 'overlay') {
                                         module.hideOthers(module.show);
                                         return;
                                     } else {
@@ -418,7 +418,7 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
+                        if ((module.is.visible() || module.is.animating()) && settings.onHide.call(element) !== false) {
                             module.debug('Hiding sidebar', callback);
                             module.refreshSidebars();
                             module.pullPage(function() {
@@ -436,7 +436,7 @@
                         return ($sidebars.not($module).filter('.' + className.visible).length > 0);
                     },
                     othersActive: function() {
-                        return(module.othersVisible() || module.othersAnimating());
+                        return (module.othersVisible() || module.othersAnimating());
                     },
 
                     hideOthers: function(callback) {
@@ -449,7 +449,7 @@
                         $otherSidebars
                             .sidebar('hide', function() {
                                 callbackCount++;
-                                if(callbackCount == sidebarCount) {
+                                if (callbackCount == sidebarCount) {
                                     callback();
                                 }
                             });
@@ -457,7 +457,7 @@
 
                     toggle: function() {
                         module.verbose('Determining toggled direction');
-                        if(module.is.hidden()) {
+                        if (module.is.hidden()) {
                             module.show();
                         } else {
                             module.hide();
@@ -477,10 +477,10 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if(settings.returnScroll) {
+                        if (settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
                         }
-                        if(settings.transition === 'scale down') {
+                        if (settings.transition === 'scale down') {
                             module.scrollToTop();
                         }
                         module.bind.scrollLock();
@@ -496,7 +496,7 @@
                             module.set.dimmed();
                         };
                         transitionEnd = function(event) {
-                            if( event.target == $transition[0] ) {
+                            if ( event.target == $transition[0] ) {
                                 $transition.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
                                 callback.call(element);
@@ -505,7 +505,7 @@
                         $transition.off(transitionEvent + elementNamespace);
                         $transition.on(transitionEvent + elementNamespace, transitionEnd);
                         requestAnimationFrame(animate);
-                        if(settings.dimPage && !module.othersVisible()) {
+                        if (settings.dimPage && !module.othersVisible()) {
                             requestAnimationFrame(dim);
                         }
                     },
@@ -530,22 +530,22 @@
                         animate = function() {
                             module.set.transition(transition);
                             module.set.animating();
-                            if(settings.dimPage && !module.othersVisible()) {
+                            if (settings.dimPage && !module.othersVisible()) {
                                 module.set.closing();
                             }
                             module.remove.visible();
                         };
                         transitionEnd = function(event) {
-                            if( event.target == $transition[0] ) {
+                            if ( event.target == $transition[0] ) {
                                 $transition.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
                                 module.remove.closing();
                                 module.remove.transition();
                                 module.remove.inlineCSS();
-                                if(transition === 'scale down' || settings.returnScroll) {
+                                if (transition === 'scale down' || settings.returnScroll) {
                                     module.scrollBack();
                                 }
-                                if(settings.dimPage && !module.othersVisible()) {
+                                if (settings.dimPage && !module.othersVisible()) {
                                     $pusher.removeClass(className.dimmed);
                                 }
                                 callback.call(element);
@@ -587,7 +587,7 @@
                             });
                         },
                         dimmerStyles: function() {
-                            if(settings.blurring) {
+                            if (settings.blurring) {
                                 $pusher.addClass(className.blurring);
                             } else {
                                 $pusher.removeClass(className.blurring);
@@ -641,7 +641,7 @@
 
                         inlineCSS: function() {
                             module.debug('Removing inline css styles', $style);
-                            if($style && $style.length > 0) {
+                            if ($style && $style.length > 0) {
                                 $style.remove();
                             }
                         },
@@ -699,11 +699,11 @@
                     },
                     get: {
                         direction: function() {
-                            if($module.hasClass(className.top)) {
+                            if ($module.hasClass(className.top)) {
                                 return className.top;
-                            } else if($module.hasClass(className.right)) {
+                            } else if ($module.hasClass(className.right)) {
                                 return className.right;
-                            } else if($module.hasClass(className.bottom)) {
+                            } else if ($module.hasClass(className.bottom)) {
                                 return className.bottom;
                             }
                             return className.left;
@@ -734,8 +734,8 @@
                                 },
                                 transition
                             ;
-                            for(transition in transitions){
-                                if( element.style[transition] !== undefined ){
+                            for (transition in transitions){
+                                if ( element.style[transition] !== undefined ){
                                     return transitions[transition];
                                 }
                             }
@@ -748,19 +748,19 @@
                     },
                     is: {
                         safari: function() {
-                            if(module.cache.isSafari === undefined) {
+                            if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
                             return module.cache.isSafari;
                         },
                         edge: function(){
-                            if(module.cache.isEdge === undefined) {
+                            if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
                             return module.cache.isEdge;
                         },
                         firefox: function(){
-                            if(module.cache.isFirefox === undefined) {
+                            if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
                             return module.cache.isFirefox;
@@ -769,7 +769,7 @@
                             return !(self === top);
                         },
                         ie: function() {
-                            if(module.cache.isIE === undefined) {
+                            if (module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
                                     isIE = ('ActiveXObject' in window)
@@ -785,7 +785,7 @@
                                 isIOS          = userAgent.match(regExp.ios),
                                 isMobileChrome = userAgent.match(regExp.mobileChrome)
                             ;
-                            if(isIOS && !isMobileChrome) {
+                            if (isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
                             } else {
@@ -797,7 +797,7 @@
                                 userAgent    = navigator.userAgent,
                                 isMobile     = userAgent.match(regExp.mobile)
                             ;
-                            if(isMobile) {
+                            if (isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
                             } else {
@@ -825,7 +825,7 @@
                             return $context.hasClass(className.animating);
                         },
                         rtl: function() {
-                            if(module.cache.isRTL === undefined) {
+                            if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
                             return module.cache.isRTL;
@@ -834,10 +834,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -847,17 +847,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -866,8 +866,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -876,7 +876,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -888,7 +888,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -914,12 +914,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -940,7 +940,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -948,14 +948,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -966,27 +966,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         module.invoke('destroy');
                     }
                     module.initialize();

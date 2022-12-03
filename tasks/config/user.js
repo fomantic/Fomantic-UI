@@ -27,11 +27,11 @@ var
 try {
     // looks for config file across all parent directories
     userConfig = requireDotFile('semantic.json', process.cwd());
-    if(userConfig.valueOf() === false) {
+    if (userConfig.valueOf() === false) {
         console.error('No semantic.json config found');
     }
-} catch(error) {
-    if(error.code === 'MODULE_NOT_FOUND') {
+} catch (error) {
+    if (error.code === 'MODULE_NOT_FOUND') {
         console.error('require-dot-file module not found');
     }
 }

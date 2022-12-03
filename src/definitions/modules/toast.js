@@ -79,21 +79,21 @@
                         if (!module.has.container()) {
                             module.create.container();
                         }
-                        if(isToastComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
-                            if(typeof settings.showProgress !== 'string' || [className.top,className.bottom].indexOf(settings.showProgress) === -1 ) {
+                        if (isToastComponent || settings.message !== '' || settings.title !== '' || module.get.iconClass() !== '' || settings.showImage || module.has.configActions()) {
+                            if (typeof settings.showProgress !== 'string' || [className.top,className.bottom].indexOf(settings.showProgress) === -1 ) {
                                 settings.showProgress = false;
                             }
                             module.create.toast();
-                            if(settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
+                            if (settings.closeOnClick && (settings.closeIcon || $($toast).find(selector.input).length > 0 || module.has.configActions())){
                                 settings.closeOnClick = false;
                             }
-                            if(!settings.closeOnClick) {
+                            if (!settings.closeOnClick) {
                                 $toastBox.addClass(className.unclickable);
                             }
                             module.bind.events();
                         }
                         module.instantiate();
-                        if($toastBox) {
+                        if ($toastBox) {
                             module.show();
                         }
                     },
@@ -106,7 +106,7 @@
                     },
 
                     destroy: function() {
-                        if($toastBox) {
+                        if ($toastBox) {
                             module.debug('Removing toast', $toastBox);
                             module.unbind.events();
                             $toastBox.remove();
@@ -123,7 +123,7 @@
                     },
 
                     show: function(callback) {
-                        if(settings.onShow.call($toastBox, element) === false) {
+                        if (settings.onShow.call($toastBox, element) === false) {
                             module.debug('onShow callback returned false, cancelling toast animation');
                             return;
                         }
@@ -133,7 +133,7 @@
                     },
 
                     close: function(callback) {
-                        if(settings.onHide.call($toastBox, element) === false) {
+                        if (settings.onHide.call($toastBox, element) === false) {
                             module.debug('onHide callback returned false, cancelling toast animation');
                             return;
                         }
@@ -194,7 +194,7 @@
                                 $toast.css('opacity', String(settings.opacity));
                                 if (settings.closeIcon) {
                                     $close = $('<i/>', {class: className.close + ' ' + (typeof settings.closeIcon === 'string' ? settings.closeIcon : ''), role: 'button', tabindex: 0, 'aria-label': settings.text.close});
-                                    if($close.hasClass(className.left)) {
+                                    if ($close.hasClass(className.left)) {
                                         $toast.prepend($close);
                                     } else {
                                         $toast.append($close);
@@ -228,9 +228,9 @@
                                 if ($actions.length === 0) {
                                     $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($toast);
                                 }
-                                if($toast.hasClass('card') && !$actions.hasClass(className.attached)) {
+                                if ($toast.hasClass('card') && !$actions.hasClass(className.attached)) {
                                     $actions.addClass(className.extraContent);
-                                    if($actions.hasClass(className.vertical)) {
+                                    if ($actions.hasClass(className.vertical)) {
                                         $actions.removeClass(className.vertical);
                                         module.error(error.verticalCard);
                                     }
@@ -261,17 +261,17 @@
                             if ($actions && $actions.hasClass(className.vertical)) {
                                 $toast.addClass(className.vertical);
                             }
-                            if($actions.length > 0 && !$actions.hasClass(className.attached)) {
+                            if ($actions.length > 0 && !$actions.hasClass(className.attached)) {
                                 if ($actions && (!$actions.hasClass(className.basic) || $actions.hasClass(className.left))) {
                                     $toast.addClass(className.actions);
                                 }
                             }
-                            if(settings.displayTime === 'auto'){
+                            if (settings.displayTime === 'auto'){
                                 settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(' ').length / settings.wordsPerMinute * 60000);
                             }
                             $toastBox.append($toast);
 
-                            if($actions.length > 0 && $actions.hasClass(className.attached)) {
+                            if ($actions.length > 0 && $actions.hasClass(className.attached)) {
                                 $actions.addClass(className.buttons);
                                 $actions.detach();
                                 $toast.addClass(className.attached);
@@ -291,25 +291,25 @@
                           (settings.compact ? className.compact : ''),
                                         })
                                     );
-                                    if($actions.hasClass(className.left)) {
+                                    if ($actions.hasClass(className.left)) {
                                         $toast.addClass(className.left).parent().addClass(className.left).prepend($actions);
                                     } else {
                                         $toast.parent().append($actions);
                                     }
                                 }
                             }
-                            if($module !== $toast) {
+                            if ($module !== $toast) {
                                 $module = $toast;
                                 element = $toast[0];
                             }
-                            if(settings.displayTime > 0) {
+                            if (settings.displayTime > 0) {
                                 var progressingClass = className.progressing+' '+(settings.pauseOnHover ? className.pausable:'');
                                 if (!!settings.showProgress) {
                                     $progress = $('<div/>', {
                                         class: className.progress + ' ' + (settings.classProgress || settings.class),
                                         'data-percent': '',
                                     });
-                                    if(!settings.classProgress) {
+                                    if (!settings.classProgress) {
                                         if ($toast.hasClass('toast') && !$toast.hasClass(className.inverted)) {
                                             $progress.addClass(className.inverted);
                                         } else {
@@ -334,7 +334,7 @@
                             if (settings.compact) {
                                 $toastBox.addClass(className.compact);
                                 $toast.addClass(className.compact);
-                                if($progress) {
+                                if ($progress) {
                                     $progress.addClass(className.compact);
                                 }
                             }
@@ -349,11 +349,11 @@
                     bind: {
                         events: function() {
                             module.debug('Binding events to toast');
-                            if(settings.closeIcon) {
+                            if (settings.closeIcon) {
                                 $close.on('click' + eventNamespace, module.event.close);
                             }
                             $toast.on('click' + eventNamespace, module.event.click);
-                            if($animationObject) {
+                            if ($animationObject) {
                                 $animationObject.on('animationend' + eventNamespace, module.event.close);
                             }
                             $toastBox
@@ -365,11 +365,11 @@
                     unbind: {
                         events: function() {
                             module.debug('Unbinding events to toast');
-                            if(settings.closeIcon) {
+                            if (settings.closeIcon) {
                                 $close.off('click' + eventNamespace);
                             }
                             $toast.off('click' + eventNamespace);
-                            if($animationObject) {
+                            if ($animationObject) {
                                 $animationObject.off('animationend' + eventNamespace);
                             }
                             $toastBox
@@ -380,7 +380,7 @@
                     animate: {
                         show: function(callback) {
                             callback = isFunction(callback) ? callback : function(){};
-                            if(settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
+                            if (settings.transition && module.can.useElement('transition') && $module.transition('is supported')) {
                                 module.set.visible();
                                 $toastBox
                                     .transition({
@@ -399,7 +399,7 @@
                         },
                         close: function(callback) {
                             callback = isFunction(callback) ? callback : function(){};
-                            if(settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.transition && $.fn.transition !== undefined && $module.transition('is supported')) {
                                 $toastBox
                                     .transition({
                                         animation: settings.transition.hideMethod + ' out',
@@ -412,8 +412,8 @@
 
                                         onBeforeHide: function(callback){
                                             callback = isFunction(callback)?callback : function(){};
-                                            if(settings.transition.closeEasing !== ''){
-                                                if($toastBox) {
+                                            if (settings.transition.closeEasing !== ''){
+                                                if ($toastBox) {
                                                     $toastBox.css('opacity', '0');
                                                     $toastBox.wrap('<div/>').parent().hide(settings.transition.closeDuration, settings.transition.closeEasing, function () {
                                                         if ($toastBox) {
@@ -438,13 +438,13 @@
                         },
                         pause: function() {
                             $animationObject.css('animationPlayState','paused');
-                            if($progressBar) {
+                            if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'paused');
                             }
                         },
                         continue: function() {
                             $animationObject.css('animationPlayState','running');
-                            if($progressBar) {
+                            if ($progressBar) {
                                 $progressBar.css('animationPlayState', 'running');
                             }
                         },
@@ -510,8 +510,8 @@
                             module.close();
                         },
                         click: function(event) {
-                            if($(event.target).closest(selector.clickable).length === 0) {
-                                if(settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
+                            if ($(event.target).closest(selector.clickable).length === 0) {
+                                if (settings.onClick.call($toastBox, element) === false || !settings.closeOnClick) {
                                     module.verbose('Click callback returned false or close denied by setting cancelling close');
                                     return;
                                 }
@@ -519,14 +519,14 @@
                             }
                         },
                         approve: function() {
-                            if(settings.onApprove.call(element, $module) === false) {
+                            if (settings.onApprove.call(element, $module) === false) {
                                 module.verbose('Approve callback returned false cancelling close');
                                 return;
                             }
                             module.close();
                         },
                         deny: function() {
-                            if(settings.onDeny.call(element, $module) === false) {
+                            if (settings.onDeny.call(element, $module) === false) {
                                 module.verbose('Deny callback returned false cancelling close');
                                 return;
                             }
@@ -568,7 +568,7 @@
                                     return escape[chr];
                                 }
                             ;
-                            if(shouldEscape.test(string)) {
+                            if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
                             }
@@ -588,10 +588,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -601,17 +601,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -620,8 +620,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -630,7 +630,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -642,7 +642,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -668,12 +668,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -694,7 +694,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -702,14 +702,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -720,27 +720,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

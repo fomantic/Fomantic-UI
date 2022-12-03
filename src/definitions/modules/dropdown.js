@@ -101,7 +101,7 @@
                     initialize: function() {
                         module.debug('Initializing dropdown', settings);
 
-                        if( module.is.alreadySetup() ) {
+                        if ( module.is.alreadySetup() ) {
                             module.setup.reference();
                         } else {
                             if (settings.ignoreDiacritics && !String.prototype.normalize) {
@@ -112,7 +112,7 @@
                             module.create.id();
                             module.setup.layout();
 
-                            if(settings.values) {
+                            if (settings.values) {
                                 module.set.initialLoad();
                                 module.change.values(settings.values);
                                 module.remove.initialLoad();
@@ -157,7 +157,7 @@
                     },
 
                     observeChanges: function() {
-                        if('MutationObserver' in window) {
+                        if ('MutationObserver' in window) {
                             selectObserver = new MutationObserver(module.event.select.mutation);
                             menuObserver   = new MutationObserver(module.event.menu.mutation);
                             classObserver  = new MutationObserver(module.event.class.mutation);
@@ -170,24 +170,24 @@
 
                     disconnect: {
                         menuObserver: function() {
-                            if(menuObserver) {
+                            if (menuObserver) {
                                 menuObserver.disconnect();
                             }
                         },
                         selectObserver: function() {
-                            if(selectObserver) {
+                            if (selectObserver) {
                                 selectObserver.disconnect();
                             }
                         },
                         classObserver: function() {
-                            if(classObserver) {
+                            if (classObserver) {
                                 classObserver.disconnect();
                             }
                         },
                     },
                     observe: {
                         select: function() {
-                            if(module.has.input() && selectObserver) {
+                            if (module.has.input() && selectObserver) {
                                 selectObserver.observe($module[0], {
                                     attributes: true,
                                     childList: true,
@@ -196,7 +196,7 @@
                             }
                         },
                         menu: function() {
-                            if(module.has.menu() && menuObserver) {
+                            if (module.has.menu() && menuObserver) {
                                 menuObserver.observe($menu[0], {
                                     childList: true,
                                     subtree: true,
@@ -204,7 +204,7 @@
                             }
                         },
                         class: function() {
-                            if(module.has.search() && classObserver) {
+                            if (module.has.search() && classObserver) {
                                 classObserver.observe($module[0], {
                                     attributes: true,
                                 });
@@ -225,14 +225,14 @@
                                 html
                             ;
                             values = values || module.get.userValues();
-                            if(!values) {
+                            if (!values) {
                                 return false;
                             }
                             values = Array.isArray(values)
                                 ? values
                                 : [values];
                             $.each(values, function(index, value) {
-                                if(module.get.item(value) === false) {
+                                if (module.get.item(value) === false) {
                                     html         = settings.templates.addition( module.add.variables(message.addResult, value) );
                                     $userChoice  = $('<div />')
                                         .html(html)
@@ -240,7 +240,7 @@
                                         .attr('data-' + metadata.text, value)
                                         .addClass(className.addition)
                                         .addClass(className.item);
-                                    if(settings.hideAdditions) {
+                                    if (settings.hideAdditions) {
                                         $userChoice.addClass(className.hidden);
                                     }
                                     $userChoices = ($userChoices === undefined)
@@ -255,7 +255,7 @@
                             var
                                 userValues = module.get.userValues()
                             ;
-                            if(userValues) {
+                            if (userValues) {
                                 module.debug('Adding user labels', userValues);
                                 $.each(userValues, function(index, value) {
                                     module.verbose('Adding custom user value');
@@ -280,9 +280,9 @@
                             ? query
                             : module.get.query();
                         module.verbose('Searching for query', query);
-                        if(settings.fireOnInit === false && module.is.initialLoad()) {
+                        if (settings.fireOnInit === false && module.is.initialLoad()) {
                             module.verbose('Skipping callback on initial load', settings.onSearch);
-                        } else if(module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
+                        } else if (module.has.minCharacters(query) && settings.onSearch.call(element, query) !== false) {
                             module.filter(query);
                         } else {
                             module.hide(null,true);
@@ -306,7 +306,7 @@
                                 $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0),
                                 hasNext        = ($nextAvailable.length > 0)
                             ;
-                            if(hasNext) {
+                            if (hasNext) {
                                 module.verbose('Moving selection to', $nextAvailable);
                                 $nextAvailable.addClass(className.selected);
                             } else {
@@ -333,11 +333,11 @@
                                 .api(apiSettings);
                         },
                         layout: function() {
-                            if( $module.is('select') ) {
+                            if ( $module.is('select') ) {
                                 module.setup.select();
                                 module.setup.returnedObject();
                             }
-                            if( !module.has.menu() ) {
+                            if ( !module.has.menu() ) {
                                 module.create.menu();
                             }
                             if ( module.is.clearable() && !module.has.clearItem() ) {
@@ -346,7 +346,7 @@
                                     .addClass('remove icon')
                                     .insertBefore($text);
                             }
-                            if( module.is.search() && !module.has.search() ) {
+                            if ( module.is.search() && !module.has.search() ) {
                                 module.verbose('Adding search input');
                                 var
                                     labelNode = $module.prev('label')
@@ -362,10 +362,10 @@
                                 }
                                 $search.insertBefore($text);
                             }
-                            if( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
+                            if ( module.is.multiple() && module.is.searchSelection() && !module.has.sizer()) {
                                 module.create.sizer();
                             }
-                            if(settings.allowTab) {
+                            if (settings.allowTab) {
                                 module.set.tabbable();
                             }
                         },
@@ -374,14 +374,14 @@
                                 selectValues  = module.get.selectValues()
                             ;
                             module.debug('Dropdown initialized on a select', selectValues);
-                            if( $module.is('select') ) {
+                            if ( $module.is('select') ) {
                                 $input = $module;
                             }
                             // see if select is placed correctly already
-                            if($input.parent(selector.dropdown).length > 0) {
+                            if ($input.parent(selector.dropdown).length > 0) {
                                 module.debug('UI dropdown already exists. Creating dropdown menu only');
                                 $module = $input.closest(selector.dropdown);
-                                if( !module.has.menu() ) {
+                                if ( !module.has.menu() ) {
                                     module.create.menu();
                                 }
                                 $menu = $module.children(selector.menu);
@@ -394,21 +394,21 @@
                                     .addClass(className.dropdown)
                                     .html( templates.dropdown(selectValues, fields, settings.preserveHTML, settings.className) )
                                     .insertBefore($input);
-                                if($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
+                                if ($input.hasClass(className.multiple) && $input.prop('multiple') === false) {
                                     module.error(error.missingMultiple);
                                     $input.prop('multiple', true);
                                 }
-                                if($input.is('[multiple]')) {
+                                if ($input.is('[multiple]')) {
                                     module.set.multiple();
                                 }
                                 if ($input.prop('disabled')) {
                                     module.debug('Disabling dropdown');
                                     $module.addClass(className.disabled);
                                 }
-                                if($input.is('[required]')) {
+                                if ($input.is('[required]')) {
                                     settings.forceSelection = true;
                                 }
-                                if(!settings.allowTab) {
+                                if (!settings.allowTab) {
                                     $input.removeAttr('tabindex');
                                 }
                                 $input
@@ -492,7 +492,7 @@
 
                     toggle: function() {
                         module.verbose('Toggling menu visibility');
-                        if( !module.is.active() ) {
+                        if ( !module.is.active() ) {
                             module.show();
                         } else {
                             module.hide();
@@ -506,23 +506,23 @@
                         if ((focused || iconClicked) && module.is.remote() && module.is.noApiCache()) {
                             module.clearItems();
                         }
-                        if(!module.can.show() && module.is.remote()) {
+                        if (!module.can.show() && module.is.remote()) {
                             module.debug('No API results retrieved, searching before show');
                             module.queryRemote(module.get.query(), module.show, [callback, preventFocus]);
                         }
-                        if( module.can.show() && !module.is.active() ) {
+                        if ( module.can.show() && !module.is.active() ) {
                             module.debug('Showing dropdown');
-                            if(module.has.message() && !(module.has.maxSelections() || module.has.allResultsFiltered()) ) {
+                            if (module.has.message() && !(module.has.maxSelections() || module.has.allResultsFiltered()) ) {
                                 module.remove.message();
                             }
-                            if(module.is.allFiltered()) {
+                            if (module.is.allFiltered()) {
                                 return true;
                             }
-                            if(settings.onShow.call(element) !== false) {
+                            if (settings.onShow.call(element) !== false) {
                                 module.remove.empty();
                                 module.animate.show(function() {
                                     module.bind.intent();
-                                    if(module.has.search() && !preventFocus) {
+                                    if (module.has.search() && !preventFocus) {
                                         module.focusSearch();
                                     }
                                     module.set.visible();
@@ -536,9 +536,9 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if( module.is.active() && !module.is.animatingOutward() ) {
+                        if ( module.is.active() && !module.is.animatingOutward() ) {
                             module.debug('Hiding dropdown');
-                            if(settings.onHide.call(element) !== false) {
+                            if (settings.onHide.call(element) !== false) {
                                 module.animate.hide(function() {
                                     module.remove.visible();
                                     // hiding search focus
@@ -550,7 +550,7 @@
                                 // Hide submenus explicitly. On some browsers (esp. mobile), they will not automatically receive a
                                 // mouseleave event
                                 var $subMenu = $module.find(selector.menu);
-                                if($subMenu.length > 0) {
+                                if ($subMenu.length > 0) {
                                     module.verbose('Hiding sub-menu', $subMenu);
                                     $subMenu.each(function() {
                                         module.animate.hide(false, $(this));
@@ -597,11 +597,11 @@
                             module.verbose('Binding keyboard events');
                             $module
                                 .on('keydown' + eventNamespace, module.event.keydown);
-                            if( module.has.search() ) {
+                            if ( module.has.search() ) {
                                 $module
                                     .on(module.get.inputEvent() + eventNamespace, selector.search, module.event.input);
                             }
-                            if( module.is.multiple() ) {
+                            if ( module.is.multiple() ) {
                                 $document
                                     .on('keydown' + elementNamespace, module.event.document.keydown);
                             }
@@ -610,19 +610,19 @@
                             module.verbose('Binding input change events');
                             $module
                                 .on('change' + eventNamespace, selector.input, module.event.change);
-                            if(module.is.multiple() && module.is.searchSelection()) {
+                            if (module.is.multiple() && module.is.searchSelection()) {
                                 $module
                                     .on('paste' + eventNamespace, selector.search, module.event.paste);
                             }
                         },
                         mouseEvents: function() {
                             module.verbose('Binding mouse events');
-                            if(module.is.multiple()) {
+                            if (module.is.multiple()) {
                                 $module
                                     .on('click'   + eventNamespace, selector.label,  module.event.label.click)
                                     .on('click'   + eventNamespace, selector.remove, module.event.remove.click);
                             }
-                            if( module.is.searchSelection() ) {
+                            if ( module.is.searchSelection() ) {
                                 $module
                                     .on('mousedown' + eventNamespace, module.event.mousedown)
                                     .on('mouseup'   + eventNamespace, module.event.mouseup)
@@ -634,17 +634,17 @@
                                     .on('click'     + eventNamespace, selector.search, module.event.search.focus)
                                     .on('blur'      + eventNamespace, selector.search, module.event.search.blur)
                                     .on('click'     + eventNamespace, selector.text,   module.event.text.focus);
-                                if(module.is.multiple()) {
+                                if (module.is.multiple()) {
                                     $module
                                         .on('click' + eventNamespace, module.event.click)
                                         .on('click' + eventNamespace, module.event.search.focus);
                                 }
                             } else {
-                                if(settings.on == 'click') {
+                                if (settings.on == 'click') {
                                     $module
                                         .on('click' + eventNamespace, selector.icon, module.event.icon.click)
                                         .on('click' + eventNamespace, module.event.test.toggle);
-                                } else if(settings.on == 'hover') {
+                                } else if (settings.on == 'hover') {
                                     $module
                                         .on('mouseenter' + eventNamespace, module.delay.show)
                                         .on('mouseleave' + eventNamespace, module.delay.hide)
@@ -659,7 +659,7 @@
                                     .on('mouseup'   + eventNamespace, module.event.mouseup)
                                     .on('focus'     + eventNamespace, module.event.focus)
                                     .on('click'     + eventNamespace, selector.clearIcon, module.event.clearIcon.click);
-                                if(module.has.menuSearch() ) {
+                                if (module.has.menuSearch() ) {
                                     $module
                                         .on('blur' + eventNamespace, selector.search, module.event.search.blur);
                                 } else {
@@ -694,16 +694,16 @@
                                 ? query
                                 : module.get.query(),
                             afterFiltered = function() {
-                                if(module.is.multiple()) {
+                                if (module.is.multiple()) {
                                     module.filterActive();
                                 }
-                                if(query || (!query && module.get.activeItem().length == 0)) {
+                                if (query || (!query && module.get.activeItem().length == 0)) {
                                     module.select.firstUnfiltered();
                                 }
-                                if( module.has.allResultsFiltered() ) {
-                                    if( settings.onNoResults.call(element, searchTerm) ) {
-                                        if(settings.allowAdditions) {
-                                            if(settings.hideAdditions) {
+                                if ( module.has.allResultsFiltered() ) {
+                                    if ( settings.onNoResults.call(element, searchTerm) ) {
+                                        if (settings.allowAdditions) {
+                                            if (settings.hideAdditions) {
                                                 module.verbose('User addition with no menu, setting empty style');
                                                 module.set.empty();
                                                 module.hideMenu();
@@ -721,25 +721,25 @@
                                     module.remove.empty();
                                     module.remove.message();
                                 }
-                                if(settings.allowAdditions) {
+                                if (settings.allowAdditions) {
                                     module.add.userSuggestion(module.escape.htmlEntities(query));
                                 }
-                                if(module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
+                                if (module.is.searchSelection() && module.can.show() && module.is.focusedOnSearch() && !module.is.empty()) {
                                     module.show();
                                 }
                             }
                         ;
-                        if(settings.useLabels && module.has.maxSelections()) {
+                        if (settings.useLabels && module.has.maxSelections()) {
                             return;
                         }
-                        if(settings.apiSettings) {
-                            if( module.can.useAPI() ) {
+                        if (settings.apiSettings) {
+                            if ( module.can.useAPI() ) {
                                 module.queryRemote(searchTerm, function() {
-                                    if(settings.filterRemoteData) {
+                                    if (settings.filterRemoteData) {
                                         module.filterItems(searchTerm);
                                     }
                                     var preSelected = $input.val();
-                                    if(!Array.isArray(preSelected)) {
+                                    if (!Array.isArray(preSelected)) {
                                         preSelected = preSelected && preSelected!=='' ? preSelected.split(settings.delimiter) : [];
                                     }
                                     if (module.is.multiple()) {
@@ -761,7 +761,7 @@
                     },
 
                     queryRemote: function(query, callback, callbackParameters) {
-                        if(!Array.isArray(callbackParameters)){
+                        if (!Array.isArray(callbackParameters)){
                             callbackParameters = [callbackParameters];
                         }
                         var
@@ -779,7 +779,7 @@
                                     iconClicked = false;
                                     focused = false;
                                     callback.apply(null, callbackParameters);
-                                    if(typeof settings.apiSettings.onError === 'function') {
+                                    if (typeof settings.apiSettings.onError === 'function') {
                                         settings.apiSettings.onError.call(this, errorMessage, $module, xhr);
                                     }
                                 },
@@ -788,7 +788,7 @@
                                     iconClicked = false;
                                     focused = false;
                                     callback.apply(null, callbackParameters);
-                                    if(typeof settings.apiSettings.onFailure === 'function') {
+                                    if (typeof settings.apiSettings.onFailure === 'function') {
                                         settings.apiSettings.onFailure.call(this, response, $module, xhr);
                                     }
                                 },
@@ -804,7 +804,7 @@
                                     menuConfig[fields.values] = values;
                                     module.setup.menu(menuConfig);
 
-                                    if(values.length===0 && !settings.allowAdditions) {
+                                    if (values.length===0 && !settings.allowAdditions) {
                                         module.add.message(message.noResults);
                                     } else {
                                         var value = module.is.multiple() ? module.get.values() : module.get.value();
@@ -816,13 +816,13 @@
                                     iconClicked = false;
                                     focused = false;
                                     callback.apply(null, callbackParameters);
-                                    if(typeof settings.apiSettings.onSuccess === 'function') {
+                                    if (typeof settings.apiSettings.onSuccess === 'function') {
                                         settings.apiSettings.onSuccess.call(this, response, $module, xhr);
                                     }
                                 },
                             }
                         ;
-                        if( !$module.api('get request') ) {
+                        if ( !$module.api('get request') ) {
                             module.setup.api();
                         }
                         apiSettings = $.extend(true, {}, apiSettings, settings.apiSettings, apiCallbacks);
@@ -843,7 +843,7 @@
                             beginsWithRegExp = new RegExp('^' + escapedTerm, regExpFlags)
                         ;
                         // avoid loop if we're matching nothing
-                        if( module.has.query() ) {
+                        if ( module.has.query() ) {
                             results = [];
 
                             module.verbose('Searching for matching values', searchTerm);
@@ -854,22 +854,22 @@
                                         text,
                                         value
                                     ;
-                                    if($choice.hasClass(className.unfilterable)) {
+                                    if ($choice.hasClass(className.unfilterable)) {
                                         results.push(this);
                                         return true;
                                     }
-                                    if(settings.match === 'both' || settings.match === 'text') {
+                                    if (settings.match === 'both' || settings.match === 'text') {
                                         text = module.remove.diacritics(String(module.get.choiceText($choice, false)));
-                                        if(text.search(beginsWithRegExp) !== -1 ||
+                                        if (text.search(beginsWithRegExp) !== -1 ||
                      (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, text)) ||
                      (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, text))) {
                                             results.push(this);
                                             return true;
                                         }
                                     }
-                                    if(settings.match === 'both' || settings.match === 'value') {
+                                    if (settings.match === 'both' || settings.match === 'value') {
                                         value = module.remove.diacritics(String(module.get.choiceValue($choice, text)));
-                                        if(value.search(beginsWithRegExp) !== -1 ||
+                                        if (value.search(beginsWithRegExp) !== -1 ||
                      (settings.fullTextSearch === 'exact' && module.exactSearch(searchTerm, value)) ||
                      (settings.fullTextSearch === true && module.fuzzySearch(searchTerm, value))) {
                                             results.push(this);
@@ -880,19 +880,19 @@
                         }
                         module.debug('Showing only matched items', searchTerm);
                         module.remove.filteredItem();
-                        if(results) {
+                        if (results) {
                             $item
                                 .not(results)
                                 .addClass(className.filtered);
                         }
 
-                        if(!module.has.query()) {
+                        if (!module.has.query()) {
                             $divider
                                 .removeClass(className.hidden);
-                        } else if(settings.hideDividers === true) {
+                        } else if (settings.hideDividers === true) {
                             $divider
                                 .addClass(className.hidden);
-                        } else if(settings.hideDividers === 'empty') {
+                        } else if (settings.hideDividers === 'empty') {
                             $divider
                                 .removeClass(className.hidden)
                                 .filter(function() {
@@ -918,18 +918,18 @@
                         ;
                         query = (settings.ignoreSearchCase ? query.toLowerCase() : query);
                         term  = (settings.ignoreSearchCase ? term.toLowerCase() : term);
-                        if(queryLength > termLength) {
+                        if (queryLength > termLength) {
                             return false;
                         }
-                        if(queryLength === termLength) {
+                        if (queryLength === termLength) {
                             return (query === term);
                         }
                         search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                             var
                                 queryCharacter = query.charCodeAt(characterIndex)
                             ;
-                            while(nextCharacterIndex < termLength) {
-                                if(term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
+                            while (nextCharacterIndex < termLength) {
+                                if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
                                     continue search;
                                 }
                             }
@@ -944,15 +944,15 @@
 
                     },
                     filterActive: function() {
-                        if(settings.useLabels) {
+                        if (settings.useLabels) {
                             $item.filter('.' + className.active)
                                 .addClass(className.filtered);
                         }
                     },
 
                     focusSearch: function(skipHandler) {
-                        if( module.has.search() && !module.is.focusedOnSearch() ) {
-                            if(skipHandler) {
+                        if ( module.has.search() && !module.is.focusedOnSearch() ) {
+                            if (skipHandler) {
                                 $module.off('focus' + eventNamespace, selector.search);
                                 $search.trigger('focus');
                                 $module.on('focus'  + eventNamespace, selector.search, module.event.search.focus);
@@ -963,7 +963,7 @@
                     },
 
                     blurSearch: function() {
-                        if( module.has.search() ) {
+                        if ( module.has.search() ) {
                             $search.trigger('blur');
                         }
                     },
@@ -977,7 +977,7 @@
                                 : $activeItem,
                             hasSelected = ($selectedItem.length > 0)
                         ;
-                        if(settings.allowAdditions || (hasSelected && !module.is.multiple())) {
+                        if (settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                             module.debug('Forcing partial selection to selected item', $selectedItem);
                             module.event.item.click.call($selectedItem, {}, true);
                         } else {
@@ -987,7 +987,7 @@
 
                     change: {
                         values: function(values) {
-                            if(!settings.allowAdditions) {
+                            if (!settings.allowAdditions) {
                                 module.clear();
                             }
                             module.debug('Creating dropdown with specified values', values);
@@ -995,16 +995,16 @@
                             menuConfig[fields.values] = values;
                             module.setup.menu(menuConfig);
                             $.each(values, function(index, item) {
-                                if(item.selected === true) {
+                                if (item.selected === true) {
                                     module.debug('Setting initial selection to', item[fields.value]);
                                     module.set.selected(item[fields.value]);
-                                    if(!module.is.multiple()) {
+                                    if (!module.is.multiple()) {
                                         return false;
                                     }
                                 }
                             });
 
-                            if(module.has.selectInput()) {
+                            if (module.has.selectInput()) {
                                 module.disconnect.selectObserver();
                                 $input.html('');
                                 $input.append('<option disabled selected value></option>');
@@ -1035,26 +1035,26 @@
                             event.preventDefault();
                         },
                         change: function() {
-                            if(!internalChange) {
+                            if (!internalChange) {
                                 module.debug('Input changed, updating selection');
                                 module.set.selected();
                             }
                         },
                         focus: function() {
-                            if(settings.showOnFocus && !activated && module.is.hidden() && !pageLostFocus) {
+                            if (settings.showOnFocus && !activated && module.is.hidden() && !pageLostFocus) {
                                 focused = true;
                                 module.show();
                             }
                         },
                         blur: function(event) {
                             pageLostFocus = (document.activeElement === this);
-                            if(!activated && !pageLostFocus) {
+                            if (!activated && !pageLostFocus) {
                                 module.remove.activeLabel();
                                 module.hide();
                             }
                         },
                         mousedown: function() {
-                            if(module.is.searchSelection(true)) {
+                            if (module.is.searchSelection(true)) {
                                 // prevent menu hiding on immediate re-focus
                                 willRefocus = true;
                             } else {
@@ -1063,7 +1063,7 @@
                             }
                         },
                         mouseup: function() {
-                            if(module.is.searchSelection(true)) {
+                            if (module.is.searchSelection(true)) {
                                 // prevent menu hiding on immediate re-focus
                                 willRefocus = false;
                             } else {
@@ -1075,8 +1075,8 @@
                                 $target = $(event.target)
                             ;
                             // focus search
-                            if($target.is($module)) {
-                                if(!module.is.focusedOnSearch()) {
+                            if ($target.is($module)) {
+                                if (!module.is.focusedOnSearch()) {
                                     module.focusSearch();
                                 } else {
                                     module.show();
@@ -1086,21 +1086,21 @@
                         search: {
                             focus: function(event) {
                                 activated = true;
-                                if(module.is.multiple()) {
+                                if (module.is.multiple()) {
                                     module.remove.activeLabel();
                                 }
-                                if(!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) && event.type !== 'touchstart') {
+                                if (!focused && !module.is.active() && (settings.showOnFocus || (event.type !== 'focus' && event.type !== 'focusin')) && event.type !== 'touchstart') {
                                     focused = true;
                                     module.search();
                                 }
                             },
                             blur: function(event) {
                                 pageLostFocus = (document.activeElement === this);
-                                if(module.is.searchSelection(true) && !willRefocus) {
-                                    if(!itemActivated && !pageLostFocus) {
-                                        if(settings.forceSelection) {
+                                if (module.is.searchSelection(true) && !willRefocus) {
+                                    if (!itemActivated && !pageLostFocus) {
+                                        if (settings.forceSelection) {
                                             module.forceSelection();
-                                        } else if(!settings.allowAdditions){
+                                        } else if (!settings.allowAdditions){
                                             module.remove.searchTerm();
                                         }
                                         module.hide();
@@ -1112,7 +1112,7 @@
                         clearIcon: {
                             click: function(event) {
                                 module.clear();
-                                if(module.is.searchSelection()) {
+                                if (module.is.searchSelection()) {
                                     module.remove.searchTerm();
                                 }
                                 module.hide();
@@ -1122,9 +1122,9 @@
                         icon: {
                             click: function(event) {
                                 iconClicked=true;
-                                if(module.has.search()) {
-                                    if(!module.is.active()) {
-                                        if(settings.showOnFocus){
+                                if (module.has.search()) {
+                                    if (!module.is.active()) {
+                                        if (settings.showOnFocus){
                                             module.focusSearch();
                                         } else {
                                             module.toggle();
@@ -1145,7 +1145,7 @@
                             },
                         },
                         input: function(event) {
-                            if(module.is.multiple() || module.is.searchSelection()) {
+                            if (module.is.multiple() || module.is.searchSelection()) {
                                 module.set.filtered();
                             }
                             clearTimeout(module.timer);
@@ -1163,10 +1163,10 @@
                                         ? $label.nextUntil($nextActive).add($activeLabels).add($label)
                                         : $label.prevUntil($prevActive).add($activeLabels).add($label)
                                 ;
-                                if(event.shiftKey) {
+                                if (event.shiftKey) {
                                     $activeLabels.removeClass(className.active);
                                     $range.addClass(className.active);
-                                } else if(event.ctrlKey) {
+                                } else if (event.ctrlKey) {
                                     $label.toggleClass(className.active);
                                 } else {
                                     $activeLabels.removeClass(className.active);
@@ -1181,7 +1181,7 @@
                                 var
                                     $label = $(this).parent()
                                 ;
-                                if( $label.hasClass(className.active) ) {
+                                if ( $label.hasClass(className.active) ) {
                                     // remove all selected labels
                                     module.remove.activeLabels();
                                 } else {
@@ -1198,21 +1198,21 @@
                                         ? module.show
                                         : module.toggle
                                 ;
-                                if(module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
+                                if (module.is.bubbledLabelClick(event) || module.is.bubbledIconClick(event)) {
                                     return;
                                 }
                                 if (!module.is.multiple() || (module.is.multiple() && !module.is.active())) {
                                     focused = true;
                                 }
-                                if( module.determine.eventOnElement(event, toggleBehavior) && event.type !== 'touchstart') {
+                                if ( module.determine.eventOnElement(event, toggleBehavior) && event.type !== 'touchstart') {
                                     // do not preventDefault of touchstart; so emulated mouseenter is triggered on first touch and not later
                                     // (when selecting an item). The double-showing of the dropdown through both events does not hurt.
                                     event.preventDefault();
                                 }
                             },
                             hide: function(event) {
-                                if(module.determine.eventInModule(event, module.hide)){
-                                    if(element.id && $(event.target).attr('for') === element.id){
+                                if (module.determine.eventInModule(event, module.hide)){
+                                    if (element.id && $(event.target).attr('for') === element.id){
                                         event.preventDefault();
                                     }
                                 }
@@ -1221,7 +1221,7 @@
                         class: {
                             mutation: function(mutations) {
                                 mutations.forEach(function(mutation) {
-                                    if(mutation.attributeName === 'class') {
+                                    if (mutation.attributeName === 'class') {
                                         module.check.disabled();
                                     }
                                 });
@@ -1229,7 +1229,7 @@
                         },
                         select: {
                             mutation: function(mutations) {
-                                if(module.is.selectMutation(mutations)) {
+                                if (module.is.selectMutation(mutations)) {
                                     module.debug('<select> modified, recreating menu');
                                     module.disconnect.selectObserver();
                                     module.refresh();
@@ -1253,7 +1253,7 @@
                                     isUserAddition = $changedNodes.is(selector.addition) || $changedNodes.closest(selector.addition).length > 0,
                                     isMessage      = $changedNodes.is(selector.message)  || $changedNodes.closest(selector.message).length > 0
                                 ;
-                                if(isUserAddition || isMessage) {
+                                if (isUserAddition || isMessage) {
                                     module.debug('Updating item selector cache');
                                     module.refreshItems();
                                 } else {
@@ -1278,7 +1278,7 @@
                                     hasSubMenu     = ($subMenu.length > 0),
                                     isBubbledEvent = ($subMenu.find($target).length > 0)
                                 ;
-                                if( !isBubbledEvent && hasSubMenu ) {
+                                if ( !isBubbledEvent && hasSubMenu ) {
                                     clearTimeout(module.itemTimer);
                                     module.itemTimer = setTimeout(function() {
                                         module.verbose('Showing sub-menu', $subMenu);
@@ -1294,7 +1294,7 @@
                                 var
                                     $subMenu = $(this).find(selector.menu)
                                 ;
-                                if($subMenu.length > 0) {
+                                if ($subMenu.length > 0) {
                                     clearTimeout(module.itemTimer);
                                     module.itemTimer = setTimeout(function() {
                                         module.verbose('Hiding sub-menu', $subMenu);
@@ -1320,21 +1320,21 @@
                                 if (document.activeElement.tagName.toLowerCase() !== 'input') {
                                     $(document.activeElement).trigger('blur');
                                 }
-                                if(!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
-                                    if(module.is.searchSelection()) {
-                                        if(settings.allowAdditions) {
+                                if (!isBubbledEvent && (!hasSubMenu || settings.allowCategorySelection)) {
+                                    if (module.is.searchSelection()) {
+                                        if (settings.allowAdditions) {
                                             module.remove.userAddition();
                                         }
                                         module.remove.filteredItem();
-                                        if(!module.is.visible()) {
+                                        if (!module.is.visible()) {
                                             module.show();
                                         }
                                         module.remove.searchTerm();
-                                        if(!module.is.focusedOnSearch() && skipRefocus !== true) {
+                                        if (!module.is.focusedOnSearch() && skipRefocus !== true) {
                                             module.focusSearch(true);
                                         }
                                     }
-                                    if(!settings.useLabels) {
+                                    if (!settings.useLabels) {
                                         module.remove.filteredItem();
                                         module.set.scrollPosition($choice);
                                     }
@@ -1350,7 +1350,7 @@
                                     pressedKey    = event.which,
                                     isShortcutKey = module.is.inObject(pressedKey, keys)
                                 ;
-                                if(isShortcutKey) {
+                                if (isShortcutKey) {
                                     var
                                         $label            = $module.find(selector.label),
                                         $activeLabel      = $label.filter('.' + className.active),
@@ -1367,23 +1367,23 @@
                                         caretAtStart      = (isFocusedOnSearch && module.get.caretPosition(false) === 0),
                                         isSelectedSearch  = (caretAtStart && module.get.caretPosition(true) !== 0)
                                     ;
-                                    if(isSearch && !hasActiveLabel && !isFocusedOnSearch) {
+                                    if (isSearch && !hasActiveLabel && !isFocusedOnSearch) {
                                         return;
                                     }
 
-                                    if(pressedKey == keys.leftArrow) {
+                                    if (pressedKey == keys.leftArrow) {
                                         // activate previous label
-                                        if((isFocused || caretAtStart) && !hasActiveLabel) {
+                                        if ((isFocused || caretAtStart) && !hasActiveLabel) {
                                             module.verbose('Selecting previous label');
                                             $label.last().addClass(className.active);
-                                        } else if(hasActiveLabel) {
-                                            if(!event.shiftKey) {
+                                        } else if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
                                                 module.verbose('Selecting previous label');
                                                 $label.removeClass(className.active);
                                             } else {
                                                 module.verbose('Adding previous label to selection');
                                             }
-                                            if(isFirstLabel && !hasMultipleActive) {
+                                            if (isFirstLabel && !hasMultipleActive) {
                                                 $activeLabel.addClass(className.active);
                                             } else {
                                                 $activeLabel.prev(selector.siblingLabel)
@@ -1392,27 +1392,27 @@
                                             }
                                             event.preventDefault();
                                         }
-                                    } else if(pressedKey == keys.rightArrow) {
+                                    } else if (pressedKey == keys.rightArrow) {
                                         // activate first label
-                                        if(isFocused && !hasActiveLabel) {
+                                        if (isFocused && !hasActiveLabel) {
                                             $label.first().addClass(className.active);
                                         }
                                         // activate next label
-                                        if(hasActiveLabel) {
-                                            if(!event.shiftKey) {
+                                        if (hasActiveLabel) {
+                                            if (!event.shiftKey) {
                                                 module.verbose('Selecting next label');
                                                 $label.removeClass(className.active);
                                             } else {
                                                 module.verbose('Adding next label to selection');
                                             }
-                                            if(isLastLabel) {
-                                                if(isSearch) {
-                                                    if(!isFocusedOnSearch) {
+                                            if (isLastLabel) {
+                                                if (isSearch) {
+                                                    if (!isFocusedOnSearch) {
                                                         module.focusSearch();
                                                     } else {
                                                         $label.removeClass(className.active);
                                                     }
-                                                } else if(hasMultipleActive) {
+                                                } else if (hasMultipleActive) {
                                                     $activeLabel.next(selector.siblingLabel).addClass(className.active);
                                                 } else {
                                                     $activeLabel.addClass(className.active);
@@ -1422,25 +1422,25 @@
                                             }
                                             event.preventDefault();
                                         }
-                                    } else if(pressedKey == keys.deleteKey || pressedKey == keys.backspace) {
-                                        if(hasActiveLabel) {
+                                    } else if (pressedKey == keys.deleteKey || pressedKey == keys.backspace) {
+                                        if (hasActiveLabel) {
                                             module.verbose('Removing active labels');
-                                            if(isLastLabel) {
-                                                if(isSearch && !isFocusedOnSearch) {
+                                            if (isLastLabel) {
+                                                if (isSearch && !isFocusedOnSearch) {
                                                     module.focusSearch();
                                                 }
                                             }
                                             $activeLabel.last().next(selector.siblingLabel).addClass(className.active);
                                             module.remove.activeLabels($activeLabel);
-                                            if(!module.is.visible()){
+                                            if (!module.is.visible()){
                                                 module.show();
                                             }
                                             event.preventDefault();
-                                        } else if(caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
+                                        } else if (caretAtStart && !isSelectedSearch && !hasActiveLabel && pressedKey == keys.backspace) {
                                             module.verbose('Removing last label on input backspace');
                                             $activeLabel = $label.last().addClass(className.active);
                                             module.remove.activeLabels($activeLabel);
-                                            if(!module.is.visible()){
+                                            if (!module.is.visible()){
                                                 module.show();
                                             }
                                         }
@@ -1456,7 +1456,7 @@
                                 pressedKey    = event.which,
                                 isShortcutKey = module.is.inObject(pressedKey, keys) || event.key === settings.delimiter
                             ;
-                            if(isShortcutKey) {
+                            if (isShortcutKey) {
                                 var
                                     $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0),
                                     $activeItem        = $menu.children('.' + className.active).eq(0),
@@ -1478,33 +1478,33 @@
                                     isSubMenuItem
                                 ;
                                 // allow selection with menu closed
-                                if(isAdditionWithoutMenu) {
+                                if (isAdditionWithoutMenu) {
                                     if (selectedIsSelectable && settings.hideAdditions) {
                                         module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                         module.event.item.click.call($selectedItem, event);
                                     }
-                                    if(module.is.searchSelection()) {
+                                    if (module.is.searchSelection()) {
                                         module.remove.searchTerm();
                                     }
-                                    if(module.is.multiple()){
+                                    if (module.is.multiple()){
                                         event.preventDefault();
                                     }
                                 }
 
                                 // visible menu keyboard shortcuts
-                                if( module.is.visible() ) {
+                                if ( module.is.visible() ) {
 
                                     // enter (select or open sub-menu)
-                                    if(pressedKey == keys.enter || delimiterPressed) {
-                                        if(pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
+                                    if (pressedKey == keys.enter || delimiterPressed) {
+                                        if (pressedKey == keys.enter && hasSelectedItem && hasSubMenu && !settings.allowCategorySelection) {
                                             module.verbose('Pressed enter on unselectable category, opening sub menu');
                                             pressedKey = keys.rightArrow;
-                                        } else if(selectedIsSelectable) {
+                                        } else if (selectedIsSelectable) {
                                             module.verbose('Selecting item from keyboard shortcut', $selectedItem);
                                             module.event.item.click.call($selectedItem, event);
-                                            if(module.is.searchSelection()) {
+                                            if (module.is.searchSelection()) {
                                                 module.remove.searchTerm();
-                                                if(module.is.multiple()) {
+                                                if (module.is.multiple()) {
                                                     $search.trigger('focus');
                                                 }
                                             }
@@ -1513,13 +1513,13 @@
                                     }
 
                                     // sub-menu actions
-                                    if(hasSelectedItem) {
+                                    if (hasSelectedItem) {
 
-                                        if(pressedKey == keys.leftArrow) {
+                                        if (pressedKey == keys.leftArrow) {
 
                                             isSubMenuItem = ($parentMenu[0] !== $menu[0]);
 
-                                            if(isSubMenuItem) {
+                                            if (isSubMenuItem) {
                                                 module.verbose('Left key pressed, closing sub-menu');
                                                 module.animate.hide(false, $parentMenu);
                                                 $selectedItem
@@ -1532,8 +1532,8 @@
                                         }
 
                                         // right arrow (show sub-menu)
-                                        if(pressedKey == keys.rightArrow) {
-                                            if(hasSubMenu) {
+                                        if (pressedKey == keys.rightArrow) {
+                                            if (hasSubMenu) {
                                                 module.verbose('Right key pressed, opening sub-menu');
                                                 module.animate.show(false, $subMenu);
                                                 $selectedItem
@@ -1547,11 +1547,11 @@
                                     }
 
                                     // up arrow (traverse menu up)
-                                    if(pressedKey == keys.upArrow) {
+                                    if (pressedKey == keys.upArrow) {
                                         $nextItem = (hasSelectedItem && inVisibleMenu)
                                             ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                             : $item.eq(0);
-                                        if($visibleItems.index( $nextItem ) < 0) {
+                                        if ($visibleItems.index( $nextItem ) < 0) {
                                             module.verbose('Up key pressed but reached top of current menu');
                                             event.preventDefault();
                                             return;
@@ -1562,7 +1562,7 @@
                                             $nextItem
                                                 .addClass(className.selected);
                                             module.set.scrollPosition($nextItem);
-                                            if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                            if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                                 module.set.selectedItem($nextItem);
                                             }
                                         }
@@ -1570,11 +1570,11 @@
                                     }
 
                                     // down arrow (traverse menu down)
-                                    if(pressedKey == keys.downArrow) {
+                                    if (pressedKey == keys.downArrow) {
                                         $nextItem = (hasSelectedItem && inVisibleMenu)
                                             ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                             : $item.eq(0);
-                                        if($nextItem.length === 0) {
+                                        if ($nextItem.length === 0) {
                                             module.verbose('Down key pressed but reached bottom of current menu');
                                             event.preventDefault();
                                             return;
@@ -1585,7 +1585,7 @@
                                             $nextItem
                                                 .addClass(className.selected);
                                             module.set.scrollPosition($nextItem);
-                                            if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                            if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                                 module.set.selectedItem($nextItem);
                                             }
                                         }
@@ -1593,17 +1593,17 @@
                                     }
 
                                     // page down (show next page)
-                                    if(pressedKey == keys.pageUp) {
+                                    if (pressedKey == keys.pageUp) {
                                         module.scrollPage('up');
                                         event.preventDefault();
                                     }
-                                    if(pressedKey == keys.pageDown) {
+                                    if (pressedKey == keys.pageDown) {
                                         module.scrollPage('down');
                                         event.preventDefault();
                                     }
 
                                     // escape (close menu)
-                                    if(pressedKey == keys.escape) {
+                                    if (pressedKey == keys.escape) {
                                         module.verbose('Escape key pressed, closing dropdown');
                                         module.hide();
                                         event.stopPropagation();
@@ -1611,18 +1611,18 @@
 
                                 } else {
                                     // delimiter key
-                                    if(pressedKey == keys.enter || delimiterPressed) {
+                                    if (pressedKey == keys.enter || delimiterPressed) {
                                         event.preventDefault();
                                     }
                                     // down arrow (open menu)
-                                    if(pressedKey == keys.downArrow && !module.is.visible()) {
+                                    if (pressedKey == keys.downArrow && !module.is.visible()) {
                                         module.verbose('Down key pressed, showing dropdown');
                                         module.show();
                                         event.preventDefault();
                                     }
                                 }
                             } else {
-                                if( !module.has.search() ) {
+                                if ( !module.has.search() ) {
                                     module.set.selectedLetter( String.fromCharCode(pressedKey) );
                                 }
                             }
@@ -1634,7 +1634,7 @@
                             var
                                 inputElement = $input[0]
                             ;
-                            if(inputElement) {
+                            if (inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
                                 events.initEvent('change', true, false);
@@ -1647,10 +1647,10 @@
                         selectAction: function(text, value) {
                             selectActionActive = true;
                             module.verbose('Determining action', settings.action);
-                            if( isFunction( module.action[settings.action] ) ) {
+                            if ( isFunction( module.action[settings.action] ) ) {
                                 module.verbose('Triggering preset action', settings.action, text, value);
                                 module.action[ settings.action ].call(element, text, value, this);
-                            } else if( isFunction(settings.action) ) {
+                            } else if ( isFunction(settings.action) ) {
                                 module.verbose('Triggering user action', settings.action, text, value);
                                 settings.action.call(element, text, value, this);
                             } else {
@@ -1667,7 +1667,7 @@
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
-                            if(inDocument && !inModule) {
+                            if (inDocument && !inModule) {
                                 module.verbose('Triggering event', callback);
                                 callback();
                                 return true;
@@ -1687,7 +1687,7 @@
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
-                            if(inVisibleDOM && notOnLabel && notInMenu) {
+                            if (inVisibleDOM && notOnLabel && notInMenu) {
                                 module.verbose('Triggering event', callback);
                                 callback();
                                 return true;
@@ -1706,9 +1706,9 @@
                             value = (value !== undefined)
                                 ? value
                                 : text;
-                            if( module.can.activate( $(element) ) ) {
+                            if ( module.can.activate( $(element) ) ) {
                                 module.set.selected(value, $(element));
-                                if(!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
+                                if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                                     module.hideAndClear();
                                 }
                             }
@@ -1718,9 +1718,9 @@
                             value = (value !== undefined)
                                 ? value
                                 : text;
-                            if( module.can.activate( $(element) ) ) {
+                            if ( module.can.activate( $(element) ) ) {
                                 module.set.value(value, text, $(element));
-                                if(!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
+                                if (!module.is.multiple() && !(!settings.collapseOnActionable && $(element).hasClass(className.actionable))) {
                                     module.hideAndClear();
                                 }
                             }
@@ -1752,7 +1752,7 @@
                             return $module.data(metadata.defaultValue);
                         },
                         placeholderText: function() {
-                            if(settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
+                            if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
                                 return settings.placeholder;
                             }
                             return $module.data(metadata.placeholderText) || '';
@@ -1796,7 +1796,7 @@
                             var
                                 values = module.get.values(true)
                             ;
-                            if(!values) {
+                            if (!values) {
                                 return false;
                             }
                             values = Array.isArray(values)
@@ -1817,16 +1817,16 @@
                                 range,
                                 rangeLength
                             ;
-                            if(returnEndPos && 'selectionEnd' in input){
+                            if (returnEndPos && 'selectionEnd' in input){
                                 return input.selectionEnd;
-                            } else if(!returnEndPos && 'selectionStart' in input) {
+                            } else if (!returnEndPos && 'selectionStart' in input) {
                                 return input.selectionStart;
                             }
                             if (document.selection) {
                                 input.focus();
                                 range       = document.selection.createRange();
                                 rangeLength = range.text.length;
-                                if(returnEndPos) {
+                                if (returnEndPos) {
                                     return rangeLength;
                                 }
                                 range.moveStart('character', -input.value.length);
@@ -1849,7 +1849,7 @@
                             var
                                 value = module.get.value()
                             ;
-                            if(value === '') {
+                            if (value === '') {
                                 return '';
                             }
                             return ( !module.has.selectInput() && module.is.multiple() )
@@ -1863,8 +1863,8 @@
                                 values = module.get.values(),
                                 remoteValues = false
                             ;
-                            if(values) {
-                                if(typeof values == 'string') {
+                            if (values) {
+                                if (typeof values == 'string') {
                                     values = [values];
                                 }
                                 $.each(values, function(index, value) {
@@ -1872,8 +1872,8 @@
                                         name = module.read.remoteData(value)
                                     ;
                                     module.verbose('Restoring value from session data', name, value);
-                                    if(name) {
-                                        if(!remoteValues) {
+                                    if (name) {
+                                        if (!remoteValues) {
                                             remoteValues = {};
                                         }
                                         remoteValues[value] = name;
@@ -1886,8 +1886,8 @@
                             preserveHTML = (preserveHTML !== undefined)
                                 ? preserveHTML
                                 : settings.preserveHTML;
-                            if($choice) {
-                                if($choice.find(selector.menu).length > 0) {
+                            if ($choice) {
+                                if ($choice.find(selector.menu).length > 0) {
                                     module.verbose('Retrieving text of element with sub-menu');
                                     $choice = $choice.clone();
                                     $choice.find(selector.menu).remove();
@@ -1902,7 +1902,7 @@
                         },
                         choiceValue: function($choice, choiceText) {
                             choiceText = choiceText || module.get.choiceText($choice);
-                            if(!$choice) {
+                            if (!$choice) {
                                 return false;
                             }
                             return ($choice.data(metadata.value) !== undefined)
@@ -1919,7 +1919,7 @@
                             var
                                 input = $search[0]
                             ;
-                            if(input) {
+                            if (input) {
                                 return (input.oninput !== undefined)
                                     ? 'input'
                                     : (input.onpropertychange !== undefined)
@@ -1949,10 +1949,10 @@
                                             : name,
                                         group = $option.parent('optgroup')
                                     ;
-                                    if(settings.placeholder === 'auto' && value === '') {
+                                    if (settings.placeholder === 'auto' && value === '') {
                                         select.placeholder = name;
                                     } else {
-                                        if(group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
+                                        if (group.length !== oldGroup.length || group[0] !== oldGroup[0]) {
                                             values.push({
                                                 type: 'header',
                                                 divider: settings.headerDivider,
@@ -1968,20 +1968,20 @@
                                         });
                                     }
                                 });
-                            if(settings.placeholder && settings.placeholder !== 'auto') {
+                            if (settings.placeholder && settings.placeholder !== 'auto') {
                                 module.debug('Setting placeholder value to', settings.placeholder);
                                 select.placeholder = settings.placeholder;
                             }
-                            if(settings.sortSelect) {
-                                if(settings.sortSelect === true) {
+                            if (settings.sortSelect) {
+                                if (settings.sortSelect === true) {
                                     values.sort(function(a, b) {
                                         return a.name.localeCompare(b.name);
                                     });
-                                } else if(settings.sortSelect === 'natural') {
+                                } else if (settings.sortSelect === 'natural') {
                                     values.sort(function(a, b) {
                                         return (a.name.toLowerCase().localeCompare(b.name.toLowerCase()));
                                     });
-                                } else if(isFunction(settings.sortSelect)) {
+                                } else if (isFunction(settings.sortSelect)) {
                                     values.sort(settings.sortSelect);
                                 }
                                 select[fields.values] = values;
@@ -2009,7 +2009,7 @@
                                 $userItems   = module.create.userChoice(value),
                                 hasUserItems = ($userItems && $userItems.length > 0)
                             ;
-                            if(hasUserItems) {
+                            if (hasUserItems) {
                                 $items = ($items.length > 0)
                                     ? $items.add($userItems)
                                     : $userItems;
@@ -2034,7 +2034,7 @@
                             strict     = (value === '' || value === false  || value === true)
                                 ? true
                                 : strict || false;
-                            if(shouldSearch) {
+                            if (shouldSearch) {
                                 $item
                                     .each(function() {
                                         var
@@ -2043,29 +2043,29 @@
                                             optionValue   = module.get.choiceValue($choice, optionText)
                                         ;
                                         // safe early exit
-                                        if(optionValue === null || optionValue === undefined) {
+                                        if (optionValue === null || optionValue === undefined) {
                                             return;
                                         }
-                                        if(isMultiple) {
-                                            if($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function(v){
+                                        if (isMultiple) {
+                                            if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function(v){
                                                 return String(v);
                                             })) !== -1) {
                                                 $selectedItem = ($selectedItem)
                                                     ? $selectedItem.add($choice)
                                                     : $choice;
                                             }
-                                        } else if(strict) {
+                                        } else if (strict) {
                                             module.verbose('Ambiguous dropdown value using strict type check', $choice, value);
-                                            if( optionValue === value) {
+                                            if ( optionValue === value) {
                                                 $selectedItem = $choice;
                                                 return true;
                                             }
                                         } else {
-                                            if(settings.ignoreCase) {
+                                            if (settings.ignoreCase) {
                                                 optionValue = optionValue.toLowerCase();
                                                 value = value.toLowerCase();
                                             }
-                                            if(module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
+                                            if (module.escape.htmlEntities(String(optionValue)) === module.escape.htmlEntities(String(value))) {
                                                 module.verbose('Found select item by value', optionValue, value);
                                                 $selectedItem = $choice;
                                                 return true;
@@ -2082,13 +2082,13 @@
 
                     check: {
                         maxSelections: function(selectionCount) {
-                            if(settings.maxSelections) {
+                            if (settings.maxSelections) {
                                 selectionCount = (selectionCount !== undefined)
                                     ? selectionCount
                                     : module.get.selectionCount();
-                                if(selectionCount >= settings.maxSelections) {
+                                if (selectionCount >= settings.maxSelections) {
                                     module.debug('Maximum selection count reached');
-                                    if(settings.useLabels) {
+                                    if (settings.useLabels) {
                                         $item.addClass(className.filtered);
                                         module.add.message(message.maxSelections);
                                     }
@@ -2097,7 +2097,7 @@
                                     module.verbose('No longer at maximum selection count');
                                     module.remove.message();
                                     module.remove.filteredItem();
-                                    if(module.is.searchSelection()) {
+                                    if (module.is.searchSelection()) {
                                         module.filterItems();
                                     }
                                     return false;
@@ -2121,7 +2121,7 @@
                                 defaultText     = module.get.defaultText(),
                                 placeholderText = module.get.placeholderText
                             ;
-                            if(defaultText === placeholderText) {
+                            if (defaultText === placeholderText) {
                                 module.debug('Restoring default placeholder text', defaultText);
                                 module.set.placeholderText(defaultText);
                             } else {
@@ -2136,9 +2136,9 @@
                             var
                                 defaultValue = module.get.defaultValue()
                             ;
-                            if(defaultValue !== undefined) {
+                            if (defaultValue !== undefined) {
                                 module.debug('Restoring default value', defaultValue);
-                                if(defaultValue !== '') {
+                                if (defaultValue !== '') {
                                     module.set.value(defaultValue);
                                     module.set.selected();
                                 } else {
@@ -2148,8 +2148,8 @@
                             }
                         },
                         labels: function() {
-                            if(settings.allowAdditions) {
-                                if(!settings.useLabels) {
+                            if (settings.allowAdditions) {
+                                if (!settings.useLabels) {
                                     module.error(error.labels);
                                     settings.useLabels = true;
                                 }
@@ -2160,7 +2160,7 @@
                         },
                         selected: function() {
                             module.restore.values();
-                            if(module.is.multiple()) {
+                            if (module.is.multiple()) {
                                 module.debug('Restoring previously selected values and labels');
                                 module.restore.labels();
                             } else {
@@ -2170,13 +2170,13 @@
                         values: function() {
                             // prevents callbacks from occurring on initial load
                             module.set.initialLoad();
-                            if(settings.apiSettings && settings.saveRemoteData && module.get.remoteValues()) {
+                            if (settings.apiSettings && settings.saveRemoteData && module.get.remoteValues()) {
                                 module.restore.remoteValues();
                             } else {
                                 module.set.selected();
                             }
                             var value = module.get.value();
-                            if(value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+                            if (value && value !== '' && !(Array.isArray(value) && value.length === 0)) {
                                 $input.removeClass(className.noselection);
                             } else {
                                 $input.addClass(className.noselection);
@@ -2188,8 +2188,8 @@
                                 values = module.get.remoteValues()
                             ;
                             module.debug('Recreating selected from session data', values);
-                            if(values) {
-                                if( module.is.single() ) {
+                            if (values) {
+                                if ( module.is.single() ) {
                                     $.each(values, function(value, name) {
                                         module.set.text(name);
                                     });
@@ -2207,7 +2207,7 @@
                             var
                                 name
                             ;
-                            if(window.Storage === undefined) {
+                            if (window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
                             }
@@ -2242,14 +2242,14 @@
                             var
                                 text
                             ;
-                            if(settings.placeholder !== false && $text.hasClass(className.placeholder)) {
+                            if (settings.placeholder !== false && $text.hasClass(className.placeholder)) {
                                 text = module.get.text();
                                 module.verbose('Saving placeholder text as', text);
                                 $module.data(metadata.placeholderText, text);
                             }
                         },
                         remoteData: function(name, value) {
-                            if(window.Storage === undefined) {
+                            if (window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
                             }
@@ -2259,7 +2259,7 @@
                     },
 
                     clear: function(preventChangeTrigger) {
-                        if(module.is.multiple() && settings.useLabels) {
+                        if (module.is.multiple() && settings.useLabels) {
                             module.remove.labels($module.find(selector.label), preventChangeTrigger);
                         } else {
                             module.remove.activeItem();
@@ -2301,13 +2301,13 @@
                             : (direction == 'up')
                                 ? $selectableItem.first()
                                 : $selectableItem.last();
-                        if($nextSelectedItem.length > 0) {
+                        if ($nextSelectedItem.length > 0) {
                             module.debug('Scrolling page', direction, $nextSelectedItem);
                             $currentItem
                                 .removeClass(className.selected);
                             $nextSelectedItem
                                 .addClass(className.selected);
-                            if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                            if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                 module.set.selectedItem($nextSelectedItem);
                             }
                             $menu
@@ -2328,14 +2328,14 @@
                                 searchWidth      = module.get.searchWidth(),
                                 valueIsSet       = searchValue !== ''
                             ;
-                            if(isMultiple && hasSearchValue) {
+                            if (isMultiple && hasSearchValue) {
                                 module.verbose('Adjusting input width', searchWidth, settings.glyphWidth);
                                 $search.css('width', searchWidth + 'px');
                             }
-                            if(hasSearchValue || (isSearchMultiple && valueIsSet)) {
+                            if (hasSearchValue || (isSearchMultiple && valueIsSet)) {
                                 module.verbose('Hiding placeholder text');
                                 $text.addClass(className.filtered);
-                            } else if(!isMultiple || (isSearchMultiple && !valueIsSet)) {
+                            } else if (!isMultiple || (isSearchMultiple && !valueIsSet)) {
                                 module.verbose('Showing placeholder text');
                                 $text.removeClass(className.filtered);
                             }
@@ -2353,7 +2353,7 @@
                             $text.addClass(className.placeholder);
                         },
                         tabbable: function() {
-                            if( module.is.searchSelection() ) {
+                            if ( module.is.searchSelection() ) {
                                 module.debug('Added tabindex to searchable dropdown');
                                 $search
                                     .val('');
@@ -2362,7 +2362,7 @@
                                     .attr('tabindex', -1);
                             } else {
                                 module.debug('Added tabindex to dropdown');
-                                if( $module.attr('tabindex') === undefined) {
+                                if ( $module.attr('tabindex') === undefined) {
                                     $module
                                         .attr('tabindex', $input.attr('tabindex') || 0);
                                     $menu
@@ -2376,7 +2376,7 @@
                             initialLoad = true;
                         },
                         activeItem: function($item) {
-                            if( settings.allowAdditions && $item.filter(selector.addition).length > 0 ) {
+                            if ( settings.allowAdditions && $item.filter(selector.addition).length > 0 ) {
                                 $item.addClass(className.filtered);
                             } else {
                                 $item.addClass(className.active);
@@ -2408,10 +2408,10 @@
                             forceScroll = (forceScroll !== undefined)
                                 ? forceScroll
                                 : false;
-                            if(module.get.activeItem().length === 0){
+                            if (module.get.activeItem().length === 0){
                                 forceScroll = false;
                             }
-                            if($item && $menu.length > 0 && hasActive) {
+                            if ($item && $menu.length > 0 && hasActive) {
                                 itemOffset = $item.position().top;
 
                                 $menu.addClass(className.loading);
@@ -2419,34 +2419,34 @@
                                 menuOffset = $menu.offset().top;
                                 itemOffset = $item.offset().top;
                                 offset     = menuScroll - menuOffset + itemOffset;
-                                if(!forceScroll) {
+                                if (!forceScroll) {
                                     menuHeight = $menu.height();
                                     belowPage  = menuScroll + menuHeight < (offset + edgeTolerance);
                                     abovePage  = ((offset - edgeTolerance) < menuScroll);
                                 }
                                 module.debug('Scrolling to active item', offset);
-                                if(forceScroll || abovePage || belowPage) {
+                                if (forceScroll || abovePage || belowPage) {
                                     $menu.scrollTop(offset);
                                 }
                                 $menu.removeClass(className.loading);
                             }
                         },
                         text: function(text, isNotPlaceholder) {
-                            if(settings.action === 'combo') {
+                            if (settings.action === 'combo') {
                                 module.debug('Changing combo button text', text, $combo);
-                                if(settings.preserveHTML) {
+                                if (settings.preserveHTML) {
                                     $combo.html(text);
                                 } else {
                                     $combo.text(text);
                                 }
-                            } else if(settings.action === 'activate') {
-                                if(text !== module.get.placeholderText() || isNotPlaceholder) {
+                            } else if (settings.action === 'activate') {
+                                if (text !== module.get.placeholderText() || isNotPlaceholder) {
                                     $text.removeClass(className.placeholder);
                                 }
                                 module.debug('Changing text', text, $text);
                                 $text
                                     .removeClass(className.filtered);
-                                if(settings.preserveHTML) {
+                                if (settings.preserveHTML) {
                                     $text.html(text);
                                 } else {
                                     $text.text(text);
@@ -2474,35 +2474,35 @@
                                 $nextItem
                             ;
                             // check next of same letter
-                            if(alreadySelectedLetter) {
+                            if (alreadySelectedLetter) {
                                 $nextItem = $selectedItem.nextAll($item).eq(0);
-                                if( module.has.firstLetter($nextItem, letter) ) {
+                                if ( module.has.firstLetter($nextItem, letter) ) {
                                     $nextValue  = $nextItem;
                                 }
                             }
                             // check all values
-                            if(!$nextValue) {
+                            if (!$nextValue) {
                                 $item
                                     .each(function(){
-                                        if(module.has.firstLetter($(this), letter)) {
+                                        if (module.has.firstLetter($(this), letter)) {
                                             $nextValue = $(this);
                                             return false;
                                         }
                                     });
                             }
                             // set next value
-                            if($nextValue) {
+                            if ($nextValue) {
                                 module.verbose('Scrolling to next value with letter', letter);
                                 module.set.scrollPosition($nextValue);
                                 $selectedItem.removeClass(className.selected);
                                 $nextValue.addClass(className.selected);
-                                if(settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
                                     module.set.selectedItem($nextValue);
                                 }
                             }
                         },
                         direction: function($menu) {
-                            if(settings.direction === 'auto') {
+                            if (settings.direction === 'auto') {
                                 // reset position, remove upward if it's base menu
                                 if (!$menu) {
                                     module.remove.upward();
@@ -2511,15 +2511,15 @@
                                     module.remove.upward($menu);
                                 }
 
-                                if(module.can.openDownward($menu)) {
+                                if (module.can.openDownward($menu)) {
                                     module.remove.upward($menu);
                                 } else {
                                     module.set.upward($menu);
                                 }
-                                if(!module.is.leftward($menu) && !module.can.openRightward($menu)) {
+                                if (!module.is.leftward($menu) && !module.can.openRightward($menu)) {
                                     module.set.leftward($menu);
                                 }
-                            } else if(settings.direction === 'upward') {
+                            } else if (settings.direction === 'upward') {
                                 module.set.upward($menu);
                             }
                         },
@@ -2532,12 +2532,12 @@
                             $element.addClass(className.leftward);
                         },
                         value: function(value, text, $selected, preventChangeTrigger) {
-                            if(typeof text === 'boolean') {
+                            if (typeof text === 'boolean') {
                                 preventChangeTrigger = text;
                                 $selected = undefined;
                                 text   = undefined;
                             }
-                            if(value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
+                            if (value !== undefined && value !== '' && !(Array.isArray(value) && value.length === 0)) {
                                 $input.removeClass(className.noselection);
                             } else {
                                 $input.addClass(className.noselection);
@@ -2550,15 +2550,15 @@
                                     ? String(value)
                                     : value
                             ;
-                            if(hasInput) {
-                                if(!settings.allowReselection && stringValue == currentValue) {
+                            if (hasInput) {
+                                if (!settings.allowReselection && stringValue == currentValue) {
                                     module.verbose('Skipping value update already same value', value, currentValue);
-                                    if(!module.is.initialLoad()) {
+                                    if (!module.is.initialLoad()) {
                                         return;
                                     }
                                 }
 
-                                if( module.is.single() && module.has.selectInput() && module.can.extendSelect() ) {
+                                if ( module.is.single() && module.has.selectInput() && module.can.extendSelect() ) {
                                     module.debug('Adding user option', value);
                                     module.add.optionValue(value);
                                 }
@@ -2566,21 +2566,21 @@
                                 internalChange = true;
                                 $input
                                     .val(escapedValue);
-                                if(settings.fireOnInit === false && module.is.initialLoad()) {
+                                if (settings.fireOnInit === false && module.is.initialLoad()) {
                                     module.debug('Input native change event ignored on initial load');
-                                } else if(preventChangeTrigger !== true) {
+                                } else if (preventChangeTrigger !== true) {
                                     module.trigger.change();
                                 }
                                 internalChange = false;
                             } else {
                                 module.verbose('Storing value in metadata', escapedValue, $input);
-                                if(escapedValue !== currentValue) {
+                                if (escapedValue !== currentValue) {
                                     $module.data(metadata.value, stringValue);
                                 }
                             }
-                            if(settings.fireOnInit === false && module.is.initialLoad()) {
+                            if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.verbose('No callback on initial load', settings.onChange);
-                            } else if(preventChangeTrigger !== true) {
+                            } else if (preventChangeTrigger !== true) {
                                 settings.onChange.call(element, value, text, $selected);
                             }
                         },
@@ -2595,7 +2595,7 @@
                             $module.addClass(className.visible);
                         },
                         exactly: function(value, $selectedItem, preventChangeTrigger) {
-                            if(typeof $selectedItem === 'boolean') {
+                            if (typeof $selectedItem === 'boolean') {
                                 preventChangeTrigger = $selectedItem;
                                 $selectedItem   = undefined;
                             }
@@ -2604,7 +2604,7 @@
                             module.set.selected(value, $selectedItem, preventChangeTrigger);
                         },
                         selected: function(value, $selectedItem, preventChangeTrigger, keepSearchTerm) {
-                            if(typeof $selectedItem === 'boolean') {
+                            if (typeof $selectedItem === 'boolean') {
                                 keepSearchTerm = preventChangeTrigger;
                                 preventChangeTrigger = $selectedItem;
                                 $selectedItem   = undefined;
@@ -2615,17 +2615,17 @@
                             $selectedItem = (settings.allowAdditions)
                                 ? $selectedItem || module.get.itemWithAdditions(value)
                                 : $selectedItem || module.get.item(value);
-                            if(!$selectedItem) {
+                            if (!$selectedItem) {
                                 return;
                             }
                             module.debug('Setting selected menu item to', $selectedItem);
-                            if(module.is.multiple()) {
+                            if (module.is.multiple()) {
                                 module.remove.searchWidth();
                             }
-                            if(module.is.single()) {
+                            if (module.is.single()) {
                                 module.remove.activeItem();
                                 module.remove.selectedItem();
-                            } else if(settings.useLabels) {
+                            } else if (settings.useLabels) {
                                 module.remove.selectedItem();
                             }
                             // select each item
@@ -2642,17 +2642,17 @@
                                         isUserValue    = $selected.hasClass(className.addition),
                                         shouldAnimate  = (isMultiple && $selectedItem && $selectedItem.length === 1)
                                     ;
-                                    if(isActionable){
-                                        if((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
+                                    if (isActionable){
+                                        if ((!isMultiple || (!isActive || isUserValue)) && settings.apiSettings && settings.saveRemoteData) {
                                             module.save.remoteData(selectedText, selectedValue);
                                         }
                                         settings.onActionable.call(element, selectedValue, selectedText, $selected);
-                                    } else if(isMultiple) {
-                                        if(!isActive || isUserValue) {
-                                            if(settings.apiSettings && settings.saveRemoteData) {
+                                    } else if (isMultiple) {
+                                        if (!isActive || isUserValue) {
+                                            if (settings.apiSettings && settings.saveRemoteData) {
                                                 module.save.remoteData(selectedText, selectedValue);
                                             }
-                                            if(settings.useLabels) {
+                                            if (settings.useLabels) {
                                                 module.add.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                                                 module.add.label(selectedValue, selectedText, shouldAnimate);
                                                 module.set.activeItem($selected);
@@ -2663,12 +2663,12 @@
                                                 module.set.text(module.add.variables(message.count));
                                                 module.set.activeItem($selected);
                                             }
-                                        } else if(!isFiltered && (settings.useLabels || selectActionActive)) {
+                                        } else if (!isFiltered && (settings.useLabels || selectActionActive)) {
                                             module.debug('Selected active value, removing label');
                                             module.remove.selected(selectedValue);
                                         }
                                     } else {
-                                        if(settings.apiSettings && settings.saveRemoteData) {
+                                        if (settings.apiSettings && settings.saveRemoteData) {
                                             module.save.remoteData(selectedText, selectedValue);
                                         }
                                         if (!keepSearchTerm && !$selected.hasClass(className.actionable)) {
@@ -2683,7 +2683,7 @@
                             if (!keepSearchTerm) {
                                 module.remove.searchTerm();
                             }
-                            if(module.is.allFiltered()) {
+                            if (module.is.allFiltered()) {
                                 module.set.empty();
                                 module.hideMenu();
                             }
@@ -2699,7 +2699,7 @@
                                 escapedValue = module.escape.value(value),
                                 $label
                             ;
-                            if(settings.ignoreCase) {
+                            if (settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
                             $label =  $('<a />')
@@ -2708,14 +2708,14 @@
                                 .html(templates.label(escapedValue, text, settings.preserveHTML, settings.className));
                             $label = settings.onLabelCreate.call($label, escapedValue, text);
 
-                            if(module.has.label(value)) {
+                            if (module.has.label(value)) {
                                 module.debug('User selection already exists, skipping', escapedValue);
                                 return;
                             }
-                            if(settings.label.variation) {
+                            if (settings.label.variation) {
                                 $label.addClass(settings.label.variation);
                             }
-                            if(shouldAnimate === true) {
+                            if (shouldAnimate === true) {
                                 module.debug('Animating in label', $label);
                                 $label
                                     .addClass(className.hidden)
@@ -2738,7 +2738,7 @@
                                 $message = $menu.children(selector.message),
                                 html     = settings.templates.message(module.add.variables(message))
                             ;
-                            if($message.length > 0) {
+                            if ($message.length > 0) {
                                 $message
                                     .html(html);
                             } else {
@@ -2754,12 +2754,12 @@
                                 $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
                                 hasOption    = ($option.length > 0)
                             ;
-                            if(hasOption) {
+                            if (hasOption) {
                                 return;
                             }
                             // temporarily disconnect observer
                             module.disconnect.selectObserver();
-                            if( module.is.single() ) {
+                            if ( module.is.single() ) {
                                 module.verbose('Removing previous user addition');
                                 $input.find('option.' + className.addition).remove();
                             }
@@ -2779,21 +2779,21 @@
                                 hasUserSuggestion = $addition.length > 0,
                                 html
                             ;
-                            if(settings.useLabels && module.has.maxSelections()) {
+                            if (settings.useLabels && module.has.maxSelections()) {
                                 return;
                             }
-                            if(value === '' || alreadyHasValue) {
+                            if (value === '' || alreadyHasValue) {
                                 $addition.remove();
                                 return;
                             }
-                            if(hasUserSuggestion) {
+                            if (hasUserSuggestion) {
                                 $addition
                                     .data(metadata.value, value)
                                     .data(metadata.text, value)
                                     .attr('data-' + metadata.value, value)
                                     .attr('data-' + metadata.text, value)
                                     .removeClass(className.filtered);
-                                if(!settings.hideAdditions) {
+                                if (!settings.hideAdditions) {
                                     html = settings.templates.addition( module.add.variables(message.addResult, value) );
                                     $addition
                                         .html(html);
@@ -2805,7 +2805,7 @@
                                     .prependTo($menu);
                                 module.verbose('Adding item choice to menu corresponding with user choice addition', $addition);
                             }
-                            if(!settings.hideAdditions || module.is.allFiltered()) {
+                            if (!settings.hideAdditions || module.is.allFiltered()) {
                                 $addition
                                     .addClass(className.selected)
                                     .siblings()
@@ -2821,20 +2821,20 @@
                                 query
                             ;
                             module.verbose('Adding templated variables to message', message);
-                            if(hasCount) {
+                            if (hasCount) {
                                 message = message.replace('{count}', module.get.selectionCount());
                             }
-                            if(hasMaxCount) {
+                            if (hasMaxCount) {
                                 message = message.replace('{maxCount}', settings.maxSelections);
                             }
-                            if(hasTerm) {
+                            if (hasTerm) {
                                 query   = term || module.get.query();
                                 message = message.replace('{term}', query);
                             }
                             return message;
                         },
                         value: function(addedValue, addedText, $selectedItem, preventChangeTrigger) {
-                            if(typeof addedText === 'boolean') {
+                            if (typeof addedText === 'boolean') {
                                 preventChangeTrigger = addedText;
                                 $selectedItem = undefined;
                                 addedText   = undefined;
@@ -2843,24 +2843,24 @@
                                 currentValue = module.get.values(true),
                                 newValue
                             ;
-                            if(module.has.value(addedValue)) {
+                            if (module.has.value(addedValue)) {
                                 module.debug('Value already selected');
                                 return;
                             }
-                            if(addedValue === '') {
+                            if (addedValue === '') {
                                 module.debug('Cannot select blank values from multiselect');
                                 return;
                             }
                             // extend current array
-                            if(Array.isArray(currentValue)) {
+                            if (Array.isArray(currentValue)) {
                                 newValue = $selectedItem && $selectedItem.hasClass(className.actionable) ? currentValue : currentValue.concat([addedValue]);
                                 newValue = module.get.uniqueArray(newValue);
                             } else {
                                 newValue = [addedValue];
                             }
                             // add values
-                            if( module.has.selectInput() ) {
-                                if(module.can.extendSelect()) {
+                            if ( module.has.selectInput() ) {
+                                if (module.can.extendSelect()) {
                                     module.debug('Adding value to select', addedValue, newValue, $input);
                                     module.add.optionValue(addedValue);
                                 }
@@ -2869,7 +2869,7 @@
                                 module.debug('Setting hidden input to delimited value', newValue, $input);
                             }
 
-                            if(settings.fireOnInit === false && module.is.initialLoad()) {
+                            if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.verbose('Skipping onadd callback on initial load', settings.onAdd);
                             } else {
                                 settings.onAdd.call(element, addedValue, addedText, $selectedItem);
@@ -2910,15 +2910,15 @@
                             $item.removeClass(className.active);
                         },
                         filteredItem: function() {
-                            if(settings.useLabels && module.has.maxSelections() ) {
+                            if (settings.useLabels && module.has.maxSelections() ) {
                                 return;
                             }
-                            if(settings.useLabels && module.is.multiple()) {
+                            if (settings.useLabels && module.is.multiple()) {
                                 $item.not('.' + className.active).removeClass(className.filtered);
                             } else {
                                 $item.removeClass(className.filtered);
                             }
-                            if(settings.hideDividers) {
+                            if (settings.hideDividers) {
                                 $divider.removeClass(className.hidden);
                             }
                             module.remove.empty();
@@ -2929,7 +2929,7 @@
                                 $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
                                 hasOption    = ($option.length > 0)
                             ;
-                            if(!hasOption || !$option.hasClass(className.addition)) {
+                            if (!hasOption || !$option.hasClass(className.addition)) {
                                 return;
                             }
                             // temporarily disconnect observer
@@ -2957,7 +2957,7 @@
                                 ? $selectedItem || module.get.itemWithAdditions(value)
                                 : $selectedItem || module.get.item(value);
 
-                            if(!$selectedItem) {
+                            if (!$selectedItem) {
                                 return false;
                             }
 
@@ -2968,13 +2968,13 @@
                                         selectedText  = module.get.choiceText($selected),
                                         selectedValue = module.get.choiceValue($selected, selectedText)
                                     ;
-                                    if(module.is.multiple()) {
-                                        if(settings.useLabels) {
+                                    if (module.is.multiple()) {
+                                        if (settings.useLabels) {
                                             module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
                                             module.remove.label(selectedValue);
                                         } else {
                                             module.remove.value(selectedValue, selectedText, $selected, preventChangeTrigger);
-                                            if(module.get.selectionCount() === 0) {
+                                            if (module.get.selectionCount() === 0) {
                                                 module.set.placeholderText();
                                             } else {
                                                 module.set.text(module.add.variables(message.count));
@@ -2986,7 +2986,7 @@
                                     $selected
                                         .removeClass(className.filtered)
                                         .removeClass(className.active);
-                                    if(settings.useLabels) {
+                                    if (settings.useLabels) {
                                         $selected.removeClass(className.selected);
                                     }
                                 });
@@ -2999,7 +2999,7 @@
                                 values = module.get.values(true),
                                 newValue
                             ;
-                            if( module.has.selectInput() ) {
+                            if ( module.has.selectInput() ) {
                                 module.verbose('Input is <select> removing selected option', removedValue);
                                 newValue = module.remove.arrayValue(removedValue, values);
                                 module.remove.optionValue(removedValue);
@@ -3008,7 +3008,7 @@
                                 newValue = module.remove.arrayValue(removedValue, values);
                                 newValue = newValue.join(settings.delimiter);
                             }
-                            if(settings.fireOnInit === false && module.is.initialLoad()) {
+                            if (settings.fireOnInit === false && module.is.initialLoad()) {
                                 module.verbose('No callback on initial load', settings.onRemove);
                             } else {
                                 settings.onRemove.call(element, removedValue, removedText, $removedItem);
@@ -3017,7 +3017,7 @@
                             module.check.maxSelections();
                         },
                         arrayValue: function(removedValue, values) {
-                            if( !Array.isArray(values) ) {
+                            if ( !Array.isArray(values) ) {
                                 values = [values];
                             }
                             values = $.grep(values, function(value){
@@ -3053,12 +3053,12 @@
                                             : value,
                                         isUserValue = module.is.userValue(stringValue)
                                     ;
-                                    if(settings.onLabelRemove.call($label, value) === false) {
+                                    if (settings.onLabelRemove.call($label, value) === false) {
                                         module.debug('Label remove callback cancelled removal');
                                         return;
                                     }
                                     module.remove.message();
-                                    if(isUserValue) {
+                                    if (isUserValue) {
                                         module.remove.value(stringValue, stringValue, module.get.item(stringValue), preventChangeTrigger);
                                         module.remove.label(stringValue);
                                     } else {
@@ -3068,7 +3068,7 @@
                                 });
                         },
                         tabbable: function() {
-                            if( module.is.searchSelection() ) {
+                            if ( module.is.searchSelection() ) {
                                 module.debug('Searchable dropdown initialized');
                                 $search
                                     .removeAttr('tabindex');
@@ -3104,7 +3104,7 @@
                             return ( $input.is('select') );
                         },
                         minCharacters: function(searchTerm) {
-                            if(settings.minCharacters && !iconClicked) {
+                            if (settings.minCharacters && !iconClicked) {
                                 searchTerm = (searchTerm !== undefined)
                                     ? String(searchTerm)
                                     : String(module.get.query());
@@ -3118,7 +3118,7 @@
                                 text,
                                 firstLetter
                             ;
-                            if(!$item || $item.length === 0 || typeof letter !== 'string') {
+                            if (!$item || $item.length === 0 || typeof letter !== 'string') {
                                 return false;
                             }
                             text        = module.get.choiceText($item, false);
@@ -3146,7 +3146,7 @@
                                 escapedValue = module.escape.value(value),
                                 $labels      = $module.find(selector.label)
                             ;
-                            if(settings.ignoreCase) {
+                            if (settings.ignoreCase) {
                                 escapedValue = escapedValue.toLowerCase();
                             }
                             return ($labels.filter('[data-' + metadata.value + '="' + module.escape.string(escapedValue) +'"]').length > 0);
@@ -3187,11 +3187,11 @@
                                 values   = module.get.values(true),
                                 hasValue = false
                             ;
-                            if(!Array.isArray(values)) {
+                            if (!Array.isArray(values)) {
                                 values = [values];
                             }
                             $.each(values, function(index, existingValue) {
-                                if(String(value).toLowerCase() == String(existingValue).toLowerCase()) {
+                                if (String(value).toLowerCase() == String(existingValue).toLowerCase()) {
                                     hasValue = true;
                                     return false;
                                 }
@@ -3250,7 +3250,7 @@
                             return (document.activeElement === $search[0]);
                         },
                         allFiltered: function() {
-                            return( (module.is.multiple() || module.has.search()) && !(!settings.hideAdditions && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered() );
+                            return ( (module.is.multiple() || module.has.search()) && !(!settings.hideAdditions && module.has.userSuggestion()) && !module.has.message() && module.has.allResultsFiltered() );
                         },
                         hidden: function($subMenu) {
                             return !module.is.visible($subMenu);
@@ -3263,7 +3263,7 @@
                                 found = false
                             ;
                             $.each(object, function(index, property) {
-                                if(property == needle) {
+                                if (property == needle) {
                                     found = true;
                                     return true;
                                 }
@@ -3287,7 +3287,7 @@
                                 selectChanged = false
                             ;
                             $.each(mutations, function(index, mutation) {
-                                if($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
+                                if ($(mutation.target).is('select, option, optgroup') || $(mutation.addedNodes).is('select')) {
                                     selectChanged = true;
                                     return false;
                                 }
@@ -3363,20 +3363,20 @@
                                     height: $currentMenu.outerHeight(),
                                 },
                             };
-                            if(module.is.verticallyScrollableContext()) {
+                            if (module.is.verticallyScrollableContext()) {
                                 calculations.menu.offset.top += calculations.context.scrollTop;
                             }
-                            if(module.has.subMenu($currentMenu)) {
+                            if (module.has.subMenu($currentMenu)) {
                                 calculations.menu.height += $currentMenu.find(selector.menu).first().outerHeight();
                             }
                             onScreen = {
                                 above: (calculations.context.scrollTop) <= calculations.menu.offset.top - calculations.context.offset.top - calculations.menu.height,
                                 below: (calculations.context.scrollTop + calculations.context.height) >= calculations.menu.offset.top - calculations.context.offset.top + calculations.menu.height,
                             };
-                            if(onScreen.below) {
+                            if (onScreen.below) {
                                 module.verbose('Dropdown can fit in context downward', onScreen);
                                 canOpenDownward = true;
-                            } else if(!onScreen.below && !onScreen.above) {
+                            } else if (!onScreen.below && !onScreen.above) {
                                 module.verbose('Dropdown cannot fit in either direction, favoring downward', onScreen);
                                 canOpenDownward = true;
                             } else {
@@ -3408,11 +3408,11 @@
                                     width: $currentMenu.outerWidth(),
                                 },
                             };
-                            if(module.is.horizontallyScrollableContext()) {
+                            if (module.is.horizontallyScrollableContext()) {
                                 calculations.menu.offset.left += calculations.context.scrollLeft;
                             }
                             isOffscreenRight = (calculations.menu.offset.left - calculations.context.offset.left + calculations.menu.width >= calculations.context.scrollLeft + calculations.context.width);
-                            if(isOffscreenRight) {
+                            if (isOffscreenRight) {
                                 module.verbose('Dropdown cannot fit in context rightward', isOffscreenRight);
                                 canOpenRightward = false;
                             }
@@ -3449,17 +3449,17 @@
                             module.verbose('Doing menu show animation', $currentMenu);
                             module.set.direction($subMenu);
                             transition = settings.transition.showMethod || module.get.transition($subMenu);
-                            if( module.is.selection() ) {
+                            if ( module.is.selection() ) {
                                 module.set.scrollPosition(module.get.selectedItem(), true);
                             }
-                            if( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
-                                if(transition === 'none') {
+                            if ( module.is.hidden($currentMenu) || module.is.animating($currentMenu) ) {
+                                if (transition === 'none') {
                                     start();
                                     $currentMenu.transition({
                                         displayType: module.get.displayType(),
                                     }).transition('show');
                                     callback.call(element);
-                                } else if($.fn.transition !== undefined && $module.transition('is supported')) {
+                                } else if ($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $currentMenu
                                         .transition({
                                             animation: transition + ' in',
@@ -3493,16 +3493,16 @@
                             callback = isFunction(callback)
                                 ? callback
                                 : function(){};
-                            if( module.is.visible($currentMenu) || module.is.animating($currentMenu) ) {
+                            if ( module.is.visible($currentMenu) || module.is.animating($currentMenu) ) {
                                 module.verbose('Doing menu hide animation', $currentMenu);
 
-                                if(transition === 'none') {
+                                if (transition === 'none') {
                                     start();
                                     $currentMenu.transition({
                                         displayType: module.get.displayType(),
                                     }).transition('hide');
                                     callback.call(element);
-                                } else if($.fn.transition !== undefined && $module.transition('is supported')) {
+                                } else if ($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $currentMenu
                                         .transition({
                                             animation: transition + ' out',
@@ -3526,10 +3526,10 @@
 
                     hideAndClear: function() {
                         module.remove.searchTerm();
-                        if( module.has.maxSelections() ) {
+                        if ( module.has.maxSelections() ) {
                             return;
                         }
-                        if(module.has.search()) {
+                        if (module.has.search()) {
                             module.hide(function() {
                                 module.remove.filteredItem();
                             });
@@ -3560,11 +3560,11 @@
                                 hasQuotes      = (stringValue && value.search(regExp.quote) !== -1),
                                 values         = []
                             ;
-                            if(isUnparsable || !hasQuotes) {
+                            if (isUnparsable || !hasQuotes) {
                                 return value;
                             }
                             module.debug('Encoding quote values for use in select', value);
-                            if(multipleValues) {
+                            if (multipleValues) {
                                 $.each(value, function(index, value){
                                     values.push(value.replace(regExp.quote, '&quot;'));
                                 });
@@ -3591,7 +3591,7 @@
                                     return escape[chr];
                                 }
                             ;
-                            if(shouldEscape.test(string)) {
+                            if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
                             }
@@ -3601,10 +3601,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -3614,17 +3614,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -3633,8 +3633,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -3643,7 +3643,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -3655,7 +3655,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -3681,12 +3681,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -3707,7 +3707,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -3715,14 +3715,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -3733,27 +3733,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();
@@ -4016,7 +4016,7 @@
                     return escape[chr];
                 }
             ;
-            if(shouldEscape.test(string)) {
+            if (shouldEscape.test(string)) {
                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                 return string.replace(badChars, escapedChar);
             }
@@ -4031,7 +4031,7 @@
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             html +=  '<i class="dropdown icon"></i>';
-            if(placeholder) {
+            if (placeholder) {
                 html += '<div class="default text">' + escape(placeholder,preserveHTML) + '</div>';
             } else {
                 html += '<div class="text"></div>';
@@ -4058,7 +4058,7 @@
                     isMenu = itemType.indexOf('menu') !== -1
                 ;
 
-                if( itemType === 'item' || isMenu) {
+                if ( itemType === 'item' || isMenu) {
                     var
                         maybeText = (option[fields.text])
                             ? ' data-text="' + deQuote(option[fields.text],true) + '"'
@@ -4078,13 +4078,13 @@
                     if (isMenu) {
                         html += '<i class="'+ (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
-                    if(option[fields.image]) {
+                    if (option[fields.image]) {
                         html += '<img class="'+deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image)+'" src="' + deQuote(option[fields.image]) + '">';
                     }
-                    if(option[fields.icon]) {
+                    if (option[fields.icon]) {
                         html += '<i class="'+deQuote(option[fields.icon]+' '+(option[fields.iconClass] ? option[fields.iconClass] : className.icon))+'"></i>';
                     }
-                    if(hasDescription){
+                    if (hasDescription){
                         html += '<span class="'+ deQuote(className.description) +'">'+ escape(option[fields.description] || '', preserveHTML) + '</span>';
                         html += (!isMenu) ? '<span class="'+ deQuote(className.text) + '">' : '';
                     }
@@ -4097,7 +4097,7 @@
                         html += '<div class="' + deQuote(itemType) + '">';
                         html += $.fn.dropdown.settings.templates.menu(option, fields, preserveHTML, className);
                         html += '</div>';
-                    } else if(hasDescription){
+                    } else if (hasDescription){
                         html += '</span>';
                     }
                     html += '</div>';
@@ -4106,7 +4106,7 @@
                         groupName = escape(option[fields.name] || '', preserveHTML),
                         groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
                     ;
-                    if(groupName !== '' || groupIcon !== '') {
+                    if (groupName !== '' || groupIcon !== '') {
                         html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
                         if (groupIcon !== '') {
                             html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
@@ -4114,7 +4114,7 @@
                         html += groupName;
                         html += '</div>';
                     }
-                    if(option[fields.divider]){
+                    if (option[fields.divider]){
                         html += '<div class="'+deQuote(className.divider)+'"></div>';
                     }
                 }

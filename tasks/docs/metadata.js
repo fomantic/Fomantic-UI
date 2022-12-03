@@ -24,8 +24,8 @@ function startsWith(str, prefix) {
 
 function inArray(needle, haystack) {
     var length = haystack.length;
-    for(var i = 0; i < length; i++) {
-        if(haystack[i] == needle) {
+    for (var i = 0; i < length; i++) {
+        if (haystack[i] == needle) {
             return true;
         }
     }
@@ -40,11 +40,11 @@ function inArray(needle, haystack) {
  */
 function parser(file, callback) {
     // file exit conditions
-    if(file.isNull()) {
+    if (file.isNull()) {
         return callback(null, file); // pass along
     }
 
-    if(file.isStream()) {
+    if (file.isStream()) {
         return callback(new Error('Streaming not supported'));
     }
 
@@ -60,10 +60,10 @@ function parser(file, callback) {
         ;
 
         // exit conditions
-        if(!lines) {
+        if (!lines) {
             return;
         }
-        if(position < 0) {
+        if (position < 0) {
             return callback(null, file);
         }
 
@@ -86,19 +86,19 @@ function parser(file, callback) {
             line
         ;
 
-        for(index = 0; index < lineCount; index++) {
+        for (index = 0; index < lineCount; index++) {
 
             line = lines[index];
 
             // Wait for metadata block to begin
-            if(!active) {
-                if(startsWith(line, '---')) {
+            if (!active) {
+                if (startsWith(line, '---')) {
                     active = true;
                 }
                 continue;
             }
             // End of metadata block, stop parsing.
-            if(startsWith(line, '---')) {
+            if (startsWith(line, '---')) {
                 break;
             }
             yaml.push(line);
@@ -107,7 +107,7 @@ function parser(file, callback) {
 
         // Parse yaml.
         meta = YAML.parse(yaml.join('\n'));
-        if(meta && meta.type && meta.title && inArray(meta.type, categories) ) {
+        if (meta && meta.type && meta.title && inArray(meta.type, categories) ) {
             meta.category = meta.type;
             meta.filename = filename;
             meta.url      = '/' + filename;
@@ -120,7 +120,7 @@ function parser(file, callback) {
         }
 
 
-    } catch(error) {
+    } catch (error) {
         console.log(error, filename);
     }
 

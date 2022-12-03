@@ -24,13 +24,13 @@ module.exports = {
                     nextDirectory = path.resolve( path.join(directory, path.sep, '..') ),
                     currentPath   = path.normalize( path.join(directory, file) )
                 ;
-                if( fs.existsSync(currentPath) ) {
+                if ( fs.existsSync(currentPath) ) {
                     // found file
                     configPath = path.normalize(directory);
                     return;
                 } else {
                     // reached file system root, let's stop
-                    if(nextDirectory == directory) {
+                    if (nextDirectory == directory) {
                         return;
                     }
                     // otherwise recurse
@@ -63,13 +63,13 @@ module.exports = {
         ;
 
         // resolve paths (config location + base + path)
-        for(folder in config.paths.source) {
-            if(config.paths.source.hasOwnProperty(folder)) {
+        for (folder in config.paths.source) {
+            if (config.paths.source.hasOwnProperty(folder)) {
                 sourcePaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.source[folder]));
             }
         }
-        for(folder in config.paths.output) {
-            if(config.paths.output.hasOwnProperty(folder)) {
+        for (folder in config.paths.output) {
+            if (config.paths.output.hasOwnProperty(folder)) {
                 outputPaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.output[folder]));
             }
         }
@@ -99,7 +99,7 @@ module.exports = {
        Permission
     ---------------*/
 
-        if(config.permission) {
+        if (config.permission) {
             config.hasPermissions = true;
             config.parsedPermissions = typeof config.permission === 'string' ? parseInt(config.permission, 8) : config.permission;
         } else {
@@ -113,12 +113,12 @@ module.exports = {
          Globs
     ---------------*/
 
-        if(!config.globs) {
+        if (!config.globs) {
             config.globs = {};
         }
 
         // remove duplicates from component array
-        if(config.components instanceof Array) {
+        if (config.components instanceof Array) {
             config.components = config.components.filter(function(component, index) {
                 return config.components.indexOf(component) == index;
             });

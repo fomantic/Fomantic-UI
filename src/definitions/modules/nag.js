@@ -64,7 +64,7 @@
 
                     initialize: function() {
                         module.verbose('Initializing element');
-                        if(typeof settings.value !== 'string') {
+                        if (typeof settings.value !== 'string') {
                             settings.value = JSON.stringify(settings.value);
                         }
                         storage = module.get.storage();
@@ -72,13 +72,13 @@
                             .on('click' + eventNamespace, selector.close, module.dismiss)
                             .data(moduleNamespace, module);
 
-                        if(settings.detachable && $module.parent()[0] !== $context[0]) {
+                        if (settings.detachable && $module.parent()[0] !== $context[0]) {
                             $module
                                 .detach()
                                 .prependTo($context);
                         }
 
-                        if(settings.displayTime > 0) {
+                        if (settings.displayTime > 0) {
                             setTimeout(module.hide, settings.displayTime);
                         }
                         module.show();
@@ -92,13 +92,13 @@
                     },
 
                     show: function() {
-                        if( module.should.show() && !$module.is(':visible') ) {
-                            if(settings.onShow.call(element) === false) {
+                        if ( module.should.show() && !$module.is(':visible') ) {
+                            if (settings.onShow.call(element) === false) {
                                 module.debug('onShow callback returned false, cancelling nag animation');
                                 return false;
                             }
                             module.debug('Showing nag', settings.animation.show);
-                            if(settings.animation.show === 'fade') {
+                            if (settings.animation.show === 'fade') {
                                 $module
                                     .fadeIn(settings.duration, settings.easing, settings.onVisible);
                             } else {
@@ -109,12 +109,12 @@
                     },
 
                     hide: function() {
-                        if(settings.onHide.call(element) === false) {
+                        if (settings.onHide.call(element) === false) {
                             module.debug('onHide callback returned false, cancelling nag animation');
                             return false;
                         }
                         module.debug('Hiding nag', settings.animation.hide);
-                        if(settings.animation.hide === 'fade') {
+                        if (settings.animation.hide === 'fade') {
                             $module
                                 .fadeOut(settings.duration, settings.easing, settings.onHidden);
                         } else {
@@ -124,7 +124,7 @@
                     },
 
                     dismiss: function(event) {
-                        if(module.hide() !== false && settings.storageMethod) {
+                        if (module.hide() !== false && settings.storageMethod) {
                             module.debug('Dismissing nag', settings.storageMethod, settings.key, settings.value, settings.expires);
                             module.storage.set(settings.key, settings.value);
                         }
@@ -134,11 +134,11 @@
 
                     should: {
                         show: function() {
-                            if(settings.persist) {
+                            if (settings.persist) {
                                 module.debug('Persistent nag is set, can show nag');
                                 return true;
                             }
-                            if( module.storage.get(settings.key) != settings.value.toString() ) {
+                            if ( module.storage.get(settings.key) != settings.value.toString() ) {
                                 module.debug('Stored value is not set, can show nag', module.storage.get(settings.key));
                                 return true;
                             }
@@ -152,20 +152,20 @@
                             if (typeof expires === 'number') {
                                 expires = new Date(Date.now() + expires * 864e5);
                             }
-                            if(expires instanceof Date && expires.getTime() ){
+                            if (expires instanceof Date && expires.getTime() ){
                                 return expires.toUTCString();
                             } else {
                                 module.error(error.expiresFormat);
                             }
                         },
                         storage: function(){
-                            if(settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
+                            if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                                 module.debug('Using local storage');
                                 return window.localStorage;
-                            } else if(settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+                            } else if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
                                 module.debug('Using session storage');
                                 return window.sessionStorage;
-                            } else if('cookie' in document) {
+                            } else if ('cookie' in document) {
                                 module.debug('Using cookie');
                                 return {
                                     setItem: function(key, value, options) {
@@ -211,19 +211,19 @@
                             var
                                 options = {}
                             ;
-                            if(settings.expires) {
+                            if (settings.expires) {
                                 options.expires = module.get.expirationDate(settings.expires);
                             }
-                            if(settings.domain) {
+                            if (settings.domain) {
                                 options.domain = settings.domain;
                             }
-                            if(settings.path) {
+                            if (settings.path) {
                                 options.path = settings.path;
                             }
-                            if(settings.secure) {
+                            if (settings.secure) {
                                 options.secure = settings.secure;
                             }
-                            if(settings.samesite) {
+                            if (settings.samesite) {
                                 options.samesite = settings.samesite;
                             }
                             return options;
@@ -239,14 +239,14 @@
                             var
                                 options = module.get.storageOptions()
                             ;
-                            if(storage === window.localStorage && options.expires) {
+                            if (storage === window.localStorage && options.expires) {
                                 module.debug('Storing expiration value in localStorage', key, options.expires);
                                 storage.setItem(key + settings.expirationKey, options.expires );
                             }
                             module.debug('Value stored', key, value);
                             try {
                                 storage.setItem(key, value, options);
-                            } catch(e) {
+                            } catch (e) {
                                 module.error(error.setItem, e);
                             }
                         },
@@ -255,15 +255,15 @@
                                 storedValue
                             ;
                             storedValue = storage.getItem(key);
-                            if(storage === window.localStorage) {
+                            if (storage === window.localStorage) {
                                 var expiration = storage.getItem(key + settings.expirationKey);
-                                if(expiration !== null && expiration !== undefined && new Date(expiration) < new Date()) {
+                                if (expiration !== null && expiration !== undefined && new Date(expiration) < new Date()) {
                                     module.debug('Value in localStorage has expired. Deleting key', key);
                                     module.storage.remove(key);
                                     storedValue = null;
                                 }
                             }
-                            if(storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
+                            if (storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
                                 storedValue = undefined;
                             }
                             return storedValue;
@@ -273,7 +273,7 @@
                                 options = module.get.storageOptions()
                             ;
                             options.expires = module.get.expirationDate(-1);
-                            if(storage === window.localStorage) {
+                            if (storage === window.localStorage) {
                                 storage.removeItem(key + settings.expirationKey);
                             }
                             storage.removeItem(key, options);
@@ -282,10 +282,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -295,17 +295,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -314,8 +314,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -324,7 +324,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -336,7 +336,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -362,12 +362,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -388,7 +388,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -396,14 +396,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -414,27 +414,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

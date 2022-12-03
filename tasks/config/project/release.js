@@ -15,12 +15,12 @@ var
 
 try {
     config = requireDotFile('semantic.json', process.cwd());
-} catch(error) {}
+} catch (error) {}
 
 
 try {
     npmPackage = require('../../../package.json');
-} catch(error) {
+} catch (error) {
     // generate fake package
     npmPackage = {
         name: 'Unknown',

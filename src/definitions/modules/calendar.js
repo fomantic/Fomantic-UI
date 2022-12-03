@@ -139,7 +139,7 @@
                                 return;
                             }
                             if (!$container.length) {
-                                if(settings.context) {
+                                if (settings.context) {
                                     module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
                                     $container = $('<div/>',{id: module.popupId}).addClass(className.popup).appendTo($document.find(settings.context));
                                 } else {
@@ -153,7 +153,7 @@
                                 }
                             }
                             $container.addClass(className.calendar);
-                            if(isInverted){
+                            if (isInverted){
                                 $container.addClass(className.inverted);
                             }
                             var onVisible = function () {
@@ -228,7 +228,7 @@
                             var
                                 inputElement = $input[0]
                             ;
-                            if(inputElement) {
+                            if (inputElement) {
                                 var events = document.createEvent('HTMLEvents');
                                 module.verbose('Triggering native change event');
                                 events.initEvent('change', true, false);
@@ -316,7 +316,7 @@
                                     tempMode += ' andweek';
                                 }
                                 var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
-                                if(isInverted){
+                                if (isInverted){
                                     table.addClass(className.inverted);
                                 }
                                 var textColumns = columns;
@@ -350,7 +350,7 @@
                                     }
                                     if (isDay) {
                                         row = $('<tr/>').appendTo(thead);
-                                        if(settings.showWeekNumbers) {
+                                        if (settings.showWeekNumbers) {
                                             cell = $('<th/>').appendTo(row);
                                             cell.text(settings.text.weekNo);
                                             cell.addClass(className.weekCell);
@@ -367,7 +367,7 @@
                                 i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
                                 for (r = 0; r < rows; r++) {
                                     row = $('<tr/>').appendTo(tbody);
-                                    if(isDay && settings.showWeekNumbers){
+                                    if (isDay && settings.showWeekNumbers){
                                         cell = $('<th/>').appendTo(row);
                                         cell.text(module.get.weekOfYear(year,month,i+1-settings.firstDayOfWeek));
                                         cell.addClass(className.weekCell);
@@ -390,10 +390,10 @@
                                             if (disabledDate !== null && disabledDate[metadata.message]) {
                                                 cell.attr('data-tooltip', disabledDate[metadata.message]);
                                                 cell.attr('data-position', disabledDate[metadata.position] || tooltipPosition);
-                                                if(disabledDate[metadata.inverted] || (isInverted && disabledDate[metadata.inverted] === undefined)) {
+                                                if (disabledDate[metadata.inverted] || (isInverted && disabledDate[metadata.inverted] === undefined)) {
                                                     cell.attr('data-inverted', '');
                                                 }
-                                                if(disabledDate[metadata.variation]) {
+                                                if (disabledDate[metadata.variation]) {
                                                     cell.attr('data-variation', disabledDate[metadata.variation]);
                                                 }
                                             }
@@ -402,10 +402,10 @@
                                                 if (disabledHour !== null && disabledHour[metadata.message]) {
                                                     cell.attr('data-tooltip', disabledHour[metadata.message]);
                                                     cell.attr('data-position', disabledHour[metadata.position] || tooltipPosition);
-                                                    if(disabledHour[metadata.inverted] || (isInverted && disabledHour[metadata.inverted] === undefined)) {
+                                                    if (disabledHour[metadata.inverted] || (isInverted && disabledHour[metadata.inverted] === undefined)) {
                                                         cell.attr('data-inverted', '');
                                                     }
-                                                    if(disabledHour[metadata.variation]) {
+                                                    if (disabledHour[metadata.variation]) {
                                                         cell.attr('data-variation', disabledHour[metadata.variation]);
                                                     }
                                                 }
@@ -417,10 +417,10 @@
                                                 if (eventDate[metadata.message]) {
                                                     cell.attr('data-tooltip', eventDate[metadata.message]);
                                                     cell.attr('data-position', eventDate[metadata.position] || tooltipPosition);
-                                                    if(eventDate[metadata.inverted] || (isInverted && eventDate[metadata.inverted] === undefined)) {
+                                                    if (eventDate[metadata.inverted] || (isInverted && eventDate[metadata.inverted] === undefined)) {
                                                         cell.attr('data-inverted', '');
                                                     }
-                                                    if(eventDate[metadata.variation]) {
+                                                    if (eventDate[metadata.variation]) {
                                                         cell.attr('data-variation', eventDate[metadata.variation]);
                                                     }
                                                 }
@@ -462,7 +462,7 @@
 
                                 module.update.focus(false, table);
 
-                                if(settings.inline){
+                                if (settings.inline){
                                     module.refreshTooltips();
                                 }
                             }
@@ -514,7 +514,7 @@
                             var tooltipPosition = $cell.attr('data-position');
                             // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
                             var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth,10) || 250)) > $cell.offset().left ? 'right' : 'left';
-                            if(tooltipPosition.indexOf(calcPosition) === -1) {
+                            if (tooltipPosition.indexOf(calcPosition) === -1) {
                                 $cell.attr('data-position',tooltipPosition.replace(/(left|right)/,calcPosition));
                             }
                         });
@@ -662,7 +662,7 @@
                                 var text = module.helper.dateFormat(formatter[settings.type], date);
                                 $input.val(text);
                             }
-                            if(selectionComplete){
+                            if (selectionComplete){
                                 module.trigger.change();
                                 selectionComplete = false;
                             }
@@ -670,7 +670,7 @@
                         class: {
                             mutation: function(mutations) {
                                 mutations.forEach(function(mutation) {
-                                    if(mutation.attributeName === 'class') {
+                                    if (mutation.attributeName === 'class') {
                                         module.check.disabled();
                                     }
                                 });
@@ -679,7 +679,7 @@
                     },
 
                     observeChanges: function() {
-                        if('MutationObserver' in window) {
+                        if ('MutationObserver' in window) {
                             classObserver  = new MutationObserver(module.event.class.mutation);
                             module.debug('Setting up mutation observer', classObserver);
                             module.observe.class();
@@ -688,7 +688,7 @@
 
                     disconnect: {
                         classObserver: function() {
-                            if($input.length && classObserver) {
+                            if ($input.length && classObserver) {
                                 classObserver.disconnect();
                             }
                         },
@@ -696,7 +696,7 @@
 
                     observe: {
                         class: function() {
-                            if($input.length && classObserver) {
+                            if ($input.length && classObserver) {
                                 classObserver.observe($module[0], {
                                     attributes: true,
                                 });
@@ -942,7 +942,7 @@
                             var canceled = module.set.date(date) === false;
                             if (!canceled) {
                                 selectionComplete = true;
-                                if(settings.closable) {
+                                if (settings.closable) {
                                     module.popup('hide');
                                     //if this is a range calendar, focus the container or input. This will open the popup from its event listeners.
                                     var endModule = module.get.calendarModule(settings.endCalendar);
@@ -1000,7 +1000,7 @@
                             if (!(date instanceof Date)) {
                                 return '';
                             }
-                            if(typeof format === 'function') {
+                            if (typeof format === 'function') {
                                 return format.call(module, date, settings);
                             }
 
@@ -1053,7 +1053,7 @@
                         },
                         isDisabled: function(date, mode) {
                             return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function(d){
-                                if(typeof d === 'string') {
+                                if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
                                 if (d instanceof Date) {
@@ -1128,7 +1128,7 @@
                         isEnabled: function(date, mode) {
                             if (mode === 'day') {
                                 return settings.enabledDates.length === 0 || settings.enabledDates.some(function(d){
-                                    if(typeof d === 'string') {
+                                    if (typeof d === 'string') {
                                         d = module.helper.sanitiseDate(d);
                                     }
                                     if (d instanceof Date) {
@@ -1147,7 +1147,7 @@
                                 var d;
                                 for (var i = 0; i < dates.length; i++) {
                                     d = dates[i];
-                                    if(typeof d === 'string') {
+                                    if (typeof d === 'string') {
                                         d = module.helper.sanitiseDate(d);
                                     }
                                     if (d instanceof Date && module.helper.dateEqual(date, d, mode)) {
@@ -1180,7 +1180,7 @@
                                             if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode)) {
                                                 return d;
                                             } else if (Array.isArray(d[metadata.date])) {
-                                                if(d[metadata.date].some(function(idate) {
+                                                if (d[metadata.date].some(function(idate) {
                                                     return module.helper.dateEqual(date, idate, mode);
                                                 })) {
                                                     return d;
@@ -1321,9 +1321,9 @@
                         }
                     },
                     internal: function (name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
@@ -1573,14 +1573,14 @@
                 if (text.length === 0) {
                     return null;
                 }
-                if(text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
+                if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)){
                     text = text.replace(/[\/\-\.]/g,'/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
                 text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g,'/').replace(/([0-9]+)\/([0-9]+)/,'$2/$1');
                 var textDate = new Date(text);
                 var numberOnly = text.match(/^[0-9]+$/) !== null;
-                if(!numberOnly && !isNaN(textDate.getDate())) {
+                if (!numberOnly && !isNaN(textDate.getDate())) {
                     return textDate;
                 }
                 text = text.toLowerCase();

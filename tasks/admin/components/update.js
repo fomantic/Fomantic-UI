@@ -46,7 +46,7 @@ module.exports = function(callback) {
         stepRepo
     ;
 
-    if(!oAuth) {
+    if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
         return;
     }
@@ -55,7 +55,7 @@ module.exports = function(callback) {
     stepRepo = function() {
 
         index = index + 1;
-        if(index >= total) {
+        if (index >= total) {
             callback();
             return;
         }
@@ -121,7 +121,7 @@ module.exports = function(callback) {
                     // canProceed = false; bug in git commit <https://github.com/stevelacy/gulp-git/issues/49>
                 })
                 .on('finish', function(callback) {
-                    if(canProceed) {
+                    if (canProceed) {
                         pushFiles();
                     } else {
                         console.info('Nothing new to commit');
@@ -149,7 +149,7 @@ module.exports = function(callback) {
 
         // create release on GitHub.com
         function createRelease(version) {
-            if(version) {
+            if (version) {
                 releaseOptions.target_commitish = version;
             }
             github.repos.createRelease(releaseOptions, function() {
@@ -166,7 +166,7 @@ module.exports = function(callback) {
         }
 
 
-        if(localRepoSetup) {
+        if (localRepoSetup) {
             setConfig();
         } else {
             console.error('Repository must be setup before running update components');

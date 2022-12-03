@@ -17,7 +17,7 @@ module.exports = {
     ],
     rules: {
         indent: ['error', 4, { SwitchCase: 1 }],
-        'key-spacing': ['error'],
+        'keyword-spacing': ['error'],
         'brace-style': ['error'],
         curly: ['error'],
         quotes: ['error', 'single', { avoidEscape: true }],

@@ -48,7 +48,7 @@ module.exports = function(callback) {
         stepRepo
     ;
 
-    if(!oAuth) {
+    if (!oAuth) {
         console.error('Must add oauth token for GitHub in tasks/config/admin/oauth.js');
         return;
     }
@@ -58,7 +58,7 @@ module.exports = function(callback) {
 
         index = index + 1;
 
-        if(index >= total) {
+        if (index >= total) {
             callback();
             return;
         }
@@ -80,19 +80,19 @@ module.exports = function(callback) {
         console.log('Processing repository: ' + outputDirectory);
 
         // create folder if doesn't exist
-        if( !fs.existsSync(outputDirectory) ) {
+        if ( !fs.existsSync(outputDirectory) ) {
             mkdirp.sync(outputDirectory);
         }
 
         // clean folder
-        if(release.outputRoot.search('../repos') == 0) {
+        if (release.outputRoot.search('../repos') == 0) {
             console.info('Cleaning dir', outputDirectory);
             del.sync([outputDirectory + '**/*'], {silent: true, force: true});
         }
 
         // set-up local repo
         function setupRepo() {
-            if(localRepoSetup) {
+            if (localRepoSetup) {
                 addRemote();
             } else {
                 initRepo();
@@ -102,7 +102,7 @@ module.exports = function(callback) {
         function initRepo() {
             console.info('Initializing repository for ' + component);
             git.init(gitOptions, function(error) {
-                if(error) {
+                if (error) {
                     console.error('Error initializing repo', error);
                 }
                 addRemote();
@@ -151,7 +151,7 @@ module.exports = function(callback) {
         }
 
 
-        if(localRepoSetup) {
+        if (localRepoSetup) {
             pullFiles();
         } else {
             setupRepo();

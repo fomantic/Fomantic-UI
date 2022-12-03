@@ -47,7 +47,7 @@ module.exports = function(callback) {
         tasks = []
     ;
 
-    for(index in release.components) {
+    for (index in release.components) {
 
         var
             component = release.components[index]
@@ -169,8 +169,8 @@ module.exports = function(callback) {
                     .pipe(jsonEditor(function(bower) {
                         bower.name = packageName;
                         bower.description = capitalizedComponent + ' - Semantic UI';
-                        if(isJavascript) {
-                            if(isCSS) {
+                        if (isJavascript) {
+                            if (isCSS) {
                                 bower.main = [
                                     component + '.js',
                                     component + '.css',
@@ -199,14 +199,14 @@ module.exports = function(callback) {
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(jsonEditor(function(npm) {
-                        if(isJavascript) {
+                        if (isJavascript) {
                             npm.dependencies = {
                                 jquery: 'x.x.x',
                             };
                             npm.main = 'index.js';
                         }
                         npm.name = packageName;
-                        if(version) {
+                        if (version) {
                             npm.version = version;
                         }
                         npm.title       = 'Semantic UI - ' + capitalizedComponent;
@@ -226,14 +226,14 @@ module.exports = function(callback) {
                     .pipe(plumber())
                     .pipe(flatten())
                     .pipe(jsonEditor(function(composer) {
-                        if(isJavascript) {
+                        if (isJavascript) {
                             composer.dependencies = {
                                 jquery: 'x.x.x',
                             };
                             composer.main = component + '.js';
                         }
                         composer.name = 'semantic/' + component;
-                        if(version) {
+                        if (version) {
                             composer.version = version;
                         }
                         composer.description = 'Single component release of ' + component;

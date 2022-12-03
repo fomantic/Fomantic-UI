@@ -149,9 +149,9 @@
                     },
 
                     complete: function(keepState) {
-                        if(module.percent === undefined || module.percent < 100) {
+                        if (module.percent === undefined || module.percent < 100) {
                             module.remove.progressPoll();
-                            if(keepState !== true){
+                            if (keepState !== true){
                                 module.set.percent(100);
                             }
                         }
@@ -166,31 +166,31 @@
                                     value: module.helper.forceArray($module.data(metadata.value)),
                                 }
                             ;
-                            if(data.total !== undefined) {
+                            if (data.total !== undefined) {
                                 module.debug('Total value set from metadata', data.total);
                                 module.set.total(data.total);
                             }
-                            if(data.value.length > 0) {
+                            if (data.value.length > 0) {
                                 module.debug('Current value set from metadata', data.value);
                                 module.set.value(data.value);
                                 module.set.progress(data.value);
                             }
-                            if(data.percent.length > 0) {
+                            if (data.percent.length > 0) {
                                 module.debug('Current percent value set from metadata', data.percent);
                                 module.set.percent(data.percent);
                             }
                         },
                         settings: function() {
-                            if(settings.total !== false) {
+                            if (settings.total !== false) {
                                 module.debug('Current total set in settings', settings.total);
                                 module.set.total(settings.total);
                             }
-                            if(settings.value !== false) {
+                            if (settings.value !== false) {
                                 module.debug('Current value set in settings', settings.value);
                                 module.set.value(settings.value);
                                 module.set.progress(module.value);
                             }
-                            if(settings.percent !== false) {
+                            if (settings.percent !== false) {
                                 module.debug('Current percent set in settings', settings.percent);
                                 module.set.percent(settings.percent);
                             }
@@ -219,7 +219,7 @@
                             startValue,
                             newValue
                         ;
-                        if( module.has.total() ) {
+                        if ( module.has.total() ) {
                             startValue     = module.get.value();
                             incrementValue = incrementValue || 1;
                         } else {
@@ -237,7 +237,7 @@
                             startValue,
                             newValue
                         ;
-                        if(total) {
+                        if (total) {
                             startValue     =  module.get.value();
                             decrementValue =  decrementValue || 1;
                             newValue       =  startValue - decrementValue;
@@ -286,16 +286,16 @@
                         },
 
                         normalizedValue: function(value) {
-                            if(value < 0) {
+                            if (value < 0) {
                                 module.debug('Value cannot decrement below 0');
                                 return 0;
                             }
-                            if(module.has.total()) {
-                                if(value > module.total) {
+                            if (module.has.total()) {
+                                if (value > module.total) {
                                     module.debug('Value cannot increment above total', module.total);
                                     return module.total;
                                 }
-                            } else if(value > 100 ) {
+                            } else if (value > 100 ) {
                                 module.debug('Value cannot increment above 100 percent');
                                 return 100;
                             }
@@ -303,7 +303,7 @@
                         },
 
                         updateInterval: function() {
-                            if(settings.updateInterval == 'auto') {
+                            if (settings.updateInterval == 'auto') {
                                 return settings.duration;
                             }
                             return settings.updateInterval;
@@ -333,8 +333,8 @@
                                 },
                                 transition
                             ;
-                            for(transition in transitions){
-                                if( element.style[transition] !== undefined ){
+                            for (transition in transitions){
+                                if ( element.style[transition] !== undefined ){
                                     return transitions[transition];
                                 }
                             }
@@ -400,7 +400,7 @@
                     remove: {
                         progressPoll: function() {
                             module.verbose('Removing progress poll timer');
-                            if(module.progressPoll) {
+                            if (module.progressPoll) {
                                 clearTimeout(module.progressPoll);
                                 delete module.progressPoll;
                             }
@@ -549,7 +549,7 @@
                                 var
                                     isInDOM = $.contains(document.documentElement, element)
                                 ;
-                                if(!isInDOM) {
+                                if (!isInDOM) {
                                     clearInterval(module.interval);
                                     animating = false;
                                 }
@@ -563,7 +563,7 @@
                         },
                         label: function(text) {
                             text = text || '';
-                            if(text) {
+                            if (text) {
                                 text = module.get.text(text);
                                 module.verbose('Setting label to text', text);
                                 $label.text(text);
@@ -573,8 +573,8 @@
                             percent = (percent !== undefined)
                                 ? percent
                                 : module.helper.sum(module.percent);
-                            if(percent === 100) {
-                                if(settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
+                            if (percent === 100) {
+                                if (settings.autoSuccess && $bars.length === 1 && !(module.is.warning() || module.is.error() || module.is.success())) {
                                     module.set.success();
                                     module.debug('Automatically triggering success at 100%');
                                 } else {
@@ -582,7 +582,7 @@
                                     module.remove.active();
                                     module.remove.progressPoll();
                                 }
-                            } else if(percent > 0) {
+                            } else if (percent > 0) {
                                 module.verbose('Adjusting active progress bar label', percent);
                                 module.set.active();
                             } else {
@@ -610,14 +610,14 @@
                         active: function(text) {
                             text = text || settings.text.active;
                             module.debug('Setting active state');
-                            if(settings.showActivity && !module.is.active() ) {
+                            if (settings.showActivity && !module.is.active() ) {
                                 $module.addClass(className.active);
                             }
                             module.remove.warning();
                             module.remove.error();
                             module.remove.success();
                             text = settings.onLabelUpdate('active', text, module.value, module.total);
-                            if(text) {
+                            if (text) {
                                 module.set.label(text);
                             }
                             module.bind.transitionEnd(function() {
@@ -632,7 +632,7 @@
                             module.remove.warning();
                             module.remove.error();
                             module.complete(keepState);
-                            if(settings.text.success) {
+                            if (settings.text.success) {
                                 text = settings.onLabelUpdate('success', text, module.value, module.total);
                                 module.set.label(text);
                             } else {
@@ -652,7 +652,7 @@
                             module.remove.error();
                             module.complete(keepState);
                             text = settings.onLabelUpdate('warning', text, module.value, module.total);
-                            if(text) {
+                            if (text) {
                                 module.set.label(text);
                             }
                             module.bind.transitionEnd(function() {
@@ -668,7 +668,7 @@
                             module.remove.warning();
                             module.complete(keepState);
                             text = settings.onLabelUpdate('error', text, module.value, module.total);
-                            if(text) {
+                            if (text) {
                                 module.set.label(text);
                             }
                             module.bind.transitionEnd(function() {
@@ -685,7 +685,7 @@
                             module.value = module.helper.forceArray(value);
                         },
                         progress: function(value) {
-                            if(!module.has.progressPoll()) {
+                            if (!module.has.progressPoll()) {
                                 module.debug('First update in progress update interval, immediately updating', value);
                                 module.update.progress(value);
                                 module.create.progressPoll();
@@ -704,7 +704,7 @@
                             var
                                 nextValue = module.nextValue
                             ;
-                            if(nextValue) {
+                            if (nextValue) {
                                 module.debug('Update interval complete using last updated value', nextValue);
                                 module.update.progress(nextValue);
                                 module.remove.nextValue();
@@ -739,10 +739,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -752,17 +752,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -771,8 +771,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -781,7 +781,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -793,7 +793,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -819,12 +819,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -845,7 +845,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -853,14 +853,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -871,27 +871,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

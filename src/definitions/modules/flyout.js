@@ -104,15 +104,15 @@
                         module.debug('Initializing flyout', parameters);
 
                         module.create.id();
-                        if(!isFlyoutComponent) {
+                        if (!isFlyoutComponent) {
                             module.create.flyout();
-                            if(!isFunction(settings.onHidden)) {
+                            if (!isFunction(settings.onHidden)) {
                                 settings.onHidden = function () {
                                     module.destroy();
                                     $module.remove();
                                 };
                             }
-                            if(!settings.autoShow) {
+                            if (!settings.autoShow) {
                                 settings.autoShow = true;
                             }
                         }
@@ -123,7 +123,7 @@
                         if (settings.content !== '') {
                             $module.find(selector.content).html(module.helpers.escape(settings.content, settings.preserveHTML)).addClass(settings.classContent);
                         }
-                        if(module.has.configActions()){
+                        if (module.has.configActions()){
                             var $actions = $module.find(selector.actions).addClass(settings.classActions);
                             if ($actions.length === 0) {
                                 $actions = $('<div/>', {class: className.actions + ' ' + (settings.classActions || '')}).appendTo($module);
@@ -156,7 +156,7 @@
                         transitionEvent = module.get.transitionEvent();
 
                         // avoids locking rendering if initialized in onReady
-                        if(settings.delaySetup) {
+                        if (settings.delaySetup) {
                             requestAnimationFrame(module.setup.layout);
                         } else {
                             module.setup.layout();
@@ -174,7 +174,7 @@
                         module.observeChanges();
                         module.instantiate();
 
-                        if(settings.autoShow){
+                        if (settings.autoShow){
                             module.show();
                         }
                     },
@@ -225,11 +225,11 @@
                         $module
                             .off(eventNamespace)
                             .removeData(moduleNamespace);
-                        if(module.is.ios()) {
+                        if (module.is.ios()) {
                             module.remove.ios();
                         }
                         $closeIcon.off(elementNamespace);
-                        if($inputs) {
+                        if ($inputs) {
                             $inputs.off(elementNamespace);
                         }
                         // bound by uuid
@@ -243,8 +243,8 @@
                             var
                                 keyCode   = event.which
                             ;
-                            if(keyCode === settings.keys.escape) {
-                                if(settings.closable) {
+                            if (keyCode === settings.keys.escape) {
+                                if (settings.closable) {
                                     module.debug('Escape key pressed hiding flyout');
                                     module.hide();
                                 } else {
@@ -257,16 +257,16 @@
                             module.setup.heights();
                         },
                         clickaway: function(event) {
-                            if(settings.closable){
+                            if (settings.closable){
                                 var
                                     clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
                                     clickedContext  = ($context.is(event.target))
                                 ;
-                                if(clickedInPusher) {
+                                if (clickedInPusher) {
                                     module.verbose('User clicked on dimmed page');
                                     module.hide();
                                 }
-                                if(clickedContext) {
+                                if (clickedContext) {
                                     module.verbose('User clicked on dimmable context (scaled out page)');
                                     module.hide();
                                 }
@@ -327,15 +327,15 @@
                             //event.stopPropagation();
                         },
                         containScroll: function(event) {
-                            if(element.scrollTop <= 0)  {
+                            if (element.scrollTop <= 0)  {
                                 element.scrollTop = 1;
                             }
-                            if((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
+                            if ((element.scrollTop + element.offsetHeight) >= element.scrollHeight) {
                                 element.scrollTop = element.scrollHeight - element.offsetHeight - 1;
                             }
                         },
                         scroll: function(event) {
-                            if( $(event.target).closest(selector.flyout).length === 0 ) {
+                            if ( $(event.target).closest(selector.flyout).length === 0 ) {
                                 event.preventDefault();
                             }
                         },
@@ -362,10 +362,10 @@
                                 .on('touchend' + elementNamespace, module.event.clickaway);
                         },
                         scrollLock: function() {
-                            if(settings.scrollLock) {
+                            if (settings.scrollLock) {
                                 module.debug('Disabling page scroll');
                                 hadScrollbar = module.has.scrollbar();
-                                if(hadScrollbar) {
+                                if (hadScrollbar) {
                                     module.save.bodyMargin();
                                     module.set.bodyMargin();
                                 }
@@ -385,7 +385,7 @@
                         },
                         scrollLock: function() {
                             module.verbose('Removing scroll lock from page');
-                            if(hadScrollbar) {
+                            if (hadScrollbar) {
                                 module.restore.bodyMargin();
                             }
                             $context.removeClass(className.locked);
@@ -410,7 +410,7 @@
                                 style
                             ;
 
-                            if(isRTL){
+                            if (isRTL){
                                 module.verbose('RTL detected, flipping widths');
                                 distance.left = -width;
                                 distance.right = width;
@@ -418,7 +418,7 @@
 
                             style  = '<style>';
 
-                            if(direction === 'left' || direction === 'right') {
+                            if (direction === 'left' || direction === 'right') {
                                 module.debug('Adding CSS rules for animation distance', width);
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
@@ -426,7 +426,7 @@
                                     + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if(direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction == 'bottom') {
                                 style  += ''
                                     + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                     + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
@@ -437,15 +437,15 @@
 
                             /* IE is only browser not to create context with transforms */
                             /* https://www.w3.org/Bugs/Public/show_bug.cgi?id=16328 */
-                            if( module.is.ie() ) {
-                                if(direction === 'left' || direction === 'right') {
+                            if ( module.is.ie() ) {
+                                if (direction === 'left' || direction === 'right') {
                                     module.debug('Adding CSS rules for animation distance', width);
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + '           transform: translate3d('+ distance[direction] + 'px, 0, 0);'
                                         + ' }';
-                                } else if(direction === 'top' || direction == 'bottom') {
+                                } else if (direction === 'top' || direction == 'bottom') {
                                     style  += ''
                                         + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                         + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -472,7 +472,7 @@
                         },
                     },
                     observeChanges: function() {
-                        if('MutationObserver' in window) {
+                        if ('MutationObserver' in window) {
                             observer = new MutationObserver(function(mutations) {
                                 module.refreshInputs();
                             });
@@ -497,11 +497,11 @@
                     },
 
                     refreshInputs: function(){
-                        if($inputs){
+                        if ($inputs){
                             $inputs
                                 .off('keydown' + elementNamespace);
                         }
-                        if(!settings.dimPage){
+                        if (!settings.dimPage){
                             return;
                         }
                         $inputs    = $module.find('[tabindex], :input').filter(':visible').filter(function() {
@@ -521,7 +521,7 @@
                             };
                         },
                         layout: function() {
-                            if( $context.children(selector.pusher).length === 0 ) {
+                            if ( $context.children(selector.pusher).length === 0 ) {
                                 module.debug('Adding wrapper element for flyout');
                                 module.error(error.pusher);
                                 $pusher = $('<div class="pusher" />');
@@ -532,13 +532,13 @@
                                     .wrapAll($pusher);
                                 module.refresh();
                             }
-                            if($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
+                            if ($module.nextAll(selector.pusher).length === 0 || $module.nextAll(selector.pusher)[0] !== $pusher[0]) {
                                 module.debug('Moved flyout to correct parent element');
                                 module.error(error.movedFlyout, element);
                                 $module.detach().prependTo($context);
                                 module.refresh();
                             }
-                            if( module.is.mobile() ) {
+                            if ( module.is.mobile() ) {
                                 $module.addClass(className.fullscreen);
                             }
                             module.clear.cache();
@@ -563,7 +563,7 @@
                         event = isFunction(module[event])
                             ? module[event]
                             : module.toggle;
-                        if($toggle.length > 0) {
+                        if ($toggle.length > 0) {
                             module.debug('Attaching flyout events to element', selector, event);
                             $toggle
                                 .on('click' + eventNamespace, event);
@@ -576,15 +576,15 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if(module.is.hidden()) {
-                            if(settings.onShow.call(element) === false) {
+                        if (module.is.hidden()) {
+                            if (settings.onShow.call(element) === false) {
                                 module.verbose('Show callback returned false cancelling show');
                                 return;
                             }
                             module.refresh();
-                            if(module.othersActive()) {
+                            if (module.othersActive()) {
                                 module.debug('Other flyouts currently visible');
-                                if(settings.exclusive) {
+                                if (settings.exclusive) {
                                     module.hideOthers();
                                 } else {
                                     ignoreRepeatedEvents = false;
@@ -594,12 +594,12 @@
                             module.pushPage(function() {
                                 callback.call(element);
                                 settings.onVisible.call(element);
-                                if(settings.keyboardShortcuts) {
+                                if (settings.keyboardShortcuts) {
                                     module.add.keyboardShortcuts();
                                 }
                                 module.save.focus();
                                 module.refreshInputs();
-                                if(settings.autofocus) {
+                                if (settings.autofocus) {
                                     module.set.autofocus();
                                 }
                             });
@@ -613,17 +613,17 @@
                         callback = isFunction(callback)
                             ? callback
                             : function(){};
-                        if(settings.onHide.call(element, $(this)) === false) {
+                        if (settings.onHide.call(element, $(this)) === false) {
                             module.verbose('Hide callback returned false cancelling hide');
                             ignoreRepeatedEvents = false;
                             return false;
                         }
-                        if(module.is.visible() || module.is.animating()) {
+                        if (module.is.visible() || module.is.animating()) {
                             module.debug('Hiding flyout', callback);
                             module.refreshFlyouts();
                             module.pullPage(function() {
                                 callback.call(element);
-                                if(isFunction(settings.onHidden)) {
+                                if (isFunction(settings.onHidden)) {
                                     settings.onHidden.call(element);
                                 }
                                 module.restore.focus();
@@ -639,7 +639,7 @@
                         return ($flyouts.not($module).filter('.' + className.visible).length > 0);
                     },
                     othersActive: function() {
-                        return(module.othersVisible() || module.othersAnimating());
+                        return (module.othersVisible() || module.othersAnimating());
                     },
 
                     hideOthers: function(callback) {
@@ -652,7 +652,7 @@
                         $otherFlyouts
                             .flyout('hide', function() {
                                 callbackCount++;
-                                if(callbackCount == flyoutCount) {
+                                if (callbackCount == flyoutCount) {
                                     callback();
                                 }
                             });
@@ -660,7 +660,7 @@
 
                     toggle: function() {
                         module.verbose('Determining toggled direction');
-                        if(module.is.hidden()) {
+                        if (module.is.hidden()) {
                             module.show();
                         } else {
                             module.hide();
@@ -677,7 +677,7 @@
                             ? callback
                             : function(){};
                         module.set.overlay();
-                        if(settings.returnScroll) {
+                        if (settings.returnScroll) {
                             currentScroll = (isBody ? $window : $context).scrollTop();
                         }
                         module.bind.scrollLock();
@@ -691,7 +691,7 @@
                             module.set.dimmed();
                         };
                         transitionEnd = function(event) {
-                            if( event.target == $module[0] ) {
+                            if ( event.target == $module[0] ) {
                                 $module.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
                                 callback.call(element);
@@ -700,7 +700,7 @@
                         $module.off(transitionEvent + elementNamespace);
                         $module.on(transitionEvent + elementNamespace, transitionEnd);
                         requestAnimationFrame(animate);
-                        if(settings.dimPage && !module.othersVisible()) {
+                        if (settings.dimPage && !module.othersVisible()) {
                             requestAnimationFrame(dim);
                         }
                     },
@@ -716,9 +716,9 @@
                         module.verbose('Removing context push state', module.get.direction());
 
                         module.unbind.clickaway();
-                        if(!module.othersActive()) {
+                        if (!module.othersActive()) {
                             module.unbind.scrollLock();
-                            if( settings.keyboardShortcuts ) {
+                            if ( settings.keyboardShortcuts ) {
                                 module.remove.keyboardShortcuts();
                             }
                         }
@@ -727,19 +727,19 @@
                         animate = function() {
                             module.set.overlay();
                             module.set.animating();
-                            if(settings.dimPage && !module.othersVisible()) {
+                            if (settings.dimPage && !module.othersVisible()) {
                                 module.set.closing();
                             }
                             module.remove.visible();
                         };
                         transitionEnd = function(event) {
-                            if( event.target == $module[0] ) {
+                            if ( event.target == $module[0] ) {
                                 $module.off(transitionEvent + elementNamespace, transitionEnd);
                                 module.remove.animating();
                                 module.remove.closing();
                                 module.remove.overlay();
                                 module.remove.inlineCSS();
-                                if(settings.returnScroll) {
+                                if (settings.returnScroll) {
                                     module.scrollBack();
                                 }
                                 if (settings.dimPage && !module.othersVisible()) {
@@ -779,12 +779,12 @@
                                     ? $autofocus.first()
                                     : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
                             ;
-                            if($input.length > 0) {
+                            if ($input.length > 0) {
                                 $input.trigger('focus');
                             }
                         },
                         dimmerStyles: function() {
-                            if(settings.blurring) {
+                            if (settings.blurring) {
                                 $pusher.addClass(className.blurring);
                             } else {
                                 $pusher.removeClass(className.blurring);
@@ -846,7 +846,7 @@
 
                         inlineCSS: function() {
                             module.debug('Removing inline css styles', $style);
-                            if($style && $style.length > 0) {
+                            if ($style && $style.length > 0) {
                                 $style.remove();
                             }
                         },
@@ -893,11 +893,11 @@
 
                     get: {
                         direction: function() {
-                            if($module.hasClass(className.top)) {
+                            if ($module.hasClass(className.top)) {
                                 return className.top;
-                            } else if($module.hasClass(className.right)) {
+                            } else if ($module.hasClass(className.right)) {
                                 return className.right;
-                            } else if($module.hasClass(className.bottom)) {
+                            } else if ($module.hasClass(className.bottom)) {
                                 return className.bottom;
                             }
                             return className.left;
@@ -913,8 +913,8 @@
                                 },
                                 transition
                             ;
-                            for(transition in transitions){
-                                if( element.style[transition] !== undefined ){
+                            for (transition in transitions){
+                                if ( element.style[transition] !== undefined ){
                                     return transitions[transition];
                                 }
                             }
@@ -945,7 +945,7 @@
                                 $activeElement = $(document.activeElement),
                                 inCurrentFlyout = $activeElement.closest($module).length > 0
                             ;
-                            if(!inCurrentFlyout) {
+                            if (!inCurrentFlyout) {
                                 $focusedElement = $(document.activeElement).trigger('blur');
                             }
                         },
@@ -961,19 +961,19 @@
 
                     is: {
                         safari: function() {
-                            if(module.cache.isSafari === undefined) {
+                            if (module.cache.isSafari === undefined) {
                                 module.cache.isSafari = /constructor/i.test(window.HTMLElement) || !!window.ApplePaySession;
                             }
                             return module.cache.isSafari;
                         },
                         edge: function(){
-                            if(module.cache.isEdge === undefined) {
+                            if (module.cache.isEdge === undefined) {
                                 module.cache.isEdge = !!window.setImmediate && !module.is.ie();
                             }
                             return module.cache.isEdge;
                         },
                         firefox: function(){
-                            if(module.cache.isFirefox === undefined) {
+                            if (module.cache.isFirefox === undefined) {
                                 module.cache.isFirefox = !!window.InstallTrigger;
                             }
                             return module.cache.isFirefox;
@@ -982,7 +982,7 @@
                             return !(self === top);
                         },
                         ie: function() {
-                            if(module.cache.isIE === undefined) {
+                            if (module.cache.isIE === undefined) {
                                 var
                                     isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
                                     isIE = ('ActiveXObject' in window)
@@ -997,7 +997,7 @@
                                 isIOS          = userAgent.match(regExp.ios),
                                 isMobileChrome = userAgent.match(regExp.mobileChrome)
                             ;
-                            if(isIOS && !isMobileChrome) {
+                            if (isIOS && !isMobileChrome) {
                                 module.verbose('Browser was found to be iOS', userAgent);
                                 return true;
                             } else {
@@ -1009,7 +1009,7 @@
                                 userAgent    = navigator.userAgent,
                                 isMobile     = userAgent.match(regExp.mobile)
                             ;
-                            if(isMobile) {
+                            if (isMobile) {
                                 module.verbose('Browser was found to be mobile', userAgent);
                                 return true;
                             } else {
@@ -1027,7 +1027,7 @@
                             return $context.hasClass(className.animating);
                         },
                         rtl: function () {
-                            if(module.cache.isRTL === undefined) {
+                            if (module.cache.isRTL === undefined) {
                                 module.cache.isRTL = $module.attr('dir') === 'rtl' || $module.css('direction') === 'rtl' || $body.attr('dir') === 'rtl' || $body.css('direction') === 'rtl' || $context.attr('dir') === 'rtl' || $context.css('direction') === 'rtl';
                             }
                             return module.cache.isRTL;
@@ -1045,7 +1045,7 @@
 
                     restore: {
                         focus: function() {
-                            if($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
+                            if ($focusedElement && $focusedElement.length > 0 && settings.restoreFocus) {
                                 $focusedElement.trigger('focus');
                             }
                         },
@@ -1084,7 +1084,7 @@
                                     return escape[chr];
                                 }
                             ;
-                            if(shouldEscape.test(string)) {
+                            if (shouldEscape.test(string)) {
                                 string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
                                 return string.replace(badChars, escapedChar);
                             }
@@ -1094,10 +1094,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -1107,17 +1107,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -1126,8 +1126,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -1136,7 +1136,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -1148,7 +1148,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -1174,12 +1174,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -1200,7 +1200,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = element         || context;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -1208,14 +1208,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -1226,22 +1226,22 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         if (isFunction(settings.templates[query])) {
                             settings.autoShow = true;
                             settings.className.flyout = settings.className.template;
@@ -1259,7 +1259,7 @@
                         module.invoke(query);
                     }
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();
@@ -1398,14 +1398,14 @@
     $.fn.flyout.settings.templates = {
         getArguments: function(args) {
             var queryArguments = [].slice.call(args);
-            if($.isPlainObject(queryArguments[0])){
+            if ($.isPlainObject(queryArguments[0])){
                 return $.extend({
                     handler: function(){},
                     content: '',
                     title: '',
                 }, queryArguments[0]);
             } else {
-                if(!isFunction(queryArguments[queryArguments.length-1])) {
+                if (!isFunction(queryArguments[queryArguments.length-1])) {
                     queryArguments.push(function() {});
                 }
                 return {

@@ -66,7 +66,7 @@
                     initialize: function() {
                         module.debug('Initializing', $module);
                         module.bind.events();
-                        if(settings.observeChanges) {
+                        if (settings.observeChanges) {
                             module.observeChanges();
                         }
                         module.instantiate();
@@ -91,7 +91,7 @@
                     },
 
                     observeChanges: function() {
-                        if('MutationObserver' in window) {
+                        if ('MutationObserver' in window) {
                             observer = new MutationObserver(function(mutations) {
                                 module.debug('DOM tree modified, updating selector cache');
                                 module.refresh();
@@ -114,7 +114,7 @@
 
                     event: {
                         click: function(event) {
-                            if($(event.target).closest(selector.ignore).length === 0) {
+                            if ($(event.target).closest(selector.ignore).length === 0) {
                                 module.toggle.call(this);
                             }
                         },
@@ -134,8 +134,8 @@
                             isOpening   = (!isActive && isAnimating)
                         ;
                         module.debug('Toggling visibility of content', $activeTitle);
-                        if(isOpen || isOpening) {
-                            if(settings.collapsible) {
+                        if (isOpen || isOpening) {
+                            if (settings.collapsible) {
                                 module.close.call($activeTitle);
                             } else {
                                 module.debug('Cannot close accordion content collapsing is disabled');
@@ -157,14 +157,14 @@
                             isActive    = $activeContent.hasClass(className.active),
                             isOpen      = (isActive || isAnimating)
                         ;
-                        if(isOpen) {
+                        if (isOpen) {
                             module.debug('Accordion already open, skipping', $activeContent);
                             return;
                         }
                         module.debug('Opening accordion content', $activeTitle);
                         settings.onOpening.call($activeContent);
                         settings.onChanging.call($activeContent);
-                        if(settings.exclusive) {
+                        if (settings.exclusive) {
                             module.closeOthers.call($activeTitle);
                         }
                         $activeTitle
@@ -172,8 +172,8 @@
                         $activeContent
                             .stop(true, true)
                             .addClass(className.animating);
-                        if(settings.animateChildren) {
-                            if($.fn.transition !== undefined && $module.transition('is supported')) {
+                        if (settings.animateChildren) {
+                            if ($.fn.transition !== undefined && $module.transition('is supported')) {
                                 $activeContent
                                     .children()
                                     .transition({
@@ -222,7 +222,7 @@
                             isOpening      = (!isActive && isAnimating),
                             isClosing      = (isActive && isAnimating)
                         ;
-                        if((isActive || isOpening) && !isClosing) {
+                        if ((isActive || isOpening) && !isClosing) {
                             module.debug('Closing accordion content', $activeContent);
                             settings.onClosing.call($activeContent);
                             settings.onChanging.call($activeContent);
@@ -231,8 +231,8 @@
                             $activeContent
                                 .stop(true, true)
                                 .addClass(className.animating);
-                            if(settings.animateChildren) {
-                                if($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.animateChildren) {
+                                if ($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $activeContent
                                         .children()
                                         .transition({
@@ -279,7 +279,7 @@
                             $nestedTitles,
                             $openContents
                         ;
-                        if(settings.closeNested) {
+                        if (settings.closeNested) {
                             $openTitles   = $activeAccordion.find(activeSelector).not($parentTitles);
                             $openContents = $openTitles.next($content);
                         } else {
@@ -288,15 +288,15 @@
                             $openTitles   = $openTitles.not($nestedTitles);
                             $openContents = $openTitles.next($content);
                         }
-                        if( ($openTitles.length > 0) ) {
+                        if ( ($openTitles.length > 0) ) {
                             module.debug('Exclusive enabled, closing other content', $openTitles);
                             $openTitles
                                 .removeClass(className.active);
                             $openContents
                                 .removeClass(className.animating)
                                 .stop(true, true);
-                            if(settings.animateChildren) {
-                                if($.fn.transition !== undefined && $module.transition('is supported')) {
+                            if (settings.animateChildren) {
+                                if ($.fn.transition !== undefined && $module.transition('is supported')) {
                                     $openContents
                                         .children()
                                         .transition({
@@ -331,7 +331,7 @@
                             module.verbose('Removing inline display from element', this);
                             var $element = $(this);
                             $element.css('display', '');
-                            if($element.attr('style') === '') {
+                            if ($element.attr('style') === '') {
                                 $element
                                     .attr('style', '')
                                     .removeAttr('style');
@@ -342,7 +342,7 @@
                             module.verbose('Removing inline opacity from element', this);
                             var $element = $(this);
                             $element.css('opacity', '');
-                            if($element.attr('style') === '') {
+                            if ($element.attr('style') === '') {
                                 $element
                                     .attr('style', '')
                                     .removeAttr('style');
@@ -353,10 +353,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -367,8 +367,8 @@
                     },
                     internal: function(name, value) {
                         module.debug('Changing internal', name, value);
-                        if(value !== undefined) {
-                            if( $.isPlainObject(name) ) {
+                        if (value !== undefined) {
+                            if ( $.isPlainObject(name) ) {
                                 $.extend(true, module, name);
                             } else {
                                 module[name] = value;
@@ -378,8 +378,8 @@
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -388,8 +388,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -398,7 +398,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -410,7 +410,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -436,12 +436,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -462,21 +462,21 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
                                 var camelCaseValue = (depth != maxDepth)
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -487,26 +487,26 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();

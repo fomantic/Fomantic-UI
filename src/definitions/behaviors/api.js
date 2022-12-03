@@ -88,7 +88,7 @@
                 module = {
 
                     initialize: function() {
-                        if(!methodInvoked) {
+                        if (!methodInvoked) {
                             originalData = settings.data;
                             module.bind.events();
                         }
@@ -114,11 +114,11 @@
                             var
                                 triggerEvent = module.get.event()
                             ;
-                            if( triggerEvent ) {
+                            if ( triggerEvent ) {
                                 module.verbose('Attaching API events to element', triggerEvent);
                                 $module
                                     .on(triggerEvent + eventNamespace, module.event.trigger);
-                            } else if(settings.on == 'now') {
+                            } else if (settings.on == 'now') {
                                 module.debug('Querying API endpoint immediately');
                                 module.query();
                             }
@@ -127,10 +127,10 @@
 
                     decode: {
                         json: function(response) {
-                            if(response !== undefined && typeof response == 'string') {
+                            if (response !== undefined && typeof response == 'string') {
                                 try {
                                     response = JSON.parse(response);
-                                } catch(e) {
+                                } catch (e) {
                                     // isn't json string
                                 }
                             }
@@ -143,7 +143,7 @@
                             var
                                 response
                             ;
-                            if(window.Storage === undefined) {
+                            if (window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
                             }
@@ -155,15 +155,15 @@
                     },
                     write: {
                         cachedResponse: function(url, response) {
-                            if(response && response === '') {
+                            if (response && response === '') {
                                 module.debug('Response empty, not caching', response);
                                 return;
                             }
-                            if(window.Storage === undefined) {
+                            if (window.Storage === undefined) {
                                 module.error(error.noStorage);
                                 return;
                             }
-                            if( $.isPlainObject(response) ) {
+                            if ( $.isPlainObject(response) ) {
                                 response = JSON.stringify(response);
                             }
                             sessionStorage.setItem(url + module.get.normalizedData(), response);
@@ -173,13 +173,13 @@
 
                     query: function() {
 
-                        if(module.is.disabled()) {
+                        if (module.is.disabled()) {
                             module.debug('Element is disabled API request aborted');
                             return;
                         }
 
-                        if(module.is.loading()) {
-                            if(settings.interruptRequests) {
+                        if (module.is.loading()) {
+                            if (settings.interruptRequests) {
                                 module.debug('Interrupting previous request');
                                 module.abort();
                             } else {
@@ -189,12 +189,12 @@
                         }
 
                         // pass element metadata to url (value, text)
-                        if(settings.defaultData) {
+                        if (settings.defaultData) {
                             $.extend(true, settings.urlData, module.get.defaultData());
                         }
 
                         // Add form content
-                        if(settings.serializeForm) {
+                        if (settings.serializeForm) {
                             settings.data = module.add.formData(originalData || settings.data);
                         }
 
@@ -202,7 +202,7 @@
                         requestSettings = module.get.settings();
 
                         // check if before send cancelled request
-                        if(requestSettings === false) {
+                        if (requestSettings === false) {
                             module.cancelled = true;
                             module.error(error.beforeSend);
                             return;
@@ -213,7 +213,7 @@
                         // get url
                         url = module.get.templatedURL();
 
-                        if(!url && !module.is.mocked()) {
+                        if (!url && !module.is.mocked()) {
                             module.error(error.missingURL);
                             return;
                         }
@@ -221,7 +221,7 @@
                         // replace variables
                         url = module.add.urlData( url );
                         // missing url parameters
-                        if( !url && !module.is.mocked()) {
+                        if ( !url && !module.is.mocked()) {
                             return;
                         }
 
@@ -240,18 +240,18 @@
 
                         module.debug('Querying URL', ajaxSettings.url);
                         module.verbose('Using AJAX settings', ajaxSettings);
-                        if(settings.cache === 'local' && module.read.cachedResponse(url)) {
+                        if (settings.cache === 'local' && module.read.cachedResponse(url)) {
                             module.debug('Response returned from local cache');
                             module.request = module.create.request();
                             module.request.resolveWith(context, [ module.read.cachedResponse(url) ]);
                             return;
                         }
 
-                        if( !settings.throttle ) {
+                        if ( !settings.throttle ) {
                             module.debug('Sending request', data, ajaxSettings.method);
                             module.send.request();
                         } else {
-                            if(!settings.throttleFirstRequest && !module.timer) {
+                            if (!settings.throttleFirstRequest && !module.timer) {
                                 module.debug('Sending request', data, ajaxSettings.method);
                                 module.send.request();
                                 module.timer = setTimeout(function(){}, settings.throttle);
@@ -259,7 +259,7 @@
                                 module.debug('Throttling request', settings.throttle);
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function() {
-                                    if(module.timer) {
+                                    if (module.timer) {
                                         delete module.timer;
                                     }
                                     module.debug('Sending throttled request', data, ajaxSettings.method);
@@ -298,7 +298,7 @@
                                 : false;
                         },
                         abortedRequest: function(xhr) {
-                            if(xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
+                            if (xhr && xhr.readyState !== undefined && xhr.readyState === 0) {
                                 module.verbose('XHR request determined to be aborted');
                                 return true;
                             } else {
@@ -307,12 +307,12 @@
                             }
                         },
                         validResponse: function(response) {
-                            if( (!module.is.expectingJSON()) || !isFunction(settings.successTest) ) {
+                            if ( (!module.is.expectingJSON()) || !isFunction(settings.successTest) ) {
                                 module.verbose('Response is not JSON, skipping validation', settings.successTest, response);
                                 return true;
                             }
                             module.debug('Checking JSON returned success', settings.successTest, response);
-                            if( settings.successTest(response) ) {
+                            if ( settings.successTest(response) ) {
                                 module.debug('Response passed success test', response);
                                 return true;
                             } else {
@@ -343,11 +343,11 @@
                                 requiredVariables,
                                 optionalVariables
                             ;
-                            if(url) {
+                            if (url) {
                                 requiredVariables = url.match(settings.regExp.required);
                                 optionalVariables = url.match(settings.regExp.optional);
                                 urlData           = urlData || settings.urlData;
-                                if(requiredVariables) {
+                                if (requiredVariables) {
                                     module.debug('Looking for required URL variables', requiredVariables);
                                     $.each(requiredVariables, function(index, templatedString) {
                                         var
@@ -364,7 +364,7 @@
                                                         : urlData[variable]
                                         ;
                                         // remove value
-                                        if(value === undefined) {
+                                        if (value === undefined) {
                                             module.error(error.requiredParameter, variable, url);
                                             url = false;
                                             return false;
@@ -377,7 +377,7 @@
                                         }
                                     });
                                 }
-                                if(optionalVariables) {
+                                if (optionalVariables) {
                                     module.debug('Looking for optional URL variables', requiredVariables);
                                     $.each(optionalVariables, function(index, templatedString) {
                                         var
@@ -394,13 +394,13 @@
                                                         : urlData[variable]
                                         ;
                                         // optional replacement
-                                        if(value !== undefined) {
+                                        if (value !== undefined) {
                                             module.verbose('Optional variable Found', variable, value);
                                             url = url.replace(templatedString, value);
                                         } else {
                                             module.verbose('Optional variable not found', variable);
                                             // remove preceding slash if set
-                                            if(url.indexOf('/' + templatedString) !== -1) {
+                                            if (url.indexOf('/' + templatedString) !== -1) {
                                                 url = url.replace('/' + templatedString, '');
                                             } else {
                                                 url = url.replace(templatedString, '');
@@ -450,7 +450,7 @@
                                         value = (isCheckbox && el.value === 'on') || el.value === 'true' || (String(floatValue) === el.value ? floatValue : (el.value === 'false' ? false : el.value)),
                                         nameKeys = el.name.match(settings.regExp.key) || [], k, pushKey= el.name.replace(/\[\]$/,'')
                                     ;
-                                    if(!(pushKey in pushes)) {
+                                    if (!(pushKey in pushes)) {
                                         pushes[pushKey] = 0;
                                         pushValues[pushKey] = value;
                                     } else if (Array.isArray(pushValues[pushKey])) {
@@ -458,7 +458,7 @@
                                     } else {
                                         pushValues[pushKey] = [pushValues[pushKey] , value];
                                     }
-                                    if(pushKey.indexOf('[]')===-1) {
+                                    if (pushKey.indexOf('[]')===-1) {
                                         value = pushValues[pushKey];
                                     }
 
@@ -475,9 +475,9 @@
                                 });
                             }
 
-                            if(hasOtherData) {
+                            if (hasOtherData) {
                                 module.debug('Extending existing data with form data', data, formData);
-                                if(useFormDataApi) {
+                                if (useFormDataApi) {
                                     $.each(Object.keys(data),function(i, el){
                                         formData.append(el, data[el]);
                                     });
@@ -497,7 +497,7 @@
                         request: function() {
                             module.set.loading();
                             module.request = module.create.request();
-                            if( module.is.mocked() ) {
+                            if ( module.is.mocked() ) {
                                 module.mockedXHR = module.create.mockedXHR();
                             } else {
                                 module.xhr = module.create.xhr();
@@ -509,7 +509,7 @@
                     event: {
                         trigger: function(event) {
                             module.query();
-                            if(event.type == 'submit' || event.type == 'click') {
+                            if (event.type == 'submit' || event.type == 'click') {
                                 event.preventDefault();
                             }
                         },
@@ -531,15 +531,15 @@
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
-                                if(translatedResponse) {
+                                if (translatedResponse) {
                                     module.debug('Modified API response in onResponse callback', settings.onResponse, translatedResponse, response);
                                     response = translatedResponse;
                                 }
-                                if(timeLeft > 0) {
+                                if (timeLeft > 0) {
                                     module.debug('Response completed early delaying state change by', timeLeft);
                                 }
                                 setTimeout(function() {
-                                    if( module.is.validResponse(response) ) {
+                                    if ( module.is.validResponse(response) ) {
                                         module.request.resolveWith(context, [response, xhr]);
                                     } else {
                                         module.request.rejectWith(context, [xhr, 'invalid']);
@@ -555,11 +555,11 @@
                                 timeLeft = (timeLeft > 0)
                                     ? timeLeft
                                     : 0;
-                                if(timeLeft > 0) {
+                                if (timeLeft > 0) {
                                     module.debug('Response completed early delaying state change by', timeLeft);
                                 }
                                 setTimeout(function() {
-                                    if( module.is.abortedRequest(xhr) ) {
+                                    if ( module.is.abortedRequest(xhr) ) {
                                         module.request.rejectWith(context, [xhr, 'aborted', httpMessage]);
                                     } else {
                                         module.request.rejectWith(context, [xhr, 'error', status, httpMessage]);
@@ -570,7 +570,7 @@
                         request: {
                             done: function(response, xhr) {
                                 module.debug('Successful API Response', response);
-                                if(settings.cache === 'local' && url) {
+                                if (settings.cache === 'local' && url) {
                                     module.write.cachedResponse(url, response);
                                     module.debug('Saving server response locally', module.cache);
                                 }
@@ -582,7 +582,7 @@
                                     response
                                 ;
                                 // have to guess callback parameters based on request success
-                                if( module.was.successful() ) {
+                                if ( module.was.successful() ) {
                                     response = firstParameter;
                                     xhr      = secondParameter;
                                 } else {
@@ -598,27 +598,27 @@
                                     response     = module.get.responseFromXHR(xhr),
                                     errorMessage = module.get.errorFromRequest(response, status, httpMessage)
                                 ;
-                                if(status == 'aborted') {
+                                if (status == 'aborted') {
                                     module.debug('XHR Aborted (Most likely caused by page navigation or CORS Policy)', status, httpMessage);
                                     settings.onAbort.call(context, status, $module, xhr);
                                     return true;
-                                } else if(status == 'invalid') {
+                                } else if (status == 'invalid') {
                                     module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
-                                } else if(status == 'error') {
-                                    if(xhr !== undefined) {
+                                } else if (status == 'error') {
+                                    if (xhr !== undefined) {
                                         module.debug('XHR produced a server error', status, httpMessage);
                                         // make sure we have an error to display to console
-                                        if( (xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
+                                        if ( (xhr.status < 200 || xhr.status >= 300) && httpMessage !== undefined && httpMessage !== '') {
                                             module.error(error.statusMessage + httpMessage, ajaxSettings.url);
                                         }
                                         settings.onError.call(context, errorMessage, $module, xhr);
                                     }
                                 }
 
-                                if(settings.errorDuration && status !== 'aborted') {
+                                if (settings.errorDuration && status !== 'aborted') {
                                     module.debug('Adding error state');
                                     module.set.error();
-                                    if( module.should.removeError() ) {
+                                    if ( module.should.removeError() ) {
                                         setTimeout(module.remove.error, settings.errorDuration);
                                     }
                                 }
@@ -656,8 +656,8 @@
                                 .done(module.event.xhr.done)
                                 .fail(module.event.xhr.fail);
 
-                            if(responder) {
-                                if( isFunction(responder) ) {
+                            if (responder) {
+                                if ( isFunction(responder) ) {
                                     module.debug('Using specified synchronous callback', responder);
                                     response = responder.call(context, requestSettings);
                                 } else {
@@ -666,11 +666,11 @@
                                 }
                                 // simulating response
                                 mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
-                            } else if( isFunction(asyncResponder) ) {
+                            } else if ( isFunction(asyncResponder) ) {
                                 asyncCallback = function(response) {
                                     module.debug('Async callback returned response', response);
 
-                                    if(response) {
+                                    if (response) {
                                         mockedXHR.resolveWith(context, [ response, textStatus, { responseText: response }]);
                                     } else {
                                         mockedXHR.rejectWith(context, [{ responseText: response }, status, httpMessage]);
@@ -748,27 +748,27 @@
                                 runSettings
                             ;
                             runSettings = settings.beforeSend.call($module, settings);
-                            if(runSettings) {
-                                if(runSettings.success !== undefined) {
+                            if (runSettings) {
+                                if (runSettings.success !== undefined) {
                                     module.debug('Legacy success callback detected', runSettings);
                                     module.error(error.legacyParameters, runSettings.success);
                                     runSettings.onSuccess = runSettings.success;
                                 }
-                                if(runSettings.failure !== undefined) {
+                                if (runSettings.failure !== undefined) {
                                     module.debug('Legacy failure callback detected', runSettings);
                                     module.error(error.legacyParameters, runSettings.failure);
                                     runSettings.onFailure = runSettings.failure;
                                 }
-                                if(runSettings.complete !== undefined) {
+                                if (runSettings.complete !== undefined) {
                                     module.debug('Legacy complete callback detected', runSettings);
                                     module.error(error.legacyParameters, runSettings.complete);
                                     runSettings.onComplete = runSettings.complete;
                                 }
                             }
-                            if(runSettings === undefined) {
+                            if (runSettings === undefined) {
                                 module.error(error.noReturnedValue);
                             }
-                            if(runSettings === false) {
+                            if (runSettings === false) {
                                 return runSettings;
                             }
                             return (runSettings !== undefined)
@@ -781,7 +781,7 @@
                                 encodedValue   = window.encodeURIComponent(value),
                                 alreadyEncoded = (decodedValue !== value)
                             ;
-                            if(alreadyEncoded) {
+                            if (alreadyEncoded) {
                                 module.debug('URL value is already encoded, avoiding double encoding', value);
                                 return value;
                             }
@@ -792,10 +792,10 @@
                             var
                                 data = {}
                             ;
-                            if( !isWindow(element) ) {
-                                if( module.is.input() ) {
+                            if ( !isWindow(element) ) {
+                                if ( module.is.input() ) {
                                     data.value = $module.val();
-                                } else if( module.is.form() ) {
+                                } else if ( module.is.form() ) {
 
                                 } else {
                                     data.text = $module.text();
@@ -804,17 +804,17 @@
                             return data;
                         },
                         event: function() {
-                            if( isWindow(element) || settings.on == 'now' ) {
+                            if ( isWindow(element) || settings.on == 'now' ) {
                                 module.debug('API called without element, no events attached');
                                 return false;
-                            } else if(settings.on == 'auto') {
-                                if( $module.is('input') ) {
+                            } else if (settings.on == 'auto') {
+                                if ( $module.is('input') ) {
                                     return (element.oninput !== undefined)
                                         ? 'input'
                                         : (element.onpropertychange !== undefined)
                                             ? 'propertychange'
                                             : 'keyup';
-                                } else if( $module.is('form') ) {
+                                } else if ( $module.is('form') ) {
                                     return 'submit';
                                 } else {
                                     return 'click';
@@ -826,18 +826,18 @@
                         templatedURL: function(action) {
                             action = action || $module.data(metadata.action) || settings.action || false;
                             url    = $module.data(metadata.url) || settings.url || false;
-                            if(url) {
+                            if (url) {
                                 module.debug('Using specified url', url);
                                 return url;
                             }
-                            if(action) {
+                            if (action) {
                                 module.debug('Looking up url for action', action, settings.api);
-                                if(settings.api[action] === undefined && !module.is.mocked()) {
+                                if (settings.api[action] === undefined && !module.is.mocked()) {
                                     module.error(error.missingAction, settings.action, settings.api);
                                     return;
                                 }
                                 url = settings.api[action];
-                            } else if( module.is.form() ) {
+                            } else if ( module.is.form() ) {
                                 url = $module.attr('action') || $context.attr('action') || false;
                                 module.debug('No url or action specified, defaulting to form action', url);
                             }
@@ -849,7 +849,7 @@
                         var
                             xhr = module.get.xhr()
                         ;
-                        if( xhr && xhr.state() !== 'resolved') {
+                        if ( xhr && xhr.state() !== 'resolved') {
                             module.debug('Cancelling API request');
                             xhr.abort();
                         }
@@ -863,10 +863,10 @@
 
                     setting: function(name, value) {
                         module.debug('Changing setting', name, value);
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, settings, name);
-                        } else if(value !== undefined) {
-                            if($.isPlainObject(settings[name])) {
+                        } else if (value !== undefined) {
+                            if ($.isPlainObject(settings[name])) {
                                 $.extend(true, settings[name], value);
                             } else {
                                 settings[name] = value;
@@ -876,17 +876,17 @@
                         }
                     },
                     internal: function(name, value) {
-                        if( $.isPlainObject(name) ) {
+                        if ( $.isPlainObject(name) ) {
                             $.extend(true, module, name);
-                        } else if(value !== undefined) {
+                        } else if (value !== undefined) {
                             module[name] = value;
                         } else {
                             return module[name];
                         }
                     },
                     debug: function() {
-                        if(!settings.silent && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.debug = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -895,8 +895,8 @@
                         }
                     },
                     verbose: function() {
-                        if(!settings.silent && settings.verbose && settings.debug) {
-                            if(settings.performance) {
+                        if (!settings.silent && settings.verbose && settings.debug) {
+                            if (settings.performance) {
                                 module.performance.log(arguments);
                             } else {
                                 module.verbose = Function.prototype.bind.call(console.info, console, settings.name + ':');
@@ -905,7 +905,7 @@
                         }
                     },
                     error: function() {
-                        if(!settings.silent) {
+                        if (!settings.silent) {
                             module.error = Function.prototype.bind.call(console.error, console, settings.name + ':');
                             module.error.apply(console, arguments);
                         }
@@ -917,7 +917,7 @@
                                 executionTime,
                                 previousTime
                             ;
-                            if(settings.performance) {
+                            if (settings.performance) {
                                 currentTime   = new Date().getTime();
                                 previousTime  = time || currentTime;
                                 executionTime = currentTime - previousTime;
@@ -943,12 +943,12 @@
                                 totalTime += data['Execution Time'];
                             });
                             title += ' ' + totalTime + 'ms';
-                            if(moduleSelector) {
+                            if (moduleSelector) {
                                 title += ' \'' + moduleSelector + '\'';
                             }
-                            if( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
+                            if ( (console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                                 console.groupCollapsed(title);
-                                if(console.table) {
+                                if (console.table) {
                                     console.table(performance);
                                 } else {
                                     $.each(performance, function(index, data) {
@@ -969,7 +969,7 @@
                         ;
                         passedArguments = passedArguments || queryArguments;
                         context         = context         || element;
-                        if(typeof query == 'string' && object !== undefined) {
+                        if (typeof query == 'string' && object !== undefined) {
                             query    = query.split(/[\. ]/);
                             maxDepth = query.length - 1;
                             $.each(query, function(depth, value) {
@@ -977,14 +977,14 @@
                                     ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                     : query
                                 ;
-                                if( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
+                                if ( $.isPlainObject( object[camelCaseValue] ) && (depth != maxDepth) ) {
                                     object = object[camelCaseValue];
-                                } else if( object[camelCaseValue] !== undefined ) {
+                                } else if ( object[camelCaseValue] !== undefined ) {
                                     found = object[camelCaseValue];
                                     return false;
-                                } else if( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
+                                } else if ( $.isPlainObject( object[value] ) && (depth != maxDepth) ) {
                                     object = object[value];
-                                } else if( object[value] !== undefined ) {
+                                } else if ( object[value] !== undefined ) {
                                     found = object[value];
                                     return false;
                                 } else {
@@ -995,27 +995,27 @@
                         }
                         if ( isFunction( found ) ) {
                             response = found.apply(context, passedArguments);
-                        } else if(found !== undefined) {
+                        } else if (found !== undefined) {
                             response = found;
                         }
-                        if(Array.isArray(returnedValue)) {
+                        if (Array.isArray(returnedValue)) {
                             returnedValue.push(response);
-                        } else if(returnedValue !== undefined) {
+                        } else if (returnedValue !== undefined) {
                             returnedValue = [returnedValue, response];
-                        } else if(response !== undefined) {
+                        } else if (response !== undefined) {
                             returnedValue = response;
                         }
                         return found;
                     },
                 };
 
-                if(methodInvoked) {
-                    if(instance === undefined) {
+                if (methodInvoked) {
+                    if (instance === undefined) {
                         module.initialize();
                     }
                     module.invoke(query);
                 } else {
-                    if(instance !== undefined) {
+                    if (instance !== undefined) {
                         instance.invoke('destroy');
                     }
                     module.initialize();
