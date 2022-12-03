@@ -140,7 +140,7 @@ module.exports = {
 
         /* What Browsers to Prefix */
         prefix: {
-            overrideBrowserslist,
+            overrideBrowserslist: overrideBrowserslist,
         },
 
         /* File Renames */
