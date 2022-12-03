@@ -709,7 +709,7 @@
                     },
                     last: function (array) {
                         return Array.isArray(array)
-                            ? array[ array.length - 1]
+                            ? array[array.length - 1]
                             : false;
                     },
                     pathToArray: function (pathName) {

@@ -28,6 +28,7 @@ module.exports = {
         'space-infix-ops': ['error'],
         'array-bracket-spacing': ['error', 'never'],
         'object-curly-spacing': ['error', 'always'],
+        'computed-property-spacing': ['error', 'never'],
         'space-before-blocks': ['error'],
         'one-var-declaration-per-line': ['error', 'always'],
         'function-paren-newline': ['error', 'multiline-arguments'],

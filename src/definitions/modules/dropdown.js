@@ -1704,7 +1704,7 @@
                         module.verbose('Determining action', settings.action);
                         if (isFunction(module.action[settings.action])) {
                             module.verbose('Triggering preset action', settings.action, text, value);
-                            module.action[ settings.action ].call(element, text, value, this);
+                            module.action[settings.action].call(element, text, value, this);
                         } else if (isFunction(settings.action)) {
                             module.verbose('Triggering user action', settings.action, text, value);
                             settings.action.call(element, text, value, this);
