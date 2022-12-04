@@ -70,6 +70,10 @@
   white-space: nowrap;
 }
 
+.ui.dropdown .menu > .item {
+  display: flex !important;
+}
+
 
 /*--------------
   Hidden Input
@@ -94,7 +98,8 @@
 .ui.dropdown .menu > .item .dropdown.icon {
   width: auto;
   float: @itemDropdownIconFloat;
-  margin: @itemDropdownIconMargin;
+  margin-left: auto;
+  padding: @itemDropdownIconMargin;
 }
 .ui.dropdown .menu > .item .dropdown.icon + .text {
   margin-right: @itemDropdownIconDistance;
