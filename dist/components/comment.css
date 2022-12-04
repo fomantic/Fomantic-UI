@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Comment
+ * # Fomantic-UI 2.9.0 - Comment
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -55,7 +55,7 @@
   margin: 0 0 0.5em 0.5em;
   padding: 1em 0 1em 1em;
 }
-.ui.comments .comment > .comments:before {
+.ui.comments .comment > .comments::before {
   position: absolute;
   top: 0;
   left: 0;
@@ -67,8 +67,8 @@
 }
 
 /*--------------
-     Avatar
----------------*/
+       Avatar
+  ---------------*/
 
 .ui.comments .comment .avatar {
   display: block;
@@ -100,8 +100,8 @@
 }
 
 /*--------------
-     Author
----------------*/
+       Author
+  ---------------*/
 
 .ui.comments .comment .author {
   font-size: 1em;
@@ -116,8 +116,8 @@
 }
 
 /*--------------
-     Metadata
----------------*/
+       Metadata
+  ---------------*/
 
 .ui.comments .comment .metadata {
   display: inline-block;
@@ -146,8 +146,8 @@
 }
 
 /*--------------------
-     User Actions
----------------------*/
+       User Actions
+  ---------------------*/
 
 .ui.comments .comment .actions {
   font-size: 0.875em;
@@ -167,8 +167,8 @@
 }
 
 /*--------------------
-      Reply Form
----------------------*/
+        Reply Form
+  ---------------------*/
 
 .ui.comments > .reply.form {
   margin-top: 1em;

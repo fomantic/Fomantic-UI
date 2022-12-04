@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Visibility
+ * # Fomantic-UI 2.9.0 - Visibility
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -58,7 +58,7 @@ $.fn.visibility = function(parameters) {
         $window         = $(window),
 
         $module         = $(this),
-        $context        = $(settings.context),
+        $context        = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context),
 
         $placeholder,
 
@@ -428,7 +428,7 @@ $.fn.visibility = function(parameters) {
           },
           verticallyScrollableContext: function() {
             var
-              overflowY = ($context.get(0) !== window)
+              overflowY = ($context[0] !== window)
                 ? $context.css('overflow-y')
                 : false
             ;
@@ -436,7 +436,7 @@ $.fn.visibility = function(parameters) {
           },
           horizontallyScrollableContext: function() {
             var
-              overflowX = ($context.get(0) !== window)
+              overflowX = ($context[0] !== window)
                 ? $context.css('overflow-x')
                 : false
             ;
@@ -1139,7 +1139,7 @@ $.fn.visibility = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;

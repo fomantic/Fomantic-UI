@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Reset
+ * # Fomantic-UI 2.9.0 - Reset
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -16,8 +16,8 @@
 
 /* Border-Box */
 *,
-*:before,
-*:after {
+*::before,
+*::after {
   -webkit-box-sizing: inherit;
           box-sizing: inherit;
 }
@@ -126,7 +126,8 @@ abbr[title] {
   text-decoration: underline;
   
 /* 2 */
-  text-decoration: underline dotted;
+  -webkit-text-decoration: underline dotted;
+          text-decoration: underline dotted;
   
 /* 2 */
 }

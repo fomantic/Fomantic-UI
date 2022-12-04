@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Dropdown
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -191,7 +191,7 @@
   border-top: none;
 }
 
-.ui.dropdown.dropdown .menu > .input {
+.ui.ui.ui.dropdown .menu > .input {
   width: auto;
   display: flex;
   margin: @menuInputMargin;
@@ -570,6 +570,16 @@ select.ui.dropdown {
   /* User Item */
   .ui.selection.dropdown .menu > .hidden.addition.item {
     display: none;
+  }
+
+  /* User addition item */
+  .ui.dropdown > .menu > .stuck.addition.item:first-child {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    box-shadow: @selectionVisibleBoxShadow;
+    background: @menuBackground;
+    z-index: @additionZIndex;
   }
 
   /* Hover */
@@ -1325,7 +1335,7 @@ select.ui.dropdown {
     overflow-y: auto;
     border: none;
     box-shadow: none !important;
-    border-radius: 0 !important;
+    border-radius: 0 0 @floatingMenuBorderRadius @floatingMenuBorderRadius !important;
     margin: 0 !important;
     min-width: 100% !important;
     width: auto !important;
@@ -1343,12 +1353,13 @@ select.ui.dropdown {
   .ui.dropdown > .visible.menu .scrolling.menu {
     display: block;
   }
-
-  /* Scrollbar in IE */
-  @media all and (-ms-high-contrast:none) {
-    .ui.scrolling.dropdown .menu,
-    .ui.dropdown .scrolling.menu {
-      min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
+  & when (@supportIE) {
+    /* Scrollbar in IE */
+    @media all and (-ms-high-contrast: none) {
+      .ui.scrolling.dropdown .menu,
+      .ui.dropdown .scrolling.menu {
+        min-width: e(%("calc(100%% - %d)", @scrollbarWidth));
+      }
     }
   }
   @media only screen and (max-width : @largestMobileScreen) {
@@ -1435,8 +1446,10 @@ select.ui.dropdown {
   }
   .ui.simple.dropdown .menu {
     position: absolute;
-    /* IE hack to make dropdown icons appear inline */
-    display: -ms-inline-flexbox !important;
+    & when (@supportIE) {
+      /* IE hack to make dropdown icons appear inline */
+      display: -ms-inline-flexbox !important;
+    }
     display: block;
     overflow: hidden;
     top: -9999px;
@@ -1466,7 +1479,7 @@ select.ui.dropdown {
 
   .ui.simple.active.dropdown > .menu,
   .ui.simple.dropdown:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 100%;
@@ -1474,12 +1487,20 @@ select.ui.dropdown {
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
   .ui.simple.dropdown .menu .item:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 0 !important;
     left: 100%;
     opacity: 1;
+  }
+  & when (@variationDropdownSelection) {
+    .ui.simple.selection.active.dropdown > .menu,
+    .ui.simple.selection.dropdown:hover > .menu,
+    .ui.simple.selection.dropdown > .menu > .item:active > .menu,
+    .ui.simple.selection.dropdown .menu .item:hover > .menu {
+      overflow: auto;
+    }
   }
   .ui.simple.dropdown > .menu > .item:active > .left.menu,
   .ui.simple.dropdown .menu .item:hover > .left.menu,
@@ -1537,13 +1558,10 @@ select.ui.dropdown {
     box-shadow: @floatingMenuBoxShadow !important;
     border-radius: @floatingMenuBorderRadius !important;
   }
-  .ui.floating.dropdown > .menu {
-    border-radius: @floatingMenuBorderRadius !important;
-  }
   .ui:not(.upward).floating.dropdown > .menu {
     margin-top: @floatingMenuDistance;
   }
-  .ui.upward.floating.dropdown > .menu {
+  .ui.upward.floating.dropdown:not(.simple) > .menu {
     margin-bottom: @floatingMenuDistance;
   }
 }
@@ -1952,12 +1970,13 @@ select.ui.dropdown {
     }
     .ui.dropdown .inverted.menu,
     .ui.inverted.dropdown .menu {
-      /* IE11 */
-      scrollbar-face-color: @thumbInvertedBackgroundHex;
-      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-      scrollbar-track-color: @trackInvertedBackgroundHex;
-      scrollbar-arrow-color: @trackInvertedBackgroundHex;
-
+      & when (@supportIE) {
+        /* IE11 */
+        scrollbar-face-color: @thumbInvertedBackgroundHex;
+        scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+        scrollbar-track-color: @trackInvertedBackgroundHex;
+        scrollbar-arrow-color: @trackInvertedBackgroundHex;
+      }
       /* firefox : first color thumb, second track */
       scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
     }

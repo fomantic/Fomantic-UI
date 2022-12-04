@@ -176,7 +176,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
   }
 
   jasmine.StyleFixtures.prototype.createStyle_ = function (html) {
-    var styleText = $('<div></div>').html(html).text()
+    var styleText = html.replace(/<[^>]+(>|$)/g,'')
       , style = $('<style>' + styleText + '</style>')
 
     this.fixturesNodes_.push(style)

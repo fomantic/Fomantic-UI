@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Transition
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -73,9 +73,44 @@
 /*******************************
           Variations
 *******************************/
-& when (@variationTransitionLoading) {
+& when (@variationTransitionLooping) {
   .looping.transition {
     animation-iteration-count: infinite;
+  }
+}
+
+& when (@variationTransitionPulsating) {
+  /* Pulsating */
+  .pulsating.transition {
+    animation-name: pulsating;
+    animation-duration: @pulsatingDuration;
+    box-shadow: 0 0 0 0 fade(@pulsatingColor, @pulsatingOpacity);
+  }
+  & when (@variationTransitionInverted) {
+    .inverted.pulsating.transition {
+      box-shadow: 0 0 0 0 fade(@pulsatingInvertedColor, @pulsatingInvertedOpacity);
+    }
+  }
+  @keyframes pulsating {
+    100% {
+      box-shadow: 0 0 0 @pulsatingDistance rgba(255,255,255,0);
+    }
+  }
+  & when not (@variationTransitionColors = false) {
+    each(@variationTransitionColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+
+      .@{color}.pulsating.transition {
+        box-shadow: 0 0 0 0 fade(@c, @pulsatingOpacity);
+      }
+      & when (@variationTransitionInverted) {
+        .@{color}.inverted.pulsating.transition {
+          box-shadow: 0 0 0 0 fade(@l, @pulsatingInvertedOpacity);
+        }
+      }
+    })
   }
 }
 

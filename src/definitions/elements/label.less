@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Label
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -73,7 +73,7 @@ a.ui.label {
 }
 
 /* Icon */
-.ui.left.icon.label > .icon,
+.ui.ui[class*="left icon"].label > .icon,
 .ui.label > .icon {
   width: auto;
   margin: 0 @iconDistance 0 0;
@@ -105,9 +105,12 @@ a.ui.label {
 }
 
 /* Backward compatible positioning */
-.ui.label.left.icon > .close.icon,
-.ui.label.left.icon > .delete.icon {
+.ui.label[class*="left icon"] > .close.icon,
+.ui.label[class*="left icon"] > .delete.icon {
   margin: 0 @deleteMargin 0 0;
+  &.right {
+    margin: 0 0 0 @deleteMargin;
+  }
 }
 .ui.label:not(.icon) > .close.icon,
 .ui.label:not(.icon) > .delete.icon {
@@ -120,7 +123,7 @@ a.ui.label {
 }
 
 /* Right Side Icon */
-.ui.right.icon.label > .icon {
+.ui[class*="right icon"].label > .icon {
   margin: 0 0 0 @iconDistance;
 }
 
@@ -548,8 +551,10 @@ a.ui.label {
       Disabled
 --------------------*/
 & when (@variationLabelDisabled) {
+  .ui.disabled.labels .label,
   .ui.label.disabled {
-    opacity: 0.5;
+    opacity: @disabledOpacity;
+    pointer-events: @disabledPointerEvents;
   }
 }
 /*-------------------
@@ -680,6 +685,13 @@ a.ui.active.label:hover::before {
   .ui.fluid.labels > .label {
     width: 100%;
     box-sizing: border-box;
+  }
+}
+
+& when (@variationLabelCentered) {
+  .ui.centered.labels .label,
+  .ui.centered.label {
+    text-align: center;
   }
 }
 

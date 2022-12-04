@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Button
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -1756,101 +1756,93 @@
   })
 }
 
-.addConsequence(@consequence) {
+& when not (@variationButtonConsequences = false) {
+  each(@variationButtonConsequences, {
+    @consequence: @value;
 
-  @_backgroundColor: "@{consequence}Color";
-  @_backgroundColorHover: "@{consequence}ColorHover";
-  @_backgroundColorFocus: "@{consequence}ColorFocus";
-  @_backgroundColorDown: "@{consequence}ColorDown";
-  @_backgroundColorActive: "@{consequence}ColorActive";
-  @_textColor: "@{consequence}TextColor";
-  @_textShadow: "@{consequence}TextShadow";
+    @_backgroundColor: "@{consequence}Color";
+    @_backgroundColorHover: "@{consequence}ColorHover";
+    @_backgroundColorFocus: "@{consequence}ColorFocus";
+    @_backgroundColorDown: "@{consequence}ColorDown";
+    @_backgroundColorActive: "@{consequence}ColorActive";
+    @_textColor: "@{consequence}TextColor";
+    @_textShadow: "@{consequence}TextShadow";
 
-  /* Standard */
-  .ui.@{consequence}.buttons .button,
-  .ui.@{consequence}.button {
-    background-color: @@_backgroundColor;
-    color: @@_textColor;
-    text-shadow: @@_textShadow;
-    background-image: @coloredBackgroundImage;
-  }
-  .ui.@{consequence}.button {
-    box-shadow: @coloredBoxShadow;
-  }
-  .ui.@{consequence}.buttons .button:hover,
-  .ui.@{consequence}.button:hover {
-    background-color: @@_backgroundColorHover;
-    color: @@_textColor;
-    text-shadow: @@_textShadow;
-  }
-  .ui.@{consequence}.buttons .button:focus,
-  .ui.@{consequence}.button:focus {
-    background-color: @@_backgroundColorFocus;
-    color: @@_textColor;
-    text-shadow: @@_textShadow;
-  }
-  .ui.@{consequence}.buttons .button:active,
-  .ui.@{consequence}.button:active {
-    background-color: @@_backgroundColorDown;
-    color: @@_textColor;
-    text-shadow: @@_textShadow;
-  }
-  .ui.@{consequence}.buttons .active.button,
-  .ui.@{consequence}.buttons .active.button:active,
-  .ui.@{consequence}.active.button,
-  .ui.@{consequence}.button .active.button:active {
-    background-color: @@_backgroundColorActive;
-    color: @@_textColor;
-    text-shadow: @@_textShadow;
-  }
-  & when (@variationButtonBasic) {
-    /* Basic */
-    .ui.basic.@{consequence}.buttons .button,
-    .ui.basic.@{consequence}.button {
-      background: transparent;
-      box-shadow: 0 0 0 @basicBorderSize @@_backgroundColor inset;
-      color: @@_backgroundColor;
+    /* Standard */
+    .ui.@{consequence}.buttons .button,
+    .ui.@{consequence}.button {
+      background-color: @@_backgroundColor;
+      color: @@_textColor;
+      text-shadow: @@_textShadow;
+      background-image: @coloredBackgroundImage;
     }
-    .ui.basic.@{consequence}.buttons .button:hover,
-    .ui.basic.@{consequence}.button:hover {
-      background: transparent;
-      box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorHover inset;
-      color: @@_backgroundColorHover;
+    .ui.@{consequence}.button {
+      box-shadow: @coloredBoxShadow;
     }
-    .ui.basic.@{consequence}.buttons .button:focus,
-    .ui.basic.@{consequence}.button:focus {
-      background: transparent;
-      box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorFocus inset;
-      color: @@_backgroundColorHover;
+    .ui.@{consequence}.buttons .button:hover,
+    .ui.@{consequence}.button:hover {
+      background-color: @@_backgroundColorHover;
+      color: @@_textColor;
+      text-shadow: @@_textShadow;
     }
-    .ui.basic.@{consequence}.buttons .active.button,
-    .ui.basic.@{consequence}.active.button {
-      background: transparent;
-      box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorActive inset;
-      color: @@_backgroundColorDown;
+    .ui.@{consequence}.buttons .button:focus,
+    .ui.@{consequence}.button:focus {
+      background-color: @@_backgroundColorFocus;
+      color: @@_textColor;
+      text-shadow: @@_textShadow;
     }
-    .ui.basic.@{consequence}.buttons .button:active,
-    .ui.basic.@{consequence}.button:active {
-      box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorDown inset;
-      color: @@_backgroundColorDown;
+    .ui.@{consequence}.buttons .button:active,
+    .ui.@{consequence}.button:active {
+      background-color: @@_backgroundColorDown;
+      color: @@_textColor;
+      text-shadow: @@_textShadow;
     }
-    .ui.buttons:not(.vertical) > .basic.@{consequence}.button:not(:first-child) {
-      margin-left: -@basicColoredBorderSize;
+    .ui.@{consequence}.buttons .active.button,
+    .ui.@{consequence}.buttons .active.button:active,
+    .ui.@{consequence}.active.button,
+    .ui.@{consequence}.button .active.button:active {
+      background-color: @@_backgroundColorActive;
+      color: @@_textColor;
+      text-shadow: @@_textShadow;
     }
-  }
+    & when (@variationButtonBasic) {
+      /* Basic */
+      .ui.basic.@{consequence}.buttons .button,
+      .ui.basic.@{consequence}.button {
+        background: transparent;
+        box-shadow: 0 0 0 @basicBorderSize @@_backgroundColor inset;
+        color: @@_backgroundColor;
+      }
+      .ui.basic.@{consequence}.buttons .button:hover,
+      .ui.basic.@{consequence}.button:hover {
+        background: transparent;
+        box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorHover inset;
+        color: @@_backgroundColorHover;
+      }
+      .ui.basic.@{consequence}.buttons .button:focus,
+      .ui.basic.@{consequence}.button:focus {
+        background: transparent;
+        box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorFocus inset;
+        color: @@_backgroundColorHover;
+      }
+      .ui.basic.@{consequence}.buttons .active.button,
+      .ui.basic.@{consequence}.active.button {
+        background: transparent;
+        box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorActive inset;
+        color: @@_backgroundColorDown;
+      }
+      .ui.basic.@{consequence}.buttons .button:active,
+      .ui.basic.@{consequence}.button:active {
+        box-shadow: 0 0 0 @basicColoredBorderSize @@_backgroundColorDown inset;
+        color: @@_backgroundColorDown;
+      }
+      .ui.buttons:not(.vertical) > .basic.@{consequence}.button:not(:first-child) {
+        margin-left: -@basicColoredBorderSize;
+      }
+    }
+  })
 }
 
-/*---------------
-    Positive
-----------------*/
-
-.addConsequence(positive);
-
-/*---------------
-     Negative
-----------------*/
-
-.addConsequence(negative);
 
 & when (@variationButtonGroups) {
   /*******************************

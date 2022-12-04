@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Statistic
+ * # Fomantic-UI 2.9.0 - Statistic
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -75,7 +75,7 @@
 }
 
 /* Clearing */
-.ui.statistics:after {
+.ui.statistics::after {
   display: block;
   content: ' ';
   height: 0;
@@ -99,7 +99,7 @@
 
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 4rem;
   font-weight: normal;
   line-height: 1em;
@@ -114,7 +114,7 @@
 
 .ui.statistics .statistic > .label,
 .ui.statistic > .label {
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-size: 1em;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.87);

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Sidebar
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -95,10 +95,14 @@
      Pushable
 ---------------*/
 
-.pushable {
+.pushable.pushable.pushable {
   height: 100%;
   overflow-x: hidden;
-  padding: 0 !important;
+  padding: 0;
+  &.locked {
+    overflow-y: hidden;
+    background: inherit;
+  }
 }
 
 /* Whole Page */
@@ -193,6 +197,17 @@ body.pushable > .pusher {
   width: 100% !important;
   height: 100% !important;
   opacity: 1 !important;
+}
+& when (@variationSidebarBlurring) {
+  .pushable > .pusher.dimmed.blurring:not(.closing)::after {
+    background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
+
+  }
+}
+.pushable > .pusher.closing.dimmed::after {
+  opacity: 0 !important;
 }
 
 /*--------------

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Modal
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -167,29 +167,43 @@
   font-size: @imageIconSize;
 }
 
-/*--------------
-     Actions
----------------*/
+& when (@variationModalActions) {
+  /*--------------
+       Actions
+  ---------------*/
 
-.ui.modal > .actions {
-  background: @actionBackground;
-  padding: @actionPadding;
-  border-top: @actionBorder;
-  text-align: @actionAlign;
-}
-.ui.modal .actions > .button:not(.fluid) {
-  margin-left: @buttonDistance;
-}
-.ui.basic.modal > .actions {
-  border-top:none;
+  .ui.modal > .actions {
+    background: @actionBackground;
+    padding: @actionPadding;
+    border-top: @actionBorder;
+    text-align: @actionAlign;
+  }
+  .ui.modal .actions > .button:not(.fluid) {
+    margin-left: @buttonDistance;
+  }
+  .ui.ui.modal > .basic.actions,
+  .ui.basic.modal > .actions {
+    border-top: none;
+  }
+  & when (@variationModalLeftActions) {
+    .ui.modal > .left.actions {
+      text-align: left;
+      & > .button:not(.fluid) {
+        margin-left: @buttonLeftDistance;
+        margin-right: @buttonLeftDistance;
+      }
+    }
+  }
 }
 
-.ui.modal > .centered,
-.ui.modal > .center.aligned {
-  text-align: center;
-  &.actions > .button:not(.fluid) {
-    margin-left: @buttonCenteredDistance;
-    margin-right: @buttonCenteredDistance;
+& when (@variationModalCentered) {
+  .ui.modal > .centered,
+  .ui.modal > .center.aligned {
+    text-align: center;
+    &.actions > .button:not(.fluid) when (@variationModalActions){
+      margin-left: @buttonCenteredDistance;
+      margin-right: @buttonCenteredDistance;
+    }
   }
 }
 
@@ -299,14 +313,15 @@
     padding: @mobileDescriptionPadding !important;
     box-shadow: none;
   }
-
-  /* Let Buttons Stack */
-  .ui.modal > .actions {
-    padding: @mobileActionPadding !important;
-  }
-  .ui.modal .actions > .buttons,
-  .ui.modal .actions > .button {
-    margin-bottom: @mobileButtonDistance;
+  & when (@variationModalActions) {
+    /* Let Buttons Stack */
+    .ui.modal > .actions {
+      padding: @mobileActionPadding !important;
+    }
+    .ui.modal .actions > .buttons,
+    .ui.modal .actions > .button {
+      margin-bottom: @mobileButtonDistance;
+    }
   }
 }
 
@@ -329,10 +344,15 @@
     box-shadow: none !important;
     color: @basicModalColor;
   }
+  .ui.ui.modal > .basic.header,
+  .ui.ui.modal > .basic.actions,
   .ui.basic.modal > .header,
   .ui.basic.modal > .content,
   .ui.basic.modal > .actions {
     background-color: transparent;
+  }
+  .ui.modal > .basic.header {
+    border-bottom: none;
   }
   .ui.basic.modal > .header {
     color: @basicModalHeaderColor;
@@ -426,6 +446,10 @@
   .scrolling.dimmable > .dimmer {
     justify-content: flex-start;
     position: fixed;
+  }
+  .scrolling.dimmable:not(body) > .dimmer {
+    justify-content: center;
+    position: absolute;
   }
   .scrolling.dimmable.dimmed > .dimmer {
     overflow: auto;
@@ -575,11 +599,12 @@
     background: @invertedBackground;
     color: @invertedHeaderColor;
   }
-
-  .ui.inverted.modal > .actions {
-    background: @invertedActionBackground;
-    border-top: @invertedActionBorder;
-    color: @invertedActionColor;
+  & when (@variationModalActions) {
+    .ui.inverted.modal > .actions {
+      background: @invertedActionBackground;
+      border-top: @invertedActionBorder;
+      color: @invertedActionColor;
+    }
   }
 
   .ui.inverted.dimmer > .modal > .close {
