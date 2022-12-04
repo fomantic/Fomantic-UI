@@ -254,21 +254,21 @@
                     $context.dimmer('destroy');
                 },
 
-        observeChanges: function() {
-          if('MutationObserver' in window) {
-            observer = new MutationObserver(function(mutations) {
-              if(settings.observeChanges) {
-                module.debug('DOM tree modified, refreshing');
-                module.refresh();
-              }
-              module.refreshInputs();
-              if(settings.autofocus && $inputs.filter(':focus').length === 0) {
-                module.set.autofocus();
-              }
-            });
-            observer.observe(element, {
-              childList : true,
-              subtree   : true,
+                observeChanges: function () {
+                    if ('MutationObserver' in window) {
+                        observer = new MutationObserver(function (mutations) {
+                            if (settings.observeChanges) {
+                                module.debug('DOM tree modified, refreshing');
+                                module.refresh();
+                            }
+                            module.refreshInputs();
+                            if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                                module.set.autofocus();
+                            }
+                        });
+                        observer.observe(element, {
+                            childList : true,
+                            subtree   : true,
                         });
                         module.debug('Setting up mutation observer', observer);
                     }

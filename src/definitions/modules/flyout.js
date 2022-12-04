@@ -484,18 +484,18 @@
                             .on('keydown' + eventNamespace, module.event.keyboard)
                         ;
                     },
-        },
-        observeChanges: function() {
-          if('MutationObserver' in window) {
-            observer = new MutationObserver(function(mutations) {
-              module.refreshInputs();
-              if(settings.autofocus && $inputs.filter(':focus').length === 0) {
-                module.set.autofocus();
-              }
-            });
-            observer.observe(element, {
-              childList : true,
-              subtree   : true,
+                },
+                observeChanges: function () {
+                    if ('MutationObserver' in window) {
+                        observer = new MutationObserver(function (mutations) {
+                            module.refreshInputs();
+                            if (settings.autofocus && $inputs.filter(':focus').length === 0) {
+                                module.set.autofocus();
+                            }
+                        });
+                        observer.observe(element, {
+                            childList : true,
+                            subtree   : true,
                         });
                         module.debug('Setting up mutation observer', observer);
                     }
