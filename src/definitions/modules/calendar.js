@@ -939,25 +939,27 @@
                         date = module.helper.sanitiseDate(date);
                         if (settings.maxDate !== null && settings.maxDate <= date) {
                             if (!settings.autoAdjustDateEdges) {
-                module.error('Unable to set minDate variable bigger than maxDate variable', date, settings.maxDate);
-                return;
-              }
-              module.set.maxDate(date);
-            }
-            module.setting('minDate', date);
-            module.set.dataKeyValue(metadata.minDate, date);
-          },
-          maxDate: function (date) {
-            date = module.helper.sanitiseDate(date);
-            if (settings.minDate !== null && settings.minDate >= date) {
-              if(!settings.autoAdjustDateEdges) {
-                module.error('Unable to set maxDate variable lower than minDate variable', date, settings.minDate);
-                return;
-              }
-              module.set.minDate(date);
-            }
-            module.setting('maxDate', date);
-            module.set.dataKeyValue(metadata.maxDate, date);
+                                module.error('Unable to set minDate variable bigger than maxDate variable', date, settings.maxDate);
+
+                                return;
+                            }
+                            module.set.maxDate(date);
+                        }
+                        module.setting('minDate', date);
+                        module.set.dataKeyValue(metadata.minDate, date);
+                    },
+                    maxDate: function (date) {
+                        date = module.helper.sanitiseDate(date);
+                        if (settings.minDate !== null && settings.minDate >= date) {
+                            if (!settings.autoAdjustDateEdges) {
+                                module.error('Unable to set maxDate variable lower than minDate variable', date, settings.minDate);
+
+                                return;
+                            }
+                            module.set.minDate(date);
+                        }
+                        module.setting('maxDate', date);
+                        module.set.dataKeyValue(metadata.maxDate, date);
                     },
                     monthOffset: function (monthOffset, refreshCalendar) {
                         var multiMonth = Math.max(settings.multiMonth, 1);
@@ -1572,32 +1574,32 @@
         startMode: false, // display mode to start in, can be 'year', 'month', 'day', 'hour', 'minute' (false = 'day')
         minDate: null, // minimum date/time that can be selected, dates/times before are disabled
         maxDate: null, // maximum date/time that can be selected, dates/times after are disabled
-        autoAdjustDateEdges: false,      // automatically sets min or maxdate to the same as the opposite if maxdate < mindate or mindate > maxdate
-  disableYear        : false,      // disable year selection mode
-  disableMonth       : false,      // disable month selection mode
-  disableMinute      : false,      // disable minute selection mode
-  formatInput        : true,       // format the input text upon input blur and module creation
-  startCalendar      : null,       // jquery object or selector for another calendar that represents the start date of a date range
-  endCalendar        : null,       // jquery object or selector for another calendar that represents the end date of a date range
-  multiMonth         : 1,          // show multiple months when in 'day' mode
-  monthOffset        : 0,          // position current month by offset when multimonth > 1
-  minTimeGap         : 5,
-  showWeekNumbers    : false,      // show Number of Week at the very first column of a dayView
-  disabledHours      : [],         // specific hour(s) which won't be selectable and contain additional information.
-  disabledDates      : [],         // specific day(s) which won't be selectable and contain additional information.
-  disabledDaysOfWeek : [],         // day(s) which won't be selectable(s) (0 = Sunday)
-  enabledDates       : [],         // specific day(s) which will be selectable, all other days will be disabled
-  eventDates         : [],         // specific day(s) which will be shown in a different color and using tooltips
-  centuryBreak       : 60,         // starting short year until 99 where it will be assumed to belong to the last century
-  currentCentury     : 2000,       // century to be added to 2-digit years (00 to {centuryBreak}-1)
-  selectAdjacentDays : false,     // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
-  // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
-  popupOptions: {
-    position: 'bottom left',
-    lastResort: 'bottom left',
-    prefer: 'opposite',
-    observeChanges: false,
-    hideOnScroll: false,
+        autoAdjustDateEdges: false, // automatically sets min or maxdate to the same as the opposite if maxdate < mindate or mindate > maxdate
+        disableYear        : false, // disable year selection mode
+        disableMonth       : false, // disable month selection mode
+        disableMinute      : false, // disable minute selection mode
+        formatInput        : true, // format the input text upon input blur and module creation
+        startCalendar      : null, // jquery object or selector for another calendar that represents the start date of a date range
+        endCalendar        : null, // jquery object or selector for another calendar that represents the end date of a date range
+        multiMonth         : 1, // show multiple months when in 'day' mode
+        monthOffset        : 0, // position current month by offset when multimonth > 1
+        minTimeGap         : 5,
+        showWeekNumbers    : false, // show Number of Week at the very first column of a dayView
+        disabledHours      : [], // specific hour(s) which won't be selectable and contain additional information.
+        disabledDates      : [], // specific day(s) which won't be selectable and contain additional information.
+        disabledDaysOfWeek : [], // day(s) which won't be selectable(s) (0 = Sunday)
+        enabledDates       : [], // specific day(s) which will be selectable, all other days will be disabled
+        eventDates         : [], // specific day(s) which will be shown in a different color and using tooltips
+        centuryBreak       : 60, // starting short year until 99 where it will be assumed to belong to the last century
+        currentCentury     : 2000, // century to be added to 2-digit years (00 to {centuryBreak}-1)
+        selectAdjacentDays : false, // The calendar can show dates from adjacent month. These adjacent month dates can also be made selectable.
+        // popup options ('popup', 'on', 'hoverable', and show/hide callbacks are overridden)
+        popupOptions: {
+            position: 'bottom left',
+            lastResort: 'bottom left',
+            prefer: 'opposite',
+            observeChanges: false,
+            hideOnScroll: false,
         },
 
         text: {
