@@ -859,22 +859,24 @@
                     },
                     templatedURL: function (action) {
                         action = action || settings.action || $module.data(metadata.action) || false;
-            url    = settings.url || $module.data(metadata.url) || false;
-            if(url) {
-              module.debug('Using specified url', url);
-              return url;
-            }
-            if(action) {
-              module.debug('Looking up url for action', action, settings.api);
-              if(settings.api[action] === undefined && !module.is.mocked()) {
-                module.error(error.missingAction, settings.action, settings.api);
-                return;
-              }
-              url = settings.api[action];
-            }
-            else if( module.is.form() ) {
-              url = $module.attr('action') || $context.attr('action') || false;
-              module.debug('No url or action specified, defaulting to form action', url);}
+                        url = settings.url || $module.data(metadata.url) || false;
+                        if (url) {
+                            module.debug('Using specified url', url);
+
+                            return url;
+                        }
+                        if (action) {
+                            module.debug('Looking up url for action', action, settings.api);
+                            if (settings.api[action] === undefined && !module.is.mocked()) {
+                                module.error(error.missingAction, settings.action, settings.api);
+
+                                return;
+                            }
+                            url = settings.api[action];
+                        } else if (module.is.form()) {
+                            url = $module.attr('action') || $context.attr('action') || false;
+                            module.debug('No url or action specified, defaulting to form action', url);
+                        }
 
                         return url;
                     },
