@@ -25,7 +25,9 @@
   },
   "scripts": {
     "build": "gulp build",
-    "changelog": "auto-changelog -p"
+    "changelog": "auto-changelog -p",
+    "lint": "eslint -c .eslintrc.js --ext .js .",
+    "lint-fix": "eslint -c .eslintrc.js --ext .js . --fix"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
@@ -73,6 +75,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.7.0",
     "auto-changelog": "^2.4.0",
+    "eslint": "^8.28.0",
     "node-fetch": "^2.6.0",
     "semver": "^7.3.5"
   },
