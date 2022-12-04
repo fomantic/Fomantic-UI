@@ -448,6 +448,7 @@ select.ui.dropdown {
   .ui.selection.dropdown .menu {
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
     border-top-width: 0 !important;
@@ -765,6 +766,7 @@ select.ui.dropdown {
   .ui.search.dropdown .menu {
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
   }
@@ -1319,11 +1321,7 @@ select.ui.dropdown {
   .ui.dropdown .scrolling.menu {
     overflow-x: hidden;
     overflow-y: auto;
-  }
-
-  .ui.scrolling.dropdown .menu {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
     min-width: 100% !important;
@@ -1332,13 +1330,10 @@ select.ui.dropdown {
 
   .ui.dropdown .scrolling.menu {
     position: static;
-    overflow-y: auto;
     border: none;
     box-shadow: none !important;
     border-radius: 0 0 @floatingMenuBorderRadius @floatingMenuBorderRadius !important;
     margin: 0 !important;
-    min-width: 100% !important;
-    width: auto !important;
     border-top: @menuBorder;
   }
   .ui.scrolling.dropdown .menu .item.item.item,
@@ -1500,6 +1495,7 @@ select.ui.dropdown {
     .ui.simple.selection.dropdown > .menu > .item:active > .menu,
     .ui.simple.selection.dropdown .menu .item:hover > .menu {
       overflow: auto;
+      overscroll-behavior: @overscrollBehavior;
     }
   }
   .ui.simple.dropdown > .menu > .item:active > .left.menu,
@@ -1528,6 +1524,7 @@ select.ui.dropdown {
     .ui.simple.scrolling.dropdown:hover > .menu {
       overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior: @overscrollBehavior;
     }
   }
 }

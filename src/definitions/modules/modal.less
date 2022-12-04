@@ -453,6 +453,7 @@
   }
   .scrolling.dimmable.dimmed > .dimmer {
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
     -webkit-overflow-scrolling: touch;
   }
   .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
@@ -467,6 +468,7 @@
   /* Undetached Scrolling */
   .scrolling.undetached.dimmable.dimmed {
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
     -webkit-overflow-scrolling: touch;
   }
   .scrolling.undetached.dimmable.dimmed > .dimmer {
@@ -482,6 +484,7 @@
   .ui.modal > .scrolling.content {
     max-height: @scrollingContentMaxHeight;
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
   }
 }
 
