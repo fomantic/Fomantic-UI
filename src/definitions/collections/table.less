@@ -399,6 +399,7 @@
   .ui.scrolling.table > tbody {
     display: block;
     overflow-y: scroll;
+    overscroll-behavior: @overscrollBehavior;
     scrollbar-width: thin;  /* Firefox */
     & > tr {
       display: table;
@@ -498,6 +499,7 @@
   .ui.overflowing.table {
     display: block;
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
   }
   @media only screen and (min-width: @tabletBreakpoint) {
     & when (@variationTableOverflowingShort) {
