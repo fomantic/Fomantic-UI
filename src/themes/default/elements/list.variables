@@ -179,7 +179,7 @@
 @orderedCountContent: counters(@orderedCountName, @orderedCountSeparator) " ";
 @orderedCountContentSuffixed: counters(@orderedCountName, @orderedCountSeparator) @orderedCountSuffix;
 @orderedCountColor: @textColor;
-@orderedCountDistance: 1.25rem;
+@orderedCountDistance: 0.65rem;
 @orderedCountOpacity: 0.8;
 @orderedCountTextAlign: right;
 @orderedCountVerticalAlign: middle;
