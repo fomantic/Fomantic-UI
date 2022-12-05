@@ -14,15 +14,14 @@
     function isWindow(obj) {
         return obj != null && obj === obj.window;
     }
+
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
     window = (typeof window != 'undefined' && window.Math == Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.api = $.fn.api = function (parameters) {
         var

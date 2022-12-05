@@ -9,9 +9,15 @@
  */
 
 (function ($, window, document, undefined) {
+    'use strict';
+
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
+
+    window = (window !== undefined && window.Math == Math)
+        ? window
+        : globalThis;
 
     $.site = $.fn.site = function (parameters) {
         var
