@@ -1302,8 +1302,8 @@
         pageMultiplier: 2,
 
         selector: {
-    mouseTarget: '.track, .thumb, .inner',
-    touchTarget: '.thumb'
+            mouseTarget: '.track, .thumb, .inner',
+            touchTarget: '.thumb',
         },
 
         className: {
