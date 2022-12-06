@@ -13,7 +13,10 @@
 
 /* Dimmer */
 @dimmerColor: rgba(0, 0, 0, 0.4);
-@dimmerTransition: opacity @duration;
+@dimmerTransition: all @duration;
+
+@blurredBackgroundColor: rgba(0, 0, 0, 0.6);
+@blurredEndFilter: e("blur(5px) grayscale(0.7)");
 
 /* Color below page */
 @canvasBackground: @lightBlack;

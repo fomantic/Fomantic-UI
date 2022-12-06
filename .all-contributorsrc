@@ -80,7 +80,10 @@
         "example",
         "ideas",
         "infra",
-        "review"
+        "review",
+        "a11y",
+        "security",
+        "maintenance"
       ]
     },
     {
@@ -597,6 +600,52 @@
       "name": "Michael Thies",
       "avatar_url": "https://avatars.githubusercontent.com/u/8234059?v=4",
       "profile": "https://www.mhthies.de",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "naveensrinivasan",
+      "name": "Naveen",
+      "avatar_url": "https://avatars.githubusercontent.com/u/172697?v=4",
+      "profile": "https://naveensrinivasan.dev",
+      "contributions": [
+        "security"
+      ]
+    },
+    {
+      "login": "mvorisek",
+      "name": "Michael Voříšek",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2228672?v=4",
+      "profile": "https://www.mvorisek.com/",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "xamey",
+      "name": "xamey",
+      "avatar_url": "https://avatars.githubusercontent.com/u/34269296?v=4",
+      "profile": "https://github.com/xamey",
+      "contributions": [
+        "code"
+      ]
+    },
+    {
+      "login": "Inselhopper",
+      "name": "Ingrid Bluoss",
+      "avatar_url": "https://avatars.githubusercontent.com/u/5477907?v=4",
+      "profile": "http://www.ingrid-bluoss.de",
+      "contributions": [
+        "code",
+        "a11y"
+      ]
+    },
+    {
+      "login": "mat128",
+      "name": "Mathieu Mitchell",
+      "avatar_url": "https://avatars.githubusercontent.com/u/234168?v=4",
+      "profile": "http://www.mathieumitchell.com",
       "contributions": [
         "code"
       ]

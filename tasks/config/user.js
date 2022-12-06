@@ -3,44 +3,43 @@
 *******************************/
 
 var
-  // npm dependencies
-  extend          = require('extend'),
-  fs              = require('fs'),
-  path            = require('path'),
-  requireDotFile  = require('require-dot-file'),
+    // npm dependencies
+    extend          = require('extend'),
+    fs              = require('fs'),
+    path            = require('path'),
+    requireDotFile  = require('require-dot-file'),
 
-  // semantic.json defaults
-  defaults        = require('./defaults'),
-  config          = require('./project/config'),
+    // semantic.json defaults
+    defaults        = require('./defaults'),
+    config          = require('./project/config'),
 
-  // Final config object
-  gulpConfig = {},
+    // Final config object
+    gulpConfig = {},
 
-  // semantic.json settings
-  userConfig
-
+    // semantic.json settings
+    userConfig
 ;
-
 
 /*******************************
           User Config
 *******************************/
 
 try {
-  // looks for config file across all parent directories
-  userConfig = requireDotFile('semantic.json', process.cwd());
-}
-catch(error) {
-  if(error.code === 'MODULE_NOT_FOUND') {
-    console.error('No semantic.json config found');
-  }
+    // looks for config file across all parent directories
+    userConfig = requireDotFile('semantic.json', process.cwd());
+    if (userConfig.valueOf() === false) {
+        console.error('No semantic.json config found');
+    }
+} catch (error) {
+    if (error.code === 'MODULE_NOT_FOUND') {
+        console.error('require-dot-file module not found');
+    }
 }
 
 // extend user config with defaults
 gulpConfig = (!userConfig)
-  ? extend(true, {}, defaults)
-  : extend(false, {}, defaults, userConfig)
-;
+    ? extend(true, {}, defaults)
+    : extend(false, {}, defaults, userConfig);
 
 /*******************************
        Add Derived Values
@@ -49,10 +48,8 @@ gulpConfig = (!userConfig)
 // adds calculated values
 config.addDerivedValues(gulpConfig);
 
-
 /*******************************
              Export
 *******************************/
 
 module.exports = gulpConfig;
-

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Container
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -189,6 +189,7 @@
   ---------------*/
   .ui.scrolling.container {
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
   }
   @media only screen and (max-width : @largestMobileScreen) {
     & when (@variationContainerScrollingShort) {

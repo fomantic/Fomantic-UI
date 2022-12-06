@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Header
+ * # Fomantic-UI 2.9.0 - Header
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -19,7 +19,7 @@
   border: none;
   margin: calc(2rem - 0.1428571428571429em) 0 1rem;
   padding: 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   line-height: 1.28571429em;
   text-transform: none;
@@ -262,7 +262,7 @@ h6.ui.header .sub.header {
   text-align: center;
   margin: 2rem 0 1rem;
 }
-.ui.icon.header:after {
+.ui.icon.header::after {
   content: '';
   display: block;
   height: 0;
@@ -272,6 +272,7 @@ h6.ui.header .sub.header {
 .ui.icon.header:first-child {
   margin-top: 0;
 }
+.ui.icon.header > .image.icon,
 .ui.icon.header > .icons,
 .ui.icon.header > i.icon {
   float: none;
@@ -297,6 +298,7 @@ h6.ui.header .sub.header {
 .ui.icon.header > i.square {
   font-size: 2em;
 }
+.ui.block.icon.header > .image.icon,
 .ui.block.icon.header > .icons,
 .ui.block.icon.header > i.icon {
   margin-bottom: 0;
@@ -639,7 +641,7 @@ a.ui.inverted.black.header.header.header:hover {
 .ui.justified.header {
   text-align: justify;
 }
-.ui.justified.header:after {
+.ui.justified.header::after {
   display: inline-block;
   content: '';
   width: 100%;

@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Dimmer
+ * # Fomantic-UI 2.9.0 - Dimmer
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -19,8 +19,8 @@
 .ui.dimmer {
   display: none;
   position: absolute;
-  top: 0 !important;
-  left: 0 !important;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   text-align: center;
@@ -33,8 +33,8 @@
           animation-fill-mode: both;
   -webkit-animation-duration: 0.5s;
           animation-duration: 0.5s;
-  -webkit-transition: background-color 0.5s linear;
-  transition: background-color 0.5s linear;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -79,6 +79,17 @@
 }
 .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.35);
+}
+.ui.dimmer:not(.inverted) {
+  
+/* IE11 */
+  scrollbar-face-color: #656565;
+  scrollbar-shadow-color: #656565;
+  scrollbar-track-color: #323232;
+  scrollbar-arrow-color: #323232;
+  
+/* firefox : first color thumb, second track */
+  scrollbar-color: rgba(255, 255, 255, 0.25) rgba(255, 255, 255, 0.1);
 }
 
 
@@ -170,22 +181,26 @@ body.dimmable > .dimmer {
       Blurring
   ---------------*/
 
-.blurring.dimmable > :not(.dimmer) {
-  -webkit-filter: initial;
-          filter: initial;
-  -webkit-transition: 800ms -webkit-filter ease;
-  transition: 800ms -webkit-filter ease;
-  transition: 800ms filter ease;
-  transition: 800ms filter ease, 800ms -webkit-filter ease;
-}
-.blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
-  -webkit-filter: blur(5px) grayscale(0.7);
-          filter: blur(5px) grayscale(0.7);
+@supports (not (-webkit-backdrop-filter: none)) and (not ((-webkit-backdrop-filter: none) or (backdrop-filter: none))) {
+  .blurring.dimmable > :not(.dimmer) {
+    -webkit-filter: initial;
+            filter: initial;
+    -webkit-transition: 800ms -webkit-filter ease;
+    transition: 800ms -webkit-filter ease;
+    transition: 800ms filter ease;
+    transition: 800ms filter ease, 800ms -webkit-filter ease;
+  }
+  .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+    -webkit-filter: blur(5px) grayscale(0.7);
+            filter: blur(5px) grayscale(0.7);
+  }
 }
 
 /* Dimmer Color */
 .blurring.dimmable > .dimmer {
   background: rgba(0, 0, 0, 0.6);
+  -webkit-backdrop-filter: blur(5px) grayscale(0.7);
+  backdrop-filter: blur(5px) grayscale(0.7);
 }
 .blurring.dimmable > .inverted.dimmer {
   background: rgba(255, 255, 255, 0.6);
@@ -282,11 +297,11 @@ body.dimmable > .dimmer {
   height: auto;
 }
 .ui[class*="bottom dimmer"] {
-  top: auto !important;
+  top: auto;
   bottom: 0;
 }
 .ui[class*="center dimmer"] {
-  top: 50% !important;
+  top: 50%;
   transform: translateY(-50%);
   -webkit-transform: translateY(calc(-50% - 0.5px));
 }

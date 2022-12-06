@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Card
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -559,7 +559,9 @@
     align-items: center;
     display: -webkit-box;
     display: -moz-box;
-    display: -ms-flexbox;
+    & when (@supportIE) {
+      display: -ms-flexbox;
+    }
     display: -webkit-flex;
     display: flex;
     width: 100%;

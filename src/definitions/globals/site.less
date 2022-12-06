@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Site
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -153,12 +153,13 @@ a:hover {
     background: @thumbHoverBackground;
   }
   body .ui {
-    /* IE11 */
-    scrollbar-face-color: @thumbBackgroundHex;
-    scrollbar-shadow-color: @thumbBackgroundHex;
-    scrollbar-track-color: @trackBackgroundHex;
-    scrollbar-arrow-color: @trackBackgroundHex;
-
+    & when (@supportIE) {
+      /* IE11 */
+      scrollbar-face-color: @thumbBackgroundHex;
+      scrollbar-shadow-color: @thumbBackgroundHex;
+      scrollbar-track-color: @trackBackgroundHex;
+      scrollbar-arrow-color: @trackBackgroundHex;
+    }
     /* firefox : first color thumb, second track*/
     scrollbar-color:  @thumbBackground @trackBackground;
     scrollbar-width: thin;
@@ -179,12 +180,13 @@ a:hover {
   }
 
   body .ui.inverted:not(.dimmer) {
-    /* IE11 */
-    scrollbar-face-color: @thumbInvertedBackgroundHex;
-    scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-    scrollbar-track-color: @trackInvertedBackgroundHex;
-    scrollbar-arrow-color: @trackInvertedBackgroundHex;
-
+    & when (@supportIE) {
+      /* IE11 */
+      scrollbar-face-color: @thumbInvertedBackgroundHex;
+      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+      scrollbar-track-color: @trackInvertedBackgroundHex;
+      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+    }
     /* firefox : first color thumb, second track */
     scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
   }

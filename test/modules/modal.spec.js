@@ -1,10 +1,8 @@
-describe("UI Modal", function() {
+describe('UI Modal', function () {
+    $.fn.dimmer.settings.debug = false;
 
-  $.fn.dimmer.settings.debug = false;
-
-  moduleTests({
-    module  : 'modal',
-    element : '.ui.modal'
-  });
-
+    moduleTests({
+        module: 'modal',
+        element: '.ui.modal',
+    });
 });

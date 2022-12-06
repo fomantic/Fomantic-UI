@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Ad
+ * # Fomantic-UI 2.9.0 - Ad
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -242,7 +242,7 @@
   position: relative;
   background: #545454;
 }
-.ui.test.ad:after {
+.ui.test.ad::after {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -255,10 +255,10 @@
   font-size: 1em;
   font-weight: bold;
 }
-.ui.mobile.test.ad:after {
+.ui.mobile.test.ad::after {
   font-size: 0.85714286em;
 }
-.ui.test.ad[data-text]:after {
+.ui.test.ad[data-text]::after {
   content: attr(data-text);
 }
 

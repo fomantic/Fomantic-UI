@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Feed
+ * # Fomantic-UI 2.9.0 - Feed
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -109,8 +109,8 @@
 }
 
 /*--------------
-      Date
----------------*/
+        Date
+  ---------------*/
 
 .ui.feed > .event > .content .date {
   margin: -0.5rem 0 0;
@@ -122,8 +122,8 @@
 }
 
 /*--------------
-     Summary
----------------*/
+       Summary
+  ---------------*/
 
 .ui.feed > .event > .content .summary {
   margin: 0;
@@ -143,25 +143,8 @@
 }
 
 /*--------------
-      User
----------------*/
-
-.ui.feed > .event > .content .user {
-  display: inline-block;
-  font-weight: bold;
-  margin-right: 0;
-  vertical-align: baseline;
-}
-.ui.feed > .event > .content .user img {
-  margin: -0.25em 0.25em 0 0;
-  width: auto;
-  height: 10em;
-  vertical-align: middle;
-}
-
-/*--------------
-   Inline Date
----------------*/
+       Inline Date
+    ---------------*/
 
 
 /* Date inside Summary */
@@ -177,8 +160,25 @@
 }
 
 /*--------------
-  Extra Summary
----------------*/
+        User
+  ---------------*/
+
+.ui.feed > .event > .content .user {
+  display: inline-block;
+  font-weight: bold;
+  margin-right: 0;
+  vertical-align: baseline;
+}
+.ui.feed > .event > .content .user img {
+  margin: -0.25em 0.25em 0 0;
+  width: auto;
+  height: 10em;
+  vertical-align: middle;
+}
+
+/*--------------
+    Extra Summary
+  ---------------*/
 
 .ui.feed > .event > .content .extra {
   margin: 0.5em 0 0;
@@ -204,8 +204,8 @@
 }
 
 /*--------------
-      Meta
----------------*/
+        Meta
+  ---------------*/
 
 .ui.feed > .event > .content .meta {
   display: inline-block;
@@ -223,7 +223,7 @@
   position: relative;
   margin-left: 0.75em;
 }
-.ui.feed > .event > .content .meta > *:after {
+.ui.feed > .event > .content .meta > *::after {
   content: '';
   color: rgba(0, 0, 0, 0.2);
   top: 0;

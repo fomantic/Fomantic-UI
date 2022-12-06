@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Nag
+ * # Fomantic-UI 2.9.0 - Nag
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -53,7 +53,7 @@ $.fn.nag = function(parameters) {
         $module         = $(this),
 
         $context        = (settings.context)
-          ? $(settings.context)
+          ? ([window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
           : $('body'),
 
         element         = this,
@@ -403,7 +403,7 @@ $.fn.nag = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
