@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Dropdown
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -448,6 +448,7 @@ select.ui.dropdown {
   .ui.selection.dropdown .menu {
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
     border-top-width: 0 !important;
@@ -765,6 +766,7 @@ select.ui.dropdown {
   .ui.search.dropdown .menu {
     overflow-x: hidden;
     overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
   }
@@ -1319,11 +1321,7 @@ select.ui.dropdown {
   .ui.dropdown .scrolling.menu {
     overflow-x: hidden;
     overflow-y: auto;
-  }
-
-  .ui.scrolling.dropdown .menu {
-    overflow-x: hidden;
-    overflow-y: auto;
+    overscroll-behavior: @overscrollBehavior;
     backface-visibility: hidden;
     -webkit-overflow-scrolling: touch;
     min-width: 100% !important;
@@ -1332,13 +1330,10 @@ select.ui.dropdown {
 
   .ui.dropdown .scrolling.menu {
     position: static;
-    overflow-y: auto;
     border: none;
     box-shadow: none !important;
-    border-radius: 0 !important;
+    border-radius: 0 0 @floatingMenuBorderRadius @floatingMenuBorderRadius !important;
     margin: 0 !important;
-    min-width: 100% !important;
-    width: auto !important;
     border-top: @menuBorder;
   }
   .ui.scrolling.dropdown .menu .item.item.item,
@@ -1479,7 +1474,7 @@ select.ui.dropdown {
 
   .ui.simple.active.dropdown > .menu,
   .ui.simple.dropdown:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 100%;
@@ -1487,12 +1482,21 @@ select.ui.dropdown {
   }
   .ui.simple.dropdown > .menu > .item:active > .menu,
   .ui.simple.dropdown .menu .item:hover > .menu {
-    overflow: auto;
+    overflow: visible;
     width: auto;
     height: auto;
     top: 0 !important;
     left: 100%;
     opacity: 1;
+  }
+  & when (@variationDropdownSelection) {
+    .ui.simple.selection.active.dropdown > .menu,
+    .ui.simple.selection.dropdown:hover > .menu,
+    .ui.simple.selection.dropdown > .menu > .item:active > .menu,
+    .ui.simple.selection.dropdown .menu .item:hover > .menu {
+      overflow: auto;
+      overscroll-behavior: @overscrollBehavior;
+    }
   }
   .ui.simple.dropdown > .menu > .item:active > .left.menu,
   .ui.simple.dropdown .menu .item:hover > .left.menu,
@@ -1520,6 +1524,7 @@ select.ui.dropdown {
     .ui.simple.scrolling.dropdown:hover > .menu {
       overflow-x: hidden;
       overflow-y: auto;
+      overscroll-behavior: @overscrollBehavior;
     }
   }
 }
@@ -1550,13 +1555,10 @@ select.ui.dropdown {
     box-shadow: @floatingMenuBoxShadow !important;
     border-radius: @floatingMenuBorderRadius !important;
   }
-  .ui.floating.dropdown > .menu {
-    border-radius: @floatingMenuBorderRadius !important;
-  }
   .ui:not(.upward).floating.dropdown > .menu {
     margin-top: @floatingMenuDistance;
   }
-  .ui.upward.floating.dropdown > .menu {
+  .ui.upward.floating.dropdown:not(.simple) > .menu {
     margin-bottom: @floatingMenuDistance;
   }
 }

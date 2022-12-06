@@ -1,4 +1,21 @@
 @fontPath  : '../../themes/material/assets/fonts';
+@fonts: {
+  @solid: {
+    font-family: @fontName;
+    src: url("@{fontPath}/@{fontName}.woff2") format('woff2')
+    if(@supportIE, e(',') url("@{fontPath}/@{fontName}.woff") format('woff'));
+    font-style: normal;
+    font-weight: @normal;
+    font-variant: normal;
+    text-decoration: inherit;
+    text-transform: none;
+  };
+};
+@icon-deprecated-map: {};
+@icon-outline-map: {};
+@icon-outline-aliases-map: {};
+@icon-brand-map: {};
+@icon-brand-aliases-map: {};
 
 @width: 1em;
 @height: 1em;

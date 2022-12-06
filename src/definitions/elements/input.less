@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Input
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -97,7 +97,7 @@
 
   .ui.disabled.input > input,
   .ui.input:not(.disabled) input[disabled] {
-    pointer-events: none;
+    pointer-events: @disabledPointerEvents;
   }
 }
 
@@ -191,7 +191,7 @@
       color: @formStates[@@state][color];
       box-shadow: @formStates[@@state][boxShadow];
     }
-    & when (@state=error) {
+    & when (@state=error) and (@variationInputInvalid) {
       .ui.input > input:not(:placeholder-shown):invalid {
         background-color: @formStates[@@state][background];
         border-color: @formStates[@@state][borderColor];
@@ -428,7 +428,8 @@
   }
 
   /* Left Labeled */
-  .ui[class*="left icon"].input > .ui.dropdown,
+  .ui[class*="left icon"].input > .ui.dropdown:first-child,
+  .ui[class*="left icon"].input > i.icon + .ui.dropdown,
   .ui[class*="left corner labeled"].input > .ui.dropdown,
   .ui[class*="left corner labeled"].input > textarea,
   .ui[class*="left corner labeled"].input > input {
@@ -440,9 +441,9 @@
     .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
       padding-right: @labeledIconInputMargin;
     }
-    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
-    .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
-    .ui[class*="left corner labeled"][class*="left icon"].input > input {
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > textarea,
+    .ui.ui[class*="left corner labeled"][class*="left icon"].input > input {
       padding-left: @labeledAndIconMargin;
     }
     .ui[class*="left corner labeled"].icon.input > i.icon {
@@ -487,7 +488,15 @@
       padding-right: @labeledMargin;
     }
   }
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
+  @supports selector(:has(.f)) {
+    .ui.icon.input:not([class*="left icon"]) > .ui.dropdown> .dropdown.icon {
+      padding-right: initial;
+    }
+    .ui.icon.input:not([class*="left icon"]):not(:has(.ui.dropdown~input)) > .ui.dropdown > .dropdown.icon {
+      padding-right: @labeledMargin;
+    }
+  }
+  .ui.ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
     & > .search {
       padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
     }
@@ -718,12 +727,13 @@
       color: @fileButtonTextColor;
     }
   }
-
-  .ui.form .field input[type="file"]:required:invalid,
-  .ui.file.input input[type="file"]:required:invalid {
-    color: @negativeTextColor;
-    background: @negativeBackgroundColor ;
-    border-color: @negativeBorderColor;
+  & when (@variationInputInvalid) {
+    .ui.form .field input[type="file"]:required:invalid,
+    .ui.file.input input[type="file"]:required:invalid {
+      color: @negativeTextColor;
+      background: @negativeBackgroundColor;
+      border-color: @negativeBorderColor;
+    }
   }
 
   input[type="file"].ui.invisible.file.input,

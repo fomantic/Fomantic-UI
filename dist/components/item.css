@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Item
+ * # Fomantic-UI 2.9.0 - Item
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -59,7 +59,7 @@
       Item
 ---------------*/
 
-.ui.items > .item:after {
+.ui.items > .item::after {
   display: block;
   content: ' ';
   height: 0;
@@ -75,8 +75,8 @@
 }
 
 /*--------------
-     Images
----------------*/
+       Images
+  ---------------*/
 
 .ui.items > .item > .image {
   position: relative;
@@ -121,7 +121,7 @@
   border: none;
   border-radius: 0;
 }
-.ui.items > .item > .content:after {
+.ui.items > .item > .content::after {
   display: block;
   content: ' ';
   height: 0;
@@ -141,7 +141,7 @@
 .ui.items > .item > .content > .header {
   display: inline-block;
   margin: -0.21425em 0 0;
-  font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font-family: 'Lato', system-ui, -apple-system, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: bold;
   color: rgba(0, 0, 0, 0.85);
 }
@@ -152,8 +152,8 @@
 }
 
 /*--------------
-     Floated
----------------*/
+       Floated
+  ---------------*/
 
 .ui.items > .item [class*="left floated"] {
   float: left;
@@ -163,8 +163,8 @@
 }
 
 /*--------------
-  Content Image
----------------*/
+    Content Image
+  ---------------*/
 
 .ui.items > .item .content img {
   -ms-flex-item-align: center;
@@ -179,8 +179,8 @@
 }
 
 /*--------------
-   Description
----------------*/
+     Description
+  ---------------*/
 
 .ui.items > .item > .content > .description {
   margin-top: 0.6em;
@@ -202,8 +202,8 @@
 }
 
 /*--------------
-      Meta
----------------*/
+        Meta
+  ---------------*/
 
 .ui.items > .item .meta {
   margin: 0.5em 0 0.5em;
@@ -295,8 +295,8 @@
 }
 
 /*----------------
-  Extra Content
------------------*/
+    Extra Content
+  -----------------*/
 
 .ui.items > .item .extra {
   display: block;
@@ -320,7 +320,7 @@
 .ui.items > .item .extra > [class*="right floated"] {
   margin: 0.25rem 0 0.25rem 0.5rem;
 }
-.ui.items > .item .extra:after {
+.ui.items > .item .extra::after {
   display: block;
   content: ' ';
   height: 0;

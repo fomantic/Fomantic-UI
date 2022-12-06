@@ -51,13 +51,6 @@
 @computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
 @largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
-/*-------------------
-       Scrolling
---------------------*/
-@scrollingMobileMaxHeight: 15em;
-@scrollingTabletMaxHeight: 18em;
-@scrollingComputerMaxHeight: 24em;
-@scrollingWidescreenMaxHeight: 30em;
 
 /*-------------------
        Types

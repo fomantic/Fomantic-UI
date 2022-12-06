@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Site
+ * # Fomantic-UI 2.9.0 - Site
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -359,7 +359,7 @@ $.site = $.fn.site = function(parameters) {
         response
       ;
       passedArguments = passedArguments || queryArguments;
-      context         = element         || context;
+      context         = context         || element;
       if(typeof query == 'string' && object !== undefined) {
         query    = query.split(/[\. ]/);
         maxDepth = query.length - 1;

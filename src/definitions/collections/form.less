@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Form
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -591,7 +591,7 @@
       border-radius: @formStates[@@state][borderRadius];
       box-shadow: @formStates[@@state][boxShadow];
     }
-    & when (@state=error) {
+    & when (@state=error) and (@variationFormInvalid) {
       .ui.form .field input:not(:placeholder-shown):invalid {
         color: @c;
         background: @bg;
@@ -760,7 +760,7 @@
   .ui.form .disabled.fields .field,
   .ui.form .disabled.field,
   .ui.form .field :disabled {
-    pointer-events: none;
+    pointer-events: @disabledPointerEvents;
     opacity: @disabledOpacity;
   }
   .ui.form .field.disabled > label,

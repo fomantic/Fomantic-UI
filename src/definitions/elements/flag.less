@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Flag
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -48,24 +48,25 @@ each(@size-map, {
 
 /*rtl:begin:ignore*/
 
+// for simplicity, class and alias names have to be unique and different to countrycode otherwise false
 each(@flags, {
   @unicode: replace(@key,'@','');
   @cc: replace(@flags[@@unicode][countrycode],'_','.','g');
   @cls: replace(@flags[@@unicode][class],'_','.','g');
   @alias: replace(@flags[@@unicode][aliasClass],'_','.','g');
   @alias2: replace(@flags[@@unicode][aliasClass2],'_','.','g');
-  & when (@cc = @cls) and (@alias = false) and (@alias2 = false){
+  & when (@cls = false){
     i.flag.@{cc}::before {
       background-image: url("@{flagPath}@{unicode}.@{flagFileType}");
     }
   }
-  & when not (@cc = @cls) and (@alias = false) and (@alias2 = false) {
+  & when not (@cls = false) and (@alias = false) {
     i.flag.@{cc}::before,
     i.flag.@{cls}::before {
       background-image: url("@{flagPath}@{unicode}.@{flagFileType}");
     }
   }
-  & when not (@alias = false) and (@alias2 = false) {
+  & when not (@cls = false) and not (@alias = false) and (@alias2 = false) {
     i.flag.@{cc}::before,
     i.flag.@{cls}::before,
     i.flag.@{alias}::before {

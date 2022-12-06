@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Icon
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -23,16 +23,13 @@
              Icon
 *******************************/
 & when (@importIcons) {
-  @font-face {
-    font-family: 'Icons';
-    src: @fallbackSRC;
-    src: @src;
-    font-style: normal;
-    font-weight: @normal;
-    font-variant: normal;
-    text-decoration: inherit;
-    text-transform: none;
-  }
+  each(@fonts, {
+    @font-face {
+      each(@value,{
+          @{key}: @value;
+      });
+    }
+  })
 }
 
 i.icon {
@@ -44,7 +41,7 @@ i.icon {
   width: @width;
   height: @height;
 
-  font-family: 'Icons';
+  font-family: @fontName;
   font-style: normal;
   font-weight: @normal;
   text-decoration: inherit;
@@ -166,7 +163,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: scale(1, -1);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.flipped.icon:not(.corner):not(:first-child),
     .icons i.horizontally.flipped.icon:not(.corner):not(:first-child) {
       transform: translateX(-50%) translateY(-50%) scale(-1, 1);
@@ -197,7 +194,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: rotate(180deg);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.rotated.rotated.icon:not(.corner):not(:first-child),
     .icons i.right.rotated.icon:not(.corner):not(:first-child),
     .icons i.clockwise.rotated.icon:not(.corner):not(:first-child) {
@@ -248,7 +245,7 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     transform: scale(1, -1) rotate(180deg);
   }
 
-  & when(@variationIconGroups) {
+  & when (@variationIconGroups) {
     .icons i.rotated.flipped.icon:not(.corner):not(:first-child),
     .icons i.right.rotated.flipped.icon:not(.corner):not(:first-child),
     .icons i.clockwise.rotated.flipped.icon:not(.corner):not(:first-child) {
@@ -516,6 +513,162 @@ i.icons {
       right: auto;
       bottom: @borderedGroupCornerOffset;
     }
+  }
+}
+
+.generateIcons(@map, @fontFamily) {
+  each(@map,{
+    @escapedKey: replace(@key,'^([0-9])','\3$1 ');
+    @normalizedKey: replace(@escapedKey,'_','.','g');
+    i.icon.@{normalizedKey}::before {
+      content: "@{value}";
+      & when not (@fontFamily = false) {
+        font-family: @fontFamily;
+      }
+    }
+  });
+};
+
+.generateSecondaryIcons(@map) {
+  each(@map,{
+    @escapedKey: replace(@key,'^([0-9])','\3$1 ');
+    @normalizedKey: replace(@escapedKey,'_','.','g');
+    i.icon.@{normalizedKey}::after {
+      content: "@{value}";
+    }
+  });
+};
+
+& when (@variationIconDeprecated) {
+
+  /* Deprecated *In/Out Naming Conflict) */
+  .generateIcons(@icon-deprecated-map,false);
+}
+
+& when (@variationIconSolid) {
+  /*******************************
+          Solid Icons
+  *******************************/
+
+  /* Icons */
+  .generateIcons(@icon-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-aliases-map,false);
+  }
+}
+
+& when (@variationIconOutline) {
+  /*******************************
+           Outline Icons
+  *******************************/
+
+  i.icon.outline {
+    font-family: @outlineFontName;
+  }
+
+  /* Icons */
+  .generateIcons(@icon-outline-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-outline-aliases-map,false);
+  }
+}
+
+& when (@variationIconThin) {
+  /*******************************
+         Thin Icons
+  *******************************/
+
+  /* Icons */
+  i.icon.thin {
+    font-family: @thinFontName;
+  }
+  .generateIcons(@icon-thin-map,false);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-thin-aliases-map,false);
+  }
+}
+
+& when (@variationIconBrand) {
+  /*******************************
+            Brand Icons
+  *******************************/
+
+  /* Icons */
+  .generateIcons(@icon-brand-map,@brandFontName);
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-brand-aliases-map,@brandFontName);
+  }
+}
+
+& when (@variationIconDuotone) {
+  /*******************************
+            Duotone Icons
+  *******************************/
+
+  /* Make duotone icons use the proper font */
+  i.icon.duotone {
+    font-family: @duotoneFontName;
+    /* To position the secondary layer on top of the first layer */
+    position: relative;
+  }
+
+  /* Set the default opacity levels and colors for each layer */
+  i.icon.duotone::before {
+    color: @duotonePrimaryColor;
+    opacity: @duotonePrimaryOpacity;
+  }
+
+  i.icon.duotone::after {
+    /* Position secondary layer to the left, centered horizontally and aligned vertically to flex with different line heights */
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+
+    color: @duotoneSecondaryColor;
+    opacity: @duotoneSecondaryOpacity;
+  }
+
+  .generateIcons(@icon-duotone-map,false);
+  .generateSecondaryIcons(@icon-duotone-secondary-map);
+
+  & when (@variationIconAliases) {
+
+    /* Aliases */
+    .generateIcons(@icon-duotone-aliases-map,false);
+    .generateSecondaryIcons(@icon-duotone-secondary-aliases-map);
+  }
+
+  /*
+   * Colors for duotone icons, in the form `primary-secondary`(e.g. `black-grey duotone icon`).
+   */
+  & when not (@variationIconColors = false) {
+    each(@variationIconColors, {
+      @color: @value;
+      @c: @colors[@@color][color];
+      @l: @colors[@@color][light];
+
+      i.icon.duotone[class*="@{color}-"]::before,
+      i.icon.duotone[class*="-@{color}"]::after {
+        color: @c;
+      }
+
+      & when (@variationIconInverted) {
+        i.icon.inverted.duotone[class*="@{color}-"]::before,
+        i.icon.inverted.duotone[class*="-@{color}"]::after {
+          color: @l;
+        }
+      }
+    })
   }
 }
 

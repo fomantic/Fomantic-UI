@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Sidebar
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -41,6 +41,7 @@
   border-radius: 0 !important;
   margin: 0 !important;
   overflow-y: auto !important;
+  overscroll-behavior: @overscrollBehavior;
   z-index: @topLayer;
 }
 
@@ -197,6 +198,17 @@ body.pushable > .pusher {
   width: 100% !important;
   height: 100% !important;
   opacity: 1 !important;
+}
+& when (@variationSidebarBlurring) {
+  .pushable > .pusher.dimmed.blurring:not(.closing)::after {
+    background: @blurredBackgroundColor;
+    -webkit-backdrop-filter: @blurredEndFilter;
+    backdrop-filter: @blurredEndFilter;
+
+  }
+}
+.pushable > .pusher.closing.dimmed::after {
+  opacity: 0 !important;
 }
 
 /*--------------

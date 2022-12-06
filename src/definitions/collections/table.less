@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Table
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -399,6 +399,7 @@
   .ui.scrolling.table > tbody {
     display: block;
     overflow-y: scroll;
+    overscroll-behavior: @overscrollBehavior;
     scrollbar-width: thin;  /* Firefox */
     & > tr {
       display: table;
@@ -498,6 +499,7 @@
   .ui.overflowing.table {
     display: block;
     overflow: auto;
+    overscroll-behavior: @overscrollBehavior;
   }
   @media only screen and (min-width: @tabletBreakpoint) {
     & when (@variationTableOverflowingShort) {
@@ -1556,8 +1558,8 @@
     border-color: @invertedCellBorderColor;
   }
   & when (@variationTableDisabled) {
-    .ui.inverted.table tr.disabled td,
-    .ui.inverted.table tr td.disabled,
+    .ui.ui.ui.inverted.table tr.disabled td,
+    .ui.ui.ui.inverted.table tr td.disabled,
     .ui.inverted.table tr.disabled:hover td,
     .ui.inverted.table tr:hover td.disabled {
       pointer-events: none;

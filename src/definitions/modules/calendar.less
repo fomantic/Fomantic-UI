@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Calendar
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -21,18 +21,22 @@
             Popup
 *******************************/
 
-.ui.calendar .ui.popup {
+.ui.calendar.popup {
   max-width: none;
   padding: 0;
   border: none;
   user-select: none;
+  &.inverted::before when (@variationCalendarInverted) {
+    background: @invertedArrowBackground;
+  }
 }
 
 /*******************************
             Calendar
 *******************************/
 
-.ui.calendar .calendar:focus {
+.ui.calendar .calendar:focus,
+.ui.calendar.popup:focus {
   outline: 0;
 }
 
@@ -40,12 +44,12 @@
             Grid
 *******************************/
 
-.ui.calendar .ui.popup .ui.grid {
+.ui.calendar.popup .ui.grid {
   display: block;
   white-space: nowrap;
 }
 
-.ui.calendar .ui.popup .ui.grid > .column {
+.ui.calendar.popup .ui.grid > .column {
   width: auto;
 }
 
@@ -146,8 +150,8 @@
   box-shadow: @rangeBoxShadow;
 }
 
-.ui.calendar:not(.disabled) .calendar:focus .ui.table tbody tr td.focus,
-.ui.calendar:not(.disabled) .calendar.active .ui.table tbody tr td.focus {
+.ui.calendar:not(.disabled):focus .ui.table tbody tr td.focus,
+.ui.calendar:not(.disabled).popup.active .ui.table tbody tr td.focus {
   box-shadow: @focusBoxShadow;
 }
 
@@ -159,10 +163,10 @@
   }
 
   .ui.inverted.calendar:not(.disabled) .calendar:focus .ui.table.inverted tbody tr td.focus,
-  .ui.inverted.calendar:not(.disabled) .calendar.active .ui.table.inverted tbody tr td.focus {
+  .ui.inverted.calendar:not(.disabled).popup.active .ui.table.inverted tbody tr td.focus {
     box-shadow: @focusInvertedBoxShadow;
   }
-  .ui.inverted.calendar .ui.inverted.table tr .disabled {
+  .ui.inverted.calendar .ui.ui.ui.inverted.table tr .disabled {
     color: @invertedDisabledTextColor;
   }
 

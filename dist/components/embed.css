@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Video
+ * # Fomantic-UI 2.9.0 - Video
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -76,7 +76,7 @@
   height: 100%;
   z-index: 2;
 }
-.ui.embed > i.icon:after {
+.ui.embed > i.icon::after {
   position: absolute;
   top: 0;
   left: 0;
@@ -90,7 +90,7 @@
   -webkit-transition: opacity 0.5s ease;
   transition: opacity 0.5s ease;
 }
-.ui.embed > i.icon:before {
+.ui.embed > i.icon::before {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -114,12 +114,12 @@
      Hover
 ---------------*/
 
-.ui.embed i.icon:hover:after {
+.ui.embed i.icon:hover::after {
   background: -webkit-radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   background: radial-gradient(transparent 45%, rgba(0, 0, 0, 0.3));
   opacity: 1;
 }
-.ui.embed i.icon:hover:before {
+.ui.embed i.icon:hover::before {
   color: #FFFFFF;
 }
 
