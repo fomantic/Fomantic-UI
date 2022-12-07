@@ -2878,7 +2878,7 @@
                         var
                             $addition         = $menu.children(selector.addition),
                             $existingItem     = module.get.item(value),
-                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length,
+                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0,
                             hasUserSuggestion = $addition.length > 0,
                             html
                         ;
