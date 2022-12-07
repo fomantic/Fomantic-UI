@@ -148,7 +148,6 @@ module.exports = {
         'unicorn/prefer-logical-operator-over-ternary': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
-        'unicorn/prefer-regexp-test': 'off',
         'unicorn/prefer-switch': 'off',
         'unicorn/prefer-ternary': 'off',
     },

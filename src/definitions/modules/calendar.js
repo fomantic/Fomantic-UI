@@ -1660,11 +1660,11 @@
                 if (text.length === 0) {
                     return null;
                 }
-                if (text.match(/^\d{4}(?:[./-]\d{1,2}){2}$/)) {
+                if (/^\d{4}(?:[./-]\d{1,2}){2}$/.test(text)) {
                     text = text.replace(/[./-]/g, '/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
-                text = settings.monthFirst || !text.match(/^\d{1,2}[./-]/) ? text : text.replace(/[./-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
+                text = settings.monthFirst || !/^\d{1,2}[./-]/.test(text) ? text : text.replace(/[./-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
                 var textDate = new Date(text);
                 var numberOnly = text.match(/^\d+$/) !== null;
                 if (!numberOnly && !isNaN(textDate.getDate())) {
