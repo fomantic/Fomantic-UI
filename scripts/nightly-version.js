@@ -59,7 +59,7 @@ const getNightlyVersion = async function () {
         actions.setOutput('shouldPublish', false);
 
         console.log('No new commits since last publish. Exiting.');
-        process.exit(0);
+        process.exit(0); // eslint-disable-line unicorn/no-process-exit
 
         return;
     }
