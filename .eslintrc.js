@@ -121,7 +121,6 @@ module.exports = {
         'no-cond-assign': 'off',
         'no-labels': 'off',
         'no-loop-func': 'off',
-        'no-new-func': 'off',
         'no-prototype-builtins': 'off',
         'no-return-assign': 'off',
         'no-self-assign': 'off',
