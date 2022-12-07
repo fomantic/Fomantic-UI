@@ -307,11 +307,12 @@
                     empty: function ($field) {
                         if (!$field || $field.length === 0) {
                             return true;
-                        } else if ($field.is(selector.checkbox)) {
-                            return !$field.is(':checked');
-                        } else {
-                            return module.is.blank($field);
                         }
+                        if ($field.is(selector.checkbox)) {
+                            return !$field.is(':checked');
+                        }
+
+                        return module.is.blank($field);
                     },
                     blank: function ($field) {
                         return String($field.val()).trim() === '';
@@ -324,16 +325,16 @@
                             module.verbose('Checking if field is valid', field);
 
                             return module.validate.field(validation[field], field, !!showErrors);
-                        } else {
-                            module.verbose('Checking if form is valid');
-                            $.each(validation, function (fieldName, field) {
-                                if (!module.is.valid(fieldName, showErrors)) {
-                                    allValid = false;
-                                }
-                            });
-
-                            return allValid;
                         }
+
+                        module.verbose('Checking if form is valid');
+                        $.each(validation, function (fieldName, field) {
+                            if (!module.is.valid(fieldName, showErrors)) {
+                                allValid = false;
+                            }
+                        });
+
+                        return allValid;
                     },
                     dirty: function () {
                         return dirty;
@@ -488,9 +489,9 @@
                     changeEvent: function (type, $input) {
                         if (type == 'checkbox' || type == 'radio' || type == 'hidden' || $input.is('select')) {
                             return 'change';
-                        } else {
-                            return module.get.inputEvent();
                         }
+
+                        return module.get.inputEvent();
                     },
                     inputEvent: function () {
                         return (document.createElement('input').oninput !== undefined)
@@ -1744,6 +1745,7 @@
                     parts
                 ;
                 if (!range || ['', '..'].indexOf(range) !== -1) {
+
                     // do nothing
                 } else if (range.indexOf('..') == -1) {
                     if (regExp.test(range)) {

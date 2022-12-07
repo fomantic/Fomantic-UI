@@ -1464,17 +1464,16 @@
                     content: '',
                     title: '',
                 }, queryArguments[0]);
-            } else {
-                if (!isFunction(queryArguments[queryArguments.length - 1])) {
-                    queryArguments.push(function () {});
-                }
-
-                return {
-                    handler: queryArguments.pop(),
-                    content: queryArguments.pop() || '',
-                    title: queryArguments.pop() || '',
-                };
             }
+            if (!isFunction(queryArguments[queryArguments.length - 1])) {
+                queryArguments.push(function () {});
+            }
+
+            return {
+                handler: queryArguments.pop(),
+                content: queryArguments.pop() || '',
+                title: queryArguments.pop() || '',
+            };
         },
         alert: function () {
             var

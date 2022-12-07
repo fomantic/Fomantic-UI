@@ -1604,19 +1604,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Up key pressed, changing active item');
-                                        $selectedItem
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Up key pressed, changing active item');
+                                    $selectedItem
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1630,19 +1631,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Down key pressed, changing active item');
-                                        $item
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Down key pressed, changing active item');
+                                    $item
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1725,11 +1727,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown, canceling callback');
+
+                        return false;
                     },
                     eventOnElement: function (event, callback) {
                         var
@@ -1747,11 +1749,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown menu, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown menu, canceling callback');
+
+                        return false;
                     },
                 },
 
@@ -1880,7 +1882,8 @@
                         ;
                         if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
-                        } else if (!returnEndPos && 'selectionStart' in input) {
+                        }
+                        if (!returnEndPos && 'selectionStart' in input) {
                             return input.selectionStart;
                         }
                         if (document.selection) {
@@ -2170,16 +2173,16 @@
                                 }
 
                                 return true;
-                            } else {
-                                module.verbose('No longer at maximum selection count');
-                                module.remove.message();
-                                module.remove.filteredItem();
-                                if (module.is.searchSelection()) {
-                                    module.filterItems();
-                                }
-
-                                return false;
                             }
+
+                            module.verbose('No longer at maximum selection count');
+                            module.remove.message();
+                            module.remove.filteredItem();
+                            if (module.is.searchSelection()) {
+                                module.filterItems();
+                            }
+
+                            return false;
                         }
 
                         return true;

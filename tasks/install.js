@@ -146,16 +146,16 @@ module.exports = function (callback) {
                 callback();
 
                 return;
-            } else {
-                console.log('Current version of Fomantic UI already installed');
-                callback();
-
-                return;
             }
-        } else {
-            console.error('Cannot locate files to update at path:', updatePaths.definition);
-            console.log('Running installer');
+
+            console.log('Current version of Fomantic UI already installed');
+            callback();
+
+            return;
         }
+
+        console.error('Cannot locate files to update at path:', updatePaths.definition);
+        console.log('Running installer');
     }
 
     /* --------------
@@ -352,16 +352,16 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder))
                 ;
-            } else {
-                console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
-
-                return gulp.src(source.themeConfig)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' }))
-                    .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder))
-                ;
             }
+
+            console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
+
+            return gulp.src(source.themeConfig)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' }))
+                .pipe(replace(regExp.siteVariable, siteVariable))
+                .pipe(gulp.dest(installPaths.themeConfigFolder))
+            ;
         });
 
         /* --------------
@@ -383,16 +383,16 @@ module.exports = function (callback) {
                     .pipe(jsonEditor(jsonConfig))
                     .pipe(gulp.dest(installPaths.configFolder))
                 ;
-            } else {
-                console.info('Creating config file (semantic.json)', installPaths.config);
-
-                return gulp.src(source.config)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' })) // remove .template from ext
-                    .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
-                    .pipe(gulp.dest(installPaths.configFolder))
-                ;
             }
+
+            console.info('Creating config file (semantic.json)', installPaths.config);
+
+            return gulp.src(source.config)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' })) // remove .template from ext
+                .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
+                .pipe(gulp.dest(installPaths.configFolder))
+            ;
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);

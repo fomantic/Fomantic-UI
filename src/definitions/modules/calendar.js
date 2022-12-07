@@ -1199,9 +1199,9 @@
 
                                 return enabled;
                             });
-                        } else {
-                            return true;
                         }
+
+                        return true;
                     },
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
@@ -1216,11 +1216,13 @@
                                     dateObject[metadata.date] = d;
 
                                     return dateObject;
-                                } else if (d !== null && typeof d === 'object') {
+                                }
+                                if (d !== null && typeof d === 'object') {
                                     if (d[metadata.year]) {
                                         if (typeof d[metadata.year] === 'number' && date.getFullYear() == d[metadata.year]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.year])) {
+                                        }
+                                        if (Array.isArray(d[metadata.year])) {
                                             if (d[metadata.year].indexOf(date.getFullYear()) > -1) {
                                                 return d;
                                             }
@@ -1228,7 +1230,8 @@
                                     } else if (d[metadata.month]) {
                                         if (typeof d[metadata.month] === 'number' && date.getMonth() == d[metadata.month]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.month])) {
+                                        }
+                                        if (Array.isArray(d[metadata.month])) {
                                             if (d[metadata.month].indexOf(date.getMonth()) > -1) {
                                                 return d;
                                             }
@@ -1241,7 +1244,8 @@
                                     } else if (d[metadata.date] && mode === 'day') {
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode)) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.date])) {
+                                        }
+                                        if (Array.isArray(d[metadata.date])) {
                                             if (d[metadata.date].some(function (idate) {
                                                 return module.helper.dateEqual(date, idate, mode);
                                             })) {
@@ -1262,7 +1266,8 @@
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
                                         return d;
-                                    } else if (Array.isArray(d[metadata.hours])) {
+                                    }
+                                    if (Array.isArray(d[metadata.hours])) {
                                         if (d[metadata.hours].indexOf(date.getHours()) > -1) {
                                             return d;
                                         }
@@ -1273,11 +1278,13 @@
                                 d = hours[i];
                                 if (typeof d === 'number' && date.getHours() == d) {
                                     return null;
-                                } else if (d !== null && typeof d === 'object') {
+                                }
+                                if (d !== null && typeof d === 'object') {
                                     if (d[metadata.days] && hourCheck(date, d)) {
                                         if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.days])) {
+                                        }
+                                        if (Array.isArray(d[metadata.days])) {
                                             if (d[metadata.days].indexOf(date.getDay()) > -1) {
                                                 return d;
                                             }
@@ -1285,7 +1292,8 @@
                                     } else if (d[metadata.date] && hourCheck(date, d)) {
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.date])) {
+                                        }
+                                        if (Array.isArray(d[metadata.date])) {
                                             if (d[metadata.date].some(function (idate) {
                                                 return module.helper.dateEqual(date, idate, mode);
                                             })) {

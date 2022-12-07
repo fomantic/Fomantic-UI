@@ -105,12 +105,14 @@ module.exports = {
                         name: 'Bower',
                         root: nextDirectory,
                     };
-                } else if (folder == 'node_modules') {
+                }
+                if (folder == 'node_modules') {
                     return {
                         name: 'NPM',
                         root: nextDirectory,
                     };
-                } else if (folder == 'composer') {
+                }
+                if (folder == 'composer') {
                     return {
                         name: 'Composer',
                         root: nextDirectory,

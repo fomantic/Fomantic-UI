@@ -523,23 +523,23 @@
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
-                        } else {
-                            return $track.offset().left;
                         }
+
+                        return $track.offset().left;
                     },
                     trackLength: function () {
                         if (module.is.vertical()) {
                             return $track.height();
-                        } else {
-                            return $track.width();
                         }
+
+                        return $track.width();
                     },
                     trackLeft: function () {
                         if (module.is.vertical()) {
                             return $track.position().top;
-                        } else {
-                            return $track.position().left;
                         }
+
+                        return $track.position().left;
                     },
                     trackStartPos: function () {
                         return module.is.reversed() ? module.get.trackLeft() + module.get.trackLength() : module.get.trackLeft();
@@ -637,11 +637,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return module.secondThumbVal;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return module.thumbVal;
@@ -655,11 +656,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return secondPos;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return position;
@@ -852,15 +854,18 @@
                         ;
                         if (key == downArrow || key == leftArrow) {
                             return SINGLE_BACKSTEP;
-                        } else if (key == upArrow || key == rightArrow) {
-                            return SINGLE_STEP;
-                        } else if (key == keys.pageDown) {
-                            return BIG_BACKSTEP;
-                        } else if (key == keys.pageUp) {
-                            return BIG_STEP;
-                        } else {
-                            return NO_STEP;
                         }
+                        if (key == upArrow || key == rightArrow) {
+                            return SINGLE_STEP;
+                        }
+                        if (key == keys.pageDown) {
+                            return BIG_BACKSTEP;
+                        }
+                        if (key == keys.pageUp) {
+                            return BIG_STEP;
+                        }
+
+                        return NO_STEP;
                     },
                 },
 

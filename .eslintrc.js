@@ -122,7 +122,6 @@ module.exports = {
         'import/no-dynamic-require': 'off',
         'no-bitwise': 'off',
         'no-cond-assign': 'off',
-        'no-else-return': 'off',
         'no-empty': 'off',
         'no-labels': 'off',
         'no-loop-func': 'off',

@@ -193,25 +193,24 @@
                         module.error(error.state);
 
                         return false;
-                    } else {
-                        if (settings.historyType == 'state') {
-                            module.debug('Using HTML5 to manage state');
-                            if (settings.path !== false) {
-                                $.address
-                                    .history(true)
-                                    .state(settings.path)
-                                ;
-                                $(window).trigger('popstate');
-                            } else {
-                                module.error(error.path);
-
-                                return false;
-                            }
-                        }
-                        $.address
-                            .bind('change', module.event.history.change)
-                        ;
                     }
+                    if (settings.historyType == 'state') {
+                        module.debug('Using HTML5 to manage state');
+                        if (settings.path !== false) {
+                            $.address
+                                .history(true)
+                                .state(settings.path)
+                            ;
+                            $(window).trigger('popstate');
+                        } else {
+                            module.error(error.path);
+
+                            return false;
+                        }
+                    }
+                    $.address
+                        .bind('change', module.event.history.change)
+                    ;
                 },
 
                 event: {
@@ -384,16 +383,16 @@
                                 }
 
                                 return false;
-                            } else {
-                                module.debug('Opened local tab', currentPath);
-                                module.activate.all(currentPath);
-                                if (!module.cache.read(currentPath)) {
-                                    module.cache.add(currentPath, true);
-                                    module.debug('First time tab loaded calling tab init');
-                                    settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
-                                }
-                                settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                             }
+
+                            module.debug('Opened local tab', currentPath);
+                            module.activate.all(currentPath);
+                            if (!module.cache.read(currentPath)) {
+                                module.cache.add(currentPath, true);
+                                module.debug('First time tab loaded calling tab init');
+                                settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
+                            }
+                            settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                         } else if (tabPath.search('/') == -1 && tabPath !== '') {
                             // look for in page anchor
                             tabPath = module.escape.string(tabPath);

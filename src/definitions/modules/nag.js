@@ -162,20 +162,22 @@
                         }
                         if (expires instanceof Date && expires.getTime()) {
                             return expires.toUTCString();
-                        } else {
-                            module.error(error.expiresFormat);
                         }
+
+                        module.error(error.expiresFormat);
                     },
                     storage: function () {
                         if (settings.storageMethod === 'localstorage' && window.localStorage !== undefined) {
                             module.debug('Using local storage');
 
                             return window.localStorage;
-                        } else if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
+                        }
+                        if (settings.storageMethod === 'sessionstorage' && window.sessionStorage !== undefined) {
                             module.debug('Using session storage');
 
                             return window.sessionStorage;
-                        } else if ('cookie' in document) {
+                        }
+                        if ('cookie' in document) {
                             module.debug('Using cookie');
 
                             return {
@@ -216,9 +218,9 @@
                                     storage.setItem(key, '', options);
                                 },
                             };
-                        } else {
-                            module.error(error.noStorage);
                         }
+
+                        module.error(error.noStorage);
                     },
                     storageOptions: function () {
                         var
