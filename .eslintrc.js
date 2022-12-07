@@ -122,7 +122,6 @@ module.exports = {
         'no-return-assign': 'off',
         'no-shadow-restricted-names': 'off',
         'no-use-before-define': 'off',
-        'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
     },
     reportUnusedDisableDirectives: true,

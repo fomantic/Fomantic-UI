@@ -2127,9 +2127,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function (v) {
-                                            return String(v);
-                                        })) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
                                             $selectedItem = ($selectedItem)
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
