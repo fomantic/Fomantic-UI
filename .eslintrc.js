@@ -130,7 +130,6 @@ module.exports = {
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
-        'unicorn/prefer-switch': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {
