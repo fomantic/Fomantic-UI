@@ -71,8 +71,8 @@ module.exports = function (callback) {
 
             // get files for meteor
             gatherFiles = function (dir) {
-                var
-                    dir   = dir || path.resolve('.'),
+                dir = dir || path.resolve('.');
+                let
                     list  = fs.readdirSync(dir),
                     omitted = [
                         '.git',
