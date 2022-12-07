@@ -12,7 +12,7 @@
 
 */
 
-var
+let
     gulp      = require('gulp'),
 
     // node dependencies
@@ -38,7 +38,7 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    let
         index = -1,
         total = release.components.length,
         timer,
@@ -62,7 +62,7 @@ module.exports = function (callback) {
             return;
         }
 
-        var
+        let
             component            = release.components[index],
             outputDirectory      = path.resolve(release.outputRoot + component),
             capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),

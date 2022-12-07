@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-var
+let
     extend   = require('extend'),
     fs       = require('fs'),
     path     = require('path'),
@@ -20,7 +20,7 @@ module.exports = {
         var
             configPath,
             walk = function (directory) {
-                var
+                let
                     nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
                     currentPath   = path.normalize(path.join(directory, file))
                 ;
@@ -56,7 +56,7 @@ module.exports = {
             File Paths
         --------------- */
 
-        var
+        let
             configPath = this.getPath(),
             sourcePaths = {},
             outputPaths = {},

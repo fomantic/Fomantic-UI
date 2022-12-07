@@ -2,7 +2,7 @@
              Set-up
 *******************************/
 
-var
+let
     // npm dependencies
     extend          = require('extend'),
     fs              = require('fs'),

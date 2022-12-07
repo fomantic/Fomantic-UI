@@ -2,7 +2,7 @@
  Build Docs
  *******************************/
 
-var
+let
     gulp        = require('gulp'),
 
     // node dependencies

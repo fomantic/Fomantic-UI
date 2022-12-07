@@ -1,7 +1,7 @@
 /*******************************
  Serve Docs
  *******************************/
-var
+let
     gulp        = require('gulp'),
 
     // node dependencies
