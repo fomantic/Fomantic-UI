@@ -114,7 +114,7 @@ module.exports = {
         }
 
         // remove duplicates from component array
-        if (config.components instanceof Array) {
+        if (Array.isArray(config.components)) {
             config.components = config.components.filter(function (component, index) {
                 return config.components.indexOf(component) == index;
             });

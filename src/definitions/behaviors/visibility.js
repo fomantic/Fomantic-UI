@@ -227,7 +227,7 @@
                 },
 
                 precache: function (images, callback) {
-                    if (!(images instanceof Array)) {
+                    if (!(Array.isArray(images))) {
                         images = [images];
                     }
                     var
