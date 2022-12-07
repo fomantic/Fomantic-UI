@@ -120,7 +120,6 @@ module.exports = {
         // TODO
         'no-bitwise': 'off',
         'no-cond-assign': 'off',
-        'no-empty': 'off',
         'no-labels': 'off',
         'no-loop-func': 'off',
         'no-new-func': 'off',

@@ -13,9 +13,7 @@ let
          Derived Values
 *******************************/
 
-try {
-    config = requireDotFile('semantic.json', process.cwd());
-} catch (error) {}
+config = requireDotFile('semantic.json', process.cwd());
 
 try {
     npmPackage = require('../../../package.json');
