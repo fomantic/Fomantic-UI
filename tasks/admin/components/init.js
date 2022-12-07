@@ -141,7 +141,7 @@ module.exports = function (callback) {
             });
         }
 
-        function nextRepo() {
+        function nextRepo() { // eslint-disable-line unicorn/consistent-function-scoping
             // console.log('Sleeping for 1 second...');
             // avoid rate throttling
             global.clearTimeout(timer);
