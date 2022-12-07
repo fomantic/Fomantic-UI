@@ -119,7 +119,6 @@ module.exports = {
 
         // TODO
         'no-cond-assign': 'off',
-        'no-labels': 'off',
         'no-loop-func': 'off',
         'no-prototype-builtins': 'off',
         'no-return-assign': 'off',
