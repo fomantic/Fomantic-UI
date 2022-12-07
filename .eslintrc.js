@@ -132,7 +132,6 @@ module.exports = {
         'unicorn/no-instanceof-array': 'off',
         'unicorn/no-process-exit': 'off',
         'unicorn/no-useless-switch-case': 'off',
-        'unicorn/no-useless-undefined': 'off',
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
