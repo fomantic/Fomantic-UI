@@ -134,7 +134,6 @@ module.exports = {
         'unicorn/no-useless-switch-case': 'off',
         'unicorn/no-useless-undefined': 'off',
         'unicorn/prefer-array-find': 'off',
-        'unicorn/prefer-default-parameters': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
         'unicorn/prefer-switch': 'off',
