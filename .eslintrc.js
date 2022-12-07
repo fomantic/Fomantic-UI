@@ -125,7 +125,6 @@ module.exports = {
         'no-return-assign': 'off',
         'no-self-assign': 'off',
         'no-shadow-restricted-names': 'off',
-        'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
         'unicorn/new-for-builtins': 'off',
         'unicorn/no-instanceof-array': 'off',
