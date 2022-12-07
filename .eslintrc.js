@@ -118,7 +118,6 @@ module.exports = {
         'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
-        'import/no-dynamic-require': 'off',
         'no-bitwise': 'off',
         'no-cond-assign': 'off',
         'no-empty': 'off',

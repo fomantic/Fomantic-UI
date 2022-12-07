@@ -11,9 +11,8 @@ let
     GithubAPI   = require('@octokit/rest'),
 
     // stores oauth info for GitHub API
-    oAuthConfig = path.join(__dirname, 'oauth.js'),
-    oAuth       = fs.existsSync(oAuthConfig)
-        ? require(oAuthConfig)
+    oAuth       = fs.existsSync(path.join(__dirname, './oauth.js'))
+        ? require('./oauth.js') // eslint-disable-line import/extensions
         : false,
     github
 ;

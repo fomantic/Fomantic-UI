@@ -69,7 +69,7 @@ module.exports = function (callback) {
                 : '',
 
             distributionPackage = fs.existsSync(outputDirectory + 'package.json')
-                ? require(outputDirectory + 'package.json')
+                ? require(outputDirectory + 'package.json') // eslint-disable-line import/no-dynamic-require
                 : false,
 
             isNewVersion  = (version && distributionPackage.version != version),
