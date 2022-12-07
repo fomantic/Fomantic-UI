@@ -141,7 +141,7 @@ module.exports = function (callback) {
                     .pipe(gulp.dest(manager.root))
                 ;
 
-                console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
+                console.info('Update complete! Run "\x1B[92mgulp build\x1B[0m" to rebuild dist/ files.');
 
                 callback();
 
@@ -286,7 +286,7 @@ module.exports = function (callback) {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
 
-            console.log('Installing to \x1b[92m' + answers.semanticRoot + '\x1b[0m');
+            console.log('Installing to \x1B[92m' + answers.semanticRoot + '\x1B[0m');
 
             console.info('Copying UI definitions');
             wrench.copyDirSyncRecursive(source.definitions, installPaths.definition, settings.wrench.overwrite);
@@ -401,7 +401,7 @@ module.exports = function (callback) {
     gulp.task('clean up install', function (callback) {
         // Completion Message
         if (installFolder && !install.shouldAutoInstall()) {
-            console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
+            console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1B[0;31mPlease refrain from ctrl + c\x1B[0m... \n After completion navigate to \x1B[92m' + answers.semanticRoot + '\x1B[0m and run "\x1B[92mgulp build\x1B[0m" to build');
             callback();
         } else {
             console.log('');

@@ -545,7 +545,7 @@
                         $searchButton.removeClass(className.pressed);
                     },
                     diacritics: function (text) {
-                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036F]/g, '') : text;
                     },
                 },
 

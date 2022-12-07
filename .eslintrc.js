@@ -132,7 +132,6 @@ module.exports = {
         'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
         'unicorn/empty-brace-spaces': 'off',
-        'unicorn/escape-case': 'off',
         'unicorn/new-for-builtins': 'off',
         'unicorn/no-hex-escape': 'off',
         'unicorn/no-instanceof-array': 'off',
