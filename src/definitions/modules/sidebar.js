@@ -725,12 +725,12 @@
                             transition
                         ;
                         transition = (module.is.mobile())
-                            ? (settings.mobileTransition == 'auto')
+                            ? ((settings.mobileTransition == 'auto')
                                 ? settings.defaultTransition.mobile[direction]
-                                : settings.mobileTransition
-                            : (settings.transition == 'auto')
+                                : settings.mobileTransition)
+                            : ((settings.transition == 'auto')
                                 ? settings.defaultTransition.computer[direction]
-                                : settings.transition;
+                                : settings.transition);
                         module.verbose('Determined transition', transition);
 
                         return transition;

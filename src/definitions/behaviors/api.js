@@ -364,11 +364,11 @@
                                             : templatedString.slice(1, -1),
                                         value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                                             ? urlData[variable]
-                                            : ($module.data(variable) !== undefined)
+                                            : (($module.data(variable) !== undefined)
                                                 ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined)
+                                                : (($context.data(variable) !== undefined) // eslint-disable-line unicorn/no-nested-ternary
                                                     ? $context.data(variable)
-                                                    : urlData[variable]
+                                                    : urlData[variable]))
                                     ;
                                     // remove value
                                     if (value === undefined) {
@@ -395,11 +395,11 @@
                                             : templatedString.slice(2, -1),
                                         value   = ($.isPlainObject(urlData) && urlData[variable] !== undefined)
                                             ? urlData[variable]
-                                            : ($module.data(variable) !== undefined)
+                                            : (($module.data(variable) !== undefined)
                                                 ? $module.data(variable)
-                                                : ($context.data(variable) !== undefined)
+                                                : (($context.data(variable) !== undefined) // eslint-disable-line unicorn/no-nested-ternary
                                                     ? $context.data(variable)
-                                                    : urlData[variable]
+                                                    : urlData[variable]))
                                     ;
                                     // optional replacement
                                     if (value !== undefined) {
@@ -539,9 +539,9 @@
                                 elapsedTime        = (Date.now() - requestStartTime),
                                 timeLeft           = (settings.loadingDuration - elapsedTime),
                                 translatedResponse = (isFunction(settings.onResponse))
-                                    ? module.is.expectingJSON() && !settings.rawResponse
+                                    ? (module.is.expectingJSON() && !settings.rawResponse
                                         ? settings.onResponse.call(context, $.extend(true, {}, response))
-                                        : settings.onResponse.call(context, response)
+                                        : settings.onResponse.call(context, response))
                                     : false
                             ;
                             timeLeft = (timeLeft > 0)
@@ -748,17 +748,17 @@
                     },
                     responseFromXHR: function (xhr) {
                         return $.isPlainObject(xhr)
-                            ? (module.is.expectingJSON())
+                            ? ((module.is.expectingJSON())
                                 ? module.decode.json(xhr.responseText)
-                                : xhr.responseText
+                                : xhr.responseText)
                             : false;
                     },
                     errorFromRequest: function (response, status, httpMessage) {
                         return ($.isPlainObject(response) && response.error !== undefined)
                             ? response.error // use json error message
-                            : (settings.error[status] !== undefined) // use server error message
+                            : ((settings.error[status] !== undefined) // use server error message
                                 ? settings.error[status]
-                                : httpMessage;
+                                : httpMessage);
                     },
                     request: function () {
                         return module.request || false;
@@ -838,9 +838,9 @@
                             if ($module.is('input')) {
                                 return (element.oninput !== undefined)
                                     ? 'input'
-                                    : (element.onpropertychange !== undefined)
+                                    : ((element.onpropertychange !== undefined)
                                         ? 'propertychange'
-                                        : 'keyup';
+                                        : 'keyup');
                             }
                             if ($module.is('form')) {
                                 return 'submit';

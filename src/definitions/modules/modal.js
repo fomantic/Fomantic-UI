@@ -121,10 +121,14 @@
                         }
                         settings.actions.forEach(function (el) {
                             var
-                                icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                icon = el[fields.icon]
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    : '',
                                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                 cls = module.helpers.deQuote(el[fields.class] || ''),
-                                click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {}
                             ;
                             $actions.append($('<button/>', {
                                 html: icon + text,
@@ -1073,9 +1077,9 @@
                                 .css({
                                     top: (!$module.hasClass('aligned') && canFit)
                                         ? $document.scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
-                                        : !canFit || $module.hasClass('top')
+                                        : (!canFit || $module.hasClass('top')
                                             ? $document.scrollTop() + settings.padding
-                                            : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding),
+                                            : $document.scrollTop() + (module.cache.contextHeight - module.cache.height - settings.padding)),
                                     marginLeft: -(module.cache.width / 2),
                                 })
                             ;

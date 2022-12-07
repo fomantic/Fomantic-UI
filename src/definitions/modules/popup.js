@@ -138,9 +138,9 @@
                     } else {
                         $offsetParent = (settings.inline)
                             ? module.get.offsetParent($target)
-                            : module.has.popup()
+                            : (module.has.popup()
                                 ? module.get.offsetParent($popup)
-                                : $body;
+                                : $body);
                     }
                     if ($offsetParent.is('html') && $offsetParent[0] !== $body[0]) {
                         module.debug('Setting page as offset parent');
@@ -568,9 +568,9 @@
                             ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                             : 0;
                         calculations.target.margin.left = (settings.inline)
-                            ? module.is.rtl()
+                            ? (module.is.rtl()
                                 ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
-                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10)
+                                : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
                             : 0;
                         // calculate screen boundaries
                         screen = calculations.screen;

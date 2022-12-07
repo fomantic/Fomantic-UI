@@ -186,7 +186,9 @@
                                 attrValue = $child.attr('data-value')
                             ;
                             if (attrValue) {
-                                attrValue = attrValue > max ? max : attrValue < min ? min : attrValue;
+                                attrValue = attrValue > max
+                                    ? max
+                                    : (attrValue < min ? min : attrValue);
                                 ratio = (attrValue - min) / (max - min);
                             } else {
                                 ratio = (index + 1) / (numChildren + 1);
@@ -205,9 +207,9 @@
                             var
                                 labelText = module.get.label(i),
                                 $label = (labelText !== '')
-                                    ? !(i % module.get.gapRatio())
+                                    ? (!(i % module.get.gapRatio())
                                         ? $('<li class="label">' + labelText + '</li>')
-                                        : $('<li class="halftick label"></li>')
+                                        : $('<li class="halftick label"></li>'))
                                     : null,
                                 ratio  = i / len
                             ;
@@ -720,8 +722,8 @@
                     thumbPos: function ($element) {
                         var
                             pos = module.is.vertical()
-                                ? module.is.reversed() ? $element.css('bottom') : $element.css('top')
-                                : module.is.reversed() ? $element.css('right') : $element.css('left')
+                                ? (module.is.reversed() ? $element.css('bottom') : $element.css('top'))
+                                : (module.is.reversed() ? $element.css('right') : $element.css('left'))
                         ;
 
                         return pos;
@@ -730,7 +732,9 @@
                         var
                             min = module.get.min(),
                             max = module.get.max(),
-                            value = val > max ? max : val < min ? min : val,
+                            value = val > max
+                                ? max
+                                : (val < min ? min : val),
                             trackLength = module.get.trackLength(),
                             ratio = (value - min) / (max - min),
                             position = Math.round(ratio * trackLength)
@@ -775,7 +779,9 @@
                             ratio,
                             value
                         ;
-                        newPos = newPos < 0 ? 0 : newPos > trackLength ? trackLength : newPos;
+                        newPos = newPos < 0
+                            ? 0
+                            : (newPos > trackLength ? trackLength : newPos);
                         ratio = newPos / trackLength;
                         if (module.is.reversed()) {
                             ratio = 1 - ratio;
@@ -818,7 +824,7 @@
                             range = module.get.max() - module.get.min(),
                             step = module.get.step(),
                             value = (ratio * range),
-                            difference = (step == 0) ? value : Math.round(value / step) * step
+                            difference = step == 0 ? value : Math.round(value / step) * step
                         ;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
                         if (value != difference) {
@@ -834,16 +840,16 @@
                         var
                             key = event.which,
                             downArrow = module.is.vertical()
-                                ? module.is.reversed() ? keys.downArrow : keys.upArrow
+                                ? (module.is.reversed() ? keys.downArrow : keys.upArrow)
                                 : keys.downArrow,
                             upArrow = module.is.vertical()
-                                ? module.is.reversed() ? keys.upArrow : keys.downArrow
+                                ? (module.is.reversed() ? keys.upArrow : keys.downArrow)
                                 : keys.upArrow,
                             leftArrow = !module.is.vertical()
-                                ? module.is.reversed() ? keys.rightArrow : keys.leftArrow
+                                ? (module.is.reversed() ? keys.rightArrow : keys.leftArrow)
                                 : keys.leftArrow,
                             rightArrow = !module.is.vertical()
-                                ? module.is.reversed() ? keys.leftArrow : keys.rightArrow
+                                ? (module.is.reversed() ? keys.leftArrow : keys.rightArrow)
                                 : keys.rightArrow
                         ;
                         if (key == downArrow || key == leftArrow) {
@@ -1038,9 +1044,11 @@
                             startMargin = module.get.trackStartMargin(),
                             endMargin   = module.get.trackEndMargin(),
                             posDir = module.is.vertical()
-                                ? module.is.reversed() ? 'bottom' : 'top'
-                                : module.is.reversed() ? 'right' : 'left',
-                            startMarginMod = module.is.reversed() && !module.is.vertical() ? ' - ' : ' + '
+                                ? (module.is.reversed() ? 'bottom' : 'top')
+                                : (module.is.reversed() ? 'right' : 'left'),
+                            startMarginMod = module.is.reversed() && !module.is.vertical()
+                                ? ' - '
+                                : ' + '
                         ;
                         var position = '(100% - ' + startMargin + ' - ' + endMargin + ') * ' + ratio;
                         $label.css(posDir, 'calc(' + position + startMarginMod + startMargin + ')');

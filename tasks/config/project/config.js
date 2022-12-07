@@ -132,9 +132,11 @@ module.exports = {
         config.globs.components = componentsExceptIndividuals.length === 1 ? componentsExceptIndividuals[0] : '{' + componentsExceptIndividuals.join(',') + '}';
 
         // components that should be built, but excluded from main .css/.js files
-        config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
-            ? '{' + individuals.join(',') + '}'
-            : undefined;
+        config.globs.individuals = individuals.length === 1
+            ? individuals[0]
+            : ((individuals.length > 1)
+                ? '{' + individuals.join(',') + '}'
+                : undefined);
     },
 
 };

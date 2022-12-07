@@ -283,7 +283,9 @@
                             year = display.getFullYear()
                         ;
 
-                        var columns = isDay ? settings.showWeekNumbers ? 8 : 7 : isHour ? 4 : timeGap.column;
+                        var columns = isDay
+                            ? (settings.showWeekNumbers ? 8 : 7)
+                            : (isHour ? 4 : timeGap.column);
                         var rows = isDay || isHour ? 6 : timeGap.row;
                         var pages = isDay ? multiMonth : 1;
 
@@ -308,7 +310,7 @@
                             }
 
                             var
-                                yearChange = isYear ? 10 : isMonth ? 1 : 0,
+                                yearChange = isYear ? 10 : (isMonth ? 1 : 0),
                                 monthChange = isDay ? 1 : 0,
                                 dayChange = isHour || isMinute ? 1 : 0,
                                 prevNextDay = isHour || isMinute ? day : 1,
@@ -316,18 +318,18 @@
                                 nextDate = new Date(year + yearChange, month + monthChange, prevNextDay + dayChange, hour),
                                 prevLast = isYear
                                     ? new Date(Math.ceil(year / 10) * 10 - 9, 0, 0)
-                                    : isMonth
+                                    : (isMonth
                                         ? new Date(year, 0, 0)
-                                        : isDay
+                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                             ? new Date(year, month, 0)
-                                            : new Date(year, month, day, -1),
+                                            : new Date(year, month, day, -1))),
                                 nextFirst = isYear
                                     ? new Date(Math.ceil(year / 10) * 10 + 1, 0, 1)
-                                    : isMonth
+                                    : (isMonth
                                         ? new Date(year + 1, 0, 1)
-                                        : isDay
+                                        : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                             ? new Date(year, month + 1, 1)
-                                            : new Date(year, month, day + 1)
+                                            : new Date(year, month, day + 1)))
                             ;
 
                             var tempMode = mode;
@@ -349,16 +351,16 @@
 
                                 var headerDate = isYear || isMonth
                                     ? new Date(year, 0, 1)
-                                    : isDay
+                                    : (isDay
                                         ? new Date(year, month, 1)
-                                        : new Date(year, month, day, hour, minute);
+                                        : new Date(year, month, day, hour, minute));
                                 var headerText = $('<span/>').addClass(className.link).appendTo(cell);
                                 headerText.text(module.helper.dateFormat(formatter[mode + 'Header'], headerDate));
                                 var newMode = isMonth
                                     ? (settings.disableYear ? 'day' : 'year')
-                                    : isDay
-                                        ? (settings.disableMonth ? 'year' : 'month')
-                                        : 'day';
+                                    : (isDay
+                                        ? (settings.disableMonth ? 'year' : 'month') // eslint-disable-line unicorn/no-nested-ternary
+                                        : 'day');
                                 headerText.data(metadata.mode, newMode);
 
                                 if (p === 0) {
@@ -390,7 +392,9 @@
                             }
 
                             var tbody = $('<tbody/>').appendTo(table);
-                            i = isYear ? Math.ceil(year / 10) * 10 - 9 : isDay ? 1 - firstMonthDayColumn : 0;
+                            i = isYear
+                                ? Math.ceil(year / 10) * 10 - 9
+                                : (isDay ? 1 - firstMonthDayColumn : 0);
                             for (r = 0; r < rows; r++) {
                                 row = $('<tr/>').appendTo(tbody);
                                 if (isDay && settings.showWeekNumbers) {
@@ -401,20 +405,20 @@
                                 for (c = 0; c < textColumns; c++, i++) {
                                     var cellDate = isYear
                                         ? new Date(i, month, 1, hour, minute)
-                                        : isMonth
+                                        : (isMonth
                                             ? new Date(year, i, 1, hour, minute)
-                                            : isDay
+                                            : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                                 ? new Date(year, month, i, hour, minute)
-                                                : isHour
+                                                : (isHour
                                                     ? new Date(year, month, day, i)
-                                                    : new Date(year, month, day, hour, i * settings.minTimeGap);
+                                                    : new Date(year, month, day, hour, i * settings.minTimeGap))));
                                     var cellText = isYear
                                         ? i
-                                        : isMonth
+                                        : (isMonth
                                             ? settings.text.monthsShort[i]
-                                            : isDay
+                                            : (isDay // eslint-disable-line unicorn/no-nested-ternary
                                                 ? cellDate.getDate()
-                                                : module.helper.dateFormat(formatter.cellTime, cellDate);
+                                                : module.helper.dateFormat(formatter.cellTime, cellDate)));
                                     cell = $('<td/>').addClass(className.cell).appendTo(row);
                                     cell.text(cellText);
                                     cell.data(metadata.date, cellDate);
@@ -649,8 +653,16 @@
                                 case 38:
                                 case 39:
                                 case 40: {
-                                    var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap.column : 3;
-                                    var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
+                                    var bigIncrement = mode === 'day'
+                                        ? 7
+                                        : (mode === 'hour'
+                                            ? 4
+                                            : (mode === 'minute' ? timeGap.column : 3)); // eslint-disable-line unicorn/no-nested-ternary
+                                    var increment = keyCode === 37
+                                        ? -1
+                                        : (keyCode === 38
+                                            ? -bigIncrement
+                                            : (keyCode == 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
                                     increment *= mode === 'minute' ? settings.minTimeGap : 1;
                                     var focusDate = module.get.focusDate() || module.get.date() || new Date();
                                     var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
@@ -826,9 +838,9 @@
 
                         return settings.type === 'time'
                             ? 'hour'
-                            : settings.type === 'month'
+                            : (settings.type === 'month'
                                 ? 'month'
-                                : settings.type === 'year' ? 'year' : 'day';
+                                : (settings.type === 'year' ? 'year' : 'day')); // eslint-disable-line unicorn/no-nested-ternary
                     },
                     type: function () {
                         return $module.data(metadata.type) || settings.type;
@@ -1019,9 +1031,9 @@
                     } else {
                         var newMode = mode === 'year'
                             ? (!settings.disableMonth ? 'month' : 'day')
-                            : mode === 'month'
+                            : (mode === 'month'
                                 ? 'day'
-                                : mode === 'day' ? 'hour' : 'minute';
+                                : (mode === 'day' ? 'hour' : 'minute')); // eslint-disable-line unicorn/no-nested-ternary
                         module.set.mode(newMode);
                         if (mode === 'hour' || (mode === 'day' && module.get.date())) {
                             // the user has chosen enough to consider a valid date/time has been chosen
@@ -1345,15 +1357,15 @@
                         // only care about a minute accuracy of settings.minTimeGap
                         date1 = new Date(
                             isTimeOnly ? 2000 : date1.getFullYear(),
-                            isTimeOnly ? 0 : isYear ? 0 : date1.getMonth(),
-                            isTimeOnly ? 1 : isYearOrMonth ? 1 : date1.getDate(),
+                            isTimeOnly ? 0 : (isYear ? 0 : date1.getMonth()),
+                            isTimeOnly ? 1 : (isYearOrMonth ? 1 : date1.getDate()),
                             !isHourOrMinute ? 0 : date1.getHours(),
                             !isMinute ? 0 : settings.minTimeGap * Math.floor(date1.getMinutes() / settings.minTimeGap)
                         );
                         date2 = new Date(
                             isTimeOnly ? 2000 : date2.getFullYear(),
-                            isTimeOnly ? 0 : isYear ? 0 : date2.getMonth(),
-                            isTimeOnly ? 1 : isYearOrMonth ? 1 : date2.getDate(),
+                            isTimeOnly ? 0 : (isYear ? 0 : date2.getMonth()),
+                            isTimeOnly ? 1 : (isYearOrMonth ? 1 : date2.getDate()),
                             !isHourOrMinute ? 0 : date2.getHours(),
                             !isMinute ? 0 : settings.minTimeGap * Math.floor(date2.getMinutes() / settings.minTimeGap)
                         );
@@ -1386,11 +1398,11 @@
 
                         return !date
                             ? date
-                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
-                                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate)
-                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0)
+                            : ((minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
+                                ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) // eslint-disable-line unicorn/no-nested-ternary
+                                : ((maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0) // eslint-disable-line unicorn/no-nested-ternary
                                     ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
-                                    : date;
+                                    : date));
                     },
                     mergeDateTime: function (date, time) {
                         return (!date || !time)
@@ -1720,7 +1732,7 @@
                     // am/pm
                     isAm = $.inArray(settings.text.am.toLowerCase(), words) >= 0
                         ? true
-                        : $.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined;
+                        : ($.inArray(settings.text.pm.toLowerCase(), words) >= 0 ? false : undefined);
 
                     // time with ':'
                     for (i = 0; i < numbers.length; i++) {
@@ -1786,7 +1798,9 @@
                     // numeric month
                     if (month < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            k = i > 1 || settings.monthFirst ? i : i === 1 ? 0 : 1;
+                            k = i > 1 || settings.monthFirst
+                                ? i
+                                : (i === 1 ? 0 : 1);
                             j = parseInt(numbers[k], 10);
                             if (isNaN(j)) {
                                 continue;

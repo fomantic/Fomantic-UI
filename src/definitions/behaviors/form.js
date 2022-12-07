@@ -497,9 +497,9 @@
                     inputEvent: function () {
                         return (document.createElement('input').oninput !== undefined)
                             ? 'input'
-                            : (document.createElement('input').onpropertychange !== undefined)
+                            : ((document.createElement('input').onpropertychange !== undefined)
                                 ? 'propertychange'
-                                : 'keyup';
+                                : 'keyup');
                     },
                     fieldsFromShorthand: function (fields) {
                         var
@@ -545,9 +545,9 @@
                                 suffixPrompt = (
                                     parts[0] === ''
                                         ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
-                                        : parts[1] === ''
+                                        : (parts[1] === ''
                                             ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
-                                            : settings.prompt.range
+                                            : settings.prompt.range)
                                 );
                                 prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
@@ -1306,7 +1306,9 @@
                                 // cast to string avoiding encoding special values
                                 value = (value === undefined || value === '' || value === null)
                                     ? ''
-                                    : (settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim ? String(value + '').trim() : String(value + '');
+                                    : ((settings.shouldTrim && rule.shouldTrim !== false) || rule.shouldTrim
+                                        ? String(value + '').trim()
+                                        : String(value + ''));
 
                                 return ruleFunction.call(field, value, ancillary, $module);
                             }

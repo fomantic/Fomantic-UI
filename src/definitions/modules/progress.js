@@ -107,11 +107,9 @@
                     forceArray: function (element) {
                         return Array.isArray(element)
                             ? element
-                            : !isNaN(element)
+                            : (!isNaN(element)
                                 ? [element]
-                                : typeof element === 'string'
-                                    ? element.split(',')
-                                    : [];
+                                : (typeof element === 'string' ? element.split(',') : [])); // eslint-disable-line unicorn/no-nested-ternary
                     },
                 },
 
@@ -326,9 +324,9 @@
 
                     numericValue: function (value) {
                         return (typeof value === 'string')
-                            ? (value.replace(/[^\d.]/g, '') !== '')
+                            ? ((value.replace(/[^\d.]/g, '') !== '')
                                 ? +(value.replace(/[^\d.]/g, ''))
-                                : false
+                                : false)
                             : value;
                     },
 
@@ -524,9 +522,9 @@
                         } else {
                             var autoPrecision = settings.precision > 0
                                 ? settings.precision
-                                : isMultipleValues
+                                : (isMultipleValues
                                     ? module.helper.derivePrecision(Math.min.apply(null, module.value), module.total)
-                                    : 0;
+                                    : 0);
 
                             // round display percentage
                             var roundedPercents = percents.map(function (percent) {

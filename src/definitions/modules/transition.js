@@ -580,9 +580,9 @@
                         }
 
                         return (typeof duration === 'string')
-                            ? (duration.indexOf('ms') > -1)
+                            ? ((duration.indexOf('ms') > -1)
                                 ? parseFloat(duration)
-                                : parseFloat(duration) * 1000
+                                : parseFloat(duration) * 1000)
                             : duration;
                     },
                     displayType: function (shouldDetermine) {

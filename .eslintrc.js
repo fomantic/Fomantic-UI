@@ -116,7 +116,6 @@ module.exports = {
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
         'prefer-rest-params': 'off', // about 180 errors to be fixed manually
-        'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
         'no-return-assign': 'off',

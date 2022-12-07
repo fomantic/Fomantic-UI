@@ -140,9 +140,9 @@
             change: {
                 setting: function (setting, value, modules, modifyExisting) {
                     modules = (typeof modules === 'string')
-                        ? (modules === 'all')
+                        ? ((modules === 'all')
                             ? settings.modules
-                            : [modules]
+                            : [modules])
                         : modules || settings.modules;
                     modifyExisting = (modifyExisting !== undefined)
                         ? modifyExisting

@@ -128,10 +128,14 @@
                         }
                         settings.actions.forEach(function (el) {
                             var
-                                icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                icon = el[fields.icon]
+                                    ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                    : '',
                                 text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                 cls = module.helpers.deQuote(el[fields.class] || ''),
-                                click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                click = el[fields.click] && isFunction(el[fields.click])
+                                    ? el[fields.click]
+                                    : function () {}
                             ;
                             $actions.append($('<button/>', {
                                 html: icon + text,

@@ -122,9 +122,9 @@
                 toggle: function (query) {
                     var
                         $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
@@ -147,9 +147,9 @@
                 open: function (query) {
                     var
                         $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
@@ -217,9 +217,9 @@
                 close: function (query) {
                     var
                         $activeTitle = (query !== undefined)
-                            ? (typeof query === 'number')
+                            ? ((typeof query === 'number')
                                 ? $title.eq(query)
-                                : $(query).closest(selector.title)
+                                : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
                         $activeContent = $activeTitle.next($content),
                         isAnimating    = $activeContent.hasClass(className.animating),

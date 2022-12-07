@@ -147,7 +147,11 @@
                 create: {
                     container: function () {
                         module.verbose('Creating container');
-                        $context.append($('<div/>', { class: settings.position + ' ' + className.container + ' ' + (settings.horizontal ? className.horizontal : '') + ' ' + (settings.context && settings.context !== 'body' ? className.absolute : '') }));
+                        $context.append($('<div/>', {
+                            class: settings.position + ' ' + className.container + ' '
+                            + (settings.horizontal ? className.horizontal : '') + ' '
+                            + (settings.context && settings.context !== 'body' ? className.absolute : ''),
+                        }));
                     },
                     id: function () {
                         id = (Math.random().toString(16) + '000000000').slice(2, 10);
@@ -242,10 +246,15 @@
                             }
                             settings.actions.forEach(function (el) {
                                 var
-                                    icon = el[fields.icon] ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '') + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>' : '',
+                                    icon = el[fields.icon]
+                                        ? '<i ' + (el[fields.text] ? 'aria-hidden="true"' : '')
+                                            + ' class="' + module.helpers.deQuote(el[fields.icon]) + ' icon"></i>'
+                                        : '',
                                     text = module.helpers.escape(el[fields.text] || '', settings.preserveHTML),
                                     cls = module.helpers.deQuote(el[fields.class] || ''),
-                                    click = el[fields.click] && isFunction(el[fields.click]) ? el[fields.click] : function () {}
+                                    click = el[fields.click] && isFunction(el[fields.click])
+                                        ? el[fields.click]
+                                        : function () {}
                                 ;
                                 $actions.append($('<button/>', {
                                     html: icon + text,
@@ -482,7 +491,13 @@
                         return id;
                     },
                     containers: function () {
-                        return $context.children(module.helpers.toClass(settings.position) + selector.container + (settings.horizontal ? module.helpers.toClass(className.horizontal) : ':not(' + module.helpers.toClass(className.horizontal) + ')') + (settings.context && settings.context !== 'body' ? module.helpers.toClass(className.absolute) : ':not(' + module.helpers.toClass(className.absolute) + ')'));
+                        return $context.children(module.helpers.toClass(settings.position) + selector.container
+                            + (settings.horizontal
+                                ? module.helpers.toClass(className.horizontal)
+                                : ':not(' + module.helpers.toClass(className.horizontal) + ')')
+                            + (settings.context && settings.context !== 'body'
+                                ? module.helpers.toClass(className.absolute)
+                                : ':not(' + module.helpers.toClass(className.absolute) + ')'));
                     },
                     container: function () {
                         return module.get.containers()[0];
@@ -497,7 +512,11 @@
                         return $(module.get.container()).find(selector.box);
                     },
                     iconClass: function () {
-                        return typeof settings.showIcon === 'string' ? settings.showIcon : settings.showIcon && settings.icons[settings.class] ? settings.icons[settings.class] : '';
+                        return typeof settings.showIcon === 'string'
+                            ? settings.showIcon
+                            : (settings.showIcon && settings.icons[settings.class]
+                                ? settings.icons[settings.class]
+                                : '');
                     },
                     remainingTime: function () {
                         return $animationObject ? $animationObject.css('opacity') * settings.displayTime : 0;

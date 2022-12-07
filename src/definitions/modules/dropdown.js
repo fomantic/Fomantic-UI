@@ -70,7 +70,9 @@
 
                 $menu           = $module.children(selector.menu),
                 $item           = $menu.find(selector.item),
-                $divider        = settings.hideDividers ? $item.parent().children(selector.divider) : $(),
+                $divider        = settings.hideDividers
+                    ? $item.parent().children(selector.divider)
+                    : $(),
 
                 activated       = false,
                 itemActivated   = false,
@@ -1843,20 +1845,14 @@
                             count
                         ;
                         count = (module.is.multiple())
-                            ? Array.isArray(values)
-                                ? values.length
-                                : 0
-                            : (module.get.value() !== '')
-                                ? 1
-                                : 0;
+                            ? (Array.isArray(values) ? values.length : 0)
+                            : ((module.get.value() !== '') ? 1 : 0);
 
                         return count;
                     },
                     transition: function ($subMenu) {
                         return (settings.transition === 'auto')
-                            ? module.is.upward($subMenu)
-                                ? 'slide up'
-                                : 'slide down'
+                            ? (module.is.upward($subMenu) ? 'slide up' : 'slide down')
                             : settings.transition;
                     },
                     userValues: function () {
@@ -1925,9 +1921,11 @@
                         }
 
                         return (!module.has.selectInput() && module.is.multiple())
-                            ? (typeof value === 'string') // delimited string
-                                ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
-                                : ''
+                            ? ((typeof value === 'string') // delimited string
+                                ? (raw
+                                    ? value
+                                    : module.escape.htmlEntities(value)).split(settings.delimiter)
+                                : '')
                             : value;
                     },
                     remoteValues: function () {
@@ -1969,9 +1967,9 @@
 
                             return ($choice.data(metadata.text) !== undefined)
                                 ? $choice.data(metadata.text)
-                                : (preserveHTML)
+                                : ((preserveHTML)
                                     ? $choice.html() && $choice.html().trim()
-                                    : $choice.text() && $choice.text().trim();
+                                    : $choice.text() && $choice.text().trim());
                         }
                     },
                     choiceValue: function ($choice, choiceText) {
@@ -1982,13 +1980,13 @@
 
                         return ($choice.data(metadata.value) !== undefined)
                             ? String($choice.data(metadata.value))
-                            : (typeof choiceText === 'string')
+                            : ((typeof choiceText === 'string')
                                 ? String(
                                     settings.ignoreSearchCase
                                         ? choiceText.toLowerCase()
                                         : choiceText
                                 ).trim()
-                                : String(choiceText);
+                                : String(choiceText));
                     },
                     inputEvent: function () {
                         var
@@ -1997,9 +1995,9 @@
                         if (input) {
                             return (input.oninput !== undefined)
                                 ? 'input'
-                                : (input.onpropertychange !== undefined)
+                                : ((input.onpropertychange !== undefined)
                                     ? 'propertychange'
-                                    : 'keyup';
+                                    : 'keyup');
                         }
 
                         return false;
@@ -2104,9 +2102,9 @@
                         ;
                         value = (value !== undefined)
                             ? value
-                            : (module.get.values() !== undefined)
+                            : ((module.get.values() !== undefined)
                                 ? module.get.values()
-                                : module.get.text();
+                                : module.get.text());
                         isMultiple = (module.is.multiple() && Array.isArray(value));
                         shouldSearch = (isMultiple)
                             ? (value.length > 0)
@@ -2386,9 +2384,9 @@
                         : (elementIndex < $selectableItem.length);
                     $nextSelectedItem = (isWithinRange)
                         ? $selectableItem.eq(elementIndex)
-                        : (direction == 'up')
+                        : ((direction == 'up')
                             ? $selectableItem.first()
-                            : $selectableItem.last();
+                            : $selectableItem.last());
                     if ($nextSelectedItem.length > 0) {
                         module.debug('Scrolling page', direction, $nextSelectedItem);
                         $currentItem
