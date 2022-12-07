@@ -71,13 +71,13 @@
                         module.verbose('Console not available, normalizing events');
                         module.disable.console();
                     }
-                    if (typeof console.group == 'undefined' || typeof console.groupEnd == 'undefined' || typeof console.groupCollapsed == 'undefined') {
+                    if (typeof console.group === 'undefined' || typeof console.groupEnd === 'undefined' || typeof console.groupCollapsed === 'undefined') {
                         module.verbose('Console group not available, normalizing events');
                         window.console.group = function () {};
                         window.console.groupEnd = function () {};
                         window.console.groupCollapsed = function () {};
                     }
-                    if (typeof console.markTimeline == 'undefined') {
+                    if (typeof console.markTimeline === 'undefined') {
                         module.verbose('Mark timeline not available, normalizing events');
                         window.console.markTimeline = function () {};
                     }

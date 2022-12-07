@@ -1809,7 +1809,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
+                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 

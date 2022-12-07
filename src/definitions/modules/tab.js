@@ -288,7 +288,7 @@
                 set: {
                     auto: function () {
                         var
-                            url = (typeof settings.path == 'string')
+                            url = (typeof settings.path === 'string')
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
                         ;
@@ -452,7 +452,7 @@
                         evaluateScripts = (evaluateScripts !== undefined)
                             ? evaluateScripts
                             : settings.evaluateScripts;
-                        if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
+                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
                                 .append($(html).clone(true))
@@ -498,7 +498,7 @@
 
                                     if (settings.loadOnce) {
                                         module.cache.add(fullTabPath, true);
-                                    } else if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
                                             var
                                                 $clone = $tab.children().clone(true)

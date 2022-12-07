@@ -663,7 +663,7 @@
                         $.each(searchFields, function (index, field) {
                             $.each(source, function (label, content) {
                                 var
-                                    fieldExists = (typeof content[field] == 'string') || (typeof content[field] == 'number')
+                                    fieldExists = (typeof content[field] === 'string') || (typeof content[field] === 'number')
                                 ;
                                 if (fieldExists) {
                                     var text;
