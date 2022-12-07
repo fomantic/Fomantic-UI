@@ -6,7 +6,7 @@ function moduleTests(ui) {
         name      = $.fn[module].settings.name,
 
         testValue = 'Test',
-        fixtures  = jasmine.getFixtures(),
+        fixtures  = jasmine.getFixtures(), // eslint-disable-line jest/no-jasmine-globals
 
         originalSettings,
         $modules,

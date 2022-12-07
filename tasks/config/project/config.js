@@ -16,7 +16,7 @@ let
 module.exports = {
 
     getPath: function (file, directory) {
-        var
+        let
             configPath,
             walk = function (directory) {
                 let
