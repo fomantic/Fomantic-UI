@@ -144,7 +144,6 @@ module.exports = {
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-date-now': 'off',
         'unicorn/prefer-default-parameters': 'off',
-        'unicorn/prefer-logical-operator-over-ternary': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
         'unicorn/prefer-switch': 'off',
