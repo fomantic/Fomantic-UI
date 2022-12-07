@@ -283,7 +283,7 @@
 
                             $el.data(settings.metadata.isDirty, isDirty);
 
-                            formIsDirty |= isDirty;
+                            formIsDirty = formIsDirty || isDirty;
                         });
 
                         if (formIsDirty) {
@@ -2005,7 +2005,7 @@
                 ;
                 while (length--) {
                     sum += producedValue[multiple][parseInt(cardNumber.charAt(length), 10)];
-                    multiple ^= 1;
+                    multiple ^= 1; // eslint-disable-line no-bitwise
                 }
 
                 return (sum % 10 === 0 && sum > 0);
