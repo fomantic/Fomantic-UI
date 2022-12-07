@@ -80,6 +80,7 @@ module.exports = {
         'unicorn/no-null': 'off',
         'unicorn/no-this-assignment': 'off',
         'unicorn/numeric-separators-style': 'off',
+        'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-array-some': 'off', // https://github.com/sindresorhus/eslint-plugin-unicorn/issues/2007
         'unicorn/prefer-module': 'off',
         'unicorn/prevent-abbreviations': 'off',
@@ -121,7 +122,6 @@ module.exports = {
         'no-return-assign': 'off',
         'no-shadow-restricted-names': 'off',
         'no-use-before-define': 'off',
-        'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
     },
