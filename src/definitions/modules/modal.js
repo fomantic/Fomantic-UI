@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -48,7 +48,7 @@
 
         $allModules.each(function () {
             var
-                settings    = ($.isPlainObject(parameters))
+                settings    = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.modal.settings, parameters)
                     : $.extend({}, $.fn.modal.settings),
 
@@ -426,7 +426,7 @@
                             $target   = $(event.target),
                             isRtl = module.is.rtl()
                         ;
-                        initialMouseDownInModal = ($target.closest(selector.modal).length > 0);
+                        initialMouseDownInModal = $target.closest(selector.modal).length > 0;
                         if (initialMouseDownInModal) {
                             module.verbose('Mouse down event registered inside the modal');
                         }
@@ -453,7 +453,7 @@
                         }
                         var
                             $target   = $(event.target),
-                            isInModal = ($target.closest(selector.modal).length > 0),
+                            isInModal = $target.closest(selector.modal).length > 0,
                             isInDOM   = $.contains(document.documentElement, event.target)
                         ;
                         if (!isInModal && isInDOM && module.is.active() && $module.hasClass(className.front)) {
@@ -676,7 +676,7 @@
                 },
 
                 hideDimmer: function () {
-                    if ($dimmable.dimmer('is animating') || ($dimmable.dimmer('is active'))) {
+                    if ($dimmable.dimmer('is animating') || $dimmable.dimmer('is active')) {
                         module.unbind.scrollLock();
                         $dimmable.dimmer('hide', function () {
                             if (hadScrollbar) {
@@ -731,10 +731,10 @@
 
                 others: {
                     active: function () {
-                        return ($otherModals.filter('.' + className.active).length > 0);
+                        return $otherModals.filter('.' + className.active).length > 0;
                     },
                     animating: function () {
-                        return ($otherModals.filter('.' + className.animating).length > 0);
+                        return $otherModals.filter('.' + className.animating).length > 0;
                     },
                 },
 
@@ -921,9 +921,9 @@
                             startPosition  = verticalCenter + topOffset
                         ;
 
-                        return (scrollHeight > height)
-                            ? (startPosition + scrollHeight + paddingHeight < contextHeight)
-                            : (height + (paddingHeight * 2) < contextHeight);
+                        return scrollHeight > height
+                            ? startPosition + scrollHeight + paddingHeight < contextHeight
+                            : height + (paddingHeight * 2) < contextHeight;
                     },
                 },
                 has: {
@@ -1075,7 +1075,7 @@
                             var canFit = module.can.fit();
                             $module
                                 .css({
-                                    top: (!$module.hasClass('aligned') && canFit)
+                                    top: !$module.hasClass('aligned') && canFit
                                         ? $document.scrollTop() + (module.cache.contextHeight - module.cache.height) / 2
                                         : (!canFit || $module.hasClass('top')
                                             ? $document.scrollTop() + settings.padding
@@ -1086,7 +1086,7 @@
                         } else {
                             $module
                                 .css({
-                                    marginTop: (!$module.hasClass('aligned') && module.can.fit())
+                                    marginTop: !$module.hasClass('aligned') && module.can.fit()
                                         ? -(module.cache.height / 2)
                                         : settings.padding / 2,
                                     marginLeft: -(module.cache.width / 2),
@@ -1312,7 +1312,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

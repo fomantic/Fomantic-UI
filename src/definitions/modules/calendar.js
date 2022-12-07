@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -45,7 +45,7 @@
 
         $allModules.each(function () {
             var
-                settings = ($.isPlainObject(parameters))
+                settings = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.calendar.settings, parameters)
                     : $.extend({}, $.fn.calendar.settings),
 
@@ -1402,7 +1402,7 @@
                                     : date));
                     },
                     mergeDateTime: function (date, time) {
-                        return (!date || !time)
+                        return !date || !time
                             ? time
                             : new Date(date.getFullYear(), date.getMonth(), date.getDate(), time.getHours(), time.getMinutes());
                     },
@@ -1576,7 +1576,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

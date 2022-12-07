@@ -270,7 +270,7 @@ module.exports = function (callback) {
             for (let destination in installPaths) {
                 if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
-                    installPaths[destination] = (destination == 'config' || destination == 'configFolder')
+                    installPaths[destination] = destination == 'config' || destination == 'configFolder'
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
                         : path.normalize(path.join(installFolder, installPaths[destination]));
                 }

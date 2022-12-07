@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -51,7 +51,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.slider.settings, parameters)
                     : $.extend({}, $.fn.slider.settings),
 
@@ -619,7 +619,7 @@
                             case settings.labelTypes.number:
                                 return Math.round(((value * (module.get.step() === 0 ? 1 : module.get.step())) + module.get.min()) * precision) / precision;
                             case settings.labelTypes.letter:
-                                return alphabet[(value) % 26];
+                                return alphabet[value % 26];
                             default:
                                 return value;
                         }
@@ -1262,7 +1262,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

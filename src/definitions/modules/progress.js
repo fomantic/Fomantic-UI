@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -37,7 +37,7 @@
 
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.progress.settings, parameters)
                     : $.extend({}, $.fn.progress.settings),
 
@@ -254,7 +254,7 @@
                         return module.progressPoll;
                     },
                     total: function () {
-                        return (module.get.total() !== false);
+                        return module.get.total() !== false;
                     },
                 },
 
@@ -267,7 +267,7 @@
                         var
                             value   = module.get.value(index),
                             total   = module.get.total(),
-                            percent = (animating)
+                            percent = animating
                                 ? module.get.displayPercent(index)
                                 : module.get.percent(index),
                             left = total !== false
@@ -356,11 +356,11 @@
                             totalWidth     = $module.width(),
                             minDisplay     = parseInt($bar.css('min-width'), 10),
                             displayPercent = barWidth > minDisplay
-                                ? ((barWidth / totalWidth) * 100)
+                                ? (barWidth / totalWidth) * 100
                                 : module.percent
                         ;
 
-                        return (settings.precision > 0)
+                        return settings.precision > 0
                             ? Math.round(displayPercent * (10 * settings.precision)) / (10 * settings.precision)
                             : Math.round(displayPercent);
                     },
@@ -452,7 +452,7 @@
                         var barCounts = $bars.length;
                         var isMultiple = barCounts > 1;
                         var percents = values.map(function (value, index) {
-                            var allZero = (index === barCounts - 1 && valuesSum === 0);
+                            var allZero = index === barCounts - 1 && valuesSum === 0;
                             var $bar = $($bars[index]);
                             if (value === 0 && isMultiple && !allZero) {
                                 $bar.css('display', 'none');
@@ -503,7 +503,7 @@
                                 ? +(percent.replace('%', ''))
                                 : percent;
 
-                            return (settings.limitValues)
+                            return settings.limitValues
                                 ? Math.max(0, Math.min(100, percent))
                                 : percent;
                         });
@@ -528,7 +528,7 @@
 
                             // round display percentage
                             var roundedPercents = percents.map(function (percent) {
-                                return (autoPrecision > 0)
+                                return autoPrecision > 0
                                     ? Math.round(percent * (10 * autoPrecision)) / (10 * autoPrecision)
                                     : Math.round(percent)
                                 ;
@@ -536,7 +536,7 @@
                             module.percent = roundedPercents;
                             if (hasTotal) {
                                 module.value = percents.map(function (percent) {
-                                    return (autoPrecision > 0)
+                                    return autoPrecision > 0
                                         ? Math.round((percent / 100) * module.total * (10 * autoPrecision)) / (10 * autoPrecision)
                                         : Math.round((percent / 100) * module.total * 10) / 10;
                                 });
@@ -915,7 +915,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

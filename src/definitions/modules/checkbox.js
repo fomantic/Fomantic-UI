@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -370,7 +370,7 @@
                         return initialLoad;
                     },
                     radio: function () {
-                        return ($input.hasClass(className.radio) || $input.attr('type') == 'radio');
+                        return $input.hasClass(className.radio) || $input.attr('type') == 'radio';
                     },
                     indeterminate: function () {
                         return $input.prop('indeterminate') !== undefined && $input.prop('indeterminate');
@@ -450,7 +450,7 @@
                         return true;
                     },
                     ignoreCallbacks: function () {
-                        return (initialLoad && !settings.fireOnInit);
+                        return initialLoad && !settings.fireOnInit;
                     },
                 },
 
@@ -459,7 +459,7 @@
                         return !($module.hasClass(className.disabled) || $module.hasClass(className.readOnly) || $input.prop('disabled') || $input.prop('readonly'));
                     },
                     uncheck: function () {
-                        return (typeof settings.uncheckable === 'boolean')
+                        return typeof settings.uncheckable === 'boolean'
                             ? settings.uncheckable
                             : !module.is.radio();
                     },
@@ -606,7 +606,7 @@
 
                 has: {
                     label: function () {
-                        return ($label.length > 0);
+                        return $label.length > 0;
                     },
                 },
 
@@ -820,7 +820,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

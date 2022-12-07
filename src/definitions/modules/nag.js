@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.nag.settings, parameters)
                     : $.extend({}, $.fn.nag.settings),
 
@@ -47,7 +47,7 @@
 
                 $module         = $(this),
 
-                $context        = (settings.context)
+                $context        = settings.context
                     ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                     : $('body'),
 
@@ -462,7 +462,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

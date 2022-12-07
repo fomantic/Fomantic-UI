@@ -120,10 +120,10 @@ module.exports = {
             });
         }
 
-        const components = (Array.isArray(config.components) && config.components.length > 0)
+        const components = Array.isArray(config.components) && config.components.length > 0
             ? config.components
             : defaults.components;
-        const individuals =  (Array.isArray(config.individuals) && config.individuals.length > 0)
+        const individuals =  Array.isArray(config.individuals) && config.individuals.length > 0
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
@@ -134,7 +134,7 @@ module.exports = {
         // components that should be built, but excluded from main .css/.js files
         config.globs.individuals = individuals.length === 1
             ? individuals[0]
-            : ((individuals.length > 1)
+            : (individuals.length > 1
                 ? '{' + individuals.join(',') + '}'
                 : undefined);
     },

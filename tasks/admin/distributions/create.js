@@ -88,7 +88,7 @@ module.exports = function (callback) {
                 ;
                 list.forEach(function (file) {
                     let
-                        isOmitted = (omitted.indexOf(file) > -1),
+                        isOmitted = omitted.indexOf(file) > -1,
                         filePath  = path.join(dir, file),
                         stat      = fs.statSync(filePath)
                     ;

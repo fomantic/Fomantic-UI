@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -38,7 +38,7 @@
 
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.visibility.settings, parameters)
                     : $.extend({}, $.fn.visibility.settings),
 
@@ -227,7 +227,7 @@
                 },
 
                 precache: function (images, callback) {
-                    if (!(Array.isArray(images))) {
+                    if (!Array.isArray(images)) {
                         images = [images];
                     }
                     var
@@ -432,7 +432,7 @@
                                 : false
                         ;
 
-                        return (overflowY == 'auto' || overflowY == 'scroll');
+                        return overflowY == 'auto' || overflowY == 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
@@ -441,7 +441,7 @@
                                 : false
                         ;
 
-                        return (overflowX == 'auto' || overflowX == 'scroll');
+                        return overflowX == 'auto' || overflowX == 'scroll';
                     },
                 },
 
@@ -515,7 +515,7 @@
                     if (amount && newCallback) {
                         settings.onPassed[amount] = newCallback;
                     } else if (amount !== undefined) {
-                        return (module.get.pixelsPassed(amount) > calculations.pixelsPassed);
+                        return module.get.pixelsPassed(amount) > calculations.pixelsPassed;
                     } else if (calculations.passing) {
                         $.each(settings.onPassed, function (amount, callback) {
                             if (calculations.bottomVisible || calculations.pixelsPassed > module.get.pixelsPassed(amount)) {
@@ -915,9 +915,9 @@
                         element.percentagePassed = 0;
 
                         // meta calculations
-                        element.onScreen = ((element.topVisible || element.passing) && !element.bottomPassed);
-                        element.passing = (element.topPassed && !element.bottomPassed);
-                        element.offScreen = (!element.onScreen);
+                        element.onScreen = (element.topVisible || element.passing) && !element.bottomPassed;
+                        element.passing = element.topPassed && !element.bottomPassed;
+                        element.offScreen = !element.onScreen;
 
                         // passing calculations
                         if (element.passing) {
@@ -957,13 +957,13 @@
                             element = module.get.elementCalculations()
                         ;
                         if (amount.search('%') > -1) {
-                            return (element.height * (parseInt(amount, 10) / 100));
+                            return element.height * (parseInt(amount, 10) / 100);
                         }
 
                         return parseInt(amount, 10);
                     },
                     occurred: function (callback) {
-                        return (module.cache.occurred !== undefined)
+                        return module.cache.occurred !== undefined
                             ? module.cache.occurred[callback] || false
                             : false;
                     },
@@ -1182,7 +1182,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

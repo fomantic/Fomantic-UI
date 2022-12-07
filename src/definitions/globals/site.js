@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -28,7 +28,7 @@
             methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
-            settings        = ($.isPlainObject(parameters))
+            settings        = $.isPlainObject(parameters)
                 ? $.extend(true, {}, $.site.settings, parameters)
                 : $.extend({}, $.site.settings),
 
@@ -102,7 +102,7 @@
             },
 
             moduleExists: function (name) {
-                return ($.fn[name] !== undefined && $.fn[name].settings !== undefined);
+                return $.fn[name] !== undefined && $.fn[name].settings !== undefined;
             },
 
             enabled: {
@@ -140,7 +140,7 @@
             change: {
                 setting: function (setting, value, modules, modifyExisting) {
                     modules = typeof modules === 'string'
-                        ? ((modules === 'all')
+                        ? (modules === 'all'
                             ? settings.modules
                             : [modules])
                         : modules || settings.modules;
@@ -149,7 +149,7 @@
                         : true;
                     $.each(modules, function (index, name) {
                         var
-                            namespace = (module.moduleExists(name))
+                            namespace = module.moduleExists(name)
                                 ? $.fn[name].settings.namespace || false
                                 : true,
                             $existingModules
@@ -413,7 +413,7 @@
             module.initialize();
         }
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

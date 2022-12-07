@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -43,7 +43,7 @@
         ;
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.popup.settings, parameters)
                     : $.extend({}, $.fn.popup.settings),
 
@@ -60,7 +60,7 @@
                 $context           = [window, document].indexOf(settings.context) < 0 ? $document.find(settings.context) : $(settings.context),
                 $scrollContext     = [window, document].indexOf(settings.scrollContext) < 0 ? $document.find(settings.scrollContext) : $(settings.scrollContext),
                 $boundary          = [window, document].indexOf(settings.boundary) < 0 ? $document.find(settings.boundary) : $(settings.boundary),
-                $target            = (settings.target)
+                $target            = settings.target
                     ? ([window, document].indexOf(settings.target) < 0 ? $document.find(settings.target) : $(settings.target))
                     : $module,
 
@@ -136,7 +136,7 @@
                             ;
                         }
                     } else {
-                        $offsetParent = (settings.inline)
+                        $offsetParent = settings.inline
                             ? module.get.offsetParent($target)
                             : (module.has.popup()
                                 ? module.get.offsetParent($popup)
@@ -179,7 +179,7 @@
                 event: {
                     start: function (event) {
                         var
-                            delay = ($.isPlainObject(settings.delay))
+                            delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.show
                                 : settings.delay
                         ;
@@ -190,7 +190,7 @@
                     },
                     end: function () {
                         var
-                            delay = ($.isPlainObject(settings.delay))
+                            delay = $.isPlainObject(settings.delay)
                                 ? settings.delay.hide
                                 : settings.delay
                         ;
@@ -224,7 +224,7 @@
                         var
                             $target = $(event.target),
                             isInDOM = $.contains(document.documentElement, event.target),
-                            inPopup = ($target.closest(selector.popup).length > 0)
+                            inPopup = $target.closest(selector.popup).length > 0
                         ;
                         // don't close on clicks inside popup
                         if (event && !inPopup && isInDOM) {
@@ -370,10 +370,10 @@
                         return false;
                     }
                     if (settings.inline || settings.popup) {
-                        return (module.has.popup());
+                        return module.has.popup();
                     }
 
-                    return ($popup.closest($context).length > 0);
+                    return $popup.closest($context).length > 0;
                 },
 
                 removePopup: function () {
@@ -408,7 +408,7 @@
                 },
                 supports: {
                     svg: function () {
-                        return (typeof SVGGraphicsElement !== 'undefined');
+                        return typeof SVGGraphicsElement !== 'undefined';
                     },
                 },
                 animate: {
@@ -502,11 +502,11 @@
                             parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                                 ? $target.offsetParent().offset()
                                 : { top: 0, left: 0 },
-                            screenPosition = (isWindowEl)
+                            screenPosition = isWindowEl
                                 ? { top: 0, left: 0 }
                                 : $boundary.offset(),
                             calculations   = {},
-                            scroll = (isWindowEl)
+                            scroll = isWindowEl
                                 ? { top: $window.scrollTop(), left: $window.scrollLeft() }
                                 : { top: 0, left: 0 },
                             screen
@@ -564,10 +564,10 @@
                         }
 
                         // add in margins if inline
-                        calculations.target.margin.top = (settings.inline)
+                        calculations.target.margin.top = settings.inline
                             ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-top'), 10)
                             : 0;
-                        calculations.target.margin.left = (settings.inline)
+                        calculations.target.margin.left = settings.inline
                             ? (module.is.rtl()
                                 ? parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-right'), 10)
                                 : parseInt(window.getComputedStyle(targetElement).getPropertyValue('margin-left'), 10))
@@ -625,8 +625,8 @@
                             distanceFromBoundary = {
                                 top: offset.top - boundary.top,
                                 left: offset.left - boundary.left,
-                                right: (boundary.right - (offset.left + popup.width)),
-                                bottom: (boundary.bottom - (offset.top + popup.height)),
+                                right: boundary.right - (offset.left + popup.width),
+                                bottom: boundary.bottom - (offset.top + popup.height),
                             };
                             module.verbose('Distance from boundaries determined', offset, distanceFromBoundary);
                         }
@@ -643,20 +643,20 @@
                         ;
                         if (parentNode) {
                             var
-                                is2D     = ($node.css('transform') === 'none'),
-                                isStatic = ($node.css('position') === 'static'),
+                                is2D     = $node.css('transform') === 'none',
+                                isStatic = $node.css('position') === 'static',
                                 isBody   = $node.is('body')
                             ;
                             while (parentNode && !isBody && isStatic && is2D) {
                                 parentNode = parentNode.parentNode;
                                 $node = $(parentNode);
-                                is2D = ($node.css('transform') === 'none');
-                                isStatic = ($node.css('position') === 'static');
+                                is2D = $node.css('transform') === 'none';
+                                isStatic = $node.css('position') === 'static';
                                 isBody = $node.is('body');
                             }
                         }
 
-                        return ($node && $node.length > 0)
+                        return $node && $node.length > 0
                             ? $node
                             : $();
                     },
@@ -698,7 +698,7 @@
                                 'bottom left': 'left center',
                                 'left center': 'top left',
                             },
-                            adjacentsAvailable = (verticalPosition == 'top' || verticalPosition == 'bottom'),
+                            adjacentsAvailable = verticalPosition == 'top' || verticalPosition == 'bottom',
                             oppositeTried = false,
                             adjacentTried = false,
                             nextPosition  = false
@@ -765,11 +765,11 @@
                         if (module.should.centerArrow(calculations)) {
                             module.verbose('Adjusting offset to center arrow on small target element');
                             if (position == 'top left' || position == 'bottom left') {
-                                offset += (target.width / 2);
+                                offset += target.width / 2;
                                 offset -= settings.arrowPixelsFromEdge;
                             }
                             if (position == 'top right' || position == 'bottom right') {
-                                offset -= (target.width / 2);
+                                offset -= target.width / 2;
                                 offset += settings.arrowPixelsFromEdge;
                             }
                         }
@@ -798,7 +798,7 @@
 
                         if (module.is.rtl()) {
                             position = position.replace(/left|right/g, function (match) {
-                                return (match == 'left')
+                                return match == 'left'
                                     ? 'right'
                                     : 'left';
                             });
@@ -910,7 +910,7 @@
                                 position = module.get.nextPosition(position);
                                 module.debug('Trying new position', position);
 
-                                return ($popup)
+                                return $popup
                                     ? module.set.position(position, calculations)
                                     : false;
                             }
@@ -1067,7 +1067,7 @@
 
                 has: {
                     popup: function () {
-                        return ($popup && $popup.length > 0);
+                        return $popup && $popup.length > 0;
                     },
                 },
 
@@ -1109,13 +1109,13 @@
                         return $module.hasClass(className.active);
                     },
                     animating: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.animating));
+                        return $popup !== undefined && $popup.hasClass(className.animating);
                     },
                     fluid: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.fluid));
+                        return $popup !== undefined && $popup.hasClass(className.fluid);
                     },
                     visible: function () {
-                        return ($popup !== undefined && $popup.hasClass(className.popupVisible));
+                        return $popup !== undefined && $popup.hasClass(className.popupVisible);
                     },
                     dropdown: function () {
                         return $module.hasClass(className.dropdown);
@@ -1299,7 +1299,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -36,7 +36,7 @@
 
         $allModules.each(function () {
             var
-                settings              = ($.isPlainObject(parameters))
+                settings              = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.sticky.settings, parameters)
                     : $.extend({}, $.fn.sticky.settings),
 
@@ -237,7 +237,7 @@
                         ;
                         $element.addClass(className.supported);
 
-                        return ($element.css('position').match('sticky'));
+                        return $element.css('position').match('sticky');
                     },
                 },
 
@@ -279,7 +279,7 @@
                             context.offset.left += scrollContext.left;
                         }
                         module.cache = {
-                            fits: ((element.height + settings.offset) <= scrollContext.height),
+                            fits: (element.height + settings.offset) <= scrollContext.height,
                             sameHeight: element.height == context.height,
                             scrollContext: {
                                 height: scrollContext.height,
@@ -320,7 +320,7 @@
                     scrollChange: function (scroll) {
                         scroll = scroll || $scroll.scrollTop();
 
-                        return (module.lastScroll)
+                        return module.lastScroll
                             ? scroll - module.lastScroll
                             : 0;
                     },
@@ -329,7 +329,7 @@
                             return module.elementScroll;
                         }
 
-                        return (module.is.top())
+                        return module.is.top()
                             ? Math.abs(parseInt($module.css('top'), 10)) || 0
                             : Math.abs(parseInt($module.css('bottom'), 10)) || 0;
                     },
@@ -340,7 +340,7 @@
                             element        = module.cache.element,
                             scrollContext  = module.cache.scrollContext,
                             delta          = module.get.scrollChange(scroll),
-                            maxScroll      = (element.height - scrollContext.height + settings.offset),
+                            maxScroll      = element.height - scrollContext.height + settings.offset,
                             elementScroll  = module.get.currentElementScroll(),
                             possibleScroll = elementScroll + delta
                         ;
@@ -424,7 +424,7 @@
                         if (module.is.top()) {
                             $module
                                 .css('bottom', '')
-                                .css('top', (-scroll) + 'px')
+                                .css('top', -scroll + 'px')
                             ;
                         }
                         if (module.is.bottom()) {
@@ -444,7 +444,7 @@
 
                 is: {
                     standardScroll: function () {
-                        return ($scroll[0] == window);
+                        return $scroll[0] == window;
                     },
                     top: function () {
                         return $module.hasClass(className.top);
@@ -453,10 +453,10 @@
                         return $module.hasClass(className.bottom);
                     },
                     initialPosition: function () {
-                        return (!module.is.fixed() && !module.is.bound());
+                        return !module.is.fixed() && !module.is.bound();
                     },
                     hidden: function () {
-                        return (!$module.is(':visible'));
+                        return !$module.is(':visible');
                     },
                     bound: function () {
                         return $module.hasClass(className.bound);
@@ -475,14 +475,14 @@
                         element        = cache.element,
                         scrollContext  = cache.scrollContext,
                         context        = cache.context,
-                        offset         = (module.is.bottom() && settings.pushing)
+                        offset         = module.is.bottom() && settings.pushing
                             ? settings.bottomOffset
                             : settings.offset,
                         scroll         = {
                             top: cachedPosition + offset,
                             bottom: cachedPosition + offset + scrollContext.height,
                         },
-                        elementScroll  = (fits)
+                        elementScroll  = fits
                             ? 0
                             : module.get.elementScroll(scroll.top),
 
@@ -846,7 +846,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

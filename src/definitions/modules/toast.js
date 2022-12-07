@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
         ;
         $allModules.each(function () {
             var
-                settings          = ($.isPlainObject(parameters))
+                settings          = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.toast.settings, parameters)
                     : $.extend({}, $.fn.toast.settings),
 
@@ -55,7 +55,7 @@
                 $progressBar,
                 $animationObject,
                 $close,
-                $context         = (settings.context)
+                $context         = settings.context
                     ? ([window, document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context))
                     : $('body'),
 
@@ -788,7 +788,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
@@ -941,7 +941,7 @@
             return n1 * (x -= 2.625 / d1) * x + 0.984375;
         },
         easeOutCubic: function (t) {
-            return (--t) * t * t + 1;
+            return --t * t * t + 1;
         },
     });
 })(jQuery, window, document);

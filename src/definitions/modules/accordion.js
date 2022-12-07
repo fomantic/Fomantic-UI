@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
         ;
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.accordion.settings, parameters)
                     : $.extend({}, $.fn.accordion.settings),
 
@@ -129,8 +129,8 @@
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
                         isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = (isActive && !isAnimating),
-                        isOpening   = (!isActive && isAnimating)
+                        isOpen      = isActive && !isAnimating,
+                        isOpening   = !isActive && isAnimating
                     ;
                     module.debug('Toggling visibility of content', $activeTitle);
                     if (isOpen || isOpening) {
@@ -224,7 +224,7 @@
                         $activeContent = $activeTitle.next($content),
                         isAnimating    = $activeContent.hasClass(className.animating),
                         isActive       = $activeContent.hasClass(className.active),
-                        isOpening      = (!isActive && isAnimating),
+                        isOpening      = !isActive && isAnimating,
                         isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
@@ -298,7 +298,7 @@
                         $openTitles = $openTitles.not($nestedTitles);
                         $openContents = $openTitles.next($content);
                     }
-                    if (($openTitles.length > 0)) {
+                    if ($openTitles.length > 0) {
                         module.debug('Exclusive enabled, closing other content', $openTitles);
                         $openTitles
                             .removeClass(className.active)
@@ -533,7 +533,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

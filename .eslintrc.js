@@ -47,6 +47,10 @@ module.exports = {
                 VariableDeclarator: true,
             },
         }],
+        'no-extra-parens': 'off', /* TODO https://github.com/eslint/eslint/issues/16626#issuecomment-1341016901 ['error', 'all', {
+            nestedBinaryExpressions: false,
+            enforceForNewInMemberExpressions: false,
+        }], */
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',

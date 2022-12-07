@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
         ;
         $allModules.each(function () {
             var
-                settings        = ($.isPlainObject(parameters))
+                settings        = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.rating.settings, parameters)
                     : $.extend({}, $.fn.rating.settings),
 
@@ -249,7 +249,7 @@
                     rating: function (rating) {
                         var
                             ratingIndex = Math.floor(
-                                (rating - 1 >= 0)
+                                rating - 1 >= 0
                                     ? rating - 1
                                     : 0
                             ),
@@ -464,7 +464,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

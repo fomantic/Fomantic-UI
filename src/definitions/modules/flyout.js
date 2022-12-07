@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -50,7 +50,7 @@
 
         $allModules.each(function () {
             var
-                settings             = ($.isPlainObject(parameters))
+                settings             = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.flyout.settings, parameters)
                     : $.extend({}, $.fn.flyout.settings),
 
@@ -266,8 +266,8 @@
                     clickaway: function (event) {
                         if (settings.closable) {
                             var
-                                clickedInPusher = ($pusher.find(event.target).length > 0 || $pusher.is(event.target)),
-                                clickedContext  = ($context.is(event.target))
+                                clickedInPusher = $pusher.find(event.target).length > 0 || $pusher.is(event.target),
+                                clickedContext  = $context.is(event.target)
                             ;
                             if (clickedInPusher) {
                                 module.verbose('User clicked on dimmed page');
@@ -656,13 +656,13 @@
                 },
 
                 othersAnimating: function () {
-                    return ($flyouts.not($module).filter('.' + className.animating).length > 0);
+                    return $flyouts.not($module).filter('.' + className.animating).length > 0;
                 },
                 othersVisible: function () {
-                    return ($flyouts.not($module).filter('.' + className.visible).length > 0);
+                    return $flyouts.not($module).filter('.' + className.visible).length > 0;
                 },
                 othersActive: function () {
-                    return (module.othersVisible() || module.othersAnimating());
+                    return module.othersVisible() || module.othersAnimating();
                 },
 
                 hideOthers: function (callback) {
@@ -1309,7 +1309,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };

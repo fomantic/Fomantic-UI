@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math === Math)
+    window = window !== undefined && window.Math === Math
         ? window
         : globalThis;
 
@@ -44,7 +44,7 @@
         $allModules.each(function () {
             var
                 moduleSelector = $allModules.selector || '',
-                settings       = ($.isPlainObject(parameters))
+                settings       = $.isPlainObject(parameters)
                     ? $.extend(true, {}, $.fn.shape.settings, parameters)
                     : $.extend({}, $.fn.shape.settings),
 
@@ -185,7 +185,7 @@
 
                 is: {
                     complete: function () {
-                        return ($side.filter('.' + className.active)[0] == $nextSide[0]);
+                        return $side.filter('.' + className.active)[0] == $nextSide[0];
                     },
                     animating: function () {
                         return $module.hasClass(className.animating);
@@ -199,7 +199,7 @@
 
                     defaultSide: function () {
                         $activeSide = $side.filter('.' + settings.className.active);
-                        $nextSide = ($activeSide.next(selector.side).length > 0)
+                        $nextSide = $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
                         nextIndex = false;
@@ -443,7 +443,7 @@
                     },
 
                     nextSide: function () {
-                        return ($activeSide.next(selector.side).length > 0)
+                        return $activeSide.next(selector.side).length > 0
                             ? $activeSide.next(selector.side)
                             : $side.first();
                     },
@@ -455,10 +455,10 @@
                     above: function () {
                         var
                             box = {
-                                origin: (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
+                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
-                                    active: ($nextSide.outerHeight(true) / 2),
-                                    next: ($activeSide.outerHeight(true) / 2),
+                                    active: $nextSide.outerHeight(true) / 2,
+                                    next: $activeSide.outerHeight(true) / 2,
                                 },
                             }
                         ;
@@ -480,10 +480,10 @@
                     below: function () {
                         var
                             box = {
-                                origin: (($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2),
+                                origin: ($activeSide.outerHeight(true) - $nextSide.outerHeight(true)) / 2,
                                 depth: {
-                                    active: ($nextSide.outerHeight(true) / 2),
-                                    next: ($activeSide.outerHeight(true) / 2),
+                                    active: $nextSide.outerHeight(true) / 2,
+                                    next: $activeSide.outerHeight(true) / 2,
                                 },
                             }
                         ;
@@ -509,7 +509,7 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
                                     active: height.next / 2,
                                     next: height.active / 2,
@@ -538,7 +538,7 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
                                     active: height.next / 2,
                                     next: height.active / 2,
@@ -567,7 +567,7 @@
                                 next: $nextSide.outerWidth(true),
                             },
                             box = {
-                                origin: ((height.active - height.next) / 2),
+                                origin: (height.active - height.next) / 2,
                                 depth: {
                                     active: height.next / 2,
                                     next: height.active / 2,
@@ -763,7 +763,7 @@
             }
         });
 
-        return (returnedValue !== undefined)
+        return returnedValue !== undefined
             ? returnedValue
             : this;
     };
