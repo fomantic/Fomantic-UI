@@ -1643,8 +1643,7 @@
             today: function (settings) {
                 return settings.type === 'date' ? settings.text.today : settings.text.now;
             },
-            cell: function (cell, date, cellOptions) {
-            },
+            cell: function (cell, date, cellOptions) {},
         },
 
         parser: {
@@ -1897,28 +1896,22 @@
         },
 
         // callback when date changes
-        onChange: function (date, text, mode) {
-        },
+        onChange: function (date, text, mode) {},
 
         // callback before show animation, return false to prevent show
-        onShow: function () {
-        },
+        onShow: function () {},
 
         // callback after show animation
-        onVisible: function () {
-        },
+        onVisible: function () {},
 
         // callback before hide animation, return false to prevent hide
-        onHide: function () {
-        },
+        onHide: function () {},
 
         // callback after hide animation
-        onHidden: function () {
-        },
+        onHidden: function () {},
 
         // callback before item is selected, return false to prevent selection
-        onSelect: function (date, mode) {
-        },
+        onSelect: function (date, mode) {},
 
         // is the given date disabled?
         isDisabled: function (date, mode) {

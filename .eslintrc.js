@@ -131,7 +131,6 @@ module.exports = {
         'no-shadow-restricted-names': 'off',
         'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
-        'unicorn/empty-brace-spaces': 'off',
         'unicorn/new-for-builtins': 'off',
         'unicorn/no-instanceof-array': 'off',
         'unicorn/no-process-exit': 'off',

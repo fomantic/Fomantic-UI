@@ -820,9 +820,7 @@
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();
-                            } else if (module.is.form()) {
-
-                            } else {
+                            } else if (!module.is.form()) {
                                 data.text = $module.text();
                             }
                         }

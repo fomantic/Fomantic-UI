@@ -1301,9 +1301,7 @@
         // page up/down multiplier. How many more times the steps to take on page up/down press
         pageMultiplier: 2,
 
-        selector: {
-
-        },
+        selector: {},
 
         className: {
             reversed: 'reversed',
