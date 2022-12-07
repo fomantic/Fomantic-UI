@@ -334,7 +334,8 @@
                             if (isDay && settings.showWeekNumbers) {
                                 tempMode += ' andweek';
                             }
-                            var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
+                            var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column')
+                                .appendTo(container);
                             if (isInverted) {
                                 table.addClass(className.inverted);
                             }
@@ -1646,7 +1647,8 @@
                 if (!text) {
                     return null;
                 }
-                text = String(text).trim().replace(/([.:\/\-])\s+/g, '$1').replace(/\s+([.:\/-])/g, '$1').replace(/\s+/g, ' ');
+                text = String(text).trim().replace(/([.:\/\-])\s+/g, '$1').replace(/\s+([.:\/-])/g, '$1')
+                    .replace(/\s+/g, ' ');
                 if (text.length === 0) {
                     return null;
                 }
@@ -1766,7 +1768,7 @@
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (1 <= j && j <= 12) {
+                            if (j >= 1 && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
 
@@ -1781,7 +1783,7 @@
                         if (isNaN(j)) {
                             continue;
                         }
-                        if (1 <= j && j <= 31) {
+                        if (j >= 1 && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
 
@@ -1815,7 +1817,7 @@
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (0 <= j && j <= 23) {
+                            if (j >= 0 && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
 
@@ -1831,7 +1833,7 @@
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (0 <= j && j <= 59) {
+                            if (j >= 0 && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
 

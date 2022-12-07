@@ -18,9 +18,7 @@ let overrideBrowserslist = hasBrowserslistConfig ? undefined : [
 ];
 
 // Node 12 does not support ??, so a little polyfill
-let nullish = (value, fallback) => {
-    return value !== undefined && value !== null ? value : fallback;
-};
+let nullish = (value, fallback) => (value !== undefined && value !== null ? value : fallback);
 
 module.exports = {
 
@@ -120,7 +118,7 @@ module.exports = {
                         if (error.line == 9) {
                             element = regExp.variable.exec(error.message)[1];
                             if (element) {
-                                console.error('Missing theme.config value for ', element);
+                                console.error('Missing theme.config value for', element);
                             }
                             console.error('Most likely new UI was added in an update. You will need to add missing elements from theme.config.example');
                         } else if (error.line == 84) {

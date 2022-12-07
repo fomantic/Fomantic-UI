@@ -721,7 +721,7 @@
                         .addClass(settings.className.loader)
                         .addClass(settings.loaderVariation)
                     ;
-                    if (!!settings.loaderText) {
+                    if (settings.loaderText) {
                         l.text(settings.loaderText);
                         l.addClass('text');
                     }

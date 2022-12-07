@@ -309,7 +309,7 @@
                         }
                         if (settings.displayTime > 0) {
                             var progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
-                            if (!!settings.showProgress) {
+                            if (settings.showProgress) {
                                 $progress = $('<div/>', {
                                     class: className.progress + ' ' + (settings.classProgress || settings.class),
                                     'data-percent': '',
