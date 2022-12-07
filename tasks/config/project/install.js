@@ -118,7 +118,7 @@ module.exports = {
                         root: nextDirectory,
                     };
                 }
-                if (path.resolve(directory) == path.resolve(nextDirectory)) {
+                if (path.resolve(directory) === path.resolve(nextDirectory)) {
                     return false;
                 }
 

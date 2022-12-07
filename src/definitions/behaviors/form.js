@@ -557,7 +557,7 @@
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
-                            name = $label.length == 1
+                            name = $label.length === 1
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
                             prompt = prompt.replace(/{name}/g, name);
@@ -730,42 +730,52 @@
                                         var date = $calendar.calendar('get date');
 
                                         if (date !== null) {
-                                            if (settings.dateHandling === 'date') {
-                                                values[name] = date;
-                                            } else if (settings.dateHandling === 'input') {
-                                                values[name] = $calendar.calendar('get input date');
-                                            } else if (settings.dateHandling === 'formatter') {
-                                                var type = $calendar.calendar('setting', 'type');
+                                            switch (settings.dateHandling) {
+                                                case 'date':
+                                                    values[name] = date;
 
-                                                switch (type) {
-                                                    case 'date':
-                                                        values[name] = settings.formatter.date(date);
+                                                    break;
 
-                                                        break;
+                                                case 'input':
+                                                    values[name] = $calendar.calendar('get input date');
 
-                                                    case 'datetime':
-                                                        values[name] = settings.formatter.datetime(date);
+                                                    break;
 
-                                                        break;
+                                                case 'formatter': {
+                                                    var type = $calendar.calendar('setting', 'type');
 
-                                                    case 'time':
-                                                        values[name] = settings.formatter.time(date);
+                                                    switch (type) {
+                                                        case 'date':
+                                                            values[name] = settings.formatter.date(date);
 
-                                                        break;
+                                                            break;
 
-                                                    case 'month':
-                                                        values[name] = settings.formatter.month(date);
+                                                        case 'datetime':
+                                                            values[name] = settings.formatter.datetime(date);
 
-                                                        break;
+                                                            break;
 
-                                                    case 'year':
-                                                        values[name] = settings.formatter.year(date);
+                                                        case 'time':
+                                                            values[name] = settings.formatter.time(date);
 
-                                                        break;
+                                                            break;
 
-                                                    default:
-                                                        module.debug('Wrong calendar mode', $calendar, type);
-                                                        values[name] = '';
+                                                        case 'month':
+                                                            values[name] = settings.formatter.month(date);
+
+                                                            break;
+
+                                                        case 'year':
+                                                            values[name] = settings.formatter.year(date);
+
+                                                            break;
+
+                                                        default:
+                                                            module.debug('Wrong calendar mode', $calendar, type);
+                                                            values[name] = '';
+                                                    }
+
+                                                    break;
                                                 }
                                             }
                                         } else {

@@ -28,7 +28,7 @@ module.exports = {
                     configPath = path.normalize(directory);
                 } else {
                     // reached file system root, let's stop
-                    if (nextDirectory == directory) {
+                    if (nextDirectory === directory) {
                         return;
                     }
                     // otherwise recurse

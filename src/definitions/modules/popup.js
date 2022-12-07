@@ -764,11 +764,11 @@
 
                         if (module.should.centerArrow(calculations)) {
                             module.verbose('Adjusting offset to center arrow on small target element');
-                            if (position == 'top left' || position == 'bottom left') {
+                            if (position === 'top left' || position === 'bottom left') {
                                 offset += target.width / 2;
                                 offset -= settings.arrowPixelsFromEdge;
                             }
-                            if (position == 'top right' || position == 'bottom right') {
+                            if (position === 'top right' || position === 'bottom right') {
                                 offset -= target.width / 2;
                                 offset += settings.arrowPixelsFromEdge;
                             }
@@ -782,10 +782,10 @@
 
                         if (settings.inline) {
                             module.debug('Adding margin to calculation', target.margin);
-                            if (position == 'left center' || position == 'right center') {
+                            if (position === 'left center' || position === 'right center') {
                                 offset += target.margin.top;
                                 distanceAway += -target.margin.left;
-                            } else if (position == 'top left' || position == 'top center' || position == 'top right') {
+                            } else if (position === 'top left' || position === 'top center' || position === 'top right') {
                                 offset += target.margin.left;
                                 distanceAway -= target.margin.top;
                             } else {
