@@ -621,16 +621,20 @@
                         module.verbose('Finding field with identifier', identifier);
                         identifier = module.escape.string(identifier);
                         var t;
-                        if ((t = $field.filter('#' + identifier)).length > 0) {
+                        t = $field.filter('#' + identifier);
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[name="' + identifier + '"]')).length > 0) {
+                        t = $field.filter('[name="' + identifier + '"]');
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[name="' + identifier + '[]"]')).length > 0) {
+                        t = $field.filter('[name="' + identifier + '[]"]');
+                        if (t.length > 0) {
                             return t;
                         }
-                        if ((t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]')).length > 0) {
+                        t = $field.filter('[data-' + metadata.validate + '="' + identifier + '"]');
+                        if (t.length > 0) {
                             return t;
                         }
                         module.error(error.noField.replace('{identifier}', identifier));
@@ -1869,14 +1873,24 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
+                matchingElement = $module.find('[data-validate="' + identifier + '"]');
+                if (matchingElement.length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
-                    matchingValue = matchingElement;
+                } else {
+                    matchingElement = $module.find('#' + identifier);
+                    if (matchingElement.length > 0) {
+                        matchingValue = matchingElement.val();
+                    } else {
+                        matchingElement = $module.find('[name="' + identifier + '"]');
+                        if (matchingElement.length > 0) {
+                            matchingValue = matchingElement.val();
+                        } else {
+                            matchingElement = $module.find('[name="' + identifier + '[]"]');
+                            if (matchingElement.length > 0) {
+                                matchingValue = matchingElement;
+                            }
+                        }
+                    }
                 }
 
                 return (matchingValue !== undefined)
@@ -1891,14 +1905,24 @@
                     matchingValue,
                     matchingElement
                 ;
-                if ((matchingElement = $module.find('[data-validate="' + identifier + '"]')).length > 0) {
+                matchingElement = $module.find('[data-validate="' + identifier + '"]');
+                if (matchingElement.length > 0) {
                     matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('#' + identifier)).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '"]')).length > 0) {
-                    matchingValue = matchingElement.val();
-                } else if ((matchingElement = $module.find('[name="' + identifier + '[]"]')).length > 0) {
-                    matchingValue = matchingElement;
+                } else {
+                    matchingElement = $module.find('#' + identifier);
+                    if (matchingElement.length > 0) {
+                        matchingValue = matchingElement.val();
+                    } else {
+                        matchingElement = $module.find('[name="' + identifier + '"]');
+                        if (matchingElement.length > 0) {
+                            matchingValue = matchingElement.val();
+                        } else {
+                            matchingElement = $module.find('[name="' + identifier + '[]"]');
+                            if (matchingElement.length > 0) {
+                                matchingValue = matchingElement;
+                            }
+                        }
+                    }
                 }
 
                 return (matchingValue !== undefined)
