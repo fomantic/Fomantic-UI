@@ -855,7 +855,7 @@
                         $.each(newValidation.rules, function (_index, rule) {
                             if ($.grep(validation[name].rules, function (item) {
                                 return item.type == rule.type;
-                            }).length == 0) {
+                            }).length === 0) {
                                 validation[name].rules.push(rule);
                             }
                         });
@@ -871,7 +871,7 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = ($prompt.length !== 0)
+                            promptExists = ($prompt.length > 0)
                         ;
                         errors = (typeof errors === 'string')
                             ? [errors]
@@ -1247,7 +1247,7 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = !$field.filter(':not(:disabled)').length;
+                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
@@ -1326,7 +1326,7 @@
                             });
                         }
 
-                        return internal ? invalidFields : !(invalidFields.length > 0);
+                        return internal ? invalidFields : invalidFields.length === 0;
                     },
                 },
 
@@ -1976,7 +1976,7 @@
                                 length: ($.inArray(cardNumber.length, validation.length) !== -1),
                                 pattern: (cardNumber.search(validation.pattern) !== -1),
                             };
-                            if (valid.length && valid.pattern) {
+                            if (valid.length > 0 && valid.pattern) {
                                 validCard = true;
                             }
                         }

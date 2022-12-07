@@ -282,7 +282,7 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length !== 0) {
+                    } else if ($target.next(selector.popup).length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
                         settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
@@ -371,7 +371,7 @@
                     if (settings.inline || settings.popup) {
                         return (module.has.popup());
                     } else {
-                        return ($popup.closest($context).length >= 1);
+                        return ($popup.closest($context).length > 0);
                     }
                 },
 

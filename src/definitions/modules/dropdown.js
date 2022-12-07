@@ -361,7 +361,7 @@
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
                             ;
-                            if (labelNode.length) {
+                            if (labelNode.length > 0) {
                                 if (!labelNode.attr('id')) {
                                     labelNode.attr('id', '_' + module.get.id() + '_formLabel');
                                 }
@@ -727,7 +727,7 @@
                             if (module.is.multiple()) {
                                 module.filterActive();
                             }
-                            if (query || (!query && module.get.activeItem().length == 0)) {
+                            if (query || (!query && module.get.activeItem().length === 0)) {
                                 module.select.firstUnfiltered();
                             }
                             if (module.has.allResultsFiltered()) {
@@ -942,7 +942,7 @@
                                 // Dividers which are direct siblings are considered a group
                                 var $lastDivider = $(this).nextUntil(selector.item);
 
-                                return ($lastDivider.length ? $lastDivider : $(this))
+                                return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
                                     .nextUntil(selector.divider)
                                     .filter(selector.item + ':not(.' + className.filtered + ')')
@@ -3262,7 +3262,7 @@
                         return ($currentMenu || $menu).find(selector.menu).length > 0;
                     },
                     message: function () {
-                        return ($menu.children(selector.message).length !== 0);
+                        return ($menu.children(selector.message).length > 0);
                     },
                     label: function (value) {
                         var

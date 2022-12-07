@@ -124,9 +124,9 @@
                         if (settings.inline) {
                             return;
                         }
-                        if (!$activator.length) {
+                        if ($activator.length === 0) {
                             $activator = $module.children().first();
-                            if (!$activator.length) {
+                            if ($activator.length === 0) {
                                 return;
                             }
                         }
@@ -135,7 +135,7 @@
 
                             return;
                         }
-                        if (!$container.length) {
+                        if ($container.length === 0) {
                             if (settings.context) {
                                 module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
                                 $container = $('<div/>', { id: module.popupId }).addClass(className.popup).appendTo($document.find(settings.context));
@@ -144,7 +144,7 @@
                                 // the styling (eg input action button needs to be the last child to have correct border radius)
                                 var
                                     $activatorParent = $activator.parent(),
-                                    domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo'
+                                    domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
                                 ;
                                 $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
                             }
@@ -163,7 +163,7 @@
 
                             return settings.onHidden.apply($container, arguments);
                         };
-                        if (!$input.length) {
+                        if ($input.length === 0) {
                             // no input, $container has to handle focus/blur
                             $container.attr('tabindex', '0');
                             onVisible = function () {
@@ -195,17 +195,17 @@
                         module.popup(options);
                     },
                     inline: function () {
-                        if ($activator.length && !settings.inline) {
+                        if ($activator.length > 0 && !settings.inline) {
                             return;
                         }
                         settings.inline = true;
                         $container = $('<div/>').addClass(className.calendar).appendTo($module);
-                        if (!$input.length) {
+                        if ($input.length === 0) {
                             $container.attr('tabindex', '0');
                         }
                     },
                     input: function () {
-                        if (settings.touchReadonly && $input.length && isTouch) {
+                        if (settings.touchReadonly && $input.length > 0 && isTouch) {
                             $input.prop('readonly', true);
                         }
                         module.check.disabled();
@@ -216,7 +216,7 @@
                             date = parser.date(settings.initialDate, settings);
                         } else if ($module.data(metadata.date) !== undefined) {
                             date = parser.date($module.data(metadata.date), settings);
-                        } else if ($input.length) {
+                        } else if ($input.length > 0) {
                             date = parser.date($input.val(), settings);
                         }
                         module.set.date(date, settings.formatInput, false);
@@ -565,7 +565,7 @@
                         $container.on('mouseup' + eventNamespace, module.event.mouseup);
                         $container.on('touchend' + eventNamespace, module.event.mouseup);
                         $container.on('mouseover' + eventNamespace, module.event.mouseover);
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             $input.on('input' + eventNamespace, module.event.inputChange);
                             $input.on('focus' + eventNamespace, module.event.inputFocus);
                             $input.on('blur' + eventNamespace, module.event.inputBlur);
@@ -580,7 +580,7 @@
                     events: function () {
                         module.debug('Unbinding events');
                         $container.off(eventNamespace);
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             $input.off(eventNamespace);
                         }
                     },
@@ -596,7 +596,7 @@
                         }
                     },
                     mousedown: function (event) {
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             // prevent the mousedown on the calendar causing the input to lose focus
                             event.preventDefault();
                         }
@@ -725,7 +725,7 @@
 
                 disconnect: {
                     classObserver: function () {
-                        if ($input.length && classObserver) {
+                        if ($input.length > 0 && classObserver) {
                             classObserver.disconnect();
                         }
                     },
@@ -733,7 +733,7 @@
 
                 observe: {
                     class: function () {
-                        if ($input.length && classObserver) {
+                        if ($input.length > 0 && classObserver) {
                             classObserver.observe($module[0], {
                                 attributes: true,
                             });
@@ -891,7 +891,7 @@
                         }
                         module.set.dataKeyValue(metadata.date, date);
 
-                        if (updateInput && $input.length) {
+                        if (updateInput && $input.length > 0) {
                             $input.val(text);
                         }
 
@@ -1032,14 +1032,14 @@
                 },
 
                 focus: function () {
-                    if ($input.length) {
+                    if ($input.length > 0) {
                         $input.trigger('focus');
                     } else {
                         $container.trigger('focus');
                     }
                 },
                 blur: function () {
-                    if ($input.length) {
+                    if ($input.length > 0) {
                         $input.trigger('blur');
                     } else {
                         $container.trigger('blur');

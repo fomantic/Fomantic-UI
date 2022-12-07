@@ -142,7 +142,6 @@ module.exports = {
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/empty-brace-spaces': 'off',
         'unicorn/escape-case': 'off',
-        'unicorn/explicit-length-check': 'off',
         'unicorn/new-for-builtins': 'off',
         'unicorn/no-hex-escape': 'off',
         'unicorn/no-instanceof-array': 'off',
