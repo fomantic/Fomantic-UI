@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (typeof window !== 'undefined' && window.Math == Math)
         ? window
         : globalThis;
 
@@ -29,7 +29,7 @@
 
             query            = arguments[0],
             legacyParameters = arguments[1],
-            methodInvoked    = (typeof query == 'string'),
+            methodInvoked    = (typeof query === 'string'),
             queryArguments   = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -302,7 +302,7 @@
                     },
                     // duck type rule test
                     shorthandRules: function (rules) {
-                        return (typeof rules == 'string' || Array.isArray(rules));
+                        return (typeof rules === 'string' || Array.isArray(rules));
                     },
                     empty: function ($field) {
                         if (!$field || $field.length === 0) {
@@ -507,7 +507,7 @@
                             if (!Array.isArray(rules) && typeof rules === 'object') {
                                 fullFields[name] = rules;
                             } else {
-                                if (typeof rules == 'string') {
+                                if (typeof rules === 'string') {
                                     rules = [rules];
                                 }
                                 fullFields[name] = {
@@ -873,7 +873,7 @@
                             $prompt      = $fieldGroup.children(selector.prompt),
                             promptExists = ($prompt.length !== 0)
                         ;
-                        errors = (typeof errors == 'string')
+                        errors = (typeof errors === 'string')
                             ? [errors]
                             : errors;
                         module.verbose('Adding field error state', identifier);
@@ -1229,7 +1229,7 @@
                         showErrors = (showErrors !== undefined)
                             ? showErrors
                             : true;
-                        if (typeof field == 'string') {
+                        if (typeof field === 'string') {
                             module.verbose('Validating field', field);
                             fieldName = field;
                             field = validation[field];
@@ -1436,7 +1436,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
@@ -1732,7 +1732,7 @@
                 return $.fn.form.settings.rules.range(value, range, 'integer');
             },
             range: function (value, range, regExp) {
-                if (typeof regExp == 'string') {
+                if (typeof regExp === 'string') {
                     regExp = $.fn.form.settings.regExp[regExp];
                 }
                 if (!(regExp instanceof RegExp)) {
@@ -1778,10 +1778,10 @@
 
             // is value (case insensitive)
             is: function (value, text) {
-                text = (typeof text == 'string')
+                text = (typeof text === 'string')
                     ? text.toLowerCase()
                     : text;
-                value = (typeof value == 'string')
+                value = (typeof value === 'string')
                     ? value.toLowerCase()
                     : value;
 
@@ -1795,10 +1795,10 @@
 
             // value is not another value (case insensitive)
             not: function (value, notValue) {
-                value = (typeof value == 'string')
+                value = (typeof value === 'string')
                     ? value.toLowerCase()
                     : value;
-                notValue = (typeof notValue == 'string')
+                notValue = (typeof notValue === 'string')
                     ? notValue.toLowerCase()
                     : notValue;
 
@@ -1952,7 +1952,7 @@
                     },
                     valid         = {},
                     validCard     = false,
-                    requiredTypes = (typeof cardTypes == 'string')
+                    requiredTypes = (typeof cardTypes === 'string')
                         ? cardTypes.split(',')
                         : false,
                     unionPay,
