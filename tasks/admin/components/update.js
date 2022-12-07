@@ -22,13 +22,13 @@ let
     git            = require('gulp-git'),
 
     // admin files
-    github         = require('../../config/admin/github.js'),
+    github         = require('../../config/admin/github'),
     release        = require('../../config/admin/release'),
     project        = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
     oAuth          = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
-        ? require('../../config/admin/oauth')
+        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
     // shorthand
