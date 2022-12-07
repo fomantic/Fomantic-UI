@@ -337,7 +337,7 @@
                         }
                     },
                     move: function (event) {
-                        if (event.type == 'mousemove') {
+                        if (event.type === 'mousemove') {
                             event.preventDefault(); // prevent text selection etc.
                         }
                         if (module.is.disabled()) {
@@ -345,7 +345,7 @@
                             return;
                         }
                         var value = module.determine.valueFromEvent(event);
-                        if (event.type == 'mousemove' && $currThumb === undefined) {
+                        if (event.type === 'mousemove' && $currThumb === undefined) {
                             var
                                 eventPos = module.determine.eventPos(event),
                                 newPos = module.determine.pos(eventPos)

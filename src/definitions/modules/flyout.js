@@ -166,7 +166,7 @@
                         module.setup.cache();
                     });
 
-                    if (module.get.direction() == 'left' || module.get.direction() == 'right') {
+                    if (module.get.direction() === 'left' || module.get.direction() === 'right') {
                         module.setup.heights();
                         module.bind.resize();
                     }
@@ -440,7 +440,7 @@
                                 + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
-                        } else if (direction === 'top' || direction == 'bottom') {
+                        } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.flyout ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.flyout ~ .pusher {'
@@ -459,7 +459,7 @@
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if (direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.flyout ~ .pusher::after {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'

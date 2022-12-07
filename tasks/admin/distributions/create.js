@@ -131,7 +131,7 @@ module.exports = function (callback) {
                 ;
             });
 
-            if (distribution == 'CSS') {
+            if (distribution === 'CSS') {
                 tasks.push(function () {
                     let
                         themes,
@@ -150,7 +150,7 @@ module.exports = function (callback) {
 
                     return mergeStream(themes, components, releases);
                 });
-            } else if (distribution == 'LESS') {
+            } else if (distribution === 'LESS') {
                 tasks.push(function () {
                     let
                         definitions,

@@ -83,10 +83,10 @@
                     module.setup.cache();
 
                     if (module.should.trackChanges()) {
-                        if (settings.type == 'image') {
+                        if (settings.type === 'image') {
                             module.setup.image();
                         }
-                        if (settings.type == 'fixed') {
+                        if (settings.type === 'fixed') {
                             module.setup.fixed();
                         }
 
@@ -131,7 +131,7 @@
                         .off('scroll' + eventNamespace, module.event.scroll)
                         .off('scrollchange' + eventNamespace, module.event.scrollchange)
                     ;
-                    if (settings.type == 'fixed') {
+                    if (settings.type === 'fixed') {
                         module.resetFixed();
                         module.remove.placeholder();
                     }
@@ -432,7 +432,7 @@
                                 : false
                         ;
 
-                        return overflowY == 'auto' || overflowY == 'scroll';
+                        return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
@@ -441,13 +441,13 @@
                                 : false
                         ;
 
-                        return overflowX == 'auto' || overflowX == 'scroll';
+                        return overflowX === 'auto' || overflowX === 'scroll';
                     },
                 },
 
                 refresh: function () {
                     module.debug('Refreshing constants (width/height)');
-                    if (settings.type == 'fixed') {
+                    if (settings.type === 'fixed') {
                         module.resetFixed();
                     }
                     module.reset();

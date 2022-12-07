@@ -237,7 +237,7 @@
                             if (href) {
                                 event.preventDefault();
                                 module.verbose('Opening search link found in result', $link);
-                                if (target == '_blank' || event.ctrlKey) {
+                                if (target === '_blank' || event.ctrlKey) {
                                     window.open(href);
                                 } else {
                                     window.location.href = href;
@@ -596,7 +596,7 @@
                             module.debug('Using specified max results', results);
                             results = results.slice(0, settings.maxResults);
                         }
-                        if (settings.type == 'category') {
+                        if (settings.type === 'category') {
                             results = module.create.categoryResults(results);
                         }
                         searchHTML = module.generateResults({
@@ -1052,7 +1052,7 @@
                     if (isProperObject || isProperArray) {
                         if (settings.maxResults > 0) {
                             if (isProperObject) {
-                                if (settings.type == 'standard') {
+                                if (settings.type === 'standard') {
                                     module.error(error.maxResults);
                                 }
                             } else {

@@ -193,7 +193,7 @@
 
                         return false;
                     }
-                    if (settings.historyType == 'state') {
+                    if (settings.historyType === 'state') {
                         module.debug('Using HTML5 to manage state');
                         if (settings.path !== false) {
                             $.address
@@ -450,7 +450,7 @@
                         evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
-                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
+                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
                                 .append($(html).clone(true))
@@ -481,7 +481,7 @@
                                     'X-Remote': true,
                                 },
                                 onSuccess: function (response) {
-                                    if (settings.cacheType == 'response') {
+                                    if (settings.cacheType === 'response') {
                                         module.cache.add(fullTabPath, response);
                                     }
                                     module.update.content(tabPath, response);
@@ -496,7 +496,7 @@
 
                                     if (settings.loadOnce) {
                                         module.cache.add(fullTabPath, true);
-                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() === 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
                                             var
                                                 $clone = $tab.children().clone(true)
@@ -525,7 +525,7 @@
                             module.activate.tab(tabPath);
                             module.debug('Adding cached content', fullTabPath);
                             if (!settings.loadOnce) {
-                                if (settings.evaluateScripts == 'once') {
+                                if (settings.evaluateScripts === 'once') {
                                     module.update.content(tabPath, cachedContent, false);
                                 } else {
                                     module.update.content(tabPath, cachedContent);
@@ -554,7 +554,7 @@
                     tab: function (tabPath) {
                         var
                             $tab          = module.get.tabElement(tabPath),
-                            $deactiveTabs = settings.deactivate == 'siblings'
+                            $deactiveTabs = settings.deactivate === 'siblings'
                                 ? $tab.siblings($tabs)
                                 : $tabs.not($tab),
                             isActive      = $tab.hasClass(className.active)
@@ -575,7 +575,7 @@
                     navigation: function (tabPath) {
                         var
                             $navigation         = module.get.navElement(tabPath),
-                            $deactiveNavigation = settings.deactivate == 'siblings'
+                            $deactiveNavigation = settings.deactivate === 'siblings'
                                 ? $navigation.siblings($allModules)
                                 : $allModules.not($navigation),
                             isActive    = $navigation.hasClass(className.active)

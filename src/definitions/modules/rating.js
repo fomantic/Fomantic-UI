@@ -143,7 +143,7 @@
                             $activeIcon   = $(this),
                             currentRating = module.get.rating(),
                             rating        = $icon.index($activeIcon) + 1,
-                            canClear      = settings.clearable == 'auto'
+                            canClear      = settings.clearable === 'auto'
                                 ? $icon.length === 1
                                 : settings.clearable
                         ;

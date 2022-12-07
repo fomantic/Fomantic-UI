@@ -309,7 +309,7 @@
                     },
 
                     updateInterval: function () {
-                        if (settings.updateInterval == 'auto') {
+                        if (settings.updateInterval === 'auto') {
                             return settings.duration;
                         }
 
@@ -610,10 +610,10 @@
                             var $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
-                            } else if (settings.label == 'ratio' && module.has.total()) {
+                            } else if (settings.label === 'ratio' && module.has.total()) {
                                 module.verbose('Adding ratio to bar label');
                                 $progress.text(module.get.text(settings.text.ratio, index));
-                            } else if (settings.label == 'percent') {
+                            } else if (settings.label === 'percent') {
                                 module.verbose('Adding percentage to bar label');
                                 $progress.text(module.get.text(settings.text.percent, index));
                             }

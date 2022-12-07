@@ -663,12 +663,12 @@
                                 ;
                             }
                         } else {
-                            if (settings.on == 'click') {
+                            if (settings.on === 'click') {
                                 $module
                                     .on('click' + eventNamespace, selector.icon, module.event.icon.click)
                                     .on('click' + eventNamespace, module.event.test.toggle)
                                 ;
-                            } else if (settings.on == 'hover') {
+                            } else if (settings.on === 'hover') {
                                 $module
                                     .on('mouseenter' + eventNamespace, module.delay.show)
                                     .on('mouseleave' + eventNamespace, module.delay.hide)
@@ -1818,7 +1818,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
+                        if (settings.placeholder !== 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 
@@ -2368,7 +2368,7 @@
                         currentScroll = $menu.scrollTop(),
                         itemHeight    = $item.eq(0).outerHeight(),
                         itemsPerPage  = Math.floor(menuHeight / itemHeight),
-                        newScroll     = direction == 'up'
+                        newScroll     = direction === 'up'
                             ? currentScroll - (itemHeight * itemsPerPage)
                             : currentScroll + (itemHeight * itemsPerPage),
                         $selectableItem = $item.not(selector.unselectable),
@@ -2376,15 +2376,15 @@
                         $nextSelectedItem,
                         elementIndex
                     ;
-                    elementIndex = direction == 'up'
+                    elementIndex = direction === 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
-                    isWithinRange = direction == 'up'
+                    isWithinRange = direction === 'up'
                         ? elementIndex >= 0
                         : elementIndex < $selectableItem.length;
                     $nextSelectedItem = isWithinRange
                         ? $selectableItem.eq(elementIndex)
-                        : (direction == 'up'
+                        : (direction === 'up'
                             ? $selectableItem.first()
                             : $selectableItem.last());
                     if ($nextSelectedItem.length > 0) {
@@ -3458,7 +3458,7 @@
                                 : false
                         ;
 
-                        return overflowY == 'auto' || overflowY == 'scroll';
+                        return overflowY === 'auto' || overflowY === 'scroll';
                     },
                     horizontallyScrollableContext: function () {
                         var
@@ -3467,7 +3467,7 @@
                                 : false
                         ;
 
-                        return overflowX == 'auto' || overflowX == 'scroll';
+                        return overflowX === 'auto' || overflowX === 'scroll';
                     },
                 },
 

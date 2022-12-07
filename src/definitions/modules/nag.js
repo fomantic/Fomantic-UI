@@ -279,7 +279,7 @@
                                 storedValue = null;
                             }
                         }
-                        if (storedValue == 'undefined' || storedValue == 'null' || storedValue === undefined || storedValue === null) {
+                        if (storedValue === 'undefined' || storedValue === 'null' || storedValue === undefined || storedValue === null) {
                             storedValue = undefined;
                         }
 

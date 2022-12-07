@@ -369,7 +369,7 @@
 
                 is: {
                     video: function () {
-                        return module.get.type() == 'video';
+                        return module.get.type() === 'video';
                     },
                 },
 

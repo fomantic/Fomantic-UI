@@ -106,12 +106,12 @@
 
                 bind: {
                     events: function () {
-                        if (settings.on == 'hover') {
+                        if (settings.on === 'hover') {
                             $dimmable
                                 .on('mouseenter' + eventNamespace, module.show)
                                 .on('mouseleave' + eventNamespace, module.hide)
                             ;
-                        } else if (settings.on == 'click') {
+                        } else if (settings.on === 'click') {
                             $dimmable
                                 .on(clickEvent + eventNamespace, module.toggle)
                             ;
@@ -265,7 +265,7 @@
                         } else {
                             module.verbose('Showing dimmer animation with javascript');
                             module.set.dimmed();
-                            if (settings.opacity == 'auto') {
+                            if (settings.opacity === 'auto') {
                                 settings.opacity = 0.8;
                             }
                             $dimmer
@@ -358,8 +358,8 @@
                         return $dimmer.is(':animated') || $dimmer.hasClass(className.animating);
                     },
                     closable: function () {
-                        if (settings.closable == 'auto') {
-                            return settings.on != 'hover';
+                        if (settings.closable === 'auto') {
+                            return settings.on !== 'hover';
                         }
 
                         return settings.closable;

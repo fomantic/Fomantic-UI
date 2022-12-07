@@ -428,7 +428,7 @@
                                 $fieldGroup     = $field.closest($group),
                                 validationRules = module.get.validation($field)
                             ;
-                            if (validationRules && (settings.on == 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (validationRules && (settings.on === 'blur' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                 module.debug('Revalidating field', $field, validationRules);
                                 module.validate.field(validationRules);
                                 if (!settings.inline) {
@@ -442,7 +442,7 @@
                                 $fieldGroup = $field.closest($group),
                                 validationRules = module.get.validation($field)
                             ;
-                            if (validationRules && (settings.on == 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
+                            if (validationRules && (settings.on === 'change' || ($fieldGroup.hasClass(className.error) && settings.revalidate))) {
                                 clearTimeout(module.timer);
                                 module.timer = setTimeout(function () {
                                     module.debug('Revalidating field', $field, validationRules);
@@ -488,7 +488,7 @@
                         return rule.type;
                     },
                     changeEvent: function (type, $input) {
-                        if (type == 'checkbox' || type == 'radio' || type == 'hidden' || $input.is('select')) {
+                        if (type === 'checkbox' || type === 'radio' || type === 'hidden' || $input.is('select')) {
                             return 'change';
                         }
 
@@ -730,11 +730,11 @@
                                         var date = $calendar.calendar('get date');
 
                                         if (date !== null) {
-                                            if (settings.dateHandling == 'date') {
+                                            if (settings.dateHandling === 'date') {
                                                 values[name] = date;
-                                            } else if (settings.dateHandling == 'input') {
+                                            } else if (settings.dateHandling === 'input') {
                                                 values[name] = $calendar.calendar('get input date');
-                                            } else if (settings.dateHandling == 'formatter') {
+                                            } else if (settings.dateHandling === 'formatter') {
                                                 var type = $calendar.calendar('setting', 'type');
 
                                                 switch (type) {
@@ -1139,7 +1139,7 @@
                                 validation = module.get.validation($el),
                                 hasEmptyRule = validation
                                     ? $.grep(validation.rules, function (rule) {
-                                        return rule.type == 'empty';
+                                        return rule.type === 'empty';
                                     }) !== 0
                                     : false,
                                 identifier = validation.identifier || $el.attr('id') || $el.attr('name') || $el.data(metadata.validate)

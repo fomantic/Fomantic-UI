@@ -370,7 +370,7 @@
                         return initialLoad;
                     },
                     radio: function () {
-                        return $input.hasClass(className.radio) || $input.attr('type') == 'radio';
+                        return $input.hasClass(className.radio) || $input.attr('type') === 'radio';
                     },
                     indeterminate: function () {
                         return $input.prop('indeterminate') !== undefined && $input.prop('indeterminate');

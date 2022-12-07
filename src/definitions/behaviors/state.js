@@ -233,7 +233,7 @@
                         }
                         $.when(apiRequest)
                             .then(function () {
-                                if (apiRequest.state() == 'resolved') {
+                                if (apiRequest.state() === 'resolved') {
                                     module.debug('API request succeeded');
                                     settings.activateTest = function () {
                                         return true;

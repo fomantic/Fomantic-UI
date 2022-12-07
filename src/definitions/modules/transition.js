@@ -142,7 +142,7 @@
                     interval = interval !== undefined
                         ? interval
                         : settings.interval;
-                    shouldReverse = settings.reverse == 'auto' && direction == className.outward;
+                    shouldReverse = settings.reverse === 'auto' && direction == className.outward;
                     delay = shouldReverse || settings.reverse === true
                         ? ($allModules.length - index) * interval
                         : index * interval;
@@ -703,7 +703,7 @@
                             if (currentAnimation != inAnimation) {
                                 module.debug('Direction exists for animation', animation);
                                 directionExists = true;
-                            } else if (currentAnimation == 'none' || !currentAnimation) {
+                            } else if (currentAnimation === 'none' || !currentAnimation) {
                                 module.debug('No animation defined in css', animation);
 
                                 return;

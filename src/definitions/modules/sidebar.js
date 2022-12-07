@@ -249,7 +249,7 @@
                                 + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                 + ' }';
-                        } else if (direction === 'top' || direction == 'bottom') {
+                        } else if (direction === 'top' || direction === 'bottom') {
                             style += ''
                                 + ' .ui.visible.' + direction + '.sidebar ~ .fixed,'
                                 + ' .ui.visible.' + direction + '.sidebar ~ .pusher {'
@@ -268,7 +268,7 @@
                                     + '   -webkit-transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + '           transform: translate3d(' + distance[direction] + 'px, 0, 0);'
                                     + ' }';
-                            } else if (direction === 'top' || direction == 'bottom') {
+                            } else if (direction === 'top' || direction === 'bottom') {
                                 style += ''
                                     + ' body.pushable > .ui.visible.' + direction + '.sidebar ~ .pusher::after {'
                                     + '   -webkit-transform: translate3d(0, ' + distance[direction] + 'px, 0);'
@@ -399,7 +399,7 @@
                             module.debug('Other sidebars currently visible');
                             if (settings.exclusive) {
                                 // if not overlay queue animation after hide
-                                if (settings.transition != 'overlay') {
+                                if (settings.transition !== 'overlay') {
                                     module.hideOthers(module.show);
 
                                     return;
@@ -521,7 +521,7 @@
                 pullPage: function (callback) {
                     var
                         transition = module.get.transition(),
-                        $transition = transition == 'overlay' || module.othersActive()
+                        $transition = transition === 'overlay' || module.othersActive()
                             ? $module
                             : $pusher,
                         animate,
@@ -725,10 +725,10 @@
                             transition
                         ;
                         transition = module.is.mobile()
-                            ? (settings.mobileTransition == 'auto'
+                            ? (settings.mobileTransition === 'auto'
                                 ? settings.defaultTransition.mobile[direction]
                                 : settings.mobileTransition)
-                            : (settings.transition == 'auto'
+                            : (settings.transition === 'auto'
                                 ? settings.defaultTransition.computer[direction]
                                 : settings.transition);
                         module.verbose('Determined transition', transition);
