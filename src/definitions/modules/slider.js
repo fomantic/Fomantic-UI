@@ -574,11 +574,7 @@
                         ;
                         if (step != 0) {
                             var split = String(step).split('.');
-                            if (split.length == 2) {
-                                decimalPlaces = split[1].length;
-                            } else {
-                                decimalPlaces = 0;
-                            }
+                            decimalPlaces = split.length == 2 ? split[1].length : 0;
                         } else {
                             decimalPlaces = settings.decimalPlaces;
                         }

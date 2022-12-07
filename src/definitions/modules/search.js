@@ -667,11 +667,9 @@
                                 ;
                                 if (fieldExists) {
                                     var text;
-                                    if (typeof content[field] === 'string') {
-                                        text = module.remove.diacritics(content[field]);
-                                    } else {
-                                        text = content[field].toString();
-                                    }
+                                    text = typeof content[field] === 'string'
+                                        ? module.remove.diacritics(content[field])
+                                        : content[field].toString();
                                     if (text.search(matchRegExp) !== -1) {
                                         // content starts with value (first in results)
                                         addResult(results, content);
@@ -1446,11 +1444,9 @@
                             // each item inside category
                             html += '<div class="results">';
                             $.each(category.results, function (index, result) {
-                                if (result[fields.url]) {
-                                    html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
-                                } else {
-                                    html += '<a class="result">';
-                                }
+                                html += result[fields.url]
+                                    ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                                    : '<a class="result">';
                                 if (result[fields.image] !== undefined) {
                                     html += ''
                                         + '<div class="image">'
@@ -1477,17 +1473,15 @@
                         }
                     });
                     if (response[fields.action]) {
-                        if (fields.actionURL === false) {
-                            html += ''
+                        html += fields.actionURL === false
+                            ? ''
                                 + '<div class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
-                                + '</div>';
-                        } else {
-                            html += ''
+                                + '</div>'
+                            : ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
-                        }
                     }
 
                     return html;
@@ -1503,11 +1497,9 @@
                 if (response[fields.results] !== undefined) {
                     // each result
                     $.each(response[fields.results], function (index, result) {
-                        if (result[fields.url]) {
-                            html += '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">';
-                        } else {
-                            html += '<a class="result">';
-                        }
+                        html += result[fields.url]
+                            ? '<a class="result" href="' + result[fields.url].replace(/"/g, '') + '">'
+                            : '<a class="result">';
                         if (result[fields.image] !== undefined) {
                             html += ''
                                 + '<div class="image">'
@@ -1529,17 +1521,15 @@
                         html += '</a>';
                     });
                     if (response[fields.action]) {
-                        if (fields.actionURL === false) {
-                            html += ''
+                        html += fields.actionURL === false
+                            ? ''
                                 + '<div class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
-                                + '</div>';
-                        } else {
-                            html += ''
+                                + '</div>'
+                            : ''
                                 + '<a href="' + response[fields.action][fields.actionURL].replace(/"/g, '') + '" class="action">'
                                 + escape(response[fields.action][fields.actionText], preserveHTML)
                                 + '</a>';
-                        }
                     }
 
                     return html;

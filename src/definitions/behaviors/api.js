@@ -408,11 +408,9 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        if (url.indexOf('/' + templatedString) !== -1) {
-                                            url = url.replace('/' + templatedString, '');
-                                        } else {
-                                            url = url.replace(templatedString, '');
-                                        }
+                                        url = url.indexOf('/' + templatedString) !== -1
+                                            ? url.replace('/' + templatedString, '')
+                                            : url.replace(templatedString, '');
                                     }
                                 });
                             }

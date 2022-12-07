@@ -171,16 +171,9 @@ module.exports = function (callback) {
                         bower.name = packageName;
                         bower.description = capitalizedComponent + ' - Semantic UI';
                         if (isJavascript) {
-                            if (isCSS) {
-                                bower.main = [
-                                    component + '.js',
-                                    component + '.css',
-                                ];
-                            } else {
-                                bower.main = [
-                                    component + '.js',
-                                ];
-                            }
+                            bower.main = isCSS
+                                ? [component + '.js', component + '.css']
+                                : [component + '.js'];
                             bower.dependencies = {
                                 jquery: '>=1.8',
                             };

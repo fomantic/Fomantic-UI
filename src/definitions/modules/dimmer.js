@@ -70,11 +70,9 @@
                     } else {
                         $dimmable = $module;
                         if (module.has.dimmer()) {
-                            if (settings.dimmerName) {
-                                $dimmer = $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName);
-                            } else {
-                                $dimmer = $dimmable.find(selector.dimmer);
-                            }
+                            $dimmer = settings.dimmerName
+                                ? $dimmable.find(selector.dimmer).filter('.' + settings.dimmerName)
+                                : $dimmable.find(selector.dimmer);
                         } else {
                             $dimmer = module.create();
                         }

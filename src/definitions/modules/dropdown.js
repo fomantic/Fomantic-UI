@@ -4186,11 +4186,9 @@
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             html += '<i class="dropdown icon"></i>';
-            if (placeholder) {
-                html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
-            } else {
-                html += '<div class="text"></div>';
-            }
+            html += placeholder
+                ? '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>'
+                : '<div class="text"></div>';
             html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';

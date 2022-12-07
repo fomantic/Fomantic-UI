@@ -277,11 +277,9 @@
                                 isDirty
                             ;
 
-                            if (isCheckbox) {
-                                isDirty = module.is.checkboxDirty($el);
-                            } else {
-                                isDirty = module.is.fieldDirty($el);
-                            }
+                            isDirty = isCheckbox
+                                ? module.is.checkboxDirty($el)
+                                : module.is.fieldDirty($el);
 
                             $el.data(settings.metadata.isDirty, isDirty);
 
@@ -722,11 +720,7 @@
                                                 : false;
                                         }
                                     } else if (isCheckbox) {
-                                        if (isChecked) {
-                                            values[name] = value || true;
-                                        } else {
-                                            values[name] = false;
-                                        }
+                                        values[name] = isChecked ? value || true : false;
                                     } else if (isCalendar) {
                                         var date = $calendar.calendar('get date');
 
