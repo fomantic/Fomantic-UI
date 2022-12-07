@@ -23,7 +23,7 @@
         ? window
         : globalThis;
 
-    $.api = $.fn.api = function (parameters) {
+    $.fn.api = function (parameters) {
         var
             // use window context if none specified
             $allModules     = isFunction(this)
@@ -1061,6 +1061,7 @@
             ? returnedValue
             : this;
     };
+    $.api = $.fn.api;
 
     $.api.settings = {
 

@@ -1747,7 +1747,8 @@
                     // do nothing
                 } else if (range.indexOf('..') == -1) {
                     if (regExp.test(range)) {
-                        min = max = range - 0;
+                        min = range - 0;
+                        max = min;
                     }
                 } else {
                     parts = range.split('..', 2);

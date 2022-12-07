@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.modal = $.fn.modal = function (parameters) {
+    $.fn.modal = function (parameters) {
         var
             $allModules    = $(this),
             $window        = $(window),
@@ -1312,6 +1312,7 @@
             ? returnedValue
             : this;
     };
+    $.modal = $.fn.modal;
 
     $.fn.modal.settings = {
 

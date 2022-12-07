@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.flyout = $.fn.flyout = function (parameters) {
+    $.fn.flyout = function (parameters) {
         var
             $allModules     = $(this),
             $window         = $(window),
@@ -1307,6 +1307,7 @@
             ? returnedValue
             : this;
     };
+    $.flyout = $.fn.flyout;
 
     $.fn.flyout.settings = {
 

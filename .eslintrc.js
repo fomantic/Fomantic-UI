@@ -127,7 +127,6 @@ module.exports = {
         'no-labels': 'off',
         'no-loop-func': 'off',
         'no-mixed-operators': 'off',
-        'no-multi-assign': 'off',
         'no-new-func': 'off',
         'no-path-concat': 'off',
         'no-prototype-builtins': 'off',

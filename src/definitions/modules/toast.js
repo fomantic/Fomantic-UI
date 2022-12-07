@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.toast = $.fn.toast = function (parameters) {
+    $.fn.toast = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
@@ -773,6 +773,7 @@
             ? returnedValue
             : this;
     };
+    $.toast = $.fn.toast;
 
     $.fn.toast.settings = {
 
