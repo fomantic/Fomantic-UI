@@ -289,7 +289,7 @@
                         newIndex
                     ;
                     // search shortcuts
-                    if (keyCode == keys.escape) {
+                    if (keyCode === keys.escape) {
                         if (!module.is.visible()) {
                             module.verbose('Escape key pressed, blurring search field');
                             $prompt.trigger('blur');
@@ -300,7 +300,7 @@
                         resultsDismissed = true;
                     }
                     if (module.is.visible()) {
-                        if (keyCode == keys.enter) {
+                        if (keyCode === keys.enter) {
                             module.verbose('Enter key pressed, selecting active result');
                             if ($result.filter('.' + className.active).length > 0) {
                                 module.event.result.click.call($result.filter('.' + className.active), event);
@@ -308,7 +308,7 @@
 
                                 return false;
                             }
-                        } else if (keyCode == keys.upArrow && hasActiveResult) {
+                        } else if (keyCode === keys.upArrow && hasActiveResult) {
                             module.verbose('Up key pressed, changing active result');
                             newIndex = currentIndex - 1 < 0
                                 ? currentIndex
@@ -325,7 +325,7 @@
                             ;
                             module.ensureVisible($result.eq(newIndex));
                             event.preventDefault();
-                        } else if (keyCode == keys.downArrow) {
+                        } else if (keyCode === keys.downArrow) {
                             module.verbose('Down key pressed, changing active result');
                             newIndex = currentIndex + 1 >= resultSize
                                 ? currentIndex
@@ -345,7 +345,7 @@
                         }
                     } else {
                         // query shortcuts
-                        if (keyCode == keys.enter) {
+                        if (keyCode === keys.enter) {
                             module.verbose('Enter key pressed, executing query');
                             module.query();
                             module.set.buttonPressed();

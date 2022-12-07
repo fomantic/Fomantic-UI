@@ -662,7 +662,7 @@
                                         ? -1
                                         : (keyCode === 38
                                             ? -bigIncrement
-                                            : (keyCode == 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
+                                            : (keyCode === 39 ? 1 : bigIncrement)); // eslint-disable-line unicorn/no-nested-ternary
                                     increment *= mode === 'minute' ? settings.minTimeGap : 1;
                                     var focusDate = module.get.focusDate() || module.get.date() || new Date();
                                     var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
