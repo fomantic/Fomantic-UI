@@ -116,7 +116,6 @@ module.exports = {
         eqeqeq: 'off', // about 300 errors to be fixed manually
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
-        'no-shadow-restricted-names': 'off', // TODO https://github.com/fomantic/Fomantic-UI/pull/2604
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
     },
     reportUnusedDisableDirectives: true,
