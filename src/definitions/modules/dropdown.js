@@ -30,7 +30,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -245,7 +245,7 @@
                                 if (settings.hideAdditions) {
                                     $userChoice.addClass(className.hidden);
                                 }
-                                $userChoices = ($userChoices === undefined)
+                                $userChoices = $userChoices === undefined
                                     ? $userChoice
                                     : $userChoices.add($userChoice);
                                 module.verbose('Creating user choices for value', value, $userChoice);
@@ -281,7 +281,7 @@
                 },
 
                 search: function (query) {
-                    query = (query !== undefined)
+                    query = query !== undefined
                         ? query
                         : module.get.query();
                     module.verbose('Searching for query', query);
@@ -310,7 +310,7 @@
                         var
                             $nextAvailable = $selected.nextAll(selector.item).not(selector.unselectable).eq(0),
                             $prevAvailable = $selected.prevAll(selector.item).not(selector.unselectable).eq(0),
-                            hasNext        = ($nextAvailable.length > 0)
+                            hasNext        = $nextAvailable.length > 0
                         ;
                         if (hasNext) {
                             module.verbose('Moving selection to', $nextAvailable);
@@ -722,7 +722,7 @@
 
                 filter: function (query) {
                     var
-                        searchTerm = (query !== undefined)
+                        searchTerm = query !== undefined
                             ? query
                             : module.get.query(),
                         afterFiltered = function () {
@@ -1025,10 +1025,10 @@
                     var
                         $currentlySelected = $item.not(className.filtered).filter('.' + className.selected).eq(0),
                         $activeItem        = $item.not(className.filtered).filter('.' + className.active).eq(0),
-                        $selectedItem      = ($currentlySelected.length > 0)
+                        $selectedItem      = $currentlySelected.length > 0
                             ? $currentlySelected
                             : $activeItem,
-                        hasSelected = ($selectedItem.length > 0)
+                        hasSelected = $selectedItem.length > 0
                     ;
                     if (settings.allowAdditions || (hasSelected && !module.is.multiple())) {
                         module.debug('Forcing partial selection to selected item', $selectedItem);
@@ -1100,7 +1100,7 @@
                         }
                     },
                     blur: function (event) {
-                        pageLostFocus = (document.activeElement === this);
+                        pageLostFocus = document.activeElement === this;
                         if (!activated && !pageLostFocus) {
                             module.remove.activeLabel();
                             module.hide();
@@ -1148,7 +1148,7 @@
                             }
                         },
                         blur: function (event) {
-                            pageLostFocus = (document.activeElement === this);
+                            pageLostFocus = document.activeElement === this;
                             if (module.is.searchSelection(true) && !willRefocus) {
                                 if (!itemActivated && !pageLostFocus) {
                                     if (settings.forceSelection) {
@@ -1212,7 +1212,7 @@
                                 $activeLabels = $labels.filter('.' + className.active),
                                 $nextActive   = $label.nextAll('.' + className.active),
                                 $prevActive   = $label.prevAll('.' + className.active),
-                                $range = ($nextActive.length > 0)
+                                $range = $nextActive.length > 0
                                     ? $label.nextUntil($nextActive).add($activeLabels).add($label)
                                     : $label.prevUntil($prevActive).add($activeLabels).add($label)
                             ;
@@ -1328,7 +1328,7 @@
                                 $item          = $(this),
                                 $subMenu       = $item.children(selector.menu),
                                 $otherMenus    = $item.siblings(selector.item).children(selector.menu),
-                                hasSubMenu     = ($subMenu.length > 0),
+                                hasSubMenu     = $subMenu.length > 0,
                                 isBubbledEvent = ($subMenu.find($target).length > 0)
                             ;
                             if (!isBubbledEvent && hasSubMenu) {
@@ -1366,7 +1366,7 @@
                                 $subMenu       = $choice.find(selector.menu),
                                 text           = module.get.choiceText($choice),
                                 value          = module.get.choiceValue($choice, text),
-                                hasSubMenu     = ($subMenu.length > 0),
+                                hasSubMenu     = $subMenu.length > 0,
                                 isBubbledEvent = ($subMenu.find($target).length > 0)
                             ;
                             // prevents IE11 bug where menu receives focus even though `tabindex=-1`
@@ -1410,9 +1410,9 @@
                                     activeValue       = $activeLabel.data(metadata.value),
                                     labelIndex        = $label.index($activeLabel),
                                     labelCount        = $label.length,
-                                    hasActiveLabel    = ($activeLabel.length > 0),
-                                    hasMultipleActive = ($activeLabel.length > 1),
-                                    isFirstLabel      = (labelIndex === 0),
+                                    hasActiveLabel    = $activeLabel.length > 0,
+                                    hasMultipleActive = $activeLabel.length > 1,
+                                    isFirstLabel      = labelIndex === 0,
                                     isLastLabel       = (labelIndex + 1 == labelCount),
                                     isSearch          = module.is.searchSelection(),
                                     isFocusedOnSearch = module.is.focusedOnSearch(),
@@ -1514,17 +1514,17 @@
                             var
                                 $currentlySelected = $item.not(selector.unselectable).filter('.' + className.selected).eq(0),
                                 $activeItem        = $menu.children('.' + className.active).eq(0),
-                                $selectedItem      = ($currentlySelected.length > 0)
+                                $selectedItem      = $currentlySelected.length > 0
                                     ? $currentlySelected
                                     : $activeItem,
-                                $visibleItems = ($selectedItem.length > 0)
+                                $visibleItems = $selectedItem.length > 0
                                     ? $selectedItem.siblings(':not(.' + className.filtered + ')').addBack()
                                     : $menu.children(':not(.' + className.filtered + ')'),
                                 $subMenu              = $selectedItem.children(selector.menu),
                                 $parentMenu           = $selectedItem.closest(selector.menu),
                                 inVisibleMenu         = ($parentMenu.hasClass(className.visible) || $parentMenu.hasClass(className.animating) || $parentMenu.parent(selector.menu).length > 0),
-                                hasSubMenu            = ($subMenu.length > 0),
-                                hasSelectedItem       = ($selectedItem.length > 0),
+                                hasSubMenu            = $subMenu.length > 0,
+                                hasSelectedItem       = $selectedItem.length > 0,
                                 selectedIsSelectable  = ($selectedItem.not(selector.unselectable).length > 0),
                                 delimiterPressed      = (event.key === settings.delimiter && module.is.multiple()),
                                 isAdditionWithoutMenu = settings.allowAdditions && (pressedKey == keys.enter || delimiterPressed),
@@ -1568,7 +1568,7 @@
                                 // sub-menu actions
                                 if (hasSelectedItem) {
                                     if (pressedKey == keys.leftArrow) {
-                                        isSubMenuItem = ($parentMenu[0] !== $menu[0]);
+                                        isSubMenuItem = $parentMenu[0] !== $menu[0];
 
                                         if (isSubMenuItem) {
                                             module.verbose('Left key pressed, closing sub-menu');
@@ -1603,7 +1603,7 @@
 
                                 // up arrow (traverse menu up)
                                 if (pressedKey == keys.upArrow) {
-                                    $nextItem = (hasSelectedItem && inVisibleMenu)
+                                    $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.prevAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
                                     if ($visibleItems.index($nextItem) < 0) {
@@ -1630,7 +1630,7 @@
 
                                 // down arrow (traverse menu down)
                                 if (pressedKey == keys.downArrow) {
-                                    $nextItem = (hasSelectedItem && inVisibleMenu)
+                                    $nextItem = hasSelectedItem && inVisibleMenu
                                         ? $selectedItem.nextAll(selector.item + ':not(' + selector.unselectable + ')').eq(0)
                                         : $item.eq(0);
                                     if ($nextItem.length === 0) {
@@ -1769,7 +1769,7 @@
                     nothing: function () {},
 
                     activate: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
@@ -1781,7 +1781,7 @@
                     },
 
                     select: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         if (module.can.activate($(element))) {
@@ -1793,7 +1793,7 @@
                     },
 
                     combo: function (text, value, element) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : text;
                         module.set.selected(value, $(element));
@@ -1831,7 +1831,7 @@
                         return String($search.val()).trim();
                     },
                     searchWidth: function (value) {
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : $search.val();
                         $sizer.text(value);
@@ -1901,7 +1901,7 @@
                     },
                     value: function () {
                         var
-                            value = ($input.length > 0)
+                            value = $input.length > 0
                                 ? $input.val()
                                 : $module.data(metadata.value),
                             isEmptyMultiselect = (Array.isArray(value) && value.length === 1 && value[0] === '')
@@ -1954,7 +1954,7 @@
                         return remoteValues;
                     },
                     choiceText: function ($choice, preserveHTML) {
-                        preserveHTML = (preserveHTML !== undefined)
+                        preserveHTML = preserveHTML !== undefined
                             ? preserveHTML
                             : settings.preserveHTML;
                         if ($choice) {
@@ -2087,7 +2087,7 @@
                             hasUserItems = ($userItems && $userItems.length > 0)
                         ;
                         if (hasUserItems) {
-                            $items = ($items.length > 0)
+                            $items = $items.length > 0
                                 ? $items.add($userItems)
                                 : $userItems;
                         }
@@ -2100,14 +2100,14 @@
                             shouldSearch,
                             isMultiple
                         ;
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : ((module.get.values() !== undefined)
                                 ? module.get.values()
                                 : module.get.text());
                         isMultiple = (module.is.multiple() && Array.isArray(value));
                         shouldSearch = (isMultiple)
-                            ? (value.length > 0)
+                            ? value.length > 0
                             : (value !== undefined && value !== null);
                         strict = (value === '' || value === false || value === true)
                             ? true
@@ -2163,7 +2163,7 @@
                 check: {
                     maxSelections: function (selectionCount) {
                         if (settings.maxSelections) {
-                            selectionCount = (selectionCount !== undefined)
+                            selectionCount = selectionCount !== undefined
                                 ? selectionCount
                                 : module.get.selectionCount();
                             if (selectionCount >= settings.maxSelections) {
@@ -2368,7 +2368,7 @@
                         currentScroll = $menu.scrollTop(),
                         itemHeight    = $item.eq(0).outerHeight(),
                         itemsPerPage  = Math.floor(menuHeight / itemHeight),
-                        newScroll     = (direction == 'up')
+                        newScroll     = direction == 'up'
                             ? currentScroll - (itemHeight * itemsPerPage)
                             : currentScroll + (itemHeight * itemsPerPage),
                         $selectableItem = $item.not(selector.unselectable),
@@ -2376,12 +2376,12 @@
                         $nextSelectedItem,
                         elementIndex
                     ;
-                    elementIndex = (direction == 'up')
+                    elementIndex = direction == 'up'
                         ? $selectableItem.index($currentItem) - itemsPerPage
                         : $selectableItem.index($currentItem) + itemsPerPage;
-                    isWithinRange = (direction == 'up')
-                        ? (elementIndex >= 0)
-                        : (elementIndex < $selectableItem.length);
+                    isWithinRange = direction == 'up'
+                        ? elementIndex >= 0
+                        : elementIndex < $selectableItem.length;
                     $nextSelectedItem = (isWithinRange)
                         ? $selectableItem.eq(elementIndex)
                         : ((direction == 'up')
@@ -2409,7 +2409,7 @@
                         var
                             isMultiple       = module.is.multiple(),
                             isSearch         = module.is.searchSelection(),
-                            isSearchMultiple = (isMultiple && isSearch),
+                            isSearchMultiple = isMultiple && isSearch,
                             searchValue      = (isSearch)
                                 ? module.get.query()
                                 : '',
@@ -2498,7 +2498,7 @@
                         $item = $item || module.get.selectedItem();
                         $menu = $item.closest(selector.menu);
                         hasActive = ($item && $item.length > 0);
-                        forceScroll = (forceScroll !== undefined)
+                        forceScroll = forceScroll !== undefined
                             ? forceScroll
                             : false;
                         if (module.get.activeItem().length === 0) {
@@ -2640,9 +2640,9 @@
                         }
                         var
                             escapedValue = module.escape.value(value),
-                            hasInput     = ($input.length > 0),
+                            hasInput     = $input.length > 0,
                             currentValue = module.get.values(),
-                            stringValue  = (value !== undefined)
+                            stringValue  = value !== undefined
                                 ? String(value)
                                 : value
                         ;
@@ -2858,7 +2858,7 @@
                         var
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                            hasOption    = ($option.length > 0)
+                            hasOption    = $option.length > 0
                         ;
                         if (hasOption) {
                             return;
@@ -3042,7 +3042,7 @@
                         var
                             escapedValue = module.escape.value(value),
                             $option      = $input.find('option[value="' + module.escape.string(escapedValue) + '"]'),
-                            hasOption    = ($option.length > 0)
+                            hasOption    = $option.length > 0
                         ;
                         if (!hasOption || !$option.hasClass(className.addition)) {
                             return;
@@ -3166,7 +3166,7 @@
                                 var
                                     $label      = $(this),
                                     value       = $label.data(metadata.value),
-                                    stringValue = (value !== undefined)
+                                    stringValue = value !== undefined
                                         ? String(value)
                                         : value,
                                     isUserValue = module.is.userValue(stringValue)
@@ -3229,7 +3229,7 @@
                     },
                     minCharacters: function (searchTerm) {
                         if (settings.minCharacters && !iconClicked) {
-                            searchTerm = (searchTerm !== undefined)
+                            searchTerm = searchTerm !== undefined
                                 ? String(searchTerm)
                                 : String(module.get.query());
 
@@ -3305,7 +3305,7 @@
                             values   = module.get.values(true),
                             hasValue = Array.isArray(values)
                                 ? values && ($.inArray(value, values) !== -1)
-                                : (values == value)
+                                : values == value
                         ;
 
                         return !!(hasValue);
@@ -3453,7 +3453,7 @@
                     },
                     verticallyScrollableContext: function () {
                         var
-                            overflowY = ($context[0] !== window)
+                            overflowY = $context[0] !== window
                                 ? $context.css('overflow-y')
                                 : false
                         ;
@@ -3462,7 +3462,7 @@
                     },
                     horizontallyScrollableContext: function () {
                         var
-                            overflowX = ($context[0] !== window)
+                            overflowX = $context[0] !== window
                                 ? $context.css('overflow-X')
                                 : false
                         ;
@@ -3491,7 +3491,7 @@
                         ;
                         calculations = {
                             context: {
-                                offset: ($context[0] === window)
+                                offset: $context[0] === window
                                     ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollTop: $context.scrollTop(),
@@ -3538,7 +3538,7 @@
                         ;
                         calculations = {
                             context: {
-                                offset: ($context[0] === window)
+                                offset: $context[0] === window
                                     ? { top: 0, left: 0 }
                                     : $context.offset(),
                                 scrollLeft: $context.scrollLeft(),
@@ -3699,7 +3699,7 @@
                     value: function (value) {
                         var
                             multipleValues = Array.isArray(value),
-                            stringValue    = (typeof value === 'string'),
+                            stringValue    = typeof value === 'string',
                             isUnparsable   = (!stringValue && !multipleValues),
                             hasQuotes      = (stringValue && value.search(regExp.quote) !== -1),
                             values         = []
@@ -3860,7 +3860,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

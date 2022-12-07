@@ -27,7 +27,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -209,7 +209,7 @@
 
                     duration: function (duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration === 'number')
+                        duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
                         module.verbose('Setting animation duration', duration);
@@ -250,12 +250,12 @@
                                 : (($activeSide.next(selector.side).length > 0)
                                     ? $activeSide.next(selector.side)
                                     : $side.first()),
-                            newWidth    = (settings.width === 'next')
+                            newWidth    = settings.width === 'next'
                                 ? $nextSide.outerWidth(true)
                                 : ((settings.width === 'initial')
                                     ? $module.width()
                                     : settings.width),
-                            newHeight    = (settings.height === 'next')
+                            newHeight    = settings.height === 'next'
                                 ? $nextSide.outerHeight(true)
                                 : ((settings.height === 'initial')
                                     ? $module.height()
@@ -511,8 +511,8 @@
                             box = {
                                 origin: ((height.active - height.next) / 2),
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -540,8 +540,8 @@
                             box = {
                                 origin: ((height.active - height.next) / 2),
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -569,8 +569,8 @@
                             box = {
                                 origin: ((height.active - height.next) / 2),
                                 depth: {
-                                    active: (height.next / 2),
-                                    next: (height.active / 2),
+                                    active: height.next / 2,
+                                    next: height.active / 2,
                                 },
                             }
                         ;
@@ -704,7 +704,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

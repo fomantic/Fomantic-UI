@@ -25,7 +25,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             settings        = ($.isPlainObject(parameters))
@@ -139,12 +139,12 @@
 
             change: {
                 setting: function (setting, value, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
+                    modules = typeof modules === 'string'
                         ? ((modules === 'all')
                             ? settings.modules
                             : [modules])
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
@@ -168,10 +168,10 @@
                     });
                 },
                 settings: function (newSettings, modules, modifyExisting) {
-                    modules = (typeof modules === 'string')
+                    modules = typeof modules === 'string'
                         ? [modules]
                         : modules || settings.modules;
-                    modifyExisting = (modifyExisting !== undefined)
+                    modifyExisting = modifyExisting !== undefined
                         ? modifyExisting
                         : true;
                     $.each(modules, function (index, name) {
@@ -361,7 +361,7 @@
                     query = query.split(/[ .]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {
-                        var camelCaseValue = (depth != maxDepth)
+                        var camelCaseValue = depth != maxDepth
                             ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                             : query
                         ;

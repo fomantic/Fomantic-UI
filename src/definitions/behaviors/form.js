@@ -29,7 +29,7 @@
 
             query            = arguments[0],
             legacyParameters = arguments[1],
-            methodInvoked    = (typeof query === 'string'),
+            methodInvoked    = typeof query === 'string',
             queryArguments   = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -559,7 +559,7 @@
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
-                            name = ($label.length == 1)
+                            name = $label.length == 1
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
                             prompt = prompt.replace(/{name}/g, name);
@@ -576,7 +576,7 @@
                         if ($.isPlainObject(parameters)) {
                             var
                                 keys     = Object.keys(parameters),
-                                isLegacySettings = (keys.length > 0)
+                                isLegacySettings = keys.length > 0
                                     ? (parameters[keys[0]].identifier !== undefined && parameters[keys[0]].rules !== undefined)
                                     : false
                             ;
@@ -873,9 +873,9 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = ($prompt.length > 0)
+                            promptExists = $prompt.length > 0
                         ;
-                        errors = (typeof errors === 'string')
+                        errors = typeof errors === 'string'
                             ? [errors]
                             : errors;
                         module.verbose('Adding field error state', identifier);
@@ -1059,7 +1059,7 @@
                                 isDropdown  = $element.is(selector.uiDropdown) && module.can.useElement('dropdown'),
                                 isRadio     = ($field.is(selector.radio) && isCheckbox),
                                 isCalendar  = ($calendar.length > 0 && module.can.useElement('calendar')),
-                                fieldExists = ($field.length > 0),
+                                fieldExists = $field.length > 0,
                                 $multipleField
                             ;
                             if (fieldExists) {
@@ -1158,7 +1158,7 @@
                         });
                     },
                     optional: function (identifier, bool) {
-                        bool = (bool !== false);
+                        bool = bool !== false;
                         $.each(validation, function (fieldName, field) {
                             if (identifier == fieldName || identifier == field.identifier) {
                                 field.optional = bool;
@@ -1228,7 +1228,7 @@
 
                     // takes a validation object and returns whether field passes validation
                     field: function (field, fieldName, showErrors) {
-                        showErrors = (showErrors !== undefined)
+                        showErrors = showErrors !== undefined
                             ? showErrors
                             : true;
                         if (typeof field === 'string') {
@@ -1444,7 +1444,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {
@@ -1715,10 +1715,10 @@
                 ;
                 // regular expression specified as /baz/gi (flags)
                 if (regExpParts) {
-                    regExp = (regExpParts.length >= 2)
+                    regExp = regExpParts.length >= 2
                         ? regExpParts[1]
                         : regExp;
-                    flags = (regExpParts.length >= 3)
+                    flags = regExpParts.length >= 3
                         ? regExpParts[2]
                         : '';
                 }
@@ -1784,10 +1784,10 @@
 
             // is value (case insensitive)
             is: function (value, text) {
-                text = (typeof text === 'string')
+                text = typeof text === 'string'
                     ? text.toLowerCase()
                     : text;
-                value = (typeof value === 'string')
+                value = typeof value === 'string'
                     ? value.toLowerCase()
                     : value;
 
@@ -1801,10 +1801,10 @@
 
             // value is not another value (case insensitive)
             not: function (value, notValue) {
-                value = (typeof value === 'string')
+                value = typeof value === 'string'
                     ? value.toLowerCase()
                     : value;
-                notValue = (typeof notValue === 'string')
+                notValue = typeof notValue === 'string'
                     ? notValue.toLowerCase()
                     : notValue;
 
@@ -1851,21 +1851,21 @@
             // is at least string length
             minLength: function (value, requiredLength) {
                 return (value !== undefined)
-                    ? (value.length >= requiredLength)
+                    ? value.length >= requiredLength
                     : false;
             },
 
             // is exactly length
             exactLength: function (value, requiredLength) {
                 return (value !== undefined)
-                    ? (value.length == requiredLength)
+                    ? value.length == requiredLength
                     : false;
             },
 
             // is less than length
             maxLength: function (value, maxLength) {
                 return (value !== undefined)
-                    ? (value.length <= maxLength)
+                    ? value.length <= maxLength
                     : false;
             },
 
@@ -1978,7 +1978,7 @@
                     },
                     valid         = {},
                     validCard     = false,
-                    requiredTypes = (typeof cardTypes === 'string')
+                    requiredTypes = typeof cardTypes === 'string'
                         ? cardTypes.split(',')
                         : false,
                     unionPay,

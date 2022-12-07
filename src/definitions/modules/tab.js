@@ -35,7 +35,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             initializedHistory = false,
@@ -286,7 +286,7 @@
                 set: {
                     auto: function () {
                         var
-                            url = (typeof settings.path === 'string')
+                            url = typeof settings.path === 'string'
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
                         ;
@@ -323,7 +323,7 @@
 
                 changeTab: function (tabPath) {
                     var
-                        pushStateAvailable = (window.history && window.history.pushState),
+                        pushStateAvailable = window.history && window.history.pushState,
                         shouldIgnoreLoad   = (pushStateAvailable && settings.ignoreFirstLoad && firstLoad),
                         remoteContent      = (settings.auto || $.isPlainObject(settings.apiSettings)),
                         // only add default path if not remote content
@@ -447,7 +447,7 @@
                             $tab = module.get.tabElement(tabPath),
                             tab  = $tab[0]
                         ;
-                        evaluateScripts = (evaluateScripts !== undefined)
+                        evaluateScripts = evaluateScripts !== undefined
                             ? evaluateScripts
                             : settings.evaluateScripts;
                         if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
@@ -554,7 +554,7 @@
                     tab: function (tabPath) {
                         var
                             $tab          = module.get.tabElement(tabPath),
-                            $deactiveTabs = (settings.deactivate == 'siblings')
+                            $deactiveTabs = settings.deactivate == 'siblings'
                                 ? $tab.siblings($tabs)
                                 : $tabs.not($tab),
                             isActive      = $tab.hasClass(className.active)
@@ -575,7 +575,7 @@
                     navigation: function (tabPath) {
                         var
                             $navigation         = module.get.navElement(tabPath),
-                            $deactiveNavigation = (settings.deactivate == 'siblings')
+                            $deactiveNavigation = settings.deactivate == 'siblings'
                                 ? $navigation.siblings($allModules)
                                 : $allModules.not($navigation),
                             isActive    = $navigation.hasClass(className.active)
@@ -837,7 +837,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

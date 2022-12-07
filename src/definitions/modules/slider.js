@@ -31,7 +31,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             alphabet       = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -206,7 +206,7 @@
                         for (var i = 0, len = module.get.numLabels(); i <= len; i++) {
                             var
                                 labelText = module.get.label(i),
-                                $label = (labelText !== '')
+                                $label = labelText !== ''
                                     ? (!(i % module.get.gapRatio())
                                         ? $('<li class="label">' + labelText + '</li>')
                                         : $('<li class="halftick label"></li>'))
@@ -748,7 +748,7 @@
                             trackLength = module.get.trackLength(),
                             step = module.get.step(),
                             position = Math.round(ratio * trackLength),
-                            adjustedPos = (step == 0) ? position : Math.round(position / step) * step
+                            adjustedPos = step == 0 ? position : Math.round(position / step) * step
                         ;
 
                         return adjustedPos;
@@ -823,7 +823,7 @@
                             ratio = (position - startPos) / (endPos - startPos),
                             range = module.get.max() - module.get.min(),
                             step = module.get.step(),
-                            value = (ratio * range),
+                            value = ratio * range,
                             difference = step == 0 ? value : Math.round(value / step) * step
                         ;
                         module.verbose('Determined value based upon position: ' + position + ' as: ' + value);
@@ -1209,7 +1209,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

@@ -28,7 +28,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -143,8 +143,8 @@
                             $activeIcon   = $(this),
                             currentRating = module.get.rating(),
                             rating        = $icon.index($activeIcon) + 1,
-                            canClear      = (settings.clearable == 'auto')
-                                ? ($icon.length === 1)
+                            canClear      = settings.clearable == 'auto'
+                                ? $icon.length === 1
                                 : settings.clearable
                         ;
                         if (canClear && currentRating == rating) {
@@ -250,7 +250,7 @@
                         var
                             ratingIndex = Math.floor(
                                 (rating - 1 >= 0)
-                                    ? (rating - 1)
+                                    ? rating - 1
                                     : 0
                             ),
                             $activeIcon = $icon.eq(ratingIndex),
@@ -414,7 +414,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

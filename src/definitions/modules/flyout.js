@@ -34,7 +34,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -798,7 +798,7 @@
                     autofocus: function () {
                         var
                             $autofocus = $inputs.filter('[autofocus]'),
-                            $input     = ($autofocus.length > 0)
+                            $input     = $autofocus.length > 0
                                 ? $autofocus.first()
                                 : ($inputs.length > 1 ? $inputs.filter(':not(i.close)') : $inputs).first()
                         ;
@@ -1018,7 +1018,7 @@
                                 isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
                                 isIE = ('ActiveXObject' in window)
                             ;
-                            module.cache.isIE = (isIE11 || isIE);
+                            module.cache.isIE = isIE11 || isIE;
                         }
 
                         return module.cache.isIE;
@@ -1242,7 +1242,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

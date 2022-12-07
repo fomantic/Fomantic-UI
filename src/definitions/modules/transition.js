@@ -30,7 +30,7 @@
             moduleArguments = arguments,
             query           = moduleArguments[0],
             queryArguments  = [].slice.call(arguments, 1),
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
 
             returnedValue
         ;
@@ -139,7 +139,7 @@
                             ? module.get.direction()
                             : 'static';
                     }
-                    interval = (interval !== undefined)
+                    interval = interval !== undefined
                         ? interval
                         : settings.interval;
                     shouldReverse = (settings.reverse == 'auto' && direction == className.outward);
@@ -315,7 +315,7 @@
                     },
                     duration: function (animationName, duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration === 'number')
+                        duration = typeof duration === 'number'
                             ? duration + 'ms'
                             : duration;
                         if (duration || duration === 0) {
@@ -586,7 +586,7 @@
                             : duration;
                     },
                     displayType: function (shouldDetermine) {
-                        shouldDetermine = (shouldDetermine !== undefined)
+                        shouldDetermine = shouldDetermine !== undefined
                             ? shouldDetermine
                             : true;
                         if (settings.displayType) {
@@ -943,7 +943,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

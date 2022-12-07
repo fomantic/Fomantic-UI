@@ -27,7 +27,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -121,7 +121,7 @@
 
                 toggle: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
+                        $activeTitle = query !== undefined
                             ? ((typeof query === 'number')
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -146,7 +146,7 @@
 
                 open: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
+                        $activeTitle = query !== undefined
                             ? ((typeof query === 'number')
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -154,7 +154,7 @@
                         $activeContent = $activeTitle.next($content),
                         isAnimating = $activeContent.hasClass(className.animating),
                         isActive    = $activeContent.hasClass(className.active),
-                        isOpen      = (isActive || isAnimating)
+                        isOpen      = isActive || isAnimating
                     ;
                     if (isOpen) {
                         module.debug('Accordion already open, skipping', $activeContent);
@@ -216,7 +216,7 @@
 
                 close: function (query) {
                     var
-                        $activeTitle = (query !== undefined)
+                        $activeTitle = query !== undefined
                             ? ((typeof query === 'number')
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
@@ -225,7 +225,7 @@
                         isAnimating    = $activeContent.hasClass(className.animating),
                         isActive       = $activeContent.hasClass(className.active),
                         isOpening      = (!isActive && isAnimating),
-                        isClosing      = (isActive && isAnimating)
+                        isClosing      = isActive && isAnimating
                     ;
                     if ((isActive || isOpening) && !isClosing) {
                         module.debug('Closing accordion content', $activeContent);
@@ -278,7 +278,7 @@
 
                 closeOthers: function (index) {
                     var
-                        $activeTitle = (index !== undefined)
+                        $activeTitle = index !== undefined
                             ? $title.eq(index)
                             : $(this).closest(selector.title),
                         $parentTitles    = $activeTitle.parents(selector.content).prev(selector.title),
@@ -482,7 +482,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query;
                             if ($.isPlainObject(object[camelCaseValue]) && (depth != maxDepth)) {

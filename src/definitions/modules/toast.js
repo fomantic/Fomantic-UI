@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -212,7 +212,7 @@
                         } else {
                             $toast = settings.cloneModule ? $module.clone().removeAttr('id') : $module;
                             $close = $toast.find('> i' + module.helpers.toClass(className.close));
-                            settings.closeIcon = ($close.length > 0);
+                            settings.closeIcon = $close.length > 0;
                             if (iconClass !== '') {
                                 $toast.find(selector.icon).attr('class', iconClass + ' ' + className.icon);
                             }
@@ -734,7 +734,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

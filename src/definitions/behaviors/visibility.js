@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue,
 
@@ -427,7 +427,7 @@
                     },
                     verticallyScrollableContext: function () {
                         var
-                            overflowY = ($context[0] !== window)
+                            overflowY = $context[0] !== window
                                 ? $context.css('overflow-y')
                                 : false
                         ;
@@ -436,7 +436,7 @@
                     },
                     horizontallyScrollableContext: function () {
                         var
-                            overflowX = ($context[0] !== window)
+                            overflowX = $context[0] !== window
                                 ? $context.css('overflow-x')
                                 : false
                         ;
@@ -873,7 +873,7 @@
                         ;
                         module.verbose('Saving element position');
                         // (quicker than $.extend)
-                        element.fits = (element.height < screen.height);
+                        element.fits = element.height < screen.height;
                         element.offset = $module.offset();
                         element.width = $module.outerWidth();
                         element.height = $module.outerHeight();
@@ -907,8 +907,8 @@
                         }
 
                         // visibility
-                        element.topPassed = (screen.top >= element.top);
-                        element.bottomPassed = (screen.top >= element.bottom);
+                        element.topPassed = screen.top >= element.top;
+                        element.bottomPassed = screen.top >= element.bottom;
                         element.topVisible = (screen.bottom >= element.top) && !element.topPassed;
                         element.bottomVisible = (screen.bottom >= element.bottom) && !element.bottomPassed;
                         element.pixelsPassed = 0;
@@ -921,7 +921,7 @@
 
                         // passing calculations
                         if (element.passing) {
-                            element.pixelsPassed = (screen.top - element.top);
+                            element.pixelsPassed = screen.top - element.top;
                             element.percentagePassed = (screen.top - element.top) / element.height;
                         }
                         module.cache.element = element;
@@ -1127,7 +1127,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

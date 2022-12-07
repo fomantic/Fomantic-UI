@@ -28,7 +28,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query === 'string'),
+            methodInvoked   = typeof query === 'string',
             queryArguments  = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -166,7 +166,7 @@
                     },
                     blur: function (event) {
                         var
-                            pageLostFocus = (document.activeElement === this),
+                            pageLostFocus = document.activeElement === this,
                             callback      = function () {
                                 module.cancel.query();
                                 module.remove.focus();
@@ -215,7 +215,7 @@
                                 href    = $link.attr('href') || false,
                                 target  = $link.attr('target') || false,
                                 // title is used for result lookup
-                                value   = ($title.length > 0)
+                                value   = $title.length > 0
                                     ? $title.text()
                                     : false,
                                 results = module.get.results(),
@@ -477,10 +477,10 @@
                         var
                             result       = false
                         ;
-                        value = (value !== undefined)
+                        value = value !== undefined
                             ? value
                             : module.get.value();
-                        results = (results !== undefined)
+                        results = results !== undefined
                             ? results
                             : module.get.results();
                         if (settings.type === 'category') {
@@ -644,7 +644,7 @@
                             }
                         ;
                         source = source || settings.source;
-                        searchFields = (searchFields !== undefined)
+                        searchFields = searchFields !== undefined
                             ? searchFields
                             : settings.searchFields;
 
@@ -843,7 +843,7 @@
                     },
                     id: function (resultIndex, categoryIndex) {
                         var
-                            resultID      = (resultIndex + 1), // not zero indexed
+                            resultID      = resultIndex + 1, // not zero indexed
                             letterID,
                             id
                         ;
@@ -873,7 +873,7 @@
                     result: function (result, resultIndex, categoryIndex) {
                         module.verbose('Injecting result into results');
                         var
-                            $selectedResult = (categoryIndex !== undefined)
+                            $selectedResult = categoryIndex !== undefined
                                 ? $results
                                     .children().eq(categoryIndex)
                                     .children(selector.results)
@@ -1190,7 +1190,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

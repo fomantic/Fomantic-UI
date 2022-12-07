@@ -34,7 +34,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -537,14 +537,14 @@
                             var
                                 context            = this,
                                 elapsedTime        = (Date.now() - requestStartTime),
-                                timeLeft           = (settings.loadingDuration - elapsedTime),
+                                timeLeft           = settings.loadingDuration - elapsedTime,
                                 translatedResponse = (isFunction(settings.onResponse))
                                     ? (module.is.expectingJSON() && !settings.rawResponse
                                         ? settings.onResponse.call(context, $.extend(true, {}, response))
                                         : settings.onResponse.call(context, response))
                                     : false
                             ;
-                            timeLeft = (timeLeft > 0)
+                            timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
                             if (translatedResponse) {
@@ -566,9 +566,9 @@
                             var
                                 context     = this,
                                 elapsedTime = (Date.now() - requestStartTime),
-                                timeLeft    = (settings.loadingDuration - elapsedTime)
+                                timeLeft    = settings.loadingDuration - elapsedTime
                             ;
-                            timeLeft = (timeLeft > 0)
+                            timeLeft = timeLeft > 0
                                 ? timeLeft
                                 : 0;
                             if (timeLeft > 0) {
@@ -803,7 +803,7 @@
                         var
                             decodedValue   = window.decodeURIComponent(value),
                             encodedValue   = window.encodeURIComponent(value),
-                            alreadyEncoded = (decodedValue !== value)
+                            alreadyEncoded = decodedValue !== value
                         ;
                         if (alreadyEncoded) {
                             module.debug('URL value is already encoded, avoiding double encoding', value);
@@ -1004,7 +1004,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

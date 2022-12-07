@@ -36,7 +36,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -497,7 +497,7 @@
                         var
                             $popupOffsetParent = module.get.offsetParent($popup),
                             targetElement      = $target[0],
-                            isWindowEl         = ($boundary[0] == window),
+                            isWindowEl         = $boundary[0] == window,
                             targetOffset       = $target.offset(),
                             parentOffset       = settings.inline || (settings.popup && settings.movePopup)
                                 ? $target.offsetParent().offset()
@@ -623,8 +623,8 @@
 
                         if (offset) {
                             distanceFromBoundary = {
-                                top: (offset.top - boundary.top),
-                                left: (offset.left - boundary.left),
+                                top: offset.top - boundary.top,
+                                left: offset.left - boundary.left,
                                 right: (boundary.right - (offset.left + popup.width)),
                                 bottom: (boundary.bottom - (offset.top + popup.height)),
                             };
@@ -635,7 +635,7 @@
                     },
                     offsetParent: function ($element) {
                         var
-                            element = ($element !== undefined)
+                            element = $element !== undefined
                                 ? $element[0]
                                 : $target[0],
                             parentNode = element.parentNode,
@@ -714,13 +714,13 @@
                         if (settings.prefer === 'opposite') {
                             nextPosition = [opposite[verticalPosition], horizontalPosition];
                             nextPosition = nextPosition.join(' ');
-                            oppositeTried = (triedPositions[nextPosition] === true);
+                            oppositeTried = triedPositions[nextPosition] === true;
                             module.debug('Trying opposite strategy', nextPosition);
                         }
                         if ((settings.prefer === 'adjacent') && adjacentsAvailable) {
                             nextPosition = [verticalPosition, adjacent[horizontalPosition]];
                             nextPosition = nextPosition.join(' ');
-                            adjacentTried = (triedPositions[nextPosition] === true);
+                            adjacentTried = triedPositions[nextPosition] === true;
                             module.debug('Trying adjacent strategy', nextPosition);
                         }
                         if (adjacentTried || oppositeTried) {
@@ -1248,7 +1248,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;

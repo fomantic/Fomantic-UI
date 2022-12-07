@@ -29,7 +29,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query === 'string'),
+            methodInvoked  = typeof query === 'string',
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -280,7 +280,7 @@
                         }
                         module.cache = {
                             fits: ((element.height + settings.offset) <= scrollContext.height),
-                            sameHeight: (element.height == context.height),
+                            sameHeight: element.height == context.height,
                             scrollContext: {
                                 height: scrollContext.height,
                             },
@@ -321,7 +321,7 @@
                         scroll = scroll || $scroll.scrollTop();
 
                         return (module.lastScroll)
-                            ? (scroll - module.lastScroll)
+                            ? scroll - module.lastScroll
                             : 0;
                     },
                     currentElementScroll: function () {
@@ -342,7 +342,7 @@
                             delta          = module.get.scrollChange(scroll),
                             maxScroll      = (element.height - scrollContext.height + settings.offset),
                             elementScroll  = module.get.currentElementScroll(),
-                            possibleScroll = (elementScroll + delta)
+                            possibleScroll = elementScroll + delta
                         ;
                         if (module.cache.fits || possibleScroll < 0) {
                             elementScroll = 0;
@@ -488,7 +488,7 @@
 
                         // shorthand
                         doesntFit      = !fits,
-                        elementVisible = (element.height !== 0)
+                        elementVisible = element.height !== 0
                     ;
                     if (elementVisible && !sameHeight) {
                         if (module.is.initialPosition()) {
@@ -795,7 +795,7 @@
                         query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
-                            var camelCaseValue = (depth != maxDepth)
+                            var camelCaseValue = depth != maxDepth
                                 ? value + query[depth + 1].charAt(0).toUpperCase() + query[depth + 1].slice(1)
                                 : query
                             ;
