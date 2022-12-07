@@ -166,7 +166,7 @@
                 },
 
                 preventDefaultOnInputTarget: function () {
-                    if (typeof event !== 'undefined' && event !== null && $(event.target).is(selector.input)) {
+                    if (event !== undefined && event !== null && $(event.target).is(selector.input)) {
                         module.verbose('Preventing default check action after manual check action');
                         event.preventDefault();
                     }

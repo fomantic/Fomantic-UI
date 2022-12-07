@@ -407,7 +407,7 @@
                 },
                 supports: {
                     svg: function () {
-                        return (typeof SVGGraphicsElement !== 'undefined');
+                        return (SVGGraphicsElement !== undefined);
                     },
                 },
                 animate: {
