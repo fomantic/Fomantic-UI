@@ -1014,8 +1014,8 @@
                             thumbPosValue,
                             min = module.get.min(),
                             max = module.get.max(),
-                            thumbPosPercent = 100 * (newValue - min) / (max - min),
-                            trackStartPosPercent = 100 * (Math.min(thumbVal, secondThumbVal) - min) / (max - min),
+                            thumbPosPercent = 100 * ((newValue - min) / (max - min)),
+                            trackStartPosPercent = 100 * ((Math.min(thumbVal, secondThumbVal) - min) / (max - min)),
                             trackEndPosPercent = 100 * (1 - (Math.max(thumbVal, secondThumbVal) - min) / (max - min))
                         ;
                         if (module.is.vertical()) {

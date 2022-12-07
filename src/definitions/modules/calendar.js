@@ -301,7 +301,7 @@
                             }
 
                             var month = startMonth + p;
-                            var firstMonthDayColumn = (new Date(year, month, 1).getDay() - settings.firstDayOfWeek % 7 + 7) % 7;
+                            var firstMonthDayColumn = (new Date(year, month, 1).getDay() - (settings.firstDayOfWeek % 7) + 7) % 7;
                             if (!settings.constantHeight && isDay) {
                                 var requiredCells = new Date(year, month + 1, 0).getDate() + firstMonthDayColumn;
                                 rows = Math.ceil(requiredCells / 7);
@@ -1090,7 +1090,7 @@
                                 ss: ('0' + s).slice(-2),
                                 a: a,
                                 A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
+                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : (((D % 100) - (D % 10) === 10) ? 0 : D % 10)],
                                 w: w,
                                 ww: ('0' + w).slice(-2),
                             }

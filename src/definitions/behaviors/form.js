@@ -1683,7 +1683,7 @@
 
             // is not empty or blank string
             empty: function (value) {
-                return !(value === undefined || value === '' || Array.isArray(value) && value.length === 0);
+                return !(value === undefined || value === '' || (Array.isArray(value) && value.length === 0));
             },
 
             // checkbox checked

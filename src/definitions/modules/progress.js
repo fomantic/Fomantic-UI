@@ -355,7 +355,7 @@
                             totalWidth     = $module.width(),
                             minDisplay     = parseInt($bar.css('min-width'), 10),
                             displayPercent = (barWidth > minDisplay)
-                                ? (barWidth / totalWidth * 100)
+                                ? ((barWidth / totalWidth) * 100)
                                 : module.percent
                         ;
 
@@ -365,10 +365,10 @@
                     },
 
                     percent: function (index) {
-                        return module.percent && module.percent[index || 0] || 0;
+                        return (module.percent && module.percent[index || 0]) || 0;
                     },
                     value: function (index) {
-                        return module.nextValue || module.value && module.value[index || 0] || 0;
+                        return module.nextValue || (module.value && module.value[index || 0]) || 0;
                     },
                     total: function () {
                         return module.total !== undefined ? module.total : false;
