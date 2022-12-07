@@ -119,7 +119,6 @@ module.exports = {
 
         // TODO
         'no-return-assign': 'off',
-        'no-self-assign': 'off',
         'no-shadow-restricted-names': 'off',
         'no-use-before-define': 'off',
         'unicorn/no-instanceof-array': 'off',
