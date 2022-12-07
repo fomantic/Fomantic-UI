@@ -781,17 +781,14 @@
                 get: {
                     weekOfYear: function (weekYear, weekMonth, weekDay) {
                         // adapted from http://www.merlyn.demon.co.uk/weekcalc.htm
-                        var ms1d = 864e5, // milliseconds in a day
-                            ms7d = 7 * ms1d; // milliseconds in a week
+                        var ms1d = 24 * 3600 * 1000,
+                            ms7d = 7 * ms1d,
+                            DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an absolute day number
+                            AWN = Math.floor(DC3 / 7), // an absolute week number
+                            Wyr = new Date(AWN * ms7d).getUTCFullYear()
+                        ;
 
-                        // eslint-disable-next-line wrap-iife
-                        return function () { // return a closure so constants get calculated only once
-                            var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
-                                AWN = Math.floor(DC3 / 7), // an Absolute Week Number
-                                Wyr = new Date(AWN * ms7d).getUTCFullYear();
-
-                            return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
-                        }();
+                        return AWN - Math.floor(Date.UTC(Wyr, 0, 7) / ms7d) + 1;
                     },
                     formattedDate: function (format, date) {
                         return module.helper.dateFormat(format || formatter[settings.type], date || module.get.date());
