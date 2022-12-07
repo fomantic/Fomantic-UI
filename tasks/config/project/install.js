@@ -127,7 +127,7 @@ module.exports = {
             }
         ;
         // start walk from current directory if none specified
-        directory = directory || (__dirname + path.sep);
+        directory = directory || path.join((__dirname, path.sep));
 
         return walk(directory);
     },
@@ -156,7 +156,7 @@ module.exports = {
             }
         ;
         // start walk from current directory if none specified
-        directory = directory || (__dirname + path.sep);
+        directory = directory || path.join(__dirname, path.sep);
 
         return walk(directory);
     },
