@@ -95,7 +95,7 @@
                         var precision = 1;
                         var ratio = min / total;
                         while (precisionPower < 10) {
-                            ratio = ratio * precision;
+                            ratio *= precision;
                             if (ratio > 1) {
                                 break;
                             }

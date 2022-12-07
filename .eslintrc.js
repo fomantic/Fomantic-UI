@@ -160,21 +160,6 @@ module.exports = {
         'unicorn/prefer-regexp-test': 'off',
         'unicorn/prefer-switch': 'off',
         'unicorn/prefer-ternary': 'off',
-
-        // TODO rare errors
-        'arrow-body-style': 'off',
-        'block-scoped-var': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        'import/order': 'off',
-        'new-cap': 'off',
-        'newline-per-chained-call': 'off',
-        'no-extra-boolean-cast': 'off',
-        'no-redeclare': 'off',
-        'no-unneeded-ternary': 'off',
-        'no-useless-return': 'off',
-        'operator-assignment': 'off',
-        'unicorn/no-console-spaces': 'off',
-        yoda: 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

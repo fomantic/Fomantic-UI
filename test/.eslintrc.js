@@ -9,10 +9,6 @@ module.exports = {
     },
     rules: {
         'jest/no-disabled-tests': 'off',
-
-        // TODO rare errors
-        'jest/no-jasmine-globals': 'off',
-        'jest/no-test-prefixes': 'off',
     },
     globals: {
         jQuery: false,
