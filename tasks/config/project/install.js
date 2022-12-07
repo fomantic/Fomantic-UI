@@ -66,7 +66,7 @@ let when = {
 
 let filter = {
     removeTrailingSlash: function (path) {
-        return path.replace(/(\/$|\\$)+/mg, '');
+        return path.replace(/(\/$|\\$)+/gm, '');
     },
 };
 
@@ -230,7 +230,7 @@ module.exports = {
 
     regExp: {
         // used to match siteFolder variable in theme.less
-        siteVariable: /@siteFolder .*\'(.*)/mg,
+        siteVariable: /@siteFolder .*'(.*)/gm,
     },
 
     // source paths (when installing)

@@ -83,7 +83,7 @@ module.exports = function (callback) {
                         unrelatedNotes: new RegExp('^((?!(^.*(' + component + ').*$|###.*)).)*$', 'gmi'),
                         whitespace: /\n\s*\n\s*\n/gm,
                         // npm
-                        componentExport: /(.*)\$\.fn\.\w+\s*=\s*function\(([^\)]*)\)\s*{/g,
+                        componentExport: /(.*)\$\.fn\.\w+\s*=\s*function\(([^)]*)\)\s*{/g,
                         componentReference: '$.fn.' + component,
                         settingsExport: /\$\.fn\.\w+\.settings\s*=/g,
                         settingsReference: /\$\.fn\.\w+\.settings/g,

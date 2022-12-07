@@ -464,7 +464,7 @@
                                             : (el.value === 'false' ? false : el.value)),
                                     nameKeys = el.name.match(settings.regExp.key) || [],
                                     k,
-                                    pushKey = el.name.replace(/\[\]$/, '')
+                                    pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
@@ -1001,7 +1001,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1186,13 +1186,13 @@
         },
 
         regExp: {
-            required: /\{\$*[a-z0-9]+\}/gi,
-            optional: /\{\/\$*[a-z0-9]+\}/gi,
-            validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
-            key: /[a-z0-9_-]+|(?=\[\])/gi,
+            required: /{\$*[\da-z]+}/gi,
+            optional: /{\/\$*[\da-z]+}/gi,
+            validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
+            key: /[\w-]+|(?=\[])/gi,
             push: /^$/,
             fixed: /^\d+$/,
-            named: /^[a-z0-9_-]+$/i,
+            named: /^[\w-]+$/i,
         },
 
         className: {

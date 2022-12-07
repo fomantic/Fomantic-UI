@@ -139,7 +139,6 @@ module.exports = {
         'no-useless-concat': 'off',
         'no-useless-escape': 'off',
         radix: 'off',
-        'unicorn/better-regex': 'off',
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/empty-brace-spaces': 'off',
         'unicorn/escape-case': 'off',

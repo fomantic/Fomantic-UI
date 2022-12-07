@@ -53,32 +53,32 @@ module.exports = {
 
             // remove all comments from config files (.variable)
             variables: {
-                in: /(\/\*[\s\S]+?\*\/+)[\s\S]+?\/\* End Config \*\//,
+                in: /(\/\*[\S\s]+?\*\/+)[\S\s]+?\/\* End Config \*\//,
                 out: '$1',
             },
 
             // add version to first comment
             license: {
-                in: /(^\/\*[\s\S]+)(# Fomantic-UI )([\s\S]+?\*\/)/,
+                in: /(^\/\*[\S\s]+)(# Fomantic-UI )([\S\s]+?\*\/)/,
                 out: '$1$2' + release.version + ' $3',
             },
 
             // adds uniform spacing around comments
             large: {
-                in: /(\/\*\*\*\*[\s\S]+?\*\/)/mg,
+                in: /(\/\*{4}[\S\s]+?\*\/)/gm,
                 out: '\n\n$1\n',
             },
             small: {
-                in: /(\/\*---[\s\S]+?\*\/)/mg,
+                in: /(\/\*---[\S\s]+?\*\/)/gm,
                 out: '\n$1\n',
             },
             tiny: {
-                in: /(\/\* [\s\S]+? \*\/)/mg,
+                in: /(\/\* [\S\s]+? \*\/)/gm,
                 out: '\n$1',
             },
         },
 
-        theme: /.*(\/|\\)themes(\/|\\).*?(?=(\/|\\))/mg,
+        theme: /.*(\/|\\)themes(\/|\\).*?(?=(\/|\\))/gm,
 
     },
 
@@ -108,8 +108,8 @@ module.exports = {
                     let
                         regExp = {
                             variable: /@(\S.*?)\s/,
-                            theme: /themes[\/\\]+(.*?)[\/\\].*/,
-                            element: /[\/\\]([^\/\\*]*)\.overrides/,
+                            theme: /themes[/\\]+(.*?)[/\\].*/,
+                            element: /[/\\]([^*/\\]*)\.overrides/,
                         },
                         theme,
                         element

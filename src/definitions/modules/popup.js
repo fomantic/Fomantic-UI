@@ -1243,7 +1243,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1469,8 +1469,8 @@
         templates: {
             escape: function (string) {
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1483,7 +1483,7 @@
                     }
                 ;
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }

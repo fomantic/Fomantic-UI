@@ -547,7 +547,7 @@
                     var winWidth = $(window).width();
                     $container.find('td[data-position]').each(function () {
                         var $cell = $(this);
-                        var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^0-9\.]/g, '');
+                        var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^\d.]/g, '');
                         var tooltipPosition = $cell.attr('data-position');
                         // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
                         var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
@@ -1487,7 +1487,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1647,18 +1647,18 @@
                 if (!text) {
                     return null;
                 }
-                text = String(text).trim().replace(/([.:\/\-])\s+/g, '$1').replace(/\s+([.:\/-])/g, '$1')
+                text = String(text).trim().replace(/([./:\-])\s+/g, '$1').replace(/\s+([./:-])/g, '$1')
                     .replace(/\s+/g, ' ');
                 if (text.length === 0) {
                     return null;
                 }
-                if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)) {
-                    text = text.replace(/[\/\-\.]/g, '/') + ' 00:00:00';
+                if (text.match(/^\d{4}(?:[./\-]\d{1,2}){2}$/)) {
+                    text = text.replace(/[./\-]/g, '/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
-                text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g, '/').replace(/([0-9]+)\/([0-9]+)/, '$2/$1');
+                text = settings.monthFirst || !text.match(/^\d{1,2}[./\-]/) ? text : text.replace(/[./\-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
                 var textDate = new Date(text);
-                var numberOnly = text.match(/^[0-9]+$/) !== null;
+                var numberOnly = text.match(/^\d+$/) !== null;
                 if (!numberOnly && !isNaN(textDate.getDate())) {
                     return textDate;
                 }
@@ -1927,7 +1927,7 @@
         regExp: {
             dateWords: /[^A-Za-z\u00C0-\u024F]+/g,
             dateNumbers: /[^\d:]+/g,
-            token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[SAaY]|"[^"]*"|'[^']*'/g,
+            token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[ASYa]|"[^"]*"|'[^']*'/g,
         },
 
         error: {
