@@ -60,12 +60,12 @@ module.exports = {
 
         // resolve paths (config location + base + path)
         for (folder in config.paths.source) {
-            if (config.paths.source.hasOwnProperty(folder)) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.source, folder)) {
                 sourcePaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.source[folder]));
             }
         }
         for (folder in config.paths.output) {
-            if (config.paths.output.hasOwnProperty(folder)) {
+            if (Object.prototype.hasOwnProperty.call(config.paths.output, folder)) {
                 outputPaths[folder] = path.resolve(path.join(configPath, config.base, config.paths.output[folder]));
             }
         }

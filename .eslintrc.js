@@ -118,7 +118,6 @@ module.exports = {
         'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
-        'no-prototype-builtins': 'off',
         'no-return-assign': 'off',
         'no-self-assign': 'off',
         'no-shadow-restricted-names': 'off',

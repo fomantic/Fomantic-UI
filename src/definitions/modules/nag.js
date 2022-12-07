@@ -193,7 +193,7 @@
 
                                     var cookieOptions = '';
                                     for (var option in options) {
-                                        if (options.hasOwnProperty(option)) {
+                                        if (Object.prototype.hasOwnProperty.call(options, option)) {
                                             cookieOptions += '; ' + option;
                                             if (typeof options[option] === 'string') {
                                                 cookieOptions += '=' + options[option].split(';')[0];
