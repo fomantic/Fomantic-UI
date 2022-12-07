@@ -19,7 +19,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window !== 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math == Math)
         ? window
         : globalThis;
 
@@ -431,8 +431,8 @@
 
                         if (useFormDataApi) {
                             formData = new FormData($form[0]);
-                            settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
-                            settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
+                            settings.processData = settings.processData !== undefined ? settings.processData : false;
+                            settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
                             var
                                 formArray = $form.serializeArray(),

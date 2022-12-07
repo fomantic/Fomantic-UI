@@ -19,7 +19,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window !== 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math == Math)
         ? window
         : globalThis;
 
