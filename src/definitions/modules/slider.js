@@ -639,7 +639,6 @@
 
                                 break;
 
-                            case 'first':
                             default:
                                 return module.thumbVal;
                         }
@@ -658,7 +657,6 @@
 
                                 break;
 
-                            case 'first':
                             default:
                                 return position;
                         }
