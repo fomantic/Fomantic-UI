@@ -136,10 +136,7 @@
                 },
 
                 attachEvents: function (selector, action) {
-                    if (!action) {
-                        action = 'submit';
-                    }
-
+                    action = action || 'submit';
                     $(selector).on('click' + eventNamespace, function (event) {
                         module[action]();
                         event.preventDefault();

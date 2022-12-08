@@ -1342,10 +1342,7 @@
                         return date;
                     },
                     dateDiff: function (date1, date2, mode) {
-                        if (!mode) {
-                            mode = 'day';
-                        }
-
+                        mode = mode || 'day';
                         var isTimeOnly = settings.type === 'time';
                         var isYear = mode === 'year';
                         var isYearOrMonth = isYear || mode === 'month';

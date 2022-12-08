@@ -260,16 +260,13 @@
 
                 get: {
                     text: function (templateText, index) {
-                        if (!index) {
-                            index = 0;
-                        }
-
                         var
-                            value   = module.get.value(index),
+                            index_  = index || 0,
+                            value   = module.get.value(index_),
                             total   = module.get.total(),
                             percent = animating
-                                ? module.get.displayPercent(index)
-                                : module.get.percent(index),
+                                ? module.get.displayPercent(index_)
+                                : module.get.percent(index_),
                             left = total !== false
                                 ? Math.max(0, total - value)
                                 : 100 - percent
@@ -280,7 +277,7 @@
                             .replace('{total}', total || 0)
                             .replace('{left}', left)
                             .replace('{percent}', percent)
-                            .replace('{bar}', settings.text.bars[index] || '')
+                            .replace('{bar}', settings.text.bars[index_] || '')
                         ;
                         module.verbose('Adding variables to progress bar text', templateText);
 

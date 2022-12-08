@@ -104,6 +104,7 @@ module.exports = {
         'unicorn/no-array-for-each': 'off',
         'unicorn/no-for-loop': 'off', // autofixes to "for of"
         'unicorn/prefer-code-point': 'off',
+        'unicorn/prefer-default-parameters': 'off',
         'unicorn/prefer-includes': 'off',
         'unicorn/prefer-node-protocol': 'off', // needs Node 14+
         'unicorn/prefer-number-properties': 'off',
