@@ -17,7 +17,7 @@ let
 config = requireDotFile('semantic.json', process.cwd());
 
 try {
-    npmPackage = require('../../../package.json');
+    npmPackage = require('../../../package.json'); // eslint-disable-line global-require
 } catch (error) {
     // generate fake package
     npmPackage = {

@@ -2,16 +2,14 @@
  *   Define Various Sub-Tasks
  *******************************/
 
+const clean = require('../clean');
+const version = require('../version');
+
 /*
   Lets you serve files to a local documentation instance
   https://github.com/fomantic/Fomantic-UI-Docs/
 */
 module.exports = function (gulp) {
-    let
-        clean   = require('../clean'),
-        version = require('../version')
-    ;
-
     gulp.task('clean', clean);
     gulp.task('clean').description = 'Clean dist folder';
 

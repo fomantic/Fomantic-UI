@@ -2,17 +2,15 @@
  *    Define Build Sub-Tasks
  *******************************/
 
+const watch = require('../watch');
+
+// build sub-tasks
+const build = require('../build');
+const buildJS = require('../build/javascript');
+const buildCSS = require('../build/css');
+const buildAssets = require('../build/assets');
+
 module.exports = function (gulp) {
-    // build sub-tasks
-    const
-        watch       = require('../watch'),
-
-        build       = require('../build'),
-        buildJS     = require('../build/javascript'),
-        buildCSS    = require('../build/css'),
-        buildAssets = require('../build/assets')
-    ;
-
     gulp.task('watch', watch);
     gulp.task('watch').description = 'Watch for site/theme changes';
 
