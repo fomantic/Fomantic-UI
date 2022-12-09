@@ -44,7 +44,6 @@ module.exports = {
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'number-max-precision': null, // 2 errors
         'no-extra-semicolons': null, // 2 errors
-        'declaration-colon-newline-after': null, // 1 errors
         'color-hex-case': null, // 1 errors
         'color-hex-length': null, // 1 errors
     },
