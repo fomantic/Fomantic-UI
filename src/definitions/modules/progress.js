@@ -606,7 +606,7 @@
                         }
                     },
                     barLabel: function (text) {
-                        $progresses.map(function (index, element) {
+                        $progresses.each(function (index, element) {
                             var $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
