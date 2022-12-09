@@ -39,7 +39,6 @@ module.exports = {
         'alpha-value-notation': null, // 8 errors
         'selector-attribute-quotes': null, // 7 errors
         'number-no-trailing-zeros': null, // 6 errors
-        'selector-list-comma-space-before': null, // 6 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
         'function-comma-space-after': null, // 5 errors
         'selector-combinator-space-after': null, // 3 errors
