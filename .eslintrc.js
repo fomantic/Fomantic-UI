@@ -96,6 +96,7 @@ module.exports = {
         'one-var': 'off',
         'prefer-const': 'off',
         'prefer-exponentiation-operator': 'off',
+        'prefer-rest-params': 'off',
         'prefer-spread': 'off',
         'semi-style': 'off',
         'unicorn/no-array-for-each': 'off',
@@ -117,7 +118,6 @@ module.exports = {
         'global-require': 'off', // about 30 errors to be fixed manually
         'no-shadow': 'off', // about 220 errors to be fixed manually
         'prefer-arrow-callback': 'off', // about 350 errors (all autofixable)
-        'prefer-rest-params': 'off', // about 180 errors to be fixed manually
 
         // TODO
         'no-shadow-restricted-names': 'off',
