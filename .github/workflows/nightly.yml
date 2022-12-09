@@ -36,5 +36,6 @@ jobs:
         CI: true
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
       run: |
+        sed '/^\/dist\/$/d' -i .gitignore
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm publish --tag nightly
