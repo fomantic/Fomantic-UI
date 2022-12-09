@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Input
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,797 +12,807 @@
             Theme
 *******************************/
 
-@type    : 'element';
+@type : 'element';
 @element : 'input';
 
 @import (multiple) '../../theme.config';
-
 
 /*******************************
            Standard
 *******************************/
 
-
-/*--------------------
+/* --------------------
         Inputs
----------------------*/
+--------------------- */
 
 .ui.input {
-  position: relative;
-  font-weight: @normal;
-  font-style: normal;
-  display: inline-flex;
-  color: @inputColor;
+    position: relative;
+    font-weight: @normal;
+    font-style: normal;
+    display: inline-flex;
+    color: @inputColor;
 }
 .ui.input > input {
-  margin: 0;
-  max-width: 100%;
-  flex: 1 0 auto;
-  outline: none;
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-  text-align: @textAlign;
-  line-height: @lineHeight;
+    margin: 0;
+    max-width: 100%;
+    flex: 1 0 auto;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+    text-align: @textAlign;
+    line-height: @lineHeight;
 
-  font-family: @inputFont;
+    font-family: @inputFont;
 
-  background: @background;
-  border: @border;
-  color: @inputColor;
-  border-radius: @borderRadius;
-  transition: @transition;
+    background: @background;
+    border: @border;
+    color: @inputColor;
+    border-radius: @borderRadius;
+    transition: @transition;
 
-  box-shadow: @boxShadow;
-  &:not([type="color"]) {
-    padding: @padding;
-  }
-  &::-webkit-calendar-picker-indicator {
-    padding: 0;
-    opacity: @iconOpacity;
-    transition: @iconTransition;
-    cursor: pointer;
-  }
+    box-shadow: @boxShadow;
+    &:not([type="color"]) {
+        padding: @padding;
+    }
+    &::-webkit-calendar-picker-indicator {
+        padding: 0;
+        opacity: @iconOpacity;
+        transition: @iconTransition;
+        cursor: pointer;
+    }
 }
 
-
-/*--------------------
+/* --------------------
       Placeholder
----------------------*/
+--------------------- */
 
 /* browsers require these rules separate */
 
 .ui.input > input::-webkit-input-placeholder {
-  color: @placeholderColor;
+    color: @placeholderColor;
 }
 .ui.input > input::-moz-placeholder {
-  color: @placeholderColor;
-  opacity: 1;
+    color: @placeholderColor;
+    opacity: 1;
 }
-.ui.input > input:-ms-input-placeholder {
-  color: @placeholderColor;
+.ui.input > input:-ms-input-placeholder when (@supportIE) {
+    color: @placeholderColor;
 }
-
 
 /*******************************
             States
 *******************************/
 & when (@variationInputDisabled) {
-  /*--------------------
-          Disabled
-  ---------------------*/
+    /* --------------------
+            Disabled
+    --------------------- */
 
-  .ui.disabled.input,
-  .ui.input:not(.disabled) input[disabled] {
-    opacity: @disabledOpacity;
-  }
+    .ui.disabled.input,
+    .ui.input:not(.disabled) input[disabled] {
+        opacity: @disabledOpacity;
+    }
 
-  .ui.disabled.input > input,
-  .ui.input:not(.disabled) input[disabled] {
-    pointer-events: none;
-  }
+    .ui.disabled.input > input,
+    .ui.input:not(.disabled) input[disabled] {
+        pointer-events: @disabledPointerEvents;
+    }
 }
 
-/*--------------------
+/* --------------------
         Active
----------------------*/
+--------------------- */
 
 .ui.input > input:active,
 .ui.input.down input {
-  border-color: @downBorderColor;
-  background: @downBackground;
-  color: @downColor;
-  box-shadow: @downBoxShadow;
+    border-color: @downBorderColor;
+    background: @downBackground;
+    color: @downColor;
+    box-shadow: @downBoxShadow;
 }
 
 & when (@variationInputLoading) {
-  /*--------------------
-         Loading
-  ---------------------*/
+    /* --------------------
+           Loading
+    --------------------- */
 
-  .ui.loading.loading.input > i.icon:before {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
+    .ui.loading.loading.input > i.icon::before {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
 
-    margin: @loaderMargin;
-    width: @loaderSize;
-    height: @loaderSize;
+        margin: @loaderMargin;
+        width: @loaderSize;
+        height: @loaderSize;
 
-    border-radius: @circularRadius;
-    border: @loaderLineWidth solid @loaderFillColor;
-  }
-  .ui.loading.loading.input > i.icon:after {
-    position: absolute;
-    content: '';
-    top: 50%;
-    left: 50%;
+        border-radius: @circularRadius;
+        border: @loaderLineWidth solid @loaderFillColor;
+    }
+    .ui.loading.loading.input > i.icon::after {
+        position: absolute;
+        content: '';
+        top: 50%;
+        left: 50%;
 
-    margin: @loaderMargin;
-    width: @loaderSize;
-    height: @loaderSize;
+        margin: @loaderMargin;
+        width: @loaderSize;
+        height: @loaderSize;
 
-    animation: loader @loaderSpeed infinite linear;
+        animation: loader @loaderSpeed infinite linear;
 
-    border: @loaderLineWidth solid @loaderLineColor;
-    border-radius: @circularRadius;
+        border: @loaderLineWidth solid @loaderLineColor;
+        border-radius: @circularRadius;
 
-    box-shadow: 0 0 0 1px transparent;
-  }
+        box-shadow: 0 0 0 1px transparent;
+    }
 }
 
-
-/*--------------------
+/* --------------------
         Focus
----------------------*/
+--------------------- */
 
 .ui.input.focus > input,
-.ui.input > input:focus  {
-  border-color: @focusBorderColor;
-  background: @focusBackground;
-  color: @focusColor;
-  box-shadow: @focusBoxShadow;
+.ui.input > input:focus {
+    border-color: @focusBorderColor;
+    background: @focusBackground;
+    color: @focusColor;
+    box-shadow: @focusBoxShadow;
 }
 .ui.input.focus > input::-webkit-input-placeholder,
 .ui.input > input:focus::-webkit-input-placeholder {
-  color: @placeholderFocusColor;
+    color: @placeholderFocusColor;
 }
 .ui.input.focus > input::-moz-placeholder,
 .ui.input > input:focus::-moz-placeholder {
-  color: @placeholderFocusColor;
+    color: @placeholderFocusColor;
 }
-.ui.input.focus > input:-ms-input-placeholder,
-.ui.input > input:focus:-ms-input-placeholder {
-  color: @placeholderFocusColor;
+& when (@supportIE) {
+    .ui.input.focus > input:-ms-input-placeholder,
+    .ui.input > input:focus:-ms-input-placeholder {
+        color: @placeholderFocusColor;
+    }
 }
-
 
 & when not (@variationInputStates = false) {
-  /*--------------------
-          States
-  ---------------------*/
-  each(@variationInputStates, {
-    @state: @value;
+    /* --------------------
+            States
+    --------------------- */
+    each(@variationInputStates, {
+        @state: @value;
 
-    .ui.input.@{state} > input {
-      background-color: @formStates[@@state][background];
-      border-color: @formStates[@@state][borderColor];
-      color: @formStates[@@state][color];
-      box-shadow: @formStates[@@state][boxShadow];
-    }
-    & when (@state=error) {
-      .ui.input > input:not(:placeholder-shown):invalid {
-        background-color: @formStates[@@state][background];
-        border-color: @formStates[@@state][borderColor];
-        color: @formStates[@@state][color];
-        box-shadow: @formStates[@@state][boxShadow];
-      }
-      .ui.input > input:not(:-ms-input-placeholder):invalid {
-        background-color: @formStates[@@state][background];
-        border-color: @formStates[@@state][borderColor];
-        color: @formStates[@@state][color];
-        box-shadow: @formStates[@@state][boxShadow];
-      }
-    }
+        .ui.input.@{state} > input {
+            background-color: @formStates[@@state][background];
+            border-color: @formStates[@@state][borderColor];
+            color: @formStates[@@state][color];
+            box-shadow: @formStates[@@state][boxShadow];
+        }
+        & when (@state=error) and (@variationInputInvalid) {
+            .ui.input > input:not(:placeholder-shown):invalid {
+                background-color: @formStates[@@state][background];
+                border-color: @formStates[@@state][borderColor];
+                color: @formStates[@@state][color];
+                box-shadow: @formStates[@@state][boxShadow];
+            }
+            .ui.input > input:not(:-ms-input-placeholder):invalid when (@supportIE){
+                background-color: @formStates[@@state][background];
+                border-color: @formStates[@@state][borderColor];
+                color: @formStates[@@state][color];
+                box-shadow: @formStates[@@state][boxShadow];
+            }
+        }
 
-    /* Placeholder */
-    .ui.input.@{state} > input::-webkit-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderColor];
-    }
-    .ui.input.@{state} > input::-moz-placeholder {
-      color: @formStates[@@state][inputPlaceholderColor];
-    }
-    .ui.input.@{state} > input:-ms-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderColor] !important;
-    }
+        /* Placeholder */
+        .ui.input.@{state} > input::-webkit-input-placeholder {
+            color: @formStates[@@state][inputPlaceholderColor];
+        }
+        .ui.input.@{state} > input::-moz-placeholder {
+            color: @formStates[@@state][inputPlaceholderColor];
+        }
+        .ui.input.@{state} > input:-ms-input-placeholder when (@supportIE) {
+            color: @formStates[@@state][inputPlaceholderColor] !important;
+        }
 
-    /* Focused Placeholder */
-    .ui.input.@{state} > input:focus::-webkit-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderFocusColor];
-    }
-    .ui.input.@{state} > input:focus::-moz-placeholder {
-      color: @formStates[@@state][inputPlaceholderFocusColor];
-    }
-    .ui.input.@{state} > input:focus:-ms-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderFocusColor] !important;
-    }
-  })
+        /* Focused Placeholder */
+        .ui.input.@{state} > input:focus::-webkit-input-placeholder {
+            color: @formStates[@@state][inputPlaceholderFocusColor];
+        }
+        .ui.input.@{state} > input:focus::-moz-placeholder {
+            color: @formStates[@@state][inputPlaceholderFocusColor];
+        }
+        .ui.input.@{state} > input:focus:-ms-input-placeholder when (@supportIE){
+            color: @formStates[@@state][inputPlaceholderFocusColor] !important;
+        }
+    })
 }
+
 /*******************************
            Variations
 *******************************/
 
 & when (@variationInputTransparent) {
-  /*--------------------
-        Transparent
-  ---------------------*/
+    /* --------------------
+          Transparent
+    --------------------- */
 
-
-  .ui.transparent.input > textarea,
-  .ui.transparent.input > input {
-    border-color: transparent !important;
-    background-color: transparent !important;
-    padding: 0;
-    box-shadow: none !important;
-    border-radius: 0 !important;
-  }
-  .field .ui.transparent.input > textarea {
-    padding: @padding;
-  }
-
-  /* Transparent Icon */
-  :not(.field) > .ui.transparent.icon.input > i.icon {
-    width: @transparentIconWidth;
-  }
-  :not(.field) > .ui.ui.ui.transparent.icon.input > input {
-    padding-left: 0;
-    padding-right: @transparentIconMargin;
-  }
-  :not(.field) > .ui.ui.ui.transparent[class*="left icon"].input > input {
-    padding-left: @transparentIconMargin;
-    padding-right: 0;
-  }
-  & when (@variationInputInverted) {
-    /* Transparent Inverted */
-    .ui.transparent.inverted.input {
-      color: @transparentInvertedColor;
+    .ui.transparent.input > textarea,
+    .ui.transparent.input > input {
+        border-color: transparent !important;
+        background-color: transparent !important;
+        padding: 0;
+        box-shadow: none !important;
+        border-radius: 0 !important;
     }
-    .ui.ui.transparent.inverted.input > textarea,
-    .ui.ui.transparent.inverted.input > input {
-      color: inherit;
+    .field .ui.transparent.input > textarea {
+        padding: @padding;
     }
 
-    .ui.transparent.inverted.input > input::-webkit-input-placeholder {
-      color: @transparentInvertedPlaceholderColor;
+    /* Transparent Icon */
+    :not(.field) > .ui.transparent.icon.input > i.icon {
+        width: @transparentIconWidth;
     }
-    .ui.transparent.inverted.input > input::-moz-placeholder {
-      color: @transparentInvertedPlaceholderColor;
+    :not(.field) > .ui.ui.ui.transparent.icon.input > input {
+        padding-left: 0;
+        padding-right: @transparentIconMargin;
     }
-    .ui.transparent.inverted.input > input:-ms-input-placeholder {
-      color: @transparentInvertedPlaceholderColor;
+    :not(.field) > .ui.ui.ui.transparent[class*="left icon"].input > input {
+        padding-left: @transparentIconMargin;
+        padding-right: 0;
     }
-  }
+    & when (@variationInputInverted) {
+        /* Transparent Inverted */
+        .ui.transparent.inverted.input {
+            color: @transparentInvertedColor;
+        }
+        .ui.ui.transparent.inverted.input > textarea,
+        .ui.ui.transparent.inverted.input > input {
+            color: inherit;
+        }
+
+        .ui.transparent.inverted.input > input::-webkit-input-placeholder {
+            color: @transparentInvertedPlaceholderColor;
+        }
+        .ui.transparent.inverted.input > input::-moz-placeholder {
+            color: @transparentInvertedPlaceholderColor;
+        }
+        .ui.transparent.inverted.input > input:-ms-input-placeholder when (@supportIE) {
+            color: @transparentInvertedPlaceholderColor;
+        }
+    }
 }
 
 & when (@variationInputIcon) {
-  /*--------------------
-           Icon
-  ---------------------*/
+    /* --------------------
+             Icon
+    --------------------- */
 
-  .ui.icon.input > i.icon {
-    cursor: default;
-    position: absolute;
-    line-height: 1;
-    text-align: center;
-    top: 0;
-    right: 0;
-    margin: 0;
-    height: 100%;
+    .ui.icon.input > i.icon {
+        cursor: default;
+        position: absolute;
+        line-height: 1;
+        text-align: center;
+        top: 0;
+        right: 0;
+        margin: 0;
+        height: 100%;
 
-    width: @iconWidth;
-    opacity: @iconOpacity;
-    border-radius: 0 @borderRadius @borderRadius 0;
-    transition: @iconTransition;
-  }
-  .ui.icon.input > i.icon:not(.link) {
-    pointer-events: none;
-  }
-  .ui.ui.ui.ui.icon.input:not(.corner) > textarea,
-  .ui.ui.ui.ui.icon.input:not(.corner) > input {
-    padding-right: @iconMargin;
-  }
+        width: @iconWidth;
+        opacity: @iconOpacity;
+        border-radius: 0 @borderRadius @borderRadius 0;
+        transition: @iconTransition;
+    }
+    .ui.icon.input > i.icon:not(.link) {
+        pointer-events: none;
+    }
+    .ui.ui.ui.ui.icon.input:not(.corner) > textarea,
+    .ui.ui.ui.ui.icon.input:not(.corner) > input {
+        padding-right: @iconMargin;
+    }
 
-  .ui.icon.input > i.icon:before,
-  .ui.icon.input > i.icon:after {
-    left: 0;
-    position: absolute;
-    text-align: center;
-    top: 50%;
-    width: 100%;
-    margin-top: @iconOffset;
-  }
-  .ui.icon.input > i.link.icon {
-    cursor: pointer;
-  }
-  .ui.icon.input > i.circular.icon {
-    top: @circularIconVerticalOffset;
-    right: @circularIconHorizontalOffset;
-  }
+    .ui.icon.input > i.icon::before,
+    .ui.icon.input > i.icon::after {
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 50%;
+        width: 100%;
+        margin-top: @iconOffset;
+    }
+    .ui.icon.input > i.link.icon {
+        cursor: pointer;
+    }
+    .ui.icon.input > i.circular.icon {
+        top: @circularIconVerticalOffset;
+        right: @circularIconHorizontalOffset;
+    }
 
-  /* Left Icon Input */
-  .ui[class*="left icon"].input > i.icon {
-    right: auto;
-    left: @borderWidth;
-    border-radius: @borderRadius 0 0 @borderRadius;
-  }
-  .ui[class*="left icon"].input > i.circular.icon {
-    right: auto;
-    left: @circularIconHorizontalOffset;
-  }
-  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > textarea,
-  .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > input {
-    padding-left: @iconMargin;
-  }
-  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > textarea,
-  .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > input {
-    padding-right: @horizontalPadding;
-  }
+    /* Left Icon Input */
+    .ui[class*="left icon"].input > i.icon {
+        right: auto;
+        left: @borderWidth;
+        border-radius: @borderRadius 0 0 @borderRadius;
+    }
+    .ui[class*="left icon"].input > i.circular.icon {
+        right: auto;
+        left: @circularIconHorizontalOffset;
+    }
+    .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > textarea,
+    .ui.ui.ui.ui[class*="left icon"]:not([class*="left corner"]).input > input {
+        padding-left: @iconMargin;
+    }
+    .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > textarea,
+    .ui.ui.ui.ui[class*="left icon"]:not(.corner).input > input {
+        padding-right: @horizontalPadding;
+    }
 
-  /* Focus */
-  .ui.input > input:focus::-webkit-calendar-picker-indicator,
-  .ui.icon.input > textarea:focus ~ i.icon,
-  .ui.icon.input > input:focus ~ i.icon {
-    opacity: @iconFocusOpacity;
-  }
+    /* Focus */
+    .ui.input > input:focus::-webkit-calendar-picker-indicator,
+    .ui.icon.input > textarea:focus ~ i.icon,
+    .ui.icon.input > input:focus ~ i.icon {
+        opacity: @iconFocusOpacity;
+    }
 }
 
 & when (@variationInputLabeled) {
-  /*--------------------
-          Labeled
-  ---------------------*/
+    /* --------------------
+            Labeled
+    --------------------- */
 
-  /* Adjacent Label */
-  .ui.labeled.input > .label {
-    flex: 0 0 auto;
-    margin: 0;
-    font-size: @relativeMedium;
-  }
-  .ui.labeled.input > .label:not(.corner) {
-    padding-top: @verticalPadding;
-    padding-bottom: @verticalPadding;
-  }
+    /* Adjacent Label */
+    .ui.labeled.input > .label {
+        flex: 0 0 auto;
+        margin: 0;
+        font-size: @relativeMedium;
+    }
+    .ui.labeled.input > .label:not(.corner) {
+        padding-top: @verticalPadding;
+        padding-bottom: @verticalPadding;
+    }
 
-  /* Regular Label on Left */
-  .ui.labeled.input:not([class*="corner labeled"]) .label:first-child {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-  .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left-color: transparent;
-  }
-  .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
-    border-left-color: @focusBorderColor;
-  }
+    /* Regular Label on Left */
+    .ui.labeled.input:not([class*="corner labeled"]) .label:first-child {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left-color: transparent;
+    }
+    .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + input:focus {
+        border-left-color: @focusBorderColor;
+    }
 
-  /* Regular Label on Right */
-  .ui[class*="right labeled"].input > input {
-    border-top-right-radius: 0 !important;
-    border-bottom-right-radius: 0 !important;
-    border-right-color: transparent !important;
-  }
-  .ui[class*="right labeled"].input > input + .label {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-  }
+    /* Regular Label on Right */
+    .ui[class*="right labeled"].input > input {
+        border-top-right-radius: 0 !important;
+        border-bottom-right-radius: 0 !important;
+        border-right-color: transparent !important;
+    }
+    .ui[class*="right labeled"].input > input + .label {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
 
-  .ui[class*="right labeled"].input > input:focus {
-    border-right-color: @focusBorderColor !important;
-  }
+    .ui[class*="right labeled"].input > input:focus {
+        border-right-color: @focusBorderColor !important;
+    }
 }
 
 & when (@variationInputCorner) {
-  /* Corner Label */
-  .ui.labeled.input .corner.label {
-    top: @labelCornerTop;
-    right: @labelCornerRight;
-    font-size: @labelCornerSize;
-    border-radius: 0 @borderRadius 0 0;
-  }
+    /* Corner Label */
+    .ui.labeled.input .corner.label {
+        top: @labelCornerTop;
+        right: @labelCornerRight;
+        font-size: @labelCornerSize;
+        border-radius: 0 @borderRadius 0 0;
+    }
 
-  /* Spacing with corner label */
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown,
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > textarea,
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > input {
-    padding-right: @labeledMargin;
-  }
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .ui.dropdown,
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > textarea,
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
-    padding-right: @labeledIconInputMargin;
-  }
-  .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
-    margin-right: @labeledIconMargin;
-  }
+    /* Spacing with corner label */
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > textarea,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > input {
+        padding-right: @labeledMargin;
+    }
+    .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > .ui.dropdown,
+    .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > textarea,
+    .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > input {
+        padding-right: @labeledIconInputMargin;
+    }
+    .ui[class*="corner labeled"].icon.input:not([class*="left corner labeled"]) > i.icon {
+        margin-right: @labeledIconMargin;
+    }
 
-  /* Left Labeled */
-  .ui[class*="left icon"].input > .ui.dropdown,
-  .ui[class*="left corner labeled"].input > .ui.dropdown,
-  .ui[class*="left corner labeled"].input > textarea,
-  .ui[class*="left corner labeled"].input > input {
-    padding-left: @labeledMargin;
-  }
-  & when (@variationInputIcon) {
-    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > .ui.dropdown,
-    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > textarea,
-    .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
-      padding-right: @labeledIconInputMargin;
-    }
-    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
-    .ui[class*="left corner labeled"][class*="left icon"].input > textarea,
-    .ui[class*="left corner labeled"][class*="left icon"].input > input {
-      padding-left: @labeledAndIconMargin;
-    }
-    .ui[class*="left corner labeled"].icon.input > i.icon {
-      margin-left: @labeledIconMargin;
-    }
-    .ui[class*="left corner labeled"].icon:not([class*="left icon"]).input > input {
-      padding-right: @labeledMargin;
-    }
-    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > input {
-      padding-right: @labeledMargin * 2;
-    }
-  }
-
-  .ui[class*="left icon"].input > .ui.dropdown,
-  .ui[class*="left corner labeled"].input > .ui.dropdown {
-    & > .search {
-      padding-left: @labeledMargin;
-    }
-    & > .menu {
-      padding-left: @labeledIconMargin;
-      & > .item {
+    /* Left Labeled */
+    .ui[class*="left icon"].input > .ui.dropdown:first-child,
+    .ui[class*="left icon"].input > i.icon + .ui.dropdown,
+    .ui[class*="left corner labeled"].input > .ui.dropdown,
+    .ui[class*="left corner labeled"].input > textarea,
+    .ui[class*="left corner labeled"].input > input {
         padding-left: @labeledMargin;
-        margin-left: -@labeledIconMargin;
-      }
     }
-  }
-  .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown {
-    & > .search {
-      padding-left: @labeledAndIconMargin;
+    & when (@variationInputIcon) {
+        .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > .ui.dropdown,
+        .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > textarea,
+        .ui[class*="corner labeled"]:not([class*="left corner labeled"])[class*="left icon"].input > input {
+            padding-right: @labeledIconInputMargin;
+        }
+        .ui.ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown,
+        .ui.ui[class*="left corner labeled"][class*="left icon"].input > textarea,
+        .ui.ui[class*="left corner labeled"][class*="left icon"].input > input {
+            padding-left: @labeledAndIconMargin;
+        }
+        .ui[class*="left corner labeled"].icon.input > i.icon {
+            margin-left: @labeledIconMargin;
+        }
+        .ui[class*="left corner labeled"].icon:not([class*="left icon"]).input > input {
+            padding-right: @labeledMargin;
+        }
+        .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > input {
+            padding-right: @labeledMargin * 2;
+        }
     }
-    & > .menu > .item {
-      padding-left: @labeledAndIconMargin;
+
+    .ui[class*="left icon"].input > .ui.dropdown,
+    .ui[class*="left corner labeled"].input > .ui.dropdown {
+        & > .search {
+            padding-left: @labeledMargin;
+        }
+        & > .menu {
+            padding-left: @labeledIconMargin;
+            & > .item {
+                padding-left: @labeledMargin;
+                margin-left: -@labeledIconMargin;
+            }
+        }
     }
-  }
-  .ui.icon.input:not([class*="left icon"]) > .ui.dropdown,
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown {
-    & > .search {
-      padding-right: @labeledMargin + @labeledIconInputMargin;
+    .ui[class*="left corner labeled"][class*="left icon"].input > .ui.dropdown {
+        & > .search {
+            padding-left: @labeledAndIconMargin;
+        }
+        & > .menu > .item {
+            padding-left: @labeledAndIconMargin;
+        }
     }
-    & > .remove.icon,
-      > .dropdown.icon  {
-      padding-right: @labeledMargin;
+    .ui.icon.input:not([class*="left icon"]) > .ui.dropdown,
+    .ui[class*="corner labeled"]:not([class*="left corner labeled"]).input > .ui.dropdown {
+        & > .search {
+            padding-right: @labeledMargin + @labeledIconInputMargin;
+        }
+        & > .remove.icon,
+        > .dropdown.icon {
+            padding-right: @labeledMargin;
+        }
     }
-  }
-  .ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
-    & > .search {
-      padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
+    @supports selector(:has(.f)) {
+        .ui.icon.input:not([class*="left icon"]) > .ui.dropdown > .dropdown.icon {
+            padding-right: initial;
+        }
+        .ui.icon.input:not([class*="left icon"]):not(:has(.ui.dropdown~input)) > .ui.dropdown > .dropdown.icon {
+            padding-right: @labeledMargin;
+        }
     }
-    & > .remove.icon,
-    > .dropdown.icon  {
-      padding-right: @labeledAndIconMargin;
+    .ui.ui[class*="corner labeled"]:not([class*="left corner labeled"]).icon:not([class*="left icon"]).input > .ui.dropdown {
+        & > .search {
+            padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
+        }
+        & > .remove.icon,
+        > .dropdown.icon {
+            padding-right: @labeledAndIconMargin;
+        }
     }
-  }
-  .ui.icon.input > .ui.visible.dropdown ~ i.icon,
-  .ui.icon.input > .ui.active.dropdown ~ i.icon,
-  .ui[class*="corner labeled"].input > .ui.visible.dropdown ~ .ui.corner.label,
-  .ui[class*="corner labeled"].input > .ui.active.dropdown ~ .ui.corner.label {
-    z-index: @labeledDropdownZIndex;
-  }
+    .ui.icon.input > .ui.visible.dropdown ~ i.icon,
+    .ui.icon.input > .ui.active.dropdown ~ i.icon,
+    .ui[class*="corner labeled"].input > .ui.visible.dropdown ~ .ui.corner.label,
+    .ui[class*="corner labeled"].input > .ui.active.dropdown ~ .ui.corner.label {
+        z-index: @labeledDropdownZIndex;
+    }
 }
 & when (@variationInputIcon) {
-  .ui.icon.input > textarea ~ i.icon {
-    height: @textareaIconHeight;
-  }
-  :not(.field) > .ui.transparent.icon.input > textarea ~ i.icon {
-    height: @transparentTextareaIconHeight;
-  }
+    .ui.icon.input > textarea ~ i.icon {
+        height: @textareaIconHeight;
+    }
+    :not(.field) > .ui.transparent.icon.input > textarea ~ i.icon {
+        height: @transparentTextareaIconHeight;
+    }
 }
 & when (@variationInputCorner) {
-  /* Corner Label Position  */
-  .ui.input > .ui.corner.label {
-    top: @borderWidth;
-    right: @borderWidth;
-  }
-  .ui.input > .ui.left.corner.label {
-    right: auto;
-    left: @borderWidth;
-  }
+    /* Corner Label Position  */
+    .ui.input > .ui.corner.label {
+        top: @borderWidth;
+        right: @borderWidth;
+    }
+    .ui.input > .ui.left.corner.label {
+        right: auto;
+        left: @borderWidth;
+    }
 }
 
 & when ((@variationInputLabeled) or (@variationInputAction)) and not (@variationInputStates = false) {
-  /* Labeled and action input states */
-  each(@variationInputStates, {
-    @state: @value;
-    @borderColor: @formStates[@@state][borderColor];
+    /* Labeled and action input states */
+    each(@variationInputStates, {
+        @state: @value;
+        @borderColor: @formStates[@@state][borderColor];
 
-    .ui.form .field.@{state} > .ui.action.input > .ui.button,
-    .ui.form .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
-    .ui.action.input.@{state} > .ui.button,
-    .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
-      border-top: @borderWidth solid @borderColor;
-      border-bottom: @borderWidth solid @borderColor;
-    }
-    .ui.form .field.@{state} > .ui[class*="left action"].input > .ui.button,
-    .ui.form .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
-    .ui[class*="left action"].input.@{state} > .ui.button,
-    .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
-      border-left: @borderWidth solid @borderColor;
-    }
-    .ui.form .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
-    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
-    .ui.action.input.@{state}:not([class*="left action"]) > input + .ui.button,
-    .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
-      border-right: @borderWidth solid @borderColor;
-    }
-    .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
-    .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
-      border-left: @borderWidth solid @borderColor;
-    }
-  })
+        .ui.form .field.@{state} > .ui.action.input > .ui.button,
+        .ui.form .field.@{state} > .ui.labeled.input:not([class*="corner labeled"]) > .ui.label,
+        .ui.action.input.@{state} > .ui.button,
+        .ui.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label {
+            border-top: @borderWidth solid @borderColor;
+            border-bottom: @borderWidth solid @borderColor;
+        }
+        .ui.form .field.@{state} > .ui[class*="left action"].input > .ui.button,
+        .ui.form .field.@{state} > .ui.labeled.input:not(.right):not([class*="corner labeled"]) > .ui.label,
+        .ui[class*="left action"].input.@{state} > .ui.button,
+        .ui.labeled.input.@{state}:not(.right):not([class*="corner labeled"]) > .ui.label {
+            border-left: @borderWidth solid @borderColor;
+        }
+        .ui.form .field.@{state} > .ui.action.input:not([class*="left action"]) > input + .ui.button,
+        .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > input + .ui.label,
+        .ui.action.input.@{state}:not([class*="left action"]) > input + .ui.button,
+        .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > input + .ui.label {
+            border-right: @borderWidth solid @borderColor;
+        }
+        .ui.form .field.@{state} > .ui.right.labeled.input:not([class*="corner labeled"]) > .ui.label:first-child,
+        .ui.right.labeled.input.@{state}:not([class*="corner labeled"]) > .ui.label:first-child {
+            border-left: @borderWidth solid @borderColor;
+        }
+    })
 }
 
 & when (@variationInputAction) {
-  /*--------------------
-          Action
-  ---------------------*/
+    /* --------------------
+            Action
+    --------------------- */
 
-  .ui.action.input > .button,
-  .ui.action.input > .buttons {
-    display: flex;
-    align-items: center;
-    flex: 0 0 auto;
-  }
-  .ui.action.input > .button,
-  .ui.action.input > .buttons > .button {
-    padding-top: @verticalPadding;
-    padding-bottom: @verticalPadding;
-    margin: 0;
-  }
+    .ui.action.input > .button,
+    .ui.action.input > .buttons {
+        display: flex;
+        align-items: center;
+        flex: 0 0 auto;
+    }
+    .ui.action.input > .button,
+    .ui.action.input > .buttons > .button {
+        padding-top: @verticalPadding;
+        padding-bottom: @verticalPadding;
+        margin: 0;
+    }
 
-  /* Input when ui Left*/
-  .ui[class*="left action"].input > input {
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    border-left-color: transparent;
-  }
+    /* Input when ui Left */
+    .ui[class*="left action"].input > input {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+        border-left-color: transparent;
+    }
 
-  /* Input when ui Right*/
-  .ui.action.input:not([class*="left action"]) > input {
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 0;
-    border-right-color: transparent;
-  }
+    /* Input when ui Right */
+    .ui.action.input:not([class*="left action"]) > input {
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+        border-right-color: transparent;
+    }
 
-  /* Button and Dropdown */
-  .ui.action.input > .dropdown:first-child,
-  .ui.action.input > .button:first-child,
-  .ui.action.input > .buttons:first-child > .button {
-    border-radius: @borderRadius 0 0 @borderRadius;
-  }
-  .ui.action.input > .dropdown:not(:first-child),
-  .ui.action.input > .button:not(:first-child),
-  .ui.action.input > .buttons:not(:first-child) > .button {
-    border-radius: 0;
-  }
-  .ui.action.input > .dropdown:last-child,
-  .ui.action.input > .button:last-child,
-  .ui.action.input > .buttons:last-child > .button {
-    border-radius: 0 @borderRadius @borderRadius 0;
-  }
+    /* Button and Dropdown */
+    .ui.action.input > .dropdown:first-child,
+    .ui.action.input > .button:first-child,
+    .ui.action.input > .buttons:first-child > .button {
+        border-radius: @borderRadius 0 0 @borderRadius;
+    }
+    .ui.action.input > .dropdown:not(:first-child),
+    .ui.action.input > .button:not(:first-child),
+    .ui.action.input > .buttons:not(:first-child) > .button {
+        border-radius: 0;
+    }
+    .ui.action.input > .dropdown:last-child,
+    .ui.action.input > .button:last-child,
+    .ui.action.input > .buttons:last-child > .button {
+        border-radius: 0 @borderRadius @borderRadius 0;
+    }
 
-  /* Input Focus */
-  .ui.action.input:not([class*="left action"]) > input:focus {
-    border-right-color: @focusBorderColor;
-  }
+    /* Input Focus */
+    .ui.action.input:not([class*="left action"]) > input:focus {
+        border-right-color: @focusBorderColor;
+    }
 
-  .ui.ui[class*="left action"].input > input:focus {
-    border-left-color: @focusBorderColor;
-  }
+    .ui.ui[class*="left action"].input > input:focus {
+        border-left-color: @focusBorderColor;
+    }
 }
 
 & when (@variationInputInverted) {
-  /*--------------------
-         Inverted
-  ---------------------*/
+    /* --------------------
+           Inverted
+    --------------------- */
 
-  /* Standard */
-  .ui.inverted.input > input {
-    border: none;
-  }
+    /* Standard */
+    .ui.inverted.input > input {
+        border: none;
+    }
 }
 
 & when (@variationInputFluid) {
-  /*--------------------
-          Fluid
-  ---------------------*/
+    /* --------------------
+            Fluid
+    --------------------- */
 
-  .ui.fluid.input {
-    display: flex;
-  }
-  .ui.fluid.input > input {
-    width: 0 !important;
-  }
+    .ui.fluid.input {
+        display: flex;
+    }
+    .ui.fluid.input > input {
+        width: 0 !important;
+    }
 }
-
 
 & when (@variationInputFile) {
-  /*--------------------
-          File
-  ---------------------*/
+    /* --------------------
+            File
+    --------------------- */
 
-  /* width hack for chrome/edge */
-  .ui.file.input {
-    width: 100%;
-    & input[type="file"] {
-      width: 0;
-    }
-  }
-
-  .ui.form .field > input[type="file"],
-  .ui.file.input:not(.action) input[type="file"] {
-    padding: 0;
-  }
-
-  .ui.action.file.input input[type="file"]::-webkit-file-upload-button {
-    display: none;
-  }
-  .ui.form .field input[type="file"]::-webkit-file-upload-button,
-  .ui.file.input input[type="file"]::-webkit-file-upload-button {
-    border: none;
-    cursor: pointer;
-    padding: @padding;
-    margin-right: @fileButtonMargin;
-    background: @fileButtonBackground;
-    font-weight: @fileButtonFontWeight;
-    color: @fileButtonTextColor;
-    &:hover {
-      background: @fileButtonBackgroundHover;
-      color: @fileButtonTextColor;
-    }
-  }
-  .ui.action.file.input input[type="file"]::-ms-browse {
-    display: none;
-  }
-  .ui.form .field input[type="file"]::-ms-browse,
-  .ui.file.input input[type="file"]::-ms-browse {
-    border: none;
-    cursor: pointer;
-    padding: @padding;
-    margin: 0;
-    background: @fileButtonBackground;
-    font-weight: @fileButtonFontWeight;
-    color: @fileButtonTextColor;
-    &:hover {
-      background: @fileButtonBackgroundHover;
-      color: @fileButtonTextColor;
-    }
-  }
-  /* IE needs additional styling for input field :S */
-  @media all and (-ms-high-contrast:none) {
-    .ui.file.input > input[type="file"],
-    input[type="file"].ui.file.input {
-      padding: 0 !important;
-    }
-  }
-
-  .ui.action.file.input input[type="file"]::file-selector-button {
-    display: none;
-  }
-  .ui.form .field input[type="file"]::file-selector-button,
-  .ui.file.input input[type="file"]::file-selector-button {
-    border: none;
-    cursor: pointer;
-    padding: @padding;
-    margin-right: @fileButtonMargin;
-    background: @fileButtonBackground;
-    font-weight: @fileButtonFontWeight;
-    color: @fileButtonTextColor;
-    &:hover {
-      background: @fileButtonBackgroundHover;
-      color: @fileButtonTextColor;
-    }
-  }
-
-  .ui.form .field input[type="file"]:required:invalid,
-  .ui.file.input input[type="file"]:required:invalid {
-    color: @negativeTextColor;
-    background: @negativeBackgroundColor ;
-    border-color: @negativeBorderColor;
-  }
-
-  input[type="file"].ui.invisible.file.input,
-  .ui.invisible.file.input input[type="file"] {
-    left: -99999px;
-    position: absolute;
-  }
-
-  input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary),
-  .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary) {
-    background: @fileButtonBackgroundHover;
-    color: @hoveredTextColor;
-    &.inverted {
-      background: @fileButtonInvertedBackgroundHover;
-    }
-  }
-
-  /* this is related to existing buttons, so the button color variable is used here! */
-  & when not (@variationButtonColors = false) {
-    each(@variationButtonColors, {
-      @color: @value;
-      @h: @colors[@@color][hover];
-      @lh: @colors[@@color][lightHover];
-
-      input[type="file"].ui.file.input:focus + label.ui.@{color}.button:not(.basic):not(.tertiary),
-      .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
-        background-color: @h;
-        color: @white;
-        &.inverted when (@variationButtonInverted) {
-          background-color: @lh;
+    /* width hack for chrome/edge */
+    .ui.file.input {
+        width: 100%;
+        & input[type="file"] {
+            width: 0;
         }
-      }
-    })
-  }
+    }
 
-  & when not (@variationInputColors = false) {
-    each(@variationInputColors, {
-      @color: @value;
-      @c: @colors[@@color][color];
-      @h: @colors[@@color][hover];
+    .ui.form .field > input[type="file"],
+    .ui.file.input:not(.action) input[type="file"] {
+        padding: 0;
+    }
 
-      input[type="file"].ui.@{color}.file.input::-webkit-file-upload-button,
-      .ui.@{color}.file.input input[type="file"]::-webkit-file-upload-button {
-        background: @c;
-        color: @white;
+    .ui.action.file.input input[type="file"]::-webkit-file-upload-button {
+        display: none;
+    }
+    .ui.form .field input[type="file"]::-webkit-file-upload-button,
+    .ui.file.input input[type="file"]::-webkit-file-upload-button {
+        border: none;
+        cursor: pointer;
+        padding: @padding;
+        margin-right: @fileButtonMargin;
+        background: @fileButtonBackground;
+        font-weight: @fileButtonFontWeight;
+        color: @fileButtonTextColor;
         &:hover {
-          background: @h;
+            background: @fileButtonBackgroundHover;
+            color: @fileButtonTextColor;
         }
-      }
-      input[type="file"].ui.@{color}.file.input::-ms-browse,
-      .ui.@{color}.file.input input[type="file"]::-ms-browse {
-        background: @c;
-        color: @white;
+    }
+    & when (@supportIE) {
+        .ui.action.file.input input[type="file"]::-ms-browse {
+            display: none;
+        }
+        .ui.form .field input[type="file"]::-ms-browse,
+        .ui.file.input input[type="file"]::-ms-browse {
+            border: none;
+            cursor: pointer;
+            padding: @padding;
+            margin: 0;
+            background: @fileButtonBackground;
+            font-weight: @fileButtonFontWeight;
+            color: @fileButtonTextColor;
+            &:hover {
+                background: @fileButtonBackgroundHover;
+                color: @fileButtonTextColor;
+            }
+        }
+
+        /* IE needs additional styling for input field :S */
+        @media all and (-ms-high-contrast: none) {
+            .ui.file.input > input[type="file"],
+            input[type="file"].ui.file.input {
+                padding: 0 !important;
+            }
+        }
+    }
+
+    .ui.action.file.input input[type="file"]::file-selector-button {
+        display: none;
+    }
+    .ui.form .field input[type="file"]::file-selector-button,
+    .ui.file.input input[type="file"]::file-selector-button {
+        border: none;
+        cursor: pointer;
+        padding: @padding;
+        margin-right: @fileButtonMargin;
+        background: @fileButtonBackground;
+        font-weight: @fileButtonFontWeight;
+        color: @fileButtonTextColor;
         &:hover {
-          background: @h;
+            background: @fileButtonBackgroundHover;
+            color: @fileButtonTextColor;
         }
-      }
-      input[type="file"].ui.@{color}.file.input::file-selector-button,
-      .ui.@{color}.file.input input[type="file"]::file-selector-button {
-        background: @c;
-        color: @white;
-        &:hover {
-          background: @h;
+    }
+    & when (@variationInputInvalid) {
+        .ui.form .field input[type="file"]:required:invalid,
+        .ui.file.input input[type="file"]:required:invalid {
+            color: @negativeTextColor;
+            background: @negativeBackgroundColor;
+            border-color: @negativeBorderColor;
         }
-      }
-    })
+    }
+
+    input[type="file"].ui.invisible.file.input,
+    .ui.invisible.file.input input[type="file"] {
+        left: -99999px;
+        position: absolute;
+    }
+
+    input[type="file"].ui.file.input:focus + label.ui.button:not(.basic):not(.tertiary),
+    .ui.file.input input[type="file"]:focus + label.ui.button:not(.basic):not(.tertiary) {
+        background: @fileButtonBackgroundHover;
+        color: @hoveredTextColor;
+        &.inverted {
+            background: @fileButtonInvertedBackgroundHover;
+        }
+    }
+
+    /* this is related to existing buttons, so the button color variable is used here! */
+    & when not (@variationButtonColors = false) {
+        each(@variationButtonColors, {
+            @color: @value;
+            @h: @colors[@@color][hover];
+            @lh: @colors[@@color][lightHover];
+
+            input[type="file"].ui.file.input:focus + label.ui.@{color}.button:not(.basic):not(.tertiary),
+            .ui.file.input input[type="file"]:focus + label.ui.@{color}.button:not(.basic):not(.tertiary) {
+                background-color: @h;
+                color: @white;
+                &.inverted when (@variationButtonInverted) {
+                    background-color: @lh;
+                }
+            }
+        })
+  }
+
+    & when not (@variationInputColors = false) {
+        each(@variationInputColors, {
+            @color: @value;
+            @c: @colors[@@color][color];
+            @h: @colors[@@color][hover];
+
+            input[type="file"].ui.@{color}.file.input::-webkit-file-upload-button,
+            .ui.@{color}.file.input input[type="file"]::-webkit-file-upload-button {
+                background: @c;
+                color: @white;
+                &:hover {
+                    background: @h;
+                }
+            }
+            & when (@supportIE) {
+                input[type="file"].ui.@{color}.file.input::-ms-browse,
+                .ui.@{color}.file.input input[type="file"]::-ms-browse {
+                    background: @c;
+                    color: @white;
+                    &:hover {
+                        background: @h;
+                    }
+                }
+            }
+            input[type="file"].ui.@{color}.file.input::file-selector-button,
+            .ui.@{color}.file.input input[type="file"]::file-selector-button {
+                background: @c;
+                color: @white;
+                &:hover {
+                    background: @h;
+                }
+            }
+        })
   }
 }
 
-/*--------------------
+/* --------------------
         Size
----------------------*/
+--------------------- */
 
 .ui.input {
-  font-size: @relativeMedium;
+    font-size: @relativeMedium;
 }
 & when not (@variationInputSizes = false) {
-  each(@variationInputSizes, {
-    @s: @{value}InputSize;
-    .ui.@{value}.input {
-      font-size: @@s;
-    }
-  })
+    each(@variationInputSizes, {
+        @s: @{value}InputSize;
+        .ui.@{value}.input {
+            font-size: @@s;
+        }
+    })
 }
 
 .loadUIOverrides();

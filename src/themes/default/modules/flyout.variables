@@ -1,0 +1,100 @@
+/*******************************
+             Flyout
+*******************************/
+
+/*-------------------
+       Content
+--------------------*/
+
+/* Animation */
+@perspective: 1500px;
+@duration: 500ms;
+@easing: @defaultEasing;
+
+/* Dimmer */
+@dimmerColor: rgba(0, 0, 0, 0.4);
+@dimmerTransition: all @duration;
+
+@blurredBackgroundColor: rgba(0, 0, 0, 0.6);
+@blurredEndFilter: e("blur(5px) grayscale(0.7)");
+
+/* Color below page */
+@canvasBackground: @lightBlack;
+
+/* Shadow */
+@boxShadow: 0 0 20px @borderColor;
+@horizontalBoxShadow: @boxShadow;
+@verticalBoxShadow: @boxShadow;
+
+/* Layering */
+@bottomLayer: 1;
+@middleLayer: 2;
+@fixedLayer: 101;
+@topLayer: 102;
+@dimmerLayer: 1000;
+
+/* Actions */
+@actionBorder: 1px solid @borderColor;
+@actionBackground: @offWhite;
+@actionPadding: 1rem 1rem;
+@actionAlign: right;
+
+@buttonDistance: 0.75em;
+@buttonCenteredDistance: 0.5em;
+@buttonLeftDistance: @buttonCenteredDistance;
+
+/* Scrolling Content */
+@contentMinHeight: calc(100vh - 9.1rem);
+@scrollingContentMaxHeight: @contentMinHeight;
+@scrollingContentMaxHeightTopBottom: calc(80vh - 9.1rem);
+
+/* Close Icon */
+@closeOpacity: 0.8;
+@closeSize: 1.25em;
+@closeColor: @darkTextColor;
+
+@closeHitbox: 2.25rem;
+@closePadding: 0;
+@closeMargin: 0 0 0 0.25rem;
+@closeTop: 1.25rem;
+@closeRight: 1.5rem;
+
+/* Header */
+@headerMargin: 0;
+@headerVerticalPadding: 1.25rem;
+@headerHorizontalPadding: 1.5rem;
+@headerPadding: @headerVerticalPadding @headerHorizontalPadding;
+@headerBackground: @white;
+@headerColor: @darkTextColor;
+@headerBoxShadow: none;
+@headerBorder: 1px solid @borderColor;
+
+/* Content */
+@contentFontSize: 1em;
+@contentPadding: 1.5rem;
+@contentLineHeight: 1.4;
+@contentBackground: @white;
+
+/*-------------------
+      Variations
+--------------------*/
+
+/* Width */
+@veryThinWidth: 120px;
+@thinWidth: 200px;
+@width: 400px;
+@wideWidth: 600px;
+@veryWideWidth: 800px;
+
+/* Height */
+@height: 36px;
+
+/*-------------------
+      Inverted
+--------------------*/
+@invertedBackground: @fullBlack;
+@invertedCloseColor: @white;
+@invertedHeaderColor: @white;
+@invertedActionBackground: #191A1B;
+@invertedActionBorder: 1px solid rgba(34, 36, 38, 0.85);
+@invertedActionColor: @white;

@@ -1,10 +1,10 @@
 /*!
  * # Fomantic-UI - Reset
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
 
@@ -12,7 +12,7 @@
             Theme
 *******************************/
 
-@type    : 'global';
+@type : 'global';
 @element : 'reset';
 
 @import (multiple) '../../theme.config';
@@ -23,18 +23,21 @@
 
 /* Border-Box */
 *,
-*:before,
-*:after {
-  box-sizing: inherit;
+*::before,
+*::after {
+    box-sizing: inherit;
 }
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* iPad Input Shadows */
-input[type="text"], input[type="email"], input[type="search"], input[type="password"] {
-  -webkit-appearance: none;
-  -moz-appearance: none; /* mobile firefox too! */
+input[type="text"],
+input[type="email"],
+input[type="search"],
+input[type="password"] {
+    -webkit-appearance: none;
+    -moz-appearance: none; /* mobile firefox too! */
 }
 
 .loadUIOverrides();

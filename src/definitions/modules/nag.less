@@ -1,19 +1,18 @@
 /*!
  * # Fomantic-UI - Nag
- * http://github.com/fomantic/Fomantic-UI/
+ * https://github.com/fomantic/Fomantic-UI/
  *
  *
  * Released under the MIT license
- * http://opensource.org/licenses/MIT
+ * https://opensource.org/licenses/MIT
  *
  */
-
 
 /*******************************
             Theme
 *******************************/
 
-@type    : 'module';
+@type : 'module';
 @element : 'nag';
 
 @import (multiple) '../../theme.config';
@@ -23,59 +22,58 @@
 *******************************/
 
 .ui.nag {
-  display: none;
-  opacity: @opacity;
-  position: @position;
+    display: none;
+    opacity: @opacity;
+    position: @position;
 
-  top: @top;
-  left: 0;
-  z-index: @zIndex;
+    top: @top;
+    left: 0;
+    z-index: @zIndex;
 
-  min-height: @minHeight;
-  width: @width;
+    min-height: @minHeight;
+    width: @width;
 
-  margin: @margin;
-  padding: @padding;
+    margin: @margin;
+    padding: @padding;
 
-  background: @background;
-  box-shadow: @boxShadow;
+    background: @background;
+    box-shadow: @boxShadow;
 
-  font-size: @fontSize;
-  text-align: @textAlign;
-  color: @color;
+    font-size: @fontSize;
+    text-align: @textAlign;
+    color: @color;
 
-  border-radius: @topBorderRadius;
-  transition: @transition;
+    border-radius: @topBorderRadius;
+    transition: @transition;
 }
 
 a.ui.nag {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .ui.nag > .title {
-  display: inline-block;
-  margin: @titleMargin;
-  color: @titleColor;
+    display: inline-block;
+    margin: @titleMargin;
+    color: @titleColor;
 }
 
-
 .ui.nag > .close.icon {
-  cursor: pointer;
-  opacity: @closeOpacity;
+    cursor: pointer;
+    opacity: @closeOpacity;
 
-  position: absolute;
-  top: @closeTop;
-  right: @closeRight;
+    position: absolute;
+    top: @closeTop;
+    right: @closeRight;
 
-  font-size: @closeSize;
+    font-size: @closeSize;
 
-  margin: @closeMargin;
-  color: @closeColor;
-  transition: @closeTransition;
+    margin: @closeMargin;
+    color: @closeColor;
+    transition: @closeTransition;
 }
 
 .ui.nag:not(.overlay):not(.fixed) {
-  border-radius: @borderRadius;
+    border-radius: @borderRadius;
 }
 
 /*******************************
@@ -84,140 +82,138 @@ a.ui.nag {
 
 /* Hover */
 .ui.nag:hover {
-  background: @nagHoverBackground;
-  opacity: @nagHoverOpacity;
+    background: @nagHoverBackground;
+    opacity: @nagHoverOpacity;
 }
 
 .ui.nag > .close:hover {
-  opacity: @closeHoverOpacity;
+    opacity: @closeHoverOpacity;
 }
-
 
 /*******************************
            Variations
 *******************************/
 
 & when(@variationNagOverlay) {
-  /*--------------
-       Static
-  ---------------*/
-  .ui.overlay.nags,
-  .ui.overlay.nag {
-    position: absolute;
-    display: block;
-  }
+    /* --------------
+         Static
+    --------------- */
+    .ui.overlay.nags,
+    .ui.overlay.nag {
+        position: absolute;
+    }
 }
 
 & when(@variationNagFixed) {
-/*--------------
-     Fixed
----------------*/
-  .ui.fixed.nags,
-  .ui.fixed.nag {
-    position: fixed;
-  }
+    /* --------------
+         Fixed
+    --------------- */
+    .ui.fixed.nags,
+    .ui.fixed.nag {
+        position: fixed;
+    }
 }
 & when(@variationNagBottom) {
-/*--------------
-     Bottom
----------------*/
-  .ui.bottom.nags,
-  .ui.bottom.nag {
-    border-radius: @bottomBorderRadius;
-    top: auto;
-    bottom: @bottom;
-  }
+    /* --------------
+         Bottom
+    --------------- */
+    .ui.bottom.nags,
+    .ui.bottom.nag {
+        border-radius: @bottomBorderRadius;
+        top: auto;
+        bottom: @bottom;
+    }
 }
 
 & when(@variationNagInverted) {
-/*--------------
-     Inverted
----------------*/
+    /* --------------
+         Inverted
+    --------------- */
 
-  .ui.inverted.nags .nag,
-  .ui.inverted.nag {
-    background-color: @invertedBackground;
-    color: @darkTextColor;
-  }
-  .ui.inverted.nags .nag > .close,
-  .ui.inverted.nag > .close {
-    color: @invertedCloseColor;
-  }
-  .ui.inverted.nags .nag > .title,
-  .ui.inverted.nag > .title {
-    color: @invertedTitleColor;
-  }
+    .ui.inverted.nags .nag,
+    .ui.inverted.nag {
+        background-color: @invertedBackground;
+        color: @darkTextColor;
+    }
+    .ui.inverted.nags .nag > .close,
+    .ui.inverted.nag > .close {
+        color: @invertedCloseColor;
+    }
+    .ui.inverted.nags .nag > .title,
+    .ui.inverted.nag > .title {
+        color: @invertedTitleColor;
+    }
 }
 
 & when not (@variationNagSizes = false) {
-/*-------------------
-        Sizes
---------------------*/
-  each(@variationNagSizes, {
-    @s: @@value;
-    @sr: "@{value}Raw";
-    .ui.@{value}.nag,
-    .ui.@{value}.nags .nag {
-      font-size: @s;
-      & when (@@sr > 1.4) {
-        line-height: 1;
-      }
-    }
-  })
+    /* -------------------
+            Sizes
+    -------------------- */
+    each(@variationNagSizes, {
+        @s: @@value;
+        @sr: "@{value}Raw";
+        .ui.@{value}.nag,
+        .ui.@{value}.nags .nag {
+            font-size: @s;
+            & when (@@sr > 1.4) {
+                line-height: 1;
+            }
+        }
+    })
 }
 
-/*--------------
+/* --------------
      Colors
 -------------- */
 & when not (@variationNagColors = false) {
-  each(@variationNagColors, {
-    @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
-    @isVeryDark: @colors[@@color][isVeryDark];
+    each(@variationNagColors, {
+        @color: @value;
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
+        @isVeryDark: @colors[@@color][isVeryDark];
 
-    .ui.@{color}.nag {
-      background-color: @c;
-      & when (@isVeryDark) {
-        color: @invertedTextColor;
-      }
-    }
-    & when (@variationNagInverted) {
-      .ui.inverted.@{color}.nag {
-        background-color: @l;
-        & .title when (@isVeryDark) {
-          color: @titleColor;
+        .ui.@{color}.nag {
+            background-color: @c;
+            & when (@isVeryDark) {
+                color: @invertedTextColor;
+            }
         }
-      }
-    }
-  })
+        & when (@variationNagInverted) {
+            .ui.inverted.@{color}.nag {
+                background-color: @l;
+                & .title when (@isVeryDark) {
+                    color: @titleColor;
+                }
+            }
+        }
+    })
 }
 
 & when (@variationNagGroups) {
-/*******************************
-           Groups
-*******************************/
-  .ui.nags {
-    top: @top;
-    left: 0;
-    width: @width;
-  }
-  .ui.ui.nags .nag {
-    border-radius: @groupedBorderRadius;
-  }
-  .ui.nags:not(.bottom) .nag:last-child {
-    border-radius: @topBorderRadius;
-  }
-  & when(@variationNagBottom) {
-    .ui.bottom.nags .nag:first-child {
-      border-radius: @bottomBorderRadius;
+    /*******************************
+               Groups
+    *******************************/
+    .ui.nags {
+        top: @top;
+        left: 0;
+        width: @width;
     }
-  }
-  .ui.nags:not(.fixed):not(.overlay) .nag:first-child {
-    border-radius: @bottomBorderRadius;
-  }
-  .ui.nags:not(.fixed):not(.overlay) .nag:only-child {
-    border-radius: @borderRadius;
-  }
+    .ui.ui.nags .nag {
+        border-radius: @groupedBorderRadius;
+    }
+    .ui.nags:not(.bottom) .nag:last-child {
+        border-radius: @topBorderRadius;
+    }
+    & when(@variationNagBottom) {
+        .ui.bottom.nags .nag:first-child {
+            border-radius: @bottomBorderRadius;
+        }
+    }
+    .ui.nags:not(.fixed):not(.overlay) .nag:first-child {
+        border-radius: @bottomBorderRadius;
+    }
+    .ui.nags:not(.fixed):not(.overlay) .nag:only-child {
+        border-radius: @borderRadius;
+    }
 }
 .loadUIOverrides();

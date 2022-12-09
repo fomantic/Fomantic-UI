@@ -1,5 +1,5 @@
 /*!
- * # Fomantic-UI 2.8.8 - Sticky
+ * # Fomantic-UI 2.9.0 - Sticky
  * http://github.com/fomantic/Fomantic-UI/
  *
  *
@@ -53,7 +53,7 @@ $.fn.sticky = function(parameters) {
 
         $module               = $(this),
         $window               = $(window),
-        $scroll               = $(settings.scrollContext),
+        $scroll               = [window,document].indexOf(settings.scrollContext) < 0 ? $(document).find(settings.scrollContext) : $(settings.scrollContext),
         $container,
         $context,
 
@@ -139,7 +139,7 @@ $.fn.sticky = function(parameters) {
 
         determineContainer: function() {
           if(settings.container) {
-            $container = $(settings.container);
+            $container = [window,document].indexOf(settings.container) < 0 ? $(document).find(settings.container) : $(settings.container);
           }
           else {
             $container = $module.offsetParent();
@@ -148,14 +148,13 @@ $.fn.sticky = function(parameters) {
 
         determineContext: function() {
           if(settings.context) {
-            $context = $(settings.context);
+            $context = [window,document].indexOf(settings.context) < 0 ? $(document).find(settings.context) : $(settings.context);
           }
           else {
             $context = $container;
           }
           if($context.length === 0) {
             module.error(error.invalidContext, settings.context, $module);
-            return;
           }
         },
 
@@ -166,7 +165,6 @@ $.fn.sticky = function(parameters) {
           if(module.cache.element.height > module.cache.context.height) {
             module.reset();
             module.error(error.elementSize, $module);
-            return;
           }
         },
 
@@ -317,13 +315,8 @@ $.fn.sticky = function(parameters) {
               direction = 'down'
             ;
             scroll = scroll || $scroll.scrollTop();
-            if(module.lastScroll !== undefined) {
-              if(module.lastScroll < scroll) {
-                direction = 'down';
-              }
-              else if(module.lastScroll > scroll) {
+            if(module.lastScroll && module.lastScroll > scroll) {
                 direction = 'up';
-              }
             }
             return direction;
           },
@@ -371,7 +364,7 @@ $.fn.sticky = function(parameters) {
           lastScroll: function() {
             delete module.lastScroll;
           },
-          elementScroll: function(scroll) {
+          elementScroll: function() {
             delete module.elementScroll;
           },
           minimumSize: function() {
@@ -393,14 +386,26 @@ $.fn.sticky = function(parameters) {
           },
           containerSize: function() {
             var
-              tagName = $container.get(0).tagName
+              tagName = $container[0].tagName
             ;
-            if(tagName === 'HTML' || tagName == 'body') {
+            if(tagName === 'HTML' || tagName === 'body') {
               // this can trigger for too many reasons
               //module.error(error.container, tagName, $module);
               module.determineContainer();
             }
             else {
+              var tallestHeight = Math.max(module.cache.context.height, module.cache.element.height);
+              if(tallestHeight - $container.outerHeight() > settings.jitter) {
+                module.debug('Context is taller than container. Specifying exact height for container', module.cache.context.height);
+                $container.css({
+                  height: tallestHeight,
+                });
+              }
+              else {
+                $container.css({
+                  height: '',
+                });
+              }
               if( Math.abs($container.outerHeight() - module.cache.context.height) > settings.jitter) {
                 module.debug('Context has padding, specifying exact height for container', module.cache.context.height);
                 $container.css({
@@ -467,9 +472,9 @@ $.fn.sticky = function(parameters) {
           }
         },
 
-        stick: function(scroll) {
+        stick: function(scrollPosition) {
           var
-            cachedPosition = scroll || $scroll.scrollTop(),
+            cachedPosition = scrollPosition || $scroll.scrollTop(),
             cache          = module.cache,
             fits           = cache.fits,
             sameHeight     = cache.sameHeight,
@@ -499,7 +504,7 @@ $.fn.sticky = function(parameters) {
                 module.bindBottom();
               }
               else if(scroll.top > element.top) {
-                if( (element.height + scroll.top - elementScroll) >= context.bottom ) {
+                if( (element.height + scroll.top - elementScroll) >= context.bottom && element.height < context.height) {
                   module.debug('Initial element position is bottom of container');
                   module.bindBottom();
                 }
@@ -578,6 +583,9 @@ $.fn.sticky = function(parameters) {
         bindTop: function() {
           module.debug('Binding element to top of parent container');
           module.remove.offset();
+          if(settings.setSize) {
+            module.set.size();
+          }
           $module
             .css({
               left         : '',
@@ -595,6 +603,9 @@ $.fn.sticky = function(parameters) {
         bindBottom: function() {
           module.debug('Binding element to bottom of parent container');
           module.remove.offset();
+          if(settings.setSize) {
+            module.set.size();
+          }
           $module
             .css({
               left         : '',
@@ -816,7 +827,7 @@ $.fn.sticky = function(parameters) {
             response
           ;
           passedArguments = passedArguments || queryArguments;
-          context         = element         || context;
+          context         = context         || element;
           if(typeof query == 'string' && object !== undefined) {
             query    = query.split(/[\. ]/);
             maxDepth = query.length - 1;
@@ -938,7 +949,7 @@ $.fn.sticky.settings = {
 
   error         : {
     container      : 'Sticky element must be inside a relative container',
-    visible        : 'Element is hidden, you must call refresh after element becomes visible. Use silent setting to surpress this warning in production.',
+    visible        : 'Element is hidden, you must call refresh after element becomes visible. Use silent setting to suppress this warning in production.',
     method         : 'The method you called is not defined.',
     invalidContext : 'Context specified does not exist',
     elementSize    : 'Sticky element is larger than its container, cannot create sticky.'

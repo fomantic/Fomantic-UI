@@ -48,7 +48,7 @@
 @contentFontSize: 1em;
 @contentPadding: 1.5rem;
 @contentLineHeight: 1.4;
-@contentBackground: #FFFFFF;
+@contentBackground: @white;
 
 /* Image / Description */
 @imageWidth: '';
@@ -68,6 +68,7 @@
 
 @buttonDistance: 0.75em;
 @buttonCenteredDistance: 0.5em;
+@buttonLeftDistance: @buttonCenteredDistance;
 
 /* Inner Close Position (Tablet/Mobile) */
 @innerCloseTop: (@headerVerticalPadding - @closeHitBoxOffset + (@lineHeight - 1em));
@@ -248,7 +249,7 @@
 /*-------------------
       Inverted
 --------------------*/
-@invertedBackground: rgba(0,0,0,.9);
+@invertedBackground: @fullBlack;
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
 @invertedHeaderBackgroundColor: @darkTextColor;

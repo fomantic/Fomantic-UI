@@ -2,31 +2,39 @@ name: Nightly
 on:
   schedule:
   - cron: 00 23 * * *
+permissions:
+  contents: read
+
 jobs:
   publish:
     name: Build nightly distribution
     runs-on: ubuntu-latest
     if: github.repository == 'fomantic/Fomantic-UI'
+    outputs:
+      shouldPublish: ${{ steps.nightly-version.outputs.shouldPublish }}
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: develop
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
       with:
-        node-version: 14
+        node-version: 16
         registry-url: https://registry.npmjs.org/
     - name: pre-setup
       run: sh ./scripts/preinstall.sh
     - name: install dependencies
-      run: npm install --ignore-scripts
+      run: yarn
     - name: update nightly version
+      id: nightly-version
       run: node ./scripts/nightly-version.js
     - name: fomantic install & build
-      run: npx gulp install
+      if: ${{ steps.nightly-version.outputs.shouldPublish == 'yes' }}
+      run: yarn gulp install
     - name: publish to npm
+      if: ${{ steps.nightly-version.outputs.shouldPublish == 'yes' }}
+      env:
+        CI: true
+        NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTOMATION }}
       run: |
         npm config set //registry.npmjs.org/:_authToken=$NODE_AUTH_TOKEN
         npm publish --tag nightly
-      env:
-        NODE_AUTH_TOKEN: ${{secrets.NPM_AUTOMATION}}
-        CI: true

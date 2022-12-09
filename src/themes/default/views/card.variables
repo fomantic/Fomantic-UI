@@ -188,6 +188,14 @@
   @floatingShadowHover
 ;
 
+/* Basic Raised */
+@basicRaisedShadow:
+  @floatingShadow
+;
+@basicRaisedShadowHover:
+  @floatingShadowHover
+;
+
 /* Card Count */
 @wideCardSpacing: 1em;
 @cardSpacing: 0.75em;
