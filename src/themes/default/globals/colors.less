@@ -481,9 +481,9 @@
         bright         : @blackBright;
         brightHover    : @blackBrightHover;
         isDark         : true;
-        isVeryDark     : true;
+        isVeryDark     : true; // stylelint-disable-line no-extra-semicolons, fix GH-1832 - workaround for wikimedia/less.php parser
     };
-}
+};
 
 /***********************************************************
   Color Mapping Base for form components to iterate
@@ -613,7 +613,7 @@
     @success: { // stylelint-disable-line indentation
         color: @positiveColor;
     };
-    @warning: { // stylelint-disable-line indentation
+    @warning: { // stylelint-disable-line no-extra-semicolons, fix GH-1832 - workaround for wikimedia/less.php parser, indentation
         color: @warningColor;
     };
-}
+};
