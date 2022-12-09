@@ -14,7 +14,6 @@ module.exports = {
         'no-descending-specificity': null, // 11532 errors
         'rule-empty-line-before': null, // 1609 errors
         'property-case': null, // 338 errors
-        'max-empty-lines': null, // 279 errors
         'string-quotes': null, // 249 errors
         'declaration-empty-line-before': null, // 229 errors
         'no-duplicate-selectors': null, // 212 errors

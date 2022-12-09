@@ -8,8 +8,6 @@
  *
  */
 
-
-
 /*******************************
             Theme
 *******************************/
@@ -49,7 +47,6 @@
 .ui.sidebar > * {
     backface-visibility: hidden;
 }
-
 
 /* --------------
    Direction
@@ -91,7 +88,6 @@
     }
 }
 
-
 /* --------------
      Pushable
 --------------- */
@@ -124,7 +120,6 @@ body.pushable {
 .pushable:not(body) > .pusher::after {
     position: absolute;
 }
-
 
 /* --------------
      Fixed
@@ -282,7 +277,6 @@ body.pushable > .pusher {
        iOS
 --------------- */
 
-
 /*******************************
           Variations
 *******************************/
@@ -389,8 +383,6 @@ body.pushable > .pusher {
     }
 }
 
-
-
 /*******************************
           Animations
 *******************************/
@@ -461,7 +453,6 @@ body.pushable > .pusher {
         transform: none !important;
     }
 }
-
 
 & when (@variationSidebarPush) {
     /* --------------
@@ -616,7 +607,6 @@ body.pushable > .pusher {
         transition: transform @duration @easing;
         z-index: @topLayer;
     }
-
 
     & when (@variationSidebarLeft) {
         .ui.left.scale.down.sidebar {

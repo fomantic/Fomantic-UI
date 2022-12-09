@@ -56,7 +56,6 @@
     -webkit-tap-highlight-color: @tapColor;
 }
 
-
 /*******************************
             States
 *******************************/
@@ -1042,7 +1041,6 @@
         box-shadow: @labeledIconRightShadow;
     }
 
-
     .ui.labeled.icon.buttons > .button > .icon::before,
     .ui.labeled.icon.button > .icon::before,
     .ui.labeled.icon.buttons > .button > .icon::after,
@@ -1178,7 +1176,6 @@
     /* -------------------
            Attached
     -------------------- */
-
 
     /* Singular */
     .ui.attached.button {
@@ -1669,8 +1666,6 @@
             .ui.tertiary.@{color}.button {
                 background: transparent;
 
-
-
                 & when (@tertiaryWithUnderline = true) {
                     box-shadow: inset 0 -@tertiaryLineHeight 0 @ty;
                 }
@@ -1690,8 +1685,6 @@
             .ui.tertiary.@{color}.buttons button:hover,
             .ui.tertiary.@{color}.button:hover {
 
-
-
                 & when (@tertiaryHoverWithUnderline = true) {
                     box-shadow: inset 0 -@tertiaryLineHeight 0 @tyh;
                 }
@@ -1704,16 +1697,12 @@
                     box-shadow: none;
                 }
 
-
                 color: @tyh;
             }
 
             .ui.tertiary.@{color}.buttons .button:focus,
             .ui.tertiary.@{color}.buttons .tertiary.button:focus,
             .ui.tertiary.@{color}.button:focus {
-
-
-
 
                 & when (@tertiaryFocusWithUnderline = true) {
                     box-shadow: inset 0 -@tertiaryLineHeight 0 @tyf;
@@ -1727,7 +1716,6 @@
                     box-shadow: none;
                 }
 
-
                 color: @tyf;
             }
 
@@ -1737,8 +1725,6 @@
             .ui.tertiary.@{color}.buttons .button:active,
             .ui.tertiary.@{color}.buttons .tertiary.button:active,
             .ui.tertiary.@{color}.button:active {
-
-
 
                 & when (@tertiaryActiveWithUnderline = true) {
                     box-shadow: inset 0 -@tertiaryLineHeight 0 @tya;
@@ -1844,7 +1830,6 @@
         }
     })
 }
-
 
 & when (@variationButtonGroups) {
     /*******************************
