@@ -51,9 +51,9 @@
 *******************************/
 
 & when (@variationRevealSlide) {
-    /*--------------
+    /* --------------
           Slide
-    ---------------*/
+    --------------- */
 
     .ui.slide.reveal {
         position: relative !important;
@@ -130,9 +130,9 @@
 }
 
 & when (@variationRevealFade) {
-    /*--------------
+    /* --------------
           Fade
-    ---------------*/
+    --------------- */
 
     .ui.fade.reveal > .visible.content {
         opacity: 1;
@@ -144,9 +144,9 @@
 }
 
 & when (@variationRevealMove) {
-    /*--------------
+    /* --------------
           Move
-    ---------------*/
+    --------------- */
 
     .ui.move.reveal {
         position: relative !important;
@@ -191,9 +191,9 @@
 
 
 & when (@variationRevealRotate) {
-    /*--------------
+    /* --------------
          Rotate
-    ---------------*/
+    --------------- */
 
     .ui.rotate.reveal > .visible.content {
         transition-duration: @transitionDuration;
@@ -253,26 +253,26 @@
            Variations
 *******************************/
 
-/*--------------
+/* --------------
      Visible
----------------*/
+--------------- */
 
 .ui.visible.reveal {
     overflow: visible;
 }
 
-/*--------------
+/* --------------
      Instant
----------------*/
+--------------- */
 
 .ui.instant.reveal > .content {
     transition-delay: 0s !important;
 }
 
 
-/*--------------
+/* --------------
      Sizing
----------------*/
+--------------- */
 
 .ui.reveal > .content {
     font-size: @medium;

@@ -43,9 +43,9 @@
 }
 
 & when (@variationHeaderSub) {
-    /*--------------
+    /* --------------
        Sub Header
-    ---------------*/
+    --------------- */
 
     .ui.header .sub.header {
         display: block;
@@ -58,9 +58,9 @@
     }
 }
 
-/*--------------
+/* --------------
       Icon
----------------*/
+--------------- */
 
 .ui.header > .icons,
 .ui.header > i.icon {
@@ -79,9 +79,9 @@
     margin-right: @iconMargin;
 }
 
-/*-------------------
+/* -------------------
         Image
---------------------*/
+-------------------- */
 
 .ui.header > .image:not(.icon),
 .ui.header > img {
@@ -96,9 +96,9 @@
     margin-right: @imageMargin;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.header .content {
     display: inline-block;
@@ -121,9 +121,9 @@
 }
 
 
-/*--------------
+/* --------------
  Loose Coupling
----------------*/
+--------------- */
 
 .ui.header .ui.label {
     font-size: @labelSize;
@@ -143,9 +143,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
      Page
----------------*/
+--------------- */
 & when not (@variationHeaderTags = false) {
     each(@variationHeaderTags, {
         @sf: @{value}SubHeaderFontSize;
@@ -161,9 +161,9 @@
     })
 }
 
-/*--------------
+/* --------------
  Content Heading
----------------*/
+--------------- */
 
 & when not (@variationHeaderSizes = false) {
     each(@variationHeaderSizes, {
@@ -188,9 +188,9 @@
 }
 
 & when (@variationHeaderSub) {
-    /*--------------
+    /* --------------
        Sub Heading
-    ---------------*/
+    --------------- */
 
     .ui.sub.header {
         padding: 0;
@@ -203,9 +203,9 @@
 }
 
 & when (@variationHeaderIcon) {
-    /*-------------------
+    /* -------------------
             Icon
-    --------------------*/
+    -------------------- */
 
     .ui.icon.header {
         display: inline-block;
@@ -280,9 +280,9 @@
 *******************************/
 
 & when (@variationHeaderInverted) {
-    /*-------------------
+    /* -------------------
           Inverted
-    --------------------*/
+    -------------------- */
 
     .ui.inverted.header {
         color: @invertedColor;
@@ -307,9 +307,9 @@
 }
 
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 & when not (@variationHeaderColors = false) {
     each(@variationHeaderColors, {
         @color: @value;
@@ -344,9 +344,9 @@
 }
 
 & when (@variationHeaderAligned) {
-    /*-------------------
+    /* -------------------
            Aligned
-    --------------------*/
+    -------------------- */
 
     .ui.left.aligned.header {
         text-align: left;
@@ -372,9 +372,9 @@
 }
 
 & when (@variationHeaderFloated) {
-    /*-------------------
+    /* -------------------
            Floated
-    --------------------*/
+    -------------------- */
 
     .ui.floated.header,
     .ui[class*="left floated"].header {
@@ -390,9 +390,9 @@
 }
 
 & when (@variationHeaderFitted) {
-    /*-------------------
+    /* -------------------
            Fitted
-    --------------------*/
+    -------------------- */
 
     .ui.fitted.header {
         padding: 0;
@@ -400,9 +400,9 @@
 }
 
 & when (@variationHeaderDividing) {
-    /*-------------------
+    /* -------------------
           Dividing
-    --------------------*/
+    -------------------- */
 
     .ui.dividing.header {
         padding-bottom: @dividedBorderPadding;
@@ -424,9 +424,9 @@
 }
 
 & when (@variationHeaderBlock) {
-    /*-------------------
+    /* -------------------
             Block
-    --------------------*/
+    -------------------- */
 
     .ui.block.header {
         background: @blockBackground;
@@ -449,9 +449,9 @@
 }
 
 & when (@variationHeaderAttached) {
-    /*-------------------
+    /* -------------------
            Attached
-    --------------------*/
+    -------------------- */
 
     .ui.attached.header {
         background: @attachedBackground;
@@ -490,9 +490,9 @@
   }
 }
 
-/*-------------------
+/* -------------------
         Sizing
---------------------*/
+-------------------- */
 
 .ui.header:not(h1):not(h2):not(h3):not(h4):not(h5):not(h6) {
     font-size: @mediumFontSize;

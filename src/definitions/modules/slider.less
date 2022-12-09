@@ -85,9 +85,9 @@
 *******************************/
 
 & when (@variationSliderDisabled) {
-    /*--------------
+    /* --------------
          Disabled
-    ---------------*/
+    --------------- */
 
     .ui.disabled.slider:not(.checkbox) {
         opacity: @disabledOpactiy;
@@ -103,9 +103,9 @@
 }
 
 & when (@variationSliderReversed) {
-    /*--------------
+    /* --------------
         Reversed
-    ---------------*/
+    --------------- */
 
     .ui.reversed.slider .inner .track-fill {
         left: auto;
@@ -133,9 +133,9 @@
 *******************************/
 
 & when (@variationSliderVertical) {
-    /*--------------
+    /* --------------
         Vertical
-    ---------------*/
+    --------------- */
 
     .ui.vertical.slider {
         height: 100%;
@@ -174,9 +174,9 @@
 }
 
 & when (@variationSliderLabeled) {
-    /*--------------
+    /* --------------
         Labeled
-    ---------------*/
+    --------------- */
 
     .ui.labeled.slider > .labels {
         height: @labelHeight;
@@ -260,9 +260,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Hover
----------------*/
+--------------- */
 
 .ui.hover.slider .inner .thumb {
     opacity: @hoverVarOpacity;
@@ -275,9 +275,9 @@
 
 
 & when (@variationSliderInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.slider .inner .track-fill {
         background-color: @invertedTrackFillColor;
@@ -288,9 +288,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 & when not (@variationSliderColors = false) {
     each(@variationSliderColors, {
         @color: @value;
@@ -334,9 +334,9 @@
 }
 
 & when (@variationSliderBasic) {
-    /*--------------
+    /* --------------
          Basic
-    ---------------*/
+    --------------- */
 
     /* Standard */
     .ui.slider.basic .inner .thumb {
@@ -347,9 +347,9 @@
     }
 
     & when (@variationSliderInverted) {
-        /*--------------
+        /* --------------
           Basic Inverted
-        ---------------*/
+        --------------- */
 
         /* Standard */
         .ui.inverted.slider.basic .inner .thumb {
@@ -362,9 +362,9 @@
 }
 
 
-/*--------------
+/* --------------
      Sizing
----------------*/
+--------------- */
 
 & when not (@variationSliderSizes = false) {
     each(@variationSliderSizes, {

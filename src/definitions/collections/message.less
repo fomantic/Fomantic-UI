@@ -42,9 +42,9 @@
 }
 
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 /* Header */
 .ui.message .header {
@@ -150,9 +150,9 @@
             States
 *******************************/
 
-/*--------------
+/* --------------
     Visible
----------------*/
+--------------- */
 
 .ui.visible.visible.visible.visible.message {
     display: block;
@@ -162,9 +162,9 @@
     display: flex;
 }
 
-/*--------------
+/* --------------
      Hidden
----------------*/
+--------------- */
 
 .ui.hidden.hidden.hidden.hidden.message {
     display: none;
@@ -191,9 +191,9 @@
 }
 
 & when (@variationMessageCompact) {
-    /*--------------
+    /* --------------
         Compact
-    ---------------*/
+    --------------- */
 
     .ui.compact.message {
         display: inline-block;
@@ -205,9 +205,9 @@
 }
 
 & when (@variationMessageAttached) {
-    /*--------------
+    /* --------------
         Attached
-    ---------------*/
+    --------------- */
 
     .ui.attached.message {
         margin-bottom: @attachedYOffset;
@@ -236,9 +236,9 @@
 }
 
 & when (@variationMessageIcon) {
-    /*--------------
+    /* --------------
           Icon
-    ---------------*/
+    --------------- */
 
     .ui.icon.message {
         display: flex;
@@ -271,9 +271,9 @@
 }
 
 & when (@variationMessageFloating) {
-    /*--------------
+    /* --------------
         Floating
-    ---------------*/
+    --------------- */
 
     .ui.floating.message {
         box-shadow: @floatingBoxShadow;
@@ -281,13 +281,13 @@
 }
 
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 & when not (@variationMessageConsequences = false) {
 
     @consequences: {
@@ -430,9 +430,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.message {
     font-size: @relativeMedium;

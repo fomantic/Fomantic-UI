@@ -23,9 +23,9 @@
             Standard
 *******************************/
 
-/*--------------
+/* --------------
       Menu
----------------*/
+--------------- */
 
 .ui.menu {
     display: flex;
@@ -55,9 +55,9 @@
 }
 
 
-/*--------------
+/* --------------
     Sub-Menu
----------------*/
+--------------- */
 
 .ui.menu .menu {
     margin: 0;
@@ -67,9 +67,9 @@
     display: flex;
 }
 
-/*--------------
+/* --------------
       Item
----------------*/
+--------------- */
 
 .ui.menu:not(.vertical) .item {
     display: flex;
@@ -109,9 +109,9 @@
     background: @dividerBackground;
 }
 
-/*--------------
+/* --------------
   Text Content
----------------*/
+--------------- */
 
 .ui.menu .text.item > *,
 .ui.menu .item > a:not(.ui),
@@ -126,9 +126,9 @@
     margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
       Icons
----------------*/
+--------------- */
 
 .ui.menu .item > i.icon {
     opacity: @iconOpacity;
@@ -136,9 +136,9 @@
     margin: @iconMargin;
 }
 
-/*--------------
+/* --------------
      Button
----------------*/
+--------------- */
 
 .ui.menu:not(.vertical) .item > .button {
     position: relative;
@@ -149,9 +149,9 @@
     font-size: @buttonSize;
 }
 
-/*----------------
+/* ----------------
  Grid / Container
------------------*/
+----------------- */
 
 .ui.menu >  .grid,
 .ui.menu > .container {
@@ -160,9 +160,9 @@
     flex-direction: inherit;
 }
 
-/*--------------
+/* --------------
      Inputs
----------------*/
+--------------- */
 
 .ui.menu .item > .input {
     width: 100%;
@@ -179,9 +179,9 @@
 }
 
 
-/*--------------
+/* --------------
      Header
----------------*/
+--------------- */
 
 .ui.menu .header.item,
 .ui.vertical.menu .header.item {
@@ -199,9 +199,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Dropdowns
----------------*/
+--------------- */
 
 
 /* Dropdown Icon */
@@ -322,9 +322,9 @@
     width: 100%;
 }
 
-/*--------------
+/* --------------
      Labels
----------------*/
+--------------- */
 
 .ui.menu .item > .label:not(.floating) {
     margin-left: @labelTextMargin;
@@ -349,9 +349,9 @@
     height: @imageLabelHeight;
 }
 
-/*--------------
+/* --------------
      Images
----------------*/
+--------------- */
 
 .ui.menu .item > img:not(.ui) {
     display: inline-block;
@@ -371,9 +371,9 @@
           Coupling
 *******************************/
 
-/*--------------
+/* --------------
      List
----------------*/
+--------------- */
 
 /* Menu divider shouldn't apply */
 .ui.menu .list .item::before {
@@ -381,9 +381,9 @@
 }
 
 & when (@variationMenuVertical) {
-    /*--------------
+    /* --------------
          Sidebar
-    ---------------*/
+    --------------- */
 
     /* Show vertical dividers below last */
 
@@ -396,9 +396,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Container
----------------*/
+--------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
     .ui.menu > .ui.container {
@@ -422,9 +422,9 @@
              States
 *******************************/
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 
 .ui.link.menu .item:hover,
@@ -437,9 +437,9 @@
 }
 
 
-/*--------------
+/* --------------
      Pressed
----------------*/
+--------------- */
 
 .ui.link.menu .item:active,
 .ui.menu .link.item:active,
@@ -449,9 +449,9 @@
 }
 
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.menu .active.item  {
     background: @activeItemBackground;
@@ -463,9 +463,9 @@
     opacity: @activeIconOpacity;
 }
 
-/*--------------
+/* --------------
   Active Hover
----------------*/
+--------------- */
 
 .ui.menu .active.item:hover,
 .ui.vertical.menu .active.item:hover {
@@ -474,9 +474,9 @@
 }
 
 
-/*--------------
+/* --------------
      Disabled
----------------*/
+--------------- */
 
 .ui.ui.menu .item.disabled {
     cursor: default;
@@ -490,9 +490,9 @@
              Types
 *******************************/
 
-/*------------------
+/* ------------------
 Floated Menu / Item
--------------------*/
+------------------- */
 
 /* Left Floated */
 .ui.menu:not(.vertical) .left.item,
@@ -535,9 +535,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuVertical) {
-    /*--------------
+    /* --------------
         Vertical
-    ---------------*/
+    --------------- */
 
     .ui.vertical.menu {
         display: block;
@@ -546,7 +546,7 @@ Floated Menu / Item
         box-shadow: @verticalBoxShadow;
     }
 
-    /*--- Item ---*/
+    /* --- Item --- */
     .ui.vertical.menu .item {
         display: block;
         background: @verticalItemBackground;
@@ -560,13 +560,13 @@ Floated Menu / Item
         border-radius: 0 0 @borderRadius @borderRadius;
     }
 
-    /*--- Label ---*/
+    /* --- Label --- */
     .ui.vertical.menu .item > .label {
         float: right;
         text-align: center;
     }
 
-    /*--- Icon ---*/
+    /* --- Icon --- */
     .ui.vertical.menu .item > i.icon,
     .ui.vertical.menu .item > i.icons {
         width: @iconWidth;
@@ -579,7 +579,7 @@ Floated Menu / Item
     }
 
 
-    /*--- Border ---*/
+    /* --- Border --- */
     .ui.vertical.menu .item::before {
         position: absolute;
         content: '';
@@ -595,7 +595,7 @@ Floated Menu / Item
     }
 
 
-    /*--- Sub Menu ---*/
+    /* --- Sub Menu --- */
     .ui.vertical.menu .item > .menu {
         margin: @subMenuMargin;
     }
@@ -639,9 +639,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuTabular) {
-    /*--------------
+    /* --------------
          Tabular
-    ---------------*/
+    --------------- */
 
     .ui.tabular.menu {
         border-radius: 0;
@@ -797,9 +797,9 @@ Floated Menu / Item
 
 
 & when (@variationMenuPagination) {
-    /*--------------
+    /* --------------
        Pagination
-    ---------------*/
+    --------------- */
 
     .ui.pagination.menu {
         margin: 0;
@@ -835,9 +835,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuSecondary) {
-    /*--------------
+    /* --------------
        Secondary
-    ---------------*/
+    --------------- */
 
     .ui.secondary.menu {
         background: @secondaryBackground;
@@ -932,9 +932,9 @@ Floated Menu / Item
         }
     }
     & when (@variationMenuVertical) {
-        /*---------------------
+        /* ---------------------
            Secondary Vertical
-        -----------------------*/
+        ----------------------- */
 
         /* Sub Menu */
         .ui.vertical.secondary.menu .item:not(.dropdown) > .menu {
@@ -968,9 +968,9 @@ Floated Menu / Item
     }
 
     & when (@variationMenuPointing) {
-        /*---------------------
+        /* ---------------------
            Secondary Pointing
-        -----------------------*/
+        ----------------------- */
 
         .ui.secondary.pointing.menu {
             margin-left: 0;
@@ -1101,9 +1101,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuText) {
-    /*--------------
+    /* --------------
         Text Menu
-    ---------------*/
+    --------------- */
 
     .ui.text.menu {
         background: none transparent;
@@ -1145,12 +1145,12 @@ Floated Menu / Item
         margin: 0;
     }
 
-    /*--- fluid text ---*/
+    /* --- fluid text --- */
     .ui.text.item.menu .item {
         margin: 0;
     }
     & when (@variationMenuVertical) {
-        /*--- vertical text ---*/
+        /* --- vertical text --- */
         .ui.vertical.text.menu {
             margin: @textVerticalMenuMargin;
         }
@@ -1183,13 +1183,13 @@ Floated Menu / Item
         }
     }
 
-    /*--- hover ---*/
+    /* --- hover --- */
     .ui.text.menu .item:hover {
         opacity: 1;
         background-color: transparent;
     }
 
-    /*--- active ---*/
+    /* --- active --- */
     .ui.text.menu .active.item {
         background-color: transparent;
         border: none;
@@ -1198,7 +1198,7 @@ Floated Menu / Item
         color: @textMenuActiveItemColor;
     }
 
-    /*--- active hover ---*/
+    /* --- active hover --- */
     .ui.text.menu .active.item:hover {
         background-color: transparent;
     }
@@ -1232,9 +1232,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuIcon) {
-    /*--------------
+    /* --------------
         Icon Only
-    ---------------*/
+    --------------- */
 
     & when (@variationMenuVertical) {
         /* Vertical Menu */
@@ -1287,9 +1287,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuLabeled) {
-    /*--------------
+    /* --------------
        Labeled Icon
-    ---------------*/
+    --------------- */
 
     /* Menu */
     .ui.labeled.icon.menu {
@@ -1323,9 +1323,9 @@ Floated Menu / Item
 *******************************/
 
 & when (@variationMenuStackable) {
-    /*--------------
+    /* --------------
         Stackable
-    ---------------*/
+    --------------- */
 
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.stackable.menu {
@@ -1371,9 +1371,9 @@ Floated Menu / Item
     }
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 & when not (@variationMenuColors = false) {
     each(@variationMenuColors, {
         @color: @value;
@@ -1393,9 +1393,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.menu {
         border: @invertedBorder;
@@ -1413,7 +1413,7 @@ Floated Menu / Item
         background: @invertedSubMenuBackground;
     }
 
-    /*--- Border ---*/
+    /* --- Border --- */
     .ui.inverted.menu .item::before {
         background: @invertedDividerBackground;
     }
@@ -1441,7 +1441,7 @@ Floated Menu / Item
         color: @invertedDisabledTextColor;
     }
 
-    /*--- Hover ---*/
+    /* --- Hover --- */
     .ui.link.inverted.menu .item:hover,
     .ui.inverted.menu .dropdown.item:hover,
     .ui.inverted.menu .link.item:hover,
@@ -1457,14 +1457,14 @@ Floated Menu / Item
         }
     }
 
-    /*--- Pressed ---*/
+    /* --- Pressed --- */
     .ui.inverted.menu a.item:active,
     .ui.inverted.menu .link.item:active{
         background: @invertedMenuPressedBackground;
         color: @invertedMenuPressedColor;
     }
 
-    /*--- Active ---*/
+    /* --- Active --- */
     .ui.inverted.menu .active.item {
         background: @invertedActiveBackground;
         color: @invertedActiveColor !important;
@@ -1484,7 +1484,7 @@ Floated Menu / Item
         }
     }
 
-    /*--- Active Hover ---*/
+    /* --- Active Hover --- */
     .ui.inverted.menu .active.item:hover {
         background: @invertedActiveHoverBackground;
         color: @invertedActiveHoverColor !important;
@@ -1497,9 +1497,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuFloated) {
-    /*--------------
+    /* --------------
          Floated
-    ---------------*/
+    --------------- */
 
     .ui.floated.menu {
         float: left;
@@ -1525,9 +1525,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
     & when not (@variationMenuColors = false) {
         each(@variationMenuColors, {
             @color: @value;
@@ -1562,9 +1562,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuFitted) {
-    /*--------------
+    /* --------------
          Fitted
-    ---------------*/
+    --------------- */
 
     .ui.fitted.menu .item,
     .ui.fitted.menu .item .menu .item,
@@ -1586,9 +1586,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuBorderless) {
-    /*--------------
+    /* --------------
        Borderless
-    ---------------*/
+    --------------- */
 
     .ui.borderless.menu .item::before,
     .ui.borderless.menu .item .menu .item::before,
@@ -1598,9 +1598,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuCompact) {
-    /*-------------------
+    /* -------------------
            Compact
-    --------------------*/
+    -------------------- */
 
     .ui.compact.menu {
         display: inline-flex;
@@ -1633,9 +1633,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuFluid) {
-    /*-------------------
+    /* -------------------
             Fluid
-    --------------------*/
+    -------------------- */
 
     .ui.menu.fluid,
     .ui.vertical.menu.fluid {
@@ -1644,9 +1644,9 @@ Floated Menu / Item
 }
 
 
-/*-------------------
+/* -------------------
       Evenly Sized
---------------------*/
+-------------------- */
 
 .ui.item.menu,
 .ui.item.menu .item {
@@ -1703,9 +1703,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuFixed) {
-    /*--------------
+    /* --------------
          Fixed
-    ---------------*/
+    --------------- */
 
     .ui.menu.fixed {
         position: fixed;
@@ -1770,9 +1770,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuPointing) {
-    /*-------------------
+    /* -------------------
            Pointing
-    --------------------*/
+    -------------------- */
 
     .ui.pointing.menu .item::after {
         visibility: hidden;
@@ -1871,9 +1871,9 @@ Floated Menu / Item
 }
 
 & when (@variationMenuAttached) {
-    /*--------------
+    /* --------------
         Attached
-    ---------------*/
+    --------------- */
 
     /* Middle */
     .ui.attached.menu {
@@ -1945,9 +1945,9 @@ Floated Menu / Item
     }
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.menu {
     font-size: @medium;
@@ -1974,9 +1974,9 @@ Floated Menu / Item
     })
 }
 
-/*-------------------
+/* -------------------
   Inverted dropdowns
---------------------*/
+-------------------- */
 .ui.menu .ui.inverted.inverted.dropdown.item .menu {
     background: @invertedDropdownBackground;
     box-shadow: @invertedDropdownMenuBoxShadow;

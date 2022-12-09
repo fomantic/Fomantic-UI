@@ -98,9 +98,9 @@ a.ui.nag {
 *******************************/
 
 & when(@variationNagOverlay) {
-    /*--------------
+    /* --------------
          Static
-    ---------------*/
+    --------------- */
     .ui.overlay.nags,
     .ui.overlay.nag {
         position: absolute;
@@ -108,18 +108,18 @@ a.ui.nag {
 }
 
 & when(@variationNagFixed) {
-    /*--------------
+    /* --------------
          Fixed
-    ---------------*/
+    --------------- */
     .ui.fixed.nags,
     .ui.fixed.nag {
         position: fixed;
     }
 }
 & when(@variationNagBottom) {
-    /*--------------
+    /* --------------
          Bottom
-    ---------------*/
+    --------------- */
     .ui.bottom.nags,
     .ui.bottom.nag {
         border-radius: @bottomBorderRadius;
@@ -129,9 +129,9 @@ a.ui.nag {
 }
 
 & when(@variationNagInverted) {
-    /*--------------
+    /* --------------
          Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.nags .nag,
     .ui.inverted.nag {
@@ -149,9 +149,9 @@ a.ui.nag {
 }
 
 & when not (@variationNagSizes = false) {
-    /*-------------------
+    /* -------------------
             Sizes
-    --------------------*/
+    -------------------- */
     each(@variationNagSizes, {
         @s: @@value;
         @sr: "@{value}Raw";
@@ -165,7 +165,7 @@ a.ui.nag {
     })
 }
 
-/*--------------
+/* --------------
      Colors
 -------------- */
 & when not (@variationNagColors = false) {

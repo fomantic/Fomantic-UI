@@ -84,9 +84,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Value
----------------*/
+--------------- */
 
 .ui.statistics .statistic > .value,
 .ui.statistic > .value {
@@ -99,9 +99,9 @@
     text-align: @textAlign;
 }
 
-/*--------------
+/* --------------
      Label
----------------*/
+--------------- */
 
 .ui.statistics .statistic > .label,
 .ui.statistic > .label {
@@ -131,9 +131,9 @@
              Types
 *******************************/
 
-/*--------------
+/* --------------
    Icon Value
----------------*/
+--------------- */
 
 .ui.statistics .statistic > .value > i.icon,
 .ui.statistic > .value > i.icon {
@@ -142,9 +142,9 @@
     margin: 0;
 }
 
-/*--------------
+/* --------------
    Text Value
----------------*/
+--------------- */
 
 .ui.statistics .statistic > .text.value,
 .ui.statistic > .text.value {
@@ -158,9 +158,9 @@
     text-align: center;
 }
 
-/*--------------
+/* --------------
    Image Value
----------------*/
+--------------- */
 
 .ui.statistics .statistic > .value img,
 .ui.statistic > .value img {
@@ -175,9 +175,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
       Count
----------------*/
+--------------- */
 
 & when (@variationStatisticEqualWidth) {
     .ui.ten.statistics {
@@ -269,9 +269,9 @@
 
 
 & when (@variationStatisticHorizontal) {
-    /*--------------
+    /* --------------
        Horizontal
-    ---------------*/
+    --------------- */
 
     .ui.horizontal.statistic {
         flex-direction: row;
@@ -312,9 +312,9 @@
 }
 
 & when (@variationStatisticInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.statistics .statistic > .value,
     .ui.inverted.statistic .value {
@@ -326,9 +326,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 & when not (@variationStatisticColors = false) {
     each(@variationStatisticColors, {
         @color: @value;
@@ -351,9 +351,9 @@
 }
 
 & when (@variationStatisticFloated) {
-    /*--------------
+    /* --------------
         Floated
-    ---------------*/
+    --------------- */
 
     .ui[class*="left floated"].statistic {
         float: left;
@@ -369,9 +369,9 @@
 }
 
 & when (@variationStatisticStackable) {
-    /*--------------
+    /* --------------
         Stackable
-    ---------------*/
+    --------------- */
 
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.stackable.statistics {
@@ -387,9 +387,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 
 /* Medium */

@@ -245,9 +245,9 @@
 *******************************/
 
 & when (@variationProgressSuccess) {
-    /*--------------
+    /* --------------
          Success
-    ---------------*/
+    --------------- */
 
     .ui.ui.progress.success .bar {
         background-color: @successColor;
@@ -262,9 +262,9 @@
 }
 
 & when (@variationProgressWarning) {
-    /*--------------
+    /* --------------
          Warning
-    ---------------*/
+    --------------- */
 
     .ui.ui.progress.warning .bar {
         background-color: @warningColor;
@@ -279,9 +279,9 @@
 }
 
 & when (@variationProgressError) {
-    /*--------------
+    /* --------------
          Error
-    ---------------*/
+    --------------- */
 
     .ui.ui.progress.error .bar {
         background-color: @errorColor;
@@ -296,9 +296,9 @@
 }
 
 & when (@variationProgressActive) {
-    /*--------------
+    /* --------------
          Active
-    ---------------*/
+    --------------- */
 
     .ui.active.progress .bar {
         position: relative;
@@ -339,9 +339,9 @@
 }
 
 & when (@variationProgressDisabled) {
-    /*--------------
+    /* --------------
         Disabled
-    ---------------*/
+    --------------- */
 
     .ui.disabled.progress {
         opacity: 0.35;
@@ -358,9 +358,9 @@
 *******************************/
 
 & when (@variationProgressInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.progress {
         background: @invertedBackground;
@@ -393,9 +393,9 @@
 }
 
 & when (@variationProgressAttached) {
-    /*--------------
+    /* --------------
         Attached
-    ---------------*/
+    --------------- */
 
     /* bottom attached */
     .ui.progress.attached {
@@ -443,9 +443,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Colors
----------------*/
+--------------- */
 & when not (@variationProgressColors = false) {
     each(@variationProgressColors, {
         @color: @value;
@@ -467,9 +467,9 @@
     })
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.progress {
     font-size: @medium;
@@ -491,9 +491,9 @@
 }
 
 & when (@variationProgressIndeterminate) {
-    /*---------------
+    /* ---------------
       Indeterminate
-    ----------------*/
+    ---------------- */
 
     .ui.indeterminate.progress .bar {
         width: 100%;

@@ -52,17 +52,17 @@
 }
 
 
-/*--------------
+/* --------------
      Icon
----------------*/
+--------------- */
 
 .ui.search .prompt ~ .search.icon {
     cursor: pointer;
 }
 
-/*--------------
+/* --------------
     Results
----------------*/
+--------------- */
 
 .ui.search > .results {
     display: none;
@@ -92,9 +92,9 @@
     border-radius: 0 0 @resultsBorderRadius @resultsBorderRadius;
 }
 
-/*--------------
+/* --------------
     Result
----------------*/
+--------------- */
 
 .ui.search > .results .result {
     cursor: pointer;
@@ -125,9 +125,9 @@
     height: 100%;
 }
 
-/*--------------
+/* --------------
       Info
----------------*/
+--------------- */
 
 .ui.search > .results .result .image + .content {
     margin: @resultImageMargin;
@@ -150,9 +150,9 @@
     color: @resultPriceColor;
 }
 
-/*--------------
+/* --------------
     Message
----------------*/
+--------------- */
 
 .ui.search > .results > .message {
     padding: @messageVerticalPadding @messageHorizontalPadding;
@@ -185,9 +185,9 @@
             States
 *******************************/
 
-/*--------------------
+/* --------------------
        Focus
----------------------*/
+--------------------- */
 
 .ui.search > .prompt:focus {
     border-color: @promptFocusBorderColor;
@@ -196,9 +196,9 @@
 }
 
 & when (@variationSearchLoading) {
-    /*--------------------
+    /* --------------------
            Loading
-    ---------------------*/
+    --------------------- */
 
     .ui.loading.search .input > i.icon::before {
         position: absolute;
@@ -232,9 +232,9 @@
 }
 
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 .ui.search > .results .result:hover,
 .ui.category.search > .results .category .result:hover {
@@ -244,9 +244,9 @@
     background: @actionHoverBackground;
 }
 
-/*--------------
+/* --------------
       Active
----------------*/
+--------------- */
 & when (@variationSearchCategory) {
     .ui.category.search > .results .category.active {
         background: @categoryActiveBackground;
@@ -271,9 +271,9 @@
 }
 
 & when (@variationSearchDisabled) {
-    /*--------------------
+    /* --------------------
             Disabled
-    ----------------------*/
+    ---------------------- */
 
     /* Disabled */
     .ui.disabled.search {
@@ -289,9 +289,9 @@
 *******************************/
 
 & when (@variationSearchSelection) {
-    /*--------------
+    /* --------------
         Selection
-    ---------------*/
+    --------------- */
 
     .ui.search.selection .prompt {
         border-radius: @selectionPromptBorderRadius;
@@ -323,9 +323,9 @@
 }
 
 & when (@variationSearchCategory) {
-    /*--------------
+    /* --------------
         Category
-    ---------------*/
+    --------------- */
 
     .ui.category.search .results {
         width: @categoryResultsWidth;
@@ -393,9 +393,9 @@
 & when (@variationSearchScrolling),
 (@variationSearchShort),
 (@variationSearchLong) {
-    /*-------------------
+    /* -------------------
          Scrolling
-    --------------------*/
+    -------------------- */
 
     .ui.scrolling.search > .results,
     .ui.search.long > .results,
@@ -522,9 +522,9 @@
 }
 
 & when (@variationSearchAligned) {
-    /*-------------------
+    /* -------------------
          Left / Right
-    --------------------*/
+    -------------------- */
 
     .ui[class*="left aligned"].search > .results {
         right: auto;
@@ -536,9 +536,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Fluid
----------------*/
+--------------- */
 
 & when (@variationSearchFluid) {
     .ui.fluid.search .results {
@@ -547,9 +547,9 @@
 }
 
 
-/*--------------
+/* --------------
       Sizes
----------------*/
+--------------- */
 
 .ui.search {
     font-size: @relativeMedium;
@@ -563,9 +563,9 @@
     })
 }
 
-/*--------------
+/* --------------
       Mobile
----------------*/
+--------------- */
 
 @media only screen and (max-width: @largestMobileScreen) {
     .ui.search .results {

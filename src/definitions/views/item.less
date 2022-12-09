@@ -21,9 +21,9 @@
             Standard
 *******************************/
 
-/*--------------
+/* --------------
       Item
----------------*/
+--------------- */
 
 .ui.items > .item {
     display: @display;
@@ -43,9 +43,9 @@
     cursor: pointer;
 }
 
-/*--------------
+/* --------------
       Items
----------------*/
+--------------- */
 
 .ui.items {
     margin: @groupMargin;
@@ -58,9 +58,9 @@
     margin-bottom: 0 !important;
 }
 
-/*--------------
+/* --------------
       Item
----------------*/
+--------------- */
 
 .ui.items > .item::after {
     display: block;
@@ -79,9 +79,9 @@
 
 
 & when (@variationItemImage) {
-    /*--------------
+    /* --------------
          Images
-    ---------------*/
+    --------------- */
 
     .ui.items > .item > .image {
         position: relative;
@@ -107,9 +107,9 @@
 }
 
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.items > .item > .content {
     display: block;
@@ -157,9 +157,9 @@
 }
 
 & when (@variationItemFloated) {
-    /*--------------
+    /* --------------
          Floated
-    ---------------*/
+    --------------- */
 
     .ui.items > .item [class*="left floated"] {
         float: left;
@@ -171,9 +171,9 @@
 
 
 & when (@variationItemImage) {
-    /*--------------
+    /* --------------
       Content Image
-    ---------------*/
+    --------------- */
 
     .ui.items > .item .content img {
         align-self: @contentImageVerticalAlign;
@@ -189,9 +189,9 @@
 
 
 & when (@variationItemDescription) {
-    /*--------------
+    /* --------------
        Description
-    ---------------*/
+    --------------- */
 
     .ui.items > .item > .content > .description {
         margin-top: @descriptionDistance;
@@ -202,9 +202,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Paragraph
----------------*/
+--------------- */
 
 .ui.items > .item > .content p {
     margin: 0 0 @paragraphDistance;
@@ -214,9 +214,9 @@
 }
 
 & when (@variationItemMeta) {
-    /*--------------
+    /* --------------
           Meta
-    ---------------*/
+    --------------- */
 
     .ui.items > .item .meta {
         margin: @metaMargin;
@@ -239,9 +239,9 @@
     }
 }
 
-/*--------------
+/* --------------
       Links
----------------*/
+--------------- */
 
 /* Generic */
 .ui.items > .item > .content a:not(.ui) {
@@ -274,11 +274,11 @@
 
 
 
-/*--------------
+/* --------------
      Labels
----------------*/
+--------------- */
 
-/*-----Star----- */
+/* -----Star----- */
 
 & when (@variationItemFavorite) {
     /* Icon */
@@ -297,7 +297,7 @@
 }
 
 & when (@variationItemLike) {
-    /*-----Like----- */
+    /* -----Like----- */
 
     /* Icon */
     .ui.items > .item > .content .like.icon {
@@ -315,9 +315,9 @@
 }
 
 & when (@variationItemExtra) {
-    /*----------------
+    /* ----------------
       Extra Content
-    -----------------*/
+    ----------------- */
 
     .ui.items > .item .extra {
         display: @extraDisplay;
@@ -407,9 +407,9 @@
 *******************************/
 
 & when (@variationItemAligned) {
-    /*-------------------
+    /* -------------------
            Aligned
-    --------------------*/
+    -------------------- */
 
     .ui.items > .item > .image + [class*="top aligned"].content {
         align-self: flex-start;
@@ -423,9 +423,9 @@
 }
 
 & when (@variationItemRelaxed) {
-    /*--------------
+    /* --------------
          Relaxed
-    ---------------*/
+    --------------- */
 
     .ui.relaxed.items > .item {
         margin: @relaxedItemSpacing 0;
@@ -438,9 +438,9 @@
 }
 
 & when (@variationItemDivided) {
-    /*-------------------
+    /* -------------------
           Divided
-    --------------------*/
+    -------------------- */
 
     .ui.divided.items > .item {
         border-top: @dividedBorder;
@@ -472,9 +472,9 @@
 }
 
 & when (@variationItemLink) {
-    /*-------------------
+    /* -------------------
             Link
-    --------------------*/
+    -------------------- */
 
     .ui.items a.item:hover,
     .ui.link.items > .item:hover {
@@ -490,9 +490,9 @@
 }
 
 
-/*--------------
+/* --------------
       Size
----------------*/
+--------------- */
 
 .ui.items > .item {
     font-size: @relativeMedium;
@@ -507,9 +507,9 @@
 }
 
 & when (@variationItemUnstackable) {
-    /*---------------
+    /* ---------------
        Unstackable
-    ----------------*/
+    ---------------- */
 
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.unstackable.items > .item > .image,
@@ -520,9 +520,9 @@
 }
 
 & when (@variationItemInverted) {
-    /*--------------
+    /* --------------
          Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.items > .item {
         background: @invertedBackground;

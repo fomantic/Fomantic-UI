@@ -13,7 +13,6 @@ module.exports = {
         // TODO
         'no-descending-specificity': null, // 11532 errors
         'rule-empty-line-before': null, // 1609 errors
-        'comment-whitespace-inside': null, // 1318 errors
         'property-case': null, // 338 errors
         'max-empty-lines': null, // 279 errors
         'string-quotes': null, // 249 errors

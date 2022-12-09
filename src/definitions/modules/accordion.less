@@ -74,9 +74,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 /* Menu */
 .ui.accordion.menu .item .title {
@@ -115,9 +115,9 @@
 *******************************/
 
 & when (@variationAccordionStyled) {
-    /*--------------
+    /* --------------
          Styled
-    ---------------*/
+    --------------- */
 
     .ui.styled.accordion {
         width: @styledWidth;
@@ -180,9 +180,9 @@
 }
 
 & when (@variationAccordionCompact) {
-    /*--------------
+    /* --------------
          Compact
-    ---------------*/
+    --------------- */
 
     /* Default Styling */
 
@@ -209,9 +209,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Very Compact
-  ---------------*/
+  --------------- */
 
 & when (@variationAccordionVeryCompact) {
     .ui[class*="very compact"].accordion:not(.styled) > .title,
@@ -240,9 +240,9 @@
             States
 *******************************/
 
-/*--------------
+/* --------------
    Not Active
----------------*/
+--------------- */
 
 .ui.accordion:not(details) .title ~ .content:not(.active),
 .ui.accordion .accordion:not(details) .title ~ .content:not(.active) {
@@ -254,9 +254,9 @@
 *******************************/
 
 & when (@variationAccordionFluid) {
-    /*--------------
+    /* --------------
          Fluid
-    ---------------*/
+    --------------- */
 
     .ui.fluid.accordion,
     .ui.fluid.accordion .accordion {
@@ -265,9 +265,9 @@
 }
 
 & when (@variationAccordionInverted) {
-    /*--------------
+    /* --------------
          Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.accordion.menu .item > .title,
     .ui.inverted.accordion > .title,

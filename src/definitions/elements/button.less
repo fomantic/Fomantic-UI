@@ -61,9 +61,9 @@
             States
 *******************************/
 
-/*--------------
+/* --------------
       Hover
----------------*/
+--------------- */
 
 .ui.button:hover {
     background-color: @hoverBackgroundColor;
@@ -76,9 +76,9 @@
     opacity: @iconHoverOpacity;
 }
 
-/*--------------
+/* --------------
       Focus
----------------*/
+--------------- */
 
 .ui.button:focus {
     background-color: @focusBackgroundColor;
@@ -91,9 +91,9 @@
     opacity: @iconFocusOpacity;
 }
 
-/*--------------
+/* --------------
       Down
----------------*/
+--------------- */
 
 .ui.button:active,
 .ui.active.button:active {
@@ -103,9 +103,9 @@
     box-shadow: @downBoxShadow;
 }
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.active.button {
     background-color: @activeBackgroundColor;
@@ -124,9 +124,9 @@
 }
 
 & when (@variationButtonLoading) {
-    /*--------------
+    /* --------------
         Loading
-    ---------------*/
+    --------------- */
 
     /* Specificity hack */
     .ui.loading.loading.loading.loading.loading.loading.button {
@@ -190,9 +190,9 @@
     }
 }
 & when (@variationButtonDisabled){
-    /*-------------------
+    /* -------------------
           Disabled
-    --------------------*/
+    -------------------- */
 
     .ui.buttons .disabled.button:not(.basic),
     .ui.disabled.button,
@@ -217,9 +217,9 @@
              Types
 *******************************/
 & when (@variationButtonAnimated){
-    /*-------------------
+    /* -------------------
            Animated
-    --------------------*/
+    -------------------- */
 
     .ui.animated.button {
         position: relative;
@@ -329,9 +329,9 @@
 }
 
 & when (@variationButtonInverted) {
-    /*-------------------
+    /* -------------------
            Inverted
-    --------------------*/
+    -------------------- */
 
     .ui.inverted.button {
         box-shadow: 0 0 0 @invertedBorderSize @white inset;
@@ -384,9 +384,9 @@
 }
 
 & when (@variationButtonLabeled) or (@variationButtonLabeledIcon){
-    /*-------------------
+    /* -------------------
         Labeled Button
-    --------------------*/
+    -------------------- */
 
     .ui.labeled.button:not(.icon) {
         display: inline-flex;
@@ -437,9 +437,9 @@
 }
 
 & when (@variationButtonSocial) {
-    /*-------------------
+    /* -------------------
            Social
-    --------------------*/
+    -------------------- */
 
     /* Facebook */
     .ui.facebook.button {
@@ -621,9 +621,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Icon
----------------*/
+--------------- */
 
 .ui.button > .icon:not(.button) {
     height: @iconHeight;
@@ -649,9 +649,9 @@
 *******************************/
 
 & when (@variationButtonStackable) {
-    /*--------------
+    /* --------------
        Stackable
-    ---------------*/
+    --------------- */
 
     /* Tablet Or Below */
     @media only screen and (max-width: @largestMobileScreen) {
@@ -676,9 +676,9 @@
 }
 
 & when (@variationButtonFloated) {
-    /*-------------------
+    /* -------------------
            Floated
-    --------------------*/
+    -------------------- */
 
     .ui[class*="left floated"].buttons,
     .ui[class*="left floated"].button {
@@ -696,9 +696,9 @@
 }
 
 & when (@variationButtonCompact) {
-    /*-------------------
+    /* -------------------
            Compact
-    --------------------*/
+    -------------------- */
 
     .ui.compact.buttons .button,
     .ui.compact.button {
@@ -721,9 +721,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 .ui.buttons .button,
 .ui.buttons .or,
@@ -745,9 +745,9 @@
 }
 
 & when (@variationButtonIcon) {
-    /*--------------
+    /* --------------
         Icon Only
-    ---------------*/
+    --------------- */
 
     .ui.icon.buttons .button,
     .ui.icon.button:not(.animated):not(.compact):not(.labeled) {
@@ -768,9 +768,9 @@
 }
 
 & when (@variationButtonBasic) {
-    /*-------------------
+    /* -------------------
             Basic
-    --------------------*/
+    -------------------- */
 
     .ui.basic.buttons .button,
     .ui.basic.button {
@@ -907,9 +907,9 @@
 }
 
 & when (@variationButtonTertiary) {
-    /*-------------------
+    /* -------------------
            Tertiary
-    --------------------*/
+    -------------------- */
 
     /* Overline Mixin */
     .ui.tertiary.button {
@@ -994,9 +994,9 @@
 }
 
 & when (@variationButtonLabeledIcon) {
-    /*--------------
+    /* --------------
       Labeled Icon
-    ---------------*/
+    --------------- */
 
     .ui.labeled.icon.buttons .button,
     .ui.labeled.icon.button {
@@ -1085,9 +1085,9 @@
 }
 
 & when (@variationButtonToggle) {
-    /*--------------
+    /* --------------
          Toggle
-    ---------------*/
+    --------------- */
 
     /* Toggle (Modifies active state to give affordances) */
     .ui.toggle.buttons .active.button,
@@ -1107,9 +1107,9 @@
 }
 
 & when (@variationButtonCircular) {
-    /*--------------
+    /* --------------
         Circular
-    ---------------*/
+    --------------- */
 
     .ui.circular.button {
         border-radius: @circularBorderRadius;
@@ -1122,9 +1122,9 @@
 }
 
 & when (@variationButtonOr) {
-    /*-------------------
+    /* -------------------
           Or Buttons
-    --------------------*/
+    -------------------- */
 
     .ui.buttons .or {
         position: relative;
@@ -1175,9 +1175,9 @@
 }
 
 & when (@variationButtonAttached) {
-    /*-------------------
+    /* -------------------
            Attached
-    --------------------*/
+    -------------------- */
 
 
     /* Singular */
@@ -1302,9 +1302,9 @@
 }
 
 & when (@variationButtonFluid) {
-    /*-------------------
+    /* -------------------
             Fluid
-    --------------------*/
+    -------------------- */
 
     .ui.fluid.buttons,
     .ui.fluid.button {
@@ -1463,9 +1463,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 
 & when not (@variationButtonColors = false) {
     each(@variationButtonColors, {

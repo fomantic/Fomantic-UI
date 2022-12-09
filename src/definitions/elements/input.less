@@ -23,9 +23,9 @@
 *******************************/
 
 
-/*--------------------
+/* --------------------
         Inputs
----------------------*/
+--------------------- */
 
 .ui.input {
     position: relative;
@@ -64,9 +64,9 @@
 }
 
 
-/*--------------------
+/* --------------------
       Placeholder
----------------------*/
+--------------------- */
 
 /* browsers require these rules separate */
 
@@ -86,9 +86,9 @@
             States
 *******************************/
 & when (@variationInputDisabled) {
-    /*--------------------
+    /* --------------------
             Disabled
-    ---------------------*/
+    --------------------- */
 
     .ui.disabled.input,
     .ui.input:not(.disabled) input[disabled] {
@@ -101,9 +101,9 @@
     }
 }
 
-/*--------------------
+/* --------------------
         Active
----------------------*/
+--------------------- */
 
 .ui.input > input:active,
 .ui.input.down input {
@@ -114,9 +114,9 @@
 }
 
 & when (@variationInputLoading) {
-    /*--------------------
+    /* --------------------
            Loading
-    ---------------------*/
+    --------------------- */
 
     .ui.loading.loading.input > i.icon::before {
         position: absolute;
@@ -151,9 +151,9 @@
 }
 
 
-/*--------------------
+/* --------------------
         Focus
----------------------*/
+--------------------- */
 
 .ui.input.focus > input,
 .ui.input > input:focus  {
@@ -179,9 +179,9 @@
 
 
 & when not (@variationInputStates = false) {
-    /*--------------------
+    /* --------------------
             States
-    ---------------------*/
+    --------------------- */
     each(@variationInputStates, {
         @state: @value;
 
@@ -235,9 +235,9 @@
 *******************************/
 
 & when (@variationInputTransparent) {
-    /*--------------------
+    /* --------------------
           Transparent
-    ---------------------*/
+    --------------------- */
 
 
     .ui.transparent.input > textarea,
@@ -287,9 +287,9 @@
 }
 
 & when (@variationInputIcon) {
-    /*--------------------
+    /* --------------------
              Icon
-    ---------------------*/
+    --------------------- */
 
     .ui.icon.input > i.icon {
         cursor: default;
@@ -359,9 +359,9 @@
 }
 
 & when (@variationInputLabeled) {
-    /*--------------------
+    /* --------------------
             Labeled
-    ---------------------*/
+    --------------------- */
 
     /* Adjacent Label */
     .ui.labeled.input > .label {
@@ -566,9 +566,9 @@
 }
 
 & when (@variationInputAction) {
-    /*--------------------
+    /* --------------------
             Action
-    ---------------------*/
+    --------------------- */
 
     .ui.action.input > .button,
     .ui.action.input > .buttons {
@@ -583,14 +583,14 @@
         margin: 0;
     }
 
-    /* Input when ui Left*/
+    /* Input when ui Left */
     .ui[class*="left action"].input > input {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
         border-left-color: transparent;
     }
 
-    /* Input when ui Right*/
+    /* Input when ui Right */
     .ui.action.input:not([class*="left action"]) > input {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
@@ -625,9 +625,9 @@
 }
 
 & when (@variationInputInverted) {
-    /*--------------------
+    /* --------------------
            Inverted
-    ---------------------*/
+    --------------------- */
 
     /* Standard */
     .ui.inverted.input > input {
@@ -636,9 +636,9 @@
 }
 
 & when (@variationInputFluid) {
-    /*--------------------
+    /* --------------------
             Fluid
-    ---------------------*/
+    --------------------- */
 
     .ui.fluid.input {
         display: flex;
@@ -650,9 +650,9 @@
 
 
 & when (@variationInputFile) {
-    /*--------------------
+    /* --------------------
             File
-    ---------------------*/
+    --------------------- */
 
     /* width hack for chrome/edge */
     .ui.file.input {
@@ -807,9 +807,9 @@
   }
 }
 
-/*--------------------
+/* --------------------
         Size
----------------------*/
+--------------------- */
 
 .ui.input {
     font-size: @relativeMedium;

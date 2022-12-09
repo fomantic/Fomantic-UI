@@ -23,9 +23,9 @@
 *******************************/
 
 
-/*--------------
+/* --------------
     Comments
----------------*/
+--------------- */
 
 .ui.comments {
     margin: @margin;
@@ -39,9 +39,9 @@
     margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
      Comment
----------------*/
+--------------- */
 
 .ui.comments .comment {
     position: relative;
@@ -58,9 +58,9 @@
 }
 
 
-/*--------------------
+/* --------------------
     Nested Comments
----------------------*/
+--------------------- */
 
 .ui.comments .comment > .comments {
     margin: @nestedCommentsMargin;
@@ -77,9 +77,9 @@
     background: @nestedCommentBackground;
 }
 & when (@variationCommentAvatar) {
-    /*--------------
+    /* --------------
          Avatar
-    ---------------*/
+    --------------- */
 
     .ui.comments .comment .avatar {
         display: @avatarDisplay;
@@ -98,9 +98,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.comments .comment > .content {
     display: block;
@@ -113,9 +113,9 @@
 }
 
 & when (@variationCommentAuthor) {
-    /*--------------
+    /* --------------
          Author
-    ---------------*/
+    --------------- */
 
     .ui.comments .comment .author {
         font-size: @authorFontSize;
@@ -131,9 +131,9 @@
 }
 
 & when (@variationCommentMeta) {
-    /*--------------
+    /* --------------
          Metadata
-    ---------------*/
+    --------------- */
 
     .ui.comments .comment .metadata {
         display: @metadataDisplay;
@@ -150,9 +150,9 @@
     }
 }
 
-/*--------------------
+/* --------------------
      Comment Text
----------------------*/
+--------------------- */
 
 .ui.comments .comment .text {
     margin: @textMargin;
@@ -164,9 +164,9 @@
 
 
 & when (@variationCommentActions) {
-    /*--------------------
+    /* --------------------
          User Actions
-    ---------------------*/
+    --------------------- */
 
     .ui.comments .comment .actions {
         font-size: @actionFontSize;
@@ -187,9 +187,9 @@
 }
 
 & when (@variationCommentReply) {
-    /*--------------------
+    /* --------------------
           Reply Form
-    ---------------------*/
+    --------------------- */
 
     .ui.comments > .reply.form {
         margin-top: @replyDistance;
@@ -220,9 +220,9 @@
 *******************************/
 
 & when (@variationCommentThreaded) {
-    /*--------------------
+    /* --------------------
             Threaded
-    ---------------------*/
+    --------------------- */
 
     .ui.threaded.comments .comment > .comments {
         margin: @threadedCommentMargin;
@@ -232,9 +232,9 @@
 }
 
 & when (@variationCommentMinimal) {
-    /*--------------------
+    /* --------------------
             Minimal
-    ---------------------*/
+    --------------------- */
 
     .ui.minimal.comments .comment .actions {
         opacity: 0;
@@ -251,9 +251,9 @@
 }
 
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 .ui.comments {
     font-size: @medium;
@@ -269,9 +269,9 @@
 
 
 & when (@variationCommentInverted) {
-    /*-------------------
+    /* -------------------
             Inverted
-    --------------------*/
+    -------------------- */
     .ui.inverted.comments .comment {
         background-color: @black;
     }

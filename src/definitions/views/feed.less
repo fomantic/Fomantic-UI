@@ -82,9 +82,9 @@
     margin: @labeledContentMargin;
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 /* Content */
 .ui.feed > .event > .content {
@@ -104,9 +104,9 @@
 }
 
 & when (@variationFeedDate) {
-    /*--------------
+    /* --------------
           Date
-    ---------------*/
+    --------------- */
 
     .ui.feed > .event > .content .date {
         margin: @dateMargin;
@@ -119,9 +119,9 @@
 }
 
 & when (@variationFeedSummary) {
-    /*--------------
+    /* --------------
          Summary
-    ---------------*/
+    --------------- */
 
     .ui.feed > .event > .content .summary {
         margin: @summaryMargin;
@@ -140,9 +140,9 @@
         vertical-align: @summaryImageVerticalAlign;
     }
     & when (@variationFeedDate) {
-        /*--------------
+        /* --------------
            Inline Date
-        ---------------*/
+        --------------- */
 
         /* Date inside Summary */
         .ui.feed > .event > .content .summary > .date {
@@ -158,9 +158,9 @@
     }
 }
 & when (@variationFeedUser) {
-    /*--------------
+    /* --------------
           User
-    ---------------*/
+    --------------- */
 
     .ui.feed > .event > .content .user {
         display: inline-block;
@@ -177,9 +177,9 @@
 }
 
 & when (@variationFeedExtra) {
-    /*--------------
+    /* --------------
       Extra Summary
-    ---------------*/
+    --------------- */
 
     .ui.feed > .event > .content .extra {
         margin: @extraMargin;
@@ -206,9 +206,9 @@
 }
 
 & when (@variationFeedMeta) {
-    /*--------------
+    /* --------------
           Meta
-    ---------------*/
+    --------------- */
 
     .ui.feed > .event > .content .meta {
         display: @metadataDisplay;
@@ -291,9 +291,9 @@
 }
 
 & when (@variationFeedInverted) {
-    /*------------------
+    /* ------------------
           Inverted
-    -------------------*/
+    ------------------- */
 
     .ui.inverted.feed > .event {
         background: @black;

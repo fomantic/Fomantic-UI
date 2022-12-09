@@ -13,9 +13,9 @@
              Step
 *******************************/
 
-/*--------------
+/* --------------
    Load Theme
----------------*/
+--------------- */
 
 @type    : 'element';
 @element : 'step';
@@ -172,9 +172,9 @@
 *******************************/
 
 & when (@variationStepOrdered) {
-    /*--------------
+    /* --------------
          Ordered
-    ---------------*/
+    --------------- */
 
     .ui.ordered.steps {
         counter-reset: ordered;
@@ -199,9 +199,9 @@
 }
 
 & when (@variationStepVertical) {
-    /*--------------
+    /* --------------
         Vertical
-    ---------------*/
+    --------------- */
 
     .ui.vertical.steps {
         display: inline-flex;
@@ -254,9 +254,9 @@
 }
 
 
-/*---------------
+/* ---------------
     Responsive
-----------------*/
+---------------- */
 
 /* Mobile (Default) */
 @media only screen and (max-width: (@largestMobileScreen)) {
@@ -400,9 +400,9 @@
 *******************************/
 
 & when (@variationStepStackable) {
-    /*--------------
+    /* --------------
        Stackable
-    ---------------*/
+    --------------- */
 
     /* Tablet Or Below */
     @media only screen and (max-width: @largestTabletScreen) {
@@ -453,9 +453,9 @@
 }
 
 & when (@variationStepFluid) {
-    /*--------------
+    /* --------------
           Fluid
-    ---------------*/
+    --------------- */
 
     /* Fluid */
     .ui.fluid.steps {
@@ -465,9 +465,9 @@
 }
 
 & when (@variationStepAttached) {
-    /*--------------
+    /* --------------
         Attached
-    ---------------*/
+    --------------- */
 
     /* Top */
     .ui.attached.steps {
@@ -497,9 +497,9 @@
 }
 
 & when (@variationStepEqualWidth) {
-    /*-------------------
+    /* -------------------
         Evenly Divided
-    --------------------*/
+    -------------------- */
 
     .ui.one.steps,
     .ui.two.steps,
@@ -547,9 +547,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
        Sizes
---------------------*/
+-------------------- */
 
 .ui.steps .step,
 .ui.step {
@@ -566,9 +566,9 @@
 }
 
 & when (@variationStepInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.steps {
         border: 1px solid @solidWhiteBorderColor;

@@ -57,9 +57,9 @@
 }
 
 
-/*-------------------
+/* -------------------
     Loose Coupling
---------------------*/
+-------------------- */
 & when (@variationSegmentInverted) {
     /* Header */
     .ui.inverted.segments .segment > .ui.header .sub.header,
@@ -122,9 +122,9 @@
 *******************************/
 
 & when (@variationSegmentPlaceholder) {
-    /*-------------------
+    /* -------------------
          Placeholder
-    --------------------*/
+    -------------------- */
 
     .ui.placeholder.segment {
         display: flex;
@@ -182,9 +182,9 @@
 }
 
 & when (@variationSegmentPiled) {
-    /*-------------------
+    /* -------------------
             Piled
-    --------------------*/
+    -------------------- */
 
     .ui.piled.segments,
     .ui.piled.segment {
@@ -245,9 +245,9 @@
 }
 
 & when (@variationSegmentStacked) {
-    /*-------------------
+    /* -------------------
            Stacked
-    --------------------*/
+    -------------------- */
 
     .ui.stacked.segment {
         padding-bottom: @stackedPadding;
@@ -292,9 +292,9 @@
 }
 
 & when (@variationSegmentPadded) {
-    /*-------------------
+    /* -------------------
            Padded
-    --------------------*/
+    -------------------- */
 
     .ui.padded.segment {
         padding: @paddedSegmentPadding;
@@ -316,9 +316,9 @@
 }
 
 & when (@variationSegmentCompact) {
-    /*-------------------
+    /* -------------------
            Compact
-    --------------------*/
+    -------------------- */
 
     .ui.compact.segment {
         display: table;
@@ -336,9 +336,9 @@
 }
 
 & when (@variationSegmentCircular) {
-    /*-------------------
+    /* -------------------
            Circular
-    --------------------*/
+    -------------------- */
 
     .ui.circular.segment {
         display: table-cell;
@@ -350,9 +350,9 @@
 }
 
 & when (@variationSegmentRaised) {
-    /*-------------------
+    /* -------------------
            Raised
-    --------------------*/
+    -------------------- */
 
     .ui.raised.raised.segments,
     .ui.raised.raised.segment {
@@ -500,9 +500,9 @@
 *******************************/
 
 & when (@variationSegmentDisabled) {
-    /*--------------
+    /* --------------
         Disabled
-    ---------------*/
+    --------------- */
 
     .ui.disabled.segments,
     .ui.disabled.segment {
@@ -514,9 +514,9 @@
 }
 
 & when (@variationSegmentLoading) {
-    /*--------------
+    /* --------------
         Loading
-    ---------------*/
+    --------------- */
 
     .ui.loading.segments,
     .ui.loading.segment {
@@ -566,9 +566,9 @@
 *******************************/
 
 & when (@variationSegmentBasic) {
-    /*-------------------
+    /* -------------------
            Basic
-    --------------------*/
+    -------------------- */
 
     .ui.basic.segment,
     .ui.segments .ui.basic.segment,
@@ -581,9 +581,9 @@
 }
 
 & when (@variationSegmentClearing) {
-    /*-------------------
+    /* -------------------
            Clearing
-    --------------------*/
+    -------------------- */
 
     .ui.clearing.segment::after {
         content: "";
@@ -592,9 +592,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 & when not (@variationSegmentColors = false) {
     each(@variationSegmentColors, {
         @color: @value;
@@ -614,9 +614,9 @@
 }
 
 & when (@variationSegmentAligned) {
-    /*-------------------
+    /* -------------------
            Aligned
-    --------------------*/
+    -------------------- */
 
     .ui[class*="left aligned"].segment {
         text-align: left;
@@ -630,9 +630,9 @@
 }
 
 & when (@variationSegmentFloating) {
-    /*-------------------
+    /* -------------------
            Floated
-    --------------------*/
+    -------------------- */
 
     .ui.floated.segment,
     .ui[class*="left floated"].segment {
@@ -646,9 +646,9 @@
 }
 
 & when (@variationSegmentInverted) {
-    /*-------------------
+    /* -------------------
           Inverted
-    --------------------*/
+    -------------------- */
     .ui.inverted.segments,
     .ui.inverted.segments .segment,
     .ui.inverted.segment {
@@ -688,9 +688,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
      Emphasis
---------------------*/
+-------------------- */
 & when (@variationSegmentSecondary) {
     /* Secondary */
     .ui.secondary.segment {
@@ -720,9 +720,9 @@
 }
 
 & when (@variationSegmentAttached) {
-    /*-------------------
+    /* -------------------
           Attached
-    --------------------*/
+    -------------------- */
 
     /* Middle */
     .ui.attached.segment {
@@ -774,9 +774,9 @@
 }
 
 & when (@variationSegmentFitted) {
-    /*--------------
+    /* --------------
          Fitted
-    ---------------*/
+    --------------- */
 
     .ui.fitted.segment:not(.horizontally) {
         padding-top: 0;
@@ -789,9 +789,9 @@
 }
 
 & when (@variationSegmentScrolling) {
-    /*--------------
+    /* --------------
       Scrolling
-    ---------------*/
+    --------------- */
     .ui.scrolling.segment {
         overflow: auto;
         overscroll-behavior: @overscrollBehavior;
@@ -899,9 +899,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
         Size
---------------------*/
+-------------------- */
 
 .ui.segments .segment,
 .ui.segment {

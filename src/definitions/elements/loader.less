@@ -88,9 +88,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
       Coupling
---------------------*/
+-------------------- */
 
 /* Show inside active dimmer */
 .ui.dimmer > .loader {
@@ -118,9 +118,9 @@
 *******************************/
 
 & when (@variationLoaderText) {
-    /*-------------------
+    /* -------------------
             Text
-    --------------------*/
+    -------------------- */
 
     .ui.ui.ui.ui.text.loader {
         width: auto;
@@ -155,9 +155,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 .ui.loader {
     width: @medium;
@@ -201,9 +201,9 @@
     })
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 & when not (@variationLoaderColors = false) {
     each(@variationLoaderColors, {
         @color: @value;
@@ -257,9 +257,9 @@
 }
 
 & when (@variationLoaderInline) {
-    /*-------------------
+    /* -------------------
            Inline
-    --------------------*/
+    -------------------- */
 
     .ui.inline.loader {
         position: relative;
@@ -312,9 +312,9 @@
 }
 
 & when (@variationLoaderElastic) {
-    /*-------------------
+    /* -------------------
            Elastic
-    --------------------*/
+    -------------------- */
 
     .ui.dimmer > .ui.elastic.loader {
         color: @invertedLoaderLineColor;

@@ -66,16 +66,16 @@ em[data-emoji]::before {
 
 
 & when (@variationEmojiLink) {
-    /*-------------------
+    /* -------------------
              Link
-    --------------------*/
+    -------------------- */
 
     em[data-emoji].link:not(.disabled) {
         cursor: pointer;
     }
 }
 
-/*rtl:begin:ignore*/
+/* rtl:begin:ignore */
 
 each(@size-map, {
     em[data-emoji].@{key} {
@@ -96,6 +96,6 @@ each(@emoji-map,{
     }
 });
 
-/*rtl:end:ignore*/
+/* rtl:end:ignore */
 
 .loadUIOverrides();

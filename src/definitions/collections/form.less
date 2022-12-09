@@ -21,26 +21,26 @@
             Elements
 *******************************/
 
-/*--------------------
+/* --------------------
         Form
----------------------*/
+--------------------- */
 
 .ui.form {
     position: relative;
     max-width: 100%;
 }
 
-/*--------------------
+/* --------------------
         Content
----------------------*/
+--------------------- */
 
 .ui.form > p {
     margin: @paragraphMargin;
 }
 
-/*--------------------
+/* --------------------
         Field
----------------------*/
+--------------------- */
 
 .ui.form .field {
     clear: both;
@@ -59,9 +59,9 @@
 }
 
 
-/*--------------------
+/* --------------------
         Labels
----------------------*/
+--------------------- */
 
 .ui.form .field > label {
     display: block;
@@ -74,9 +74,9 @@
     color: @labelColor;
 }
 
-/*--------------------
+/* --------------------
     Standard Inputs
----------------------*/
+--------------------- */
 
 
 .ui.form textarea,
@@ -179,9 +179,9 @@
     vertical-align: @checkboxVerticalAlign;
 }
 
-/*--------------------
+/* --------------------
     Checkbox margin
----------------------*/
+--------------------- */
 
 .ui.form .fields:not(.grouped):not(.inline) .field:not(:only-child) label + .ui.ui.checkbox {
     margin-top: @checkboxLabelFieldTopMargin;
@@ -206,9 +206,9 @@
 }
 
 & when (@variationFormTransparent) {
-    /*--------------------
+    /* --------------------
           Transparent
-    ---------------------*/
+    --------------------- */
 
     .ui.form .field .transparent.input:not(.icon) input,
     .ui.form .field input.transparent,
@@ -224,18 +224,18 @@
     }
 }
 
-/*--------------------------
+/* --------------------------
   Input w/ attached Button
----------------------------*/
+--------------------------- */
 
 .ui.form input.attached {
     width: auto;
 }
 
 
-/*--------------------
+/* --------------------
      Basic Select
----------------------*/
+--------------------- */
 
 .ui.form select {
     display: block;
@@ -250,9 +250,9 @@
     transition: @selectTransition;
 }
 
-/*--------------------
+/* --------------------
        Dropdown
----------------------*/
+--------------------- */
 
 /* Block */
 .ui.form .field > .selection.dropdown:not(.compact) {
@@ -275,9 +275,9 @@
     }
 }
 
-/*--------------------
+/* --------------------
        UI Input
----------------------*/
+--------------------- */
 
 /* Block */
 .ui.form .field .ui.input,
@@ -319,9 +319,9 @@
 }
 
 
-/*--------------------
+/* --------------------
    Types of Messages
----------------------*/
+--------------------- */
 & when not (@variationFormStates = false) {
     each(@variationFormStates, {
         @state: @value;
@@ -337,9 +337,9 @@
     margin-top: 0;
 }
 
-/*--------------------
+/* --------------------
    Validation Prompt
----------------------*/
+--------------------- */
 
 .ui.form .field .prompt.label {
     white-space: normal;
@@ -371,9 +371,9 @@
             States
 *******************************/
 
-/*--------------------
+/* --------------------
       Autofilled
----------------------*/
+--------------------- */
 
 .ui.form .field.field input:-webkit-autofill {
     box-shadow: 0 0 0 100px @inputAutoFillBackground inset !important;
@@ -388,9 +388,9 @@
 
 
 
-/*--------------------
+/* --------------------
       Placeholder
----------------------*/
+--------------------- */
 
 /* browsers require these rules separate */
 .ui.form ::-webkit-input-placeholder {
@@ -416,9 +416,9 @@
 
 
 
-/*--------------------
+/* --------------------
         Focus
----------------------*/
+--------------------- */
 
 .ui.form input:not([type]):focus,
 .ui.form input[type="color"]:focus,
@@ -499,9 +499,9 @@
 }
 
 & when not (@variationFormStates = false) {
-    /*--------------------
+    /* --------------------
             States
-    ---------------------*/
+    --------------------- */
     each(@variationFormStates, {
         @state: @value;
         @c: @formStates[@@state][color];
@@ -756,9 +756,9 @@
 }
 
 & when (@variationFormDisabled) {
-    /*--------------------
+    /* --------------------
            Disabled
-    ---------------------*/
+    --------------------- */
 
     .ui.form .disabled.fields .field,
     .ui.form .disabled.field,
@@ -776,9 +776,9 @@
 }
 
 & when (@variationFormLoading) {
-    /*--------------
+    /* --------------
         Loading
-    ---------------*/
+    --------------- */
 
     .ui.loading.form {
         position: relative;
@@ -825,9 +825,9 @@
 *******************************/
 
 & when (@variationFormRequired) {
-    /*--------------------
+    /* --------------------
          Required Field
-    ---------------------*/
+    --------------------- */
 
     .ui.form .required.fields:not(.grouped) > .field > label::after,
     .ui.form .required.fields.grouped > label::after,
@@ -862,9 +862,9 @@
 *******************************/
 
 & when (@variationFormInverted) {
-    /*--------------------
+    /* --------------------
         Inverted Colors
-    ---------------------*/
+    --------------------- */
 
     .ui.inverted.form label,
     .ui.form .inverted.segment label,
@@ -908,9 +908,9 @@
 }
 
 & when (@variationFormGrouped) {
-    /*--------------------
+    /* --------------------
          Field Groups
-    ---------------------*/
+    --------------------- */
 
     /* Grouped Vertically */
 
@@ -942,9 +942,9 @@
     }
 }
 
-/*--------------------
+/* --------------------
         Fields
----------------------*/
+--------------------- */
 
 /* Split fields */
 .ui.form .fields {
@@ -1075,9 +1075,9 @@
 }
 
 
-/*--------------------
+/* --------------------
      Equal Width
----------------------*/
+--------------------- */
 
 & when (@variationFormEqualWidth) {
     .ui[class*="equal width"].form .fields > .field,
@@ -1088,9 +1088,9 @@
 }
 
 & when (@variationFormInline) {
-    /*--------------------
+    /* --------------------
         Inline Fields
-    ---------------------*/
+    --------------------- */
 
     .ui.form .inline.fields {
         margin: @fieldMargin;
@@ -1170,9 +1170,9 @@
 }
 
 
-/*--------------------
+/* --------------------
         Sizes
----------------------*/
+--------------------- */
 
 .ui.form,
 .ui.form .field .dropdown,

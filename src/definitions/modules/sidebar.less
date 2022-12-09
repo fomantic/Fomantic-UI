@@ -51,9 +51,9 @@
 }
 
 
-/*--------------
+/* --------------
    Direction
----------------*/
+--------------- */
 & when (@variationSidebarLeft) {
     .ui.left.sidebar {
         right: auto;
@@ -92,9 +92,9 @@
 }
 
 
-/*--------------
+/* --------------
      Pushable
----------------*/
+--------------- */
 
 .pushable.pushable.pushable {
     height: 100%;
@@ -126,9 +126,9 @@ body.pushable {
 }
 
 
-/*--------------
+/* --------------
      Fixed
----------------*/
+--------------- */
 
 .pushable > .fixed {
     position: fixed;
@@ -139,9 +139,9 @@ body.pushable {
     z-index: @fixedLayer;
 }
 
-/*--------------
+/* --------------
      Page
----------------*/
+--------------- */
 
 .pushable > .pusher {
     position: relative;
@@ -161,9 +161,9 @@ body.pushable > .pusher {
     background: @pageBackground;
 }
 
-/*--------------
+/* --------------
      Dimmer
----------------*/
+--------------- */
 
 .pushable > .pusher::after {
     position: fixed;
@@ -178,9 +178,9 @@ body.pushable > .pusher {
     z-index: @dimmerLayer;
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 .ui.sidebar.menu .item {
     border-radius: 0 !important;
@@ -190,9 +190,9 @@ body.pushable > .pusher {
             States
 *******************************/
 
-/*--------------
+/* --------------
      Dimmed
----------------*/
+--------------- */
 
 .pushable > .pusher.dimmed::after {
     width: 100% !important;
@@ -211,17 +211,17 @@ body.pushable > .pusher {
     opacity: 0 !important;
 }
 
-/*--------------
+/* --------------
     Animating
----------------*/
+--------------- */
 
 .ui.animating.sidebar {
     visibility: visible;
 }
 
-/*--------------
+/* --------------
      Visible
----------------*/
+--------------- */
 
 .ui.visible.sidebar {
     visibility: visible;
@@ -278,18 +278,18 @@ body.pushable > .pusher {
     }
 }
 
-/*--------------
+/* --------------
        iOS
----------------*/
+--------------- */
 
 
 /*******************************
           Variations
 *******************************/
 
-/*--------------
+/* --------------
      Width
----------------*/
+--------------- */
 
 /* Left / Right */
 & when (@variationSidebarLeft) or (@variationSidebarRight) {
@@ -396,9 +396,9 @@ body.pushable > .pusher {
 *******************************/
 
 & when (@variationSidebarOverlay) {
-    /*--------------
+    /* --------------
         Overlay
-    ---------------*/
+    --------------- */
 
     /* Set-up */
     .ui.overlay.sidebar {
@@ -464,9 +464,9 @@ body.pushable > .pusher {
 
 
 & when (@variationSidebarPush) {
-    /*--------------
+    /* --------------
           Push
-    ---------------*/
+    --------------- */
 
     /* Initial */
     .ui.push.sidebar {
@@ -503,9 +503,9 @@ body.pushable > .pusher {
 }
 
 & when (@variationSidebarUncover) {
-    /*--------------
+    /* --------------
         Uncover
-    ---------------*/
+    --------------- */
 
     /* Initial */
     .ui.uncover.sidebar {
@@ -521,9 +521,9 @@ body.pushable > .pusher {
 }
 
 & when (@variationSidebarSlideAlong) {
-    /*--------------
+    /* --------------
        Slide Along
-    ---------------*/
+    --------------- */
 
     /* Initial */
     .ui.slide.along.sidebar {
@@ -564,9 +564,9 @@ body.pushable > .pusher {
 }
 
 & when (@variationSidebarSlideOut) {
-    /*--------------
+    /* --------------
        Slide Out
-    ---------------*/
+    --------------- */
 
     /* Initial */
     .ui.slide.out.sidebar {
@@ -607,9 +607,9 @@ body.pushable > .pusher {
 }
 
 & when (@variationSidebarScale) {
-    /*--------------
+    /* --------------
        Scale Down
-    ---------------*/
+    --------------- */
 
     /* Initial */
     .ui.scale.down.sidebar {

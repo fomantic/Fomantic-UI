@@ -62,9 +62,9 @@ i.icon::before {
 *******************************/
 
 & when (@variationIconLoading) {
-    /*--------------
+    /* --------------
         Loading
-    ---------------*/
+    --------------- */
 
     i.loading.icon {
         height: 1em;
@@ -98,9 +98,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 *******************************/
 
 & when (@variationIconFitted) {
-    /*-------------------
+    /* -------------------
             Fitted
-    --------------------*/
+    -------------------- */
 
     i.fitted.icons,
     i.fitted.icon {
@@ -110,9 +110,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconLink) {
-    /*-------------------
+    /* -------------------
              Link
-    --------------------*/
+    -------------------- */
 
     i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
         cursor: pointer;
@@ -125,9 +125,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconCircular) {
-    /*-------------------
+    /* -------------------
           Circular
-    --------------------*/
+    -------------------- */
 
     i.circular.icon {
         border-radius: 500em !important;
@@ -151,9 +151,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconFlipped) {
-    /*-------------------
+    /* -------------------
           Flipped
-    --------------------*/
+    -------------------- */
 
     i.flipped.icon,
     i.horizontally.flipped.icon {
@@ -175,9 +175,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconRotated) {
-    /*-------------------
+    /* -------------------
           Rotated
-    --------------------*/
+    -------------------- */
 
     i.rotated.icon,
     i.right.rotated.icon,
@@ -211,9 +211,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconFlipped) and (@variationIconRotated) {
-    /*--------------------------
+    /* --------------------------
           Flipped & Rotated
-    ---------------------------*/
+    --------------------------- */
 
     i.rotated.flipped.icon,
     i.right.rotated.flipped.icon,
@@ -274,9 +274,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconBordered) {
-    /*-------------------
+    /* -------------------
           Bordered
-    --------------------*/
+    -------------------- */
 
     i.bordered.icon {
         line-height: 1;
@@ -299,9 +299,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 & when (@variationIconInverted) {
-    /*-------------------
+    /* -------------------
           Inverted
-    --------------------*/
+    -------------------- */
 
     /* Inverted Shapes */
     i.inverted.bordered.icon,
@@ -315,9 +315,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
     }
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 & when not (@variationIconColors = false) {
     each(@variationIconColors, {
         @color: @value;
@@ -345,9 +345,9 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 }
 
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 i.icon,
 i.icons {

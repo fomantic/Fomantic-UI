@@ -2,15 +2,15 @@
         Import Directives
 *******************************/
 
-/*------------------
+/* ------------------
        Theme
--------------------*/
+------------------- */
 
 @theme: @@element;
 
-/*--------------------
+/* --------------------
    Site Variables
----------------------*/
+--------------------- */
 
 /* Default site.variables */
 @import "@{themesFolder}/default/globals/site.variables";
@@ -27,9 +27,9 @@
 @import (optional) "@{siteFolder}/globals/site.variables";
 
 
-/*-------------------
+/* -------------------
  Component Variables
----------------------*/
+--------------------- */
 
 /* Default */
 @import "@{themesFolder}/default/@{type}s/@{element}.variables";
@@ -41,9 +41,9 @@
 @import (optional) "@{siteFolder}/@{type}s/@{element}.variables";
 
 
-/*-------------------------
+/* -------------------------
     Central Color Map
--------------------------*/
+------------------------- */
 
 /* Default */
 @import "@{themesFolder}/default/globals/colors.less";
@@ -56,9 +56,9 @@
              Mix-ins
 *******************************/
 
-/*------------------
+/* ------------------
        Fonts
--------------------*/
+------------------- */
 
 .loadFonts() {
     & when (@importGoogleFonts) {
@@ -75,9 +75,9 @@
   }
 }
 
-/*------------------
+/* ------------------
      Overrides
--------------------*/
+------------------- */
 
 .loadUIOverrides() {
     & when not (@theme = 'default') {

@@ -37,18 +37,18 @@
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-/*--------------
+/* --------------
       Basic
----------------*/
+--------------- */
 
 .ui.divider:not(.vertical):not(.horizontal) {
     border-top: @shadowWidth @borderStyle @shadowColor;
     border-bottom: @highlightWidth @borderStyle @highlightColor;
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 /* Allow divider between each column row */
 .ui.grid > .column + .divider,
@@ -57,9 +57,9 @@
 }
 
 & when (@variationDividerHorizontal) {
-    /*--------------
+    /* --------------
        Horizontal
-    ---------------*/
+    --------------- */
 
     .ui.horizontal.divider {
         display: table;
@@ -90,9 +90,9 @@
 }
 
 & when (@variationDividerVertical) {
-    /*--------------
+    /* --------------
         Vertical
-    ---------------*/
+    --------------- */
 
     .ui.vertical.divider {
         position: absolute;
@@ -177,9 +177,9 @@
 }
 
 & when (@variationDividerIcon) {
-    /*--------------
+    /* --------------
           Icon
-    ---------------*/
+    --------------- */
 
     .ui.divider > .icon {
         margin: @dividerIconMargin;
@@ -190,9 +190,9 @@
 }
 
 & when (@variationDividerHorizontal) {
-    /*--------------
+    /* --------------
          Header
-    ---------------*/
+    --------------- */
     .ui.horizontal.divider[class*="left aligned"] {
         &::before {
             display: none;
@@ -216,9 +216,9 @@
 *******************************/
 
 & when (@variationDividerHidden) {
-    /*--------------
+    /* --------------
         Hidden
-    ---------------*/
+    --------------- */
 
     .ui.hidden.divider {
         border-color: transparent !important;
@@ -230,9 +230,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Inverted
----------------*/
+--------------- */
 & when (@variationDividerInverted) {
     .ui.divider.inverted,
     .ui.vertical.inverted.divider,
@@ -249,9 +249,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Fitted
----------------*/
+--------------- */
 & when (@variationDividerFitted) {
     .ui.fitted.divider {
         margin: 0;
@@ -259,9 +259,9 @@
 }
 
 & when (@variationDividerClearing) {
-    /*--------------
+    /* --------------
         Clearing
-    ---------------*/
+    --------------- */
 
     .ui.clearing.divider {
         clear: both;
@@ -269,9 +269,9 @@
 }
 
 & when (@variationDividerSection) {
-    /*--------------
+    /* --------------
         Section
-    ---------------*/
+    --------------- */
 
     .ui.section.divider {
         margin-top: @sectionMargin;
@@ -279,9 +279,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.divider {
     font-size: @medium;

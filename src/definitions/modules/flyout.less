@@ -52,9 +52,9 @@
     backface-visibility: hidden;
 }
 
-/*--------------
+/* --------------
    Close
----------------*/
+--------------- */
 .ui.flyout > .close {
     cursor: pointer;
     position: absolute;
@@ -77,9 +77,9 @@
     outline: none;
 }
 
-/*--------------
+/* --------------
    Header
----------------*/
+--------------- */
 .ui.flyout > .header {
     display: block;
     background: @headerBackground;
@@ -90,9 +90,9 @@
     border-bottom: @headerBorder;
 }
 
-/*--------------
+/* --------------
    Content
----------------*/
+--------------- */
 .ui.flyout > .content {
     display: block;
     width: 100%;
@@ -122,9 +122,9 @@
 }
 
 & when (@variationFlyoutActions) {
-    /*--------------
+    /* --------------
        Actions
-    ---------------*/
+    --------------- */
     .ui.flyout > .actions {
         background: @actionBackground;
         padding: @actionPadding;
@@ -169,9 +169,9 @@
     }
 }
 
-/*--------------
+/* --------------
    Direction
----------------*/
+--------------- */
 & when (@variationFlyoutLeft) {
     .ui.left.flyout {
         right: auto;
@@ -210,9 +210,9 @@
 }
 
 
-/*--------------
+/* --------------
      Pushable
----------------*/
+--------------- */
 
 .pushable.pushable.pushable {
     height: 100%;
@@ -244,9 +244,9 @@ body.pushable {
 }
 
 
-/*--------------
+/* --------------
      Fixed
----------------*/
+--------------- */
 
 .pushable > .fixed {
     position: fixed;
@@ -257,9 +257,9 @@ body.pushable {
     z-index: @fixedLayer;
 }
 
-/*--------------
+/* --------------
      Page
----------------*/
+--------------- */
 
 .pushable > .pusher {
     position: relative;
@@ -279,9 +279,9 @@ body.pushable > .pusher {
     background: @pageBackground;
 }
 
-/*--------------
+/* --------------
      Dimmer
----------------*/
+--------------- */
 
 .pushable > .pusher::after {
     position: fixed;
@@ -296,9 +296,9 @@ body.pushable > .pusher {
     z-index: @dimmerLayer;
 }
 
-/*--------------
+/* --------------
     Coupling
----------------*/
+--------------- */
 
 .ui.flyout.menu .item {
     border-radius: 0 !important;
@@ -308,9 +308,9 @@ body.pushable > .pusher {
             States
 *******************************/
 
-/*--------------
+/* --------------
      Dimmed
----------------*/
+--------------- */
 
 .pushable > .pusher.dimmed::after {
     width: 100% !important;
@@ -328,17 +328,17 @@ body.pushable > .pusher {
     opacity: 0 !important;
 }
 
-/*--------------
+/* --------------
     Animating
----------------*/
+--------------- */
 
 .ui.animating.flyout {
     visibility: visible;
 }
 
-/*--------------
+/* --------------
      Visible
----------------*/
+--------------- */
 
 .ui.visible.flyout {
     visibility: visible;
@@ -396,9 +396,9 @@ body.pushable > .pusher {
 }
 
 & when (@variationFlyoutInverted) {
-    /*--------------
+    /* --------------
          Inverted
-    ---------------*/
+    --------------- */
     .ui.flyout.inverted {
         background: @invertedBackground;
     }
@@ -423,9 +423,9 @@ body.pushable > .pusher {
           Variations
 *******************************/
 
-/*--------------
+/* --------------
      Width
----------------*/
+--------------- */
 
 /* Left / Right */
 & when (@variationFlyoutLeft) or (@variationFlyoutRight) {
@@ -519,9 +519,9 @@ body.pushable > .pusher {
     }
 
 
-    /*-------------------
+    /* -------------------
       Column Width
-    --------------------*/
+    -------------------- */
 
     & when (@variationFlyoutColumnWidth) {
         /* Sizing Combinations */
@@ -599,9 +599,9 @@ body.pushable > .pusher {
 *******************************/
 
 & when (@variationFlyoutOverlay) {
-    /*--------------
+    /* --------------
         Overlay
-    ---------------*/
+    --------------- */
 
     /* Set-up */
     .ui.overlay.flyout {

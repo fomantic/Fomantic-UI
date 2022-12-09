@@ -76,9 +76,9 @@
 *******************************/
 
 & when (@variationPopupTooltip) {
-    /*--------------
+    /* --------------
         Tooltip
-    ---------------*/
+    --------------- */
 
     /* Content */
     [data-tooltip] {
@@ -222,9 +222,9 @@
         }
     }
     & when (@variationPopupInverted) {
-        /*--------------
+        /* --------------
             Inverted
-        ---------------*/
+        --------------- */
 
         /* Arrow */
         [data-tooltip][data-inverted]::before {
@@ -246,9 +246,9 @@
     }
 
     & when (@variationPopupPosition) {
-        /*--------------
+        /* --------------
             Position
-        ---------------*/
+        --------------- */
         & when (@variationPopupTop) {
             [data-position~="top"][data-tooltip]::before {
                 background: @arrowBottomBackground;
@@ -468,9 +468,9 @@
     }
 
     & when (@variationPopupBasic) {
-        /*--------------
+        /* --------------
             Basic
-        ---------------*/
+        --------------- */
         [data-tooltip][data-variation~="basic"]::before {
             display: none;
         }
@@ -483,9 +483,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Spacing
----------------*/
+--------------- */
 
 .ui.popup {
     margin: 0;
@@ -550,11 +550,11 @@
         }
     }
 
-    /*--------------
+    /* --------------
          Pointer
-    ---------------*/
+    --------------- */
 
-    /*--- Below ---*/
+    /* --- Below --- */
     .ui.bottom.center.popup::before {
         margin-left: @arrowOffset;
         top: @arrowOffset;
@@ -568,7 +568,7 @@
         margin-left: @boxArrowOffset;
     }
 
-    /*rtl:rename*/
+    /* rtl:rename */
     .ui.bottom.left.popup::before {
         top: @arrowOffset;
         left: @arrowDistanceFromEdge;
@@ -582,7 +582,7 @@
         margin-right: @boxArrowOffset;
     }
 
-    /*rtl:rename*/
+    /* rtl:rename */
     .ui.bottom.right.popup::before {
         top: @arrowOffset;
         right: @arrowDistanceFromEdge;
@@ -594,7 +594,7 @@
 }
 
 & when (@variationPopupTop) {
-    /*--- Above ---*/
+    /* --- Above --- */
     & when (@variationPopupCenter) {
         .ui.top.center.popup::before {
             top: auto;
@@ -609,7 +609,7 @@
             margin-left: @boxArrowOffset;
         }
 
-        /*rtl:rename*/
+        /* rtl:rename */
         .ui.top.left.popup::before {
             bottom: @arrowOffset;
             left: @arrowDistanceFromEdge;
@@ -623,7 +623,7 @@
             margin-right: @boxArrowOffset;
         }
 
-        /*rtl:rename*/
+        /* rtl:rename */
         .ui.top.right.popup::before {
             bottom: @arrowOffset;
             right: @arrowDistanceFromEdge;
@@ -635,9 +635,9 @@
 }
 
 & when (@variationPopupCenter) {
-    /*--- Left Center ---*/
+    /* --- Left Center --- */
 
-    /*rtl:rename*/
+    /* rtl:rename */
     & when (@variationPopupLeft) {
         .ui.left.center.popup::before {
             top: 50%;
@@ -649,9 +649,9 @@
         }
     }
     & when (@variationPopupRight) {
-        /*--- Right Center  ---*/
+        /* --- Right Center  --- */
 
-        /*rtl:rename*/
+        /* rtl:rename */
         .ui.right.center.popup::before {
             top: 50%;
             left: @arrowOffset;
@@ -740,9 +740,9 @@
 *******************************/
 
 & when (@variationPopupBasic) {
-    /*--------------
+    /* --------------
          Basic
-    ---------------*/
+    --------------- */
 
     .ui.basic.popup::before {
         display: none;
@@ -756,9 +756,9 @@
 }
 
 & when (@variationPopupWide) {
-    /*--------------
+    /* --------------
          Wide
-    ---------------*/
+    --------------- */
 
     .ui.wide.popup {
         max-width: @wideWidth;
@@ -785,9 +785,9 @@
 }
 
 & when (@variationPopupFluid) {
-    /*--------------
+    /* --------------
          Fluid
-    ---------------*/
+    --------------- */
 
     .ui.fluid.popup {
         width: 100%;
@@ -796,9 +796,9 @@
 }
 
 & when (@variationPopupInverted) {
-    /*--------------
+    /* --------------
          Colors
-    ---------------*/
+    --------------- */
 
     /* Inverted colors  */
     .ui.inverted.popup {
@@ -868,9 +868,9 @@
 }
 
 & when (@variationPopupFlowing) {
-    /*--------------
+    /* --------------
          Flowing
-    ---------------*/
+    --------------- */
 
     .ui.flowing.popup {
         max-width: none;
@@ -878,9 +878,9 @@
 }
 
 
-/*--------------
+/* --------------
      Sizes
----------------*/
+--------------- */
 
 .ui.popup {
     font-size: @medium;

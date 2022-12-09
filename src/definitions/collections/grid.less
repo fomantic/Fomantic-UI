@@ -29,9 +29,9 @@
     padding: 0;
 }
 
-/*----------------------
+/* ----------------------
       Remove Gutters
------------------------*/
+----------------------- */
 
 .ui.grid {
     margin-top: -(@rowSpacing / 2);
@@ -58,9 +58,9 @@
     margin-top: @consecutiveGridDistance;
 }
 
-/*-------------------
+/* -------------------
        Columns
---------------------*/
+-------------------- */
 
 /* Standard 16 column */
 .ui.grid > .column:not(.row),
@@ -79,9 +79,9 @@
     padding-right: (@gutterWidth / 2);
 }
 
-/*-------------------
+/* -------------------
         Rows
---------------------*/
+-------------------- */
 
 .ui.grid > .row {
     position: relative;
@@ -96,9 +96,9 @@
     padding-bottom: (@rowSpacing / 2);
 }
 
-/*-------------------
+/* -------------------
        Columns
---------------------*/
+-------------------- */
 
 /* Vertical padding when no rows */
 .ui.grid > .column:not(.row) {
@@ -110,18 +110,18 @@
     margin-bottom: 0;
 }
 
-/*-------------------
+/* -------------------
       Content
---------------------*/
+-------------------- */
 
 .ui.grid > .row > img,
 .ui.grid > .row > .column > img {
     max-width: @columnMaxImageWidth;
 }
 
-/*-------------------
+/* -------------------
     Loose Coupling
---------------------*/
+-------------------- */
 
 /* Collapse Margin on Consecutive Grid */
 .ui.grid > .ui.grid:first-child {
@@ -157,9 +157,9 @@
 *******************************/
 
 & when (@variationGridPage) {
-    /*-----------------------
+    /* -----------------------
            Page Grid
-    -------------------------*/
+    ------------------------- */
 
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.page.grid {
@@ -209,9 +209,9 @@
 }
 
 
-/*-------------------
+/* -------------------
      Column Count
---------------------*/
+-------------------- */
 
 /* Assume full width with one column */
 .ui.grid > .column:only-child,
@@ -343,9 +343,9 @@
 }
 
 & when (@variationGridWide) {
-    /*-------------------
+    /* -------------------
         Column Width
-    --------------------*/
+    -------------------- */
 
     /* Sizing Combinations */
     .ui.grid > .row > [class*="one wide"].column,
@@ -445,9 +445,9 @@
         width: @sixteenWide !important;
     }
 
-    /*----------------------
+    /* ----------------------
         Width per Device
-    -----------------------*/
+    ----------------------- */
 
     /* Mobile Sizing Combinations */
     @media only screen and (min-width: @mobileBreakpoint) and (max-width: @largestMobileScreen) {
@@ -951,9 +951,9 @@
 }
 
 & when (@variationGridCentered) {
-    /*----------------------
+    /* ----------------------
             Centered
-    -----------------------*/
+    ----------------------- */
 
     .ui.centered.grid,
     .ui.centered.grid > .row,
@@ -976,9 +976,9 @@
 }
 
 & when (@variationGridRelaxed) {
-    /*----------------------
+    /* ----------------------
             Relaxed
-    -----------------------*/
+    ----------------------- */
 
     .ui.relaxed.grid > .column:not(.row),
     .ui.relaxed.grid > .row > .column,
@@ -1012,9 +1012,9 @@
 }
 
 & when (@variationGridPadded) {
-    /*----------------------
+    /* ----------------------
             Padded
-    -----------------------*/
+    ----------------------- */
 
     .ui.padded.grid:not(.vertically):not(.horizontally) {
         margin: 0 !important;
@@ -1030,9 +1030,9 @@
 }
 
 & when (@variationGridFloated) {
-    /*----------------------
+    /* ----------------------
            "Floated"
-    -----------------------*/
+    ----------------------- */
 
     .ui.grid [class*="left floated"].column {
         margin-right: auto;
@@ -1043,9 +1043,9 @@
 }
 
 & when (@variationGridDivided) {
-    /*----------------------
+    /* ----------------------
             Divided
-    -----------------------*/
+    ----------------------- */
 
     .ui.divided.grid:not([class*="vertically divided"]) > .column:not(.row),
     .ui.divided.grid:not([class*="vertically divided"]) > .row > .column {
@@ -1157,9 +1157,9 @@
 }
 
 & when (@variationGridCelled) {
-    /*----------------------
+    /* ----------------------
              Celled
-    -----------------------*/
+    ----------------------- */
 
     .ui.celled.grid {
         width: 100%;
@@ -1214,9 +1214,9 @@
 }
 
 & when (@variationGridAligned) {
-    /*----------------------
+    /* ----------------------
        Vertically Aligned
-    -----------------------*/
+    ----------------------- */
 
     /* Top Aligned */
     .ui[class*="top aligned"].grid > .column:not(.row),
@@ -1274,9 +1274,9 @@
 }
 
 & when (@variationGridAligned) {
-    /*----------------------
+    /* ----------------------
       Horizontally Centered
-    -----------------------*/
+    ----------------------- */
 
     /* Left Aligned */
 
@@ -1328,9 +1328,9 @@
     }
 }
 
-/*----------------------
+/* ----------------------
          Colored
------------------------*/
+----------------------- */
 & when not (@variationGridColors = false) {
     each(@variationGridColors, {
         @color: @value;
@@ -1347,9 +1347,9 @@
 
 
 & when (@variationGridEqualWidth) {
-    /*----------------------
+    /* ----------------------
           Equal Width
-    -----------------------*/
+    ----------------------- */
 
     .ui[class*="equal width"].grid > .column:not(.row),
     .ui[class*="equal width"].grid > .row > .column,
@@ -1365,9 +1365,9 @@
 }
 
 & when (@variationGridReversed) {
-    /*----------------------
+    /* ----------------------
             Reverse
-    -----------------------*/
+    ----------------------- */
 
 
     /* Mobile */
@@ -1493,9 +1493,9 @@
 }
 
 & when (@variationGridDoubling) {
-    /*-------------------
+    /* -------------------
           Doubling
-    --------------------*/
+    -------------------- */
 
     /* Tablet Only */
     @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
@@ -1688,9 +1688,9 @@
 }
 
 & when (@variationGridStackable) {
-    /*-------------------
+    /* -------------------
           Stackable
-    --------------------*/
+    -------------------- */
 
     @media only screen and (max-width: @largestMobileScreen) {
         .ui.ui.ui.ui.stackable.grid {
@@ -1769,9 +1769,9 @@
 
 }
 
-/*----------------------
+/* ----------------------
      Only (Device)
------------------------*/
+----------------------- */
 
 
 /* These include arbitrary class repetitions for forced specificity */
@@ -1899,9 +1899,9 @@
 }
 
 & when (@variationGridCompact) {
-    /*-----------------
+    /* -----------------
           Compact
-    -----------------*/
+    ----------------- */
 
     .ui.ui.ui.compact.grid {
         margin: -(@compactGutterWidth / 2);
@@ -1945,9 +1945,9 @@
         }
     }
 
-    /*-----------------
+    /* -----------------
         Very compact
-    -----------------*/
+    ----------------- */
 
     & when (@variationGridVeryCompact) {
         .ui.ui.ui[class*="very compact"].grid {

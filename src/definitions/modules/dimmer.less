@@ -127,9 +127,9 @@
 *******************************/
 
 & when (@variationDimmerLegacy) {
-    /*--------------
+    /* --------------
         Legacy
-    ---------------*/
+    --------------- */
 
     /* Animating / Active / Visible */
     .dimmed.dimmable > .ui.animating.legacy.dimmer,
@@ -140,9 +140,9 @@
 }
 
 & when (@variationDimmerAligned) {
-    /*--------------
+    /* --------------
         Alignment
-    ---------------*/
+    --------------- */
 
     .ui[class*="top aligned"].dimmer {
         justify-content: flex-start;
@@ -153,9 +153,9 @@
 }
 
 & when (@variationDimmerPage) {
-    /*--------------
+    /* --------------
           Page
-    ---------------*/
+    --------------- */
 
     .ui.page.dimmer {
         position: @pageDimmerPosition;
@@ -178,9 +178,9 @@ body.dimmable > .dimmer {
 }
 
 & when (@variationDimmerBlurring) {
-    /*--------------
+    /* --------------
         Blurring
-    ---------------*/
+    --------------- */
 
     @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
         .blurring.dimmable > :not(.dimmer) {
@@ -203,9 +203,9 @@ body.dimmable > .dimmer {
     }
 }
 & when (@variationDimmerAligned) {
-    /*--------------
+    /* --------------
         Aligned
-    ---------------*/
+    --------------- */
 
     .ui.dimmer > .top.aligned.content > * {
         vertical-align: top;
@@ -216,9 +216,9 @@ body.dimmable > .dimmer {
 }
 
 & when (@variationDimmerShades) {
-    /*--------------
+    /* --------------
         Shades
-    ---------------*/
+    --------------- */
 
     .medium.medium.medium.medium.medium.dimmer {
         background: @mediumBackgroundColor;
@@ -232,9 +232,9 @@ body.dimmable > .dimmer {
 }
 
 & when (@variationDimmerInverted) {
-    /*--------------
+    /* --------------
         Inverted
-    ---------------*/
+    --------------- */
 
     .ui.inverted.dimmer {
         background: @invertedBackgroundColor;
@@ -245,9 +245,9 @@ body.dimmable > .dimmer {
     }
 
     & when (@variationDimmerShades) {
-        /*--------------
+        /* --------------
          Inverted Shades
-        ---------------*/
+        --------------- */
 
         .medium.medium.medium.medium.medium.inverted.dimmer {
             background: @mediumInvertedBackgroundColor;
@@ -262,9 +262,9 @@ body.dimmable > .dimmer {
 }
 
 & when (@variationDimmerSimple) {
-    /*--------------
+    /* --------------
          Simple
-    ---------------*/
+    --------------- */
 
     /* Displays without javascript */
     .ui.simple.dimmer {
@@ -294,9 +294,9 @@ body.dimmable > .dimmer {
 }
 
 & when (@variationDimmerPartially) {
-    /*--------------
+    /* --------------
          Partially
-    ----------------*/
+    ---------------- */
 
     .ui[class*="top dimmer"],
     .ui[class*="center dimmer"],

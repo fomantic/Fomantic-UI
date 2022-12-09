@@ -21,9 +21,9 @@
             Standard
 *******************************/
 
-/*--------------
+/* --------------
       Card
----------------*/
+--------------- */
 
 .ui.cards > .card,
 .ui.card {
@@ -60,9 +60,9 @@
     margin-bottom: 0;
 }
 
-/*--------------
+/* --------------
       Cards
----------------*/
+--------------- */
 
 .ui.cards {
     display: @groupDisplay;
@@ -94,9 +94,9 @@
 }
 
 
-/*--------------
+/* --------------
   Rounded Edges
----------------*/
+--------------- */
 
 .ui.cards > .card > :first-child,
 .ui.card > :first-child {
@@ -115,9 +115,9 @@
 }
 
 & when (@variationCardImage) {
-    /*--------------
+    /* --------------
          Images
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card > .image,
     .ui.card > .image {
@@ -140,9 +140,9 @@
     }
 }
 
-/*--------------
+/* --------------
      Content
----------------*/
+--------------- */
 
 .ui.cards > .card > .content,
 .ui.card > .content {
@@ -196,9 +196,9 @@
 }
 
 & when (@variationCardFloated) {
-    /*----------------
+    /* ----------------
      Floated Content
-    -----------------*/
+    ----------------- */
 
     .ui.cards > .card [class*="left floated"],
     .ui.card [class*="left floated"] {
@@ -211,9 +211,9 @@
 }
 
 & when (@variationCardAligned) {
-    /*--------------
+    /* --------------
          Aligned
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card [class*="left aligned"],
     .ui.card [class*="left aligned"] {
@@ -230,9 +230,9 @@
 }
 
 & when (@variationCardImage) {
-    /*--------------
+    /* --------------
       Content Image
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card .content img,
     .ui.card .content img {
@@ -251,9 +251,9 @@
 }
 
 & when (@variationCardDescription) {
-    /*--------------
+    /* --------------
        Description
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card > .content > .description,
     .ui.card > .content > .description {
@@ -262,9 +262,9 @@
     }
 }
 
-/*--------------
+/* --------------
     Paragraph
----------------*/
+--------------- */
 
 .ui.cards > .card > .content p,
 .ui.card > .content p {
@@ -275,9 +275,9 @@
     margin-bottom: 0;
 }
 & when (@variationCardMeta) {
-    /*--------------
+    /* --------------
           Meta
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card .meta,
     .ui.card .meta {
@@ -302,9 +302,9 @@
     }
 }
 
-/*--------------
+/* --------------
       Links
----------------*/
+--------------- */
 
 /* Generic */
 .ui.cards > .card > .content a:not(.ui),
@@ -342,9 +342,9 @@
 }
 
 & when (@variationCardButton) {
-    /*--------------
+    /* --------------
          Buttons
-    ---------------*/
+    --------------- */
 
     .ui.cards > .card > .buttons,
     .ui.card > .buttons,
@@ -359,9 +359,9 @@
 }
 
 & when (@variationCardBasic) {
-    /*--------------
+    /* --------------
        Basic
-    ---------------*/
+    --------------- */
     .ui.cards:not(.raised) > .basic.card:not(.raised),
     .ui.ui.ui.basic.cards:not(.raised) > .card:not(.raised),
     .ui.ui.ui.basic.card:not(.raised) {
@@ -380,9 +380,9 @@
     }
 }
 
-/*--------------
+/* --------------
       Dimmer
----------------*/
+--------------- */
 
 .ui.cards > .card .dimmer,
 .ui.card .dimmer {
@@ -390,12 +390,12 @@
     z-index: @dimmerZIndex;
 }
 
-/*--------------
+/* --------------
      Labels
----------------*/
+--------------- */
 
 & when (@variationCardStar) {
-    /*-----Star----- */
+    /* -----Star----- */
 
     /* Icon */
     .ui.cards > .card > .content .star.icon,
@@ -416,7 +416,7 @@
 }
 
 & when (@variationCardLike) {
-    /*-----Like----- */
+    /* -----Like----- */
 
     /* Icon */
     .ui.cards > .card > .content .like.icon,
@@ -437,9 +437,9 @@
 }
 
 & when (@variationCardExtra) {
-    /*----------------
+    /* ----------------
       Extra Content
-    -----------------*/
+    ----------------- */
 
     .ui.cards > .card > .extra,
     .ui.card > .extra {
@@ -473,9 +473,9 @@
 *******************************/
 
 & when (@variationCardDisabled) {
-    /*--------------
+    /* --------------
         Disabled
-    ---------------*/
+    --------------- */
 
     .ui.disabled.card {
         opacity: @disabledOpacity;
@@ -485,9 +485,9 @@
 }
 
 & when (@variationCardLoading) {
-    /*--------------
+    /* --------------
         Loading
-    ---------------*/
+    --------------- */
 
     .ui.loading.card {
         position: relative;
@@ -531,9 +531,9 @@
 *******************************/
 
 & when (@variationCardHorizontal) {
-    /*-------------------
+    /* -------------------
           Horizontal
-    --------------------*/
+    -------------------- */
 
     .ui.horizontal.cards > .card,
     .ui.card.horizontal {
@@ -581,9 +581,9 @@
 }
 
 & when (@variationCardRaised) {
-    /*-------------------
+    /* -------------------
            Raised
-    --------------------*/
+    -------------------- */
 
     .ui.cards > .raised.card,
     .ui.raised.cards > .card,
@@ -619,9 +619,9 @@
 }
 
 & when (@variationCardCentered) {
-    /*-------------------
+    /* -------------------
            Centered
-    --------------------*/
+    -------------------- */
 
     .ui.centered.cards {
         justify-content: center;
@@ -633,9 +633,9 @@
 }
 
 & when (@variationCardFluid) {
-    /*-------------------
+    /* -------------------
             Fluid
-    --------------------*/
+    -------------------- */
 
     .ui.fluid.card {
         width: 100%;
@@ -644,9 +644,9 @@
 }
 
 & when (@variationCardLink) {
-    /*-------------------
+    /* -------------------
             Link
-    --------------------*/
+    -------------------- */
 
     .ui.cards a.card,
     .ui.link.cards .card,
@@ -669,9 +669,9 @@
     }
 }
 
-/*-------------------
+/* -------------------
        Colors
---------------------*/
+-------------------- */
 & when not (@variationCardColors = false) {
     each(@variationCardColors, {
         @color: @value;
@@ -781,9 +781,9 @@
 }
 
 & when (@variationCardEqualWidth) {
-    /*--------------
+    /* --------------
        Card Count
-    ---------------*/
+    --------------- */
 
     .ui.one.cards {
         margin-left: @oneCardOffset;
@@ -887,9 +887,9 @@
 }
 
 & when (@variationCardDoubling) {
-    /*-------------------
+    /* -------------------
           Doubling
-    --------------------*/
+    -------------------- */
 
     /* Mobile Only */
     @media only screen and (max-width : @largestMobileScreen) {
@@ -1063,9 +1063,9 @@
 }
 
 & when (@variationCardStackable) {
-    /*-------------------
+    /* -------------------
           Stackable
-    --------------------*/
+    -------------------- */
 
     @media only screen and (max-width : @largestMobileScreen) {
         .ui.stackable.cards {
@@ -1084,9 +1084,9 @@
     }
 }
 
-/*--------------
+/* --------------
       Size
----------------*/
+--------------- */
 
 .ui.cards > .card {
     font-size: @medium;
@@ -1102,9 +1102,9 @@
 }
 
 & when (@variationCardInverted) {
-    /*-----------------
+    /* -----------------
           Inverted
-    ------------------*/
+    ------------------ */
 
     .ui.inverted.cards > .card,
     .ui.inverted.card {
