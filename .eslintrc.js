@@ -10,6 +10,7 @@ module.exports = {
         sourceType: 'module',
     },
     ignorePatterns: [
+        '!.*',
         '/dist',
         '/examples/assets/library',
         '/test/coverage',
