@@ -25,7 +25,6 @@ module.exports = {
         'block-closing-brace-newline-before': null, // 73 errors
         'selector-list-comma-newline-after': null, // 61 errors
         'import-notation': null, // 55 errors
-        'declaration-colon-space-after': null, // 51 errors
         'function-no-unknown': null, // 43 errors
         'property-no-vendor-prefix': null, // 31 errors
         'media-feature-colon-space-before': null, // 24 errors

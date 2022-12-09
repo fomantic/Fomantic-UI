@@ -152,7 +152,7 @@
             position: relative;
         }
         & > .attached.progress when (@variationToastProgress) {
-            z-index:1;
+            z-index: 1;
             &.bottom {
                 margin: @toastMarginProgress -@toastLeftRightMargin @toastMarginBottom;
             }
@@ -235,7 +235,7 @@
             }
         }
         & .ui.card when (@variationToastCard) {
-            margin:0;
+            margin: 0;
             &.attached:not(.vertical) when (@variationToastAttached) {
                 &.bottom {
                     border-top-left-radius: 0;
@@ -290,7 +290,7 @@
             animation-play-state: paused;
         }
         & .ui.toast:not(.vertical) {
-            display:block;
+            display: block;
         }
         & :not(.comment) {
             &:not(.card) .actions when (@variationToastActions) {
@@ -451,7 +451,7 @@
     & > .content > .header {
         font-weight: bold;
         color: inherit;
-        margin:0;
+        margin: 0;
     }
     &.info when (@variationToastInfo) {
         background-color: @toastInfoColor;
@@ -543,7 +543,7 @@
         }
         & > .ui.image when (@variationToastImage) {
             align-self: flex-start;
-            flex-shrink:0; /* IE11 fix */
+            flex-shrink: 0; /* IE11 fix */
         }
         & when (@variationToastImage) or (@variationToastIcon) {
             & > .centered.image,
