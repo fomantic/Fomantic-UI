@@ -2391,7 +2391,7 @@
                         $nextSelectedItem
                             .addClass(className.selected)
                         ;
-                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                        if (settings.selectOnKeydown && module.is.single() && !$nextSelectedItem.hasClass(className.actionable)) {
                             module.set.selectedItem($nextSelectedItem);
                         }
                         $menu
