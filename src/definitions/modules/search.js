@@ -1356,7 +1356,7 @@
 
         regExp: {
             escape: /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
-            beginsWith: '(?:\s|^)',
+            beginsWith: '(?:\\s|^)',
         },
 
         // maps api response attributes to internal representation
