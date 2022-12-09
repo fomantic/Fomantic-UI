@@ -121,7 +121,6 @@ module.exports = {
 
         // TODO
         'no-shadow-restricted-names': 'off',
-        'unicorn/prefer-negative-index': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

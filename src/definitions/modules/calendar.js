@@ -1123,7 +1123,7 @@
                                 return tokens[match];
                             }
 
-                            return match.slice(1, match.length - 1);
+                            return match.slice(1, -1);
                         });
                     },
                     isDisabled: function (date, mode) {
