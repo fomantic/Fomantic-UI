@@ -53,7 +53,7 @@ function parser(file, callback) {
             /** @type {string} */
             text     = String(file.contents.toString('utf8')),
             lines    = text.split('\n'),
-            filename = file.path.substring(0, file.path.length - 4),
+            filename = file.path.slice(0, -4),
             key      = 'server/documents',
             position = filename.indexOf(key)
         ;
@@ -66,7 +66,7 @@ function parser(file, callback) {
             return callback(null, file);
         }
 
-        filename = filename.substring(position + key.length + 1, filename.length);
+        filename = filename.slice(position + key.length + 1, filename.length);
 
         var
             lineCount = lines.length,

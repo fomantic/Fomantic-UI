@@ -1721,7 +1721,7 @@
                         }
                         for (j = 0; j < settings.text.months.length; j++) {
                             monthString = settings.text.months[j];
-                            monthString = monthString.substring(0, word.length).toLowerCase();
+                            monthString = monthString.slice(0, word.length).toLowerCase();
                             if (monthString === word) {
                                 month = j + 1;
 
