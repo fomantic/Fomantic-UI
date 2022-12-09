@@ -245,19 +245,19 @@
                             $clone      = $module.clone().addClass(className.loading),
                             $side       = $clone.find('>' + selector.sides + '>' + selector.side),
                             $activeSide = $side.filter('.' + settings.className.active),
-                            $nextSide   = (nextIndex)
+                            $nextSide   = nextIndex
                                 ? $side.eq(nextIndex)
-                                : (($activeSide.next(selector.side).length > 0)
+                                : ($activeSide.next(selector.side).length > 0
                                     ? $activeSide.next(selector.side)
                                     : $side.first()),
                             newWidth    = settings.width === 'next'
                                 ? $nextSide.outerWidth(true)
-                                : ((settings.width === 'initial')
+                                : (settings.width === 'initial'
                                     ? $module.width()
                                     : settings.width),
                             newHeight    = settings.height === 'next'
                                 ? $nextSide.outerHeight(true)
-                                : ((settings.height === 'initial')
+                                : (settings.height === 'initial'
                                     ? $module.height()
                                     : settings.height)
                         ;

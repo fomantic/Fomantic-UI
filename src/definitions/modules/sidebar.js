@@ -724,11 +724,11 @@
                             direction = module.get.direction(),
                             transition
                         ;
-                        transition = (module.is.mobile())
-                            ? ((settings.mobileTransition == 'auto')
+                        transition = module.is.mobile()
+                            ? (settings.mobileTransition == 'auto'
                                 ? settings.defaultTransition.mobile[direction]
                                 : settings.mobileTransition)
-                            : ((settings.transition == 'auto')
+                            : (settings.transition == 'auto'
                                 ? settings.defaultTransition.computer[direction]
                                 : settings.transition);
                         module.verbose('Determined transition', transition);
@@ -786,8 +786,8 @@
                     ie: function () {
                         if (module.cache.isIE === undefined) {
                             var
-                                isIE11 = (!(window.ActiveXObject) && 'ActiveXObject' in window),
-                                isIE = ('ActiveXObject' in window)
+                                isIE11 = !window.ActiveXObject && 'ActiveXObject' in window,
+                                isIE = 'ActiveXObject' in window
                             ;
                             module.cache.isIE = isIE11 || isIE;
                         }

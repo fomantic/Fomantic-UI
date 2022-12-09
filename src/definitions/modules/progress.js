@@ -320,9 +320,9 @@
                     },
 
                     numericValue: function (value) {
-                        return (typeof value === 'string')
-                            ? ((value.replace(/[^\d.]/g, '') !== '')
-                                ? +(value.replace(/[^\d.]/g, ''))
+                        return typeof value === 'string'
+                            ? (value.replace(/[^\d.]/g, '') !== ''
+                                ? +value.replace(/[^\d.]/g, '')
                                 : false)
                             : value;
                     },
@@ -497,7 +497,7 @@
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {
                             percent = typeof percent === 'string'
-                                ? +(percent.replace('%', ''))
+                                ? +percent.replace('%', '')
                                 : percent;
 
                             return settings.limitValues

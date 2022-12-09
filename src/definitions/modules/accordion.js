@@ -122,7 +122,7 @@
                 toggle: function (query) {
                     var
                         $activeTitle = query !== undefined
-                            ? ((typeof query === 'number')
+                            ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
@@ -147,7 +147,7 @@
                 open: function (query) {
                     var
                         $activeTitle = query !== undefined
-                            ? ((typeof query === 'number')
+                            ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
                             : $(this).closest(selector.title),
@@ -217,7 +217,7 @@
                 close: function (query) {
                     var
                         $activeTitle = query !== undefined
-                            ? ((typeof query === 'number')
+                            ? (typeof query === 'number'
                                 ? $title.eq(query)
                                 : $(query).closest(selector.title))
                             : $(this).closest(selector.title),

@@ -579,8 +579,8 @@
                             duration = $module.css('animation-duration') || 0;
                         }
 
-                        return (typeof duration === 'string')
-                            ? ((duration.indexOf('ms') > -1)
+                        return typeof duration === 'string'
+                            ? (duration.indexOf('ms') > -1
                                 ? parseFloat(duration)
                                 : parseFloat(duration) * 1000)
                             : duration;

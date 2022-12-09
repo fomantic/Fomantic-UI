@@ -531,8 +531,8 @@
                             var focused = module.helper.dateEqual(cellDate, focusDate, mode);
                             var inRange = !rangeDate
                                 ? false
-                                : ((!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
-                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate)));
+                                : (!!startDate && module.helper.isDateInRange(cellDate, mode, startDate, rangeDate))
+                                    || (!!endDate && module.helper.isDateInRange(cellDate, mode, rangeDate, endDate));
                             $cell.toggleClass(className.focusCell, focused && (!isTouch || isTouchDown) && (!adjacent || (settings.selectAdjacentDays && adjacent)) && !disabled);
 
                             if (module.helper.isTodayButton($cell)) {
@@ -1112,7 +1112,7 @@
                                 ss: ('0' + s).slice(-2),
                                 a: a,
                                 A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : (((D % 100) - (D % 10) === 10) ? 0 : D % 10)],
+                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : ((D % 100) - (D % 10) === 10 ? 0 : D % 10)],
                                 w: w,
                                 ww: ('0' + w).slice(-2),
                             }
@@ -1392,9 +1392,9 @@
 
                         return !date
                             ? date
-                            : ((minDate && module.helper.dateDiff(date, minDate, 'minute') > 0)
+                            : (minDate && module.helper.dateDiff(date, minDate, 'minute') > 0
                                 ? (isTimeOnly ? module.helper.mergeDateTime(date, minDate) : minDate) // eslint-disable-line unicorn/no-nested-ternary
-                                : ((maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0) // eslint-disable-line unicorn/no-nested-ternary
+                                : (maxDate && module.helper.dateDiff(maxDate, date, 'minute') > 0 // eslint-disable-line unicorn/no-nested-ternary
                                     ? (isTimeOnly ? module.helper.mergeDateTime(date, maxDate) : maxDate)
                                     : date));
                     },
