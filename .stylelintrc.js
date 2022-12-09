@@ -45,7 +45,6 @@ module.exports = {
         'number-max-precision': null, // 2 errors
         'no-extra-semicolons': null, // 2 errors
         'declaration-colon-newline-after': null, // 1 errors
-        'selector-combinator-space-before': null, // 1 errors
         'color-hex-case': null, // 1 errors
         'color-hex-length': null, // 1 errors
     },
