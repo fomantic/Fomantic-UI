@@ -368,8 +368,8 @@ i.icons {
 
 & when (@variationIconGroups) or (@variationIconCorner) {
     /*******************************
-              Groups
-  *******************************/
+                Groups
+    *******************************/
 
     i.icons {
         display: inline-block;
@@ -449,8 +449,8 @@ i.icons {
 & when ((@variationIconGroups) or (@variationIconCorner))
 and ((@variationIconBordered) or (@variationIconCircular)) {
     /*************************************************
-     Bordered/circular with corner or group icons
-  *************************************************/
+       Bordered/circular with corner or group icons
+    *************************************************/
     i.bordered.icons,
     i.circular.icons {
         width: @borderedSize;
@@ -547,8 +547,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 & when (@variationIconSolid) {
     /*******************************
-          Solid Icons
-  *******************************/
+            Solid Icons
+    *******************************/
 
     /* Icons */
     .generateIcons(@icon-map,false);
@@ -561,8 +561,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 & when (@variationIconOutline) {
     /*******************************
-           Outline Icons
-  *******************************/
+             Outline Icons
+    *******************************/
 
     i.icon.outline {
         font-family: @outlineFontName;
@@ -579,8 +579,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 & when (@variationIconThin) {
     /*******************************
-         Thin Icons
-  *******************************/
+           Thin Icons
+    *******************************/
 
     /* Icons */
     i.icon.thin {
@@ -596,8 +596,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 & when (@variationIconBrand) {
     /*******************************
-            Brand Icons
-  *******************************/
+              Brand Icons
+    *******************************/
 
     /* Icons */
     .generateIcons(@icon-brand-map,@brandFontName);
@@ -610,8 +610,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 
 & when (@variationIconDuotone) {
     /*******************************
-            Duotone Icons
-  *******************************/
+              Duotone Icons
+    *******************************/
 
     /* Make duotone icons use the proper font */
     i.icon.duotone {
@@ -649,8 +649,8 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     }
 
     /*
-   * Colors for duotone icons, in the form `primary-secondary`(e.g. `black-grey duotone icon`).
-   */
+     * Colors for duotone icons, in the form `primary-secondary`(e.g. `black-grey duotone icon`).
+     */
     & when not (@variationIconColors = false) {
         each(@variationIconColors, {
             @color: @value;
