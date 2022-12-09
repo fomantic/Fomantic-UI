@@ -24,7 +24,6 @@ module.exports = {
         'declaration-block-trailing-semicolon': null, // 77 errors
         'block-closing-brace-newline-before': null, // 73 errors
         'selector-list-comma-newline-after': null, // 61 errors
-        'block-opening-brace-space-before': null, // 56 errors
         'import-notation': null, // 55 errors
         'at-rule-name-space-after': null, // 52 errors
         'declaration-colon-space-after': null, // 51 errors

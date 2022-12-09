@@ -173,13 +173,13 @@
         border-color: transparent;
         color: transparent;
     }
-    & when (@variationButtonLabeledIcon){
+    & when (@variationButtonLabeledIcon) {
         .ui.labeled.icon.loading.button .icon {
             background-color: transparent;
             box-shadow: none;
         }
     }
-    & when (@variationButtonBasic){
+    & when (@variationButtonBasic) {
         .ui.basic.loading.button:not(.inverted)::before {
             border-color: @loaderFillColor;
         }
@@ -188,7 +188,7 @@
         }
     }
 }
-& when (@variationButtonDisabled){
+& when (@variationButtonDisabled) {
     /* -------------------
           Disabled
     -------------------- */
@@ -204,7 +204,7 @@
         box-shadow: none;
         pointer-events: none !important;
     }
-    & when (@variationButtonBasic){
+    & when (@variationButtonBasic) {
         /* Basic Group With Disabled */
         .ui.basic.buttons .ui.disabled.button {
             border-color: @disabledBorderColor;
@@ -215,7 +215,7 @@
 /*******************************
              Types
 *******************************/
-& when (@variationButtonAnimated){
+& when (@variationButtonAnimated) {
     /* -------------------
            Animated
     -------------------- */
@@ -382,7 +382,7 @@
     }
 }
 
-& when (@variationButtonLabeled) or (@variationButtonLabeledIcon){
+& when (@variationButtonLabeled) or (@variationButtonLabeledIcon) {
     /* -------------------
         Labeled Button
     -------------------- */
@@ -928,7 +928,7 @@
             box-shadow: inset 0 @tertiaryLineHeight 0 @tertiaryLineColor;
         }
 
-        & when (@tertiaryWithUnderline = false) and (@tertiaryWithOverline = false){
+        & when (@tertiaryWithUnderline = false) and (@tertiaryWithOverline = false) {
             box-shadow: none;
         }
 
@@ -963,7 +963,7 @@
             box-shadow: inset 0 @tertiaryLineHeight 0 @tertiaryFocusLineColor;
         }
 
-        & when (@tertiaryFocusWithUnderline = false) and (@tertiaryFocusWithOverline = false){
+        & when (@tertiaryFocusWithUnderline = false) and (@tertiaryFocusWithOverline = false) {
             box-shadow: none;
         }
 
@@ -982,7 +982,7 @@
             border-radius: 0 0 @borderRadius @borderRadius;
         }
 
-        & when (@tertiaryActiveWithUnderline = false) and (@tertiaryActiveWithOverline = false){
+        & when (@tertiaryActiveWithUnderline = false) and (@tertiaryActiveWithOverline = false) {
             box-shadow: none;
             border-radius: 0;
         }

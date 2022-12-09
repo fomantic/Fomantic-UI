@@ -199,7 +199,7 @@
     .ui.modal > .centered,
     .ui.modal > .center.aligned {
         text-align: center;
-        &.actions > .button:not(.fluid) when (@variationModalActions){
+        &.actions > .button:not(.fluid) when (@variationModalActions) {
             margin-left: @buttonCenteredDistance;
             margin-right: @buttonCenteredDistance;
         }
@@ -232,10 +232,10 @@
             opacity: @closeOpacityDimmed;
         }
     }
-    .ui.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside){
+    .ui.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside) {
         text-shadow: @closeShadow;
     }
-    .ui.inverted.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside){
+    .ui.inverted.dimmer > .ui.modal:not(.fullscreen) > .close:not(.inside) {
         text-shadow: @invertedCloseShadow;
     }
 }

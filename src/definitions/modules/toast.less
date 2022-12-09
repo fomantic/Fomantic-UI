@@ -179,7 +179,7 @@
             }
         }
         & > .ui.message when (@variationToastMessage) {
-            & > .close.icon when (@variationToastClose){
+            & > .close.icon when (@variationToastClose) {
                 top: @toastCloseTopDistance;
                 right: @toastCloseRightDistance;
             }
@@ -203,14 +203,14 @@
                         top: e(%("calc(50%% - %d)", @toastIconCenteredAdjustment));
                         transform: none;
                     }
-                    &.icon.icon.icon when (@variationToastIcon){
+                    &.icon.icon.icon when (@variationToastIcon) {
                         display: block;
                     }
                 }
             }
         }
         & .ui.toast {
-            & > .close.icon when (@variationToastClose){
+            & > .close.icon when (@variationToastClose) {
                 cursor: pointer;
                 margin: 0;
                 opacity: @toastCloseOpacity;
@@ -490,7 +490,7 @@
                 padding-left: @toastIconContentPadding;
             }
         }
-        & > .close.icon + .content when (@variationToastClose){
+        & > .close.icon + .content when (@variationToastClose) {
             padding-left: @toastCloseDistance;
         }
         & > .ui.image when (@variationToastImage) {
@@ -529,10 +529,10 @@
         & > .content {
             flex-grow: 1;
         }
-        &.attached when (@variationToastAttached){
+        &.attached when (@variationToastAttached) {
             flex-grow: 1;
         }
-        & > .close.icon + .content when (@variationToastClose){
+        & > .close.icon + .content when (@variationToastClose) {
             padding-left: @toastCloseDistanceVertical;
         }
         & when (@variationToastImage) or (@variationToastIcon) {
@@ -541,7 +541,7 @@
                 padding-left: @toastImageContentPadding;
             }
         }
-        & > .ui.image when (@variationToastImage){
+        & > .ui.image when (@variationToastImage) {
             align-self: flex-start;
             flex-shrink:0; /* IE11 fix */
         }

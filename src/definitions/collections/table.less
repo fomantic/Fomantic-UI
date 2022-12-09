@@ -545,7 +545,7 @@
             }
         }
         & when (@variationTableOverflowingVeryLong) {
-            .ui.overflowing.table[class*="very long"]{
+            .ui.overflowing.table[class*="very long"] {
                 max-height: @overflowingComputerMaxHeight * 3;
             }
         }
@@ -828,7 +828,7 @@
         .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
         .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
         .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
-        .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
+        .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned) {
             display: block !important;
             width: 100% !important;
         }
@@ -1591,7 +1591,7 @@
     }
 }
 
-& when (@variationTableBasic) or (@variationTableVeryBasic){
+& when (@variationTableBasic) or (@variationTableVeryBasic) {
     /* --------------
           Basic
     --------------- */
@@ -1800,7 +1800,7 @@
         & > tfoot > tr {
             background: @invertedStuckFooterBackground;
         }
-        &.basic when (@variationTableBasic){
+        &.basic when (@variationTableBasic) {
             & > thead > tr,
             > tfoot > tr {
                 background: @invertedStuckBackground;

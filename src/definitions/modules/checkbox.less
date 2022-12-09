@@ -183,7 +183,7 @@
     color: @checkboxActiveCheckColor;
 }
 
-& when (@variationCheckboxIndeterminate){
+& when (@variationCheckboxIndeterminate) {
     /* --------------
       Indeterminate
     --------------- */
@@ -217,7 +217,7 @@
 --------------- */
 
 .ui.checkbox input:not([type=radio]):indeterminate:focus ~ label::before,
-.ui.checkbox input:checked:focus ~ label::before  {
+.ui.checkbox input:checked:focus ~ label::before {
     background: @checkboxActiveFocusBackground;
     border-color: @checkboxActiveFocusBorderColor;
 }

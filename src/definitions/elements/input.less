@@ -74,7 +74,7 @@
     color: @placeholderColor;
     opacity: 1;
 }
-.ui.input > input:-ms-input-placeholder when (@supportIE){
+.ui.input > input:-ms-input-placeholder when (@supportIE) {
     color: @placeholderColor;
 }
 
@@ -151,7 +151,7 @@
 --------------------- */
 
 .ui.input.focus > input,
-.ui.input > input:focus  {
+.ui.input > input:focus {
     border-color: @focusBorderColor;
     background: @focusBackground;
     color: @focusColor;
@@ -478,7 +478,7 @@
             padding-right: @labeledMargin + @labeledIconInputMargin;
         }
         & > .remove.icon,
-        > .dropdown.icon  {
+        > .dropdown.icon {
             padding-right: @labeledMargin;
         }
     }
@@ -495,7 +495,7 @@
             padding-right: @labeledAndIconMargin + @labeledIconInputMargin;
         }
         & > .remove.icon,
-        > .dropdown.icon  {
+        > .dropdown.icon {
             padding-right: @labeledAndIconMargin;
         }
     }

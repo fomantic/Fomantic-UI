@@ -61,7 +61,7 @@
     & when (@importGoogleFonts) {
         @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
     }
-    & when (@importFonts) and not (@fontName = ''){
+    & when (@importFonts) and not (@fontName = '') {
         each(@fonts, {
             @font-face {
                 each(@value,{
