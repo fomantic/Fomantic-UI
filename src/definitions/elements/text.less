@@ -23,12 +23,12 @@
              Text
 *******************************/
 span.ui.text {
-  line-height: @lineHeight;
+    line-height: @lineHeight;
 }
 
 & when not (@variationTextColors = false) {
-  each(@variationTextColors, {
-    @color: @value;
+    each(@variationTextColors, {
+        @color: @value;
     @c: @colors[@@color][color];
     @l: @colors[@@color][light];
 
@@ -44,8 +44,8 @@ span.ui.text {
 }
 
 & when not (@variationTextStates = false) {
-  each(@variationTextStates, {
-    @state: @value;
+    each(@variationTextStates, {
+        @state: @value;
     @c: @textStates[@@state][color];
 
     span.ui.@{state}.text {
@@ -55,18 +55,18 @@ span.ui.text {
 }
 
 & when (@variationTextDisabled) {
-  span.ui.disabled.text {
-    opacity: @disabledOpacity;
-  }
+    span.ui.disabled.text {
+        opacity: @disabledOpacity;
+    }
 }
 
 /* Sizes */
 span.ui.medium.text {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationTextSizes = false) {
-  each(@variationTextSizes, {
-    @s: @@value;
+    each(@variationTextSizes, {
+        @s: @@value;
     span.ui.@{value}.text {
       font-size: @s;
     }

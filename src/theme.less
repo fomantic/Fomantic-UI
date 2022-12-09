@@ -20,7 +20,7 @@
 
 /* Component's site.variables */
 & when not (@theme = 'default') {
-  @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
+    @import (optional) "@{themesFolder}/@{theme}/globals/site.variables";
 }
 
 /* Site theme site.variables */
@@ -61,12 +61,12 @@
 -------------------*/
 
 .loadFonts() {
-  & when (@importGoogleFonts) {
-    @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
-  }
-  & when (@importFonts) and not (@fontName = ''){
-    each(@fonts, {
-      @font-face {
+    & when (@importGoogleFonts) {
+        @import (css) url('@{googleProtocol}fonts.googleapis.com/css2?family=@{googleFontRequest}');
+    }
+    & when (@importFonts) and not (@fontName = ''){
+        each(@fonts, {
+            @font-face {
         each(@value,{
             @{key}: @value;
         });
@@ -80,9 +80,9 @@
 -------------------*/
 
 .loadUIOverrides() {
-  & when not (@theme = 'default') {
-    @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
-  }
-  @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
-  @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
+    & when not (@theme = 'default') {
+        @import (optional) "@{themesFolder}/default/@{type}s/@{element}.overrides";
+    }
+    @import (optional) "@{themesFolder}/@{theme}/@{type}s/@{element}.overrides";
+    @import (optional) "@{siteFolder}/@{type}s/@{element}.overrides";
 }

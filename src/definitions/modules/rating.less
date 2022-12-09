@@ -23,28 +23,28 @@
 *******************************/
 
 .ui.rating {
-  display: inline-flex;
-  white-space: @whiteSpace;
-  vertical-align: @verticalAlign;
+    display: inline-flex;
+    white-space: @whiteSpace;
+    vertical-align: @verticalAlign;
 }
 .ui.rating:last-child {
-  margin-right: 0;
+    margin-right: 0;
 }
 
 /* Icon */
 .ui.rating .icon {
-  padding: 0;
-  margin: 0;
-  text-align: center;
-  font-weight: @normal;
-  font-style: normal;
-  flex: 1 0 auto;
-  cursor: @iconCursor;
-  width: @iconWidth;
-  height: @iconHeight;
-  transition: @iconTransition;
-  line-height: 1;
-  backface-visibility: hidden;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    font-weight: @normal;
+    font-style: normal;
+    flex: 1 0 auto;
+    cursor: @iconCursor;
+    width: @iconWidth;
+    height: @iconHeight;
+    transition: @iconTransition;
+    line-height: 1;
+    backface-visibility: hidden;
 }
 
 
@@ -59,45 +59,45 @@
 
 /* Inactive Icon */
 .ui.rating .icon {
-  background: @inactiveBackground;
-  color: @inactiveColor;
+    background: @inactiveBackground;
+    color: @inactiveColor;
 }
 
 /* Active Icon */
 .ui.rating .active.icon {
-  background: @activeBackground;
-  color: @activeColor;
+    background: @activeBackground;
+    color: @activeColor;
 }
 
 & when (@variationRatingPartial) {
-  /* Partially Active Icon */
-  .ui.rating .icon.partial.active {
-    background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
-  }
+    /* Partially Active Icon */
+    .ui.rating .icon.partial.active {
+        background: linear-gradient(to right, @activeColor 0% var(--full), @inactiveColor var(--full) 100%);
+    }
 
-  /* central override for colors */
-  .ui.ui.ui.rating .icon.partial.active {
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    text-shadow: none;
-  }
+    /* central override for colors */
+    .ui.ui.ui.rating .icon.partial.active {
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-shadow: none;
+    }
 }
 /* Selected Icon */
 .ui.rating .icon.selected,
 .ui.rating .icon.selected.active,
 .ui.rating .icon.selected.partial.active {
-  background: @selectedBackground;
-  color: @selectedColor;
-  background-clip: unset;
+    background: @selectedBackground;
+    color: @selectedColor;
+    background-clip: unset;
 }
 
 /*--------------
      Colors
 -------------- */
 & when not (@variationRatingColors = false) {
-  each(@variationRatingColors, {
-    @color: @value;
+    each(@variationRatingColors, {
+        @color: @value;
     @c: @colors[@@color][color];
     @l: @colors[@@color][light];
     @h: @colors[@@color][hover];
@@ -138,15 +138,15 @@
 *******************************/
 
 & when (@variationRatingDisabled) {
-  /*-------------------
+    /*-------------------
          Disabled
   --------------------*/
 
-  /* disabled rating */
-  .ui.disabled.rating .icon {
-    cursor: default;
-    pointer-events: none;
-  }
+    /* disabled rating */
+    .ui.disabled.rating .icon {
+        cursor: default;
+        pointer-events: none;
+    }
 }
 
 
@@ -156,11 +156,11 @@
 
 /* Selected Rating */
 .ui.rating.selected .active.icon {
-  opacity: @interactiveActiveIconOpacity;
+    opacity: @interactiveActiveIconOpacity;
 }
 .ui.rating.selected .icon.selected,
 .ui.rating .icon.selected {
-  opacity: @interactiveSelectedIconOpacity;
+    opacity: @interactiveSelectedIconOpacity;
 }
 
 
@@ -170,11 +170,11 @@
 *******************************/
 
 .ui.rating {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationRatingSizes = false) {
-  each(@variationRatingSizes, {
-    @s: @@value;
+    each(@variationRatingSizes, {
+        @s: @@value;
     .ui.@{value}.rating  {
       font-size: @s;
     }

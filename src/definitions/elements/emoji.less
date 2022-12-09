@@ -25,21 +25,21 @@
 
 
 em[data-emoji] {
-  opacity: @opacity;
+    opacity: @opacity;
 
-  speak: none;
-  backface-visibility: hidden;
+    speak: none;
+    backface-visibility: hidden;
 }
 
 em[data-emoji]::before {
-  content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
-  display: inline-block;
-  line-height: @emojiLineHeight;
-  background-repeat: no-repeat;
-  background-position: center center;
-  & when not (@emojiFileType = 'svg') {
-    background-size: contain;
-  }
+    content:'\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
+    display: inline-block;
+    line-height: @emojiLineHeight;
+    background-repeat: no-repeat;
+    background-position: center center;
+    & when not (@emojiFileType = 'svg') {
+        background-size: contain;
+    }
 }
 
 
@@ -48,9 +48,9 @@ em[data-emoji]::before {
 *******************************/
 
 & when (@variationEmojiDisabled) {
-  em[data-emoji].disabled {
-    opacity: @disabledOpacity;
-  }
+    em[data-emoji].disabled {
+        opacity: @disabledOpacity;
+    }
 }
 
 
@@ -59,33 +59,33 @@ em[data-emoji]::before {
 *******************************/
 
 & when (@variationEmojiLoading) {
-  em[data-emoji].loading::before {
-    animation: loader @loadingDuration linear infinite;
-  }
+    em[data-emoji].loading::before {
+        animation: loader @loadingDuration linear infinite;
+    }
 }
 
 
 & when (@variationEmojiLink) {
-  /*-------------------
+    /*-------------------
            Link
   --------------------*/
 
-  em[data-emoji].link:not(.disabled) {
-    cursor: pointer;
-  }
+    em[data-emoji].link:not(.disabled) {
+        cursor: pointer;
+    }
 }
 
 /*rtl:begin:ignore*/
 
 each(@size-map, {
-  em[data-emoji].@{key} {
+    em[data-emoji].@{key} {
     font-size: 1.5em * @value;
     vertical-align: middle;
   }
 });
 
 each(@emoji-map,{
-  & when (@variationEmojiColons) {
+    & when (@variationEmojiColons) {
     em[data-emoji=":@{value}:"]::before {
       background-image: url("@{emojiPath}@{key}.@{emojiFileType}");
     }

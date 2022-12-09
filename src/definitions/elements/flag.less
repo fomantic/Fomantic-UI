@@ -24,23 +24,23 @@
 *******************************/
 
 i.flag:not(.icon) {
-  speak: none;
-  backface-visibility: hidden;
+    speak: none;
+    backface-visibility: hidden;
 }
 
 i.flag:not(.icon)::before {
-  content: '\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
-  display: inline-block;
-  line-height: @flagLineHeight;
-  background-repeat: no-repeat;
-  background-position: center center;
-  & when not (@flagFileType = 'svg') {
-    background-size: contain;
-  }
+    content: '\00A0\00A0\00A0\00A0\00A0\00A0\00A0';
+    display: inline-block;
+    line-height: @flagLineHeight;
+    background-repeat: no-repeat;
+    background-position: center center;
+    & when not (@flagFileType = 'svg') {
+        background-size: contain;
+    }
 }
 
 each(@size-map, {
-  i.flag.@{key} {
+    i.flag.@{key} {
     font-size: 1.5em * @value;
     vertical-align: middle;
   }
@@ -50,7 +50,7 @@ each(@size-map, {
 
 // for simplicity, class and alias names have to be unique and different to countrycode otherwise false
 each(@flags, {
-  @unicode: replace(@key,'@','');
+    @unicode: replace(@key,'@','');
   @cc: replace(@flags[@@unicode][countrycode],'_','.','g');
   @cls: replace(@flags[@@unicode][class],'_','.','g');
   @alias: replace(@flags[@@unicode][aliasClass],'_','.','g');

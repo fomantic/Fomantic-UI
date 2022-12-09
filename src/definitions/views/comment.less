@@ -28,15 +28,15 @@
 ---------------*/
 
 .ui.comments {
-  margin: @margin;
-  max-width: @maxWidth;
+    margin: @margin;
+    max-width: @maxWidth;
 }
 
 .ui.comments:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 .ui.comments:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 
 /*--------------
@@ -44,17 +44,17 @@
 ---------------*/
 
 .ui.comments .comment {
-  position: relative;
-  background: @commentBackground;
-  margin: @commentMargin;
-  padding: @commentPadding;
-  border: @commentBorder;
-  border-top: @commentDivider;
-  line-height: @commentLineHeight;
+    position: relative;
+    background: @commentBackground;
+    margin: @commentMargin;
+    padding: @commentPadding;
+    border: @commentBorder;
+    border-top: @commentDivider;
+    line-height: @commentLineHeight;
 }
 .ui.comments .comment:first-child {
-  margin-top: @firstCommentMargin;
-  padding-top: @firstCommentPadding;
+    margin-top: @firstCommentMargin;
+    padding-top: @firstCommentPadding;
 }
 
 
@@ -63,39 +63,39 @@
 ---------------------*/
 
 .ui.comments .comment > .comments {
-  margin: @nestedCommentsMargin;
-  padding: @nestedCommentsPadding;
+    margin: @nestedCommentsMargin;
+    padding: @nestedCommentsPadding;
 }
 .ui.comments .comment > .comments::before{
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 .ui.comments .comment > .comments .comment {
-  border: @nestedCommentBorder;
-  border-top: @nestedCommentDivider;
-  background: @nestedCommentBackground;
+    border: @nestedCommentBorder;
+    border-top: @nestedCommentDivider;
+    background: @nestedCommentBackground;
 }
 & when (@variationCommentAvatar) {
-  /*--------------
+    /*--------------
        Avatar
   ---------------*/
 
-  .ui.comments .comment .avatar {
-    display: @avatarDisplay;
-    width: @avatarWidth;
-    height: @avatarHeight;
-    float: @avatarFloat;
-    margin: @avatarMargin;
-  }
-  .ui.comments .comment img.avatar,
-  .ui.comments .comment .avatar img {
-    display: block;
-    margin: 0 auto;
-    width: 100%;
-    height: 100%;
-    border-radius: @avatarBorderRadius;
-  }
+    .ui.comments .comment .avatar {
+        display: @avatarDisplay;
+        width: @avatarWidth;
+        height: @avatarHeight;
+        float: @avatarFloat;
+        margin: @avatarMargin;
+    }
+    .ui.comments .comment img.avatar,
+    .ui.comments .comment .avatar img {
+        display: block;
+        margin: 0 auto;
+        width: 100%;
+        height: 100%;
+        border-radius: @avatarBorderRadius;
+    }
 }
 
 /*--------------
@@ -103,51 +103,51 @@
 ---------------*/
 
 .ui.comments .comment > .content {
-  display: block;
+    display: block;
 }
 & when (@variationCommentAvatar) {
-  /* If there is an avatar move content over */
-  .ui.comments .comment > .avatar ~ .content {
-    margin-left: @contentMargin;
-  }
+    /* If there is an avatar move content over */
+    .ui.comments .comment > .avatar ~ .content {
+        margin-left: @contentMargin;
+    }
 }
 
 & when (@variationCommentAuthor) {
-  /*--------------
+    /*--------------
        Author
   ---------------*/
 
-  .ui.comments .comment .author {
-    font-size: @authorFontSize;
-    color: @authorColor;
-    font-weight: @authorFontWeight;
-  }
-  .ui.comments .comment a.author {
-    cursor: pointer;
-  }
-  .ui.comments .comment a.author:hover {
-    color: @authorHoverColor;
-  }
+    .ui.comments .comment .author {
+        font-size: @authorFontSize;
+        color: @authorColor;
+        font-weight: @authorFontWeight;
+    }
+    .ui.comments .comment a.author {
+        cursor: pointer;
+    }
+    .ui.comments .comment a.author:hover {
+        color: @authorHoverColor;
+    }
 }
 
 & when (@variationCommentMeta) {
-  /*--------------
+    /*--------------
        Metadata
   ---------------*/
 
-  .ui.comments .comment .metadata {
-    display: @metadataDisplay;
-    margin-left: @metadataSpacing;
-    color: @metadataColor;
-    font-size: @metadataFontSize;
-  }
-  .ui.comments .comment .metadata > * {
-    display: inline-block;
-    margin: 0 @metadataContentSpacing 0 0;
-  }
-  .ui.comments .comment .metadata > :last-child {
-    margin-right: 0;
-  }
+    .ui.comments .comment .metadata {
+        display: @metadataDisplay;
+        margin-left: @metadataSpacing;
+        color: @metadataColor;
+        font-size: @metadataFontSize;
+    }
+    .ui.comments .comment .metadata > * {
+        display: inline-block;
+        margin: 0 @metadataContentSpacing 0 0;
+    }
+    .ui.comments .comment .metadata > :last-child {
+        margin-right: 0;
+    }
 }
 
 /*--------------------
@@ -155,53 +155,53 @@
 ---------------------*/
 
 .ui.comments .comment .text {
-  margin: @textMargin;
-  font-size: @textFontSize;
-  word-wrap: @textWordWrap;
-  color: @textColor;
-  line-height: @textLineHeight;
+    margin: @textMargin;
+    font-size: @textFontSize;
+    word-wrap: @textWordWrap;
+    color: @textColor;
+    line-height: @textLineHeight;
 }
 
 
 & when (@variationCommentActions) {
-  /*--------------------
+    /*--------------------
        User Actions
   ---------------------*/
 
-  .ui.comments .comment .actions {
-    font-size: @actionFontSize;
-  }
-  .ui.comments .comment .actions a {
-    cursor: pointer;
-    display: inline-block;
-    margin: 0 @actionContentDistance 0 0;
-    color: @actionLinkColor;
-  }
-  .ui.comments .comment .actions a:last-child {
-    margin-right: 0;
-  }
-  .ui.comments .comment .actions a.active,
-  .ui.comments .comment .actions a:hover {
-    color: @actionLinkHoverColor;
-  }
+    .ui.comments .comment .actions {
+        font-size: @actionFontSize;
+    }
+    .ui.comments .comment .actions a {
+        cursor: pointer;
+        display: inline-block;
+        margin: 0 @actionContentDistance 0 0;
+        color: @actionLinkColor;
+    }
+    .ui.comments .comment .actions a:last-child {
+        margin-right: 0;
+    }
+    .ui.comments .comment .actions a.active,
+    .ui.comments .comment .actions a:hover {
+        color: @actionLinkHoverColor;
+    }
 }
 
 & when (@variationCommentReply) {
-  /*--------------------
+    /*--------------------
         Reply Form
   ---------------------*/
 
-  .ui.comments > .reply.form {
-    margin-top: @replyDistance;
-  }
-  .ui.comments .comment .reply.form {
-    width: 100%;
-    margin-top: @commentReplyDistance;
-  }
-  .ui.comments .reply.form textarea {
-    font-size: @replyFontSize;
-    height: @replyHeight;
-  }
+    .ui.comments > .reply.form {
+        margin-top: @replyDistance;
+    }
+    .ui.comments .comment .reply.form {
+        width: 100%;
+        margin-top: @commentReplyDistance;
+    }
+    .ui.comments .reply.form textarea {
+        font-size: @replyFontSize;
+        height: @replyHeight;
+    }
 }
 
 /*******************************
@@ -211,7 +211,7 @@
 .ui.collapsed.comments,
 .ui.comments .collapsed.comments,
 .ui.comments .collapsed.comment {
-  display: none;
+    display: none;
 }
 
 
@@ -220,34 +220,34 @@
 *******************************/
 
 & when (@variationCommentThreaded) {
-  /*--------------------
+    /*--------------------
           Threaded
   ---------------------*/
 
-  .ui.threaded.comments .comment > .comments {
-    margin: @threadedCommentMargin;
-    padding: @threadedCommentPadding;
-    box-shadow: @threadedCommentBoxShadow;
-  }
+    .ui.threaded.comments .comment > .comments {
+        margin: @threadedCommentMargin;
+        padding: @threadedCommentPadding;
+        box-shadow: @threadedCommentBoxShadow;
+    }
 }
 
 & when (@variationCommentMinimal) {
-  /*--------------------
+    /*--------------------
           Minimal
   ---------------------*/
 
-  .ui.minimal.comments .comment .actions {
-    opacity: 0;
-    position: @minimalActionPosition;
-    top: @minimalActionTop;
-    right: @minimalActionRight;
-    left: @minimalActionLeft;
-    transition: @minimalTransition;
-    transition-delay: @minimalTransitionDelay;
-  }
-  .ui.minimal.comments .comment > .content:hover > .actions {
-    opacity: 1;
-  }
+    .ui.minimal.comments .comment .actions {
+        opacity: 0;
+        position: @minimalActionPosition;
+        top: @minimalActionTop;
+        right: @minimalActionRight;
+        left: @minimalActionLeft;
+        transition: @minimalTransition;
+        transition-delay: @minimalTransitionDelay;
+    }
+    .ui.minimal.comments .comment > .content:hover > .actions {
+        opacity: 1;
+    }
 }
 
 
@@ -256,11 +256,11 @@
 --------------------*/
 
 .ui.comments {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationCommentSizes = false) {
-  each(@variationCommentSizes, {
-    @s: @@value;
+    each(@variationCommentSizes, {
+        @s: @@value;
     .ui.@{value}.comments  {
       font-size: @s;
     }
@@ -269,33 +269,33 @@
 
 
 & when (@variationCommentInverted) {
-  /*-------------------
+    /*-------------------
           Inverted
   --------------------*/
-  .ui.inverted.comments .comment {
-    background-color: @black;
-  }
-
-  .ui.inverted.comments .comment .author,
-  .ui.inverted.comments .comment .text {
-    color: @invertedTextColor;
-  }
-
-  .ui.inverted.comments .comment .metadata,
-  .ui.inverted.comments .comment .actions a {
-    color: @invertedLightTextColor;
-  }
-
-  .ui.inverted.comments .comment a.author:hover,
-  .ui.inverted.comments .comment .actions a.active,
-  .ui.inverted.comments .comment .actions a:hover {
-    color: @invertedHoveredTextColor;
-  }
-  & when (@variationCommentThreaded) {
-    .ui.inverted.threaded.comments .comment > .comments {
-      box-shadow: -1px 0 0 @solidWhiteBorderColor;
+    .ui.inverted.comments .comment {
+        background-color: @black;
     }
-  }
+
+    .ui.inverted.comments .comment .author,
+    .ui.inverted.comments .comment .text {
+        color: @invertedTextColor;
+    }
+
+    .ui.inverted.comments .comment .metadata,
+    .ui.inverted.comments .comment .actions a {
+        color: @invertedLightTextColor;
+    }
+
+    .ui.inverted.comments .comment a.author:hover,
+    .ui.inverted.comments .comment .actions a.active,
+    .ui.inverted.comments .comment .actions a:hover {
+        color: @invertedHoveredTextColor;
+    }
+    & when (@variationCommentThreaded) {
+        .ui.inverted.threaded.comments .comment > .comments {
+            box-shadow: -1px 0 0 @solidWhiteBorderColor;
+        }
+    }
 }
 
 

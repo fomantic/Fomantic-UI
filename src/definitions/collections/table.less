@@ -24,29 +24,29 @@
 
 /* Prototype */
 .ui.table {
-  width: 100%;
-  background: @background;
-  margin: @margin;
-  border: @border;
-  box-shadow: @boxShadow;
-  border-radius: @borderRadius;
-  text-align: @textAlign;
-  vertical-align: @verticalAlign;
-  color: @color;
-  border-collapse: @borderCollapse;
-  border-spacing: @borderSpacing;
+    width: 100%;
+    background: @background;
+    margin: @margin;
+    border: @border;
+    box-shadow: @boxShadow;
+    border-radius: @borderRadius;
+    text-align: @textAlign;
+    vertical-align: @verticalAlign;
+    color: @color;
+    border-collapse: @borderCollapse;
+    border-spacing: @borderSpacing;
 }
 
 .ui.table:first-child {
-  margin-top: 0;
+    margin-top: 0;
 }
 .ui.table:last-child {
-  margin-bottom: 0;
+    margin-bottom: 0;
 }
 .ui.table > thead,
 .ui.table > tbody {
-  text-align: inherit;
-  vertical-align: inherit;
+    text-align: inherit;
+    vertical-align: inherit;
 }
 
 /*******************************
@@ -56,191 +56,191 @@
 /* Table Content */
 .ui.table th,
 .ui.table td {
-  transition: @transition;
+    transition: @transition;
 }
 
 /* Rowspan helper class */
 .ui.table th.rowspanned,
 .ui.table td.rowspanned {
-  display:none;
+    display:none;
 }
 
 /* Headers */
 .ui.table > thead {
-  box-shadow: @headerBoxShadow;
+    box-shadow: @headerBoxShadow;
 }
 .ui.table > thead > tr > th {
-  cursor: auto;
-  background: @headerBackground;
-  text-align: @headerAlign;
-  color: @headerColor;
-  padding: @headerVerticalPadding @headerHorizontalPadding;
-  vertical-align: @headerVerticalAlign;
-  font-style: @headerFontStyle;
-  font-weight: @headerFontWeight;
-  text-transform: @headerTextTransform;
-  border-bottom: @headerBorder;
-  border-left: @headerDivider;
+    cursor: auto;
+    background: @headerBackground;
+    text-align: @headerAlign;
+    color: @headerColor;
+    padding: @headerVerticalPadding @headerHorizontalPadding;
+    vertical-align: @headerVerticalAlign;
+    font-style: @headerFontStyle;
+    font-weight: @headerFontWeight;
+    text-transform: @headerTextTransform;
+    border-bottom: @headerBorder;
+    border-left: @headerDivider;
 }
 
 .ui.table > thead > tr > th:first-child {
-  border-left: none;
+    border-left: none;
 }
 
 .ui.table > thead > tr:first-child > th:first-child {
-  border-radius: @borderRadius 0 0 0;
+    border-radius: @borderRadius 0 0 0;
 }
 .ui.table > thead > tr:first-child > th:last-child {
-  border-radius: 0 @borderRadius 0 0;
+    border-radius: 0 @borderRadius 0 0;
 }
 .ui.table > thead > tr:first-child > th:only-child {
-  border-radius: @borderRadius @borderRadius 0 0;
+    border-radius: @borderRadius @borderRadius 0 0;
 }
 
 /* Footer */
 .ui.table > tfoot {
-  box-shadow: @footerBoxShadow;
+    box-shadow: @footerBoxShadow;
 }
 .ui.table > tfoot > tr > th,
 .ui.table > tfoot > tr > td {
-  cursor: auto;
-  border-top: @footerBorder;
-  background: @footerBackground;
-  text-align: @footerAlign;
-  color: @footerColor;
-  padding: @footerVerticalPadding @footerHorizontalPadding;
-  vertical-align: @footerVerticalAlign;
-  font-style: @footerFontStyle;
-  font-weight: @footerFontWeight;
-  text-transform: @footerTextTransform;
+    cursor: auto;
+    border-top: @footerBorder;
+    background: @footerBackground;
+    text-align: @footerAlign;
+    color: @footerColor;
+    padding: @footerVerticalPadding @footerHorizontalPadding;
+    vertical-align: @footerVerticalAlign;
+    font-style: @footerFontStyle;
+    font-weight: @footerFontWeight;
+    text-transform: @footerTextTransform;
 }
 .ui.table > tfoot > tr > th:first-child,
 .ui.table > tfoot > tr > td:first-child {
-  border-left: none;
+    border-left: none;
 }
 .ui.table > tfoot > tr:first-child > th:first-child,
 .ui.table > tfoot > tr:first-child > td:first-child {
-  border-radius: 0 0 0 @borderRadius;
+    border-radius: 0 0 0 @borderRadius;
 }
 .ui.table > tfoot > tr:first-child > th:last-child,
 .ui.table > tfoot > tr:first-child > td:last-child {
-  border-radius: 0 0 @borderRadius 0;
+    border-radius: 0 0 @borderRadius 0;
 }
 .ui.table > tfoot > tr:first-child > th:only-child,
 .ui.table > tfoot > tr:first-child > td:only-child {
-  border-radius: 0 0 @borderRadius @borderRadius;
+    border-radius: 0 0 @borderRadius @borderRadius;
 }
 
 /* Table Row */
 .ui.table > tr > td,
 .ui.table > tbody > tr > td {
-  border-top: @rowBorder;
+    border-top: @rowBorder;
 }
 .ui.table > tr:first-child > td,
 .ui.table > tbody > tr:first-child > td {
-  border-top: none;
+    border-top: none;
 }
 
 /* Repeated tbody */
 .ui.table > tbody + tbody tr:first-child > td {
-  border-top: @rowBorder;
+    border-top: @rowBorder;
 }
 
 /* Table Cells */
 .ui.table > tbody > tr > td,
 .ui.table > tr > td {
-  padding: @cellVerticalPadding @cellHorizontalPadding;
-  text-align: @cellTextAlign;
+    padding: @cellVerticalPadding @cellHorizontalPadding;
+    text-align: @cellTextAlign;
 }
 
 /* Icons */
 .ui.table > i.icon {
-  vertical-align: @iconVerticalAlign;
+    vertical-align: @iconVerticalAlign;
 }
 .ui.table > i.icon:only-child {
-  margin: 0;
+    margin: 0;
 }
 
 /* Table Segment */
 .ui.table.segment {
-  padding: 0;
+    padding: 0;
 }
 .ui.table.segment::after {
-  display: none;
+    display: none;
 }
 .ui.table.segment.stacked::after {
-  display: block;
+    display: block;
 }
 
 
 /* Responsive */
 @media only screen and (max-width : @largestMobileScreen) {
-  .ui.table:not(.unstackable) {
-    width: 100%;
-    padding: 0;
-  }
-  .ui.table:not(.unstackable) > thead,
-  .ui.table:not(.unstackable) > thead > tr,
-  .ui.table:not(.unstackable) > tfoot,
-  .ui.table:not(.unstackable) > tfoot > tr,
-  .ui.table:not(.unstackable) > tbody,
-  .ui.table:not(.unstackable) > tr,
-  .ui.table:not(.unstackable) > tbody > tr,
-  .ui.table:not(.unstackable) > tr > th:not(.rowspanned),
-  .ui.table:not(.unstackable) > thead > tr > th:not(.rowspanned),
-  .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
-  .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
-  .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
-  .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
-  .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
-    display: block !important;
-    width: auto !important;
-  }
+    .ui.table:not(.unstackable) {
+        width: 100%;
+        padding: 0;
+    }
+    .ui.table:not(.unstackable) > thead,
+    .ui.table:not(.unstackable) > thead > tr,
+    .ui.table:not(.unstackable) > tfoot,
+    .ui.table:not(.unstackable) > tfoot > tr,
+    .ui.table:not(.unstackable) > tbody,
+    .ui.table:not(.unstackable) > tr,
+    .ui.table:not(.unstackable) > tbody > tr,
+    .ui.table:not(.unstackable) > tr > th:not(.rowspanned),
+    .ui.table:not(.unstackable) > thead > tr > th:not(.rowspanned),
+    .ui.table:not(.unstackable) > tbody > tr > th:not(.rowspanned),
+    .ui.table:not(.unstackable) > tfoot > tr > th:not(.rowspanned),
+    .ui.table:not(.unstackable) > tr > td:not(.rowspanned),
+    .ui.table:not(.unstackable) > tbody > tr > td:not(.rowspanned),
+    .ui.table:not(.unstackable) > tfoot > tr > td:not(.rowspanned) {
+        display: block !important;
+        width: auto !important;
+    }
 
-  .ui.table:not(.unstackable) > thead {
-    display: @responsiveHeaderDisplay;
-  }
-  .ui.table:not(.unstackable) > tfoot {
-    display: @responsiveFooterDisplay;
-  }
-  .ui.ui.ui.ui.table:not(.unstackable) > tr,
-  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
-  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr,
-  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
-    padding-top: @responsiveRowVerticalPadding;
-    padding-bottom: @responsiveRowVerticalPadding;
-    box-shadow: @responsiveRowBoxShadow;
-  }
+    .ui.table:not(.unstackable) > thead {
+        display: @responsiveHeaderDisplay;
+    }
+    .ui.table:not(.unstackable) > tfoot {
+        display: @responsiveFooterDisplay;
+    }
+    .ui.ui.ui.ui.table:not(.unstackable) > tr,
+    .ui.ui.ui.ui.table:not(.unstackable) > thead > tr,
+    .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr,
+    .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr {
+        padding-top: @responsiveRowVerticalPadding;
+        padding-bottom: @responsiveRowVerticalPadding;
+        box-shadow: @responsiveRowBoxShadow;
+    }
 
-  .ui.ui.ui.ui.table:not(.unstackable) > tr > th,
-  .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > th,
-  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
-  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
-  .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
-  .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td,
-  .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > td {
-    background: none;
-    border: none;
-    padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding;
-    box-shadow: @responsiveCellBoxShadow;
-  }
-  .ui.table:not(.unstackable) > tr > th:first-child,
-  .ui.table:not(.unstackable) > thead > tr > th:first-child,
-  .ui.table:not(.unstackable) > tbody > tr > th:first-child,
-  .ui.table:not(.unstackable) > tfoot > tr > th:first-child,
-  .ui.table:not(.unstackable) > tr > td:first-child,
-  .ui.table:not(.unstackable) > tbody > tr > td:first-child,
-  .ui.table:not(.unstackable) > tfoot > tr > td:first-child {
-    font-weight: @responsiveCellHeaderFontWeight;
-  }
+    .ui.ui.ui.ui.table:not(.unstackable) > tr > th,
+    .ui.ui.ui.ui.table:not(.unstackable) > thead > tr > th,
+    .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > th,
+    .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > th,
+    .ui.ui.ui.ui.table:not(.unstackable) > tr > td,
+    .ui.ui.ui.ui.table:not(.unstackable) > tbody > tr > td,
+    .ui.ui.ui.ui.table:not(.unstackable) > tfoot > tr > td {
+        background: none;
+        border: none;
+        padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding;
+        box-shadow: @responsiveCellBoxShadow;
+    }
+    .ui.table:not(.unstackable) > tr > th:first-child,
+    .ui.table:not(.unstackable) > thead > tr > th:first-child,
+    .ui.table:not(.unstackable) > tbody > tr > th:first-child,
+    .ui.table:not(.unstackable) > tfoot > tr > th:first-child,
+    .ui.table:not(.unstackable) > tr > td:first-child,
+    .ui.table:not(.unstackable) > tbody > tr > td:first-child,
+    .ui.table:not(.unstackable) > tfoot > tr > td:first-child {
+        font-weight: @responsiveCellHeaderFontWeight;
+    }
 
-  /* Definition Table */
-  .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
-    box-shadow: none !important;
-  }
-  & when (@variationTableMarked) and not (@variationTableColors = false) {
-    each(@variationTableColors, {
-      @color: @value;
+    /* Definition Table */
+    .ui.definition.table:not(.unstackable) > thead > tr > th:first-child {
+        box-shadow: none !important;
+    }
+    & when (@variationTableMarked) and not (@variationTableColors = false) {
+        each(@variationTableColors, {
+            @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
       .ui.ui.ui.ui.table:not(.unstackable) tr[class*="@{color} marked"] {
@@ -263,319 +263,319 @@
       }
     })
   }
-  & when (@variationTableScrolling) {
-    & when (@variationTableScrollingShort) {
-      .ui.scrolling.table.short > tbody {
-        max-height: @scrollingMobileMaxBodyHeight * 0.75;
-      }
+    & when (@variationTableScrolling) {
+        & when (@variationTableScrollingShort) {
+            .ui.scrolling.table.short > tbody {
+                max-height: @scrollingMobileMaxBodyHeight * 0.75;
+            }
+        }
+        & when (@variationTableScrollingVeryShort) {
+            .ui.scrolling.table[class*="very short"] > tbody {
+                max-height: @scrollingMobileMaxBodyHeight * 0.5;
+            }
+        }
+        .ui.scrolling.table > tbody {
+            max-height: @scrollingMobileMaxBodyHeight;
+        }
+        & when (@variationTableScrollingLong) {
+            .ui.scrolling.table.long > tbody {
+                max-height: @scrollingMobileMaxBodyHeight * 2;
+            }
+        }
+        & when (@variationTableScrollingVeryLong) {
+            .ui.scrolling.table[class*="very long"] > tbody {
+                max-height: @scrollingMobileMaxBodyHeight * 3;
+            }
+        }
     }
-    & when (@variationTableScrollingVeryShort) {
-      .ui.scrolling.table[class*="very short"] > tbody {
-        max-height: @scrollingMobileMaxBodyHeight * 0.5;
-      }
+    & when (@variationTableOverflowing) {
+        & when (@variationTableOverflowingShort) {
+            .ui.overflowing.table.short {
+                max-height: @overflowingMobileMaxHeight * 0.75;
+            }
+        }
+        & when (@variationTableOverflowingVeryShort) {
+            .ui.overflowing.table[class*="very short"] {
+                max-height: @overflowingMobileMaxHeight * 0.5;
+            }
+        }
+        .ui.overflowing.table {
+            max-height: @overflowingMobileMaxHeight;
+        }
+        & when (@variationTableOverflowingLong) {
+            .ui.overflowing.table.long {
+                max-height: @overflowingMobileMaxHeight * 2;
+            }
+        }
+        & when (@variationTableOverflowingVeryLong) {
+            .ui.overflowing.table[class*="very long"] {
+                max-height: @overflowingMobileMaxHeight * 3;
+            }
+        }
     }
-    .ui.scrolling.table > tbody {
-      max-height: @scrollingMobileMaxBodyHeight;
-    }
-    & when (@variationTableScrollingLong) {
-      .ui.scrolling.table.long > tbody {
-        max-height: @scrollingMobileMaxBodyHeight * 2;
-      }
-    }
-    & when (@variationTableScrollingVeryLong) {
-      .ui.scrolling.table[class*="very long"] > tbody {
-        max-height: @scrollingMobileMaxBodyHeight * 3;
-      }
-    }
-  }
-  & when (@variationTableOverflowing) {
-    & when (@variationTableOverflowingShort) {
-      .ui.overflowing.table.short {
-        max-height: @overflowingMobileMaxHeight * 0.75;
-      }
-    }
-    & when (@variationTableOverflowingVeryShort) {
-      .ui.overflowing.table[class*="very short"] {
-        max-height: @overflowingMobileMaxHeight * 0.5;
-      }
-    }
-    .ui.overflowing.table {
-      max-height: @overflowingMobileMaxHeight;
-    }
-    & when (@variationTableOverflowingLong) {
-      .ui.overflowing.table.long {
-        max-height: @overflowingMobileMaxHeight * 2;
-      }
-    }
-    & when (@variationTableOverflowingVeryLong) {
-      .ui.overflowing.table[class*="very long"] {
-        max-height: @overflowingMobileMaxHeight * 3;
-      }
-    }
-  }
 }
 & when (@variationTableScrolling) {
-  /*--------------
+    /*--------------
     Scrolling
   ---------------*/
-  @media only screen and (min-width: @tabletBreakpoint) {
-    & when (@variationTableScrollingShort) {
-      .ui.scrolling.table.short > tbody {
-        max-height: @scrollingTabletMaxBodyHeight * 0.75;
-      }
+    @media only screen and (min-width: @tabletBreakpoint) {
+        & when (@variationTableScrollingShort) {
+            .ui.scrolling.table.short > tbody {
+                max-height: @scrollingTabletMaxBodyHeight * 0.75;
+            }
+        }
+        & when (@variationTableScrollingVeryShort) {
+            .ui.scrolling.table[class*="very short"] > tbody {
+                max-height: @scrollingTabletMaxBodyHeight * 0.5;
+            }
+        }
+        .ui.scrolling.table > tbody {
+            max-height: @scrollingTabletMaxBodyHeight;
+        }
+        & when (@variationTableScrollingLong) {
+            .ui.scrolling.table.long > tbody {
+                max-height: @scrollingTabletMaxBodyHeight * 2;
+            }
+        }
+        & when (@variationTableScrollingVeryLong) {
+            .ui.scrolling.table[class*="very long"] > tbody {
+                max-height: @scrollingTabletMaxBodyHeight * 3;
+            }
+        }
     }
-    & when (@variationTableScrollingVeryShort) {
-      .ui.scrolling.table[class*="very short"] > tbody {
-        max-height: @scrollingTabletMaxBodyHeight * 0.5;
-      }
+    @media only screen and (min-width: @computerBreakpoint) {
+        & when (@variationTableScrollingShort) {
+            .ui.scrolling.table.short > tbody {
+                max-height: @scrollingComputerMaxBodyHeight * 0.75;
+            }
+        }
+        & when (@variationTableScrollingVeryShort) {
+            .ui.scrolling.table[class*="very short"] > tbody {
+                max-height: @scrollingComputerMaxBodyHeight * 0.5;
+            }
+        }
+        .ui.scrolling.table > tbody {
+            max-height: @scrollingComputerMaxBodyHeight;
+        }
+        & when (@variationTableScrollingLong) {
+            .ui.scrolling.table.long > tbody {
+                max-height: @scrollingComputerMaxBodyHeight * 2;
+            }
+        }
+        & when (@variationTableScrollingVeryLong) {
+            .ui.scrolling.table[class*="very long"] > tbody {
+                max-height: @scrollingComputerMaxBodyHeight * 3;
+            }
+        }
     }
-    .ui.scrolling.table > tbody {
-      max-height: @scrollingTabletMaxBodyHeight;
+    @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+        & when (@variationTableScrollingShort) {
+            .ui.scrolling.table.short > tbody {
+                max-height: @scrollingWidescreenMaxBodyHeight * 0.75;
+            }
+        }
+        & when (@variationTableScrollingVeryShort) {
+            .ui.scrolling.table[class*="very short"] > tbody {
+                max-height: @scrollingWidescreenMaxBodyHeight * 0.5;
+            }
+        }
+        .ui.scrolling.table > tbody {
+            max-height: @scrollingWidescreenMaxBodyHeight;
+        }
+        & when (@variationTableScrollingLong) {
+            .ui.scrolling.table.long > tbody {
+                max-height: @scrollingWidescreenMaxBodyHeight * 2;
+            }
+        }
+        & when (@variationTableScrollingVeryLong) {
+            .ui.scrolling.table[class*="very long"] > tbody {
+                max-height: @scrollingWidescreenMaxBodyHeight * 3;
+            }
+        }
     }
-    & when (@variationTableScrollingLong) {
-      .ui.scrolling.table.long > tbody {
-        max-height: @scrollingTabletMaxBodyHeight * 2;
-      }
-    }
-    & when (@variationTableScrollingVeryLong) {
-      .ui.scrolling.table[class*="very long"] > tbody {
-        max-height: @scrollingTabletMaxBodyHeight * 3;
-      }
-    }
-  }
-  @media only screen and (min-width: @computerBreakpoint) {
-    & when (@variationTableScrollingShort) {
-      .ui.scrolling.table.short > tbody {
-        max-height: @scrollingComputerMaxBodyHeight * 0.75;
-      }
-    }
-    & when (@variationTableScrollingVeryShort) {
-      .ui.scrolling.table[class*="very short"] > tbody {
-        max-height: @scrollingComputerMaxBodyHeight * 0.5;
-      }
-    }
-    .ui.scrolling.table > tbody {
-      max-height: @scrollingComputerMaxBodyHeight;
-    }
-    & when (@variationTableScrollingLong) {
-      .ui.scrolling.table.long > tbody {
-        max-height: @scrollingComputerMaxBodyHeight * 2;
-      }
-    }
-    & when (@variationTableScrollingVeryLong) {
-      .ui.scrolling.table[class*="very long"] > tbody {
-        max-height: @scrollingComputerMaxBodyHeight * 3;
-      }
-    }
-  }
-  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-    & when (@variationTableScrollingShort) {
-      .ui.scrolling.table.short > tbody {
-        max-height: @scrollingWidescreenMaxBodyHeight * 0.75;
-      }
-    }
-    & when (@variationTableScrollingVeryShort) {
-      .ui.scrolling.table[class*="very short"] > tbody {
-        max-height: @scrollingWidescreenMaxBodyHeight * 0.5;
-      }
-    }
-    .ui.scrolling.table > tbody {
-      max-height: @scrollingWidescreenMaxBodyHeight;
-    }
-    & when (@variationTableScrollingLong) {
-      .ui.scrolling.table.long > tbody {
-        max-height: @scrollingWidescreenMaxBodyHeight * 2;
-      }
-    }
-    & when (@variationTableScrollingVeryLong) {
-      .ui.scrolling.table[class*="very long"] > tbody {
-        max-height: @scrollingWidescreenMaxBodyHeight * 3;
-      }
-    }
-  }
 
-  .ui.scrolling.table > thead,
-  .ui.scrolling.table > tfoot,
-  .ui.scrolling.table > tbody {
-    display: block;
-    overflow-y: scroll;
-    overscroll-behavior: @overscrollBehavior;
-    scrollbar-width: thin;  /* Firefox */
-    & > tr {
-      display: table;
-      table-layout: fixed;
-      width: 100%;
+    .ui.scrolling.table > thead,
+    .ui.scrolling.table > tfoot,
+    .ui.scrolling.table > tbody {
+        display: block;
+        overflow-y: scroll;
+        overscroll-behavior: @overscrollBehavior;
+        scrollbar-width: thin;  /* Firefox */
+        & > tr {
+            display: table;
+            table-layout: fixed;
+            width: 100%;
+        }
     }
-  }
 
-  /* Camouflage scrollbars, we need them only to gain the same width as tbody */
-  .ui.scrolling.table > thead {
-    background: @headerBackground;
-    color: @headerBackground;
-    border-radius: @borderRadius @borderRadius 0 0;
-  }
-  .ui.scrolling.table > tfoot {
-    background: @footerBackground;
-    color: @footerBackground;
-    border-radius: 0 0 @borderRadius @borderRadius;
-  }
-  & when (@variationTableInverted) {
-    .ui.inverted.scrolling.table > thead {
-      background: @invertedHeaderBackground;
-      color: @invertedHeaderBackground;
+    /* Camouflage scrollbars, we need them only to gain the same width as tbody */
+    .ui.scrolling.table > thead {
+        background: @headerBackground;
+        color: @headerBackground;
+        border-radius: @borderRadius @borderRadius 0 0;
     }
-    .ui.inverted.scrolling.table > tfoot {
-      background: @invertedFooterBackground;
-      color: @invertedFooterBackground;
+    .ui.scrolling.table > tfoot {
+        background: @footerBackground;
+        color: @footerBackground;
+        border-radius: 0 0 @borderRadius @borderRadius;
     }
-  }
-  .ui.scrolling.table > thead::-webkit-scrollbar-track,
-  .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
-    background: inherit;
-    border-radius: @borderRadius;
-  }
-
-  /* Firefox & IE */
-  .ui.scrolling.table > thead,
-  .ui.scrolling.table > tfoot {
-    scrollbar-color: currentColor currentColor;
-    & when (@supportIE) {
-      scrollbar-face-color: currentColor;
-      scrollbar-shadow-color: currentColor;
-      scrollbar-track-color: currentColor;
-      scrollbar-arrow-color: currentColor;
-    }
-  }
-  & when (@supportIE) {
-  /* IE scrollbar color needs hex values */
-    @media all and (-ms-high-contrast: none) {
-      .ui.scrolling.table > thead {
-        color: @headerBackgroundHex;
-      }
-      .ui.scrolling.table > tfoot {
-        color: @footerBackgroundHex;
-      }
-      & when (@variationTableInverted) {
+    & when (@variationTableInverted) {
         .ui.inverted.scrolling.table > thead {
-          color: @invertedHeaderBackgroundHex;
+            background: @invertedHeaderBackground;
+            color: @invertedHeaderBackground;
         }
         .ui.inverted.scrolling.table > tfoot {
-          color: @invertedFooterBackgroundHex;
+            background: @invertedFooterBackground;
+            color: @invertedFooterBackground;
         }
-      }
     }
-  }
-  & when (@variationTableInverted) {
-    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
-      background: @trackInvertedBackground;
+    .ui.scrolling.table > thead::-webkit-scrollbar-track,
+    .ui.scrolling.table > tfoot::-webkit-scrollbar-track {
+        background: inherit;
+        border-radius: @borderRadius;
     }
-    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
-      background: @thumbInvertedBackground;
+
+    /* Firefox & IE */
+    .ui.scrolling.table > thead,
+    .ui.scrolling.table > tfoot {
+        scrollbar-color: currentColor currentColor;
+        & when (@supportIE) {
+            scrollbar-face-color: currentColor;
+            scrollbar-shadow-color: currentColor;
+            scrollbar-track-color: currentColor;
+            scrollbar-arrow-color: currentColor;
+        }
     }
-    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
-      background: @thumbInvertedInactiveBackground;
+    & when (@supportIE) {
+        /* IE scrollbar color needs hex values */
+        @media all and (-ms-high-contrast: none) {
+            .ui.scrolling.table > thead {
+                color: @headerBackgroundHex;
+            }
+            .ui.scrolling.table > tfoot {
+                color: @footerBackgroundHex;
+            }
+            & when (@variationTableInverted) {
+                .ui.inverted.scrolling.table > thead {
+                    color: @invertedHeaderBackgroundHex;
+                }
+                .ui.inverted.scrolling.table > tfoot {
+                    color: @invertedFooterBackgroundHex;
+                }
+            }
+        }
     }
-    .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
-      background: @thumbInvertedHoverBackground;
+    & when (@variationTableInverted) {
+        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-track {
+            background: @trackInvertedBackground;
+        }
+        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb {
+            background: @thumbInvertedBackground;
+        }
+        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:window-inactive {
+            background: @thumbInvertedInactiveBackground;
+        }
+        .ui.inverted.scrolling.table > tbody::-webkit-scrollbar-thumb:hover {
+            background: @thumbInvertedHoverBackground;
+        }
+        .ui.inverted.scrolling.table > tbody {
+            & when (@supportIE) {
+                /* IE11 */
+                scrollbar-face-color: @thumbInvertedBackgroundHex;
+                scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+                scrollbar-track-color: @trackInvertedBackgroundHex;
+                scrollbar-arrow-color: @trackInvertedBackgroundHex;
+            }
+            /* firefox : first color thumb, second track */
+            scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+        }
     }
-    .ui.inverted.scrolling.table > tbody {
-      & when (@supportIE) {
-        /* IE11 */
-        scrollbar-face-color: @thumbInvertedBackgroundHex;
-        scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-        scrollbar-track-color: @trackInvertedBackgroundHex;
-        scrollbar-arrow-color: @trackInvertedBackgroundHex;
-      }
-      /* firefox : first color thumb, second track */
-      scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
-    }
-  }
 
 }
 & when (@variationTableOverflowing) {
-  /*--------------
+    /*--------------
     Overflowing
   ---------------*/
-  .ui.overflowing.table {
-    display: block;
-    overflow: auto;
-    overscroll-behavior: @overscrollBehavior;
-  }
-  @media only screen and (min-width: @tabletBreakpoint) {
-    & when (@variationTableOverflowingShort) {
-      .ui.overflowing.table.short {
-        max-height: @overflowingTabletMaxHeight * 0.75;
-      }
-    }
-    & when (@variationTableOverflowingVeryShort) {
-      .ui.overflowing.table[class*="very short"] {
-        max-height: @overflowingTabletMaxHeight * 0.5;
-      }
-    }
     .ui.overflowing.table {
-      max-height: @overflowingTabletMaxHeight;
+        display: block;
+        overflow: auto;
+        overscroll-behavior: @overscrollBehavior;
     }
-    & when (@variationTableOverflowingLong) {
-      .ui.overflowing.table.long {
-        max-height: @overflowingTabletMaxHeight * 2;
-      }
+    @media only screen and (min-width: @tabletBreakpoint) {
+        & when (@variationTableOverflowingShort) {
+            .ui.overflowing.table.short {
+                max-height: @overflowingTabletMaxHeight * 0.75;
+            }
+        }
+        & when (@variationTableOverflowingVeryShort) {
+            .ui.overflowing.table[class*="very short"] {
+                max-height: @overflowingTabletMaxHeight * 0.5;
+            }
+        }
+        .ui.overflowing.table {
+            max-height: @overflowingTabletMaxHeight;
+        }
+        & when (@variationTableOverflowingLong) {
+            .ui.overflowing.table.long {
+                max-height: @overflowingTabletMaxHeight * 2;
+            }
+        }
+        & when (@variationTableOverflowingVeryLong) {
+            .ui.overflowing.table[class*="very long"] {
+                max-height: @overflowingTabletMaxHeight * 3;
+            }
+        }
     }
-    & when (@variationTableOverflowingVeryLong) {
-      .ui.overflowing.table[class*="very long"] {
-        max-height: @overflowingTabletMaxHeight * 3;
-      }
+    @media only screen and (min-width: @computerBreakpoint) {
+        & when (@variationTableOverflowingShort) {
+            .ui.overflowing.table.short {
+                max-height: @overflowingComputerMaxHeight * 0.75;
+            }
+        }
+        & when (@variationTableOverflowingVeryShort) {
+            .ui.overflowing.table[class*="very short"] {
+                max-height: @overflowingComputerMaxHeight * 0.5;
+            }
+        }
+        .ui.overflowing.table {
+            max-height: @overflowingComputerMaxHeight;
+        }
+        & when (@variationTableOverflowingLong) {
+            .ui.overflowing.table.long {
+                max-height: @overflowingComputerMaxHeight * 2;
+            }
+        }
+        & when (@variationTableOverflowingVeryLong) {
+            .ui.overflowing.table[class*="very long"]{
+                max-height: @overflowingComputerMaxHeight * 3;
+            }
+        }
     }
-  }
-  @media only screen and (min-width: @computerBreakpoint) {
-    & when (@variationTableOverflowingShort) {
-      .ui.overflowing.table.short {
-        max-height: @overflowingComputerMaxHeight * 0.75;
-      }
+    @media only screen and (min-width: @widescreenMonitorBreakpoint) {
+        & when (@variationTableOverflowingShort) {
+            .ui.overflowing.table.short {
+                max-height: @overflowingWidescreenMaxHeight * 0.75;
+            }
+        }
+        & when (@variationTableOverflowingVeryShort) {
+            .ui.overflowing.table[class*="very short"] {
+                max-height: @overflowingWidescreenMaxHeight * 0.5;
+            }
+        }
+        .ui.overflowing.table {
+            max-height: @overflowingWidescreenMaxHeight;
+        }
+        & when (@variationTableOverflowingLong) {
+            .ui.overflowing.table.long {
+                max-height: @overflowingWidescreenMaxHeight * 2;
+            }
+        }
+        & when (@variationTableOverflowingVeryLong) {
+            .ui.overflowing.table[class*="very long"] {
+                max-height: @overflowingWidescreenMaxHeight * 3;
+            }
+        }
     }
-    & when (@variationTableOverflowingVeryShort) {
-      .ui.overflowing.table[class*="very short"] {
-        max-height: @overflowingComputerMaxHeight * 0.5;
-      }
-    }
-    .ui.overflowing.table {
-      max-height: @overflowingComputerMaxHeight;
-    }
-    & when (@variationTableOverflowingLong) {
-      .ui.overflowing.table.long {
-        max-height: @overflowingComputerMaxHeight * 2;
-      }
-    }
-    & when (@variationTableOverflowingVeryLong) {
-      .ui.overflowing.table[class*="very long"]{
-        max-height: @overflowingComputerMaxHeight * 3;
-      }
-    }
-  }
-  @media only screen and (min-width: @widescreenMonitorBreakpoint) {
-    & when (@variationTableOverflowingShort) {
-      .ui.overflowing.table.short {
-        max-height: @overflowingWidescreenMaxHeight * 0.75;
-      }
-    }
-    & when (@variationTableOverflowingVeryShort) {
-      .ui.overflowing.table[class*="very short"] {
-        max-height: @overflowingWidescreenMaxHeight * 0.5;
-      }
-    }
-    .ui.overflowing.table {
-      max-height: @overflowingWidescreenMaxHeight;
-    }
-    & when (@variationTableOverflowingLong) {
-      .ui.overflowing.table.long {
-        max-height: @overflowingWidescreenMaxHeight * 2;
-      }
-    }
-    & when (@variationTableOverflowingVeryLong) {
-      .ui.overflowing.table[class*="very long"] {
-        max-height: @overflowingWidescreenMaxHeight * 3;
-      }
-    }
-  }
 }
 
 
@@ -586,7 +586,7 @@
 /* UI Image */
 .ui.table .collapsing .image,
 .ui.table .collapsing .image img {
-  max-width: none;
+    max-width: none;
 }
 
 
@@ -598,96 +598,96 @@
     Complex
 ---------------*/
 & when (@variationTableStructured) {
-  .ui.structured.table {
-    border-collapse: collapse;
-  }
-  .ui.structured.table > thead > tr > th {
-    border-left: @headerDivider;
-    border-right: @headerDivider;
-  }
-  & when (@variationTableSortable) {
-    .ui.structured.sortable.table > thead > tr > th {
-      border-left: @sortableBorder;
-      border-right: @sortableBorder;
+    .ui.structured.table {
+        border-collapse: collapse;
     }
-  }
-  & when (@variationTableBasic) {
-    .ui.structured.basic.table > tr > th,
-    .ui.structured.basic.table > thead > tr > th,
-    .ui.structured.basic.table > tbody > tr > th,
-    .ui.structured.basic.table > tfoot > tr > th {
-      border-left: @basicTableHeaderDivider;
-      border-right: @basicTableHeaderDivider;
+    .ui.structured.table > thead > tr > th {
+        border-left: @headerDivider;
+        border-right: @headerDivider;
     }
-  }
-  & when (@variationTableCelled) {
-    .ui.structured.celled.table > tr > th,
-    .ui.structured.celled.table > thead > tr > th,
-    .ui.structured.celled.table > tbody > tr > th,
-    .ui.structured.celled.table > tfoot > tr > th,
-    .ui.structured.celled.table > tr > td,
-    .ui.structured.celled.table > tbody > tr > td ,
-    .ui.structured.celled.table > tfoot > tr > td {  border-left: @cellBorder;
-      border-right: @cellBorder;
+    & when (@variationTableSortable) {
+        .ui.structured.sortable.table > thead > tr > th {
+            border-left: @sortableBorder;
+            border-right: @sortableBorder;
+        }
     }
-  }
+    & when (@variationTableBasic) {
+        .ui.structured.basic.table > tr > th,
+        .ui.structured.basic.table > thead > tr > th,
+        .ui.structured.basic.table > tbody > tr > th,
+        .ui.structured.basic.table > tfoot > tr > th {
+            border-left: @basicTableHeaderDivider;
+            border-right: @basicTableHeaderDivider;
+        }
+    }
+    & when (@variationTableCelled) {
+        .ui.structured.celled.table > tr > th,
+        .ui.structured.celled.table > thead > tr > th,
+        .ui.structured.celled.table > tbody > tr > th,
+        .ui.structured.celled.table > tfoot > tr > th,
+        .ui.structured.celled.table > tr > td,
+        .ui.structured.celled.table > tbody > tr > td ,
+        .ui.structured.celled.table > tfoot > tr > td {  border-left: @cellBorder;
+            border-right: @cellBorder;
+        }
+    }
 }
 
 & when (@variationTableDefinition) {
-  /*--------------
+    /*--------------
      Definition
   ---------------*/
 
-  .ui.definition.table > thead:not(.full-width) > tr > th:first-child {
-    pointer-events: none;
-    background: @definitionHeaderBackground;
-    font-weight: @definitionHeaderFontWeight;
-    color: @definitionHeaderColor;
-    box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
-    -moz-transform: scale(1);
-  }
+    .ui.definition.table > thead:not(.full-width) > tr > th:first-child {
+        pointer-events: none;
+        background: @definitionHeaderBackground;
+        font-weight: @definitionHeaderFontWeight;
+        color: @definitionHeaderColor;
+        box-shadow: -@coloredBorderSizeCover -@coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        -moz-transform: scale(1);
+    }
 
-  .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
-    pointer-events: auto;
-  }
+    .ui.definition.table > thead:not(.full-width) > tr > th:first-child:not(:empty) {
+        pointer-events: auto;
+    }
 
-  .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
-    pointer-events: none;
-    background: @definitionFooterBackground;
-    font-weight: @definitionFooterFontWeight;
-    color: @definitionFooterColor;
-    box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
-    -moz-transform: scale(1);
-  }
+    .ui.definition.table > tfoot:not(.full-width) > tr > th:first-child {
+        pointer-events: none;
+        background: @definitionFooterBackground;
+        font-weight: @definitionFooterFontWeight;
+        color: @definitionFooterColor;
+        box-shadow: -@coloredBorderSizeCover @coloredBorderSize 0 @coloredBorderSizeCover @definitionPageBackground;
+        -moz-transform: scale(1);
+    }
 
-  /* Highlight Defining Column */
-  .ui.definition.table > tr > td:first-child:not(.ignored),
-  .ui.definition.table > tbody > tr > td:first-child:not(.ignored),
-  .ui.definition.table > tfoot > tr > td:first-child:not(.ignored),
-  .ui.definition.table tr td.definition {
-    background: @definitionColumnBackground;
-    font-weight: @definitionColumnFontWeight;
-    color: @definitionColumnColor;
-    text-transform: @definitionColumnTextTransform;
-    box-shadow: @definitionColumnBoxShadow;
-    text-align: @definitionColumnTextAlign;
-    font-size: @definitionColumnFontSize;
-    padding-left: @definitionColumnHorizontalPadding;
-    padding-right: @definitionColumnHorizontalPadding;
-  }
+    /* Highlight Defining Column */
+    .ui.definition.table > tr > td:first-child:not(.ignored),
+    .ui.definition.table > tbody > tr > td:first-child:not(.ignored),
+    .ui.definition.table > tfoot > tr > td:first-child:not(.ignored),
+    .ui.definition.table tr td.definition {
+        background: @definitionColumnBackground;
+        font-weight: @definitionColumnFontWeight;
+        color: @definitionColumnColor;
+        text-transform: @definitionColumnTextTransform;
+        box-shadow: @definitionColumnBoxShadow;
+        text-align: @definitionColumnTextAlign;
+        font-size: @definitionColumnFontSize;
+        padding-left: @definitionColumnHorizontalPadding;
+        padding-right: @definitionColumnHorizontalPadding;
+    }
 
 
-  /* Fix 2nd Column */
-  .ui.definition.table > thead:not(.full-width) > tr > th:nth-child(2) {
-    border-left: @borderWidth solid @borderColor;
-  }
-  .ui.definition.table > tfoot:not(.full-width) > tr > th:nth-child(2) ,
-  .ui.definition.table > tfoot:not(.full-width) > tr > td:nth-child(2) {  border-left: @borderWidth solid @borderColor;
-  }
-  .ui.definition.table > tr > td:nth-child(2),
-  .ui.definition.table > tbody > tr > td:nth-child(2) {
-    border-left: @borderWidth solid @borderColor;
-  }
+    /* Fix 2nd Column */
+    .ui.definition.table > thead:not(.full-width) > tr > th:nth-child(2) {
+        border-left: @borderWidth solid @borderColor;
+    }
+    .ui.definition.table > tfoot:not(.full-width) > tr > th:nth-child(2) ,
+    .ui.definition.table > tfoot:not(.full-width) > tr > td:nth-child(2) {  border-left: @borderWidth solid @borderColor;
+    }
+    .ui.definition.table > tr > td:nth-child(2),
+    .ui.definition.table > tbody > tr > td:nth-child(2) {
+        border-left: @borderWidth solid @borderColor;
+    }
 }
 
 /*******************************
@@ -695,188 +695,188 @@
 *******************************/
 
 & when (@variationTablePositive) {
-  /*--------------
+    /*--------------
       Positive
   ---------------*/
 
-  .ui.ui.ui.ui.table tr.positive,
-  .ui.ui.table td.positive {
-    box-shadow: @positiveBoxShadow;
-    background: @positiveBackgroundColor;
-    color: @positiveColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.ui.ui.inverted.table tr.positive,
-    .ui.ui.inverted.table td.positive {
-      background: @invertedPositiveBackgroundColor;
-      color: @invertedPositiveColor;
+    .ui.ui.ui.ui.table tr.positive,
+    .ui.ui.table td.positive {
+        box-shadow: @positiveBoxShadow;
+        background: @positiveBackgroundColor;
+        color: @positiveColor;
     }
-  }
+    & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table tr.positive,
+        .ui.ui.inverted.table td.positive {
+            background: @invertedPositiveBackgroundColor;
+            color: @invertedPositiveColor;
+        }
+    }
 }
 
 & when (@variationTableNegative) {
-  /*--------------
+    /*--------------
        Negative
   ---------------*/
 
-  .ui.ui.ui.ui.table tr.negative,
-  .ui.ui.table td.negative {
-    box-shadow: @negativeBoxShadow;
-    background: @negativeBackgroundColor;
-    color: @negativeColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.ui.ui.inverted.table tr.negative,
-    .ui.ui.inverted.table td.negative {
-      background: @invertedNegativeBackgroundColor;
-      color: @invertedNegativeColor;
+    .ui.ui.ui.ui.table tr.negative,
+    .ui.ui.table td.negative {
+        box-shadow: @negativeBoxShadow;
+        background: @negativeBackgroundColor;
+        color: @negativeColor;
     }
-  }
+    & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table tr.negative,
+        .ui.ui.inverted.table td.negative {
+            background: @invertedNegativeBackgroundColor;
+            color: @invertedNegativeColor;
+        }
+    }
 }
 
 & when (@variationTableError) {
-  /*--------------
+    /*--------------
         Error
   ---------------*/
 
-  .ui.ui.ui.ui.table tr.error,
-  .ui.ui.table td.error {
-    box-shadow: @errorBoxShadow;
-    background: @errorBackgroundColor;
-    color: @errorColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.ui.ui.inverted.table tr.error,
-    .ui.ui.inverted.table td.error {
-      background: @invertedErrorBackgroundColor;
-      color: @invertedErrorColor;
+    .ui.ui.ui.ui.table tr.error,
+    .ui.ui.table td.error {
+        box-shadow: @errorBoxShadow;
+        background: @errorBackgroundColor;
+        color: @errorColor;
     }
-  }
+    & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table tr.error,
+        .ui.ui.inverted.table td.error {
+            background: @invertedErrorBackgroundColor;
+            color: @invertedErrorColor;
+        }
+    }
 }
 
 & when (@variationTableWarning) {
-  /*--------------
+    /*--------------
        Warning
   ---------------*/
 
-  .ui.ui.ui.ui.table tr.warning,
-  .ui.ui.table td.warning {
-    box-shadow: @warningBoxShadow;
-    background: @warningBackgroundColor;
-    color: @warningColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.ui.ui.inverted.table tr.warning,
-    .ui.ui.inverted.table td.warning {
-      background: @invertedWarningBackgroundColor;
-      color: @invertedWarningColor;
+    .ui.ui.ui.ui.table tr.warning,
+    .ui.ui.table td.warning {
+        box-shadow: @warningBoxShadow;
+        background: @warningBackgroundColor;
+        color: @warningColor;
     }
-  }
+    & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table tr.warning,
+        .ui.ui.inverted.table td.warning {
+            background: @invertedWarningBackgroundColor;
+            color: @invertedWarningColor;
+        }
+    }
 }
 
 & when (@variationTableActive) {
-  /*--------------
+    /*--------------
        Active
   ---------------*/
 
-  .ui.ui.ui.ui.table tr.active,
-  .ui.ui.table td.active {
-    box-shadow: @activeBoxShadow;
-    background: @activeBackgroundColor;
-    color: @activeColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.ui.ui.inverted.table tr.active,
-    .ui.ui.inverted.table td.active {
-      background: @invertedActiveBackgroundColor;
-      color: @invertedActiveColor;
+    .ui.ui.ui.ui.table tr.active,
+    .ui.ui.table td.active {
+        box-shadow: @activeBoxShadow;
+        background: @activeBackgroundColor;
+        color: @activeColor;
     }
-  }
+    & when (@variationTableInverted) {
+        .ui.ui.ui.ui.inverted.table tr.active,
+        .ui.ui.inverted.table td.active {
+            background: @invertedActiveBackgroundColor;
+            color: @invertedActiveColor;
+        }
+    }
 }
 
 
 & when (@variationTableDisabled) {
-  /*--------------
+    /*--------------
        Disabled
   ---------------*/
 
-  .ui.ui.ui.table tr.disabled td,
-  .ui.ui.ui.table tr td.disabled,
-  .ui.table tr.disabled:hover,
-  .ui.table tr:hover td.disabled {
-    pointer-events: none;
-    color: @disabledTextColor;
-  }
+    .ui.ui.ui.table tr.disabled td,
+    .ui.ui.ui.table tr td.disabled,
+    .ui.table tr.disabled:hover,
+    .ui.table tr:hover td.disabled {
+        pointer-events: none;
+        color: @disabledTextColor;
+    }
 }
 
 /*******************************
           Variations
 *******************************/
 & when (@variationTableStackable) {
-  /*--------------
+    /*--------------
       Stackable
   ---------------*/
 
-  @media only screen and (max-width : @largestTabletScreen) {
+    @media only screen and (max-width : @largestTabletScreen) {
 
-    .ui[class*="tablet stackable"].table,
-    .ui[class*="tablet stackable"].table > thead,
-    .ui[class*="tablet stackable"].table > thead > tr,
-    .ui[class*="tablet stackable"].table > tfoot,
-    .ui[class*="tablet stackable"].table > tfoot > tr,
-    .ui[class*="tablet stackable"].table > tbody,
-    .ui[class*="tablet stackable"].table > tbody > tr,
-    .ui[class*="tablet stackable"].table > tr,
-    .ui[class*="tablet stackable"].table > thead > tr > th:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
-    .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
-      display: block !important;
-      width: 100% !important;
-    }
+        .ui[class*="tablet stackable"].table,
+        .ui[class*="tablet stackable"].table > thead,
+        .ui[class*="tablet stackable"].table > thead > tr,
+        .ui[class*="tablet stackable"].table > tfoot,
+        .ui[class*="tablet stackable"].table > tfoot > tr,
+        .ui[class*="tablet stackable"].table > tbody,
+        .ui[class*="tablet stackable"].table > tbody > tr,
+        .ui[class*="tablet stackable"].table > tr,
+        .ui[class*="tablet stackable"].table > thead > tr > th:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tbody > tr > th:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tfoot > tr > th:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tr > th:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tbody > tr > td:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tfoot > tr > td:not(.rowspanned),
+        .ui[class*="tablet stackable"].table > tr > td:not(.rowspanned)  {
+            display: block !important;
+            width: 100% !important;
+        }
 
-    .ui[class*="tablet stackable"].table {
-      padding: 0;
+        .ui[class*="tablet stackable"].table {
+            padding: 0;
+        }
+        .ui[class*="tablet stackable"].table > thead {
+            display: @responsiveHeaderDisplay;
+        }
+        .ui[class*="tablet stackable"].table > tfoot {
+            display: @responsiveFooterDisplay;
+        }
+        .ui.ui.ui.ui[class*="tablet stackable"].table > thead > tr,
+        .ui.ui.ui.ui[class*="tablet stackable"].table > tbody > tr,
+        .ui.ui.ui.ui[class*="tablet stackable"].table > tfoot > tr,
+        .ui.ui.ui.ui[class*="tablet stackable"].table > tr {
+            padding-top: @responsiveRowVerticalPadding;
+            padding-bottom: @responsiveRowVerticalPadding;
+            box-shadow: @responsiveRowBoxShadow;
+        }
+        .ui[class*="tablet stackable"].table > thead > tr > th,
+        .ui[class*="tablet stackable"].table > tbody > tr > th,
+        .ui[class*="tablet stackable"].table > tfoot > tr > th,
+        .ui[class*="tablet stackable"].table > tr > th,
+        .ui[class*="tablet stackable"].table > tbody > tr > td,
+        .ui[class*="tablet stackable"].table > tfoot > tr > td,
+        .ui[class*="tablet stackable"].table > tr > td {
+            background: none;
+            border: none !important;
+            padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding;
+            box-shadow: @responsiveCellBoxShadow;
+        }
+        & when (@variationTableDefinition) {
+            /* Definition Table */
+            .ui.definition[class*="tablet stackable"].table > thead > tr > th:first-child {
+                box-shadow: none !important;
+            }
+        }
     }
-    .ui[class*="tablet stackable"].table > thead {
-      display: @responsiveHeaderDisplay;
-    }
-    .ui[class*="tablet stackable"].table > tfoot {
-      display: @responsiveFooterDisplay;
-    }
-    .ui.ui.ui.ui[class*="tablet stackable"].table > thead > tr,
-    .ui.ui.ui.ui[class*="tablet stackable"].table > tbody > tr,
-    .ui.ui.ui.ui[class*="tablet stackable"].table > tfoot > tr,
-    .ui.ui.ui.ui[class*="tablet stackable"].table > tr {
-      padding-top: @responsiveRowVerticalPadding;
-      padding-bottom: @responsiveRowVerticalPadding;
-      box-shadow: @responsiveRowBoxShadow;
-    }
-    .ui[class*="tablet stackable"].table > thead > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > th,
-    .ui[class*="tablet stackable"].table > tfoot > tr > th,
-    .ui[class*="tablet stackable"].table > tr > th,
-    .ui[class*="tablet stackable"].table > tbody > tr > td,
-    .ui[class*="tablet stackable"].table > tfoot > tr > td,
-    .ui[class*="tablet stackable"].table > tr > td {
-      background: none;
-      border: none !important;
-      padding: @responsiveCellVerticalPadding @responsiveCellHorizontalPadding;
-      box-shadow: @responsiveCellBoxShadow;
-    }
-    & when (@variationTableDefinition) {
-      /* Definition Table */
-      .ui.definition[class*="tablet stackable"].table > thead > tr > th:first-child {
-        box-shadow: none !important;
-      }
-    }
-  }
-  & when (@variationTableMarked) and not (@variationTableColors = false) {
-    each(@variationTableColors, {
-      @color: @value;
+    & when (@variationTableMarked) and not (@variationTableColors = false) {
+        each(@variationTableColors, {
+            @color: @value;
       @c: @colors[@@color][color];
       @l: @colors[@@color][light];
       .ui.ui.ui.ui[class*="tablet stackable"].table tr[class*="@{color} marked"] {
@@ -902,218 +902,218 @@
 }
 
 & when (@variationTableAligned) {
-  /*--------------
+    /*--------------
    Text Alignment
   ---------------*/
 
-  .ui.table[class*="left aligned"],
-  .ui.table [class*="left aligned"] {
-    text-align: left;
-  }
-  .ui.table[class*="center aligned"],
-  .ui.table [class*="center aligned"] {
-    text-align: center;
-  }
-  .ui.table[class*="right aligned"],
-  .ui.table [class*="right aligned"] {
-    text-align: right;
-  }
+    .ui.table[class*="left aligned"],
+    .ui.table [class*="left aligned"] {
+        text-align: left;
+    }
+    .ui.table[class*="center aligned"],
+    .ui.table [class*="center aligned"] {
+        text-align: center;
+    }
+    .ui.table[class*="right aligned"],
+    .ui.table [class*="right aligned"] {
+        text-align: right;
+    }
 
-  /*------------------
+    /*------------------
    Vertical Alignment
   ------------------*/
 
-  .ui.table[class*="top aligned"],
-  .ui.table [class*="top aligned"] {
-    vertical-align: top;
-  }
-  .ui.table[class*="middle aligned"],
-  .ui.table [class*="middle aligned"] {
-    vertical-align: middle;
-  }
-  .ui.table[class*="bottom aligned"],
-  .ui.table [class*="bottom aligned"] {
-    vertical-align: bottom;
-  }
+    .ui.table[class*="top aligned"],
+    .ui.table [class*="top aligned"] {
+        vertical-align: top;
+    }
+    .ui.table[class*="middle aligned"],
+    .ui.table [class*="middle aligned"] {
+        vertical-align: middle;
+    }
+    .ui.table[class*="bottom aligned"],
+    .ui.table [class*="bottom aligned"] {
+        vertical-align: bottom;
+    }
 }
 
 & when (@variationTableCollapsing) {
-  /*--------------
+    /*--------------
       Collapsing
   ---------------*/
 
-  .ui.table th.collapsing,
-  .ui.table td.collapsing {
-    width: 1px;
-    white-space: nowrap;
-  }
+    .ui.table th.collapsing,
+    .ui.table td.collapsing {
+        width: 1px;
+        white-space: nowrap;
+    }
 }
 
 & when (@variationTableFixed) {
-  /*--------------
+    /*--------------
        Fixed
   ---------------*/
 
-  .ui.fixed.table {
-    table-layout: fixed;
-  }
+    .ui.fixed.table {
+        table-layout: fixed;
+    }
 
-  .ui.fixed.table th,
-  .ui.fixed.table td {
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .ui.fixed.table th,
+    .ui.fixed.table td {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
 }
 
 
 & when (@variationTableSelectable) {
-  /*--------------
+    /*--------------
      Selectable
   ---------------*/
 
-  .ui.ui.selectable.table > tbody > tr:hover,
-  .ui.table tbody tr td.selectable:hover {
-    background: @selectableBackground;
-    color: @selectableTextColor;
-  }
-  & when (@variationTableInverted) {
-    .ui.ui.selectable.inverted.table > tbody > tr:hover,
-    .ui.inverted.table tbody tr td.selectable:hover {
-      background: @selectableInvertedBackground;
-      color: @selectableInvertedTextColor;
+    .ui.ui.selectable.table > tbody > tr:hover,
+    .ui.table tbody tr td.selectable:hover {
+        background: @selectableBackground;
+        color: @selectableTextColor;
     }
-  }
-  /* Selectable Cell Link */
-  .ui.table tbody tr td.selectable {
-    padding: 0;
-  }
-  .ui.table tbody tr td.selectable > a:not(.ui) {
-    display: block;
-    color: inherit;
-  }
-  .ui.table:not(.compact) tbody tr td.selectable > a:not(.ui) {
-    padding: @cellVerticalPadding @cellHorizontalPadding;
-  }
-  .ui.table > tr > td.selectable,
-  .ui.table > tbody > tr > td.selectable,
-  .ui.selectable.table > tbody > tr,
-  .ui.selectable.table > tr {
-    cursor:pointer;
-  }
-  & when (@variationTableError) {
-    /* Other States */
-    .ui.ui.selectable.table tr.error:hover,
-    .ui.table tr td.selectable.error:hover,
-    .ui.selectable.table tr:hover td.error {
-      background: @errorBackgroundHover;
-      color: @errorColorHover;
+    & when (@variationTableInverted) {
+        .ui.ui.selectable.inverted.table > tbody > tr:hover,
+        .ui.inverted.table tbody tr td.selectable:hover {
+            background: @selectableInvertedBackground;
+            color: @selectableInvertedTextColor;
+        }
     }
-  }
-  & when (@variationTableWarning) {
-    .ui.ui.selectable.table tr.warning:hover,
-    .ui.table tr td.selectable.warning:hover,
-    .ui.selectable.table tr:hover td.warning {
-      background: @warningBackgroundHover;
-      color: @warningColorHover;
+    /* Selectable Cell Link */
+    .ui.table tbody tr td.selectable {
+        padding: 0;
     }
-  }
-  & when (@variationTableActive) {
-    .ui.ui.selectable.table tr.active:hover,
-    .ui.table tr td.selectable.active:hover,
-    .ui.selectable.table tr:hover td.active {
-      background: @activeBackgroundColor;
-      color: @activeColor;
+    .ui.table tbody tr td.selectable > a:not(.ui) {
+        display: block;
+        color: inherit;
     }
-  }
-  & when (@variationTablePositive) {
-    .ui.ui.selectable.table tr.positive:hover,
-    .ui.table tr td.selectable.positive:hover,
-    .ui.selectable.table tr:hover td.positive {
-      background: @positiveBackgroundHover;
-      color: @positiveColorHover;
+    .ui.table:not(.compact) tbody tr td.selectable > a:not(.ui) {
+        padding: @cellVerticalPadding @cellHorizontalPadding;
     }
-  }
-  & when (@variationTableNegative) {
-    .ui.ui.selectable.table tr.negative:hover,
-    .ui.table tr td.selectable.negative:hover,
-    .ui.selectable.table tr:hover td.negative {
-      background: @negativeBackgroundHover;
-      color: @negativeColorHover;
+    .ui.table > tr > td.selectable,
+    .ui.table > tbody > tr > td.selectable,
+    .ui.selectable.table > tbody > tr,
+    .ui.selectable.table > tr {
+        cursor:pointer;
     }
-  }
+    & when (@variationTableError) {
+        /* Other States */
+        .ui.ui.selectable.table tr.error:hover,
+        .ui.table tr td.selectable.error:hover,
+        .ui.selectable.table tr:hover td.error {
+            background: @errorBackgroundHover;
+            color: @errorColorHover;
+        }
+    }
+    & when (@variationTableWarning) {
+        .ui.ui.selectable.table tr.warning:hover,
+        .ui.table tr td.selectable.warning:hover,
+        .ui.selectable.table tr:hover td.warning {
+            background: @warningBackgroundHover;
+            color: @warningColorHover;
+        }
+    }
+    & when (@variationTableActive) {
+        .ui.ui.selectable.table tr.active:hover,
+        .ui.table tr td.selectable.active:hover,
+        .ui.selectable.table tr:hover td.active {
+            background: @activeBackgroundColor;
+            color: @activeColor;
+        }
+    }
+    & when (@variationTablePositive) {
+        .ui.ui.selectable.table tr.positive:hover,
+        .ui.table tr td.selectable.positive:hover,
+        .ui.selectable.table tr:hover td.positive {
+            background: @positiveBackgroundHover;
+            color: @positiveColorHover;
+        }
+    }
+    & when (@variationTableNegative) {
+        .ui.ui.selectable.table tr.negative:hover,
+        .ui.table tr td.selectable.negative:hover,
+        .ui.selectable.table tr:hover td.negative {
+            background: @negativeBackgroundHover;
+            color: @negativeColorHover;
+        }
+    }
 }
 
 
 & when (@variationTableAttached) {
-  /*-------------------
+    /*-------------------
         Attached
   --------------------*/
 
-  /* Middle */
-  .ui.attached.table {
-    top: 0;
-    bottom: 0;
-    border-radius: 0;
-    margin: 0 @attachedHorizontalOffset;
-    width: @attachedWidth;
-    max-width: @attachedWidth;
-    box-shadow: @attachedBoxShadow;
-    border: @attachedBorder;
-  }
-  .ui.attached + .ui.attached.table:not(.top) {
-    border-top: none;
-  }
+    /* Middle */
+    .ui.attached.table {
+        top: 0;
+        bottom: 0;
+        border-radius: 0;
+        margin: 0 @attachedHorizontalOffset;
+        width: @attachedWidth;
+        max-width: @attachedWidth;
+        box-shadow: @attachedBoxShadow;
+        border: @attachedBorder;
+    }
+    .ui.attached + .ui.attached.table:not(.top) {
+        border-top: none;
+    }
 
-  /* Top */
-  .ui[class*="top attached"].table {
-    bottom: 0;
-    margin-bottom: 0;
-    top: @attachedTopOffset;
-    margin-top: @verticalMargin;
-    border-radius: @borderRadius @borderRadius 0 0;
-  }
-  .ui.table[class*="top attached"]:first-child {
-    margin-top: 0;
-  }
+    /* Top */
+    .ui[class*="top attached"].table {
+        bottom: 0;
+        margin-bottom: 0;
+        top: @attachedTopOffset;
+        margin-top: @verticalMargin;
+        border-radius: @borderRadius @borderRadius 0 0;
+    }
+    .ui.table[class*="top attached"]:first-child {
+        margin-top: 0;
+    }
 
-  /* Bottom */
-  .ui[class*="bottom attached"].table {
-    bottom: 0;
-    margin-top: 0;
-    top: @attachedBottomOffset;
-    margin-bottom: @verticalMargin;
-    box-shadow: @attachedBottomBoxShadow;
-    border-radius: 0 0 @borderRadius @borderRadius;
-  }
-  .ui[class*="bottom attached"].table:last-child {
-    margin-bottom: 0;
-  }
+    /* Bottom */
+    .ui[class*="bottom attached"].table {
+        bottom: 0;
+        margin-top: 0;
+        top: @attachedBottomOffset;
+        margin-bottom: @verticalMargin;
+        box-shadow: @attachedBottomBoxShadow;
+        border-radius: 0 0 @borderRadius @borderRadius;
+    }
+    .ui[class*="bottom attached"].table:last-child {
+        margin-bottom: 0;
+    }
 }
 
 & when (@variationTableStriped) {
-  /*--------------
+    /*--------------
        Striped
   ---------------*/
 
-  /* Table Striping */
-  .ui.striped.table > tr:nth-child(2n),
-  .ui.striped.table > tbody > tr:nth-child(2n) {
-    background-color: @stripedBackground;
-  }
-  & when (@variationTableInverted) {
-    /* Stripes */
-    .ui.inverted.striped.table > tr:nth-child(2n),
-    .ui.inverted.striped.table > tbody > tr:nth-child(2n) {
-      background-color: @invertedStripedBackground;
+    /* Table Striping */
+    .ui.striped.table > tr:nth-child(2n),
+    .ui.striped.table > tbody > tr:nth-child(2n) {
+        background-color: @stripedBackground;
     }
-  }
-  & when (@variationTableSelectable) {
-    /* Allow striped active hover */
-    .ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
-      background: @activeBackgroundHover;
-      color: @activeColorHover;
+    & when (@variationTableInverted) {
+        /* Stripes */
+        .ui.inverted.striped.table > tr:nth-child(2n),
+        .ui.inverted.striped.table > tbody > tr:nth-child(2n) {
+            background-color: @invertedStripedBackground;
+        }
     }
-  }
+    & when (@variationTableSelectable) {
+        /* Allow striped active hover */
+        .ui.striped.selectable.selectable.selectable.table tbody tr.active:hover {
+            background: @activeBackgroundHover;
+            color: @activeColorHover;
+        }
+    }
 }
 
 /*--------------
@@ -1122,15 +1122,15 @@
 
 .ui.table[class*="single line"],
 .ui.table [class*="single line"] {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 /*-------------------
        Colors
 --------------------*/
 & when not (@variationTableColors = false) {
-  each(@variationTableColors, {
-    @color: @value;
+    each(@variationTableColors, {
+        @color: @value;
     @c: @colors[@@color][color];
     @t: @colors[@@color][text];
     @ht: @colors[@@color][hoverText];
@@ -1313,608 +1313,608 @@
 }
 
 & when (@variationTableEqualWidth) {
-  /*--------------
+    /*--------------
     Column Count
   ---------------*/
 
-  /* Grid Based */
-  .ui.one.column.table td {
-    width: @oneColumn;
-  }
-  .ui.two.column.table td {
-    width: @twoColumn;
-  }
-  .ui.three.column.table td {
-    width: @threeColumn;
-  }
-  .ui.four.column.table td {
-    width: @fourColumn;
-  }
-  .ui.five.column.table td {
-    width: @fiveColumn;
-  }
-  .ui.six.column.table td {
-    width: @sixColumn;
-  }
-  .ui.seven.column.table td {
-    width: @sevenColumn;
-  }
-  .ui.eight.column.table td {
-    width: @eightColumn;
-  }
-  .ui.nine.column.table td {
-    width: @nineColumn;
-  }
-  .ui.ten.column.table td {
-    width: @tenColumn;
-  }
-  .ui.eleven.column.table td {
-    width: @elevenColumn;
-  }
-  .ui.twelve.column.table td {
-    width: @twelveColumn;
-  }
-  .ui.thirteen.column.table td {
-    width: @thirteenColumn;
-  }
-  .ui.fourteen.column.table td {
-    width: @fourteenColumn;
-  }
-  .ui.fifteen.column.table td {
-    width: @fifteenColumn;
-  }
-  .ui.sixteen.column.table td {
-    width: @sixteenColumn;
-  }
+    /* Grid Based */
+    .ui.one.column.table td {
+        width: @oneColumn;
+    }
+    .ui.two.column.table td {
+        width: @twoColumn;
+    }
+    .ui.three.column.table td {
+        width: @threeColumn;
+    }
+    .ui.four.column.table td {
+        width: @fourColumn;
+    }
+    .ui.five.column.table td {
+        width: @fiveColumn;
+    }
+    .ui.six.column.table td {
+        width: @sixColumn;
+    }
+    .ui.seven.column.table td {
+        width: @sevenColumn;
+    }
+    .ui.eight.column.table td {
+        width: @eightColumn;
+    }
+    .ui.nine.column.table td {
+        width: @nineColumn;
+    }
+    .ui.ten.column.table td {
+        width: @tenColumn;
+    }
+    .ui.eleven.column.table td {
+        width: @elevenColumn;
+    }
+    .ui.twelve.column.table td {
+        width: @twelveColumn;
+    }
+    .ui.thirteen.column.table td {
+        width: @thirteenColumn;
+    }
+    .ui.fourteen.column.table td {
+        width: @fourteenColumn;
+    }
+    .ui.fifteen.column.table td {
+        width: @fifteenColumn;
+    }
+    .ui.sixteen.column.table td {
+        width: @sixteenColumn;
+    }
 }
 
 & when (@variationTableWide) {
-  /* Column Width */
-  .ui.table th.one.wide,
-  .ui.table td.one.wide {
-    width: @oneWide;
-  }
-  .ui.table th.two.wide,
-  .ui.table td.two.wide {
-    width: @twoWide;
-  }
-  .ui.table th.three.wide,
-  .ui.table td.three.wide {
-    width: @threeWide;
-  }
-  .ui.table th.four.wide,
-  .ui.table td.four.wide {
-    width: @fourWide;
-  }
-  .ui.table th.five.wide,
-  .ui.table td.five.wide {
-    width: @fiveWide;
-  }
-  .ui.table th.six.wide,
-  .ui.table td.six.wide {
-    width: @sixWide;
-  }
-  .ui.table th.seven.wide,
-  .ui.table td.seven.wide {
-    width: @sevenWide;
-  }
-  .ui.table th.eight.wide,
-  .ui.table td.eight.wide {
-    width: @eightWide;
-  }
-  .ui.table th.nine.wide,
-  .ui.table td.nine.wide {
-    width: @nineWide;
-  }
-  .ui.table th.ten.wide,
-  .ui.table td.ten.wide {
-    width: @tenWide;
-  }
-  .ui.table th.eleven.wide,
-  .ui.table td.eleven.wide {
-    width: @elevenWide;
-  }
-  .ui.table th.twelve.wide,
-  .ui.table td.twelve.wide {
-    width: @twelveWide;
-  }
-  .ui.table th.thirteen.wide,
-  .ui.table td.thirteen.wide {
-    width: @thirteenWide;
-  }
-  .ui.table th.fourteen.wide,
-  .ui.table td.fourteen.wide {
-    width: @fourteenWide;
-  }
-  .ui.table th.fifteen.wide,
-  .ui.table td.fifteen.wide {
-    width: @fifteenWide;
-  }
-  .ui.table th.sixteen.wide,
-  .ui.table td.sixteen.wide {
-    width: @sixteenWide;
-  }
+    /* Column Width */
+    .ui.table th.one.wide,
+    .ui.table td.one.wide {
+        width: @oneWide;
+    }
+    .ui.table th.two.wide,
+    .ui.table td.two.wide {
+        width: @twoWide;
+    }
+    .ui.table th.three.wide,
+    .ui.table td.three.wide {
+        width: @threeWide;
+    }
+    .ui.table th.four.wide,
+    .ui.table td.four.wide {
+        width: @fourWide;
+    }
+    .ui.table th.five.wide,
+    .ui.table td.five.wide {
+        width: @fiveWide;
+    }
+    .ui.table th.six.wide,
+    .ui.table td.six.wide {
+        width: @sixWide;
+    }
+    .ui.table th.seven.wide,
+    .ui.table td.seven.wide {
+        width: @sevenWide;
+    }
+    .ui.table th.eight.wide,
+    .ui.table td.eight.wide {
+        width: @eightWide;
+    }
+    .ui.table th.nine.wide,
+    .ui.table td.nine.wide {
+        width: @nineWide;
+    }
+    .ui.table th.ten.wide,
+    .ui.table td.ten.wide {
+        width: @tenWide;
+    }
+    .ui.table th.eleven.wide,
+    .ui.table td.eleven.wide {
+        width: @elevenWide;
+    }
+    .ui.table th.twelve.wide,
+    .ui.table td.twelve.wide {
+        width: @twelveWide;
+    }
+    .ui.table th.thirteen.wide,
+    .ui.table td.thirteen.wide {
+        width: @thirteenWide;
+    }
+    .ui.table th.fourteen.wide,
+    .ui.table td.fourteen.wide {
+        width: @fourteenWide;
+    }
+    .ui.table th.fifteen.wide,
+    .ui.table td.fifteen.wide {
+        width: @fifteenWide;
+    }
+    .ui.table th.sixteen.wide,
+    .ui.table td.sixteen.wide {
+        width: @sixteenWide;
+    }
 }
 
 & when (@variationTableSortable) {
-  /*--------------
+    /*--------------
       Sortable
   ---------------*/
 
-  .ui.sortable.table > thead > tr > th {
-    cursor: pointer;
-    white-space: nowrap;
-    color: @sortableColor;
-  }
-  & when (@variationTableCelled) {
-    .ui.celled.sortable.table > thead > tr > th:not(:first-child) {
-      border-left: @sortableBorder;
+    .ui.sortable.table > thead > tr > th {
+        cursor: pointer;
+        white-space: nowrap;
+        color: @sortableColor;
     }
-  }
-  .ui.sortable.table thead th.sorted,
-  .ui.sortable.table thead th.sorted:hover {
-    user-select: none;
-  }
+    & when (@variationTableCelled) {
+        .ui.celled.sortable.table > thead > tr > th:not(:first-child) {
+            border-left: @sortableBorder;
+        }
+    }
+    .ui.sortable.table thead th.sorted,
+    .ui.sortable.table thead th.sorted:hover {
+        user-select: none;
+    }
 
-  .ui.sortable.table > thead > tr > th::after {
-    display: none;
-    font-style: normal;
-    font-weight: @normal;
-    text-decoration: inherit;
-    content: '';
-    height: 1em;
-    width: @sortableIconWidth;
-    opacity: @sortableIconOpacity;
-    margin: 0 0 0 @sortableIconDistance;
-    font-family: @sortableIconFont;
-  }
-  .ui.sortable.table thead th.ascending::after {
-    content: @sortableIconAscending;
-  }
-  .ui.sortable.table thead th.descending::after {
-    content: @sortableIconDescending;
-  }
+    .ui.sortable.table > thead > tr > th::after {
+        display: none;
+        font-style: normal;
+        font-weight: @normal;
+        text-decoration: inherit;
+        content: '';
+        height: 1em;
+        width: @sortableIconWidth;
+        opacity: @sortableIconOpacity;
+        margin: 0 0 0 @sortableIconDistance;
+        font-family: @sortableIconFont;
+    }
+    .ui.sortable.table thead th.ascending::after {
+        content: @sortableIconAscending;
+    }
+    .ui.sortable.table thead th.descending::after {
+        content: @sortableIconDescending;
+    }
 
-  & when (@variationTableDisabled) {
-    /* Hover */
-    .ui.sortable.table th.disabled:hover {
-      cursor: auto;
-      color: @sortableDisabledColor;
+    & when (@variationTableDisabled) {
+        /* Hover */
+        .ui.sortable.table th.disabled:hover {
+            cursor: auto;
+            color: @sortableDisabledColor;
+        }
     }
-  }
-  .ui.sortable.table > thead > tr > th:hover {
-    color: @sortableHoverColor;
-  }
-  .ui.sortable.table:not(.basic) > thead > tr > th:hover {
-    background: @sortableHoverBackground;
-  }
+    .ui.sortable.table > thead > tr > th:hover {
+        color: @sortableHoverColor;
+    }
+    .ui.sortable.table:not(.basic) > thead > tr > th:hover {
+        background: @sortableHoverBackground;
+    }
 
-  /* Sorted */
-  .ui.sortable.table thead th.sorted {
-    color: @sortableActiveColor;
-  }
-  .ui.sortable.table:not(.basic) thead th.sorted {
-    background: @sortableActiveBackground;
-  }
-  .ui.sortable.table thead th.sorted::after {
-    display: inline-block;
-  }
+    /* Sorted */
+    .ui.sortable.table thead th.sorted {
+        color: @sortableActiveColor;
+    }
+    .ui.sortable.table:not(.basic) thead th.sorted {
+        background: @sortableActiveBackground;
+    }
+    .ui.sortable.table thead th.sorted::after {
+        display: inline-block;
+    }
 
-  /* Sorted Hover */
-  .ui.sortable.table thead th.sorted:hover {
-    color: @sortableActiveHoverColor;
-  }
-  .ui.sortable.table:not(.basic) thead th.sorted:hover {
-    background: @sortableActiveHoverBackground;
-  }
-  & when (@variationTableInverted) {
-    /* Inverted */
-    .ui.inverted.sortable.table thead th.sorted {
-      color: @sortableInvertedActiveColor;
+    /* Sorted Hover */
+    .ui.sortable.table thead th.sorted:hover {
+        color: @sortableActiveHoverColor;
     }
-    .ui.inverted.sortable.table:not(.basic) thead th.sorted {
-      background: @sortableInvertedActiveBackground;
+    .ui.sortable.table:not(.basic) thead th.sorted:hover {
+        background: @sortableActiveHoverBackground;
     }
-    .ui.inverted.sortable.table > thead > tr > th:hover {
-      color: @sortableInvertedHoverColor;
+    & when (@variationTableInverted) {
+        /* Inverted */
+        .ui.inverted.sortable.table thead th.sorted {
+            color: @sortableInvertedActiveColor;
+        }
+        .ui.inverted.sortable.table:not(.basic) thead th.sorted {
+            background: @sortableInvertedActiveBackground;
+        }
+        .ui.inverted.sortable.table > thead > tr > th:hover {
+            color: @sortableInvertedHoverColor;
+        }
+        .ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
+            background: @sortableInvertedHoverBackground;
+        }
+        .ui.inverted.sortable.table:not(.basic) > thead > tr > th {
+            border-left-color: @sortableInvertedBorderColor;
+            border-right-color: @sortableInvertedBorderColor;
+        }
     }
-    .ui.inverted.sortable.table:not(.basic) > thead > tr > th:hover {
-      background: @sortableInvertedHoverBackground;
-    }
-    .ui.inverted.sortable.table:not(.basic) > thead > tr > th {
-      border-left-color: @sortableInvertedBorderColor;
-      border-right-color: @sortableInvertedBorderColor;
-    }
-  }
 }
 
 & when (@variationTableInverted) {
-  /*--------------
+    /*--------------
       Inverted
   ---------------*/
 
-  /* Text Color */
-  .ui.inverted.table {
-    background: @invertedBackground;
-    color: @invertedCellColor;
-    border: @invertedBorder;
-  }
-  .ui.ui.inverted.table > thead > tr > th,
-  .ui.ui.inverted.table > tbody > tr > th,
-  .ui.ui.inverted.table > tr > th {
-    background-color: @invertedHeaderBackground;
-    border-color: @invertedHeaderBorderColor;
-    color: @invertedHeaderColor;
-  }
-  .ui.ui.inverted.table > tfoot > tr > th,
-  .ui.ui.inverted.table > tfoot > tr > td {
-    background-color: @invertedFooterBackground;
-    border-color: @invertedFooterBorderColor;
-    color: @invertedFooterColor;
-  }
-  .ui.inverted.table > tbody > tr > td,
-  .ui.inverted.table > tfoot > tr > td,
-  .ui.inverted.table > tr > td {
-    border-color: @invertedCellBorderColor;
-  }
-  & when (@variationTableDisabled) {
-    .ui.ui.ui.inverted.table tr.disabled td,
-    .ui.ui.ui.inverted.table tr td.disabled,
-    .ui.inverted.table tr.disabled:hover td,
-    .ui.inverted.table tr:hover td.disabled {
-      pointer-events: none;
-      color: @invertedDisabledTextColor;
+    /* Text Color */
+    .ui.inverted.table {
+        background: @invertedBackground;
+        color: @invertedCellColor;
+        border: @invertedBorder;
     }
-    .ui.ui.ui.inverted.table tr td.disabled:not([class="disabled"]),
-    .ui.inverted.table tr.disabled:not([class="disabled"]) td,
-    .ui.inverted.table tr.disabled td[class]:not(.disabled),
-    .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
-      color: @disabledTextColor;
+    .ui.ui.inverted.table > thead > tr > th,
+    .ui.ui.inverted.table > tbody > tr > th,
+    .ui.ui.inverted.table > tr > th {
+        background-color: @invertedHeaderBackground;
+        border-color: @invertedHeaderBorderColor;
+        color: @invertedHeaderColor;
     }
-  }
-  & when (@variationTableDefinition) {
-    /* Definition */
-    .ui.inverted.definition.table > tfoot:not(.full-width) > tr > th:first-child,
-    .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
-      background: @definitionPageBackground;
+    .ui.ui.inverted.table > tfoot > tr > th,
+    .ui.ui.inverted.table > tfoot > tr > td {
+        background-color: @invertedFooterBackground;
+        border-color: @invertedFooterBorderColor;
+        color: @invertedFooterColor;
     }
-    .ui.inverted.definition.table > tbody > tr > td:first-child,
-    .ui.inverted.definition.table > tfoot > tr > td:first-child,
-    .ui.inverted.definition.table > tr > td:first-child {
-      background: @invertedDefinitionColumnBackground;
-      color: @invertedDefinitionColumnColor;
+    .ui.inverted.table > tbody > tr > td,
+    .ui.inverted.table > tfoot > tr > td,
+    .ui.inverted.table > tr > td {
+        border-color: @invertedCellBorderColor;
     }
-  }
+    & when (@variationTableDisabled) {
+        .ui.ui.ui.inverted.table tr.disabled td,
+        .ui.ui.ui.inverted.table tr td.disabled,
+        .ui.inverted.table tr.disabled:hover td,
+        .ui.inverted.table tr:hover td.disabled {
+            pointer-events: none;
+            color: @invertedDisabledTextColor;
+        }
+        .ui.ui.ui.inverted.table tr td.disabled:not([class="disabled"]),
+        .ui.inverted.table tr.disabled:not([class="disabled"]) td,
+        .ui.inverted.table tr.disabled td[class]:not(.disabled),
+        .ui.inverted.table tr:hover td.disabled:not([class="disabled"]) {
+            color: @disabledTextColor;
+        }
+    }
+    & when (@variationTableDefinition) {
+        /* Definition */
+        .ui.inverted.definition.table > tfoot:not(.full-width) > tr > th:first-child,
+        .ui.inverted.definition.table > thead:not(.full-width) > tr > th:first-child {
+            background: @definitionPageBackground;
+        }
+        .ui.inverted.definition.table > tbody > tr > td:first-child,
+        .ui.inverted.definition.table > tfoot > tr > td:first-child,
+        .ui.inverted.definition.table > tr > td:first-child {
+            background: @invertedDefinitionColumnBackground;
+            color: @invertedDefinitionColumnColor;
+        }
+    }
 }
 
 & when (@variationTableCollapsing) {
-  /*--------------
+    /*--------------
      Collapsing
   ---------------*/
 
-  .ui.collapsing.table {
-    width: auto;
-  }
+    .ui.collapsing.table {
+        width: auto;
+    }
 }
 
 & when (@variationTableBasic) or (@variationTableVeryBasic){
-  /*--------------
+    /*--------------
         Basic
   ---------------*/
 
-  .ui.basic.table {
-    background: @basicTableBackground;
-    border: @basicTableBorder;
-    box-shadow: @basicBoxShadow;
-  }
-  .ui.basic.table > thead,
-  .ui.basic.table > tfoot {
-    box-shadow: none;
-  }
-  .ui.basic.table > thead > tr > th,
-  .ui.basic.table > tbody > tr > th,
-  .ui.basic.table > tfoot > tr > th,
-  .ui.basic.table > tr > th {
-    background: @basicTableHeaderBackground;
-    border-left: @basicTableHeaderDivider;
-  }
-  .ui.basic.table > tbody > tr {
-    border-bottom: @basicTableCellBorder;
-  }
-  .ui.basic.table > tbody > tr > td,
-  .ui.basic.table > tfoot > tr > td,
-  .ui.basic.table >tr > td {
-    background: @basicTableCellBackground;
-  }
-  & when (@variationTableStriped) {
-    .ui.basic.striped.table > tbody > tr:nth-child(2n) {
-      background-color: @basicTableStripedBackground;
+    .ui.basic.table {
+        background: @basicTableBackground;
+        border: @basicTableBorder;
+        box-shadow: @basicBoxShadow;
     }
-  }
-  & when (@variationTableVeryBasic) {
-    /* Very Basic */
-    .ui[class*="very basic"].table {
-      border: none;
+    .ui.basic.table > thead,
+    .ui.basic.table > tfoot {
+        box-shadow: none;
     }
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td {
-      padding: @basicTableCellPadding;
+    .ui.basic.table > thead > tr > th,
+    .ui.basic.table > tbody > tr > th,
+    .ui.basic.table > tfoot > tr > th,
+    .ui.basic.table > tr > th {
+        background: @basicTableHeaderBackground;
+        border-left: @basicTableHeaderDivider;
     }
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:first-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td:first-child {
-      padding-left: 0;
+    .ui.basic.table > tbody > tr {
+        border-bottom: @basicTableCellBorder;
     }
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:last-child,
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td:last-child {
-      padding-right: 0;
+    .ui.basic.table > tbody > tr > td,
+    .ui.basic.table > tfoot > tr > td,
+    .ui.basic.table >tr > td {
+        background: @basicTableCellBackground;
     }
-    .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr:first-child > th {
-      padding-top: 0;
+    & when (@variationTableStriped) {
+        .ui.basic.striped.table > tbody > tr:nth-child(2n) {
+            background-color: @basicTableStripedBackground;
+        }
     }
-  }
+    & when (@variationTableVeryBasic) {
+        /* Very Basic */
+        .ui[class*="very basic"].table {
+            border: none;
+        }
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td {
+            padding: @basicTableCellPadding;
+        }
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:first-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td:first-child {
+            padding-left: 0;
+        }
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > th:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr > th:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > th:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > th:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tr > td:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tbody > tr > td:last-child,
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > tfoot > tr > td:last-child {
+            padding-right: 0;
+        }
+        .ui[class*="very basic"].table:not(.sortable):not(.striped) > thead > tr:first-child > th {
+            padding-top: 0;
+        }
+    }
 }
 
 & when (@variationTableCelled) {
-  /*--------------
+    /*--------------
        Celled
   ---------------*/
 
-  .ui.celled.table > tr > th,
-  .ui.celled.table > thead > tr > th,
-  .ui.celled.table > tbody > tr > th,
-  .ui.celled.table > tfoot > tr > th,
-  .ui.celled.table > tr > td,
-  .ui.celled.table > tbody > tr > td ,
-  .ui.celled.table > tfoot > tr > td {
-    border-left: @cellBorder;
-  }
-  & when (@variationTableInverted) {
-    .ui.inverted.celled.table > tbody > tr > td,
-    .ui.inverted.celled.table > tr > td {
-      border-left: @invertedCellBorder;
+    .ui.celled.table > tr > th,
+    .ui.celled.table > thead > tr > th,
+    .ui.celled.table > tbody > tr > th,
+    .ui.celled.table > tfoot > tr > th,
+    .ui.celled.table > tr > td,
+    .ui.celled.table > tbody > tr > td ,
+    .ui.celled.table > tfoot > tr > td {
+        border-left: @cellBorder;
     }
-  }
-  .ui.celled.table > tr > th:first-child,
-  .ui.celled.table > thead > tr > th:first-child,
-  .ui.celled.table > tbody > tr > th:first-child,
-  .ui.celled.table > tfoot > tr > th:first-child,
-  .ui.celled.table > tr > td:first-child,
-  .ui.celled.table > tbody > tr > td:first-child,
-  .ui.celled.table > tfoot >tr > td:first-child {
-    border-left: none;
-  }
+    & when (@variationTableInverted) {
+        .ui.inverted.celled.table > tbody > tr > td,
+        .ui.inverted.celled.table > tr > td {
+            border-left: @invertedCellBorder;
+        }
+    }
+    .ui.celled.table > tr > th:first-child,
+    .ui.celled.table > thead > tr > th:first-child,
+    .ui.celled.table > tbody > tr > th:first-child,
+    .ui.celled.table > tfoot > tr > th:first-child,
+    .ui.celled.table > tr > td:first-child,
+    .ui.celled.table > tbody > tr > td:first-child,
+    .ui.celled.table > tfoot >tr > td:first-child {
+        border-left: none;
+    }
 }
 
 & when (@variationTablePadded) or (@variationTableVeryPadded) {
-  /*--------------
+    /*--------------
        Padded
   ---------------*/
 
-  .ui.padded.table > tr > th,
-  .ui.padded.table > thead > tr > th,
-  .ui.padded.table > tbody > tr > th,
-  .ui.padded.table > tfoot > tr > th {
-    padding-left: @paddedHorizontalPadding;
-    padding-right: @paddedHorizontalPadding;
-  }
-  .ui.padded.table > tr > th,
-  .ui.padded.table > thead > tr > th,
-  .ui.padded.table > tbody > tr > th,
-  .ui.padded.table > tfoot > tr > th,
-  .ui.padded.table > tr > td,
-  .ui.padded.table > tbody > tr > td ,
-  .ui.padded.table > tfoot > tr > td {
-    padding: @paddedVerticalPadding @paddedHorizontalPadding;
-  }
+    .ui.padded.table > tr > th,
+    .ui.padded.table > thead > tr > th,
+    .ui.padded.table > tbody > tr > th,
+    .ui.padded.table > tfoot > tr > th {
+        padding-left: @paddedHorizontalPadding;
+        padding-right: @paddedHorizontalPadding;
+    }
+    .ui.padded.table > tr > th,
+    .ui.padded.table > thead > tr > th,
+    .ui.padded.table > tbody > tr > th,
+    .ui.padded.table > tfoot > tr > th,
+    .ui.padded.table > tr > td,
+    .ui.padded.table > tbody > tr > td ,
+    .ui.padded.table > tfoot > tr > td {
+        padding: @paddedVerticalPadding @paddedHorizontalPadding;
+    }
 
-  & when (@variationTableVeryPadded) {
-    /* Very */
-    .ui[class*="very padded"].table > tr > th,
-    .ui[class*="very padded"].table > thead > tr > th,
-    .ui[class*="very padded"].table > tbody > tr > th,
-    .ui[class*="very padded"].table > tfoot > tr > th {
-      padding-left: @veryPaddedHorizontalPadding;
-      padding-right: @veryPaddedHorizontalPadding;
+    & when (@variationTableVeryPadded) {
+        /* Very */
+        .ui[class*="very padded"].table > tr > th,
+        .ui[class*="very padded"].table > thead > tr > th,
+        .ui[class*="very padded"].table > tbody > tr > th,
+        .ui[class*="very padded"].table > tfoot > tr > th {
+            padding-left: @veryPaddedHorizontalPadding;
+            padding-right: @veryPaddedHorizontalPadding;
+        }
+        .ui[class*="very padded"].table > tr > td,
+        .ui[class*="very padded"].table > tbody > tr > td,
+        .ui[class*="very padded"].table > tfoot > tr > td {
+            padding: @veryPaddedVerticalPadding @veryPaddedHorizontalPadding;
+        }
     }
-    .ui[class*="very padded"].table > tr > td,
-    .ui[class*="very padded"].table > tbody > tr > td,
-    .ui[class*="very padded"].table > tfoot > tr > td {
-      padding: @veryPaddedVerticalPadding @veryPaddedHorizontalPadding;
-    }
-  }
 }
 
 & when (@variationTableCompact) or (@variationTableVeryCompact) {
-  /*--------------
+    /*--------------
        Compact
   ---------------*/
 
-  .ui.compact.table > tr > th,
-  .ui.compact.table > thead > tr > th,
-  .ui.compact.table > tbody > tr > th,
-  .ui.compact.table > tfoot > tr > th {
-    padding-left: @compactHorizontalPadding;
-    padding-right: @compactHorizontalPadding;
-  }
-  .ui.compact.table > tr > td,
-  .ui.compact.table > tbody > tr > td ,
-  .ui.compact.table > tfoot > tr > td {
-    padding: @compactVerticalPadding @compactHorizontalPadding;
-  }
+    .ui.compact.table > tr > th,
+    .ui.compact.table > thead > tr > th,
+    .ui.compact.table > tbody > tr > th,
+    .ui.compact.table > tfoot > tr > th {
+        padding-left: @compactHorizontalPadding;
+        padding-right: @compactHorizontalPadding;
+    }
+    .ui.compact.table > tr > td,
+    .ui.compact.table > tbody > tr > td ,
+    .ui.compact.table > tfoot > tr > td {
+        padding: @compactVerticalPadding @compactHorizontalPadding;
+    }
 
-  & when (@variationTableVeryCompact) {
-    /* Very */
-    .ui[class*="very compact"].table > tr > th,
-    .ui[class*="very compact"].table > thead > tr > th,
-    .ui[class*="very compact"].table > tbody > tr > th,
-    .ui[class*="very compact"].table > tfoot > tr > th {
-      padding-left: @veryCompactHorizontalPadding;
-      padding-right: @veryCompactHorizontalPadding;
+    & when (@variationTableVeryCompact) {
+        /* Very */
+        .ui[class*="very compact"].table > tr > th,
+        .ui[class*="very compact"].table > thead > tr > th,
+        .ui[class*="very compact"].table > tbody > tr > th,
+        .ui[class*="very compact"].table > tfoot > tr > th {
+            padding-left: @veryCompactHorizontalPadding;
+            padding-right: @veryCompactHorizontalPadding;
+        }
+        .ui[class*="very compact"].table > tr > td,
+        .ui[class*="very compact"].table > tbody > tr > td,
+        .ui[class*="very compact"].table > tfoot > tr > td {
+            padding: @veryCompactVerticalPadding @veryCompactHorizontalPadding;
+        }
     }
-    .ui[class*="very compact"].table > tr > td,
-    .ui[class*="very compact"].table > tbody > tr > td,
-    .ui[class*="very compact"].table > tfoot > tr > td {
-      padding: @veryCompactVerticalPadding @veryCompactHorizontalPadding;
-    }
-  }
 }
 
 & when (@variationTableStuck) {
-  /*--------------
+    /*--------------
        Stuck
   ---------------*/
 
-  .ui.stuck.table:not(.inverted) {
-    background: @stuckBackground;
-    & > thead > tr {
-      background: @stuckHeaderBackground;
-    }
-    & > tbody > tr {
-      background: @stuckBackground;
-    }
-    & > tfoot > tr {
-      background: @stuckFooterBackground;
-    }
-    &.basic when (@variationTableBasic) {
-      & > thead > tr,
-        > tfoot > tr {
+    .ui.stuck.table:not(.inverted) {
         background: @stuckBackground;
-      }
-    }
-  }
-  .ui.inverted.stuck.table when (@variationTableInverted) {
-    & > thead > tr {
-      background: @invertedStuckHeaderBackground;
-    }
-    & > tbody > tr {
-      background: @invertedStuckBackground;
-    }
-    & > tfoot > tr {
-      background: @invertedStuckFooterBackground;
-    }
-    &.basic when (@variationTableBasic){
-      & > thead > tr,
-        > tfoot > tr {
-        background: @invertedStuckBackground;
-      }
-    }
-  }
-  & when (@variationTableStuckHead) or (@variationTableStuckFoot) {
-    .ui.head.stuck.table > thead,
-    .ui.foot.stuck.table > tfoot {
-      position: -webkit-sticky;
-      position: sticky;
-      z-index: @stuckZIndex;
-    }
-  }
-  .ui.head.stuck.table when (@variationTableStuckHead) {
-    border-top: 0;
-    & > thead {
-      top: 0;
-      bottom: auto;
-      & > tr:first-child > th {
-        border-top: @cellBorder;
-      }
-    }
-    &.inverted > thead > tr:first-child > th when (@variationTableInverted) {
-      border-top: @invertedCellBorder;
-    }
-  }
-  .ui.foot.stuck.table when (@variationTableStuckFoot) {
-    border-bottom: 0;
-    & > tfoot {
-      top: auto;
-      bottom: 0;
-      & > tr:last-child > td,
-        > tr:last-child > th {
-        border-bottom: @cellBorder;
-      }
-    }
-    & when (@variationTableInverted) {
-      &.inverted > tfoot > tr:first-child > td,
-      &.inverted > tfoot > tr:first-child > th {
-        border-top: @invertedCellBorder;
-      }
-    }
-  }
-
-  .ui.first.stuck.table when (@variationTableStuckFirst) {
-    border-left: 0;
-    & th:first-child,
-      td:first-child {
-      position: -webkit-sticky;
-      position: sticky;
-      left: 0;
-      border-left: @cellBorder;
-      background: inherit;
-    }
-    & when (@variationTableInverted) {
-      &.inverted th:first-child,
-      &.inverted td:first-child {
-        border-left: @invertedCellBorder;
-      }
-    }
-  }
-
-  .ui.last.stuck.table when (@variationTableStuckLast) {
-    border-right: 0;
-    & th:last-child,
-      td:last-child {
-      position: -webkit-sticky;
-      position: sticky;
-      right: 0;
-      border-right: @cellBorder;
-      background: inherit;
-    }
-    & when (@variationTableInverted) {
-      &.inverted th:last-child,
-      &.inverted td:last-child {
-        border-right: @invertedCellBorder;
-      }
-    }
-  }
-  & when (@variationTableCelled) {
-    & when (@variationTableStuckFirst) {
-      .ui.celled.first.stuck.table th:first-child,
-      .ui.celled.first.stuck.table td:first-child {
-        border-right: @cellBorder;
-      }
-    }
-    & when (@variationTableStuckLast) {
-      .ui.celled.last.stuck.table th:last-child,
-      .ui.celled.last.stuck.table td:last-child {
-        border-left: @cellBorder;
-      }
-    }
-    & when (@variationTableInverted) {
-      & when (@variationTableStuckFirst) {
-        .ui.inverted.celled.first.stuck.table th:first-child,
-        .ui.inverted.celled.first.stuck.table td:first-child {
-          border-right: @invertedCellBorder;
+        & > thead > tr {
+            background: @stuckHeaderBackground;
         }
-      }
-      & when (@variationTableStuckLast) {
-        .ui.inverted.celled.last.stuck.table th:last-child,
-        .ui.inverted.celled.last.stuck.table td:last-child {
-          border-left: @invertedCellBorder;
+        & > tbody > tr {
+            background: @stuckBackground;
         }
-      }
+        & > tfoot > tr {
+            background: @stuckFooterBackground;
+        }
+        &.basic when (@variationTableBasic) {
+            & > thead > tr,
+            > tfoot > tr {
+                background: @stuckBackground;
+            }
+        }
     }
-  }
+    .ui.inverted.stuck.table when (@variationTableInverted) {
+        & > thead > tr {
+            background: @invertedStuckHeaderBackground;
+        }
+        & > tbody > tr {
+            background: @invertedStuckBackground;
+        }
+        & > tfoot > tr {
+            background: @invertedStuckFooterBackground;
+        }
+        &.basic when (@variationTableBasic){
+            & > thead > tr,
+            > tfoot > tr {
+                background: @invertedStuckBackground;
+            }
+        }
+    }
+    & when (@variationTableStuckHead) or (@variationTableStuckFoot) {
+        .ui.head.stuck.table > thead,
+        .ui.foot.stuck.table > tfoot {
+            position: -webkit-sticky;
+            position: sticky;
+            z-index: @stuckZIndex;
+        }
+    }
+    .ui.head.stuck.table when (@variationTableStuckHead) {
+        border-top: 0;
+        & > thead {
+            top: 0;
+            bottom: auto;
+            & > tr:first-child > th {
+                border-top: @cellBorder;
+            }
+        }
+        &.inverted > thead > tr:first-child > th when (@variationTableInverted) {
+            border-top: @invertedCellBorder;
+        }
+    }
+    .ui.foot.stuck.table when (@variationTableStuckFoot) {
+        border-bottom: 0;
+        & > tfoot {
+            top: auto;
+            bottom: 0;
+            & > tr:last-child > td,
+            > tr:last-child > th {
+                border-bottom: @cellBorder;
+            }
+        }
+        & when (@variationTableInverted) {
+            &.inverted > tfoot > tr:first-child > td,
+            &.inverted > tfoot > tr:first-child > th {
+                border-top: @invertedCellBorder;
+            }
+        }
+    }
+
+    .ui.first.stuck.table when (@variationTableStuckFirst) {
+        border-left: 0;
+        & th:first-child,
+        td:first-child {
+            position: -webkit-sticky;
+            position: sticky;
+            left: 0;
+            border-left: @cellBorder;
+            background: inherit;
+        }
+        & when (@variationTableInverted) {
+            &.inverted th:first-child,
+            &.inverted td:first-child {
+                border-left: @invertedCellBorder;
+            }
+        }
+    }
+
+    .ui.last.stuck.table when (@variationTableStuckLast) {
+        border-right: 0;
+        & th:last-child,
+        td:last-child {
+            position: -webkit-sticky;
+            position: sticky;
+            right: 0;
+            border-right: @cellBorder;
+            background: inherit;
+        }
+        & when (@variationTableInverted) {
+            &.inverted th:last-child,
+            &.inverted td:last-child {
+                border-right: @invertedCellBorder;
+            }
+        }
+    }
+    & when (@variationTableCelled) {
+        & when (@variationTableStuckFirst) {
+            .ui.celled.first.stuck.table th:first-child,
+            .ui.celled.first.stuck.table td:first-child {
+                border-right: @cellBorder;
+            }
+        }
+        & when (@variationTableStuckLast) {
+            .ui.celled.last.stuck.table th:last-child,
+            .ui.celled.last.stuck.table td:last-child {
+                border-left: @cellBorder;
+            }
+        }
+        & when (@variationTableInverted) {
+            & when (@variationTableStuckFirst) {
+                .ui.inverted.celled.first.stuck.table th:first-child,
+                .ui.inverted.celled.first.stuck.table td:first-child {
+                    border-right: @invertedCellBorder;
+                }
+            }
+            & when (@variationTableStuckLast) {
+                .ui.inverted.celled.last.stuck.table th:last-child,
+                .ui.inverted.celled.last.stuck.table td:last-child {
+                    border-left: @invertedCellBorder;
+                }
+            }
+        }
+    }
 }
 
 /*--------------
@@ -1923,11 +1923,11 @@
 
 /* Standard */
 .ui.table {
-  font-size: @medium;
+    font-size: @medium;
 }
 & when not (@variationTableSizes = false) {
-  each(@variationTableSizes, {
-    @s: @@value;
+    each(@variationTableSizes, {
+        @s: @@value;
     .ui.@{value}.table {
       font-size: @s;
     }
