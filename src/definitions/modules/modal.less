@@ -459,12 +459,14 @@
     .modals.dimmer .ui.scrolling.modal:not(.fullscreen) {
         margin: @scrollingMargin auto;
     }
+
     /* Fix for Firefox, Edge, IE11 */
     .modals.dimmer .ui.scrolling.modal:not([class*="overlay fullscreen"])::after {
         content:'\00A0';
         position: absolute;
         height: @scrollingMargin;
     }
+
     /* Undetached Scrolling */
     .scrolling.undetached.dimmable.dimmed {
         overflow: auto;
@@ -532,6 +534,7 @@
         }
     }
 }
+
 /*--------------
       Size
 ---------------*/

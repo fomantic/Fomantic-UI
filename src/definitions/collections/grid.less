@@ -1199,6 +1199,7 @@
             padding: @celledVeryRelaxedPadding;
         }
     }
+
     /* Internally Celled */
     .ui[class*="internally celled"].grid {
         box-shadow: none;
@@ -1390,6 +1391,7 @@
             .ui[class*="mobile reversed"].divided.grid:not([class*="vertically divided"]) > .row > .column:last-child {
                 box-shadow: none;
             }
+
             /* Vertically Divided Reversed */
             .ui.grid[class*="vertically divided"][class*="mobile vertically reversed"] > .row:first-child::before {
                 box-shadow: @verticallyDividedBorder;
@@ -1429,6 +1431,7 @@
             .ui[class*="tablet reversed"].divided.grid:not([class*="vertically divided"]) > .row > .column:last-child {
                 box-shadow: none;
             }
+
             /* Vertically Divided Reversed */
             .ui.grid[class*="vertically divided"][class*="tablet vertically reversed"] > .row:first-child::before {
                 box-shadow: @verticallyDividedBorder;
@@ -1468,6 +1471,7 @@
             .ui[class*="computer reversed"].divided.grid:not([class*="vertically divided"]) > .row > .column:last-child {
                 box-shadow: none;
             }
+
             /* Vertically Divided Reversed */
             .ui.grid[class*="vertically divided"][class*="computer vertically reversed"] > .row:first-child::before {
                 box-shadow: @verticallyDividedBorder;
@@ -1799,6 +1803,7 @@
         display: none !important;
     }
 }
+
 /* Tablet Only Hide */
 @media only screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
     .ui[class*="mobile only"].grid.grid.grid:not(.tablet),

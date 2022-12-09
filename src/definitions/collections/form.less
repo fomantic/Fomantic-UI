@@ -73,6 +73,7 @@
 .ui.form:not(.inverted) .field > label:not(.button) {
     color: @labelColor;
 }
+
 /*--------------------
     Standard Inputs
 ---------------------*/
@@ -222,6 +223,7 @@
         box-shadow: none !important;
     }
 }
+
 /*--------------------------
   Input w/ attached Button
 ---------------------------*/
@@ -490,6 +492,7 @@
     box-shadow: @textAreaFocusBoxShadow;
     -webkit-appearance: none;
 }
+
 /* Focus */
 .ui.form input:focus::-webkit-calendar-picker-indicator {
     opacity: @iconFocusOpacity;
@@ -880,6 +883,7 @@
     .ui.inverted.loading.form::before {
         background: @loaderInvertedDimmerColor;
     }
+
     /* Inverted Field */
     .ui.inverted.form input:not([type]),
     .ui.inverted.form input[type="color"],
@@ -1013,7 +1017,6 @@
 }
 
 & when (@variationFormWide) {
-
     /* Sizing Combinations */
     .ui.form .fields .wide.field {
         width: @oneWide;

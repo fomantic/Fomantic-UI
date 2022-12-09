@@ -567,6 +567,7 @@
     .ui.bottom.left.popup {
         margin-left: @boxArrowOffset;
     }
+
     /*rtl:rename*/
     .ui.bottom.left.popup::before {
         top: @arrowOffset;
@@ -580,6 +581,7 @@
     .ui.bottom.right.popup {
         margin-right: @boxArrowOffset;
     }
+
     /*rtl:rename*/
     .ui.bottom.right.popup::before {
         top: @arrowOffset;
@@ -606,6 +608,7 @@
         .ui.top.left.popup {
             margin-left: @boxArrowOffset;
         }
+
         /*rtl:rename*/
         .ui.top.left.popup::before {
             bottom: @arrowOffset;
@@ -619,6 +622,7 @@
         .ui.top.right.popup {
             margin-right: @boxArrowOffset;
         }
+
         /*rtl:rename*/
         .ui.top.right.popup::before {
             bottom: @arrowOffset;
@@ -632,6 +636,7 @@
 
 & when (@variationPopupCenter) {
     /*--- Left Center ---*/
+
     /*rtl:rename*/
     & when (@variationPopupLeft) {
         .ui.left.center.popup::before {
@@ -645,6 +650,7 @@
     }
     & when (@variationPopupRight) {
         /*--- Right Center  ---*/
+
         /*rtl:rename*/
         .ui.right.center.popup::before {
             top: 50%;

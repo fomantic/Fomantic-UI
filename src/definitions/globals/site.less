@@ -129,7 +129,6 @@ a:hover {
 *******************************/
 
 & when (@useCustomScrollbars) {
-
     /* Force Simple Scrollbars */
     body ::-webkit-scrollbar {
         -webkit-appearance: none;
@@ -160,6 +159,7 @@ a:hover {
             scrollbar-track-color: @trackBackgroundHex;
             scrollbar-arrow-color: @trackBackgroundHex;
         }
+
         /* firefox : first color thumb, second track*/
         scrollbar-color:  @thumbBackground @trackBackground;
         scrollbar-width: thin;
@@ -187,6 +187,7 @@ a:hover {
             scrollbar-track-color: @trackInvertedBackgroundHex;
             scrollbar-arrow-color: @trackInvertedBackgroundHex;
         }
+
         /* firefox : first color thumb, second track */
         scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
     }

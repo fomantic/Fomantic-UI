@@ -540,7 +540,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 };
 
 & when (@variationIconDeprecated) {
-
     /* Deprecated *In/Out Naming Conflict) */
     .generateIcons(@icon-deprecated-map,false);
 }
@@ -553,7 +552,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     /* Icons */
     .generateIcons(@icon-map,false);
     & when (@variationIconAliases) {
-
         /* Aliases */
         .generateIcons(@icon-aliases-map,false);
     }
@@ -571,7 +569,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     /* Icons */
     .generateIcons(@icon-outline-map,false);
     & when (@variationIconAliases) {
-
         /* Aliases */
         .generateIcons(@icon-outline-aliases-map,false);
     }
@@ -588,7 +585,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     }
     .generateIcons(@icon-thin-map,false);
     & when (@variationIconAliases) {
-
         /* Aliases */
         .generateIcons(@icon-thin-aliases-map,false);
     }
@@ -602,7 +598,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     /* Icons */
     .generateIcons(@icon-brand-map,@brandFontName);
     & when (@variationIconAliases) {
-
         /* Aliases */
         .generateIcons(@icon-brand-aliases-map,@brandFontName);
     }
@@ -616,6 +611,7 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     /* Make duotone icons use the proper font */
     i.icon.duotone {
         font-family: @duotoneFontName;
+
         /* To position the secondary layer on top of the first layer */
         position: relative;
     }
@@ -642,7 +638,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     .generateSecondaryIcons(@icon-duotone-secondary-map);
 
     & when (@variationIconAliases) {
-
         /* Aliases */
         .generateIcons(@icon-duotone-aliases-map,false);
         .generateSecondaryIcons(@icon-duotone-secondary-aliases-map);

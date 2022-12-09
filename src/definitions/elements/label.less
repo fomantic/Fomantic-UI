@@ -415,6 +415,7 @@ a.ui.label {
         width: 0;
         height: 0;
     }
+
     /* Positioning */
     .ui.ribbon.label {
         left: @ribbonOffset;
@@ -450,6 +451,7 @@ a.ui.label {
             right: @basicBorderWidthOffset;
         }
     }
+
     /* Right Ribbon */
     .ui[class*="right ribbon"].label {
         text-align: left;
@@ -557,6 +559,7 @@ a.ui.label {
         pointer-events: @disabledPointerEvents;
     }
 }
+
 /*-------------------
         Hover
 --------------------*/
@@ -900,6 +903,7 @@ a.ui.active.label:hover::before {
         border-style: solid;
         border-color: @pointingBorderColor;
     }
+
     /* Arrow */
     .ui.pointing.label::before {
         position: absolute;
@@ -925,6 +929,7 @@ a.ui.active.label:hover::before {
         top: 0;
         left: 50%;
     }
+
     /*--- Below ---*/
     .ui[class*="bottom pointing"].label,
     .ui[class*="pointing below"].label {
@@ -940,6 +945,7 @@ a.ui.active.label:hover::before {
         top: 100%;
         left: 50%;
     }
+
     /*--- Left ---*/
     .ui[class*="left pointing"].label {
         margin-top: 0;
@@ -953,6 +959,7 @@ a.ui.active.label:hover::before {
         top: 50%;
         left: 0;
     }
+
     /*--- Right ---*/
     .ui[class*="right pointing"].label {
         margin-top: 0;
@@ -974,6 +981,7 @@ a.ui.active.label:hover::before {
         .ui.basic[class*="pointing above"].label::before {
             margin-top: @basicPointingTriangleOffset;
         }
+
         /*--- Below ---*/
         .ui.basic[class*="bottom pointing"].label::before,
         .ui.basic[class*="pointing below"].label::before {
@@ -981,11 +989,13 @@ a.ui.active.label:hover::before {
             top: 100%;
             margin-top: -@basicPointingTriangleOffset;
         }
+
         /*--- Left ---*/
         .ui.basic[class*="left pointing"].label::before {
             top: 50%;
             left: @basicPointingTriangleOffset;
         }
+
         /*--- Right ---*/
         .ui.basic[class*="right pointing"].label::before {
             top: 50%;

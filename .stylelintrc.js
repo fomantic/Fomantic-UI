@@ -23,7 +23,6 @@ module.exports = {
         'no-invalid-position-at-import-rule': null, // 104 errors
         'at-rule-empty-line-before': null, // 104 errors
         'at-rule-no-unknown': null, // 104 errors
-        'comment-empty-line-before': null, // 78 errors
         'declaration-block-trailing-semicolon': null, // 77 errors
         'block-closing-brace-newline-before': null, // 73 errors
         'selector-list-comma-newline-after': null, // 61 errors
