@@ -30,7 +30,6 @@ module.exports = {
         'selector-no-vendor-prefix': null, // 19 errors
         'number-leading-zero': null, // 19 errors
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
-        'block-closing-brace-empty-line-before': null, // 11 errors
         'value-keyword-case': null, // 11 errors
         'value-no-vendor-prefix': null, // 9 errors
         'keyframes-name-pattern': null, // 9 errors
