@@ -38,7 +38,6 @@ module.exports = {
         'selector-attribute-quotes': null, // 7 errors
         'number-no-trailing-zeros': null, // 6 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
-        'block-opening-brace-newline-after': null, // 2 errors
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'number-max-precision': null, // 2 errors
         'color-hex-case': null, // 1 error
