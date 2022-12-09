@@ -40,7 +40,6 @@ module.exports = {
         'selector-attribute-quotes': null, // 7 errors
         'number-no-trailing-zeros': null, // 6 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
-        'function-comma-space-after': null, // 5 errors
         'selector-combinator-space-after': null, // 3 errors
         'no-eol-whitespace': null, // 3 errors
         'block-opening-brace-newline-after': null, // 2 errors
