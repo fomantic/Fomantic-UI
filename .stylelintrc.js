@@ -9,25 +9,25 @@ module.exports = {
     ],
     rules: {
         indentation: 4,
+        'at-rule-empty-line-before': null,
+        'block-closing-brace-newline-before': null,
+        'declaration-block-trailing-semicolon': null, // bad formatting with "each()"
+        'declaration-empty-line-before': null,
+        'max-line-length': null,
+        'rule-empty-line-before': null,
 
         // TODO
         'no-descending-specificity': null, // 11532 errors
-        'rule-empty-line-before': null, // 1609 errors
         'property-case': null, // 338 errors
         'string-quotes': null, // 249 errors
-        'declaration-empty-line-before': null, // 229 errors
         'no-duplicate-selectors': null, // 212 errors
         'selector-not-notation': null, // 169 errors
         'no-invalid-position-at-import-rule': null, // 104 errors
-        'at-rule-empty-line-before': null, // 104 errors
         'at-rule-no-unknown': null, // 104 errors
-        'declaration-block-trailing-semicolon': null, // 77 errors
-        'block-closing-brace-newline-before': null, // 73 errors
         'selector-list-comma-newline-after': null, // 61 errors
         'import-notation': null, // 55 errors
         'function-no-unknown': null, // 43 errors
         'property-no-vendor-prefix': null, // 31 errors
-        'max-line-length': null, // 20 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'number-leading-zero': null, // 19 errors
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
