@@ -43,7 +43,6 @@ module.exports = {
         'block-opening-brace-newline-after': null, // 2 errors
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'number-max-precision': null, // 2 errors
-        'declaration-block-semicolon-space-before': null, // 2 errors
         'no-extra-semicolons': null, // 2 errors
         'declaration-colon-newline-after': null, // 1 errors
         'selector-combinator-space-before': null, // 1 errors
