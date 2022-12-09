@@ -87,8 +87,8 @@
 *******************************/
 & when (@variationInputDisabled) {
     /*--------------------
-          Disabled
-  ---------------------*/
+            Disabled
+    ---------------------*/
 
     .ui.disabled.input,
     .ui.input:not(.disabled) input[disabled] {
@@ -115,8 +115,8 @@
 
 & when (@variationInputLoading) {
     /*--------------------
-         Loading
-  ---------------------*/
+           Loading
+    ---------------------*/
 
     .ui.loading.loading.input > i.icon::before {
         position: absolute;
@@ -180,8 +180,8 @@
 
 & when not (@variationInputStates = false) {
     /*--------------------
-          States
-  ---------------------*/
+            States
+    ---------------------*/
     each(@variationInputStates, {
         @state: @value;
 
@@ -235,8 +235,8 @@
 
 & when (@variationInputTransparent) {
     /*--------------------
-        Transparent
-  ---------------------*/
+          Transparent
+    ---------------------*/
 
 
     .ui.transparent.input > textarea,
@@ -287,8 +287,8 @@
 
 & when (@variationInputIcon) {
     /*--------------------
-           Icon
-  ---------------------*/
+             Icon
+    ---------------------*/
 
     .ui.icon.input > i.icon {
         cursor: default;
@@ -359,8 +359,8 @@
 
 & when (@variationInputLabeled) {
     /*--------------------
-          Labeled
-  ---------------------*/
+            Labeled
+    ---------------------*/
 
     /* Adjacent Label */
     .ui.labeled.input > .label {
@@ -566,8 +566,8 @@
 
 & when (@variationInputAction) {
     /*--------------------
-          Action
-  ---------------------*/
+            Action
+    ---------------------*/
 
     .ui.action.input > .button,
     .ui.action.input > .buttons {
@@ -625,8 +625,8 @@
 
 & when (@variationInputInverted) {
     /*--------------------
-         Inverted
-  ---------------------*/
+           Inverted
+    ---------------------*/
 
     /* Standard */
     .ui.inverted.input > input {
@@ -636,8 +636,8 @@
 
 & when (@variationInputFluid) {
     /*--------------------
-          Fluid
-  ---------------------*/
+            Fluid
+    ---------------------*/
 
     .ui.fluid.input {
         display: flex;
@@ -650,8 +650,8 @@
 
 & when (@variationInputFile) {
     /*--------------------
-          File
-  ---------------------*/
+            File
+    ---------------------*/
 
     /* width hack for chrome/edge */
     .ui.file.input {

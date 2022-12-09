@@ -127,8 +127,8 @@
 
 & when (@variationDimmerLegacy) {
     /*--------------
-      Legacy
-  ---------------*/
+        Legacy
+    ---------------*/
 
     /* Animating / Active / Visible */
     .dimmed.dimmable > .ui.animating.legacy.dimmer,
@@ -140,8 +140,8 @@
 
 & when (@variationDimmerAligned) {
     /*--------------
-      Alignment
-  ---------------*/
+        Alignment
+    ---------------*/
 
     .ui[class*="top aligned"].dimmer {
         justify-content: flex-start;
@@ -153,8 +153,8 @@
 
 & when (@variationDimmerPage) {
     /*--------------
-        Page
-  ---------------*/
+          Page
+    ---------------*/
 
     .ui.page.dimmer {
         position: @pageDimmerPosition;
@@ -178,8 +178,8 @@ body.dimmable > .dimmer {
 
 & when (@variationDimmerBlurring) {
     /*--------------
-      Blurring
-  ---------------*/
+        Blurring
+    ---------------*/
 
     @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
         .blurring.dimmable > :not(.dimmer) {
@@ -203,8 +203,8 @@ body.dimmable > .dimmer {
 }
 & when (@variationDimmerAligned) {
     /*--------------
-      Aligned
-  ---------------*/
+        Aligned
+    ---------------*/
 
     .ui.dimmer > .top.aligned.content > * {
         vertical-align: top;
@@ -216,8 +216,8 @@ body.dimmable > .dimmer {
 
 & when (@variationDimmerShades) {
     /*--------------
-      Shades
-  ---------------*/
+        Shades
+    ---------------*/
 
     .medium.medium.medium.medium.medium.dimmer {
         background: @mediumBackgroundColor;
@@ -232,8 +232,8 @@ body.dimmable > .dimmer {
 
 & when (@variationDimmerInverted) {
     /*--------------
-      Inverted
-  ---------------*/
+        Inverted
+    ---------------*/
 
     .ui.inverted.dimmer {
         background: @invertedBackgroundColor;
@@ -262,8 +262,8 @@ body.dimmable > .dimmer {
 
 & when (@variationDimmerSimple) {
     /*--------------
-       Simple
-  ---------------*/
+         Simple
+    ---------------*/
 
     /* Displays without javascript */
     .ui.simple.dimmer {
@@ -294,8 +294,8 @@ body.dimmable > .dimmer {
 
 & when (@variationDimmerPartially) {
     /*--------------
-       Partially
-  ----------------*/
+         Partially
+    ----------------*/
 
     .ui[class*="top dimmer"],
     .ui[class*="center dimmer"],

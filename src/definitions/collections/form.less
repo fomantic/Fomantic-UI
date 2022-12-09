@@ -206,8 +206,8 @@
 
 & when (@variationFormTransparent) {
     /*--------------------
-        Transparent
-  ---------------------*/
+          Transparent
+    ---------------------*/
 
     .ui.form .field .transparent.input:not(.icon) input,
     .ui.form .field input.transparent,
@@ -497,8 +497,8 @@
 
 & when not (@variationFormStates = false) {
     /*--------------------
-          States
-  ---------------------*/
+            States
+    ---------------------*/
     each(@variationFormStates, {
         @state: @value;
         @c: @formStates[@@state][color];
@@ -754,8 +754,8 @@
 
 & when (@variationFormDisabled) {
     /*--------------------
-         Disabled
-  ---------------------*/
+           Disabled
+    ---------------------*/
 
     .ui.form .disabled.fields .field,
     .ui.form .disabled.field,
@@ -774,8 +774,8 @@
 
 & when (@variationFormLoading) {
     /*--------------
-      Loading
-  ---------------*/
+        Loading
+    ---------------*/
 
     .ui.loading.form {
         position: relative;
@@ -823,8 +823,8 @@
 
 & when (@variationFormRequired) {
     /*--------------------
-       Required Field
-  ---------------------*/
+         Required Field
+    ---------------------*/
 
     .ui.form .required.fields:not(.grouped) > .field > label::after,
     .ui.form .required.fields.grouped > label::after,
@@ -860,8 +860,8 @@
 
 & when (@variationFormInverted) {
     /*--------------------
-      Inverted Colors
-  ---------------------*/
+        Inverted Colors
+    ---------------------*/
 
     .ui.inverted.form label,
     .ui.form .inverted.segment label,
@@ -905,8 +905,8 @@
 
 & when (@variationFormGrouped) {
     /*--------------------
-       Field Groups
-  ---------------------*/
+         Field Groups
+    ---------------------*/
 
     /* Grouped Vertically */
 
@@ -1086,8 +1086,8 @@
 
 & when (@variationFormInline) {
     /*--------------------
-      Inline Fields
-  ---------------------*/
+        Inline Fields
+    ---------------------*/
 
     .ui.form .inline.fields {
         margin: @fieldMargin;

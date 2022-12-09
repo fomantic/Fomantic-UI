@@ -349,8 +349,8 @@
 
 & when (@variationDropdownLabel) {
     /*--------------
-        Label
-  ---------------*/
+          Label
+    ---------------*/
 
     /* Dropdown Menu */
     .ui.label.dropdown .menu {
@@ -360,8 +360,8 @@
 
 & when (@variationDropdownButton) {
     /*--------------
-       Button
-  ---------------*/
+         Button
+    ---------------*/
 
     /* No Margin On Icon Button */
     .ui.dropdown.icon.button > .dropdown.icon {
@@ -392,8 +392,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownSelection) {
     /*--------------
-      Selection
-  ---------------*/
+        Selection
+    ---------------*/
 
     /* Displays like a select box */
     .ui.selection.dropdown {
@@ -468,8 +468,8 @@ select.ui.dropdown {
     }
 
     /*--------------
-      Message
-  ---------------*/
+        Message
+    ---------------*/
 
     .ui.selection.dropdown .menu > .message {
         padding: @selectionMessagePadding;
@@ -689,8 +689,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownSearch) {
     /*--------------
-     Searchable
-  ---------------*/
+       Searchable
+    ---------------*/
 
     /* Search Selection */
     .ui.search.dropdown {
@@ -838,8 +838,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownMultiple) {
     /*--------------
-      Multiple
-  ---------------*/
+        Multiple
+    ---------------*/
 
     /* Multiple Selection */
     .ui.ui.multiple.dropdown {
@@ -939,8 +939,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownInline) {
     /*--------------
-       Inline
-  ---------------*/
+         Inline
+    ---------------*/
 
     .ui.inline.dropdown {
         cursor: pointer;
@@ -1008,8 +1008,8 @@ select.ui.dropdown {
 & when (@variationDropdownLoading) {
 
     /*--------------------
-         Loading
-  ---------------------*/
+           Loading
+    ---------------------*/
 
     .ui.loading.dropdown > i.icon {
         height: @relative14px !important;
@@ -1099,8 +1099,8 @@ select.ui.dropdown {
 
 & when not (@variationDropdownStates = false) {
     /*--------------------
-          States
-  ----------------------*/
+            States
+    ----------------------*/
     each(@variationDropdownStates, {
         @state: @value;
         @c: @formStates[@@state][dropdownLabelColor];
@@ -1164,8 +1164,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownDisabled) {
     /*--------------------
-          Disabled
-  ----------------------*/
+            Disabled
+    ----------------------*/
 
     /* Disabled */
     .ui.disabled.dropdown,
@@ -1178,8 +1178,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownReadonly) {
     /*--------------------
-          Read-Only
-  ----------------------*/
+            Read-Only
+    ----------------------*/
 
     .ui.read-only.dropdown {
         cursor: default;
@@ -1244,8 +1244,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownUpward) {
     /*--------------
-       Upward
-  ---------------*/
+         Upward
+    ---------------*/
 
     /* Upward Main Menu */
     .ui.upward.dropdown > .menu {
@@ -1313,8 +1313,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownScrolling) {
     /*--------------
-       Scrolling
-  ---------------*/
+         Scrolling
+    ---------------*/
 
     /*  Selection Menu */
     .ui.scrolling.dropdown .menu,
@@ -1385,8 +1385,8 @@ select.ui.dropdown {
 
 & when (@variationInputLabeled) {
     /*--------------------
-          Labeled
-  ---------------------*/
+            Labeled
+    ---------------------*/
 
     /* Regular Label on Left */
     .ui.labeled.input:not([class*="corner labeled"]) .label:first-child + .dropdown {
@@ -1409,8 +1409,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownColumnar) {
     /*--------------
-       Columnar
-  ---------------*/
+         Columnar
+    ---------------*/
     .ui.column.dropdown > .menu {
         flex-wrap: wrap;
     }
@@ -1430,8 +1430,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownSimple) {
     /*--------------
-       Simple
-  ---------------*/
+         Simple
+    ---------------*/
 
     /* Displays without javascript */
 
@@ -1531,8 +1531,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownFluid) {
     /*--------------
-        Fluid
-  ---------------*/
+          Fluid
+    ---------------*/
 
     .ui.fluid.dropdown {
         display: block;
@@ -1546,8 +1546,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownFloating) {
     /*--------------
-      Floating
-  ---------------*/
+        Floating
+    ---------------*/
 
     .ui.floating.dropdown > .menu {
         left: 0;
@@ -1565,8 +1565,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownPointing) {
     /*--------------
-       Pointing
-  ---------------*/
+         Pointing
+    ---------------*/
 
     .ui.pointing.dropdown > .menu {
         top: 100%;
@@ -1781,8 +1781,8 @@ select.ui.dropdown {
 
 & when (@variationDropdownInverted) {
     /*--------------
-      Inverted
-  ---------------*/
+        Inverted
+    ---------------*/
 
     /* General rules and basic dropdowns */
     .ui.dropdown .inverted.menu,
