@@ -6,6 +6,7 @@ module.exports = {
     extends: [
         'airbnb-base',
         'plugin:unicorn/recommended',
+        'plugin:@internal/eslint-plugin/recommended',
     ],
     parserOptions: {
         ecmaVersion: '2020',
@@ -22,10 +23,10 @@ module.exports = {
         'class-methods-use-this': 'off',
         'comma-dangle': ['error', {
             arrays: 'always-multiline',
-            objects: 'always-multiline',
+            exports: 'always-multiline',
             functions: 'never',
             imports: 'always-multiline',
-            exports: 'always-multiline',
+            objects: 'always-multiline',
         }],
         'consistent-return': 'off',
         curly: ['error', 'all'],
@@ -47,10 +48,6 @@ module.exports = {
                 VariableDeclarator: true,
             },
         }],
-        'no-extra-parens': 'off', /* TODO https://github.com/eslint/eslint/issues/16626#issuecomment-1341016901 ['error', 'all', {
-            nestedBinaryExpressions: false,
-            enforceForNewInMemberExpressions: false,
-        }], */
         'no-nested-ternary': 'off',
         'no-param-reassign': 'off',
         'no-plusplus': 'off',
@@ -60,8 +57,8 @@ module.exports = {
         'object-shorthand': ['error', 'never'],
         'padding-line-between-statements': ['error', {
             blankLine: 'always',
-            prev: '*',
             next: ['continue', 'break', 'export', 'return', 'throw'],
+            prev: '*',
         }],
         'prefer-destructuring': 'off',
         'prefer-template': 'off',
