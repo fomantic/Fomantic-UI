@@ -120,7 +120,6 @@ module.exports = {
         'prefer-rest-params': 'off', // about 180 errors to be fixed manually
 
         // TODO
-        'no-return-assign': 'off',
         'no-shadow-restricted-names': 'off',
         'no-use-before-define': 'off',
         'unicorn/prefer-negative-index': 'off',
