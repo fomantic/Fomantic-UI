@@ -8,13 +8,11 @@
  *
  */
 
-
-
 /*******************************
             Theme
 *******************************/
 
-@type    : 'module';
+@type : 'module';
 @element : 'shape';
 
 @import (multiple) '../../theme.config';
@@ -24,29 +22,29 @@
 *******************************/
 
 .ui.shape {
-  position: relative;
-  vertical-align: top;
-  display: @display;
-  perspective: @perspective;
-  transition: @transition;
+    position: relative;
+    vertical-align: top;
+    display: @display;
+    perspective: @perspective;
+    transition: @transition;
 }
 
 .ui.shape .side,
 .ui.shape .sides {
-  transform-style: preserve-3d;
+    transform-style: preserve-3d;
 }
 
 .ui.shape .side {
-  display: none;
-  opacity: 1;
-  width: 100%;
+    display: none;
+    opacity: 1;
+    width: 100%;
 
-  margin: @sideMargin !important;
-  backface-visibility: @backfaceVisibility;
+    margin: @sideMargin !important;
+    backface-visibility: @backfaceVisibility;
 }
 
 .ui.shape .side * {
-  backface-visibility: visible !important;
+    backface-visibility: visible !important;
 }
 
 /*******************************
@@ -54,102 +52,99 @@
 *******************************/
 
 & when (@variationShapeCube) {
-  .ui.cube.shape .side {
-    min-width: @cubeSize;
-    height: @cubeSize;
+    .ui.cube.shape .side {
+        min-width: @cubeSize;
+        height: @cubeSize;
 
-    padding: @cubePadding;
+        padding: @cubePadding;
 
-    background-color: @cubeBackground;
-    color: @cubeTextColor;
-    box-shadow: @cubeBoxShadow;
-  }
-  .ui.cube.shape .side > .content {
-    width: 100%;
-    height: 100%;
-    display: table;
+        background-color: @cubeBackground;
+        color: @cubeTextColor;
+        box-shadow: @cubeBoxShadow;
+    }
+    .ui.cube.shape .side > .content {
+        width: 100%;
+        height: 100%;
+        display: table;
 
-    text-align: @cubeTextAlign;
-    user-select: text;
-  }
-  .ui.cube.shape .side > .content > div {
-    display: table-cell;
-    vertical-align: middle;
-    font-size: @cubeFontSize;
-  }
+        text-align: @cubeTextAlign;
+        user-select: text;
+    }
+    .ui.cube.shape .side > .content > div {
+        display: table-cell;
+        vertical-align: middle;
+        font-size: @cubeFontSize;
+    }
 }
 
 /*******************************
           Variations
 *******************************/
 & when (@variationShapeText) {
-  .ui.text.shape.animating .sides {
-    position: static;
-  }
-  .ui.text.shape .side {
-    white-space: nowrap;
-  }
-  .ui.text.shape .side > * {
-    white-space: normal;
-  }
+    .ui.text.shape.animating .sides {
+        position: static;
+    }
+    .ui.text.shape .side {
+        white-space: nowrap;
+    }
+    .ui.text.shape .side > * {
+        white-space: normal;
+    }
 }
-
 
 /*******************************
              States
 *******************************/
 
 & when (@variationShapeLoading) {
-  /*--------------
-      Loading
-  ---------------*/
+    /* --------------
+        Loading
+    --------------- */
 
-  .ui.loading.shape {
-    position: absolute;
-    top: -9999px;
-    left: -9999px;
-  }
+    .ui.loading.shape {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
 }
 
-
-/*--------------
+/* --------------
     Animating
----------------*/
+--------------- */
 
 .ui.shape .animating.side {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: block;
-  z-index: @animatingZIndex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    z-index: @animatingZIndex;
 }
 .ui.shape .hidden.side {
-  opacity: @hiddenSideOpacity;
+    opacity: @hiddenSideOpacity;
 }
 
-
-/*--------------
+/* --------------
       CSS
----------------*/
+--------------- */
 
 .ui.shape.animating .sides {
-  position: absolute;
-  transition: @transition;
+    position: absolute;
+    transition: @transition;
 }
 .ui.shape.animating .side {
-  transition: @sideTransition;
+    transition: @sideTransition;
 }
 .ui.shape .animating.side *,
 .ui.shape.animating .side * {
-  transition: none;
+    transition: none;
 }
 
-/*--------------
+/* --------------
      Active
----------------*/
+--------------- */
 
 .ui.shape .active.side {
-  display: block;
+    display: block;
 }
 
 .loadUIOverrides();

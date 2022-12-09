@@ -26,8 +26,8 @@
   "scripts": {
     "build": "gulp build",
     "changelog": "auto-changelog -p",
-    "lint": "eslint -c .eslintrc.js --ext .js .",
-    "lint-fix": "eslint -c .eslintrc.js --ext .js . --fix"
+    "lint": "eslint --ext .js . && stylelint \"**/*.{css,less}\"",
+    "lint-fix": "eslint --ext .js . --fix && stylelint \"**/*.{css,less}\" --fix"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",
@@ -77,7 +77,11 @@
     "auto-changelog": "^2.4.0",
     "eslint": "^8.28.0",
     "node-fetch": "^2.6.0",
-    "semver": "^7.3.5"
+    "postcss": "^8.4.19",
+    "postcss-less": "^6.0.0",
+    "semver": "^7.3.5",
+    "stylelint": "^14.16.0",
+    "stylelint-config-standard": "^29.0.0"
   },
   "engines": {
     "node": ">=12",
