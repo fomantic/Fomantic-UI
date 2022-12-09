@@ -211,19 +211,19 @@
 -------------------- */
 
 /* Modal Width */
-@media only screen and (max-width : @largestMobileScreen) {
+@media only screen and (max-width: @largestMobileScreen) {
     .ui.modal:not(.fullscreen) {
         width: @mobileWidth;
         margin: @mobileMargin;
     }
 }
-@media only screen and (min-width : @tabletBreakpoint) {
+@media only screen and (min-width: @tabletBreakpoint) {
     .ui.modal:not(.fullscreen) {
         width: @tabletWidth;
         margin: @tabletMargin;
     }
 }
-@media only screen and (min-width : @computerBreakpoint) {
+@media only screen and (min-width: @computerBreakpoint) {
     .ui.modal:not(.fullscreen) {
         width: @computerWidth;
         margin: @computerMargin;
@@ -239,13 +239,13 @@
         text-shadow: @invertedCloseShadow;
     }
 }
-@media only screen and (min-width : @largeMonitorBreakpoint) {
+@media only screen and (min-width: @largeMonitorBreakpoint) {
     .ui.modal:not(.fullscreen) {
         width: @largeMonitorWidth;
         margin: @largeMonitorMargin;
     }
 }
-@media only screen and (min-width : @widescreenMonitorBreakpoint) {
+@media only screen and (min-width: @widescreenMonitorBreakpoint) {
     .ui.modal:not(.fullscreen) {
         width: @widescreenMonitorWidth;
         margin: @widescreenMonitorMargin;
@@ -253,7 +253,7 @@
 }
 
 /* Tablet and Mobile */
-@media only screen and (max-width : @largestTabletScreen) {
+@media only screen and (max-width: @largestTabletScreen) {
     .ui.modal > .close + .header {
         padding-right: @closeHitbox;
     }
@@ -265,7 +265,7 @@
 }
 
 /* Mobile */
-@media only screen and (max-width : @largestMobileScreen) {
+@media only screen and (max-width: @largestMobileScreen) {
 
     .ui.modal > .header {
         padding: @mobileHeaderPadding;
@@ -423,7 +423,7 @@
         bottom: @bottomAlignedMargin;
     }
 
-    @media only screen and (max-width : @largestMobileScreen) {
+    @media only screen and (max-width: @largestMobileScreen) {
         .modals.dimmer .ui.top.aligned.modal {
             top: @mobileTopAlignedMargin;
         }

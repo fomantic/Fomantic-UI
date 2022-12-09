@@ -27,7 +27,6 @@ module.exports = {
         'import-notation': null, // 55 errors
         'function-no-unknown': null, // 43 errors
         'property-no-vendor-prefix': null, // 31 errors
-        'media-feature-colon-space-before': null, // 24 errors
         'max-line-length': null, // 20 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'number-leading-zero': null, // 19 errors
