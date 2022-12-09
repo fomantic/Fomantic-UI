@@ -1103,48 +1103,48 @@ select.ui.dropdown {
   ----------------------*/
     each(@variationDropdownStates, {
         @state: @value;
-    @c: @formStates[@@state][dropdownLabelColor];
-    @bdc: @formStates[@@state][borderColor];
+        @c: @formStates[@@state][dropdownLabelColor];
+        @bdc: @formStates[@@state][borderColor];
 
-    .ui.dropdown.@{state},
-    .ui.dropdown.@{state} > .text,
-    .ui.dropdown.@{state} > .default.text {
-      color: @c;
-    }
-    & when (@variationDropdownSelection) {
-      .ui.selection.dropdown.@{state} {
-        background: @formStates[@@state][background];
-        border-color: @bdc;
-      }
-
-      .ui.selection.dropdown.@{state}:hover {
-        border-color: @bdc;
-      }
-
-      & when (@variationDropdownMultiple) {
-        .ui.multiple.selection.@{state}.dropdown > .label {
-          border-color: @bdc;
+        .ui.dropdown.@{state},
+        .ui.dropdown.@{state} > .text,
+        .ui.dropdown.@{state} > .default.text {
+            color: @c;
         }
-      }
-    }
-    .ui.dropdown.@{state} > .menu,
-    .ui.dropdown.@{state} > .menu .menu {
-      border-color: @bdc;
-    }
-    .ui.dropdown.@{state} > .menu > .item {
-      color: @c;
-    }
+        & when (@variationDropdownSelection) {
+            .ui.selection.dropdown.@{state} {
+                background: @formStates[@@state][background];
+                border-color: @bdc;
+            }
 
-    /* Item Hover */
-    .ui.dropdown.@{state} > .menu > .item:hover {
-      background-color: @formStates[@@state][dropdownHoverBackground];
-    }
+            .ui.selection.dropdown.@{state}:hover {
+                border-color: @bdc;
+            }
 
-    /* Item Active */
-    .ui.dropdown.@{state} > .menu .active.item {
-      background-color: @formStates[@@state][dropdownActiveBackground];
-    }
-  })
+            & when (@variationDropdownMultiple) {
+                .ui.multiple.selection.@{state}.dropdown > .label {
+                    border-color: @bdc;
+                }
+            }
+        }
+        .ui.dropdown.@{state} > .menu,
+        .ui.dropdown.@{state} > .menu .menu {
+            border-color: @bdc;
+        }
+        .ui.dropdown.@{state} > .menu > .item {
+            color: @c;
+        }
+
+        /* Item Hover */
+        .ui.dropdown.@{state} > .menu > .item:hover {
+            background-color: @formStates[@@state][dropdownHoverBackground];
+        }
+
+        /* Item Active */
+        .ui.dropdown.@{state} > .menu .active.item {
+            background-color: @formStates[@@state][dropdownActiveBackground];
+        }
+    })
 }
 
 & when (@variationDropdownClear) {
@@ -1772,11 +1772,11 @@ select.ui.dropdown {
 & when not (@variationDropdownSizes = false) {
     each(@variationDropdownSizes, {
         @s: @@value;
-    .ui.@{value}.dropdown,
-    .ui.@{value}.dropdown .menu > .item {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.dropdown,
+        .ui.@{value}.dropdown .menu > .item {
+            font-size: @s;
+        }
+    })
 }
 
 & when (@variationDropdownInverted) {

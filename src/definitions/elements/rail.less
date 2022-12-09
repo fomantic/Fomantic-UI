@@ -138,10 +138,10 @@
 & when not (@variationRailSizes = false) {
     each(@variationRailSizes, {
         @s: @@value;
-    .ui.@{value}.rail {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.rail {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

@@ -675,109 +675,109 @@
 & when not (@variationCardColors = false) {
     each(@variationCardColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @h: @colors[@@color][hover];
-    @l: @colors[@@color][light];
-    @lh: @colors[@@color][lightHover];
-    @isVeryDark: @colors[@@color][isVeryDark];
+        @c: @colors[@@color][color];
+        @h: @colors[@@color][hover];
+        @l: @colors[@@color][light];
+        @lh: @colors[@@color][lightHover];
+        @isVeryDark: @colors[@@color][isVeryDark];
 
-    .ui.@{color}.cards > .card,
-    .ui.cards > .@{color}.card,
-    .ui.@{color}.card {
-      box-shadow:
+        .ui.@{color}.cards > .card,
+        .ui.cards > .@{color}.card,
+        .ui.@{color}.card {
+            box-shadow:
             @borderShadow,
             0 @coloredShadowDistance 0 0 @c,
             @shadowBoxShadow
-      ;
-    }
-    & when (@variationCardLink) {
-      .ui.cards a.@{color}.card:hover,
-      .ui.@{color}.cards a.card:hover,
-      .ui.link.@{color}.cards .card:not(.icon):hover,
-      .ui.link.cards .@{color}.card:not(.icon):hover,
-      a.ui.@{color}.card:hover,
-      .ui.link.@{color}.card:hover {
-        box-shadow:
-              @borderShadow,
-              0 @coloredShadowDistance 0 0 @h,
-              @shadowHoverBoxShadow
-      ;
-      }
-    }
-    & when (@variationCardBasic) {
-      .ui.cards > .basic.@{color}.card,
-      .ui.basic.@{color}.cards > .card,
-      .ui.basic.cards > .@{color}.card,
-      .ui.basic.@{color}.card {
-        background: @l;
-        &  when (@isVeryDark) {
-          & .header,
-            .content,
-            .meta,
-            .description {
-            color: @white;
-          }
-        }
-      }
-      & when (@variationCardLink) {
-        .ui.basic.cards a.@{color}.card:hover,
-        .ui.cards a.basic.@{color}.card:hover,
-        .ui.basic.@{color}.cards a.card:hover,
-        .ui.link.cards .basic.@{color}.card:not(.icon):hover,
-        .ui.link.basic.@{color}.cards .card:not(.icon):hover,
-        .ui.link.basic.cards .@{color}.card:not(.icon):hover,
-        a.ui.basic.@{color}.card:hover,
-        .ui.link.basic.@{color}.card:hover {
-          background: @lh;
-        }
-      }
-    }
-    & when (@variationCardInverted) {
-      .ui.inverted.@{color}.cards > .card,
-      .ui.inverted.cards > .@{color}.card,
-      .ui.inverted.@{color}.card {
-        box-shadow:
-              0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-              0 @coloredShadowDistance 0 0 @l,
-              0 0 0 @borderWidth @solidWhiteBorderColor
-        ;
-      }
-      & when (@variationCardLink) {
-        .ui.inverted.cards a.@{color}.card:hover,
-        .ui.inverted.@{color}.cards a.card:hover,
-        .ui.link.inverted.@{color}.cards .card:not(.icon):hover,
-        .ui.link.inverted.cards .@{color}.card:not(.icon):hover,
-        a.ui.inverted.@{color}.card:hover,
-        .ui.link.inverted.@{color}.card:hover {
-          box-shadow:
-                  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-                  0 @coloredShadowDistance 0 0 @lh,
-                  0 0 0 @borderWidth @solidWhiteBorderColor
-        ;
-        }
-      }
-      & when (@variationCardBasic) {
-        .ui.inverted.cards > .basic.@{color}.card,
-        .ui.basic.inverted.@{color}.cards > .card,
-        .ui.basic.inverted.cards > .@{color}.card,
-        .ui.basic.inverted.@{color}.card {
-          background: @c;
+            ;
         }
         & when (@variationCardLink) {
-          .ui.inverted.cards a.basic.@{color}.card:hover,
-          .ui.basic.inverted.cards a.@{color}.card:hover,
-          .ui.basic.inverted.@{color}.cards a.card:hover,
-          .ui.link.inverted.cards .basic.@{color}.card:not(.icon):hover,
-          .ui.link.basic.inverted.@{color}.cards .card:not(.icon):hover,
-          .ui.link.basic.inverted.cards .@{color}.card:not(.icon):hover,
-          a.ui.basic.inverted.@{color}.card:hover,
-          .ui.link.basic.inverted.@{color}.card:hover {
-            background: @h;
-          }
+            .ui.cards a.@{color}.card:hover,
+            .ui.@{color}.cards a.card:hover,
+            .ui.link.@{color}.cards .card:not(.icon):hover,
+            .ui.link.cards .@{color}.card:not(.icon):hover,
+            a.ui.@{color}.card:hover,
+            .ui.link.@{color}.card:hover {
+                box-shadow:
+                @borderShadow,
+                0 @coloredShadowDistance 0 0 @h,
+                @shadowHoverBoxShadow
+                ;
+            }
         }
-      }
-    }
-  })
+        & when (@variationCardBasic) {
+            .ui.cards > .basic.@{color}.card,
+            .ui.basic.@{color}.cards > .card,
+            .ui.basic.cards > .@{color}.card,
+            .ui.basic.@{color}.card {
+                background: @l;
+                &  when (@isVeryDark) {
+                    & .header,
+                    .content,
+                    .meta,
+                    .description {
+                        color: @white;
+                    }
+                }
+            }
+            & when (@variationCardLink) {
+                .ui.basic.cards a.@{color}.card:hover,
+                .ui.cards a.basic.@{color}.card:hover,
+                .ui.basic.@{color}.cards a.card:hover,
+                .ui.link.cards .basic.@{color}.card:not(.icon):hover,
+                .ui.link.basic.@{color}.cards .card:not(.icon):hover,
+                .ui.link.basic.cards .@{color}.card:not(.icon):hover,
+                a.ui.basic.@{color}.card:hover,
+                .ui.link.basic.@{color}.card:hover {
+                    background: @lh;
+                }
+            }
+        }
+        & when (@variationCardInverted) {
+            .ui.inverted.@{color}.cards > .card,
+            .ui.inverted.cards > .@{color}.card,
+            .ui.inverted.@{color}.card {
+                box-shadow:
+                0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                0 @coloredShadowDistance 0 0 @l,
+                0 0 0 @borderWidth @solidWhiteBorderColor
+                ;
+            }
+            & when (@variationCardLink) {
+                .ui.inverted.cards a.@{color}.card:hover,
+                .ui.inverted.@{color}.cards a.card:hover,
+                .ui.link.inverted.@{color}.cards .card:not(.icon):hover,
+                .ui.link.inverted.cards .@{color}.card:not(.icon):hover,
+                a.ui.inverted.@{color}.card:hover,
+                .ui.link.inverted.@{color}.card:hover {
+                    box-shadow:
+                    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+                    0 @coloredShadowDistance 0 0 @lh,
+                    0 0 0 @borderWidth @solidWhiteBorderColor
+                    ;
+                }
+            }
+            & when (@variationCardBasic) {
+                .ui.inverted.cards > .basic.@{color}.card,
+                .ui.basic.inverted.@{color}.cards > .card,
+                .ui.basic.inverted.cards > .@{color}.card,
+                .ui.basic.inverted.@{color}.card {
+                    background: @c;
+                }
+                & when (@variationCardLink) {
+                    .ui.inverted.cards a.basic.@{color}.card:hover,
+                    .ui.basic.inverted.cards a.@{color}.card:hover,
+                    .ui.basic.inverted.@{color}.cards a.card:hover,
+                    .ui.link.inverted.cards .basic.@{color}.card:not(.icon):hover,
+                    .ui.link.basic.inverted.@{color}.cards .card:not(.icon):hover,
+                    .ui.link.basic.inverted.cards .@{color}.card:not(.icon):hover,
+                    a.ui.basic.inverted.@{color}.card:hover,
+                    .ui.link.basic.inverted.@{color}.card:hover {
+                        background: @h;
+                    }
+                }
+            }
+        }
+    })
 }
 
 & when (@variationCardEqualWidth) {
@@ -1094,11 +1094,11 @@
 & when not (@variationCardSizes = false) {
     each(@variationCardSizes, {
         @s: @@value;
-    .ui.@{value}.card,
-    .ui.@{value}.cards .card {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.card,
+        .ui.@{value}.cards .card {
+            font-size: @s;
+        }
+    })
 }
 
 & when (@variationCardInverted) {

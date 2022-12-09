@@ -280,10 +280,10 @@
 & when not (@variationRevealSizes = false) {
     each(@variationRevealSizes, {
         @s: @@value;
-    .ui.@{value}.reveal > .content {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.reveal > .content {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

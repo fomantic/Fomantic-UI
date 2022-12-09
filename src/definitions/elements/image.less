@@ -288,16 +288,16 @@ img.ui.image {
 & when not (@variationImageSizes = false) {
     each(@variationImageSizes, {
         @w: @{value}Width;
-    @s: @@value;
-    .ui.@{value}.images .image,
-    .ui.@{value}.images img,
-    .ui.@{value}.images svg,
-    .ui.@{value}.image {
-      width: @@w;
-      height: auto;
-      font-size: @s;
-    }
-  })
+        @s: @@value;
+        .ui.@{value}.images .image,
+        .ui.@{value}.images img,
+        .ui.@{value}.images svg,
+        .ui.@{value}.image {
+            width: @@w;
+            height: auto;
+            font-size: @s;
+        }
+    })
 }
 
 & when (@variationImageGroups) {

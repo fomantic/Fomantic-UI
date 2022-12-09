@@ -597,19 +597,19 @@
 & when not (@variationSegmentColors = false) {
     each(@variationSegmentColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    & when not (@color=primary) and not (@color=secondary) {
-      .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
-        border-top: @coloredBorderSize solid @c;
-      }
-      & when (@variationSegmentInverted) {
-        .ui.inverted.@{color}.segment.segment.segment.segment.segment {
-          background-color: @c;
-          color: @white;
+        @c: @colors[@@color][color];
+        & when not (@color=primary) and not (@color=secondary) {
+            .ui.@{color}.segment.segment.segment.segment.segment:not(.inverted) {
+                border-top: @coloredBorderSize solid @c;
+            }
+            & when (@variationSegmentInverted) {
+                .ui.inverted.@{color}.segment.segment.segment.segment.segment {
+                    background-color: @c;
+                    color: @white;
+                }
+            }
         }
-      }
-    }
-  })
+    })
 }
 
 & when (@variationSegmentAligned) {
@@ -908,11 +908,11 @@
 & when not (@variationSegmentSizes = false) {
     each(@variationSegmentSizes, {
         @s: @@value;
-    .ui.@{value}.segments .segment,
-    .ui.@{value}.segment {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.segments .segment,
+        .ui.@{value}.segment {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

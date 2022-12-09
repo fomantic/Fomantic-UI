@@ -29,29 +29,29 @@ span.ui.text {
 & when not (@variationTextColors = false) {
     each(@variationTextColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
 
-    span.ui.@{color}.text {
-      color: @c;
-    }
-    & when (@variationTextInverted) {
-      span.ui.inverted.@{color}.text {
-        color: @l;
-      }
-    }
-  })
+        span.ui.@{color}.text {
+            color: @c;
+        }
+        & when (@variationTextInverted) {
+            span.ui.inverted.@{color}.text {
+                color: @l;
+            }
+        }
+    })
 }
 
 & when not (@variationTextStates = false) {
     each(@variationTextStates, {
         @state: @value;
-    @c: @textStates[@@state][color];
+        @c: @textStates[@@state][color];
 
-    span.ui.@{state}.text {
-      color: @c;
-    }
-  })
+        span.ui.@{state}.text {
+            color: @c;
+        }
+    })
 }
 
 & when (@variationTextDisabled) {
@@ -67,10 +67,10 @@ span.ui.medium.text {
 & when not (@variationTextSizes = false) {
     each(@variationTextSizes, {
         @s: @@value;
-    span.ui.@{value}.text {
-      font-size: @s;
-    }
-  })
+        span.ui.@{value}.text {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

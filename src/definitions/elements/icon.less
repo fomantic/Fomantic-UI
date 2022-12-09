@@ -25,11 +25,11 @@
 & when (@importIcons) {
     each(@fonts, {
         @font-face {
-      each(@value,{
-          @{key}: @value;
-      });
-    }
-  })
+            each(@value,{
+                @{key}: @value;
+            });
+        }
+    })
 }
 
 i.icon {
@@ -321,27 +321,27 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
 & when not (@variationIconColors = false) {
     each(@variationIconColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
 
-    i.@{color}.icon.icon.icon.icon.icon {
-      color: @c;
-    }
-    & when (@variationIconInverted) {
-      i.inverted.@{color}.icon.icon.icon.icon.icon {
-        color: @l;
-      }
-      & when (@variationIconBordered) or (@variationIconCircular) {
-        i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
-        i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
-        i.inverted.bordered.@{color}.icons,
-        i.inverted.circular.@{color}.icons {
-          background-color: @c;
-          color: @white;
+        i.@{color}.icon.icon.icon.icon.icon {
+            color: @c;
         }
-      }
-    }
-  })
+        & when (@variationIconInverted) {
+            i.inverted.@{color}.icon.icon.icon.icon.icon {
+                color: @l;
+            }
+            & when (@variationIconBordered) or (@variationIconCircular) {
+                i.inverted.bordered.@{color}.icon.icon.icon.icon.icon,
+                i.inverted.circular.@{color}.icon.icon.icon.icon.icon,
+                i.inverted.bordered.@{color}.icons,
+                i.inverted.circular.@{color}.icons {
+                    background-color: @c;
+                    color: @white;
+                }
+            }
+        }
+    })
 }
 
 
@@ -358,12 +358,12 @@ i.icons {
 & when not (@variationIconSizes = false) {
     each(@variationIconSizes, {
         @s: @@value;
-    i.@{value}.@{value}.@{value}.icon,
-    i.@{value}.@{value}.@{value}.icons {
-      font-size: @s;
-      vertical-align: middle;
-    }
-  })
+        i.@{value}.@{value}.@{value}.icon,
+        i.@{value}.@{value}.@{value}.icons {
+            font-size: @s;
+            vertical-align: middle;
+        }
+    })
 }
 
 & when (@variationIconGroups) or (@variationIconCorner) {
@@ -519,24 +519,24 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
 .generateIcons(@map, @fontFamily) {
     each(@map,{
         @escapedKey: replace(@key,'^([0-9])','\3$1 ');
-    @normalizedKey: replace(@escapedKey,'_','.','g');
-    i.icon.@{normalizedKey}::before {
-      content: "@{value}";
-      & when not (@fontFamily = false) {
-        font-family: @fontFamily;
-      }
-    }
-  });
+        @normalizedKey: replace(@escapedKey,'_','.','g');
+        i.icon.@{normalizedKey}::before {
+            content: "@{value}";
+            & when not (@fontFamily = false) {
+                font-family: @fontFamily;
+            }
+        }
+    });
 };
 
 .generateSecondaryIcons(@map) {
     each(@map,{
         @escapedKey: replace(@key,'^([0-9])','\3$1 ');
-    @normalizedKey: replace(@escapedKey,'_','.','g');
-    i.icon.@{normalizedKey}::after {
-      content: "@{value}";
-    }
-  });
+        @normalizedKey: replace(@escapedKey,'_','.','g');
+        i.icon.@{normalizedKey}::after {
+            content: "@{value}";
+        }
+    });
 };
 
 & when (@variationIconDeprecated) {
@@ -654,21 +654,21 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
     & when not (@variationIconColors = false) {
         each(@variationIconColors, {
             @color: @value;
-      @c: @colors[@@color][color];
-      @l: @colors[@@color][light];
+            @c: @colors[@@color][color];
+            @l: @colors[@@color][light];
 
-      i.icon.duotone[class*="@{color}-"]::before,
-      i.icon.duotone[class*="-@{color}"]::after {
-        color: @c;
-      }
+            i.icon.duotone[class*="@{color}-"]::before,
+            i.icon.duotone[class*="-@{color}"]::after {
+                color: @c;
+            }
 
-      & when (@variationIconInverted) {
-        i.icon.inverted.duotone[class*="@{color}-"]::before,
-        i.icon.inverted.duotone[class*="-@{color}"]::after {
-          color: @l;
-        }
-      }
-    })
+            & when (@variationIconInverted) {
+                i.icon.inverted.duotone[class*="@{color}-"]::before,
+                i.icon.inverted.duotone[class*="-@{color}"]::after {
+                    color: @l;
+                }
+            }
+        })
   }
 }
 

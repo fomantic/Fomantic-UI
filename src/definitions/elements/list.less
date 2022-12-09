@@ -1014,17 +1014,17 @@ ol.ui.list ol li,
 & when not (@variationListSizes = false) {
     each(@variationListSizes, {
         @rs: @{value}ListSize;
-    @s: @@value;
-    .ui.@{value}.list {
-      font-size: @@rs;
-    }
-    & when (@variationListHorizontal) {
-      .ui.@{value}.horizontal.list .list > .item,
-      .ui.@{value}.horizontal.list > .item {
-        font-size: @s;
-      }
-    }
-  })
+        @s: @@value;
+        .ui.@{value}.list {
+            font-size: @@rs;
+        }
+        & when (@variationListHorizontal) {
+            .ui.@{value}.horizontal.list .list > .item,
+            .ui.@{value}.horizontal.list > .item {
+                font-size: @s;
+            }
+        }
+    })
 }
 
 .loadUIOverrides();

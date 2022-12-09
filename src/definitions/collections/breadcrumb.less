@@ -113,10 +113,10 @@
 & when not (@variationBreadcrumbSizes = false) {
     each(@variationBreadcrumbSizes, {
         @s: @@value;
-    .ui.@{value}.breadcrumb {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.breadcrumb {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

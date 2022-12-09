@@ -323,11 +323,11 @@
 & when not (@variationFormStates = false) {
     each(@variationFormStates, {
         @state: @value;
-    .ui.form .@{state}.message,
-    .ui.form .@{state}.message:empty {
-      display: none;
-    }
-  })
+        .ui.form .@{state}.message,
+        .ui.form .@{state}.message:empty {
+            display: none;
+        }
+    })
 }
 
 /* Assumptions */
@@ -501,255 +501,255 @@
   ---------------------*/
     each(@variationFormStates, {
         @state: @value;
-    @c: @formStates[@@state][color];
-    @bg: @formStates[@@state][background];
-    @bdc: @formStates[@@state][borderColor];
-    @lbg: @formStates[@@state][labelBackground];
+        @c: @formStates[@@state][color];
+        @bg: @formStates[@@state][background];
+        @bdc: @formStates[@@state][borderColor];
+        @lbg: @formStates[@@state][labelBackground];
 
-    /* On Form */
-    .ui.form.@{state} .@{state}.message:not(:empty) {
-      display: block;
-    }
-    .ui.form.@{state} .compact.@{state}.message:not(:empty) {
-      display: inline-block;
-    }
-    .ui.form.@{state} .icon.@{state}.message:not(:empty) {
-      display: flex;
-    }
+        /* On Form */
+        .ui.form.@{state} .@{state}.message:not(:empty) {
+            display: block;
+        }
+        .ui.form.@{state} .compact.@{state}.message:not(:empty) {
+            display: inline-block;
+        }
+        .ui.form.@{state} .icon.@{state}.message:not(:empty) {
+            display: flex;
+        }
 
-    /* On Field(s) */
-    .ui.form .fields.@{state} .@{state}.message:not(:empty),
-    .ui.form .field.@{state} .@{state}.message:not(:empty) {
-      display: block;
-    }
-    .ui.form .fields.@{state} .compact.@{state}.message:not(:empty),
-    .ui.form .field.@{state} .compact.@{state}.message:not(:empty) {
-      display: inline-block;
-    }
-    .ui.form .fields.@{state} .icon.@{state}.message:not(:empty),
-    .ui.form .field.@{state} .icon.@{state}.message:not(:empty) {
-      display: flex;
-    }
+        /* On Field(s) */
+        .ui.form .fields.@{state} .@{state}.message:not(:empty),
+        .ui.form .field.@{state} .@{state}.message:not(:empty) {
+            display: block;
+        }
+        .ui.form .fields.@{state} .compact.@{state}.message:not(:empty),
+        .ui.form .field.@{state} .compact.@{state}.message:not(:empty) {
+            display: inline-block;
+        }
+        .ui.form .fields.@{state} .icon.@{state}.message:not(:empty),
+        .ui.form .field.@{state} .icon.@{state}.message:not(:empty) {
+            display: flex;
+        }
 
-    .ui.ui.form .fields.@{state} .field label,
-    .ui.ui.form .fields.@{state} .field .ui.label:not(.corner),
-    .ui.ui.form .field.@{state} label,
-    .ui.ui.form .field.@{state} .ui.label:not(.corner),
-    .ui.ui.form .fields.@{state} .field .input,
-    .ui.ui.form .field.@{state} .input {
-      color: @c;
-    }
+        .ui.ui.form .fields.@{state} .field label,
+        .ui.ui.form .fields.@{state} .field .ui.label:not(.corner),
+        .ui.ui.form .field.@{state} label,
+        .ui.ui.form .field.@{state} .ui.label:not(.corner),
+        .ui.ui.form .fields.@{state} .field .input,
+        .ui.ui.form .field.@{state} .input {
+            color: @c;
+        }
 
-    .ui.form .fields.@{state} .field .ui.label,
-    .ui.form .field.@{state} .ui.label {
-      background-color: @lbg;
-    }
+        .ui.form .fields.@{state} .field .ui.label,
+        .ui.form .field.@{state} .ui.label {
+            background-color: @lbg;
+        }
 
-    .ui.form .fields.@{state} .field .corner.label,
-    .ui.form .field.@{state} .corner.label {
-      border-color: @c;
-      color: @formStates[@@state][cornerLabelColor];
-    }
+        .ui.form .fields.@{state} .field .corner.label,
+        .ui.form .field.@{state} .corner.label {
+            border-color: @c;
+            color: @formStates[@@state][cornerLabelColor];
+        }
 
-    .ui.form .fields.@{state} .field textarea,
-    .ui.form .fields.@{state} .field select,
-    .ui.form .fields.@{state} .field input:not([type]),
-    .ui.form .fields.@{state} .field input[type="color"],
-    .ui.form .fields.@{state} .field input[type="date"],
-    .ui.form .fields.@{state} .field input[type="datetime-local"],
-    .ui.form .fields.@{state} .field input[type="email"],
-    .ui.form .fields.@{state} .field input[type="month"],
-    .ui.form .fields.@{state} .field input[type="number"],
-    .ui.form .fields.@{state} .field input[type="password"],
-    .ui.form .fields.@{state} .field input[type="search"],
-    .ui.form .fields.@{state} .field input[type="tel"],
-    .ui.form .fields.@{state} .field input[type="time"],
-    .ui.form .fields.@{state} .field input[type="text"],
-    .ui.form .fields.@{state} .field input[type="file"],
-    .ui.form .fields.@{state} .field input[type="url"],
-    .ui.form .fields.@{state} .field input[type="week"],
-    .ui.form .field.@{state} textarea,
-    .ui.form .field.@{state} select,
-    .ui.form .field.@{state} input:not([type]),
-    .ui.form .field.@{state} input[type="color"],
-    .ui.form .field.@{state} input[type="date"],
-    .ui.form .field.@{state} input[type="datetime-local"],
-    .ui.form .field.@{state} input[type="email"],
-    .ui.form .field.@{state} input[type="month"],
-    .ui.form .field.@{state} input[type="number"],
-    .ui.form .field.@{state} input[type="password"],
-    .ui.form .field.@{state} input[type="search"],
-    .ui.form .field.@{state} input[type="tel"],
-    .ui.form .field.@{state} input[type="time"],
-    .ui.form .field.@{state} input[type="text"],
-    .ui.form .field.@{state} input[type="file"],
-    .ui.form .field.@{state} input[type="url"],
-    .ui.form .field.@{state} input[type="week"] {
-      color: @c;
-      background: @bg;
-      border-color: @formStates[@@state][borderColor];
-      border-radius: @formStates[@@state][borderRadius];
-      box-shadow: @formStates[@@state][boxShadow];
-    }
-    & when (@state=error) and (@variationFormInvalid) {
-      .ui.form .field input:not(:placeholder-shown):invalid {
-        color: @c;
-        background: @bg;
-        border-color: @formStates[@@state][borderColor];
-        border-radius: @formStates[@@state][borderRadius];
-        box-shadow: @formStates[@@state][boxShadow];
-      }
-      .ui.form .field input:not(:-ms-input-placeholder):invalid when (@supportIE) {
-        color: @c;
-        background: @bg;
-        border-color: @formStates[@@state][borderColor];
-        border-radius: @formStates[@@state][borderRadius];
-        box-shadow: @formStates[@@state][boxShadow];
-      }
-    }
+        .ui.form .fields.@{state} .field textarea,
+        .ui.form .fields.@{state} .field select,
+        .ui.form .fields.@{state} .field input:not([type]),
+        .ui.form .fields.@{state} .field input[type="color"],
+        .ui.form .fields.@{state} .field input[type="date"],
+        .ui.form .fields.@{state} .field input[type="datetime-local"],
+        .ui.form .fields.@{state} .field input[type="email"],
+        .ui.form .fields.@{state} .field input[type="month"],
+        .ui.form .fields.@{state} .field input[type="number"],
+        .ui.form .fields.@{state} .field input[type="password"],
+        .ui.form .fields.@{state} .field input[type="search"],
+        .ui.form .fields.@{state} .field input[type="tel"],
+        .ui.form .fields.@{state} .field input[type="time"],
+        .ui.form .fields.@{state} .field input[type="text"],
+        .ui.form .fields.@{state} .field input[type="file"],
+        .ui.form .fields.@{state} .field input[type="url"],
+        .ui.form .fields.@{state} .field input[type="week"],
+        .ui.form .field.@{state} textarea,
+        .ui.form .field.@{state} select,
+        .ui.form .field.@{state} input:not([type]),
+        .ui.form .field.@{state} input[type="color"],
+        .ui.form .field.@{state} input[type="date"],
+        .ui.form .field.@{state} input[type="datetime-local"],
+        .ui.form .field.@{state} input[type="email"],
+        .ui.form .field.@{state} input[type="month"],
+        .ui.form .field.@{state} input[type="number"],
+        .ui.form .field.@{state} input[type="password"],
+        .ui.form .field.@{state} input[type="search"],
+        .ui.form .field.@{state} input[type="tel"],
+        .ui.form .field.@{state} input[type="time"],
+        .ui.form .field.@{state} input[type="text"],
+        .ui.form .field.@{state} input[type="file"],
+        .ui.form .field.@{state} input[type="url"],
+        .ui.form .field.@{state} input[type="week"] {
+            color: @c;
+            background: @bg;
+            border-color: @formStates[@@state][borderColor];
+            border-radius: @formStates[@@state][borderRadius];
+            box-shadow: @formStates[@@state][boxShadow];
+        }
+        & when (@state=error) and (@variationFormInvalid) {
+            .ui.form .field input:not(:placeholder-shown):invalid {
+                color: @c;
+                background: @bg;
+                border-color: @formStates[@@state][borderColor];
+                border-radius: @formStates[@@state][borderRadius];
+                box-shadow: @formStates[@@state][boxShadow];
+            }
+            .ui.form .field input:not(:-ms-input-placeholder):invalid when (@supportIE) {
+                color: @c;
+                background: @bg;
+                border-color: @formStates[@@state][borderColor];
+                border-radius: @formStates[@@state][borderRadius];
+                box-shadow: @formStates[@@state][boxShadow];
+            }
+        }
 
-    .ui.form .field.@{state} textarea:focus,
-    .ui.form .field.@{state} select:focus,
-    .ui.form .field.@{state} input:not([type]):focus,
-    .ui.form .field.@{state} input[type="color"]:focus,
-    .ui.form .field.@{state} input[type="date"]:focus,
-    .ui.form .field.@{state} input[type="datetime-local"]:focus,
-    .ui.form .field.@{state} input[type="email"]:focus,
-    .ui.form .field.@{state} input[type="month"]:focus,
-    .ui.form .field.@{state} input[type="number"]:focus,
-    .ui.form .field.@{state} input[type="password"]:focus,
-    .ui.form .field.@{state} input[type="search"]:focus,
-    .ui.form .field.@{state} input[type="tel"]:focus,
-    .ui.form .field.@{state} input[type="time"]:focus,
-    .ui.form .field.@{state} input[type="text"]:focus,
-    .ui.form .field.@{state} input[type="file"]:focus,
-    .ui.form .field.@{state} input[type="url"]:focus,
-    .ui.form .field.@{state} input[type="week"]:focus {
-      background: @formStates[@@state][inputFocusBackground];
-      border-color: @formStates[@@state][inputFocusBorderColor];
-      color: @formStates[@@state][inputFocusColor];
+        .ui.form .field.@{state} textarea:focus,
+        .ui.form .field.@{state} select:focus,
+        .ui.form .field.@{state} input:not([type]):focus,
+        .ui.form .field.@{state} input[type="color"]:focus,
+        .ui.form .field.@{state} input[type="date"]:focus,
+        .ui.form .field.@{state} input[type="datetime-local"]:focus,
+        .ui.form .field.@{state} input[type="email"]:focus,
+        .ui.form .field.@{state} input[type="month"]:focus,
+        .ui.form .field.@{state} input[type="number"]:focus,
+        .ui.form .field.@{state} input[type="password"]:focus,
+        .ui.form .field.@{state} input[type="search"]:focus,
+        .ui.form .field.@{state} input[type="tel"]:focus,
+        .ui.form .field.@{state} input[type="time"]:focus,
+        .ui.form .field.@{state} input[type="text"]:focus,
+        .ui.form .field.@{state} input[type="file"]:focus,
+        .ui.form .field.@{state} input[type="url"]:focus,
+        .ui.form .field.@{state} input[type="week"]:focus {
+            background: @formStates[@@state][inputFocusBackground];
+            border-color: @formStates[@@state][inputFocusBorderColor];
+            color: @formStates[@@state][inputFocusColor];
 
-      box-shadow: @formStates[@@state][inputFocusBoxShadow];
-    }
+            box-shadow: @formStates[@@state][inputFocusBoxShadow];
+        }
 
-    /* Preserve Native Select Stylings */
-    .ui.form .field.@{state} select {
-      -webkit-appearance: menulist-button;
-    }
+        /* Preserve Native Select Stylings */
+        .ui.form .field.@{state} select {
+            -webkit-appearance: menulist-button;
+        }
 
-    /*------------------
+        /*------------------
         Input State
     --------------------*/
-    & when (@variationFormTransparent) {
-      /* Transparent */
-      .ui.form .field.@{state} .transparent.input input,
-      .ui.form .field.@{state} .transparent.input textarea,
-      .ui.form .field.@{state} input.transparent,
-      .ui.form .field.@{state} textarea.transparent {
-        background-color: @formStates[@@state][transparentBackground] !important;
-        color: @formStates[@@state][transparentColor] !important;
-      }
-    }
+        & when (@variationFormTransparent) {
+            /* Transparent */
+            .ui.form .field.@{state} .transparent.input input,
+            .ui.form .field.@{state} .transparent.input textarea,
+            .ui.form .field.@{state} input.transparent,
+            .ui.form .field.@{state} textarea.transparent {
+                background-color: @formStates[@@state][transparentBackground] !important;
+                color: @formStates[@@state][transparentColor] !important;
+            }
+        }
 
-    /* Autofilled */
-    .ui.form .@{state}.@{state} input:-webkit-autofill {
-      box-shadow: 0 0 0 100px @formStates[@@state][inputAutoFillBackground] inset !important;
-      border-color: @formStates[@@state][inputAutoFillBorderColor] !important;
-    }
+        /* Autofilled */
+        .ui.form .@{state}.@{state} input:-webkit-autofill {
+            box-shadow: 0 0 0 100px @formStates[@@state][inputAutoFillBackground] inset !important;
+            border-color: @formStates[@@state][inputAutoFillBorderColor] !important;
+        }
 
-    /* Placeholder */
-    .ui.form .@{state} ::-webkit-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderColor];
-    }
-    .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
-      color: @formStates[@@state][inputPlaceholderColor] !important;
-    }
-    .ui.form .@{state} ::-moz-placeholder {
-      color: @formStates[@@state][inputPlaceholderColor];
-    }
+        /* Placeholder */
+        .ui.form .@{state} ::-webkit-input-placeholder {
+            color: @formStates[@@state][inputPlaceholderColor];
+        }
+        .ui.form .@{state} :-ms-input-placeholder when (@supportIE) {
+            color: @formStates[@@state][inputPlaceholderColor] !important;
+        }
+        .ui.form .@{state} ::-moz-placeholder {
+            color: @formStates[@@state][inputPlaceholderColor];
+        }
 
-    .ui.form .@{state} :focus::-webkit-input-placeholder {
-      color: @formStates[@@state][inputPlaceholderFocusColor];
-    }
-    .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
-      color: @formStates[@@state][inputPlaceholderFocusColor] !important;
-    }
-    .ui.form .@{state} :focus::-moz-placeholder {
-      color: @formStates[@@state][inputPlaceholderFocusColor];
-    }
+        .ui.form .@{state} :focus::-webkit-input-placeholder {
+            color: @formStates[@@state][inputPlaceholderFocusColor];
+        }
+        .ui.form .@{state} :focus:-ms-input-placeholder when (@supportIE) {
+            color: @formStates[@@state][inputPlaceholderFocusColor] !important;
+        }
+        .ui.form .@{state} :focus::-moz-placeholder {
+            color: @formStates[@@state][inputPlaceholderFocusColor];
+        }
 
-    /*------------------
+        /*------------------
         Dropdown State
     --------------------*/
 
-    .ui.form .fields.@{state} .field .ui.dropdown,
-    .ui.form .fields.@{state} .field .ui.dropdown .item,
-    .ui.form .field.@{state} .ui.dropdown,
-    .ui.form .field.@{state} .ui.dropdown > .text,
-    .ui.form .field.@{state} .ui.dropdown .item {
-      background: @bg;
-      color: @c;
-    }
-    .ui.form .fields.@{state} .field .ui.dropdown,
-    .ui.form .field.@{state} .ui.dropdown {
-      border-color: @bdc !important;
-    }
-    .ui.form .fields.@{state} .field .ui.dropdown:hover,
-    .ui.form .field.@{state} .ui.dropdown:hover {
-      border-color: @bdc !important;
-    }
-    .ui.form .fields.@{state} .field .ui.dropdown:hover .menu,
-    .ui.form .field.@{state} .ui.dropdown:hover .menu {
-      border-color: @bdc;
-    }
-    .ui.form .fields.@{state} .field .ui.multiple.selection.dropdown > .label,
-    .ui.form .field.@{state} .ui.multiple.selection.dropdown > .label {
-      background-color: @formStates[@@state][dropdownLabelBackground];
-      color: @formStates[@@state][dropdownLabelColor];
-    }
+        .ui.form .fields.@{state} .field .ui.dropdown,
+        .ui.form .fields.@{state} .field .ui.dropdown .item,
+        .ui.form .field.@{state} .ui.dropdown,
+        .ui.form .field.@{state} .ui.dropdown > .text,
+        .ui.form .field.@{state} .ui.dropdown .item {
+            background: @bg;
+            color: @c;
+        }
+        .ui.form .fields.@{state} .field .ui.dropdown,
+        .ui.form .field.@{state} .ui.dropdown {
+            border-color: @bdc !important;
+        }
+        .ui.form .fields.@{state} .field .ui.dropdown:hover,
+        .ui.form .field.@{state} .ui.dropdown:hover {
+            border-color: @bdc !important;
+        }
+        .ui.form .fields.@{state} .field .ui.dropdown:hover .menu,
+        .ui.form .field.@{state} .ui.dropdown:hover .menu {
+            border-color: @bdc;
+        }
+        .ui.form .fields.@{state} .field .ui.multiple.selection.dropdown > .label,
+        .ui.form .field.@{state} .ui.multiple.selection.dropdown > .label {
+            background-color: @formStates[@@state][dropdownLabelBackground];
+            color: @formStates[@@state][dropdownLabelColor];
+        }
 
-    /* Hover */
-    .ui.form .fields.@{state} .field .ui.dropdown .menu .item:hover,
-    .ui.form .field.@{state} .ui.dropdown .menu .item:hover {
-      background-color: @formStates[@@state][dropdownHoverBackground];
-    }
+        /* Hover */
+        .ui.form .fields.@{state} .field .ui.dropdown .menu .item:hover,
+        .ui.form .field.@{state} .ui.dropdown .menu .item:hover {
+            background-color: @formStates[@@state][dropdownHoverBackground];
+        }
 
-    /* Selected */
-    .ui.form .fields.@{state} .field .ui.dropdown .menu .selected.item,
-    .ui.form .field.@{state} .ui.dropdown .menu .selected.item {
-      background-color: @formStates[@@state][dropdownSelectedBackground];
-    }
+        /* Selected */
+        .ui.form .fields.@{state} .field .ui.dropdown .menu .selected.item,
+        .ui.form .field.@{state} .ui.dropdown .menu .selected.item {
+            background-color: @formStates[@@state][dropdownSelectedBackground];
+        }
 
-    /* Active */
-    .ui.form .fields.@{state} .field .ui.dropdown .menu .active.item,
-    .ui.form .field.@{state} .ui.dropdown .menu .active.item {
-      background-color: @formStates[@@state][dropdownActiveBackground] !important;
-    }
+        /* Active */
+        .ui.form .fields.@{state} .field .ui.dropdown .menu .active.item,
+        .ui.form .field.@{state} .ui.dropdown .menu .active.item {
+            background-color: @formStates[@@state][dropdownActiveBackground] !important;
+        }
 
-    /*--------------------
+        /*--------------------
         Checkbox State
     ---------------------*/
-    .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label,
-    .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label {
-      color: @c;
-    }
-    .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label::before,
-    .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label::before {
-      background: @bg;
-      border-color: @bdc;
-    }
-    .ui.form .fields.@{state} .field .checkbox label::after,
-    .ui.form .field.@{state} .checkbox label::after {
-      color: @c;
-    }
+        .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label,
+        .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label {
+            color: @c;
+        }
+        .ui.form .fields.@{state} .field .checkbox:not(.toggle):not(.slider) label::before,
+        .ui.form .field.@{state} .checkbox:not(.toggle):not(.slider) label::before {
+            background: @bg;
+            border-color: @bdc;
+        }
+        .ui.form .fields.@{state} .field .checkbox label::after,
+        .ui.form .field.@{state} .checkbox label::after {
+            color: @c;
+        }
 
-    & when (@variationFormInverted) {
-      .ui.inverted.form .fields.@{state} .field label,
-      .ui.inverted.form .@{state}.field label {
-        color: @lbg;
-      }
-    }
-  })
+        & when (@variationFormInverted) {
+            .ui.inverted.form .fields.@{state} .field label,
+            .ui.inverted.form .@{state}.field label {
+                color: @lbg;
+            }
+        }
+    })
 }
 
 & when (@variationFormDisabled) {
@@ -1179,12 +1179,12 @@
 & when not (@variationFormSizes = false) {
     each(@variationFormSizes, {
         @s: @@value;
-    .ui.@{value}.form,
-    .ui.@{value}.form .field .dropdown,
-    .ui.@{value}.form .field .dropdown .menu > .item {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.form,
+        .ui.@{value}.form .field .dropdown,
+        .ui.@{value}.form .field .dropdown .menu > .item {
+            font-size: @s;
+        }
+    })
 }
 
 

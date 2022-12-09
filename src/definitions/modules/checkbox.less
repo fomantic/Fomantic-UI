@@ -680,41 +680,41 @@
 & when not (@variationCheckboxSizes = false) {
     each(@variationCheckboxSizes, {
         @raw: @{value}Raw;
-    @size: @{value}CheckboxSize;
-    @circleScale: @{value}CheckboxCircleScale;
-    @circleLeft: @{value}CheckboxCircleLeft;
+        @size: @{value}CheckboxSize;
+        @circleScale: @{value}CheckboxCircleScale;
+        @circleLeft: @{value}CheckboxCircleLeft;
 
-    .ui.@{value}.checkbox {
-      font-size: @@size;
-    }
+        .ui.@{value}.checkbox {
+            font-size: @@size;
+        }
 
-    & when (@@raw > 1) {
-      .ui.@{value}.form .checkbox,
-      .ui.@{value}.checkbox {
-        &:not(.slider):not(.toggle):not(.radio) {
-          &
-          label::after,
-          label::before {
-            transform: scale(@@raw);
-            transform-origin: left;
-          }
+        & when (@@raw > 1) {
+            .ui.@{value}.form .checkbox,
+            .ui.@{value}.checkbox {
+                &:not(.slider):not(.toggle):not(.radio) {
+                    &
+                    label::after,
+                    label::before {
+                        transform: scale(@@raw);
+                        transform-origin: left;
+                    }
+                }
+                &.radio when (@variationCheckboxRadio) {
+                    &
+                    label::before {
+                        transform: scale(@@raw);
+                        transform-origin: left;
+                    }
+                    &
+                    label::after {
+                        transform: scale(@@circleScale);
+                        transform-origin: left;
+                        left: @@circleLeft;
+                    }
+                }
+            }
         }
-        &.radio when (@variationCheckboxRadio) {
-          &
-          label::before {
-            transform: scale(@@raw);
-            transform-origin: left;
-          }
-          &
-          label::after {
-            transform: scale(@@circleScale);
-            transform-origin: left;
-            left: @@circleLeft;
-          }
-        }
-      }
-    }
-  })
+    })
 }
 
 .loadUIOverrides();

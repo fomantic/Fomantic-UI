@@ -154,15 +154,15 @@ a.ui.nag {
 --------------------*/
     each(@variationNagSizes, {
         @s: @@value;
-    @sr: "@{value}Raw";
-    .ui.@{value}.nag,
-    .ui.@{value}.nags .nag {
-      font-size: @s;
-      & when (@@sr > 1.4) {
-        line-height: 1;
-      }
-    }
-  })
+        @sr: "@{value}Raw";
+        .ui.@{value}.nag,
+        .ui.@{value}.nags .nag {
+            font-size: @s;
+            & when (@@sr > 1.4) {
+                line-height: 1;
+            }
+        }
+    })
 }
 
 /*--------------
@@ -171,25 +171,25 @@ a.ui.nag {
 & when not (@variationNagColors = false) {
     each(@variationNagColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
-    @isVeryDark: @colors[@@color][isVeryDark];
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
+        @isVeryDark: @colors[@@color][isVeryDark];
 
-    .ui.@{color}.nag {
-      background-color: @c;
-      & when (@isVeryDark) {
-        color: @invertedTextColor;
-      }
-    }
-    & when (@variationNagInverted) {
-      .ui.inverted.@{color}.nag {
-        background-color: @l;
-        & .title when (@isVeryDark) {
-          color: @titleColor;
+        .ui.@{color}.nag {
+            background-color: @c;
+            & when (@isVeryDark) {
+                color: @invertedTextColor;
+            }
         }
-      }
-    }
-  })
+        & when (@variationNagInverted) {
+            .ui.inverted.@{color}.nag {
+                background-color: @l;
+                & .title when (@isVeryDark) {
+                    color: @titleColor;
+                }
+            }
+        }
+    })
 }
 
 & when (@variationNagGroups) {

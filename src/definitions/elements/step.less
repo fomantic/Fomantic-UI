@@ -557,11 +557,11 @@
 & when not (@variationStepSizes = false) {
     each(@variationStepSizes, {
         @s: @@value;
-    .ui.@{value}.steps .step,
-    .ui.@{value}.step {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.steps .step,
+        .ui.@{value}.step {
+            font-size: @s;
+        }
+    })
 }
 
 & when (@variationStepInverted) {

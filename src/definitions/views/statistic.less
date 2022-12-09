@@ -332,22 +332,22 @@
 & when not (@variationStatisticColors = false) {
     each(@variationStatisticColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
 
-    .ui.@{color}.statistics .statistic > .value,
-    .ui.statistics .@{color}.statistic > .value,
-    .ui.@{color}.statistic > .value {
-      color: @c;
-    }
-    & when (@variationStatisticInverted) {
-      .ui.inverted.@{color}.statistics .statistic > .value,
-      .ui.statistics .inverted.@{color}.statistic > .value,
-      .ui.inverted.@{color}.statistic > .value {
-        color: @l;
-      }
-    }
-  })
+        .ui.@{color}.statistics .statistic > .value,
+        .ui.statistics .@{color}.statistic > .value,
+        .ui.@{color}.statistic > .value {
+            color: @c;
+        }
+        & when (@variationStatisticInverted) {
+            .ui.inverted.@{color}.statistics .statistic > .value,
+            .ui.statistics .inverted.@{color}.statistic > .value,
+            .ui.inverted.@{color}.statistic > .value {
+                color: @l;
+            }
+        }
+    })
 }
 
 & when (@variationStatisticFloated) {
@@ -408,21 +408,21 @@
 & when not (@variationStatisticSizes = false) {
     each(@variationStatisticSizes, {
         @s: @{value}ValueSize;
-    @hs: @{value}HorizontalValueSize;
-    @ts: @{value}TextValueSize;
-    .ui.@{value}.statistics .statistic > .value,
-    .ui.@{value}.statistic > .value {
-      font-size: @@s;
-    }
-    .ui.@{value}.horizontal.statistics .statistic > .value,
-    .ui.@{value}.horizontal.statistic > .value {
-      font-size: @@hs;
-    }
-    .ui.@{value}.statistics .statistic > .text.value,
-    .ui.@{value}.statistic > .text.value {
-      font-size: @@ts;
-    }
-  })
+        @hs: @{value}HorizontalValueSize;
+        @ts: @{value}TextValueSize;
+        .ui.@{value}.statistics .statistic > .value,
+        .ui.@{value}.statistic > .value {
+            font-size: @@s;
+        }
+        .ui.@{value}.horizontal.statistics .statistic > .value,
+        .ui.@{value}.horizontal.statistic > .value {
+            font-size: @@hs;
+        }
+        .ui.@{value}.statistics .statistic > .text.value,
+        .ui.@{value}.statistic > .text.value {
+            font-size: @@ts;
+        }
+    })
 }
 
 .loadUIOverrides();

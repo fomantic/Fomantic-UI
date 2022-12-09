@@ -99,18 +99,18 @@
     & when not (@variationTransitionColors = false) {
         each(@variationTransitionColors, {
             @color: @value;
-      @c: @colors[@@color][color];
-      @l: @colors[@@color][light];
+            @c: @colors[@@color][color];
+            @l: @colors[@@color][light];
 
-      .@{color}.pulsating.transition {
-        box-shadow: 0 0 0 0 fade(@c, @pulsatingOpacity);
-      }
-      & when (@variationTransitionInverted) {
-        .@{color}.inverted.pulsating.transition {
-          box-shadow: 0 0 0 0 fade(@l, @pulsatingInvertedOpacity);
-        }
-      }
-    })
+            .@{color}.pulsating.transition {
+                box-shadow: 0 0 0 0 fade(@c, @pulsatingOpacity);
+            }
+            & when (@variationTransitionInverted) {
+                .@{color}.inverted.pulsating.transition {
+                    box-shadow: 0 0 0 0 fade(@l, @pulsatingInvertedOpacity);
+                }
+            }
+        })
   }
 }
 

@@ -542,50 +542,50 @@
 & when not (@variationModalSizes = false) {
     each(@variationModalSizes, {
         @hs: @{value}HeaderSize;
-    @mw: @{value}MobileWidth;
-    @mm: @{value}MobileMargin;
-    @tw: @{value}TabletWidth;
-    @tm: @{value}TabletMargin;
-    @cw: @{value}ComputerWidth;
-    @cm: @{value}ComputerMargin;
-    @lw: @{value}LargeMonitorWidth;
-    @lm: @{value}LargeMonitorMargin;
-    @ww: @{value}WidescreenMonitorWidth;
-    @wm: @{value}WidescreenMonitorMargin;
-    .ui.@{value}.modal > .header:not(.ui) {
-      font-size: @@hs;
-    }
-    @media only screen and (max-width : @largestMobileScreen) {
-      .ui.@{value}.modal {
-        width: @@mw;
-        margin: @@mm;
-      }
-    }
-    @media only screen and (min-width : @tabletBreakpoint) {
-      .ui.@{value}.modal {
-        width: @@tw;
-        margin: @@tm;
-      }
-    }
-    @media only screen and (min-width : @computerBreakpoint) {
-      .ui.@{value}.modal {
-        width: @@cw;
-        margin: @@cm;
-      }
-    }
-    @media only screen and (min-width : @largeMonitorBreakpoint) {
-      .ui.@{value}.modal {
-        width: @@lw;
-        margin: @@lm;
-      }
-    }
-    @media only screen and (min-width : @widescreenMonitorBreakpoint) {
-      .ui.@{value}.modal {
-        width: @@ww;
-        margin: @@wm;
-      }
-    }
-  })
+        @mw: @{value}MobileWidth;
+        @mm: @{value}MobileMargin;
+        @tw: @{value}TabletWidth;
+        @tm: @{value}TabletMargin;
+        @cw: @{value}ComputerWidth;
+        @cm: @{value}ComputerMargin;
+        @lw: @{value}LargeMonitorWidth;
+        @lm: @{value}LargeMonitorMargin;
+        @ww: @{value}WidescreenMonitorWidth;
+        @wm: @{value}WidescreenMonitorMargin;
+        .ui.@{value}.modal > .header:not(.ui) {
+            font-size: @@hs;
+        }
+        @media only screen and (max-width : @largestMobileScreen) {
+            .ui.@{value}.modal {
+                width: @@mw;
+                margin: @@mm;
+            }
+        }
+        @media only screen and (min-width : @tabletBreakpoint) {
+            .ui.@{value}.modal {
+                width: @@tw;
+                margin: @@tm;
+            }
+        }
+        @media only screen and (min-width : @computerBreakpoint) {
+            .ui.@{value}.modal {
+                width: @@cw;
+                margin: @@cm;
+            }
+        }
+        @media only screen and (min-width : @largeMonitorBreakpoint) {
+            .ui.@{value}.modal {
+                width: @@lw;
+                margin: @@lm;
+            }
+        }
+        @media only screen and (min-width : @widescreenMonitorBreakpoint) {
+            .ui.@{value}.modal {
+                width: @@ww;
+                margin: @@wm;
+            }
+        }
+    })
 }
 
 & when (@variationModalInverted) {

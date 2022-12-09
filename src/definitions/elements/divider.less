@@ -289,10 +289,10 @@
 & when not (@variationDividerSizes = false) {
     each(@variationDividerSizes, {
         @s: @@value;
-    .ui.@{value}.divider {
-      font-size: @s;
-    }
-  })
+        .ui.@{value}.divider {
+            font-size: @s;
+        }
+    })
 }
 
 .loadUIOverrides();

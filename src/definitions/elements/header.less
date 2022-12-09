@@ -149,16 +149,16 @@
 & when not (@variationHeaderTags = false) {
     each(@variationHeaderTags, {
         @sf: @{value}SubHeaderFontSize;
-    @s: @@value;
-    @{value}.ui.header {
-      font-size: @s;
-    }
-    & when (@variationHeaderSub) {
-      @{value}.ui.header .sub.header {
-        font-size: @@sf;
-      }
-    }
-  })
+        @s: @@value;
+        @{value}.ui.header {
+            font-size: @s;
+        }
+        & when (@variationHeaderSub) {
+            @{value}.ui.header .sub.header {
+                font-size: @@sf;
+            }
+        }
+    })
 }
 
 /*--------------
@@ -168,23 +168,23 @@
 & when not (@variationHeaderSizes = false) {
     each(@variationHeaderSizes, {
         @sf: @{value}SubHeaderFontSize;
-    @shf: @{value}SubHeadingSize;
-    @s: @{value}FontSize;;
-    .ui.@{value}.header {
-      font-size: @@s;
-      & when (@@s >= 2) {
-        min-height: 1em;
-      }
-    }
-    & when (@variationHeaderSub) {
-      .ui.@{value}.header .sub.header {
-        font-size: @@sf;
-      }
-      .ui.@{value}.sub.header {
-        font-size: @@shf;
-      }
-    }
-  })
+        @shf: @{value}SubHeadingSize;
+        @s: @{value}FontSize;;
+        .ui.@{value}.header {
+            font-size: @@s;
+            & when (@@s >= 2) {
+                min-height: 1em;
+            }
+        }
+        & when (@variationHeaderSub) {
+            .ui.@{value}.header .sub.header {
+                font-size: @@sf;
+            }
+            .ui.@{value}.sub.header {
+                font-size: @@shf;
+            }
+        }
+    })
 }
 
 & when (@variationHeaderSub) {
@@ -313,34 +313,34 @@
 & when not (@variationHeaderColors = false) {
     each(@variationHeaderColors, {
         @color: @value;
-    @c: @colors[@@color][color];
-    @l: @colors[@@color][light];
-    @h: @colors[@@color][hover];
-    @lh: @colors[@@color][lightHover];
+        @c: @colors[@@color][color];
+        @l: @colors[@@color][light];
+        @h: @colors[@@color][hover];
+        @lh: @colors[@@color][lightHover];
 
-    .ui.@{color}.header {
-      color: @c;
-    }
-    a.ui.@{color}.header:hover {
-      color: @h;
-    }
-    & when (@variationHeaderDividing) {
-      .ui.@{color}.dividing.header {
-        border-bottom: @dividedColoredBorderWidth solid @c;
-      }
-    }
-    & when (@variationHeaderInverted) {
-      .ui.inverted.@{color}.header.header.header {
-        color: @l;
-      }
-      a.ui.inverted.@{color}.header.header.header:hover {
-        color: @lh;
-      }
-      .ui.inverted.@{color}.dividing.header {
-        border-bottom: @dividedColoredBorderWidth solid @l;
-      }
-    }
-  })
+        .ui.@{color}.header {
+            color: @c;
+        }
+        a.ui.@{color}.header:hover {
+            color: @h;
+        }
+        & when (@variationHeaderDividing) {
+            .ui.@{color}.dividing.header {
+                border-bottom: @dividedColoredBorderWidth solid @c;
+            }
+        }
+        & when (@variationHeaderInverted) {
+            .ui.inverted.@{color}.header.header.header {
+                color: @l;
+            }
+            a.ui.inverted.@{color}.header.header.header:hover {
+                color: @lh;
+            }
+            .ui.inverted.@{color}.dividing.header {
+                border-bottom: @dividedColoredBorderWidth solid @l;
+            }
+        }
+    })
 }
 
 & when (@variationHeaderAligned) {
@@ -441,10 +441,10 @@
     & when not (@variationHeaderSizes = false) {
         each(@variationHeaderSizes, {
             @s: @{value}Block;
-      .ui.@{value}.block.header {
-        font-size: @@s;
-      }
-    })
+            .ui.@{value}.block.header {
+                font-size: @@s;
+            }
+        })
   }
 }
 
@@ -483,10 +483,10 @@
     & when not (@variationHeaderSizes = false) {
         each(@variationHeaderSizes, {
             @s: @{value}AttachedSize;
-      .ui.@{value}.attached.header {
-        font-size: @@s;
-      }
-    })
+            .ui.@{value}.attached.header {
+                font-size: @@s;
+            }
+        })
   }
 }
 
