@@ -885,7 +885,7 @@
                         var endDate = module.get.endDate();
                         if (!!endDate && !!date && date > endDate) {
                             // selected date is greater than end date in range, so clear end date
-                            module.set.endDate(undefined);
+                            module.set.endDate();
                         }
                         module.set.dataKeyValue(metadata.date, date);
 
@@ -1022,7 +1022,7 @@
                 },
 
                 clear: function () {
-                    module.set.date(undefined);
+                    module.set.date();
                 },
 
                 popup: function () {
