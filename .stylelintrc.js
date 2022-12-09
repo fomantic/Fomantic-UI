@@ -24,7 +24,6 @@ module.exports = {
         'selector-not-notation': null, // 169 errors
         'no-invalid-position-at-import-rule': null, // 104 errors
         'at-rule-no-unknown': null, // 104 errors
-        'selector-list-comma-newline-after': null, // 61 errors
         'import-notation': null, // 55 errors
         'function-no-unknown': null, // 43 errors
         'property-no-vendor-prefix': null, // 31 errors

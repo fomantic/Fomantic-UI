@@ -68,7 +68,8 @@ i.icon::before {
         height: 1em;
         line-height: 1;
     }
-    i.loading.icon, i.loading.icons {
+    i.loading.icon,
+    i.loading.icons {
         animation: loader @loadingDuration linear infinite;
     }
 }
@@ -77,14 +78,18 @@ i.icon::before {
              States
 *******************************/
 
-i.icon:hover, i.icons:hover,
-i.icon:active, i.icons:active,
-i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
+i.icon:hover,
+i.icons:hover,
+i.icon:active,
+i.icons:active,
+i.emphasized.icon:not(.disabled),
+i.emphasized.icons:not(.disabled) {
     opacity: 1;
 }
 
 & when (@variationIconDisabled) {
-    i.disabled.icon, i.disabled.icons {
+    i.disabled.icon,
+    i.disabled.icons {
         opacity: @disabledOpacity;
         cursor: default;
         pointer-events: none;
@@ -112,12 +117,14 @@ i.emphasized.icon:not(.disabled), i.emphasized.icons:not(.disabled) {
              Link
     -------------------- */
 
-    i.link.icon:not(.disabled), i.link.icons:not(.disabled) {
+    i.link.icon:not(.disabled),
+    i.link.icons:not(.disabled) {
         cursor: pointer;
         opacity: @linkOpacity;
         transition: opacity @defaultDuration @defaultEasing;
     }
-    i.link.icon:hover, i.link.icons:hover {
+    i.link.icon:hover,
+    i.link.icons:hover {
         opacity: 1;
     }
 }
