@@ -975,7 +975,6 @@
             opacity: 1;
         }
     }
-
 }
 & when (@variationTransitionJiggle) {
     /* Jiggle */
