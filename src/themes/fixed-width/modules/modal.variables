@@ -1,4 +1,3 @@
-
 /* Responsive Widths */
 @modalComputerWidth: 700px;
 @modalLargeMonitorWidth: 800px;

@@ -50,7 +50,6 @@ module.exports = {
         'selector-attribute-quotes': null, // 7 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
         'function-url-quotes': null, // 5 errors
-        'no-empty-first-line': null, // 3 errors
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'font-family-no-duplicate-names': null, // 2 errors
         'function-linear-gradient-no-nonstandard-direction': null, // 1 error
