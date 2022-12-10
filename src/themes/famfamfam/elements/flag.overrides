@@ -12,16 +12,12 @@
 
 i.flag:not(.icon) {
     display: inline-block;
-
     width: @width;
     height: @height;
-
     line-height: @height;
     vertical-align: @verticalAlign;
     margin: 0 @margin 0 0;
-
     text-decoration: inherit;
-
     speak: none;
     -webkit-font-smoothing: antialiased;
     backface-visibility: hidden;
