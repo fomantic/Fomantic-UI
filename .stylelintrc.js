@@ -43,4 +43,5 @@ module.exports = {
         'color-hex-case': null, // 1 error
         'color-hex-length': null, // 1 error
     },
+    reportNeedlessDisables: true,
 };
