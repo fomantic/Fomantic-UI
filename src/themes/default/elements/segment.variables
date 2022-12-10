@@ -57,7 +57,6 @@
 @placeholderContentMaxWidth: 15rem;
 @placeholderContentInlineButtonMargin: 0 @5px 0 0;
 
-
 /* Piled */
 @piledZIndex: auto;
 @piledMargin: 3em;
@@ -87,11 +86,9 @@
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
 
-
 /*******************************
             Variations
 *******************************/
-
 
 /* Raised */
 @raisedBoxShadow: @floatingShadow;
@@ -153,4 +150,3 @@
     )
 ;
 @tertiaryInvertedColor: @invertedMutedTextColor;
-

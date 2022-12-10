@@ -59,7 +59,6 @@
 @closeOpacity: 0.7;
 @closeTransition: opacity @defaultDuration @defaultEasing;
 
-
 /* -------------------
         Types
 -------------------- */

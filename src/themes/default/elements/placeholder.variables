@@ -31,7 +31,6 @@
 @placeholderLineFourOutdent: @placeholderLongLineOutdent;
 @placeholderLineFiveOutdent: @placeholderShortLineOutdent;
 
-
 /* Glow Gradient */
 @placeholderLoadingAnimationDuration: 2s;
 @placeholderLoadingGradientWidth: 1200px;

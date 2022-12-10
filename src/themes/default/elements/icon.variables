@@ -22,7 +22,6 @@ i.icon.asc         =>  i.icon.ascending
 i.icon.desc        =>  i.icon.descending
 i.icon.alt         =>  i.icon.alternate
 
-
 Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 
 *******************************/
@@ -2082,7 +2081,6 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @height: 1em;
 @distanceFromText: 0.25rem;
 @lineHeight: 1;
-
 
 /* Variations */
 @linkOpacity: 0.8;

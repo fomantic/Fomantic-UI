@@ -102,7 +102,6 @@
 @definitionColumnTextAlign: '';
 @definitionColumnHorizontalPadding: '';
 
-
 /* --------------
     Couplings
 --------------- */
@@ -294,7 +293,6 @@
 @overflowingTabletMaxHeight: (@overflowingItemHeight * @overflowingTabletMaxItems);
 @overflowingComputerMaxHeight: (@overflowingItemHeight * @overflowingComputerMaxItems);
 @overflowingWidescreenMaxHeight: (@overflowingItemHeight * @overflowingWidescreenMaxItems);
-
 
 /* Sizes */
 @small: 0.9em;

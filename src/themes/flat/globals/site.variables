@@ -47,7 +47,6 @@
 @primaryColor     : @blue;
 @secondaryColor   : @black;
 
-
 /* -------------------
         Page
 -------------------- */
@@ -67,8 +66,6 @@
 @highlightBackground : #FFFFCC;
 @highlightColor      : @textColor;
 
-
-
 /* -------------------
   Background Colors
 -------------------- */
@@ -87,7 +84,6 @@
 /* Used for differentiating layers */
 @subtleShadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
 
-
 /* -------------------
         Grid
 -------------------- */
@@ -103,4 +99,3 @@
 @computerBreakpoint          : 992px;
 @largeMonitorBreakpoint      : 1400px;
 @widescreenMonitorBreakpoint : 1900px;
-

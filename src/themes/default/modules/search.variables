@@ -95,7 +95,6 @@
 @actionFontWeight: @bold;
 @actionAlign: center;
 
-
 /*******************************
             States
 *******************************/
@@ -123,7 +122,6 @@
 @resultActiveTitleColor: @darkTextColor;
 @resultActiveDescriptionColor: @darkTextColor;
 @resultsZIndex: 998;
-
 
 /*******************************
             Types

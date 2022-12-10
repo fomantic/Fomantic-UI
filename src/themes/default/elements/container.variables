@@ -51,7 +51,6 @@
 @computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
 @largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
-
 /* -------------------
        Types
 -------------------- */

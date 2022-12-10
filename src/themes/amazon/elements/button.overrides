@@ -20,7 +20,6 @@
     border-color: #32373E #24282D #212429;
 }
 
-
 .ui.labeled.icon.buttons .button > .icon,
 .ui.labeled.icon.button > .icon {
     padding-bottom: 0.48em;

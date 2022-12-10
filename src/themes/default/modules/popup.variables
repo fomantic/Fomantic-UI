@@ -32,7 +32,6 @@
 @boxArrowOffset: 0;
 @popupDistanceAway: @arrowSize;
 
-
 /* Header */
 @headerFontFamily: @headerFont;
 @headerFontWeight: @bold;

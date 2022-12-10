@@ -7,7 +7,6 @@
     font-size: 12px;
 }
 
-
 /* Dropdown Carets */
 @font-face {
     font-family: 'Dropdown';

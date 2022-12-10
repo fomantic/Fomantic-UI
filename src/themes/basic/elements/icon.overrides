@@ -49,7 +49,6 @@ i.icon.layout.list::before { content: '\e80b'; } /* '' */
 i.icon.heart.empty::before { content: '\2661'; } /* '♡' */
 i.icon.heart::before { content: '\2665'; } /* '♥' */
 
-
 i.icon.asterisk::before { content: '\2731'; } /* '✱' */
 i.icon.attachment::before { content: '📎'; } /* '\1f4ce' */
 i.icon.attention::before { content: '\26a0'; } /* '⚠' */

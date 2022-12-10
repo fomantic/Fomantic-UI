@@ -10,7 +10,6 @@
 @shadowBoxShadow: none;
 @boxShadow: none;
 
-
 @internalBorderColor: #EDEDEE;
 @border: 1px solid #EDEDEE;
 

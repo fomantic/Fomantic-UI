@@ -117,7 +117,6 @@
 @googleProtocol    : 'https://';
 @googleFontRequest : '@{googleFontName}:@{googleFontSizes}&subset=@{googleSubset}&display=@{googleFontDisplay}';
 
-
 @bold              : bold;
 @normal            : normal;
 
@@ -130,7 +129,6 @@
 
 /* The size of page text  */
 @fontSize : 14px;
-
 
 /* -------------------
     Border Radius
@@ -217,7 +215,6 @@
 @hugeSize        : (20 / 14);
 @massiveSize     : (24 / 14);
 
-
 /* -------------------
         Page
 -------------------- */
@@ -291,7 +288,6 @@
 
 @inputHighlightBackground : rgba(100, 100, 100, 0.4);
 @inputHighlightColor      : @textColor;
-
 
 /* -------------------
        Loader
@@ -440,7 +436,6 @@
 @lightGreyTextColor      : @lightGrey;
 @lightBlackTextColor     : @lightBlack;
 
-
 /* --- Hovered Colored Text --- */
 @primaryHoverTextColor   : @primaryTextColor;
 @secondaryHoverTextColor : @secondaryTextColor;
@@ -457,7 +452,6 @@
 @brownHoverTextColor     : @brownTextColor;
 @greyHoverTextColor      : @greyTextColor;
 @blackHoverTextColor     : @blackTextColor;
-
 
 /* --- Colored Border --- */
 @primaryBorderColor   : @primaryColor;
@@ -704,7 +698,6 @@
            Power-User
 *******************************/
 
-
 /* -------------------
     Emotive Colors
 -------------------- */
@@ -857,7 +850,6 @@
 @solidWhiteBorderColor         : #555555;
 @selectedSolidWhiteBorderColor : #999999;
 
-
 /* -------------------
     Derived Values
 -------------------- */
@@ -897,13 +889,11 @@
 @errorHeaderColor       : @negativeHeaderColor;
 @errorTextColor         : @negativeTextColor;
 
-
 /* Responsive */
 @largestMobileScreen : (@tabletBreakpoint - 0.02px);
 @largestTabletScreen : (@computerBreakpoint - 0.02px);
 @largestSmallMonitor : (@largeMonitorBreakpoint - 0.02px);
 @largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.02px);
-
 
 /* -------------------
   Exact Pixel Values
@@ -1084,7 +1074,6 @@
 @fifteenColumn  : (1 / 15 * 100%);
 @sixteenColumn  : (1 / 16 * 100%);
 
-
 /*******************************
              States
 *******************************/
@@ -1228,7 +1217,6 @@
 @offWhiteFocus            : darken(@offWhite, 8);
 @darkWhiteFocus           : darken(@darkWhite, 8);
 
-
 /* -------------------
     Down (:active)
 -------------------- */
@@ -1290,7 +1278,6 @@
 @whiteDown               : darken(@white, 10);
 @offWhiteDown            : darken(@offWhite, 10);
 @darkWhiteDown           : darken(@darkWhite, 10);
-
 
 /* -------------------
         Active
@@ -1571,6 +1558,3 @@
 
 @inputWarningPlaceholderColor: lighten(@formWarningColor, 40);
 @inputWarningPlaceholderFocusColor: lighten(@formWarningColor, 30);
-
-
-

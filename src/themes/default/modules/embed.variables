@@ -41,7 +41,6 @@
 @hoverPlaceholderBackgroundOpacity: 1;
 @hoverIconColor: @white;
 
-
 /* -------------------
       Variations
 -------------------- */

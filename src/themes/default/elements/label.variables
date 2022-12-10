@@ -97,7 +97,6 @@
 @labelActiveHoverBackgroundImage: none;
 @labelActiveHoverTextColor: @selectedTextColor;
 
-
 /* -------------------
       Variations
 -------------------- */

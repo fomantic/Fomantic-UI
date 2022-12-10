@@ -6,7 +6,6 @@
 @checkboxColor: @textColor;
 @checkboxLineHeight: @checkboxSize;
 
-
 /* Label */
 @labelDistance: 1.85714em; /* 26px @ 14/em */
 
@@ -145,8 +144,6 @@
 @sliderOnFocusLineColor: @lightBlackFocus;
 @sliderOnFocusLabelColor: @sliderOnLabelColor;
 
-
-
 /* Toggle */
 @toggleLaneWidth: 3.5rem;
 @toggleHandleSize: 1.5rem;
@@ -179,7 +176,6 @@
 @toggleLabelLineHeight: 1.5rem;
 @toggleLabelOffset: 0.15em;
 
-
 @toggleFocusColor: @veryStrongTransparentBlack;
 @toggleHoverColor: @toggleFocusColor;
 
@@ -193,8 +189,6 @@
 
 @toggleOnFocusLaneColor: @primaryColorFocus;
 @toggleOnFocusLabelColor: @toggleOnLabelColor;
-
-
 
 /* -------------------
       Variations

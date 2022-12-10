@@ -50,7 +50,6 @@
        Content
 -------------------- */
 
-
 /* Image */
 @imageBackground: @transparentBlack;
 @imagePadding: 0;
@@ -67,7 +66,6 @@
 @contentBorderRadius: 0;
 @contentBoxShadow: none;
 @contentBorder: none;
-
 
 /* Header */
 @headerMargin: '';

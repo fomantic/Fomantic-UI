@@ -36,8 +36,6 @@ i.flag:not(.icon)::before {
     height: @height;
 }
 
-
-
 i.flag.ad::before,
 i.flag.andorra::before {
     background-position: 0 0;

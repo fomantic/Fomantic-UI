@@ -26,7 +26,6 @@
     content: '\e801';
 }
 
-
 /*  UTF Reference
 .check::before { content: '\e800'; }
 .dash::before  { content: '\e801'; }

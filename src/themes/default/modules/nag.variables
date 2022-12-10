@@ -24,7 +24,6 @@
 
 @transition: 0.2s background ease;
 
-
 /* --------------
     Elements
 --------------- */
@@ -40,7 +39,6 @@
 @closeColor: @white;
 @closeTransition: opacity 0.2s ease;
 @closeOpacity: 0.4;
-
 
 /* --------------
       States
@@ -73,4 +71,3 @@
 --------------- */
 
 @groupedBorderRadius: 0;
-

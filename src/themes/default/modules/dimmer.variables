@@ -41,7 +41,6 @@
 @transformStyle: '';
 @pageDimmerPosition: fixed;
 
-
 /* -------------------
       Variations
 -------------------- */

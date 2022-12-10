@@ -61,7 +61,6 @@
 @celledRowDivider: 0 (-@celledWidth) 0 0 @celledBorderColor;
 @celledColumnDivider: (-@celledWidth) 0 0 0 @celledBorderColor;
 
-
 /* --------------
     Stackable
 --------------- */
@@ -86,7 +85,6 @@
 @veryCompactRowSpacing: (@compactRowSpacing / 2);
 @veryCompactCelledRelaxedPadding: (@compactCelledRelaxedPadding / 2);
 @veryCompactCelledVeryRelaxedPadding: (@compactCelledVeryRelaxedPadding / 2);
-
 
 /*******************************
              Legacy

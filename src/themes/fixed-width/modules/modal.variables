@@ -8,7 +8,6 @@
 @modalLargeMonitorMargin: 0em 0em 0em -(@modalLargeMonitorWidth / 2);
 @modalWidescreenMonitorMargin: 0em 0em 0em -(@modalWidescreenMonitorWidth / 2);
 
-
 /* -------------------
       Variations
 -------------------- */

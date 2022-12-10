@@ -98,7 +98,6 @@
 @activePulseDuration: 2s;
 @activeMinWidth: @barMinWidth;
 
-
 /* -------------------
       Variations
 -------------------- */

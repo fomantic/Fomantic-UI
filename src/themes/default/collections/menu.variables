@@ -172,7 +172,6 @@
 @pressedItemBackground: @subtleTransparentBlack;
 @pressedItemTextColor: @hoverItemTextColor;
 
-
 /* Active Item */
 @activeItemBackground: @transparentBlack;
 @activeItemTextColor: @selectedTextColor;
@@ -198,7 +197,6 @@
 @subMenuActiveTextColor: @activeItemTextColor;
 @subMenuActiveFontWeight: @bold;
 
-
 /* --------------
      Types
 --------------- */
@@ -211,7 +209,6 @@
 @verticalDividerBackground: @dividerBackground;
 
 @verticalActiveBoxShadow: none;
-
 
 /* Secondary */
 @secondaryBackground: none;
@@ -269,7 +266,6 @@
 @secondaryPointingHeaderColor: @darkTextColor;
 @secondaryVerticalPointingItemMargin: 0 -@secondaryPointingBorderWidth 0 0;
 
-
 /* Inverted Secondary */
 @secondaryInvertedColor: @invertedLightTextColor;
 
@@ -286,7 +282,6 @@
 @secondaryPointingInvertedItemHoverTextColor: @invertedSelectedTextColor;
 @secondaryPointingInvertedActiveBorderColor: @white;
 @secondaryPointingInvertedActiveColor: @invertedSelectedTextColor;
-
 
 /* Tiered */
 @tieredActiveItemBackground: #FCFCFC;
@@ -305,12 +300,10 @@
 
 @tieredInvertedSubMenuBackground: rgba(0, 0, 0, 0.2);
 
-
 /* Icon */
 @iconMenuTextAlign: center;
 @iconMenuItemColor: @black;
 @iconMenuInvertedItemColor: @white;
-
 
 /* Tabular */
 @tabularBorderColor: @solidBorderColor;
@@ -335,8 +328,6 @@
 @tabularActiveBoxShadow: none;
 @tabularActiveWeight: @bold;
 
-
-
 /* Pagination */
 @paginationMinWidth: 3em;
 @paginationActiveBackground: @transparentBlack;
@@ -347,7 +338,6 @@
 @labeledIconSize: @relativeMassive;
 @labeledIconMinWidth: 6em;
 @labeledIconTextMargin: 0.5rem;
-
 
 /* Text */
 @textMenuItemSpacing: @relative7px;
@@ -376,7 +366,6 @@
 
 @textVerticalMenuIconFloat: none;
 @textVerticalMenuIconMargin: @iconMargin;
-
 
 /* --------------
    Variations
@@ -463,7 +452,6 @@
 @bigWidth: 20rem;
 @hugeWidth: 22rem;
 @massiveWidth: 25rem;
-
 
 /* -------------------
   Inverted dropdowns

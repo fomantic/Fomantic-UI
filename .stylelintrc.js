@@ -26,7 +26,6 @@ module.exports = {
         'at-rule-name-space-after': null, // 754 errors
         'no-duplicate-selectors': null, // 224 errors
         'selector-not-notation': null, // 169 errors
-        'max-empty-lines': null, // 129 errors
         'selector-list-comma-newline-after': null, // 105 errors
         'no-invalid-position-at-import-rule': null, // 104 errors
         'function-no-unknown': null, // 67 errors
@@ -60,13 +59,13 @@ module.exports = {
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'font-family-no-duplicate-names': null, // 2 errors
         'declaration-block-semicolon-space-before': null, // 2 errors
-        'function-linear-gradient-no-nonstandard-direction': null, // 1 errors
-        'function-comma-space-before': null, // 1 errors
-        'block-opening-brace-space-before': null, // 1 errors
-        'media-feature-colon-space-before': null, // 1 errors
-        'block-closing-brace-empty-line-before': null, // 1 errors
-        'at-rule-no-vendor-prefix': null, // 1 errors
-        'declaration-block-no-shorthand-property-overrides': null, // 1 errors
+        'function-linear-gradient-no-nonstandard-direction': null, // 1 error
+        'function-comma-space-before': null, // 1 error
+        'block-opening-brace-space-before': null, // 1 error
+        'media-feature-colon-space-before': null, // 1 error
+        'block-closing-brace-empty-line-before': null, // 1 error
+        'at-rule-no-vendor-prefix': null, // 1 error
+        'declaration-block-no-shorthand-property-overrides': null, // 1 error
     },
     reportNeedlessDisables: true,
 };

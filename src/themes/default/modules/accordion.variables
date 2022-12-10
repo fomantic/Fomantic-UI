@@ -45,7 +45,6 @@
 @menuIconMargin: @iconMargin;
 @menuIconTransform: rotate(180deg);
 
-
 /* -------------------
        States
 -------------------- */

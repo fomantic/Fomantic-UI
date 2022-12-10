@@ -17,7 +17,6 @@
 @backgroundColor: @white;
 @backgroundImage: none;
 
-
 @borderBoxShadowColor: rgba(0, 0, 0, 0.14);
 
 @green: #5CB85C;

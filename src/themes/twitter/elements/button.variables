@@ -27,7 +27,6 @@
 @primaryColor: @blue;
 @coloredBackgroundImage: @subtleGradient;
 
-
 /* -------------------
         States
 -------------------- */

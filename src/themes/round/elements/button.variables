@@ -32,7 +32,6 @@
 
 @verticalBoxShadow: 0px 0px 0px 1px @borderColor inset;
 
-
 /* -------------------
         States
 -------------------- */
@@ -95,7 +94,6 @@
 @basicInvertedDownColor: @darkWhiteActive;
 @basicInvertedActiveColor: @invertedTextColor;
 
-
 /* Basic Group */
 @basicGroupBorder: 1px solid @borderColor;
 @basicGroupBoxShadow: 0px 0px 0px 1px @borderColor;
@@ -135,4 +133,3 @@
 @big: 1.25rem;
 @huge: 1.375rem;
 @massive: 1.5rem;
-

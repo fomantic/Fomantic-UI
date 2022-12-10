@@ -80,4 +80,3 @@
 @bigLabelHeight         : @bigHeight;
 @bigTrackHeight         : 0.6em;
 @bigTrackPositionTop    : (@bigHeight / 2) - (@bigTrackHeight / 2);
-
