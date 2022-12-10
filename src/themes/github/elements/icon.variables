@@ -11,11 +11,11 @@
         text-transform: none;
     };
 };
-@icon-deprecated-map: {}; // stylelint-disable-line indentation
+@icon-deprecated-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
 @icon-outline-map: {};
-@icon-outline-aliases-map: {}; // stylelint-disable-line indentation
+@icon-outline-aliases-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
 @icon-brand-map: {};
-@icon-brand-aliases-map: {}; // stylelint-disable-line indentation
+@icon-brand-aliases-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
 
 @width: 1em;
 @height: 1em;

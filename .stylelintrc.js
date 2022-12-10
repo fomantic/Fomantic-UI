@@ -44,7 +44,6 @@ module.exports = {
         'value-keyword-case': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
         'color-hex-length': null, // 9 errors
-        'block-closing-brace-newline-after': null, // 9 errors
         'no-empty-source': null, // 8 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
         'number-max-precision': null, // 7 errors
