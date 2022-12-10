@@ -12,8 +12,8 @@
 
 & when (@variationTransitionBrowse) {
     /*--------------
-       Browse
-  ---------------*/
+         Browse
+    ---------------*/
 
     .transition.browse {
         animation-duration: 500ms;
@@ -92,8 +92,8 @@
 
 & when (@variationTransitionDrop) {
     /*--------------
-       Drop
-  ---------------*/
+         Drop
+    ---------------*/
 
     .drop.transition {
         transform-origin: top center;
@@ -132,8 +132,8 @@
 
 & when (@variationTransitionFade) {
     /*--------------
-        Fade
-  ---------------*/
+          Fade
+    ---------------*/
 
     .transition.fade.in {
         animation-name: fadeIn;
@@ -270,8 +270,8 @@
 
 & when (@variationTransitionFlip) {
     /*--------------
-       Flips
-  ---------------*/
+         Flips
+    ---------------*/
 
     .flip.transition.in,
     .flip.transition.out {
@@ -337,8 +337,8 @@
 
 & when (@variationTransitionScale) {
     /*--------------
-        Scale
-  ---------------*/
+          Scale
+    ---------------*/
 
     .scale.transition.in {
         animation-name: scaleIn;
@@ -373,8 +373,8 @@
 
 & when (@variationTransitionFly) {
     /*--------------
-        Fly
-  ---------------*/
+          Fly
+    ---------------*/
 
     /* Inward */
     .transition.fly {
@@ -579,8 +579,8 @@
 
 & when (@variationTransitionSlide) {
     /*--------------
-       Slide
-  ---------------*/
+         Slide
+    ---------------*/
 
     .transition.slide.in,
     .transition[class*="slide down"].in {
@@ -665,8 +665,8 @@
 
 & when (@variationTransitionSwing) {
     /*--------------
-       Swing
-  ---------------*/
+         Swing
+    ---------------*/
 
     .transition.swing {
         animation-duration: 800ms;
@@ -790,8 +790,8 @@
 
 & when (@variationTransitionZoom) {
     /*--------------
-        Zoom
-  ---------------*/
+          Zoom
+    ---------------*/
 
     .transition.zoom.in {
         animation-name: zoomIn;
