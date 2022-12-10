@@ -379,7 +379,7 @@
     /* Inward */
     .transition.fly {
         animation-duration: 0.6s;
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     }
     .transition.fly.in {
         animation-name: flyIn;
@@ -871,7 +871,7 @@
 & when (@variationTransitionGlow) {
     .transition.glow {
         animation-duration: 2000ms;
-        animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+        animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     .transition.glow {
