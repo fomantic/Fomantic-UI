@@ -14,6 +14,7 @@ module.exports = {
         'declaration-block-trailing-semicolon': null, // bad formatting with "each()"
         'declaration-empty-line-before': null,
         'max-line-length': null,
+        'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
         'rule-empty-line-before': null,
 
         // TODO
@@ -42,7 +43,6 @@ module.exports = {
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
-        'no-extra-semicolons': null, // 18 errors
         'number-no-trailing-zeros': null, // 16 errors
         'font-family-name-quotes': null, // 13 errors
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
