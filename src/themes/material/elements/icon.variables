@@ -1,4 +1,4 @@
-@fontPath  : '../../themes/material/assets/fonts';
+@fontPath : '../../themes/material/assets/fonts';
 @fonts: {
     @solid: {
         font-family: @fontName;

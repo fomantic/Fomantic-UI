@@ -23,7 +23,6 @@ module.exports = {
         'at-rule-no-unknown': null, // 1081 errors
         'property-case': null, // 866 errors
         'at-rule-name-case': null, // 764 errors
-        'at-rule-name-space-after': null, // 754 errors
         'no-duplicate-selectors': null, // 224 errors
         'selector-not-notation': null, // 169 errors
         'selector-list-comma-newline-after': null, // 105 errors

@@ -2,7 +2,7 @@
    Icon Variables
 -------------------- */
 
-@fontPath  : "../../themes/basic/assets/fonts";
+@fontPath : "../../themes/basic/assets/fonts";
 
 @fonts: {
     @solid: {

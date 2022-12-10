@@ -7,19 +7,19 @@
 -------------------- */
 
 @googleFontName : 'Roboto';
-@pageFont       : 'Roboto', Arial, sans-serif;
+@pageFont : 'Roboto', Arial, sans-serif;
 
 @medium: 13px;
 
-@verticalPadding   : 0.8em;
+@verticalPadding : 0.8em;
 @horizontalPadding : 0.8em;
-@borderRadius      : @relative3px;
-@color             : #222222;
-@fontWeight        : normal;
-@textTransform     : none;
+@borderRadius : @relative3px;
+@color : #222222;
+@fontWeight : normal;
+@textTransform : none;
 
-@backgroundColor      : @white;
-@backgroundImage      : linear-gradient(transparent, rgba(0, 0, 0, 0.02));
+@backgroundColor : @white;
+@backgroundImage : linear-gradient(transparent, rgba(0, 0, 0, 0.02));
 
 @solidBorderColor: #DDDDDD;
 
@@ -77,17 +77,17 @@
 
 /* Colored */
 @coloredBackgroundImage : @subtleGradient;
-@coloredBoxShadow       : 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
+@coloredBoxShadow : 0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset;
 
 /* Primary */
-@primaryColor       : #4184F3;
-@primaryBoxShadow   : 0px 0px 0px 1px #0157E4 inset;
+@primaryColor : #4184F3;
+@primaryBoxShadow : 0px 0px 0px 1px #0157E4 inset;
 
 /* Secondary */
-@secondaryColor           : #EEEEEE;
+@secondaryColor : #EEEEEE;
 @secondaryBackgroundImage : @backgroundImage;
-@secondaryTextColor       : @textColor;
-@secondaryBoxShadow       : @borderBoxShadow;
+@secondaryTextColor : @textColor;
+@secondaryBoxShadow : @borderBoxShadow;
 
 /* Emotive */
 @positiveColor: #3D9400;
