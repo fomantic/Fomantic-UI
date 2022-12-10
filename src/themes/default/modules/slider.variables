@@ -8,10 +8,10 @@
 
 @height : 1.5em;
 @hoverPointer : auto;
-@padding : 1em .5em;
+@padding : 1em 0.5em;
 
 /* Track */
-@trackHeight : .4em;
+@trackHeight : 0.4em;
 @trackPositionTop : (@height / 2) - (@trackHeight / 2);
 @background : #ccc;
 @trackBorderRadius : 4px;
@@ -43,7 +43,7 @@
 -------------------- */
 
 /* Disabled */
-@disabledOpactiy : .5;
+@disabledOpactiy : 0.5;
 @disabledTrackFillColor : @background;
 
 /* -------------------
@@ -51,7 +51,7 @@
 -------------------- */
 
 /* Vertical */
-@verticalPadding : .5em 1em;
+@verticalPadding : 0.5em 1em;
 
 /* Labeled */
 @labelHeight : @height;

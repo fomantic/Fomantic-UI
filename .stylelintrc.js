@@ -34,7 +34,6 @@ module.exports = {
         'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
-        'number-leading-zero': null, // 49 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors

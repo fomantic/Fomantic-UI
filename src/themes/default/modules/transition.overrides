@@ -418,20 +418,20 @@
     @keyframes flyIn {
         0% {
             opacity: 0;
-            transform: scale3d(.3, .3, .3);
+            transform: scale3d(0.3, 0.3, 0.3);
         }
         20% {
             transform: scale3d(1.1, 1.1, 1.1);
         }
         40% {
-            transform: scale3d(.9, .9, .9);
+            transform: scale3d(0.9, 0.9, 0.9);
         }
         60% {
             opacity: 1;
             transform: scale3d(1.03, 1.03, 1.03);
         }
         80% {
-            transform: scale3d(.97, .97, .97);
+            transform: scale3d(0.97, 0.97, 0.97);
         }
         100% {
             opacity: 1;
@@ -518,7 +518,7 @@
     /* Out */
     @keyframes flyOut {
         20% {
-            transform: scale3d(.9, .9, .9);
+            transform: scale3d(0.9, 0.9, 0.9);
         }
         50%,
         55% {
@@ -527,7 +527,7 @@
         }
         100% {
             opacity: 0;
-            transform: scale3d(.3, .3, .3);
+            transform: scale3d(0.3, 0.3, 0.3);
         }
     }
     @keyframes flyOutUp {
@@ -992,10 +992,10 @@
             transform: scale3d(1.15, 0.85, 1);
         }
         65% {
-            transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
         }
         75% {
-            transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, 0.95, 1);
         }
         100% {
             transform: scale3d(1, 1, 1);
