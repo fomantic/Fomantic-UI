@@ -46,7 +46,6 @@ module.exports = {
         'font-family-name-quotes': null, // 13 errors
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-keyword-case': null, // 12 errors
-        'comment-empty-line-before': null, // 10 errors
         'value-no-vendor-prefix': null, // 9 errors
         'color-hex-length': null, // 9 errors
         'block-closing-brace-newline-after': null, // 9 errors

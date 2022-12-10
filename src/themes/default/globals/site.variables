@@ -908,6 +908,7 @@
 /* -------------------
   Exact Pixel Values
 -------------------- */
+
 /*
   These are used to specify exact pixel values in em
   for things like borders that remain constantly
@@ -1451,6 +1452,7 @@
 /*******************************
  States shared in Form-related components
  *******************************/
+
 /* Form state */
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
