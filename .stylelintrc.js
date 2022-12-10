@@ -8,11 +8,11 @@ module.exports = {
         'test/coverage/**',
     ],
     rules: {
-        indentation: 4,
         'at-rule-empty-line-before': null,
         'block-closing-brace-newline-before': null,
         'declaration-block-trailing-semicolon': null, // bad formatting with "each()"
         'declaration-empty-line-before': null,
+        indentation: 4,
         'max-line-length': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
         'rule-empty-line-before': null,
@@ -56,7 +56,6 @@ module.exports = {
         'declaration-block-no-duplicate-properties': null, // 2 errors
         'font-family-no-duplicate-names': null, // 2 errors
         'function-linear-gradient-no-nonstandard-direction': null, // 1 error
-        'function-comma-space-before': null, // 1 error
         'at-rule-no-vendor-prefix': null, // 1 error
         'declaration-block-no-shorthand-property-overrides': null, // 1 error
     },
