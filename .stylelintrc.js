@@ -9,8 +9,8 @@ module.exports = {
     ],
     rules: {
         'at-rule-empty-line-before': null,
-        'block-closing-brace-newline-before': null,
-        'declaration-block-trailing-semicolon': null, // bad formatting with "each()"
+        'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
+        'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         'declaration-empty-line-before': null,
         indentation: 4,
         'max-line-length': null,
