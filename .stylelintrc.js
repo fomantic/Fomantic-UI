@@ -19,7 +19,6 @@ module.exports = {
         // TODO
         'no-descending-specificity': null, // 11541 errors
         'string-quotes': null, // 1676 errors
-        'block-closing-brace-space-before': null, // 1111 errors
         'at-rule-no-unknown': null, // 1081 errors
         'property-case': null, // 866 errors
         'at-rule-name-case': null, // 764 errors
