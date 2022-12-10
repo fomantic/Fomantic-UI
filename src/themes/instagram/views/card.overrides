@@ -7,6 +7,6 @@
 
 .ui.cards > .card,
 .ui.card {
-  font-family: 'Montserrat';
-  font-size-adjust: 0.5;
+    font-family: 'Montserrat';
+    font-size-adjust: 0.5;
 }

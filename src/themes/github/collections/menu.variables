@@ -55,7 +55,7 @@
 
 @invertedBackground: @black linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.0));
 @invertedBoxShadow             :
-  0px 1px 2px 0px rgba(0, 0, 0, 0.15),
+    0px 1px 2px 0px rgba(0, 0, 0, 0.15),
   0px 0px 0px 1px rgba(255, 255, 255, 0.15)
 ;
 @secondaryVerticalPadding: 0.75em;

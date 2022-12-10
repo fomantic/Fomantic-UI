@@ -36,7 +36,7 @@
 @inputBorderRadius: @absoluteBorderRadius;
 @inputColor: @textColor;
 @inputTransition:
-  color @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
   border-color @defaultDuration @defaultEasing
 ;
 @inputBoxShadow: 0 0 0 0 transparent inset;

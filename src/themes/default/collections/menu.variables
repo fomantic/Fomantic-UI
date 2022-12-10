@@ -25,7 +25,7 @@
 @itemHorizontalPadding: @relativeLarge;
 @itemTextTransform: none;
 @itemTransition:
-  background @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing,
   box-shadow @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing
 ;
@@ -441,7 +441,7 @@
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
-  @boxShadow,
+    @boxShadow,
   @attachedBoxShadow
 ;
 

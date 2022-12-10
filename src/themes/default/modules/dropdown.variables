@@ -7,7 +7,7 @@
 --------------------*/
 
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
   width @defaultDuration @defaultEasing
 ;
 @borderRadius: @defaultBorderRadius;

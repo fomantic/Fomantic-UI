@@ -13,7 +13,7 @@
 @promptBorderRadius: @circularRadius;
 @promptColor: @textColor;
 @promptTransition:
-  background-color @defaultDuration @defaultEasing,
+    background-color @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing,
   box-shadow @defaultDuration @defaultEasing,
   border-color @defaultDuration @defaultEasing
@@ -134,7 +134,7 @@
 
 @selectionCloseTop: 0;
 @selectionCloseTransition:
-  color @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
   opacity @defaultDuration @defaultEasing
 ;
 @selectionCloseRight: 0;
@@ -150,7 +150,7 @@
 @categoryBoxShadow: none;
 @categoryDivider: 1px solid @internalBorderColor;
 @categoryTransition:
-  background @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing,
   border-color @defaultDuration @defaultEasing
 ;
 

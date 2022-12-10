@@ -145,19 +145,19 @@ i.icon.zoom.out::before { content: '\e751'; } /* '' */
 
 /* dropdown arrows are to the right */
 i.dropdown.icon {
-  margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em;
 }
 
 /* stars are usually consecutive */
 i.icon.star {
-  width: auto;
-  margin: 0em;
+    width: auto;
+    margin: 0em;
 }
 
 /* left side basic.icons */
 i.icon.left {
-  width: auto;
-  margin: 0em 0.5em 0em 0em;
+    width: auto;
+    margin: 0em 0.5em 0em 0em;
 }
 
 /* right side basic.icons */
@@ -165,8 +165,8 @@ i.icon.search,
 i.icon.up,
 i.icon.down,
 i.icon.right {
-  width: auto;
-  margin: 0em 0em 0em 0.5em;
+    width: auto;
+    margin: 0em 0em 0em 0.5em;
 }
 
 /*--------------

@@ -25,7 +25,7 @@
 @barTransitionEasing: @defaultEasing;
 @barTransitionDuration: @defaultDuration;
 @barTransition:
-  width @barTransitionDuration @barTransitionEasing,
+    width @barTransitionDuration @barTransitionEasing,
   background-color @barTransitionDuration @barTransitionEasing
 ;
 @barInitialWidth: 0;

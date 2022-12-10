@@ -22,13 +22,13 @@
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
 @boxShadow:
-  @shadowBoxShadow,
+    @shadowBoxShadow,
   @borderShadow
 ;
 @border: none;
 @zIndex: '';
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
   transform @defaultDuration @defaultEasing
 ;
 
@@ -169,7 +169,7 @@
 
 @shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
 @linkHoverBoxShadow:
-  @shadowHoverBoxShadow,
+    @shadowHoverBoxShadow,
   @borderShadow
 ;
 
@@ -180,20 +180,20 @@
 
 /* Raised */
 @raisedShadow:
-  @borderShadow,
+    @borderShadow,
   @floatingShadow
 ;
 @raisedShadowHover:
-  @borderShadow,
+    @borderShadow,
   @floatingShadowHover
 ;
 
 /* Basic Raised */
 @basicRaisedShadow:
-  @floatingShadow
+    @floatingShadow
 ;
 @basicRaisedShadowHover:
-  @floatingShadowHover
+    @floatingShadowHover
 ;
 
 /* Card Count */
@@ -259,6 +259,6 @@
 @invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
-  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
   0 0 0 @borderWidth @solidWhiteBorderColor
 ;

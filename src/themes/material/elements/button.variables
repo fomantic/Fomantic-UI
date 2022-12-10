@@ -28,7 +28,7 @@
 @shadowBoxShadow: 0px 0px 0px 0px transparent;
 
 @transition:
-  opacity 0.3s @defaultEasing,
+    opacity 0.3s @defaultEasing,
   background-color 0.3s @defaultEasing,
   color 0.3s @defaultEasing,
   box-shadow 0.3s @defaultEasing,
@@ -40,7 +40,7 @@
 
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
-  @borderBoxShadow,
+    @borderBoxShadow,
   0px 2px 3px 0px rgba(0, 0, 0, 0.2) !important
 ;
 

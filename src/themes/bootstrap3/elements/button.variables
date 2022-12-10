@@ -38,7 +38,7 @@
 @basicActiveBackground: transparent;
 @basicHoverBackground: transparent;
 @basicDownBoxShadow:
-  0px 0px 0px 1px #ADADAD inset,
+    0px 0px 0px 1px #ADADAD inset,
   0 3px 5px rgba(0, 0, 0, 0.125) inset
 ;
 
@@ -49,12 +49,12 @@
 
 @hoverBackgroundColor: #E6E6E6;
 @hoverBoxShadow:
-  0px 0px 0px 1px #ADADAD inset
+    0px 0px 0px 1px #ADADAD inset
 ;
 
 @downBackgroundColor: #E6E6E6;
 @downBoxShadow:
-  0px 0px 0px 1px #ADADAD inset,
+    0px 0px 0px 1px #ADADAD inset,
   0 3px 5px rgba(0, 0, 0, 0.125) inset
 ;
 

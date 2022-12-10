@@ -24,7 +24,7 @@
 @horizontalPadding: 2em;
 
 @transition:
-  background-color @defaultDuration @defaultEasing,
+    background-color @defaultDuration @defaultEasing,
   opacity @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing,
   box-shadow @defaultDuration @defaultEasing

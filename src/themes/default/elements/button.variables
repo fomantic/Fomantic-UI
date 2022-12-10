@@ -39,7 +39,7 @@
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
 @boxShadow:
-  @borderBoxShadow,
+    @borderBoxShadow,
   @shadowBoxShadow
 ;
 
@@ -58,7 +58,7 @@
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
 
 @transition:
-  opacity @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
   background-color @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing,
   box-shadow @defaultDuration @defaultEasing,
@@ -106,7 +106,7 @@
 @downBackgroundImage: '';
 @downPressedShadow: none;
 @downBoxShadow:
-  @borderBoxShadow,
+    @borderBoxShadow,
   @downPressedShadow
 ;
 @downColor: @pressedTextColor;
@@ -127,7 +127,7 @@
 @loadingOpacity: 1;
 @loadingPointerEvents: auto;
 @loadingTransition:
-  all 0s linear,
+    all 0s linear,
   opacity @defaultDuration @defaultEasing
 ;
 
@@ -208,7 +208,7 @@
 @basicHoverBackground: #FFFFFF;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
-  0 0 0 @basicBorderSize @selectedBorderColor inset,
+    0 0 0 @basicBorderSize @selectedBorderColor inset,
   0 0 0 0 @borderColor inset
 ;
 /* Basic Focus */
@@ -220,7 +220,7 @@
 @basicDownBackground: #F8F8F8;
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
-  0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
+    0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
   0 1px 4px 0 @borderColor inset
 ;
 /* Basic Active */

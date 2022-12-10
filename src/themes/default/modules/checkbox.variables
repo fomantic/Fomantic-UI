@@ -15,7 +15,7 @@
 @checkboxBorder: 1px solid @solidBorderColor;
 @checkboxBorderRadius: @3px;
 @checkboxTransition:
-  border @defaultDuration @defaultEasing,
+    border @defaultDuration @defaultEasing,
   opacity @defaultDuration @defaultEasing,
   transform @defaultDuration @defaultEasing,
   box-shadow @defaultDuration @defaultEasing
@@ -105,7 +105,7 @@
 /* Slider & Toggle Handle */
 @handleBackground: @white @subtleGradient;
 @handleBoxShadow:
-  @subtleShadow,
+    @subtleShadow,
   0 0 0 1px @borderColor inset
 ;
 
@@ -157,11 +157,11 @@
 @toggleHandleRadius: @circularRadius;
 @toggleHandleOffset: 0;
 @toggleHandleTransition:
-  background @toggleTransitionDuration @defaultEasing,
+    background @toggleTransitionDuration @defaultEasing,
   left @toggleTransitionDuration @defaultEasing
 ;
 @toggleHandleTransitionRightAligned:
-  background @toggleTransitionDuration @defaultEasing,
+    background @toggleTransitionDuration @defaultEasing,
   right @toggleTransitionDuration @defaultEasing
 ;
 

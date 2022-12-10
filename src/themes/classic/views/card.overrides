@@ -15,7 +15,7 @@
 @padding: 0em;
 @width: 300px;
 @boxShadow:
-  0px 0px 0px 1px @borderColor,
+    0px 0px 0px 1px @borderColor,
   0px 3px 0px 0px @borderColor
 ;
 @border: none;
@@ -85,7 +85,7 @@
 @hoverZIndex: 5;
 @hoverBorder: none;
 @hoverBoxShadow:
-  0px 0px 0px 1px @selectedBorderColor,
+    0px 0px 0px 1px @selectedBorderColor,
   0px 3px 0px 0px @selectedBorderColor
 ;
 

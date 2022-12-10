@@ -14,7 +14,7 @@
 @animatingZIndex: 100;
 
 @transition:
-  transform @duration @easing,
+    transform @duration @easing,
   left @duration @easing,
   width @duration @easing,
   height @duration @easing

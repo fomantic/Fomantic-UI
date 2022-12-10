@@ -10,7 +10,7 @@
 @iconWidth: 1.25em;
 @iconHeight: auto;
 @iconTransition:
-  opacity @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
   background @defaultDuration @defaultEasing,
   text-shadow @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing

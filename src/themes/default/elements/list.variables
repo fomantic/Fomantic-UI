@@ -107,7 +107,7 @@
 @linkListItemDownColor: @pressedTextColor;
 @linkListItemActiveColor: @selectedTextColor;
 @linkListTransition:
-  @defaultDuration color @defaultEasing
+    @defaultDuration color @defaultEasing
 ;
 
 /* Inverted Link List */
@@ -122,7 +122,7 @@
 @selectionListItemVerticalPadding: 0.5em;
 @selectionListItemHorizontalPadding: 0.5em;
 @selectionListTransition:
-  @defaultDuration color @defaultEasing,
+    @defaultDuration color @defaultEasing,
   @defaultDuration padding-left @defaultEasing,
   @defaultDuration background-color @defaultEasing
 ;
@@ -151,7 +151,7 @@
 @animatedDuration: 0.25s;
 @animatedDelay: 0.1s;
 @animatedListTransition:
-  @animatedDuration color @defaultEasing @animatedDelay,
+    @animatedDuration color @defaultEasing @animatedDelay,
   @animatedDuration padding-left @defaultEasing @animatedDelay,
   @animatedDuration background-color @defaultEasing @animatedDelay
 ;

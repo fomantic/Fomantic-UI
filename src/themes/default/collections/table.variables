@@ -13,7 +13,7 @@
 @borderSpacing: 0;
 @borderRadius: @defaultBorderRadius;
 @transition:
-  background @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing,
   color @defaultDuration @defaultEasing
 ;
 @background: @white;
@@ -169,7 +169,7 @@
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
-  @boxShadow,
+    @boxShadow,
   @attachedBoxShadow
 ;
 
