@@ -27,7 +27,6 @@ module.exports = {
         'comment-whitespace-inside': null, // 635 errors
         'no-duplicate-selectors': null, // 224 errors
         'selector-not-notation': null, // 169 errors
-        'indentation': null, // 152 errors
         'max-empty-lines': null, // 129 errors
         'selector-list-comma-newline-after': null, // 105 errors
         'no-invalid-position-at-import-rule': null, // 104 errors

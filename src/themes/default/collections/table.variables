@@ -14,7 +14,7 @@
 @borderRadius: @defaultBorderRadius;
 @transition:
     background @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
+    color @defaultDuration @defaultEasing
 ;
 @background: @white;
 @color: @textColor;
@@ -170,7 +170,7 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
     @boxShadow,
-  @attachedBoxShadow
+    @attachedBoxShadow
 ;
 
 /* Striped */

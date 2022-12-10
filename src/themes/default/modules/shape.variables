@@ -15,9 +15,9 @@
 
 @transition:
     transform @duration @easing,
-  left @duration @easing,
-  width @duration @easing,
-  height @duration @easing
+    left @duration @easing,
+    width @duration @easing,
+    height @duration @easing
 ;
 @sideTransition: opacity @duration @easing;
 @backfaceVisibility: hidden;

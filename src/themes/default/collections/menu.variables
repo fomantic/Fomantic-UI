@@ -26,8 +26,8 @@
 @itemTextTransform: none;
 @itemTransition:
     background @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
+    box-shadow @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing
 ;
 @itemFontWeight: @normal;
 @itemTextColor: @textColor;
@@ -442,7 +442,7 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
     @boxShadow,
-  @attachedBoxShadow
+    @attachedBoxShadow
 ;
 
 /* Resize large sizes */

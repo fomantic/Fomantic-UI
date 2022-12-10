@@ -24,7 +24,7 @@
 @iconSize: 6rem;
 @iconTransition:
     opacity @transitionDuration @transitionEasing,
-  color @transitionDuration @transitionEasing
+    color @transitionDuration @transitionEasing
 ;
 @iconColor: @white;
 @iconShadow:

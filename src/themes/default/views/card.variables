@@ -23,13 +23,13 @@
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
 @boxShadow:
     @shadowBoxShadow,
-  @borderShadow
+    @borderShadow
 ;
 @border: none;
 @zIndex: '';
 @transition:
     box-shadow @defaultDuration @defaultEasing,
-  transform @defaultDuration @defaultEasing
+    transform @defaultDuration @defaultEasing
 ;
 
 /* Card Group */
@@ -170,7 +170,7 @@
 @shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
 @linkHoverBoxShadow:
     @shadowHoverBoxShadow,
-  @borderShadow
+    @borderShadow
 ;
 
 /* Horizontal */
@@ -181,11 +181,11 @@
 /* Raised */
 @raisedShadow:
     @borderShadow,
-  @floatingShadow
+    @floatingShadow
 ;
 @raisedShadowHover:
     @borderShadow,
-  @floatingShadowHover
+    @floatingShadowHover
 ;
 
 /* Basic Raised */
@@ -260,5 +260,5 @@
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
     0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-  0 0 0 @borderWidth @solidWhiteBorderColor
+    0 0 0 @borderWidth @solidWhiteBorderColor
 ;

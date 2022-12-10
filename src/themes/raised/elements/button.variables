@@ -20,8 +20,8 @@
 /* transition box shadow as well */
 @transition:
     opacity @defaultDuration @defaultEasing,
-  background-color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing
+    background-color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing
 ;

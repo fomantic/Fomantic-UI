@@ -109,7 +109,7 @@
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
     @boxShadow,
-  @attachedBoxShadow
+    @attachedBoxShadow
 ;
 
 /* Inverted */
@@ -137,20 +137,20 @@
 @secondaryInvertedLightness: 0.2;
 @secondaryInvertedBackground:
     lighten(@black, (@secondaryInvertedLightness * 100))
-  linear-gradient(
-    rgba(255, 255, 255, @secondaryInvertedLightness) 0,
-    rgba(255, 255, 255, @secondaryInvertedLightness) 100%
-  )
+    linear-gradient(
+        rgba(255, 255, 255, @secondaryInvertedLightness) 0,
+        rgba(255, 255, 255, @secondaryInvertedLightness) 100%
+    )
 ;
 @secondaryInvertedColor: @invertedMutedTextColor;
 
 @tertiaryInvertedLightness: 0.35;
 @tertiaryInvertedBackground:
     lighten(@black, (@tertiaryInvertedLightness * 100))
-  linear-gradient(
-    rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
-    rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
-  )
+    linear-gradient(
+        rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
+        rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
+    )
 ;
 @tertiaryInvertedColor: @invertedMutedTextColor;
 

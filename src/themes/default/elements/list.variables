@@ -123,8 +123,8 @@
 @selectionListItemHorizontalPadding: 0.5em;
 @selectionListTransition:
     @defaultDuration color @defaultEasing,
-  @defaultDuration padding-left @defaultEasing,
-  @defaultDuration background-color @defaultEasing
+    @defaultDuration padding-left @defaultEasing,
+    @defaultDuration background-color @defaultEasing
 ;
 
 /* Selection List States */
@@ -152,8 +152,8 @@
 @animatedDelay: 0.1s;
 @animatedListTransition:
     @animatedDuration color @defaultEasing @animatedDelay,
-  @animatedDuration padding-left @defaultEasing @animatedDelay,
-  @animatedDuration background-color @defaultEasing @animatedDelay
+    @animatedDuration padding-left @defaultEasing @animatedDelay,
+    @animatedDuration background-color @defaultEasing @animatedDelay
 ;
 @animatedListIndent: 1em;
 
