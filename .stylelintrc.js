@@ -10,6 +10,7 @@ module.exports = {
     rules: {
         'at-rule-empty-line-before': null,
         'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
+        'color-function-notation': 'legacy',
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed
         'max-line-length': null,
@@ -31,9 +32,7 @@ module.exports = {
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
         'number-leading-zero': null, // 49 errors
-        'color-function-notation': null, // 32 errors
         'alpha-value-notation': null, // 32 errors
-        'color-hex-case': null, // 32 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
@@ -42,7 +41,6 @@ module.exports = {
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-keyword-case': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
-        'color-hex-length': null, // 9 errors
         'no-empty-source': null, // 8 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
         'number-max-precision': null, // 7 errors

@@ -1006,13 +1006,13 @@
     /* Glow */
     @keyframes glow {
         0% {
-            background-color: #FCFCFD;
+            background-color: #fcfcfd;
         }
         30% {
-            background-color: #FFF6CD;
+            background-color: #fff6cd;
         }
         100% {
-            background-color: #FCFCFD;
+            background-color: #fcfcfd;
         }
     }
 }
