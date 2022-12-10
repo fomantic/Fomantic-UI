@@ -10,13 +10,16 @@ module.exports = {
     rules: {
         'at-rule-empty-line-before': null,
         'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
-        'color-function-notation': 'legacy',
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
         indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed
         'max-line-length': null,
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
         'rule-empty-line-before': null,
+
+        // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
+        'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
+        'color-function-notation': 'legacy', // https://caniuse.com/mdn-css_types_color_rgba_space_separated_parameters
 
         // TODO
         'string-quotes': null, // 1676 errors
@@ -32,7 +35,6 @@ module.exports = {
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
         'number-leading-zero': null, // 49 errors
-        'alpha-value-notation': null, // 32 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
