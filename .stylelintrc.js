@@ -14,11 +14,11 @@ module.exports = {
         'declaration-empty-line-before': null,
         indentation: 4,
         'max-line-length': null,
+        'no-descending-specificity': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
         'rule-empty-line-before': null,
 
         // TODO
-        'no-descending-specificity': null, // 11541 errors
         'string-quotes': null, // 1676 errors
         'at-rule-no-unknown': null, // 1081 errors
         'property-case': null, // 866 errors
