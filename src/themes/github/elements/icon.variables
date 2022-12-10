@@ -11,11 +11,11 @@
         text-transform: none;
     };
 };
-@icon-deprecated-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
+@icon-deprecated-map: {};
 @icon-outline-map: {};
-@icon-outline-aliases-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
+@icon-outline-aliases-map: {};
 @icon-brand-map: {};
-@icon-brand-aliases-map: {}; // stylelint-disable-line indentation, block-closing-brace-newline-after
+@icon-brand-aliases-map: {};
 
 @width: 1em;
 @height: 1em;

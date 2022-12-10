@@ -3572,7 +3572,7 @@
     1f1e6: regional_indicator_a;
 };
 
-@size-map: { // stylelint-disable-line indentation
+@size-map: {
     small: 1;
     medium: 2;
     large: 4;

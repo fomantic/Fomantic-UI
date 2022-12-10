@@ -54,7 +54,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
         text-decoration: inherit;
         text-transform : none;
     };
-    @outline: { // stylelint-disable-line indentation
+    @outline: {
         font-family: @outlineFontName;
         src: url("@{fontPath}/@{outlineFontName}.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{outlineFontName}.woff") format('woff'));
@@ -65,7 +65,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
         text-decoration: inherit;
         text-transform : none;
     };
-    @brand: { // stylelint-disable-line indentation
+    @brand: {
         font-family: @brandFontName;
         src: url("@{fontPath}/@{brandFontName}.woff2") format('woff2')
             if(@supportIE, e(',') url("@{fontPath}/@{brandFontName}.woff") format('woff'));
@@ -1096,7 +1096,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     yin_yang: \f6ad;
 };
 
-    @icon-aliases-map: { // stylelint-disable-line indentation
+    @icon-aliases-map: {
     add: \f067;
     add_circle: \f055;
     add_square: \f0fe;
@@ -1388,7 +1388,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     zoom_out: \f010;
 };
 
-@icon-outline-map: { // stylelint-disable-line indentation
+@icon-outline-map: {
     address_book_outline: \f2b9;
     address_card_outline: \f2bb;
     angry_outline: \f556;
@@ -1541,15 +1541,15 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     window_minimize_outline: \f2d1;
     window_restore_outline: \f2d2;
 };
-@icon-outline-aliases-map: { // stylelint-disable-line indentation
+@icon-outline-aliases-map: {
 };
 
-@icon-thin-map: { // stylelint-disable-line indentation
+@icon-thin-map: {
 };
-@icon-thin-aliases-map: { // stylelint-disable-line indentation
+@icon-thin-aliases-map: {
 };
 
-@icon-brand-map: { // stylelint-disable-line indentation
+@icon-brand-map: {
     500px: \f26e;
     accessible: \f368;
     accusoft: \f369;
@@ -2007,7 +2007,7 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     youtube_square: \f431;
     zhihu: \f63f;
 };
-@icon-brand-aliases-map: { // stylelint-disable-line indentation
+@icon-brand-aliases-map: {
     american_express: \f1f3;
     american_express_card: \f1f3;
     amex: \f1f3;
@@ -2062,13 +2062,13 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
     youtube_play: \f167;
 };
 
-@icon-duotone-map: { // stylelint-disable-line indentation
+@icon-duotone-map: {
 };
-@icon-duotone-secondary-map: { // stylelint-disable-line indentation
+@icon-duotone-secondary-map: {
 };
-@icon-duotone-aliases-map: { // stylelint-disable-line indentation
+@icon-duotone-aliases-map: {
 };
-@icon-duotone-secondary-aliases-map: { // stylelint-disable-line indentation
+@icon-duotone-secondary-aliases-map: {
 };
 
 /* --------------

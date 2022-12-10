@@ -11,7 +11,7 @@ module.exports = {
         'at-rule-empty-line-before': null,
         'block-closing-brace-newline-before': null, // fix bad formatting with "each()"
         'declaration-block-trailing-semicolon': null, // fix bad formatting with "each()"
-        indentation: 4,
+        indentation: null, // TODO change to "4" once https://github.com/fomantic/Fomantic-UI/pull/2593#discussion_r1045131096 is fixed
         'max-line-length': null,
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
