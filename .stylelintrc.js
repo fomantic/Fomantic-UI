@@ -15,6 +15,7 @@ module.exports = {
         'max-line-length': null,
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
+        'number-max-precision': 5,
         'rule-empty-line-before': null,
 
         // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
@@ -43,7 +44,6 @@ module.exports = {
         'value-no-vendor-prefix': null, // 9 errors
         'no-empty-source': null, // 8 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
-        'number-max-precision': null, // 7 errors
         'selector-attribute-quotes': null, // 7 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
         'function-url-quotes': null, // 5 errors
