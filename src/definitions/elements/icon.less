@@ -33,18 +33,14 @@
 i.icon {
     display: inline-block;
     opacity: @opacity;
-
     margin: 0 @distanceFromText 0 0;
-
     width: @width;
     height: @height;
-
     font-family: @fontName;
     font-style: normal;
     font-weight: @normal;
     text-decoration: inherit;
     text-align: center;
-
     speak: none;
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
@@ -137,10 +133,8 @@ i.emphasized.icons:not(.disabled) {
     i.circular.icon {
         border-radius: 500em !important;
         line-height: 1 !important;
-
         padding: @circularPadding !important;
         box-shadow: @circularShadow;
-
         width: @circularSize !important;
         height: @circularSize !important;
         &.colored when (@variationIconColored) {
@@ -286,7 +280,6 @@ i.emphasized.icons:not(.disabled) {
     i.bordered.icon {
         line-height: 1;
         vertical-align: baseline;
-
         width: @borderedSize;
         height: @borderedSize;
         padding: @borderedVerticalPadding @borderedHorizontalPadding !important;
@@ -633,7 +626,6 @@ and ((@variationIconBordered) or (@variationIconCircular)) {
         top: 50%;
         transform: translateY(-50%);
         text-align: center;
-
         color: @duotoneSecondaryColor;
         opacity: @duotoneSecondaryOpacity;
     }

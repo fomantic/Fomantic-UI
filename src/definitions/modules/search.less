@@ -30,15 +30,12 @@
     outline: none;
     -webkit-appearance: none;
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-
     text-shadow: none;
     font-style: normal;
     font-weight: @normal;
-
     line-height: @promptLineHeight;
     padding: @promptPadding;
     font-size: @promptFontSize;
-
     background: @promptBackground;
     border: @promptBorder;
     color: @promptColor;
@@ -64,7 +61,6 @@
 
 .ui.search > .results {
     display: none;
-
     position: absolute;
     top: 100%;
     left: 0;
@@ -72,12 +68,9 @@
     white-space: normal;
     text-align: left;
     text-transform: none;
-
     background: @resultsBackground;
-
     margin-top: @resultsDistance;
     width: @resultsWidth;
-
     border-radius: @resultsBorderRadius;
     box-shadow: @resultsBoxShadow;
     border: @resultsBorder;
@@ -202,11 +195,9 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         border-radius: @circularRadius;
         border: @loaderLineWidth solid @loaderFillColor;
     }
@@ -215,15 +206,12 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         animation: loader @loaderSpeed infinite linear;
         border: @loaderLineWidth solid @loaderLineColor;
         border-radius: @circularRadius;
-
         box-shadow: 0 0 0 1px transparent;
     }
 }

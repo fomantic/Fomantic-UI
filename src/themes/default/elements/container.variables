@@ -2,9 +2,9 @@
             Container
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Minimum Gutter is used to determine  the maximum container width for a given device */
 
@@ -51,10 +51,9 @@
 @computerVeryRelaxedGridWidth: e(%("calc(%d + %d)", @computerWidth, @veryRelaxedGridGutterWidth));
 @largeMonitorVeryRelaxedGridWidth: e(%("calc(%d + %d)", @largeMonitorWidth, @veryRelaxedGridGutterWidth));
 
-
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Text */
 @textWidth: 700px;

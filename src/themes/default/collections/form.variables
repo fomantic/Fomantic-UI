@@ -2,9 +2,9 @@
              Form
 *******************************/
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
+-------------------- */
 
 /* Form */
 @gutterWidth: 1em;
@@ -36,8 +36,8 @@
 @inputBorderRadius: @absoluteBorderRadius;
 @inputColor: @textColor;
 @inputTransition:
-  color @defaultDuration @defaultEasing,
-  border-color @defaultDuration @defaultEasing
+    color @defaultDuration @defaultEasing,
+    border-color @defaultDuration @defaultEasing
 ;
 @inputBoxShadow: 0 0 0 0 transparent inset;
 
@@ -79,9 +79,9 @@
 @inlinePromptMargin: -0.25em 0 -0.5em 0.5em;
 @inlinePromptBorderWidth: 1px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Focus */
 @inputFocusPointerSize: 0;
@@ -115,9 +115,9 @@
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Required */
 @requiredContent: '*';
@@ -134,9 +134,9 @@
 @invertedLabelColor: @invertedTextColor;
 @invertedInputBoxShadow: none;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Grouped Fields */
 @groupedMargin: @fieldMargin;
@@ -167,8 +167,8 @@
 @groupedInlineLabelMargin: 0.035714em 1em 0 0;
 @groupedInlineCheckboxBottomMargin: 0.4em;
 
-/*-------------------
+/* -------------------
        Groups
---------------------*/
+-------------------- */
 
 @inlineFieldsMargin: 0 1em 0 0;

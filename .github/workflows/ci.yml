@@ -12,7 +12,7 @@ jobs:
     - uses: actions/setup-node@v3
     - name: Install dependencies
       run: yarn
-    - name: Lint JS files
+    - name: Lint JS and CSS/LESS files
       run: npm run lint
   test:
     name: Test build process on node ${{ matrix.node-version }}

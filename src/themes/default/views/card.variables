@@ -2,9 +2,9 @@
              Card
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Shadow */
 @shadowDistance: 1px;
@@ -22,14 +22,14 @@
 @borderWidth: 1px;
 @borderShadow: 0 0 0 @borderWidth @solidBorderColor;
 @boxShadow:
-  @shadowBoxShadow,
-  @borderShadow
+    @shadowBoxShadow,
+    @borderShadow
 ;
 @border: none;
 @zIndex: '';
 @transition:
-  box-shadow @defaultDuration @defaultEasing,
-  transform @defaultDuration @defaultEasing
+    box-shadow @defaultDuration @defaultEasing,
+    transform @defaultDuration @defaultEasing
 ;
 
 /* Card Group */
@@ -46,10 +46,9 @@
 /* Consecutive Cards */
 @consecutiveGroupDistance: (@rowSpacing / 2);
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
-
+-------------------- */
 
 /* Image */
 @imageBackground: @transparentBlack;
@@ -67,7 +66,6 @@
 @contentBorderRadius: 0;
 @contentBoxShadow: none;
 @contentBorder: none;
-
 
 /* Header */
 @headerMargin: '';
@@ -156,9 +154,9 @@
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Link */
 @linkHoverBackground: @white;
@@ -169,8 +167,8 @@
 
 @shadowHoverBoxShadow: 0 @shadowDistance @linkHoverRaiseDistance 0 @solidSelectedBorderColor;
 @linkHoverBoxShadow:
-  @shadowHoverBoxShadow,
-  @borderShadow
+    @shadowHoverBoxShadow,
+    @borderShadow
 ;
 
 /* Horizontal */
@@ -180,20 +178,20 @@
 
 /* Raised */
 @raisedShadow:
-  @borderShadow,
-  @floatingShadow
+    @borderShadow,
+    @floatingShadow
 ;
 @raisedShadowHover:
-  @borderShadow,
-  @floatingShadowHover
+    @borderShadow,
+    @floatingShadowHover
 ;
 
 /* Basic Raised */
 @basicRaisedShadow:
-  @floatingShadow
+    @floatingShadow
 ;
 @basicRaisedShadowHover:
-  @floatingShadowHover
+    @floatingShadowHover
 ;
 
 /* Card Count */
@@ -259,6 +257,6 @@
 @invertedExtraDivider: 1px solid rgba(255, 255, 255, 0.15);
 @invertedLinkHoverBackground: @black;
 @invertedBoxShadow:
-  0 @shadowDistance 3px 0 @solidWhiteBorderColor,
-  0 0 0 @borderWidth @solidWhiteBorderColor
+    0 @shadowDistance 3px 0 @solidWhiteBorderColor,
+    0 0 0 @borderWidth @solidWhiteBorderColor
 ;
