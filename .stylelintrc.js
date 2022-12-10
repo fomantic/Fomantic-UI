@@ -59,7 +59,6 @@ module.exports = {
         'declaration-block-semicolon-space-before': null, // 2 errors
         'function-linear-gradient-no-nonstandard-direction': null, // 1 error
         'function-comma-space-before': null, // 1 error
-        'media-feature-colon-space-before': null, // 1 error
         'block-closing-brace-empty-line-before': null, // 1 error
         'at-rule-no-vendor-prefix': null, // 1 error
         'declaration-block-no-shorthand-property-overrides': null, // 1 error
