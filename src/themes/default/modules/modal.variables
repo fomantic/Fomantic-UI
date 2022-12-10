@@ -8,8 +8,8 @@
 @borderRadius: @defaultBorderRadius;
 @transformOrigin: 50% 25%;
 @boxShadow:
-  1px 3px 3px 0 rgba(0, 0, 0, 0.2),
-  1px 3px 15px 2px rgba(0, 0, 0, 0.2)
+    1px 3px 3px 0 rgba(0, 0, 0, 0.2),
+    1px 3px 15px 2px rgba(0, 0, 0, 0.2)
 ;
 
 /* Close Icon */
@@ -25,10 +25,10 @@
 @closeTop: -(@closeDistance + @closeHitbox);
 @closeRight: -(@closeDistance + @closeHitbox);
 @closeShadow:
-  -1px -1px 2px rgba(0, 0, 0, 0.3),
-  1px -1px 2px rgba(0, 0, 0, 0.3),
-  -1px 2px 2px rgba(0, 0, 0, 0.3),
-  1px 2px 2px rgba(0, 0, 0, 0.3)
+    -1px -1px 2px rgba(0, 0, 0, 0.3),
+    1px -1px 2px rgba(0, 0, 0, 0.3),
+    -1px 2px 2px rgba(0, 0, 0, 0.3),
+    1px 2px 2px rgba(0, 0, 0, 0.3)
 ;
 
 /* Header */
@@ -106,15 +106,15 @@
 /* Coupling */
 @invertedBoxShadow: 1px 3px 10px 2px rgba(0, 0, 0, 0.2);
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @loadingZIndex: -1;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Basic */
 @basicModalHeaderColor: @white;
@@ -141,9 +141,9 @@
 @overlayFullscreenScrollingContentMaxHeight: calc(100vh - 9.1rem);
 @overlayFullscreenScrollingContentMaxHeightMobile: calc(100vh - 8.1rem);
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Size Widths */
 @miniRatio: 0.4;
@@ -246,9 +246,9 @@
 @massiveLargeMonitorMargin: 0 0 0 0;
 @massiveWidescreenMonitorMargin: 0 0 0 0;
 
-/*-------------------
+/* -------------------
       Inverted
---------------------*/
+-------------------- */
 @invertedBackground: @fullBlack;
 @invertedCloseColor: @white;
 @invertedHeaderColor: @white;
@@ -258,8 +258,8 @@
 @invertedActionColor: @white;
 @invertedDimmerCloseColor: rgba(0,0,0,.85);
 @invertedCloseShadow:
-  -1px -1px 2px rgba(255, 255, 255, 0.3),
-  1px -1px 2px rgba(255, 255, 255, 0.3),
-  -1px 2px 2px rgba(255, 255, 255, 0.3),
-  1px 2px 2px rgba(255, 255, 255, 0.3)
+    -1px -1px 2px rgba(255, 255, 255, 0.3),
+    1px -1px 2px rgba(255, 255, 255, 0.3),
+    -1px 2px 2px rgba(255, 255, 255, 0.3),
+    1px 2px 2px rgba(255, 255, 255, 0.3)
 ;

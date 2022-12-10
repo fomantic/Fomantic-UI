@@ -12,7 +12,7 @@
 
 @duration: 0.5s;
 @transition:
-  all @duration linear
+    all @duration linear
 ;
 @zIndex: 1000;
 @textAlign: center;
@@ -33,18 +33,17 @@
 /* Visible */
 @visibleOpacity: 1;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-/* Page Dimmer*/
+/* Page Dimmer */
 @transformStyle: '';
 @pageDimmerPosition: fixed;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @invertedBackgroundColor: rgba(255, 255, 255, 0.85);

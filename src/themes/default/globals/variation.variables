@@ -260,7 +260,6 @@
 @variationTextSizes: @variationAllSizes;
 @variationTextColors: @variationAllColors;
 
-
 /*******************************
            Collections
 *******************************/
@@ -387,7 +386,6 @@
 @variationTableSizes: @variationAllSizes;
 @variationTableColors: @variationAllColors;
 
-
 /*******************************
              Views
 *******************************/
@@ -481,7 +479,6 @@
 @variationStatisticFluid: true;
 @variationStatisticSizes: @variationAllSizes;
 @variationStatisticColors: @variationAllColors;
-
 
 /*******************************
             Modules

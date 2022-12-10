@@ -2,9 +2,9 @@
           Breadcrumb
 *******************************/
 
-/*-------------------
+/* -------------------
      Breadcrumb
---------------------*/
+-------------------- */
 
 @verticalMargin: 0;
 @display: inline-block;
@@ -31,8 +31,8 @@
 @invertedActiveColor: @white;
 @invertedDividerColor: @invertedLightTextColor;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @activeFontWeight: @bold;

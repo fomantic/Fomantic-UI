@@ -24,20 +24,15 @@
 .ui.button {
     cursor: pointer;
     display: inline-block;
-
     min-height: 1em;
-
     outline: none;
     border: none;
     vertical-align: @verticalAlign;
     background: @background;
     color: @textColor;
-
     font-family: @fontFamily;
-
     margin: 0 @horizontalMargin @verticalMargin 0;
     padding: @verticalPadding @horizontalPadding (@verticalPadding + @shadowOffset);
-
     text-transform: @textTransform;
     text-shadow: @textShadow;
     font-weight: @fontWeight;
@@ -45,14 +40,11 @@
     font-style: normal;
     text-align: center;
     text-decoration: none;
-
     border-radius: @borderRadius;
     box-shadow: @boxShadow;
-
     user-select: none;
     transition: @transition;
     will-change: @willChange;
-
     -webkit-tap-highlight-color: @tapColor;
 }
 
@@ -142,11 +134,9 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         border-radius: @circularRadius;
         border: @loaderLineWidth solid @invertedLoaderFillColor;
     }
@@ -155,17 +145,13 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         border-radius: @circularRadius;
-
         animation: loader @loaderSpeed infinite linear;
         border: @loaderLineWidth solid currentColor;
         color: @invertedLoaderLineColor;
-
         box-shadow: 0 0 0 1px transparent;
     }
     .ui.ui.ui.loading.button .label {
@@ -1018,7 +1004,6 @@
         text-align: center;
         animation: none;
         padding: @verticalPadding 0 @verticalPadding 0;
-
         margin: @labeledIconMargin;
         width: @labeledIconWidth;
         background-color: @labeledIconBackgroundColor;
@@ -1135,25 +1120,19 @@
         position: absolute;
         text-align: center;
         border-radius: @circularRadius;
-
         content: @orText;
         top: 50%;
         left: 50%;
         background-color: @orBackgroundColor;
         text-shadow: @orTextShadow;
-
         margin-top: @orVerticalOffset;
         margin-left: @orHorizontalOffset;
-
         width: @orCircleSize;
         height: @orCircleSize;
-
         line-height: @orLineHeight;
         color: @orTextColor;
-
         font-style: @orTextStyle;
         font-weight: @orTextWeight;
-
         box-shadow: @orBoxShadow;
     }
 
@@ -1199,7 +1178,6 @@
         display: inline-block;
         border-left: none;
         text-align: right;
-
         padding-right: @attachedHorizontalPadding;
         border-radius: @borderRadius 0 0 @borderRadius;
     }

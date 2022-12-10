@@ -2,9 +2,9 @@
              Step
 *******************************/
 
-/*-------------------
+/* -------------------
        Group
---------------------*/
+-------------------- */
 
 @stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
@@ -12,9 +12,9 @@
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
 
-/*-------------------
+/* -------------------
       Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 0;
 @horizontalMargin: 0;
@@ -24,10 +24,10 @@
 @horizontalPadding: 2em;
 
 @transition:
-  background-color @defaultDuration @defaultEasing,
-  opacity @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing
+    background-color @defaultDuration @defaultEasing,
+    opacity @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing
 ;
 @lineHeight: @relativeLarge;
 @alignItems: center;
@@ -57,7 +57,6 @@
 @descriptionFontWeight: @normal;
 @descriptionColor: @textColor;
 
-
 /* Arrow */
 @arrowBackgroundColor: @backgroundColor;
 @arrowTopOffset: 50%;
@@ -73,9 +72,9 @@
 /* Mobile */
 @mobileIconDistance: @iconDistance;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Vertical */
 @verticalDivider: @divider;
@@ -92,9 +91,9 @@
 @verticalActiveArrowDisplay: block;
 @verticalActiveLastArrowDisplay: block;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 @attachedHorizontalOffset: -@borderWidth;
 @attachedVerticalOffset: 0;
@@ -103,9 +102,9 @@
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 /* Completed */
 @completedColor: @positiveColor;
@@ -126,7 +125,6 @@
 /* Active + Hover */
 @activeHoverBackground: @lightGrey;
 @activeHoverColor: @textColor;
-
 
 /* Disabled */
 @disabledBackground: @background;
