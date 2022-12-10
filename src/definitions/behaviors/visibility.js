@@ -246,8 +246,8 @@
                     ;
                     while (imagesLength--) {
                         cacheImage = document.createElement('img');
-                        cacheImage.onload = handleLoad;
-                        cacheImage.onerror = handleLoad;
+                        cacheImage.addEventListener('load', handleLoad);
+                        cacheImage.addEventListener('error', handleLoad);
                         cacheImage.src = images[imagesLength];
                         cache.push(cacheImage);
                     }

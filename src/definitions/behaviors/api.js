@@ -157,11 +157,6 @@
                 },
                 write: {
                     cachedResponse: function (url, response) {
-                        if (response && response === '') {
-                            module.debug('Response empty, not caching', response);
-
-                            return;
-                        }
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 

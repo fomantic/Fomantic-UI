@@ -105,6 +105,7 @@ module.exports = {
         semi: ['error'],
         'no-extra-semi': ['error'],
         'no-trailing-spaces': ['error'],
+        'array-callback-return': ['error', { allowImplicit: true }],
     },
     reportUnusedDisableDirectives: true,
 };

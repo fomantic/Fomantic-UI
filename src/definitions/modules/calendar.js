@@ -885,7 +885,7 @@
                         var endDate = module.get.endDate();
                         if (!!endDate && !!date && date > endDate) {
                             // selected date is greater than end date in range, so clear end date
-                            module.set.endDate(undefined);
+                            module.set.endDate();
                         }
                         module.set.dataKeyValue(metadata.date, date);
 
@@ -1022,7 +1022,7 @@
                 },
 
                 clear: function () {
-                    module.set.date(undefined);
+                    module.set.date();
                 },
 
                 popup: function () {
@@ -1104,57 +1104,59 @@
                     },
                     isDisabled: function (date, mode) {
                         return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
+                            var blocked = false;
+
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
                             if (d instanceof Date) {
-                                return module.helper.dateEqual(date, d, mode);
-                            }
-                            if (d !== null && typeof d === 'object') {
+                                blocked = module.helper.dateEqual(date, d, mode);
+                            } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.year]) {
                                     if (typeof d[metadata.year] === 'number') {
-                                        return date.getFullYear() == d[metadata.year];
+                                        blocked = date.getFullYear() == d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
-                                        return d[metadata.year].indexOf(date.getFullYear()) > -1;
+                                        blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
-                                        return date.getMonth() == d[metadata.month];
+                                        blocked = date.getMonth() == d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
-                                        return d[metadata.month].indexOf(date.getMonth()) > -1;
+                                        blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
                                     } else if (d[metadata.month] instanceof Date) {
                                         var sdate = module.helper.sanitiseDate(d[metadata.month]);
 
-                                        return (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
+                                        blocked = (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
                                     }
                                 } else if (d[metadata.date] && mode === 'day') {
                                     if (d[metadata.date] instanceof Date) {
-                                        return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
+                                        blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                                     } else if (Array.isArray(d[metadata.date])) {
-                                        return d[metadata.date].some(function (idate) {
+                                        blocked = d[metadata.date].some(function (idate) {
                                             return module.helper.dateEqual(date, idate, mode);
                                         });
                                     }
                                 }
                             }
+
+                            return blocked;
                         })) || (mode === 'hour' && settings.disabledHours.some(function (d) {
+                            var blocked = false;
+
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
                             if (d instanceof Date) {
-                                return module.helper.dateEqual(date, d, mode);
+                                blocked = module.helper.dateEqual(date, d, mode);
                             } else if (typeof d === 'number') {
-                                return date.getHours() === d;
-                            }
-                            if (d !== null && typeof d === 'object') {
-                                var blocked = true;
-
+                                blocked = date.getHours() === d;
+                            } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.date]) {
                                     if (d[metadata.date] instanceof Date) {
                                         blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]));
                                     } else if (Array.isArray(d[metadata.date])) {
-                                        return d[metadata.date].some(function (idate) {
-                                            blocked = module.helper.dateEqual(date, idate, mode);
+                                        blocked = d[metadata.date].some(function (idate) {
+                                            return module.helper.dateEqual(date, idate, mode);
                                         });
                                     }
                                 }
@@ -1169,26 +1171,31 @@
 
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number') {
-                                        return blocked && date.getHours() == d[metadata.hours];
+                                        blocked = blocked && date.getHours() == d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
-                                        return blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
+                                        blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
                                     }
                                 }
                             }
+
+                            return blocked;
                         })));
                     },
                     isEnabled: function (date, mode) {
                         if (mode === 'day') {
                             return settings.enabledDates.length === 0 || settings.enabledDates.some(function (d) {
+                                var enabled = false;
+
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
                                 if (d instanceof Date) {
-                                    return module.helper.dateEqual(date, d, mode);
+                                    enabled = module.helper.dateEqual(date, d, mode);
+                                } else if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                                    enabled = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                                 }
-                                if (d !== null && typeof d === 'object' && d[metadata.date]) {
-                                    return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
-                                }
+
+                                return enabled;
                             });
                         } else {
                             return true;
@@ -1721,7 +1728,7 @@
                         }
                         for (j = 0; j < settings.text.months.length; j++) {
                             monthString = settings.text.months[j];
-                            monthString = monthString.substring(0, word.length).toLowerCase();
+                            monthString = monthString.slice(0, word.length).toLowerCase();
                             if (monthString === word) {
                                 month = j + 1;
 

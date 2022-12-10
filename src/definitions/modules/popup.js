@@ -1497,12 +1497,12 @@
                     html   = '',
                     escape = $.fn.popup.settings.templates.escape
                 ;
-                if (typeof text !== undefined) {
-                    if (typeof text.title !== undefined && text.title) {
+                if (text !== undefined) {
+                    if (text.title) {
                         text.title = escape(text.title);
                         html += '<div class="header">' + text.title + '</div>';
                     }
-                    if (typeof text.content !== undefined && text.content) {
+                    if (text.content) {
                         text.content = escape(text.content);
                         html += '<div class="content">' + text.content + '</div>';
                     }
