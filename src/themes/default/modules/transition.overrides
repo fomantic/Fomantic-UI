@@ -520,7 +520,8 @@
         20% {
             transform: scale3d(.9, .9, .9);
         }
-        50%, 55% {
+        50%,
+        55% {
             opacity: 1;
             transform: scale3d(1.1, 1.1, 1.1);
         }
@@ -533,7 +534,8 @@
         20% {
             transform: translate3d(0, 10px, 0);
         }
-        40%, 45% {
+        40%,
+        45% {
             opacity: 1;
             transform: translate3d(0, -20px, 0);
         }
@@ -546,7 +548,8 @@
         20% {
             transform: translate3d(0, -10px, 0);
         }
-        40%, 45% {
+        40%,
+        45% {
             opacity: 1;
             transform: translate3d(0, 20px, 0);
         }
@@ -879,10 +882,13 @@
 & when (@variationTransitionFlash) {
     /* Flash */
     @keyframes flash {
-        0%, 50%, 100% {
+        0%,
+        50%,
+        100% {
             opacity: 1;
         }
-        25%, 75% {
+        25%,
+        75% {
             opacity: 0;
         }
     }
@@ -890,13 +896,21 @@
 & when (@variationTransitionShake) {
     /* Shake */
     @keyframes shake {
-        0%, 100% {
+        0%,
+        100% {
             transform: translateX(0);
         }
-        10%, 30%, 50%, 70%, 90% {
+        10%,
+        30%,
+        50%,
+        70%,
+        90% {
             transform: translateX(-10px);
         }
-        20%, 40%, 60%, 80% {
+        20%,
+        40%,
+        60%,
+        80% {
             transform: translateX(10px);
         }
     }
@@ -904,7 +918,11 @@
 & when (@variationTransitionBounce) {
     /* Bounce */
     @keyframes bounce {
-        0%, 20%, 50%, 80%, 100% {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
             transform: translateY(0);
         }
         40% {
@@ -921,13 +939,19 @@
         0% {
             transform: scale(1);
         }
-        10%, 20% {
+        10%,
+        20% {
             transform: scale(0.9) rotate(-3deg);
         }
-        30%, 50%, 70%, 90% {
+        30%,
+        50%,
+        70%,
+        90% {
             transform: scale(1.1) rotate(3deg);
         }
-        40%, 60%, 80% {
+        40%,
+        60%,
+        80% {
             transform: scale(1.1) rotate(-3deg);
         }
         100% {

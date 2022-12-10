@@ -25,7 +25,6 @@ module.exports = {
         'at-rule-name-case': null, // 764 errors
         'no-duplicate-selectors': null, // 224 errors
         'selector-not-notation': null, // 169 errors
-        'selector-list-comma-newline-after': null, // 105 errors
         'no-invalid-position-at-import-rule': null, // 104 errors
         'function-no-unknown': null, // 67 errors
         'length-zero-no-unit': null, // 64 errors
