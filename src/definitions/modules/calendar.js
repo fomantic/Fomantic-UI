@@ -255,7 +255,7 @@
                             today = new Date(),
                             date = module.get.date(),
                             focusDate = module.get.focusDate(),
-                            display = module.helper.dateInRange(focusDate || date || settings.initialDate || today)
+                            display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today)
                         ;
 
                         if (!focusDate) {
