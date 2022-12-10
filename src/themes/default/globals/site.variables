@@ -26,89 +26,89 @@
 
 @importFonts            : true;
 @fonts: {
-        @regularLatin: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format('woff'));
-                font-style     : normal;
-                font-weight    : @normal;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeLatin;
-        };
-        @boldLatin: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format('woff'));
-                font-style     : normal;
-                font-weight    : @bold;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeLatin;
-        };
-        @italicLatin: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format('woff'));
-                font-style     : italic;
-                font-weight    : @normal;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeLatin;
-        };
-        @boldItalicLatin: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format('woff'));
-                font-style     : italic;
-                font-weight    : @bold;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeLatin;
-        };
-        @regularSupplement: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format('woff'));
-                font-style     : normal;
-                font-weight    : @normal;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeSupplement;
-        };
-        @boldSupplement: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format('woff'));
-                font-style     : normal;
-                font-weight    : @bold;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeSupplement;
-        };
-        @italicSupplement: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format('woff'));
-                font-style     : italic;
-                font-weight    : @normal;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeSupplement;
-        };
-        @boldItalicSupplement: {
-                font-family: @fontName;
-                src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format('woff2')
-                     if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format('woff'));
-                font-style     : italic;
-                font-weight    : @bold;
-                font-display   : @fontDisplay;
-                text-rendering : @textRendering;
-                unicode-range  : @unicodeRangeSupplement;
-        };
+    @regularLatin: {
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameLatin}-Regular.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Regular.woff") format('woff'));
+        font-style     : normal;
+        font-weight    : @normal;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeLatin;
+    };
+    @boldLatin: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameLatin}-Bold.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Bold.woff") format('woff'));
+        font-style     : normal;
+        font-weight    : @bold;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeLatin;
+    };
+    @italicLatin: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameLatin}-Italic.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-Italic.woff") format('woff'));
+        font-style     : italic;
+        font-weight    : @normal;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeLatin;
+    };
+    @boldItalicLatin: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameLatin}-BoldItalic.woff") format('woff'));
+        font-style     : italic;
+        font-weight    : @bold;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeLatin;
+    };
+    @regularSupplement: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Regular.woff") format('woff'));
+        font-style     : normal;
+        font-weight    : @normal;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeSupplement;
+    };
+    @boldSupplement: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Bold.woff") format('woff'));
+        font-style     : normal;
+        font-weight    : @bold;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeSupplement;
+    };
+    @italicSupplement: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-Italic.woff") format('woff'));
+        font-style     : italic;
+        font-weight    : @normal;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeSupplement;
+    };
+    @boldItalicSupplement: { // stylelint-disable-line indentation
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff2") format('woff2')
+            if(@supportIE, e(',') url("@{fontPath}/@{fontFileNameSupplement}-BoldItalic.woff") format('woff'));
+        font-style     : italic;
+        font-weight    : @bold;
+        font-display   : @fontDisplay;
+        text-rendering : @textRendering;
+        unicode-range  : @unicodeRangeSupplement;
+    };
 };
 
-@googleFontName    : @fontName;
+@googleFontName    : @fontName; // stylelint-disable-line indentation
 @importGoogleFonts : false;
 @googleFontSizes   : 'ital,wght@0,400%3B0,700%3B1,400%3B1,700';
 @googleSubset      : 'latin';
@@ -551,124 +551,124 @@
 @borderWidth: 1px;
 
 @primaryBoxShadow:
-        0 0 0 @borderWidth @primaryBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @primaryBorderColor inset,
+    @shadowShadow
 ;
 @primaryBoxFloatingShadow:
-        0 0 0 @borderWidth @primaryBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @primaryBorderColor inset,
+    @floatingShadow
 ;
 @secondaryBoxShadow:
-        0 0 0 @borderWidth @secondaryBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @secondaryBorderColor inset,
+    @shadowShadow
 ;
 @secondaryBoxFloatingShadow:
-        0 0 0 @borderWidth @secondaryBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @secondaryBorderColor inset,
+    @floatingShadow
 ;
 @redBoxShadow:
-        0 0 0 @borderWidth @redBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @redBorderColor inset,
+    @shadowShadow
 ;
 @redBoxFloatingShadow:
-        0 0 0 @borderWidth @redBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @redBorderColor inset,
+    @floatingShadow
 ;
 @orangeBoxShadow:
-        0 0 0 @borderWidth @orangeBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @orangeBorderColor inset,
+    @shadowShadow
 ;
 @orangeBoxFloatingShadow:
-        0 0 0 @borderWidth @orangeBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @orangeBorderColor inset,
+    @floatingShadow
 ;
 @yellowBoxShadow:
-        0 0 0 @borderWidth @yellowBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @yellowBorderColor inset,
+    @shadowShadow
 ;
 @yellowBoxFloatingShadow:
-        0 0 0 @borderWidth @yellowBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @yellowBorderColor inset,
+    @floatingShadow
 ;
 @oliveBoxShadow:
-        0 0 0 @borderWidth @oliveBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @oliveBorderColor inset,
+    @shadowShadow
 ;
 @oliveBoxFloatingShadow:
-        0 0 0 @borderWidth @oliveBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @oliveBorderColor inset,
+    @floatingShadow
 ;
 @greenBoxShadow:
-        0 0 0 @borderWidth @greenBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @greenBorderColor inset,
+    @shadowShadow
 ;
 @greenBoxFloatingShadow:
-        0 0 0 @borderWidth @greenBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @greenBorderColor inset,
+    @floatingShadow
 ;
 @tealBoxShadow:
-        0 0 0 @borderWidth @tealBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @tealBorderColor inset,
+    @shadowShadow
 ;
 @tealBoxFloatingShadow:
-        0 0 0 @borderWidth @tealBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @tealBorderColor inset,
+    @floatingShadow
 ;
 @blueBoxShadow:
-        0 0 0 @borderWidth @blueBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @blueBorderColor inset,
+    @shadowShadow
 ;
 @blueBoxFloatingShadow:
-        0 0 0 @borderWidth @blueBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @blueBorderColor inset,
+    @floatingShadow
 ;
 @violetBoxShadow:
-        0 0 0 @borderWidth @violetBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @violetBorderColor inset,
+    @shadowShadow
 ;
 @violetBoxFloatingShadow:
-        0 0 0 @borderWidth @violetBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @violetBorderColor inset,
+    @floatingShadow
 ;
 @purpleBoxShadow:
-        0 0 0 @borderWidth @purpleBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @purpleBorderColor inset,
+    @shadowShadow
 ;
 @purpleBoxFloatingShadow:
-        0 0 0 @borderWidth @purpleBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @purpleBorderColor inset,
+    @floatingShadow
 ;
 @pinkBoxShadow:
-        0 0 0 @borderWidth @pinkBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @pinkBorderColor inset,
+    @shadowShadow
 ;
 @pinkBoxFloatingShadow:
-        0 0 0 @borderWidth @pinkBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @pinkBorderColor inset,
+    @floatingShadow
 ;
 @brownBoxShadow:
-        0 0 0 @borderWidth @brownBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @brownBorderColor inset,
+    @shadowShadow
 ;
 @brownBoxFloatingShadow:
-        0 0 0 @borderWidth @brownBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @brownBorderColor inset,
+    @floatingShadow
 ;
 @greyBoxShadow:
-        0 0 0 @borderWidth @greyBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @greyBorderColor inset,
+    @shadowShadow
 ;
 @greyBoxFloatingShadow:
-        0 0 0 @borderWidth @greyBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @greyBorderColor inset,
+    @floatingShadow
 ;
 @blackBoxShadow:
-        0 0 0 @borderWidth @blackBorderColor inset,
-        @shadowShadow
+    0 0 0 @borderWidth @blackBorderColor inset,
+    @shadowShadow
 ;
 @blackBoxFloatingShadow:
-        0 0 0 @borderWidth @blackBorderColor inset,
-        @floatingShadow
+    0 0 0 @borderWidth @blackBorderColor inset,
+    @floatingShadow
 ;
 
 /*-------------------
@@ -693,11 +693,11 @@
 
 /* Differentiating Layers */
 @subtleShadow:
-  0 1px 2px 0 @borderColor
+    0 1px 2px 0 @borderColor
 ;
 @floatingShadow:
-  0 2px 4px 0 rgba(34, 36, 38, 0.12),
-  0 2px 10px 0 rgba(34, 36, 38, 0.15)
+    0 2px 4px 0 rgba(34, 36, 38, 0.12),
+    0 2px 10px 0 rgba(34, 36, 38, 0.15)
 ;
 
 /*******************************
@@ -1103,8 +1103,8 @@
 
 /*---  Shadows  ---*/
 @floatingShadowHover:
-  0 2px 4px 0 rgba(34, 36, 38, 0.15),
-  0 2px 10px 0 rgba(34, 36, 38, 0.25)
+    0 2px 4px 0 rgba(34, 36, 38, 0.15),
+    0 2px 10px 0 rgba(34, 36, 38, 0.25)
 ;
 
 /*---  Colors  ---*/

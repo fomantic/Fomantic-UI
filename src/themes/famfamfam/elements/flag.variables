@@ -16,5 +16,5 @@
 
 @flags: {
 };
-@size-map: {
+@size-map: { // stylelint-disable-line indentation
 };
