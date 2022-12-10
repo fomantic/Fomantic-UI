@@ -2,9 +2,9 @@
         Slider Variables
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @height        : 1.5em;
 @hoverPointer  : auto;
@@ -38,17 +38,17 @@
 @thumbHoverPointer    : pointer;
 @thumbHoverBackground : @whiteHover @subtleGradient;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Disabled */
 @disabledOpactiy        : .5;
 @disabledTrackFillColor : @background;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Vertical */
 @verticalPadding : .5em 1em;

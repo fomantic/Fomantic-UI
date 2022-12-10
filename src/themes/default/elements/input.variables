@@ -2,9 +2,9 @@
             Input
 *******************************/
 
-/*-------------------
+/* -------------------
       Element
---------------------*/
+-------------------- */
 
 @inputFont: @pageFont;
 @verticalPadding: @inputVerticalPadding;
@@ -27,9 +27,9 @@
     border-color @defaultDuration @defaultEasing
 ;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Icon Input */
 @iconWidth: (@verticalPadding * 2) + @glyphWidth;
@@ -65,9 +65,9 @@
 
 @labeledDropdownZIndex: 10;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Placeholder */
 @placeholderColor: @inputPlaceholderColor;
@@ -100,9 +100,9 @@
 @fileButtonInvertedBackgroundHover: @white;
 @fileButtonInvertedTextColor: @mutedTextColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @transparentInvertedPlaceholderColor: @invertedUnselectedTextColor;

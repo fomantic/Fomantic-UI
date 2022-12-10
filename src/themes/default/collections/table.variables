@@ -2,9 +2,9 @@
              Table
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @horizontalMargin: 0;
@@ -24,9 +24,9 @@
 @textAlign: left;
 @verticalAlign: middle;
 
-/*--------------
+/* --------------
      Parts
----------------*/
+--------------- */
 
 /* Table Row */
 @rowBorder: 1px solid @internalBorderColor;
@@ -78,9 +78,9 @@
 @responsiveCellBoxShadow: none;
 @responsiveCellHeaderFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Definition */
 @definitionPageBackground: @white;
@@ -103,15 +103,15 @@
 @definitionColumnHorizontalPadding: '';
 
 
-/*--------------
+/* --------------
     Couplings
----------------*/
+--------------- */
 
 @iconVerticalAlign: baseline;
 
-/*--------------
+/* --------------
      States
----------------*/
+--------------- */
 
 @stateMarkerWidth: 0;
 
@@ -157,9 +157,9 @@
 @activeBackgroundHover: #EFEFEF;
 @activeColorHover: @selectedTextColor;
 
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 
 /* Attached */
 @attachedTopOffset: 0;

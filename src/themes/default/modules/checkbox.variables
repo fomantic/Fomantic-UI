@@ -32,9 +32,9 @@
 @labelColor: @textColor;
 @labelTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hover */
 @checkboxHoverBackground: @checkboxBackground;
@@ -75,9 +75,9 @@
 @disabledCheckboxOpacity: 0.5;
 @disabledCheckboxLabelColor: rgba(0, 0, 0, 1);
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Radio */
 /* Uses px to avoid rounding issues with circles */
@@ -195,9 +195,9 @@
 
 
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @checkboxInvertedHoverBackground: @black;

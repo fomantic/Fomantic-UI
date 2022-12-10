@@ -11,9 +11,9 @@
 */
 
 & when (@variationTransitionBrowse) {
-    /*--------------
+    /* --------------
          Browse
-    ---------------*/
+    --------------- */
 
     .transition.browse {
         animation-duration: 500ms;
@@ -91,9 +91,9 @@
 }
 
 & when (@variationTransitionDrop) {
-    /*--------------
+    /* --------------
          Drop
-    ---------------*/
+    --------------- */
 
     .drop.transition {
         transform-origin: top center;
@@ -131,9 +131,9 @@
 }
 
 & when (@variationTransitionFade) {
-    /*--------------
+    /* --------------
           Fade
-    ---------------*/
+    --------------- */
 
     .transition.fade.in {
         animation-name: fadeIn;
@@ -269,9 +269,9 @@
 }
 
 & when (@variationTransitionFlip) {
-    /*--------------
+    /* --------------
          Flips
-    ---------------*/
+    --------------- */
 
     .flip.transition.in,
     .flip.transition.out {
@@ -336,9 +336,9 @@
 }
 
 & when (@variationTransitionScale) {
-    /*--------------
+    /* --------------
           Scale
-    ---------------*/
+    --------------- */
 
     .scale.transition.in {
         animation-name: scaleIn;
@@ -372,9 +372,9 @@
 }
 
 & when (@variationTransitionFly) {
-    /*--------------
+    /* --------------
           Fly
-    ---------------*/
+    --------------- */
 
     /* Inward */
     .transition.fly {
@@ -578,9 +578,9 @@
 }
 
 & when (@variationTransitionSlide) {
-    /*--------------
+    /* --------------
          Slide
-    ---------------*/
+    --------------- */
 
     .transition.slide.in,
     .transition[class*="slide down"].in {
@@ -664,9 +664,9 @@
 }
 
 & when (@variationTransitionSwing) {
-    /*--------------
+    /* --------------
          Swing
-    ---------------*/
+    --------------- */
 
     .transition.swing {
         animation-duration: 800ms;
@@ -789,9 +789,9 @@
 }
 
 & when (@variationTransitionZoom) {
-    /*--------------
+    /* --------------
           Zoom
-    ---------------*/
+    --------------- */
 
     .transition.zoom.in {
         animation-name: zoomIn;
@@ -826,9 +826,9 @@
        Static Animations
 *******************************/
 
-/*--------------
+/* --------------
     Emphasis
----------------*/
+--------------- */
 
 & when (@variationTransitionFlash) {
     .flash.transition {

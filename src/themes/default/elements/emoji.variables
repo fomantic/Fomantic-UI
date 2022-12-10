@@ -7,15 +7,15 @@
              Emoji
 *******************************/
 
-/*--------------
+/* --------------
     Path
----------------*/
+--------------- */
 @emojiPath: "https://twemoji.maxcdn.com/v/latest/svg/";
 @emojiFileType: "svg";
 
-/*--------------
+/* --------------
    Definition
----------------*/
+--------------- */
 
 /* Emoji Variables */
 @opacity: 1;

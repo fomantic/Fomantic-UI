@@ -2,15 +2,15 @@
              Emoji
 *******************************/
 
-/*--------------
+/* --------------
     Path
----------------*/
+--------------- */
 @emojiPath: "https://twemoji.maxcdn.com/v/latest/svg/";
 @emojiFileType: "svg";
 
-/*--------------
+/* --------------
    Definition
----------------*/
+--------------- */
 
 @emoji-map: {
     2049: interrobang;

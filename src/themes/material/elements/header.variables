@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
        Header
---------------------*/
+-------------------- */
 
 @headerFont : 'Roboto', Arial, sans-serif;
 @fontWeight: normal;

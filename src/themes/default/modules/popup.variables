@@ -2,9 +2,9 @@
              Popup
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @zIndex: 1900;
 @background: @white;
@@ -21,9 +21,9 @@
 @fontStyle: @normal;
 @borderRadius: @defaultBorderRadius;
 
-/*-------------------
+/* -------------------
        Parts
---------------------*/
+-------------------- */
 
 /* Placement */
 @arrowSize: @relative10px;
@@ -62,9 +62,9 @@
 @rightArrowBoxShadow: -@arrowStroke @arrowStroke 0 0 @arrowColor;
 @bottomArrowBoxShadow: -@arrowStroke -@arrowStroke 0 0 @arrowColor;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Tooltip */
 @tooltipBackground: @background;
@@ -98,23 +98,23 @@
 @tooltipArrowCenterBackground: @arrowCenterBackground;
 @tooltipArrowBottomBackground: @arrowBottomBackground;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 /* Grid Inside Popup */
 @nestedGridMargin: -0.7rem -0.875rem; /* (padding * @medium) */
 @nestedGridWidth: e("calc(100% + 1.75rem)");
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @loadingZIndex: -1;
 
-/*-------------------
+/* -------------------
        Variations
---------------------*/
+-------------------- */
 
 @multilineWhiteSpace: pre-line;
 

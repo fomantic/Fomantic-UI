@@ -2,9 +2,9 @@
              Step
 *******************************/
 
-/*-------------------
+/* -------------------
        Group
---------------------*/
+-------------------- */
 
 @stepMargin: 1em 0;
 @stepsBorderRadius: @defaultBorderRadius;
@@ -12,9 +12,9 @@
 @stepsBoxShadow: none;
 @stepsBorder: 1px solid @borderColor;
 
-/*-------------------
+/* -------------------
       Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 0;
 @horizontalMargin: 0;
@@ -73,9 +73,9 @@
 /* Mobile */
 @mobileIconDistance: @iconDistance;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Vertical */
 @verticalDivider: @divider;
@@ -92,9 +92,9 @@
 @verticalActiveArrowDisplay: block;
 @verticalActiveLastArrowDisplay: block;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 @attachedHorizontalOffset: -@borderWidth;
 @attachedVerticalOffset: 0;
@@ -103,9 +103,9 @@
 @orderedFontFamily: inherit;
 @orderedFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 /* Completed */
 @completedColor: @positiveColor;

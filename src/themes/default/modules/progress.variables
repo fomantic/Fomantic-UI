@@ -2,9 +2,9 @@
             Progress
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalSpacing: 1em;
 @margin: @verticalSpacing 0 (@labelHeight + @verticalSpacing);
@@ -63,9 +63,9 @@
 @labelTextAlign: center;
 @labelTransition: color 0.4s @defaultEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 @indicatingFirstColor: #D95C5C;
 @indicatingSecondColor: #EFBC72;
@@ -88,9 +88,9 @@
 @invertedIndicatingFifthLabelColor: @invertedTextColor;
 @invertedIndicatingSixthLabelColor: @invertedTextColor;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Active */
 @activePulseColor: @white;
@@ -99,9 +99,9 @@
 @activeMinWidth: @barMinWidth;
 
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Attached */
 @attachedBackground: transparent;

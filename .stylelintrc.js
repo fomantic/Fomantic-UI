@@ -24,7 +24,6 @@ module.exports = {
         'property-case': null, // 866 errors
         'at-rule-name-case': null, // 764 errors
         'at-rule-name-space-after': null, // 754 errors
-        'comment-whitespace-inside': null, // 635 errors
         'no-duplicate-selectors': null, // 224 errors
         'selector-not-notation': null, // 169 errors
         'max-empty-lines': null, // 129 errors

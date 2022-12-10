@@ -2,9 +2,9 @@
             Header
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @textTransform: none;
 @fontFamily: @headerFont;
@@ -68,9 +68,9 @@
 /* Paragraph after Header */
 @nextParagraphDistance: 0;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Sizing */
 @massiveFontSize: unit((32 / 14), em);

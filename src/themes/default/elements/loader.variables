@@ -10,9 +10,9 @@
 // @invertedLoaderFillColor
 // @invertedLoaderLineColor
 
-/*-------------------
+/* -------------------
       Standard
---------------------*/
+-------------------- */
 
 @loaderTopOffset: 50%;
 @loaderLeftOffset: 50%;
@@ -20,9 +20,9 @@
 @shapeBorderColor: @loaderLineColor;
 @invertedShapeBorderColor: @invertedLoaderLineColor;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Text */
 @textDistance: @relativeMini;
@@ -30,16 +30,16 @@
 @invertedLoaderTextColor: @invertedTextColor;
 
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @indeterminateDirection: reverse;
 @indeterminateSpeed: (2 * @loaderSpeed);
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 @inlineVerticalAlign: middle;
 @inlineMargin: 0;

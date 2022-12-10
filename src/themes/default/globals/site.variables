@@ -5,9 +5,9 @@
 @import "variation.variables";
 @supportIE: true;
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
 @fontName          : 'Lato';
 @fontFileNameLatin : 'LatoLatin';
@@ -121,9 +121,9 @@
 @bold              : bold;
 @normal            : normal;
 
-/*-------------------
+/* -------------------
       Base Sizes
---------------------*/
+-------------------- */
 
 /* This is the single variable that controls them all */
 @emSize   : 14px;
@@ -132,9 +132,9 @@
 @fontSize : 14px;
 
 
-/*-------------------
+/* -------------------
     Border Radius
---------------------*/
+-------------------- */
 
 /* See Power-user section below
    for explanation of @px variables
@@ -144,9 +144,9 @@
 
 @defaultBorderRadius: @absoluteBorderRadius;
 
-/*-------------------
+/* -------------------
     Brand Colors
---------------------*/
+-------------------- */
 
 @primaryColor        : @blue;
 @secondaryColor      : @black;
@@ -157,9 +157,9 @@
 /* Whenever a color needs to get calculated (screen()/multiply()) out of a base color */
 @blendingBaseColor: #cccccc;
 
-/*--------------
+/* --------------
   Page Heading
----------------*/
+--------------- */
 
 @headerFontWeight : @bold;
 @headerLineHeight : unit((18 / 14), em);
@@ -171,9 +171,9 @@
 @h5 : unit((14 / 14), rem);
 @h6 : unit((12 / 14), rem);
 
-/*--------------
+/* --------------
    Form Input
----------------*/
+--------------- */
 
 /* This adjusts the default form input across all elements */
 @inputBackground        : @white;
@@ -189,9 +189,9 @@
 /* Line Height Default For Inputs in Browser (Descenders are 17px at 14px base em) */
 @inputLineHeight: unit((17 / 14), em);
 
-/*-------------------
+/* -------------------
     Focused Input
---------------------*/
+-------------------- */
 
 /* Used on inputs, textarea etc */
 @focusedFormBorderColor: #85B7D9;
@@ -199,9 +199,9 @@
 /* Used on dropdowns, other larger blocks */
 @focusedFormMutedBorderColor: #96C8DA;
 
-/*-------------------
+/* -------------------
         Sizes
---------------------*/
+-------------------- */
 
 /*
   Sizes are all expressed in terms of 14px/em (default em)
@@ -218,9 +218,9 @@
 @massiveSize     : (24 / 14);
 
 
-/*-------------------
+/* -------------------
         Page
---------------------*/
+-------------------- */
 
 @pageBackground      : #FFFFFF;
 @pageOverflowX       : hidden;
@@ -228,25 +228,25 @@
 @lineHeight          : 1.4285em;
 @textColor           : rgba(0, 0, 0, 0.87);
 
-/*-------------------
+/* -------------------
       Paragraph
---------------------*/
+-------------------- */
 
 @paragraphMargin     : 0 0 1em;
 @paragraphLineHeight : @lineHeight;
 
-/*-------------------
+/* -------------------
        Links
---------------------*/
+-------------------- */
 
 @linkColor           : #4183C4;
 @linkUnderline       : none;
 @linkHoverColor      : darken(saturate(@linkColor, 20), 15, relative);
 @linkHoverUnderline  : @linkUnderline;
 
-/*-------------------
+/* -------------------
     Scroll Bars
---------------------*/
+-------------------- */
 
 @useCustomScrollbars: true;
 
@@ -282,9 +282,9 @@
 @scrollingWidescreenMaxHeight: 30em;
 @overscrollBehavior: none;
 
-/*-------------------
+/* -------------------
   Highlighted Text
---------------------*/
+-------------------- */
 
 @highlightBackground      : #CCE2FF;
 @highlightColor           : @textColor;
@@ -293,9 +293,9 @@
 @inputHighlightColor      : @textColor;
 
 
-/*-------------------
+/* -------------------
        Loader
---------------------*/
+-------------------- */
 
 @loaderSize              : @relativeBig;
 @loaderSpeedFast         : 0.3s;
@@ -308,22 +308,22 @@
 @invertedLoaderFillColor : rgba(255, 255, 255, 0.15);
 @invertedLoaderLineColor : @white;
 
-/*-------------------
+/* -------------------
         Grid
---------------------*/
+-------------------- */
 
 @columnCount: 16;
 
-/*-------------------
+/* -------------------
      Transitions
---------------------*/
+-------------------- */
 
 @defaultDuration : 0.1s;
 @defaultEasing   : ease;
 
-/*-------------------
+/* -------------------
      Breakpoints
---------------------*/
+-------------------- */
 
 @mobileBreakpoint            : 320px;
 @tabletBreakpoint            : 768px;
@@ -331,11 +331,11 @@
 @largeMonitorBreakpoint      : 1200px;
 @widescreenMonitorBreakpoint : 1920px;
 
-/*-------------------
+/* -------------------
       Site Colors
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @red              : #DB2828;
 @orange           : #F2711C;
 @yellow           : #FBBD08;
@@ -350,7 +350,7 @@
 @grey             : #767676;
 @black            : #1B1C1D;
 
-/*---  Light Colors  ---*/
+/* ---  Light Colors  --- */
 @lightRed         : #FF695E;
 @lightOrange      : #FF851B;
 @lightYellow      : #FFE21F;
@@ -365,14 +365,14 @@
 @lightGrey        : #DCDDDE;
 @lightBlack       : #545454;
 
-/*---   Neutrals  ---*/
+/* ---   Neutrals  --- */
 @fullBlack        : #000000;
 @offWhite         : #F9FAFB;
 @darkWhite        : #F3F4F5;
 @midWhite         : #DCDDDE;
 @white            : #FFFFFF;
 
-/*--- Colored Backgrounds ---*/
+/* --- Colored Backgrounds --- */
 @primaryBackground   : #DFF0FF;
 @secondaryBackground : #F4F4F4;
 @redBackground    : #FFE8E6;
@@ -389,7 +389,7 @@
 @greyBackground   : #F4F4F4;
 @blackBackground  : #F4F4F4;
 
-/*--- Colored Headers ---*/
+/* --- Colored Headers --- */
 @primaryHeaderColor   : darken(@primaryTextColor, 5);
 @secondaryHeaderColor : darken(@secondaryTextColor, 5);
 @redHeaderColor    : darken(@redTextColor, 5);
@@ -406,7 +406,7 @@
 @greyHeaderColor  : darken(@greyTextColor, 5);
 @blackHeaderColor  : darken(@blackTextColor, 5);
 
-/*--- Colored Text ---*/
+/* --- Colored Text --- */
 @primaryTextColor   : @invertedTextColor;
 @secondaryTextColor : @invertedTextColor;
 @redTextColor       : @red;
@@ -423,7 +423,7 @@
 @greyTextColor      : @grey;
 @blackTextColor     : @black;
 
-/*--- Light Colored Text ---*/
+/* --- Light Colored Text --- */
 @lightPrimaryTextColor   : @invertedTextColor;
 @lightSecondaryTextColor : @invertedTextColor;
 @lightRedTextColor       : @lightRed;
@@ -441,7 +441,7 @@
 @lightBlackTextColor     : @lightBlack;
 
 
-/*--- Hovered Colored Text ---*/
+/* --- Hovered Colored Text --- */
 @primaryHoverTextColor   : @primaryTextColor;
 @secondaryHoverTextColor : @secondaryTextColor;
 @redHoverTextColor       : @redTextColor;
@@ -459,7 +459,7 @@
 @blackHoverTextColor     : @blackTextColor;
 
 
-/*--- Colored Border ---*/
+/* --- Colored Border --- */
 @primaryBorderColor   : @primaryColor;
 @secondaryBorderColor : @secondaryColor;
 @redBorderColor       : @redTextColor;
@@ -476,7 +476,7 @@
 @greyBorderColor      : @greyTextColor;
 @blackBorderColor     : @blackTextColor;
 
-/*--- Shadows ---*/
+/* --- Shadows --- */
 @primaryRibbonShadow: darken(@primaryColor, 10);
 @secondaryRibbonShadow: darken(@secondaryColor, 10);
 @redRibbonShadow: darken(@red, 10);
@@ -671,9 +671,9 @@
     @floatingShadow
 ;
 
-/*-------------------
+/* -------------------
      Alpha Colors
---------------------*/
+-------------------- */
 
 @subtleTransparentBlack     : rgba(0, 0, 0, 0.03);
 @transparentBlack           : rgba(0, 0, 0, 0.05);
@@ -684,9 +684,9 @@
 @transparentWhite           : rgba(255, 255, 255, 0.08);
 @strongTransparentWhite     : rgba(255, 255, 255, 0.15);
 
-/*-------------------
+/* -------------------
        Accents
---------------------*/
+-------------------- */
 
 /* Differentiating Neutrals */
 @subtleGradient: linear-gradient(transparent, @transparentBlack);
@@ -705,9 +705,9 @@
 *******************************/
 
 
-/*-------------------
+/* -------------------
     Emotive Colors
---------------------*/
+-------------------- */
 
 /* Positive */
 @positiveColor           : @green;
@@ -737,17 +737,17 @@
 @warningHeaderColor     : #794B02;
 @warningTextColor       : #573A08;
 
-/*-------------------
+/* -------------------
         Paths
---------------------*/
+-------------------- */
 
 /* For source only. Modified in gulp for dist */
 @imagePath : '../../themes/default/assets/images';
 @fontPath  : '../../themes/default/assets/fonts';
 
-/*-------------------
+/* -------------------
        Em Sizes
---------------------*/
+-------------------- */
 
 /*
   This rounds @size values to the closest pixel then expresses that value in (r)em.
@@ -791,16 +791,16 @@
 @absoluteHuge    : unit( @hugeRaw, rem);
 @absoluteMassive : unit( @massiveRaw, rem);
 
-/*-------------------
+/* -------------------
        Icons
---------------------*/
+-------------------- */
 
 /* Maximum Glyph Width of Icon */
 @iconWidth : 1.18em;
 
-/*-------------------
+/* -------------------
      Neutral Text
---------------------*/
+-------------------- */
 
 @darkTextColor               : rgba(0, 0, 0, 0.85);
 @mutedTextColor              : rgba(0, 0, 0, 0.6);
@@ -819,9 +819,9 @@
 @invertedPressedTextColor    : rgba(255, 255, 255, 1);
 @invertedSelectedTextColor   : rgba(255, 255, 255, 1);
 
-/*-------------------
+/* -------------------
      Brand Colors
---------------------*/
+-------------------- */
 
 @facebookColor   : #3B5998;
 @twitterColor    : #1DA1F2;
@@ -834,9 +834,9 @@
 @telegramColor   : #0088CC;
 @whatsAppColor   : #25D366;
 
-/*-------------------
+/* -------------------
       Borders
---------------------*/
+-------------------- */
 
 @circularRadius                : 500rem;
 
@@ -858,9 +858,9 @@
 @selectedSolidWhiteBorderColor : #999999;
 
 
-/*-------------------
+/* -------------------
     Derived Values
---------------------*/
+-------------------- */
 
 /* Loaders Position Offset */
 @loaderOffset : -(@loaderSize / 2);
@@ -905,9 +905,9 @@
 @largestLargeMonitor : (@widescreenMonitorBreakpoint - 0.02px);
 
 
-/*-------------------
+/* -------------------
   Exact Pixel Values
---------------------*/
+-------------------- */
 /*
   These are used to specify exact pixel values in em
   for things like borders that remain constantly
@@ -1088,26 +1088,26 @@
              States
 *******************************/
 
-/*-------------------
+/* -------------------
       Disabled
---------------------*/
+-------------------- */
 
 @disabledOpacity: 0.45;
 @disabledPointerEvents: none;
 @disabledTextColor: rgba(40, 40, 40, 0.3);
 @invertedDisabledTextColor: rgba(225, 225, 225, 0.3);
 
-/*-------------------
+/* -------------------
         Hover
---------------------*/
+-------------------- */
 
-/*---  Shadows  ---*/
+/* ---  Shadows  --- */
 @floatingShadowHover:
     0 2px 4px 0 rgba(34, 36, 38, 0.15),
     0 2px 10px 0 rgba(34, 36, 38, 0.25)
 ;
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @primaryColorHover        : saturate(darken(@primaryColor, 5), 10, relative);
 @secondaryColorHover      : saturate(lighten(@secondaryColor, 5), 10, relative);
 @lightPrimaryColorHover   : saturate(darken(@lightPrimaryColor, 10), 10, relative);
@@ -1139,11 +1139,11 @@
 @lightGreyHover           : saturate(darken(@lightGrey, 10), 10, relative);
 @lightBlackHover          : saturate(darken(@fullBlack, 10), 10, relative);
 
-/*---  Emotive  ---*/
+/* ---  Emotive  --- */
 @positiveColorHover       : saturate(darken(@positiveColor, 5), 10, relative);
 @negativeColorHover       : saturate(darken(@negativeColor, 5), 10, relative);
 
-/*---  Brand   ---*/
+/* ---  Brand   --- */
 @facebookHoverColor       : saturate(darken(@facebookColor, 5), 10, relative);
 @twitterHoverColor        : saturate(darken(@twitterColor, 5), 10, relative);
 @googlePlusHoverColor     : saturate(darken(@googlePlusColor, 5), 10, relative);
@@ -1155,21 +1155,21 @@
 @telegramHoverColor       : saturate(darken(@telegramColor, 5), 10, relative);
 @whatsAppHoverColor       : saturate(darken(@whatsAppColor, 5), 10, relative);
 
-/*---  Dark Tones  ---*/
+/* ---  Dark Tones  --- */
 @fullBlackHover           : lighten(@fullBlack, 5);
 @blackHover               : lighten(@black, 5);
 @greyHover                : lighten(@grey, 5);
 
-/*---  Light Tones  ---*/
+/* ---  Light Tones  --- */
 @whiteHover               : darken(@white, 5);
 @offWhiteHover            : darken(@offWhite, 5);
 @darkWhiteHover           : darken(@darkWhite, 5);
 
-/*-------------------
+/* -------------------
         Focus
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @primaryColorFocus        : saturate(darken(@primaryColor, 8), 20, relative);
 @secondaryColorFocus      : saturate(lighten(@secondaryColor, 8), 20, relative);
 @lightPrimaryColorFocus   : saturate(darken(@lightPrimaryColor, 8), 20, relative);
@@ -1201,11 +1201,11 @@
 @lightGreyFocus           : saturate(darken(@lightGrey, 8), 20, relative);
 @lightBlackFocus          : saturate(darken(@fullBlack, 8), 20, relative);
 
-/*---  Emotive  ---*/
+/* ---  Emotive  --- */
 @positiveColorFocus       : saturate(darken(@positiveColor, 8), 20, relative);
 @negativeColorFocus       : saturate(darken(@negativeColor, 8), 20, relative);
 
-/*---  Brand   ---*/
+/* ---  Brand   --- */
 @facebookFocusColor       : saturate(darken(@facebookColor, 8), 20, relative);
 @twitterFocusColor        : saturate(darken(@twitterColor, 8), 20, relative);
 @googlePlusFocusColor     : saturate(darken(@googlePlusColor, 8), 20, relative);
@@ -1217,22 +1217,22 @@
 @telegramFocusColor       : saturate(darken(@telegramColor, 8), 20, relative);
 @whatsAppFocusColor       : saturate(darken(@whatsAppColor, 8), 20, relative);
 
-/*---  Dark Tones  ---*/
+/* ---  Dark Tones  --- */
 @fullBlackFocus           : lighten(@fullBlack, 8);
 @blackFocus               : lighten(@black, 8);
 @greyFocus                : lighten(@grey, 8);
 
-/*---  Light Tones  ---*/
+/* ---  Light Tones  --- */
 @whiteFocus               : darken(@white, 8);
 @offWhiteFocus            : darken(@offWhite, 8);
 @darkWhiteFocus           : darken(@darkWhite, 8);
 
 
-/*-------------------
+/* -------------------
     Down (:active)
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @primaryColorDown        : darken(@primaryColor, 10);
 @secondaryColorDown      : lighten(@secondaryColor, 10);
 @lightPrimaryColorDown   : darken(@lightPrimaryColor, 10);
@@ -1264,11 +1264,11 @@
 @lightGreyDown           : darken(@lightGrey, 10);
 @lightBlackDown          : darken(@fullBlack, 10);
 
-/*---  Emotive  ---*/
+/* ---  Emotive  --- */
 @positiveColorDown       : darken(@positiveColor, 10);
 @negativeColorDown       : darken(@negativeColor, 10);
 
-/*---  Brand   ---*/
+/* ---  Brand   --- */
 @facebookDownColor       : darken(@facebookColor, 10);
 @twitterDownColor        : darken(@twitterColor, 10);
 @googlePlusDownColor     : darken(@googlePlusColor, 10);
@@ -1280,22 +1280,22 @@
 @telegramDownColor       : darken(@telegramColor, 10);
 @whatsAppDownColor       : darken(@whatsAppColor, 10);
 
-/*---  Dark Tones  ---*/
+/* ---  Dark Tones  --- */
 @fullBlackDown           : lighten(@fullBlack, 10);
 @blackDown               : lighten(@black, 10);
 @greyDown                : lighten(@grey, 10);
 
-/*---  Light Tones  ---*/
+/* ---  Light Tones  --- */
 @whiteDown               : darken(@white, 10);
 @offWhiteDown            : darken(@offWhite, 10);
 @darkWhiteDown           : darken(@darkWhite, 10);
 
 
-/*-------------------
+/* -------------------
         Active
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @primaryColorActive        : saturate(darken(@primaryColor, 5), 15, relative);
 @secondaryColorActive      : saturate(lighten(@secondaryColor, 5), 15, relative);
 @lightPrimaryColorActive   : saturate(darken(@lightPrimaryColor, 5), 15, relative);
@@ -1327,11 +1327,11 @@
 @lightGreyActive           : saturate(darken(@lightGrey, 5), 15, relative);
 @lightBlackActive          : saturate(darken(@fullBlack, 5), 15, relative);
 
-/*---  Emotive  ---*/
+/* ---  Emotive  --- */
 @positiveColorActive       : saturate(darken(@positiveColor, 5), 15, relative);
 @negativeColorActive       : saturate(darken(@negativeColor, 5), 15, relative);
 
-/*---  Brand   ---*/
+/* ---  Brand   --- */
 @facebookActiveColor       : saturate(darken(@facebookColor, 5), 15, relative);
 @twitterActiveColor        : saturate(darken(@twitterColor, 5), 15, relative);
 @googlePlusActiveColor     : saturate(darken(@googlePlusColor, 5), 15, relative);
@@ -1343,17 +1343,17 @@
 @telegramActiveColor       : saturate(darken(@telegramColor, 5), 15, relative);
 @whatsAppActiveColor       : saturate(darken(@whatsAppColor, 5), 15, relative);
 
-/*---  Dark Tones  ---*/
+/* ---  Dark Tones  --- */
 @fullBlackActive           : darken(@fullBlack, 5);
 @blackActive               : darken(@black, 5);
 @greyActive                : darken(@grey, 5);
 
-/*---  Light Tones  ---*/
+/* ---  Light Tones  --- */
 @whiteActive               : darken(@white, 5);
 @offWhiteActive            : darken(@offWhite, 5);
 @darkWhiteActive           : darken(@darkWhite, 5);
 
-/*---  Tertiary  ---*/
+/* ---  Tertiary  --- */
 @primaryTertiaryColor        : saturate(@primaryColor, 20%);
 @primaryTertiaryColorHover   : desaturate(@primaryColorHover, 20%);
 @primaryTertiaryColorFocus   : desaturate(@primaryColorFocus, 20%);
@@ -1415,7 +1415,7 @@
 @blackTertiaryColorFocus     : lighten(@blackFocus, 40%);
 @blackTertiaryColorActive    : lighten(@blackActive, 20%);
 
-/*---  Bright  ---*/
+/* ---  Bright  --- */
 @primaryBright        : screen(@lightPrimaryColor,@blendingBaseColor);
 @secondaryBright      : screen(@lightSecondaryColor,@blendingBaseColor);
 @redBright            : screen(@lightRed,@blendingBaseColor);
@@ -1451,7 +1451,7 @@
 /*******************************
  States shared in Form-related components
  *******************************/
-/* Form state*/
+/* Form state */
 @formErrorColor: @negativeTextColor;
 @formErrorBorder: @negativeBorderColor;
 @formErrorBackground: @negativeBackgroundColor;

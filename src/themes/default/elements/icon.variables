@@ -31,9 +31,9 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
              Icon
 *******************************/
 
-/*--------------
+/* --------------
    Font Files
----------------*/
+--------------- */
 
 /* Solid Icons */
 @importIcons: true;
@@ -2072,9 +2072,9 @@ Icons are order A-Z in their group, Solid, Outline, Thin (Pro only) and Brand
 @icon-duotone-secondary-aliases-map: { // stylelint-disable-line indentation
 };
 
-/*--------------
+/* --------------
    Definition
----------------*/
+--------------- */
 
 /* Icon Variables */
 @opacity: 1;

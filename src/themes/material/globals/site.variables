@@ -2,32 +2,32 @@
          Site Settings
 *******************************/
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
 @headerFont        : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont          : 'Roboto', 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @googleFontName    : 'Roboto';
 
-/*-------------------
+/* -------------------
       Base Sizes
---------------------*/
+-------------------- */
 
 @emSize            : 14px;
 @fontSize          : 13px;
 
-/*--------------
+/* --------------
       Page
----------------*/
+--------------- */
 
 @pageBackground      : #F9F9F9;
 @lineHeight          : 1.33;
 @textColor           : #212121;
 
-/*--------------
+/* --------------
   Page Heading
----------------*/
+--------------- */
 
 @headerLineHeight : 1.33em;
 @headerFontWeight : 400;
@@ -39,23 +39,23 @@
 @h5               : 1.25rem;
 
 
-/*-------------------
+/* -------------------
         Paths
---------------------*/
+-------------------- */
 
 @imagePath : '../../themes/material/assets/images';
 
-/*--------------
+/* --------------
    Paragraphs
----------------*/
+--------------- */
 
 @paragraphLineHeight: 1.7em;
 
-/*-------------------
+/* -------------------
       Site Colors
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @black            : #1B1C1D;
 @blue             : #2196F3;
 @green            : #4CAF50;
@@ -67,7 +67,7 @@
 @teal             : #1de9b6;
 @yellow           : #FFEB3B;
 
-/*---  Light Colors  ---*/
+/* ---  Light Colors  --- */
 @lightBlack       : #333333;
 @lightBlue        : #2979FF;
 @lightGreen       : #00E676;
@@ -78,7 +78,7 @@
 @lightTeal        : #1DE9B6;
 @lightYellow      : #FFEA00;
 
-/*---   Neutrals  ---*/
+/* ---   Neutrals  --- */
 @fullBlack        : #000000;
 @darkGrey         : #AAAAAA;
 @lightGrey        : #DCDDDE;
@@ -86,9 +86,9 @@
 @darkWhite        : #F0F0F0;
 @white            : #FFFFFF;
 
-/*-------------------
+/* -------------------
     Brand Colors
---------------------*/
+-------------------- */
 
 @primaryColor        : @blue;
 @secondaryColor      : @grey;
@@ -96,31 +96,31 @@
 @lightPrimaryColor   : @lightBlue;
 @lightSecondaryColor : @lightGrey;
 
-/*-------------------
+/* -------------------
       Paragraph
---------------------*/
+-------------------- */
 
 @paragraphMargin     : 0em 0em 1.53em;
 
-/*-------------------
+/* -------------------
        Links
---------------------*/
+-------------------- */
 
 @linkColor           : #009FDA;
 @linkUnderline       : none;
 @linkHoverColor      : lighten(@linkColor, 5);
 @linkHoverUnderline  : @linkUnderline;
 
-/*-------------------
+/* -------------------
   Highlighted Text
---------------------*/
+-------------------- */
 
 @highlightBackground : #009FDA;
 @highlightColor      : @white;
 
-/*-------------------
+/* -------------------
        Accents
---------------------*/
+-------------------- */
 
 /* 4px @ default em */
 @relativeBorderRadius: @relative4px;

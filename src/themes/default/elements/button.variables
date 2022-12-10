@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Button */
 @verticalMargin: 0;
@@ -69,9 +69,9 @@
 */
 @willChange: auto;
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 @groupBoxShadow: none;
 @groupButtonBoxShadow: @boxShadow;
@@ -79,9 +79,9 @@
 @groupButtonOffset: 0 0 0 0;
 @verticalGroupOffset: 0 0 0 0;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hovered */
 @hoverBackgroundColor: #CACBCD;
@@ -131,9 +131,9 @@
     opacity @defaultDuration @defaultEasing
 ;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Or */
 @orText: 'or';
@@ -250,9 +250,9 @@
 @basicGroupBorder: @basicBorderSize solid @borderColor;
 @basicGroupBoxShadow: none;
 
-/*-------------
+/* -------------
    Tertiary
--------------*/
+------------- */
 @tertiaryVerticalPadding: 0.5em;
 @tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
@@ -283,9 +283,9 @@
 @tertiaryActiveWithOverline: false;
 @tertiaryActiveBackgroundColor: none;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Colors */
 @coloredBackgroundImage: none;

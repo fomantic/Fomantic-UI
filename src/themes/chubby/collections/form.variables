@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
    Form Variables
---------------------*/
+-------------------- */
 
 @labelTextTransform: uppercase;
 @labelFontSize: 0.8em;

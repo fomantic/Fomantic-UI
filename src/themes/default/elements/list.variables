@@ -2,9 +2,9 @@
              List
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* List */
 @listStyleType: none;
@@ -29,9 +29,9 @@
 @childItemPadding: @childItemVerticalPadding @childItemHorizontalPadding;
 @childItemLineHeight: inherit;
 
-/*-------------------
+/* -------------------
       Elements
---------------------*/
+-------------------- */
 
 /* Icon */
 @iconDistance: @relative4px;
@@ -72,16 +72,16 @@
 @itemLinkIconHoverColor: @textColor;
 @invertedIconLinkColor: @invertedLightTextColor;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @disabledColor: @disabledTextColor;
 @invertedDisabledColor: @invertedDisabledTextColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Float */
 @floatDistance: 1em;

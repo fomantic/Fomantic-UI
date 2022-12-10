@@ -139,9 +139,9 @@ i.icon.url::before { content: '🔗'; } /* '\1f517' */
 i.icon.zoom.in::before { content: '\e750'; } /* '' */
 i.icon.zoom.out::before { content: '\e751'; } /* '' */
 
-/*--------------
+/* --------------
    Spacing Fix
----------------*/
+--------------- */
 
 /* dropdown arrows are to the right */
 i.dropdown.icon {
@@ -169,9 +169,9 @@ i.icon.right {
     margin: 0em 0em 0em 0.5em;
 }
 
-/*--------------
+/* --------------
      Aliases
----------------*/
+--------------- */
 
 /* aliases for convenience */
 i.icon.delete::before { content: '\e80d'; } /* '' */

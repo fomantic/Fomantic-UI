@@ -28,16 +28,16 @@
            Variations
 *******************************/
 
-/*--------------
+/* --------------
      Relaxed
----------------*/
+--------------- */
 
 @relaxedGutterWidth: 3rem;
 @veryRelaxedGutterWidth: 5rem;
 
-/*--------------
+/* --------------
      Divided
----------------*/
+--------------- */
 
 @dividedBorder: -1px 0 0 0 @borderColor;
 @verticallyDividedBorder: 0 -1px 0 0 @borderColor;
@@ -45,9 +45,9 @@
 @dividedInvertedBorder: -1px 0 0 0 @whiteBorderColor;
 @verticallyDividedInvertedBorder: 0 -1px 0 0 @whiteBorderColor;
 
-/*--------------
+/* --------------
     Celled
----------------*/
+--------------- */
 
 @celledMargin: 1em 0;
 @celledWidth: 1px;
@@ -62,26 +62,26 @@
 @celledColumnDivider: (-@celledWidth) 0 0 0 @celledBorderColor;
 
 
-/*--------------
+/* --------------
     Stackable
----------------*/
+--------------- */
 
 @stackableRowSpacing: @rowSpacing;
 @stackableGutter: @gutterWidth;
 @stackableMobileBorder: 1px solid @borderColor;
 @stackableInvertedMobileBorder: 1px solid @whiteBorderColor;
 
-/*--------------
+/* --------------
     Compact
----------------*/
+--------------- */
 @compactGutterWidth: (@gutterWidth / 2);
 @compactRowSpacing: (@rowSpacing / 2);
 @compactCelledRelaxedPadding: (@celledRelaxedPadding / 2);
 @compactCelledVeryRelaxedPadding: (@celledVeryRelaxedPadding / 2);
 
-/*------------------
+/* ------------------
     Very Compact
-------------------*/
+------------------ */
 @veryCompactGutterWidth: (@compactGutterWidth / 2);
 @veryCompactRowSpacing: (@compactRowSpacing / 2);
 @veryCompactCelledRelaxedPadding: (@compactCelledRelaxedPadding / 2);
@@ -92,9 +92,9 @@
              Legacy
 *******************************/
 
-/*--------------
+/* --------------
      Page
----------------*/
+--------------- */
 
 /* Legacy (DO NOT USE)
  */

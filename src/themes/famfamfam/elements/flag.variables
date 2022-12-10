@@ -4,9 +4,9 @@
 
 @imagePath : '../../themes/famfamfam/assets/images';
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @spritePath: "@{imagePath}/flags.png";
 @width: 16px;

@@ -7,7 +7,7 @@
              Emoji
 *******************************/
 
-/*--------------
+/* --------------
     Path
 ---------------
    Downloading and hosting the joxpixels assets locally may require an additional license depending on the usage
@@ -16,9 +16,9 @@
 @emojiPath: "https://cdn.jsdelivr.net/joypixels/assets/6.6/png/unicode/128/";
 @emojiFileType: "png";
 
-/*--------------
+/* --------------
    Definition
----------------*/
+--------------- */
 
 @emoji-map: {
     2049: interrobang;

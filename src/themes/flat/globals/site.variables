@@ -2,25 +2,25 @@
          Site Settings
 *******************************/
 
-/*-------------------
+/* -------------------
         Paths
---------------------*/
+-------------------- */
 
 @imagePath : "../../themes/default/assets/images";
 @fontPath  : "../../themes/default/assets/fonts";
 
-/*-------------------
+/* -------------------
        Fonts
---------------------*/
+-------------------- */
 
 @headerFont    : "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 @pageFont      : "Open Sans", "Helvetica Neue", Arial, Helvetica, sans-serif;
 
-/*-------------------
+/* -------------------
       Site Colors
---------------------*/
+-------------------- */
 
-/*---  Colors  ---*/
+/* ---  Colors  --- */
 @blue             : #0074D9;
 @green            : #2ECC40;
 @orange           : #FF851B;
@@ -34,7 +34,7 @@
 @grey             : #CCCCCC;
 @white            : #FFFFFF;
 
-/*---  Light Colors  ---*/
+/* ---  Light Colors  --- */
 @lightBlue        : #54C8FF;
 @lightGreen       : #2ECC40;
 @lightOrange      : #FF851B;
@@ -48,9 +48,9 @@
 @secondaryColor   : @black;
 
 
-/*-------------------
+/* -------------------
         Page
---------------------*/
+-------------------- */
 
 @bodyBackground      : #FCFCFC;
 @fontSize            : 14px;
@@ -69,9 +69,9 @@
 
 
 
-/*-------------------
+/* -------------------
   Background Colors
---------------------*/
+-------------------- */
 
 @subtleTransparentBlack : rgba(0, 0, 0, 0.03);
 @transparentBlack       : rgba(0, 0, 0, 0.05);
@@ -88,15 +88,15 @@
 @subtleShadow: 0px 1px 2px 0 rgba(0, 0, 0, 0.05);
 
 
-/*-------------------
+/* -------------------
         Grid
---------------------*/
+-------------------- */
 
 @columnCount: 16;
 
-/*-------------------
+/* -------------------
      Breakpoints
---------------------*/
+-------------------- */
 
 @mobileBreakpoint            : 320px;
 @tabletBreakpoint            : 768px;

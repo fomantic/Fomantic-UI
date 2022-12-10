@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @googleFontName : 'Roboto';
 @pageFont       : 'Roboto', Arial, sans-serif;
@@ -34,9 +34,9 @@
     box-shadow 0.3s @defaultEasing,
     background 0.3s @defaultEasing
 ;
-/*-------------------
+/* -------------------
         State
---------------------*/
+-------------------- */
 
 @hoverBackgroundColor: @white;
 @hoverBoxShadow:
@@ -52,9 +52,9 @@
 @activeBackgroundColor: #F0F0F0;
 @activeBoxShadow: 0px 0px 0px 1px #DDDDDD;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Basic */
 @basicBorderSize: 0px;

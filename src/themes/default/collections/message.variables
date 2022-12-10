@@ -4,9 +4,9 @@
 
 // @textColor
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @verticalPadding: 1em;
@@ -60,9 +60,9 @@
 @closeTransition: opacity @defaultDuration @defaultEasing;
 
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Icon Message */
 @iconSize: 3em;

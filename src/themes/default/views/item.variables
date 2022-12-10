@@ -2,9 +2,9 @@
              Item
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Group */
 @groupMargin: 1.5em 0;
@@ -36,9 +36,9 @@
 @mobileContentImageDistance: 1.5em;
 
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Image */
 @imageDisplay: block;
@@ -136,9 +136,9 @@
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Relaxed */
 @relaxedItemSpacing: 1.5em;

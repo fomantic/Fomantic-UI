@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Shadow */
 @shadowDistance: 0em;
@@ -22,9 +22,9 @@
 @horizontalPadding: 1.5em;
 
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 @groupBoxShadow: none;
 @groupButtonBoxShadow:
@@ -35,9 +35,9 @@
 @groupButtonOffset: 0px 0px 0px -1px;
 @verticalGroupOffset: 0px 0px -1px 0px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hovered */
 @hoverBackgroundColor: '';
@@ -86,9 +86,9 @@
 /* Loading */
 @loadingBackgroundColor: #FFFFFF;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Labeled Icon */
 @labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);

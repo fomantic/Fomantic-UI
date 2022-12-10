@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @backgroundColor: #F8F8F8;
 @backgroundImage: linear-gradient(transparent, rgba(0, 0, 0, 0.05));

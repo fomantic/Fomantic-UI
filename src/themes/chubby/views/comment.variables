@@ -2,9 +2,9 @@
             Comments
 *******************************/
 
-/*-------------------
+/* -------------------
       Elements
---------------------*/
+-------------------- */
 
 /* Comment */
 @commentBackground: #FFFFFF;
@@ -38,9 +38,9 @@
 @metadataSpacing: 0em;
 @metadataColor: @textColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Threaded */
 @threadedCommentMargin: -1.5em 0 -1em  (@avatarWidth / 2);

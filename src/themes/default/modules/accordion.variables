@@ -36,9 +36,9 @@
 @contentMargin: '';
 @contentPadding: 0.5em 0 1em;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 @menuTitlePadding: 0;
 @menuIconFloat: right;
@@ -46,15 +46,15 @@
 @menuIconTransform: rotate(180deg);
 
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @activeIconTransform: rotate(90deg);
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Styled */
 @styledWidth: 600px;

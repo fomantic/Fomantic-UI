@@ -2,9 +2,9 @@
              Menu
 *******************************/
 
-/*-------------------
+/* -------------------
       Collection
---------------------*/
+-------------------- */
 
 /* Menu */
 @verticalMargin: @medium;
@@ -49,9 +49,9 @@
 /* Text Item */
 @textLineHeight: 1.3;
 
-/*--------------
+/* --------------
     Elements
----------------*/
+--------------- */
 
 /* Icon */
 @iconFloat: none;
@@ -91,9 +91,9 @@
 @arrowVerticalActiveColor: @arrowActiveColor;
 @arrowVerticalSubMenuColor: @white;
 
-/*--------------
+/* --------------
     Couplings
----------------*/
+--------------- */
 
 /* Button */
 @buttonSize: @relativeMedium;
@@ -160,9 +160,9 @@
 @pointingDropdownMenuDistance: 0.75em;
 @invertedSelectionDropdownColor: @invertedTextColor;
 
-/*--------------
+/* --------------
      States
----------------*/
+--------------- */
 
 /* Hovered Item */
 @hoverItemBackground: @subtleTransparentBlack;
@@ -199,9 +199,9 @@
 @subMenuActiveFontWeight: @bold;
 
 
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 
 /* Vertical */
 @verticalBoxShadow: @boxShadow;
@@ -378,9 +378,9 @@
 @textVerticalMenuIconMargin: @iconMargin;
 
 
-/*--------------
+/* --------------
    Variations
----------------*/
+--------------- */
 
 /* Inverted */
 @invertedBackground: @black;
@@ -465,9 +465,9 @@
 @massiveWidth: 25rem;
 
 
-/*-------------------
+/* -------------------
   Inverted dropdowns
---------------------*/
+-------------------- */
 @invertedDropdownBackground: @black;
 @invertedDropdownMenuBoxShadow: none;
 

@@ -3,7 +3,7 @@
 /*******************************
          Theme Overrides
 *******************************/
-/*rtl:begin:ignore*/
+/* rtl:begin:ignore */
 
 /*******************************
              Flag
@@ -1023,4 +1023,4 @@ i.flag.zimbabwe::before {
     background-position: -108px -390px;
 }
 
-/*rtl:end:ignore*/
+/* rtl:end:ignore */

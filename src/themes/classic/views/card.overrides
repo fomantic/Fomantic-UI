@@ -1,9 +1,9 @@
 /*******************************
              Item
 *******************************/
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Item */
 @background: #FFFFFF;
@@ -26,9 +26,9 @@
 @rowSpacing: 2.5em;
 @groupMargin: 1em -@horizontalSpacing;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Image */
 @imageBackground: @transparentBlack;
@@ -77,9 +77,9 @@
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
        States
---------------------*/
+-------------------- */
 
 @hoverCursor: pointer;
 @hoverZIndex: 5;
@@ -90,9 +90,9 @@
 ;
 
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Sizes */
 @medium: 1em;

@@ -1,14 +1,14 @@
-/*-------------------
+/* -------------------
    Global Variables
---------------------*/
+-------------------- */
 
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
 @textColor: #66757F;
 @blue: #55ACEE;
 
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
 @backgroundColor: #F5F8FA;
 @backgroundImage: linear-gradient(@white, @backgroundColor);
@@ -28,9 +28,9 @@
 @coloredBackgroundImage: @subtleGradient;
 
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @hoverBackgroundColor: #E1E8ED;
 @hoverBackgroundImage: linear-gradient(@white, @hoverBackgroundColor);
