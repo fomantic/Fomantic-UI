@@ -31,7 +31,6 @@ module.exports = {
         'function-no-unknown': null, // 67 errors
         'length-zero-no-unit': null, // 64 errors
         'import-notation': null, // 56 errors
-        'no-missing-end-of-source-newline': null, // 52 errors
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
         'number-leading-zero': null, // 49 errors
