@@ -26,7 +26,7 @@ let when = {
 
     // permissions
     changePermissions: function (questions) {
-        return (questions.changePermissions && questions.changePermissions === true);
+        return questions.changePermissions === true;
     },
 
     // install
