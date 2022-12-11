@@ -36,6 +36,7 @@ module.exports = {
         indent: ['error', 4, {
             SwitchCase: 1,
         }],
+        'linebreak-style': ['error', 'unix'],
         'max-len': 'off',
         'no-console': 'off',
         'no-continue': 'off',
