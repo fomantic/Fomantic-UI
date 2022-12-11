@@ -10,6 +10,8 @@
 These tasks can be imported into your own gulpfile allowing you to avoid using Semantic's build tools
 
 ```javascript
-const watch = require('path/to/semantic/tasks/watch');
+var
+  watch = require('path/to/semantic/tasks/watch')
+;
 gulp.task('watch ui', watch);
 ```
