@@ -3,6 +3,7 @@
  *******************************/
 
 let
+    extend      = require('extend'),
     gulp        = require('gulp'),
 
     // node dependencies
@@ -14,7 +15,7 @@ let
     print       = require('gulp-print').default,
 
     // user config
-    config      = require('../config/docs'),
+    configDocs      = require('../config/docs'),
 
     // install config
     tasks       = require('../config/tasks'),
@@ -35,7 +36,8 @@ let
 
 module.exports = function (callback) {
     // use a different config
-    config = configSetup.addDerivedValues(config);
+    const config = extend(true, {}, configDocs);
+    configSetup.addDerivedValues(config);
 
     // shorthand
     const globs  = config.globs;

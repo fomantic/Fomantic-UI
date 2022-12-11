@@ -3,7 +3,6 @@
 *******************************/
 
 let
-    extend   = require('extend'),
     fs       = require('fs'),
     path     = require('path'),
 
@@ -50,8 +49,6 @@ module.exports = {
 
     // adds additional derived values to a config object
     addDerivedValues: function (config) {
-        config = config || extend(false, {}, defaults);
-
         /* --------------
             File Paths
         --------------- */
@@ -140,8 +137,6 @@ module.exports = {
         config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
             ? '{' + individuals.join(',') + '}'
             : undefined;
-
-        return config;
     },
 
 };
