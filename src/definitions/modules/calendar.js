@@ -758,6 +758,7 @@
                         var ms1d = 864e5, // milliseconds in a day
                             ms7d = 7 * ms1d; // milliseconds in a week
 
+                        // eslint-disable-next-line wrap-iife
                         return function () { // return a closure so constants get calculated only once
                             var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
                                 AWN = Math.floor(DC3 / 7), // an Absolute Week Number
