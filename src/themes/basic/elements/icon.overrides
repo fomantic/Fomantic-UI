@@ -49,7 +49,6 @@ i.icon.layout.list::before { content: '\e80b'; } /* '' */
 i.icon.heart.empty::before { content: '\2661'; } /* '♡' */
 i.icon.heart::before { content: '\2665'; } /* '♥' */
 
-
 i.icon.asterisk::before { content: '\2731'; } /* '✱' */
 i.icon.attachment::before { content: '📎'; } /* '\1f4ce' */
 i.icon.attention::before { content: '\26a0'; } /* '⚠' */
@@ -83,7 +82,7 @@ i.icon.paint::before { content: '\e7b5'; } /* '' */
 i.icon.edit::before { content: '\270d'; } /* '✍' */
 i.icon.eject::before { content: '\2ecf'; } /* '⻏' */
 i.icon.export::before { content: '\e715'; } /* '' */
-i.icon.hide::before  { content: '\e70b'; } /* '' */
+i.icon.hide::before { content: '\e70b'; } /* '' */
 i.icon.unhide::before { content: '\e80f'; } /* '' */
 i.icon.facebook::before { content: '\f301'; } /* '' */
 i.icon.fast-forward::before { content: '\e804'; } /* '' */
@@ -139,25 +138,25 @@ i.icon.url::before { content: '🔗'; } /* '\1f517' */
 i.icon.zoom.in::before { content: '\e750'; } /* '' */
 i.icon.zoom.out::before { content: '\e751'; } /* '' */
 
-/*--------------
+/* --------------
    Spacing Fix
----------------*/
+--------------- */
 
 /* dropdown arrows are to the right */
 i.dropdown.icon {
-  margin: 0em 0em 0em 0.5em;
+    margin: 0em 0em 0em 0.5em;
 }
 
 /* stars are usually consecutive */
 i.icon.star {
-  width: auto;
-  margin: 0em;
+    width: auto;
+    margin: 0em;
 }
 
 /* left side basic.icons */
 i.icon.left {
-  width: auto;
-  margin: 0em 0.5em 0em 0em;
+    width: auto;
+    margin: 0em 0.5em 0em 0em;
 }
 
 /* right side basic.icons */
@@ -165,13 +164,13 @@ i.icon.search,
 i.icon.up,
 i.icon.down,
 i.icon.right {
-  width: auto;
-  margin: 0em 0em 0em 0.5em;
+    width: auto;
+    margin: 0em 0em 0em 0.5em;
 }
 
-/*--------------
+/* --------------
      Aliases
----------------*/
+--------------- */
 
 /* aliases for convenience */
 i.icon.delete::before { content: '\e80d'; } /* '' */

@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -27,11 +27,11 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             alphabet       = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'],
@@ -138,7 +138,7 @@
                         if ($module.attr('tabindex') === undefined) {
                             $module.attr('tabindex', 0);
                         }
-                        if ($module.find('.inner').length == 0) {
+                        if ($module.find('.inner').length === 0) {
                             $module.append("<div class='inner'>"
                                 + "<div class='track'></div>"
                                 + "<div class='track-fill'></div>"
@@ -149,7 +149,7 @@
                         $thumb = $module.find('.thumb:not(.second)');
                         $currThumb = $thumb;
                         if (module.is.range()) {
-                            if ($module.find('.thumb.second').length == 0) {
+                            if ($module.find('.thumb.second').length === 0) {
                                 $module.find('.inner').append("<div class='thumb second'></div>");
                             }
                             $secondThumb = $module.find('.thumb.second');
@@ -161,7 +161,7 @@
                     labels: function () {
                         if (module.is.labeled()) {
                             $labels = $module.find('.labels:not(.auto)');
-                            if ($labels.length != 0) {
+                            if ($labels.length > 0) {
                                 module.setup.customLabel();
                             } else {
                                 module.setup.autoLabel();
@@ -196,7 +196,7 @@
                     },
                     autoLabel: function () {
                         $labels = $module.find('.labels');
-                        if ($labels.length != 0) {
+                        if ($labels.length > 0) {
                             $labels.empty();
                         } else {
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
@@ -523,23 +523,23 @@
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
-                        } else {
-                            return $track.offset().left;
                         }
+
+                        return $track.offset().left;
                     },
                     trackLength: function () {
                         if (module.is.vertical()) {
                             return $track.height();
-                        } else {
-                            return $track.width();
                         }
+
+                        return $track.width();
                     },
                     trackLeft: function () {
                         if (module.is.vertical()) {
                             return $track.position().top;
-                        } else {
-                            return $track.position().left;
                         }
+
+                        return $track.position().left;
                     },
                     trackStartPos: function () {
                         return module.is.reversed() ? module.get.trackLeft() + module.get.trackLength() : module.get.trackLeft();
@@ -574,11 +574,7 @@
                         ;
                         if (step != 0) {
                             var split = String(step).split('.');
-                            if (split.length == 2) {
-                                decimalPlaces = split[1].length;
-                            } else {
-                                decimalPlaces = 0;
-                            }
+                            decimalPlaces = split.length == 2 ? split[1].length : 0;
                         } else {
                             decimalPlaces = settings.decimalPlaces;
                         }
@@ -637,11 +633,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return module.secondThumbVal;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return module.thumbVal;
@@ -655,11 +652,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return secondPos;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return position;
@@ -852,15 +850,18 @@
                         ;
                         if (key == downArrow || key == leftArrow) {
                             return SINGLE_BACKSTEP;
-                        } else if (key == upArrow || key == rightArrow) {
-                            return SINGLE_STEP;
-                        } else if (key == keys.pageDown) {
-                            return BIG_BACKSTEP;
-                        } else if (key == keys.pageUp) {
-                            return BIG_STEP;
-                        } else {
-                            return NO_STEP;
                         }
+                        if (key == upArrow || key == rightArrow) {
+                            return SINGLE_STEP;
+                        }
+                        if (key == keys.pageDown) {
+                            return BIG_BACKSTEP;
+                        }
+                        if (key == keys.pageUp) {
+                            return BIG_STEP;
+                        }
+
+                        return NO_STEP;
                     },
                 },
 
@@ -1009,8 +1010,8 @@
                             thumbPosValue,
                             min = module.get.min(),
                             max = module.get.max(),
-                            thumbPosPercent = 100 * (newValue - min) / (max - min),
-                            trackStartPosPercent = 100 * (Math.min(thumbVal, secondThumbVal) - min) / (max - min),
+                            thumbPosPercent = 100 * ((newValue - min) / (max - min)),
+                            trackStartPosPercent = 100 * ((Math.min(thumbVal, secondThumbVal) - min) / (max - min)),
                             trackEndPosPercent = 100 * (1 - (Math.max(thumbVal, secondThumbVal) - min) / (max - min))
                         ;
                         if (module.is.vertical()) {
@@ -1146,7 +1147,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1198,8 +1199,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

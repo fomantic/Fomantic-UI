@@ -2,8 +2,7 @@
             Set-up
 *******************************/
 
-var
-    extend   = require('extend'),
+let
     fs       = require('fs'),
     path     = require('path'),
 
@@ -17,18 +16,16 @@ var
 module.exports = {
 
     getPath: function (file, directory) {
-        var
+        let
             configPath,
             walk = function (directory) {
-                var
+                let
                     nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
                     currentPath   = path.normalize(path.join(directory, file))
                 ;
                 if (fs.existsSync(currentPath)) {
                     // found file
                     configPath = path.normalize(directory);
-
-                    return;
                 } else {
                     // reached file system root, let's stop
                     if (nextDirectory == directory) {
@@ -50,13 +47,11 @@ module.exports = {
 
     // adds additional derived values to a config object
     addDerivedValues: function (config) {
-        config = config || extend(false, {}, defaults);
-
         /* --------------
             File Paths
         --------------- */
 
-        var
+        let
             configPath = this.getPath(),
             sourcePaths = {},
             outputPaths = {},
@@ -125,10 +120,10 @@ module.exports = {
             });
         }
 
-        const components = (Array.isArray(config.components) && config.components.length >= 1)
+        const components = (Array.isArray(config.components) && config.components.length > 0)
             ? config.components
             : defaults.components;
-        const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
+        const individuals =  (Array.isArray(config.individuals) && config.individuals.length > 0)
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));
@@ -140,8 +135,6 @@ module.exports = {
         config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
             ? '{' + individuals.join(',') + '}'
             : undefined;
-
-        return config;
     },
 
 };

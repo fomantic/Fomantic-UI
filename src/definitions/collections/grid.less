@@ -66,7 +66,6 @@
 .ui.grid > .row > .column {
     position: relative;
     display: inline-block;
-
     width: @oneWide;
     padding-left: (@gutterWidth / 2);
     padding-right: (@gutterWidth / 2);
@@ -1096,10 +1095,8 @@
             content: "";
             top: 0;
             left: 0;
-
             width: e(%("calc(100%% - %d)", @gutterWidth));
             height: 1px;
-
             margin: 0 (@gutterWidth / 2);
             box-shadow: @verticallyDividedBorder;
         }

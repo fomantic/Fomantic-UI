@@ -40,15 +40,12 @@
     -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
     text-align: @textAlign;
     line-height: @lineHeight;
-
     font-family: @inputFont;
-
     background: @background;
     border: @border;
     color: @inputColor;
     border-radius: @borderRadius;
     transition: @transition;
-
     box-shadow: @boxShadow;
     &:not([type="color"]) {
         padding: @padding;
@@ -119,11 +116,9 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         border-radius: @circularRadius;
         border: @loaderLineWidth solid @loaderFillColor;
     }
@@ -132,16 +127,12 @@
         content: '';
         top: 50%;
         left: 50%;
-
         margin: @loaderMargin;
         width: @loaderSize;
         height: @loaderSize;
-
         animation: loader @loaderSpeed infinite linear;
-
         border: @loaderLineWidth solid @loaderLineColor;
         border-radius: @circularRadius;
-
         box-shadow: 0 0 0 1px transparent;
     }
 }
@@ -293,7 +284,6 @@
         right: 0;
         margin: 0;
         height: 100%;
-
         width: @iconWidth;
         opacity: @iconOpacity;
         border-radius: 0 @borderRadius @borderRadius 0;

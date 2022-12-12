@@ -2,14 +2,14 @@
            Summarize Docs
 *******************************/
 
-var
+let
     // node dependencies
     console      = require('better-console'),
     fs           = require('fs'),
     YAML         = require('yamljs')
 ;
 
-var data = {};
+let data = {};
 
 /**
  * Test for prefix in string.
@@ -22,8 +22,8 @@ function startsWith(str, prefix) {
 }
 
 function inArray(needle, haystack) {
-    var length = haystack.length;
-    for (var i = 0; i < length; i++) {
+    let length = haystack.length;
+    for (let i = 0; i < length; i++) {
         if (haystack[i] == needle) {
             return true;
         }
@@ -49,11 +49,11 @@ function parser(file, callback) {
     }
 
     try {
-        var
+        let
             /** @type {string} */
             text     = String(file.contents.toString('utf8')),
             lines    = text.split('\n'),
-            filename = file.path.substring(0, file.path.length - 4),
+            filename = file.path.slice(0, -4),
             key      = 'server/documents',
             position = filename.indexOf(key)
         ;
@@ -66,9 +66,9 @@ function parser(file, callback) {
             return callback(null, file);
         }
 
-        filename = filename.substring(position + key.length + 1, filename.length);
+        filename = filename.slice(position + key.length + 1, filename.length);
 
-        var
+        let
             lineCount = lines.length,
             active    = false,
             yaml      = [],
@@ -117,7 +117,7 @@ function parser(file, callback) {
             // console.log(meta);
         }
     } catch (error) {
-        console.log(error, filename);
+        console.log(error, file.path);
     }
 
     callback(null, file);

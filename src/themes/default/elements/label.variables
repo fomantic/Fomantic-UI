@@ -2,9 +2,9 @@
              Label
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalAlign: baseline;
 @verticalMargin: 0;
@@ -30,9 +30,9 @@
 @groupVerticalMargin: 0.5em;
 @groupHorizontalMargin: 0.5em;
 
-/*-------------------
+/* -------------------
         Parts
---------------------*/
+-------------------- */
 
 /* Link */
 @linkOpacity: 0.5;
@@ -56,9 +56,9 @@
 @deleteMargin: 0.5em;
 @deleteTransition: background @labelTransitionDuration @labelTransitionEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Image Label */
 @imageLabelBackground: @backgroundColor;
@@ -78,9 +78,9 @@
 @imageLabelDetailPadding: @imageLabelVerticalPadding @imageLabelHorizontalPadding;
 @imageLabelDetailMargin: -@imageLabelVerticalPadding -@imageLabelHorizontalPadding -@imageLabelVerticalPadding @imageLabelDetailDistance;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hover */
 @labelHoverBackgroundColor: #E0E0E0;
@@ -97,10 +97,9 @@
 @labelActiveHoverBackgroundImage: none;
 @labelActiveHoverTextColor: @selectedTextColor;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Basic */
 @basicBackground: none @white;
@@ -253,16 +252,16 @@
 @floatingAlignOffset: 1.2em;
 @floatingZIndex: 100;
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 /* Sizing */
-@mini    : @9px;
-@tiny    : @10px;
-@small   : @11px;
-@medium  : @12px;
-@large   : @absoluteMedium;
-@big     : @absoluteBig;
-@huge    : @absoluteHuge;
+@mini : @9px;
+@tiny : @10px;
+@small : @11px;
+@medium : @12px;
+@large : @absoluteMedium;
+@big : @absoluteBig;
+@huge : @absoluteHuge;
 @massive : @absoluteMassive;

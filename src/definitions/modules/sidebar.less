@@ -26,14 +26,12 @@
     position: fixed;
     top: 0;
     left: 0;
-
     backface-visibility: hidden;
     transition: none;
     will-change: transform;
     transform: translate3d(0, 0, 0);
     visibility: hidden;
     -webkit-overflow-scrolling: touch;
-
     height: 100% !important;
     max-height: 100%;
     border-radius: 0 !important;
@@ -128,7 +126,6 @@ body.pushable {
 .pushable > .fixed {
     position: fixed;
     backface-visibility: hidden;
-
     transition: transform @duration @easing;
     will-change: transform;
     z-index: @fixedLayer;

@@ -1,12 +1,12 @@
 function moduleTests(ui) {
-    var
+    let
         module    = ui.module,
         element   = ui.element,
         singleton = ui.singleton,
         name      = $.fn[module].settings.name,
 
         testValue = 'Test',
-        fixtures  = jasmine.getFixtures(),
+        fixtures  = jasmine.getFixtures(), // eslint-disable-line jest/no-jasmine-globals
 
         originalSettings,
         $modules,
@@ -59,18 +59,18 @@ function moduleTests(ui) {
     -------------------- */
     describe('Module', function () {
         it('allows chaining when no settings returned', function () {
-            var $chain = $modules[module]();
+            let $chain = $modules[module]();
             expect($chain).toExist();
             expect($chain.size()).toBe($modules.size());
         });
 
         it('returns a string when one setting returned', function () {
-            var result = $oneModule[module]('setting', 'name');
+            let result = $oneModule[module]('setting', 'name');
             expect(typeof result).toBe('string');
         });
 
         it('returns an array when multiple settings returned', function () {
-            var result = $modules[module]('setting', 'name');
+            let result = $modules[module]('setting', 'name');
             expect($.isArray(result)).toBeTruthy();
         });
 
@@ -90,7 +90,7 @@ function moduleTests(ui) {
                 name: testValue,
             });
 
-            var retrievedValue = $oneModule[module]('setting', 'name');
+            let retrievedValue = $oneModule[module]('setting', 'name');
             expect(retrievedValue).toBe(testValue);
 
             // reinit
@@ -103,7 +103,7 @@ function moduleTests(ui) {
             $.fn[module].settings.name = testValue;
             $oneModule[module]();
 
-            var retrievedValue = $oneModule[module]('setting', 'name');
+            let retrievedValue = $oneModule[module]('setting', 'name');
             $.fn[module].settings.name = name;
 
             expect(retrievedValue).toBe(testValue);
@@ -114,7 +114,7 @@ function moduleTests(ui) {
                 name: testValue,
             });
 
-            var retrievedValue = $oneModule[module]('setting', 'name');
+            let retrievedValue = $oneModule[module]('setting', 'name');
 
             expect(retrievedValue).toBe(testValue);
         });
@@ -122,7 +122,7 @@ function moduleTests(ui) {
         it('allows settings to be changed during runtime', function () {
             $oneModule[module]();
 
-            var retrievedValue = $oneModule[module]('setting', 'name');
+            let retrievedValue = $oneModule[module]('setting', 'name');
 
             expect(retrievedValue).toBe(name);
         });
@@ -137,8 +137,8 @@ function moduleTests(ui) {
             it('creates settings for all instances', function () {
                 $modules[module]('setting', 'name', testValue);
 
-                var retrievedValue = $oneModule[module]('setting', 'name');
-                var clonedSetting  = $clone[module]('setting', 'name');
+                let retrievedValue = $oneModule[module]('setting', 'name');
+                let clonedSetting  = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(testValue);
@@ -155,8 +155,8 @@ function moduleTests(ui) {
                 $modules[module]();
                 $oneModule[module]('setting', 'name', testValue);
 
-                var retrievedValue = $oneModule[module]('setting', 'name');
-                var clonedSetting  = $clone[module]('setting', 'name');
+                let retrievedValue = $oneModule[module]('setting', 'name');
+                let clonedSetting  = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);
@@ -169,8 +169,8 @@ function moduleTests(ui) {
                     name: testValue,
                 });
 
-                var retrievedValue = $oneModule[module]('setting', 'name');
-                var clonedSetting  = $clone[module]('setting', 'name');
+                let retrievedValue = $oneModule[module]('setting', 'name');
+                let clonedSetting  = $clone[module]('setting', 'name');
 
                 expect(retrievedValue).toBe(testValue);
                 expect(clonedSetting).toBe(name);

@@ -246,7 +246,8 @@ module.exports.watch = function (type, config) {
             let lessPath;
             if (path.indexOf('site.variables') !== -1) {
                 return;
-            } else if (path.indexOf(config.paths.source.themes) !== -1) {
+            }
+            if (path.indexOf(config.paths.source.themes) !== -1) {
                 console.log('Change detected in packaged theme');
                 lessPath = replaceExt(path, '.less');
                 lessPath = lessPath.replace(tasks.regExp.theme, config.paths.source.definitions);

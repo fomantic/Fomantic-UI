@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -26,11 +26,11 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -361,7 +361,7 @@
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
                             ;
-                            if (labelNode.length) {
+                            if (labelNode.length > 0) {
                                 if (!labelNode.attr('id')) {
                                     labelNode.attr('id', '_' + module.get.id() + '_formLabel');
                                 }
@@ -727,7 +727,7 @@
                             if (module.is.multiple()) {
                                 module.filterActive();
                             }
-                            if (query || (!query && module.get.activeItem().length == 0)) {
+                            if (query || (!query && module.get.activeItem().length === 0)) {
                                 module.select.firstUnfiltered();
                             }
                             if (module.has.allResultsFiltered()) {
@@ -942,7 +942,7 @@
                                 // Dividers which are direct siblings are considered a group
                                 var $lastDivider = $(this).nextUntil(selector.item);
 
-                                return ($lastDivider.length ? $lastDivider : $(this))
+                                return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
                                     .nextUntil(selector.divider)
                                     .filter(selector.item + ':not(.' + className.filtered + ')')
@@ -1604,19 +1604,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Up key pressed, changing active item');
-                                        $selectedItem
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Up key pressed, changing active item');
+                                    $selectedItem
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1630,19 +1631,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Down key pressed, changing active item');
-                                        $item
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Down key pressed, changing active item');
+                                    $item
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1725,11 +1727,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown, canceling callback');
+
+                        return false;
                     },
                     eventOnElement: function (event, callback) {
                         var
@@ -1747,11 +1749,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown menu, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown menu, canceling callback');
+
+                        return false;
                     },
                 },
 
@@ -1809,7 +1811,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
+                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 
@@ -1880,7 +1882,8 @@
                         ;
                         if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
-                        } else if (!returnEndPos && 'selectionStart' in input) {
+                        }
+                        if (!returnEndPos && 'selectionStart' in input) {
                             return input.selectionStart;
                         }
                         if (document.selection) {
@@ -1917,7 +1920,7 @@
                         }
 
                         return (!module.has.selectInput() && module.is.multiple())
-                            ? (typeof value == 'string') // delimited string
+                            ? (typeof value === 'string') // delimited string
                                 ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
                                 : ''
                             : value;
@@ -1928,7 +1931,7 @@
                             remoteValues = false
                         ;
                         if (values) {
-                            if (typeof values == 'string') {
+                            if (typeof values === 'string') {
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
@@ -2170,16 +2173,16 @@
                                 }
 
                                 return true;
-                            } else {
-                                module.verbose('No longer at maximum selection count');
-                                module.remove.message();
-                                module.remove.filteredItem();
-                                if (module.is.searchSelection()) {
-                                    module.filterItems();
-                                }
-
-                                return false;
                             }
+
+                            module.verbose('No longer at maximum selection count');
+                            module.remove.message();
+                            module.remove.filteredItem();
+                            if (module.is.searchSelection()) {
+                                module.filterItems();
+                            }
+
+                            return false;
                         }
 
                         return true;
@@ -2391,7 +2394,7 @@
                         $nextSelectedItem
                             .addClass(className.selected)
                         ;
-                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                        if (settings.selectOnKeydown && module.is.single() && !$nextSelectedItem.hasClass(className.actionable)) {
                             module.set.selectedItem($nextSelectedItem);
                         }
                         $menu
@@ -2878,7 +2881,7 @@
                         var
                             $addition         = $menu.children(selector.addition),
                             $existingItem     = module.get.item(value),
-                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length,
+                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0,
                             hasUserSuggestion = $addition.length > 0,
                             html
                         ;
@@ -3262,7 +3265,7 @@
                         return ($currentMenu || $menu).find(selector.menu).length > 0;
                     },
                     message: function () {
-                        return ($menu.children(selector.message).length !== 0);
+                        return ($menu.children(selector.message).length > 0);
                     },
                     label: function (value) {
                         var
@@ -3304,9 +3307,7 @@
                                 : (values == value)
                         ;
 
-                        return (hasValue)
-                            ? true
-                            : false;
+                        return !!(hasValue);
                     },
                     valueIgnoringCase: function (value) {
                         var
@@ -3723,8 +3724,8 @@
                     },
                     htmlEntities: function (string) {
                         var
-                            badChars     = /[<>"'`]/g,
-                            shouldEscape = /[&<>"'`]/,
+                            badChars     = /["'<>`]/g,
+                            shouldEscape = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -3737,7 +3738,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -3803,7 +3804,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -3854,8 +3855,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -4039,7 +4040,7 @@
         },
 
         regExp: {
-            escape: /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
+            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
             quote: /"/g,
         },
 
@@ -4155,8 +4156,8 @@
                 return string;
             }
             var
-                badChars     = /[<>"'`]/g,
-                shouldEscape = /[&<>"'`]/,
+                badChars     = /["'<>`]/g,
+                shouldEscape = /["&'<>`]/,
                 escape       = {
                     '<': '&lt;',
                     '>': '&gt;',
@@ -4169,7 +4170,7 @@
                 }
             ;
             if (shouldEscape.test(string)) {
-                string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                 return string.replace(badChars, escapedChar);
             }
@@ -4185,11 +4186,9 @@
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             html += '<i class="dropdown icon"></i>';
-            if (placeholder) {
-                html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
-            } else {
-                html += '<div class="text"></div>';
-            }
+            html += placeholder
+                ? '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>'
+                : '<div class="text"></div>';
             html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
@@ -4207,9 +4206,7 @@
             ;
             $.each(values, function (index, option) {
                 var
-                    itemType = (option[fields.type])
-                        ? option[fields.type]
-                        : 'item',
+                    itemType = option[fields.type] || 'item',
                     isMenu = itemType.indexOf('menu') !== -1
                 ;
 
@@ -4229,15 +4226,15 @@
                             : '',
                         hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '">';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                     }
                     if (hasDescription) {
                         html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
@@ -4259,12 +4256,12 @@
                 } else if (itemType === 'header') {
                     var
                         groupName = escape(option[fields.name] || '', preserveHTML),
-                        groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
+                        groupIcon = deQuote(option[fields.icon] || className.groupIcon)
                     ;
                     if (groupName !== '' || groupIcon !== '') {
-                        html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
+                        html += '<div class="' + deQuote(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
-                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                         }
                         html += groupName;
                         html += '</div>';

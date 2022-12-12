@@ -2,9 +2,9 @@
             Form
 *******************************/
 
-/*-------------------
+/* -------------------
        Elements
---------------------*/
+-------------------- */
 
 @inputBackground: #FAFAFA;
 @inputBorder: 1px solid #CCCCCC;
@@ -14,27 +14,26 @@
 @labelFontWeight: bold;
 @labelDistance: 6px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @inputFocusBackground: #FFFFFF;
 @inputFocusBoxShadow:
-  0px 1px 2px rgba(0, 0, 0, 0.075) inset,
-  0px 0px 5px rgba(81, 167, 232, 0.5)
+    0px 1px 2px rgba(0, 0, 0, 0.075) inset,
+    0px 0px 5px rgba(81, 167, 232, 0.5)
 ;
 @inputFocusBorderColor: #51A7E8;
 @inputFocusBorderRadius: @inputBorderRadius;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
-/*-------------------
+/* -------------------
        Groups
---------------------*/
+-------------------- */

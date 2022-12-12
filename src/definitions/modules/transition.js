@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -24,7 +24,7 @@
             $allModules     = $(this),
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             moduleArguments = arguments,
@@ -167,14 +167,15 @@
                             }
 
                             return false;
-                        } else if (!settings.allowRepeats && module.is.occurring()) {
+                        }
+                        if (!settings.allowRepeats && module.is.occurring()) {
                             module.debug('Animation is already occurring, will not execute repeated animation', settings.animation);
 
                             return false;
-                        } else {
-                            module.debug('New animation started, completing previous early', settings.animation);
-                            instance.complete();
                         }
+
+                        module.debug('New animation started, completing previous early', settings.animation);
+                        instance.complete();
                     }
                     if (module.can.animate()) {
                         module.set.animating(settings.animation);
@@ -314,7 +315,7 @@
                     },
                     duration: function (animationName, duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = (typeof duration === 'number')
                             ? duration + 'ms'
                             : duration;
                         if (duration || duration === 0) {
@@ -488,33 +489,38 @@
                 },
                 get: {
                     settings: function (animation, duration, onComplete) {
-                        if (typeof animation == 'object') { // single settings object
+                        if (typeof animation === 'object') { // single settings object
                             return $.extend(true, {}, $.fn.transition.settings, animation);
-                        } else if (typeof onComplete == 'function') { // all arguments provided
+                        }
+                        if (typeof onComplete === 'function') { // all arguments provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: onComplete,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'string' || typeof duration == 'number') { // only duration provided
+                        }
+                        if (typeof duration === 'string' || typeof duration === 'number') { // only duration provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'object') { // duration is actually settings object
+                        }
+                        if (typeof duration === 'object') { // duration is actually settings object
                             return $.extend({}, $.fn.transition.settings, duration, {
                                 animation: animation,
                             });
-                        } else if (typeof duration == 'function') { // duration is actually callback
+                        }
+                        if (typeof duration === 'function') { // duration is actually callback
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: duration,
                             });
-                        } else { // only animation provided
-                            return $.extend({}, $.fn.transition.settings, {
-                                animation: animation,
-                            });
                         }
+
+                        // only animation provided
+                        return $.extend({}, $.fn.transition.settings, {
+                            animation: animation,
+                        });
                     },
                     animationClass: function (animation) {
                         var
@@ -878,7 +884,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -907,7 +913,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -933,8 +939,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

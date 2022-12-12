@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -25,11 +25,11 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -95,7 +95,7 @@
                         var precision = 1;
                         var ratio = min / total;
                         while (precisionPower < 10) {
-                            ratio = ratio * precision;
+                            ratio *= precision;
                             if (ratio > 1) {
                                 break;
                             }
@@ -109,7 +109,7 @@
                             ? element
                             : !isNaN(element)
                                 ? [element]
-                                : typeof element == 'string'
+                                : typeof element === 'string'
                                     ? element.split(',')
                                     : [];
                     },
@@ -355,7 +355,7 @@
                             totalWidth     = $module.width(),
                             minDisplay     = parseInt($bar.css('min-width'), 10),
                             displayPercent = (barWidth > minDisplay)
-                                ? (barWidth / totalWidth * 100)
+                                ? ((barWidth / totalWidth) * 100)
                                 : module.percent
                         ;
 
@@ -365,10 +365,10 @@
                     },
 
                     percent: function (index) {
-                        return module.percent && module.percent[index || 0] || 0;
+                        return (module.percent && module.percent[index || 0]) || 0;
                     },
                     value: function (index) {
-                        return module.nextValue || module.value && module.value[index || 0] || 0;
+                        return module.nextValue || (module.value && module.value[index || 0]) || 0;
                     },
                     total: function () {
                         return module.total !== undefined ? module.total : false;
@@ -486,7 +486,7 @@
                     },
                     duration: function (duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = (typeof duration === 'number')
                             ? duration + 'ms'
                             : duration;
                         module.verbose('Setting progress bar transition duration', duration);
@@ -498,7 +498,7 @@
                     },
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {
-                            percent = (typeof percent == 'string')
+                            percent = (typeof percent === 'string')
                                 ? +(percent.replace('%', ''))
                                 : percent;
 
@@ -606,7 +606,7 @@
                         }
                     },
                     barLabel: function (text) {
-                        $progresses.map(function (index, element) {
+                        $progresses.each(function (index, element) {
                             var $progress = $(element);
                             if (text !== undefined) {
                                 $progress.text(module.get.text(text, index));
@@ -807,7 +807,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -858,8 +858,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -972,7 +972,7 @@
         },
 
         regExp: {
-            variable: /\{\$*[a-z0-9]+\}/gi,
+            variable: /{\$*[\da-z]+}/gi,
         },
 
         metadata: {

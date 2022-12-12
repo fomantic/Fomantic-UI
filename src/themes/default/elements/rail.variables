@@ -2,9 +2,9 @@
             Rail
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @width: 300px;
 @height: 100%;
@@ -12,9 +12,9 @@
 @distance: 4rem;
 @splitDistance: (@distance / 2);
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Close */
 @closeDistance: 2em;
@@ -31,4 +31,3 @@
 @dividingDistance: 5rem;
 @splitDividingDistance: (@dividingDistance / 2);
 @dividingWidth: @width + @splitDividingDistance;
-

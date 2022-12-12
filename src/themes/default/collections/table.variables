@@ -2,9 +2,9 @@
              Table
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @horizontalMargin: 0;
@@ -13,8 +13,8 @@
 @borderSpacing: 0;
 @borderRadius: @defaultBorderRadius;
 @transition:
-  background @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing
+    background @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing
 ;
 @background: @white;
 @color: @textColor;
@@ -24,9 +24,9 @@
 @textAlign: left;
 @verticalAlign: middle;
 
-/*--------------
+/* --------------
      Parts
----------------*/
+--------------- */
 
 /* Table Row */
 @rowBorder: 1px solid @internalBorderColor;
@@ -78,9 +78,9 @@
 @responsiveCellBoxShadow: none;
 @responsiveCellHeaderFontWeight: @bold;
 
-/*-------------------
+/* -------------------
        Types
---------------------*/
+-------------------- */
 
 /* Definition */
 @definitionPageBackground: @white;
@@ -102,16 +102,15 @@
 @definitionColumnTextAlign: '';
 @definitionColumnHorizontalPadding: '';
 
-
-/*--------------
+/* --------------
     Couplings
----------------*/
+--------------- */
 
 @iconVerticalAlign: baseline;
 
-/*--------------
+/* --------------
      States
----------------*/
+--------------- */
 
 @stateMarkerWidth: 0;
 
@@ -157,9 +156,9 @@
 @activeBackgroundHover: #EFEFEF;
 @activeColorHover: @selectedTextColor;
 
-/*--------------
+/* --------------
      Types
----------------*/
+--------------- */
 
 /* Attached */
 @attachedTopOffset: 0;
@@ -169,8 +168,8 @@
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
-  @boxShadow,
-  @attachedBoxShadow
+    @boxShadow,
+    @attachedBoxShadow
 ;
 
 /* Striped */
@@ -294,7 +293,6 @@
 @overflowingTabletMaxHeight: (@overflowingItemHeight * @overflowingTabletMaxItems);
 @overflowingComputerMaxHeight: (@overflowingItemHeight * @overflowingComputerMaxItems);
 @overflowingWidescreenMaxHeight: (@overflowingItemHeight * @overflowingWidescreenMaxItems);
-
 
 /* Sizes */
 @small: 0.9em;

@@ -82,7 +82,6 @@
     -webkit-tap-highlight-color: transparent;
     flex: 0 0 auto;
     user-select: none;
-
     background: @itemBackground;
     padding: @itemVerticalPadding @itemHorizontalPadding;
     text-transform: @itemTextTransform;
@@ -102,7 +101,6 @@
     top: 0;
     right: 0;
     height: 100%;
-
     width: @dividerSize;
     background: @dividerBackground;
 }
@@ -292,6 +290,7 @@
             /* IE needs 0, all others support max-content to show dropdown icon inline, so keep both settings! */
             min-width: 0;
         }
+
         min-width: max-content;
         margin: 0 0 0 @dropdownMenuDistance;
         box-shadow: @dropdownVerticalMenuBoxShadow;
@@ -643,7 +642,6 @@ Floated Menu / Item
     .ui.tabular.menu .item {
         background: transparent;
         border-bottom: none;
-
         border-left: @tabularBorderWidth solid transparent;
         border-right: @tabularBorderWidth solid transparent;
         border-top: @tabularOppositeBorderWidth solid transparent;
@@ -968,7 +966,6 @@ Floated Menu / Item
             border-bottom-style: solid;
             border-radius: 0;
             align-self: flex-end;
-
             margin: 0 0 -@secondaryPointingBorderWidth;
             padding: @secondaryPointingItemVerticalPadding @secondaryPointingItemHorizontalPadding;
             border-bottom-width: @secondaryPointingBorderWidth;
@@ -1094,7 +1091,6 @@ Floated Menu / Item
         border-radius: 0;
         box-shadow: none;
         border: none;
-
         margin: @textMenuMargin;
     }
     .ui.text.menu .item {
@@ -1596,6 +1592,7 @@ Floated Menu / Item
                 /* IE hack to make dropdown icons appear inline */
                 display: -ms-inline-flexbox !important;
             }
+
             display: inline-block;
         }
     }
@@ -1668,13 +1665,13 @@ Floated Menu / Item
         width: 14.285%;
     }
     .ui.menu.eight.item .item {
-        width: 12.500%;
+        width: 12.5%;
     }
     .ui.menu.nine.item .item {
         width: 11.11%;
     }
     .ui.menu.ten.item .item {
-        width: 10.0%;
+        width: 10%;
     }
     .ui.menu.eleven.item .item {
         width: 9.09%;
@@ -1764,15 +1761,12 @@ Floated Menu / Item
         left: 50%;
         transform: translateX(-50%) translateY(-50%) rotate(45deg);
         background: none;
-
         margin: (@arrowBorderWidth / 2) 0 0;
         width: @arrowSize;
         height: @arrowSize;
-
         border: none;
         border-bottom: @arrowBorder;
         border-right: @arrowBorder;
-
         z-index: @arrowZIndex;
         transition: @arrowTransition;
     }
@@ -1783,10 +1777,8 @@ Floated Menu / Item
             right: 0;
             bottom: auto;
             left: auto;
-
             transform: translateX(50%) translateY(-50%) rotate(45deg);
             margin: 0 -(@arrowBorderWidth / 2) 0 0;
-
             border: none;
             border-top: @arrowBorder;
             border-right: @arrowBorder;

@@ -77,8 +77,8 @@
 @toastCloseDistanceVertical: 1em;
 
 /* Actions */
-@toastActionBackground: rgba(255, 255, 255, .25);
-@toastActionBorder: 1px solid rgba(0, 0, 0, .2);
+@toastActionBackground: rgba(255, 255, 255, 0.25);
+@toastActionBorder: 1px solid rgba(0, 0, 0, 0.2);
 @toastActionMargin: -1em;
 @toastActionMarginTop: 0.5em;
 @toastActionMarginLeft: 1em;

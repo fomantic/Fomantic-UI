@@ -1,4 +1,4 @@
-var assets = [
+let assets = [
     'dist/themes/default/assets/images/flags.png',
 ];
 
