@@ -1533,7 +1533,7 @@
             bracket: /\[(.*)]/i,
             decimal: /^\d+\.?\d*$/,
             email: /^[\w!#$%&'*+./=?^`{|}~-]+@[\da-z]([\da-z-]*[\da-z])?(\.[\da-z]([\da-z-]*[\da-z])?)*$/i,
-            escape: /[$()*+,./:=?@[\\\]^{|}\-]/g,
+            escape: /[$()*+,./:=?@[\\\]^{|}-]/g,
             flags: /^\/(.*)\/(.*)?/,
             integer: /^-?\d+$/,
             number: /^-?\d*(\.\d+)?$/,
@@ -1964,7 +1964,7 @@
                 }
 
                 // allow dashes and spaces in card
-                cardNumber = cardNumber.replace(/[\s\-]/g, '');
+                cardNumber = cardNumber.replace(/[\s-]/g, '');
 
                 // verify card types
                 if (requiredTypes) {
