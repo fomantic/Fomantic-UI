@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.toast = $.fn.toast = function (parameters) {
+    $.fn.toast = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
@@ -272,7 +272,7 @@
                             }
                         }
                         if (settings.displayTime === 'auto') {
-                            settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(' ').length / settings.wordsPerMinute * 60000);
+                            settings.displayTime = Math.max(settings.minDisplayTime, ($toast.text().split(' ').length / settings.wordsPerMinute) * 60000);
                         }
                         $toastBox.append($toast);
 
@@ -773,6 +773,7 @@
             ? returnedValue
             : this;
     };
+    $.toast = $.fn.toast;
 
     $.fn.toast.settings = {
 
@@ -910,13 +911,15 @@
             ;
             if (x < 1 / d1) {
                 return n1 * x * x;
-            } else if (x < 2 / d1) {
-                return n1 * (x -= 1.5 / d1) * x + 0.75;
-            } else if (x < 2.5 / d1) {
-                return n1 * (x -= 2.25 / d1) * x + 0.9375;
-            } else {
-                return n1 * (x -= 2.625 / d1) * x + 0.984375;
             }
+            if (x < 2 / d1) {
+                return n1 * (x -= 1.5 / d1) * x + 0.75;
+            }
+            if (x < 2.5 / d1) {
+                return n1 * (x -= 2.25 / d1) * x + 0.9375;
+            }
+
+            return n1 * (x -= 2.625 / d1) * x + 0.984375;
         },
         easeOutCubic: function (t) {
             return (--t) * t * t + 1;

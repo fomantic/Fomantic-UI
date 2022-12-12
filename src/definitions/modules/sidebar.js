@@ -403,9 +403,9 @@
                                     module.hideOthers(module.show);
 
                                     return;
-                                } else {
-                                    module.hideOthers();
                                 }
+
+                                module.hideOthers();
                             } else {
                                 settings.transition = 'overlay';
                             }
@@ -709,9 +709,11 @@
                     direction: function () {
                         if ($module.hasClass(className.top)) {
                             return className.top;
-                        } else if ($module.hasClass(className.right)) {
+                        }
+                        if ($module.hasClass(className.right)) {
                             return className.right;
-                        } else if ($module.hasClass(className.bottom)) {
+                        }
+                        if ($module.hasClass(className.bottom)) {
                             return className.bottom;
                         }
 
@@ -803,9 +805,9 @@
                             module.verbose('Browser was found to be iOS', userAgent);
 
                             return true;
-                        } else {
-                            return false;
                         }
+
+                        return false;
                     },
                     mobile: function () {
                         var
@@ -816,11 +818,11 @@
                             module.verbose('Browser was found to be mobile', userAgent);
 
                             return true;
-                        } else {
-                            module.verbose('Browser is not mobile, using regular transition', userAgent);
-
-                            return false;
                         }
+
+                        module.verbose('Browser is not mobile, using regular transition', userAgent);
+
+                        return false;
                     },
                     hidden: function () {
                         return !module.is.visible();

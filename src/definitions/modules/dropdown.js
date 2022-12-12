@@ -1604,19 +1604,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Up key pressed, changing active item');
-                                        $selectedItem
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Up key pressed, changing active item');
+                                    $selectedItem
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1630,19 +1631,20 @@
                                         event.preventDefault();
 
                                         return;
-                                    } else {
-                                        module.verbose('Down key pressed, changing active item');
-                                        $item
-                                            .removeClass(className.selected)
-                                        ;
-                                        $nextItem
-                                            .addClass(className.selected)
-                                        ;
-                                        module.set.scrollPosition($nextItem);
-                                        if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
-                                            module.set.selectedItem($nextItem);
-                                        }
                                     }
+
+                                    module.verbose('Down key pressed, changing active item');
+                                    $item
+                                        .removeClass(className.selected)
+                                    ;
+                                    $nextItem
+                                        .addClass(className.selected)
+                                    ;
+                                    module.set.scrollPosition($nextItem);
+                                    if (settings.selectOnKeydown && module.is.single() && !$nextItem.hasClass(className.actionable)) {
+                                        module.set.selectedItem($nextItem);
+                                    }
+
                                     event.preventDefault();
                                 }
 
@@ -1725,11 +1727,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown, canceling callback');
+
+                        return false;
                     },
                     eventOnElement: function (event, callback) {
                         var
@@ -1747,11 +1749,11 @@
                             callback();
 
                             return true;
-                        } else {
-                            module.verbose('Event occurred in dropdown menu, canceling callback');
-
-                            return false;
                         }
+
+                        module.verbose('Event occurred in dropdown menu, canceling callback');
+
+                        return false;
                     },
                 },
 
@@ -1880,7 +1882,8 @@
                         ;
                         if (returnEndPos && 'selectionEnd' in input) {
                             return input.selectionEnd;
-                        } else if (!returnEndPos && 'selectionStart' in input) {
+                        }
+                        if (!returnEndPos && 'selectionStart' in input) {
                             return input.selectionStart;
                         }
                         if (document.selection) {
@@ -2170,16 +2173,16 @@
                                 }
 
                                 return true;
-                            } else {
-                                module.verbose('No longer at maximum selection count');
-                                module.remove.message();
-                                module.remove.filteredItem();
-                                if (module.is.searchSelection()) {
-                                    module.filterItems();
-                                }
-
-                                return false;
                             }
+
+                            module.verbose('No longer at maximum selection count');
+                            module.remove.message();
+                            module.remove.filteredItem();
+                            if (module.is.searchSelection()) {
+                                module.filterItems();
+                            }
+
+                            return false;
                         }
 
                         return true;
@@ -4183,11 +4186,9 @@
                 deQuote = $.fn.dropdown.settings.templates.deQuote
             ;
             html += '<i class="dropdown icon"></i>';
-            if (placeholder) {
-                html += '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>';
-            } else {
-                html += '<div class="text"></div>';
-            }
+            html += placeholder
+                ? '<div class="default text">' + escape(placeholder, preserveHTML) + '</div>'
+                : '<div class="text"></div>';
             html += '<div class="' + deQuote(className.menu) + '">';
             html += $.fn.dropdown.settings.templates.menu(select, fields, preserveHTML, className);
             html += '</div>';
@@ -4205,9 +4206,7 @@
             ;
             $.each(values, function (index, option) {
                 var
-                    itemType = (option[fields.type])
-                        ? option[fields.type]
-                        : 'item',
+                    itemType = option[fields.type] || 'item',
                     isMenu = itemType.indexOf('menu') !== -1
                 ;
 
@@ -4227,15 +4226,15 @@
                             : '',
                         hasDescription = (escape(option[fields.description] || '', preserveHTML) != '')
                     ;
-                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] ? option[fields.class] : className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
+                    html += '<div class="' + deQuote(maybeActionable + maybeDisabled + maybeDescriptionVertical + (option[fields.class] || className.item)) + '" data-value="' + deQuote(option[fields.value], true) + '"' + maybeText + '>';
                     if (isMenu) {
                         html += '<i class="' + (itemType.indexOf('left') !== -1 ? 'left' : '') + ' dropdown icon"></i>';
                     }
                     if (option[fields.image]) {
-                        html += '<img class="' + deQuote(option[fields.imageClass] ? option[fields.imageClass] : className.image) + '" src="' + deQuote(option[fields.image]) + '">';
+                        html += '<img class="' + deQuote(option[fields.imageClass] || className.image) + '" src="' + deQuote(option[fields.image]) + '">';
                     }
                     if (option[fields.icon]) {
-                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                        html += '<i class="' + deQuote(option[fields.icon] + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                     }
                     if (hasDescription) {
                         html += '<span class="' + deQuote(className.description) + '">' + escape(option[fields.description] || '', preserveHTML) + '</span>';
@@ -4257,12 +4256,12 @@
                 } else if (itemType === 'header') {
                     var
                         groupName = escape(option[fields.name] || '', preserveHTML),
-                        groupIcon = deQuote(option[fields.icon] ? option[fields.icon] : className.groupIcon)
+                        groupIcon = deQuote(option[fields.icon] || className.groupIcon)
                     ;
                     if (groupName !== '' || groupIcon !== '') {
-                        html += '<div class="' + deQuote(option[fields.class] ? option[fields.class] : className.header) + '">';
+                        html += '<div class="' + deQuote(option[fields.class] || className.header) + '">';
                         if (groupIcon !== '') {
-                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] ? option[fields.iconClass] : className.icon)) + '"></i>';
+                            html += '<i class="' + deQuote(groupIcon + ' ' + (option[fields.iconClass] || className.icon)) + '"></i>';
                         }
                         html += groupName;
                         html += '</div>';

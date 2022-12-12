@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.modal = $.fn.modal = function (parameters) {
+    $.fn.modal = function (parameters) {
         var
             $allModules    = $(this),
             $window        = $(window),
@@ -1312,6 +1312,7 @@
             ? returnedValue
             : this;
     };
+    $.modal = $.fn.modal;
 
     $.fn.modal.settings = {
 
@@ -1463,17 +1464,16 @@
                     content: '',
                     title: '',
                 }, queryArguments[0]);
-            } else {
-                if (!isFunction(queryArguments[queryArguments.length - 1])) {
-                    queryArguments.push(function () {});
-                }
-
-                return {
-                    handler: queryArguments.pop(),
-                    content: queryArguments.pop() || '',
-                    title: queryArguments.pop() || '',
-                };
             }
+            if (!isFunction(queryArguments[queryArguments.length - 1])) {
+                queryArguments.push(function () {});
+            }
+
+            return {
+                handler: queryArguments.pop(),
+                content: queryArguments.pop() || '',
+                title: queryArguments.pop() || '',
+            };
         },
         alert: function () {
             var

@@ -325,7 +325,8 @@
                             module.debug('onShow callback returned false, cancelling popup animation');
 
                             return;
-                        } else if (!settings.preserve && !settings.popup) {
+                        }
+                        if (!settings.preserve && !settings.popup) {
                             module.refresh();
                         }
                         if ($popup && module.set.position()) {
@@ -370,9 +371,9 @@
                     }
                     if (settings.inline || settings.popup) {
                         return (module.has.popup());
-                    } else {
-                        return ($popup.closest($context).length > 0);
                     }
+
+                    return ($popup.closest($context).length > 0);
                 },
 
                 removePopup: function () {
@@ -588,7 +589,8 @@
                     startEvent: function () {
                         if (settings.on == 'hover') {
                             return 'mouseenter';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on == 'focus') {
                             return 'focus';
                         }
 
@@ -600,7 +602,8 @@
                     endEvent: function () {
                         if (settings.on == 'hover') {
                             return 'mouseleave';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on == 'focus') {
                             return 'blur';
                         }
 
@@ -910,19 +913,18 @@
                                 return ($popup)
                                     ? module.set.position(position, calculations)
                                     : false;
+                            }
+                            if (settings.lastResort) {
+                                module.debug('No position found, showing with last position');
                             } else {
-                                if (settings.lastResort) {
-                                    module.debug('No position found, showing with last position');
-                                } else {
-                                    module.debug('Popup could not find a position to display', $popup);
-                                    module.error(error.cannotPlace, element);
-                                    module.remove.attempts();
-                                    module.remove.loading();
-                                    module.reset();
-                                    settings.onUnplaceable.call($popup, element);
+                                module.debug('Popup could not find a position to display', $popup);
+                                module.error(error.cannotPlace, element);
+                                module.remove.attempts();
+                                module.remove.loading();
+                                module.reset();
+                                settings.onUnplaceable.call($popup, element);
 
-                                    return false;
-                                }
+                                return false;
                             }
                         }
                         module.debug('Position is on stage', position);

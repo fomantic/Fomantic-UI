@@ -114,7 +114,7 @@ module.exports = {
                         theme,
                         element
                     ;
-                    if (error && error.filename && error.filename.match(/theme.less/)) {
+                    if (error && error.filename && /theme.less/.test(error.filename)) {
                         if (error.line == 9) {
                             element = regExp.variable.exec(error.message)[1];
                             if (element) {

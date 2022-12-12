@@ -167,14 +167,15 @@
                             }
 
                             return false;
-                        } else if (!settings.allowRepeats && module.is.occurring()) {
+                        }
+                        if (!settings.allowRepeats && module.is.occurring()) {
                             module.debug('Animation is already occurring, will not execute repeated animation', settings.animation);
 
                             return false;
-                        } else {
-                            module.debug('New animation started, completing previous early', settings.animation);
-                            instance.complete();
                         }
+
+                        module.debug('New animation started, completing previous early', settings.animation);
+                        instance.complete();
                     }
                     if (module.can.animate()) {
                         module.set.animating(settings.animation);
@@ -490,31 +491,36 @@
                     settings: function (animation, duration, onComplete) {
                         if (typeof animation === 'object') { // single settings object
                             return $.extend(true, {}, $.fn.transition.settings, animation);
-                        } else if (typeof onComplete === 'function') { // all arguments provided
+                        }
+                        if (typeof onComplete === 'function') { // all arguments provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: onComplete,
                                 duration: duration,
                             });
-                        } else if (typeof duration === 'string' || typeof duration === 'number') { // only duration provided
+                        }
+                        if (typeof duration === 'string' || typeof duration === 'number') { // only duration provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 duration: duration,
                             });
-                        } else if (typeof duration === 'object') { // duration is actually settings object
+                        }
+                        if (typeof duration === 'object') { // duration is actually settings object
                             return $.extend({}, $.fn.transition.settings, duration, {
                                 animation: animation,
                             });
-                        } else if (typeof duration === 'function') { // duration is actually callback
+                        }
+                        if (typeof duration === 'function') { // duration is actually callback
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: duration,
                             });
-                        } else { // only animation provided
-                            return $.extend({}, $.fn.transition.settings, {
-                                animation: animation,
-                            });
                         }
+
+                        // only animation provided
+                        return $.extend({}, $.fn.transition.settings, {
+                            animation: animation,
+                        });
                     },
                     animationClass: function (animation) {
                         var

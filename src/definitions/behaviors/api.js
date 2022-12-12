@@ -23,7 +23,7 @@
         ? window
         : globalThis;
 
-    $.api = $.fn.api = function (parameters) {
+    $.fn.api = function (parameters) {
         var
             // use window context if none specified
             $allModules     = isFunction(this)
@@ -207,9 +207,9 @@
                         module.error(error.beforeSend);
 
                         return;
-                    } else {
-                        module.cancelled = false;
                     }
+
+                    module.cancelled = false;
 
                     // get url
                     url = module.get.templatedURL();
@@ -304,11 +304,11 @@
                             module.verbose('XHR request determined to be aborted');
 
                             return true;
-                        } else {
-                            module.verbose('XHR request was not aborted');
-
-                            return false;
                         }
+
+                        module.verbose('XHR request was not aborted');
+
+                        return false;
                     },
                     validResponse: function (response) {
                         if ((!module.is.expectingJSON()) || !isFunction(settings.successTest)) {
@@ -321,11 +321,11 @@
                             module.debug('Response passed success test', response);
 
                             return true;
-                        } else {
-                            module.debug('Response failed success test', response);
-
-                            return false;
                         }
+
+                        module.debug('Response failed success test', response);
+
+                        return false;
                     },
                 },
 
@@ -376,13 +376,13 @@
                                         url = false;
 
                                         return false;
-                                    } else {
-                                        module.verbose('Found required variable', variable, value);
-                                        value = (settings.encodeParameters)
-                                            ? module.get.urlEncodedValue(value)
-                                            : value;
-                                        url = url.replace(templatedString, value);
                                     }
+
+                                    module.verbose('Found required variable', variable, value);
+                                    value = (settings.encodeParameters)
+                                        ? module.get.urlEncodedValue(value)
+                                        : value;
+                                    url = url.replace(templatedString, value);
                                 });
                             }
                             if (optionalVariables) {
@@ -408,11 +408,9 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        if (url.indexOf('/' + templatedString) !== -1) {
-                                            url = url.replace('/' + templatedString, '');
-                                        } else {
-                                            url = url.replace(templatedString, '');
-                                        }
+                                        url = url.indexOf('/' + templatedString) !== -1
+                                            ? url.replace('/' + templatedString, '')
+                                            : url.replace(templatedString, '');
                                     }
                                 });
                             }
@@ -620,7 +618,8 @@
                                 settings.onAbort.call(context, status, $module, xhr);
 
                                 return true;
-                            } else if (status == 'invalid') {
+                            }
+                            if (status == 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
                             } else if (status == 'error') {
                                 if (xhr !== undefined) {
@@ -835,21 +834,23 @@
                             module.debug('API called without element, no events attached');
 
                             return false;
-                        } else if (settings.on == 'auto') {
+                        }
+                        if (settings.on == 'auto') {
                             if ($module.is('input')) {
                                 return (element.oninput !== undefined)
                                     ? 'input'
                                     : (element.onpropertychange !== undefined)
                                         ? 'propertychange'
                                         : 'keyup';
-                            } else if ($module.is('form')) {
-                                return 'submit';
-                            } else {
-                                return 'click';
                             }
-                        } else {
-                            return settings.on;
+                            if ($module.is('form')) {
+                                return 'submit';
+                            }
+
+                            return 'click';
                         }
+
+                        return settings.on;
                     },
                     templatedURL: function (action) {
                         action = action || $module.data(metadata.action) || settings.action || false;
@@ -1061,6 +1062,7 @@
             ? returnedValue
             : this;
     };
+    $.api = $.fn.api;
 
     $.api.settings = {
 

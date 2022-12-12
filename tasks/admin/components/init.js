@@ -24,13 +24,13 @@ let
     mkdirp    = require('mkdirp'),
 
     // admin files
-    github    = require('../../config/admin/github.js'),
+    github    = require('../../config/admin/github'),
     release   = require('../../config/admin/release'),
     project   = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
     oAuth     = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
-        ? require('../../config/admin/oauth')
+        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
     // shorthand
@@ -141,7 +141,7 @@ module.exports = function (callback) {
             });
         }
 
-        function nextRepo() {
+        function nextRepo() { // eslint-disable-line unicorn/consistent-function-scoping
             // console.log('Sleeping for 1 second...');
             // avoid rate throttling
             global.clearTimeout(timer);

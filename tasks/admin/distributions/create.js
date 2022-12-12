@@ -108,11 +108,9 @@ module.exports = function (callback) {
             createList = function (files) {
                 let filenames = '';
                 for (let file in files) {
-                    if (file == (files.length - 1)) {
-                        filenames += "'" + files[file] + "'";
-                    } else {
-                        filenames += "'" + files[file] + "',\n    ";
-                    }
+                    filenames += file == (files.length - 1)
+                        ? "'" + files[file] + "'"
+                        : "'" + files[file] + "',\n    ";
                 }
 
                 return filenames;

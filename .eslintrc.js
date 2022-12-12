@@ -118,16 +118,11 @@ module.exports = {
         'unicorn/no-nested-ternary': 'off', // about 80 errors (except 14 nested ternary operators autofixable)
 
         // TODO
-        'import/extensions': 'off',
-        'import/no-dynamic-require': 'off',
         'no-bitwise': 'off',
         'no-cond-assign': 'off',
-        'no-else-return': 'off',
         'no-empty': 'off',
         'no-labels': 'off',
         'no-loop-func': 'off',
-        'no-mixed-operators': 'off',
-        'no-multi-assign': 'off',
         'no-new-func': 'off',
         'no-path-concat': 'off',
         'no-prototype-builtins': 'off',
@@ -136,7 +131,6 @@ module.exports = {
         'no-shadow-restricted-names': 'off',
         'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
-        'unicorn/consistent-function-scoping': 'off',
         'unicorn/empty-brace-spaces': 'off',
         'unicorn/escape-case': 'off',
         'unicorn/new-for-builtins': 'off',
@@ -147,12 +141,9 @@ module.exports = {
         'unicorn/no-useless-undefined': 'off',
         'unicorn/prefer-array-find': 'off',
         'unicorn/prefer-default-parameters': 'off',
-        'unicorn/prefer-logical-operator-over-ternary': 'off',
         'unicorn/prefer-native-coercion-functions': 'off',
         'unicorn/prefer-negative-index': 'off',
-        'unicorn/prefer-regexp-test': 'off',
         'unicorn/prefer-switch': 'off',
-        'unicorn/prefer-ternary': 'off',
     },
     reportUnusedDisableDirectives: true,
     globals: {

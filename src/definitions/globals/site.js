@@ -19,7 +19,7 @@
         ? window
         : globalThis;
 
-    $.site = $.fn.site = function (parameters) {
+    $.fn.site = function (parameters) {
         var
             time           = Date.now(),
             performance    = [],
@@ -417,6 +417,7 @@
             ? returnedValue
             : this;
     };
+    $.site = $.fn.site;
 
     $.site.settings = {
 

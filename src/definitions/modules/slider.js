@@ -523,23 +523,23 @@
                     trackOffset: function () {
                         if (module.is.vertical()) {
                             return $track.offset().top;
-                        } else {
-                            return $track.offset().left;
                         }
+
+                        return $track.offset().left;
                     },
                     trackLength: function () {
                         if (module.is.vertical()) {
                             return $track.height();
-                        } else {
-                            return $track.width();
                         }
+
+                        return $track.width();
                     },
                     trackLeft: function () {
                         if (module.is.vertical()) {
                             return $track.position().top;
-                        } else {
-                            return $track.position().left;
                         }
+
+                        return $track.position().left;
                     },
                     trackStartPos: function () {
                         return module.is.reversed() ? module.get.trackLeft() + module.get.trackLength() : module.get.trackLeft();
@@ -574,11 +574,7 @@
                         ;
                         if (step != 0) {
                             var split = String(step).split('.');
-                            if (split.length == 2) {
-                                decimalPlaces = split[1].length;
-                            } else {
-                                decimalPlaces = 0;
-                            }
+                            decimalPlaces = split.length == 2 ? split[1].length : 0;
                         } else {
                             decimalPlaces = settings.decimalPlaces;
                         }
@@ -637,11 +633,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return module.secondThumbVal;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return module.thumbVal;
@@ -655,11 +652,12 @@
                             case 'second':
                                 if (module.is.range()) {
                                     return secondPos;
-                                } else {
-                                    module.error(error.notrange);
-
-                                    break;
                                 }
+
+                                module.error(error.notrange);
+
+                                break;
+
                             case 'first':
                             default:
                                 return position;
@@ -852,15 +850,18 @@
                         ;
                         if (key == downArrow || key == leftArrow) {
                             return SINGLE_BACKSTEP;
-                        } else if (key == upArrow || key == rightArrow) {
-                            return SINGLE_STEP;
-                        } else if (key == keys.pageDown) {
-                            return BIG_BACKSTEP;
-                        } else if (key == keys.pageUp) {
-                            return BIG_STEP;
-                        } else {
-                            return NO_STEP;
                         }
+                        if (key == upArrow || key == rightArrow) {
+                            return SINGLE_STEP;
+                        }
+                        if (key == keys.pageDown) {
+                            return BIG_BACKSTEP;
+                        }
+                        if (key == keys.pageUp) {
+                            return BIG_STEP;
+                        }
+
+                        return NO_STEP;
                     },
                 },
 
@@ -1009,8 +1010,8 @@
                             thumbPosValue,
                             min = module.get.min(),
                             max = module.get.max(),
-                            thumbPosPercent = 100 * (newValue - min) / (max - min),
-                            trackStartPosPercent = 100 * (Math.min(thumbVal, secondThumbVal) - min) / (max - min),
+                            thumbPosPercent = 100 * ((newValue - min) / (max - min)),
+                            trackStartPosPercent = 100 * ((Math.min(thumbVal, secondThumbVal) - min) / (max - min)),
                             trackEndPosPercent = 100 * (1 - (Math.max(thumbVal, secondThumbVal) - min) / (max - min))
                         ;
                         if (module.is.vertical()) {
