@@ -1699,7 +1699,7 @@
                     month = -1,
                     year = -1
                 ;
-                var isAm = undefined;
+                var isAm;
 
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
