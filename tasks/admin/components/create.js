@@ -14,7 +14,7 @@
   * create meteor.js file
 */
 
-var
+let
     gulp            = require('gulp'),
 
     // node dependencies
@@ -41,20 +41,20 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    let
         stream,
         index,
         tasks = []
     ;
 
     for (index in release.components) {
-        var
+        let
             component = release.components[index]
     ;
 
         // streams... designed to save time and make coding fun...
         (function (component) {
-            var
+            let
                 outputDirectory      = path.join(release.outputRoot, component),
                 isJavascript         = fs.existsSync(output.compressed + component + '.js'),
                 isCSS                = fs.existsSync(output.compressed + component + '.css'),
@@ -266,7 +266,7 @@ module.exports = function (callback) {
 
             // Creates meteor package.js
             function createMeteorPackage() {
-                var
+                let
                     filenames = ''
                 ;
 

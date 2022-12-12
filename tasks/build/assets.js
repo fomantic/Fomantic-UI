@@ -2,7 +2,7 @@
  Build Task
  *******************************/
 
-var
+let
     gulp      = require('gulp'),
 
     // gulp dependencies
@@ -42,7 +42,7 @@ function buildAssets(src, config, callback) {
     }
 
     // copy assets
-    var assets         = () => build(src, config);
+    let assets         = () => build(src, config);
     assets.displayName = 'Building Assets';
 
     gulp.series(assets)(callback);

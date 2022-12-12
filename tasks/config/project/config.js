@@ -2,8 +2,7 @@
             Set-up
 *******************************/
 
-var
-    extend   = require('extend'),
+let
     fs       = require('fs'),
     path     = require('path'),
 
@@ -20,7 +19,7 @@ module.exports = {
         var
             configPath,
             walk = function (directory) {
-                var
+                let
                     nextDirectory = path.resolve(path.join(directory, path.sep, '..')),
                     currentPath   = path.normalize(path.join(directory, file))
                 ;
@@ -50,13 +49,11 @@ module.exports = {
 
     // adds additional derived values to a config object
     addDerivedValues: function (config) {
-        config = config || extend(false, {}, defaults);
-
         /* --------------
             File Paths
         --------------- */
 
-        var
+        let
             configPath = this.getPath(),
             sourcePaths = {},
             outputPaths = {},
@@ -140,8 +137,6 @@ module.exports = {
         config.globs.individuals = individuals.length === 1 ? individuals[0] : (individuals.length > 1)
             ? '{' + individuals.join(',') + '}'
             : undefined;
-
-        return config;
     },
 
 };

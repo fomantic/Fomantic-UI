@@ -2,7 +2,7 @@
  *          Watch Task
  *******************************/
 
-var
+let
     gulp = require('gulp')
 ;
 

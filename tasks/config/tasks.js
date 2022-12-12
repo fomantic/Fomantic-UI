@@ -1,15 +1,15 @@
-var
+let
     browserslist = require('browserslist'),
     console = require('better-console'),
     config  = require('./user'),
     release = require('./project/release')
 ;
 
-var defaultBrowsers = browserslist(browserslist.defaults);
-var userBrowsers = browserslist();
-var hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
+let defaultBrowsers = browserslist(browserslist.defaults);
+let userBrowsers = browserslist();
+let hasBrowserslistConfig = JSON.stringify(defaultBrowsers) !== JSON.stringify(userBrowsers);
 
-var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
+let overrideBrowserslist = hasBrowserslistConfig ? undefined : [
     'last 2 versions',
     '> 1%',
     'opera 12.1',
@@ -18,7 +18,7 @@ var overrideBrowserslist = hasBrowserslistConfig ? undefined : [
 ];
 
 // Node 12 does not support ??, so a little polyfill
-var nullish = (value, fallback) => {
+let nullish = (value, fallback) => {
     return value !== undefined && value !== null ? value : fallback;
 };
 
@@ -107,7 +107,7 @@ module.exports = {
         plumber: {
             less: {
                 errorHandler: function (error) {
-                    var
+                    let
                         regExp = {
                             variable: /@(\S.*?)\s/,
                             theme: /themes[\/\\]+(.*?)[\/\\].*/,
