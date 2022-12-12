@@ -19,7 +19,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -34,7 +34,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -126,7 +126,7 @@
 
                 decode: {
                     json: function (response) {
-                        if (response !== undefined && typeof response == 'string') {
+                        if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
                             } catch (e) {
@@ -431,8 +431,8 @@
 
                         if (useFormDataApi) {
                             formData = new FormData($form[0]);
-                            settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
-                            settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
+                            settings.processData = settings.processData !== undefined ? settings.processData : false;
+                            settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
                             var
                                 formArray = $form.serializeArray(),
@@ -1000,7 +1000,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {

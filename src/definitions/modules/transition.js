@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -314,7 +314,7 @@
                     },
                     duration: function (animationName, duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = (typeof duration === 'number')
                             ? duration + 'ms'
                             : duration;
                         if (duration || duration === 0) {
@@ -488,24 +488,24 @@
                 },
                 get: {
                     settings: function (animation, duration, onComplete) {
-                        if (typeof animation == 'object') { // single settings object
+                        if (typeof animation === 'object') { // single settings object
                             return $.extend(true, {}, $.fn.transition.settings, animation);
-                        } else if (typeof onComplete == 'function') { // all arguments provided
+                        } else if (typeof onComplete === 'function') { // all arguments provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: onComplete,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'string' || typeof duration == 'number') { // only duration provided
+                        } else if (typeof duration === 'string' || typeof duration === 'number') { // only duration provided
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 duration: duration,
                             });
-                        } else if (typeof duration == 'object') { // duration is actually settings object
+                        } else if (typeof duration === 'object') { // duration is actually settings object
                             return $.extend({}, $.fn.transition.settings, duration, {
                                 animation: animation,
                             });
-                        } else if (typeof duration == 'function') { // duration is actually callback
+                        } else if (typeof duration === 'function') { // duration is actually callback
                             return $.extend({}, $.fn.transition.settings, {
                                 animation: animation,
                                 onComplete: duration,
@@ -933,7 +933,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {

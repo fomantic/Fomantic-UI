@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (window !== undefined && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -25,7 +25,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             settings        = ($.isPlainObject(parameters))
@@ -71,13 +71,13 @@
                         module.verbose('Console not available, normalizing events');
                         module.disable.console();
                     }
-                    if (typeof console.group == 'undefined' || typeof console.groupEnd == 'undefined' || typeof console.groupCollapsed == 'undefined') {
+                    if (console.group === undefined || console.groupEnd === undefined || console.groupCollapsed === undefined) {
                         module.verbose('Console group not available, normalizing events');
                         window.console.group = function () {};
                         window.console.groupEnd = function () {};
                         window.console.groupCollapsed = function () {};
                     }
-                    if (typeof console.markTimeline == 'undefined') {
+                    if (console.markTimeline === undefined) {
                         module.verbose('Mark timeline not available, normalizing events');
                         window.console.markTimeline = function () {};
                     }
@@ -357,7 +357,7 @@
                 ;
                 passedArguments = passedArguments || queryArguments;
                 context = context || element;
-                if (typeof query == 'string' && object !== undefined) {
+                if (typeof query === 'string' && object !== undefined) {
                     query = query.split(/[\. ]/);
                     maxDepth = query.length - 1;
                     $.each(query, function (depth, value) {

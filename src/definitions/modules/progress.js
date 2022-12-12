@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -29,7 +29,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -109,7 +109,7 @@
                             ? element
                             : !isNaN(element)
                                 ? [element]
-                                : typeof element == 'string'
+                                : typeof element === 'string'
                                     ? element.split(',')
                                     : [];
                     },
@@ -486,7 +486,7 @@
                     },
                     duration: function (duration) {
                         duration = duration || settings.duration;
-                        duration = (typeof duration == 'number')
+                        duration = (typeof duration === 'number')
                             ? duration + 'ms'
                             : duration;
                         module.verbose('Setting progress bar transition duration', duration);
@@ -498,7 +498,7 @@
                     },
                     percent: function (percents) {
                         percents = module.helper.forceArray(percents).map(function (percent) {
-                            percent = (typeof percent == 'string')
+                            percent = (typeof percent === 'string')
                                 ? +(percent.replace('%', ''))
                                 : percent;
 
@@ -858,7 +858,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {

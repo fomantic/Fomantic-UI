@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -30,7 +30,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -1809,7 +1809,7 @@
                         return $module.data(metadata.defaultValue);
                     },
                     placeholderText: function () {
-                        if (settings.placeholder != 'auto' && typeof settings.placeholder == 'string') {
+                        if (settings.placeholder != 'auto' && typeof settings.placeholder === 'string') {
                             return settings.placeholder;
                         }
 
@@ -1917,7 +1917,7 @@
                         }
 
                         return (!module.has.selectInput() && module.is.multiple())
-                            ? (typeof value == 'string') // delimited string
+                            ? (typeof value === 'string') // delimited string
                                 ? (raw ? value : module.escape.htmlEntities(value)).split(settings.delimiter)
                                 : ''
                             : value;
@@ -1928,7 +1928,7 @@
                             remoteValues = false
                         ;
                         if (values) {
-                            if (typeof values == 'string') {
+                            if (typeof values === 'string') {
                                 values = [values];
                             }
                             $.each(values, function (index, value) {
@@ -3852,7 +3852,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {

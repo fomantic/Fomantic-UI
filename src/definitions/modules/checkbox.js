@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -28,7 +28,7 @@
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -166,7 +166,7 @@
                 },
 
                 preventDefaultOnInputTarget: function () {
-                    if (typeof event !== 'undefined' && event !== null && $(event.target).is(selector.input)) {
+                    if (event !== undefined && event !== null && $(event.target).is(selector.input)) {
                         module.verbose('Preventing default check action after manual check action');
                         event.preventDefault();
                     }
@@ -763,7 +763,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {

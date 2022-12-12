@@ -19,7 +19,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -35,7 +35,7 @@
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = (typeof query === 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
             initializedHistory = false,
@@ -288,7 +288,7 @@
                 set: {
                     auto: function () {
                         var
-                            url = (typeof settings.path == 'string')
+                            url = (typeof settings.path === 'string')
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
                         ;
@@ -452,7 +452,7 @@
                         evaluateScripts = (evaluateScripts !== undefined)
                             ? evaluateScripts
                             : settings.evaluateScripts;
-                        if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
+                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
                                 .append($(html).clone(true))
@@ -498,7 +498,7 @@
 
                                     if (settings.loadOnce) {
                                         module.cache.add(fullTabPath, true);
-                                    } else if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
                                             var
                                                 $clone = $tab.children().clone(true)
@@ -716,7 +716,7 @@
                             pathName = activeTabPath;
                         }
 
-                        return typeof pathName == 'string'
+                        return typeof pathName === 'string'
                             ? pathName.split('/')
                             : [pathName];
                     },
@@ -835,7 +835,7 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
+                    if (typeof query === 'string' && object !== undefined) {
                         query = query.split(/[\. ]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
