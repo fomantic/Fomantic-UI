@@ -138,7 +138,7 @@
                         if ($module.attr('tabindex') === undefined) {
                             $module.attr('tabindex', 0);
                         }
-                        if ($module.find('.inner').length == 0) {
+                        if ($module.find('.inner').length === 0) {
                             $module.append("<div class='inner'>"
                                 + "<div class='track'></div>"
                                 + "<div class='track-fill'></div>"
@@ -149,7 +149,7 @@
                         $thumb = $module.find('.thumb:not(.second)');
                         $currThumb = $thumb;
                         if (module.is.range()) {
-                            if ($module.find('.thumb.second').length == 0) {
+                            if ($module.find('.thumb.second').length === 0) {
                                 $module.find('.inner').append("<div class='thumb second'></div>");
                             }
                             $secondThumb = $module.find('.thumb.second');
@@ -161,7 +161,7 @@
                     labels: function () {
                         if (module.is.labeled()) {
                             $labels = $module.find('.labels:not(.auto)');
-                            if ($labels.length != 0) {
+                            if ($labels.length > 0) {
                                 module.setup.customLabel();
                             } else {
                                 module.setup.autoLabel();
@@ -196,7 +196,7 @@
                     },
                     autoLabel: function () {
                         $labels = $module.find('.labels');
-                        if ($labels.length != 0) {
+                        if ($labels.length > 0) {
                             $labels.empty();
                         } else {
                             $labels = $module.append('<ul class="auto labels"></ul>').find('.labels');
@@ -1199,7 +1199,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

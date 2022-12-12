@@ -542,28 +542,28 @@
                             if (!rule.prompt) {
                                 suffixPrompt = (
                                     parts[0] === ''
-                                        ? settings.prompt.maxValue.replace(/\{ruleValue\}/g, '{max}')
+                                        ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
                                         : parts[1] === ''
-                                            ? settings.prompt.minValue.replace(/\{ruleValue\}/g, '{min}')
+                                            ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
                                             : settings.prompt.range
                                 );
-                                prompt += suffixPrompt.replace(/\{name\}/g, ' ' + settings.text.and);
+                                prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
-                            prompt = prompt.replace(/\{min\}/g, parts[0]);
-                            prompt = prompt.replace(/\{max\}/g, parts[1]);
+                            prompt = prompt.replace(/{min}/g, parts[0]);
+                            prompt = prompt.replace(/{max}/g, parts[1]);
                         }
                         if (requiresValue) {
-                            prompt = prompt.replace(/\{value\}/g, $field.val());
+                            prompt = prompt.replace(/{value}/g, $field.val());
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
                             name = ($label.length == 1)
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
-                            prompt = prompt.replace(/\{name\}/g, name);
+                            prompt = prompt.replace(/{name}/g, name);
                         }
-                        prompt = prompt.replace(/\{identifier\}/g, field.identifier);
-                        prompt = prompt.replace(/\{ruleValue\}/g, ancillary);
+                        prompt = prompt.replace(/{identifier}/g, field.identifier);
+                        prompt = prompt.replace(/{ruleValue}/g, ancillary);
                         if (!rule.prompt) {
                             module.verbose('Using default validation prompt for type', prompt, ruleName);
                         }
@@ -855,7 +855,7 @@
                         $.each(newValidation.rules, function (_index, rule) {
                             if ($.grep(validation[name].rules, function (item) {
                                 return item.type == rule.type;
-                            }).length == 0) {
+                            }).length === 0) {
                                 validation[name].rules.push(rule);
                             }
                         });
@@ -871,7 +871,7 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = ($prompt.length !== 0)
+                            promptExists = ($prompt.length > 0)
                         ;
                         errors = (typeof errors === 'string')
                             ? [errors]
@@ -1247,7 +1247,7 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = !$field.filter(':not(:disabled)').length;
+                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
@@ -1326,7 +1326,7 @@
                             });
                         }
 
-                        return internal ? invalidFields : !(invalidFields.length > 0);
+                        return internal ? invalidFields : invalidFields.length === 0;
                     },
                 },
 
@@ -1411,7 +1411,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -1437,7 +1437,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1529,15 +1529,15 @@
         },
 
         regExp: {
-            htmlID: /^[a-zA-Z][\w:.-]*$/g,
-            bracket: /\[(.*)\]/i,
+            htmlID: /^[A-Za-z][\w.:-]*$/g,
+            bracket: /\[(.*)]/i,
             decimal: /^\d+\.?\d*$/,
-            email: /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i,
-            escape: /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|:,=@]/g,
+            email: /^[\w!#$%&'*+./=?^`{|}~-]+@[\da-z]([\da-z-]*[\da-z])?(\.[\da-z]([\da-z-]*[\da-z])?)*$/i,
+            escape: /[$()*+,./:=?@[\\\]^{|}-]/g,
             flags: /^\/(.*)\/(.*)?/,
-            integer: /^\-?\d+$/,
-            number: /^\-?\d*(\.\d+)?$/,
-            url: /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/i,
+            integer: /^-?\d+$/,
+            number: /^-?\d*(\.\d+)?$/,
+            url: /(https?:\/\/(?:www\.|(?!www))[^\s.]+\.\S{2,}|www\.\S+\.\S{2,})/i,
         },
 
         text: {
@@ -1922,7 +1922,7 @@
                             length: [16],
                         },
                         discover: {
-                            pattern: /^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)/,
+                            pattern: /^(6011|622(12[6-9]|1[3-9]\d|[2-8]\d{2}|9[01]\d|92[0-5]|64[4-9])|65)/,
                             length: [16],
                         },
                         unionPay: {
@@ -1930,7 +1930,7 @@
                             length: [16, 17, 18, 19],
                         },
                         jcb: {
-                            pattern: /^35(2[89]|[3-8][0-9])/,
+                            pattern: /^35(2[89]|[3-8]\d)/,
                             length: [16],
                         },
                         maestro: {
@@ -1964,7 +1964,7 @@
                 }
 
                 // allow dashes and spaces in card
-                cardNumber = cardNumber.replace(/[\s\-]/g, '');
+                cardNumber = cardNumber.replace(/[\s-]/g, '');
 
                 // verify card types
                 if (requiredTypes) {
@@ -1976,7 +1976,7 @@
                                 length: ($.inArray(cardNumber.length, validation.length) !== -1),
                                 pattern: (cardNumber.search(validation.pattern) !== -1),
                             };
-                            if (valid.length && valid.pattern) {
+                            if (valid.length > 0 && valid.pattern) {
                                 validCard = true;
                             }
                         }

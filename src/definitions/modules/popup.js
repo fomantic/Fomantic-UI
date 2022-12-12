@@ -282,7 +282,7 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length !== 0) {
+                    } else if ($target.next(selector.popup).length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
                         settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
@@ -371,7 +371,7 @@
                     if (settings.inline || settings.popup) {
                         return (module.has.popup());
                     } else {
-                        return ($popup.closest($context).length >= 1);
+                        return ($popup.closest($context).length > 0);
                     }
                 },
 
@@ -1243,7 +1243,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1469,8 +1469,8 @@
         templates: {
             escape: function (string) {
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1483,7 +1483,7 @@
                     }
                 ;
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }

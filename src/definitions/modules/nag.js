@@ -186,7 +186,7 @@
                                         .replace(/[()]/g, escape)
                                     ;
                                     value = encodeURIComponent(value)
-                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[BCD])/g, decodeURIComponent)
+                                        .replace(/%(2[346BF]|3[AC-F]|40|5[BDE]|60|7[B-D])/g, decodeURIComponent)
                                     ;
 
                                     var cookieOptions = '';
@@ -205,7 +205,7 @@
                                     for (var i = 0, il = cookies.length; i < il; i++) {
                                         var
                                             parts    = cookies[i].split('='),
-                                            foundKey = parts[0].replace(/(%[\dA-F]{2})+/gi, decodeURIComponent)
+                                            foundKey = parts[0].replace(/(%[\da-f]{2})+/gi, decodeURIComponent)
                                         ;
                                         if (key === foundKey) {
                                             return parts[1] || '';
@@ -404,7 +404,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

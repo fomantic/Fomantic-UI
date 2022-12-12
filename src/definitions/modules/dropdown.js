@@ -361,7 +361,7 @@
                                 .addClass(className.search)
                                 .prop('autocomplete', module.is.chrome() ? 'fomantic-search' : 'off')
                             ;
-                            if (labelNode.length) {
+                            if (labelNode.length > 0) {
                                 if (!labelNode.attr('id')) {
                                     labelNode.attr('id', '_' + module.get.id() + '_formLabel');
                                 }
@@ -727,7 +727,7 @@
                             if (module.is.multiple()) {
                                 module.filterActive();
                             }
-                            if (query || (!query && module.get.activeItem().length == 0)) {
+                            if (query || (!query && module.get.activeItem().length === 0)) {
                                 module.select.firstUnfiltered();
                             }
                             if (module.has.allResultsFiltered()) {
@@ -942,7 +942,7 @@
                                 // Dividers which are direct siblings are considered a group
                                 var $lastDivider = $(this).nextUntil(selector.item);
 
-                                return ($lastDivider.length ? $lastDivider : $(this))
+                                return ($lastDivider.length > 0 ? $lastDivider : $(this))
                                     // Count all non-filtered items until the next divider (or end of the dropdown)
                                     .nextUntil(selector.divider)
                                     .filter(selector.item + ':not(.' + className.filtered + ')')
@@ -2878,7 +2878,7 @@
                         var
                             $addition         = $menu.children(selector.addition),
                             $existingItem     = module.get.item(value),
-                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length,
+                            alreadyHasValue   = $existingItem && $existingItem.not(selector.addition).length > 0,
                             hasUserSuggestion = $addition.length > 0,
                             html
                         ;
@@ -3262,7 +3262,7 @@
                         return ($currentMenu || $menu).find(selector.menu).length > 0;
                     },
                     message: function () {
-                        return ($menu.children(selector.message).length !== 0);
+                        return ($menu.children(selector.message).length > 0);
                     },
                     label: function (value) {
                         var
@@ -3721,8 +3721,8 @@
                     },
                     htmlEntities: function (string) {
                         var
-                            badChars     = /[<>"'`]/g,
-                            shouldEscape = /[&<>"'`]/,
+                            badChars     = /["'<>`]/g,
+                            shouldEscape = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -3735,7 +3735,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -3853,7 +3853,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -4037,7 +4037,7 @@
         },
 
         regExp: {
-            escape: /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
+            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
             quote: /"/g,
         },
 
@@ -4153,8 +4153,8 @@
                 return string;
             }
             var
-                badChars     = /[<>"'`]/g,
-                shouldEscape = /[&<>"'`]/,
+                badChars     = /["'<>`]/g,
+                shouldEscape = /["&'<>`]/,
                 escape       = {
                     '<': '&lt;',
                     '>': '&gt;',
@@ -4167,7 +4167,7 @@
                 }
             ;
             if (shouldEscape.test(string)) {
-                string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                 return string.replace(badChars, escapedChar);
             }

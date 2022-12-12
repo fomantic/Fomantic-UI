@@ -120,10 +120,10 @@ module.exports = {
             });
         }
 
-        const components = (Array.isArray(config.components) && config.components.length >= 1)
+        const components = (Array.isArray(config.components) && config.components.length > 0)
             ? config.components
             : defaults.components;
-        const individuals =  (Array.isArray(config.individuals) && config.individuals.length >= 1)
+        const individuals =  (Array.isArray(config.individuals) && config.individuals.length > 0)
             ? config.individuals
             : [];
         const componentsExceptIndividuals = components.filter((component) => !individuals.includes(component));

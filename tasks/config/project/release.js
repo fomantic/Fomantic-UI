@@ -43,16 +43,16 @@ module.exports = {
     url: 'https://fomantic-ui.com/',
 
     banner: ''
-        + '/*' + '\n'
-        + ' * # <%= title %> - <%= version %>' + '\n'
-        + ' * <%= repository %>' + '\n'
-        + ' * <%= url %>' + '\n'
-        + ' *' + '\n'
-        + ' * Copyright <%= year %> Contributors' + '\n'
-        + ' * Released under the MIT license' + '\n'
-        + ' * https://opensource.org/licenses/MIT' + '\n'
-        + ' *' + '\n'
-        + ' */' + '\n',
+        + '/*\n'
+        + ' * # <%= title %> - <%= version %>\n'
+        + ' * <%= repository %>\n'
+        + ' * <%= url %>\n'
+        + ' *\n'
+        + ' * Copyright <%= year %> Contributors\n'
+        + ' * Released under the MIT license\n'
+        + ' * https://opensource.org/licenses/MIT\n'
+        + ' *\n'
+        + ' */\n',
 
     version: version,
 

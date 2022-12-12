@@ -1158,7 +1158,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -1184,7 +1184,7 @@
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
                     if (typeof query === 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1355,7 +1355,7 @@
         },
 
         regExp: {
-            escape: /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g,
+            escape: /[$()*+./?[\\\]^{|}-]/g,
             beginsWith: '(?:\\s|^)',
         },
 
@@ -1391,8 +1391,8 @@
                     return string;
                 }
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1404,7 +1404,7 @@
                         return escape[chr];
                     };
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }
