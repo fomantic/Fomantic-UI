@@ -3,9 +3,9 @@
 *******************************/
 
 .ui.selection.dropdown {
-    background-color: #FAFAFA;
+    background-color: #fafafa;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075) inset;
-    border-color: #CCCCCC;
+    border-color: #ccc;
 }
 
 .ui.selection.dropdown:focus {

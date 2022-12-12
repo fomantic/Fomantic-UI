@@ -16,7 +16,12 @@ module.exports = {
         'max-line-length': null,
         'no-descending-specificity': null,
         'no-extra-semicolons': null, // fix GH-1832 - workaround for wikimedia/less.php parser
+        'number-max-precision': 5,
         'rule-empty-line-before': null,
+
+        // TODO rules to be removed/fixed in v2.10.0 as fixes are not compatible with IE11
+        'alpha-value-notation': 'number', // https://caniuse.com/mdn-css_properties_opacity_percentages
+        'color-function-notation': 'legacy', // https://caniuse.com/mdn-css_types_color_rgba_space_separated_parameters
 
         // TODO
         'string-quotes': null, // 1676 errors
@@ -31,22 +36,15 @@ module.exports = {
         'import-notation': null, // 56 errors
         'keyframes-name-pattern': null, // 50 errors
         'property-no-vendor-prefix': null, // 49 errors
-        'number-leading-zero': null, // 49 errors
-        'color-function-notation': null, // 32 errors
-        'alpha-value-notation': null, // 32 errors
-        'color-hex-case': null, // 32 errors
         'block-no-empty': null, // 25 errors
         'selector-no-vendor-prefix': null, // 19 errors
         'selector-class-pattern': null, // 19 errors
-        'number-no-trailing-zeros': null, // 16 errors
         'font-family-name-quotes': null, // 13 errors
         'declaration-block-no-redundant-longhand-properties': null, // 12 errors
         'value-keyword-case': null, // 12 errors
         'value-no-vendor-prefix': null, // 9 errors
-        'color-hex-length': null, // 9 errors
         'no-empty-source': null, // 8 errors
         'font-family-no-missing-generic-family-keyword': null, // 8 errors
-        'number-max-precision': null, // 7 errors
         'selector-attribute-quotes': null, // 7 errors
         'shorthand-property-no-redundant-values': null, // 5 errors
         'function-url-quotes': null, // 5 errors
