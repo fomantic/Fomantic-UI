@@ -14,15 +14,14 @@
     function isWindow(obj) {
         return obj != null && obj === obj.window;
     }
+
     function isFunction(obj) {
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.tab = function (parameters) {
         var
@@ -32,11 +31,11 @@
                 : $(this),
             $document      = $(document),
             moduleSelector  = $allModules.selector || '',
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = (typeof query === 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
             initializedHistory = false,
@@ -194,25 +193,24 @@
                         module.error(error.state);
 
                         return false;
-                    } else {
-                        if (settings.historyType == 'state') {
-                            module.debug('Using HTML5 to manage state');
-                            if (settings.path !== false) {
-                                $.address
-                                    .history(true)
-                                    .state(settings.path)
-                                ;
-                                $(window).trigger('popstate');
-                            } else {
-                                module.error(error.path);
-
-                                return false;
-                            }
-                        }
-                        $.address
-                            .bind('change', module.event.history.change)
-                        ;
                     }
+                    if (settings.historyType == 'state') {
+                        module.debug('Using HTML5 to manage state');
+                        if (settings.path !== false) {
+                            $.address
+                                .history(true)
+                                .state(settings.path)
+                            ;
+                            $(window).trigger('popstate');
+                        } else {
+                            module.error(error.path);
+
+                            return false;
+                        }
+                    }
+                    $.address
+                        .bind('change', module.event.history.change)
+                    ;
                 },
 
                 event: {
@@ -289,7 +287,7 @@
                 set: {
                     auto: function () {
                         var
-                            url = (typeof settings.path == 'string')
+                            url = (typeof settings.path === 'string')
                                 ? settings.path.replace(/\/$/, '') + '/{$tab}'
                                 : '/{$tab}'
                         ;
@@ -385,16 +383,16 @@
                                 }
 
                                 return false;
-                            } else {
-                                module.debug('Opened local tab', currentPath);
-                                module.activate.all(currentPath);
-                                if (!module.cache.read(currentPath)) {
-                                    module.cache.add(currentPath, true);
-                                    module.debug('First time tab loaded calling tab init');
-                                    settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
-                                }
-                                settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                             }
+
+                            module.debug('Opened local tab', currentPath);
+                            module.activate.all(currentPath);
+                            if (!module.cache.read(currentPath)) {
+                                module.cache.add(currentPath, true);
+                                module.debug('First time tab loaded calling tab init');
+                                settings.onFirstLoad.call($tab[0], currentPath, parameterArray, historyEvent);
+                            }
+                            settings.onLoad.call($tab[0], currentPath, parameterArray, historyEvent);
                         } else if (tabPath.search('/') == -1 && tabPath !== '') {
                             // look for in page anchor
                             tabPath = module.escape.string(tabPath);
@@ -453,7 +451,7 @@
                         evaluateScripts = (evaluateScripts !== undefined)
                             ? evaluateScripts
                             : settings.evaluateScripts;
-                        if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
+                        if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && typeof html !== 'string') {
                             $tab
                                 .empty()
                                 .append($(html).clone(true))
@@ -499,7 +497,7 @@
 
                                     if (settings.loadOnce) {
                                         module.cache.add(fullTabPath, true);
-                                    } else if (typeof settings.cacheType == 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
+                                    } else if (typeof settings.cacheType === 'string' && settings.cacheType.toLowerCase() == 'dom' && $tab.children().length > 0) {
                                         setTimeout(function () {
                                             var
                                                 $clone = $tab.children().clone(true)
@@ -717,7 +715,7 @@
                             pathName = activeTabPath;
                         }
 
-                        return typeof pathName == 'string'
+                        return typeof pathName === 'string'
                             ? pathName.split('/')
                             : [pathName];
                     },
@@ -785,7 +783,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -836,8 +834,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -956,7 +954,7 @@
         },
 
         regExp: {
-            escape: /[-[\]{}()*+?.,\\^$|#\s:=@]/g,
+            escape: /[\s#$()*+,.:=?@[\\\]^{|}-]/g,
         },
 
         metadata: {

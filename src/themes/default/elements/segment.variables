@@ -2,9 +2,9 @@
             Segment
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @background: @white;
 @borderWidth: 1px;
@@ -20,9 +20,9 @@
 @margin: @verticalMargin @horizontalMargin;
 @borderRadius: @defaultBorderRadius;
 
-/*-------------------
+/* -------------------
        Group
---------------------*/
+-------------------- */
 
 @groupedMargin: @margin;
 @groupedBorder: @border;
@@ -37,9 +37,9 @@
 @groupedSegmentWidth: auto;
 @groupedSegmentBoxShadow: none;
 
-/*-------------------
+/* -------------------
        Coupling
---------------------*/
+-------------------- */
 
 /* Page Grid Segment */
 @pageGridMargin: (2 * @verticalPadding);
@@ -56,7 +56,6 @@
 @placeholderMinHeight: 18rem;
 @placeholderContentMaxWidth: 15rem;
 @placeholderContentInlineButtonMargin: 0 @5px 0 0;
-
 
 /* Piled */
 @piledZIndex: auto;
@@ -87,11 +86,9 @@
 @loaderSize: 3em;
 @loaderLineZIndex: 101;
 
-
 /*******************************
             Variations
 *******************************/
-
 
 /* Raised */
 @raisedBoxShadow: @floatingShadow;
@@ -108,8 +105,8 @@
 @attachedBoxShadow: none;
 @attachedBorder: @borderWidth solid @solidBorderColor;
 @attachedBottomBoxShadow:
-  @boxShadow,
-  @attachedBoxShadow
+    @boxShadow,
+    @attachedBoxShadow
 ;
 
 /* Inverted */
@@ -136,28 +133,20 @@
 
 @secondaryInvertedLightness: 0.2;
 @secondaryInvertedBackground:
-  lighten(@black, (@secondaryInvertedLightness * 100))
-  linear-gradient(
-    rgba(255, 255, 255, @secondaryInvertedLightness) 0,
-    rgba(255, 255, 255, @secondaryInvertedLightness) 100%
-  )
+    lighten(@black, (@secondaryInvertedLightness * 100))
+    linear-gradient(
+        rgba(255, 255, 255, @secondaryInvertedLightness) 0,
+        rgba(255, 255, 255, @secondaryInvertedLightness) 100%
+    )
 ;
 @secondaryInvertedColor: @invertedMutedTextColor;
 
 @tertiaryInvertedLightness: 0.35;
 @tertiaryInvertedBackground:
-  lighten(@black, (@tertiaryInvertedLightness * 100))
-  linear-gradient(
-    rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
-    rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
-  )
+    lighten(@black, (@tertiaryInvertedLightness * 100))
+    linear-gradient(
+        rgba(255, 255, 255, @tertiaryInvertedLightness) 0,
+        rgba(255, 255, 255, @tertiaryInvertedLightness) 100%
+    )
 ;
 @tertiaryInvertedColor: @invertedMutedTextColor;
-
-/*-------------------
-       Scrolling
---------------------*/
-@scrollingMobileMaxHeight: 15em;
-@scrollingTabletMaxHeight: 18em;
-@scrollingComputerMaxHeight: 24em;
-@scrollingWidescreenMaxHeight: 30em;

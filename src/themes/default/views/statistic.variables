@@ -2,9 +2,9 @@
            Statistic
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 @verticalMargin: 1em;
 @margin: @verticalMargin 0;
@@ -20,9 +20,9 @@
 @elementMargin: 0 @horizontalSpacing @rowSpacing;
 @elementMaxWidth: @maxWidth;
 
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Value */
 @valueFont: @pageFont;
@@ -50,16 +50,16 @@
 @imageHeight: 3rem;
 @imageVerticalAlign: baseline;
 
-/*-------------------
+/* -------------------
       Types
---------------------*/
+-------------------- */
 
 @horizontalGroupElementMargin: 1em 0;
 @horizontalLabelDistance: 0.75em;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Floated */
 @leftFloatedMargin: 0 2em 1em 0;

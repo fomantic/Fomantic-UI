@@ -15,11 +15,9 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.sidebar = function (parameters) {
         var
@@ -32,11 +30,11 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = (typeof query === 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -376,7 +374,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var
-                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
                             bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
@@ -405,9 +403,9 @@
                                     module.hideOthers(module.show);
 
                                     return;
-                                } else {
-                                    module.hideOthers();
                                 }
+
+                                module.hideOthers();
                             } else {
                                 settings.transition = 'overlay';
                             }
@@ -711,9 +709,11 @@
                     direction: function () {
                         if ($module.hasClass(className.top)) {
                             return className.top;
-                        } else if ($module.hasClass(className.right)) {
+                        }
+                        if ($module.hasClass(className.right)) {
                             return className.right;
-                        } else if ($module.hasClass(className.bottom)) {
+                        }
+                        if ($module.hasClass(className.bottom)) {
                             return className.bottom;
                         }
 
@@ -805,9 +805,9 @@
                             module.verbose('Browser was found to be iOS', userAgent);
 
                             return true;
-                        } else {
-                            return false;
                         }
+
+                        return false;
                     },
                     mobile: function () {
                         var
@@ -818,11 +818,11 @@
                             module.verbose('Browser was found to be mobile', userAgent);
 
                             return true;
-                        } else {
-                            module.verbose('Browser is not mobile, using regular transition', userAgent);
-
-                            return false;
                         }
+
+                        module.verbose('Browser is not mobile, using regular transition', userAgent);
+
+                        return false;
                     },
                     hidden: function () {
                         return !module.is.visible();
@@ -909,7 +909,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -960,8 +960,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

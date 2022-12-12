@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Shadow */
 @shadowDistance: 0em;
@@ -13,31 +13,30 @@
 @backgroundColor: #FAFAFA;
 @backgroundImage: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09));
 @boxShadow:
-  0px 0px 0px 1px @borderColor inset,
-  @shadowBoxShadow
+    0px 0px 0px 1px @borderColor inset,
+    @shadowBoxShadow
 ;
 
 /* Padding */
 @verticalPadding: 0.8em;
 @horizontalPadding: 1.5em;
 
-
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 @groupBoxShadow: none;
 @groupButtonBoxShadow:
-  0px 0px 0px 1px @borderColor inset,
-  @shadowBoxShadow
+    0px 0px 0px 1px @borderColor inset,
+    @shadowBoxShadow
 ;
 @verticalBoxShadow: 0px 0px 0px 1px @borderColor inset;
 @groupButtonOffset: 0px 0px 0px -1px;
 @verticalGroupOffset: 0px 0px -1px 0px;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hovered */
 @hoverBackgroundColor: '';
@@ -50,8 +49,8 @@
 @focusBackgroundColor: '';
 @focusBackgroundImage: none;
 @focusBoxShadow:
-  0px 0px 1px rgba(81, 167, 232, 0.8) inset,
-  0px 0px 3px 2px rgba(81, 167, 232, 0.8)
+    0px 0px 1px rgba(81, 167, 232, 0.8) inset,
+    0px 0px 3px 2px rgba(81, 167, 232, 0.8)
 ;
 @focusColor: @hoveredTextColor;
 @iconFocusOpacity: 0.85;
@@ -60,8 +59,8 @@
 @downBackgroundColor: #F1F1F1;
 @downBackgroundImage: '';
 @downBoxShadow:
-  0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
-  0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
+    0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
+    0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
 ;
 @downColor: @pressedTextColor;
 
@@ -70,25 +69,25 @@
 @activeBackgroundImage: none;
 @activeColor: @selectedTextColor;
 @activeBoxShadow:
-  0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
-  0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
+    0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
+    0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
 ;
 
 /* Active + Hovered */
 @activeHoverBackgroundColor: #DADADA;
 @activeHoverBackgroundImage: none;
 @activeHoverBoxShadow:
-  0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
-  0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
+    0px 0px 0px 1px rgba(0, 0, 0, 0.1) inset,
+    0px 1px 4px 0px rgba(0, 0, 0, 0.1) inset !important
 ;
 @activeHoverColor: @selectedTextColor;
 
 /* Loading */
 @loadingBackgroundColor: #FFFFFF;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Labeled Icon */
 @labeledIconBackgroundColor: rgba(0, 0, 0, 0.05);

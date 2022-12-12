@@ -15,13 +15,11 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
-    $.flyout = $.fn.flyout = function (parameters) {
+    $.fn.flyout = function (parameters) {
         var
             $allModules     = $(this),
             $window         = $(window),
@@ -32,11 +30,11 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = (typeof query === 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
             requestAnimationFrame = window.requestAnimationFrame
@@ -920,9 +918,11 @@
                     direction: function () {
                         if ($module.hasClass(className.top)) {
                             return className.top;
-                        } else if ($module.hasClass(className.right)) {
+                        }
+                        if ($module.hasClass(className.right)) {
                             return className.right;
-                        } else if ($module.hasClass(className.bottom)) {
+                        }
+                        if ($module.hasClass(className.bottom)) {
                             return className.bottom;
                         }
 
@@ -979,7 +979,7 @@
                     bodyMargin: function () {
                         initialBodyMargin = $context.css((isBody ? 'margin-' : 'padding-') + (module.can.leftBodyScrollbar() ? 'left' : 'right'));
                         var
-                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, '')),
+                            bodyMarginRightPixel = parseInt(initialBodyMargin.replace(/[^\d.]/g, ''), 10),
                             bodyScrollbarWidth = isBody ? window.innerWidth - document.documentElement.clientWidth : $context[0].offsetWidth - $context[0].clientWidth
                         ;
                         tempBodyMargin = bodyMarginRightPixel + bodyScrollbarWidth;
@@ -1032,9 +1032,9 @@
                             module.verbose('Browser was found to be iOS', userAgent);
 
                             return true;
-                        } else {
-                            return false;
                         }
+
+                        return false;
                     },
                     mobile: function () {
                         var
@@ -1045,11 +1045,11 @@
                             module.verbose('Browser was found to be mobile', userAgent);
 
                             return true;
-                        } else {
-                            module.verbose('Browser is not mobile, using regular transition', userAgent);
-
-                            return false;
                         }
+
+                        module.verbose('Browser is not mobile, using regular transition', userAgent);
+
+                        return false;
                     },
                     hidden: function () {
                         return !module.is.visible();
@@ -1106,8 +1106,8 @@
                             return string;
                         }
                         var
-                            badChars     = /[<>"'`]/g,
-                            shouldEscape = /[&<>"'`]/,
+                            badChars     = /["'<>`]/g,
+                            shouldEscape = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -1120,7 +1120,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -1186,7 +1186,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1237,8 +1237,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = element || context;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1312,6 +1312,7 @@
             ? returnedValue
             : this;
     };
+    $.flyout = $.fn.flyout;
 
     $.fn.flyout.settings = {
 
@@ -1445,17 +1446,16 @@
                     content: '',
                     title: '',
                 }, queryArguments[0]);
-            } else {
-                if (!isFunction(queryArguments[queryArguments.length - 1])) {
-                    queryArguments.push(function () {});
-                }
-
-                return {
-                    handler: queryArguments.pop(),
-                    content: queryArguments.pop() || '',
-                    title: queryArguments.pop() || '',
-                };
             }
+            if (!isFunction(queryArguments[queryArguments.length - 1])) {
+                queryArguments.push(function () {});
+            }
+
+            return {
+                handler: queryArguments.pop(),
+                content: queryArguments.pop() || '',
+                title: queryArguments.pop() || '',
+            };
         },
         alert: function () {
             var

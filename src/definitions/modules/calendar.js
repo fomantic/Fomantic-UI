@@ -15,11 +15,9 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.calendar = function (parameters) {
         var
@@ -28,11 +26,11 @@
 
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue,
             timeGapTable = {
@@ -126,9 +124,9 @@
                         if (settings.inline) {
                             return;
                         }
-                        if (!$activator.length) {
+                        if ($activator.length === 0) {
                             $activator = $module.children().first();
-                            if (!$activator.length) {
+                            if ($activator.length === 0) {
                                 return;
                             }
                         }
@@ -137,7 +135,7 @@
 
                             return;
                         }
-                        if (!$container.length) {
+                        if ($container.length === 0) {
                             if (settings.context) {
                                 module.popupId = namespace + '_popup_' + (Math.random().toString(16) + '000000000').slice(2, 10);
                                 $container = $('<div/>', { id: module.popupId }).addClass(className.popup).appendTo($document.find(settings.context));
@@ -146,7 +144,7 @@
                                 // the styling (eg input action button needs to be the last child to have correct border radius)
                                 var
                                     $activatorParent = $activator.parent(),
-                                    domPositionFunction = $activatorParent.closest(selector.append).length !== 0 ? 'appendTo' : 'prependTo'
+                                    domPositionFunction = $activatorParent.closest(selector.append).length > 0 ? 'appendTo' : 'prependTo'
                                 ;
                                 $container = $('<div/>').addClass(className.popup)[domPositionFunction]($activatorParent);
                             }
@@ -165,7 +163,7 @@
 
                             return settings.onHidden.apply($container, arguments);
                         };
-                        if (!$input.length) {
+                        if ($input.length === 0) {
                             // no input, $container has to handle focus/blur
                             $container.attr('tabindex', '0');
                             onVisible = function () {
@@ -197,17 +195,17 @@
                         module.popup(options);
                     },
                     inline: function () {
-                        if ($activator.length && !settings.inline) {
+                        if ($activator.length > 0 && !settings.inline) {
                             return;
                         }
                         settings.inline = true;
                         $container = $('<div/>').addClass(className.calendar).appendTo($module);
-                        if (!$input.length) {
+                        if ($input.length === 0) {
                             $container.attr('tabindex', '0');
                         }
                     },
                     input: function () {
-                        if (settings.touchReadonly && $input.length && isTouch) {
+                        if (settings.touchReadonly && $input.length > 0 && isTouch) {
                             $input.prop('readonly', true);
                         }
                         module.check.disabled();
@@ -218,7 +216,7 @@
                             date = parser.date(settings.initialDate, settings);
                         } else if ($module.data(metadata.date) !== undefined) {
                             date = parser.date($module.data(metadata.date), settings);
-                        } else if ($input.length) {
+                        } else if ($input.length > 0) {
                             date = parser.date($input.val(), settings);
                         }
                         module.set.date(date, settings.formatInput, false);
@@ -257,7 +255,7 @@
                             today = new Date(),
                             date = module.get.date(),
                             focusDate = module.get.focusDate(),
-                            display = module.helper.dateInRange(focusDate || date || settings.initialDate || today)
+                            display = module.helper.dateInRange(focusDate || date || parser.date(settings.initialDate, settings) || today)
                         ;
 
                         if (!focusDate) {
@@ -303,7 +301,7 @@
                             }
 
                             var month = startMonth + p;
-                            var firstMonthDayColumn = (new Date(year, month, 1).getDay() - settings.firstDayOfWeek % 7 + 7) % 7;
+                            var firstMonthDayColumn = (new Date(year, month, 1).getDay() - (settings.firstDayOfWeek % 7) + 7) % 7;
                             if (!settings.constantHeight && isDay) {
                                 var requiredCells = new Date(year, month + 1, 0).getDate() + firstMonthDayColumn;
                                 rows = Math.ceil(requiredCells / 7);
@@ -336,7 +334,8 @@
                             if (isDay && settings.showWeekNumbers) {
                                 tempMode += ' andweek';
                             }
-                            var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column').appendTo(container);
+                            var table = $('<table/>').addClass(className.table).addClass(tempMode).addClass(numberText[columns] + ' column')
+                                .appendTo(container);
                             if (isInverted) {
                                 table.addClass(className.inverted);
                             }
@@ -548,7 +547,7 @@
                     var winWidth = $(window).width();
                     $container.find('td[data-position]').each(function () {
                         var $cell = $(this);
-                        var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^0-9\.]/g, '');
+                        var tooltipWidth = window.getComputedStyle($cell[0], '::after').width.replace(/[^\d.]/g, '');
                         var tooltipPosition = $cell.attr('data-position');
                         // use a fallback width of 250 (calendar width) for IE/Edge (which return "auto")
                         var calcPosition = (winWidth - $cell.width() - (parseInt(tooltipWidth, 10) || 250)) > $cell.offset().left ? 'right' : 'left';
@@ -566,7 +565,7 @@
                         $container.on('mouseup' + eventNamespace, module.event.mouseup);
                         $container.on('touchend' + eventNamespace, module.event.mouseup);
                         $container.on('mouseover' + eventNamespace, module.event.mouseover);
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             $input.on('input' + eventNamespace, module.event.inputChange);
                             $input.on('focus' + eventNamespace, module.event.inputFocus);
                             $input.on('blur' + eventNamespace, module.event.inputBlur);
@@ -581,7 +580,7 @@
                     events: function () {
                         module.debug('Unbinding events');
                         $container.off(eventNamespace);
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             $input.off(eventNamespace);
                         }
                     },
@@ -597,7 +596,7 @@
                         }
                     },
                     mousedown: function (event) {
-                        if ($input.length) {
+                        if ($input.length > 0) {
                             // prevent the mousedown on the calendar causing the input to lose focus
                             event.preventDefault();
                         }
@@ -726,7 +725,7 @@
 
                 disconnect: {
                     classObserver: function () {
-                        if ($input.length && classObserver) {
+                        if ($input.length > 0 && classObserver) {
                             classObserver.disconnect();
                         }
                     },
@@ -734,7 +733,7 @@
 
                 observe: {
                     class: function () {
-                        if ($input.length && classObserver) {
+                        if ($input.length > 0 && classObserver) {
                             classObserver.observe($module[0], {
                                 attributes: true,
                             });
@@ -760,6 +759,7 @@
                         var ms1d = 864e5, // milliseconds in a day
                             ms7d = 7 * ms1d; // milliseconds in a week
 
+                        // eslint-disable-next-line wrap-iife
                         return function () { // return a closure so constants get calculated only once
                             var DC3 = Date.UTC(weekYear, weekMonth, weekDay + 3) / ms1d, // an Absolute Day Number
                                 AWN = Math.floor(DC3 / 7), // an Absolute Week Number
@@ -887,11 +887,11 @@
                         var endDate = module.get.endDate();
                         if (!!endDate && !!date && date > endDate) {
                             // selected date is greater than end date in range, so clear end date
-                            module.set.endDate(undefined);
+                            module.set.endDate();
                         }
                         module.set.dataKeyValue(metadata.date, date);
 
-                        if (updateInput && $input.length) {
+                        if (updateInput && $input.length > 0) {
                             $input.val(text);
                         }
 
@@ -1024,7 +1024,7 @@
                 },
 
                 clear: function () {
-                    module.set.date(undefined);
+                    module.set.date();
                 },
 
                 popup: function () {
@@ -1032,14 +1032,14 @@
                 },
 
                 focus: function () {
-                    if ($input.length) {
+                    if ($input.length > 0) {
                         $input.trigger('focus');
                     } else {
                         $container.trigger('focus');
                     }
                 },
                 blur: function () {
-                    if ($input.length) {
+                    if ($input.length > 0) {
                         $input.trigger('blur');
                     } else {
                         $container.trigger('blur');
@@ -1090,7 +1090,7 @@
                                 ss: ('0' + s).slice(-2),
                                 a: a,
                                 A: a.toUpperCase(),
-                                S: ['th', 'st', 'nd', 'rd'][D % 10 > 3 ? 0 : (D % 100 - D % 10 !== 10) * D % 10],
+                                S: ['th', 'st', 'nd', 'rd'][(D % 10) > 3 ? 0 : (((D % 100) - (D % 10) === 10) ? 0 : D % 10)],
                                 w: w,
                                 ww: ('0' + w).slice(-2),
                             }
@@ -1106,57 +1106,59 @@
                     },
                     isDisabled: function (date, mode) {
                         return (mode === 'day' || mode === 'month' || mode === 'year' || mode === 'hour') && (((mode === 'day' && settings.disabledDaysOfWeek.indexOf(date.getDay()) !== -1) || settings.disabledDates.some(function (d) {
+                            var blocked = false;
+
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
                             if (d instanceof Date) {
-                                return module.helper.dateEqual(date, d, mode);
-                            }
-                            if (d !== null && typeof d === 'object') {
+                                blocked = module.helper.dateEqual(date, d, mode);
+                            } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.year]) {
                                     if (typeof d[metadata.year] === 'number') {
-                                        return date.getFullYear() == d[metadata.year];
+                                        blocked = date.getFullYear() == d[metadata.year];
                                     } else if (Array.isArray(d[metadata.year])) {
-                                        return d[metadata.year].indexOf(date.getFullYear()) > -1;
+                                        blocked = d[metadata.year].indexOf(date.getFullYear()) > -1;
                                     }
                                 } else if (d[metadata.month]) {
                                     if (typeof d[metadata.month] === 'number') {
-                                        return date.getMonth() == d[metadata.month];
+                                        blocked = date.getMonth() == d[metadata.month];
                                     } else if (Array.isArray(d[metadata.month])) {
-                                        return d[metadata.month].indexOf(date.getMonth()) > -1;
+                                        blocked = d[metadata.month].indexOf(date.getMonth()) > -1;
                                     } else if (d[metadata.month] instanceof Date) {
                                         var sdate = module.helper.sanitiseDate(d[metadata.month]);
 
-                                        return (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
+                                        blocked = (date.getMonth() == sdate.getMonth()) && (date.getFullYear() == sdate.getFullYear());
                                     }
                                 } else if (d[metadata.date] && mode === 'day') {
                                     if (d[metadata.date] instanceof Date) {
-                                        return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
+                                        blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                                     } else if (Array.isArray(d[metadata.date])) {
-                                        return d[metadata.date].some(function (idate) {
+                                        blocked = d[metadata.date].some(function (idate) {
                                             return module.helper.dateEqual(date, idate, mode);
                                         });
                                     }
                                 }
                             }
+
+                            return blocked;
                         })) || (mode === 'hour' && settings.disabledHours.some(function (d) {
+                            var blocked = false;
+
                             if (typeof d === 'string') {
                                 d = module.helper.sanitiseDate(d);
                             }
                             if (d instanceof Date) {
-                                return module.helper.dateEqual(date, d, mode);
+                                blocked = module.helper.dateEqual(date, d, mode);
                             } else if (typeof d === 'number') {
-                                return date.getHours() === d;
-                            }
-                            if (d !== null && typeof d === 'object') {
-                                var blocked = true;
-
+                                blocked = date.getHours() === d;
+                            } else if (d !== null && typeof d === 'object') {
                                 if (d[metadata.date]) {
                                     if (d[metadata.date] instanceof Date) {
                                         blocked = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]));
                                     } else if (Array.isArray(d[metadata.date])) {
-                                        return d[metadata.date].some(function (idate) {
-                                            blocked = module.helper.dateEqual(date, idate, mode);
+                                        blocked = d[metadata.date].some(function (idate) {
+                                            return module.helper.dateEqual(date, idate, mode);
                                         });
                                     }
                                 }
@@ -1171,30 +1173,35 @@
 
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number') {
-                                        return blocked && date.getHours() == d[metadata.hours];
+                                        blocked = blocked && date.getHours() == d[metadata.hours];
                                     } else if (Array.isArray(d[metadata.hours])) {
-                                        return blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
+                                        blocked = blocked && d[metadata.hours].indexOf(date.getHours()) > -1;
                                     }
                                 }
                             }
+
+                            return blocked;
                         })));
                     },
                     isEnabled: function (date, mode) {
                         if (mode === 'day') {
                             return settings.enabledDates.length === 0 || settings.enabledDates.some(function (d) {
+                                var enabled = false;
+
                                 if (typeof d === 'string') {
                                     d = module.helper.sanitiseDate(d);
                                 }
                                 if (d instanceof Date) {
-                                    return module.helper.dateEqual(date, d, mode);
+                                    enabled = module.helper.dateEqual(date, d, mode);
+                                } else if (d !== null && typeof d === 'object' && d[metadata.date]) {
+                                    enabled = module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
                                 }
-                                if (d !== null && typeof d === 'object' && d[metadata.date]) {
-                                    return module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode);
-                                }
+
+                                return enabled;
                             });
-                        } else {
-                            return true;
                         }
+
+                        return true;
                     },
                     findDayAsObject: function (date, mode, dates) {
                         if (mode === 'day' || mode === 'month' || mode === 'year') {
@@ -1209,11 +1216,13 @@
                                     dateObject[metadata.date] = d;
 
                                     return dateObject;
-                                } else if (d !== null && typeof d === 'object') {
+                                }
+                                if (d !== null && typeof d === 'object') {
                                     if (d[metadata.year]) {
                                         if (typeof d[metadata.year] === 'number' && date.getFullYear() == d[metadata.year]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.year])) {
+                                        }
+                                        if (Array.isArray(d[metadata.year])) {
                                             if (d[metadata.year].indexOf(date.getFullYear()) > -1) {
                                                 return d;
                                             }
@@ -1221,7 +1230,8 @@
                                     } else if (d[metadata.month]) {
                                         if (typeof d[metadata.month] === 'number' && date.getMonth() == d[metadata.month]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.month])) {
+                                        }
+                                        if (Array.isArray(d[metadata.month])) {
                                             if (d[metadata.month].indexOf(date.getMonth()) > -1) {
                                                 return d;
                                             }
@@ -1234,7 +1244,8 @@
                                     } else if (d[metadata.date] && mode === 'day') {
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]), mode)) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.date])) {
+                                        }
+                                        if (Array.isArray(d[metadata.date])) {
                                             if (d[metadata.date].some(function (idate) {
                                                 return module.helper.dateEqual(date, idate, mode);
                                             })) {
@@ -1255,7 +1266,8 @@
                                 if (d[metadata.hours]) {
                                     if (typeof d[metadata.hours] === 'number' && date.getHours() == d[metadata.hours]) {
                                         return d;
-                                    } else if (Array.isArray(d[metadata.hours])) {
+                                    }
+                                    if (Array.isArray(d[metadata.hours])) {
                                         if (d[metadata.hours].indexOf(date.getHours()) > -1) {
                                             return d;
                                         }
@@ -1266,11 +1278,13 @@
                                 d = hours[i];
                                 if (typeof d === 'number' && date.getHours() == d) {
                                     return null;
-                                } else if (d !== null && typeof d === 'object') {
+                                }
+                                if (d !== null && typeof d === 'object') {
                                     if (d[metadata.days] && hourCheck(date, d)) {
                                         if (typeof d[metadata.days] === 'number' && date.getDay() == d[metadata.days]) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.days])) {
+                                        }
+                                        if (Array.isArray(d[metadata.days])) {
                                             if (d[metadata.days].indexOf(date.getDay()) > -1) {
                                                 return d;
                                             }
@@ -1278,7 +1292,8 @@
                                     } else if (d[metadata.date] && hourCheck(date, d)) {
                                         if (d[metadata.date] instanceof Date && module.helper.dateEqual(date, module.helper.sanitiseDate(d[metadata.date]))) {
                                             return d;
-                                        } else if (Array.isArray(d[metadata.date])) {
+                                        }
+                                        if (Array.isArray(d[metadata.date])) {
                                             if (d[metadata.date].some(function (idate) {
                                                 return module.helper.dateEqual(date, idate, mode);
                                             })) {
@@ -1428,7 +1443,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1479,8 +1494,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1640,17 +1655,18 @@
                 if (!text) {
                     return null;
                 }
-                text = String(text).trim().replace(/([.:\/\-])\s+/g, '$1').replace(/\s+([.:\/-])/g, '$1').replace(/\s+/g, ' ');
+                text = String(text).trim().replace(/([./:-])\s+/g, '$1').replace(/\s+([./:-])/g, '$1')
+                    .replace(/\s+/g, ' ');
                 if (text.length === 0) {
                     return null;
                 }
-                if (text.match(/^[0-9]{4}[\/\-\.][0-9]{1,2}[\/\-\.][0-9]{1,2}$/)) {
-                    text = text.replace(/[\/\-\.]/g, '/') + ' 00:00:00';
+                if (/^\d{4}(?:[./-]\d{1,2}){2}$/.test(text)) {
+                    text = text.replace(/[./-]/g, '/') + ' 00:00:00';
                 }
                 // Reverse date and month in some cases
-                text = settings.monthFirst || !text.match(/^[0-9]{1,2}[\/\-\.]/) ? text : text.replace(/[\/\-\.]/g, '/').replace(/([0-9]+)\/([0-9]+)/, '$2/$1');
+                text = settings.monthFirst || !/^\d{1,2}[./-]/.test(text) ? text : text.replace(/[./-]/g, '/').replace(/(\d+)\/(\d+)/, '$2/$1');
                 var textDate = new Date(text);
-                var numberOnly = text.match(/^[0-9]+$/) !== null;
+                var numberOnly = text.match(/^\d+$/) !== null;
                 if (!numberOnly && !isNaN(textDate.getDate())) {
                     return textDate;
                 }
@@ -1698,7 +1714,7 @@
                             if (hour < 0 || minute < 0) {
                                 parts = number.split(':');
                                 for (k = 0; k < Math.min(2, parts.length); k++) {
-                                    j = parseInt(parts[k]);
+                                    j = parseInt(parts[k], 10);
                                     if (isNaN(j)) {
                                         j = 0;
                                     }
@@ -1723,7 +1739,7 @@
                         }
                         for (j = 0; j < settings.text.months.length; j++) {
                             monthString = settings.text.months[j];
-                            monthString = monthString.substring(0, word.length).toLowerCase();
+                            monthString = monthString.slice(0, word.length).toLowerCase();
                             if (monthString === word) {
                                 month = j + 1;
 
@@ -1737,7 +1753,7 @@
 
                     // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i]);
+                        j = parseInt(numbers[i], 10);
                         if (isNaN(j)) {
                             continue;
                         }
@@ -1756,11 +1772,11 @@
                     if (month < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             k = i > 1 || settings.monthFirst ? i : i === 1 ? 0 : 1;
-                            j = parseInt(numbers[k]);
+                            j = parseInt(numbers[k], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (1 <= j && j <= 12) {
+                            if (j >= 1 && j <= 12) {
                                 month = j;
                                 numbers.splice(k, 1);
 
@@ -1771,11 +1787,11 @@
 
                     // day
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i]);
+                        j = parseInt(numbers[i], 10);
                         if (isNaN(j)) {
                             continue;
                         }
-                        if (1 <= j && j <= 31) {
+                        if (j >= 1 && j <= 31) {
                             day = j;
                             numbers.splice(i, 1);
 
@@ -1786,7 +1802,7 @@
                     // year <= settings.centuryBreak
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
@@ -1805,11 +1821,11 @@
                     // hour
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (0 <= j && j <= 23) {
+                            if (j >= 0 && j <= 23) {
                                 hour = j;
                                 numbers.splice(i, 1);
 
@@ -1821,11 +1837,11 @@
                     // minute
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
-                            if (0 <= j && j <= 59) {
+                            if (j >= 0 && j <= 59) {
                                 minute = j;
                                 numbers.splice(i, 1);
 
@@ -1919,7 +1935,7 @@
         regExp: {
             dateWords: /[^A-Za-z\u00C0-\u024F]+/g,
             dateNumbers: /[^\d:]+/g,
-            token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[SAaY]|"[^"]*"|'[^']*'/g,
+            token: /d{1,4}|D{1,2}|M{1,4}|YY(?:YY)?|([Hhmsw])\1?|[ASYa]|"[^"]*"|'[^']*'/g,
         },
 
         error: {

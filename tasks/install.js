@@ -13,7 +13,7 @@
    * Standard installer runs asking for paths to site files etc
 */
 
-var
+let
     gulp           = require('gulp'),
 
     // node dependencies
@@ -54,7 +54,7 @@ var
 
 // Export install task
 module.exports = function (callback) {
-    var
+    let
         currentConfig = requireDotFile('semantic.json', process.cwd()),
         manager       = install.getPackageManager(),
         rootQuestions = questions.root,
@@ -84,7 +84,7 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        var
+        let
             updateFolder = path.join(manager.root, currentConfig.base),
             updatePaths  = {
                 config: path.join(manager.root, files.config),
@@ -146,16 +146,16 @@ module.exports = function (callback) {
                 callback();
 
                 return;
-            } else {
-                console.log('Current version of Fomantic UI already installed');
-                callback();
-
-                return;
             }
-        } else {
-            console.error('Cannot locate files to update at path: ', updatePaths.definition);
-            console.log('Running installer');
+
+            console.log('Current version of Fomantic UI already installed');
+            callback();
+
+            return;
         }
+
+        console.error('Cannot locate files to update at path:', updatePaths.definition);
+        console.log('Running installer');
     }
 
     /* --------------
@@ -226,7 +226,7 @@ module.exports = function (callback) {
              Paths
         --------------- */
 
-        var
+        let
             installPaths = {
                 config: files.config,
                 configFolder: folders.config,
@@ -267,7 +267,7 @@ module.exports = function (callback) {
             installFolder = path.join(manager.root, answers.semanticRoot);
 
             // add install folder to all output paths
-            for (var destination in installPaths) {
+            for (let destination in installPaths) {
                 if (installPaths.hasOwnProperty(destination)) {
                     // config goes in project root, rest in install folder
                     installPaths[destination] = (destination == 'config' || destination == 'configFolder')
@@ -334,7 +334,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create theme.config', function () {
-            var
+            let
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
@@ -342,7 +342,7 @@ module.exports = function (callback) {
             ;
 
             // rewrite site variable in theme.less
-            console.info('Adjusting @siteFolder to: ', pathToSite + '/');
+            console.info('Adjusting @siteFolder to:', pathToSite + '/');
 
             if (fs.existsSync(installPaths.themeConfig)) {
                 console.info('Modifying src/theme.config (LESS config)', installPaths.themeConfig);
@@ -352,16 +352,16 @@ module.exports = function (callback) {
                     .pipe(replace(regExp.siteVariable, siteVariable))
                     .pipe(gulp.dest(installPaths.themeConfigFolder))
                 ;
-            } else {
-                console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
-
-                return gulp.src(source.themeConfig)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' }))
-                    .pipe(replace(regExp.siteVariable, siteVariable))
-                    .pipe(gulp.dest(installPaths.themeConfigFolder))
-                ;
             }
+
+            console.info('Creating src/theme.config (LESS config)', installPaths.themeConfig);
+
+            return gulp.src(source.themeConfig)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' }))
+                .pipe(replace(regExp.siteVariable, siteVariable))
+                .pipe(gulp.dest(installPaths.themeConfigFolder))
+            ;
         });
 
         /* --------------
@@ -369,7 +369,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            var
+            let
                 jsonConfig = install.createJSON(answers)
             ;
 
@@ -383,16 +383,16 @@ module.exports = function (callback) {
                     .pipe(jsonEditor(jsonConfig))
                     .pipe(gulp.dest(installPaths.configFolder))
                 ;
-            } else {
-                console.info('Creating config file (semantic.json)', installPaths.config);
-
-                return gulp.src(source.config)
-                    .pipe(plumber())
-                    .pipe(rename({ extname: '' })) // remove .template from ext
-                    .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
-                    .pipe(gulp.dest(installPaths.configFolder))
-                ;
             }
+
+            console.info('Creating config file (semantic.json)', installPaths.config);
+
+            return gulp.src(source.config)
+                .pipe(plumber())
+                .pipe(rename({ extname: '' })) // remove .template from ext
+                .pipe(jsonEditor(jsonConfig, { end_with_newline: true }))
+                .pipe(gulp.dest(installPaths.configFolder))
+            ;
         });
 
         gulp.series('create theme.config', 'create semantic.json')(callback);

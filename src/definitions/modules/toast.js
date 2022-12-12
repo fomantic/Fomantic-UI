@@ -15,22 +15,20 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
-    $.toast = $.fn.toast = function (parameters) {
+    $.fn.toast = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -274,7 +272,7 @@
                             }
                         }
                         if (settings.displayTime === 'auto') {
-                            settings.displayTime = Math.max(settings.minDisplayTime, $toast.text().split(' ').length / settings.wordsPerMinute * 60000);
+                            settings.displayTime = Math.max(settings.minDisplayTime, ($toast.text().split(' ').length / settings.wordsPerMinute) * 60000);
                         }
                         $toastBox.append($toast);
 
@@ -311,7 +309,7 @@
                         }
                         if (settings.displayTime > 0) {
                             var progressingClass = className.progressing + ' ' + (settings.pauseOnHover ? className.pausable : '');
-                            if (!!settings.showProgress) {
+                            if (settings.showProgress) {
                                 $progress = $('<div/>', {
                                     class: className.progress + ' ' + (settings.classProgress || settings.class),
                                     'data-percent': '',
@@ -571,8 +569,8 @@
                             return string;
                         }
                         var
-                            badChars     = /[<>"'`]/g,
-                            shouldEscape = /[&<>"'`]/,
+                            badChars     = /["'<>`]/g,
+                            shouldEscape = /["&'<>`]/,
                             escape       = {
                                 '<': '&lt;',
                                 '>': '&gt;',
@@ -585,7 +583,7 @@
                             }
                         ;
                         if (shouldEscape.test(string)) {
-                            string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                            string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                             return string.replace(badChars, escapedChar);
                         }
@@ -662,7 +660,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -713,8 +711,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -775,6 +773,7 @@
             ? returnedValue
             : this;
     };
+    $.toast = $.fn.toast;
 
     $.fn.toast.settings = {
 
@@ -912,13 +911,15 @@
             ;
             if (x < 1 / d1) {
                 return n1 * x * x;
-            } else if (x < 2 / d1) {
-                return n1 * (x -= 1.5 / d1) * x + 0.75;
-            } else if (x < 2.5 / d1) {
-                return n1 * (x -= 2.25 / d1) * x + 0.9375;
-            } else {
-                return n1 * (x -= 2.625 / d1) * x + 0.984375;
             }
+            if (x < 2 / d1) {
+                return n1 * (x -= 1.5 / d1) * x + 0.75;
+            }
+            if (x < 2.5 / d1) {
+                return n1 * (x -= 2.25 / d1) * x + 0.9375;
+            }
+
+            return n1 * (x -= 2.625 / d1) * x + 0.984375;
         },
         easeOutCubic: function (t) {
             return (--t) * t * t + 1;

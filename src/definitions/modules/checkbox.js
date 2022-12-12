@@ -15,22 +15,20 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
-        : (typeof self != 'undefined' && self.Math == Math)
-            ? self
-            : Function('return this')();
+        : globalThis;
 
     $.fn.checkbox = function (parameters) {
         var
             $allModules    = $(this),
             moduleSelector = $allModules.selector || '',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -168,7 +166,7 @@
                 },
 
                 preventDefaultOnInputTarget: function () {
-                    if (typeof event !== 'undefined' && event !== null && $(event.target).is(selector.input)) {
+                    if (event !== undefined && event !== null && $(event.target).is(selector.input)) {
                         module.verbose('Preventing default check action after manual check action');
                         event.preventDefault();
                     }
@@ -714,7 +712,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -765,8 +763,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

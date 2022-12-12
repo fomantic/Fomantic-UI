@@ -12,7 +12,7 @@
             Theme
 *******************************/
 
-@type    : 'module';
+@type : 'module';
 @element : 'dimmer';
 
 @import (multiple) '../../theme.config';
@@ -22,76 +22,70 @@
 *******************************/
 
 .dimmable:not(body) {
-  position: @dimmablePosition;
+    position: @dimmablePosition;
 }
 
 .ui.dimmer {
-  display: none;
-  position: @dimmerPosition;
-  top: 0;
-  left: 0;
-
-  width: 100%;
-  height: 100%;
-
-  text-align: @textAlign;
-  vertical-align: @verticalAlign;
-  padding: @padding;
-
-  background: @backgroundColor;
-  opacity: @hiddenOpacity;
-  line-height: @lineHeight;
-
-  animation-fill-mode: both;
-  animation-duration: @duration;
-  transition: @transition;
-
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  user-select: none;
-  will-change: opacity;
-  z-index: @zIndex;
+    display: none;
+    position: @dimmerPosition;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    text-align: @textAlign;
+    vertical-align: @verticalAlign;
+    padding: @padding;
+    background: @backgroundColor;
+    opacity: @hiddenOpacity;
+    line-height: @lineHeight;
+    animation-fill-mode: both;
+    animation-duration: @duration;
+    transition: @transition;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    will-change: opacity;
+    z-index: @zIndex;
 }
 
 /* Dimmer Content */
 .ui.dimmer > .content {
-  user-select: text;
-  color: @textColor;
+    user-select: text;
+    color: @textColor;
 }
-
 
 /* Loose Coupling */
 .ui.segment > .ui.dimmer:not(.page) {
-  border-radius: inherit;
+    border-radius: inherit;
 }
 
 /* Scrollbars */
 & when (@useCustomScrollbars) {
-  .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
-    background: @trackInvertedBackground;
-  }
-  .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb {
-    background: @thumbInvertedBackground;
-  }
-  .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:window-inactive {
-    background: @thumbInvertedInactiveBackground;
-  }
-  .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
-    background: @thumbInvertedHoverBackground;
-  }
-  .ui.dimmer:not(.inverted) {
-    & when (@supportIE) {
-      /* IE11 */
-      scrollbar-face-color: @thumbInvertedBackgroundHex;
-      scrollbar-shadow-color: @thumbInvertedBackgroundHex;
-      scrollbar-track-color: @trackInvertedBackgroundHex;
-      scrollbar-arrow-color: @trackInvertedBackgroundHex;
+    .ui.dimmer:not(.inverted)::-webkit-scrollbar-track {
+        background: @trackInvertedBackground;
     }
-    /* firefox : first color thumb, second track */
-    scrollbar-color:  @thumbInvertedBackground @trackInvertedBackground;
-  }
+    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb {
+        background: @thumbInvertedBackground;
+    }
+    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:window-inactive {
+        background: @thumbInvertedInactiveBackground;
+    }
+    .ui.dimmer:not(.inverted)::-webkit-scrollbar-thumb:hover {
+        background: @thumbInvertedHoverBackground;
+    }
+    .ui.dimmer:not(.inverted) {
+        & when (@supportIE) {
+            /* IE11 */
+            scrollbar-face-color: @thumbInvertedBackgroundHex;
+            scrollbar-shadow-color: @thumbInvertedBackgroundHex;
+            scrollbar-track-color: @trackInvertedBackgroundHex;
+            scrollbar-arrow-color: @trackInvertedBackgroundHex;
+        }
+
+        /* firefox : first color thumb, second track */
+        scrollbar-color: @thumbInvertedBackground @trackInvertedBackground;
+    }
 }
 
 /*******************************
@@ -101,304 +95,307 @@
 /* Animating */
 .animating.dimmable:not(body),
 .dimmed.dimmable:not(body) {
-  overflow: @overflow;
+    overflow: @overflow;
 }
 
 /* Animating / Active / Visible */
 .dimmed.dimmable > .ui.animating.dimmer,
 .dimmed.dimmable > .ui.visible.dimmer,
 .ui.active.dimmer {
-  display: flex;
-  opacity: @visibleOpacity;
+    display: flex;
+    opacity: @visibleOpacity;
 }
 
 & when (@variationDimmerDisabled) {
-  /* Disabled */
-  .ui.disabled.dimmer {
-    width: 0 !important;
-    height: 0 !important;
-  }
+    /* Disabled */
+    .ui.disabled.dimmer {
+        width: 0 !important;
+        height: 0 !important;
+    }
 }
-
 
 /*******************************
            Variations
 *******************************/
 
 & when (@variationDimmerLegacy) {
-  /*--------------
-      Legacy
-  ---------------*/
+    /* --------------
+        Legacy
+    --------------- */
 
-  /* Animating / Active / Visible */
-  .dimmed.dimmable > .ui.animating.legacy.dimmer,
-  .dimmed.dimmable > .ui.visible.legacy.dimmer,
-  .ui.active.legacy.dimmer {
-    display: block;
-  }
+    /* Animating / Active / Visible */
+    .dimmed.dimmable > .ui.animating.legacy.dimmer,
+    .dimmed.dimmable > .ui.visible.legacy.dimmer,
+    .ui.active.legacy.dimmer {
+        display: block;
+    }
 }
 
 & when (@variationDimmerAligned) {
-  /*--------------
-      Alignment
-  ---------------*/
+    /* --------------
+        Alignment
+    --------------- */
 
-  .ui[class*="top aligned"].dimmer {
-    justify-content: flex-start;
-  }
-  .ui[class*="bottom aligned"].dimmer {
-    justify-content: flex-end;
-  }
+    .ui[class*="top aligned"].dimmer {
+        justify-content: flex-start;
+    }
+    .ui[class*="bottom aligned"].dimmer {
+        justify-content: flex-end;
+    }
 }
 
 & when (@variationDimmerPage) {
-  /*--------------
-        Page
-  ---------------*/
+    /* --------------
+          Page
+    --------------- */
 
-  .ui.page.dimmer {
-    position: @pageDimmerPosition;
-    transform-style: @transformStyle;
-    perspective: @perspective;
-    transform-origin: center center;
-    &.modals {
-      -moz-perspective: none;
+    .ui.page.dimmer {
+        position: @pageDimmerPosition;
+        transform-style: @transformStyle;
+        perspective: @perspective;
+        transform-origin: center center;
+        &.modals {
+            -moz-perspective: none;
+        }
     }
-  }
 }
 
 body.animating.in.dimmable,
 body.dimmed.dimmable {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 body.dimmable > .dimmer {
-  position: fixed;
+    position: fixed;
 }
 
 & when (@variationDimmerBlurring) {
-  /*--------------
-      Blurring
-  ---------------*/
+    /* --------------
+        Blurring
+    --------------- */
 
-  @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
-    .blurring.dimmable > :not(.dimmer) {
-      filter: @blurredStartFilter;
-      transition: @blurredTransition;
+    @supports (not (-webkit-backdrop-filter: none)) and (not (backdrop-filter: none)) {
+        .blurring.dimmable > :not(.dimmer) {
+            filter: @blurredStartFilter;
+            transition: @blurredTransition;
+        }
+        .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
+            filter: @blurredEndFilter;
+        }
     }
-    .blurring.dimmed.dimmable > :not(.dimmer):not(.popup) {
-      filter: @blurredEndFilter;
-    }
-  }
 
-  /* Dimmer Color */
-  .blurring.dimmable > .dimmer {
-    background: @blurredBackgroundColor;
-    -webkit-backdrop-filter: @blurredEndFilter;
-    backdrop-filter: @blurredEndFilter;
-  }
-  .blurring.dimmable > .inverted.dimmer {
-    background: @blurredInvertedBackgroundColor;
-  }
+    /* Dimmer Color */
+    .blurring.dimmable > .dimmer {
+        background: @blurredBackgroundColor;
+        -webkit-backdrop-filter: @blurredEndFilter;
+        backdrop-filter: @blurredEndFilter;
+    }
+    .blurring.dimmable > .inverted.dimmer {
+        background: @blurredInvertedBackgroundColor;
+    }
 }
 & when (@variationDimmerAligned) {
-  /*--------------
-      Aligned
-  ---------------*/
+    /* --------------
+        Aligned
+    --------------- */
 
-  .ui.dimmer > .top.aligned.content > * {
-    vertical-align: top;
-  }
-  .ui.dimmer > .bottom.aligned.content > * {
-    vertical-align: bottom;
-  }
+    .ui.dimmer > .top.aligned.content > * {
+        vertical-align: top;
+    }
+    .ui.dimmer > .bottom.aligned.content > * {
+        vertical-align: bottom;
+    }
 }
 
 & when (@variationDimmerShades) {
-  /*--------------
-      Shades
-  ---------------*/
+    /* --------------
+        Shades
+    --------------- */
 
-  .medium.medium.medium.medium.medium.dimmer {
-    background: @mediumBackgroundColor;
-  }
-  .light.light.light.light.light.dimmer {
-    background: @lightBackgroundColor;
-  }
-  .very.light.light.light.light.dimmer {
-    background: @veryLightBackgroundColor;
-  }
+    .medium.medium.medium.medium.medium.dimmer {
+        background: @mediumBackgroundColor;
+    }
+    .light.light.light.light.light.dimmer {
+        background: @lightBackgroundColor;
+    }
+    .very.light.light.light.light.dimmer {
+        background: @veryLightBackgroundColor;
+    }
 }
 
 & when (@variationDimmerInverted) {
-  /*--------------
-      Inverted
-  ---------------*/
+    /* --------------
+        Inverted
+    --------------- */
 
-  .ui.inverted.dimmer {
-    background: @invertedBackgroundColor;
-  }
-  .ui.inverted.dimmer > .content,
-  .ui.inverted.dimmer > .content > * {
-    color: @invertedTextColor;
-  }
+    .ui.inverted.dimmer {
+        background: @invertedBackgroundColor;
+    }
+    .ui.inverted.dimmer > .content,
+    .ui.inverted.dimmer > .content > * {
+        color: @invertedTextColor;
+    }
 
-  & when (@variationDimmerShades) {
-    /*--------------
-     Inverted Shades
-    ---------------*/
+    & when (@variationDimmerShades) {
+        /* --------------
+         Inverted Shades
+        --------------- */
 
-    .medium.medium.medium.medium.medium.inverted.dimmer {
-      background: @mediumInvertedBackgroundColor;
+        .medium.medium.medium.medium.medium.inverted.dimmer {
+            background: @mediumInvertedBackgroundColor;
+        }
+        .light.light.light.light.light.inverted.dimmer {
+            background: @lightInvertedBackgroundColor;
+        }
+        .very.light.light.light.light.inverted.dimmer {
+            background: @veryLightInvertedBackgroundColor;
+        }
     }
-    .light.light.light.light.light.inverted.dimmer {
-      background: @lightInvertedBackgroundColor;
-    }
-    .very.light.light.light.light.inverted.dimmer {
-      background: @veryLightInvertedBackgroundColor;
-    }
-  }
 }
 
 & when (@variationDimmerSimple) {
-  /*--------------
-       Simple
-  ---------------*/
+    /* --------------
+         Simple
+    --------------- */
 
-  /* Displays without javascript */
-  .ui.simple.dimmer {
-    display: block;
-    overflow: hidden;
-    opacity: 0;
-    width: 0;
-    height: 0;
-    z-index: -100;
-    background: @simpleStartBackgroundColor;
-  }
-  .dimmed.dimmable > .ui.simple.dimmer {
-    overflow: visible;
-    opacity: 1;
-    width: 100%;
-    height: 100%;
-    background: @simpleEndBackgroundColor;
-    z-index: @simpleZIndex;
-  }
+    /* Displays without javascript */
+    .ui.simple.dimmer {
+        display: block;
+        overflow: hidden;
+        opacity: 0;
+        width: 0;
+        height: 0;
+        z-index: -100;
+        background: @simpleStartBackgroundColor;
+    }
+    .dimmed.dimmable > .ui.simple.dimmer {
+        overflow: visible;
+        opacity: 1;
+        width: 100%;
+        height: 100%;
+        background: @simpleEndBackgroundColor;
+        z-index: @simpleZIndex;
+    }
 
-  .ui.simple.inverted.dimmer {
-    background: @simpleInvertedStartBackgroundColor;
-  }
-  .dimmed.dimmable > .ui.simple.inverted.dimmer {
-    background: @simpleInvertedEndBackgroundColor;
-  }
+    .ui.simple.inverted.dimmer {
+        background: @simpleInvertedStartBackgroundColor;
+    }
+    .dimmed.dimmable > .ui.simple.inverted.dimmer {
+        background: @simpleInvertedEndBackgroundColor;
+    }
 }
 
 & when (@variationDimmerPartially) {
-  /*--------------
-       Partially
-  ----------------*/
+    /* --------------
+         Partially
+    ---------------- */
 
-  .ui[class*="top dimmer"],
-  .ui[class*="center dimmer"],
-  .ui[class*="bottom dimmer"] {
-    height: auto;
-  }
-  .ui[class*="bottom dimmer"] {
-    top: auto;
-    bottom: 0;
-  }
-  .ui[class*="center dimmer"] {
-    top:50%;
-    transform: translateY(-50%);
-    -webkit-transform: translateY(calc(-50% - .5px));
-  }
+    .ui[class*="top dimmer"],
+    .ui[class*="center dimmer"],
+    .ui[class*="bottom dimmer"] {
+        height: auto;
+    }
+    .ui[class*="bottom dimmer"] {
+        top: auto;
+        bottom: 0;
+    }
+    .ui[class*="center dimmer"] {
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transform: translateY(calc(-50% - 0.5px));
+    }
 
-  .ui.segment > .ui.ui[class*="top dimmer"] {
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-  }
-  .ui.segment > .ui.ui[class*="center dimmer"] {
-      border-radius: 0;
-  }
-  .ui.segment > .ui.ui[class*="bottom dimmer"] {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
-  }
+    .ui.segment > .ui.ui[class*="top dimmer"] {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    .ui.segment > .ui.ui[class*="center dimmer"] {
+        border-radius: 0;
+    }
+    .ui.segment > .ui.ui[class*="bottom dimmer"] {
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
 
-  .ui[class*="center dimmer"].transition[class*="fade up"].in {
-    animation-name: fadeInUpCenter;
-  }
-  .ui[class*="center dimmer"].transition[class*="fade down"].in {
-    animation-name: fadeInDownCenter;
-  }
-  .ui[class*="center dimmer"].transition[class*="fade up"].out {
-    animation-name: fadeOutUpCenter;
-  }
-  .ui[class*="center dimmer"].transition[class*="fade down"].out {
-    animation-name: fadeOutDownCenter;
-  }
-  .ui[class*="center dimmer"].bounce.transition {
-    animation-name: bounceCenter;
-  }
-  @keyframes fadeInUpCenter {
-    0% {
-      opacity: 0;
-      transform: translateY(-40%);
-      -webkit-transform: translateY(calc(-40% - .5px));
+    .ui[class*="center dimmer"].transition[class*="fade up"].in {
+        animation-name: fadeInUpCenter;
     }
-    100% {
-      opacity: 1;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(calc(-50% - .5px));
+    .ui[class*="center dimmer"].transition[class*="fade down"].in {
+        animation-name: fadeInDownCenter;
     }
-  }
-  @keyframes fadeInDownCenter {
-    0% {
-      opacity: 0;
-      transform: translateY(-60%);
-      -webkit-transform: translateY(calc(-60% - .5px));
+    .ui[class*="center dimmer"].transition[class*="fade up"].out {
+        animation-name: fadeOutUpCenter;
     }
-    100% {
-      opacity: 1;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(calc(-50% - .5px));
+    .ui[class*="center dimmer"].transition[class*="fade down"].out {
+        animation-name: fadeOutDownCenter;
     }
-  }
-  @keyframes fadeOutUpCenter {
-    0% {
-      opacity: 1;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(calc(-50% - .5px));
+    .ui[class*="center dimmer"].bounce.transition {
+        animation-name: bounceCenter;
     }
-    100% {
-      opacity: 0;
-      transform: translateY(-45%);
-      -webkit-transform: translateY(calc(-45% - .5px));
+    @keyframes fadeInUpCenter {
+        0% {
+            opacity: 0;
+            transform: translateY(-40%);
+            -webkit-transform: translateY(calc(-40% - 0.5px));
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(calc(-50% - 0.5px));
+        }
     }
-  }
-  @keyframes fadeOutDownCenter {
-    0% {
-      opacity: 1;
-      transform: translateY(-50%);
-      -webkit-transform: translateY(calc(-50% - .5px));
+    @keyframes fadeInDownCenter {
+        0% {
+            opacity: 0;
+            transform: translateY(-60%);
+            -webkit-transform: translateY(calc(-60% - 0.5px));
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(calc(-50% - 0.5px));
+        }
     }
-    100% {
-      opacity: 0;
-      transform: translateY(-55%);
-      -webkit-transform: translateY(calc(-55% - .5px));
+    @keyframes fadeOutUpCenter {
+        0% {
+            opacity: 1;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(calc(-50% - 0.5px));
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-45%);
+            -webkit-transform: translateY(calc(-45% - 0.5px));
+        }
     }
-  }
-  @keyframes bounceCenter {
-    0%, 20%, 50%, 80%, 100% {
-      transform: translateY(-50%);
-      -webkit-transform: translateY(calc(-50% - .5px));
+    @keyframes fadeOutDownCenter {
+        0% {
+            opacity: 1;
+            transform: translateY(-50%);
+            -webkit-transform: translateY(calc(-50% - 0.5px));
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-55%);
+            -webkit-transform: translateY(calc(-55% - 0.5px));
+        }
     }
-    40% {
-      transform: translateY(calc(-50% - 30px));
+    @keyframes bounceCenter {
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(-50%);
+            -webkit-transform: translateY(calc(-50% - 0.5px));
+        }
+        40% {
+            transform: translateY(calc(-50% - 30px));
+        }
+        60% {
+            transform: translateY(calc(-50% - 15px));
+        }
     }
-    60% {
-      transform: translateY(calc(-50% - 15px));
-    }
-  }
 }
 
 .loadUIOverrides();

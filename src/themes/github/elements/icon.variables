@@ -1,15 +1,15 @@
 @fontPath: '../../themes/github/assets/fonts';
 @fontName: 'octicons';
 @fonts: {
-  @solid: {
-    font-family: @fontName;
-    src: url("@{fontPath}/@{fontName}.woff2") format('woff');
-    font-style: normal;
-    font-weight: @normal;
-    font-variant: normal;
-    text-decoration: inherit;
-    text-transform: none;
-  };
+    @solid: {
+        font-family: @fontName;
+        src: url("@{fontPath}/@{fontName}.woff2") format('woff');
+        font-style: normal;
+        font-weight: @normal;
+        font-variant: normal;
+        text-decoration: inherit;
+        text-transform: none;
+    };
 };
 @icon-deprecated-map: {};
 @icon-outline-map: {};
