@@ -379,7 +379,7 @@
     /* Inward */
     .transition.fly {
         animation-duration: 0.6s;
-        transition-timing-function: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
     }
     .transition.fly.in {
         animation-name: flyIn;
@@ -418,20 +418,20 @@
     @keyframes flyIn {
         0% {
             opacity: 0;
-            transform: scale3d(.3, .3, .3);
+            transform: scale3d(0.3, 0.3, 0.3);
         }
         20% {
             transform: scale3d(1.1, 1.1, 1.1);
         }
         40% {
-            transform: scale3d(.9, .9, .9);
+            transform: scale3d(0.9, 0.9, 0.9);
         }
         60% {
             opacity: 1;
             transform: scale3d(1.03, 1.03, 1.03);
         }
         80% {
-            transform: scale3d(.97, .97, .97);
+            transform: scale3d(0.97, 0.97, 0.97);
         }
         100% {
             opacity: 1;
@@ -518,7 +518,7 @@
     /* Out */
     @keyframes flyOut {
         20% {
-            transform: scale3d(.9, .9, .9);
+            transform: scale3d(0.9, 0.9, 0.9);
         }
         50%,
         55% {
@@ -527,7 +527,7 @@
         }
         100% {
             opacity: 0;
-            transform: scale3d(.3, .3, .3);
+            transform: scale3d(0.3, 0.3, 0.3);
         }
     }
     @keyframes flyOutUp {
@@ -871,7 +871,7 @@
 & when (@variationTransitionGlow) {
     .transition.glow {
         animation-duration: 2000ms;
-        animation-timing-function: cubic-bezier(0.190, 1.000, 0.220, 1.000);
+        animation-timing-function: cubic-bezier(0.19, 1, 0.22, 1);
     }
 
     .transition.glow {
@@ -992,10 +992,10 @@
             transform: scale3d(1.15, 0.85, 1);
         }
         65% {
-            transform: scale3d(.95, 1.05, 1);
+            transform: scale3d(0.95, 1.05, 1);
         }
         75% {
-            transform: scale3d(1.05, .95, 1);
+            transform: scale3d(1.05, 0.95, 1);
         }
         100% {
             transform: scale3d(1, 1, 1);
@@ -1006,13 +1006,13 @@
     /* Glow */
     @keyframes glow {
         0% {
-            background-color: #FCFCFD;
+            background-color: #fcfcfd;
         }
         30% {
-            background-color: #FFF6CD;
+            background-color: #fff6cd;
         }
         100% {
-            background-color: #FCFCFD;
+            background-color: #fcfcfd;
         }
     }
 }

@@ -320,15 +320,15 @@
     .ui.elastic.loading.loading .input > i.icon::after,
     .ui.elastic.loading.loading > i.icon::after,
     .ui.elastic.loader.loader::after {
-        animation: loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+        animation: loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
         animation-delay: 0.3s;
     }
     .ui.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
     .ui.elastic.loading.loading.loading .input > i.icon::before,
     .ui.elastic.loading.loading.loading > i.icon::before,
     .ui.elastic.loader.loader::before {
-        animation: elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
-        -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(.27, 1.05, .92, .61);
+        animation: elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
+        -moz-animation: currentcolor-elastic-loader 1s infinite cubic-bezier(0.27, 1.05, 0.92, 0.61);
         border-right-color: transparent;
     }
     & when (@variationLoaderInline) {
@@ -355,7 +355,7 @@
         .ui.fast.elastic.loading.loading > i.icon::after,
         .ui.fast.elastic.loader.loader::after {
             animation-duration: 0.66s;
-            animation-delay: 0.20s;
+            animation-delay: 0.2s;
         }
         .ui.fast.elastic.loading.loading.loading:not(.form):not(.segment):not(.segments):not(.card)::before,
         .ui.fast.elastic.loading.loading.loading .input > i.icon::before,

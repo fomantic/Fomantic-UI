@@ -72,7 +72,7 @@
 
 @subtleTransparentBlack : rgba(0, 0, 0, 0.03);
 @transparentBlack : rgba(0, 0, 0, 0.05);
-@strongTransparentBlack : rgba(0, 0, 0, 0.10);
+@strongTransparentBlack : rgba(0, 0, 0, 0.1);
 
 @subtleTransparentWhite : rgba(255, 255, 255, 0.01);
 @transparentWhite : rgba(255, 255, 255, 0.05);
