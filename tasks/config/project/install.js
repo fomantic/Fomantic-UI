@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-var
+let
     fs             = require('fs'),
     path           = require('path'),
     defaults       = require('../defaults'),
@@ -17,7 +17,7 @@ var
 
 /* Preconditions for install questions */
 
-var when = {
+let when = {
 
     // path
     changeRoot: function (questions) {
@@ -26,7 +26,7 @@ var when = {
 
     // permissions
     changePermissions: function (questions) {
-        return (questions.changePermissions && questions.changePermissions === true);
+        return questions.changePermissions === true;
     },
 
     // install
@@ -65,7 +65,7 @@ var when = {
 
 /* Filters to user input from install questions */
 
-var filter = {
+let filter = {
     removeTrailingSlash: function (path) {
         return path.replace(/(\/$|\\$)+/mg, '');
     },
@@ -84,7 +84,7 @@ module.exports = {
 
     // detect whether there is a semantic.json configuration and that the auto-install option is set to true
     shouldAutoInstall: function () {
-        var
+        let
             config = when.hasConfig()
         ;
 
@@ -96,7 +96,7 @@ module.exports = {
         var
             // returns last matching result (avoid sub-module detection)
             walk = function (directory) {
-                var
+                let
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 1],
                     nextDirectory = path.join(directory, path.sep, '..')
@@ -136,7 +136,7 @@ module.exports = {
         var
             moduleFolders = 0,
             walk = function (directory) {
-                var
+                let
                     pathArray     = directory.split(path.sep),
                     folder        = pathArray[pathArray.length - 2],
                     nextDirectory = path.join(directory, path.sep, '..')
@@ -161,7 +161,7 @@ module.exports = {
     },
 
     createJSON: function (answers) {
-        var
+        let
             json = {
                 paths: {
                     source: {},

@@ -13,7 +13,7 @@
    * Standard installer runs asking for paths to site files etc
 */
 
-var
+let
     gulp           = require('gulp'),
 
     // node dependencies
@@ -54,7 +54,7 @@ var
 
 // Export install task
 module.exports = function (callback) {
-    var
+    let
         currentConfig = requireDotFile('semantic.json', process.cwd()),
         manager       = install.getPackageManager(),
         rootQuestions = questions.root,
@@ -84,7 +84,7 @@ module.exports = function (callback) {
 
     // run update scripts if semantic.json exists
     if (currentConfig && manager.name === 'NPM') {
-        var
+        let
             updateFolder = path.join(manager.root, currentConfig.base),
             updatePaths  = {
                 config: path.join(manager.root, files.config),
@@ -226,7 +226,7 @@ module.exports = function (callback) {
              Paths
         --------------- */
 
-        var
+        let
             installPaths = {
                 config: files.config,
                 configFolder: folders.config,
@@ -267,7 +267,7 @@ module.exports = function (callback) {
             installFolder = path.join(manager.root, answers.semanticRoot);
 
             // add install folder to all output paths
-            for (var destination in installPaths) {
+            for (let destination in installPaths) {
                 if (installPaths.hasOwnProperty(destination)) {
                     // config goes in project root, rest in install folder
                     installPaths[destination] = (destination == 'config' || destination == 'configFolder')
@@ -334,7 +334,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create theme.config', function () {
-            var
+            let
                 // determine path to site theme folder from theme config
                 // force CSS path variable to use forward slashes for paths
                 pathToSite   = path.relative(path.resolve(installPaths.themeConfigFolder), path.resolve(installPaths.site)).replace(/\\/g, '/'),
@@ -369,7 +369,7 @@ module.exports = function (callback) {
         --------------- */
 
         gulp.task('create semantic.json', function () {
-            var
+            let
                 jsonConfig = install.createJSON(answers)
             ;
 

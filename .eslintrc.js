@@ -62,14 +62,14 @@ module.exports = {
         'prefer-destructuring': 'off',
         'prefer-template': 'off',
         'spaced-comment': ['error', 'always', {
-            line: {
-                markers: ['/'],
-                exceptions: ['-', '+'],
-            },
             block: {
-                markers: ['!'],
-                exceptions: ['*'],
                 balanced: true,
+                exceptions: ['*'],
+                markers: ['!'],
+            },
+            line: {
+                exceptions: ['-', '+'],
+                markers: ['/'],
             },
         }],
         strict: 'off',

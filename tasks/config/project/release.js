@@ -2,7 +2,7 @@
          Release Config
 *******************************/
 
-var
+let
     requireDotFile = require('require-dot-file'),
     config,
     npmPackage,
