@@ -309,7 +309,7 @@
                     module.verbose('Forcing repaint event');
                     element.style.display = 'none';
                     var ignored = element.offsetHeight;
-                    element.scrollTop = element.scrollTop;
+                    element.scrollTop = element.scrollTop; // eslint-disable-line no-self-assign
                     element.style.display = '';
                 },
 

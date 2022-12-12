@@ -967,17 +967,22 @@
                     if (queryLength === termLength) {
                         return (query === term);
                     }
-                    search: for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
+                    for (var characterIndex = 0, nextCharacterIndex = 0; characterIndex < queryLength; characterIndex++) {
                         var
+                            continueSearch = false,
                             queryCharacter = query.charCodeAt(characterIndex)
                         ;
                         while (nextCharacterIndex < termLength) {
                             if (term.charCodeAt(nextCharacterIndex++) === queryCharacter) {
-                                continue search;
+                                continueSearch = true;
+
+                                break;
                             }
                         }
 
-                        return false;
+                        if (!continueSearch) {
+                            return false;
+                        }
                     }
 
                     return true;
@@ -2122,9 +2127,7 @@
                                         return;
                                     }
                                     if (isMultiple) {
-                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(function (v) {
-                                            return String(v);
-                                        })) !== -1) {
+                                        if ($.inArray(module.escape.htmlEntities(String(optionValue)), value.map(String)) !== -1) {
                                             $selectedItem = ($selectedItem)
                                                 ? $selectedItem.add($choice)
                                                 : $choice;
@@ -3206,7 +3209,7 @@
                         }
                     },
                     diacritics: function (text) {
-                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036f]/g, '') : text;
+                        return settings.ignoreDiacritics ? text.normalize('NFD').replace(/[\u0300-\u036F]/g, '') : text;
                     },
                 },
 

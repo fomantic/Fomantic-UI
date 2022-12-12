@@ -643,38 +643,51 @@
 
                         if (module.popup('is visible')) {
                             var mode = module.get.mode();
-                            if (keyCode === 37 || keyCode === 38 || keyCode === 39 || keyCode === 40) {
+                            switch (keyCode) {
                                 // arrow keys
-                                var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap.column : 3;
-                                var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
-                                increment *= mode === 'minute' ? settings.minTimeGap : 1;
-                                var focusDate = module.get.focusDate() || module.get.date() || new Date();
-                                var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
-                                var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
-                                var day = focusDate.getDate() + (mode === 'day' ? increment : 0);
-                                var hour = focusDate.getHours() + (mode === 'hour' ? increment : 0);
-                                var minute = focusDate.getMinutes() + (mode === 'minute' ? increment : 0);
-                                var newFocusDate = new Date(year, month, day, hour, minute);
-                                if (settings.type === 'time') {
-                                    newFocusDate = module.helper.mergeDateTime(focusDate, newFocusDate);
-                                }
-                                if (module.helper.isDateInRange(newFocusDate, mode)) {
-                                    module.set.focusDate(newFocusDate);
-                                }
-                            } else if (keyCode === 13) {
-                                // enter
-                                var date = module.get.focusDate();
-                                if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
-                                    if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
-                                        module.selectDate(date);
+                                case 37:
+                                case 38:
+                                case 39:
+                                case 40: {
+                                    var bigIncrement = mode === 'day' ? 7 : mode === 'hour' ? 4 : mode === 'minute' ? timeGap.column : 3;
+                                    var increment = keyCode === 37 ? -1 : keyCode === 38 ? -bigIncrement : keyCode == 39 ? 1 : bigIncrement;
+                                    increment *= mode === 'minute' ? settings.minTimeGap : 1;
+                                    var focusDate = module.get.focusDate() || module.get.date() || new Date();
+                                    var year = focusDate.getFullYear() + (mode === 'year' ? increment : 0);
+                                    var month = focusDate.getMonth() + (mode === 'month' ? increment : 0);
+                                    var day = focusDate.getDate() + (mode === 'day' ? increment : 0);
+                                    var hour = focusDate.getHours() + (mode === 'hour' ? increment : 0);
+                                    var minute = focusDate.getMinutes() + (mode === 'minute' ? increment : 0);
+                                    var newFocusDate = new Date(year, month, day, hour, minute);
+                                    if (settings.type === 'time') {
+                                        newFocusDate = module.helper.mergeDateTime(focusDate, newFocusDate);
                                     }
+                                    if (module.helper.isDateInRange(newFocusDate, mode)) {
+                                        module.set.focusDate(newFocusDate);
+                                    }
+
+                                    break;
                                 }
-                                // disable form submission:
-                                event.preventDefault();
-                                event.stopPropagation();
-                            } else if (keyCode === 27) {
-                                module.popup('hide');
-                                event.stopPropagation();
+                                // enter key
+                                case 13: {
+                                    var date = module.get.focusDate();
+                                    if (date && !settings.isDisabled(date, mode) && !module.helper.isDisabled(date, mode) && module.helper.isEnabled(date, mode)) {
+                                        if (settings.onSelect.call(element, date, module.get.mode()) !== false) {
+                                            module.selectDate(date);
+                                        }
+                                    }
+                                    // disable form submission:
+                                    event.preventDefault();
+                                    event.stopPropagation();
+
+                                    break;
+                                }
+                                // escape key
+                                case 27:
+                                    module.popup('hide');
+                                    event.stopPropagation();
+
+                                    break;
                             }
                         }
 
@@ -1320,7 +1333,10 @@
                         return date;
                     },
                     dateDiff: function (date1, date2, mode) {
-                        mode = mode || 'day';
+                        if (!mode) {
+                            mode = 'day';
+                        }
+
                         var isTimeOnly = settings.type === 'time';
                         var isYear = mode === 'year';
                         var isYearOrMonth = isYear || mode === 'month';
@@ -1643,8 +1659,7 @@
             today: function (settings) {
                 return settings.type === 'date' ? settings.text.today : settings.text.now;
             },
-            cell: function (cell, date, cellOptions) {
-            },
+            cell: function (cell, date, cellOptions) {},
         },
 
         parser: {
@@ -1684,7 +1699,7 @@
                     month = -1,
                     year = -1
                 ;
-                var isAm = undefined;
+                var isAm;
 
                 var isTimeOnly = settings.type === 'time';
                 var isDateOnly = settings.type.indexOf('time') < 0;
@@ -1897,28 +1912,22 @@
         },
 
         // callback when date changes
-        onChange: function (date, text, mode) {
-        },
+        onChange: function (date, text, mode) {},
 
         // callback before show animation, return false to prevent show
-        onShow: function () {
-        },
+        onShow: function () {},
 
         // callback after show animation
-        onVisible: function () {
-        },
+        onVisible: function () {},
 
         // callback before hide animation, return false to prevent hide
-        onHide: function () {
-        },
+        onHide: function () {},
 
         // callback after hide animation
-        onHidden: function () {
-        },
+        onHidden: function () {},
 
         // callback before item is selected, return false to prevent selection
-        onSelect: function (date, mode) {
-        },
+        onSelect: function (date, mode) {},
 
         // is the given date disabled?
         isDisabled: function (date, mode) {

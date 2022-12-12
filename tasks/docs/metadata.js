@@ -109,7 +109,6 @@ function parser(file, callback) {
             meta.category = meta.type;
             meta.filename = filename;
             meta.url = '/' + filename;
-            meta.title = meta.title;
             // Primary key will by filepath
             data[meta.element] = meta;
         } else {

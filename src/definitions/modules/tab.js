@@ -44,7 +44,6 @@
 
         $allModules.each(function () {
             var
-
                 settings        = ($.isPlainObject(parameters))
                     ? $.extend(true, {}, $.fn.tab.settings, parameters)
                     : $.extend({}, $.fn.tab.settings),

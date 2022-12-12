@@ -141,7 +141,7 @@ module.exports = function (callback) {
                     .pipe(gulp.dest(manager.root))
                 ;
 
-                console.info('Update complete! Run "\x1b[92mgulp build\x1b[0m" to rebuild dist/ files.');
+                console.info('Update complete! Run "\u001B[92mgulp build\u001B[0m" to rebuild dist/ files.');
 
                 callback();
 
@@ -268,7 +268,7 @@ module.exports = function (callback) {
 
             // add install folder to all output paths
             for (let destination in installPaths) {
-                if (installPaths.hasOwnProperty(destination)) {
+                if (Object.prototype.hasOwnProperty.call(installPaths, destination)) {
                     // config goes in project root, rest in install folder
                     installPaths[destination] = (destination == 'config' || destination == 'configFolder')
                         ? path.normalize(path.join(manager.root, installPaths[destination]))
@@ -286,7 +286,7 @@ module.exports = function (callback) {
                 console.error('NPM does not have permissions to create folders at your specified path. Adjust your folders permissions and run "npm install" again');
             }
 
-            console.log('Installing to \x1b[92m' + answers.semanticRoot + '\x1b[0m');
+            console.log('Installing to \u001B[92m' + answers.semanticRoot + '\u001B[0m');
 
             console.info('Copying UI definitions');
             wrench.copyDirSyncRecursive(source.definitions, installPaths.definition, settings.wrench.overwrite);
@@ -401,7 +401,7 @@ module.exports = function (callback) {
     gulp.task('clean up install', function (callback) {
         // Completion Message
         if (installFolder && !install.shouldAutoInstall()) {
-            console.log('\n Setup Complete! \n Installing Peer Dependencies. \x1b[0;31mPlease refrain from ctrl + c\x1b[0m... \n After completion navigate to \x1b[92m' + answers.semanticRoot + '\x1b[0m and run "\x1b[92mgulp build\x1b[0m" to build');
+            console.log('\n Setup Complete! \n Installing Peer Dependencies. \u001B[0;31mPlease refrain from ctrl + c\u001B[0m... \n After completion navigate to \u001B[92m' + answers.semanticRoot + '\u001B[0m and run "\u001B[92mgulp build\u001B[0m" to build');
             callback();
         } else {
             console.log('');

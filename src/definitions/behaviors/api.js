@@ -461,7 +461,6 @@
                                             ? floatValue
                                             : (el.value === 'false' ? false : el.value)),
                                     nameKeys = el.name.match(settings.regExp.key) || [],
-                                    k,
                                     pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
@@ -476,7 +475,9 @@
                                     value = pushValues[pushKey];
                                 }
 
-                                while ((k = nameKeys.pop()) !== undefined) {
+                                while (nameKeys.length > 0) {
+                                    var k = nameKeys.pop();
+
                                     if (k == '' && !Array.isArray(value)) { // foo[]
                                         value = build([], pushes[pushKey]++, value);
                                     } else if (settings.regExp.fixed.test(k)) { // foo[n]
@@ -820,9 +821,7 @@
                         if (!isWindow(element)) {
                             if (module.is.input()) {
                                 data.value = $module.val();
-                            } else if (module.is.form()) {
-
-                            } else {
+                            } else if (!module.is.form()) {
                                 data.text = $module.text();
                             }
                         }
