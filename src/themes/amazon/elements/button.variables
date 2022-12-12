@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
    Button Variables
---------------------*/
+-------------------- */
 
 /* Button Variables */
 @pageFont: Helvetica Neue, Helvetica, Arial, sans-serif;
@@ -8,10 +8,10 @@
 @textColor: #111111;
 @fontWeight: normal;
 @transition:
-  opacity @defaultDuration @defaultEasing,
-  background-color @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing
+    opacity @defaultDuration @defaultEasing,
+    background-color @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing
 ;
 
 @hoverBackgroundColor: #E0E0E0;
@@ -23,18 +23,18 @@
 @backgroundColor: #F7F8FA;
 @backgroundImage: linear-gradient(rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.1));
 @boxShadow:
-  0 1px 0 1px rgba(255, 255, 255, 0.3) inset,
-  0 0 0 1px #ADB2BB inset
+    0 1px 0 1px rgba(255, 255, 255, 0.3) inset,
+    0 0 0 1px #ADB2BB inset
 ;
 
 @coloredBackgroundImage: linear-gradient(rgba(255, 255, 255, 0.2), rgba(0, 0, 0, 0.2));
 @coloredBoxShadow:
-  0px 1px 0px 0px rgba(255, 255, 255, 0.2) inset
+    0px 1px 0px 0px rgba(255, 255, 255, 0.2) inset
 ;
 
 @downBoxShadow:
-  0 0 0 1px #ADB2BB inset,
-  0 1px 3px rgba(0, 0, 0, 0.2) inset
+    0 0 0 1px #ADB2BB inset,
+    0 1px 3px rgba(0, 0, 0, 0.2) inset
 ;
 
 @labeledIconBackgroundColor: #313A43;

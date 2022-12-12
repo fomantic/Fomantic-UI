@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
    Step Variables
---------------------*/
+-------------------- */
 
 /* Step */
 @background: transparent linear-gradient(transparent, rgba(0, 0, 0, 0.07));

@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
    Table Variables
---------------------*/
+-------------------- */
 
 @headerBackground: @white;
 @footerBackground: @white;

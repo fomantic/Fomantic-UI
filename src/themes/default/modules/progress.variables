@@ -2,9 +2,9 @@
             Progress
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 @verticalSpacing: 1em;
 @margin: @verticalSpacing 0 (@labelHeight + @verticalSpacing);
@@ -25,8 +25,8 @@
 @barTransitionEasing: @defaultEasing;
 @barTransitionDuration: @defaultDuration;
 @barTransition:
-  width @barTransitionDuration @barTransitionEasing,
-  background-color @barTransitionDuration @barTransitionEasing
+    width @barTransitionDuration @barTransitionEasing,
+    background-color @barTransitionDuration @barTransitionEasing
 ;
 @barInitialWidth: 0;
 @barMinWidth: 2em;
@@ -63,9 +63,9 @@
 @labelTextAlign: center;
 @labelTransition: color 0.4s @defaultEasing;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 @indicatingFirstColor: #D95C5C;
 @indicatingSecondColor: #EFBC72;
@@ -88,9 +88,9 @@
 @invertedIndicatingFifthLabelColor: @invertedTextColor;
 @invertedIndicatingSixthLabelColor: @invertedTextColor;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Active */
 @activePulseColor: @white;
@@ -98,10 +98,9 @@
 @activePulseDuration: 2s;
 @activeMinWidth: @barMinWidth;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Attached */
 @attachedBackground: transparent;

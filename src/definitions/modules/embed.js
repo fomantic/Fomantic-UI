@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -25,11 +25,11 @@
 
             moduleSelector  = $allModules.selector || '',
 
-            time            = new Date().getTime(),
+            time            = Date.now(),
             performance     = [],
 
             query           = arguments[0],
-            methodInvoked   = (typeof query == 'string'),
+            methodInvoked   = (typeof query === 'string'),
             queryArguments  = [].slice.call(arguments, 1),
 
             returnedValue
@@ -206,18 +206,14 @@
                         return settings.placeholder || $module.data(metadata.placeholder);
                     },
                     icon: function () {
-                        return (settings.icon)
-                            ? settings.icon
-                            : ($module.data(metadata.icon) !== undefined)
-                                ? $module.data(metadata.icon)
-                                : module.determine.icon();
+                        return settings.icon || (($module.data(metadata.icon) !== undefined)
+                            ? $module.data(metadata.icon)
+                            : module.determine.icon());
                     },
                     source: function (url) {
-                        return (settings.source)
-                            ? settings.source
-                            : ($module.data(metadata.source) !== undefined)
-                                ? $module.data(metadata.source)
-                                : module.determine.source();
+                        return settings.source || (($module.data(metadata.source) !== undefined)
+                            ? $module.data(metadata.source)
+                            : module.determine.source());
                     },
                     type: function () {
                         var source = module.get.source();
@@ -227,11 +223,9 @@
                             : false;
                     },
                     url: function () {
-                        return (settings.url)
-                            ? settings.url
-                            : ($module.data(metadata.url) !== undefined)
-                                ? $module.data(metadata.url)
-                                : module.determine.url();
+                        return settings.url || (($module.data(metadata.url) !== undefined)
+                            ? $module.data(metadata.url)
+                            : module.determine.url());
                     },
                 },
 
@@ -436,7 +430,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -465,7 +459,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -490,8 +484,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)

@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 @borderRadius: @circularRadius;
 @textTransform: uppercase;
 @backgroundColor: #FFFFFF;
@@ -12,7 +12,7 @@
 @fontWeight: bold;
 @textColor: rgba(0, 0, 0, 0.6);
 @boxShadow:
-  0px 0px 0px 2px rgba(0, 0, 0, 0.2) inset
+    0px 0px 0px 2px rgba(0, 0, 0, 0.2) inset
 ;
 
 /* Padding */
@@ -26,16 +26,15 @@
 @iconMargin: 0em @iconDistance 0em -(@iconDistance / 2);
 @iconVerticalAlign: top;
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 @verticalBoxShadow: 0px 0px 0px 1px @borderColor inset;
 
-
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 @hoverBackgroundColor: #FAFAFA;
 @hoverBackgroundImage: none;
@@ -51,9 +50,9 @@
 
 @loadingBackgroundColor: #FFFFFF;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Labeled Icon */
 @labeledIconWidth: 1em + (@verticalPadding * 2);
@@ -95,14 +94,13 @@
 @basicInvertedDownColor: @darkWhiteActive;
 @basicInvertedActiveColor: @invertedTextColor;
 
-
 /* Basic Group */
 @basicGroupBorder: 1px solid @borderColor;
 @basicGroupBoxShadow: 0px 0px 0px 1px @borderColor;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Colors */
 @coloredBackgroundImage: linear-gradient(rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.1));
@@ -135,4 +133,3 @@
 @big: 1.25rem;
 @huge: 1.375rem;
 @massive: 1.5rem;
-

@@ -1,6 +1,6 @@
-/*-------------------
+/* -------------------
        Header
---------------------*/
+-------------------- */
 
 @headerFont : 'Karma', 'Times New Roman', serif;
 @fontWeight: @normal;
