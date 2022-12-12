@@ -27,6 +27,6 @@
     box-shadow: @focusBoxShadow;
 }
 .ui.labeled.input.focused .label {
-    background-color: #E1EAF5;
-    color: #4078C0;
+    background-color: #e1eaf5;
+    color: #4078c0;
 }
