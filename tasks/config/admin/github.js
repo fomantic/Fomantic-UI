@@ -5,7 +5,7 @@
   Logs into GitHub using OAuth
 */
 
-var
+let
     fs          = require('fs'),
     path        = require('path'),
     githubAPI   = require('@octokit/rest'),

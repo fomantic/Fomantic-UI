@@ -12,7 +12,7 @@
 
 */
 
-var
+let
     gulp           = require('gulp'),
 
     // node dependencies
@@ -36,7 +36,7 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    let
         index = -1,
         total = release.distributions.length,
         timer,
@@ -59,7 +59,7 @@ module.exports = function (callback) {
             return;
         }
 
-        var
+        let
             distribution         = release.distributions[index],
             outputDirectory      = path.resolve(path.join(release.outputRoot, distribution.toLowerCase())),
             repoName             = release.distRepoRoot + distribution,

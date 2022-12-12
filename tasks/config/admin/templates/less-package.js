@@ -1,4 +1,4 @@
-var
+let
     where = 'client' // Adds files only to the client
 ;
 

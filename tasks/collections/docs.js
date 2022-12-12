@@ -7,7 +7,7 @@
   https://github.com/Semantic-Org/Semantic-UI-Docs/
 */
 module.exports = function (gulp) {
-    var
+    let
         // docs tasks
         serveDocs = require('../docs/serve'),
         buildDocs = require('../docs/build')

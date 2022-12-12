@@ -9,7 +9,7 @@
   * update package.json file
 */
 
-var
+let
     gulp            = require('gulp'),
 
     // node dependencies
@@ -35,20 +35,20 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    let
         stream,
         index,
         tasks = []
     ;
 
     for (index in release.distributions) {
-        var
+        let
             distribution = release.distributions[index]
     ;
 
         // streams... designed to save time and make coding fun...
         (function (distribution) {
-            var
+            let
                 distLowerCase   = distribution.toLowerCase(),
                 outputDirectory = path.join(release.outputRoot, distLowerCase),
                 packageFile     = path.join(outputDirectory, release.files.npm),
@@ -87,7 +87,7 @@ module.exports = function (callback) {
                     files = []
                 ;
                 list.forEach(function (file) {
-                    var
+                    let
                         isOmitted = (omitted.indexOf(file) > -1),
                         filePath  = path.join(dir, file),
                         stat      = fs.statSync(filePath)
@@ -106,8 +106,8 @@ module.exports = function (callback) {
 
             // spaces out list correctly
             createList = function (files) {
-                var filenames = '';
-                for (var file in files) {
+                let filenames = '';
+                for (let file in files) {
                     if (file == (files.length - 1)) {
                         filenames += "'" + files[file] + "'";
                     } else {
@@ -119,7 +119,7 @@ module.exports = function (callback) {
             };
 
             tasks.push(function () {
-                var
+                let
                     files     = gatherFiles(outputDirectory),
                     filenames = createList(files)
                 ;
@@ -135,7 +135,7 @@ module.exports = function (callback) {
 
             if (distribution == 'CSS') {
                 tasks.push(function () {
-                    var
+                    let
                         themes,
                         components,
                         releases
@@ -154,7 +154,7 @@ module.exports = function (callback) {
                 });
             } else if (distribution == 'LESS') {
                 tasks.push(function () {
-                    var
+                    let
                         definitions,
                         themeImport,
                         themeConfig,
