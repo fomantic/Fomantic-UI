@@ -136,7 +136,6 @@ module.exports = {
         'no-shadow-restricted-names': 'off',
         'no-unused-expressions': 'off',
         'no-use-before-define': 'off',
-        radix: 'off',
         'unicorn/consistent-function-scoping': 'off',
         'unicorn/empty-brace-spaces': 'off',
         'unicorn/escape-case': 'off',

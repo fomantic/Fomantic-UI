@@ -1706,7 +1706,7 @@
                             if (hour < 0 || minute < 0) {
                                 parts = number.split(':');
                                 for (k = 0; k < Math.min(2, parts.length); k++) {
-                                    j = parseInt(parts[k]);
+                                    j = parseInt(parts[k], 10);
                                     if (isNaN(j)) {
                                         j = 0;
                                     }
@@ -1745,7 +1745,7 @@
 
                     // year > settings.centuryBreak
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i]);
+                        j = parseInt(numbers[i], 10);
                         if (isNaN(j)) {
                             continue;
                         }
@@ -1764,7 +1764,7 @@
                     if (month < 0) {
                         for (i = 0; i < numbers.length; i++) {
                             k = i > 1 || settings.monthFirst ? i : i === 1 ? 0 : 1;
-                            j = parseInt(numbers[k]);
+                            j = parseInt(numbers[k], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
@@ -1779,7 +1779,7 @@
 
                     // day
                     for (i = 0; i < numbers.length; i++) {
-                        j = parseInt(numbers[i]);
+                        j = parseInt(numbers[i], 10);
                         if (isNaN(j)) {
                             continue;
                         }
@@ -1794,7 +1794,7 @@
                     // year <= settings.centuryBreak
                     if (year < 0) {
                         for (i = numbers.length - 1; i >= 0; i--) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
@@ -1813,7 +1813,7 @@
                     // hour
                     if (hour < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
@@ -1829,7 +1829,7 @@
                     // minute
                     if (minute < 0) {
                         for (i = 0; i < numbers.length; i++) {
-                            j = parseInt(numbers[i]);
+                            j = parseInt(numbers[i], 10);
                             if (isNaN(j)) {
                                 continue;
                             }
