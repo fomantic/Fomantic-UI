@@ -5,10 +5,9 @@
 let
     fs             = require('fs'),
     path           = require('path'),
+    requireDotFile = require('require-dot-file'),
     defaults       = require('../defaults'),
-    release        = require('./release'),
-
-    requireDotFile = require('require-dot-file')
+    release        = require('./release')
 ;
 
 /*******************************
@@ -93,7 +92,7 @@ module.exports = {
 
     // checks if files are in a PM directory
     getPackageManager: function (directory) {
-        var
+        let
             // returns last matching result (avoid sub-module detection)
             walk = function (directory) {
                 let
@@ -133,7 +132,7 @@ module.exports = {
 
     // checks if files is PMed submodule
     isSubModule: function (directory) {
-        var
+        let
             moduleFolders = 0,
             walk = function (directory) {
                 let

@@ -49,7 +49,7 @@ function parser(file, callback) {
     }
 
     try {
-        var
+        let
             /** @type {string} */
             text     = String(file.contents.toString('utf8')),
             lines    = text.split('\n'),
@@ -117,7 +117,7 @@ function parser(file, callback) {
             // console.log(meta);
         }
     } catch (error) {
-        console.log(error, filename);
+        console.log(error, file.path);
     }
 
     callback(null, file);

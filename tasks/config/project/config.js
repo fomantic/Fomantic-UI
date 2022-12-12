@@ -16,7 +16,7 @@ let
 module.exports = {
 
     getPath: function (file, directory) {
-        var
+        let
             configPath,
             walk = function (directory) {
                 let
@@ -26,8 +26,6 @@ module.exports = {
                 if (fs.existsSync(currentPath)) {
                     // found file
                     configPath = path.normalize(directory);
-
-                    return;
                 } else {
                     // reached file system root, let's stop
                     if (nextDirectory == directory) {

@@ -3304,9 +3304,7 @@
                                 : (values == value)
                         ;
 
-                        return (hasValue)
-                            ? true
-                            : false;
+                        return !!(hasValue);
                     },
                     valueIgnoringCase: function (value) {
                         var

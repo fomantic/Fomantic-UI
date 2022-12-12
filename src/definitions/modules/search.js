@@ -32,7 +32,7 @@
             queryArguments  = [].slice.call(arguments, 1),
             returnedValue
         ;
-        $(this).each(function () {
+        $allModules.each(function () {
             var
                 settings          = ($.isPlainObject(parameters))
                     ? $.extend(true, {}, $.fn.search.settings, parameters)

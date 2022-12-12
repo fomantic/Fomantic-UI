@@ -371,9 +371,7 @@
                     if (settings.inline || settings.popup) {
                         return (module.has.popup());
                     } else {
-                        return ($popup.closest($context).length >= 1)
-                            ? true
-                            : false;
+                        return ($popup.closest($context).length >= 1);
                     }
                 },
 

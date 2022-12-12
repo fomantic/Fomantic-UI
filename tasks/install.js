@@ -153,7 +153,7 @@ module.exports = function (callback) {
                 return;
             }
         } else {
-            console.error('Cannot locate files to update at path: ', updatePaths.definition);
+            console.error('Cannot locate files to update at path:', updatePaths.definition);
             console.log('Running installer');
         }
     }
@@ -342,7 +342,7 @@ module.exports = function (callback) {
             ;
 
             // rewrite site variable in theme.less
-            console.info('Adjusting @siteFolder to: ', pathToSite + '/');
+            console.info('Adjusting @siteFolder to:', pathToSite + '/');
 
             if (fs.existsSync(installPaths.themeConfig)) {
                 console.info('Modifying src/theme.config (LESS config)', installPaths.themeConfig);
