@@ -12,7 +12,7 @@
 
 */
 
-let
+const
     gulp      = require('gulp'),
 
     // node dependencies

@@ -2,7 +2,7 @@
  Build Task
  *******************************/
 
-let
+const
     gulp      = require('gulp'),
 
     // gulp dependencies

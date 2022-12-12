@@ -1,4 +1,4 @@
-let
+const
     browserslist = require('browserslist'),
     console = require('better-console'),
     config  = require('./user'),

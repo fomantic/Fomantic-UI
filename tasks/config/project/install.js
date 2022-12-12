@@ -2,7 +2,7 @@
             Set-up
 *******************************/
 
-let
+const
     fs             = require('fs'),
     path           = require('path'),
     requireDotFile = require('require-dot-file'),

@@ -2,7 +2,7 @@
            Summarize Docs
 *******************************/
 
-let
+const
     // node dependencies
     console      = require('better-console'),
     fs           = require('fs'),
