@@ -12,7 +12,7 @@
 
 @duration: 0.5s;
 @transition:
-  all @duration linear
+    all @duration linear
 ;
 @zIndex: 1000;
 @textAlign: center;
@@ -33,18 +33,17 @@
 /* Visible */
 @visibleOpacity: 1;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
-/* Page Dimmer*/
+/* Page Dimmer */
 @transformStyle: '';
 @pageDimmerPosition: fixed;
 
-
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Inverted */
 @invertedBackgroundColor: rgba(255, 255, 255, 0.85);
@@ -58,9 +57,9 @@
 @simpleInvertedEndBackgroundColor: @invertedBackgroundColor;
 
 /* Intensity */
-@veryLightBackgroundColor: rgba(0,0,0,.25);
-@lightBackgroundColor: rgba(0,0,0,.45);
-@mediumBackgroundColor: rgba(0,0,0,.65);
-@veryLightInvertedBackgroundColor: rgba(255,255,255,.25);
-@lightInvertedBackgroundColor: rgba(255,255,255,.45);
-@mediumInvertedBackgroundColor: rgba(255,255,255,.65);
+@veryLightBackgroundColor: rgba(0,0,0,0.25);
+@lightBackgroundColor: rgba(0,0,0,0.45);
+@mediumBackgroundColor: rgba(0,0,0,0.65);
+@veryLightInvertedBackgroundColor: rgba(255,255,255,0.25);
+@lightInvertedBackgroundColor: rgba(255,255,255,0.45);
+@mediumInvertedBackgroundColor: rgba(255,255,255,0.65);

@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -24,12 +24,12 @@
             $allModules      = $(this),
             moduleSelector   = $allModules.selector || '',
 
-            time             = new Date().getTime(),
+            time             = Date.now(),
             performance      = [],
 
             query            = arguments[0],
             legacyParameters = arguments[1],
-            methodInvoked    = (typeof query == 'string'),
+            methodInvoked    = (typeof query === 'string'),
             queryArguments   = [].slice.call(arguments, 1),
             returnedValue
         ;
@@ -277,11 +277,9 @@
                                 isDirty
                             ;
 
-                            if (isCheckbox) {
-                                isDirty = module.is.checkboxDirty($el);
-                            } else {
-                                isDirty = module.is.fieldDirty($el);
-                            }
+                            isDirty = isCheckbox
+                                ? module.is.checkboxDirty($el)
+                                : module.is.fieldDirty($el);
 
                             $el.data(settings.metadata.isDirty, isDirty);
 
@@ -302,16 +300,17 @@
                     },
                     // duck type rule test
                     shorthandRules: function (rules) {
-                        return (typeof rules == 'string' || Array.isArray(rules));
+                        return (typeof rules === 'string' || Array.isArray(rules));
                     },
                     empty: function ($field) {
                         if (!$field || $field.length === 0) {
                             return true;
-                        } else if ($field.is(selector.checkbox)) {
-                            return !$field.is(':checked');
-                        } else {
-                            return module.is.blank($field);
                         }
+                        if ($field.is(selector.checkbox)) {
+                            return !$field.is(':checked');
+                        }
+
+                        return module.is.blank($field);
                     },
                     blank: function ($field) {
                         return String($field.val()).trim() === '';
@@ -324,16 +323,16 @@
                             module.verbose('Checking if field is valid', field);
 
                             return module.validate.field(validation[field], field, !!showErrors);
-                        } else {
-                            module.verbose('Checking if form is valid');
-                            $.each(validation, function (fieldName, field) {
-                                if (!module.is.valid(fieldName, showErrors)) {
-                                    allValid = false;
-                                }
-                            });
-
-                            return allValid;
                         }
+
+                        module.verbose('Checking if form is valid');
+                        $.each(validation, function (fieldName, field) {
+                            if (!module.is.valid(fieldName, showErrors)) {
+                                allValid = false;
+                            }
+                        });
+
+                        return allValid;
                     },
                     dirty: function () {
                         return dirty;
@@ -488,9 +487,9 @@
                     changeEvent: function (type, $input) {
                         if (type == 'checkbox' || type == 'radio' || type == 'hidden' || $input.is('select')) {
                             return 'change';
-                        } else {
-                            return module.get.inputEvent();
                         }
+
+                        return module.get.inputEvent();
                     },
                     inputEvent: function () {
                         return (document.createElement('input').oninput !== undefined)
@@ -507,7 +506,7 @@
                             if (!Array.isArray(rules) && typeof rules === 'object') {
                                 fullFields[name] = rules;
                             } else {
-                                if (typeof rules == 'string') {
+                                if (typeof rules === 'string') {
                                     rules = [rules];
                                 }
                                 fullFields[name] = {
@@ -542,28 +541,28 @@
                             if (!rule.prompt) {
                                 suffixPrompt = (
                                     parts[0] === ''
-                                        ? settings.prompt.maxValue.replace(/\{ruleValue\}/g, '{max}')
+                                        ? settings.prompt.maxValue.replace(/{ruleValue}/g, '{max}')
                                         : parts[1] === ''
-                                            ? settings.prompt.minValue.replace(/\{ruleValue\}/g, '{min}')
+                                            ? settings.prompt.minValue.replace(/{ruleValue}/g, '{min}')
                                             : settings.prompt.range
                                 );
-                                prompt += suffixPrompt.replace(/\{name\}/g, ' ' + settings.text.and);
+                                prompt += suffixPrompt.replace(/{name}/g, ' ' + settings.text.and);
                             }
-                            prompt = prompt.replace(/\{min\}/g, parts[0]);
-                            prompt = prompt.replace(/\{max\}/g, parts[1]);
+                            prompt = prompt.replace(/{min}/g, parts[0]);
+                            prompt = prompt.replace(/{max}/g, parts[1]);
                         }
                         if (requiresValue) {
-                            prompt = prompt.replace(/\{value\}/g, $field.val());
+                            prompt = prompt.replace(/{value}/g, $field.val());
                         }
                         if (requiresName) {
                             $label = $field.closest(selector.group).find('label').eq(0);
                             name = ($label.length == 1)
                                 ? $label.text()
                                 : $field.prop('placeholder') || settings.text.unspecifiedField;
-                            prompt = prompt.replace(/\{name\}/g, name);
+                            prompt = prompt.replace(/{name}/g, name);
                         }
-                        prompt = prompt.replace(/\{identifier\}/g, field.identifier);
-                        prompt = prompt.replace(/\{ruleValue\}/g, ancillary);
+                        prompt = prompt.replace(/{identifier}/g, field.identifier);
+                        prompt = prompt.replace(/{ruleValue}/g, ancillary);
                         if (!rule.prompt) {
                             module.verbose('Using default validation prompt for type', prompt, ruleName);
                         }
@@ -721,11 +720,7 @@
                                                 : false;
                                         }
                                     } else if (isCheckbox) {
-                                        if (isChecked) {
-                                            values[name] = value || true;
-                                        } else {
-                                            values[name] = false;
-                                        }
+                                        values[name] = isChecked ? value || true : false;
                                     } else if (isCalendar) {
                                         var date = $calendar.calendar('get date');
 
@@ -855,7 +850,7 @@
                         $.each(newValidation.rules, function (_index, rule) {
                             if ($.grep(validation[name].rules, function (item) {
                                 return item.type == rule.type;
-                            }).length == 0) {
+                            }).length === 0) {
                                 validation[name].rules.push(rule);
                             }
                         });
@@ -871,9 +866,9 @@
                             $field       = module.get.field(identifier),
                             $fieldGroup  = $field.closest($group),
                             $prompt      = $fieldGroup.children(selector.prompt),
-                            promptExists = ($prompt.length !== 0)
+                            promptExists = ($prompt.length > 0)
                         ;
-                        errors = (typeof errors == 'string')
+                        errors = (typeof errors === 'string')
                             ? [errors]
                             : errors;
                         module.verbose('Adding field error state', identifier);
@@ -1229,7 +1224,7 @@
                         showErrors = (showErrors !== undefined)
                             ? showErrors
                             : true;
-                        if (typeof field == 'string') {
+                        if (typeof field === 'string') {
                             module.verbose('Validating field', field);
                             fieldName = field;
                             field = validation[field];
@@ -1247,7 +1242,7 @@
                             module.debug('Using field name as identifier', identifier);
                             field.identifier = identifier;
                         }
-                        var isDisabled = !$field.filter(':not(:disabled)').length;
+                        var isDisabled = $field.filter(':not(:disabled)').length === 0;
                         if (isDisabled) {
                             module.debug('Field is disabled. Skipping', identifier);
                         } else if (field.optional && module.is.blank($field)) {
@@ -1326,7 +1321,7 @@
                             });
                         }
 
-                        return internal ? invalidFields : !(invalidFields.length > 0);
+                        return internal ? invalidFields : invalidFields.length === 0;
                     },
                 },
 
@@ -1382,7 +1377,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1411,7 +1406,7 @@
                             title += ' \'' + moduleSelector + '\'';
                         }
                         if ($allModules.length > 1) {
-                            title += ' ' + '(' + $allModules.length + ')';
+                            title += ' (' + $allModules.length + ')';
                         }
                         if ((console.group !== undefined || console.table !== undefined) && performance.length > 0) {
                             console.groupCollapsed(title);
@@ -1436,8 +1431,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1529,15 +1524,15 @@
         },
 
         regExp: {
-            htmlID: /^[a-zA-Z][\w:.-]*$/g,
-            bracket: /\[(.*)\]/i,
+            htmlID: /^[A-Za-z][\w.:-]*$/g,
+            bracket: /\[(.*)]/i,
             decimal: /^\d+\.?\d*$/,
-            email: /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i,
-            escape: /[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|:,=@]/g,
+            email: /^[\w!#$%&'*+./=?^`{|}~-]+@[\da-z]([\da-z-]*[\da-z])?(\.[\da-z]([\da-z-]*[\da-z])?)*$/i,
+            escape: /[$()*+,./:=?@[\\\]^{|}-]/g,
             flags: /^\/(.*)\/(.*)?/,
-            integer: /^\-?\d+$/,
-            number: /^\-?\d*(\.\d+)?$/,
-            url: /(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})/i,
+            integer: /^-?\d+$/,
+            number: /^-?\d*(\.\d+)?$/,
+            url: /(https?:\/\/(?:www\.|(?!www))[^\s.]+\.\S{2,}|www\.\S+\.\S{2,})/i,
         },
 
         text: {
@@ -1682,7 +1677,7 @@
 
             // is not empty or blank string
             empty: function (value) {
-                return !(value === undefined || '' === value || Array.isArray(value) && value.length === 0);
+                return !(value === undefined || value === '' || (Array.isArray(value) && value.length === 0));
             },
 
             // checkbox checked
@@ -1732,7 +1727,7 @@
                 return $.fn.form.settings.rules.range(value, range, 'integer');
             },
             range: function (value, range, regExp) {
-                if (typeof regExp == 'string') {
+                if (typeof regExp === 'string') {
                     regExp = $.fn.form.settings.regExp[regExp];
                 }
                 if (!(regExp instanceof RegExp)) {
@@ -1744,10 +1739,12 @@
                     parts
                 ;
                 if (!range || ['', '..'].indexOf(range) !== -1) {
+
                     // do nothing
                 } else if (range.indexOf('..') == -1) {
                     if (regExp.test(range)) {
-                        min = max = range - 0;
+                        min = range - 0;
+                        max = min;
                     }
                 } else {
                     parts = range.split('..', 2);
@@ -1778,10 +1775,10 @@
 
             // is value (case insensitive)
             is: function (value, text) {
-                text = (typeof text == 'string')
+                text = (typeof text === 'string')
                     ? text.toLowerCase()
                     : text;
-                value = (typeof value == 'string')
+                value = (typeof value === 'string')
                     ? value.toLowerCase()
                     : value;
 
@@ -1795,10 +1792,10 @@
 
             // value is not another value (case insensitive)
             not: function (value, notValue) {
-                value = (typeof value == 'string')
+                value = (typeof value === 'string')
                     ? value.toLowerCase()
                     : value;
-                notValue = (typeof notValue == 'string')
+                notValue = (typeof notValue === 'string')
                     ? notValue.toLowerCase()
                     : notValue;
 
@@ -1922,7 +1919,7 @@
                             length: [16],
                         },
                         discover: {
-                            pattern: /^(6011|622(12[6-9]|1[3-9][0-9]|[2-8][0-9]{2}|9[0-1][0-9]|92[0-5]|64[4-9])|65)/,
+                            pattern: /^(6011|622(12[6-9]|1[3-9]\d|[2-8]\d{2}|9[01]\d|92[0-5]|64[4-9])|65)/,
                             length: [16],
                         },
                         unionPay: {
@@ -1930,7 +1927,7 @@
                             length: [16, 17, 18, 19],
                         },
                         jcb: {
-                            pattern: /^35(2[89]|[3-8][0-9])/,
+                            pattern: /^35(2[89]|[3-8]\d)/,
                             length: [16],
                         },
                         maestro: {
@@ -1952,7 +1949,7 @@
                     },
                     valid         = {},
                     validCard     = false,
-                    requiredTypes = (typeof cardTypes == 'string')
+                    requiredTypes = (typeof cardTypes === 'string')
                         ? cardTypes.split(',')
                         : false,
                     unionPay,
@@ -1964,7 +1961,7 @@
                 }
 
                 // allow dashes and spaces in card
-                cardNumber = cardNumber.replace(/[\s\-]/g, '');
+                cardNumber = cardNumber.replace(/[\s-]/g, '');
 
                 // verify card types
                 if (requiredTypes) {
@@ -1976,7 +1973,7 @@
                                 length: ($.inArray(cardNumber.length, validation.length) !== -1),
                                 pattern: (cardNumber.search(validation.pattern) !== -1),
                             };
-                            if (valid.length && valid.pattern) {
+                            if (valid.length > 0 && valid.pattern) {
                                 validCard = true;
                             }
                         }

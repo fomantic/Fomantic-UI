@@ -333,16 +333,13 @@
     .ui.active.progress .bar::after {
         content: '';
         opacity: 0;
-
         position: absolute;
         top: 0;
         left: 0;
         right: 0;
         bottom: 0;
         background: @activePulseColor;
-
         border-radius: @barBorderRadius;
-
         animation: progress-active @activePulseDuration @defaultEasing infinite;
         transform-origin: left;
     }

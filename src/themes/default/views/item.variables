@@ -2,9 +2,9 @@
              Item
 *******************************/
 
-/*-------------------
+/* -------------------
          View
---------------------*/
+-------------------- */
 
 /* Group */
 @groupMargin: 1.5em 0;
@@ -35,10 +35,9 @@
 @mobileImageMaxHeight: 250px;
 @mobileContentImageDistance: 1.5em;
 
-
-/*-------------------
+/* -------------------
        Content
---------------------*/
+-------------------- */
 
 /* Image */
 @imageDisplay: block;
@@ -100,7 +99,6 @@
 @contentLinkHoverColor: '';
 @contentLinkTransition: color @defaultDuration @defaultEasing;
 
-
 /* Description */
 @descriptionDistance: 0.6em;
 @descriptionMaxWidth: auto;
@@ -136,9 +134,9 @@
 @extraColor: @lightTextColor;
 @extraTransition: color @defaultDuration @defaultEasing;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Relaxed */
 @relaxedItemSpacing: 1.5em;
@@ -151,7 +149,6 @@
 
 @dividedFirstLastMargin: 0;
 @dividedFirstLastPadding: 0;
-
 
 /* Unstackable */
 @unstackableMobileImageWidth: 125px;

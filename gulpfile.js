@@ -2,7 +2,7 @@
  *           Set-up
  *******************************/
 
-var
+let
     gulp   = require('gulp'),
 
     // read user config to know what task to load

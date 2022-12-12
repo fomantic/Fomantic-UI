@@ -2,9 +2,9 @@
             Button
 *******************************/
 
-/*-------------------
+/* -------------------
        Element
---------------------*/
+-------------------- */
 
 /* Button */
 @verticalMargin: 0;
@@ -39,8 +39,8 @@
 @borderBoxShadowWidth: 1px;
 @borderBoxShadow: 0 0 0 @borderBoxShadowWidth @borderBoxShadowColor inset;
 @boxShadow:
-  @borderBoxShadow,
-  @shadowBoxShadow
+    @borderBoxShadow,
+    @shadowBoxShadow
 ;
 
 /* Icon */
@@ -58,20 +58,21 @@
 @invertedLoaderFillColor: rgba(0, 0, 0, 0.15);
 
 @transition:
-  opacity @defaultDuration @defaultEasing,
-  background-color @defaultDuration @defaultEasing,
-  color @defaultDuration @defaultEasing,
-  box-shadow @defaultDuration @defaultEasing,
-  background @defaultDuration @defaultEasing
+    opacity @defaultDuration @defaultEasing,
+    background-color @defaultDuration @defaultEasing,
+    color @defaultDuration @defaultEasing,
+    box-shadow @defaultDuration @defaultEasing,
+    background @defaultDuration @defaultEasing
 ;
+
 /*
 @willChange: box-shadow, transform, opacity, color, background;
 */
 @willChange: auto;
 
-/*-------------------
+/* -------------------
         Group
---------------------*/
+-------------------- */
 
 @groupBoxShadow: none;
 @groupButtonBoxShadow: @boxShadow;
@@ -79,9 +80,9 @@
 @groupButtonOffset: 0 0 0 0;
 @verticalGroupOffset: 0 0 0 0;
 
-/*-------------------
+/* -------------------
         States
---------------------*/
+-------------------- */
 
 /* Hovered */
 @hoverBackgroundColor: #CACBCD;
@@ -106,8 +107,8 @@
 @downBackgroundImage: '';
 @downPressedShadow: none;
 @downBoxShadow:
-  @borderBoxShadow,
-  @downPressedShadow
+    @borderBoxShadow,
+    @downPressedShadow
 ;
 @downColor: @pressedTextColor;
 
@@ -127,13 +128,13 @@
 @loadingOpacity: 1;
 @loadingPointerEvents: auto;
 @loadingTransition:
-  all 0s linear,
-  opacity @defaultDuration @defaultEasing
+    all 0s linear,
+    opacity @defaultDuration @defaultEasing
 ;
 
-/*-------------------
+/* -------------------
         Types
---------------------*/
+-------------------- */
 
 /* Or */
 @orText: 'or';
@@ -155,7 +156,6 @@
 @orTextStyle: @normal;
 @orTextWeight: @bold;
 @orTextColor: @lightTextColor;
-
 
 @orSpacerHeight: @verticalPadding;
 @orSpacerColor: transparent;
@@ -183,7 +183,6 @@
 @labeledIconLeftShadow: -1px 0 0 0 @labeledIconBorder inset;
 @labeledIconRightShadow: 1px 0 0 0 @labeledIconBorder inset;
 
-
 /* Inverted */
 @invertedBorderSize: 2px;
 @invertedTextColor: @white;
@@ -208,9 +207,10 @@
 @basicHoverBackground: #FFFFFF;
 @basicHoverTextColor: @hoveredTextColor;
 @basicHoverBoxShadow:
-  0 0 0 @basicBorderSize @selectedBorderColor inset,
-  0 0 0 0 @borderColor inset
+    0 0 0 @basicBorderSize @selectedBorderColor inset,
+    0 0 0 0 @borderColor inset
 ;
+
 /* Basic Focus */
 @basicFocusBackground: @basicHoverBackground;
 @basicFocusTextColor: @basicHoverTextColor;
@@ -220,9 +220,10 @@
 @basicDownBackground: #F8F8F8;
 @basicDownTextColor: @pressedTextColor;
 @basicDownBoxShadow:
-  0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
-  0 1px 4px 0 @borderColor inset
+    0 0 0 @basicBorderSize rgba(0, 0, 0, 0.15) inset,
+    0 1px 4px 0 @borderColor inset
 ;
+
 /* Basic Active */
 @basicActiveBackground: @transparentBlack;
 @basicActiveBoxShadow: '';
@@ -245,14 +246,13 @@
 @basicInvertedDownColor: @darkWhiteActive;
 @basicInvertedActiveColor: @invertedTextColor;
 
-
 /* Basic Group */
 @basicGroupBorder: @basicBorderSize solid @borderColor;
 @basicGroupBoxShadow: none;
 
-/*-------------
+/* -------------
    Tertiary
--------------*/
+------------- */
 @tertiaryVerticalPadding: 0.5em;
 @tertiaryHorizontalPadding: 0.5em;
 @tertiaryLineHeight: 0.2em;
@@ -283,9 +283,9 @@
 @tertiaryActiveWithOverline: false;
 @tertiaryActiveBackgroundColor: none;
 
-/*-------------------
+/* -------------------
       Variations
---------------------*/
+-------------------- */
 
 /* Colors */
 @coloredBackgroundImage: none;
@@ -346,7 +346,6 @@
 @lightTealTextShadow: @textShadow;
 @lightGreyTextColor: @textColor;
 @lightGreyTextShadow: @textShadow;
-
 
 /* Ordinality */
 @primaryBackgroundImage: @coloredBackgroundImage;

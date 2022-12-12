@@ -12,7 +12,7 @@
 
 */
 
-var
+let
     gulp           = require('gulp'),
 
     // node dependencies
@@ -22,13 +22,13 @@ var
     git            = require('gulp-git'),
 
     // admin files
-    github         = require('../../config/admin/github.js'),
+    github         = require('../../config/admin/github'),
     release        = require('../../config/admin/release'),
     project        = require('../../config/project/release'),
 
     // oAuth configuration for GitHub
     oAuth          = fs.existsSync(__dirname + '/../../config/admin/oauth.js')
-        ? require('../../config/admin/oauth')
+        ? require('../../config/admin/oauth.js') // eslint-disable-line import/extensions
         : false,
 
     // shorthand
@@ -36,7 +36,7 @@ var
 ;
 
 module.exports = function (callback) {
-    var
+    let
         index = -1,
         total = release.components.length,
         timer,
@@ -59,7 +59,7 @@ module.exports = function (callback) {
             return;
         }
 
-        var
+        let
             component            = release.components[index],
             outputDirectory      = path.resolve(path.join(release.outputRoot, component)),
             capitalizedComponent = component.charAt(0).toUpperCase() + component.slice(1),
@@ -73,7 +73,7 @@ module.exports = function (callback) {
                 : '',
 
             componentPackage = fs.existsSync(outputDirectory + 'package.json')
-                ? require(outputDirectory + 'package.json')
+                ? require(outputDirectory + 'package.json') // eslint-disable-line import/no-dynamic-require
                 : false,
 
             isNewVersion  = (version && componentPackage.version != version),

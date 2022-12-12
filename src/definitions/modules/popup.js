@@ -15,7 +15,7 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
@@ -32,11 +32,11 @@
                 ? 'touchstart'
                 : 'click',
 
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -282,7 +282,7 @@
                         if (settings.hoverable) {
                             module.bind.popup();
                         }
-                    } else if ($target.next(selector.popup).length !== 0) {
+                    } else if ($target.next(selector.popup).length > 0) {
                         module.verbose('Pre-existing popup found');
                         settings.inline = true;
                         settings.popup = $target.next(selector.popup).data(metadata.activator, $module);
@@ -325,7 +325,8 @@
                             module.debug('onShow callback returned false, cancelling popup animation');
 
                             return;
-                        } else if (!settings.preserve && !settings.popup) {
+                        }
+                        if (!settings.preserve && !settings.popup) {
                             module.refresh();
                         }
                         if ($popup && module.set.position()) {
@@ -370,11 +371,9 @@
                     }
                     if (settings.inline || settings.popup) {
                         return (module.has.popup());
-                    } else {
-                        return ($popup.closest($context).length >= 1)
-                            ? true
-                            : false;
                     }
+
+                    return ($popup.closest($context).length > 0);
                 },
 
                 removePopup: function () {
@@ -590,7 +589,8 @@
                     startEvent: function () {
                         if (settings.on == 'hover') {
                             return 'mouseenter';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on == 'focus') {
                             return 'focus';
                         }
 
@@ -602,7 +602,8 @@
                     endEvent: function () {
                         if (settings.on == 'hover') {
                             return 'mouseleave';
-                        } else if (settings.on == 'focus') {
+                        }
+                        if (settings.on == 'focus') {
                             return 'blur';
                         }
 
@@ -912,19 +913,18 @@
                                 return ($popup)
                                     ? module.set.position(position, calculations)
                                     : false;
+                            }
+                            if (settings.lastResort) {
+                                module.debug('No position found, showing with last position');
                             } else {
-                                if (settings.lastResort) {
-                                    module.debug('No position found, showing with last position');
-                                } else {
-                                    module.debug('Popup could not find a position to display', $popup);
-                                    module.error(error.cannotPlace, element);
-                                    module.remove.attempts();
-                                    module.remove.loading();
-                                    module.reset();
-                                    settings.onUnplaceable.call($popup, element);
+                                module.debug('Popup could not find a position to display', $popup);
+                                module.error(error.cannotPlace, element);
+                                module.remove.attempts();
+                                module.remove.loading();
+                                module.reset();
+                                settings.onUnplaceable.call($popup, element);
 
-                                    return false;
-                                }
+                                return false;
                             }
                         }
                         module.debug('Position is on stage', position);
@@ -1193,7 +1193,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1244,8 +1244,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1471,8 +1471,8 @@
         templates: {
             escape: function (string) {
                 var
-                    badChars     = /[<>"'`]/g,
-                    shouldEscape = /[&<>"'`]/,
+                    badChars     = /["'<>`]/g,
+                    shouldEscape = /["&'<>`]/,
                     escape       = {
                         '<': '&lt;',
                         '>': '&gt;',
@@ -1485,7 +1485,7 @@
                     }
                 ;
                 if (shouldEscape.test(string)) {
-                    string = string.replace(/&(?![a-z0-9#]{1,12};)/gi, '&amp;');
+                    string = string.replace(/&(?![\d#a-z]{1,12};)/gi, '&amp;');
 
                     return string.replace(badChars, escapedChar);
                 }
@@ -1497,12 +1497,12 @@
                     html   = '',
                     escape = $.fn.popup.settings.templates.escape
                 ;
-                if (typeof text !== undefined) {
-                    if (typeof text.title !== undefined && text.title) {
+                if (text !== undefined) {
+                    if (text.title) {
                         text.title = escape(text.title);
                         html += '<div class="header">' + text.title + '</div>';
                     }
-                    if (typeof text.content !== undefined && text.content) {
+                    if (text.content) {
                         text.content = escape(text.content);
                         html += '<div class="content">' + text.content + '</div>';
                     }

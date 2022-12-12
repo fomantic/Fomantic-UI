@@ -25,17 +25,13 @@
     display: inline-block;
     line-height: 1;
     vertical-align: @verticalAlign;
-
     margin: @verticalMargin @horizontalMargin;
-
     background-color: @backgroundColor;
     background-image: @backgroundImage;
     padding: @verticalPadding @horizontalPadding;
     color: @color;
-
     text-transform: @textTransform;
     font-weight: @fontWeight;
-
     border: @border;
     border-radius: @borderRadius;
     transition: @transition;
@@ -195,7 +191,6 @@ a.ui.label {
         max-width: 9999px;
         vertical-align: baseline;
         text-transform: none;
-
         background: @imageLabelBackground;
         padding: @imageLabelPadding;
         border-radius: @imageLabelBorderRadius;
@@ -208,7 +203,6 @@ a.ui.label {
     .ui.image.label img {
         display: inline-block;
         vertical-align: top;
-
         height: @imageLabelImageHeight;
         margin: @imageLabelImageMargin;
         border-radius: @imageLabelImageBorderRadius;
@@ -244,7 +238,6 @@ a.ui.label {
         position: relative;
         padding-left: @tagHorizontalPadding;
         padding-right: @tagHorizontalPadding;
-
         border-radius: 0 @borderRadius @borderRadius 0;
         transition: @tagTransition;
     }
@@ -252,14 +245,11 @@ a.ui.label {
     .ui.tag.label::before {
         position: absolute;
         transform: translateY(-50%) translateX(50%) rotate(-45deg);
-
         top: @tagTriangleTopOffset;
         right: @tagTriangleRightOffset;
         content: '';
-
         background-color: inherit;
         background-image: @tagTriangleBackgroundImage;
-
         width: @tagTriangleSize;
         height: @tagTriangleSize;
         transition: @tagTransition;
@@ -271,12 +261,10 @@ a.ui.label {
         content: '';
         top: 50%;
         left: -(@tagCircleSize / 2);
-
         margin-top: -(@tagCircleSize / 2);
         background-color: @tagCircleColor;
         width: @tagCircleSize;
         height: @tagCircleSize;
-
         box-shadow: @tagCircleBoxShadow;
         border-radius: @circularRadius;
     }
@@ -307,9 +295,7 @@ a.ui.label {
         margin: 0;
         padding: 0;
         text-align: center;
-
         border-color: @backgroundColor;
-
         width: @cornerTriangleSize;
         height: @cornerTriangleSize;
         z-index: @cornerTriangleZIndex;
@@ -326,16 +312,13 @@ a.ui.label {
         right: 0;
         top: 0;
         z-index: -1;
-
         width: 0;
         height: 0;
         background-color: transparent;
-
         border-top: 0 solid transparent;
         border-right: @cornerTriangleSize solid transparent;
         border-bottom: @cornerTriangleSize solid transparent;
         border-left: 0 solid transparent;
-
         border-right-color: inherit;
         transition: @cornerTriangleTransition;
     }
@@ -361,7 +344,6 @@ a.ui.label {
         border-right: @cornerTriangleSize solid transparent;
         border-bottom: 0 solid transparent;
         border-left: 0 solid transparent;
-
         border-top-color: inherit;
     }
     .ui.left.corner.label .icon {
@@ -396,16 +378,13 @@ a.ui.label {
     .ui.ribbon.label::after {
         position: absolute;
         content: '';
-
         top: 100%;
         left: 0;
         background-color: transparent;
-
         border-style: solid;
         border-width: 0 @ribbonTriangleSize @ribbonTriangleSize 0;
         border-color: transparent;
         border-right-color: inherit;
-
         width: 0;
         height: 0;
     }
@@ -455,7 +434,6 @@ a.ui.label {
     .ui[class*="right ribbon"].label::after {
         left: auto;
         right: 0;
-
         border-style: solid;
         border-width: @ribbonTriangleSize @ribbonTriangleSize 0 0;
         border-color: transparent;
@@ -500,9 +478,7 @@ a.ui.label {
         margin: 0;
         top: 0;
         left: 0;
-
         padding: @attachedVerticalPadding @attachedHorizontalPadding;
-
         border-radius: @attachedCornerBorderRadius @attachedCornerBorderRadius 0 0;
     }
     .ui[class*="bottom attached"].label {
@@ -562,7 +538,6 @@ a.ui.label {
 a.ui.label:hover {
     background-color: @labelHoverBackgroundColor;
     border-color: @labelHoverBackgroundColor;
-
     background-image: @labelHoverBackgroundImage;
     color: @labelHoverTextColor;
 }
@@ -578,7 +553,6 @@ a.ui.label:hover::before {
 .ui.active.label {
     background-color: @labelActiveBackgroundColor;
     border-color: @labelActiveBackgroundColor;
-
     background-image: @labelActiveBackgroundImage;
     color: @labelActiveTextColor;
 }
@@ -596,7 +570,6 @@ a.ui.label:hover::before {
 a.ui.active.label:hover {
     background-color: @labelActiveHoverBackgroundColor;
     border-color: @labelActiveHoverBackgroundColor;
-
     background-image: @labelActiveHoverBackgroundImage;
     color: @labelActiveHoverTextColor;
 }
@@ -841,7 +814,6 @@ a.ui.active.label:hover::before {
 .ui.horizontal.labels .label,
 .ui.horizontal.label {
     margin: 0 @horizontalLabelMargin 0 0;
-
     padding: @horizontalLabelVerticalPadding @horizontalPadding;
     min-width: @horizontalLabelMinWidth;
     text-align: center;
@@ -856,9 +828,7 @@ a.ui.active.label:hover::before {
     .ui.circular.label {
         min-width: @circularMinSize;
         min-height: @circularMinSize;
-
         padding: @circularPadding !important;
-
         line-height: 1em;
         text-align: center;
         border-radius: @circularRadius;
@@ -901,7 +871,6 @@ a.ui.active.label:hover::before {
         content: '';
         transform: rotate(45deg);
         background-image: none;
-
         z-index: @pointingTriangleZIndex;
         width: @pointingTriangleSize;
         height: @pointingTriangleSize;

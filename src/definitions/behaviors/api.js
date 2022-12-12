@@ -19,22 +19,22 @@
         return typeof obj === 'function' && typeof obj.nodeType !== 'number';
     }
 
-    window = (typeof window != 'undefined' && window.Math == Math)
+    window = (window !== undefined && window.Math === Math)
         ? window
         : globalThis;
 
-    $.api = $.fn.api = function (parameters) {
+    $.fn.api = function (parameters) {
         var
             // use window context if none specified
             $allModules     = isFunction(this)
                 ? $(window)
                 : $(this),
             moduleSelector = $allModules.selector || '',
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
-            methodInvoked  = (typeof query == 'string'),
+            methodInvoked  = (typeof query === 'string'),
             queryArguments = [].slice.call(arguments, 1),
 
             returnedValue
@@ -126,7 +126,7 @@
 
                 decode: {
                     json: function (response) {
-                        if (response !== undefined && typeof response == 'string') {
+                        if (response !== undefined && typeof response === 'string') {
                             try {
                                 response = JSON.parse(response);
                             } catch (e) {
@@ -157,11 +157,6 @@
                 },
                 write: {
                     cachedResponse: function (url, response) {
-                        if (response && response === '') {
-                            module.debug('Response empty, not caching', response);
-
-                            return;
-                        }
                         if (window.Storage === undefined) {
                             module.error(error.noStorage);
 
@@ -212,9 +207,9 @@
                         module.error(error.beforeSend);
 
                         return;
-                    } else {
-                        module.cancelled = false;
                     }
+
+                    module.cancelled = false;
 
                     // get url
                     url = module.get.templatedURL();
@@ -309,11 +304,11 @@
                             module.verbose('XHR request determined to be aborted');
 
                             return true;
-                        } else {
-                            module.verbose('XHR request was not aborted');
-
-                            return false;
                         }
+
+                        module.verbose('XHR request was not aborted');
+
+                        return false;
                     },
                     validResponse: function (response) {
                         if ((!module.is.expectingJSON()) || !isFunction(settings.successTest)) {
@@ -326,11 +321,11 @@
                             module.debug('Response passed success test', response);
 
                             return true;
-                        } else {
-                            module.debug('Response failed success test', response);
-
-                            return false;
                         }
+
+                        module.debug('Response failed success test', response);
+
+                        return false;
                     },
                 },
 
@@ -381,13 +376,13 @@
                                         url = false;
 
                                         return false;
-                                    } else {
-                                        module.verbose('Found required variable', variable, value);
-                                        value = (settings.encodeParameters)
-                                            ? module.get.urlEncodedValue(value)
-                                            : value;
-                                        url = url.replace(templatedString, value);
                                     }
+
+                                    module.verbose('Found required variable', variable, value);
+                                    value = (settings.encodeParameters)
+                                        ? module.get.urlEncodedValue(value)
+                                        : value;
+                                    url = url.replace(templatedString, value);
                                 });
                             }
                             if (optionalVariables) {
@@ -413,11 +408,9 @@
                                     } else {
                                         module.verbose('Optional variable not found', variable);
                                         // remove preceding slash if set
-                                        if (url.indexOf('/' + templatedString) !== -1) {
-                                            url = url.replace('/' + templatedString, '');
-                                        } else {
-                                            url = url.replace(templatedString, '');
-                                        }
+                                        url = url.indexOf('/' + templatedString) !== -1
+                                            ? url.replace('/' + templatedString, '')
+                                            : url.replace(templatedString, '');
                                     }
                                 });
                             }
@@ -436,8 +429,8 @@
 
                         if (useFormDataApi) {
                             formData = new FormData($form[0]);
-                            settings.processData = typeof settings.processData !== 'undefined' ? settings.processData : false;
-                            settings.contentType = typeof settings.contentType !== 'undefined' ? settings.contentType : false;
+                            settings.processData = settings.processData !== undefined ? settings.processData : false;
+                            settings.contentType = settings.contentType !== undefined ? settings.contentType : false;
                         } else {
                             var
                                 formArray = $form.serializeArray(),
@@ -469,7 +462,7 @@
                                             : (el.value === 'false' ? false : el.value)),
                                     nameKeys = el.name.match(settings.regExp.key) || [],
                                     k,
-                                    pushKey = el.name.replace(/\[\]$/, '')
+                                    pushKey = el.name.replace(/\[]$/, '')
                                 ;
                                 if (!(pushKey in pushes)) {
                                     pushes[pushKey] = 0;
@@ -542,7 +535,7 @@
                         done: function (response, textStatus, xhr) {
                             var
                                 context            = this,
-                                elapsedTime        = (new Date().getTime() - requestStartTime),
+                                elapsedTime        = (Date.now() - requestStartTime),
                                 timeLeft           = (settings.loadingDuration - elapsedTime),
                                 translatedResponse = (isFunction(settings.onResponse))
                                     ? module.is.expectingJSON() && !settings.rawResponse
@@ -571,7 +564,7 @@
                         fail: function (xhr, status, httpMessage) {
                             var
                                 context     = this,
-                                elapsedTime = (new Date().getTime() - requestStartTime),
+                                elapsedTime = (Date.now() - requestStartTime),
                                 timeLeft    = (settings.loadingDuration - elapsedTime)
                             ;
                             timeLeft = (timeLeft > 0)
@@ -625,7 +618,8 @@
                                 settings.onAbort.call(context, status, $module, xhr);
 
                                 return true;
-                            } else if (status == 'invalid') {
+                            }
+                            if (status == 'invalid') {
                                 module.debug('JSON did not pass success test. A server-side error has most likely occurred', response);
                             } else if (status == 'error') {
                                 if (xhr !== undefined) {
@@ -732,7 +726,7 @@
                     loading: function () {
                         module.verbose('Adding loading state to element', $context);
                         $context.addClass(className.loading);
-                        requestStartTime = new Date().getTime();
+                        requestStartTime = Date.now();
                     },
                 },
 
@@ -840,21 +834,23 @@
                             module.debug('API called without element, no events attached');
 
                             return false;
-                        } else if (settings.on == 'auto') {
+                        }
+                        if (settings.on == 'auto') {
                             if ($module.is('input')) {
                                 return (element.oninput !== undefined)
                                     ? 'input'
                                     : (element.onpropertychange !== undefined)
                                         ? 'propertychange'
                                         : 'keyup';
-                            } else if ($module.is('form')) {
-                                return 'submit';
-                            } else {
-                                return 'click';
                             }
-                        } else {
-                            return settings.on;
+                            if ($module.is('form')) {
+                                return 'submit';
+                            }
+
+                            return 'click';
                         }
+
+                        return settings.on;
                     },
                     templatedURL: function (action) {
                         action = action || $module.data(metadata.action) || settings.action || false;
@@ -954,7 +950,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
@@ -1005,8 +1001,8 @@
                     ;
                     passedArguments = passedArguments || queryArguments;
                     context = context || element;
-                    if (typeof query == 'string' && object !== undefined) {
-                        query = query.split(/[\. ]/);
+                    if (typeof query === 'string' && object !== undefined) {
+                        query = query.split(/[ .]/);
                         maxDepth = query.length - 1;
                         $.each(query, function (depth, value) {
                             var camelCaseValue = (depth != maxDepth)
@@ -1066,6 +1062,7 @@
             ? returnedValue
             : this;
     };
+    $.api = $.fn.api;
 
     $.api.settings = {
 
@@ -1191,13 +1188,13 @@
         },
 
         regExp: {
-            required: /\{\$*[a-z0-9]+\}/gi,
-            optional: /\{\/\$*[a-z0-9]+\}/gi,
-            validate: /^[a-z_][a-z0-9_-]*(?:\[[a-z0-9_-]*\])*$/i,
-            key: /[a-z0-9_-]+|(?=\[\])/gi,
+            required: /{\$*[\da-z]+}/gi,
+            optional: /{\/\$*[\da-z]+}/gi,
+            validate: /^[_a-z][\w-]*(?:\[[\w-]*])*$/i,
+            key: /[\w-]+|(?=\[])/gi,
             push: /^$/,
             fixed: /^\d+$/,
-            named: /^[a-z0-9_-]+$/i,
+            named: /^[\w-]+$/i,
         },
 
         className: {
