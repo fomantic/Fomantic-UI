@@ -30,7 +30,7 @@
                 ? $(window)
                 : $(this),
             moduleSelector = $allModules.selector || '',
-            time           = new Date().getTime(),
+            time           = Date.now(),
             performance    = [],
 
             query          = arguments[0],
@@ -537,7 +537,7 @@
                         done: function (response, textStatus, xhr) {
                             var
                                 context            = this,
-                                elapsedTime        = (new Date().getTime() - requestStartTime),
+                                elapsedTime        = (Date.now() - requestStartTime),
                                 timeLeft           = (settings.loadingDuration - elapsedTime),
                                 translatedResponse = (isFunction(settings.onResponse))
                                     ? module.is.expectingJSON() && !settings.rawResponse
@@ -566,7 +566,7 @@
                         fail: function (xhr, status, httpMessage) {
                             var
                                 context     = this,
-                                elapsedTime = (new Date().getTime() - requestStartTime),
+                                elapsedTime = (Date.now() - requestStartTime),
                                 timeLeft    = (settings.loadingDuration - elapsedTime)
                             ;
                             timeLeft = (timeLeft > 0)
@@ -727,7 +727,7 @@
                     loading: function () {
                         module.verbose('Adding loading state to element', $context);
                         $context.addClass(className.loading);
-                        requestStartTime = new Date().getTime();
+                        requestStartTime = Date.now();
                     },
                 },
 
@@ -949,7 +949,7 @@
                             previousTime
                         ;
                         if (settings.performance) {
-                            currentTime = new Date().getTime();
+                            currentTime = Date.now();
                             previousTime = time || currentTime;
                             executionTime = currentTime - previousTime;
                             time = currentTime;
